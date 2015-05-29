@@ -5,24 +5,22 @@ Rectangle {
     id:mainWindow
     width: 800
     height: 600
-    Column{
-        TopHeader{
-            id:mainHeader
-            width: mainWindow.width
-            height: mainWindow.height * 0.05
-        }
-        Rectangle{
-            id:container
-            width: mainWindow.width
-            height: mainWindow.height * 0.85
-            color: "red"
-        }
-
-        Rectangle{
-            id:mainMenu
-            width: mainWindow.width
-            height: mainWindow.height * 0.1
-            color: "yellow"
+    TopHeader{
+        id:mainHeader
+        width: mainWindow.width
+        height: mainWindow.height * 0.08
+        onSystemItemTriggered: console.log("system clicked")
+        onIoItemTriggered: console.log("IO clicked")
+    }
+    Rectangle{
+        id:container
+        width: mainWindow.width
+        height: mainWindow.height * 0.85
+        anchors.top: mainHeader.bottom
+        anchors.bottom: parent.bottom
+        Loader{
+            source: "SettingsPage.qml"
+            anchors.fill: parent
         }
     }
 }

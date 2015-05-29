@@ -36,8 +36,9 @@ SOURCES += main.cpp
 include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 qtcAddDeployment()
 
-target.path = /opt/Qt/apps
-INSTALLS += target
+target.path = /opt/Qt/apps/
+#INSTALLS += target
+message($${INSTALLS})
 
 OTHER_FILES += \
     qml/PanelRobot/Theme.js

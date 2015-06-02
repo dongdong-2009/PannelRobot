@@ -5,8 +5,8 @@ import "."
 
 Rectangle {
     color:Theme.defaultTheme.BASE_BG
-    property int menuItemWidth: width * 1 /10
-    property int menuItemHeight: height * 0.7
+    property int menuItemWidth: width * Theme.defaultTheme.TopHeader.menuItemWidthProportion
+    property int menuItemHeight: height * Theme.defaultTheme.TopHeader.menuItemHeightProportion
     property alias modeText: modeText
     property int mode: 0
 

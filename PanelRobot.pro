@@ -21,7 +21,9 @@ RCC_DIR = temp_$${suffix}
 # Add more folders to ship with the application, here
 folder_01.source = qml/PanelRobot
 folder_01.target = qml
-DEPLOYMENTFOLDERS = folder_01
+ICCustomElement.source = qml/ICCustomElement
+ICCustomElement.target = qml
+DEPLOYMENTFOLDERS = folder_01 ICCustomElement
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -41,5 +43,6 @@ target.path = /opt/Qt/apps/
 message($${INSTALLS})
 
 OTHER_FILES += \
-    qml/PanelRobot/Theme.js
+    qml/PanelRobot/Theme.js \
+    qml/ICCustomElement/ICStackContainer.qml
 

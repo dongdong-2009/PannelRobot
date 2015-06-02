@@ -8,7 +8,7 @@ Rectangle {
     Rectangle{
         id:contentContainer
         width: parent.width
-        height: parent.height * 0.85
+        height: parent.height * Theme.defaultTheme.Content.settingHeightProportion
         Loader{
             id:contentPage
             anchors.fill: parent
@@ -18,7 +18,7 @@ Rectangle {
     Rectangle{
         id:tipContainer
         width: parent.width
-        height: parent.height * 0.05
+        height: parent.height * Theme.defaultTheme.Content.tipHeightProportion
         color: Theme.defaultTheme.Content.tipBG
         border.color: Theme.defaultTheme.Content.tipBorderBG
         border.width: Theme.defaultTheme.Content.tipBorderWidth
@@ -33,7 +33,7 @@ Rectangle {
     Rectangle{
         id:menuContainer
         width: parent.width
-        height: parent.height * 0.1
+        height: parent.height * Theme.defaultTheme.Content.menuHeightProportion
         Loader{
             id:menu
             anchors.fill: parent

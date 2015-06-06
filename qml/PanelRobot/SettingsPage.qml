@@ -3,22 +3,13 @@ import "."
 
 
 ContentPageBase{
-    Component {
-        id: content
-        Rectangle{
-            id:settingContainer
-            color: "blue"
+    Rectangle{
+        id:settingContainer
+        color: "blue"
+        anchors.fill: parent
 
-        }
-    }
-    Component {
-        id: menu
-        Rectangle{
-            id:settingMenu
-//            color: "green"
-        }
     }
 
-    content: content
-    menu: menu
+    content: settingContainer
+//    menu: settingMenu
 }

@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import '.'
+import '../ICCustomElement'
 import "Theme.js" as Theme
 
 Rectangle {
@@ -58,6 +59,7 @@ Rectangle {
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
                 height: parent.height
                 itemText: qsTr("Operation")
+                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
                 onItemTriggered: {
                     middleMenuContainer.onMenuItemTriggered(menuOperation)
                 }
@@ -67,6 +69,7 @@ Rectangle {
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
                 height: parent.height
                 itemText: qsTr("Auto")
+                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
                 onItemTriggered: middleMenuContainer.onMenuItemTriggered(menuAuto)
 
             }
@@ -76,6 +79,7 @@ Rectangle {
                 height: parent.height
                 itemText: qsTr("Settings")
                 isChecked: true
+                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
                 onItemTriggered: {
                     middleMenuContainer.onMenuItemTriggered(menuSettings);
                 }

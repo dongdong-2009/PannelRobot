@@ -23,7 +23,9 @@ folder_01.source = qml/PanelRobot
 folder_01.target = qml
 ICCustomElement.source = qml/ICCustomElement
 ICCustomElement.target = qml
-DEPLOYMENTFOLDERS = folder_01 ICCustomElement
+configs.source = qml/PanelRobot
+configs.target = qml
+DEPLOYMENTFOLDERS = folder_01 ICCustomElement configs
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -44,5 +46,6 @@ message($${INSTALLS})
 
 OTHER_FILES += \
     qml/PanelRobot/Theme.js \
-    qml/ICCustomElement/ICStackContainer.qml
+    qml/ICCustomElement/ICStackContainer.qml \
+    qml/PanelRobot/configs/yDefines.js
 

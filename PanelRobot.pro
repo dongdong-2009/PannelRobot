@@ -1,3 +1,4 @@
+
 VERSION = 10.0.0
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
@@ -38,14 +39,34 @@ SOURCES += main.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
+include(vendor/IndustrialSystemFramework/ICCore/ICCore.pri)
+include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
+include(virtualhost/virtualhost.pri)
+include(datamanerger/datamanerger.pri)
+include(controller/controller.pri)
+
+
 qtcAddDeployment()
 
+configAddrTarget.target = .genAddr
+configAddrTarget.commands = python tools/addrgen.py defines/configs.csv common
+
+QMAKE_EXTRA_TARGETS += configAddrTarget
+PRE_TARGETDEPS += .genAddr
+
+reinstallDir = tools/Reinstall/
+
 target.path = /opt/Qt/apps/
+
+db.path = /opt/Qt/apps/
+db.files += $${reinstallDir}/RobotDatabase
+INSTALLS += db
 #INSTALLS += target
 message($${INSTALLS})
 
 OTHER_FILES += \
     qml/PanelRobot/Theme.js \
     qml/ICCustomElement/ICStackContainer.qml \
-    qml/PanelRobot/configs/yDefines.js
+    qml/PanelRobot/configs/yDefines.js \
+    defines/configs.csv
 

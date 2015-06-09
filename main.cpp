@@ -1,9 +1,15 @@
 #include "qtquick1applicationviewer.h"
 #include <QApplication>
+#include "panelrobotcontroller.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setOrganizationName("SZHC");
+    app.setApplicationName("RobotPanel");
+
+    PanelRobotController robotController;
+    robotController.Init();
 
     QtQuick1ApplicationViewer viewer;
     viewer.addImportPath(QLatin1String("modules"));

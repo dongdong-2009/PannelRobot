@@ -35,15 +35,16 @@ for row in defineRows:
 
 typeToInt = {"c":1, "m":2, "s":3}
 permToInt = {"r":1, "w":2, "rw":3}
-toWriteH = '#include "icaddrwrapper.h"\n'
+toWriteH = '#ifndef ICADDRWRAPPER_H\n#define ICADDRWRAPPER_H\n#include "icaddrwrapper.h"\n#include <QList>\n'
 toWriteSource = '#include "icaddrwrapper.h"\n'
+moldFncs = "const ICAddrWrapperList moldFncs = QList<const ICAddrWrapper*>()"
 for addr in addrWrappers:
-    toWriteH += "extern  const ICAddrWrapper  {0}_{1}_{2}_{3}_{4};    //< {5}\n".format(addr.type,
-                                                                                        addr.perm,
-                                                                                        addr.startPos,
-                                                                                        addr.size,
-                                                                                        addr.baseAddr,
-                                                                                        addr.name);
+    addrTmp =  "{0}_{1}_{2}_{3}_{4}".format(addr.type,
+                                            addr.perm,
+                                            addr.startPos,
+                                            addr.size,
+                                            addr.baseAddr);
+    toWriteH += "extern  const ICAddrWrapper  {0};    //< {1}\n".format(addrTmp, addr.name);
     toWriteSource += "extern  const ICAddrWrapper  {0}_{1}_{2}_{3}_{4}({5},{6},{2},{3},{4},{7},{8});    //< {9}\n".format(addr.type,
                                                                                                                         addr.perm,
                                                                                                                         addr.startPos,
@@ -54,6 +55,11 @@ for addr in addrWrappers:
                                                                                                                         addr.decimal,
                                                                                                                         addr.unit,
                                                                                                                         addr.name)
+    if addr.type == 'm':
+        moldFncs += "<<&{0}".format(addrTmp)
 
+toWriteH += moldFncs + ";\n";
+
+toWriteH += "#endif // ICADDRWRAPPER_H"
 open(os.path.join(args.outputdir, "icconfigsaddr.h"),'w').write(toWriteH)
 open(os.path.join(args.outputdir, "icconfigsaddr.cpp"),'w').write(toWriteSource)

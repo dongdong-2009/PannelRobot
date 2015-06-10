@@ -1,4 +1,6 @@
 
+#QT       += core
+#TEMPLATE = app
 VERSION = 10.0.0
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
@@ -44,6 +46,7 @@ include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
 include(virtualhost/virtualhost.pri)
 include(datamanerger/datamanerger.pri)
 include(controller/controller.pri)
+include(common/common.pri)
 
 
 qtcAddDeployment()

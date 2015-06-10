@@ -1,4 +1,7 @@
+#ifndef ICADDRWRAPPER_H
+#define ICADDRWRAPPER_H
 #include "icaddrwrapper.h"
+#include <QList>
 extern  const ICAddrWrapper  m_rw_0_16_0;    //< 堆叠1组计数器
 extern  const ICAddrWrapper  m_rw_0_16_1;    //< 堆叠2组计数器
 extern  const ICAddrWrapper  m_rw_0_16_2;    //< 堆叠3组计数器
@@ -84,3 +87,5 @@ extern  const ICAddrWrapper  m_rw_0_16_53;    //< 堆叠4组Z间距
 extern  const ICAddrWrapper  m_rw_0_16_54;    //< 堆叠4预留1
 extern  const ICAddrWrapper  m_rw_0_16_55;    //< 堆叠4预留2
 extern  const ICAddrWrapper  m_rw_0_16_56;    //< 堆叠4预留3
+const ICAddrWrapperList moldFncs = QList<const ICAddrWrapper*>()<<&m_rw_0_16_0<<&m_rw_0_16_1<<&m_rw_0_16_2<<&m_rw_0_16_3<<&m_rw_0_16_4<<&m_rw_0_16_5<<&m_rw_0_16_6<<&m_rw_0_16_7<<&m_rw_0_16_8<<&m_rw_0_16_9<<&m_rw_0_16_10<<&m_rw_0_16_11<<&m_rw_0_16_12<<&m_rw_0_16_13<<&m_rw_0_16_14<<&m_rw_0_16_15<<&m_rw_0_16_16<<&m_rw_0_4_17<<&m_rw_5_1_17<<&m_rw_6_1_17<<&m_rw_7_1_17<<&m_rw_15_1_17<<&m_rw_0_15_18<<&m_rw_15_1_18<<&m_rw_0_15_19<<&m_rw_15_1_19<<&m_rw_0_15_20<<&m_rw_15_1_20<<&m_rw_0_16_21<<&m_rw_0_16_22<<&m_rw_0_16_23<<&m_rw_0_16_24<<&m_rw_0_16_25<<&m_rw_0_16_26<<&m_rw_0_4_27<<&m_rw_5_1_27<<&m_rw_6_1_27<<&m_rw_7_1_27<<&m_rw_15_1_27<<&m_rw_0_15_28<<&m_rw_15_1_28<<&m_rw_0_15_29<<&m_rw_15_1_29<<&m_rw_0_15_30<<&m_rw_15_1_30<<&m_rw_0_16_31<<&m_rw_0_16_32<<&m_rw_0_16_33<<&m_rw_0_16_34<<&m_rw_0_16_35<<&m_rw_0_16_36<<&m_rw_0_4_37<<&m_rw_5_1_37<<&m_rw_6_1_37<<&m_rw_7_1_37<<&m_rw_15_1_37<<&m_rw_0_15_38<<&m_rw_15_1_38<<&m_rw_0_15_39<<&m_rw_15_1_39<<&m_rw_0_15_40<<&m_rw_15_1_40<<&m_rw_0_16_41<<&m_rw_0_16_42<<&m_rw_0_16_43<<&m_rw_0_16_44<<&m_rw_0_16_45<<&m_rw_0_16_46<<&m_rw_0_4_47<<&m_rw_5_1_47<<&m_rw_6_1_47<<&m_rw_7_1_47<<&m_rw_15_1_47<<&m_rw_0_15_48<<&m_rw_15_1_48<<&m_rw_0_15_49<<&m_rw_15_1_49<<&m_rw_0_15_50<<&m_rw_15_1_50<<&m_rw_0_16_51<<&m_rw_0_16_52<<&m_rw_0_16_53<<&m_rw_0_16_54<<&m_rw_0_16_55<<&m_rw_0_16_56;
+#endif // ICADDRWRAPPER_H

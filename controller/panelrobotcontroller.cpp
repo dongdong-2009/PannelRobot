@@ -3,12 +3,13 @@
 #include <QMessageBox>
 #include "icappsettings.h"
 #include "icrobotmold.h"
-#include "icdalhelper.h"
-#include "icrobotvirtualhost.h"
+//#include "icdalhelper.h"
+#include "icconfigsaddr.h"
 
 PanelRobotController::PanelRobotController(QObject *parent) :
     QObject(parent)
 {
+    host_ = ICRobotVirtualhost::RobotVirtualHost();
 }
 
 void PanelRobotController::Init()
@@ -16,6 +17,9 @@ void PanelRobotController::Init()
     ICAppSettings();
     InitDatabase_();
     InitMold_();
+    qDebug()<<m_rw_0_4_17.Decimal();
+    qDebug()<<moldFncs;
+    host_->SetCommunicateDebug(true);
 }
 
 void PanelRobotController::InitDatabase_()
@@ -38,8 +42,8 @@ void PanelRobotController::InitMold_()
 {
     ICAppSettings as;
     ICRobotMold* mold = new ICRobotMold();
-    mold->ParseActionProgram(ICDALHelper::MoldActContent(as.CurrentMoldConfig()));
-    ICVirtualHostPtr host = ICRobotVirtualhost::RobotVirtualHost();
-    ICRobotVirtualhost::InitMold(host, mold->ProgramToDatabuffer());
-    host->SetCommunicateDebug(true);
+    mold->LoadMold(as.CurrentMoldConfig());
+    ICRobotMold::SetCurrentMold(mold);
+    ICRobotVirtualhost::InitMold(host_, mold->ProgramToDataBuffer());
+    ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
 }

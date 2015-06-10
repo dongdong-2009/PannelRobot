@@ -28,7 +28,7 @@ public:
     {
         return new ICRobotTransceiverData(hostID,
                                           FC_HC_INIT_PARA,
-                                          addr & 0X4000,
+                                          addr | 0X4000,
                                           data.size(),
                                           data);
     }
@@ -39,7 +39,7 @@ public:
     {
         return new ICRobotTransceiverData(hostID,
                                           FC_HC_INIT_PARA,
-                                          addr & 0X8000,
+                                          addr | 0X8000,
                                           data.size(),
                                           data);
     }

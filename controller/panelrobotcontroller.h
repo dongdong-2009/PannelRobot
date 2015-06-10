@@ -2,6 +2,8 @@
 #define PANELROBOTCONTROLLER_H
 
 #include <QObject>
+#include "icrobotvirtualhost.h"
+
 
 class PanelRobotController : public QObject
 {
@@ -17,6 +19,9 @@ public slots:
 private:
     void InitDatabase_();
     void InitMold_();
+    void InitMoldFuc_();
+    ICVirtualHostPtr host_;
+
 
 };
 

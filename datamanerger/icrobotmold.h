@@ -5,6 +5,8 @@
 #include <QString>
 #include <QSharedPointer>
 #include <QVector>
+#include "icconfigsaddr.h"
+#include "icparameterscache.h"
 
 class ICMoldItem
 {
@@ -114,9 +116,9 @@ public:
     QVector<quint32> ToDataBuffer() const
     {
         QVector<quint32> ret;
-        ret<<seq_<<num_<<((subNum_<< 8) | gmVal_)<<pos_
-          <<((ifVal_<< 8) | (ifPos_>>8))<<(((ifPos_ & 0xFF) << 8) | (dVal_ >> 8))
-            <<(((dVal_ & 0xFF) << 8) | sVal_)<<sum_;
+        ret<<(quint16)seq_<<(quint16)num_<<(quint16)((subNum_<< 8) | gmVal_)<<(quint16)pos_
+          <<(quint16)((ifVal_<< 8) | (ifPos_>>8))<<(quint16)(((ifPos_ & 0xFF) << 8) | (dVal_ >> 8))
+            <<(quint16)(((dVal_ & 0xFF) << 8) | sVal_)<<(quint16)sum_;
         return ret;
     }
 
@@ -198,7 +200,7 @@ public:
 
     bool ParseActionProgram(const QString& content);
 
-    QVector<quint32> ProgramToDatabuffer() const
+    QVector<quint32> ProgramToDataBuffer() const
     {
         QVector<quint32> ret;
         for(int i = 0; i != actionProgram_.size(); ++i)
@@ -208,9 +210,18 @@ public:
         return ret;
     }
 
+    QVector<quint32> MoldFncsBuffer() const
+    {
+        return fncCache_.SequenceDataList();
+    }
+
+    bool LoadMold(const QString& moldName);
+
 private:
     ICActionProgram actionProgram_;
     static QSharedPointer<ICRobotMold> currentMold_;
+    QString moldName_;
+    ICParametersCache fncCache_;
 
 };
 

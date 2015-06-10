@@ -15,7 +15,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICSerialTransceiver::Instance()->StartCommunicate();
     ICSerialTransceiver::Instance()->SetFrameTransceiverDataMapper(frameTransceiverDataMapper_);
     SetTransceiver(ICSerialTransceiver::Instance());
-    SetCommunicateInterval(15);
+    SetCommunicateInterval(5);
 }
 
 bool ICRobotVirtualhost::InitConfigsImpl(const QVector<QPair<quint32, quint32> > &configList, int startAddr)
@@ -29,20 +29,20 @@ bool ICRobotVirtualhost::InitMold(ICVirtualHostPtr hostPtr, const QVector<quint3
     ICRobotTransceiverData * toSentFrame;
     QVector<quint32> tempDataBuffer;
     int startAddr = 0;
-   for(int i = 0; i < data.size(); i +=8)
+    for(int i = 0; i < data.size(); i +=4)
     {
-       tempDataBuffer = data.mid(i * 4, 4);
+        tempDataBuffer = data.mid(i, 4);
         toSentFrame = ICRobotTransceiverData::FillActInitCommand(kHostID,
-                                                                startAddr++,
-                                                                tempDataBuffer);
+                                                                 startAddr++,
+                                                                 tempDataBuffer);
 
         hostPtr->AddCommunicationFrame(toSentFrame);
 
         i +=4;
-        tempDataBuffer = data.mid(i * 4, 4);
+        tempDataBuffer = data.mid(i, 4);
         toSentFrame = ICRobotTransceiverData::FillActInitCommand(kHostID,
-                                                                startAddr++,
-                                                                tempDataBuffer);
+                                                                 startAddr++,
+                                                                 tempDataBuffer);
         hostPtr->AddCommunicationFrame(toSentFrame);
     }
     return true;
@@ -64,10 +64,10 @@ bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<qui
     int startAddr = 0;
     for(int i = 0; i < fnc.size(); i +=4)
     {
-        tempDataBuffer = fnc.mid(i * 4, 4);
-        toSentFrame->FillFncInitCommand(kHostID,
-                                        startAddr,
-                                        tempDataBuffer);
+        tempDataBuffer = fnc.mid(i, 4);
+        toSentFrame = ICRobotTransceiverData::FillFncInitCommand(kHostID,
+                                                                 startAddr,
+                                                                 tempDataBuffer);
         hostPtr->AddCommunicationFrame(toSentFrame);
         ++startAddr;
 
@@ -80,37 +80,43 @@ void ICRobotVirtualhost::CommunicateImpl()
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
     if(recvRet_ == false && !recvFrame_->IsError())
     {
-////        IncreaseCommunicateErrCount();
-//        ++conjectionCommErrCount_;
-//        if(conjectionCommErrCount_ > 50)
-//        {
-//            alarmBits_.setBit(ALARM_COMMUNICATION_ANOMALY, 1);
-//            //            queue_.Clear();
-//        }
-//        if(conjectionCommErrCount_ < 2)
-//        {
-//            return;
-//        }
-    }
-    if(unlikely(IsCommunicateDebug()))
-    {
-//        emit ReadyCommunicate();
-    }
-    if(likely(recvRet_ && !recvFrame_->IsError()))
-//    if(1)
-    {
-
         if(IsCommunicateDebug())
         {
             qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
             qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-//            emit CommunicateErrChecked();
+            //            emit CommunicateErrChecked();
         }
+        ////        IncreaseCommunicateErrCount();
+        //        ++conjectionCommErrCount_;
+        //        if(conjectionCommErrCount_ > 50)
+        //        {
+        //            alarmBits_.setBit(ALARM_COMMUNICATION_ANOMALY, 1);
+        //            //            queue_.Clear();
+        //        }
+        //        if(conjectionCommErrCount_ < 2)
+        //        {
+        //            return;
+        //        }
+    }
+    if(unlikely(IsCommunicateDebug()))
+    {
+        //        emit ReadyCommunicate();
+    }
+    if(likely(recvRet_ && !recvFrame_->IsError()))
+        //    if(1)
+    {
+
+//        if(IsCommunicateDebug())
+//        {
+//            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+//            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
+//            //            emit CommunicateErrChecked();
+//        }
         queue_.DeQueue();
     }
     if(queue_.IsEmpty())
     {
-       return;
+        return;
     }
     Transceiver()->Write(queue_.Head());
 }

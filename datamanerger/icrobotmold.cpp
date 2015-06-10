@@ -1,5 +1,6 @@
 #include "icrobotmold.h"
 #include <QStringList>
+#include "icdalhelper.h"
 #include <QDebug>
 
 ICRobotMoldPTR ICRobotMold::currentMold_;
@@ -66,4 +67,19 @@ bool ICRobotMold::ParseActionProgram(const QString &content)
     }
     actionProgram_ = tempmoldContent;
     return true;
+}
+
+bool ICRobotMold::LoadMold(const QString &moldName)
+{
+    moldName_ = moldName;
+    bool ret = this->ParseActionProgram(ICDALHelper::MoldActContent(moldName));
+    if(ret)
+    {
+        QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));
+        for(int i = 0; i != fncs.size(); ++i)
+        {
+            fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
+        }
+    }
+    return ret;
 }

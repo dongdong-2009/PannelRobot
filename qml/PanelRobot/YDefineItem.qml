@@ -35,7 +35,7 @@ Rectangle {
 
     onIsOnChanged: {
         if(isOn){
-            led.color = "green" ;
+            led.color = "lightgreen" ;
             actionText.text = qsTr("Off");
         }else{
             led.color = "gray"

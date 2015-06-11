@@ -315,6 +315,7 @@ extern  const ICAddrWrapper  c_r_5_1_19(1,1,5,1,19,0,"");    //< X055状态
 extern  const ICAddrWrapper  c_r_6_1_19(1,1,6,1,19,0,"");    //< X056状态
 extern  const ICAddrWrapper  c_r_7_1_19(1,1,7,1,19,0,"");    //< X057状态
 extern  const ICAddrWrapper  c_r_8_8_19(1,1,8,8,19,0,"");    //< S预留
+extern  const ICAddrWrapper  c_r_0_16_19(1,1,0,16,19,0,"");    //< XExtent
 extern  const ICAddrWrapper  c_r_0_1_20(1,1,0,1,20,0,"");    //< X010状态
 extern  const ICAddrWrapper  c_r_1_1_20(1,1,1,1,20,0,"");    //< X011状态
 extern  const ICAddrWrapper  c_r_2_1_20(1,1,2,1,20,0,"");    //< X012状态
@@ -347,6 +348,8 @@ extern  const ICAddrWrapper  c_r_12_1_21(1,1,12,1,21,0,"");    //< X044状态
 extern  const ICAddrWrapper  c_r_13_1_21(1,1,13,1,21,0,"");    //< X045状态
 extern  const ICAddrWrapper  c_r_14_1_21(1,1,14,1,21,0,"");    //< X046状态
 extern  const ICAddrWrapper  c_r_15_1_21(1,1,15,1,21,0,"");    //< X047状态
+extern  const ICAddrWrapper  c_r_0_16_20(1,1,0,16,20,0,"");    //< XInput0
+extern  const ICAddrWrapper  c_r_0_16_21(1,1,0,16,21,0,"");    //< XInput1
 extern  const ICAddrWrapper  c_r_0_1_22(1,1,0,1,22,0,"");    //< Y010状态
 extern  const ICAddrWrapper  c_r_1_1_22(1,1,1,1,22,0,"");    //< Y011状态
 extern  const ICAddrWrapper  c_r_2_1_22(1,1,2,1,22,0,"");    //< Y012状态
@@ -379,6 +382,8 @@ extern  const ICAddrWrapper  c_r_12_1_23(1,1,12,1,23,0,"");    //< Y044状态
 extern  const ICAddrWrapper  c_r_13_1_23(1,1,13,1,23,0,"");    //< Y045状态
 extern  const ICAddrWrapper  c_r_14_1_23(1,1,14,1,23,0,"");    //< Y046状态
 extern  const ICAddrWrapper  c_r_15_1_23(1,1,15,1,23,0,"");    //< Y047状态
+extern  const ICAddrWrapper  c_r_0_16_22(1,1,0,16,22,0,"");    //< YOutput0
+extern  const ICAddrWrapper  c_r_0_16_23(1,1,0,16,23,0,"");    //< YOutput1
 extern  const ICAddrWrapper  c_r_0_1_24(1,1,0,1,24,0,"");    //< EuX010状态
 extern  const ICAddrWrapper  c_r_1_1_24(1,1,1,1,24,0,"");    //< EuX011状态
 extern  const ICAddrWrapper  c_r_2_1_24(1,1,2,1,24,0,"");    //< EuX012状态

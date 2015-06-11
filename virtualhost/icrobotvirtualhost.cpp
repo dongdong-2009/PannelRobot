@@ -16,7 +16,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICSerialTransceiver::Instance()->StartCommunicate();
     ICSerialTransceiver::Instance()->SetFrameTransceiverDataMapper(frameTransceiverDataMapper_);
     SetTransceiver(ICSerialTransceiver::Instance());
-    SetCommunicateInterval(6);
+    SetCommunicateInterval(8);
     AddRefreshStatusCommand_();
 }
 
@@ -177,11 +177,22 @@ void ICRobotVirtualhost::CommunicateImpl()
     if(likely(recvRet_ && !recvFrame_->IsError()))
         //    if(1)
     {
-        if(IsCommunicateDebug())
+//        if(IsCommunicateDebug())
+//        {
+//            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+//            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
+//            //            emit CommunicateErrChecked();
+//        }
+        if(recvFrame_->IsQuery())
         {
-            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-            //            emit CommunicateErrChecked();
+            statusDataTmp_ = recvFrame_->Data();
+            startIndex_ = currentStatusGroup_ * 4;
+            for(int i = 0; i != statusDataTmp_.size(); ++i)
+            {
+                statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
+            }
+            ++currentStatusGroup_;
+            currentStatusGroup_ %= 11;
         }
         queue_.DeQueue();
     }
@@ -197,7 +208,49 @@ void ICRobotVirtualhost::AddRefreshStatusCommand_()
 {
      ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
                                                                                            currentStatusGroup_);
-     ++currentStatusGroup_;
-     currentStatusGroup_ %= 11;
      AddCommunicationFrame(toSentFrame);
+}
+
+void ICRobotVirtualhost::InitStatusMap_()
+{
+    for(int i = 0; i != StatusCount; ++i)
+    {
+        statusCache_.UpdateConfigValue(i, 0);
+    }
+}
+
+bool ICRobotVirtualhost::IsInputOnImpl(int index) const
+{
+    if(index < 16)
+    {
+        quint32 temp = 1 << index;
+        return HostStatusValue(&c_r_0_16_20) & temp;
+    }
+    else if(index < 32)
+    {
+        quint32 temp = 1 << (index - 16);
+        return HostStatusValue(&c_r_0_16_21) & temp;
+    }
+    else
+    {
+        quint32 temp = 1 << (index - 32);
+        return HostStatusValue(&c_r_0_16_19) & temp;
+    }
+    return false;
+
+}
+
+bool ICRobotVirtualhost::IsOutputOnImpl(int index) const
+{
+    if(index < 16)
+    {
+        quint32 temp = 1 << index;
+        return HostStatusValue(&c_r_0_16_22) & temp;
+    }
+    else if(index < 32)
+    {
+        quint32 temp = 1 << (index - 16);
+        return HostStatusValue(&c_r_0_16_23) & temp;
+    }
+    return false;
 }

@@ -22,7 +22,7 @@ void PanelRobotController::Init()
     InitDatabase_();
     InitMold_();
     InitMachineConfig_();
-    host_->SetCommunicateDebug(true);
+    host_->SetCommunicateDebug(false);
 }
 
 void PanelRobotController::InitDatabase_()

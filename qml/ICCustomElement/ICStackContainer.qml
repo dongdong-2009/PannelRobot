@@ -5,7 +5,7 @@ Rectangle {
     property variant pages: []
 
     function addPage(componentObject){
-        componentObject.anchors.fill = this;
+//        componentObject.anchors.fill = this;
         var p = pages;
         p.push(componentObject)
         pages = p;

@@ -116,4 +116,7 @@ Rectangle {
             visible: false
         }
     }
+    Component.onCompleted: {
+        console.log("main load finished!")
+    }
 }

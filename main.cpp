@@ -1,5 +1,6 @@
 #include "qtquick1applicationviewer.h"
 #include <QApplication>
+#include <QDeclarativeContext>
 #include "panelrobotcontroller.h"
 
 int main(int argc, char *argv[])
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
     robotController.Init();
 
     QtQuick1ApplicationViewer viewer;
+    viewer.rootContext()->setContextProperty("panelRobotController", &robotController);
     viewer.addImportPath(QLatin1String("modules"));
     viewer.setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/PanelRobot/main.qml"));

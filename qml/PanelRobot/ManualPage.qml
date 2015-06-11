@@ -1,9 +1,6 @@
 import QtQuick 1.1
 import "."
 import "../ICCustomElement"
-import "./configs/yDefines.js" as YDefines
-import "./ManualPage.js" as ManualPageScript
-import "./AppSettings.js" as UISettings
 import "./Theme.js" as Theme
 
 ContentPageBase{
@@ -11,17 +8,15 @@ ContentPageBase{
         id:manualContainer
         anchors.fill: parent
         Component.onCompleted:{
-            ManualPageScript.generatePages(UISettings.AppSettings.prototype.currentLanguage(),
-                                           Theme.defaultTheme)
-
-            var pageCount = manualContainer.pages.length;
-            var itemTexts = ["","","","","","",""];
-            if(pageCount > 0)
-                itemTexts[0] = qsTr("Y010~Y027");
-            if(pageCount > 1)
-                itemTexts[1] = qsTr("Y030~Y037");
-            menuItemTexts = itemTexts;
-
+            var yDefinePage1Class = Qt.createComponent('YDefinePage1.qml');
+            if (yDefinePage1Class.status == Component.Ready){
+                var page = yDefinePage1Class.createObject(manualContainer, {"ioStart":0})
+                addPage(page)
+                page = yDefinePage1Class.createObject(manualContainer, {"ioStart":16})
+                addPage(page)
+                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]
+            }
+            manualContainer.setCurrentIndex(0)
         }
     }
     Rectangle{

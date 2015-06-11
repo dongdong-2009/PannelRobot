@@ -4,6 +4,11 @@ Rectangle {
     property variant yDefines: []
     property string currentLanguage: "ch"
 
+    QtObject{
+        id:pData
+        property variant yDefineItems: []
+    }
+
     //    anchors.top: parent.top
 
     Rectangle{
@@ -43,8 +48,10 @@ Rectangle {
                 rightItems.push(yDefineItem);
             }
             rightContainer.children = rightItems
-
+            pData.yDefineItems = leftItems;
+            pData.yDefineItems += rightItems
+            console.log(leftItems.length, rightItems.length)
+            console.log(pData.yDefineItems.length)
         }
     }
-
 }

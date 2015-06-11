@@ -8,24 +8,24 @@ ICRobotMold::ICRobotMold()
 {
 }
 
-bool ICRobotMold::ParseActionProgram(const QString &content)
+ICActionProgram ICRobotMold::ParseActionProgram_(const QString &content)
 {
+    ICActionProgram tempmoldContent;
     if(content.isNull())
     {
         qDebug("mold null");
-        return false;
+        return tempmoldContent;
     }
     QStringList records = content.split("\n", QString::SkipEmptyParts);
     if(records.size() < 1)
     {
         qDebug("mold less than 4");
-        return false;
+        return tempmoldContent;
     }
     QStringList items;
     ICMoldItem moldItem;
     qDebug("before read");
     qDebug()<<"size"<<records.size();
-    ICActionProgram tempmoldContent;
     QString itemsContent;
     for(int i = 0; i != records.size(); ++i)
     {
@@ -43,7 +43,7 @@ bool ICRobotMold::ParseActionProgram(const QString &content)
                 items.size() != 12)
         {
             qDebug()<<i<<"th line size wrong";
-            return false;
+            return tempmoldContent;
         }
         moldItem.SetValue(items.at(0).toUInt(),
                           items.at(1).toUInt(),
@@ -65,21 +65,28 @@ bool ICRobotMold::ParseActionProgram(const QString &content)
         }
         tempmoldContent.append(moldItem);
     }
-    actionProgram_ = tempmoldContent;
-    return true;
+    return tempmoldContent;
 }
 
 bool ICRobotMold::LoadMold(const QString &moldName)
 {
+    QStringList programs = ICDALHelper::MoldProgramContent(moldName);
+    if(programs.size() != 9) return false;
     moldName_ = moldName;
-    bool ret = this->ParseActionProgram(ICDALHelper::MoldActContent(moldName));
-    if(ret)
+    programs_.clear();
+    ICActionProgram p;
+    for(int i = 0; i != programs.size(); ++i)
     {
-        QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));
-        for(int i = 0; i != fncs.size(); ++i)
-        {
-            fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
-        }
+        p = ParseActionProgram_(programs.at(i));
+        if(p.isEmpty()) return false;
+        programs_.append(p);
     }
-    return ret;
+
+    QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));
+    for(int i = 0; i != fncs.size(); ++i)
+    {
+        fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
+    }
+
+    return true;
 }

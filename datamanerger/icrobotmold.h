@@ -188,6 +188,19 @@ typedef QSharedPointer<ICRobotMold> ICRobotMoldPTR;
 class ICRobotMold
 {
 public:
+    enum {
+        kMainProg,
+        kSub1Prog,
+        kSub2Prog,
+        kSub3Prog,
+        kSub4Prog,
+        kSub5Prog,
+        kSub6Prog,
+        kSub7Prog,
+        kSub8Prog,
+
+    };
+
     ICRobotMold();
     static ICRobotMoldPTR CurrentMold()
     {
@@ -198,14 +211,13 @@ public:
         currentMold_ = ICRobotMoldPTR(mold);
     }
 
-    bool ParseActionProgram(const QString& content);
-
-    QVector<quint32> ProgramToDataBuffer() const
+    QVector<quint32> ProgramToDataBuffer(int program) const
     {
         QVector<quint32> ret;
-        for(int i = 0; i != actionProgram_.size(); ++i)
+        ICActionProgram p = programs_[program];
+        for(int i = 0; i != p.size(); ++i)
         {
-            ret += actionProgram_.at(i).ToDataBuffer();
+            ret += p.at(i).ToDataBuffer();
         }
         return ret;
     }
@@ -218,8 +230,11 @@ public:
     bool LoadMold(const QString& moldName);
 
 private:
-    ICActionProgram actionProgram_;
-    static QSharedPointer<ICRobotMold> currentMold_;
+    ICActionProgram ParseActionProgram_(const QString& content);
+
+private:
+    QList<ICActionProgram> programs_;
+    static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;
 

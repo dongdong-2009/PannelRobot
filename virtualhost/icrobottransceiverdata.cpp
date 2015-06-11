@@ -1,6 +1,13 @@
 #include "icrobottransceiverdata.h"
 #include "icutility.h"
 
+static inline bool CheckCRC16(const uint8_t* buffer, size_t size)
+{
+    uint16_t crcCal = ICUtility::CRC16(buffer, size - 2);
+    uint16_t crcRecv = ((buffer[size - 2] << 8) | (buffer[size - 1]));
+    return crcCal == crcRecv;
+}
+
 ICObjectPool<ICRobotTransceiverData> ICRobotTransceiverData::objectPool_;
 ICRobotTransceiverData::ICRobotTransceiverData()
 {
@@ -9,30 +16,57 @@ ICRobotTransceiverData::ICRobotTransceiverData()
 bool ICRobotFrameTransceiverDataMapper::FrameToTransceiverData(ICTransceiverData *recvData, const uint8_t *buffer, size_t size, const ICTransceiverData *sentData)
 {
     ICRobotTransceiverData* robotRecvData = static_cast<ICRobotTransceiverData*>(recvData);
-    const ICRobotTransceiverData* robotSentData = static_cast<const ICRobotTransceiverData*>(sentData);
+//    const ICRobotTransceiverData* robotSentData = static_cast<const ICRobotTransceiverData*>(sentData);
     if(unlikely(robotRecvData == NULL))
     {
         return false;
     }
-
-    if(robotSentData->GetFunctionCode() == FC_HC_INIT_PARA)
+    if(size < FrameMinSize())
     {
-        if(size != 16) return false;
-        robotRecvData->SetHostID(buffer[0]);
-        robotRecvData->SetFunctionCode(buffer[1]);
+        robotRecvData->SetFunctionCode(0x80);
+        robotRecvData->SetErrorCode(COMMEC_WrongFrameFormat);
+        return false;
+    }
+    robotRecvData->SetHostID(buffer[0]);
+    int fc = buffer[1];
+    robotRecvData->SetFunctionCode(fc);
+    if(robotRecvData->IsError())
+    {
+        robotRecvData->SetErrorCode(buffer[2]);
+        return false;
+    }
+
+
+    if(fc == FC_HC_INIT_PARA || fc == FC_HC_QUERY_STATUS)
+    {
+        if(size != 16)
+        {
+            robotRecvData->SetErrorCode(COMMEC_WrongFrameFormat);
+            return false;
+        }
         robotRecvData->SetAddr(buffer[2] | (buffer[3] << 8));
-        robotRecvData->SetLength(buffer[4] | (buffer[5] << 8));
+        int length  = buffer[4] | (buffer[5] << 8);
+        robotRecvData->SetLength(length);
         dataBuffer_.clear();
         int j = 6;
-        for(size_t i = 0; i != robotRecvData->GetLength(); ++i)
+        for(size_t i = 0; i != length; ++i)
         {
             dataBuffer_.append((buffer[j] | buffer[j + 1] << 8));
             j += 2;
         }
         robotRecvData->SetData(dataBuffer_);
+        if(fc == FC_HC_QUERY_STATUS)
+        {
+            robotRecvData->SetErrorCode(COMMEC_CRCNoEqual);
+            return CheckCRC16(buffer, size);
+        }
 
 //        int sentSize = TransceiverDataToFrame(tmpButter_, 16, sentData);
-        if(!recvData->IsEqual(sentData)) return false;
+        if(!recvData->IsEqual(sentData))
+        {
+            robotRecvData->SetErrorCode(COMMEC_CRCNoEqual);
+            return false;
+        }
 //        if(memcmp(buffer, tmpButter_, sentSize) != 0) return false;
 
     }
@@ -52,12 +86,16 @@ size_t ICRobotFrameTransceiverDataMapper::TransceiverDataToFrame(uint8_t *dest, 
         return 0;
     }
     int dI = 0;
+    int fc = injectionData->GetFunctionCode();
+    int addr = injectionData->GetAddr();
     dest[dI++] = injectionData->HostID();
-    dest[dI++] = injectionData->GetFunctionCode();
-    if(injectionData->GetFunctionCode() == FC_HC_INIT_PARA)
+    dest[dI++] = fc;
+    dest[dI++] = addr & 0x00FF;
+    dest[dI++] = addr >> 8;
+
+    if(fc == FC_HC_INIT_PARA ||
+            fc == FC_HC_QUERY_STATUS)
     {
-        dest[dI++] = injectionData->GetAddr() & 0x00FF;
-        dest[dI++] = injectionData->GetAddr() >> 8;
         dest[dI++] = injectionData->GetLength() & 0x00FF;
         dest[dI++] = injectionData->GetLength() >> 8;
     }

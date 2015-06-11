@@ -5,7 +5,14 @@
 
 enum FunctionCode{
     FC_HC_QUERY_STATUS = 0x02,
-    FC_HC_INIT_PARA    = 0x06
+    FC_HC_INIT_PARA    = 0x06,
+};
+
+enum CommErrorCode{
+    COMMEC_NeedToInit = 0x16,
+    COMMEC_WrongFrameFormat = 0x50,
+    COMMEC_CRCNoEqual = 0x51,
+
 };
 
 class ICRobotTransceiverData : public ICHCTransceiverData
@@ -57,9 +64,32 @@ public:
     }
 
 
+    static ICRobotTransceiverData* FillMachineConfigInitCommand(uint8_t hostID,
+                           uint addr,
+                           const ICTransceiverDataBuffer& data)
+    {
+        return new ICRobotTransceiverData(hostID,
+                                          FC_HC_INIT_PARA,
+                                          addr | 0XC000,
+                                          data.size(),
+                                          data);
+    }
 
-    virtual bool IsError() const { return (GetFunctionCode() & 0x80) == 1;}
+    static ICRobotTransceiverData* FillQueryStatusCommand(uint8_t hostID,
+                           uint addr)
+    {
+        return new ICRobotTransceiverData(hostID,
+                                          FC_HC_QUERY_STATUS,
+                                          addr,
+                                          4,
+                                          ICTransceiverDataBuffer());
+    }
+
+
+    virtual bool IsError() const { return (GetFunctionCode() & 0x80) > 0;}
     virtual int MaxFrameLength() const { return 16;}
+    virtual int ErrorCode() const { return GetAddr() & 0xFF;}
+    void SetErrorCode(int ec) { SetAddr(ec);}
 
     //    ~ICInjectionMachineTransceiverData()
     //    {
@@ -118,7 +148,7 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionAddrValid(int addr, int
                 (addrH >=0 && addrH < 8);
     }
     case FC_HC_QUERY_STATUS:
-        return true;
+        return addr >= 0 && addr <= 44;
     default:
         return false;
     }

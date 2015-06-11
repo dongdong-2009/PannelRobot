@@ -16,10 +16,12 @@ signals:
 
 public slots:
 
+    void OnNeedToInitHost();
+
 private:
     void InitDatabase_();
     void InitMold_();
-    void InitMoldFuc_();
+    void InitMachineConfig_();
     ICVirtualHostPtr host_;
 
 

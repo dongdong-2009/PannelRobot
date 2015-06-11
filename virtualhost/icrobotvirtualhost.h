@@ -29,10 +29,18 @@ protected:
 public:
     static bool InitMold(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
+    static bool InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >& data);
+    static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
 
 signals:
+    void CommunicateError(int errorCode);
+    void NeedToInitHost();
 
 public slots:
+
+private:
+    void AddRefreshStatusCommand_();
+    int currentStatusGroup_;
 
 private:
     bool recvRet_;

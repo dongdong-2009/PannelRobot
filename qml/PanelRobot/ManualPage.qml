@@ -19,9 +19,6 @@ ContentPageBase{
             manualContainer.setCurrentIndex(0)
         }
     }
-    Rectangle{
-        id:manualMenu
-    }
 
     content: manualContainer
 

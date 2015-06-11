@@ -89,11 +89,13 @@ Rectangle {
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
                 height: parent.height
                 text: "0"
+                focus: false
             }
             ICTextEdit{
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
                 height: parent.height
                 text:qsTr("Sample")
+                focus: false
             }
         }
     }
@@ -104,6 +106,7 @@ Rectangle {
 //        height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
         anchors.top: middleHeader.bottom
         anchors.bottom: parent.bottom
+        focus: true
         Loader{
             id:settingPage
             source: "SettingsPage.qml"
@@ -114,9 +117,14 @@ Rectangle {
             source: "ManualPage.qml"
             anchors.fill: parent
             visible: false
+            focus: true
         }
     }
     Component.onCompleted: {
         console.log("main load finished!")
+    }
+    focus: true
+    Keys.onPressed: {
+        console.log("Main key press exec");
     }
 }

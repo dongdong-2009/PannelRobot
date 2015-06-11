@@ -1,11 +1,14 @@
 import QtQuick 1.1
 import "Theme.js" as Theme
+import "configs/Keymap.js" as Keymap
 
 Rectangle {
     //    property function load(){}
     property alias content:contentContainer.children
-//    property alias menu: menuContainer.children
+    //    property alias menu: menuContainer.children
     property variant menuItemTexts: ["", "", "", "", "", "",""]
+
+    focus: true
 
     signal menuItem1Triggered();
     signal menuItem2Triggered();
@@ -98,6 +101,30 @@ Rectangle {
                     onItemTriggered: menuItem7Triggered()
                 }
             }
+            focus: true
+            Keys.onPressed: {
+                console.log("contentPage base key exec", event.key)
+                if (event.key == Keymap.KEY_F1) {
+                    menuItem1Triggered()
+                    event.accepted = true;
+                }
+                else if (event.key == Keymap.KEY_F2){
+                    menuItem2Triggered()
+                    event.accepted = true;
+                }
+                else if (event.key == Keymap.KEY_F3){
+                    menuItem3Triggered()
+                    event.accepted = true;
+                }
+                else if (event.key == Keymap.KEY_F4){
+                    menuItem4Triggered()
+                    event.accepted = true;
+                }
+                else if (event.key == Keymap.KEY_F5){
+                    menuItem5Triggered()
+                    event.accepted = true;
+                }
+            }
         }
     }
     onMenuItemTextsChanged: {
@@ -110,4 +137,5 @@ Rectangle {
         menu7.itemText = menuItemTexts[6];
 
     }
+
 }

@@ -5,6 +5,9 @@ VERSION = 10.0.0
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
 DEFINES += UART_COMM
+
+SK_SIZE = 8
+
 QMAKE_CXX = ccache $${QMAKE_CXX}
 
 suffix = $${VERSION}
@@ -63,7 +66,9 @@ target.path = /opt/Qt/apps/
 
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
-INSTALLS += db
+qmap.path = /home/root
+qmap.files += $${reinstallDir}/$${SK_SIZE}-inch-qmap/*
+INSTALLS += db qmap
 #INSTALLS += target
 message($${INSTALLS})
 

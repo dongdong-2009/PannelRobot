@@ -3,9 +3,32 @@
 
 #include "ichctransceiverdata.h"
 
+#define CMDPULSEA			0x60
+#define CMDPULSEB           0x61
+#define CMDTURNAUTO			0x80
+#define CMDTURNMANUAL		0x81
+#define CMDTURNSTOP			0x82
+#define CMDTURNTEACH		0x83
+#define CMDTURNZERO			0x84
+#define CMDTURNRET			0x85
+#define CMDTURNTCHSUB0		0x90
+#define CMDTURNTCHSUB1		0x91
+#define CMDTURNTCHSUB2		0x92
+#define CMDTURNTCHSUB3		0x93
+#define CMDTURNTCHSUB4		0x94
+#define CMDTURNTCHSUB5		0x95
+#define CMDTURNTCHSUB6		0x96
+#define CMDTURNTCHSUB7		0x97
+#define CMDTURNTCHSUB8		0x98
+#define CMDTEACH			0x33	//教导回传
+#define CMDGETAXISCONFIG    0x99
+#define CMDSELECTCONFIG     0x9a
+
 enum FunctionCode{
     FC_HC_QUERY_STATUS = 0x02,
     FC_HC_INIT_PARA    = 0x06,
+    FC_HC_COMMAND      = 0x40
+
 };
 
 enum CommErrorCode{
@@ -82,6 +105,53 @@ public:
                                           FC_HC_QUERY_STATUS,
                                           addr,
                                           4,
+                                          ICTransceiverDataBuffer());
+    }
+
+    static ICRobotTransceiverData* FillKeyCommand(uint8_t hostID,
+                                                  int cmd,
+                                                  int key,
+                                                  int act,
+                                                  int sum)
+    {
+        int addr = cmd;
+        int l;
+        switch(cmd)
+        {
+        case CMDPULSEA:
+        case CMDPULSEB:
+        {
+            addr |= (key & 0xFF) << 8;
+            l = key >> 8;
+        }
+            break;
+        case CMDTURNTEACH:
+        case CMDTURNAUTO:
+        case CMDTURNTCHSUB0:
+        case CMDTURNTCHSUB1:
+        case CMDTURNTCHSUB2:
+        case CMDTURNTCHSUB3:
+        case CMDTURNTCHSUB4:
+        case CMDTURNTCHSUB5:
+        case CMDTURNTCHSUB6:
+        case CMDTURNTCHSUB7:
+        case CMDTURNTCHSUB8:
+        {
+            addr |= (act & 0x00FF) << 8;
+            l = sum & 0x00FF;
+        }
+            break;
+        default:
+        {
+            addr |= (key & 0xFF) << 8;
+            l = 0;
+        }
+        }
+
+        return new ICRobotTransceiverData(hostID,
+                                          FC_HC_COMMAND,
+                                          addr,
+                                          l,
                                           ICTransceiverDataBuffer());
     }
 

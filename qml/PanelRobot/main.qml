@@ -2,6 +2,7 @@ import QtQuick 1.1
 import '.'
 import '../ICCustomElement'
 import "Theme.js" as Theme
+import "configs/Keymap.js" as Keymap
 
 Rectangle {
     id:mainWindow
@@ -39,6 +40,7 @@ Rectangle {
                         var page = buttonToPage(which);
                         if(page == null) continue
                         page.visible = true;
+                        page.focus = true;
                         continue;
                     }
                     if(c[i].hasOwnProperty("setChecked")){
@@ -46,6 +48,8 @@ Rectangle {
                         var page = buttonToPage(c[i]);
                         if(page == null) continue
                         page.visible = false;
+                        page.focus = false;
+
                     }
                 }
             }
@@ -117,7 +121,6 @@ Rectangle {
             source: "ManualPage.qml"
             anchors.fill: parent
             visible: false
-            focus: true
         }
     }
     Component.onCompleted: {
@@ -126,5 +129,29 @@ Rectangle {
     focus: true
     Keys.onPressed: {
         console.log("Main key press exec");
+        var key = event.key;
+        if(Keymap.isAxisKeyType(key)){
+            console.log(Keymap.getKeyMappedAction(key))
+            Keymap.setKeyPressed(key, true);
+            console.log(Keymap.isKeyPressed(key))
+
+        }
+
+    }
+    Keys.onReleased: {
+        console.log("Main key release exec");
+        var key = event.key;
+        if(Keymap.isAxisKeyType(key)){
+            Keymap.setKeyPressed(key, false);
+            console.log(Keymap.isKeyPressed(key))
+        }
+    }
+
+    Timer{
+        id:refreshTimer
+        interval: 50; running: true; repeat: true
+        onTriggered: {
+
+        }
     }
 }

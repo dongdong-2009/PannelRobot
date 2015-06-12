@@ -12,13 +12,13 @@ public:
     explicit PanelRobotController(QObject *parent = 0);
     void Init();
 
+    Q_INVOKABLE bool isInputOn(int index) const { return host_->IsInputOn(index);}
+    Q_INVOKABLE bool isOutputOn(int index) const { return host_->IsOutputOn(index);}
+    Q_INVOKABLE void SendKeyCommandToHost(int key);
+
 signals:
 
 public slots:
-
-    Q_INVOKABLE bool isInputOn(int index) const { return host_->IsInputOn(index);}
-    Q_INVOKABLE bool isOutputOn(int index) const { return host_->IsOutputOn(index);}
-
     void OnNeedToInitHost();
 
 private:

@@ -2,7 +2,7 @@
 #include <QVector>
 #include "icserialtransceiver.h"
 
-#define SYS_INIT_ADDR_HEADER 0xC000
+QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICVirtualHost(hostId, parent)
@@ -177,12 +177,12 @@ void ICRobotVirtualhost::CommunicateImpl()
     if(likely(recvRet_ && !recvFrame_->IsError()))
         //    if(1)
     {
-//        if(IsCommunicateDebug())
-//        {
-//            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-//            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-//            //            emit CommunicateErrChecked();
-//        }
+        //        if(IsCommunicateDebug())
+        //        {
+        //            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+        //            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
+        //            //            emit CommunicateErrChecked();
+        //        }
         if(recvFrame_->IsQuery())
         {
             statusDataTmp_ = recvFrame_->Data();
@@ -196,19 +196,24 @@ void ICRobotVirtualhost::CommunicateImpl()
         }
         queue_.DeQueue();
     }
+    if(!keyCommandList_.isEmpty())
+    {
+        AddCommunicationFrame(keyCommandList_.dequeue());
+        AddRefreshStatusCommand_();
+    }
     if(queue_.IsEmpty())
     {
-         AddRefreshStatusCommand_();
-//        return;
+        AddRefreshStatusCommand_();
+        //        return;
     }
     Transceiver()->Write(queue_.Head());
 }
 
 void ICRobotVirtualhost::AddRefreshStatusCommand_()
 {
-     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
-                                                                                           currentStatusGroup_);
-     AddCommunicationFrame(toSentFrame);
+    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
+                                                                                          currentStatusGroup_);
+    AddCommunicationFrame(toSentFrame);
 }
 
 void ICRobotVirtualhost::InitStatusMap_()
@@ -253,4 +258,14 @@ bool ICRobotVirtualhost::IsOutputOnImpl(int index) const
         return HostStatusValue(&c_r_0_16_23) & temp;
     }
     return false;
+}
+
+void ICRobotVirtualhost::SendKeyCommand(int cmd, int key, int act, int sum)
+{
+    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillKeyCommand(kHostID,
+                                                                                  cmd,
+                                                                                  key,
+                                                                                  act,
+                                                                                  sum);
+    keyCommandList_.append(toSentFrame);
 }

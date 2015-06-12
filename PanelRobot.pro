@@ -31,7 +31,9 @@ ICCustomElement.source = qml/ICCustomElement
 ICCustomElement.target = qml
 configs.source = qml/PanelRobot
 configs.target = qml
-DEPLOYMENTFOLDERS = folder_01 ICCustomElement configs
+utils.source = qml/utils
+utils.target = qml
+DEPLOYMENTFOLDERS = folder_01 ICCustomElement configs utils
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =

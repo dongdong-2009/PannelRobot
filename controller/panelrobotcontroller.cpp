@@ -73,3 +73,8 @@ void PanelRobotController::OnNeedToInitHost()
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->MachineConfigsBuffer());
 
 }
+
+void PanelRobotController::SendKeyCommandToHost(int key)
+{
+    ICRobotVirtualhost::SendKeyCommand(key);
+}

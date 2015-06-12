@@ -74,7 +74,7 @@ void PanelRobotController::OnNeedToInitHost()
 
 }
 
-void PanelRobotController::SendKeyCommandToHost(int key)
+void PanelRobotController::sendKeyCommandToHost(int key)
 {
     ICRobotVirtualhost::SendKeyCommand(key);
 }

@@ -128,13 +128,13 @@ Rectangle {
     }
     focus: true
     Keys.onPressed: {
-        console.log("Main key press exec");
         var key = event.key;
+        console.log("Main key press exec", key);
         if(Keymap.isAxisKeyType(key)){
-            console.log(Keymap.getKeyMappedAction(key))
             Keymap.setKeyPressed(key, true);
-            console.log(Keymap.isKeyPressed(key))
-
+        }
+        else if(Keymap.isCommandKeyType(key)){
+            panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
         }
 
     }
@@ -143,7 +143,6 @@ Rectangle {
         var key = event.key;
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, false);
-            console.log(Keymap.isKeyPressed(key))
         }
     }
 
@@ -151,7 +150,11 @@ Rectangle {
         id:refreshTimer
         interval: 50; running: true; repeat: true
         onTriggered: {
-
+            var pressedKeys = Keymap.pressedKeys();
+            for(var i = 0 ; i < pressedKeys.length; ++i){
+                console.log("Send command");
+                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
+            }
         }
     }
 }

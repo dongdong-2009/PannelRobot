@@ -14,7 +14,7 @@ public:
 
     Q_INVOKABLE bool isInputOn(int index) const { return host_->IsInputOn(index);}
     Q_INVOKABLE bool isOutputOn(int index) const { return host_->IsOutputOn(index);}
-    Q_INVOKABLE void SendKeyCommandToHost(int key);
+    Q_INVOKABLE void sendKeyCommandToHost(int key);
 
 signals:
 

@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "configs/yDefines.js" as YDefines
+import "configs/IODefines.js" as YDefines
 import "AppSettings.js" as UISettings
 import "Theme.js" as Theme
 import "."

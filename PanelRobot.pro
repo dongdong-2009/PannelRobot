@@ -77,6 +77,7 @@ message($${INSTALLS})
 OTHER_FILES += \
     qml/PanelRobot/Theme.js \
     qml/ICCustomElement/ICStackContainer.qml \
-    qml/PanelRobot/configs/yDefines.js \
-    defines/configs.csv
+    defines/configs.csv \
+    qml/PanelRobot/configs/IODefines.js \
+    qml/PanelRobot/IOComponent.qml
 

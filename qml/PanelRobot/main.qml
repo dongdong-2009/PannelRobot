@@ -13,7 +13,7 @@ Rectangle {
         width: mainWindow.width
         height: mainWindow.height * Theme.defaultTheme.MainWindow.topHeaderHeightProportion
         onSystemItemTriggered: console.log("system clicked")
-        onIoItemTriggered: console.log("IO clicked")
+        onIoItemTriggered: ioPage.visible = !ioPage.visible
     }
     Rectangle{
         id:middleHeader
@@ -123,6 +123,14 @@ Rectangle {
             visible: false
         }
     }
+    IOPage{
+        id:ioPage
+        width: parent.width
+        height: container.height - 78
+        visible: false
+        anchors.top: container.top
+    }
+
     Component.onCompleted: {
         console.log("main load finished!")
     }

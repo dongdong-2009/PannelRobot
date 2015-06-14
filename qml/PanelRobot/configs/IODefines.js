@@ -75,14 +75,14 @@ var xDefines = [
             new IODefine("X045", {"ch":"X045", "en":"X045"}),
             new IODefine("X046", {"ch":"X046", "en":"X046"}),
             new IODefine("X047", {"ch":"X047", "en":"X047"}),
-            new IODefine("X050", {"ch":"X040", "en":"X050"}),
-            new IODefine("X051", {"ch":"X041", "en":"X051"}),
-            new IODefine("X052", {"ch":"X042", "en":"X052"}),
-            new IODefine("X053", {"ch":"X043", "en":"X053"}),
-            new IODefine("X054", {"ch":"X044", "en":"X054"}),
-            new IODefine("X055", {"ch":"X045", "en":"X055"}),
-            new IODefine("X056", {"ch":"X046", "en":"X056"}),
-            new IODefine("X057", {"ch":"X047", "en":"X057"}),
+            new IODefine("X050", {"ch":"X050", "en":"X050"}),
+            new IODefine("X051", {"ch":"X051", "en":"X051"}),
+            new IODefine("X052", {"ch":"X052", "en":"X052"}),
+            new IODefine("X053", {"ch":"X053", "en":"X053"}),
+            new IODefine("X054", {"ch":"X054", "en":"X054"}),
+            new IODefine("X055", {"ch":"X055", "en":"X055"}),
+            new IODefine("X056", {"ch":"X056", "en":"X056"}),
+            new IODefine("X057", {"ch":"X057", "en":"X057"}),
 ];
 
 var euxDefines = [
@@ -122,3 +122,7 @@ var euyDefines = [
             new IODefine("EuY026", {"ch":"EuY026", "en":"EuY026"}),
             new IODefine("EuY027", {"ch":"EuY027", "en":"EuY027"}),
 ];
+
+var yChecksMap = {
+    "Y010": "X010"
+}

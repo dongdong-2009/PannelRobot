@@ -3,16 +3,26 @@ import QtQuick 1.1
 Rectangle {
     property variant ioDefines: []
     property int type: 0
+
+//    width: parent.width
+//    height: parent.height
     ListModel{
         id:model
     }
 
     ListView{
         id:view
+        width: parent.width
+        height: 400
+        spacing: 10
         model: model
+//        anchors.bottom: parent.bottom
+//        anchors.top: parent.top
         delegate: Row{
+            spacing: 10
             Text {
                 text: pointNum
+                anchors.verticalCenter: parent.verticalCenter
             }
             Rectangle{
                 id:led
@@ -24,6 +34,8 @@ Rectangle {
             }
             Text {
                 text: descr
+                anchors.verticalCenter: parent.verticalCenter
+
             }
         }
     }

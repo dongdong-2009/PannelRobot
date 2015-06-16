@@ -1,3 +1,5 @@
+.pragma library
+
 var IO_TYPE_INPUT  = 0;
 var IO_TYPE_OUTPUT = 1;
 
@@ -124,5 +126,16 @@ var euyDefines = [
 ];
 
 var yChecksMap = {
-    "Y010": "X010"
+    "Y010": "X010",
+    "Y011": "X011"
+}
+
+function yCheckedX(y){
+    if(!yChecksMap.hasOwnProperty(y)) return -1;
+    var xStr = yChecksMap[y];
+    for(var i = 0; xDefines.length; ++i){
+        if(xDefines[i].pointName == xStr)
+            return i;
+    }
+    return -1;
 }

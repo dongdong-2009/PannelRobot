@@ -3,21 +3,13 @@ import QtQuick 1.1
 Rectangle {
     property alias pointDescr: pointDescr.text
     property bool isOn: false
+    property alias hasMappedX: xLed.visible
     Row{
         spacing: 10
         Text {
             id: pointDescr
             text: qsTr("point")
             anchors.verticalCenter: parent.verticalCenter
-        }
-
-        Rectangle{
-            id:led
-            width: 32
-            height: 32
-            border.color: "black"
-            border.width: 2
-            color: "gray"
         }
 
         Rectangle{
@@ -31,14 +23,33 @@ Rectangle {
                 anchors.centerIn: parent
             }
         }
+
+        Rectangle{
+            id:yLed
+            width: 32
+            height: 32
+            border.color: "black"
+            border.width: 2
+            color: "gray"
+        }
+
+        Rectangle{
+            id:xLed
+            width: 32
+            height: 32
+            border.color: "black"
+            border.width: 2
+            color: "gray"
+            visible: hasMappedX
+        }
     }
 
     onIsOnChanged: {
         if(isOn){
-            led.color = "lightgreen" ;
+            yLed.color = "lightgreen" ;
             actionText.text = qsTr("Off");
         }else{
-            led.color = "gray"
+            yLed.color = "gray"
             actionText.text = qsTr("On");
         }
     }

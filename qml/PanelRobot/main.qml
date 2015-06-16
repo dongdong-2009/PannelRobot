@@ -55,7 +55,7 @@ Rectangle {
             }
 
             id:middleMenuContainer
-            spacing: 1
+            spacing: 2
             width: mainWindow.width
             height: mainWindow.height * Theme.defaultTheme.MainWindow.middleHeaderHeightProportion
             TabMenuItem{
@@ -110,6 +110,7 @@ Rectangle {
 //        height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
         anchors.top: middleHeader.bottom
         anchors.bottom: parent.bottom
+//        anchors.topMargin: 1
         focus: true
         Loader{
             id:settingPage

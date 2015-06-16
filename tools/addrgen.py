@@ -41,13 +41,14 @@ moldFncs = "const ICAddrWrapperList moldFncAddrs = ICAddrWrapperList()"
 sysConfigs = "const ICAddrWrapperList sysAddrs  = ICAddrWrapperList()"
 status = "const ICAddrWrapperList statusAddrs = ICAddrWrapperList()"
 for addr in addrWrappers:
-    addrTmp =  "{0}_{1}_{2}_{3}_{4}".format(addr.type,
+    addrTmp =  "{0}_{1}_{2}_{3}_{4}_{5}".format(addr.type,
                                             addr.perm,
                                             addr.startPos,
                                             addr.size,
+                                            addr.decimal,
                                             addr.baseAddr);
     toWriteH += "extern  const ICAddrWrapper  {0};    //< {1}\n".format(addrTmp, addr.name);
-    toWriteSource += "extern  const ICAddrWrapper  {0}_{1}_{2}_{3}_{4}({5},{6},{2},{3},{4},{7},{8});    //< {9}\n".format(addr.type,
+    toWriteSource += "extern  const ICAddrWrapper  {0}_{1}_{2}_{3}_{7}_{4}({5},{6},{2},{3},{4},{7},{8});    //< {9}\n".format(addr.type,
                                                                                                                         addr.perm,
                                                                                                                         addr.startPos,
                                                                                                                         addr.size,

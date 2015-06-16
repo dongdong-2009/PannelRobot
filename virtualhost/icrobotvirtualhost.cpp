@@ -229,17 +229,17 @@ bool ICRobotVirtualhost::IsInputOnImpl(int index) const
     if(index < 16)
     {
         quint32 temp = 1 << index;
-        return HostStatusValue(&c_r_0_16_20) & temp;
+        return HostStatusValue(&c_r_0_16_0_20) & temp;
     }
     else if(index < 32)
     {
         quint32 temp = 1 << (index - 16);
-        return HostStatusValue(&c_r_0_16_21) & temp;
+        return HostStatusValue(&c_r_0_16_0_21) & temp;
     }
     else
     {
         quint32 temp = 1 << (index - 32);
-        return HostStatusValue(&c_r_0_16_19) & temp;
+        return HostStatusValue(&c_r_0_16_0_19) & temp;
     }
     return false;
 
@@ -250,12 +250,12 @@ bool ICRobotVirtualhost::IsOutputOnImpl(int index) const
     if(index < 16)
     {
         quint32 temp = 1 << index;
-        return HostStatusValue(&c_r_0_16_22) & temp;
+        return HostStatusValue(&c_r_0_16_0_22) & temp;
     }
     else if(index < 32)
     {
         quint32 temp = 1 << (index - 16);
-        return HostStatusValue(&c_r_0_16_23) & temp;
+        return HostStatusValue(&c_r_0_16_0_23) & temp;
     }
     return false;
 }

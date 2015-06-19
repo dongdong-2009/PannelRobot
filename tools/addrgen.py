@@ -37,9 +37,9 @@ typeToInt = {"c":1, "m":2, "s":3}
 permToInt = {"r":1, "w":2, "rw":3}
 toWriteH = '#ifndef ICADDRWRAPPER_H\n#define ICADDRWRAPPER_H\n#include "icaddrwrapper.h"\n#include <QList>\n'
 toWriteSource = '#include "icaddrwrapper.h"\n'
-moldFncs = "const ICAddrWrapperList moldFncAddrs = ICAddrWrapperList()"
-sysConfigs = "const ICAddrWrapperList sysAddrs  = ICAddrWrapperList()"
-status = "const ICAddrWrapperList statusAddrs = ICAddrWrapperList()"
+moldFncs = "static ICAddrWrapperMapper CreateMoldFncMap(){ICAddrWrapperMapper ret;"
+sysConfigs = "static ICAddrWrapperMapper CreateSysConfigsMap(){ICAddrWrapperMapper ret;"
+status = "static ICAddrWrapperMapper CreateStatusConfigsMap(){ICAddrWrapperMapper ret;"
 for addr in addrWrappers:
     addrTmp =  "{0}_{1}_{2}_{3}_{4}_{5}".format(addr.type,
                                             addr.perm,
@@ -59,16 +59,17 @@ for addr in addrWrappers:
                                                                                                                         addr.unit,
                                                                                                                         addr.name)
     if addr.type == 'm':
-        moldFncs += "<<&{0}".format(addrTmp)
+        moldFncs += 'ret.insert("{0}", &{0});'.format(addrTmp)
     elif addr.type == 's':
-        sysConfigs += "<<&{0}".format(addrTmp)
+        sysConfigs += 'ret.insert("{0}", &{0});'.format(addrTmp)
     elif addr.type == 'c':
-        status += "<<&{0}".format(addrTmp)
+        status += 'ret.insert("{0}", &{0});'.format(addrTmp)
 
 
-toWriteH += moldFncs + ";\n"
-toWriteH += sysConfigs + ";\n"
-toWriteH += status + ";\n"
+#toWriteH += moldFncs + "return ret;}\nconst ICAddrWrapperMapper moldFncsMapper = CreateMoldFncMap();\n"
+#toWriteH += sysConfigs +  "return ret;}\nconst ICAddrWrapperMapper sysAddrsMapper = CreateSysConfigsMap();\n"
+#toWriteH += status +  "return ret;}\nconst ICAddrWrapperMapper statusAddrsMapper = CreateStatusConfigsMap();\n"
+#toWriteH += "inline static const ICAddrWrapper* MappedAddrWrapper(const QString& addr){ if(moldFncsMapper.contains(addr)){ return moldFncsMapper.value(addr);} if(sysAddrsMapper.contains(addr)){ return sysAddrsMapper.value(addr); } if(statusAddrsMapper.contains(addr)){ return statusAddrsMapper.value(addr);} return NULL;}\n"
 
 toWriteH += "#endif // ICADDRWRAPPER_H"
 open(os.path.join(args.outputdir, "icconfigsaddr.h"),'w').write(toWriteH)

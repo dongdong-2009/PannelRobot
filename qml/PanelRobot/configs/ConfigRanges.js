@@ -1,9 +1,12 @@
 .pragma library
 
+var MAX16 = 65536;
+
 var configRanges = {
     "m_rw_0_16_0_0":[-100, 100],
     "m_rw_0_16_0_1":[2, 200],
-    "m_rw_0_16_0_2":["m_rw_0_16_0_0", "m_rw_0_16_0_1"]
+    "m_rw_0_16_0_2":["m_rw_0_16_0_0", "m_rw_0_16_0_1"],
+    "m_rw_0_16_0_16":[0, MAX16]
 };
 
 var getConfigRange = function(config){

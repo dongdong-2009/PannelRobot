@@ -229,6 +229,13 @@ public:
 
     bool LoadMold(const QString& moldName);
 
+    quint32 MoldFnc(ICAddrWrapperCPTR addr)
+    {
+        return fncCache_.ConfigValue(addr);
+    }
+
+    void SetMoldFncs(const ICAddrWrapperValuePairList values);
+
 private:
     ICActionProgram ParseActionProgram_(const QString& content);
 

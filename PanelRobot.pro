@@ -1,5 +1,5 @@
 
-#QT       += core
+QT       += script
 #TEMPLATE = app
 VERSION = 10.0.0
 VERSTR = '\\"$${VERSION}\\"'

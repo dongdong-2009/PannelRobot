@@ -23,6 +23,19 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
+    onIsCheckedChanged: {
+        if(isChecked){
+            x -= 1;
+            y += 2;
+            width += 1;
+        }
+        else{
+            x += 1;
+            y -= 2;
+            width -= 1;
+        }
+    }
+
     MouseArea{
         anchors.fill: parent
         onClicked: {itemTriggered(); setChecked(true);}

@@ -17,10 +17,17 @@ Rectangle {
     signal menuItem5Triggered();
     signal menuItem6Triggered();
     signal menuItem7Triggered();
+    Rectangle{
+        width: parent.width
+        height: 1
+        color: "black"
+        anchors.bottom: contentLayout.top
+    }
     Column{
         spacing: 2
         width: parent.width
         height: parent.height
+        id:contentLayout
         Rectangle{
             id:contentContainer
             width: parent.width

@@ -3,6 +3,8 @@ import QtQuick 1.1
 FocusScope{
     property alias text: input.text
     property string bindConfig: ""
+    property alias unit: unit.text
+    property int alignMode: 0
     x: rectangle.x
     y: rectangle.y
     width: 80
@@ -53,14 +55,26 @@ FocusScope{
 
             id:input
             color: "black"
-            width: parent.width
+//            width: parent.width
             anchors.verticalCenter: parent.verticalCenter
+            anchors.rightMargin: 4
+            anchors.leftMargin: 4
+            anchors.right: {
+                if(alignMode == 1)
+                    return unit.left
+            }
             onFocusChanged: onFocus(input.focus)
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    input.focus = true;
-                }
+        }
+        Text {
+            id: unit
+            anchors.left: parent.right
+            anchors.leftMargin: 2
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                input.focus = true;
             }
         }
     }

@@ -21,96 +21,93 @@ Rectangle {
         height: mainWindow.height * Theme.defaultTheme.MainWindow.middleHeaderHeightProportion
         color: Theme.defaultTheme.BASE_BG
         anchors.top: mainHeader.bottom
-        Row{
-            function buttonToPage(which){
-                if(which == menuOperation) {
+//        z:1
+        function buttonToPage(which){
+            if(which == menuOperation) {
 
-                    return manualPage;
-                }
-                else if(which == menuSettings) {
-
-                    return settingPage;
-                }
-                else return null;
+                return manualPage;
             }
-            function onMenuItemTriggered(which){
-                var c = middleMenuContainer.children;
-                for(var i = 0; i < c.length;++i){
-                    if(c[i] == which){
-                        var page = buttonToPage(which);
-                        if(page == null) continue
-                        page.visible = true;
-                        page.focus = true;
-                        continue;
-                    }
-                    if(c[i].hasOwnProperty("setChecked")){
-                        c[i].setChecked(false);
-                        var page = buttonToPage(c[i]);
-                        if(page == null) continue
-                        page.visible = false;
-                        page.focus = false;
+            else if(which == menuSettings) {
 
-                    }
+                return settingPage;
+            }
+            else return null;
+        }
+        function onMenuItemTriggered(which){
+            var c = menuContainer.children;
+            for(var i = 0; i < c.length;++i){
+                if(c[i] == which){
+                    var page = buttonToPage(which);
+                    if(page == null) continue
+                    page.visible = true;
+                    page.focus = true;
+                    continue;
+                }
+                if(c[i].hasOwnProperty("setChecked")){
+//                    c[i].setChecked(false);
+                    var page = buttonToPage(c[i]);
+                    if(page == null) continue
+                    page.visible = false;
+                    page.focus = false;
+
                 }
             }
-
-            id:middleMenuContainer
-            spacing: 2
-            width: mainWindow.width
-            height: mainWindow.height * Theme.defaultTheme.MainWindow.middleHeaderHeightProportion
+        }
+        ICButtonGroup{
+            id:menuContainer
+            width: parent.width
+            height: parent.height
             TabMenuItem{
                 id:menuOperation
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
                 itemText: qsTr("Operation")
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                onItemTriggered: {
-                    middleMenuContainer.onMenuItemTriggered(menuOperation)
-                }
+
             }
             TabMenuItem{
                 id:menuAuto
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
                 itemText: qsTr("Auto")
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                onItemTriggered: middleMenuContainer.onMenuItemTriggered(menuAuto)
 
             }
             TabMenuItem{
                 id:menuSettings
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
                 itemText: qsTr("Settings")
-                isChecked: true
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                onItemTriggered: {
-                    middleMenuContainer.onMenuItemTriggered(menuSettings);
-                }
+            }
+            onButtonClickedItem: {
+                middleHeader.onMenuItemTriggered(item);
+            }
 
-            }
-            ICTextEdit{
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
-                height: parent.height
-                text: "0"
-                focus: false
-            }
-            ICTextEdit{
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
-                height: parent.height
-                text:qsTr("Sample")
-                focus: false
-            }
         }
+//        ICTextEdit{
+//            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
+//            height: parent.height
+//            text: "0"
+//            focus: false
+//        }
+//        ICTextEdit{
+//            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
+//            height: parent.height
+//            text:qsTr("Sample")
+//            focus: false
+//            anchors.left:
+//        }
+
     }
 
     Rectangle{
         id:container
         width: mainWindow.width
-//        height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
+        //        height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
         anchors.top: middleHeader.bottom
         anchors.bottom: parent.bottom
-//        anchors.topMargin: 1
+        //        anchors.topMargin: 1
         focus: true
         Loader{
             id:settingPage
@@ -133,6 +130,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        menuSettings.setChecked(true);
         console.log("main load finished!")
     }
     focus: true

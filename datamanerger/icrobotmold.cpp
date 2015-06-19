@@ -90,3 +90,17 @@ bool ICRobotMold::LoadMold(const QString &moldName)
 
     return true;
 }
+
+void ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePairList values)
+{
+    QList<QPair<int, quint32> >baseValues;
+    ICAddrWrapperValuePair tmp;
+    for(int i = 0; i != values.size(); ++i)
+    {
+        tmp = values.at(i);
+        fncCache_.UpdateConfigValue(tmp.first, tmp.second);
+
+        baseValues.append(qMakePair(tmp.first->BaseAddr(), fncCache_.OriginConfigValue(tmp.first)));
+    }
+    ICDALHelper::UpdateMoldFncValues(baseValues, moldName_);
+}

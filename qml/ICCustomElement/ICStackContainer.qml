@@ -17,6 +17,10 @@ Rectangle {
         currentIndex = index;
     }
 
+    function currentPage(){
+        return pages[currentIndex];
+    }
+
     onCurrentIndexChanged: {
         for(var i = 0; i < pages.length; ++i){
             pages[i].visible = false;

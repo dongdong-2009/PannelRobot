@@ -28,6 +28,11 @@ public:
         return configCache_.SequenceDataList();
     }
 
+    quint32 MachineConfig(ICAddrWrapperCPTR addr)
+    {
+        return configCache_.ConfigValue(addr);
+    }
+
 private:
     static ICMachineConfigPTR current_;
     QString configName_;

@@ -7,6 +7,8 @@
 #include <QVector>
 #include "icconfigsaddr.h"
 #include "icparameterscache.h"
+#include "icdalhelper.h"
+
 
 class ICMoldItem
 {
@@ -209,6 +211,11 @@ public:
     static void SetCurrentMold(ICRobotMold* mold)
     {
         currentMold_ = ICRobotMoldPTR(mold);
+    }
+
+    static ICRecordInfos RecordInfos()
+    {
+        return ICDALHelper::RecordTableInfos();
     }
 
     QVector<quint32> ProgramToDataBuffer(int program) const

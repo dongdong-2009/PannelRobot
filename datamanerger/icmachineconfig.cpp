@@ -16,3 +16,17 @@ bool ICMachineConfig::LoadMachineConfig(const QString &name)
     }
     return true;
 }
+
+void ICMachineConfig::SetMachineConfigs(const ICAddrWrapperValuePairList values)
+{
+    QList<QPair<int, quint32> >baseValues;
+    ICAddrWrapperValuePair tmp;
+    for(int i = 0; i != values.size(); ++i)
+    {
+        tmp = values.at(i);
+        configCache_.UpdateConfigValue(tmp.first, tmp.second);
+
+        baseValues.append(qMakePair(tmp.first->BaseAddr(), configCache_.OriginConfigValue(tmp.first)));
+    }
+    ICDALHelper::UpdateMachineConfigValues(baseValues, configName_);
+}

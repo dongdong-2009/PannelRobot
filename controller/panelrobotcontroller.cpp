@@ -124,4 +124,30 @@ void PanelRobotController::syncConfigs()
         moldFncModifyCache_.clear();
         ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
     }
+    else if(!machineConfigModifyCache_.isEmpty())
+    {
+        ICMachineConfigPTR machineConfig = ICMachineConfig::CurrentMachineConfig();
+        machineConfig->SetMachineConfigs(machineConfigModifyCache_);
+        machineConfigModifyCache_.clear();
+        ICRobotVirtualhost::InitMachineConfig(host_, machineConfig->MachineConfigsBuffer());
+    }
+}
+
+QList<QObject*> PanelRobotController::records()
+{
+    if(!recordDatas_.isEmpty())
+    {
+        qDeleteAll(recordDatas_);
+        recordDatas_.clear();
+    }
+    recordDatas_ = ICRobotMold::RecordInfos();
+    return recordDatas_;
+}
+PanelRobotController::~PanelRobotController()
+{
+    if(!recordDatas_.isEmpty())
+    {
+        qDeleteAll(recordDatas_);
+        recordDatas_.clear();
+    }
 }

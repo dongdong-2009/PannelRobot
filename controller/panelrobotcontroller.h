@@ -10,6 +10,7 @@ class PanelRobotController : public QObject
     Q_OBJECT
 public:
     explicit PanelRobotController(QObject *parent = 0);
+    ~PanelRobotController();
     void Init();
 
     Q_INVOKABLE bool isInputOn(int index) const { return host_->IsInputOn(index);}
@@ -18,6 +19,7 @@ public:
     Q_INVOKABLE quint32 getConfigValue(const QString& addr);
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
     Q_INVOKABLE void syncConfigs();
+    Q_INVOKABLE QList<QObject*> records();
 
 signals:
 
@@ -41,6 +43,7 @@ private:
     bool isMachineConfigsChanged_;
     ICAddrWrapperValuePairList moldFncModifyCache_;
     ICAddrWrapperValuePairList machineConfigModifyCache_;
+    QList<QObject*> recordDatas_;
 
 };
 

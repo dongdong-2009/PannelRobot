@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "Theme.js" as Theme
 import "."
+import "../ICCustomElement/"
 
 
 Rectangle {
@@ -11,8 +12,8 @@ Rectangle {
     property int mode: 0
 
 //    signal calculatorItemTriggered()
-    signal ioItemTriggered()
-    signal systemItemTriggered()
+    signal ioItemStatusChanged(bool isChecked)
+    signal recordItemStatusChanged(bool isChecked)
 //    signal lan
 
     Image {
@@ -59,7 +60,7 @@ Rectangle {
             width: menuItemWidth
             height:  menuItemHeight
             itemText: qsTr("I/O")
-            onItemTriggered: ioItemTriggered()
+            onIsCheckedChanged: ioItemStatusChanged(isChecked)
 
         }
         TopMenuItem{
@@ -69,11 +70,11 @@ Rectangle {
             itemText: qsTr("Language")
         }
         TopMenuItem{
-            id: system
+            id: record
             width: menuItemWidth
             height:  menuItemHeight
-            itemText: qsTr("System")
-            onItemTriggered: systemItemTriggered()
+            itemText: qsTr("Records")
+            onIsCheckedChanged: recordItemStatusChanged(isChecked)
         }
         TopMenuItem{
             id: manual
@@ -81,5 +82,13 @@ Rectangle {
             height:  menuItemHeight
             itemText: qsTr("Manual")
         }
+    }
+    ICButtonGroup{
+        id:buttonGroup
+        layoutMode: 2
+    }
+    Component.onCompleted: {
+        buttonGroup.addButton(io);
+        buttonGroup.addButton(record);
     }
 }

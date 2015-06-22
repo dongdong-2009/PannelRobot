@@ -1,3 +1,4 @@
+.pragma library
 
 var Theme = function(){
     this.BASE_BG = "#D0D0D0"

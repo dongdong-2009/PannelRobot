@@ -5,10 +5,15 @@ FocusScope{
     property string bindConfig: ""
     property alias unit: unit.text
     property int alignMode: 0
+    property bool isNumberOnly: true
     x: rectangle.x
     y: rectangle.y
     width: 80
     height: 24
+
+    function isEmpty(){
+        return text.length == 0;
+    }
 
     Rectangle {
         id:rectangle
@@ -25,10 +30,11 @@ FocusScope{
                                                       p.y,
                                                       input.width,
                                                       input.height,
+                                                      isNumberOnly,
                                                       bindConfig,
                                                       true);
                     }else{
-                        virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height);
+                        virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
                     }
                     rectangle.color = "green";
                     virtualKeyboard.commit.connect(onCommit);

@@ -33,6 +33,8 @@ public:
         return configCache_.ConfigValue(addr);
     }
 
+    void SetMachineConfigs(const ICAddrWrapperValuePairList values);
+
 private:
     static ICMachineConfigPTR current_;
     QString configName_;

@@ -1,4 +1,5 @@
 .pragma library
+
 var AppSettings = function(){
 
 }

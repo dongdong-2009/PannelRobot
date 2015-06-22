@@ -1,6 +1,5 @@
 #include "icrobotmold.h"
 #include <QStringList>
-#include "icdalhelper.h"
 #include <QDebug>
 
 ICRobotMoldPTR ICRobotMold::currentMold_;

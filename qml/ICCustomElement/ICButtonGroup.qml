@@ -16,13 +16,14 @@ Rectangle {
     function onIsCheckedChanged(index, isCheck){
         if(isCheck){
 //            console.log(index);
-            for(var i = 0 ; i < children.length; ++i){
+            var btns = pData.buttons;
+            for(var i = 0 ; i < btns.length; ++i){
                 if(i !== index)
-                    children[i].setChecked(false);
+                    btns[i].setChecked(false);
             }
 //            children[index].setChecked(true);
             buttonClickedID(index);
-            buttonClickedItem(children[index]);
+            buttonClickedItem(btns[index]);
         }
     }
 
@@ -36,9 +37,10 @@ Rectangle {
 //            console.log(pData.startPos,button.width);
             pData.startPos += (button.width + spacing);
         }
+
         var fun = function(){
             var index = l;
-            onIsCheckedChanged(index, children[index].isChecked)
+            onIsCheckedChanged(index, btns[index].isChecked)
         }
 
         button.isCheckedChanged.connect(fun);

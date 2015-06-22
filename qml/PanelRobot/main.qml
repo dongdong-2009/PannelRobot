@@ -12,8 +12,8 @@ Rectangle {
         id:mainHeader
         width: mainWindow.width
         height: mainWindow.height * Theme.defaultTheme.MainWindow.topHeaderHeightProportion
-        onSystemItemTriggered: console.log("system clicked")
-        onIoItemTriggered: ioPage.visible = !ioPage.visible
+        onRecordItemStatusChanged: recordManagementPage.visible = isChecked
+        onIoItemStatusChanged: ioPage.visible = isChecked
     }
     Rectangle{
         id:middleHeader
@@ -123,6 +123,13 @@ Rectangle {
     }
     IOPage{
         id:ioPage
+        width: parent.width
+        height: container.height - 78
+        visible: false
+        anchors.top: container.top
+    }
+    RecordManagementPage{
+        id:recordManagementPage
         width: parent.width
         height: container.height - 78
         visible: false

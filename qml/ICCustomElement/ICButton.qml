@@ -6,6 +6,8 @@ Rectangle {
     signal buttonClicked()
     width: 100
     height: 32
+    border.width: 1
+    border.color: "gray"
     Text {
         id: text
         text: "ICButton"
@@ -13,6 +15,15 @@ Rectangle {
     }
     MouseArea{
         anchors.fill: parent
-        onClicked: {buttonClicked()}
+        onPressed: {
+            parent.color = "lightsteelblue";
+        }
+        onReleased: {
+            parent.color = "white";
+        }
+
+        onClicked: {
+            buttonClicked()
+        }
     }
 }

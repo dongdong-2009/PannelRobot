@@ -48,6 +48,8 @@ SOURCES += main.cpp
 include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 include(vendor/IndustrialSystemFramework/ICCore/ICCore.pri)
 include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
+include(vendor/IndustrialSystemFramework/QJson/QJson.pri)
+
 include(virtualhost/virtualhost.pri)
 include(datamanerger/datamanerger.pri)
 include(controller/controller.pri)
@@ -79,5 +81,6 @@ OTHER_FILES += \
     qml/ICCustomElement/ICStackContainer.qml \
     defines/configs.csv \
     qml/PanelRobot/configs/IODefines.js \
-    qml/PanelRobot/IOComponent.qml
+    qml/PanelRobot/IOComponent.qml \
+    qml/PanelRobot/configs/ConfigDefines.js
 

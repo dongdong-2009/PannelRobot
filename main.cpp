@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     PanelRobotController robotController;
     robotController.Init();
-    ICVirtualKeyboard virtualKeyboard;
+    ICVirtualKeyboard virtualKeyboard(ICRobotRangeGetter);
 
     QtQuick1ApplicationViewer viewer;
     viewer.rootContext()->setContextProperty("panelRobotController", &robotController);

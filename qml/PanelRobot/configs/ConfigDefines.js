@@ -17,3 +17,11 @@ var getConfigRange = function(config){
     var items = config.split("_");
     return {"min":r[0], "max":r[1], "decimal":parseInt(items[4])};
 };
+
+var fncDefaultValues = {
+    "m_rw_0_16_0_0":10,
+    "m_rw_0_16_0_1":20,
+    "m_rw_0_16_0_2":30,
+    "m_rw_0_16_0_16":40,
+    "m_rw_0_16_1_22":10.5
+};

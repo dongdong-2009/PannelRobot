@@ -1,6 +1,8 @@
 import QtQuick 1.1
 
 import "Theme.js" as Theme
+import "Teach.js" as Teach
+import com.szhc.axis 1.0
 
 import "../ICCustomElement"
 
@@ -91,7 +93,13 @@ Rectangle {
             onButtonClicked: {
                 if(newName.isEmpty()){
                     tipDialog.show(qsTr("Please Enter the new record name!"));
+                    return;
                 }
+                var ret = JSON.parse(panelRobotController.newRecord(newName.text,
+                                               Teach.generateInitProgram(panelRobotController.axisDefine())));
+//                console.log(ret);
+                recordsModel.append({"name":ret.recordName,
+                                    "createDatetime":ret.createDatetime});
             }
         }
         ICButton{
@@ -119,7 +127,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        var records = panelRobotController.records();
+        var records = JSON.parse(panelRobotController.records());
         for(var i = 0; i < records.length; ++i){
             recordsModel.append({"name":records[i].recordName,
                                 "createDatetime":records[i].createDatetime});

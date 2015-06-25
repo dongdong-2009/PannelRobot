@@ -5,6 +5,15 @@
 #include "icmachineconfig.h"
 //#include "icdalhelper.h"
 #include "icconfigsaddr.h"
+#include "parser.h"
+
+ICRange ICRobotRangeGetter(const QString& addrName)
+{
+    QScriptValueList args;
+    args<<addrName;
+    QMap<QString, QVariant> ranges = getConfigRange_->call(QScriptValue(),args).toVariant().toMap();
+    return ICRange(ranges.value("min").toDouble(),ranges.value("max").toDouble(),ranges.value("decimal").toInt());
+}
 
 PanelRobotController::PanelRobotController(QObject *parent) :
     QObject(parent)
@@ -15,6 +24,44 @@ PanelRobotController::PanelRobotController(QObject *parent) :
             SLOT(OnNeedToInitHost()));
     isMoldFncsChanged_ = false;
     isMachineConfigsChanged_ = false;
+    axisDefine_ = new ICAxisDefine();
+    qmlRegisterType<ICAxisDefine>("com.szhc.axis", 1, 0, "ICAxisDefine");
+
+    // get ConfigDefines from js
+#ifdef Q_WS_QWS
+    QString scriptFileName("qml/PanelRobot/configs/ConfigDefines.js");
+#else
+    QString scriptFileName("../qml/PanelRobot/configs/ConfigDefines.js");
+#endif
+    QFile scriptFile(scriptFileName);
+    scriptFile.open(QIODevice::ReadOnly);
+    QString scriptContent = scriptFile.readAll();
+    scriptFile.close();
+    scriptContent = scriptContent.remove(0, sizeof(".pragma library"));
+    engine_.evaluate(scriptContent, scriptFileName);
+    qDebug()<<engine_.hasUncaughtException();
+    configRangeGetter_ = engine_.evaluate("getConfigRange");
+    getConfigRange_ = &configRangeGetter_;
+    ICAddrWrapperList moldAddrs = ICAddrWrapper::MoldAddrs();
+    ICParametersCache pc;
+    for(int i = 0; i != moldAddrs.size(); ++i)
+    {
+        pc.UpdateConfigValue(moldAddrs.at(i), 0);
+    }
+    QVariantMap fncDefaultValues = engine_.evaluate("fncDefaultValues").toVariant().toMap();
+    QVariantMap::const_iterator p = fncDefaultValues.constBegin();
+    while(p != fncDefaultValues.constEnd())
+    {
+        ICAddrWrapperCPTR cptr = ICAddrWrapper::AddrStringToAddr(p.key());
+        if(cptr == NULL)
+        {
+            ++p;
+            continue;
+        }
+        pc.UpdateConfigValue(cptr, static_cast<quint32>(p.value().toDouble() * qPow(10, cptr->Decimal())));
+        ++p;
+    }
+    baseFncs_ = pc.ToPairList();
 }
 
 void PanelRobotController::Init()
@@ -133,21 +180,35 @@ void PanelRobotController::syncConfigs()
     }
 }
 
-QList<QObject*> PanelRobotController::records()
+QString PanelRobotController::records()
 {
-    if(!recordDatas_.isEmpty())
+    QString content;
+    ICRecordInfos infos = ICRobotMold::RecordInfos();
+    for(int i = 0; i != infos.size(); ++i )
     {
-        qDeleteAll(recordDatas_);
-        recordDatas_.clear();
+        content += infos.at(i).toJSON() + ",";
     }
-    recordDatas_ = ICRobotMold::RecordInfos();
-    return recordDatas_;
+    content.chop(1);
+    QString ret = QString("[%1]").arg(content);
+    return ret;
 }
 PanelRobotController::~PanelRobotController()
 {
-    if(!recordDatas_.isEmpty())
-    {
-        qDeleteAll(recordDatas_);
-        recordDatas_.clear();
-    }
+    delete axisDefine_;
 }
+
+ICAxisDefine* PanelRobotController::axisDefine()
+{
+    ICMachineConfigPTR mptr = ICMachineConfig::CurrentMachineConfig();
+    axisDefine_->setS1Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_0_2_0_83)));
+    axisDefine_->setS2Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_2_2_0_83)));
+    axisDefine_->setS3Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_4_2_0_83)));
+    axisDefine_->setS4Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_6_2_0_83)));
+    axisDefine_->setS5Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_8_2_0_83)));
+    axisDefine_->setS6Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_10_2_0_83)));
+    axisDefine_->setS7Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_12_2_0_83)));
+    axisDefine_->setS8Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_14_2_0_83)));
+    return axisDefine_;
+
+}
+

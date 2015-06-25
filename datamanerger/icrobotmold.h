@@ -9,6 +9,31 @@
 #include "icparameterscache.h"
 #include "icdalhelper.h"
 
+class IRobotMoldError:public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(int errno READ errno WRITE setErrno NOTIFY errnoChanged)
+    Q_PROPERTY(QString errString READ errString WRITE setErrString NOTIFY errStringChanged)
+
+signals:
+    void errnoChanged(int);
+    void errStringChanged(QString);
+public:
+    IRobotMoldError(int errno, const QString& errStr):
+        errno_(errno),
+        errStr_(errStr){}
+
+    int errno() const { return errno_;}
+    void setErrno(int errno) { errno_ = errno;}
+
+    QString errString() const { return errStr_;}
+    void setErrString(const QString& errStr) { errStr_ = errStr;}
+
+private:
+    int errno_;
+    QString errStr_;
+};
+
 
 class ICMoldItem
 {
@@ -90,7 +115,16 @@ public:
 
 
     uint Sum() const { return sum_;}  //
-    uint ReSum() const;
+    uint ReSum() const
+    {
+        int sum = seq_ + num_ + subNum_ + gmVal_ + pos_ + ifVal_ + ifPos_ + sVal_ + dVal_;
+        while(sum & 0xFF00)
+        {
+            sum = ((sum >> 8) & 0x00FF) + (sum & 0x00FF);
+        }
+        sum_ = sum;
+        return sum_;
+    }
 
     void SetValue(uint seq,
                   uint num,
@@ -114,7 +148,19 @@ public:
         dVal_ = dVal;
         sum_ = sum;
     }
-    QByteArray ToString() const;
+    QByteArray ToString() const
+    {
+        QByteArray ret;
+
+        QString tmp = (QString().sprintf("%u %u %u %u %u %u %u %u %u %u ",
+                                         seq_, num_, subNum_, gmVal_, pos_, ifVal_, ifPos_, sVal_, dVal_, sum_));
+
+        tmp += QString::number(flag_);
+        tmp += " ";
+        tmp += comment_;
+        ret = tmp.toUtf8();
+        return ret;
+    }
     QVector<quint32> ToDataBuffer() const
     {
         QVector<quint32> ret;
@@ -203,6 +249,51 @@ public:
 
     };
 
+    enum
+    {
+        GC          =0,		//0
+        GX,			//1
+        GY,			//2
+        GZ,			//3
+        GP,			//4
+        GQ,			//5
+        GA,			//6
+        GB,			//7
+
+        ACTMAINUP,		//8
+        ACTMAINDOWN,	//9
+        ACTMAINFORWARD,	//10
+        ACTMAINBACKWARD,//11
+
+        ACTPOSEHORI,	//12   水平1
+        ACTPOSEVERT,	//13   垂直1
+        ACTVICEUP,		//14
+        ACTVICEDOWN,	//15
+
+        ACTVICEFORWARD,	//16
+        ACTVICEBACKWARD,//17
+        ACTGOOUT,		//18
+        ACTCOMEIN,		//19
+
+        ACT_PoseHori2,		//20  水平2
+        ACT_PoseVert2,   //21  垂直2
+
+        ACT_GASUB,
+        ACT_GAADD,
+        ACT_GBSUB,
+        ACT_GBADD,
+        ACT_GCSUB,
+        ACT_GCADD,
+
+        ACT_OTHER = 27,
+        ACTCHECKINPUT=28,
+        ACT_WaitMoldOpened = 29,
+        ACT_Cut,
+        ACTParallel = 31,
+        ACTEND,
+        ACTCOMMENT
+    };
+
     ICRobotMold();
     static ICRobotMoldPTR CurrentMold()
     {
@@ -216,6 +307,26 @@ public:
     static ICRecordInfos RecordInfos()
     {
         return ICDALHelper::RecordTableInfos();
+    }
+
+    static RecordDataObject NewRecord(const QString& name,
+                                      const QString& initProgram,
+                                      const QList<QPair<quint32, quint32> >& values);
+
+
+    static ICActionProgram Complie(const QString& programText);
+
+    static QString ActionProgramToStore(const ICActionProgram& program);
+
+    static void AddCheckSumToAddrValuePairList(QList<QPair<quint32, quint32> >& values)
+    {
+        quint32 checkSum = 0;
+        for(int i = 0; i != values.size(); ++i)
+        {
+            checkSum += values.at(i).second;
+        }
+        checkSum = (-checkSum) & 0xFFFF;
+        values.append(qMakePair(values.last().first + 1, checkSum));
     }
 
     QVector<quint32> ProgramToDataBuffer(int program) const
@@ -251,7 +362,6 @@ private:
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;
-
 };
 
 #endif // ICROBOTMOLD_H

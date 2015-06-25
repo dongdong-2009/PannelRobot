@@ -109,6 +109,12 @@ Rectangle {
         ICButton{
             id:delRecord
             text: qsTr("Del")
+            onButtonClicked: {
+                if(recordsView.currentIndex < 0) return;
+                if(panelRobotController.deleteRecord(selectName.text)){
+                    recordsModel.remove(recordsView.currentIndex);
+                }
+            }
         }
         ICButton{
             id:importRecord

@@ -313,6 +313,11 @@ public:
                                       const QString& initProgram,
                                       const QList<QPair<int, quint32> >& values);
 
+    static bool DeleteRecord(const QString& name)
+    {
+        return ICDALHelper::DeleteMold(name);
+    }
+
 
     static ICActionProgram Complie(const QString& programText);
 

@@ -201,7 +201,7 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v, int subNum =
     ICMoldItem item;
     item.SetAction(v.value("action").toInt());
     item.SetNum(step);
-    item.SetSubNum(255);
+    item.SetSubNum(subNum);
     item.SetSeq(programSeq++);
     ActionCompiler cc = actionToCompilerMap.value(item.Action(), SimpleActionCompiler);
     cc(item, &v);

@@ -125,6 +125,10 @@ public:
     {
         return ICRobotMold::NewRecord(name, initProgram, baseFncs_).toJSON();
     }
+    Q_INVOKABLE bool deleteRecord(const QString& name)
+    {
+        return ICRobotMold::DeleteRecord(name);
+    }
 
 
 signals:

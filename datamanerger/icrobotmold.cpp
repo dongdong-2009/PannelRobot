@@ -185,6 +185,12 @@ void ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePairList values)
 
         baseValues.append(qMakePair(tmp.first->BaseAddr(), fncCache_.OriginConfigValue(tmp.first)));
     }
+    QList<QPair<int, quint32> > fncs = fncCache_.ToPairList();
+    fncs.pop_back();
+    AddCheckSumToAddrValuePairList(fncs);
+    QPair<int, quint32> checkSum = fncs.last();
+    baseValues.append(checkSum);
+    fncCache_.UpdateConfigValue(checkSum.first, checkSum.second);
     ICDALHelper::UpdateMoldFncValues(baseValues, moldName_);
 }
 
@@ -234,7 +240,7 @@ ICActionProgram ICRobotMold::Complie(const QString &programText)
 
 }
 
-RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<quint32, quint32> > &values)
+RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values)
 {
     if(name.isEmpty()) return RecordDataObject();
     if(ICDALHelper::IsExistsRecordTable(name))
@@ -249,7 +255,7 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     {
         programList.append("0 0 255 32 0 0 0 0 0  32");
     }
-    QList<QPair<quint32, quint32> > fncs = values;
+    QList<QPair<int, quint32> > fncs = values;
     AddCheckSumToAddrValuePairList(fncs);
     QString dt = ICDALHelper::NewMold(name, programList, fncs);
     return RecordDataObject(name, dt);

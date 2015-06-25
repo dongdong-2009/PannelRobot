@@ -150,7 +150,7 @@ private:
     ICAddrWrapperValuePairList moldFncModifyCache_;
     ICAddrWrapperValuePairList machineConfigModifyCache_;
     ICAxisDefine *axisDefine_;
-    QList<QPair<quint32, quint32> > baseFncs_;
+    QList<QPair<int, quint32> > baseFncs_;
     QScriptEngine engine_;
     QScriptValue configRangeGetter_;
 };

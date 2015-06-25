@@ -311,14 +311,14 @@ public:
 
     static RecordDataObject NewRecord(const QString& name,
                                       const QString& initProgram,
-                                      const QList<QPair<quint32, quint32> >& values);
+                                      const QList<QPair<int, quint32> >& values);
 
 
     static ICActionProgram Complie(const QString& programText);
 
     static QString ActionProgramToStore(const ICActionProgram& program);
 
-    static void AddCheckSumToAddrValuePairList(QList<QPair<quint32, quint32> >& values)
+    static void AddCheckSumToAddrValuePairList(QList<QPair<int, quint32> >& values)
     {
         quint32 checkSum = 0;
         for(int i = 0; i != values.size(); ++i)

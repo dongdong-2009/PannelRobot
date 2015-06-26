@@ -95,7 +95,6 @@ void PanelRobotController::InitMold_()
     ICRobotMold* mold = new ICRobotMold();
     mold->LoadMold(as.CurrentMoldConfig());
     ICRobotMold::SetCurrentMold(mold);
-
 }
 
 void PanelRobotController::InitMachineConfig_()
@@ -212,3 +211,7 @@ ICAxisDefine* PanelRobotController::axisDefine()
 
 }
 
+void PanelRobotController::OnConfigRebase(QString)
+{
+    emit needToUpdateConfigs();
+}

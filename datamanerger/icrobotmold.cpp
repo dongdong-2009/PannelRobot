@@ -153,6 +153,8 @@ ICActionProgram ICRobotMold::ParseActionProgram_(const QString &content)
 
 bool ICRobotMold::LoadMold(const QString &moldName)
 {
+    if(moldName == moldName_)
+        return false;
     QStringList programs = ICDALHelper::MoldProgramContent(moldName);
     if(programs.size() != 9) return false;
     moldName_ = moldName;
@@ -170,7 +172,6 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
     }
-
     return true;
 }
 

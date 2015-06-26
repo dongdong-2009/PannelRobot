@@ -13,26 +13,43 @@ Rectangle {
         panelRobotController.setConfigValue(config.configAddr, config.configValue);
     }
 
-    onVisibleChanged: {
-        if(!pData.isLoaded) return;
+    function needToUpdateConfigs(){
         var count = pData.configs.length;
         var config;
         var handlers = Impl.handlers;
-        var i;
-        if(visible){
-            for(i = 0; i < count; ++i){
-                config = pData.configs[i];
-                config.configValue = panelRobotController.getConfigValue(config.configAddr);
-                config.configValueChanged.connect(handlers[i]);
-            }
+        for(var i = 0; i < count; ++i){
+            config = pData.configs[i];
+            config.configValueChanged.disconnect(handlers[i]);
+            config.configValue = panelRobotController.getConfigValue(config.configAddr);
+            config.configValueChanged.connect(handlers[i]);
         }
-        else{
-            for(i = 0; i < count; ++i){
-                config = pData.configs[i];
-                config.configValueChanged.disconnect(handlers[i]);
-            }
+    }
+
+    onVisibleChanged: {
+        if(!visible){
             panelRobotController.syncConfigs();
         }
+
+//        console.log(visible)
+//        if(!pData.isLoaded) return;
+//        var count = pData.configs.length;
+//        var config;
+//        var handlers = Impl.handlers;
+//        var i;
+//        if(visible){
+//            for(i = 0; i < count; ++i){
+//                config = pData.configs[i];
+//                config.configValue = panelRobotController.getConfigValue(config.configAddr);
+//                config.configValueChanged.connect(handlers[i]);
+//            }
+//        }
+//        else{
+//            for(i = 0; i < count; ++i){
+//                config = pData.configs[i];
+//                config.configValueChanged.disconnect(handlers[i]);
+//            }
+//            panelRobotController.syncConfigs();
+//        }
     }
     Component.onCompleted: {
         var count = children.length;
@@ -48,10 +65,13 @@ Rectangle {
                     onConfigValueChanged(l);
                 };
                 Impl.handlers.push(fun);
+                config.configValueChanged.connect(fun);
             }
         }
         pData.configs = cs;
         pData.isLoaded = true;
+        panelRobotController.needToUpdateConfigs.connect(needToUpdateConfigs)
+        needToUpdateConfigs();
     }
 
 }

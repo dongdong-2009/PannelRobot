@@ -129,12 +129,22 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
+    Q_INVOKABLE bool loadRecord(const QString& name)
+    {
+        ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
+        bool ret =  mold->LoadMold(name);
+        if(ret) emit needToUpdateConfigs();
+        return ret;
+    }
 
 
 signals:
-
+//    void currentMoldChanged(QString);
+//    void currentMachineConfigChanged(QString);
+    void needToUpdateConfigs();
 public slots:
     void OnNeedToInitHost();
+    void OnConfigRebase(QString);
 
 private:
     void InitDatabase_();

@@ -86,6 +86,9 @@ Rectangle {
         ICButton{
             id:loadRecord
             text: qsTr("Load")
+            onButtonClicked: {
+                panelRobotController.loadRecord(selectName.text);
+            }
         }
         ICButton{
             id:newRecord

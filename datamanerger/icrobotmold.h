@@ -321,6 +321,8 @@ public:
 
     static ICActionProgram Complie(const QString& programText);
 
+    static QString Decompile(const QList<ICActionProgram> &programs);
+
     static QString ActionProgramToStore(const ICActionProgram& program);
 
     static void AddCheckSumToAddrValuePairList(QList<QPair<int, quint32> >& values)
@@ -364,6 +366,7 @@ private:
 
 private:
     QList<ICActionProgram> programs_;
+    QString programsCode_;
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;

@@ -1,5 +1,8 @@
 .pragma library
 
+Qt.include("../utils/HashTable.js")
+Qt.include("../utils/stringhelper.js")
+
 var actHelper = 0;
 var actions = {
 
@@ -104,4 +107,176 @@ var generateInitProgram = function(axisDefine){
 
     return JSON.stringify([synsActions, [generateWaitAction(1)], [generteEndAction()]]);
 
+}
+
+var gsActionToStringHelper = function(actionStr, actionObject){
+    var ret =  actionStr + ":" +  actionObject.pos + " " +
+            qsTr("Speed:") + actionObject.speed + " " +
+            qsTr("Delay:") + actionObject.delay;
+    if(actionObject.isBadEn)
+        ret += " " + qsTr("Bad En");
+    if(actionObject.isEarlyEnd){
+        ret += " " + qsTr("Early End Pos:") + actionObject.earlyEndPos;
+    }
+    return ret;
+}
+
+var gs1ToStringHandler = function(actionObject){
+
+}
+
+var gs1ToStringHandler = function(actionObject){
+
+}
+
+var gs1ToStringHandler = function(actionObject){
+
+}
+
+var gs2ToStringHandler = function(actionObject){
+
+}
+
+var gs3ToStringHandler = function(actionObject){
+
+}
+
+var gs4ToStringHandler = function(actionObject){
+
+}
+
+var gs5ToStringHandler = function(actionObject){
+
+}
+
+var gs6ToStringHandler = function(actionObject){
+
+}
+
+var gs7ToStringHandler = function(actionObject){
+
+}
+
+var gs8ToStringHandler = function(actionObject){
+
+}
+
+var ps1_1ToStringHandler = function(actionObject){
+
+}
+var ps1_2ToStringHandler = function(actionObject){
+
+}
+
+var ps2_1ToStringHandler = function(actionObject){
+
+}
+var ps2_2ToStringHandler = function(actionObject){
+
+}
+
+var ps3_1ToStringHandler = function(actionObject){
+
+}
+var ps3_2ToStringHandler = function(actionObject){
+
+}
+
+var ps4_1ToStringHandler = function(actionObject){
+
+}
+var ps4_2ToStringHandler = function(actionObject){
+
+}
+
+var ps5_1ToStringHandler = function(actionObject){
+
+}
+var ps5_2ToStringHandler = function(actionObject){
+
+}
+
+var ps6_1ToStringHandler = function(actionObject){
+
+}
+var ps6_2ToStringHandler = function(actionObject){
+
+}
+
+var ps8_1ToStringHandler = function(actionObject){
+
+}
+var ps8_2ToStringHandler = function(actionObject){
+
+}
+
+var otherActionToStringHandler = function(actionObject){
+
+}
+
+var conditionActionToStringHandler = function(actionObject){
+
+}
+
+var waitActionToStringHandler = function(actionObject){
+
+}
+
+var checkActionToStringHandler = function(actionObject){
+
+}
+
+var parallelActionToStringHandler = function(actionObject){
+
+}
+
+var endActionToStringHandler = function(actionObject){
+
+}
+
+var commentActionToStringHandler = function(actionObject){
+
+}
+
+var outputActionToStringHandler = function(actionObject){
+
+}
+
+
+var actionToStringHandlerMap = new HashTable();
+actionToStringHandlerMap.put(actions.ACT_GS8, gs8ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS2, gs2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS3, gs3ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS4, gs4ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS5, gs5ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS6, gs6ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS7, gs7ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS1_1, ps1_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS1_2, ps1_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS2_1, ps2_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS2_2, ps2_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS3_1, ps3_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS3_2, ps3_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS4_1, ps4_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS4_2, ps4_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS5_1, ps5_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS5_2, ps5_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS6_1, ps6_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS6_2, ps6_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS8_1, ps8_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_CONDITION, conditionActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_Wait, waitActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
+
+
+
+var actionToString = function(actionObject){
+    return actionToStringHandlerMap.get(actionObject.action)(actionObject);
 }

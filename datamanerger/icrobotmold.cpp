@@ -2,8 +2,10 @@
 #include <QStringList>
 #include <QDebug>
 #include "parser.h"
+#include "serializer.h"
 
 typedef void (*ActionCompiler)(ICMoldItem &,const QVariantMap*);
+typedef void (*ActionDecompiler)(QVariantMap&, const ICMoldItem& );
 
 void AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
@@ -63,6 +65,31 @@ void SimpleActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+void AxisServoActionDecompiler(QVariantMap& v, const ICMoldItem& item)
+{
+    //    item.SetActualPos(v->value("pos", 0).toDouble() * 100);
+    //    item.SetSVal(v->value("speed", 0).toInt());
+    //    item.SetDVal(v->value("delay", 0).toDouble() * 100);
+    //    item.SetBadProduct(v->value("isBadEn", false).toBool());
+    //    item.SetEarlyEnd(v->value("isEarlyEnd", false).toBool());
+    //    item.SetActualIfPos(v->value("earlyEndPos", 0).toDouble() * 100);
+    //    item.SetEarlySpeedDown(v->value("isEarlyDown", false).toBool());
+    //    item.SetEarlyDownSpeed(v->value("earlyDownSpeed", 0).toInt());
+    v.insert("pos", item.Pos() / 100.0);
+    v.insert("speed", item.SVal());
+    v.insert("delay", item.DVal() / 100.0);
+    v.insert("isBadEn", item.IsBadProduct());
+    v.insert("isEarlyEnd", item.IsEarlyEnd());
+    v.insert("earlyEndPos", item.ActualIfPos() / 100.0);
+    v.insert("isEarlyDown", item.IsEarlySpeedDown());
+    v.insert("earlyDownSpeed", item.GetEarlyDownSpeed());
+}
+
+void SimpleActionDecompiler(QVariantMap&, const ICMoldItem&)
+{
+
+}
+
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
 {
     QMap<int, ActionCompiler> ret;
@@ -84,7 +111,15 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     return ret;
 }
 
+QMap<int, ActionDecompiler> CreateActionToDecompilerMap()
+{
+    QMap<int, ActionDecompiler> ret;
+    return ret;
+
+}
+
 QMap<int, ActionCompiler> actionToCompilerMap = CreateActionToCompilerMap();
+QMap<int, ActionDecompiler> actionToDecompilerMap = CreateActionToDecompilerMap();
 
 ICRobotMoldPTR ICRobotMold::currentMold_;
 ICRobotMold::ICRobotMold()
@@ -172,6 +207,8 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
     }
+    programsCode_ = Decompile(programs_);
+    qDebug()<<programsCode_;
     return true;
 }
 
@@ -210,7 +247,14 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v, int subNum =
     return item;
 }
 
-
+static inline QVariantMap MoldItemToVariant(const ICMoldItem& item)
+{
+    QVariantMap ret;
+    ret.insert("action", item.GMVal());
+    ActionDecompiler deCC = actionToDecompilerMap.value(item.Action(), SimpleActionDecompiler);
+    deCC(ret, item);
+    return ret;
+}
 
 ICActionProgram ICRobotMold::Complie(const QString &programText)
 {
@@ -239,6 +283,45 @@ ICActionProgram ICRobotMold::Complie(const QString &programText)
     }
     return ret;
 
+}
+
+QString ICRobotMold::Decompile(const QList<ICActionProgram> &programs)
+{
+    QVariantList allStep;
+    QVariantList stepAction;
+    ICMoldItem moldItem;
+    ICActionProgram program;
+    for(int p = 0 ; p != programs.size(); ++p)
+    {
+        program = programs.at(p);
+        for(int i = 0;  i != program.size(); ++i)
+        {
+            moldItem = program.at(i);
+            QVariantMap actionMap = MoldItemToVariant(moldItem);
+            if(moldItem.Action() == ICRobotMold::ACTParallel)
+            {
+                ICMoldItem subItem;
+                QVariantList childrenActions;
+                int currentIndex = i + 1;
+                while(currentIndex < program.size())
+                {
+                    subItem = program.at(currentIndex);
+                    if(subItem.SubNum() == 255)
+                    {
+                        actionMap.insert("childActions", childrenActions);
+                        break;
+                    }
+                    childrenActions.append(MoldItemToVariant(subItem));
+                    ++currentIndex;
+                }
+            }
+            stepAction.append(actionMap);
+        }
+
+        allStep.append(stepAction);
+    }
+    QJson::Serializer serializer;
+    return serializer.serialize(allStep);
 }
 
 RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values)

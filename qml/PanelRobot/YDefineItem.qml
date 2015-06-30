@@ -5,7 +5,7 @@ Rectangle {
     property bool isOn: false
     property alias hasMappedX: xLed.visible
     Row{
-        spacing: 10
+        spacing: 12
         Text {
             id: pointDescr
             text: qsTr("point")

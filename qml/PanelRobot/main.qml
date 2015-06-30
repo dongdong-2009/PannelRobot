@@ -31,6 +31,10 @@ Rectangle {
 
                 return settingPage;
             }
+            else if(which == menuProgram){
+                return programPage
+            }
+
             else return null;
         }
         function onMenuItemTriggered(which){
@@ -57,6 +61,7 @@ Rectangle {
             id:menuContainer
             width: parent.width
             height: parent.height
+//            z: 1
             TabMenuItem{
                 id:menuOperation
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
@@ -66,10 +71,10 @@ Rectangle {
 
             }
             TabMenuItem{
-                id:menuAuto
+                id:menuProgram
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
-                itemText: qsTr("Auto")
+                itemText: qsTr("Program")
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
 
             }
@@ -117,6 +122,12 @@ Rectangle {
         Loader{
             id:manualPage
             source: "ManualPage.qml"
+            anchors.fill: parent
+            visible: false
+        }
+        Loader{
+            id:programPage
+            source: "ProgramPage.qml"
             anchors.fill: parent
             visible: false
         }

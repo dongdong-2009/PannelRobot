@@ -7,6 +7,9 @@
 #include "icconfigsaddr.h"
 #include "parser.h"
 
+static QScriptValue *getConfigRange_;
+
+
 ICRange ICRobotRangeGetter(const QString& addrName)
 {
     QScriptValueList args;

@@ -121,92 +121,105 @@ var gsActionToStringHelper = function(actionStr, actionObject){
     return ret;
 }
 
-var gs1ToStringHandler = function(actionObject){
-
+var psActionToStringHelper = function(actionStr, actionObject){
+    var ret =  actionStr + " " +
+            qsTr("Delay:") + actionObject.delay;
+    return ret;
 }
 
 var gs1ToStringHandler = function(actionObject){
-
+    return gsActionToStringHelper(qsTr("X1"), actionObject);
 }
 
-var gs1ToStringHandler = function(actionObject){
-
-}
 
 var gs2ToStringHandler = function(actionObject){
-
+    return gsActionToStringHelper(qsTr("Y1"), actionObject);
 }
 
 var gs3ToStringHandler = function(actionObject){
-
+    return gsActionToStringHelper(qsTr("Z"), actionObject);
 }
 
 var gs4ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("X2"), actionObject);
 
 }
 
 var gs5ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("Y2"), actionObject);
 
 }
 
 var gs6ToStringHandler = function(actionObject){
-
+    return gsActionToStringHelper(qsTr("A"), actionObject);
 }
 
 var gs7ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("B"), actionObject);
 
 }
 
 var gs8ToStringHandler = function(actionObject){
-
+    return gsActionToStringHelper(qsTr("C"), actionObject);
 }
 
 var ps1_1ToStringHandler = function(actionObject){
-
+    return psActionToStringHelper(qsTr("X1 OFF"), actionObject)
 }
 var ps1_2ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("X1 ON"), actionObject)
 
 }
 
 var ps2_1ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("Y1 OFF"), actionObject)
 
 }
 var ps2_2ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("Y1 ON"), actionObject)
 
 }
 
 var ps3_1ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("Z OFF"), actionObject)
 
 }
 var ps3_2ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("Z ON"), actionObject)
 
 }
 
 var ps4_1ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("X2 OFF"), actionObject)
 
 }
 var ps4_2ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("X2 ON"), actionObject)
 
 }
 
 var ps5_1ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("A OFF"),actionObject)
 
 }
 var ps5_2ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("A ON"),actionObject)
 
 }
 
 var ps6_1ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("B OFF"), actionObject)
 
 }
 var ps6_2ToStringHandler = function(actionObject){
-
+    return psActionToStringHelper(qsTr("B ON"), actionObject)
 }
 
 var ps8_1ToStringHandler = function(actionObject){
-
+    return psActionToStringHelper(qsTr("C OFF"), actionObject)
 }
 var ps8_2ToStringHandler = function(actionObject){
+    return psActionToStringHelper(qsTr("C ON"), actionObject)
 
 }
 
@@ -215,15 +228,17 @@ var otherActionToStringHandler = function(actionObject){
 }
 
 var conditionActionToStringHandler = function(actionObject){
-
+    return qsTr("Check:") + actionObject.point + " " + qsTr("Limit:") + actionObject.limit + " " +
+            qsTr("Go to flag") +"[" + actionObject.flag + "]";
 }
 
 var waitActionToStringHandler = function(actionObject){
-
+    return qsTr("Wait:") + actionObject.point + " " +  qsTr("Limit:") + actionObject.limit;
 }
 
 var checkActionToStringHandler = function(actionObject){
-
+    return qsTr("Check:") + actionObject.point + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) +
+            " " + qsTr("Limit:") + actionObject.limit + " "
 }
 
 var parallelActionToStringHandler = function(actionObject){
@@ -231,15 +246,16 @@ var parallelActionToStringHandler = function(actionObject){
 }
 
 var endActionToStringHandler = function(actionObject){
-
+    return qsTr("End");
 }
 
 var commentActionToStringHandler = function(actionObject){
-
+    return qsTr("Comment");
 }
 
 var outputActionToStringHandler = function(actionObject){
-
+    return qsTr("Output:") + actionObject.point + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+            + qsTr("Delay:") + actionObject.delay;
 }
 
 
@@ -278,5 +294,7 @@ actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
 
 
 var actionToString = function(actionObject){
-    return actionToStringHandlerMap.get(actionObject.action)(actionObject);
+    var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
+    if(toStrHandler == undefined) {console.log(actionObject.action)}
+    return toStrHandler(actionObject);
 }

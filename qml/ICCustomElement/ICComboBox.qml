@@ -19,7 +19,7 @@ Rectangle {
     Rectangle{
         id: itemContainer
         width: parent.width
-        height: itemModel.count * 20
+        height: view.count * (view.spacing + view.currentItem.height)
         ListView{
             id:view
             model: itemModel
@@ -27,6 +27,7 @@ Rectangle {
             delegate: Text {
                 text: name
                 width: view.width
+//                font.pixelSize : 18
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
@@ -55,6 +56,8 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             itemContainer.visible = true;
+//            itemContainer.z = 100
+
         }
     }
 }

@@ -11,8 +11,6 @@
 #include "icparameterscache.h"
 
 
-static QScriptValue *getConfigRange_;
-
 extern ICRange ICRobotRangeGetter(const QString& addrName);
 
 typedef union{
@@ -135,6 +133,16 @@ public:
         bool ret =  mold->LoadMold(name);
         if(ret) emit needToUpdateConfigs();
         return ret;
+    }
+
+    Q_INVOKABLE QString mainProgram() const
+    {
+        return ICRobotMold::CurrentMold()->MainProgram();
+    }
+
+    Q_INVOKABLE QString subProgram(int which) const
+    {
+        return ICRobotMold::CurrentMold()->SubProgram(which);
     }
 
 

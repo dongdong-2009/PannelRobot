@@ -29,6 +29,8 @@ ContentPageBase{
 
         ICStackContainer{
             id:pageContainer
+//            width: parent.width
+//            height: parent.height
 //            anchors.top: spliteLine.bottom
         }
         Component.onCompleted: {

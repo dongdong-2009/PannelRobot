@@ -291,7 +291,8 @@ public:
         ACT_Cut,
         ACTParallel = 31,
         ACTEND,
-        ACTCOMMENT
+        ACTCOMMENT,
+        ACTOUTPUT = 0x80,
     };
 
     ICRobotMold();
@@ -320,8 +321,6 @@ public:
 
 
     static ICActionProgram Complie(const QString& programText);
-
-    static QString Decompile(const QList<ICActionProgram> &programs);
 
     static QString ActionProgramToStore(const ICActionProgram& program);
 
@@ -361,12 +360,15 @@ public:
 
     void SetMoldFncs(const ICAddrWrapperValuePairList values);
 
+    QString MainProgram() const { return programsCode_.at(0);}
+    QString SubProgram(int which) const { return programsCode_.at(which);}
+
 private:
     ICActionProgram ParseActionProgram_(const QString& content);
 
 private:
     QList<ICActionProgram> programs_;
-    QString programsCode_;
+    QStringList programsCode_;
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;

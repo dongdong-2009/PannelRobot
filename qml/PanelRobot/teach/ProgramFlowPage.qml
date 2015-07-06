@@ -224,17 +224,24 @@ Rectangle {
                 var outputEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('WaitActionEditor.qml')
                 var waitEditorObject = editor.createObject(actionEditorContainer);
-                actionEditorContainer.addPage(actionMenuObject)
+                editor = Qt.createComponent('CheckActionEditor.qml')
+                var checkEditorObject = editor.createObject(actionEditorContainer);
+                actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
-                actionEditorContainer.addPage(outputEditorObject)
-                actionEditorContainer.addPage(waitEditorObject)
+                actionEditorContainer.addPage(outputEditorObject);
+                actionEditorContainer.addPage(waitEditorObject);
+                actionEditorContainer.addPage(checkEditorObject)
                 actionEditorContainer.showMenu();
                 actionMenuObject.axisMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(1)});
                 actionMenuObject.outputMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(2)});
                 actionMenuObject.waitMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(3)});
+                actionMenuObject.checkMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(4)});
+
+
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
 
             }

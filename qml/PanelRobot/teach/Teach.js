@@ -101,6 +101,15 @@ var generateWaitAction = function(which, status, limit){
     };
 }
 
+var generateCheckAction = function(which, status, limit){
+    return {
+        "action":actions.ACT_CHECK,
+        "point":which,
+        "pointStatus":status,
+        "limit":limit || 0.50
+    };
+}
+
 var generateSyncBeginAction = function(){
     return {
         "action":actions.ACT_SYNC_BEGIN
@@ -270,14 +279,15 @@ var conditionActionToStringHandler = function(actionObject){
 }
 
 var waitActionToStringHandler = function(actionObject){
-    return qsTr("Wait:") + actionObject.point + " " +
+    return qsTr("Wait:") + actionObject.point +
             (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " " +
                                        qsTr("Limit:") + actionObject.limit;
 }
 
 var checkActionToStringHandler = function(actionObject){
-    return qsTr("Check:") + actionObject.point + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) +
-            " " + qsTr("Limit:") + actionObject.limit + " "
+    return qsTr("Check:") + actionObject.point +
+            (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " " +
+            qsTr("Limit:") + actionObject.limit;
 }
 
 var parallelActionToStringHandler = function(actionObject){

@@ -1,7 +1,7 @@
 import QtQuick 1.1
 import "ICSettingConfigsScope.js" as Impl
 
-Rectangle {
+Item {
     QtObject{
         id:pData
         property variant configs: []
@@ -70,7 +70,7 @@ Rectangle {
         }
         pData.configs = cs;
         pData.isLoaded = true;
-        panelRobotController.needToUpdateConfigs.connect(needToUpdateConfigs)
+        panelRobotController.moldChanged.connect(needToUpdateConfigs)
         needToUpdateConfigs();
     }
 

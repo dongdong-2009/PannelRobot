@@ -1,0 +1,10 @@
+ICButton 1.0 ICButton.qml
+ICButtonGroup 1.0 ICButtonGroup.qml
+ICCheckBox 1.0 ICCheckBox.qml
+ICConfigEdit 1.0 ICConfigEdit.qml
+ICDialog 1.0 ICDialog.qml
+ICSettingConfigsScope 1.0 ICSettingConfigsScope.qml
+ICStackContainer 1.0 ICStackContainer.qml
+ICTextEdit 1.0 ICTextEdit.qml
+TabMenulItem 1.0 TabMenulItem.qml
+TabMenulItemWidget 1.0 TabMenulItemWidget.qml

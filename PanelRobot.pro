@@ -27,13 +27,15 @@ RCC_DIR = temp_$${suffix}
 # Add more folders to ship with the application, here
 folder_01.source = qml/PanelRobot
 folder_01.target = qml
+teach.source = qml/PanelRobot/teach
+teach.target = qml
 ICCustomElement.source = qml/ICCustomElement
 ICCustomElement.target = qml
 configs.source = qml/PanelRobot
 configs.target = qml
 utils.source = qml/utils
 utils.target = qml
-DEPLOYMENTFOLDERS = folder_01 ICCustomElement configs utils
+DEPLOYMENTFOLDERS = folder_01 ICCustomElement configs utils teach
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =

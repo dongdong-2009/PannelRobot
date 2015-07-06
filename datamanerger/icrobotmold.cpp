@@ -161,10 +161,13 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     moldName_ = moldName;
     programs_.clear();
     ICActionProgram p;
+    int err;
+    programsCode_.clear();
+    programs_.clear();
     for(int i = 0; i != programs.size(); ++i)
     {
         programsCode_.append(programs.at(i));
-        p = Complie(programs.at(i));
+        p = Complie(programs.at(i), err);
         if(p.isEmpty()) return false;
         programs_.append(p);
     }
@@ -175,6 +178,19 @@ bool ICRobotMold::LoadMold(const QString &moldName)
         fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
     }
     return true;
+}
+
+int ICRobotMold::SaveMold(int which, const QString &program)
+{
+    int err;
+    ICActionProgram aP = Complie(program, err);
+    if(err == kCCErr_None)
+    {
+        programsCode_[which] = program;
+        programs_[which] = aP;
+        ICDALHelper::SaveMold(moldName_, which, program);
+    }
+    return err;
 }
 
 void ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePairList values)
@@ -212,49 +228,132 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v, int subNum =
     return item;
 }
 
-ICActionProgram ICRobotMold::Complie(const QString &programText)
+ICActionProgram ICRobotMold::Complie(const QString &programText, int &err)
 {
     QJson::Parser parser;
     bool ok;
     QVariantList result = parser.parse (programText.toLatin1(), &ok).toList();
     ICActionProgram ret;
-    if(!ok) return ret;
-    QVariantList groupActions;
+    if(!ok)
+    {
+        err = kCCErr_Invalid;
+        return ret;
+    }
+    QVariantMap action;
     programSeq = 0;
+    int step = 0;
+    int subStep = 255;
+    bool isSyncBegin = false;
+    bool isGroupBegin = false;
+    int act;
     for(int i = 0; i != result.size(); ++i)
     {
-        groupActions = result.at(i).toList();
-        for(int j = 0; j != groupActions.size(); ++j)
+        action = result.at(i).toMap();
+        act = action.value("action").toInt();
+        if(act == ACT_SYNC_BEGIN)
         {
-            ret.append(VariantToMoldItem(i, groupActions.at(j).toMap()));
-            if(ret.last().Action() == ACTParallel)
+            if(isSyncBegin)
             {
-                QVariantList childrenActions = groupActions.at(j).toMap().value("childActions").toList();
-                for(int k = 0; k != childrenActions.size();++k)
-                {
-                    ret.append(VariantToMoldItem(i, childrenActions.at(k).toMap(), k));
-                }
+                ret.clear();
+                err = kCCErr_Sync_Nesting;
+                return ret;
             }
+            isSyncBegin = true;
+            continue;
         }
+        else if(act == ACT_SYNC_END)
+        {
+            if(!isSyncBegin)
+            {
+                ret.clear();
+                err = kCCErr_Sync_NoBegin;
+                return ret;
+            }
+            isSyncBegin = false;
+            ++step;
+            continue;
+        }
+        else if(act == ACTParallel)
+        {
+            if(isGroupBegin)
+            {
+                ret.clear();
+                err = kCCErr_Group_Nesting;
+                return ret;
+            }
+            isGroupBegin = true;
+            subStep = 0;
+            ret.append(VariantToMoldItem(step, action));
+            continue;
+        }
+        else if(act == ACT_GROUP_ACTION_END)
+        {
+            if(!isGroupBegin)
+            {
+                ret.clear();
+                err = kCCErr_Group_NoBegin;
+                return ret;
+            }
+            isGroupBegin = false;
+            subStep = 255;
+            continue;
+        }
+        ret.append(VariantToMoldItem(step, action, subStep));
+        if(!isGroupBegin && !isSyncBegin)
+        {
+            ++step;
+        }
+        if(isGroupBegin)
+        {
+            ++subStep;
+        }
+//        if(ret.last().Action() == ACTParallel)
+//        {
+//            QVariantList childrenActions = action.value("childActions").toList();
+//            for(int k = 0; k != childrenActions.size();++k)
+//            {
+//                ret.append(VariantToMoldItem(step, childrenActions.at(k).toMap(), k));
+//            }
+//        }
     }
+    if(isSyncBegin)
+    {
+        ret.clear();
+        err = kCCErr_Sync_NoEnd;
+        return ret;
+    }
+    if(isGroupBegin)
+    {
+        ret.clear();
+        err = kCCErr_Group_NoEnd;
+        return ret;
+    }
+    if(ret.last().Action() != ACTEND)
+    {
+        ret.clear();
+        err = kCCErr_Last_Is_Not_End_Action;
+        return ret;
+    }
+    err = kCCErr_None;
     return ret;
 
 }
 
 RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values)
 {
-    if(name.isEmpty()) return RecordDataObject();
+    if(name.isEmpty()) return RecordDataObject(kRecordErr_Name_Is_Empty);
     if(ICDALHelper::IsExistsRecordTable(name))
     {
-        return RecordDataObject();
+        return RecordDataObject(kRecordErr_Name_Is_Exists);
     }
-    ICActionProgram program = Complie(initProgram);
-    if(program.isEmpty()) return RecordDataObject();
+    int err;
+    ICActionProgram program = Complie(initProgram, err);
+    if(program.isEmpty()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
     QStringList programList;
-    programList.append(ActionProgramToStore(program));
+    programList.append(initProgram);
     for(int i = 0; i < 8; ++i)
     {
-        programList.append("0 0 255 32 0 0 0 0 0  32");
+        programList.append("[{\"action\":32}]");
     }
     QList<QPair<int, quint32> > fncs = values;
     AddCheckSumToAddrValuePairList(fncs);
@@ -262,12 +361,12 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     return RecordDataObject(name, dt);
 }
 
-QString ICRobotMold::ActionProgramToStore(const ICActionProgram &program)
-{
-    QByteArray ret;
-    for(int i = 0; i != program.size(); ++i)
-    {
-        ret += program.at(i).ToString() + "\n";
-    }
-    return ret;
-}
+//QString ICRobotMold::ActionProgramToStore(const ICActionProgram &program)
+//{
+//    QByteArray ret;
+//    for(int i = 0; i != program.size(); ++i)
+//    {
+//        ret += program.at(i).ToString() + "\n";
+//    }
+//    return ret;
+//}

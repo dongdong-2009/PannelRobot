@@ -131,8 +131,21 @@ public:
     {
         ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
         bool ret =  mold->LoadMold(name);
-        if(ret) emit needToUpdateConfigs();
+        if(ret) emit moldChanged();
         return ret;
+    }
+
+    Q_INVOKABLE int saveMainProgram(const QString& program)
+    {
+        return ICRobotMold::CurrentMold()->SaveMold(ICRobotMold::kMainProg, program);
+    }
+
+    Q_INVOKABLE int saveSubProgram(int which, const QString& program)
+    {
+        if(which < ICRobotMold::kSub1Prog ||
+                which > ICRobotMold::kSub8Prog)
+            return -1;
+        return ICRobotMold::CurrentMold()->SaveMold(which, program);
     }
 
     Q_INVOKABLE QString mainProgram() const
@@ -142,6 +155,9 @@ public:
 
     Q_INVOKABLE QString subProgram(int which) const
     {
+        if(which < ICRobotMold::kSub1Prog ||
+                which > ICRobotMold::kSub8Prog)
+            return QString();
         return ICRobotMold::CurrentMold()->SubProgram(which);
     }
 
@@ -149,7 +165,7 @@ public:
 signals:
 //    void currentMoldChanged(QString);
 //    void currentMachineConfigChanged(QString);
-    void needToUpdateConfigs();
+    void moldChanged();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

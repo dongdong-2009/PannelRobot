@@ -1,6 +1,6 @@
 import QtQuick 1.1
 
-Rectangle {
+Item {
     property int currentIndex: -1
     property variant pages: []
 
@@ -10,6 +10,8 @@ Rectangle {
         p.push(componentObject)
         pages = p;
         componentObject.visible = false;
+        componentObject.x = 2;
+        componentObject.y = 2;
         return pages.length;
     }
 

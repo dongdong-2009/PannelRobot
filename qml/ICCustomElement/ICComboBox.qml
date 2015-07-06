@@ -5,7 +5,10 @@ Rectangle {
     property int currentIndex: -1
 
     width: 100
-    height: 32
+    height: 24
+
+    border.width: 1
+    border.color: "gray"
 
     Text {
         id: currentText

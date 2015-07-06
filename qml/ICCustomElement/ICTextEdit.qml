@@ -19,7 +19,7 @@ FocusScope{
         id:rectangle
         border.color: "gray"
         border.width: 1
-        width: parent.width
+        width: parent.width - unit.width
         height: parent.height
         TextInput{
             function onFocus(isActive){

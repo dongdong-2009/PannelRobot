@@ -1,6 +1,6 @@
 import QtQuick 1.1
 
-Rectangle {
+Item {
     property alias configName: configName.text
     property alias configAddr: edit.bindConfig
     property alias unit: edit.unit

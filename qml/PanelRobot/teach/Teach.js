@@ -1,7 +1,7 @@
 .pragma library
 
-Qt.include("../utils/HashTable.js")
-Qt.include("../utils/stringhelper.js")
+Qt.include("../../utils/HashTable.js")
+Qt.include("../../utils/stringhelper.js")
 
 var actHelper = 0;
 var actions = {
@@ -43,6 +43,18 @@ actions.ACT_PARALLEL   = actHelper++;
 actions.ACT_END        = actHelper++;
 actions.ACT_COMMENT    = actHelper;
 actions.ACT_OUTPUT     = 0x80;
+actions.ACT_SYNC_BEGIN = 126;
+actions.ACT_SYNC_END   = 127;
+actions.ACT_GROUP_END  = 125;
+
+var kCCErr_Invalid = 1;
+var kCCErr_Sync_Nesting = 2;
+var kCCErr_Sync_NoBegin = 3;
+var kCCErr_Sync_NoEnd = 4;
+var kCCErr_Group_Nesting = 5;
+var kCCErr_Group_NoBegin = 6;
+var kCCErr_Group_NoEnd = 7;
+var kCCErr_Last_Is_Not_End_Action = 8;
 
 var kAxisType_NoUse = 0;
 var kAxisType_Servo = 1;
@@ -88,24 +100,48 @@ var generateWaitAction = function(which, limit){
     };
 }
 
+var generateSyncBeginAction = function(){
+    return {
+        "action":actions.ACT_SYNC_BEGIN
+    };
+}
+
+var generateSyncEndAction = function(){
+    return {
+        "action":actions.ACT_SYNC_END
+    };
+}
+
+var generateOutputAction = function(point, status, delay){
+    return {
+        "action":actions.ACT_OUTPUT,
+        "point":point,
+        "pointStatus": status,
+        "delay":delay
+    };
+}
+
 var generateInitProgram = function(axisDefine){
 
-    var initStep = {}
-    initStep = axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-                                                        generateAxisPneumaticAction(actions.ACT_PS8_1);
+    var initStep = [];
+    initStep.push(generateSyncBeginAction());
+    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
+                                                        generateAxisPneumaticAction(actions.ACT_PS8_1));
     var aT;
-    var synsActions = [];
-    synsActions.push(initStep);
     for(var i = 1; i < 8; ++i){
         aT = axisDefine["s"+ i + "Axis"];
         if(aT == kAxisType_Servo){
-            synsActions.push(generateAxisServoAction(actions["ACT_GS" + i]));
+            initStep.push(generateAxisServoAction(actions["ACT_GS" + i]));
         }else if(aT == kAxisType_Pneumatic){
-            synsActions.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
+            initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
         }
     }
 
-    return JSON.stringify([synsActions, [generateWaitAction(1)], [generteEndAction()]]);
+    initStep.push(generateSyncEndAction());
+    initStep.push(generateWaitAction(1));
+    initStep.push(generteEndAction());
+
+    return JSON.stringify(initStep);
 
 }
 
@@ -258,6 +294,15 @@ var outputActionToStringHandler = function(actionObject){
             + qsTr("Delay:") + actionObject.delay;
 }
 
+var syncBeginActionToStringHandler = function(actionObject){
+    return qsTr("Sync Begin");
+}
+
+var syncEndActionToStringHandler = function(actionObject){
+    return qsTr("Sync End");
+}
+
+
 
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.ACT_GS8, gs8ToStringHandler);
@@ -290,6 +335,8 @@ actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler
 actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_SYNC_BEGIN, syncBeginActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_SYNC_END, syncEndActionToStringHandler);
 
 
 
@@ -297,4 +344,32 @@ var actionToString = function(actionObject){
     var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
     if(toStrHandler == undefined) {console.log(actionObject.action)}
     return toStrHandler(actionObject);
+}
+
+function ProgramModelItem(actionObject){
+    this.actionObject = actionObject;
+}
+
+function ccErrnoToString(errno){
+    switch(errno){
+    case -1:
+        return qsTr("Sub program is out of ranged");
+    case kCCErr_Invalid:
+        return qsTr("Invalid program");
+    case kCCErr_Group_NoBegin:
+        return qsTr("Has not Group-Begin action but has Group-End action");
+    case kCCErr_Group_Nesting:
+        return qsTr("Group action is nesting");
+    case kCCErr_Group_NoEnd:
+        return qsTr("Has Group-Begin action but has not Group-End action");
+    case kCCErr_Sync_NoBegin:
+        return qsTr("Has not Sync-Begin action but has Sync-End action");
+    case kCCErr_Sync_Nesting:
+        return qsTr("Sync action is nesting");
+    case kCCErr_Sync_NoEnd:
+        return qsTr("Has Sync-Begin action but has not Sync-End action");
+    case kCCErr_Last_Is_Not_End_Action:
+        return qsTr("Last action is not End action");
+    }
+    return qsTr("Unknow Error");
 }

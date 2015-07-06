@@ -18,10 +18,13 @@ int main(int argc, char *argv[])
     robotController.Init();
     ICVirtualKeyboard virtualKeyboard(ICRobotRangeGetter);
 
+//    QDeclarativeEngine::addImportPath(QLatin1String("qml/ICCustomElement"));
     QtQuick1ApplicationViewer viewer;
+//    viewer.engine()->addImportPath(QLatin1String("qml/ICCustomElement"));
     viewer.rootContext()->setContextProperty("panelRobotController", &robotController);
     viewer.rootContext()->setContextProperty("virtualKeyboard", &virtualKeyboard);
     viewer.addImportPath(QLatin1String("modules"));
+//    viewer.addImportPath(QLatin1String("/home/gausscheng/workprojects/PanelRobot/qml/ICCustomElement"));
     viewer.setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/PanelRobot/main.qml"));
 #ifdef Q_WS_QWS

@@ -1,12 +1,13 @@
 import QtQuick 1.1
 import "."
-import "../ICCustomElement"
-import "Theme.js" as Theme
+import "../"
+import "../../ICCustomElement"
+import "../Theme.js" as Theme
 
 
 
 ContentPageBase{
-    menuItemTexts:["", "", "", "", "", "",qsTr("Return")]
+    menuItemTexts:[qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")]
     Rectangle{
         id:programContainer
         anchors.fill: parent
@@ -41,6 +42,26 @@ ContentPageBase{
             }
             pageContainer.setCurrentIndex(0);
         }
+    }
+
+    onMenuItem1Triggered: {
+        pageContainer.currentPage().showActionEditorPanel();
+    }
+    onMenuItem2Triggered: {
+        pageContainer.currentPage().onInsertTriggered();
+    }
+    onMenuItem3Triggered: {
+        pageContainer.currentPage().onDeleteTriggered();
+
+    }
+    onMenuItem4Triggered: {
+        pageContainer.currentPage().onUpTriggered();
+    }
+    onMenuItem5Triggered: {
+        pageContainer.currentPage().onDownTriggered();
+    }
+    onMenuItem7Triggered: {
+        pageContainer.currentPage().onSaveTriggered();
     }
 
 //    onMenuItem7Triggered: {

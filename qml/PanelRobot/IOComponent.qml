@@ -13,6 +13,7 @@ Rectangle {
         id:menuContainer
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 2
+        z:1
         ICButton{
             id:prev
             text: qsTr("Prev")

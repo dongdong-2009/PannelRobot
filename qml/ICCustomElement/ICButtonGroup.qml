@@ -1,13 +1,29 @@
 import QtQuick 1.1
 
-Rectangle {
+Item {
     property int layoutMode: 0
     property int spacing: 1
+    property Item checkedItem: null
+    id:container
 
     QtObject{
         id:pData
         property variant buttons: []
         property double startPos: spacing
+        function deepFindCheckBox(item){
+            if(item.hasOwnProperty("isChecked")){
+                addButton(item);
+                return;
+            }
+            var itemChildren = item.children;
+
+            var count = itemChildren.length;
+            for(var i = 0; i < count; ++i){
+                pData.deepFindCheckBox(itemChildren[i]);
+            }
+
+        }
+
     }
 
     signal buttonClickedID(int index)
@@ -24,6 +40,7 @@ Rectangle {
 //            children[index].setChecked(true);
             buttonClickedID(index);
             buttonClickedItem(btns[index]);
+            checkedItem = btns[index];
         }
     }
 
@@ -46,24 +63,10 @@ Rectangle {
         button.isCheckedChanged.connect(fun);
     }
 
+
     Component.onCompleted: {
-        var count = children.length;
-        for(var i = 0; i < count; ++i){
-            addButton(children[i]);
-        }
-
-//        if(count < 2) return;
-//        var startPos = 0;
-//        if(layoutMode == 0){
-//            children[0].x = spacing;
-//            startPos = children[0].x + children[0].width + spacing;
-
-//            for(var i = 1; i < count; ++i){
-//                children[i].x = startPos;
-//                startPos += children[i].width + spacing;
-//            }
-//        }
+        pData.deepFindCheckBox(container)
     }
 
-    color: parent.color
+//    color: parent.color
 }

@@ -216,5 +216,5 @@ ICAxisDefine* PanelRobotController::axisDefine()
 
 void PanelRobotController::OnConfigRebase(QString)
 {
-    emit needToUpdateConfigs();
+    emit moldChanged();
 }

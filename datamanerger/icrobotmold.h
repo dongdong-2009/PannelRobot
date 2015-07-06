@@ -249,6 +249,25 @@ public:
 
     };
 
+    enum {
+        kCCErr_None,
+        kCCErr_Invalid,
+        kCCErr_Sync_Nesting,
+        kCCErr_Sync_NoBegin,
+        kCCErr_Sync_NoEnd,
+        kCCErr_Group_Nesting,
+        kCCErr_Group_NoBegin,
+        kCCErr_Group_NoEnd,
+        kCCErr_Last_Is_Not_End_Action
+    };
+
+    enum {
+        kRecordErr_None,
+        kRecordErr_Name_Is_Empty,
+        kRecordErr_Name_Is_Exists,
+        kRecordErr_InitProgram_Invalid,
+    };
+
     enum
     {
         GC          =0,		//0
@@ -293,6 +312,9 @@ public:
         ACTEND,
         ACTCOMMENT,
         ACTOUTPUT = 0x80,
+        ACT_GROUP_ACTION_END = 125,
+        ACT_SYNC_BEGIN = 126,
+        ACT_SYNC_END = 127
     };
 
     ICRobotMold();
@@ -320,9 +342,9 @@ public:
     }
 
 
-    static ICActionProgram Complie(const QString& programText);
+    static ICActionProgram Complie(const QString& programText, int & err);
 
-    static QString ActionProgramToStore(const ICActionProgram& program);
+//    static QString ActionProgramToStore(const ICActionProgram& program);
 
     static void AddCheckSumToAddrValuePairList(QList<QPair<int, quint32> >& values)
     {
@@ -352,6 +374,7 @@ public:
     }
 
     bool LoadMold(const QString& moldName);
+    int SaveMold(int which, const QString& program);
 
     quint32 MoldFnc(ICAddrWrapperCPTR addr)
     {

@@ -139,3 +139,17 @@ function yCheckedX(y){
     }
     return -1;
 }
+
+var getYDefineFromPointName = function(pointName){
+    var i;
+    for(i = 0; i < yDefines.length; ++i){
+        if(pointName === yDefines[i].pointName)
+            return {"yDefine":yDefines[i], "hwPoint":i};
+    }
+    for(i = 0; i < euyDefines.length; ++i){
+        if(pointName === euyDefines[i].pointName)
+            return {"yDefine":euyDefines[i], "hwPoint": i + 32};
+    }
+
+    return null;
+}

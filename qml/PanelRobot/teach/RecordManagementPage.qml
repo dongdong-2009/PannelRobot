@@ -1,10 +1,10 @@
 import QtQuick 1.1
 
-import "Theme.js" as Theme
+import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import com.szhc.axis 1.0
 
-import "../ICCustomElement"
+import "../../ICCustomElement"
 
 Rectangle {
     id:recordPage

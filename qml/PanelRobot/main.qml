@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import '.'
 import '../ICCustomElement'
+import 'teach'
 import "Theme.js" as Theme
 import "configs/Keymap.js" as Keymap
 
@@ -127,7 +128,7 @@ Rectangle {
         }
         Loader{
             id:programPage
-            source: "ProgramPage.qml"
+            source: "teach/ProgramPage.qml"
             anchors.fill: parent
             visible: false
         }

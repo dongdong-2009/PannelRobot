@@ -62,12 +62,12 @@ var kAxisType_Pneumatic = 2;
 var kAxisType_Reserve = 3;
 
 var generateAxisServoAction = function(action,
-                                  pos,
-                                  speed,
-                                  delay,
-                                  isBadEn,
-                                  isEarlyEnd,
-                                  earlyEndPos){
+                                       pos,
+                                       speed,
+                                       delay,
+                                       isBadEn,
+                                       isEarlyEnd,
+                                       earlyEndPos){
     return {
         "action":action,
         "pos": pos||0.00,
@@ -92,10 +92,11 @@ var generteEndAction = function(){
     };
 }
 
-var generateWaitAction = function(which, limit){
+var generateWaitAction = function(which, status, limit){
     return {
         "action":actions.ACT_Wait,
         "point":which,
+        "pointStatus":status,
         "limit":limit || 0.50
     };
 }
@@ -126,7 +127,7 @@ var generateInitProgram = function(axisDefine){
     var initStep = [];
     initStep.push(generateSyncBeginAction());
     initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-                                                        generateAxisPneumaticAction(actions.ACT_PS8_1));
+                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
     var aT;
     for(var i = 1; i < 8; ++i){
         aT = axisDefine["s"+ i + "Axis"];
@@ -269,7 +270,9 @@ var conditionActionToStringHandler = function(actionObject){
 }
 
 var waitActionToStringHandler = function(actionObject){
-    return qsTr("Wait:") + actionObject.point + " " +  qsTr("Limit:") + actionObject.limit;
+    return qsTr("Wait:") + actionObject.point + " " +
+            (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " " +
+                                       qsTr("Limit:") + actionObject.limit;
 }
 
 var checkActionToStringHandler = function(actionObject){

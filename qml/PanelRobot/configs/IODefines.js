@@ -153,3 +153,17 @@ var getYDefineFromPointName = function(pointName){
 
     return null;
 }
+
+var getXDefineFromPointName = function(pointName){
+    var i;
+    for(i = 0; i < xDefines.length; ++i){
+        if(pointName === xDefines[i].pointName)
+            return {"xDefine":xDefines[i], "hwPoint":i};
+    }
+    for(i = 0; i < euxDefines.length; ++i){
+        if(pointName === euxDefines[i].pointName)
+            return {"xDefine":euxDefines[i], "hwPoint": i + 32};
+    }
+
+    return null;
+}

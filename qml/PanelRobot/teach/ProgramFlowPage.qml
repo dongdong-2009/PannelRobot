@@ -222,14 +222,20 @@ Rectangle {
                 var axisEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('OutputActionEditor.qml')
                 var outputEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('WaitActionEditor.qml')
+                var waitEditorObject = editor.createObject(actionEditorContainer);
                 actionEditorContainer.addPage(actionMenuObject)
                 actionEditorContainer.addPage(axisEditorObject);
                 actionEditorContainer.addPage(outputEditorObject)
+                actionEditorContainer.addPage(waitEditorObject)
                 actionEditorContainer.showMenu();
                 actionMenuObject.axisMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(1)});
                 actionMenuObject.outputMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(2)});
+                actionMenuObject.waitMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(3)});
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+
 
             }
         }

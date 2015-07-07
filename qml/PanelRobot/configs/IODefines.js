@@ -125,6 +125,11 @@ var euyDefines = [
             new IODefine("EuY027", {"ch":"EuY027", "en":"EuY027"}),
 ];
 
+var internalXDefines = [
+            new IODefine("INX01", {"ch":"INX01", "en":"INX01"}),
+
+];
+
 var yChecksMap = {
     "Y010": "X010",
     "Y011": "X011"
@@ -163,6 +168,10 @@ var getXDefineFromPointName = function(pointName){
     for(i = 0; i < euxDefines.length; ++i){
         if(pointName === euxDefines[i].pointName)
             return {"xDefine":euxDefines[i], "hwPoint": i + 32};
+    }
+    for(i = 0; i < internalXDefines.length; ++i){
+        if(pointName === internalXDefines[i].pointName)
+            return {"xDefine":internalXDefines[i], "hwPoint": i + 64};
     }
 
     return null;

@@ -48,7 +48,7 @@ Item {
 
     Rectangle {
         id: outputContainer
-//        visible: false
+        //        visible: false
         ListModel{
             id:outputModel
             function onCheckBoxStatusChanged(index, isChecked){
@@ -72,27 +72,20 @@ Item {
             height: parent.height
             model: outputModel
             spacing: 10
-            delegate: Item{
+            delegate: ICCheckBox{
+                text: outputDefine
                 width: parent.width
                 height: 24
-                Row{
-                    ICCheckBox{
-                        text: ""
-                        width: 32
-                        isChecked: isEn
-                        useCustomClickHandler: true
-                        MouseArea{
-                            anchors.fill: parent
-                            onClicked: {
-                                outputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
-                            }
-                        }
-                    }
-                    Text {
-                        text: outputDefine
-                        anchors.verticalCenter: parent.verticalCenter
+                isChecked: isEn
+                useCustomClickHandler: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        outputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
                     }
                 }
+
+
                 //                MouseArea{
                 //                    anchors.fill: parent
                 //                    onClicked: {
@@ -144,7 +137,7 @@ Item {
             outputModel.append({"isEn":false,
                                    "outputDefine": yDefines[i] + ":"
                                    + yDefine.yDefine.descr[pData.currentLanguage],
-                               "hwPoint":yDefine.hwPoint});
+                                   "hwPoint":yDefine.hwPoint});
         }
 
     }

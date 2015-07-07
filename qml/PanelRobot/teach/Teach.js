@@ -46,6 +46,7 @@ actions.ACT_OUTPUT     = 0x80;
 actions.ACT_SYNC_BEGIN = 126;
 actions.ACT_SYNC_END   = 127;
 actions.ACT_GROUP_END  = 125;
+actions.ACT_FLAG       = 100;
 
 var kCCErr_Invalid = 1;
 var kCCErr_Sync_Nesting = 2;
@@ -107,6 +108,24 @@ var generateCheckAction = function(which, status, limit){
         "point":which,
         "pointStatus":status,
         "limit":limit || 0.50
+    };
+}
+
+var generateConditionAction = function(which, status, limit, flag){
+    return {
+        "action":actions.ACT_CONDITION,
+        "point":which,
+        "pointStatus":status,
+        "limit":limit || 0.50,
+        "flag": flag || 0,
+    };
+}
+
+var generateFlagAction = function(flag,descr){
+    return {
+        "action":actions.ACT_FLAG,
+        "flag":flag,
+        "comment":descr
     };
 }
 
@@ -274,7 +293,9 @@ var otherActionToStringHandler = function(actionObject){
 }
 
 var conditionActionToStringHandler = function(actionObject){
-    return qsTr("Check:") + actionObject.point + " " + qsTr("Limit:") + actionObject.limit + " " +
+    return qsTr("IF:") + actionObject.point +
+            (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " "
+            + qsTr("Limit:") + actionObject.limit + " " +
             qsTr("Go to flag") +"[" + actionObject.flag + "]";
 }
 
@@ -300,6 +321,11 @@ var endActionToStringHandler = function(actionObject){
 
 var commentActionToStringHandler = function(actionObject){
     return qsTr("Comment");
+}
+
+var flagActionToStringHandler = function(actionObject){
+    return qsTr("Flag") + icStrformat("[{0}]", actionObject.flag) + ":"
+            + actionObject.comment;
 }
 
 var outputActionToStringHandler = function(actionObject){
@@ -350,12 +376,13 @@ actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_SYNC_BEGIN, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_SYNC_END, syncEndActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
 
 
 
 var actionToString = function(actionObject){
     var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
-    if(toStrHandler == undefined) {console.log(actionObject.action)}
+    if(toStrHandler === undefined) {console.log(actionObject.action)}
     return toStrHandler(actionObject);
 }
 
@@ -385,4 +412,38 @@ function ccErrnoToString(errno){
         return qsTr("Last action is not End action");
     }
     return qsTr("Unknow Error");
+}
+
+var flags = [];
+var pushFlag = function(flag){
+    for(var i = 0; i < flags.length; ++i){
+        if(flag < flags[i]){
+            flags.splice(i, 0, flag);
+            return;
+        }
+    }
+    flags.push(flag);
+    return;
+}
+
+var delFlag = function(flag){
+    for(var i = 0; i < flags.length; ++i){
+        if(flag === flags[i]){
+            flags.splice(i, 1);
+            break;
+        }
+    }
+}
+
+var useableFlag = function(){
+    if(flags.length === 0) return 0;
+    if(flags.length < 3)
+        return flags[flags.length - 1] + 1;
+    if(flags[0] != 0) return 0;
+    for(var i = 1; i < flags.length; ++i){
+        if(flags[i] - flags[i - 1] > 1){
+            return flags[i - 1] + 1;
+        }
+    }
+    return flags[i - 1] + 1;
 }

@@ -31,6 +31,10 @@ Rectangle {
         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
         var model = currentModel();
         for(var i = 0; i < actionObjects.length; ++i){
+            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
+                Teach.pushFlag(actionObjects[i].flag);
+            }
+
             model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i]));
         }
     }
@@ -40,6 +44,10 @@ Rectangle {
         if(cI < 0)return;
         var model = currentModel();
         if(cI >= model.count - 1) return;
+        var actionObject = model.get(cI).actionObject;
+        if(actionObject.action === Teach.actions.ACT_FLAG){
+            Teach.delFlag(actionObject.flag);
+        }
         model.remove(cI);
     }
 
@@ -226,22 +234,26 @@ Rectangle {
                 var waitEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('CheckActionEditor.qml')
                 var checkEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('ConditionActionEditor.qml')
+                var conditionEditorObject = editor.createObject(actionEditorContainer);
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
                 actionEditorContainer.addPage(outputEditorObject);
                 actionEditorContainer.addPage(waitEditorObject);
                 actionEditorContainer.addPage(checkEditorObject)
+                actionEditorContainer.addPage(conditionEditorObject)
                 actionEditorContainer.showMenu();
                 actionMenuObject.axisMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(1)});
                 actionMenuObject.outputMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(2)});
                 actionMenuObject.waitMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(3)});
                 actionMenuObject.checkMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(4)});
-
+                actionMenuObject.conditionMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(5)});
 
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
 
             }
@@ -261,6 +273,10 @@ Rectangle {
         mainProgramModel.clear();
         for(i = 0; i < program.length; ++i){
             step = program[i];
+            if(step.action === Teach.actions.ACT_FLAG){
+                Teach.pushFlag(step.flag);
+            }
+
             mainProgramModel.append(new Teach.ProgramModelItem(step));
         }
 

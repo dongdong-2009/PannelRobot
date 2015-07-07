@@ -3,6 +3,9 @@ import QtQuick 1.1
 Rectangle {
     property variant items: []
     property int currentIndex: -1
+    property alias currentText: currentText.text
+    property int popupMode : 0
+    property int itemHeight: 24
 
     width: 100
     height: 24
@@ -22,15 +25,22 @@ Rectangle {
     Rectangle{
         id: itemContainer
         width: parent.width
-        height: view.count * (view.spacing + view.currentItem.height)
+        height: itemHeight * itemModel.count
+        border.width: parent.border.width
+        border.color: parent.border.color
         ListView{
             id:view
             model: itemModel
-//            anchors.fill: parent
-            delegate: Text {
-                text: name
+            //            anchors.fill: parent
+            delegate: Item{
                 width: view.width
-//                font.pixelSize : 18
+                height: itemHeight
+                Text {
+                    text: name
+                    width: view.width
+                    anchors.verticalCenter: parent.verticalCenter
+                    //                font.pixelSize : 18
+                }
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
@@ -45,8 +55,17 @@ Rectangle {
             height: parent.height
         }
         visible: false
-        anchors.top: parent.bottom
+        anchors.top: currentText.bottom
+    }
 
+    onPopupModeChanged: {
+        if(popupMode == 0){
+            itemContainer.anchors.bottom = undefined;
+            itemContainer.anchors.top = currentText.bottom;
+        }else{
+            itemContainer.anchors.top = undefined;
+            itemContainer.anchors.bottom = currentText.top;
+        }
     }
 
 
@@ -59,7 +78,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             itemContainer.visible = true;
-//            itemContainer.z = 100
+            //            itemContainer.z = 100
 
         }
     }

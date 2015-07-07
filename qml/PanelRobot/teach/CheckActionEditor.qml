@@ -48,7 +48,7 @@ Item {
 
     Rectangle {
         id: inputContainer
-//        visible: false
+        //        visible: false
         ListModel{
             id:inputModel
             function onCheckBoxStatusChanged(index, isChecked){
@@ -72,33 +72,18 @@ Item {
             height: parent.height
             model: inputModel
             spacing: 10
-            delegate: Item{
+            delegate: ICCheckBox{
+                text: inputDefine
                 width: parent.width
                 height: 24
-                Row{
-                    ICCheckBox{
-                        text: ""
-                        width: 32
-                        isChecked: isEn
-                        useCustomClickHandler: true
-                        MouseArea{
-                            anchors.fill: parent
-                            onClicked: {
-                                inputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
-                            }
-                        }
-                    }
-                    Text {
-                        text: inputDefine
-                        anchors.verticalCenter: parent.verticalCenter
+                isChecked: isEn
+                useCustomClickHandler: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        inputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
                     }
                 }
-                //                MouseArea{
-                //                    anchors.fill: parent
-                //                    onClicked: {
-                //                        inputListView.currentIndex = index
-                //                    }
-                //                }
             }
         }
     }
@@ -142,9 +127,9 @@ Item {
         for(var i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             inputModel.append({"isEn":false,
-                                   "inputDefine": xDefines[i] + ":"
-                                   + xDefine.xDefine.descr[pData.currentLanguage],
-                               "hwPoint":xDefine.hwPoint});
+                                  "inputDefine": xDefines[i] + ":"
+                                  + xDefine.xDefine.descr[pData.currentLanguage],
+                                  "hwPoint":xDefine.hwPoint});
         }
 
     }

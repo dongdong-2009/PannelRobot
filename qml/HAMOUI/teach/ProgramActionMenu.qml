@@ -16,6 +16,7 @@ Rectangle {
     signal syncMenuTriggered()
     signal otherMenuTriggered()
     signal commentMenuTriggered()
+    signal searchMenuTriggered()
 
     Grid{
         columns: 2
@@ -94,6 +95,14 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: groupMenuTriggered()
+        }
+        ICButton{
+            id:search
+            text: qsTr("Search")
+            icon: "../images/action_item_search.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: searchMenuTriggered()
         }
     }
 }

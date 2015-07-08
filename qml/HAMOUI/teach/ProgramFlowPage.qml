@@ -224,11 +224,17 @@ Rectangle {
                     delegate: Item{
                         width: parent.width
                         height: 24
+                        Text{
+                            text:index
+                            anchors.left: parent.left
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
                         Text {
-                            text: "    " + Teach.actionToString(actionObject)
+                            text:"            " + Teach.actionToString(actionObject)
                             width: programListView.width
                             anchors.verticalCenter: parent.verticalCenter
                         }
+
 
                         MouseArea{
                             anchors.fill: parent
@@ -278,6 +284,8 @@ Rectangle {
                 var syncEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('CommentActionEditor.qml')
                 var commentEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('SearchActionEditor.qml')
+                var searchEditorObject = editor.createObject(actionEditorContainer);
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
                 actionEditorContainer.addPage(outputEditorObject);
@@ -286,6 +294,8 @@ Rectangle {
                 actionEditorContainer.addPage(conditionEditorObject);
                 actionEditorContainer.addPage(syncEditorObject);
                 actionEditorContainer.addPage(commentEditorObject);
+                actionEditorContainer.addPage(searchEditorObject);
+
 
                 actionEditorContainer.showMenu();
                 actionMenuObject.axisMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(1)});
@@ -295,6 +305,7 @@ Rectangle {
                 actionMenuObject.conditionMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(5)});
                 actionMenuObject.syncMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(6)});
                 actionMenuObject.commentMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(7)});
+                actionMenuObject.searchMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(8)});
 
 
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
@@ -304,6 +315,7 @@ Rectangle {
                 conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
             }
         }

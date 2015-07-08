@@ -395,6 +395,7 @@ var actionToString = function(actionObject){
 
 function ProgramModelItem(actionObject){
     this.actionObject = actionObject;
+    this.commentedObject = actionObject;
 }
 
 function ccErrnoToString(errno){

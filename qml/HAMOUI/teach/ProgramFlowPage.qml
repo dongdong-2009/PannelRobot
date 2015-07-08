@@ -97,6 +97,15 @@ Rectangle {
         return pData.programs[editing.currentIndex];
     }
 
+    function currentModelData() {
+        return currentModel().get(programListView.currentIndex);
+    }
+
+//    function setCurrentModelData(actionObject){
+//        currentModel().set(programListView.currentIndex,
+//                           new Teach.ProgramModelItem(actionObject));
+//    }
+
     Row{
         id:container
         width: 796
@@ -108,6 +117,26 @@ Rectangle {
             width: actionEditorFrame.visible ? container.width / 2 : container.width
             height: parent.height
             color: Theme.defaultTheme.BASE_BG
+
+            ICButton{
+                id:commentToggleBtn
+                text: qsTr("C/Unc")
+                anchors.right: parent.right
+                height: 24
+                z:1
+                onButtonClicked: {
+                    var modelObject = currentModelData();
+                    if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
+                    if(modelObject.actionObject.action == modelObject.commentedObject.action){
+                        var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject));
+                        modelObject.actionObject = cO;
+                    }
+                    else{
+                        modelObject.actionObject = modelObject.commentedObject;
+                    }
+
+                }
+            }
 
             Row{
                 id:programSelecterContainer
@@ -182,7 +211,14 @@ Rectangle {
                     model: mainProgramModel
                     width: parent.width
                     height: parent.height
-                    highlight: Rectangle {x:1; color: "lightsteelblue"; width: programListView.width - 1 }
+                    highlight: Rectangle {
+                        x:1
+                        color: "lightsteelblue"
+                        width: programListView.width - 1
+
+                    }
+
+
                     highlightMoveDuration:200
                     spacing:2
                     delegate: Item{
@@ -193,10 +229,12 @@ Rectangle {
                             width: programListView.width
                             anchors.verticalCenter: parent.verticalCenter
                         }
+
                         MouseArea{
                             anchors.fill: parent
                             onClicked: {
                                 programListView.currentIndex = index
+//                                commentToggleBtn.y = parent.y
                             }
                         }
                     }

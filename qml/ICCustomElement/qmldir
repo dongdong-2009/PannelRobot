@@ -5,6 +5,6 @@ ICConfigEdit 1.0 ICConfigEdit.qml
 ICDialog 1.0 ICDialog.qml
 ICSettingConfigsScope 1.0 ICSettingConfigsScope.qml
 ICStackContainer 1.0 ICStackContainer.qml
-ICTextEdit 1.0 ICTextEdit.qml
+ICLineEdit 1.0 ICLineEdit.qml
 TabMenulItem 1.0 TabMenulItem.qml
 TabMenulItemWidget 1.0 TabMenulItemWidget.qml

@@ -31,7 +31,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
 
         }
-        ICTextEdit{
+        ICLineEdit{
             id:newName
             width: 200
             isNumberOnly: false

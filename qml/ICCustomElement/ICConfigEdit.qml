@@ -12,7 +12,7 @@ Item {
             id: configName
             anchors.verticalCenter: parent.verticalCenter
         }
-        ICTextEdit{
+        ICLineEdit{
             id: edit
         }
     }

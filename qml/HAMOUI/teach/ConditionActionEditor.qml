@@ -97,7 +97,7 @@ Item {
                 text: qsTr("Flag Descr:")
                 anchors.verticalCenter: parent.verticalCenter
             }
-            ICTextEdit{
+            ICLineEdit{
                 id:flagDescr
                 width: 200
                 isNumberOnly: false

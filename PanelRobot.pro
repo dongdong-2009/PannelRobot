@@ -82,4 +82,5 @@ message($${INSTALLS})
 
 OTHER_FILES += \
     defines/configs.csv \
+    qml/ICCustomElement/ICLineEdit.qml
 

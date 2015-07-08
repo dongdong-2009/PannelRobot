@@ -32,7 +32,7 @@ Row{
         text: axisName
         width: editorWidth
     }
-    ICTextEdit{
+    ICLineEdit{
         id:pos
         width: editorWidth
         visible: axisDefine == Teach.kAxisType_Servo
@@ -43,13 +43,13 @@ Row{
         width: editorWidth
         visible: axisDefine == Teach.kAxisType_Pneumatic
     }
-    ICTextEdit{
+    ICLineEdit{
         id:speed
         width: editorWidth
         visible: axisDefine == Teach.kAxisType_Servo
         unit: qsTr("%")
     }
-    ICTextEdit{
+    ICLineEdit{
         id:delay
         width: editorWidth
         unit: qsTr("s")

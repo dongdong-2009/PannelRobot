@@ -53,6 +53,9 @@ Item {
             button.x = pData.startPos;
 //            console.log(pData.startPos,button.width);
             pData.startPos += (button.width + spacing);
+        }else if(layoutMode == 1){
+            button.y = pData.startPos;
+            pData.startPos += (button.height + spacing);
         }
 
         var fun = function(){

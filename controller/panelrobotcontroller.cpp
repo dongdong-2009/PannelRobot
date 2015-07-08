@@ -1,6 +1,7 @@
 #include "panelrobotcontroller.h"
 #include <QSqlDatabase>
 #include <QMessageBox>
+#include <QApplication>
 #include "icappsettings.h"
 #include "icmachineconfig.h"
 //#include "icdalhelper.h"
@@ -65,6 +66,10 @@ PanelRobotController::PanelRobotController(QObject *parent) :
         ++p;
     }
     baseFncs_ = pc.ToPairList();
+
+    LoadTranslator_(ICAppSettings().TranslatorName());
+//    LoadTranslator_("HAMOUI_zh_CN.qm");
+    qApp->installTranslator(&translator);
 }
 
 void PanelRobotController::Init()
@@ -235,11 +240,7 @@ QString PanelRobotController::usbDirs()
 
 QString PanelRobotController::localUIDirs()
 {
-#ifdef Q_WS_X11
-    QDir qml("../qml");
-#else
-    QDir qml("qml");
-#endif
+    QDir qml(ICAppSettings::QMLPath);
     if(!qml.exists())
         return QString();
     QStringList dirs = qml.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -253,18 +254,39 @@ QString PanelRobotController::localUIDirs()
 
 void PanelRobotController::setToRunningUIPath(const QString &dirname)
 {
-#ifdef Q_WS_X11
-    QDir qml("../qml");
-#else
-    QDir qml("qml");
-#endif
+    QDir qml(ICAppSettings::QMLPath);
     if(qml.exists(dirname))
     {
         qml.cd(dirname);
         if(qml.exists("main.qml"))
         {
             ICAppSettings settings;
-            settings.SetUIMainName(qml.filePath("main.qml"));
+            settings.SetUIMainName(qml.path());
         }
     }
+}
+
+bool PanelRobotController::changeTranslator(const QString &translatorName)
+{
+    if(LoadTranslator_(translatorName))
+    {
+        SaveTranslatorName_(translatorName);
+        return true;
+    }
+    return false;
+}
+
+void PanelRobotController::SaveTranslatorName_(const QString &name)
+{
+    ICAppSettings().SetTranslatorName(name);
+}
+
+bool PanelRobotController::LoadTranslator_(const QString &name)
+{
+    QDir qml(ICAppSettings::QMLPath);
+    qml.cd(ICAppSettings().UIMainName());
+    if(!qml.exists("translations")) return false;
+    qml.cd("translations");
+    if(!qml.exists(name)) return false;
+    return translator.load(qml.filePath(name));
 }

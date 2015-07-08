@@ -150,6 +150,13 @@ var generateOutputAction = function(point, status, delay){
     };
 }
 
+var generateCommentAction = function(comment){
+    return {
+        "action": actions.ACT_COMMENT,
+        "comment":comment
+    };
+}
+
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
@@ -320,7 +327,7 @@ var endActionToStringHandler = function(actionObject){
 }
 
 var commentActionToStringHandler = function(actionObject){
-    return qsTr("Comment");
+    return qsTr("Comment:") + actionObject.comment;
 }
 
 var flagActionToStringHandler = function(actionObject){

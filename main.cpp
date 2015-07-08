@@ -32,7 +32,10 @@ int main(int argc, char *argv[])
     {
         uiMain = "Init/init.qml";
     }
-    viewer.setMainQmlFile(uiMain);
+//    QLocale locale(QLocale::Chinese, QLocale::China);
+//    qDebug()<<locale.name();
+    appDir.cd(uiMain);
+    viewer.setMainQmlFile(appDir.filePath("main.qml"));
 #ifdef Q_WS_QWS
     viewer.setWindowFlags(Qt::FramelessWindowHint);
 #endif

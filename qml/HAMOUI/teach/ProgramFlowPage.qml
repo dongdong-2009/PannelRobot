@@ -236,25 +236,36 @@ Rectangle {
                 var checkEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('ConditionActionEditor.qml')
                 var conditionEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('SyncActionEditor.qml')
+                var syncEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('CommentActionEditor.qml')
+                var commentEditorObject = editor.createObject(actionEditorContainer);
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
                 actionEditorContainer.addPage(outputEditorObject);
                 actionEditorContainer.addPage(waitEditorObject);
-                actionEditorContainer.addPage(checkEditorObject)
-                actionEditorContainer.addPage(conditionEditorObject)
+                actionEditorContainer.addPage(checkEditorObject);
+                actionEditorContainer.addPage(conditionEditorObject);
+                actionEditorContainer.addPage(syncEditorObject);
+                actionEditorContainer.addPage(commentEditorObject);
+
                 actionEditorContainer.showMenu();
                 actionMenuObject.axisMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(1)});
                 actionMenuObject.outputMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(2)});
                 actionMenuObject.waitMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(3)});
                 actionMenuObject.checkMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(4)});
                 actionMenuObject.conditionMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(5)});
+                actionMenuObject.syncMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(6)});
+                actionMenuObject.commentMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(7)});
+
 
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-
+                syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
             }
         }

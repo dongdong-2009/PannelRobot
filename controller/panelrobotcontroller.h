@@ -163,6 +163,7 @@ public:
     Q_INVOKABLE QString usbDirs();
     Q_INVOKABLE QString localUIDirs();
     Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
+    Q_INVOKABLE bool changeTranslator(const QString& translatorName);
 
 
 signals:
@@ -177,6 +178,8 @@ private:
     void InitDatabase_();
     void InitMold_();
     void InitMachineConfig_();
+    bool LoadTranslator_(const QString& name);
+    void SaveTranslatorName_(const QString& name);
 
     quint32 AddrStrValueToInt(ICAddrWrapperCPTR addr, const QString& value)
     {
@@ -194,6 +197,7 @@ private:
     QList<QPair<int, quint32> > baseFncs_;
     QScriptEngine engine_;
     QScriptValue configRangeGetter_;
+    QTranslator translator;
 };
 
 #endif // PANELROBOTCONTROLLER_H

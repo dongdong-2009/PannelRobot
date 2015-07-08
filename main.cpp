@@ -1,8 +1,10 @@
 #include "qtquick1applicationviewer.h"
 #include <QApplication>
 #include <QDeclarativeContext>
+#include <QDir>
 #include "panelrobotcontroller.h"
 #include "icvirtualkeyboard.h"
+#include "icappsettings.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,15 +20,19 @@ int main(int argc, char *argv[])
     robotController.Init();
     ICVirtualKeyboard virtualKeyboard(ICRobotRangeGetter);
 
-//    QDeclarativeEngine::addImportPath(QLatin1String("qml/ICCustomElement"));
     QtQuick1ApplicationViewer viewer;
-//    viewer.engine()->addImportPath(QLatin1String("qml/ICCustomElement"));
     viewer.rootContext()->setContextProperty("panelRobotController", &robotController);
     viewer.rootContext()->setContextProperty("virtualKeyboard", &virtualKeyboard);
     viewer.addImportPath(QLatin1String("modules"));
-//    viewer.addImportPath(QLatin1String("/home/gausscheng/workprojects/PanelRobot/qml/ICCustomElement"));
     viewer.setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qml/PanelRobot/main.qml"));
+    ICAppSettings settings;
+    QString uiMain = settings.UIMainName();
+    QDir appDir = QDir::current();
+    if(uiMain.isEmpty() || !appDir.exists(uiMain))
+    {
+        uiMain = "Init/init.qml";
+    }
+    viewer.setMainQmlFile(uiMain);
 #ifdef Q_WS_QWS
     viewer.setWindowFlags(Qt::FramelessWindowHint);
 #endif

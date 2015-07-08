@@ -58,7 +58,7 @@ ContentPageBase{
             anchors.top: spliteLine.bottom
         }
         Component.onCompleted: {
-            var yDefinePage1Class = Qt.createComponent('YDefinePage1.qml');
+            var yDefinePage1Class = Qt.createComponent('YDefinePage.qml');
             if (yDefinePage1Class.status == Component.Ready){
                 var page = yDefinePage1Class.createObject(pageContainer, {"ioStart":0})
                 pageContainer.addPage(page)

@@ -218,3 +218,53 @@ void PanelRobotController::OnConfigRebase(QString)
 {
     emit moldChanged();
 }
+
+QString PanelRobotController::usbDirs()
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists())
+        return QString();
+    QStringList dirs = usb.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    for(int i = 0; i != dirs.size(); ++i)
+    {
+        dirs[i] = QString("\"%1\"").arg(dirs.at(i));
+    }
+    QString ret = QString("[%1]").arg(dirs.join(","));
+    return ret;
+}
+
+QString PanelRobotController::localUIDirs()
+{
+#ifdef Q_WS_X11
+    QDir qml("../qml");
+#else
+    QDir qml("qml");
+#endif
+    if(!qml.exists())
+        return QString();
+    QStringList dirs = qml.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    for(int i = 0; i != dirs.size(); ++i)
+    {
+        dirs[i] = QString("\"%1\"").arg(dirs.at(i));
+    }
+    QString ret = QString("[%1]").arg(dirs.join(","));
+    return ret;
+}
+
+void PanelRobotController::setToRunningUIPath(const QString &dirname)
+{
+#ifdef Q_WS_X11
+    QDir qml("../qml");
+#else
+    QDir qml("qml");
+#endif
+    if(qml.exists(dirname))
+    {
+        qml.cd(dirname);
+        if(qml.exists("main.qml"))
+        {
+            ICAppSettings settings;
+            settings.SetUIMainName(qml.filePath("main.qml"));
+        }
+    }
+}

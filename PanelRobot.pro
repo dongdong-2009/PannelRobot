@@ -25,17 +25,19 @@ RCC_DIR = temp_$${suffix}
 
 
 # Add more folders to ship with the application, here
-folder_01.source = qml/PanelRobot
-folder_01.target = qml
-teach.source = qml/PanelRobot/teach
-teach.target = qml/PanelRobot
+#folder_01.source = qml/PanelRobot
+#folder_01.target = qml
+#teach.source = qml/PanelRobot/teach
+#teach.target = qml/PanelRobot
 ICCustomElement.source = qml/ICCustomElement
 ICCustomElement.target = qml
-configs.source = qml/PanelRobot
-configs.target = qml
+#configs.source = qml/PanelRobot
+#configs.target = qml
 utils.source = qml/utils
 utils.target = qml
-DEPLOYMENTFOLDERS = folder_01 ICCustomElement configs utils teach
+init.source = Init
+init.target = .
+DEPLOYMENTFOLDERS =  ICCustomElement utils init
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -79,10 +81,5 @@ INSTALLS += db qmap
 message($${INSTALLS})
 
 OTHER_FILES += \
-    qml/PanelRobot/Theme.js \
-    qml/ICCustomElement/ICStackContainer.qml \
     defines/configs.csv \
-    qml/PanelRobot/configs/IODefines.js \
-    qml/PanelRobot/IOComponent.qml \
-    qml/PanelRobot/configs/ConfigDefines.js
 

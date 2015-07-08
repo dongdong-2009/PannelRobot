@@ -160,6 +160,9 @@ public:
             return QString();
         return ICRobotMold::CurrentMold()->SubProgram(which);
     }
+    Q_INVOKABLE QString usbDirs();
+    Q_INVOKABLE QString localUIDirs();
+    Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
 
 
 signals:

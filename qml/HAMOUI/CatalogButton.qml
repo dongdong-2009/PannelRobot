@@ -1,6 +1,6 @@
 import QtQuick 1.1
 
-Rectangle {
+Item {
     property alias text: text.text
     property alias icon: icon.source
     width: 100

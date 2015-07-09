@@ -16,8 +16,8 @@ Item {
         columns: 4
         spacing: 20
         CatalogButton{
-            id:productMenuBtn
-            text: qsTr("Product")
+            id:runningConfigsBtn
+            text: qsTr("Running Configs")
             icon: "images/product.png"
             y:10
             x:10
@@ -27,9 +27,16 @@ Item {
             }
         }
         CatalogButton{
-            id:stackMenuBtn
-            text: qsTr("stack")
+            id:axisConfigBtn
+            text: qsTr("Axis Configs")
             icon: "images/product.png"
+
+        }
+        CatalogButton{
+            id:structConfigsBtn
+            text: qsTr("Struct Configs")
+            icon: "images/product.png"
+
         }
     }
 

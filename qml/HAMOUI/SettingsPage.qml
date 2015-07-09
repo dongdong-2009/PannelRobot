@@ -31,6 +31,11 @@ ContentPageBase{
                 height: pdata.menuItemHeight
                 itemText: qsTr("Product Settings")
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                onIsCheckedChanged: {
+                    if(isChecked){
+                        pageContainer.setCurrentIndex(0)
+                    }
+                }
             }
             TabMenuItem{
                 id:machineSettingsMenuItem
@@ -38,7 +43,11 @@ ContentPageBase{
                 height: pdata.menuItemHeight
                 itemText: qsTr("Machine Settings")
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-//                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
+                onIsCheckedChanged: {
+                    if(isChecked){
+                        pageContainer.setCurrentIndex(1)
+                    }
+                }
             }
         }
 
@@ -55,9 +64,12 @@ ContentPageBase{
             anchors.top: spliteLine.bottom
         }
         Component.onCompleted: {
-            var psClass = Qt.createComponent("ProductSettings.qml");
-            var psObject = psClass.createObject(pageContainer);
+            var settingClass = Qt.createComponent("ProductSettings.qml");
+            var psObject = settingClass.createObject(pageContainer);
+            settingClass = Qt.createComponent("MachineSettings.qml");
+            var msObject = settingClass.createObject(pageContainer)
             pageContainer.addPage(psObject);
+            pageContainer.addPage(msObject)
             pageContainer.setCurrentIndex(0)
             productSettingsMenuItem.setChecked(true);
         }

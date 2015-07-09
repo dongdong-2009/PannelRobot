@@ -226,11 +226,13 @@ Rectangle {
                         height: 24
                         Text{
                             text:index
+                            width: 35
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
+                            horizontalAlignment: Text.AlignRight
                         }
                         Text {
-                            text:"            " + Teach.actionToString(actionObject)
+                            text:"             " + Teach.actionToString(actionObject)
                             width: programListView.width
                             anchors.verticalCenter: parent.verticalCenter
                         }

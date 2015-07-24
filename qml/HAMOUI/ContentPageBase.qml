@@ -2,11 +2,14 @@ import QtQuick 1.1
 import "Theme.js" as Theme
 import "configs/Keymap.js" as Keymap
 
-Rectangle {
+Item {
     //    property function load(){}
     property alias content:contentContainer.children
     //    property alias menu: menuContainer.children
     property variant menuItemTexts: ["", "", "", "", "", "",""]
+    property  alias contentContainerWidth: contentContainer.width
+    property  alias contentContainerHeight: contentContainer.height
+
 
     focus: true
 
@@ -28,10 +31,11 @@ Rectangle {
         width: parent.width
         height: parent.height
         id:contentLayout
-        Rectangle{
+        Item{
             id:contentContainer
             width: parent.width
             height: parent.height * Theme.defaultTheme.Content.settingHeightProportion
+
             //            anchors.top: parent.top
         }
         Rectangle{
@@ -50,7 +54,7 @@ Rectangle {
             }
             //            anchors.top:contentContainer.bottom
         }
-        Rectangle{
+        Item{
             id:menuContainer
             width: parent.width
             height: parent.height - contentContainer.height - tipContainer.height

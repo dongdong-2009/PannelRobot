@@ -7,6 +7,7 @@ Item {
     height: 62
 
     signal buttonClicked()
+    signal triggered()
     Image {
         id: icon
         source: ""
@@ -22,6 +23,6 @@ Item {
     }
     MouseArea{
         anchors.fill: parent
-        onClicked: {buttonClicked()}
+        onClicked: {buttonClicked();triggered()}
     }
 }

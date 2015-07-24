@@ -110,18 +110,22 @@ Rectangle {
     Rectangle{
         id:container
         width: mainWindow.width
-        //        height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
+        height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
         anchors.top: middleHeader.bottom
         anchors.bottom: parent.bottom
         //        anchors.topMargin: 1
         focus: true
         Loader{
             id:settingPage
-            source: "SettingsPage.qml"
+            source: "settingpages/SettingsPage.qml"
             anchors.fill: parent
+            width: parent.width
+            height: parent.height
         }
         Loader{
             id:manualPage
+            width: parent.width
+            height: parent.height
             source: "ManualPage.qml"
             anchors.fill: parent
             visible: false

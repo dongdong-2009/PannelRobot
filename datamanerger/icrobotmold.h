@@ -9,22 +9,15 @@
 #include "icparameterscache.h"
 #include "icdalhelper.h"
 
-class IRobotMoldError:public QObject
+class IRobotMoldError
 {
-    Q_OBJECT
-    Q_PROPERTY(int errno READ errno WRITE setErrno NOTIFY errnoChanged)
-    Q_PROPERTY(QString errString READ errString WRITE setErrString NOTIFY errStringChanged)
-
-signals:
-    void errnoChanged(int);
-    void errStringChanged(QString);
 public:
     IRobotMoldError(int errno, const QString& errStr):
         errno_(errno),
         errStr_(errStr){}
 
-    int errno() const { return errno_;}
-    void setErrno(int errno) { errno_ = errno;}
+    int errNumber() const { return errno_;}
+    void setErrNumber(int errno) { errno_ = errno;}
 
     QString errString() const { return errStr_;}
     void setErrString(const QString& errStr) { errStr_ = errStr;}

@@ -13,6 +13,7 @@ class ICRobotVirtualhost : public ICVirtualHost
 {
     Q_OBJECT
 public:
+#ifndef NEW_PLAT
     enum ICActionCommand
     {
         CMD_NULL            = 0x0,      //无命令
@@ -127,12 +128,12 @@ public:
 
         StatusCount
     };
+#endif
     explicit ICRobotVirtualhost(uint64_t hostId, QObject* parent = 0);
     static ICVirtualHostPtr RobotVirtualHost()
     {
        return ICVirtualHostManager::GetVirtualHost<ICRobotVirtualhost>(1);
     }
-
     virtual QByteArray HostStatus(const ICAddrWrapper* addr) const
     {
         int v = statusCache_.ConfigValue(addr);
@@ -142,6 +143,7 @@ public:
     {
         return statusCache_.ConfigValue(addr);
     }
+
 
 protected:
     void InitStatusFormatorMap_(){}

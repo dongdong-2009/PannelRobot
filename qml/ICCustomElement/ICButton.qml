@@ -5,6 +5,7 @@ Rectangle {
     property alias icon: icon.source
     property int iconPos: 0
     signal buttonClicked()
+    signal triggered()
     width: 100
     height: 32
     border.width: 1
@@ -45,6 +46,7 @@ Rectangle {
 
         onClicked: {
             buttonClicked()
+            triggered()
         }
     }
 }

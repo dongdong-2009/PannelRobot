@@ -3,6 +3,7 @@
 
 #include "ichctransceiverdata.h"
 
+#ifndef NEW_PLAT
 #define CMDPULSEA			0x60
 #define CMDPULSEB           0x61
 #define CMDTURNAUTO			0x80
@@ -37,6 +38,7 @@ enum CommErrorCode{
     COMMEC_CRCNoEqual = 0x51,
 
 };
+#endif
 
 class ICRobotTransceiverData : public ICHCTransceiverData
 {

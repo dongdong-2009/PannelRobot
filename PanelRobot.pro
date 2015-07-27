@@ -24,6 +24,8 @@ UI_DIR = temp_$${suffix}
 MOC_DIR = temp_$${suffix}
 RCC_DIR = temp_$${suffix}
 
+INCLUDEPATH += vendor/procotol/
+
 
 # Add more folders to ship with the application, here
 #folder_01.source = qml/PanelRobot
@@ -83,5 +85,6 @@ message($${INSTALLS})
 
 OTHER_FILES += \
     defines/configs.csv \
-    qml/ICCustomElement/ICLineEdit.qml
+    qml/ICCustomElement/ICLineEdit.qml \
+    Init/main.qml
 

@@ -13,6 +13,7 @@ ICRobotTransceiverData::ICRobotTransceiverData()
 {
 }
 
+#ifndef NEW_PLAT
 bool ICRobotFrameTransceiverDataMapper::FrameToTransceiverData(ICTransceiverData *recvData, const uint8_t *buffer, size_t size, const ICTransceiverData *sentData)
 {
     ICRobotTransceiverData* robotRecvData = static_cast<ICRobotTransceiverData*>(recvData);
@@ -21,6 +22,7 @@ bool ICRobotFrameTransceiverDataMapper::FrameToTransceiverData(ICTransceiverData
     {
         return false;
     }
+
     if(size < FrameMinSize())
     {
         robotRecvData->SetFunctionCode(0x80);
@@ -112,3 +114,16 @@ size_t ICRobotFrameTransceiverDataMapper::TransceiverDataToFrame(uint8_t *dest, 
     dest[dI++] = Get8BitNum(crc, 0);
     return dI;
 }
+#endif
+
+#ifdef NEW_PLAT
+int ICRobotFrameTransceiverDataMapper::NeedToRecvLength(const ICTransceiverData *sentData) const
+{
+    const ICHCTransceiverData *hcdata = static_cast<const ICHCTransceiverData*>(sentData);
+        if(hcdata == NULL)
+        {
+            return FrameMinSize();
+        }
+        return FRAME_HEAD_SIZE + (hcdata->GetLength() << 2) + FRAME_CRC_LENGTH;
+}
+#endif

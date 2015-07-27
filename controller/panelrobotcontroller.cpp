@@ -78,7 +78,7 @@ void PanelRobotController::Init()
     InitDatabase_();
     InitMold_();
     InitMachineConfig_();
-    host_->SetCommunicateDebug(false);
+    host_->SetCommunicateDebug(true);
 }
 
 void PanelRobotController::InitDatabase_()
@@ -131,7 +131,11 @@ void PanelRobotController::OnNeedToInitHost()
 
 void PanelRobotController::sendKeyCommandToHost(int key)
 {
+#ifdef NEW_PLAT
+#else
     ICRobotVirtualhost::SendKeyCommand(key);
+#endif
+
 }
 
 quint32 PanelRobotController::getConfigValue(const QString &addr)

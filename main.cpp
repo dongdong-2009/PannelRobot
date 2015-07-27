@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     QDir appDir = QDir::current();
     if(uiMain.isEmpty() || !appDir.exists(uiMain))
     {
-        uiMain = "Init/init.qml";
+        uiMain = "Init";
     }
 //    QLocale locale(QLocale::Chinese, QLocale::China);
 //    qDebug()<<locale.name();

@@ -160,7 +160,9 @@ public:
     static bool InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >& data);
     static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
 
+#ifndef NEW_PLAT
     static void SendKeyCommand(int key, int cmd = CMD_Action , int act = 0, int sum = 0);
+#endif
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();

@@ -91,18 +91,18 @@ function KeyStruct(keyVal, actionVal, isPressed, keyType){
 }
 
 var keyStructs = new HashTable();
-keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, CMD_JOG_PX, false, Axis_Type));
-keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, CMD_JOG_PY, false, Axis_Type));
-keyStructs.put(KEY_Y1Sub, new KeyStruct(KEY_Y1Sub, CMD_JOG_PZ, false, Axis_Type));
-keyStructs.put(KEY_Y1Add, new KeyStruct(KEY_Y1Add, CMD_JOG_PU, false, Axis_Type));
-keyStructs.put(KEY_ZSub,  new KeyStruct(KEY_ZSub,  CMD_JOG_PV, false, Axis_Type));
-keyStructs.put(KEY_ZAdd,  new KeyStruct(KEY_ZAdd,  CMD_JOG_PW, false, Axis_Type));
-keyStructs.put(KEY_X2Sub, new KeyStruct(KEY_X2Sub, CMD_JOG_PR, false, Axis_Type));
-keyStructs.put(KEY_X2Add, new KeyStruct(KEY_X2Add, 0xD5, false, Axis_Type));
-keyStructs.put(KEY_Y2Sub, new KeyStruct(KEY_Y2Sub, 0xD6, false, Axis_Type));
-keyStructs.put(KEY_Y2Add, new KeyStruct(KEY_Y2Add, 0xD7, false, Axis_Type));
-keyStructs.put(KEY_CSub,  new KeyStruct(KEY_CSub,  0xD2, false, Axis_Type));
-keyStructs.put(KEY_CAdd,  new KeyStruct(KEY_CAdd,  0xD3, false, Axis_Type));
+keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, CMD_JOG_NX, false, Axis_Type));
+keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, CMD_JOG_PX, false, Axis_Type));
+keyStructs.put(KEY_Y1Sub, new KeyStruct(KEY_Y1Sub, CMD_JOG_NY, false, Axis_Type));
+keyStructs.put(KEY_Y1Add, new KeyStruct(KEY_Y1Add, CMD_JOG_PY, false, Axis_Type));
+keyStructs.put(KEY_ZSub,  new KeyStruct(KEY_ZSub,  CMD_JOG_NZ, false, Axis_Type));
+keyStructs.put(KEY_ZAdd,  new KeyStruct(KEY_ZAdd,  CMD_JOG_PZ, false, Axis_Type));
+keyStructs.put(KEY_X2Sub, new KeyStruct(KEY_X2Sub, CMD_JOG_NU, false, Axis_Type));
+keyStructs.put(KEY_X2Add, new KeyStruct(KEY_X2Add, CMD_JOG_PU, false, Axis_Type));
+keyStructs.put(KEY_Y2Sub, new KeyStruct(KEY_Y2Sub, CMD_JOG_NV, false, Axis_Type));
+keyStructs.put(KEY_Y2Add, new KeyStruct(KEY_Y2Add, CMD_JOG_PV, false, Axis_Type));
+keyStructs.put(KEY_CSub,  new KeyStruct(KEY_CSub,  CMD_JOG_NW, false, Axis_Type));
+keyStructs.put(KEY_CAdd,  new KeyStruct(KEY_CAdd,  CMD_JOG_PW, false, Axis_Type));
 
 //keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, 0xCB, false, Axis_Type));
 //keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, 0xCC, false, Axis_Type));

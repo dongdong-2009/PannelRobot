@@ -132,6 +132,7 @@ void PanelRobotController::OnNeedToInitHost()
 void PanelRobotController::sendKeyCommandToHost(int key)
 {
 #ifdef NEW_PLAT
+    ICRobotVirtualhost::SendKeyCommand(key);
 #else
     ICRobotVirtualhost::SendKeyCommand(key);
 #endif

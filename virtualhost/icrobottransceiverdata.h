@@ -125,7 +125,7 @@ public:
         return new ICRobotTransceiverData(hostID,
                                           FunctionCode_ReadAddr,
                                           addr,
-                                          50,
+                                          16,
                                           ICTransceiverDataBuffer());
 #else
         return new ICRobotTransceiverData(hostID,
@@ -144,7 +144,11 @@ public:
                                                   int sum)
     {
 #ifdef NEW_PLAT
-        return NULL;
+        return new ICRobotTransceiverData(hostID,
+                                          FunctionCode_WriteAddr,
+                                          ICAddr_System_Retain_0,
+                                          1,
+                                          ICTransceiverDataBuffer()<<cmd);
 #else
         int addr = cmd;
         int l;
@@ -271,7 +275,8 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionAddrValid(int addr, int
        {
        case FunctionCode_ReadAddr:
        case FunctionCode_ReadDiffAddr:
-           return (addr > ICAddr_BeginSection) && (addr < ICAddr_Read_Section_End);
+           return ((addr > ICAddr_BeginSection) && (addr < ICAddr_Read_Section_End))||
+                   (addr == ICAddr_System_Retain_1);
        case FunctionCode_WriteAddr:
            return (addr > ICAddr_BeginSection);
        case FunctionCode_Err:
@@ -298,16 +303,24 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionAddrValid(int addr, int
 
 inline int ICRobotFrameTransceiverDataMapper::GetAddrFromBuffer(const uint8_t *buffer) const
 {
-//    return static_cast<ICAddr>((buffer[2] << 8) | buffer[3]);
+#ifdef NEW_PLAT
+    return static_cast<ICAddr>((buffer[2] << 8) | buffer[3]);
+#else
+    //    return static_cast<ICAddr>((buffer[2] << 8) | buffer[3]);
     Q_UNUSED(buffer)
     return 0;
+#endif
 }
 
 inline size_t ICRobotFrameTransceiverDataMapper::GetBufferDataLength(const uint8_t *buffer) const
 {
+#ifdef NEW_PLAT
+    return buffer[FRAME_LENGTH_POS] << 2;
+#else
     Q_UNUSED(buffer)
 //    return buffer[FRAME_LENGTH_POS] << 2;
     return 0;
+#endif
 }
 
 #endif // ICROBOTTRANSCEIVERDATA_H

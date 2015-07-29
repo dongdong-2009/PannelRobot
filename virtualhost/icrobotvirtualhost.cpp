@@ -190,12 +190,24 @@ void ICRobotVirtualhost::CommunicateImpl()
     if(likely(recvRet_ && !recvFrame_->IsError()))
         //    if(1)
     {
-        //        if(IsCommunicateDebug())
-        //        {
-        //            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-        //            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-        //            //            emit CommunicateErrChecked();
-        //        }
+//        if(IsCommunicateDebug())
+//        {
+//            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+//            ICHCTransceiverData::ICTransceiverDataBuffer temp = recvFrame_->Data();
+//            int k = temp.size();
+//            QString v;
+//            for(int i=0;i<k;i++)
+//            {
+//                if(temp.at(i)==0)break;
+//                v.append(char(temp.at(i)&0Xff));
+//                v.append(char((temp.at(i)>>8)&0Xff)) ;
+//                v.append(char((temp.at(i)>>16)&0Xff)) ;
+//                v.append(char((temp.at(i)>>24)&0Xff));
+//            }
+//            qDebug()<<"Version:"<< v;
+//            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
+//            //            emit CommunicateErrChecked();
+//        }
         if(recvFrame_->IsQuery())
         {
 #ifdef NEW_PLAT
@@ -206,6 +218,7 @@ void ICRobotVirtualhost::CommunicateImpl()
                 statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
             }
             currentStatusGroup_ = ICAddr_Read_Status0;
+//            currentStatusGroup_ = ICAddr_System_Retain_0+1;
 //            ++currentStatusGroup_;
 //            currentStatusGroup_ %= 11;
 #else
@@ -293,7 +306,17 @@ bool ICRobotVirtualhost::IsOutputOnImpl(int index) const
     return false;
 }
 
-#ifndef NEW_PLAT
+#ifdef NEW_PLAT
+void ICRobotVirtualhost::SendKeyCommand(int cmd)
+{
+    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillKeyCommand(kHostID,
+                                                                                  cmd,
+                                                                                  0,
+                                                                                  0,
+                                                                                  0);
+    keyCommandList_.append(toSentFrame);
+}
+#else
 void ICRobotVirtualhost::SendKeyCommand(int cmd, int key, int act, int sum)
 {
     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillKeyCommand(kHostID,

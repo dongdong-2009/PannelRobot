@@ -1,6 +1,55 @@
 .pragma library
 Qt.include("../../utils/HashTable.js")
 
+var CMD_NULL = 0; //< 无命令
+var CMD_MANUAL = 1; //< 手动命令
+var CMD_AUTO = 2; //< 自动命令
+var CMD_CONFIG = 3; //< 配置命令
+var CMD_IO = 4; // IO命令
+
+var CMD_POWER_OFF0 = 0x0100;	// 第一个逻辑电机关闭
+var CMD_POWER_OFF  = 0x017F;	// 所有逻辑电机关闭
+var CMD_POWER_ON0  = 0x0180;	// 第一个逻辑电机开机
+var CMD_POWER_ON  = 0x01FF;	// 所有逻辑电机开机
+
+var CMD_JOG_N0     = 0x0200;    // 关节坐标系，第一个轴反向点动
+var CMD_JOG_P0     = 0x0280;	// 关节坐标系，第一个轴正向点动
+
+var CMD_JOG_PX     = 0x0300;	// 直角坐标系位置轴，X轴正向点动
+var CMD_JOG_PY     = 0x0301;	// 直角坐标系位置轴，Y轴正向点动
+var CMD_JOG_PZ     = 0x0302;	// 直角坐标系位置轴，Z轴正向点动
+var CMD_JOG_PU     = 0x0303;	// 直角坐标系姿势轴，X轴正向点动
+var CMD_JOG_PV     = 0x0304;	// 直角坐标系姿势轴，X轴正向点动
+var CMD_JOG_PW     = 0x0305;	// 直角坐标系姿势轴，X轴正向点动
+var CMD_JOG_PR     = 0x0306;	// 极坐标系，远离原点点动
+
+var CMD_JOG_NX     = 0x0380;	// 直角坐标系位置轴，X轴反向点动
+var CMD_JOG_NY     = 0x0381;	// 直角坐标系位置轴，Y轴反向点动
+var CMD_JOG_NZ     = 0x0382;	// 直角坐标系位置轴，Z轴反向点动
+var CMD_JOG_NU     = 0x0383;	// 直角坐标系姿势轴，X轴反向点动
+var CMD_JOG_NV     = 0x0384;	// 直角坐标系姿势轴，X轴反向点动
+var CMD_JOG_NW     = 0x0385;	// 直角坐标系姿势轴，X轴反向点动
+var CMD_JOG_NR     = 0x0386;	// 极坐标系，靠近原点点动
+
+var CMD_FIND_ZERO0 = 0x0400;	// 第一个逻辑轴，找零
+var CMD_FIND_ZERO  = 0x047F;	// 所有逻辑轴，同时找零
+
+var CMD_GO_HOME0   = 0x0500;	// 第一个逻辑轴，回零点
+var CMD_GO_HOME    = 0x057F;	// 所有逻辑轴，同时回零点
+
+var CMD_STOP0      = 0x0600;	// 立即停止第一个逻辑轴相关的运动- 回零、找零等
+var CMD_STOP       = 0x067F;	// 立即停止所有逻辑轴的运动- 回零、找零等
+var CMD_SLOW_STOP0 = 0x0680;	// 减速停止第一个逻辑轴相关的运动- 回零、找零等
+var CMD_SLOW_STOP  = 0x06FF;	// 减速停止所有逻辑轴的运动- 回零、找零等
+
+var CMD_RUN_LENGTH_P0 = 0x0700;	// 第一个逻辑轴-运行正向测试脉冲，带一个参数- 正脉冲数
+var CMD_RUN_LENGTH_N0 = 0x0780;	// 第一个逻辑轴-运行反向测试脉冲，带一个参数- 正脉冲数
+
+var CMD_IO_OUT_P0  = 0x0800;	// 第一个IO端口输出高
+var CMD_IO_OUT_N0  = 0x0900;    // 第一个IO端口输出低
+
+var CMD_INVALID = 0x7FFF;
+
 var KEY_F1 = parseInt(Qt.Key_C);
 var KEY_F2 = parseInt(Qt.Key_W);
 var KEY_F3 = parseInt(0x52);
@@ -42,18 +91,32 @@ function KeyStruct(keyVal, actionVal, isPressed, keyType){
 }
 
 var keyStructs = new HashTable();
-keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, 0xCB, false, Axis_Type));
-keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, 0xCC, false, Axis_Type));
-keyStructs.put(KEY_Y1Sub, new KeyStruct(KEY_Y1Sub, 0xCD, false, Axis_Type));
-keyStructs.put(KEY_Y1Add, new KeyStruct(KEY_Y1Add, 0xCE, false, Axis_Type));
-keyStructs.put(KEY_ZSub,  new KeyStruct(KEY_ZSub,  0xCF, false, Axis_Type));
-keyStructs.put(KEY_ZAdd,  new KeyStruct(KEY_ZAdd,  0xD1, false, Axis_Type));
-keyStructs.put(KEY_X2Sub, new KeyStruct(KEY_X2Sub, 0xD4, false, Axis_Type));
+keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, CMD_JOG_PX, false, Axis_Type));
+keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, CMD_JOG_PY, false, Axis_Type));
+keyStructs.put(KEY_Y1Sub, new KeyStruct(KEY_Y1Sub, CMD_JOG_PZ, false, Axis_Type));
+keyStructs.put(KEY_Y1Add, new KeyStruct(KEY_Y1Add, CMD_JOG_PU, false, Axis_Type));
+keyStructs.put(KEY_ZSub,  new KeyStruct(KEY_ZSub,  CMD_JOG_PV, false, Axis_Type));
+keyStructs.put(KEY_ZAdd,  new KeyStruct(KEY_ZAdd,  CMD_JOG_PW, false, Axis_Type));
+keyStructs.put(KEY_X2Sub, new KeyStruct(KEY_X2Sub, CMD_JOG_PR, false, Axis_Type));
 keyStructs.put(KEY_X2Add, new KeyStruct(KEY_X2Add, 0xD5, false, Axis_Type));
 keyStructs.put(KEY_Y2Sub, new KeyStruct(KEY_Y2Sub, 0xD6, false, Axis_Type));
 keyStructs.put(KEY_Y2Add, new KeyStruct(KEY_Y2Add, 0xD7, false, Axis_Type));
 keyStructs.put(KEY_CSub,  new KeyStruct(KEY_CSub,  0xD2, false, Axis_Type));
 keyStructs.put(KEY_CAdd,  new KeyStruct(KEY_CAdd,  0xD3, false, Axis_Type));
+
+//keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, 0xCB, false, Axis_Type));
+//keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, 0xCC, false, Axis_Type));
+//keyStructs.put(KEY_Y1Sub, new KeyStruct(KEY_Y1Sub, 0xCD, false, Axis_Type));
+//keyStructs.put(KEY_Y1Add, new KeyStruct(KEY_Y1Add, 0xCE, false, Axis_Type));
+//keyStructs.put(KEY_ZSub,  new KeyStruct(KEY_ZSub,  0xCF, false, Axis_Type));
+//keyStructs.put(KEY_ZAdd,  new KeyStruct(KEY_ZAdd,  0xD1, false, Axis_Type));
+//keyStructs.put(KEY_X2Sub, new KeyStruct(KEY_X2Sub, 0xD4, false, Axis_Type));
+//keyStructs.put(KEY_X2Add, new KeyStruct(KEY_X2Add, 0xD5, false, Axis_Type));
+//keyStructs.put(KEY_Y2Sub, new KeyStruct(KEY_Y2Sub, 0xD6, false, Axis_Type));
+//keyStructs.put(KEY_Y2Add, new KeyStruct(KEY_Y2Add, 0xD7, false, Axis_Type));
+//keyStructs.put(KEY_CSub,  new KeyStruct(KEY_CSub,  0xD2, false, Axis_Type));
+//keyStructs.put(KEY_CAdd,  new KeyStruct(KEY_CAdd,  0xD3, false, Axis_Type));
+
 keyStructs.put(KEY_F1, new KeyStruct(KEY_F1, 0, false, Menu_Type));
 keyStructs.put(KEY_F2, new KeyStruct(KEY_F2, 0, false, Menu_Type));
 keyStructs.put(KEY_F3, new KeyStruct(KEY_F3, 0, false, Menu_Type));

@@ -79,7 +79,10 @@ db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
 qmap.path = /home/root
 qmap.files += $${reinstallDir}/$${SK_SIZE}-inch-qmap/*
-INSTALLS += db qmap
+usr_bin_scripts.path = /usr/bin
+usr_bin_scripts.files += $${reinstallDir}/usr_bin_scripts/*
+usr_bin_scripts.files += $${reinstallDir}/$${SK_SIZE}RunApp/*
+INSTALLS += db qmap usr_bin_scripts
 #INSTALLS += target
 message($${INSTALLS})
 

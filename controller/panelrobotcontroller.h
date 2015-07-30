@@ -164,6 +164,8 @@ public:
     Q_INVOKABLE QString localUIDirs();
     Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
+    Q_INVOKABLE QString scanUSBUpdaters(const QString& filter);
+    Q_INVOKABLE void startUpdate(const QString& updater);
 
 
 signals:

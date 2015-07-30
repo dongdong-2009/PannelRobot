@@ -7,6 +7,7 @@
 //#include "icdalhelper.h"
 #include "icconfigsaddr.h"
 #include "parser.h"
+#include "icupdatesystem.h"
 
 static QScriptValue *getConfigRange_;
 
@@ -294,4 +295,25 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
     qml.cd("translations");
     if(!qml.exists(name)) return false;
     return translator.load(qml.filePath(name));
+}
+
+QString PanelRobotController::scanUSBUpdaters(const QString &filter)
+{
+    QDir usb(ICAppSettings::UsbPath);
+    QStringList updaters = usb.entryList(QStringList()<<QString("%1*.bfe").arg(filter));
+    QString ret = "[";
+    for(int i = 0; i != updaters.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(updaters.at(i)));
+    }
+    if(updaters.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+void PanelRobotController::startUpdate(const QString &updater)
+{
+    ICUpdateSystem us;
+    us.StartUpdate(updater);
 }

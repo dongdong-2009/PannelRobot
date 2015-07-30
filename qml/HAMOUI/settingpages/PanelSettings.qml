@@ -49,17 +49,13 @@ Item {
                     width: parent.width
                     height: parent.height
                     model: updaterModel
-                    highlight: Rectangle {
-                        x:1
-                        color: "lightsteelblue"
-                        width: updaterView.width - 1
-
-                    }
                     delegate: Rectangle{
                         width: parent.width
                         height: 32
                         border.width: 1
                         border.color: "black"
+                        color: updaterView.currentIndex == index ? "lightsteelblue" : "white"
+
                         Text{
                             text: name
                             anchors.verticalCenter: parent.verticalCenter
@@ -84,6 +80,7 @@ Item {
                         var updatersJSON = panelRobotController.scanUSBUpdaters("HCRobot");
 
                         var upaaters = JSON.parse(updatersJSON);
+                        updaterModel.clear();
                         for(var i = 0; i < upaaters.length; ++i){
                             updaterModel.append({"name":upaaters[i]});
                         }

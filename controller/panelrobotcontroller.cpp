@@ -315,5 +315,6 @@ QString PanelRobotController::scanUSBUpdaters(const QString &filter)
 void PanelRobotController::startUpdate(const QString &updater)
 {
     ICUpdateSystem us;
+    us.SetPacksDir(ICAppSettings().UsbPath);
     us.StartUpdate(updater);
 }

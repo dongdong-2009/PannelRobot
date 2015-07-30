@@ -1,0 +1,2 @@
+#! /bin/sh
+scp -r qml root@192.168.2.4:/opt/Qt/apps

@@ -84,6 +84,10 @@ var KEY_Return = parseInt(Qt.Key_D);
 var KEY_Up    = parseInt(Qt.Key_I);
 var KEY_Down  = parseInt(Qt.Key_N);
 
+var KNOB_MANUAL= parseInt(Qt.Key_F4);
+var KNOB_STOP = parseInt(Qt.key_F7);
+var KNOB_AUTO = parseInt(Qt.Key_F5);
+
 var Menu_Type = 0;
 var Axis_Type = 1;
 var Command_Type = 2;

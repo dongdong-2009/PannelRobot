@@ -48,6 +48,13 @@ var CMD_RUN_LENGTH_N0 = 0x0780;	// 第一个逻辑轴-运行反向测试脉冲�
 var CMD_IO_OUT_P0  = 0x0800;	// 第一个IO端口输出高
 var CMD_IO_OUT_N0  = 0x0900;    // 第一个IO端口输出低
 
+var CMD_KEY_RUN      = 0x0A00; //< 启动命令
+var CMD_KEY_STOP     = 0x0A01; //< 停止命令
+var CMD_KEY_ORIGIN   = 0x0A02; //< 原点命令
+var CMD_KEY_RETURN   = 0x0A03; //< 复归命令
+var CMD_KEY_UP       = 0x0A04; //< 上命令
+var CMD_KEY_DOWN     = 0x0A05; //< 下命令
+
 var CMD_INVALID = 0x7FFF;
 
 var KEY_F1 = parseInt(Qt.Key_C);
@@ -103,6 +110,12 @@ keyStructs.put(KEY_Y2Sub, new KeyStruct(KEY_Y2Sub, CMD_JOG_NV, false, Axis_Type)
 keyStructs.put(KEY_Y2Add, new KeyStruct(KEY_Y2Add, CMD_JOG_PV, false, Axis_Type));
 keyStructs.put(KEY_CSub,  new KeyStruct(KEY_CSub,  CMD_JOG_NW, false, Axis_Type));
 keyStructs.put(KEY_CAdd,  new KeyStruct(KEY_CAdd,  CMD_JOG_PW, false, Axis_Type));
+keyStructs.put(KEY_Run, new KeyStruct(KEY_Run      , CMD_KEY_RUN    , false, Command_Type));
+keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop    , CMD_KEY_STOP   , false, Command_Type));
+keyStructs.put(KEY_Origin, new KeyStruct(KEY_Origin, CMD_KEY_ORIGIN , false, Command_Type));
+keyStructs.put(KEY_Return, new KeyStruct(KEY_Return, CMD_KEY_RETURN , false, Command_Type));
+keyStructs.put(KEY_Up, new KeyStruct(KEY_Up        , CMD_KEY_UP     , false, Command_Type));
+keyStructs.put(KEY_Down, new KeyStruct(KEY_Down    , CMD_KEY_DOWN   , false, Command_Type));
 
 //keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, 0xCB, false, Axis_Type));
 //keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, 0xCC, false, Axis_Type));
@@ -122,12 +135,12 @@ keyStructs.put(KEY_F2, new KeyStruct(KEY_F2, 0, false, Menu_Type));
 keyStructs.put(KEY_F3, new KeyStruct(KEY_F3, 0, false, Menu_Type));
 keyStructs.put(KEY_F4, new KeyStruct(KEY_F4, 0, false, Menu_Type));
 keyStructs.put(KEY_F5, new KeyStruct(KEY_F5, 0, false, Menu_Type));
-keyStructs.put(KEY_Run, new KeyStruct(KEY_Run   , 0xC1, false, Command_Type));
-keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop  , 0xC2, false, Command_Type));
-keyStructs.put(KEY_Origin, new KeyStruct(KEY_Origin, 0xD8, false, Command_Type));
-keyStructs.put(KEY_Return, new KeyStruct(KEY_Return, 0xD9, false, Command_Type));
-keyStructs.put(KEY_Up, new KeyStruct(KEY_Up    , 0xC3, false, Command_Type));
-keyStructs.put(KEY_Down, new KeyStruct(KEY_Down  , 0xC4, false, Command_Type));
+//keyStructs.put(KEY_Run, new KeyStruct(KEY_Run   , 0xC1, false, Command_Type));
+//keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop  , 0xC2, false, Command_Type));
+//keyStructs.put(KEY_Origin, new KeyStruct(KEY_Origin, 0xD8, false, Command_Type));
+//keyStructs.put(KEY_Return, new KeyStruct(KEY_Return, 0xD9, false, Command_Type));
+//keyStructs.put(KEY_Up, new KeyStruct(KEY_Up    , 0xC3, false, Command_Type));
+//keyStructs.put(KEY_Down, new KeyStruct(KEY_Down  , 0xC4, false, Command_Type));
 function setKeyPressed(key, isPressed){
     keyStructs.get(key).isPressed = isPressed;
 }

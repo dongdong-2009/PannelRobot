@@ -327,3 +327,11 @@ void ICRobotVirtualhost::SendKeyCommand(int cmd, int key, int act, int sum)
     keyCommandList_.append(toSentFrame);
 }
 #endif
+
+void ICRobotVirtualhost::AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int addr, int value)
+{
+    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillWriteConfigCommand(kHostID,
+                                                                                          addr,
+                                                                                          value);
+    hostPtr->AddCommunicationFrame(toSentFrame);
+}

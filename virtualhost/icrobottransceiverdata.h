@@ -192,6 +192,19 @@ public:
 #endif
     }
 
+    static ICRobotTransceiverData* FillWriteConfigCommand(uint8_t hostID,
+                                                          int addr,
+                                                          int value)
+    {
+#ifdef NEW_PLAT
+        return new ICRobotTransceiverData(hostID,
+                                          FunctionCode_WriteAddr,
+                                          addr,
+                                          1,
+                                          ICTransceiverDataBuffer()<<value);
+#else
+#endif
+    }
 
     virtual bool IsError() const { return (GetFunctionCode() & 0x80) > 0;}
 

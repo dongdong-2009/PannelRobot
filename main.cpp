@@ -30,11 +30,16 @@ int main(int argc, char *argv[])
     QDir appDir = QDir::current();
     if(uiMain.isEmpty() || !appDir.exists(uiMain))
     {
+#ifdef Q_WS_QWS
         uiMain = "Init";
+#else
+        uiMain = "../Init";
+#endif
     }
 //    QLocale locale(QLocale::Chinese, QLocale::China);
 //    qDebug()<<locale.name();
     appDir.cd(uiMain);
+    qDebug()<<appDir.filePath("main.qml");
     viewer.setMainQmlFile(appDir.filePath("main.qml"));
 #ifdef Q_WS_QWS
     viewer.setWindowFlags(Qt::FramelessWindowHint);

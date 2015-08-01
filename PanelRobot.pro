@@ -82,7 +82,10 @@ qmap.files += $${reinstallDir}/$${SK_SIZE}-inch-qmap/*
 usr_bin_scripts.path = /usr/bin
 usr_bin_scripts.files += $${reinstallDir}/usr_bin_scripts/*
 usr_bin_scripts.files += $${reinstallDir}/$${SK_SIZE}RunApp/*
-INSTALLS += db qmap usr_bin_scripts
+qmls.path = $${target.path}/qml
+qmls.files += qml/App_*
+
+INSTALLS += db qmap usr_bin_scripts qmls
 #INSTALLS += target
 message($${INSTALLS})
 

@@ -45,12 +45,41 @@ Item {
 //        anchors.fill: parent
 //        anchors.top: parent.top
 //        anchors.bottom: parent.bottom
-        ICConfigEdit{
-            id:productTarget
-            configName: qsTr("Product Target")
-            configAddr: "m_rw_0_16_0_16"
-            alignMode: 1
-            unit: "a"
+        Column{
+            ICConfigEdit{
+                id:productTarget
+                width: 120
+                height: 32
+                configName: qsTr("Product Target")
+                configAddr: "m_rw_0_16_0_16"
+                alignMode: 1
+                unit: "a"
+            }
+            Row{
+                height: 32
+                ICConfigEdit{
+                    width: 120
+                    height: 32
+                    id:debugAddr
+                    configName: qsTr("Addr")
+                    alignMode: 1
+                }
+                ICConfigEdit{
+                    width: 120
+                    height: 32
+                    id:debugVal
+                    configName: qsTr("value")
+                    alignMode: 1
+                }
+                ICButton{
+                    id:debug
+                    text: qsTr("Send")
+                    onButtonClicked: {
+                        panelRobotController.modifyConfigValue(parseInt(debugAddr.configValue),
+                                                               parseInt(debugVal.configValue));
+                    }
+                }
+            }
         }
     }
 

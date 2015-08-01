@@ -167,6 +167,8 @@ public:
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter);
     Q_INVOKABLE void startUpdate(const QString& updater);
 
+    Q_INVOKABLE void modifyConfigValue(int addr, int value);
+
 
 signals:
 //    void currentMoldChanged(QString);

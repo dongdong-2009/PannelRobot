@@ -33,11 +33,14 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     qmlRegisterType<ICAxisDefine>("com.szhc.axis", 1, 0, "ICAxisDefine");
 
     // get ConfigDefines from js
-#ifdef Q_WS_QWS
-    QString scriptFileName("qml/PanelRobot/configs/ConfigDefines.js");
-#else
-    QString scriptFileName("../qml/PanelRobot/configs/ConfigDefines.js");
-#endif
+    ICAppSettings settings;
+    QString uiMain = settings.UIMainName();
+
+    QString scriptFileName(QString("%1/configs/ConfigDefines.js").arg(uiMain));
+//#ifdef Q_WS_QWS
+//#else
+//    QString scriptFileName(QString("../%1/configs/ConfigDefines.js"));
+//#endif
     QFile scriptFile(scriptFileName);
     scriptFile.open(QIODevice::ReadOnly);
     QString scriptContent = scriptFile.readAll();
@@ -316,5 +319,12 @@ void PanelRobotController::startUpdate(const QString &updater)
 {
     ICUpdateSystem us;
     us.SetPacksDir(ICAppSettings().UsbPath);
+    host_->StopCommunicate();
     us.StartUpdate(updater);
+
+}
+
+void PanelRobotController::modifyConfigValue(int addr, int value)
+{
+    ICRobotVirtualhost::AddWriteConfigCommand(host_, addr, value);
 }

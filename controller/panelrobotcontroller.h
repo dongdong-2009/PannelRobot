@@ -168,6 +168,7 @@ public:
     Q_INVOKABLE void startUpdate(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
+    Q_INVOKABLE int statusValue(const QString& addr) const;
 
 
 signals:

@@ -22,8 +22,13 @@ defineRows =  open(args.input, 'r').read().split("\n")
 del defineRows[len(defineRows) -1]
 rowItems = []
 addrWrappers = []
+line = 0
 for row in defineRows:
+    ++line
     rowItems = row.split(",")
+    if len(rowItems) != 8:
+        print(line)
+        continue
     addrWrappers.append(AddrWrapper(rowItems[0].replace('"',''),
                                     rowItems[1].replace('"',''),
                                     rowItems[2].replace('"',''),

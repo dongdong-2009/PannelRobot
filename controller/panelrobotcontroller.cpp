@@ -328,3 +328,10 @@ void PanelRobotController::modifyConfigValue(int addr, int value)
 {
     ICRobotVirtualhost::AddWriteConfigCommand(host_, addr, value);
 }
+
+int PanelRobotController::statusValue(const QString& addr) const
+{
+    ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
+    if(configWrapper == NULL) return 0;
+    return host_->HostStatusValue(configWrapper);
+}

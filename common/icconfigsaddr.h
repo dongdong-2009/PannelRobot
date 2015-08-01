@@ -445,4 +445,20 @@ extern  const ICAddrWrapper  c_r_0_4_0_44;    //< Y2轴后一位小数
 extern  const ICAddrWrapper  c_r_4_4_0_44;    //< A轴后一位小数
 extern  const ICAddrWrapper  c_r_8_4_0_44;    //< B轴后一位小数
 extern  const ICAddrWrapper  c_r_12_4_0_44;    //< C轴后一位小数
+extern  const ICAddrWrapper  c_r_0_32_0_900;    //< Status1
+extern  const ICAddrWrapper  c_r_0_32_0_901;    //< Status2
+extern  const ICAddrWrapper  c_r_0_32_0_902;    //< Status3
+extern  const ICAddrWrapper  c_r_0_32_0_903;    //< Status4
+extern  const ICAddrWrapper  c_r_0_32_0_904;    //< Status5
+extern  const ICAddrWrapper  c_r_0_32_0_905;    //< Status6
+extern  const ICAddrWrapper  c_r_0_32_0_906;    //< Status7
+extern  const ICAddrWrapper  c_r_0_32_0_907;    //< Status8
+extern  const ICAddrWrapper  c_r_0_32_0_908;    //< Status9
+extern  const ICAddrWrapper  c_r_0_32_0_909;    //< Status10
+extern  const ICAddrWrapper  c_r_0_32_0_910;    //< Status11
+extern  const ICAddrWrapper  c_r_0_32_0_911;    //< Status12
+extern  const ICAddrWrapper  c_r_0_32_0_912;    //< Status13
+extern  const ICAddrWrapper  c_r_0_32_0_913;    //< Status14
+extern  const ICAddrWrapper  c_r_0_32_0_914;    //< Status15
+extern  const ICAddrWrapper  c_r_0_32_0_915;    //< Status16
 #endif // ICADDRWRAPPER_H

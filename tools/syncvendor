@@ -1,0 +1,22 @@
+#! /bin/sh
+
+if [ $# -lt 1 ]
+then
+	echo "Usage: syncvendor vendorDir"
+	exit 1
+fi
+
+vendorDir=$1
+if [ ! -e ${vendorDir}/protocol ]
+then
+	svn co http://192.168.10.24:8000/svn/platform/MotionX/branches/develop/Include/hmi/protocol ${vendorDir}/protocol
+else
+	svn up ${vendorDir}/protocol
+fi 
+
+if [ ! -e ${vendorDir}/IndustrialSystemFramework ]
+then
+	svn co http://192.168.10.24:8000/svn/panel_lib/industrial_system_framework/branches/robot_develop ${vendorDir}/IndustrialSystemFramework
+else
+	svn up ${vendorDir}/IndustrialSystemFramework
+fi 

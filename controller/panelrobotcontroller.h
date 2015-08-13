@@ -114,7 +114,8 @@ public:
     Q_INVOKABLE bool isInputOn(int index) const { return host_->IsInputOn(index);}
     Q_INVOKABLE bool isOutputOn(int index) const { return host_->IsOutputOn(index);}
     Q_INVOKABLE void sendKeyCommandToHost(int key);
-    Q_INVOKABLE quint32 getConfigValue(const QString& addr);
+    Q_INVOKABLE quint32 getConfigValue(const QString& addr) const;
+    Q_INVOKABLE QString getConfigValueText(const QString& addr) const;
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();
@@ -169,6 +170,8 @@ public:
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
     Q_INVOKABLE int statusValue(const QString& addr) const;
+
+    Q_INVOKABLE int configsCheckSum(const QString& addrs) const;
 
 
 signals:

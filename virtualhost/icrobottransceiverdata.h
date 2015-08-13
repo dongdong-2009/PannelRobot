@@ -27,7 +27,7 @@
 #define CMDGETAXISCONFIG    0x99
 #define CMDSELECTCONFIG     0x9a
 
-enum FunctionCode{
+enum OLD_FunctionCode{
     FC_HC_QUERY_STATUS = 0x02,
     FC_HC_INIT_PARA    = 0x06,
     FC_HC_COMMAND      = 0x40
@@ -125,7 +125,7 @@ public:
         return new ICRobotTransceiverData(hostID,
                                           FunctionCode_ReadAddr,
                                           addr,
-                                          16,
+                                          34,
                                           ICTransceiverDataBuffer());
 #else
         return new ICRobotTransceiverData(hostID,

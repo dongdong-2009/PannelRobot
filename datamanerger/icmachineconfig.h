@@ -33,8 +33,9 @@ public:
         return configCache_.ConfigValue(addr);
     }
 
-    void SetMachineConfigs(const ICAddrWrapperValuePairList values);
+    QList<QPair<int, quint32> > SetMachineConfigs(const ICAddrWrapperValuePairList values);
 
+    QList<QPair<int, quint32> > BareMachineConfigs() const;
 private:
     static ICMachineConfigPTR current_;
     QString configName_;

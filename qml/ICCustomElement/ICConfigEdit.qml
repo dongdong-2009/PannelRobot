@@ -6,7 +6,12 @@ Item {
     property alias unit: edit.unit
     property alias configValue: edit.text
     property alias alignMode: edit.alignMode
+    property alias configNameWidth: configName.width
+    property alias inputWidth: edit.inputWidth
+    height: 24
+    width: container.width
     Row{
+        id:container
         spacing: 2
         Text {
             id: configName

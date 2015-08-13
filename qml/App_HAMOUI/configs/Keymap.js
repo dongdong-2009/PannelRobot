@@ -23,6 +23,10 @@ var CMD_JOG_PV     = 0x0304;	// 直角坐标系姿势轴，X轴正向点动
 var CMD_JOG_PW     = 0x0305;	// 直角坐标系姿势轴，X轴正向点动
 var CMD_JOG_PR     = 0x0306;	// 极坐标系，远离原点点动
 
+var CMD_MOVE_POINT = 0x0310;  // 直角坐标系内点到点直线运动
+var CMD_MOVE_ARC   = 0x0330;  // 直角坐标系内圆弧线运动
+var CMD_GET_COORDINATE= 0x0340;  // 记录当前坐标
+
 var CMD_JOG_NX     = 0x0380;	// 直角坐标系位置轴，X轴反向点动
 var CMD_JOG_NY     = 0x0381;	// 直角坐标系位置轴，Y轴反向点动
 var CMD_JOG_NZ     = 0x0382;	// 直角坐标系位置轴，Z轴反向点动

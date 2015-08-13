@@ -1,464 +1,366 @@
-#ifndef ICADDRWRAPPER_H
-#define ICADDRWRAPPER_H
 #include "icaddrwrapper.h"
-#include <QList>
-extern  const ICAddrWrapper  m_rw_0_16_0_0;    //< 堆叠1组计数器
-extern  const ICAddrWrapper  m_rw_0_16_0_1;    //< 堆叠2组计数器
-extern  const ICAddrWrapper  m_rw_0_16_0_2;    //< 堆叠3组计数器
-extern  const ICAddrWrapper  m_rw_0_16_0_3;    //< 堆叠4组计数器
-extern  const ICAddrWrapper  m_rw_0_16_0_4;    //< 输送带计数器
-extern  const ICAddrWrapper  m_rw_0_16_0_5;    //< 待机姿势
-extern  const ICAddrWrapper  m_rw_0_16_0_6;    //< 试产模数
-extern  const ICAddrWrapper  m_rw_0_16_0_7;    //< 取样模数
-extern  const ICAddrWrapper  m_rw_0_16_0_8;    //< 夹1检测方向
-extern  const ICAddrWrapper  m_rw_0_16_0_9;    //< 夹2检测方向
-extern  const ICAddrWrapper  m_rw_0_16_0_10;    //< 夹3检测方向
-extern  const ICAddrWrapper  m_rw_0_16_0_11;    //< 夹4检测方向
-extern  const ICAddrWrapper  m_rw_0_16_0_12;    //< 夹5检测方向
-extern  const ICAddrWrapper  m_rw_0_16_0_13;    //< 夹6检测方向
-extern  const ICAddrWrapper  m_rw_0_16_0_14;    //< 夹7检测方向
-extern  const ICAddrWrapper  m_rw_0_16_1_15;    //< 再循环时间
-extern  const ICAddrWrapper  m_rw_0_16_0_16;    //< 设定产量
-extern  const ICAddrWrapper  m_rw_0_4_0_17;    //< 堆叠1组顺序
-extern  const ICAddrWrapper  m_rw_5_1_0_17;    //< 堆叠1组X方向
-extern  const ICAddrWrapper  m_rw_6_1_0_17;    //< 堆叠1组Y方向
-extern  const ICAddrWrapper  m_rw_7_1_0_17;    //< 堆叠1组Z方向
-extern  const ICAddrWrapper  m_rw_15_1_0_17;    //< 堆叠1组副臂堆叠
-extern  const ICAddrWrapper  m_rw_0_15_1_18;    //< 堆叠1组X个数
-extern  const ICAddrWrapper  m_rw_15_1_0_18;    //< 堆叠1组X精度
-extern  const ICAddrWrapper  m_rw_0_15_1_19;    //< 堆叠1组Y个数
-extern  const ICAddrWrapper  m_rw_15_1_0_19;    //< 堆叠1组Y精度
-extern  const ICAddrWrapper  m_rw_0_15_1_20;    //< 堆叠1组Z个数
-extern  const ICAddrWrapper  m_rw_15_1_0_20;    //< 堆叠1组Z精度
-extern  const ICAddrWrapper  m_rw_0_16_1_21;    //< 堆叠1组X间距
-extern  const ICAddrWrapper  m_rw_0_16_1_22;    //< 堆叠1组Y间距
-extern  const ICAddrWrapper  m_rw_0_16_1_23;    //< 堆叠1组间距
-extern  const ICAddrWrapper  m_rw_0_16_0_24;    //< 堆叠1预留1
-extern  const ICAddrWrapper  m_rw_0_16_0_25;    //< 堆叠1预留2
-extern  const ICAddrWrapper  m_rw_0_16_0_26;    //< 堆叠1预留3
-extern  const ICAddrWrapper  m_rw_0_4_0_27;    //< 堆叠2组顺序
-extern  const ICAddrWrapper  m_rw_5_1_0_27;    //< 堆叠2组X方向
-extern  const ICAddrWrapper  m_rw_6_1_0_27;    //< 堆叠2组Y方向
-extern  const ICAddrWrapper  m_rw_7_1_0_27;    //< 堆叠2组Z方向
-extern  const ICAddrWrapper  m_rw_15_1_0_27;    //< 堆叠2组副臂堆叠
-extern  const ICAddrWrapper  m_rw_0_15_1_28;    //< 堆叠2组X个数
-extern  const ICAddrWrapper  m_rw_15_1_0_28;    //< 堆叠2组X精度
-extern  const ICAddrWrapper  m_rw_0_15_1_29;    //< 堆叠2组Y个数
-extern  const ICAddrWrapper  m_rw_15_1_0_29;    //< 堆叠2组Y精度
-extern  const ICAddrWrapper  m_rw_0_15_1_30;    //< 堆叠2组Z个数
-extern  const ICAddrWrapper  m_rw_15_1_0_30;    //< 堆叠2组Z精度
-extern  const ICAddrWrapper  m_rw_0_16_1_31;    //< 堆叠2组X间距
-extern  const ICAddrWrapper  m_rw_0_16_1_32;    //< 堆叠2组Y间距
-extern  const ICAddrWrapper  m_rw_0_16_1_33;    //< 堆叠2组Z间距
-extern  const ICAddrWrapper  m_rw_0_16_0_34;    //< 堆叠2预留1
-extern  const ICAddrWrapper  m_rw_0_16_0_35;    //< 堆叠2预留2
-extern  const ICAddrWrapper  m_rw_0_16_0_36;    //< 堆叠2预留3
-extern  const ICAddrWrapper  m_rw_0_4_0_37;    //< 堆叠3组顺序
-extern  const ICAddrWrapper  m_rw_5_1_0_37;    //< 堆叠3组X方向
-extern  const ICAddrWrapper  m_rw_6_1_0_37;    //< 堆叠3组Y方向
-extern  const ICAddrWrapper  m_rw_7_1_0_37;    //< 堆叠3组Z方向
-extern  const ICAddrWrapper  m_rw_15_1_0_37;    //< 堆叠3组副臂堆叠
-extern  const ICAddrWrapper  m_rw_0_15_1_38;    //< 堆叠3组X个数
-extern  const ICAddrWrapper  m_rw_15_1_0_38;    //< 堆叠3组X精度
-extern  const ICAddrWrapper  m_rw_0_15_1_39;    //< 堆叠3组Y个数
-extern  const ICAddrWrapper  m_rw_15_1_0_39;    //< 堆叠3组Y精度
-extern  const ICAddrWrapper  m_rw_0_15_1_40;    //< 堆叠3组Z个数
-extern  const ICAddrWrapper  m_rw_15_1_0_40;    //< 堆叠3组Z精度
-extern  const ICAddrWrapper  m_rw_0_16_1_41;    //< 堆叠3组X间距
-extern  const ICAddrWrapper  m_rw_0_16_1_42;    //< 堆叠3组Y间距
-extern  const ICAddrWrapper  m_rw_0_16_1_43;    //< 堆叠3组Z间距
-extern  const ICAddrWrapper  m_rw_0_16_0_44;    //< 堆叠3预留1
-extern  const ICAddrWrapper  m_rw_0_16_0_45;    //< 堆叠3预留2
-extern  const ICAddrWrapper  m_rw_0_16_0_46;    //< 堆叠3预留3
-extern  const ICAddrWrapper  m_rw_0_4_0_47;    //< 堆叠4组顺序
-extern  const ICAddrWrapper  m_rw_5_1_0_47;    //< 堆叠4组X方向
-extern  const ICAddrWrapper  m_rw_6_1_0_47;    //< 堆叠4组Y方向
-extern  const ICAddrWrapper  m_rw_7_1_0_47;    //< 堆叠4组Z方向
-extern  const ICAddrWrapper  m_rw_15_1_0_47;    //< 堆叠4组副臂堆叠
-extern  const ICAddrWrapper  m_rw_0_15_1_48;    //< 堆叠4组X个数
-extern  const ICAddrWrapper  m_rw_15_1_0_48;    //< 堆叠4组X精度
-extern  const ICAddrWrapper  m_rw_0_15_1_49;    //< 堆叠4组Y个数
-extern  const ICAddrWrapper  m_rw_15_1_0_49;    //< 堆叠4组Y精度
-extern  const ICAddrWrapper  m_rw_0_15_1_50;    //< 堆叠4组Z个数
-extern  const ICAddrWrapper  m_rw_15_1_0_50;    //< 堆叠4组Z精度
-extern  const ICAddrWrapper  m_rw_0_16_1_51;    //< 堆叠4组X间距
-extern  const ICAddrWrapper  m_rw_0_16_1_52;    //< 堆叠4组Y间距
-extern  const ICAddrWrapper  m_rw_0_16_1_53;    //< 堆叠4组Z间距
-extern  const ICAddrWrapper  m_rw_0_16_0_54;    //< 堆叠4预留1
-extern  const ICAddrWrapper  m_rw_0_16_0_55;    //< 堆叠4预留2
-extern  const ICAddrWrapper  m_rw_0_16_0_56;    //< 堆叠4预留3
-extern  const ICAddrWrapper  s_rw_0_16_0_0;    //< 全局速度
-extern  const ICAddrWrapper  s_rw_0_16_0_1;    //< 保存产量低位
-extern  const ICAddrWrapper  s_rw_0_16_0_2;    //< 保存产量高位
-extern  const ICAddrWrapper  s_rw_0_16_0_3;    //< 预留1
-extern  const ICAddrWrapper  s_rw_0_2_0_4;    //< 安全门检测
-extern  const ICAddrWrapper  s_rw_2_1_0_4;    //< 中板模检测
-extern  const ICAddrWrapper  s_rw_3_1_0_4;    //< 全自动
-extern  const ICAddrWrapper  s_rw_4_1_0_4;    //< 压力检测
-extern  const ICAddrWrapper  s_rw_5_1_0_4;    //< 取物失败
-extern  const ICAddrWrapper  s_rw_6_1_0_4;    //< 顶针连锁
-extern  const ICAddrWrapper  s_rw_7_1_0_4;    //< 锁模到位
-extern  const ICAddrWrapper  s_rw_8_1_0_4;    //< 原点复归
-extern  const ICAddrWrapper  s_rw_9_1_0_4;    //< 型外安全下降
-extern  const ICAddrWrapper  s_rw_10_2_0_4;    //< 手动横行姿势
-extern  const ICAddrWrapper  s_rw_12_2_0_4;    //< 复归姿势
-extern  const ICAddrWrapper  s_rw_14_2_0_4;    //< 型内逃跑
-extern  const ICAddrWrapper  s_rw_0_16_0_5;    //< 报警时间
-extern  const ICAddrWrapper  s_rw_0_16_0_6;    //< 容差
-extern  const ICAddrWrapper  s_rw_0_16_0_7;    //< X1轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_8;    //< Y1轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_9;    //< Z轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_10;    //< X2轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_11;    //< Y2轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_12;    //< A轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_13;    //< B轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_14;    //< C轴加减速时间
-extern  const ICAddrWrapper  s_rw_0_16_0_15;    //< X1轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_16;    //< Y1轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_17;    //< Z轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_18;    //< X2轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_19;    //< Y2轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_20;    //< A轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_21;    //< B轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_22;    //< C轴最高速度
-extern  const ICAddrWrapper  s_rw_0_16_0_23;    //< 预留2
-extern  const ICAddrWrapper  s_rw_0_16_0_24;    //< 预留3
-extern  const ICAddrWrapper  s_rw_0_16_0_25;    //< 引拔距离
-extern  const ICAddrWrapper  s_rw_0_16_0_26;    //< X1轴机械长度
-extern  const ICAddrWrapper  s_rw_0_16_0_27;    //< X1轴最大移动位置
-extern  const ICAddrWrapper  s_rw_0_16_0_28;    //< X1轴模内最小位置
-extern  const ICAddrWrapper  s_rw_0_16_0_29;    //< X1轴模内最大位置
-extern  const ICAddrWrapper  s_rw_0_16_0_30;    //< X1轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_31;    //< X1轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_32;    //< X1轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_33;    //< X1轴机械长度
-extern  const ICAddrWrapper  s_rw_0_16_0_34;    //< Y1轴最大移动位置
-extern  const ICAddrWrapper  s_rw_0_16_0_35;    //< Y1轴最大待机位置
-extern  const ICAddrWrapper  s_rw_0_16_0_36;    //< Y1轴离开原点位置
-extern  const ICAddrWrapper  s_rw_0_16_0_37;    //< Y1轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_38;    //< Y1轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_39;    //< Y1轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_40;    //< Z轴机械长度
-extern  const ICAddrWrapper  s_rw_0_16_0_41;    //< Z轴最大移动位置
-extern  const ICAddrWrapper  s_rw_0_16_0_42;    //< Z轴型内安全区
-extern  const ICAddrWrapper  s_rw_0_16_0_43;    //< Z轴型外安全区
-extern  const ICAddrWrapper  s_rw_0_16_0_44;    //< Z轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_45;    //< Z轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_46;    //< Z轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_47;    //< X2轴机械长度
-extern  const ICAddrWrapper  s_rw_0_16_0_48;    //< X2轴最大移动位置
-extern  const ICAddrWrapper  s_rw_0_16_0_49;    //< X2轴模内最小位置
-extern  const ICAddrWrapper  s_rw_0_16_0_50;    //< X2轴模内最大位置
-extern  const ICAddrWrapper  s_rw_0_16_0_51;    //< X2轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_52;    //< X2轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_53;    //< X2轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_54;    //< Y2轴机械长度
-extern  const ICAddrWrapper  s_rw_0_16_0_55;    //< Y2轴最大移动位置
-extern  const ICAddrWrapper  s_rw_0_16_0_56;    //< Y2轴最大待机位置
-extern  const ICAddrWrapper  s_rw_0_16_0_57;    //< Y2轴离开原点位置
-extern  const ICAddrWrapper  s_rw_0_16_0_58;    //< Y2轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_59;    //< Y2轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_60;    //< Y2轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_61;    //< A轴最大旋转
-extern  const ICAddrWrapper  s_rw_0_16_0_62;    //< A轴原点偏置
-extern  const ICAddrWrapper  s_rw_0_16_0_63;    //< A轴横行安全范围(<)
-extern  const ICAddrWrapper  s_rw_0_16_0_64;    //< A轴横行安全范围(>)
-extern  const ICAddrWrapper  s_rw_0_16_0_65;    //< A轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_66;    //< A轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_67;    //< A轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_68;    //< B轴最大旋转
-extern  const ICAddrWrapper  s_rw_0_16_0_69;    //< B轴原点偏置
-extern  const ICAddrWrapper  s_rw_0_16_0_70;    //< B轴横行安全范围(<)
-extern  const ICAddrWrapper  s_rw_0_16_0_71;    //< B轴横行安全范围(>)
-extern  const ICAddrWrapper  s_rw_0_16_0_72;    //< B轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_73;    //< B轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_74;    //< B轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_75;    //< C轴最大旋转
-extern  const ICAddrWrapper  s_rw_0_16_0_76;    //< C轴原点偏置
-extern  const ICAddrWrapper  s_rw_0_16_0_77;    //< C轴横行安全范围(<)
-extern  const ICAddrWrapper  s_rw_0_16_0_78;    //< C轴横行安全范围(>)
-extern  const ICAddrWrapper  s_rw_0_16_0_79;    //< C轴每转距离低位
-extern  const ICAddrWrapper  s_rw_0_16_0_80;    //< C轴每转距离高位
-extern  const ICAddrWrapper  s_rw_0_16_0_81;    //< C轴参数校验和
-extern  const ICAddrWrapper  s_rw_0_2_0_82;    //< X1轴气动限位模式
-extern  const ICAddrWrapper  s_rw_2_2_0_82;    //< Y1轴气动限位模式
-extern  const ICAddrWrapper  s_rw_4_2_0_82;    //< Z轴气动限位模式
-extern  const ICAddrWrapper  s_rw_6_2_0_82;    //< X2轴气动限位模式
-extern  const ICAddrWrapper  s_rw_8_2_0_82;    //< Y2轴气动限位模式
-extern  const ICAddrWrapper  s_rw_10_2_0_82;    //< A轴气动限位模式
-extern  const ICAddrWrapper  s_rw_12_2_0_82;    //< B轴气动限位模式
-extern  const ICAddrWrapper  s_rw_14_2_0_82;    //< C轴气动限位模式
-extern  const ICAddrWrapper  s_rw_0_2_0_83;    //< X1轴定义
-extern  const ICAddrWrapper  s_rw_2_2_0_83;    //< Y1轴定义
-extern  const ICAddrWrapper  s_rw_4_2_0_83;    //< Z轴定义
-extern  const ICAddrWrapper  s_rw_6_2_0_83;    //< X2轴定义
-extern  const ICAddrWrapper  s_rw_8_2_0_83;    //< Y2轴定义
-extern  const ICAddrWrapper  s_rw_10_2_0_83;    //< A轴定义
-extern  const ICAddrWrapper  s_rw_12_2_0_83;    //< B轴定义
-extern  const ICAddrWrapper  s_rw_14_2_0_83;    //< C轴定义
-extern  const ICAddrWrapper  s_rw_0_2_0_84;    //< Y017定义
-extern  const ICAddrWrapper  s_rw_2_2_0_84;    //< Y022定义
-extern  const ICAddrWrapper  s_rw_4_2_0_84;    //< Y031义
-extern  const ICAddrWrapper  s_rw_6_2_0_84;    //< Y032定义
-extern  const ICAddrWrapper  s_rw_8_2_0_84;    //< Y035定义
-extern  const ICAddrWrapper  s_rw_10_2_0_84;    //< Y036定义
-extern  const ICAddrWrapper  s_rw_12_2_0_84;    //< 备用1定义
-extern  const ICAddrWrapper  s_rw_14_2_0_84;    //< 备用2定义
-extern  const ICAddrWrapper  s_rw_0_15_0_84;    //< 治具定义
-extern  const ICAddrWrapper  s_rw_15_1_0_84;    //< 模内侧姿
-extern  const ICAddrWrapper  s_rw_0_16_0_85;    //< 结构预留1
-extern  const ICAddrWrapper  s_rw_0_16_0_86;    //< 结构预留2
-extern  const ICAddrWrapper  s_rw_0_16_0_87;    //< 结构校验和
-extern  const ICAddrWrapper  s_rw_0_16_0_88;    //< X1轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_89;    //< Y1轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_90;    //< Z轴气原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_91;    //< X2轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_92;    //< Y2轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_93;    //< A轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_94;    //< B轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_95;    //< C轴原点数据
-extern  const ICAddrWrapper  s_rw_0_16_0_96;    //< 动作限制时间预留1
-extern  const ICAddrWrapper  s_rw_0_16_0_97;    //< 动作限制时间预留2
-extern  const ICAddrWrapper  s_rw_0_16_0_98;    //< 动作限制时间预留3
-extern  const ICAddrWrapper  s_rw_0_16_0_99;    //< 动作限制时间预留4
-extern  const ICAddrWrapper  s_rw_0_16_0_100;    //< 动作限制时间预留5
-extern  const ICAddrWrapper  s_rw_0_16_0_101;    //< 动作限制时间预留6
-extern  const ICAddrWrapper  s_rw_0_16_0_102;    //< 动作限制时间预留7
-extern  const ICAddrWrapper  s_rw_0_16_0_103;    //< 动作限制时间预留8
-extern  const ICAddrWrapper  s_rw_0_16_0_104;    //< 主臂上升限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_105;    //< 主臂下降限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_106;    //< 主臂前进限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_107;    //< 主臂后退限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_108;    //< 水平1限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_109;    //< 垂直1限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_110;    //< 副臂上升限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_111;    //< 副臂下降限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_112;    //< 副臂前进限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_113;    //< 副臂后退限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_114;    //< 横出限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_115;    //< 横入限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_116;    //< 水平2限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_117;    //< 垂直2限制时间
-extern  const ICAddrWrapper  s_rw_0_16_0_118;    //< 动作限制时间预留9
-extern  const ICAddrWrapper  s_rw_0_16_0_119;    //< 动作限制时间预留10
-extern  const ICAddrWrapper  s_rw_0_16_0_120;    //< 动作限制时间预留11
-extern  const ICAddrWrapper  s_rw_0_16_0_121;    //< 动作限制时间预留12
-extern  const ICAddrWrapper  s_rw_0_16_0_122;    //< 动作限制时间预留13
-extern  const ICAddrWrapper  s_rw_0_16_0_123;    //< 动作限制时间预留14
-extern  const ICAddrWrapper  s_rw_0_16_0_124;    //< 动作限制时间预留15
-extern  const ICAddrWrapper  s_rw_0_16_0_125;    //< 动作限制时间预留16
-extern  const ICAddrWrapper  s_rw_0_16_0_126;    //< 动作限制时间预留17
-extern  const ICAddrWrapper  s_rw_0_16_0_127;    //< 动作限制时间预留18
-extern  const ICAddrWrapper  s_rw_0_16_0_128;    //< 动作限制时间预留19
-extern  const ICAddrWrapper  s_rw_0_16_0_129;    //< X1轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_130;    //< X1轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_131;    //< X1轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_132;    //< X1轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_133;    //< Y1轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_134;    //< Y1轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_135;    //< Y1轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_136;    //< Y1轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_137;    //< Z轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_138;    //< Z轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_139;    //< Z轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_140;    //< Z轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_141;    //< X2轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_142;    //< X2轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_143;    //< X2轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_144;    //< X2轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_145;    //< Y2轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_146;    //< Y2轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_147;    //< Y2轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_148;    //< Y2轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_149;    //< A轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_150;    //< A轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_151;    //< A轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_152;    //< A轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_153;    //< B轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_154;    //< B轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_155;    //< B轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_156;    //< B轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_157;    //< C轴限制区1
-extern  const ICAddrWrapper  s_rw_0_16_0_158;    //< C轴限制区2
-extern  const ICAddrWrapper  s_rw_0_16_0_159;    //< C轴限制区3
-extern  const ICAddrWrapper  s_rw_0_16_0_160;    //< C轴限制区4
-extern  const ICAddrWrapper  s_rw_0_16_0_161;    //< 系统参数校验和
-extern  const ICAddrWrapper  c_r_0_12_0_0;    //< 当前状态
-extern  const ICAddrWrapper  c_r_12_4_0_0;    //< 原点状态
-extern  const ICAddrWrapper  c_r_0_10_0_1;    //< 当前主程序步号
-extern  const ICAddrWrapper  c_r_10_2_0_1;    //< Step预留
-extern  const ICAddrWrapper  c_r_12_4_0_1;    //< 当前程序
-extern  const ICAddrWrapper  c_r_0_8_0_2;    //< 子程序1步号
-extern  const ICAddrWrapper  c_r_8_8_0_2;    //< 子程序2步号
-extern  const ICAddrWrapper  c_r_0_8_0_3;    //< 子程序3步号
-extern  const ICAddrWrapper  c_r_8_8_0_3;    //< 子程序4步号
-extern  const ICAddrWrapper  c_r_0_8_0_4;    //< 子程序5步号
-extern  const ICAddrWrapper  c_r_8_8_0_4;    //< 子程序6步号
-extern  const ICAddrWrapper  c_r_0_8_0_5;    //< 子程序7步号
-extern  const ICAddrWrapper  c_r_8_8_0_5;    //< 子程序8步号
-extern  const ICAddrWrapper  c_r_0_16_0_6;    //< 当前动作低位
-extern  const ICAddrWrapper  c_r_0_16_0_7;    //< 当前动作高位
-extern  const ICAddrWrapper  c_r_0_16_0_8;    //< 当前夹具动作低位
-extern  const ICAddrWrapper  c_r_0_16_0_9;    //< 当前夹具动作高位
-extern  const ICAddrWrapper  c_r_0_16_2_10;    //< 机械手周期
-extern  const ICAddrWrapper  c_r_0_16_2_11;    //< X1轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_12;    //< Y1轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_13;    //< Z轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_14;    //< X2轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_15;    //< Y2轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_16;    //< A轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_17;    //< B轴当前位置
-extern  const ICAddrWrapper  c_r_0_16_2_18;    //< C轴当前位置
-extern  const ICAddrWrapper  c_r_0_1_0_19;    //< X050状态
-extern  const ICAddrWrapper  c_r_1_1_0_19;    //< X051状态
-extern  const ICAddrWrapper  c_r_2_1_0_19;    //< X052状态
-extern  const ICAddrWrapper  c_r_3_1_0_19;    //< X053状态
-extern  const ICAddrWrapper  c_r_4_1_0_19;    //< X054状态
-extern  const ICAddrWrapper  c_r_5_1_0_19;    //< X055状态
-extern  const ICAddrWrapper  c_r_6_1_0_19;    //< X056状态
-extern  const ICAddrWrapper  c_r_7_1_0_19;    //< X057状态
-extern  const ICAddrWrapper  c_r_8_8_0_19;    //< S预留
-extern  const ICAddrWrapper  c_r_0_16_0_19;    //< XExtent
-extern  const ICAddrWrapper  c_r_0_1_0_20;    //< X010状态
-extern  const ICAddrWrapper  c_r_1_1_0_20;    //< X011状态
-extern  const ICAddrWrapper  c_r_2_1_0_20;    //< X012状态
-extern  const ICAddrWrapper  c_r_3_1_0_20;    //< X013状态
-extern  const ICAddrWrapper  c_r_4_1_0_20;    //< X014状态
-extern  const ICAddrWrapper  c_r_5_1_0_20;    //< X015状态
-extern  const ICAddrWrapper  c_r_6_1_0_20;    //< X016状态
-extern  const ICAddrWrapper  c_r_7_1_0_20;    //< X017状态
-extern  const ICAddrWrapper  c_r_8_1_0_20;    //< X020状态
-extern  const ICAddrWrapper  c_r_9_1_0_20;    //< X021状态
-extern  const ICAddrWrapper  c_r_10_1_0_20;    //< X022状态
-extern  const ICAddrWrapper  c_r_11_1_0_20;    //< X023状态
-extern  const ICAddrWrapper  c_r_12_1_0_20;    //< X024状态
-extern  const ICAddrWrapper  c_r_13_1_0_20;    //< X025状态
-extern  const ICAddrWrapper  c_r_14_1_0_20;    //< X026状态
-extern  const ICAddrWrapper  c_r_15_1_0_20;    //< X027状态
-extern  const ICAddrWrapper  c_r_0_1_0_21;    //< X030状态
-extern  const ICAddrWrapper  c_r_1_1_0_21;    //< X031状态
-extern  const ICAddrWrapper  c_r_2_1_0_21;    //< X032状态
-extern  const ICAddrWrapper  c_r_3_1_0_21;    //< X033状态
-extern  const ICAddrWrapper  c_r_4_1_0_21;    //< X034状态
-extern  const ICAddrWrapper  c_r_5_1_0_21;    //< X035状态
-extern  const ICAddrWrapper  c_r_6_1_0_21;    //< X036状态
-extern  const ICAddrWrapper  c_r_7_1_0_21;    //< X037状态
-extern  const ICAddrWrapper  c_r_8_1_0_21;    //< X040状态
-extern  const ICAddrWrapper  c_r_9_1_0_21;    //< X041状态
-extern  const ICAddrWrapper  c_r_10_1_0_21;    //< X042状态
-extern  const ICAddrWrapper  c_r_11_1_0_21;    //< X043状态
-extern  const ICAddrWrapper  c_r_12_1_0_21;    //< X044状态
-extern  const ICAddrWrapper  c_r_13_1_0_21;    //< X045状态
-extern  const ICAddrWrapper  c_r_14_1_0_21;    //< X046状态
-extern  const ICAddrWrapper  c_r_15_1_0_21;    //< X047状态
-extern  const ICAddrWrapper  c_r_0_16_0_20;    //< XInput0
-extern  const ICAddrWrapper  c_r_0_16_0_21;    //< XInput1
-extern  const ICAddrWrapper  c_r_0_1_0_22;    //< Y010状态
-extern  const ICAddrWrapper  c_r_1_1_0_22;    //< Y011状态
-extern  const ICAddrWrapper  c_r_2_1_0_22;    //< Y012状态
-extern  const ICAddrWrapper  c_r_3_1_0_22;    //< Y013状态
-extern  const ICAddrWrapper  c_r_4_1_0_22;    //< Y014状态
-extern  const ICAddrWrapper  c_r_5_1_0_22;    //< Y015状态
-extern  const ICAddrWrapper  c_r_6_1_0_22;    //< Y016状态
-extern  const ICAddrWrapper  c_r_7_1_0_22;    //< Y017状态
-extern  const ICAddrWrapper  c_r_8_1_0_22;    //< Y020状态
-extern  const ICAddrWrapper  c_r_9_1_0_22;    //< Y021状态
-extern  const ICAddrWrapper  c_r_10_1_0_22;    //< Y022状态
-extern  const ICAddrWrapper  c_r_11_1_0_22;    //< Y023状态
-extern  const ICAddrWrapper  c_r_12_1_0_22;    //< Y024状态
-extern  const ICAddrWrapper  c_r_13_1_0_22;    //< Y025状态
-extern  const ICAddrWrapper  c_r_14_1_0_22;    //< Y026状态
-extern  const ICAddrWrapper  c_r_15_1_0_22;    //< Y027状态
-extern  const ICAddrWrapper  c_r_0_1_0_23;    //< Y030状态
-extern  const ICAddrWrapper  c_r_1_1_0_23;    //< Y031状态
-extern  const ICAddrWrapper  c_r_2_1_0_23;    //< Y032状态
-extern  const ICAddrWrapper  c_r_3_1_0_23;    //< Y033状态
-extern  const ICAddrWrapper  c_r_4_1_0_23;    //< Y034状态
-extern  const ICAddrWrapper  c_r_5_1_0_23;    //< Y035状态
-extern  const ICAddrWrapper  c_r_6_1_0_23;    //< Y036状态
-extern  const ICAddrWrapper  c_r_7_1_0_23;    //< Y037状态
-extern  const ICAddrWrapper  c_r_8_1_0_23;    //< Y040状态
-extern  const ICAddrWrapper  c_r_9_1_0_23;    //< Y041状态
-extern  const ICAddrWrapper  c_r_10_1_0_23;    //< Y042状态
-extern  const ICAddrWrapper  c_r_11_1_0_23;    //< Y043状态
-extern  const ICAddrWrapper  c_r_12_1_0_23;    //< Y044状态
-extern  const ICAddrWrapper  c_r_13_1_0_23;    //< Y045状态
-extern  const ICAddrWrapper  c_r_14_1_0_23;    //< Y046状态
-extern  const ICAddrWrapper  c_r_15_1_0_23;    //< Y047状态
-extern  const ICAddrWrapper  c_r_0_16_0_22;    //< YOutput0
-extern  const ICAddrWrapper  c_r_0_16_0_23;    //< YOutput1
-extern  const ICAddrWrapper  c_r_0_1_0_24;    //< EuX010状态
-extern  const ICAddrWrapper  c_r_1_1_0_24;    //< EuX011状态
-extern  const ICAddrWrapper  c_r_2_1_0_24;    //< EuX012状态
-extern  const ICAddrWrapper  c_r_3_1_0_24;    //< EuX013状态
-extern  const ICAddrWrapper  c_r_4_1_0_24;    //< EuX014状态
-extern  const ICAddrWrapper  c_r_5_1_0_24;    //< EuX015状态
-extern  const ICAddrWrapper  c_r_6_1_0_24;    //< EuX016状态
-extern  const ICAddrWrapper  c_r_7_1_0_24;    //< EuX017状态
-extern  const ICAddrWrapper  c_r_8_1_0_24;    //< EuX020状态
-extern  const ICAddrWrapper  c_r_9_1_0_24;    //< EuX021状态
-extern  const ICAddrWrapper  c_r_10_1_0_24;    //< EuX022状态
-extern  const ICAddrWrapper  c_r_11_1_0_24;    //< EuX023状态
-extern  const ICAddrWrapper  c_r_12_1_0_24;    //< EuX024状态
-extern  const ICAddrWrapper  c_r_13_1_0_24;    //< EuX025状态
-extern  const ICAddrWrapper  c_r_14_1_0_24;    //< EuX026状态
-extern  const ICAddrWrapper  c_r_15_1_0_24;    //< EuX027状态
-extern  const ICAddrWrapper  c_r_0_1_0_25;    //< EuY010状态
-extern  const ICAddrWrapper  c_r_1_1_0_25;    //< EuY011状态
-extern  const ICAddrWrapper  c_r_2_1_0_25;    //< EuY012状态
-extern  const ICAddrWrapper  c_r_3_1_0_25;    //< EuY013状态
-extern  const ICAddrWrapper  c_r_4_1_0_25;    //< EuY014状态
-extern  const ICAddrWrapper  c_r_5_1_0_25;    //< EuY015状态
-extern  const ICAddrWrapper  c_r_6_1_0_25;    //< EuY016状态
-extern  const ICAddrWrapper  c_r_7_1_0_25;    //< EuY017状态
-extern  const ICAddrWrapper  c_r_8_1_0_25;    //< EuY020状态
-extern  const ICAddrWrapper  c_r_9_1_0_25;    //< EuY021状态
-extern  const ICAddrWrapper  c_r_10_1_0_25;    //< EuY022状态
-extern  const ICAddrWrapper  c_r_11_1_0_25;    //< EuY023状态
-extern  const ICAddrWrapper  c_r_12_1_0_25;    //< EuY024状态
-extern  const ICAddrWrapper  c_r_13_1_0_25;    //< EuY025状态
-extern  const ICAddrWrapper  c_r_14_1_0_25;    //< EuY026状态
-extern  const ICAddrWrapper  c_r_15_1_0_25;    //< EuY027状态
-extern  const ICAddrWrapper  c_r_0_12_0_26;    //< 当前报警号
-extern  const ICAddrWrapper  c_r_12_4_0_26;    //< 当前提示号
-extern  const ICAddrWrapper  c_r_0_16_0_27;    //< DBG1
-extern  const ICAddrWrapper  c_r_0_16_0_28;    //< DBG2
-extern  const ICAddrWrapper  c_r_0_16_0_29;    //< DBG3
-extern  const ICAddrWrapper  c_r_0_16_0_30;    //< DBG4
-extern  const ICAddrWrapper  c_r_0_16_0_31;    //< DBG5
-extern  const ICAddrWrapper  c_r_0_16_0_32;    //< DBG6
-extern  const ICAddrWrapper  c_r_0_16_0_33;    //< DBG7
-extern  const ICAddrWrapper  c_r_0_16_0_34;    //< DBG8
-extern  const ICAddrWrapper  c_r_0_16_0_35;    //< DBG9
-extern  const ICAddrWrapper  c_r_0_16_0_36;    //< DBG10
-extern  const ICAddrWrapper  c_r_0_16_0_37;    //< DBG11
-extern  const ICAddrWrapper  c_r_0_16_0_38;    //< DBG12
-extern  const ICAddrWrapper  c_r_0_16_0_39;    //< DBG13
-extern  const ICAddrWrapper  c_r_0_16_0_40;    //< DBG14
-extern  const ICAddrWrapper  c_r_0_16_0_41;    //< DBG15
-extern  const ICAddrWrapper  c_r_0_16_0_42;    //< DBG16
-extern  const ICAddrWrapper  c_r_0_4_0_43;    //< X1轴后一位小数
-extern  const ICAddrWrapper  c_r_4_4_0_43;    //< Y1轴后一位小数
-extern  const ICAddrWrapper  c_r_8_4_0_43;    //< Z轴后一位小数
-extern  const ICAddrWrapper  c_r_12_4_0_43;    //< X2轴后一位小数
-extern  const ICAddrWrapper  c_r_0_4_0_44;    //< Y2轴后一位小数
-extern  const ICAddrWrapper  c_r_4_4_0_44;    //< A轴后一位小数
-extern  const ICAddrWrapper  c_r_8_4_0_44;    //< B轴后一位小数
-extern  const ICAddrWrapper  c_r_12_4_0_44;    //< C轴后一位小数
-extern  const ICAddrWrapper  c_r_0_32_0_900;    //< Status1
-extern  const ICAddrWrapper  c_r_0_32_0_901;    //< Status2
-extern  const ICAddrWrapper  c_r_0_32_0_902;    //< Status3
-extern  const ICAddrWrapper  c_r_0_32_0_903;    //< Status4
-extern  const ICAddrWrapper  c_r_0_32_0_904;    //< Status5
-extern  const ICAddrWrapper  c_r_0_32_0_905;    //< Status6
-extern  const ICAddrWrapper  c_r_0_32_0_906;    //< Status7
-extern  const ICAddrWrapper  c_r_0_32_0_907;    //< Status8
-extern  const ICAddrWrapper  c_r_0_32_0_908;    //< Status9
-extern  const ICAddrWrapper  c_r_0_32_0_909;    //< Status10
-extern  const ICAddrWrapper  c_r_0_32_0_910;    //< Status11
-extern  const ICAddrWrapper  c_r_0_32_0_911;    //< Status12
-extern  const ICAddrWrapper  c_r_0_32_0_912;    //< Status13
-extern  const ICAddrWrapper  c_r_0_32_0_913;    //< Status14
-extern  const ICAddrWrapper  c_r_0_32_0_914;    //< Status15
-extern  const ICAddrWrapper  c_r_0_32_0_915;    //< Status16
-#endif // ICADDRWRAPPER_H
+
+extern  const ICAddrWrapper  s_rw_0_32_3_100;    //< 3227811867 电机1臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_101;    //< 6651931 电机1每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_102;    //< 3227942939 电机1正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_103;    //< 3228008475 电机1负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_104;  //< 6823963 电机1正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_104;  //< 6824219 电机1负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_104;  //< 6824475 电机1原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_104;  //< 6824731 电机1预留
+extern  const ICAddrWrapper  s_rw_0_16_0_105;  //< 6897691 电机1预留
+extern  const ICAddrWrapper  s_rw_16_16_1_105;  //< 1080640027 电机1最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_106;  //< 3228188699 电机1最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_106;  //< 3228189211 电机1二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_107;    //< 3228270619 电机2臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_108;    //< 7110683 电机2每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_109;    //< 3228401691 电机2正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_110;    //< 3228467227 电机2负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_111;  //< 7282715 电机2正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_111;  //< 7282971 电机2负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_111;  //< 7283227 电机2原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_111;  //< 7283483 电机2预留
+extern  const ICAddrWrapper  s_rw_0_16_0_112;  //< 7356443 电机2预留
+extern  const ICAddrWrapper  s_rw_16_16_1_112;  //< 1081098779 电机2最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_113;  //< 3228647451 电机2最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_113;  //< 3228647963 电机2二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_114;    //< 3228729371 电机3臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_115;    //< 7569435 电机3每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_116;    //< 3228860443 电机3正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_117;    //< 3228925979 电机3负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_118;  //< 7741467 电机3正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_118;  //< 7741723 电机3负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_118;  //< 7741979 电机3原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_118;  //< 7742235 电机3预留
+extern  const ICAddrWrapper  s_rw_0_16_0_119;  //< 7815195 电机3预留
+extern  const ICAddrWrapper  s_rw_16_16_1_119;  //< 1081557531 电机3最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_120;  //< 3229106203 电机3最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_120;  //< 3229106715 电机3二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_121;    //< 3229188123 电机4臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_122;    //< 8028187 电机4每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_123;    //< 3229319195 电机4正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_124;    //< 3229384731 电机4负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_125;  //< 8200219 电机4正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_125;  //< 8200475 电机4负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_125;  //< 8200731 电机4原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_125;  //< 8200987 电机4预留
+extern  const ICAddrWrapper  s_rw_0_16_0_126;  //< 8273947 电机4预留
+extern  const ICAddrWrapper  s_rw_16_16_1_126;  //< 1082016283 电机4最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_127;  //< 3229564955 电机4最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_127;  //< 3229565467 电机4二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_128;    //< 3229646875 电机5臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_129;    //< 8486939 电机5每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_130;    //< 3229777947 电机5正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_131;    //< 3229843483 电机5负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_132;  //< 8658971 电机5正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_132;  //< 8659227 电机5负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_132;  //< 8659483 电机5原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_132;  //< 8659739 电机5预留
+extern  const ICAddrWrapper  s_rw_0_16_0_133;  //< 8732699 电机5预留
+extern  const ICAddrWrapper  s_rw_16_16_1_133;  //< 1082475035 电机5最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_134;  //< 3230023707 电机5最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_134;  //< 3230024219 电机5二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_135;    //< 3230105627 电机6臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_136;    //< 8945691 电机6每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_137;    //< 3230236699 电机6正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_138;    //< 3230302235 电机6负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_139;  //< 9117723 电机6正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_139;  //< 9117979 电机6负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_139;  //< 9118235 电机6原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_139;  //< 9118491 电机6预留
+extern  const ICAddrWrapper  s_rw_0_16_0_140;  //< 9191451 电机6预留
+extern  const ICAddrWrapper  s_rw_16_16_1_140;  //< 1082933787 电机6最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_141;  //< 3230482459 电机6最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_141;  //< 3230482971 电机6二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_142;    //< 3230564379 电机7臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_143;    //< 9404443 电机7每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_144;    //< 3230695451 电机7正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_145;    //< 3230760987 电机7负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_146;  //< 9576475 电机7正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_146;  //< 9576731 电机7负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_146;  //< 9576987 电机7原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_146;  //< 9577243 电机7预留
+extern  const ICAddrWrapper  s_rw_0_16_0_147;  //< 9650203 电机7预留
+extern  const ICAddrWrapper  s_rw_16_16_1_147;  //< 1083392539 电机7最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_148;  //< 3230941211 电机7最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_148;  //< 3230941723 电机7二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_149;    //< 3231023131 电机8臂长/半径
+extern  const ICAddrWrapper  s_rw_0_32_0_150;    //< 9863195 电机8每转脉冲数
+extern  const ICAddrWrapper  s_rw_0_32_3_151;    //< 3231154203 电机8正向软极限
+extern  const ICAddrWrapper  s_rw_0_32_3_152;    //< 3231219739 电机8负向软极限
+extern  const ICAddrWrapper  s_rw_0_8_0_153;  //< 10035227 电机8正向极限输入
+extern  const ICAddrWrapper  s_rw_8_8_0_153;  //< 10035483 电机8负向极限输入
+extern  const ICAddrWrapper  s_rw_16_8_0_153;  //< 10035739 电机8原点输入
+extern  const ICAddrWrapper  s_rw_24_8_0_153;  //< 10035995 电机8预留
+extern  const ICAddrWrapper  s_rw_0_16_0_154;  //< 10108955 电机8预留
+extern  const ICAddrWrapper  s_rw_16_16_1_154;  //< 1083851291 电机8最高转速RPM
+extern  const ICAddrWrapper  s_rw_0_16_3_155;  //< 3231399963 电机8最小加速时间毫秒
+extern  const ICAddrWrapper  s_rw_16_16_3_155;  //< 3231400475 电机8二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_0_156;    //< 10256411 电机配置crc电机配置crc
+extern  const ICAddrWrapper  s_rw_0_32_3_157;    //< 3231547419 插补1最大线速度最大线速度
+extern  const ICAddrWrapper  s_rw_0_16_3_158;  //< 3231596571 插补1最小加速时间_二次加速时间比例最小加速时间
+extern  const ICAddrWrapper  s_rw_16_16_3_158;  //< 3231597083 插补1最小加速时间_二次加速时间比例二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_159;    //< 3231678491 插补2最大线速度最大线速度
+extern  const ICAddrWrapper  s_rw_0_16_3_160;  //< 3231727643 插补2最小加速时间_二次加速时间比例最小加速时间
+extern  const ICAddrWrapper  s_rw_16_16_3_160;  //< 3231728155 插补2最小加速时间_二次加速时间比例二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_161;    //< 3231809563 插补3最大线速度最大线速度
+extern  const ICAddrWrapper  s_rw_0_16_3_162;  //< 3231858715 插补3最小加速时间_二次加速时间比例最小加速时间
+extern  const ICAddrWrapper  s_rw_16_16_3_162;  //< 3231859227 插补3最小加速时间_二次加速时间比例二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_32_3_163;    //< 3231940635 插补4最大线速度最大线速度
+extern  const ICAddrWrapper  s_rw_0_16_3_164;  //< 3231989787 插补4最小加速时间_二次加速时间比例最小加速时间
+extern  const ICAddrWrapper  s_rw_16_16_3_164;  //< 3231990299 插补4最小加速时间_二次加速时间比例二次加速时间比例
+extern  const ICAddrWrapper  s_rw_0_16_0_165;  //< 10829851 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_165;  //< 10830363 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_166;  //< 10895387 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_166;  //< 10895899 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_167;  //< 10960923 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_167;  //< 10961435 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_168;  //< 11026459 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_168;  //< 11026971 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_169;  //< 11091995 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_169;  //< 11092507 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_170;  //< 11157531 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_170;  //< 11158043 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_171;  //< 11223067 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_171;  //< 11223579 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_172;  //< 11288603 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_172;  //< 11289115 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_173;  //< 11354139 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_173;  //< 11354651 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_174;  //< 11419675 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_174;  //< 11420187 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_175;  //< 11485211 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_175;  //< 11485723 逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_176;  //< 11550747 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_16_16_0_176;  //< 11551259 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_0_16_0_177;  //< 11616283 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_16_16_0_177;  //< 11616795 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_0_16_0_178;  //< 11681819 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_16_16_0_178;  //< 11682331 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_0_16_0_179;  //< 11747355 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_16_16_0_179;  //< 11747867 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_0_16_0_180;  //< 11812891 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_16_16_0_180;  //< 11813403 逻辑输出端口输出点
+extern  const ICAddrWrapper  s_rw_0_32_0_181;    //< 11894811 当前延时时间当前延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_182;    //< 11960347 当前延时时间当前延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_183;    //< 12025883 当前延时时间当前延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_184;    //< 12091419 当前延时时间当前延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_185;    //< 12156955 目标延时时间目标延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_186;    //< 12222491 目标延时时间目标延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_187;    //< 12288027 目标延时时间目标延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_188;    //< 12353563 目标延时时间目标延时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_189;    //< 12419099 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_190;    //< 12484635 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_191;    //< 12550171 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_192;    //< 12615707 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_193;    //< 12681243 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_194;    //< 12746779 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_195;    //< 12812315 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_196;    //< 12877851 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_197;    //< 12943387 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_198;    //< 13008923 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_199;    //< 13074459 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_200;    //< 13139995 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_201;    //< 13205531 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_202;    //< 13271067 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_203;    //< 13336603 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_204;    //< 13402139 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_205;    //< 13467675 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_206;    //< 13533211 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_207;    //< 13598747 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_208;    //< 13664283 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_209;    //< 13729819 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_210;    //< 13795355 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_211;    //< 13860891 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_212;    //< 13926427 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_213;    //< 13991963 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_214;    //< 14057499 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_215;    //< 14123035 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_216;    //< 14188571 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_217;    //< 14254107 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_218;    //< 14319643 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_219;    //< 14385179 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_220;    //< 14450715 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_221;    //< 14516251 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_222;    //< 14581787 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_223;    //< 14647323 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_224;    //< 14712859 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_225;    //< 14778395 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_226;    //< 14843931 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_227;    //< 14909467 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_228;    //< 14975003 目标定时时间目标定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_229;    //< 15040539 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_230;    //< 15106075 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_231;    //< 15171611 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_232;    //< 15237147 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_233;    //< 15302683 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_234;    //< 15368219 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_235;    //< 15433755 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_236;    //< 15499291 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_237;    //< 15564827 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_238;    //< 15630363 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_239;    //< 15695899 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_240;    //< 15761435 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_241;    //< 15826971 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_242;    //< 15892507 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_243;    //< 15958043 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_244;    //< 16023579 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_245;    //< 16089115 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_246;    //< 16154651 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_247;    //< 16220187 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_248;    //< 16285723 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_249;    //< 16351259 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_250;    //< 16416795 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_251;    //< 16482331 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_252;    //< 16547867 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_253;    //< 16613403 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_254;    //< 16678939 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_255;    //< 16744475 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_256;    //< 16810011 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_257;    //< 16875547 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_258;    //< 16941083 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_259;    //< 17006619 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_260;    //< 17072155 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_16_0_261;  //< 17121307 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_16_16_0_261;  //< 17121819 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_0_16_0_262;  //< 17186843 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_16_16_0_262;  //< 17187355 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_0_16_0_263;  //< 17252379 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_16_16_0_263;  //< 17252891 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_0_16_0_264;  //< 17317915 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_16_16_0_264;  //< 17318427 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
+extern  const ICAddrWrapper  s_rw_0_16_3_265;  //< 3238608923 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_16_16_3_265;  //< 3238609435 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_0_16_3_266;  //< 3238674459 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_16_16_3_266;  //< 3238674971 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_0_16_3_267;  //< 3238739995 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_16_16_3_267;  //< 3238740507 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_0_16_3_268;  //< 3238805531 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_16_16_3_268;  //< 3238806043 设定速度设定速度设定速度
+extern  const ICAddrWrapper  s_rw_0_16_3_269;  //< 3238871067 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_16_16_3_269;  //< 3238871579 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_0_16_3_270;  //< 3238936603 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_16_16_3_270;  //< 3238937115 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_0_16_3_271;  //< 3239002139 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_16_16_3_271;  //< 3239002651 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_0_16_3_272;  //< 3239067675 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  s_rw_16_16_3_272;  //< 3239068187 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  m_rw_0_32_0_357;    //< 23429146 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_358;    //< 23494682 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_359;    //< 23560218 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_360;    //< 23625754 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_361;    //< 23691290 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_362;    //< 23756826 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_363;    //< 23822362 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_364;    //< 23887898 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_365;    //< 23953434 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_366;    //< 24018970 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_367;    //< 24084506 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_368;    //< 24150042 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_369;    //< 24215578 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_370;    //< 24281114 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_371;    //< 24346650 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_372;    //< 24412186 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_373;    //< 24477722 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_374;    //< 24543258 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_375;    //< 24608794 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_376;    //< 24674330 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_377;    //< 24739866 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_378;    //< 24805402 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_379;    //< 24870938 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_380;    //< 24936474 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_381;    //< 25002010 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_382;    //< 25067546 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_383;    //< 25133082 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_384;    //< 25198618 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_385;    //< 25264154 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_386;    //< 25329690 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_387;    //< 25395226 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_388;    //< 25460762 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_389;    //< 25526298 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_390;    //< 25591834 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_391;    //< 25657370 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_392;    //< 25722906 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_393;    //< 25788442 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_394;    //< 25853978 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_395;    //< 25919514 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_396;    //< 25985050 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_397;    //< 26050586 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_398;    //< 26116122 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_399;    //< 26181658 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_400;    //< 26247194 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_401;    //< 26312730 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_402;    //< 26378266 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_403;    //< 26443802 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_404;    //< 26509338 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_405;    //< 26574874 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_406;    //< 26640410 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_407;    //< 26705946 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_408;    //< 26771482 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_409;    //< 26837018 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_410;    //< 26902554 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_411;    //< 26968090 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_412;    //< 27033626 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_413;    //< 27099162 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_414;    //< 27164698 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_415;    //< 27230234 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_416;    //< 27295770 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_417;    //< 27361306 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_418;    //< 27426842 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_419;    //< 27492378 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_420;    //< 27557914 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_421;    //< 27623450 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_422;    //< 27688986 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_423;    //< 27754522 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_424;    //< 27820058 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_425;    //< 27885594 速度参数
+extern  const ICAddrWrapper  m_rw_0_32_0_426;    //< 27951130 速度参数
+extern  const ICAddrWrapper  c_ro_0_32_0_900;    //< 59015177 轴1当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_901;    //< 59080713 轴1实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_902;  //< 59129865 轴1速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_902;  //< 59130377 轴1速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_903;  //< 59195401 轴1当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_903;  //< 59195913 轴1当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_904;    //< 59277321 轴2当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_905;    //< 59342857 轴2实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_906;  //< 59392009 轴2速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_906;  //< 59392521 轴2速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_907;  //< 59457545 轴2当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_907;  //< 59458057 轴2当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_908;    //< 59539465 轴3当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_909;    //< 59605001 轴3实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_910;  //< 59654153 轴3速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_910;  //< 59654665 轴3速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_911;  //< 59719689 轴3当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_911;  //< 59720201 轴3当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_912;    //< 59801609 轴4当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_913;    //< 59867145 轴4实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_914;  //< 59916297 轴4速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_914;  //< 59916809 轴4速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_915;  //< 59981833 轴4当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_915;  //< 59982345 轴4当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_916;    //< 60063753 轴5当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_917;    //< 60129289 轴5实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_918;  //< 60178441 轴5速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_918;  //< 60178953 轴5速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_919;  //< 60243977 轴5当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_919;  //< 60244489 轴5当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_920;    //< 60325897 轴6当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_921;    //< 60391433 轴6实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_922;  //< 60440585 轴6速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_922;  //< 60441097 轴6速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_923;  //< 60506121 轴6当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_923;  //< 60506633 轴6当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_924;    //< 60588041 轴7当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_925;    //< 60653577 轴7实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_926;  //< 60702729 轴7速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_926;  //< 60703241 轴7速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_927;  //< 60768265 轴7当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_927;  //< 60768777 轴7当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_928;    //< 60850185 轴8当前输出脉冲位置当前输出脉冲位置
+extern  const ICAddrWrapper  c_ro_0_32_0_929;    //< 60915721 轴8实际脉冲位置实际脉冲位置
+extern  const ICAddrWrapper  c_ro_0_16_0_930;  //< 60964873 轴8速度百分比_当前速度速度百分比
+extern  const ICAddrWrapper  c_ro_16_16_0_930;  //< 60965385 轴8速度百分比_当前速度当前速度
+extern  const ICAddrWrapper  c_ro_0_16_0_931;  //< 61030409 轴8当前加速度_当前二次加速度当前加速度
+extern  const ICAddrWrapper  c_ro_16_16_0_931;  //< 61030921 轴8当前加速度_当前二次加速度当前二次加速度
+extern  const ICAddrWrapper  c_ro_0_32_0_932;    //< 61112329 报警当前报警

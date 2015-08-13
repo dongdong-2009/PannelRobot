@@ -17,7 +17,7 @@ bool ICMachineConfig::LoadMachineConfig(const QString &name)
     return true;
 }
 
-void ICMachineConfig::SetMachineConfigs(const ICAddrWrapperValuePairList values)
+QList<QPair<int, quint32> > ICMachineConfig::SetMachineConfigs(const ICAddrWrapperValuePairList values)
 {
     QList<QPair<int, quint32> >baseValues;
     ICAddrWrapperValuePair tmp;
@@ -29,4 +29,10 @@ void ICMachineConfig::SetMachineConfigs(const ICAddrWrapperValuePairList values)
         baseValues.append(qMakePair(tmp.first->BaseAddr(), configCache_.OriginConfigValue(tmp.first)));
     }
     ICDALHelper::UpdateMachineConfigValues(baseValues, configName_);
+    return baseValues;
+}
+
+QList<QPair<int, quint32> > ICMachineConfig::BareMachineConfigs() const
+{
+    return configCache_.ToPairList();
 }

@@ -66,8 +66,18 @@ include(common/common.pri)
 qtcAddDeployment()
 
 configAddrTarget.target = .genAddr
-configAddrTarget.commands = python tools/addrgen.py defines/configs.csv common
+contains(DEFINES, NEW_PLAT){
+configAddrTarget.commands = python3 tools/addrgen_new_plat.py ./vendor/protocol/hccommparagenericdef.h vendor/IndustrialSystemFramework/ICCore/icaddrwrapper.h ./vendor/protocol/icdefaultconfig.csv common $${RCC_DIR}
+#configAddrTarget.commands = python tools/addrgen.py defines/configs.csv common
+buildDB.target = .buildDB
+buildDB.commands = sqlite3 $${DESTDIR}/RobotDatabase < $${RCC_DIR}/db.sql
+buildDB.depends = configAddrTarget
+QMAKE_EXTRA_TARGETS += buildDB
+#PRE_TARGETDEPS += .buildDB
+}else{
 
+configAddrTarget.commands = python tools/addrgen.py defines/configs.csv common
+}
 QMAKE_EXTRA_TARGETS += configAddrTarget
 PRE_TARGETDEPS += .genAddr
 
@@ -75,8 +85,14 @@ reinstallDir = tools/Reinstall/
 
 target.path = /opt/Qt/apps/
 
+CONFIG(release, debug|release) {
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
+INSTALLS += db
+}
+
+#db.path = /opt/Qt/apps/
+#db.files += $${reinstallDir}/RobotDatabase
 qmap.path = /home/root
 qmap.files += $${reinstallDir}/$${SK_SIZE}-inch-qmap/*
 usr_bin_scripts.path = /usr/bin
@@ -85,7 +101,7 @@ usr_bin_scripts.files += $${reinstallDir}/$${SK_SIZE}RunApp/*
 qmls.path = $${target.path}/qml
 qmls.files += qml/App_*
 
-INSTALLS += db qmap usr_bin_scripts qmls
+INSTALLS += qmap usr_bin_scripts qmls
 #INSTALLS += target
 message($${INSTALLS})
 

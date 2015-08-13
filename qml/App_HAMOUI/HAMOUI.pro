@@ -7,8 +7,5 @@ configs/* \
 settingpages/*
 }
 
-OTHER_FILES += \
-    settingpages/AxisConfigs.qml \
-    settingpages/PanelSettings.qml
 
 

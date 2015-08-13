@@ -11,6 +11,7 @@ Item {
     function onConfigValueChanged(index){
         var config = pData.configs[index];
         panelRobotController.setConfigValue(config.configAddr, config.configValue);
+
     }
 
     function needToUpdateConfigs(){

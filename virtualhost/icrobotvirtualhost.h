@@ -4,6 +4,7 @@
 #include "icvirtualhost.h"
 #include <qmath.h>
 #include <QQueue>
+#include <QList>
 #include "icrobottransceiverdata.h"
 #include "icparameterscache.h"
 #include "icconfigsaddr.h"
@@ -144,6 +145,8 @@ public:
         return statusCache_.ConfigValue(addr);
     }
 
+    static void SendConfigs(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vals);
+
 
 protected:
     void InitStatusFormatorMap_(){}
@@ -158,12 +161,13 @@ public:
     static bool InitMold(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static bool InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >& data);
-    static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static void AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int config, int value);
 
 #ifdef NEW_PLAT
     static void SendKeyCommand(int cmd);
+    static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
 #else
+    static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static void SendKeyCommand(int key, int cmd = CMD_Action , int act = 0, int sum = 0);
 #endif
 signals:

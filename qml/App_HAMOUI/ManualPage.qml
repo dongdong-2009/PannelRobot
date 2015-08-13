@@ -37,6 +37,14 @@ ContentPageBase{
                 color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
                 //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
             }
+            TabMenuItem{
+                id:jog
+                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+                height: pdata.menuItemHeight
+                itemText: qsTr("Jog")
+                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
+            }
             onButtonClickedID: {
                 pageContainer.setCurrentIndex(index);
             }
@@ -66,6 +74,8 @@ ContentPageBase{
                 pageContainer.addPage(page)
                 //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]
             }
+            var jogClass = Qt.createComponent('JogPage.qml');
+            pageContainer.addPage(jogClass.createObject(pageContainer));
 //            manualContainer.setCurrentIndex(0)
         }
     }

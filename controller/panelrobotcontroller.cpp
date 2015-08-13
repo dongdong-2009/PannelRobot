@@ -115,6 +115,7 @@ void PanelRobotController::InitMachineConfig_()
     ICMachineConfig* machineConfig = new ICMachineConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
+//    OnNeedToInitHost();
 }
 
 void PanelRobotController::OnNeedToInitHost()
@@ -129,8 +130,11 @@ void PanelRobotController::OnNeedToInitHost()
     }
     ICRobotVirtualhost::InitMoldSub(host_, subsBuffer);
     ICMachineConfigPTR machineConfig = ICMachineConfig::CurrentMachineConfig();
+#ifdef NEW_PLAT
+    ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->BareMachineConfigs());
+#else
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->MachineConfigsBuffer());
-
+#endif
 }
 
 void PanelRobotController::sendKeyCommandToHost(int key)
@@ -143,10 +147,14 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 
 }
 
-quint32 PanelRobotController::getConfigValue(const QString &addr)
+quint32 PanelRobotController::getConfigValue(const QString &addr) const
 {
     ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
-    if(configWrapper == NULL) return 0;
+    if(configWrapper == NULL)
+    {
+        qWarning()<<addr<<"is invalid";
+        return 0;
+    }
     if(configWrapper->AddrType() == ICAddrWrapper::kICAddrTypeMold)
     {
         return ICRobotMold::CurrentMold()->MoldFnc(configWrapper);
@@ -160,6 +168,21 @@ quint32 PanelRobotController::getConfigValue(const QString &addr)
         host_->HostStatusValue(configWrapper);
     }
     return 0;
+}
+
+QString PanelRobotController::getConfigValueText(const QString &addr) const
+{
+    ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
+    if(configWrapper == NULL)
+    {
+        qWarning()<<addr<<"is invalid";
+        return QString();
+    }
+    quint32 v = getConfigValue(addr);
+    return QString::number(v / qPow(10, configWrapper->Decimal()),
+                           'f',
+                           configWrapper->Decimal());
+
 }
 
 void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
@@ -180,6 +203,21 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
 
 void PanelRobotController::syncConfigs()
 {
+#ifdef NEW_PLAT
+    if(!moldFncModifyCache_.isEmpty())
+    {
+        ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
+        mold->SetMoldFncs(moldFncModifyCache_);
+        moldFncModifyCache_.clear();
+    }
+    else if(!machineConfigModifyCache_.isEmpty())
+    {
+        ICMachineConfigPTR machineConfig = ICMachineConfig::CurrentMachineConfig();
+        QList<QPair<int, quint32> > addrVals = machineConfig->SetMachineConfigs(machineConfigModifyCache_);
+        ICRobotVirtualhost::SendConfigs(host_, addrVals);
+        machineConfigModifyCache_.clear();
+    }
+#else
     if(!moldFncModifyCache_.isEmpty())
     {
         ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
@@ -194,6 +232,7 @@ void PanelRobotController::syncConfigs()
         machineConfigModifyCache_.clear();
         ICRobotVirtualhost::InitMachineConfig(host_, machineConfig->MachineConfigsBuffer());
     }
+#endif
 }
 
 QString PanelRobotController::records()
@@ -215,6 +254,9 @@ PanelRobotController::~PanelRobotController()
 
 ICAxisDefine* PanelRobotController::axisDefine()
 {
+#ifdef NEW_PLAT
+    return axisDefine_;
+#else
     ICMachineConfigPTR mptr = ICMachineConfig::CurrentMachineConfig();
     axisDefine_->setS1Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_0_2_0_83)));
     axisDefine_->setS2Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_2_2_0_83)));
@@ -225,6 +267,7 @@ ICAxisDefine* PanelRobotController::axisDefine()
     axisDefine_->setS7Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_12_2_0_83)));
     axisDefine_->setS8Axis(static_cast<ICAxisDefine::AxisType>(mptr->MachineConfig(&s_rw_14_2_0_83)));
     return axisDefine_;
+#endif
 
 }
 
@@ -334,4 +377,18 @@ int PanelRobotController::statusValue(const QString& addr) const
     ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
     if(configWrapper == NULL) return 0;
     return host_->HostStatusValue(configWrapper);
+}
+
+int PanelRobotController::configsCheckSum(const QString &addrs) const
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse (addrs.toLatin1(), &ok).toList();
+    if(!ok) return 0;
+    quint32 sum = 0;
+    for(int i = 0; i != result.size(); ++i)
+    {
+        sum += getConfigValue(result.at(i).toString());
+    }
+    return (-sum) & 0xFFFF;
 }

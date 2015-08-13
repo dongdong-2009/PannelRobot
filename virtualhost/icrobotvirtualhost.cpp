@@ -119,8 +119,91 @@ bool ICRobotVirtualhost::InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVe
     return true;
 }
 
+#ifdef NEW_PLAT
+static bool PairLess(const QPair<int, quint32>& l, const QPair<int, quint32>& r)
+{
+    return l.first < r.first;
+}
+bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
+{
+    QList<QPair<int, quint32> > configs = vp;
+    qSort(configs.begin(), configs.end(), PairLess);
+    int st = 1;
+    QMap<int, int> startIndexToSize;
+    int sa = configs.at(0).first;
+    st = 1;
+    int addr;
+    for(int i = 1; i != configs.size(); ++i)
+    {
+        if(st == 1)
+        {
+            addr = sa;
+        }
+        if(configs.at(i).first - sa > 1)
+        {
+            startIndexToSize.insert(addr, st);
+            st = 1;
+            sa = configs.at(i).first;
+            startIndexToSize.insert(sa, st);
+            addr = sa;
+            continue;
+        }
+        ++sa;
+        ++st;
+    }
+    startIndexToSize.insert(addr, st);
+    QMap<int, int>::iterator p = startIndexToSize.begin();
+    QVector<quint32> tempDataBuffer;
+    QList<QPair<int, quint32> > midConfigs;
+    ICRobotTransceiverData *data;
+    while(p != startIndexToSize.end())
+    {
+        //        int size = configs.size();
+        int size = p.value();
+        const int length = 16;
+        const int shift = 4;
+        int splitCount = qCeil(size / static_cast<qreal>(length));
+        for(int i = 0; i != splitCount; ++i)
+        {
+            data = new ICRobotTransceiverData();
+            data->SetHostID(kHostID);
+            data->SetFunctionCode(FunctionCode_WriteAddr);
+            data->SetAddr(static_cast<ICAddr>(p.key() + (i << shift)) /* *64 */);
+            if( i == splitCount - 1)
+            {
+                data->SetLength(size - (i << shift));
+            }
+            else
+            {
+                data->SetLength(length);
+            }
+            midConfigs = configs.mid(i << shift, data->GetLength());
+            tempDataBuffer.clear();
+            for(int j = 0; j != midConfigs.size(); ++j)
+            {
+                tempDataBuffer.append(midConfigs.at(j).second);
+            }
+            data->SetData(tempDataBuffer);
+            hostPtr->AddCommunicationFrame(data);
+        }
+        configs = configs.mid(size);
+        ++p;
+    }
+
+    data = new ICRobotTransceiverData(kHostID,
+                                      FunctionCode_WriteAddr,
+                                      ICAddr_Write_Section_End,
+                                      1,
+                                      ICRobotTransceiverData::ICTransceiverDataBuffer()<<1);
+    hostPtr->AddCommunicationFrame(data);
+
+    return true;
+}
+
+#else
 bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
 {
+
     QVector<quint32> fnc = data;
     const int count = fnc.size();
     if(count % 4 != 0)
@@ -145,6 +228,7 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
     }
     return true;
 }
+#endif
 
 void ICRobotVirtualhost::CommunicateImpl()
 {
@@ -190,24 +274,24 @@ void ICRobotVirtualhost::CommunicateImpl()
     if(likely(recvRet_ && !recvFrame_->IsError()))
         //    if(1)
     {
-//        if(IsCommunicateDebug())
-//        {
-//            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-//            ICHCTransceiverData::ICTransceiverDataBuffer temp = recvFrame_->Data();
-//            int k = temp.size();
-//            QString v;
-//            for(int i=0;i<k;i++)
-//            {
-//                if(temp.at(i)==0)break;
-//                v.append(char(temp.at(i)&0Xff));
-//                v.append(char((temp.at(i)>>8)&0Xff)) ;
-//                v.append(char((temp.at(i)>>16)&0Xff)) ;
-//                v.append(char((temp.at(i)>>24)&0Xff));
-//            }
-//            qDebug()<<"Version:"<< v;
-//            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-//            //            emit CommunicateErrChecked();
-//        }
+        //        if(IsCommunicateDebug())
+        //        {
+        //            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+        //            ICHCTransceiverData::ICTransceiverDataBuffer temp = recvFrame_->Data();
+        //            int k = temp.size();
+        //            QString v;
+        //            for(int i=0;i<k;i++)
+        //            {
+        //                if(temp.at(i)==0)break;
+        //                v.append(char(temp.at(i)&0Xff));
+        //                v.append(char((temp.at(i)>>8)&0Xff)) ;
+        //                v.append(char((temp.at(i)>>16)&0Xff)) ;
+        //                v.append(char((temp.at(i)>>24)&0Xff));
+        //            }
+        //            qDebug()<<"Version:"<< v;
+        //            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
+        //            //            emit CommunicateErrChecked();
+        //        }
         if(recvFrame_->IsQuery())
         {
 #ifdef NEW_PLAT
@@ -216,11 +300,21 @@ void ICRobotVirtualhost::CommunicateImpl()
             for(int i = 0; i != statusDataTmp_.size(); ++i)
             {
                 statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
+//                qDebug()<<statusDataTmp_.at(i);
+            }
+            if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
+            {
+//                qDebug()<<"statusDataTmp_.at(i)";
+                emit NeedToInitHost();
+            }
+            if(statusDataTmp_.at(33) == ALARM_NOT_INIT)
+            {
+                emit NeedToInitHost();
             }
             currentStatusGroup_ = ICAddr_Read_Status0;
-//            currentStatusGroup_ = ICAddr_System_Retain_0+1;
-//            ++currentStatusGroup_;
-//            currentStatusGroup_ %= 11;
+            //            currentStatusGroup_ = ICAddr_System_Retain_0+1;
+            //            ++currentStatusGroup_;
+            //            currentStatusGroup_ %= 11;
 #else
             statusDataTmp_ = recvFrame_->Data();
             startIndex_ = currentStatusGroup_ * 4;
@@ -272,6 +366,9 @@ void ICRobotVirtualhost::InitStatusMap_()
 
 bool ICRobotVirtualhost::IsInputOnImpl(int index) const
 {
+#ifdef NEW_PLAT
+    return false;
+#else
     if(index < 16)
     {
         quint32 temp = 1 << index;
@@ -288,11 +385,15 @@ bool ICRobotVirtualhost::IsInputOnImpl(int index) const
         return HostStatusValue(&c_r_0_16_0_19) & temp;
     }
     return false;
+#endif
 
 }
 
 bool ICRobotVirtualhost::IsOutputOnImpl(int index) const
 {
+#ifdef NEW_PLAT
+    return false;
+#else
     if(index < 16)
     {
         quint32 temp = 1 << index;
@@ -304,6 +405,7 @@ bool ICRobotVirtualhost::IsOutputOnImpl(int index) const
         return HostStatusValue(&c_r_0_16_0_23) & temp;
     }
     return false;
+#endif
 }
 
 #ifdef NEW_PLAT
@@ -334,4 +436,14 @@ void ICRobotVirtualhost::AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int add
                                                                                           addr,
                                                                                           value);
     hostPtr->AddCommunicationFrame(toSentFrame);
+}
+
+void ICRobotVirtualhost::SendConfigs(ICVirtualHostPtr hostPtr, const  QList<QPair<int, quint32> >&addVals)
+{
+    QPair<int, quint32> tmp;
+    for(int i = 0; i != addVals.size(); ++i)
+    {
+        tmp = addVals.at(i);
+        AddWriteConfigCommand(hostPtr, tmp.first, tmp.second);
+    }
 }

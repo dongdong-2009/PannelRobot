@@ -4,6 +4,8 @@ Rectangle {
     property alias text: text.text
     property alias icon: icon.source
     property int iconPos: 0
+    property bool isAutoRepeat: false
+    property alias autoInterval: autoTimer.interval
     signal buttonClicked()
     signal triggered()
     width: 100
@@ -39,14 +41,27 @@ Rectangle {
         anchors.fill: parent
         onPressed: {
             parent.color = "lightsteelblue";
+            if(isAutoRepeat){
+                triggered()
+                autoTimer.start();
+            }
         }
         onReleased: {
             parent.color = "white";
+            if(isAutoRepeat)
+                autoTimer.stop();
         }
 
         onClicked: {
             buttonClicked()
             triggered()
+        }
+    }
+    Timer{
+        id:autoTimer
+        interval: 50; running: false; repeat: true
+        onTriggered: {
+            parent.triggered()
         }
     }
 }

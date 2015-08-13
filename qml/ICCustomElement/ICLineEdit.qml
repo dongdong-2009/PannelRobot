@@ -6,6 +6,7 @@ FocusScope{
     property alias unit: unit.text
     property int alignMode: 0
     property bool isNumberOnly: true
+    property alias inputWidth: rectangle.width
     x: rectangle.x
     y: rectangle.y
     width: 80

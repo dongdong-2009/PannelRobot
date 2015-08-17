@@ -28,6 +28,7 @@ Item {
                     continue;
                 if(axisActionInfo.hasOwnProperty("pos")){
                     ret.push(Teach.generateAxisServoAction(editor.servoAction,
+                                                           i,
                                                            axisActionInfo.pos,
                                                            axisActionInfo.speed,
                                                            axisActionInfo.delay));
@@ -128,14 +129,14 @@ Item {
     Component.onCompleted: {
         var axis = [];
         var actions = Teach.actions;
-        axis.push({"axisItem":x1Axis, "servoAction":actions.ACT_GS1, "psON":actions.ACT_PS1_1, "psOFF":actions.ACT_PS1_2});
-        axis.push({"axisItem":y1Axis, "servoAction":actions.ACT_GS2, "psON":actions.ACT_PS2_1, "psOFF":actions.ACT_PS2_2});
-        axis.push({"axisItem":zAxis,  "servoAction":actions.ACT_GS3, "psON":actions.ACT_PS3_1, "psOFF":actions.ACT_PS3_2});
-        axis.push({"axisItem":x2Axis, "servoAction":actions.ACT_GS4, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
-        axis.push({"axisItem":y2Axis, "servoAction":actions.ACT_GS5, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
-        axis.push({"axisItem":aAxis,  "servoAction":actions.ACT_GS6, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-        axis.push({"axisItem":bAxis,  "servoAction":actions.ACT_GS7, "psON":null, "psOFF":null});
-        axis.push({"axisItem":cAxis,  "servoAction":actions.ACT_GS8, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+        axis.push({"axisItem":x1Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS1_1, "psOFF":actions.ACT_PS1_2});
+        axis.push({"axisItem":y1Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS2_1, "psOFF":actions.ACT_PS2_2});
+        axis.push({"axisItem":zAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS3_1, "psOFF":actions.ACT_PS3_2});
+        axis.push({"axisItem":x2Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
+        axis.push({"axisItem":y2Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
+        axis.push({"axisItem":aAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
+        axis.push({"axisItem":bAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+        axis.push({"axisItem":cAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
     }
 }

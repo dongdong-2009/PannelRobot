@@ -36,3 +36,12 @@ QList<QPair<int, quint32> > ICMachineConfig::BareMachineConfigs() const
 {
     return configCache_.ToPairList();
 }
+
+void ICMachineConfig::SetBareMachineConfigs(const QList<QPair<int, quint32> > &configValPairs)
+{
+    for(int i = 0; i != configValPairs.size(); ++i)
+    {
+        configCache_.UpdateConfigValue(configValPairs.at(i).first, configValPairs.at(i).second);
+    }
+    ICDALHelper::UpdateMachineConfigValues(configValPairs, configName_);
+}

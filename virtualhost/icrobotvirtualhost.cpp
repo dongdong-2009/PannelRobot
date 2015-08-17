@@ -1,7 +1,7 @@
 #include "icrobotvirtualhost.h"
 #include <QVector>
 #include "icserialtransceiver.h"
-#include "vendor/protocol/hccommparagenericdef.h"
+#include "hccommparagenericdef.h"
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 
@@ -34,8 +34,42 @@ bool ICRobotVirtualhost::InitConfigsImpl(const QVector<QPair<quint32, quint32> >
 
 }
 
-bool ICRobotVirtualhost::InitMold(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
+void ICRobotVirtualhost::SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data)
 {
+    ICRobotTransceiverData * toSentFrame;
+    int size = data.size();
+    const int length = 16;
+    const int shift = 4;
+    int splitCount = qCeil(size / static_cast<qreal>(length));
+    QVector<quint32> toSentData;
+    for(int i = 0; i != splitCount; ++i)
+    {
+        toSentFrame = new ICRobotTransceiverData();
+        toSentFrame->SetHostID(kHostID);
+        toSentFrame->SetFunctionCode(FunctionCode_WriteTeach);
+        toSentFrame->SetAddr(startAddr + (i << shift) /* *64 */);
+        if( i == splitCount - 1)
+        {
+            toSentFrame->SetLength(size - (i << shift));
+        }
+        else
+        {
+            toSentFrame->SetLength(length);
+        }
+        toSentData = data.mid(i << shift, toSentFrame->GetLength());
+        toSentFrame->SetData(toSentData);
+        hostPtr->AddCommunicationFrame(toSentFrame);
+    }
+}
+
+bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
+{
+#ifdef NEW_PLAT
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, data.size());
+    SendContinuousDataHelper(hostPtr, 0, data);
+    return true;
+
+#else
     if(data.size() % 4 != 0) return false;
     ICRobotTransceiverData * toSentFrame;
     QVector<quint32> tempDataBuffer;
@@ -57,6 +91,7 @@ bool ICRobotVirtualhost::InitMold(ICVirtualHostPtr hostPtr, const QVector<quint3
         hostPtr->AddCommunicationFrame(toSentFrame);
     }
     return true;
+#endif
 }
 
 bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
@@ -86,8 +121,13 @@ bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<qui
     return true;
 }
 
-bool ICRobotVirtualhost::InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> > &data)
+bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<quint32> &data)
 {
+#ifdef NEW_PLAT
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
+    SendContinuousDataHelper(hostPtr, 0, data);
+    return true;
+#else
     QVector<quint32> sub;
     ICRobotTransceiverData * toSentFrame;
     QVector<quint32> tempDataBuffer;
@@ -117,6 +157,7 @@ bool ICRobotVirtualhost::InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVe
         }
     }
     return true;
+#endif
 }
 
 #ifdef NEW_PLAT
@@ -296,19 +337,19 @@ void ICRobotVirtualhost::CommunicateImpl()
         {
 #ifdef NEW_PLAT
             statusDataTmp_ = recvFrame_->Data();
-            startIndex_ = ICAddr_Read_Status0;
+            startIndex_ = recvFrame_->GetAddr();
             for(int i = 0; i != statusDataTmp_.size(); ++i)
             {
                 statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
 //                qDebug()<<statusDataTmp_.at(i);
             }
+//            if(recvFrame_->GetAddr() < ICAddr_Read_Status0)
+            {
+                emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
+            }
             if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
             {
 //                qDebug()<<"statusDataTmp_.at(i)";
-                emit NeedToInitHost();
-            }
-            if(statusDataTmp_.at(33) == ALARM_NOT_INIT)
-            {
                 emit NeedToInitHost();
             }
             currentStatusGroup_ = ICAddr_Read_Status0;
@@ -446,4 +487,17 @@ void ICRobotVirtualhost::SendConfigs(ICVirtualHostPtr hostPtr, const  QList<QPai
         tmp = addVals.at(i);
         AddWriteConfigCommand(hostPtr, tmp.first, tmp.second);
     }
+}
+
+void ICRobotVirtualhost::AddReadConfigCommand(ICVirtualHostPtr hostPtr, int startAddr, int size)
+{
+//    currentStatusGroup_ = startAddr;
+    if(size > 32) return;
+    ICRobotTransceiverData * toSentFrame = new ICRobotTransceiverData(kHostID,
+                                                                      FunctionCode_ReadAddr,
+                                                                      startAddr,
+                                                                      size,
+                                                                      ICRobotTransceiverData::ICTransceiverDataBuffer());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+
 }

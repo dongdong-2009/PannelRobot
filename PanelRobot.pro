@@ -24,7 +24,7 @@ UI_DIR = temp_$${suffix}
 MOC_DIR = temp_$${suffix}
 RCC_DIR = temp_$${suffix}
 
-INCLUDEPATH += vendor/procotol/
+INCLUDEPATH += vendor/protocol/
 
 
 # Add more folders to ship with the application, here

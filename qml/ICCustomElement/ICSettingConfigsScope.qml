@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "ICSettingConfigsScope.js" as Impl
 
 Item {
+    property bool isCache: false
     QtObject{
         id:pData
         property variant configs: []
@@ -11,6 +12,8 @@ Item {
     function onConfigValueChanged(index){
         var config = pData.configs[index];
         panelRobotController.setConfigValue(config.configAddr, config.configValue);
+        if(!isCache)
+            panelRobotController.syncConfigs();
 
     }
 
@@ -21,13 +24,13 @@ Item {
         for(var i = 0; i < count; ++i){
             config = pData.configs[i];
             config.configValueChanged.disconnect(handlers[i]);
-            config.configValue = panelRobotController.getConfigValue(config.configAddr);
+            config.configValue = panelRobotController.getConfigValueText(config.configAddr);
             config.configValueChanged.connect(handlers[i]);
         }
     }
 
     onVisibleChanged: {
-        if(!visible){
+        if(!visible && isCache){
             panelRobotController.syncConfigs();
         }
 

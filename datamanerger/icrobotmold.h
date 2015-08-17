@@ -5,9 +5,21 @@
 #include <QString>
 #include <QSharedPointer>
 #include <QVector>
+#include <QMap>
 #include "icconfigsaddr.h"
 #include "icparameterscache.h"
 #include "icdalhelper.h"
+
+class ICRobotMold;
+
+#ifdef NEW_PLAT
+typedef QVector<quint32> ICMoldItem;
+typedef QVector<ICMoldItem> ICActionProgram;
+#else
+typedef QList<ICMoldItem> ICActionProgram;
+#endif
+
+typedef QSharedPointer<ICRobotMold> ICRobotMoldPTR;
 
 class IRobotMoldError
 {
@@ -27,7 +39,153 @@ private:
     QString errStr_;
 };
 
+class CompileInfo
+{
+public:
+    CompileInfo(){}
+    void MapStep(int uiStep, int realStep) { stepMap_.insert(uiStep, realStep);}
+    void Clear() { stepMap_.clear();}
+    bool IsCompileErr() const { return !errList_.isEmpty();}
+    void AddErr(int step, int err) { errList_.insert(step, err);}
+    void AddICMoldItem(const ICMoldItem& item) { compiledProgram_.append(item);}
+    QVector<quint32> ProgramToBareData() const
+    {
+        QVector<quint32> ret;
+        for(int i = 0; i < compiledProgram_.size(); ++i)
+        {
+            ret += (compiledProgram_.at(i));
+        }
+        return ret;
+    }
+private:
+    QMap<int, int> stepMap_;
+    QMap<int, int> errList_;
+    ICActionProgram compiledProgram_;
+};
 
+#ifdef NEW_PLAT
+
+class ICRobotMold{
+public:
+    enum {
+        kMainProg,
+        kSub1Prog,
+        kSub2Prog,
+        kSub3Prog,
+        kSub4Prog,
+        kSub5Prog,
+        kSub6Prog,
+        kSub7Prog,
+        kSub8Prog,
+
+    };
+
+    enum {
+        kCCErr_None,
+        kCCErr_Invalid,
+        kCCErr_Sync_Nesting,
+        kCCErr_Sync_NoBegin,
+        kCCErr_Sync_NoEnd,
+        kCCErr_Group_Nesting,
+        kCCErr_Group_NoBegin,
+        kCCErr_Group_NoEnd,
+        kCCErr_Last_Is_Not_End_Action
+    };
+
+    enum {
+        kRecordErr_None,
+        kRecordErr_Name_Is_Empty,
+        kRecordErr_Name_Is_Exists,
+        kRecordErr_InitProgram_Invalid,
+    };
+    ICRobotMold();
+    static ICRobotMoldPTR CurrentMold()
+    {
+        return currentMold_;
+    }
+    static void SetCurrentMold(ICRobotMold* mold)
+    {
+        currentMold_ = ICRobotMoldPTR(mold);
+    }
+
+    static ICRecordInfos RecordInfos()
+    {
+        return ICDALHelper::RecordTableInfos();
+    }
+
+    static RecordDataObject NewRecord(const QString& name,
+                                      const QString& initProgram,
+                                      const QList<QPair<int, quint32> >& values);
+
+    static bool DeleteRecord(const QString& name)
+    {
+        return ICDALHelper::DeleteMold(name);
+    }
+
+    static int MoldItemCheckSum(const ICMoldItem& item)
+    {
+#ifdef NEW_PLAT
+        int sum = 0;
+        for(int i = 0; i < item.size(); ++i)
+        {
+            sum += item.at(i);
+        }
+        return (-sum) & 0xFFFF;
+#else
+        return 0;
+#endif
+    }
+
+
+    QVector<quint32> ProgramToDataBuffer(int program) const
+    {
+        if(program >= programs_.size()) return QVector<quint32>();
+        CompileInfo p = programs_[program];
+        return p.ProgramToBareData();
+    }
+
+    QVector<quint32> MoldFncsBuffer() const
+    {
+        return fncCache_.SequenceDataList();
+    }
+
+    bool LoadMold(const QString& moldName);
+    int SaveMold(int which, const QString& program);
+
+    quint32 MoldFnc(ICAddrWrapperCPTR addr)
+    {
+        return fncCache_.ConfigValue(addr);
+    }
+
+    void SetMoldFncs(const ICAddrWrapperValuePairList values) {}
+
+    QString MainProgram() const
+    {
+//        qDebug()<<"dsffs"<<programsCode_.size();
+        if(programsCode_.isEmpty()) return "";
+        return programsCode_.at(0);
+    }
+    QString SubProgram(int which) const
+    {
+        if(which >= programsCode_.size()) return "";
+        return programsCode_.at(which);
+    }
+
+    static CompileInfo Complie(const QString& programText, int & err);
+
+
+private:
+//    ICActionProgram ParseActionProgram_(const QString& content);
+
+private:
+    QList<CompileInfo> programs_;
+    QStringList programsCode_;
+    static ICRobotMoldPTR currentMold_;
+    QString moldName_;
+    ICParametersCache fncCache_;
+};
+
+#else
 class ICMoldItem
 {
 public:
@@ -221,11 +379,6 @@ private:
     mutable uint sum_;
 };
 
-typedef QList<ICMoldItem> ICActionProgram;
-
-class ICRobotMold;
-
-typedef QSharedPointer<ICRobotMold> ICRobotMoldPTR;
 class ICRobotMold
 {
 public:
@@ -389,5 +542,6 @@ private:
     QString moldName_;
     ICParametersCache fncCache_;
 };
+#endif
 
 #endif // ICROBOTMOLD_H

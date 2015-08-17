@@ -83,6 +83,9 @@ void PanelRobotController::Init()
     InitMold_();
     InitMachineConfig_();
     host_->SetCommunicateDebug(true);
+#ifdef Q_WS_X11
+    OnNeedToInitHost();
+#endif
 }
 
 void PanelRobotController::InitDatabase_()
@@ -121,14 +124,14 @@ void PanelRobotController::InitMachineConfig_()
 void PanelRobotController::OnNeedToInitHost()
 {
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
-    ICRobotVirtualhost::InitMold(host_, mold->ProgramToDataBuffer(ICRobotMold::kMainProg));
+    ICRobotVirtualhost::SendMold(host_, mold->ProgramToDataBuffer(ICRobotMold::kMainProg));
     ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
-    QVector<QVector<quint32> > subsBuffer;
+//    QVector<QVector<quint32> > subsBuffer;
     for(int i = 1; i <= ICRobotMold::kSub8Prog; ++i)
     {
-        subsBuffer.append(mold->ProgramToDataBuffer(i));
+//        subsBuffer.append(mold->ProgramToDataBuffer(i));
+        ICRobotVirtualhost::SendMoldSub(host_, i, mold->ProgramToDataBuffer(i));
     }
-    ICRobotVirtualhost::InitMoldSub(host_, subsBuffer);
     ICMachineConfigPTR machineConfig = ICMachineConfig::CurrentMachineConfig();
 #ifdef NEW_PLAT
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->BareMachineConfigs());
@@ -255,6 +258,14 @@ PanelRobotController::~PanelRobotController()
 ICAxisDefine* PanelRobotController::axisDefine()
 {
 #ifdef NEW_PLAT
+    axisDefine_->setS1Axis(ICAxisDefine::Servo);
+    axisDefine_->setS2Axis(ICAxisDefine::Servo);
+    axisDefine_->setS3Axis(ICAxisDefine::Servo);
+    axisDefine_->setS4Axis(ICAxisDefine::Servo);
+    axisDefine_->setS5Axis(ICAxisDefine::Servo);
+    axisDefine_->setS6Axis(ICAxisDefine::Servo);
+//    axisDefine_->setS1Axis(ICAxisDefine::Servo);
+
     return axisDefine_;
 #else
     ICMachineConfigPTR mptr = ICMachineConfig::CurrentMachineConfig();
@@ -379,6 +390,13 @@ int PanelRobotController::statusValue(const QString& addr) const
     return host_->HostStatusValue(configWrapper);
 }
 
+QString PanelRobotController::statusValueText(const QString &addr) const
+{
+    ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
+    if(configWrapper == NULL) return "*";
+    return QString(host_->HostStatus(configWrapper));
+}
+
 int PanelRobotController::configsCheckSum(const QString &addrs) const
 {
     QJson::Parser parser;
@@ -391,4 +409,37 @@ int PanelRobotController::configsCheckSum(const QString &addrs) const
         sum += getConfigValue(result.at(i).toString());
     }
     return (-sum) & 0xFFFF;
+//     return sum;
+}
+
+void PanelRobotController::loadHostMachineConfigs()
+{
+    ICRobotVirtualhost::AddReadConfigCommand(host_, s_rw_0_32_3_100.BaseAddr(), 28);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, 128, 28);
+    connect(host_.data(),
+            SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+            this,
+            SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
+            Qt::UniqueConnection);
+}
+
+void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32> &v)
+{
+    if(addr < ICAddr_Read_Status0)
+    {
+        QList<QPair<int, quint32> > tmp;
+        for(int i = 0; i < v.size(); ++i)
+        {
+            tmp.append(qMakePair<int , quint32>(addr + i, v.at(i)));
+        }
+        ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
+        mc->SetBareMachineConfigs(tmp);
+    }
+    if(addr == 128)
+    {
+        disconnect(host_.data(),
+                SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+                this,
+                SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+    }
 }

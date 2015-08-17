@@ -36,6 +36,8 @@ public:
     QList<QPair<int, quint32> > SetMachineConfigs(const ICAddrWrapperValuePairList values);
 
     QList<QPair<int, quint32> > BareMachineConfigs() const;
+
+    void SetBareMachineConfigs(const QList<QPair<int, quint32> >& configValPairs);
 private:
     static ICMachineConfigPTR current_;
     QString configName_;

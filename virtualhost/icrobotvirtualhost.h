@@ -158,25 +158,30 @@ protected:
     QBitArray AlarmsImpl() const { return QBitArray();}
 
 public:
-    static bool InitMold(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
+    static bool SendMold(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
+    static bool SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<quint32>& data);
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
-    static bool InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >& data);
     static void AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int config, int value);
+
+    static void AddReadConfigCommand(ICVirtualHostPtr hostPtr, int startAddr, int size); // max size 32
 
 #ifdef NEW_PLAT
     static void SendKeyCommand(int cmd);
     static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
 #else
+    static bool InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >& data);
     static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static void SendKeyCommand(int key, int cmd = CMD_Action , int act = 0, int sum = 0);
 #endif
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
+    void QueryFinished(int addr, const QVector<quint32>& v);
 
 public slots:
 
 private:
+    static void SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data);
     void AddRefreshStatusCommand_();
     int currentStatusGroup_;
     QVector<quint32> statusDataTmp_;

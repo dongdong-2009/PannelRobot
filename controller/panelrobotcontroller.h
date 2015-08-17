@@ -132,13 +132,24 @@ public:
     {
         ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
         bool ret =  mold->LoadMold(name);
-        if(ret) emit moldChanged();
+        if(ret)
+        {
+            emit moldChanged();
+            ICAppSettings as;
+            as.SetCurrentMoldConfig(name);
+        }
+
         return ret;
     }
 
     Q_INVOKABLE int saveMainProgram(const QString& program)
     {
-        return ICRobotMold::CurrentMold()->SaveMold(ICRobotMold::kMainProg, program);
+        int ret =  ICRobotMold::CurrentMold()->SaveMold(ICRobotMold::kMainProg, program);
+        if(ret == ICRobotMold::kCCErr_None)
+        {
+            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
+        }
+        return ret;
     }
 
     Q_INVOKABLE int saveSubProgram(int which, const QString& program)
@@ -146,7 +157,12 @@ public:
         if(which < ICRobotMold::kSub1Prog ||
                 which > ICRobotMold::kSub8Prog)
             return -1;
-        return ICRobotMold::CurrentMold()->SaveMold(which, program);
+        int ret =  ICRobotMold::CurrentMold()->SaveMold(which, program);
+        if(ret == ICRobotMold::kCCErr_None)
+        {
+            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
+        }
+        return ret;
     }
 
     Q_INVOKABLE QString mainProgram() const
@@ -170,8 +186,10 @@ public:
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
     Q_INVOKABLE int statusValue(const QString& addr) const;
+    Q_INVOKABLE QString statusValueText(const QString& addr) const;
 
     Q_INVOKABLE int configsCheckSum(const QString& addrs) const;
+    Q_INVOKABLE void loadHostMachineConfigs();
 
 
 signals:
@@ -181,6 +199,7 @@ signals:
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
+    void OnQueryStatusFinished(int addr, const QVector<quint32>&v);
 
 private:
     void InitDatabase_();

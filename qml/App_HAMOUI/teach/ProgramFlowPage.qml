@@ -343,7 +343,7 @@ Rectangle {
             mainProgramModel.append(new Teach.ProgramModelItem(step));
         }
 
-        for(i = 1; i < 8; ++i){
+        for(i = 1; i < 9; ++i){
             pData.programs[i].clear();
             program = JSON.parse(panelRobotController.subProgram(i));
             for(var p = 0; p < program.length; ++p){

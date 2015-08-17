@@ -2,8 +2,8 @@
 #define ICROBOTTRANSCEIVERDATA_H
 
 #include "ichctransceiverdata.h"
-#include "vendor/protocol/hccommandformat.h"
-#include "vendor/protocol/hccommparagenericdef.h"
+#include "hccommandformat.h"
+#include "hccommparagenericdef.h"
 
 #ifndef NEW_PLAT
 #define CMDPULSEA			0x60
@@ -57,8 +57,8 @@ public:
 
     virtual bool IsQuery() const { return GetFunctionCode() == FunctionCode_ReadAddr;}
     static ICRobotTransceiverData* FillActInitCommand(uint8_t hostID,
-                           uint addr,
-                           const ICTransceiverDataBuffer& data)
+                                                      uint addr,
+                                                      const ICTransceiverDataBuffer& data)
     {
 #ifdef NEW_PLAT
         return NULL;
@@ -72,8 +72,8 @@ public:
     }
 
     static ICRobotTransceiverData* FillFncInitCommand(uint8_t hostID,
-                           uint addr,
-                           const ICTransceiverDataBuffer& data)
+                                                      uint addr,
+                                                      const ICTransceiverDataBuffer& data)
     {
 #ifdef NEW_PLAT
         return NULL;
@@ -89,7 +89,7 @@ public:
     static ICRobotTransceiverData* FillSubInitCommand(uint8_t hostID,
                                                       uint group,
                                                       uint addr,
-                           const ICTransceiverDataBuffer& data)
+                                                      const ICTransceiverDataBuffer& data)
     {
 #ifdef NEW_PLAT
         return NULL;
@@ -104,8 +104,8 @@ public:
 
 
     static ICRobotTransceiverData* FillMachineConfigInitCommand(uint8_t hostID,
-                           uint addr,
-                           const ICTransceiverDataBuffer& data)
+                                                                uint addr,
+                                                                const ICTransceiverDataBuffer& data)
     {
 #ifdef NEW_PLAT
         return NULL;
@@ -119,7 +119,7 @@ public:
     }
 
     static ICRobotTransceiverData* FillQueryStatusCommand(uint8_t hostID,
-                           uint addr)
+                                                          uint addr)
     {
 #ifdef NEW_PLAT
         return new ICRobotTransceiverData(hostID,
@@ -215,7 +215,7 @@ public:
         return Data().at(0);
     }
     virtual int MaxFrameLength() const { return 256;}
-//    void SetErrorCode(int ec) { Data().append(ec); }
+    //    void SetErrorCode(int ec) { Data().append(ec); }
 #else
     virtual int ErrorCode() const { return GetAddr() & 0xFF;}
     void SetErrorCode(int ec) { SetAddr(ec);}
@@ -254,10 +254,12 @@ public:
     bool IsFunctionAddrValid(int addr, int fc) const;
     int GetAddrFromBuffer(const uint8_t* buffer) const;
     size_t GetBufferDataLength(const uint8_t* buffer) const;
-//    virtual int NeedToRecvLength(const ICTransceiverData* sentData) const;
+    //    virtual int NeedToRecvLength(const ICTransceiverData* sentData) const;
 #ifdef NEW_PLAT
     size_t FrameMinSize() const { return FRAME_MIN_SIZE;}
     int NeedToRecvLength(const ICTransceiverData* sentData) const;
+//    bool FrameToTransceiverData(ICTransceiverData *recvData, const uint8_t *buffer, size_t size, const ICTransceiverData *sentData);
+//    size_t TransceiverDataToFrame(uint8_t *dest, size_t bufferSize, const ICTransceiverData *data);
 #else
     bool FrameToTransceiverData(ICTransceiverData *recvData, const uint8_t *buffer, size_t size, const ICTransceiverData *sentData);
     size_t TransceiverDataToFrame(uint8_t *dest, size_t bufferSize, const ICTransceiverData *data);
@@ -274,6 +276,7 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionCodeValid(int fc) const
             (fc == FunctionCode_ReadDiffAddr) ||
             (fc == FunctionCode_WriteAddr) ||
             (fc == FunctionCode_WriteDiffAddr) ||
+            (fc == FunctionCode_WriteTeach) ||
             (fc == FunctionCode_Err);
 #else
     return (fc == FC_HC_QUERY_STATUS) ||
@@ -285,18 +288,19 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionAddrValid(int addr, int
 {
 #ifdef NEW_PLAT
     switch(fc)
-       {
-       case FunctionCode_ReadAddr:
-       case FunctionCode_ReadDiffAddr:
-           return ((addr > ICAddr_BeginSection) && (addr < ICAddr_Read_Section_End))||
-                   (addr == ICAddr_System_Retain_1);
-       case FunctionCode_WriteAddr:
-           return (addr > ICAddr_BeginSection);
-       case FunctionCode_Err:
-           return addr == ICAddr_ErrAddr;
-       default:
-           return false;
-       }
+    {
+    case FunctionCode_ReadAddr:
+    case FunctionCode_ReadDiffAddr:
+        return ((addr > ICAddr_BeginSection) && (addr < ICAddr_Read_Section_End));
+    case FunctionCode_WriteAddr:
+        return (addr > ICAddr_BeginSection);
+    case FunctionCode_WriteTeach:
+        return true;
+    case FunctionCode_Err:
+        return addr == ICAddr_ErrAddr;
+    default:
+        return false;
+    }
 #else
     switch(fc)
     {
@@ -331,7 +335,7 @@ inline size_t ICRobotFrameTransceiverDataMapper::GetBufferDataLength(const uint8
     return buffer[FRAME_LENGTH_POS] << 2;
 #else
     Q_UNUSED(buffer)
-//    return buffer[FRAME_LENGTH_POS] << 2;
+    //    return buffer[FRAME_LENGTH_POS] << 2;
     return 0;
 #endif
 }

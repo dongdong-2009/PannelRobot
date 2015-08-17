@@ -13,7 +13,25 @@ ICRobotTransceiverData::ICRobotTransceiverData()
 {
 }
 
-#ifndef NEW_PLAT
+#ifdef NEW_PLAT
+//bool ICRobotFrameTransceiverDataMapper::FrameToTransceiverData(ICTransceiverData *recvData, const uint8_t *buffer, size_t size, const ICTransceiverData *sentData)
+//{
+//    const ICRobotTransceiverData* sData = const_cast<ICRobotTransceiverData*>(sentData);
+//    if(sData == NULL) return false;
+//    if(sData->GetFunctionCode() == FunctionCode_WriteTeach)
+//    {
+
+//    }
+
+//    return ICHCFrameTransceiverDataMapper::FrameToTransceiverData(recvData, buffer, size, sentData);
+//}
+
+//size_t ICRobotFrameTransceiverDataMapper::TransceiverDataToFrame(uint8_t *dest, size_t bufferSize, const ICTransceiverData *data)
+//{
+//    return ICHCFrameTransceiverDataMapper::TransceiverDataToFrame(dest, bufferSize, data);
+//}
+
+#else
 bool ICRobotFrameTransceiverDataMapper::FrameToTransceiverData(ICTransceiverData *recvData, const uint8_t *buffer, size_t size, const ICTransceiverData *sentData)
 {
     ICRobotTransceiverData* robotRecvData = static_cast<ICRobotTransceiverData*>(recvData);

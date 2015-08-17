@@ -7,12 +7,12 @@ var actHelper = 0;
 var actions = {
 
 };
-actions.F_CMD_NULL = actHelper++;
-actions.F_CMD_SYNC_START = actHelper++;
-actions.F_CMD_SYNC_END = actHelper++;
-actions.F_CMD_SINGLE = actHelper++;
-actions.F_CMD_CoordinatePoint = actHelper++;
-actions.F_CMD_SINGLE_POINT = actHelper++;
+actions.ACT_GS8 = actHelper++;
+actions.ACT_GS1 = actHelper++;
+actions.ACT_GS2 = actHelper++;
+actions.ACT_GS3 = actHelper++;
+actions.ACT_GS4 = actHelper++;
+actions.ACT_GS5 = actHelper++;
 actions.ACT_GS6 = actHelper++;
 actions.ACT_GS7 = actHelper++;
 
@@ -40,7 +40,7 @@ actions.ACT_CONDITION  = actHelper++;
 actions.ACT_Wait       = actHelper++;
 actions.ACT_CHECK      = actHelper++;
 actions.ACT_PARALLEL   = actHelper++;
-actions.ACT_END        = 60000;
+actions.ACT_END        = actHelper++;
 actions.ACT_COMMENT    = actHelper;
 actions.ACT_OUTPUT     = 0x80;
 actions.ACT_SYNC_BEGIN = 126;
@@ -63,7 +63,6 @@ var kAxisType_Pneumatic = 2;
 var kAxisType_Reserve = 3;
 
 var generateAxisServoAction = function(action,
-                                       axis,
                                        pos,
                                        speed,
                                        delay,
@@ -72,13 +71,12 @@ var generateAxisServoAction = function(action,
                                        earlyEndPos){
     return {
         "action":action,
-        "axis":axis,
-        "pos": pos||0.000,
-        "speed":speed||80.0,
+        "pos": pos||0.00,
+        "speed":speed||80,
         "delay":delay||0.00,
-//        "isBadEn":isBadEn||false,
-//        "isEarlyEnd":isEarlyEnd||false,
-//        "earlyEndPos":earlyEndPos||0.00
+        "isBadEn":isBadEn||false,
+        "isEarlyEnd":isEarlyEnd||false,
+        "earlyEndPos":earlyEndPos||0.00
     };
 }
 
@@ -133,13 +131,13 @@ var generateFlagAction = function(flag,descr){
 
 var generateSyncBeginAction = function(){
     return {
-        "action":actions.F_CMD_SYNC_START
+        "action":actions.ACT_SYNC_BEGIN
     };
 }
 
 var generateSyncEndAction = function(){
     return {
-        "action":actions.F_CMD_SYNC_END
+        "action":actions.ACT_SYNC_END
     };
 }
 
@@ -163,13 +161,13 @@ var generateInitProgram = function(axisDefine){
 
     var initStep = [];
     initStep.push(generateSyncBeginAction());
-//    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-//                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
+    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
+                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
     var aT;
     for(var i = 1; i < 8; ++i){
         aT = axisDefine["s"+ i + "Axis"];
         if(aT == kAxisType_Servo){
-            initStep.push(generateAxisServoAction(actions.F_CMD_SINGLE, i));
+            initStep.push(generateAxisServoAction(actions["ACT_GS" + i]));
         }else if(aT == kAxisType_Pneumatic){
             initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
         }
@@ -201,18 +199,41 @@ var psActionToStringHelper = function(actionStr, actionObject){
     return ret;
 }
 
-var f_CMD_SINGLEToStringHandler = function(actionObject){
-    var ret =  qsTr("Motor") + actionObject.axis + ":" +  actionObject.pos + " " +
-            qsTr("Speed:") + actionObject.speed + " " +
-            qsTr("Delay:") + actionObject.delay;
-    if(actionObject.isBadEn)
-        ret += " " + qsTr("Bad En");
-    if(actionObject.isEarlyEnd){
-        ret += " " + qsTr("Early End Pos:") + actionObject.earlyEndPos;
-    }
-    return ret;
+var gs1ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("X1"), actionObject);
 }
 
+
+var gs2ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("Y1"), actionObject);
+}
+
+var gs3ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("Z"), actionObject);
+}
+
+var gs4ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("X2"), actionObject);
+
+}
+
+var gs5ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("Y2"), actionObject);
+
+}
+
+var gs6ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("A"), actionObject);
+}
+
+var gs7ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("B"), actionObject);
+
+}
+
+var gs8ToStringHandler = function(actionObject){
+    return gsActionToStringHelper(qsTr("C"), actionObject);
+}
 
 var ps1_1ToStringHandler = function(actionObject){
     return psActionToStringHelper(qsTr("X1 OFF"), actionObject)
@@ -330,39 +351,39 @@ var syncEndActionToStringHandler = function(actionObject){
 
 
 var actionToStringHandlerMap = new HashTable();
-actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS2, gs2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS3, gs3ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS4, gs4ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS5, gs5ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS6, gs6ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS7, gs7ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS1_1, ps1_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS1_2, ps1_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS2_1, ps2_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS2_2, ps2_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS3_1, ps3_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS3_2, ps3_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS4_1, ps4_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS4_2, ps4_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS5_1, ps5_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS5_2, ps5_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS6_1, ps6_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS6_2, ps6_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS8_1, ps8_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_CONDITION, conditionActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_Wait, waitActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS8, gs8ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS2, gs2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS3, gs3ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS4, gs4ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS5, gs5ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS6, gs6ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_GS7, gs7ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS1_1, ps1_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS1_2, ps1_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS2_1, ps2_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS2_2, ps2_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS3_1, ps3_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS3_2, ps3_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS4_1, ps4_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS4_2, ps4_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS5_1, ps5_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS5_2, ps5_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS6_1, ps6_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS6_2, ps6_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS8_1, ps8_1ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_CONDITION, conditionActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_Wait, waitActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_SYNC_BEGIN, syncBeginActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_SYNC_END, syncEndActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
 
 
 

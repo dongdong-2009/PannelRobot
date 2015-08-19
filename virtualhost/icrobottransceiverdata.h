@@ -125,7 +125,7 @@ public:
         return new ICRobotTransceiverData(hostID,
                                           FunctionCode_ReadAddr,
                                           addr,
-                                          34,
+                                          40,
                                           ICTransceiverDataBuffer());
 #else
         return new ICRobotTransceiverData(hostID,

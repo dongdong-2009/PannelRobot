@@ -2,9 +2,12 @@
 #include <QVector>
 #include "icserialtransceiver.h"
 #include "hccommparagenericdef.h"
+#include <QTime>
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 
+#define REFRESH_INTERVAL 30
+#define INIT_INTERVAL 15
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICVirtualHost(hostId, parent)
 {
@@ -22,7 +25,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICSerialTransceiver::Instance()->SetFrameTransceiverDataMapper(frameTransceiverDataMapper_);
     SetTransceiver(ICSerialTransceiver::Instance());
 #ifdef NEW_PLAT
-    SetCommunicateInterval(25);
+    SetCommunicateInterval(REFRESH_INTERVAL);
 #else
     SetCommunicateInterval(8);
 #endif
@@ -271,8 +274,10 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
 }
 #endif
 
+//QTime testTime;
 void ICRobotVirtualhost::CommunicateImpl()
 {
+//    qDebug()<<"time:"<<testTime.restart();
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
     if(recvRet_ == false || recvFrame_->IsError())
     {
@@ -308,8 +313,10 @@ void ICRobotVirtualhost::CommunicateImpl()
         //            return;
         //        }
     }
-    if(unlikely(IsCommunicateDebug()))
+    if(unlikely(IsCommunicateDebug()) && !recvFrame_->IsQuery())
     {
+//        qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+//        qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
         //        emit ReadyCommunicate();
     }
     if(likely(recvRet_ && !recvFrame_->IsError()))
@@ -350,6 +357,7 @@ void ICRobotVirtualhost::CommunicateImpl()
             if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
             {
 //                qDebug()<<"statusDataTmp_.at(i)";
+                SetCommunicateInterval(INIT_INTERVAL);
                 emit NeedToInitHost();
             }
             currentStatusGroup_ = ICAddr_Read_Status0;
@@ -377,6 +385,7 @@ void ICRobotVirtualhost::CommunicateImpl()
     if(queue_.IsEmpty())
     {
         AddRefreshStatusCommand_();
+        SetCommunicateInterval(REFRESH_INTERVAL);
         //        return;
     }
     Transceiver()->Write(queue_.Head());

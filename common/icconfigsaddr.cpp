@@ -294,3 +294,16 @@ extern  const ICAddrWrapper  c_ro_16_16_0_930(1,1,16,16,930,0,"");   //<轴8速�
 extern  const ICAddrWrapper  c_ro_0_16_0_931(1,1,0,16,931,0,"");   //<轴8当前加速度_当前二次加速度当前加速度
 extern  const ICAddrWrapper  c_ro_16_16_0_931(1,1,16,16,931,0,"");   //<轴8当前加速度_当前二次加速度当前二次加速度
 extern  const ICAddrWrapper  c_ro_0_32_0_932(1,1,0,32,932,0,"");    //<报警当前报警
+extern  const ICAddrWrapper  c_ro_0_16_0_933(1,1,0,16,933,0,"");   //<步号主程序当前步号
+extern  const ICAddrWrapper  c_ro_16_16_0_933(1,1,16,16,933,0,"");   //<步号子程序1当前步号
+extern  const ICAddrWrapper  c_ro_0_16_0_934(1,1,0,16,934,0,"");   //<步号子程序2当前步号
+extern  const ICAddrWrapper  c_ro_16_16_0_934(1,1,16,16,934,0,"");   //<步号子程序3当前步号
+extern  const ICAddrWrapper  c_ro_0_16_0_935(1,1,0,16,935,0,"");   //<步号子程序4当前步号
+extern  const ICAddrWrapper  c_ro_16_16_0_935(1,1,16,16,935,0,"");   //<步号子程序5当前步号
+extern  const ICAddrWrapper  c_ro_0_16_0_936(1,1,0,16,936,0,"");   //<步号子程序6当前步号
+extern  const ICAddrWrapper  c_ro_16_16_0_936(1,1,16,16,936,0,"");   //<步号子程序7当前步号
+extern  const ICAddrWrapper  c_ro_0_16_0_937(1,1,0,16,937,0,"");   //<步号子程序8当前步号
+extern  const ICAddrWrapper  c_ro_16_16_0_937(1,1,16,16,937,0,"");   //<步号预留
+extern  const ICAddrWrapper  c_ro_0_1_0_938(1,1,0,1,938,0,"");   //<步号原点信号
+extern  const ICAddrWrapper  c_ro_1_4_0_938(1,1,1,4,938,0,"");   //<步号当前模式
+extern  const ICAddrWrapper  c_ro_5_29_0_938(1,1,5,29,938,0,"");   //<步号预留

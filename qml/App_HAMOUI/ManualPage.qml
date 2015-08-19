@@ -76,7 +76,6 @@ ContentPageBase{
             }
             var jogClass = Qt.createComponent('JogPage.qml');
             pageContainer.addPage(jogClass.createObject(pageContainer));
-//            manualContainer.setCurrentIndex(0)
         }
     }
     //    ICStackContainer{

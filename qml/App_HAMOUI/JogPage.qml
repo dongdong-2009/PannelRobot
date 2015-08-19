@@ -91,14 +91,14 @@ Item {
 
     ICStatusScope{
         anchors.left: button.right
-        anchors.leftMargin:  100
+        anchors.leftMargin:  50
         //        width: 800
         //        height: 600
         Row{
-            spacing: 100
+            spacing: 60
 
             Column{
-                spacing: 6
+                spacing: 2
                 ICStatusWidget {
                     id: status1
                     bindStatus: "c_ro_0_32_0_900"
@@ -109,129 +109,265 @@ Item {
                 }
                 ICStatusWidget {
                     id: status3
-                    bindStatus: "c_ro_0_32_0_902"
+                    bindStatus: "c_ro_0_16_0_902"
                 }
                 ICStatusWidget {
                     id: status4
-                    bindStatus: "c_ro_0_32_0_903"
+                    bindStatus: "c_ro_16_16_0_902"
                 }
                 ICStatusWidget {
                     id: status5
-                    bindStatus: "c_ro_0_32_0_904"
+                    bindStatus: "c_ro_0_16_0_903"
                 }
                 ICStatusWidget {
                     id: status6
-                    bindStatus: "c_ro_0_32_0_905"
+                    bindStatus: "c_ro_16_16_0_903"
                 }
                 ICStatusWidget {
                     id: status7
-                    bindStatus: "c_ro_0_32_0_906"
+                    bindStatus: "c_ro_0_32_0_904"
                 }
                 ICStatusWidget {
                     id: status8
-                    bindStatus: "c_ro_0_32_0_907"
+                    bindStatus: "c_ro_0_32_0_905"
                 }
                 ICStatusWidget {
                     id: status9
-                    bindStatus: "c_ro_0_32_0_908"
+                    bindStatus: "c_ro_0_16_0_906"
                 }
                 ICStatusWidget {
                     id: status10
-                    bindStatus: "c_ro_0_32_0_909"
+                    bindStatus: "c_ro_16_16_0_906"
                 }
                 ICStatusWidget {
                     id: status11
-                    bindStatus: "c_ro_0_32_0_910"
+                    bindStatus: "c_ro_0_16_0_907"
                 }
                 ICStatusWidget {
                     id: status12
-                    bindStatus: "c_ro_0_32_0_911"
+                    bindStatus: "c_ro_16_16_0_907"
                 }
                 ICStatusWidget {
                     id: status13
-                    bindStatus: "c_ro_0_32_0_912"
+                    bindStatus: "c_ro_0_32_0_908"
                 }
                 ICStatusWidget {
                     id: status14
-                    bindStatus: "c_ro_0_32_0_913"
+                    bindStatus: "c_ro_0_32_0_909"
                 }
                 ICStatusWidget {
                     id: status15
-                    bindStatus: "c_ro_0_32_0_914"
+                    bindStatus: "c_ro_0_16_0_910"
                 }
                 ICStatusWidget {
                     id: status16
-                    bindStatus: "c_ro_0_32_0_915"
+                    bindStatus: "c_ro_16_16_0_910"
                 }
 
             }
             Column{
-                spacing: 6
+                spacing: 2
                 ICStatusWidget {
                     id: status17
-                    bindStatus: "c_ro_0_32_0_916"
+                    bindStatus: "c_ro_0_16_0_911"
                 }
                 ICStatusWidget {
                     id: status18
-                    bindStatus: "c_ro_0_32_0_917"
+                    bindStatus: "c_ro_16_16_0_911"
                 }
                 ICStatusWidget {
                     id: status19
-                    bindStatus: "c_ro_0_32_0_918"
+                    bindStatus: "c_ro_0_32_0_912"
                 }
                 ICStatusWidget {
                     id: status20
-                    bindStatus: "c_ro_0_32_0_919"
+                    bindStatus: "c_ro_0_32_0_913"
                 }
                 ICStatusWidget {
                     id: status21
-                    bindStatus: "c_ro_0_32_0_920"
+                    bindStatus: "c_ro_0_16_0_914"
                 }
                 ICStatusWidget {
                     id: status22
-                    bindStatus: "c_ro_0_32_0_921"
+                    bindStatus: "c_ro_16_16_0_914"
                 }
                 ICStatusWidget {
                     id: status23
-                    bindStatus: "c_ro_0_32_0_922"
+                    bindStatus: "c_ro_0_16_0_915"
                 }
                 ICStatusWidget {
                     id: status24
-                    bindStatus: "c_ro_0_32_0_923"
+                    bindStatus: "c_ro_16_16_0_915"
                 }
                 ICStatusWidget {
                     id: status25
-                    bindStatus: "c_ro_0_32_0_924"
+                    bindStatus: "c_ro_0_32_0_916"
                 }
                 ICStatusWidget {
                     id: status26
-                    bindStatus: "c_ro_0_32_0_925"
+                    bindStatus: "c_ro_0_32_0_917"
                 }
                 ICStatusWidget {
                     id: status27
-                    bindStatus: "c_ro_0_32_0_926"
+                    bindStatus: "c_ro_0_16_0_918"
                 }
                 ICStatusWidget {
                     id: status28
-                    bindStatus: "c_ro_0_32_0_927"
+                    bindStatus: "c_ro_16_16_0_918"
                 }
                 ICStatusWidget {
                     id: status29
-                    bindStatus: "c_ro_0_32_0_928"
+                    bindStatus: "c_ro_0_16_0_919"
                 }
                 ICStatusWidget {
                     id: status30
-                    bindStatus: "c_ro_0_32_0_929"
+                    bindStatus: "c_ro_16_16_0_919"
                 }
                 ICStatusWidget {
                     id: status31
-                    bindStatus: "c_ro_0_32_0_932"
+                    bindStatus: "c_ro_0_32_0_920"
                 }
                 ICStatusWidget {
                     id: status32
-                    bindStatus: "c_ro_0_32_0_931"
+                    bindStatus: "c_ro_0_32_0_921"
                 }
 
+            }
+
+            Column{
+                spacing: 2
+                ICStatusWidget {
+                    id: status33
+                    bindStatus: "c_ro_0_16_0_922"
+                }
+                ICStatusWidget {
+                    id: status34
+                    bindStatus: "c_ro_16_16_0_922"
+                }
+                ICStatusWidget {
+                    id: status35
+                    bindStatus: "c_ro_0_16_0_923"
+                }
+                ICStatusWidget {
+                    id: status36
+                    bindStatus: "c_ro_16_16_0_923"
+                }
+                ICStatusWidget {
+                    id: status37
+                    bindStatus: "c_ro_0_32_0_924"
+                }
+                ICStatusWidget {
+                    id: status38
+                    bindStatus: "c_ro_0_32_0_925"
+                }
+                ICStatusWidget {
+                    id: status39
+                    bindStatus: "c_ro_0_16_0_926"
+                }
+                ICStatusWidget {
+                    id: status40
+                    bindStatus: "c_ro_16_16_0_926"
+                }
+                ICStatusWidget {
+                    id: status41
+                    bindStatus: "c_ro_0_16_0_927"
+                }
+                ICStatusWidget {
+                    id: status42
+                    bindStatus: "c_ro_16_16_0_927"
+                }
+                ICStatusWidget {
+                    id: status43
+                    bindStatus: "c_ro_0_32_0_928"
+                }
+                ICStatusWidget {
+                    id: status44
+                    bindStatus: "c_ro_0_32_0_929"
+                }
+                ICStatusWidget {
+                    id: status45
+                    bindStatus: "c_ro_0_16_0_930"
+                }
+                ICStatusWidget {
+                    id: status46
+                    bindStatus: "c_ro_16_16_0_930"
+                }
+                ICStatusWidget {
+                    id: status47
+                    bindStatus: "c_ro_0_16_0_931"
+                }
+                ICStatusWidget {
+                    id: status48
+                    bindStatus: "c_ro_16_16_0_931"
+                }
+            }
+
+            Column{
+                spacing: 2
+                ICStatusWidget {
+                    id: status49
+                    bindStatus: "c_ro_0_32_0_932"
+                }
+                ICStatusWidget {
+                    id: status50
+                    bindStatus: "c_ro_0_16_0_933"
+                }
+                ICStatusWidget {
+                    id: status51
+                    bindStatus: "c_ro_16_16_0_933"
+                }
+                ICStatusWidget {
+                    id: status52
+                    bindStatus: "c_ro_0_16_0_934"
+                }
+                ICStatusWidget {
+                    id: status53
+                    bindStatus: "c_ro_16_16_0_934"
+                }
+                ICStatusWidget {
+                    id: status54
+                    bindStatus: "c_ro_0_16_0_935"
+                }
+                ICStatusWidget {
+                    id: status55
+                    bindStatus: "c_ro_16_16_0_935"
+                }
+                ICStatusWidget {
+                    id: status56
+                    bindStatus: "c_ro_0_16_0_936"
+                }
+                ICStatusWidget {
+                    id: status57
+                    bindStatus: "c_ro_16_16_0_936"
+                }
+                ICStatusWidget {
+                    id: status58
+                    bindStatus: "c_ro_0_16_0_937"
+                }
+                ICStatusWidget {
+                    id: status59
+                    bindStatus: "c_ro_16_16_0_937"
+                }
+                ICStatusWidget {
+                    id: status60
+                    bindStatus: "c_ro_0_1_0_938"
+                }
+                ICStatusWidget {
+                    id: status61
+                    bindStatus: "c_ro_1_4_0_938"
+                }
+                ICStatusWidget {
+                    id: status62
+                    bindStatus: "c_ro_5_29_0_938"
+                }
+                ICStatusWidget {
+                    id: status63
+                    bindStatus: "c_ro_0_16_0_931"
+                }
+                ICStatusWidget {
+                    id: status64
+                    bindStatus: "c_ro_16_16_0_931"
+                }
             }
         }
     }

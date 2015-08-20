@@ -6,8 +6,8 @@
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 
-#define REFRESH_INTERVAL 30
-#define INIT_INTERVAL 15
+#define REFRESH_INTERVAL 40
+#define INIT_INTERVAL 20
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICVirtualHost(hostId, parent)
 {
@@ -385,7 +385,8 @@ void ICRobotVirtualhost::CommunicateImpl()
     if(queue_.IsEmpty())
     {
         AddRefreshStatusCommand_();
-        SetCommunicateInterval(REFRESH_INTERVAL);
+        if(likely(CommunicateInterval() != REFRESH_INTERVAL))
+            SetCommunicateInterval(REFRESH_INTERVAL);
         //        return;
     }
     Transceiver()->Write(queue_.Head());

@@ -11,13 +11,22 @@
 
 static QScriptValue *getConfigRange_;
 
-
+PanelRobotController* controllerInstance;
 ICRange ICRobotRangeGetter(const QString& addrName)
 {
     QScriptValueList args;
     args<<addrName;
     QMap<QString, QVariant> ranges = getConfigRange_->call(QScriptValue(),args).toVariant().toMap();
-    return ICRange(ranges.value("min").toDouble(),ranges.value("max").toDouble(),ranges.value("decimal").toInt());
+    QVariant minVariant = ranges.value("min");
+    QVariant maxVariant = ranges.value("max");
+    double min = (minVariant.type() == QVariant::String) ?
+                controllerInstance->getRealConfigValue(minVariant.toString()) :
+                minVariant.toDouble();
+    double max = (maxVariant.type() == QVariant::String) ?
+                controllerInstance->getRealConfigValue(maxVariant.toString()):
+                maxVariant.toDouble();
+    return ICRange(min,max,ranges.value("decimal").toInt());
+//    return ICRange();
 }
 
 PanelRobotController::PanelRobotController(QObject *parent) :
@@ -74,6 +83,7 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     LoadTranslator_(ICAppSettings().TranslatorName());
 //    LoadTranslator_("HAMOUI_zh_CN.qm");
     qApp->installTranslator(&translator);
+    controllerInstance = this;
 }
 
 void PanelRobotController::Init()

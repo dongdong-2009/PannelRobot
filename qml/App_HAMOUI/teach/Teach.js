@@ -358,7 +358,7 @@ actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);

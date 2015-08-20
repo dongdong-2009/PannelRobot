@@ -64,6 +64,7 @@ Item {
                 axisName: qsTr("X1")
                 psName: [qsTr("X1 ON"), qsTr("X1 OFF")]
                 axisDefine: pData.axisDefine.s1Axis
+                rangeAddr: "s_rw_0_32_3_1000"
             }
 
             AxisActionEditorAxisComponent{
@@ -71,30 +72,35 @@ Item {
                 axisName: qsTr("Y1")
                 psName: [qsTr("Y1 ON"), qsTr("Y1 OFF")]
                 axisDefine: pData.axisDefine.s2Axis
+                rangeAddr: "s_rw_0_32_3_1001"
             }
             AxisActionEditorAxisComponent{
                 id:zAxis
                 axisName: qsTr("Z")
                 psName: [qsTr("Z ON"), qsTr("Z OFF")]
                 axisDefine: pData.axisDefine.s3Axis
+                rangeAddr: "s_rw_0_32_3_1002"
             }
             AxisActionEditorAxisComponent{
                 id:x2Axis
                 axisName: qsTr("X2")
                 psName: [qsTr("X2 ON"), qsTr("X2 OFF")]
                 axisDefine: pData.axisDefine.s4Axis
+                rangeAddr: "s_rw_0_32_3_1003"
             }
             AxisActionEditorAxisComponent{
                 id:y2Axis
                 axisName: qsTr("Y2")
                 psName: [qsTr("Y2 ON"), qsTr("Y2 OFF")]
                 axisDefine: pData.axisDefine.s5Axis
+                rangeAddr: "s_rw_0_32_3_1004"
             }
             AxisActionEditorAxisComponent{
                 id:aAxis
                 axisName: qsTr("A")
                 psName: [qsTr("A ON"), qsTr("A OFF")]
                 axisDefine: pData.axisDefine.s6Axis
+                rangeAddr: "s_rw_0_32_3_1005"
             }
             AxisActionEditorAxisComponent{
                 id:bAxis

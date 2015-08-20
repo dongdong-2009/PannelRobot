@@ -116,6 +116,15 @@ public:
     Q_INVOKABLE void sendKeyCommandToHost(int key);
     Q_INVOKABLE quint32 getConfigValue(const QString& addr) const;
     Q_INVOKABLE QString getConfigValueText(const QString& addr) const;
+    Q_INVOKABLE double getRealConfigValue(const QString& addr) const
+    {
+        return getConfigValue(addr) / qPow(10, configDecimal(addr));
+    }
+    Q_INVOKABLE int configDecimal(const QString& addr) const
+    {
+        QStringList item = addr.split("_", QString::SkipEmptyParts);
+        return (item.size() == 6) ? item.at(4).toInt() : 0;
+    }
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();

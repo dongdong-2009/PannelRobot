@@ -8,6 +8,7 @@ Row{
     property alias psName:ps.items
     property int axisDefine: 0
     property int editorWidth: 80
+    property alias rangeAddr: pos.bindConfig
 
     function getAxisActionInfo(){
         if(!box.isChecked) return null;
@@ -36,7 +37,9 @@ Row{
         id:pos
         width: editorWidth
         visible: axisDefine == Teach.kAxisType_Servo
+        bindConfig: rangeAddr
         unit: qsTr("mm")
+
     }
     ICComboBox{
         id:ps

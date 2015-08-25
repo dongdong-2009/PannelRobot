@@ -51,11 +51,13 @@ Row{
         width: editorWidth
         visible: axisDefine == Teach.kAxisType_Servo
         unit: qsTr("%")
+        bindConfig: "s_rw_0_32_1_1200"
     }
     ICLineEdit{
         id:delay
         width: editorWidth
         unit: qsTr("s")
+        bindConfig: "s_rw_0_32_2_1100"
     }
 
     onVisibleChanged: {

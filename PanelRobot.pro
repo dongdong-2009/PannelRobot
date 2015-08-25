@@ -82,13 +82,14 @@ QMAKE_EXTRA_TARGETS += configAddrTarget
 PRE_TARGETDEPS += .genAddr
 
 reinstallDir = tools/Reinstall/
+updateDir = tools/Update
 
-target.path = /opt/Qt/apps/
+target.path = /opt/Qt/apps
 
 CONFIG(release, debug|release) {
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
-INSTALLS += db
+#INSTALLS += db
 }
 
 #db.path = /opt/Qt/apps/
@@ -110,3 +111,7 @@ OTHER_FILES += \
     qml/ICCustomElement/ICLineEdit.qml \
     Init/main.qml
 
+UPDir = $${DESTDIR}/HCRobot-$${VERSION}
+updateCmd = '"tar xvf PanelRobot.tar -C /"'
+UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar"
+unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}' > UPMaker && chmod +x UPMaker"

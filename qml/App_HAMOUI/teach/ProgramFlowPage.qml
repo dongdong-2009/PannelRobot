@@ -68,6 +68,10 @@ Rectangle {
 
     }
 
+    function onEditConfirm(actionObject){
+        currentModelData().actionObject = actionObject;
+    }
+
     function modelToProgram(which){
         var model = pData.programs[which];
         var ret = [];
@@ -205,6 +209,44 @@ Rectangle {
                     id:sub8ProgramModel
                 }
 
+                ActionModifyEditor{
+                    id:modifyEditor
+                    z:100
+                    x: 10
+
+                }
+
+                ICButton{
+                    id:editBtn
+                    function showModify(){
+                        modifyEditor.y = editBtn.y + editBtn.height + 2;
+                        var actionObject = currentModelData().actionObject;
+                        modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                    }
+
+                    height: 22
+                    width: 40
+                    text: qsTr("Edit")
+                    z: 1
+                    anchors.right: programListView.right
+                    anchors.rightMargin: 2
+                    y: programListView.highlightItem.y + 2
+                    onButtonClicked: showModify()
+                    onYChanged: {
+                        if(!visible){
+                            modifyEditor.visible = false;
+                            return;
+                        }
+                        if(modifyEditor.visible){
+                           showModify();
+                        }
+                    }
+                    visible: {
+                        return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0;
+                    }
+
+                }
+
                 ListView{
                     id:programListView
                     y:2
@@ -215,11 +257,9 @@ Rectangle {
                         x:1
                         color: "lightsteelblue"
                         width: programListView.width - 1
-
                     }
 
-
-                    highlightMoveDuration:200
+                    highlightMoveDuration:100
                     spacing:2
                     delegate: Item{
                         width: parent.width
@@ -356,6 +396,7 @@ Rectangle {
     Component.onCompleted: {
         updateProgramModels();
         panelRobotController.moldChanged.connect(updateProgramModels);
+        modifyEditor.editConfirm.connect(onEditConfirm);
     }
 
 }

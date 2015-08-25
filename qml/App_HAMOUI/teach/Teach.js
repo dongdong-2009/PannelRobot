@@ -3,6 +3,10 @@
 Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
 
+var motorRangeAddr = function(which){
+    return "s_rw_0_32_3_100" + which;
+}
+
 var actHelper = 0;
 var actions = {
 
@@ -364,6 +368,14 @@ actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHa
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
 
+var actionObjectToEditableITems = function(actionObject){
+    if(actionObject.action === actions.F_CMD_SINGLE){
+        return [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
+                {"item":"speed", "range":"s_rw_0_32_1_1200"},
+                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
+    }
+    return [];
+}
 
 
 var actionToString = function(actionObject){

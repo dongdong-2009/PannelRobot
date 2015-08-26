@@ -12,7 +12,10 @@ Rectangle {
 
     Text {
         id: text
+        width: container.width
         text: qsTr("item")
+//        wrapMode: Text.WordWrap
+        elide: Text.ElideRight
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
     }

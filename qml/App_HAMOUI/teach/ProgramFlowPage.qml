@@ -244,6 +244,7 @@ Rectangle {
                         }
                     }
                     visible: {
+                        if(programListView.currentItem == null) return false;
                         return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0 &&
                                 programListView.currentItem.y > programListView.contentY;
                     }

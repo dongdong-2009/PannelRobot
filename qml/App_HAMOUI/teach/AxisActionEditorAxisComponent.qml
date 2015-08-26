@@ -31,11 +31,11 @@ Row{
     ICCheckBox{
         id:box
         text: axisName
-        width: editorWidth
+        width: 40
     }
     ICLineEdit{
         id:pos
-        width: editorWidth
+        width: editorWidth + 60
         visible: axisDefine == Teach.kAxisType_Servo
         bindConfig: rangeAddr
         unit: qsTr("mm")

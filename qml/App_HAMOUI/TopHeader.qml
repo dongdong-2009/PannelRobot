@@ -16,6 +16,10 @@ Rectangle {
     signal recordItemStatusChanged(bool isChecked)
 //    signal lan
 
+    function onRecordChanged(){
+        record.itemText = qsTr("Records:\n") + panelRobotController.currentRecordName();
+    }
+
     Image {
         id: modeImg
         source: "images/modeSetting.png"
@@ -71,9 +75,9 @@ Rectangle {
         }
         TopMenuItem{
             id: record
-            width: menuItemWidth
+            width: menuItemWidth * 2
             height:  menuItemHeight
-            itemText: qsTr("Records")
+            itemText: qsTr("Records:\n") + panelRobotController.currentRecordName()
             onIsCheckedChanged: recordItemStatusChanged(isChecked)
         }
         TopMenuItem{
@@ -90,5 +94,6 @@ Rectangle {
     Component.onCompleted: {
         buttonGroup.addButton(io);
         buttonGroup.addButton(record);
+        panelRobotController.moldChanged.connect(onRecordChanged);
     }
 }

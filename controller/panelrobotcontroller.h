@@ -144,12 +144,17 @@ public:
         bool ret =  mold->LoadMold(name);
         if(ret)
         {
-            emit moldChanged();
             ICAppSettings as;
             as.SetCurrentMoldConfig(name);
+            emit moldChanged();
         }
 
         return ret;
+    }
+
+    Q_INVOKABLE QString currentRecordName() const
+    {
+        return ICAppSettings().CurrentMoldConfig();
     }
 
     Q_INVOKABLE int saveMainProgram(const QString& program)

@@ -233,7 +233,7 @@ Rectangle {
                     anchors.right: programListView.right
                     anchors.rightMargin: 2
                     onButtonClicked: showModify()
-                    y:programListView.currentItem.y - programListView.contentY + 2
+                    y: visible ? programListView.currentItem.y - programListView.contentY + 2 : 0
                     onYChanged: {
                         if(!visible){
                             modifyEditor.visible = false;
@@ -246,7 +246,7 @@ Rectangle {
                     visible: {
                         if(programListView.currentItem == null) return false;
                         return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0 &&
-                                programListView.currentItem.y > programListView.contentY;
+                                programListView.currentItem.y >= programListView.contentY;
                     }
 
                 }

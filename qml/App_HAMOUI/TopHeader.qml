@@ -17,7 +17,7 @@ Rectangle {
 //    signal lan
 
     function onRecordChanged(){
-        record.itemText = qsTr("Records:\n") + panelRobotController.currentRecordName();
+        record.itemText = qsTr("Records:") + panelRobotController.currentRecordName();
     }
 
     Image {
@@ -77,7 +77,7 @@ Rectangle {
             id: record
             width: menuItemWidth * 2
             height:  menuItemHeight
-            itemText: qsTr("Records:\n") + panelRobotController.currentRecordName()
+            itemText: qsTr("Records:") + panelRobotController.currentRecordName()
             onIsCheckedChanged: recordItemStatusChanged(isChecked)
         }
         TopMenuItem{

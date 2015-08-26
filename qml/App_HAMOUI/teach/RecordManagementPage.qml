@@ -108,6 +108,19 @@ Rectangle {
         ICButton{
             id:copyRecord
             text: qsTr("Copy")
+            onButtonClicked: {
+                if(newName.isEmpty()){
+                    tipDialog.show(qsTr("Please Enter the new record name!"));
+                    return;
+                }
+//                panelRobotController.copyRecord(newName.text,
+//                                                recordsModel.get(recordsView.currentIndex).name)
+                var ret = JSON.parse(panelRobotController.copyRecord(newName.text,
+                                    recordsModel.get(recordsView.currentIndex).name));
+//                console.log(ret);
+                recordsModel.append({"name":ret.recordName,
+                                    "createDatetime":ret.createDatetime});
+            }
         }
         ICButton{
             id:delRecord

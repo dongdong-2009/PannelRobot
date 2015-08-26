@@ -134,6 +134,11 @@ public:
     {
         return ICRobotMold::NewRecord(name, initProgram, baseFncs_).toJSON();
     }
+    Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
+    {
+        return ICRobotMold::CopyRecord(name, source).toJSON();
+    }
+
     Q_INVOKABLE bool deleteRecord(const QString& name)
     {
         return ICRobotMold::DeleteRecord(name);

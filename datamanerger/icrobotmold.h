@@ -117,6 +117,9 @@ public:
                                       const QString& initProgram,
                                       const QList<QPair<int, quint32> >& values);
 
+    static RecordDataObject CopyRecord(const QString& name,
+                                       const QString& source);
+
     static bool DeleteRecord(const QString& name)
     {
         return ICDALHelper::DeleteMold(name);

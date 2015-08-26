@@ -164,6 +164,17 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
 //    return RecordDataObject();
 }
 
+RecordDataObject ICRobotMold::CopyRecord(const QString &name, const QString &source)
+{
+    if(name.isEmpty()) return RecordDataObject(kRecordErr_Name_Is_Empty);
+    if(ICDALHelper::IsExistsRecordTable(name))
+    {
+        return RecordDataObject(kRecordErr_Name_Is_Exists);
+    }
+    QString dt = ICDALHelper::CopyMold(name, source);
+    return RecordDataObject(name, dt);
+}
+
 
 
 CompileInfo ICRobotMold::Complie(const QString &programText, int &err)

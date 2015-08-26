@@ -7,6 +7,7 @@
 #include <QtDeclarative>
 #include <QScriptEngine>
 #include <QSharedPointer>
+#include <QTimer>
 #include "icdatatype.h"
 #include "icparameterscache.h"
 
@@ -209,6 +210,7 @@ public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
     void OnQueryStatusFinished(int addr, const QVector<quint32>&v);
+    void OnkeyCheckTimeOut();
 
 private:
     void InitDatabase_();
@@ -234,6 +236,7 @@ private:
     QScriptEngine engine_;
     QScriptValue configRangeGetter_;
     QTranslator translator;
+    QTimer keyCheckTimer_;
 };
 
 #endif // PANELROBOTCONTROLLER_H

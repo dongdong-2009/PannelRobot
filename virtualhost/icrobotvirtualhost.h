@@ -167,6 +167,7 @@ public:
 
 #ifdef NEW_PLAT
     static void SendKeyCommand(int cmd);
+    static void ClearKeyCommandQueue(ICVirtualHostPtr hostPtr) {keyCommandList_.clear();hostPtr->ClearCommunicationQueue();}
     static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
 #else
     static bool InitMoldSub(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >& data);

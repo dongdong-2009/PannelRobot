@@ -381,6 +381,7 @@ void ICRobotVirtualhost::CommunicateImpl()
     {
         AddCommunicationFrame(keyCommandList_.dequeue());
         AddRefreshStatusCommand_();
+//        qDebug("keycommand");
     }
     if(queue_.IsEmpty())
     {

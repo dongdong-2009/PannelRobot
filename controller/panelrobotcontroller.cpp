@@ -83,6 +83,11 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     LoadTranslator_(ICAppSettings().TranslatorName());
 //    LoadTranslator_("HAMOUI_zh_CN.qm");
     qApp->installTranslator(&translator);
+
+    connect(&keyCheckTimer_,
+            SIGNAL(timeout()),
+            SLOT(OnkeyCheckTimeOut()));
+//    keyCheckTimer_.start(100);
     controllerInstance = this;
 }
 
@@ -154,6 +159,7 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 {
 #ifdef NEW_PLAT
     ICRobotVirtualhost::SendKeyCommand(key);
+    keyCheckTimer_.start(100);
 #else
     ICRobotVirtualhost::SendKeyCommand(key);
 #endif
@@ -452,4 +458,10 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                 this,
                 SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
     }
+}
+
+void PanelRobotController::OnkeyCheckTimeOut()
+{
+    ICRobotVirtualhost::ClearKeyCommandQueue(host_);
+    keyCheckTimer_.stop();
 }

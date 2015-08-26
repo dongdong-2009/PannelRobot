@@ -182,7 +182,7 @@ Rectangle {
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             for(var i = 0 ; i < pressedKeys.length; ++i){
-                console.log("Send command");
+//                console.log("Send command");
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
             }
         }

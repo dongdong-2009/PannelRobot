@@ -257,6 +257,8 @@ Rectangle {
                         x:1
                         color: "lightsteelblue"
                         width: programListView.width - 1
+//                        z:2
+//                        opacity: 0.5
                     }
 
                     highlightMoveDuration:100
@@ -276,12 +278,13 @@ Rectangle {
                             width: programListView.width
                             anchors.verticalCenter: parent.verticalCenter
                         }
-
+//                        color: index % 2 == 1 ? "lightgreen" : "yellow"
 
                         MouseArea{
                             anchors.fill: parent
                             onClicked: {
                                 programListView.currentIndex = index
+//                                color = "lightsteelblue"
 //                                commentToggleBtn.y = parent.y
                             }
                         }

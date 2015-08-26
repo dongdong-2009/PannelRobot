@@ -172,6 +172,7 @@ Rectangle {
             }
 
             Rectangle{
+                id:programListContainer
                 anchors.top: programSelecterContainer.bottom
                 anchors.topMargin: 4
                 //        anchors.bottom: parent.bottom
@@ -180,6 +181,7 @@ Rectangle {
                 //                width: actionEditorFrame.visible ? container.width / 2 : container.width
                 width: parent.width
                 height: 408
+                color: "gray"
                 //        visible: false
                 ListModel{
                     id:mainProgramModel
@@ -224,14 +226,14 @@ Rectangle {
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
                     }
 
-                    height: 22
+                    height: 23
                     width: 40
                     text: qsTr("Edit")
                     z: 1
                     anchors.right: programListView.right
                     anchors.rightMargin: 2
-                    y: programListView.highlightItem.y + 2
                     onButtonClicked: showModify()
+                    y:programListView.currentItem.y - programListView.contentY + 2
                     onYChanged: {
                         if(!visible){
                             modifyEditor.visible = false;
@@ -242,7 +244,8 @@ Rectangle {
                         }
                     }
                     visible: {
-                        return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0;
+                        return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0 &&
+                                programListView.currentItem.y > programListView.contentY;
                     }
 
                 }
@@ -253,18 +256,11 @@ Rectangle {
                     model: mainProgramModel
                     width: parent.width
                     height: parent.height
-                    highlight: Rectangle {
-                        x:1
-                        color: "lightsteelblue"
-                        width: programListView.width - 1
-//                        z:2
-//                        opacity: 0.5
-                    }
-
-                    highlightMoveDuration:100
                     spacing:2
-                    delegate: Item{
-                        width: parent.width
+                    clip: true
+                    delegate: Rectangle{
+                        x:1
+                        width: parent.width - x
                         height: 24
                         Text{
                             text:index
@@ -278,14 +274,19 @@ Rectangle {
                             width: programListView.width
                             anchors.verticalCenter: parent.verticalCenter
                         }
-//                        color: index % 2 == 1 ? "lightgreen" : "yellow"
+                        color: {
+                            if(ListView.isCurrentItem){
+                                return "lightsteelblue"
+                            }else{
+                                return index % 2 == 1 ? "cyan" : "yellow"
+                            }
+                        }
 
                         MouseArea{
                             anchors.fill: parent
                             onClicked: {
-                                programListView.currentIndex = index
-//                                color = "lightsteelblue"
-//                                commentToggleBtn.y = parent.y
+                                programListView.currentIndex = index;
+//                                console.log(programListView.contentY, programListView.currentItem.y)
                             }
                         }
                     }

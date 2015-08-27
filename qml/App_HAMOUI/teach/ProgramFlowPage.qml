@@ -338,14 +338,43 @@ Rectangle {
             //            anchors.right: container.right
             border.width: 1
             border.color: "black"
+            ICButton{
+                id:insertBtn
+                x:2
+                y:21
+                width: 80
+                height: 32
+                text: qsTr("Insert")
+            }
+
+            ICButton{
+                id:actionMenuBtn
+                x:insertBtn.x
+                y:insertBtn.y + 126
+                width: insertBtn.width
+                height: insertBtn.height
+                text: qsTr("Menu")
+            }
+            Rectangle{
+                id:splitLine
+                width: 1
+                y:2
+                height:parent.height -3
+                anchors.left: insertBtn.right
+                anchors.leftMargin: 5
+                color: "gray"
+            }
+
             ICStackContainer{
                 function showMenu() { setCurrentIndex(0);}
 //                function showAxis() { setCurrentIndex(1);}
 //                function showOutput() { setCurrentIndex(2);}
                 function isMenuShow() { return currentIndex == 0;}
                 id:actionEditorContainer
-                width: parent.width
+                width: parent.width - insertBtn.width - anchors.leftMargin
                 height: parent.height
+                anchors.left: insertBtn.right
+                anchors.leftMargin: 10
             }
             Component.onCompleted: {
                 var editor = Qt.createComponent('ProgramActionMenu.qml');
@@ -397,6 +426,8 @@ Rectangle {
                 commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
+                actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
+                insertBtn.buttonClicked.connect(onInsertTriggered);
             }
         }
     }

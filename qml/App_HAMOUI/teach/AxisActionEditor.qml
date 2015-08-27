@@ -4,6 +4,8 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 
 Item {
+    width: parent.width
+    height: parent.height
     QtObject{
         id:pData
         property int editorWidth: 80
@@ -45,10 +47,18 @@ Item {
         return ret;
     }
 
+    Rectangle{
+        id:splitLine
+        width: 1
+        height: parent.height -3
+        color: "gray"
+        x:336
+    }
+
     Column{
         spacing: 4
         Row{
-            spacing: 10
+            spacing: 15
             ICButton{
                 id:backToMenu
                 text: qsTr("Back to Menu")
@@ -65,7 +75,7 @@ Item {
         Grid{
             columns: 2
             rows: 5
-            spacing: 10
+            spacing: 12
             flow: Grid.TopToBottom
 
             AxisActionEditorAxisComponent{

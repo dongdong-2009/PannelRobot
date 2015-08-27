@@ -35,7 +35,7 @@ Row{
     }
     ICLineEdit{
         id:pos
-        width: editorWidth + 60
+        width: editorWidth + 40
         visible: axisDefine == Teach.kAxisType_Servo
         bindConfig: rangeAddr
         unit: qsTr("mm")
@@ -48,7 +48,7 @@ Row{
     }
     ICLineEdit{
         id:speed
-        width: editorWidth
+        width: editorWidth - 20
         visible: axisDefine == Teach.kAxisType_Servo
         unit: qsTr("%")
         bindConfig: "s_rw_0_32_1_1200"

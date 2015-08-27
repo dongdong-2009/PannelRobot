@@ -45,7 +45,7 @@ actions.ACT_Wait       = actHelper++;
 actions.ACT_CHECK      = actHelper++;
 actions.ACT_PARALLEL   = actHelper++;
 actions.ACT_END        = 60000;
-actions.ACT_COMMENT    = actHelper;
+actions.ACT_COMMENT    = 50000;
 actions.ACT_OUTPUT     = 0x80;
 actions.ACT_SYNC_BEGIN = 126;
 actions.ACT_SYNC_END   = 127;
@@ -310,7 +310,7 @@ var endActionToStringHandler = function(actionObject){
 }
 
 var commentActionToStringHandler = function(actionObject){
-    return qsTr("Comment:") + actionObject.comment;
+    return actionObject.comment;
 }
 
 var flagActionToStringHandler = function(actionObject){

@@ -205,8 +205,8 @@ Rectangle {
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
                     }
                     z: 1
-                    height: 23
-                    spacing: 1
+                    height: 30
+                    spacing: 4
                     anchors.right: programListView.right
                     anchors.rightMargin: 2
                     y: visible ? programListView.currentItem.y - programListView.contentY + 2 : 0
@@ -290,38 +290,64 @@ Rectangle {
                     height: parent.height
                     spacing:2
                     clip: true
-                    delegate: Rectangle{
+                    delegate: ProgramListItem{
                         x:1
                         width: parent.width - x
-                        height: 24
-                        Text{
-                            text:index
-                            width: 35
-                            anchors.left: parent.left
-                            anchors.verticalCenter: parent.verticalCenter
-                            horizontalAlignment: Text.AlignRight
-                        }
-                        Text {
-                            text:"             " + Teach.actionToString(actionObject)
-                            width: programListView.width
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                        color: {
-                            if(ListView.isCurrentItem){
-                                return "lightsteelblue"
-                            }else{
-                                return index % 2 == 1 ? "cyan" : "yellow"
-                            }
-                        }
-
+                        height: 30
+                        isCurrent: ListView.isCurrentItem
+                        isComment: actionObject.action === Teach.actions.ACT_COMMENT
+                        lineNum: index
+                        text: "             " + Teach.actionToString(actionObject)
                         MouseArea{
                             anchors.fill: parent
                             onClicked: {
                                 programListView.currentIndex = index;
-//                                console.log(programListView.contentY, programListView.currentItem.y)
                             }
                         }
                     }
+
+//                    delegate: Rectangle{
+//                        x:1
+//                        width: parent.width - x
+//                        height: 30
+//                        Text{
+//                            text:{
+//                                if(actionObject.action != Teach.actions.ACT_COMMENT)
+//                                    return index;
+//                                return "#" + index;
+//                            }
+
+//                            width: 35
+//                            anchors.left: parent.left
+//                            anchors.verticalCenter: parent.verticalCenter
+//                            horizontalAlignment: Text.AlignRight
+//                        }
+//                        Text {
+//                            text:"             " + Teach.actionToString(actionObject)
+//                            width: programListView.width
+//                            anchors.verticalCenter: parent.verticalCenter
+//                        }
+//                        color: {
+//                            if(ListView.isCurrentItem){
+//                                return "lightsteelblue"
+//                            }
+//                            else if(actionObject.action === Teach.actions.ACT_COMMENT)
+//                            {
+//                                return "gray"
+//                            }
+//                            else{
+//                                return index % 2 == 1 ? "cyan" : "yellow"
+//                            }
+//                        }
+
+//                        MouseArea{
+//                            anchors.fill: parent
+//                            onClicked: {
+//                                programListView.currentIndex = index;
+////                                console.log(programListView.contentY, programListView.currentItem.y)
+//                            }
+//                        }
+//                    }
                 }
 
             }

@@ -421,6 +421,7 @@ typedef enum
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
 
 
+    F_CMD_NOTES = 50000,   //< 注释该行教导程序
 	F_CMD_END=60000//< 动作结束
 
 }FunctionCmd;

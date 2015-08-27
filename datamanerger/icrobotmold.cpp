@@ -199,6 +199,10 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
     {
         action = result.at(i).toMap();
         act = action.value("action").toInt();
+        if(act == F_CMD_NOTES)
+        {
+            continue;
+        }
         ret.AddICMoldItem(VariantToMoldItem(step, action));
         if(act == F_CMD_SYNC_START)
         {

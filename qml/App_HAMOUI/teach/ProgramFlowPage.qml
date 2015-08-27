@@ -122,25 +122,6 @@ Rectangle {
             height: parent.height
             color: Theme.defaultTheme.BASE_BG
 
-            ICButton{
-                id:commentToggleBtn
-                text: qsTr("C/Unc")
-                anchors.right: parent.right
-                height: 24
-                z:1
-                onButtonClicked: {
-                    var modelObject = currentModelData();
-                    if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
-                    if(modelObject.actionObject.action == modelObject.commentedObject.action){
-                        var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject));
-                        modelObject.actionObject = cO;
-                    }
-                    else{
-                        modelObject.actionObject = modelObject.commentedObject;
-                    }
-
-                }
-            }
 
             Row{
                 id:programSelecterContainer
@@ -218,38 +199,93 @@ Rectangle {
 
                 }
 
-                ICButton{
-                    id:editBtn
+                Row{
+                    id:toolBar
                     function showModify(){
-                        modifyEditor.y = editBtn.y + editBtn.height + 2;
+                        modifyEditor.y = toolBar.y + toolBar.height + 2;
                         var actionObject = currentModelData().actionObject;
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
                     }
-
-                    height: 23
-                    width: 40
-                    text: qsTr("Edit")
                     z: 1
+                    height: 23
+                    spacing: 1
                     anchors.right: programListView.right
                     anchors.rightMargin: 2
-                    onButtonClicked: showModify()
                     y: visible ? programListView.currentItem.y - programListView.contentY + 2 : 0
+
                     onYChanged: {
-                        if(!visible){
+                        if(!editBtn.visible){
                             modifyEditor.visible = false;
                             return;
                         }
                         if(modifyEditor.visible){
-                           showModify();
+                            showModify();
                         }
                     }
                     visible: {
                         if(programListView.currentItem == null) return false;
-                        return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0 &&
-                                programListView.currentItem.y >= programListView.contentY;
+                        return programListView.currentItem.y >= programListView.contentY;
+                    }
+                    ICButton{
+                        id:moveUpBtn
+                        height: parent.height
+                        width: 40
+                        text: qsTr("UP")
+                        visible: (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
+                    }
+                    ICButton{
+                        id:moveDWBtn
+                        height: parent.height
+                        width: 40
+                        text: qsTr("DW")
+                        visible: (programListView.currentIndex < programListView.count - 2)
                     }
 
+                    ICButton{
+                        id:editBtn
+                        height: parent.height
+                        width: 40
+                        text: qsTr("Edit")
+                        onButtonClicked: toolBar.showModify()
+
+
+                        visible: {
+                            return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0
+                        }
+
+                    }
+                    ICButton{
+                        id:commentToggleBtn
+                        width: 40
+                        height: parent.height
+                        text: qsTr("C/UC")
+                        onButtonClicked: {
+                            var modelObject = currentModelData();
+                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
+                            if(modelObject.actionObject.action == modelObject.commentedObject.action){
+                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject));
+                                modelObject.actionObject = cO;
+                            }
+                            else{
+                                modelObject.actionObject = modelObject.commentedObject;
+                            }
+
+                        }
+                        visible: programListView.currentIndex < programListView.count - 1
+                    }
+                    ICButton{
+                        id:delBtn
+                        height: parent.height
+                        width: 40
+                        text: qsTr("Del")
+                        visible: programListView.currentIndex < programListView.count - 1
+
+                    }
                 }
+
+
+
+
 
                 ListView{
                     id:programListView
@@ -402,6 +438,9 @@ Rectangle {
         updateProgramModels();
         panelRobotController.moldChanged.connect(updateProgramModels);
         modifyEditor.editConfirm.connect(onEditConfirm);
+        delBtn.buttonClicked.connect(onDeleteTriggered);
+        moveUpBtn.buttonClicked.connect(onUpTriggered);
+        moveDWBtn.buttonClicked.connect(onDownTriggered);
     }
 
 }

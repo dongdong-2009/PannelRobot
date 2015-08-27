@@ -33,7 +33,7 @@ Rectangle {
         visible = true;
     }
     visible: false
-    width: 800
+    width: 300
     border.color: "black"
     border.width: 1
     Column{

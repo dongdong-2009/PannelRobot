@@ -18,7 +18,7 @@ Item {
         var axisActionInfo;
         var editor
         if(isSyncBox.getChecked()){
-           ret.push(Teach.generateSyncBeginAction());
+            ret.push(Teach.generateSyncBeginAction());
         }
         for(var i = 0; i < axis.length; ++i){
             editor = axis[i];
@@ -40,25 +40,34 @@ Item {
             }
         }
         if(isSyncBox.getChecked()){
-           ret.push(Teach.generateSyncEndAction());
+            ret.push(Teach.generateSyncEndAction());
         }
         return ret;
     }
 
     Column{
         spacing: 4
-        ICButton{
-            id:backToMenu
-            text: qsTr("Back to Menu")
-            onButtonClicked: backToMenuTriggered()
-        }
+        Row{
+            spacing: 10
+            ICButton{
+                id:backToMenu
+                text: qsTr("Back to Menu")
+                onButtonClicked: backToMenuTriggered()
+            }
 
-        Column{
-            spacing: 6
             ICCheckBox{
                 id:isSyncBox
                 text: qsTr("Sync");
+                anchors.verticalCenter: backToMenu.verticalCenter
             }
+        }
+
+        Grid{
+            columns: 2
+            rows: 5
+            spacing: 10
+            flow: Grid.TopToBottom
+
             AxisActionEditorAxisComponent{
                 id:x1Axis
                 axisName: qsTr("X1")

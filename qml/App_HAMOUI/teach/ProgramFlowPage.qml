@@ -21,6 +21,11 @@ Rectangle {
 
 
     function showActionEditorPanel(){
+        if(!actionEditorFrame.visible)
+            programListView.contentY += actionEditorFrame.height;
+        else
+            programListView.contentY -= actionEditorFrame.height;
+
         actionEditorFrame.visible = !actionEditorFrame.visible;
     }
 
@@ -110,24 +115,24 @@ Rectangle {
 //                           new Teach.ProgramModelItem(actionObject));
 //    }
 
-    Row{
+    Column{
         id:container
-        width: 796
+        width: 792
         height: 436
         spacing: 2
         Rectangle{
             id:programViewContainer
             x:2
-            width: actionEditorFrame.visible ? container.width / 2 : container.width
-            height: parent.height
+            width: parent.width
+            height: actionEditorFrame.visible ? container.height / 2 : container.height
             color: Theme.defaultTheme.BASE_BG
-
 
             Row{
                 id:programSelecterContainer
                 spacing: 10
                 y:2
                 z:1
+//                height: 24
                 Text {
                     text: qsTr("Editing")
                     anchors.verticalCenter: parent.verticalCenter
@@ -161,7 +166,7 @@ Rectangle {
                 border.color: "black"
                 //                width: actionEditorFrame.visible ? container.width / 2 : container.width
                 width: parent.width
-                height: 408
+                height: parent.height - programSelecterContainer.height - container.spacing
                 color: "gray"
                 //        visible: false
                 ListModel{
@@ -192,17 +197,10 @@ Rectangle {
                     id:sub8ProgramModel
                 }
 
-                ActionModifyEditor{
-                    id:modifyEditor
-                    z:100
-                    x: 10
-
-                }
-
                 Row{
                     id:toolBar
                     function showModify(){
-                        modifyEditor.y = toolBar.y + toolBar.height + 2;
+                        modifyEditor.y = toolBar.y + toolBar.height + 30;
                         var actionObject = currentModelData().actionObject;
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
                     }
@@ -284,9 +282,6 @@ Rectangle {
                 }
 
 
-
-
-
                 ListView{
                     id:programListView
                     y:2
@@ -334,9 +329,11 @@ Rectangle {
         Rectangle{
             id:actionEditorFrame
             //            visible: false
-            width: container.width / 2 - container.spacing
-            height: container.height
-            y:2
+            width: container.width
+            height: container.height / 2
+//            y:2
+            x:2
+
             //            anchors.left: programViewContainer.right
             //            anchors.right: container.right
             border.width: 1
@@ -409,6 +406,12 @@ Rectangle {
         anchors.centerIn: container
         z: 100
     }
+    ActionModifyEditor{
+        id:modifyEditor
+        z:3
+        x: 10
+
+    }
 
     function updateProgramModels(){
         var program = JSON.parse(panelRobotController.mainProgram());
@@ -432,6 +435,11 @@ Rectangle {
                 pData.programs[i].append(new Teach.ProgramModelItem(step));
             }
         }
+    }
+
+    onVisibleChanged: {
+        actionEditorFrame.visible = false;
+        programListView.contentY = 0;
     }
 
     Component.onCompleted: {

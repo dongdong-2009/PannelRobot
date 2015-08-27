@@ -19,7 +19,7 @@ Rectangle {
     signal searchMenuTriggered()
 
     Grid{
-        columns: 2
+        columns: 3
         spacing: 10
         x:20
         y:20

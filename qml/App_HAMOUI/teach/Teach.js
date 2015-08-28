@@ -387,6 +387,7 @@ var actionToString = function(actionObject){
 function ProgramModelItem(actionObject){
     this.actionObject = actionObject;
     this.commentedObject = actionObject;
+    this.isActionRunning = false;
 }
 
 function ccErrnoToString(errno){

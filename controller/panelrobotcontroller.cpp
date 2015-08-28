@@ -466,3 +466,35 @@ void PanelRobotController::OnkeyCheckTimeOut()
     ICRobotVirtualhost::ClearKeyCommandQueue(host_);
     keyCheckTimer_.stop();
 }
+
+static QStringList stepAddrs = QStringList()<<"c_ro_0_16_0_933"
+                                              <<"c_ro_16_16_0_933"
+                                                <<"c_ro_0_16_0_934"
+                                                  <<"c_ro_16_16_0_934"
+                                                    <<"c_ro_0_16_0_935"
+                                                      <<"c_ro_16_16_0_935"
+                                                        <<"c_ro_0_16_0_936"
+                                                          <<"c_ro_16_16_0_936"
+                                                            <<"c_ro_0_16_0_937";
+
+QString PanelRobotController::hostStepToUILines(int which, int step) const
+{
+    if(which >= stepAddrs.size()) return "";
+    QList<int> steps = ICRobotMold::CurrentMold()->RunningStepToProgramLine(which,
+                                                                            step);
+
+    if(steps.isEmpty()) return "";
+    QString ret = "[";
+    for(int i = 0; i < steps.size(); ++i)
+    {
+        ret += QString("%1,").arg(steps.at(i));
+    }
+    ret.chop(1);
+    ret += "]";
+    return ret;
+}
+
+QString PanelRobotController::currentRunningActionInfo(int which) const
+{
+    return hostStepToUILines(which, statusValue(stepAddrs.at(which)));
+}

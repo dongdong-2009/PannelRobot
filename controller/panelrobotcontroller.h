@@ -121,6 +121,9 @@ public:
     {
         return getConfigValue(addr) / qPow(10, configDecimal(addr));
     }
+    Q_INVOKABLE bool isAutoMode() const { return statusValue("c_ro_1_4_0_938") == CMD_AUTO;}
+    Q_INVOKABLE QString hostStepToUILines(int which, int step) const;
+    Q_INVOKABLE QString currentRunningActionInfo(int which) const;
     Q_INVOKABLE int configDecimal(const QString& addr) const
     {
         QStringList item = addr.split("_", QString::SkipEmptyParts);
@@ -210,6 +213,8 @@ public:
 
     Q_INVOKABLE int configsCheckSum(const QString& addrs) const;
     Q_INVOKABLE void loadHostMachineConfigs();
+
+
 
 
 signals:

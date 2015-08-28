@@ -31,6 +31,7 @@ typedef enum _FunctionCode
     FunctionCode_ReadDiffAddr       = 0x54,     //<读多段地址值
     FunctionCode_WriteDiffAddr      = 0x55,     //<写多段地址值
 	FunctionCode_WriteTeach      = 0x56,     //<写教导程序
+    FunctionCode_EditTeach      = 0x57,     //<编辑教导程序
 	FunctionCode_Err            = 0x60,     //<通信错误
     FunctionCode_NIL                        //<功能码结束位
 } FunctionCode;

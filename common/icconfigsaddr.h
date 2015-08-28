@@ -245,6 +245,16 @@ extern  const ICAddrWrapper  s_rw_0_16_3_271;  //< 3239002139 V轴初始夹角�
 extern  const ICAddrWrapper  s_rw_16_16_3_271;  //< 3239002651 V轴初始夹角设定初始夹角
 extern  const ICAddrWrapper  s_rw_0_16_3_272;  //< 3239067675 V轴初始夹角设定初始夹角
 extern  const ICAddrWrapper  s_rw_16_16_3_272;  //< 3239068187 V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  m_rw_0_1_0_357;  //< 23397402 主程序使用
+extern  const ICAddrWrapper  m_rw_1_1_0_357;  //< 23397434 子程序1使用
+extern  const ICAddrWrapper  m_rw_2_1_0_357;  //< 23397466 子程序2使用
+extern  const ICAddrWrapper  m_rw_3_1_0_357;  //< 23397498 子程序3使用
+extern  const ICAddrWrapper  m_rw_4_1_0_357;  //< 23397530 子程序4使用
+extern  const ICAddrWrapper  m_rw_5_1_0_357;  //< 23397562 子程序5使用
+extern  const ICAddrWrapper  m_rw_6_1_0_357;  //< 23397594 子程序6使用
+extern  const ICAddrWrapper  m_rw_7_1_0_357;  //< 23397626 子程序7使用
+extern  const ICAddrWrapper  m_rw_8_1_0_357;  //< 23397658 子程序8使用
+extern  const ICAddrWrapper  m_rw_9_23_0_357;  //< 23420218 备用
 extern  const ICAddrWrapper  c_ro_0_32_0_900;    //< 59015177 轴1当前输出脉冲位置当前输出脉冲位置
 extern  const ICAddrWrapper  c_ro_0_32_0_901;    //< 59080713 轴1实际脉冲位置实际脉冲位置
 extern  const ICAddrWrapper  c_ro_0_16_0_902;  //< 59129865 轴1速度百分比_当前速度速度百分比

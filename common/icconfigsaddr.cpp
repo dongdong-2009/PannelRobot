@@ -245,6 +245,16 @@ extern  const ICAddrWrapper  s_rw_0_16_3_271(3,3,0,16,271,3,"度");   //<V轴初
 extern  const ICAddrWrapper  s_rw_16_16_3_271(3,3,16,16,271,3,"度");   //<V轴初始夹角设定初始夹角
 extern  const ICAddrWrapper  s_rw_0_16_3_272(3,3,0,16,272,3,"度");   //<V轴初始夹角设定初始夹角
 extern  const ICAddrWrapper  s_rw_16_16_3_272(3,3,16,16,272,3,"度");   //<V轴初始夹角设定初始夹角
+extern  const ICAddrWrapper  m_rw_0_1_0_357(2,3,0,1,357,0,"");   //<主程序使用
+extern  const ICAddrWrapper  m_rw_1_1_0_357(2,3,1,1,357,0,"");   //<子程序1使用
+extern  const ICAddrWrapper  m_rw_2_1_0_357(2,3,2,1,357,0,"");   //<子程序2使用
+extern  const ICAddrWrapper  m_rw_3_1_0_357(2,3,3,1,357,0,"");   //<子程序3使用
+extern  const ICAddrWrapper  m_rw_4_1_0_357(2,3,4,1,357,0,"");   //<子程序4使用
+extern  const ICAddrWrapper  m_rw_5_1_0_357(2,3,5,1,357,0,"");   //<子程序5使用
+extern  const ICAddrWrapper  m_rw_6_1_0_357(2,3,6,1,357,0,"");   //<子程序6使用
+extern  const ICAddrWrapper  m_rw_7_1_0_357(2,3,7,1,357,0,"");   //<子程序7使用
+extern  const ICAddrWrapper  m_rw_8_1_0_357(2,3,8,1,357,0,"");   //<子程序8使用
+extern  const ICAddrWrapper  m_rw_9_23_0_357(2,3,9,23,357,0,"");   //<备用
 extern  const ICAddrWrapper  c_ro_0_32_0_900(1,1,0,32,900,0,"");    //<轴1当前输出脉冲位置当前输出脉冲位置
 extern  const ICAddrWrapper  c_ro_0_32_0_901(1,1,0,32,901,0,"");    //<轴1实际脉冲位置实际脉冲位置
 extern  const ICAddrWrapper  c_ro_0_16_0_902(1,1,0,16,902,0,"");   //<轴1速度百分比_当前速度速度百分比

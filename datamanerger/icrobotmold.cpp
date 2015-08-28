@@ -599,12 +599,10 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     return RecordDataObject(name, dt);
 }
 #endif
-//QString ICRobotMold::ActionProgramToStore(const ICActionProgram &program)
-//{
-//    QByteArray ret;
-//    for(int i = 0; i != program.size(); ++i)
-//    {
-//        ret += program.at(i).ToString() + "\n";
-//    }
-//    return ret;
-//}
+QList<int> ICRobotMold::RunningStepToProgramLine(int which, int step)
+{
+    QList<int> ret;
+    if(which >= programs_.size())
+        return ret;
+    return programs_.at(which).RealStepToUIStep(step);
+}

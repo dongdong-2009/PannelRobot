@@ -212,7 +212,7 @@ typedef enum _ICAddr
 
     ICAddr_Adapter_Para255 = 356,
 
-//    ICAddr_Mold_Para0,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
+    ICAddr_Mold_Para0,//<类型:模号;名字:;结构:MOLD_PRO_USE;地址:mold_use_p_addr;
 //    ICAddr_Mold_Para1,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 //    ICAddr_Mold_Para2,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 //    ICAddr_Mold_Para3,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
@@ -421,6 +421,12 @@ typedef enum
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
 
 
+    F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
+    F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转命令（ON/OFF） 跳转条件
+    F_CMD_PROGRAM_JUMP2,   //< 程序跳转 跳转步号 跳转命令（>/</==）跳转位置
+//    F_CMD_PROGRAM_JUMP3,   //< 程序跳转 跳转步号
+//    F_CMD_PROGRAM_JUMP4,   //< 程序跳转 跳转步号
+
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
 	F_CMD_END=60000//< 动作结束
 
@@ -434,6 +440,7 @@ typedef enum
     ALARM_AXIS_CFG_ERR, //<名字：主机轴配置参数错误
     ALARM_OUT_OF_MEMORY_ERR, //<名字：内存不足
     ALARM_TEACH_DATA_ANALYTICAL_ERR, //<名字：教导数据解析错误
+    ALARM_TEACH_DATA_EDIT_ERR, //<名字：教导数据编辑错误
 
     ALARM_AXIS_RUN_ERR = 100,//<名字：轴1运动失败
     ALARM_AXIS_SPEED_SET_ERR = 110,//<名字：轴1速度设定错误
@@ -715,23 +722,35 @@ typedef union {
 //}SYSTEM_RESERVE;
 //
 
-//static const uint32_t mold_addr[] = {
-//    ICAddr_Mold_Para0,
-//    ICAddr_Mold_Para69 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
-//};
-//typedef struct{
-//  uint32_t mold;//<类型：模号；名字：参数；精度：0;单位：；
-//}MOLD_PARA0;
+static const uint32_t mold_use_p_addr[] = {
+    ICAddr_Mold_Para0,
+    ICAddr_Mold_Para0 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
+};
+typedef union{
+    struct{
+        uint32_t main_p:1;//<类型：模号；名字：主程序使用；精度：0;单位：；
+        uint32_t sub1:1;//<类型：模号；名字：子程序1使用；精度：0;单位：；
+        uint32_t sub2:1;//<类型：模号；名字：子程序2使用；精度：0;单位：；
+        uint32_t sub3:1;//<类型：模号；名字：子程序3使用；精度：0;单位：；
+        uint32_t sub4:1;//<类型：模号；名字：子程序4使用；精度：0;单位：；
+        uint32_t sub5:1;//<类型：模号；名字：子程序5使用；精度：0;单位：；
+        uint32_t sub6:1;//<类型：模号；名字：子程序6使用；精度：0;单位：；
+        uint32_t sub7:1;//<类型：模号；名字：子程序7使用；精度：0;单位：；
+        uint32_t sub8:1;//<类型：模号；名字：子程序8使用；精度：0;单位：；
+        uint32_t re:23;//<类型：模号；名字：备用；精度：0;单位：；
+    }bit;
+    uint32_t a;
+}MOLD_PRO_USE;
 
-//typedef struct{
-//    MOLD_PARA0 p[STRUCE_SIZE(ICAddr_Mold_Para0,ICAddr_Mold_Para69)];
-//}MOLD_PARAStruct;
+typedef struct{
+    MOLD_PRO_USE use_p;
+}MOLD_PARAStruct;
 
 
-//typedef union {
-//    MOLD_PARAStruct para;
-//    uint32_t all[STRUCE_SIZE(ICAddr_Mold_Para0,ICAddr_Mold_Para69)];
-//}MOLD_PARA;
+typedef union {
+    MOLD_PARAStruct para;
+    uint32_t all[STRUCE_SIZE(ICAddr_Mold_Para0,ICAddr_Write_Section_End)];
+}MOLD_PARA;
 
 
 static const uint32_t read_addr[] = {
@@ -763,13 +782,9 @@ typedef struct {  //最多8组电机，目前仅用前3组
     AXIS_MAP axis_map;    //<类型:系统;逻辑电机对应的脉冲端口 - 304-311
     Interpolation interpolation;//<类型：系统；名字：；精度：3;单位：
     ALPHA alpha;  //<类型：系统；名字：设定初始夹角；精度：3;单位：度；
-
-//    SYSTEM_RESERVE system_reserve;
-
     uint32_t p[ICAddr_Adapter_Para255-ICAddr_Adapter_Para172];
-
-//    MOLD_PARA m;//< 模号参数
-    uint32_t m_r[ICAddr_Write_Section_End - ICAddr_Adapter_Para255];
+        MOLD_PARA m;//< 模号参数
+//    uint32_t m_r[ICAddr_Write_Section_End - ICAddr_Adapter_Para255];
     READ_PARA read;
 } PARA_Struct;
 

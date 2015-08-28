@@ -43,7 +43,11 @@ class CompileInfo
 {
 public:
     CompileInfo(){}
-    void MapStep(int uiStep, int realStep) { stepMap_.insert(uiStep, realStep);}
+    void MapStep(int uiStep, int realStep)
+    {
+        stepMap_.insert(uiStep, realStep);
+        realStepToUIStepMap_.insert(realStep, uiStep);
+    }
     void Clear() { stepMap_.clear();}
     bool IsCompileErr() const { return !errList_.isEmpty();}
     void AddErr(int step, int err) { errList_.insert(step, err);}
@@ -57,8 +61,14 @@ public:
         }
         return ret;
     }
+    QList<int> RealStepToUIStep(int step) const
+    {
+        return realStepToUIStepMap_.values(step);
+    }
+
 private:
     QMap<int, int> stepMap_;
+    QMultiMap<int, int> realStepToUIStepMap_;
     QMap<int, int> errList_;
     ICActionProgram compiledProgram_;
 };
@@ -175,6 +185,8 @@ public:
     }
 
     static CompileInfo Complie(const QString& programText, int & err);
+
+    QList<int> RunningStepToProgramLine(int which, int step);
 
 
 private:

@@ -3,22 +3,10 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../Theme.js" as Theme
 import "../../utils/utils.js" as Utils
+import "ProgramFlowPage.js" as PData
 
 
 Rectangle {
-    QtObject{
-        id:pData
-        property variant programs: [mainProgramModel,
-            sub1ProgramModel,
-            sub2ProgramModel,
-            sub3ProgramModel,
-            sub4ProgramModel,
-            sub5ProgramModel,
-            sub6ProgramModel,
-            sub7ProgramModel,
-            sub8ProgramModel]
-    }
-
 
     function showActionEditorPanel(){
         if(!actionEditorFrame.visible)
@@ -78,7 +66,7 @@ Rectangle {
     }
 
     function modelToProgram(which){
-        var model = pData.programs[which];
+        var model = PData.programs[which];
         var ret = [];
         for(var i = 0; i < model.count; ++i){
             ret.push(model.get(i).actionObject);
@@ -98,22 +86,32 @@ Rectangle {
         }
     }
 
-//    function saveProgram(which){
+    //    function saveProgram(which){
 
-//    }
+    //    }
 
     function currentModel(){
-        return pData.programs[editing.currentIndex];
+        return PData.programs.length == 0?  mainProgramModel: PData.programs[editing.currentIndex];
     }
 
     function currentModelData() {
         return currentModel().get(programListView.currentIndex);
     }
 
-//    function setCurrentModelData(actionObject){
-//        currentModel().set(programListView.currentIndex,
-//                           new Teach.ProgramModelItem(actionObject));
-//    }
+    function currentModelStep(){
+        return panelRobotController.statusValue(PData.stepAddrs[editing.currentIndex]);
+    }
+
+    function currentModelRunningActionInfo(){
+        var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
+        var info = JSON.parse(ret);
+        return info;
+    }
+
+    //    function setCurrentModelData(actionObject){
+    //        currentModel().set(programListView.currentIndex,
+    //                           new Teach.ProgramModelItem(actionObject));
+    //    }
 
     Column{
         id:container
@@ -132,7 +130,7 @@ Rectangle {
                 spacing: 10
                 y:2
                 z:1
-//                height: 24
+                //                height: 24
                 Text {
                     text: qsTr("Editing")
                     anchors.verticalCenter: parent.verticalCenter
@@ -152,7 +150,7 @@ Rectangle {
                     ]
                     currentIndex: 0
                     onCurrentIndexChanged: {
-                        programListView.model = pData.programs[currentIndex];
+                        programListView.model = PData.programs[currentIndex];
                     }
                 }
             }
@@ -296,58 +294,96 @@ Rectangle {
                         height: 30
                         isCurrent: ListView.isCurrentItem
                         isComment: actionObject.action === Teach.actions.ACT_COMMENT
+                        isRunning: isActionRunning
                         lineNum: index
-                        text: "             " + Teach.actionToString(actionObject)
+                        text: "     " + Teach.actionToString(actionObject)
                         MouseArea{
                             anchors.fill: parent
-                            onClicked: {
+                            onPressed: {
                                 programListView.currentIndex = index;
                             }
                         }
                     }
 
-//                    delegate: Rectangle{
-//                        x:1
-//                        width: parent.width - x
-//                        height: 30
-//                        Text{
-//                            text:{
-//                                if(actionObject.action != Teach.actions.ACT_COMMENT)
-//                                    return index;
-//                                return "#" + index;
-//                            }
+                    Timer{
+                        id:refreshTimer
+                        interval: 50
+                        running: parent.visible
+                        repeat: true
+                        onTriggered: {
+                            if(!panelRobotController.isAutoMode()) return;
+                            var cStep = currentModelStep();
+//                            var cStep = Utils.getRandomNum(0, 10);
+                            var lastRunning = PData.lastRunning;
+//                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
+                            if(editing.currentIndex !== lastRunning.model ||
+                                    cStep !== lastRunning.step)
+                            {
+                                var i;
+                                var lastModel = PData.programs[lastRunning.model];
+                                var setStopObject = {"isActionRunning":false};
+                                for(i = 0; i < lastRunning.items.length; ++i){
+                                    lastModel.set(lastRunning.items[i], setStopObject);
+                                }
 
-//                            width: 35
-//                            anchors.left: parent.left
-//                            anchors.verticalCenter: parent.verticalCenter
-//                            horizontalAlignment: Text.AlignRight
-//                        }
-//                        Text {
-//                            text:"             " + Teach.actionToString(actionObject)
-//                            width: programListView.width
-//                            anchors.verticalCenter: parent.verticalCenter
-//                        }
-//                        color: {
-//                            if(ListView.isCurrentItem){
-//                                return "lightsteelblue"
-//                            }
-//                            else if(actionObject.action === Teach.actions.ACT_COMMENT)
-//                            {
-//                                return "gray"
-//                            }
-//                            else{
-//                                return index % 2 == 1 ? "cyan" : "yellow"
-//                            }
-//                        }
+                                var cRunning = {"model":editing.currentIndex,"step":cStep};
+                                var cModel = currentModel();
+                                var uiRunningSteps = currentModelRunningActionInfo();
+//                                var uiRunningSteps = panelRobotController.hostStepToUILines(editing.currentIndex, cStep);
+                                var setRunningObject = {"isActionRunning":true};
+                                for(i = 0; i < uiRunningSteps.length; ++i){
+                                    cModel.set(uiRunningSteps[i], setRunningObject);
+                                }
+                                cRunning.items = uiRunningSteps;
+//                                console.log(cRunning.items)
+                                PData.lastRunning = cRunning;
+                            }
 
-//                        MouseArea{
-//                            anchors.fill: parent
-//                            onClicked: {
-//                                programListView.currentIndex = index;
-////                                console.log(programListView.contentY, programListView.currentItem.y)
-//                            }
-//                        }
-//                    }
+                        }
+                    }
+
+                    //                    delegate: Rectangle{
+                    //                        x:1
+                    //                        width: parent.width - x
+                    //                        height: 30
+                    //                        Text{
+                    //                            text:{
+                    //                                if(actionObject.action != Teach.actions.ACT_COMMENT)
+                    //                                    return index;
+                    //                                return "#" + index;
+                    //                            }
+
+                    //                            width: 35
+                    //                            anchors.left: parent.left
+                    //                            anchors.verticalCenter: parent.verticalCenter
+                    //                            horizontalAlignment: Text.AlignRight
+                    //                        }
+                    //                        Text {
+                    //                            text:"             " + Teach.actionToString(actionObject)
+                    //                            width: programListView.width
+                    //                            anchors.verticalCenter: parent.verticalCenter
+                    //                        }
+                    //                        color: {
+                    //                            if(ListView.isCurrentItem){
+                    //                                return "lightsteelblue"
+                    //                            }
+                    //                            else if(actionObject.action === Teach.actions.ACT_COMMENT)
+                    //                            {
+                    //                                return "gray"
+                    //                            }
+                    //                            else{
+                    //                                return index % 2 == 1 ? "cyan" : "yellow"
+                    //                            }
+                    //                        }
+
+                    //                        MouseArea{
+                    //                            anchors.fill: parent
+                    //                            onClicked: {
+                    //                                programListView.currentIndex = index;
+                    ////                                console.log(programListView.contentY, programListView.currentItem.y)
+                    //                            }
+                    //                        }
+                    //                    }
                 }
 
             }
@@ -357,7 +393,7 @@ Rectangle {
             //            visible: false
             width: container.width
             height: container.height / 2
-//            y:2
+            //            y:2
             x:2
 
             //            anchors.left: programViewContainer.right
@@ -393,8 +429,8 @@ Rectangle {
 
             ICStackContainer{
                 function showMenu() { setCurrentIndex(0);}
-//                function showAxis() { setCurrentIndex(1);}
-//                function showOutput() { setCurrentIndex(2);}
+                //                function showAxis() { setCurrentIndex(1);}
+                //                function showOutput() { setCurrentIndex(2);}
                 function isMenuShow() { return currentIndex == 0;}
                 id:actionEditorContainer
                 width: parent.width - insertBtn.width - anchors.leftMargin
@@ -485,11 +521,11 @@ Rectangle {
         }
 
         for(i = 1; i < 9; ++i){
-            pData.programs[i].clear();
+            PData.programs[i].clear();
             program = JSON.parse(panelRobotController.subProgram(i));
             for(var p = 0; p < program.length; ++p){
                 step = program[p]
-                pData.programs[i].append(new Teach.ProgramModelItem(step));
+                PData.programs[i].append(new Teach.ProgramModelItem(step));
             }
         }
     }
@@ -500,6 +536,17 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        PData.programs.push(mainProgramModel);
+        PData.programs.push(sub1ProgramModel);
+        PData.programs.push(sub2ProgramModel);
+        PData.programs.push(sub3ProgramModel);
+        PData.programs.push(sub4ProgramModel);
+        PData.programs.push(sub5ProgramModel);
+        PData.programs.push(sub6ProgramModel);
+        PData.programs.push(sub7ProgramModel);
+        PData.programs.push(sub8ProgramModel);
+
+
         updateProgramModels();
         panelRobotController.moldChanged.connect(updateProgramModels);
         modifyEditor.editConfirm.connect(onEditConfirm);

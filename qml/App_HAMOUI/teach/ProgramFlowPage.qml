@@ -257,13 +257,18 @@ Rectangle {
                         text: qsTr("C/UC")
                         onButtonClicked: {
                             var modelObject = currentModelData();
-                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
-                            if(modelObject.actionObject.action == modelObject.commentedObject.action){
-                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject));
-                                modelObject.actionObject = cO;
+//                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
+                            if(modelObject.actionObject.action == Teach.actions.ACT_COMMENT){
+                                if(modelObject.actionObject.commentAction == null)
+                                    return;
+                            }
+
+                            if(modelObject.actionObject.action == Teach.actions.ACT_COMMENT){
+//                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
+                                modelObject.actionObject = modelObject.actionObject.commentAction;
                             }
                             else{
-                                modelObject.actionObject = modelObject.commentedObject;
+                                modelObject.actionObject = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
                             }
 
                         }

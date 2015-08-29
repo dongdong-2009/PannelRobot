@@ -156,10 +156,11 @@ var generateOutputAction = function(point, status, delay){
     };
 }
 
-var generateCommentAction = function(comment){
+var generateCommentAction = function(comment, commentdAction){
     return {
         "action": actions.ACT_COMMENT,
-        "comment":comment
+        "comment":comment,
+        "commentAction":commentdAction || null
     };
 }
 
@@ -386,7 +387,6 @@ var actionToString = function(actionObject){
 
 function ProgramModelItem(actionObject){
     this.actionObject = actionObject;
-    this.commentedObject = actionObject;
     this.isActionRunning = false;
 }
 

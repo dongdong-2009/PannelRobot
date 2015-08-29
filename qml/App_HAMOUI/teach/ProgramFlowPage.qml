@@ -4,10 +4,12 @@ import "Teach.js" as Teach
 import "../Theme.js" as Theme
 import "../../utils/utils.js" as Utils
 import "ProgramFlowPage.js" as PData
+import "../configs/Keymap.js" as Keymap
+import "../ShareData.js" as ShareData
 
 
 Rectangle {
-
+    property int mode: ShareData.knobStatus
     function showActionEditorPanel(){
         if(!actionEditorFrame.visible)
             programListView.contentY += actionEditorFrame.height;
@@ -227,14 +229,19 @@ Rectangle {
                         height: parent.height
                         width: 40
                         text: qsTr("UP")
-                        visible: (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
+                        visible: {
+                            return  mode === Keymap.KNOB_AUTO ? false : (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
+                        }
                     }
                     ICButton{
                         id:moveDWBtn
                         height: parent.height
                         width: 40
                         text: qsTr("DW")
-                        visible: (programListView.currentIndex < programListView.count - 2)
+                        visible: {
+                            return  mode === Keymap.KNOB_AUTO ? false :
+                            (programListView.currentIndex < programListView.count - 2)
+                        }
                     }
 
                     ICButton{
@@ -272,18 +279,23 @@ Rectangle {
                             }
 
                         }
-                        visible: programListView.currentIndex < programListView.count - 1
+                        visible: {
+                            return  mode === Keymap.KNOB_AUTO ? false :
+                            programListView.currentIndex < programListView.count - 1
+                        }
                     }
                     ICButton{
                         id:delBtn
                         height: parent.height
                         width: 40
                         text: qsTr("Del")
-                        visible: programListView.currentIndex < programListView.count - 1
+                        visible: {
+                            return  mode === Keymap.KNOB_AUTO ? false :
+                            programListView.currentIndex < programListView.count - 1
+                        }
 
                     }
                 }
-
 
                 ListView{
                     id:programListView
@@ -316,6 +328,10 @@ Rectangle {
                         running: parent.visible
                         repeat: true
                         onTriggered: {
+//                            if(mode !== ShareData.knobStatus){
+//                                mode = ShareData.knobStatus;
+//                            }
+//                            console.log(mode, Keymap.KNOB_AUTO)
                             if(!panelRobotController.isAutoMode()) return;
                             var cStep = currentModelStep();
 //                            var cStep = Utils.getRandomNum(0, 10);

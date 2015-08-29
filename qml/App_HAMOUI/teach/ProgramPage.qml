@@ -3,11 +3,16 @@ import "."
 import "../"
 import "../../ICCustomElement"
 import "../Theme.js" as Theme
-
+import "../configs/Keymap.js" as Keymap
+import "../ShareData.js" as ShareData
 
 
 ContentPageBase{
-    menuItemTexts:[qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")]
+    property int mode: ShareData.knobStatus
+    menuItemTexts:{
+        return mode === Keymap.KNOB_AUTO ? ["", "", "", "", "", "",""]:
+        [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
+    }
     Rectangle{
         id:programContainer
         anchors.fill: parent
@@ -69,5 +74,17 @@ ContentPageBase{
 //    }
 
     content: programContainer
-    //    menu: settingMenu
+
+    Timer{
+        id:refreshTimer
+        interval: 50
+        running: parent.visible
+        repeat: true
+        onTriggered: {
+            if(mode !== ShareData.knobStatus){
+                mode = ShareData.knobStatus;
+                pageContainer.currentPage().mode = mode;
+            }
+        }
+    }
 }

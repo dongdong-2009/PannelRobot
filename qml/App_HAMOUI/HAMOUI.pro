@@ -7,9 +7,6 @@ configs/* \
 settingpages/*
 }
 
-OTHER_FILES += \
-    teach/ProgramListItem.qml \
-    teach/ProgramFlowPage.js
 
 
 

@@ -4,6 +4,7 @@ import '../ICCustomElement'
 import 'teach'
 import "Theme.js" as Theme
 import "configs/Keymap.js" as Keymap
+import "ShareData.js" as ShareData
 
 Rectangle {
     id:mainWindow
@@ -164,6 +165,12 @@ Rectangle {
             Keymap.setKeyPressed(key, true);
         }
         else if(Keymap.isCommandKeyType(key)){
+            if(key === Keymap.KNOB_MANUAL ||
+               key === Keymap.KNOB_STOP ||
+               key === Keymap.KNOB_AUTO)
+            {
+                ShareData.knobStatus = key;
+            }
             panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
         }
 
@@ -182,7 +189,7 @@ Rectangle {
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             for(var i = 0 ; i < pressedKeys.length; ++i){
-//                console.log("Send command");
+//                console.log("Send command:", key);
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
             }
         }

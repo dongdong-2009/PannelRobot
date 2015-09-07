@@ -10,17 +10,20 @@ Item {
     property alias inputWidth: edit.inputWidth
     height: 24
     width: container.width
+    function isChecked(){
+        return configName.isChecked;
+    }
+
     Row{
         id:container
         spacing: 2
-        width: configName.width + edit.width
-        height: parent.height
-        Text {
+        ICCheckBox {
             id: configName
             anchors.verticalCenter: parent.verticalCenter
         }
         ICLineEdit{
             id: edit
+            enabled: configName.isChecked
         }
     }
 }

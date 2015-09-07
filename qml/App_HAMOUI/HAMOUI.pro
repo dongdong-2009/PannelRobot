@@ -7,6 +7,11 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    teach/PathActionEditor.qml \
+    teach/PointEdit.js
+
+
 
 
 

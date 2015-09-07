@@ -443,8 +443,23 @@ typedef enum
     ALARM_TEACH_DATA_EDIT_ERR, //<名字：教导数据编辑错误
 
     ALARM_AXIS_RUN_ERR = 100,//<名字：轴1运动失败
+    ALARM_AXIS2_RUN_ERR,//<名字：轴2运动失败
+    ALARM_AXIS3_RUN_ERR,//<名字：轴3运动失败
+    ALARM_AXIS4_RUN_ERR,//<名字：轴4运动失败
+    ALARM_AXIS5_RUN_ERR,//<名字：轴5运动失败
+    ALARM_AXIS6_RUN_ERR,//<名字：轴6运动失败
     ALARM_AXIS_SPEED_SET_ERR = 110,//<名字：轴1速度设定错误
-    ALARM_AXIS_OVER_SPEED_ERR = 120//<名字：轴1运动过速
+    ALARM_AXIS2_SPEED_SET_ERR,//<名字：轴2速度设定错误
+    ALARM_AXIS3_SPEED_SET_ERR,//<名字：轴3速度设定错误
+    ALARM_AXIS4_SPEED_SET_ERR,//<名字：轴4速度设定错误
+    ALARM_AXIS5_SPEED_SET_ERR,//<名字：轴5速度设定错误
+    ALARM_AXIS6_SPEED_SET_ERR,//<名字：轴6速度设定错误
+    ALARM_AXIS_OVER_SPEED_ERR = 120,//<名字：轴1运动过速
+    ALARM_AXIS2_OVER_SPEED_ERR,//<名字：轴2运动过速
+    ALARM_AXIS3_OVER_SPEED_ERR,//<名字：轴3运动过速
+    ALARM_AXIS4_OVER_SPEED_ERR,//<名字：轴4运动过速
+    ALARM_AXIS5_OVER_SPEED_ERR,//<名字：轴5运动过速
+    ALARM_AXIS6_OVER_SPEED_ERR //<名字：轴6运动过速
 }ALARM_ADDR;
 
 /*******************************************************************************/

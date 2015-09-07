@@ -9,8 +9,20 @@ FocusScope{
     property alias inputWidth: rectangle.width
     x: rectangle.x
     y: rectangle.y
-    width: 80
+    width: rectangle.width + unit.width
     height: 24
+
+    state: enabled ? "" : "disabled"
+
+    states: [
+        State {
+            name: "disabled"
+            PropertyChanges { target: rectangle; color:"gray";}
+            PropertyChanges { target: input; color:"gainsboro";}
+
+        }
+
+    ]
 
     function isEmpty(){
         return text.length == 0;
@@ -20,9 +32,12 @@ FocusScope{
         id:rectangle
         border.color: "gray"
         border.width: 1
-        width: parent.width - unit.width
+        //        width: parent.width - unit.width
+        width: 80
         height: parent.height
+        enabled: parent.enabled
         TextInput{
+            enabled: parent.enabled
             function onFocus(isActive){
                 if(isActive){
                     var p = parent.mapToItem(null, input.x, input.y);
@@ -50,7 +65,7 @@ FocusScope{
             }
 
             function onCommit(text){
-//                console.log(text)
+                //                console.log(text)
                 input.text = text;
                 input.focus = false;
 
@@ -62,7 +77,7 @@ FocusScope{
 
             id:input
             color: "black"
-//            width: parent.width
+            //            width: parent.width
             anchors.verticalCenter: parent.verticalCenter
             anchors.rightMargin: 4
             anchors.leftMargin: 4
@@ -77,6 +92,8 @@ FocusScope{
             anchors.left: parent.right
             anchors.leftMargin: 2
             anchors.verticalCenter: parent.verticalCenter
+            enabled: parent.enabled
+
         }
         MouseArea{
             anchors.fill: parent

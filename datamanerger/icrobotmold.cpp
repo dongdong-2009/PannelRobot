@@ -11,18 +11,19 @@ ICRobotMold::ICRobotMold()
 {
 }
 
-typedef void (*ActionCompiler)(ICMoldItem &,const QVariantMap*);
+typedef int (*ActionCompiler)(ICMoldItem &,const QVariantMap*);
 
-void SimpleActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int SimpleActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
     item.append(v->value("action").toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
 #endif
+    return ICRobotMold::kCCErr_None;
 }
 
-void AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
     item.append(v->value("action").toInt());
@@ -41,48 +42,94 @@ void AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.SetEarlySpeedDown(v->value("isEarlyDown", false).toBool());
     item.SetEarlyDownSpeed(v->value("earlyDownSpeed", 0).toInt());
 #endif
+    return ICRobotMold::kCCErr_None;
+
+
 }
 
-void AxisPneumaticActionCompiler(ICMoldItem & item, const QVariantMap* v)
+static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
+QVector<quint32> PointToPosList(const QVariantMap& point)
+{
+    QVector<quint32> ret;
+    for(int i = 0; i < motorNames.size(); ++i)
+    {
+        if(point.contains(motorNames.at(i)))
+            ret.append(ICUtility::doubleToInt(point.value(motorNames.at(i)).toDouble(), 3));
+    }
+    return ret;
+}
+
+int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
+{
+    item.append(v->value("action").toInt());
+    QVariantList points = v->value("points").toList();
+    if(item.at(0) == F_CMD_LINE2D_MOVE_POINT && points.size() != 1)
+                return ICRobotMold::kCCErr_Wrong_Action_Format;
+    QVariantMap point;
+    for(int i= 0; i < points.size(); ++i)
+    {
+        point = points.at(i).toMap();
+        if(point.isEmpty())
+            return ICRobotMold::kCCErr_Wrong_Action_Format;
+        item += PointToPosList(point);
+    }
+    item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+}
+
+int AxisPneumaticActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
 #else
     item.SetDVal(v->value("delay", 0).toDouble() * 100);
 #endif
+    return ICRobotMold::kCCErr_None;
+
+
 }
 
 
-void OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
-}
-
-void WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
-{
+    return ICRobotMold::kCCErr_None;
 
 }
 
-void CheckActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
+    return ICRobotMold::kCCErr_None;
 
 }
 
-void ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int CheckActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
+    return ICRobotMold::kCCErr_None;
 
 }
 
-void OtherActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
+    return ICRobotMold::kCCErr_None;
 
 }
 
-void ParallelActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int OtherActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
+    return ICRobotMold::kCCErr_None;
 
 }
 
-void CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
+int ParallelActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
+    return ICRobotMold::kCCErr_None;
+
+}
+
+int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    return ICRobotMold::kCCErr_None;
 
 }
 
@@ -91,6 +138,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     QMap<int, ActionCompiler> ret;
 #ifdef NEW_PLAT
     ret.insert(F_CMD_SINGLE, AxisServoActionCompiler);
+    ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
@@ -119,12 +167,12 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
 QMap<int, ActionCompiler> actionToCompilerMap = CreateActionToCompilerMap();
 
 
-static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v, int subNum = 255)
+static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, int subNum = 255)
 {
     ICMoldItem item;
 #ifdef NEW_PLAT
     ActionCompiler cc = actionToCompilerMap.value(v.value("action").toInt(), SimpleActionCompiler);
-    cc(item, &v);
+    err = cc(item, &v);
 #else
     item.SetAction(v.value("action").toInt());
     item.SetNum(step);
@@ -157,11 +205,11 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
         programList.append(QString("[{\"action\":%1}]").arg(F_CMD_END));
     }
     QList<QPair<int, quint32> > fncs = values;
-//    AddCheckSumToAddrValuePairList(fncs);
+    //    AddCheckSumToAddrValuePairList(fncs);
     QString dt = ICDALHelper::NewMold(name, programList, fncs);
     qDebug()<<name<<dt;
     return RecordDataObject(name, dt);
-//    return RecordDataObject();
+    //    return RecordDataObject();
 }
 
 RecordDataObject ICRobotMold::CopyRecord(const QString &name, const QString &source)
@@ -203,7 +251,14 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         {
             continue;
         }
-        ret.AddICMoldItem(VariantToMoldItem(step, action));
+        ret.AddICMoldItem(VariantToMoldItem(step, action, err));
+        if(err != kCCErr_None)
+        {
+            ret.Clear();
+            err = kCCErr_Sync_Nesting;
+            ret.AddErr(i, err);
+            return ret;
+        }
         if(act == F_CMD_SYNC_START)
         {
             if(isSyncBegin)
@@ -229,32 +284,32 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
             ++step;
             continue;
         }
-//        else if(act == ACTParallel)
-//        {
-//            if(isGroupBegin)
-//            {
-//                ret.Clear();
-//                err = kCCErr_Group_Nesting;
-//                return ret;
-//            }
-//            isGroupBegin = true;
-//            subStep = 0;
-//            ret.append(VariantToMoldItem(step, action));
-//            continue;
-//        }
-//        else if(act == ACT_GROUP_ACTION_END)
-//        {
-//            if(!isGroupBegin)
-//            {
-//                ret.clear();
-//                err = kCCErr_Group_NoBegin;
-//                return ret;
-//            }
-//            isGroupBegin = false;
-//            subStep = 255;
-//            continue;
-//        }
-//        ret.append(VariantToMoldItem(step, action, subStep));
+        //        else if(act == ACTParallel)
+        //        {
+        //            if(isGroupBegin)
+        //            {
+        //                ret.Clear();
+        //                err = kCCErr_Group_Nesting;
+        //                return ret;
+        //            }
+        //            isGroupBegin = true;
+        //            subStep = 0;
+        //            ret.append(VariantToMoldItem(step, action));
+        //            continue;
+        //        }
+        //        else if(act == ACT_GROUP_ACTION_END)
+        //        {
+        //            if(!isGroupBegin)
+        //            {
+        //                ret.clear();
+        //                err = kCCErr_Group_NoBegin;
+        //                return ret;
+        //            }
+        //            isGroupBegin = false;
+        //            subStep = 255;
+        //            continue;
+        //        }
+        //        ret.append(VariantToMoldItem(step, action, subStep));
         ret.MapStep(i, step);
         if(!isGroupBegin && !isSyncBegin)
         {
@@ -264,14 +319,14 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         {
             ++subStep;
         }
-//        if(ret.last().Action() == ACTParallel)
-//        {
-//            QVariantList childrenActions = action.value("childActions").toList();
-//            for(int k = 0; k != childrenActions.size();++k)
-//            {
-//                ret.append(VariantToMoldItem(step, childrenActions.at(k).toMap(), k));
-//            }
-//        }
+        //        if(ret.last().Action() == ACTParallel)
+        //        {
+        //            QVariantList childrenActions = action.value("childActions").toList();
+        //            for(int k = 0; k != childrenActions.size();++k)
+        //            {
+        //                ret.append(VariantToMoldItem(step, childrenActions.at(k).toMap(), k));
+        //            }
+        //        }
     }
     if(isSyncBegin)
     {
@@ -545,14 +600,14 @@ ICActionProgram ICRobotMold::Complie(const QString &programText, int &err)
         {
             ++subStep;
         }
-//        if(ret.last().Action() == ACTParallel)
-//        {
-//            QVariantList childrenActions = action.value("childActions").toList();
-//            for(int k = 0; k != childrenActions.size();++k)
-//            {
-//                ret.append(VariantToMoldItem(step, childrenActions.at(k).toMap(), k));
-//            }
-//        }
+        //        if(ret.last().Action() == ACTParallel)
+        //        {
+        //            QVariantList childrenActions = action.value("childActions").toList();
+        //            for(int k = 0; k != childrenActions.size();++k)
+        //            {
+        //                ret.append(VariantToMoldItem(step, childrenActions.at(k).toMap(), k));
+        //            }
+        //        }
     }
     if(isSyncBegin)
     {
@@ -605,4 +660,19 @@ QList<int> ICRobotMold::RunningStepToProgramLine(int which, int step)
     if(which >= programs_.size())
         return ret;
     return programs_.at(which).RealStepToUIStep(step);
+}
+
+ICMoldItem ICRobotMold::SingleLineCompile(int which, int step, const QString &lineContent, QPair<int, int> &hostStep)
+{
+    ICMoldItem  ret;
+    if(which >= programs_.size())
+        return ret;
+    hostStep = programs_.at(which).UIStepToRealStep(step);
+    QJson::Parser parser;
+    bool ok;
+    QVariantMap result = parser.parse (lineContent.toLatin1(), &ok).toMap();
+    if(!ok) return ret;
+    int err;
+    ret = VariantToMoldItem(step, result, err);
+    return ret;
 }

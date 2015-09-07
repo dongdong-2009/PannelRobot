@@ -199,7 +199,7 @@ QString PanelRobotController::getConfigValueText(const QString &addr) const
         return QString();
     }
     quint32 v = getConfigValue(addr);
-    return QString::number(v / qPow(10, configWrapper->Decimal()),
+    return QString::number(qint32(v) / qPow(10, configWrapper->Decimal()),
                            'f',
                            configWrapper->Decimal());
 
@@ -209,7 +209,9 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
 {
     ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
     if(configWrapper == NULL) return;
-    ICAddrWrapperValuePair p = qMakePair<ICAddrWrapperCPTR, quint32>(configWrapper, AddrStrValueToInt(configWrapper, v));
+    qDebug()<<addr<<v;
+    quint32 intV = AddrStrValueToInt(configWrapper, v);
+    ICAddrWrapperValuePair p = qMakePair<ICAddrWrapperCPTR, quint32>(configWrapper, intV);
     if(configWrapper->AddrType() == ICAddrWrapper::kICAddrTypeMold)
     {
         moldFncModifyCache_.append(p);
@@ -497,4 +499,11 @@ QString PanelRobotController::hostStepToUILines(int which, int step) const
 QString PanelRobotController::currentRunningActionInfo(int which) const
 {
     return hostStepToUILines(which, statusValue(stepAddrs.at(which)));
+}
+
+bool PanelRobotController::fixProgramOnAutoMode(int which, int line, const QString &lineContent)
+{
+    QPair<int, int> stepInfo;
+    ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, line, lineContent,stepInfo);
+    return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
 }

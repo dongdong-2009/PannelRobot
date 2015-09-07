@@ -3,10 +3,18 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "ActionModifyEditor.js" as PData
 
-Rectangle {
+Item {
     id:container
-//    parent: null
-//    z:100
+    Rectangle{
+        id:bgLayer
+        border.color: "black"
+        border.width: 1
+        width: parent.width
+        height: parent.height
+        MouseArea{
+            anchors.fill: parent
+        }
+    }
 
     signal editConfirm(variant actionObject)
 
@@ -34,8 +42,6 @@ Rectangle {
     }
     visible: false
     width: 300
-    border.color: "black"
-    border.width: 1
     Column{
         id:editorContainer
         y:10

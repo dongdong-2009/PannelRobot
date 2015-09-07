@@ -46,7 +46,15 @@ public:
     void MapStep(int uiStep, int realStep)
     {
         stepMap_.insert(uiStep, realStep);
-        realStepToUIStepMap_.insert(realStep, uiStep);
+//        realStepToUIStepMap_.insert(realStep, uiStep);
+        if(realStepToUIStepMap_.contains(realStep))
+        {
+            QList<int> v = realStepToUIStepMap_.value(realStep);
+            v.append(uiStep);
+            realStepToUIStepMap_.insert(realStep, v);
+        }
+        else
+            realStepToUIStepMap_.insert(realStep, QList<int>()<<uiStep);
     }
     void Clear() { stepMap_.clear();}
     bool IsCompileErr() const { return !errList_.isEmpty();}
@@ -63,12 +71,30 @@ public:
     }
     QList<int> RealStepToUIStep(int step) const
     {
-        return realStepToUIStepMap_.values(step);
+        return realStepToUIStepMap_.value(step);
+    }
+
+    QPair<int, int> UIStepToRealStep(int step) const
+    {
+        QPair<int, int> ret = qMakePair(-1, -1);
+        if(!stepMap_.contains(step))
+            return ret;
+        ret.first = stepMap_.value(step);
+        QList<int> row = RealStepToUIStep(ret.first);
+        for(int i = 0; row.size(); ++i)
+        {
+            if(row.at(i) == step)
+            {
+                ret.second = i;
+                break;
+            }
+        }
+        return ret;
     }
 
 private:
     QMap<int, int> stepMap_;
-    QMultiMap<int, int> realStepToUIStepMap_;
+    QMap<int, QList<int> > realStepToUIStepMap_;
     QMap<int, int> errList_;
     ICActionProgram compiledProgram_;
 };
@@ -99,7 +125,9 @@ public:
         kCCErr_Group_Nesting,
         kCCErr_Group_NoBegin,
         kCCErr_Group_NoEnd,
-        kCCErr_Last_Is_Not_End_Action
+        kCCErr_Last_Is_Not_End_Action,
+        kCCErr_Invaild_Program_Index,
+        kCCErr_Wrong_Action_Format
     };
 
     enum {
@@ -184,9 +212,12 @@ public:
         return programsCode_.at(which);
     }
 
-    static CompileInfo Complie(const QString& programText, int & err);
-
     QList<int> RunningStepToProgramLine(int which, int step);
+
+
+    ICMoldItem SingleLineCompile(int which, int step, const QString& lineContent, QPair<int, int> &hostStep);
+
+    static CompileInfo Complie(const QString& programText, int & err);
 
 
 private:

@@ -160,6 +160,7 @@ protected:
 public:
     static bool SendMold(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static bool SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<quint32>& data);
+    static bool FixProgram(ICVirtualHostPtr hostPtr, int which, int row, int step, const QVector<quint32>& data);
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static void AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int config, int value);
 

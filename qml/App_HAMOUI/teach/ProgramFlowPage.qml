@@ -25,12 +25,26 @@ Rectangle {
         if(actionEditorContainer.isMenuShow()) return;
         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
         var model = currentModel();
+        var currentActionObject = currentModelData();
+        var at;
         for(var i = 0; i < actionObjects.length; ++i){
             if(actionObjects[i].action === Teach.actions.ACT_FLAG){
                 Teach.pushFlag(actionObjects[i].flag);
             }
+            if(((currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncStart)
+                && currentActionObject.mI_ActionObject.action !== Teach.actions.F_CMD_SYNC_START)
+                    || (currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncEnd)
+                    || actionObjects[i].action === Teach.actions.F_CMD_SYNC_START)
+            {
+                at = Teach.actionTypes.kAT_SyncStart;
+            }else if(actionObjects[i].action === Teach.actions.F_CMD_SYNC_END)
+            {
+                at = Teach.actionTypes.kAT_SyncEnd;
+            }else{
+                 at = Teach.actionTypes.kAT_Normal;
+            }
 
-            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i]));
+            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], at));
         }
     }
 
@@ -39,7 +53,7 @@ Rectangle {
         if(cI < 0)return;
         var model = currentModel();
         if(cI >= model.count - 1) return;
-        var actionObject = model.get(cI).actionObject;
+        var actionObject = model.get(cI).mI_ActionObject;
         if(actionObject.action === Teach.actions.ACT_FLAG){
             Teach.delFlag(actionObject.flag);
         }
@@ -64,14 +78,25 @@ Rectangle {
     }
 
     function onEditConfirm(actionObject){
-        currentModelData().actionObject = actionObject;
+        currentModelData().mI_ActionObject = actionObject;
+        if(mode === Keymap.KNOB_AUTO){
+            if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
+                                                         programListView.currentIndex,
+                                                         JSON.stringify(actionObject))){
+                if(editing.currentIndex === 0)
+                    panelRobotController.saveMainProgram(modelToProgram(0));
+                else
+                    panelRobotController.saveSubProgram(modelToProgram(editing.currentIndex));
+
+            }
+        }
     }
 
     function modelToProgram(which){
         var model = PData.programs[which];
         var ret = [];
         for(var i = 0; i < model.count; ++i){
-            ret.push(model.get(i).actionObject);
+            ret.push(model.get(i).mI_ActionObject);
         }
         return JSON.stringify(ret);
     }
@@ -80,8 +105,14 @@ Rectangle {
         var errno;
         if(editing.currentIndex == 0){
             errno = panelRobotController.saveMainProgram(modelToProgram(0));
+            if(! errno){
+                panelRobotController.sendMainProgramToHost();
+            }
         }else{
             errno = panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
+            if(! errno){
+                panelRobotController.sendSubProgramToHost(editing.currentIndex);
+            }
         }
         if(errno !== 0){
             tipBox.show(Teach.ccErrnoToString(errno));
@@ -201,7 +232,7 @@ Rectangle {
                     id:toolBar
                     function showModify(){
                         modifyEditor.y = toolBar.y + toolBar.height + 30;
-                        var actionObject = currentModelData().actionObject;
+                        var actionObject = currentModelData().mI_ActionObject;
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
                     }
                     z: 1
@@ -240,7 +271,7 @@ Rectangle {
                         text: qsTr("DW")
                         visible: {
                             return  mode === Keymap.KNOB_AUTO ? false :
-                            (programListView.currentIndex < programListView.count - 2)
+                                                                (programListView.currentIndex < programListView.count - 2)
                         }
                     }
 
@@ -253,7 +284,7 @@ Rectangle {
 
 
                         visible: {
-                            return Teach.actionObjectToEditableITems(currentModelData().actionObject).length !== 0
+                            return Teach.actionObjectToEditableITems(currentModelData().mI_ActionObject).length !== 0
                         }
 
                     }
@@ -264,24 +295,24 @@ Rectangle {
                         text: qsTr("C/UC")
                         onButtonClicked: {
                             var modelObject = currentModelData();
-//                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
-                            if(modelObject.actionObject.action == Teach.actions.ACT_COMMENT){
-                                if(modelObject.actionObject.commentAction == null)
+                            //                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
+                            if(modelObject.mI_ActionObject.action == Teach.actions.ACT_COMMENT){
+                                if(modelObject.mI_ActionObject.commentAction == null)
                                     return;
                             }
 
-                            if(modelObject.actionObject.action == Teach.actions.ACT_COMMENT){
-//                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
-                                modelObject.actionObject = modelObject.actionObject.commentAction;
+                            if(modelObject.mI_ActionObject.action == Teach.actions.ACT_COMMENT){
+                                //                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
+                                modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
                             }
                             else{
-                                modelObject.actionObject = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
+                                modelObject.mI_ActionObject = Teach.generateCommentAction(Teach.actionToString(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
                             }
 
                         }
                         visible: {
                             return  mode === Keymap.KNOB_AUTO ? false :
-                            programListView.currentIndex < programListView.count - 1
+                                                                programListView.currentIndex < programListView.count - 1
                         }
                     }
                     ICButton{
@@ -291,7 +322,7 @@ Rectangle {
                         text: qsTr("Del")
                         visible: {
                             return  mode === Keymap.KNOB_AUTO ? false :
-                            programListView.currentIndex < programListView.count - 1
+                                                                programListView.currentIndex < programListView.count - 1
                         }
 
                     }
@@ -307,13 +338,14 @@ Rectangle {
                     clip: true
                     delegate: ProgramListItem{
                         x:1
-                        width: parent.width - x
+                        width: programListView.width - x
                         height: 30
                         isCurrent: ListView.isCurrentItem
-                        isComment: actionObject.action === Teach.actions.ACT_COMMENT
-                        isRunning: isActionRunning
+                        isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
+                        isRunning: mI_IsActionRunning
                         lineNum: index
-                        text: "     " + Teach.actionToString(actionObject)
+                        text: "     " + Teach.actionToString(mI_ActionObject)
+                        actionType: mI_ActionType
                         MouseArea{
                             anchors.fill: parent
                             onPressed: {
@@ -328,15 +360,15 @@ Rectangle {
                         running: parent.visible
                         repeat: true
                         onTriggered: {
-//                            if(mode !== ShareData.knobStatus){
-//                                mode = ShareData.knobStatus;
-//                            }
-//                            console.log(mode, Keymap.KNOB_AUTO)
+                            //                            if(mode !== ShareData.knobStatus){
+                            //                                mode = ShareData.knobStatus;
+                            //                            }
+                            //                            console.log(mode, Keymap.KNOB_AUTO)
                             if(!panelRobotController.isAutoMode()) return;
                             var cStep = currentModelStep();
-//                            var cStep = Utils.getRandomNum(0, 10);
+                            //                            var cStep = Utils.getRandomNum(0, 10);
                             var lastRunning = PData.lastRunning;
-//                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
+                            //                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
                             if(editing.currentIndex !== lastRunning.model ||
                                     cStep !== lastRunning.step)
                             {
@@ -350,13 +382,13 @@ Rectangle {
                                 var cRunning = {"model":editing.currentIndex,"step":cStep};
                                 var cModel = currentModel();
                                 var uiRunningSteps = currentModelRunningActionInfo();
-//                                var uiRunningSteps = panelRobotController.hostStepToUILines(editing.currentIndex, cStep);
+                                //                                var uiRunningSteps = panelRobotController.hostStepToUILines(editing.currentIndex, cStep);
                                 var setRunningObject = {"isActionRunning":true};
                                 for(i = 0; i < uiRunningSteps.length; ++i){
                                     cModel.set(uiRunningSteps[i], setRunningObject);
                                 }
                                 cRunning.items = uiRunningSteps;
-//                                console.log(cRunning.items)
+                                //                                console.log(cRunning.items)
                                 PData.lastRunning = cRunning;
                             }
 
@@ -478,6 +510,9 @@ Rectangle {
                 var commentEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('SearchActionEditor.qml')
                 var searchEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('PathActionEditor.qml')
+                var pathEditorObject = editor.createObject(actionEditorContainer);
+
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
                 actionEditorContainer.addPage(outputEditorObject);
@@ -487,6 +522,7 @@ Rectangle {
                 actionEditorContainer.addPage(syncEditorObject);
                 actionEditorContainer.addPage(commentEditorObject);
                 actionEditorContainer.addPage(searchEditorObject);
+                actionEditorContainer.addPage(pathEditorObject);
 
 
                 actionEditorContainer.showMenu();
@@ -498,6 +534,7 @@ Rectangle {
                 actionMenuObject.syncMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(6)});
                 actionMenuObject.commentMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(7)});
                 actionMenuObject.searchMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(8)});
+                actionMenuObject.pathMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(9)});
 
 
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
@@ -531,22 +568,28 @@ Rectangle {
         var program = JSON.parse(panelRobotController.mainProgram());
         var i,j;
         var step;
-        mainProgramModel.clear();
-        for(i = 0; i < program.length; ++i){
-            step = program[i];
-            if(step.action === Teach.actions.ACT_FLAG){
-                Teach.pushFlag(step.flag);
-            }
-
-            mainProgramModel.append(new Teach.ProgramModelItem(step));
-        }
-
-        for(i = 1; i < 9; ++i){
+        var at;
+        var isSyncStart = false;
+        for(i = 0; i < 9; ++i){
             PData.programs[i].clear();
-            program = JSON.parse(panelRobotController.subProgram(i));
+            program = JSON.parse(panelRobotController.programs(i));
             for(var p = 0; p < program.length; ++p){
                 step = program[p]
-                PData.programs[i].append(new Teach.ProgramModelItem(step));
+                if(step.action === Teach.actions.ACT_FLAG){
+                    Teach.pushFlag(step.flag);
+                }else if(step.action === Teach.actions.F_CMD_SYNC_START){
+                    at = Teach.actionTypes.kAT_SyncStart;
+                    isSyncStart = true;
+                }
+                else if(step.action === Teach.actions.F_CMD_SYNC_END){
+                    at = Teach.actionTypes.kAT_SyncEnd;
+                    isSyncStart = false;
+                }
+                else
+                    at = Teach.actionTypes.kAT_Normal;
+                if(isSyncStart)
+                    at = Teach.actionTypes.kAT_SyncStart;
+                PData.programs[i].append(new Teach.ProgramModelItem(step, at));
             }
         }
     }

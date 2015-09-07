@@ -15,18 +15,18 @@
 extern ICRange ICRobotRangeGetter(const QString& addrName);
 
 typedef union{
-struct {
-    unsigned    s1 : 2;
-    unsigned    s2 : 2;
-    unsigned    s3  : 2;
-    unsigned    s4 : 2;
-    unsigned    s5 : 2;
-    unsigned    s6  : 2;
-    unsigned    s7  : 2;
-    unsigned    s8  : 2;
-    unsigned    rev: 16;
-}b;
-quint32 a;
+    struct {
+        unsigned    s1 : 2;
+        unsigned    s2 : 2;
+        unsigned    s3  : 2;
+        unsigned    s4 : 2;
+        unsigned    s5 : 2;
+        unsigned    s6  : 2;
+        unsigned    s7  : 2;
+        unsigned    s8  : 2;
+        unsigned    rev: 16;
+    }b;
+    quint32 a;
 }AxisDefineData;
 
 class ICAxisDefine:public QObject
@@ -119,7 +119,7 @@ public:
     Q_INVOKABLE QString getConfigValueText(const QString& addr) const;
     Q_INVOKABLE double getRealConfigValue(const QString& addr) const
     {
-        return getConfigValue(addr) / qPow(10, configDecimal(addr));
+        return qint32(getConfigValue(addr)) / qPow(10, configDecimal(addr));
     }
     Q_INVOKABLE bool isAutoMode() const { return statusValue("c_ro_1_4_0_938") == CMD_AUTO;}
     Q_INVOKABLE QString hostStepToUILines(int which, int step) const;
@@ -165,13 +165,27 @@ public:
         return ICAppSettings().CurrentMoldConfig();
     }
 
+    Q_INVOKABLE void sendMainProgramToHost()
+    {
+        ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
+    }
+
+    Q_INVOKABLE void sendSubProgramToHost(int which)
+    {
+        if(which < ICRobotMold::kSub1Prog ||
+                which > ICRobotMold::kSub8Prog)
+            return ;
+        ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
+
+    }
+
     Q_INVOKABLE int saveMainProgram(const QString& program)
     {
         int ret =  ICRobotMold::CurrentMold()->SaveMold(ICRobotMold::kMainProg, program);
-        if(ret == ICRobotMold::kCCErr_None)
-        {
-            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
-        }
+        //        if(ret == ICRobotMold::kCCErr_None)
+        //        {
+        //            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
+        //        }
         return ret;
     }
 
@@ -181,12 +195,14 @@ public:
                 which > ICRobotMold::kSub8Prog)
             return -1;
         int ret =  ICRobotMold::CurrentMold()->SaveMold(which, program);
-        if(ret == ICRobotMold::kCCErr_None)
-        {
-            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
-        }
+        //        if(ret == ICRobotMold::kCCErr_None)
+        //        {
+        //            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
+        //        }
         return ret;
     }
+
+    Q_INVOKABLE bool fixProgramOnAutoMode(int which, int line, const QString& lineContent);
 
     Q_INVOKABLE QString mainProgram() const
     {
@@ -199,6 +215,13 @@ public:
                 which > ICRobotMold::kSub8Prog)
             return QString();
         return ICRobotMold::CurrentMold()->SubProgram(which);
+    }
+    Q_INVOKABLE QString programs(int which) const
+    {
+        if(which == ICRobotMold::kMainProg)
+            return mainProgram();
+
+        return subProgram(which);
     }
     Q_INVOKABLE QString usbDirs();
     Q_INVOKABLE QString localUIDirs();
@@ -218,8 +241,8 @@ public:
 
 
 signals:
-//    void currentMoldChanged(QString);
-//    void currentMachineConfigChanged(QString);
+    //    void currentMoldChanged(QString);
+    //    void currentMachineConfigChanged(QString);
     void moldChanged();
 public slots:
     void OnNeedToInitHost();
@@ -237,8 +260,8 @@ private:
     quint32 AddrStrValueToInt(ICAddrWrapperCPTR addr, const QString& value)
     {
         double v = value.toDouble();
-        v *= qPow(10, addr->Decimal());
-        return v;
+        qint32 ret = v * qPow(10, addr->Decimal());
+        return static_cast<quint32>(ret);
     }
 
     ICVirtualHostPtr host_;

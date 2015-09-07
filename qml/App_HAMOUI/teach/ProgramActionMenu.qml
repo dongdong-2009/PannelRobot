@@ -8,6 +8,7 @@ Rectangle {
     }
 
     signal axisMenuTriggered()
+    signal pathMenuTriggered()
     signal outputMenuTriggered()
     signal checkMenuTriggered()
     signal conditionMenuTriggered()
@@ -31,6 +32,15 @@ Rectangle {
             height: pData.menuItemSize.height
             onButtonClicked: axisMenuTriggered()
         }
+        ICButton{
+            id:path
+            text: qsTr("Path")
+            icon: "../images/action_item_axis.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: pathMenuTriggered()
+        }
+
         ICButton{
             id:output
             text: qsTr("Output Action")

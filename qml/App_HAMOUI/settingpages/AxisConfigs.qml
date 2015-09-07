@@ -123,24 +123,25 @@ Item {
         panelRobotController.syncConfigs();
     }
 
-    function updateConfigValue(editor, val, handler){
+    function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
-        editor.configValue = val;
+        editor.configAddr = addr
+        editor.configValue = panelRobotController.getConfigValueText(addr);
         editor.configValueChanged.connect(handler);
     }
 
     function showMotorConfigs(which){
         pdata.currentGroup = which;
-        updateConfigValue(length, panelRobotController.getConfigValueText(pdata.configAddrs[which][0]), onLengthChanged);
-        updateConfigValue(pulseCountPerCircle, panelRobotController.getConfigValueText(pdata.configAddrs[which][1]), onPulseCountPerCircleChanged);
-        updateConfigValue(pLimit, panelRobotController.getConfigValueText(pdata.configAddrs[which][2]), onPLimitChanged);
-        updateConfigValue(nLimit, panelRobotController.getConfigValueText(pdata.configAddrs[which][3]), onNLimitChanged);
-        updateConfigValue(pLimitPoint, panelRobotController.getConfigValueText(pdata.configAddrs[which][4]), onPLimitPointChanged);
-        updateConfigValue(nLimitPoint, panelRobotController.getConfigValueText(pdata.configAddrs[which][5]), onNLimitPointChanged);
-        updateConfigValue(originPoint, panelRobotController.getConfigValueText(pdata.configAddrs[which][6]), onOriginPointChanged);
-        updateConfigValue(acc1, panelRobotController.getConfigValueText(pdata.configAddrs[which][9]), onAcc1Changed);
-        updateConfigValue(acc2, panelRobotController.getConfigValueText(pdata.configAddrs[which][10]), onAcc2Changed);
-        updateConfigValue(maxSpeed, panelRobotController.getConfigValueText(pdata.configAddrs[which][11]), onMaxSpeedChanged);
+        updateConfigValue(length, pdata.configAddrs[which][0], onLengthChanged);
+        updateConfigValue(pulseCountPerCircle, pdata.configAddrs[which][1], onPulseCountPerCircleChanged);
+        updateConfigValue(pLimit, pdata.configAddrs[which][2], onPLimitChanged);
+        updateConfigValue(nLimit, pdata.configAddrs[which][3], onNLimitChanged);
+        updateConfigValue(pLimitPoint, pdata.configAddrs[which][4], onPLimitPointChanged);
+        updateConfigValue(nLimitPoint, pdata.configAddrs[which][5], onNLimitPointChanged);
+        updateConfigValue(originPoint, pdata.configAddrs[which][6], onOriginPointChanged);
+        updateConfigValue(acc1, pdata.configAddrs[which][9], onAcc1Changed);
+        updateConfigValue(acc2, pdata.configAddrs[which][10], onAcc2Changed);
+        updateConfigValue(maxSpeed, pdata.configAddrs[which][11], onMaxSpeedChanged);
     }
 
     ICButtonGroup{

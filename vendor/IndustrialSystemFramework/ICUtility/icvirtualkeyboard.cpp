@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QSqlQuery>
 #include <QKeyEvent>
+#include <qmath.h>
 //#include <QRegExp>
 
 static QRegExp realRe("^[-+]?\\d+(\\.\\d+)?$");
@@ -206,7 +207,7 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      if(isNumberOnly)
      {
          ui->keyboardContainer->setCurrentIndex(0);
-         this->resize(404, 316);
+         this->resize(404, 356);
 //         ui->inputEdit->resize(341, 31);
      }
      else
@@ -221,9 +222,9 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
          validator_.setRange(ranges.min,
                              ranges.max,
                              ranges.decimal);
-         ui->tipLabel->setText(QString(tr("%1~%2  %3Decimal")).arg(validator_.bottom())
-                               .arg(validator_.top())
-                               .arg(validator_.decimals()));
+         ui->tipLabel->setText(QString(tr("Min:%1\nMax:%2\nPrec:%3")).arg(validator_.bottom(),0, 'f',ranges.decimal, '0')
+                               .arg(validator_.top(),0, 'f',ranges.decimal, '0')
+                               .arg(1.0 / qPow(10,validator_.decimals())));
      }
      else
      {

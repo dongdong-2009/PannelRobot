@@ -163,6 +163,21 @@ bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const 
 #endif
 }
 
+bool ICRobotVirtualhost::FixProgram(ICVirtualHostPtr hostPtr, int which, int row, int step, const QVector<quint32> &data)
+{
+    QVector<quint32> toSent;
+    toSent<<which<<row<<step;
+    toSent += data;
+    ICRobotTransceiverData * toSentFrame =  new ICRobotTransceiverData();
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_EditTeach);
+    toSentFrame->SetAddr(0);
+    toSentFrame->SetLength(toSent.size());
+    toSentFrame->SetData(toSent);
+    hostPtr->AddCommunicationFrame(toSentFrame);
+    return true;
+}
+
 #ifdef NEW_PLAT
 static bool PairLess(const QPair<int, quint32>& l, const QPair<int, quint32>& r)
 {

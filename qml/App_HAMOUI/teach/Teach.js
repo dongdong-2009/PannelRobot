@@ -3,6 +3,14 @@
 Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
 
+var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
+
+var actionTypes = {
+    "kAT_Normal":0,
+    "kAT_SyncStart":1,
+    "kAT_SyncEnd":2
+};
+
 var motorRangeAddr = function(which){
     return "s_rw_0_32_3_100" + which;
 }
@@ -17,6 +25,13 @@ actions.F_CMD_SYNC_END = actHelper++;
 actions.F_CMD_SINGLE = actHelper++;
 actions.F_CMD_CoordinatePoint = actHelper++;
 actions.F_CMD_SINGLE_POINT = actHelper++;
+actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
+actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
+
+
+actions.F_CMD_PROGRAM_JUMP0 = 10000;
+actions.F_CMD_PROGRAM_JUMP1 = 10001;
+actions.F_CMD_PROGRAM_JUMP2 = 10002;
 actions.ACT_GS6 = actHelper++;
 actions.ACT_GS7 = actHelper++;
 
@@ -80,9 +95,23 @@ var generateAxisServoAction = function(action,
         "pos": pos||0.000,
         "speed":speed||80.0,
         "delay":delay||0.00,
-//        "isBadEn":isBadEn||false,
-//        "isEarlyEnd":isEarlyEnd||false,
-//        "earlyEndPos":earlyEndPos||0.00
+        //        "isBadEn":isBadEn||false,
+        //        "isEarlyEnd":isEarlyEnd||false,
+        //        "earlyEndPos":earlyEndPos||0.00
+    };
+}
+
+var generatePathAction = function(action,
+                                  points,
+                                  speed,
+                                  delay
+                                  ){
+
+    return {
+        "action":action,
+        "points":points,
+        "speed":speed||80.0,
+        "delay":delay||0.00,
     };
 }
 
@@ -168,8 +197,8 @@ var generateInitProgram = function(axisDefine){
 
     var initStep = [];
     initStep.push(generateSyncBeginAction());
-//    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-//                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
+    //    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
+    //                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
     var aT;
     for(var i = 1; i < 8; ++i){
         aT = axisDefine["s"+ i + "Axis"];
@@ -293,7 +322,7 @@ var conditionActionToStringHandler = function(actionObject){
 var waitActionToStringHandler = function(actionObject){
     return qsTr("Wait:") + actionObject.point +
             (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " " +
-                                       qsTr("Limit:") + actionObject.limit;
+            qsTr("Limit:") + actionObject.limit;
 }
 
 var checkActionToStringHandler = function(actionObject){
@@ -332,10 +361,38 @@ var syncEndActionToStringHandler = function(actionObject){
     return qsTr("Sync End");
 }
 
+var pointToString = function(point){
+    var ret = "";
+    var m;
+    for(var i = 0; i < 6; ++i){
+        m = "m" + i;
+        if(point.hasOwnProperty(m)){
+            ret += motorText[i] + point[m] + ";"
+        }
+    }
+    return ret;
+}
+
+var pathActionToStringHandler = function(actionObject){
+    var ret = "";
+    if(actionObject.action == actions.F_CMD_LINE2D_MOVE_POINT){
+        ret += qsTr("Line2D:");
+    }
+    var points = actionObject.points;
+    if(points.length > 0)
+        ret += qsTr("Next:") + pointToString(points[0]);
+    if(points.length > 1)
+        ret += qsTr("End:") + pointToString(points[points.length - 1]);
+    ret += qsTr("Speed:") + actionObject.speed + " ";
+    ret += qsTr("Delay:") + actionObject.delay;
+    return ret;
+}
+
 
 
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_GS2, gs2ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_GS3, gs3ToStringHandler);
@@ -385,9 +442,10 @@ var actionToString = function(actionObject){
     return toStrHandler(actionObject);
 }
 
-function ProgramModelItem(actionObject){
-    this.actionObject = actionObject;
-    this.isActionRunning = false;
+function ProgramModelItem(actionObject, at){
+    this.mI_ActionObject = actionObject;
+    this.mI_IsActionRunning = false;
+    this.mI_ActionType = at;
 }
 
 function ccErrnoToString(errno){

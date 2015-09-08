@@ -14,6 +14,9 @@ extern "C"
 {
 #endif
 
+#define DEBUG_TEST  1 //< 测试
+
+
 #define STRUCE_SIZE(a,b) (b-a+1)
 
 
@@ -346,6 +349,7 @@ typedef enum
     CMD_CONFIG, //< 配置命令
     CMD_IO, // IO命令
     CMD_ORIGIN, // 原点模式
+    CMD_RETURN, // 复归模式
 
     CMD_POWER_OFF0 = 0x0100,  // 第一个逻辑电机关闭
     CMD_POWER_OFF  = 0x017F,  // 所有逻辑电机关闭
@@ -442,6 +446,15 @@ typedef enum
     ALARM_TEACH_DATA_ANALYTICAL_ERR, //<名字：教导数据解析错误
     ALARM_TEACH_DATA_EDIT_ERR, //<名字：教导数据编辑错误
 
+    ALARM_EMERGENCY_STOP,//<名字：紧急停止
+
+    ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
+    ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
+    ALARM_AXIS3_ALARM_ERR,//<名字：电机3报警
+    ALARM_AXIS4_ALARM_ERR,//<名字：电机4报警
+    ALARM_AXIS5_ALARM_ERR,//<名字：电机5报警
+    ALARM_AXIS6_ALARM_ERR, //<名字：电机6报警
+
     ALARM_AXIS_RUN_ERR = 100,//<名字：轴1运动失败
     ALARM_AXIS2_RUN_ERR,//<名字：轴2运动失败
     ALARM_AXIS3_RUN_ERR,//<名字：轴3运动失败
@@ -459,7 +472,19 @@ typedef enum
     ALARM_AXIS3_OVER_SPEED_ERR,//<名字：轴3运动过速
     ALARM_AXIS4_OVER_SPEED_ERR,//<名字：轴4运动过速
     ALARM_AXIS5_OVER_SPEED_ERR,//<名字：轴5运动过速
-    ALARM_AXIS6_OVER_SPEED_ERR //<名字：轴6运动过速
+    ALARM_AXIS6_OVER_SPEED_ERR, //<名字：轴6运动过速
+    ALARM_AXIS1_SOFT_LIMIT_P = 130,//<名字：轴1正极限报警
+    ALARM_AXIS2_SOFT_LIMIT_P,//<名字：轴2正极限报警
+    ALARM_AXIS3_SOFT_LIMIT_P,//<名字：轴3正极限报警
+    ALARM_AXIS4_SOFT_LIMIT_P,//<名字：轴4正极限报警
+    ALARM_AXIS5_SOFT_LIMIT_P,//<名字：轴5正极限报警
+    ALARM_AXIS6_SOFT_LIMIT_P,//<名字：轴6正极限报警
+    ALARM_AXIS1_SOFT_LIMIT_N = 140,//<名字：轴1负极限报警
+    ALARM_AXIS2_SOFT_LIMIT_N,//<名字：轴2负极限报警
+    ALARM_AXIS3_SOFT_LIMIT_N,//<名字：轴3负极限报警
+    ALARM_AXIS4_SOFT_LIMIT_N,//<名字：轴4负极限报警
+    ALARM_AXIS5_SOFT_LIMIT_N,//<名字：轴5负极限报警
+    ALARM_AXIS6_SOFT_LIMIT_N//<名字：轴6负极限报警
 }ALARM_ADDR;
 
 /*******************************************************************************/
@@ -470,14 +495,17 @@ static const uint32_t axis_cfg_addr[] = {
 
 typedef struct {  //<192 + 14X8 = 304
     uint32_t length;           //<类型：系统；名字：臂长/半径；精度：3;单位：mm；
-    uint32_t ppc;              //<类型：系统；名字：每转脉冲数；精度：0;单位：num；
-    uint32_t soft_limit_p;     //<类型：系统；名字：正向软极限；精度：3;单位：mm；
-    uint32_t soft_limit_n;     //<类型：系统；名字：负向软极限；精度：3;单位：mm；
+    uint32_t ppc:16;           //<类型：系统；名字：每转脉冲数；精度：0;单位：num；
+    uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：0;单位：num；
+    uint32_t soft_limit_p:16;  //<类型：系统；名字：正向软极限；精度：0;单位：度；
+    uint32_t soft_limit_n:16;  //<类型：系统；名字：负向软极限；精度：0;单位：度；
+    uint32_t reserve0;         //<类型：系统；名字：预留；精度：0;单位：；
     uint32_t limit_p:8;        //<类型：系统；名字：正向极限输入；精度：0;单位：；
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
-    uint32_t reserve0:8;       //<类型：系统；名字：预留；精度：0;单位：；
-    uint16_t reserve1;         //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t atype:4;          //<类型：系统；名字：轴类型；精度：0;单位：；
+    uint32_t reserve1:4;       //<类型：系统；名字：预留；精度：0;单位：；
+    uint16_t reserve2;         //<类型：系统；名字：预留；精度：0;单位：；
     uint16_t max_speed;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
     uint16_t min_acc_time;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；
     uint16_t sratio;           //<类型：系统；名字：二次加速时间比例；精度：3;单位：；

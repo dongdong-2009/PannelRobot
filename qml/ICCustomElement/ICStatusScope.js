@@ -1,7 +1,6 @@
-var status = [];
 
+var status = [];
 function deepFindStatus(item){
-//            console.log(item)
     if(item.hasOwnProperty("bindStatus")){
         status.push(item);
         return;
@@ -12,5 +11,4 @@ function deepFindStatus(item){
     for(var i = 0; i < count; ++i){
         deepFindStatus(itemChildren[i]);
     }
-
 }

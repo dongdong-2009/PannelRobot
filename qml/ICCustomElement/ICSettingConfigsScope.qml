@@ -1,16 +1,17 @@
 import QtQuick 1.1
-import "ICSettingConfigsScope.js" as Impl
+import "ICSettingConfigsScope.js" as PData
 
 Item {
+    id:container
     property bool isCache: false
-    QtObject{
-        id:pData
-        property variant configs: []
-        property bool isLoaded: false
-    }
+//    QtObject{
+//        id:pData
+//        property variant configs: []
+//        property bool isLoaded: false
+//    }
 
     function onConfigValueChanged(index){
-        var config = pData.configs[index];
+        var config = PData.configs[index];
         panelRobotController.setConfigValue(config.configAddr, config.configValue);
         if(!isCache)
             panelRobotController.syncConfigs();
@@ -18,11 +19,11 @@ Item {
     }
 
     function needToUpdateConfigs(){
-        var count = pData.configs.length;
+        var count = PData.configs.length;
         var config;
-        var handlers = Impl.handlers;
+        var handlers = PData.handlers;
         for(var i = 0; i < count; ++i){
-            config = pData.configs[i];
+            config = PData.configs[i];
             config.configValueChanged.disconnect(handlers[i]);
             config.configValue = panelRobotController.getConfigValueText(config.configAddr);
             config.configValueChanged.connect(handlers[i]);
@@ -56,24 +57,26 @@ Item {
 //        }
     }
     Component.onCompleted: {
-        var count = children.length;
-        var cs = [];
-        var config;
-        var l;
-        for(var i = 0; i < count; ++i){
-            config = children[i];
-            if(config.hasOwnProperty("configValue")){
-                l = cs.length;
-                cs.push(config);
-                var fun = function(){
-                    onConfigValueChanged(l);
-                };
-                Impl.handlers.push(fun);
-                config.configValueChanged.connect(fun);
-            }
-        }
-        pData.configs = cs;
-        pData.isLoaded = true;
+//        var count = children.length;
+//        var cs = [];
+//        var config;
+//        var l;
+//        for(var i = 0; i < count; ++i){
+//            config = children[i];
+//            if(config.hasOwnProperty("configValue")){
+//                l = cs.length;
+//                cs.push(config);
+//                console.log(config.configAddr)
+//                var fun = function(){
+//                    onConfigValueChanged(l);
+//                };
+//                Impl.handlers.push(fun);
+//                config.configValueChanged.connect(fun);
+//            }
+//        }
+//        pData.configs = cs;
+        PData.deepFindFitItem(container)
+        PData.isLoaded = true;
         panelRobotController.moldChanged.connect(needToUpdateConfigs)
         needToUpdateConfigs();
     }

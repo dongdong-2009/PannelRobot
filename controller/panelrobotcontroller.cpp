@@ -56,7 +56,7 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     scriptFile.close();
     scriptContent = scriptContent.remove(0, sizeof(".pragma library"));
     engine_.evaluate(scriptContent, scriptFileName);
-    qDebug()<<engine_.hasUncaughtException();
+    qDebug()<<"PanelrobotController Init:"<<engine_.hasUncaughtException();
     configRangeGetter_ = engine_.evaluate("getConfigRange");
     getConfigRange_ = &configRangeGetter_;
     ICAddrWrapperList moldAddrs = ICAddrWrapper::MoldAddrs();
@@ -209,7 +209,7 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
 {
     ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
     if(configWrapper == NULL) return;
-    qDebug()<<addr<<v;
+    qDebug()<<"PanelRobotController::setConfigValue"<<addr<<v;
     quint32 intV = AddrStrValueToInt(configWrapper, v);
     ICAddrWrapperValuePair p = qMakePair<ICAddrWrapperCPTR, quint32>(configWrapper, intV);
     if(configWrapper->AddrType() == ICAddrWrapper::kICAddrTypeMold)
@@ -229,7 +229,8 @@ void PanelRobotController::syncConfigs()
     if(!moldFncModifyCache_.isEmpty())
     {
         ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
-        mold->SetMoldFncs(moldFncModifyCache_);
+        QList<QPair<int, quint32> > addrVals = mold->SetMoldFncs(moldFncModifyCache_);
+        ICRobotVirtualhost::SendConfigs(host_, addrVals);
         moldFncModifyCache_.clear();
     }
     else if(!machineConfigModifyCache_.isEmpty())

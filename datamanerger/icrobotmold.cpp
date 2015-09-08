@@ -676,3 +676,19 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int step, const QString &li
     ret = VariantToMoldItem(step, result, err);
     return ret;
 }
+
+QList<QPair<int, quint32> > ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePairList values)
+{
+    QList<QPair<int, quint32> >baseValues;
+    ICAddrWrapperValuePair tmp;
+    for(int i = 0; i != values.size(); ++i)
+    {
+        tmp = values.at(i);
+        fncCache_.UpdateConfigValue(tmp.first, tmp.second);
+
+        baseValues.append(qMakePair(tmp.first->BaseAddr(), fncCache_.OriginConfigValue(tmp.first)));
+    }
+//    ICDALHelper::UpdateMachineConfigValues(baseValues, configName_);
+    ICDALHelper::UpdateMoldFncValues(baseValues, moldName_);
+    return baseValues;
+}

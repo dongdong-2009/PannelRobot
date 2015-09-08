@@ -60,9 +60,9 @@ public:
     {
         baseValue = baseValue >> addr->StartPos();
 //        quint32 mask = ((quint64(2) << (addr->Size() - 1)) - 1);
-        baseValue &= ((quint64(2) << (addr->Size() - 1)) - 1);
-//        baseValue &= mask;
-        return baseValue;
+        int topAddrPos = addr->Size() - 1;
+        baseValue &= ((quint64(2) << topAddrPos) - 1);
+        return (baseValue >> topAddrPos) ?  baseValue |= -1 << (addr->Size()) : baseValue;
     }
 
     static const ICAddrWrapper* AddrStringToAddr(const QString& str)

@@ -1,6 +1,8 @@
 .pragma library
 
 var MAX_UINT_16 = 65536;
+var MAX_INT_16 = 32767;
+var MIN_INT_16 = -32767;
 var MAX_INT_32 = 2147483647;
 var MIN_INT_32 = -2147483647;
 
@@ -10,18 +12,18 @@ var configRanges = {
     "m_rw_0_16_0_2":["m_rw_0_16_0_0", "m_rw_0_16_0_1"],
     "m_rw_0_16_0_16":[0, MAX_UINT_16],
     "s_rw_0_16_3_265":[0, 100],
-    "s_rw_0_32_3_103":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_102":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_109":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_110":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_116":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_117":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_123":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_124":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_130":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_131":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_137":[MIN_INT_32, MAX_INT_32],
-    "s_rw_0_32_3_138":[MIN_INT_32, MAX_INT_32],
+    "s_rw_0_16_0_102":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_102":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_107":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_107":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_114":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_114":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_121":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_121":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_128":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_128":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_135":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_135":[MIN_INT_16, MAX_INT_16],
     "s_rw_0_32_3_1000":["s_rw_0_32_3_103", "s_rw_0_32_3_102"],
     "s_rw_0_32_3_1001":["s_rw_0_32_3_110", "s_rw_0_32_3_109"],
     "s_rw_0_32_3_1002":["s_rw_0_32_3_117", "s_rw_0_32_3_116"],

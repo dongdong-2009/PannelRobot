@@ -3,81 +3,91 @@ import "."
 import "../ICCustomElement"
 import "./Theme.js" as Theme
 
-ContentPageBase{
-    Rectangle{
-        id:manualContainer
+ContentPageBase {
+    Rectangle {
+        id: manualContainer
         anchors.fill: parent
         color: Theme.defaultTheme.BASE_BG
 
-
-        QtObject{
-            id:pdata
+        QtObject {
+            id: pdata
             property int menuItemHeight: 32
             property int menuItemY: 4
         }
 
-        ICButtonGroup{
-            id:menuContainer
-            width: parent.width;
+        ICButtonGroup {
+            id: menuContainer
+            width: parent.width
             height: pdata.menuItemHeight
-            y:pdata.menuItemY
-            z:1
-            TabMenuItem{
-                id:group1
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+            y: pdata.menuItemY
+            z: 1
+            TabMenuItem {
+                id: group1
+                width: parent.width
+                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: pdata.menuItemHeight
                 itemText: qsTr("Y010~27")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
             }
-            TabMenuItem{
-                id:group2
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+            TabMenuItem {
+                id: group2
+                width: parent.width
+                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: pdata.menuItemHeight
                 itemText: qsTr("Y030~47")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
                 //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
             }
-            TabMenuItem{
-                id:jog
-                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
+            TabMenuItem {
+                id: jog
+                width: parent.width
+                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: pdata.menuItemHeight
                 itemText: qsTr("Jog")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
                 //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
             }
             onButtonClickedID: {
-                pageContainer.setCurrentIndex(index);
+                pageContainer.setCurrentIndex(index)
             }
             Component.onCompleted: {
-                group1.setChecked(true);
+                group1.setChecked(true)
             }
         }
 
-        Rectangle{
-            id:spliteLine
+        Rectangle {
+            id: spliteLine
             width: parent.width
             height: 1
             color: "black"
             anchors.top: menuContainer.bottom
         }
 
-        ICStackContainer{
-            id:pageContainer
+        ICStackContainer {
+            id: pageContainer
             anchors.top: spliteLine.bottom
         }
         Component.onCompleted: {
-            var yDefinePage1Class = Qt.createComponent('YDefinePage.qml');
-            if (yDefinePage1Class.status == Component.Ready){
-                var page = yDefinePage1Class.createObject(pageContainer, {"ioStart":0})
+            var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
+            if (yDefinePage1Class.status === Component.Ready) {
+                var page = yDefinePage1Class.createObject(pageContainer, {
+                                                              ioStart: 0
+                                                          })
                 pageContainer.addPage(page)
-                page = yDefinePage1Class.createObject(pageContainer, {"ioStart":16})
+                page = yDefinePage1Class.createObject(pageContainer, {
+                                                          ioStart: 16
+                                                      })
                 pageContainer.addPage(page)
                 //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]
             }
-            var jogClass = Qt.createComponent('JogPage.qml');
-            pageContainer.addPage(jogClass.createObject(pageContainer));
+            var jogClass = Qt.createComponent('JogPage.qml')
+            pageContainer.addPage(jogClass.createObject(pageContainer))
         }
     }
+
     //    ICStackContainer{
     //        id:manualContainer
     //        anchors.fill: parent
@@ -93,7 +103,6 @@ ContentPageBase{
     //            manualContainer.setCurrentIndex(0)
     //        }
     //    }
-
     content: manualContainer
 
     //    onMenuItem1Triggered: manualContainer.setCurrentIndex(0)

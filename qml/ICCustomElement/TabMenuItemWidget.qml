@@ -33,7 +33,7 @@ Rectangle {
     function addPage(componentObject, pageTitle){
         //        componentObject.anchors.fill = this;
         var tmIClass = Qt.createComponent('TabMenuItem.qml');
-        if (tmIClass.status == Component.Ready){
+        if (tmIClass.status === Component.Ready){
             var menuItem = tmIClass.createObject(menuContainer, {"itemText":pageTitle,
                                                  "width":150,"height":32});
             var m = pData.menuItems;

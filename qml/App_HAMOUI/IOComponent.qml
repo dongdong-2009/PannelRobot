@@ -73,7 +73,7 @@ Rectangle {
         function generatePageBaseDefines(defs,type){
             var ioView = Qt.createComponent('IOComponentView.qml');
             var ret = [];
-            if (ioView.status == Component.Ready){
+            if (ioView.status === Component.Ready){
                 var pageCount = Math.ceil(defs.length / 8);
                 for(var i = 0; i < pageCount; ++i){
                     ret[i] = ioView.createObject(ioContaner,

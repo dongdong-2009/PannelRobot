@@ -41,9 +41,10 @@ Rectangle {
         }
         function onMenuItemTriggered(which){
             var c = menuContainer.children;
+            var page;
             for(var i = 0; i < c.length;++i){
                 if(c[i] == which){
-                    var page = buttonToPage(which);
+                    page = buttonToPage(which);
                     if(page == null) continue
                     page.visible = true;
                     page.focus = true;
@@ -51,7 +52,7 @@ Rectangle {
                 }
                 if(c[i].hasOwnProperty("setChecked")){
 //                    c[i].setChecked(false);
-                    var page = buttonToPage(c[i]);
+                    page = buttonToPage(c[i]);
                     if(page == null) continue
                     page.visible = false;
                     page.focus = false;

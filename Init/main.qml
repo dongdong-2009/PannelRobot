@@ -8,7 +8,7 @@ Rectangle {
     function loadUSBDirs(){
         qmlDirsModel.clear();
         var dirStr = panelRobotController.usbDirs();
-        if(dirStr.length != 0){
+        if(dirStr.length !== 0){
             var dirs = JSON.parse(dirStr);
             for(var i = 0; i < dirs.length; ++i){
                 qmlDirsModel.append({"dirName":dirs[i]});

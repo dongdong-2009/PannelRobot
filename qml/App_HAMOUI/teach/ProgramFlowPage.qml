@@ -24,27 +24,40 @@ Rectangle {
         if(cI < 0)return;
         if(actionEditorContainer.isMenuShow()) return;
         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
+        if(actionObjects.length == 0) return;
         var model = currentModel();
         var currentActionObject = currentModelData();
         var at;
-        for(var i = 0; i < actionObjects.length; ++i){
-            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-                Teach.pushFlag(actionObjects[i].flag);
+        if(actionObjects[0].action === Teach.actions.F_CMD_SYNC_START)
+        {
+            var startTypeCount = actionObjects.length - 1;
+            for(var i = 0; i < startTypeCount; ++i){
+                model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_SyncStart));
             }
-            if(((currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncStart)
-                && currentActionObject.mI_ActionObject.action !== Teach.actions.F_CMD_SYNC_START)
-                    || (currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncEnd)
-                    || actionObjects[i].action === Teach.actions.F_CMD_SYNC_START)
-            {
-                at = Teach.actionTypes.kAT_SyncStart;
-            }else if(actionObjects[i].action === Teach.actions.F_CMD_SYNC_END)
-            {
-                at = Teach.actionTypes.kAT_SyncEnd;
-            }else{
-                 at = Teach.actionTypes.kAT_Normal;
-            }
+            if(actionObjects[startTypeCount].action === Teach.actions.F_CMD_SYNC_END)
+                model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_SyncEnd));
 
-            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], at));
+        }else{
+
+            for(var i = 0; i < actionObjects.length; ++i){
+                if(actionObjects[i].action === Teach.actions.ACT_FLAG){
+                    Teach.pushFlag(actionObjects[i].flag);
+                }
+                if(((currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncStart)
+                    && currentActionObject.mI_ActionObject.action !== Teach.actions.F_CMD_SYNC_START)
+                        || (currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncEnd)
+                        || actionObjects[i].action === Teach.actions.F_CMD_SYNC_START)
+                {
+                    at = Teach.actionTypes.kAT_SyncStart;
+                }else if(actionObjects[i].action === Teach.actions.F_CMD_SYNC_END)
+                {
+                    at = Teach.actionTypes.kAT_SyncEnd;
+                }else{
+                    at = Teach.actionTypes.kAT_Normal;
+                }
+
+                model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], at));
+            }
         }
     }
 

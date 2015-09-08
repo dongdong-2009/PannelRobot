@@ -36,6 +36,14 @@ var CMD_JOG_NW     = 0x0385;	// 直角坐标系姿势轴，X轴反向点动
 var CMD_JOG_NR     = 0x0386;	// 极坐标系，靠近原点点动
 
 var CMD_FIND_ZERO0 = 0x0400;	// 第一个逻辑轴，找零
+var CMD_SET_ZERO0  = 0x0410;  // X轴原点设定
+var CMD_SET_ZERO1  = 0x0411;  // y轴原点设定
+var CMD_SET_ZERO2  = 0x0412;  // z轴原点设定
+var CMD_SET_ZERO3  = 0x0413;  // u轴原点设定
+var CMD_SET_ZERO4  = 0x0414;  // v轴原点设定
+var CMD_SET_ZERO5  = 0x0415;  // w轴原点设定
+var CMD_SET_ZERO   = 0x0416;  // 全部轴原点设定
+var CMD_REM_POS    = 0x0417;  // 保存每个轴当前位置
 var CMD_FIND_ZERO  = 0x047F;	// 所有逻辑轴，同时找零
 
 var CMD_GO_HOME0   = 0x0500;	// 第一个逻辑轴，回零点

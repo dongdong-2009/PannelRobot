@@ -26,39 +26,16 @@ Rectangle {
         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
         if(actionObjects.length == 0) return;
         var model = currentModel();
-        var currentActionObject = currentModelData();
-        var at;
-        if(actionObjects[0].action === Teach.actions.F_CMD_SYNC_START)
-        {
-            var startTypeCount = actionObjects.length - 1;
-            for(var i = 0; i < startTypeCount; ++i){
-                model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_SyncStart));
+        for(var i = 0; i < actionObjects.length; ++i){
+            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
+                Teach.pushFlag(actionObjects[i].flag);
             }
-            if(actionObjects[startTypeCount].action === Teach.actions.F_CMD_SYNC_END)
-                model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_SyncEnd));
 
-        }else{
-
-            for(var i = 0; i < actionObjects.length; ++i){
-                if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-                    Teach.pushFlag(actionObjects[i].flag);
-                }
-                if(((currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncStart)
-                    && currentActionObject.mI_ActionObject.action !== Teach.actions.F_CMD_SYNC_START)
-                        || (currentActionObject.mI_ActionType === Teach.actionTypes.kAT_SyncEnd)
-                        || actionObjects[i].action === Teach.actions.F_CMD_SYNC_START)
-                {
-                    at = Teach.actionTypes.kAT_SyncStart;
-                }else if(actionObjects[i].action === Teach.actions.F_CMD_SYNC_END)
-                {
-                    at = Teach.actionTypes.kAT_SyncEnd;
-                }else{
-                    at = Teach.actionTypes.kAT_Normal;
-                }
-
-                model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], at));
-            }
+            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
         }
+        repaintProgramItem(model)
+//        var msg = {"programModel":model}
+//        repaintThread.sendMessage(msg);
     }
 
     function onDeleteTriggered(){
@@ -71,6 +48,7 @@ Rectangle {
             Teach.delFlag(actionObject.flag);
         }
         model.remove(cI);
+        repaintProgramItem(model);
     }
 
     function onUpTriggered(){
@@ -78,7 +56,27 @@ Rectangle {
         if(cI < 1)return;
         var model = currentModel();
         if(cI >= model.count - 1) return;
+        var cIAction = currentModelData().mI_ActionObject;
+        var cIPAction = model.get(cI - 1).mI_ActionObject;
+
+
+//        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
+//            if(!Teach.isSyncAction(cIPAction))
+//                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+//        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
+//            if(!Teach.isSyncAction(cIPAction))
+//                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+//        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_START){
+//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+//        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_END){
+//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+//        }
+
         model.move(cI, cI -1, 1);
+        if(Teach.isSyncAction(cIAction) ||
+                Teach.isSyncAction(cIPAction)){
+            repaintProgramItem(model);
+        }
     }
 
     function onDownTriggered(){
@@ -86,7 +84,24 @@ Rectangle {
         if(cI < 0)return;
         var model = currentModel();
         if(cI >= model.count - 2) return;
+        var cIAction = currentModelData().mI_ActionObject;
+        var cINAction = model.get(cI + 1).mI_ActionObject;
+//        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
+//            if(!Teach.isSyncAction(cINAction))
+//                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+//        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
+//            if(!Teach.isSyncAction(cINAction))
+//                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+//        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_START){
+//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+//        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_END){
+//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+//        }
         model.move(cI, cI  + 1, 1);
+        if(Teach.isSyncAction(cIAction) ||
+                Teach.isSyncAction(cINAction)){
+            repaintProgramItem(model);
+        }
 
     }
 
@@ -158,6 +173,11 @@ Rectangle {
     //        currentModel().set(programListView.currentIndex,
     //                           new Teach.ProgramModelItem(actionObject));
     //    }
+
+    WorkerScript{
+        id:repaintThread
+        source: "repaintProgram.js"
+    }
 
     Column{
         id:container
@@ -575,6 +595,34 @@ Rectangle {
         z:3
         x: 10
 
+    }
+
+    function repaintProgramItem(programModel, start, end){
+        var l = programModel.count;
+        start = start || 0;
+        end = end || l;
+
+        if(start >= l || end > l)
+            return;
+        var step;
+        var at;
+        var isSyncStart = false;
+        for(var i = start; i < end; ++i){
+            step = programModel.get(i).mI_ActionObject;
+            if(step.action === Teach.actions.F_CMD_SYNC_START){
+                at = Teach.actionTypes.kAT_SyncStart;
+                isSyncStart = true;
+            }
+            else if(step.action === Teach.actions.F_CMD_SYNC_END){
+                at = Teach.actionTypes.kAT_SyncEnd;
+                isSyncStart = false;
+            }
+            else
+                at = Teach.actionTypes.kAT_Normal;
+            if(isSyncStart)
+                at = Teach.actionTypes.kAT_SyncStart;
+            programModel.setProperty(i, "mI_ActionType", at);
+        }
     }
 
     function updateProgramModels(){

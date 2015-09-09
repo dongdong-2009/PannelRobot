@@ -199,6 +199,11 @@ QString PanelRobotController::getConfigValueText(const QString &addr) const
         return QString();
     }
     quint32 v = getConfigValue(addr);
+    ICRange range = ICRobotRangeGetter(addr);
+    if((range.min < 0) && (v >> (configWrapper->Size() - 1)))
+    {
+        v |= ((-1) << configWrapper->Size());
+    }
     return QString::number(qint32(v) / qPow(10, configWrapper->Decimal()),
                            'f',
                            configWrapper->Decimal());
@@ -426,7 +431,9 @@ int PanelRobotController::configsCheckSum(const QString &addrs) const
     quint32 sum = 0;
     for(int i = 0; i != result.size(); ++i)
     {
+//        quint32 tmp = getConfigValue(result.at(i).toString());
         sum += getConfigValue(result.at(i).toString());
+//        sum += tmp;
     }
     return (-sum) & 0xFFFF;
 //     return sum;

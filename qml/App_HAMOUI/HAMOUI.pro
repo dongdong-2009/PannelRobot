@@ -9,7 +9,8 @@ settingpages/*
 
 OTHER_FILES += \
     teach/PathActionEditor.qml \
-    teach/PointEdit.js
+    teach/PointEdit.js \
+    teach/repaintProgram.js
 
 
 

@@ -11,6 +11,11 @@ var actionTypes = {
     "kAT_SyncEnd":2
 };
 
+var isSyncAction = function(actionObject){
+    return actionObject.action === actionTypes.kAT_SyncStart ||
+            actionObject.action === actionTypes.kAT_SyncEnd;
+}
+
 var motorRangeAddr = function(which){
     return "s_rw_0_32_3_100" + which;
 }

@@ -638,7 +638,7 @@ Rectangle {
             for(var p = 0; p < program.length; ++p){
                 step = program[p]
                 if(Teach.canActionUsePoint(step)){
-
+                    Teach.definedPoints.parseActionPoints(step);
                 }
 
                 if(step.action === Teach.actions.ACT_FLAG){

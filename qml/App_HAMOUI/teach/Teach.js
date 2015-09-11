@@ -18,10 +18,14 @@ var DefinePoints = {
             }
             return definedPoints.length;
         }
+        definePoints.createPointObject = function(pID, name, point){
+            return {"index":pID, "name":name, "point":point};
+        }
+
         definePoints.addNewPoint = function(name, point){
             var pID = definePoints.createPointID();
             name = "P" + pID + ":" + name;
-            var iPoint = {"index":pID, "name":name, "point":point};
+            var iPoint = definePoints.createPointObject(pID, name, point);
             definePoints.definedPoints.splice(pID, 0, iPoint);
             return iPoint;
         }
@@ -35,7 +39,8 @@ var DefinePoints = {
             return parseInt(name.substring(1, name.indexOf(":")));
         }
         definePoints.isPointExist = function(pointID){
-            return definePoints.definedPoints[pointID].index == pointID;
+            if(pointID >= definePoints.definedPoints.length) return false;
+            return definePoints.definedPoints[pointID].index === pointID;
         }
         definePoints.pointNameList = function(){
             var ret = [];
@@ -43,6 +48,25 @@ var DefinePoints = {
                 ret.push(definePoints.definedPoints[i].name);
             }
             return ret;
+        }
+        definePoints.clear = function(){
+            definePoints.definedPoints.length = 0;
+        }
+        definePoints.parseActionPoints = function(actionObject){
+            if(!actionObject.hasOwnProperty("points"))
+                return
+            var points = actionObject.points;
+            var name;
+            var pID;
+            for(var i = 0; i < points.length; ++i){
+                name = points[i].pointName || "";
+                if(name === "")
+                    continue;
+                pID = definePoints.extractPointIDFromPointName(name);
+                if(!definePoints.isPointExist(pID)){
+                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
+                }
+            }
         }
 
         return definePoints;

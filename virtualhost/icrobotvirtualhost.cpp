@@ -161,6 +161,7 @@ static bool PairLess(const QPair<int, quint32>& l, const QPair<int, quint32>& r)
 bool ICRobotVirtualhost::InitConfigHelper(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
 {
     QList<QPair<int, quint32> > configs = vp;
+    if(configs.isEmpty()) return true;
     qSort(configs.begin(), configs.end(), PairLess);
     int st = 1;
     QMap<int, int> startIndexToSize;

@@ -119,7 +119,7 @@ public:
     Q_INVOKABLE QString getConfigValueText(const QString& addr) const;
     Q_INVOKABLE double getRealConfigValue(const QString& addr) const
     {
-        return qint32(getConfigValue(addr)) / qPow(10, configDecimal(addr));
+        return getConfigValueText(addr).toDouble();
     }
     Q_INVOKABLE bool isAutoMode() const { return statusValue("c_ro_1_4_0_938") == CMD_AUTO;}
     Q_INVOKABLE QString hostStepToUILines(int which, int step) const;

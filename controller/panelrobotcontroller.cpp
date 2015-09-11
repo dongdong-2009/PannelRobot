@@ -19,12 +19,39 @@ ICRange ICRobotRangeGetter(const QString& addrName)
     QMap<QString, QVariant> ranges = getConfigRange_->call(QScriptValue(),args).toVariant().toMap();
     QVariant minVariant = ranges.value("min");
     QVariant maxVariant = ranges.value("max");
-    double min = (minVariant.type() == QVariant::String) ?
-                controllerInstance->getRealConfigValue(minVariant.toString()) :
-                minVariant.toDouble();
-    double max = (maxVariant.type() == QVariant::String) ?
-                controllerInstance->getRealConfigValue(maxVariant.toString()):
-                maxVariant.toDouble();
+    double min, max;
+    if(minVariant.type() != QVariant::String)
+        min = minVariant.toDouble();
+    else
+    {
+        ICRange ret = ICRobotRangeGetter(minVariant.toString());
+        qint32 v = controllerInstance->getConfigValue(minVariant.toString());
+        ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(minVariant.toString());
+        if(ret.min < 0  && (v >> (configWrapper->Size() - 1)))
+        {
+            v |= (-1 << configWrapper->Size());
+        }
+        min = v / qPow(10, configWrapper->Decimal());
+    }
+    if(maxVariant.type() != QVariant::String)
+        max = maxVariant.toDouble();
+    else
+    {
+        ICRange ret = ICRobotRangeGetter(maxVariant.toString());
+        qint32 v = controllerInstance->getConfigValue(maxVariant.toString());
+        ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(maxVariant.toString());
+        if(ret.min < 0  && (v >> (configWrapper->Size() - 1)))
+        {
+            v |= (-1 << configWrapper->Size());
+        }
+        max = v / qPow(10, configWrapper->Decimal());
+    }
+//    double min = (minVariant.type() == QVariant::String) ?
+//                controllerInstance->getRealConfigValue(minVariant.toString()) :
+//                minVariant.toDouble();
+//    double max = (maxVariant.type() == QVariant::String) ?
+//                controllerInstance->getRealConfigValue(maxVariant.toString()):
+//                maxVariant.toDouble();
     return ICRange(min,max,ranges.value("decimal").toInt());
 //    return ICRange();
 }
@@ -141,7 +168,6 @@ void PanelRobotController::OnNeedToInitHost()
 {
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
     ICRobotVirtualhost::SendMold(host_, mold->ProgramToDataBuffer(ICRobotMold::kMainProg));
-    ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
 //    QVector<QVector<quint32> > subsBuffer;
     for(int i = 1; i <= ICRobotMold::kSub8Prog; ++i)
     {
@@ -150,8 +176,10 @@ void PanelRobotController::OnNeedToInitHost()
     }
     ICMachineConfigPTR machineConfig = ICMachineConfig::CurrentMachineConfig();
 #ifdef NEW_PLAT
+    ICRobotVirtualhost::InitMoldFnc(host_,mold->BareMachineConfigs());
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->BareMachineConfigs());
 #else
+    ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->MachineConfigsBuffer());
 #endif
 }

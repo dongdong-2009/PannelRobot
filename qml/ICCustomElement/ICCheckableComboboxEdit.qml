@@ -8,19 +8,29 @@ Item {
     property alias configNameWidth: configName.width
     property alias inputWidth: edit.width
     property alias items: edit.items
+    property alias isChecked:configName.isChecked
+    property alias popupMode: edit.popupMode
+
+    function setChecked(status){
+        configName.isChecked = status;
+    }
+
     height: 24
     width: container.width
+
     Row{
         id:container
         spacing: 2
         width: configName.width + edit.width
         height: parent.height
-        Text {
+        ICCheckBox {
             id: configName
             anchors.verticalCenter: parent.verticalCenter
         }
         ICComboBox{
             id: edit
+            enabled: configName.isChecked
+
         }
     }
 }

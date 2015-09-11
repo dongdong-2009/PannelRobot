@@ -97,32 +97,6 @@ bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<quint3
 #endif
 }
 
-bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
-{
-    QVector<quint32> fnc = data;
-    const int count = fnc.size();
-    if(count % 4 != 0)
-    {
-        for(int i = 0; i != 4 - (count % 4); ++i)
-        {
-            fnc.append(0);
-        }
-    }
-    ICRobotTransceiverData * toSentFrame;
-    QVector<quint32> tempDataBuffer;
-    int startAddr = 0;
-    for(int i = 0; i < fnc.size(); i +=4)
-    {
-        tempDataBuffer = fnc.mid(i, 4);
-        toSentFrame = ICRobotTransceiverData::FillFncInitCommand(kHostID,
-                                                                 startAddr,
-                                                                 tempDataBuffer);
-        hostPtr->AddCommunicationFrame(toSentFrame);
-        ++startAddr;
-
-    }
-    return true;
-}
 
 bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<quint32> &data)
 {
@@ -183,7 +157,8 @@ static bool PairLess(const QPair<int, quint32>& l, const QPair<int, quint32>& r)
 {
     return l.first < r.first;
 }
-bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
+
+bool ICRobotVirtualhost::InitConfigHelper(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
 {
     QList<QPair<int, quint32> > configs = vp;
     qSort(configs.begin(), configs.end(), PairLess);
@@ -191,7 +166,7 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList
     QMap<int, int> startIndexToSize;
     int sa = configs.at(0).first;
     st = 1;
-    int addr;
+    int addr = sa;
     for(int i = 1; i != configs.size(); ++i)
     {
         if(st == 1)
@@ -248,6 +223,80 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList
         configs = configs.mid(size);
         ++p;
     }
+    return true;
+}
+
+bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
+{
+    return InitConfigHelper(hostPtr, vp);
+}
+
+bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
+{
+//    QList<QPair<int, quint32> > configs = vp;
+//    qSort(configs.begin(), configs.end(), PairLess);
+//    int st = 1;
+//    QMap<int, int> startIndexToSize;
+//    int sa = configs.at(0).first;
+//    st = 1;
+//    int addr;
+//    for(int i = 1; i != configs.size(); ++i)
+//    {
+//        if(st == 1)
+//        {
+//            addr = sa;
+//        }
+//        if(configs.at(i).first - sa > 1)
+//        {
+//            startIndexToSize.insert(addr, st);
+//            st = 1;
+//            sa = configs.at(i).first;
+//            startIndexToSize.insert(sa, st);
+//            addr = sa;
+//            continue;
+//        }
+//        ++sa;
+//        ++st;
+//    }
+//    startIndexToSize.insert(addr, st);
+//    QMap<int, int>::iterator p = startIndexToSize.begin();
+//    QVector<quint32> tempDataBuffer;
+//    QList<QPair<int, quint32> > midConfigs;
+    ICRobotTransceiverData *data;
+//    while(p != startIndexToSize.end())
+//    {
+//        //        int size = configs.size();
+//        int size = p.value();
+//        const int length = 16;
+//        const int shift = 4;
+//        int splitCount = qCeil(size / static_cast<qreal>(length));
+//        for(int i = 0; i != splitCount; ++i)
+//        {
+//            data = new ICRobotTransceiverData();
+//            data->SetHostID(kHostID);
+//            data->SetFunctionCode(FunctionCode_WriteAddr);
+//            data->SetAddr(static_cast<ICAddr>(p.key() + (i << shift)) /* *64 */);
+//            if( i == splitCount - 1)
+//            {
+//                data->SetLength(size - (i << shift));
+//            }
+//            else
+//            {
+//                data->SetLength(length);
+//            }
+//            midConfigs = configs.mid(i << shift, data->GetLength());
+//            tempDataBuffer.clear();
+//            for(int j = 0; j != midConfigs.size(); ++j)
+//            {
+//                tempDataBuffer.append(midConfigs.at(j).second);
+//            }
+//            data->SetData(tempDataBuffer);
+//            hostPtr->AddCommunicationFrame(data);
+//        }
+//        configs = configs.mid(size);
+//        ++p;
+//    }
+    InitConfigHelper(hostPtr, vp);
 
     data = new ICRobotTransceiverData(kHostID,
                                       FunctionCode_WriteAddr,
@@ -260,6 +309,32 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList
 }
 
 #else
+bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
+{
+    QVector<quint32> fnc = data;
+    const int count = fnc.size();
+    if(count % 4 != 0)
+    {
+        for(int i = 0; i != 4 - (count % 4); ++i)
+        {
+            fnc.append(0);
+        }
+    }
+    ICRobotTransceiverData * toSentFrame;
+    QVector<quint32> tempDataBuffer;
+    int startAddr = 0;
+    for(int i = 0; i < fnc.size(); i +=4)
+    {
+        tempDataBuffer = fnc.mid(i, 4);
+        toSentFrame = ICRobotTransceiverData::FillFncInitCommand(kHostID,
+                                                                 startAddr,
+                                                                 tempDataBuffer);
+        hostPtr->AddCommunicationFrame(toSentFrame);
+        ++startAddr;
+
+    }
+    return true;
+}
 bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
 {
 

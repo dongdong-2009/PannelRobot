@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "PointEdit.js" as PData
+import "Teach.js" as Teach
 
 
 Item {
@@ -37,9 +38,17 @@ Item {
         return delay.configValue;
     }
 
+    function refreshSelectablePoisnts(points){
+        selReferenceName.items = points;
+    }
+
     onVisibleChanged: {
-        if(visible)
+        if(visible){
             pointViewModel.clear();
+            if(visible){
+                refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+            }
+        }
     }
 
     Row{
@@ -157,6 +166,28 @@ Item {
             inputWidth: PData.delayEditWidth
         }
     }
+    ICButtonGroup{
+        layoutMode: 1
+        anchors.top: speedAndDelayContainer.bottom
+        anchors.topMargin: 4
+        spacing: 2
+        ICCheckableLineEdit{
+            id:newReferenceName
+            configName: qsTr("New Point:")
+            configNameWidth: 120
+            inputWidth: 180
+            isNumberOnly: false
+        }
+
+        ICCheckableComboboxEdit{
+            id:selReferenceName
+            configName: qsTr("Select Point:")
+            configNameWidth: 120
+            inputWidth: newReferenceName.inputWidth
+            popupMode: 1
+            z: 2
+        }
+    }
 
     Rectangle{
         id:middleVercSplitLine
@@ -200,13 +231,18 @@ Item {
             ListModel{
                 id:pointViewModel
 
-                function itemText(pointInfo){
+                function itemText(point, name){
+
                     var ret = "";
+                    if(name.length !== 0){
+                        ret = name + ":";
+                    }
+
                     var m;
                     for(var i = 0; i < 6; ++i){
                         m = "m" + i;
-                        if(pointInfo.hasOwnProperty(m)){
-                            ret += PData.motorText[i] + pointInfo[m] + ";"
+                        if(point.hasOwnProperty(m)){
+                            ret += PData.motorText[i] + point[m] + ";"
                         }
                     }
                     return ret;
@@ -214,26 +250,38 @@ Item {
 
                 function createModelItem(){
                     var ret = {};
-                    if(motor0.isChecked())
+
+                    if(motor0.isChecked)
                         ret.m0 = motor0.configValue;
-                    if(motor1.isChecked())
+                    if(motor1.isChecked)
                         ret.m1 = motor1.configValue;
-                    if(motor2.isChecked())
+                    if(motor2.isChecked)
                         ret.m2 = motor2.configValue;
-                    if(motor3.isChecked())
+                    if(motor3.isChecked)
                         ret.m3 = motor3.configValue;
-                    if(motor4.isChecked())
+                    if(motor4.isChecked)
                         ret.m4 = motor4.configValue;
-                    if(motor5.isChecked())
+                    if(motor5.isChecked)
                         ret.m5 = motor5.configValue;
-                    return {"points":ret};
+                    var pointName = "";
+                    if(newReferenceName.isChecked){
+                        var point = Teach.definedPoints.addNewPoint(newReferenceName.configValue,
+                                                        ret);
+                        pointName = point.name;
+                        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+                    }else if(selReferenceName.isChecked){
+                        ret = Teach.definedPoints.getPoint(selReferenceName.configText).point;
+                        pointName = selReferenceName.configText;
+                    }
+
+                    return {"point":ret, "pointName":pointName};
                 }
             }
             model: pointViewModel
             highlight: Rectangle {x:1;y:1;width: pointView.width -1;height: 24; color: "lightsteelblue"; }
 
             delegate: Text {
-                text:pointViewModel.itemText(points)
+                text:pointViewModel.itemText(point, pointName)
                 wrapMode: Text.Wrap
                 width: pointView.width
                 height: 24

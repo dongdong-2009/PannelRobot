@@ -190,6 +190,12 @@ public:
         return fncCache_.SequenceDataList();
     }
 
+    QList<QPair<int, quint32> > BareMachineConfigs() const
+    {
+        return fncCache_.ToPairList();
+    }
+
+
     bool LoadMold(const QString& moldName);
     int SaveMold(int which, const QString& program);
 

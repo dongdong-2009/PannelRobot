@@ -8,6 +8,8 @@ Item {
     property alias alignMode: edit.alignMode
     property alias configNameWidth: configName.width
     property alias inputWidth: edit.inputWidth
+    property alias isNumberOnly: edit.isNumberOnly
+
     height: 24
     width: container.width
     Row{

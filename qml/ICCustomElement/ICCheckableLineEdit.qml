@@ -8,11 +8,16 @@ Item {
     property alias alignMode: edit.alignMode
     property alias configNameWidth: configName.width
     property alias inputWidth: edit.inputWidth
+    property alias isNumberOnly: edit.isNumberOnly
+    property alias isChecked:configName.isChecked
+
+    function setChecked(status){
+        configName.isChecked = status;
+    }
+
     height: 24
     width: container.width
-    function isChecked(){
-        return configName.isChecked;
-    }
+
 
     Row{
         id:container

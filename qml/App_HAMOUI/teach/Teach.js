@@ -5,6 +5,68 @@ Qt.include("../../utils/stringhelper.js")
 
 var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
 
+var Cat = {
+
+　　　　createNew: function(){
+
+　　　　　　var cat = {};
+
+　　　　　　cat.name = "大毛";
+
+　　　　　　cat.makeSound = function(){ alert("喵喵喵"); };
+
+　　　　　　return cat;
+
+　　　　}
+
+　　};
+
+var DefinePoints = {
+    createNew: function(){
+        var definePoints = {};
+        definePoints.definedPoints = [];
+        definePoints.createPointID = function(){
+            var definedPoints = definePoints.definedPoints;
+            for(var i = 0; i < definedPoints.length; ++i){
+                if(i !== definedPoints[i].index)
+                    return i;
+            }
+            return definedPoints.length;
+        }
+        definePoints.addNewPoint = function(name, point){
+            var pID = definePoints.createPointID();
+            name = "P" + pID + ":" + name;
+            var iPoint = {"index":pID, "name":name, "point":point};
+            definePoints.definedPoints.splice(pID, 0, iPoint);
+            return iPoint;
+        }
+
+        definePoints.getPoint = function(name){
+            var pID = definePoints.extractPointIDFromPointName(name);
+            return definedPoints.definedPoints[pID];
+        }
+
+        definePoints.extractPointIDFromPointName = function(name){
+            return parseInt(name.substring(1, name.indexOf(":")));
+        }
+        definePoints.isPointExist = function(pointID){
+            return definePoints.definedPoints[pointID].index == pointID;
+        }
+        definePoints.pointNameList = function(){
+            var ret = [];
+            for(var i = 0; i < definePoints.definedPoints.length; ++i){
+                ret.push(definePoints.definedPoints[i].name);
+            }
+            return ret;
+        }
+
+        return definePoints;
+    }
+
+};
+
+var definedPoints = DefinePoints.createNew();
+
 var actionTypes = {
     "kAT_Normal":0,
     "kAT_SyncStart":1,
@@ -383,6 +445,7 @@ var pathActionToStringHandler = function(actionObject){
     if(actionObject.action == actions.F_CMD_LINE2D_MOVE_POINT){
         ret += qsTr("Line2D:");
     }
+
     var points = actionObject.points;
     if(points.length > 0)
         ret += qsTr("Next:") + pointToString(points[0]);

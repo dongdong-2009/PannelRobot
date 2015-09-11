@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Rectangle {
+    id:container
     property variant items: []
     property int currentIndex: -1
     property alias currentText: currentText.text
@@ -12,6 +13,18 @@ Rectangle {
 
     border.width: 1
     border.color: "gray"
+
+    state: enabled ? "" : "disabled"
+
+    states: [
+        State {
+            name: "disabled"
+            PropertyChanges { target: container; color:"gray";}
+            PropertyChanges { target: currentText; color:"gainsboro";}
+
+        }
+
+    ]
 
     Text {
         id: currentText
@@ -70,6 +83,7 @@ Rectangle {
 
 
     onItemsChanged: {
+        itemModel.clear();
         for(var i = 0; i < items.length; ++i){
             itemModel.append({"index": i, "name":items[i]})
         }

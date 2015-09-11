@@ -597,6 +597,7 @@ Rectangle {
 
     }
 
+    //TODO:Use WorkerScript to implement this function
     function repaintProgramItem(programModel, start, end){
         var l = programModel.count;
         start = start || 0;

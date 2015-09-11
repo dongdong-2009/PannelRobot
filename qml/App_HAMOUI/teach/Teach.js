@@ -5,21 +5,6 @@ Qt.include("../../utils/stringhelper.js")
 
 var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
 
-var Cat = {
-
-　　　　createNew: function(){
-
-　　　　　　var cat = {};
-
-　　　　　　cat.name = "大毛";
-
-　　　　　　cat.makeSound = function(){ alert("喵喵喵"); };
-
-　　　　　　return cat;
-
-　　　　}
-
-　　};
 
 var DefinePoints = {
     createNew: function(){
@@ -430,12 +415,20 @@ var syncEndActionToStringHandler = function(actionObject){
 
 var pointToString = function(point){
     var ret = "";
+    if(point.pointName !== ""){
+        ret = point.pointName + "(";
+    }
+
     var m;
     for(var i = 0; i < 6; ++i){
         m = "m" + i;
-        if(point.hasOwnProperty(m)){
-            ret += motorText[i] + point[m] + ";"
+        if(point.pos.hasOwnProperty(m)){
+            ret += motorText[i] + point.pos[m] + ","
         }
+    }
+    ret = ret.substr(0, ret.length - 1);
+    if(point.pointName !== ""){
+        ret += ")";
     }
     return ret;
 }
@@ -448,9 +441,9 @@ var pathActionToStringHandler = function(actionObject){
 
     var points = actionObject.points;
     if(points.length > 0)
-        ret += qsTr("Next:") + pointToString(points[0]);
+        ret += qsTr("Next:") + pointToString(points[0]) + " ";
     if(points.length > 1)
-        ret += qsTr("End:") + pointToString(points[points.length - 1]);
+        ret += qsTr("End:") + pointToString(points[points.length - 1]) + " ";
     ret += qsTr("Speed:") + actionObject.speed + " ";
     ret += qsTr("Delay:") + actionObject.delay;
     return ret;
@@ -572,4 +565,12 @@ var useableFlag = function(){
         }
     }
     return flags[i - 1] + 1;
+}
+
+var canActionUsePoint = function(actionObject){
+    return actionObject.action === actions.F_CMD_SINGLE ||
+            actionObject.action === actions.F_CMD_CoordinatePoint ||
+            actionObject.action === actions.F_CMD_SINGLE_POINT ||
+            actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT;
 }

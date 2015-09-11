@@ -71,7 +71,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         point = points.at(i).toMap();
         if(point.isEmpty())
             return ICRobotMold::kCCErr_Wrong_Action_Format;
-        item += PointToPosList(point);
+        item += PointToPosList(point.value("pos").toMap());
     }
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));

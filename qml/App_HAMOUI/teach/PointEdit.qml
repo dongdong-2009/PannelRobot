@@ -2,30 +2,37 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "PointEdit.js" as PData
 import "Teach.js" as Teach
+import "../../utils/utils.js" as Utils
 
 
 Item {
+    function createPoint(name, point){
+        return {"pos":point, "pointName":name};
+    }
+
     function usedMotorCount(){
         var ret = 0;
-        if(motor0.isChecked())
+        if(motor0.isChecked)
             ++ret;
-        if(motor1.isChecked())
+        if(motor1.isChecked)
             ++ret;
-        if(motor2.isChecked())
+        if(motor2.isChecked)
             ++ret;
-        if(motor3.isChecked())
+        if(motor3.isChecked)
             ++ret;
-        if(motor4.isChecked())
+        if(motor4.isChecked)
             ++ret;
-        if(motor5.isChecked())
+        if(motor5.isChecked)
             ++ret;
         return ret;
     }
 
     function getPoints(){
         var ret = [];
+        var mP;
         for(var i = 0; i < pointViewModel.count; ++i){
-            ret.push(pointViewModel.get(i).points);
+            mP = Utils.cloneObject(pointViewModel.get(i));
+            ret.push(createPoint(mP.pointName, mP.pos));
         }
         return ret;
     }
@@ -235,15 +242,19 @@ Item {
 
                     var ret = "";
                     if(name.length !== 0){
-                        ret = name + ":";
+                        ret = name + "(";
                     }
 
                     var m;
                     for(var i = 0; i < 6; ++i){
                         m = "m" + i;
                         if(point.hasOwnProperty(m)){
-                            ret += PData.motorText[i] + point[m] + ";"
+                            ret += PData.motorText[i] + point[m] + ","
                         }
+                    }
+                    ret = ret.substr(0, ret.length - 1);
+                    if(name.length !== 0){
+                        ret += ")";
                     }
                     return ret;
                 }
@@ -274,14 +285,14 @@ Item {
                         pointName = selReferenceName.configText;
                     }
 
-                    return {"point":ret, "pointName":pointName};
+                    return createPoint(pointName, ret);
                 }
             }
             model: pointViewModel
             highlight: Rectangle {x:1;y:1;width: pointView.width -1;height: 24; color: "lightsteelblue"; }
 
             delegate: Text {
-                text:pointViewModel.itemText(point, pointName)
+                text:pointViewModel.itemText(model.pos, model.pointName)
                 wrapMode: Text.Wrap
                 width: pointView.width
                 height: 24

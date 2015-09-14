@@ -7,6 +7,9 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    configs/AxisDefine.js
+
 
 
 

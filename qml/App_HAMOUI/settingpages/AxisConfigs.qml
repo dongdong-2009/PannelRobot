@@ -3,6 +3,7 @@ import ".."
 import "../../ICCustomElement"
 import "../Theme.js" as Theme
 import "../configs/Keymap.js" as Keymap
+import "../configs/AxisDefine.js" as AxisDefine
 
 
 Item {
@@ -165,7 +166,7 @@ Item {
             id:motor1
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 1")
+            itemText: AxisDefine.axisInfos[0].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(0)
@@ -175,7 +176,7 @@ Item {
             id:motor2
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 2")
+            itemText: AxisDefine.axisInfos[1].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(1)
@@ -185,7 +186,7 @@ Item {
             id:motor3
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 3")
+            itemText: AxisDefine.axisInfos[2].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(2)
@@ -195,7 +196,7 @@ Item {
             id:motor4
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 4")
+            itemText: AxisDefine.axisInfos[3].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(3)
@@ -205,7 +206,7 @@ Item {
             id:motor5
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 5")
+            itemText: AxisDefine.axisInfos[4].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(4)
@@ -215,7 +216,7 @@ Item {
             id:motor6
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 6")
+            itemText: AxisDefine.axisInfos[5].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(5)
@@ -225,7 +226,7 @@ Item {
             id:motor7
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 7")
+            itemText: AxisDefine.axisInfos[6].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(6)
@@ -235,7 +236,7 @@ Item {
             id:motor8
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
-            itemText: qsTr("Motor 8")
+            itemText: AxisDefine.axisInfos[7].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(7)

@@ -2,8 +2,9 @@
 
 Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
+Qt.include("../configs/AxisDefine.js")
 
-var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
+//var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
 
 
 var DefinePoints = {
@@ -312,7 +313,7 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
-    var ret =  qsTr("Motor") + actionObject.axis + ":" +  actionObject.pos + " " +
+    var ret =  axisInfos[actionObject.axis].name + ":" +  actionObject.pos + " " +
             qsTr("Speed:") + actionObject.speed + " " +
             qsTr("Delay:") + actionObject.delay;
     if(actionObject.isBadEn)
@@ -447,7 +448,7 @@ var pointToString = function(point){
     for(var i = 0; i < 6; ++i){
         m = "m" + i;
         if(point.pos.hasOwnProperty(m)){
-            ret += motorText[i] + point.pos[m] + ","
+            ret += axisInfos[i].name + ":" + point.pos[m] + ","
         }
     }
     ret = ret.substr(0, ret.length - 1);

@@ -2,6 +2,7 @@ import QtQuick 1.1
 
 import "."
 import "../ICCustomElement/"
+import "configs/AxisDefine.js" as AxisDefine
 
 Item {
     x:4
@@ -12,33 +13,33 @@ Item {
             spacing: 4
             AxisPosDisplayComponent{
                 id:m0
-                name: qsTr("M0")
-                unit: "mm"
+                name: AxisDefine.axisInfos[0].name
+                unit: AxisDefine.axisInfos[0].unit
             }
             AxisPosDisplayComponent{
                 id:m1
-                name: qsTr("M1")
-                unit: "mm"
+                name: AxisDefine.axisInfos[1].name
+                unit: AxisDefine.axisInfos[1].unit
             }
             AxisPosDisplayComponent{
                 id:m2
-                name: qsTr("M2")
-                unit: "mm"
+                name: AxisDefine.axisInfos[2].name
+                unit: AxisDefine.axisInfos[2].unit
             }
             AxisPosDisplayComponent{
                 id:m3
-                name: qsTr("M3")
-                unit: "mm"
+                name: AxisDefine.axisInfos[3].name
+                unit: AxisDefine.axisInfos[3].unit
             }
             AxisPosDisplayComponent{
                 id:m4
-                name: qsTr("M4")
-                unit: "mm"
+                name: AxisDefine.axisInfos[4].name
+                unit: AxisDefine.axisInfos[4].unit
             }
             AxisPosDisplayComponent{
                 id:m5
-                name: qsTr("M5")
-                unit: "mm"
+                name: AxisDefine.axisInfos[5].name
+                unit: AxisDefine.axisInfos[5].unit
             }
         }
     }

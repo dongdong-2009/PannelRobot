@@ -264,9 +264,12 @@ Rectangle {
                 Row{
                     id:toolBar
                     function showModify(){
-                        modifyEditor.y = toolBar.y + toolBar.height + 30;
                         var actionObject = currentModelData().mI_ActionObject;
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                        var showY = toolBar.y + toolBar.height + 30;
+                        if(showY + modifyEditor.height >= container.height)
+                            showY = toolBar.y - modifyEditor.height + 20;
+                        modifyEditor.y = showY;
                     }
                     z: 1
                     height: 30

@@ -5,6 +5,7 @@ import "configs/Keymap.js" as Keymap
 Item {
     //    property function load(){}
     property alias content:contentContainer.children
+    property alias statusSection:tipContainer.children
     //    property alias menu: menuContainer.children
     property variant menuItemTexts: ["", "", "", "", "", "",""]
     property  alias contentContainerWidth: contentContainer.width

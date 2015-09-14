@@ -73,7 +73,12 @@ ContentPageBase{
 //        pageContainer.currentPage().showMenu();
 //    }
 
+    AxisPosDisplayBar{
+        id:posDisplayBar
+    }
+
     content: programContainer
+    statusSection: posDisplayBar
 
     Timer{
         id:refreshTimer

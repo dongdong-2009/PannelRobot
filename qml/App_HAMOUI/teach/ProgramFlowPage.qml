@@ -182,7 +182,7 @@ Rectangle {
     Column{
         id:container
         width: 792
-        height: 436
+        height: 420
         spacing: 2
         Rectangle{
             id:programViewContainer
@@ -366,7 +366,7 @@ Rectangle {
                     y:2
                     model: mainProgramModel
                     width: parent.width
-                    height: parent.height
+                    height: parent.height - 2
                     spacing:2
                     clip: true
                     delegate: ProgramListItem{
@@ -632,6 +632,7 @@ Rectangle {
         var step;
         var at;
         var isSyncStart = false;
+        Teach.definedPoints.clear();
         for(i = 0; i < 9; ++i){
             PData.programs[i].clear();
             program = JSON.parse(panelRobotController.programs(i));

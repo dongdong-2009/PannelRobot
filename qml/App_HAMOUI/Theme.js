@@ -16,9 +16,9 @@ var Theme = function(){
         tipBG : "black",
         tipBorderWidth:3,
         tipBorderBG:"green",
-        tipTextColor: "green",
-        settingHeightProportion:0.85,
-        tipHeightProportion:0.05,
+        tipTextColor: "greenyellow",
+        settingHeightProportion:0.82,
+        tipHeightProportion:0.08,
         menuHeightProportion:0.1
     }
     this.TopHeader = {

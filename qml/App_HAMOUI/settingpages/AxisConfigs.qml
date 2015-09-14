@@ -245,8 +245,10 @@ Item {
     Item{
         anchors.top: menuContainer.bottom
         anchors.topMargin: 4
-        Column{
-            spacing: 6
+        Grid{
+            columns: 2
+            flow: Grid.TopToBottom
+            spacing: 30
             ICConfigEdit{
                 id:length
                 configName: qsTr("Arm Length")

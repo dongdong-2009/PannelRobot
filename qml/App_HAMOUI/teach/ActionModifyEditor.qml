@@ -54,6 +54,10 @@ Item {
             configName: qsTr("Pos:")
             unit: qsTr("mm")
         }
+//        PointEdit{
+//            id:point
+//        }
+
         ICConfigEdit{
             id:speed
             configNameWidth: PData.configNameWidth

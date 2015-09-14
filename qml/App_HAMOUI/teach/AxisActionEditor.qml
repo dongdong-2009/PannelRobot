@@ -2,6 +2,7 @@ import QtQuick 1.1
 
 import "../../ICCustomElement"
 import "Teach.js" as Teach
+import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
     width: parent.width
@@ -75,61 +76,61 @@ Item {
         Grid{
             columns: 2
             rows: 5
-            spacing: 12
+            spacing: 10
             flow: Grid.TopToBottom
 
             AxisActionEditorAxisComponent{
-                id:x1Axis
-                axisName: qsTr("X1")
+                id:m0Axis
+                axisName: AxisDefine.axisInfos[0].name
                 psName: [qsTr("X1 ON"), qsTr("X1 OFF")]
                 axisDefine: pData.axisDefine.s1Axis
                 rangeAddr: "s_rw_0_32_3_1000"
             }
 
             AxisActionEditorAxisComponent{
-                id:y1Axis
-                axisName: qsTr("Y1")
+                id:m1Axis
+                axisName: AxisDefine.axisInfos[1].name
                 psName: [qsTr("Y1 ON"), qsTr("Y1 OFF")]
                 axisDefine: pData.axisDefine.s2Axis
                 rangeAddr: "s_rw_0_32_3_1001"
             }
             AxisActionEditorAxisComponent{
-                id:zAxis
-                axisName: qsTr("Z")
+                id:m2Axis
+                axisName: AxisDefine.axisInfos[2].name
                 psName: [qsTr("Z ON"), qsTr("Z OFF")]
                 axisDefine: pData.axisDefine.s3Axis
                 rangeAddr: "s_rw_0_32_3_1002"
             }
             AxisActionEditorAxisComponent{
-                id:x2Axis
-                axisName: qsTr("X2")
+                id:m3Axis
+                axisName: AxisDefine.axisInfos[3].name
                 psName: [qsTr("X2 ON"), qsTr("X2 OFF")]
                 axisDefine: pData.axisDefine.s4Axis
                 rangeAddr: "s_rw_0_32_3_1003"
             }
             AxisActionEditorAxisComponent{
-                id:y2Axis
-                axisName: qsTr("Y2")
+                id:m4Axis
+                axisName: AxisDefine.axisInfos[4].name
                 psName: [qsTr("Y2 ON"), qsTr("Y2 OFF")]
                 axisDefine: pData.axisDefine.s5Axis
                 rangeAddr: "s_rw_0_32_3_1004"
             }
             AxisActionEditorAxisComponent{
-                id:aAxis
-                axisName: qsTr("A")
+                id:m5Axis
+                axisName: AxisDefine.axisInfos[5].name
                 psName: [qsTr("A ON"), qsTr("A OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
             }
             AxisActionEditorAxisComponent{
-                id:bAxis
-                axisName: qsTr("B")
+                id:m6Axis
+                axisName: AxisDefine.axisInfos[6].name
                 psName: [qsTr("B ON"), qsTr("B OFF")]
                 axisDefine: pData.axisDefine.s7Axis
             }
             AxisActionEditorAxisComponent{
-                id:cAxis
-                axisName: qsTr("C")
+                id:m7Axis
+                axisName: AxisDefine.axisInfos[7].name
                 psName: [qsTr("C ON"), qsTr("C OFF")]
                 axisDefine: pData.axisDefine.s8Axis
             }
@@ -154,14 +155,14 @@ Item {
     Component.onCompleted: {
         var axis = [];
         var actions = Teach.actions;
-        axis.push({"axisItem":x1Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS1_1, "psOFF":actions.ACT_PS1_2});
-        axis.push({"axisItem":y1Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS2_1, "psOFF":actions.ACT_PS2_2});
-        axis.push({"axisItem":zAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS3_1, "psOFF":actions.ACT_PS3_2});
-        axis.push({"axisItem":x2Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
-        axis.push({"axisItem":y2Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
-        axis.push({"axisItem":aAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-        axis.push({"axisItem":bAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
-        axis.push({"axisItem":cAxis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+        axis.push({"axisItem":m0Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS1_1, "psOFF":actions.ACT_PS1_2});
+        axis.push({"axisItem":m1Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS2_1, "psOFF":actions.ACT_PS2_2});
+        axis.push({"axisItem":m2Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS3_1, "psOFF":actions.ACT_PS3_2});
+        axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
+        axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
+        axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
+        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
     }
 }

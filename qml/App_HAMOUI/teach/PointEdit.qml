@@ -176,7 +176,7 @@ Item {
     ICButtonGroup{
         layoutMode: 1
         anchors.top: speedAndDelayContainer.bottom
-        anchors.topMargin: 4
+        anchors.topMargin: 2
         spacing: 2
         ICCheckableLineEdit{
             id:newReferenceName
@@ -214,11 +214,17 @@ Item {
             id:insert
             text: qsTr("Insert")
             width: PData.commandBtnWidth
+            onButtonClicked: {
+                pointViewModel.insert(pointView.currentIndex, pointViewModel.createModelItem());
+            }
         }
         ICButton{
             id:del
             text: qsTr("Del")
             width: PData.commandBtnWidth
+            onButtonClicked: {
+                pointViewModel.remove(pointView.currentIndex);
+            }
         }
     }
     Rectangle{

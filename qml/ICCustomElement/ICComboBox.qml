@@ -38,7 +38,7 @@ Rectangle {
     Rectangle{
         id: itemContainer
         width: parent.width
-        height: itemHeight * itemModel.count
+//        height: itemHeight * itemModel.count
         border.width: parent.border.width
         border.color: parent.border.color
         ListView{
@@ -69,6 +69,11 @@ Rectangle {
         }
         visible: false
         anchors.top: currentText.bottom
+        onVisibleChanged: {
+            if(visible){
+                height = itemHeight * itemModel.count;
+            }
+        }
     }
 
     onPopupModeChanged: {

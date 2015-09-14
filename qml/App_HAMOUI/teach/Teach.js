@@ -519,6 +519,7 @@ var actionObjectToEditableITems = function(actionObject){
                 {"item":"delay", "range":"s_rw_0_32_2_1100"}];
     }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT){
         return [
+                    {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
                     {"item":"delay", "range":"s_rw_0_32_2_1100"}
                ];

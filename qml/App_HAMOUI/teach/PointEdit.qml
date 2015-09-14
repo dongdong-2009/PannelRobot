@@ -2,10 +2,13 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "PointEdit.js" as PData
 import "Teach.js" as Teach
+import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 
 
 Item {
+    property bool isEditorMode: false
+    property variant points: []
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -50,13 +53,23 @@ Item {
     }
 
     onVisibleChanged: {
-        if(visible){
+        if(visible && !isEditorMode){
             pointViewModel.clear();
             if(visible){
                 refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
             }
         }
     }
+
+    onPointsChanged: {
+        pointViewModel.clear();
+        for(var i = 0; i < points.length; ++i){
+            pointViewModel.append(createPoint(points[i].pointName, points[i].pos));
+        }
+    }
+
+    width: 710
+    height: 200
 
     Row{
         id:leftCommandContainer
@@ -99,13 +112,13 @@ Item {
         anchors.topMargin: 6
         ICCheckableLineEdit{
             id:motor0
-            configName: qsTr("M1")
+            configName: AxisDefine.axisInfos[0].name
             configAddr: "s_rw_0_32_3_1000"
             inputWidth: PData.axisEditWidth
         }
         ICCheckableLineEdit{
             id:motor1
-            configName: qsTr("M2")
+            configName: AxisDefine.axisInfos[1].name
             configAddr: "s_rw_0_32_3_1001"
             inputWidth: PData.axisEditWidth
 
@@ -113,14 +126,14 @@ Item {
         }
         ICCheckableLineEdit{
             id:motor2
-            configName: qsTr("M3")
+            configName: AxisDefine.axisInfos[2].name
             configAddr: "s_rw_0_32_3_1002"
             inputWidth: PData.axisEditWidth
 
         }
         ICCheckableLineEdit{
             id:motor3
-            configName: qsTr("M4")
+            configName: AxisDefine.axisInfos[3].name
             configAddr: "s_rw_0_32_3_1003"
             inputWidth: PData.axisEditWidth
 
@@ -128,7 +141,7 @@ Item {
         }
         ICCheckableLineEdit{
             id:motor4
-            configName: qsTr("M5")
+            configName: AxisDefine.axisInfos[4].name
             configAddr: "s_rw_0_32_3_1004"
             inputWidth: PData.axisEditWidth
 
@@ -136,7 +149,7 @@ Item {
         }
         ICCheckableLineEdit{
             id:motor5
-            configName: qsTr("M6")
+            configName: AxisDefine.axisInfos[5].name
             configAddr: "s_rw_0_32_3_1005"
             inputWidth: PData.axisEditWidth
 
@@ -152,32 +165,15 @@ Item {
         color: "gray"
     }
 
-    Row{
-        id:speedAndDelayContainer
-        spacing: 6
-        anchors.top: leftHorSplitLine.bottom
-        anchors.topMargin: 2
-        ICConfigEdit{
-            id:speed
-            configName: qsTr("Speed")
-            configAddr: "s_rw_0_32_1_1200"
-            unit: qsTr("%")
-            inputWidth: PData.speedEditWidth
-
-        }
-        ICConfigEdit{
-            id:delay
-            configName: qsTr("Delay")
-            configAddr: "s_rw_0_32_1_1100"
-            unit: qsTr("s")
-            inputWidth: PData.delayEditWidth
-        }
-    }
     ICButtonGroup{
+        id:pointModeContainer
         layoutMode: 1
-        anchors.top: speedAndDelayContainer.bottom
-        anchors.topMargin: 2
+        anchors.top: leftHorSplitLine.bottom
+//        anchors.topMargin: 1
+
         spacing: 2
+
+        height: newReferenceName.height + selReferenceName.height + 2* spacing
         ICCheckableLineEdit{
             id:newReferenceName
             configName: qsTr("New Point:")
@@ -193,6 +189,29 @@ Item {
             inputWidth: newReferenceName.inputWidth
             popupMode: 1
             z: 2
+        }
+    }
+
+    Row{
+        id:speedAndDelayContainer
+        spacing: 6
+        anchors.top: pointModeContainer.bottom
+        anchors.topMargin: 2
+        visible: !isEditorMode
+        ICConfigEdit{
+            id:speed
+            configName: qsTr("Speed")
+            configAddr: "s_rw_0_32_1_1200"
+            unit: qsTr("%")
+            inputWidth: PData.speedEditWidth
+
+        }
+        ICConfigEdit{
+            id:delay
+            configName: qsTr("Delay")
+            configAddr: "s_rw_0_32_1_1100"
+            unit: qsTr("s")
+            inputWidth: PData.delayEditWidth
         }
     }
 
@@ -230,7 +249,7 @@ Item {
     Rectangle{
         id:pointViewContainer
         x:rightCommandContainer.x
-        height: 175
+        height: 172
         anchors.top: rightCommandContainer.bottom
         anchors.topMargin: 2
         width: 355
@@ -255,7 +274,7 @@ Item {
                     for(var i = 0; i < 6; ++i){
                         m = "m" + i;
                         if(point.hasOwnProperty(m)){
-                            ret += PData.motorText[i] + point[m] + ","
+                            ret += AxisDefine.axisInfos[i].name + ":" + point[m] + ","
                         }
                     }
                     ret = ret.substr(0, ret.length - 1);

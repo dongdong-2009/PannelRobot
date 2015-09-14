@@ -24,20 +24,30 @@ Item {
         delay.visible = false;
         var item;
         var editor;
+        var maxWidth = 0;
         height = 0;
         PData.editingActionObject = actionObject;
         PData.editingEditors = [];
         for(var i = 0; i < editableItems.length; ++i){
             item = editableItems[i];
             editor = PData.itemToEditorMap.get(item.item);
-            editor.configAddr = item.range;
-            editor.configValue = actionObject[item.item];
+            if(editor == points){
+                editor.points = actionObject[item.item];
+            }
+            else{
+                editor.configAddr = item.range;
+                editor.configValue = actionObject[item.item];
+            }
+
             editor.visible = true;
             height += editor.height + editorContainer.spacing;
+            if(editor.width > maxWidth)
+                maxWidth = editor.width;
             PData.editingEditors.push(editor);
         }
-        height += buttons.height
+        height += buttons.height;
         height += 20
+        width = maxWidth;
         visible = true;
     }
     visible: false
@@ -54,9 +64,10 @@ Item {
             configName: qsTr("Pos:")
             unit: qsTr("mm")
         }
-//        PointEdit{
-//            id:point
-//        }
+        PointEdit{
+            id:points
+            isEditorMode: true
+        }
 
         ICConfigEdit{
             id:speed
@@ -85,7 +96,12 @@ Item {
                     var editor;
                     for(var i = 0; i < PData.editingEditors.length; ++i){
                         editor = PData.editingEditors[i];
-                        editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
+                        if(editor == points){
+                            editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
+
+                        }else{
+                            editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
+                        }
                     }
                     editConfirm(editingObject);
                 }
@@ -102,9 +118,11 @@ Item {
             PData.itemToEditorMap.put("pos", pos);
             PData.itemToEditorMap.put("speed", speed);
             PData.itemToEditorMap.put("delay", delay);
+            PData.itemToEditorMap.put("points", points)
             PData.editorToItemMap.put(pos, "pos");
             PData.editorToItemMap.put(speed, "speed");
             PData.editorToItemMap.put(delay, "delay");
+            PData.editorToItemMap.put(points, "points")
         }
     }
 }

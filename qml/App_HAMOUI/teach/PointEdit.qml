@@ -53,10 +53,10 @@ Item {
     }
 
     onVisibleChanged: {
-        if(visible && !isEditorMode){
-            pointViewModel.clear();
-            if(visible){
-                refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+        if(visible){
+            refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+            if(!isEditorMode){
+                pointViewModel.clear();
             }
         }
     }

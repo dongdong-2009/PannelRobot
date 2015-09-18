@@ -46,14 +46,14 @@ ICRange ICRobotRangeGetter(const QString& addrName)
         }
         max = v / qPow(10, configWrapper->Decimal());
     }
-//    double min = (minVariant.type() == QVariant::String) ?
-//                controllerInstance->getRealConfigValue(minVariant.toString()) :
-//                minVariant.toDouble();
-//    double max = (maxVariant.type() == QVariant::String) ?
-//                controllerInstance->getRealConfigValue(maxVariant.toString()):
-//                maxVariant.toDouble();
+    //    double min = (minVariant.type() == QVariant::String) ?
+    //                controllerInstance->getRealConfigValue(minVariant.toString()) :
+    //                minVariant.toDouble();
+    //    double max = (maxVariant.type() == QVariant::String) ?
+    //                controllerInstance->getRealConfigValue(maxVariant.toString()):
+    //                maxVariant.toDouble();
     return ICRange(min,max,ranges.value("decimal").toInt());
-//    return ICRange();
+    //    return ICRange();
 }
 
 PanelRobotController::PanelRobotController(QObject *parent) :
@@ -73,10 +73,10 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     QString uiMain = settings.UIMainName();
 
     QString scriptFileName(QString("%1/configs/ConfigDefines.js").arg(uiMain));
-//#ifdef Q_WS_QWS
-//#else
-//    QString scriptFileName(QString("../%1/configs/ConfigDefines.js"));
-//#endif
+    //#ifdef Q_WS_QWS
+    //#else
+    //    QString scriptFileName(QString("../%1/configs/ConfigDefines.js"));
+    //#endif
     QFile scriptFile(scriptFileName);
     scriptFile.open(QIODevice::ReadOnly);
     QString scriptContent = scriptFile.readAll();
@@ -108,13 +108,13 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     baseFncs_ = pc.ToPairList();
 
     LoadTranslator_(ICAppSettings().TranslatorName());
-//    LoadTranslator_("HAMOUI_zh_CN.qm");
+    //    LoadTranslator_("HAMOUI_zh_CN.qm");
     qApp->installTranslator(&translator);
 
     connect(&keyCheckTimer_,
             SIGNAL(timeout()),
             SLOT(OnkeyCheckTimeOut()));
-//    keyCheckTimer_.start(100);
+    //    keyCheckTimer_.start(100);
     controllerInstance = this;
 }
 
@@ -161,17 +161,17 @@ void PanelRobotController::InitMachineConfig_()
     ICMachineConfig* machineConfig = new ICMachineConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
-//    OnNeedToInitHost();
+    //    OnNeedToInitHost();
 }
 
 void PanelRobotController::OnNeedToInitHost()
 {
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
     ICRobotVirtualhost::SendMold(host_, mold->ProgramToDataBuffer(ICRobotMold::kMainProg));
-//    QVector<QVector<quint32> > subsBuffer;
+    //    QVector<QVector<quint32> > subsBuffer;
     for(int i = 1; i <= ICRobotMold::kSub8Prog; ++i)
     {
-//        subsBuffer.append(mold->ProgramToDataBuffer(i));
+        //        subsBuffer.append(mold->ProgramToDataBuffer(i));
         ICRobotVirtualhost::SendMoldSub(host_, i, mold->ProgramToDataBuffer(i));
     }
     ICMachineConfigPTR machineConfig = ICMachineConfig::CurrentMachineConfig();
@@ -253,7 +253,7 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
     {
         machineConfigModifyCache_.append(p);
     }
-//    qDebug()<<moldFncModifyCache_;
+    //    qDebug()<<moldFncModifyCache_;
 }
 
 void PanelRobotController::syncConfigs()
@@ -317,7 +317,7 @@ ICAxisDefine* PanelRobotController::axisDefine()
     axisDefine_->setS4Axis(ICAxisDefine::Servo);
     axisDefine_->setS5Axis(ICAxisDefine::Servo);
     axisDefine_->setS6Axis(ICAxisDefine::Servo);
-//    axisDefine_->setS1Axis(ICAxisDefine::Servo);
+    //    axisDefine_->setS1Axis(ICAxisDefine::Servo);
 
     return axisDefine_;
 #else
@@ -407,10 +407,10 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
     return translator.load(qml.filePath(name));
 }
 
-QString PanelRobotController::scanUSBUpdaters(const QString &filter)
+QString scanHelper(const QString& filter)
 {
     QDir usb(ICAppSettings::UsbPath);
-    QStringList updaters = usb.entryList(QStringList()<<QString("%1*.bfe").arg(filter));
+    QStringList updaters = usb.entryList(QStringList()<<filter);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
     {
@@ -420,6 +420,11 @@ QString PanelRobotController::scanUSBUpdaters(const QString &filter)
         ret.chop(1);
     ret.append("]");
     return ret;
+}
+
+QString PanelRobotController::scanUSBUpdaters(const QString &filter) const
+{
+    return scanHelper(QString("%1*.bfe").arg(filter));
 }
 
 void PanelRobotController::startUpdate(const QString &updater)
@@ -459,12 +464,12 @@ int PanelRobotController::configsCheckSum(const QString &addrs) const
     quint32 sum = 0;
     for(int i = 0; i != result.size(); ++i)
     {
-//        quint32 tmp = getConfigValue(result.at(i).toString());
+        //        quint32 tmp = getConfigValue(result.at(i).toString());
         sum += getConfigValue(result.at(i).toString());
-//        sum += tmp;
+        //        sum += tmp;
     }
     return (-sum) & 0xFFFF;
-//     return sum;
+    //     return sum;
 }
 
 void PanelRobotController::loadHostMachineConfigs()
@@ -493,9 +498,9 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     if(addr == 128)
     {
         disconnect(host_.data(),
-                SIGNAL(QueryFinished(int , const QVector<quint32>& )),
-                this,
-                SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+                   SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+                   this,
+                   SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
     }
 }
 
@@ -506,14 +511,14 @@ void PanelRobotController::OnkeyCheckTimeOut()
 }
 
 static QStringList stepAddrs = QStringList()<<"c_ro_0_16_0_933"
-                                              <<"c_ro_16_16_0_933"
-                                                <<"c_ro_0_16_0_934"
-                                                  <<"c_ro_16_16_0_934"
-                                                    <<"c_ro_0_16_0_935"
-                                                      <<"c_ro_16_16_0_935"
-                                                        <<"c_ro_0_16_0_936"
-                                                          <<"c_ro_16_16_0_936"
-                                                            <<"c_ro_0_16_0_937";
+                                           <<"c_ro_16_16_0_933"
+                                          <<"c_ro_0_16_0_934"
+                                         <<"c_ro_16_16_0_934"
+                                        <<"c_ro_0_16_0_935"
+                                       <<"c_ro_16_16_0_935"
+                                      <<"c_ro_0_16_0_936"
+                                     <<"c_ro_16_16_0_936"
+                                    <<"c_ro_0_16_0_937";
 
 QString PanelRobotController::hostStepToUILines(int which, int step) const
 {
@@ -542,4 +547,140 @@ bool PanelRobotController::fixProgramOnAutoMode(int which, int line, const QStri
     QPair<int, int> stepInfo;
     ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, line, lineContent,stepInfo);
     return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
+}
+
+QString PanelRobotController::scanUSBBackupPackages(const QString& filter) const
+{
+    return scanHelper(QString("%1*.tar").arg(filter));
+}
+
+int PanelRobotController::exportRobotMold(const QString &molds, const QString& name) const
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse (molds.toUtf8(), &ok).toList();
+    int ret = 0;
+    if(!ok)
+    {
+        ret = MoldMaintainRet::kME_InvalidMolds;
+        return ret;
+    }
+    ICRecordInfos records = ICRobotMold::RecordInfos();
+    QMap<QString, int> recordMap;
+    for(int i = 0; i < records.size(); ++i)
+    {
+        recordMap.insert(records.at(i).recordName(), i);
+    }
+    for(int i = 0; i < result.size(); ++i)
+    {
+        if(!recordMap.contains(result.at(i).toString())){
+            ret = MoldMaintainRet::kME_InvalidMolds;
+            return ret;
+        }
+    }
+    QDir dir = QDir::temp();
+    dir.mkdir(name);
+    dir.cd(name);
+    QFile file;
+    QPair<QStringList, QString> toWrite;
+    QString moldName;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        moldName = result.at(i).toString();
+        toWrite = ICRobotMold::ExportMold(moldName);
+        file.setFileName(dir.absoluteFilePath(moldName + ".act"));
+        if(file.open(QFile::WriteOnly))
+        {
+            file.write(toWrite.first.join("\n").toUtf8());
+            file.close();
+        }
+        file.setFileName(dir.absoluteFilePath(moldName + ".fnc"));
+        if(file.open(QFile::WriteOnly))
+        {
+            file.write(toWrite.second.toLatin1());
+            file.close();
+        }
+    }
+    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
+            .arg(name)
+            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
+    qDebug()<<cmd;
+    ::system(cmd.toUtf8());
+
+    ::sync();
+    return ret;
+}
+
+QString PanelRobotController::viewBackupPackageDetails(const QString &package) const
+{
+    QString tarPath = QDir(ICAppSettings::UsbPath).absoluteFilePath(package);
+    QDir temp = QDir::temp();
+    QString packageDirName = package;
+    packageDirName.chop(4);
+    if(!temp.exists(packageDirName))
+    {
+        ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+    }
+    temp.cd(packageDirName);
+    QStringList molds = temp.entryList(QStringList()<<"*.act");
+    QString ret = "[";
+    QString m;
+    for(int i = 0; i != molds.size(); ++i)
+    {
+        m = molds.at(i);
+        m.chop(4);
+        ret.append(QString("\"%1\",").arg(m));
+    }
+    if(molds.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+QString PanelRobotController::importRobotMold(const QString &molds, const QString& backupPackage)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse (molds.toUtf8(), &ok).toList();
+    QString ret = "[";
+    if(!ok)
+    {
+        return ret;
+    }
+    QDir temp = QDir::temp();
+    QString backupDirName = backupPackage;
+    backupDirName.chop(4);
+    temp.cd(backupDirName);
+    QFile file;
+    QString moldName;
+    QPair<QStringList, QString> moldInfo;
+    QString actContent;
+    RecordDataObject imported;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        moldName = result.at(i).toString();
+        file.setFileName(temp.absoluteFilePath(moldName + ".act"));
+        if(file.open(QFile::ReadOnly))
+        {
+            actContent = file.readAll();
+            file.close();
+            moldInfo.first = actContent.split("\n", QString::SkipEmptyParts);
+        }
+        file.setFileName(temp.absoluteFilePath(moldName + ".fnc"));
+        if(file.open(QFile::ReadOnly))
+        {
+            moldInfo.second = file.readAll();
+            file.close();
+        }
+        imported = ICRobotMold::ImportMold(moldName, moldInfo);
+//        if(imported.errNumber() == ICRobotMold::kRecordErr_None)
+//        {
+            ret.append(imported.toJSON() + ",");
+//        }
+    }
+    if(ret.endsWith(","))
+    {
+        ret.chop(1);
+    }
+    return ret + "]";
 }

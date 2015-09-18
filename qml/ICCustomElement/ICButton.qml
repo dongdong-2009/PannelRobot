@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Rectangle {
+    id:container
     property alias text: text.text
     property alias icon: icon.source
     property int iconPos: 0
@@ -12,6 +13,18 @@ Rectangle {
     height: 32
     border.width: 1
     border.color: "gray"
+
+    state: enabled ? "" : "disabled"
+
+    states: [
+        State {
+            name: "disabled"
+            PropertyChanges { target: container; color:"gray";}
+            PropertyChanges { target: text; color:"gainsboro";}
+
+        }
+
+    ]
     Row{
         width: parent.width
         height: parent.height

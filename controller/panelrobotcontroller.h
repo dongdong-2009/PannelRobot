@@ -104,10 +104,28 @@ private:
     AxisDefineData data_;
 };
 
+struct MoldMaintainRet
+{
+    MoldMaintainRet():err(0){}
+    enum MoldErr{
+        kME_None,
+        kME_InvalidMolds,
+        kME_UnknowError,
+    };
+
+    int err;
+    QString name;
+    QString ToJSON() const
+    {
+        return QString("{\"name\":\"%1\", \"err\":%2}").arg(name).arg(err);
+    }
+};
+
 class PanelRobotController : public QObject
 {
     Q_OBJECT
 public:
+
     explicit PanelRobotController(QObject *parent = 0);
     ~PanelRobotController();
     void Init();
@@ -227,7 +245,7 @@ public:
     Q_INVOKABLE QString localUIDirs();
     Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
-    Q_INVOKABLE QString scanUSBUpdaters(const QString& filter);
+    Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
     Q_INVOKABLE void startUpdate(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
@@ -237,8 +255,13 @@ public:
     Q_INVOKABLE int configsCheckSum(const QString& addrs) const;
     Q_INVOKABLE void loadHostMachineConfigs();
 
+    Q_INVOKABLE QString scanUSBBackupPackages(const QString& filter) const;
 
+    Q_INVOKABLE int exportRobotMold(const QString& molds, const QString &name) const;
 
+    Q_INVOKABLE QString viewBackupPackageDetails(const QString& package) const;
+
+    Q_INVOKABLE QString importRobotMold(const QString& molds, const QString &backupPackage);
 
 signals:
     //    void currentMoldChanged(QString);

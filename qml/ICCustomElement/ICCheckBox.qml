@@ -1,6 +1,6 @@
 import QtQuick 1.1
 
-Rectangle {
+Item {
     property alias text: text.text
     property bool isChecked: false
     property bool useCustomClickHandler: false

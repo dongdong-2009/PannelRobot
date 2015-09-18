@@ -5,8 +5,8 @@
 const char* ICAppSettings::SystemConfigGroup = "SystemConfig";
 const char* ICAppSettings::SessionGroup = "Session";
 const char* ICAppSettings::LocaleGroup = "Locale";
-#ifdef Q_WS_X11
-const char* ICAppSettings::UsbPath = "../qml";
+#ifndef Q_WS_QWS
+const char* ICAppSettings::UsbPath = "fakeUSB";
 #else
 const char* ICAppSettings::UsbPath = "/mnt/udisk";
 #endif

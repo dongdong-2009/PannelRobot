@@ -142,14 +142,14 @@ Rectangle {
     IOPage{
         id:ioPage
         width: parent.width
-        height: container.height - 78
+        height: container.height - 95
         visible: false
         anchors.top: container.top
     }
     RecordManagementPage{
         id:recordManagementPage
         width: parent.width
-        height: container.height - 78
+        height: container.height - 95
         visible: false
         anchors.top: container.top
     }

@@ -135,6 +135,8 @@ public:
         kRecordErr_Name_Is_Empty,
         kRecordErr_Name_Is_Exists,
         kRecordErr_InitProgram_Invalid,
+        kRecordErr_SubProgram_Invalid,
+        kRecordErr_Fnc_Invalid,
     };
     ICRobotMold();
     static ICRobotMoldPTR CurrentMold()
@@ -153,7 +155,8 @@ public:
 
     static RecordDataObject NewRecord(const QString& name,
                                       const QString& initProgram,
-                                      const QList<QPair<int, quint32> >& values);
+                                      const QList<QPair<int, quint32> >& values,
+                                      const QStringList& subPrograms = QStringList());
 
     static RecordDataObject CopyRecord(const QString& name,
                                        const QString& source);
@@ -177,6 +180,11 @@ public:
 #endif
     }
 
+    static CompileInfo Complie(const QString& programText, int & err);
+
+    static QPair<QStringList, QString>  ExportMold(const QString& name);
+
+    static RecordDataObject ImportMold(const QString &name, const QPair<QStringList, QString>& moldInfo);
 
     QVector<quint32> ProgramToDataBuffer(int program) const
     {
@@ -223,7 +231,6 @@ public:
 
     ICMoldItem SingleLineCompile(int which, int step, const QString& lineContent, QPair<int, int> &hostStep);
 
-    static CompileInfo Complie(const QString& programText, int & err);
 
 
 private:

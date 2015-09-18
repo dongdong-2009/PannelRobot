@@ -187,27 +187,33 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, i
 
 #ifdef NEW_PLAT
 
-RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values)
+RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values, const QStringList &subPrograms)
 {
     if(name.isEmpty()) return RecordDataObject(kRecordErr_Name_Is_Empty);
     if(ICDALHelper::IsExistsRecordTable(name))
     {
         return RecordDataObject(kRecordErr_Name_Is_Exists);
     }
+    QStringList programList;
     int err;
     CompileInfo compileInfo = Complie(initProgram, err);
     if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
 
-    QStringList programList;
     programList.append(initProgram);
-    for(int i = 0; i < 8; ++i)
+    for(int i = 0; i < subPrograms.size(); ++i)
+    {
+        CompileInfo compileInfo = Complie(subPrograms.at(i), err);
+        if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_SubProgram_Invalid);
+        programList.append(subPrograms.at(i));
+    }
+    for(int i = programList.size(); i < 9; ++i)
     {
         programList.append(QString("[{\"action\":%1}]").arg(F_CMD_END));
     }
     QList<QPair<int, quint32> > fncs = values;
     //    AddCheckSumToAddrValuePairList(fncs);
     QString dt = ICDALHelper::NewMold(name, programList, fncs);
-    qDebug()<<name<<dt;
+//    qDebug()<<name<<dt;
     return RecordDataObject(name, dt);
     //    return RecordDataObject();
 }
@@ -691,4 +697,44 @@ QList<QPair<int, quint32> > ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePai
 //    ICDALHelper::UpdateMachineConfigValues(baseValues, configName_);
     ICDALHelper::UpdateMoldFncValues(baseValues, moldName_);
     return baseValues;
+}
+
+
+QPair<QStringList, QString> ICRobotMold::ExportMold(const QString &name)
+{
+    QPair<QStringList, QString>  ret;
+    QStringList programs = ICDALHelper::MoldProgramContent(name);
+    ret.first = programs;
+
+    QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(name));
+    QString fncStr;
+    for(int i = 0; i != fncs.size(); ++i)
+    {
+        fncStr += QString("%1, %2\n").arg(fncs.at(i).first).arg(fncs.at(i).second);
+    }
+    ret.second = fncStr;
+    return ret;
+}
+
+RecordDataObject ICRobotMold::ImportMold(const QString& name, const QPair<QStringList, QString> &moldInfo)
+{
+    RecordDataObject ret;
+    QList<QPair<int, quint32> > fncs;
+    QStringList addrValues = moldInfo.second.split("\n", QString::SkipEmptyParts);
+    QStringList addrValuePair;
+    for(int i = 0; i < addrValues.size(); ++i)
+    {
+        addrValuePair = addrValues.at(i).split(",", QString::SkipEmptyParts);
+        if(addrValuePair.size() < 2)
+        {
+            ret.setErrno(kRecordErr_Fnc_Invalid);
+            return ret;
+        }
+        fncs.append(qMakePair<int, quint32>(addrValuePair.at(0).toInt(),
+                                            addrValuePair.at(1).toUInt()));
+    }
+    QStringList programs = moldInfo.first;
+    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1));
+    return ret;
+
 }

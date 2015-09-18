@@ -50,7 +50,6 @@ private:
 };
 
 typedef QList<RecordDataObject> ICRecordInfos;
-
 class __ICUpdateConfigRunnable;
 
 #define DATABASE_ERR_EXIST -2

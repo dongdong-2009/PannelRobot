@@ -47,6 +47,19 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+#ifdef NEW_PLAT
+    item.append(v->value("action").toInt());
+    item.append(v->value("point", 0).toInt());
+    item.append(v->value("pointStatus", 0).toInt());
+    item.append(v->value("limit", 50).toInt());
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+#else
+#endif
+    return ICRobotMold::kCCErr_None;
+}
+
 static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
 QVector<quint32> PointToPosList(const QVariantMap& point)
 {
@@ -93,12 +106,11 @@ int AxisPneumaticActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
-    return ICRobotMold::kCCErr_None;
-
-}
-
-int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
-{
+    item.append(v->value("action").toInt());
+    item.append(v->value("point", 0).toInt());
+    item.append(v->value("pointStatus", 0).toInt());
+    item.append(v->value("delay", 0).toInt());
+    item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
 }
@@ -141,7 +153,10 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
+    ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);
+    ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
+
     return ret;
 #else
     for(int i = ICRobotMold::GC; i < ICRobotMold::ACTMAINUP; ++i)

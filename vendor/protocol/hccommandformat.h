@@ -13,27 +13,27 @@ extern "C"
   {
 #endif
 
-#define FRAME_HEAD_SIZE 5                    //<Ö¡Í·´óÐ¡
-#define FRAME_LENGTH_POS FRAME_HEAD_SIZE - 1 //<Ö¡³¤¶ÈÎ»ÖÃ
-#define FRAME_DATA_LENGTH   64               //<×î³¤Êý¾Ý³¤¶È
+#define FRAME_HEAD_SIZE 5                    //<å¸§å¤´å¤§å°
+#define FRAME_LENGTH_POS FRAME_HEAD_SIZE - 1 //<å¸§é•¿åº¦ä½ç½®
+#define FRAME_DATA_LENGTH   64               //<æœ€é•¿æ•°æ®é•¿åº¦
 #define FRAME_CRC_LENGTH    2
 #define FRAME_MAX_SIZE FRAME_HEAD_SIZE + (FRAME_DATA_LENGTH << 2) + 2
 #define FRAME_MIN_SIZE FRAME_HEAD_SIZE + FRAME_CRC_LENGTH
-/*! \brief ¹¦ÄÜÂë¶¨Òå
+/*! \brief åŠŸèƒ½ç å®šä¹‰
  */
 typedef enum _FunctionCode
 {
-    FunctionCode_BeginSection   = 0x49,     //<¹¦ÄÜÂë¿ªÊ¼Î»
-	FunctionCode_ReadAddr       = 0x50,     //<¶ÁµØÖ·Öµ
-	FunctionCode_WriteAddr      = 0x51,     //<Ð´µØÖ·Öµ
-    FunctionCode_DebugReadAddr  = 0x52,     //<¶ÁÄÚ²¿±äÁ¿£¬²âÊÔÊ±Ê¹ÓÃ
-    FunctionCode_DebugWriteAddr = 0x53,     //<Ð´ÄÚ²¿±äÁ¿£¬²âÊÔÊ±Ê¹ÓÃ
-    FunctionCode_ReadDiffAddr       = 0x54,     //<¶Á¶à¶ÎµØÖ·Öµ
-    FunctionCode_WriteDiffAddr      = 0x55,     //<Ð´¶à¶ÎµØÖ·Öµ
-	FunctionCode_WriteTeach      = 0x56,     //<Ð´½Ìµ¼³ÌÐò
-    FunctionCode_EditTeach      = 0x57,     //<±à¼­½Ìµ¼³ÌÐò
-	FunctionCode_Err            = 0x60,     //<Í¨ÐÅ´íÎó
-    FunctionCode_NIL                        //<¹¦ÄÜÂë½áÊøÎ»
+    FunctionCode_BeginSection   = 0x49,     //<åŠŸèƒ½ç å¼€å§‹ä½
+	FunctionCode_ReadAddr       = 0x50,     //<è¯»åœ°å€å€¼
+	FunctionCode_WriteAddr      = 0x51,     //<å†™åœ°å€å€¼
+    FunctionCode_DebugReadAddr  = 0x52,     //<è¯»å†…éƒ¨å˜é‡ï¼Œæµ‹è¯•æ—¶ä½¿ç”¨
+    FunctionCode_DebugWriteAddr = 0x53,     //<å†™å†…éƒ¨å˜é‡ï¼Œæµ‹è¯•æ—¶ä½¿ç”¨
+    FunctionCode_ReadDiffAddr       = 0x54,     //<è¯»å¤šæ®µåœ°å€å€¼
+    FunctionCode_WriteDiffAddr      = 0x55,     //<å†™å¤šæ®µåœ°å€å€¼
+	FunctionCode_WriteTeach      = 0x56,     //<å†™æ•™å¯¼ç¨‹åº
+    FunctionCode_EditTeach      = 0x57,     //<ç¼–è¾‘æ•™å¯¼ç¨‹åº
+	FunctionCode_Err            = 0x60,     //<é€šä¿¡é”™è¯¯
+    FunctionCode_NIL                        //<åŠŸèƒ½ç ç»“æŸä½
 } FunctionCode;
 
 typedef enum _ICComErr

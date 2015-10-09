@@ -105,6 +105,9 @@ actions.F_CMD_SINGLE_POINT = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 
+actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
+actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
+
 
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
@@ -207,7 +210,7 @@ var generteEndAction = function(){
 
 var generateWaitAction = function(which, status, limit){
     return {
-        "action":actions.ACT_Wait,
+        "action":actions.F_CMD_IO_INPUT,
         "point":which,
         "pointStatus":status,
         "limit":limit || 0.50
@@ -255,7 +258,7 @@ var generateSyncEndAction = function(){
 
 var generateOutputAction = function(point, status, delay){
     return {
-        "action":actions.ACT_OUTPUT,
+        "action":actions.F_CMD_IO_OUTPUT,
         "point":point,
         "pointStatus": status,
         "delay":delay
@@ -502,12 +505,12 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToString
 //actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_CONDITION, conditionActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_Wait, waitActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_IO_INPUT, waitActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_OUTPUT, outputActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);

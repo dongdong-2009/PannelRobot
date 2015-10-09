@@ -31,10 +31,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_Start,
     ICAddr_System_Retain_0=1, //< 按键命令地址
     ICAddr_System_Retain_1,//< 版本号地址
-    ICAddr_System_Retain_25 = 25,//< 2:升级 10：X轴原点设定； 11：Y轴原点设定；12：Z轴原点设定；
-    //< 13：U轴原点设定；14：V轴原点设定；15：W轴原点设定；16：全部轴原点设定；17 保存每个轴当前位置
-    //< 18：前八个显示 输出累计值；19：前8个显示 当前Z脉冲；20：前8个显示实际反馈累计值；21：前8个显示
-    //< 实际位置值
+    ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
     ICAddr_System_Retain_End = 99,
@@ -434,6 +431,9 @@ typedef enum
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
 
 
+    F_CMD_IO_INPUT = 100,   //< IO点输入等待 IO点 等待 等待时间
+    F_CMD_IO_OUTPUT = 200,   //< IO点输出 IO点 输出状态 输出延时
+
     F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
     F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转命令（ON/OFF） 跳转条件
     F_CMD_PROGRAM_JUMP2,   //< 程序跳转 跳转步号 跳转命令（>/</==）跳转位置
@@ -815,7 +815,10 @@ typedef struct{
     STEP step;
     uint32_t origin:1;//<类型：状态；名字：原点信号；精度：0;单位：；
     uint32_t mode:4;//<类型：状态；名字：当前模式；精度：0;单位：；
-    uint32_t reserve0:29;//<类型：状态；名字：预留；精度：0;单位：；
+    uint32_t io_id:3;//<类型：状态；名字：IO板ID；精度：0;单位：；
+    uint32_t reserve0:24;//<类型：状态；名字：预留；精度：0;单位：；
+    uint32_t io_in;//<类型：状态；名字：IO板输入状态；精度：0;单位：；
+    uint32_t io_out;//<类型：状态；名字：IO板输出状态；精度：0;单位：；
 }READ_PARA0;
 
 typedef union {

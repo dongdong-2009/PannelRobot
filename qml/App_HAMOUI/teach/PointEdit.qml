@@ -78,6 +78,16 @@ Item {
             id:setIn
             text: qsTr("Set In")
             width: PData.commandBtnWidth
+            onButtonClicked: {
+//                console.log("clicked");
+//                console.log(panelRobotController.getConfigValueText("c_ro_0_32_0_900"));
+                motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                motor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                motor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                motor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+            }
         }
         ICButton{
             id:setZero
@@ -209,7 +219,7 @@ Item {
         ICConfigEdit{
             id:delay
             configName: qsTr("Delay")
-            configAddr: "s_rw_0_32_1_1100"
+            configAddr: "s_rw_0_32_2_1100"
             unit: qsTr("s")
             inputWidth: PData.delayEditWidth
         }

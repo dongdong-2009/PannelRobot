@@ -156,7 +156,7 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      }
      int p = 0;
      QString tmp = preeditString_ + curText;
-     if(validator_.validate(tmp, p) == QValidator::Acceptable)
+//     if(validator_.validate(tmp, p) == QValidator::Acceptable)
      {
          preeditString_ += curText;
          ui->inputEdit->setText(preeditString_);
@@ -209,6 +209,8 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
          ui->keyboardContainer->setCurrentIndex(0);
          this->resize(404, 356);
 //         ui->inputEdit->resize(341, 31);
+         ui->tipLabel->show();
+
      }
      else
      {
@@ -230,6 +232,7 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      {
          validator_.setRange(0, 0xFFFFFFFFu,0);
      }
+
      QPoint topLeft(editPosx, editPosy);
      QPoint toMove;
      if(topLeft.x() + this->width() <= screenWidth_)

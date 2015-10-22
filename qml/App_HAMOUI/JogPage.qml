@@ -101,7 +101,7 @@ Item {
                 spacing: 2
                 ICStatusWidget {
                     id: status1
-                    bindStatus: "c_ro_0_32_0_900"
+                    bindStatus: "c_ro_0_32_3_900"
                 }
                 ICStatusWidget {
                     id: status2
@@ -125,7 +125,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status7
-                    bindStatus: "c_ro_0_32_0_904"
+                    bindStatus: "c_ro_0_32_3_904"
                 }
                 ICStatusWidget {
                     id: status8
@@ -149,7 +149,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status13
-                    bindStatus: "c_ro_0_32_0_908"
+                    bindStatus: "c_ro_0_32_3_908"
                 }
                 ICStatusWidget {
                     id: status14
@@ -177,7 +177,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status19
-                    bindStatus: "c_ro_0_32_0_912"
+                    bindStatus: "c_ro_0_32_3_912"
                 }
                 ICStatusWidget {
                     id: status20
@@ -201,7 +201,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status25
-                    bindStatus: "c_ro_0_32_0_916"
+                    bindStatus: "c_ro_0_32_3_916"
                 }
                 ICStatusWidget {
                     id: status26
@@ -225,7 +225,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status31
-                    bindStatus: "c_ro_0_32_0_920"
+                    bindStatus: "c_ro_0_32_3_920"
                 }
                 ICStatusWidget {
                     id: status32
@@ -254,7 +254,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status37
-                    bindStatus: "c_ro_0_32_0_924"
+                    bindStatus: "c_ro_0_32_3_924"
                 }
                 ICStatusWidget {
                     id: status38
@@ -278,7 +278,7 @@ Item {
                 }
                 ICStatusWidget {
                     id: status43
-                    bindStatus: "c_ro_0_32_0_928"
+                    bindStatus: "c_ro_0_32_3_928"
                 }
                 ICStatusWidget {
                     id: status44

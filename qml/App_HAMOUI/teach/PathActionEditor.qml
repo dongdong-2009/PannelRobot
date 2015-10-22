@@ -12,6 +12,13 @@ Rectangle {
             if(points.length === 1)
                 action = Teach.actions.F_CMD_LINE2D_MOVE_POINT;
         }
+        else if(pointEdit.usedMotorCount() === 3){
+            if(points.length === 1)
+                action = Teach.actions.F_CMD_LINE3D_MOVE_POINT;
+            else if(points.length === 2)
+                action = Teach.actions.F_CMD_ARC3D_MOVE_POINT;
+        }
+
         ret.push(Teach.generatePathAction(action,
                                           points,
                                           pointEdit.getSpeed(),

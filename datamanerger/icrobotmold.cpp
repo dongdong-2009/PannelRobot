@@ -77,7 +77,11 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     item.append(v->value("action").toInt());
     QVariantList points = v->value("points").toList();
     if(item.at(0) == F_CMD_LINE2D_MOVE_POINT && points.size() != 1)
-                return ICRobotMold::kCCErr_Wrong_Action_Format;
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if(item.at(0) == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if(item.at(0) == F_CMD_ARC3D_MOVE_POINT && points.size() != 2)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
     QVariantMap point;
     for(int i= 0; i < points.size(); ++i)
     {
@@ -151,6 +155,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
 #ifdef NEW_PLAT
     ret.insert(F_CMD_SINGLE, AxisServoActionCompiler);
     ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINE3D_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);

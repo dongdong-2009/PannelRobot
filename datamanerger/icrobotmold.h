@@ -172,7 +172,7 @@ public:
         int sum = 0;
         for(int i = 0; i < item.size(); ++i)
         {
-            sum += item.at(i);
+            sum += (int)item.at(i);
         }
         return (-sum) & 0xFFFF;
 #else

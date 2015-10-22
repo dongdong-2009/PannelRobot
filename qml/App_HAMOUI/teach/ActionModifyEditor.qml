@@ -22,6 +22,7 @@ Item {
         pos.visible = false;
         speed.visible = false;
         delay.visible = false;
+        points.visible = false;
         var item;
         var editor;
         var maxWidth = 0;
@@ -47,7 +48,7 @@ Item {
         }
         height += buttons.height;
         height += 20
-        width = maxWidth;
+        width = maxWidth < 300 ? 300 : maxWidth;
         visible = true;
     }
     visible: false

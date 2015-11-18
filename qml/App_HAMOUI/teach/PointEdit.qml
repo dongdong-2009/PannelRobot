@@ -52,11 +52,19 @@ Item {
         selReferenceName.items = points;
     }
 
+    function isPoseMode(){
+        return poseMode.isChecked;
+    }
+
+    function clearPoints(){
+        pointViewModel.clear();
+    }
+
     onVisibleChanged: {
         if(visible){
             refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
             if(!isEditorMode){
-                pointViewModel.clear();
+                clearPoints();
             }
         }
     }
@@ -109,6 +117,11 @@ Item {
             onButtonClicked: {
                 pointViewModel.append(pointViewModel.createModelItem());
             }
+        }
+
+        ICCheckBox{
+            id:poseMode
+            text:qsTr("Is Pose")
         }
     }
 
@@ -182,7 +195,7 @@ Item {
 //        anchors.topMargin: 1
 
         spacing: 2
-
+        isAutoSize: false
         height: newReferenceName.height + selReferenceName.height + 2* spacing
         ICCheckableLineEdit{
             id:newReferenceName

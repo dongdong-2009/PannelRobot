@@ -10,6 +10,13 @@ Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
     height: Theme.defaultTheme.MainWindow.height
+    function onScreenSave(){
+        panelRobotController.closeBacklight();
+    }
+
+    function onScreenRestore(){
+        panelRobotController.setBrightness(panelRobotController.getCustomSettings("Brightness", 8));
+    }
     TopHeader{
         id:mainHeader
         width: mainWindow.width
@@ -60,10 +67,14 @@ Rectangle {
                 }
             }
         }
+
+
+
         ICButtonGroup{
             id:menuContainer
             width: parent.width
             height: parent.height
+            isAutoSize: false
 //            z: 1
             TabMenuItem{
                 id:menuOperation
@@ -156,6 +167,9 @@ Rectangle {
 
     Component.onCompleted: {
         menuSettings.setChecked(true);
+        panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
+        panelRobotController.screenSave.connect(onScreenSave);
+        panelRobotController.screenRestore.connect(onScreenRestore);
         console.log("main load finished!")
     }
     focus: true

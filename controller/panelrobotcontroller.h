@@ -2,6 +2,7 @@
 #define PANELROBOTCONTROLLER_H
 
 #include <QObject>
+#include <QSettings>
 #include "icrobotmold.h"
 #include "icrobotvirtualhost.h"
 #include <QtDeclarative>
@@ -10,6 +11,63 @@
 #include <QTimer>
 #include "icdatatype.h"
 #include "icparameterscache.h"
+
+#ifdef Q_WS_QWS
+#include <QWSScreenSaver>
+
+class ScreenFunctionObject: public QObject
+{
+    Q_OBJECT
+public:
+    void ScreenSave() { emit ScreenSaved();}
+    void ScreenRestore() { emit ScreenRestored();}
+
+Q_SIGNALS:
+    void ScreenSaved();
+    void ScreenRestored();
+};
+
+class ICDefaultScreenSaver:public QWSScreenSaver
+{
+public:
+    ~ICDefaultScreenSaver()
+    {
+        if(screenFunctionObject_ != NULL)
+        {
+            delete screenFunctionObject_;
+        }
+    }
+
+    void restore()
+    {
+        qDebug("SimpleScreenSaver::restore");
+        QWSServer::instance()->refresh();
+//        ICPeripherals::ICBacklightOn();
+        if(screenFunctionObject_ != NULL)
+        {
+            screenFunctionObject_->ScreenRestore();
+        }
+    }
+
+    bool save(int level)
+    {
+        Q_UNUSED(level)
+        qDebug("SimpleScreenSaver::save");
+//        ICPeripherals::ICBacklightOff();
+//        ICPeripherals::ICShowScreenSaver();
+        if(screenFunctionObject_ != NULL)
+        {
+            screenFunctionObject_->ScreenSave();
+        }
+        return true;
+    }
+
+    void SetScreenFunction(ScreenFunctionObject* o) {screenFunctionObject_ = o;}
+
+private:
+    ScreenFunctionObject* screenFunctionObject_;
+};
+#endif
 
 
 extern ICRange ICRobotRangeGetter(const QString& addrName);
@@ -263,10 +321,74 @@ public:
 
     Q_INVOKABLE QString importRobotMold(const QString& molds, const QString &backupPackage);
 
+    Q_INVOKABLE bool setCurrentTranslator(const QString& name);
+
+    Q_INVOKABLE QString getCustomSettings(const QString& key, const QVariant& defval, const QString& group = QString::fromLatin1("custom"))
+    {
+        QString ret;
+        customSettings_.beginGroup(group);
+        ret = customSettings_.value(key, defval).toString();
+        customSettings_.endGroup();
+        return ret;
+    }
+
+    Q_INVOKABLE void setCustomSettings(const QString& key,
+                                          const QVariant& val,
+                                          const QString& group = QString::fromLatin1("custom"),
+                                          bool isSync = true)
+    {
+        customSettings_.beginGroup(group);
+        customSettings_.setValue(key, val);
+        customSettings_.endGroup();
+        if(isSync)
+            customSettings_.sync();
+    }
+
+    Q_INVOKABLE void setKeyTone(bool status)
+    {
+#ifndef Q_WS_WIN32
+        int beepFD = open("/dev/szhc_beep", O_WRONLY);
+        if(beepFD > 0)
+        {
+            ioctl(beepFD, 0, status ? 1 : 0);
+            close(beepFD);
+        }
+#endif
+    }
+
+    Q_INVOKABLE void setBrightness(int brightness)
+    {
+        if(brightness > 0 && brightness <9)
+            ::system(QString("BackLight.sh  %1").arg(brightness).toLatin1());
+    }
+
+    Q_INVOKABLE void closeBacklight()
+    {
+        system("BackLight.sh 0");
+    }
+
+    Q_INVOKABLE void setDatetime(const QString& datetime)
+    {
+        QDateTime dateTime = QDateTime::fromString(datetime, "yyyy/M/d h:m:s");
+        if(dateTime.isValid())
+        {
+            ::system(QString("date -s %1 && hwclock -w").arg(dateTime.toString("yyyy.MM.dd-hh:mm:ss")).toLatin1());
+        }
+    }
+
+    Q_INVOKABLE void setScreenSaverTime(int min)
+    {
+#ifdef Q_WS_QWS
+        QWSServer::setScreenSaverInterval(min * 60000);
+#endif
+    }
+
 signals:
     //    void currentMoldChanged(QString);
     //    void currentMachineConfigChanged(QString);
     void moldChanged();
+    void screenSave();
+    void screenRestore();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
@@ -298,6 +420,11 @@ private:
     QScriptValue configRangeGetter_;
     QTranslator translator;
     QTimer keyCheckTimer_;
+    QSettings customSettings_;
+
+#ifdef Q_WS_QWS
+    ICDefaultScreenSaver* screenSaver_;
+#endif
 };
 
 #endif // PANELROBOTCONTROLLER_H

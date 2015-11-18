@@ -4,6 +4,9 @@ Item {
     property alias text: text.text
     property bool isChecked: false
     property bool useCustomClickHandler: false
+//    property alias boxWidth: box.width
+
+    signal clicked();
 
     function setChecked(isCheck){
         this.isChecked = isCheck;
@@ -12,7 +15,7 @@ Item {
     function getChecked(){
         return this.isChecked;
     }
-    width: 60
+    width: text.width + box.width + box.anchors.leftMargin
     height: 24
     Rectangle{
         id:box
@@ -25,7 +28,7 @@ Item {
     Text {
         id: text
         text: "ICCheckBox"
-        width:parent.width - box.width
+//        width:parent.width - box.width
 //        height: parent.height
         anchors.left: box.right
         anchors.verticalCenter: parent.verticalCenter
@@ -38,6 +41,7 @@ Item {
         onClicked: {
             if(useCustomClickHandler) return;
             setChecked(!isChecked);
+            parent.clicked()
         }
     }
 }

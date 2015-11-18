@@ -85,6 +85,10 @@ FocusScope{
                 if(alignMode == 1)
                     return unit.left
             }
+            anchors.left: {
+                if(alignMode == 0)
+                    return parent.left
+            }
             onFocusChanged: onFocus(input.focus)
         }
         Text {

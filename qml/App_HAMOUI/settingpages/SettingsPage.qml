@@ -24,6 +24,7 @@ ContentPageBase{
             id:menuContainer
             width: parent.width;
             height: pdata.menuItemHeight
+            isAutoSize: false
             y:pdata.menuItemY
             z:1
             TabMenuItem{

@@ -29,3 +29,10 @@ function formatDate(date, fmt)
   fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
   return fmt;
 }
+
+function isDateTimeValid(yy,MM,dd,hh,mm,ss){
+    var strDate1 = yy + "/" + MM + "/" + dd + " " + hh + ":" + mm + ":" + ss;
+    var date1 = new Date(yy,MM - 1,dd,hh,mm,ss);
+    var strDate2 = formatDate(date1, "yyyy/M/d h:m:s");
+    return strDate1 === strDate2;
+}

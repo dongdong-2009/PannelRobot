@@ -430,6 +430,8 @@ typedef enum
 	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+    F_CMD_MOVE_POSE,
+    F_CMD_LINE3D_MOVE_POSE,
 
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 IO点 等待 等待时间

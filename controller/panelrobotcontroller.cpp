@@ -57,7 +57,8 @@ ICRange ICRobotRangeGetter(const QString& addrName)
 }
 
 PanelRobotController::PanelRobotController(QObject *parent) :
-    QObject(parent)
+    QObject(parent),
+    customSettings_("usr/customsettings.ini", QSettings::IniFormat)
 {
     host_ = ICRobotVirtualhost::RobotVirtualHost();
     connect(host_.data(),
@@ -108,7 +109,7 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     baseFncs_ = pc.ToPairList();
 
     LoadTranslator_(ICAppSettings().TranslatorName());
-    //    LoadTranslator_("HAMOUI_zh_CN.qm");
+//        LoadTranslator_("HAMOUI_zh_CN.qm");
     qApp->installTranslator(&translator);
 
     connect(&keyCheckTimer_,
@@ -116,6 +117,21 @@ PanelRobotController::PanelRobotController(QObject *parent) :
             SLOT(OnkeyCheckTimeOut()));
     //    keyCheckTimer_.start(100);
     controllerInstance = this;
+
+
+#ifdef Q_WS_QWS
+    screenSaver_ = new ICDefaultScreenSaver();
+    ScreenFunctionObject* fo = new ScreenFunctionObject();
+    screenSaver_->SetScreenFunction(fo);
+    connect(fo,
+            SIGNAL(ScreenSaved()),
+            SIGNAL(screenSave()));
+    connect(fo,
+            SIGNAL(ScreenRestored()),
+            SIGNAL(screenRestore()));
+    QWSServer::setScreenSaver(screenSaver_);
+    QWSServer::setScreenSaverBlockLevel(-1);
+#endif
 }
 
 void PanelRobotController::Init()
@@ -683,4 +699,10 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         ret.chop(1);
     }
     return ret + "]";
+}
+
+bool PanelRobotController::setCurrentTranslator(const QString &name)
+{
+    ICAppSettings().SetTranslatorName(name);
+    return LoadTranslator_(name);
 }

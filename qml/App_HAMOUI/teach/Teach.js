@@ -105,7 +105,8 @@ actions.F_CMD_SINGLE_POINT = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
-
+actions.F_CMD_MOVE_POSE = actHelper++;
+actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
@@ -313,13 +314,13 @@ var gsActionToStringHelper = function(actionStr, actionObject){
 
 var psActionToStringHelper = function(actionStr, actionObject){
     var ret =  actionStr + " " +
-            qsTr("Delay:") + actionObject.delay;
+            qsTranslate("Teach","Delay:") + actionObject.delay;
     return ret;
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
     var ret =  axisInfos[actionObject.axis].name + ":" +  actionObject.pos + " " +
-            qsTr("Speed:") + actionObject.speed + " " +
+            qsTranslate("Teach","Speed:") + actionObject.speed + " " +
             qsTr("Delay:") + actionObject.delay;
     if(actionObject.isBadEn)
         ret += " " + qsTr("Bad En");
@@ -465,13 +466,19 @@ var pointToString = function(point){
 
 var pathActionToStringHandler = function(actionObject){
     var ret = "";
-    if(actionObject.action == actions.F_CMD_LINE2D_MOVE_POINT){
+    if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT){
         ret += qsTr("Line2D:");
-    }else if(actionObject.action == actions.F_CMD_LINE3D_MOVE_POINT){
+    }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT){
         ret += qsTr("Line3D:");
     }
-    else if(actionObject.action == actions.F_CMD_ARC3D_MOVE_POINT){
+    else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT){
         ret += qsTr("Arc3D:");
+    }
+    else if(actionObject.action === actions.F_CMD_MOVE_POSE){
+        ret += qsTr("Pose:");
+    }
+    else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
+        ret += qsTr("Line3D-Pose:");
     }
 
     var points = actionObject.points;
@@ -491,6 +498,9 @@ actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
+
 
 //actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_GS2, gs2ToStringHandler);
@@ -532,7 +542,9 @@ var actionObjectToEditableITems = function(actionObject){
                 {"item":"delay", "range":"s_rw_0_32_2_1100"}];
     }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
-             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT){
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_MOVE_POSE ||
+             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
         return [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},

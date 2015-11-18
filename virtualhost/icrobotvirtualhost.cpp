@@ -386,6 +386,9 @@ void ICRobotVirtualhost::CommunicateImpl()
             qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
             qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
             qDebug()<<"\n";
+#ifdef Q_WS_X11
+            statusCache_.UpdateConfigValue(&c_ro_0_16_0_933, rand() % 10);
+#endif
             //            emit CommunicateErrChecked();
         }
         if(queue_.Head()->IsQuery())

@@ -402,6 +402,11 @@ Rectangle {
                             //                            console.log(mode, Keymap.KNOB_AUTO)
                             if(!panelRobotController.isAutoMode()) return;
                             var cStep = currentModelStep();
+//                            var cStep = Utils.getRandomNum(0, 10);
+                            if(cStep < 0 || cStep >= currentModel().count){
+                                return;
+                            }
+                            console.log("CStep:", cStep, currentModel().count);
                             //                            var cStep = Utils.getRandomNum(0, 10);
                             var lastRunning = PData.lastRunning;
                             //                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
@@ -410,7 +415,7 @@ Rectangle {
                             {
                                 var i;
                                 var lastModel = PData.programs[lastRunning.model];
-                                var setStopObject = {"isActionRunning":false};
+                                var setStopObject = {"mI_IsActionRunning":false};
                                 for(i = 0; i < lastRunning.items.length; ++i){
                                     lastModel.set(lastRunning.items[i], setStopObject);
                                 }
@@ -419,7 +424,7 @@ Rectangle {
                                 var cModel = currentModel();
                                 var uiRunningSteps = currentModelRunningActionInfo();
                                 //                                var uiRunningSteps = panelRobotController.hostStepToUILines(editing.currentIndex, cStep);
-                                var setRunningObject = {"isActionRunning":true};
+                                var setRunningObject = {"mI_IsActionRunning":true};
                                 for(i = 0; i < uiRunningSteps.length; ++i){
                                     cModel.set(uiRunningSteps[i], setRunningObject);
                                 }
@@ -431,48 +436,6 @@ Rectangle {
                         }
                     }
 
-                    //                    delegate: Rectangle{
-                    //                        x:1
-                    //                        width: parent.width - x
-                    //                        height: 30
-                    //                        Text{
-                    //                            text:{
-                    //                                if(actionObject.action != Teach.actions.ACT_COMMENT)
-                    //                                    return index;
-                    //                                return "#" + index;
-                    //                            }
-
-                    //                            width: 35
-                    //                            anchors.left: parent.left
-                    //                            anchors.verticalCenter: parent.verticalCenter
-                    //                            horizontalAlignment: Text.AlignRight
-                    //                        }
-                    //                        Text {
-                    //                            text:"             " + Teach.actionToString(actionObject)
-                    //                            width: programListView.width
-                    //                            anchors.verticalCenter: parent.verticalCenter
-                    //                        }
-                    //                        color: {
-                    //                            if(ListView.isCurrentItem){
-                    //                                return "lightsteelblue"
-                    //                            }
-                    //                            else if(actionObject.action === Teach.actions.ACT_COMMENT)
-                    //                            {
-                    //                                return "gray"
-                    //                            }
-                    //                            else{
-                    //                                return index % 2 == 1 ? "cyan" : "yellow"
-                    //                            }
-                    //                        }
-
-                    //                        MouseArea{
-                    //                            anchors.fill: parent
-                    //                            onClicked: {
-                    //                                programListView.currentIndex = index;
-                    ////                                console.log(programListView.contentY, programListView.currentItem.y)
-                    //                            }
-                    //                        }
-                    //                    }
                 }
 
             }
@@ -666,7 +629,7 @@ Rectangle {
 
     onVisibleChanged: {
         actionEditorFrame.visible = false;
-        programListView.contentY = 0;
+//        programListView.contentY = 0;
     }
 
     Component.onCompleted: {

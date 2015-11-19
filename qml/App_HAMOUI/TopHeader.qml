@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "Theme.js" as Theme
 import "."
 import "../ICCustomElement/"
+import "ShareData.js" as ShareData
 
 
 Rectangle {
@@ -9,11 +10,13 @@ Rectangle {
     property int menuItemWidth: width * Theme.defaultTheme.TopHeader.menuItemWidthProportion
     property int menuItemHeight: height * Theme.defaultTheme.TopHeader.menuItemHeightProportion
     property alias modeText: modeText
+    property alias loginUser: loginBtn.text
     property int mode: 0
 
 //    signal calculatorItemTriggered()
     signal ioItemStatusChanged(bool isChecked)
     signal recordItemStatusChanged(bool isChecked)
+    signal loginBtnClicked()
 //    signal lan
 
     function onRecordChanged(){
@@ -68,12 +71,6 @@ Rectangle {
 
         }
         TopMenuItem{
-            id: language
-            width: menuItemWidth
-            height:  menuItemHeight
-            itemText: qsTr("Language")
-        }
-        TopMenuItem{
             id: record
             width: menuItemWidth * 2
             height:  menuItemHeight
@@ -85,6 +82,15 @@ Rectangle {
             width: menuItemWidth
             height:  menuItemHeight
             itemText: qsTr("Manual")
+        }
+        ICButton{
+            id: loginBtn
+            width: menuItemWidth
+            height:  menuItemHeight
+            text: qsTr("Login")
+            onButtonClicked: {
+                loginBtnClicked();
+            }
         }
     }
     ICButtonGroup{

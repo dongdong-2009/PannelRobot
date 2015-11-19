@@ -5,6 +5,7 @@ import 'teach'
 import "Theme.js" as Theme
 import "configs/Keymap.js" as Keymap
 import "ShareData.js" as ShareData
+import "../utils/Storage.js" as Storage
 
 Rectangle {
     id:mainWindow
@@ -23,6 +24,7 @@ Rectangle {
         height: mainWindow.height * Theme.defaultTheme.MainWindow.topHeaderHeightProportion
         onRecordItemStatusChanged: recordManagementPage.visible = isChecked
         onIoItemStatusChanged: ioPage.visible = isChecked
+        onLoginBtnClicked: loginDialog.visible = true
     }
     Rectangle{
         id:middleHeader
@@ -165,11 +167,25 @@ Rectangle {
         anchors.top: container.top
     }
 
+    LoginDialog{
+        id:loginDialog
+        visible: false;
+        anchors.centerIn: parent
+        onLogout: {
+            mainHeader.loginUser = qsTr("Login");
+        }
+        onLoginSuccessful: {
+            mainHeader.loginUser = user;
+        }
+    }
+
     Component.onCompleted: {
         menuSettings.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);
+
+        Storage.initialize();
         console.log("main load finished!")
     }
     focus: true

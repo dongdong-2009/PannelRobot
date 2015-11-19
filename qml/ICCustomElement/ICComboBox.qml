@@ -30,6 +30,7 @@ Rectangle {
         id: currentText
         text:currentIndex < 0 ?  "" : items[currentIndex]
         anchors.verticalCenter : parent.verticalCenter
+        x:4
     }
     ListModel{
         id:itemModel
@@ -52,6 +53,7 @@ Rectangle {
                     text: name
                     width: view.width
                     anchors.verticalCenter: parent.verticalCenter
+                    x:4
                     //                font.pixelSize : 18
                 }
                 MouseArea{

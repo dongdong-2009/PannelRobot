@@ -9,6 +9,8 @@ import "../ShareData.js" as ShareData
 
 
 Rectangle {
+    id:programFlowPageInstance
+
     property int mode: ShareData.knobStatus
     function showActionEditorPanel(){
         if(!actionEditorFrame.visible)
@@ -156,6 +158,7 @@ Rectangle {
     }
 
     function currentModelData() {
+        if(programListView.currentIndex < 0) return null;
         return currentModel().get(programListView.currentIndex);
     }
 
@@ -167,6 +170,13 @@ Rectangle {
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
         var info = JSON.parse(ret);
         return info;
+    }
+
+    function onUserChanged(){
+        PData.isReadOnly = ( (mode === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
+        if(PData.isReadOnly){
+            programListView.currentIndex = -1;
+        }
     }
 
     //    function setCurrentModelData(actionObject){
@@ -217,6 +227,7 @@ Rectangle {
                     currentIndex: 0
                     onCurrentIndexChanged: {
                         programListView.model = PData.programs[currentIndex];
+                        programListView.currentIndex = -1;
                     }
                 }
             }
@@ -288,7 +299,8 @@ Rectangle {
                         }
                     }
                     visible: {
-                        if(programListView.currentItem == null) return false;
+                        if(programListView.currentItem == null ||
+                           PData.isReadOnly) return false;
                         return programListView.currentItem.y >= programListView.contentY;
                     }
                     ICButton{
@@ -320,7 +332,9 @@ Rectangle {
 
 
                         visible: {
-                            return Teach.actionObjectToEditableITems(currentModelData().mI_ActionObject).length !== 0
+                            var currentItem = currentModelData();
+                            if(currentItem === null) return false;
+                            return Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0
                         }
 
                     }
@@ -385,6 +399,8 @@ Rectangle {
                         MouseArea{
                             anchors.fill: parent
                             onPressed: {
+                                if(!ShareData.UserInfo.currentHasMoldPerm())
+                                    return;
                                 programListView.currentIndex = index;
                             }
                         }
@@ -629,6 +645,7 @@ Rectangle {
 
     onVisibleChanged: {
         actionEditorFrame.visible = false;
+        programListView.currentIndex = -1;
 //        programListView.contentY = 0;
     }
 
@@ -650,6 +667,8 @@ Rectangle {
         delBtn.buttonClicked.connect(onDeleteTriggered);
         moveUpBtn.buttonClicked.connect(onUpTriggered);
         moveDWBtn.buttonClicked.connect(onDownTriggered);
+
+        ShareData.UserInfo.registUserChangeEvent(programFlowPageInstance);
     }
 
 }

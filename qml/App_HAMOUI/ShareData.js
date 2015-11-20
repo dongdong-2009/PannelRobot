@@ -9,9 +9,9 @@ function UserInfo(){
 }
 UserInfo.permType = {
     "op":0,
-    "admin":1,
-    "super":2,
-    "root":3
+    "mold":1,
+    "system":2,
+    "user":4
 };
 UserInfo.current = {
     "user":"",
@@ -20,10 +20,14 @@ UserInfo.current = {
 UserInfo.currentUser = function(){
     return UserInfo.current.user;
 }
+UserInfo.currentHasMoldPerm = function(){
+    return (UserInfo.current.perm & UserInfo.permType.mold) > 0;
+}
+
 UserInfo.users = function(){
     var db = getDatabase();
     var users = [];
-    db.transaction(function(tx){
+    db.readTransaction(function(tx){
         var rs = tx.executeSql(icStrformat('SELECT * FROM {0}',
                                            USERS_TB_INFO.tb_name));
         for(var i = 0; i < rs.rows.length; ++i){
@@ -36,7 +40,7 @@ UserInfo.users = function(){
 UserInfo.loginUser = function(username, password){
     var db = getDatabase();
     var ret = false;
-    db.transaction(function(tx){
+    db.readTransaction(function(tx){
         var rs = tx.executeSql(icStrformat('SELECT * FROM {0} WHERE {1} = "{2}"',
                                            USERS_TB_INFO.tb_name,
                                            USERS_TB_INFO.user_name_col,
@@ -46,6 +50,7 @@ UserInfo.loginUser = function(username, password){
                 UserInfo.current.user = username;
                 UserInfo.current.perm = rs.rows.item(0)[USERS_TB_INFO.perm_col];
                 ret = true;
+                UserInfo.informUserChangeEvent();
             }
         }
     });
@@ -55,6 +60,28 @@ UserInfo.loginUser = function(username, password){
 UserInfo.logout = function(){
     UserInfo.current.user = "";
     UserInfo.current.perm = 0;
+    UserInfo.informUserChangeEvent();
+}
+
+UserInfo.userChangeEventObservers = [];
+
+UserInfo.registUserChangeEvent = function(obj){
+    UserInfo.userChangeEventObservers.push(obj);
+}
+
+UserInfo.unregisteUserChangeEvent = function(obj){
+    for(var i = 0; i < UserInfo.userChangeEventObservers.length; ++i){
+        if(UserInfo.userChangeEventObservers[i] == obj){
+            UserInfo.userChangeEventObservers.splice(i, 1);
+            break;
+        }
+    }
+}
+
+UserInfo.informUserChangeEvent = function(){
+    for(var i = 0; i < UserInfo.userChangeEventObservers.length; ++i){
+        UserInfo.userChangeEventObservers[i].onUserChanged();
+    }
 }
 
 var knobStatus = KNOB_STOP;

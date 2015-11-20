@@ -416,6 +416,9 @@ void PanelRobotController::SaveTranslatorName_(const QString &name)
 bool PanelRobotController::LoadTranslator_(const QString &name)
 {
     QDir qml(ICAppSettings::QMLPath);
+#ifdef Q_WS_QWS
+    qml.cdUp();
+#endif
     qml.cd(ICAppSettings().UIMainName());
     if(!qml.exists("translations")) return false;
     qml.cd("translations");

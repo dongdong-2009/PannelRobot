@@ -46,6 +46,15 @@ Rectangle {
         }
         Row{
             ICButton{
+                id:logoutBtn
+                text: qsTr("Log out")
+                onButtonClicked: {
+                    ShareData.UserInfo.logout();
+                    logout();
+                    container.visible = false;
+                }
+            }
+            ICButton{
                 id:loginBtn
                 text: qsTr("Login in")
                 onButtonClicked: {
@@ -53,14 +62,6 @@ Rectangle {
                        loginSuccessful(userName.currentText);
                        container.visible = false;
                    }
-                }
-            }
-            ICButton{
-                id:logoutBtn
-                text: qsTr("Log out")
-                onButtonClicked: {
-                    logout();
-                    container.visible = false;
                 }
             }
         }

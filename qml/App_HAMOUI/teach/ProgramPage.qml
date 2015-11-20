@@ -8,11 +8,18 @@ import "../ShareData.js" as ShareData
 
 
 ContentPageBase{
+    id:programPageInstance
     property int mode: ShareData.knobStatus
+    property bool isReadOnly: true
     menuItemTexts:{
-        return mode === Keymap.KNOB_AUTO ? ["", "", "", "", "", "",""]:
+        return isReadOnly ? ["", "", "", "", "", "",""]:
         [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
     }
+
+    function onUserChanged(){
+        isReadOnly = ( (mode === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
+    }
+
     Rectangle{
         id:programContainer
         anchors.fill: parent
@@ -80,6 +87,10 @@ ContentPageBase{
     content: programContainer
     statusSection: posDisplayBar
 
+    Component.onCompleted: {
+        ShareData.UserInfo.registUserChangeEvent(programPageInstance);
+    }
+
     Timer{
         id:refreshTimer
         interval: 50
@@ -89,6 +100,10 @@ ContentPageBase{
             if(mode !== ShareData.knobStatus){
                 mode = ShareData.knobStatus;
                 pageContainer.currentPage().mode = mode;
+                if(mode === Keymap.KNOB_AUTO)
+                    isReadOnly = true;
+                else if(ShareData.UserInfo.currentHasMoldPerm())
+                    isReadOnly = false;
             }
         }
     }

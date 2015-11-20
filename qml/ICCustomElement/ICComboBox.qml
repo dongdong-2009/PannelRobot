@@ -32,6 +32,11 @@ Rectangle {
         anchors.verticalCenter : parent.verticalCenter
         x:4
     }
+    Text {
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        text: "▼"
+    }
     ListModel{
         id:itemModel
     }

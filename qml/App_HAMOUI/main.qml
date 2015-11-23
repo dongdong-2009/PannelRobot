@@ -200,7 +200,8 @@ Rectangle {
                key === Keymap.KNOB_STOP ||
                key === Keymap.KNOB_AUTO)
             {
-                ShareData.knobStatus = key;
+//                ShareData.knobStatus = key;
+                ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
             panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
         }

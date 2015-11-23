@@ -11,7 +11,7 @@ import "../ShareData.js" as ShareData
 Rectangle {
     id:programFlowPageInstance
 
-    property int mode: ShareData.knobStatus
+    property int mode: ShareData.GlobalStatusCenter.getKnobStatus()
     function showActionEditorPanel(){
         if(!actionEditorFrame.visible)
             programListView.contentY += actionEditorFrame.height;

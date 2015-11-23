@@ -97,6 +97,14 @@ Rectangle {
         id:buttonGroup
         layoutMode: 2
     }
+    Timer{
+        id:refreshTimer
+        interval: 50; running: false; repeat: true;
+        onTriggered: {
+
+        }
+    }
+
     Component.onCompleted: {
         buttonGroup.addButton(io);
         buttonGroup.addButton(record);

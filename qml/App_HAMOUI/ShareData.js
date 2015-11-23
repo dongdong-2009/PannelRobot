@@ -4,6 +4,75 @@ Qt.include("configs/Keymap.js")
 Qt.include("../utils/Storage.js")
 Qt.include("../utils/stringhelper.js")
 
+var eventType = {
+    "userChanged":"userChanged",
+    "knobChanged":"knobChanged"
+}
+
+//var knobStatus = KNOB_STOP;
+
+function GlobalStatusCenter(){}
+
+GlobalStatusCenter.status = {
+    "knobStatus":{"value":KNOB_STOP, "et":eventType.userChanged}
+};
+
+GlobalStatusCenter.initEventObservers = function(){
+    var ret = new Object;
+    for(var st in GlobalStatusCenter.status){
+        GlobalStatusCenter["set" + upperFirst(st)] = function(v){
+            GlobalStatusCenter.status[st] = v;
+            GlobalStatusCenter.informEventHelper(GlobalStatusCenter.status[st].et);
+        }
+        GlobalStatusCenter["get" + upperFirst(st)] = function(){
+            return GlobalStatusCenter.status[st].value;
+
+        }
+    }
+
+    for(var p in eventType){
+        ret[p] = [];
+        GlobalStatusCenter["registe" + upperFirst(p) + "Event"] = function(obj){
+            GlobalStatusCenter.registeEventHelper(p, obj);
+        };
+        GlobalStatusCenter["unregiste" + upperFirst(p) + "Event"] = function(obj){
+            GlobalStatusCenter.unregisteEventHelper(p, obj);
+        };
+        GlobalStatusCenter["inform" + upperFirst(p) + "Event"] = function(){
+            GlobalStatusCenter.informEventHelper(p);
+        }
+    }
+    return ret;
+}
+GlobalStatusCenter.eventObservers = GlobalStatusCenter.initEventObservers();
+
+GlobalStatusCenter.registeEventHelper = function(et, obj){
+    if(et in eventType){
+        GlobalStatusCenter.eventObservers[et].push(obj);
+    }
+}
+
+GlobalStatusCenter.unregisteEventHelper = function(et, obj){
+    if(et in eventType){
+        var obs = GlobalStatusCenter.eventObservers[et];
+        for(var i = 0; i < obs.length; ++i){
+            if(obs[i] == obj){
+                obs.splice(i, 1);
+                break;
+            }
+        }
+    }
+}
+
+GlobalStatusCenter.informEventHelper = function (et){
+    if(et in eventType){
+        var obs = GlobalStatusCenter.eventObservers[et];
+        for(var i = 0; i < obs.length; ++i){
+            obs[i]["on" + upperFirst(eventType[et])]();
+        }
+    }
+}
+
 function UserInfo(){
 
 }
@@ -66,22 +135,13 @@ UserInfo.logout = function(){
 UserInfo.userChangeEventObservers = [];
 
 UserInfo.registUserChangeEvent = function(obj){
-    UserInfo.userChangeEventObservers.push(obj);
+    GlobalStatusCenter.registeEventHelper(eventType.userChanged, obj);
 }
 
 UserInfo.unregisteUserChangeEvent = function(obj){
-    for(var i = 0; i < UserInfo.userChangeEventObservers.length; ++i){
-        if(UserInfo.userChangeEventObservers[i] == obj){
-            UserInfo.userChangeEventObservers.splice(i, 1);
-            break;
-        }
-    }
+    GlobalStatusCenter.unregisteEventHelper(eventType.userChanged, obj);
 }
 
 UserInfo.informUserChangeEvent = function(){
-    for(var i = 0; i < UserInfo.userChangeEventObservers.length; ++i){
-        UserInfo.userChangeEventObservers[i].onUserChanged();
-    }
+    GlobalStatusCenter.informEventHelper(eventType.userChanged);
 }
-
-var knobStatus = KNOB_STOP;

@@ -9,7 +9,7 @@ import "../ShareData.js" as ShareData
 
 ContentPageBase{
     id:programPageInstance
-    property int mode: ShareData.knobStatus
+    property int mode: ShareData.GlobalStatusCenter.getKnobStatus()
     property bool isReadOnly: true
     menuItemTexts:{
         return isReadOnly ? ["", "", "", "", "", "",""]:
@@ -97,8 +97,8 @@ ContentPageBase{
         running: parent.visible
         repeat: true
         onTriggered: {
-            if(mode !== ShareData.knobStatus){
-                mode = ShareData.knobStatus;
+            if(mode !== ShareData.GlobalStatusCenter.getKnobStatus()){
+                mode = ShareData.GlobalStatusCenter.getKnobStatus();
                 pageContainer.currentPage().mode = mode;
                 if(mode === Keymap.KNOB_AUTO)
                     isReadOnly = true;

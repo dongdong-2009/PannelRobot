@@ -96,9 +96,9 @@ var KEY_Return = parseInt(Qt.Key_D);
 var KEY_Up    = parseInt(Qt.Key_I);
 var KEY_Down  = parseInt(Qt.Key_N);
 
-var KNOB_MANUAL= parseInt(0x01000033);
-var KNOB_STOP = parseInt(0x01000036);
-var KNOB_AUTO = parseInt(0x01000034);
+var KNOB_MANUAL= parseInt(0x01000033); //F4
+var KNOB_STOP = parseInt(0x01000036); //F7
+var KNOB_AUTO = parseInt(0x01000034); //F5
 
 var Menu_Type = 0;
 var Axis_Type = 1;

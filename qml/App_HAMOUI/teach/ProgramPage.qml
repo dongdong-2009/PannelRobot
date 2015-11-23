@@ -16,7 +16,7 @@ ContentPageBase{
         [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
     }
 
-    function onUserChanged(){
+    function onUserChanged(user){
         isReadOnly = ( (mode === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
     }
 
@@ -99,7 +99,6 @@ ContentPageBase{
         onTriggered: {
             if(mode !== ShareData.GlobalStatusCenter.getKnobStatus()){
                 mode = ShareData.GlobalStatusCenter.getKnobStatus();
-                pageContainer.currentPage().mode = mode;
                 if(mode === Keymap.KNOB_AUTO)
                     isReadOnly = true;
                 else if(ShareData.UserInfo.currentHasMoldPerm())

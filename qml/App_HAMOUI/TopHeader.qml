@@ -3,6 +3,7 @@ import "Theme.js" as Theme
 import "."
 import "../ICCustomElement/"
 import "ShareData.js" as ShareData
+import "configs/Keymap.js" as Keymap
 
 
 Rectangle {
@@ -29,6 +30,17 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: parent.width * 0.01
+        function onKnobChanged(knobStatus){
+            if(knobStatus === Keymap.KNOB_MANUAL){
+                source = "images/modeSetting.png";
+                modeText.text = qsTr("Manual");
+                modeBG.source = "images/modeTextBG_Red.png";
+            }else if(knobStatus === Keymap.KNOB_AUTO){
+                source = "images/modeAuto.png"
+                modeText.text = qsTr("Auto");
+                modeBG.source = "images/modeTextBG_Blue.png";
+            }
+        }
     }
     Rectangle{
         id: modeTextContainer
@@ -45,8 +57,9 @@ Rectangle {
 
         Text {
             id: modeText
-            text: qsTr("text")
+            text: qsTr("Manual")
             anchors.centerIn: parent
+            color: "yellow"
         }
     }
 
@@ -109,5 +122,6 @@ Rectangle {
         buttonGroup.addButton(io);
         buttonGroup.addButton(record);
         panelRobotController.moldChanged.connect(onRecordChanged);
+        ShareData.GlobalStatusCenter.registeKnobChangedEvent(modeImg);
     }
 }

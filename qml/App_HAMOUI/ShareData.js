@@ -14,15 +14,15 @@ var eventType = {
 function GlobalStatusCenter(){}
 
 GlobalStatusCenter.status = {
-    "knobStatus":{"value":KNOB_STOP, "et":eventType.userChanged}
+    "knobStatus":{"value":KNOB_STOP, "et":eventType.knobChanged}
 };
 
 GlobalStatusCenter.initEventObservers = function(){
     var ret = new Object;
     for(var st in GlobalStatusCenter.status){
         GlobalStatusCenter["set" + upperFirst(st)] = function(v){
-            GlobalStatusCenter.status[st] = v;
-            GlobalStatusCenter.informEventHelper(GlobalStatusCenter.status[st].et);
+            GlobalStatusCenter.status[st].value = v;
+            GlobalStatusCenter.informEventHelper(GlobalStatusCenter.status[st].et, v);
         }
         GlobalStatusCenter["get" + upperFirst(st)] = function(){
             return GlobalStatusCenter.status[st].value;
@@ -38,8 +38,8 @@ GlobalStatusCenter.initEventObservers = function(){
         GlobalStatusCenter["unregiste" + upperFirst(p) + "Event"] = function(obj){
             GlobalStatusCenter.unregisteEventHelper(p, obj);
         };
-        GlobalStatusCenter["inform" + upperFirst(p) + "Event"] = function(){
-            GlobalStatusCenter.informEventHelper(p);
+        GlobalStatusCenter["inform" + upperFirst(p) + "Event"] = function(v){
+            GlobalStatusCenter.informEventHelper(p, v);
         }
     }
     return ret;
@@ -64,11 +64,11 @@ GlobalStatusCenter.unregisteEventHelper = function(et, obj){
     }
 }
 
-GlobalStatusCenter.informEventHelper = function (et){
+GlobalStatusCenter.informEventHelper = function (et, v){
     if(et in eventType){
         var obs = GlobalStatusCenter.eventObservers[et];
         for(var i = 0; i < obs.length; ++i){
-            obs[i]["on" + upperFirst(eventType[et])]();
+            obs[i]["on" + upperFirst(eventType[et])](v);
         }
     }
 }
@@ -119,7 +119,7 @@ UserInfo.loginUser = function(username, password){
                 UserInfo.current.user = username;
                 UserInfo.current.perm = rs.rows.item(0)[USERS_TB_INFO.perm_col];
                 ret = true;
-                UserInfo.informUserChangeEvent();
+                UserInfo.informUserChangeEvent(UserInfo.current);
             }
         }
     });
@@ -142,6 +142,6 @@ UserInfo.unregisteUserChangeEvent = function(obj){
     GlobalStatusCenter.unregisteEventHelper(eventType.userChanged, obj);
 }
 
-UserInfo.informUserChangeEvent = function(){
-    GlobalStatusCenter.informEventHelper(eventType.userChanged);
+UserInfo.informUserChangeEvent = function(user){
+    GlobalStatusCenter.informEventHelper(eventType.userChanged, user);
 }

@@ -10,8 +10,6 @@ import "../ShareData.js" as ShareData
 
 Rectangle {
     id:programFlowPageInstance
-
-    property int mode: ShareData.GlobalStatusCenter.getKnobStatus()
     function showActionEditorPanel(){
         if(!actionEditorFrame.visible)
             programListView.contentY += actionEditorFrame.height;
@@ -109,7 +107,7 @@ Rectangle {
 
     function onEditConfirm(actionObject){
         currentModelData().mI_ActionObject = actionObject;
-        if(mode === Keymap.KNOB_AUTO){
+        if(ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO){
             if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
                                                          programListView.currentIndex,
                                                          JSON.stringify(actionObject))){
@@ -172,11 +170,14 @@ Rectangle {
         return info;
     }
 
-    function onUserChanged(){
-        PData.isReadOnly = ( (mode === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
-        if(PData.isReadOnly){
+    function onUserChanged(user){
+        PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
+//        if(!ShareData.UserInfo.currentHasMoldPerm())
             programListView.currentIndex = -1;
-        }
+    }
+
+    function onKnobChanged(knobStatus){
+        onUserChanged(null);
     }
 
     //    function setCurrentModelData(actionObject){
@@ -272,8 +273,63 @@ Rectangle {
                     id:sub8ProgramModel
                 }
 
+                ICButton{
+                    id:autoEditBtn
+                    function showModify(){
+                        var actionObject = currentModelData().mI_ActionObject;
+                        modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                        var showY = autoEditBtn.y + autoEditBtn.height + 30;
+                        if(showY + modifyEditor.height >= container.height)
+                            showY = autoEditBtn.y - modifyEditor.height + 20;
+                        modifyEditor.y = showY;
+                    }
+                    height: toolBar.height
+                    width: 40
+                    text: qsTr("Edit")
+                    z: 1
+
+                    anchors.right: programListView.right
+                    anchors.rightMargin: 2
+                    y: visible ? programListView.currentItem.y - programListView.contentY + 2 : 0
+                    onYChanged: {
+                        if(!autoEditBtn.visible){
+                            modifyEditor.visible = false;
+                            return;
+                        }
+                        if(modifyEditor.visible){
+                            autoEditBtn.showModify();
+                        }
+                    }
+                    onButtonClicked: autoEditBtn.showModify()
+
+                    visible: {
+                        if(programListView.currentItem == null ||
+                           !ShareData.UserInfo.currentHasMoldPerm()) return false;
+                        var ret =  programListView.currentItem.y >= programListView.contentY;
+                        var currentItem = currentModelData();
+                        if(currentItem === null) return false;
+                        ret = ret && (Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0);
+                        return ret;
+                    }
+
+//                    visible: {
+//                        var currentItem = currentModelData();
+//                        if(currentItem === null) return false;
+//                        return programListView.currentItem.y >= programListView.contentY &&
+//                                Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0
+//                    }
+
+                }
+
                 Row{
                     id:toolBar
+//                    function updateToolBarCommand(){
+//                        if(PData.isReadOnly)
+//                            toolBar.visible = false;
+//                        if(programListView.currentItem == null) toolBar.visible = false;
+//                        toolBar.visible = ( programListView.currentItem.y >= programListView.contentY);
+//                    }
+
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
                         modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
@@ -309,7 +365,7 @@ Rectangle {
                         width: 40
                         text: qsTr("UP")
                         visible: {
-                            return  mode === Keymap.KNOB_AUTO ? false : (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
+                            return  (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
                         }
                     }
                     ICButton{
@@ -318,8 +374,7 @@ Rectangle {
                         width: 40
                         text: qsTr("DW")
                         visible: {
-                            return  mode === Keymap.KNOB_AUTO ? false :
-                                                                (programListView.currentIndex < programListView.count - 2)
+                            return  (programListView.currentIndex < programListView.count - 2)
                         }
                     }
 
@@ -361,8 +416,7 @@ Rectangle {
 
                         }
                         visible: {
-                            return  mode === Keymap.KNOB_AUTO ? false :
-                                                                programListView.currentIndex < programListView.count - 1
+                            return programListView.currentIndex < programListView.count - 1
                         }
                     }
                     ICButton{
@@ -371,8 +425,7 @@ Rectangle {
                         width: 40
                         text: qsTr("Del")
                         visible: {
-                            return  mode === Keymap.KNOB_AUTO ? false :
-                                                                programListView.currentIndex < programListView.count - 1
+                            return programListView.currentIndex < programListView.count - 1
                         }
 
                     }
@@ -563,6 +616,8 @@ Rectangle {
 
                 actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
                 insertBtn.buttonClicked.connect(onInsertTriggered);
+
+
             }
         }
     }
@@ -669,6 +724,7 @@ Rectangle {
         moveDWBtn.buttonClicked.connect(onDownTriggered);
 
         ShareData.UserInfo.registUserChangeEvent(programFlowPageInstance);
+        ShareData.GlobalStatusCenter.registeKnobChangedEvent(programFlowPageInstance);
     }
 
 }

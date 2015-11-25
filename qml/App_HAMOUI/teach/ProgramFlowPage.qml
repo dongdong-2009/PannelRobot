@@ -311,14 +311,6 @@ Rectangle {
                         ret = ret && (Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0);
                         return ret;
                     }
-
-//                    visible: {
-//                        var currentItem = currentModelData();
-//                        if(currentItem === null) return false;
-//                        return programListView.currentItem.y >= programListView.contentY &&
-//                                Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0
-//                    }
-
                 }
 
                 Row{

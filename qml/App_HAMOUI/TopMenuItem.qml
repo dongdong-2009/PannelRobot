@@ -18,6 +18,7 @@ Rectangle {
 //        elide: Text.ElideRight
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: 2
     }
 
     MouseArea{

@@ -29,9 +29,11 @@ Rectangle {
 
         }
 
+
         ICComboBox{
             id:ioType
             items: [qsTr("Input"), qsTr("Output"), qsTr("EuInput"), qsTr("EuOutput")]
+            height: next.height
             currentIndex: 0
             onCurrentIndexChanged: {
                 ioContaner.setCurrentIndex(pData.ioViewsInfo[currentIndex].start);

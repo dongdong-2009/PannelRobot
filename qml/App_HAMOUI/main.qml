@@ -25,6 +25,7 @@ Rectangle {
         onRecordItemStatusChanged: recordManagementPage.visible = isChecked
         onIoItemStatusChanged: ioPage.visible = isChecked
         onLoginBtnClicked: loginDialog.visible = true
+        onCalculatorItemStatusChanged: calculator.visible = isChecked
     }
     Rectangle{
         id:middleHeader
@@ -169,7 +170,7 @@ Rectangle {
 
     LoginDialog{
         id:loginDialog
-        visible: false;
+        visible: false
         anchors.centerIn: parent
         onLogout: {
             mainHeader.loginUser = qsTr("Login");
@@ -177,6 +178,11 @@ Rectangle {
         onLoginSuccessful: {
             mainHeader.loginUser = user;
         }
+    }
+    ICCalculator{
+        id:calculator
+        visible: false
+        anchors.centerIn: parent
     }
 
     Component.onCompleted: {

@@ -8,6 +8,7 @@ Rectangle {
     property bool isAutoRepeat: false
     property alias autoInterval: autoTimer.interval
     signal buttonClicked()
+    signal clickedText(string text)
     signal triggered()
     width: 100
     height: 32
@@ -67,6 +68,7 @@ Rectangle {
 
         onClicked: {
             buttonClicked()
+            clickedText(text.text)
             triggered()
         }
     }

@@ -26,6 +26,11 @@ function initialize() {
                     if (rs.rows.length === 0) {
                         tx.executeSql('INSERT INTO users VALUES("op", "123", 0)');
                         tx.executeSql('InSERT INTO users VALUES("admin", "123", 1)');
+                        tx.executeSql('InSERT INTO users VALUES("super", "123456", 3)');
+                        tx.executeSql('InSERT INTO users VALUES("root", "12345678", 7)');
+                        tx.executeSql('InSERT INTO users VALUES("szhcroot", "szhcrobot", 15)');
+
+
 //                        res = rs.rows.item(0).value;
                     }
                     else if(rs.rows.length > 0){

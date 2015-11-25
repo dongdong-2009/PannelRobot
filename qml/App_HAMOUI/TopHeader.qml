@@ -14,7 +14,7 @@ Rectangle {
     property alias loginUser: loginBtn.text
     property int mode: 0
 
-//    signal calculatorItemTriggered()
+    signal calculatorItemStatusChanged(bool isChecked)
     signal ioItemStatusChanged(bool isChecked)
     signal recordItemStatusChanged(bool isChecked)
     signal loginBtnClicked()
@@ -74,6 +74,7 @@ Rectangle {
             width: menuItemWidth
             height: menuItemHeight
             itemText: qsTr("Calculator")
+            onIsCheckedChanged: calculatorItemStatusChanged(isChecked)
         }
         TopMenuItem{
             id: io

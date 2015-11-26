@@ -7,6 +7,7 @@ Rectangle {
         id:pData
         property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
         property variant ioViewsInfo: []
+//        property type name: value
     }
 
     Row{
@@ -59,13 +60,13 @@ Rectangle {
         id:ioContaner
         anchors.top: menuContainer.bottom
         anchors.topMargin: 10
-        function ioDefinesToViewDefines(defs){
+        function ioDefinesToViewDefines(defs, startIndex){
             var ret = [];
             var def;
             for(var i = 0 ; i < defs.length; ++i){
                 def = defs[i]
                 ret[i] = {"pointNum":def.pointName,
-                    "index":i,
+                    "index":i + startIndex,
                     "descr":def.descr[pData.currentLanguage]
                 };
             }
@@ -79,7 +80,7 @@ Rectangle {
                 var pageCount = Math.ceil(defs.length / 8);
                 for(var i = 0; i < pageCount; ++i){
                     ret[i] = ioView.createObject(ioContaner,
-                                                 {"ioDefines":ioDefinesToViewDefines(defs.slice(i * 8, (i + 1) * 8)), "type":type})
+                                                 {"ioDefines":ioDefinesToViewDefines(defs.slice(i * 8, (i + 1) * 8), i * 8), "type":type})
                 }
             }
             return ret;
@@ -116,6 +117,14 @@ Rectangle {
             appendPagesToContainer(pages, 3, lastLength);
 
             ioContaner.setCurrentIndex(0)
+        }
+    }
+    Timer{
+        interval: 50; running: visible; repeat: true;
+        onTriggered: {
+            for(var i = 0 ; i < ioContaner.pages.length; ++i){
+                ioContaner.pages[i].status = "111111111111111111111";
+            }
         }
     }
 }

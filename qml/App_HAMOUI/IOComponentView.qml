@@ -3,9 +3,8 @@ import QtQuick 1.1
 Rectangle {
     property variant ioDefines: []
     property int type: 0
+    property string status:""
 
-//    width: parent.width
-//    height: parent.height
     ListModel{
         id:model
     }
@@ -16,8 +15,6 @@ Rectangle {
         height: 400
         spacing: 10
         model: model
-//        anchors.bottom: parent.bottom
-//        anchors.top: parent.top
         delegate: Row{
             spacing: 10
             Text {
@@ -30,7 +27,12 @@ Rectangle {
                 height: 32
                 border.color: "black"
                 border.width: 2
-                color: "gray"
+//                color: isOn ? "lime":"gray"
+                color: {
+                    if(!isOn) return "gray";
+                    if(type == 0) return "red";
+                    return "lime";
+                }
             }
             Text {
                 text: descr
@@ -42,13 +44,25 @@ Rectangle {
 
     onIoDefinesChanged: {
         var def;
+        model.clear();
         for(var i = 0; i < ioDefines.length; ++i){
             def = ioDefines[i];
             model.append({
                              "pointNum":def.pointNum,
                              "index": def.index,
-                             "descr":def.descr
+                             "descr":def.descr,
+                             "isOn":false
                          });
+        }
+    }
+
+    onStatusChanged: {
+//        if(!visible) return;
+        var pNum;
+        for(var i = 0; i < model.count; ++i){
+            pNum = model.get(i).index;
+            if(pNum >= status.length) continue;
+            model.setProperty(i, "isOn", parseInt(status[pNum]) > 0);
         }
     }
 }

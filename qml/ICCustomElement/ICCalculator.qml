@@ -77,6 +77,9 @@ Rectangle {
             id:btnClr
             text: "C"
             width: btnWidth
+            onButtonClicked: {
+                input.text = ""
+            }
 
         }
         ICButton{

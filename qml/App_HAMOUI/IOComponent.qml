@@ -101,16 +101,16 @@ Rectangle {
             var euyDefs = IODefines.euyDefines;
 
             PData.xPages = generatePageBaseDefines(xDefs, IODefines.IO_TYPE_INPUT);
-            var lastLength = pages.length;
+            var lastLength = PData.xPages.length;
             appendPagesToContainer(PData.xPages, 0, 0);
 
             PData.yPages = generatePageBaseDefines(yDefs, IODefines.IO_TYPE_OUTPUT);
             appendPagesToContainer(PData.yPages, 1, lastLength);
-            lastLength += pages.length;
+            lastLength += PData.yPages.length;
 
             PData.euxPages = generatePageBaseDefines(euxDefs, IODefines.IO_TYPE_INPUT);
             appendPagesToContainer(PData.euxPages, 2, lastLength);
-            lastLength += pages.length;
+            lastLength += PData.euxPages.length;
 
             PData.euyPages = generatePageBaseDefines(euyDefs, IODefines.IO_TYPE_OUTPUT);
             appendPagesToContainer(PData.euyPages, 3, lastLength);

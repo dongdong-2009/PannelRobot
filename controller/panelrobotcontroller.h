@@ -383,8 +383,8 @@ public:
 #endif
     }
 
-    Q_INVOKABLE int iStatus(int boardID) { return rand(); return ICRobotVirtualhost::IStatus(boardID);}
-    Q_INVOKABLE int oStatus(int boardID) { return rand(); return ICRobotVirtualhost::OStatus(boardID);}
+    Q_INVOKABLE int iStatus(int boardID) { return ICRobotVirtualhost::IStatus(boardID);}
+    Q_INVOKABLE int oStatus(int boardID) { return ICRobotVirtualhost::OStatus(boardID);}
 
 
 signals:

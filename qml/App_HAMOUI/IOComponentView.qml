@@ -61,7 +61,7 @@ Rectangle {
         var pNum;
         for(var i = 0; i < model.count; ++i){
             pNum = model.get(i).index;
-            if(pNum >= status.length) continue;
+            if(pNum >= status.length) model.setProperty(i, "isOn", false);
             model.setProperty(i, "isOn", parseInt(status[pNum]) > 0);
         }
     }

@@ -136,7 +136,7 @@ Item {
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             outputModel.append({"isEn":false,
                                    "outputDefine": yDefines[i] + ":"
-                                   + yDefine.yDefine.descr[pData.currentLanguage],
+                                   + yDefine.yDefine.descr,
                                    "hwPoint":yDefine.hwPoint});
         }
 

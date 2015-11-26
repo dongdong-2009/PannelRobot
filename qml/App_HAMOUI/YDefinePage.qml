@@ -1,6 +1,5 @@
 import QtQuick 1.1
 import "configs/IODefines.js" as YDefines
-import "AppSettings.js" as UISettings
 import "Theme.js" as Theme
 import "."
 
@@ -9,14 +8,10 @@ Rectangle {
     property int ioStart: 0
 
     anchors.fill: parent
-    QtObject {
-        id: pData
-        property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
-    }
 
     function getYDesc(index) {
         var y = YDefines.yDefines[index + ioStart]
-        return y.pointName + ":" + y.descr[pData.currentLanguage]
+        return y.pointName + ":" + y.descr
     }
     function itemY(index) {
 

@@ -1,7 +1,7 @@
 
 QT       += script
 #TEMPLATE = app
-VERSION = 10.0.0
+VERSION = 0.0.1
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
 DEFINES += UART_COMM
@@ -89,7 +89,7 @@ target.path = /opt/Qt/apps
 CONFIG(release, debug|release) {
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
-#INSTALLS += db
+INSTALLS += db
 }
 
 #db.path = /opt/Qt/apps/

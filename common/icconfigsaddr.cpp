@@ -342,3 +342,5 @@ extern  const ICAddrWrapper  c_ro_0_1_0_938(1,1,0,1,938,0,"");   //<步号原点
 extern  const ICAddrWrapper  c_ro_1_4_0_938(1,1,1,4,938,0,"");   //<步号当前模式
 extern  const ICAddrWrapper  c_ro_5_3_0_938(1,1,5,3,938,0,"");   //<步号IO板ID
 extern  const ICAddrWrapper  c_ro_8_24_0_938(1,1,8,24,938,0,"");   //<步号预留
+extern  const ICAddrWrapper  c_ro_0_32_0_939(1,1,0,32,939,0,"");    //<步号IO板输入状态
+extern  const ICAddrWrapper  c_ro_0_32_0_940(1,1,0,32,940,0,"");    //<步号IO板输出状态

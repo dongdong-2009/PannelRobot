@@ -327,8 +327,8 @@ typedef enum _ICAddr
     ICAddr_Read_Status36,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
     ICAddr_Read_Status37,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
     ICAddr_Read_Status38,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
-//    ICAddr_Read_Status39,
-//    ICAddr_Read_Status40,
+    ICAddr_Read_Status39,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
+    ICAddr_Read_Status40,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
 //    ICAddr_Read_Status41,
 //    ICAddr_Read_Status42,
 
@@ -430,8 +430,8 @@ typedef enum
 	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
-    F_CMD_MOVE_POSE,
-    F_CMD_LINE3D_MOVE_POSE,
+    F_CMD_MOVE_POSE,   //< 运动目标姿势 姿势（X，Y，Z） 速度  延时
+    F_CMD_LINE3D_MOVE_POSE,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时
 
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 IO点 等待 等待时间
@@ -810,7 +810,7 @@ typedef union {
 
 static const uint32_t read_addr[] = {
     ICAddr_Read_Status0,
-    ICAddr_Read_Status38 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
+    ICAddr_Read_Status40 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
 };
 typedef struct{
     Axis_Data axis_data[8];

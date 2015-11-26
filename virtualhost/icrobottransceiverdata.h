@@ -119,13 +119,14 @@ public:
     }
 
     static ICRobotTransceiverData* FillQueryStatusCommand(uint8_t hostID,
-                                                          uint addr)
+                                                          uint addr,
+                                                          uint length)
     {
 #ifdef NEW_PLAT
         return new ICRobotTransceiverData(hostID,
                                           FunctionCode_ReadAddr,
                                           addr,
-                                          40,
+                                          length,
                                           ICTransceiverDataBuffer());
 #else
         return new ICRobotTransceiverData(hostID,

@@ -5,14 +5,18 @@
 #include <QTime>
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
-
+QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
+QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
+#define REFRESH_COUNT_PER 40
 #define REFRESH_INTERVAL 40
+#define REFRESH_END ICAddr_Read_Status40
 #define INIT_INTERVAL 20
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICVirtualHost(hostId, parent)
 {
 #ifdef NEW_PLAT
-    currentStatusGroup_ = ICAddr_Read_Status0;
+    currentStatusGroup_ = 0;
+    statusGroupCount_ = qCeil(qreal(ICAddr_Read_Status0 - ICAddr_Read_Status40) / REFRESH_COUNT_PER);
 #else
     currentStatusGroup_ = 0;
 #endif
@@ -444,7 +448,13 @@ void ICRobotVirtualhost::CommunicateImpl()
                 statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
 //                qDebug()<<statusDataTmp_.at(i);
             }
-//            if(recvFrame_->GetAddr() < ICAddr_Read_Status0)
+            if(currentStatusGroup_ == 0)
+            {
+                int boardID = HostStatusValue(&c_ro_5_3_0_938);
+                iStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_939));
+                oStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_940));
+            }
+            if(currentStatusGroup_ == (statusGroupCount_ - 1))
             {
                 emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
             }
@@ -454,7 +464,10 @@ void ICRobotVirtualhost::CommunicateImpl()
                 SetCommunicateInterval(INIT_INTERVAL);
                 emit NeedToInitHost();
             }
-            currentStatusGroup_ = ICAddr_Read_Status0;
+//            currentStatusGroup_ = ICAddr_Read_Status0;
+
+            currentStatusGroup_++;
+            currentStatusGroup_ %= statusGroupCount_;
             //            currentStatusGroup_ = ICAddr_System_Retain_0+1;
             //            ++currentStatusGroup_;
             //            currentStatusGroup_ %= 11;
@@ -489,8 +502,19 @@ void ICRobotVirtualhost::CommunicateImpl()
 
 void ICRobotVirtualhost::AddRefreshStatusCommand_()
 {
+    int length = 0;
+    int startAddr = currentStatusGroup_ * REFRESH_COUNT_PER + ICAddr_Read_Status0;
+    if(currentStatusGroup_ == statusGroupCount_ - 1)
+    {
+        length = REFRESH_END - startAddr;
+    }
+    else
+    {
+        length = REFRESH_COUNT_PER;
+    }
     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
-                                                                                          currentStatusGroup_);
+                                                                                          startAddr,
+                                                                                          length);
     AddCommunicationFrame(toSentFrame);
 }
 

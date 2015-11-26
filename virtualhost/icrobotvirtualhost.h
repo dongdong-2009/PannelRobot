@@ -177,6 +177,8 @@ public:
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QVector<quint32>& data);
     static void SendKeyCommand(int key, int cmd = CMD_Action , int act = 0, int sum = 0);
 #endif
+    static quint32 IStatus(int boardID) { return iStatusMap_.value(boardID, 0);}
+    static quint32 OStatus(int boardID) { return oStatusMap_.value(boardID, 0);}
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
@@ -191,8 +193,12 @@ private:
     static void SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data);
     void AddRefreshStatusCommand_();
     int currentStatusGroup_;
+    int currentStatusGroupLength_;
+    int statusGroupCount_;
     QVector<quint32> statusDataTmp_;
     int startIndex_;
+    static QMap<int, quint32> iStatusMap_;
+    static QMap<int, quint32> oStatusMap_;
     static QQueue<ICRobotTransceiverData*> keyCommandList_;
 
 private:

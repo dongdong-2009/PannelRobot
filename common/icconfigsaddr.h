@@ -342,3 +342,5 @@ extern  const ICAddrWrapper  c_ro_0_1_0_938;  //< 61473801 步号原点信号
 extern  const ICAddrWrapper  c_ro_1_4_0_938;  //< 61476905 步号当前模式
 extern  const ICAddrWrapper  c_ro_5_3_0_938;  //< 61476009 步号IO板ID
 extern  const ICAddrWrapper  c_ro_8_24_0_938;  //< 61497609 步号预留
+extern  const ICAddrWrapper  c_ro_0_32_0_939;    //< 61571081 步号IO板输入状态
+extern  const ICAddrWrapper  c_ro_0_32_0_940;    //< 61636617 步号IO板输出状态

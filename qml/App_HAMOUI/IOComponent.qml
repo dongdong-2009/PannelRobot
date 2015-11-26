@@ -1,14 +1,15 @@
 import QtQuick 1.1
 import "configs/IODefines.js" as IODefines
-import "AppSettings.js" as UISettings
+//import "AppSettings.js" as UISettings
 import "../ICCustomElement"
+import "IOComponent.js" as PData
 Rectangle {
-    QtObject{
-        id:pData
-        property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
-        property variant ioViewsInfo: []
-//        property type name: value
-    }
+//    QtObject{
+//        id:PData
+//        property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
+
+////        property type name: value
+//    }
 
     Row{
         id:menuContainer
@@ -20,7 +21,7 @@ Rectangle {
             text: qsTr("Prev")
             width: 40
             onButtonClicked: {
-                var currentTypeInfo = pData.ioViewsInfo[ioType.currentIndex];
+                var currentTypeInfo = PData.ioViewsInfo[ioType.currentIndex];
                 var cur = ioContaner.currentIndex;
                 --cur;
                 if(cur < currentTypeInfo.start)
@@ -37,7 +38,7 @@ Rectangle {
             height: next.height
             currentIndex: 0
             onCurrentIndexChanged: {
-                ioContaner.setCurrentIndex(pData.ioViewsInfo[currentIndex].start);
+                ioContaner.setCurrentIndex(PData.ioViewsInfo[currentIndex].start);
             }
         }
 
@@ -46,7 +47,7 @@ Rectangle {
             text: qsTr("Next")
             width: 40
             onButtonClicked: {
-                var currentTypeInfo = pData.ioViewsInfo[ioType.currentIndex];
+                var currentTypeInfo = PData.ioViewsInfo[ioType.currentIndex];
                 var cur = ioContaner.currentIndex;
                 ++cur;
                 if(cur >= currentTypeInfo.start + currentTypeInfo.count)
@@ -67,7 +68,7 @@ Rectangle {
                 def = defs[i]
                 ret[i] = {"pointNum":def.pointName,
                     "index":i + startIndex,
-                    "descr":def.descr[pData.currentLanguage]
+                    "descr":def.descr
                 };
             }
             return ret;
@@ -87,9 +88,7 @@ Rectangle {
         }
 
         function appendPagesToContainer(pages, pageType, start){
-            var ret = pData.ioViewsInfo;
-            ret[pageType] = {"start":start, "count":pages.length};
-            pData.ioViewsInfo = ret;
+            PData.ioViewsInfo[pageType] = {"start":start, "count":pages.length};
             for(var i = 0; i < pages.length; ++i){
                 ioContaner.addPage(pages[i]);
             }
@@ -101,20 +100,20 @@ Rectangle {
             var euxDefs = IODefines.euxDefines;
             var euyDefs = IODefines.euyDefines;
 
-            var pages = generatePageBaseDefines(xDefs, IODefines.IO_TYPE_INPUT);
+            PData.xPages = generatePageBaseDefines(xDefs, IODefines.IO_TYPE_INPUT);
             var lastLength = pages.length;
-            appendPagesToContainer(pages, 0, 0);
+            appendPagesToContainer(PData.xPages, 0, 0);
 
-            pages = generatePageBaseDefines(yDefs, IODefines.IO_TYPE_OUTPUT);
-            appendPagesToContainer(pages, 1, lastLength);
+            PData.yPages = generatePageBaseDefines(yDefs, IODefines.IO_TYPE_OUTPUT);
+            appendPagesToContainer(PData.yPages, 1, lastLength);
             lastLength += pages.length;
 
-            pages = generatePageBaseDefines(euxDefs, IODefines.IO_TYPE_INPUT);
-            appendPagesToContainer(pages, 2, lastLength);
+            PData.euxPages = generatePageBaseDefines(euxDefs, IODefines.IO_TYPE_INPUT);
+            appendPagesToContainer(PData.euxPages, 2, lastLength);
             lastLength += pages.length;
 
-            pages = generatePageBaseDefines(euyDefs, IODefines.IO_TYPE_OUTPUT);
-            appendPagesToContainer(pages, 3, lastLength);
+            PData.euyPages = generatePageBaseDefines(euyDefs, IODefines.IO_TYPE_OUTPUT);
+            appendPagesToContainer(PData.euyPages, 3, lastLength);
 
             ioContaner.setCurrentIndex(0)
         }
@@ -122,9 +121,19 @@ Rectangle {
     Timer{
         interval: 50; running: visible; repeat: true;
         onTriggered: {
-            for(var i = 0 ; i < ioContaner.pages.length; ++i){
-                ioContaner.pages[i].status = "111111111111111111111";
+            var xStatus = panelRobotController.iStatus(0).toString(2);
+            var yStatus = panelRobotController.oStatus(0).toString(2);
+            var i;
+            for(i = 0; i < PData.xPages.length; ++i){
+                PData.xPages[i].status = xStatus;
             }
+            for(i = 0; i < PData.yPages.length; ++i){
+                PData.yPages[i].status = yStatus;
+            }
+
+//            for(var i = 0 ; i < ioContaner.pages.length; ++i){
+//                ioContaner.pages[i].status = "111111111111111111111";
+//            }
         }
     }
 }

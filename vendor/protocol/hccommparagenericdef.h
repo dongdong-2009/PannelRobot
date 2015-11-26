@@ -434,8 +434,8 @@ typedef enum
     F_CMD_LINE3D_MOVE_POSE,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时
 
 
-    F_CMD_IO_INPUT = 100,   //< IO点输入等待 IO点 等待 等待时间
-    F_CMD_IO_OUTPUT = 200,   //< IO点输出 IO点 输出状态 输出延时
+    F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
+    F_CMD_IO_OUTPUT = 200,   //< IO点输出 类型（EUIO，IO，M） IO点 输出状态 输出延时
 
     F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
     F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转命令（ON/OFF） 跳转条件

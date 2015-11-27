@@ -6,7 +6,7 @@ Rectangle {
     id:container
     border.width: 2
     border.color: "red"
-    color: "#D0D0D0"
+    color: "yellow"
     property int errID: 0
     property bool isShrinked: false
     visible: errID !== 0
@@ -66,7 +66,7 @@ Rectangle {
         id: flicker
         loops: 6
         PropertyAnimation{ target: container;properties: "color";to:"red";duration: 200}
-        PropertyAnimation{ target: container;properties: "color";to:"#D0D0D0";duration: 200}
+        PropertyAnimation{ target: container;properties: "color";to:"yellow";duration: 200}
     }
     ParallelAnimation{
         id:shrinkAnimation;

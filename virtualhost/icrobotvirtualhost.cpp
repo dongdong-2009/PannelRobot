@@ -7,7 +7,7 @@
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
-#define REFRESH_COUNT_PER 40
+#define REFRESH_COUNT_PER 41
 #define REFRESH_INTERVAL 40
 #define REFRESH_END ICAddr_Read_Status40
 #define INIT_INTERVAL 20
@@ -16,7 +16,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
 {
 #ifdef NEW_PLAT
     currentStatusGroup_ = 0;
-    statusGroupCount_ = qCeil(qreal(ICAddr_Read_Status0 - ICAddr_Read_Status40) / REFRESH_COUNT_PER);
+    statusGroupCount_ = qCeil(qreal(ICAddr_Read_Status40 - ICAddr_Read_Status0) / REFRESH_COUNT_PER);
 #else
     currentStatusGroup_ = 0;
 #endif
@@ -506,7 +506,7 @@ void ICRobotVirtualhost::AddRefreshStatusCommand_()
     int startAddr = currentStatusGroup_ * REFRESH_COUNT_PER + ICAddr_Read_Status0;
     if(currentStatusGroup_ == statusGroupCount_ - 1)
     {
-        length = REFRESH_END - startAddr;
+        length = REFRESH_END - startAddr + 1;
     }
     else
     {

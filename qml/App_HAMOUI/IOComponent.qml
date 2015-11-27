@@ -121,8 +121,8 @@ Rectangle {
     Timer{
         interval: 50; running: visible; repeat: true;
         onTriggered: {
-            var xStatus = panelRobotController.iStatus(0).toString(2);
-            var yStatus = panelRobotController.oStatus(0).toString(2);
+            var xStatus = panelRobotController.iStatus(0).toString(2).split("").reverse().join("");
+            var yStatus = panelRobotController.oStatus(0).toString(2).split("").reverse().join("");
             var i;
             for(i = 0; i < PData.xPages.length; ++i){
                 PData.xPages[i].status = xStatus;
@@ -130,8 +130,8 @@ Rectangle {
             for(i = 0; i < PData.yPages.length; ++i){
                 PData.yPages[i].status = yStatus;
             }
-            xStatus = panelRobotController.iStatus(7).toString(2);
-            yStatus = panelRobotController.oStatus(7).toString(2);
+            xStatus = panelRobotController.iStatus(7).toString(2).split("").reverse().join("");
+            yStatus = panelRobotController.oStatus(7).toString(2).split("").reverse().join("");
             for(i = 0; i < PData.euxPages.length; ++i){
                 PData.euxPages[i].status = xStatus;
             }

@@ -10,7 +10,8 @@ settingpages/*
 
 OTHER_FILES += \
     ICAlarmBar.qml \
-    configs/AlarmInfo.js
+    configs/AlarmInfo.js \
+    ParaChose.qml
 
 
 

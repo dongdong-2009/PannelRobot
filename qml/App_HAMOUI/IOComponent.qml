@@ -121,6 +121,7 @@ Rectangle {
     Timer{
         interval: 50; running: visible; repeat: true;
         onTriggered: {
+            console.log( panelRobotController.iStatus(0));
             var xStatus = panelRobotController.iStatus(0).toString(2);
             var yStatus = panelRobotController.oStatus(0).toString(2);
             var i;

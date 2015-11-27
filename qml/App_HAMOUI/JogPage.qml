@@ -47,6 +47,23 @@ Item {
             }
         }
 
+        ICButton{
+            id:singl
+            text: qsTr("single axis")
+            onButtonClicked: {
+                panelRobotController.modifyConfigValue(24,
+                                                       0);
+            }
+        }
+        ICButton{
+            id:jog
+            text: qsTr("jog axis")
+            onButtonClicked: {
+                panelRobotController.modifyConfigValue(24,
+                                                       30);
+            }
+        }
+
         Row{
             spacing: 20
             height: 32
@@ -72,6 +89,10 @@ Item {
                                                            parseInt(debugVal.configValue));
                 }
             }
+
+
+
+
         }
 
         ICSettingConfigsScope{

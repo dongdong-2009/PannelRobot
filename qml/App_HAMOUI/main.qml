@@ -179,6 +179,12 @@ Rectangle {
             mainHeader.loginUser = user;
         }
     }
+    ParaChose{
+        id:paraChose
+        visible: false
+        anchors.centerIn: parent
+    }
+
     ICCalculator{
         id:calculator
         visible: false
@@ -243,6 +249,14 @@ Rectangle {
             if(alarmNum != alarmBar.errID){
                 alarmBar.errID = alarmNum;
             }
+            if(alarmNum == 2){
+                paraChose.visible = true;
+            }
+            else
+            {
+                paraChose.visible = false;
+            }
+
         }
     }
 }

@@ -9,7 +9,8 @@ settingpages/*
 }
 
 OTHER_FILES += \
-    IOComponent.js
+    ICAlarmBar.qml \
+    configs/AlarmInfo.js
 
 
 

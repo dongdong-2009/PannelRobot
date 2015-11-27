@@ -185,6 +185,15 @@ Rectangle {
         anchors.centerIn: parent
     }
 
+    ICAlarmBar{
+        id:alarmBar
+        width: 798
+        height: 42
+        y:508
+        x:1
+//        errID: 1
+    }
+
     Component.onCompleted: {
         menuSettings.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
@@ -229,6 +238,10 @@ Rectangle {
             for(var i = 0 ; i < pressedKeys.length; ++i){
 //                console.log("Send command:", key);
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
+            }
+            var alarmNum = panelRobotController.statusValue("c_ro_0_32_0_932");
+            if(alarmNum != alarmBar.errID){
+                alarmBar.errID = alarmNum;
             }
         }
     }

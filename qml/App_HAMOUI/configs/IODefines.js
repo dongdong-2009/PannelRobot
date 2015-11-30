@@ -284,12 +284,12 @@ var getXDefineFromPointName = function(pointName){
 
 var getYDefineFromHWPoint = function(point, type){
     if(type >= IO_BOARD_0 && type <= IO_BOARD_3){
-        return {"yDefine":xDefines[point], "hwPoint":point, "type":type};
+        return {"yDefine":yDefines[point], "hwPoint":point, "type":type};
     }else if(type >= M_BOARD_0 && type <= M_BOARD_2){
-        return {"yDefine":mXDefines[point], "hwPoint": point, "type":type};
+        return {"yDefine":mYDefines[point], "hwPoint": point, "type":type};
     }
     else
-        return {"yDefine":euxDefines[point], "hwPoint":point, "type":type};
+        return {"yDefine":euyDefines[point], "hwPoint":point, "type":type};
 }
 
 var getXDefineFromHWPoint = function(point, type){

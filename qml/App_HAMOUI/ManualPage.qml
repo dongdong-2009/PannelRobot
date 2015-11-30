@@ -88,13 +88,21 @@ ContentPageBase {
         Component.onCompleted: {
             var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
             if (yDefinePage1Class.status === Component.Ready) {
-                var page = yDefinePage1Class.createObject(pageContainer, {
-                                                              ioStart: 0
-                                                          })
+                var page =
+                        yDefinePage1Class.createObject(
+                            pageContainer,
+                            {
+                                "yPointNames": ["Y010", "Y011", "Y012", "Y013",
+                                    "Y014", "Y015", "Y016", "Y017", "Y020"]
+                            });
                 pageContainer.addPage(page)
-                page = yDefinePage1Class.createObject(pageContainer, {
-                                                          ioStart: 16
-                                                      })
+                page =
+                        yDefinePage1Class.createObject(
+                            pageContainer,
+                            {
+                                "yPointNames": ["Y030", "Y031", "Y032", "Y033",
+                                    "Y034", "Y035", "Y036", "Y037", "Y040"]
+                            });
                 pageContainer.addPage(page)
                 //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]
             }

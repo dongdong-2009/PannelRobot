@@ -238,19 +238,19 @@ typedef enum _ICAddr
     ICAddr_Mold_Para22,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
     ICAddr_Mold_Para23,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
     ICAddr_Mold_Para24,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
-//    ICAddr_Mold_Para25,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para26,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para27,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para28,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para29,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para30,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para31,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para32,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para33,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para34,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para35,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para36,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para37,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
+    ICAddr_Mold_Para25,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para26,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para27,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para28,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para29,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para30,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para31,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para32,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para33,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para34,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para35,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para36,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+//    ICAddr_Mold_Para37,//<类型:模号;名字:速度MOLD_PPARAmold_p_addraddr;
 //    ICAddr_Mold_Para38,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 //    ICAddr_Mold_Para39,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 //    ICAddr_Mold_Para40,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
@@ -805,7 +805,7 @@ typedef union{
 
 static const uint32_t mold_p_addr[] = {
     ICAddr_Mold_Para1,
-    ICAddr_Mold_Para24 //<类型：模号；名字：；结构：MOLD_PARA；地址：mold_p_addr；
+    ICAddr_Mold_Para36 //<类型：模号；名字：；结构：MOLD_PARA；地址：mold_p_addr；
 };
 typedef union{
     struct{
@@ -833,8 +833,22 @@ typedef union{
         uint32_t U4;//<类型：模号；名字：U4脉冲；精度：0;单位：；
         uint32_t V4;//<类型：模号；名字：V4脉冲；精度：0;单位：；
         uint32_t W4;//<类型：模号；名字：W4脉冲；精度：0;单位：；
+
+
+        uint32_t X5;//<类型：模号；名字：X5脉冲；精度：0;单位：；
+        uint32_t Y5;//<类型：模号；名字：Y5脉冲；精度：0;单位：；
+        uint32_t Z5;//<类型：模号；名字：Z5脉冲；精度：0;单位：；
+        uint32_t U5;//<类型：模号；名字：U5脉冲；精度：0;单位：；
+        uint32_t V5;//<类型：模号；名字：V5脉冲；精度：0;单位：；
+        uint32_t W5;//<类型：模号；名字：W5脉冲；精度：0;单位：；
+        uint32_t X6;//<类型：模号；名字：X6脉冲；精度：0;单位：；
+        uint32_t Y6;//<类型：模号；名字：Y6脉冲；精度：0;单位：；
+        uint32_t Z6;//<类型：模号；名字：Z6脉冲；精度：0;单位：；
+        uint32_t U6;//<类型：模号；名字：U6脉冲；精度：0;单位：；
+        uint32_t V6;//<类型：模号；名字：V6脉冲；精度：0;单位：；
+        uint32_t W6;//<类型：模号；名字：W6脉冲；精度：0;单位：；
     }pos;
-    uint32_t p[24];
+    uint32_t p[36];
 }MOLD_P;
 
 typedef struct{

@@ -188,8 +188,16 @@ public:
     ~PanelRobotController();
     void Init();
 
-    Q_INVOKABLE bool isInputOn(int index) const { return host_->IsInputOn(index);}
-    Q_INVOKABLE bool isOutputOn(int index) const { return host_->IsOutputOn(index);}
+    Q_INVOKABLE bool isInputOn(int index, int board) const
+    {
+        quint32 iStatus = ICRobotVirtualhost::IStatus(board);
+        return iStatus & (1 << index);
+    }
+    Q_INVOKABLE bool isOutputOn(int index, int board) const
+    {
+        quint32 oStatus = ICRobotVirtualhost::OStatus(board);
+        return oStatus & (1 << index);
+    }
     Q_INVOKABLE void sendKeyCommandToHost(int key);
     Q_INVOKABLE quint32 getConfigValue(const QString& addr) const;
     Q_INVOKABLE QString getConfigValueText(const QString& addr) const;

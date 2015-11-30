@@ -1,27 +1,33 @@
 import QtQuick 1.1
+import "../ICCustomElement"
+import "configs/IODefines.js" as IODefines
 
-Rectangle {
-    property alias pointDescr: pointDescr.text
+
+
+Item {
     property bool isOn: false
-    property alias hasMappedX: xLed.visible
+    property int board: 0
+    property int hwPoint: 0
+    width: layout.width
+    height: layout.height
     Row{
+        id:layout
         spacing: 12
         Text {
             id: pointDescr
-            text: qsTr("point")
+            text: {
+                var iod = IODefines.getYDefineFromHWPoint(hwPoint, board).yDefine;
+                return iod.pointName + ":" + iod.descr
+            }
+
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        Rectangle{
+        ICButton{
             id:actionButton
             width: 80
             height: 32
-            color: "white"
-            Text {
-                id:actionText
-                text: qsTr("On")
-                anchors.centerIn: parent
-            }
+            text: qsTr("On")
         }
 
         Rectangle{
@@ -40,17 +46,20 @@ Rectangle {
             border.color: "black"
             border.width: 2
             color: "gray"
-            visible: hasMappedX
+            visible: {
+                var iod = IODefines.getYDefineFromHWPoint(hwPoint, board).yDefine;
+                return IODefines.yCheckedX(iod.pointName) !== -1;
+            }
         }
     }
 
     onIsOnChanged: {
         if(isOn){
             yLed.color = "lightgreen" ;
-            actionText.text = qsTr("Off");
+            actionButton.text = qsTr("Off");
         }else{
             yLed.color = "gray"
-            actionText.text = qsTr("On");
+            actionButton.text = qsTr("On");
         }
     }
 }

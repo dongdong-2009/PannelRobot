@@ -228,16 +228,22 @@ public:
         bool ret =  mold->LoadMold(name);
         if(ret)
         {
-            if(!sendMainProgramToHost())
-                return false;
-
-            for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i){
-                if(!sendSubProgramToHost(i))
+            ret = sendMainProgramToHost();
+            if(ret)
+            {
+                for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
                 {
-                    return false;
+                    ret = sendSubProgramToHost(i);
+                    if(!ret)
+                    {
+                        break;
+                    }
                 }
             }
 
+#ifndef Q_WS_QWS
+            ret = true;
+#endif
             ICAppSettings as;
             as.SetCurrentMoldConfig(name);
             emit moldChanged();

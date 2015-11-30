@@ -22,6 +22,7 @@ Item {
         pos.visible = false;
         speed.visible = false;
         delay.visible = false;
+        limit.visible = false;
         points.visible = false;
         var item;
         var editor;
@@ -84,6 +85,13 @@ Item {
             configName: qsTr("Delay:")
             unit: qsTr("s")
         }
+        ICConfigEdit{
+            id:limit
+            configNameWidth: PData.configNameWidth
+            inputWidth: PData.inputWidth
+            configName: qsTr("Limit:")
+            unit: qsTr("s")
+        }
         Row{
             id:buttons
             spacing: 20
@@ -119,11 +127,13 @@ Item {
             PData.itemToEditorMap.put("pos", pos);
             PData.itemToEditorMap.put("speed", speed);
             PData.itemToEditorMap.put("delay", delay);
-            PData.itemToEditorMap.put("points", points)
+            PData.itemToEditorMap.put("points", points);
+            PData.itemToEditorMap.put("limit", limit);
             PData.editorToItemMap.put(pos, "pos");
             PData.editorToItemMap.put(speed, "speed");
             PData.editorToItemMap.put(delay, "delay");
             PData.editorToItemMap.put(points, "points")
+            PData.editorToItemMap.put(limit, "limit");
         }
     }
 }

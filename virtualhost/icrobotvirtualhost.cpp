@@ -71,9 +71,6 @@ void ICRobotVirtualhost::SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int 
 
 bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
 {
-#ifndef Q_WS_QWS
-    return true;
-#endif
 #ifdef NEW_PLAT
     AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, data.size());
     SendContinuousDataHelper(hostPtr, 0, data);
@@ -108,9 +105,6 @@ bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<quint3
 
 bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<quint32> &data)
 {
-#ifndef Q_WS_QWS
-    return true;
-#endif
 #ifdef NEW_PLAT
     AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
     SendContinuousDataHelper(hostPtr, 0, data);

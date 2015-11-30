@@ -152,9 +152,7 @@ Item {
                 height: 24
                 visible: true
                 z:1
-                min:0
-                max:600000
-                decimal: 1
+                configAddr: "s_rw_0_32_1_1201"
                 configValue: "0.0"
             }
         }

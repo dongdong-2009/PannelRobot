@@ -115,9 +115,10 @@ int AxisPneumaticActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
+    item.append(v->value("type", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
-    item.append(v->value("delay", 0).toInt());
+    item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 

@@ -7,6 +7,9 @@ FocusScope{
     property int alignMode: 0
     property bool isNumberOnly: true
     property alias inputWidth: rectangle.width
+    property double min : 0
+    property double max: 4000000000
+    property int decimal: 0
     x: rectangle.x
     y: rectangle.y
     width: rectangle.width + unit.width
@@ -49,6 +52,8 @@ FocusScope{
                                                       isNumberOnly,
                                                       bindConfig,
                                                       true);
+                    }else if(isNumberOnly){
+                        virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height, min, max, decimal);
                     }else{
                         virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
                     }

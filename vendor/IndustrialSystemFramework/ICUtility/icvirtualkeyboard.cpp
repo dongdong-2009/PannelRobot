@@ -203,68 +203,13 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
 
  void ICVirtualKeyboard::openSoftPanel(int editPosx, int editPosy, int editW, int editH, bool isNumberOnly, const QString& configName, bool checkRange)
  {
-     ui->inputEdit->clear();
-     if(isNumberOnly)
-     {
-         ui->keyboardContainer->setCurrentIndex(0);
-         this->resize(404, 356);
-//         ui->inputEdit->resize(341, 31);
-         ui->tipLabel->show();
+     ICRange ranges = rangeGetter_(configName);
+     openSoftPanelImpl(editPosx, editPosy, editW, editH, ranges.min, ranges.max, ranges.decimal, isNumberOnly, checkRange);
+ }
 
-     }
-     else
-     {
-         ui->keyboardContainer->setCurrentIndex(1);
-         this->resize(788, 398);
-         ui->tipLabel->hide();
-     }
-     if(checkRange)
-     {
-         ICRange ranges = rangeGetter_(configName);
-         validator_.setRange(ranges.min,
-                             ranges.max,
-                             ranges.decimal);
-         ui->tipLabel->setText(QString(tr("Min:%1\nMax:%2\nPrec:%3")).arg(validator_.bottom(),0, 'f',ranges.decimal, '0')
-                               .arg(validator_.top(),0, 'f',ranges.decimal, '0')
-                               .arg(1.0 / qPow(10,validator_.decimals())));
-     }
-     else
-     {
-         validator_.setRange(0, 0xFFFFFFFFu,0);
-     }
-
-     QPoint topLeft(editPosx, editPosy);
-     QPoint toMove;
-     if(topLeft.x() + this->width() <= screenWidth_)
-     {
-         toMove.setX(topLeft.x());
-     }
-     else if(topLeft.x() + editW - this->width() >= 0)
-     {
-         toMove.setX(topLeft.x() + editW - this->width());
-     }
-     else
-     {
-         toMove.setX(screenHeight_/2);
-     }
-     if(topLeft.y() + 48 + this->height() <= screenHeight_)
-     {
-         toMove.setY(topLeft.y() + 48);
-     }
-     else
-     {
-         toMove.setY(screenHeight_ - this->height() - 48);
-//         if(topLeft.x() - this->width() >= 0)
-//         {
-//             toMove.setX(topLeft.x() - this->width());
-//         }
-//         else if(topLeft.x() + editW + this->width() <= screenWidth_)
-//         {
-//             toMove.setX(topLeft.x() + this->width());
-//         }
-     }
-     this->move(toMove);
-     this->show();
+ void ICVirtualKeyboard::openSoftPanel(int editPosx, int editPosy, int editW, int editH, double min, double max, int decimal)
+ {
+     openSoftPanelImpl(editPosx, editPosy, editW, editH, min, max, decimal, true, true);
  }
 
 
@@ -445,4 +390,61 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
  void ICVirtualKeyboard::on_btn_space_clicked()
  {
      ui->inputEdit->insert(" ");
+ }
+
+ void ICVirtualKeyboard::openSoftPanelImpl(int editPosx, int editPosy, int editW, int editH, double min, double max, int decimal, bool isNumberOnly, bool checkRange)
+ {
+     ui->inputEdit->clear();
+     if(isNumberOnly)
+     {
+         ui->keyboardContainer->setCurrentIndex(0);
+         this->resize(404, 356);
+//         ui->inputEdit->resize(341, 31);
+         ui->tipLabel->show();
+
+     }
+     else
+     {
+         ui->keyboardContainer->setCurrentIndex(1);
+         this->resize(788, 398);
+         ui->tipLabel->hide();
+     }
+     if(checkRange)
+     {
+         validator_.setRange(min,
+                             max,
+                             decimal);
+         ui->tipLabel->setText(QString(tr("Min:%1\nMax:%2\nPrec:%3")).arg(validator_.bottom(),0, 'f',decimal, '0')
+                               .arg(validator_.top(),0, 'f', decimal, '0')
+                               .arg(1.0 / qPow(10,validator_.decimals())));
+     }
+     else
+     {
+         validator_.setRange(0, 0xFFFFFFFFu,0);
+     }
+
+     QPoint topLeft(editPosx, editPosy);
+     QPoint toMove;
+     if(topLeft.x() + this->width() <= screenWidth_)
+     {
+         toMove.setX(topLeft.x());
+     }
+     else if(topLeft.x() + editW - this->width() >= 0)
+     {
+         toMove.setX(topLeft.x() + editW - this->width());
+     }
+     else
+     {
+         toMove.setX(screenHeight_/2);
+     }
+     if(topLeft.y() + 48 + this->height() <= screenHeight_)
+     {
+         toMove.setY(topLeft.y() + 48);
+     }
+     else
+     {
+         toMove.setY(screenHeight_ - this->height() - 48);
+     }
+     this->move(toMove);
+     this->show();
  }

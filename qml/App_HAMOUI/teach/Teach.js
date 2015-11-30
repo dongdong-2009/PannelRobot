@@ -3,6 +3,7 @@
 Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
 Qt.include("../configs/AxisDefine.js")
+Qt.include("../configs/IODefines.js")
 
 //var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
 
@@ -259,9 +260,10 @@ var generateSyncEndAction = function(){
     };
 }
 
-var generateOutputAction = function(point, status, delay){
+var generateOutputAction = function(point, type, status, delay){
     return {
         "action":actions.F_CMD_IO_OUTPUT,
+        "type":type,
         "point":point,
         "pointStatus": status,
         "delay":delay
@@ -432,7 +434,7 @@ var flagActionToStringHandler = function(actionObject){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    return qsTr("Output:") + actionObject.point + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+    return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
             + qsTr("Delay:") + actionObject.delay;
 }
 

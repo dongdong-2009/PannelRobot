@@ -11,7 +11,8 @@ settingpages/*
 OTHER_FILES += \
     ICAlarmBar.qml \
     configs/AlarmInfo.js \
-    ParaChose.qml
+    ParaChose.qml \
+    teach/IOTeachDescrComponent.qml
 
 
 

@@ -26,7 +26,7 @@ public:
     explicit ICVirtualKeyboard(AddrRangeGetter rangeGetter = DefaultRangeGetter, QWidget *parent = 0);
     ~ICVirtualKeyboard();
     Q_INVOKABLE void openSoftPanel(int editPosx, int editPosy, int editW, int editH, bool isNumberOnly = true, const QString& configName = "", bool checkRange = false);
-
+    Q_INVOKABLE void openSoftPanel(int editPosx, int editPosy, int editW, int editH, double min, double max, int decimal);
 signals:
     void characterGenerated(const QString& text);
     void commit(const QString& text);
@@ -58,6 +58,7 @@ private slots:
 
 private:
     bool IsChEn_() const;
+    void openSoftPanelImpl(int editPosx, int editPosy, int editW, int editH, double min, double max, int decimal ,bool isNumberOnly = true, bool checkRange = false);
 
 private:
     Ui::ICVirtualKeyboard *ui;

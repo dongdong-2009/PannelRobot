@@ -9,6 +9,9 @@ Item {
     property alias configNameWidth: configName.width
     property alias inputWidth: edit.inputWidth
     property alias isNumberOnly: edit.isNumberOnly
+    property alias min: edit.min
+    property alias max: edit.max
+    property alias decimal: edit.decimal
 
     height: 24
     width: container.width

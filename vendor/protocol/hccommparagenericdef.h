@@ -31,6 +31,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_Start,
     ICAddr_System_Retain_0=1, //< 按键命令地址
     ICAddr_System_Retain_1,//< 版本号地址
+    ICAddr_System_Retain_2,//< 手动IO操作
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
@@ -213,30 +214,30 @@ typedef enum _ICAddr
     ICAddr_Adapter_Para255 = 356,
 
     ICAddr_Mold_Para0,//<类型:模号;名字:;结构:MOLD_PRO_USE;地址:mold_use_p_addr;
-//    ICAddr_Mold_Para1,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para2,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para3,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para4,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para5,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para6,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para7,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para8,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para9,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para10,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para11,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para12,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para13,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para14,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para15,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para16,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para17,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para18,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para19,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para20,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para21,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para22,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para23,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
-//    ICAddr_Mold_Para24,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
+    ICAddr_Mold_Para1, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para2, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para3, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para4, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para5, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para6, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para7, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para8, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para9, //<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para10,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para11,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para12,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para13,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para14,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para15,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para16,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para17,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para18,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para19,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para20,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para21,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para22,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para23,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
+    ICAddr_Mold_Para24,//<类型:模号;名字:;结构:MOLD_P;地址:mold_p_addr;
 //    ICAddr_Mold_Para25,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 //    ICAddr_Mold_Para26,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 //    ICAddr_Mold_Para27,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
@@ -496,7 +497,10 @@ typedef enum
     ALARM_AXIS3_SOFT_LIMIT_N,//<名字：轴3负极限报警
     ALARM_AXIS4_SOFT_LIMIT_N,//<名字：轴4负极限报警
     ALARM_AXIS5_SOFT_LIMIT_N,//<名字：轴5负极限报警
-    ALARM_AXIS6_SOFT_LIMIT_N//<名字：轴6负极限报警
+    ALARM_AXIS6_SOFT_LIMIT_N,//<名字：轴6负极限报警
+
+    ALARM_IO_NO_SIGNAL_START = 500,//<名字：IO输入检测时间内未检测到信号
+    ALARM_IO_NO_SIGNAL_END = 600         //<名字：IO输入检测时间内未检测到信号
 }ALARM_ADDR;
 
 /*******************************************************************************/
@@ -792,13 +796,50 @@ typedef union{
         uint32_t sub6:1;//<类型：模号；名字：子程序6使用；精度：0;单位：；
         uint32_t sub7:1;//<类型：模号；名字：子程序7使用；精度：0;单位：；
         uint32_t sub8:1;//<类型：模号；名字：子程序8使用；精度：0;单位：；
-        uint32_t re:23;//<类型：模号；名字：备用；精度：0;单位：；
+        uint32_t install:1;//<类型：模号；名字：安装工具坐标；精度：0;单位：；
+        uint32_t re:22;//<类型：模号；名字：备用；精度：0;单位：；
     }bit;
     uint32_t a;
 }MOLD_PRO_USE;
 
+
+static const uint32_t mold_p_addr[] = {
+    ICAddr_Mold_Para1,
+    ICAddr_Mold_Para24 //<类型：模号；名字：；结构：MOLD_PARA；地址：mold_p_addr；
+};
+typedef union{
+    struct{
+        uint32_t X1;//<类型：模号；名字：X1脉冲；精度：0;单位：；
+        uint32_t Y1;//<类型：模号；名字：Y1脉冲；精度：0;单位：；
+        uint32_t Z1;//<类型：模号；名字：Z1脉冲；精度：0;单位：；
+        uint32_t U1;//<类型：模号；名字：U1脉冲；精度：0;单位：；
+        uint32_t V1;//<类型：模号；名字：V1脉冲；精度：0;单位：；
+        uint32_t W1;//<类型：模号；名字：W1脉冲；精度：0;单位：；
+        uint32_t X2;//<类型：模号；名字：X2脉冲；精度：0;单位：；
+        uint32_t Y2;//<类型：模号；名字：Y2脉冲；精度：0;单位：；
+        uint32_t Z2;//<类型：模号；名字：Z2脉冲；精度：0;单位：；
+        uint32_t U2;//<类型：模号；名字：U2脉冲；精度：0;单位：；
+        uint32_t V2;//<类型：模号；名字：V2脉冲；精度：0;单位：；
+        uint32_t W2;//<类型：模号；名字：W2脉冲；精度：0;单位：；
+        uint32_t X3;//<类型：模号；名字：X3脉冲；精度：0;单位：；
+        uint32_t Y3;//<类型：模号；名字：Y3脉冲；精度：0;单位：；
+        uint32_t Z3;//<类型：模号；名字：Z3脉冲；精度：0;单位：；
+        uint32_t U3;//<类型：模号；名字：U3脉冲；精度：0;单位：；
+        uint32_t V3;//<类型：模号；名字：V3脉冲；精度：0;单位：；
+        uint32_t W3;//<类型：模号；名字：W3脉冲；精度：0;单位：；
+        uint32_t X4;//<类型：模号；名字：X4脉冲；精度：0;单位：；
+        uint32_t Y4;//<类型：模号；名字：Y4脉冲；精度：0;单位：；
+        uint32_t Z4;//<类型：模号；名字：Z4脉冲；精度：0;单位：；
+        uint32_t U4;//<类型：模号；名字：U4脉冲；精度：0;单位：；
+        uint32_t V4;//<类型：模号；名字：V4脉冲；精度：0;单位：；
+        uint32_t W4;//<类型：模号；名字：W4脉冲；精度：0;单位：；
+    }pos;
+    uint32_t p[24];
+}MOLD_P;
+
 typedef struct{
     MOLD_PRO_USE use_p;
+    MOLD_P tool;
 }MOLD_PARAStruct;
 
 

@@ -6,8 +6,10 @@ import "./Theme.js" as Theme
 ContentPageBase {
     Rectangle {
         id: manualContainer
-        anchors.fill: parent
         color: Theme.defaultTheme.BASE_BG
+        width: parent.width
+        height: parent.height
+
 
         QtObject {
             id: pdata
@@ -51,6 +53,16 @@ ContentPageBase {
                            ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
                 //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
             }
+            TabMenuItem {
+                id: toolsCalibrate
+                width: parent.width
+                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                height: pdata.menuItemHeight
+                itemText: qsTr("Tools Calibration")
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
+            }
             onButtonClickedID: {
                 pageContainer.setCurrentIndex(index)
             }
@@ -70,6 +82,8 @@ ContentPageBase {
         ICStackContainer {
             id: pageContainer
             anchors.top: spliteLine.bottom
+            width: parent.width
+            height: parent.height - menuContainer.height - spliteLine.height
         }
         Component.onCompleted: {
             var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
@@ -84,8 +98,10 @@ ContentPageBase {
                 pageContainer.addPage(page)
                 //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]
             }
-            var jogClass = Qt.createComponent('JogPage.qml')
-            pageContainer.addPage(jogClass.createObject(pageContainer))
+            var jogClass = Qt.createComponent('JogPage.qml');
+            pageContainer.addPage(jogClass.createObject(pageContainer));
+            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
+            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
         }
     }
 

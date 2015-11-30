@@ -123,7 +123,7 @@ Rectangle {
 
     }
 
-    Rectangle{
+    Item{
         id:container
         width: mainWindow.width
         height: mainWindow.height * Theme.defaultTheme.MainWindow.containerHeightProportion
@@ -143,7 +143,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             source: "ManualPage.qml"
-            anchors.fill: parent
+//            anchors.fill: parent
             visible: false
         }
         Loader{
@@ -151,6 +151,9 @@ Rectangle {
             source: "teach/ProgramPage.qml"
             anchors.fill: parent
             visible: false
+        }
+        Component.onCompleted: {
+            console.log("main.container",container.width, container.height)
         }
     }
     IOPage{

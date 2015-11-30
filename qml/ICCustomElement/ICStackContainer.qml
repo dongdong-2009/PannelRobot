@@ -12,6 +12,8 @@ Item {
         componentObject.visible = false;
         componentObject.x = 2;
         componentObject.y = 2;
+        componentObject.width = parent.width;
+        componentObject.height = parent.height;
         return pages.length;
     }
 

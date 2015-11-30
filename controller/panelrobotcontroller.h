@@ -42,7 +42,7 @@ public:
     {
         qDebug("SimpleScreenSaver::restore");
         QWSServer::instance()->refresh();
-//        ICPeripherals::ICBacklightOn();
+        //        ICPeripherals::ICBacklightOn();
         if(screenFunctionObject_ != NULL)
         {
             screenFunctionObject_->ScreenRestore();
@@ -53,8 +53,8 @@ public:
     {
         Q_UNUSED(level)
         qDebug("SimpleScreenSaver::save");
-//        ICPeripherals::ICBacklightOff();
-//        ICPeripherals::ICShowScreenSaver();
+        //        ICPeripherals::ICBacklightOff();
+        //        ICPeripherals::ICShowScreenSaver();
         if(screenFunctionObject_ != NULL)
         {
             screenFunctionObject_->ScreenSave();
@@ -228,6 +228,16 @@ public:
         bool ret =  mold->LoadMold(name);
         if(ret)
         {
+            if(!sendMainProgramToHost())
+                return false;
+
+            for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i){
+                if(!sendSubProgramToHost(i))
+                {
+                    return false;
+                }
+            }
+
             ICAppSettings as;
             as.SetCurrentMoldConfig(name);
             emit moldChanged();
@@ -241,17 +251,17 @@ public:
         return ICAppSettings().CurrentMoldConfig();
     }
 
-    Q_INVOKABLE void sendMainProgramToHost()
+    Q_INVOKABLE bool sendMainProgramToHost()
     {
-        ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
+        return ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
     }
 
-    Q_INVOKABLE void sendSubProgramToHost(int which)
+    Q_INVOKABLE bool sendSubProgramToHost(int which)
     {
         if(which < ICRobotMold::kSub1Prog ||
                 which > ICRobotMold::kSub8Prog)
-            return ;
-        ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
+            return false;
+        return ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
 
     }
 
@@ -333,9 +343,9 @@ public:
     }
 
     Q_INVOKABLE void setCustomSettings(const QString& key,
-                                          const QVariant& val,
-                                          const QString& group = QString::fromLatin1("custom"),
-                                          bool isSync = true)
+                                       const QVariant& val,
+                                       const QString& group = QString::fromLatin1("custom"),
+                                       bool isSync = true)
     {
         customSettings_.beginGroup(group);
         customSettings_.setValue(key, val);

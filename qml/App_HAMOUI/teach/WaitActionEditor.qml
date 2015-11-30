@@ -3,34 +3,50 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
-import "../AppSettings.js" as UISettings
 
 
 Item {
-
+    id:container
     QtObject{
         id:pData
-        property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
-        property variant inputs: [
+        property variant xs: [
             "X010",
             "X011",
             "X012",
             "X014",
-            "EuX010"
+            "X015",
+            "X016",
+            "X017",
+            "X020",
         ]
+        property  variant euXs : ["EuX010", "EuX011"]
+        property variant mXs: ["INX010"]
+
+        property variant xModel: []
+        property variant euXModel: []
+        property variant mXModel: []
     }
 
-    signal backToMenuTriggered()
 
     function createActionObjects(){
         var ret = [];
-        var input;
-        for(var i = 0; i < inputModel.count; ++i)
+        var mD;
+        var data;
+        var ui;
+        if(normalX.isChecked){
+            mD = pData.xModel
+
+        }else if(euX.isChecked)
+            mD = pData.euXModel
+        else
+            mD = pData.mXModel
+        for(var i = 0; i < mD.length; ++i)
         {
-            input = inputModel.get(i);
-            if(input.isEn){
+            data = mD[i].data;
+            ui = mD[i].ui;
+            if(ui.isChecked){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                ret.push(Teach.generateWaitAction(input.hwPoint, isOn, limit.configValue));
+                ret.push(Teach.generateWaitAction(data.hwPoint, data.type, isOn, delay.configValue));
                 break;
             }
         }
@@ -39,99 +55,153 @@ Item {
     width: parent.width
     height: parent.height
 
-
-    ICButton{
-        id:backToMenu
-        text: qsTr("Back to Menu")
-        onButtonClicked: backToMenuTriggered()
-    }
-
-    Rectangle {
-        id: inputContainer
-        //        visible: false
-        ListModel{
-            id:inputModel
-            function onCheckBoxStatusChanged(index, isChecked){
-                this.set(index, {"isEn":isChecked});
-                if(!isChecked) return;
-                for(var i = 0; i < this.count; ++i){
-                    if(i !== index){
-                        this.set(i, {"isEn":false});
-                    }
-                }
-            }
-        }
-
-        width: parent.width - 2
-        height: parent.height - 150
-        anchors.top:  backToMenu.bottom
-        anchors.topMargin:  10
-        ListView{
-            id:inputListView
-            width: parent.width
-            height: parent.height
-            model: inputModel
-            spacing: 10
-            delegate:ICCheckBox{
-                text: inputDefine
-                width: parent.width
-                height: 24
-                isChecked: isEn
-                useCustomClickHandler: true
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        inputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
-                    }
-                }
-            }
-        }
-    }
-
-    ICButtonGroup{
-        id:statusGroup
-        anchors.top: inputContainer.bottom;
-        anchors.topMargin: 6
-        checkedItem: onBox
-        Row{
-            spacing: 10
+    Column{
+        spacing: 4
+        ICButtonGroup{
+            id:typeGroup
+            spacing: 20
             ICCheckBox{
-                id:onBox
-                text: qsTr("ON")
+                id:normalX
+                text: qsTr("X")
                 isChecked: true
             }
             ICCheckBox{
-                id:offBox
-                text: qsTr("OFF")
+                id:euX
+                text: qsTr("EUX")
+            }
+            ICCheckBox{
+                id:mX
+                text: qsTr("M")
             }
         }
-        height: 32
+        Rectangle{
+            id:xContainer
+            width: container.width - 10
+            height: container.height - typeGroup.height - statusGroup.height - parent.spacing * 4
+            color: "gray"
+            border.width: 1
+            border.color: "black"
+            visible: normalX.isChecked
+            Grid{
+                id:xContainerFlow
+                anchors.fill: parent
+                anchors.margins: 4
+                spacing: 10
+                columns: 6
+            }
+        }
+        Rectangle{
+            id:euXContaienr
+            width: xContainer.width
+            height: xContainer.height
+            color: "gray"
+            border.width: 1
+            border.color: "black"
+            visible: euX.isChecked
+            Grid{
+                id:euXContainerFlow
+                anchors.fill: parent
+                anchors.margins: 4
+                spacing: 10
+                columns: 6
+            }
+        }
+
+        Rectangle{
+            id:mXContaienr
+            width: xContainer.width
+            height: xContainer.height
+            color: "gray"
+            border.width: 1
+            border.color: "black"
+            visible: mX.isChecked
+            Grid{
+                id:mXContainerFlow
+                anchors.fill: parent
+                anchors.margins: 4
+                spacing: 10
+                columns: 6
+            }
+        }
+
+        Row{
+            spacing: 20
+            ICButtonGroup{
+                id:statusGroup
+                checkedItem: onBox
+                Row{
+                    spacing: 10
+                    ICCheckBox{
+                        id:onBox
+                        text: qsTr("ON")
+                        isChecked: true
+                    }
+                    ICCheckBox{
+                        id:offBox
+                        text: qsTr("OFF")
+                    }
+                }
+                height: 32
+            }
+
+            ICConfigEdit{
+                id:delay
+                configName: qsTr("Delay:")
+                unit: qsTr("s")
+                width: 100
+                height: 24
+                visible: true
+                z:1
+                min:0
+                max:600000
+                decimal: 1
+                configValue: "0.0"
+            }
+        }
     }
 
-    ICConfigEdit{
-        id:limit
-        configName: qsTr("Limit:")
-        unit: qsTr("s")
-        anchors.top: statusGroup.bottom;
-        anchors.topMargin: 6
-        width: 100
-        height: 24
-        visible: true
-        z:1
-    }
 
     Component.onCompleted: {
 
-        var xDefines = pData.inputs;
+        var xDefines = pData.xs
         var xDefine;
-        for(var i = 0; i < xDefines.length; ++i){
+        var ioDescrComponent = Qt.createComponent("IOTeachDescrComponent.qml");
+        var xM = [];
+        var euxM = [];
+        var mXM = [];
+        var ioDescrObject;
+        var i;
+        for(i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            inputModel.append({"isEn":false,
-                                  "inputDefine": xDefines[i] + ":"
-                                  + xDefine.xDefine.descr[pData.currentLanguage],
-                                  "hwPoint":xDefine.hwPoint});
+            ioDescrObject = ioDescrComponent.createObject(xContainerFlow, {"pointDescr" : xDefines[i] + ":"
+                                                          + xDefine.xDefine.descr});
+            xM.push({"data":xDefine,
+                              "ui": ioDescrObject});
+
+        }
+        xDefines = pData.euXs;
+        for(i = 0; i < xDefines.length; ++i){
+            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+            ioDescrObject = ioDescrComponent.createObject(euXContainerFlow, {"pointDescr" : xDefines[i] + ":"
+                                                          + xDefine.xDefine.descr});
+            euxM.push({"data":xDefine,
+                              "ui": ioDescrObject});
+
         }
 
-    }
+        xDefines = pData.mXs;
+        for(i = 0; i < xDefines.length; ++i){
+            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+            ioDescrObject = ioDescrComponent.createObject(mXContainerFlow, {"pointDescr" : xDefines[i] + ":"
+                                                          + xDefine.xDefine.descr});
+            mXM.push({"data":xDefine,
+                              "ui": ioDescrObject});
 
+        }
+
+        pData.xModel = xM;
+        pData.euXModel = euxM;
+        pData.mXModel = mXM;
+
+    }
 }

@@ -599,7 +599,7 @@ Rectangle {
 
                 axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+//                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);

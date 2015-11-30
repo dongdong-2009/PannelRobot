@@ -3,7 +3,6 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
-import "../AppSettings.js" as UISettings
 
 
 Item {
@@ -20,7 +19,7 @@ Item {
             "Y017",
             "Y020",
         ]
-        property  variant euYs : ["EuY010", "EuY011"]
+        property  variant euYs : ["EuY010", "EuY011", "EuY012"]
         property variant mYs: ["INY010"]
 
         property variant yModel: []
@@ -30,23 +29,28 @@ Item {
 
     function createActionObjects(){
         var ret = [];
-        var yModel;
+        var mD;
         var data;
         var ui;
         if(normalY.isChecked){
-            yModel = pData.yModel
-            for(var i = 0; i < yModel.length; ++i)
-            {
-                data = yModel[i].data;
-                ui = yModel[i].ui;
-                if(ui.isChecked){
-                    var isOn = statusGroup.checkedItem == onBox ? true : false;
-                    ret.push(Teach.generateOutputAction(data.hwPoint, data.type, isOn, delay.configValue));
-                    break;
-                }
-            }
-            return ret;
+            mD = pData.yModel;
+
+        }else if(euY.isChecked){
+            mD = pData.euYModel;
         }
+        else
+            mD = pData.mYModel;
+        for(var i = 0; i < mD.length; ++i)
+        {
+            data = mD[i].data;
+            ui = mD[i].ui;
+            if(ui.isChecked){
+                var isOn = statusGroup.checkedItem == onBox ? true : false;
+                ret.push(Teach.generateOutputAction(data.hwPoint, data.type, isOn, delay.configValue));
+                break;
+            }
+        }
+        return ret;
     }
     width: parent.width
     height: parent.height
@@ -151,6 +155,7 @@ Item {
                 min:0
                 max:600000
                 decimal: 1
+                configValue: "0.0"
             }
         }
     }
@@ -179,7 +184,7 @@ Item {
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             ioDescrObject = ioDescrComponent.createObject(euYContainerFlow, {"pointDescr" : yDefines[i] + ":"
                                                           + yDefine.yDefine.descr});
-            yM.push({"data":yDefine,
+            euyM.push({"data":yDefine,
                               "ui": ioDescrObject});
 
         }
@@ -189,7 +194,7 @@ Item {
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             ioDescrObject = ioDescrComponent.createObject(mYContainerFlow, {"pointDescr" : yDefines[i] + ":"
                                                           + yDefine.yDefine.descr});
-            yM.push({"data":yDefine,
+            mYM.push({"data":yDefine,
                               "ui": ioDescrObject});
 
         }

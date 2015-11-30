@@ -51,9 +51,10 @@ int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
     item.append(v->value("action").toInt());
+    item.append(v->value("type", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
-    item.append(v->value("limit", 50).toInt());
+    item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
 #endif

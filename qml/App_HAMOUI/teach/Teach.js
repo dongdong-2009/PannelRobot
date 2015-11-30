@@ -212,9 +212,21 @@ var generteEndAction = function(){
     };
 }
 
-var generateWaitAction = function(which, status, limit){
+var generateOutputAction = function(point, type, status, delay){
+    return {
+        "action":actions.F_CMD_IO_OUTPUT,
+        "type":type,
+        "point":point,
+        "pointStatus": status,
+        "delay":delay
+    };
+}
+
+
+var generateWaitAction = function(which, type, status, limit){
     return {
         "action":actions.F_CMD_IO_INPUT,
+        "type": type,
         "point":which,
         "pointStatus":status,
         "limit":limit || 0.50
@@ -260,15 +272,6 @@ var generateSyncEndAction = function(){
     };
 }
 
-var generateOutputAction = function(point, type, status, delay){
-    return {
-        "action":actions.F_CMD_IO_OUTPUT,
-        "type":type,
-        "point":point,
-        "pointStatus": status,
-        "delay":delay
-    };
-}
 
 var generateCommentAction = function(comment, commentdAction){
     return {
@@ -405,7 +408,7 @@ var conditionActionToStringHandler = function(actionObject){
 }
 
 var waitActionToStringHandler = function(actionObject){
-    return qsTr("Wait:") + actionObject.point +
+    return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
             (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " " +
             qsTr("Limit:") + actionObject.limit;
 }

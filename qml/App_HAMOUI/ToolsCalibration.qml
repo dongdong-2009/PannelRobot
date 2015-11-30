@@ -30,6 +30,49 @@ Item {
                     AxisDefine.axisInfos[5].name + ":" + pulses[5];
         }
 
+        function onMoldChanged(){
+            var pulses =[
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_358"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_359"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_360"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_361"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_362"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_363"),
+                    ];
+            p1Show.text = pulseToText(pulses);
+            pulses =[
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_364"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_365"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_366"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_367"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_368"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_369"),
+                    ];
+            p2Show.text = pulseToText(pulses);
+
+            pulses =[
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_370"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_371"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_372"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_373"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_374"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_375"),
+                    ];
+            p3Show.text = pulseToText(pulses);
+
+            pulses =[
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_376"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_377"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_378"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_379"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_380"),
+                        panelRobotController.getConfigValueText("m_rw_0_32_0_381"),
+                    ];
+            p4Show.text = pulseToText(pulses);
+
+
+        }
+
         ICButton{
             id:p1
             text: qsTr("Set to P1")
@@ -126,12 +169,13 @@ Item {
             text: qsTr("Use it?")
             onClicked: {
 
-                panelRobotController.setConfigValue("m_rw_9_1_0_357", enBtn.isChecked);
+                panelRobotController.setConfigValue("m_rw_9_1_0_357", enBtn.isChecked ? 1 : 0);
                 panelRobotController.syncConfigs();
             }
         }
-    }
-    Component.onCompleted: {
-
+        Component.onCompleted: {
+            panelRobotController.moldChanged.connect(onMoldChanged);
+            onMoldChanged();
+        }
     }
 }

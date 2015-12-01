@@ -195,8 +195,6 @@ public:
     }
     Q_INVOKABLE bool isOutputOn(int index, int board) const
     {
-//        return true;
-        return rand() % 2;
         quint32 oStatus = ICRobotVirtualhost::OStatus(board);
         return oStatus & (1 << index);
     }

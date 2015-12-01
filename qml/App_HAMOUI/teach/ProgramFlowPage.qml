@@ -390,6 +390,7 @@ Rectangle {
                         width: 40
                         height: parent.height
                         text: qsTr("C/UC")
+                        bgColor: "lime"
                         onButtonClicked: {
                             var modelObject = currentModelData();
                             //                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
@@ -416,6 +417,7 @@ Rectangle {
                         height: parent.height
                         width: 40
                         text: qsTr("Del")
+                        bgColor: "red"
                         visible: {
                             return programListView.currentIndex < programListView.count - 1
                         }
@@ -520,6 +522,7 @@ Rectangle {
                 width: 80
                 height: 32
                 text: qsTr("Insert")
+                bgColor: "yellow"
             }
 
             ICButton{
@@ -529,6 +532,7 @@ Rectangle {
                 width: insertBtn.width
                 height: insertBtn.height
                 text: qsTr("Menu")
+                bgColor: "lime"
             }
             Rectangle{
                 id:splitLine
@@ -546,8 +550,8 @@ Rectangle {
                 //                function showOutput() { setCurrentIndex(2);}
                 function isMenuShow() { return currentIndex == 0;}
                 id:actionEditorContainer
-                width: parent.width - insertBtn.width - anchors.leftMargin
-                height: parent.height
+                width: parent.width - insertBtn.width - anchors.leftMargin - splitLine.width -splitLine.anchors.leftMargin
+                height: parent.height - 1
                 anchors.left: insertBtn.right
                 anchors.leftMargin: 10
             }

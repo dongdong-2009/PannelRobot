@@ -19,6 +19,8 @@ Rectangle {
     signal commentMenuTriggered()
     signal searchMenuTriggered()
 
+    color: "#A0A0F0"
+
     Grid{
         columns: 3
         spacing: 10

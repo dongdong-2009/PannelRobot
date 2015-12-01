@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Item {
+    id:container
     property int currentIndex: -1
     property variant pages: []
 
@@ -12,8 +13,8 @@ Item {
         componentObject.visible = false;
         componentObject.x = 2;
         componentObject.y = 2;
-        componentObject.width = parent.width;
-        componentObject.height = parent.height;
+        componentObject.width = container.width - 2;
+        componentObject.height = container.height - 2;
         return pages.length;
     }
 

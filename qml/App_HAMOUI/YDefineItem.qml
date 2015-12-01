@@ -28,6 +28,9 @@ Item {
             width: 80
             height: 32
             text: qsTr("On")
+            onButtonClicked: {
+                panelRobotController.setYStatus(board, hwPoint, !isOn);
+            }
         }
 
         Rectangle{
@@ -55,7 +58,7 @@ Item {
 
     onIsOnChanged: {
         if(isOn){
-            yLed.color = "lightgreen" ;
+            yLed.color = "lime" ;
             actionButton.text = qsTr("Off");
         }else{
             yLed.color = "gray"

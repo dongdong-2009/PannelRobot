@@ -39,12 +39,14 @@ Item {
 
     onYPointNamesChanged: {
         var yDefineItemClass = Qt.createComponent("YDefineItem.qml");
-
+        var uis = [];
         for(var i = 0; i < yPointNames.length; ++i){
             var ioinfo = IODefines.getYDefineFromPointName(yPointNames[i]);
-            yDefineItemClass.createObject(pointsContainer, {"board":ioinfo.type,
-                                              "hwPoint":ioinfo.hwPoint});
+
+            uis.push(yDefineItemClass.createObject(pointsContainer, {"board":ioinfo.type,
+                                                       "hwPoint":ioinfo.hwPoint}));
         }
+        pData.pointUIs = uis;
     }
 
     Timer {
@@ -59,6 +61,7 @@ Item {
                 yItem = yItems[i];
                 yItem.isOn = panelRobotController.isOutputOn(yItem.hwPoint, yItem.board);
             }
+//            pData.pointUIs = yItems;
 
             //            update(y0, 0 + ioStart)
             //            update(y1, 1 + ioStart)

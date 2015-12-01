@@ -631,3 +631,8 @@ void ICRobotVirtualhost::AddReadConfigCommand(ICVirtualHostPtr hostPtr, int star
     hostPtr->AddCommunicationFrame(toSentFrame);
 
 }
+
+void ICRobotVirtualhost::SendYControlCommand(ICVirtualHostPtr hostPtr, int boardID, int hwPoint, bool status)
+{
+    ICRobotVirtualhost::AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_2, hwPoint | (boardID << 8) | (status << 11));
+}

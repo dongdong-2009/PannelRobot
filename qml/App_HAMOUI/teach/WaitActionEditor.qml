@@ -76,7 +76,7 @@ Item {
         }
         Rectangle{
             id:xContainer
-            width: container.width - 10
+            width: 690
             height: container.height - typeGroup.height - statusGroup.height - parent.spacing * 4
             color: "gray"
             border.width: 1

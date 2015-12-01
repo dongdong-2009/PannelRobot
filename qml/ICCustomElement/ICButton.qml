@@ -7,6 +7,7 @@ Rectangle {
     property int iconPos: 0
     property bool isAutoRepeat: false
     property alias autoInterval: autoTimer.interval
+    property alias bgColor: container.color
     signal buttonClicked()
     signal clickedText(string text)
     signal triggered()

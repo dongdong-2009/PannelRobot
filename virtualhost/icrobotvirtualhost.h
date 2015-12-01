@@ -179,6 +179,7 @@ public:
 #endif
     static quint32 IStatus(int boardID) { return iStatusMap_.value(boardID, 0);}
     static quint32 OStatus(int boardID) { return oStatusMap_.value(boardID, 0);}
+    static void SendYControlCommand(ICVirtualHostPtr hostPtr , int boardID, int hwPoint, bool status);
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();

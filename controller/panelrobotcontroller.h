@@ -195,6 +195,7 @@ public:
     }
     Q_INVOKABLE bool isOutputOn(int index, int board) const
     {
+//        return true;
         quint32 oStatus = ICRobotVirtualhost::OStatus(board);
         return oStatus & (1 << index);
     }
@@ -410,6 +411,10 @@ public:
     Q_INVOKABLE quint32 iStatus(int boardID) { return ICRobotVirtualhost::IStatus(boardID);}
     Q_INVOKABLE quint32 oStatus(int boardID) { return ICRobotVirtualhost::OStatus(boardID);}
 
+    Q_INVOKABLE void setYStatus(int boardID, int hwPoint, bool status)
+    {
+        ICRobotVirtualhost::SendYControlCommand(host_, boardID, hwPoint, status);
+    }
 
 signals:
     //    void currentMoldChanged(QString);

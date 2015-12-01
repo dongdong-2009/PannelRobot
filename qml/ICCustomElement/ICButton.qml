@@ -7,7 +7,7 @@ Rectangle {
     property int iconPos: 0
     property bool isAutoRepeat: false
     property alias autoInterval: autoTimer.interval
-    property alias bgColor: container.color
+    property string bgColor: "white"
     signal buttonClicked()
     signal clickedText(string text)
     signal triggered()
@@ -15,6 +15,11 @@ Rectangle {
     height: 32
     border.width: 1
     border.color: "gray"
+    color: bgColor
+
+    onBgColorChanged: {
+        color = bgColor;
+    }
 
     state: enabled ? "" : "disabled"
 
@@ -62,7 +67,7 @@ Rectangle {
             }
         }
         onReleased: {
-            parent.color = "white";
+            parent.color = bgColor;
             if(isAutoRepeat)
                 autoTimer.stop();
         }

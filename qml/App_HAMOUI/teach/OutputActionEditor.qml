@@ -149,55 +149,10 @@ Item {
                         onButtonClicked: {
                             panelRobotController.setYStatus(board, hwPoint, !isOn);
                         }
-
                     }
                 }
             }
-
-            //            ICButtonGroup{
-            //                Grid{
-            //                    id:yContainerFlow
-            //                    anchors.fill: parent
-            //                    anchors.margins: 4
-            //                    spacing: 10
-            //                    columns: 6
-            //                }
-            //            }
         }
-        //        Rectangle{
-        //            id:euYContaienr
-        //            width: yContainer.width
-        //            height: yContainer.height
-        //            color: "gray"
-        //            border.width: 1
-        //            border.color: "black"
-        //            visible: euY.isChecked
-
-        //            Grid{
-        //                id:euYContainerFlow
-        //                anchors.fill: parent
-        //                anchors.margins: 4
-        //                spacing: 10
-        //                columns: 6
-        //            }
-        //        }
-
-        //        Rectangle{
-        //            id:mYContaienr
-        //            width: yContainer.width
-        //            height: yContainer.height
-        //            color: "gray"
-        //            border.width: 1
-        //            border.color: "black"
-        //            visible: mY.isChecked
-        //            Grid{
-        //                id:mYContainerFlow
-        //                anchors.fill: parent
-        //                anchors.margins: 4
-        //                spacing: 10
-        //                columns: 6
-        //            }
-        //        }
 
         Row{
             spacing: 20
@@ -255,40 +210,6 @@ Item {
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             mYModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
-        //        var ioDescrComponent = Qt.createComponent("OutputTeachDescrComponent.qml");
-        //        var yM = [];
-        //        var euyM = [];
-        //        var mYM = [];
-        //        var ioDescrObject;
-        //        var i;
-        //        for(i = 0; i < yDefines.length; ++i){
-        //            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-        //            ioDescrObject = ioDescrComponent.createObject(yContainerFlow, {"pointNum":yDefines[i], "pointDescr" : yDefine.yDefine.descr});
-        //            yM.push({"data":yDefine,
-        //                        "ui": ioDescrObject});
-
-        //        }
-        //        yDefines = pData.euYs;
-        //        for(i = 0; i < yDefines.length; ++i){
-        //            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-        //            ioDescrObject = ioDescrComponent.createObject(euYContainerFlow, {"pointNum":yDefines[i], "pointDescr" : yDefine.yDefine.descr});
-        //            euyM.push({"data":yDefine,
-        //                          "ui": ioDescrObject});
-
-        //        }
-
-        //        yDefines = pData.mYs;
-        //        for(i = 0; i < yDefines.length; ++i){
-        //            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-        //            ioDescrObject = ioDescrComponent.createObject(mYContainerFlow, {"pointNum":yDefines[i], "pointDescr" : yDefine.yDefine.descr});
-        //            mYM.push({"data":yDefine,
-        //                         "ui": ioDescrObject});
-
-        //        }
-
-        //        pData.yModel = yM;
-        //        pData.euYModel = euyM;
-        //        pData.mYModel = mYM;
 
     }
     Timer{

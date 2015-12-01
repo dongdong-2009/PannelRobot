@@ -15,9 +15,6 @@ Item {
     function getChecked(){
         return this.isChecked;
     }
-    onIsCheckedChanged: {
-        console.log("cb:",isChecked)
-    }
 
     width: text.width + box.width + box.anchors.leftMargin
     height: 24

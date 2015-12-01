@@ -7,25 +7,18 @@ import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
-    QtObject{
-        id:pData
-        property variant xs: [
-            "X010",
-            "X011",
-            "X012",
-            "X014",
-            "X015",
-            "X016",
-            "X017",
-            "X020",
-        ]
-        property  variant euXs : ["EuX010", "EuX011"]
-        property variant mXs: ["INX010"]
-
-        property variant xModel: []
-        property variant euXModel: []
-        property variant mXModel: []
-    }
+    property variant xs: [
+        "X010",
+        "X011",
+        "X012",
+        "X014",
+        "X015",
+        "X016",
+        "X017",
+        "X020",
+    ]
+    property  variant euXs : ["EuX010", "EuX011"]
+    property variant mXs: ["INX010"]
 
 
     function createActionObjects(){
@@ -34,19 +27,17 @@ Item {
         var data;
         var ui;
         if(normalX.isChecked){
-            mD = pData.xModel
+            mD = xModel
 
         }else if(euX.isChecked)
-            mD = pData.euXModel
+            mD = euXModel
         else
-            mD = pData.mXModel
-        for(var i = 0; i < mD.length; ++i)
-        {
-            data = mD[i].data;
-            ui = mD[i].ui;
-            if(ui.isChecked){
+            mD = mXModel
+        for(var i = 0; i < mD.count; ++i){
+            data = mD.get(i);
+            if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                ret.push(Teach.generateWaitAction(data.hwPoint, data.type, isOn, delay.configValue));
+                ret.push(Teach.generateWaitAction(data.hwPoint, data.board, isOn, delay.configValue));
                 break;
             }
         }
@@ -78,49 +69,65 @@ Item {
             id:xContainer
             width: 690
             height: container.height - typeGroup.height - statusGroup.height - parent.spacing * 4
-            color: "gray"
+            color: "#A0A0F0"
             border.width: 1
             border.color: "black"
-            visible: normalX.isChecked
-            Grid{
-                id:xContainerFlow
-                anchors.fill: parent
-                anchors.margins: 4
-                spacing: 10
-                columns: 6
+            ListModel{
+                id:xModel
             }
-        }
-        Rectangle{
-            id:euXContaienr
-            width: xContainer.width
-            height: xContainer.height
-            color: "gray"
-            border.width: 1
-            border.color: "black"
-            visible: euX.isChecked
-            Grid{
-                id:euXContainerFlow
-                anchors.fill: parent
-                anchors.margins: 4
-                spacing: 10
-                columns: 6
+            ListModel{
+                id:euXModel
             }
-        }
+            ListModel{
+                id:mXModel
+            }
 
-        Rectangle{
-            id:mXContaienr
-            width: xContainer.width
-            height: xContainer.height
-            color: "gray"
-            border.width: 1
-            border.color: "black"
-            visible: mX.isChecked
-            Grid{
-                id:mXContainerFlow
-                anchors.fill: parent
-                anchors.margins: 4
-                spacing: 10
-                columns: 6
+            GridView{
+                id:xView
+                function createMoldItem(ioDefine, hwPoint, board){
+                    return {"isSel":false,
+                        "pointNum":ioDefine.pointName,
+                        "pointDescr":ioDefine.descr,
+                        "hwPoint":hwPoint,
+                        "board":board,
+                    };
+                }
+
+                width: parent.width - 4
+                height: parent.height - 4
+                anchors.centerIn: parent
+                cellWidth: 226
+                cellHeight: 32
+                clip: true
+                model: {
+                    if(normalX.isChecked) return xModel;
+                    if(euX.isChecked) return euXModel;
+                    if(mX.isChecked) return mXModel;
+                    return null;
+                }
+
+                delegate: Row{
+                    spacing: 2
+                    height: 26
+                    ICCheckBox{
+                        text: pointNum + ":" + pointDescr
+                        isChecked: isSel
+                        width: xView.cellWidth * 0.35
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                var m = xView.model;
+                                var toSetSel = !isSel;
+                                m.setProperty(index, "isSel", toSetSel);
+                                for(var i = 0; i < m.count; ++i){
+                                    if( i !== index){
+                                        m.setProperty(i, "isSel", false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -161,45 +168,24 @@ Item {
 
     Component.onCompleted: {
 
-        var xDefines = pData.xs
+        var xDefines = xs;
         var xDefine;
-        var ioDescrComponent = Qt.createComponent("IOTeachDescrComponent.qml");
-        var xM = [];
-        var euxM = [];
-        var mXM = [];
-        var ioDescrObject;
         var i;
         for(i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            ioDescrObject = ioDescrComponent.createObject(xContainerFlow, {"pointDescr" : xDefines[i] + ":"
-                                                          + xDefine.xDefine.descr});
-            xM.push({"data":xDefine,
-                              "ui": ioDescrObject});
-
+            xModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
-        xDefines = pData.euXs;
+
+        xDefines = euXs;
         for(i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            ioDescrObject = ioDescrComponent.createObject(euXContainerFlow, {"pointDescr" : xDefines[i] + ":"
-                                                          + xDefine.xDefine.descr});
-            euxM.push({"data":xDefine,
-                              "ui": ioDescrObject});
-
+            euXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
-        xDefines = pData.mXs;
+        xDefines = mXs;
         for(i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            ioDescrObject = ioDescrComponent.createObject(mXContainerFlow, {"pointDescr" : xDefines[i] + ":"
-                                                          + xDefine.xDefine.descr});
-            mXM.push({"data":xDefine,
-                              "ui": ioDescrObject});
-
+            mXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
-
-        pData.xModel = xM;
-        pData.euXModel = euxM;
-        pData.mXModel = mXM;
-
     }
 }

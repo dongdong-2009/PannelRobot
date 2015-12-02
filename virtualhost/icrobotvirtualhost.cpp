@@ -645,5 +645,12 @@ void ICRobotVirtualhost::InitValveDefines(ICVirtualHostPtr hostPtr, const QList<
 
 void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item)
 {
-    SendContinuousDataHelper(hostPtr, ICAddr_System_Retain_6, item.toDataBuf());
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetAddr(ICAddr_System_Retain_6);
+    toSentFrame->SetLength(2);
+
+    toSentFrame->SetData(item.toDataBuf());
+    hostPtr->AddCommunicationFrame(toSentFrame);
 }

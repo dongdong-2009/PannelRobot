@@ -190,11 +190,13 @@ public:
 
     Q_INVOKABLE bool isInputOn(int index, int board) const
     {
+//        return rand() % 2;
         quint32 iStatus = ICRobotVirtualhost::IStatus(board);
         return iStatus & (1 << index);
     }
     Q_INVOKABLE bool isOutputOn(int index, int board) const
     {
+//        return rand() % 2;
         quint32 oStatus = ICRobotVirtualhost::OStatus(board);
         return oStatus & (1 << index);
     }

@@ -9,7 +9,8 @@ Item {
 //    property int board: 0
 //    property int hwPoint: 0
     property string valveName: ""
-    property bool isOn: false
+    property variant valveStatus: {"y1":false, "x1":false, "y2":false, "x2":false}
+    property variant valve: null
     width: layout.width
     height: layout.height
     Row{
@@ -30,7 +31,7 @@ Item {
             height: 32
             border.color: "black"
             border.width: 2
-            color: "gray"
+            color: valveStatus.y1 ? "lime": "gray"
         }
 
         Rectangle{
@@ -39,7 +40,7 @@ Item {
             height: 32
             border.color: "black"
             border.width: 2
-            color: "gray"
+            color: valveStatus.x1 ? "red": "gray"
         }
 
         ICButton{
@@ -49,7 +50,7 @@ Item {
             text: qsTr("On")
             onButtonClicked: {
                 var toSend = IODefines.valveItemJSON(valveName);
-                panelRobotController.setYStatus(toSend, !isOn);
+                panelRobotController.setYStatus(toSend, !valveStatus.y1);
             }
         }
 
@@ -59,7 +60,7 @@ Item {
             height: 32
             border.color: "black"
             border.width: 2
-            color: "gray"
+            color: valveStatus.y2 ? "lime": "gray"
         }
 
         Rectangle{
@@ -68,7 +69,7 @@ Item {
             height: 32
             border.color: "black"
             border.width: 2
-            color: "gray"
+            color: valveStatus.x2 ? "red": "gray"
         }
 
     }
@@ -80,6 +81,7 @@ Item {
         x1Led.visible = !IODefines.isNormalYType(valveItem);
         y2Led.visible = IODefines.isDoubleYType(valveItem);
         x2Led.visible = IODefines.isDoubleYType(valveItem);
+        valve = valveItem;
     }
 
 //    onIsOnChanged: {

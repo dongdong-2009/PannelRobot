@@ -40,12 +40,20 @@ Item {
         running: visible
         repeat: true
         onTriggered: {
-//            var yItems = pData.pointUIs;
-//            var yItem;
-//            for(var i = 0; i < yItems.length; ++i){
-//                yItem = yItems[i];
-//                yItem.isOn = panelRobotController.isOutputOn(yItem.hwPoint, yItem.board);
-//            }
+            var yItems = pData.pointUIs;
+            var yItem;
+            var valve;
+            var valveStatus = {};
+            for(var i = 0; i < yItems.length; ++i){
+                yItem = yItems[i];
+                valve = yItem.valve;
+
+                valveStatus.y1 = panelRobotController.isOutputOn(valve.y1Point, valve.y1Board);
+                valveStatus.x1 = panelRobotController.isInputOn(valve.x1Point, valve.x1Board);
+                valveStatus.y2 = panelRobotController.isOutputOn(valve.y2Point, valve.y2Board);
+                valveStatus.x2 = panelRobotController.isInputOn(valve.x2Point, valve.x2Board);
+                yItem.valveStatus = valveStatus;
+            }
 //            pData.pointUIs = yItems;
 
             //            update(y0, 0 + ioStart)

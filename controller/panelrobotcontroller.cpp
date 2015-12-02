@@ -9,6 +9,7 @@
 #include "icconfigsaddr.h"
 #include "parser.h"
 #include "icupdatesystem.h"
+#include "icutility.h"
 
 static QScriptValue *getConfigRange_;
 
@@ -727,7 +728,7 @@ static ValveItem VariantToValveItem(const QVariantMap& v)
     ret.status = 0;
     ret.x1Dir = v.value("x1Dir").toUInt();
     ret.x2Dir = v.value("x2Dir").toUInt();
-    ret.time = v.value("time").toUInt();
+    ret.time = v.value("time").toDouble() * 10;
     return ret;
 }
 

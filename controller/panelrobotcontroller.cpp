@@ -731,6 +731,20 @@ static ValveItem VariantToValveItem(const QVariantMap& v)
     return ret;
 }
 
+void PanelRobotController::setYStatus(const QString &defineJson, bool isOn)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariant result = parser.parse(defineJson.toUtf8(), &ok);
+    if(!ok)
+    {
+        return;
+    }
+    ValveItem vi = VariantToValveItem(result.toMap());
+    vi.status = isOn;
+    ICRobotVirtualhost::SendYControlCommand(host_, vi);
+}
+
 void PanelRobotController::initValveDefines(const QString &defineJson)
 {
     QJson::Parser parser;

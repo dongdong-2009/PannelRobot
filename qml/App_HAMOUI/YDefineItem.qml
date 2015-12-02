@@ -48,7 +48,8 @@ Item {
             height: 32
             text: qsTr("On")
             onButtonClicked: {
-                panelRobotController.setYStatus(board, hwPoint, !isOn);
+                var toSend = IODefines.valveItemJSON(valveName);
+                panelRobotController.setYStatus(toSend, !isOn);
             }
         }
 

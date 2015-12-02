@@ -410,10 +410,7 @@ public:
     Q_INVOKABLE quint32 iStatus(int boardID) { return ICRobotVirtualhost::IStatus(boardID);}
     Q_INVOKABLE quint32 oStatus(int boardID) { return ICRobotVirtualhost::OStatus(boardID);}
 
-    Q_INVOKABLE void setYStatus(int boardID, int hwPoint, bool status)
-    {
-        ICRobotVirtualhost::SendYControlCommand(host_, boardID, hwPoint, status);
-    }
+    Q_INVOKABLE void setYStatus(const QString& defineJson, bool isOn);
 
     Q_INVOKABLE void initValveDefines(const QString& defineJson);
 

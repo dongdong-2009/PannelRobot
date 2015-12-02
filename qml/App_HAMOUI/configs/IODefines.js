@@ -268,6 +268,13 @@ var valveDefines = {
                                                                                     IO_BOARD_0, 5, IO_BOARD_0, 5, IO_DIR_PP)
 };
 
+var valveItemJSON = function(name){
+    if(valveDefines.hasOwnProperty(name)){
+        return JSON.stringify(valveDefines[name]);
+    }
+    return "";
+}
+
 var valveDefinesJSON = function(){
     var vI = [];
     for(var v in valveDefines){

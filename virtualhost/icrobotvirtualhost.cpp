@@ -632,9 +632,16 @@ void ICRobotVirtualhost::AddReadConfigCommand(ICVirtualHostPtr hostPtr, int star
 
 }
 
-void ICRobotVirtualhost::SendYControlCommand(ICVirtualHostPtr hostPtr, int boardID, int hwPoint, bool status)
+void ICRobotVirtualhost::SendYControlCommand(ICVirtualHostPtr hostPtr, ValveItem item)
 {
-    ICRobotVirtualhost::AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_2, hwPoint | (boardID << 8) | (status << 11));
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetAddr(ICAddr_System_Retain_2);
+    toSentFrame->SetLength(2);
+
+    toSentFrame->SetData(item.toDataBuf());
+    hostPtr->AddCommunicationFrame(toSentFrame);
 }
 
 void ICRobotVirtualhost::InitValveDefines(ICVirtualHostPtr hostPtr, const QList<ValveItem> &valveDefines)
@@ -645,6 +652,7 @@ void ICRobotVirtualhost::InitValveDefines(ICVirtualHostPtr hostPtr, const QList<
 
 void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item)
 {
+    if(item.type == 0) return;
     ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
     toSentFrame->SetHostID(kHostID);
     toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);

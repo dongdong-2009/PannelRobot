@@ -636,3 +636,14 @@ void ICRobotVirtualhost::SendYControlCommand(ICVirtualHostPtr hostPtr, int board
 {
     ICRobotVirtualhost::AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_2, hwPoint | (boardID << 8) | (status << 11));
 }
+
+void ICRobotVirtualhost::InitValveDefines(ICVirtualHostPtr hostPtr, const QList<ValveItem> &valveDefines)
+{
+    for(int i = 0; i < valveDefines.size(); ++i)
+        SendValveItemToHost(hostPtr, valveDefines.at(i));
+}
+
+void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item)
+{
+    SendContinuousDataHelper(hostPtr, ICAddr_System_Retain_2, item.toDataBuf());
+}

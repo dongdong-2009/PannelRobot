@@ -21,7 +21,27 @@ extern "C"
 
 
 #define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.1"
-
+//
+//typedef union {
+//    struct{
+//        uint32_t num:8;//< 序号
+//        uint32_t out_type:3;   //< 阀类型(0:单输出；1：单头阀；2：双头阀-保持型；3：双头阀-非保持型；)
+//        uint32_t board_id1:3;    //< IO 板ID
+//        uint32_t io_id1:6;      //< IO输出点ID
+//        uint32_t board_id2:3;    //< IO 板ID
+//        uint32_t io_id2:6;      //< IO输出点ID
+//        uint32_t in_board_id1:3;      //< 输入 板ID
+//        uint32_t in_id1:6;    //< 输入 板ID
+//        uint32_t in_board_id2:3;      //< 输入 板ID
+//        uint32_t in_id2:6;    //< 输入 板ID
+//        uint32_t io_status:1;  //< 输出状态
+//        uint32_t in_dir1:1;  //< 输入检测方向1
+//        uint32_t in_dir2:1;  //< 输入检测方向1
+//        uint32_t time:14;//< 检测时间
+//        uint32_t timer;//< 检测时间计时器
+//    }bit;
+//    uint32_t io_all[3];
+//}OPERATION;
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
 {
@@ -32,6 +52,13 @@ typedef enum _ICAddr
     ICAddr_System_Retain_0=1, //< 按键命令地址
     ICAddr_System_Retain_1,//< 版本号地址
     ICAddr_System_Retain_2,//< 手动IO操作
+    ICAddr_System_Retain_3,//< 手动IO操作
+    ICAddr_System_Retain_4,//< 手动IO操作
+    ICAddr_System_Retain_5,//< 手动IO操作
+    ICAddr_System_Retain_6,//< 定义IO操作
+    ICAddr_System_Retain_7,//< 定义IO操作
+    ICAddr_System_Retain_8,//< 定义IO操作
+    ICAddr_System_Retain_9,//< 定义IO操作
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
@@ -914,7 +941,6 @@ typedef union _ALL_PARA_
     uint16_t all_16[sizeof(ADAPTER_PARA)];
     uint32_t all[sizeof(ADAPTER_PARA)/2];
 } ALL_PARA;
-
 
 extern ALL_PARA* all_para;
 #ifdef __cplusplus

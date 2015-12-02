@@ -5,25 +5,11 @@ import "."
 
 Item {
 
-    property variant yPointNames: []
+    property variant valves: []
 
     QtObject{
         id:pData
         property variant pointUIs: []
-    }
-
-    function itemY(index) {
-
-        return (index % 8) * 40 + 20
-    }
-    function itemX(index) {
-        return index < 8 ? 100 : 500
-    }
-    function update(y, index) {
-        var c = panelRobotController.isOutputOn(index + ioStart)
-        if (y.isOn != c) {
-            y.isOn = c
-        }
     }
 
     Grid{
@@ -37,14 +23,13 @@ Item {
 
     }
 
-    onYPointNamesChanged: {
+    onValvesChanged:  {
         var yDefineItemClass = Qt.createComponent("YDefineItem.qml");
         var uis = [];
-        for(var i = 0; i < yPointNames.length; ++i){
-            var ioinfo = IODefines.getYDefineFromPointName(yPointNames[i]);
+        for(var i = 0; i < valves.length; ++i){
+//            var ioinfo = IODefines.getValveItemFromValveName(valves[i]);
 
-            uis.push(yDefineItemClass.createObject(pointsContainer, {"board":ioinfo.type,
-                                                       "hwPoint":ioinfo.hwPoint}));
+            uis.push(yDefineItemClass.createObject(pointsContainer, {"valveName":valves[i]}));
         }
         pData.pointUIs = uis;
     }
@@ -55,12 +40,12 @@ Item {
         running: visible
         repeat: true
         onTriggered: {
-            var yItems = pData.pointUIs;
-            var yItem;
-            for(var i = 0; i < yItems.length; ++i){
-                yItem = yItems[i];
-                yItem.isOn = panelRobotController.isOutputOn(yItem.hwPoint, yItem.board);
-            }
+//            var yItems = pData.pointUIs;
+//            var yItem;
+//            for(var i = 0; i < yItems.length; ++i){
+//                yItem = yItems[i];
+//                yItem.isOn = panelRobotController.isOutputOn(yItem.hwPoint, yItem.board);
+//            }
 //            pData.pointUIs = yItems;
 
             //            update(y0, 0 + ioStart)

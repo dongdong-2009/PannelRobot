@@ -6,6 +6,7 @@ import "Theme.js" as Theme
 import "configs/Keymap.js" as Keymap
 import "ShareData.js" as ShareData
 import "../utils/Storage.js" as Storage
+import "configs/IODefines.js" as IODefines
 
 Rectangle {
     id:mainWindow
@@ -210,6 +211,7 @@ Rectangle {
         panelRobotController.screenRestore.connect(onScreenRestore);
 
         Storage.initialize();
+        panelRobotController.initValveDefines(IODefines.valveDefinesJSON());
         console.log("main load finished!")
     }
     focus: true

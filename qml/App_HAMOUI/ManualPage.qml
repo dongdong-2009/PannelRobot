@@ -92,16 +92,14 @@ ContentPageBase {
                         yDefinePage1Class.createObject(
                             pageContainer,
                             {
-                                "yPointNames": ["Y010", "Y011", "Y012", "Y013",
-                                    "Y014", "Y015", "Y016", "Y017", "Y020"]
+                                "valves": ["valve0", "valve1", "valve2", "valve3"]
                             });
                 pageContainer.addPage(page)
                 page =
                         yDefinePage1Class.createObject(
                             pageContainer,
                             {
-                                "yPointNames": ["Y030", "Y031", "Y032", "Y033",
-                                    "Y034", "Y035", "Y036", "Y037", "Y040"]
+                                "valves": ["valve0", "valve1", "valve2", "valve3"]
                             });
                 pageContainer.addPage(page)
                 //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]

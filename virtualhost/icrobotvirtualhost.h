@@ -9,6 +9,32 @@
 #include "icparameterscache.h"
 #include "icconfigsaddr.h"
 
+union ValveItem{
+    struct{
+        quint32 id: 8;
+        quint32 type: 3;
+        quint32 y1Board: 3;
+        quint32 y1Point: 6;
+        quint32 y2Board: 3;
+        quint32 y2Point: 6;
+        quint32 x1Board: 3;
+        quint32 x1Point: 6;
+        quint32 x2Board: 3;
+        quint32 x2Point: 6;
+        quint32 status: 1;
+        quint32 x1Dir:1;
+        quint32 x2Dir:1;
+        quint32 time:14;
+    };
+    quint32 all[2];
+    QVector<quint32> toDataBuf() const
+    {
+        QVector<quint32> ret;
+        ret<<(all[0])<<(all[1]);
+        return ret;
+    }
+};
+
 
 class ICRobotVirtualhost : public ICVirtualHost
 {
@@ -180,6 +206,8 @@ public:
     static quint32 IStatus(int boardID) { return iStatusMap_.value(boardID, 0);}
     static quint32 OStatus(int boardID) { return oStatusMap_.value(boardID, 0);}
     static void SendYControlCommand(ICVirtualHostPtr hostPtr , int boardID, int hwPoint, bool status);
+    static void InitValveDefines(ICVirtualHostPtr hostPtr, const QList<ValveItem>& valveDefines);
+    static void SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item);
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();

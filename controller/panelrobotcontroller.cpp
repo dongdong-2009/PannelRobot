@@ -2,6 +2,7 @@
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include <QApplication>
+#include <QVariant>
 #include "icappsettings.h"
 #include "icmachineconfig.h"
 //#include "icdalhelper.h"
@@ -708,4 +709,41 @@ bool PanelRobotController::setCurrentTranslator(const QString &name)
 {
     ICAppSettings().SetTranslatorName(name);
     return LoadTranslator_(name);
+}
+
+static ValveItem VariantToValveItem(const QVariantMap& v)
+{
+    ValveItem ret;
+    ret.id = v.value("id").toUInt();
+    ret.type = v.value("type").toUInt();
+    ret.y1Board = v.value("y1Board").toUInt();
+    ret.y2Board = v.value("y2Board").toUInt();
+    ret.y1Point = v.value("y1Point").toUInt();
+    ret.y2Point = v.value("y2Point").toUInt();
+    ret.x1Board = v.value("x1Board").toUInt();
+    ret.x2Board = v.value("x2Board").toUInt();
+    ret.x1Point = v.value("x1Point").toUInt();
+    ret.x2Point = v.value("x2Point").toUInt();
+    ret.status = 0;
+    ret.x1Dir = v.value("x1Dir").toUInt();
+    ret.x2Dir = v.value("x2Dir").toUInt();
+    ret.time = v.value("time").toUInt();
+    return ret;
+}
+
+void PanelRobotController::initValveDefines(const QString &defineJson)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(defineJson.toUtf8(), &ok).toList();
+    if(!ok)
+    {
+        return;
+    }
+    QList<ValveItem> vIs;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        vIs.append(VariantToValveItem(result.at(i).toMap()));
+    }
+    ICRobotVirtualhost::InitValveDefines(host_, vIs);
 }

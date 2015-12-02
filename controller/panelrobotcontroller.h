@@ -415,6 +415,8 @@ public:
         ICRobotVirtualhost::SendYControlCommand(host_, boardID, hwPoint, status);
     }
 
+    Q_INVOKABLE void initValveDefines(const QString& defineJson);
+
 signals:
     //    void currentMoldChanged(QString);
     //    void currentMachineConfigChanged(QString);

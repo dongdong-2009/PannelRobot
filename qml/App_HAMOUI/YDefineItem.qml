@@ -9,6 +9,7 @@ Item {
 //    property int board: 0
 //    property int hwPoint: 0
     property string valveName: ""
+    property bool isOn: false
     width: layout.width
     height: layout.height
     Row{

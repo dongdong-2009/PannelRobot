@@ -645,5 +645,5 @@ void ICRobotVirtualhost::InitValveDefines(ICVirtualHostPtr hostPtr, const QList<
 
 void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item)
 {
-    SendContinuousDataHelper(hostPtr, ICAddr_System_Retain_2, item.toDataBuf());
+    SendContinuousDataHelper(hostPtr, ICAddr_System_Retain_6, item.toDataBuf());
 }

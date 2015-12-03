@@ -437,8 +437,13 @@ var flagActionToStringHandler = function(actionObject){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-            + qsTr("Delay:") + actionObject.delay;
+    if(actionObject.type != VALVE_BOARD){
+        return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                + qsTr("Delay:") + actionObject.delay;
+    }else{
+        return qsTr("Output:") + getValveItemFromValveID(actionObject.point).descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                + qsTr("Delay:") + actionObject.delay;
+    }
 }
 
 var syncBeginActionToStringHandler = function(actionObject){
@@ -554,7 +559,7 @@ var actionObjectToEditableITems = function(actionObject){
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
                     {"item":"delay", "range":"s_rw_0_32_2_1100"}
-               ];
+                ];
     }else if(actionObject.action === actions.F_CMD_IO_OUTPUT){
         return [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT){

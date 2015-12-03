@@ -13,6 +13,7 @@ var M_BOARD_1 = 5;
 var M_BOARD_2 = 6;
 
 var EUIO_BOARD = 7;
+var VALVE_BOARD = 8;
 
 var IO_TYPE_NORMAL_Y = 0;
 var IO_TYPE_SINGLE_Y = 1;
@@ -295,6 +296,14 @@ var isDoubleYType = function(valve){
 var getValveItemFromValveName = function(valve){
     if(valveDefines.hasOwnProperty(valve))
         return valveDefines[valve];
+    return null;
+}
+
+var getValveItemFromValveID = function(id){
+    for(var o in valveDefines){
+        if(valveDefines[o].id === id)
+            return valveDefines[o];
+    }
     return null;
 }
 

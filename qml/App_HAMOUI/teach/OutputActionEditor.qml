@@ -20,6 +20,8 @@ Item {
     ]
     property  variant euYs : ["EuY010", "EuY011", "EuY012"]
     property variant mYs: ["INY010"]
+    property variant singleYs: ["valve1"]
+    property variant holdDoubleYs: ["valve2"]
     //    QtObject{
     //        id:pData
 
@@ -39,8 +41,12 @@ Item {
         }else if(euY.isChecked){
             mD = euYModel;
         }
-        else
+        else if(mY.isChecked)
             mD = mYModel;
+        else if(singleY.isChecked)
+            mD = singleYModel;
+        else
+            mD = holdDoubleYModel;
         for(var i = 0; i < mD.count; ++i)
         {
             data = mD.get(i);
@@ -76,6 +82,16 @@ Item {
                 text: qsTr("M")
                 visible: mYs.length > 0
             }
+            ICCheckBox{
+                id:singleY
+                text: qsTr("Single Y")
+                visible: singleYs.length > 0
+            }
+            ICCheckBox{
+                id:holdDoubleY
+                text: qsTr("Hold Double Y")
+                visible: holdDoubleYs.length > 0
+            }
         }
         Rectangle{
             id:yContainer
@@ -94,6 +110,12 @@ Item {
             ListModel{
                 id:mYModel
             }
+            ListModel{
+                id:singleYModel
+            }
+            ListModel{
+                id:holdDoubleYModel
+            }
 
             GridView{
                 id:yView
@@ -101,6 +123,16 @@ Item {
                     return {"isSel":false,
                         "pointNum":ioDefine.pointName,
                         "pointDescr":ioDefine.descr,
+                        "hwPoint":hwPoint,
+                        "board":board,
+                        "isOn": false
+                    };
+                }
+
+                function createValveMoldItem(pointNum, pointDescr, hwPoint, board){
+                    return {"isSel":false,
+                        "pointNum":pointNum,
+                        "pointDescr":pointDescr,
                         "hwPoint":hwPoint,
                         "board":board,
                         "isOn": false
@@ -117,6 +149,8 @@ Item {
                     if(normalY.isChecked) return yModel;
                     if(euY.isChecked) return euYModel;
                     if(mY.isChecked) return mYModel;
+                    if(singleY.isChecked) return singleYModel;
+                    if(holdDoubleY.isChecked) return holdDoubleYModel;
                     return null;
                 }
 
@@ -209,6 +243,18 @@ Item {
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             mYModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+        }
+
+        yDefines = singleYs;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+        }
+
+        yDefines = holdDoubleYs;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
         }
 
     }

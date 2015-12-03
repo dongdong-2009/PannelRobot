@@ -95,10 +95,17 @@ function appendAlarmToLog(alarmItem){
     db.transaction(function(tx) {
         var rs = tx.executeSql(icStrformat('SELECT COUNT(*), MIN({0}) FROM {1};', ALARM_LOG_TB_INFO.id_col, ALARM_LOG_TB_INFO.tb_name));
 //        console.log(rs.rows.item(0)["COUNT(*)"], rs.rows.item(0)["MAX(id)"]);
-//        var newID = rs.rows.item(0)["MIN(id)"] + 1;
-//        if(rs.rows.item(0)["COUNT(*)"] >= ALARM_LOG_TB_INFO.max){
-//            tx.executeSql('UPDATE alarmlog from')
-//        }
+        var newID = rs.rows.item(0)["MIN(id)"] + 1;
+        if(rs.rows.item(0)["COUNT(*)"] >= ALARM_LOG_TB_INFO.max){
+            tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8}, {9}={10} WHERE {1}={11}',
+                                      ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col, newID,
+                                      ALARM_LOG_TB_INFO.alarm_num_col, alarmItem.alarmNum,
+                                      ALARM_LOG_TB_INFO.level_col, alarmItem.level,
+                                      ALARM_LOG_TB_INFO.triggerTime_col, Date.now().getTime(),
+                                      ALARM_LOG_TB_INFO.endTime_col, ""));
+        }else{
+//            tx.executeSql(icStrformat());
+        }
 
 //        for(var o in rs.rows.item(0)){
 //            console.log(o);

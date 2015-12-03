@@ -136,13 +136,13 @@ Item {
         ICCheckableLineEdit{
             id:motor0
             configName: AxisDefine.axisInfos[0].name
-            configAddr: "s_rw_0_32_3_1000"
+            configAddr: "s_rw_0_32_3_1300"
             inputWidth: PData.axisEditWidth
         }
         ICCheckableLineEdit{
             id:motor1
             configName: AxisDefine.axisInfos[1].name
-            configAddr: "s_rw_0_32_3_1001"
+            configAddr: "s_rw_0_32_3_1300"
             inputWidth: PData.axisEditWidth
 
 
@@ -150,14 +150,14 @@ Item {
         ICCheckableLineEdit{
             id:motor2
             configName: AxisDefine.axisInfos[2].name
-            configAddr: "s_rw_0_32_3_1002"
+            configAddr: "s_rw_0_32_3_1300"
             inputWidth: PData.axisEditWidth
 
         }
         ICCheckableLineEdit{
             id:motor3
             configName: AxisDefine.axisInfos[3].name
-            configAddr: "s_rw_0_32_3_1003"
+            configAddr: "s_rw_0_32_3_1300"
             inputWidth: PData.axisEditWidth
 
 
@@ -165,7 +165,7 @@ Item {
         ICCheckableLineEdit{
             id:motor4
             configName: AxisDefine.axisInfos[4].name
-            configAddr: "s_rw_0_32_3_1004"
+            configAddr: "s_rw_0_32_3_1300"
             inputWidth: PData.axisEditWidth
 
 
@@ -173,7 +173,7 @@ Item {
         ICCheckableLineEdit{
             id:motor5
             configName: AxisDefine.axisInfos[5].name
-            configAddr: "s_rw_0_32_3_1005"
+            configAddr: "s_rw_0_32_3_1300"
             inputWidth: PData.axisEditWidth
 
 

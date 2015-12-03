@@ -416,6 +416,11 @@ public:
 
     Q_INVOKABLE void initValveDefines(const QString& defineJson);
 
+    Q_INVOKABLE quint32 currentErrNum()
+    {
+        return host_->HostStatusValue(&c_ro_0_32_0_932);
+    }
+
 signals:
     //    void currentMoldChanged(QString);
     //    void currentMachineConfigChanged(QString);

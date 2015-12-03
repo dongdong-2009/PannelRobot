@@ -156,7 +156,7 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      }
      int p = 0;
      QString tmp = preeditString_ + curText;
-//     if(validator_.validate(tmp, p) == QValidator::Acceptable)
+     if(validator_.validate(tmp, p) == QValidator::Acceptable)
      {
          preeditString_ += curText;
          ui->inputEdit->setText(preeditString_);

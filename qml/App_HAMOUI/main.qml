@@ -250,9 +250,10 @@ Rectangle {
 //                console.log("Send command:", key);
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
             }
-            var alarmNum = panelRobotController.statusValue("c_ro_0_32_0_932");
+            var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum != alarmBar.errID){
                 alarmBar.errID = alarmNum;
+                Storage.appendAlarmToLog(null);
             }
             if(alarmNum == 2){
                 paraChose.visible = true;

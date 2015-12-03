@@ -20,8 +20,9 @@ MouseArea{
         anchors.centerIn: parent
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.topMargin: 6
             id: paraDiff
-            text: qsTr("paraDiff,plase chose")
+            text: qsTr("Host configs and panel configs is different,please chose!")
         }
         Row{
             spacing: 50

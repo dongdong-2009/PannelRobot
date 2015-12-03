@@ -143,8 +143,8 @@ void PanelRobotController::Init()
     InitMold_();
     InitMachineConfig_();
     host_->SetCommunicateDebug(true);
-#ifdef Q_WS_X11
-    host_->SetCommunicateDebug(false);
+#ifdef COMM_DEBUG
+    host_->SetCommunicateDebug(true);
     OnNeedToInitHost();
 #endif
 }

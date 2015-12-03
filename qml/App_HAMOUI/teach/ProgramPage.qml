@@ -32,19 +32,8 @@ ContentPageBase{
             property int menuItemY: 4
         }
 
-//        Rectangle{
-//            id:spliteLine
-//            width: parent.width
-//            height: 1
-//            color: "black"
-//            anchors.top: menuContainer.bottom
-//        }
-
         ICStackContainer{
             id:pageContainer
-//            width: parent.width
-//            height: parent.height
-//            anchors.top: spliteLine.bottom
         }
         Component.onCompleted: {
             var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');

@@ -15,7 +15,7 @@ Item {
     Grid{
         id:pointsContainer
         columns: 2
-        spacing: 10
+        spacing: 40
         flow:Grid.TopToBottom
         anchors.fill: parent
         anchors.leftMargin: 20

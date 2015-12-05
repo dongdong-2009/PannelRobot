@@ -385,6 +385,7 @@ void ICRobotVirtualhost::CommunicateImpl()
         int ec = recvFrame_->ErrorCode();
         emit CommunicateError(ec);
 #ifdef NEW_PLAT
+//        if(ec == FunctionCode_EditTeach)
 #else
         if(ec == COMMEC_NeedToInit)
         {
@@ -471,6 +472,10 @@ void ICRobotVirtualhost::CommunicateImpl()
                     //                qDebug()<<"statusDataTmp_.at(i)";
                     SetCommunicateInterval(INIT_INTERVAL);
                     emit NeedToInitHost();
+                    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
+                                                                                                          ICAddr_System_Retain_1,
+                                                                                                          64); // read host version
+                    AddCommunicationFrame(toSentFrame);
                 }
                 //            currentStatusGroup_ = ICAddr_Read_Status0;
 

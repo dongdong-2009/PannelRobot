@@ -3,34 +3,29 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
-import "../AppSettings.js" as UISettings
 
 
 Item {
-
-    QtObject{
-        id:pData
-        property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
-        property variant inputs: [
-            "X010",
-            "X011",
-            "X012",
-            "X014",
-            "EuX010"
-        ]
-    }
-
-    signal backToMenuTriggered()
+    id:container
+    property variant singleYs: ["valve1"]
+    property variant holdDoubleYs: ["valve2"]
 
     function createActionObjects(){
         var ret = [];
-        var input;
-        for(var i = 0; i < inputModel.count; ++i)
+        var mD;
+        var data;
+        var ui;
+
+        if(singleY.isChecked)
+            mD = singleYModel;
+        else
+            mD = holdDoubleYModel;
+        for(var i = 0; i < mD.count; ++i)
         {
-            input = inputModel.get(i);
-            if(input.isEn){
+            data = mD.get(i);
+            if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                ret.push(Teach.generateCheckAction(input.hwPoint, isOn, limit.configValue));
+                ret.push(Teach.generateCheckAction(data.hwPoint, onBox.isChecked ? Teach.VALVE_CHECK_START : Teach.VALVE_CHECK_END, delay.configValue));
                 break;
             }
         }
@@ -39,99 +34,160 @@ Item {
     width: parent.width
     height: parent.height
 
-
-    ICButton{
-        id:backToMenu
-        text: qsTr("Back to Menu")
-        onButtonClicked: backToMenuTriggered()
-    }
-
-    Rectangle {
-        id: inputContainer
-        //        visible: false
-        ListModel{
-            id:inputModel
-            function onCheckBoxStatusChanged(index, isChecked){
-                this.set(index, {"isEn":isChecked});
-                if(!isChecked) return;
-                for(var i = 0; i < this.count; ++i){
-                    if(i !== index){
-                        this.set(i, {"isEn":false});
-                    }
-                }
-            }
-        }
-
-        width: parent.width - 2
-        height: parent.height - 150
-        anchors.top:  backToMenu.bottom
-        anchors.topMargin:  10
-        ListView{
-            id:inputListView
-            width: parent.width
-            height: parent.height
-            model: inputModel
-            spacing: 10
-            delegate: ICCheckBox{
-                text: inputDefine
-                width: parent.width
-                height: 24
-                isChecked: isEn
-                useCustomClickHandler: true
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        inputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
-                    }
-                }
-            }
-        }
-    }
-
-    ICButtonGroup{
-        id:statusGroup
-        anchors.top: inputContainer.bottom;
-        anchors.topMargin: 6
-        checkedItem: onBox
-        Row{
-            spacing: 10
+    Column{
+        spacing: 4
+        ICButtonGroup{
+            id:typeGroup
+            spacing: 20
+//            checkedItem: singleY
             ICCheckBox{
-                id:onBox
-                text: qsTr("ON")
+                id:singleY
+                text: qsTr("Single Y")
                 isChecked: true
+                visible: singleYs.length > 0
             }
             ICCheckBox{
-                id:offBox
-                text: qsTr("OFF")
+                id:holdDoubleY
+                text: qsTr("Hold Double Y")
+                visible: holdDoubleYs.length > 0
             }
         }
-        height: 32
+        Rectangle{
+            id:yContainer
+            width: 690
+            height: container.height - typeGroup.height - statusGroup.height - parent.spacing * 4
+            color: "#A0A0F0"
+            border.width: 1
+            border.color: "black"
+            //            visible: normalY.isChecked
+            ListModel{
+                id:singleYModel
+            }
+            ListModel{
+                id:holdDoubleYModel
+            }
+
+            GridView{
+                id:yView
+                function createMoldItem(ioDefine, hwPoint, board){
+                    return {"isSel":false,
+                        "pointNum":ioDefine.pointName,
+                        "pointDescr":ioDefine.descr,
+                        "hwPoint":hwPoint,
+                        "board":board,
+                        "isOn": false
+                    };
+                }
+
+                function createValveMoldItem(pointNum, pointDescr, hwPoint, board){
+                    return {"isSel":false,
+                        "pointNum":pointNum,
+                        "pointDescr":pointDescr,
+                        "hwPoint":hwPoint,
+                        "board":board,
+                        "isOn": false
+                    };
+                }
+
+                width: parent.width - 4
+                height: parent.height - 4
+                anchors.centerIn: parent
+                cellWidth: 226
+                cellHeight: 32
+                clip: true
+                model: {
+
+                    if(singleY.isChecked) return singleYModel;
+                    if(holdDoubleY.isChecked) return holdDoubleYModel;
+                    return null;
+                }
+
+                delegate: Row{
+                    spacing: 2
+                    height: 26
+                    ICCheckBox{
+                        text: pointNum
+                        isChecked: isSel
+                        width: yView.cellWidth * 0.35
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                var m = yView.model;
+                                var toSetSel = !isSel;
+                                m.setProperty(index, "isSel", toSetSel);
+                                for(var i = 0; i < m.count; ++i){
+                                    if( i !== index){
+                                        m.setProperty(i, "isSel", false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ICButton{
+                        height: parent.height
+                        text: pointDescr
+                        width:yView.cellWidth * 0.6
+                        bgColor: isOn ? "lime" : "white"
+                        onButtonClicked: {
+                            panelRobotController.setYStatus(board, hwPoint, !isOn);
+                        }
+                    }
+                }
+            }
+        }
+
+        Row{
+            spacing: 20
+
+            ICButtonGroup{
+                id:statusGroup
+                checkedItem: onBox
+                Row{
+                    spacing: 10
+                    ICCheckBox{
+                        id:onBox
+                        text: qsTr("Start")
+                        isChecked: true
+                    }
+                    ICCheckBox{
+                        id:offBox
+                        text: qsTr("End")
+                    }
+                }
+                height: 32
+            }
+
+            ICConfigEdit{
+                id:delay
+                configName: qsTr("Delay:")
+                unit: qsTr("s")
+                width: 100
+                height: 24
+                visible: true
+                z:1
+                configAddr: "s_rw_0_32_1_1201"
+                configValue: "0.0"
+            }
+        }
     }
 
-    ICConfigEdit{
-        id:limit
-        configName: qsTr("Limit:")
-        unit: qsTr("s")
-        anchors.top: statusGroup.bottom;
-        anchors.topMargin: 6
-        width: 100
-        height: 24
-        visible: true
-        z:1
-    }
 
     Component.onCompleted: {
 
-        var xDefines = pData.inputs;
-        var xDefine;
-        for(var i = 0; i < xDefines.length; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            inputModel.append({"isEn":false,
-                                  "inputDefine": xDefines[i] + ":"
-                                  + xDefine.xDefine.descr[pData.currentLanguage],
-                                  "hwPoint":xDefine.hwPoint});
+        var yDefines = singleYs;
+        var yDefine;
+        var i;
+
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+        }
+
+        yDefines = holdDoubleYs;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
         }
 
     }
-
 }

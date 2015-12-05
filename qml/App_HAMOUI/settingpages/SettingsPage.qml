@@ -105,7 +105,7 @@ ContentPageBase{
 //    }
 
     content: settingContainer
-    statusSection: versionContainer
+//    statusSection: versionContainer
     Component.onCompleted: {
         var settingClass = Qt.createComponent("ProductSettings.qml");
         var psObject = settingClass.createObject(pageContainer);

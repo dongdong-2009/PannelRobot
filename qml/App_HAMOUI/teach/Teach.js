@@ -97,6 +97,9 @@ var actHelper = 0;
 var actions = {
 
 };
+
+var VALVE_CHECK_START = 10;
+var VALVE_CHECK_END = 9;
 actions.F_CMD_NULL = actHelper++;
 actions.F_CMD_SYNC_START = actHelper++;
 actions.F_CMD_SYNC_END = actHelper++;
@@ -233,12 +236,12 @@ var generateWaitAction = function(which, type, status, limit){
     };
 }
 
-var generateCheckAction = function(which, status, limit){
+var generateCheckAction = function(point, type, delay){
     return {
-        "action":actions.ACT_CHECK,
-        "point":which,
-        "pointStatus":status,
-        "limit":limit || 0.50
+        "action":actions.F_CMD_IO_OUTPUT,
+        "type":type,
+        "point":point,
+        "delay":delay
     };
 }
 
@@ -437,11 +440,18 @@ var flagActionToStringHandler = function(actionObject){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    if(actionObject.type !== VALVE_BOARD){
-        return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+    if(actionObject.type === VALVE_BOARD){
+        return qsTr("Output:") + getValveItemFromValveID(actionObject.point).descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                + qsTr("Delay:") + actionObject.delay;
+
+    }else if(actionObject.type === VALVE_CHECK_START){
+        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Start") + " "
+                + qsTr("Delay:") + actionObject.delay;
+    }else if(actionObject.type === VALVE_CHECK_END){
+        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("End") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{
-        return qsTr("Output:") + getValveItemFromValveID(actionObject.point).descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+        return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
     }
 }

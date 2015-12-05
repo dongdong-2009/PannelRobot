@@ -264,9 +264,22 @@ Item {
         onTriggered: {
             var currentModel = yView.model;
             var modelItem;
-            for(var i = 0; i < currentModel.count; ++i){
-                modelItem =  currentModel.get(i);
-                currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(modelItem.hwPoint, modelItem.board));
+            var i;
+            if(singleY.isChecked ||
+                    holdDoubleY.isChecked)
+            {
+                var valveDefine;
+                for(i = 0; i < currentModel.count; ++i){
+                    modelItem =  currentModel.get(i);
+                    valveDefine = IODefines.getValveItemFromValveID(modelItem.hwPoint);
+                    currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(valveDefine.y1Point, valveDefine.y1Board));
+                }
+            }else{
+
+                for(i = 0; i < currentModel.count; ++i){
+                    modelItem =  currentModel.get(i);
+                    currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(modelItem.hwPoint, modelItem.board));
+                }
             }
         }
     }

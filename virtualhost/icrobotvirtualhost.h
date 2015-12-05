@@ -208,6 +208,7 @@ public:
     static void SendYControlCommand(ICVirtualHostPtr hostPtr , ValveItem item);
     static void InitValveDefines(ICVirtualHostPtr hostPtr, const QList<ValveItem>& valveDefines);
     static void SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item);
+    static QString HostVersion() { return hostVersion_;}
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
@@ -229,6 +230,7 @@ private:
     static QMap<int, quint32> iStatusMap_;
     static QMap<int, quint32> oStatusMap_;
     static QQueue<ICRobotTransceiverData*> keyCommandList_;
+    static QString hostVersion_;
 
 private:
     bool recvRet_;

@@ -409,16 +409,22 @@ public:
 #endif
     }
 
-    Q_INVOKABLE quint32 iStatus(int boardID) { return ICRobotVirtualhost::IStatus(boardID);}
-    Q_INVOKABLE quint32 oStatus(int boardID) { return ICRobotVirtualhost::OStatus(boardID);}
+    Q_INVOKABLE quint32 iStatus(int boardID) const  { return ICRobotVirtualhost::IStatus(boardID);}
+    Q_INVOKABLE quint32 oStatus(int boardID) const { return ICRobotVirtualhost::OStatus(boardID);}
 
     Q_INVOKABLE void setYStatus(const QString& defineJson, bool isOn);
 
     Q_INVOKABLE void initValveDefines(const QString& defineJson);
 
-    Q_INVOKABLE quint32 currentErrNum()
+    Q_INVOKABLE quint32 currentErrNum() const
     {
         return host_->HostStatusValue(&c_ro_0_32_0_932);
+    }
+
+    Q_INVOKABLE QString hostVersion() const { return ICRobotVirtualhost::HostVersion();}
+    Q_INVOKABLE QString panelControllerVersion() const { return SW_VER;}
+    Q_INVOKABLE QString controllerVersion() const {
+         return panelControllerVersion() + "_" + hostVersion();
     }
 
 signals:

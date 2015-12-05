@@ -220,7 +220,6 @@ Rectangle {
     Component.onCompleted: {
         var alarmlog = Storage.alarmlog();
         for(var i = 0; i < alarmlog.length; ++i){
-            console.log(alarmlog[i].id, alarmlog[i].alarmNum);
             alarmModel.append(alarmlog[i]);
         }
     }

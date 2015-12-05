@@ -44,7 +44,19 @@ Item {
     ICSettingConfigsScope{
         id:maintainPage
         Row{
+            id:versionContainer
+            Text {
+                text: qsTr("UI Version:") + "S6-0.1.1" + ";"
+            }
+            Text {
+                text: qsTr("Controller Version:") + panelRobotController.controllerVersion();
+            }
+        }
+
+        Row{
             spacing: 6
+            anchors.top: versionContainer.bottom
+            anchors.topMargin: 10;
             Rectangle{
                 id:listViewContainer
                 width: 600

@@ -7,6 +7,7 @@
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
+QString ICRobotVirtualhost::hostVersion_;
 #define REFRESH_COUNT_PER 41
 #define REFRESH_INTERVAL 40
 #define REFRESH_END ICAddr_Read_Status40
@@ -34,6 +35,10 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     SetCommunicateInterval(8);
 #endif
     AddRefreshStatusCommand_();
+    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
+                                                                                          ICAddr_System_Retain_1,
+                                                                                          64); // read host version
+    AddCommunicationFrame(toSentFrame);
 }
 
 bool ICRobotVirtualhost::InitConfigsImpl(const QVector<QPair<quint32, quint32> > &configList, int startAddr)
@@ -239,69 +244,69 @@ bool ICRobotVirtualhost::InitMoldFnc(ICVirtualHostPtr hostPtr, const QList<QPair
 
 bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp)
 {
-//    QList<QPair<int, quint32> > configs = vp;
-//    qSort(configs.begin(), configs.end(), PairLess);
-//    int st = 1;
-//    QMap<int, int> startIndexToSize;
-//    int sa = configs.at(0).first;
-//    st = 1;
-//    int addr;
-//    for(int i = 1; i != configs.size(); ++i)
-//    {
-//        if(st == 1)
-//        {
-//            addr = sa;
-//        }
-//        if(configs.at(i).first - sa > 1)
-//        {
-//            startIndexToSize.insert(addr, st);
-//            st = 1;
-//            sa = configs.at(i).first;
-//            startIndexToSize.insert(sa, st);
-//            addr = sa;
-//            continue;
-//        }
-//        ++sa;
-//        ++st;
-//    }
-//    startIndexToSize.insert(addr, st);
-//    QMap<int, int>::iterator p = startIndexToSize.begin();
-//    QVector<quint32> tempDataBuffer;
-//    QList<QPair<int, quint32> > midConfigs;
+    //    QList<QPair<int, quint32> > configs = vp;
+    //    qSort(configs.begin(), configs.end(), PairLess);
+    //    int st = 1;
+    //    QMap<int, int> startIndexToSize;
+    //    int sa = configs.at(0).first;
+    //    st = 1;
+    //    int addr;
+    //    for(int i = 1; i != configs.size(); ++i)
+    //    {
+    //        if(st == 1)
+    //        {
+    //            addr = sa;
+    //        }
+    //        if(configs.at(i).first - sa > 1)
+    //        {
+    //            startIndexToSize.insert(addr, st);
+    //            st = 1;
+    //            sa = configs.at(i).first;
+    //            startIndexToSize.insert(sa, st);
+    //            addr = sa;
+    //            continue;
+    //        }
+    //        ++sa;
+    //        ++st;
+    //    }
+    //    startIndexToSize.insert(addr, st);
+    //    QMap<int, int>::iterator p = startIndexToSize.begin();
+    //    QVector<quint32> tempDataBuffer;
+    //    QList<QPair<int, quint32> > midConfigs;
     ICRobotTransceiverData *data;
-//    while(p != startIndexToSize.end())
-//    {
-//        //        int size = configs.size();
-//        int size = p.value();
-//        const int length = 16;
-//        const int shift = 4;
-//        int splitCount = qCeil(size / static_cast<qreal>(length));
-//        for(int i = 0; i != splitCount; ++i)
-//        {
-//            data = new ICRobotTransceiverData();
-//            data->SetHostID(kHostID);
-//            data->SetFunctionCode(FunctionCode_WriteAddr);
-//            data->SetAddr(static_cast<ICAddr>(p.key() + (i << shift)) /* *64 */);
-//            if( i == splitCount - 1)
-//            {
-//                data->SetLength(size - (i << shift));
-//            }
-//            else
-//            {
-//                data->SetLength(length);
-//            }
-//            midConfigs = configs.mid(i << shift, data->GetLength());
-//            tempDataBuffer.clear();
-//            for(int j = 0; j != midConfigs.size(); ++j)
-//            {
-//                tempDataBuffer.append(midConfigs.at(j).second);
-//            }
-//            data->SetData(tempDataBuffer);
-//            hostPtr->AddCommunicationFrame(data);
-//        }
-//        configs = configs.mid(size);
-//        ++p;
-//    }
+    //    while(p != startIndexToSize.end())
+    //    {
+    //        //        int size = configs.size();
+    //        int size = p.value();
+    //        const int length = 16;
+    //        const int shift = 4;
+    //        int splitCount = qCeil(size / static_cast<qreal>(length));
+    //        for(int i = 0; i != splitCount; ++i)
+    //        {
+    //            data = new ICRobotTransceiverData();
+    //            data->SetHostID(kHostID);
+    //            data->SetFunctionCode(FunctionCode_WriteAddr);
+    //            data->SetAddr(static_cast<ICAddr>(p.key() + (i << shift)) /* *64 */);
+    //            if( i == splitCount - 1)
+    //            {
+    //                data->SetLength(size - (i << shift));
+    //            }
+    //            else
+    //            {
+    //                data->SetLength(length);
+    //            }
+    //            midConfigs = configs.mid(i << shift, data->GetLength());
+    //            tempDataBuffer.clear();
+    //            for(int j = 0; j != midConfigs.size(); ++j)
+    //            {
+    //                tempDataBuffer.append(midConfigs.at(j).second);
+    //            }
+    //            data->SetData(tempDataBuffer);
+    //            hostPtr->AddCommunicationFrame(data);
+    //        }
+    //        configs = configs.mid(size);
+    //        ++p;
+    //    }
     InitConfigHelper(hostPtr, vp);
 
     data = new ICRobotTransceiverData(kHostID,
@@ -373,7 +378,7 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
 //QTime testTime;
 void ICRobotVirtualhost::CommunicateImpl()
 {
-//    qDebug()<<"time:"<<testTime.restart();
+    //    qDebug()<<"time:"<<testTime.restart();
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
     if(recvRet_ == false || recvFrame_->IsError())
     {
@@ -418,64 +423,62 @@ void ICRobotVirtualhost::CommunicateImpl()
     }
     if(unlikely(IsCommunicateDebug()) && !recvFrame_->IsQuery())
     {
-//        qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-//        qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
+        //        qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
+        //        qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
         //        emit ReadyCommunicate();
     }
     if(likely(recvRet_ && !recvFrame_->IsError()))
         //    if(1)
     {
-        //        if(IsCommunicateDebug())
-        //        {
-        //            qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-        //            ICHCTransceiverData::ICTransceiverDataBuffer temp = recvFrame_->Data();
-        //            int k = temp.size();
-        //            QString v;
-        //            for(int i=0;i<k;i++)
-        //            {
-        //                if(temp.at(i)==0)break;
-        //                v.append(char(temp.at(i)&0Xff));
-        //                v.append(char((temp.at(i)>>8)&0Xff)) ;
-        //                v.append(char((temp.at(i)>>16)&0Xff)) ;
-        //                v.append(char((temp.at(i)>>24)&0Xff));
-        //            }
-        //            qDebug()<<"Version:"<< v;
-        //            qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-        //            //            emit CommunicateErrChecked();
-        //        }
         if(recvFrame_->IsQuery())
         {
 #ifdef NEW_PLAT
             statusDataTmp_ = recvFrame_->Data();
             startIndex_ = recvFrame_->GetAddr();
-            for(int i = 0; i != statusDataTmp_.size(); ++i)
+            if(startIndex_ == ICAddr_System_Retain_1)
             {
-                statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
-//                qDebug()<<statusDataTmp_.at(i);
-            }
-            if(currentStatusGroup_ == 0)
-            {
-                int boardID = HostStatusValue(&c_ro_5_3_0_938);
-                iStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_939));
-                oStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_940));
-            }
-            if(currentStatusGroup_ == (statusGroupCount_ - 1))
-            {
-                emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
-            }
-            if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
-            {
-//                qDebug()<<"statusDataTmp_.at(i)";
-                SetCommunicateInterval(INIT_INTERVAL);
-                emit NeedToInitHost();
-            }
-//            currentStatusGroup_ = ICAddr_Read_Status0;
+                ICHCTransceiverData::ICTransceiverDataBuffer temp = recvFrame_->Data();
+                hostVersion_.clear();
+                for(int i = 0; i < temp.size(); ++i)
+                {
+                    if(temp.at(i)==0)break;
+                    hostVersion_.append(char(temp.at(i)&0Xff));
+                    hostVersion_.append(char((temp.at(i)>>8)&0Xff)) ;
+                    hostVersion_.append(char((temp.at(i)>>16)&0Xff)) ;
+                    hostVersion_.append(char((temp.at(i)>>24)&0Xff));
+                }
 
-            currentStatusGroup_++;
-            currentStatusGroup_ %= statusGroupCount_;
-            //            currentStatusGroup_ = ICAddr_System_Retain_0+1;
-            //            ++currentStatusGroup_;
-            //            currentStatusGroup_ %= 11;
+            }
+            else
+            {
+                for(int i = 0; i != statusDataTmp_.size(); ++i)
+                {
+                    statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
+                    //                qDebug()<<statusDataTmp_.at(i);
+                }
+                if(currentStatusGroup_ == 0)
+                {
+                    int boardID = HostStatusValue(&c_ro_5_3_0_938);
+                    iStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_939));
+                    oStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_940));
+                }
+                if(currentStatusGroup_ == (statusGroupCount_ - 1))
+                {
+                    emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
+                }
+                if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
+                {
+                    //                qDebug()<<"statusDataTmp_.at(i)";
+                    SetCommunicateInterval(INIT_INTERVAL);
+                    emit NeedToInitHost();
+                }
+                //            currentStatusGroup_ = ICAddr_Read_Status0;
+
+                currentStatusGroup_++;
+                currentStatusGroup_ %= statusGroupCount_;
+                //            currentStatusGroup_ = ICAddr_System_Retain_0+1;
+                //            ++currentStatusGroup_;
+                //            currentStatusGroup_ %= 11;
 #else
             statusDataTmp_ = recvFrame_->Data();
             startIndex_ = currentStatusGroup_ * 4;
@@ -487,22 +490,23 @@ void ICRobotVirtualhost::CommunicateImpl()
             currentStatusGroup_ %= 11;
 #endif
         }
-        queue_.DeQueue();
     }
-    if(!keyCommandList_.isEmpty())
-    {
-        AddCommunicationFrame(keyCommandList_.dequeue());
-        AddRefreshStatusCommand_();
-//        qDebug("keycommand");
-    }
-    if(queue_.IsEmpty())
-    {
-        AddRefreshStatusCommand_();
-        if(likely(CommunicateInterval() != REFRESH_INTERVAL))
-            SetCommunicateInterval(REFRESH_INTERVAL);
-        //        return;
-    }
-    Transceiver()->Write(queue_.Head());
+    queue_.DeQueue();
+}
+if(!keyCommandList_.isEmpty())
+{
+    AddCommunicationFrame(keyCommandList_.dequeue());
+    AddRefreshStatusCommand_();
+    //        qDebug("keycommand");
+}
+if(queue_.IsEmpty())
+{
+    AddRefreshStatusCommand_();
+    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
+        SetCommunicateInterval(REFRESH_INTERVAL);
+    //        return;
+}
+Transceiver()->Write(queue_.Head());
 }
 
 void ICRobotVirtualhost::AddRefreshStatusCommand_()
@@ -625,7 +629,7 @@ void ICRobotVirtualhost::SendConfigs(ICVirtualHostPtr hostPtr, const  QList<QPai
 
 void ICRobotVirtualhost::AddReadConfigCommand(ICVirtualHostPtr hostPtr, int startAddr, int size)
 {
-//    currentStatusGroup_ = startAddr;
+    //    currentStatusGroup_ = startAddr;
     if(size > 32) return;
     ICRobotTransceiverData * toSentFrame = new ICRobotTransceiverData(kHostID,
                                                                       FunctionCode_ReadAddr,

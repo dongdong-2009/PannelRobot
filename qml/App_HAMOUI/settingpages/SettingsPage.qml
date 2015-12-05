@@ -86,9 +86,26 @@ ContentPageBase{
         pageContainer.currentPage().showMenu();
     }
 
-    content: settingContainer
-    //    menu: settingMenu
+    Flow{
+        id:versionContainer
+        width: statusSection.width
+        height: statusSection.height
+        spacing: 10
+        x:10
+        y:10
+        Text {
+            color: "lime"
+            text: qsTr("UI Version:") + "S6-0.1.1" + ";"
+        }
+        Text {
+            color: "lime"
 
+            text: qsTr("Controller Version:") + panelRobotController.controllerVersion();
+        }
+    }
+
+    content: settingContainer
+    statusSection: versionContainer
     Component.onCompleted: {
         var settingClass = Qt.createComponent("ProductSettings.qml");
         var psObject = settingClass.createObject(pageContainer);

@@ -6,9 +6,6 @@ VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
 DEFINES += UART_COMM
 DEFINES += NEW_PLAT
-#DEFINES += TEST_STEP
-#DEFINES += TEST_ALARM
-#DEFINES += COMM_DEBUG
 
 SK_SIZE = 8
 
@@ -17,6 +14,9 @@ QMAKE_CXX = ccache $${QMAKE_CXX}
 suffix = $${VERSION}
 CONFIG(debug, debug|release) {
 suffix = $${suffix}_debug
+#DEFINES += TEST_STEP
+#DEFINES += TEST_ALARM
+#DEFINES += COMM_DEBUG
 }
 else{
 suffix = $${suffix}_release

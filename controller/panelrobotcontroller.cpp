@@ -142,7 +142,7 @@ void PanelRobotController::Init()
     InitDatabase_();
     InitMold_();
     InitMachineConfig_();
-    host_->SetCommunicateDebug(true);
+//    host_->SetCommunicateDebug(true);
 #ifdef COMM_DEBUG
     host_->SetCommunicateDebug(true);
     OnNeedToInitHost();

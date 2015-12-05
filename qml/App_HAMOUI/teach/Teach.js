@@ -437,7 +437,7 @@ var flagActionToStringHandler = function(actionObject){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    if(actionObject.type != VALVE_BOARD){
+    if(actionObject.type !== VALVE_BOARD){
         return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{

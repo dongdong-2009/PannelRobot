@@ -10,11 +10,12 @@ var USERS_TB_INFO = {
 };
 
 function AlarmItem(id, alarmNum, level, triggerTime, endTime){
+    var now = new Date();
     this.id = id;
     this.alarmNum = alarmNum;
-    this.level = level;
-    this.triggerTime = triggerTime;
-    this.endTime = endTime;
+    this.level = level || 0;
+    this.triggerTime = triggerTime || now.getTime();
+    this.endTime = endTime || "";
 }
 
 var ALARM_LOG_TB_INFO = {
@@ -43,6 +44,7 @@ function initialize() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS users(name TEXT UNIQUE, password TEXT  NOT NULL, perm INTEGER NOT NULL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS alarmlog(id PK INTEGER NOT NULL, alarmNum INTEGER NOT NULL, level INTEGER NOT NULL, triggerTime INTEGER NOT NULL, endTime INTEGER)');
+//                    tx.executeSql('DELETE FROM alarmlog;');
                     var rs = tx.executeSql('SELECT * FROM users');
                     if (rs.rows.length === 0) {
                         tx.executeSql('INSERT INTO users VALUES("op", "123", 0)');
@@ -93,29 +95,54 @@ function appendAlarmToLog(alarmItem){
     var db = getDatabase();
 //    var res="";
     db.transaction(function(tx) {
-        var rs = tx.executeSql(icStrformat('SELECT COUNT(*), MIN({0}) FROM {1};', ALARM_LOG_TB_INFO.id_col, ALARM_LOG_TB_INFO.tb_name));
-//        console.log(rs.rows.item(0)["COUNT(*)"], rs.rows.item(0)["MAX(id)"]);
-        var newID = rs.rows.item(0)["MIN(id)"] + 1;
-        if(rs.rows.item(0)["COUNT(*)"] >= ALARM_LOG_TB_INFO.max){
+        var now = new Date();
+        var rs = tx.executeSql(icStrformat('SELECT COUNT(*), MIN({0}), MAX({0}) FROM {1};', ALARM_LOG_TB_INFO.id_col, ALARM_LOG_TB_INFO.tb_name));
+//        console.log(rs.rows.item(0)["COUNT(*)"], rs.rows.item(0)["MIN(id)"]);
+
+        var newID = parseInt(rs.rows.item(0)["MAX(id)"]) + 1;
+        var minID = parseInt(rs.rows.item(0)["MIN(id)"]);
+        var rowCount = parseInt(rs.rows.item(0)["COUNT(*)"]);
+        if(rowCount === 0){
+            newID = 0;
+            minID = 0;
+        }
+        if(rowCount >= ALARM_LOG_TB_INFO.max){
+//            console.log(">500", newID, minID, rowCount);
             tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8}, {9}={10} WHERE {1}={11}',
                                       ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col, newID,
                                       ALARM_LOG_TB_INFO.alarm_num_col, alarmItem.alarmNum,
                                       ALARM_LOG_TB_INFO.level_col, alarmItem.level,
-                                      ALARM_LOG_TB_INFO.triggerTime_col, Date.now().getTime(),
-                                      ALARM_LOG_TB_INFO.endTime_col, ""));
+                                      ALARM_LOG_TB_INFO.triggerTime_col, now.getTime(),
+                                      ALARM_LOG_TB_INFO.endTime_col, "\"\"", minID));
         }else{
-//            tx.executeSql(icStrformat());
+//            console.log("<500", newID, minID, rowCount);
+            var toexec = icStrformat('INSERT INTO {0} VALUES({1}, {2}, {3}, {4}, {5});',
+                                     ALARM_LOG_TB_INFO.tb_name, newID, alarmItem.alarmNum,
+                                     alarmItem.level, now.getTime(), "\"\"");
+            tx.executeSql(toexec);
         }
-
-//        for(var o in rs.rows.item(0)){
-//            console.log(o);
-//        }
-
-//        if (rs.rows.length > 0) {
-//            res = rs.rows.item(0).value;
-//        } else {
-//            res = "Unknown";
-//        }
-    })
-//    return res
+        alarmItem.id = newID;
+    });
+    return alarmItem;
 }
+
+function alarmlog(){
+    var db = getDatabase();
+//    var res="";
+    var ret = [];
+    db.transaction(function(tx) {
+        var rs = tx.executeSql(icStrformat('SELECT * FROM {0} ORDER BY {1} DESC;',
+                                           ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col));
+        var rowItem;
+        for(var i = 0; i < rs.rows.length; ++i){
+            rowItem = rs.rows.item(i);
+            ret.push(new AlarmItem(rowItem[ALARM_LOG_TB_INFO.id_col],
+                                   rowItem[ALARM_LOG_TB_INFO.alarm_num_col],
+                                   rowItem[ALARM_LOG_TB_INFO.level_col],
+                                   rowItem[ALARM_LOG_TB_INFO.triggerTime_col],
+                                   rowItem[ALARM_LOG_TB_INFO.endTime_col]));
+        }
+    });
+    return ret;
+}
+

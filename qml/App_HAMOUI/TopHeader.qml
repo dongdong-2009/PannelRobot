@@ -17,6 +17,7 @@ Rectangle {
     signal calculatorItemStatusChanged(bool isChecked)
     signal ioItemStatusChanged(bool isChecked)
     signal recordItemStatusChanged(bool isChecked)
+    signal alarmLogItemStatusChanged(bool isChecked);
     signal loginBtnClicked()
 //    signal lan
 
@@ -92,10 +93,12 @@ Rectangle {
             onIsCheckedChanged: recordItemStatusChanged(isChecked)
         }
         TopMenuItem{
-            id: manual
+            id: alarmLog
             width: menuItemWidth
             height:  menuItemHeight
-            itemText: qsTr("Manual")
+            itemText: qsTr("Alarm log")
+            onIsCheckedChanged: alarmLogItemStatusChanged(isChecked)
+
         }
         ICButton{
             id: loginBtn
@@ -122,6 +125,7 @@ Rectangle {
     Component.onCompleted: {
         buttonGroup.addButton(io);
         buttonGroup.addButton(record);
+        buttonGroup.addButton(alarmLog)
         panelRobotController.moldChanged.connect(onRecordChanged);
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(modeImg);
     }

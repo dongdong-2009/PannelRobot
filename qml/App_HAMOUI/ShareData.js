@@ -6,7 +6,7 @@ Qt.include("../utils/stringhelper.js")
 
 var eventType = {
     "userChanged":"userChanged",
-    "knobChanged":"knobChanged"
+    "knobChanged":"knobChanged",
 }
 
 //var knobStatus = KNOB_STOP;

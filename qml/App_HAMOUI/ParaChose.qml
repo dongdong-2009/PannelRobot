@@ -45,6 +45,13 @@ MouseArea{
 
                 }
             }
+            ICButton{
+                id:cancel
+                text: qsTr("Cancel")
+                onButtonClicked: {
+                    container.visible = false;
+                }
+            }
         }
     }
 

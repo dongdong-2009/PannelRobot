@@ -27,6 +27,7 @@ Rectangle {
         onIoItemStatusChanged: ioPage.visible = isChecked
         onLoginBtnClicked: loginDialog.visible = true
         onCalculatorItemStatusChanged: calculator.visible = isChecked
+        onAlarmLogItemStatusChanged: alarmlogPage.visible = isChecked
     }
     Rectangle{
         id:middleHeader
@@ -171,6 +172,13 @@ Rectangle {
         visible: false
         anchors.top: container.top
     }
+    ICAlarmPage{
+        id:alarmlogPage
+        width: parent.width
+        height: container.height - 95
+        visible: false
+        anchors.top: container.top
+    }
 
     LoginDialog{
         id:loginDialog
@@ -251,16 +259,16 @@ Rectangle {
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
             }
             var alarmNum = panelRobotController.currentErrNum();
-            if(alarmNum != alarmBar.errID){
+            if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;
-                Storage.appendAlarmToLog(null);
-            }
-            if(alarmNum == 2){
-                paraChose.visible = true;
-            }
-            else
-            {
-                paraChose.visible = false;
+                alarmlogPage.appendAlarm(alarmNum);
+                if(alarmNum === 2){
+                    paraChose.visible = true;
+                }
+                else
+                {
+                    paraChose.visible = false;
+                }
             }
 
         }

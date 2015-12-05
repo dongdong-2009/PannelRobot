@@ -93,12 +93,9 @@ function getSetting(setting) {
 
 function appendAlarmToLog(alarmItem){
     var db = getDatabase();
-//    var res="";
     db.transaction(function(tx) {
         var now = new Date();
         var rs = tx.executeSql(icStrformat('SELECT COUNT(*), MIN({0}), MAX({0}) FROM {1};', ALARM_LOG_TB_INFO.id_col, ALARM_LOG_TB_INFO.tb_name));
-//        console.log(rs.rows.item(0)["COUNT(*)"], rs.rows.item(0)["MIN(id)"]);
-
         var newID = parseInt(rs.rows.item(0)["MAX(id)"]) + 1;
         var minID = parseInt(rs.rows.item(0)["MIN(id)"]);
         var rowCount = parseInt(rs.rows.item(0)["COUNT(*)"]);
@@ -107,7 +104,6 @@ function appendAlarmToLog(alarmItem){
             minID = 0;
         }
         if(rowCount >= ALARM_LOG_TB_INFO.max){
-//            console.log(">500", newID, minID, rowCount);
             tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8}, {9}={10} WHERE {1}={11}',
                                       ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col, newID,
                                       ALARM_LOG_TB_INFO.alarm_num_col, alarmItem.alarmNum,
@@ -146,3 +142,14 @@ function alarmlog(){
     return ret;
 }
 
+function updateAlarmLog(alarmItem){
+    var db = getDatabase();
+    db.transaction(function(tx) {
+        tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8}, {9}={10} WHERE {1}={11}',
+                                  ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col, alarmItem.id,
+                                  ALARM_LOG_TB_INFO.alarm_num_col, alarmItem.alarmNum,
+                                  ALARM_LOG_TB_INFO.level_col, alarmItem.level,
+                                  ALARM_LOG_TB_INFO.triggerTime_col, alarmItem.triggerTime,
+                                  ALARM_LOG_TB_INFO.endTime_col, alarmItem.endTime, alarmItem.id));
+    });
+}

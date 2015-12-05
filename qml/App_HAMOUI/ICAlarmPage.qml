@@ -10,6 +10,7 @@ Rectangle {
     id:container
 
     color: Theme.defaultTheme.BASE_BG
+    property variant unResolvedAlarms: []
 
     function appendAlarm(errNum){
         var alarmItem = new Storage.AlarmItem(0, errNum);
@@ -19,6 +20,35 @@ Rectangle {
             alarmModel.remove(alarmModel.count - 1);
         }else
             alarmModel.insert(0, alarmItem);
+        var tmp = unResolvedAlarms;
+        tmp.push(alarmItem);
+        unResolvedAlarms = tmp;
+    }
+
+    function resolvedAlarms(){
+        var tmp = unResolvedAlarms;
+        if(tmp.length > 0){
+            var unResolvedItem;
+            var oldItem;
+            var now = new Date();
+            now = now.getTime();
+            for(var i = 0; i < alarmModel.count; ++i){
+                oldItem = alarmModel.get(i);
+                for(var j = 0; j < tmp.length; ++j){
+                    unResolvedItem = tmp[j];
+                    if(oldItem.id === unResolvedItem.id){
+                        oldItem.endTime = now;
+                        Storage.updateAlarmLog(oldItem);
+                        tmp.splice(j, 1);
+                        break;
+                    }
+                }
+                if(tmp.length == 0){
+                    unResolvedAlarms = tmp;
+                    break;
+                }
+            }
+        }
     }
 
     ListModel{
@@ -173,7 +203,12 @@ Rectangle {
                 width: hEndTime.width
                 height: hEndTime.height
                 Text {
-                    text: endTime
+                    text: {
+                        if(endTime === "") return "";
+                        var t = new Date();
+                        t.setTime(endTime);
+                        Utils.formatDate(t, "yyyy/MM/dd hh:mm:ss");
+                    }
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
                 }

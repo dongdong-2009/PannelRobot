@@ -261,12 +261,15 @@ Rectangle {
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;
-                alarmlogPage.appendAlarm(alarmNum);
+                if(alarmNum === 0){
+                    alarmlogPage.resolvedAlarms();
+                }else{
+                    alarmlogPage.appendAlarm(alarmNum);
+                }
+
                 if(alarmNum === 2){
                     paraChose.visible = true;
-                }
-                else
-                {
+                }else{
                     paraChose.visible = false;
                 }
             }

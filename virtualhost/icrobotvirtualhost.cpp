@@ -395,7 +395,7 @@ void ICRobotVirtualhost::CommunicateImpl()
             statusCache_.UpdateConfigValue(&c_ro_0_16_0_933, rand() % 10);
 #endif
 #ifdef TEST_ALARM
-            statusCache_.UpdateConfigValue(&c_ro_0_32_0_932, rand() % 1000);
+            statusCache_.UpdateConfigValue(&c_ro_0_32_0_932, rand() % 5);
 
 #endif
             //            emit CommunicateErrChecked();

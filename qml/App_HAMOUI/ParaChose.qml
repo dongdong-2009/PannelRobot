@@ -22,10 +22,10 @@ MouseArea{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: 6
             id: paraDiff
-            text: qsTr("Host configs and panel configs is different,please chose!")
+            text: qsTr("Host configs and panel configs is different,\nplease chose!")
         }
         Row{
-            spacing: 50
+            spacing: 20
             anchors.centerIn: parent
             ICButton{
                 id:chose_manual

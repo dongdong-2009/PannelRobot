@@ -86,23 +86,23 @@ ContentPageBase{
         pageContainer.currentPage().showMenu();
     }
 
-    Flow{
-        id:versionContainer
-        width: statusSection.width
-        height: statusSection.height
-        spacing: 10
-        x:10
-        y:10
-        Text {
-            color: "lime"
-            text: qsTr("UI Version:") + "S6-0.1.1" + ";"
-        }
-        Text {
-            color: "lime"
+//    Flow{
+//        id:versionContainer
+//        width: statusSection.width
+//        height: statusSection.height
+//        spacing: 10
+//        x:10
+//        y:10
+//        Text {
+//            color: "lime"
+//            text: qsTr("UI Version:") + "S6-0.1.1" + ";"
+//        }
+//        Text {
+//            color: "lime"
 
-            text: qsTr("Controller Version:") + panelRobotController.controllerVersion();
-        }
-    }
+//            text: qsTr("Controller Version:") + panelRobotController.controllerVersion();
+//        }
+//    }
 
     content: settingContainer
     statusSection: versionContainer

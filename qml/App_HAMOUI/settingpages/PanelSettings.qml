@@ -49,7 +49,11 @@ Item {
                 text: qsTr("UI Version:") + "S6-0.1.1" + ";"
             }
             Text {
-                text: qsTr("Controller Version:") + panelRobotController.controllerVersion();
+                id:hostVersion
+            }
+            onVisibleChanged: {
+                if(visible)
+                    hostVersion.text = qsTr("Controller Version:") + panelRobotController.controllerVersion();
             }
         }
 

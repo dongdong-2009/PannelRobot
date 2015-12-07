@@ -152,7 +152,7 @@ actions.ACT_OUTPUT     = 0x80;
 actions.ACT_SYNC_BEGIN = 126;
 actions.ACT_SYNC_END   = 127;
 actions.ACT_GROUP_END  = 125;
-actions.ACT_FLAG       = 100;
+actions.ACT_FLAG       = 59999;
 
 var kCCErr_Invalid = 1;
 var kCCErr_Sync_Nesting = 2;
@@ -162,6 +162,9 @@ var kCCErr_Group_Nesting = 5;
 var kCCErr_Group_NoBegin = 6;
 var kCCErr_Group_NoEnd = 7;
 var kCCErr_Last_Is_Not_End_Action = 8;
+var kCCErr_Invaild_Program_Index = 9;
+var kCCErr_Wrong_Action_Format = 10;
+var kCCErr_Invaild_Flag = 11;
 
 var kAxisType_NoUse = 0;
 var kAxisType_Servo = 1;
@@ -245,12 +248,21 @@ var generateCheckAction = function(point, type, delay){
     };
 }
 
-var generateConditionAction = function(which, status, limit, flag){
+var generateConditionAction = function(type, point, inout, status, limit, flag){
     return {
-        "action":actions.ACT_CONDITION,
-        "point":which,
+        "action":actions.F_CMD_PROGRAM_JUMP1,
+        "type":type,
+        "point":point,
         "pointStatus":status,
+        "inout":inout || 0,
         "limit":limit || 0.50,
+        "flag": flag || 0,
+    };
+}
+
+var generateJumpAction = function(flag){
+    return {
+        "action":actions.F_CMD_PROGRAM_JUMP0,
         "flag": flag || 0,
     };
 }
@@ -404,10 +416,21 @@ var otherActionToStringHandler = function(actionObject){
 }
 
 var conditionActionToStringHandler = function(actionObject){
-    return qsTr("IF:") + actionObject.point +
+    if(actionObject.action === actions.F_CMD_PROGRAM_JUMP0){
+        return qsTr("Jump To ") + flagStrs[actionObject.flag];
+    }
+
+    var pointDescr;
+    if(actionObject.inout === 1){
+        pointDescr = getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr
+    }else
+        pointDescr = getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr
+
+
+    return qsTr("IF:") + pointDescr +
             (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " "
             + qsTr("Limit:") + actionObject.limit + " " +
-            qsTr("Go to flag") +"[" + actionObject.flag + "]";
+            qsTr("Go to ") + flagStrs[actionObject.flag];
 }
 
 var waitActionToStringHandler = function(actionObject){
@@ -438,6 +461,8 @@ var flagActionToStringHandler = function(actionObject){
     return qsTr("Flag") + icStrformat("[{0}]", actionObject.flag) + ":"
             + actionObject.comment;
 }
+
+
 
 var outputActionToStringHandler = function(actionObject){
     if(actionObject.type === VALVE_BOARD){
@@ -544,7 +569,9 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringH
 //actionToStringHandlerMap.put(actions.ACT_PS8_1, ps8_1ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_CONDITION, conditionActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
+
 actionToStringHandlerMap.put(actions.F_CMD_IO_INPUT, waitActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
@@ -553,7 +580,7 @@ actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
+actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
     if(actionObject.action === actions.F_CMD_SINGLE){
@@ -612,19 +639,29 @@ function ccErrnoToString(errno){
         return qsTr("Has Sync-Begin action but has not Sync-End action");
     case kCCErr_Last_Is_Not_End_Action:
         return qsTr("Last action is not End action");
+    case kCCErr_Invaild_Program_Index:
+        return qsTr("Invalid program index");
+    case kCCErr_Wrong_Action_Format:
+        return qsTr("Wrong action format");
+    case kCCErr_Invaild_Flag:
+        return qsTr("Invalid jump flag");
     }
     return qsTr("Unknow Error");
 }
 
 var flags = [];
-var pushFlag = function(flag){
+var flagStrs = [];
+
+var pushFlag = function(flag, descr){
     for(var i = 0; i < flags.length; ++i){
         if(flag < flags[i]){
             flags.splice(i, 0, flag);
+            flagStrs[flag] = qsTr("Flag") + "[" + flag + "]" + ":" + descr;
             return;
         }
     }
     flags.push(flag);
+    flagStrs[flag] = qsTr("Flag") + "[" + flag + "]" + ":" + descr;
     return;
 }
 
@@ -641,7 +678,7 @@ var useableFlag = function(){
     if(flags.length === 0) return 0;
     if(flags.length < 3)
         return flags[flags.length - 1] + 1;
-    if(flags[0] != 0) return 0;
+    if(flags[0] !== 0) return 0;
     for(var i = 1; i < flags.length; ++i){
         if(flags[i] - flags[i - 1] > 1){
             return flags[i - 1] + 1;

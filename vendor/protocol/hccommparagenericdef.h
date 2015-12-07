@@ -480,6 +480,7 @@ typedef enum
 //    F_CMD_PROGRAM_JUMP4,   //< 程序跳转 跳转步号
 
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
+    F_CMD_FLAG = 59999,    //<跳转标志
 	F_CMD_END=60000//< 动作结束
 
 }FunctionCmd;

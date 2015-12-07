@@ -133,6 +133,21 @@ int CheckActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
+    int act = v->value("action").toInt();
+    int step = v->value("step", -1).toInt();
+    if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
+    item.append(act);
+    item.append(step);
+
+    if(act == F_CMD_PROGRAM_JUMP1)
+    {
+        item.append(v->value("type", 0).toInt());
+        item.append(ICUtility::doubleToInt(v->value("limit", 0).toDouble(), 1));
+        item.append(v->value("inout").toInt());
+        item.append(v->value("point").toInt());
+        item.append(v->value("pointStatus").toInt());
+    }
+    item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
 }
@@ -169,6 +184,9 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);
     ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
+    ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
+    ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
+
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
     return ret;
@@ -286,11 +304,22 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         {
             continue;
         }
+        if(act == F_CMD_FLAG)
+        {
+            ret.MapFlagToStep(action.value("flag").toInt(), step);
+            continue;
+        }
+        if(act == F_CMD_PROGRAM_JUMP1 ||
+                act == F_CMD_PROGRAM_JUMP0)
+        {
+            int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
+            action.insert("step", toJumpStep);
+        }
         ret.AddICMoldItem(VariantToMoldItem(step, action, err));
         if(err != kCCErr_None)
         {
             ret.Clear();
-            err = kCCErr_Sync_Nesting;
+//            err = kCCErr_Sync_Nesting;
             ret.AddErr(i, err);
             return ret;
         }
@@ -417,7 +446,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     return true;
 }
 
-int ICRobotMold::SaveMold(int which, const QString &program)
+QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
     CompileInfo aP = Complie(program, err);
@@ -427,7 +456,7 @@ int ICRobotMold::SaveMold(int which, const QString &program)
         programs_[which] = aP;
         ICDALHelper::SaveMold(moldName_, which, program);
     }
-    return err;
+    return aP.ErrInfo();
 }
 
 

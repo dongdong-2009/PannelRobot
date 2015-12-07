@@ -34,7 +34,6 @@ Item {
         var ret = [];
         var mD;
         var data;
-        var ui;
         if(normalY.isChecked){
             mD = yModel;
 

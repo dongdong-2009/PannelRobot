@@ -56,6 +56,13 @@ public:
         else
             realStepToUIStepMap_.insert(realStep, QList<int>()<<uiStep);
     }
+    void MapFlagToStep(int flag, int step)
+    {
+        flagsMap_.insert(flag, step);
+    }
+
+    int FlagStep(int flag) { return flagsMap_.value(flag, -1);}
+
     void Clear() { stepMap_.clear();}
     bool IsCompileErr() const { return !errList_.isEmpty();}
     void AddErr(int step, int err) { errList_.insert(step, err);}
@@ -92,8 +99,12 @@ public:
         return ret;
     }
 
+     QMap<int, int> ErrInfo() const { return errList_;}
+
 private:
     QMap<int, int> stepMap_;
+    QMap<int, int> flagsMap_;
+
     QMap<int, QList<int> > realStepToUIStepMap_;
     QMap<int, int> errList_;
     ICActionProgram compiledProgram_;
@@ -127,7 +138,8 @@ public:
         kCCErr_Group_NoEnd,
         kCCErr_Last_Is_Not_End_Action,
         kCCErr_Invaild_Program_Index,
-        kCCErr_Wrong_Action_Format
+        kCCErr_Wrong_Action_Format,
+        kCCErr_Invaild_Flag,
     };
 
     enum {
@@ -205,7 +217,7 @@ public:
 
 
     bool LoadMold(const QString& moldName);
-    int SaveMold(int which, const QString& program);
+    QMap<int, int> SaveMold(int which, const QString& program);
 
     quint32 MoldFnc(ICAddrWrapperCPTR addr)
     {

@@ -8,6 +8,7 @@ Item {
     property alias configNameWidth: configName.width
     property alias inputWidth: edit.width
     property alias items: edit.items
+    property alias popupMode : edit.popupMode
     height: 24
     width: container.width
     Row{

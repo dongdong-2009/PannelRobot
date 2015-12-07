@@ -25,7 +25,6 @@ Item {
         var ret = [];
         var mD;
         var data;
-        var ui;
         if(normalX.isChecked){
             mD = xModel
 

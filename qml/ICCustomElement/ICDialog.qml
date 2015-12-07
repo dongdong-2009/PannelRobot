@@ -2,6 +2,8 @@ import QtQuick 1.1
 
 Rectangle {
     id: container
+    border.width: 1
+    border.color: "black"
 
     property string inputText: textInput.text
     signal closed

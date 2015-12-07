@@ -2,6 +2,7 @@
 #define PANELROBOTCONTROLLER_H
 
 #include <QObject>
+#include <QMap>
 #include <QSettings>
 #include "icrobotmold.h"
 #include "icrobotvirtualhost.h"
@@ -69,6 +70,21 @@ private:
 };
 #endif
 
+
+static QString ErrInfoToJSON(const QMap<int, int>& errInfo)
+{
+    QString ret = "[";
+    QMap<int, int>::const_iterator p = errInfo.constBegin();
+    while(p != errInfo.constEnd())
+    {
+        ret += QString("{\"line\": %1, \"errno\": %2},").arg(p.key()).arg(p.value());
+        ++p;
+    }
+    if(!errInfo.isEmpty())
+        ret.chop(1);
+    ret += "]";
+    return ret;
+}
 
 extern ICRange ICRobotRangeGetter(const QString& addrName);
 
@@ -281,27 +297,27 @@ public:
 
     }
 
-    Q_INVOKABLE int saveMainProgram(const QString& program)
+    Q_INVOKABLE QString saveMainProgram(const QString& program)
     {
-        int ret =  ICRobotMold::CurrentMold()->SaveMold(ICRobotMold::kMainProg, program);
+        QMap<int, int> ret =  ICRobotMold::CurrentMold()->SaveMold(ICRobotMold::kMainProg, program);
         //        if(ret == ICRobotMold::kCCErr_None)
         //        {
         //            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
         //        }
-        return ret;
+        return ErrInfoToJSON(ret);
     }
 
-    Q_INVOKABLE int saveSubProgram(int which, const QString& program)
+    Q_INVOKABLE QString saveSubProgram(int which, const QString& program)
     {
-        if(which < ICRobotMold::kSub1Prog ||
-                which > ICRobotMold::kSub8Prog)
-            return -1;
-        int ret =  ICRobotMold::CurrentMold()->SaveMold(which, program);
+//        if(which < ICRobotMold::kSub1Prog ||
+//                which > ICRobotMold::kSub8Prog)
+//            return -1;
+        QMap<int, int> ret =  ICRobotMold::CurrentMold()->SaveMold(which, program);
         //        if(ret == ICRobotMold::kCCErr_None)
         //        {
         //            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
         //        }
-        return ret;
+        return ErrInfoToJSON(ret);
     }
 
     Q_INVOKABLE bool fixProgramOnAutoMode(int which, int line, const QString& lineContent);

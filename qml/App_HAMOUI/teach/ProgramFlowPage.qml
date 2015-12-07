@@ -28,7 +28,7 @@ Rectangle {
         var model = currentModel();
         for(var i = 0; i < actionObjects.length; ++i){
             if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-                Teach.pushFlag(actionObjects[i].flag);
+                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
             }
 
             model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
@@ -130,20 +130,24 @@ Rectangle {
     }
 
     function onSaveTriggered(){
-        var errno;
+        var errInfo;
         if(editing.currentIndex == 0){
-            errno = panelRobotController.saveMainProgram(modelToProgram(0));
-            if(! errno){
+            errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
+            if(errInfo.length === 0){
                 panelRobotController.sendMainProgramToHost();
             }
         }else{
-            errno = panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
-            if(! errno){
+            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
+            if(errInfo.length === 0){
                 panelRobotController.sendSubProgramToHost(editing.currentIndex);
             }
         }
-        if(errno !== 0){
-            tipBox.show(Teach.ccErrnoToString(errno));
+        if(errInfo.length !== 0){
+            var toShow = "";
+            for(var i = 0; i < errInfo.length; ++i){
+                toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
+            }
+            tipBox.show(toShow);
         }
     }
 
@@ -605,7 +609,7 @@ Rectangle {
 //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+//                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
@@ -676,7 +680,7 @@ Rectangle {
                 }
 
                 if(step.action === Teach.actions.ACT_FLAG){
-                    Teach.pushFlag(step.flag);
+                    Teach.pushFlag(step.flag, step.comment);
                 }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                     at = Teach.actionTypes.kAT_SyncStart;
                     isSyncStart = true;

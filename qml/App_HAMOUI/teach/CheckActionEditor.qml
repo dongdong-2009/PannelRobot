@@ -106,7 +106,7 @@ Item {
                     spacing: 2
                     height: 26
                     ICCheckBox{
-                        text: pointNum
+                        text: pointNum + ":" + pointDescr
                         isChecked: isSel
                         width: yView.cellWidth * 0.35
                         MouseArea{
@@ -121,15 +121,6 @@ Item {
                                     }
                                 }
                             }
-                        }
-                    }
-                    ICButton{
-                        height: parent.height
-                        text: pointDescr
-                        width:yView.cellWidth * 0.6
-                        bgColor: isOn ? "lime" : "white"
-                        onButtonClicked: {
-                            panelRobotController.setYStatus(board, hwPoint, !isOn);
                         }
                     }
                 }

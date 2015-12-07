@@ -3,48 +3,90 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
-import "../AppSettings.js" as UISettings
 import "../../utils/stringhelper.js" as ICString
 
 
 Item {
+    id:container
 
-    QtObject{
-        id:pData
-        property string currentLanguage: UISettings.AppSettings.prototype.currentLanguage()
-        property variant inputs: [
-            "X010",
-            "X011",
-            "X012",
-            "X014",
-            "EuX010",
-            "INX01"
-        ]
-    }
+    property variant ys: [
+        "Y010",
+        "Y011",
+        "Y012",
+        "Y013",
+        "Y014",
+        "Y015",
+        "Y016",
+        "Y017",
+        "Y020",
+    ]
 
-    signal backToMenuTriggered()
+    property  variant euYs : ["EuY010", "EuY011", "EuY012"]
+    property variant mYs: ["INY010"]
+
+    property variant xs: [
+        "X010",
+        "X011",
+        "X012",
+        "X014",
+        "X015",
+        "X016",
+        "X017",
+        "X020",
+    ]
+    property  variant euXs : ["EuX010", "EuX011"]
+    property variant mXs: ["INX010"]
 
     function createActionObjects(){
         var ret = [];
         if(defineFlag.isChecked){
-            ret.push(Teach.generateFlagAction(Teach.useableFlag(), flagDescr.text));
+            ret.push(Teach.generateFlagAction(Teach.useableFlag(), flagDescr.configValue));
             return ret;
         }
 
-        var input;
-        for(var i = 0; i < inputModel.count; ++i)
+        var mD;
+        var data;
+        var ui;
+        var inout = 0;
+        var flagStr = flag.configText;
+        if(flag.currentIndex < 0) return ret;
+        var begin = flagStr.indexOf('[') + 1;
+        var end = flagStr.indexOf(']');
+        if(normalY.isChecked){
+            mD = yModel;
+            inout = 1;
+
+        }else if(euY.isChecked){
+            mD = euYModel;
+            inout = 1;
+        }else if(mY.isChecked){
+            mD = mYModel;
+            inout = 1;
+        }else if(normalX.isChecked){
+            mD = xModel
+
+        }else if(euX.isChecked){
+            mD = euXModel
+        }else if(mX.isChecked){
+            mD = mXModel
+        }else{
+
+            ret.push(Teach.generateJumpAction(parseInt(flagStr.slice(begin,end))));
+            return ret;
+        }
+
+        for(var i = 0; i < mD.count; ++i)
         {
-            input = inputModel.get(i);
-            if(input.isEn){
+            data = mD.get(i);
+            if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                var flagStr = flag.currentText;
-                if(flag.currentIndex < 0) return ret;
-                var begin = flagStr.indexOf('[') + 1;
-                var end = flagStr.indexOf(']');
-                ret.push(Teach.generateConditionAction(input.hwPoint,
-                                                       isOn,
-                                                       limit.configValue,
-                                                       parseInt(flagStr.slice(begin,end))));
+                ret.push(Teach.generateConditionAction(
+                             data.board,
+                             data.hwPoint,
+                             inout,
+                             isOn,
+                             limit.configValue,
+                             parseInt(flagStr.slice(begin,end))));
                 break;
             }
         }
@@ -53,173 +95,252 @@ Item {
     width: parent.width
     height: parent.height
 
-    ICButton{
-        id:backToMenu
-        text: qsTr("Back to Menu")
-        onButtonClicked: backToMenuTriggered()
-    }
+    Column{
+        spacing: 4
 
-    ICButtonGroup{
-        id:editorSel
-        anchors.top:  backToMenu.bottom
-        anchors.topMargin:  10
-        checkedItem: defineFlag
-        Row{
+        ICButtonGroup{
+            id:flagPageSel
             spacing: 10
             ICCheckBox{
                 id:defineFlag
                 text: qsTr("Define Flag")
-                width: 150
                 isChecked: true
             }
             ICCheckBox{
                 id:useFlag
-                text:qsTr("Use Flag")
-                width: 150
-
-            }
-        }
-        height: 32
-    }
-
-
-
-    Rectangle{
-        id:defineFlagEditor
-        visible: defineFlag.isChecked
-        anchors.top:  editorSel.bottom
-        anchors.topMargin:  10
-        width: parent.width - 2
-        height: parent.height - 170
-        Row{
-            spacing: 6
-            Text {
-                text: qsTr("Flag Descr:")
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ICLineEdit{
-                id:flagDescr
-                width: 200
-                isNumberOnly: false
-
-            }
-        }
-    }
-
-    Rectangle{
-        id:useFlagEditor
-        visible: useFlag.isChecked
-        anchors.top:  editorSel.bottom
-        anchors.topMargin:  10
-        width: parent.width
-        height: parent.height
-
-        Rectangle {
-            id: inputContainer
-            //        visible: false
-            ListModel{
-                id:inputModel
-                function onCheckBoxStatusChanged(index, isChecked){
-                    this.set(index, {"isEn":isChecked});
-                    if(!isChecked) return;
-                    for(var i = 0; i < this.count; ++i){
-                        if(i !== index){
-                            this.set(i, {"isEn":false});
-                        }
-                    }
-                }
-            }
-
-            width: parent.width - 2
-            height: parent.height - 170
-            ListView{
-                id:inputListView
-                width: parent.width
-                height: parent.height
-                model: inputModel
-                spacing: 10
-                delegate: ICCheckBox{
-                    text: inputDefine
-                    width: parent.width
-                    height: 24
-                    isChecked: isEn
-                    useCustomClickHandler: true
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            inputModel.onCheckBoxStatusChanged(index, !parent.isChecked);
-                        }
-                    }
-                }
-
-
+                text: qsTr("Use Flag")
             }
         }
 
-        ICButtonGroup{
-            id:statusGroup
-            anchors.top: inputContainer.bottom;
-            anchors.topMargin: 6
-            checkedItem: onBox
-            Row{
-                spacing: 10
+        Column{
+            id:useFlagPage
+            spacing: 4
+            visible: useFlag.isChecked
+            ICButtonGroup{
+                id:typeGroup
+                spacing: 20
                 ICCheckBox{
-                    id:onBox
-                    text: qsTr("ON")
+                    id:normalY
+                    text: qsTr("Y")
                     isChecked: true
+                    visible:ys.length > 0
                 }
                 ICCheckBox{
-                    id:offBox
-                    text: qsTr("OFF")
+                    id:euY
+                    text: qsTr("EUY")
+                    visible: euYs.length > 0
                 }
+                ICCheckBox{
+                    id:mY
+                    text: qsTr("MY")
+                    visible: mYs.length > 0
+                }
+                ICCheckBox{
+                    id:normalX
+                    text: qsTr("X")
+                }
+                ICCheckBox{
+                    id:euX
+                    text: qsTr("EUX")
+                }
+                ICCheckBox{
+                    id:mX
+                    text: qsTr("MX")
+                }
+                ICCheckBox{
+                    id:jump
+                    text: qsTr("Jump")
+                }
+            }
+            Rectangle{
+                id:yContainer
+                width: 690
+                height: container.height - typeGroup.height - statusGroup.height - flagPageSel.height - anchors.topMargin - parent.spacing * 4
+                color: "#A0A0F0"
+                border.width: 1
+                border.color: "black"
+                //            visible: normalY.isChecked
+                ListModel{
+                    id:yModel
+                }
+                ListModel{
+                    id:euYModel
+                }
+                ListModel{
+                    id:mYModel
+                }
+                ListModel{
+                    id:xModel
+                }
+                ListModel{
+                    id:euXModel
+                }
+                ListModel{
+                    id:mXModel
+                }
+
+
+                GridView{
+                    id:ioView
+                    function createMoldItem(ioDefine, hwPoint, board){
+                        return {"isSel":false,
+                            "pointNum":ioDefine.pointName,
+                            "pointDescr":ioDefine.descr,
+                            "hwPoint":hwPoint,
+                            "board":board,
+                            "isOn": false
+                        };
+                    }
+
+                    function createValveMoldItem(pointNum, pointDescr, hwPoint, board){
+                        return {"isSel":false,
+                            "pointNum":pointNum,
+                            "pointDescr":pointDescr,
+                            "hwPoint":hwPoint,
+                            "board":board,
+                            "isOn": false
+                        };
+                    }
+
+                    width: parent.width - 4
+                    height: parent.height - 4
+                    anchors.centerIn: parent
+                    cellWidth: 226
+                    cellHeight: 32
+                    clip: true
+                    model: {
+                        if(normalY.isChecked) return yModel;
+                        if(euY.isChecked) return euYModel;
+                        if(mY.isChecked) return mYModel;
+                        if(normalX.isChecked) return xModel;
+                        if(euX.isChecked) return euXModel;
+                        if(mX.isChecked) return mXModel;
+                        return null;
+                    }
+
+                    delegate: Row{
+                        spacing: 2
+                        height: 26
+                        ICCheckBox{
+                            text: pointNum + ":" + pointDescr
+                            isChecked: isSel
+                            width: ioView.cellWidth * 0.35
+                            MouseArea{
+                                anchors.fill: parent
+                                onClicked: {
+                                    var m = ioView.model;
+                                    var toSetSel = !isSel;
+                                    m.setProperty(index, "isSel", toSetSel);
+                                    for(var i = 0; i < m.count; ++i){
+                                        if( i !== index){
+                                            m.setProperty(i, "isSel", false);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Row{
+                spacing: 20
+                ICButtonGroup{
+                    id:statusGroup
+                    checkedItem: onBox
+                    Row{
+                        spacing: 10
+                        ICCheckBox{
+                            id:onBox
+                            text: qsTr("ON")
+                            isChecked: true
+                        }
+                        ICCheckBox{
+                            id:offBox
+                            text: qsTr("OFF")
+                        }
+                    }
+                    height: 32
+                }
+
                 ICConfigEdit{
                     id:limit
                     configName: qsTr("Limit:")
                     unit: qsTr("s")
-                    width: 100
+                    inputWidth: 100
                     height: 24
+                    visible: true
+                    z:1
+                    configAddr: "s_rw_0_32_1_1201"
+                    configValue: "0.0"
+                }
+
+                ICComboBoxConfigEdit{
+                    id: flag
+                    configName: qsTr("Flag")
+                    popupMode: 1
+                    inputWidth: 300
+
+                    onVisibleChanged: {
+                        if(visible){
+                            items = Teach.flagStrs
+                        }
+                    }
                 }
             }
-            height: 32
         }
 
 
-        Row{
-            anchors.top: statusGroup.bottom;
-            anchors.topMargin: 6
-            Text {
-                text: qsTr("Go to flag:")
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ICComboBox{
-                id: flag
-                popupMode: 1
-
-                onVisibleChanged: {
-                    var flags = Teach.flags;
-                    var ret = [];
-                    for(var i = 0; i < flags.length; ++i){
-                        ret.push(qsTr("Flag") +
-                                 ICString.icStrformat("[{0}]", flags[i]));
-                    }
-                    items = ret;
-                }
-            }
+        ICConfigEdit{
+            id:flagDescr
+            visible: !flag.visible
+            configName: qsTr("Flag")
+            isNumberOnly: false
+            inputWidth: 200
         }
     }
 
     Component.onCompleted: {
 
-        var xDefines = pData.inputs;
-        var xDefine;
-        for(var i = 0; i < xDefines.length; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            inputModel.append({"isEn":false,
-                                  "inputDefine": xDefines[i] + ":"
-                                  + xDefine.xDefine.descr[pData.currentLanguage],
-                                  "hwPoint":xDefine.hwPoint});
+        var yDefines = ys;
+        var yDefine;
+        var i;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+            yModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
+        yDefines = euYs;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+            euYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+        }
+
+        yDefines = mYs;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+            mYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+        }
+
+        var xDefines = xs;
+        var xDefine;
+        var i;
+        for(i = 0; i < xDefines.length; ++i){
+            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+            xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+        }
+
+        xDefines = euXs;
+        for(i = 0; i < xDefines.length; ++i){
+            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+            euXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+        }
+
+        xDefines = mXs;
+        for(i = 0; i < xDefines.length; ++i){
+            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+            mXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+        }
     }
 
 }

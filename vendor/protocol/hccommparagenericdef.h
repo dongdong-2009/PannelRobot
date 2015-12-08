@@ -472,6 +472,8 @@ typedef enum
      */
     F_CMD_IO_OUTPUT = 200,
     /**************************************************************************/
+    F_CMD_STACK0 = 300,//< 堆叠
+    /**************************************************************************/
 
     F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
     F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转类型（IO板类型） 延迟时间（0.1S） 检测对象（0输入；1输出） 检测ID 检测状态（0：OFF；1：ON）
@@ -496,6 +498,7 @@ typedef enum
     ALARM_TEACH_DATA_EDIT_ERR, //<名字：教导数据编辑错误
 
     ALARM_EMERGENCY_STOP,//<名字：紧急停止
+    ALARM_AUTO_JUMP_ERR, //<名字：自动运行跳转错误
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -535,8 +538,12 @@ typedef enum
     ALARM_AXIS5_SOFT_LIMIT_N,//<名字：轴5负极限报警
     ALARM_AXIS6_SOFT_LIMIT_N,//<名字：轴6负极限报警
 
-    ALARM_IO_NO_SIGNAL_START = 500,//<名字：IO输入检测时间内未检测到信号
-    ALARM_IO_NO_SIGNAL_END = 600         //<名字：IO输入检测时间内未检测到信号
+    ALARM_IO_ON_SIGNAL_START = 400,    //<名字：IO输入等待ON时间内未检测到信号
+    ALARM_IO_OFF_SIGNAL_START = 500,   //<名字：IO输入等待OFF时间内未检测到信号
+    ALARM_SINGLE_ON_START = 600,//<名字：单头阀IO输入检测ON时间内未检测到信号
+    ALARM_SINGLE_OFF_START = 650,//<名字：单头阀IO输入检测ON时间内未检测到信号
+    ALARM_DOUBLE_ON_START = 700,//<名字：双头阀IO输入检测时间内未检测到信号
+    ALARM_DOUBLE_OFF_START = 750,  //<名字：双头阀IO输入检测时间内未检测到信号
 }ALARM_ADDR;
 
 /*******************************************************************************/

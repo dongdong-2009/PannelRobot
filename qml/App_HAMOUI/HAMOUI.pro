@@ -8,6 +8,9 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    ArmMovePage.qml
+
 
 
 

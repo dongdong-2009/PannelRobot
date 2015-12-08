@@ -1,4 +1,13 @@
 .pragma library
+Qt.include("IODefines.js")
+
+var ALARM_IO_OFF_SIGNAL_START = 0;   //<名字：IO输入等待OFF时间内未检测到信号
+var ALARM_IO_ON_SIGNAL_START = 1;    //<名字：IO输入等待ON时间内未检测到信号
+var ALARM_SINGLE_OFF_START = 2;//<名字：单头阀IO输入检测ON时间内未检测到信号
+var ALARM_SINGLE_ON_START = 3;//<名字：单头阀IO输入检测ON时间内未检测到信号
+var ALARM_DOUBLE_OFF_START = 4;  //<名字：双头阀IO输入检测时间内未检测到信号
+var ALARM_DOUBLE_ON_START = 5;//<名字：双头阀IO输入检测时间内未检测到信号
+var NORMAL_TYPE = 9;
 
 var alarmInfo = {
     "1":qsTr("ALARM_NOT_INIT                 "),
@@ -101,9 +110,42 @@ var alarmInfo = {
     "149":qsTr("3"),
 }
 
+function analysisAlarmNum(errNum){
+    return {
+        "type":(errNum <=2048 ? NORMAL_TYPE: (errNum >> 8) & 0x7),
+        "board":(errNum >> 5) & 0x7,
+        "point":(errNum & 0x1F)
+    };
+}
+
+function isWaitONAlarmType(errNum){
+    if(errNum > 2048)
+    {
+        return ((errNum >> 8) & 0x7) == ALARM_IO_ON_SIGNAL_START;
+    }
+    return false;
+}
+
 function getAlarmDescr(errNum){
     if(alarmInfo.hasOwnProperty(errNum.toString())){
         return alarmInfo[errNum.toString()];
+    }else{
+        var alarm = analysisAlarmNum(errNum);
+        if(alarm.type === ALARM_IO_ON_SIGNAL_START){
+            return qsTr("Wait Input:") + getXDefineFromHWPoint(alarm.point, alarm.type).xDefine.descr + qsTr("ON over time")
+        }else if(alarm.type === ALARM_IO_OFF_SIGNAL_START){
+            return qsTr("Wait Input:") + getXDefineFromHWPoint(alarm.point, alarm.type).xDefine.descr + qsTr("OFF over time")
+        }else if(alarm.type === ALARM_SINGLE_ON_START){
+            return qsTr("Wait Single Input:") + getValveItemFromValveID(alarm.point).descr + qsTr("ON over time")
+        }else if(alarm.type === ALARM_SINGLE_OFF_START){
+            return qsTr("Wait Single Input:") + getValveItemFromValveID(alarm.point).descr + qsTr("OFF over time")
+        }
+        else if(alarm.type === ALARM_DOUBLE_ON_START){
+            return qsTr("Wait Double Input:") + getValveItemFromValveID(alarm.point).descr + qsTr("ON over time")
+        }else if(alarm.type === ALARM_DOUBLE_OFF_START){
+            return qsTr("Wait Double Input:") + getValveItemFromValveID(alarm.point).descr + qsTr("OFF over time")
+        }
     }
+
     return "";
 }

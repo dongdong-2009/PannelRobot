@@ -260,7 +260,7 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     QList<QPair<int, quint32> > fncs = values;
     //    AddCheckSumToAddrValuePairList(fncs);
     QString dt = ICDALHelper::NewMold(name, programList, fncs);
-//    qDebug()<<name<<dt;
+    //    qDebug()<<name<<dt;
     return RecordDataObject(name, dt);
     //    return RecordDataObject();
 }
@@ -319,9 +319,9 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         if(err != kCCErr_None)
         {
             ret.Clear();
-//            err = kCCErr_Sync_Nesting;
+            //            err = kCCErr_Sync_Nesting;
             ret.AddErr(i, err);
-            return ret;
+            //            return ret;
         }
         if(act == F_CMD_SYNC_START)
         {
@@ -348,32 +348,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
             ++step;
             continue;
         }
-        //        else if(act == ACTParallel)
-        //        {
-        //            if(isGroupBegin)
-        //            {
-        //                ret.Clear();
-        //                err = kCCErr_Group_Nesting;
-        //                return ret;
-        //            }
-        //            isGroupBegin = true;
-        //            subStep = 0;
-        //            ret.append(VariantToMoldItem(step, action));
-        //            continue;
-        //        }
-        //        else if(act == ACT_GROUP_ACTION_END)
-        //        {
-        //            if(!isGroupBegin)
-        //            {
-        //                ret.clear();
-        //                err = kCCErr_Group_NoBegin;
-        //                return ret;
-        //            }
-        //            isGroupBegin = false;
-        //            subStep = 255;
-        //            continue;
-        //        }
-        //        ret.append(VariantToMoldItem(step, action, subStep));
+
         ret.MapStep(i, step);
         if(!isGroupBegin && !isSyncBegin)
         {
@@ -383,14 +358,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         {
             ++subStep;
         }
-        //        if(ret.last().Action() == ACTParallel)
-        //        {
-        //            QVariantList childrenActions = action.value("childActions").toList();
-        //            for(int k = 0; k != childrenActions.size();++k)
-        //            {
-        //                ret.append(VariantToMoldItem(step, childrenActions.at(k).toMap(), k));
-        //            }
-        //        }
+
     }
     if(isSyncBegin)
     {
@@ -413,7 +381,32 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         ret.AddErr(result.size(), err);
         return ret;
     }
-    err = kCCErr_None;
+
+    // recalc flag step in condition
+    QMap<int, int> errList = ret.ErrInfo();
+    QMap<int, int>::iterator p = errList.begin();
+    while(p != errList.end())
+    {
+        action = result.at(p.key()).toMap();
+        act = action.value("action").toInt();
+        if(act == F_CMD_PROGRAM_JUMP1 ||
+                act == F_CMD_PROGRAM_JUMP0)
+        {
+            int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
+            if(toJumpStep >= 0)
+            {
+                action.insert("step", toJumpStep);
+                ret.UpdateICMoldItem(p.key(), VariantToMoldItem(0, action, err));
+                if(err == kCCErr_None)
+                {
+                    ret.RemoveErr(p.key());
+                }
+            }
+
+        }
+        ++p;
+    }
+//    err = kCCErr_None;
     return ret;
 
 }
@@ -752,7 +745,7 @@ QList<QPair<int, quint32> > ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePai
 
         baseValues.append(qMakePair(tmp.first->BaseAddr(), fncCache_.OriginConfigValue(tmp.first)));
     }
-//    ICDALHelper::UpdateMachineConfigValues(baseValues, configName_);
+    //    ICDALHelper::UpdateMachineConfigValues(baseValues, configName_);
     ICDALHelper::UpdateMoldFncValues(baseValues, moldName_);
     return baseValues;
 }

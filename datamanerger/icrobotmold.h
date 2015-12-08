@@ -67,6 +67,8 @@ public:
     bool IsCompileErr() const { return !errList_.isEmpty();}
     void AddErr(int step, int err) { errList_.insert(step, err);}
     void AddICMoldItem(const ICMoldItem& item) { compiledProgram_.append(item);}
+    void UpdateICMoldItem(int line, const ICMoldItem& item) { compiledProgram_[line] = item;}
+    ICMoldItem GetICMoldItem(int line) { return compiledProgram_.at(line);}
     QVector<quint32> ProgramToBareData() const
     {
         QVector<quint32> ret;
@@ -100,6 +102,7 @@ public:
     }
 
      QMap<int, int> ErrInfo() const { return errList_;}
+     int RemoveErr(int line) { errList_.remove(line);}
 
 private:
     QMap<int, int> stepMap_;

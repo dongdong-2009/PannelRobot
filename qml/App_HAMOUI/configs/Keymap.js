@@ -1,6 +1,9 @@
 .pragma library
 Qt.include("../../utils/HashTable.js")
 
+var COMBINE_ARM_MOVE_TYPE = 30;
+var SINGLE_ARM_MOVE_TYPE = 0;
+
 var CMD_NULL = 0; //< 无命令
 var CMD_MANUAL = 1; //< 手动命令
 var CMD_AUTO = 2; //< 自动命令

@@ -68,6 +68,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[0]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem1Triggered()
                 }
                 BottomMenuItem{
@@ -75,6 +76,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[1]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem2Triggered()
                 }
                 BottomMenuItem{
@@ -82,6 +84,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[2]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem3Triggered()
                 }
                 BottomMenuItem{
@@ -89,6 +92,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[3]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem4Triggered()
                 }
                 BottomMenuItem{
@@ -96,6 +100,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[4]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem5Triggered()
                 }
                 BottomMenuItem{
@@ -103,6 +108,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[5]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem6Triggered()
                 }
                 BottomMenuItem{
@@ -110,6 +116,7 @@ Item {
                     width: menuContainer.width / 7
                     height: parent.height
                     itemText: menuItemTexts[6]
+                    enabled: itemText.length > 0
                     onItemTriggered: menuItem7Triggered()
                 }
             }

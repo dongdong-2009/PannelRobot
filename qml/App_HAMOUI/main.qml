@@ -239,6 +239,7 @@ Rectangle {
             }
             panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
         }
+        event.accepted = true;
 
     }
     Keys.onReleased: {
@@ -247,6 +248,7 @@ Rectangle {
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, false);
         }
+        event.accepted = true;
     }
 
     Timer{

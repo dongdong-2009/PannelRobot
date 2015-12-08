@@ -86,6 +86,8 @@ ContentPageBase {
             height: parent.height - menuContainer.height - spliteLine.height
         }
         Component.onCompleted: {
+            var armMoveClass = Qt.createComponent('ArmMovePage.qml');
+            pageContainer.addPage(armMoveClass.createObject(pageContainer));
             var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
             if (yDefinePage1Class.status === Component.Ready) {
                 var page =

@@ -9,8 +9,8 @@ import "configs/AlarmInfo.js" as AlarmInfo
 Rectangle {
     id:container
 
-    color: Theme.defaultTheme.BASE_BG
     property variant unResolvedAlarms: []
+    color: "#d1d1d1"
 
     function appendAlarm(errNum){
         var alarmItem = new Storage.AlarmItem(0, errNum);

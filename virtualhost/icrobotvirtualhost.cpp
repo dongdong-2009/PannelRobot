@@ -52,15 +52,17 @@ static QVector<QVector<quint32> > formatProgramFrame(const QVector<QVector<quint
     QVector<quint32> oneLine;
     for(int i = 0; i < data.size(); ++i)
     {
-        if(oneLine.size() + data.at(i).size() <= 64)
-            oneLine<<data.at(i);
-        else
+        if(oneLine.size() + data.at(i).size() > 64)
         {
             ret.append(oneLine);
             oneLine.clear();
+
         }
+        oneLine<<data.at(i);
+
 
     }
+    ret.append(oneLine);
     return ret;
 }
 

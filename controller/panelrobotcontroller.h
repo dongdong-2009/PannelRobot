@@ -481,6 +481,8 @@ private:
     QTranslator translator;
     QTimer keyCheckTimer_;
     QSettings customSettings_;
+    QString valveDefineJSON_;
+
 
 #ifdef Q_WS_QWS
     ICDefaultScreenSaver* screenSaver_;

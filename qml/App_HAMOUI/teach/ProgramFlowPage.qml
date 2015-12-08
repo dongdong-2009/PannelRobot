@@ -182,6 +182,7 @@ Rectangle {
 
     function onKnobChanged(knobStatus){
         onUserChanged(null);
+        isFollow.visible = ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO;
     }
 
     //    function setCurrentModelData(actionObject){
@@ -234,6 +235,11 @@ Rectangle {
                         programListView.model = PData.programs[currentIndex];
                         programListView.currentIndex = -1;
                     }
+                }
+                ICCheckBox{
+                    id:isFollow
+                    text: qsTr("Follow ?")
+                    visible: false
                 }
             }
 
@@ -476,6 +482,7 @@ Rectangle {
                             console.log("CStep:", cStep, currentModel().count);
                             //                            var cStep = Utils.getRandomNum(0, 10);
                             var lastRunning = PData.lastRunning;
+
                             //                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
                             if(editing.currentIndex !== lastRunning.model ||
                                     cStep !== lastRunning.step)
@@ -498,6 +505,9 @@ Rectangle {
                                 cRunning.items = uiRunningSteps;
                                 //                                console.log(cRunning.items)
                                 PData.lastRunning = cRunning;
+                                if(isFollow.isChecked)
+                                    programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
+
                             }
 
                         }
@@ -673,6 +683,7 @@ Rectangle {
         for(i = 0; i < 9; ++i){
             PData.programs[i].clear();
             program = JSON.parse(panelRobotController.programs(i));
+            var jumpLines = [];
             for(var p = 0; p < program.length; ++p){
                 step = program[p]
                 if(Teach.canActionUsePoint(step)){
@@ -684,16 +695,25 @@ Rectangle {
                 }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                     at = Teach.actionTypes.kAT_SyncStart;
                     isSyncStart = true;
-                }
-                else if(step.action === Teach.actions.F_CMD_SYNC_END){
+                }else if(step.action === Teach.actions.F_CMD_SYNC_END){
                     at = Teach.actionTypes.kAT_SyncEnd;
                     isSyncStart = false;
+                }else if(step.action === Teach.actions.F_CMD_PROGRAM_JUMP0 ||
+                         step.action === Teach.actions.F_CMD_PROGRAM_JUMP1){
+
+                    jumpLines.push(p);
                 }
+
                 else
                     at = Teach.actionTypes.kAT_Normal;
                 if(isSyncStart)
                     at = Teach.actionTypes.kAT_SyncStart;
                 PData.programs[i].append(new Teach.ProgramModelItem(step, at));
+            }
+            for(var l = 0; l < jumpLines.length; ++l){
+                step = program[jumpLines[l]];
+                PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
+                PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
             }
         }
     }

@@ -184,6 +184,10 @@ void PanelRobotController::InitMachineConfig_()
 
 void PanelRobotController::OnNeedToInitHost()
 {
+    if(!valveDefineJSON_.isEmpty())
+    {
+        initValveDefines(valveDefineJSON_);
+    }
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
     ICRobotVirtualhost::SendMold(host_, mold->ProgramToDataBuffer(ICRobotMold::kMainProg));
     //    QVector<QVector<quint32> > subsBuffer;
@@ -760,5 +764,6 @@ void PanelRobotController::initValveDefines(const QString &defineJson)
     {
         vIs.append(VariantToValveItem(result.at(i).toMap()));
     }
+    valveDefineJSON_ = defineJson;
     ICRobotVirtualhost::InitValveDefines(host_, vIs);
 }

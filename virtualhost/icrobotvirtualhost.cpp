@@ -46,6 +46,24 @@ bool ICRobotVirtualhost::InitConfigsImpl(const QVector<QPair<quint32, quint32> >
 
 }
 
+static QVector<QVector<quint32> > formatProgramFrame(const QVector<QVector<quint32> >& data)
+{
+    QVector<QVector<quint32> > ret;
+    QVector<quint32> oneLine;
+    for(int i = 0; i < data.size(); ++i)
+    {
+        if(oneLine.size() + data.at(i).size() <= 64)
+            oneLine<<data.at(i);
+        else
+        {
+            ret.append(oneLine);
+            oneLine.clear();
+        }
+
+    }
+    return ret;
+}
+
 void ICRobotVirtualhost::SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data)
 {
     ICRobotTransceiverData * toSentFrame;
@@ -74,11 +92,16 @@ void ICRobotVirtualhost::SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int 
     }
 }
 
-bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
+bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> >&data)
 {
 #ifdef NEW_PLAT
-    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, data.size());
-    SendContinuousDataHelper(hostPtr, 0, data);
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, 0x80000000);
+    QVector<QVector<quint32> > formattedData = formatProgramFrame(data);
+    for(int i = 0; i < formattedData.size(); ++i)
+    {
+        AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, formattedData.at(i).size());
+        SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
+    }
     return true;
 
 
@@ -108,11 +131,18 @@ bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<quint3
 }
 
 
-bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<quint32> &data)
+bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const QVector<QVector<quint32> > &data)
 {
 #ifdef NEW_PLAT
-    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
-    SendContinuousDataHelper(hostPtr, 0, data);
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, 0x80000000 | ((which) << 24));
+    QVector<QVector<quint32> > formattedData = formatProgramFrame(data);
+    for(int i = 0; i < formattedData.size(); ++i)
+    {
+        AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, formattedData.at(i).size() | ((which) << 24));
+        SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
+    }
+//    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
+//    SendContinuousDataHelper(hostPtr, 0, data);
     return true;
 #else
     QVector<quint32> sub;

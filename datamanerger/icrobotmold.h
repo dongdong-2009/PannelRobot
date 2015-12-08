@@ -69,14 +69,17 @@ public:
     void AddICMoldItem(const ICMoldItem& item) { compiledProgram_.append(item);}
     void UpdateICMoldItem(int line, const ICMoldItem& item) { compiledProgram_[line] = item;}
     ICMoldItem GetICMoldItem(int line) { return compiledProgram_.at(line);}
-    QVector<quint32> ProgramToBareData() const
+    QVector<QVector<quint32> >ProgramToBareData() const
     {
-        QVector<quint32> ret;
-        for(int i = 0; i < compiledProgram_.size(); ++i)
-        {
-            ret += (compiledProgram_.at(i));
-        }
-        return ret;
+//        QVector<QVector<quint32> > ret;
+//        QVector<quint32> oneLine;
+//        for(int i = 0; i < compiledProgram_.size(); ++i)
+//        {
+//            oneLine = compiledProgram_.at(i);
+//            ret += (compiledProgram_.at(i));
+//        }
+//        return ret;
+        return compiledProgram_;
     }
     QList<int> RealStepToUIStep(int step) const
     {
@@ -201,9 +204,9 @@ public:
 
     static RecordDataObject ImportMold(const QString &name, const QPair<QStringList, QString>& moldInfo);
 
-    QVector<quint32> ProgramToDataBuffer(int program) const
+    QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
     {
-        if(program >= programs_.size()) return QVector<quint32>();
+        if(program >= programs_.size()) return QVector<QVector<quint32> >();
         CompileInfo p = programs_[program];
         return p.ProgramToBareData();
     }

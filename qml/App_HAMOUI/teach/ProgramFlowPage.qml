@@ -404,12 +404,15 @@ Rectangle {
                         onButtonClicked: {
                             var modelObject = currentModelData();
                             //                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
-                            if(modelObject.mI_ActionObject.action == Teach.actions.ACT_COMMENT){
-                                if(modelObject.mI_ActionObject.commentAction == null)
+                            if(modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT){
+                                if(modelObject.mI_ActionObject.commentAction === null)
                                     return;
                             }
+                            if(modelObject.mI_ActionObject.action === Teach.actions.ACT_FLAG){
+                                return;
+                            }
 
-                            if(modelObject.mI_ActionObject.action == Teach.actions.ACT_COMMENT){
+                            if(modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT){
                                 //                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
                                 modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
                             }
@@ -419,7 +422,8 @@ Rectangle {
 
                         }
                         visible: {
-                            return programListView.currentIndex < programListView.count - 1
+                            return (programListView.currentIndex < programListView.count - 1) &&
+                                    (currentModelData().mI_ActionObject.action !== Teach.actions.ACT_FLAG)
                         }
                     }
                     ICButton{

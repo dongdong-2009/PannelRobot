@@ -40,7 +40,7 @@ Rectangle {
                 target: recordsView;
                 model:usbModel;
                 isSelectable:true;
-                openBackupPackage:backupPackageModel.get(recordsView.currentIndex).name;
+//                openBackupPackage:backupPackageModel.get(recordsView.currentIndex).name;
             }
 
         }
@@ -56,7 +56,10 @@ Rectangle {
         }
         Text{
             id:selectName
-            text: recordsView.currentIndex == -1? "":recordsModel.get(recordsView.currentIndex).name
+            text:{
+                if(recordsView.model != recordsModel) return ""
+                return recordsView.currentIndex == -1? "":recordsModel.get(recordsView.currentIndex).name
+            }
             anchors.verticalCenter: parent.verticalCenter
             width: 272
 
@@ -303,7 +306,8 @@ Rectangle {
             visible: importFromUsb.isChecked
             onButtonClicked: {
                 usbModel.clear();
-                var molds = JSON.parse(panelRobotController.viewBackupPackageDetails(backupPackageModel.get(recordsView.currentIndex).name));
+                recordsView.openBackupPackage = backupPackageModel.get(recordsView.currentIndex).name;
+                var molds = JSON.parse(panelRobotController.viewBackupPackageDetails(recordsView.openBackupPackage));
                 for(var i = 0; i < molds.length; ++i){
                     usbModel.append(recordsView.createRecordItem(molds[i], undefined));
                 }

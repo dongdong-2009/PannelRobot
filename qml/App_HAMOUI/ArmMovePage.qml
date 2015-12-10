@@ -61,8 +61,8 @@ Item {
         x:50
         ICButton {
             id: text4
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Z-")
@@ -72,8 +72,8 @@ Item {
         }
         ICButton {
             id: text3
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Z+")
@@ -84,6 +84,8 @@ Item {
 
         ICButton {
             id: text6
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("U-")
@@ -92,8 +94,8 @@ Item {
 
         ICButton {
             id: text5
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("U+")
@@ -106,8 +108,8 @@ Item {
 
         ICButton {
             id: text9
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Y-")
@@ -117,8 +119,8 @@ Item {
 
         ICButton {
             id: text8
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Y+")
@@ -128,8 +130,8 @@ Item {
 
         ICButton {
             id: text2
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("V-")
@@ -140,8 +142,8 @@ Item {
 
         ICButton {
             id: text1
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("V+")
@@ -150,8 +152,8 @@ Item {
 
         ICButton {
             id: text10
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("X-")
@@ -162,8 +164,8 @@ Item {
 
         ICButton {
             id: text7
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("X+")
@@ -174,8 +176,8 @@ Item {
 
         ICButton {
             id: text11
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("W-")
@@ -185,8 +187,8 @@ Item {
 
         ICButton {
             id: text12
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("W+")
@@ -199,8 +201,8 @@ Item {
 
         ICButton {
             id: text15
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Line Z-")
@@ -211,8 +213,8 @@ Item {
 
         ICButton {
             id: text16
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Line Z+")
@@ -222,8 +224,8 @@ Item {
 
         ICButton {
             id: text23
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Rotate U-")
@@ -234,8 +236,8 @@ Item {
 
         ICButton {
             id: text24
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Rotate U+")
@@ -246,8 +248,8 @@ Item {
 
         ICButton {
             id: text18
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Line Y-")
@@ -257,8 +259,8 @@ Item {
 
         ICButton {
             id: text17
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Line Y+")
@@ -267,8 +269,8 @@ Item {
 
         ICButton {
             id: text21
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Rotate V-")
@@ -279,6 +281,8 @@ Item {
 
         ICButton {
             id: text22
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Rotate V+")
@@ -288,8 +292,8 @@ Item {
 
         ICButton {
             id: text13
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Line X-")
@@ -299,8 +303,8 @@ Item {
 
         ICButton {
             id: text14
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Line X+")
@@ -311,8 +315,8 @@ Item {
 
         ICButton {
             id: text19
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Rotate W-")
@@ -323,8 +327,8 @@ Item {
 
         ICButton {
             id: text20
-
-
+            isAutoRepeat: true
+            autoInterval: 10
             width: 70
             height:48
             text: qsTr("Rotate W+")

@@ -25,6 +25,15 @@ ContentPageBase {
             y: pdata.menuItemY
             z: 1
             TabMenuItem {
+                id: armMove
+                width: parent.width
+                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                height: pdata.menuItemHeight
+                itemText: qsTr("Arm Move")
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+            }
+            TabMenuItem {
                 id: group1
                 width: parent.width
                        * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
@@ -67,7 +76,7 @@ ContentPageBase {
                 pageContainer.setCurrentIndex(index)
             }
             Component.onCompleted: {
-                group1.setChecked(true)
+                armMove.setChecked(true)
             }
         }
 

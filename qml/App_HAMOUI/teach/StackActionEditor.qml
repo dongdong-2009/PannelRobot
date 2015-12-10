@@ -357,7 +357,7 @@ Rectangle {
             id:speed
             visible: useFlag.isChecked
             configName: qsTr("Speed")
-            configAddr: "s_rw_0_16_3_265"
+            configAddr: "s_rw_0_16_1_265"
         }
     }
     Component.onCompleted: {

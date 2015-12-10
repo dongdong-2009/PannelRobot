@@ -363,5 +363,7 @@ Rectangle {
     }
     Component.onCompleted: {
         updateStacksSel();
+        panelRobotController.moldChanged.connect(updateStacksSel);
+
     }
 }

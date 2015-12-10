@@ -683,6 +683,7 @@ Rectangle {
     }
 
     function updateProgramModels(){
+        Teach.parseStacks(panelRobotController.stacks());
         var program = JSON.parse(panelRobotController.mainProgram());
         var i,j;
         var step;
@@ -734,7 +735,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        Teach.parseStacks(panelRobotController.stacks());
         PData.programs.push(mainProgramModel);
         PData.programs.push(sub1ProgramModel);
         PData.programs.push(sub2ProgramModel);

@@ -645,14 +645,14 @@ QString ICDALHelper::NewMold(const QString &moldName, const QStringList &program
     {
         cmd += QString("\'%1\',").arg(p.at(i));
     }
-    cmd.chop(1);
-    cmd += ")";
+//    cmd.chop(1);
+    cmd += "\"\")";
     QSqlDatabase db = QSqlDatabase::database();
     db.transaction();
     QSqlQuery query;
     query.exec(cmd);
-    //    qDebug()<<cmd;
-    //    qDebug()<<query.lastError().text();
+        qDebug()<<cmd;
+        qDebug()<<query.lastError().text();
     QString ret;
     //ToDo: New Mold act may not delete if fail
     if(db.commit())

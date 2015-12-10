@@ -307,21 +307,21 @@ var generateStackAction = function(stackID, speed){
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
-    initStep.push(generateSyncBeginAction());
-    //    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-    //                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
-    var aT;
-    for(var i = 1; i < 8; ++i){
-        aT = axisDefine["s"+ i + "Axis"];
-        if(aT == kAxisType_Servo){
-            initStep.push(generateAxisServoAction(actions.F_CMD_SINGLE, i - 1));
-        }else if(aT == kAxisType_Pneumatic){
-            initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
-        }
-    }
+//    initStep.push(generateSyncBeginAction());
+//    //    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
+//    //                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
+//    var aT;
+//    for(var i = 1; i < 8; ++i){
+//        aT = axisDefine["s"+ i + "Axis"];
+//        if(aT == kAxisType_Servo){
+//            initStep.push(generateAxisServoAction(actions.F_CMD_SINGLE, i - 1));
+//        }else if(aT == kAxisType_Pneumatic){
+//            initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
+//        }
+//    }
 
-    initStep.push(generateSyncEndAction());
-    initStep.push(generateWaitAction(1));
+//    initStep.push(generateSyncEndAction());
+//    initStep.push(generateWaitAction(1));
     initStep.push(generteEndAction());
 
     return JSON.stringify(initStep);

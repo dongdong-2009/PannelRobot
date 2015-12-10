@@ -172,14 +172,8 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
-    int stackID = v->value("stackID", -1).toInt();
-    bool isOk = false;
-
-    StackInfo si = ICRobotMold::CurrentMold()->GetStackInfo(stackID, isOk);
-    if(!isOk)
-        return ICRobotMold::kCCErr_Invaild_StackID;
-
     item.append(v->value("action").toInt());
+    StackInfo si = v->value("stackInfo").value<StackInfo>();
     item.append(si.split.m0pos);
     item.append(si.split.m1pos);
     item.append(si.split.m2pos);
@@ -274,13 +268,14 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     }
     QStringList programList;
     int err;
-    CompileInfo compileInfo = Complie(initProgram, err);
+    QMap<int, StackInfo> sis;
+    CompileInfo compileInfo = Complie(initProgram, sis, err);
     if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
 
     programList.append(initProgram);
     for(int i = 0; i < subPrograms.size(); ++i)
     {
-        CompileInfo compileInfo = Complie(subPrograms.at(i), err);
+        CompileInfo compileInfo = Complie(subPrograms.at(i), sis, err);
         if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_SubProgram_Invalid);
         programList.append(subPrograms.at(i));
     }
@@ -309,7 +304,7 @@ RecordDataObject ICRobotMold::CopyRecord(const QString &name, const QString &sou
 
 
 
-CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
+CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, StackInfo>& stackInfos, int &err)
 {
     QJson::Parser parser;
     bool ok;
@@ -335,17 +330,33 @@ CompileInfo ICRobotMold::Complie(const QString &programText, int &err)
         {
             continue;
         }
-        if(act == F_CMD_FLAG)
+        else if(act == F_CMD_FLAG)
         {
             ret.MapFlagToStep(action.value("flag").toInt(), step);
             continue;
         }
-        if(act == F_CMD_PROGRAM_JUMP1 ||
+        else if(act == F_CMD_PROGRAM_JUMP1 ||
                 act == F_CMD_PROGRAM_JUMP0)
         {
             int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
             action.insert("step", toJumpStep);
         }
+        else if(act == F_CMD_STACK0)
+        {
+
+            int stackID = action.value("stackID", -1).toInt();
+            if(!stackInfos.contains(stackID))
+            {
+                ret.Clear();
+                err = ICRobotMold::kCCErr_Invaild_StackID;
+                ret.AddErr(i, err);
+                return ret;
+            }
+            StackInfo si = stackInfos.value(stackID);
+
+            action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+        }
+
         ret.AddICMoldItem(VariantToMoldItem(step, action, err));
         if(err != kCCErr_None)
         {
@@ -459,7 +470,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     for(int i = 0; i != programs.size(); ++i)
     {
         programsCode_.append(programs.at(i));
-        p = Complie(programs.at(i), err);
+        p = Complie(programs.at(i), stackInfos_, err);
         if(p.IsCompileErr()) return false;
         programs_.append(p);
     }
@@ -469,15 +480,15 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
     }
-    stacks_ = ICDALHelper::MoldStacksContent(moldName);
-    stackInfos_ = ParseStacks_(stacks_);
+//    stacks_ = ICDALHelper::MoldStacksContent(moldName);
+//    stackInfos_ = ParseStacks_(stacks_);
     return true;
 }
 
 QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
-    CompileInfo aP = Complie(program, err);
+    CompileInfo aP = Complie(program, stackInfos_, err);
     if(err == kCCErr_None)
     {
         programsCode_[which] = program;

@@ -37,7 +37,8 @@ union StackInfo{
     }split;
     quint32 all[15];
 };
-
+Q_DECLARE_METATYPE(StackInfo)
+//qRegisterMetaType<StackInfo>("StackInfo");
 #ifdef NEW_PLAT
 typedef QVector<quint32> ICMoldItem;
 typedef QVector<ICMoldItem> ICActionProgram;
@@ -225,7 +226,7 @@ public:
 #endif
     }
 
-    static CompileInfo Complie(const QString& programText, int & err);
+    static CompileInfo Complie(const QString& programText, const QMap<int, StackInfo>& stackInfos, int & err);
 
     static QPair<QStringList, QString>  ExportMold(const QString& name);
 

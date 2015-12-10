@@ -275,7 +275,7 @@ Rectangle {
                             ICConfigEdit{
                                 id:count0
                                 configName: qsTr("Count0")
-                                configAddr: "s_rw_0_32_3_1400"
+                                configAddr: "s_rw_0_32_0_1400"
                                 inputWidth: 100
                             }
                             ICConfigEdit{
@@ -287,7 +287,7 @@ Rectangle {
                             ICConfigEdit{
                                 id:count1
                                 configName: qsTr("Count1")
-                                configAddr: "s_rw_0_32_3_1400"
+                                configAddr: "s_rw_0_32_0_1400"
                                 inputWidth: 100
                             }
                             ICConfigEdit{
@@ -300,7 +300,7 @@ Rectangle {
                             ICConfigEdit{
                                 id:count2
                                 configName: qsTr("Count2")
-                                configAddr: "s_rw_0_32_3_1400"
+                                configAddr: "s_rw_0_32_0_1400"
                                 inputWidth: 100
                             }
                         }

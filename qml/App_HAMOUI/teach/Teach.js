@@ -499,7 +499,7 @@ var syncEndActionToStringHandler = function(actionObject){
 
 var stackActionToStringHandler = function(actionObject){
     return qsTr("Stack") + "[" + actionObject.stackID + "]:" +
-            stackInfos[actionObject.stackID].descr + " " +
+            getStackInfoFromID(actionObject.stackID).descr + " " +
             qsTr("Speed:") + actionObject.speed;
 }
 

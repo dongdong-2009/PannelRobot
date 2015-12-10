@@ -180,7 +180,7 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(si.split.m3pos);
     item.append(si.split.m4pos);
     item.append(si.split.m5pos);
-    item.append(ICUtility::doubleToInt(v->value("speed", 80).toDouble(), 3));
+    item.append(ICUtility::doubleToInt(v->value("speed", 80).toDouble(), 1));
     item.append(si.split.space0);
     item.append(si.split.space1);
     item.append(si.split.space2);
@@ -867,6 +867,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks, bool &isOk
         stackInfo.split.dir1 = stackMap.value("dir1").toInt();
         stackInfo.split.dir2 = stackMap.value("dir2").toInt();
         stackInfo.split.type = stackMap.value("type").toInt();
+        stackInfo.split.res = 0;
         ret.insert(p.key().toInt(), stackInfo);
         ++p;
     }

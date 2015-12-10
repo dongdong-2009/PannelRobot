@@ -7,6 +7,7 @@ Rectangle {
     property alias currentText: currentText.text
     property int popupMode : 0
     property int itemHeight: 24
+    property alias popupWidth: itemContainer.width
 
     width: 100
     height: 24

@@ -403,7 +403,6 @@ Rectangle {
                         bgColor: "lime"
                         onButtonClicked: {
                             var modelObject = currentModelData();
-                            //                            if(modelObject.commentedObject.action == Teach.actions.ACT_COMMENT) return;
                             if(modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT){
                                 if(modelObject.mI_ActionObject.commentAction === null)
                                     return;
@@ -422,8 +421,10 @@ Rectangle {
 
                         }
                         visible: {
+                            var modelObject = currentModelData();
+                            if(modelObject === null) return false;
                             return (programListView.currentIndex < programListView.count - 1) &&
-                                    (currentModelData().mI_ActionObject.action !== Teach.actions.ACT_FLAG)
+                                    (modelObject.mI_ActionObject.action !== Teach.actions.ACT_FLAG)
                         }
                     }
                     ICButton{
@@ -450,7 +451,7 @@ Rectangle {
                     delegate: ProgramListItem{
                         x:1
                         width: programListView.width - x
-                        height: 30
+//                        height: 30
                         isCurrent: ListView.isCurrentItem
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
@@ -594,6 +595,8 @@ Rectangle {
                 var searchEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('PathActionEditor.qml')
                 var pathEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('StackActionEditor.qml')
+                var stackEditorObject = editor.createObject(actionEditorContainer);
 
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
@@ -605,6 +608,7 @@ Rectangle {
                 actionEditorContainer.addPage(commentEditorObject);
                 actionEditorContainer.addPage(searchEditorObject);
                 actionEditorContainer.addPage(pathEditorObject);
+                actionEditorContainer.addPage(stackEditorObject);
 
 
                 actionEditorContainer.showMenu();
@@ -617,16 +621,17 @@ Rectangle {
                 actionMenuObject.commentMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(7)});
                 actionMenuObject.searchMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(8)});
                 actionMenuObject.pathMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(9)});
+                actionMenuObject.stackMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(10)});
 
 
-                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+//                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 //                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+//                syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+//                commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+//                searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
                 actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
                 insertBtn.buttonClicked.connect(onInsertTriggered);

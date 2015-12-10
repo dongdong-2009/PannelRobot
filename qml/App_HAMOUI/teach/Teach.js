@@ -114,7 +114,7 @@ actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
-
+actions.F_CMD_STACK0 = 300;
 
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
@@ -293,6 +293,14 @@ var generateCommentAction = function(comment, commentdAction){
         "action": actions.ACT_COMMENT,
         "comment":comment,
         "commentAction":commentdAction || null
+    };
+}
+
+var generateStackAction = function(stackID, speed){
+    return {
+        "action":actions.F_CMD_STACK0,
+        "stackID":stackID,
+        "speed":speed || 80,
     };
 }
 
@@ -489,6 +497,12 @@ var syncEndActionToStringHandler = function(actionObject){
     return qsTr("Sync End");
 }
 
+var stackActionToStringHandler = function(actionObject){
+    return qsTr("Stack") + "[" + actionObject.stackID + "]:" +
+            stackInfos[actionObject.stackID].descr + " " +
+            qsTr("Speed:") + actionObject.speed;
+}
+
 var pointToString = function(point){
     var ret = "";
     if(point.pointName !== ""){
@@ -581,6 +595,7 @@ actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandle
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_STACK0, stackActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
     if(actionObject.action === actions.F_CMD_SINGLE){
@@ -656,12 +671,12 @@ var pushFlag = function(flag, descr){
     for(var i = 0; i < flags.length; ++i){
         if(flag < flags[i]){
             flags.splice(i, 0, flag);
-            flagStrs[flag] = qsTr("Flag") + "[" + flag + "]" + ":" + descr;
+            flagStrs.splice(i, 0,  qsTr("Flag") + "[" + flag + "]" + ":" + descr);
             return;
         }
     }
     flags.push(flag);
-    flagStrs[flag] = qsTr("Flag") + "[" + flag + "]" + ":" + descr;
+    flagStrs.push(qsTr("Flag") + "[" + flag + "]" + ":" + descr);
     return;
 }
 
@@ -669,6 +684,7 @@ var delFlag = function(flag){
     for(var i = 0; i < flags.length; ++i){
         if(flag === flags[i]){
             flags.splice(i, 1);
+            flagStrs.splice(i, 1);
             break;
         }
     }
@@ -685,6 +701,120 @@ var useableFlag = function(){
         }
     }
     return flags[i - 1] + 1;
+}
+
+function StackInfo(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
+                   space0, space1, space2, count0, count1, count2,
+                   sequence, dir0, dir1, dir2, type, descr){
+    this.m0pos = m0pos;
+    this.m1pos = m1pos;
+    this.m2pos = m2pos;
+    this.m3pos = m3pos;
+    this.m4pos = m4pos;
+    this.m5pos = m5pos;
+    this.space0 = space0;
+    this.space1 = space1;
+    this.space2 = space2;
+    this.count0 = count0;
+    this.count1 = count1;
+    this.count2 = count2;
+    this.sequence = sequence;
+    this.dir0 = dir0;
+    this.dir1 = dir1;
+    this.dir2 = dir2;
+    this.type = type;
+    this.descr = descr;
+}
+
+
+var stackIDs = [];
+var stackInfos = [];
+
+function appendStackInfo(stackInfo){
+    var id = useableStack();
+    pushStack(id, stackInfo);
+}
+
+function updateStackInfo(which, stackInfo){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stackIDs[i] == which){
+            stackInfos[i] = stackInfo;
+            break;
+        }
+    }
+}
+
+function getStackInfoFromID(stackID){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stackIDs[i] == stackID){
+            return stackInfos[i];
+        }
+    }
+    return null;
+}
+
+var pushStack = function(stack, info){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stack < stackIDs[i]){
+            stackIDs.splice(i, 0, stack);
+            stackInfos.splice(i, 0, info);
+            return;
+        }
+    }
+    stackIDs.push(stack);
+    stackInfos.push(info);
+    return;
+}
+
+var delStack = function(stack){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stack === stackIDs[i]){
+            stackIDs.splice(i, 1);
+            stackInfos.splice(i, 1);
+            break;
+        }
+    }
+}
+
+var useableStack = function(){
+    if(stackIDs.length === 0) return 0;
+    if(stackIDs.length < 3)
+        return stackIDs[stackIDs.length - 1] + 1;
+    if(stackIDs[0] !== 0) return 0;
+    for(var i = 1; i < stackIDs.length; ++i){
+        if(stackIDs[i] - stackIDs[i - 1] > 1){
+            return stackIDs[i - 1] + 1;
+        }
+    }
+    return stackIDs[i - 1] + 1;
+}
+
+function parseStacks(stacks){
+    if(stacks.length === 0) return;
+    console.log(stacks);
+    var statckInfos = JSON.parse(stacks);
+    stackIDs.length = 0;
+    stackInfos.length = 0;
+    for(var s in statckInfos){
+        pushStack(parseInt(s), statckInfos[s]);
+    }
+}
+
+
+function statcksToJSON(){
+    var ret = {};
+    for(var i = 0; i < stackIDs.length; ++i){
+        ret[stackIDs[i].toString()] = stackInfos[i];
+    }
+    return JSON.stringify(ret);
+}
+
+function stackInfosDescr(){
+    var ret = [];
+    for(var i = 0; i < stackIDs.length; ++i){
+        ret.push(qsTr("Stack") + "[" + stackIDs[i] + "]:" + stackInfos[i].descr);
+    }
+    return ret;
 }
 
 var canActionUsePoint = function(actionObject){

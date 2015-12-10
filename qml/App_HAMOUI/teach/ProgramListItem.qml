@@ -10,6 +10,8 @@ Rectangle{
     property int actionType: Teach.actionTypes.kAT_Normal
     property string text: ""
 
+    height: descr.height + 12
+
     function judgeState(){
         var ret = "";
         if(isCurrent){
@@ -68,6 +70,7 @@ Rectangle{
         horizontalAlignment: Text.AlignRight
     }
     Text {
+        id:descr
         text:"             " + container.text
         width: parent.width
         anchors.verticalCenter: parent.verticalCenter

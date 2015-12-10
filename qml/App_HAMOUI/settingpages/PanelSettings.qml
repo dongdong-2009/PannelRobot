@@ -347,7 +347,12 @@ Item {
 
 
         Component.onCompleted: {
-            var lang = panelRobotController.getCustomSettings("Language", "CN");
+            var lang = panelRobotController.getCustomSettings("Language", "");
+            if(lang === ""){
+                panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
+                panelRobotController.setCustomSettings("Language", "CN");
+                lang = "CN";
+            }
             if(lang === "CN"){
                 chineseBox.setChecked(true);
             }else if(lang === "US"){

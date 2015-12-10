@@ -14,7 +14,7 @@ Item {
     property alias decimal: edit.decimal
 
     height: 24
-    width: container.width
+    width: container.width + container.spacing
     Row{
         id:container
         spacing: 2

@@ -36,3 +36,9 @@ function isDateTimeValid(yy,MM,dd,hh,mm,ss){
     var strDate2 = formatDate(date1, "yyyy/M/d h:m:s");
     return strDate1 === strDate2;
 }
+
+function getValveFromBrackets(str){
+    var begin = str.indexOf('[') + 1;
+    var end = str.indexOf(']');
+    return str.slice(begin, end);
+}

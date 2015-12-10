@@ -13,7 +13,7 @@ Rectangle {
     signal checkMenuTriggered()
     signal conditionMenuTriggered()
     signal waitMenuTriggered()
-    signal groupMenuTriggered()
+    signal stackMenuTriggered()
     signal syncMenuTriggered()
     signal otherMenuTriggered()
     signal commentMenuTriggered()
@@ -102,11 +102,11 @@ Rectangle {
         }
         ICButton{
             id:group
-            text:qsTr("Group")
+            text:qsTr("Stack")
             icon: "../images/action_item_parallel.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
-            onButtonClicked: groupMenuTriggered()
+            onButtonClicked: stackMenuTriggered()
         }
         ICButton{
             id:search

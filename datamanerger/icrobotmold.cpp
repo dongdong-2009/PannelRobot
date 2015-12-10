@@ -170,6 +170,36 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    int stackID = v->value("stackID", -1).toInt();
+    bool isOk = false;
+
+    StackInfo si = ICRobotMold::CurrentMold()->GetStackInfo(stackID, isOk);
+    if(!isOk)
+        return ICRobotMold::kCCErr_Invaild_StackID;
+
+    item.append(v->value("action").toInt());
+    item.append(si.split.m0pos);
+    item.append(si.split.m1pos);
+    item.append(si.split.m2pos);
+    item.append(si.split.m3pos);
+    item.append(si.split.m4pos);
+    item.append(si.split.m5pos);
+    item.append(ICUtility::doubleToInt(v->value("speed", 80).toDouble(), 3));
+    item.append(si.split.space0);
+    item.append(si.split.space1);
+    item.append(si.split.space2);
+    item.append(si.split.count0);
+    item.append(si.split.count1);
+    item.append(si.split.count2);
+    item.append(si.all[12]);
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+
+
+    return ICRobotMold::kCCErr_None;
+}
+
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
 {
     QMap<int, ActionCompiler> ret;
@@ -186,6 +216,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
+    ret.insert(F_CMD_STACK0, StackActionCompiler);
 
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
@@ -436,6 +467,8 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
     }
+    stacks_ = ICDALHelper::MoldStacksContent(moldName);
+    stackInfos_ = ParseStacks_(stacks_);
     return true;
 }
 
@@ -788,4 +821,49 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QPair<QStrin
     ret = NewRecord(name, programs.at(0), fncs, programs.mid(1));
     return ret;
 
+}
+
+QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantMap result = parser.parse (stacks.toLatin1(), &ok).toMap();
+    QMap<int, StackInfo> ret;
+    if(!ok) return ret;
+    QVariantMap::iterator p = result.begin();
+    StackInfo stackInfo;
+    while(p != result.end())
+    {
+        QVariantMap stackMap = p.value().toMap();
+        stackInfo.split.m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toInt(), 3);
+        stackInfo.split.m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toInt(), 3);
+        stackInfo.split.m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toInt(), 3);
+        stackInfo.split.m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toInt(), 3);
+        stackInfo.split.m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toInt(), 3);
+        stackInfo.split.m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toInt(), 3);
+        stackInfo.split.space0 = ICUtility::doubleToInt(stackMap.value("space0").toInt(), 3);
+        stackInfo.split.space1 = ICUtility::doubleToInt(stackMap.value("space1").toInt(), 3);
+        stackInfo.split.space2 = ICUtility::doubleToInt(stackMap.value("space2").toInt(), 3);
+        stackInfo.split.count0 = stackMap.value("count0").toInt();
+        stackInfo.split.count1 = stackMap.value("count1").toInt();
+        stackInfo.split.count2 = stackMap.value("count2").toInt();
+        stackInfo.split.sequence = stackMap.value("sequence").toInt();
+        stackInfo.split.dir0 = stackMap.value("dir0").toInt();
+        stackInfo.split.dir1 = stackMap.value("dir1").toInt();
+        stackInfo.split.dir2 = stackMap.value("dir2").toInt();
+        stackInfo.split.type = stackMap.value("type").toInt();
+        ret.insert(p.key().toInt(), stackInfo);
+        ++p;
+    }
+    return ret;
+}
+
+bool ICRobotMold::SaveStacks(const QString &stacks)
+{
+    QMap<int, StackInfo> statcksMap = ParseStacks_(stacks);
+    if(statcksMap.isEmpty())
+        return false;
+    stacks_ = stacks;
+    stackInfos_ = statcksMap;
+    return ICDALHelper::SaveStacks(moldName_, stacks);
 }

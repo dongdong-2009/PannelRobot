@@ -1,6 +1,7 @@
 .pragma library
 
 var MAX_UINT_16 = 65536;
+var MAX_UINT_32 = 2147483647;
 var MAX_INT_16 = 32767;
 var MIN_INT_16 = -32767;
 var MAX_INT_32 = 2147483647;
@@ -34,7 +35,7 @@ var configRanges = {
     "s_rw_0_32_1_1200":[0, 100],
     "s_rw_0_32_1_1201":[0, 600000], //IO Teach delay
     "s_rw_0_32_3_1300":[MIN_INT_32, MAX_INT_32], //Path limit
-
+    "s_rw_0_32_3_1400":[0, MAX_UINT_32]
 
 };
 

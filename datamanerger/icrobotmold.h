@@ -12,6 +12,32 @@
 
 class ICRobotMold;
 
+union StackInfo{
+
+    struct{
+        quint32 m0pos:32;
+        quint32 m1pos:32;
+        quint32 m2pos:32;
+        quint32 m3pos:32;
+        quint32 m4pos:32;
+        quint32 m5pos:32;
+        quint32 space0:32;
+        quint32 space1:32;
+        quint32 space2:32;
+        quint32 count0:32;
+        quint32 count1:32;
+        quint32 count2:32;
+        quint32 sequence:5;
+        quint32 dir0: 1;
+        quint32 dir1: 1;
+        quint32 dir2: 1;
+        quint32 type:8;
+        quint32 res:16;
+
+    }split;
+    quint32 all[15];
+};
+
 #ifdef NEW_PLAT
 typedef QVector<quint32> ICMoldItem;
 typedef QVector<ICMoldItem> ICActionProgram;
@@ -105,7 +131,7 @@ public:
     }
 
      QMap<int, int> ErrInfo() const { return errList_;}
-     int RemoveErr(int line) { errList_.remove(line);}
+     void RemoveErr(int line) { errList_.remove(line);}
 
 private:
     QMap<int, int> stepMap_;
@@ -146,6 +172,7 @@ public:
         kCCErr_Invaild_Program_Index,
         kCCErr_Wrong_Action_Format,
         kCCErr_Invaild_Flag,
+        kCCErr_Invaild_StackID
     };
 
     enum {
@@ -243,6 +270,18 @@ public:
         if(which >= programsCode_.size()) return "";
         return programsCode_.at(which);
     }
+    QString Stacks() const { return stacks_;}
+    bool SaveStacks(const QString& stacks);
+    StackInfo GetStackInfo(int which, bool& isOk) const
+    {
+        isOk = false;
+        if(stackInfos_.contains(which))
+        {
+            isOk = true;
+            return stackInfos_.value(which);
+        }
+        return StackInfo();
+    }
 
     QList<int> RunningStepToProgramLine(int which, int step);
 
@@ -253,10 +292,13 @@ public:
 
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);
+    QMap<int, StackInfo> ParseStacks_(const QString& stacks);
 
 private:
     QList<CompileInfo> programs_;
     QStringList programsCode_;
+    QString stacks_;
+    QMap<int, StackInfo> stackInfos_;
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;

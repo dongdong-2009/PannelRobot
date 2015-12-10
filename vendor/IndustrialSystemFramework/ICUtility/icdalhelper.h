@@ -100,6 +100,7 @@ public:
     static QStringList SystemTableContent(const QString& tableName) { return TableContent_(tableName, SystemConfigNameWrapper);}
     static QStringList AlarmTableContent(const QString& tableName) { return AlarmTableContent_(tableName, SystemConfigNameWrapper);}
     static QStringList MoldProgramContent(const QString& moldName);
+
     static QString NewMold(const QString& moldName, const QStringList& programs, const QList<QPair<int, quint32> > & values);
     static QString CopyMold(const QString& moldName, const QString& source);
     static bool DeleteMold(const QString& moldName);
@@ -132,6 +133,12 @@ public:
                                      bool &hasSystem);
 
     static QString MoldFncTableName(const QString& moldName);
+
+    static QString MoldStacksContent(const QString& moldName);
+
+    static bool SaveStacks(const QString& moldName, const QString& stacks);
+
+
 //    static bool UpdateConfigsValues(const QList<QPair<const ICAddrWrapper *, quint32> > &addrValuePairs, const QString& tableName);
 
 
@@ -400,6 +407,19 @@ inline QStringList ICDALHelper::MoldProgramContent(const QString &moldName)
     return ret;
 }
 
+inline QString ICDALHelper::MoldStacksContent(const QString &moldName)
+{
+    QString ret;
+    QSqlQuery query;
+    query.exec(QString("SELECT stacks FROM %1 WHERE mold_name = '%2'").arg("tb_mold_act").arg(moldName));
+    if(query.next())
+    {
+        ret = (query.value(0).toString());
+
+    }
+    return ret;
+}
+
 inline QString ICDALHelper::MoldFncTableName(const QString &moldName)
 {
     QSqlQuery query;
@@ -409,5 +429,15 @@ inline QString ICDALHelper::MoldFncTableName(const QString &moldName)
     return "";
 }
 
+inline bool ICDALHelper::SaveStacks(const QString &moldName, const QString &stacks)
+{
+    QString colName = ("stacks");
+    QString cmd = QString("UPDATE tb_mold_act set %1 = \'%2\' WHERE mold_name = \"%3\"")
+            .arg(colName).arg(stacks).arg(moldName);
+    QSqlQuery query;
+    query.exec(cmd);
+    //    qDebug()<<query.lastError().text();
+    return query.lastError().type() == QSqlError::NoError;
+}
 
 #endif // ICDALHELPER_H

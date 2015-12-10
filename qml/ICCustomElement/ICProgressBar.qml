@@ -30,7 +30,7 @@ Rectangle {
             val = minimum;
         if(val > maximum)
             val = maximum;
-        if(val != pData.value){
+        if(val !== pData.value){
             pData.value = val;
             valueChanged(val);
         }

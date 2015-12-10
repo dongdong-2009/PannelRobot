@@ -445,6 +445,9 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      {
          toMove.setY(screenHeight_ - this->height() - 48);
      }
-     this->move(toMove);
+     if(isNumberOnly)
+         this->move(toMove);
+     else
+         this->move(10, 50);
      this->show();
  }

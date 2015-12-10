@@ -116,7 +116,7 @@ OTHER_FILES += \
     qml/ICCustomElement/ICProgressBar.qml
 
 UPDir = $${DESTDIR}/HCRobot-$${VERSION}
-updateCmd = '"tar xvf PanelRobot.tar -C /"'
+updateCmd = '"tar xvf PanelRobot.tar -C / ; cp /opt/Qt/apps/RobotDatabase /mnt/udisk -f"'
 UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar"
 unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}' > UPMaker && chmod +x UPMaker"
 #unix:QMAKE_PRE_LINK += ""

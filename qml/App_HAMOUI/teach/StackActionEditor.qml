@@ -33,6 +33,7 @@ Rectangle {
         ICButtonGroup{
             id:flagPageSel
             spacing: 10
+            mustChecked: true
             ICCheckBox{
                 id:defineStack
                 text: qsTr("Define Stack")

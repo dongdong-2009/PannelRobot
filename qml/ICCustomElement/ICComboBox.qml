@@ -114,7 +114,8 @@ Rectangle {
     MouseArea{
         anchors.fill: parent
         onClicked: {
-            itemContainer.visible = true;
+            if(itemModel.count > 0)
+                itemContainer.visible = true;
             //            itemContainer.z = 100
 
         }

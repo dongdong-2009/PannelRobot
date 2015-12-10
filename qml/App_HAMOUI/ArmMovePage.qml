@@ -66,7 +66,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Z-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -77,7 +77,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Z+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -89,7 +89,7 @@ Item {
             width: 70
             height:48
             text: qsTr("U-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
 
         ICButton {
@@ -99,7 +99,7 @@ Item {
             width: 70
             height:48
             text: qsTr("U+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -113,7 +113,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Y-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
 
 
@@ -124,7 +124,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Y+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
 
 
@@ -135,7 +135,7 @@ Item {
             width: 70
             height:48
             text: qsTr("V-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -147,7 +147,7 @@ Item {
             width: 70
             height:48
             text: qsTr("V+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
 
         ICButton {
@@ -157,7 +157,7 @@ Item {
             width: 70
             height:48
             text: qsTr("X-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -169,7 +169,7 @@ Item {
             width: 70
             height:48
             text: qsTr("X+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -181,7 +181,7 @@ Item {
             width: 70
             height:48
             text: qsTr("W-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
 
         }
 
@@ -192,7 +192,7 @@ Item {
             width: 70
             height:48
             text: qsTr("W+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
 
 
         }
@@ -206,7 +206,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Line Z-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NZ, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.COMBINE_ARM_MOVE_TYPE)
 
 
         }
@@ -218,7 +218,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Line Z+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PZ, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.COMBINE_ARM_MOVE_TYPE)
         }
 
 
@@ -229,7 +229,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Rotate U-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NU, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.COMBINE_ARM_MOVE_TYPE)
 
 
         }
@@ -241,7 +241,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Rotate U+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PU, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.COMBINE_ARM_MOVE_TYPE)
 
 
         }
@@ -253,7 +253,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Line Y-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NY, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.COMBINE_ARM_MOVE_TYPE)
 
         }
 
@@ -264,7 +264,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Line Y+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PY, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.COMBINE_ARM_MOVE_TYPE)
         }
 
         ICButton {
@@ -274,7 +274,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Rotate V-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NV, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.COMBINE_ARM_MOVE_TYPE)
 
 
         }
@@ -286,7 +286,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Rotate V+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PV, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.COMBINE_ARM_MOVE_TYPE)
         }
 
 
@@ -297,7 +297,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Line X-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NX, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.COMBINE_ARM_MOVE_TYPE)
 
         }
 
@@ -308,7 +308,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Line X+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PX, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.COMBINE_ARM_MOVE_TYPE)
 
 
         }
@@ -320,7 +320,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Rotate W-")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_NW, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.COMBINE_ARM_MOVE_TYPE)
 
 
         }
@@ -332,7 +332,7 @@ Item {
             width: 70
             height:48
             text: qsTr("Rotate W+")
-            onButtonClicked: sendCommand(Keymap.CMD_JOG_PW, Keymap.COMBINE_ARM_MOVE_TYPE)
+            onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.COMBINE_ARM_MOVE_TYPE)
 
         }
 

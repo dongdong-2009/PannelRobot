@@ -92,7 +92,7 @@ target.path = /opt/Qt/apps
 CONFIG(release, debug|release) {
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
-INSTALLS += db
+#INSTALLS += db
 }
 
 #db.path = /opt/Qt/apps/

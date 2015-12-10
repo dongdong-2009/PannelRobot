@@ -140,6 +140,7 @@ Item {
                 }
                 ICButtonGroup{
                     spacing: panelSettingsPage.rowSpacing
+                    mustChecked: true
                     ICCheckBox{
                         id:chineseBox
                         text: "中文"

@@ -4,7 +4,9 @@ Item {
     property int layoutMode: 0
     property int spacing: 1
     property Item checkedItem: null
+    property int checkedIndex: -1
     property bool isAutoSize: true
+    property bool mustChecked: false
     id:container
 
     function autoResize(){
@@ -56,6 +58,8 @@ Item {
         if(isCheck){
             //            console.log(index);
             var btns = pData.buttons;
+            checkedItem = btns[index];
+            checkedIndex = index;
             for(var i = 0 ; i < btns.length; ++i){
                 if(i !== index)
                     btns[i].setChecked(false);
@@ -63,7 +67,8 @@ Item {
             //            children[index].setChecked(true);
             buttonClickedID(index);
             buttonClickedItem(btns[index]);
-            checkedItem = btns[index];
+        }else if(mustChecked && (checkedIndex == index)){
+            pData.buttons[index].setChecked(true);
         }
     }
 

@@ -50,6 +50,7 @@ Rectangle {
         border.color: parent.border.color
         ListView{
             id:view
+            z:10
             model: itemModel
             //            anchors.fill: parent
             delegate: Item{
@@ -80,6 +81,15 @@ Rectangle {
         onVisibleChanged: {
             if(visible){
                 height = itemHeight * itemModel.count;
+            }
+        }
+        MouseArea{
+            width: 800
+            height: 600
+            Component.onCompleted: {
+                var p = mapFromItem(null, 0, 0);
+                x = p.x;
+                y = p.y;
             }
         }
     }

@@ -242,6 +242,10 @@ Rectangle {
             text: qsTr("Del")
             onButtonClicked: {
                 if(recordsView.currentIndex < 0) return;
+                if(panelRobotController.currentRecordName() == selectName.text){
+                    tipDialog.show(qsTr("This mold is using!"));
+                    return;
+                }
                 if(panelRobotController.deleteRecord(selectName.text)){
                     recordsModel.remove(recordsView.currentIndex);
                 }

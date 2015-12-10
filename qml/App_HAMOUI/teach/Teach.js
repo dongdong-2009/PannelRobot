@@ -498,8 +498,10 @@ var syncEndActionToStringHandler = function(actionObject){
 }
 
 var stackActionToStringHandler = function(actionObject){
+    var si = getStackInfoFromID(actionObject.stackID);
+    var descr = (si == null) ? qsTr("not exist") : si.descr;
     return qsTr("Stack") + "[" + actionObject.stackID + "]:" +
-            getStackInfoFromID(actionObject.stackID).descr + " " +
+            descr + " " +
             qsTr("Speed:") + actionObject.speed;
 }
 
@@ -692,8 +694,8 @@ var delFlag = function(flag){
 
 var useableFlag = function(){
     if(flags.length === 0) return 0;
-    if(flags.length < 3)
-        return flags[flags.length - 1] + 1;
+//    if(flags.length < 3)
+//        return flags[flags.length - 1] + 1;
     if(flags[0] !== 0) return 0;
     for(var i = 1; i < flags.length; ++i){
         if(flags[i] - flags[i - 1] > 1){
@@ -778,8 +780,8 @@ var delStack = function(stack){
 
 var useableStack = function(){
     if(stackIDs.length === 0) return 0;
-    if(stackIDs.length < 3)
-        return stackIDs[stackIDs.length - 1] + 1;
+//    if(stackIDs.length < 3)
+//        return stackIDs[stackIDs.length - 1] + 1;
     if(stackIDs[0] !== 0) return 0;
     for(var i = 1; i < stackIDs.length; ++i){
         if(stackIDs[i] - stackIDs[i - 1] > 1){

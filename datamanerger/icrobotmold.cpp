@@ -465,13 +465,15 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     int err;
     programsCode_.clear();
     programs_.clear();
+    bool ok = false;
     stacks_ = ICDALHelper::MoldStacksContent(moldName);
-    stackInfos_ = ParseStacks_(stacks_);
+    stackInfos_ = ParseStacks_(stacks_, ok);
+    ok = true;
     for(int i = 0; i != programs.size(); ++i)
     {
         programsCode_.append(programs.at(i));
         p = Complie(programs.at(i), stackInfos_, err);
-        if(p.IsCompileErr()) return false;
+        if(p.IsCompileErr()) ok = false;
         programs_.append(p);
     }
 
@@ -482,7 +484,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     }
 //    stacks_ = ICDALHelper::MoldStacksContent(moldName);
 //    stackInfos_ = ParseStacks_(stacks_);
-    return true;
+    return ok;
 }
 
 QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
@@ -836,13 +838,13 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QPair<QStrin
 
 }
 
-QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks)
+QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks, bool &isOk)
 {
     QJson::Parser parser;
-    bool ok;
-    QVariantMap result = parser.parse (stacks.toLatin1(), &ok).toMap();
+//    bool ok;
+    QVariantMap result = parser.parse (stacks.toLatin1(), &isOk).toMap();
     QMap<int, StackInfo> ret;
-    if(!ok) return ret;
+    if(!isOk) return ret;
     QVariantMap::iterator p = result.begin();
     StackInfo stackInfo;
     while(p != result.end())
@@ -873,8 +875,9 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks)
 
 bool ICRobotMold::SaveStacks(const QString &stacks)
 {
-    QMap<int, StackInfo> statcksMap = ParseStacks_(stacks);
-    if(statcksMap.isEmpty())
+    bool ret = false;
+    QMap<int, StackInfo> statcksMap = ParseStacks_(stacks, ret);
+    if(!ret)
         return false;
     stacks_ = stacks;
     stackInfos_ = statcksMap;

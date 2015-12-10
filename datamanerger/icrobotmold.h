@@ -293,7 +293,7 @@ public:
 
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);
-    QMap<int, StackInfo> ParseStacks_(const QString& stacks);
+    QMap<int, StackInfo> ParseStacks_(const QString& stacks, bool &isOk);
 
 private:
     QList<CompileInfo> programs_;

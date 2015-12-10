@@ -454,6 +454,8 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     int err;
     programsCode_.clear();
     programs_.clear();
+    stacks_ = ICDALHelper::MoldStacksContent(moldName);
+    stackInfos_ = ParseStacks_(stacks_);
     for(int i = 0; i != programs.size(); ++i)
     {
         programsCode_.append(programs.at(i));
@@ -835,15 +837,15 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks)
     while(p != result.end())
     {
         QVariantMap stackMap = p.value().toMap();
-        stackInfo.split.m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toInt(), 3);
-        stackInfo.split.m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toInt(), 3);
-        stackInfo.split.m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toInt(), 3);
-        stackInfo.split.m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toInt(), 3);
-        stackInfo.split.m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toInt(), 3);
-        stackInfo.split.m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toInt(), 3);
-        stackInfo.split.space0 = ICUtility::doubleToInt(stackMap.value("space0").toInt(), 3);
-        stackInfo.split.space1 = ICUtility::doubleToInt(stackMap.value("space1").toInt(), 3);
-        stackInfo.split.space2 = ICUtility::doubleToInt(stackMap.value("space2").toInt(), 3);
+        stackInfo.split.m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
+        stackInfo.split.m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toDouble(), 3);
+        stackInfo.split.m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toDouble(), 3);
+        stackInfo.split.m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toDouble(), 3);
+        stackInfo.split.m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toDouble(), 3);
+        stackInfo.split.m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toDouble(), 3);
+        stackInfo.split.space0 = ICUtility::doubleToInt(stackMap.value("space0").toDouble(), 3);
+        stackInfo.split.space1 = ICUtility::doubleToInt(stackMap.value("space1").toDouble(), 3);
+        stackInfo.split.space2 = ICUtility::doubleToInt(stackMap.value("space2").toDouble(), 3);
         stackInfo.split.count0 = stackMap.value("count0").toInt();
         stackInfo.split.count1 = stackMap.value("count1").toInt();
         stackInfo.split.count2 = stackMap.value("count2").toInt();

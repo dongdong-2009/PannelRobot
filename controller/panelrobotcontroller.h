@@ -12,6 +12,9 @@
 #include <QTimer>
 #include "icdatatype.h"
 #include "icparameterscache.h"
+#include "qtquick1applicationviewer.h"
+#include "icvirtualkeyboard.h"
+
 
 #ifdef Q_WS_QWS
 #include <QWSScreenSaver>
@@ -445,6 +448,8 @@ public:
          return panelControllerVersion() + "_" + hostVersion();
     }
 
+    void InitMainView();
+
 signals:
     //    void currentMoldChanged(QString);
     //    void currentMachineConfigChanged(QString);
@@ -484,6 +489,8 @@ private:
     QTimer keyCheckTimer_;
     QSettings customSettings_;
     QString valveDefineJSON_;
+    QtQuick1ApplicationViewer *mainView_;
+    ICVirtualKeyboard virtualKeyboard;
 
 
 #ifdef Q_WS_QWS

@@ -11,6 +11,7 @@
 #include "icupdatesystem.h"
 #include "icutility.h"
 
+
 static QScriptValue *getConfigRange_;
 
 PanelRobotController* controllerInstance;
@@ -60,8 +61,10 @@ ICRange ICRobotRangeGetter(const QString& addrName)
 
 PanelRobotController::PanelRobotController(QObject *parent) :
     QObject(parent),
-    customSettings_("usr/customsettings.ini", QSettings::IniFormat)
+    customSettings_("usr/customsettings.ini", QSettings::IniFormat),
+    virtualKeyboard(ICRobotRangeGetter)
 {
+    mainView_ = NULL;
     host_ = ICRobotVirtualhost::RobotVirtualHost();
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
@@ -110,9 +113,7 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     }
     baseFncs_ = pc.ToPairList();
 
-    LoadTranslator_(ICAppSettings().TranslatorName());
-//        LoadTranslator_("HAMOUI_zh_CN.qm");
-    qApp->installTranslator(&translator);
+
 
     connect(&keyCheckTimer_,
             SIGNAL(timeout()),
@@ -147,6 +148,10 @@ void PanelRobotController::Init()
     host_->SetCommunicateDebug(true);
     OnNeedToInitHost();
 #endif
+//    InitMainView();
+    qApp->installTranslator(&translator);
+    LoadTranslator_(ICAppSettings().TranslatorName());
+//        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
 void PanelRobotController::InitDatabase_()
@@ -426,10 +431,58 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
     qml.cdUp();
 #endif
     qml.cd(ICAppSettings().UIMainName());
-    if(!qml.exists("translations")) return false;
+    if(!qml.exists("translations"))
+    {
+        InitMainView();
+        return false;
+    }
     qml.cd("translations");
-    if(!qml.exists(name)) return false;
-    return translator.load(qml.filePath(name));
+    if(!qml.exists(name))
+    {
+        InitMainView();
+        return false;
+    }
+    bool ret = translator.load(qml.filePath(name));
+    InitMainView();
+    return ret;
+}
+
+void PanelRobotController::InitMainView()
+{
+    if(mainView_ != NULL)
+    {
+//        mainView_->setAttribute(Qt::WA_DeleteOnClose, true);
+        mainView_->close();
+//        mainView_->deleteLater();
+//        delete mainView_;
+    }
+    mainView_ = new QtQuick1ApplicationViewer;
+    mainView_->rootContext()->setContextProperty("panelRobotController", this);
+    mainView_->rootContext()->setContextProperty("virtualKeyboard", &virtualKeyboard);
+    mainView_->addImportPath(QLatin1String("modules"));
+    mainView_->setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
+#ifdef Q_WS_QWS
+    mainView_->setWindowFlags(Qt::FramelessWindowHint);
+#endif
+    ICAppSettings settings;
+    QString uiMain = settings.UIMainName();
+    QDir appDir = QDir::current();
+    if(uiMain.isEmpty() || !appDir.exists(uiMain))
+    {
+#ifdef Q_WS_QWS
+        uiMain = "Init";
+#else
+        uiMain = "../Init";
+#endif
+    }
+//    QLocale locale(QLocale::Chinese, QLocale::China);
+//    qDebug()<<locale.name();
+    appDir.cd(uiMain);
+    qDebug()<<appDir.filePath("main.qml");
+    mainView_->setMainQmlFile(appDir.filePath("main.qml"));
+    mainView_->showExpanded();
+
+
 }
 
 QString scanHelper(const QString& filter)
@@ -712,6 +765,12 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
 
 bool PanelRobotController::setCurrentTranslator(const QString &name)
 {
+    QMessageBox box;
+    box.setText("Language Chaning...");
+    box.show();
+//    qApp->processEvents();
+    qApp->processEvents();
+
     ICAppSettings().SetTranslatorName(name);
     return LoadTranslator_(name);
 }

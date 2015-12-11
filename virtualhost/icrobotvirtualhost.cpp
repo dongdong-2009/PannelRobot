@@ -41,6 +41,12 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     AddCommunicationFrame(toSentFrame);
 }
 
+ICRobotVirtualhost::~ICRobotVirtualhost()
+{
+    delete frameTransceiverDataMapper_;
+    delete recvFrame_;
+}
+
 bool ICRobotVirtualhost::InitConfigsImpl(const QVector<QPair<quint32, quint32> > &configList, int startAddr)
 {
 

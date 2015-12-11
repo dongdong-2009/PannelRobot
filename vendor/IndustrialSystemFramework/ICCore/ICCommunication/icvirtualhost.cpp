@@ -31,4 +31,5 @@ ICVirtualHost::~ICVirtualHost()
     {
         killTimer(timerID_);
     }
+    queue_.Clear();
 }

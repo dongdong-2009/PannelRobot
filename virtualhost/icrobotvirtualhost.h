@@ -157,6 +157,8 @@ public:
     };
 #endif
     explicit ICRobotVirtualhost(uint64_t hostId, QObject* parent = 0);
+    ~ ICRobotVirtualhost();
+
     static ICVirtualHostPtr RobotVirtualHost()
     {
        return ICVirtualHostManager::GetVirtualHost<ICRobotVirtualhost>(1);

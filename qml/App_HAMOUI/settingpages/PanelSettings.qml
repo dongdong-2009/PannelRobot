@@ -146,8 +146,8 @@ Item {
                         text: "中文"
                         onClicked: {
                             if(isChecked){
-                                panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
                                 panelRobotController.setCustomSettings("Language", "CN");
+                                panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
                             }
                         }
                     }
@@ -156,8 +156,8 @@ Item {
                         text:"English"
                         onClicked: {
                             if(isChecked){
-                                panelRobotController.setCurrentTranslator("HAMOUI_en_US.qm");
                                 panelRobotController.setCustomSettings("Language", "US");
+                                panelRobotController.setCurrentTranslator("HAMOUI_en_US.qm");
                             }
                         }
                     }

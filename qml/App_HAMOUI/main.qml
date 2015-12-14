@@ -21,13 +21,38 @@ Rectangle {
     }
     TopHeader{
         id:mainHeader
+        z:2
         width: mainWindow.width
         height: mainWindow.height * Theme.defaultTheme.MainWindow.topHeaderHeightProportion
-        onRecordItemStatusChanged: recordManagementPage.visible = isChecked
-        onIoItemStatusChanged: ioPage.visible = isChecked
+        onRecordItemStatusChanged: {
+            if(isChecked){
+                recordManagementPage.visible = true
+                pageOutAnimation.target = recordManagementPage;
+                pageOutAnimation.start();
+            }else{
+                pageInAnimation.start();
+            }
+        }
+        onIoItemStatusChanged: {
+            if(isChecked){
+                ioPage.visible = true;
+                pageOutAnimation.target = ioPage;
+                pageOutAnimation.start();
+            }else{
+                pageInAnimation.start();
+            }
+        }
         onLoginBtnClicked: loginDialog.visible = true
         onCalculatorItemStatusChanged: calculator.visible = isChecked
-        onAlarmLogItemStatusChanged: alarmlogPage.visible = isChecked
+        onAlarmLogItemStatusChanged: {
+            if(isChecked){
+                alarmlogPage.visible = true;
+                pageOutAnimation.target = alarmlogPage;
+                pageOutAnimation.start();
+            }else{
+                pageInAnimation.start();
+            }
+        }
     }
     Rectangle{
         id:middleHeader
@@ -35,7 +60,7 @@ Rectangle {
         height: mainWindow.height * Theme.defaultTheme.MainWindow.middleHeaderHeightProportion
         color: Theme.defaultTheme.BASE_BG
         anchors.top: mainHeader.bottom
-//        z:1
+        //        z:1
         function buttonToPage(which){
             if(which == menuOperation) {
 
@@ -63,7 +88,7 @@ Rectangle {
                     continue;
                 }
                 if(c[i].hasOwnProperty("setChecked")){
-//                    c[i].setChecked(false);
+                    //                    c[i].setChecked(false);
                     page = buttonToPage(c[i]);
                     if(page == null) continue
                     page.visible = false;
@@ -80,7 +105,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             isAutoSize: false
-//            z: 1
+            //            z: 1
             TabMenuItem{
                 id:menuOperation
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
@@ -109,19 +134,19 @@ Rectangle {
             }
 
         }
-//        ICTextEdit{
-//            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
-//            height: parent.height
-//            text: "0"
-//            focus: false
-//        }
-//        ICTextEdit{
-//            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
-//            height: parent.height
-//            text:qsTr("Sample")
-//            focus: false
-//            anchors.left:
-//        }
+        //        ICTextEdit{
+        //            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
+        //            height: parent.height
+        //            text: "0"
+        //            focus: false
+        //        }
+        //        ICTextEdit{
+        //            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
+        //            height: parent.height
+        //            text:qsTr("Sample")
+        //            focus: false
+        //            anchors.left:
+        //        }
 
     }
 
@@ -145,7 +170,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             source: "ManualPage.qml"
-//            anchors.fill: parent
+            //            anchors.fill: parent
             visible: false
         }
         Loader{
@@ -158,26 +183,91 @@ Rectangle {
             console.log("main.container",container.width, container.height)
         }
     }
-    IOPage{
+    PropertyAnimation{
+        id:pageOutAnimation
+        target: ioPage
+        property: "y"
+        to:80
+        duration: 100
+    }
+    SequentialAnimation{
+        id:pageInAnimation
+        PropertyAnimation{
+            target: pageOutAnimation.target
+            property: "y"
+            to:-385
+            duration: 100
+        }
+        PropertyAction{
+            target: pageOutAnimation.target
+            property: "visible"
+            value: false
+        }
+    }
+    Column{
         id:ioPage
-        width: parent.width
-        height: container.height - 95
         visible: false
-        anchors.top: container.top
+        y:-385
+        width: parent.width
+        height: parent.height
+        IOPage{
+            width: parent.width
+            height: container.height - 95
+        }
+        ICButton{
+            id:ioPageInBtn
+            width: 40
+            bgColor: "yellow"
+            text: qsTr("↑")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onButtonClicked: {
+                mainHeader.resetStatus();
+            }
+        }
+
     }
-    RecordManagementPage{
+    Column{
         id:recordManagementPage
-        width: parent.width
-        height: container.height - 95
         visible: false
-        anchors.top: container.top
+        y:-385
+        width: parent.width
+        height: parent.height
+        RecordManagementPage{
+            width: parent.width
+            height: container.height - 95
+        }
+        ICButton{
+            id:recordPageInBtn
+            width: 40
+            bgColor: "yellow"
+            text: qsTr("↑")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onButtonClicked: {
+                mainHeader.resetStatus();
+            }
+        }
     }
-    ICAlarmPage{
+    Column{
         id:alarmlogPage
-        width: parent.width
-        height: container.height - 95
         visible: false
-        anchors.top: container.top
+        y:-385
+        width: parent.width
+        height: parent.height
+        ICAlarmPage{
+            width: parent.width
+            height: container.height - 95
+
+        }
+        ICButton{
+            id:alarmLogPageInBtn
+            width: 40
+            bgColor: "yellow"
+            text: qsTr("↑")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onButtonClicked: {
+                mainHeader.resetStatus();
+            }
+        }
     }
 
     LoginDialog{
@@ -209,7 +299,62 @@ Rectangle {
         height: 42
         y:508
         x:1
-//        errID: 1
+        //        errID: 1
+    }
+    Item{
+
+
+        id:armKeyboardContainer
+        y:60
+        x:800 - armKeyboardBtn.width
+        width: 700
+        height: 400
+
+        PropertyAnimation{
+            id:armKeyboardOut
+            target: armKeyboardContainer
+            property: "x"
+            to: 100
+            duration: 100
+        }
+        SequentialAnimation{
+            id:armKeyboardIn
+            PropertyAnimation{
+                target: armKeyboardContainer
+                property: "x"
+                to: 800 - armKeyboardBtn.width
+                duration: 100
+            }
+            PropertyAction{
+                target: armKeyboard
+                property: "visible"
+                value:false
+            }
+        }
+
+        ICButton{
+            id:armKeyboardBtn
+            text: "←"
+            width: 40
+            bgColor: "green"
+            onButtonClicked: {
+                if(!armKeyboard.visible){
+                    armKeyboard.visible = true;
+                    armKeyboardOut.start();
+                    text = "→";
+                }else{
+                    text = "←";
+                    //                    armKeyboard.visible = false;
+                    armKeyboardIn.start();
+                }
+            }
+        }
+
+        ArmMovePage{
+            id:armKeyboard
+            anchors.left: armKeyboardBtn.right
+            visible: false
+        }
     }
 
     Component.onCompleted: {
@@ -231,10 +376,10 @@ Rectangle {
         }
         else if(Keymap.isCommandKeyType(key)){
             if(key === Keymap.KNOB_MANUAL ||
-               key === Keymap.KNOB_STOP ||
-               key === Keymap.KNOB_AUTO)
+                    key === Keymap.KNOB_STOP ||
+                    key === Keymap.KNOB_AUTO)
             {
-//                ShareData.knobStatus = key;
+                //                ShareData.knobStatus = key;
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
             panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
@@ -257,7 +402,7 @@ Rectangle {
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             for(var i = 0 ; i < pressedKeys.length; ++i){
-//                console.log("Send command:", key);
+                //                console.log("Send command:", key);
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
             }
             var alarmNum = panelRobotController.currentErrNum();

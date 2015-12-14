@@ -13,6 +13,7 @@ Rectangle {
     property alias modeText: modeText
     property alias loginUser: loginBtn.text
     property int mode: 0
+    property Item lastChecked: null
 
     signal calculatorItemStatusChanged(bool isChecked)
     signal ioItemStatusChanged(bool isChecked)
@@ -23,6 +24,11 @@ Rectangle {
 
     function onRecordChanged(){
         record.itemText = qsTr("Records:") + panelRobotController.currentRecordName();
+    }
+
+    function resetStatus(){
+        if(lastChecked != null)
+            lastChecked.isChecked = false;
     }
 
     Image {
@@ -70,6 +76,22 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: parent.width * 0.01
 
+        function itemToSignalMap(which){
+            if(which == io)
+                return ioItemStatusChanged;
+            else if(which == record)
+                return recordItemStatusChanged;
+            else if(which == alarmLog)
+                return alarmLogItemStatusChanged;
+        }
+
+        function isCheckedHandlerHelper(which, isChecked){
+            if(lastChecked != which)
+                resetStatus();
+            itemToSignalMap(which)(isChecked);
+            lastChecked = which;
+        }
+
         TopMenuItem{
             id: calculator
             width: menuItemWidth
@@ -82,7 +104,9 @@ Rectangle {
             width: menuItemWidth
             height:  menuItemHeight
             itemText: qsTr("I/O")
-            onIsCheckedChanged: ioItemStatusChanged(isChecked)
+            onIsCheckedChanged: {
+                parent.isCheckedHandlerHelper(io, isChecked);
+            }
 
         }
         TopMenuItem{
@@ -90,15 +114,16 @@ Rectangle {
             width: menuItemWidth * 2
             height:  menuItemHeight
             itemText: qsTr("Records:") + panelRobotController.currentRecordName()
-            onIsCheckedChanged: recordItemStatusChanged(isChecked)
+            onIsCheckedChanged: {
+                parent.isCheckedHandlerHelper(record, isChecked);
+            }
         }
         TopMenuItem{
             id: alarmLog
             width: menuItemWidth
             height:  menuItemHeight
             itemText: qsTr("Alarm log")
-            onIsCheckedChanged: alarmLogItemStatusChanged(isChecked)
-
+            onIsCheckedChanged: parent.isCheckedHandlerHelper(alarmLog, isChecked);
         }
         ICButton{
             id: loginBtn

@@ -24,15 +24,15 @@ ContentPageBase {
             isAutoSize: false
             y: pdata.menuItemY
             z: 1
-            TabMenuItem {
-                id: armMove
-                width: parent.width
-                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
-                height: pdata.menuItemHeight
-                itemText: qsTr("Arm Move")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
-            }
+//            TabMenuItem {
+//                id: armMove
+//                width: parent.width
+//                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+//                height: pdata.menuItemHeight
+//                itemText: qsTr("Arm Move")
+//                color: getChecked(
+//                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+//            }
             TabMenuItem {
                 id: group1
                 width: parent.width
@@ -76,7 +76,7 @@ ContentPageBase {
                 pageContainer.setCurrentIndex(index)
             }
             Component.onCompleted: {
-                armMove.setChecked(true)
+                group1.setChecked(true)
             }
         }
 
@@ -95,8 +95,8 @@ ContentPageBase {
             height: parent.height - menuContainer.height - spliteLine.height
         }
         Component.onCompleted: {
-            var armMoveClass = Qt.createComponent('ArmMovePage.qml');
-            pageContainer.addPage(armMoveClass.createObject(pageContainer));
+//            var armMoveClass = Qt.createComponent('ArmMovePage.qml');
+//            pageContainer.addPage(armMoveClass.createObject(pageContainer));
             var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
             if (yDefinePage1Class.status === Component.Ready) {
                 var page =

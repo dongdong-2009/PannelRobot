@@ -4,18 +4,21 @@ import "configs/Keymap.js" as Keymap
 import "teach"
 
 
-Item {
+Rectangle {
     width: parent.width
     height: parent.height
+//    property bool ready: false
     function sendCommand(cmd, type){
         panelRobotController.modifyConfigValue(24,
                                                type);
         panelRobotController.sendKeyCommandToHost(cmd);
     }
-
+    border.width: 1
+    border.color: "gray"
+    color: "#A0A0F0"
     Column{
-        x:500
-        y:200
+        x:360
+        y:10
         Text {
             text: qsTr("▲")
             anchors.horizontalCenter: parent.horizontalCenter
@@ -30,17 +33,12 @@ Item {
             Rectangle{
                 border.width: 1
                 border.color: "gray"
-                width: 50
+                width: 70
                 height: 32
                 Text {
                     id: speed
                     anchors.centerIn: parent
-                    onVisibleChanged: {
-                        if(visible){
-                            speed.text = "10.000";
-                            panelRobotController.setConfigValue("s_rw_0_16_3_265", 10.000);
-                        }
-                    }
+
                 }
             }
             Text {
@@ -58,7 +56,9 @@ Item {
     Grid{
         columns: 4
         spacing: 20
-        x:50
+        //        x:50
+        anchors.verticalCenter: parent.verticalCenter
+        x: 10
         ICButton {
             id: text4
             isAutoRepeat: true
@@ -337,6 +337,15 @@ Item {
         }
 
     }
+
+    onVisibleChanged: {
+        if(visible){
+            speed.text = "10.000";
+            panelRobotController.setConfigValue("s_rw_0_16_3_265", 10.000);
+        }
+
+    }
+
     focus: visible
     Keys.onPressed: {
         var key = event.key;
@@ -346,14 +355,19 @@ Item {
             spd += 0.100
             if(spd >= 100)
                 spd = 100.000;
-            speed.text = spd
+            speed.text = spd.toFixed(3);
+            event.accepted = true;
+
         }else if(key === Keymap.KEY_Down){
             spd = parseFloat(speed.text);
             spd -= 0.100
             if(spd <= 0)
                 spd = 0;
-            speed.text = spd
+            speed.text = spd.toFixed(3);
+            event.accepted = true;
+
         }
-        event.accepted = true;
+        else
+            speed.text = key
     }
 }

@@ -350,7 +350,7 @@ Rectangle {
     Keys.onPressed: {
         var key = event.key;
         var spd;
-        if(key === Keymap.KEY_Up){
+        if(key === Keymap.PULLY_UP){
             spd = parseFloat(speed.text);
             spd += 0.100
             if(spd >= 100)
@@ -358,7 +358,7 @@ Rectangle {
             speed.text = spd.toFixed(3);
             event.accepted = true;
 
-        }else if(key === Keymap.KEY_Down){
+        }else if(key === Keymap.PULLY_DW){
             spd = parseFloat(speed.text);
             spd -= 0.100
             if(spd <= 0)

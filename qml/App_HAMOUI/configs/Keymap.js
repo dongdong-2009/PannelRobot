@@ -103,6 +103,10 @@ var KNOB_MANUAL= parseInt(0x01000033); //F4
 var KNOB_STOP = parseInt(0x01000036); //F7
 var KNOB_AUTO = parseInt(0x01000034); //F5
 
+var PULLY_UP = parseInt(0x0100003C) //F13
+var PULLY_DW = parseInt(0x0100003D) //F14
+
+
 var Menu_Type = 0;
 var Axis_Type = 1;
 var Command_Type = 2;

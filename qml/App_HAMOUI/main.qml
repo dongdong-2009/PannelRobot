@@ -364,9 +364,10 @@ Rectangle {
         panelRobotController.screenRestore.connect(onScreenRestore);
 
         Storage.initialize();
-        panelRobotController.initValveDefines(IODefines.valveDefinesJSON());
+        IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
         console.log("main load finished!")
     }
+
     focus: true
     Keys.onPressed: {
         var key = event.key;

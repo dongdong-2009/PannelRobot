@@ -33,15 +33,21 @@ Item {
             }
         }
         CatalogButton{
-            id:stackMenuBtn
-            text: qsTr("stack")
+            id:valveSettingsMenuBtn
+            text: qsTr("Valve Settings")
             icon: "../images/product.png"
+            onButtonClicked: {
+                valveSettings.visible = true;
+                menu.visible = false;
+            }
         }
     }
 
     ICSettingConfigsScope{
         id:productPage
         visible: false
+        width: parent.width
+        height: parent.height
         y:10
         x:10
         //        color: "green"
@@ -145,6 +151,15 @@ Item {
 
             }
         }
+    }
+
+    ValveSettings{
+        id:valveSettings
+        visible: false
+        width: parent.width
+        height: parent.height
+        y:10
+        x:10
     }
 
     Component.onCompleted: {

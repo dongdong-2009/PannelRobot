@@ -8,6 +8,10 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    settingpages/ValveSettings.js
+
+
 
 
 

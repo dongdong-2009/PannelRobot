@@ -269,6 +269,25 @@ var valveDefines = {
                                                                                     IO_BOARD_0, 5, IO_BOARD_0, 5, IO_DIR_PP)
 };
 
+function combineValveDefines(customValves){
+    var vd;
+    if(customValves.length === 0) return;
+    customValves = JSON.parse(customValves);
+    if(customValves.length === 0) return;
+    for(var v in valveDefines){
+        vd = valveDefines[v];
+        if(isNormalYType(vd))
+            continue;
+        for(var i = 0; i < customValves.length; ++i){
+            if(vd.id == customValves[i].id){
+                vd.x1Dir = customValves[i].x1Dir;
+                vd.x2Dir = customValves[i].x2Dir;
+                vd.time = customValves[i].time;
+            }
+        }
+    }
+}
+
 var valveItemJSON = function(name){
     if(valveDefines.hasOwnProperty(name)){
         return JSON.stringify(valveDefines[name]);

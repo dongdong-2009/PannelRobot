@@ -145,7 +145,7 @@ typedef enum _ICAddr
     ICAddr_Adapter_Para78, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
     ICAddr_Adapter_Para79, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
     ICAddr_Adapter_Para80, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
-    ICAddr_Adapter_Para81, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para81, //<类型:系统;名字:容差设定;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para82, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para83, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para84, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
@@ -563,7 +563,15 @@ typedef enum
     ALARM_AXIS4_SOFT_LIMIT_N,//<名字：轴4负极限报警
     ALARM_AXIS5_SOFT_LIMIT_N,//<名字：轴5负极限报警
     ALARM_AXIS6_SOFT_LIMIT_N,//<名字：轴6负极限报警
+    ALARM_ERROR_SERVO1_WARP = 150,//<名字：轴1偏差过大
+    ALARM_ERROR_SERVO2_WARP,//<名字：轴2偏差过大
+    ALARM_ERROR_SERVO3_WARP,//<名字：轴3偏差过大
+    ALARM_ERROR_SERVO4_WARP,//<名字：轴4偏差过大
+    ALARM_ERROR_SERVO5_WARP,//<名字：轴5偏差过大
+    ALARM_ERROR_SERVO6_WARP,//<名字：轴6偏差过大
 
+    ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
+    ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
 }ALARM_ADDR;
@@ -764,8 +772,8 @@ typedef struct {
   //    uint16_t timer_current[40];  //<类型:系统;当前定时时间 - 48-87 - 单位-10毫秒
   //    uint16_t timer_target[40];  //<类型:系统;目标定时时间 - 88-127 - 单位-10毫秒
   //    uint32_t counter_current[16];  //<类型:系统;当前计数值 - 128-159
-  //    uint32_t counter_target[16];  //类型:系统;<目标计数值 - 160-191
-  uint32_t Reserve0[4];    //<类型:系统;名字:当前延时时间; 单位:ms
+  uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
+  uint32_t Reserve0[3];    //<类型:系统;名字:当前延时时间; 单位:ms
   uint32_t Reserve1[4];    //<类型:系统;名字:目标延时时间; 单位:ms
   uint32_t Reserve2[20];   //<类型:系统;名字:当前定时时间; 单位:ms
   uint32_t Reserve3[20];   //<类型:系统;名字:目标定时时间; 单位:ms

@@ -81,6 +81,7 @@ Item {
 
     Component.onCompleted: {
         configsContainer.addNav(axisConfigBtn, Qt.createComponent('AxisConfigs.qml'));
+        configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
 //        console.log(url("./AxisConfigs.qml"));
 //        var configs = Qt.createComponent('AxisConfigs.qml');
 //        var axisConfig = configs.createObject(configsContainer);

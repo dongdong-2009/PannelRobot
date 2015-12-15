@@ -17,7 +17,7 @@ Rectangle {
         anchors.verticalCenter : parent.verticalCenter
         spacing: 4
         Text {
-            width: 50
+            width: 80
             font.pixelSize: 24
             text: "Err" + errID + ":"
             anchors.verticalCenter: parent.verticalCenter

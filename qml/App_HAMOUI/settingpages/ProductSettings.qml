@@ -165,6 +165,7 @@ Item {
     Component.onCompleted: {
         var ps = [];
         ps.push(productPage);
+        ps.push(valveSettings)
         pages = ps;
     }
 

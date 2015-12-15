@@ -447,6 +447,10 @@ public:
     Q_INVOKABLE QString controllerVersion() const {
          return panelControllerVersion() + "_" + hostVersion();
     }
+    Q_INVOKABLE void recal() const
+    {
+        ::system("touch /home/szhc/recal && sync && reboot");
+    }
 
     void InitMainView();
 

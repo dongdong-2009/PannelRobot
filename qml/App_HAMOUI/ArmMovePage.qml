@@ -367,7 +367,5 @@ Rectangle {
             event.accepted = true;
 
         }
-        else
-            speed.text = key
     }
 }

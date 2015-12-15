@@ -128,6 +128,26 @@ Item {
     ICSettingConfigsScope{
         id:panelSettingsPage
         property int rowSpacing: 12
+        ICButton{
+            id:touchCalibrate
+            x:500
+            y:30
+            text: qsTr("Touch Calibrate")
+            width: 120
+            onButtonClicked: {
+                tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes"), qsTr("No"));
+            }
+        }
+        ICMessageBox{
+            id:tip
+            z:100
+            x: 300
+            y: 100
+            onAccept: {
+                panelRobotController.recal();
+            }
+        }
+
         Column{
             spacing: 16
             Row{

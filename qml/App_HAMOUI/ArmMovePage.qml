@@ -386,12 +386,12 @@ Rectangle {
             anchors.topMargin: 4
             id:functionSection
             function getCurrentPoint(){
-                return [panelRobotController.statusValue("c_ro_0_32_0_900"),
-                        panelRobotController.statusValue("c_ro_0_32_0_904"),
-                        panelRobotController.statusValue("c_ro_0_32_0_908"),
-                        panelRobotController.statusValue("c_ro_0_32_0_912"),
-                        panelRobotController.statusValue("c_ro_0_32_0_916"),
-                        panelRobotController.statusValue("c_ro_0_32_0_920")];
+                return [panelRobotController.statusValue("c_ro_0_32_3_900"),
+                        panelRobotController.statusValue("c_ro_0_32_3_904"),
+                        panelRobotController.statusValue("c_ro_0_32_3_908"),
+                        panelRobotController.statusValue("c_ro_0_32_3_912"),
+                        panelRobotController.statusValue("c_ro_0_32_3_916"),
+                        panelRobotController.statusValue("c_ro_0_32_3_920")];
             }
             function pointToText(point){
                 return AxisDefine.axisInfos[0].name + ":" + point[0] + "," +

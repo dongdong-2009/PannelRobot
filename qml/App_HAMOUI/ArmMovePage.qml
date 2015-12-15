@@ -404,10 +404,10 @@ Rectangle {
 
             //< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
             //<              10：弧线中间点位置；11：弧线终点位置
-            function savePointHelper(toShow){
+            function savePointHelper(type, toShow){
                 var points = functionSection.getCurrentPoint();
                 toShow.text = functionSection.pointToText(points);
-                panelRobotController.logTestPoint(0, JSON.stringify(points));
+                panelRobotController.logTestPoint(type, JSON.stringify(points));
             }
 
             Item{

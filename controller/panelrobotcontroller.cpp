@@ -826,3 +826,21 @@ void PanelRobotController::initValveDefines(const QString &defineJson)
     valveDefineJSON_ = defineJson;
     ICRobotVirtualhost::InitValveDefines(host_, vIs);
 }
+
+void PanelRobotController::logTestPoint(int type, const QString &axisDataJSON)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(axisDataJSON.toUtf8(), &ok).toList();
+    if(!ok)
+    {
+        return;
+    }
+    if(result.length() != 6) return;
+    QList<quint32> axisData;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        axisData.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    }
+    ICRobotVirtualhost::LogTestPoint(host_, type, axisData);
+}

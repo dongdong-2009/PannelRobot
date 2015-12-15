@@ -1,13 +1,14 @@
 import QtQuick 1.1
 import "../ICCustomElement"
 import "configs/Keymap.js" as Keymap
-import "teach"
+import "configs/AxisDefine.js" as AxisDefine
+
 
 
 Rectangle {
     width: parent.width
     height: parent.height
-//    property bool ready: false
+    //    property bool ready: false
     function sendCommand(cmd, type){
         panelRobotController.modifyConfigValue(24,
                                                type);
@@ -17,8 +18,11 @@ Rectangle {
     border.color: "gray"
     color: "#A0A0F0"
     Column{
-        x:360
-        y:10
+        //        x:360
+        //        y:10
+        id:speedSection
+        anchors.right: parent.right
+        anchors.rightMargin: 40
         Text {
             text: qsTr("▲")
             anchors.horizontalCenter: parent.horizontalCenter
@@ -54,6 +58,7 @@ Rectangle {
     }
 
     Grid{
+        id:keyboardSection
         columns: 4
         spacing: 20
         //        x:50
@@ -337,6 +342,193 @@ Rectangle {
         }
 
     }
+
+    Rectangle{
+        id:verSpliteLine
+        width: 1
+        height: keyboardSection.height
+        color: "gray"
+        anchors.left: keyboardSection.right
+        anchors.leftMargin: 4
+        y:keyboardSection.y
+    }
+    Rectangle{
+        id:horSpliteLine
+        width: 300
+        height: 1
+        color: "gray"
+        anchors.top: speedSection.bottom
+        anchors.topMargin: 4
+        x:verSpliteLine.x
+    }
+    Item{
+        id:pathTestSection
+        anchors.top:  horSpliteLine.bottom;
+        anchors.topMargin: 2
+        x:horSpliteLine.x + 6
+        ICButtonGroup{
+            id:functionSel
+            mustChecked: true
+            spacing: 6
+
+            ICCheckBox{
+                id:lineFunction
+                text: qsTr("Line Test")
+                isChecked: true
+            }
+            ICCheckBox{
+                id:curveFunction
+                text: qsTr("Curve Test")
+            }
+        }
+        ICStackContainer{
+            anchors.top:functionSel.bottom
+            anchors.topMargin: 4
+            id:functionSection
+            function getCurrentPoint(){
+                return [panelRobotController.statusValue("c_ro_0_32_0_900"),
+                        panelRobotController.statusValue("c_ro_0_32_0_904"),
+                        panelRobotController.statusValue("c_ro_0_32_0_908"),
+                        panelRobotController.statusValue("c_ro_0_32_0_912"),
+                        panelRobotController.statusValue("c_ro_0_32_0_916"),
+                        panelRobotController.statusValue("c_ro_0_32_0_920")];
+            }
+            function pointToText(point){
+                return AxisDefine.axisInfos[0].name + ":" + point[0] + "," +
+                        AxisDefine.axisInfos[1].name + ":" + point[1] + "," +
+                        AxisDefine.axisInfos[2].name + ":" + point[2] + "\n" +
+                        AxisDefine.axisInfos[3].name + ":" + point[3] + "," +
+                        AxisDefine.axisInfos[4].name + ":" + point[4] + "," +
+                        AxisDefine.axisInfos[5].name + ":" + point[5];
+            }
+
+            //< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
+            //<              10：弧线中间点位置；11：弧线终点位置
+            function savePointHelper(toShow){
+                var points = functionSection.getCurrentPoint();
+                toShow.text = functionSection.pointToText(points);
+                panelRobotController.logTestPoint(0, JSON.stringify(points));
+            }
+
+            Item{
+                id:lineTestContainer
+                visible: lineFunction.isChecked
+                Column{
+                    spacing: 12
+                    Column{
+                        Row{
+                            ICButton{
+                                id:lineRun1
+                                text: qsTr("Run to This")
+                                isAutoRepeat: true
+                                onTriggered: panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_START_POINT);
+
+                            }
+                            ICButton{
+                                id:lineSave1
+                                text:qsTr("Set to Point-1");
+                                onButtonClicked: functionSection.savePointHelper(1, linePoint1);
+                            }
+                        }
+                        Text {
+                            id: linePoint1
+                            height: 32
+                        }
+                    }
+                    Column{
+                        Row{
+                            ICButton{
+                                id:lineRun2
+                                text: qsTr("Run to This")
+                                isAutoRepeat: true
+                                onTriggered: panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_END_POINT);
+                            }
+                            ICButton{
+                                id:lineSave2
+                                text:qsTr("Set to Point-2");
+                                onButtonClicked: functionSection.savePointHelper(0, linePoint2);
+
+                            }
+                        }
+                        Text {
+                            id: linePoint2
+                            height: 32
+
+                        }
+                    }
+                }
+            }
+            Item{
+                id:curveTestContainer
+                visible: curveFunction.isChecked
+                Column{
+                    spacing: 12
+                    Column{
+                        Row{
+                            ICButton{
+                                id:curveRun1
+                                text: qsTr("Run to This")
+                                isAutoRepeat: true
+                                onTriggered: panelRobotController.sendKeyCommandToHost(Keymap.CMD_ARC_TO_START_POINT);
+                            }
+                            ICButton{
+                                id:curveSave1
+                                text:qsTr("Set to Point-1");
+                                onButtonClicked: functionSection.savePointHelper(10, curvePoint1);
+
+                            }
+                        }
+                        Text {
+                            id: curvePoint1
+                            text: ""
+                        }
+                    }
+                    Column{
+                        Row{
+                            ICButton{
+                                id:curveRun2
+                                text: qsTr("Run to This")
+                            }
+                            ICButton{
+                                id:curveSave2
+                                text:qsTr("Set to Point-2");
+                                onButtonClicked: functionSection.savePointHelper(11, curvePoint2);
+
+                            }
+                        }
+                        Text {
+                            id: curvePoint2
+                            height: 32
+                            text: ""
+
+                        }
+                    }
+                    Column{
+                        Row{
+                            ICButton{
+                                id:curveRun3
+                                text: qsTr("Run to This")
+                            }
+                            ICButton{
+                                id:curveSave3
+                                text:qsTr("Set to Point-3");
+                                onButtonClicked: functionSection.savePointHelper(12, curvePoint3);
+
+                            }
+                        }
+                        Text {
+                            id: curvePoint3
+                            height: 32
+                            text: ""
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
 
     onVisibleChanged: {
         if(visible){

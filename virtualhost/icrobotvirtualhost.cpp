@@ -713,3 +713,19 @@ void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem
     toSentFrame->SetData(item.toDataBuf());
     hostPtr->AddCommunicationFrame(toSentFrame);
 }
+
+void ICRobotVirtualhost::LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<quint32> axisData)
+{
+    if(axisData.size() != 6) return;
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetAddr(ICAddr_System_Retain_30);
+    toSentFrame->SetLength(7);
+
+    ICHCTransceiverData::ICTransceiverDataBuffer db;
+    db<<type<<axisData.at(0)<<axisData.at(1)<<axisData.at(2)<<axisData.at(3)<<axisData.at(4)
+        <<axisData.at(5);
+    toSentFrame->SetData(db);
+    hostPtr->AddCommunicationFrame(toSentFrame);
+}

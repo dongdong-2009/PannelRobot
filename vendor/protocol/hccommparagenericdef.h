@@ -60,6 +60,27 @@ typedef enum _ICAddr
     ICAddr_System_Retain_8,//< 定义IO操作
     ICAddr_System_Retain_9,//< 定义IO操作
     ICAddr_System_Retain_25 = 25,//< 2:升级
+    ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
+                                 //<              10：弧线中间点位置；11：弧线终点位置
+    ICAddr_System_Retain_31 = 31,//< 手动记录坐标 X1
+    ICAddr_System_Retain_32 = 32,//< 手动记录坐标 Y1
+    ICAddr_System_Retain_33 = 33,//< 手动记录坐标 Z1
+    ICAddr_System_Retain_34 = 34,//< 手动记录坐标 U1
+    ICAddr_System_Retain_35 = 35,//< 手动记录坐标 V1
+    ICAddr_System_Retain_36 = 36,//< 手动记录坐标 W1
+    ICAddr_System_Retain_37 = 37,//< 手动记录坐标 X2
+    ICAddr_System_Retain_38 = 38,//< 手动记录坐标 Y2
+    ICAddr_System_Retain_39 = 39,//< 手动记录坐标 Z2
+    ICAddr_System_Retain_40 = 40,//< 手动记录坐标 U2
+    ICAddr_System_Retain_41 = 41,//< 手动记录坐标 V2
+    ICAddr_System_Retain_42 = 42,//< 手动记录坐标 W2
+    ICAddr_System_Retain_43 = 43,//< 手动记录坐标
+    ICAddr_System_Retain_44 = 44,//< 手动记录坐标
+    ICAddr_System_Retain_45 = 45,//< 手动记录坐标
+    ICAddr_System_Retain_46 = 46,//< 手动记录坐标
+    ICAddr_System_Retain_47 = 47,//< 手动记录坐标
+    ICAddr_System_Retain_48 = 48,//< 手动记录坐标
+    ICAddr_System_Retain_49 = 49,//< 手动记录坐标
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
     ICAddr_System_Retain_End = 99,
@@ -393,7 +414,11 @@ typedef enum
     CMD_JOG_PR     = 0x0306,  // 极坐标系，远离原点点动
 
     CMD_MOVE_POINT = 0x0310,  // 直角坐标系内点到点直线运动
+    CMD_LINT_RECORD_START_POINT= 0x0311,  // 直线运动记录起点坐标
+    CMD_LINT_RECORD_END_POINT= 0x0312,  // 直线运动记录终点坐标
     CMD_MOVE_ARC   = 0x0330,  // 直角坐标系内圆弧线运动
+    CMD_ARC_RECORD_MID_POINT= 0x0331,  // 弧线运动记录中间点坐标
+    CMD_ARC_RECORD_END_POINT= 0x0332,  // 弧线运动记录终点坐标
     CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
 
     CMD_JOG_NX     = 0x0380,  // 直角坐标系位置轴，X轴反向点动

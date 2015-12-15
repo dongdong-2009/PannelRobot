@@ -452,6 +452,8 @@ public:
         ::system("touch /home/szhc/recal && sync && reboot");
     }
 
+    Q_INVOKABLE void logTestPoint(int type, const QString& axisDataJSON);
+
     void InitMainView();
 
 signals:

@@ -211,6 +211,7 @@ public:
     static void InitValveDefines(ICVirtualHostPtr hostPtr, const QList<ValveItem>& valveDefines);
     static void SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item);
     static QString HostVersion() { return hostVersion_;}
+    static void LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<quint32> axisData);
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();

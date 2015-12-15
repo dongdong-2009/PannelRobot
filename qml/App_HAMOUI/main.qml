@@ -46,8 +46,8 @@ Rectangle {
         onCalculatorItemStatusChanged: calculator.visible = isChecked
         onAlarmLogItemStatusChanged: {
             if(isChecked){
-                alarmlogPage.visible = true;
-                pageOutAnimation.target = alarmlogPage;
+                alarmlogPageContainer.visible = true;
+                pageOutAnimation.target = alarmlogPageContainer;
                 pageOutAnimation.start();
             }else{
                 pageInAnimation.start();
@@ -248,16 +248,48 @@ Rectangle {
         }
     }
     Column{
-        id:alarmlogPage
+        id:alarmlogPageContainer
         visible: false
         y:-385
         width: parent.width
         height: parent.height
-        ICAlarmPage{
+        Rectangle
+        {
             width: parent.width
-            height: container.height - 95
+            height: parent.height
+            color: "#d1d1d1"
+            Column{
+                spacing: 4
+                anchors.fill: parent
+                ICButtonGroup{
+                    mustChecked: true
+                    spacing: 20
+                    ICCheckBox{
+                        id:alarmSel
+                        text: qsTr("Alarm Log")
+                        isChecked: true
+                    }
+                    ICCheckBox{
+                        id:operationSel
+                        text:qsTr("Operation Log")
+                    }
+                }
 
+                ICAlarmPage{
+                    id:alarmlogPage
+                    width: parent.width
+                    height: container.height - 95
+                    visible: alarmSel.isChecked
+                }
+                ICOperationLogPage{
+                    id:operationLog
+                    width: parent.width
+                    height: container.height - 95
+                    visible: operationSel.isChecked
+                }
+            }
         }
+
         ICButton{
             id:alarmLogPageInBtn
             width: 40
@@ -346,6 +378,7 @@ Rectangle {
                     text = "←";
                     //                    armKeyboard.visible = false;
                     armKeyboardIn.start();
+                    mainWindow.focus = true;
                 }
             }
         }

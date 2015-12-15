@@ -25,7 +25,7 @@ Rectangle {
         }
         Text{
             id:descr
-            width:670
+            width:640
             font.pixelSize: 24
             anchors.verticalCenter: parent.verticalCenter
             color: "red"

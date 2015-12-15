@@ -18,7 +18,7 @@ var alarmInfo = {
     "6":qsTr("ALARM_TEACH_DATA_EDIT_ERR      "),
     "7":qsTr("ALARM_EMERGENCY_STOP           "),
     "8":qsTr("2"),
-    "9":qsTr("3"),
+    "9":qsTr("Connect host fail!"),
     "10":qsTr("3"),
     "11":qsTr("1"),
     "12":qsTr("2"),

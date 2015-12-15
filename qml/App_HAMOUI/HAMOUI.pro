@@ -10,7 +10,8 @@ settingpages/*
 
 OTHER_FILES += \
     settingpages/ValveSettings.js \
-    settingpages/RunningConfigs.qml
+    settingpages/RunningConfigs.qml \
+    ICOperationLogPage.qml
 
 
 

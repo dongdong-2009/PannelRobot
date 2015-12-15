@@ -422,6 +422,10 @@ void ICRobotVirtualhost::CommunicateImpl()
     {
         int ec = recvFrame_->ErrorCode();
         emit CommunicateError(ec);
+        IncreaseCommunicateErrCount();
+        if(CommunicateErrCount() > 50){
+            statusCache_.UpdateConfigValue(&c_ro_0_32_0_932, 9);
+        }
 #ifdef NEW_PLAT
 //        if(ec == FunctionCode_EditTeach)
 #else
@@ -534,6 +538,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 #endif
         }
     }
+    ClearCommunicateErrCount();
     queue_.DeQueue();
 }
 if(!keyCommandList_.isEmpty())

@@ -67,6 +67,7 @@ Rectangle {
             text: qsTr("Manual")
             anchors.centerIn: parent
             color: "yellow"
+            font.pixelSize: 24
         }
     }
 

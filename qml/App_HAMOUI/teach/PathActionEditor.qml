@@ -33,7 +33,7 @@ Rectangle {
                                           points,
                                           pointEdit.getSpeed(),
                                           pointEdit.getDelay()));
-        pointEdit.clearPoints();
+//        pointEdit.clearPoints();
         return ret;
     }
     PointEdit{

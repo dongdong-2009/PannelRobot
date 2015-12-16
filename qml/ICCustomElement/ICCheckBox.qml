@@ -4,6 +4,7 @@ Item {
     property alias text: text.text
     property bool isChecked: false
     property bool useCustomClickHandler: false
+    property bool isEditable: true
 //    property alias boxWidth: box.width
 
     signal clicked();
@@ -40,7 +41,7 @@ Item {
         anchors.fill: parent
 
         onClicked: {
-            if(useCustomClickHandler) return;
+            if(useCustomClickHandler && !isEditable) return;
             setChecked(!isChecked);
             parent.clicked()
         }

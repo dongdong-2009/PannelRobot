@@ -53,7 +53,7 @@ Item {
     }
 
     function isPoseMode(){
-        return poseMode.isChecked;
+        return singlePoseType.isChecked || pose3DType.isChecked;
     }
 
     function clearPoints(){
@@ -63,9 +63,9 @@ Item {
     onVisibleChanged: {
         if(visible){
             refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
-            if(!isEditorMode){
-                clearPoints();
-            }
+            //            if(!isEditorMode){
+            //                clearPoints();
+            //            }
         }
     }
 
@@ -87,8 +87,8 @@ Item {
             text: qsTr("Set In")
             width: PData.commandBtnWidth
             onButtonClicked: {
-//                console.log("clicked");
-//                console.log(panelRobotController.getConfigValueText("c_ro_0_32_0_900"));
+                //                console.log("clicked");
+                //                console.log(panelRobotController.getConfigValueText("c_ro_0_32_0_900"));
                 motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                 motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                 motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
@@ -110,73 +110,75 @@ Item {
                 motor5.configValue = 0;
             }
         }
-        ICButton{
-            id:add
-            text: qsTr("Add")
-            width: PData.commandBtnWidth
-            onButtonClicked: {
-                pointViewModel.append(pointViewModel.createModelItem());
-            }
-        }
-
-        ICCheckBox{
-            id:poseMode
-            text:qsTr("Is Pose")
-        }
     }
-
-    Grid{
+    Rectangle{
         id:motorSettingContainer
-        rows:3
-        columns: 2
-        spacing: 6
-        flow: Grid.TopToBottom
         anchors.top: leftCommandContainer.bottom
         anchors.topMargin: 6
-        ICCheckableLineEdit{
-            id:motor0
-            configName: AxisDefine.axisInfos[0].name
-            configAddr: "s_rw_0_32_3_1300"
-            inputWidth: PData.axisEditWidth
-        }
-        ICCheckableLineEdit{
-            id:motor1
-            configName: AxisDefine.axisInfos[1].name
-            configAddr: "s_rw_0_32_3_1300"
-            inputWidth: PData.axisEditWidth
+        width: motor0.width * 2 + 6
+        height: motor0.height * 3 + 12
+        Grid{
+            rows:3
+            columns: 2
+            spacing: 6
+            flow: Grid.TopToBottom
+
+            ICCheckableLineEdit{
+                id:motor0
+                configName: AxisDefine.axisInfos[0].name
+                configAddr: "s_rw_0_32_3_1300"
+                inputWidth: PData.axisEditWidth
+                isEditable: false
+                visible: isChecked
+            }
+            ICCheckableLineEdit{
+                id:motor1
+                configName: AxisDefine.axisInfos[1].name
+                configAddr: "s_rw_0_32_3_1300"
+                inputWidth: PData.axisEditWidth
+                isEditable: false
+                visible: isChecked
 
 
-        }
-        ICCheckableLineEdit{
-            id:motor2
-            configName: AxisDefine.axisInfos[2].name
-            configAddr: "s_rw_0_32_3_1300"
-            inputWidth: PData.axisEditWidth
+            }
+            ICCheckableLineEdit{
+                id:motor2
+                configName: AxisDefine.axisInfos[2].name
+                configAddr: "s_rw_0_32_3_1300"
+                inputWidth: PData.axisEditWidth
+                isEditable: false
+                visible: isChecked
 
-        }
-        ICCheckableLineEdit{
-            id:motor3
-            configName: AxisDefine.axisInfos[3].name
-            configAddr: "s_rw_0_32_3_1300"
-            inputWidth: PData.axisEditWidth
-
-
-        }
-        ICCheckableLineEdit{
-            id:motor4
-            configName: AxisDefine.axisInfos[4].name
-            configAddr: "s_rw_0_32_3_1300"
-            inputWidth: PData.axisEditWidth
+            }
+            ICCheckableLineEdit{
+                id:motor3
+                configName: AxisDefine.axisInfos[3].name
+                configAddr: "s_rw_0_32_3_1300"
+                inputWidth: PData.axisEditWidth
+                isEditable: false
+                visible: isChecked
 
 
-        }
-        ICCheckableLineEdit{
-            id:motor5
-            configName: AxisDefine.axisInfos[5].name
-            configAddr: "s_rw_0_32_3_1300"
-            inputWidth: PData.axisEditWidth
+            }
+            ICCheckableLineEdit{
+                id:motor4
+                configName: AxisDefine.axisInfos[4].name
+                configAddr: "s_rw_0_32_3_1300"
+                inputWidth: PData.axisEditWidth
+                isEditable: false
+                visible: isChecked
 
 
+            }
+            ICCheckableLineEdit{
+                id:motor5
+                configName: AxisDefine.axisInfos[5].name
+                configAddr: "s_rw_0_32_3_1300"
+                inputWidth: PData.axisEditWidth
+                isEditable: false
+                visible: isChecked
+
+            }
         }
     }
     Rectangle{
@@ -192,7 +194,7 @@ Item {
         id:pointModeContainer
         layoutMode: 1
         anchors.top: leftHorSplitLine.bottom
-//        anchors.topMargin: 1
+        //        anchors.topMargin: 1
 
         spacing: 2
         isAutoSize: false
@@ -241,48 +243,112 @@ Item {
     Rectangle{
         id:middleVercSplitLine
         width: 1
-        height: 200
+        height: 204
         color: "gray"
         anchors.left: motorSettingContainer.right
         anchors.leftMargin: 6
     }
 
-    Row{
+    Rectangle{
+        color: "#A0A0F0"
         id:rightCommandContainer
-        spacing: 6
         anchors.left: middleVercSplitLine.right
         anchors.leftMargin: 2
-        ICButton{
-            id:insert
-            text: qsTr("Insert")
-            width: PData.commandBtnWidth
-            onButtonClicked: {
-                pointViewModel.insert(pointView.currentIndex, pointViewModel.createModelItem());
-            }
+        width: 375
+        height: 60
+        SequentialAnimation{
+            id: flicker
+            loops: 6
+            PropertyAnimation{ targets: [motorSettingContainer,pointViewContainer];properties: "color";to:rightCommandContainer.color;duration: 300}
+            PauseAnimation { duration: 200 }
+            PropertyAnimation{ targets: [motorSettingContainer,pointViewContainer];properties: "color";to:"white";duration: 300}
         }
-        ICButton{
-            id:del
-            text: qsTr("Del")
-            width: PData.commandBtnWidth
-            onButtonClicked: {
-                pointViewModel.remove(pointView.currentIndex);
+        ICButtonGroup{
+            layoutMode: 2
+            isAutoSize: false
+            mustChecked: true
+            onCheckedItemChanged: {
+                motor0.setChecked(false);
+                motor1.setChecked(false);
+                motor2.setChecked(false);
+                motor3.setChecked(false);
+                motor4.setChecked(false);
+                motor5.setChecked(false);
+                pointViewModel.clear();
+//                motorSettingContainer.color = rightCommandContainer.color;
+                flicker.start();
+                if(checkedItem == line2DType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == line3DType || checkedItem == curve3DType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    if(curve3DType.isChecked)
+                        pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == singlePoseType){
+                    motor3.setChecked(true);
+                    motor4.setChecked(true);
+                    motor5.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == pose3DType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    motor3.setChecked(true);
+                    motor4.setChecked(true);
+                    motor5.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
+
+                }
+            }
+
+            Flow{
+                width: 250
+                spacing: 4
+                x:4
+                y:2
+                ICCheckBox{
+                    id:line2DType
+                    text: qsTr("Line 2D")
+                }
+                ICCheckBox{
+                    id:line3DType
+                    text: qsTr("Line 3D")
+                }
+                ICCheckBox{
+                    id:curve3DType
+                    text:qsTr("Curve 3D")
+                }
+                ICCheckBox{
+                    id:singlePoseType
+                    text: qsTr("Pose")
+                }
+                ICCheckBox{
+                    id:pose3DType
+                    text: qsTr("Pose 3D")
+                }
             }
         }
     }
     Rectangle{
         id:pointViewContainer
         x:rightCommandContainer.x
-        height: 172
+        height: 142
         anchors.top: rightCommandContainer.bottom
         anchors.topMargin: 2
-        width: 355
+        width: 375
         border.width: 1
         border.color: "black"
         ListView{
             id:pointView
             width: parent.width
             height: parent.height
-
+            currentIndex: -1
+            y:2
             ListModel{
                 id:pointViewModel
 
@@ -325,7 +391,7 @@ Item {
                     var pointName = "";
                     if(newReferenceName.isChecked){
                         var point = Teach.definedPoints.addNewPoint(newReferenceName.configValue,
-                                                        ret);
+                                                                    ret);
                         pointName = point.name;
                         refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
                     }else if(selReferenceName.isChecked){
@@ -339,21 +405,37 @@ Item {
             model: pointViewModel
             highlight: Rectangle {x:1;y:1;width: pointView.width -1;height: 24; color: "lightsteelblue"; }
 
-            delegate: Text {
-                text:pointViewModel.itemText(model.pos, model.pointName)
-                wrapMode: Text.Wrap
-                width: pointView.width
-                height: 24
-                verticalAlignment: Text.AlignVCenter
-                MouseArea{
-                    anchors.fill: parent
-                    onPressed: {
-                        pointView.currentIndex = index;
+            delegate: Column{
+                spacing: 4
+                x:2
+                ICButton{
+                    width: 180
+                    text: {
+                        if(pointViewModel.count > 1){
+                            if(index == 0){
+                                return qsTr("Set to Middle Point")
+                            }
+                        }
+                        return qsTr("Set to End");
                     }
+                    onButtonClicked: {
+                        pointViewModel.set(index, pointViewModel.createModelItem());
+                    }
+                }
+                Text {
+                    text:pointViewModel.itemText(model.pos, model.pointName)
+                    wrapMode: Text.Wrap
+                    width: pointView.width
+                    height: 32
+                    verticalAlignment: Text.AlignVCenter
                 }
 
             }
         }
+    }
+    Component.onCompleted: {
+        setZero.clicked();
+
     }
 
 }

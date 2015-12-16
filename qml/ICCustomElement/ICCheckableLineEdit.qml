@@ -10,6 +10,7 @@ Item {
     property alias inputWidth: edit.inputWidth
     property alias isNumberOnly: edit.isNumberOnly
     property alias isChecked:configName.isChecked
+    property alias isEditable: configName.isEditable
 
     function setChecked(status){
         configName.isChecked = status;

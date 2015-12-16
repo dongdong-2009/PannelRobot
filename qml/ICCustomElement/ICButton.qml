@@ -11,6 +11,10 @@ Rectangle {
     signal buttonClicked()
     signal clickedText(string text)
     signal triggered()
+    function clicked(){
+        buttonClicked();
+    }
+
     width: 100
     height: 32
     border.width: 1

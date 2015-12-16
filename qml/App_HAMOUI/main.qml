@@ -253,10 +253,10 @@ Rectangle {
         y:-385
         width: parent.width
         height: parent.height
-        Rectangle
-        {
+
+        Rectangle{
             width: parent.width
-            height: parent.height
+            height: container.height - 95
             color: "#d1d1d1"
             Column{
                 spacing: 4
@@ -278,13 +278,13 @@ Rectangle {
                 ICAlarmPage{
                     id:alarmlogPage
                     width: parent.width
-                    height: container.height - 95
+                    height: parent.height - alarmSel.height - parent.spacing
                     visible: alarmSel.isChecked
                 }
                 ICOperationLogPage{
                     id:operationLog
                     width: parent.width
-                    height: container.height - 95
+                    height: parent.height - alarmSel.height - parent.spacing
                     visible: operationSel.isChecked
                 }
             }

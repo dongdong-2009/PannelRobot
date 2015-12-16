@@ -558,6 +558,5 @@ Rectangle {
             speed.text = spd.toFixed(3);
             event.accepted = true;
         }
-        console.log("arm mvoe page key");
     }
 }

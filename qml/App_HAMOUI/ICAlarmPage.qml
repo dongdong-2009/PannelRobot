@@ -15,11 +15,11 @@ Rectangle {
     function appendAlarm(errNum){
         var alarmItem = new Storage.AlarmItem(0, errNum);
         alarmItem = Storage.appendAlarmToLog(alarmItem);
-        if(alarmModel.count >= Storage.ALARM_LOG_TB_INFO.max)
+        alarmModel.insert(0, alarmItem);
+        if(alarmModel.count > Storage.ALARM_LOG_TB_INFO.max)
         {
             alarmModel.remove(alarmModel.count - 1);
-        }else
-            alarmModel.insert(0, alarmItem);
+        }
         var tmp = unResolvedAlarms;
         tmp.push(alarmItem);
         unResolvedAlarms = tmp;

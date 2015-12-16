@@ -210,6 +210,8 @@ Rectangle {
         y:-385
         width: parent.width
         height: parent.height
+        z:3
+
         IOPage{
             width: parent.width
             height: container.height - 95
@@ -232,6 +234,8 @@ Rectangle {
         y:-385
         width: parent.width
         height: parent.height
+        z:3
+
         RecordManagementPage{
             width: parent.width
             height: container.height - 95
@@ -253,6 +257,7 @@ Rectangle {
         y:-385
         width: parent.width
         height: parent.height
+        z:3
 
         Rectangle{
             width: parent.width
@@ -331,16 +336,24 @@ Rectangle {
         height: 42
         y:508
         x:1
+        z:2
         //        errID: 1
     }
+    ICTipBar{
+        id:tipBar
+        width: 798
+        height: 42
+        y:508
+        x:1
+    }
+
     Item{
-
-
         id:armKeyboardContainer
         y:60
         x:800 - armKeyboardBtn.width
         width: 700
         height: 400
+        z:4
 
         PropertyAnimation{
             id:armKeyboardOut
@@ -410,7 +423,7 @@ Rectangle {
         }
         else if(Keymap.isCommandKeyType(key)){
             if(key === Keymap.KNOB_MANUAL ||
-                    key === Keymap.KNOB_STOP ||
+                    key === Keymap.KNOB_SETTINGS ||
                     key === Keymap.KNOB_AUTO)
             {
                 //                ShareData.knobStatus = key;
@@ -439,6 +452,13 @@ Rectangle {
                 //                console.log("Send command:", key);
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
             }
+            if(!panelRobotController.isOrigined()){
+                tipBar.tip = qsTr("Please press origin key and then press start key to find origin signal.")
+                tipBar.visible = true;
+            }else{
+                tipBar.visible = false;
+            }
+
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;

@@ -182,7 +182,7 @@ Item {
     Rectangle{
         id:leftHorSplitLine
         height: 1
-        width: 332
+        width: 305
         anchors.top: motorSettingContainer.bottom
         anchors.topMargin: 2
         color: "gray"

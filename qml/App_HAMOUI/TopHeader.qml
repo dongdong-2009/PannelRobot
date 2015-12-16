@@ -33,19 +33,24 @@ Rectangle {
 
     Image {
         id: modeImg
-        source: "images/modeSetting.png"
+        source: "images/modeManual.png"
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: parent.width * 0.01
         function onKnobChanged(knobStatus){
             if(knobStatus === Keymap.KNOB_MANUAL){
-                source = "images/modeSetting.png";
+                source = "images/modeManual.png";
                 modeText.text = qsTr("Manual");
-                modeBG.source = "images/modeTextBG_Red.png";
+                modeBG.source = "images/modeTextBG_Blue.png";
             }else if(knobStatus === Keymap.KNOB_AUTO){
                 source = "images/modeAuto.png"
                 modeText.text = qsTr("Auto");
-                modeBG.source = "images/modeTextBG_Blue.png";
+                modeBG.source = "images/modeTextBG_Lime.png";
+            }
+            else if(knobStatus === Keymap.KNOB_SETTINGS){
+                source = "images/modeSetting.png";
+                modeText.text = qsTr("Settings");
+                modeBG.source = "images/modeTextBG_Red.png";
             }
         }
     }
@@ -58,7 +63,7 @@ Rectangle {
 
         Image {
             id: modeBG
-            source: "images/modeTextBG_Red.png"
+            source: "images/modeTextBG_Blue.png"
             anchors.centerIn: parent
         }
 

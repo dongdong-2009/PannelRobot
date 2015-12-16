@@ -21,7 +21,7 @@ Item {
 
     Row{
         id:container
-        spacing: 2
+        spacing: 4
         ICCheckBox {
             id: configName
             anchors.verticalCenter: parent.verticalCenter

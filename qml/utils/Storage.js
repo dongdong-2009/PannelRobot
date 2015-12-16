@@ -18,6 +18,13 @@ function AlarmItem(id, alarmNum, level, triggerTime, endTime){
     this.endTime = endTime || "";
 }
 
+function OperationLogItem(id, opTime, user, descr){
+    this.id = id;
+    this.opTime = opTime;
+    this.user = user;
+    this.descr = descr;
+}
+
 var ALARM_LOG_TB_INFO = {
     "max":500,
     "tb_name":"alarmlog",
@@ -27,6 +34,15 @@ var ALARM_LOG_TB_INFO = {
     "triggerTime_col":"triggerTime",
     "endTime_col":"endTime"
 };
+
+var OPERATION_LOG_TB_INFO = {
+    "max":500,
+    "tb_name":"oplog",
+    "id_col":"id",
+    "opTime_col":"opTime",
+    "user_col":"user",
+    "descr_col":"descr"
+}
 
 //storage.js
 // 首先创建一个helper方法连接数据库
@@ -44,7 +60,9 @@ function initialize() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS users(name TEXT UNIQUE, password TEXT  NOT NULL, perm INTEGER NOT NULL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS alarmlog(id PK INTEGER NOT NULL, alarmNum INTEGER NOT NULL, level INTEGER NOT NULL, triggerTime INTEGER NOT NULL, endTime INTEGER)');
-//                    tx.executeSql('DELETE FROM alarmlog;');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS oplog(id PK INTEGER NOT NULL, opTime INTEGER NOT NULL, user TEXT NOT NULL, descr TEXT NOT NULL)');
+
+                    //                    tx.executeSql('DELETE FROM alarmlog;');
                     var rs = tx.executeSql('SELECT * FROM users');
                     if (rs.rows.length === 0) {
                         tx.executeSql('INSERT INTO users VALUES("op", "123", 0)');

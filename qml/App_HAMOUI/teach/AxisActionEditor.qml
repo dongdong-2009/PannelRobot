@@ -13,7 +13,6 @@ Item {
         property variant axisDefine: panelRobotController.axisDefine()
         property variant axisEditors: []
     }
-    signal backToMenuTriggered()
 
     function createActionObjects(){
         var ret = [];
@@ -60,16 +59,9 @@ Item {
         spacing: 4
         Row{
             spacing: 15
-            ICButton{
-                id:backToMenu
-                text: qsTr("Back to Menu")
-                onButtonClicked: backToMenuTriggered()
-            }
-
             ICCheckBox{
                 id:isSyncBox
                 text: qsTr("Sync");
-                anchors.verticalCenter: backToMenu.verticalCenter
             }
         }
 

@@ -14,7 +14,7 @@ var eventType = {
 function GlobalStatusCenter(){}
 
 GlobalStatusCenter.status = {
-    "knobStatus":{"value":KNOB_STOP, "et":eventType.knobChanged}
+    "knobStatus":{"value":KNOB_MANUAL, "et":eventType.knobChanged}
 };
 
 GlobalStatusCenter.initEventObservers = function(){

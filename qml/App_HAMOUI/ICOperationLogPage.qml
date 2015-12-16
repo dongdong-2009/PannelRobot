@@ -3,14 +3,22 @@ import "."
 import "Theme.js" as Theme
 import "../utils/Storage.js" as Storage
 import "../utils/utils.js" as Utils
-
+import "ShareData.js" as ShareData
 
 Rectangle {
     id:container
 
     color: "#d1d1d1"
 
-
+    function appendOperationLog(logText){
+        var now = new Date();
+        operationLogModel.insert(0, {"opTime":Utils.formatDate(now, "yyyy/MM/dd hh:mm:ss"),
+                                     "user":ShareData.UserInfo.currentUser(),
+                                     "descr":logText});
+        if(operationLogModel.count > Storage.OPERATION_LOG_TB_INFO.max){
+            operationLogModel.remove(operationLogModel.count - 1);
+        }
+    }
 
     ListModel{
         id:operationLogModel
@@ -73,13 +81,6 @@ Rectangle {
             return Math.min(cH, mH);
         }
         clip: true
-        //        footer: Rectangle{
-        //            height: border.width
-        //            width: alarmView.width
-        //            border.width: hNum.border.width
-        //            border.color: hNum.border.color
-        //    //        anchors.top: alarmView.bottom
-        //        }
         delegate: Row{
             Rectangle{
                 border.width: hOpTime.border.width
@@ -121,9 +122,9 @@ Rectangle {
 
 
     Component.onCompleted: {
-//        var alarmlog = Storage.alarmlog();
-//        for(var i = 0; i < alarmlog.length; ++i){
-//            alarmModel.append(alarmlog[i]);
-//        }
+        //        var alarmlog = Storage.alarmlog();
+        //        for(var i = 0; i < alarmlog.length; ++i){
+        //            alarmModel.append(alarmlog[i]);
+        //        }
     }
 }

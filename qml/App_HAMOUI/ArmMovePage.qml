@@ -401,13 +401,20 @@ Rectangle {
                         AxisDefine.axisInfos[4].name + ":" + point[4] + "," +
                         AxisDefine.axisInfos[5].name + ":" + point[5];
             }
+            function runToPoint(cmd){
+                if(panelRobotController.isOrigined()){
+                    panelRobotController.sendKeyCommandToHost(cmd);
+                }
+            }
 
             //< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
             //<              10：弧线中间点位置；11：弧线终点位置
             function savePointHelper(type, toShow){
-                var points = functionSection.getCurrentPoint();
-                toShow.text = functionSection.pointToText(points);
-                panelRobotController.logTestPoint(type, JSON.stringify(points));
+                if(panelRobotController.isOrigined()){
+                    var points = functionSection.getCurrentPoint();
+                    toShow.text = functionSection.pointToText(points);
+                    panelRobotController.logTestPoint(type, JSON.stringify(points));
+                }
             }
 
             Item{
@@ -421,7 +428,7 @@ Rectangle {
                                 id:lineRun1
                                 text: qsTr("Run to This")
                                 isAutoRepeat: true
-                                onTriggered: panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_START_POINT);
+                                onTriggered: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
 
                             }
                             ICButton{
@@ -441,7 +448,7 @@ Rectangle {
                                 id:lineRun2
                                 text: qsTr("Run to This")
                                 isAutoRepeat: true
-                                onTriggered: panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_END_POINT);
+                                onTriggered: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
                             }
                             ICButton{
                                 id:lineSave2
@@ -469,7 +476,7 @@ Rectangle {
                                 id:curveRun1
                                 text: qsTr("Run to This")
                                 isAutoRepeat: true
-                                onTriggered: panelRobotController.sendKeyCommandToHost(Keymap.CMD_ARC_TO_START_POINT);
+                                onTriggered: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
                             }
                             ICButton{
                                 id:curveSave1
@@ -534,6 +541,7 @@ Rectangle {
         if(visible){
             speed.text = "10.000";
             panelRobotController.setConfigValue("s_rw_0_16_3_265", 10.000);
+            panelRobotController.syncConfigs();
         }
 
     }
@@ -549,6 +557,9 @@ Rectangle {
                 spd = 100.000;
             speed.text = spd.toFixed(3);
             event.accepted = true;
+            panelRobotController.setConfigValue("s_rw_0_16_3_265", speed);
+            panelRobotController.syncConfigs();
+
 
         }else if(key === Keymap.PULLY_DW){
             spd = parseFloat(speed.text);
@@ -557,6 +568,8 @@ Rectangle {
                 spd = 0;
             speed.text = spd.toFixed(3);
             event.accepted = true;
+            panelRobotController.setConfigValue("s_rw_0_16_3_265", speed);
+            panelRobotController.syncConfigs();
         }
     }
 }

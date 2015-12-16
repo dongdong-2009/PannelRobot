@@ -104,8 +104,8 @@ var KEY_Return = parseInt(Qt.Key_D);
 var KEY_Up    = parseInt(Qt.Key_I);
 var KEY_Down  = parseInt(Qt.Key_N);
 
-var KNOB_MANUAL= parseInt(0x01000033); //F4
-var KNOB_STOP = parseInt(0x01000036); //F7
+var KNOB_SETTINGS = parseInt(0x01000033); //F4
+var KNOB_MANUAL = parseInt(0x01000036); //F7
 var KNOB_AUTO = parseInt(0x01000034); //F5
 
 var PULLY_UP = parseInt(0x0100003C) //F13
@@ -146,7 +146,7 @@ keyStructs.put(KEY_Up, new KeyStruct(KEY_Up        , CMD_KEY_UP     , false, Com
 keyStructs.put(KEY_Down, new KeyStruct(KEY_Down    , CMD_KEY_DOWN   , false, Command_Type));
 keyStructs.put(KNOB_AUTO, new KeyStruct(KNOB_AUTO    , CMD_AUTO   , false, Command_Type));
 keyStructs.put(KNOB_MANUAL, new KeyStruct(KNOB_MANUAL    , CMD_MANUAL   , false, Command_Type));
-keyStructs.put(KNOB_STOP, new KeyStruct(KNOB_STOP    , CMD_MANUAL   , false, Command_Type));
+keyStructs.put(KNOB_SETTINGS, new KeyStruct(KNOB_SETTINGS    , CMD_MANUAL   , false, Command_Type));
 
 
 //keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, 0xCB, false, Axis_Type));

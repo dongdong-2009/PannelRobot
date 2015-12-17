@@ -539,8 +539,8 @@ Rectangle {
 
     onVisibleChanged: {
         if(visible){
-            speed.text = "10.000";
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.000);
+            speed.text = "10.0";
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
 //            panelRobotController.syncConfigs();
         }
 
@@ -559,20 +559,20 @@ Rectangle {
 
         if(key === pu){
             spd = parseFloat(speed.text);
-            spd += 0.100
+            spd += 0.1
             if(spd >= 100)
-                spd = 100.000;
-            speed.text = spd.toFixed(3);
+                spd = 100.0;
+            speed.text = spd.toFixed(1);
             event.accepted = true;
             panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
 
 
         }else if(key === pd){
             spd = parseFloat(speed.text);
-            spd -= 0.100
+            spd -= 0.1
             if(spd <= 0)
                 spd = 0;
-            speed.text = spd.toFixed(3);
+            speed.text = spd.toFixed(1);
             event.accepted = true;
             panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
         }

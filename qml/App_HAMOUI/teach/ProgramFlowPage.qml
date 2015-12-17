@@ -34,8 +34,8 @@ Rectangle {
             model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
         }
         repaintProgramItem(model)
-//        var msg = {"programModel":model}
-//        repaintThread.sendMessage(msg);
+        //        var msg = {"programModel":model}
+        //        repaintThread.sendMessage(msg);
     }
 
     function onDeleteTriggered(){
@@ -60,17 +60,17 @@ Rectangle {
         var cIPAction = model.get(cI - 1).mI_ActionObject;
 
 
-//        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
-//            if(!Teach.isSyncAction(cIPAction))
-//                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-//        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
-//            if(!Teach.isSyncAction(cIPAction))
-//                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-//        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_START){
-//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-//        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_END){
-//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-//        }
+        //        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
+        //            if(!Teach.isSyncAction(cIPAction))
+        //                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+        //        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
+        //            if(!Teach.isSyncAction(cIPAction))
+        //                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+        //        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_START){
+        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+        //        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_END){
+        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+        //        }
 
         model.move(cI, cI -1, 1);
         if(Teach.isSyncAction(cIAction) ||
@@ -86,17 +86,17 @@ Rectangle {
         if(cI >= model.count - 2) return;
         var cIAction = currentModelData().mI_ActionObject;
         var cINAction = model.get(cI + 1).mI_ActionObject;
-//        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
-//            if(!Teach.isSyncAction(cINAction))
-//                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-//        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
-//            if(!Teach.isSyncAction(cINAction))
-//                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-//        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_START){
-//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-//        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_END){
-//            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-//        }
+        //        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
+        //            if(!Teach.isSyncAction(cINAction))
+        //                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+        //        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
+        //            if(!Teach.isSyncAction(cINAction))
+        //                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+        //        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_START){
+        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
+        //        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_END){
+        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
+        //        }
         model.move(cI, cI  + 1, 1);
         if(Teach.isSyncAction(cIAction) ||
                 Teach.isSyncAction(cINAction)){
@@ -176,13 +176,16 @@ Rectangle {
 
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
-//        if(!ShareData.UserInfo.currentHasMoldPerm())
-            programListView.currentIndex = -1;
+        //        if(!ShareData.UserInfo.currentHasMoldPerm())
+        programListView.currentIndex = -1;
     }
 
     function onKnobChanged(knobStatus){
         onUserChanged(null);
-        isFollow.visible = ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO;
+        var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+        isFollow.visible = isAuto;
+        modifyEditor.isAutoMode = isAuto;
+        actionEditorFrame.visible = !isAuto;
     }
 
     //    function setCurrentModelData(actionObject){
@@ -291,6 +294,9 @@ Rectangle {
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
                         if(showY + modifyEditor.height >= container.height)
                             showY = autoEditBtn.y - modifyEditor.height + 20;
+
+                        if(showY < 0)
+                            showY = 50;
                         modifyEditor.y = showY;
                     }
                     height: toolBar.height
@@ -314,7 +320,7 @@ Rectangle {
 
                     visible: {
                         if(programListView.currentItem == null ||
-                           !ShareData.UserInfo.currentHasMoldPerm()) return false;
+                                !ShareData.UserInfo.currentHasMoldPerm()) return false;
                         var ret =  programListView.currentItem.y >= programListView.contentY;
                         var currentItem = currentModelData();
                         if(currentItem === null) return false;
@@ -325,12 +331,12 @@ Rectangle {
 
                 Row{
                     id:toolBar
-//                    function updateToolBarCommand(){
-//                        if(PData.isReadOnly)
-//                            toolBar.visible = false;
-//                        if(programListView.currentItem == null) toolBar.visible = false;
-//                        toolBar.visible = ( programListView.currentItem.y >= programListView.contentY);
-//                    }
+                    //                    function updateToolBarCommand(){
+                    //                        if(PData.isReadOnly)
+                    //                            toolBar.visible = false;
+                    //                        if(programListView.currentItem == null) toolBar.visible = false;
+                    //                        toolBar.visible = ( programListView.currentItem.y >= programListView.contentY);
+                    //                    }
 
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
@@ -338,6 +344,10 @@ Rectangle {
                         var showY = toolBar.y + toolBar.height + 30;
                         if(showY + modifyEditor.height >= container.height)
                             showY = toolBar.y - modifyEditor.height + 20;
+                        if(showY < 0){
+                            showY = 50;
+                        }
+
                         modifyEditor.y = showY;
                     }
                     z: 1
@@ -358,7 +368,7 @@ Rectangle {
                     }
                     visible: {
                         if(programListView.currentItem == null ||
-                           PData.isReadOnly) return false;
+                                PData.isReadOnly) return false;
                         return programListView.currentItem.y >= programListView.contentY;
                     }
                     ICButton{
@@ -385,8 +395,10 @@ Rectangle {
                         height: parent.height
                         width: 40
                         text: qsTr("Edit")
-                        onButtonClicked: toolBar.showModify()
-
+                        onButtonClicked: {
+                            actionEditorFrame.visible = false;
+                            toolBar.showModify()
+                        }
 
                         visible: {
                             var currentItem = currentModelData();
@@ -451,7 +463,7 @@ Rectangle {
                     delegate: ProgramListItem{
                         x:1
                         width: programListView.width - x
-//                        height: 30
+                        //                        height: 30
                         isCurrent: ListView.isCurrentItem
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
@@ -480,7 +492,7 @@ Rectangle {
                             //                            console.log(mode, Keymap.KNOB_AUTO)
                             if(!panelRobotController.isAutoMode()) return;
                             var cStep = currentModelStep();
-//                            var cStep = Utils.getRandomNum(0, 10);
+                            //                            var cStep = Utils.getRandomNum(0, 10);
                             if(cStep < 0 || cStep >= currentModel().count){
                                 return;
                             }
@@ -624,14 +636,14 @@ Rectangle {
                 actionMenuObject.stackMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(10)});
 
 
-//                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-//                searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
+                //                searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
 
                 actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
                 insertBtn.buttonClicked.connect(onInsertTriggered);
@@ -731,7 +743,7 @@ Rectangle {
     onVisibleChanged: {
         actionEditorFrame.visible = false;
         programListView.currentIndex = -1;
-//        programListView.contentY = 0;
+        //        programListView.contentY = 0;
     }
 
     Component.onCompleted: {

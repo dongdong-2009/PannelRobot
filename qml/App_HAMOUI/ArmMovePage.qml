@@ -570,8 +570,8 @@ Rectangle {
         }else if(key === pd){
             spd = parseFloat(speed.text);
             spd -= 0.1
-            if(spd <= 0)
-                spd = 0;
+            if(spd <= 0.1)
+                spd = 0.1;
             speed.text = spd.toFixed(1);
             event.accepted = true;
             panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);

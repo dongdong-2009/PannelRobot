@@ -5,6 +5,8 @@ import "ActionModifyEditor.js" as PData
 
 Item {
     id:container
+    property bool isAutoMode: false
+    property variant autoEditableItems: ["speed", "delay", "limit"]
     Rectangle{
         id:bgLayer
         border.color: "black"
@@ -41,12 +43,13 @@ Item {
                 editor.configAddr = item.range;
                 editor.configValue = actionObject[item.item];
             }
-
-            editor.visible = true;
-            height += editor.height + editorContainer.spacing;
-            if(editor.width > maxWidth)
-                maxWidth = editor.width;
-            PData.editingEditors.push(editor);
+            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
+                editor.visible = true;
+                height += editor.height + editorContainer.spacing;
+                if(editor.width > maxWidth)
+                    maxWidth = editor.width;
+                PData.editingEditors.push(editor);
+            }
         }
         height += buttons.height;
         height += 20

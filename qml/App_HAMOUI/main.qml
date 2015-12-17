@@ -403,6 +403,10 @@ Rectangle {
         }
     }
 
+    function onKnobChanged(knobStatus){
+        armKeyboardContainer.visible = knobStatus !== Keymap.KNOB_AUTO;
+    }
+
     Component.onCompleted: {
         menuSettings.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
@@ -411,6 +415,7 @@ Rectangle {
 
         Storage.initialize();
         IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
+        ShareData.GlobalStatusCenter.registeKnobChangedEvent(mainWindow);
         console.log("main load finished!")
     }
 

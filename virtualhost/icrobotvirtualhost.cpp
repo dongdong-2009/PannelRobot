@@ -12,6 +12,7 @@ QString ICRobotVirtualhost::hostVersion_;
 #define REFRESH_INTERVAL 40
 #define REFRESH_END ICAddr_Read_Status40
 #define INIT_INTERVAL 20
+#define SHORT_CMD_INTERVAL 10
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICVirtualHost(hostId, parent)
 {
@@ -543,6 +544,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 }
 if(!keyCommandList_.isEmpty())
 {
+    SetCommunicateInterval(SHORT_CMD_INTERVAL);
     AddCommunicationFrame(keyCommandList_.dequeue());
     AddRefreshStatusCommand_();
     //        qDebug("keycommand");

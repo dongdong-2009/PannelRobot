@@ -31,7 +31,7 @@ Row{
     ICCheckBox{
         id:box
         text: axisName
-        width: 40
+        width: 50
     }
     ICLineEdit{
         id:pos
@@ -55,7 +55,7 @@ Row{
     }
     ICLineEdit{
         id:delay
-        inputWidth: editorWidth
+        inputWidth: editorWidth - 10
         unit: qsTr("s")
         bindConfig: "s_rw_0_32_2_1100"
     }

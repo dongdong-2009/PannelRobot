@@ -237,6 +237,11 @@ Item {
                 panelRobotController.syncConfigs();
             }
         }
+
+        onVisibleChanged: {
+            panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
+        }
+
         Component.onCompleted: {
             panelRobotController.moldChanged.connect(onMoldChanged);
             onMoldChanged();

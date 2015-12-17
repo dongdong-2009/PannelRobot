@@ -60,6 +60,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_8,//< 定义IO操作
     ICAddr_System_Retain_9,//< 定义IO操作
     ICAddr_System_Retain_25 = 25,//< 2:升级
+    ICAddr_System_Retain_26 = 26,//< 0:显示关节坐标；1：显示脉冲
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值
@@ -397,7 +398,7 @@ typedef enum
 
     CMD_LINT_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
     CMD_LINT_TO_END_POINT= 0x0311,  // 直线运动到终点坐标
-//    CMD_LINT_STOP = 0x0312,  // 直线运动停止
+    CMD_LINT_STOP = 0x0312,  // 直线运动停止
     CMD_ARC_TO_START_POINT= 0x0330,  // 弧线运动往终点坐标方向
     CMD_ARC_TO_END_POINT= 0x0331,  // 弧线运动往终点坐标反方向
 //    CMD_ARC_STOP= 0x0332,  // 弧线运动停止

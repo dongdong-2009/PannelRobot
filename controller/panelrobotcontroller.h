@@ -464,6 +464,11 @@ public:
         return false;
     }
 
+    Q_INVOKABLE void swichPulseAngleDisplay(int mode)
+    {
+        modifyConfigValue(ICAddr_System_Retain_26, mode);
+    }
+
     void InitMainView();
 
 signals:

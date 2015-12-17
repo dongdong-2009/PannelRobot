@@ -59,6 +59,14 @@ Item {
         spacing: 4
         Row{
             spacing: 15
+            ICButton{
+                id:setIn
+                text: qsTr("Set In")
+                onButtonClicked: {
+
+                }
+            }
+
             ICCheckBox{
                 id:isSyncBox
                 text: qsTr("Sync");

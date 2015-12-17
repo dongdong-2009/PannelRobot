@@ -407,7 +407,7 @@ Rectangle {
                 }
             }
             function stopToPoint(){
-                runToPoint(CMD_PATH_STOP);
+                runToPoint(Keymap.CMD_PATH_STOP);
             }
 
             //< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
@@ -430,8 +430,8 @@ Rectangle {
                             ICButton{
                                 id:lineRun1
                                 text: qsTr("Run to This")
-                                onPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
-                                onReleased: functionSection.stopToPoint();
+                                onBtnPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
+                                onBtnReleased: functionSection.stopToPoint();
                             }
                             ICButton{
                                 id:lineSave1
@@ -449,8 +449,8 @@ Rectangle {
                             ICButton{
                                 id:lineRun2
                                 text: qsTr("Run to This")
-                                onPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
-                                onReleased: functionSection.stopToPoint();
+                                onBtnPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
+                                onBtnReleased: functionSection.stopToPoint();
 
                             }
                             ICButton{
@@ -478,8 +478,8 @@ Rectangle {
                             ICButton{
                                 id:curveRun1
                                 text: qsTr("Run to This")
-                                onPressed: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
-                                onReleased: functionSection.stopToPoint();
+                                onBtnPressed: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
+                                onBtnReleased: functionSection.stopToPoint();
 
                             }
                             ICButton{

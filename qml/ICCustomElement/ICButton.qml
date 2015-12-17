@@ -11,8 +11,8 @@ Rectangle {
     signal buttonClicked()
     signal clickedText(string text)
     signal triggered()
-    signal pressed()
-    signal released()
+    signal btnPressed()
+    signal btnReleased()
     function clicked(){
         buttonClicked();
     }
@@ -71,13 +71,13 @@ Rectangle {
                 triggered()
                 autoTimer.start();
             }
-            pressed();
+            btnPressed();
         }
         onReleased: {
             parent.color = bgColor;
             if(isAutoRepeat)
                 autoTimer.stop();
-            released()
+            btnReleased()
         }
 
         onClicked: {

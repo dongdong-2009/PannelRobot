@@ -63,7 +63,12 @@ Item {
                 id:setIn
                 text: qsTr("Set In")
                 onButtonClicked: {
-
+                    m0Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
+                    m1Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+                    m2Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_909") / 1000).toFixed(3);
+                    m3Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+                    m4Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_917") / 1000).toFixed(3);
+                    m5Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
                 }
             }
 

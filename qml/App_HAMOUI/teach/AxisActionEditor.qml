@@ -127,18 +127,18 @@ Item {
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
             }
-            AxisActionEditorAxisComponent{
-                id:m6Axis
-                axisName: AxisDefine.axisInfos[6].name
-                psName: [qsTr("B ON"), qsTr("B OFF")]
-                axisDefine: pData.axisDefine.s7Axis
-            }
-            AxisActionEditorAxisComponent{
-                id:m7Axis
-                axisName: AxisDefine.axisInfos[7].name
-                psName: [qsTr("C ON"), qsTr("C OFF")]
-                axisDefine: pData.axisDefine.s8Axis
-            }
+//            AxisActionEditorAxisComponent{
+//                id:m6Axis
+//                axisName: AxisDefine.axisInfos[6].name
+//                psName: [qsTr("B ON"), qsTr("B OFF")]
+//                axisDefine: pData.axisDefine.s7Axis
+//            }
+//            AxisActionEditorAxisComponent{
+//                id:m7Axis
+//                axisName: AxisDefine.axisInfos[7].name
+//                psName: [qsTr("C ON"), qsTr("C OFF")]
+//                axisDefine: pData.axisDefine.s8Axis
+//            }
         }
     }
     onVisibleChanged: {
@@ -166,8 +166,8 @@ Item {
         axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
         axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
-        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+//        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+//        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
     }
 }

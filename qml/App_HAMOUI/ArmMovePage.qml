@@ -39,6 +39,7 @@ Rectangle {
                 border.color: "gray"
                 width: 70
                 height: 32
+                color: "lime"
                 Text {
                     id: speed
                     anchors.centerIn: parent

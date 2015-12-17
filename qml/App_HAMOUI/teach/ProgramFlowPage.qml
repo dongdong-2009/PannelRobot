@@ -186,6 +186,7 @@ Rectangle {
         isFollow.visible = isAuto;
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = !isAuto;
+        speedDispalyContainer.visible = isAuto;
     }
 
     //    function setCurrentModelData(actionObject){
@@ -243,6 +244,69 @@ Rectangle {
                     id:isFollow
                     text: qsTr("Follow ?")
                     visible: false
+                }
+            }
+
+            Row{
+                id:speedDispalyContainer
+                anchors.right: parent.right
+                visible: false
+                z:4
+                Text {
+                    text: qsTr("Speed:")
+                    anchors.verticalCenter: parent.verticalCenter
+
+                }
+                Rectangle{
+                    border.width: 1
+                    border.color: "gray"
+                    width: 70
+                    height: 24
+                    color: "lime"
+                    Text {
+                        id: speedDisplay
+                        anchors.centerIn: parent
+                    }
+                }
+                Text {
+                    text: "%"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                onVisibleChanged: {
+                    if(visible){
+                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_265");
+                        focus = true;
+                    }
+                }
+                Keys.onPressed: {
+                    var key = event.key;
+                    var spd;
+                    var pu = Keymap.PULLY_UP;
+                    var pd = Keymap.PULLY_DW;
+                    if(!panelRobotController.isQWS()){
+                        pu = parseInt(0x01000037);
+                        pd = parseInt(0x01000039);
+                    }
+
+                    if(key === pu){
+                        spd = parseFloat(speedDisplay.text);
+                        spd += 0.1
+                        if(spd >= 100)
+                            spd = 100.0;
+                        speedDisplay.text = spd.toFixed(1);
+                        event.accepted = true;
+                        panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speedDisplay.text);
+
+
+                    }else if(key === pd){
+                        spd = parseFloat(speedDisplay.text);
+                        spd -= 0.1
+                        if(spd <= 0.1)
+                            spd = 0.1;
+                        speedDisplay.text = spd.toFixed(1);
+                        event.accepted = true;
+                        panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speedDisplay.text);
+                    }
                 }
             }
 

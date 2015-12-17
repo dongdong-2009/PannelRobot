@@ -428,6 +428,7 @@ Rectangle {
                                 id:lineRun1
                                 text: qsTr("Run to This")
                                 isAutoRepeat: true
+                                autoInterval: 10
                                 onTriggered: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
 
                             }
@@ -448,6 +449,7 @@ Rectangle {
                                 id:lineRun2
                                 text: qsTr("Run to This")
                                 isAutoRepeat: true
+                                autoInterval: 10
                                 onTriggered: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
                             }
                             ICButton{
@@ -476,6 +478,7 @@ Rectangle {
                                 id:curveRun1
                                 text: qsTr("Run to This")
                                 isAutoRepeat: true
+                                autoInterval: 10
                                 onTriggered: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
                             }
                             ICButton{

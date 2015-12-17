@@ -35,6 +35,7 @@ Item {
             editor = PData.itemToEditorMap.get(item.item);
             if(editor == points){
                 editor.points = actionObject[item.item];
+                editor.action = actionObject.action;
             }
             else{
                 editor.configAddr = item.range;

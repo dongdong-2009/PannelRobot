@@ -61,26 +61,8 @@ typedef enum _ICAddr
     ICAddr_System_Retain_9,//< 定义IO操作
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
-                                 //<              10：弧线中间点位置；11：弧线终点位置
-    ICAddr_System_Retain_31 = 31,//< 手动记录坐标 X1
-    ICAddr_System_Retain_32 = 32,//< 手动记录坐标 Y1
-    ICAddr_System_Retain_33 = 33,//< 手动记录坐标 Z1
-    ICAddr_System_Retain_34 = 34,//< 手动记录坐标 U1
-    ICAddr_System_Retain_35 = 35,//< 手动记录坐标 V1
-    ICAddr_System_Retain_36 = 36,//< 手动记录坐标 W1
-    ICAddr_System_Retain_37 = 37,//< 手动记录坐标 X2
-    ICAddr_System_Retain_38 = 38,//< 手动记录坐标 Y2
-    ICAddr_System_Retain_39 = 39,//< 手动记录坐标 Z2
-    ICAddr_System_Retain_40 = 40,//< 手动记录坐标 U2
-    ICAddr_System_Retain_41 = 41,//< 手动记录坐标 V2
-    ICAddr_System_Retain_42 = 42,//< 手动记录坐标 W2
-    ICAddr_System_Retain_43 = 43,//< 手动记录坐标
-    ICAddr_System_Retain_44 = 44,//< 手动记录坐标
-    ICAddr_System_Retain_45 = 45,//< 手动记录坐标
-    ICAddr_System_Retain_46 = 46,//< 手动记录坐标
-    ICAddr_System_Retain_47 = 47,//< 手动记录坐标
-    ICAddr_System_Retain_48 = 48,//< 手动记录坐标
-    ICAddr_System_Retain_49 = 49,//< 手动记录坐标
+                                 //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
+                                 //< 后面带6轴坐标值
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
     ICAddr_System_Retain_End = 99,
@@ -413,12 +395,12 @@ typedef enum
     CMD_JOG_PW     = 0x0305,  // 直角坐标系姿势轴，W轴正向点动
     CMD_JOG_PR     = 0x0306,  // 极坐标系，远离原点点动
 
-    CMD_MOVE_POINT = 0x0310,  // 直角坐标系内点到点直线运动
-    CMD_LINT_RECORD_START_POINT= 0x0311,  // 直线运动记录起点坐标
-    CMD_LINT_RECORD_END_POINT= 0x0312,  // 直线运动记录终点坐标
-    CMD_MOVE_ARC   = 0x0330,  // 直角坐标系内圆弧线运动
-    CMD_ARC_RECORD_MID_POINT= 0x0331,  // 弧线运动记录中间点坐标
-    CMD_ARC_RECORD_END_POINT= 0x0332,  // 弧线运动记录终点坐标
+    CMD_LINT_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
+    CMD_LINT_TO_END_POINT= 0x0311,  // 直线运动到终点坐标
+//    CMD_LINT_STOP = 0x0312,  // 直线运动停止
+    CMD_ARC_TO_START_POINT= 0x0330,  // 弧线运动往终点坐标方向
+    CMD_ARC_TO_END_POINT= 0x0331,  // 弧线运动往终点坐标反方向
+//    CMD_ARC_STOP= 0x0332,  // 弧线运动停止
     CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
 
     CMD_JOG_NX     = 0x0380,  // 直角坐标系位置轴，X轴反向点动
@@ -547,9 +529,9 @@ typedef enum
     ALARM_OUT_OF_MEMORY_ERR, //<名字：内存不足
     ALARM_TEACH_DATA_ANALYTICAL_ERR, //<名字：教导数据解析错误
     ALARM_TEACH_DATA_EDIT_ERR, //<名字：教导数据编辑错误
-
     ALARM_EMERGENCY_STOP,//<名字：紧急停止
     ALARM_AUTO_JUMP_ERR, //<名字：自动运行跳转错误
+    ALARM_LINK_HOST_FAIL, //<名字：连接主机失败
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -596,6 +578,11 @@ typedef enum
     ALARM_ERROR_SERVO6_WARP,//<名字：轴6偏差过大
 
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
+    ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动坐标1未设定
+    ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动坐标2未设定
+    ALARM_ROUTE_ARC_P1_NOTSET,//<名字：手动弧线轨迹运动坐标1未设定
+    ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动坐标2未设定
+    ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动坐标3未设定
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
@@ -691,11 +678,11 @@ static const uint32_t Interpolation_addr[] = {
     ICAddr_Adapter_Para168, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
 };
 typedef struct {  //<400 + 6X4 = 424
-    uint16_t speed_percent;   //<类型：系统；名字：设定速度；精度：3;单位：mm/s；
+    uint16_t speed_percent;   //<类型：系统；名字：设定速度；精度：1;单位：mm/s；
 } Interpolation0;
 
 typedef struct {
-    Interpolation0 p[8];   //<类型：系统；名字：设定速度；精度：3;单位：mm/s；
+    Interpolation0 p[8];   //<类型：系统；名字：设定速度；精度：1;单位：mm/s；
 } InterpolationStruct;
 
 typedef union {
@@ -991,7 +978,7 @@ typedef struct {  //最多8组电机，目前仅用前3组
     OUTPUT dout;    //<类型:系统;逻辑输出端口 - 22-31
     RESERVE Reserve;
     AXIS_MAP axis_map;    //<类型:系统;逻辑电机对应的脉冲端口 - 304-311
-    Interpolation interpolation;//<类型：系统；名字：；精度：3;单位：
+    Interpolation interpolation;//<类型：系统；名字：；精度：1;单位：
     ALPHA alpha;  //<类型：系统；名字：设定初始夹角；精度：3;单位：度；
     uint32_t p[ICAddr_Adapter_Para255-ICAddr_Adapter_Para172];
         MOLD_PARA m;//< 模号参数

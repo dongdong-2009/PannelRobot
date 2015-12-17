@@ -35,6 +35,7 @@ Item {
         anchors.left: box.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 4
+        color: enabled ? "black" : "gray"
     }
 
     MouseArea{

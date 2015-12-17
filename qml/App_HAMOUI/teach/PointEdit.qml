@@ -9,6 +9,7 @@ import "../../utils/utils.js" as Utils
 Item {
     property bool isEditorMode: false
     property variant points: []
+    property int action: -1
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -66,6 +67,21 @@ Item {
             //            if(!isEditorMode){
             //                clearPoints();
             //            }
+        }
+    }
+
+    onActionChanged: {
+        if(action < 0) return;
+        if(action == Teach.actions.F_CMD_LINE2D_MOVE_POINT){
+            line2DType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_LINE3D_MOVE_POINT){
+            line3DType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARC3D_MOVE_POINT){
+            curve3DType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_MOVE_POSE){
+            singlePoseType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_LINE3D_MOVE_POSE){
+            pose3DType.setChecked(true);
         }
     }
 
@@ -267,6 +283,7 @@ Item {
             layoutMode: 2
             isAutoSize: false
             mustChecked: true
+            enabled: !isEditorMode
             onCheckedItemChanged: {
                 motor0.setChecked(false);
                 motor1.setChecked(false);

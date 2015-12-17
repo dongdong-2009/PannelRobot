@@ -540,8 +540,8 @@ Rectangle {
     onVisibleChanged: {
         if(visible){
             speed.text = "10.000";
-            panelRobotController.setConfigValue("s_rw_0_16_3_265", 10.000);
-            panelRobotController.syncConfigs();
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.000);
+//            panelRobotController.syncConfigs();
         }
 
     }
@@ -550,26 +550,31 @@ Rectangle {
     Keys.onPressed: {
         var key = event.key;
         var spd;
-        if(key === Keymap.PULLY_UP){
+        var pu = Keymap.PULLY_UP;
+        var pd = Keymap.PULLY_DW;
+        if(!panelRobotController.isQWS()){
+            pu = parseInt(0x01000037);
+            pd = parseInt(0x01000039);
+        }
+
+        if(key === pu){
             spd = parseFloat(speed.text);
             spd += 0.100
             if(spd >= 100)
                 spd = 100.000;
             speed.text = spd.toFixed(3);
             event.accepted = true;
-            panelRobotController.setConfigValue("s_rw_0_16_3_265", speed);
-            panelRobotController.syncConfigs();
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
 
 
-        }else if(key === Keymap.PULLY_DW){
+        }else if(key === pd){
             spd = parseFloat(speed.text);
             spd -= 0.100
             if(spd <= 0)
                 spd = 0;
             speed.text = spd.toFixed(3);
             event.accepted = true;
-            panelRobotController.setConfigValue("s_rw_0_16_3_265", speed);
-            panelRobotController.syncConfigs();
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
         }
     }
 }

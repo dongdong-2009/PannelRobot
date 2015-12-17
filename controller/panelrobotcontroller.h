@@ -455,6 +455,14 @@ public:
 
     Q_INVOKABLE void logTestPoint(int type, const QString& axisDataJSON);
 
+    Q_INVOKABLE bool isQWS() const
+    {
+#ifdef Q_WS_QWS
+        return true;
+#endif
+        return false;
+    }
+
     void InitMainView();
 
 signals:

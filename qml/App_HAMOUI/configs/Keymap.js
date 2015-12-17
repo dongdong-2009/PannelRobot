@@ -108,13 +108,13 @@ var KNOB_SETTINGS = parseInt(0x01000033); //F4
 var KNOB_MANUAL = parseInt(0x01000036); //F7
 var KNOB_AUTO = parseInt(0x01000034); //F5
 
-var PULLY_UP = parseInt(0x0100003C) //F13
-var PULLY_DW = parseInt(0x0100003D) //F14
-
+var PULLY_UP = parseInt(0x0100003C); //F13
+var PULLY_DW = parseInt(0x0100003D); //F14
 
 var Menu_Type = 0;
 var Axis_Type = 1;
 var Command_Type = 2;
+var Nomal_Type = 3;
 
 function KeyStruct(keyVal, actionVal, isPressed, keyType){
     this.keyVal = keyVal;
@@ -167,6 +167,9 @@ keyStructs.put(KEY_F2, new KeyStruct(KEY_F2, 0, false, Menu_Type));
 keyStructs.put(KEY_F3, new KeyStruct(KEY_F3, 0, false, Menu_Type));
 keyStructs.put(KEY_F4, new KeyStruct(KEY_F4, 0, false, Menu_Type));
 keyStructs.put(KEY_F5, new KeyStruct(KEY_F5, 0, false, Menu_Type));
+keyStructs.put(PULLY_UP, new KeyStruct(PULLY_UP, 0, false, Nomal_Type));
+keyStructs.put(PULLY_DW, new KeyStruct(PULLY_DW, 0, false, Nomal_Type));
+
 //keyStructs.put(KEY_Run, new KeyStruct(KEY_Run   , 0xC1, false, Command_Type));
 //keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop  , 0xC2, false, Command_Type));
 //keyStructs.put(KEY_Origin, new KeyStruct(KEY_Origin, 0xD8, false, Command_Type));

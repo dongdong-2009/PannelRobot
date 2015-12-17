@@ -28,7 +28,7 @@ var CMD_JOG_PR     = 0x0306;	// 极坐标系，远离原点点动
 
 var CMD_LINT_TO_START_POINT= 0x0310;  // 直线运动到起点坐标
 var CMD_LINT_TO_END_POINT= 0x0311;  // 直线运动到终点坐标
-//    CMD_LINT_STOP = 0x0312,  // 直线运动停止
+var CMD_PATH_STOP = 0x0312;  // 直线运动停止
 var CMD_ARC_TO_START_POINT= 0x0330;  // 弧线运动往终点坐标方向
 var CMD_ARC_TO_END_POINT= 0x0331;  // 弧线运动往终点坐标反方向
 //    CMD_ARC_STOP= 0x0332,  // 弧线运动停止

@@ -544,7 +544,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 }
 if(!keyCommandList_.isEmpty())
 {
-    SetCommunicateInterval(SHORT_CMD_INTERVAL);
+//    SetCommunicateInterval(SHORT_CMD_INTERVAL);
     AddCommunicationFrame(keyCommandList_.dequeue());
     AddRefreshStatusCommand_();
     //        qDebug("keycommand");

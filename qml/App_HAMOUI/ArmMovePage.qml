@@ -406,6 +406,9 @@ Rectangle {
                     panelRobotController.sendKeyCommandToHost(cmd);
                 }
             }
+            function stopToPoint(){
+                runToPoint(CMD_PATH_STOP);
+            }
 
             //< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
             //<              10：弧线中间点位置；11：弧线终点位置
@@ -427,10 +430,8 @@ Rectangle {
                             ICButton{
                                 id:lineRun1
                                 text: qsTr("Run to This")
-                                isAutoRepeat: true
-                                autoInterval: 10
-                                onTriggered: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
-
+                                onPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
+                                onReleased: functionSection.stopToPoint();
                             }
                             ICButton{
                                 id:lineSave1
@@ -448,9 +449,9 @@ Rectangle {
                             ICButton{
                                 id:lineRun2
                                 text: qsTr("Run to This")
-                                isAutoRepeat: true
-                                autoInterval: 10
-                                onTriggered: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
+                                onPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
+                                onReleased: functionSection.stopToPoint();
+
                             }
                             ICButton{
                                 id:lineSave2
@@ -477,9 +478,9 @@ Rectangle {
                             ICButton{
                                 id:curveRun1
                                 text: qsTr("Run to This")
-                                isAutoRepeat: true
-                                autoInterval: 10
-                                onTriggered: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
+                                onPressed: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
+                                onReleased: functionSection.stopToPoint();
+
                             }
                             ICButton{
                                 id:curveSave1

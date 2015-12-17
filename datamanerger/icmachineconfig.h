@@ -38,6 +38,13 @@ public:
     QList<QPair<int, quint32> > BareMachineConfigs() const;
 
     void SetBareMachineConfigs(const QList<QPair<int, quint32> >& configValPairs);
+
+    quint32 CacheMachineConfig(ICAddrWrapperCPTR addr, quint32 v)
+    {
+        configCache_.UpdateConfigValue(addr, v);
+        return configCache_.OriginConfigValue(addr);
+    }
+
 private:
     static ICMachineConfigPTR current_;
     QString configName_;

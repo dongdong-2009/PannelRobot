@@ -259,6 +259,10 @@ public:
     }
 
     QList<QPair<int, quint32> >  SetMoldFncs(const ICAddrWrapperValuePairList values);
+    quint32 CacheMoldFnc(ICAddrWrapperCPTR addr, quint32 v){
+        fncCache_.UpdateConfigValue(addr, v);
+        return fncCache_.OriginConfigValue(addr);
+    }
 
     QString MainProgram() const
     {

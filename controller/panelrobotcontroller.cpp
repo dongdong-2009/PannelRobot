@@ -519,6 +519,23 @@ void PanelRobotController::modifyConfigValue(int addr, int value)
     ICRobotVirtualhost::AddWriteConfigCommand(host_, addr, value);
 }
 
+void PanelRobotController::modifyConfigValue(const QString &addr, const QString& value)
+{
+    ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);
+    if(configWrapper == NULL) return;
+    quint32 intV = AddrStrValueToInt(configWrapper, value);
+    quint32 tosend;
+    if(configWrapper->AddrType() == ICAddrWrapper::kICAddrTypeMold)
+    {
+        tosend = ICRobotMold::CurrentMold()->CacheMoldFnc(configWrapper, intV);
+    }
+    if(configWrapper->AddrType() == ICAddrWrapper::kICAddrTypeSystem)
+    {
+        tosend = ICMachineConfig::CurrentMachineConfig()->CacheMachineConfig(configWrapper, intV);
+    }
+    ICRobotVirtualhost::AddWriteConfigCommand(host_, configWrapper->BaseAddr(), tosend);
+}
+
 int PanelRobotController::statusValue(const QString& addr) const
 {
     ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);

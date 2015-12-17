@@ -540,7 +540,7 @@ Rectangle {
     onVisibleChanged: {
         if(visible){
             speed.text = "10.0";
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);
 //            panelRobotController.syncConfigs();
         }
 
@@ -564,7 +564,7 @@ Rectangle {
                 spd = 100.0;
             speed.text = spd.toFixed(1);
             event.accepted = true;
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);
 
 
         }else if(key === pd){
@@ -574,7 +574,7 @@ Rectangle {
                 spd = 0;
             speed.text = spd.toFixed(1);
             event.accepted = true;
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);
         }
     }
 }

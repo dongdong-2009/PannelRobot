@@ -1,5 +1,6 @@
 .pragma library
 Qt.include("IODefines.js")
+Qt.include("AxisDefine.js")
 
 var ALARM_IO_OFF_SIGNAL_START = 0;   //<名字：IO输入等待OFF时间内未检测到信号
 var ALARM_IO_ON_SIGNAL_START = 1;    //<名字：IO输入等待ON时间内未检测到信号
@@ -9,6 +10,14 @@ var ALARM_DOUBLE_OFF_START = 4;  //<名字：双头阀IO输入检测时间内未
 var ALARM_DOUBLE_ON_START = 5;//<名字：双头阀IO输入检测时间内未检测到信号
 var NORMAL_TYPE = 9;
 
+var m0Name = axisInfos[0].name;
+var m1Name = axisInfos[1].name;
+var m2Name = axisInfos[2].name;
+var m3Name = axisInfos[3].name;
+var m4Name = axisInfos[4].name;
+var m5Name = axisInfos[5].name;
+
+
 var alarmInfo = {
     "1":qsTr("ALARM_NOT_INIT                 "),
     "2":qsTr("ALARM_AXIS_CFG_DIFF            "),
@@ -17,7 +26,7 @@ var alarmInfo = {
     "5":qsTr("ALARM_TEACH_DATA_ANALYTICAL_ERR"),
     "6":qsTr("ALARM_TEACH_DATA_EDIT_ERR      "),
     "7":qsTr("ALARM_EMERGENCY_STOP           "),
-    "8":qsTr("2"),
+    "8":qsTr("ALARM_AUTO_JUMP_ERR"),
     "9":qsTr("Connect host fail!"),
     "10":qsTr("3"),
     "11":qsTr("1"),
@@ -41,73 +50,95 @@ var alarmInfo = {
     "29":qsTr("3"),
 
 
-    "90":qsTr("ALARM_AXIS1_ALARM_ERR"),
-    "91":qsTr("ALARM_AXIS2_ALARM_ERR"),
-    "92":qsTr("ALARM_AXIS3_ALARM_ERR"),
-    "93":qsTr("ALARM_AXIS4_ALARM_ERR"),
-    "94":qsTr("ALARM_AXIS5_ALARM_ERR"),
-    "95":qsTr("ALARM_AXIS6_ALARM_ERR"),
+    "90":m0Name + qsTr("ALARM_Motor_ALARM_ERR"),
+    "91":m1Name + qsTr("ALARM_Motor_ALARM_ERR"),
+    "92":m2Name + qsTr("ALARM_Motor_ALARM_ERR"),
+    "93":m3Name + qsTr("ALARM_Motor_ALARM_ERR"),
+    "94":m4Name + qsTr("ALARM_Motor_ALARM_ERR"),
+    "95":m5Name + qsTr("ALARM_Motor_ALARM_ERR"),
     "96":qsTr("3"),
     "97":qsTr("1"),
     "98":qsTr("2"),
     "99":qsTr("3"),
 
-    "100":qsTr("ALARM_AXIS_RUN_ERR "),
-    "101":qsTr("ALARM_AXIS2_RUN_ERR"),
-    "102":qsTr("ALARM_AXIS3_RUN_ERR"),
-    "103":qsTr("ALARM_AXIS4_RUN_ERR"),
-    "104":qsTr("ALARM_AXIS5_RUN_ERR"),
-    "105":qsTr("ALARM_AXIS6_RUN_ERR"),
+    "100":m0Name + qsTr("ALARM_AXIS_RUN_ERR "),
+    "101":m1Name + qsTr("ALARM_AXIS_RUN_ERR"),
+    "102":m2Name + qsTr("ALARM_AXIS_RUN_ERR"),
+    "103":m3Name + qsTr("ALARM_AXIS_RUN_ERR"),
+    "104":m4Name + qsTr("ALARM_AXIS_RUN_ERR"),
+    "105":m5Name + qsTr("ALARM_AXIS_RUN_ERR"),
     "106":qsTr("3"),
     "107":qsTr("1"),
     "108":qsTr("2"),
     "109":qsTr("3"),
 
 
-    "110":qsTr("ALARM_AXIS_SPEED_SET_ERR "),
-    "111":qsTr("ALARM_AXIS2_SPEED_SET_ERR"),
-    "112":qsTr("ALARM_AXIS3_SPEED_SET_ERR"),
-    "113":qsTr("ALARM_AXIS4_SPEED_SET_ERR"),
-    "114":qsTr("ALARM_AXIS5_SPEED_SET_ERR"),
-    "115":qsTr("ALARM_AXIS6_SPEED_SET_ERR"),
+    "110":m0Name + qsTr("ALARM_AXIS_SPEED_SET_ERR "),
+    "111":m1Name + qsTr("ALARM_AXIS_SPEED_SET_ERR"),
+    "112":m2Name + qsTr("ALARM_AXIS_SPEED_SET_ERR"),
+    "113":m3Name + qsTr("ALARM_AXIS_SPEED_SET_ERR"),
+    "114":m4Name + qsTr("ALARM_AXIS_SPEED_SET_ERR"),
+    "115":m5Name + qsTr("ALARM_AXIS_SPEED_SET_ERR"),
     "116":qsTr("3"),
     "117":qsTr("1"),
     "118":qsTr("2"),
     "119":qsTr("3"),
 
-    "120":qsTr("ALARM_AXIS_OVER_SPEED_ERR "),
-    "121":qsTr("ALARM_AXIS2_OVER_SPEED_ERR"),
-    "122":qsTr("ALARM_AXIS3_OVER_SPEED_ERR"),
-    "123":qsTr("ALARM_AXIS4_OVER_SPEED_ERR"),
-    "124":qsTr("ALARM_AXIS5_OVER_SPEED_ERR"),
-    "125":qsTr("ALARM_AXIS6_OVER_SPEED_ERR"),
+    "120":m0Name + qsTr("ALARM_AXIS_OVER_SPEED_ERR "),
+    "121":m1Name + qsTr("ALARM_AXIS_OVER_SPEED_ERR"),
+    "122":m2Name + qsTr("ALARM_AXIS_OVER_SPEED_ERR"),
+    "123":m3Name + qsTr("ALARM_AXIS_OVER_SPEED_ERR"),
+    "124":m4Name + qsTr("ALARM_AXIS_OVER_SPEED_ERR"),
+    "125":m5Name + qsTr("ALARM_AXIS_OVER_SPEED_ERR"),
     "126":qsTr("3"),
     "127":qsTr("1"),
     "128":qsTr("2"),
     "129":qsTr("3"),
 
-    "130":qsTr("ALARM_AXIS1_SOFT_LIMIT_P"),
-    "131":qsTr("ALARM_AXIS2_SOFT_LIMIT_P"),
-    "132":qsTr("ALARM_AXIS3_SOFT_LIMIT_P"),
-    "133":qsTr("ALARM_AXIS4_SOFT_LIMIT_P"),
-    "134":qsTr("ALARM_AXIS5_SOFT_LIMIT_P"),
-    "135":qsTr("ALARM_AXIS6_SOFT_LIMIT_P"),
+    "130":m0Name + qsTr("ALARM_AXIS_SOFT_LIMIT_P"),
+    "131":m1Name + qsTr("ALARM_AXIS_SOFT_LIMIT_P"),
+    "132":m2Name + qsTr("ALARM_AXIS_SOFT_LIMIT_P"),
+    "133":m3Name + qsTr("ALARM_AXIS_SOFT_LIMIT_P"),
+    "134":m4Name + qsTr("ALARM_AXIS_SOFT_LIMIT_P"),
+    "135":m5Name + qsTr("ALARM_AXIS_SOFT_LIMIT_P"),
     "136":qsTr("3"),
     "137":qsTr("1"),
     "138":qsTr("2"),
     "139":qsTr("3"),
 
 
-    "140":qsTr("ALARM_AXIS1_SOFT_LIMIT_N"),
-    "141":qsTr("ALARM_AXIS2_SOFT_LIMIT_N"),
-    "142":qsTr("ALARM_AXIS3_SOFT_LIMIT_N"),
-    "143":qsTr("ALARM_AXIS4_SOFT_LIMIT_N"),
-    "144":qsTr("ALARM_AXIS5_SOFT_LIMIT_N"),
-    "145":qsTr("ALARM_AXIS6_SOFT_LIMIT_N"),
+    "140":m0Name + qsTr("ALARM_AXIS_SOFT_LIMIT_N"),
+    "141":m1Name + qsTr("ALARM_AXIS_SOFT_LIMIT_N"),
+    "142":m2Name + qsTr("ALARM_AXIS_SOFT_LIMIT_N"),
+    "143":m3Name + qsTr("ALARM_AXIS_SOFT_LIMIT_N"),
+    "144":m4Name + qsTr("ALARM_AXIS_SOFT_LIMIT_N"),
+    "145":m5Name + qsTr("ALARM_AXIS_SOFT_LIMIT_N"),
     "146":qsTr("3"),
     "147":qsTr("1"),
     "148":qsTr("2"),
     "149":qsTr("3"),
+
+    "150":m0Name + qsTr("ALARM_ERROR_SERVO_WARP"),
+    "151":m1Name + qsTr("ALARM_ERROR_SERVO_WARP"),
+    "152":m2Name + qsTr("ALARM_ERROR_SERVO_WARP"),
+    "153":m3Name + qsTr("ALARM_ERROR_SERVO_WARP"),
+    "154":m4Name + qsTr("ALARM_ERROR_SERVO_WARP"),
+    "155":m5Name + qsTr("ALARM_ERROR_SERVO_WARP"),
+    "156":qsTr("3"),
+    "157":qsTr("1"),
+    "158":qsTr("2"),
+    "159":qsTr("3"),
+
+    "200":qsTr("ALARM_ROUTE_ACTION_FAIL"),
+    "201":qsTr("ALARM_ROUTE_LINE_P1_NOTSET"),
+    "202":qsTr("ALARM_ROUTE_LINE_P2_NOTSET"),
+    "203":qsTr("ALARM_ROUTE_ARC_P1_NOTSET"),
+    "204":qsTr("ALARM_ROUTE_ARC_P2_NOTSET"),
+    "205":qsTr("ALARM_ROUTE_ARC_P3_NOTSET"),
+    "206":qsTr("ALARM_SETROUTESPEED_FAIL"),
+    "207":qsTr("1"),
+    "208":qsTr("2"),
+    "209":qsTr("3"),
 }
 
 function analysisAlarmNum(errNum){

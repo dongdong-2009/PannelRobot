@@ -164,6 +164,7 @@ Rectangle {
             anchors.fill: parent
             width: parent.width
             height: parent.height
+            visible: false
         }
         Loader{
             id:manualPage
@@ -171,7 +172,7 @@ Rectangle {
             height: parent.height
             source: "ManualPage.qml"
             //            anchors.fill: parent
-            visible: false
+//            visible: false
         }
         Loader{
             id:programPage
@@ -404,11 +405,13 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-        armKeyboardContainer.visible = knobStatus !== Keymap.KNOB_AUTO;
+        var isAuto = (knobStatus === Keymap.KNOB_AUTO)
+        armKeyboardContainer.visible = !isAuto;
+        menuSettings.enabled = !isAuto;
     }
 
     Component.onCompleted: {
-        menuSettings.setChecked(true);
+        menuOperation.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

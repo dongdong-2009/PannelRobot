@@ -84,171 +84,123 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS2_RUN_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS3_RUN_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS4_RUN_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS5_RUN_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS6_RUN_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>运动失败</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SPEED_SET_ERR </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS2_SPEED_SET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS3_SPEED_SET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS4_SPEED_SET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS5_SPEED_SET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS6_SPEED_SET_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>速度设定错误</translation>
     </message>
     <message>
         <source>ALARM_AXIS_OVER_SPEED_ERR </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS2_OVER_SPEED_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS3_OVER_SPEED_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS4_OVER_SPEED_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS5_OVER_SPEED_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS6_OVER_SPEED_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS1_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS2_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS3_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS4_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS5_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS6_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS1_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS2_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS3_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS4_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS5_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ALARM_AXIS6_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
+        <translation>运动过速</translation>
     </message>
     <message>
         <source>Wait Input:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待输入:</translation>
     </message>
     <message>
         <source>ON over time</source>
-        <translation type="unfinished"></translation>
+        <translation>通超时</translation>
     </message>
     <message>
         <source>OFF over time</source>
-        <translation type="unfinished"></translation>
+        <translation>断超时</translation>
     </message>
     <message>
         <source>Wait Single Input:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待单头阀输入:</translation>
     </message>
     <message>
         <source>Wait Double Input:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待双头阀输入:</translation>
     </message>
     <message>
         <source>Connect host fail!</source>
-        <translation type="unfinished"></translation>
+        <translation>连接主机失败!</translation>
+    </message>
+    <message>
+        <source>ALARM_AUTO_JUMP_ERR</source>
+        <translation>自动运行跳转错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACTION_FAIL</source>
+        <translation>轨迹运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
+        <translation>手动直线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
+        <translation>手动直线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标3未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_SETROUTESPEED_FAIL</source>
+        <translation>轨迹运动速度设定失败</translation>
+    </message>
+    <message>
+        <source>ALARM_Motor_ALARM_ERR</source>
+        <translation>电机报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_RUN_ERR</source>
+        <translation>运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SPEED_SET_ERR</source>
+        <translation>速度设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_OVER_SPEED_ERR</source>
+        <translation>运动过速</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_P</source>
+        <translation>正极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_N</source>
+        <translation>负极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ERROR_SERVO_WARP</source>
+        <translation>偏差过大</translation>
     </message>
 </context>
 <context>
@@ -1460,11 +1412,11 @@
     </message>
     <message>
         <source>Single Y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保持型双头阀Y</translation>
     </message>
     <message>
         <source>Unhold Double Y</source>
@@ -1970,7 +1922,7 @@ please chose!</source>
     </message>
     <message>
         <source>Sub-8</source>
-        <translation>子程序-</translation>
+        <translation>子程序-8</translation>
     </message>
     <message>
         <source>UP</source>
@@ -2573,19 +2525,19 @@ please chose!</source>
     </message>
     <message>
         <source>IF:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">限时:</translation>
     </message>
     <message>
         <source>Go to flag</source>
@@ -2593,11 +2545,11 @@ please chose!</source>
     </message>
     <message>
         <source>Wait:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">等待:</translation>
     </message>
     <message>
         <source>Check:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">阀检测:</translation>
     </message>
     <message>
         <source>End</source>
@@ -2605,15 +2557,15 @@ please chose!</source>
     </message>
     <message>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">注释:</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标签</translation>
     </message>
     <message>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输出:</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -2625,11 +2577,11 @@ please chose!</source>
     </message>
     <message>
         <source>Sub program is out of ranged</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">子程序范围不对</translation>
     </message>
     <message>
         <source>Invalid program</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无效程序</translation>
     </message>
     <message>
         <source>Has not Group-Begin action but has Group-End action</source>
@@ -2645,23 +2597,23 @@ please chose!</source>
     </message>
     <message>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有同步开始但有同步结束</translation>
     </message>
     <message>
         <source>Sync action is nesting</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">同步嵌套</translation>
     </message>
     <message>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">有同步开始没有同步结束</translation>
     </message>
     <message>
         <source>Last action is not End action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有模号结束</translation>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未知错误</translation>
     </message>
 </context>
 <context>

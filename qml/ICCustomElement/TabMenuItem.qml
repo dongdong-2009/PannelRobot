@@ -21,6 +21,7 @@ Rectangle {
         text: qsTr("TabItem")
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
+        color: enabled? "black" : "gray"
     }
 
     onIsCheckedChanged: {

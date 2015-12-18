@@ -46,6 +46,7 @@ var OPERATION_LOG_TB_INFO = {
 
 //storage.js
 // 首先创建一个helper方法连接数据库
+var isDbInit = false;
 function getDatabase() {
     return openDatabaseSync("PanelRobotCustomDB", "1.0", "StorageDatabase", 100000);
 }
@@ -74,6 +75,7 @@ function initialize() {
                     else if(rs.rows.length > 0){
                         console.log("Database has been init!");
                     }
+                    isDbInit = true;
                 });
 }
 
@@ -96,6 +98,7 @@ function setSetting(setting, value) {
 
 // 获取数据
 function getSetting(setting) {
+    if(!isDbInit) initialize();
     var db = getDatabase();
     var res="";
     db.transaction(function(tx) {
@@ -141,6 +144,8 @@ function appendAlarmToLog(alarmItem){
 }
 
 function alarmlog(){
+    if(!isDbInit) initialize();
+
     var db = getDatabase();
 //    var res="";
     var ret = [];

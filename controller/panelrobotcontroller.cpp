@@ -456,6 +456,7 @@ void PanelRobotController::InitMainView()
 //        mainView_->deleteLater();
 //        delete mainView_;
     }
+    qDebug("Init MainView");
     mainView_ = new QtQuick1ApplicationViewer;
     mainView_->rootContext()->setContextProperty("panelRobotController", this);
     mainView_->rootContext()->setContextProperty("virtualKeyboard", &virtualKeyboard);
@@ -510,9 +511,9 @@ void PanelRobotController::startUpdate(const QString &updater)
     ICUpdateSystem us;
     us.SetPacksDir(ICAppSettings().UsbPath);
     host_->StopCommunicate();
-    system("mkdir /tmp/updatehost/");
-    hostUpdateFinishedWatcher_.addPath("/tmp/updatehost");
-    connect(&hostUpdateFinishedWatcher_, SIGNAL(fileChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
+    system("mkdir updatehost/");
+    hostUpdateFinishedWatcher_.addPath("updatehost");
+    connect(&hostUpdateFinishedWatcher_, SIGNAL(directoryChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
     us.StartUpdate(updater);
 
 }
@@ -867,9 +868,10 @@ void PanelRobotController::logTestPoint(int type, const QString &axisDataJSON)
 
 void PanelRobotController::OnHostUpdateFinished(QString)
 {
-    disconnect(&hostUpdateFinishedWatcher_, SIGNAL(fileChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
+    qDebug("finised");
+    disconnect(&hostUpdateFinishedWatcher_, SIGNAL(directoryChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
     mainView_->repaint();
     host_->StartCommunicate();
-    hostUpdateFinishedWatcher_.removePath("/tmp/updatehost");
-    system("rm -r /tmp/updatehost/");
+    hostUpdateFinishedWatcher_.removePath("updatehost");
+    system("rm -r updatehost");
 }

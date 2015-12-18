@@ -369,14 +369,16 @@ Item {
 
         Component.onCompleted: {
             var lang = panelRobotController.getCustomSettings("Language", "");
-            if(lang === ""){
-                panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
+            console.log("lang", lang == "");
+            if(lang == ""){
                 panelRobotController.setCustomSettings("Language", "CN");
+                panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
                 lang = "CN";
+                console.log("language", panelRobotController.getCustomSettings("Language", ""));
             }
-            if(lang === "CN"){
+            if(lang == "CN"){
                 chineseBox.setChecked(true);
-            }else if(lang === "US"){
+            }else if(lang == "US"){
                 englishBox.setChecked(true);
             }
             var keytone = panelRobotController.getCustomSettings("Keytone", true);

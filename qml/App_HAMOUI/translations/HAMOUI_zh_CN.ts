@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -37,38 +37,38 @@
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>限时:</translation>
     </message>
 </context>
 <context>
     <name>AlarmInfo</name>
     <message>
         <source>ALARM_NOT_INIT                 </source>
-        <translation type="unfinished"></translation>
+        <translation>没初始化完</translation>
     </message>
     <message>
         <source>ALARM_AXIS_CFG_DIFF            </source>
-        <translation type="unfinished"></translation>
+        <translation>主机结构配置和手控结构配置不同</translation>
     </message>
     <message>
         <source>ALARM_AXIS_CFG_ERR             </source>
-        <translation type="unfinished"></translation>
+        <translation>主机结果配置参数错误</translation>
     </message>
     <message>
         <source>ALARM_OUT_OF_MEMORY_ERR        </source>
-        <translation type="unfinished"></translation>
+        <translation>主机内存不足</translation>
     </message>
     <message>
         <source>ALARM_TEACH_DATA_ANALYTICAL_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>教导数据解析错误</translation>
     </message>
     <message>
         <source>ALARM_TEACH_DATA_EDIT_ERR      </source>
-        <translation type="unfinished"></translation>
+        <translation>教导数据编辑错误</translation>
     </message>
     <message>
         <source>ALARM_EMERGENCY_STOP           </source>
-        <translation type="unfinished"></translation>
+        <translation>紧急停止</translation>
     </message>
     <message>
         <source>2</source>
@@ -246,6 +246,10 @@
         <source>Wait Double Input:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Connect host fail!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -255,7 +259,7 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="unfinished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>▼</source>
@@ -311,51 +315,75 @@
     </message>
     <message>
         <source>Line Z-</source>
-        <translation type="unfinished"></translation>
+        <translation>直线Z-</translation>
     </message>
     <message>
         <source>Line Z+</source>
-        <translation type="unfinished"></translation>
+        <translation>直线Z+</translation>
     </message>
     <message>
         <source>Rotate U-</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转U-</translation>
     </message>
     <message>
         <source>Rotate U+</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转U+</translation>
     </message>
     <message>
         <source>Line Y-</source>
-        <translation type="unfinished"></translation>
+        <translation>直线Y-</translation>
     </message>
     <message>
         <source>Line Y+</source>
-        <translation type="unfinished"></translation>
+        <translation>直线Y+</translation>
     </message>
     <message>
         <source>Rotate V-</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转V-</translation>
     </message>
     <message>
         <source>Rotate V+</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转V+</translation>
     </message>
     <message>
         <source>Line X-</source>
-        <translation type="unfinished"></translation>
+        <translation>直线X-</translation>
     </message>
     <message>
         <source>Line X+</source>
-        <translation type="unfinished"></translation>
+        <translation>直线X+</translation>
     </message>
     <message>
         <source>Rotate W-</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转W-</translation>
     </message>
     <message>
         <source>Rotate W+</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转W+</translation>
+    </message>
+    <message>
+        <source>Line Test</source>
+        <translation>直线测试</translation>
+    </message>
+    <message>
+        <source>Curve Test</source>
+        <translation>曲线测试</translation>
+    </message>
+    <message>
+        <source>Run to This</source>
+        <translation>运行到这点</translation>
+    </message>
+    <message>
+        <source>Set to Point-1</source>
+        <translation>设当前位置为起点</translation>
+    </message>
+    <message>
+        <source>Set to Point-2</source>
+        <translation>设当前位置为中间点</translation>
+    </message>
+    <message>
+        <source>Set to Point-3</source>
+        <translation>设当前位置为终点</translation>
     </message>
 </context>
 <context>
@@ -425,35 +453,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>B ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C OFF</source>
-        <translation type="unfinished"></translation>
+        <source>Set In</source>
+        <translation>设入</translation>
     </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
     <message>
-        <source>mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -534,31 +550,7 @@
 <context>
     <name>AxisDefine</name>
     <message>
-        <source>M1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -567,6 +559,30 @@
     </message>
     <message>
         <source>M8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -585,38 +601,38 @@
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation type="unfinished"></translation>
+        <translation>单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
+        <translation>保持型双头阀Y</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>开始</translation>
     </message>
     <message>
         <source>End</source>
-        <translation type="unfinished"></translation>
+        <translation>结束</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="unfinished">延时:</translation>
+        <translation>延时:</translation>
     </message>
 </context>
 <context>
     <name>CommentActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="unfinished">返回</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>注释:</translation>
     </message>
 </context>
 <context>
@@ -627,59 +643,59 @@
     </message>
     <message>
         <source>Define Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>定义标签</translation>
     </message>
     <message>
         <source>Use Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>使用标签</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>限时:</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
     </message>
     <message>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>EUY</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>MY</source>
-        <translation type="unfinished"></translation>
+        <translation>中间变量Y</translation>
     </message>
     <message>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>EUX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>MX</source>
-        <translation type="unfinished"></translation>
+        <translation>中间变量X</translation>
     </message>
     <message>
         <source>Jump</source>
-        <translation type="unfinished"></translation>
+        <translation>跳转</translation>
     </message>
 </context>
 <context>
@@ -701,50 +717,67 @@
     <message>
         <source>Alarm
  Num</source>
-        <translation type="unfinished"></translation>
+        <translation>报警
+号</translation>
     </message>
     <message>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation>级
+别</translation>
     </message>
     <message>
         <source>Descr</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <source>Triggered Time</source>
-        <translation type="unfinished"></translation>
+        <translation>触发时间</translation>
     </message>
     <message>
         <source>End Time</source>
-        <translation type="unfinished"></translation>
+        <translation>结束时间</translation>
+    </message>
+</context>
+<context>
+    <name>ICOperationLogPage</name>
+    <message>
+        <source>Operation Time</source>
+        <translation>操作时间</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>用户</translation>
+    </message>
+    <message>
+        <source>Descr</source>
+        <translation>描述</translation>
     </message>
 </context>
 <context>
     <name>IOComponent</name>
     <message>
         <source>Prev</source>
-        <translation type="unfinished"></translation>
+        <translation>上一页</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>输入</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>输出</translation>
     </message>
     <message>
         <source>EuInput</source>
-        <translation type="unfinished"></translation>
+        <translation>EU输入</translation>
     </message>
     <message>
         <source>EuOutput</source>
-        <translation type="unfinished"></translation>
+        <translation>EU输出</translation>
     </message>
     <message>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一页</translation>
     </message>
 </context>
 <context>
@@ -1489,34 +1522,34 @@
     <name>LoginDialog</name>
     <message>
         <source>User:</source>
-        <translation type="unfinished"></translation>
+        <translation>用户:</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>密码:</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Log out</source>
-        <translation type="unfinished"></translation>
+        <translation>登出</translation>
     </message>
     <message>
         <source>Login in</source>
-        <translation type="unfinished"></translation>
+        <translation>登入</translation>
     </message>
 </context>
 <context>
     <name>MachineSettings</name>
     <message>
         <source>Running Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>运行参数</translation>
     </message>
     <message>
         <source>Axis Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数</translation>
     </message>
     <message>
         <source>Reserve Define</source>
@@ -1550,12 +1583,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Arm Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Tools Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>工具校准</translation>
     </message>
 </context>
 <context>
@@ -1566,126 +1595,142 @@
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="unfinished">延时:</translation>
+        <translation>延时:</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>EUY</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>中间变量</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation type="unfinished"></translation>
+        <translation>单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
+        <translation>保持型双头阀Y</translation>
     </message>
 </context>
 <context>
     <name>PanelSettings</name>
     <message>
         <source>Maintain</source>
-        <translation type="unfinished"></translation>
+        <translation>维护</translation>
     </message>
     <message>
         <source>Scan Updater</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描更新包</translation>
     </message>
     <message>
         <source>Start Update</source>
-        <translation type="unfinished"></translation>
+        <translation>开始更新</translation>
     </message>
     <message>
         <source>Panel Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>手控设定</translation>
     </message>
     <message>
         <source>UI Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>UI版本:</translation>
     </message>
     <message>
         <source>Controller Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>中间件版本:</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>语言</translation>
     </message>
     <message>
         <source>Key Tone</source>
-        <translation type="unfinished"></translation>
+        <translation>按键音</translation>
     </message>
     <message>
         <source>Key Tone Off</source>
-        <translation type="unfinished"></translation>
+        <translation>关</translation>
     </message>
     <message>
         <source>Key Tone On</source>
-        <translation type="unfinished"></translation>
+        <translation>开</translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>屏幕亮度</translation>
     </message>
     <message>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Screensaver Time</source>
-        <translation type="unfinished"></translation>
+        <translation>屏幕保护时间</translation>
     </message>
     <message>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Date time</source>
-        <translation type="unfinished"></translation>
+        <translation>日期时间</translation>
     </message>
     <message>
         <source>year</source>
-        <translation type="unfinished"></translation>
+        <translation>年</translation>
     </message>
     <message>
         <source>mon</source>
-        <translation type="unfinished"></translation>
+        <translation>月</translation>
     </message>
     <message>
         <source>day</source>
-        <translation type="unfinished"></translation>
+        <translation>日</translation>
     </message>
     <message>
         <source>hour</source>
-        <translation type="unfinished"></translation>
+        <translation>时</translation>
     </message>
     <message>
         <source>sec</source>
-        <translation type="unfinished"></translation>
+        <translation>秒</translation>
+    </message>
+    <message>
+        <source>Touch Calibrate</source>
+        <translation>触摸校正</translation>
+    </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation>触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>否</translation>
     </message>
 </context>
 <context>
@@ -1693,19 +1738,19 @@
     <message>
         <source>Host configs and panel configs is different,
 please chose!</source>
-        <translation type="unfinished"></translation>
+        <translation>主机参数和手控参数不一致,请选择!</translation>
     </message>
     <message>
         <source>chose manual</source>
-        <translation type="unfinished"></translation>
+        <translation>选择手控</translation>
     </message>
     <message>
         <source>chose host</source>
-        <translation type="unfinished"></translation>
+        <translation>选择主机</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -1755,63 +1800,87 @@ please chose!</source>
         <translation>删除</translation>
     </message>
     <message>
-        <source>Is Pose</source>
-        <translation type="unfinished"></translation>
+        <source>Line 2D</source>
+        <translation>直线2D</translation>
+    </message>
+    <message>
+        <source>Line 3D</source>
+        <translation>直线3D</translation>
+    </message>
+    <message>
+        <source>Curve 3D</source>
+        <translation>曲线3D</translation>
+    </message>
+    <message>
+        <source>Pose</source>
+        <translation>姿势</translation>
+    </message>
+    <message>
+        <source>Pose 3D</source>
+        <translation>姿势曲线</translation>
+    </message>
+    <message>
+        <source>Set to Middle Point</source>
+        <translation>设为中间点</translation>
+    </message>
+    <message>
+        <source>Set to End</source>
+        <translation>设为终点</translation>
     </message>
 </context>
 <context>
     <name>ProductSettings</name>
     <message>
         <source>NoUse</source>
-        <translation type="unfinished"></translation>
+        <translation>不使用</translation>
     </message>
     <message>
         <source>Use</source>
-        <translation type="unfinished"></translation>
+        <translation>使用</translation>
     </message>
     <message>
         <source>Product</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>stack</source>
-        <translation type="unfinished"></translation>
+        <translation>产品设定</translation>
     </message>
     <message>
         <source>Program0</source>
-        <translation type="unfinished"></translation>
+        <translation>主程序</translation>
     </message>
     <message>
         <source>Program1</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序1</translation>
     </message>
     <message>
         <source>Program2</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序2</translation>
     </message>
     <message>
         <source>Program3</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序3</translation>
     </message>
     <message>
         <source>Program4</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序4</translation>
     </message>
     <message>
         <source>Program5</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序5</translation>
     </message>
     <message>
         <source>Program6</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序6</translation>
     </message>
     <message>
         <source>Program7</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序7</translation>
     </message>
     <message>
         <source>Program8</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序8</translation>
+    </message>
+    <message>
+        <source>Valve Settings</source>
+        <translation>阀设定</translation>
     </message>
 </context>
 <context>
@@ -1826,19 +1895,19 @@ please chose!</source>
     </message>
     <message>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>阀检测</translation>
     </message>
     <message>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>条件跳转</translation>
     </message>
     <message>
         <source>Wait</source>
-        <translation type="unfinished"></translation>
+        <translation>等待</translation>
     </message>
     <message>
         <source>Other/Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -1850,15 +1919,15 @@ please chose!</source>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>路径</translation>
     </message>
     <message>
         <source>Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠</translation>
     </message>
 </context>
 <context>
@@ -1933,11 +2002,15 @@ please chose!</source>
     </message>
     <message>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>直线</translation>
     </message>
     <message>
         <source>Follow ?</source>
-        <translation type="unfinished"></translation>
+        <translation>跟随</translation>
+    </message>
+    <message>
+        <source>Speed:</source>
+        <translation>速度:</translation>
     </message>
 </context>
 <context>
@@ -2019,52 +2092,63 @@ please chose!</source>
     </message>
     <message>
         <source>This mold is using!</source>
-        <translation type="unfinished"></translation>
+        <translation>模号使用中!</translation>
+    </message>
+</context>
+<context>
+    <name>RunningConfigs</name>
+    <message>
+        <source>Tolerance</source>
+        <translation>容差</translation>
+    </message>
+    <message>
+        <source>Pulse</source>
+        <translation>脉冲</translation>
     </message>
 </context>
 <context>
     <name>SearchActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="unfinished">返回</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Start Search</source>
-        <translation type="unfinished"></translation>
+        <translation>开始搜索</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Return</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <source>Product Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>产品设定</translation>
     </message>
     <message>
         <source>Machine Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>机器设定</translation>
     </message>
     <message>
         <source>Panel Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>手控设定</translation>
     </message>
 </context>
 <context>
     <name>StackActionEditor</name>
     <message>
         <source>New</source>
-        <translation type="unfinished">新建</translation>
+        <translation>新建</translation>
     </message>
     <message>
         <source>Define Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>定义堆叠</translation>
     </message>
     <message>
         <source>Use Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>使用堆叠</translation>
     </message>
     <message>
         <source>Type1</source>
@@ -2080,86 +2164,86 @@ please chose!</source>
     </message>
     <message>
         <source>Set In</source>
-        <translation type="unfinished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Space0</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向计数</translation>
     </message>
     <message>
         <source>Dir0</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation type="unfinished"></translation>
+        <translation>反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="unfinished"></translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>Dir1</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向</translation>
     </message>
     <message>
         <source>Dir2</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向</translation>
     </message>
     <message>
         <source>Sequence</source>
-        <translation type="unfinished"></translation>
+        <translation>顺序</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="unfinished">速度</translation>
+        <translation>速度</translation>
     </message>
 </context>
 <context>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="unfinished">返回</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Sync Begin</source>
-        <translation type="unfinished">同步开始</translation>
+        <translation>同步开始</translation>
     </message>
     <message>
         <source>Sync End</source>
-        <translation type="unfinished">同步结束</translation>
+        <translation>同步结束</translation>
     </message>
 </context>
 <context>
@@ -2238,39 +2322,39 @@ please chose!</source>
     </message>
     <message>
         <source>IF:</source>
-        <translation type="unfinished"></translation>
+        <translation>如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>限时:</translation>
     </message>
     <message>
         <source>Wait:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待:</translation>
     </message>
     <message>
         <source>Check:</source>
-        <translation type="unfinished"></translation>
+        <translation>阀检测:</translation>
     </message>
     <message>
         <source>End</source>
-        <translation type="unfinished"></translation>
+        <translation>模组结束</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
     </message>
     <message>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>输出:</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -2282,15 +2366,15 @@ please chose!</source>
     </message>
     <message>
         <source>Line2D:</source>
-        <translation>2D直线:</translation>
+        <translation>直线2D:</translation>
     </message>
     <message>
         <source>Line3D:</source>
-        <translation>3D直线:</translation>
+        <translation>直线3D:</translation>
     </message>
     <message>
         <source>Arc3D:</source>
-        <translation>3D曲线:</translation>
+        <translation>曲线3D:</translation>
     </message>
     <message>
         <source>Next:</source>
@@ -2302,11 +2386,11 @@ please chose!</source>
     </message>
     <message>
         <source>Sub program is out of ranged</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序范围不对</translation>
     </message>
     <message>
         <source>Invalid program</source>
-        <translation type="unfinished"></translation>
+        <translation>无效程序</translation>
     </message>
     <message>
         <source>Has not Group-Begin action but has Group-End action</source>
@@ -2322,74 +2406,74 @@ please chose!</source>
     </message>
     <message>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation>没有同步开始但有同步结束</translation>
     </message>
     <message>
         <source>Sync action is nesting</source>
-        <translation type="unfinished"></translation>
+        <translation>同步嵌套</translation>
     </message>
     <message>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation>有同步开始没有同步结束</translation>
     </message>
     <message>
         <source>Last action is not End action</source>
-        <translation type="unfinished"></translation>
+        <translation>没有模号结束</translation>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation type="unfinished"></translation>
+        <translation>未知错误</translation>
     </message>
     <message>
         <source>Jump To </source>
-        <translation type="unfinished"></translation>
+        <translation>跳转到</translation>
     </message>
     <message>
         <source>Go to </source>
-        <translation type="unfinished"></translation>
+        <translation>跳转到</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>开始</translation>
     </message>
     <message>
         <source>not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>不存在</translation>
     </message>
     <message>
         <source>Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠</translation>
     </message>
     <message>
         <source>Pose:</source>
-        <translation type="unfinished"></translation>
+        <translation>姿势:</translation>
     </message>
     <message>
         <source>Line3D-Pose:</source>
-        <translation type="unfinished"></translation>
+        <translation>姿势曲线:</translation>
     </message>
     <message>
         <source>Invalid program index</source>
-        <translation type="unfinished"></translation>
+        <translation>无效程序索引</translation>
     </message>
     <message>
         <source>Wrong action format</source>
-        <translation type="unfinished"></translation>
+        <translation>错误动作格式</translation>
     </message>
     <message>
         <source>Invalid jump flag</source>
-        <translation type="unfinished"></translation>
+        <translation>无效跳转标签</translation>
     </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
     <message>
         <source>Speed:</source>
-        <translation type="unfinished">速度:</translation>
+        <translation>速度:</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="unfinished">延时:</translation>
+        <translation>延时:</translation>
     </message>
     <message>
         <source>X1</source>
@@ -2584,7 +2668,7 @@ please chose!</source>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点1</translation>
     </message>
     <message>
         <source>text</source>
@@ -2592,58 +2676,62 @@ please chose!</source>
     </message>
     <message>
         <source>Set to P2</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点2</translation>
     </message>
     <message>
         <source>Set to P3</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点3</translation>
     </message>
     <message>
         <source>Set to P4</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点4</translation>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>
-        <translation type="unfinished"></translation>
+        <translation>使用</translation>
     </message>
 </context>
 <context>
     <name>TopHeader</name>
     <message>
         <source>Records:</source>
-        <translation type="unfinished"></translation>
+        <translation>模号:</translation>
     </message>
     <message>
         <source>Calculator</source>
-        <translation type="unfinished"></translation>
+        <translation>计算器</translation>
     </message>
     <message>
         <source>I/O</source>
-        <translation type="unfinished"></translation>
+        <translation>I/O监视</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>手动</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>自动</translation>
     </message>
     <message>
         <source>Alarm log</source>
-        <translation type="unfinished"></translation>
+        <translation>报警记录</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>参数设定</translation>
     </message>
 </context>
 <context>
@@ -2654,6 +2742,21 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>ValveSettings</name>
+    <message>
+        <source>Confirm</source>
+        <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation>反相</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正相</translation>
+    </message>
+</context>
+<context>
     <name>WaitActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -2661,38 +2764,38 @@ please chose!</source>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>EUX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>中间变量</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="unfinished">延时:</translation>
+        <translation>延时:</translation>
     </message>
 </context>
 <context>
     <name>YDefineItem</name>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
 </context>
 <context>
@@ -2711,7 +2814,23 @@ please chose!</source>
     </message>
     <message>
         <source>Login</source>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <source>↑</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm Log</source>
+        <translation>报警记录</translation>
+    </message>
+    <message>
+        <source>Operation Log</source>
+        <translation>操作记录</translation>
+    </message>
+    <message>
+        <source>Please press origin key and then press start key to find origin signal.</source>
+        <translation>请按原点键然后按启动键原点复归.</translation>
     </message>
 </context>
 </TS>

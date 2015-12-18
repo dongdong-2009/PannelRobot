@@ -200,7 +200,7 @@ Item {
     Rectangle{
         id:leftHorSplitLine
         height: 1
-        width: 305
+        width: motorSettingContainer.width
         anchors.top: motorSettingContainer.bottom
         anchors.topMargin: 2
         color: "gray"
@@ -219,7 +219,7 @@ Item {
             id:newReferenceName
             configName: qsTr("New Point:")
             configNameWidth: 120
-            inputWidth: 180
+            inputWidth: 160
             isNumberOnly: false
         }
 
@@ -270,14 +270,18 @@ Item {
         id:rightCommandContainer
         anchors.left: middleVercSplitLine.right
         anchors.leftMargin: 2
-        width: 375
+        width: 400
         height: 60
         SequentialAnimation{
             id: flicker
-            loops: 6
-            PropertyAnimation{ targets: [motorSettingContainer,pointViewContainer];properties: "color";to:rightCommandContainer.color;duration: 300}
+            loops: 1
+            PropertyAnimation{ targets: [motorSettingContainer];properties: "color";to:rightCommandContainer.color;duration: 300}
             PauseAnimation { duration: 200 }
-            PropertyAnimation{ targets: [motorSettingContainer,pointViewContainer];properties: "color";to:"white";duration: 300}
+            PropertyAnimation{ targets: [motorSettingContainer];properties: "color";to:"white";duration: 300}
+
+            PropertyAnimation{ targets: [pointViewContainer];properties: "color";to:rightCommandContainer.color;duration: 300}
+            PauseAnimation { duration: 200 }
+            PropertyAnimation{ targets: [pointViewContainer];properties: "color";to:"white";duration: 300}
         }
         ICButtonGroup{
             layoutMode: 2
@@ -324,7 +328,7 @@ Item {
             }
 
             Flow{
-                width: 250
+                width: 375
                 spacing: 4
                 x:4
                 y:2
@@ -357,7 +361,7 @@ Item {
         height: 142
         anchors.top: rightCommandContainer.bottom
         anchors.topMargin: 2
-        width: 375
+        width: 400
         border.width: 1
         border.color: "black"
         ListView{

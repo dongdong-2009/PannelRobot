@@ -10,6 +10,7 @@
 #include <QScriptEngine>
 #include <QSharedPointer>
 #include <QTimer>
+#include <QFileSystemWatcher>
 #include "icdatatype.h"
 #include "icparameterscache.h"
 #include "qtquick1applicationviewer.h"
@@ -483,6 +484,9 @@ public slots:
     void OnQueryStatusFinished(int addr, const QVector<quint32>&v);
     void OnkeyCheckTimeOut();
 
+private slots:
+    void OnHostUpdateFinished(QString);
+
 private:
     void InitDatabase_();
     void InitMold_();
@@ -512,6 +516,7 @@ private:
     QString valveDefineJSON_;
     QtQuick1ApplicationViewer *mainView_;
     ICVirtualKeyboard virtualKeyboard;
+    QFileSystemWatcher hostUpdateFinishedWatcher_;
 
 
 #ifdef Q_WS_QWS

@@ -408,6 +408,7 @@ Rectangle {
         var isAuto = (knobStatus === Keymap.KNOB_AUTO)
         armKeyboardContainer.visible = !isAuto;
         menuSettings.enabled = !isAuto;
+        menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
     }
 
     Component.onCompleted: {

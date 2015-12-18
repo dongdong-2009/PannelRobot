@@ -11,43 +11,6 @@ Item {
         id:button
         spacing: 10
         ICButton{
-            id:savePoint
-            text: qsTr("Log Point")
-            onTriggered: {
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_GET_COORDINATE);
-            }
-
-        }
-        ICButton{
-            id:line
-            text: qsTr("Line To")
-            autoInterval: 50
-            isAutoRepeat: true
-            onTriggered: {
-                console.log(text);
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_MOVE_POINT);
-            }
-        }
-        ICButton{
-            id:curve
-            text: qsTr("Curve To")
-            autoInterval: 50
-            isAutoRepeat: true
-            onTriggered: {
-                console.log(text);
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_MOVE_ARC);
-            }
-
-        }
-        ICButton{
-            id:loadMachineConfigFromHost
-            text:qsTr("Load Host Configs")
-            onTriggered: {
-                panelRobotController.loadHostMachineConfigs();
-            }
-        }
-
-        ICButton{
             id:singl
             text: qsTr("single axis")
             onButtonClicked: {
@@ -119,7 +82,6 @@ Item {
             spacing: 60
 
             Column{
-                spacing: 2
                 ICStatusWidget {
                     id: status1
                     bindStatus: "c_ro_0_32_3_900"
@@ -187,7 +149,6 @@ Item {
 
             }
             Column{
-                spacing: 2
                 ICStatusWidget {
                     id: status17
                     bindStatus: "c_ro_0_16_0_911"
@@ -256,7 +217,6 @@ Item {
             }
 
             Column{
-                spacing: 2
                 ICStatusWidget {
                     id: status33
                     bindStatus: "c_ro_0_16_0_922"
@@ -324,7 +284,6 @@ Item {
             }
 
             Column{
-                spacing: 2
                 ICStatusWidget {
                     id: status49
                     bindStatus: "c_ro_0_32_0_932"

@@ -658,6 +658,37 @@
     </message>
 </context>
 <context>
+    <name>DebugPage</name>
+    <message>
+        <source>single axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>jog axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ICAlarmBar</name>
     <message>
         <source>i</source>
@@ -1427,47 +1458,7 @@
     <name>JogPage</name>
     <message>
         <source>Speed</source>
-        <translation type="unfinished">速度</translation>
-    </message>
-    <message>
-        <source>Log Point</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Line To</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Curve To</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Load Host Configs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Addr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>single axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>jog axis</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">速度</translation>
     </message>
 </context>
 <context>
@@ -1531,12 +1522,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Jog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Tools Calibration</source>
         <translation>工具校准</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>调试</translation>
     </message>
 </context>
 <context>
@@ -1963,6 +1954,10 @@ please chose!</source>
     <message>
         <source>Speed:</source>
         <translation>速度:</translation>
+    </message>
+    <message>
+        <source>Speed En</source>
+        <translation>调速使能</translation>
     </message>
 </context>
 <context>
@@ -2783,6 +2778,10 @@ please chose!</source>
     <message>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation>请按原点键然后按启动键原点复归.</translation>
+    </message>
+    <message>
+        <source>V Program</source>
+        <translation>程序</translation>
     </message>
 </context>
 </TS>

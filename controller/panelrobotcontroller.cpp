@@ -510,6 +510,9 @@ void PanelRobotController::startUpdate(const QString &updater)
     ICUpdateSystem us;
     us.SetPacksDir(ICAppSettings().UsbPath);
     host_->StopCommunicate();
+    system("mkdir /tmp/updatehost/");
+    hostUpdateFinishedWatcher_.addPath("/tmp/updatehost");
+    connect(&hostUpdateFinishedWatcher_, SIGNAL(fileChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
     us.StartUpdate(updater);
 
 }
@@ -860,4 +863,13 @@ void PanelRobotController::logTestPoint(int type, const QString &axisDataJSON)
         axisData.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
     }
     ICRobotVirtualhost::LogTestPoint(host_, type, axisData);
+}
+
+void PanelRobotController::OnHostUpdateFinished(QString)
+{
+    disconnect(&hostUpdateFinishedWatcher_, SIGNAL(fileChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
+    mainView_->repaint();
+    host_->StartCommunicate();
+    hostUpdateFinishedWatcher_.removePath("/tmp/updatehost");
+    system("rm -r /tmp/updatehost/");
 }

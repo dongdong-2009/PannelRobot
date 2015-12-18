@@ -8,10 +8,13 @@ import "configs/AxisDefine.js" as AxisDefine
 Rectangle {
     width: parent.width
     height: parent.height
-    //    property bool ready: false
+    property int currentType: 0
     function sendCommand(cmd, type){
-        panelRobotController.modifyConfigValue(24,
-                                               type);
+        if(currentType !== type){
+            currentType = type;
+            panelRobotController.modifyConfigValue(24,
+                                                   type);
+        }
         panelRobotController.sendKeyCommandToHost(cmd);
     }
     border.width: 1

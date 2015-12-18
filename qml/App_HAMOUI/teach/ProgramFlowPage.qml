@@ -252,6 +252,15 @@ Rectangle {
                 anchors.right: parent.right
                 visible: false
                 z:4
+                spacing: 2
+                ICCheckBox{
+                    id:speedEn
+                    text: qsTr("Speed En")
+                    onVisibleChanged: {
+                        if(visible) isChecked = false;
+                    }
+                }
+
                 Text {
                     text: qsTr("Speed:")
                     anchors.verticalCenter: parent.verticalCenter
@@ -279,6 +288,7 @@ Rectangle {
                     }
                 }
                 Keys.onPressed: {
+                    if(!speedEn.isChecked) return;
                     var key = event.key;
                     var spd;
                     var pu = Keymap.PULLY_UP;

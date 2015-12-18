@@ -45,7 +45,7 @@ var getConfigRange = function(config){
     var r = configRanges[config];
     var items = config.split("_");
     if(r === undefined){
-        return {"min":MIN_INT_32, "max":MAX_INT_32, "decimal":parseInt(items[4])};
+        return {"min":0, "max":MAX_INT_32, "decimal":parseInt(items[4])};
     }
     return {"min":r[0], "max":r[1], "decimal":parseInt(items[4])};
 };

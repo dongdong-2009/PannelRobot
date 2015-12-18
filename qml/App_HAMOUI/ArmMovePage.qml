@@ -428,6 +428,7 @@ Rectangle {
                     spacing: 12
                     Column{
                         Row{
+                            spacing: 10
                             ICButton{
                                 id:lineRun1
                                 text: qsTr("Run to This")
@@ -437,6 +438,7 @@ Rectangle {
                             ICButton{
                                 id:lineSave1
                                 text:qsTr("Set to Point-1");
+                                width: 180
                                 onButtonClicked: functionSection.savePointHelper(1, linePoint1);
                             }
                         }
@@ -447,6 +449,7 @@ Rectangle {
                     }
                     Column{
                         Row{
+                            spacing: 10
                             ICButton{
                                 id:lineRun2
                                 text: qsTr("Run to This")
@@ -456,6 +459,7 @@ Rectangle {
                             }
                             ICButton{
                                 id:lineSave2
+                                width: 180
                                 text:qsTr("Set to Point-2");
                                 onButtonClicked: functionSection.savePointHelper(0, linePoint2);
 

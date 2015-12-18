@@ -21,7 +21,7 @@ Rectangle {
     }
     TopHeader{
         id:mainHeader
-        z:2
+        z:4
         width: mainWindow.width
         height: mainWindow.height * Theme.defaultTheme.MainWindow.topHeaderHeightProportion
         onRecordItemStatusChanged: {

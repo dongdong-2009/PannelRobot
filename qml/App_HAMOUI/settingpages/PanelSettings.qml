@@ -74,6 +74,7 @@ Item {
                     width: parent.width
                     height: parent.height
                     model: updaterModel
+                    clip: true
                     delegate: Rectangle{
                         width: parent.width
                         height: 32

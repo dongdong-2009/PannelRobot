@@ -406,7 +406,9 @@ Rectangle {
 
     function onKnobChanged(knobStatus){
         var isAuto = (knobStatus === Keymap.KNOB_AUTO)
+        if(armKeyboard.visible) armKeyboardBtn.clicked();
         armKeyboardContainer.visible = !isAuto;
+//        mainWindow.focus = true;
         menuSettings.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
     }

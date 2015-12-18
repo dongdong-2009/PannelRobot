@@ -514,6 +514,7 @@ void PanelRobotController::startUpdate(const QString &updater)
     system("mkdir updatehost/");
     hostUpdateFinishedWatcher_.addPath("updatehost");
     connect(&hostUpdateFinishedWatcher_, SIGNAL(directoryChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
+    mainView_->hide();
     us.StartUpdate(updater);
 
 }
@@ -871,6 +872,8 @@ void PanelRobotController::OnHostUpdateFinished(QString)
     qDebug("finised");
     disconnect(&hostUpdateFinishedWatcher_, SIGNAL(directoryChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
     mainView_->repaint();
+    mainView_->show();
+    qApp->processEvents();
     host_->StartCommunicate();
     hostUpdateFinishedWatcher_.removePath("updatehost");
     system("rm -r updatehost");

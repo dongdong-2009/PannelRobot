@@ -19,7 +19,7 @@ Rectangle {
         ICButton{
             id:prev
             text: qsTr("Prev")
-            width: 40
+            width: 60
             onButtonClicked: {
                 var currentTypeInfo = PData.ioViewsInfo[ioType.currentIndex];
                 var cur = ioContaner.currentIndex;
@@ -45,7 +45,7 @@ Rectangle {
         ICButton{
             id:next
             text: qsTr("Next")
-            width: 40
+            width: 60
             onButtonClicked: {
                 var currentTypeInfo = PData.ioViewsInfo[ioType.currentIndex];
                 var cur = ioContaner.currentIndex;

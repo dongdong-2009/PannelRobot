@@ -700,13 +700,11 @@
     <message>
         <source>Alarm
  Num</source>
-        <translation>报警
-号</translation>
+        <translation>报警号</translation>
     </message>
     <message>
         <source>L</source>
-        <translation>级
-别</translation>
+        <translation>级别</translation>
     </message>
     <message>
         <source>Descr</source>

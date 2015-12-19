@@ -28,14 +28,14 @@ Item {
         CatalogButton{
             id:runningConfigsBtn
             text: qsTr("Running Configs")
-            icon: "../images/product.png"
+            icon: "../images/settings_running_config.png"
 //            y:10
 //            x:10
         }
         CatalogButton{
             id:axisConfigBtn
             text: qsTr("Axis Configs")
-            icon: "../images/product.png"
+            icon: "../images/settings_struct_config.png"
 
         }
         CatalogButton{

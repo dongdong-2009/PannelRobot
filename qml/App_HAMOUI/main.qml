@@ -188,7 +188,7 @@ Rectangle {
         id:pageOutAnimation
         target: ioPage
         property: "y"
-        to:80
+        to:48
         duration: 100
     }
     SequentialAnimation{
@@ -411,6 +411,7 @@ Rectangle {
 //        mainWindow.focus = true;
         menuSettings.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
+        if(isAuto) menuProgram.setChecked(true);
     }
 
     Component.onCompleted: {

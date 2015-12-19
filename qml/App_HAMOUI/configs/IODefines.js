@@ -14,6 +14,7 @@ var M_BOARD_2 = 6;
 
 var EUIO_BOARD = 7;
 var VALVE_BOARD = 8;
+var TIMEY_BOARD_START = 100;
 
 var IO_TYPE_NORMAL_Y = 0;
 var IO_TYPE_SINGLE_Y = 1;

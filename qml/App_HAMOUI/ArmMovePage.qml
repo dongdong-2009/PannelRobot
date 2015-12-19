@@ -569,19 +569,12 @@ Rectangle {
             pd = parseInt(0x01000039);
         }
 
-        if(key === pu){
+        if(key === pu || key === pd){
             spd = parseFloat(speed.text);
-            spd += 0.1
-            if(spd >= 100)
-                spd = 100.0;
-            speed.text = spd.toFixed(1);
-            event.accepted = true;
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);
-
-
-        }else if(key === pd){
-            spd = parseFloat(speed.text);
-            spd -= 0.1
+            var dir = key === pu ? 1 : -1;
+            spd += Keymap.endSpeed(dir)
+            if(spd >= 200)
+                spd = 200.0;
             if(spd <= 0.1)
                 spd = 0.1;
             speed.text = spd.toFixed(1);

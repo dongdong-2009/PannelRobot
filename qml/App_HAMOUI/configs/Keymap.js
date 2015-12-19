@@ -211,3 +211,16 @@ function pressedKeys(){
     }
     return ret;
 }
+
+var speedInfo = {"vStart":0.1, "a":0, "sampleTime":1, "vEnd":0.1, "lastTime": new Date(), "changeCount":0};
+function endSpeed(dir){
+    var now = new Date();
+    var delta = (now.getTime() - speedInfo.lastTime.getTime()) * 0.001;
+    speedInfo.lastTime = now;
+    if(delta > speedInfo.sampleTime){
+        speedInfo.a = speedInfo.changeCount * 2;
+        speedInfo.changeCount = 0;
+    }
+    speedInfo.changeCount += 1;
+    return speedInfo.vEnd = speedInfo.vStart + (speedInfo.a * delta);
+}

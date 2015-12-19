@@ -17,10 +17,12 @@ Item {
         x:6
         columns: 4
         spacing: 20
+        anchors.centerIn: parent
+
         CatalogButton{
             id:panelMenuBtn
             text: qsTr("Panel Settings")
-            icon: "../images/product.png"
+            icon: "../images/settings_panel_config.png"
             y:10
             x:10
             onButtonClicked: {
@@ -31,7 +33,7 @@ Item {
         CatalogButton{
             id:maintainMenuBtn
             text: qsTr("Maintain")
-            icon: "../images/product.png"
+            icon: "../images/settings_maintain.png"
             y:10
             x:10
             onButtonClicked: {

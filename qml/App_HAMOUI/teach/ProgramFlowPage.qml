@@ -185,7 +185,7 @@ Rectangle {
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         isFollow.visible = isAuto;
         modifyEditor.isAutoMode = isAuto;
-        actionEditorFrame.visible = !isAuto;
+        actionEditorFrame.visible = false;
         speedDispalyContainer.visible = isAuto;
     }
 

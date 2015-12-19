@@ -22,6 +22,17 @@ Item {
     property variant mYs: ["INY010"]
     property variant singleYs: ["valve1"]
     property variant holdDoubleYs: ["valve2"]
+    property variant timeYs: [
+        "Y020",
+        "Y021",
+        "Y022",
+        "Y023",
+        "Y024",
+        "Y025",
+        "Y026",
+        "Y027",
+        "Y030",
+    ]
     //    QtObject{
     //        id:pData
 
@@ -44,8 +55,10 @@ Item {
             mD = mYModel;
         else if(singleY.isChecked)
             mD = singleYModel;
-        else
+        else if(holdDoubleY.isChecked)
             mD = holdDoubleYModel;
+        else
+            mD = timeYModel;
         for(var i = 0; i < mD.count; ++i)
         {
             data = mD.get(i);
@@ -91,6 +104,11 @@ Item {
                 text: qsTr("Hold Double Y")
                 visible: holdDoubleYs.length > 0
             }
+            ICCheckBox{
+                id:timeY
+                text: qsTr("Time Y")
+                visible: timeYs.length > 0
+            }
         }
         Rectangle{
             id:yContainer
@@ -114,6 +132,9 @@ Item {
             }
             ListModel{
                 id:holdDoubleYModel
+            }
+            ListModel{
+                id:timeYModel
             }
 
             GridView{
@@ -150,6 +171,7 @@ Item {
                     if(mY.isChecked) return mYModel;
                     if(singleY.isChecked) return singleYModel;
                     if(holdDoubleY.isChecked) return holdDoubleYModel;
+                    if(timeY.isChecked) return timeYModel;
                     return null;
                 }
 
@@ -209,7 +231,7 @@ Item {
 
             ICConfigEdit{
                 id:delay
-                configName: qsTr("Delay:")
+                configName: timeY.isChecked ? qsTr("Act Time:"): qsTr("Delay:")
                 unit: qsTr("s")
                 width: 100
                 height: 24
@@ -254,6 +276,12 @@ Item {
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
             holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+        }
+
+        yDefines = timeYs;
+        for(i = 0; i < yDefines.length; ++i){
+            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+            timeYModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type + IODefines.TIMEY_BOARD_START));
         }
 
     }

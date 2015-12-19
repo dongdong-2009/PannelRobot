@@ -119,7 +119,10 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(v->value("type", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
-    item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
+    if(item.at(1) >= 100 )
+        item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
+    else
+        item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 

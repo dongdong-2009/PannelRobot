@@ -21,6 +21,8 @@ Item {
         x:6
         columns: 4
         spacing: 20
+        anchors.centerIn: parent
+
         CatalogButton{
             id:productMenuBtn
             text: qsTr("Product")

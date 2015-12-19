@@ -218,14 +218,20 @@ var generteEndAction = function(){
     };
 }
 
-var generateOutputAction = function(point, type, status, delay){
-    return {
+var generateOutputAction = function(point, type, status, time){
+    var ret =
+            {
         "action":actions.F_CMD_IO_OUTPUT,
         "type":type,
         "point":point,
         "pointStatus": status,
-        "delay":delay
     };
+    if(type >= TIMEY_BOARD_START){
+        ret.acTime = time || 0;
+    }else{
+        ret.delay = time || 0;
+    }
+    return ret;
 }
 
 
@@ -307,21 +313,21 @@ var generateStackAction = function(stackID, speed){
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
-//    initStep.push(generateSyncBeginAction());
-//    //    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-//    //                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
-//    var aT;
-//    for(var i = 1; i < 8; ++i){
-//        aT = axisDefine["s"+ i + "Axis"];
-//        if(aT == kAxisType_Servo){
-//            initStep.push(generateAxisServoAction(actions.F_CMD_SINGLE, i - 1));
-//        }else if(aT == kAxisType_Pneumatic){
-//            initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
-//        }
-//    }
+    //    initStep.push(generateSyncBeginAction());
+    //    //    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
+    //    //                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
+    //    var aT;
+    //    for(var i = 1; i < 8; ++i){
+    //        aT = axisDefine["s"+ i + "Axis"];
+    //        if(aT == kAxisType_Servo){
+    //            initStep.push(generateAxisServoAction(actions.F_CMD_SINGLE, i - 1));
+    //        }else if(aT == kAxisType_Pneumatic){
+    //            initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
+    //        }
+    //    }
 
-//    initStep.push(generateSyncEndAction());
-//    initStep.push(generateWaitAction(1));
+    //    initStep.push(generateSyncEndAction());
+    //    initStep.push(generateWaitAction(1));
     initStep.push(generteEndAction());
 
     return JSON.stringify(initStep);
@@ -484,8 +490,14 @@ var outputActionToStringHandler = function(actionObject){
         return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("End") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{
-        return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                + qsTr("Delay:") + actionObject.delay;
+        if(actionObject.type >= TIMEY_BOARD_START){
+            return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                    + qsTr("Action Time:") + actionObject.acTime;
+        }else{
+
+            return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                    + qsTr("Delay:") + actionObject.delay;
+        }
     }
 }
 
@@ -694,8 +706,8 @@ var delFlag = function(flag){
 
 var useableFlag = function(){
     if(flags.length === 0) return 0;
-//    if(flags.length < 3)
-//        return flags[flags.length - 1] + 1;
+    //    if(flags.length < 3)
+    //        return flags[flags.length - 1] + 1;
     if(flags[0] !== 0) return 0;
     for(var i = 1; i < flags.length; ++i){
         if(flags[i] - flags[i - 1] > 1){
@@ -780,8 +792,8 @@ var delStack = function(stack){
 
 var useableStack = function(){
     if(stackIDs.length === 0) return 0;
-//    if(stackIDs.length < 3)
-//        return stackIDs[stackIDs.length - 1] + 1;
+    //    if(stackIDs.length < 3)
+    //        return stackIDs[stackIDs.length - 1] + 1;
     if(stackIDs[0] !== 0) return 0;
     for(var i = 1; i < stackIDs.length; ++i){
         if(stackIDs[i] - stackIDs[i - 1] > 1){

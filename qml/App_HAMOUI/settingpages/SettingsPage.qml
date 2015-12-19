@@ -85,6 +85,11 @@ ContentPageBase{
     onMenuItem7Triggered: {
         pageContainer.currentPage().showMenu();
     }
+    onVisibleChanged: {
+        if(visible){
+            pageContainer.currentPage().showMenu();
+        }
+    }
 
 //    Flow{
 //        id:versionContainer

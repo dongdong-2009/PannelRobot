@@ -26,6 +26,7 @@ Item {
         delay.visible = false;
         limit.visible = false;
         points.visible = false;
+        acTime.visible = false;
         var item;
         var editor;
         var maxWidth = 0;
@@ -96,6 +97,13 @@ Item {
             configName: qsTr("Limit:")
             unit: qsTr("s")
         }
+        ICConfigEdit{
+            id:acTime
+            configNameWidth: PData.configNameWidth
+            inputWidth: PData.inputWidth
+            configName: qsTr("Action Time:")
+            unit: qsTr("s")
+        }
         Row{
             id:buttons
             spacing: 20
@@ -133,11 +141,13 @@ Item {
             PData.itemToEditorMap.put("delay", delay);
             PData.itemToEditorMap.put("points", points);
             PData.itemToEditorMap.put("limit", limit);
+            PData.itemToEditorMap.put("acTime", acTime);
             PData.editorToItemMap.put(pos, "pos");
             PData.editorToItemMap.put(speed, "speed");
             PData.editorToItemMap.put(delay, "delay");
             PData.editorToItemMap.put(points, "points")
             PData.editorToItemMap.put(limit, "limit");
+            PData.editorToItemMap.put(acTime, "acTime");
         }
     }
 }

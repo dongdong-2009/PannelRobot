@@ -627,7 +627,10 @@ var actionObjectToEditableITems = function(actionObject){
                     {"item":"delay", "range":"s_rw_0_32_2_1100"}
                 ];
     }else if(actionObject.action === actions.F_CMD_IO_OUTPUT){
-        return [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
+        if(actionObject.type >= TIMEY_BOARD_START)
+            return [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
+        else
+            return [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT){
         return [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }

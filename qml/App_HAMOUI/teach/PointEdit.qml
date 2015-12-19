@@ -307,7 +307,7 @@ Item {
                     motor1.setChecked(true);
                     motor2.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
-                    if(curve3DType.isChecked)
+                    if(checkedItem != line3DType)
                         pointViewModel.append(pointViewModel.createModelItem());
                 }else if(checkedItem == singlePoseType){
                     motor3.setChecked(true);
@@ -322,7 +322,7 @@ Item {
                     motor4.setChecked(true);
                     motor5.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
-                    pointViewModel.append(pointViewModel.createModelItem());
+//                    pointViewModel.append(pointViewModel.createModelItem());
 
                 }
             }

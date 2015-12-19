@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -84,27 +84,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation>电机1报警</translation>
+        <translation type="vanished">电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation>电机2报警</translation>
+        <translation type="vanished">电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation>电机3报警</translation>
+        <translation type="vanished">电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation>电机4报警</translation>
+        <translation type="vanished">电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation>电机5报警</translation>
+        <translation type="vanished">电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation>电机6报警</translation>
+        <translation type="vanished">电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -342,7 +342,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回</translation>
+        <translation type="vanished">返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -1570,6 +1570,14 @@
         <source>Hold Double Y</source>
         <translation>保持型双头阀Y</translation>
     </message>
+    <message>
+        <source>Time Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Act Time:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PanelSettings</name>
@@ -1706,7 +1714,7 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation>添加点</translation>
+        <translation type="vanished">添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
@@ -1734,11 +1742,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
@@ -1758,7 +1766,7 @@ please chose!</source>
     </message>
     <message>
         <source>Pose 3D</source>
-        <translation>姿势曲线</translation>
+        <translation>姿势直线</translation>
     </message>
     <message>
         <source>Set to Middle Point</source>
@@ -2395,7 +2403,7 @@ please chose!</source>
     </message>
     <message>
         <source>Line3D-Pose:</source>
-        <translation>姿势曲线:</translation>
+        <translation>姿势直线:</translation>
     </message>
     <message>
         <source>Invalid program index</source>
@@ -2408,6 +2416,14 @@ please chose!</source>
     <message>
         <source>Invalid jump flag</source>
         <translation>无效跳转标签</translation>
+    </message>
+    <message>
+        <source>Time Output:</source>
+        <translation>时间输出:</translation>
+    </message>
+    <message>
+        <source>Action Time:</source>
+        <translation>动作时间:</translation>
     </message>
 </context>
 <context>

@@ -212,15 +212,20 @@ function pressedKeys(){
     return ret;
 }
 
-var speedInfo = {"vStart":0.1, "a":0, "sampleTime":1, "vEnd":0.1, "lastTime": new Date(), "changeCount":0};
-function endSpeed(dir){
+
+var speedInfo = {"lastTime": new Date(), "changeCount":0};
+function endSpeed(current, dir){
     var now = new Date();
-    var delta = (now.getTime() - speedInfo.lastTime.getTime()) * 0.001;
+    var delta = (now.getTime() - speedInfo.lastTime.getTime());
     speedInfo.lastTime = now;
-    if(delta > speedInfo.sampleTime){
-        speedInfo.a = speedInfo.changeCount * 2;
+    if(delta >= 100){
         speedInfo.changeCount = 0;
     }
     speedInfo.changeCount += 1;
-    return speedInfo.vEnd = speedInfo.vStart + (speedInfo.a * delta);
+    var ret = current + speedInfo.changeCount * 0.1 * dir;
+    if(ret >= 200)
+        ret = 200.0;
+    if(ret <= 0.1)
+        ret = 0.1;
+    return ret;
 }

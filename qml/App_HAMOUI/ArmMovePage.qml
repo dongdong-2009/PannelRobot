@@ -572,11 +572,7 @@ Rectangle {
         if(key === pu || key === pd){
             spd = parseFloat(speed.text);
             var dir = key === pu ? 1 : -1;
-            spd += Keymap.endSpeed(dir)
-            if(spd >= 200)
-                spd = 200.0;
-            if(spd <= 0.1)
-                spd = 0.1;
+            spd = Keymap.endSpeed(spd, dir)
             speed.text = spd.toFixed(1);
             event.accepted = true;
             panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);

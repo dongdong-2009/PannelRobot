@@ -298,21 +298,10 @@ Rectangle {
                         pd = parseInt(0x01000039);
                     }
 
-                    if(key === pu){
+                    if(key === pu || key === pd){
                         spd = parseFloat(speedDisplay.text);
-                        spd += 0.1
-                        if(spd >= 100)
-                            spd = 100.0;
-                        speedDisplay.text = spd.toFixed(1);
-                        event.accepted = true;
-                        panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speedDisplay.text);
-
-
-                    }else if(key === pd){
-                        spd = parseFloat(speedDisplay.text);
-                        spd -= 0.1
-                        if(spd <= 0.1)
-                            spd = 0.1;
+                        var dir = key === pu ? 1 : -1;
+                        spd = Keymap.endSpeed(spd, dir)
                         speedDisplay.text = spd.toFixed(1);
                         event.accepted = true;
                         panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speedDisplay.text);

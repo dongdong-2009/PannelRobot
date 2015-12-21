@@ -378,6 +378,7 @@ extern  const ICAddrWrapper  c_ro_16_16_0_937(1,1,16,16,937,0,"");   //<步号�
 extern  const ICAddrWrapper  c_ro_0_1_0_938(1,1,0,1,938,0,"");   //<步号原点信号
 extern  const ICAddrWrapper  c_ro_1_4_0_938(1,1,1,4,938,0,"");   //<步号当前模式
 extern  const ICAddrWrapper  c_ro_5_3_0_938(1,1,5,3,938,0,"");   //<步号IO板ID
-extern  const ICAddrWrapper  c_ro_8_24_0_938(1,1,8,24,938,0,"");   //<步号预留
+extern  const ICAddrWrapper  c_ro_8_5_0_938(1,1,8,5,938,0,"");   //<步号计数器ID
+extern  const ICAddrWrapper  c_ro_13_19_0_938(1,1,13,19,938,0,"");   //<步号计数器当前计数
 extern  const ICAddrWrapper  c_ro_0_32_0_939(1,1,0,32,939,0,"");    //<步号IO板输入状态
 extern  const ICAddrWrapper  c_ro_0_32_0_940(1,1,0,32,940,0,"");    //<步号IO板输出状态

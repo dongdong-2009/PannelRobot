@@ -56,9 +56,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_4,//< 手动IO操作
     ICAddr_System_Retain_5,//< 手动IO操作
     ICAddr_System_Retain_6,//< 定义IO操作
-    ICAddr_System_Retain_7,//< 定义IO操作
-    ICAddr_System_Retain_8,//< 定义IO操作
-    ICAddr_System_Retain_9,//< 定义IO操作
+    ICAddr_System_Retain_7,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_26 = 26,//< 0:显示关节坐标；1：显示脉冲；2：反馈脉冲显示
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
@@ -487,7 +485,8 @@ typedef enum
      *y_dir:1; y轴方向 0：反方向；1正方向；
      *z_dir:1; z轴方向 0：反方向；1正方向；
      *type:8;  堆叠类型
-     *res:16;  预留
+     *binding_counter:1;  是否绑定计数器ID，0未绑定；1绑定
+     *counter_id:15;  绑定计数器ID
      *
      *
      *
@@ -523,7 +522,7 @@ typedef enum
 
     F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
     F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转类型（IO板类型） 延迟时间（0.1S） 检测对象（0输入；1输出） 检测ID 检测状态（0：OFF；1：ON）
-    F_CMD_PROGRAM_JUMP2,   //< 程序跳转 跳转步号 跳转命令（>/</==）跳转位置
+    F_CMD_PROGRAM_JUMP2,   //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
 //    F_CMD_PROGRAM_JUMP3,   //< 程序跳转 跳转步号
 //    F_CMD_PROGRAM_JUMP4,   //< 程序跳转 跳转步号
 
@@ -545,6 +544,7 @@ typedef enum
     ALARM_EMERGENCY_STOP,//<名字：紧急停止
     ALARM_AUTO_JUMP_ERR, //<名字：自动运行跳转错误
     ALARM_LINK_HOST_FAIL, //<名字：连接主机失败
+    ALARM_PROGRAM_ERR, //<名字：教导程序错误
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -589,6 +589,12 @@ typedef enum
     ALARM_ERROR_SERVO4_WARP,//<名字：轴4偏差过大
     ALARM_ERROR_SERVO5_WARP,//<名字：轴5偏差过大
     ALARM_ERROR_SERVO6_WARP,//<名字：轴6偏差过大
+    ALARM_AXIS1_ACC_LIMIT = 160,//<名字：轴1加速度报警
+    ALARM_AXIS2_ACC_LIMIT,//<名字：轴2加速度报警
+    ALARM_AXIS3_ACC_LIMIT,//<名字：轴3加速度报警
+    ALARM_AXIS4_ACC_LIMIT,//<名字：轴4加速度报警
+    ALARM_AXIS5_ACC_LIMIT,//<名字：轴5加速度报警
+    ALARM_AXIS6_ACC_LIMIT,//<名字：轴6加速度报警
 
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
     ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动坐标1未设定
@@ -597,6 +603,8 @@ typedef enum
     ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动坐标2未设定
     ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动坐标3未设定
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
+
+    ALARM_COUNTER_NOT_DEFINE = 300,//<名字：计数器未定义
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
 }ALARM_ADDR;

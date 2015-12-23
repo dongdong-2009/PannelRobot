@@ -80,6 +80,7 @@ public:
     static bool UpdateMoldFncValues(const QList<QPair<int, quint32> > &addrValuePairs, const QString& moldName );
     static bool UpdateMachineConfigValues(const QList<QPair<int, quint32> > &addrValuePairs, const QString& machineName );
     static QVector<QPair<quint32, quint32> > GetAllMoldConfig(const QString& name) { return GetAllConfigValues_(MoldConfigNameWrapper(name));}
+    static QVector<QVariantList> GetMoldCounterDef(const QString& name);
     static QVector<QPair<quint32, quint32> > GetAllSystemConfig(const QString& name) { return GetAllConfigValues_(SystemConfigNameWrapper(name));}
     static bool GetMoldConfigs(const QString& name, QList<uint>& addrs) { return GetConfigValues_(MoldConfigNameWrapper(name), addrs);}
     static bool GetSystemConfigs(const QString& name, QList<uint>& addrs) { return GetConfigValues_(SystemConfigNameWrapper(name), addrs);}
@@ -89,7 +90,7 @@ public:
                                 const QString& oldValue,
                                 const int moldCount);
 
-    static QString NewMoldConfig(const QString& name, const QList<QPair<int, quint32> > & values);
+    static QString NewMoldConfig(const QString& name, const QList<QPair<int, quint32> > & values, const QVector<QVariantList>& counters);
     static bool NewSystemConfig(const QString& name, QString& err);
     static bool CopyMoldConfig(const QString& newName, QString& err, const QString& oldName = DefaultMoldConfigTableName);
     static bool CopySystemConfig(const QString& newName, QString& err, const QString& oldName = DefaultSystemConfigTableName);
@@ -101,7 +102,7 @@ public:
     static QStringList AlarmTableContent(const QString& tableName) { return AlarmTableContent_(tableName, SystemConfigNameWrapper);}
     static QStringList MoldProgramContent(const QString& moldName);
 
-    static QString NewMold(const QString& moldName, const QStringList& programs, const QList<QPair<int, quint32> > & values);
+    static QString NewMold(const QString& moldName, const QStringList& programs, const QList<QPair<int, quint32> > & values, const QVector<QVariantList>& counters);
     static QString CopyMold(const QString& moldName, const QString& source);
     static bool DeleteMold(const QString& moldName);
     static bool SaveMold(const QString& moldName, int which, const QString& program);
@@ -133,10 +134,16 @@ public:
                                      bool &hasSystem);
 
     static QString MoldFncTableName(const QString& moldName);
+    static QString MoldCounterTableName(const QString& moldName);
 
     static QString MoldStacksContent(const QString& moldName);
 
     static bool SaveStacks(const QString& moldName, const QString& stacks);
+
+
+    static bool UpdateCounter(const QString& moldname, const QVariantList &counter);
+    static bool AddCounter(const QString& moldname, const QVariantList &counter);
+    static bool DelCounter(const QString& moldname, quint32 id);
 
 
 //    static bool UpdateConfigsValues(const QList<QPair<const ICAddrWrapper *, quint32> > &addrValuePairs, const QString& tableName);
@@ -391,7 +398,7 @@ inline QStringList ICDALHelper::MoldProgramContent(const QString &moldName)
 {
     QStringList ret;
     QSqlQuery query;
-    query.exec(QString("SELECT content, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8 FROM %1 WHERE mold_name = '%2'").arg("tb_mold_act").arg(moldName));
+    query.exec(QString("SELECT content, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8 stacks FROM %1 WHERE mold_name = '%2'").arg("tb_mold_act").arg(moldName));
     if(query.next())
     {
         ret.append(query.value(0).toString());
@@ -403,6 +410,7 @@ inline QStringList ICDALHelper::MoldProgramContent(const QString &moldName)
         ret.append(query.value(6).toString());
         ret.append(query.value(7).toString());
         ret.append(query.value(8).toString());
+//        ret.append(query.value(9).toString());
     }
     return ret;
 }
@@ -426,6 +434,15 @@ inline QString ICDALHelper::MoldFncTableName(const QString &moldName)
     query.exec(QString("SELECT fnc_table_name FROM %1 WHERE name = '%2'").arg("tb_moldconfig_record").arg(moldName));
     if(query.next())
         return QString("mold_%1").arg(query.value(0).toString());
+    return "";
+}
+
+inline QString ICDALHelper::MoldCounterTableName(const QString &moldName)
+{
+    QSqlQuery query;
+    query.exec(QString("SELECT fnc_table_name FROM %1 WHERE name = '%2'").arg("tb_moldconfig_record").arg(moldName));
+    if(query.next())
+        return QString("counter_%1").arg(query.value(0).toString());
     return "";
 }
 

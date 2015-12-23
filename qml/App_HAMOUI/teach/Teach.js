@@ -115,10 +115,12 @@ actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
 actions.F_CMD_STACK0 = 300;
+actions.F_CMD_COUNTER = 400; //< 计数器
+actions.F_CMD_COUNTER_CLEAR = 401;
 
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
-actions.F_CMD_PROGRAM_JUMP2 = 10002;
+actions.F_CMD_PROGRAM_JUMP2 = 10002;  //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
 actions.ACT_GS6 = actHelper++;
 actions.ACT_GS7 = actHelper++;
 
@@ -307,6 +309,20 @@ var generateStackAction = function(stackID, speed){
         "action":actions.F_CMD_STACK0,
         "stackID":stackID,
         "speed":speed || 80,
+    };
+}
+
+var generateCounterAction = function(counterID){
+    return {
+        "action":actions.F_CMD_COUNTER,
+        "counterID":counterID,
+    };
+}
+
+var generateClearCounterAction = function(counterID){
+    return {
+        "action":actions.F_CMD_COUNTER_CLEAR,
+        "counterID":counterID,
     };
 }
 
@@ -517,6 +533,14 @@ var stackActionToStringHandler = function(actionObject){
             qsTr("Speed:") + actionObject.speed;
 }
 
+var counterActionToStringHandler = function(actionObject){
+    var c = counterManager.getCounter(actionObject.counterID);
+    var clearStr = actionObject.action == actions.F_CMD_COUNTER_CLEAR ? qsTr("Clear ") : ""
+    return clearStr + qsTr("Counter") + "[" + c.id + "]:" + c.name + " " + qsTr("target:") +
+            c.target;
+}
+
+
 var pointToString = function(point){
     var ret = "";
     if(point.pointName !== ""){
@@ -610,6 +634,8 @@ actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHa
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_STACK0, stackActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
     if(actionObject.action === actions.F_CMD_SINGLE){
@@ -833,6 +859,66 @@ function stackInfosDescr(){
     }
     return ret;
 }
+
+function CounterInfo(id, name, current, target){
+    this.id = id || 0;
+    this.name = name || "Counter-" + this.id;
+    this.current = current || 0;
+    this.target = target || 0;
+}
+
+function CounterManager(){
+    this.counters = [];
+    this.init = function(bareCounters){
+        for(var c in bareCounters){
+            var counter = bareCounters[c];
+            this.counters.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));
+        }
+    }
+
+    this.usableID = function(){
+        var cs = this.counters;
+        if(cs.length === 0) return 0;
+        if(cs[0].id != 0) return 0;
+        for(var i = 1; i < cs.length; ++i){
+            if(cs[i].id - cs[i - 1].id > 1){
+                return cs[i - 1].id + 1;
+            }
+        }
+        return cs[i - 1].id + 1;
+    }
+
+    this.getCounter = function(id){
+        for(var c in this.counters){
+            if(this.counters[c].id == id)
+                return this.counters[c];
+        }
+        return null;
+    }
+
+    this.newCounter = function(name, current, target){
+        var newID = this.usableID();
+        var toAdd = new CounterInfo(newID, name, current, target);
+        this.counters.push(toAdd);
+        return toAdd;
+    }
+    this.updateCounter = function(id, name, current, target){
+        var c = this.getCounter(id);
+        c.name = name;
+        c.current = current;
+        c.target = target;
+    }
+    this.delCounter = function(id){
+        for(var c in this.counters){
+            if(this.counters[c].id == id){
+                this.counters.splice(c, 1);
+                break;
+            }
+        }
+    }
+}
+
+var counterManager = new CounterManager();
 
 var canActionUsePoint = function(actionObject){
     return actionObject.action === actions.F_CMD_SINGLE ||

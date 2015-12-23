@@ -186,6 +186,28 @@ bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const 
 #endif
 }
 
+bool ICRobotVirtualhost::SendMoldCounterDef(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
+{
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetAddr(ICAddr_System_Retain_7);
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetData(data);
+    toSentFrame->SetLength(data.size());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+    return true;
+}
+
+bool ICRobotVirtualhost::SendMoldCountersDef(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> > &data)
+{
+    for(int i = 0; i < data.size(); ++i)
+    {
+        SendMoldCounterDef(hostPtr, data.at(i));
+    }
+    return true;
+
+}
+
 bool ICRobotVirtualhost::FixProgram(ICVirtualHostPtr hostPtr, int which, int row, int step, const QVector<quint32> &data)
 {
     QVector<quint32> toSent;

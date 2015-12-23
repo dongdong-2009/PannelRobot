@@ -15,7 +15,7 @@ Rectangle {
     signal waitMenuTriggered()
     signal stackMenuTriggered()
     signal syncMenuTriggered()
-    signal otherMenuTriggered()
+    signal counterMenuTriggered()
     signal commentMenuTriggered()
     signal searchMenuTriggered()
 
@@ -77,11 +77,11 @@ Rectangle {
         }
         ICButton{
             id:other
-            text:qsTr("Other/Flag")
-            icon: "../images/action_item_other.png"
+            text:qsTr("Counter")
+            icon: "../images/action_item_counter.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
-            onButtonClicked: otherMenuTriggered()
+            onButtonClicked: counterMenuTriggered()
         }
 
         ICButton{

@@ -682,7 +682,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     dir.mkdir(name);
     dir.cd(name);
     QFile file;
-    QPair<QStringList, QString> toWrite;
+    QStringList toWrite;
     QString moldName;
     for(int i = 0; i < result.size(); ++i)
     {
@@ -691,13 +691,22 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::WriteOnly))
         {
-            file.write(toWrite.first.join("\n").toUtf8());
+            QStringList acts = toWrite.mid(0, 10);
+            file.write(acts.join("\n").toUtf8());
             file.close();
         }
         file.setFileName(dir.absoluteFilePath(moldName + ".fnc"));
         if(file.open(QFile::WriteOnly))
         {
-            file.write(toWrite.second.toLatin1());
+            QString fnc = toWrite.at(10);
+            file.write(fnc.toLatin1());
+            file.close();
+        }
+        file.setFileName(dir.absoluteFilePath(moldName + ".counters"));
+        if(file.open(QFile::WriteOnly))
+        {
+            QString counters = toWrite.at(11);
+            file.write(counters.toUtf8());
             file.close();
         }
     }
@@ -753,7 +762,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
     temp.cd(backupDirName);
     QFile file;
     QString moldName;
-    QPair<QStringList, QString> moldInfo;
+    QStringList moldInfo;
     QString actContent;
     RecordDataObject imported;
     for(int i = 0; i < result.size(); ++i)
@@ -764,12 +773,18 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         {
             actContent = file.readAll();
             file.close();
-            moldInfo.first = actContent.split("\n", QString::SkipEmptyParts);
+            moldInfo.append(actContent.split("\n", QString::SkipEmptyParts));
         }
         file.setFileName(temp.absoluteFilePath(moldName + ".fnc"));
         if(file.open(QFile::ReadOnly))
         {
-            moldInfo.second = file.readAll();
+            moldInfo.append(file.readAll());
+            file.close();
+        }
+        file.setFileName(temp.absoluteFilePath(moldName + ".counters"));
+        if(file.open(QFile::ReadOnly))
+        {
+            moldInfo.append(file.readAll());
             file.close();
         }
         imported = ICRobotMold::ImportMold(moldName, moldInfo);
@@ -877,4 +892,34 @@ void PanelRobotController::OnHostUpdateFinished(QString)
     host_->StartCommunicate();
     hostUpdateFinishedWatcher_.removePath("updatehost");
     system("rm -r updatehost");
+}
+
+bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint32 current, quint32 target)
+{
+    ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<current<<target);
+    return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
+}
+
+bool PanelRobotController::delCounterDef(quint32 id)
+{
+    return ICRobotMold::CurrentMold()->DeleteCounter(id);
+}
+
+QString PanelRobotController::counterDefs() const
+{
+    QVector<QVariantList> counters = ICRobotMold::CurrentMold()->Counters();
+    QString ret = "[";
+    for(int i = 0; i < counters.size(); ++i)
+    {
+        ret += (QString("[%1, \"%2\", %3, %4]").arg(counters.at(i).at(0).toUInt())
+                   .arg(counters.at(i).at(1).toString()).arg(counters.at(i).at(2).toUInt())
+                   .arg(counters.at(i).at(3).toUInt()));
+        ret += ",";
+    }
+    if(!counters.isEmpty())
+    {
+        ret.chop(1);
+    }
+    ret += "]";
+    return ret;
 }

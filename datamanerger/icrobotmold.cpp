@@ -197,6 +197,17 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     return ICRobotMold::kCCErr_None;
 }
 
+int CounterActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(v->value("action").toInt());
+    QVariantList ci = v->value("counterInfo").toList();
+    item.append(ci.at(0).toUInt());
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+
+
+    return ICRobotMold::kCCErr_None;
+}
+
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
 {
     QMap<int, ActionCompiler> ret;
@@ -214,6 +225,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
     ret.insert(F_CMD_STACK0, StackActionCompiler);
+    ret.insert(F_CMD_COUNTER, CounterActionCompiler);
+    ret.insert(F_CMD_COUNTER_CLEAR, CounterActionCompiler);
 
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
@@ -262,7 +275,7 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, i
 
 #ifdef NEW_PLAT
 
-RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values, const QStringList &subPrograms)
+RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &initProgram, const QList<QPair<int, quint32> > &values, const QStringList &subPrograms, const QVector<QVariantList>& counters)
 {
     if(name.isEmpty()) return RecordDataObject(kRecordErr_Name_Is_Empty);
     if(ICDALHelper::IsExistsRecordTable(name))
@@ -272,13 +285,20 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     QStringList programList;
     int err;
     QMap<int, StackInfo> sis;
-    CompileInfo compileInfo = Complie(initProgram, sis, err);
+    int subProgramSize = subPrograms.size();
+    if(subProgramSize == 9)
+    {
+        bool isOk;
+        sis = ParseStacks(subPrograms.at(8), isOk);
+        subProgramSize = 8;
+    }
+    CompileInfo compileInfo = Complie(initProgram, sis, counters, err);
     if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
 
     programList.append(initProgram);
-    for(int i = 0; i < subPrograms.size(); ++i)
+    for(int i = 0; i < subProgramSize; ++i)
     {
-        CompileInfo compileInfo = Complie(subPrograms.at(i), sis, err);
+        CompileInfo compileInfo = Complie(subPrograms.at(i), sis, counters, err);
         if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_SubProgram_Invalid);
         programList.append(subPrograms.at(i));
     }
@@ -286,9 +306,11 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     {
         programList.append(QString("[{\"action\":%1}]").arg(F_CMD_END));
     }
+    if(subProgramSize == 9)
+        programList.append(subPrograms.at(8));
     QList<QPair<int, quint32> > fncs = values;
     //    AddCheckSumToAddrValuePairList(fncs);
-    QString dt = ICDALHelper::NewMold(name, programList, fncs);
+    QString dt = ICDALHelper::NewMold(name, programList, fncs, counters);
     //    qDebug()<<name<<dt;
     return RecordDataObject(name, dt);
     //    return RecordDataObject();
@@ -307,7 +329,7 @@ RecordDataObject ICRobotMold::CopyRecord(const QString &name, const QString &sou
 
 
 
-CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, StackInfo>& stackInfos, int &err)
+CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, StackInfo>& stackInfos, const QVector<QVariantList>& counters, int &err)
 {
     QJson::Parser parser;
     bool ok;
@@ -358,6 +380,29 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
             StackInfo si = stackInfos.value(stackID);
 
             action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+        }
+        else if(act == F_CMD_COUNTER ||
+                 act == F_CMD_COUNTER_CLEAR)
+        {
+            int cID =  action.value("counterID", -1).toUInt();
+            int cIndex = -1;
+            for(int i = 0; i < counters.size(); ++i)
+            {
+                if(cID == counters.at(i).at(0).toUInt())
+                {
+                    cIndex = i;
+                    break;
+                }
+            }
+            if(cIndex < 0)
+            {
+                ret.Clear();
+                err = ICRobotMold::kCCErr_Invaild_CounterID;
+                ret.AddErr(i, err);
+                return ret;
+            }
+            action.insert("counterInfo", counters.at(cIndex));
+
         }
 
         ret.AddICMoldItem(VariantToMoldItem(step, action, err));
@@ -470,12 +515,13 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     programs_.clear();
     bool ok = false;
     stacks_ = ICDALHelper::MoldStacksContent(moldName);
-    stackInfos_ = ParseStacks_(stacks_, ok);
+    stackInfos_ = ParseStacks(stacks_, ok);
+    counters_ = ICDALHelper::GetMoldCounterDef(moldName);
     ok = true;
     for(int i = 0; i != programs.size(); ++i)
     {
         programsCode_.append(programs.at(i));
-        p = Complie(programs.at(i), stackInfos_, err);
+        p = Complie(programs.at(i), stackInfos_, counters_, err);
         if(p.IsCompileErr()) ok = false;
         programs_.append(p);
     }
@@ -493,7 +539,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
 QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
-    CompileInfo aP = Complie(program, stackInfos_, err);
+    CompileInfo aP = Complie(program, stackInfos_, counters_, err);
     if(err == kCCErr_None)
     {
         programsCode_[which] = program;
@@ -802,11 +848,10 @@ QList<QPair<int, quint32> > ICRobotMold::SetMoldFncs(const ICAddrWrapperValuePai
 }
 
 
-QPair<QStringList, QString> ICRobotMold::ExportMold(const QString &name)
+QStringList ICRobotMold::ExportMold(const QString &name)
 {
-    QPair<QStringList, QString>  ret;
-    QStringList programs = ICDALHelper::MoldProgramContent(name);
-    ret.first = programs;
+    QStringList ret = ICDALHelper::MoldProgramContent(name);
+    ret.append(ICDALHelper::MoldStacksContent(name));
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(name));
     QString fncStr;
@@ -814,15 +859,32 @@ QPair<QStringList, QString> ICRobotMold::ExportMold(const QString &name)
     {
         fncStr += QString("%1, %2\n").arg(fncs.at(i).first).arg(fncs.at(i).second);
     }
-    ret.second = fncStr;
+    ret.append(fncStr);
+    QVector<QVariantList> counters = ICDALHelper::GetMoldCounterDef(name);
+    QString countersStr;
+    QVariantList tmp;
+    for(int i = 0; i < counters.size(); ++i)
+    {
+        tmp = counters.at(i);
+        for(int j = 0; j < tmp.size(); ++j)
+        {
+            countersStr += tmp.at(i).toString() + ",";
+        }
+        if(!tmp.isEmpty())
+        {
+            countersStr.chop(1);
+            countersStr += "\n";
+        }
+    }
+    ret.append(countersStr);
     return ret;
 }
 
-RecordDataObject ICRobotMold::ImportMold(const QString& name, const QPair<QStringList, QString> &moldInfo)
+RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList &moldInfo)
 {
     RecordDataObject ret;
     QList<QPair<int, quint32> > fncs;
-    QStringList addrValues = moldInfo.second.split("\n", QString::SkipEmptyParts);
+    QStringList addrValues = moldInfo.at(10).split("\n", QString::SkipEmptyParts);
     QStringList addrValuePair;
     for(int i = 0; i < addrValues.size(); ++i)
     {
@@ -835,13 +897,25 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QPair<QStrin
         fncs.append(qMakePair<int, quint32>(addrValuePair.at(0).toInt(),
                                             addrValuePair.at(1).toUInt()));
     }
-    QStringList programs = moldInfo.first;
-    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1));
+    QVector<QVariantList> counters;
+    QStringList cStr = moldInfo.at(11).split("\n", QString::SkipEmptyParts);
+    for(int i = 0; i < cStr.size(); ++i)
+    {
+        QStringList vs = cStr.at(i).split(",", QString::SkipEmptyParts);
+        QVariantList tmp;
+        tmp.append(vs.at(0).toUInt());
+        tmp.append(vs.at(1));
+        tmp.append(vs.at(2).toUInt());
+        tmp.append(vs.at(3).toUInt());
+        counters.append(tmp);
+    }
+    QStringList programs = moldInfo.mid(0, 10);
+    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1), counters);
     return ret;
 
 }
 
-QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks, bool &isOk)
+QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
 {
     QJson::Parser parser;
 //    bool ok;
@@ -880,10 +954,48 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks_(const QString &stacks, bool &isOk
 bool ICRobotMold::SaveStacks(const QString &stacks)
 {
     bool ret = false;
-    QMap<int, StackInfo> statcksMap = ParseStacks_(stacks, ret);
+    QMap<int, StackInfo> statcksMap = ParseStacks(stacks, ret);
     if(!ret)
         return false;
     stacks_ = stacks;
     stackInfos_ = statcksMap;
     return ICDALHelper::SaveStacks(moldName_, stacks);
+}
+
+int ICRobotMold::IndexOfCounter(quint32 id) const
+{
+    for(int i = 0; i < counters_.size(); ++i)
+    {
+        if(counters_.at(i).at(0).toUInt() == id)
+            return i;
+    }
+    return -1;
+}
+
+bool ICRobotMold::CreateCounter(quint32 id, const QString &name, quint32 current, quint32 target)
+{
+    int indexOfCounter = IndexOfCounter(id);
+    QVariantList newCounter;
+    newCounter<<id<<name<<current<<target;
+    if(indexOfCounter >= 0)
+    {
+        counters_[indexOfCounter] = newCounter;
+        return ICDALHelper::UpdateCounter(moldName_, newCounter);
+    }
+    else
+    {
+        counters_.append(newCounter);
+        return ICDALHelper::AddCounter(moldName_, newCounter);
+    }
+}
+
+bool ICRobotMold::DeleteCounter(quint32 id)
+{
+    int indexOfCounter = IndexOfCounter(id);
+    if(indexOfCounter >= 0)
+    {
+        counters_.remove(indexOfCounter);
+        return ICDALHelper::DelCounter(moldName_, id);
+    }
+    return false;
 }

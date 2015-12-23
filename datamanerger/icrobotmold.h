@@ -173,7 +173,8 @@ public:
         kCCErr_Invaild_Program_Index,
         kCCErr_Wrong_Action_Format,
         kCCErr_Invaild_Flag,
-        kCCErr_Invaild_StackID
+        kCCErr_Invaild_StackID,
+        kCCErr_Invaild_CounterID,
     };
 
     enum {
@@ -202,7 +203,8 @@ public:
     static RecordDataObject NewRecord(const QString& name,
                                       const QString& initProgram,
                                       const QList<QPair<int, quint32> >& values,
-                                      const QStringList& subPrograms = QStringList());
+                                      const QStringList& subPrograms = QStringList(),
+                                      const QVector<QVariantList>& counters = QVector<QVariantList>());
 
     static RecordDataObject CopyRecord(const QString& name,
                                        const QString& source);
@@ -226,11 +228,15 @@ public:
 #endif
     }
 
-    static CompileInfo Complie(const QString& programText, const QMap<int, StackInfo>& stackInfos, int & err);
+    static CompileInfo Complie(const QString& programText, const QMap<int, StackInfo>& stackInfos, const QVector<QVariantList>& counters, int & err);
 
-    static QPair<QStringList, QString>  ExportMold(const QString& name);
+//    static QPair<QStringList, QString>  ExportMold(const QString& name);
+    static QStringList ExportMold(const QString& name);
 
-    static RecordDataObject ImportMold(const QString &name, const QPair<QStringList, QString>& moldInfo);
+    static RecordDataObject ImportMold(const QString &name, const QStringList& moldInfo);
+
+    static QMap<int, StackInfo> ParseStacks(const QString& stacks, bool &isOk);
+
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
     {
@@ -294,16 +300,32 @@ public:
     ICMoldItem SingleLineCompile(int which, int step, const QString& lineContent, QPair<int, int> &hostStep);
 
 
+    QVector<QVariantList> Counters() const { return counters_;}
+    QVector<QVector<quint32> > CountersToHost() const
+    {
+        QVector<QVector<quint32> > ret;
+        QVector<quint32> tmp;
+        for(int i = 0 ; i < counters_.size(); ++i)
+        {
+            tmp<<counters_.at(i).at(0).toUInt()<<counters_.at(i).at(2).toUInt()<<counters_.at(i).at(3).toUInt();
+            ret.append(tmp);
+        }
+        return ret;
+    }
+
+    bool CreateCounter(quint32 id, const QString& name, quint32 current, quint32 target);
+    bool DeleteCounter(quint32 id);
+    int IndexOfCounter(quint32 id) const;
 
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);
-    QMap<int, StackInfo> ParseStacks_(const QString& stacks, bool &isOk);
 
 private:
     QList<CompileInfo> programs_;
     QStringList programsCode_;
     QString stacks_;
     QMap<int, StackInfo> stackInfos_;
+    QVector<QVariantList> counters_;
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;

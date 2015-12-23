@@ -15,6 +15,8 @@ FocusScope{
     width: rectangle.width + unit.width
     height: 24
 
+    signal editFinished();
+
     state: enabled ? "" : "disabled"
 
     states: [
@@ -73,7 +75,7 @@ FocusScope{
                 //                console.log(text)
                 input.text = text;
                 input.focus = false;
-
+                editFinished();
             }
 
             function onReject(){

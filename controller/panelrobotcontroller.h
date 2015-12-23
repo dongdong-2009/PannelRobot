@@ -259,6 +259,7 @@ public:
         bool ret =  mold->LoadMold(name);
         if(ret)
         {
+            ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
             ret = sendMainProgramToHost();
             if(ret)
             {
@@ -470,6 +471,9 @@ public:
         modifyConfigValue(ICAddr_System_Retain_26, mode);
     }
 
+    Q_INVOKABLE bool saveCounterDef(quint32 id, const QString& name, quint32 current, quint32 target);
+    Q_INVOKABLE bool delCounterDef(quint32 id);
+    Q_INVOKABLE QString counterDefs() const;
     void InitMainView();
 
 signals:

@@ -36,6 +36,7 @@ Item {
     ]
     property  variant euXs : ["EuX010", "EuX011"]
     property variant mXs: ["INX010"]
+    property variant counters: []
 
     function createActionObjects(){
         var ret = [];
@@ -49,7 +50,7 @@ Item {
         var ui;
         var inout = 0;
         var flagStr = flag.configText;
-        if(flag.currentIndex < 0) return ret;
+        if(flag.configValue < 0) return ret;
         var begin = flagStr.indexOf('[') + 1;
         var end = flagStr.indexOf(']');
         if(normalY.isChecked){
@@ -63,16 +64,29 @@ Item {
             mD = mYModel;
             inout = 1;
         }else if(normalX.isChecked){
-            mD = xModel
+            mD = xModel;
 
         }else if(euX.isChecked){
-            mD = euXModel
+            mD = euXModel;
         }else if(mX.isChecked){
-            mD = mXModel
+            mD = mXModel;
+        }else if(counter.isChecked){
+            mD = counterModel;
+            for(var c = 0; mD.count; ++c){
+                data = mD.get(c);
+                if(data.isSel){
+                    data = counters[c];
+                    ret.push(Teach.generateCounterJumpAction(parseInt(flagStr.slice(begin,end)), data.id, autoClear.isChecked ? 1 : 0));
+                    break
+                }
+            }
+            return ret;
+
         }else{
 
             ret.push(Teach.generateJumpAction(parseInt(flagStr.slice(begin,end))));
             return ret;
+
         }
 
         for(var i = 0; i < mD.count; ++i)
@@ -148,6 +162,11 @@ Item {
                     text: qsTr("MX")
                 }
                 ICCheckBox{
+                    id:counter
+                    text: qsTr("Counter")
+                }
+
+                ICCheckBox{
                     id:jump
                     text: qsTr("Jump")
                 }
@@ -177,6 +196,9 @@ Item {
                 }
                 ListModel{
                     id:mXModel
+                }
+                ListModel{
+                    id:counterModel
                 }
 
 
@@ -215,6 +237,7 @@ Item {
                         if(normalX.isChecked) return xModel;
                         if(euX.isChecked) return euXModel;
                         if(mX.isChecked) return mXModel;
+                        if(counter.isChecked) return counterModel;
                         return null;
                     }
 
@@ -254,10 +277,17 @@ Item {
                             id:onBox
                             text: qsTr("ON")
                             isChecked: true
+                            visible: !autoClear.visible
                         }
                         ICCheckBox{
                             id:offBox
                             text: qsTr("OFF")
+                            visible: !autoClear.visible
+                        }
+                        ICCheckBox{
+                            id:autoClear
+                            text: qsTr("Auto Clear")
+                            visible: counter.isChecked
                         }
                     }
                     height: 32
@@ -269,7 +299,7 @@ Item {
                     unit: qsTr("s")
                     inputWidth: 100
                     height: 24
-                    visible: true
+                    visible: !counter.isChecked
                     z:1
                     configAddr: "s_rw_0_32_1_1201"
                     configValue: "0.0"
@@ -300,8 +330,15 @@ Item {
         }
     }
 
+    function onMoldChanged(){
+        counters = Teach.counterManager.counters;
+
+    }
+
     Component.onCompleted: {
 
+        panelRobotController.moldChanged.connect(onMoldChanged);
+        onMoldChanged();
         var yDefines = ys;
         var yDefine;
         var i;
@@ -341,6 +378,12 @@ Item {
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             mXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
+
+        var cs = counters;
+        for(i = 0; i < cs.length; ++i){
+            counterModel.append(ioView.createValveMoldItem(qsTr("Counter") + "[" + cs[i].id + "]", cs[i].name, 0, 0));
+        }
     }
+
 
 }

@@ -150,6 +150,11 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(v->value("point").toInt());
         item.append(v->value("pointStatus").toInt());
     }
+    else if(act == F_CMD_PROGRAM_JUMP2)
+    {
+        item.append(v->value("counterID").toUInt());
+        item.append(v->value("autoClear").toBool() ? 1 : 0);
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
@@ -224,6 +229,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
+    ret.insert(F_CMD_PROGRAM_JUMP2, ConditionActionCompiler);
+
     ret.insert(F_CMD_STACK0, StackActionCompiler);
     ret.insert(F_CMD_COUNTER, CounterActionCompiler);
     ret.insert(F_CMD_COUNTER_CLEAR, CounterActionCompiler);
@@ -361,7 +368,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
             continue;
         }
         else if(act == F_CMD_PROGRAM_JUMP1 ||
-                act == F_CMD_PROGRAM_JUMP0)
+                act == F_CMD_PROGRAM_JUMP0 ||
+                act == F_CMD_PROGRAM_JUMP2)
         {
             int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
             action.insert("step", toJumpStep);

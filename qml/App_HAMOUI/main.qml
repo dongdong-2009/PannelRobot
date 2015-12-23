@@ -311,6 +311,7 @@ Rectangle {
     LoginDialog{
         id:loginDialog
         visible: false
+        z:100
         anchors.centerIn: parent
         onLogout: {
             mainHeader.loginUser = qsTr("Login");

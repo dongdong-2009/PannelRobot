@@ -275,6 +275,15 @@ var generateJumpAction = function(flag){
     };
 }
 
+var generateCounterJumpAction = function(flag, counterID, autoClear){
+    return {
+        "action":actions.F_CMD_PROGRAM_JUMP2,
+        "flag": flag || 0,
+        "counterID":counterID,
+        "autoClear": autoClear || false
+    };
+}
+
 var generateFlagAction = function(flag,descr){
     return {
         "action":actions.ACT_FLAG,
@@ -448,6 +457,11 @@ var otherActionToStringHandler = function(actionObject){
 var conditionActionToStringHandler = function(actionObject){
     if(actionObject.action === actions.F_CMD_PROGRAM_JUMP0){
         return qsTr("Jump To ") + flagStrs[actionObject.flag];
+    }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
+        var c = counterManager.getCounter(actionObject.counterID);
+        return qsTr("IF:") + qsTr("Counter") + "[" + c.id + "]:"  + c.name +
+                qsTr("Arrive") + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
+                + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }
 
     var pointDescr;
@@ -623,6 +637,8 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringH
 //actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP2, conditionActionToStringHandler);
+
 
 actionToStringHandlerMap.put(actions.F_CMD_IO_INPUT, waitActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);

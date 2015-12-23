@@ -179,6 +179,10 @@ function isJumpAction(act){
             act === actions.F_CMD_PROGRAM_JUMP3;
 }
 
+function hasCounterIDAction(action){
+    return action.hasOwnProperty("counterID");
+}
+
 var generateAxisServoAction = function(action,
                                        axis,
                                        pos,
@@ -697,6 +701,7 @@ function ProgramModelItem(actionObject, at){
     this.mI_ActionObject = actionObject;
     this.mI_IsActionRunning = false;
     this.mI_ActionType = at;
+    this.actionText = "";
 }
 
 function ccErrnoToString(errno){

@@ -532,7 +532,8 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index
-                        text: "     " + Teach.actionToString(mI_ActionObject)
+                        text: (Teach.hasCounterIDAction(mI_ActionObject) && actionText.length !=0 ? actionText: Teach.actionToString(mI_ActionObject));
+
                         actionType: mI_ActionType
                         MouseArea{
                             anchors.fill: parent
@@ -550,10 +551,7 @@ Rectangle {
                         running: parent.visible
                         repeat: true
                         onTriggered: {
-                            //                            if(mode !== ShareData.knobStatus){
-                            //                                mode = ShareData.knobStatus;
-                            //                            }
-                            //                            console.log(mode, Keymap.KNOB_AUTO)
+
                             if(!panelRobotController.isAutoMode()) return;
                             var cStep = currentModelStep();
                             //                            var cStep = Utils.getRandomNum(0, 10);
@@ -595,15 +593,16 @@ Rectangle {
                                 var counter = Teach.counterManager.getCounter(currentCounterID);
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-                                    var counterLines  = PData.counterLinesInfo.getCounterLine(currentCounterID);
-                                    console.log("counter line:", currentCounterID, currentCounterCurrent,counterLines.length);
+                                    var counterLines  = PData.counterLinesInfo.getCounterLine(editing.currentIndex,currentCounterID);
+//                                    console.log("counter line:", currentCounterID, currentCounterCurrent,counterLines.length);
                                     var md = currentModel();
                                     var tmp;
                                     var line;
                                     for(var l in counterLines){
                                         line = counterLines[l];
-                                        tmp = md.get(l);
-                                        md.set(l, tmp);
+                                        tmp = md.get(line);
+                                        md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
+
                                     }
 
                                 }

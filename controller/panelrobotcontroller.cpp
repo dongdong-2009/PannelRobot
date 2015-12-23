@@ -896,7 +896,7 @@ void PanelRobotController::OnHostUpdateFinished(QString)
 
 bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint32 current, quint32 target)
 {
-    ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<current<<target);
+    ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 

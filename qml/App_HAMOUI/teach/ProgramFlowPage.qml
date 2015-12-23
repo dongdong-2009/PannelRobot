@@ -813,6 +813,9 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        var counters = JSON.parse(panelRobotController.counterDefs());
+        Teach.counterManager.init(counters);
+        Teach.parseStacks(panelRobotController.stacks());
         PData.programs.push(mainProgramModel);
         PData.programs.push(sub1ProgramModel);
         PData.programs.push(sub2ProgramModel);

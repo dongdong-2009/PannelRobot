@@ -194,6 +194,7 @@ void PanelRobotController::OnNeedToInitHost()
         initValveDefines(valveDefineJSON_);
     }
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
+    ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
     ICRobotVirtualhost::SendMold(host_, mold->ProgramToDataBuffer(ICRobotMold::kMainProg));
     //    QVector<QVector<quint32> > subsBuffer;
     for(int i = 1; i <= ICRobotMold::kSub8Prog; ++i)

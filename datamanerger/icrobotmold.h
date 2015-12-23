@@ -307,6 +307,7 @@ public:
         QVector<quint32> tmp;
         for(int i = 0 ; i < counters_.size(); ++i)
         {
+            tmp.clear();
             tmp<<counters_.at(i).at(0).toUInt()<<counters_.at(i).at(3).toUInt()<<counters_.at(i).at(2).toUInt();
             ret.append(tmp);
         }

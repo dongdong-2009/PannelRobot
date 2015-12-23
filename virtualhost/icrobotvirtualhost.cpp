@@ -202,6 +202,7 @@ bool ICRobotVirtualhost::SendMoldCountersDef(ICVirtualHostPtr hostPtr, const QVe
 {
     for(int i = 0; i < data.size(); ++i)
     {
+        qDebug()<<data.at(i).at(0);
         SendMoldCounterDef(hostPtr, data.at(i));
     }
     return true;

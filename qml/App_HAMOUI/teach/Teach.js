@@ -870,6 +870,7 @@ function CounterInfo(id, name, current, target){
 function CounterManager(){
     this.counters = [];
     this.init = function(bareCounters){
+        this.counters.length = 0;
         for(var c in bareCounters){
             var counter = bareCounters[c];
             this.counters.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));

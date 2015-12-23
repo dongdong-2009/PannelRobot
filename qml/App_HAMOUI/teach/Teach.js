@@ -460,7 +460,7 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("Jump To ") + flagStrs[actionObject.flag];
     }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
         var c = counterManager.getCounter(actionObject.counterID);
-        return qsTr("IF:") + qsTr("Counter") + "[" + c.id + "]:"  + c.name + " " +
+        return qsTr("IF:") + qsTr("Counter") + "[" + c.id + "][T:" + c.target + "]:"  + c.name + " " +
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }

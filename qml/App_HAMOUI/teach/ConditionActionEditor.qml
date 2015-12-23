@@ -382,7 +382,7 @@ Item {
 
         var cs = counters;
         for(i = 0; i < cs.length; ++i){
-            counterModel.append(ioView.createValveMoldItem(qsTr("Counter") + "[" + cs[i].id + "]", cs[i].name, 0, 0));
+            counterModel.append(ioView.createValveMoldItem(qsTr("Counter") + "[" + cs[i].id + "][T:" + cs[i].target + "]:", cs[i].name, 0, 0));
         }
     }
 

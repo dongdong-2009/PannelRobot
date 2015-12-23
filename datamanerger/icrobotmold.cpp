@@ -336,6 +336,13 @@ RecordDataObject ICRobotMold::CopyRecord(const QString &name, const QString &sou
 }
 
 
+static bool IsJumpAction(int act)
+{
+    return act == F_CMD_PROGRAM_JUMP1 ||
+            act == F_CMD_PROGRAM_JUMP0 ||
+            act == F_CMD_PROGRAM_JUMP2;
+}
+
 
 CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, StackInfo>& stackInfos, const QVector<QVariantList>& counters, int &err)
 {
@@ -368,9 +375,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
             ret.MapFlagToStep(action.value("flag").toInt(), step);
             continue;
         }
-        else if(act == F_CMD_PROGRAM_JUMP1 ||
-                act == F_CMD_PROGRAM_JUMP0 ||
-                act == F_CMD_PROGRAM_JUMP2)
+        else if(IsJumpAction(act))
         {
             int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
             action.insert("step", toJumpStep);
@@ -391,7 +396,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
             action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
         }
         else if(act == F_CMD_COUNTER ||
-                 act == F_CMD_COUNTER_CLEAR)
+                act == F_CMD_COUNTER_CLEAR)
         {
             int cID =  action.value("counterID", -1).toUInt();
             int cIndex = -1;
@@ -488,8 +493,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
     {
         action = result.at(p.key()).toMap();
         act = action.value("action").toInt();
-        if(act == F_CMD_PROGRAM_JUMP1 ||
-                act == F_CMD_PROGRAM_JUMP0)
+        if(IsJumpAction(act))
         {
             int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
             if(toJumpStep >= 0)
@@ -505,7 +509,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
         }
         ++p;
     }
-//    err = kCCErr_None;
+    //    err = kCCErr_None;
     return ret;
 
 }
@@ -540,8 +544,8 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         fncCache_.UpdateConfigValue(fncs.at(i).first, fncs.at(i).second);
     }
-//    stacks_ = ICDALHelper::MoldStacksContent(moldName);
-//    stackInfos_ = ParseStacks_(stacks_);
+    //    stacks_ = ICDALHelper::MoldStacksContent(moldName);
+    //    stackInfos_ = ParseStacks_(stacks_);
     return ok;
 }
 
@@ -927,7 +931,7 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
 QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
 {
     QJson::Parser parser;
-//    bool ok;
+    //    bool ok;
     QVariantMap result = parser.parse (stacks.toLatin1(), &isOk).toMap();
     QMap<int, StackInfo> ret;
     if(!isOk) return ret;

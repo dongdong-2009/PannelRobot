@@ -809,14 +809,13 @@ Rectangle {
                     isSyncStart = false;
                 }else if(Teach.isJumpAction(step.action)){
                     jumpLines.push(p);
+                    at = Teach.actionTypes.kAT_Normal;
                 }
                 else
                     at = Teach.actionTypes.kAT_Normal;
                 if(isSyncStart)
                     at = Teach.actionTypes.kAT_SyncStart;
-                if(step.action === Teach.actions.F_CMD_COUNTER ||
-                        step.action === Teach.actions.F_CMD_COUNTER_CLEAR ||
-                        step.action === Teach.actions.F_CMD_PROGRAM_JUMP2){
+                if(Teach.hasCounterIDAction(step)){
                     PData.counterLinesInfo.add(i, step.counterID, p);
                 }
                 PData.programs[i].append(new Teach.ProgramModelItem(step, at));

@@ -560,7 +560,7 @@ Rectangle {
                             if(cStep < 0 || cStep >= currentModel().count){
                                 return;
                             }
-                            console.log("CStep:", cStep, currentModel().count);
+//                            console.log("CStep:", cStep, currentModel().count);
                             //                            var cStep = Utils.getRandomNum(0, 10);
                             var lastRunning = PData.lastRunning;
 
@@ -595,7 +595,17 @@ Rectangle {
                                 var counter = Teach.counterManager.getCounter(currentCounterID);
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-                                    console.log("counter line:", currentCounterID, currentCounterCurrent, PData.counterLinesInfo.getCounterLine(currentCounterID).length)
+                                    var counterLines  = PData.counterLinesInfo.getCounterLine(currentCounterID);
+                                    console.log("counter line:", currentCounterID, currentCounterCurrent,counterLines.length);
+                                    var md = currentModel();
+                                    var tmp;
+                                    var line;
+                                    for(var l in counterLines){
+                                        line = counterLines[l];
+                                        tmp = md.get(l);
+                                        md.set(l, tmp);
+                                    }
+
                                 }
                             }
 

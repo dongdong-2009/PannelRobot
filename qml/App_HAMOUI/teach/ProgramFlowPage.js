@@ -16,19 +16,19 @@ var isReadOnly = true;
 var counterLinesInfo = {
     "programsCounters":[],
     "clear": function(){ this.programsCounters.length = 0;},
-    "add":function(program, counterID, line){
-        var tmp = this.programsCounters[programs];
+    "add":function(programIndex, counterID, line){
+        var tmp = this.programsCounters[programIndex];
         if(tmp == undefined){
-            this.programsCounters[programs] = {};
+            this.programsCounters[programIndex] = {};
         }
-        tmp = this.programsCounters[programs][counterID];
+        tmp = this.programsCounters[programIndex][counterID];
         if(tmp == undefined)
             tmp = []
         tmp.push(line);
-        this.programsCounters[programs][counterID] = tmp;
+        this.programsCounters[programIndex][counterID] = tmp;
     },
-    "getCounterLine":function(program, counterID){
-        var tmp = this.programsCounters[programs][counterID];
+    "getCounterLine":function(programIndex, counterID){
+        var tmp = this.programsCounters[programIndex][counterID];
         return tmp || [];
     }
 }

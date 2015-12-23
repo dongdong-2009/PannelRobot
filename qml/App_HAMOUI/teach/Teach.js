@@ -557,8 +557,7 @@ var stackActionToStringHandler = function(actionObject){
 var counterActionToStringHandler = function(actionObject){
     var c = counterManager.getCounter(actionObject.counterID);
     var clearStr = actionObject.action == actions.F_CMD_COUNTER_CLEAR ? qsTr("Clear ") : ""
-    return clearStr + qsTr("Counter") + "[" + c.id + "]:" + c.name + " " + qsTr("target:") +
-            c.target;
+    return clearStr + c.toString() + ":" + c.name;
 }
 
 

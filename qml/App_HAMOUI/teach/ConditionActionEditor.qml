@@ -230,7 +230,7 @@ Item {
                     width: parent.width - 4
                     height: parent.height - 4
                     anchors.centerIn: parent
-                    cellWidth: 226
+                    cellWidth: counter.isChecked ? 280 : 226
                     cellHeight: 32
                     clip: true
                     model: {
@@ -333,7 +333,18 @@ Item {
 
     function onMoldChanged(){
         counters = Teach.counterManager.counters;
+        var cs = counters;
+        counterModel.clear();
+        for(var i = 0; i < cs.length; ++i){
+            counterModel.append(ioView.createValveMoldItem(Teach.counterManager.counterToString(cs[i].id) + ":", cs[i].name, 0, 0));
+        }
 
+    }
+
+    onVisibleChanged: {
+        if(visible){
+            onMoldChanged();
+        }
     }
 
     Component.onCompleted: {
@@ -380,10 +391,6 @@ Item {
             mXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
-        var cs = counters;
-        for(i = 0; i < cs.length; ++i){
-            counterModel.append(ioView.createValveMoldItem(qsTr("Counter") + "[" + cs[i].id + "][T:" + cs[i].target + "]:", cs[i].name, 0, 0));
-        }
     }
 
 

@@ -236,6 +236,7 @@ Rectangle {
                     ]
                     currentIndex: 0
                     onCurrentIndexChanged: {
+                        if(currentIndex < 0) return;
                         programListView.model = PData.programs[currentIndex];
                         programListView.currentIndex = -1;
                     }
@@ -518,7 +519,7 @@ Rectangle {
                 ListView{
                     id:programListView
                     y:2
-                    model: mainProgramModel
+                    //                    model: mainProgramModel
                     width: parent.width
                     height: parent.height - 2
                     spacing:2
@@ -588,6 +589,14 @@ Rectangle {
                                 if(isFollow.isChecked)
                                     programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
 
+                                // update counters show
+                                var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");
+                                var currentCounterCurrent = panelRobotController.statusValue("c_ro_13_19_0_938");
+                                var counter = Teach.counterManager.getCounter(currentCounterID);
+                                if(counter.current != currentCounterCurrent){
+                                    counter.current = currentCounterCurrent;
+                                    console.log("counter line:", currentCounterID, currentCounterCurrent, PData.counterLinesInfo.getCounterLine(currentCounterID).length)
+                                }
                             }
 
                         }
@@ -761,6 +770,10 @@ Rectangle {
     }
 
     function updateProgramModels(){
+        PData.counterLinesInfo.clear();
+        editing.currentIndex = -1;
+        var counters = JSON.parse(panelRobotController.counterDefs());
+        Teach.counterManager.init(counters);
         Teach.parseStacks(panelRobotController.stacks());
         var program = JSON.parse(panelRobotController.mainProgram());
         var i,j;
@@ -777,7 +790,6 @@ Rectangle {
                 if(Teach.canActionUsePoint(step)){
                     Teach.definedPoints.parseActionPoints(step);
                 }
-
                 if(step.action === Teach.actions.ACT_FLAG){
                     Teach.pushFlag(step.flag, step.comment);
                 }else if(step.action === Teach.actions.F_CMD_SYNC_START){
@@ -786,16 +798,18 @@ Rectangle {
                 }else if(step.action === Teach.actions.F_CMD_SYNC_END){
                     at = Teach.actionTypes.kAT_SyncEnd;
                     isSyncStart = false;
-                }else if(step.action === Teach.actions.F_CMD_PROGRAM_JUMP0 ||
-                         step.action === Teach.actions.F_CMD_PROGRAM_JUMP1){
-
+                }else if(Teach.isJumpAction(step.action)){
                     jumpLines.push(p);
                 }
-
                 else
                     at = Teach.actionTypes.kAT_Normal;
                 if(isSyncStart)
                     at = Teach.actionTypes.kAT_SyncStart;
+                if(step.action === Teach.actions.F_CMD_COUNTER ||
+                        step.action === Teach.actions.F_CMD_COUNTER_CLEAR ||
+                        step.action === Teach.actions.F_CMD_PROGRAM_JUMP2){
+                    PData.counterLinesInfo.add(i, step.counterID, p);
+                }
                 PData.programs[i].append(new Teach.ProgramModelItem(step, at));
             }
             for(var l = 0; l < jumpLines.length; ++l){
@@ -804,6 +818,8 @@ Rectangle {
                 PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
             }
         }
+        editing.currentIndex = 0;
+
     }
 
     onVisibleChanged: {
@@ -813,9 +829,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        var counters = JSON.parse(panelRobotController.counterDefs());
-        Teach.counterManager.init(counters);
-        Teach.parseStacks(panelRobotController.stacks());
+        //        Teach.parseStacks(panelRobotController.stacks());
         PData.programs.push(mainProgramModel);
         PData.programs.push(sub1ProgramModel);
         PData.programs.push(sub2ProgramModel);

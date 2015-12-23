@@ -175,6 +175,7 @@ Rectangle {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
                                     md.current = text;
+                                    Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
                                 }
                             }
@@ -186,6 +187,7 @@ Rectangle {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
                                     md.target = text;
+                                    Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
                                 }
                             }

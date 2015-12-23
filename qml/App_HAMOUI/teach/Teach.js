@@ -173,6 +173,12 @@ var kAxisType_Servo = 1;
 var kAxisType_Pneumatic = 2;
 var kAxisType_Reserve = 3;
 
+function isJumpAction(act){
+    return act === actions.F_CMD_PROGRAM_JUMP0 ||
+            act === actions.F_CMD_PROGRAM_JUMP1 ||
+            act === actions.F_CMD_PROGRAM_JUMP3;
+}
+
 var generateAxisServoAction = function(action,
                                        axis,
                                        pos,
@@ -460,7 +466,7 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("Jump To ") + flagStrs[actionObject.flag];
     }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
         var c = counterManager.getCounter(actionObject.counterID);
-        return qsTr("IF:") + qsTr("Counter") + "[" + c.id + "][T:" + c.target + "]:"  + c.name + " " +
+        return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }
@@ -882,6 +888,10 @@ function CounterInfo(id, name, current, target){
     this.name = name || "Counter-" + this.id;
     this.current = current || 0;
     this.target = target || 0;
+    this.toString = function(){
+       return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]";
+
+    }
 }
 
 function CounterManager(){
@@ -912,6 +922,10 @@ function CounterManager(){
                 return this.counters[c];
         }
         return null;
+    }
+    this.counterToString = function(id){
+        var cs = this.getCounter(id);
+        return cs.toString();
     }
 
     this.newCounter = function(name, current, target){

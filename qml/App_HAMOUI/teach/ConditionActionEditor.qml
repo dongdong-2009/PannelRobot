@@ -76,7 +76,10 @@ Item {
                 data = mD.get(c);
                 if(data.isSel){
                     data = counters[c];
-                    ret.push(Teach.generateCounterJumpAction(parseInt(flagStr.slice(begin,end)), data.id, autoClear.isChecked ? 1 : 0));
+                    ret.push(Teach.generateCounterJumpAction(parseInt(flagStr.slice(begin,end)),
+                                                             data.id,
+                                                             onBox.isChecked ? 1 : 0,
+                                                                               autoClear.isChecked ? 1 : 0));
                     break
                 }
             }
@@ -277,20 +280,18 @@ Item {
                             id:onBox
                             text: qsTr("ON")
                             isChecked: true
-                            visible: !autoClear.visible
                         }
                         ICCheckBox{
                             id:offBox
                             text: qsTr("OFF")
-                            visible: !autoClear.visible
-                        }
-                        ICCheckBox{
-                            id:autoClear
-                            text: qsTr("Auto Clear")
-                            visible: counter.isChecked
                         }
                     }
                     height: 32
+                }
+                ICCheckBox{
+                    id:autoClear
+                    text: qsTr("Auto Clear")
+                    visible: counter.isChecked
                 }
 
                 ICConfigEdit{

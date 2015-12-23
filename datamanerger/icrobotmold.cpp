@@ -153,7 +153,8 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
     else if(act == F_CMD_PROGRAM_JUMP2)
     {
         item.append(v->value("counterID").toUInt());
-        item.append(v->value("autoClear").toBool() ? 1 : 0);
+        item.append(v->value("autoClear").toInt());
+        item.append(v->value("pointStatus").toInt());
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;

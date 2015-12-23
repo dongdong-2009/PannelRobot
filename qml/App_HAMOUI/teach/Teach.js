@@ -275,11 +275,12 @@ var generateJumpAction = function(flag){
     };
 }
 
-var generateCounterJumpAction = function(flag, counterID, autoClear){
+var generateCounterJumpAction = function(flag, counterID, status, autoClear){
     return {
         "action":actions.F_CMD_PROGRAM_JUMP2,
         "flag": flag || 0,
         "counterID":counterID,
+        "pointStatus":status,
         "autoClear": autoClear || false
     };
 }
@@ -459,8 +460,8 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("Jump To ") + flagStrs[actionObject.flag];
     }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
         var c = counterManager.getCounter(actionObject.counterID);
-        return qsTr("IF:") + qsTr("Counter") + "[" + c.id + "]:"  + c.name +
-                qsTr("Arrive") + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
+        return qsTr("IF:") + qsTr("Counter") + "[" + c.id + "]:"  + c.name + " " +
+                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }
 

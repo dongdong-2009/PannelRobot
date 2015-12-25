@@ -9,7 +9,8 @@ settingpages/*
 }
 
 OTHER_FILES += \
-    teach/CounterActionEditor.qml
+    teach/CounterActionEditor.qml \
+    teach/StackActionEditorComponent.qml
 
 
 

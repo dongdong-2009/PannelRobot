@@ -324,11 +324,12 @@ var generateCommentAction = function(comment, commentdAction){
     };
 }
 
-var generateStackAction = function(stackID, speed){
+var generateStackAction = function(stackID, speed0, speed1){
     return {
         "action":actions.F_CMD_STACK0,
         "stackID":stackID,
-        "speed":speed || 80,
+        "speed0":speed0 || 80,
+        "speed1":speed1 || 80,
     };
 }
 
@@ -555,7 +556,7 @@ var stackActionToStringHandler = function(actionObject){
     var descr = (si == null) ? qsTr("not exist") : si.descr;
     return qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            qsTr("Speed:") + actionObject.speed;
+            qsTr("Speed0:") + actionObject.speed0;
 }
 
 var counterActionToStringHandler = function(actionObject){
@@ -773,26 +774,33 @@ var useableFlag = function(){
     return flags[i - 1] + 1;
 }
 
-function StackInfo(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
+function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
-                   sequence, dir0, dir1, dir2, type, descr){
-    this.m0pos = m0pos;
-    this.m1pos = m1pos;
-    this.m2pos = m2pos;
-    this.m3pos = m3pos;
-    this.m4pos = m4pos;
-    this.m5pos = m5pos;
-    this.space0 = space0;
-    this.space1 = space1;
-    this.space2 = space2;
-    this.count0 = count0;
-    this.count1 = count1;
-    this.count2 = count2;
-    this.sequence = sequence;
-    this.dir0 = dir0;
-    this.dir1 = dir1;
-    this.dir2 = dir2;
-    this.type = type;
+                   sequence, dir0, dir1, dir2, doesBindingCounter, counterID ){
+    this.m0pos = m0pos || 0;
+    this.m1pos = m1pos || 0;
+    this.m2pos = m2pos || 0;
+    this.m3pos = m3pos || 0;
+    this.m4pos = m4pos || 0;
+    this.m5pos = m5pos || 0;
+    this.space0 = space0 || 0;
+    this.space1 = space1 || 0;
+    this.space2 = space2 || 0;
+    this.count0 = count0 || 0;
+    this.count1 = count1 || 0;
+    this.count2 = count2 || 0;
+    this.sequence = sequence || 0;
+    this.dir0 = dir0 || 0;
+    this.dir1 = dir1 || 0;
+    this.dir2 = dir2 || 0;
+    this.doesBindingCounter = doesBindingCounter || 0;
+    this.counterID = counterID || 0;
+}
+
+function StackInfo(si0, si1, type, descr){
+    this.si0 = si0;
+    this.si1 = si1;
+    this.type = type || 0;
     this.descr = descr;
 }
 
@@ -930,6 +938,14 @@ function CounterManager(){
     this.counterToString = function(id){
         var cs = this.getCounter(id);
         return cs.toString();
+    }
+
+    this.countersStrList = function(){
+        var ret = [];
+        for(var i = 0; i < this.counters.length; ++i){
+            ret.push(this.counters[i].toString() + ":" + this.counters[i].name);
+        }
+        return ret;
     }
 
     this.newCounter = function(name, current, target){

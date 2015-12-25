@@ -12,30 +12,31 @@
 
 class ICRobotMold;
 
+struct SI{
+    quint32 m0pos:32;
+    quint32 m1pos:32;
+    quint32 m2pos:32;
+    quint32 m3pos:32;
+    quint32 m4pos:32;
+    quint32 m5pos:32;
+    quint32 space0:32;
+    quint32 space1:32;
+    quint32 space2:32;
+    quint32 count0:32;
+    quint32 count1:32;
+    quint32 count2:32;
+    quint32 sequence:5;
+    quint32 dir0: 1;
+    quint32 dir1: 1;
+    quint32 dir2: 1;
+    quint32 type:8;
+    quint32 doesBindingCounter:1;
+    quint32 counterID:15;
+};
+
 union StackInfo{
-
-    struct{
-        quint32 m0pos:32;
-        quint32 m1pos:32;
-        quint32 m2pos:32;
-        quint32 m3pos:32;
-        quint32 m4pos:32;
-        quint32 m5pos:32;
-        quint32 space0:32;
-        quint32 space1:32;
-        quint32 space2:32;
-        quint32 count0:32;
-        quint32 count1:32;
-        quint32 count2:32;
-        quint32 sequence:5;
-        quint32 dir0: 1;
-        quint32 dir1: 1;
-        quint32 dir2: 1;
-        quint32 type:8;
-        quint32 res:16;
-
-    }split;
-    quint32 all[15];
+    SI si[2];
+    quint32 all[30];
 };
 Q_DECLARE_METATYPE(StackInfo)
 //qRegisterMetaType<StackInfo>("StackInfo");

@@ -5,6 +5,9 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 
 Rectangle {
+    property int stackType: 0
+    property int currentPage: 0
+    property int pageCount: 2
     function createActionObjects(){
         var ret = [];
         if(useFlag.isChecked){
@@ -12,7 +15,7 @@ Rectangle {
             if(statckStr.currentIndex < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
-            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed.configValue));
+            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue, speed1.configValue));
         }
         return ret;
     }
@@ -47,20 +50,27 @@ Rectangle {
 
         ICButton{
             id:changePage
+
             text: "-->"
             height: defineStack.height
             visible: defineStack.isChecked
             onButtonClicked: {
-                if(!detailPage.visible){
+                ++currentPage;
+                currentPage %= pageCount;
+                if(currentPage == (pageCount - 1)){
                     text = "<--"
                     detailPage.visible  = true;
                     typeSelector.visible = false;
 
-                }else{
+                }else if(currentPage == 0){
                     text = "-->"
                     detailPage.visible  = false;
                     typeSelector.visible = true;
-
+                }
+                else{
+                    text = "-->"
+                    detailPage.visible  = true;
+                    typeSelector.visible = false;
                 }
 
             }
@@ -82,15 +92,24 @@ Rectangle {
                 //        layoutMode: 1
                 ICButton{
                     id:type1
-                    text: qsTr("Type1")
+                    text: qsTr("Normal")
                     height: parent.height
                     width: parent.height
+                    onButtonClicked: {
+                        stackType = 0;
+                        pageCount = 2;
+                    }
                 }
                 ICButton{
                     id:type2
-                    text: qsTr("Type2")
+                    text: qsTr("Box")
                     height: parent.height
                     width: parent.height
+                    onButtonClicked: {
+                        stackType = 1;
+                        pageCount = 3;
+
+                    }
                 }
                 ICButton{
                     id:type3
@@ -102,249 +121,181 @@ Rectangle {
             Item{
                 id:detailPage
                 visible: false;
-                Column{
-                    spacing: 4
-                    Row{
-                        id:menuContainer
-                        spacing: 6
-                        z:11
-                        ICButton{
-                            id:setIn
-                            text: qsTr("Set In")
-                            height: stackDescr.height
-                            onButtonClicked: {
-                                motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                                motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                                motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                                motor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                                motor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                                motor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                Row{
+                    id:menuContainer
+                    spacing: 6
+                    z:11
+                    ICButton{
+                        id:setIn
+                        text: qsTr("Set In")
+                        height: stackDescr.height
+                        onButtonClicked: {
+                            motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            motor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                            motor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                            motor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                        }
+
+                    }
+                    ICComboBox{
+                        id:stackViewSel
+                        z: 11
+                        popupWidth: 200
+                        width: currentIndex == 0 ? 80 : popupWidth
+                        onCurrentIndexChanged: {
+                            if(currentIndex < 0 ) return;
+                            var si0, si1;
+                            var stackInfo;
+                            if(currentIndex == 0){
+                                si0 = new Teach.StackItem();
+                                si1 = new Teach.StackItem();
+                                stackInfo = new Teach.StackInfo(si0, si1,stackType, "");
+                            }else{
+                                stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValveFromBrackets(items[currentIndex])));
                             }
+                            page1.motor0 = stackInfo.si0.m0pos;
+                            page1.motor1 = stackInfo.si0.m1pos;
+                            page1.motor2 = stackInfo.si0.m2pos;
+                            page1.motor3 = stackInfo.si0.m3pos;
+                            page1.motor4 = stackInfo.si0.m4pos;
+                            page1.motor5 = stackInfo.si0.m5pos;
+                            page1.space0 = stackInfo.si0.space0;
+                            page1.space1 = stackInfo.si0.space1;
+                            page1.space2 = stackInfo.si0.space2;
+                            page1.count0 = stackInfo.si0.count0;
+                            page1.count1 = stackInfo.si0.count1;
+                            page1.count2 = stackInfo.si0.count2;
+                            page1.seq = stackInfo.si0.sequence;
+                            page1.dir0 = stackInfo.si0.dir0;
+                            page1.dir1 = stackInfo.si0.dir1;
+                            page1.dir2 = stackInfo.si0.dir2;
+                            page1.doesBindingCounter = stackInfo.si0.doesBindingCounter;
+                            page1.setCounterID(stackInfo.si0.counterID);
 
+                            page2.motor0 = stackInfo.si1.m0pos;
+                            page2.motor1 = stackInfo.si1.m1pos;
+                            page2.motor2 = stackInfo.si1.m2pos;
+                            page2.motor3 = stackInfo.si1.m3pos;
+                            page2.motor4 = stackInfo.si1.m4pos;
+                            page2.motor5 = stackInfo.si1.m5pos;
+                            page2.space0 = stackInfo.si1.space0;
+                            page2.space1 = stackInfo.si1.space1;
+                            page2.space2 = stackInfo.si1.space2;
+                            page2.count0 = stackInfo.si1.count0;
+                            page2.count1 = stackInfo.si1.count1;
+                            page2.count2 = stackInfo.si1.count2;
+                            page2.seq = stackInfo.si1.sequence;
+                            page2.dir0 = stackInfo.si1.dir0;
+                            page2.dir1 = stackInfo.si1.dir1;
+                            page2.dir2 = stackInfo.si1.dir2;
+                            page2.doesBindingCounter = stackInfo.si1.doesBindingCounter;
+                            page2.setCounterID(stackInfo.si1.counterID);
                         }
-                        ICComboBox{
-                            id:stackViewSel
-                            z: 11
-                            popupWidth: 200
-                            width: currentIndex == 0 ? 80 : popupWidth
-                            onCurrentIndexChanged: {
-                                if(currentIndex < 0 ) return;
-                                var stackInfo;
-                                if(currentIndex == 0){
-                                    stackInfo = new Teach.StackInfo(0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0,0,0,0,0,0,0,0,"");
-                                }else{
-                                    stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValveFromBrackets(items[currentIndex])));
-                                }
-                                motor0.configValue = stackInfo.m0pos;
-                                motor1.configValue = stackInfo.m1pos;
-                                motor2.configValue = stackInfo.m2pos;
-                                motor3.configValue = stackInfo.m3pos;
-                                motor4.configValue = stackInfo.m4pos;
-                                motor5.configValue = stackInfo.m5pos;
-                                space0.configValue = stackInfo.space0;
-                                space1.configValue = stackInfo.space1;
-                                space2.configValue = stackInfo.space2;
-                                count0.configValue = stackInfo.count0;
-                                count1.configValue = stackInfo.count1;
-                                count2.configValue = stackInfo.count2;
-                                seq.configValue = stackInfo.sequence;
-                                dir0.configValue = stackInfo.dir0;
-                                dir1.configValue = stackInfo.dir1;
-                                dir2.configValue = stackInfo.dir2;
+                    }
 
 
 
-                            }
-                        }
+                }
 
-                        ICConfigEdit{
-                            id:stackDescr
-                            configName: qsTr("Stack")
-                            inputWidth: 200
-                            isNumberOnly: false
-                            visible: stackViewSel.currentIndex === 0
-                        }
+                Row{
+                    anchors.left: menuContainer.right
+                    anchors.leftMargin: 6
+                    spacing: 6
+                    y:menuContainer.y
 
-                        ICButton{
-                            id:save
-                            text: qsTr("Save")
-                            height: stackDescr.height
-                            onButtonClicked: {
-                                var stackInfo = new Teach.StackInfo(motor0.configValue || 0.000,
-                                                                    motor1.configValue || 0.000,
-                                                                    motor2.configValue || 0.000,
-                                                                    motor3.configValue || 0.000,
-                                                                    motor4.configValue || 0.000,
-                                                                    motor5.configValue || 0.000,
-                                                                    space0.configValue || 0.000,
-                                                                    space1.configValue || 0.000,
-                                                                    space2.configValue || 0.000,
-                                                                    count0.configValue || 0,
-                                                                    count1.configValue || 0,
-                                                                    count2.configValue || 0,
-                                                                    seq.configValue,
-                                                                    dir0.configValue,
-                                                                    dir1.configValue,
-                                                                    dir2.configValue,
-                                                                    0,
-                                                                    stackDescr.configValue);
-                                if(stackViewSel.currentIndex === 0){
-                                    Teach.appendStackInfo(stackInfo);
-                                    panelRobotController.saveStacks(Teach.statcksToJSON());
-                                    updateStacksSel();
-                                }
-                                else{
-                                    Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)), stackInfo);
-                                    panelRobotController.saveStacks(Teach.statcksToJSON());
-                                }
-                                //                                stackSelector.items = Teach.stackInfosDescr();
-                            }
-                        }
-                        ICButton{
-                            id:deleteStack
-                            text: qsTr("Delete")
-                            height: stackDescr.height
-                            onButtonClicked: {
-                                if(stackViewSel.currentIndex === 0) return;
-                                Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)));
+                    ICConfigEdit{
+                        id:stackDescr
+                        configName: qsTr("Stack")
+                        inputWidth: 200
+                        isNumberOnly: false
+                        visible: stackViewSel.currentIndex === 0
+                    }
+
+                    ICButton{
+                        id:save
+                        text: qsTr("Save")
+                        height: stackDescr.height
+                        onButtonClicked: {
+                            var si0 = new Teach.StackItem(page1.motor0 || 0.000,
+                                                          page1.motor1 || 0.000,
+                                                          page1.motor2 || 0.000,
+                                                          page1.motor3 || 0.000,
+                                                          page1.motor4 || 0.000,
+                                                          page1.motor5 || 0.000,
+                                                          page1.space0 || 0.000,
+                                                          page1.space1 || 0.000,
+                                                          page1.space2 || 0.000,
+                                                          page1.count0 || 0,
+                                                          page1.count1 || 0,
+                                                          page1.count2 || 0,
+                                                          page1.seq,
+                                                          page1.dir0,
+                                                          page1.dir1,
+                                                          page1.dir2,
+                                                          page1.doesBindingCounter,
+                                                          page1.counterID());
+                            var si1 = new Teach.StackItem(page2.motor0 || 0.000,
+                                                          page2.motor1 || 0.000,
+                                                          page2.motor2 || 0.000,
+                                                          page2.motor3 || 0.000,
+                                                          page2.motor4 || 0.000,
+                                                          page2.motor5 || 0.000,
+                                                          page2.space0 || 0.000,
+                                                          page2.space1 || 0.000,
+                                                          page2.space2 || 0.000,
+                                                          page2.count0 || 0,
+                                                          page2.count1 || 0,
+                                                          page2.count2 || 0,
+                                                          page2.seq,
+                                                          page2.dir0,
+                                                          page2.dir1,
+                                                          page2.dir2,
+                                                          page2.doesBindingCounter,
+                                                          page2.counterID());
+                            var stackInfo = new Teach.StackInfo(si0, si1, stackType, stackDescr.configValue);
+                            if(stackViewSel.currentIndex === 0){
+                                Teach.appendStackInfo(stackInfo);
                                 panelRobotController.saveStacks(Teach.statcksToJSON());
                                 updateStacksSel();
                             }
-
+                            else{
+                                Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)), stackInfo);
+                                panelRobotController.saveStacks(Teach.statcksToJSON());
+                            }
+                            //                                stackSelector.items = Teach.stackInfosDescr();
+                        }
+                    }
+                    ICButton{
+                        id:deleteStack
+                        text: qsTr("Delete")
+                        height: stackDescr.height
+                        onButtonClicked: {
+                            if(stackViewSel.currentIndex === 0) return;
+                            Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)));
+                            panelRobotController.saveStacks(Teach.statcksToJSON());
+                            updateStacksSel();
                         }
 
                     }
-
-                    Row{
-                        spacing: 4
-                        Grid{
-                            //                id:posContainer
-                            columns: 2
-                            spacing: 4
-                            ICConfigEdit{
-                                id:motor0
-                                configName: AxisDefine.axisInfos[0].name
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-                            }
-                            ICConfigEdit{
-                                id:motor1
-                                configName: AxisDefine.axisInfos[1].name
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-
-                            }
-                            ICConfigEdit{
-                                id:motor2
-                                configName: AxisDefine.axisInfos[2].name
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-
-                            }
-                            ICConfigEdit{
-                                id:motor3
-                                configName: AxisDefine.axisInfos[3].name
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-
-                            }
-                            ICConfigEdit{
-                                id:motor4
-                                configName: AxisDefine.axisInfos[4].name
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-
-                            }
-                            ICConfigEdit{
-                                id:motor5
-                                configName: AxisDefine.axisInfos[5].name
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-                            }
-
-                        }
-
-                        Grid{
-                            columns: 2
-                            spacing: 4
-                            ICConfigEdit{
-                                id:space0
-                                configName: qsTr("Space0")
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-                            }
-                            ICConfigEdit{
-                                id:count0
-                                configName: qsTr("Count0")
-                                configAddr: "s_rw_0_32_0_1400"
-                                inputWidth: 100
-                            }
-                            ICConfigEdit{
-                                id:space1
-                                configName: qsTr("Space1")
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-                            }
-                            ICConfigEdit{
-                                id:count1
-                                configName: qsTr("Count1")
-                                configAddr: "s_rw_0_32_0_1400"
-                                inputWidth: 100
-                            }
-                            ICConfigEdit{
-                                id:space2
-                                configName: qsTr("Space2")
-                                configAddr: "s_rw_0_32_3_1300"
-                                inputWidth: 100
-
-                            }
-                            ICConfigEdit{
-                                id:count2
-                                configName: qsTr("Count2")
-                                configAddr: "s_rw_0_32_0_1400"
-                                inputWidth: 100
-                            }
-                        }
-                    }
-
-                    Row{
-                        z:10
-                        spacing: 4
-                        ICComboBoxConfigEdit{
-                            id:dir0
-                            configName: qsTr("Dir0")
-                            items: [qsTr("RP"), qsTr("PP")]
-                            z:10
-                            configValue: 0
-
-                        }
-                        ICComboBoxConfigEdit{
-                            id:dir1
-                            configName: qsTr("Dir1")
-                            items: [qsTr("RP"), qsTr("PP")]
-                            z:10
-                            configValue: 0
-                        }
-                        ICComboBoxConfigEdit{
-                            id:dir2
-                            configName: qsTr("Dir2")
-                            items: [qsTr("RP"), qsTr("PP")]
-                            z:10
-                            configValue: 0
-                        }
-                    }
-
                 }
-                ICComboBoxConfigEdit{
-                    id:seq
-                    y: 112
-                    x:404
-                    configName: qsTr("Sequence")
-                    items: ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X"]
-                    popupMode: 1
-                    z:13
-                    configValue: 0
+
+                StackActionEditorComponent{
+                    anchors.top: menuContainer.bottom
+                    anchors.topMargin: 4
+                    x:menuContainer.x
+                    id:page1
+                    visible: currentPage == 1;
                 }
+                StackActionEditorComponent{
+                    anchors.top: menuContainer.bottom
+                    anchors.topMargin: 4
+                    x:menuContainer.x
+                    id:page2
+                    visible: currentPage == 2;
+                }
+
             }
         }
         ICComboBoxConfigEdit{
@@ -355,9 +306,16 @@ Rectangle {
             z:10
         }
         ICConfigEdit{
-            id:speed
+            id:speed0
             visible: useFlag.isChecked
-            configName: qsTr("Speed")
+            configName: qsTr("Speed0")
+            configAddr: "s_rw_0_16_1_265"
+            unit: "%"
+        }
+        ICConfigEdit{
+            id:speed1
+            visible: useFlag.isChecked
+            configName: qsTr("Speed1")
             configAddr: "s_rw_0_16_1_265"
             unit: "%"
         }

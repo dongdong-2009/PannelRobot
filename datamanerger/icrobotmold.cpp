@@ -196,24 +196,26 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(si.si[0].count0);
     item.append(si.si[0].count1);
     item.append(si.si[0].count2);
-    item.append(si.si[0].doesBindingCounter);
-    item.append(si.si[0].counterID);
+    item.append(si.all[12]);
+//    item.append(si.si[0].doesBindingCounter);
+//    item.append(si.si[0].counterID);
 
-    item.append(si.si[1].m0pos);
-    item.append(si.si[1].m1pos);
-    item.append(si.si[1].m2pos);
-    item.append(si.si[1].m3pos);
-    item.append(si.si[1].m4pos);
-    item.append(si.si[1].m5pos);
-    item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
+//    item.append(si.si[1].m0pos);
+//    item.append(si.si[1].m1pos);
+//    item.append(si.si[1].m2pos);
+//    item.append(si.si[1].m3pos);
+//    item.append(si.si[1].m4pos);
+//    item.append(si.si[1].m5pos);
     item.append(si.si[1].space0);
     item.append(si.si[1].space1);
-    item.append(si.si[1].space2);
+//    item.append(si.si[1].space2);
     item.append(si.si[1].count0);
     item.append(si.si[1].count1);
-    item.append(si.si[1].count2);
-    item.append(si.si[1].doesBindingCounter);
-    item.append(si.si[1].counterID);
+//    item.append(si.si[1].count2);
+    item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
+//    item.append(si.si[1].doesBindingCounter);
+//    item.append(si.si[1].counterID);
+    item.append(si.all[25]);
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
 

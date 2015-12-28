@@ -36,7 +36,7 @@ struct SI{
 
 union StackInfo{
     SI si[2];
-    quint32 all[30];
+    quint32 all[26];
 };
 Q_DECLARE_METATYPE(StackInfo)
 //qRegisterMetaType<StackInfo>("StackInfo");

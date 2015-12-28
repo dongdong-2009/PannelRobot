@@ -84,6 +84,11 @@ var actionTypes = {
     "kAT_SyncEnd":2
 };
 
+var stackTypes = {
+    "kST_Normal":0,
+    "kST_Box":1
+};
+
 var isSyncAction = function(actionObject){
     return actionObject.action === actionTypes.kAT_SyncStart ||
             actionObject.action === actionTypes.kAT_SyncEnd;
@@ -551,12 +556,26 @@ var syncEndActionToStringHandler = function(actionObject){
     return qsTr("Sync End");
 }
 
+function stackTypeToString(type){
+    switch(type){
+    case stackTypes.kST_Box:
+        return qsTr("Box");
+    default:
+        return "";
+    }
+}
+
 var stackActionToStringHandler = function(actionObject){
     var si = getStackInfoFromID(actionObject.stackID);
     var descr = (si == null) ? qsTr("not exist") : si.descr;
-    return qsTr("Stack") + "[" + actionObject.stackID + "]:" +
+    var spee1 = si.type == stackTypes.kST_Box ? (qsTr("Speed1:") + actionObject.speed1):
+                                                          "";
+    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID) : qsTr("Counter:Self");
+    var counterID2 = si.type == stackTypes.kST_Box ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID) : qsTr("Counter:Self"))
+                                                             : "";
+    return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            qsTr("Speed0:") + actionObject.speed0;
+            qsTr("Speed0:") + actionObject.speed0 + " " + spee1 + " " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){

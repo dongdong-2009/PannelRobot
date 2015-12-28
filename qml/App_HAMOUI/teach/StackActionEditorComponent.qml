@@ -26,7 +26,13 @@ Item {
     property alias dir1: dir1.configValue
     property alias dir2: dir2.configValue
 
-    property bool  doesBindingCounter: counterSel.configValue != 0
+    property bool  doesBindingCounter: false
+
+    function realDoesBindingCounter(){
+
+        return counterSel.configValue != 0;
+    }
+
 
     property int mode: 0
     function counterID() {

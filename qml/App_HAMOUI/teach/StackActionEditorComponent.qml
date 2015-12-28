@@ -27,6 +27,8 @@ Item {
     property alias dir2: dir2.configValue
 
     property bool  doesBindingCounter: counterSel.configValue != 0
+
+    property int mode: 0
     function counterID() {
         var counterStr = counterSel.configText;
         var begin = counterStr.indexOf('[') + 1;
@@ -54,6 +56,7 @@ Item {
         Row{
             spacing: 4
             Grid{
+                visible: mode == 0
                 //                id:posContainer
                 columns: 2
                 spacing: 4
@@ -132,6 +135,7 @@ Item {
                     configName: qsTr("Space2")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: 100
+                    visible: mode == 0
 
                 }
                 ICConfigEdit{
@@ -139,6 +143,7 @@ Item {
                     configName: qsTr("Count2")
                     configAddr: "s_rw_0_32_0_1400"
                     inputWidth: 100
+                    visible: mode == 0
                 }
             }
         }

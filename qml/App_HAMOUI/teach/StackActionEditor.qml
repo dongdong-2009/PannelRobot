@@ -130,12 +130,12 @@ Rectangle {
                         text: qsTr("Set In")
                         height: stackDescr.height
                         onButtonClicked: {
-                            motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                            motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                            motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                            motor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                            motor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                            motor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                            page1.motor0 = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            page1.motor1 = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            page1.motor2 = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            page1.motor3 = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                            page1.motor4 = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                            page1.motor5 = panelRobotController.statusValueText("c_ro_0_32_3_920");
                         }
 
                     }
@@ -294,6 +294,7 @@ Rectangle {
                     x:menuContainer.x
                     id:page2
                     visible: currentPage == 2;
+                    mode: 1
                 }
 
             }

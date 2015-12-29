@@ -26,6 +26,13 @@ Item {
                                                        30);
             }
         }
+        ICButton{
+            id:connectUsbNet
+            text: qsTr("USB Net")
+            onButtonClicked: {
+                panelRobotController.usbNetInit();
+            }
+        }
 
         Row{
             spacing: 20
@@ -52,6 +59,7 @@ Item {
                                                            parseInt(debugVal.configValue));
                 }
             }
+
 
 
 

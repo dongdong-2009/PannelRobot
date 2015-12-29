@@ -172,6 +172,8 @@ var kCCErr_Last_Is_Not_End_Action = 8;
 var kCCErr_Invaild_Program_Index = 9;
 var kCCErr_Wrong_Action_Format = 10;
 var kCCErr_Invaild_Flag = 11;
+var kCCErr_Invaild_StackID = 12;
+var kCCErr_Invaild_CounterID = 13;
 
 var kAxisType_NoUse = 0;
 var kAxisType_Servo = 1;
@@ -476,6 +478,10 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("Jump To ") + flagStrs[actionObject.flag];
     }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
         var c = counterManager.getCounter(actionObject.counterID);
+        if(c == null){
+            return qsTr("IF:") + qsTr("Invalid Counter");
+        }
+
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
@@ -750,6 +756,10 @@ function ccErrnoToString(errno){
         return qsTr("Wrong action format");
     case kCCErr_Invaild_Flag:
         return qsTr("Invalid jump flag");
+    case kCCErr_Invaild_StackID:
+        return qsTr("Invalid stack");
+    case kCCErr_Invaild_CounterID:
+        return qsTr("Invalid counter");
     }
     return qsTr("Unknow Error");
 }
@@ -956,6 +966,7 @@ function CounterManager(){
     }
     this.counterToString = function(id){
         var cs = this.getCounter(id);
+        if(cs == null) return "Invalid Counter";
         return cs.toString();
     }
 

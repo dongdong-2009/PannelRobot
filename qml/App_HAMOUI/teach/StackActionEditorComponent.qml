@@ -202,7 +202,7 @@ Item {
 
     function updateCounters(){
         var countersStrList = Teach.counterManager.countersStrList();
-        countersStrList.splice(0, 1, qsTr("Self"));
+        countersStrList.splice(0, 0, qsTr("Self"));
         counterSel.items = countersStrList;
     }
 

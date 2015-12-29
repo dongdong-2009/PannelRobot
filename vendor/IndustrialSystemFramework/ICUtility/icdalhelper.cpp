@@ -812,7 +812,7 @@ bool ICDALHelper::AddCounter(const QString &moldname, const QVariantList& counte
 bool ICDALHelper::DelCounter(const QString &moldname, quint32 id)
 {
     QSqlQuery query;
-    QString cmd = QString("DELTE FROM %1 WHERE id = %2").arg(MoldConfigNameWrapper(MoldCounterTableName(moldname)))
+    QString cmd = QString("DELETE FROM %1 WHERE id = %2").arg(MoldConfigNameWrapper(MoldCounterTableName(moldname)))
             .arg(id);
     return query.exec(cmd);
 }

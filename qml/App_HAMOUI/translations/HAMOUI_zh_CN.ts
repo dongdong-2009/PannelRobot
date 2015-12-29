@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -38,6 +38,10 @@
     <message>
         <source>Limit:</source>
         <translation>限时:</translation>
+    </message>
+    <message>
+        <source>Action Time:</source>
+        <translation>动作时间:</translation>
     </message>
 </context>
 <context>
@@ -84,27 +88,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation type="vanished">电机1报警</translation>
+        <translation>电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation type="vanished">电机2报警</translation>
+        <translation>电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation type="vanished">电机3报警</translation>
+        <translation>电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation type="vanished">电机4报警</translation>
+        <translation>电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation type="vanished">电机5报警</translation>
+        <translation>电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation type="vanished">电机6报警</translation>
+        <translation>电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -342,7 +346,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回</translation>
+        <translation>返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -649,12 +653,55 @@
         <source>Jump</source>
         <translation>跳转</translation>
     </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Auto Clear</source>
+        <translation>自动清计数器</translation>
+    </message>
 </context>
 <context>
     <name>ContentPageBase</name>
     <message>
         <source>text</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CounterActionEditor</name>
+    <message>
+        <source>Set Counter</source>
+        <translation>计数器+1</translation>
+    </message>
+    <message>
+        <source>Clear Counter</source>
+        <translation>计数器清零</translation>
+    </message>
+    <message>
+        <source>New</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <source>Current</source>
+        <translation>当前</translation>
+    </message>
+    <message>
+        <source>Target</source>
+        <translation>目标</translation>
     </message>
 </context>
 <context>
@@ -685,6 +732,10 @@
     </message>
     <message>
         <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>USB Net</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1572,11 +1623,11 @@
     </message>
     <message>
         <source>Time Y</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y</translation>
     </message>
     <message>
         <source>Act Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>动作时间:</translation>
     </message>
 </context>
 <context>
@@ -1714,7 +1765,7 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">添加点</translation>
+        <translation>添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
@@ -1742,11 +1793,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation type="vanished">插入</translation>
+        <translation>插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation type="vanished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
@@ -1840,7 +1891,7 @@ please chose!</source>
     </message>
     <message>
         <source>Output Action</source>
-        <translation>信号输出动作</translation>
+        <translation>信号输出</translation>
     </message>
     <message>
         <source>Check</source>
@@ -1877,6 +1928,10 @@ please chose!</source>
     <message>
         <source>Stack</source>
         <translation>堆叠</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>
@@ -1951,7 +2006,7 @@ please chose!</source>
     </message>
     <message>
         <source>Line</source>
-        <translation>直线</translation>
+        <translation>行</translation>
     </message>
     <message>
         <source>Follow ?</source>
@@ -2104,14 +2159,6 @@ please chose!</source>
         <translation>使用堆叠</translation>
     </message>
     <message>
-        <source>Type1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Type2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Type3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2182,6 +2229,81 @@ please chose!</source>
     <message>
         <source>Speed</source>
         <translation>速度</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
+    </message>
+    <message>
+        <source>Box</source>
+        <translation>装箱和箱内堆</translation>
+    </message>
+    <message>
+        <source>Speed0</source>
+        <translation>速度0</translation>
+    </message>
+    <message>
+        <source>Speed1</source>
+        <translation>速度1</translation>
+    </message>
+</context>
+<context>
+    <name>StackActionEditorComponent</name>
+    <message>
+        <source>Space0</source>
+        <translation>X方向间距</translation>
+    </message>
+    <message>
+        <source>Count0</source>
+        <translation>X方向计数</translation>
+    </message>
+    <message>
+        <source>Space1</source>
+        <translation>Y方向间距</translation>
+    </message>
+    <message>
+        <source>Count1</source>
+        <translation>Y方向计数</translation>
+    </message>
+    <message>
+        <source>Space2</source>
+        <translation>Z方向间距</translation>
+    </message>
+    <message>
+        <source>Count2</source>
+        <translation>Z方向计数</translation>
+    </message>
+    <message>
+        <source>Dir0</source>
+        <translation>X方向</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation>反相</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正相</translation>
+    </message>
+    <message>
+        <source>Dir1</source>
+        <translation>Y方向</translation>
+    </message>
+    <message>
+        <source>Dir2</source>
+        <translation>Z方向</translation>
+    </message>
+    <message>
+        <source>Sequence</source>
+        <translation>顺序</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Self</source>
+        <translation>自身</translation>
     </message>
 </context>
 <context>
@@ -2424,6 +2546,54 @@ please chose!</source>
     <message>
         <source>Action Time:</source>
         <translation>动作时间:</translation>
+    </message>
+    <message>
+        <source>Invalid Counter</source>
+        <translation>非法的计数器</translation>
+    </message>
+    <message>
+        <source>Arrive</source>
+        <translation>到达</translation>
+    </message>
+    <message>
+        <source>No arrive</source>
+        <translation>没到达</translation>
+    </message>
+    <message>
+        <source>Then clear counter</source>
+        <translation>然后清零计数器</translation>
+    </message>
+    <message>
+        <source>Box</source>
+        <translation>装箱</translation>
+    </message>
+    <message>
+        <source>Speed1:</source>
+        <translation>速度1:</translation>
+    </message>
+    <message>
+        <source>Counter:Self</source>
+        <translation>计数器:自身</translation>
+    </message>
+    <message>
+        <source>Speed0:</source>
+        <translation>速度0:</translation>
+    </message>
+    <message>
+        <source>Clear </source>
+        <translation>清空</translation>
+    </message>
+    <message>
+        <source>Invalid stack</source>
+        <translation>非法的堆叠</translation>
+    </message>
+    <message>
+        <source>Invalid counter</source>
+        <translation>非法的计数器</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>

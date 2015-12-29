@@ -46,6 +46,7 @@ Rectangle {
             id:changePage
             width: 40
             height: navLine.height
+            bgColor: "yellow"
             text: "-->"
             visible: defineStack.isChecked
             onButtonClicked: {

@@ -253,7 +253,7 @@ Rectangle {
                 anchors.right: parent.right
                 visible: false
                 z:4
-                spacing: 2
+                spacing: 6
                 ICCheckBox{
                     id:speedEn
                     text: qsTr("Speed En")

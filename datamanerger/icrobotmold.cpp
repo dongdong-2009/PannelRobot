@@ -197,24 +197,24 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(si.si[0].count1);
     item.append(si.si[0].count2);
     item.append(si.all[12]);
-//    item.append(si.si[0].doesBindingCounter);
-//    item.append(si.si[0].counterID);
+    //    item.append(si.si[0].doesBindingCounter);
+    //    item.append(si.si[0].counterID);
 
-//    item.append(si.si[1].m0pos);
-//    item.append(si.si[1].m1pos);
-//    item.append(si.si[1].m2pos);
-//    item.append(si.si[1].m3pos);
-//    item.append(si.si[1].m4pos);
-//    item.append(si.si[1].m5pos);
+    //    item.append(si.si[1].m0pos);
+    //    item.append(si.si[1].m1pos);
+    //    item.append(si.si[1].m2pos);
+    //    item.append(si.si[1].m3pos);
+    //    item.append(si.si[1].m4pos);
+    //    item.append(si.si[1].m5pos);
     item.append(si.si[1].space0);
     item.append(si.si[1].space1);
-//    item.append(si.si[1].space2);
+    //    item.append(si.si[1].space2);
     item.append(si.si[1].count0);
     item.append(si.si[1].count1);
-//    item.append(si.si[1].count2);
+    //    item.append(si.si[1].count2);
     item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
-//    item.append(si.si[1].doesBindingCounter);
-//    item.append(si.si[1].counterID);
+    //    item.append(si.si[1].doesBindingCounter);
+    //    item.append(si.si[1].counterID);
     item.append(si.all[25]);
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
@@ -362,6 +362,17 @@ static bool IsJumpAction(int act)
             act == F_CMD_PROGRAM_JUMP2;
 }
 
+int IsCounterValid(const QVector<QVariantList>& counters, int counterID)
+{
+    for(int i = 0; i < counters.size(); ++i)
+    {
+        if(counterID == counters.at(i).at(0).toUInt())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
 CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, StackInfo>& stackInfos, const QVector<QVariantList>& counters, int &err)
 {
@@ -381,6 +392,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
     bool isSyncBegin = false;
     bool isGroupBegin = false;
     int act;
+    //    int stackCounterID = -1;
     for(int i = 0; i != result.size(); ++i)
     {
         action = result.at(i).toMap();
@@ -408,33 +420,42 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
                 ret.Clear();
                 err = ICRobotMold::kCCErr_Invaild_StackID;
                 ret.AddErr(i, err);
-                return ret;
+                continue;
+                //                return ret;
             }
             StackInfo si = stackInfos.value(stackID);
-
-            action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
-        }
-        else if(act == F_CMD_COUNTER ||
-                act == F_CMD_COUNTER_CLEAR)
-        {
-            int cID =  action.value("counterID", -1).toUInt();
-            int cIndex = -1;
-            for(int i = 0; i < counters.size(); ++i)
+            for(int j = 0; j < 2; ++j)
             {
-                if(cID == counters.at(i).at(0).toUInt())
+                if(si.si[j].doesBindingCounter)
                 {
-                    cIndex = i;
-                    break;
+                    if(IsCounterValid(counters, si.si[j].counterID) < 0)
+                    {
+                        ret.Clear();
+                        err = ICRobotMold::kCCErr_Invaild_CounterID;
+                        ret.AddErr(i, err);
+                    }
                 }
             }
-            if(cIndex < 0)
+            action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+        }
+        if(act == F_CMD_COUNTER ||
+                act == F_CMD_COUNTER_CLEAR ||
+                act == F_CMD_PROGRAM_JUMP2)
+        {
+            int cID =  action.value("counterID", -1).toUInt();
+            if(cID >= 0)
             {
-                ret.Clear();
-                err = ICRobotMold::kCCErr_Invaild_CounterID;
-                ret.AddErr(i, err);
-                return ret;
+                int cIndex = IsCounterValid(counters, cID) ;
+                if(cIndex < 0)
+                {
+                    ret.Clear();
+                    err = ICRobotMold::kCCErr_Invaild_CounterID;
+                    ret.AddErr(i, err);
+                    continue;
+                    //                return ret;
+                }
+                action.insert("counterInfo", counters.at(cIndex));
             }
-            action.insert("counterInfo", counters.at(cIndex));
 
         }
 
@@ -453,7 +474,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
                 ret.Clear();
                 err = kCCErr_Sync_Nesting;
                 ret.AddErr(i, err);
-                return ret;
+                continue;
+                //                return ret;
             }
             isSyncBegin = true;
             continue;
@@ -465,7 +487,9 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
                 ret.Clear();
                 err = kCCErr_Sync_NoBegin;
                 ret.AddErr(i, err);
-                return ret;
+                continue;
+
+                //                return ret;
             }
             isSyncBegin = false;
             ++step;
@@ -488,21 +512,24 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
         ret.Clear();
         err = kCCErr_Sync_NoEnd;
         ret.AddErr(result.size(), err);
-        return ret;
+
+        //        return ret;
     }
     if(isGroupBegin)
     {
         ret.Clear();
         err = kCCErr_Group_NoEnd;
         ret.AddErr(result.size(), err);
-        return ret;
+
+        //        return ret;
     }
     if(act != F_CMD_END)
     {
         ret.Clear();
         err = kCCErr_Last_Is_Not_End_Action;
         ret.AddErr(result.size(), err);
-        return ret;
+
+        //        return ret;
     }
 
     // recalc flag step in condition
@@ -515,7 +542,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
         if(IsJumpAction(act))
         {
             int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
-            if(toJumpStep >= 0)
+            if((toJumpStep >= 0) && (p.value() == kCCErr_Invaild_Flag))
             {
                 action.insert("step", toJumpStep);
                 ret.UpdateICMoldItem(p.key(), VariantToMoldItem(0, action, err));

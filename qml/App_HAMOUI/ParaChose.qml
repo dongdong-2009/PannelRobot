@@ -42,6 +42,7 @@ MouseArea{
                 onButtonClicked: {
                     panelRobotController.modifyConfigValue(1,
                                                            4096);
+                    panelRobotController.loadHostMachineConfigs();
 
                 }
             }

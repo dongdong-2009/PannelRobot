@@ -116,6 +116,8 @@ Rectangle {
                 else
                     panelRobotController.saveSubProgram(modelToProgram(editing.currentIndex));
 
+
+
             }
         }
     }
@@ -149,6 +151,7 @@ Rectangle {
             }
             tipBox.show(toShow);
         }
+        updateCounterLines(editing.currentIndex);
     }
 
     //    function saveProgram(which){
@@ -785,8 +788,24 @@ Rectangle {
         }
     }
 
+    function updateCounterLines(which){
+        var program = PData.programs[which];
+        PData.counterLinesInfo.clear(which);
+        var step;
+        for(var i = 0; i < program.count; ++i){
+            step = program.get(i);
+            if(Teach.hasCounterIDAction(step.mI_ActionObject)){
+                var cs = Teach.actionCounterIDs(step.mI_ActionObject);
+                for(var c in cs){
+                    PData.counterLinesInfo.add(which, cs[c], i);
+                }
+
+            }
+        }
+    }
+
     function updateProgramModels(){
-        PData.counterLinesInfo.clear();
+//        PData.counterLinesInfo.clear();
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
         Teach.counterManager.init(counters);
@@ -822,13 +841,7 @@ Rectangle {
                     at = Teach.actionTypes.kAT_Normal;
                 if(isSyncStart)
                     at = Teach.actionTypes.kAT_SyncStart;
-                if(Teach.hasCounterIDAction(step)){
-                    var cs = Teach.actionCounterIDs(step);
-                    for(var c in cs){
-                        PData.counterLinesInfo.add(i, cs[c], p);
-                    }
 
-                }
                 PData.programs[i].append(new Teach.ProgramModelItem(step, at));
             }
             for(var l = 0; l < jumpLines.length; ++l){
@@ -836,6 +849,7 @@ Rectangle {
                 PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
                 PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
             }
+            updateCounterLines(i);
         }
         editing.currentIndex = 0;
 

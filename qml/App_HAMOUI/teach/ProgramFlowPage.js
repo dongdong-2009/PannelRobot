@@ -15,7 +15,12 @@ var isReadOnly = true;
 
 var counterLinesInfo = {
     "programsCounters":[],
-    "clear": function(){ this.programsCounters.length = 0;},
+    "clear": function(programIndex){
+        var tmp = this.programsCounters[programIndex];
+        if(tmp != undefined){
+            tmp.length = 0;
+        }
+    },
     "add":function(programIndex, counterID, line){
         var tmp = this.programsCounters[programIndex];
         if(tmp == undefined){

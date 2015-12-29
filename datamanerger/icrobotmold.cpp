@@ -1023,7 +1023,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[1].dir0 = stackMap.value("dir0").toInt();
         stackInfo.si[1].dir1 = stackMap.value("dir1").toInt();
         stackInfo.si[1].dir2 = stackMap.value("dir2").toInt();
-        stackInfo.si[0].type = p.value().toMap().value("type").toInt();
+        stackInfo.si[1].type = stackInfo.si[0].type;
         stackInfo.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.si[1].counterID = stackMap.value("counterID").toInt();
         ret.insert(p.key().toInt(), stackInfo);

@@ -29,6 +29,9 @@ Rectangle {
         stackViewSel.currentIndex = 0;
 
     }
+    onStackTypeChanged: {
+        pageCount = (stackType == 1 ? 3 : 2);
+    }
 
     Row{
         id:navContainer
@@ -77,6 +80,7 @@ Rectangle {
         z: 11
         y:topContainer.y
         x:200
+        visible: defineStack.isChecked
         popupWidth: 200
         width: currentIndex == 0 ? 80 : popupWidth
         onCurrentIndexChanged: {
@@ -158,13 +162,15 @@ Rectangle {
             configName: qsTr("Stack")
             inputWidth: 200
             isNumberOnly: false
-            visible: stackViewSel.currentIndex === 0
+            visible: (stackViewSel.currentIndex === 0) && (defineStack.isChecked)
+
         }
 
         ICButton{
             id:save
             anchors.left: stackDescr.right
             anchors.leftMargin: 6
+            visible: defineStack.isChecked
             text: qsTr("Save")
             height: stackDescr.height
             width: 60
@@ -222,6 +228,7 @@ Rectangle {
             id:deleteStack
             anchors.left: save.right
             anchors.leftMargin: 6
+            visible: defineStack.isChecked
             text: qsTr("Delete")
             height: stackDescr.height
             width: save.width

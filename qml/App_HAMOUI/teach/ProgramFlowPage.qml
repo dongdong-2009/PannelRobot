@@ -566,6 +566,16 @@ Rectangle {
                         onTriggered: {
 
                             if(!panelRobotController.isAutoMode()) return;
+                            // update counters show
+                            var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");
+                            var currentCounterCurrent = panelRobotController.statusValue("c_ro_13_19_0_938");
+                            var counter = Teach.counterManager.getCounter(currentCounterID);
+                            if(counter.current != currentCounterCurrent){
+                                counter.current = currentCounterCurrent;
+                                onCounterUpdated(currentCounterID);
+
+                            }
+
                             var cStep = currentModelStep();
                             //                            var cStep = Utils.getRandomNum(0, 10);
                             if(cStep < 0 || cStep >= currentModel().count){
@@ -600,15 +610,7 @@ Rectangle {
                                 if(isFollow.isChecked)
                                     programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
 
-                                // update counters show
-                                var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");
-                                var currentCounterCurrent = panelRobotController.statusValue("c_ro_13_19_0_938");
-                                var counter = Teach.counterManager.getCounter(currentCounterID);
-                                if(counter.current != currentCounterCurrent){
-                                    counter.current = currentCounterCurrent;
-                                    onCounterUpdated(currentCounterID);
 
-                                }
                             }
 
                         }

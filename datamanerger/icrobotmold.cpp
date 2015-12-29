@@ -459,7 +459,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
 
         }
 
-        ret.AddICMoldItem(VariantToMoldItem(step, action, err));
+        ret.AddICMoldItem(i,VariantToMoldItem(step, action, err));
         if(err != kCCErr_None)
         {
             ret.Clear();

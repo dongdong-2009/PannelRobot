@@ -94,8 +94,15 @@ public:
     void Clear() { stepMap_.clear();}
     bool IsCompileErr() const { return !errList_.isEmpty();}
     void AddErr(int step, int err) { errList_.insert(step, err);}
-    void AddICMoldItem(const ICMoldItem& item) { compiledProgram_.append(item);}
-    void UpdateICMoldItem(int line, const ICMoldItem& item) { compiledProgram_[line] = item;}
+    void AddICMoldItem(int uiStep, const ICMoldItem& item)
+    {
+        uiStepToComiledLine.insert(uiStep, compiledProgram_.size());
+        compiledProgram_.append(item);
+    }
+    void UpdateICMoldItem(int line, const ICMoldItem& item)
+    {
+        compiledProgram_[uiStepToComiledLine.value(line)] = item;
+    }
     ICMoldItem GetICMoldItem(int line) { return compiledProgram_.at(line);}
     QVector<QVector<quint32> >ProgramToBareData() const
     {
@@ -141,6 +148,7 @@ private:
 
     QMap<int, QList<int> > realStepToUIStepMap_;
     QMap<int, int> errList_;
+    QMap<int, int> uiStepToComiledLine;
     ICActionProgram compiledProgram_;
 };
 

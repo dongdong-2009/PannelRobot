@@ -189,6 +189,19 @@ Rectangle {
         speedDispalyContainer.visible = isAuto;
     }
 
+    function onCounterUpdated(counterID){
+        var counterLines  = PData.counterLinesInfo.getCounterLine(editing.currentIndex,counterID);
+        var md = currentModel();
+        var tmp;
+        var line;
+        for(var l in counterLines){
+            line = counterLines[l];
+            tmp = md.get(line);
+            md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
+
+        }
+    }
+
     //    function setCurrentModelData(actionObject){
     //        currentModel().set(programListView.currentIndex,
     //                           new Teach.ProgramModelItem(actionObject));
@@ -593,17 +606,7 @@ Rectangle {
                                 var counter = Teach.counterManager.getCounter(currentCounterID);
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-                                    var counterLines  = PData.counterLinesInfo.getCounterLine(editing.currentIndex,currentCounterID);
-//                                    console.log("counter line:", currentCounterID, currentCounterCurrent,counterLines.length);
-                                    var md = currentModel();
-                                    var tmp;
-                                    var line;
-                                    for(var l in counterLines){
-                                        line = counterLines[l];
-                                        tmp = md.get(line);
-                                        md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
-
-                                    }
+                                    onCounterUpdated(currentCounterID);
 
                                 }
                             }
@@ -693,6 +696,7 @@ Rectangle {
                 var stackEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('CounterActionEditor.qml')
                 var counterEditorObject = editor.createObject(actionEditorContainer);
+                counterEditorObject.counterUpdated.connect(onCounterUpdated);
 
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
@@ -817,7 +821,11 @@ Rectangle {
                 if(isSyncStart)
                     at = Teach.actionTypes.kAT_SyncStart;
                 if(Teach.hasCounterIDAction(step)){
-                    PData.counterLinesInfo.add(i, step.counterID, p);
+                    var cs = Teach.actionCounterIDs(step);
+                    for(var c in cs){
+                        PData.counterLinesInfo.add(i, cs[c], p);
+                    }
+
                 }
                 PData.programs[i].append(new Teach.ProgramModelItem(step, at));
             }

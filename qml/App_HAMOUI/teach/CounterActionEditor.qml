@@ -22,6 +22,8 @@ Rectangle {
         return ret;
     }
 
+    signal counterUpdated(int id);
+
     ICButtonGroup{
         id:typeContainer
         layoutMode: 1
@@ -56,6 +58,7 @@ Rectangle {
                 var toAdd = Teach.counterManager.newCounter(newCounterName.text, 0, 0);
                 if(panelRobotController.saveCounterDef(toAdd.id, toAdd.name, toAdd.current, toAdd.target))
                     counterModel.append(toAdd);
+                counterUpdated(toAdd.id);
             }
         }
 
@@ -69,6 +72,7 @@ Rectangle {
                 Teach.counterManager.delCounter(counterID);
                 if(panelRobotController.delCounterDef(counterID))
                     counterModel.remove(counterview.currentIndex);
+                counterUpdated(counterID)
             }
 
         }
@@ -177,6 +181,7 @@ Rectangle {
                                     md.current = text;
                                     Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
+                                    counterUpdated(md.id);
                                 }
                             }
                             ICLineEdit{
@@ -189,6 +194,7 @@ Rectangle {
                                     md.target = text;
                                     Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
+                                    counterUpdated(md.id);
                                 }
                             }
                         }

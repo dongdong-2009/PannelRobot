@@ -89,6 +89,246 @@ var stackTypes = {
     "kST_Box":1
 };
 
+var flags = [];
+var flagStrs = [];
+
+var pushFlag = function(flag, descr){
+    for(var i = 0; i < flags.length; ++i){
+        if(flag < flags[i]){
+            flags.splice(i, 0, flag);
+            flagStrs.splice(i, 0,  qsTr("Flag") + "[" + flag + "]" + ":" + descr);
+            return;
+        }
+    }
+    flags.push(flag);
+    flagStrs.push(qsTr("Flag") + "[" + flag + "]" + ":" + descr);
+    return;
+}
+
+var delFlag = function(flag){
+    for(var i = 0; i < flags.length; ++i){
+        if(flag === flags[i]){
+            flags.splice(i, 1);
+            flagStrs.splice(i, 1);
+            break;
+        }
+    }
+}
+
+var useableFlag = function(){
+    if(flags.length === 0) return 0;
+    //    if(flags.length < 3)
+    //        return flags[flags.length - 1] + 1;
+    if(flags[0] !== 0) return 0;
+    for(var i = 1; i < flags.length; ++i){
+        if(flags[i] - flags[i - 1] > 1){
+            return flags[i - 1] + 1;
+        }
+    }
+    return flags[i - 1] + 1;
+}
+
+function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
+                   space0, space1, space2, count0, count1, count2,
+                   sequence, dir0, dir1, dir2, doesBindingCounter, counterID ){
+    this.m0pos = m0pos || 0;
+    this.m1pos = m1pos || 0;
+    this.m2pos = m2pos || 0;
+    this.m3pos = m3pos || 0;
+    this.m4pos = m4pos || 0;
+    this.m5pos = m5pos || 0;
+    this.space0 = space0 || 0;
+    this.space1 = space1 || 0;
+    this.space2 = space2 || 0;
+    this.count0 = count0 || 0;
+    this.count1 = count1 || 0;
+    this.count2 = count2 || 0;
+    this.sequence = sequence || 0;
+    this.dir0 = dir0 || 0;
+    this.dir1 = dir1 || 0;
+    this.dir2 = dir2 || 0;
+    this.doesBindingCounter = doesBindingCounter || 0;
+    this.counterID = counterID || 0;
+}
+
+function StackInfo(si0, si1, type, descr){
+    this.si0 = si0;
+    this.si1 = si1;
+    this.type = type || 0;
+    this.descr = descr;
+}
+
+
+var stackIDs = [];
+var stackInfos = [];
+
+function appendStackInfo(stackInfo){
+    var id = useableStack();
+    pushStack(id, stackInfo);
+}
+
+function updateStackInfo(which, stackInfo){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stackIDs[i] == which){
+            stackInfos[i] = stackInfo;
+            break;
+        }
+    }
+}
+
+function getStackInfoFromID(stackID){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stackIDs[i] == stackID){
+            return stackInfos[i];
+        }
+    }
+    return null;
+}
+
+var pushStack = function(stack, info){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stack < stackIDs[i]){
+            stackIDs.splice(i, 0, stack);
+            stackInfos.splice(i, 0, info);
+            return;
+        }
+    }
+    stackIDs.push(stack);
+    stackInfos.push(info);
+    return;
+}
+
+var delStack = function(stack){
+    for(var i = 0; i < stackIDs.length; ++i){
+        if(stack === stackIDs[i]){
+            stackIDs.splice(i, 1);
+            stackInfos.splice(i, 1);
+            break;
+        }
+    }
+}
+
+var useableStack = function(){
+    if(stackIDs.length === 0) return 0;
+    //    if(stackIDs.length < 3)
+    //        return stackIDs[stackIDs.length - 1] + 1;
+    if(stackIDs[0] !== 0) return 0;
+    for(var i = 1; i < stackIDs.length; ++i){
+        if(stackIDs[i] - stackIDs[i - 1] > 1){
+            return stackIDs[i - 1] + 1;
+        }
+    }
+    return stackIDs[i - 1] + 1;
+}
+
+function parseStacks(stacks){
+    if(stacks.length === 0) return;
+    console.log(stacks);
+    var statckInfos = JSON.parse(stacks);
+    stackIDs.length = 0;
+    stackInfos.length = 0;
+    for(var s in statckInfos){
+        pushStack(parseInt(s), statckInfos[s]);
+    }
+}
+
+
+function statcksToJSON(){
+    var ret = {};
+    for(var i = 0; i < stackIDs.length; ++i){
+        ret[stackIDs[i].toString()] = stackInfos[i];
+    }
+    return JSON.stringify(ret);
+}
+
+function stackInfosDescr(){
+    var ret = [];
+    for(var i = 0; i < stackIDs.length; ++i){
+        ret.push(qsTr("Stack") + "[" + stackIDs[i] + "]:" + stackInfos[i].descr);
+    }
+    return ret;
+}
+
+function CounterInfo(id, name, current, target){
+    this.id = id || 0;
+    this.name = name || "Counter-" + this.id;
+    this.current = current || 0;
+    this.target = target || 0;
+    this.toString = function(){
+       return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]";
+
+    }
+}
+
+function CounterManager(){
+    this.counters = [];
+    this.init = function(bareCounters){
+        this.counters.length = 0;
+        for(var c in bareCounters){
+            var counter = bareCounters[c];
+            this.counters.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));
+        }
+    }
+
+    this.usableID = function(){
+        var cs = this.counters;
+        if(cs.length === 0) return 0;
+        if(cs[0].id != 0) return 0;
+        for(var i = 1; i < cs.length; ++i){
+            if(cs[i].id - cs[i - 1].id > 1){
+                return cs[i - 1].id + 1;
+            }
+        }
+        return cs[i - 1].id + 1;
+    }
+
+    this.getCounter = function(id){
+        for(var c in this.counters){
+            if(this.counters[c].id == id)
+                return this.counters[c];
+        }
+        return null;
+    }
+    this.counterToString = function(id){
+        var cs = this.getCounter(id);
+        if(cs == null) return "Invalid Counter";
+        return cs.toString();
+    }
+
+    this.countersStrList = function(){
+        var ret = [];
+        for(var i = 0; i < this.counters.length; ++i){
+            ret.push(this.counters[i].toString() + ":" + this.counters[i].name);
+        }
+        return ret;
+    }
+
+    this.newCounter = function(name, current, target){
+        var newID = this.usableID();
+        var toAdd = new CounterInfo(newID, name, current, target);
+        this.counters.push(toAdd);
+        return toAdd;
+    }
+    this.updateCounter = function(id, name, current, target){
+        var c = this.getCounter(id);
+        c.name = name;
+        c.current = current;
+        c.target = target;
+    }
+    this.delCounter = function(id){
+        for(var c in this.counters){
+            if(this.counters[c].id == id){
+                this.counters.splice(c, 1);
+                break;
+            }
+        }
+    }
+}
+
+var counterManager = new CounterManager();
+
+
+
 var isSyncAction = function(actionObject){
     return actionObject.action === actionTypes.kAT_SyncStart ||
             actionObject.action === actionTypes.kAT_SyncEnd;
@@ -187,7 +427,21 @@ function isJumpAction(act){
 }
 
 function hasCounterIDAction(action){
+    if(action.action == actions.F_CMD_STACK0){
+        var si = getStackInfoFromID(action.stackID);
+        if(si != null)
+            return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
+    }
+
     return action.hasOwnProperty("counterID");
+}
+
+function actionCounterIDs(action){
+    if(action.action == actions.F_CMD_STACK0){
+        var si = getStackInfoFromID(action.stackID);
+        return [si.si0.counterID, si.si1.counterID];
+    }
+    return [action.counterID];
 }
 
 var generateAxisServoAction = function(action,
@@ -764,243 +1018,6 @@ function ccErrnoToString(errno){
     return qsTr("Unknow Error");
 }
 
-var flags = [];
-var flagStrs = [];
-
-var pushFlag = function(flag, descr){
-    for(var i = 0; i < flags.length; ++i){
-        if(flag < flags[i]){
-            flags.splice(i, 0, flag);
-            flagStrs.splice(i, 0,  qsTr("Flag") + "[" + flag + "]" + ":" + descr);
-            return;
-        }
-    }
-    flags.push(flag);
-    flagStrs.push(qsTr("Flag") + "[" + flag + "]" + ":" + descr);
-    return;
-}
-
-var delFlag = function(flag){
-    for(var i = 0; i < flags.length; ++i){
-        if(flag === flags[i]){
-            flags.splice(i, 1);
-            flagStrs.splice(i, 1);
-            break;
-        }
-    }
-}
-
-var useableFlag = function(){
-    if(flags.length === 0) return 0;
-    //    if(flags.length < 3)
-    //        return flags[flags.length - 1] + 1;
-    if(flags[0] !== 0) return 0;
-    for(var i = 1; i < flags.length; ++i){
-        if(flags[i] - flags[i - 1] > 1){
-            return flags[i - 1] + 1;
-        }
-    }
-    return flags[i - 1] + 1;
-}
-
-function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
-                   space0, space1, space2, count0, count1, count2,
-                   sequence, dir0, dir1, dir2, doesBindingCounter, counterID ){
-    this.m0pos = m0pos || 0;
-    this.m1pos = m1pos || 0;
-    this.m2pos = m2pos || 0;
-    this.m3pos = m3pos || 0;
-    this.m4pos = m4pos || 0;
-    this.m5pos = m5pos || 0;
-    this.space0 = space0 || 0;
-    this.space1 = space1 || 0;
-    this.space2 = space2 || 0;
-    this.count0 = count0 || 0;
-    this.count1 = count1 || 0;
-    this.count2 = count2 || 0;
-    this.sequence = sequence || 0;
-    this.dir0 = dir0 || 0;
-    this.dir1 = dir1 || 0;
-    this.dir2 = dir2 || 0;
-    this.doesBindingCounter = doesBindingCounter || 0;
-    this.counterID = counterID || 0;
-}
-
-function StackInfo(si0, si1, type, descr){
-    this.si0 = si0;
-    this.si1 = si1;
-    this.type = type || 0;
-    this.descr = descr;
-}
-
-
-var stackIDs = [];
-var stackInfos = [];
-
-function appendStackInfo(stackInfo){
-    var id = useableStack();
-    pushStack(id, stackInfo);
-}
-
-function updateStackInfo(which, stackInfo){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stackIDs[i] == which){
-            stackInfos[i] = stackInfo;
-            break;
-        }
-    }
-}
-
-function getStackInfoFromID(stackID){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stackIDs[i] == stackID){
-            return stackInfos[i];
-        }
-    }
-    return null;
-}
-
-var pushStack = function(stack, info){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stack < stackIDs[i]){
-            stackIDs.splice(i, 0, stack);
-            stackInfos.splice(i, 0, info);
-            return;
-        }
-    }
-    stackIDs.push(stack);
-    stackInfos.push(info);
-    return;
-}
-
-var delStack = function(stack){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stack === stackIDs[i]){
-            stackIDs.splice(i, 1);
-            stackInfos.splice(i, 1);
-            break;
-        }
-    }
-}
-
-var useableStack = function(){
-    if(stackIDs.length === 0) return 0;
-    //    if(stackIDs.length < 3)
-    //        return stackIDs[stackIDs.length - 1] + 1;
-    if(stackIDs[0] !== 0) return 0;
-    for(var i = 1; i < stackIDs.length; ++i){
-        if(stackIDs[i] - stackIDs[i - 1] > 1){
-            return stackIDs[i - 1] + 1;
-        }
-    }
-    return stackIDs[i - 1] + 1;
-}
-
-function parseStacks(stacks){
-    if(stacks.length === 0) return;
-    console.log(stacks);
-    var statckInfos = JSON.parse(stacks);
-    stackIDs.length = 0;
-    stackInfos.length = 0;
-    for(var s in statckInfos){
-        pushStack(parseInt(s), statckInfos[s]);
-    }
-}
-
-
-function statcksToJSON(){
-    var ret = {};
-    for(var i = 0; i < stackIDs.length; ++i){
-        ret[stackIDs[i].toString()] = stackInfos[i];
-    }
-    return JSON.stringify(ret);
-}
-
-function stackInfosDescr(){
-    var ret = [];
-    for(var i = 0; i < stackIDs.length; ++i){
-        ret.push(qsTr("Stack") + "[" + stackIDs[i] + "]:" + stackInfos[i].descr);
-    }
-    return ret;
-}
-
-function CounterInfo(id, name, current, target){
-    this.id = id || 0;
-    this.name = name || "Counter-" + this.id;
-    this.current = current || 0;
-    this.target = target || 0;
-    this.toString = function(){
-       return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]";
-
-    }
-}
-
-function CounterManager(){
-    this.counters = [];
-    this.init = function(bareCounters){
-        this.counters.length = 0;
-        for(var c in bareCounters){
-            var counter = bareCounters[c];
-            this.counters.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));
-        }
-    }
-
-    this.usableID = function(){
-        var cs = this.counters;
-        if(cs.length === 0) return 0;
-        if(cs[0].id != 0) return 0;
-        for(var i = 1; i < cs.length; ++i){
-            if(cs[i].id - cs[i - 1].id > 1){
-                return cs[i - 1].id + 1;
-            }
-        }
-        return cs[i - 1].id + 1;
-    }
-
-    this.getCounter = function(id){
-        for(var c in this.counters){
-            if(this.counters[c].id == id)
-                return this.counters[c];
-        }
-        return null;
-    }
-    this.counterToString = function(id){
-        var cs = this.getCounter(id);
-        if(cs == null) return "Invalid Counter";
-        return cs.toString();
-    }
-
-    this.countersStrList = function(){
-        var ret = [];
-        for(var i = 0; i < this.counters.length; ++i){
-            ret.push(this.counters[i].toString() + ":" + this.counters[i].name);
-        }
-        return ret;
-    }
-
-    this.newCounter = function(name, current, target){
-        var newID = this.usableID();
-        var toAdd = new CounterInfo(newID, name, current, target);
-        this.counters.push(toAdd);
-        return toAdd;
-    }
-    this.updateCounter = function(id, name, current, target){
-        var c = this.getCounter(id);
-        c.name = name;
-        c.current = current;
-        c.target = target;
-    }
-    this.delCounter = function(id){
-        for(var c in this.counters){
-            if(this.counters[c].id == id){
-                this.counters.splice(c, 1);
-                break;
-            }
-        }
-    }
-}
-
-var counterManager = new CounterManager();
 
 var canActionUsePoint = function(actionObject){
     return actionObject.action === actions.F_CMD_SINGLE ||

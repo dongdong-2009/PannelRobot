@@ -575,6 +575,7 @@ Rectangle {
                             var counter = Teach.counterManager.getCounter(currentCounterID);
                             if(counter.current != currentCounterCurrent){
                                 counter.current = currentCounterCurrent;
+                                panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
                                 onCounterUpdated(currentCounterID);
 
                             }

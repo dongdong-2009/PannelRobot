@@ -14,6 +14,7 @@ Rectangle {
     height: Theme.defaultTheme.MainWindow.height
     function onScreenSave(){
         panelRobotController.closeBacklight();
+        loginDialog.setTologout();
     }
 
     function onScreenRestore(){

@@ -12,6 +12,12 @@ MouseArea{
     signal loginSuccessful(string user)
     signal logout();
 
+    function setTologout(){
+        ShareData.UserInfo.logout();
+        logout();
+        container.visible = false;
+    }
+
     Rectangle {
         width: 360
         height: 140
@@ -56,9 +62,7 @@ MouseArea{
                     id:logoutBtn
                     text: qsTr("Log out")
                     onButtonClicked: {
-                        ShareData.UserInfo.logout();
-                        logout();
-                        container.visible = false;
+                        setTologout();
                     }
                 }
                 ICButton{

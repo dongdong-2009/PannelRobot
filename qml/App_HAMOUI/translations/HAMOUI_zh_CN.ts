@@ -2240,11 +2240,11 @@ please chose!</source>
     </message>
     <message>
         <source>Speed0</source>
-        <translation>速度0</translation>
+        <translation>箱内堆速度:</translation>
     </message>
     <message>
         <source>Speed1</source>
-        <translation>速度1</translation>
+        <translation>装箱速度</translation>
     </message>
 </context>
 <context>
@@ -2569,7 +2569,7 @@ please chose!</source>
     </message>
     <message>
         <source>Speed1:</source>
-        <translation>速度1:</translation>
+        <translation>装箱速度:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
@@ -2577,7 +2577,7 @@ please chose!</source>
     </message>
     <message>
         <source>Speed0:</source>
-        <translation>速度0:</translation>
+        <translation>箱内堆速度:</translation>
     </message>
     <message>
         <source>Clear </source>
@@ -2949,7 +2949,7 @@ please chose!</source>
     </message>
     <message>
         <source>↑</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Alarm Log</source>

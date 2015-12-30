@@ -45,7 +45,7 @@ Rectangle {
             }else if(knobStatus === Keymap.KNOB_AUTO){
                 source = "images/modeAuto.png"
                 modeText.text = qsTr("Auto");
-                modeBG.source = "images/modeTextBG_Lime.png";
+                modeBG.source = "images/modeTextBG_Green.png";
             }
             else if(knobStatus === Keymap.KNOB_SETTINGS){
                 source = "images/modeSetting.png";

@@ -599,10 +599,12 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     }
     if(addr == 128)
     {
+        qDebug()<<v;
         disconnect(host_.data(),
                    SIGNAL(QueryFinished(int , const QVector<quint32>& )),
                    this,
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+        emit machineConfigChanged();
     }
 }
 

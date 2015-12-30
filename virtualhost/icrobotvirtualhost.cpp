@@ -528,7 +528,8 @@ void ICRobotVirtualhost::CommunicateImpl()
                     iStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_939));
                     oStatusMap_.insert(boardID, HostStatusValue(&c_ro_0_32_0_940));
                 }
-                if(currentStatusGroup_ == (statusGroupCount_ - 1))
+                if((currentStatusGroup_ == (statusGroupCount_ - 1)) ||
+                        (recvFrame_->GetAddr() < ICAddr_Read_Status0))
                 {
                     emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
                 }

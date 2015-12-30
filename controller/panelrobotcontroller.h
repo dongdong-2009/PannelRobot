@@ -488,6 +488,7 @@ signals:
     void moldChanged();
     void screenSave();
     void screenRestore();
+    void machineConfigChanged();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

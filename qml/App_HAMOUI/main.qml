@@ -311,7 +311,7 @@ Rectangle {
     LoginDialog{
         id:loginDialog
         visible: false
-        z:100
+        z:1000
         anchors.centerIn: parent
         onLogout: {
             mainHeader.loginUser = qsTr("Login");
@@ -328,6 +328,7 @@ Rectangle {
 
     ICCalculator{
         id:calculator
+        z:100
         visible: false
         anchors.centerIn: parent
     }

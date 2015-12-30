@@ -223,7 +223,7 @@ var useableStack = function(){
 
 function parseStacks(stacks){
     if(stacks.length === 0) return;
-    console.log(stacks);
+    console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;
     stackInfos.length = 0;

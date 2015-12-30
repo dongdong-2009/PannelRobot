@@ -10,7 +10,12 @@ import "../ShareData.js" as ShareData
 
 Rectangle {
     id:programFlowPageInstance
+    property alias isActionEditorPanelVisable: actionEditorFrame.visible
     function showActionEditorPanel(){
+        if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
+            actionEditorContainer.showMenu();
+            return;
+        }
         if(!actionEditorFrame.visible)
             programListView.contentY += actionEditorFrame.height;
         else
@@ -515,8 +520,10 @@ Rectangle {
                         visible: {
                             var modelObject = currentModelData();
                             if(modelObject === null) return false;
+                            if((modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT) &&
+                                 modelObject.mI_ActionObject.commentAction == null  ) return false;
                             return (programListView.currentIndex < programListView.count - 1) &&
-                                    (modelObject.mI_ActionObject.action !== Teach.actions.ACT_FLAG)
+                                    (modelObject.mI_ActionObject.action !== Teach.actions.ACT_FLAG);
                         }
                     }
                     ICButton{

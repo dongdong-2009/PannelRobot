@@ -72,7 +72,9 @@ Rectangle{
     Text {
         id:descr
         text:"             " + container.text
-        width: parent.width
+        width: parent.width - num.width
+//        wrapMode: Text.WrapAnywhere
+        anchors.left: num.right
         anchors.verticalCenter: parent.verticalCenter
     }
     //    color: lineNum % 2 == 1 ? "cyan" : "yellow"

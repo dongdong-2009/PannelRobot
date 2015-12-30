@@ -828,14 +828,15 @@ function stackTypeToString(type){
 var stackActionToStringHandler = function(actionObject){
     var si = getStackInfoFromID(actionObject.stackID);
     var descr = (si == null) ? qsTr("not exist") : si.descr;
-    var spee1 = si.type == stackTypes.kST_Box ? (qsTr("Speed1:") + actionObject.speed1):
+    var isBoxStack = si.type == stackTypes.kST_Box;
+    var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                                                           "";
     var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID) : qsTr("Counter:Self");
-    var counterID2 = si.type == stackTypes.kST_Box ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID) : qsTr("Counter:Self"))
+    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID) : qsTr("Counter:Self"))
                                                              : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            qsTr("Speed0:") + actionObject.speed0 + " " + spee1 + " " + counterID1 + " " + counterID2;
+            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + " " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){
@@ -885,8 +886,10 @@ var pathActionToStringHandler = function(actionObject){
     var points = actionObject.points;
     if(points.length > 0)
         ret += qsTr("Next:") + pointToString(points[0]) + " ";
-    if(points.length > 1)
+    if(points.length > 1){
+        ret += "\n                            ";
         ret += qsTr("End:") + pointToString(points[points.length - 1]) + " ";
+    }
     ret += qsTr("Speed:") + actionObject.speed + " ";
     ret += qsTr("Delay:") + actionObject.delay;
     return ret;

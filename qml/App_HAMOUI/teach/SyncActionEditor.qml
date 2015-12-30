@@ -4,8 +4,6 @@ import "Teach.js" as Teach
 
 
 Item{
-    signal backToMenuTriggered()
-
     function createActionObjects(){
         var ret = [];
         if(syncBegin.isChecked)
@@ -18,15 +16,7 @@ Item{
     width: parent.width
     height: parent.height
 
-
-    ICButton{
-        id:backToMenu
-        text: qsTr("Back to Menu")
-        onButtonClicked: backToMenuTriggered()
-    }
     ICButtonGroup{
-        anchors.top: backToMenu.bottom
-        anchors.topMargin: 10
         layoutMode: 1
         spacing: 10
         ICCheckBox{

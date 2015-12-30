@@ -30,7 +30,15 @@ Rectangle {
 
     }
     onStackTypeChanged: {
-        pageCount = (stackType == 1 ? 3 : 2);
+        if(stackType == 1){
+            pageCount = 3
+            speed0.configName = qsTr("Speed0");
+            speed1.visible = useFlag.isChecked;
+        }else{
+            pageCount =  2;
+            speed0.configName = qsTr("Speed");
+            speed1.visible = false;
+        }
     }
 
     Row{
@@ -152,6 +160,12 @@ Rectangle {
             ICCheckBox{
                 id:useFlag
                 text: qsTr("Use Stack")
+            }
+            onCheckedItemChanged: {
+                stackSelector.configValue = -1;
+                stackViewSel.currentIndex = 0;
+                stackType = 0;
+                speed1.visible = false;
             }
 
         }
@@ -348,11 +362,16 @@ Rectangle {
             configName: qsTr("Stack")
             inputWidth: 200
             z:10
+            onConfigValueChanged: {
+                if(configValue < 0) return;
+                var stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValveFromBrackets(items[configValue])));
+                stackType = stackInfo.type;
+            }
         }
         ICConfigEdit{
             id:speed0
             visible: useFlag.isChecked
-            configName: qsTr("Speed0")
+            configName: qsTr("Speed")
             configAddr: "s_rw_0_16_1_265"
             unit: "%"
         }

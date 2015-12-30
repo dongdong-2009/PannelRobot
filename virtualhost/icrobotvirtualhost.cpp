@@ -471,7 +471,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 #endif
             //            emit CommunicateErrChecked();
         }
-        if(queue_.Head()->IsQuery() && recvFrame_->GetAddr() < ICAddr_Read_Status0)
+        if((queue_.Head()->IsQuery()) && (recvFrame_->GetAddr() >= ICAddr_Read_Status0))
         {
             queue_.DeQueue();
         }

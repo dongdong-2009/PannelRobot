@@ -576,7 +576,7 @@ int PanelRobotController::configsCheckSum(const QString &addrs) const
 void PanelRobotController::loadHostMachineConfigs()
 {
     ICRobotVirtualhost::AddReadConfigCommand(host_, s_rw_0_32_3_100.BaseAddr(), 28);
-    ICRobotVirtualhost::AddReadConfigCommand(host_, 128, 28);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, 128, 29);
     connect(host_.data(),
             SIGNAL(QueryFinished(int , const QVector<quint32>& )),
             this,

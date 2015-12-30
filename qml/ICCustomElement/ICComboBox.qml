@@ -73,6 +73,7 @@ Rectangle {
                 }
             }
             highlight: Rectangle { color: "lightsteelblue"; width: itemContainer.width }
+            highlightMoveDuration: 1
             width: parent.width
             height: parent.height
         }
@@ -114,8 +115,12 @@ Rectangle {
     MouseArea{
         anchors.fill: parent
         onClicked: {
-            if(itemModel.count > 0)
+            if(itemModel.count > 0){
+                view.currentIndex = currentIndex;
                 itemContainer.visible = true;
+//                if(currentIndex >=0){
+//                }
+            }
             //            itemContainer.z = 100
 
         }

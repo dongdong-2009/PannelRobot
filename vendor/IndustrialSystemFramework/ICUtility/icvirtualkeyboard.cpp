@@ -398,6 +398,7 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      if(isNumberOnly)
      {
          ui->keyboardContainer->setCurrentIndex(0);
+         ui->keyboardContainer->move(0,70);
          this->resize(404, 356);
 //         ui->inputEdit->resize(341, 31);
          ui->tipLabel->show();
@@ -406,8 +407,10 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      else
      {
          ui->keyboardContainer->setCurrentIndex(1);
-         this->resize(788, 398);
+         ui->keyboardContainer->move(0,40);
+         this->resize(788, 368);
          ui->tipLabel->hide();
+
      }
      if(checkRange)
      {

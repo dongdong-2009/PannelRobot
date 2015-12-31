@@ -8,8 +8,7 @@ configs/* \
 settingpages/*
 }
 
-OTHER_FILES += \
-    MainFrame.qml
+OTHER_FILES +=
 
 
 

@@ -59,12 +59,17 @@ ICRange ICRobotRangeGetter(const QString& addrName)
     //    return ICRange();
 }
 
-PanelRobotController::PanelRobotController(QObject *parent) :
+PanelRobotController::PanelRobotController(QSplashScreen *splash, QObject *parent) :
     QObject(parent),
     customSettings_("usr/customsettings.ini", QSettings::IniFormat),
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
+    connect(this,
+            SIGNAL(LoadMessage(QString)),
+            splash,
+            SLOT(showMessage(QString)));
+    emit LoadMessage("Start");
     host_ = ICRobotVirtualhost::RobotVirtualHost();
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
@@ -89,7 +94,7 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     scriptFile.close();
     scriptContent = scriptContent.remove(0, sizeof(".pragma library"));
     engine_.evaluate(scriptContent, scriptFileName);
-    qDebug()<<"PanelrobotController Init:"<<engine_.hasUncaughtException();
+//    qDebug()<<"PanelrobotController Init:"<<engine_.hasUncaughtException();
     configRangeGetter_ = engine_.evaluate("getConfigRange");
     getConfigRange_ = &configRangeGetter_;
     ICAddrWrapperList moldAddrs = ICAddrWrapper::MoldAddrs();
@@ -135,14 +140,21 @@ PanelRobotController::PanelRobotController(QObject *parent) :
     QWSServer::setScreenSaver(screenSaver_);
     QWSServer::setScreenSaverBlockLevel(-1);
 #endif
+
+    emit LoadMessage("Controller inited.");
+
 }
 
 void PanelRobotController::Init()
 {
     ICAppSettings();
     InitDatabase_();
+    emit LoadMessage("Database inited.");
     InitMold_();
+    emit LoadMessage("Record inited.");
     InitMachineConfig_();
+    emit LoadMessage("Machine configs inited.");
+
 //    host_->SetCommunicateDebug(true);
 #ifdef COMM_DEBUG
     host_->SetCommunicateDebug(true);
@@ -151,6 +163,7 @@ void PanelRobotController::Init()
 //    InitMainView();
     qApp->installTranslator(&translator);
     LoadTranslator_(ICAppSettings().TranslatorName());
+    emit LoadMessage("Ui inited.");
 //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -457,6 +470,7 @@ void PanelRobotController::InitMainView()
 //        mainView_->deleteLater();
 //        delete mainView_;
     }
+    emit LoadMessage("Initing ui...");
     qDebug("Init MainView");
     mainView_ = new QtQuick1ApplicationViewer;
     mainView_->rootContext()->setContextProperty("panelRobotController", this);
@@ -480,11 +494,10 @@ void PanelRobotController::InitMainView()
 //    QLocale locale(QLocale::Chinese, QLocale::China);
 //    qDebug()<<locale.name();
     appDir.cd(uiMain);
-    qDebug()<<appDir.filePath("main.qml");
+//    qDebug()<<appDir.filePath("main.qml");
+    emit LoadMessage(appDir.filePath("main.qml"));
     mainView_->setMainQmlFile(appDir.filePath("main.qml"));
     mainView_->showExpanded();
-
-
 }
 
 QString scanHelper(const QString& filter)

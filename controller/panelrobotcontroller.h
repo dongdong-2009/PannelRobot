@@ -208,7 +208,7 @@ class PanelRobotController : public QObject
     Q_OBJECT
 public:
 
-    explicit PanelRobotController(QObject *parent = 0);
+    explicit PanelRobotController(QSplashScreen* splash, QObject *parent = 0);
     ~PanelRobotController();
     void Init();
 
@@ -497,6 +497,8 @@ public:
 
     void InitMainView();
 
+    QWidget* MainView() { return mainView_;}
+
 signals:
     //    void currentMoldChanged(QString);
     //    void currentMachineConfigChanged(QString);
@@ -504,6 +506,7 @@ signals:
     void screenSave();
     void screenRestore();
     void machineConfigChanged();
+    void LoadMessage(const QString&);
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

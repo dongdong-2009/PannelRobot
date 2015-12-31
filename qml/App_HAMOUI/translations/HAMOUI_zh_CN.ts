@@ -1564,39 +1564,35 @@
     <name>MainFrame</name>
     <message>
         <source>Operation</source>
-        <translation type="unfinished">手动操作</translation>
+        <translation type="obsolete">手动操作</translation>
     </message>
     <message>
         <source>Program</source>
-        <translation type="unfinished">编程</translation>
+        <translation type="obsolete">编程</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">参数设定</translation>
-    </message>
-    <message>
-        <source>↑</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">参数设定</translation>
     </message>
     <message>
         <source>Alarm Log</source>
-        <translation type="unfinished">报警记录</translation>
+        <translation type="obsolete">报警记录</translation>
     </message>
     <message>
         <source>Operation Log</source>
-        <translation type="unfinished">操作记录</translation>
+        <translation type="obsolete">操作记录</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished">登录</translation>
+        <translation type="obsolete">登录</translation>
     </message>
     <message>
         <source>V Program</source>
-        <translation type="unfinished">程序</translation>
+        <translation type="obsolete">程序</translation>
     </message>
     <message>
         <source>Please press origin key and then press start key to find origin signal.</source>
-        <translation type="unfinished">请按原点键然后按启动键原点复归.</translation>
+        <translation type="obsolete">请按原点键然后按启动键原点复归.</translation>
     </message>
 </context>
 <context>
@@ -1865,6 +1861,10 @@ please chose!</source>
     <message>
         <source>Set to End</source>
         <translation>设为终点</translation>
+    </message>
+    <message>
+        <source>Free Path</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2638,6 +2638,10 @@ please chose!</source>
         <source>Plus 1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Free Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -2976,35 +2980,39 @@ please chose!</source>
     <name>main</name>
     <message>
         <source>Operation</source>
-        <translation type="vanished">手动操作</translation>
+        <translation>手动操作</translation>
     </message>
     <message>
         <source>Program</source>
-        <translation type="vanished">编程</translation>
+        <translation>编程</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">参数设定</translation>
+        <translation>参数设定</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="vanished">登录</translation>
+        <translation>登录</translation>
     </message>
     <message>
         <source>Alarm Log</source>
-        <translation type="vanished">报警记录</translation>
+        <translation>报警记录</translation>
     </message>
     <message>
         <source>Operation Log</source>
-        <translation type="vanished">操作记录</translation>
+        <translation>操作记录</translation>
     </message>
     <message>
         <source>Please press origin key and then press start key to find origin signal.</source>
-        <translation type="vanished">请按原点键然后按启动键原点复归.</translation>
+        <translation>请按原点键然后按启动键原点复归.</translation>
     </message>
     <message>
         <source>V Program</source>
-        <translation type="vanished">程序</translation>
+        <translation>程序</translation>
+    </message>
+    <message>
+        <source>↑</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

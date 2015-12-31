@@ -498,6 +498,7 @@ void PanelRobotController::InitMainView()
     emit LoadMessage(appDir.filePath("main.qml"));
     mainView_->setMainQmlFile(appDir.filePath("main.qml"));
     mainView_->showExpanded();
+
 }
 
 QString scanHelper(const QString& filter)

@@ -16,6 +16,10 @@
 #include "qtquick1applicationviewer.h"
 #include "icvirtualkeyboard.h"
 
+#ifndef Q_WS_WIN32
+#include <linux/input.h>
+#endif
+
 
 #ifdef Q_WS_QWS
 #include <QWSScreenSaver>
@@ -478,6 +482,17 @@ public:
     Q_INVOKABLE void usbNetInit()
     {
         system("/etc/init.d/net-init.sh");
+    }
+
+    Q_INVOKABLE void readCurrentKnobValue() const
+    {
+        int keyFD_ = open("/dev/input/event1", O_RDWR);
+        struct input_event inputEvent;
+        inputEvent.type = EV_SYN; //__set_bit
+        inputEvent.code = SYN_CONFIG;  //__set_bit
+        inputEvent.value = 1;
+        write(keyFD_,&inputEvent,sizeof(inputEvent));
+        ::close(keyFD_);
     }
 
     void InitMainView();

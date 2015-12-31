@@ -427,6 +427,7 @@ Rectangle {
         Storage.initialize();
         IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(mainWindow);
+        panelRobotController.readCurrentKnobValue();
         console.log("main load finished!")
     }
 

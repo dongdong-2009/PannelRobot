@@ -32,6 +32,7 @@ Rectangle{
     Loader{
         id:mainFrame
         anchors.fill: parent
+        focus: true
     }
     Timer{
         id:startup

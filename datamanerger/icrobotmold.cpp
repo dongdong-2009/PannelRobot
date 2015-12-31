@@ -93,7 +93,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     QVariantMap point;
     if(item.at(0) == F_CMD_JOINTCOORDINATE)
     {
-        point = points.at(0).toMap();
+        point = points.at(0).toMap().value("pos").toMap();
         int enbits = 0;
         quint32 pos[6];
         for(int i = 0; i < motorNames.size(); ++i)
@@ -118,7 +118,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     {
         for(int i= 0; i < points.size(); ++i)
         {
-            point = points.at(i).toMap().value("pos").toMap();
+            point = points.at(i).toMap();
             if(point.isEmpty())
                 return ICRobotMold::kCCErr_Wrong_Action_Format;
             item += PointToPosList(point.value("pos").toMap());

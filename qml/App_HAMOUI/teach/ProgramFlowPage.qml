@@ -521,7 +521,7 @@ Rectangle {
                             var modelObject = currentModelData();
                             if(modelObject === null) return false;
                             if((modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT) &&
-                                 modelObject.mI_ActionObject.commentAction == null  ) return false;
+                                    modelObject.mI_ActionObject.commentAction == null  ) return false;
                             return (programListView.currentIndex < programListView.count - 1) &&
                                     (modelObject.mI_ActionObject.action !== Teach.actions.ACT_FLAG);
                         }
@@ -580,11 +580,13 @@ Rectangle {
                             var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");
                             var currentCounterCurrent = panelRobotController.statusValue("c_ro_13_19_0_938");
                             var counter = Teach.counterManager.getCounter(currentCounterID);
-                            if(counter.current != currentCounterCurrent){
-                                counter.current = currentCounterCurrent;
-                                panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
-                                onCounterUpdated(currentCounterID);
+                            if(counter != null){
+                                if(counter.current != currentCounterCurrent){
+                                    counter.current = currentCounterCurrent;
+                                    panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
+                                    onCounterUpdated(currentCounterID);
 
+                                }
                             }
 
                             var cStep = currentModelStep();
@@ -592,7 +594,7 @@ Rectangle {
                             if(cStep < 0 || cStep >= currentModel().count){
                                 return;
                             }
-//                            console.log("CStep:", cStep, currentModel().count);
+                            //                            console.log("CStep:", cStep, currentModel().count);
                             //                            var cStep = Utils.getRandomNum(0, 10);
                             var lastRunning = PData.lastRunning;
 
@@ -813,7 +815,7 @@ Rectangle {
     }
 
     function updateProgramModels(){
-//        PData.counterLinesInfo.clear();
+        //        PData.counterLinesInfo.clear();
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
         Teach.counterManager.init(counters);

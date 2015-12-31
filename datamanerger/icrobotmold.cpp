@@ -99,10 +99,13 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         for(int i = 0; i < motorNames.size(); ++i)
         {
             if(point.contains(motorNames.at(i)))
+            {
                 pos[i] = (ICUtility::doubleToInt(point.value(motorNames.at(i)).toDouble(), 3));
+                enbits |= (1 << i);
+
+            }
             else
             {
-                enbits |= (1 << i);
                 pos[i] = 0;
             }
         }

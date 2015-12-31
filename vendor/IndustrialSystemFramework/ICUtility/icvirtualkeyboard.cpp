@@ -223,8 +223,10 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
      QSqlQuery query;
  //    query.exec(QString("SELECT DISTINCT HanZi FROM tb_zh_CN_gb2312 WHERE PinYin Like '%0%' ORDER BY Freq DESC LIMIT %1, %2")
  //               .arg(py).arg(currentMachingGroup * cnButtons.size()).arg(cnButtons.size()));
-     query.exec(QString("SELECT HanZi FROM tb_zh_CN_gb2312 WHERE PinYin Like '%0%' ORDER BY Freq DESC LIMIT %1, %2")
-                .arg(py).arg(currentMachingGroup * cnButtons.size()).arg(cnButtons.size()));
+     QString cmd = QString("SELECT HanZi FROM tb_zh_CN_gb2312 WHERE PinYin Like '%0%' ORDER BY Freq DESC LIMIT %1, %2")
+             .arg(py).arg(currentMachingGroup * cnButtons.size()).arg(cnButtons.size());
+//     qDebug()<<cmd;
+     query.exec(cmd);
      while(query.next())
      {
          ret.append(query.value(0).toString());

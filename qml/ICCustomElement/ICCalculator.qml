@@ -134,7 +134,7 @@ Rectangle {
         }
         ICButton{
             id:btnSquare
-            text: "x" + "2".sup()
+            text: "x" + "y".sup()
             width: btnWidth
         }
         ICButton{

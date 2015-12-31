@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -88,27 +88,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation>电机1报警</translation>
+        <translation type="vanished">电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation>电机2报警</translation>
+        <translation type="vanished">电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation>电机3报警</translation>
+        <translation type="vanished">电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation>电机4报警</translation>
+        <translation type="vanished">电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation>电机5报警</translation>
+        <translation type="vanished">电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation>电机6报警</translation>
+        <translation type="vanished">电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -346,7 +346,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回</translation>
+        <translation type="vanished">返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -584,7 +584,7 @@
     <name>CommentActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回主菜单</translation>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
         <source>Comment:</source>
@@ -1561,6 +1561,45 @@
     </message>
 </context>
 <context>
+    <name>MainFrame</name>
+    <message>
+        <source>Operation</source>
+        <translation type="unfinished">手动操作</translation>
+    </message>
+    <message>
+        <source>Program</source>
+        <translation type="unfinished">编程</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">参数设定</translation>
+    </message>
+    <message>
+        <source>↑</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm Log</source>
+        <translation type="unfinished">报警记录</translation>
+    </message>
+    <message>
+        <source>Operation Log</source>
+        <translation type="unfinished">操作记录</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished">登录</translation>
+    </message>
+    <message>
+        <source>V Program</source>
+        <translation type="unfinished">程序</translation>
+    </message>
+    <message>
+        <source>Please press origin key and then press start key to find origin signal.</source>
+        <translation type="unfinished">请按原点键然后按启动键原点复归.</translation>
+    </message>
+</context>
+<context>
     <name>ManualPage</name>
     <message>
         <source>Y010~27</source>
@@ -1765,7 +1804,7 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation>添加点</translation>
+        <translation type="vanished">添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
@@ -1793,11 +1832,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
@@ -1907,7 +1946,7 @@ please chose!</source>
     </message>
     <message>
         <source>Other/Flag</source>
-        <translation>标签</translation>
+        <translation type="vanished">标签</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -2180,51 +2219,51 @@ please chose!</source>
     </message>
     <message>
         <source>Space0</source>
-        <translation>X方向间距</translation>
+        <translation type="vanished">X方向间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation>X方向计数</translation>
+        <translation type="vanished">X方向计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation>Y方向间距</translation>
+        <translation type="vanished">Y方向间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation>Y方向计数</translation>
+        <translation type="vanished">Y方向计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation>Z方向间距</translation>
+        <translation type="vanished">Z方向间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation>Z方向计数</translation>
+        <translation type="vanished">Z方向计数</translation>
     </message>
     <message>
         <source>Dir0</source>
-        <translation>X方向</translation>
+        <translation type="vanished">X方向</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation>反相</translation>
+        <translation type="vanished">反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation>正相</translation>
+        <translation type="vanished">正相</translation>
     </message>
     <message>
         <source>Dir1</source>
-        <translation>Y方向</translation>
+        <translation type="vanished">Y方向</translation>
     </message>
     <message>
         <source>Dir2</source>
-        <translation>Z方向</translation>
+        <translation type="vanished">Z方向</translation>
     </message>
     <message>
         <source>Sequence</source>
-        <translation>顺序</translation>
+        <translation type="vanished">顺序</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -2310,7 +2349,7 @@ please chose!</source>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回主菜单</translation>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -2594,6 +2633,10 @@ please chose!</source>
     <message>
         <source>Counter</source>
         <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Plus 1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2933,39 +2976,35 @@ please chose!</source>
     <name>main</name>
     <message>
         <source>Operation</source>
-        <translation>手动操作</translation>
+        <translation type="vanished">手动操作</translation>
     </message>
     <message>
         <source>Program</source>
-        <translation>编程</translation>
+        <translation type="vanished">编程</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>参数设定</translation>
+        <translation type="vanished">参数设定</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation>登录</translation>
-    </message>
-    <message>
-        <source>↑</source>
-        <translation></translation>
+        <translation type="vanished">登录</translation>
     </message>
     <message>
         <source>Alarm Log</source>
-        <translation>报警记录</translation>
+        <translation type="vanished">报警记录</translation>
     </message>
     <message>
         <source>Operation Log</source>
-        <translation>操作记录</translation>
+        <translation type="vanished">操作记录</translation>
     </message>
     <message>
         <source>Please press origin key and then press start key to find origin signal.</source>
-        <translation>请按原点键然后按启动键原点复归.</translation>
+        <translation type="vanished">请按原点键然后按启动键原点复归.</translation>
     </message>
     <message>
         <source>V Program</source>
-        <translation>程序</translation>
+        <translation type="vanished">程序</translation>
     </message>
 </context>
 </TS>

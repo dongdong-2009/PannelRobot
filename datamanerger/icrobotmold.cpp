@@ -87,13 +87,41 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_LINE3D_MOVE_POSE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if(item.at(0) == F_CMD_JOINTCOORDINATE && points.size() != 1)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+
     QVariantMap point;
-    for(int i= 0; i < points.size(); ++i)
+    if(item.at(0) == F_CMD_JOINTCOORDINATE)
     {
-        point = points.at(i).toMap();
-        if(point.isEmpty())
-            return ICRobotMold::kCCErr_Wrong_Action_Format;
-        item += PointToPosList(point.value("pos").toMap());
+        point = points.at(0).toMap();
+        int enbits = 0;
+        quint32 pos[6];
+        for(int i = 0; i < motorNames.size(); ++i)
+        {
+            if(point.contains(motorNames.at(i)))
+                pos[i] = (ICUtility::doubleToInt(point.value(motorNames.at(i)).toDouble(), 3));
+            else
+            {
+                enbits |= (1 << i);
+            }
+        }
+        item.append(enbits);
+        item.append(pos[0]);
+        item.append(pos[1]);
+        item.append(pos[2]);
+        item.append(pos[3]);
+        item.append(pos[4]);
+        item.append(pos[5]);
+    }
+    else
+    {
+        for(int i= 0; i < points.size(); ++i)
+        {
+            point = points.at(i).toMap();
+            if(point.isEmpty())
+                return ICRobotMold::kCCErr_Wrong_Action_Format;
+            item += PointToPosList(point.value("pos").toMap());
+        }
     }
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
@@ -243,6 +271,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_JOINTCOORDINATE, PathActionCompiler);
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);

@@ -61,6 +61,10 @@ Item {
         pointViewModel.clear();
     }
 
+    function getAction(){
+
+    }
+
     onVisibleChanged: {
         if(visible){
             refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
@@ -82,6 +86,8 @@ Item {
             singlePoseType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_LINE3D_MOVE_POSE){
             pose3DType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_JOINTCOORDINATE){
+            freePathType.setChecked(true);
         }
     }
 
@@ -145,7 +151,7 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
                 isEditable: false
-                visible: isChecked
+                visible: false
             }
             ICCheckableLineEdit{
                 id:motor1
@@ -153,7 +159,7 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
                 isEditable: false
-                visible: isChecked
+                visible: false
 
 
             }
@@ -163,7 +169,7 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
                 isEditable: false
-                visible: isChecked
+                visible: false
 
             }
             ICCheckableLineEdit{
@@ -172,7 +178,7 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
                 isEditable: false
-                visible: isChecked
+                visible: false
 
 
             }
@@ -182,7 +188,7 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
                 isEditable: false
-                visible: isChecked
+                visible: false
 
 
             }
@@ -192,7 +198,7 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
                 isEditable: false
-                visible: isChecked
+                visible: false
 
             }
         }
@@ -295,6 +301,13 @@ Item {
                 motor3.setChecked(false);
                 motor4.setChecked(false);
                 motor5.setChecked(false);
+                motor0.isEditable = false;
+                motor1.isEditable = false;
+                motor2.isEditable = false;
+                motor3.isEditable = false;
+                motor4.isEditable = false;
+                motor5.isEditable = false;
+
                 pointViewModel.clear();
 //                motorSettingContainer.color = rightCommandContainer.color;
                 flicker.start();
@@ -302,18 +315,25 @@ Item {
                     motor0.setChecked(true);
                     motor1.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_LINE2D_MOVE_POINT;
                 }else if(checkedItem == line3DType || checkedItem == curve3DType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
                     motor2.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
-                    if(checkedItem != line3DType)
+                    action = Teach.actions.F_CMD_LINE3D_MOVE_POINT;
+                    if(checkedItem != line3DType){
                         pointViewModel.append(pointViewModel.createModelItem());
+                        action = Teach.actions.F_CMD_ARC3D_MOVE_POINT;
+
+                    }
                 }else if(checkedItem == singlePoseType){
                     motor3.setChecked(true);
                     motor4.setChecked(true);
                     motor5.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_MOVE_POSE;
+
                 }else if(checkedItem == pose3DType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
@@ -322,9 +342,29 @@ Item {
                     motor4.setChecked(true);
                     motor5.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
-//                    pointViewModel.append(pointViewModel.createModelItem());
-
+                    action = Teach.actions.F_CMD_LINE3D_MOVE_POSE;
+                }else if(checkedItem == freePathType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    motor3.setChecked(true);
+                    motor4.setChecked(true);
+                    motor5.setChecked(true);
+                    motor0.isEditable = true;
+                    motor1.isEditable = true;
+                    motor2.isEditable = true;
+                    motor3.isEditable = true;
+                    motor4.isEditable = true;
+                    motor5.isEditable = true;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_JOINTCOORDINATE;
                 }
+                motor0.visible = motor0.isChecked;
+                motor1.visible = motor1.isChecked;
+                motor2.visible = motor2.isChecked;
+                motor3.visible = motor3.isChecked;
+                motor4.visible = motor4.isChecked;
+                motor5.visible = motor5.isChecked;
             }
 
             Flow{
@@ -351,6 +391,10 @@ Item {
                 ICCheckBox{
                     id:pose3DType
                     text: qsTr("Pose 3D")
+                }
+                ICCheckBox{
+                    id:freePathType
+                    text: qsTr("Free Path")
                 }
             }
         }

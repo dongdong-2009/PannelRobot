@@ -458,8 +458,10 @@ typedef enum
 	F_CMD_NULL,
 	F_CMD_SYNC_START,     //< 同步功能开始
 	F_CMD_SYNC_END,       //< 同步功能结束
-	F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
-	F_CMD_CoordinatePoint,//< 坐标点运动 坐标（X，Y，Z） 速度  延时
+    F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
+    //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
+    //< 坐标（X，Y，Z,U,V,W） 速度 延时
+	F_CMD_JOINTCOORDINATE,
 	F_CMD_SINGLE_POINT,   //< 单轴按点位动作 电机ID 位置 速度  延时
 	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
@@ -508,6 +510,7 @@ typedef enum
      *yspace;//< 装箱Y轴间距
      *xbox;//< 装箱X轴个数
      *ybox;//< 装箱Y轴个数
+     *boxspeed;//< 装箱速度
      *boxstack;//< 装箱参数
     */
     F_CMD_STACK0 = 300,//< 堆叠

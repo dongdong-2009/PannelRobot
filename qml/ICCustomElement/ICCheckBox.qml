@@ -42,7 +42,7 @@ Item {
         anchors.fill: parent
 
         onClicked: {
-            if(useCustomClickHandler && !isEditable) return;
+            if(useCustomClickHandler || !isEditable) return;
             setChecked(!isChecked);
             parent.clicked()
         }

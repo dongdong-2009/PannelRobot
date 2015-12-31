@@ -349,7 +349,7 @@ actions.F_CMD_NULL = actHelper++;
 actions.F_CMD_SYNC_START = actHelper++;
 actions.F_CMD_SYNC_END = actHelper++;
 actions.F_CMD_SINGLE = actHelper++;
-actions.F_CMD_CoordinatePoint = actHelper++;
+actions.F_CMD_JOINTCOORDINATE = actHelper++;
 actions.F_CMD_SINGLE_POINT = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
@@ -872,15 +872,14 @@ var pathActionToStringHandler = function(actionObject){
         ret += qsTr("Line2D:");
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT){
         ret += qsTr("Line3D:");
-    }
-    else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT){
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT){
         ret += qsTr("Arc3D:");
-    }
-    else if(actionObject.action === actions.F_CMD_MOVE_POSE){
+    }else if(actionObject.action === actions.F_CMD_MOVE_POSE){
         ret += qsTr("Pose:");
-    }
-    else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
+    }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
         ret += qsTr("Line3D-Pose:");
+    }else if(actionObject.action === actions.F_CMD_JOINTCOORDINATE){
+        ret += qsTr("Free Path:");
     }
 
     var points = actionObject.points;
@@ -904,6 +903,8 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToString
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
+
 
 
 //actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);

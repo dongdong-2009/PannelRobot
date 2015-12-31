@@ -103,6 +103,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
             else
             {
                 enbits |= (1 << i);
+                pos[i] = 0;
             }
         }
         item.append(enbits);
@@ -117,7 +118,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     {
         for(int i= 0; i < points.size(); ++i)
         {
-            point = points.at(i).toMap();
+            point = points.at(i).toMap().value("pos").toMap();
             if(point.isEmpty())
                 return ICRobotMold::kCCErr_Wrong_Action_Format;
             item += PointToPosList(point.value("pos").toMap());

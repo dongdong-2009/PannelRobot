@@ -111,12 +111,22 @@ Item {
             onButtonClicked: {
                 //                console.log("clicked");
                 //                console.log(panelRobotController.getConfigValueText("c_ro_0_32_0_900"));
-                motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                motor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                motor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                motor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                if(freePathType.isChecked){
+                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
+                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_909") / 1000).toFixed(3);
+                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_917") / 1000).toFixed(3);
+                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+
+                }else{
+                    motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                    motor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                    motor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                    motor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                    motor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                    motor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                }
             }
         }
         ICButton{
@@ -309,7 +319,7 @@ Item {
                 motor5.isEditable = false;
 
                 pointViewModel.clear();
-//                motorSettingContainer.color = rightCommandContainer.color;
+                //                motorSettingContainer.color = rightCommandContainer.color;
                 flicker.start();
                 if(checkedItem == line2DType){
                     motor0.setChecked(true);

@@ -113,11 +113,11 @@ Item {
                 //                console.log(panelRobotController.getConfigValueText("c_ro_0_32_0_900"));
                 if(freePathType.isChecked){
                     motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
-                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
-                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_909") / 1000).toFixed(3);
-                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
-                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_917") / 1000).toFixed(3);
-                    motor0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+                    motor1.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+                    motor2.configValue = (panelRobotController.statusValue("c_ro_0_32_0_909") / 1000).toFixed(3);
+                    motor3.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+                    motor4.configValue = (panelRobotController.statusValue("c_ro_0_32_0_917") / 1000).toFixed(3);
+                    motor5.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
 
                 }else{
                     motor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");

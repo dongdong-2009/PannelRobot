@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -88,27 +88,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation type="vanished">电机1报警</translation>
+        <translation>电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation type="vanished">电机2报警</translation>
+        <translation>电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation type="vanished">电机3报警</translation>
+        <translation>电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation type="vanished">电机4报警</translation>
+        <translation>电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation type="vanished">电机5报警</translation>
+        <translation>电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation type="vanished">电机6报警</translation>
+        <translation>电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -346,7 +346,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回</translation>
+        <translation>返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -584,7 +584,7 @@
     <name>CommentActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回主菜单</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Comment:</source>
@@ -1800,7 +1800,7 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">添加点</translation>
+        <translation>添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
@@ -1828,11 +1828,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation type="vanished">插入</translation>
+        <translation>插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation type="vanished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
@@ -1864,7 +1864,7 @@ please chose!</source>
     </message>
     <message>
         <source>Free Path</source>
-        <translation type="unfinished"></translation>
+        <translation>自由路径</translation>
     </message>
 </context>
 <context>
@@ -1946,7 +1946,7 @@ please chose!</source>
     </message>
     <message>
         <source>Other/Flag</source>
-        <translation type="vanished">标签</translation>
+        <translation>标签</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -2219,51 +2219,51 @@ please chose!</source>
     </message>
     <message>
         <source>Space0</source>
-        <translation type="vanished">X方向间距</translation>
+        <translation>X方向间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation type="vanished">X方向计数</translation>
+        <translation>X方向计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation type="vanished">Y方向间距</translation>
+        <translation>Y方向间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation type="vanished">Y方向计数</translation>
+        <translation>Y方向计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation type="vanished">Z方向间距</translation>
+        <translation>Z方向间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation type="vanished">Z方向计数</translation>
+        <translation>Z方向计数</translation>
     </message>
     <message>
         <source>Dir0</source>
-        <translation type="vanished">X方向</translation>
+        <translation>X方向</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation type="vanished">反相</translation>
+        <translation>反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="vanished">正相</translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>Dir1</source>
-        <translation type="vanished">Y方向</translation>
+        <translation>Y方向</translation>
     </message>
     <message>
         <source>Dir2</source>
-        <translation type="vanished">Z方向</translation>
+        <translation>Z方向</translation>
     </message>
     <message>
         <source>Sequence</source>
-        <translation type="vanished">顺序</translation>
+        <translation>顺序</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -2349,7 +2349,7 @@ please chose!</source>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回主菜单</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -2636,11 +2636,11 @@ please chose!</source>
     </message>
     <message>
         <source>Plus 1</source>
-        <translation type="unfinished"></translation>
+        <translation>累加</translation>
     </message>
     <message>
         <source>Free Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>自由路径:</translation>
     </message>
 </context>
 <context>
@@ -3012,7 +3012,7 @@ please chose!</source>
     </message>
     <message>
         <source>↑</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

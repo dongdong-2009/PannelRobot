@@ -889,6 +889,7 @@ var pathActionToStringHandler = function(actionObject){
         ret += "\n                            ";
         ret += qsTr("End:") + pointToString(points[points.length - 1]) + " ";
     }
+    ret += "\n                            ";
     ret += qsTr("Speed:") + actionObject.speed + " ";
     ret += qsTr("Delay:") + actionObject.delay;
     return ret;

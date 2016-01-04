@@ -169,6 +169,8 @@ keyStructs.put(KEY_F4, new KeyStruct(KEY_F4, 0, false, Menu_Type));
 keyStructs.put(KEY_F5, new KeyStruct(KEY_F5, 0, false, Menu_Type));
 keyStructs.put(PULLY_UP, new KeyStruct(PULLY_UP, 0, false, Nomal_Type));
 keyStructs.put(PULLY_DW, new KeyStruct(PULLY_DW, 0, false, Nomal_Type));
+keyStructs.put(0x01000037, new KeyStruct(0x01000037, 0, false, Nomal_Type)); // for destop F8
+keyStructs.put(0x01000039, new KeyStruct(0x01000039, 0, false, Nomal_Type)); // for destop F10
 
 //keyStructs.put(KEY_Run, new KeyStruct(KEY_Run   , 0xC1, false, Command_Type));
 //keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop  , 0xC2, false, Command_Type));

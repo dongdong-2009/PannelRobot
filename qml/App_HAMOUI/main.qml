@@ -174,7 +174,7 @@ Rectangle {
             height: parent.height
             source: "ManualPage.qml"
             //            anchors.fill: parent
-//            visible: false
+            //            visible: false
         }
         Loader{
             id:programPage
@@ -412,7 +412,7 @@ Rectangle {
         var isAuto = (knobStatus === Keymap.KNOB_AUTO)
         if(armKeyboard.visible) armKeyboardBtn.clicked();
         armKeyboardContainer.visible = !isAuto;
-//        mainWindow.focus = true;
+        //        mainWindow.focus = true;
         menuSettings.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) menuProgram.setChecked(true);
@@ -428,6 +428,8 @@ Rectangle {
         IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(mainWindow);
         panelRobotController.readCurrentKnobValue();
+        ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+        panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
         console.log("main load finished!")
     }
 
@@ -447,7 +449,30 @@ Rectangle {
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
             panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
+        }else{
+            // pully speed handler
+            var spd;
+            var pu = Keymap.PULLY_UP;
+            var pd = Keymap.PULLY_DW;
+            if(!panelRobotController.isQWS()){
+                pu = parseInt(0x01000037);
+                pd = parseInt(0x01000039);
+            }
+
+            if(key === pu || key === pd){
+                var tuneGlobalSpeedEn = ShareData.GlobalStatusCenter.getTuneGlobalSpeedEn();
+                if(tuneGlobalSpeedEn){
+                    var speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
+                    spd = parseFloat(speed);
+                    var dir = key === pu ? 1 : -1;
+                    spd = Keymap.endSpeed(spd, dir)
+                    speed = spd.toFixed(1);
+                    ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
+                    panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
+                }
+            }
         }
+
         event.accepted = true;
 
     }

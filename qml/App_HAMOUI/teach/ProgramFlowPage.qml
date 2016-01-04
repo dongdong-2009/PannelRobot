@@ -210,6 +210,10 @@ Rectangle {
         }
     }
 
+    function onGlobalSpeedChanged(spd){
+        speedDisplay.text = parseFloat(spd).toFixed(1);
+    }
+
     //    function setCurrentModelData(actionObject){
     //        currentModel().set(programListView.currentIndex,
     //                           new Teach.ProgramModelItem(actionObject));
@@ -279,7 +283,10 @@ Rectangle {
                     id:speedEn
                     text: qsTr("Speed En")
                     onVisibleChanged: {
-                        if(visible) isChecked = false;
+                        isChecked = false;
+                    }
+                    onIsCheckedChanged: {
+                        ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(isChecked);
                     }
                 }
 
@@ -306,27 +313,6 @@ Rectangle {
                 onVisibleChanged: {
                     if(visible){
                         speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_265");
-                        focus = true;
-                    }
-                }
-                Keys.onPressed: {
-                    if(!speedEn.isChecked) return;
-                    var key = event.key;
-                    var spd;
-                    var pu = Keymap.PULLY_UP;
-                    var pd = Keymap.PULLY_DW;
-                    if(!panelRobotController.isQWS()){
-                        pu = parseInt(0x01000037);
-                        pd = parseInt(0x01000039);
-                    }
-
-                    if(key === pu || key === pd){
-                        spd = parseFloat(speedDisplay.text);
-                        var dir = key === pu ? 1 : -1;
-                        spd = Keymap.endSpeed(spd, dir)
-                        speedDisplay.text = spd.toFixed(1);
-                        event.accepted = true;
-                        panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speedDisplay.text);
                     }
                 }
             }
@@ -873,6 +859,7 @@ Rectangle {
 
     Component.onCompleted: {
         //        Teach.parseStacks(panelRobotController.stacks());
+        ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);
         PData.programs.push(sub1ProgramModel);
         PData.programs.push(sub2ProgramModel);

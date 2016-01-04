@@ -3,10 +3,13 @@
 Qt.include("configs/Keymap.js")
 Qt.include("../utils/Storage.js")
 Qt.include("../utils/stringhelper.js")
+Qt.include("../utils/utils.js")
 
 var eventType = {
     "userChanged":"userChanged",
     "knobChanged":"knobChanged",
+    "tuneGlobalSpeedEnChanged":"tuneGlobalSpeedEnChanged",
+    "globalSpeedChanged":"globalSpeedChanged",
 }
 
 //var knobStatus = KNOB_STOP;
@@ -14,33 +17,40 @@ var eventType = {
 function GlobalStatusCenter(){}
 
 GlobalStatusCenter.status = {
-    "knobStatus":{"value":KNOB_MANUAL, "et":eventType.knobChanged}
+    "knobStatus":{"value":KNOB_MANUAL, "et":eventType.knobChanged},
+    "tuneGlobalSpeedEn":{"value":false, "et":eventType.tuneGlobalSpeedEnChanged},
+    "globalSpeed":{"value":0, "et":eventType.globalSpeedChanged}
 };
 
 GlobalStatusCenter.initEventObservers = function(){
     var ret = new Object;
     for(var st in GlobalStatusCenter.status){
-        GlobalStatusCenter["set" + upperFirst(st)] = function(v){
-            GlobalStatusCenter.status[st].value = v;
-            GlobalStatusCenter.informEventHelper(GlobalStatusCenter.status[st].et, v);
-        }
-        GlobalStatusCenter["get" + upperFirst(st)] = function(){
-            return GlobalStatusCenter.status[st].value;
+        (function(status){
+            GlobalStatusCenter["set" + upperFirst(status)] = function(v){
+                GlobalStatusCenter.status[status].value = v;
+                GlobalStatusCenter.informEventHelper(GlobalStatusCenter.status[status].et, v);
+            }
+            GlobalStatusCenter["get" + upperFirst(status)] = function(){
+                return GlobalStatusCenter.status[status].value;
 
-        }
+            }
+        })(st);
     }
 
+    var ets = [];
     for(var p in eventType){
         ret[p] = [];
-        GlobalStatusCenter["registe" + upperFirst(p) + "Event"] = function(obj){
-            GlobalStatusCenter.registeEventHelper(p, obj);
-        };
-        GlobalStatusCenter["unregiste" + upperFirst(p) + "Event"] = function(obj){
-            GlobalStatusCenter.unregisteEventHelper(p, obj);
-        };
-        GlobalStatusCenter["inform" + upperFirst(p) + "Event"] = function(v){
-            GlobalStatusCenter.informEventHelper(p, v);
-        }
+        (function(et){
+            GlobalStatusCenter["registe" + upperFirst(et) + "Event"] = function(obj){
+                GlobalStatusCenter.registeEventHelper(et, obj);
+            };
+            GlobalStatusCenter["unregiste" + upperFirst(et) + "Event"] = function(obj){
+                GlobalStatusCenter.unregisteEventHelper(et, obj);
+            };
+            GlobalStatusCenter["inform" + upperFirst(et) + "Event"] = function(v){
+                GlobalStatusCenter.informEventHelper(et, v);
+            }
+        })(p);
     }
     return ret;
 }

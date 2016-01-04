@@ -2,10 +2,12 @@ import QtQuick 1.1
 import "../ICCustomElement"
 import "configs/Keymap.js" as Keymap
 import "configs/AxisDefine.js" as AxisDefine
+import "ShareData.js" as ShareData
 
 
 
 Rectangle {
+    id:container
     width: parent.width
     height: parent.height
     property int currentType: 0
@@ -16,6 +18,10 @@ Rectangle {
                                                    type);
         }
         panelRobotController.sendKeyCommandToHost(cmd);
+    }
+
+    function onGlobalSpeedChanged(spd){
+        speed.text = parseFloat(spd).toFixed(1);
     }
     border.width: 1
     border.color: "gray"
@@ -548,34 +554,18 @@ Rectangle {
 
     }
 
-
     onVisibleChanged: {
+        ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(visible);
         if(visible){
-            speed.text = "10.0";
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);
-//            panelRobotController.syncConfigs();
+//            speed.text = "10.0";
+            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+            //            panelRobotController.syncConfigs();
         }
 
     }
 
-    focus: visible
-    Keys.onPressed: {
-        var key = event.key;
-        var spd;
-        var pu = Keymap.PULLY_UP;
-        var pd = Keymap.PULLY_DW;
-        if(!panelRobotController.isQWS()){
-            pu = parseInt(0x01000037);
-            pd = parseInt(0x01000039);
-        }
-
-        if(key === pu || key === pd){
-            spd = parseFloat(speed.text);
-            var dir = key === pu ? 1 : -1;
-            spd = Keymap.endSpeed(spd, dir)
-            speed.text = spd.toFixed(1);
-            event.accepted = true;
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed.text);
-        }
+    Component.onCompleted: {
+        ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(container);
     }
 }

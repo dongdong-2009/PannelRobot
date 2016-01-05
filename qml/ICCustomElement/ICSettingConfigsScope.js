@@ -8,7 +8,7 @@ function deepFindFitItem(item){
 
         configs.push(item);
         var fun = function(){
-            onConfigValueChanged(l);
+            onConfigValueEditFinished(l);
         };
         handlers.push(fun);
         return;

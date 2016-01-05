@@ -135,7 +135,7 @@ Rectangle {
         height: {
             var cH = container.height - header.height - header.y * 2;
             var mH = header.height * alarmModel.count;
-            return Math.min(cH, mH);
+            return Math.min(cH, mH) + 5;
         }
         clip: true
 //        footer: Rectangle{

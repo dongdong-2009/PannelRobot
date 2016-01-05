@@ -6,6 +6,8 @@ import "../../utils/utils.js" as Utils
 import "ProgramFlowPage.js" as PData
 import "../configs/Keymap.js" as Keymap
 import "../ShareData.js" as ShareData
+import "../../utils/stringhelper.js" as ICString
+import "../ICOperationLog.js" as ICOperationLog
 
 
 Rectangle {
@@ -157,6 +159,8 @@ Rectangle {
             tipBox.show(toShow);
         }
         updateCounterLines(editing.currentIndex);
+        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
+        ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
     }
 
     //    function saveProgram(which){

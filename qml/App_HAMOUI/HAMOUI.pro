@@ -8,9 +8,4 @@ configs/* \
 settingpages/*
 }
 
-OTHER_FILES +=
-
-
-
-
 

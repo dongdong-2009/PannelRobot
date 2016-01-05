@@ -10,9 +10,13 @@ Item {
 //        property bool isLoaded: false
 //    }
 
-    function onConfigValueChanged(index){
+    signal configValueChanged(string addr, string newV, string oldV)
+
+    function onConfigValueEditFinished(index){
         var config = PData.configs[index];
+        var oldV = panelRobotController.getConfigValueText(config.configAddr);
         panelRobotController.setConfigValue(config.configAddr, config.configValue);
+        configValueChanged(config.configAddr, config.configValue, oldV);
         if(!isCache)
             panelRobotController.syncConfigs();
 

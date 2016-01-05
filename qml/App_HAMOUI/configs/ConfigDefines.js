@@ -72,3 +72,11 @@ var fncDefaultValues = {
     "m_rw_8_1_0_357": 1,
     "m_rw_9_23_0_357": 0
 };
+
+var configStr = {};
+
+function getConfigDescr (addr){
+    if(addr in configStr)
+        return configStr[addr];
+    return addr;
+}

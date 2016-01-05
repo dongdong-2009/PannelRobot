@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
+import "../ICOperationLog.js" as ICOperationLog
 
 
 
@@ -17,7 +18,10 @@ Item {
 
             }
         }
-
+        onConfigValueChanged: {
+            console.log(addr, newV, oldV);
+            ICOperationLog.opLog.appendNumberConfigOperationLog(addr, newV, oldV);
+        }
     }
 
 }

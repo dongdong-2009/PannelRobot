@@ -1,24 +1,11 @@
 import QtQuick 1.1
 import "."
-import "Theme.js" as Theme
-import "../utils/Storage.js" as Storage
-import "../utils/utils.js" as Utils
-import "ShareData.js" as ShareData
+import "ICOperationLog.js" as ICOperationLog
 
 Rectangle {
     id:container
 
     color: "#d1d1d1"
-
-    function appendOperationLog(logText){
-        var now = new Date();
-        operationLogModel.insert(0, {"opTime":Utils.formatDate(now, "yyyy/MM/dd hh:mm:ss"),
-                                     "user":ShareData.UserInfo.currentUser(),
-                                     "descr":logText});
-        if(operationLogModel.count > Storage.OPERATION_LOG_TB_INFO.max){
-            operationLogModel.remove(operationLogModel.count - 1);
-        }
-    }
 
     ListModel{
         id:operationLogModel
@@ -78,7 +65,7 @@ Rectangle {
         height: {
             var cH = container.height - header.height - header.y * 2;
             var mH = header.height * operationLogModel.count;
-            return Math.min(cH, mH);
+            return Math.min(cH, mH) + 5;
         }
         clip: true
         delegate: Row{
@@ -122,9 +109,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        var oplog = Storage.oplog();
-        for(var i = 0; i < oplog.length; ++i){
-            operationLogModel.append(oplog[i]);
-        }
+        ICOperationLog.opLog.mapViewModel(operationLogModel);
+
     }
 }

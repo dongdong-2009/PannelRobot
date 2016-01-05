@@ -462,7 +462,8 @@ typedef enum
     //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
     //< 坐标（X，Y，Z,U,V,W） 速度 延时
 	F_CMD_JOINTCOORDINATE,
-	F_CMD_SINGLE_POINT,   //< 单轴按点位动作 电机ID 位置 速度  延时
+	//< 偏移位置（X，Y，Z） 速度  延时
+	F_CMD_COORDINATE_DEVIATION,
 	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
@@ -611,6 +612,7 @@ typedef enum
     ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动坐标2未设定
     ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动坐标3未设定
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
+    ALARM_ROUTE_ACC_ERR,//<名字：轨迹规划失败
 
     ALARM_COUNTER_NOT_DEFINE = 300,//<名字：计数器未定义
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址

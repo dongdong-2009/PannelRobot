@@ -350,7 +350,7 @@ actions.F_CMD_SYNC_START = actHelper++;
 actions.F_CMD_SYNC_END = actHelper++;
 actions.F_CMD_SINGLE = actHelper++;
 actions.F_CMD_JOINTCOORDINATE = actHelper++;
-actions.F_CMD_SINGLE_POINT = actHelper++;
+actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
@@ -868,6 +868,7 @@ var pointToString = function(point){
 
 var pathActionToStringHandler = function(actionObject){
     var ret = "";
+    var needNewLine = false;
     if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT){
         ret += qsTr("Line2D:");
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT){
@@ -878,8 +879,12 @@ var pathActionToStringHandler = function(actionObject){
         ret += qsTr("Pose:");
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
         ret += qsTr("Line3D-Pose:");
+        needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_JOINTCOORDINATE){
         ret += qsTr("Free Path:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
+        ret += qsTr("Offset Move:");
     }
 
     var points = actionObject.points;
@@ -889,7 +894,8 @@ var pathActionToStringHandler = function(actionObject){
         ret += "\n                            ";
         ret += qsTr("End:") + pointToString(points[points.length - 1]) + " ";
     }
-    ret += "\n                            ";
+    if(needNewLine)
+        ret += "\n                            ";
     ret += qsTr("Speed:") + actionObject.speed + " ";
     ret += qsTr("Delay:") + actionObject.delay;
     return ret;
@@ -905,6 +911,8 @@ actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringH
 actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
+
 
 
 
@@ -1027,7 +1035,7 @@ function ccErrnoToString(errno){
 var canActionUsePoint = function(actionObject){
     return actionObject.action === actions.F_CMD_SINGLE ||
             actionObject.action === actions.F_CMD_CoordinatePoint ||
-            actionObject.action === actions.F_CMD_SINGLE_POINT ||
+            actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT;

@@ -88,6 +88,8 @@ Item {
             pose3DType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_JOINTCOORDINATE){
             freePathType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_COORDINATE_DEVIATION){
+            offsetPathType.setChecked(true);
         }
     }
 
@@ -104,6 +106,7 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
+        enabled: !offsetPathType.isChecked
         ICButton{
             id:setIn
             text: qsTr("Set In")
@@ -368,7 +371,14 @@ Item {
                     motor5.isEditable = true;
                     pointViewModel.append(pointViewModel.createModelItem());
                     action = Teach.actions.F_CMD_JOINTCOORDINATE;
+                }else if(checkedItem == offsetPathType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_COORDINATE_DEVIATION;
                 }
+
                 motor0.visible = motor0.isChecked;
                 motor1.visible = motor1.isChecked;
                 motor2.visible = motor2.isChecked;
@@ -405,6 +415,10 @@ Item {
                 ICCheckBox{
                     id:freePathType
                     text: qsTr("Free Path")
+                }
+                ICCheckBox{
+                    id:offsetPathType
+                    text: qsTr("Offset Move")
                 }
             }
         }

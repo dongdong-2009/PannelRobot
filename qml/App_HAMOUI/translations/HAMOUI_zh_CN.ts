@@ -771,6 +771,13 @@
     </message>
 </context>
 <context>
+    <name>ICOperationLog</name>
+    <message>
+        <source>{0} from {1} to {2}</source>
+        <translation>{0} 从 {1} 改为 {2}</translation>
+    </message>
+</context>
+<context>
     <name>ICOperationLogPage</name>
     <message>
         <source>Operation Time</source>
@@ -1866,6 +1873,10 @@ please chose!</source>
         <source>Free Path</source>
         <translation>自由路径</translation>
     </message>
+    <message>
+        <source>Offset Move</source>
+        <translation>相对移动</translation>
+    </message>
 </context>
 <context>
     <name>ProductSettings</name>
@@ -2059,6 +2070,18 @@ please chose!</source>
         <source>Speed En</source>
         <translation>调速使能</translation>
     </message>
+    <message>
+        <source>Main Program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sub-{0} Program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save {0} of Record:{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -2140,6 +2163,10 @@ please chose!</source>
     <message>
         <source>This mold is using!</source>
         <translation>模号使用中!</translation>
+    </message>
+    <message>
+        <source>Load record </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2642,6 +2669,10 @@ please chose!</source>
         <source>Free Path:</source>
         <translation>自由路径:</translation>
     </message>
+    <message>
+        <source>Offset Move:</source>
+        <translation>相对移动:</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -3013,6 +3044,14 @@ please chose!</source>
     <message>
         <source>↑</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Sign out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sign in</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

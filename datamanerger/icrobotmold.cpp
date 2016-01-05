@@ -89,6 +89,8 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_JOINTCOORDINATE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if(item.at(0) == F_CMD_COORDINATE_DEVIATION && points.size() != 1)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
 
     QVariantMap point;
     if(item.at(0) == F_CMD_JOINTCOORDINATE)

@@ -972,7 +972,9 @@ var actionObjectToEditableITems = function(actionObject){
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_MOVE_POSE ||
-             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
+             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
+             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
+             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
         return [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -983,8 +985,12 @@ var actionObjectToEditableITems = function(actionObject){
             return [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
         else
             return [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
-    }else if(actionObject.action === actions.F_CMD_IO_INPUT){
+    }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP1){
         return [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
+    }else if(actionObject.action === actions.F_CMD_STACK0){
+        return [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
+                {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
     }
 
     return [];

@@ -43,6 +43,22 @@
         <source>Action Time:</source>
         <translation>动作时间:</translation>
     </message>
+    <message>
+        <source>Speed0</source>
+        <translation>箱内堆速度</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>Speed1:</source>
+        <translation>装箱速度:</translation>
+    </message>
+    <message>
+        <source>Speed0:</source>
+        <translation>箱内堆速度:</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>

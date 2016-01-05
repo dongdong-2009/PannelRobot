@@ -23,6 +23,9 @@ Item {
     function openEditor(actionObject,editableItems){
         pos.visible = false;
         speed.visible = false;
+        speed0.visible = false;
+        speed1.visible = false;
+
         delay.visible = false;
         limit.visible = false;
         points.visible = false;
@@ -39,17 +42,26 @@ Item {
             if(editor == points){
                 editor.points = actionObject[item.item];
                 editor.action = actionObject.action;
-            }
-            else{
+            }else{
                 editor.configAddr = item.range;
                 editor.configValue = actionObject[item.item];
             }
+
             if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
                 editor.visible = true;
                 height += editor.height + editorContainer.spacing;
                 if(editor.width > maxWidth)
                     maxWidth = editor.width;
                 PData.editingEditors.push(editor);
+            }
+            if(Teach.hasStackIDAction(actionObject)){
+                var si = Teach.getStackInfoFromID(actionObject.stackID);
+                if(si.type == Teach.stackTypes.kST_Box){
+                    speed0.configName = qsTr("Speed0:");
+                }else{
+                    speed0.configName = qsTr("Speed:");
+                    speed1.visible = false;
+                }
             }
         }
         height += buttons.height;
@@ -84,6 +96,20 @@ Item {
             unit: qsTr("%")
         }
         ICConfigEdit{
+            id:speed0
+            configNameWidth: PData.configNameWidth
+            inputWidth: PData.inputWidth
+            configName: qsTr("Speed:")
+            unit: qsTr("%")
+        }
+        ICConfigEdit{
+            id:speed1
+            configNameWidth: PData.configNameWidth
+            inputWidth: PData.inputWidth
+            configName: qsTr("Speed1:")
+            unit: qsTr("%")
+        }
+        ICConfigEdit{
             id:delay
             configNameWidth: PData.configNameWidth
             inputWidth: PData.inputWidth
@@ -113,7 +139,7 @@ Item {
                 onButtonClicked: {
                     container.visible = false;
                     var editingObject = PData.editingActionObject;
-//                    var modifiedObject = {};
+                    //                    var modifiedObject = {};
                     var editor;
                     for(var i = 0; i < PData.editingEditors.length; ++i){
                         editor = PData.editingEditors[i];
@@ -138,12 +164,16 @@ Item {
         Component.onCompleted: {
             PData.itemToEditorMap.put("pos", pos);
             PData.itemToEditorMap.put("speed", speed);
+            PData.itemToEditorMap.put("speed0", speed0);
+            PData.itemToEditorMap.put("speed1", speed1);
             PData.itemToEditorMap.put("delay", delay);
             PData.itemToEditorMap.put("points", points);
             PData.itemToEditorMap.put("limit", limit);
             PData.itemToEditorMap.put("acTime", acTime);
             PData.editorToItemMap.put(pos, "pos");
             PData.editorToItemMap.put(speed, "speed");
+            PData.editorToItemMap.put(speed0, "speed0");
+            PData.editorToItemMap.put(speed1, "speed1");
             PData.editorToItemMap.put(delay, "delay");
             PData.editorToItemMap.put(points, "points")
             PData.editorToItemMap.put(limit, "limit");

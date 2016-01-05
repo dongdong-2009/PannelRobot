@@ -329,17 +329,21 @@ Item {
                     motor1.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
                     action = Teach.actions.F_CMD_LINE2D_MOVE_POINT;
-                }else if(checkedItem == line3DType || checkedItem == curve3DType){
+                }else if(checkedItem == line3DType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
                     motor2.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
                     action = Teach.actions.F_CMD_LINE3D_MOVE_POINT;
-                    if(checkedItem != line3DType){
-                        pointViewModel.append(pointViewModel.createModelItem());
-                        action = Teach.actions.F_CMD_ARC3D_MOVE_POINT;
+                }else if(checkedItem == curve3DType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    action = Teach.actions.F_CMD_ARC3D_MOVE_POINT;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
 
-                    }
+
                 }else if(checkedItem == singlePoseType){
                     motor3.setChecked(true);
                     motor4.setChecked(true);

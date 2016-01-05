@@ -13,27 +13,31 @@ var lastRunning = {"model": -1, "step":-1, "items":[]};
 
 var isReadOnly = true;
 
-var counterLinesInfo = {
-    "programsCounters":[],
-    "clear": function(programIndex){
-        var tmp = this.programsCounters[programIndex];
+function LinesInfo(){
+    this.programsLines = [];
+    this.clear = function(programIndex){
+        var tmp = this.programsLines[programIndex];
         if(tmp != undefined){
             tmp.length = 0;
         }
-    },
-    "add":function(programIndex, counterID, line){
-        var tmp = this.programsCounters[programIndex];
+    }
+    this.add = function(programIndex, id, line){
+        var tmp = this.programsLines[programIndex];
         if(tmp == undefined){
-            this.programsCounters[programIndex] = {};
+            this.programsLines[programIndex] = {};
         }
-        tmp = this.programsCounters[programIndex][counterID];
+        tmp = this.programsLines[programIndex][id];
         if(tmp == undefined)
             tmp = []
         tmp.push(line);
-        this.programsCounters[programIndex][counterID] = tmp;
-    },
-    "getCounterLine":function(programIndex, counterID){
-        var tmp = this.programsCounters[programIndex][counterID];
+        this.programsLines[programIndex][id] = tmp;
+    }
+    this.getLines = function(programIndex, id){
+        var tmp = this.programsLines[programIndex][id];
         return tmp || [];
     }
 }
+
+var counterLinesInfo = new LinesInfo();
+
+var stackLinesInfo = new LinesInfo();

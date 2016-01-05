@@ -165,6 +165,7 @@ var stackInfos = [];
 function appendStackInfo(stackInfo){
     var id = useableStack();
     pushStack(id, stackInfo);
+    return id;
 }
 
 function updateStackInfo(which, stackInfo){
@@ -174,6 +175,7 @@ function updateStackInfo(which, stackInfo){
             break;
         }
     }
+    return which;
 }
 
 function getStackInfoFromID(stackID){
@@ -206,6 +208,7 @@ var delStack = function(stack){
             break;
         }
     }
+    return stack;
 }
 
 var useableStack = function(){
@@ -434,6 +437,10 @@ function hasCounterIDAction(action){
     }
 
     return action.hasOwnProperty("counterID");
+}
+
+function hasStackIDAction(action){
+    return action.hasOwnProperty("stackID");
 }
 
 function actionCounterIDs(action){

@@ -8,6 +8,9 @@ Rectangle {
     property int stackType: 0
     property int currentPage: 0
     property int pageCount: 2
+
+    signal stackUpdated(int id);
+
     function createActionObjects(){
         var ret = [];
         if(useFlag.isChecked){
@@ -226,17 +229,20 @@ Rectangle {
                                               page2.realDoesBindingCounter(),
                                               page2.counterID());
                 var stackInfo = new Teach.StackInfo(si0, si1, stackType, stackDescr.configValue);
+                var sid;
                 if(stackViewSel.currentIndex === 0){
-                    Teach.appendStackInfo(stackInfo);
+                    sid = Teach.appendStackInfo(stackInfo);
                     panelRobotController.saveStacks(Teach.statcksToJSON());
                     updateStacksSel();
                 }
                 else{
-                    Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)), stackInfo);
+                    sid = Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)), stackInfo);
                     panelRobotController.saveStacks(Teach.statcksToJSON());
                 }
+                stackUpdated(sid);
                 //                                stackSelector.items = Teach.stackInfosDescr();
             }
+
         }
         ICButton{
             id:deleteStack
@@ -248,9 +254,10 @@ Rectangle {
             width: save.width
             onButtonClicked: {
                 if(stackViewSel.currentIndex === 0) return;
-                Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)));
+                var sid = Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)));
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
+                stackUpdated(sid);
             }
 
         }

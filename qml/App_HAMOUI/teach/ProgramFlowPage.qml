@@ -158,7 +158,7 @@ Rectangle {
             }
             tipBox.show(toShow);
         }
-        updateCounterLines(editing.currentIndex);
+        collectSpecialLines(editing.currentIndex);
         var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
     }
@@ -201,8 +201,20 @@ Rectangle {
         speedDispalyContainer.visible = isAuto;
     }
 
+    function onStackUpdated(stackID){
+        var stackLines = PData.stackLinesInfo.getLines(editing.currentIndex, stackID)
+        var md = currentModel();
+        var tmp;
+        var line;
+        for(var l in stackLines){
+            line = stackLines[l];
+            tmp = md.get(line);
+            md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
+        }
+    }
+
     function onCounterUpdated(counterID){
-        var counterLines  = PData.counterLinesInfo.getCounterLine(editing.currentIndex,counterID);
+        var counterLines  = PData.counterLinesInfo.getLines(editing.currentIndex,counterID);
         var md = currentModel();
         var tmp;
         var line;
@@ -545,7 +557,7 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index
-                        text: (Teach.hasCounterIDAction(mI_ActionObject) && actionText.length !=0 ? actionText: Teach.actionToString(mI_ActionObject));
+                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: Teach.actionToString(mI_ActionObject));
 
                         actionType: mI_ActionType
                         MouseArea{
@@ -697,8 +709,8 @@ Rectangle {
                 editor = Qt.createComponent('PathActionEditor.qml')
                 var pathEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('StackActionEditor.qml')
-                console.log(editor.errorString());
                 var stackEditorObject = editor.createObject(actionEditorContainer);
+                stackEditorObject.stackUpdated.connect(onStackUpdated);
                 editor = Qt.createComponent('CounterActionEditor.qml')
                 var counterEditorObject = editor.createObject(actionEditorContainer);
                 counterEditorObject.counterUpdated.connect(onCounterUpdated);
@@ -788,9 +800,10 @@ Rectangle {
         }
     }
 
-    function updateCounterLines(which){
+    function collectSpecialLines(which){
         var program = PData.programs[which];
         PData.counterLinesInfo.clear(which);
+        PData.stackLinesInfo.clear(which);
         var step;
         for(var i = 0; i < program.count; ++i){
             step = program.get(i);
@@ -800,6 +813,9 @@ Rectangle {
                     PData.counterLinesInfo.add(which, cs[c], i);
                 }
 
+            }
+            if(Teach.hasStackIDAction(step.mI_ActionObject)){
+                PData.stackLinesInfo.add(which, step.mI_ActionObject.stackID, i);
             }
         }
     }
@@ -849,7 +865,7 @@ Rectangle {
                 PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
                 PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
             }
-            updateCounterLines(i);
+            collectSpecialLines(i);
         }
         editing.currentIndex = 0;
 

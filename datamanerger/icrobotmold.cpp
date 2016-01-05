@@ -278,6 +278,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_JOINTCOORDINATE, PathActionCompiler);
+    ret.insert(F_CMD_COORDINATE_DEVIATION, PathActionCompiler);
+
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);
@@ -321,7 +323,8 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, i
 {
     ICMoldItem item;
 #ifdef NEW_PLAT
-    ActionCompiler cc = actionToCompilerMap.value(v.value("action").toInt(), SimpleActionCompiler);
+    int action = v.value("action").toInt();
+    ActionCompiler cc = actionToCompilerMap.value(action, SimpleActionCompiler);
     err = cc(item, &v);
 #else
     item.SetAction(v.value("action").toInt());

@@ -211,6 +211,7 @@ Rectangle {
             tmp = md.get(line);
             md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
         }
+        collectSpecialLines(editing.currentIndex);
     }
 
     function onCounterUpdated(counterID){

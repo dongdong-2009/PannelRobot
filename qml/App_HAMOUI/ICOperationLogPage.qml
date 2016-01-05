@@ -1,11 +1,16 @@
 import QtQuick 1.1
 import "."
+import "ShareData.js" as ShareData
 import "ICOperationLog.js" as ICOperationLog
 
 Rectangle {
     id:container
 
     color: "#d1d1d1"
+
+    function onUserChanged(user){
+        ICOperationLog.opLog.currentUser =  user.user;
+    }
 
     ListModel{
         id:operationLogModel
@@ -110,6 +115,6 @@ Rectangle {
 
     Component.onCompleted: {
         ICOperationLog.opLog.mapViewModel(operationLogModel);
-
+        ShareData.UserInfo.registUserChangeEvent(container);
     }
 }

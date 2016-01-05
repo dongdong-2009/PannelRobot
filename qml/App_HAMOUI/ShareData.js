@@ -83,6 +83,7 @@ GlobalStatusCenter.informEventHelper = function (et, v){
     }
 }
 
+
 function UserInfo(){
 
 }
@@ -139,7 +140,7 @@ UserInfo.loginUser = function(username, password){
 UserInfo.logout = function(){
     UserInfo.current.user = "";
     UserInfo.current.perm = 0;
-    UserInfo.informUserChangeEvent();
+    UserInfo.informUserChangeEvent(UserInfo.current);
 }
 
 UserInfo.userChangeEventObservers = [];

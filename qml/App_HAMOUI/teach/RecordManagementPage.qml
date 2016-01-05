@@ -3,9 +3,10 @@ import QtQuick 1.1
 import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
-import com.szhc.axis 1.0
+//import com.szhc.axis 1.0
 
 import "../../ICCustomElement"
+import "../ICOperationLog.js" as ICOperationLog
 
 Rectangle {
     id:recordPage
@@ -209,6 +210,7 @@ Rectangle {
             text: qsTr("Load")
             onButtonClicked: {
                 panelRobotController.loadRecord(selectName.text);
+                ICOperationLog.appendOperationLog(qsTr("Load record ") + selectName.text);
             }
         }
         ICButton{
@@ -220,7 +222,7 @@ Rectangle {
                     return;
                 }
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
-                                                                    Teach.generateInitProgram(panelRobotController.axisDefine())));
+                                                                    Teach.generateInitProgram()));
                 recordsModel.append(recordsView.createRecordItem(ret.recordName, ret.createDatetime));
             }
         }

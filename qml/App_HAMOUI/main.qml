@@ -7,6 +7,7 @@ import "configs/Keymap.js" as Keymap
 import "ShareData.js" as ShareData
 import "../utils/Storage.js" as Storage
 import "configs/IODefines.js" as IODefines
+import "ICOperationLog.js" as ICOperationLog
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -317,9 +318,12 @@ Rectangle {
         anchors.centerIn: parent
         onLogout: {
             mainHeader.loginUser = qsTr("Login");
+            ICOperationLog.appendOperationLog(qsTr("Sign out"));
+
         }
         onLoginSuccessful: {
             mainHeader.loginUser = user;
+            ICOperationLog.appendOperationLog(user + " " + qsTr("Sign in"));
         }
     }
     ParaChose{

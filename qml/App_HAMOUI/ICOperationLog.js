@@ -1,13 +1,13 @@
 .pragma library
 
 Qt.include("../utils/Storage.js")
-Qt.include("ShareData.js")
 Qt.include("../utils/utils.js")
 Qt.include("configs/ConfigDefines.js")
 Qt.include("../utils/stringhelper.js")
 
 function ICOperationLog(){
     this.model = null;
+    this.currentUser = "";
     this.mapViewModel = function(model){
         this.model = model;
         var ops = oplog();
@@ -22,7 +22,7 @@ function ICOperationLog(){
         var now = new Date();
         var opItem = new OperationLogItem(0,
                                           formatDate(now, "yyyy/MM/dd hh:mm:ss"),
-                                          UserInfo.currentUser(),
+                                          this.currentUser,
                                           logText);
         opItem = appendOpToLog(opItem);
         this.model.insert(0, opItem);
@@ -40,3 +40,11 @@ function ICOperationLog(){
 }
 
 var opLog = new ICOperationLog();
+
+function appendOperationLog(logText){
+    opLog.appendOperationLog(logText);
+}
+
+function appendNumberConfigOperationLog(addr, newV, oldV){
+    opLog.appendNumberConfigOperationLog(addr, newV, oldV);
+}

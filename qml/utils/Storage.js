@@ -176,3 +176,66 @@ function updateAlarmLog(alarmItem){
                                   ALARM_LOG_TB_INFO.endTime_col, alarmItem.endTime, alarmItem.id));
     });
 }
+
+function appendOpToLog(opItem){
+    var db = getDatabase();
+    db.transaction(function(tx) {
+        var now = new Date();
+        var rs = tx.executeSql(icStrformat('SELECT COUNT(*), MIN({0}), MAX({0}) FROM {1};', OPERATION_LOG_TB_INFO.id_col, OPERATION_LOG_TB_INFO.tb_name));
+        var newID = parseInt(rs.rows.item(0)["MAX(id)"]) + 1;
+        var minID = parseInt(rs.rows.item(0)["MIN(id)"]);
+        var rowCount = parseInt(rs.rows.item(0)["COUNT(*)"]);
+        if(rowCount === 0){
+            newID = 0;
+            minID = 0;
+        }
+
+        if(rowCount >= OPERATION_LOG_TB_INFO.max){
+            tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8} WHERE {1}={9}',
+                                      OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col, newID,
+                                      OPERATION_LOG_TB_INFO.opTime_col, opItem.opTime,
+                                      OPERATION_LOG_TB_INFO.user_col, opItem.user,
+                                      OPERATION_LOG_TB_INFO.descr_col, opItem.descr, minID));
+        }else{
+            var toexec = icStrformat('INSERT INTO {0} VALUES({1}, {2}, {3}, {4});',
+                                     OPERATION_LOG_TB_INFO.tb_name, newID, opItem.opTime,
+                                     opItem.user, opItem.descr);
+            tx.executeSql(toexec);
+        }
+        opItem.id = newID;
+    });
+    return opItem;
+}
+
+function oplog(){
+    if(!isDbInit) initialize();
+
+    var db = getDatabase();
+    var ret = [];
+    db.transaction(function(tx) {
+        var rs = tx.executeSql(icStrformat('SELECT * FROM {0} ORDER BY {1} DESC;',
+                                           OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col));
+        var rowItem;
+        for(var i = 0; i < rs.rows.length; ++i){
+            rowItem = rs.rows.item(i);
+            ret.push(new AlarmItem(rowItem[OPERATION_LOG_TB_INFO.id_col],
+                                   rowItem[OPERATION_LOG_TB_INFO.opTime_col],
+                                   rowItem[OPERATION_LOG_TB_INFO.user_col],
+                                   rowItem[OPERATION_LOG_TB_INFO.descr_col]));
+        }
+    });
+    return ret;
+}
+
+function updateOpLog(opItem){
+    var db = getDatabase();
+    db.transaction(function(tx) {
+        tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8} WHERE {1}={9}',
+                                  OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col, opItem.id,
+                                  OPERATION_LOG_TB_INFO.opTime_col, opItem.opTime,
+                                  OPERATION_LOG_TB_INFO.user_col, opItem.user,
+                                  OPERATION_LOG_TB_INFO.descr_col, opItem.descr,
+                                  opItem.id));
+    });
+}
+

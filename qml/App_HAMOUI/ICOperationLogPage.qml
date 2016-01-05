@@ -122,9 +122,9 @@ Rectangle {
 
 
     Component.onCompleted: {
-        //        var alarmlog = Storage.alarmlog();
-        //        for(var i = 0; i < alarmlog.length; ++i){
-        //            alarmModel.append(alarmlog[i]);
-        //        }
+        var oplog = Storage.oplog();
+        for(var i = 0; i < oplog.length; ++i){
+            operationLogModel.append(oplog[i]);
+        }
     }
 }

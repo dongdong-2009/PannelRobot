@@ -51,6 +51,7 @@ Rectangle {
                 color: "lime"
                 Text {
                     id: speed
+                    text: "10.0"
                     anchors.centerIn: parent
 
                 }
@@ -556,12 +557,12 @@ Rectangle {
 
     onVisibleChanged: {
         ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(visible);
-        if(visible){
-//            speed.text = "10.0";
-            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
-            //            panelRobotController.syncConfigs();
-        }
+//        if(visible){
+////            speed.text = "10.0";
+//            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+//            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+//            //            panelRobotController.syncConfigs();
+//        }
 
     }
 

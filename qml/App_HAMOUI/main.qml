@@ -420,6 +420,10 @@ Rectangle {
         menuSettings.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) menuProgram.setChecked(true);
+        if(knobStatus === Keymap.KNOB_MANUAL){
+            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+        }
     }
 
     Component.onCompleted: {

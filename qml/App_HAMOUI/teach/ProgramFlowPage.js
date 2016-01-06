@@ -32,6 +32,13 @@ function LinesInfo(){
         tmp.push(line);
         this.programsLines[programIndex][id] = tmp;
     }
+    this.removeLine = function(programIndex, id, line){
+        var count = this.programsLines[programIndex][id].length;
+        for(var i = 0; i < count; ++i){
+
+        }
+    }
+
     this.getLines = function(programIndex, id){
         var tmp = this.programsLines[programIndex][id];
         return tmp || [];

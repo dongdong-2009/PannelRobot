@@ -4,6 +4,8 @@ import "../../ICCustomElement"
 import "../Theme.js" as Theme
 import "../configs/Keymap.js" as Keymap
 import "../configs/AxisDefine.js" as AxisDefine
+import "../configs/ConfigDefines.js" as ConfigDefines
+import "../ICOperationLog.js" as ICOperationLog
 
 
 Item {
@@ -19,14 +21,14 @@ Item {
         property int checkSumPos: 15
         property variant configAddrs:
         [
-            ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_0_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_0_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_0_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_121", "s_rw_0_16_0_122", "s_rw_16_16_0_122", "s_rw_0_16_0_123", "s_rw_16_16_0_123", "s_rw_0_8_0_125", "s_rw_8_8_0_125", "s_rw_16_8_0_125", "s_rw_24_4_0_125", "s_rw_0_16_0_126","s_rw_0_16_3_127","s_rw_16_16_3_127","s_rw_16_16_1_126", "s_rw_0_32_0_124", "s_rw_28_4_0_125","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_128", "s_rw_0_16_0_129", "s_rw_16_16_0_129", "s_rw_0_16_0_130", "s_rw_16_16_0_130", "s_rw_0_8_0_132", "s_rw_8_8_0_132", "s_rw_16_8_0_132", "s_rw_24_4_0_132", "s_rw_0_16_0_133","s_rw_0_16_3_134","s_rw_16_16_3_134","s_rw_16_16_1_133", "s_rw_0_32_0_131", "s_rw_28_4_0_132","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_135", "s_rw_0_16_0_136", "s_rw_16_16_0_136", "s_rw_0_16_0_137", "s_rw_16_16_0_137", "s_rw_0_8_0_139", "s_rw_8_8_0_139", "s_rw_16_8_0_139", "s_rw_24_4_0_139", "s_rw_0_16_0_140","s_rw_0_16_3_141","s_rw_16_16_3_141","s_rw_16_16_1_140", "s_rw_0_32_0_138", "s_rw_28_4_0_139","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_0_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_32_0_156"],
-            ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_0_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_32_0_156"],
+            ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_0_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_0_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_0_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_121", "s_rw_0_16_0_122", "s_rw_16_16_0_122", "s_rw_0_16_0_123", "s_rw_16_16_0_123", "s_rw_0_8_0_125", "s_rw_8_8_0_125", "s_rw_16_8_0_125", "s_rw_24_4_0_125", "s_rw_0_16_0_126","s_rw_0_16_3_127","s_rw_16_16_3_127","s_rw_16_16_1_126", "s_rw_0_32_0_124", "s_rw_28_4_0_125","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_128", "s_rw_0_16_0_129", "s_rw_16_16_0_129", "s_rw_0_16_0_130", "s_rw_16_16_0_130", "s_rw_0_8_0_132", "s_rw_8_8_0_132", "s_rw_16_8_0_132", "s_rw_24_4_0_132", "s_rw_0_16_0_133","s_rw_0_16_3_134","s_rw_16_16_3_134","s_rw_16_16_1_133", "s_rw_0_32_0_131", "s_rw_28_4_0_132","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_135", "s_rw_0_16_0_136", "s_rw_16_16_0_136", "s_rw_0_16_0_137", "s_rw_16_16_0_137", "s_rw_0_8_0_139", "s_rw_8_8_0_139", "s_rw_16_8_0_139", "s_rw_24_4_0_139", "s_rw_0_16_0_140","s_rw_0_16_3_141","s_rw_16_16_3_141","s_rw_16_16_1_140", "s_rw_0_32_0_138", "s_rw_28_4_0_139","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_0_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_0_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_32_0_185"],
         ]
     }
 
@@ -35,15 +37,16 @@ Item {
     }
 
     function checkSumAddrs(){
-        var ret = [];
-        var addrs;
-        for(var i = 0; i < pdata.configAddrs.length; ++i){
-            addrs = pdata.configAddrs[i];
-            for(var j = 0; j < addrs.length - 1; ++j){
-                ret.push(addrs[j]);
-            }
-        }
-        return JSON.stringify(ret);
+        return ConfigDefines.machineStructConfigsJSON;
+//        var ret = [];
+//        var addrs;
+//        for(var i = 0; i < pdata.configAddrs.length; ++i){
+//            addrs = pdata.configAddrs[i];
+//            for(var j = 0; j < addrs.length - 1; ++j){
+//                ret.push(addrs[j]);
+//            }
+//        }
+//        return JSON.stringify(ret);
     }
 
     function onLengthChanged(){
@@ -55,80 +58,118 @@ Item {
     }
 
     function onPulseCountPerCircleChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(1), pulseCountPerCircle.configValue);
+        var addr = currentGroupAddr(1);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, pulseCountPerCircle.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr,pulseCountPerCircle.configValue, oldV);
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onReductionRatioChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(2), reductionRatio.configValue);
+        var addr = currentGroupAddr(2);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, reductionRatio.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr,reductionRatio.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onPLimitChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(3), pLimit.configValue);
+        var addr = currentGroupAddr(3);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, pLimit.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, pLimit.configValue, oldV);
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onNLimitChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(4), nLimit.configValue);
+        var addr = currentGroupAddr(4);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, nLimit.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, nLimit.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onPLimitPointChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(5), pLimitPoint.configValue);
+        var addr = currentGroupAddr(5);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, pLimitPoint.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, pLimitPoint.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onNLimitPointChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(6), nLimitPoint.configValue);
+        var addr = currentGroupAddr(6);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, nLimitPoint.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, nLimitPoint.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onOriginPointChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(7), originPoint.configValue);
+        var addr = currentGroupAddr(7);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, originPoint.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, originPoint.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onAcc1Changed(){
-        panelRobotController.setConfigValue(currentGroupAddr(10), acc1.configValue);
+        var addr = currentGroupAddr(10);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, acc1.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, acc1.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onAcc2Changed(){
-        panelRobotController.setConfigValue(currentGroupAddr(11), acc2.configValue);
+        var addr = currentGroupAddr(11);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, acc2.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, acc2.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
     }
 
     function onMaxSpeedChanged(){
-        panelRobotController.setConfigValue(currentGroupAddr(12), maxSpeed.configValue);
+        var addr = currentGroupAddr(12);
+        var oldV = panelRobotController.getConfigValueText(addr);
+        panelRobotController.setConfigValue(addr, maxSpeed.configValue);
         panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, maxSpeed.configValue, oldV);
+
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
@@ -257,6 +298,7 @@ Item {
                 configNameWidth: pdata.configNameWidth
                 inputWidth: pdata.inputWidth
                 unit: qsTr("mm")
+                visible: false
             }
             ICConfigEdit{
                 id:pulseCountPerCircle

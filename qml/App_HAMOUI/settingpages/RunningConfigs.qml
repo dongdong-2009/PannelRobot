@@ -14,7 +14,7 @@ Item {
                 id:tolerance
                 configName: qsTr("Tolerance")
                 unit: qsTr("Pulse")
-                configAddr: "s_rw_0_32_0_181"
+                configAddr: "s_rw_0_32_0_210"
 
             }
         }

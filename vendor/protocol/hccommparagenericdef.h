@@ -122,124 +122,152 @@ typedef enum _ICAddr
     ICAddr_Adapter_Para53, //<类型:系统;名字:电机8;结构:Axis_Config;地址:axis_cfg_addr;
     ICAddr_Adapter_Para54, //<类型:系统;名字:电机8;结构:Axis_Config;地址:axis_cfg_addr;
     ICAddr_Adapter_Para55, //<类型:系统;名字:电机8;结构:Axis_Config;地址:axis_cfg_addr;
-    ICAddr_Adapter_Para56, //<类型:系统;名字:电机配置crc;结构:Axis_Config;地址:axis_cfg_addr;
-    ICAddr_Adapter_Para57, //<类型:系统;名字:插补1最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para58, //<类型:系统;名字:插补1最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para59, //<类型:系统;名字:插补2最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para60, //<类型:系统;名字:插补2最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para61, //<类型:系统;名字:插补3最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para62, //<类型:系统;名字:插补3最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para63, //<类型:系统;名字:插补4最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para64, //<类型:系统;名字:插补4最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
-    ICAddr_Adapter_Para65, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para66, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para67, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para68, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para69, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para70, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para71, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para72, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para73, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para74, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para75, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
-    ICAddr_Adapter_Para76, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
-    ICAddr_Adapter_Para77, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
-    ICAddr_Adapter_Para78, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
-    ICAddr_Adapter_Para79, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
-    ICAddr_Adapter_Para80, //<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
-    ICAddr_Adapter_Para81, //<类型:系统;名字:容差设定;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para82, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para83, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para84, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para85, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para86, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para87, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para88, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para89, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para90, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para91, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para92, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para93, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para94, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para95, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para96, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para97, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para98, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para99, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para100, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para101, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para102, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para103, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para104, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para105, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para106, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para107, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para108, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para109, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para110, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para111, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para112, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para113, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para114, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para115, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para116, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para117, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para118, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para119, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para120, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para121, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para122, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para123, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para124, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para125, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para126, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para127, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para128, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para129, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para130, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para131, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para132, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para133, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para134, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para135, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para136, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para137, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para138, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para139, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para140, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para141, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para142, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para143, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para144, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para145, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para146, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para147, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para148, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para149, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para150, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para151, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para152, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para153, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para154, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para155, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para156, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para157, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para158, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para159, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para160, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para161, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
-    ICAddr_Adapter_Para162, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
-    ICAddr_Adapter_Para163, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
-    ICAddr_Adapter_Para164, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
-    ICAddr_Adapter_Para165, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
-    ICAddr_Adapter_Para166, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
-    ICAddr_Adapter_Para167, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
-    ICAddr_Adapter_Para168, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
-    ICAddr_Adapter_Para169, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
-    ICAddr_Adapter_Para170, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
-    ICAddr_Adapter_Para171, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
-    ICAddr_Adapter_Para172, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
-
+    ICAddr_Adapter_Para56, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para57, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para58, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para59, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para60, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para61, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para62, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para63, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para64, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para65, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para66, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para67, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para68, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para69, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para70, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para71, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para72, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para73, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para74, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para75, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para76, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para77, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para78, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para79, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para80, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para81, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para82, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para83, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para84, //<类型:系统;名字:机械结构;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para85, //<类型:系统;名字:电机配置crc;结构:Axis_Config;地址:axis_cfg_addr;
+    ICAddr_Adapter_Para86, //<类型:系统;名字:插补1最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para87, //<类型:系统;名字:插补1最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para88, //<类型:系统;名字:插补2最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para89, //<类型:系统;名字:插补2最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para90, //<类型:系统;名字:插补3最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para91, //<类型:系统;名字:插补3最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para92, //<类型:系统;名字:插补4最大线速度;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para93, //<类型:系统;名字:插补4最小加速时间_二次加速时间比例;结构:Interpolation_Config;地址:Inter_cfg;
+    ICAddr_Adapter_Para94, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para95, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para96, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para97, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para98, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para99, //<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para100,//<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para101,//<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para102,//<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para103,//<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para104,//<类型:系统;名字:逻辑输入端口;结构:INPUT;地址:input_addr;
+    ICAddr_Adapter_Para105,//<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
+    ICAddr_Adapter_Para106,//<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
+    ICAddr_Adapter_Para107,//<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
+    ICAddr_Adapter_Para108,//<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
+    ICAddr_Adapter_Para109,//<类型:系统;名字:逻辑输出端口;结构:OUTPUT;地址:output_addr;
+    ICAddr_Adapter_Para110,//<类型:系统;名字:容差设定;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para111, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para112, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para113, //<类型:系统;名字:当前延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para114, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para115, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para116, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para117, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para118, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para119, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para120, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para121, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para122, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para123, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para124, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para125, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para126, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para127, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para128, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para129,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para130,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para131,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para132,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para133,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para134,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para135,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para136,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para137,  //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para138, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para139, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para140, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para141, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para142, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para143, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para144, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para145, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para146, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para147, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para148, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para149, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para150, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para151, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para152, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para153, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para154, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para155, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para156, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para157, //<类型:系统;名字:目标定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para158, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para159, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para160, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para161, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para162, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para163, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para164, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para165, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para166, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para167, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para168, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para169, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para170, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para171, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para172, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para173, //<类型:系统;名字:当前计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para174, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para175, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para176, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para177, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para178, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para179, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para180, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para181, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para182, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para183, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para184, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para185, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para186, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para187, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para188, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para189, //<类型:系统;名字:目标计数值;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para190, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
+    ICAddr_Adapter_Para191, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
+    ICAddr_Adapter_Para192, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
+    ICAddr_Adapter_Para193, //<类型:系统;名字:逻辑电机对应的脉冲端口;结构:AXIS_MAP;地址:axis_map_addr;
+    ICAddr_Adapter_Para194, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
+    ICAddr_Adapter_Para195, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
+    ICAddr_Adapter_Para196, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
+    ICAddr_Adapter_Para197, //<类型:系统;名字:设定速度;结构:Interpolation;地址:Interpolation_addr;
+    ICAddr_Adapter_Para198, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
+    ICAddr_Adapter_Para199, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
+    ICAddr_Adapter_Para200, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
+    ICAddr_Adapter_Para201, //<类型:系统;名字:V轴初始夹角;结构:ALPHA;地址:alpha_addr;
     ICAddr_Adapter_Para255 = 356,
 
     ICAddr_Mold_Para0,//<类型:模号;名字:;结构:MOLD_PRO_USE;地址:mold_use_p_addr;
@@ -630,7 +658,7 @@ typedef enum
 /*******************************************************************************/
 static const uint32_t axis_cfg_addr[] = {
     ICAddr_Adapter_Para0, //<类型：系统；名字：电机1；结构：Axis_Config；地址：axis_cfg_addr；
-    ICAddr_Adapter_Para56, //<类型：系统；名字：；结构：Axis_Config；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para85, //<类型：系统；名字：；结构：Axis_Config；地址：axis_cfg_addr；
 };
 
 typedef struct {  //<192 + 14X8 = 304
@@ -653,19 +681,29 @@ typedef struct {  //<192 + 14X8 = 304
 
 typedef struct {
     Axis_Config0 para[8];
+    uint32_t x;      //<类型:系统;名字:一轴圆心在基坐标系中的X位置;精度:3;单位:mm;
+    uint32_t y;      //<类型:系统;名字:一轴圆心在基坐标系中的X位置;精度:3;单位:mm;
+    uint32_t z;      //<类型:系统;名字:二轴圆心在基坐标系中的Z位置;精度:3;单位:mm;
+    uint32_t L12;    //<类型:系统;名字:二轴圆心在二轴Z向上与一轴圆心的距离;精度:3;单位:mm;
+    uint32_t L23;    //<类型:系统;名字:三轴圆心在三轴Z向上与二轴圆心的距离;精度:3;单位:mm;
+    uint32_t L24;    //<类型:系统;名字:四轴圆心在四轴Z向上与二轴圆心的距离;精度:3;单位:mm;
+    uint32_t L34a;   //<类型:系统;名字:四轴圆心在四轴Z向上与三轴圆心的距离A;精度:3;单位:mm;
+    uint32_t L34b;   //<类型:系统;名字:四轴圆心在四轴Z向上与三轴圆心的距离B;精度:3;单位:mm;
+    uint32_t L56;    //<类型:系统;名字:六轴圆心在六轴Z向上与五轴圆心的距离;精度:3;单位:mm;
+    uint32_t res[20]; //<类型:系统;名字:预留;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;
 
 
 typedef union {
     Axis_Config1 para;
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para0, ICAddr_Adapter_Para56)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para0, ICAddr_Adapter_Para85)];
 }Axis_Config;
 
 
 static const uint32_t Inter_cfg[] = {
-    ICAddr_Adapter_Para57, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
-    ICAddr_Adapter_Para64, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para86, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para93, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
 };
 typedef struct {  //<类型:系统;最多 4组插补，目前仅用第1组   //<- 312+6X4 = 336
     uint32_t max_speed;   //<类型：系统；名字：最大线速度；精度：3;单位：mm/s；
@@ -679,7 +717,7 @@ typedef struct {  //<类型:系统;最多 4组插补，目前仅用第1组   //<
 
 typedef union {
     Interpolation_Config1 para;
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para57, ICAddr_Adapter_Para64)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para86, ICAddr_Adapter_Para93)];
 } Interpolation_Config;
 
 
@@ -713,8 +751,8 @@ typedef union {  //<336 + 8X8 = 400
 
 
 static const uint32_t Interpolation_addr[] = {
-    ICAddr_Adapter_Para165, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
-    ICAddr_Adapter_Para168, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para194, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para197, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
 };
 typedef struct {  //<400 + 6X4 = 424
     uint16_t speed_percent;   //<类型：系统；名字：设定速度；精度：1;单位：mm/s；
@@ -726,13 +764,13 @@ typedef struct {
 
 typedef union {
     InterpolationStruct para;
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para165, ICAddr_Adapter_Para168)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para194, ICAddr_Adapter_Para197)];
 } Interpolation;
 
 
 static const uint32_t input_addr[] = {
-    ICAddr_Adapter_Para65, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
-    ICAddr_Adapter_Para75, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para94, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para104, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
 };
 typedef struct {  //<400 + 6X4 = 424
     uint16_t in0;   //<类型：系统；名字：输入点；精度：0;单位：；
@@ -766,14 +804,14 @@ typedef struct{
 typedef union {
     INPUTStruct para;
 //    uint32_t all_para[sizeof(INPUT0)/2];
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para65, ICAddr_Adapter_Para75)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para94, ICAddr_Adapter_Para104)];
 } INPUT;
 
 
 
 static const uint32_t output_addr[] = {
-    ICAddr_Adapter_Para76, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
-    ICAddr_Adapter_Para80, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para105, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
+    ICAddr_Adapter_Para109, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
 };
 typedef struct {  //<400 + 6X4 = 424
     uint16_t out0;   //<类型：系统；名字：输出点；精度：0;单位：；
@@ -796,7 +834,7 @@ typedef struct{
 typedef union {
     OutPutStruct para;
 //    uint32_t all_para[sizeof(OUTPUT0)/2];
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para76, ICAddr_Adapter_Para80)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para105, ICAddr_Adapter_Para109)];
 } OUTPUT;
 
 static const uint32_t system_addr[] = {
@@ -814,8 +852,8 @@ typedef union {
 
 
 static const uint32_t system_reserve_addr[] = {
-    ICAddr_Adapter_Para81,
-    ICAddr_Adapter_Para160 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
+    ICAddr_Adapter_Para110,
+    ICAddr_Adapter_Para189 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
 };
 typedef struct {
   //    uint16_t delay_current[8];  //<类型:系统;当前延时时间 - 32-39 - 单位-10毫秒
@@ -823,10 +861,9 @@ typedef struct {
   //    uint16_t timer_current[40];  //<类型:系统;当前定时时间 - 48-87 - 单位-10毫秒
   //    uint16_t timer_target[40];  //<类型:系统;目标定时时间 - 88-127 - 单位-10毫秒
   //    uint32_t counter_current[16];  //<类型:系统;当前计数值 - 128-159
+
   uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
-  uint32_t Reserve0[3];    //<类型:系统;名字:当前延时时间; 单位:ms
-  uint32_t Reserve1[4];    //<类型:系统;名字:目标延时时间; 单位:ms
-  uint32_t Reserve2[20];   //<类型:系统;名字:当前定时时间; 单位:ms
+  uint32_t Reserve2[27];   //<类型:系统;名字:当前定时时间; 单位:ms
   uint32_t Reserve3[20];   //<类型:系统;名字:目标定时时间; 单位:ms
   uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
   uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms
@@ -838,13 +875,13 @@ typedef struct{
 
 typedef union {
     ReverseStruct para;
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para81, ICAddr_Adapter_Para160)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para110, ICAddr_Adapter_Para189)];
 } RESERVE;
 
 
 static const uint32_t axis_map_addr[] = {
-    ICAddr_Adapter_Para161,
-    ICAddr_Adapter_Para164 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
+    ICAddr_Adapter_Para190,
+    ICAddr_Adapter_Para193 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
 };
 
 typedef struct{
@@ -864,13 +901,13 @@ typedef struct{
 
 typedef union {
     AXIS_MAPStruct para;
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para161, ICAddr_Adapter_Para164)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para190, ICAddr_Adapter_Para193)];
 } AXIS_MAP;
 
 
 static const uint32_t alpha_addr[] = {
-    ICAddr_Adapter_Para169,
-    ICAddr_Adapter_Para172 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
+    ICAddr_Adapter_Para198,
+    ICAddr_Adapter_Para201 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
 };
 
 typedef struct{
@@ -890,7 +927,7 @@ typedef struct{
 
 typedef union {
     ALPHAStruct para;
-    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para169, ICAddr_Adapter_Para172)];
+    uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para198, ICAddr_Adapter_Para201)];
 } ALPHA;
 
 

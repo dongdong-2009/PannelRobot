@@ -34,14 +34,14 @@ Item {
         }
         CatalogButton{
             id:axisConfigBtn
-            text: qsTr("Axis Configs")
-            icon: "../images/settings_struct_config.png"
+            text: qsTr("Motor Configs")
+            icon: "../images/settings_motor_config.png"
 
         }
         CatalogButton{
-            id:reserveDefineBtn
-            text: qsTr("Reserve Define")
-            icon: "../images/product.png"
+            id:structConfigBtn
+            text: qsTr("Struct Configs")
+            icon: "../images/settings_struct_config.png"
 
         }
         CatalogButton{
@@ -82,6 +82,7 @@ Item {
     Component.onCompleted: {
         configsContainer.addNav(axisConfigBtn, Qt.createComponent('AxisConfigs.qml'));
         configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
+        configsContainer.addNav(structConfigBtn, Qt.createComponent('StructConfigs.qml'));
 //        console.log(url("./AxisConfigs.qml"));
 //        var configs = Qt.createComponent('AxisConfigs.qml');
 //        var axisConfig = configs.createObject(configsContainer);

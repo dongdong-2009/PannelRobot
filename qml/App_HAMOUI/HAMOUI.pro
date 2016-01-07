@@ -9,6 +9,7 @@ settingpages/*
 }
 
 OTHER_FILES += \
-    teach/CustomAlarmActionEditor.qml
+    teach/CustomAlarmActionEditor.qml \
+    settingpages/StructConfigs.qml
 
 

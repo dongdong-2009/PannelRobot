@@ -6,7 +6,7 @@ import "ActionModifyEditor.js" as PData
 Item {
     id:container
     property bool isAutoMode: false
-    property variant autoEditableItems: ["speed", "delay", "limit", "acTime"]
+    property variant autoEditableItems: ["speed", "delay", "limit", "acTime", "speed0", "speed1"]
     Rectangle{
         id:bgLayer
         border.color: "black"

@@ -420,7 +420,7 @@ Rectangle {
                         var ret =  programListView.currentItem.y >= programListView.contentY;
                         var currentItem = currentModelData();
                         if(currentItem === null) return false;
-                        ret = ret && (Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0);
+                        ret = ret && (Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length > 1);
                         return ret;
                     }
                 }

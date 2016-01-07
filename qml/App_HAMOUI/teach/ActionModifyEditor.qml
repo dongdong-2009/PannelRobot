@@ -16,6 +16,7 @@ Item {
         MouseArea{
             anchors.fill: parent
         }
+        color: "#A0A0F0"
     }
 
     signal editConfirm(variant actionObject)

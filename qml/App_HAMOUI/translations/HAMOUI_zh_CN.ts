@@ -59,6 +59,10 @@
         <source>Speed0:</source>
         <translation>箱内堆速度:</translation>
     </message>
+    <message>
+        <source>Custom Name:</source>
+        <translation>自定义名称:</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -221,6 +225,26 @@
     <message>
         <source>ALARM_ERROR_SERVO_WARP</source>
         <translation>偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACC_ERR</source>
+        <translation>轨迹规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_COUNTER_NOT_DEFINE</source>
+        <translation>计数器未定义</translation>
+    </message>
+    <message>
+        <source>5000</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknow Err</source>
+        <translation>未知错误</translation>
     </message>
 </context>
 <context>
@@ -1564,11 +1588,7 @@
     </message>
     <message>
         <source>Axis Configs</source>
-        <translation>结构参数</translation>
-    </message>
-    <message>
-        <source>Reserve Define</source>
-        <translation type="unfinished"></translation>
+        <translation>电机参数</translation>
     </message>
     <message>
         <source>Limit Define</source>
@@ -1581,6 +1601,14 @@
     <message>
         <source>Other Configs</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor Configs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Struct Configs</source>
+        <translation>结构参数</translation>
     </message>
 </context>
 <context>
@@ -1999,6 +2027,10 @@ please chose!</source>
         <source>Counter</source>
         <translation>计数器</translation>
     </message>
+    <message>
+        <source>Custom Alarm</source>
+        <translation>自定义报警</translation>
+    </message>
 </context>
 <context>
     <name>ProgramFlowPage</name>
@@ -2389,6 +2421,53 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>StructConfigs</name>
+    <message>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Struct 9</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -2688,6 +2767,10 @@ please chose!</source>
     <message>
         <source>Offset Move:</source>
         <translation>相对移动:</translation>
+    </message>
+    <message>
+        <source>Alarm</source>
+        <translation>报警</translation>
     </message>
 </context>
 <context>
@@ -3063,11 +3146,11 @@ please chose!</source>
     </message>
     <message>
         <source>Sign out</source>
-        <translation type="unfinished"></translation>
+        <translation>登出</translation>
     </message>
     <message>
         <source>Sign in</source>
-        <translation type="unfinished"></translation>
+        <translation>登入</translation>
     </message>
 </context>
 </TS>

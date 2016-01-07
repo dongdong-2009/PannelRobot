@@ -136,9 +136,10 @@ var alarmInfo = {
     "204":qsTr("ALARM_ROUTE_ARC_P2_NOTSET"),
     "205":qsTr("ALARM_ROUTE_ARC_P3_NOTSET"),
     "206":qsTr("ALARM_SETROUTESPEED_FAIL"),
-    "207":qsTr("1"),
+    "207":qsTr("ALARM_ROUTE_ACC_ERR"),
     "208":qsTr("2"),
     "209":qsTr("3"),
+    "300":qsTr("ALARM_COUNTER_NOT_DEFINE"),
 }
 
 function analysisAlarmNum(errNum){

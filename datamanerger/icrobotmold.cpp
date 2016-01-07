@@ -466,7 +466,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
             int stackID = action.value("stackID", -1).toInt();
             if(!stackInfos.contains(stackID))
             {
-                ret.Clear();
+//                ret.Clear();
                 err = ICRobotMold::kCCErr_Invaild_StackID;
                 ret.AddErr(i, err);
                 continue;
@@ -479,7 +479,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
                 {
                     if(IsCounterValid(counters, si.si[j].counterID) < 0)
                     {
-                        ret.Clear();
+//                        ret.Clear();
                         err = ICRobotMold::kCCErr_Invaild_CounterID;
                         ret.AddErr(i, err);
                     }
@@ -497,7 +497,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
                 int cIndex = IsCounterValid(counters, cID) ;
                 if(cIndex < 0)
                 {
-                    ret.Clear();
+//                    ret.Clear();
                     err = ICRobotMold::kCCErr_Invaild_CounterID;
                     ret.AddErr(i, err);
                     continue;
@@ -511,7 +511,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
         ret.AddICMoldItem(i,VariantToMoldItem(step, action, err));
         if(err != kCCErr_None)
         {
-            ret.Clear();
+//            ret.Clear();
             //            err = kCCErr_Sync_Nesting;
             ret.AddErr(i, err);
             //            return ret;
@@ -558,7 +558,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
     }
     if(isSyncBegin)
     {
-        ret.Clear();
+//        ret.Clear();
         err = kCCErr_Sync_NoEnd;
         ret.AddErr(result.size(), err);
 
@@ -566,7 +566,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
     }
     if(isGroupBegin)
     {
-        ret.Clear();
+//        ret.Clear();
         err = kCCErr_Group_NoEnd;
         ret.AddErr(result.size(), err);
 
@@ -574,7 +574,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText, const QMap<int, Sta
     }
     if(act != F_CMD_END)
     {
-        ret.Clear();
+//        ret.Clear();
         err = kCCErr_Last_Is_Not_End_Action;
         ret.AddErr(result.size(), err);
 

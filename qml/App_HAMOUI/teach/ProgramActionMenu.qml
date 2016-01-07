@@ -17,6 +17,7 @@ Rectangle {
     signal syncMenuTriggered()
     signal counterMenuTriggered()
     signal commentMenuTriggered()
+    signal customAlarmMenuTriggered()
     signal searchMenuTriggered()
 
     color: "#A0A0F0"
@@ -108,6 +109,15 @@ Rectangle {
             height: pData.menuItemSize.height
             onButtonClicked: stackMenuTriggered()
         }
+        ICButton{
+            id:customAlarm
+            text: qsTr("Custom Alarm")
+            icon: "../images/action_item_custom_alarm.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: customAlarmMenuTriggered()
+        }
+
         ICButton{
             id:search
             text: qsTr("Search")

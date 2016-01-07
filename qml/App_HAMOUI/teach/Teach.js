@@ -4,6 +4,7 @@ Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
 Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
+Qt.include("../configs/AlarmInfo.js")
 
 //var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
 
@@ -365,6 +366,7 @@ actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
 actions.F_CMD_STACK0 = 300;
 actions.F_CMD_COUNTER = 400; //< 计数器
 actions.F_CMD_COUNTER_CLEAR = 401;
+actions.F_CMD_TEACH_ALARM = 500;
 
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
@@ -615,6 +617,13 @@ var generateClearCounterAction = function(counterID){
     };
 }
 
+var generateCustomAlarmAction = function(alarmNum){
+    return {
+        "action":actions.F_CMD_TEACH_ALARM,
+        "alarmNum":alarmNum
+    };
+}
+
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
@@ -732,6 +741,10 @@ var ps8_2ToStringHandler = function(actionObject){
 
 var otherActionToStringHandler = function(actionObject){
 
+}
+
+var customAlarmActiontoStringHandler = function(actionObject){
+    return qsTr("Alarm") + ":" + actionObject.alarmNum + ":" + getCustomAlarmDescr(actionObject.alarmNum);
 }
 
 var conditionActionToStringHandler = function(actionObject){
@@ -945,6 +958,7 @@ actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStr
 //actionToStringHandlerMap.put(actions.ACT_PS8_1, ps8_1ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_TEACH_ALARM, customAlarmActiontoStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP2, conditionActionToStringHandler);

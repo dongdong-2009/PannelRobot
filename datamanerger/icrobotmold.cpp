@@ -267,6 +267,16 @@ int CounterActionCompiler(ICMoldItem & item, const QVariantMap* v)
     return ICRobotMold::kCCErr_None;
 }
 
+int CustomAlarmActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(v->value("action").toInt());
+    item.append(v->value("alarmNum").toUInt());
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+
+
+    return ICRobotMold::kCCErr_None;
+}
+
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
 {
     QMap<int, ActionCompiler> ret;
@@ -291,6 +301,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_STACK0, StackActionCompiler);
     ret.insert(F_CMD_COUNTER, CounterActionCompiler);
     ret.insert(F_CMD_COUNTER_CLEAR, CounterActionCompiler);
+    ret.insert(F_CMD_TEACH_ALARM, CustomAlarmActionCompiler);
 
     ret.insert(F_CMD_END, SimpleActionCompiler);
 

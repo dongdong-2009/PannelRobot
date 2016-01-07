@@ -715,6 +715,8 @@ Rectangle {
                 editor = Qt.createComponent('CounterActionEditor.qml')
                 var counterEditorObject = editor.createObject(actionEditorContainer);
                 counterEditorObject.counterUpdated.connect(onCounterUpdated);
+                editor = Qt.createComponent('CustomAlarmActionEditor.qml')
+                var customAlarmEditorObject = editor.createObject(actionEditorContainer);
 
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
@@ -728,6 +730,7 @@ Rectangle {
                 actionEditorContainer.addPage(pathEditorObject);
                 actionEditorContainer.addPage(stackEditorObject);
                 actionEditorContainer.addPage(counterEditorObject);
+                actionEditorContainer.addPage(customAlarmEditorObject);
 
 
                 actionEditorContainer.showMenu();
@@ -742,6 +745,7 @@ Rectangle {
                 actionMenuObject.pathMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(9)});
                 actionMenuObject.stackMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(10)});
                 actionMenuObject.counterMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(11)});
+                actionMenuObject.customAlarmMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(12)});
 
                 //                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);

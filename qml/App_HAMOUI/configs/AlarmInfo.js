@@ -180,3 +180,15 @@ function getAlarmDescr(errNum){
 
     return "";
 }
+
+var customAlarmInfo = {
+    "5000":qsTr("5000"),
+    "5001":qsTr("5001"),
+}
+
+function getCustomAlarmDescr(errNum){
+    if(customAlarmInfo.hasOwnProperty(errNum.toString())){
+        return customAlarmInfo[errNum.toString()];
+    }
+    return qsTr("Unknow Err");
+}

@@ -3,7 +3,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 
-Rectangle {
+Item {
     function createActionObjects(){
         var ret = [];
         var action = pointEdit.action;

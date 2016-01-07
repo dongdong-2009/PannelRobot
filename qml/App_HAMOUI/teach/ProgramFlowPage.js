@@ -32,10 +32,22 @@ function LinesInfo(){
         tmp.push(line);
         this.programsLines[programIndex][id] = tmp;
     }
-    this.removeLine = function(programIndex, id, line){
-        var count = this.programsLines[programIndex][id].length;
+    this.removeIDLine = function(programIndex, id, line){
+        var lines = this.programsLines[programIndex][id];
+        var count = lines.length;
         for(var i = 0; i < count; ++i){
-
+            if(line == lines[i]){
+                lines.splice(i,1);
+                return i;
+            }
+        }
+        return -1;
+    }
+    this.removeLine = function(programIndex, line){
+        var pl = this.programsLines[programIndex];
+        for(var id in pl){
+            if(this.removeIDLine(programIndex, id, line) >= 0)
+                break;
         }
     }
 

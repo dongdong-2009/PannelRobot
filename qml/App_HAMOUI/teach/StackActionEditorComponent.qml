@@ -43,12 +43,14 @@ Item {
     }
 
     function setCounterID(id){
-        var toSearch = "[" + id +"]";
-        var items = counterSel.items;
-        for(var i = 0; i < items.length; ++i){
-            if(items[i].indexOf(toSearch) >=0 ){
-                counterSel.configValue = i;
-                return i;
+        if(doesBindingCounter){
+            var toSearch = "[" + id +"]";
+            var items = counterSel.items;
+            for(var i = 0; i < items.length; ++i){
+                if(items[i].indexOf(toSearch) >=0 ){
+                    counterSel.configValue = i;
+                    return i;
+                }
             }
         }
         counterSel.configValue = 0;

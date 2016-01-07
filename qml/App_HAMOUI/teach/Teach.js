@@ -978,8 +978,9 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
+    var ret = [];
     if(actionObject.action === actions.F_CMD_SINGLE){
-        return [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
+        ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"}];
     }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
@@ -989,32 +990,33 @@ var actionObjectToEditableITems = function(actionObject){
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
              actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
-        return [
+        ret = [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
                     {"item":"delay", "range":"s_rw_0_32_2_1100"}
                 ];
     }else if(actionObject.action === actions.F_CMD_IO_OUTPUT){
         if(actionObject.type >= TIMEY_BOARD_START)
-            return [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
+            ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
         else
-            return [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
+            ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
              actionObject.action === actions.F_CMD_PROGRAM_JUMP1){
-        return [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
+        ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
-        return [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
+        ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
                 {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
     }
-
-    return [];
+    ret.push({"item":"customName"});
+    return ret;
 }
 
 
 var actionToString = function(actionObject){
     var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
     if(toStrHandler === undefined) {console.log(actionObject.action)}
-    return toStrHandler(actionObject);
+    var customName = actionObject.customName || "";
+    return customName + " " + toStrHandler(actionObject);
 }
 
 function ProgramModelItem(actionObject, at){

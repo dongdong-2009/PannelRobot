@@ -30,6 +30,7 @@ Item {
         limit.visible = false;
         points.visible = false;
         acTime.visible = false;
+        customName.visible = false;
         var item;
         var editor;
         var maxWidth = 0;
@@ -43,8 +44,8 @@ Item {
                 editor.points = actionObject[item.item];
                 editor.action = actionObject.action;
             }else{
-                editor.configAddr = item.range;
-                editor.configValue = actionObject[item.item];
+                editor.configAddr = item.range || "";
+                editor.configValue = actionObject[item.item] ||"";
             }
 
             if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
@@ -76,6 +77,14 @@ Item {
         y:10
         x:10
         spacing: 6
+        ICConfigEdit{
+            id:customName
+            configNameWidth: PData.configNameWidth
+            inputWidth: PData.inputWidth
+            configName: qsTr("Custom Name:")
+            isNumberOnly: false
+        }
+
         ICConfigEdit{
             id:pos
             configNameWidth: PData.configNameWidth
@@ -170,6 +179,8 @@ Item {
             PData.itemToEditorMap.put("points", points);
             PData.itemToEditorMap.put("limit", limit);
             PData.itemToEditorMap.put("acTime", acTime);
+            PData.itemToEditorMap.put("customName", customName);
+
             PData.editorToItemMap.put(pos, "pos");
             PData.editorToItemMap.put(speed, "speed");
             PData.editorToItemMap.put(speed0, "speed0");
@@ -178,6 +189,8 @@ Item {
             PData.editorToItemMap.put(points, "points")
             PData.editorToItemMap.put(limit, "limit");
             PData.editorToItemMap.put(acTime, "acTime");
+            PData.editorToItemMap.put(customName, "customName");
+
         }
     }
 }

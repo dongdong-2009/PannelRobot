@@ -379,14 +379,14 @@ Rectangle {
             id:speed0
             visible: useFlag.isChecked
             configName: qsTr("Speed")
-            configAddr: "s_rw_0_16_1_265"
+            configAddr: "s_rw_0_16_1_294"
             unit: "%"
         }
         ICConfigEdit{
             id:speed1
             visible: useFlag.isChecked
             configName: qsTr("Speed1")
-            configAddr: "s_rw_0_16_1_265"
+            configAddr: "s_rw_0_16_1_294"
             unit: "%"
         }
     }

@@ -337,7 +337,7 @@ Rectangle {
                 }
                 onVisibleChanged: {
                     if(visible){
-                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_265");
+                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
                     }
                 }
             }

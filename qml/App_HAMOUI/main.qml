@@ -422,7 +422,7 @@ Rectangle {
         if(isAuto) menuProgram.setChecked(true);
         if(knobStatus === Keymap.KNOB_MANUAL){
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
         }
     }
 
@@ -437,7 +437,7 @@ Rectangle {
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(mainWindow);
         panelRobotController.readCurrentKnobValue();
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-        panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
         console.log("main load finished!")
     }
 
@@ -476,7 +476,7 @@ Rectangle {
                     spd = Keymap.endSpeed(spd, dir)
                     speed = spd.toFixed(1);
                     ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
-                    panelRobotController.modifyConfigValue("s_rw_0_16_1_265", speed);
+                    panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
                 }
             }
         }

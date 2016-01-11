@@ -213,7 +213,8 @@ public:
                                       const QString& initProgram,
                                       const QList<QPair<int, quint32> >& values,
                                       const QStringList& subPrograms = QStringList(),
-                                      const QVector<QVariantList>& counters = QVector<QVariantList>());
+                                      const QVector<QVariantList>& counters = QVector<QVariantList>(),
+                                      const QVector<QVariantList>& variables = QVector<QVariantList>());
 
     static RecordDataObject CopyRecord(const QString& name,
                                        const QString& source);
@@ -237,7 +238,11 @@ public:
 #endif
     }
 
-    static CompileInfo Complie(const QString& programText, const QMap<int, StackInfo>& stackInfos, const QVector<QVariantList>& counters, int & err);
+    static CompileInfo Complie(const QString& programText,
+                               const QMap<int, StackInfo>& stackInfos,
+                               const QVector<QVariantList>& counters,
+                               const QVector<QVariantList>& variables,
+                               int & err);
 
 //    static QPair<QStringList, QString>  ExportMold(const QString& name);
     static QStringList ExportMold(const QString& name);
@@ -327,6 +332,11 @@ public:
     bool DeleteCounter(quint32 id);
     int IndexOfCounter(quint32 id) const;
 
+    QVector<QVariantList> Variables() const { return variables_;}
+    bool CreateVariables(quint32 id, const QString& name, const QString& unit, quint32 v, quint32 decimal);
+    bool DeleteVariable(quint32 id);
+    int IndexOfVariable(quint32 id) const;
+
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);
 
@@ -336,6 +346,7 @@ private:
     QString stacks_;
     QMap<int, StackInfo> stackInfos_;
     QVector<QVariantList> counters_;
+    QVector<QVariantList> variables_;
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;

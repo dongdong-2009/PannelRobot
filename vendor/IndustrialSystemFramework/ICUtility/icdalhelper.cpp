@@ -422,7 +422,10 @@ static void FixTempTimerTable_()
     }
 }
 
-QString ICDALHelper::NewMoldConfig(const QString &name, const QList<QPair<int, quint32> > & values, const QVector<QVariantList>& counters)
+QString ICDALHelper::NewMoldConfig(const QString &name,
+                                   const QList<QPair<int, quint32> > & values,
+                                   const QVector<QVariantList>& counters,
+                                   const QVector<QVariantList>& variables)
 {
     QSqlDatabase db = QSqlDatabase::database();
     db.transaction();
@@ -457,6 +460,22 @@ QString ICDALHelper::NewMoldConfig(const QString &name, const QList<QPair<int, q
         c = counters.at(i);
         query.exec(insertTemplCounter.arg(counterTableName).arg(c.at(0).toString())
                    .arg(c.at(1).toString()).arg(c.at(2).toString()).arg(c.at(3).toString()));
+    }
+
+    QString variableTableName = QString("tb_variable_%1_moldconfig").arg(maxID + 1);
+    cmd = QString("CREATE TABLE \"%1\"(id INT,name TEXT, unit TEXT, val INT, decimal INT)").arg(variableTableName);
+    query.exec(cmd);
+    const QString insertTemplVariable = QString("INSERT INTO %1 VALUES(%2, \'%3\',\'%4\', %5, %6)");
+    QVariantList v;
+    for(int i = 0; i != variables.size(); ++i)
+    {
+        v = variables.at(i);
+        query.exec(insertTemplVariable.arg(variableTableName)
+                   .arg(v.at(0).toString())
+                   .arg(v.at(1).toString())
+                   .arg(v.at(2).toString())
+                   .arg(v.at(3).toString())
+                   .arg(v.at(4).toString()));
     }
     if(db.commit())
         return dt;
@@ -645,7 +664,11 @@ ICRecordInfos ICDALHelper::RecordTableInfos()
     return ret;
 }
 
-QString ICDALHelper::NewMold(const QString &moldName, const QStringList &programs, const QList<QPair<int, quint32> > & values, const QVector<QVariantList>& counters)
+QString ICDALHelper::NewMold(const QString &moldName,
+                             const QStringList &programs,
+                             const QList<QPair<int, quint32> > & values,
+                             const QVector<QVariantList>& counters,
+                             const QVector<QVariantList> &variables)
 {
     QStringList p = programs;
     for(int i = programs.size(); i< 9; ++i)
@@ -673,7 +696,7 @@ QString ICDALHelper::NewMold(const QString &moldName, const QStringList &program
     //ToDo: New Mold act may not delete if fail
     if(db.commit())
     {
-        ret = NewMoldConfig(moldName,values, counters);
+        ret = NewMoldConfig(moldName,values, counters, variables);
     }
     else
         db.rollback();
@@ -718,6 +741,8 @@ QString ICDALHelper::CopyMold(const QString &moldName, const QString &source)
 
     QString fncName = QString("tb_mold_%1_moldconfig").arg(query.value(1).toString());
     QString counterName = QString("tb_counter_%1_moldconfig").arg(query.value(1).toString());
+    QString variableName = QString("tb_variable_%1_moldconfig").arg(query.value(1).toString());
+
     query.exec("SELECT MAX(fnc_table_name) FROM tb_moldconfig_record");
     if(!query.next())
     {
@@ -732,6 +757,11 @@ QString ICDALHelper::CopyMold(const QString &moldName, const QString &source)
         return "";
     }
     if(!CopyTable_(QString("tb_counter_%1_moldconfig").arg(maxID + 1), counterName, err, NullWrapper_))
+    {
+        db.rollback();
+        return "";
+    }
+    if(!CopyTable_(QString("tb_variable_%1_moldconfig").arg(maxID + 1), variableName, err, NullWrapper_))
     {
         db.rollback();
         return "";
@@ -757,9 +787,11 @@ bool ICDALHelper::DeleteMold(const QString &moldName)
     QString err;
     bool ret = DropTable_(MoldFncTableName(moldName), err, MoldConfigNameWrapper);
     ret = ret && DropTable_(MoldCounterTableName(moldName), err, MoldConfigNameWrapper);
+    ret = ret && DropTable_(MoldVariableTableName(moldName), err, MoldConfigNameWrapper);
     QSqlQuery query;
     ret = ret && query.exec(QString("DELETE FROM tb_mold_act WHERE mold_name = \"%1\"").arg(moldName));
     ret = ret && query.exec(QString("DELETE FROM tb_moldconfig_record WHERE name = \"%1\"").arg(moldName));
+//    ret = ret && query.exec(QString("DELETE FROM tb_moldconfig_record WHERE name = \"%1\"").arg(moldName));
     if(!db.commit())
         db.rollback();
     return ret;
@@ -792,6 +824,22 @@ QVector<QVariantList> ICDALHelper::GetMoldCounterDef(const QString &name)
     return ret;
 }
 
+QVector<QVariantList> ICDALHelper::GetMoldVariableDef(const QString &name)
+{
+    QSqlQuery query;
+    query.exec("SELECT * FROM " + MoldConfigNameWrapper(MoldVariableTableName(name)));
+    QVector<QVariantList> ret;
+    QVariantList tmp;
+    while(query.next())
+    {
+        tmp.clear();
+        tmp<<query.value(0)<<query.value(1)<<query.value(2)<<query.value(3)<<query.value(4);
+        ret.append(tmp);
+    }
+    return ret;
+}
+
+
 bool ICDALHelper::UpdateCounter(const QString &moldname, const QVariantList& counter)
 {
     QSqlQuery query;
@@ -813,6 +861,39 @@ bool ICDALHelper::DelCounter(const QString &moldname, quint32 id)
 {
     QSqlQuery query;
     QString cmd = QString("DELETE FROM %1 WHERE id = %2").arg(MoldConfigNameWrapper(MoldCounterTableName(moldname)))
+            .arg(id);
+    return query.exec(cmd);
+}
+
+bool ICDALHelper::UpdateVariable(const QString &moldname, const QVariantList& variable)
+{
+    QSqlQuery query;
+    QString cmd = QString("UPDATE %1 SET id=%2, name=\"%3\", unit=\"%4\", val=%5, decimal=%6 WHERE id=%2").arg(MoldConfigNameWrapper(MoldVariableTableName(moldname)))
+            .arg(variable.at(0).toUInt())
+            .arg(variable.at(1).toString())
+            .arg(variable.at(2).toString())
+            .arg(variable.at(3).toUInt())
+            .arg(variable.at(4).toUInt());
+    return query.exec(cmd);
+}
+
+
+bool ICDALHelper::AddVariable(const QString &moldname, const QVariantList& variable)
+{
+    QSqlQuery query;
+    QString cmd = QString("INSERT INTO %1 VALUES(%2, \"%3\", \"%4\", %5, %6)").arg(MoldConfigNameWrapper(MoldVariableTableName(moldname)))
+            .arg(variable.at(0).toUInt())
+            .arg(variable.at(1).toString())
+            .arg(variable.at(2).toString())
+            .arg(variable.at(3).toUInt())
+            .arg(variable.at(4).toUInt());
+    return  query.exec(cmd);
+}
+
+bool ICDALHelper::DelVariable(const QString &moldname, quint32 id)
+{
+    QSqlQuery query;
+    QString cmd = QString("DELETE FROM %1 WHERE id = %2").arg(MoldConfigNameWrapper(MoldVariableTableName(moldname)))
             .arg(id);
     return query.exec(cmd);
 }

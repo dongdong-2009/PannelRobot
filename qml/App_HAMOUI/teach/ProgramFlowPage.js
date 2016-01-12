@@ -60,3 +60,8 @@ function LinesInfo(){
 var counterLinesInfo = new LinesInfo();
 
 var stackLinesInfo = new LinesInfo();
+
+var linked1Function = null;
+var linked2Function = null;
+var linked3Function = null;
+

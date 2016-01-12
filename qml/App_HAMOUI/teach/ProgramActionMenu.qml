@@ -20,6 +20,20 @@ Rectangle {
     signal customAlarmMenuTriggered()
     signal searchMenuTriggered()
 
+
+//    function axisMenuTrigger(){axisMenuTriggered();}
+//    function pathMenuTrigger() {pathMenuTriggered();}
+//    function outputMenuTrigger() {outputMenuTriggered();}
+//    function checkMenuTrigger() {checkMenuTriggered();}
+//    function conditionMenuTrigger() {conditionMenuTriggered();}
+//    function waitMenuTrigger() {waitMenuTriggered();}
+//    function stackMenuTrigger() { stackMenuTriggered();}
+//    function syncMenuTrigger() {syncMenuTriggered();}
+//    function counterMenuTrigger() {conditionMenuTriggered();}
+//    function commentMenuTrigger() {commentMenuTriggered();}
+//    function customAlarmMenuTrigger() {customAlarmMenuTriggered();}
+//    function searchMenuTrigger() {searchMenuTriggered();}
+
     color: "#A0A0F0"
 
     Grid{

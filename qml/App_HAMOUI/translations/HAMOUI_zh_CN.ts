@@ -2120,15 +2120,39 @@ please chose!</source>
     </message>
     <message>
         <source>Main Program</source>
-        <translation type="unfinished"></translation>
+        <translation>主程序</translation>
     </message>
     <message>
         <source>Sub-{0} Program</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序-{0}</translation>
     </message>
     <message>
         <source>Save {0} of Record:{1}</source>
-        <translation type="unfinished"></translation>
+        <translation>保存模号{1}的{0}</translation>
+    </message>
+    <message>
+        <source>Output Action</source>
+        <translation>信号输出</translation>
+    </message>
+    <message>
+        <source>Wait</source>
+        <translation>等待</translation>
+    </message>
+    <message>
+        <source>Condition</source>
+        <translation>条件跳转</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>路径</translation>
+    </message>
+    <message>
+        <source>Check</source>
+        <translation>阀检测</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>
@@ -2214,7 +2238,7 @@ please chose!</source>
     </message>
     <message>
         <source>Load record </source>
-        <translation type="unfinished"></translation>
+        <translation>载入模号</translation>
     </message>
 </context>
 <context>

@@ -658,18 +658,73 @@ Rectangle {
             border.color: "black"
             ICButton{
                 id:insertBtn
-                x:2
-                y:21
+                x:4
+                y:4
                 width: 80
                 height: 32
                 text: qsTr("Insert")
                 bgColor: "yellow"
             }
 
+            Rectangle{
+                id:menuSplitLine1
+                height: 1
+                width: 70
+                x:8
+                anchors.top: insertBtn.bottom
+                anchors.topMargin: 4
+                color: "gray"
+            }
+
+            ICButton{
+                id:linkedBtn1
+                x:insertBtn.x
+                anchors.top: menuSplitLine1.bottom
+                anchors.topMargin: 8
+                width: 80
+                height: 32
+                bgColor: "#A0A0F0"
+                onButtonClicked: PData.linked1Function();
+
+            }
+
+            ICButton{
+                id:linkedBtn2
+                x:insertBtn.x
+                anchors.top: linkedBtn1.bottom
+                anchors.topMargin: 8
+                width: 80
+                height: 32
+                bgColor: "mediumspringgreen"
+                onButtonClicked: PData.linked2Function();
+
+            }
+
+            ICButton{
+                id:linkedBtn3
+                x:insertBtn.x
+                anchors.top: linkedBtn2.bottom
+                anchors.topMargin: 8
+                width: 80
+                height: 32
+                bgColor: "mediumturquoise"
+                onButtonClicked: PData.linked3Function();
+
+            }
+
+            Rectangle{
+                height: 1
+                width: 70
+                x:8
+                anchors.bottom: actionMenuBtn.top
+                anchors.bottomMargin: 4
+                color: "gray"
+            }
+
             ICButton{
                 id:actionMenuBtn
                 x:insertBtn.x
-                y:insertBtn.y + 126
+                y: 176
                 width: insertBtn.width
                 height: insertBtn.height
                 text: qsTr("Menu")
@@ -686,7 +741,12 @@ Rectangle {
             }
 
             ICStackContainer{
-                function showMenu() { setCurrentIndex(0);}
+                function showMenu() {
+                    setCurrentIndex(0);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                }
                 //                function showAxis() { setCurrentIndex(1);}
                 //                function showOutput() { setCurrentIndex(2);}
                 function isMenuShow() { return currentIndex == 0;}
@@ -742,18 +802,142 @@ Rectangle {
 
 
                 actionEditorContainer.showMenu();
-                actionMenuObject.axisMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(1)});
-                actionMenuObject.outputMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(2)});
-                actionMenuObject.waitMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(3)});
-                actionMenuObject.checkMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(4)});
-                actionMenuObject.conditionMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(5)});
-                actionMenuObject.syncMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(6)});
-                actionMenuObject.commentMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(7)});
-                actionMenuObject.searchMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(8)});
-                actionMenuObject.pathMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(9)});
-                actionMenuObject.stackMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(10)});
-                actionMenuObject.counterMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(11)});
-                actionMenuObject.customAlarmMenuTriggered.connect(function(){actionEditorContainer.setCurrentIndex(12)});
+                actionMenuObject.axisMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(1);
+                    linkedBtn1.text = qsTr("Output Action");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.outputMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Wait");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Condition")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.conditionMenuTriggered;
+                });
+                actionMenuObject.outputMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(2);
+                    linkedBtn1.text = qsTr("Path");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Wait");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Check")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
+                });
+                actionMenuObject.waitMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(3);
+                    linkedBtn1.text = qsTr("Path");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Output Action");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.outputMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Check")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
+                });
+                actionMenuObject.checkMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(4);
+                    linkedBtn1.text = qsTr("Path");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Wait");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Output Action")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
+                });
+                actionMenuObject.conditionMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(5);
+                    linkedBtn1.text = qsTr("Path");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Output Action");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.outputMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Check")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
+                });
+                actionMenuObject.syncMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(6);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
+                actionMenuObject.commentMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(7);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
+                actionMenuObject.searchMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(8);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
+                actionMenuObject.pathMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(9);
+                    linkedBtn1.text = qsTr("Output Action");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Wait");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Condition")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.conditionMenuTriggered;
+                });
+                actionMenuObject.stackMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(10);
+                    linkedBtn1.text = qsTr("Output Action");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.outputMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Path");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Counter")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.counterMenuTriggered;
+                });
+                actionMenuObject.counterMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(11);
+                    linkedBtn1.text = qsTr("Path");
+                    linkedBtn1.visible = true;
+                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+
+                    linkedBtn2.text = qsTr("Wait");
+                    linkedBtn2.visible = true;
+                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
+
+                    linkedBtn3.text = qsTr("Condition")
+                    linkedBtn3.visible = true;
+                    PData.linked3Function = actionMenuObject.conditionMenuTriggered;
+                });
+                actionMenuObject.customAlarmMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(12);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
 
                 //                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
                 //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);

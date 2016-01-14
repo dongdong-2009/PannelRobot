@@ -43,6 +43,18 @@ Item {
                 menu.visible = false;
             }
         }
+        CatalogButton{
+            id:customVariablesSettingsMenuBtn
+            text: qsTr("custom Variables")
+            icon: "../images/product.png"
+            onButtonClicked: {
+                if(!customVariableConfigs.hasInit){
+                    customVariableConfigs.init();
+                }
+                customVariableConfigs.visible = true;
+                menu.visible = false;
+            }
+        }
     }
 
     ICSettingConfigsScope{
@@ -173,10 +185,18 @@ Item {
         x:10
     }
 
+    CustomVariableConfigs{
+        id:customVariableConfigs
+        visible: false;
+        y:10
+        x:10
+    }
+
     Component.onCompleted: {
         var ps = [];
         ps.push(productPage);
         ps.push(valveSettings)
+        ps.push(customVariableConfigs)
         pages = ps;
     }
 

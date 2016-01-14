@@ -264,6 +264,85 @@ function CounterInfo(id, name, current, target){
     }
 }
 
+function VariableInfo(id, name, unit, val, decimal){
+    this.id = id || 0;
+    this.name = name || "Variable-" + this.id;
+    this.unit = unit || "";
+    this.val = val || 0;
+    this.decimal = decimal || 0;
+    this.toString = function(){
+       return this.name;
+
+    }
+}
+
+function VariableManager(){
+    this.variables = [];
+    this.init = function(bareVariables){
+        this.variables.length = 0;
+        for(var c in bareVariables){
+            var variable = bareVariables[c];
+            this.variables.push(new VariableInfo(variable[0], variable[1], variable[2], variable[3], variable[4]));
+        }
+    }
+
+    this.usableID = function(){
+        var cs = this.variables;
+        if(cs.length === 0) return 0;
+        if(cs[0].id != 0) return 0;
+        for(var i = 1; i < cs.length; ++i){
+            if(cs[i].id - cs[i - 1].id > 1){
+                return cs[i - 1].id + 1;
+            }
+        }
+        return cs[i - 1].id + 1;
+    }
+
+    this.getVariable = function(id){
+        for(var c in this.variables){
+            if(this.variables[c].id == id)
+                return this.variables[c];
+        }
+        return null;
+    }
+    this.variableToString = function(id){
+        var cs = this.getVariable(id);
+        if(cs == null) return "Invalid Variable";
+        return cs.toString();
+    }
+
+    this.variablesStrList = function(){
+        var ret = [];
+        for(var i = 0; i < this.variables.length; ++i){
+            ret.push(this.variables[i].toString() + ":" + this.variables[i].name);
+        }
+        return ret;
+    }
+
+    this.newVariable = function(name, unit, val, decimal){
+        var newID = this.usableID();
+        var toAdd = new VariableInfo(newID, name, unit, val, decimal);
+        this.variables.push(toAdd);
+        return toAdd;
+    }
+    this.updateVariable = function(id, name, unit, val, decimal){
+        var c = this.getVariable(id);
+        c.name = name;
+        c.unit = unit;
+        c.val = val;
+        c.decimal = decimal
+    }
+    this.delVariable = function(id){
+        for(var c in this.variables){
+            if(this.variables[c].id == id){
+                this.variables.splice(c, 1);
+                break;
+            }
+        }
+    }
+}
+
+
 function CounterManager(){
     this.counters = [];
     this.init = function(bareCounters){
@@ -331,7 +410,7 @@ function CounterManager(){
 
 var counterManager = new CounterManager();
 
-
+var variableManager = new VariableManager();
 
 var isSyncAction = function(actionObject){
     return actionObject.action === actionTypes.kAT_SyncStart ||

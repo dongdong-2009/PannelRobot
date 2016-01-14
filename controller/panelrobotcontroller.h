@@ -479,6 +479,10 @@ public:
     Q_INVOKABLE bool delCounterDef(quint32 id);
     Q_INVOKABLE QString counterDefs() const;
 
+    Q_INVOKABLE bool saveVariableDef(quint32 id, const QString& name, const QString& unit, quint32 val, quint32 decimal);
+    Q_INVOKABLE bool delVariableDef(quint32 id);
+    Q_INVOKABLE QString variableDefs() const;
+
     Q_INVOKABLE void usbNetInit()
     {
         system("/etc/init.d/net-init.sh");

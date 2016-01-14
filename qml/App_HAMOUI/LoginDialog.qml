@@ -24,6 +24,7 @@ MouseArea{
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
+        color: "#A0A0F0"
 
         Grid{
             anchors.centerIn: parent
@@ -64,6 +65,7 @@ MouseArea{
                     onButtonClicked: {
                         setTologout();
                     }
+                    bgColor: "yellow"
                 }
                 ICButton{
                     id:loginBtn
@@ -74,6 +76,7 @@ MouseArea{
                             container.visible = false;
                         }
                     }
+                    bgColor: "lime"
                 }
             }
         }

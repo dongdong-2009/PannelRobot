@@ -1022,6 +1022,7 @@ Rectangle {
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
         Teach.counterManager.init(counters);
+        Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
         Teach.parseStacks(panelRobotController.stacks());
         var program = JSON.parse(panelRobotController.mainProgram());
         var i,j;

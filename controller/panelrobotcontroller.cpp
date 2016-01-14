@@ -943,3 +943,33 @@ QString PanelRobotController::counterDefs() const
     ret += "]";
     return ret;
 }
+
+bool PanelRobotController::saveVariableDef(quint32 id, const QString& name, const QString& unit, quint32 val, quint32 decimal)
+{
+    return ICRobotMold::CurrentMold()->CreateVariables(id, name, unit, val, decimal);
+}
+
+bool PanelRobotController::delVariableDef(quint32 id)
+{
+    return ICRobotMold::CurrentMold()->DeleteVariable(id);
+}
+
+QString PanelRobotController::variableDefs() const
+{
+    QVector<QVariantList> varialbes = ICRobotMold::CurrentMold()->Variables();
+    QString ret = "[";
+    for(int i = 0; i < varialbes.size(); ++i)
+    {
+        ret += (QString("[%1, \"%2\", \"%3\", %4, %5]").arg(varialbes.at(i).at(0).toUInt())
+                   .arg(varialbes.at(i).at(1).toString()).arg(varialbes.at(i).at(2).toString())
+                   .arg(varialbes.at(i).at(3).toInt())
+                .arg(varialbes.at(i).at(4).toUInt()));
+        ret += ",";
+    }
+    if(!varialbes.isEmpty())
+    {
+        ret.chop(1);
+    }
+    ret += "]";
+    return ret;
+}

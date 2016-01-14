@@ -337,6 +337,7 @@ Rectangle {
         z:100
         visible: false
         anchors.centerIn: parent
+        color: "#A0A0F0"
     }
 
     ICAlarmBar{

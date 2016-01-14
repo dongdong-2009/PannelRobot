@@ -213,6 +213,7 @@ Rectangle {
     function onMoldChanged(){
         var counters = JSON.parse(panelRobotController.counterDefs());
         Teach.counterManager.init(counters);
+        Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
         counterModel.clear();
         var cs = Teach.counterManager.counters;
         for(var c in cs){

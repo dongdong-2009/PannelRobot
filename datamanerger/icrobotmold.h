@@ -193,6 +193,7 @@ public:
         kRecordErr_InitProgram_Invalid,
         kRecordErr_SubProgram_Invalid,
         kRecordErr_Fnc_Invalid,
+        kRecordErr_Program_Framework_Invalid,
     };
     ICRobotMold();
     static ICRobotMoldPTR CurrentMold()

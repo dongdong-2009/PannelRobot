@@ -367,7 +367,8 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     int err;
     QMap<int, StackInfo> sis;
     int subProgramSize = subPrograms.size();
-    if(subProgramSize == 9)
+
+    if(subProgramSize >= 9)
     {
         bool isOk;
         sis = ParseStacks(subPrograms.at(8), isOk);
@@ -387,7 +388,7 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     {
         programList.append(QString("[{\"action\":%1}]").arg(F_CMD_END));
     }
-    if(subProgramSize == 9)
+    if(subPrograms.size() >= 9)
         programList.append(subPrograms.at(8));
     QList<QPair<int, quint32> > fncs = values;
     //    AddCheckSumToAddrValuePairList(fncs);

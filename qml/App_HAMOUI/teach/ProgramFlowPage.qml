@@ -291,6 +291,28 @@ Rectangle {
                         programListView.currentIndex = -1;
                     }
                 }
+                ICComboBox{
+                    id: moduleSel
+                    z:editing.z
+                    width: 120
+                    items: [qsTr("Main Module")]
+                    currentIndex: 0
+                }
+                ICLineEdit{
+                    id:newModuleEdit
+                    isNumberOnly:false
+                    inputWidth: moduleSel.width
+
+                }
+                ICButton{
+                    id:newModuleBtn
+                    text: qsTr("New Module")
+                    height: editing.height
+                    onButtonClicked: {
+
+                    }
+                }
+
                 ICCheckBox{
                     id:isFollow
                     text: qsTr("Follow ?")

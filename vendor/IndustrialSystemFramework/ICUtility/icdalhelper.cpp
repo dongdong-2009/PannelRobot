@@ -679,6 +679,10 @@ QString ICDALHelper::NewMold(const QString &moldName,
     {
         p.append("\"\"");
     }
+    if(p.size() < 11)
+    {
+        p.append("\"\"");
+    }
     QString cmd = "INSERT INTO tb_mold_act VALUES(\"" + moldName + "\",";
     for(int i = 0 ; i < p.size(); ++i)
     {

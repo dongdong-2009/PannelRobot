@@ -282,8 +282,173 @@ function VariableManager(){
         this.variables.length = 0;
         for(var c in bareVariables){
             var variable = bareVariables[c];
-            this.variables.push(new VariableInfo(variable[0], variable[1], variable[2], variable[3], variable[4]));
+            this.push(new VariableInfo(variable[0], variable[1], variable[2], variable[3], variable[4]));
         }
+    }
+    this.push = function(variable){
+        for(var i = 0; i < this.variables.length; ++i){
+            if(variable.id < this.variables[i].id){
+                this.variables.splice(i, 0, variable);
+                return i;
+            }
+        }
+        this.variables.push(variable);
+        return i;
+    }
+
+    this.usableID = function(){
+        var cs = this.variables;
+        if(cs.length === 0) return 0;
+        if(cs[0].id != 0) return 0;
+        for(var i = 1; i < cs.length; ++i){
+            if(cs[i].id - cs[i - 1].id > 1){
+                return cs[i - 1].id + 1;
+            }
+        }
+        return cs[i - 1].id + 1;
+    }
+
+    this.getVariable = function(id){
+        for(var c in this.variables){
+            if(this.variables[c].id == id)
+                return this.variables[c];
+        }
+        return null;
+    }
+    this.variableToString = function(id){
+        var cs = this.getVariable(id);
+        if(cs == null) return "Invalid Variable";
+        return cs.toString();
+    }
+
+    this.variablesStrList = function(){
+        var ret = [];
+        for(var i = 0; i < this.variables.length; ++i){
+            ret.push(this.variables[i].toString() + ":" + this.variables[i].name);
+        }
+        return ret;
+    }
+
+    this.newVariable = function(name, unit, val, decimal){
+        var newID = this.usableID();
+        var toAdd = new VariableInfo(newID, name, unit, val, decimal);
+        this.push(toAdd);
+
+        return toAdd;
+    }
+    this.updateVariable = function(id, name, unit, val, decimal){
+        var c = this.getVariable(id);
+        c.name = name;
+        c.unit = unit;
+        c.val = val;
+        c.decimal = decimal
+    }
+    this.delVariable = function(id){
+        for(var c in this.variables){
+            if(this.variables[c].id == id){
+                this.variables.splice(c, 1);
+                break;
+            }
+        }
+    }
+}
+
+
+function CounterManager(){
+    this.counters = [];
+    this.init = function(bareCounters){
+        this.counters.length = 0;
+        for(var c in bareCounters){
+            var counter = bareCounters[c];
+            this.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));
+        }
+    }
+
+    this.push = function(counter){
+        for(var i = 0; i < this.counters.length; ++i){
+            if(counter.id < this.counters[i].id){
+                this.counters.splice(i, 0, counter);
+                return i
+            }
+        }
+        this.counters.push(counter);
+        return i;
+    }
+
+    this.usableID = function(){
+        var cs = this.counters;
+        if(cs.length === 0) return 0;
+        if(cs[0].id != 0) return 0;
+        for(var i = 1; i < cs.length; ++i){
+            if(cs[i].id - cs[i - 1].id > 1){
+                return cs[i - 1].id + 1;
+            }
+        }
+        return cs[i - 1].id + 1;
+    }
+
+    this.getCounter = function(id){
+        for(var c in this.counters){
+            if(this.counters[c].id == id)
+                return this.counters[c];
+        }
+        return null;
+    }
+    this.counterToString = function(id){
+        var cs = this.getCounter(id);
+        if(cs == null) return "Invalid Counter";
+        return cs.toString();
+    }
+
+    this.countersStrList = function(){
+        var ret = [];
+        for(var i = 0; i < this.counters.length; ++i){
+            ret.push(this.counters[i].toString() + ":" + this.counters[i].name);
+        }
+        return ret;
+    }
+
+    this.newCounter = function(name, current, target){
+        var newID = this.usableID();
+        var toAdd = new CounterInfo(newID, name, current, target);
+        this.push(toAdd);
+        return toAdd;
+    }
+    this.updateCounter = function(id, name, current, target){
+        var c = this.getCounter(id);
+        c.name = name;
+        c.current = current;
+        c.target = target;
+    }
+    this.delCounter = function(id){
+        for(var c in this.counters){
+            if(this.counters[c].id == id){
+                this.counters.splice(c, 1);
+                break;
+            }
+        }
+    }
+}
+
+function FunctionManager(){
+    this.functions = [];
+    this.init = function(functionsJSON){
+        var functinos = JSON.parse(functionsJSON);
+        this.functions.length = 0;
+        for(var i = 0; i < functinos.length; ++i){
+            this.push(functinos[i]);
+        }
+
+    }
+    this.push = function(fun){
+        for(var i = 0; i < this.functions.length; ++i){
+            if(fun.id < this.functions[i].id){
+                this.functions.splice(i, 0, fun);
+                return i
+            }
+        }
+        this.functions.push(fun);
+        return i;
     }
 
     this.usableID = function(){
@@ -336,72 +501,6 @@ function VariableManager(){
         for(var c in this.variables){
             if(this.variables[c].id == id){
                 this.variables.splice(c, 1);
-                break;
-            }
-        }
-    }
-}
-
-
-function CounterManager(){
-    this.counters = [];
-    this.init = function(bareCounters){
-        this.counters.length = 0;
-        for(var c in bareCounters){
-            var counter = bareCounters[c];
-            this.counters.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));
-        }
-    }
-
-    this.usableID = function(){
-        var cs = this.counters;
-        if(cs.length === 0) return 0;
-        if(cs[0].id != 0) return 0;
-        for(var i = 1; i < cs.length; ++i){
-            if(cs[i].id - cs[i - 1].id > 1){
-                return cs[i - 1].id + 1;
-            }
-        }
-        return cs[i - 1].id + 1;
-    }
-
-    this.getCounter = function(id){
-        for(var c in this.counters){
-            if(this.counters[c].id == id)
-                return this.counters[c];
-        }
-        return null;
-    }
-    this.counterToString = function(id){
-        var cs = this.getCounter(id);
-        if(cs == null) return "Invalid Counter";
-        return cs.toString();
-    }
-
-    this.countersStrList = function(){
-        var ret = [];
-        for(var i = 0; i < this.counters.length; ++i){
-            ret.push(this.counters[i].toString() + ":" + this.counters[i].name);
-        }
-        return ret;
-    }
-
-    this.newCounter = function(name, current, target){
-        var newID = this.usableID();
-        var toAdd = new CounterInfo(newID, name, current, target);
-        this.counters.push(toAdd);
-        return toAdd;
-    }
-    this.updateCounter = function(id, name, current, target){
-        var c = this.getCounter(id);
-        c.name = name;
-        c.current = current;
-        c.target = target;
-    }
-    this.delCounter = function(id){
-        for(var c in this.counters){
-            if(this.counters[c].id == id){
-                this.counters.splice(c, 1);
                 break;
             }
         }

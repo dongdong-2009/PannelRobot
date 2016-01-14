@@ -660,14 +660,16 @@ static const uint32_t axis_cfg_addr[] = {
     ICAddr_Adapter_Para0, //<类型：系统；名字：电机1；结构：Axis_Config；地址：axis_cfg_addr；
     ICAddr_Adapter_Para85, //<类型：系统；名字：；结构：Axis_Config；地址：axis_cfg_addr；
 };
-
 typedef struct {  //<192 + 14X8 = 304
     uint32_t length;           //<类型：系统；名字：臂长/半径；精度：3;单位：mm；
     uint32_t ppc:16;           //<类型：系统；名字：每转脉冲数；精度：0;单位：num；
     uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：0;单位：num；
     uint32_t soft_limit_p:16;  //<类型：系统；名字：正向软极限；精度：0;单位：度；
     uint32_t soft_limit_n:16;  //<类型：系统；名字：负向软极限；精度：0;单位：度；
-    uint32_t reserve0;         //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t type:4;           //<类型：系统；名字：编码器类型；精度：0;单位：；
+    uint32_t vender:4;         //<类型：系统；名字：厂家；精度：0;单位：；
+    uint32_t read_type:4;      //<类型：系统；名字：绝对值读取方式；精度：0;单位：；
+    uint32_t res:20;           //<类型：系统；名字：预留；精度：0;单位：；
     uint32_t limit_p:8;        //<类型：系统；名字：正向极限输入；精度：0;单位：；
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
@@ -682,7 +684,7 @@ typedef struct {  //<192 + 14X8 = 304
 typedef struct {
     Axis_Config0 para[8];
     uint32_t x;      //<类型:系统;名字:一轴圆心在基坐标系中的X位置;精度:3;单位:mm;
-    uint32_t y;      //<类型:系统;名字:一轴圆心在基坐标系中的X位置;精度:3;单位:mm;
+    uint32_t y;      //<类型:系统;名字:一轴圆心在基坐标系中的Y位置;精度:3;单位:mm;
     uint32_t z;      //<类型:系统;名字:二轴圆心在基坐标系中的Z位置;精度:3;单位:mm;
     uint32_t L12;    //<类型:系统;名字:二轴圆心在二轴Z向上与一轴圆心的距离;精度:3;单位:mm;
     uint32_t L23;    //<类型:系统;名字:三轴圆心在三轴Z向上与二轴圆心的距离;精度:3;单位:mm;
@@ -1057,7 +1059,7 @@ typedef struct {  //最多8组电机，目前仅用前3组
     AXIS_MAP axis_map;    //<类型:系统;逻辑电机对应的脉冲端口 - 304-311
     Interpolation interpolation;//<类型：系统；名字：；精度：1;单位：
     ALPHA alpha;  //<类型：系统；名字：设定初始夹角；精度：3;单位：度；
-    uint32_t p[ICAddr_Adapter_Para255-ICAddr_Adapter_Para172];
+    uint32_t p[ICAddr_Adapter_Para255-ICAddr_Adapter_Para201];
         MOLD_PARA m;//< 模号参数
 //    uint32_t m_r[ICAddr_Write_Section_End - ICAddr_Adapter_Para255];
     READ_PARA read;

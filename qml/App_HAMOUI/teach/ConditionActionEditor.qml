@@ -49,7 +49,7 @@ Item {
         var data;
         var ui;
         var inout = 0;
-        var flagStr = flag.configText;
+        var flagStr = flag.configText();
         if(flag.configValue < 0) return ret;
         var begin = flagStr.indexOf('[') + 1;
         var end = flagStr.indexOf(']');

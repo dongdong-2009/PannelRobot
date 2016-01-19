@@ -636,6 +636,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     stackInfos_ = ParseStacks(stacks_, ok);
     counters_ = ICDALHelper::GetMoldCounterDef(moldName);
     variables_ = ICDALHelper::GetMoldVariableDef(moldName);
+    functions_ = ICDALHelper::MoldFunctionsContent(moldName);
     ok = true;
     for(int i = 0; i != programs.size(); ++i)
     {
@@ -1038,7 +1039,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
 {
     QJson::Parser parser;
     //    bool ok;
-    QVariantMap result = parser.parse (stacks.toLatin1(), &isOk).toMap();
+    QVariantMap result = parser.parse (stacks.toUtf8(), &isOk).toMap();
     QMap<int, StackInfo> ret;
     if(!isOk) return ret;
     QVariantMap::iterator p = result.begin();
@@ -1179,4 +1180,52 @@ int ICRobotMold::IndexOfVariable(quint32 id) const
         }
     }
     return -1;
+}
+
+QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions, bool &isok)
+{
+    QJson::Parser parser;
+    //    bool ok;
+    QVariantList result = parser.parse (functions.toUtf8(), &isok).toList();
+    QMap<int, CompileInfo> ret;
+    if(!isok) return ret;
+    QVariantMap fun;
+    int err;
+    QString funStr;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        fun = result.at(i).toMap();
+        funStr = fun.value("program").toString();
+        CompileInfo p = Complie(funStr,stackInfos_, counters_, variables_, err);
+        ret.insert(fun.value("id").toInt(), p);
+    }
+    return ret;
+}
+
+QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions)
+{
+    QMap<int, QMap<int, int> > ret;
+    bool isOk;
+    QMap<int, CompileInfo> functionsMap = ParseFunctions(functions, isOk);
+    if(!isOk)
+        return ret;
+    functions_ = functions;
+    compiledFunctions_ = functionsMap;
+    QMap<int, CompileInfo>::const_iterator p = functionsMap.constBegin();
+    QMap<int, int> eI;
+    while(p != functionsMap.constEnd())
+    {
+        eI = p.value().ErrInfo();
+        if(!eI.isEmpty())
+        {
+            isOk = false;
+            break;
+        }
+        ret.insert(p.key(), eI);
+        ++p;
+    }
+    if(isOk)
+        ICDALHelper::SaveFunctions(moldName_, functions);
+
+    return ret;
 }

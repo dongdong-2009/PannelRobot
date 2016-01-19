@@ -4,10 +4,19 @@ Rectangle {
     id:container
     property variant items: []
     property int currentIndex: -1
-    property alias currentText: currentText.text
+//    property alias currentText: currentText.text
     property int popupMode : 0
     property int itemHeight: 24
     property alias popupWidth: itemContainer.width
+
+    function currentText(){
+        return currentIndex < 0 ?  "" : items[currentIndex];
+    }
+
+    function text(index){
+        if(index < 0 || index >= items.length) return "";
+        return items[index];
+    }
 
     width: 100
     height: 24

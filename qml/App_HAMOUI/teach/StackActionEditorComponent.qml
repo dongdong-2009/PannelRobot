@@ -36,7 +36,7 @@ Item {
 
     property int mode: 0
     function counterID() {
-        var counterStr = counterSel.configText;
+        var counterStr = counterSel.configText();
         var begin = counterStr.indexOf('[') + 1;
         var end = counterStr.indexOf(']');
         return parseInt(counterStr.slice(begin,end));

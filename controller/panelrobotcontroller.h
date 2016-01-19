@@ -483,6 +483,31 @@ public:
     Q_INVOKABLE bool delVariableDef(quint32 id);
     Q_INVOKABLE QString variableDefs() const;
 
+    Q_INVOKABLE QString functions() const
+    {
+        return ICRobotMold::CurrentMold()->Functions();
+    }
+
+    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON)
+    {
+        QMap<int, QMap<int, int> > ret =  ICRobotMold::CurrentMold()->SaveFunctions(functionsJSON);
+        QString toJSON = "{";
+        QMap<int, QMap<int, int> >::const_iterator p = ret.constBegin();
+        while(p != ret.constEnd())
+        {
+            toJSON += QString("\"%1\":").arg(p.key());
+            toJSON += ErrInfoToJSON(p.value()) + ",";
+            ++p;
+        }
+        if(!ret.isEmpty())
+        {
+            toJSON.chop(1);
+        }
+        toJSON += "}";
+        return toJSON;
+    }
+
+
     Q_INVOKABLE void usbNetInit()
     {
         system("/etc/init.d/net-init.sh");

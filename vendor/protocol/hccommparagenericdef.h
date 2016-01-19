@@ -565,7 +565,8 @@ typedef enum
     F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
     F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转类型（IO板类型） 延迟时间（0.1S） 检测对象（0输入；1输出） 检测ID 检测状态（0：OFF；1：ON）
     F_CMD_PROGRAM_JUMP2,   //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）跳转方式（0：没达到目标数跳转；1达到目标数跳转）
-//    F_CMD_PROGRAM_JUMP3,   //< 程序跳转 跳转步号
+    F_CMD_PROGRAM_CALL0 = 20000,   //< 程序调用 调用步号  返回步号
+    F_CMD_PROGRAM_CALL_BACK,   //< 程序调用
 //    F_CMD_PROGRAM_JUMP4,   //< 程序跳转 跳转步号
 
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
@@ -655,6 +656,23 @@ typedef enum
     ALARM_TEACH_END = 10000, //<名字：自定义报警结束
 }ALARM_ADDR;
 
+typedef enum
+{
+    INCREMENTAL_ENCODER,       //<名字：增量型编码器
+    ABSOLUTE_VALUE_ENCODER,    //<名字：绝对值编码器
+}ENCODER_TYPE;
+typedef enum
+{
+    Inovancwe,       //<名字：汇川伺服
+    ASDA,            //<名字：台达伺服
+    panasonic,       //<名字：松下伺服
+}SERVO_VENDER;
+typedef enum
+{
+    READ_TYPE_PULSER,       //<名字：绝对值脉冲读取方式
+    READ_TYPE_SERIAL,       //<名字：绝对值串口读取方式
+    READ_TYPE_CAN,       //<名字：绝对值CAN口读取方式
+}ENCODER_READ_TYPE;
 /*******************************************************************************/
 static const uint32_t axis_cfg_addr[] = {
     ICAddr_Adapter_Para0, //<类型：系统；名字：电机1；结构：Axis_Config；地址：axis_cfg_addr；

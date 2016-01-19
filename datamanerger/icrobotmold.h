@@ -252,6 +252,8 @@ public:
 
     static QMap<int, StackInfo> ParseStacks(const QString& stacks, bool &isOk);
 
+    QMap<int, CompileInfo> ParseFunctions(const QString& functions, bool &isok);
+
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
     {
@@ -338,6 +340,10 @@ public:
     bool DeleteVariable(quint32 id);
     int IndexOfVariable(quint32 id) const;
 
+    QString Functions() const { return functions_;}
+    QMap<int, QMap<int, int> > SaveFunctions(const QString& functions);
+
+
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);
 
@@ -345,7 +351,9 @@ private:
     QList<CompileInfo> programs_;
     QStringList programsCode_;
     QString stacks_;
+    QString functions_;
     QMap<int, StackInfo> stackInfos_;
+    QMap<int, CompileInfo> compiledFunctions_;
     QVector<QVariantList> counters_;
     QVector<QVariantList> variables_;
     static ICRobotMoldPTR currentMold_;

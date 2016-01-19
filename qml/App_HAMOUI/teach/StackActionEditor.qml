@@ -14,7 +14,7 @@ Rectangle {
     function createActionObjects(){
         var ret = [];
         if(useFlag.isChecked){
-            var statckStr = stackSelector.configText;
+            var statckStr = stackSelector.configText();
             if(statckStr.currentIndex < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
@@ -236,7 +236,7 @@ Rectangle {
                     updateStacksSel();
                 }
                 else{
-                    sid = Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)), stackInfo);
+                    sid = Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText())), stackInfo);
                     panelRobotController.saveStacks(Teach.statcksToJSON());
                 }
                 stackUpdated(sid);
@@ -254,7 +254,7 @@ Rectangle {
             width: save.width
             onButtonClicked: {
                 if(stackViewSel.currentIndex === 0) return;
-                var sid = Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText)));
+                var sid = Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText())));
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
                 stackUpdated(sid);

@@ -5,6 +5,7 @@ Qt.include("../../utils/stringhelper.js")
 Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
+Qt.include("../../utils/utils.js")
 
 //var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
 
@@ -430,16 +431,38 @@ function CounterManager(){
     }
 }
 
+function FunctionInfo(id, name, program){
+    this.id = id;
+    this.name = name || ("Fun" + id);
+    this.program = program || [{"action":actions.ACT_END}];
+    this.toString = function(){
+        return qsTr("Fun") + "[" + id + "]:" + this.name;
+    }
+}
+
 function FunctionManager(){
     this.functions = [];
     this.init = function(functionsJSON){
+        if(functionsJSON.length == 0) return;
+        console.log("Functions:", functionsJSON);
         var functinos = JSON.parse(functionsJSON);
         this.functions.length = 0;
         for(var i = 0; i < functinos.length; ++i){
-            this.push(functinos[i]);
+            this.push(new FunctionInfo(functinos[i].id, functinos[i].name, JSON.parse(functinos[i].program)));
         }
 
     }
+    this.toJSON = function(){
+        var ret = [];
+        var fun;
+        for(var i = 0; i < this.functions.length; ++i){
+            fun = this.functions[i];
+            ret.push({"id":fun.id, "name":fun.name, "program":JSON.stringify(fun.program)});
+        }
+
+        return JSON.stringify(ret);
+    }
+
     this.push = function(fun){
         for(var i = 0; i < this.functions.length; ++i){
             if(fun.id < this.functions[i].id){
@@ -452,7 +475,7 @@ function FunctionManager(){
     }
 
     this.usableID = function(){
-        var cs = this.variables;
+        var cs = this.functions;
         if(cs.length === 0) return 0;
         if(cs[0].id != 0) return 0;
         for(var i = 1; i < cs.length; ++i){
@@ -463,44 +486,47 @@ function FunctionManager(){
         return cs[i - 1].id + 1;
     }
 
-    this.getVariable = function(id){
-        for(var c in this.variables){
-            if(this.variables[c].id == id)
-                return this.variables[c];
+    this.getFunction = function(id){
+        for(var c in this.functions){
+            if(this.functions[c].id == id)
+                return this.functions[c];
         }
         return null;
     }
-    this.variableToString = function(id){
-        var cs = this.getVariable(id);
-        if(cs == null) return "Invalid Variable";
-        return cs.toString();
+    this.getFunctionByName = function(name){
+        var id = getValveFromBrackets(name);
+        return this.getFunction(id);
     }
 
-    this.variablesStrList = function(){
+    this.functionToString = function(id){
+        var cs = this.getFunction(id);
+        if(cs == null) return "Invalid Variable";
+        return qsTr("Fun") + "[" + id + "]:" + cs.name;
+    }
+
+    this.functionsStrList = function(){
         var ret = [];
-        for(var i = 0; i < this.variables.length; ++i){
-            ret.push(this.variables[i].toString() + ":" + this.variables[i].name);
+        for(var i = 0; i < this.functions.length; ++i){
+            ret.push(this.functions[i].toString());
         }
         return ret;
     }
 
-    this.newVariable = function(name, unit, val, decimal){
+    this.newFunction = function(name, program){
         var newID = this.usableID();
-        var toAdd = new VariableInfo(newID, name, unit, val, decimal);
-        this.variables.push(toAdd);
+        var toAdd = new FunctionInfo(newID, name, program)
+        this.push(toAdd);
         return toAdd;
     }
-    this.updateVariable = function(id, name, unit, val, decimal){
-        var c = this.getVariable(id);
-        c.name = name;
-        c.unit = unit;
-        c.val = val;
-        c.decimal = decimal
+    this.updateFunction = function(id, name, program){
+        var c = this.getFunction(id);
+        c.name = name || ("Fun" + id);
+        c.program = program || [{"action":actions.ACT_END}];
     }
-    this.delVariable = function(id){
-        for(var c in this.variables){
-            if(this.variables[c].id == id){
-                this.variables.splice(c, 1);
+    this.delFunction = function(id){
+        for(var c in this.functions){
+            if(this.functions[c].id == id){
+                this.functions.splice(c, 1);
                 break;
             }
         }
@@ -510,6 +536,8 @@ function FunctionManager(){
 var counterManager = new CounterManager();
 
 var variableManager = new VariableManager();
+
+var functionManager = new FunctionManager();
 
 var isSyncAction = function(actionObject){
     return actionObject.action === actionTypes.kAT_SyncStart ||

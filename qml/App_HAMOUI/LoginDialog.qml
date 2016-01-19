@@ -71,8 +71,8 @@ MouseArea{
                     id:loginBtn
                     text: qsTr("Login in")
                     onButtonClicked: {
-                        if(ShareData.UserInfo.loginUser(userName.currentText, password.text)){
-                            loginSuccessful(userName.currentText);
+                        if(ShareData.UserInfo.loginUser(userName.currentText(), password.text)){
+                            loginSuccessful(userName.currentText());
                             container.visible = false;
                         }
                     }

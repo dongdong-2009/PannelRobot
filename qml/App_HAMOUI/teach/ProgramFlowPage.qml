@@ -13,6 +13,9 @@ import "../ICOperationLog.js" as ICOperationLog
 Rectangle {
     id:programFlowPageInstance
     property alias isActionEditorPanelVisable: actionEditorFrame.visible
+    property bool hasInit: false
+    property int currentEditingProgram: 0
+    property int currentEditingModule: 0
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
             actionEditorContainer.showMenu();
@@ -28,18 +31,30 @@ Rectangle {
 
     function onInsertTriggered(){
         var cI = programListView.currentIndex;
+        var oCI = cI;
         if(cI < 0)return;
         if(actionEditorContainer.isMenuShow()) return;
         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
         if(actionObjects.length == 0) return;
+        var cPI = currentProgramIndex();
         var model = currentModel();
+        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
+        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
         for(var i = 0; i < actionObjects.length; ++i){
             if(actionObjects[i].action === Teach.actions.ACT_FLAG){
                 Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
+            }else if(Teach.hasCounterIDAction(actionObjects[i])){
+                var cs = Teach.actionCounterIDs(actionObjects[i]);
+                for(var c in cs){
+                    PData.counterLinesInfo.add(cPI, cs[c], cI);
+                }
+            }else if(Teach.hasStackIDAction(actionObjects[i])){
+                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
             }
 
             model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
         }
+
         repaintProgramItem(model)
         //        var msg = {"programModel":model}
         //        repaintThread.sendMessage(msg);
@@ -47,14 +62,25 @@ Rectangle {
 
     function onDeleteTriggered(){
         var cI = programListView.currentIndex;
+        var oCI = cI;
         if(cI < 0)return;
         var model = currentModel();
         if(cI >= model.count - 1) return;
+        var cPI = currentProgramIndex();
         var actionObject = model.get(cI).mI_ActionObject;
         if(actionObject.action === Teach.actions.ACT_FLAG){
             Teach.delFlag(actionObject.flag);
+        }else if(Teach.hasCounterIDAction(actionObject)){
+            var cs = Teach.actionCounterIDs(actionObject);
+            for(var c in cs){
+                PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI);
+            }
+        }else if(Teach.hasStackIDAction(actionObject)){
+            PData.stackLinesInfo.removeIDLine(cPI, actionObject.stackID, cI);
         }
         model.remove(cI);
+        PData.counterLinesInfo.syncLines(cPI, oCI, -1);
+        PData.stackLinesInfo.syncLines(cPI, oCI, -1);
         repaintProgramItem(model);
     }
 
@@ -63,21 +89,30 @@ Rectangle {
         if(cI < 1)return;
         var model = currentModel();
         if(cI >= model.count - 1) return;
-        var cIAction = currentModelData().mI_ActionObject;
+        var cIAction = model.get(cI).mI_ActionObject;
         var cIPAction = model.get(cI - 1).mI_ActionObject;
+        var cPI = currentProgramIndex();
+        if(Teach.hasCounterIDAction(cIAction)){
+            var cs = Teach.actionCounterIDs(cIAction);
+            for(var c in cs){
+                PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI);
+                PData.counterLinesInfo.add(cPI, cs[c], cI - 1);
+            }
+        }else if(Teach.hasStackIDAction(cIAction)){
+            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
+            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI - 1);
+        }
 
-
-        //        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
-        //            if(!Teach.isSyncAction(cIPAction))
-        //                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-        //        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
-        //            if(!Teach.isSyncAction(cIPAction))
-        //                model.set(cI - 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-        //        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_START){
-        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-        //        }else if(cIPAction.action === Teach.actions.F_CMD_SYNC_END){
-        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-        //        }
+        if(Teach.hasCounterIDAction(cIPAction)){
+            var cs = Teach.actionCounterIDs(cIPAction);
+            for(var c in cs){
+                PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI - 1);
+                PData.counterLinesInfo.add(cPI, cs[c], cI);
+            }
+        }else if(Teach.hasStackIDAction(cIPAction)){
+            PData.stackLinesInfo.removeIDLine(cPI, cIPAction.stackID, cI - 1);
+            PData.stackLinesInfo.add(cPI, cIPAction.stackID, cI);
+        }
 
         model.move(cI, cI -1, 1);
         if(Teach.isSyncAction(cIAction) ||
@@ -93,17 +128,31 @@ Rectangle {
         if(cI >= model.count - 2) return;
         var cIAction = currentModelData().mI_ActionObject;
         var cINAction = model.get(cI + 1).mI_ActionObject;
-        //        if(cIAction.action === Teach.actions.F_CMD_SYNC_START){
-        //            if(!Teach.isSyncAction(cINAction))
-        //                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-        //        }else if(cIAction.action === Teach.actions.F_CMD_SYNC_END){
-        //            if(!Teach.isSyncAction(cINAction))
-        //                model.set(cI + 1, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-        //        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_START){
-        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_SyncStart});
-        //        }else if(cINAction.action === Teach.actions.F_CMD_SYNC_END){
-        //            model.set(cI, {"mI_ActionType":Teach.actionTypes.kAT_Normal});
-        //        }
+        var cPI = currentProgramIndex();
+
+        if(Teach.hasCounterIDAction(cIAction)){
+            var cs = Teach.actionCounterIDs(cIAction);
+            for(var c in cs){
+                PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI);
+                PData.counterLinesInfo.add(cPI, cs[c], cI + 1);
+            }
+        }else if(Teach.hasStackIDAction(cIAction)){
+            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
+            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI + 1);
+        }
+
+        if(Teach.hasCounterIDAction(cINAction)){
+            var cs = Teach.actionCounterIDs(cINAction);
+            for(var c in cs){
+                PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI + 1);
+                PData.counterLinesInfo.add(cPI, cs[c], cI);
+            }
+        }else if(Teach.hasStackIDAction(cINAction)){
+            PData.stackLinesInfo.removeIDLine(cPI, cINAction.stackID, cI + 1);
+            PData.stackLinesInfo.add(cPI, cINAction.stackID, cI);
+        }
+
+
         model.move(cI, cI  + 1, 1);
         if(Teach.isSyncAction(cIAction) ||
                 Teach.isSyncAction(cINAction)){
@@ -129,26 +178,39 @@ Rectangle {
         }
     }
 
-    function modelToProgram(which){
+    function modelToProgramHelper(which){
         var model = PData.programs[which];
         var ret = [];
         for(var i = 0; i < model.count; ++i){
             ret.push(model.get(i).mI_ActionObject);
         }
+        return ret;
+    }
+
+    function modelToProgram(which){
+        var ret = modelToProgramHelper(which);
         return JSON.stringify(ret);
     }
 
-    function onSaveTriggered(){
+    function saveProgram(which){
+        if(!hasInit) return;
         var errInfo;
-        if(editing.currentIndex == 0){
+        if(which == PData.kFunctionProgramIndex){
+            var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
+            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
+            var fJSON = Teach.functionManager.toJSON();
+            var eIJSON = panelRobotController.saveFunctions(fJSON);
+            errInfo = JSON.parse(eIJSON)[fun.id];
+            console.log(eIJSON);
+        }else if(width == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
                 panelRobotController.sendMainProgramToHost();
             }
         }else{
-            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
+            errInfo = JSON.parse(panelRobotController.saveSubProgram(which, modelToProgram(which)));
             if(errInfo.length === 0){
-                panelRobotController.sendSubProgramToHost(editing.currentIndex);
+                panelRobotController.sendSubProgramToHost(which);
             }
         }
         if(errInfo.length !== 0){
@@ -158,9 +220,42 @@ Rectangle {
             }
             tipBox.show(toShow);
         }
-        collectSpecialLines(editing.currentIndex);
-        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
+        //        collectSpecialLines(editing.currentIndex);
+        var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
+
+    }
+
+    function onSaveTriggered(){
+        saveProgram(currentProgramIndex());
+//        var errInfo;
+//        if(currentProgramIndex() == PData.kFunctionProgramIndex){
+//            var fun = Teach.functionManager.getFunctionByName(moduleSel.currentText());
+//            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
+//            var fJSON = Teach.functionManager.toJSON();
+//            console.log(fJSON);
+//            errInfo = JSON.parse(panelRobotController.saveFunctions(fJSON));
+//        }else if(editing.currentIndex == 0){
+//            errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
+//            if(errInfo.length === 0){
+//                panelRobotController.sendMainProgramToHost();
+//            }
+//        }else{
+//            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
+//            if(errInfo.length === 0){
+//                panelRobotController.sendSubProgramToHost(editing.currentIndex);
+//            }
+//        }
+//        if(errInfo.length !== 0){
+//            var toShow = "";
+//            for(var i = 0; i < errInfo.length; ++i){
+//                toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
+//            }
+//            tipBox.show(toShow);
+//        }
+//        //        collectSpecialLines(editing.currentIndex);
+//        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
+//        ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
     }
 
     //    function saveProgram(which){
@@ -168,7 +263,13 @@ Rectangle {
     //    }
 
     function currentModel(){
-        return PData.programs.length == 0?  mainProgramModel: PData.programs[editing.currentIndex];
+        return PData.programs[currentProgramIndex()];
+    }
+
+    function currentProgramIndex(){
+        if(PData.programs.length == 0) return 0;
+        if(moduleSel.currentIndex != 0) return PData.programs.length - 1;
+        return editing.currentIndex;
     }
 
     function currentModelData() {
@@ -202,7 +303,8 @@ Rectangle {
     }
 
     function onStackUpdated(stackID){
-        var stackLines = PData.stackLinesInfo.getLines(editing.currentIndex, stackID)
+        var cpI = currentProgramIndex();
+        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
         var md = currentModel();
         var tmp;
         var line;
@@ -213,17 +315,18 @@ Rectangle {
             line = stackLines[l];
             tmp = md.get(line);
             md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
-            PData.counterLinesInfo.removeLine(editing.currentIndex, line);
+            PData.counterLinesInfo.removeLine(cpI, line);
             if(c1 >= 0)
-                PData.counterLinesInfo.add(editing.currentIndex, c1, line);
+                PData.counterLinesInfo.add(cpI, c1, line);
             if(c2 >= 0)
-                PData.counterLinesInfo.add(editing.currentIndex, c2, line);
+                PData.counterLinesInfo.add(cpI, c2, line);
         }
-//        collectSpecialLines(editing.currentIndex);
+        //        collectSpecialLines(editing.currentIndex);
     }
 
     function onCounterUpdated(counterID){
-        var counterLines  = PData.counterLinesInfo.getLines(editing.currentIndex,counterID);
+        var cpI = currentProgramIndex();
+        var counterLines  = PData.counterLinesInfo.getLines(cpI,counterID);
         var md = currentModel();
         var tmp;
         var line;
@@ -286,9 +389,16 @@ Rectangle {
                     ]
                     currentIndex: 0
                     onCurrentIndexChanged: {
+                        //                        console.log("onCurrentIndexChanged", currentIndex);
                         if(currentIndex < 0) return;
-                        programListView.model = PData.programs[currentIndex];
-                        programListView.currentIndex = -1;
+                        if(moduleSel.currentIndex != 0){
+                            moduleSel.currentIndex = 0;
+                        }else{
+                            saveProgram(currentEditingProgram);
+                            programListView.model = PData.programs[currentIndex];
+                            programListView.currentIndex = -1;
+                            currentEditingProgram = currentIndex;
+                        }
                     }
                 }
                 ICComboBox{
@@ -297,6 +407,23 @@ Rectangle {
                     width: 120
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    onCurrentIndexChanged: {
+                        saveProgram(currentEditingProgram);
+                        if(currentIndex < 0) return;
+                        if(currentIndex == 0){
+                            programListView.currentIndex = -1;
+                            programListView.model = PData.programs[editing.currentIndex];
+                            currentEditingProgram = editing.currentIndex;
+                            currentEditingModule = 0;
+                        }else{
+                            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+                            collectSpecialLines(PData.kFunctionProgramIndex);
+                            programListView.currentIndex = -1;
+                            programListView.model = functionsModel;
+                            currentEditingProgram = PData.kFunctionProgramIndex
+                            currentEditingModule = moduleSel.currentIndex;
+                        }
+                    }
                 }
                 ICLineEdit{
                     id:newModuleEdit
@@ -309,6 +436,16 @@ Rectangle {
                     text: qsTr("New Module")
                     height: editing.height
                     onButtonClicked: {
+                        var newP = Teach.functionManager.newFunction(newModuleEdit.text);
+                        console.log(newP.toString(), newP.program);
+                        var modulesNames = moduleSel.items;
+                        modulesNames.splice(1,0, newP.toString());
+                        updateProgramModel(functionsModel, newP.program);
+                        moduleSel.items = modulesNames;
+                        moduleSel.currentIndex = 1;
+                        collectSpecialLines(PData.programs.length - 1);
+                        programListView.currentIndex = -1;
+                        programListView.model = functionsModel;
 
                     }
                 }
@@ -402,6 +539,9 @@ Rectangle {
                 }
                 ListModel{
                     id:sub8ProgramModel
+                }
+                ListModel{
+                    id:functionsModel
                 }
 
                 ICButton{
@@ -632,7 +772,8 @@ Rectangle {
                             var lastRunning = PData.lastRunning;
 
                             //                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
-                            if(editing.currentIndex !== lastRunning.model ||
+                            var cpI = currentProgramIndex();
+                            if(cpI !== lastRunning.model ||
                                     cStep !== lastRunning.step)
                             {
                                 var i;
@@ -642,7 +783,7 @@ Rectangle {
                                     lastModel.set(lastRunning.items[i], setStopObject);
                                 }
 
-                                var cRunning = {"model":editing.currentIndex,"step":cStep};
+                                var cRunning = {"model":cpI,"step":cStep};
                                 var cModel = currentModel();
                                 var uiRunningSteps = currentModelRunningActionInfo();
                                 //                                var uiRunningSteps = panelRobotController.hostStepToUILines(editing.currentIndex, cStep);
@@ -1039,6 +1180,43 @@ Rectangle {
         }
     }
 
+    function updateProgramModel(model, program){
+        model.clear();
+        var step;
+        var at;
+        var isSyncStart = false;
+        var jumpLines = [];
+        for(var p = 0; p < program.length; ++p){
+            step = program[p]
+            if(Teach.canActionUsePoint(step)){
+                Teach.definedPoints.parseActionPoints(step);
+            }
+            if(step.action === Teach.actions.ACT_FLAG){
+                Teach.pushFlag(step.flag, step.comment);
+            }else if(step.action === Teach.actions.F_CMD_SYNC_START){
+                at = Teach.actionTypes.kAT_SyncStart;
+                isSyncStart = true;
+            }else if(step.action === Teach.actions.F_CMD_SYNC_END){
+                at = Teach.actionTypes.kAT_SyncEnd;
+                isSyncStart = false;
+            }else if(Teach.isJumpAction(step.action)){
+                jumpLines.push(p);
+                at = Teach.actionTypes.kAT_Normal;
+            }
+            else
+                at = Teach.actionTypes.kAT_Normal;
+            if(isSyncStart)
+                at = Teach.actionTypes.kAT_SyncStart;
+
+            model.append(new Teach.ProgramModelItem(step, at));
+        }
+        for(var l = 0; l < jumpLines.length; ++l){
+            step = program[jumpLines[l]];
+            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
+            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
+        }
+    }
+
     function updateProgramModels(){
         //        PData.counterLinesInfo.clear();
         editing.currentIndex = -1;
@@ -1046,49 +1224,28 @@ Rectangle {
         Teach.counterManager.init(counters);
         Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
         Teach.parseStacks(panelRobotController.stacks());
-        var program = JSON.parse(panelRobotController.mainProgram());
-        var i,j;
-        var step;
-        var at;
-        var isSyncStart = false;
+        Teach.functionManager.init(panelRobotController.functions());
+
+        //        var program = JSON.parse(panelRobotController.mainProgram());
+        var program;
+        var i;
         Teach.definedPoints.clear();
         for(i = 0; i < 9; ++i){
-            PData.programs[i].clear();
             program = JSON.parse(panelRobotController.programs(i));
-            var jumpLines = [];
-            for(var p = 0; p < program.length; ++p){
-                step = program[p]
-                if(Teach.canActionUsePoint(step)){
-                    Teach.definedPoints.parseActionPoints(step);
-                }
-                if(step.action === Teach.actions.ACT_FLAG){
-                    Teach.pushFlag(step.flag, step.comment);
-                }else if(step.action === Teach.actions.F_CMD_SYNC_START){
-                    at = Teach.actionTypes.kAT_SyncStart;
-                    isSyncStart = true;
-                }else if(step.action === Teach.actions.F_CMD_SYNC_END){
-                    at = Teach.actionTypes.kAT_SyncEnd;
-                    isSyncStart = false;
-                }else if(Teach.isJumpAction(step.action)){
-                    jumpLines.push(p);
-                    at = Teach.actionTypes.kAT_Normal;
-                }
-                else
-                    at = Teach.actionTypes.kAT_Normal;
-                if(isSyncStart)
-                    at = Teach.actionTypes.kAT_SyncStart;
-
-                PData.programs[i].append(new Teach.ProgramModelItem(step, at));
-            }
-            for(var l = 0; l < jumpLines.length; ++l){
-                step = program[jumpLines[l]];
-                PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
-                PData.programs[i].set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
-            }
+            updateProgramModel(PData.programs[i], program);
             collectSpecialLines(i);
         }
         editing.currentIndex = 0;
 
+        var modulsNames = Teach.functionManager.functionsStrList();
+        moduleSel.currentIndex = -1;
+        moduleSel.items = [];
+
+        modulsNames.splice(0, 0, qsTr("New Module"));
+        moduleSel.items = modulsNames;
+        moduleSel.currentIndex = 0;
+        currentEditingProgram = 0;
+        currentEditingModule = 0;
     }
 
     onVisibleChanged: {
@@ -1109,6 +1266,7 @@ Rectangle {
         PData.programs.push(sub6ProgramModel);
         PData.programs.push(sub7ProgramModel);
         PData.programs.push(sub8ProgramModel);
+        PData.programs.push(functionsModel);
 
 
         updateProgramModels();
@@ -1120,6 +1278,8 @@ Rectangle {
 
         ShareData.UserInfo.registUserChangeEvent(programFlowPageInstance);
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(programFlowPageInstance);
+
+        hasInit = true;
     }
 
 }

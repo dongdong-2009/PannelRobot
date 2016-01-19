@@ -148,6 +148,7 @@ public:
     static QString MoldStacksContent(const QString& moldName);
 
     static bool SaveStacks(const QString& moldName, const QString& stacks);
+    static bool SaveFunctions(const QString& moldName, const QString& functions);
 
 
     static bool UpdateCounter(const QString& moldname, const QVariantList &counter);
@@ -159,7 +160,7 @@ public:
     static bool DelVariable(const QString& moldname, quint32 id);
 
 
-
+    static QString MoldFunctionsContent(const QString& moldName);
 
 //    static bool UpdateConfigsValues(const QList<QPair<const ICAddrWrapper *, quint32> > &addrValuePairs, const QString& tableName);
 
@@ -443,6 +444,19 @@ inline QString ICDALHelper::MoldStacksContent(const QString &moldName)
     return ret;
 }
 
+inline QString ICDALHelper::MoldFunctionsContent(const QString &moldName)
+{
+    QString ret;
+    QSqlQuery query;
+    query.exec(QString("SELECT functions FROM %1 WHERE mold_name = '%2'").arg("tb_mold_act").arg(moldName));
+    if(query.next())
+    {
+        ret = (query.value(0).toString());
+
+    }
+    return ret;
+}
+
 inline QString ICDALHelper::MoldFncTableName(const QString &moldName)
 {
     QSqlQuery query;
@@ -475,6 +489,17 @@ inline bool ICDALHelper::SaveStacks(const QString &moldName, const QString &stac
     QString colName = ("stacks");
     QString cmd = QString("UPDATE tb_mold_act set %1 = \'%2\' WHERE mold_name = \"%3\"")
             .arg(colName).arg(stacks).arg(moldName);
+    QSqlQuery query;
+    query.exec(cmd);
+    //    qDebug()<<query.lastError().text();
+    return query.lastError().type() == QSqlError::NoError;
+}
+
+inline bool ICDALHelper::SaveFunctions(const QString &moldName, const QString &functions)
+{
+    QString colName = ("functions");
+    QString cmd = QString("UPDATE tb_mold_act set %1 = \'%2\' WHERE mold_name = \"%3\"")
+            .arg(colName).arg(functions).arg(moldName);
     QSqlQuery query;
     query.exec(cmd);
     //    qDebug()<<query.lastError().text();

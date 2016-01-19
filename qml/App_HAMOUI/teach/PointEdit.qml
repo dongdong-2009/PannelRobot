@@ -488,8 +488,8 @@ Item {
                         pointName = point.name;
                         refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
                     }else if(selReferenceName.isChecked){
-                        ret = Teach.definedPoints.getPoint(selReferenceName.configText).point;
-                        pointName = selReferenceName.configText;
+                        ret = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
+                        pointName = selReferenceName.configText();
                     }
 
                     return createPoint(pointName, ret);

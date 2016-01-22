@@ -443,10 +443,12 @@ function FunctionInfo(id, name, program){
 function FunctionManager(){
     this.functions = [];
     this.init = function(functionsJSON){
-        if(functionsJSON.length == 0) return;
-        console.log("Functions:", functionsJSON);
-        var functinos = JSON.parse(functionsJSON);
         this.functions.length = 0;
+        console.log("Functions:", functionsJSON);
+        if(functionsJSON.length == 0){
+            return;
+        }
+        var functinos = JSON.parse(functionsJSON);
         for(var i = 0; i < functinos.length; ++i){
             this.push(new FunctionInfo(functinos[i].id, functinos[i].name, JSON.parse(functinos[i].program)));
         }

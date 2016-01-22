@@ -502,7 +502,7 @@ inline bool ICDALHelper::SaveFunctions(const QString &moldName, const QString &f
             .arg(colName).arg(functions).arg(moldName);
     QSqlQuery query;
     query.exec(cmd);
-    //    qDebug()<<query.lastError().text();
+//        qDebug()<<query.lastError().text();
     return query.lastError().type() == QSqlError::NoError;
 }
 

@@ -11,6 +11,7 @@ settingpages/*
 OTHER_FILES += \
     teach/CustomAlarmActionEditor.qml \
     settingpages/StructConfigs.qml \
-    settingpages/CustomVariableConfigs.qml
+    settingpages/CustomVariableConfigs.qml \
+    teach/ModuleActionEditor.qml
 
 

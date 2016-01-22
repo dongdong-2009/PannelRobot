@@ -197,11 +197,12 @@ Rectangle {
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
             var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
+            if(fun == null) return;
             fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
             var fJSON = Teach.functionManager.toJSON();
             var eIJSON = panelRobotController.saveFunctions(fJSON);
             errInfo = JSON.parse(eIJSON)[fun.id];
-            console.log(eIJSON);
+//            console.log(eIJSON);
         }else if(width == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -300,6 +301,9 @@ Rectangle {
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = false;
         speedDispalyContainer.visible = isAuto;
+        newModuleEdit.visible = !isAuto;
+        newModuleBtn.visible = !isAuto;
+        delModuleBtn.visible = !isAuto && (moduleSel.currentIndex != 0);
     }
 
     function onStackUpdated(stackID){
@@ -415,6 +419,7 @@ Rectangle {
                             programListView.model = PData.programs[editing.currentIndex];
                             currentEditingProgram = editing.currentIndex;
                             currentEditingModule = 0;
+                            delModuleBtn.visible = false;
                         }else{
                             updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
@@ -422,6 +427,7 @@ Rectangle {
                             programListView.model = functionsModel;
                             currentEditingProgram = PData.kFunctionProgramIndex
                             currentEditingModule = moduleSel.currentIndex;
+                            delModuleBtn.visible = newModuleBtn.visible;
                         }
                     }
                 }
@@ -446,7 +452,24 @@ Rectangle {
                         collectSpecialLines(PData.programs.length - 1);
                         programListView.currentIndex = -1;
                         programListView.model = functionsModel;
+//                        panelRobotController.saveFunctions(Teach.functionManager.toJSON());
 
+                    }
+                }
+
+                ICButton{
+                    id:delModuleBtn
+                    text: qsTr("Del Module")
+                    height: editing.height
+                    onButtonClicked: {
+                        var toDelID = Utils.getValueFromBrackets(moduleSel.currentText());
+                        Teach.functionManager.delFunction(toDelID);
+                        var ci = moduleSel.currentIndex;
+                        var funs = moduleSel.items;
+                        moduleSel.currentIndex = 0;
+                        funs.splice(ci, 1);
+                        moduleSel.items = funs;
+                        panelRobotController.saveFunctions(Teach.functionManager.toJSON());
                     }
                 }
 
@@ -661,7 +684,7 @@ Rectangle {
                         visible: {
                             var currentItem = currentModelData();
                             if(currentItem === null) return false;
-                            return Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0
+                            return Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length !== 0;
                         }
 
                     }
@@ -948,6 +971,9 @@ Rectangle {
                 counterEditorObject.counterUpdated.connect(onCounterUpdated);
                 editor = Qt.createComponent('CustomAlarmActionEditor.qml')
                 var customAlarmEditorObject = editor.createObject(actionEditorContainer);
+                editor = Qt.createComponent('ModuleActionEditor.qml')
+                var moduleEditorObject = editor.createObject(actionEditorContainer);
+                PData.moduleActionEditor = moduleEditorObject;
 
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
@@ -962,6 +988,7 @@ Rectangle {
                 actionEditorContainer.addPage(stackEditorObject);
                 actionEditorContainer.addPage(counterEditorObject);
                 actionEditorContainer.addPage(customAlarmEditorObject);
+                actionEditorContainer.addPage(moduleEditorObject);
 
 
                 actionEditorContainer.showMenu();
@@ -1097,6 +1124,12 @@ Rectangle {
                 });
                 actionMenuObject.customAlarmMenuTriggered.connect(function(){
                     actionEditorContainer.setCurrentIndex(12);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
+                actionMenuObject.moduleMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(13);
                     linkedBtn1.visible = false;
                     linkedBtn2.visible = false;
                     linkedBtn3.visible = false;
@@ -1241,11 +1274,12 @@ Rectangle {
         moduleSel.currentIndex = -1;
         moduleSel.items = [];
 
-        modulsNames.splice(0, 0, qsTr("New Module"));
+        modulsNames.splice(0, 0, qsTr("Main Module"));
         moduleSel.items = modulsNames;
         moduleSel.currentIndex = 0;
         currentEditingProgram = 0;
         currentEditingModule = 0;
+
     }
 
     onVisibleChanged: {

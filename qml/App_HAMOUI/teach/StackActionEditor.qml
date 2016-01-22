@@ -103,7 +103,7 @@ Rectangle {
                 si1 = new Teach.StackItem();
                 stackInfo = new Teach.StackInfo(si0, si1,stackType, "");
             }else{
-                stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValveFromBrackets(items[currentIndex])));
+                stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[currentIndex])));
             }
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
@@ -236,7 +236,7 @@ Rectangle {
                     updateStacksSel();
                 }
                 else{
-                    sid = Teach.updateStackInfo(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText())), stackInfo);
+                    sid = Teach.updateStackInfo(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())), stackInfo);
                     panelRobotController.saveStacks(Teach.statcksToJSON());
                 }
                 stackUpdated(sid);
@@ -254,7 +254,7 @@ Rectangle {
             width: save.width
             onButtonClicked: {
                 if(stackViewSel.currentIndex === 0) return;
-                var sid = Teach.delStack(parseInt(Utils.getValveFromBrackets(stackViewSel.currentText())));
+                var sid = Teach.delStack(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())));
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
                 stackUpdated(sid);
@@ -371,7 +371,7 @@ Rectangle {
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;
-                var stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValveFromBrackets(items[configValue])));
+                var stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[configValue])));
                 stackType = stackInfo.type;
             }
         }

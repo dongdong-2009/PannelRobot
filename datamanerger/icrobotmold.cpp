@@ -277,6 +277,23 @@ int CustomAlarmActionCompiler(ICMoldItem & item, const QVariantMap* v)
     return ICRobotMold::kCCErr_None;
 }
 
+int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    int act = v->value("action").toInt();
+    int step = v->value("step", -1).toInt();
+    int moduleStep = v->value("moduleStep", -1).toInt();
+    if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
+    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
+    item.append(act);
+    item.append(moduleStep);
+    item.append(step);
+
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+
+
+    return ICRobotMold::kCCErr_None;
+}
+
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
 {
     QMap<int, ActionCompiler> ret;
@@ -303,6 +320,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_COUNTER_CLEAR, CounterActionCompiler);
     ret.insert(F_CMD_TEACH_ALARM, CustomAlarmActionCompiler);
 
+    ret.insert(F_CMD_PROGRAM_CALL_BACK, SimpleActionCompiler);
+    ret.insert(F_CMD_PROGRAM_CALL0, CallModuleActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
     return ret;
@@ -374,13 +393,15 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
         sis = ParseStacks(subPrograms.at(8), isOk);
         subProgramSize = 8;
     }
-    CompileInfo compileInfo = Complie(initProgram, sis, counters, variables, err);
+
+    QMap<int, CompileInfo> cfs;
+    CompileInfo compileInfo = Complie(initProgram, sis, counters, variables, cfs, err);
     if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
 
     programList.append(initProgram);
     for(int i = 0; i < subProgramSize; ++i)
     {
-        CompileInfo compileInfo = Complie(subPrograms.at(i), sis, counters, variables, err);
+        CompileInfo compileInfo = Complie(subPrograms.at(i), sis, counters, variables, cfs, err);
         if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_SubProgram_Invalid);
         programList.append(subPrograms.at(i));
     }
@@ -414,7 +435,8 @@ static bool IsJumpAction(int act)
 {
     return act == F_CMD_PROGRAM_JUMP1 ||
             act == F_CMD_PROGRAM_JUMP0 ||
-            act == F_CMD_PROGRAM_JUMP2;
+            act == F_CMD_PROGRAM_JUMP2 ||
+            act == F_CMD_PROGRAM_CALL0;
 }
 
 int IsCounterValid(const QVector<QVariantList>& counters, int counterID)
@@ -433,6 +455,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                                  const QMap<int, StackInfo>& stackInfos,
                                  const QVector<QVariantList>& counters,
                                  const QVector<QVariantList>& variables,
+                                 const QMap<int, CompileInfo> &functions,
                                  int &err)
 {
     QJson::Parser parser;
@@ -467,8 +490,22 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         }
         else if(IsJumpAction(act))
         {
-            int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
+            int flag = action.value("flag", -1).toInt();
+            int toJumpStep = ret.FlagStep(flag);
             action.insert("step", toJumpStep);
+            if(act == F_CMD_PROGRAM_CALL0)
+            {
+                int mID = action.value("module").toInt();
+                if(!functions.contains(mID))
+                {
+                    err = ICRobotMold::kCCErr_Invaild_ModuleID;
+                    ret.AddErr(i, err);
+                    continue;
+                }
+
+                action.insert("moduleStep", -1);
+                ret.AddUsedModule(mID);
+            }
         }
         else if(act == F_CMD_STACK0)
         {
@@ -476,7 +513,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             int stackID = action.value("stackID", -1).toInt();
             if(!stackInfos.contains(stackID))
             {
-//                ret.Clear();
+                //                ret.Clear();
                 err = ICRobotMold::kCCErr_Invaild_StackID;
                 ret.AddErr(i, err);
                 continue;
@@ -489,7 +526,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 {
                     if(IsCounterValid(counters, si.si[j].counterID) < 0)
                     {
-//                        ret.Clear();
+                        //                        ret.Clear();
                         err = ICRobotMold::kCCErr_Invaild_CounterID;
                         ret.AddErr(i, err);
                     }
@@ -507,7 +544,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 int cIndex = IsCounterValid(counters, cID) ;
                 if(cIndex < 0)
                 {
-//                    ret.Clear();
+                    //                    ret.Clear();
                     err = ICRobotMold::kCCErr_Invaild_CounterID;
                     ret.AddErr(i, err);
                     continue;
@@ -521,7 +558,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         ret.AddICMoldItem(i,VariantToMoldItem(step, action, err));
         if(err != kCCErr_None)
         {
-//            ret.Clear();
+            //            ret.Clear();
             //            err = kCCErr_Sync_Nesting;
             ret.AddErr(i, err);
             //            return ret;
@@ -568,7 +605,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
     }
     if(isSyncBegin)
     {
-//        ret.Clear();
+        //        ret.Clear();
         err = kCCErr_Sync_NoEnd;
         ret.AddErr(result.size(), err);
 
@@ -576,17 +613,62 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
     }
     if(isGroupBegin)
     {
-//        ret.Clear();
+        //        ret.Clear();
         err = kCCErr_Group_NoEnd;
         ret.AddErr(result.size(), err);
 
         //        return ret;
     }
-    if(act != F_CMD_END)
+
+    if(!functions.isEmpty())
     {
-//        ret.Clear();
+        QMap<int, CompileInfo>::const_iterator fp = functions.constBegin();
+        int programEndLine = result.size();
+        ICMoldItem endProgramItem = ret.DelLastICMoldItem();
+        ICMoldItem jumptoEnd;
+        jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
+        ret.AddICMoldItem(programEndLine++, jumptoEnd);
+        const int beginToFix = ret.CompiledProgramLineCount();
+        while(fp != functions.end())
+        {
+            if(ret.IsModuleUsed(fp.key()))
+            {
+                CompileInfo f = fp.value();
+                int cflc = f.CompiledProgramLineCount();
+                ret.MapModuleIDToEntry(fp.key(), ret.CompiledProgramLineCount());
+                for(int i = 0; i < cflc; ++i)
+                {
+                    ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
+                    ++programEndLine;
+                }
+            }
+            ++fp;
+        }
+        jumptoEnd.append(ret.CompiledProgramLineCount());
+        jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
+        ret.UpdateICMoldItem(beginToFix, jumptoEnd);
+        ret.AddICMoldItem(programEndLine, endProgramItem);
+        ICMoldItem toFixLineItem;
+        int toFixLineEnd = ret.CompiledProgramLineCount();
+        for(int i = beginToFix; i < toFixLineEnd; ++i)
+        {
+            toFixLineItem = ret.GetICMoldItem(i);
+            if(toFixLineItem.at(0) == F_CMD_PROGRAM_CALL0)
+            {
+                toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(i));
+                ret.UpdateICMoldItem(i, toFixLineItem);
+            }
+        }
+    }
+
+
+    if(act != F_CMD_END &&
+            act != F_CMD_PROGRAM_CALL_BACK)
+    {
+        //        ret.Clear();
         err = kCCErr_Last_Is_Not_End_Action;
         ret.AddErr(result.size(), err);
+        //        ret.AddErr(programEndLine, err);
 
         //        return ret;
     }
@@ -596,12 +678,37 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
     QMap<int, int>::iterator p = errList.begin();
     while(p != errList.end())
     {
+        if(p.key() >= result.size())
+        {
+            ++p;
+            continue;
+        }
         action = result.at(p.key()).toMap();
         act = action.value("action").toInt();
         if(IsJumpAction(act))
         {
-            int toJumpStep = ret.FlagStep(action.value("flag", -1).toInt());
-            if((toJumpStep >= 0) && (p.value() == kCCErr_Invaild_Flag))
+            int flag = action.value("flag", -1).toInt();
+            int toJumpStep = ret.FlagStep(flag);
+            if(act == F_CMD_PROGRAM_CALL0)
+            {
+                int moduleStep = ret.ModuleEntry(action.value("module", -1).toInt());
+                if(moduleStep >= 0 &&
+                        (p.value() == kCCErr_Invaild_ModuleID ||
+                         p.value() == kCCErr_Invaild_Flag))
+                {
+                    if(flag == -1)
+                        action.insert("step", ret.UIStepToRealStep(p.key()).first + 1);
+                    else
+                        action.insert("step", toJumpStep);
+                    action.insert("moduleStep", moduleStep);
+                    ret.UpdateICMoldItem(p.key(), VariantToMoldItem(0, action, err));
+                    if(err == kCCErr_None)
+                    {
+                        ret.RemoveErr(p.key());
+                    }
+                }
+            }
+            else if((toJumpStep >= 0) && (p.value() == kCCErr_Invaild_Flag))
             {
                 action.insert("step", toJumpStep);
                 ret.UpdateICMoldItem(p.key(), VariantToMoldItem(0, action, err));
@@ -610,11 +717,11 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     ret.RemoveErr(p.key());
                 }
             }
-
         }
         ++p;
     }
     //    err = kCCErr_None;
+    ret.PrintDebugInfo();
     return ret;
 
 }
@@ -637,11 +744,12 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     counters_ = ICDALHelper::GetMoldCounterDef(moldName);
     variables_ = ICDALHelper::GetMoldVariableDef(moldName);
     functions_ = ICDALHelper::MoldFunctionsContent(moldName);
+    compiledFunctions_ = ParseFunctions(functions_, ok);
     ok = true;
     for(int i = 0; i != programs.size(); ++i)
     {
         programsCode_.append(programs.at(i));
-        p = Complie(programs.at(i), stackInfos_, counters_, variables_, err);
+        p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr()) ok = false;
         programs_.append(p);
     }
@@ -659,7 +767,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
 QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
-    CompileInfo aP = Complie(program, stackInfos_, counters_, variables_, err);
+    CompileInfo aP = Complie(program, stackInfos_, counters_, variables_, compiledFunctions_, err);
     if(err == kCCErr_None)
     {
         programsCode_[which] = program;
@@ -1196,7 +1304,7 @@ QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions, boo
     {
         fun = result.at(i).toMap();
         funStr = fun.value("program").toString();
-        CompileInfo p = Complie(funStr,stackInfos_, counters_, variables_, err);
+        CompileInfo p = Complie(funStr,stackInfos_, counters_, variables_, QMap<int, CompileInfo>(), err);
         ret.insert(fun.value("id").toInt(), p);
     }
     return ret;

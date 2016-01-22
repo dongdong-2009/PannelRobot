@@ -18,6 +18,7 @@ Rectangle {
     signal counterMenuTriggered()
     signal commentMenuTriggered()
     signal customAlarmMenuTriggered()
+    signal moduleMenuTriggered()
     signal searchMenuTriggered()
 
 
@@ -133,12 +134,12 @@ Rectangle {
         }
 
         ICButton{
-            id:search
-            text: qsTr("Search")
+            id:callModule
+            text: qsTr("Module")
             icon: "../images/action_item_search.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
-            onButtonClicked: searchMenuTriggered()
+            onButtonClicked: moduleMenuTriggered()
         }
     }
 }

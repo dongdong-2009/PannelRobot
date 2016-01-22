@@ -84,6 +84,17 @@ public:
         else
             realStepToUIStepMap_.insert(realStep, QList<int>()<<uiStep);
     }
+    void MapModuleIDToEntry(int id, int step)
+    {
+        modulesMap_.insert(id, step);
+    }
+
+    int ModuleEntry(int id) { return modulesMap_.value(id, 0);}
+
+    void AddUsedModule(int id) { usedModules_.append(id);}
+
+    bool IsModuleUsed(int id) { return usedModules_.contains(id);}
+
     void MapFlagToStep(int flag, int step)
     {
         flagsMap_.insert(flag, step);
@@ -99,21 +110,25 @@ public:
         uiStepToComiledLine.insert(uiStep, compiledProgram_.size());
         compiledProgram_.append(item);
     }
+    ICMoldItem DelLastICMoldItem()
+    {
+        ICMoldItem ret =  compiledProgram_.last();
+        compiledProgram_.pop_back();
+        return ret;
+    }
+//    void InsertICMoldItem(int line, int uiStep, const ICMoldItem& item)
+//    {
+//        uiStepToComiledLine.insert(uiStep, compiledProgram_.size());
+//        compiledProgram_.insert(line, item);
+//    }
     void UpdateICMoldItem(int line, const ICMoldItem& item)
     {
         compiledProgram_[uiStepToComiledLine.value(line)] = item;
     }
     ICMoldItem GetICMoldItem(int line) { return compiledProgram_.at(line);}
+    int CompiledProgramLineCount() const { return compiledProgram_.size();}
     QVector<QVector<quint32> >ProgramToBareData() const
     {
-//        QVector<QVector<quint32> > ret;
-//        QVector<quint32> oneLine;
-//        for(int i = 0; i < compiledProgram_.size(); ++i)
-//        {
-//            oneLine = compiledProgram_.at(i);
-//            ret += (compiledProgram_.at(i));
-//        }
-//        return ret;
         return compiledProgram_;
     }
     QList<int> RealStepToUIStep(int step) const
@@ -142,9 +157,20 @@ public:
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
 
+     void PrintDebugInfo() const
+     {
+         qDebug()<<"Program Begin:";
+         for(int i = 0 ; i < compiledProgram_.size(); ++i)
+         {
+             qDebug()<< compiledProgram_.at(i);
+         }
+     }
+
 private:
     QMap<int, int> stepMap_;
     QMap<int, int> flagsMap_;
+    QMap<int, int> modulesMap_;
+    QList<int> usedModules_;
 
     QMap<int, QList<int> > realStepToUIStepMap_;
     QMap<int, int> errList_;
@@ -184,6 +210,7 @@ public:
         kCCErr_Invaild_Flag,
         kCCErr_Invaild_StackID,
         kCCErr_Invaild_CounterID,
+        kCCErr_Invaild_ModuleID,
     };
 
     enum {
@@ -243,6 +270,7 @@ public:
                                const QMap<int, StackInfo>& stackInfos,
                                const QVector<QVariantList>& counters,
                                const QVector<QVariantList>& variables,
+                               const QMap<int, CompileInfo>& functions,
                                int & err);
 
 //    static QPair<QStringList, QString>  ExportMold(const QString& name);

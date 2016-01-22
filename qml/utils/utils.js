@@ -37,7 +37,7 @@ function isDateTimeValid(yy,MM,dd,hh,mm,ss){
     return strDate1 === strDate2;
 }
 
-function getValveFromBrackets(str){
+function getValueFromBrackets(str){
     var begin = str.indexOf('[') + 1;
     var end = str.indexOf(']');
     return str.slice(begin, end);

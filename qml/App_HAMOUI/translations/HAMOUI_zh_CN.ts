@@ -745,6 +745,33 @@
     </message>
 </context>
 <context>
+    <name>CustomVariableConfigs</name>
+    <message>
+        <source>New</source>
+        <translation type="unfinished">新建</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished">名称</translation>
+    </message>
+    <message>
+        <source>Val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decimal</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DebugPage</name>
     <message>
         <source>single axis</source>
@@ -1666,6 +1693,21 @@
     </message>
 </context>
 <context>
+    <name>ModuleActionEditor</name>
+    <message>
+        <source>Next Line</source>
+        <translation>下一行</translation>
+    </message>
+    <message>
+        <source>Call Module</source>
+        <translation>调用模块</translation>
+    </message>
+    <message>
+        <source>Return To Flag</source>
+        <translation>返回标签</translation>
+    </message>
+</context>
+<context>
     <name>OutputActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -1976,6 +2018,10 @@ please chose!</source>
         <source>Valve Settings</source>
         <translation>阀设定</translation>
     </message>
+    <message>
+        <source>custom Variables</source>
+        <translation>自定义变量</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -2030,6 +2076,10 @@ please chose!</source>
     <message>
         <source>Custom Alarm</source>
         <translation>自定义报警</translation>
+    </message>
+    <message>
+        <source>Module</source>
+        <translation>模块</translation>
     </message>
 </context>
 <context>
@@ -2153,6 +2203,18 @@ please chose!</source>
     <message>
         <source>Counter</source>
         <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Main Module</source>
+        <translation>主模块</translation>
+    </message>
+    <message>
+        <source>New Module</source>
+        <translation>新建模块</translation>
+    </message>
+    <message>
+        <source>Del Module</source>
+        <translation>删除模块</translation>
     </message>
 </context>
 <context>
@@ -2795,6 +2857,30 @@ please chose!</source>
     <message>
         <source>Alarm</source>
         <translation>报警</translation>
+    </message>
+    <message>
+        <source>Fun</source>
+        <translation>模块</translation>
+    </message>
+    <message>
+        <source>Program End</source>
+        <translation>模组结束</translation>
+    </message>
+    <message>
+        <source>Module End</source>
+        <translation>模块结束</translation>
+    </message>
+    <message>
+        <source>next line</source>
+        <translation>下一行</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>调用</translation>
+    </message>
+    <message>
+        <source>And then return to </source>
+        <translation>然后返回到</translation>
     </message>
 </context>
 <context>

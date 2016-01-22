@@ -434,7 +434,7 @@ function CounterManager(){
 function FunctionInfo(id, name, program){
     this.id = id;
     this.name = name || ("Fun" + id);
-    this.program = program || [{"action":actions.ACT_END}];
+    this.program = program || [{"action":actions.F_CMD_PROGRAM_CALL_BACK}];
     this.toString = function(){
         return qsTr("Fun") + "[" + id + "]:" + this.name;
     }
@@ -494,7 +494,7 @@ function FunctionManager(){
         return null;
     }
     this.getFunctionByName = function(name){
-        var id = getValveFromBrackets(name);
+        var id = getValueFromBrackets(name);
         return this.getFunction(id);
     }
 
@@ -521,7 +521,7 @@ function FunctionManager(){
     this.updateFunction = function(id, name, program){
         var c = this.getFunction(id);
         c.name = name || ("Fun" + id);
-        c.program = program || [{"action":actions.ACT_END}];
+        c.program = program || [{"action":actions.F_CMD_PROGRAM_CALL_BACK}];
     }
     this.delFunction = function(id){
         for(var c in this.functions){
@@ -577,33 +577,8 @@ actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
 actions.F_CMD_PROGRAM_JUMP2 = 10002;  //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
-actions.ACT_GS6 = actHelper++;
-actions.ACT_GS7 = actHelper++;
-
-actions.ACT_PS2_1 = actHelper++;
-actions.ACT_PS2_2 = actHelper++;
-actions.ACT_PS1_2 = actHelper++;
-actions.ACT_PS1_1 = actHelper++;
-
-actions.ACT_PS8_2 = actHelper++;
-actions.ACT_PS8_1 = actHelper++;
-actions.ACT_PS5_1 = actHelper++;
-actions.ACT_PS5_2 = actHelper++;
-
-actions.ACT_PS4_2 = actHelper++;
-actions.ACT_PS4_1 = actHelper++;
-actions.ACT_PS3_2 = actHelper++;
-actions.ACT_PS3_1 = actHelper++;
-
-actions.ACT_PS6_2 = actHelper++;
-actions.ACT_PS6_1 = actHelper++;
-
-actHelper = 27;
-actions.ACT_OTHER      = actHelper++;
-actions.ACT_CONDITION  = actHelper++;
-actions.ACT_Wait       = actHelper++;
-actions.ACT_CHECK      = actHelper++;
-actions.ACT_PARALLEL   = actHelper++;
+actions.F_CMD_PROGRAM_CALL0 = 20000;   //< 程序调用 调用步号  返回步号
+actions.F_CMD_PROGRAM_CALL_BACK = 20001;   //< 程序调用
 actions.ACT_END        = 60000;
 actions.ACT_COMMENT    = 50000;
 actions.ACT_OUTPUT     = 0x80;
@@ -634,7 +609,9 @@ var kAxisType_Reserve = 3;
 function isJumpAction(act){
     return act === actions.F_CMD_PROGRAM_JUMP0 ||
             act === actions.F_CMD_PROGRAM_JUMP1 ||
-            act === actions.F_CMD_PROGRAM_JUMP3;
+            act === actions.F_CMD_PROGRAM_JUMP3 ||
+            act === actions.F_CMD_PROGRAM_CALL0;
+
 }
 
 function hasCounterIDAction(action){
@@ -830,6 +807,14 @@ var generateCustomAlarmAction = function(alarmNum){
     };
 }
 
+var generateCallModuleAction = function(module, flag){
+    return {
+        "action":actions.F_CMD_PROGRAM_CALL0,
+        "flag":flag || -1,
+        "module":module
+    };
+}
+
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
@@ -997,7 +982,17 @@ var parallelActionToStringHandler = function(actionObject){
 }
 
 var endActionToStringHandler = function(actionObject){
-    return qsTr("End");
+    return qsTr("Program End");
+}
+
+var moduleCallBackActionToStringHandler = function(actionObject){
+    return qsTr("Module End");
+}
+
+var callModuleActionToStringHandler = function(actionObject){
+    var returnTo = (actionObject.flag == - 1 ? qsTr("next line") : flagStrs[actionObject.flag]);
+    return qsTr("Call") + " " + functionManager.functionToString(actionObject.module) + " " +
+            qsTr("And then return to ") + returnTo;
 }
 
 var commentActionToStringHandler = function(actionObject){
@@ -1174,6 +1169,8 @@ actionToStringHandlerMap.put(actions.F_CMD_IO_INPUT, waitActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
 //actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL_BACK, moduleCallBackActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL0, callModuleActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);

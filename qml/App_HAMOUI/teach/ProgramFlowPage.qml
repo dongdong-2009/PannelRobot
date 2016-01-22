@@ -203,7 +203,7 @@ Rectangle {
             var eIJSON = panelRobotController.saveFunctions(fJSON);
             errInfo = JSON.parse(eIJSON)[fun.id];
 //            console.log(eIJSON);
-        }else if(width == 0){
+        }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
                 panelRobotController.sendMainProgramToHost();

@@ -436,6 +436,7 @@ QString ICDALHelper::NewMoldConfig(const QString &name,
         db.rollback();
         return "";
     }
+//    qDebug()<<query.lastQuery()<<query.record();
     int maxID = query.value(0).toInt();
     QString dt = QDateTime::currentDateTime().toString(DateTimeFormat);
     query.exec(QString("INSERT INTO tb_moldconfig_record VALUES(\"%1\", %2, \"%3\")")

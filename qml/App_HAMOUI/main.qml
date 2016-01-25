@@ -358,6 +358,62 @@ Rectangle {
     }
 
     Item{
+        id:pointManagerContainer
+        y:100
+//        x:pointManagerBtn.width
+        width: 700
+        height: 400
+        z:4
+
+        PropertyAnimation{
+            id:pointManagerOut
+            target: pointManagerContainer
+            property: "x"
+            to: 650
+            duration: 100
+        }
+        SequentialAnimation{
+            id:pointManagerIn
+            PropertyAnimation{
+                target: pointManagerContainer
+                property: "x"
+                to: 0
+                duration: 100
+            }
+            PropertyAction{
+                target: pointManager
+                property: "visible"
+                value:false
+            }
+        }
+
+        ICButton{
+            id:pointManagerBtn
+            text: "→"
+            width: 40
+            anchors.bottom: parent.bottom
+            bgColor: "green"
+            onButtonClicked: {
+                if(!pointManager.visible){
+                    pointManager.visible = true;
+                    pointManagerOut.start();
+                    text = "←";
+                }else{
+                    text = "→";
+                    //                    armKeyboard.visible = false;
+                    pointManagerIn.start();
+                }
+            }
+        }
+
+        PointManager{
+            id:pointManager
+            anchors.right:  pointManagerBtn.left
+            visible: false
+        }
+    }
+
+    Item{
         id:armKeyboardContainer
         y:60
         x:800 - armKeyboardBtn.width
@@ -411,6 +467,8 @@ Rectangle {
             anchors.left: armKeyboardBtn.right
             visible: false
         }
+
+
     }
 
     function onKnobChanged(knobStatus){

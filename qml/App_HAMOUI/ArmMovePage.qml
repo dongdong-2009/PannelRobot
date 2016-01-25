@@ -26,47 +26,35 @@ Rectangle {
     border.width: 1
     border.color: "gray"
     color: "#A0A0F0"
-    Column{
-        //        x:360
-        //        y:10
+
+    Row{
         id:speedSection
         anchors.right: parent.right
         anchors.rightMargin: 40
+        spacing: 2
         Text {
-            text: qsTr("▲")
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: 15
+            text: qsTr("Speed")
+            anchors.verticalCenter: parent.verticalCenter
         }
-        Row{
-            spacing: 2
+        Rectangle{
+            border.width: 1
+            border.color: "gray"
+            width: 70
+            height: 32
+            color: "lime"
             Text {
-                text: qsTr("Speed")
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Rectangle{
-                border.width: 1
-                border.color: "gray"
-                width: 70
-                height: 32
-                color: "lime"
-                Text {
-                    id: speed
-                    text: "10.0"
-                    anchors.centerIn: parent
+                id: speed
+                text: "10.0"
+                anchors.centerIn: parent
 
-                }
-            }
-            Text {
-                text: "%"
-                anchors.verticalCenter: parent.verticalCenter
             }
         }
         Text {
-            text: qsTr("▼")
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: 15
+            text: "%"
+            anchors.verticalCenter: parent.verticalCenter
         }
     }
+
 
     Grid{
         id:keyboardSection
@@ -490,6 +478,8 @@ Rectangle {
                     spacing: 12
                     Column{
                         Row{
+                            spacing: 10
+
                             ICButton{
                                 id:curveRun1
                                 text: qsTr("Run to This")
@@ -499,8 +489,9 @@ Rectangle {
                             }
                             ICButton{
                                 id:curveSave1
-                                text:qsTr("Set to Point-1");
-                                onButtonClicked: functionSection.savePointHelper(10, curvePoint1);
+                                text:qsTr("Set to Point-1")
+                                width: 180
+                                onButtonClicked: functionSection.savePointHelper(10, curvePoint1)
 
                             }
                         }
@@ -511,14 +502,17 @@ Rectangle {
                     }
                     Column{
                         Row{
+                            spacing: 10
+
                             ICButton{
                                 id:curveRun2
                                 text: qsTr("Run to This")
                             }
                             ICButton{
                                 id:curveSave2
-                                text:qsTr("Set to Point-2");
-                                onButtonClicked: functionSection.savePointHelper(11, curvePoint2);
+                                text:qsTr("Set to Point-2")
+                                width: 180
+                                onButtonClicked: functionSection.savePointHelper(11, curvePoint2)
 
                             }
                         }
@@ -531,14 +525,18 @@ Rectangle {
                     }
                     Column{
                         Row{
+                            spacing: 10
+
                             ICButton{
                                 id:curveRun3
                                 text: qsTr("Run to This")
                             }
                             ICButton{
                                 id:curveSave3
-                                text:qsTr("Set to Point-3");
-                                onButtonClicked: functionSection.savePointHelper(12, curvePoint3);
+                                text:qsTr("Set to Point-3")
+                                width: 180
+
+                                onButtonClicked: functionSection.savePointHelper(12, curvePoint3)
 
                             }
                         }
@@ -557,12 +555,12 @@ Rectangle {
 
     onVisibleChanged: {
         ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(visible);
-//        if(visible){
-////            speed.text = "10.0";
-//            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-//            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
-//            //            panelRobotController.syncConfigs();
-//        }
+        //        if(visible){
+        ////            speed.text = "10.0";
+        //            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+        //            panelRobotController.modifyConfigValue("s_rw_0_16_1_265", 10.0);
+        //            //            panelRobotController.syncConfigs();
+        //        }
 
     }
 

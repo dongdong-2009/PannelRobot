@@ -1080,6 +1080,7 @@ QStringList ICRobotMold::ExportMold(const QString &name)
 {
     QStringList ret = ICDALHelper::MoldProgramContent(name);
     ret.append(ICDALHelper::MoldStacksContent(name));
+    ret.append(ICDALHelper::MoldFunctionsContent(name));
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(name));
     QString fncStr;
@@ -1096,7 +1097,7 @@ QStringList ICRobotMold::ExportMold(const QString &name)
         tmp = counters.at(i);
         for(int j = 0; j < tmp.size(); ++j)
         {
-            countersStr += tmp.at(i).toString() + ",";
+            countersStr += tmp.at(j).toString() + ",";
         }
         if(!tmp.isEmpty())
         {
@@ -1105,6 +1106,23 @@ QStringList ICRobotMold::ExportMold(const QString &name)
         }
     }
     ret.append(countersStr);
+
+    QVector<QVariantList> variables = ICDALHelper::GetMoldVariableDef(name);
+    QString variablesStr;
+    for(int i = 0; i < variables.size(); ++i)
+    {
+        tmp = variables.at(i);
+        for(int j = 0; j < tmp.size(); ++j)
+        {
+            variablesStr += tmp.at(j).toString() + ",";
+        }
+        if(!tmp.isEmpty())
+        {
+            variablesStr.chop(1);
+            variablesStr += "\n";
+        }
+    }
+    ret.append(variablesStr);
     return ret;
 }
 
@@ -1112,7 +1130,7 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
 {
     RecordDataObject ret;
     QList<QPair<int, quint32> > fncs;
-    QStringList addrValues = moldInfo.at(10).split("\n", QString::SkipEmptyParts);
+    QStringList addrValues = moldInfo.at(11).split("\n", QString::SkipEmptyParts);
     QStringList addrValuePair;
     for(int i = 0; i < addrValues.size(); ++i)
     {
@@ -1126,7 +1144,7 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
                                             addrValuePair.at(1).toUInt()));
     }
     QVector<QVariantList> counters;
-    QStringList cStr = moldInfo.at(11).split("\n", QString::SkipEmptyParts);
+    QStringList cStr = moldInfo.at(12).split("\n", QString::SkipEmptyParts);
     for(int i = 0; i < cStr.size(); ++i)
     {
         QStringList vs = cStr.at(i).split(",", QString::SkipEmptyParts);
@@ -1137,8 +1155,21 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
         tmp.append(vs.at(3).toUInt());
         counters.append(tmp);
     }
-    QStringList programs = moldInfo.mid(0, 10);
-    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1), counters);
+    QVector<QVariantList> variables;
+    QStringList vStr = moldInfo.at(13).split("\n", QString::SkipEmptyParts);
+    for(int i = 0; i < vStr.size(); ++i)
+    {
+        QStringList vs = vStr.at(i).split(",");
+        QVariantList tmp;
+        tmp.append(vs.at(0).toUInt());
+        tmp.append(vs.at(1));
+        tmp.append(vs.at(2));
+        tmp.append(vs.at(3).toUInt());
+        tmp.append(vs.at(4).toUInt());
+        variables.append(tmp);
+    }
+    QStringList programs = moldInfo.mid(0, 11);
+    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1), counters, variables);
     return ret;
 
 }

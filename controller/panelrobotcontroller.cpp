@@ -710,22 +710,29 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::WriteOnly))
         {
-            QStringList acts = toWrite.mid(0, 10);
+            QStringList acts = toWrite.mid(0, 11);
             file.write(acts.join("\n").toUtf8());
             file.close();
         }
         file.setFileName(dir.absoluteFilePath(moldName + ".fnc"));
         if(file.open(QFile::WriteOnly))
         {
-            QString fnc = toWrite.at(10);
+            QString fnc = toWrite.at(11);
             file.write(fnc.toLatin1());
             file.close();
         }
         file.setFileName(dir.absoluteFilePath(moldName + ".counters"));
         if(file.open(QFile::WriteOnly))
         {
-            QString counters = toWrite.at(11);
+            QString counters = toWrite.at(12);
             file.write(counters.toUtf8());
+            file.close();
+        }
+        file.setFileName(dir.absoluteFilePath(moldName + ".variables"));
+        if(file.open(QFile::WriteOnly))
+        {
+            QString variables = toWrite.at(13);
+            file.write(variables.toUtf8());
             file.close();
         }
     }
@@ -790,7 +797,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         file.setFileName(temp.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::ReadOnly))
         {
-            actContent = file.readAll();
+            actContent = QString::fromUtf8(file.readAll());
             file.close();
             moldInfo.append(actContent.split("\n", QString::SkipEmptyParts));
         }
@@ -803,7 +810,14 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         file.setFileName(temp.absoluteFilePath(moldName + ".counters"));
         if(file.open(QFile::ReadOnly))
         {
-            moldInfo.append(file.readAll());
+            moldInfo.append(QString::fromUtf8(file.readAll()));
+            file.close();
+        }
+
+        file.setFileName(temp.absoluteFilePath(moldName + ".variables"));
+        if(file.open(QFile::ReadOnly))
+        {
+            moldInfo.append(QString::fromUtf8(file.readAll()));
             file.close();
         }
         imported = ICRobotMold::ImportMold(moldName, moldInfo);

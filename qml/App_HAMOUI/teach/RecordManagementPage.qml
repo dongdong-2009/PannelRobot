@@ -139,7 +139,7 @@ Rectangle {
 
         id:recordsView
         width: parent.width * 0.8
-        height: parent.height
+        height: parent.height  - infoContainer.height - infoContainer.y - usbContainer.height - usbContainer.anchors.topMargin - anchors.topMargin
         x:10
         clip: true
         anchors.top: usbContainer.bottom

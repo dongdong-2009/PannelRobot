@@ -304,6 +304,7 @@ Rectangle {
         newModuleEdit.visible = !isAuto;
         newModuleBtn.visible = !isAuto;
         delModuleBtn.visible = !isAuto && (moduleSel.currentIndex != 0);
+        onSaveTriggered();
     }
 
     function onStackUpdated(stackID){
@@ -1285,6 +1286,8 @@ Rectangle {
     onVisibleChanged: {
         actionEditorFrame.visible = false;
         programListView.currentIndex = -1;
+        if(!visible)
+            onSaveTriggered();
         //        programListView.contentY = 0;
     }
 

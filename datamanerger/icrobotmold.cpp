@@ -283,9 +283,12 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     int step = v->value("step", -1).toInt();
     int moduleStep = v->value("moduleStep", -1).toInt();
     if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
-    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
+//    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
-    item.append(moduleStep);
+    if(moduleStep < 0)
+        item.append(v->value("module").toUInt());
+    else
+        item.append(moduleStep);
     item.append(step);
 
     item.append(ICRobotMold::MoldItemCheckSum(item));
@@ -500,7 +503,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 {
                     err = ICRobotMold::kCCErr_Invaild_ModuleID;
                     ret.AddErr(i, err);
-                    continue;
+//                    continue;
                 }
 
                 action.insert("moduleStep", -1);
@@ -655,6 +658,9 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             if(toFixLineItem.at(0) == F_CMD_PROGRAM_CALL0)
             {
                 toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(1));
+                toFixLineItem[2] = i + 1;
+                toFixLineItem.pop_back();
+                toFixLineItem.append(ICRobotMold::MoldItemCheckSum(toFixLineItem));
                 ret.UpdateICMoldItem(i, toFixLineItem);
             }
         }

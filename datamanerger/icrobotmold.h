@@ -89,7 +89,7 @@ public:
         modulesMap_.insert(id, step);
     }
 
-    int ModuleEntry(int id) { return modulesMap_.value(id, 0);}
+    int ModuleEntry(int id) { return modulesMap_.value(id, id);}
 
     void AddUsedModule(int id) { usedModules_.append(id);}
 

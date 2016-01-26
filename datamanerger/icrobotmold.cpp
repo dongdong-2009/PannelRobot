@@ -620,34 +620,32 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         //        return ret;
     }
 
-    if(!functions.isEmpty())
+    if(!functions.isEmpty() && ret.HasCalledModule())
     {
         QMap<int, CompileInfo>::const_iterator fp = functions.constBegin();
         int programEndLine = result.size();
-        ICMoldItem endProgramItem = ret.DelLastICMoldItem();
+        ICMoldItem endProgramItem = ret.GetICMoldItem(ret.CompiledProgramLineCount() -1);
         ICMoldItem jumptoEnd;
         jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
-        ret.AddICMoldItem(programEndLine++, jumptoEnd);
+//        ret.AddICMoldItem(programEndLine - 1, jumptoEnd);
         const int beginToFix = ret.CompiledProgramLineCount();
-        if(ret.HasCalledModule())
+        while(fp != functions.end())
         {
-            while(fp != functions.end())
+            CompileInfo f = fp.value();
+            int cflc = f.CompiledProgramLineCount();
+            ret.MapModuleIDToEntry(fp.key(), ret.CompiledProgramLineCount());
+            for(int i = 0; i < cflc; ++i)
             {
-                CompileInfo f = fp.value();
-                int cflc = f.CompiledProgramLineCount();
-                ret.MapModuleIDToEntry(fp.key(), ret.CompiledProgramLineCount());
-                for(int i = 0; i < cflc; ++i)
-                {
-                    ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
-                    ++programEndLine;
-                }
-
-                ++fp;
+                ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
+                ++programEndLine;
             }
+
+            ++fp;
         }
+
         jumptoEnd.append(ret.CompiledProgramLineCount());
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
-        ret.UpdateICMoldItem(beginToFix, jumptoEnd);
+        ret.UpdateICMoldItem(beginToFix - 1, jumptoEnd);
         ret.AddICMoldItem(programEndLine, endProgramItem);
         ICMoldItem toFixLineItem;
         int toFixLineEnd = ret.CompiledProgramLineCount();
@@ -656,7 +654,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             toFixLineItem = ret.GetICMoldItem(i);
             if(toFixLineItem.at(0) == F_CMD_PROGRAM_CALL0)
             {
-                toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(i));
+                toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(1));
                 ret.UpdateICMoldItem(i, toFixLineItem);
             }
         }

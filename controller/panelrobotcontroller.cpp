@@ -236,6 +236,11 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 
 }
 
+void PanelRobotController::sendKnobCommandToHost(int knob)
+{
+    modifyConfigValue(ICAddr_System_Retain_0, knob);
+}
+
 quint32 PanelRobotController::getConfigValue(const QString &addr) const
 {
     ICAddrWrapperCPTR configWrapper = ICAddrWrapper::AddrStringToAddr(addr);

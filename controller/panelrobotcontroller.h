@@ -225,6 +225,7 @@ public:
         return oStatus & (1 << index);
     }
     Q_INVOKABLE void sendKeyCommandToHost(int key);
+    Q_INVOKABLE void sendKnobCommandToHost(int knob);
     Q_INVOKABLE quint32 getConfigValue(const QString& addr) const;
     Q_INVOKABLE QString getConfigValueText(const QString& addr) const;
     Q_INVOKABLE double getRealConfigValue(const QString& addr) const

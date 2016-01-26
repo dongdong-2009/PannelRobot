@@ -16,6 +16,7 @@ Rectangle {
     property bool hasInit: false
     property int currentEditingProgram: 0
     property int currentEditingModule: 0
+    property bool hasModify: false
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
             actionEditorContainer.showMenu();
@@ -54,7 +55,7 @@ Rectangle {
 
             model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
         }
-
+        hasModify = true;
         repaintProgramItem(model)
         //        var msg = {"programModel":model}
         //        repaintThread.sendMessage(msg);
@@ -81,6 +82,7 @@ Rectangle {
         model.remove(cI);
         PData.counterLinesInfo.syncLines(cPI, oCI, -1);
         PData.stackLinesInfo.syncLines(cPI, oCI, -1);
+        hasModify = true;
         repaintProgramItem(model);
     }
 
@@ -89,6 +91,7 @@ Rectangle {
         if(cI < 1)return;
         var model = currentModel();
         if(cI >= model.count - 1) return;
+        hasModify = true;
         var cIAction = model.get(cI).mI_ActionObject;
         var cIPAction = model.get(cI - 1).mI_ActionObject;
         var cPI = currentProgramIndex();
@@ -126,6 +129,7 @@ Rectangle {
         if(cI < 0)return;
         var model = currentModel();
         if(cI >= model.count - 2) return;
+        hasModify = true;
         var cIAction = currentModelData().mI_ActionObject;
         var cINAction = model.get(cI + 1).mI_ActionObject;
         var cPI = currentProgramIndex();
@@ -171,11 +175,9 @@ Rectangle {
                     panelRobotController.saveMainProgram(modelToProgram(0));
                 else
                     panelRobotController.saveSubProgram(modelToProgram(editing.currentIndex));
-
-
-
             }
         }
+        hasModify = true;
     }
 
     function modelToProgramHelper(which){
@@ -224,7 +226,7 @@ Rectangle {
         //        collectSpecialLines(editing.currentIndex);
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
-
+        hasModify = false;
     }
 
     function onSaveTriggered(){
@@ -304,7 +306,8 @@ Rectangle {
         newModuleEdit.visible = !isAuto;
         newModuleBtn.visible = !isAuto;
         delModuleBtn.visible = !isAuto && (moduleSel.currentIndex != 0);
-        onSaveTriggered();
+        if(hasModify)
+            onSaveTriggered();
     }
 
     function onStackUpdated(stackID){
@@ -1286,8 +1289,10 @@ Rectangle {
     onVisibleChanged: {
         actionEditorFrame.visible = false;
         programListView.currentIndex = -1;
-        if(!visible)
-            onSaveTriggered();
+        if(!visible){
+            if(hasModify)
+                onSaveTriggered();
+        }
         //        programListView.contentY = 0;
     }
 

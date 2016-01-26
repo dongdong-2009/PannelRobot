@@ -95,6 +95,8 @@ public:
 
     bool IsModuleUsed(int id) { return usedModules_.contains(id);}
 
+    bool HasCalledModule() { return !usedModules_.isEmpty();}
+
     void MapFlagToStep(int flag, int step)
     {
         flagsMap_.insert(flag, step);

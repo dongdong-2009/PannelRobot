@@ -89,7 +89,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     ICLineEdit{
-//                        isNumberOnly:  false
+                        isNumberOnly:  false
 //                        inputWidth: headerName.width
                         inputWidth: headerName.width
                         anchors.verticalCenter: parent.verticalCenter

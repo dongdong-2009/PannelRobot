@@ -629,9 +629,9 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
         ret.AddICMoldItem(programEndLine++, jumptoEnd);
         const int beginToFix = ret.CompiledProgramLineCount();
-        while(fp != functions.end())
+        if(ret.HasCalledModule())
         {
-            if(ret.IsModuleUsed(fp.key()))
+            while(fp != functions.end())
             {
                 CompileInfo f = fp.value();
                 int cflc = f.CompiledProgramLineCount();
@@ -641,8 +641,9 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
                     ++programEndLine;
                 }
+
+                ++fp;
             }
-            ++fp;
         }
         jumptoEnd.append(ret.CompiledProgramLineCount());
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));

@@ -2150,7 +2150,8 @@ please chose!</source>
     </message>
     <message>
         <source>Menu</source>
-        <translation>动作菜单</translation>
+        <translation>动作
+菜单</translation>
     </message>
     <message>
         <source>Line</source>

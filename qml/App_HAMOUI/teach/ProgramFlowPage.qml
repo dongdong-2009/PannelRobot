@@ -290,10 +290,17 @@ Rectangle {
         return info;
     }
 
+    function setModuleEnabled(en){
+        newModuleEdit.visible = en;
+        newModuleBtn.visible = en;
+        delModuleBtn.visible = en && (moduleSel.currentIndex != 0);
+    }
+
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
         //        if(!ShareData.UserInfo.currentHasMoldPerm())
         programListView.currentIndex = -1;
+        setModuleEnabled(!PData.isReadOnly)
     }
 
     function onKnobChanged(knobStatus){
@@ -303,9 +310,7 @@ Rectangle {
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = false;
         speedDispalyContainer.visible = isAuto;
-        newModuleEdit.visible = !isAuto;
-        newModuleBtn.visible = !isAuto;
-        delModuleBtn.visible = !isAuto && (moduleSel.currentIndex != 0);
+//        setModuleEnabled(!isAuto);
         if(hasModify)
             onSaveTriggered();
     }
@@ -424,6 +429,8 @@ Rectangle {
                             currentEditingProgram = editing.currentIndex;
                             currentEditingModule = 0;
                             delModuleBtn.visible = false;
+                            if(PData.programActionMenu != null)
+                                PData.programActionMenu.state = "";
                         }else{
                             updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
@@ -432,6 +439,8 @@ Rectangle {
                             currentEditingProgram = PData.kFunctionProgramIndex
                             currentEditingModule = moduleSel.currentIndex;
                             delModuleBtn.visible = newModuleBtn.visible;
+                            PData.programActionMenu.state = "moduleEditMode";
+                            actionMenuBtn.clicked();
                         }
                     }
                 }
@@ -913,12 +922,13 @@ Rectangle {
 
             ICButton{
                 id:actionMenuBtn
-                x:insertBtn.x
+                x:insertBtn.x + insertBtn.width / 2
                 y: 176
-                width: insertBtn.width
+                width: insertBtn.width / 2
                 height: insertBtn.height
                 text: qsTr("Menu")
                 bgColor: "lime"
+                font.pixelSize: 12
             }
             Rectangle{
                 id:splitLine
@@ -949,6 +959,7 @@ Rectangle {
             Component.onCompleted: {
                 var editor = Qt.createComponent('ProgramActionMenu.qml');
                 var actionMenuObject = editor.createObject(actionEditorContainer);
+                PData.programActionMenu = actionMenuObject;
                 editor = Qt.createComponent('AxisActionEditor.qml');
                 var axisEditorObject = editor.createObject(actionEditorContainer);
                 editor = Qt.createComponent('OutputActionEditor.qml')
@@ -1320,6 +1331,8 @@ Rectangle {
 
         ShareData.UserInfo.registUserChangeEvent(programFlowPageInstance);
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(programFlowPageInstance);
+
+        setModuleEnabled(false);
 
         hasInit = true;
     }

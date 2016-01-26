@@ -96,7 +96,7 @@ Item {
     onPointsChanged: {
         pointViewModel.clear();
         for(var i = 0; i < points.length; ++i){
-            pointViewModel.append(createPoint(points[i].pointName, points[i].pos));
+            pointViewModel.append(points[i]);
         }
     }
 
@@ -163,6 +163,7 @@ Item {
                 configName: AxisDefine.axisInfos[0].name
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
+                configNameWidth: PData.axisNameWidth
                 isEditable: false
                 visible: false
             }
@@ -171,6 +172,7 @@ Item {
                 configName: AxisDefine.axisInfos[1].name
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
+                configNameWidth: PData.axisNameWidth
                 isEditable: false
                 visible: false
 
@@ -181,6 +183,7 @@ Item {
                 configName: AxisDefine.axisInfos[2].name
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
+                configNameWidth: PData.axisNameWidth
                 isEditable: false
                 visible: false
 
@@ -190,6 +193,7 @@ Item {
                 configName: AxisDefine.axisInfos[3].name
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
+                configNameWidth: PData.axisNameWidth
                 isEditable: false
                 visible: false
 
@@ -200,6 +204,7 @@ Item {
                 configName: AxisDefine.axisInfos[4].name
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
+                configNameWidth: PData.axisNameWidth
                 isEditable: false
                 visible: false
 
@@ -210,6 +215,7 @@ Item {
                 configName: AxisDefine.axisInfos[5].name
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: PData.axisEditWidth
+                configNameWidth: PData.axisNameWidth
                 isEditable: false
                 visible: false
 

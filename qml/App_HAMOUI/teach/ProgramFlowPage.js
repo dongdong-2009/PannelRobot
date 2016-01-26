@@ -81,4 +81,5 @@ var linked3Function = null;
 
 var kFunctionProgramIndex = 9;
 
+var programActionMenu = null;
 var moduleActionEditor;

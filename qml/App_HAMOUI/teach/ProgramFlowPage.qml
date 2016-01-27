@@ -196,6 +196,7 @@ Rectangle {
 
     function saveProgram(which){
         if(!hasInit) return;
+        if(!hasModify) return;
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
             var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
@@ -798,16 +799,15 @@ Rectangle {
                                 }
                             }
 
+                            if(!isFollow.isChecked)
+                                return
+
                             var cStep = currentModelStep();
-                            //                            var cStep = Utils.getRandomNum(0, 10);
                             if(cStep < 0 || cStep >= currentModel().count){
                                 return;
                             }
-                            //                            console.log("CStep:", cStep, currentModel().count);
-                            //                            var cStep = Utils.getRandomNum(0, 10);
                             var lastRunning = PData.lastRunning;
 
-                            //                            console.log(cStep, lastRunning.model, lastRunning.step, lastRunning.items)
                             var cpI = currentProgramIndex();
                             if(cpI !== lastRunning.model ||
                                     cStep !== lastRunning.step)
@@ -830,8 +830,7 @@ Rectangle {
                                 cRunning.items = uiRunningSteps;
                                 //                                console.log(cRunning.items)
                                 PData.lastRunning = cRunning;
-                                if(isFollow.isChecked)
-                                    programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
+                                programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
 
 
                             }

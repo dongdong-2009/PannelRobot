@@ -647,8 +647,9 @@ static QStringList stepAddrs = QStringList()<<"c_ro_0_16_0_933"
 QString PanelRobotController::hostStepToUILines(int which, int step) const
 {
     if(which >= stepAddrs.size()) return "";
-    QList<int> steps = ICRobotMold::CurrentMold()->RunningStepToProgramLine(which,
-                                                                            step);
+    QPair<int, QList<int> > stepInfo = ICRobotMold::CurrentMold()->RunningStepToProgramLine(which,
+                                                                                            step);
+    QList<int> steps = stepInfo.second;
 
     if(steps.isEmpty()) return "";
     QString ret = "[";
@@ -658,7 +659,7 @@ QString PanelRobotController::hostStepToUILines(int which, int step) const
     }
     ret.chop(1);
     ret += "]";
-    return ret;
+    return QString("{\"moduleID\":%1, \"steps\":%2}").arg(stepInfo.first).arg(ret);
 }
 
 QString PanelRobotController::currentRunningActionInfo(int which) const

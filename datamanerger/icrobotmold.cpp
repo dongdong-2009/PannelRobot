@@ -636,10 +636,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         {
             CompileInfo f = fp.value();
             int cflc = f.CompiledProgramLineCount();
-            ret.MapModuleIDToEntry(fp.key(), ret.CompiledProgramLineCount());
+            const int mID = fp.key();
+            ret.MapModuleIDToEntry(mID, ret.CompiledProgramLineCount());
             for(int i = 0; i < cflc; ++i)
             {
                 ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
+                ret.MapModuleLineToModuleID(programEndLine, mID);
                 ++programEndLine;
             }
 
@@ -1041,12 +1043,19 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     return RecordDataObject(name, dt);
 }
 #endif
-QList<int> ICRobotMold::RunningStepToProgramLine(int which, int step)
+QPair<int, QList<int> > ICRobotMold::RunningStepToProgramLine(int which, int step)
 {
-    QList<int> ret;
+    QPair<int, QList<int> > ret;
     if(which >= programs_.size())
         return ret;
-    return programs_.at(which).RealStepToUIStep(step);
+    CompileInfo pI = programs_.at(which);
+    int mID = pI.ModuleIDFromLine(step);
+    QList<int> steps;
+    if(mID < 0)
+        steps = pI.RealStepToUIStep(step);
+    else
+        steps = compiledFunctions_.value(mID).RealStepToUIStep(step);
+    return qMakePair<int, QList<int> > (mID, steps);
 }
 
 ICMoldItem ICRobotMold::SingleLineCompile(int which, int step, const QString &lineContent, QPair<int, int> &hostStep)

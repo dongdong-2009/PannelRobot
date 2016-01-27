@@ -89,6 +89,16 @@ public:
         modulesMap_.insert(id, step);
     }
 
+    void MapModuleLineToModuleID(int line, int id)
+    {
+        moduleLineToModuleIDMap_.insert(line, id);
+    }
+
+    int ModuleIDFromLine(int line)
+    {
+        return moduleLineToModuleIDMap_.value(line, -1);
+    }
+
     int ModuleEntry(int id) { return modulesMap_.value(id, id);}
 
     void AddUsedModule(int id) { usedModules_.append(id);}
@@ -172,6 +182,7 @@ private:
     QMap<int, int> stepMap_;
     QMap<int, int> flagsMap_;
     QMap<int, int> modulesMap_;
+    QMap<int, int> moduleLineToModuleIDMap_;
     QList<int> usedModules_;
 
     QMap<int, QList<int> > realStepToUIStepMap_;
@@ -341,7 +352,7 @@ public:
         return StackInfo();
     }
 
-    QList<int> RunningStepToProgramLine(int which, int step);
+    QPair<int, QList<int> > RunningStepToProgramLine(int which, int step);
 
 
     ICMoldItem SingleLineCompile(int which, int step, const QString& lineContent, QPair<int, int> &hostStep);

@@ -27,7 +27,7 @@ function ICOperationLog(){
         opItem = appendOpToLog(opItem);
         this.model.insert(0, opItem);
         if(this.model.count > OPERATION_LOG_TB_INFO.max){
-            this.model.remove(operationLogModel.count - 1);
+            this.model.remove(this.model.count - 1);
         }
     }
 

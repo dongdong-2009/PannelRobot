@@ -651,16 +651,18 @@ QString PanelRobotController::hostStepToUILines(int which, int step) const
                                                                                             step);
     QList<int> steps = stepInfo.second;
 
-    if(steps.isEmpty()) return "";
+//    if(steps.isEmpty()) return "";
     QString ret = "[";
     for(int i = 0; i < steps.size(); ++i)
     {
         ret += QString("%1,").arg(steps.at(i));
     }
-    ret.chop(1);
+
+    if(!steps.isEmpty())ret.chop(1);
     ret += "]";
-    return QString("{\"moduleID\":%1, \"steps\":%2, \"hostStep\":%3, \"programIndex\":%4}")
+    ret = QString("{\"moduleID\":%1, \"steps\":\"%2\", \"hostStep\":%3, \"programIndex\":%4}")
             .arg(stepInfo.first).arg(ret).arg(step).arg(which);
+    return ret;
 }
 
 QString PanelRobotController::currentRunningActionInfo(int which) const

@@ -287,7 +287,9 @@ Rectangle {
 
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
+        console.log(ret);
         var info = JSON.parse(ret);
+        info.steps = JSON.parse(info.steps);
         return info;
     }
 
@@ -429,7 +431,8 @@ Rectangle {
                             var mItems = moduleSel.items;
                             var toFind = "[" + moduleID +"]";
                             for(var i = 0; i < mItems.length; ++i){
-                                if(mItems[i].indexOf(toFind)){
+                                var index = mItems[i].indexOf(toFind);
+                                if(index >= 0){
                                     currentIndex = i;
                                     break;
                                 }
@@ -834,8 +837,9 @@ Rectangle {
                                     lastModel.set(lastRunning.items[i], setStopObject);
                                 }
 
-                                var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep};
-                                moduleSel.setCurrentModule(uiRunningSteps.moduleID);
+                                var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep, "moduleID":uiRunningSteps.moduleID};
+                                if(uiRunningSteps.moduleID != lastRunning.moduleID)
+                                    moduleSel.setCurrentModule(uiRunningSteps.moduleID);
                                 var cModel = currentModel();
                                 var setRunningObject = {"mI_IsActionRunning":true};
                                 var uiSteps = uiRunningSteps.steps;
@@ -845,7 +849,7 @@ Rectangle {
                                 cRunning.items = uiSteps;
                                 //                                console.log(cRunning.items)
                                 PData.lastRunning = cRunning;
-                                programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
+                                programListView.positionViewAtIndex(uiSteps[0], ListView.Center );
 
                             }
 

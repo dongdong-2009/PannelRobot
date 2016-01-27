@@ -1054,7 +1054,7 @@ QPair<int, QList<int> > ICRobotMold::RunningStepToProgramLine(int which, int ste
     if(mID < 0)
         steps = pI.RealStepToUIStep(step);
     else
-        steps = compiledFunctions_.value(mID).RealStepToUIStep(step);
+        steps = compiledFunctions_.value(mID).RealStepToUIStep(step - pI.ModuleEntry(mID));
     return qMakePair<int, QList<int> > (mID, steps);
 }
 

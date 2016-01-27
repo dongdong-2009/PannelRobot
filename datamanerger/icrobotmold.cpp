@@ -632,20 +632,37 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
 //        ret.AddICMoldItem(programEndLine - 1, jumptoEnd);
         const int beginToFix = ret.CompiledProgramLineCount();
-        int hostStepCount = ret.RealStepCount();
+        int fStep = ret.RealStepCount();    //
+        isSyncBegin = false;                //
+
         while(fp != functions.end())
         {
             CompileInfo f = fp.value();
             int cflc = f.CompiledProgramLineCount();
             const int mID = fp.key();
-            ret.MapModuleIDToEntry(mID, hostStepCount + 1);
+            ret.MapModuleIDToEntry(mID, ret.RealStepCount() + 1);
+            ICMoldItem item;
             for(int i = 0; i < cflc; ++i)
             {
-                ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
+                item = f.GetICMoldItem(i);
+                ret.AddICMoldItem(programEndLine, item);
                 ret.MapModuleLineToModuleID(programEndLine, mID);
+                if(item.at(0) == F_CMD_SYNC_START)
+                {
+                    isSyncBegin = true;
+                    continue;
+                }
+                else if(item.at(0) == F_CMD_SYNC_END)
+                {
+                    isSyncBegin = false;
+                    ++fStep;
+                    continue;
+                }
+                if(!isSyncBegin)
+                    ++fStep;
+                ret.MapStep(programEndLine, fStep);
                 ++programEndLine;
             }
-            hostStepCount += f.RealStepCount() + 1;
             ++fp;
         }
 
@@ -655,16 +672,18 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         ret.AddICMoldItem(programEndLine, endProgramItem);
         ICMoldItem toFixLineItem;
         int toFixLineEnd = ret.CompiledProgramLineCount();
+        int toFixUIStep;
         for(int i = beginToFix; i < toFixLineEnd; ++i)
         {
             toFixLineItem = ret.GetICMoldItem(i);
             if(toFixLineItem.at(0) == F_CMD_PROGRAM_CALL0)
             {
+                toFixUIStep = ret.UIStepFromCompiledLine(i);
                 toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(1));
-                toFixLineItem[2] = i + 1;
+                toFixLineItem[2] = ret.UIStepToRealStep(toFixUIStep).first + 1;
                 toFixLineItem.pop_back();
                 toFixLineItem.append(ICRobotMold::MoldItemCheckSum(toFixLineItem));
-                ret.UpdateICMoldItem(i, toFixLineItem);
+                ret.UpdateICMoldItem(toFixUIStep, toFixLineItem);
             }
         }
     }

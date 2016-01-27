@@ -444,7 +444,6 @@ function FunctionManager(){
     this.functions = [];
     this.init = function(functionsJSON){
         this.functions.length = 0;
-        console.log("Functions:", functionsJSON);
         if(functionsJSON.length == 0){
             return;
         }

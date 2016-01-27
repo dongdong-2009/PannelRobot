@@ -5,6 +5,7 @@ import "ICOperationLog.js" as ICOperationLog
 
 Rectangle {
     id:container
+    property int textOffset: 2
 
     color: "#d1d1d1"
 
@@ -31,6 +32,7 @@ Rectangle {
                 text: qsTr("Operation Time")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
             }
         }
         Rectangle{
@@ -43,6 +45,7 @@ Rectangle {
                 text: qsTr("User")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
 
             }
         }
@@ -56,7 +59,7 @@ Rectangle {
                 text: qsTr("Descr")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
-
+                x:textOffset
             }
         }
     }
@@ -83,6 +86,7 @@ Rectangle {
                     text: opTime
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
 
                 }
             }
@@ -95,6 +99,8 @@ Rectangle {
                     text: user
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
+
                 }
             }
             Rectangle{
@@ -106,6 +112,7 @@ Rectangle {
                     text:descr
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
 
                 }
             }

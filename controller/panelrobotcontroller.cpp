@@ -659,7 +659,8 @@ QString PanelRobotController::hostStepToUILines(int which, int step) const
     }
     ret.chop(1);
     ret += "]";
-    return QString("{\"moduleID\":%1, \"steps\":%2}").arg(stepInfo.first).arg(ret);
+    return QString("{\"moduleID\":%1, \"steps\":%2, \"hostStep\":%3, \"programIndex\":%4}")
+            .arg(stepInfo.first).arg(ret).arg(step).arg(which);
 }
 
 QString PanelRobotController::currentRunningActionInfo(int which) const

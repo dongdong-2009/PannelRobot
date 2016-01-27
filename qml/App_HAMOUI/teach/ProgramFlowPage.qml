@@ -205,7 +205,7 @@ Rectangle {
             var fJSON = Teach.functionManager.toJSON();
             var eIJSON = panelRobotController.saveFunctions(fJSON);
             errInfo = JSON.parse(eIJSON)[fun.id];
-//            console.log(eIJSON);
+            //            console.log(eIJSON);
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -232,34 +232,34 @@ Rectangle {
 
     function onSaveTriggered(){
         saveProgram(currentProgramIndex());
-//        var errInfo;
-//        if(currentProgramIndex() == PData.kFunctionProgramIndex){
-//            var fun = Teach.functionManager.getFunctionByName(moduleSel.currentText());
-//            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-//            var fJSON = Teach.functionManager.toJSON();
-//            console.log(fJSON);
-//            errInfo = JSON.parse(panelRobotController.saveFunctions(fJSON));
-//        }else if(editing.currentIndex == 0){
-//            errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
-//            if(errInfo.length === 0){
-//                panelRobotController.sendMainProgramToHost();
-//            }
-//        }else{
-//            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
-//            if(errInfo.length === 0){
-//                panelRobotController.sendSubProgramToHost(editing.currentIndex);
-//            }
-//        }
-//        if(errInfo.length !== 0){
-//            var toShow = "";
-//            for(var i = 0; i < errInfo.length; ++i){
-//                toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
-//            }
-//            tipBox.show(toShow);
-//        }
-//        //        collectSpecialLines(editing.currentIndex);
-//        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
-//        ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
+        //        var errInfo;
+        //        if(currentProgramIndex() == PData.kFunctionProgramIndex){
+        //            var fun = Teach.functionManager.getFunctionByName(moduleSel.currentText());
+        //            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
+        //            var fJSON = Teach.functionManager.toJSON();
+        //            console.log(fJSON);
+        //            errInfo = JSON.parse(panelRobotController.saveFunctions(fJSON));
+        //        }else if(editing.currentIndex == 0){
+        //            errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
+        //            if(errInfo.length === 0){
+        //                panelRobotController.sendMainProgramToHost();
+        //            }
+        //        }else{
+        //            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
+        //            if(errInfo.length === 0){
+        //                panelRobotController.sendSubProgramToHost(editing.currentIndex);
+        //            }
+        //        }
+        //        if(errInfo.length !== 0){
+        //            var toShow = "";
+        //            for(var i = 0; i < errInfo.length; ++i){
+        //                toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
+        //            }
+        //            tipBox.show(toShow);
+        //        }
+        //        //        collectSpecialLines(editing.currentIndex);
+        //        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
+        //        ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
     }
 
     //    function saveProgram(which){
@@ -311,7 +311,7 @@ Rectangle {
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = false;
         speedDispalyContainer.visible = isAuto;
-//        setModuleEnabled(!isAuto);
+        //        setModuleEnabled(!isAuto);
         if(hasModify)
             onSaveTriggered();
     }
@@ -421,6 +421,22 @@ Rectangle {
                     width: 120
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+
+                    function setCurrentModule(moduleID){
+                        if(moduleID < 0)
+                            currentIndex = 0;
+                        else{
+                            var mItems = moduleSel.items;
+                            var toFind = "[" + moduleID +"]";
+                            for(var i = 0; i < mItems.length; ++i){
+                                if(mItems[i].indexOf(toFind)){
+                                    currentIndex = i;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                     onCurrentIndexChanged: {
                         saveProgram(currentEditingProgram);
                         if(currentIndex < 0) return;
@@ -466,7 +482,7 @@ Rectangle {
                         collectSpecialLines(PData.programs.length - 1);
                         programListView.currentIndex = -1;
                         programListView.model = functionsModel;
-//                        panelRobotController.saveFunctions(Teach.functionManager.toJSON());
+                        //                        panelRobotController.saveFunctions(Teach.functionManager.toJSON());
 
                     }
                 }
@@ -802,15 +818,14 @@ Rectangle {
                             if(!isFollow.isChecked)
                                 return
 
-                            var cStep = currentModelStep();
-                            if(cStep < 0 || cStep >= currentModel().count){
-                                return;
-                            }
+                            var uiRunningSteps = currentModelRunningActionInfo();
+
                             var lastRunning = PData.lastRunning;
 
-                            var cpI = currentProgramIndex();
-                            if(cpI !== lastRunning.model ||
-                                    cStep !== lastRunning.step)
+                            //                            var cpI = currentProgramIndex();
+                            var programIndex = editing.currentIndex;
+                            if(programIndex !== lastRunning.model ||
+                                    uiRunningSteps.hostStep !== lastRunning.step)
                             {
                                 var i;
                                 var lastModel = PData.programs[lastRunning.model];
@@ -819,19 +834,18 @@ Rectangle {
                                     lastModel.set(lastRunning.items[i], setStopObject);
                                 }
 
-                                var cRunning = {"model":cpI,"step":cStep};
+                                var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep};
+                                moduleSel.setCurrentModule(uiRunningSteps.moduleID);
                                 var cModel = currentModel();
-                                var uiRunningSteps = currentModelRunningActionInfo();
-                                //                                var uiRunningSteps = panelRobotController.hostStepToUILines(editing.currentIndex, cStep);
                                 var setRunningObject = {"mI_IsActionRunning":true};
-                                for(i = 0; i < uiRunningSteps.length; ++i){
-                                    cModel.set(uiRunningSteps[i], setRunningObject);
+                                var uiSteps = uiRunningSteps.steps;
+                                for(i = 0; i < uiSteps.length; ++i){
+                                    cModel.set(uiSteps[i], setRunningObject);
                                 }
-                                cRunning.items = uiRunningSteps;
+                                cRunning.items = uiSteps;
                                 //                                console.log(cRunning.items)
                                 PData.lastRunning = cRunning;
                                 programListView.positionViewAtIndex(uiRunningSteps[0], ListView.Center );
-
 
                             }
 

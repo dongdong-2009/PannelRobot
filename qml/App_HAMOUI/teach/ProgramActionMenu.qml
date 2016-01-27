@@ -21,6 +21,16 @@ Rectangle {
     signal moduleMenuTriggered()
     signal searchMenuTriggered()
 
+    states: [
+        State {
+            name: "moduleEditMode"
+            PropertyChanges {
+                target: condition
+                enabled:false
+            }
+        }
+    ]
+
 
 //    function axisMenuTrigger(){axisMenuTriggered();}
 //    function pathMenuTrigger() {pathMenuTriggered();}

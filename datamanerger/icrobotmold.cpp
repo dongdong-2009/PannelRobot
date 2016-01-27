@@ -632,19 +632,20 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
 //        ret.AddICMoldItem(programEndLine - 1, jumptoEnd);
         const int beginToFix = ret.CompiledProgramLineCount();
+        int hostStepCount = ret.RealStepCount();
         while(fp != functions.end())
         {
             CompileInfo f = fp.value();
             int cflc = f.CompiledProgramLineCount();
             const int mID = fp.key();
-            ret.MapModuleIDToEntry(mID, ret.RealStepCount() + 1);
+            ret.MapModuleIDToEntry(mID, hostStepCount + 1);
             for(int i = 0; i < cflc; ++i)
             {
                 ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
                 ret.MapModuleLineToModuleID(programEndLine, mID);
                 ++programEndLine;
             }
-
+            hostStepCount += f.RealStepCount();
             ++fp;
         }
 

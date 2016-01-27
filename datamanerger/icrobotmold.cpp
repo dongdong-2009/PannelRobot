@@ -1400,5 +1400,12 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions)
     if(isOk)
         ICDALHelper::SaveFunctions(moldName_, functions);
 
+    for(int i = 0 ; i < programs_.size(); ++i)
+    {
+        if(programs_.at(i).HasCalledModule())
+        {
+            SaveMold(i, programsCode_.at(i));
+        }
+    }
     return ret;
 }

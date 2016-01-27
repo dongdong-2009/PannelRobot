@@ -94,18 +94,18 @@ public:
         moduleLineToModuleIDMap_.insert(line, id);
     }
 
-    int ModuleIDFromLine(int line)
+    int ModuleIDFromLine(int line) const
     {
         return moduleLineToModuleIDMap_.value(line, -1);
     }
 
-    int ModuleEntry(int id) { return modulesMap_.value(id, id);}
+    int ModuleEntry(int id) const { return modulesMap_.value(id, id);}
 
     void AddUsedModule(int id) { usedModules_.append(id);}
 
-    bool IsModuleUsed(int id) { return usedModules_.contains(id);}
+    bool IsModuleUsed(int id) const { return usedModules_.contains(id);}
 
-    bool HasCalledModule() { return !usedModules_.isEmpty();}
+    bool HasCalledModule() const { return !usedModules_.isEmpty();}
 
     void MapFlagToStep(int flag, int step)
     {

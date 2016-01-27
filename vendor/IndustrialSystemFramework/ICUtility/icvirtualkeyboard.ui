@@ -234,6 +234,21 @@ QToolButton:pressed, QPushButton:pressed{
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#commandBS{
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 6px;
+     border-color: gray;
+	background-color: rgb(255, 255, 0);
+}
+
+#commandBS:pressed{
+     border-style: inset;
+     background-color: rgba(62, 113, 255, 255);
+     color:white;
+}</string>
+     </property>
      <property name="text">
       <string notr="true">BS</string>
      </property>
@@ -282,6 +297,21 @@ QToolButton:pressed, QPushButton:pressed{
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#commandEnt{
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 6px;
+     border-color: gray;
+     background-color: rgb(85, 255, 0);
+}
+
+#commandEnt:pressed{
+     border-style: inset;
+     background-color: rgba(62, 113, 255, 255);
+     color:white;
+}</string>
+     </property>
      <property name="text">
       <string notr="true">Ent</string>
      </property>
@@ -329,6 +359,22 @@ QToolButton:pressed, QPushButton:pressed{
      </property>
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#commandCE{
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 6px;
+     border-color: gray;
+	background-color: rgb(255, 0, 0);
+	color: rgb(255, 255, 255);
+}
+
+#commandCE:pressed{
+     border-style: inset;
+     background-color: rgba(62, 113, 255, 255);
+     color:white;
+}</string>
      </property>
      <property name="text">
       <string notr="true">CE</string>
@@ -484,9 +530,9 @@ QToolButton:pressed, QPushButton:pressed{
     <widget class="QPushButton" name="btn_ent">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>620</x>
        <y>270</y>
-       <width>241</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -494,7 +540,7 @@ QToolButton:pressed, QPushButton:pressed{
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton{
+      <string notr="true">#btn_ent{
      border-style: outset;
      border-width: 2px;
      border-radius: 6px;
@@ -502,7 +548,7 @@ QToolButton:pressed, QPushButton:pressed{
      background-color: rgb(85, 255, 0);
 }
 
-QPushButton:pressed{
+#btn_ent:pressed{
      border-style: inset;
      background-color: rgba(62, 113, 255, 255);
      color:white;
@@ -802,15 +848,15 @@ QPushButton:pressed{
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton{
+      <string notr="true">#btn_sw{
      border-style: outset;
      border-width: 2px;
      border-radius: 6px;
      border-color: gray;
-	background-color: rgb(255, 255, 0);
+	background-color: rgb(85, 255, 255);
 }
 
-QPushButton:pressed{
+#btn_sw:pressed{
      border-style: inset;
      background-color: rgba(62, 113, 255, 255);
      color:white;
@@ -1008,6 +1054,21 @@ QPushButton:pressed{
      </property>
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#btn_bs{
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 6px;
+     border-color: gray;
+	background-color: rgb(255, 255, 0);
+}
+
+#btn_bs:pressed{
+     border-style: inset;
+     background-color: rgba(62, 113, 255, 255);
+     color:white;
+}</string>
      </property>
      <property name="text">
       <string>BS</string>
@@ -1294,6 +1355,22 @@ _</string>
        <string notr="true"/>
       </property>
      </widget>
+    </widget>
+    <widget class="QPushButton" name="btn_cancel">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>270</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
     </widget>
    </widget>
   </widget>

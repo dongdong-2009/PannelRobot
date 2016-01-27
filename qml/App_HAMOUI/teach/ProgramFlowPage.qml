@@ -420,7 +420,7 @@ Rectangle {
                 ICComboBox{
                     id: moduleSel
                     z:editing.z
-                    width: 120
+                    width: 180
                     items: [qsTr("Main Module")]
                     currentIndex: 0
 

@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QSqlQuery>
 #include <QKeyEvent>
+#include <QCloseEvent>
 #include <qmath.h>
 //#include <QRegExp>
 
@@ -77,6 +78,11 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
     }
 }
 
+void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
+{
+    event->accept();
+    on_btn_cancel_clicked();
+}
  void ICVirtualKeyboard::saveFocusWidget(QWidget * /*oldFocus*/, QWidget *newFocus)
  {
      if (newFocus != 0 && !this->isAncestorOf(newFocus)) {
@@ -456,3 +462,10 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
          this->move(10, 50);
      this->show();
  }
+
+void ICVirtualKeyboard::on_btn_cancel_clicked()
+{
+    preeditString_.clear();
+    emit reject();
+    this->hide();
+}

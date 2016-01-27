@@ -34,6 +34,7 @@ signals:
 
 protected:
     void changeEvent(QEvent *e);
+    void closeEvent(QCloseEvent * event);
 
 private slots:
     void saveFocusWidget(QWidget *oldFocus, QWidget *newFocus);
@@ -55,6 +56,8 @@ private slots:
     void on_upGroup_clicked();
 
     void OnCnButtonClicked();
+
+    void on_btn_cancel_clicked();
 
 private:
     bool IsChEn_() const;

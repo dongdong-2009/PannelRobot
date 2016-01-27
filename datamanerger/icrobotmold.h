@@ -166,6 +166,13 @@ public:
         return ret;
     }
 
+    int RealStepCount() const
+    {
+        QList<int> rs = realStepToUIStepMap_.keys();
+        qSort(rs);
+        return rs.last();
+    }
+
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
 

@@ -637,7 +637,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             CompileInfo f = fp.value();
             int cflc = f.CompiledProgramLineCount();
             const int mID = fp.key();
-            ret.MapModuleIDToEntry(mID, ret.CompiledProgramLineCount());
+            ret.MapModuleIDToEntry(mID, ret.RealStepCount() + 1);
             for(int i = 0; i < cflc; ++i)
             {
                 ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));

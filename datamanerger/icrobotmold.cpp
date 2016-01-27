@@ -645,7 +645,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 ret.MapModuleLineToModuleID(programEndLine, mID);
                 ++programEndLine;
             }
-            hostStepCount += f.RealStepCount();
+            hostStepCount += f.RealStepCount() + 1;
             ++fp;
         }
 

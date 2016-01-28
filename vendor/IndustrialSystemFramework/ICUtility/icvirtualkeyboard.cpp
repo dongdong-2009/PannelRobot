@@ -96,7 +96,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
  {
      QToolButton* b = qobject_cast<QToolButton*>(w);
      QString curText = b->text();
-     if(curText == "Ent"){
+     if(curText == tr("Ent")){
          QString toCommit = QString("%1").arg(preeditString_.toDouble(),
                                               0,
                                               'f',
@@ -107,7 +107,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
          this->hide();
          return;
      }
-     if(curText == "Cancel")
+     if(curText == tr("Cancel"))
      {
          preeditString_.clear();
 //         emit characterGenerated(preeditString_);
@@ -115,14 +115,14 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
          this->hide();
          return;
      }
-     if(curText == "CE")
+     if(curText == tr("CE"))
      {
          preeditString_.clear();
          ui->inputEdit->setText(preeditString_);
          emit characterGenerated(preeditString_);
          return;
      }
-     if(curText == "BS")
+     if(curText == tr("BS"))
      {
          preeditString_.chop(1);
          ui->inputEdit->setText(preeditString_);
@@ -291,7 +291,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
 
  bool ICVirtualKeyboard::IsChEn_() const
  {
-     return ui->btn_sw->text() == "CH";
+     return ui->btn_sw->text() == tr("CH");
  }
 
  void ICVirtualKeyboard::ShowMaching_(const QStringList &texts)
@@ -354,12 +354,12 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
  {
      if(IsChEn_())
      {
-         ui->btn_sw->setText("EN");
+         ui->btn_sw->setText(tr("EN"));
          ui->matchContainer->hide();
      }
      else
      {
-         ui->btn_sw->setText("CH");
+         ui->btn_sw->setText(tr("CH"));
          ui->matchContainer->show();
      }
  }

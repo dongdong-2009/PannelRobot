@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>PanelRobot_zh_CN.qm</file>
+        <file>PanelRobot_en_US.qm</file>
+    </qresource>
+</RCC>

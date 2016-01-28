@@ -863,7 +863,7 @@ QToolButton:pressed, QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string notr="true">EN</string>
+      <string>EN</string>
      </property>
     </widget>
     <widget class="QToolButton" name="btn_9">

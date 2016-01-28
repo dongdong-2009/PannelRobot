@@ -162,6 +162,7 @@ void PanelRobotController::Init()
 #endif
 //    InitMainView();
     qApp->installTranslator(&translator);
+    qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
     emit LoadMessage("Ui inited.");
 //        LoadTranslator_("HAMOUI_zh_CN.qm");
@@ -462,6 +463,11 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
         return false;
     }
     bool ret = translator.load(qml.filePath(name));
+    QString language = getCustomSettings("Language", "CN");
+    if(language == "CN")
+        panelRoboTranslator_.load(":/PanelRobot_zh_CN.qm");
+    else
+        panelRoboTranslator_.load(":/PanelRobot_en_US.qm");
     InitMainView();
     return ret;
 }

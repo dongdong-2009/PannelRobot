@@ -21,7 +21,8 @@ Item {
         "Y020",
     ]
 
-    property  variant euYs : ["EuY010", "EuY011", "EuY012"]
+    property  variant euYs : ["EuY010", "EuY011", "EuY012", "EuY013",
+    "EuY014", "EuY015", "EuY016", "EuY017", "EuY020", "EuY021", "EuY022", "EuY023"]
     property variant mYs: ["INY010"]
 
     property variant xs: [

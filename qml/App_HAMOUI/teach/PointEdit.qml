@@ -527,6 +527,7 @@ Item {
                     width: pointView.width
                     height: 32
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 12
                 }
 
             }

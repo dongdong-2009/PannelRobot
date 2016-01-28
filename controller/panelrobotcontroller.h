@@ -570,6 +570,7 @@ private:
     QScriptEngine engine_;
     QScriptValue configRangeGetter_;
     QTranslator translator;
+    QTranslator panelRoboTranslator_;
     QTimer keyCheckTimer_;
     QSettings customSettings_;
     QString valveDefineJSON_;

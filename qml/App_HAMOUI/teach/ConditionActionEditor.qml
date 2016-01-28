@@ -373,7 +373,6 @@ Item {
 
         var xDefines = xs;
         var xDefine;
-        var i;
         for(i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));

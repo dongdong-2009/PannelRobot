@@ -11,8 +11,9 @@ Item {
         moduleSel.items = moduleNames;
     }
     function setFlagSelections(flags){
-        flags.splice(0, 0, qsTr("Next Line"));
-        callBackSel.items = flags;
+        var tmp = Utils.cloneObject(flags);
+        tmp.splice(0, 0, qsTr("Next Line"));
+        callBackSel.items = tmp;
     }
 
     function createActionObjects(){

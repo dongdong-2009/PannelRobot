@@ -17,7 +17,9 @@ Item {
         "X017",
         "X020",
     ]
-    property  variant euXs : ["EuX010", "EuX011"]
+    property  variant euXs : ["EuX010", "EuX011", "EuX012", "EuX013", "EuX014",
+    "EuX015", "EuX016", "EuX017", "EuX020", "EuX021", "EuX022", "EuX023", "EuX024",
+    "EuX025", "EuX026", "EuX027"]
     property variant mXs: ["INX010"]
 
 

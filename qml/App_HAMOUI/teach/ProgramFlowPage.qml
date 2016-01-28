@@ -43,7 +43,8 @@ Rectangle {
         PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
         for(var i = 0; i < actionObjects.length; ++i){
             if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
+//                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
+                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
             }else if(Teach.hasCounterIDAction(actionObjects[i])){
                 var cs = Teach.actionCounterIDs(actionObjects[i]);
                 for(var c in cs){
@@ -70,7 +71,7 @@ Rectangle {
         var cPI = currentProgramIndex();
         var actionObject = model.get(cI).mI_ActionObject;
         if(actionObject.action === Teach.actions.ACT_FLAG){
-            Teach.delFlag(actionObject.flag);
+            Teach.flagsDefine.delFlag(editing.currentIndex, actionObject.flag);
         }else if(Teach.hasCounterIDAction(actionObject)){
             var cs = Teach.actionCounterIDs(actionObject);
             for(var c in cs){
@@ -406,6 +407,8 @@ Rectangle {
                     currentIndex: 0
                     onCurrentIndexChanged: {
                         //                        console.log("onCurrentIndexChanged", currentIndex);
+                        PData.currentEditingProgram = currentIndex;
+                        Teach.currentParsingProgram = currentIndex;
                         if(currentIndex < 0) return;
                         if(moduleSel.currentIndex != 0){
                             moduleSel.currentIndex = 0;
@@ -1257,7 +1260,8 @@ Rectangle {
                 Teach.definedPoints.parseActionPoints(step);
             }
             if(step.action === Teach.actions.ACT_FLAG){
-                Teach.pushFlag(step.flag, step.comment);
+//                Teach.pushFlag(step.flag, step.comment);
+                Teach.flagsDefine.pushFlag(Teach.currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
             }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                 at = Teach.actionTypes.kAT_SyncStart;
                 isSyncStart = true;
@@ -1297,6 +1301,8 @@ Rectangle {
         Teach.definedPoints.clear();
         for(i = 0; i < 9; ++i){
             program = JSON.parse(panelRobotController.programs(i));
+            Teach.currentParsingProgram = i;
+            Teach.flagsDefine.clear(i);
             updateProgramModel(PData.programs[i], program);
             collectSpecialLines(i);
         }

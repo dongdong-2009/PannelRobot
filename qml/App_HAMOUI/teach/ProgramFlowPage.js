@@ -83,3 +83,5 @@ var kFunctionProgramIndex = 9;
 
 var programActionMenu = null;
 var moduleActionEditor;
+
+var currentEditingProgram = 0;

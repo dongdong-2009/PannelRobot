@@ -4,6 +4,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../../utils/stringhelper.js" as ICString
+import "ProgramFlowPage.js" as ProgramFlowPage
 
 
 Item {
@@ -44,7 +45,9 @@ Item {
     function createActionObjects(){
         var ret = [];
         if(defineFlag.isChecked){
-            ret.push(Teach.generateFlagAction(Teach.useableFlag(), flagDescr.configValue));
+            var flag = Teach.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
+//            Teach.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
+            ret.push(Teach.generateFlagAction(flag.flagID, flag.descr));
             return ret;
         }
 
@@ -317,7 +320,7 @@ Item {
 
                     onVisibleChanged: {
                         if(visible){
-                            items = Teach.flagStrs
+                            items = Teach.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram);
                         }
                     }
                 }

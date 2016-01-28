@@ -306,7 +306,12 @@ public:
 
     static QMap<int, StackInfo> ParseStacks(const QString& stacks, bool &isOk);
 
-    QMap<int, CompileInfo> ParseFunctions(const QString& functions, bool &isok);
+    static QMap<int, CompileInfo> ParseFunctions(const QString& functions,
+                                                 bool &isok,
+                                                 const QMap<int, StackInfo>& stackInfos = QMap<int, StackInfo>(),
+                                                 const QVector<QVariantList>& counters = QVector<QVariantList>(),
+                                                 const QVector<QVariantList>& variables = QVector<QVariantList>()
+                                                 );
 
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const

@@ -93,16 +93,28 @@ var stackTypes = {
 
 var flagsDefine = {
     "flags":[[],[],[],[],[],[],[],[],[]],
-    "pushFlag" :function(programIndex, flag, descr){
+    "createFlag":function(programIndex, flagName){
+        if(programIndex >= this.flags.length)
+            return null;
+        var pFlags = this.flags[programIndex];
+//        var fID = -1;
+//        for(var i = 0; i < pFlags.length; ++i){
+//            if(flag.flagID < pFlags[i].flagID){
+//            }
+//        }
+    },
+
+    "pushFlag" :function(programIndex, flag){
         if(programIndex >= this.flags.length)
             return;
         var pFlags = this.flags[programIndex];
-        var fID = 0;
         for(var i = 0; i < pFlags.length; ++i){
-            if(i != pFlags[i].flagID)
-                fID = i;
+            if(flag.flagID < pFlags[i].flagID){
+                pFlags.splice(i, 0, flag);
+                return;
+            }
         }
-        fID = pFlags.length;
+        pFlags.push(flag);
     },
 }
 

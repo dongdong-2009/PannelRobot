@@ -398,6 +398,11 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     }
 
     QMap<int, CompileInfo> cfs;
+    if(subPrograms.size() == 10)
+    {
+        bool isOK;
+        cfs = ParseFunctions(subPrograms.at(9),isOK, sis, counters, variables);
+    }
     CompileInfo compileInfo = Complie(initProgram, sis, counters, variables, cfs, err);
     if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
 
@@ -414,6 +419,8 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     }
     if(subPrograms.size() >= 9)
         programList.append(subPrograms.at(8));
+    if(subPrograms.size() == 10)
+        programList.append(subPrograms.at(9));
     QList<QPair<int, quint32> > fncs = values;
     //    AddCheckSumToAddrValuePairList(fncs);
     QString dt = ICDALHelper::NewMold(name, programList, fncs, counters, variables);
@@ -771,7 +778,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     counters_ = ICDALHelper::GetMoldCounterDef(moldName);
     variables_ = ICDALHelper::GetMoldVariableDef(moldName);
     functions_ = ICDALHelper::MoldFunctionsContent(moldName);
-    compiledFunctions_ = ParseFunctions(functions_, ok);
+    compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
     ok = true;
     for(int i = 0; i != programs.size(); ++i)
     {
@@ -1355,7 +1362,11 @@ int ICRobotMold::IndexOfVariable(quint32 id) const
     return -1;
 }
 
-QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions, bool &isok)
+QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions,
+                                                   bool &isok,
+                                                   const QMap<int, StackInfo>& stackInfos,
+                                                   const QVector<QVariantList>& counters,
+                                                   const QVector<QVariantList>& variables)
 {
     QJson::Parser parser;
     //    bool ok;
@@ -1369,7 +1380,7 @@ QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions, boo
     {
         fun = result.at(i).toMap();
         funStr = fun.value("program").toString();
-        CompileInfo p = Complie(funStr,stackInfos_, counters_, variables_, QMap<int, CompileInfo>(), err);
+        CompileInfo p = Complie(funStr,stackInfos, counters, variables, QMap<int, CompileInfo>(), err);
         ret.insert(fun.value("id").toInt(), p);
     }
     return ret;

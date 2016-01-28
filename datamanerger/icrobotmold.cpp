@@ -668,7 +668,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
         jumptoEnd.append(ret.CompiledProgramLineCount());
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
-        ret.UpdateICMoldItem(beginToFix - 1, jumptoEnd);
+        ret.UpdateICMoldItem(result.size() - 1, jumptoEnd);
         ret.AddICMoldItem(programEndLine, endProgramItem);
         ICMoldItem toFixLineItem;
         int toFixLineEnd = ret.CompiledProgramLineCount();

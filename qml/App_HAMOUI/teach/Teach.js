@@ -141,7 +141,6 @@ var flagsDefine = {
             }
         }
         this.flags[programIndex].push(flag);
-        console.log(this.flags[programIndex].length);
     },
 
     "delFlag" : function(programIndex, flagID){

@@ -525,6 +525,13 @@ public:
         ::close(keyFD_);
     }
 
+    Q_INVOKABLE quint32 debug_GetAddrValue(int addr)
+    {
+        ICRobotVirtualhost::AddReadConfigCommand(host_, addr, 1);
+        return readedConfigValues_.value(addr, -1);
+    }
+
+
     void InitMainView();
 
     QWidget* MainView() { return mainView_;}
@@ -577,6 +584,7 @@ private:
     QtQuick1ApplicationViewer *mainView_;
     ICVirtualKeyboard virtualKeyboard;
     QFileSystemWatcher hostUpdateFinishedWatcher_;
+    QMap<int, quint32> readedConfigValues_;
 
 
 #ifdef Q_WS_QWS

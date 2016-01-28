@@ -91,6 +91,21 @@ var stackTypes = {
     "kST_Box":1
 };
 
+var flagsDefine = {
+    "flags":[[],[],[],[],[],[],[],[],[]],
+    "pushFlag" :function(programIndex, flag, descr){
+        if(programIndex >= this.flags.length)
+            return;
+        var pFlags = this.flags[programIndex];
+        var fID = 0;
+        for(var i = 0; i < pFlags.length; ++i){
+            if(i != pFlags[i].flagID)
+                fID = i;
+        }
+        fID = pFlags.length;
+    },
+}
+
 var flags = [];
 var flagStrs = [];
 
@@ -1271,5 +1286,6 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT;
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_JOINTCOORDINATE;
 }

@@ -33,7 +33,23 @@ var DefinePoints = {
             definePoints.definedPoints.splice(pID, 0, iPoint);
             return iPoint;
         }
+        definePoints.updatePoint = function(sd, point, pl){
+            var ss = definePoints.definedPoints;
+            for(var i = 0;i<ss.length;i++){
+                if(ss[i].index === sd.index){
+                    definePoints.definedPoints[i].point = point;
+                    break;
+                }
+            }
+            return definePoints.definedPoints;
+        }
 
+        definePoints.deletePoint = function(index){
+             definePoints.definedPoints.splice(index,1);
+            return definePoints.definedPoints;
+        }
+
+        //{"m0":123, "m1":}
         definePoints.getPoint = function(name){
             var pID = definePoints.extractPointIDFromPointName(name);
             return definedPoints.definedPoints[pID];

@@ -612,7 +612,15 @@ void PanelRobotController::loadHostMachineConfigs()
 
 void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32> &v)
 {
-    if(addr < ICAddr_Read_Status0)
+    if(addr == 24)
+    {
+        readedConfigValues_.insert(addr, v.at(0));
+        disconnect(host_.data(),
+                   SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+                   this,
+                   SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+    }
+    else if(addr < ICAddr_Read_Status0)
     {
         QList<QPair<int, quint32> > tmp;
         for(int i = 0; i < v.size(); ++i)
@@ -632,8 +640,6 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
         emit machineConfigChanged();
     }
-    if(addr == 24)
-        readedConfigValues_.insert(addr, v.at(0));
 }
 
 void PanelRobotController::OnkeyCheckTimeOut()

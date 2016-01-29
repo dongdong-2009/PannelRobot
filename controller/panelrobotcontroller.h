@@ -528,6 +528,11 @@ public:
     Q_INVOKABLE quint32 debug_GetAddrValue(int addr)
     {
         ICRobotVirtualhost::AddReadConfigCommand(host_, addr, 1);
+        connect(host_.data(),
+                SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+                this,
+                SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
+                Qt::UniqueConnection);
         return readedConfigValues_.value(addr, -1);
     }
 

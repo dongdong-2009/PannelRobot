@@ -653,7 +653,6 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             {
                 item = f.GetICMoldItem(i);
                 ret.AddICMoldItem(programEndLine, item);
-                ret.MapModuleLineToModuleID(programEndLine, mID);
                 if(item.at(0) == F_CMD_SYNC_START)
                 {
                     isSyncBegin = true;
@@ -667,7 +666,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 }
                 if(!isSyncBegin)
                     ++fStep;
-                ret.MapStep(programEndLine, fStep);
+                ret.MapModuleLineToModuleID(fStep, mID);
+                ret.MapStep(programEndLine , fStep);
                 ++programEndLine;
             }
             ++fp;
@@ -676,7 +676,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         jumptoEnd.append(ret.CompiledProgramLineCount());
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
         ret.UpdateICMoldItem(result.size() - 1, jumptoEnd);
-        ret.AddICMoldItem(programEndLine, endProgramItem);
+        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
+        ret.MapStep(result.size() + ret.CompiledProgramLineCount() - beginToFix, fStep + 1);
         ICMoldItem toFixLineItem;
         int toFixLineEnd = ret.CompiledProgramLineCount();
         int toFixUIStep;

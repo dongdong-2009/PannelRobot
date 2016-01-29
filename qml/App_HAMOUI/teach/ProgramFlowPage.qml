@@ -821,10 +821,10 @@ Rectangle {
                                 }
                             }
 
+                            var uiRunningSteps = currentModelRunningActionInfo();
                             if(!isFollow.isChecked)
                                 return
 
-                            var uiRunningSteps = currentModelRunningActionInfo();
 
                             var lastRunning = PData.lastRunning;
 

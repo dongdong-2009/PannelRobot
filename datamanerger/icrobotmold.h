@@ -186,7 +186,8 @@ public:
          qDebug()<<"Program Begin:";
          for(int i = 0 ; i < compiledProgram_.size(); ++i)
          {
-             qDebug()<< compiledProgram_.at(i);
+
+             qDebug()<<UIStepToRealStep(compiledLineToUIStep_.value(i))<< compiledProgram_.at(i);
          }
      }
 

@@ -124,3 +124,8 @@ unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}' > UPMaker && 
 
 HEADERS += \
     icsplashscreen.h
+
+TRANSLATIONS += PanelRobot_zh_CN.ts PanelRobot_en_US.ts
+
+RESOURCES += \
+    resource.qrc

@@ -10,7 +10,7 @@ var stepAddrs =
         "c_ro_0_16_0_936",
         "c_ro_16_16_0_936",
         "c_ro_0_16_0_937"];
-var lastRunning = {"model": -1, "step":-1, "items":[]};
+var lastRunning = {"model": -1, "moduleID":-1, "step":-1, "items":[]};
 
 var isReadOnly = true;
 
@@ -81,4 +81,7 @@ var linked3Function = null;
 
 var kFunctionProgramIndex = 9;
 
+var programActionMenu = null;
 var moduleActionEditor;
+
+var currentEditingProgram = 0;

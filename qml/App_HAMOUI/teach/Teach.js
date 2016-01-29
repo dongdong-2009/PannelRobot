@@ -107,44 +107,126 @@ var stackTypes = {
     "kST_Box":1
 };
 
-var flags = [];
-var flagStrs = [];
 
-var pushFlag = function(flag, descr){
-    for(var i = 0; i < flags.length; ++i){
-        if(flag < flags[i]){
-            flags.splice(i, 0, flag);
-            flagStrs.splice(i, 0,  qsTr("Flag") + "[" + flag + "]" + ":" + descr);
+function FlagItem(flagID, descr){
+    this.flagID = flagID;
+    this.descr = descr || "";
+}
+
+var flagsDefine = {
+    "flags":[[],[],[],[],[],[],[],[],[]],
+    "clear":function(programIndex){
+        this.flags[programIndex].length = 0;
+    },
+
+    "createFlag":function(programIndex, flagName){
+        if(programIndex >= this.flags.length)
+            return null;
+        var pFlags = this.flags[programIndex];
+        var fID = -1;
+        for(var i = 0; i < pFlags.length; ++i){
+            if(i < pFlags[i].flagID){
+                fID = i;
+                break;
+            }
+        }
+        if(fID < 0)
+            fID = pFlags.length;
+        return new FlagItem(fID, flagName);
+    },
+
+    "getFlag" :function(programIndex, flagID){
+        if(programIndex >= this.flags.length)
+            return null;
+        var pFlags = this.flags[programIndex];
+        for(var i = 0;i < pFlags.length; ++i){
+            if(flagID == pFlags[i].flagID)
+                return pFlags[i];
+        }
+        return null;
+    },
+
+    "pushFlag" :function(programIndex, flag){
+        if(programIndex >= this.flags.length)
             return;
+        var pFlags = this.flags[programIndex];
+        for(var i = 0; i < pFlags.length; ++i){
+            if(flag.flagID < pFlags[i].flagID){
+                this.flags[programIndex].splice(i, 0, flag);
+                return;
+            }
         }
+        this.flags[programIndex].push(flag);
+    },
+
+    "delFlag" : function(programIndex, flagID){
+        if(programIndex >= this.flags.length)
+            return;
+        var pFlags = this.flags[programIndex];
+        for(var i = 0; i < pFlags.length; ++i){
+            if(flagID == pFlags[i].flagID){
+                this.flags[programIndex].splice(i, 1);
+                break;
+            }
+        }
+    },
+
+    "flagName" : function(programIndex, flagID){
+        var flag = this.getFlag(programIndex, flagID);
+        if(flag == null) return qsTr("Invalid Flag");
+        return qsTr("Flag") + "[" + flag.flagID + "]" + ":" + flag.descr;
+    },
+
+    "flagNameList": function(programIndex){
+        if(programIndex >= this.flags.length)
+            return [];
+        var ret = [];
+        var pFlags = this.flags[programIndex];
+        for(var i = 0; i < pFlags.length; ++i){
+            ret.push(qsTr("Flag") + "[" + pFlags[i].flagID + "]" + ":" + pFlags[i].descr);
+        }
+        return ret;
     }
-    flags.push(flag);
-    flagStrs.push(qsTr("Flag") + "[" + flag + "]" + ":" + descr);
-    return;
 }
 
-var delFlag = function(flag){
-    for(var i = 0; i < flags.length; ++i){
-        if(flag === flags[i]){
-            flags.splice(i, 1);
-            flagStrs.splice(i, 1);
-            break;
-        }
-    }
-}
+//var flags = [];
+//var flagStrs = [];
 
-var useableFlag = function(){
-    if(flags.length === 0) return 0;
-    //    if(flags.length < 3)
-    //        return flags[flags.length - 1] + 1;
-    if(flags[0] !== 0) return 0;
-    for(var i = 1; i < flags.length; ++i){
-        if(flags[i] - flags[i - 1] > 1){
-            return flags[i - 1] + 1;
-        }
-    }
-    return flags[i - 1] + 1;
-}
+//var pushFlag = function(flag, descr){
+//    for(var i = 0; i < flags.length; ++i){
+//        if(flag < flags[i]){
+//            flags.splice(i, 0, flag);
+//            flagStrs.splice(i, 0,  qsTr("Flag") + "[" + flag + "]" + ":" + descr);
+//            return;
+//        }
+//    }
+//    flags.push(flag);
+//    flagStrs.push(qsTr("Flag") + "[" + flag + "]" + ":" + descr);
+//    return;
+//}
+
+//var delFlag = function(flag){
+//    for(var i = 0; i < flags.length; ++i){
+//        if(flag === flags[i]){
+//            flags.splice(i, 1);
+//            flagStrs.splice(i, 1);
+//            break;
+//        }
+//    }
+//}
+
+//var useableFlag = function(){
+//    if(flags.length === 0) return 0;
+//    //    if(flags.length < 3)
+//    //        return flags[flags.length - 1] + 1;
+//    if(flags[0] !== 0) return 0;
+//    for(var i = 1; i < flags.length; ++i){
+//        if(flags[i] - flags[i - 1] > 1){
+//            return flags[i - 1] + 1;
+//        }
+//    }
+//    return flags[i - 1] + 1;
+//}
 
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
@@ -460,7 +542,6 @@ function FunctionManager(){
     this.functions = [];
     this.init = function(functionsJSON){
         this.functions.length = 0;
-        console.log("Functions:", functionsJSON);
         if(functionsJSON.length == 0){
             return;
         }
@@ -958,7 +1039,7 @@ var customAlarmActiontoStringHandler = function(actionObject){
 
 var conditionActionToStringHandler = function(actionObject){
     if(actionObject.action === actions.F_CMD_PROGRAM_JUMP0){
-        return qsTr("Jump To ") + flagStrs[actionObject.flag];
+        return qsTr("Jump To ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag);
     }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
         var c = counterManager.getCounter(actionObject.counterID);
         if(c == null){
@@ -966,7 +1047,7 @@ var conditionActionToStringHandler = function(actionObject){
         }
 
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagStrs[actionObject.flag] + "."
+                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }
 
@@ -980,7 +1061,7 @@ var conditionActionToStringHandler = function(actionObject){
     return qsTr("IF:") + pointDescr +
             (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " "
             + qsTr("Limit:") + actionObject.limit + " " +
-            qsTr("Go to ") + flagStrs[actionObject.flag];
+            qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag);
 }
 
 var waitActionToStringHandler = function(actionObject){
@@ -1008,7 +1089,7 @@ var moduleCallBackActionToStringHandler = function(actionObject){
 }
 
 var callModuleActionToStringHandler = function(actionObject){
-    var returnTo = (actionObject.flag == - 1 ? qsTr("next line") : flagStrs[actionObject.flag]);
+    var returnTo = (actionObject.flag == - 1 ? qsTr("next line") : flagsDefine.flagName(currentParsingProgram, actionObject.flag));
     return qsTr("Call") + " " + functionManager.functionToString(actionObject.module) + " " +
             qsTr("And then return to ") + returnTo;
 }
@@ -1288,5 +1369,8 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT;
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_JOINTCOORDINATE;
 }
+
+var currentParsingProgram = 0;

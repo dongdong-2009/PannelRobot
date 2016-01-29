@@ -8,6 +8,7 @@ Rectangle {
     property bool isAutoRepeat: false
     property alias autoInterval: autoTimer.interval
     property string bgColor: "white"
+    property alias font: text.font
     signal buttonClicked()
     signal clickedText(string text)
     signal triggered()

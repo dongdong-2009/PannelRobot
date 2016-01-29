@@ -283,9 +283,12 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     int step = v->value("step", -1).toInt();
     int moduleStep = v->value("moduleStep", -1).toInt();
     if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
-    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
+//    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
-    item.append(moduleStep);
+    if(moduleStep < 0)
+        item.append(v->value("module").toUInt());
+    else
+        item.append(moduleStep);
     item.append(step);
 
     item.append(ICRobotMold::MoldItemCheckSum(item));
@@ -395,6 +398,11 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     }
 
     QMap<int, CompileInfo> cfs;
+    if(subPrograms.size() == 10)
+    {
+        bool isOK;
+        cfs = ParseFunctions(subPrograms.at(9),isOK, sis, counters, variables);
+    }
     CompileInfo compileInfo = Complie(initProgram, sis, counters, variables, cfs, err);
     if(compileInfo.IsCompileErr()) return RecordDataObject(kRecordErr_InitProgram_Invalid);
 
@@ -411,6 +419,8 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     }
     if(subPrograms.size() >= 9)
         programList.append(subPrograms.at(8));
+    if(subPrograms.size() == 10)
+        programList.append(subPrograms.at(9));
     QList<QPair<int, quint32> > fncs = values;
     //    AddCheckSumToAddrValuePairList(fncs);
     QString dt = ICDALHelper::NewMold(name, programList, fncs, counters, variables);
@@ -500,7 +510,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 {
                     err = ICRobotMold::kCCErr_Invaild_ModuleID;
                     ret.AddErr(i, err);
-                    continue;
+//                    continue;
                 }
 
                 action.insert("moduleStep", -1);
@@ -620,43 +630,67 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         //        return ret;
     }
 
-    if(!functions.isEmpty())
+    if(!functions.isEmpty() && ret.HasCalledModule())
     {
         QMap<int, CompileInfo>::const_iterator fp = functions.constBegin();
         int programEndLine = result.size();
-        ICMoldItem endProgramItem = ret.DelLastICMoldItem();
+        ICMoldItem endProgramItem = ret.GetICMoldItem(ret.CompiledProgramLineCount() -1);
         ICMoldItem jumptoEnd;
         jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
-        ret.AddICMoldItem(programEndLine++, jumptoEnd);
+//        ret.AddICMoldItem(programEndLine - 1, jumptoEnd);
         const int beginToFix = ret.CompiledProgramLineCount();
+        int fStep = ret.RealStepCount();    //
+        isSyncBegin = false;                //
+
         while(fp != functions.end())
         {
-            if(ret.IsModuleUsed(fp.key()))
+            CompileInfo f = fp.value();
+            int cflc = f.CompiledProgramLineCount();
+            const int mID = fp.key();
+            ret.MapModuleIDToEntry(mID, ret.RealStepCount() + 1);
+            ICMoldItem item;
+            for(int i = 0; i < cflc; ++i)
             {
-                CompileInfo f = fp.value();
-                int cflc = f.CompiledProgramLineCount();
-                ret.MapModuleIDToEntry(fp.key(), ret.CompiledProgramLineCount());
-                for(int i = 0; i < cflc; ++i)
+                item = f.GetICMoldItem(i);
+                ret.AddICMoldItem(programEndLine, item);
+                ret.MapModuleLineToModuleID(programEndLine, mID);
+                if(item.at(0) == F_CMD_SYNC_START)
                 {
-                    ret.AddICMoldItem(programEndLine, f.GetICMoldItem(i));
-                    ++programEndLine;
+                    isSyncBegin = true;
+                    continue;
                 }
+                else if(item.at(0) == F_CMD_SYNC_END)
+                {
+                    isSyncBegin = false;
+                    ++fStep;
+                    continue;
+                }
+                if(!isSyncBegin)
+                    ++fStep;
+                ret.MapStep(programEndLine, fStep);
+                ++programEndLine;
             }
             ++fp;
         }
+
         jumptoEnd.append(ret.CompiledProgramLineCount());
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
-        ret.UpdateICMoldItem(beginToFix, jumptoEnd);
+        ret.UpdateICMoldItem(result.size() - 1, jumptoEnd);
         ret.AddICMoldItem(programEndLine, endProgramItem);
         ICMoldItem toFixLineItem;
         int toFixLineEnd = ret.CompiledProgramLineCount();
+        int toFixUIStep;
         for(int i = beginToFix; i < toFixLineEnd; ++i)
         {
             toFixLineItem = ret.GetICMoldItem(i);
             if(toFixLineItem.at(0) == F_CMD_PROGRAM_CALL0)
             {
-                toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(i));
-                ret.UpdateICMoldItem(i, toFixLineItem);
+                toFixUIStep = ret.UIStepFromCompiledLine(i);
+                toFixLineItem[1] = ret.ModuleEntry(toFixLineItem.at(1));
+                toFixLineItem[2] = ret.UIStepToRealStep(toFixUIStep).first + 1;
+                toFixLineItem.pop_back();
+                toFixLineItem.append(ICRobotMold::MoldItemCheckSum(toFixLineItem));
+                ret.UpdateICMoldItem(toFixUIStep, toFixLineItem);
             }
         }
     }
@@ -744,7 +778,7 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     counters_ = ICDALHelper::GetMoldCounterDef(moldName);
     variables_ = ICDALHelper::GetMoldVariableDef(moldName);
     functions_ = ICDALHelper::MoldFunctionsContent(moldName);
-    compiledFunctions_ = ParseFunctions(functions_, ok);
+    compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
     ok = true;
     for(int i = 0; i != programs.size(); ++i)
     {
@@ -1036,12 +1070,19 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name, const QString &init
     return RecordDataObject(name, dt);
 }
 #endif
-QList<int> ICRobotMold::RunningStepToProgramLine(int which, int step)
+QPair<int, QList<int> > ICRobotMold::RunningStepToProgramLine(int which, int step)
 {
-    QList<int> ret;
+    QPair<int, QList<int> > ret;
     if(which >= programs_.size())
         return ret;
-    return programs_.at(which).RealStepToUIStep(step);
+    CompileInfo pI = programs_.at(which);
+    int mID = pI.ModuleIDFromLine(step);
+    QList<int> steps;
+    if(mID < 0)
+        steps = pI.RealStepToUIStep(step);
+    else
+        steps = compiledFunctions_.value(mID).RealStepToUIStep(step - pI.ModuleEntry(mID));
+    return qMakePair<int, QList<int> > (mID, steps);
 }
 
 ICMoldItem ICRobotMold::SingleLineCompile(int which, int step, const QString &lineContent, QPair<int, int> &hostStep)
@@ -1080,6 +1121,7 @@ QStringList ICRobotMold::ExportMold(const QString &name)
 {
     QStringList ret = ICDALHelper::MoldProgramContent(name);
     ret.append(ICDALHelper::MoldStacksContent(name));
+    ret.append(ICDALHelper::MoldFunctionsContent(name));
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(name));
     QString fncStr;
@@ -1096,7 +1138,7 @@ QStringList ICRobotMold::ExportMold(const QString &name)
         tmp = counters.at(i);
         for(int j = 0; j < tmp.size(); ++j)
         {
-            countersStr += tmp.at(i).toString() + ",";
+            countersStr += tmp.at(j).toString() + ",";
         }
         if(!tmp.isEmpty())
         {
@@ -1105,6 +1147,23 @@ QStringList ICRobotMold::ExportMold(const QString &name)
         }
     }
     ret.append(countersStr);
+
+    QVector<QVariantList> variables = ICDALHelper::GetMoldVariableDef(name);
+    QString variablesStr;
+    for(int i = 0; i < variables.size(); ++i)
+    {
+        tmp = variables.at(i);
+        for(int j = 0; j < tmp.size(); ++j)
+        {
+            variablesStr += tmp.at(j).toString() + ",";
+        }
+        if(!tmp.isEmpty())
+        {
+            variablesStr.chop(1);
+            variablesStr += "\n";
+        }
+    }
+    ret.append(variablesStr);
     return ret;
 }
 
@@ -1112,7 +1171,7 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
 {
     RecordDataObject ret;
     QList<QPair<int, quint32> > fncs;
-    QStringList addrValues = moldInfo.at(10).split("\n", QString::SkipEmptyParts);
+    QStringList addrValues = moldInfo.at(11).split("\n", QString::SkipEmptyParts);
     QStringList addrValuePair;
     for(int i = 0; i < addrValues.size(); ++i)
     {
@@ -1126,7 +1185,7 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
                                             addrValuePair.at(1).toUInt()));
     }
     QVector<QVariantList> counters;
-    QStringList cStr = moldInfo.at(11).split("\n", QString::SkipEmptyParts);
+    QStringList cStr = moldInfo.at(12).split("\n", QString::SkipEmptyParts);
     for(int i = 0; i < cStr.size(); ++i)
     {
         QStringList vs = cStr.at(i).split(",", QString::SkipEmptyParts);
@@ -1137,8 +1196,21 @@ RecordDataObject ICRobotMold::ImportMold(const QString& name, const QStringList 
         tmp.append(vs.at(3).toUInt());
         counters.append(tmp);
     }
-    QStringList programs = moldInfo.mid(0, 10);
-    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1), counters);
+    QVector<QVariantList> variables;
+    QStringList vStr = moldInfo.at(13).split("\n", QString::SkipEmptyParts);
+    for(int i = 0; i < vStr.size(); ++i)
+    {
+        QStringList vs = vStr.at(i).split(",");
+        QVariantList tmp;
+        tmp.append(vs.at(0).toUInt());
+        tmp.append(vs.at(1));
+        tmp.append(vs.at(2));
+        tmp.append(vs.at(3).toUInt());
+        tmp.append(vs.at(4).toUInt());
+        variables.append(tmp);
+    }
+    QStringList programs = moldInfo.mid(0, 11);
+    ret = NewRecord(name, programs.at(0), fncs, programs.mid(1), counters, variables);
     return ret;
 
 }
@@ -1290,7 +1362,11 @@ int ICRobotMold::IndexOfVariable(quint32 id) const
     return -1;
 }
 
-QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions, bool &isok)
+QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions,
+                                                   bool &isok,
+                                                   const QMap<int, StackInfo>& stackInfos,
+                                                   const QVector<QVariantList>& counters,
+                                                   const QVector<QVariantList>& variables)
 {
     QJson::Parser parser;
     //    bool ok;
@@ -1304,7 +1380,7 @@ QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions, boo
     {
         fun = result.at(i).toMap();
         funStr = fun.value("program").toString();
-        CompileInfo p = Complie(funStr,stackInfos_, counters_, variables_, QMap<int, CompileInfo>(), err);
+        CompileInfo p = Complie(funStr,stackInfos, counters, variables, QMap<int, CompileInfo>(), err);
         ret.insert(fun.value("id").toInt(), p);
     }
     return ret;
@@ -1335,5 +1411,12 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions)
     if(isOk)
         ICDALHelper::SaveFunctions(moldName_, functions);
 
+    for(int i = 0 ; i < programs_.size(); ++i)
+    {
+        if(programs_.at(i).HasCalledModule())
+        {
+            SaveMold(i, programsCode_.at(i));
+        }
+    }
     return ret;
 }

@@ -89,11 +89,23 @@ public:
         modulesMap_.insert(id, step);
     }
 
-    int ModuleEntry(int id) { return modulesMap_.value(id, 0);}
+    void MapModuleLineToModuleID(int line, int id)
+    {
+        moduleLineToModuleIDMap_.insert(line, id);
+    }
+
+    int ModuleIDFromLine(int line) const
+    {
+        return moduleLineToModuleIDMap_.value(line, -1);
+    }
+
+    int ModuleEntry(int id) const { return modulesMap_.value(id, id);}
 
     void AddUsedModule(int id) { usedModules_.append(id);}
 
-    bool IsModuleUsed(int id) { return usedModules_.contains(id);}
+    bool IsModuleUsed(int id) const { return usedModules_.contains(id);}
+
+    bool HasCalledModule() const { return !usedModules_.isEmpty();}
 
     void MapFlagToStep(int flag, int step)
     {
@@ -107,7 +119,9 @@ public:
     void AddErr(int step, int err) { errList_.insert(step, err);}
     void AddICMoldItem(int uiStep, const ICMoldItem& item)
     {
-        uiStepToComiledLine.insert(uiStep, compiledProgram_.size());
+        int cPS = compiledProgram_.size();
+        uiStepToCompiledLine_.insert(uiStep, cPS);
+        compiledLineToUIStep_.insert(cPS, uiStep);
         compiledProgram_.append(item);
     }
     ICMoldItem DelLastICMoldItem()
@@ -123,8 +137,11 @@ public:
 //    }
     void UpdateICMoldItem(int line, const ICMoldItem& item)
     {
-        compiledProgram_[uiStepToComiledLine.value(line)] = item;
+        compiledProgram_[uiStepToCompiledLine_.value(line)] = item;
     }
+
+    int UIStepFromCompiledLine(int line) { return compiledLineToUIStep_.value(line);}
+
     ICMoldItem GetICMoldItem(int line) { return compiledProgram_.at(line);}
     int CompiledProgramLineCount() const { return compiledProgram_.size();}
     QVector<QVector<quint32> >ProgramToBareData() const
@@ -154,6 +171,13 @@ public:
         return ret;
     }
 
+    int RealStepCount() const
+    {
+        QList<int> rs = realStepToUIStepMap_.keys();
+        qSort(rs);
+        return rs.last();
+    }
+
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
 
@@ -170,11 +194,13 @@ private:
     QMap<int, int> stepMap_;
     QMap<int, int> flagsMap_;
     QMap<int, int> modulesMap_;
+    QMap<int, int> moduleLineToModuleIDMap_;
     QList<int> usedModules_;
 
     QMap<int, QList<int> > realStepToUIStepMap_;
     QMap<int, int> errList_;
-    QMap<int, int> uiStepToComiledLine;
+    QMap<int, int> uiStepToCompiledLine_;
+    QMap<int, int> compiledLineToUIStep_;
     ICActionProgram compiledProgram_;
 };
 
@@ -280,7 +306,12 @@ public:
 
     static QMap<int, StackInfo> ParseStacks(const QString& stacks, bool &isOk);
 
-    QMap<int, CompileInfo> ParseFunctions(const QString& functions, bool &isok);
+    static QMap<int, CompileInfo> ParseFunctions(const QString& functions,
+                                                 bool &isok,
+                                                 const QMap<int, StackInfo>& stackInfos = QMap<int, StackInfo>(),
+                                                 const QVector<QVariantList>& counters = QVector<QVariantList>(),
+                                                 const QVector<QVariantList>& variables = QVector<QVariantList>()
+                                                 );
 
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
@@ -339,7 +370,7 @@ public:
         return StackInfo();
     }
 
-    QList<int> RunningStepToProgramLine(int which, int step);
+    QPair<int, QList<int> > RunningStepToProgramLine(int which, int step);
 
 
     ICMoldItem SingleLineCompile(int which, int step, const QString& lineContent, QPair<int, int> &hostStep);

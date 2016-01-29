@@ -162,6 +162,7 @@ void PanelRobotController::Init()
 #endif
 //    InitMainView();
     qApp->installTranslator(&translator);
+    qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
     emit LoadMessage("Ui inited.");
 //        LoadTranslator_("HAMOUI_zh_CN.qm");
@@ -234,6 +235,11 @@ void PanelRobotController::sendKeyCommandToHost(int key)
     ICRobotVirtualhost::SendKeyCommand(key);
 #endif
 
+}
+
+void PanelRobotController::sendKnobCommandToHost(int knob)
+{
+    modifyConfigValue(ICAddr_System_Retain_0, knob);
 }
 
 quint32 PanelRobotController::getConfigValue(const QString &addr) const
@@ -457,6 +463,11 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
         return false;
     }
     bool ret = translator.load(qml.filePath(name));
+    QString language = getCustomSettings("Language", "CN");
+    if(language == "CN")
+        panelRoboTranslator_.load(":/PanelRobot_zh_CN.qm");
+    else
+        panelRoboTranslator_.load(":/PanelRobot_en_US.qm");
     InitMainView();
     return ret;
 }
@@ -621,6 +632,8 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
         emit machineConfigChanged();
     }
+    if(addr == 24)
+        readedConfigValues_.insert(addr, v.at(0));
 }
 
 void PanelRobotController::OnkeyCheckTimeOut()
@@ -642,17 +655,21 @@ static QStringList stepAddrs = QStringList()<<"c_ro_0_16_0_933"
 QString PanelRobotController::hostStepToUILines(int which, int step) const
 {
     if(which >= stepAddrs.size()) return "";
-    QList<int> steps = ICRobotMold::CurrentMold()->RunningStepToProgramLine(which,
-                                                                            step);
+    QPair<int, QList<int> > stepInfo = ICRobotMold::CurrentMold()->RunningStepToProgramLine(which,
+                                                                                            step);
+    QList<int> steps = stepInfo.second;
 
-    if(steps.isEmpty()) return "";
+//    if(steps.isEmpty()) return "";
     QString ret = "[";
     for(int i = 0; i < steps.size(); ++i)
     {
         ret += QString("%1,").arg(steps.at(i));
     }
-    ret.chop(1);
+
+    if(!steps.isEmpty())ret.chop(1);
     ret += "]";
+    ret = QString("{\"moduleID\":%1, \"steps\":\"%2\", \"hostStep\":%3, \"programIndex\":%4}")
+            .arg(stepInfo.first).arg(ret).arg(step).arg(which);
     return ret;
 }
 
@@ -710,22 +727,29 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::WriteOnly))
         {
-            QStringList acts = toWrite.mid(0, 10);
+            QStringList acts = toWrite.mid(0, 11);
             file.write(acts.join("\n").toUtf8());
             file.close();
         }
         file.setFileName(dir.absoluteFilePath(moldName + ".fnc"));
         if(file.open(QFile::WriteOnly))
         {
-            QString fnc = toWrite.at(10);
+            QString fnc = toWrite.at(11);
             file.write(fnc.toLatin1());
             file.close();
         }
         file.setFileName(dir.absoluteFilePath(moldName + ".counters"));
         if(file.open(QFile::WriteOnly))
         {
-            QString counters = toWrite.at(11);
+            QString counters = toWrite.at(12);
             file.write(counters.toUtf8());
+            file.close();
+        }
+        file.setFileName(dir.absoluteFilePath(moldName + ".variables"));
+        if(file.open(QFile::WriteOnly))
+        {
+            QString variables = toWrite.at(13);
+            file.write(variables.toUtf8());
             file.close();
         }
     }
@@ -790,7 +814,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         file.setFileName(temp.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::ReadOnly))
         {
-            actContent = file.readAll();
+            actContent = QString::fromUtf8(file.readAll());
             file.close();
             moldInfo.append(actContent.split("\n", QString::SkipEmptyParts));
         }
@@ -803,7 +827,14 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         file.setFileName(temp.absoluteFilePath(moldName + ".counters"));
         if(file.open(QFile::ReadOnly))
         {
-            moldInfo.append(file.readAll());
+            moldInfo.append(QString::fromUtf8(file.readAll()));
+            file.close();
+        }
+
+        file.setFileName(temp.absoluteFilePath(moldName + ".variables"));
+        if(file.open(QFile::ReadOnly))
+        {
+            moldInfo.append(QString::fromUtf8(file.readAll()));
             file.close();
         }
         imported = ICRobotMold::ImportMold(moldName, moldInfo);

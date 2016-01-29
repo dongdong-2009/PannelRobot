@@ -515,7 +515,7 @@ Rectangle {
                 //                ShareData.knobStatus = key;
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
-            panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(key));
+            panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else{
             // pully speed handler
             var spd;

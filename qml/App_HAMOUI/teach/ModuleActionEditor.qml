@@ -4,6 +4,7 @@ import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
 
 import "../../ICCustomElement"
+import "ProgramFlowPage.js" as ProgramFlowPage
 
 
 Item {
@@ -12,7 +13,7 @@ Item {
     }
     function setFlagSelections(flags){
         flags.splice(0, 0, qsTr("Next Line"));
-        callBackSel.items = flags;
+        callBackSel.items = tmp;
     }
 
     function createActionObjects(){
@@ -42,7 +43,7 @@ Item {
     }
     onVisibleChanged: {
         if(visible){
-            setFlagSelections(Teach.flagStrs);
+            setFlagSelections(Teach.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram));
             setModuleSelections(Teach.functionManager.functionsStrList());
         }
     }

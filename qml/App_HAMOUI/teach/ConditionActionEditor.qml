@@ -4,6 +4,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../../utils/stringhelper.js" as ICString
+import "ProgramFlowPage.js" as ProgramFlowPage
 
 
 Item {
@@ -21,7 +22,8 @@ Item {
         "Y020",
     ]
 
-    property  variant euYs : ["EuY010", "EuY011", "EuY012"]
+    property  variant euYs : ["EuY010", "EuY011", "EuY012", "EuY013",
+    "EuY014", "EuY015", "EuY016", "EuY017", "EuY020", "EuY021", "EuY022", "EuY023"]
     property variant mYs: ["INY010"]
 
     property variant xs: [
@@ -34,14 +36,18 @@ Item {
         "X017",
         "X020",
     ]
-    property  variant euXs : ["EuX010", "EuX011"]
+    property  variant euXs : ["EuX010", "EuX011", "EuX012", "EuX013", "EuX014",
+        "EuX015", "EuX016", "EuX017", "EuX020", "EuX021", "EuX022", "EuX023", "EuX024",
+        "EuX025", "EuX026", "EuX027"]
     property variant mXs: ["INX010"]
     property variant counters: []
 
     function createActionObjects(){
         var ret = [];
         if(defineFlag.isChecked){
-            ret.push(Teach.generateFlagAction(Teach.useableFlag(), flagDescr.configValue));
+            var flag = Teach.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
+//            Teach.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
+            ret.push(Teach.generateFlagAction(flag.flagID, flag.descr));
             return ret;
         }
 
@@ -314,7 +320,7 @@ Item {
 
                     onVisibleChanged: {
                         if(visible){
-                            items = Teach.flagStrs
+                            items = Teach.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram);
                         }
                     }
                 }
@@ -373,7 +379,6 @@ Item {
 
         var xDefines = xs;
         var xDefine;
-        var i;
         for(i = 0; i < xDefines.length; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));

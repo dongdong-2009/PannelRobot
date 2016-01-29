@@ -191,11 +191,12 @@ function appendOpToLog(opItem){
         }
 
         if(rowCount >= OPERATION_LOG_TB_INFO.max){
-            tx.executeSql(icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}={6}, {7}={8} WHERE {1}={9}',
-                                      OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col, newID,
-                                      OPERATION_LOG_TB_INFO.opTime_col, now.getTime(),
-                                      OPERATION_LOG_TB_INFO.user_col, opItem.user,
-                                      OPERATION_LOG_TB_INFO.descr_col, opItem.descr, minID));
+            var cmd = icStrformat('UPDATE {0} SET {1}={2}, {3}={4}, {5}="{6}", {7}="{8}" WHERE {1}={9}',
+                                  OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col, newID,
+                                  OPERATION_LOG_TB_INFO.opTime_col, now.getTime(),
+                                  OPERATION_LOG_TB_INFO.user_col, opItem.user,
+                                  OPERATION_LOG_TB_INFO.descr_col, opItem.descr, minID);
+            tx.executeSql(cmd);
         }else{
             var toexec = icStrformat('INSERT INTO {0} VALUES({1}, {2}, "{3}", "{4}");',
                                      OPERATION_LOG_TB_INFO.tb_name, newID, now.getTime(),

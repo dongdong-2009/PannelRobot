@@ -225,6 +225,7 @@ public:
         return oStatus & (1 << index);
     }
     Q_INVOKABLE void sendKeyCommandToHost(int key);
+    Q_INVOKABLE void sendKnobCommandToHost(int knob);
     Q_INVOKABLE quint32 getConfigValue(const QString& addr) const;
     Q_INVOKABLE QString getConfigValueText(const QString& addr) const;
     Q_INVOKABLE double getRealConfigValue(const QString& addr) const
@@ -524,6 +525,13 @@ public:
         ::close(keyFD_);
     }
 
+    Q_INVOKABLE quint32 debug_GetAddrValue(int addr)
+    {
+        ICRobotVirtualhost::AddReadConfigCommand(host_, addr, 1);
+        return readedConfigValues_.value(addr, -1);
+    }
+
+
     void InitMainView();
 
     QWidget* MainView() { return mainView_;}
@@ -569,12 +577,14 @@ private:
     QScriptEngine engine_;
     QScriptValue configRangeGetter_;
     QTranslator translator;
+    QTranslator panelRoboTranslator_;
     QTimer keyCheckTimer_;
     QSettings customSettings_;
     QString valveDefineJSON_;
     QtQuick1ApplicationViewer *mainView_;
     ICVirtualKeyboard virtualKeyboard;
     QFileSystemWatcher hostUpdateFinishedWatcher_;
+    QMap<int, quint32> readedConfigValues_;
 
 
 #ifdef Q_WS_QWS

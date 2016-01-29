@@ -8,6 +8,8 @@ import "configs/AlarmInfo.js" as AlarmInfo
 
 Rectangle {
     id:container
+    property int textOffset: 2
+
 
     property variant unResolvedAlarms: []
     color: "#d1d1d1"
@@ -70,6 +72,8 @@ Rectangle {
                 text: qsTr("Alarm\n Num")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
+
             }
         }
         Rectangle{
@@ -82,6 +86,7 @@ Rectangle {
                 text: qsTr("L")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
 
             }
         }
@@ -95,6 +100,7 @@ Rectangle {
                 text: qsTr("Descr")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
 
             }
         }
@@ -108,6 +114,7 @@ Rectangle {
                 text: qsTr("Triggered Time")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
 
             }
         }
@@ -121,6 +128,7 @@ Rectangle {
                 text: qsTr("End Time")
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
+                x:textOffset
 
             }
         }
@@ -155,7 +163,7 @@ Rectangle {
                     text: alarmNum
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
-
+                    x:textOffset
                 }
             }
             Rectangle{
@@ -167,6 +175,8 @@ Rectangle {
                     text: level
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
+
                 }
             }
             Rectangle{
@@ -178,6 +188,7 @@ Rectangle {
                     text:AlarmInfo.getAlarmDescr(alarmNum)
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
 
                 }
             }
@@ -194,6 +205,7 @@ Rectangle {
                     }
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
 
                 }
             }
@@ -211,6 +223,8 @@ Rectangle {
                     }
                     verticalAlignment: Text.AlignVCenter
                     height: parent.height
+                    x:textOffset
+
                 }
             }
         }

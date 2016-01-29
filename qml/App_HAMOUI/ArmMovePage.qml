@@ -32,6 +32,19 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 40
         spacing: 2
+        Text{
+            id:localType
+            text: currentType
+        }
+        Text {
+            id:hostType
+            onVisibleChanged: {
+                if(visible){
+                    text = panelRobotController.debug_GetAddrValue(24);
+                }
+            }
+        }
+
         Text {
             text: qsTr("Speed")
             anchors.verticalCenter: parent.verticalCenter

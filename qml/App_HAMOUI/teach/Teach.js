@@ -33,20 +33,26 @@ var DefinePoints = {
             definePoints.definedPoints.splice(pID, 0, iPoint);
             return iPoint;
         }
-        definePoints.updatePoint = function(sd, point, pl){
-            var ss = definePoints.definedPoints;
-            for(var i = 0;i<ss.length;i++){
-                if(ss[i].index === sd.index){
-                    definePoints.definedPoints[i].point = point;
+        definePoints.updatePoint = function(pointID, point){
+            var ps = definePoints.definedPoints;
+            for(var i = 0;i<ps.length;i++){
+                if(pointID === ps[i].index){
+                    definePoints.definedPoints[i].point = point.point;
+                    definePoints.definedPoints[i].name = point.name;
                     break;
                 }
             }
-            return definePoints.definedPoints;
+//            return definePoints.definedPoints;
         }
 
-        definePoints.deletePoint = function(index){
-             definePoints.definedPoints.splice(index,1);
-            return definePoints.definedPoints;
+        definePoints.deletePoint = function(pointID){
+            var ps = definePoints.definedPoints;
+            for(var i = 0; i < ps.length; ++i){
+                if(pointID == ps[i].index){
+                    definePoints.definedPoints.splice(i,1);
+                }
+            }
+//            return definePoints.definedPoints;
         }
 
         //{"m0":123, "m1":}
@@ -69,6 +75,27 @@ var DefinePoints = {
             }
             return ret;
         }
+        definePoints.pointDescr = function(point){
+            var ret = "";
+            if(point.name.length !== 0){
+                ret = point.name + "(";
+            }
+
+            var m;
+            var pointPos = point.point;
+            for(var i = 0; i < 6; ++i){
+                m = "m" + i;
+                if(pointPos.hasOwnProperty(m)){
+                    ret += axisInfos[i].name + ":" + pointPos[m] + ","
+                }
+            }
+            ret = ret.substr(0, ret.length - 1);
+            if(point.name.length !== 0){
+                ret += ")";
+            }
+            return ret;
+        }
+
         definePoints.clear = function(){
             definePoints.definedPoints.length = 0;
         }

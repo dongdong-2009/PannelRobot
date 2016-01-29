@@ -38,7 +38,6 @@ var DefinePoints = {
             for(var i = 0;i<ps.length;i++){
                 if(pointID === ps[i].index){
                     definePoints.definedPoints[i].point = point.point;
-                    definePoints.definedPoints[i].name = point.name;
                     break;
                 }
             }

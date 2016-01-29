@@ -61,7 +61,7 @@ Rectangle {
             var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
                 "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
             var toUpdate  = pointModel.get(pointView.currentIndex).point;
-            toUpdate.name = text_name.configValue;
+            toUpdate.name = "P" + toUpdate.index + ":" + text_name.configValue;
             toUpdate.point = pointPos;
             Teach.definedPoints.updatePoint(toUpdate.index, toUpdate);
             pointModel.set(pointView.currentIndex, {"point":toUpdate});

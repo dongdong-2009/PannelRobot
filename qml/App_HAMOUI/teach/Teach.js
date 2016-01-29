@@ -70,7 +70,13 @@ var DefinePoints = {
         //{"m0":123, "m1":}
         definePoints.getPoint = function(name){
             var pID = definePoints.extractPointIDFromPointName(name);
-            return definedPoints.definedPoints[pID];
+            var ps = definedPoints.definedPoints;
+            for(var i = 0; i < ps.length; ++i){
+                if(ps[i].index == pID)
+                    return definedPoints.definedPoints[i];
+            }
+            return null;
+
         }
 
         definePoints.extractPointIDFromPointName = function(name){
@@ -88,6 +94,11 @@ var DefinePoints = {
             return ret;
         }
         definePoints.pointDescr = function(point){
+            if(point == undefined)
+            {
+                console.log("err");
+            }
+
             var ret = "";
             if(point.name.length !== 0){
                 ret = point.name + "(";
@@ -106,6 +117,10 @@ var DefinePoints = {
                 ret += ")";
             }
             return ret;
+        }
+
+        definePoints.getPointName = function(point){
+            return point.name.substr(point.name.indexOf(":") + 1);
         }
 
         definePoints.clear = function(){
@@ -138,21 +153,6 @@ var DefinePoints = {
                     definePoints.definedPoints.splice(points[i].index, 0, points[i]);
                 }
             }
-
-//            if(!actionObject.hasOwnProperty("points"))
-//                return
-//            var points = actionObject.points;
-//            var name;
-//            var pID;
-//            for(var i = 0; i < points.length; ++i){
-//                name = points[i].pointName || "";
-//                if(name === "")
-//                    continue;
-//                pID = definePoints.extractPointIDFromPointName(name);
-//                if(!definePoints.isPointExist(pID)){
-//                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
-//                }
-//            }
         }
 
         return definePoints;

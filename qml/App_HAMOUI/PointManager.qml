@@ -166,7 +166,7 @@ Rectangle {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        text_name.configValue  = pointModel.get(index).point.name;
+                        text_name.configValue  = Teach.definedPoints.getPointName(pointModel.get(index).point);
                         pointView.currentIndex = index;
 
                     }

@@ -11,9 +11,21 @@ Qt.include("../../utils/utils.js")
 
 
 var DefinePoints = {
-    createNew: function(){
+    createNew: function(){        
         var definePoints = {};
+        definePoints.pointsMonitors = [];
         definePoints.definedPoints = [];
+
+        definePoints.registerPointsMonitor = function(obj){
+            definePoints.pointsMonitors.push(obj);
+        }
+        definePoints.informMonitors = function(point){
+            var monitors = definePoints.pointsMonitors;
+            for(var i = 0; i < monitors.length; ++i){
+                monitors[i].onPointChanged(point);
+            }
+        }
+
         definePoints.createPointID = function(){
             var definedPoints = definePoints.definedPoints;
             for(var i = 0; i < definedPoints.length; ++i){
@@ -38,6 +50,7 @@ var DefinePoints = {
             for(var i = 0;i<ps.length;i++){
                 if(pointID === ps[i].index){
                     definePoints.definedPoints[i].point = point.point;
+                    definePoints.informMonitors(definePoints.definedPoints[i]);
                     break;
                 }
             }
@@ -98,21 +111,48 @@ var DefinePoints = {
         definePoints.clear = function(){
             definePoints.definedPoints.length = 0;
         }
-        definePoints.parseActionPoints = function(actionObject){
+        definePoints.parseActionPointsHelper = function(actionObject){
             if(!actionObject.hasOwnProperty("points"))
                 return
             var points = actionObject.points;
             var name;
             var pID;
+            var ret = [];
             for(var i = 0; i < points.length; ++i){
                 name = points[i].pointName || "";
                 if(name === "")
                     continue;
                 pID = definePoints.extractPointIDFromPointName(name);
-                if(!definePoints.isPointExist(pID)){
-                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
+                ret.push(definePoints.createPointObject(pID, name, points[i].pos))
+//                if(!definePoints.isPointExist(pID)){
+//                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
+//                }
+            }
+            return ret;
+        }
+
+        definePoints.parseActionPoints = function(actionObject){
+            var points = definePoints.parseActionPointsHelper(actionObject);
+            for(var i = 0; i < points.length; ++i){
+                if(!definePoints.isPointExist(points[i].index)){
+                    definePoints.definedPoints.splice(points[i].index, 0, points[i]);
                 }
             }
+
+//            if(!actionObject.hasOwnProperty("points"))
+//                return
+//            var points = actionObject.points;
+//            var name;
+//            var pID;
+//            for(var i = 0; i < points.length; ++i){
+//                name = points[i].pointName || "";
+//                if(name === "")
+//                    continue;
+//                pID = definePoints.extractPointIDFromPointName(name);
+//                if(!definePoints.isPointExist(pID)){
+//                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
+//                }
+//            }
         }
 
         return definePoints;

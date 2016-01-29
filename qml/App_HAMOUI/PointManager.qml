@@ -14,15 +14,16 @@ Rectangle {
     border.color: "gray"
     color: "#A0A0F0"
 
-    ICButton{
-        id:button_loadin
-        text: qsTr("Load in")
-        x:80
-        y:10
-        onButtonClicked: {
-            console.log("load in");
+    property int axisNameWidth: 30
 
-        }
+
+
+    ICConfigEdit{
+        id:text_name
+        isNumberOnly: false
+        height: 400
+        y:button_new.y
+        x:214
     }
     ICButton{
         id:button_new
@@ -67,48 +68,78 @@ Rectangle {
             pointModel.set(pointView.currentIndex, {"point":toUpdate});
         }
     }
-    ICConfigEdit{
-        id:text_name
-        isNumberOnly: false
-        height: 400
-        x:200
-        y:350
-    }
-    ICConfigEdit{
-        id:m0
-        configName: qsTr(AxisDefine.axisInfos[0].name)
-        x:70
-        y:50
-    }
-    ICConfigEdit{
-        id:m1
-        configName: qsTr(AxisDefine.axisInfos[1].name)
-        x:70
-        y:100
-    }
-    ICConfigEdit{
-        id:m2
-        configName: qsTr(AxisDefine.axisInfos[2].name)
-        x:70
-        y:150
-    }
-    ICConfigEdit{
-        id:m3
-        configName: qsTr(AxisDefine.axisInfos[3].name)
-        x:70
-        y:200
-    }
-    ICConfigEdit{
-        id:m4
-        configName: qsTr(AxisDefine.axisInfos[4].name)
-        x:70
-        y:250
-    }
-    ICConfigEdit{
-        id:m5
-        configName: qsTr(AxisDefine.axisInfos[5].name)
-        x:70
-        y:300
+    Column{
+        spacing: 6
+        x:60
+        y:10
+        ICButton{
+            id:button_setWorkdPos
+            text: qsTr("Set In World Pos")
+            onButtonClicked: {
+                m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                m1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                m2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                m3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                m4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                m5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+            }
+            width: m0.width
+        }
+        ICButton{
+            id:button_setJogPos
+            text: qsTr("Set In Jog Pos")
+            onButtonClicked: {
+                m0.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
+                m1.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+                m2.configValue = (panelRobotController.statusValue("c_ro_0_32_0_909") / 1000).toFixed(3);
+                m3.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+                m4.configValue = (panelRobotController.statusValue("c_ro_0_32_0_917") / 1000).toFixed(3);
+                m5.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+            }
+            width: m0.width
+
+        }
+        ICConfigEdit{
+            id:m0
+            configName: qsTr(AxisDefine.axisInfos[0].name)
+            configAddr: "s_rw_0_32_3_1300"
+            configNameWidth: axisNameWidth
+        }
+        ICConfigEdit{
+            id:m1
+            configName: qsTr(AxisDefine.axisInfos[1].name)
+            configAddr: "s_rw_0_32_3_1300"
+            configNameWidth: axisNameWidth
+
+        }
+        ICConfigEdit{
+            id:m2
+            configName: qsTr(AxisDefine.axisInfos[2].name)
+            configAddr: "s_rw_0_32_3_1300"
+            configNameWidth: axisNameWidth
+
+        }
+        ICConfigEdit{
+            id:m3
+            configName: qsTr(AxisDefine.axisInfos[3].name)
+            configAddr: "s_rw_0_32_3_1300"
+            configNameWidth: axisNameWidth
+
+        }
+        ICConfigEdit{
+            id:m4
+            configName: qsTr(AxisDefine.axisInfos[4].name)
+            configAddr: "s_rw_0_32_3_1300"
+            configNameWidth: axisNameWidth
+
+        }
+        ICConfigEdit{
+            id:m5
+            configName: qsTr(AxisDefine.axisInfos[5].name)
+            configAddr: "s_rw_0_32_3_1300"
+            configNameWidth: axisNameWidth
+
+        }
     }
 
     Rectangle  {
@@ -124,7 +155,7 @@ Rectangle {
             width: 490;height: 300
             model: pointModel
             clip: true
-            highlight: Rectangle { width: 490; height: 20;color: "lightsteelblue"; radius: 5}
+            highlight: Rectangle { width: 490; height: 20;color: "lightsteelblue"; radius: 2}
             delegate: Item {
                 width: 490;
                 height: 20

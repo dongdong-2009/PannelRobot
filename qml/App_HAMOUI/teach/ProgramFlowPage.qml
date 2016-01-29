@@ -181,6 +181,34 @@ Rectangle {
         hasModify = true;
     }
 
+    function onPointChanged(point){
+        var cpI = currentProgramIndex();
+        var pointLines = PData.pointLinesInfo.getLines(cpI, point.index)
+        var md = currentModel();
+        var tmp;
+        var line;
+
+        for(var l in pointLines){
+            line = pointLines[l];
+            tmp = md.get(line);
+            var actionObject = tmp.mI_ActionObject;
+            var originpPoints = actionObject.points;
+            for(var i = 0; i < originpPoints.length; ++i){
+                if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[i].pointName)){
+                    actionObject.points[i].pos = point.point;
+                }
+            }
+            md.setProperty(line, "mI_ActionObject",actionObject);
+
+//            md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
+//            PData.counterLinesInfo.removeLine(cpI, line);
+//            if(c1 >= 0)
+//                PData.counterLinesInfo.add(cpI, c1, line);
+//            if(c2 >= 0)
+//                PData.counterLinesInfo.add(cpI, c2, line);
+        }
+    }
+
     function modelToProgramHelper(which){
         var model = PData.programs[which];
         var ret = [];
@@ -232,6 +260,7 @@ Rectangle {
     }
 
     function onSaveTriggered(){
+        hasModify = true;
         saveProgram(currentProgramIndex());
         //        var errInfo;
         //        if(currentProgramIndex() == PData.kFunctionProgramIndex){
@@ -1232,6 +1261,7 @@ Rectangle {
         var program = PData.programs[which];
         PData.counterLinesInfo.clear(which);
         PData.stackLinesInfo.clear(which);
+        PData.pointLinesInfo.clear(which);
         var step;
         for(var i = 0; i < program.count; ++i){
             step = program.get(i);
@@ -1244,6 +1274,12 @@ Rectangle {
             }
             if(Teach.hasStackIDAction(step.mI_ActionObject)){
                 PData.stackLinesInfo.add(which, step.mI_ActionObject.stackID, i);
+            }
+            if(Teach.canActionUsePoint(step.mI_ActionObject)){
+                var points = Teach.definedPoints.parseActionPointsHelper(step.mI_ActionObject);
+                for(var p = 0; p < points.length; ++p){
+                    PData.pointLinesInfo.add(which, points[p].index, i);
+                }
             }
         }
     }
@@ -1356,6 +1392,8 @@ Rectangle {
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(programFlowPageInstance);
 
         setModuleEnabled(false);
+
+        Teach.definedPoints.registerPointsMonitor(programFlowPageInstance);
 
         hasInit = true;
     }

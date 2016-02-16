@@ -11,6 +11,9 @@ Item {
     property bool isEditorMode: false
     property variant points: []
     property int action: -1
+    property variant lPointNames: []
+    property variant fPointNames: []
+    property variant oPointNames: []
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -50,9 +53,17 @@ Item {
         return delay.configValue;
     }
 
-    function refreshSelectablePoisnts(points){
+    function refreshSelectablePoisnts(){
         selReferenceName.configValue = -1;
-        selReferenceName.items = points;
+
+        if(action == -1)
+            selReferenceName.items = [];
+        else if(action === Teach.actions.F_CMD_JOINTCOORDINATE)
+            selReferenceName.items = fPointNames;
+        else if(action === Teach.actions.F_CMD_COORDINATE_DEVIATION)
+            selReferenceName.items = oPointNames;
+        else
+            selReferenceName.items = lPointNames;
     }
 
     function isPoseMode(){
@@ -67,9 +78,38 @@ Item {
 
     }
 
-    function onPointChanged(point){
-        console.log(Teach.definedPoints.pointDescr(point));
-        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+    function onPointAdded(point){
+//        console.log(Teach.definedPoints.pointDescr(point));
+//        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+        var pNL = Teach.definedPoints.pointNameList();
+        var type;
+        var fPNs = [];
+        var lPNs = [];
+        var oPNs = [];
+        for(var i = 0; i < pNL.length; ++i){
+            type = pNL[i][0];
+            if(type === Teach.DefinePoints.kPT_Free){
+                fPNs.push(pNL[i]);
+            }else if(type === Teach.DefinePoints.kPT_Locus){
+                lPNs.push(pNL[i]);
+            }else if(type == Teach.DefinePoints.kPT_Offset){
+                oPNs.push(pNL[i]);
+            }else
+                lPNs.push(pNL[i]);
+        }
+        fPointNames = fPNs;
+        lPointNames = lPNs;
+        oPointNames = oPNs;
+        refreshSelectablePoisnts();
+
+    }
+
+    function onPointDeleted(point){
+        onPointAdded(point);
+    }
+
+    function onPointsCleared(){
+        onPointAdded(null);
     }
 
 //    onVisibleChanged: {
@@ -317,6 +357,7 @@ Item {
             PropertyAnimation{ targets: [pointViewContainer];properties: "color";to:"white";duration: 300}
         }
         ICButtonGroup{
+            id:typeGroup
             layoutMode: 2
             isAutoSize: false
             mustChecked: true
@@ -403,6 +444,8 @@ Item {
                 motor3.visible = motor3.isChecked;
                 motor4.visible = motor4.isChecked;
                 motor5.visible = motor5.isChecked;
+                refreshSelectablePoisnts();
+
             }
 
             Flow{
@@ -502,8 +545,10 @@ Item {
                         pointName = point.name;
                         refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
                     }else if(selReferenceName.isChecked){
-                        ret = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
-                        pointName = selReferenceName.configText();
+                        if(selReferenceName.configValue >= 0){
+                            ret = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
+                            pointName = selReferenceName.configText();
+                        }
                     }
 
                     return createPoint(pointName, ret);
@@ -544,6 +589,7 @@ Item {
     Component.onCompleted: {
         setZero.clicked();
         Teach.definedPoints.registerPointsMonitor(container);
+        onPointsCleared()
     }
 
 }

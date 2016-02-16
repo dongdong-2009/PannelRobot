@@ -22,11 +22,29 @@ var DefinePoints = {
         definePoints.registerPointsMonitor = function(obj){
             definePoints.pointsMonitors.push(obj);
         }
-        definePoints.informMonitors = function(point){
+
+        definePoints.informMonitorsHelper = function(event, point){
             var monitors = definePoints.pointsMonitors;
             for(var i = 0; i < monitors.length; ++i){
-                monitors[i].onPointChanged(point);
+                if(monitors[i].hasOwnProperty(event))
+                    monitors[i][event](point);
             }
+        }
+
+        definePoints.informPointDataChanged = function(point){
+            definePoints.informMonitorsHelper("onPointChanged", point);
+        }
+
+        definePoints.informPointAdded = function(point){
+            definePoints.informMonitorsHelper("onPointAdded", point);
+        }
+
+        definePoints.informPointDeleted = function(point){
+            definePoints.informMonitorsHelper("onPointDeleted", point);
+        }
+
+        definePoints.informPointsCleared = function(){
+            definePoints.informMonitorsHelper("onPointsCleared");
         }
 
         definePoints.createPointID = function(){
@@ -47,7 +65,7 @@ var DefinePoints = {
             name = t + "P" + pID + ":" + name;
             var iPoint = definePoints.createPointObject(pID, name, point);
             definePoints.definedPoints.splice(pID, 0, iPoint);
-            definePoints.informMonitors(iPoint);
+            definePoints.informPointAdded(iPoint);
             return iPoint;
         }
         definePoints.updatePoint = function(pointID, point){
@@ -55,7 +73,7 @@ var DefinePoints = {
             for(var i = 0;i<ps.length;i++){
                 if(pointID === ps[i].index){
                     definePoints.definedPoints[i].point = point.point;
-                    definePoints.informMonitors(definePoints.definedPoints[i]);
+                    definePoints.informPointDataChanged(definePoints.definedPoints[i]);
                     break;
                 }
             }
@@ -67,7 +85,7 @@ var DefinePoints = {
             for(var i = 0; i < ps.length; ++i){
                 if(pointID == ps[i].index){
                     definePoints.definedPoints.splice(i,1);
-                    definePoints.informMonitors(iPoint);
+                    definePoints.informPointDeleted(ps[i]);
                 }
             }
 //            return definePoints.definedPoints;
@@ -132,6 +150,7 @@ var DefinePoints = {
 
         definePoints.clear = function(){
             definePoints.definedPoints.length = 0;
+            definePoints.informPointsCleared();
         }
         definePoints.parseActionPointsHelper = function(actionObject){
             if(!actionObject.hasOwnProperty("points"))
@@ -158,6 +177,8 @@ var DefinePoints = {
             for(var i = 0; i < points.length; ++i){
                 if(!definePoints.isPointExist(points[i].index)){
                     definePoints.definedPoints.splice(points[i].index, 0, points[i]);
+                    definePoints.informPointAdded(points[i]);
+
                 }
             }
         }

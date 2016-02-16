@@ -20,10 +20,16 @@ Rectangle {
             "m3":m3.configValue || 0.000,"m4":m4.configValue || 0.000,"m5":m5.configValue || 0.000};
         var pointName = text_name.configValue;
         var point = Teach.definedPoints.addNewPoint(pointName, pointPos, type);
-        pointModel.append({"point":point});
+//        pointModel.append({"point":point});
     }
 
+    function onPointsCleared(){
+        pointModel.clear();
+    }
 
+    function onPointAdded(point){
+        pointModel.append({"point":point});
+    }
 
 
     ICConfigEdit{
@@ -216,5 +222,6 @@ Rectangle {
         for(var i = 0 ;i < ps.length;i++){
             pointModel.append({"point":Teach.definedPoints.getPoint(ps[i])});
         }
+        Teach.definedPoints.registerPointsMonitor(container);
     }
 }

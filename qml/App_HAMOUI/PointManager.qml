@@ -16,8 +16,13 @@ Rectangle {
     property int axisNameWidth: 30
 
     function newPointHelper(type){
-        var pointPos = {"m0":m0.configValue || 0.000,"m1":m1.configValue || 0.000,"m2":m2.configValue || 0.000,
-            "m3":m3.configValue || 0.000,"m4":m4.configValue || 0.000,"m5":m5.configValue || 0.000};
+        var pointPos = {
+            "m0":m0.configValue || 0.000,
+            "m1":m1.configValue || 0.000,
+            "m2":m2.configValue || 0.000,
+            "m3":m3.configValue || 0.000,
+            "m4":m4.configValue || 0.000,
+            "m5":m5.configValue || 0.000};
         var pointName = text_name.configValue;
         var point = Teach.definedPoints.addNewPoint(pointName, pointPos, type);
         //        pointModel.append({"point":point});
@@ -61,7 +66,7 @@ Rectangle {
                 var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
                     "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
                 var toUpdate  = pointModel.get(pointView.currentIndex).point;
-                toUpdate.name = "P" + toUpdate.index + ":" + text_name.configValue;
+                toUpdate.name = toUpdate.name.substr(0,2) + toUpdate.index + ":" + text_name.configValue;
                 toUpdate.point = pointPos;
                 Teach.definedPoints.updatePoint(toUpdate.index, toUpdate);
                 pointModel.set(pointView.currentIndex, {"point":toUpdate});

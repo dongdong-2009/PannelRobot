@@ -20,7 +20,7 @@ Rectangle {
             "m3":m3.configValue || 0.000,"m4":m4.configValue || 0.000,"m5":m5.configValue || 0.000};
         var pointName = text_name.configValue;
         var point = Teach.definedPoints.addNewPoint(pointName, pointPos, type);
-//        pointModel.append({"point":point});
+        //        pointModel.append({"point":point});
     }
 
     function onPointsCleared(){
@@ -31,42 +31,41 @@ Rectangle {
         pointModel.append({"point":point});
     }
 
-
-    ICConfigEdit{
-        id:text_name
-        isNumberOnly: false
-        height: 400
+    Row{
         y:370
-        x:214
-    }
-
-    ICButton{
-        id:button_delet
-        text: qsTr("Delete")
-        height: 25
-        x:450
-        y:text_name.y
-        onButtonClicked: {
-            var pl = Teach.definedPoints.pointNameList();
-            var toDelete = pointModel.get(pointView.currentIndex).point;
-            Teach.definedPoints.deletePoint(toDelete.index);
-            pointModel.remove(pointView.currentIndex);
+        x:pointViewContainer.x
+        spacing: 6
+        ICConfigEdit{
+            id:text_name
+            isNumberOnly: false
+            inputWidth: 195
+            configName: qsTr("Point Name:")
         }
-    }
-    ICButton{
-        id:button_replace
-        text: qsTr("Replace")
-        height: 25
-        x:585
-        y:text_name.y
-        onButtonClicked: {
-            var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
-                "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
-            var toUpdate  = pointModel.get(pointView.currentIndex).point;
-            toUpdate.name = "P" + toUpdate.index + ":" + text_name.configValue;
-            toUpdate.point = pointPos;
-            Teach.definedPoints.updatePoint(toUpdate.index, toUpdate);
-            pointModel.set(pointView.currentIndex, {"point":toUpdate});
+
+        ICButton{
+            id:button_delet
+            text: qsTr("Delete")
+            height: 25
+            onButtonClicked: {
+                var pl = Teach.definedPoints.pointNameList();
+                var toDelete = pointModel.get(pointView.currentIndex).point;
+                Teach.definedPoints.deletePoint(toDelete.index);
+                pointModel.remove(pointView.currentIndex);
+            }
+        }
+        ICButton{
+            id:button_replace
+            text: qsTr("Replace")
+            height: 25
+            onButtonClicked: {
+                var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
+                    "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
+                var toUpdate  = pointModel.get(pointView.currentIndex).point;
+                toUpdate.name = "P" + toUpdate.index + ":" + text_name.configValue;
+                toUpdate.point = pointPos;
+                Teach.definedPoints.updatePoint(toUpdate.index, toUpdate);
+                pointModel.set(pointView.currentIndex, {"point":toUpdate});
+            }
         }
     }
     Column{
@@ -147,14 +146,14 @@ Rectangle {
             text: qsTr("New Free")
             height: 25
             width: button_setWorldPos.width
-//            x:60
-//            y:270
+            //            x:60
+            //            y:270
             onButtonClicked: {
-//                var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
-//                    "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
-//                var pointName = text_name.configValue;
-//                var point = Teach.definedPoints.addNewPoint(pointName, pointPos);
-//                pointModel.append({"point":point});
+                //                var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
+                //                    "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
+                //                var pointName = text_name.configValue;
+                //                var point = Teach.definedPoints.addNewPoint(pointName, pointPos);
+                //                pointModel.append({"point":point});
                 newPointHelper(Teach.DefinePoints.kPT_Free);
             }
         }
@@ -164,8 +163,8 @@ Rectangle {
             text: qsTr("New Locus")
             width: button_setWorldPos.width
             height: 25
-//            x:button_newFree.x
-//            y:button_newFree.y + button_newFree.height + 2
+            //            x:button_newFree.x
+            //            y:button_newFree.y + button_newFree.height + 2
             onButtonClicked: {
                 newPointHelper(Teach.DefinePoints.kPT_Locus);
             }
@@ -176,8 +175,8 @@ Rectangle {
             text: qsTr("New Offset")
             width: button_setWorldPos.width
             height: 25
-//            x:button_newFree.x
-//            y:button_newLocus.y + button_newLocus.height + 2
+            //            x:button_newFree.x
+            //            y:button_newLocus.y + button_newLocus.height + 2
             onButtonClicked: {
                 newPointHelper(Teach.DefinePoints.kPT_Offset);
             }
@@ -185,6 +184,7 @@ Rectangle {
     }
 
     Rectangle  {
+        id:pointViewContainer
         width: 490; height: 300
         x:200
         y:50
@@ -208,7 +208,14 @@ Rectangle {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        text_name.configValue  = Teach.definedPoints.getPointName(pointModel.get(index).point);
+                        var iPoint = pointModel.get(index).point;
+                        text_name.configValue  = Teach.definedPoints.getPointName(iPoint);
+                        m0.configValue = iPoint.point.m0 || 0.000;
+                        m1.configValue = iPoint.point.m1 || 0.000;
+                        m2.configValue = iPoint.point.m2 || 0.000;
+                        m3.configValue = iPoint.point.m3 || 0.000;
+                        m4.configValue = iPoint.point.m4 || 0.000;
+                        m5.configValue = iPoint.point.m5 || 0.000;
                         pointView.currentIndex = index;
 
                     }

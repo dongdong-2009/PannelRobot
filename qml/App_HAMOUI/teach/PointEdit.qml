@@ -7,6 +7,7 @@ import "../../utils/utils.js" as Utils
 
 
 Item {
+    id:container
     property bool isEditorMode: false
     property variant points: []
     property int action: -1
@@ -50,6 +51,7 @@ Item {
     }
 
     function refreshSelectablePoisnts(points){
+        selReferenceName.configValue = -1;
         selReferenceName.items = points;
     }
 
@@ -65,14 +67,19 @@ Item {
 
     }
 
-    onVisibleChanged: {
-        if(visible){
-            refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
-            //            if(!isEditorMode){
-            //                clearPoints();
-            //            }
-        }
+    function onPointChanged(point){
+        console.log(Teach.definedPoints.pointDescr(point));
+        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
     }
+
+//    onVisibleChanged: {
+//        if(visible){
+//            refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
+//            //            if(!isEditorMode){
+//            //                clearPoints();
+//            //            }
+//        }
+//    }
 
     onActionChanged: {
         if(action < 0) return;
@@ -246,6 +253,7 @@ Item {
             configNameWidth: 120
             inputWidth: 160
             isNumberOnly: false
+            visible: false
         }
 
         ICCheckableComboboxEdit{
@@ -535,7 +543,7 @@ Item {
     }
     Component.onCompleted: {
         setZero.clicked();
-
+        Teach.definedPoints.registerPointsMonitor(container);
     }
 
 }

@@ -7,6 +7,21 @@
 #include "hccommparagenericdef.h"
 
 ICRobotMoldPTR ICRobotMold::currentMold_;
+QMap<int, QStringList> CreatePathActionMotorNamesMap()
+{
+    QMap<int, QStringList> ret;
+    ret.insert(F_CMD_LINE2D_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_LINE3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_ARC3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_MOVE_POSE, QStringList()<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_LINE3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_JOINTCOORDINATE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_COORDINATE_DEVIATION, QStringList()<<"m0"<<"m1"<<"m2");
+    return ret;
+}
+static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
+
+static QMap<int, QStringList> pathActionMotorNamesMap = CreatePathActionMotorNamesMap();
 ICRobotMold::ICRobotMold()
 {
 }
@@ -61,14 +76,15 @@ int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
     return ICRobotMold::kCCErr_None;
 }
 
-static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
-QVector<quint32> PointToPosList(const QVariantMap& point)
+
+QVector<quint32> PointToPosList(int action, const QVariantMap& point)
 {
     QVector<quint32> ret;
-    for(int i = 0; i < motorNames.size(); ++i)
+    QStringList mNs = pathActionMotorNamesMap.value(action);
+    for(int i = 0; i < mNs.size(); ++i)
     {
-        if(point.contains(motorNames.at(i)))
-            ret.append(ICUtility::doubleToInt(point.value(motorNames.at(i)).toDouble(), 3));
+        if(point.contains(mNs.at(i)))
+            ret.append(ICUtility::doubleToInt(point.value(mNs.at(i)).toDouble(), 3));
     }
     return ret;
 }
@@ -98,6 +114,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         point = points.at(0).toMap().value("pos").toMap();
         int enbits = 0;
         quint32 pos[6];
+
         for(int i = 0; i < motorNames.size(); ++i)
         {
             if(point.contains(motorNames.at(i)))
@@ -126,7 +143,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
             point = points.at(i).toMap();
             if(point.isEmpty())
                 return ICRobotMold::kCCErr_Wrong_Action_Format;
-            item += PointToPosList(point.value("pos").toMap());
+            item += PointToPosList(item.at(0),point.value("pos").toMap());
         }
     }
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));

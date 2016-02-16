@@ -11,6 +11,9 @@ Qt.include("../../utils/utils.js")
 
 
 var DefinePoints = {
+    kPT_Locus: "L",
+    kPT_Free:"F",
+    kPT_Offset:"D",
     createNew: function(){        
         var definePoints = {};
         definePoints.pointsMonitors = [];
@@ -38,11 +41,13 @@ var DefinePoints = {
             return {"index":pID, "name":name, "point":point};
         }
 
-        definePoints.addNewPoint = function(name, point){
+        definePoints.addNewPoint = function(name, point, type){
             var pID = definePoints.createPointID();
-            name = "P" + pID + ":" + name;
+            var t = type || DefinePoints.kPT_Free
+            name = t + "P" + pID + ":" + name;
             var iPoint = definePoints.createPointObject(pID, name, point);
             definePoints.definedPoints.splice(pID, 0, iPoint);
+            definePoints.informMonitors(iPoint);
             return iPoint;
         }
         definePoints.updatePoint = function(pointID, point){
@@ -62,6 +67,7 @@ var DefinePoints = {
             for(var i = 0; i < ps.length; ++i){
                 if(pointID == ps[i].index){
                     definePoints.definedPoints.splice(i,1);
+                    definePoints.informMonitors(iPoint);
                 }
             }
 //            return definePoints.definedPoints;
@@ -80,7 +86,8 @@ var DefinePoints = {
         }
 
         definePoints.extractPointIDFromPointName = function(name){
-            return parseInt(name.substring(1, name.indexOf(":")));
+            var nI = name.indexOf(":");
+            return parseInt(name.substring(nI - 1, nI));
         }
         definePoints.isPointExist = function(pointID){
             if(pointID >= definePoints.definedPoints.length) return false;

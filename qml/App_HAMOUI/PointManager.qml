@@ -1,5 +1,4 @@
 import QtQuick 1.1
-import QtQuick 1.0
 import "../ICCustomElement"
 import "./teach/Teach.js" as Teach
 import "configs/AxisDefine.js" as AxisDefine
@@ -16,35 +15,31 @@ Rectangle {
 
     property int axisNameWidth: 30
 
+    function newPointHelper(type){
+        var pointPos = {"m0":m0.configValue || 0.000,"m1":m1.configValue || 0.000,"m2":m2.configValue || 0.000,
+            "m3":m3.configValue || 0.000,"m4":m4.configValue || 0.000,"m5":m5.configValue || 0.000};
+        var pointName = text_name.configValue;
+        var point = Teach.definedPoints.addNewPoint(pointName, pointPos, type);
+        pointModel.append({"point":point});
+    }
+
+
 
 
     ICConfigEdit{
         id:text_name
         isNumberOnly: false
         height: 400
-        y:button_new.y
+        y:370
         x:214
     }
-    ICButton{
-        id:button_new
-        text: qsTr("New")
-        height: 25
-        x:315
-        y:350
-        onButtonClicked: {
-            var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
-                "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
-            var pointName = text_name.configValue;
-            var point = Teach.definedPoints.addNewPoint(pointName, pointPos);
-            pointModel.append({"point":point});
-        }
-    }
+
     ICButton{
         id:button_delet
         text: qsTr("Delete")
         height: 25
         x:450
-        y:350
+        y:text_name.y
         onButtonClicked: {
             var pl = Teach.definedPoints.pointNameList();
             var toDelete = pointModel.get(pointView.currentIndex).point;
@@ -57,7 +52,7 @@ Rectangle {
         text: qsTr("Replace")
         height: 25
         x:585
-        y:350
+        y:text_name.y
         onButtonClicked: {
             var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
                 "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
@@ -72,8 +67,9 @@ Rectangle {
         spacing: 6
         x:60
         y:10
+
         ICButton{
-            id:button_setWorkdPos
+            id:button_setWorldPos
             text: qsTr("Set In World Pos")
             onButtonClicked: {
                 m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
@@ -139,6 +135,46 @@ Rectangle {
             configAddr: "s_rw_0_32_3_1300"
             configNameWidth: axisNameWidth
 
+        }
+        ICButton{
+            id:button_newFree
+            text: qsTr("New Free")
+            height: 25
+            width: button_setWorldPos.width
+//            x:60
+//            y:270
+            onButtonClicked: {
+//                var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
+//                    "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
+//                var pointName = text_name.configValue;
+//                var point = Teach.definedPoints.addNewPoint(pointName, pointPos);
+//                pointModel.append({"point":point});
+                newPointHelper(Teach.DefinePoints.kPT_Free);
+            }
+        }
+
+        ICButton{
+            id:button_newLocus
+            text: qsTr("New Locus")
+            width: button_setWorldPos.width
+            height: 25
+//            x:button_newFree.x
+//            y:button_newFree.y + button_newFree.height + 2
+            onButtonClicked: {
+                newPointHelper(Teach.DefinePoints.kPT_Locus);
+            }
+        }
+
+        ICButton{
+            id:button_newOffset
+            text: qsTr("New Offset")
+            width: button_setWorldPos.width
+            height: 25
+//            x:button_newFree.x
+//            y:button_newLocus.y + button_newLocus.height + 2
+            onButtonClicked: {
+                newPointHelper(Teach.DefinePoints.kPT_Offset);
+            }
         }
     }
 

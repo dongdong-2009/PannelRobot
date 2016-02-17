@@ -95,8 +95,8 @@ QToolButton:pressed, QPushButton:pressed{
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="0" column="0">
-       <widget class="QToolButton" name="num_7">
+      <item row="1" column="3" colspan="2">
+       <widget class="QToolButton" name="commandBS">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -105,7 +105,7 @@ QToolButton:pressed, QPushButton:pressed{
         </property>
         <property name="minimumSize">
          <size>
-          <width>85</width>
+          <width>131</width>
           <height>0</height>
          </size>
         </property>
@@ -113,35 +113,18 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true"> #commandBS{
+	background-color: rgb(255, 255, 0);
+	border-style:solid solid none none; 
+}
+
+#commandBS:pressed{
+     background-color: rgba(62, 113, 255, 255);
+     color:white;
+}</string>
         </property>
         <property name="text">
-         <string notr="true">7</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QToolButton" name="num_8">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>85</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
-        </property>
-        <property name="text">
-         <string notr="true">8</string>
+         <string>BS</string>
         </property>
        </widget>
       </item>
@@ -163,65 +146,15 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none none; </string>
         </property>
         <property name="text">
          <string notr="true">9</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="QToolButton" name="commandAdd">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>61</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
-        </property>
-        <property name="text">
-         <string notr="true">+</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QToolButton" name="commandMinu">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>61</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
-        </property>
-        <property name="text">
-         <string notr="true">-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QToolButton" name="num_4">
+      <item row="0" column="0">
+       <widget class="QToolButton" name="num_7">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -238,35 +171,10 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none solid; </string>
         </property>
         <property name="text">
-         <string notr="true">4</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QToolButton" name="num_5">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>85</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
-        </property>
-        <property name="text">
-         <string notr="true">5</string>
+         <string notr="true">7</string>
         </property>
        </widget>
       </item>
@@ -288,15 +196,15 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none none; </string>
         </property>
         <property name="text">
          <string notr="true">6</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="3" colspan="2">
-       <widget class="QToolButton" name="commandBS">
+      <item row="1" column="1">
+       <widget class="QToolButton" name="num_5">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -305,7 +213,7 @@ QToolButton:pressed, QPushButton:pressed{
         </property>
         <property name="minimumSize">
          <size>
-          <width>131</width>
+          <width>85</width>
           <height>0</height>
          </size>
         </property>
@@ -313,18 +221,10 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"> #commandBS{
-	background-color: rgb(255, 255, 0);
-	border-style:solid solid solid solid;
-}
-
-#commandBS:pressed{
-     background-color: rgba(62, 113, 255, 255);
-     color:white;
-}</string>
+         <string notr="true">border-style:solid solid none none; </string>
         </property>
         <property name="text">
-         <string>BS</string>
+         <string notr="true">5</string>
         </property>
        </widget>
       </item>
@@ -346,10 +246,35 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none solid; </string>
         </property>
         <property name="text">
          <string notr="true">1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QToolButton" name="num_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-style:solid solid none solid; </string>
+        </property>
+        <property name="text">
+         <string notr="true">4</string>
         </property>
        </widget>
       </item>
@@ -371,15 +296,15 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none none; </string>
         </property>
         <property name="text">
          <string notr="true">2</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <widget class="QToolButton" name="num_3">
+      <item row="3" column="2">
+       <widget class="QToolButton" name="commandPoint">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -396,10 +321,10 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid solid none; </string>
         </property>
         <property name="text">
-         <string notr="true">3</string>
+         <string notr="true">.</string>
         </property>
        </widget>
       </item>
@@ -421,10 +346,60 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none none; </string>
         </property>
         <property name="text">
          <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QToolButton" name="num_0">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-style:solid solid solid none; </string>
+        </property>
+        <property name="text">
+         <string notr="true">0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QToolButton" name="commandMinu">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>61</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-style:solid solid none none; </string>
+        </property>
+        <property name="text">
+         <string notr="true">-</string>
         </property>
        </widget>
       </item>
@@ -461,8 +436,8 @@ QToolButton:pressed, QPushButton:pressed{
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QToolButton" name="num_0">
+      <item row="2" column="2">
+       <widget class="QToolButton" name="num_3">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -479,35 +454,10 @@ QToolButton:pressed, QPushButton:pressed{
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
+         <string notr="true">border-style:solid solid none none; </string>
         </property>
         <property name="text">
-         <string notr="true">0</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QToolButton" name="commandPoint">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>85</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-style:solid solid solid solid; </string>
-        </property>
-        <property name="text">
-         <string notr="true">.</string>
+         <string notr="true">3</string>
         </property>
        </widget>
       </item>
@@ -531,7 +481,7 @@ QToolButton:pressed, QPushButton:pressed{
         <property name="styleSheet">
          <string notr="true">#commandEnt{
      background-color: rgb(85, 255, 0);
-	 border-style:solid solid solid solid; 
+	 border-style:solid solid solid none; 
 }
 
 #commandEnt:pressed{
@@ -541,6 +491,56 @@ QToolButton:pressed, QPushButton:pressed{
         </property>
         <property name="text">
          <string>Ent</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QToolButton" name="commandAdd">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>61</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-style:solid solid none none; </string>
+        </property>
+        <property name="text">
+         <string notr="true">+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QToolButton" name="num_8">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-style:solid solid none none; </string>
+        </property>
+        <property name="text">
+         <string notr="true">8</string>
         </property>
        </widget>
       </item>

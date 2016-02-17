@@ -407,7 +407,8 @@ QToolButton:pressed, QPushButton:pressed{
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-style:solid solid solid solid; </string>
+      <string notr="true">border-style:solid solid solid solid; 
+background-color: rgb(103, 255, 187);</string>
      </property>
      <property name="text">
       <string>Ent</string>
@@ -482,7 +483,16 @@ QToolButton:pressed, QPushButton:pressed{
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-style:solid solid solid solid; </string>
+      <string notr="true">#btn_ce{
+	border-style:solid solid solid solid; 
+	background-color: rgb(85, 255, 255);
+}
+
+#btn_ce:pressed{
+	 border-style:solid solid solid solid; 
+     background-color: rgba(62, 113, 255, 255);
+     color:white;
+}</string>
      </property>
      <property name="text">
       <string>CE</string>

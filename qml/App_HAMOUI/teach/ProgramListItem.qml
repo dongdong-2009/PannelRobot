@@ -71,7 +71,8 @@ Rectangle{
     }
     Text {
         id:descr
-        text:"         " + container.text
+        text: container.text
+        textFormat: Text.RichText
         width: parent.width - num.width
 //        wrapMode: Text.WrapAnywhere
         anchors.left: num.right

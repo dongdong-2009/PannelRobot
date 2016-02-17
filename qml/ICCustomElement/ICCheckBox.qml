@@ -24,7 +24,7 @@ Item {
         width: parent.height
         height: parent.height
         border.width: 1
-        border.color: "gray"
+        border.color: "black"
         color: isChecked ? "lightgreen" :"white"
     }
     Text {

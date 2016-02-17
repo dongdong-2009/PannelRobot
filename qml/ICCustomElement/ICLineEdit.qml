@@ -35,7 +35,7 @@ FocusScope{
 
     Rectangle {
         id:rectangle
-        border.color: "gray"
+        border.color: "black"
         border.width: 1
         //        width: parent.width - unit.width
         width: 80

@@ -22,7 +22,7 @@ Rectangle {
     height: 24
 
     border.width: 1
-    border.color: "gray"
+    border.color: "black"
 
     state: enabled ? "" : "disabled"
 
@@ -81,7 +81,7 @@ Rectangle {
                     }
                 }
             }
-            highlight: Rectangle { color: "lightsteelblue"; width: itemContainer.width }
+            highlight: Rectangle {x:1; color: "lightsteelblue"; width: itemContainer.width - x; }
             highlightMoveDuration: 1
             width: parent.width
             height: parent.height

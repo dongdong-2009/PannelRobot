@@ -1407,12 +1407,15 @@ var actionObjectToEditableITems = function(actionObject){
     return ret;
 }
 
-
-var actionToString = function(actionObject){
+var actionToStringNoCusomName= function(actionObject){
     var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
     if(toStrHandler === undefined) {console.log(actionObject.action)}
+    return toStrHandler(actionObject);
+}
+
+var actionToString = function(actionObject){
     var customName = actionObject.customName || "";
-    return customName + " " + toStrHandler(actionObject);
+    return customName + " " + actionToStringNoCusomName(actionObject);
 }
 
 function ProgramModelItem(actionObject, at){

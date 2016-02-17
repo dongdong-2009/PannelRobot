@@ -142,6 +142,15 @@ var alarmInfo = {
     "300":qsTr("ALARM_COUNTER_NOT_DEFINE"),
 }
 
+var alarmDetails = {
+    "1":"1",
+    "2":"2",
+    "3":"3",
+    "4":"4",
+    "5":"5",
+    "6":"6",
+}
+
 function analysisAlarmNum(errNum){
     return {
         "type":(errNum <=2048 ? NORMAL_TYPE: (errNum >> 8) & 0x7),
@@ -192,4 +201,8 @@ function getCustomAlarmDescr(errNum){
         return customAlarmInfo[errNum.toString()];
     }
     return qsTr("Unknow Err");
+}
+
+function getAlarmDetail(errNum){
+    return qsTr("None");
 }

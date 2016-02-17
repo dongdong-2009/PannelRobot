@@ -79,7 +79,7 @@ QToolButton:pressed, QPushButton:pressed{
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="numKeyboard">
     <widget class="QWidget" name="numKb" native="true">
@@ -1718,7 +1718,6 @@ _</string>
     <zorder>line4</zorder>
     <zorder>matchContainer</zorder>
     <zorder>line1</zorder>
-    <zorder>btn_plus</zorder>
    </widget>
   </widget>
  </widget>

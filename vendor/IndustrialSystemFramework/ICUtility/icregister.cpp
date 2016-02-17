@@ -155,6 +155,7 @@ void ICRegister::SetUseTime(int hour)
     settings_.beginGroup(SETTINGS_GROUP);
     settings_.setValue(SETTINGS_LEFT_USE_TIME, hour);
     settings_.endGroup();
+    settings_.sync();
     isTimeOver_ = (hour < 0);
 }
 

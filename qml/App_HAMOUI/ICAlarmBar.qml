@@ -82,6 +82,10 @@ Rectangle {
 
 
 
+    Rectangle{
+        id:alarmDetail
+    }
+
     onVisibleChanged: {
         if(visible){
             flicker.start();

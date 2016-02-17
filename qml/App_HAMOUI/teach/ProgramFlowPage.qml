@@ -360,7 +360,7 @@ Rectangle {
         for(var l in stackLines){
             line = stackLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":programListView.actionObjectToText(tmp.mI_ActionObject)});
             PData.counterLinesInfo.removeLine(cpI, line);
             if(c1 >= 0)
                 PData.counterLinesInfo.add(cpI, c1, line);
@@ -808,6 +808,15 @@ Rectangle {
                     height: parent.height - 2
                     spacing:2
                     clip: true
+                    function actionObjectToText(actionObject){
+                        var originText = Teach.actionToStringNoCusomName(actionObject);
+                        if(actionObject.customName){
+                            var styledCN = ICString.icStrformat('<font size="5" color="#0000FF">{0}</font>', actionObject.customName);
+                            originText = styledCN + " " + originText;
+                        }
+                        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+
                     delegate: ProgramListItem{
                         x:1
                         width: programListView.width - x
@@ -816,7 +825,7 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index
-                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: Teach.actionToString(mI_ActionObject));
+                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: programListView.actionObjectToText(mI_ActionObject));
 
                         actionType: mI_ActionType
                         MouseArea{

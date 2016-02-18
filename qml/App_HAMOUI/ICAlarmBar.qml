@@ -128,11 +128,11 @@ Rectangle {
                 color: "red"
             }
             Text{
-                id:descrb
+                id:customdescrb
                 width:640
                 font.pixelSize:20
                 color: "red"
-                text: AlarmInfo.getCustomAlarmDescr(errID)
+                text: AlarmInfo.getAlarmDescr(errID)
 
             }
         }

@@ -1,6 +1,6 @@
 #! /bin/sh
 DATABASE_PATH="/opt/Qt/UpdateApps"
-ln -s /dev/ttyO0 /dev/ttySZHC0
+ln -s /dev/ttyO1 /dev/ttySZHC0
 # Set the QWS_MOUSE_PROTO for touchscreen if it exists
 LedTest_335x on
 BootChecker 4 &

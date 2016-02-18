@@ -7,6 +7,8 @@ BootChecker 4 &
 if [ -e /dev/input/touchscreen0 ]
 then
     #export environment 
+    InstallModules.sh /home/root
+    ln -s /dev/ttyO1 /dev/ttySZHC0
     export QWS_MOUSE_PROTO=Tslib:/dev/input/touchscreen0
     export set QWS_KEYBOARD="linuxinput:/dev/input/event1:repeat-rate=200:repeat-delay=500:keymap=/home/root/3a8.qmap"
     export set QWS_DISPLAY="LinuxFB:/dev/fb0"

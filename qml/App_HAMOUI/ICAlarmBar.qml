@@ -10,6 +10,7 @@ Rectangle {
     color: "yellow"
     property int errID: 0
     property bool isShrinked: false
+    property bool isUP: false
     visible: errID !== 0
     Row{
         id:errTextContainer
@@ -37,6 +38,16 @@ Rectangle {
             text: qsTr("i")
             height: parent.height
             width: 40
+            onButtonClicked: {
+
+                if(!isUP){
+                    shAnimation.start();
+                    alarmDetail.visible = true;
+                }else{
+                    exAnimation.start();
+                }
+                isUP = !isUP;
+            }
         }
 
     }
@@ -80,10 +91,37 @@ Rectangle {
         PropertyAnimation{ target: container; properties: "width"; to:798;duration: 100}
     }
 
+    ParallelAnimation{
+        id:shAnimation;
+        PropertyAnimation{ target: alarmDetail; properties: "y"; to:-400; duration: 100}
+        PropertyAnimation{ target: alarmDetail; properties: "height"; to:400;duration: 100}
+    }
+
+    ParallelAnimation{
+        id:exAnimation;
+        PropertyAnimation{ target: alarmDetail; properties: "y"; to:0; duration: 100}
+        PropertyAnimation{ target: alarmDetail; properties: "height"; to:0;duration: 100}
+        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:false}
+    }
 
 
     Rectangle{
         id:alarmDetail
+        x:50
+        border.color: "black"
+        width: 700
+        color: "#A0A0F0"
+        visible: false
+        Text{
+            id:text1
+            width:640
+            font.pixelSize: 24
+            //anchors.verticalCenter: parent.verticalCenter
+            color: "red"
+            text: AlarmInfo.getAlarmDescr(errID)
+
+        }
+
     }
 
     onVisibleChanged: {

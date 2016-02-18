@@ -39,10 +39,9 @@ Rectangle {
             height: parent.height
             width: 40
             onButtonClicked: {
-
                 if(!isUP){
                     shAnimation.start();
-                    alarmDetail.visible = true;
+//                    alarmDetail.visible = true;
                 }else{
                     exAnimation.start();
                 }
@@ -95,15 +94,24 @@ Rectangle {
         id:shAnimation;
         PropertyAnimation{ target: alarmDetail; properties: "y"; to:-400; duration: 100}
         PropertyAnimation{ target: alarmDetail; properties: "height"; to:400;duration: 100}
+        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:true;duration: 5}
     }
+
+//    SequentialAnimation{
+//        id: exAnimation
+//        ParallelAnimation{
+//            PropertyAnimation{ target: alarmDetail; properties: "y"; to:0; duration: 100}
+//            PropertyAnimation{ target: alarmDetail; properties: "height"; to:0;duration: 100}
+//        }
+//        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:false;duration: 0}
+//    }
 
     ParallelAnimation{
-        id:exAnimation;
+        id: exAnimation
         PropertyAnimation{ target: alarmDetail; properties: "y"; to:0; duration: 100}
         PropertyAnimation{ target: alarmDetail; properties: "height"; to:0;duration: 100}
-        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:false}
+        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:false;duration: 95}
     }
-
 
     Rectangle{
         id:alarmDetail
@@ -112,16 +120,30 @@ Rectangle {
         width: 700
         color: "#A0A0F0"
         visible: false
-        Text{
-            id:text1
-            width:640
-            font.pixelSize: 24
-            //anchors.verticalCenter: parent.verticalCenter
-            color: "red"
-            text: AlarmInfo.getAlarmDescr(errID)
+        Row{
+            Text {
+                width: 80
+                font.pixelSize: 20
+                text: "Err" + errID + ":"
+                color: "red"
+            }
+            Text{
+                id:descrb
+                width:640
+                font.pixelSize:20
+                color: "red"
+                text: AlarmInfo.getCustomAlarmDescr(errID)
 
+            }
         }
-
+        Text{
+            id:detail
+            y:20
+            width:640
+            font.pixelSize: 20
+            color: "red"
+            text: AlarmInfo.getAlarmDetail(errID)
+        }
     }
 
     onVisibleChanged: {

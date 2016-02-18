@@ -555,7 +555,11 @@ Item {
                 }
             }
             model: pointViewModel
-            highlight: Rectangle {x:1;y:1;width: pointView.width -1;height: 24; color: "lightsteelblue"; }
+            highlight: Rectangle {
+                x:1
+                width: pointView.width -1
+                color: "lightsteelblue"
+            }
 
             delegate: Column{
                 spacing: 4
@@ -581,6 +585,19 @@ Item {
                     height: 32
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 12
+                    MouseArea{
+                        anchors.fill: parent
+                        onPressed: {
+                            var point = pointViewModel.get(index).pos;
+                            motor0.configValue = point.m0 || 0.000;
+                            motor1.configValue = point.m1 || 0.000;
+                            motor2.configValue = point.m2 || 0.000;
+                            motor3.configValue = point.m3 || 0.000;
+                            motor4.configValue = point.m4 || 0.000;
+                            motor5.configValue = point.m5 || 0.000;
+                            pointView.currentIndex = index;
+                        }
+                    }
                 }
 
             }

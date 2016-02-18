@@ -1,12 +1,14 @@
 #! /bin/sh
 DATABASE_PATH="/opt/Qt/UpdateApps"
-ln -s /dev/ttyO1 /dev/ttySZHC0
+
 # Set the QWS_MOUSE_PROTO for touchscreen if it exists
 LedTest_335x on
 BootChecker 4 &
 if [ -e /dev/input/touchscreen0 ]
 then
     #export environment 
+    InstallModules.sh /home/root
+    ln -s /dev/ttyO1 /dev/ttySZHC0
     export QWS_MOUSE_PROTO=Tslib:/dev/input/touchscreen0
     export set QWS_KEYBOARD="linuxinput:/dev/input/event1:repeat-rate=200:repeat-delay=500:keymap=/home/root/3a8.qmap"
     export set QWS_DISPLAY="LinuxFB:/dev/fb0"

@@ -49,9 +49,9 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
 //            anchors.left: iconPos == 0 ? parent.left : text.right
         }
-        Item{
-            width: parent.width
-            height: parent.height
+//        Item{
+//            width: parent.width
+//            height: parent.height
             Text {
                 id: text
                 text: "ICButton"
@@ -62,7 +62,7 @@ Rectangle {
                     }
                 }
             }
-        }
+//        }
     }
     MouseArea{
         anchors.fill: parent

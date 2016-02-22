@@ -15,6 +15,7 @@
 #include "icparameterscache.h"
 #include "qtquick1applicationviewer.h"
 #include "icvirtualkeyboard.h"
+#include "iclog.h"
 
 #ifndef Q_WS_WIN32
 #include <linux/input.h>
@@ -208,7 +209,7 @@ class PanelRobotController : public QObject
     Q_OBJECT
 public:
 
-    explicit PanelRobotController(QSplashScreen* splash, QObject *parent = 0);
+    explicit PanelRobotController(QSplashScreen* splash, ICLog* logger = NULL, QObject *parent = 0);
     ~PanelRobotController();
     void Init();
 
@@ -536,6 +537,13 @@ public:
         return readedConfigValues_.value(addr, -1);
     }
 
+    Q_INVOKABLE QString debug_LogContent() const
+    {
+        if(logger_ == NULL)
+            return QString();
+        return logger_->LogContent();
+    }
+
 
     void InitMainView();
 
@@ -590,6 +598,7 @@ private:
     ICVirtualKeyboard virtualKeyboard;
     QFileSystemWatcher hostUpdateFinishedWatcher_;
     QMap<int, quint32> readedConfigValues_;
+    ICLog* logger_;
 
 
 #ifdef Q_WS_QWS

@@ -5,7 +5,6 @@ import "configs/AxisDefine.js" as AxisDefine
 import "ShareData.js" as ShareData
 
 
-
 Rectangle {
     id:container
     width: parent.width

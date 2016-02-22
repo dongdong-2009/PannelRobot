@@ -59,7 +59,8 @@ ICRange ICRobotRangeGetter(const QString& addrName)
     //    return ICRange();
 }
 
-PanelRobotController::PanelRobotController(QSplashScreen *splash, QObject *parent) :
+PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger, QObject *parent) :
+    logger_(logger),
     QObject(parent),
     customSettings_("usr/customsettings.ini", QSettings::IniFormat),
     virtualKeyboard(ICRobotRangeGetter)

@@ -19,7 +19,7 @@ Rectangle {
         spacing: 4
         Text {
             width: 90
-            font.pixelSize: 24
+            font.pixelSize: 20
             text: "Err" + errID + ":"
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
@@ -27,7 +27,7 @@ Rectangle {
         Text{
             id:descr
             width:630
-            font.pixelSize: 24
+            font.pixelSize: 20
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
             text: AlarmInfo.getAlarmDescr(errID)

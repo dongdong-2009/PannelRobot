@@ -718,12 +718,12 @@ Rectangle {
                             if(panelRobotController.isOrigined()){
                                 var ao = currentModelData().mI_ActionObject;
                                 if(ao.action === Teach.actions.F_CMD_LINE3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(1, tryRunBtn.actionPointToLogPoint(ao.points[0]));
+                                    panelRobotController.logTestPoint(1, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
                                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_START_POINT);
                                 }else if(ao.action === Teach.actions.F_CMD_ARC3D_MOVE_POINT){
                                     panelRobotController.logTestPoint(10, tryRunBtn.getCurrentPointToLogPoint());
-                                    panelRobotController.logTestPoint(11, tryRunBtn.actionPointToLogPoint(ao.points[0]));
-                                    panelRobotController.logTestPoint(12, tryRunBtn.actionPointToLogPoint(ao.points[1]));
+                                    panelRobotController.logTestPoint(11, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.logTestPoint(12, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
                                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_ARC_TO_START_POINT);
 
 

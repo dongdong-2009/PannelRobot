@@ -3,8 +3,9 @@ import "../ICCustomElement"
 
 Rectangle
 {
+    id:container
     width: parent.width
-    height: parent.height - 80
+    height: parent.height
     color: "grey"
     ICButton{
         id:gototop
@@ -32,7 +33,7 @@ Rectangle
     Flickable{
         id: flick
         width: parent.width
-        height: parent.height - 80
+        height: parent.height
         //可拖拽内容大小
 //        contentWidth: debugtext.width
         contentHeight: debugtext.height
@@ -47,7 +48,7 @@ Rectangle
                 interval: 1000;
                 repeat: true;
                 //triggeredOnStart: true;
-                running: true;
+                running: visible;
                 onTriggered:{
                     debugtext.text =  panelRobotController.debug_LogContent();
                 }

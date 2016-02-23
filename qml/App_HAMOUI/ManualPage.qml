@@ -72,6 +72,17 @@ ContentPageBase {
                            ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
                 //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
             }
+            TabMenuItem {
+                id: debugprint
+                width: parent.width
+                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                height: pdata.menuItemHeight
+                itemText: qsTr("Debugprint")
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
+                
+            }
             onButtonClickedID: {
                 pageContainer.setCurrentIndex(index)
             }
@@ -119,6 +130,8 @@ ContentPageBase {
             pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
             var jogClass = Qt.createComponent('DebugPage.qml');
             pageContainer.addPage(jogClass.createObject(pageContainer));
+            var debugprintClass = Qt.createComponent('Debugprint.qml');
+            pageContainer.addPage(debugprintClass.createObject(pageContainer));
         }
     }
 

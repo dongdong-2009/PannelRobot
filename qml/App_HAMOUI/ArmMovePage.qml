@@ -522,7 +522,7 @@ Rectangle {
                             }
                             ICButton{
                                 id:curveSave2
-                                text:qsTr("Set to Point-2")
+                                text:qsTr("Set to CPoint-2")
                                 width: 180
                                 onButtonClicked: functionSection.savePointHelper(11, curvePoint2)
 
@@ -545,7 +545,7 @@ Rectangle {
                             }
                             ICButton{
                                 id:curveSave3
-                                text:qsTr("Set to Point-3")
+                                text:qsTr("Set to CPoint-3")
                                 width: 180
 
                                 onButtonClicked: functionSection.savePointHelper(12, curvePoint3)

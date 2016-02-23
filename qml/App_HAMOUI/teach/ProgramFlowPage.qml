@@ -262,39 +262,8 @@ Rectangle {
     function onSaveTriggered(){
         hasModify = true;
         saveProgram(currentProgramIndex());
-        //        var errInfo;
-        //        if(currentProgramIndex() == PData.kFunctionProgramIndex){
-        //            var fun = Teach.functionManager.getFunctionByName(moduleSel.currentText());
-        //            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-        //            var fJSON = Teach.functionManager.toJSON();
-        //            console.log(fJSON);
-        //            errInfo = JSON.parse(panelRobotController.saveFunctions(fJSON));
-        //        }else if(editing.currentIndex == 0){
-        //            errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
-        //            if(errInfo.length === 0){
-        //                panelRobotController.sendMainProgramToHost();
-        //            }
-        //        }else{
-        //            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
-        //            if(errInfo.length === 0){
-        //                panelRobotController.sendSubProgramToHost(editing.currentIndex);
-        //            }
-        //        }
-        //        if(errInfo.length !== 0){
-        //            var toShow = "";
-        //            for(var i = 0; i < errInfo.length; ++i){
-        //                toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
-        //            }
-        //            tipBox.show(toShow);
-        //        }
-        //        //        collectSpecialLines(editing.currentIndex);
-        //        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
-        //        ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
+
     }
-
-    //    function saveProgram(which){
-
-    //    }
 
     function currentModel(){
         return PData.programs[currentProgramIndex()];

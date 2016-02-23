@@ -262,39 +262,7 @@ Rectangle {
     function onSaveTriggered(){
         hasModify = true;
         saveProgram(currentProgramIndex());
-        //        var errInfo;
-        //        if(currentProgramIndex() == PData.kFunctionProgramIndex){
-        //            var fun = Teach.functionManager.getFunctionByName(moduleSel.currentText());
-        //            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-        //            var fJSON = Teach.functionManager.toJSON();
-        //            console.log(fJSON);
-        //            errInfo = JSON.parse(panelRobotController.saveFunctions(fJSON));
-        //        }else if(editing.currentIndex == 0){
-        //            errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
-        //            if(errInfo.length === 0){
-        //                panelRobotController.sendMainProgramToHost();
-        //            }
-        //        }else{
-        //            errInfo = JSON.parse(panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex)));
-        //            if(errInfo.length === 0){
-        //                panelRobotController.sendSubProgramToHost(editing.currentIndex);
-        //            }
-        //        }
-        //        if(errInfo.length !== 0){
-        //            var toShow = "";
-        //            for(var i = 0; i < errInfo.length; ++i){
-        //                toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
-        //            }
-        //            tipBox.show(toShow);
-        //        }
-        //        //        collectSpecialLines(editing.currentIndex);
-        //        var programStr = editing.currentIndex == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), editing.currentIndex);
-        //        ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
     }
-
-    //    function saveProgram(which){
-
-    //    }
 
     function currentModel(){
         return PData.programs[currentProgramIndex()];
@@ -717,6 +685,58 @@ Rectangle {
                                 PData.isReadOnly) return false;
                         return programListView.currentItem.y >= programListView.contentY;
                     }
+                    ICButton{
+                        id:tryRunBtn
+                        height: parent.height
+                        width: 40
+                        text: qsTr("Run")
+                        visible: {
+                            var currentItem = currentModelData();
+                            if(currentItem === null) return false;
+                            return Teach.canActionUsePoint(currentItem.mI_ActionObject);
+                        }
+                        function actionPointToLogPoint(pos){
+                            return  JSON.stringify([pos.m0 || 0.000,
+                                    pos.m1 || 0.000,
+                                    pos.m2 || 0.000,
+                                    pos.m3 || 0.000,
+                                    pos.m4 || 0.000,
+                                    pos.m5 || 0.000]);
+                        }
+
+                        function getCurrentPointToLogPoint(){
+                            return  JSON.stringify([panelRobotController.statusValueText("c_ro_0_32_3_900"),
+                                    panelRobotController.statusValueText("c_ro_0_32_3_904"),
+                                    panelRobotController.statusValueText("c_ro_0_32_3_908"),
+                                    panelRobotController.statusValueText("c_ro_0_32_3_912"),
+                                    panelRobotController.statusValueText("c_ro_0_32_3_916"),
+                                    panelRobotController.statusValueText("c_ro_0_32_3_920")]);
+                        }
+
+                        onBtnPressed: {
+                            console.log("Run")
+                            if(panelRobotController.isOrigined()){
+                                var ao = currentModelData().mI_ActionObject;
+                                if(ao.action === Teach.actions.F_CMD_LINE3D_MOVE_POINT){
+                                    panelRobotController.logTestPoint(1, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_START_POINT);
+                                }else if(ao.action === Teach.actions.F_CMD_ARC3D_MOVE_POINT){
+                                    panelRobotController.logTestPoint(10, tryRunBtn.getCurrentPointToLogPoint());
+                                    panelRobotController.logTestPoint(11, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.logTestPoint(12, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_ARC_TO_START_POINT);
+
+
+                                }
+                            }
+                        }
+                        onBtnReleased: {
+                            if(panelRobotController.isOrigined())
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_PATH_STOP);
+                        }
+
+                    }
+
                     ICButton{
                         id:moveUpBtn
                         height: parent.height

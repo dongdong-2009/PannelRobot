@@ -204,5 +204,9 @@ function getCustomAlarmDescr(errNum){
 }
 
 function getAlarmDetail(errNum){
+    if(errNum == 9){
+        return qsTr("1.Connector loose\n2.Wire is off\n3.Pannel is broken\n4.Host is broken")
+    }
+
     return qsTr("None");
 }

@@ -18,16 +18,16 @@ Rectangle {
         anchors.verticalCenter : parent.verticalCenter
         spacing: 4
         Text {
-            width: 80
-            font.pixelSize: 24
+            width: 90
+            font.pixelSize: 20
             text: "Err" + errID + ":"
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
         }
         Text{
             id:descr
-            width:640
-            font.pixelSize: 24
+            width:630
+            font.pixelSize: 20
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
             text: AlarmInfo.getAlarmDescr(errID)
@@ -120,22 +120,15 @@ Rectangle {
         width: 700
         color: "#A0A0F0"
         visible: false
-        Row{
-            Text {
-                width: 80
-                font.pixelSize: 20
-                text: "Err" + errID + ":"
-                color: "red"
-            }
-            Text{
-                id:customdescrb
-                width:640
-                font.pixelSize:20
-                color: "red"
-                text: AlarmInfo.getAlarmDescr(errID)
+        Text{
+            id:customdescrb
+            width:640
+            font.pixelSize:20
+            color: "red"
+            text: "Err" + errID + ":" + AlarmInfo.getAlarmDescr(errID)
 
-            }
         }
+
         Text{
             id:detail
             y:20

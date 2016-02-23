@@ -4,7 +4,7 @@
 #include <QDebug>
 #include "iclog.h"
 
-ICLog iclog("RobotPanel.debuglog", 10 * 1024);
+ICLog iclog("RobotPanel.debuglog", 1024 * 1024);
 
 void appMessageOutput(QtMsgType type, const char *msg)
 {

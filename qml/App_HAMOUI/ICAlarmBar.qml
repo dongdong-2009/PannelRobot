@@ -41,7 +41,7 @@ Rectangle {
             onButtonClicked: {
                 if(!isUP){
                     shAnimation.start();
-//                    alarmDetail.visible = true;
+                    //                    alarmDetail.visible = true;
                 }else{
                     exAnimation.start();
                 }
@@ -90,52 +90,53 @@ Rectangle {
         PropertyAnimation{ target: container; properties: "width"; to:798;duration: 100}
     }
 
-    ParallelAnimation{
+    SequentialAnimation{
         id:shAnimation;
-        PropertyAnimation{ target: alarmDetail; properties: "y"; to:-400; duration: 100}
-        PropertyAnimation{ target: alarmDetail; properties: "height"; to:400;duration: 100}
-        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:true;duration: 5}
+        PropertyAction{ target: alarmDetail; properties: "visible"; value:true;}
+        ParallelAnimation{
+            PropertyAnimation{ target: alarmDetail; properties: "y"; to:-alarmDetail.toShowHeight; duration: alarmDetail.toShowDuration}
+            PropertyAnimation{ target: alarmDetail; properties: "height"; to:alarmDetail.toShowHeight;duration: alarmDetail.toShowDuration}
+        }
     }
 
-//    SequentialAnimation{
-//        id: exAnimation
-//        ParallelAnimation{
-//            PropertyAnimation{ target: alarmDetail; properties: "y"; to:0; duration: 100}
-//            PropertyAnimation{ target: alarmDetail; properties: "height"; to:0;duration: 100}
-//        }
-//        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:false;duration: 0}
-//    }
-
-    ParallelAnimation{
+    SequentialAnimation{
         id: exAnimation
-        PropertyAnimation{ target: alarmDetail; properties: "y"; to:0; duration: 100}
-        PropertyAnimation{ target: alarmDetail; properties: "height"; to:0;duration: 100}
-        PropertyAnimation{ target: alarmDetail; properties: "visible"; to:false;duration: 95}
+        ParallelAnimation{
+            PropertyAnimation{ target: alarmDetail; properties: "y"; to:0; duration: alarmDetail.toShowDuration}
+            PropertyAnimation{ target: alarmDetail; properties: "height"; to:0;duration: alarmDetail.toShowDuration}
+        }
+        PropertyAction{ target: alarmDetail; properties: "visible"; value:false}
     }
 
     Rectangle{
         id:alarmDetail
+        property int toShowHeight: content.height + 20
+        property int toShowDuration: 150
         x:50
         border.color: "black"
         width: 700
         color: "#A0A0F0"
         visible: false
-        Text{
-            id:customdescrb
-            width:640
-            font.pixelSize:20
-            color: "red"
-            text: "Err" + errID + ":" + AlarmInfo.getAlarmDescr(errID)
+        clip: true
+        Column{
+            id:content
+            Text{
+                id:customdescrb
+                width:640
+                font.pixelSize:20
+                color: "red"
+                text: "Err" + errID + ":" + AlarmInfo.getAlarmDescr(errID)
 
-        }
+            }
 
-        Text{
-            id:detail
-            y:20
-            width:640
-            font.pixelSize: 20
-            color: "red"
-            text: AlarmInfo.getAlarmDetail(errID)
+            Text{
+                id:detail
+                width:640
+                font.pixelSize: 20
+                color: "red"
+                text: AlarmInfo.getAlarmDetail(errID)
+                wrapMode: Text.Wrap
+            }
         }
     }
 

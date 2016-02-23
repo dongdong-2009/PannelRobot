@@ -17,21 +17,22 @@ Rectangle {
         height: parent.height - parent.parent.border.width * 6
         anchors.verticalCenter : parent.verticalCenter
         spacing: 4
-        Text {
-            width: 90
-            font.pixelSize: 20
-            text: "Err" + errID + ":"
-            anchors.verticalCenter: parent.verticalCenter
-            color: "red"
-        }
+//        Text {
+//            id:
+////            width: 90
+//            font.pixelSize: 20
+//            text: "Err" + errID + ":"
+//            anchors.verticalCenter: parent.verticalCenter
+//            color: "red"
+//        }
         Text{
             id:descr
-            width:630
-            font.pixelSize: 20
+            width:720
+            font.pixelSize: 24
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
-            text: AlarmInfo.getAlarmDescr(errID)
-
+            text: "Err" + errID + ":" + AlarmInfo.getAlarmDescr(errID)
+            elide: Text.ElideRight
         }
         ICButton{
             id:details

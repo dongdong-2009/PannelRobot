@@ -1285,12 +1285,15 @@ var pathActionToStringHandler = function(actionObject){
     var needNewLine = false;
     if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT){
         ret += qsTr("Line2D:");
+        needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT){
         ret += qsTr("Line3D:");
+        needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT){
         ret += qsTr("Arc3D:");
     }else if(actionObject.action === actions.F_CMD_MOVE_POSE){
         ret += qsTr("Pose:");
+        needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE){
         ret += qsTr("Line3D-Pose:");
         needNewLine = true;
@@ -1299,6 +1302,7 @@ var pathActionToStringHandler = function(actionObject){
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
         ret += qsTr("Offset Move:");
+        needNewLine = true;
     }
 
     var points = actionObject.points;

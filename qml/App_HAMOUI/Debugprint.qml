@@ -4,7 +4,7 @@ import "../ICCustomElement"
 Rectangle
 {
     width: parent.width
-    height: parent.height - 80
+    //height: parent.height
     color: "grey"
     ICButton{
         id:gototop
@@ -25,7 +25,6 @@ Rectangle
         text: qsTr("gotobottom")
         onButtonClicked: {
             flick.contentY = debugtext.paintedHeight - 410;
-            debugtext.paintedHeight
         }
     }
 
@@ -45,11 +44,12 @@ Rectangle
         Timer {
                 id: mytimer
                 interval: 1000;
-                repeat: true;
-                //triggeredOnStart: true;
+                repeat: visible;
+                triggeredOnStart: true;
                 running: true;
                 onTriggered:{
-                    debugtext.text =  panelRobotController.debug_LogContent();
+//                    debugtext.text =  panelRobotController.debug_LogContent();
+                    debugtext.text = dlkdjflkjda;
                 }
         }
      }

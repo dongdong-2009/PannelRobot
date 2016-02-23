@@ -379,7 +379,7 @@ Rectangle {
         for(var l in counterLines){
             line = counterLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":programListView.actionObjectToText(tmp.mI_ActionObject)});
 
         }
     }
@@ -774,7 +774,7 @@ Rectangle {
                                 modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
                             }
                             else{
-                                modelObject.mI_ActionObject = Teach.generateCommentAction(Teach.actionToString(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
+                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
                             }
 
                         }
@@ -811,7 +811,7 @@ Rectangle {
                     function actionObjectToText(actionObject){
                         var originText = Teach.actionToStringNoCusomName(actionObject);
                         if(actionObject.customName){
-                            var styledCN = ICString.icStrformat('<font size="5" color="#0000FF">{0}</font>', actionObject.customName);
+                            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
                             originText = styledCN + " " + originText;
                         }
                         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");

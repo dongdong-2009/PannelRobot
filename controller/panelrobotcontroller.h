@@ -544,6 +544,12 @@ public:
         return logger_->LogContent();
     }
 
+//    Q_INVOKABLE QString debug_LogContent() const
+//    {
+//        if(logger_ == NULL)
+//            return QString().split("\n");
+//        return logger_->LogContent().split("\n");
+//    }
 
     void InitMainView();
 

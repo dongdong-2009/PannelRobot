@@ -103,7 +103,7 @@ ContentPageBase {
             id: pageContainer
             anchors.top: spliteLine.bottom
             width: parent.width
-            height: parent.height - menuContainer.height - spliteLine.height
+            height: manualContainer.parent.contentContainerHeight - menuContainer.height - spliteLine.height
         }
         Component.onCompleted: {
 //            var armMoveClass = Qt.createComponent('ArmMovePage.qml');

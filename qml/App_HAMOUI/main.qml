@@ -393,6 +393,7 @@ Rectangle {
             width: 40
             anchors.bottom: parent.bottom
             bgColor: "green"
+            icon: "images/tools_pointsmanage.png"
             onButtonClicked: {
                 if(!pointManager.visible){
                     pointManager.visible = true;
@@ -448,6 +449,8 @@ Rectangle {
             text: "←"
             width: 40
             bgColor: "green"
+            iconPos: 1
+            icon: "images/tools_keyboard.png"
             onButtonClicked: {
                 if(!armKeyboard.visible){
                     armKeyboard.visible = true;

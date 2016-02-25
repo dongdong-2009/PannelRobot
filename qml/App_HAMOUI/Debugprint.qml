@@ -105,7 +105,13 @@ Rectangle
 //            }
         }
 
-    }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    debugView.currentIndex = index;
+                }
+            }
+        }
 
     WorkerScript {
          id: myWorker

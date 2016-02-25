@@ -704,8 +704,8 @@ Rectangle {
                                     pos.m5 || 0.000]);
                         }
 
-                        function getCurrentPointToLogPoint(){
-                            return  JSON.stringify([panelRobotController.statusValueText("c_ro_0_32_3_900"),
+                        function getCurrentPoint(){
+                            return  ([panelRobotController.statusValueText("c_ro_0_32_3_900"),
                                     panelRobotController.statusValueText("c_ro_0_32_3_904"),
                                     panelRobotController.statusValueText("c_ro_0_32_3_908"),
                                     panelRobotController.statusValueText("c_ro_0_32_3_912"),
@@ -713,26 +713,43 @@ Rectangle {
                                     panelRobotController.statusValueText("c_ro_0_32_3_920")]);
                         }
 
+                        function getCurrentPointToLogPoint(){
+                            return  JSON.stringify(tryRunBtn.getCurrentPoint());
+                        }
+
                         onBtnPressed: {
                             console.log("Run")
                             if(panelRobotController.isOrigined()){
                                 var ao = currentModelData().mI_ActionObject;
                                 if(ao.action === Teach.actions.F_CMD_LINE3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(1, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_LINT_TO_START_POINT);
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_LINT_TO_START_POINT);
                                 }else if(ao.action === Teach.actions.F_CMD_ARC3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(10, tryRunBtn.getCurrentPointToLogPoint());
-                                    panelRobotController.logTestPoint(11, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.logTestPoint(12, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_ARC_TO_START_POINT);
-
-
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_START_POINT, tryRunBtn.getCurrentPointToLogPoint());
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_MID_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_ARC_TO_START_POINT);
+                                }else if(ao.action === Teach.actions.F_CMD_JOINTCOORDINATE){
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_AUTO_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_AUTO_TO_START_POINT);
+                                }else if(ao.action === Teach.actions.F_CMD_COORDINATE_DEVIATION){
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_LINT_TO_START_POINT);
+                                }else if(ao.action === Teach.actions.F_CMD_JOINT_RELATIVE){
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_AUTO_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_AUTO_TO_START_POINT);
+                                }else if(ao.action === Teach.actions.F_CMD_SINGLE){
+                                    var cP = tryRunBtn.getCurrentPoint();
+                                    cP[ao.axis] = ao.pos;
+                                    panelRobotController.logTestPoint(Keymap.TEACH_RELATIVE_AUTO_END_POINT, JSON.stringify(cP));
+                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_AUTO_TO_START_POINT);
                                 }
+
                             }
                         }
                         onBtnReleased: {
                             if(panelRobotController.isOrigined())
-                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_PATH_STOP);
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_ROUTE_STOP);
                         }
 
                     }

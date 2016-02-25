@@ -422,12 +422,31 @@ typedef enum
     CMD_JOG_PW     = 0x0305,  // 直角坐标系姿势轴，W轴正向点动
     CMD_JOG_PR     = 0x0306,  // 极坐标系，远离原点点动
 
-    CMD_LINT_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
-    CMD_LINT_TO_END_POINT= 0x0311,  // 直线运动到终点坐标
-    CMD_LINT_STOP = 0x0312,  // 直线运动停止
+    /*手动*/
+    CMD_LINE_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
+    CMD_LINE_TO_END_POINT,  // 直线运动到终点坐标
+    CMD_JOINT_TO_START_POINT,          // 关节运动到起点坐标
+    CMD_JOINT_TO_END_POINT,            // 关节运动到终点坐标
+    CMD_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
+    CMD_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
+    CMD_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
+    CMD_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
+    /*教导*/
+    CMD_TEACH_LINE_TO_START_POINT,           // 直线运动到起点坐标
+    CMD_TEACH_LINE_TO_END_POINT,             // 直线运动到终点坐标
+    CMD_TEACH_JOINT_TO_START_POINT,          // 关节运动到起点坐标
+    CMD_TEACH_JOINT_TO_END_POINT,            // 关节运动到终点坐标
+    CMD_TEACH_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
+    CMD_TEACH_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
+    CMD_TEACH_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
+    CMD_TEACH_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
+    /*手动*/
     CMD_ARC_TO_START_POINT= 0x0330,  // 弧线运动往终点坐标方向
-    CMD_ARC_TO_END_POINT= 0x0331,  // 弧线运动往终点坐标反方向
-//    CMD_ARC_STOP= 0x0332,  // 弧线运动停止
+    CMD_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
+    /*教导*/
+    CMD_TEACH_ARC_TO_START_POINT,  // 弧线运动往终点坐标方向
+    CMD_TEACH_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
+    CMD_ROUTE_STOP = 0x033F,  // 轨迹运动停止
     CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
 
     CMD_JOG_NX     = 0x0380,  // 直角坐标系位置轴，X轴反向点动
@@ -480,6 +499,32 @@ typedef enum
 } DATA_CMD;
 
 
+typedef enum
+{
+    /*手动设定位置*/
+    LINE_START_POINT,   //< 直线起点位置
+    LINE_END_POINT,     //< 直线终点位置
+    AUTO_START_POINT,   //< 关节坐标起点位置
+    AUTO_END_POINT,     //< 关节坐标终点位置
+    RELATIVE_LINE_START_POINT,   //< 直线相对移动位置
+    RELATIVE_AUTO_END_POINT,     //< 关节坐标相对移动位置
+    /*教导页面位置*/
+    TEACH_LINE_START_POINT,   //< 直线起点位置
+    TEACH_LINE_END_POINT,     //< 直线终点位置
+    TEACH_AUTO_START_POINT,   //< 关节坐标起点位置
+    TEACH_AUTO_END_POINT,     //< 关节坐标终点位置
+    TEACH_RELATIVE_LINE_START_POINT,   //< 直线相对移动位置
+    TEACH_RELATIVE_AUTO_END_POINT,     //< 关节坐标相对移动位置
+    /*手动设定位置*/
+    ARC_START_POINT=30, //< 弧线起点位置
+    ARC_MID_POINT,      //< 弧线中间点位置
+    ARC_END_POINT,      //< 弧线终点位置
+    /*教导页面位置*/
+    TEACH_ARC_START_POINT, //< 弧线起点位置
+    TEACH_ARC_MID_POINT,      //< 弧线中间点位置
+    TEACH_ARC_END_POINT,      //< 弧线终点位置
+}MANUAL_ACTION_PARA;
+
 /*! \brief 教导动作功能码枚举*/
 typedef enum
 {
@@ -489,14 +534,16 @@ typedef enum
     F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
     //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
     //< 坐标（X，Y，Z,U,V,W） 速度 延时
-	F_CMD_JOINTCOORDINATE,
-	//< 偏移位置（X，Y，Z） 速度  延时
-	F_CMD_COORDINATE_DEVIATION,
+	F_CMD_JOINT_MOVE_POINT,
+	//< 直线坐标偏移位置（X，Y，Z） 速度  延时
+	F_CMD_LINE_RELATIVE,
 	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
     F_CMD_MOVE_POSE,   //< 运动目标姿势 姿势（X，Y，Z） 速度  延时
     F_CMD_LINE3D_MOVE_POSE,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时
+    //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
+    F_CMD_JOINT_RELATIVE,
 
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
@@ -588,6 +635,7 @@ typedef enum
     ALARM_AUTO_JUMP_ERR, //<名字：自动运行跳转错误
     ALARM_LINK_HOST_FAIL, //<名字：连接主机失败
     ALARM_PROGRAM_ERR, //<名字：教导程序错误
+    ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -640,11 +688,25 @@ typedef enum
     ALARM_AXIS6_ACC_LIMIT,//<名字：轴6加速度报警
 
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
-    ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动坐标1未设定
-    ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动坐标2未设定
-    ALARM_ROUTE_ARC_P1_NOTSET,//<名字：手动弧线轨迹运动坐标1未设定
-    ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动坐标2未设定
-    ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动坐标3未设定
+    ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动起始坐标未设定
+    ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动终点坐标未设定
+    ALARM_JOINT_P1_NOTSET,//<名字：手动关节运动起始坐标未设定
+    ALARM_JOINT_P2_NOTSET,//<名字：手动关节运动终点坐标未设定
+    ALARM_RELATIVE_LP_NOTSET,//<名字：手动直线相对移动坐标未设定
+    ALARM_RELATIVE_JP_NOTSET,//<名字：手动关节相对移动坐标未设定
+    ALARM_TEACH_ROUTE_LINE_P1_NOTSET,//<名字：教导直线轨迹运动起始坐标未设定
+    ALARM_TEACH_ROUTE_LINE_P2_NOTSET,//<名字：教导直线轨迹运动终点坐标未设定
+    ALARM_TEACH_JOINT_P1_NOTSET,//<名字：教导关节运动起始坐标未设定
+    ALARM_TEACH_JOINT_P2_NOTSET,//<名字：教导关节运动终点坐标未设定
+    ALARM_TEACH_RELATIVE_LP_NOTSET,//<名字：教导直线相对移动坐标未设定
+    ALARM_TEACH_RELATIVE_JP_NOTSET,//<名字：教导关节相对移动坐标未设定
+    ALARM_ROUTE_ARC_P1_NOTSET,//<名字：手动弧线轨迹运动起点坐标未设定
+    ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动中间点坐标未设定
+    ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动终点坐标未设定
+    ALARM_TEACH_ROUTE_ARC_P1_NOTSET,//<名字：教导弧线轨迹运动起点坐标未设定
+    ALARM_TEACH_ROUTE_ARC_P2_NOTSET,//<名字：教导弧线轨迹运动中间坐标未设定
+    ALARM_TEACH_ROUTE_ARC_P3_NOTSET,//<名字：教导弧线轨迹运动终点坐标未设定
+
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
     ALARM_ROUTE_ACC_ERR,//<名字：轨迹规划失败
 

@@ -759,6 +759,7 @@ actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
 actions.F_CMD_MOVE_POSE = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
+actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
@@ -1301,7 +1302,10 @@ var pathActionToStringHandler = function(actionObject){
         ret += qsTr("Free Path:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
-        ret += qsTr("Offset Move:");
+        ret += qsTr("Offset Line:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_JOINT_RELATIVE){
+        ret += qsTr("Offset Jog:");
         needNewLine = true;
     }
 
@@ -1330,6 +1334,7 @@ actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler)
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_JOINT_RELATIVE, pathActionToStringHandler);
 
 
 
@@ -1471,7 +1476,19 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_MOVE_POSE ||
+            actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE;
 }
+
+var canActionTestRun = function(actionObject){
+    return actionObject.action === actions.F_CMD_SINGLE ||
+            actionObject.action === actions.F_CMD_CoordinatePoint ||
+            actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
+            actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_JOINTCOORDINATE;
+}
+
 
 var currentParsingProgram = 0;

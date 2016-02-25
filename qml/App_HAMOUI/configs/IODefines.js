@@ -260,14 +260,43 @@ function mYInit(){
 }
 
 var mYDefines = mYInit();
-
+/*
+ValveItem(id, descr, type, time,
+                   y1Board, y1Point, x1Board, x1Point, x1Dir,
+                   y2Board, y2Point, x2Board, x2Point, x2Dir
+                   )
+*/
 var valveDefines = {
     "valve0": new ValveItem(0, qsTr("Normal Y"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 0),
     "valve1": new ValveItem(1, qsTr("Single Y"), IO_TYPE_SINGLE_Y, 1, IO_BOARD_0, 1, IO_BOARD_0, 1, IO_DIR_PP),
     "valve2": new ValveItem(2, qsTr("Hold Double Y"), IO_TYPE_HOLD_DOUBLE_Y, 1, IO_BOARD_0, 2, IO_BOARD_0, 2, IO_DIR_PP,
                                                                                 IO_BOARD_0, 3, IO_BOARD_0, 3, IO_DIR_PP),
     "valve3": new ValveItem(3, qsTr("Unhold Double Y"), IO_TYPE_UNHOLD_DOUBLE_Y, 1, IO_BOARD_0, 4, IO_BOARD_0, 4, IO_DIR_PP,
-                                                                                    IO_BOARD_0, 5, IO_BOARD_0, 5, IO_DIR_PP)
+                                                                                    IO_BOARD_0, 5, IO_BOARD_0, 5, IO_DIR_PP),
+    "valve4": new ValveItem(4, qsTr("Normal Y4"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 6),
+    "valve5": new ValveItem(5, qsTr("Normal Y5"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 7),
+    "valve6": new ValveItem(6, qsTr("Normal Y6"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 8),
+    "valve7": new ValveItem(7, qsTr("Normal Y7"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 9),
+    "valve8": new ValveItem(8, qsTr("Normal Y8"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0,  10),
+    "valve9": new ValveItem(9, qsTr("Normal Y9"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0,  11),
+    "valve10": new ValveItem(10, qsTr("Normal Y10"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 12),
+    "valve11": new ValveItem(11, qsTr("Normal Y11"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 13),
+    "valve12": new ValveItem(12, qsTr("Normal Y12"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 14),
+    "valve13": new ValveItem(13, qsTr("Normal Y13"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 15),
+    "valve14": new ValveItem(14, qsTr("Normal Y14"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 16),
+    "valve15": new ValveItem(15, qsTr("Normal Y15"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 17),
+    "valve16": new ValveItem(16, qsTr("Normal Y16"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 18),
+    "valve17": new ValveItem(17, qsTr("Normal Y17"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 19),
+    "valve18": new ValveItem(18, qsTr("Normal Y18"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 20),
+    "valve19": new ValveItem(19, qsTr("Normal Y19"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 21),
+    "valve20": new ValveItem(20, qsTr("Normal Y20"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 22),
+    "valve21": new ValveItem(21, qsTr("Normal Y21"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 23),
+    "valve22": new ValveItem(22, qsTr("Normal Y22"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 24),
+    "valve23": new ValveItem(23, qsTr("Normal Y23"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 25),
+    "valve24": new ValveItem(24, qsTr("Normal Y24"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 26),
+    "valve25": new ValveItem(25, qsTr("Normal Y25"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 27),
+    "valve26": new ValveItem(26, qsTr("Normal Y26"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 28),
+    "valve27": new ValveItem(27, qsTr("Normal Y27"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 29),
 };
 
 function combineValveDefines(customValves){

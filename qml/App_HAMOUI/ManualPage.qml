@@ -114,14 +114,40 @@ ContentPageBase {
                         yDefinePage1Class.createObject(
                             pageContainer,
                             {
-                                "valves": ["valve0", "valve1", "valve2", "valve3"]
+                                "valves": ["valve0", "valve1", "valve2", "valve3",
+                                           "valve4",
+                                           "valve5",
+                                           "valve6",
+                                           "valve7",
+                                           "valve8",
+                                           "valve9",
+                                           "valve10",
+                                           "valve11",
+                                           "valve12",
+                                            "valve13",
+
+                                ]
                             });
                 pageContainer.addPage(page)
                 page =
                         yDefinePage1Class.createObject(
                             pageContainer,
                             {
-                                "valves": ["valve0", "valve1", "valve2", "valve3"]
+                                "valves": [
+                                    "valve14",
+                                    "valve15",
+                                    "valve16",
+                                    "valve17",
+                                    "valve18",
+                                    "valve19",
+                                    "valve20",
+                                    "valve21",
+                                    "valve22",
+                                    "valve23",
+                                    "valve24",
+                                    "valve25",
+                                    "valve26",
+                                    "valve27",  ]
                             });
                 pageContainer.addPage(page)
                 //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]

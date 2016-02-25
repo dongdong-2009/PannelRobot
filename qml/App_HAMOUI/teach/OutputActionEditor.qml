@@ -8,15 +8,30 @@ import "../configs/IODefines.js" as IODefines
 Item {
     id:container
     property variant ys: [
-        "Y010",
-        "Y011",
-        "Y012",
-        "Y013",
-        "Y014",
-        "Y015",
-        "Y016",
-        "Y017",
-        "Y020",
+        "valve4",
+        "valve5",
+        "valve6",
+        "valve7",
+        "valve8",
+        "valve9",
+        "valve10",
+        "valve11",
+        "valve12",
+        "valve13",
+        "valve14",
+        "valve15",
+        "valve16",
+        "valve17",
+        "valve18",
+        "valve19",
+        "valve20",
+        "valve21",
+        "valve22",
+        "valve23",
+        "valve24",
+        "valve25",
+        "valve26",
+        "valve27",
     ]
     property  variant euYs : ["EuY010", "EuY011", "EuY012", "EuY013",
         "EuY014", "EuY015", "EuY016", "EuY017", "EuY020", "EuY021", "EuY022", "EuY023"]
@@ -251,8 +266,8 @@ Item {
         var yDefine;
         var i;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-            yModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.y1Point, IODefines.IO_BOARD_0));
         }
 
         yDefines = euYs;

@@ -9,6 +9,8 @@ Rectangle
     color: "grey"
     property variant buffer: []
     property bool isover: false
+    property int begin: 1
+    property int end: 0
     ICButton{
         id:gototop
         x:700
@@ -27,8 +29,7 @@ Rectangle
         z:1
         text: qsTr("gotobottom")
         onButtonClicked: {
-            debugView.contentY = (debugModel.count - 19)*20;    //why can't use myitem.height
-//            console.log(debugModel.count,myitem.height);
+            debugView.contentY = (debugModel.count - container.height/30)*30 +12;
         }
     }
 
@@ -42,25 +43,34 @@ Rectangle
             running: visible;
             onTriggered:{
                 if(isover){
-                    var i,count = 0;
+                    var i, j;
                     var buffer1 = panelRobotController.debug_LogContent().split("\n");
                     if(container.buffer.length < buffer1.length){
-                        for(i = container.buffer.length;i < buffer1.length;i++){
+//                        console.log("upovercome");
+                        for(i = container.buffer.length;i < buffer1.length - 1;i++){
                             debugModel.append({"text1": buffer1[i]});
                         }
                         container.buffer = buffer1;
                     }else if(container.buffer.length == buffer1.length){
-                            if(container.buffer[count] != buffer1[count])
-                            var j = 0;
-                            for(;j < container.buffer.length;j++){
-                                if(container.buffer[j] == buffer1[j]){
-                                    count = j;
-                                    break;
+                            if(container.buffer[1] != buffer1[1]){
+                                begin = 1;
+                                debugModel.append({"text1": buffer1[0]});
+                            }
+                            if(container.buffer[begin] != buffer1[begin]){
+                                for(i = begin + 1;i < buffer1.length;i++){
+                                    if(container.buffer[i] == buffer1[i]){
+                                        end = i;
+                                        for(i = begin;i < end; i++){
+                                            debugModel.append({"text1": buffer1[i]});
+                                        }
+                                        begin = end;
+                                        if(container.buffer[1] != buffer1[1])
+                                            begin = 1;
+                                        break;
+                                    }
                                 }
                             }
-                            for(i = 0;i < j;i++){
-                                debugModel.append({"text1": buffer1[i]});
-                            }
+                            container.buffer = buffer1;
                         }
                 }
             }
@@ -72,26 +82,29 @@ Rectangle
 
     ListView {
         id:debugView
+        x:50
         width: parent.width
         height: parent.height
         model: debugModel
         clip: true
         highlight: Rectangle {width: 650; height: 20;color: "lightsteelblue"; radius: 5}
         delegate: Item {
-            id:myitem
             width: 650
-            height: 20
+            height: 30
             Text {
+                width: parent.width
                 text: text1
+                wrapMode: Text.WordWrap
                 anchors.verticalCenter: parent.verticalCenter
             }
+//            MouseArea{
+//                anchors.fill: parent
+//                onClicked: {
+//                    debugView.currentIndex = index;
+//                }
+//            }
         }
-        MouseArea{
-            anchors.fill: parent
-            onClicked: {
-//                debugView.currentIndex = index;
-            }
-        }
+
     }
 
     WorkerScript {
@@ -103,5 +116,6 @@ Rectangle
     Component.onCompleted: {
         container.buffer = panelRobotController.debug_LogContent().split("\n");
         myWorker.sendMessage({'buffer':container.buffer, 'model':debugModel});
+        console.log(debugView.width);
     }
 }

@@ -440,12 +440,6 @@ QTime testTime;
 int oldTime;
 void ICRobotVirtualhost::CommunicateImpl()
 {
-    int ct = testTime.restart();
-    if(qAbs(oldTime - ct) > 5 || ct > 100)
-    {
-        qDebug()<<"time:"<<ct;
-        oldTime = ct;
-    }
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
     if(recvRet_ == false || recvFrame_->IsError())
     {
@@ -574,6 +568,12 @@ void ICRobotVirtualhost::CommunicateImpl()
 if(!keyCommandList_.isEmpty())
 {
 //    SetCommunicateInterval(SHORT_CMD_INTERVAL);
+    int ct = testTime.restart();
+    if(qAbs(oldTime - ct) > 5 || ct > 100)
+    {
+        qDebug()<<"time:"<<ct;
+        oldTime = ct;
+    }
     AddCommunicationFrame(keyCommandList_.dequeue());
     AddRefreshStatusCommand_();
     //        qDebug("keycommand");

@@ -11,7 +11,7 @@ Item {
     property string valveName: ""
     property variant valveStatus: {"y1":false, "x1":false, "y2":false, "x2":false}
     property variant valve: null
-    width: 300
+    width: 350
     height: y1Led.height
     Text {
         id: pointDescr

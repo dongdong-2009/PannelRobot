@@ -15,8 +15,9 @@ QMap<int, QStringList> CreatePathActionMotorNamesMap()
     ret.insert(F_CMD_ARC3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_MOVE_POSE, QStringList()<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_LINE3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
-    ret.insert(F_CMD_JOINTCOORDINATE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
-    ret.insert(F_CMD_COORDINATE_DEVIATION, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_JOINT_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_LINE_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_JOINT_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
     return ret;
 }
 static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
@@ -103,15 +104,15 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_LINE3D_MOVE_POSE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_JOINTCOORDINATE && points.size() != 1)
+    if(item.at(0) == F_CMD_JOINT_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_COORDINATE_DEVIATION && points.size() != 1)
+    if(item.at(0) == F_CMD_LINE_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_JOINT_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
 
     QVariantMap point;
-    if(item.at(0) == F_CMD_JOINTCOORDINATE)
+    if(item.at(0) == F_CMD_JOINT_MOVE_POINT)
     {
         point = points.at(0).toMap().value("pos").toMap();
         int enbits = 0;
@@ -326,8 +327,9 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POSE, PathActionCompiler);
-    ret.insert(F_CMD_JOINTCOORDINATE, PathActionCompiler);
-    ret.insert(F_CMD_COORDINATE_DEVIATION, PathActionCompiler);
+    ret.insert(F_CMD_JOINT_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINE_RELATIVE, PathActionCompiler);
+    ret.insert(F_CMD_JOINT_RELATIVE, PathActionCompiler);
 
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);

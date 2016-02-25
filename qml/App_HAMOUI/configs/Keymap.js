@@ -1,20 +1,26 @@
 .pragma library
 Qt.include("../../utils/HashTable.js")
 
-var kTP_LINE_START_POINT = 0;
-var kTP_LINE_END_POINT   = 1;
-var kTP_AUTO_START_POINT = 2;
-var kTP_AUTO_END_POINT = 3;
-var kTP_TEACH_LINE_START_POINT = 4;
-var kTP_TEACH_LINE_END_POINT = 5;
-var kTP_TEACH_AUTO_START_POINT = 6;
-var kTP_TEACH_AUTO_END_POINT = 7;
-var kTP_ARC_START_POINT = 10;
-var kTP_ARC_MID_POINT = 11;
-var kTP_ARC_END_POINT = 12;
-var kTP_TEACH_ARC_START_POINT = 13;
-var kTP_TEACH_ARC_MID_POINT = 14;
-var kTP_TEACH_ARC_END_POINT = 15;
+var kTPHelper = 0;
+var kTP_LINE_START_POINT = kTPHelper++;
+var kTP_LINE_END_POINT   = kTPHelper++;
+var kTP_AUTO_START_POINT = kTPHelper++;
+var kTP_AUTO_END_POINT = kTPHelper++;
+var kTP_RELATIVE_LINE_START_POINT = kTPHelper++;  //< 直线相对移动位置
+var kTP_RELATIVE_AUTO_END_POINT = kTPHelper++;     //< 关节坐标相对移动位置
+var kTP_TEACH_LINE_START_POINT = kTPHelper++;
+var kTP_TEACH_LINE_END_POINT = kTPHelper++;
+var kTP_TEACH_AUTO_START_POINT = kTPHelper++;
+var kTP_TEACH_AUTO_END_POINT = kTPHelper++;
+var kTP_TEACH_RELATIVE_LINE_START_POINT= kTPHelper++;   //< 直线相对移动位置
+var kTP_TEACH_RELATIVE_AUTO_END_POINT= kTPHelper++;     //< 关节坐标相对移动位置
+kTPHelper = 30;
+var kTP_ARC_START_POINT = kTPHelper++;
+var kTP_ARC_MID_POINT = kTPHelper++;
+var kTP_ARC_END_POINT = kTPHelper++;
+var kTP_TEACH_ARC_START_POINT = kTPHelper++;
+var kTP_TEACH_ARC_MID_POINT = kTPHelper++;
+var kTP_TEACH_ARC_END_POINT = kTPHelper++;
 
 
 var COMBINE_ARM_MOVE_TYPE = 30;

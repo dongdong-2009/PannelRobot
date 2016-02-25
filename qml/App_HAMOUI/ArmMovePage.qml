@@ -449,7 +449,7 @@ Rectangle {
                                 id:lineSave1
                                 text:qsTr("Set to Point-1");
                                 width: 180
-                                onButtonClicked: functionSection.savePointHelper(0, linePoint1);
+                                onButtonClicked: functionSection.savePointHelper(Keymap.kTP_LINE_START_POINT, linePoint1);
                             }
                         }
                         Text {
@@ -471,7 +471,7 @@ Rectangle {
                                 id:lineSave2
                                 width: 180
                                 text:qsTr("Set to Point-2");
-                                onButtonClicked: functionSection.savePointHelper(1, linePoint2);
+                                onButtonClicked: functionSection.savePointHelper(Keymap.kTP_LINE_END_POINT, linePoint2);
 
                             }
                         }
@@ -503,7 +503,7 @@ Rectangle {
                                 id:curveSave1
                                 text:qsTr("Set to Point-1")
                                 width: 180
-                                onButtonClicked: functionSection.savePointHelper(10, curvePoint1)
+                                onButtonClicked: functionSection.savePointHelper(Keymap.kTP_ARC_START_POINT, curvePoint1)
 
                             }
                         }
@@ -524,7 +524,7 @@ Rectangle {
                                 id:curveSave2
                                 text:qsTr("Set to CPoint-2")
                                 width: 180
-                                onButtonClicked: functionSection.savePointHelper(11, curvePoint2)
+                                onButtonClicked: functionSection.savePointHelper(Keymap.kTP_ARC_MID_POINT, curvePoint2)
 
                             }
                         }
@@ -548,7 +548,7 @@ Rectangle {
                                 text:qsTr("Set to CPoint-3")
                                 width: 180
 
-                                onButtonClicked: functionSection.savePointHelper(12, curvePoint3)
+                                onButtonClicked: functionSection.savePointHelper(Keymap.kTP_ARC_END_POINT, curvePoint3)
 
                             }
                         }

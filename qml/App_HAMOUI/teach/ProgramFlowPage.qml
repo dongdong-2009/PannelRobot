@@ -730,13 +730,13 @@ Rectangle {
                                     panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
                                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_ARC_TO_START_POINT);
                                 }else if(ao.action === Teach.actions.F_CMD_JOINTCOORDINATE){
-                                    panelRobotController.logTestPoint(Keymap.TEACH_AUTO_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_AUTO_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
                                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_AUTO_TO_START_POINT);
                                 }else if(ao.action === Teach.actions.F_CMD_COORDINATE_DEVIATION){
-                                    panelRobotController.logTestPoint(Keymap.TEACH_RELATIVE_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
                                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_LINT_TO_START_POINT);
                                 }else if(ao.action === Teach.actions.F_CMD_JOINT_RELATIVE){
-                                    panelRobotController.logTestPoint(Keymap.TEACH_RELATIVE_AUTO_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
+                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_AUTO_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
                                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_AUTO_TO_START_POINT);
                                 }else if(ao.action === Teach.actions.F_CMD_SINGLE){
                                     var cP = tryRunBtn.getCurrentPoint();

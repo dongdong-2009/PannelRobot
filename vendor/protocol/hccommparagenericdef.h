@@ -423,23 +423,23 @@ typedef enum
     CMD_JOG_PR     = 0x0306,  // 极坐标系，远离原点点动
 
     /*手动*/
-    CMD_LINT_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
-    CMD_LINT_TO_END_POINT,  // 直线运动到终点坐标
-    CMD_AUTO_TO_START_POINT,  // 关节运动到起点坐标
-    CMD_AUTO_TO_END_POINT,  // 关节运动到终点坐标
-    CMD_RELATIVE_LINT_TO_START_POINT,  // 相对直线运动正方向
-    CMD_RELATIVE_LINT_TO_END_POINT,  // 相对直线运动反方向
-    CMD_RELATIVE_AUTO_TO_START_POINT,  // 相对关节运动正方向
-    CMD_RELATIVE_AUTO_TO_END_POINT,  // 相对关节运动反方向
+    CMD_LINE_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
+    CMD_LINE_TO_END_POINT,  // 直线运动到终点坐标
+    CMD_JOINT_TO_START_POINT,          // 关节运动到起点坐标
+    CMD_JOINT_TO_END_POINT,            // 关节运动到终点坐标
+    CMD_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
+    CMD_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
+    CMD_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
+    CMD_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
     /*教导*/
-    CMD_TEACH_LINT_TO_START_POINT,  // 直线运动到起点坐标
-    CMD_TEACH_LINT_TO_END_POINT,  // 直线运动到终点坐标
-    CMD_TEACH_AUTO_TO_START_POINT,  // 关节运动到起点坐标
-    CMD_TEACH_AUTO_TO_END_POINT,  // 关节运动到终点坐标
-    CMD_TEACH_RELATIVE_LINT_TO_START_POINT,  // 相对直线运动正方向
-    CMD_TEACH_RELATIVE_LINT_TO_END_POINT,  // 相对直线运动反方向
-    CMD_TEACH_RELATIVE_AUTO_TO_START_POINT,  // 相对关节运动正方向
-    CMD_TEACH_RELATIVE_AUTO_TO_END_POINT,  // 相对关节运动反方向
+    CMD_TEACH_LINE_TO_START_POINT,           // 直线运动到起点坐标
+    CMD_TEACH_LINE_TO_END_POINT,             // 直线运动到终点坐标
+    CMD_TEACH_JOINT_TO_START_POINT,          // 关节运动到起点坐标
+    CMD_TEACH_JOINT_TO_END_POINT,            // 关节运动到终点坐标
+    CMD_TEACH_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
+    CMD_TEACH_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
+    CMD_TEACH_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
+    CMD_TEACH_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
     /*手动*/
     CMD_ARC_TO_START_POINT= 0x0330,  // 弧线运动往终点坐标方向
     CMD_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
@@ -534,9 +534,9 @@ typedef enum
     F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
     //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
     //< 坐标（X，Y，Z,U,V,W） 速度 延时
-	F_CMD_JOINTCOORDINATE,
-	//< 偏移位置（X，Y，Z） 速度  延时
-	F_CMD_COORDINATE_DEVIATION,
+	F_CMD_JOINT_MOVE_POINT,
+	//< 直线坐标偏移位置（X，Y，Z） 速度  延时
+	F_CMD_LINE_RELATIVE,
 	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
@@ -688,11 +688,25 @@ typedef enum
     ALARM_AXIS6_ACC_LIMIT,//<名字：轴6加速度报警
 
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
-    ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动坐标1未设定
-    ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动坐标2未设定
-    ALARM_ROUTE_ARC_P1_NOTSET,//<名字：手动弧线轨迹运动坐标1未设定
-    ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动坐标2未设定
-    ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动坐标3未设定
+    ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动起始坐标未设定
+    ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动终点坐标未设定
+    ALARM_JOINT_P1_NOTSET,//<名字：手动关节运动起始坐标未设定
+    ALARM_JOINT_P2_NOTSET,//<名字：手动关节运动终点坐标未设定
+    ALARM_RELATIVE_LP_NOTSET,//<名字：手动直线相对移动坐标未设定
+    ALARM_RELATIVE_JP_NOTSET,//<名字：手动关节相对移动坐标未设定
+    ALARM_TEACH_ROUTE_LINE_P1_NOTSET,//<名字：教导直线轨迹运动起始坐标未设定
+    ALARM_TEACH_ROUTE_LINE_P2_NOTSET,//<名字：教导直线轨迹运动终点坐标未设定
+    ALARM_TEACH_JOINT_P1_NOTSET,//<名字：教导关节运动起始坐标未设定
+    ALARM_TEACH_JOINT_P2_NOTSET,//<名字：教导关节运动终点坐标未设定
+    ALARM_TEACH_RELATIVE_LP_NOTSET,//<名字：教导直线相对移动坐标未设定
+    ALARM_TEACH_RELATIVE_JP_NOTSET,//<名字：教导关节相对移动坐标未设定
+    ALARM_ROUTE_ARC_P1_NOTSET,//<名字：手动弧线轨迹运动起点坐标未设定
+    ALARM_ROUTE_ARC_P2_NOTSET,//<名字：手动弧线轨迹运动中间点坐标未设定
+    ALARM_ROUTE_ARC_P3_NOTSET,//<名字：手动弧线轨迹运动终点坐标未设定
+    ALARM_TEACH_ROUTE_ARC_P1_NOTSET,//<名字：教导弧线轨迹运动起点坐标未设定
+    ALARM_TEACH_ROUTE_ARC_P2_NOTSET,//<名字：教导弧线轨迹运动中间坐标未设定
+    ALARM_TEACH_ROUTE_ARC_P3_NOTSET,//<名字：教导弧线轨迹运动终点坐标未设定
+
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
     ALARM_ROUTE_ACC_ERR,//<名字：轨迹规划失败
 

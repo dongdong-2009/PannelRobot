@@ -60,7 +60,8 @@ Item {
             selReferenceName.items = [];
         else if(action === Teach.actions.F_CMD_JOINTCOORDINATE)
             selReferenceName.items = fPointNames;
-        else if(action === Teach.actions.F_CMD_COORDINATE_DEVIATION)
+        else if(action === Teach.actions.F_CMD_COORDINATE_DEVIATION ||
+                action === Teach.actions.F_CMD_JOINT_RELATIVE)
             selReferenceName.items = oPointNames;
         else
             selReferenceName.items = lPointNames;
@@ -137,6 +138,8 @@ Item {
             freePathType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_COORDINATE_DEVIATION){
             offsetPathType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_JOINT_RELATIVE){
+            offsetJogType.setChecked(true);
         }
     }
 
@@ -153,7 +156,7 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
-        enabled: !offsetPathType.isChecked
+        enabled: (!offsetPathType.isChecked)
         ICButton{
             id:setIn
             text: qsTr("Set In")
@@ -436,6 +439,21 @@ Item {
                     motor2.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
                     action = Teach.actions.F_CMD_COORDINATE_DEVIATION;
+                }else if(checkedItem == offsetJogType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    motor3.setChecked(true);
+                    motor4.setChecked(true);
+                    motor5.setChecked(true);
+//                    motor0.isEditable = true;
+//                    motor1.isEditable = true;
+//                    motor2.isEditable = true;
+//                    motor3.isEditable = true;
+//                    motor4.isEditable = true;
+//                    motor5.isEditable = true;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_JOINT_RELATIVE;
                 }
 
                 motor0.visible = motor0.isChecked;
@@ -449,7 +467,7 @@ Item {
             }
 
             Flow{
-                width: 375
+                width: 395
                 spacing: 4
                 x:4
                 y:2
@@ -479,7 +497,11 @@ Item {
                 }
                 ICCheckBox{
                     id:offsetPathType
-                    text: qsTr("Offset Move")
+                    text: qsTr("Offset Line")
+                }
+                ICCheckBox{
+                    id:offsetJogType
+                    text:qsTr("Offset Jog")
                 }
             }
         }

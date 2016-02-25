@@ -449,7 +449,7 @@ Rectangle {
                                 id:lineSave1
                                 text:qsTr("Set to Point-1");
                                 width: 180
-                                onButtonClicked: functionSection.savePointHelper(1, linePoint1);
+                                onButtonClicked: functionSection.savePointHelper(0, linePoint1);
                             }
                         }
                         Text {
@@ -471,7 +471,7 @@ Rectangle {
                                 id:lineSave2
                                 width: 180
                                 text:qsTr("Set to Point-2");
-                                onButtonClicked: functionSection.savePointHelper(0, linePoint2);
+                                onButtonClicked: functionSection.savePointHelper(1, linePoint2);
 
                             }
                         }

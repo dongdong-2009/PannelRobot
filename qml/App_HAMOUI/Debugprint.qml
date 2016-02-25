@@ -85,11 +85,11 @@ Rectangle
                 text: text1
                 anchors.verticalCenter: parent.verticalCenter
             }
-        }
-        MouseArea{
-            anchors.fill: parent
-            onClicked: {
-//                debugView.currentIndex = index;
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    debugView.currentIndex = index;
+                }
             }
         }
     }

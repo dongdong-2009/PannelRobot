@@ -80,7 +80,7 @@ Item {
             data = mD.get(i);
             if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, delay.configValue));
+                ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delay.configValue));
                 break;
             }
         }
@@ -165,13 +165,14 @@ Item {
                     };
                 }
 
-                function createValveMoldItem(pointNum, pointDescr, hwPoint, board){
+                function createValveMoldItem(pointNum, pointDescr, hwPoint, valveID, board){
                     return {"isSel":false,
                         "pointNum":pointNum,
                         "pointDescr":pointDescr,
                         "hwPoint":hwPoint,
                         "board":board,
-                        "isOn": false
+                        "isOn": false,
+                        "valveID":valveID
                     };
                 }
 
@@ -267,7 +268,7 @@ Item {
         var i;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.IO_BOARD_0));
+            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.y1Point, yDefine.id, IODefines.IO_BOARD_0));
         }
 
         yDefines = euYs;
@@ -285,13 +286,13 @@ Item {
         yDefines = singleYs;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, yDefine.id, IODefines.VALVE_BOARD));
         }
 
         yDefines = holdDoubleYs;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, yDefine.id,IODefines.VALVE_BOARD));
         }
 
         yDefines = timeYs;

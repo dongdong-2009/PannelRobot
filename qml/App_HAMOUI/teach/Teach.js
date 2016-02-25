@@ -1206,13 +1206,13 @@ var valveTypeToString = [
     qsTr("Unhold Double Y")];
 
 function valveItemToString(valve){
-    var ret = valveTypeToStringTo[valve.type] + "-";
-    ret += getYDefineFromHWPoint(valve.y1Point).yDefine.pointName;
-    if(valve.Type === IO_TYPE_HOLD_DOUBLE_Y ||
-            valve.Type === IO_TYPE_UNHOLD_DOUBLE_Y){
-        ret += "," + getYDefineFromHWPoint(valve.y2Point).yDefine.pointName;
+    var ret = valveTypeToString[valve.type] + "-";
+    ret += getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
+    if(valve.type === IO_TYPE_HOLD_DOUBLE_Y ||
+            valve.type === IO_TYPE_UNHOLD_DOUBLE_Y){
+        ret += "," + getYDefineFromHWPoint(valve.y2Point, valve.y2Board).yDefine.pointName;
     }
-    return ret += valve.descr;
+    return ret +=":" + valve.descr;
 }
 
 var outputActionToStringHandler = function(actionObject){

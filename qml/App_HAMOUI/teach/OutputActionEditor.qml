@@ -267,7 +267,7 @@ Item {
         var i;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.y1Point, IODefines.IO_BOARD_0));
+            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.IO_BOARD_0));
         }
 
         yDefines = euYs;

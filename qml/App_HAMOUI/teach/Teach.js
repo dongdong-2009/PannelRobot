@@ -877,13 +877,14 @@ var generteEndAction = function(){
     };
 }
 
-var generateOutputAction = function(point, type, status, time){
+var generateOutputAction = function(point, type, status, valveID, time){
     var ret =
             {
         "action":actions.F_CMD_IO_OUTPUT,
         "type":type,
         "point":point,
         "pointStatus": status,
+        "valveID":valveID || -1
     };
     if(type >= TIMEY_BOARD_START){
         ret.acTime = time || 0;
@@ -1198,11 +1199,26 @@ var flagActionToStringHandler = function(actionObject){
             + actionObject.comment;
 }
 
+var valveTypeToString = [
+    qsTr("Normal Y"),
+    qsTr("Single Y"),
+    qsTr("Hold Double Y"),
+    qsTr("Unhold Double Y")];
 
+function valveItemToString(valve){
+    var ret = valveTypeToStringTo[valve.type] + "-";
+    ret += getYDefineFromHWPoint(valve.y1Point).yDefine.pointName;
+    if(valve.Type === IO_TYPE_HOLD_DOUBLE_Y ||
+            valve.Type === IO_TYPE_UNHOLD_DOUBLE_Y){
+        ret += "," + getYDefineFromHWPoint(valve.y2Point).yDefine.pointName;
+    }
+    return ret += valve.descr;
+}
 
 var outputActionToStringHandler = function(actionObject){
-    if(actionObject.type === VALVE_BOARD){
-        return qsTr("Output:") + getValveItemFromValveID(actionObject.point).descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+    if(actionObject.valveID >= 0){
+        var valve = getValveItemFromValveID(actionObject.valveID);
+        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
@@ -1487,7 +1503,8 @@ var canActionTestRun = function(actionObject){
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_JOINTCOORDINATE;
+            actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
+            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
 }
 
 

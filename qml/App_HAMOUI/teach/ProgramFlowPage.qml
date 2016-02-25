@@ -693,7 +693,7 @@ Rectangle {
                         visible: {
                             var currentItem = currentModelData();
                             if(currentItem === null) return false;
-                            return Teach.canActionUsePoint(currentItem.mI_ActionObject);
+                            return Teach.canActionTestRun(currentItem.mI_ActionObject);
                         }
                         function actionPointToLogPoint(pos){
                             return  JSON.stringify([pos.m0 || 0.000,

@@ -250,6 +250,13 @@
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>1.Connector loose
+2.Wire is off
+3.Pannel is broken
+4.Host is broken</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -376,6 +383,14 @@
     <message>
         <source>Set to Point-3</source>
         <translation>设当前位置为终点</translation>
+    </message>
+    <message>
+        <source>Set to CPoint-2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set to CPoint-3</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -800,6 +815,17 @@
     <message>
         <source>USB Net</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Debugprint</name>
+    <message>
+        <source>gototop</source>
+        <translation>回顶部</translation>
+    </message>
+    <message>
+        <source>gotobottom</source>
+        <translation>去底部</translation>
     </message>
 </context>
 <context>
@@ -1558,18 +1584,114 @@
     </message>
     <message>
         <source>Normal Y</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation type="unfinished">单头阀Y</translation>
+        <translation>单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation type="unfinished">保持型双头阀Y</translation>
+        <translation>保持型双头阀Y</translation>
     </message>
     <message>
         <source>Unhold Double Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y13</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y17</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y19</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y21</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y24</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y26</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal Y27</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1686,6 +1808,10 @@
     <message>
         <source>Debug</source>
         <translation>调试</translation>
+    </message>
+    <message>
+        <source>Debugprint</source>
+        <translation>调试日志</translation>
     </message>
 </context>
 <context>
@@ -1958,6 +2084,14 @@ please chose!</source>
     <message>
         <source>Offset Move</source>
         <translation>相对移动</translation>
+    </message>
+    <message>
+        <source>Offset Line</source>
+        <translation>相对直线</translation>
+    </message>
+    <message>
+        <source>Offset Jog</source>
+        <translation>相对关节</translation>
     </message>
 </context>
 <context>
@@ -2247,6 +2381,10 @@ please chose!</source>
     <message>
         <source>Del Module</source>
         <translation>删除模块</translation>
+    </message>
+    <message>
+        <source>Run</source>
+        <translation>试行</translation>
     </message>
 </context>
 <context>
@@ -2916,7 +3054,31 @@ please chose!</source>
     </message>
     <message>
         <source>Invalid Flag</source>
+        <translation>无效标签</translation>
+    </message>
+    <message>
+        <source>Normal Y</source>
+        <translation>普通输出</translation>
+    </message>
+    <message>
+        <source>Single Y</source>
+        <translation>单头阀</translation>
+    </message>
+    <message>
+        <source>Hold Double Y</source>
+        <translation>保持型双头阀</translation>
+    </message>
+    <message>
+        <source>Unhold Double Y</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offset Line:</source>
+        <translation>相对直线:</translation>
+    </message>
+    <message>
+        <source>Offset Jog:</source>
+        <translation>相对关节:</translation>
     </message>
 </context>
 <context>

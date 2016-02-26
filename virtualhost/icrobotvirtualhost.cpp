@@ -530,7 +530,7 @@ void ICRobotVirtualhost::CommunicateImpl()
                 if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
                 {
                     //                qDebug()<<"statusDataTmp_.at(i)";
-                    SetCommunicateInterval(INIT_INTERVAL);
+//                    SetCommunicateInterval(INIT_INTERVAL);
                     emit NeedToInitHost();
                     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
                                                                                                           ICAddr_System_Retain_1,
@@ -575,11 +575,13 @@ if(!keyCommandList_.isEmpty())
 if(queue_.IsEmpty())
 {
     AddRefreshStatusCommand_();
-    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
-        SetCommunicateInterval(REFRESH_INTERVAL);
+//    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
+//        SetCommunicateInterval(REFRESH_INTERVAL);
     //        return;
 }
-Transceiver()->Write(queue_.Head());
+const ICRobotTransceiverData* toSend = static_cast<const ICRobotTransceiverData*>(queue_.Head());
+Transceiver()->Write(toSend);
+SetCommunicateInterval((toSend->GetLength() >> 1) + 1);
 }
 
 void ICRobotVirtualhost::AddRefreshStatusCommand_()

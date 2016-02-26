@@ -436,8 +436,8 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
 }
 #endif
 
-QTime testTime;
-int oldTime;
+//QTime testTime;
+//int oldTime;
 void ICRobotVirtualhost::CommunicateImpl()
 {
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
@@ -562,12 +562,12 @@ void ICRobotVirtualhost::CommunicateImpl()
 if(!keyCommandList_.isEmpty())
 {
     //    SetCommunicateInterval(SHORT_CMD_INTERVAL);
-    int ct = testTime.restart();
-    if(qAbs(oldTime - ct) > 5 || ct > 100)
-    {
-        qDebug()<<"time:"<<ct;
-        oldTime = ct;
-    }
+//    int ct = testTime.restart();
+//    if(qAbs(oldTime - ct) > 5 || ct > 100)
+//    {
+//        qDebug()<<"time:"<<ct;
+//        oldTime = ct;
+//    }
     AddCommunicationFrame(keyCommandList_.dequeue());
     AddRefreshStatusCommand_();
     //        qDebug("keycommand");

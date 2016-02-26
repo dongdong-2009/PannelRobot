@@ -581,7 +581,7 @@ if(queue_.IsEmpty())
 }
 const ICRobotTransceiverData* toSend = static_cast<const ICRobotTransceiverData*>(queue_.Head());
 Transceiver()->Write(toSend);
-SetCommunicateInterval((toSend->GetLength() >> 1) + 1);
+SetCommunicateInterval(toSend->IsQuery()?REFRESH_INTERVAL:(toSend->GetLength() + 5));
 }
 
 void ICRobotVirtualhost::AddRefreshStatusCommand_()

@@ -11,12 +11,13 @@ SK_SIZE = 8
 
 QMAKE_CXX = ccache $${QMAKE_CXX}
 
+DEFINES += COMM_DEBUG
 suffix = $${VERSION}
 CONFIG(debug, debug|release) {
 suffix = $${suffix}_debug
 #DEFINES += TEST_STEP
 #DEFINES += TEST_ALARM
-DEFINES += COMM_DEBUG
+#DEFINES += COMM_DEBUG
 }
 else{
 suffix = $${suffix}_release

@@ -3413,6 +3413,10 @@ please chose!</source>
         <source>On</source>
         <translation>通</translation>
     </message>
+    <message>
+        <source>Off</source>
+        <translation>断</translation>
+    </message>
 </context>
 <context>
     <name>main</name>

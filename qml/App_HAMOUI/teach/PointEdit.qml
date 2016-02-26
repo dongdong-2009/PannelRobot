@@ -520,6 +520,7 @@ Item {
             width: parent.width
             height: parent.height
             orientation: ListView.Horizontal
+            interactive: false
             spacing: 10
             currentIndex: -1
             x:2

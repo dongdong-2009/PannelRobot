@@ -81,13 +81,11 @@ Item {
 
 
     Component.onCompleted: {
-        var valveItem = IODefines.getValveItemFromValveName(valveName);
-        if(valveItem === null) return;
-        pointDescr.text = valveItem.descr;
-        x1Led.visible = !IODefines.isNormalYType(valveItem);
-        y2Led.visible = IODefines.isDoubleYType(valveItem);
-        x2Led.visible = IODefines.isDoubleYType(valveItem);
-        valve = valveItem;
+        if(valve === null) return;
+        pointDescr.text = valve.descr;
+        x1Led.visible = !IODefines.isNormalYType(valve);
+        y2Led.visible = IODefines.isDoubleYType(valve);
+        x2Led.visible = IODefines.isDoubleYType(valve);
     }
 
     //    onIsOnChanged: {

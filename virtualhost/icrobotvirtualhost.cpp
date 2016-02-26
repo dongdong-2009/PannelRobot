@@ -150,8 +150,8 @@ bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const 
         AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, formattedData.at(i).size() | ((which) << 24));
         SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
     }
-//    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
-//    SendContinuousDataHelper(hostPtr, 0, data);
+    //    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
+    //    SendContinuousDataHelper(hostPtr, 0, data);
     return true;
 #else
     QVector<quint32> sub;
@@ -450,7 +450,7 @@ void ICRobotVirtualhost::CommunicateImpl()
             statusCache_.UpdateConfigValue(&c_ro_0_32_0_932, 9);
         }
 #ifdef NEW_PLAT
-//        if(ec == FunctionCode_EditTeach)
+        //        if(ec == FunctionCode_EditTeach)
 #else
         if(ec == COMMEC_NeedToInit)
         {
@@ -486,12 +486,6 @@ void ICRobotVirtualhost::CommunicateImpl()
         //        {
         //            return;
         //        }
-    }
-    if(unlikely(IsCommunicateDebug()) && !recvFrame_->IsQuery())
-    {
-        //        qDebug()<<"Read:"<<Transceiver()->LastReadFrame();
-        //        qDebug()<<"Write:"<<Transceiver()->LastWriteFrame();
-        //        emit ReadyCommunicate();
     }
     if(likely(recvRet_ && !recvFrame_->IsError()))
         //    if(1)
@@ -567,7 +561,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 }
 if(!keyCommandList_.isEmpty())
 {
-//    SetCommunicateInterval(SHORT_CMD_INTERVAL);
+    //    SetCommunicateInterval(SHORT_CMD_INTERVAL);
     int ct = testTime.restart();
     if(qAbs(oldTime - ct) > 5 || ct > 100)
     {
@@ -761,7 +755,7 @@ void ICRobotVirtualhost::LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<
 
     ICHCTransceiverData::ICTransceiverDataBuffer db;
     db<<type<<axisData.at(0)<<axisData.at(1)<<axisData.at(2)<<axisData.at(3)<<axisData.at(4)
-        <<axisData.at(5);
+     <<axisData.at(5);
     toSentFrame->SetData(db);
     hostPtr->AddCommunicationFrame(toSentFrame);
 }

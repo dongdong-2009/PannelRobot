@@ -16,7 +16,7 @@ CONFIG(debug, debug|release) {
 suffix = $${suffix}_debug
 #DEFINES += TEST_STEP
 #DEFINES += TEST_ALARM
-#DEFINES += COMM_DEBUG
+DEFINES += COMM_DEBUG
 }
 else{
 suffix = $${suffix}_release

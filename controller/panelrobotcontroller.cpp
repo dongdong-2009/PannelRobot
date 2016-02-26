@@ -159,7 +159,7 @@ void PanelRobotController::Init()
 //    host_->SetCommunicateDebug(true);
 #ifdef COMM_DEBUG
     host_->SetCommunicateDebug(true);
-    OnNeedToInitHost();
+//    OnNeedToInitHost();
 #endif
 //    InitMainView();
     qApp->installTranslator(&translator);

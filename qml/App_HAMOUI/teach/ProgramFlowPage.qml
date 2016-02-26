@@ -285,7 +285,7 @@ Rectangle {
 
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
-        console.log(ret);
+//        console.log(ret);
         var info = JSON.parse(ret);
         info.steps = JSON.parse(info.steps);
         return info;

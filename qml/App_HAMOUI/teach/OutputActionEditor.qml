@@ -219,7 +219,9 @@ Item {
                         width:yView.cellWidth * 0.6
                         bgColor: isOn ? "lime" : "white"
                         onButtonClicked: {
-                            panelRobotController.setYStatus(board, hwPoint, !isOn);
+                            var toSend = IODefines.valveItemJSON(valveName);
+                            panelRobotController.setYStatus(toSend, !valveStatus.y1);
+//                            panelRobotController.setYStatus(board, hwPoint, !isOn);
                         }
                     }
                 }

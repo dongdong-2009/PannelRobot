@@ -13,6 +13,7 @@
 #include <QMap>
 #include <QSharedPointer>
 #include <QBitArray>
+#include <QTimer>
 
 #include "icoptimize.h"
 
@@ -69,20 +70,16 @@ public:
 
     virtual void StopCommunicate()
     {
-        if(timerID_ > 0)
-        {
-            killTimer(timerID_);
-            timerID_  = -1;
-        }
+        refreshTimer_.stop();
     }
     virtual void StartCommunicate(){ SetCommunicateInterval(CommunicateInterval());}
 
 //    virtual bool FrameNewSendPLC(int startaddr,QByteArray command) = 0;
 
 protected:
-    void timerEvent(QTimerEvent *) {RefreshStatus();}
+//    void timerEvent(QTimerEvent *) {RefreshStatus();}
 private slots:
-    void RefreshStatus() {    Communicate();}
+    void RefreshStatus() {    Communicate(); refreshTimer_.start();}
 
 protected:
     ICCommunictionCommandQueue queue_;
@@ -102,8 +99,8 @@ private:
     ICTransceiverBase* transceiver_;
     bool isInit_;
     mutable int currentAlarmBitIndex_;
-    int timerID_;
     uint32_t commErrCount_;
+    QTimer refreshTimer_;
 };
 
 class ICCORESHARED_EXPORT ICVirtualHostManager
@@ -188,11 +185,13 @@ inline void ICVirtualHost::SetCommunicateInterval(int ms)
 {
 //    if(communicateInterval_ == ms) return;
     communicateInterval_ = ms;
-    if(timerID_ >= 0)
-    {
-        killTimer(timerID_);
-    }
-    timerID_ = startTimer(communicateInterval_);
+    refreshTimer_.setInterval(communicateInterval_);
+    refreshTimer_.start();
+//    if(timerID_ >= 0)
+//    {
+//        killTimer(timerID_);
+//    }
+//    timerID_ = startTimer(communicateInterval_);
 }
 
 #endif // !defined(EA_75BAF6EC_F913_4663_97EC_2AC09E64A638__INCLUDED_)

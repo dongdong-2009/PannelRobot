@@ -13,7 +13,7 @@ Item {
     }
     function setFlagSelections(flags){
         flags.splice(0, 0, qsTr("Next Line"));
-        callBackSel.items = tmp;
+        callBackSel.items = flags;
     }
 
     function createActionObjects(){

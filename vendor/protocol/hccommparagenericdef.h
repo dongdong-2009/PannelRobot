@@ -20,7 +20,7 @@ extern "C"
 #define STRUCE_SIZE(a,b) (b-a+1)
 
 
-#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.1"
+#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.2"
 //
 //typedef union {
 //    struct{
@@ -57,6 +57,8 @@ typedef enum _ICAddr
     ICAddr_System_Retain_5,//< 手动IO操作
     ICAddr_System_Retain_6,//< 定义IO操作
     ICAddr_System_Retain_7,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
+    ICAddr_System_Retain_23 = 23,//< 电机正反转测试脉冲数
+    ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_26 = 26,//< 0:显示关节坐标；1：显示脉冲；2：反馈脉冲显示
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
@@ -448,6 +450,21 @@ typedef enum
     CMD_TEACH_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
     CMD_ROUTE_STOP = 0x033F,  // 轨迹运动停止
     CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
+
+    CMD_TEST_CLEAR      = 0x034f,  // 清除当前所有测试脉冲
+    CMD_TEST_JOG_PX     = 0x0350,  // 测试X轴正向运动
+    CMD_TEST_JOG_PY     = 0x0351,  // 测试Y轴正向运动
+    CMD_TEST_JOG_PZ     = 0x0352,  // 测试Z轴正向运动
+    CMD_TEST_JOG_PU     = 0x0353,  // 测试U轴正向运动
+    CMD_TEST_JOG_PV     = 0x0354,  // 测试V轴正向运动
+    CMD_TEST_JOG_PW     = 0x0355,  // 测试W轴正向运动
+    CMD_TEST_JOG_NX     = 0x0360,  // 测试X轴反向运动
+    CMD_TEST_JOG_NY     = 0x0361,  // 测试Y轴反向运动
+    CMD_TEST_JOG_NZ     = 0x0362,  // 测试Z轴反向运动
+    CMD_TEST_JOG_NU     = 0x0363,  // 测试U轴反向运动
+    CMD_TEST_JOG_NV     = 0x0364,  // 测试V轴反向运动
+    CMD_TEST_JOG_NW     = 0x0365,  // 测试W轴反向运动
+
 
     CMD_JOG_NX     = 0x0380,  // 直角坐标系位置轴，X轴反向点动
     CMD_JOG_NY     = 0x0381,  // 直角坐标系位置轴，Y轴反向点动

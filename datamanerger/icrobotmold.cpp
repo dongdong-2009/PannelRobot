@@ -693,8 +693,10 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             }
             ++fp;
         }
+//UIStepToRealStep(ret.CompiledProgramLineCount() - 1) + 1
+//        jumptoEnd.append(ret.CompiledProgramLineCount());
+        jumptoEnd.append(ret.UIStepToRealStep(ret.CompiledProgramLineCount() - 1).first + 1);
 
-        jumptoEnd.append(ret.CompiledProgramLineCount());
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
         ret.UpdateICMoldItem(result.size() - 1, jumptoEnd);
         ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);

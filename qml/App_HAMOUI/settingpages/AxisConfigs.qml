@@ -9,6 +9,7 @@ import "../ICOperationLog.js" as ICOperationLog
 
 
 Item {
+    id: container
     width: parent.width
     height: parent.height
     QtObject{
@@ -20,7 +21,7 @@ Item {
         property int currentGroup: 0
         property int checkSumPos: 15
         property variant configAddrs:
-        [
+            [
             ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_0_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_32_0_185"],
             ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_0_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_32_0_185"],
             ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_0_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_32_0_185"],
@@ -30,6 +31,13 @@ Item {
             ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_0_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_32_0_185"],
             ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_0_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_32_0_185"],
         ]
+
+        property variant sentPulseAddrs: ["c_ro_0_32_3_900","c_ro_0_32_3_904",
+        "c_ro_0_32_3_908", "c_ro_0_32_3_912","c_ro_0_32_3_916", "c_ro_0_32_3_920",
+        ]
+
+        property variant receivedPulseAddrs: ["c_ro_0_32_0_901", "c_ro_0_32_0_905",
+        "c_ro_0_32_0_909","c_ro_0_32_0_913","c_ro_0_32_0_917","c_ro_0_32_0_921"]
     }
 
     function currentGroupAddr(which){
@@ -38,15 +46,15 @@ Item {
 
     function checkSumAddrs(){
         return ConfigDefines.machineStructConfigsJSON;
-//        var ret = [];
-//        var addrs;
-//        for(var i = 0; i < pdata.configAddrs.length; ++i){
-//            addrs = pdata.configAddrs[i];
-//            for(var j = 0; j < addrs.length - 1; ++j){
-//                ret.push(addrs[j]);
-//            }
-//        }
-//        return JSON.stringify(ret);
+        //        var ret = [];
+        //        var addrs;
+        //        for(var i = 0; i < pdata.configAddrs.length; ++i){
+        //            addrs = pdata.configAddrs[i];
+        //            for(var j = 0; j < addrs.length - 1; ++j){
+        //                ret.push(addrs[j]);
+        //            }
+        //        }
+        //        return JSON.stringify(ret);
     }
 
     function onLengthChanged(){
@@ -289,9 +297,9 @@ Item {
         anchors.top: menuContainer.bottom
         anchors.topMargin: 4
         Grid{
-            columns: 2
-            flow: Grid.TopToBottom
-            spacing: 30
+            id:configContainer
+            columns: 1
+            spacing: 6
             ICConfigEdit{
                 id:length
                 configName: qsTr("Arm Length")
@@ -372,34 +380,146 @@ Item {
                 inputWidth: pdata.inputWidth
 
             }
+
+        }
+
+        Rectangle{
+            id:splitLine
+            anchors.left: configContainer.right
+            anchors.leftMargin: 20
+            width: 1
+            height: configContainer.height + menuContainer.height
+            border{
+                width: 1
+                color: "gray"
+            }
+        }
+
+        Column{
+            id:motorTestContainer
+            anchors.left: splitLine.right
+            anchors.leftMargin: 20
+            spacing: 6
+            Text {
+                text: qsTr("Motor Test")
+                font.pixelSize: 24
+            }
+            Grid{
+                columns: 2
+                Text {
+                    text: qsTr("Test Pulse Number:")
+                }
+                ICLineEdit{
+                    id:testPulseNum
+                    unit: qsTr("a")
+                    text: "10000"
+                    onTextChanged: {
+                        panelRobotController.setMotorTestPulseNum(text);
+                    }
+                }
+
+                Text {
+                    text: qsTr("Pulse Sent:")
+                }
+                ICStatusWidget{
+                    id:pulseSent
+                }
+                Text {
+                    text: qsTr("Pulse received:")
+                }
+                ICStatusWidget{
+                    id:pulseReceived
+                }
+
+                Timer{
+                    id:refreshTimer
+                    running: visible
+                    interval: 50
+                    repeat: true
+                    onTriggered: {
+                        pulseSent.text = panelRobotController.statusValue(pdata.sentPulseAddrs[pdata.currentGroup]);
+                        pulseReceived.text = panelRobotController.statusValue(pdata.receivedPulseAddrs[pdata.currentGroup]);
+                    }
+                }
+                onVisibleChanged: {
+                    panelRobotController.swichPulseAngleDisplay(visible ? 5:0);
+                }
+            }
+
             Row{
                 spacing: 20
                 ICButton{
-                    id:setAsOrigin
-                    text: qsTr("Set to Origin")
+                    id:testPlus
+                    text: qsTr("Motor+")
                     width: 120
                     onButtonClicked: {
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_SET_ZERO0 + pdata.currentGroup);
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_JOG_PX + pdata.currentGroup);
                     }
                 }
                 ICButton{
-                    id:saveOrigin
-                    text: qsTr("Save Origin")
+                    id:testMinus
+                    text: qsTr("Motor-")
                     width: 120
                     onButtonClicked: {
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_REM_POS);
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_JOG_NX + pdata.currentGroup);
                     }
                 }
                 ICButton{
-                    id:setOrigined
-                    text: qsTr("Set All Origin")
+                    id:testClear
+                    text: qsTr("Test Clear")
                     width: 120
                     onButtonClicked: {
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_SET_ZERO);
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
                     }
                 }
             }
         }
+
+        Rectangle{
+            id:horSplitLine
+            height: 1
+            width: originContainer.width
+            anchors.top: motorTestContainer.bottom
+            anchors.topMargin: 20
+            x:originContainer.x
+            border{
+                width: 1
+                color: "gray"
+            }
+        }
+
+        Row{
+            id:originContainer
+            spacing: 20
+            anchors.bottom : splitLine.bottom
+            anchors.left:  splitLine.right
+            anchors.leftMargin: 20
+            ICButton{
+                id:setAsOrigin
+                text: qsTr("Set to Origin")
+                width: 120
+                onButtonClicked: {
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_SET_ZERO0 + pdata.currentGroup);
+                }
+            }
+            ICButton{
+                id:saveOrigin
+                text: qsTr("Save Origin")
+                width: 120
+                onButtonClicked: {
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_REM_POS);
+                }
+            }
+            ICButton{
+                id:setOrigined
+                text: qsTr("Set All Origin")
+                width: 120
+                onButtonClicked: {
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_SET_ZERO);
+                }
+            }
+        }
+
     }
 
     Component.onCompleted: {

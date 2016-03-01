@@ -442,7 +442,9 @@ Item {
                     }
                 }
                 onVisibleChanged: {
+                    panelRobotController.setMotorTestPulseNum(testPulseNum.text);
                     panelRobotController.swichPulseAngleDisplay(visible ? 5:0);
+                    testClear.clicked();
                 }
             }
 

@@ -30,7 +30,7 @@ Item {
         CatalogButton{
             id:usermanegement
             text: qsTr("Usermanegement")
-            icon: "../images/addnew.png"
+            icon: "../images/usermanagement.png"
         }
     }
 

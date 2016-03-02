@@ -436,8 +436,8 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
 }
 #endif
 
-QTime testTime;
-int oldTime;
+//QTime testTime;
+//int oldTime;
 void ICRobotVirtualhost::CommunicateImpl()
 {
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
@@ -530,7 +530,7 @@ void ICRobotVirtualhost::CommunicateImpl()
                 if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
                 {
                     //                qDebug()<<"statusDataTmp_.at(i)";
-                    SetCommunicateInterval(INIT_INTERVAL);
+//                    SetCommunicateInterval(INIT_INTERVAL);
                     emit NeedToInitHost();
                     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
                                                                                                           ICAddr_System_Retain_1,
@@ -562,12 +562,12 @@ void ICRobotVirtualhost::CommunicateImpl()
 if(!keyCommandList_.isEmpty())
 {
     //    SetCommunicateInterval(SHORT_CMD_INTERVAL);
-    int ct = testTime.restart();
-    if(qAbs(oldTime - ct) > 5 || ct > 100)
-    {
-        qDebug()<<"time:"<<ct;
-        oldTime = ct;
-    }
+//    int ct = testTime.restart();
+//    if(qAbs(oldTime - ct) > 5 || ct > 100)
+//    {
+//        qDebug()<<"time:"<<ct;
+//        oldTime = ct;
+//    }
     AddCommunicationFrame(keyCommandList_.dequeue());
     AddRefreshStatusCommand_();
     //        qDebug("keycommand");
@@ -575,11 +575,13 @@ if(!keyCommandList_.isEmpty())
 if(queue_.IsEmpty())
 {
     AddRefreshStatusCommand_();
-    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
-        SetCommunicateInterval(REFRESH_INTERVAL);
+//    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
+//        SetCommunicateInterval(REFRESH_INTERVAL);
     //        return;
 }
-Transceiver()->Write(queue_.Head());
+const ICRobotTransceiverData* toSend = static_cast<const ICRobotTransceiverData*>(queue_.Head());
+Transceiver()->Write(toSend);
+SetCommunicateInterval(toSend->IsQuery()?REFRESH_INTERVAL:(toSend->GetLength() + 5));
 }
 
 void ICRobotVirtualhost::AddRefreshStatusCommand_()

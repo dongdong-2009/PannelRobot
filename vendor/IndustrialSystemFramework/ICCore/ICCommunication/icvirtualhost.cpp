@@ -20,16 +20,14 @@ ICVirtualHost::ICVirtualHost(uint64_t hostId, QObject *parent)
       communicateInterval_(10),
       transceiver_(NULL),
       currentAlarmBitIndex_(0),
-      timerID_(-1),
       commErrCount_(0)
 {
+    refreshTimer_.setSingleShot(true);
+    connect(&refreshTimer_, SIGNAL(timeout()), this, SLOT(RefreshStatus()));
 }
 
 ICVirtualHost::~ICVirtualHost()
 {
-    if(timerID_ >= 0)
-    {
-        killTimer(timerID_);
-    }
+    refreshTimer_.stop();
     queue_.Clear();
 }

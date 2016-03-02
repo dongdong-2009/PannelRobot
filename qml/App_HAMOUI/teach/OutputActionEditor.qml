@@ -161,18 +161,21 @@ Item {
                         "pointDescr":ioDefine.descr,
                         "hwPoint":hwPoint,
                         "board":board,
-                        "isOn": false
+                        "isOn": false,
+                        "valveID":-1,
+                        "valve":null
                     };
                 }
 
-                function createValveMoldItem(pointNum, pointDescr, hwPoint, valveID, board){
+                function createValveMoldItem(pointNum, valve, board){
                     return {"isSel":false,
                         "pointNum":pointNum,
-                        "pointDescr":pointDescr,
-                        "hwPoint":hwPoint,
+                        "pointDescr":valve.descr,
+                        "hwPoint":board == IODefines.VALVE_BOARD ? valve.id: valve.y1Point,
                         "board":board,
                         "isOn": false,
-                        "valveID":valveID
+                        "valveID":valve.id,
+                        "valve":valve
                     };
                 }
 
@@ -219,7 +222,9 @@ Item {
                         width:yView.cellWidth * 0.6
                         bgColor: isOn ? "lime" : "white"
                         onButtonClicked: {
-                            panelRobotController.setYStatus(board, hwPoint, !isOn);
+                            if(valve != null)
+                                panelRobotController.setYStatus(JSON.stringify(valve), !isOn);
+//                            panelRobotController.setYStatus(board, hwPoint, !isOn);
                         }
                     }
                 }
@@ -268,7 +273,7 @@ Item {
         var i;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.y1Point, yDefine.id, IODefines.IO_BOARD_0));
+            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0));
         }
 
         yDefines = euYs;
@@ -286,13 +291,13 @@ Item {
         yDefines = singleYs;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, yDefine.id, IODefines.VALVE_BOARD));
+            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
         }
 
         yDefines = holdDoubleYs;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, yDefine.id,IODefines.VALVE_BOARD));
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
         }
 
         yDefines = timeYs;

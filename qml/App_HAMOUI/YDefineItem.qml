@@ -47,7 +47,7 @@ Item {
         id:actionButton
         width: 80
         height: 32
-        text: qsTr("On")
+        text: valveStatus.y1 ? qsTr("Off"): qsTr("On")
         anchors.left:  x1Led.right
         anchors.leftMargin: 12
         onButtonClicked: {

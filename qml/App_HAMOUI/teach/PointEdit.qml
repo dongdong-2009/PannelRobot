@@ -347,7 +347,7 @@ Item {
         anchors.left: middleVercSplitLine.right
         anchors.leftMargin: 2
         width: 400
-        height: 60
+        height: 90
         SequentialAnimation{
             id: flicker
             loops: 1
@@ -509,7 +509,7 @@ Item {
     Rectangle{
         id:pointViewContainer
         x:rightCommandContainer.x
-        height: 142
+        height: 202 - rightCommandContainer.height
         anchors.top: rightCommandContainer.bottom
         anchors.topMargin: 2
         width: 400
@@ -519,7 +519,11 @@ Item {
             id:pointView
             width: parent.width
             height: parent.height
+            orientation: ListView.Horizontal
+            interactive: false
+            spacing: 10
             currentIndex: -1
+            x:2
             y:2
             ListModel{
                 id:pointViewModel
@@ -586,8 +590,10 @@ Item {
             delegate: Column{
                 spacing: 4
                 x:2
+                width: 180
                 ICButton{
-                    width: 180
+                    width: parent.width
+                    bgColor: "lime"
                     text: {
                         if(pointViewModel.count > 1){
                             if(index == 0){
@@ -603,7 +609,7 @@ Item {
                 Text {
                     text:pointViewModel.itemText(model.pos, model.pointName)
                     wrapMode: Text.Wrap
-                    width: pointView.width
+                    width: parent.width
                     height: 32
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 12

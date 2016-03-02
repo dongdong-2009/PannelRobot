@@ -154,7 +154,7 @@ var DefinePoints = {
         }
         definePoints.parseActionPointsHelper = function(actionObject){
             if(!actionObject.hasOwnProperty("points"))
-                return
+                return [];
             var points = actionObject.points;
             var name;
             var pID;

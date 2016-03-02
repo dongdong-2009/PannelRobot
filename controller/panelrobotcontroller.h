@@ -526,6 +526,11 @@ public:
         ::close(keyFD_);
     }
 
+    Q_INVOKABLE void setMotorTestPulseNum(int pulse)
+    {
+        modifyConfigValue(ICAddr_System_Retain_23, pulse);
+    }
+
     Q_INVOKABLE quint32 debug_GetAddrValue(int addr)
     {
         ICRobotVirtualhost::AddReadConfigCommand(host_, addr, 1);
@@ -543,6 +548,7 @@ public:
             return QString();
         return logger_->LogContent();
     }
+
 
 //    Q_INVOKABLE QString debug_LogContent() const
 //    {

@@ -26,6 +26,8 @@ var kTP_TEACH_ARC_END_POINT = kTPHelper++;
 var COMBINE_ARM_MOVE_TYPE = 30;
 var SINGLE_ARM_MOVE_TYPE = 0;
 
+var cmdHelper = 0;
+
 var CMD_NULL = 0; //< 无命令
 var CMD_MANUAL = 1; //< 手动命令
 var CMD_AUTO = 2; //< 自动命令
@@ -48,40 +50,47 @@ var CMD_JOG_PV     = 0x0304;	// 直角坐标系姿势轴，X轴正向点动
 var CMD_JOG_PW     = 0x0305;	// 直角坐标系姿势轴，X轴正向点动
 var CMD_JOG_PR     = 0x0306;	// 极坐标系，远离原点点动
 
-var CMD_LINT_TO_START_POINT= 0x0310;  // 直线运动到起点坐标
-var CMD_LINT_TO_END_POINT = 0x0311;  // 直线运动到终点坐标
-var CMD_AUTO_TO_START_POINT = 0x0312;  // 关节运动到起点坐标
-var CMD_AUTO_TO_END_POINT = 0x0313;  // 关节运动到终点坐标
-var CMD_RELATIVE_LINT_TO_START_POINT = 0x0314;  // 相对直线运动正方向
-var CMD_RELATIVE_LINT_TO_END_POINT = 0x0315;  // 相对直线运动反方向
-var CMD_RELATIVE_AUTO_TO_START_POINT = 0x0316;  // 相对关节运动正方向
-var CMD_RELATIVE_AUTO_TO_END_POINT = 0x0317;  // 相对关节运动反方向
+cmdHelper = 0x0310;
+var CMD_LINT_TO_START_POINT= cmdHelper++;  // 直线运动到起点坐标
+var CMD_LINT_TO_END_POINT = cmdHelper++;  // 直线运动到终点坐标
+var CMD_AUTO_TO_START_POINT = cmdHelper++;  // 关节运动到起点坐标
+var CMD_AUTO_TO_END_POINT = cmdHelper++;  // 关节运动到终点坐标
+var CMD_RELATIVE_LINT_TO_START_POINT = cmdHelper++;  // 相对直线运动正方向
+var CMD_RELATIVE_LINT_TO_END_POINT = cmdHelper++;  // 相对直线运动反方向
+var CMD_RELATIVE_AUTO_TO_START_POINT = cmdHelper++;  // 相对关节运动正方向
+var CMD_RELATIVE_AUTO_TO_END_POINT = cmdHelper++;  // 相对关节运动反方向
 /*教导*/
-var CMD_TEACH_LINT_TO_START_POINT = 0x0318;  // 直线运动到起点坐标
-var CMD_TEACH_LINT_TO_END_POINT = 0x0319;  // 直线运动到终点坐标
-var CMD_TEACH_AUTO_TO_START_POINT = 0x0320;  // 关节运动到起点坐标
-var CMD_TEACH_AUTO_TO_END_POINT = 0x0321;  // 关节运动到终点坐标
-var CMD_TEACH_RELATIVE_LINT_TO_START_POINT = 0x0322;  // 相对直线运动正方向
-var CMD_TEACH_RELATIVE_LINT_TO_END_POINT = 0x0323;  // 相对直线运动反方向
-var CMD_TEACH_RELATIVE_AUTO_TO_START_POINT = 0x0324;  // 相对关节运动正方向
-var CMD_TEACH_RELATIVE_AUTO_TO_END_POINT = 0x0325;  // 相对关节运动反方向
+var CMD_TEACH_LINT_TO_START_POINT = cmdHelper++;  // 直线运动到起点坐标
+var CMD_TEACH_LINT_TO_END_POINT = cmdHelper++;  // 直线运动到终点坐标
+var CMD_TEACH_AUTO_TO_START_POINT = cmdHelper++;  // 关节运动到起点坐标
+var CMD_TEACH_AUTO_TO_END_POINT = cmdHelper++;  // 关节运动到终点坐标
+var CMD_TEACH_RELATIVE_LINT_TO_START_POINT = cmdHelper++;  // 相对直线运动正方向
+var CMD_TEACH_RELATIVE_LINT_TO_END_POINT = cmdHelper++;  // 相对直线运动反方向
+var CMD_TEACH_RELATIVE_AUTO_TO_START_POINT = cmdHelper++;  // 相对关节运动正方向
+var CMD_TEACH_RELATIVE_AUTO_TO_END_POINT = cmdHelper++;  // 相对关节运动反方向
 /*手动*/
+cmdHelper = 0x0330;
 var CMD_ARC_TO_START_POINT = 0x0330;  // 弧线运动往终点坐标方向
-var CMD_ARC_TO_END_POINT = 0x0331;  // 弧线运动往终点坐标反方向
+var CMD_ARC_TO_END_POINT = cmdHelper++;  // 弧线运动往终点坐标反方向
 /*教导*/
-var CMD_TEACH_ARC_TO_START_POINT = 0x0332;  // 弧线运动往终点坐标方向
-var CMD_TEACH_ARC_TO_END_POINT = 0x0333;  // 弧线运动往终点坐标反方向
+var CMD_TEACH_ARC_TO_START_POINT = cmdHelper++;  // 弧线运动往终点坐标方向
+var CMD_TEACH_ARC_TO_END_POINT = cmdHelper++;  // 弧线运动往终点坐标反方向
 var CMD_ROUTE_STOP = 0x033F;  // 轨迹运动停止
 var CMD_GET_COORDINATE= 0x0340;  // 记录当前坐标
 
-var CMD_LINT_TO_START_POINT= 0x0310;  // 直线运动到起点坐标
-var CMD_LINT_TO_END_POINT= 0x0311;  // 直线运动到终点坐标
-var CMD_PATH_STOP = 0x0312;  // 直线运动停止
-var CMD_ARC_TO_START_POINT= 0x0330;  // 弧线运动往终点坐标方向
-var CMD_ARC_TO_END_POINT= 0x0331;  // 弧线运动往终点坐标反方向
-//    CMD_ARC_STOP= 0x0332,  // 弧线运动停止
-var CMD_GET_COORDINATE= 0x0340;  // 记录当前坐标
-
+var CMD_TEST_CLEAR      = 0x034f;  // 清除当前所有测试脉冲
+var CMD_TEST_JOG_PX     = 0x0350;  // 测试X轴正向运动
+var CMD_TEST_JOG_PY     = 0x0351;  // 测试Y轴正向运动
+var CMD_TEST_JOG_PZ     = 0x0352;  // 测试Z轴正向运动
+var CMD_TEST_JOG_PU     = 0x0353;  // 测试U轴正向运动
+var CMD_TEST_JOG_PV     = 0x0354;  // 测试V轴正向运动
+var CMD_TEST_JOG_PW     = 0x0355;  // 测试W轴正向运动
+var CMD_TEST_JOG_NX     = 0x0360;  // 测试X轴反向运动
+var CMD_TEST_JOG_NY     = 0x0361;  // 测试Y轴反向运动
+var CMD_TEST_JOG_NZ     = 0x0362;  // 测试Z轴反向运动
+var CMD_TEST_JOG_NU     = 0x0363;  // 测试U轴反向运动
+var CMD_TEST_JOG_NV     = 0x0364;  // 测试V轴反向运动
+var CMD_TEST_JOG_NW     = 0x0365;  // 测试W轴反向运动
 
 var CMD_JOG_NX     = 0x0380;	// 直角坐标系位置轴，X轴反向点动
 var CMD_JOG_NY     = 0x0381;	// 直角坐标系位置轴，Y轴反向点动

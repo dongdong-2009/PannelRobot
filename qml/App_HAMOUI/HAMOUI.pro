@@ -8,8 +8,4 @@ configs/* \
 settingpages/*
 }
 
-OTHER_FILES += \
-    script.js
-
-
 

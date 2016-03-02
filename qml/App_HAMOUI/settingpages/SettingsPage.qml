@@ -76,8 +76,8 @@ ContentPageBase{
         ICStackContainer{
             id:pageContainer
             anchors.top: spliteLine.bottom
-            width: contentContainerWidth
-            height: contentContainerHeight - spliteLine.height - menuContainer.height
+            width: parent.width
+            height: settingContainer.parent.contentContainerHeight - spliteLine.height - menuContainer.height
         }
 
     }
@@ -113,11 +113,11 @@ ContentPageBase{
 //    statusSection: versionContainer
     Component.onCompleted: {
         var settingClass = Qt.createComponent("ProductSettings.qml");
-        var psObject = settingClass.createObject(pageContainer);
+        var psObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
         settingClass = Qt.createComponent("MachineSettings.qml");
-        var msObject = settingClass.createObject(pageContainer);
+        var msObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
         settingClass = Qt.createComponent("PanelSettings.qml");
-        var panelSettingsObject = settingClass.createObject(pageContainer);
+        var panelSettingsObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
         pageContainer.addPage(psObject);
         pageContainer.addPage(msObject);
         pageContainer.addPage(panelSettingsObject);

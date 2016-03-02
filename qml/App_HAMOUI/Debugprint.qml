@@ -22,7 +22,6 @@ Rectangle
         }
     }
 
-
     ICButton{
         id:gotobottom
         x:700
@@ -30,12 +29,9 @@ Rectangle
         z:1
         text: qsTr("gotobottom")
         onButtonClicked: {
-//            debugView.contentY = debugModel.count * debugView.currentItem.height - container.height  +12;
             debugView.positionViewAtEnd();
         }
     }
-
-
 
     Timer {
         id: mytimer
@@ -48,7 +44,6 @@ Rectangle
                 var i, j;
                 var buffer1 = panelRobotController.debug_LogContent().split("\n");
                 if(container.buffer.length < buffer1.length){
-                    //                        console.log("upovercome");
                     for(i = container.buffer.length;i < buffer1.length - 1;i++){
                         debugModel.append({"text1": buffer1[i]});
                     }
@@ -89,10 +84,10 @@ Rectangle
         height: parent.height
         model: debugModel
         clip: true
-        highlight: Rectangle {width: 650; height: 20;color: "lightsteelblue"; radius: 5}
+        highlight: Rectangle {width: parent.width - 70; height: 20;color: "lightsteelblue"; radius: 5}
         highlightMoveDuration:100
         delegate: Text {
-            width: parent.width
+            width: parent.width - 70
             text: text1
             wrapMode: Text.WordWrap
 //            anchors.verticalCenter: parent.verticalCenter
@@ -115,6 +110,5 @@ Rectangle
     Component.onCompleted: {
         container.buffer = panelRobotController.debug_LogContent().split("\n");
         myWorker.sendMessage({'buffer':container.buffer, 'model':debugModel});
-        console.log(debugView.width);
     }
 }

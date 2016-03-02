@@ -3,6 +3,7 @@ import '.'
 
 Item {
 
+    id:container
     QtObject{
         id:pData
         property variant triggerItemToPageObject: []
@@ -11,6 +12,8 @@ Item {
     signal pageSwiched(variant triggerItem, variant page)
     function addNav(triggerItem, pageComponent){
         var pageObject = pageComponent.createObject(pagesContainer);
+        pageObject.width = container.width;
+        pageObject.height = container.height;
         var pageIndex = pagesContainer.pages.length;
         pagesContainer.addPage(pageObject);
         triggerItem.triggered.connect(function(){

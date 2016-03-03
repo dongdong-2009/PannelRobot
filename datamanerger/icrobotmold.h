@@ -314,6 +314,19 @@ public:
                                                  const QVector<QVariantList>& variables = QVector<QVariantList>()
                                                  );
 
+    static QVector<QVector<quint32> > CountersToHost(const QVector<QVariantList>& counters)
+    {
+        QVector<QVector<quint32> > ret;
+        QVector<quint32> tmp;
+        for(int i = 0 ; i < counters.size(); ++i)
+        {
+            tmp.clear();
+            tmp<<counters.at(i).at(0).toUInt()<<counters.at(i).at(3).toUInt()<<counters.at(i).at(2).toUInt();
+            ret.append(tmp);
+        }
+        return ret;
+    }
+
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
     {
@@ -380,15 +393,15 @@ public:
     QVector<QVariantList> Counters() const { return counters_;}
     QVector<QVector<quint32> > CountersToHost() const
     {
-        QVector<QVector<quint32> > ret;
-        QVector<quint32> tmp;
-        for(int i = 0 ; i < counters_.size(); ++i)
-        {
-            tmp.clear();
-            tmp<<counters_.at(i).at(0).toUInt()<<counters_.at(i).at(3).toUInt()<<counters_.at(i).at(2).toUInt();
-            ret.append(tmp);
-        }
-        return ret;
+//        QVector<QVector<quint32> > ret;
+//        QVector<quint32> tmp;
+//        for(int i = 0 ; i < counters_.size(); ++i)
+//        {
+//            tmp.clear();
+//            tmp<<counters_.at(i).at(0).toUInt()<<counters_.at(i).at(3).toUInt()<<counters_.at(i).at(2).toUInt();
+//            ret.append(tmp);
+//        }
+        return CountersToHost(counters_);
     }
 
     bool CreateCounter(quint32 id, const QString& name, quint32 current, quint32 target);

@@ -1011,3 +1011,74 @@ QString PanelRobotController::variableDefs() const
     ret += "]";
     return ret;
 }
+
+QVector<QVariantList> PanelRobotController::ParseCounters(const QString &counters)
+{
+    QVector<QVariantList> ret;
+    if(counters.isEmpty()) return ret;
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(counters.toUtf8(), &ok).toList();
+    if(!ok)
+        return ret;
+    QVariantList tmp;
+    QVariantMap r;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        r = result.at(i).toMap();
+        tmp<<r.value("id")<<r.value("name")<<r.value("current")<<r.value("target");
+        ret.append(tmp);
+    }
+    return ret;
+}
+
+QVector<QVariantList> PanelRobotController::ParseVariables(const QString &variables)
+{
+    QVector<QVariantList> ret;
+    if(variables.isEmpty()) return ret;
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(variables.toUtf8(), &ok).toList();
+    if(!ok)
+        return ret;
+    QVariantList tmp;
+    QVariantMap r;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        r = result.at(i).toMap();
+        tmp<<r.value("id")<<r.value("name")<<r.value("unit")<<r.value("val")<<r.value("decimal");
+        ret.append(tmp);
+    }
+    return ret;
+}
+
+void PanelRobotController::manualRunProgram(const QString& program,
+                                            const QString& stacks,
+                                            const QString& counters,
+                                            const QString& variables,
+                                            const QString& functions,
+                                            int channel)
+{
+    bool isok;
+    QMap<int, StackInfo> compliedStacks = ICRobotMold::ParseStacks(stacks, isok);
+    QVector<QVariantList> compliedCounters = ParseCounters(counters);
+    QVector<QVariantList> compliedVariables = ParseVariables(variables);
+    QMap<int, CompileInfo> compliedFunctions = ICRobotMold::ParseFunctions(functions,
+                                                                           isok,
+                                                                           compliedStacks,
+                                                                           compliedCounters,
+                                                                           compliedVariables);
+
+    int err;
+    CompileInfo compliedProgram = ICRobotMold::Complie(program,
+                                                       compliedStacks,
+                                                       compliedCounters,
+                                                       compliedVariables,
+                                                       compliedFunctions,
+                                                       err);
+    if(err)
+        return;
+    if(!compliedCounters.isEmpty())
+        ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
+    ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
+}

@@ -1443,5 +1443,4 @@ Rectangle {
 
         hasInit = true;
     }
-
 }

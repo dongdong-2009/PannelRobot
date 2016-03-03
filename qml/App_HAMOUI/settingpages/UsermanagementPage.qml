@@ -24,6 +24,7 @@ Item {
                     text: qsTr("namelist:")
                 }
                 Rectangle{
+                    id:userViewContainer
                     border.color: "black"
                     width: username.width - 30
                     height: 130
@@ -37,8 +38,8 @@ Item {
                         model: userModel
                         clip: true
                         anchors.centerIn: parent
-                        highlight: Rectangle {width: parent.width; height: 20;color: "lightsteelblue"; radius: 5}
-                        highlightMoveDuration:100
+                        highlight: Rectangle {width: userViewContainer.width; height: 20;color: "lightsteelblue"; radius: 5}
+//                        highlightMoveDuration:100
                         delegate: Text {
                             width: parent.width
                             text: name
@@ -56,6 +57,7 @@ Item {
                 }
             }
 
+
             Column{
                 spacing: 10
                 Row{
@@ -70,6 +72,7 @@ Item {
                             onConfigValueChanged: {
                                 if(ShareData.UserInfo.userscount() == 0)
                                     isnew = true;
+                                if(userModel.count == 0 ) return;
                                 for(var i =0 ;i < ShareData.UserInfo.userscount();i++){
                                     if(username.configValue == userModel.get(i).name){
                                         okBtn.enabled = false;

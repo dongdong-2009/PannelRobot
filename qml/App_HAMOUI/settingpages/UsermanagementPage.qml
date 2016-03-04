@@ -8,6 +8,19 @@ Item {
     height: parent.height
     property bool isnew: true
     property variant usermsgBuff: []
+    function perms(perm){
+        switch(parseInt(perm)){
+        case 0: op.isChecked = true;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
+        case 1: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = false;break;
+        case 2: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = false;break;
+        case 3: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = false;break;
+        case 4: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = true;break;
+        case 5: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = true;break;
+        case 6: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = true;break;
+        case 7: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = true;break;
+        default: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
+        }
+    }
     Rectangle{
         id:container
         width: parent.width
@@ -24,7 +37,7 @@ Item {
                     text: qsTr("namelist:")
                 }
                 Rectangle{
-                    id:userViewContainer
+                    id: opa
                     border.color: "black"
                     width: username.width - 30
                     height: 130
@@ -38,8 +51,8 @@ Item {
                         model: userModel
                         clip: true
                         anchors.centerIn: parent
-                        highlight: Rectangle {width: userViewContainer.width; height: 20;color: "lightsteelblue"; radius: 5}
-//                        highlightMoveDuration:100
+                        highlight: Rectangle {width: opa.width; height: 20;color: "lightsteelblue"; radius: 5}
+                        highlightMoveDuration:100
                         delegate: Text {
                             width: parent.width
                             text: name
@@ -57,7 +70,6 @@ Item {
                 }
             }
 
-
             Column{
                 spacing: 10
                 Row{
@@ -72,24 +84,15 @@ Item {
                             onConfigValueChanged: {
                                 if(ShareData.UserInfo.userscount() == 0)
                                     isnew = true;
-                                if(userModel.count == 0 ) return;
+                                if(userModel.count == 0)
+                                    return
                                 for(var i =0 ;i < ShareData.UserInfo.userscount();i++){
                                     if(username.configValue == userModel.get(i).name){
                                         okBtn.enabled = false;
                                         isnew = false;
                                         userView.currentIndex = i;
                                         usermsgBuff  = ShareData.UserInfo.users_();
-                                        switch(parseInt(usermsgBuff[i][ShareData.USERS_TB_INFO.perm_col])){
-                                        case 0: op.isChecked = true;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
-                                        case 1: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = false;break;
-                                        case 2: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = false;break;
-                                        case 3: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = false;break;
-                                        case 4: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = true;break;
-                                        case 5: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = true;break;
-                                        case 6: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = true;break;
-                                        case 7: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = true;break;
-                                        default: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
-                                        }
+                                        perms(usermsgBuff[i][ShareData.USERS_TB_INFO.perm_col]);
                                         password.configValue = usermsgBuff[i][ShareData.USERS_TB_INFO.password_col];
                                         break;
                                     }else isnew = true;
@@ -141,7 +144,6 @@ Item {
                 }
                 Row{
                     spacing: 30
-//                    x:40
                     ICButton{
                         id:cancelBtn
                         text: qsTr("cancel")
@@ -211,17 +213,7 @@ Item {
             usermsgBuff  = ShareData.UserInfo.users_();
             username.configValue = usermsgBuff[0][ShareData.USERS_TB_INFO.user_name_col];
             password.configValue = usermsgBuff[0][ShareData.USERS_TB_INFO.password_col];
-            switch(parseInt(usermsgBuff[0][ShareData.USERS_TB_INFO.perm_col])){
-            case 0: op.isChecked = true;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
-            case 1: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = false;break;
-            case 2: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = false;break;
-            case 3: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = false;break;
-            case 4: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = true;break;
-            case 5: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = true;break;
-            case 6: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = true;break;
-            case 7: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = true;break;
-            default: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
-            }
+            perms(usermsgBuff[0][ShareData.USERS_TB_INFO.perm_col]);
             for(var i = 0 ;i < usermsgBuff.length;i++){
                 userModel.append({"name": usermsgBuff[i][ShareData.USERS_TB_INFO.user_name_col]});
             }

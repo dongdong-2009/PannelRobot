@@ -6,8 +6,10 @@ Qt.include("../../utils/utils.js")
 
 function ManualProgramManager(){
     this.programs = [];
+    this.monitors = [];
     var db = getDatabase();
     var programs = this.programs;
+    var manager = this;
     db.transaction(function(tx){
         tx.executeSql('CREATE TABLE IF NOT EXISTS manualprogram(id PK INTEGER NOT NULL, name TEXT  NOT NULL, program TEXT  NOT NULL)');
     }
@@ -58,7 +60,8 @@ function ManualProgramManager(){
                                      id , name, JSON.stringify(program)));
             if(rs.rowsAffected > 0){
                 programs[id] = {"id":id, "name":name, "program":program};
-            }
+                manager.informMonitor("onProgramAdded", programs[id]);
+             }
         });
         return icStrformat(qsTr("M CMD[{0}]:{1}"), id, name)
     }
@@ -68,6 +71,7 @@ function ManualProgramManager(){
                                      id));
             if(rs.rowsAffected > 0){
                 programs[id] = undefined;
+                manager.informMonitor("onProgramRemoved", id);
             }
         });
     }
@@ -82,6 +86,7 @@ function ManualProgramManager(){
                                      name, JSON.stringify(program), id));
             if(rs.rowsAffected > 0){
                 programs[id] = {"id":id, "name":name, "program":program};
+                manager.informMonitor("onProgramChanged", programs[id]);
             }
         });
     }
@@ -89,6 +94,18 @@ function ManualProgramManager(){
     this.updateProgramByName = function(name, program){
         var toUpdateID = getValueFromBrackets(name);
         this.updateProgram(toUpdateID, programs[toUpdateID].name, program);
+    }
+
+    this.registerMonitor = function(obj){
+        this.monitors.push(obj)
+    }
+    this.informMonitor = function(event, program){
+        var m;
+        for(var i = 0; i < this.monitors.length; ++i){
+            m = this.monitors[i];
+            if(m.hasOwnProperty(event))
+                m[event](program);
+        }
     }
 }
 

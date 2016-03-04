@@ -62,7 +62,9 @@ function initialize() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS users(name TEXT UNIQUE, password TEXT  NOT NULL, perm INTEGER NOT NULL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS alarmlog(id PK INTEGER NOT NULL, alarmNum INTEGER NOT NULL, level INTEGER NOT NULL, triggerTime INTEGER NOT NULL, endTime INTEGER)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS oplog(id PK INTEGER NOT NULL, opTime INTEGER NOT NULL, user TEXT NOT NULL, descr TEXT NOT NULL)');
-
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS manualprogram(id PK INTEGER NOT NULL, name TEXT  NOT NULL, program TEXT  NOT NULL)');
+//                    tx.executeSql('CREATE TABLE IF NOT EXISTS globalstack(id PK INTEGER NOT NULL,stack TEXT NOT NULL)');
+//                    tx.executeSql('CREATE TABLE IF NOT EXISTS globalcounter(id PK INTEGER NOT NULL,)')
                     //                    tx.executeSql('DELETE FROM alarmlog;');
                     var rs = tx.executeSql('SELECT * FROM users');
                     if (rs.rows.length === 0) {

@@ -534,8 +534,15 @@ public:
     Q_INVOKABLE void manualRunProgram(const QString& program,
                                       const QString& stacks,
                                       const QString& counters,
-                                      const QString& variables, const QString &functions,
+                                      const QString& variables,
+                                      const QString &functions,
                                       int channel = 10);
+
+    Q_INVOKABLE QString checkProgram(const QString& program,
+                                     const QString& stacks,
+                                     const QString& counters,
+                                     const QString& variables,
+                                     const QString &functions);
 
     Q_INVOKABLE quint32 debug_GetAddrValue(int addr)
     {

@@ -11,6 +11,9 @@ MouseArea {
     property alias text: tip.text
     property alias yesBtnText: yesBtn.text
     property alias noBtnText: noBtn.text
+    property alias realWidth: realFrame.width
+    property alias realHeight: realFrame.height
+    property alias inputText: input.configValue
 
     signal accept();
     signal reject();
@@ -22,7 +25,16 @@ MouseArea {
         container.visible = true;
     }
 
+    function showInput(tip, configName, isNumberOnly, yesText, noText){
+        input.visible = true;
+        input.configName = configName;
+        input.isNumberOnly = isNumberOnly;
+        input.configValue = "";
+        show(tip, yesText, noText)
+    }
+
     Rectangle{
+        id:realFrame
         border.color: "black"
         border.width: 1
         width: content.width + 20
@@ -34,6 +46,12 @@ MouseArea {
             Text {
                 id: tip
             }
+            ICConfigEdit{
+                id:input
+                visible: false
+                inputWidth: tip.width
+            }
+
             Row{
                 anchors.horizontalCenter: parent.horizontalCenter
                 ICButton{
@@ -41,6 +59,7 @@ MouseArea {
                     onButtonClicked: {
                         accept();
                         container.visible = false;
+                        input.visible = false;
                     }
 
                 }
@@ -49,6 +68,7 @@ MouseArea {
                     onButtonClicked: {
                         reject();
                         container.visible = false;
+                        input.visible = false;
                     }
                 }
             }

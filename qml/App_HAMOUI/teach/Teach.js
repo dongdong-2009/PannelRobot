@@ -208,7 +208,7 @@ function FlagItem(flagID, descr){
 }
 
 var flagsDefine = {
-    "flags":[[],[],[],[],[],[],[],[],[]],
+    "flags":[[],[],[],[],[],[],[],[],[],[],[]],
     "clear":function(programIndex){
         this.flags[programIndex].length = 0;
     },

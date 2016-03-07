@@ -1081,6 +1081,7 @@ void PanelRobotController::manualRunProgram(const QString& program,
     if(!compliedCounters.isEmpty())
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
+    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
 }
 
 QString PanelRobotController::checkProgram(const QString &program, const QString &stacks, const QString &counters, const QString &variables, const QString &functions)

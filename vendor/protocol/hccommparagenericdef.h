@@ -421,9 +421,27 @@ typedef enum
     CMD_ORIGIN, // 原点模式
     CMD_RETURN, // 复归模式
 
-
-    CMD_MANUAL_START = 0x0050,  // 手动运行启动
-    CMD_MANUAL_STOP = 0x0051,  // 手动运行停止
+    CMD_MANUAL_STOP = 0x0050,  // 手动运行停止
+    CMD_MANUAL_START1        ,  // 手动运行主程序
+    CMD_MANUAL_START2        ,  // 手动运行子程序1
+    CMD_MANUAL_START3        ,  // 手动运行子程序2
+    CMD_MANUAL_START4        ,  // 手动运行子程序3
+    CMD_MANUAL_START5        ,  // 手动运行子程序4
+    CMD_MANUAL_START6        ,  // 手动运行子程序5
+    CMD_MANUAL_START7        ,  // 手动运行子程序6
+    CMD_MANUAL_START8        ,  // 手动运行子程序7
+    CMD_MANUAL_START9        ,  // 手动运行子程序8
+    CMD_MANUAL_START10        ,  // 手动运行程序9
+    CMD_MANUAL_START11        ,  // 手动运行程序10
+    CMD_MANUAL_START12        ,  // 手动运行程序11
+    CMD_MANUAL_START13        ,  // 手动运行程序12
+    CMD_MANUAL_START14        ,  // 手动运行程序13
+    CMD_MANUAL_START15        ,  // 手动运行程序14
+    CMD_MANUAL_START16        ,  // 手动运行程序15
+    CMD_MANUAL_START17        ,  // 手动运行程序16
+    CMD_MANUAL_START18        ,  // 手动运行程序17
+    CMD_MANUAL_START19        ,  // 手动运行程序18
+    CMD_MANUAL_START20        ,  // 手动运行程序19
 
     CMD_POWER_OFF0 = 0x0100,  // 第一个逻辑电机关闭
     CMD_POWER_OFF  = 0x017F,  // 所有逻辑电机关闭
@@ -660,6 +678,10 @@ typedef enum
     F_CMD_PROGRAM_CALL_BACK,   //< 程序调用
 //    F_CMD_PROGRAM_JUMP4,   //< 程序跳转 跳转步号
 
+    /***************************************************************************/
+    F_CMD_FINE_ZERO = 30000, //<  寻找原点 轴ID 速度 延时
+
+    /***************************************************************************/
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
     F_CMD_FLAG = 59999,    //<跳转标志
 	F_CMD_END=60000//< 动作结束

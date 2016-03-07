@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import "configs/Keymap.js" as Keymap
 import "../ICCustomElement"
 import "teach/ManualProgramManager.js" as ManualProgramManager
 
@@ -20,6 +21,13 @@ Item {
         model:buttonModel
         delegate: ICButton{
             text: name
+            onBtnPressed: {
+                panelRobotController.manualRunProgram(JSON.stringify(buttonModel.get(index).program),
+                                                      "","", "", "");
+            }
+            onBtnReleased: {
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_MANUAL_STOP);
+            }
         }
     }
     function onProgramAdded(program){

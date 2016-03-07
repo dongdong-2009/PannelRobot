@@ -20,9 +20,10 @@ Item {
         cellWidth: 150
         model:buttonModel
         delegate: ICButton{
-            text: name
+            text: po.name
             onBtnPressed: {
-                panelRobotController.manualRunProgram(JSON.stringify(buttonModel.get(index).program),
+                var p = buttonModel.get(index).po.program;
+                panelRobotController.manualRunProgram(JSON.stringify(p),
                                                       "","", "", "");
             }
             onBtnReleased: {
@@ -31,14 +32,14 @@ Item {
         }
     }
     function onProgramAdded(program){
-        buttonModel.append(program);
+        buttonModel.append({"po":program});
     }
 
     function onProgramChanged(program){
         var pID = program.id
         for(var i = 0; i < buttonModel.count; ++i){
-            if(buttonModel.get(i).id == pID){
-                buttonModel.set(i, program);
+            if(buttonModel.get(i).po.id == pID){
+                buttonModel.setProperty(i, "po", program);
                 break;
             }
         }
@@ -46,7 +47,7 @@ Item {
 
     function onProgramRemoved(programID){
         for(var i = 0; i < buttonModel.count; ++i){
-            if(buttonModel.get(i).id == programID){
+            if(buttonModel.get(i).po.id == programID){
                 buttonModel.remove(i);
                 break;
             }
@@ -56,7 +57,7 @@ Item {
     Component.onCompleted: {
         var programs = ManualProgramManager.manualProgramManager.programs;
         for(var i = 0; i < programs.length; ++i){
-            buttonModel.append(programs[i]);
+            buttonModel.append({"po":programs[i]});
         }
         ManualProgramManager.manualProgramManager.registerMonitor(container);
     }

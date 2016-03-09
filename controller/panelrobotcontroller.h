@@ -531,6 +531,19 @@ public:
         modifyConfigValue(ICAddr_System_Retain_23, pulse);
     }
 
+    Q_INVOKABLE void manualRunProgram(const QString& program,
+                                      const QString& stacks,
+                                      const QString& counters,
+                                      const QString& variables,
+                                      const QString &functions,
+                                      int channel = 10);
+
+    Q_INVOKABLE QString checkProgram(const QString& program,
+                                     const QString& stacks,
+                                     const QString& counters,
+                                     const QString& variables,
+                                     const QString &functions);
+
     Q_INVOKABLE quint32 debug_GetAddrValue(int addr)
     {
         ICRobotVirtualhost::AddReadConfigCommand(host_, addr, 1);
@@ -584,6 +597,8 @@ private:
     void InitMachineConfig_();
     bool LoadTranslator_(const QString& name);
     void SaveTranslatorName_(const QString& name);
+    QVector<QVariantList> ParseCounters(const QString& counters);
+    QVector<QVariantList> ParseVariables(const QString& variables);
 
     quint32 AddrStrValueToInt(ICAddrWrapperCPTR addr, const QString& value)
     {

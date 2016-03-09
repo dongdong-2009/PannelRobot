@@ -44,8 +44,7 @@ ContentPageBase {
             }
             TabMenuItem {
                 id: group2
-                width: parent.width
-                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                width: group1.width
                 height: pdata.menuItemHeight
                 itemText: qsTr("Y030~47")
                 color: getChecked(
@@ -60,8 +59,17 @@ ContentPageBase {
                 itemText: qsTr("Tools Calibration")
                 color: getChecked(
                            ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
-                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
             }
+            TabMenuItem{
+                id:programmableBtn
+                width: toolsCalibrate.width
+                height: pdata.menuItemHeight
+                itemText: qsTr("Custom Btn")
+                color: getChecked(
+                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+
+            }
+
             TabMenuItem {
                 id: jog
                 width: parent.width
@@ -154,6 +162,10 @@ ContentPageBase {
             }
             var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
             pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
+
+            var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
+            pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
+
             var jogClass = Qt.createComponent('DebugPage.qml');
             pageContainer.addPage(jogClass.createObject(pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');

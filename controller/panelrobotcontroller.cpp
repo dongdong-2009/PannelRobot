@@ -95,7 +95,7 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     scriptFile.close();
     scriptContent = scriptContent.remove(0, sizeof(".pragma library"));
     engine_.evaluate(scriptContent, scriptFileName);
-//    qDebug()<<"PanelrobotController Init:"<<engine_.hasUncaughtException();
+    //    qDebug()<<"PanelrobotController Init:"<<engine_.hasUncaughtException();
     configRangeGetter_ = engine_.evaluate("getConfigRange");
     getConfigRange_ = &configRangeGetter_;
     ICAddrWrapperList moldAddrs = ICAddrWrapper::MoldAddrs();
@@ -156,17 +156,17 @@ void PanelRobotController::Init()
     InitMachineConfig_();
     emit LoadMessage("Machine configs inited.");
 
-//    host_->SetCommunicateDebug(true);
+    //    host_->SetCommunicateDebug(true);
 #ifdef COMM_DEBUG
     host_->SetCommunicateDebug(true);
-//    OnNeedToInitHost();
+    //    OnNeedToInitHost();
 #endif
-//    InitMainView();
+    //    InitMainView();
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
     emit LoadMessage("Ui inited.");
-//        LoadTranslator_("HAMOUI_zh_CN.qm");
+    //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
 void PanelRobotController::InitDatabase_()
@@ -477,10 +477,10 @@ void PanelRobotController::InitMainView()
 {
     if(mainView_ != NULL)
     {
-//        mainView_->setAttribute(Qt::WA_DeleteOnClose, true);
+        //        mainView_->setAttribute(Qt::WA_DeleteOnClose, true);
         mainView_->close();
-//        mainView_->deleteLater();
-//        delete mainView_;
+        //        mainView_->deleteLater();
+        //        delete mainView_;
     }
     emit LoadMessage("Initing ui...");
     qDebug("Init MainView");
@@ -503,10 +503,10 @@ void PanelRobotController::InitMainView()
         uiMain = "../Init";
 #endif
     }
-//    QLocale locale(QLocale::Chinese, QLocale::China);
-//    qDebug()<<locale.name();
+    //    QLocale locale(QLocale::Chinese, QLocale::China);
+    //    qDebug()<<locale.name();
     appDir.cd(uiMain);
-//    qDebug()<<appDir.filePath("main.qml");
+    //    qDebug()<<appDir.filePath("main.qml");
     emit LoadMessage(appDir.filePath("main.qml"));
     mainView_->setMainQmlFile(appDir.filePath("main.qml"));
     mainView_->showExpanded();
@@ -666,7 +666,7 @@ QString PanelRobotController::hostStepToUILines(int which, int step) const
                                                                                             step);
     QList<int> steps = stepInfo.second;
 
-//    if(steps.isEmpty()) return "";
+    //    if(steps.isEmpty()) return "";
     QString ret = "[";
     for(int i = 0; i < steps.size(); ++i)
     {
@@ -845,10 +845,10 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
             file.close();
         }
         imported = ICRobotMold::ImportMold(moldName, moldInfo);
-//        if(imported.errNumber() == ICRobotMold::kRecordErr_None)
-//        {
-            ret.append(imported.toJSON() + ",");
-//        }
+        //        if(imported.errNumber() == ICRobotMold::kRecordErr_None)
+        //        {
+        ret.append(imported.toJSON() + ",");
+        //        }
     }
     if(ret.endsWith(","))
     {
@@ -862,7 +862,7 @@ bool PanelRobotController::setCurrentTranslator(const QString &name)
     QMessageBox box;
     box.setText("Language Chaning...");
     box.show();
-//    qApp->processEvents();
+    //    qApp->processEvents();
     qApp->processEvents();
 
     ICAppSettings().SetTranslatorName(name);
@@ -970,8 +970,8 @@ QString PanelRobotController::counterDefs() const
     for(int i = 0; i < counters.size(); ++i)
     {
         ret += (QString("[%1, \"%2\", %3, %4]").arg(counters.at(i).at(0).toUInt())
-                   .arg(counters.at(i).at(1).toString()).arg(counters.at(i).at(2).toUInt())
-                   .arg(counters.at(i).at(3).toUInt()));
+                .arg(counters.at(i).at(1).toString()).arg(counters.at(i).at(2).toUInt())
+                .arg(counters.at(i).at(3).toUInt()));
         ret += ",";
     }
     if(!counters.isEmpty())
@@ -999,8 +999,8 @@ QString PanelRobotController::variableDefs() const
     for(int i = 0; i < varialbes.size(); ++i)
     {
         ret += (QString("[%1, \"%2\", \"%3\", %4, %5]").arg(varialbes.at(i).at(0).toUInt())
-                   .arg(varialbes.at(i).at(1).toString()).arg(varialbes.at(i).at(2).toString())
-                   .arg(varialbes.at(i).at(3).toInt())
+                .arg(varialbes.at(i).at(1).toString()).arg(varialbes.at(i).at(2).toString())
+                .arg(varialbes.at(i).at(3).toInt())
                 .arg(varialbes.at(i).at(4).toUInt()));
         ret += ",";
     }
@@ -1010,4 +1010,98 @@ QString PanelRobotController::variableDefs() const
     }
     ret += "]";
     return ret;
+}
+
+QVector<QVariantList> PanelRobotController::ParseCounters(const QString &counters)
+{
+    QVector<QVariantList> ret;
+    if(counters.isEmpty()) return ret;
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(counters.toUtf8(), &ok).toList();
+    if(!ok)
+        return ret;
+    QVariantList tmp;
+    QVariantMap r;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        r = result.at(i).toMap();
+        tmp<<r.value("id")<<r.value("name")<<r.value("current")<<r.value("target");
+        ret.append(tmp);
+    }
+    return ret;
+}
+
+QVector<QVariantList> PanelRobotController::ParseVariables(const QString &variables)
+{
+    QVector<QVariantList> ret;
+    if(variables.isEmpty()) return ret;
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(variables.toUtf8(), &ok).toList();
+    if(!ok)
+        return ret;
+    QVariantList tmp;
+    QVariantMap r;
+    for(int i = 0; i < result.size(); ++i)
+    {
+        r = result.at(i).toMap();
+        tmp<<r.value("id")<<r.value("name")<<r.value("unit")<<r.value("val")<<r.value("decimal");
+        ret.append(tmp);
+    }
+    return ret;
+}
+
+void PanelRobotController::manualRunProgram(const QString& program,
+                                            const QString& stacks,
+                                            const QString& counters,
+                                            const QString& variables,
+                                            const QString& functions,
+                                            int channel)
+{
+    bool isok;
+    QMap<int, StackInfo> compliedStacks = ICRobotMold::ParseStacks(stacks, isok);
+    QVector<QVariantList> compliedCounters = ParseCounters(counters);
+    QVector<QVariantList> compliedVariables = ParseVariables(variables);
+    QMap<int, CompileInfo> compliedFunctions = ICRobotMold::ParseFunctions(functions,
+                                                                           isok,
+                                                                           compliedStacks,
+                                                                           compliedCounters,
+                                                                           compliedVariables);
+
+    int err;
+    CompileInfo compliedProgram = ICRobotMold::Complie(program,
+                                                       compliedStacks,
+                                                       compliedCounters,
+                                                       compliedVariables,
+                                                       compliedFunctions,
+                                                       err);
+    if(err)
+        return;
+    if(!compliedCounters.isEmpty())
+        ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
+    ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
+    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
+}
+
+QString PanelRobotController::checkProgram(const QString &program, const QString &stacks, const QString &counters, const QString &variables, const QString &functions)
+{
+    bool isok;
+    QMap<int, StackInfo> compliedStacks = ICRobotMold::ParseStacks(stacks, isok);
+    QVector<QVariantList> compliedCounters = ParseCounters(counters);
+    QVector<QVariantList> compliedVariables = ParseVariables(variables);
+    QMap<int, CompileInfo> compliedFunctions = ICRobotMold::ParseFunctions(functions,
+                                                                           isok,
+                                                                           compliedStacks,
+                                                                           compliedCounters,
+                                                                           compliedVariables);
+
+    int err;
+    CompileInfo compliedProgram = ICRobotMold::Complie(program,
+                                                       compliedStacks,
+                                                       compliedCounters,
+                                                       compliedVariables,
+                                                       compliedFunctions,
+                                                       err);
+    return ErrInfoToJSON(compliedProgram.ErrInfo());
 }

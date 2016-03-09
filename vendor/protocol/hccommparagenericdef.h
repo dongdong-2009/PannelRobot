@@ -57,13 +57,26 @@ typedef enum _ICAddr
     ICAddr_System_Retain_5,//< 手动IO操作
     ICAddr_System_Retain_6,//< 定义IO操作
     ICAddr_System_Retain_7,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
+    ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
+    ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
+    ICAddr_System_Retain_17 = 17,//< 1：自动进入单步运行模式，单步运行停止；2：单步运行启动；
     ICAddr_System_Retain_23 = 23,//< 电机正反转测试脉冲数
     ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级
-    ICAddr_System_Retain_26 = 26,//< 0:显示关节坐标；1：显示脉冲；2：反馈脉冲显示
+    ICAddr_System_Retain_26 = 26,//< 0:关节坐标显示；1：输出累计值；2：反馈累计值;3:轨迹速度;4:脉冲容差;5:脉冲测试显示
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值
+    ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_41= 41,//<  // 自定义轴动作2 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_42= 42,//<  // 自定义轴动作3 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_43= 43,//<  // 自定义轴动作4 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_44= 44,//<  // 自定义轴动作5 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_45= 45,//<  // 自定义轴动作6 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_46= 46,//<  // 自定义轴动作7 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_47= 47,//<  // 自定义轴动作8 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_48= 48,//<  // 自定义轴动作9 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_49= 49,//<  // 自定义轴动作10 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
     ICAddr_System_Retain_End = 99,
@@ -408,6 +421,28 @@ typedef enum
     CMD_ORIGIN, // 原点模式
     CMD_RETURN, // 复归模式
 
+    CMD_MANUAL_STOP = 0x0050,  // 手动运行停止
+    CMD_MANUAL_START1        ,  // 手动运行主程序
+    CMD_MANUAL_START2        ,  // 手动运行子程序1
+    CMD_MANUAL_START3        ,  // 手动运行子程序2
+    CMD_MANUAL_START4        ,  // 手动运行子程序3
+    CMD_MANUAL_START5        ,  // 手动运行子程序4
+    CMD_MANUAL_START6        ,  // 手动运行子程序5
+    CMD_MANUAL_START7        ,  // 手动运行子程序6
+    CMD_MANUAL_START8        ,  // 手动运行子程序7
+    CMD_MANUAL_START9        ,  // 手动运行子程序8
+    CMD_MANUAL_START10        ,  // 手动运行程序9
+    CMD_MANUAL_START11        ,  // 手动运行程序10
+    CMD_MANUAL_START12        ,  // 手动运行程序11
+    CMD_MANUAL_START13        ,  // 手动运行程序12
+    CMD_MANUAL_START14        ,  // 手动运行程序13
+    CMD_MANUAL_START15        ,  // 手动运行程序14
+    CMD_MANUAL_START16        ,  // 手动运行程序15
+    CMD_MANUAL_START17        ,  // 手动运行程序16
+    CMD_MANUAL_START18        ,  // 手动运行程序17
+    CMD_MANUAL_START19        ,  // 手动运行程序18
+    CMD_MANUAL_START20        ,  // 手动运行程序19
+
     CMD_POWER_OFF0 = 0x0100,  // 第一个逻辑电机关闭
     CMD_POWER_OFF  = 0x017F,  // 所有逻辑电机关闭
     CMD_POWER_ON0  = 0x0180,  // 第一个逻辑电机开机
@@ -451,7 +486,7 @@ typedef enum
     CMD_ROUTE_STOP = 0x033F,  // 轨迹运动停止
     CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
 
-    CMD_TEST_CLEAR      = 0x034f,  // 清除当前所有测试脉冲
+    CMD_TEST_CLEAR      = 0x034F,  // 清除当前所有测试脉冲
     CMD_TEST_JOG_PX     = 0x0350,  // 测试X轴正向运动
     CMD_TEST_JOG_PY     = 0x0351,  // 测试Y轴正向运动
     CMD_TEST_JOG_PZ     = 0x0352,  // 测试Z轴正向运动
@@ -465,6 +500,16 @@ typedef enum
     CMD_TEST_JOG_NV     = 0x0364,  // 测试V轴反向运动
     CMD_TEST_JOG_NW     = 0x0365,  // 测试W轴反向运动
 
+    CMD_CUSTOM_JOG1     = 0x0370,  // 自定义轴动作1
+    CMD_CUSTOM_JOG2             ,  // 自定义轴动作2
+    CMD_CUSTOM_JOG3             ,  // 自定义轴动作3
+    CMD_CUSTOM_JOG4             ,  // 自定义轴动作4
+    CMD_CUSTOM_JOG5             ,  // 自定义轴动作5
+    CMD_CUSTOM_JOG6             ,  // 自定义轴动作6
+    CMD_CUSTOM_JOG7             ,  // 自定义轴动作7
+    CMD_CUSTOM_JOG8             ,  // 自定义轴动作8
+    CMD_CUSTOM_JOG9             ,  // 自定义轴动作9
+    CMD_CUSTOM_JOG10            ,  // 自定义轴动作10
 
     CMD_JOG_NX     = 0x0380,  // 直角坐标系位置轴，X轴反向点动
     CMD_JOG_NY     = 0x0381,  // 直角坐标系位置轴，Y轴反向点动
@@ -633,6 +678,10 @@ typedef enum
     F_CMD_PROGRAM_CALL_BACK,   //< 程序调用
 //    F_CMD_PROGRAM_JUMP4,   //< 程序跳转 跳转步号
 
+    /***************************************************************************/
+    F_CMD_FINE_ZERO = 30000, //<  寻找原点 轴ID 速度 延时
+
+    /***************************************************************************/
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
     F_CMD_FLAG = 59999,    //<跳转标志
 	F_CMD_END=60000//< 动作结束
@@ -653,6 +702,7 @@ typedef enum
     ALARM_LINK_HOST_FAIL, //<名字：连接主机失败
     ALARM_PROGRAM_ERR, //<名字：教导程序错误
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
+    ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -703,7 +753,18 @@ typedef enum
     ALARM_AXIS4_ACC_LIMIT,//<名字：轴4加速度报警
     ALARM_AXIS5_ACC_LIMIT,//<名字：轴5加速度报警
     ALARM_AXIS6_ACC_LIMIT,//<名字：轴6加速度报警
-
+    ALARM_AXIS1_POINT_LIMIT_P = 170,//<名字：轴1正极限信号报警
+    ALARM_AXIS2_POINT_LIMIT_P,//<名字：轴2正极限信号报警
+    ALARM_AXIS3_POINT_LIMIT_P,//<名字：轴3正极限信号报警
+    ALARM_AXIS4_POINT_LIMIT_P,//<名字：轴4正极限信号报警
+    ALARM_AXIS5_POINT_LIMIT_P,//<名字：轴5正极限信号报警
+    ALARM_AXIS6_POINT_LIMIT_P,//<名字：轴6正极限信号报警
+    ALARM_AXIS1_POINT_LIMIT_N = 180,//<名字：轴1负极限信号报警
+    ALARM_AXIS2_POINT_LIMIT_N,//<名字：轴2负极限信号报警
+    ALARM_AXIS3_POINT_LIMIT_N,//<名字：轴3负极限信号报警
+    ALARM_AXIS4_POINT_LIMIT_N,//<名字：轴4负极限信号报警
+    ALARM_AXIS5_POINT_LIMIT_N,//<名字：轴5负极限信号报警
+    ALARM_AXIS6_POINT_LIMIT_N,//<名字：轴6负极限信号报警
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
     ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动起始坐标未设定
     ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动终点坐标未设定

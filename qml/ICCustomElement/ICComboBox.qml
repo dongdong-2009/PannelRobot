@@ -4,7 +4,6 @@ Rectangle {
     id:container
     property variant items: []
     property int currentIndex: -1
-//    property alias currentText: currentText.text
     property int popupMode : 0
     property int itemHeight: 24
     property alias popupWidth: itemContainer.width
@@ -41,8 +40,11 @@ Rectangle {
         text:currentIndex < 0 ?  "" : items[currentIndex]
         anchors.verticalCenter : parent.verticalCenter
         x:4
+        width: parent.width - dropDownBox.width
+        elide: Text.ElideRight
     }
     Text {
+        id:dropDownBox
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         text: "▼"
@@ -51,29 +53,29 @@ Rectangle {
         id:itemModel
     }
 
+    Text{
+        id:widthHelper
+        visible: false
+    }
+
     Rectangle{
         id: itemContainer
-        width: parent.width
-//        height: itemHeight * itemModel.count
+//        width: parent.width
         border.width: parent.border.width
         border.color: parent.border.color
         ListView{
             id:view
             z:10
+            clip: true
             model: itemModel
-            //            anchors.fill: parent
-            delegate: Item{
-                width: view.width
+            delegate: Text{
                 height: itemHeight
-                Text {
-                    text: name
-                    width: view.width
-                    anchors.verticalCenter: parent.verticalCenter
-                    x:4
-                    //                font.pixelSize : 18
-                }
+                text: name
+                verticalAlignment: Text.AlignVCenter
+                x:4
                 MouseArea{
-                    anchors.fill: parent
+                    height: itemHeight
+                    width: view.width
                     onClicked: {
                         view.currentIndex = index
                         currentIndex = index
@@ -91,6 +93,15 @@ Rectangle {
         onVisibleChanged: {
             if(visible){
                 height = itemHeight * itemModel.count;
+                var maxWidth = container.width - 10;
+                var item;
+                for(var i = 0; i < itemModel.count; ++i){
+                    item = itemModel.get(i);
+                    widthHelper.text = item.name;
+                    if(widthHelper.width > maxWidth)
+                        maxWidth = widthHelper.width;
+                }
+                width = maxWidth + 10;
             }
         }
         MouseArea{
@@ -127,11 +138,7 @@ Rectangle {
             if(itemModel.count > 0){
                 view.currentIndex = currentIndex;
                 itemContainer.visible = true;
-//                if(currentIndex >=0){
-//                }
             }
-            //            itemContainer.z = 100
-
         }
     }
 }

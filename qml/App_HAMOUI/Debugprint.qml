@@ -84,7 +84,7 @@ Rectangle
         height: parent.height
         model: debugModel
         clip: true
-        highlight: Rectangle {width: parent.width - 70; height: 20;color: "lightsteelblue"; radius: 5}
+        highlight: Rectangle {width: container.width - 70; height: 20;color: "lightsteelblue"; radius: 5}
         highlightMoveDuration:100
         delegate: Text {
             width: parent.width - 70

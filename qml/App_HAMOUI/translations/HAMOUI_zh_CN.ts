@@ -543,15 +543,47 @@
     </message>
     <message>
         <source>Set to Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>设为原点</translation>
     </message>
     <message>
         <source>Save Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>保存原点</translation>
     </message>
     <message>
         <source>Set All Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>全部设为原点</translation>
+    </message>
+    <message>
+        <source>Motor Test</source>
+        <translation>电机测试</translation>
+    </message>
+    <message>
+        <source>Test Pulse Number:</source>
+        <translation>每次测试脉冲数:</translation>
+    </message>
+    <message>
+        <source>Pulse Sent:</source>
+        <translation>发送脉冲:</translation>
+    </message>
+    <message>
+        <source>Pulse received:</source>
+        <translation>接收脉冲:</translation>
+    </message>
+    <message>
+        <source>Z Pulse:</source>
+        <translation>Z脉冲:</translation>
+    </message>
+    <message>
+        <source>Motor+</source>
+        <translation>电机正转</translation>
+    </message>
+    <message>
+        <source>Motor-</source>
+        <translation>电机反转</translation>
+    </message>
+    <message>
+        <source>Test Clear</source>
+        <translation>清除测试</translation>
     </message>
 </context>
 <context>
@@ -1736,20 +1768,8 @@
         <translation>电机参数</translation>
     </message>
     <message>
-        <source>Limit Define</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Time Configs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Other Configs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Motor Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>电机参数</translation>
     </message>
     <message>
         <source>Struct Configs</source>
@@ -1794,14 +1814,6 @@
 <context>
     <name>ManualPage</name>
     <message>
-        <source>Y010~27</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y030~47</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Tools Calibration</source>
         <translation>工具校准</translation>
     </message>
@@ -1812,6 +1824,21 @@
     <message>
         <source>Debugprint</source>
         <translation>调试日志</translation>
+    </message>
+    <message>
+        <source>Output Y</source>
+        <translation>信号输出</translation>
+    </message>
+    <message>
+        <source>Custom Btn</source>
+        <translation>可编程按键</translation>
+    </message>
+</context>
+<context>
+    <name>ManualProgramManager</name>
+    <message>
+        <source>M CMD[{0}]:{1}</source>
+        <translation>可编程按键[{0}]:{1}</translation>
     </message>
 </context>
 <context>
@@ -1927,20 +1954,8 @@
         <translation>屏幕亮度</translation>
     </message>
     <message>
-        <source>-</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>+</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Screensaver Time</source>
         <translation>屏幕保护时间</translation>
-    </message>
-    <message>
-        <source>min</source>
-        <translation></translation>
     </message>
     <message>
         <source>Date time</source>
@@ -1981,6 +1996,10 @@
     <message>
         <source>No</source>
         <translation>否</translation>
+    </message>
+    <message>
+        <source>Usermanegement</source>
+        <translation>用户管理</translation>
     </message>
 </context>
 <context>
@@ -2385,6 +2404,30 @@ please chose!</source>
     <message>
         <source>Run</source>
         <translation>试行</translation>
+    </message>
+    <message>
+        <source>New M CMD</source>
+        <translation>新建可编程按键</translation>
+    </message>
+    <message>
+        <source>Please Input the new program Name</source>
+        <translation>请输入新按键名称</translation>
+    </message>
+    <message>
+        <source>Program Name:</source>
+        <translation>按键名称:</translation>
+    </message>
+    <message>
+        <source>Del M CMD</source>
+        <translation>删除可编程按键</translation>
+    </message>
+    <message>
+        <source>Please Input the new module Name</source>
+        <translation>请输入新模块名称</translation>
+    </message>
+    <message>
+        <source>Module Name:</source>
+        <translation>模块名称:</translation>
     </message>
 </context>
 <context>
@@ -3358,6 +3401,33 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>UsermanagementPage</name>
+    <message>
+        <source>namelist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>username:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ValveSettings</name>
     <message>
         <source>Confirm</source>
@@ -3463,6 +3533,104 @@ please chose!</source>
     <message>
         <source>Sign in</source>
         <translation>登入</translation>
+    </message>
+</context>
+<context>
+    <name>maintainPage</name>
+    <message>
+        <source>UI Version:</source>
+        <translation>UI版本:</translation>
+    </message>
+    <message>
+        <source>Controller Version:</source>
+        <translation>中间件版本:</translation>
+    </message>
+    <message>
+        <source>Scan Updater</source>
+        <translation>扫描更新包</translation>
+    </message>
+    <message>
+        <source>Start Update</source>
+        <translation>开始更新</translation>
+    </message>
+</context>
+<context>
+    <name>panelSettingsPage</name>
+    <message>
+        <source>Touch Calibrate</source>
+        <translation>触摸校正</translation>
+    </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation>触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>否</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <source>Key Tone</source>
+        <translation>按键音</translation>
+    </message>
+    <message>
+        <source>Key Tone Off</source>
+        <translation>关</translation>
+    </message>
+    <message>
+        <source>Key Tone On</source>
+        <translation>开</translation>
+    </message>
+    <message>
+        <source>Brightness</source>
+        <translation>屏幕亮度</translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Screensaver Time</source>
+        <translation>屏幕保护时间</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Date time</source>
+        <translation>日期时间</translation>
+    </message>
+    <message>
+        <source>year</source>
+        <translation>年</translation>
+    </message>
+    <message>
+        <source>mon</source>
+        <translation>月</translation>
+    </message>
+    <message>
+        <source>day</source>
+        <translation>日</translation>
+    </message>
+    <message>
+        <source>hour</source>
+        <translation>时</translation>
+    </message>
+    <message>
+        <source>sec</source>
+        <translation>秒</translation>
     </message>
 </context>
 </TS>

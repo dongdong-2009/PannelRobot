@@ -44,26 +44,26 @@ Item {
             icon: "../images/settings_struct_config.png"
 
         }
-        CatalogButton{
-            id:limitDefineBtn
-            text: qsTr("Limit Define")
-            icon: "../images/product.png"
+//        CatalogButton{
+//            id:limitDefineBtn
+//            text: qsTr("Limit Define")
+//            icon: "../images/product.png"
 
-        }
+//        }
 
-        CatalogButton{
-            id:timeConfigBtn
-            text: qsTr("Time Configs")
-            icon: "../images/product.png"
+//        CatalogButton{
+//            id:timeConfigBtn
+//            text: qsTr("Time Configs")
+//            icon: "../images/product.png"
 
-        }
+//        }
 
-        CatalogButton{
-            id:otherConfigBtn
-            text: qsTr("Other Configs")
-            icon: "../images/product.png"
+//        CatalogButton{
+//            id:otherConfigBtn
+//            text: qsTr("Other Configs")
+//            icon: "../images/product.png"
 
-        }
+//        }
     }
     ICNavScope{
         id:configsContainer

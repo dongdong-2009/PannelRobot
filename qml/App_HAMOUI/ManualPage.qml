@@ -35,26 +35,16 @@ ContentPageBase {
 //            }
             TabMenuItem {
                 id: group1
-                width: parent.width
-                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                width: 80
                 height: pdata.menuItemHeight
-                itemText: qsTr("Y010~27")
+                itemText: qsTr("Output Y")
                 color: getChecked(
                            ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
             }
-            TabMenuItem {
-                id: group2
-                width: group1.width
-                height: pdata.menuItemHeight
-                itemText: qsTr("Y030~47")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
-                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
-            }
+
             TabMenuItem {
                 id: toolsCalibrate
-                width: parent.width
-                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                width: 80
                 height: pdata.menuItemHeight
                 itemText: qsTr("Tools Calibration")
                 color: getChecked(
@@ -62,7 +52,7 @@ ContentPageBase {
             }
             TabMenuItem{
                 id:programmableBtn
-                width: toolsCalibrate.width
+                width: 100
                 height: pdata.menuItemHeight
                 itemText: qsTr("Custom Btn")
                 color: getChecked(
@@ -72,8 +62,7 @@ ContentPageBase {
 
             TabMenuItem {
                 id: jog
-                width: parent.width
-                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                width: 50
                 height: pdata.menuItemHeight
                 itemText: qsTr("Debug")
                 color: getChecked(
@@ -82,8 +71,7 @@ ContentPageBase {
             }
             TabMenuItem {
                 id: debugprint
-                width: parent.width
-                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                width: 80
                 height: pdata.menuItemHeight
                 itemText: qsTr("Debugprint")
                 color: getChecked(
@@ -133,15 +121,6 @@ ContentPageBase {
                                            "valve11",
                                            "valve12",
                                             "valve13",
-
-                                ]
-                            });
-                pageContainer.addPage(page)
-                page =
-                        yDefinePage1Class.createObject(
-                            pageContainer,
-                            {
-                                "valves": [
                                     "valve14",
                                     "valve15",
                                     "valve16",
@@ -155,10 +134,11 @@ ContentPageBase {
                                     "valve24",
                                     "valve25",
                                     "valve26",
-                                    "valve27",  ]
+                                    "valve27"
+
+                                ]
                             });
                 pageContainer.addPage(page)
-                //                menuItemTexts = ["Y010~27", "Y030~47", "", "", "", "",""]
             }
             var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
             pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));

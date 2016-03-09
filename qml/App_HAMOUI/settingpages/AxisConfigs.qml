@@ -38,6 +38,9 @@ Item {
 
         property variant receivedPulseAddrs: ["c_ro_0_32_0_901", "c_ro_0_32_0_905",
         "c_ro_0_32_0_909","c_ro_0_32_0_913","c_ro_0_32_0_917","c_ro_0_32_0_921"]
+
+        property variant zPulseAddrs: ["c_ro_0_16_0_902", "c_ro_0_16_0_906",
+        "c_ro_0_16_0_910", "c_ro_0_16_0_914", "c_ro_0_16_0_918", "c_ro_0_16_0_922"]
     }
 
     function currentGroupAddr(which){
@@ -430,6 +433,12 @@ Item {
                 ICStatusWidget{
                     id:pulseReceived
                 }
+                Text {
+                    text: qsTr("Z Pulse:")
+                }
+                ICStatusWidget{
+                    id:zPulse
+                }
 
                 Timer{
                     id:refreshTimer
@@ -439,6 +448,7 @@ Item {
                     onTriggered: {
                         pulseSent.text = panelRobotController.statusValue(pdata.sentPulseAddrs[pdata.currentGroup]);
                         pulseReceived.text = panelRobotController.statusValue(pdata.receivedPulseAddrs[pdata.currentGroup]);
+                        zPulse.text = panelRobotController.statusValue(pdata.zPulseAddrs[pdata.currentGroup]);
                     }
                 }
                 onVisibleChanged: {

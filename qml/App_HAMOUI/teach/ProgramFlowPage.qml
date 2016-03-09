@@ -453,18 +453,20 @@ Rectangle {
                     text: qsTr("New M CMD")
                     visible: newModuleBtn.visible
                     height: editing.height
-                    function newManualProgram(){
-                        var toAdd = ManualProgramManager.manualProgramManager.addProgram(tipBox.inputText, [Teach.generteEndAction()]);
-                        console.log(toAdd)
-                        editing.resetProgramItems();
-                        tipBox.accept.disconnect(newManualProgram.newManualProgram);
+                    function newManualProgram(status){
+                        tipBox.finished.disconnect(newManualProgram.newManualProgram);
+                        if(status){
+                            var toAdd = ManualProgramManager.manualProgramManager.addProgram(tipBox.inputText, [Teach.generteEndAction()]);
+                            editing.resetProgramItems();
+                        }
                     }
+
 
                     onButtonClicked: {
                         tipBox.showInput(qsTr("Please Input the new program Name"),
                                          qsTr("Program Name:"),
                                          false);
-                        tipBox.accept.connect(newManualProgram.newManualProgram);
+                        tipBox.finished.connect(newManualProgram.newManualProgram);
                     }
 
                 }
@@ -532,24 +534,26 @@ Rectangle {
                     id:newModuleBtn
                     text: qsTr("New Module")
                     height: editing.height
-                    function newModule(){
-                        var newP = Teach.functionManager.newFunction(tipBox.inputText);
-                        var modulesNames = moduleSel.items;
-                        modulesNames.splice(1,0, newP.toString());
-                        updateProgramModel(functionsModel, newP.program);
-                        moduleSel.items = modulesNames;
-                        moduleSel.currentIndex = 1;
-                        collectSpecialLines(PData.programs.length - 1);
-                        programListView.currentIndex = -1;
-                        programListView.model = functionsModel;
-                        tipBox.accept.disconnect(newModuleBtn.newModule);
+                    function newModule(status){
+                        tipBox.finished.disconnect(newModuleBtn.newModule);
+                        if(status){
+                            var newP = Teach.functionManager.newFunction(tipBox.inputText);
+                            var modulesNames = moduleSel.items;
+                            modulesNames.splice(1,0, newP.toString());
+                            updateProgramModel(functionsModel, newP.program);
+                            moduleSel.items = modulesNames;
+                            moduleSel.currentIndex = 1;
+                            collectSpecialLines(PData.programs.length - 1);
+                            programListView.currentIndex = -1;
+                            programListView.model = functionsModel;
+                        }
                     }
 
                     onButtonClicked: {
                         tipBox.showInput(qsTr("Please Input the new module Name"),
                                          qsTr("Module Name:"),
                                          false);
-                        tipBox.accept.connect(newModuleBtn.newModule);
+                        tipBox.finished.connect(newModuleBtn.newModule);
                     }
                 }
 

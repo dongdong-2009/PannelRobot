@@ -17,6 +17,7 @@ MouseArea {
 
     signal accept();
     signal reject();
+    signal finished(int status)
 
     function show(tip, yesText, noText){
         text = tip || "";
@@ -58,6 +59,7 @@ MouseArea {
                     id:yesBtn
                     onButtonClicked: {
                         accept();
+                        finished(1)
                         container.visible = false;
                         input.visible = false;
                     }
@@ -67,6 +69,7 @@ MouseArea {
                     id:noBtn
                     onButtonClicked: {
                         reject();
+                        finished(0)
                         container.visible = false;
                         input.visible = false;
                     }

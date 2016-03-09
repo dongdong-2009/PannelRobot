@@ -20,6 +20,7 @@ Rectangle {
     signal customAlarmMenuTriggered()
     signal moduleMenuTriggered()
     signal searchMenuTriggered()
+    signal originMenuTriggered()
 
     states: [
         State {
@@ -48,7 +49,7 @@ Rectangle {
     color: "#A0A0F0"
 
     Grid{
-        columns: 3
+        columns: 4
         spacing: 10
         x:20
         y:20
@@ -150,6 +151,14 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: moduleMenuTriggered()
+        }
+        ICButton{
+            id:origin
+            text: qsTr("origin")
+            icon: "../images/origin.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: originMenuTriggered()
         }
     }
 }

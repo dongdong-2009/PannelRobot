@@ -21,6 +21,12 @@ MouseArea {
         noBtnText = noText || "No";
         container.visible = true;
     }
+    function warning(tip, Text){
+        text = tip || "";
+        yesBtnText = Text || "OK";
+        noBtn.visible = false;
+        container.visible = true;
+    }
 
     Rectangle{
         border.color: "black"

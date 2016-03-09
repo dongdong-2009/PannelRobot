@@ -453,6 +453,7 @@ Rectangle {
                     text: qsTr("New M CMD")
                     visible: newModuleBtn.visible
                     height: editing.height
+                    font.pixelSize: 12
                     function newManualProgram(status){
                         tipBox.finished.disconnect(newManualProgram.newManualProgram);
                         if(status){
@@ -475,6 +476,7 @@ Rectangle {
                     text: qsTr("Del M CMD")
                     height: editing.height
                     visible: false
+                    font.pixelSize: 12
                     onButtonClicked: {
                         ManualProgramManager.manualProgramManager.removeProgramByName(editing.currentText());
                         editing.currentIndex = 0;

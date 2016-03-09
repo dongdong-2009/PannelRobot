@@ -1150,6 +1150,9 @@ Rectangle {
                 editor = Qt.createComponent('ModuleActionEditor.qml')
                 var moduleEditorObject = editor.createObject(actionEditorContainer);
                 PData.moduleActionEditor = moduleEditorObject;
+                editor = Qt.createComponent('OriginActionEditor.qml')
+                var originEditorObject = editor.createObject(actionEditorContainer);
+                PData.moduleActionEditor = originEditorObject;
 
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
@@ -1165,6 +1168,7 @@ Rectangle {
                 actionEditorContainer.addPage(counterEditorObject);
                 actionEditorContainer.addPage(customAlarmEditorObject);
                 actionEditorContainer.addPage(moduleEditorObject);
+                actionEditorContainer.addPage(originEditorObject);
 
 
                 actionEditorContainer.showMenu();
@@ -1306,6 +1310,12 @@ Rectangle {
                 });
                 actionMenuObject.moduleMenuTriggered.connect(function(){
                     actionEditorContainer.setCurrentIndex(13);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
+                actionMenuObject.originMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(14);
                     linkedBtn1.visible = false;
                     linkedBtn2.visible = false;
                     linkedBtn3.visible = false;

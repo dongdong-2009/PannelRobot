@@ -25,6 +25,12 @@ MouseArea {
         noBtnText = noText || "No";
         container.visible = true;
     }
+    function warning(tip, Text){
+        text = tip || "";
+        yesBtnText = Text || "OK";
+        noBtn.visible = false;
+        container.visible = true;
+    }
 
     function showInput(tip, configName, isNumberOnly, yesText, noText){
         input.visible = true;

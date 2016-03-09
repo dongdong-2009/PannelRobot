@@ -10,15 +10,15 @@ Item {
     property variant usermsgBuff: []
     function perms(perm){
         switch(parseInt(perm)){
-        case 0: op.isChecked = true;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
-        case 1: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = false;break;
-        case 2: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = false;break;
-        case 3: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = false;break;
-        case 4: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = true;break;
-        case 5: op.isChecked = false;mold.isChecked = true;system.isChecked = false;user.isChecked = true;break;
-        case 6: op.isChecked = false;mold.isChecked = false;system.isChecked = true;user.isChecked = true;break;
-        case 7: op.isChecked = false;mold.isChecked = true;system.isChecked = true;user.isChecked = true;break;
-        default: op.isChecked = false;mold.isChecked = false;system.isChecked = false;user.isChecked = false;break;
+        case 0: op.setChecked(true);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
+        case 1: op.setChecked(false);mold.setChecked(true);system.setChecked(false);user.setChecked(false);break;
+        case 2: op.setChecked(false);mold.setChecked(false);system.setChecked(true);user.setChecked(false);break;
+        case 3: op.setChecked(false);mold.setChecked(true);system.setChecked(true);user.setChecked(false);break;
+        case 4: op.setChecked(false);mold.setChecked(false);system.setChecked(false);user.setChecked(true);break;
+        case 5: op.setChecked(false);mold.setChecked(true);system.setChecked(false);user.setChecked(true);break;
+        case 6: op.setChecked(false);mold.setChecked(false);system.setChecked(true);user.setChecked(true);break;
+        case 7: op.setChecked(false);mold.setChecked(true);system.setChecked(true);user.setChecked(true);break;
+        default: op.setChecked(false);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
         }
     }
     Rectangle{
@@ -179,8 +179,13 @@ Item {
                         radius:5
                         enabled: false
                         onButtonClicked: {
+                            if(username.configValue == "" || password.configValue == ""){
+                                msg.warning(qsTr("username or password can not be empty!!"));
+                                return;
+                            }
                             var newAddbuffer = [];
                             newAddbuffer[0] = username.configValue;
+                            console.log(newAddbuffer[0]);
                             for(var i =0 ;i < userModel.count;i++){
                                 if(username.configValue == userModel.get(i).name){
                                     isnew = false;
@@ -193,6 +198,11 @@ Item {
                             var perm3 = (system.isChecked ? 2 : 0);
                             var perm4 = (user.isChecked ? 4 : 0);
                             newAddbuffer[2] = perm1 + perm2 + perm3 + perm4;
+                            if(!op.isChecked)
+                                if(newAddbuffer[2] == 0){
+                                    msg.warning(qsTr("please set perm!!"));
+                                    return;
+                                }
                             if(isnew){
 //                                userModel.insert(0,{"name": newAddbuffer[0]});
                                 userModel.append({"name": newAddbuffer[0]});
@@ -207,6 +217,12 @@ Item {
                 }
             }
 
+        }
+        ICMessageBox{
+            id:msg
+            z:100
+            x: 300
+            y: 100
         }
 
         Component.onCompleted: {

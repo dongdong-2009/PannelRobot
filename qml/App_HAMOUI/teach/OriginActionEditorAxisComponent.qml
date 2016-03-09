@@ -6,8 +6,7 @@ Row{
     id:axis
     property string axisName: ""
     property alias psName:ps.items
-    property bool posvisible: pos.visible
-    property bool psvisible: ps.visible
+    property alias psz:ps.z
     property int axisDefine: 0
     property int editorWidth: 80
     property alias rangeAddr: pos.bindConfig
@@ -39,7 +38,7 @@ Row{
     ICLineEdit{
         id:pos
         width: editorWidth + 25
-        visible: axisDefine == Teach.kAxisType_Servo
+        visible: false
         bindConfig: rangeAddr
         unit: qsTr("deg")
 
@@ -47,7 +46,8 @@ Row{
     ICComboBox{
         id:ps
         width: editorWidth
-        visible: axisDefine == Teach.kAxisType_Pneumatic
+        visible: true
+//        z:100
     }
     ICLineEdit{
         id:speed
@@ -69,3 +69,4 @@ Row{
         }
     }
 }
+

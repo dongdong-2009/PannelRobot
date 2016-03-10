@@ -562,6 +562,8 @@ public:
         return logger_->LogContent();
     }
 
+    Q_INVOKABLE QString disableImage(const QString& enabledImage);
+
 
 //    Q_INVOKABLE QString debug_LogContent() const
 //    {

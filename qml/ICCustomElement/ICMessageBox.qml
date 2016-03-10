@@ -57,6 +57,7 @@ MouseArea {
                 id:input
                 visible: false
                 inputWidth: tip.width
+                unit: "dfsff"
             }
 
             Row{

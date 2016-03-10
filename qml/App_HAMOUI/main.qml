@@ -480,8 +480,10 @@ Rectangle {
         armKeyboardContainer.visible = !isAuto;
         //        mainWindow.focus = true;
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
+        menuOperation.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) menuProgram.setChecked(true);
+        if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(knobStatus === Keymap.KNOB_MANUAL){
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
             panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);

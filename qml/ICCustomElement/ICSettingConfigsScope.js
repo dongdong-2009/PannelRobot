@@ -4,7 +4,7 @@ var isLoaded = false;
 function deepFindFitItem(item){
     var l = configs.length;
     if(item.hasOwnProperty("configAddr")){
-        console.log("settingscope:",item.configAddr)
+        console.log("settingscope:",item.configAddr, item.unit)
 
         configs.push(item);
         var fun = function(){

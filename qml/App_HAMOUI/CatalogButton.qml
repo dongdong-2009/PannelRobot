@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import "../ICCustomElement"
 
 Item {
     property alias text: text.text
@@ -8,7 +9,7 @@ Item {
 
     signal buttonClicked()
     signal triggered()
-    Image {
+    ICImage {
         id: icon
         source: ""
         width: 48
@@ -20,6 +21,7 @@ Item {
         text: "CatalogButton"
         anchors.top: icon.bottom
         anchors.horizontalCenter: parent.horizontalCenter
+        color: enabled ? "black" : "gray"
     }
     MouseArea{
         anchors.fill: parent

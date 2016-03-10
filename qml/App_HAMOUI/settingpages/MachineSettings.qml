@@ -1,8 +1,11 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import '..'
+import "../ShareData.js" as ShareData
+
 
 Item {
+    id:container
     function showMenu(){
         configsContainer.visible = false;
         menu.visible = true;
@@ -11,6 +14,13 @@ Item {
 //        configsContainer.visible = true;
 //        menu.visible = false;
 //    }
+
+    function onUserChanged(user){
+        var isEn = ShareData.UserInfo.currentHasSystemPerm();
+        runningConfigsBtn.enabled = isEn;
+        axisConfigBtn.enabled = isEn;
+        structConfigBtn.enabled = isEn;
+    }
 
     QtObject{
         id:pData
@@ -29,6 +39,7 @@ Item {
             id:runningConfigsBtn
             text: qsTr("Running Configs")
             icon: "../images/settings_running_config.png"
+            enabled: false
 //            y:10
 //            x:10
         }
@@ -36,12 +47,15 @@ Item {
             id:axisConfigBtn
             text: qsTr("Motor Configs")
             icon: "../images/settings_motor_config.png"
+            enabled: false
 
         }
         CatalogButton{
             id:structConfigBtn
             text: qsTr("Struct Configs")
             icon: "../images/settings_struct_config.png"
+            enabled: false
+
 
         }
 //        CatalogButton{
@@ -83,6 +97,8 @@ Item {
         configsContainer.addNav(axisConfigBtn, Qt.createComponent('AxisConfigs.qml'));
         configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
         configsContainer.addNav(structConfigBtn, Qt.createComponent('StructConfigs.qml'));
+        ShareData.UserInfo.registUserChangeEvent(container);
+
 //        console.log(url("./AxisConfigs.qml"));
 //        var configs = Qt.createComponent('AxisConfigs.qml');
 //        var axisConfig = configs.createObject(configsContainer);

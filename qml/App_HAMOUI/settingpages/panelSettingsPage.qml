@@ -4,8 +4,8 @@ import '..'
 import "../../utils/utils.js" as Utils
 
 
-ICSettingConfigsScope{
-        id:panelSettingsPage
+Item{
+    id:panelSettingsPage
     property int rowSpacing: 12
     ICButton{
         id:touchCalibrate
@@ -164,11 +164,11 @@ ICSettingConfigsScope{
             }
             function setDatetime(){
                 if(Utils.isDateTimeValid(year.text,
-                                             month.text,
-                                             day.text,
-                                             hour.text,
-                                             minute.text,
-                                             second.text))
+                                         month.text,
+                                         day.text,
+                                         hour.text,
+                                         minute.text,
+                                         second.text))
                 {
                     panelRobotController.setDatetime(year.text + "/" +
                                                      month.text + "/" +

@@ -875,7 +875,7 @@ var generateOriginAction = function(action,
     return {
         "action":action,
         "axis":axis,
-        "type":type,
+        "originType":type,
         "speed":speed||80.0,
         "delay":delay||0.00,
     };
@@ -1081,11 +1081,12 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
+var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 2")]
+
 var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
-    var ret =  axisInfos[actionObject.axis].name + ":" + " " +  actionObject.type + " " +
+    var ret =  qsTr("origin") + "-" + axisInfos[actionObject.axis].name + ":" + " " +  originType[actionObject.originType] + " " +
             qsTranslate("Teach","Speed:") + actionObject.speed + " " +
             qsTr("Delay:") + actionObject.delay;
-    console.log("hello" + actionObject.speed);
     if(actionObject.isBadEn)
         ret += " " + qsTr("Bad En");
     if(actionObject.isEarlyEnd){
@@ -1457,7 +1458,11 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
                 {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
+    }else if(actionObject.action === actions.F_CMD_FINE_ZERO){
+        ret = [{"item":"speed", "range":"s_rw_0_32_1_1200"},
+                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
     }
+
     ret.push({"item":"customName"});
     return ret;
 }

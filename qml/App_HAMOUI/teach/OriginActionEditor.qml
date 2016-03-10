@@ -30,7 +30,7 @@ Rectangle {
                 if(axisActionInfo.hasOwnProperty("ps")){
                     ret.push(Teach.generateOriginAction(editor.servoAction,
                                                            i,
-                                                           axisActionInfo.pstext,
+                                                           axisActionInfo.ps,
                                                            axisActionInfo.speed,
                                                            axisActionInfo.delay));
                     console.log("hello11" + axisActionInfo.ps.text + "" + axisActionInfo.speed)

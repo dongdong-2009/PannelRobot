@@ -63,6 +63,17 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+int OriginActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(v->value("action").toInt());
+    item.append(v->value("axis", 0).toInt());
+    item.append(v->value("originType", 0).toInt());
+    item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+}
+
 int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
@@ -322,6 +333,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     QMap<int, ActionCompiler> ret;
 #ifdef NEW_PLAT
     ret.insert(F_CMD_SINGLE, AxisServoActionCompiler);
+    ret.insert(F_CMD_FINE_ZERO, OriginActionCompiler);
     ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);

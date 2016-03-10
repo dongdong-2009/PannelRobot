@@ -23,7 +23,6 @@ Row{
             ret.ps = ps.currentIndex;
             ret.delay = delay.text;
             ret.speed = speed.text;
-            ret.pstext = ps.text(ps.currentIndex);
         }
         return ret;
     }

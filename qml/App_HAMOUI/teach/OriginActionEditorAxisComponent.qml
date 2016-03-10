@@ -19,8 +19,11 @@ Row{
             ret.pos = pos.text;
             ret.speed = speed.text
         }
-        else if(ps.visible) ret.ps = ps.currentIndex;
-        ret.delay = delay.text
+        else if(ps.visible){
+            ret.ps = ps.currentIndex;
+            ret.delay = delay.text;
+            ret.speed = speed.text;
+        }
         return ret;
     }
 
@@ -47,7 +50,6 @@ Row{
         id:ps
         width: editorWidth
         visible: true
-//        z:100
     }
     ICLineEdit{
         id:speed

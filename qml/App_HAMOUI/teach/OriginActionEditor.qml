@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
+import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 
 Rectangle {
@@ -9,6 +10,41 @@ Rectangle {
     QtObject{
         id:pData
         property variant axisDefine: panelRobotController.axisDefine()
+        property variant axisEditors: []
+    }
+
+    function createActionObjects(){
+        var ret = [];
+        var axis = pData.axisEditors;
+        var axisActionInfo;
+        var editor
+//        if(isSyncBox.getChecked()){
+//            ret.push(Teach.generateSyncBeginAction());
+//        }
+        for(var i = 0; i < axis.length; ++i){
+            editor = axis[i];
+            if(editor.axisItem.visible){
+                axisActionInfo = editor.axisItem.getAxisActionInfo();
+                if(axisActionInfo == null)
+                    continue;
+                if(axisActionInfo.hasOwnProperty("ps")){
+                    ret.push(Teach.generateOriginAction(editor.servoAction,
+                                                           i,
+                                                           axisActionInfo.pstext,
+                                                           axisActionInfo.speed,
+                                                           axisActionInfo.delay));
+                    console.log("hello11" + axisActionInfo.ps.text + "" + axisActionInfo.speed)
+                }
+//                else{
+//                    ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
+//                                                                                        axisActionInfo.delay));
+//                }
+            }
+        }
+//        if(isSyncBox.getChecked()){
+//            ret.push(Teach.generateSyncEndAction());
+//        }
+        return ret;
     }
 
     Rectangle{
@@ -74,5 +110,16 @@ Rectangle {
         }
     }
     Component.onCompleted: {
+        var axis = [];
+        var actions = Teach.actions;
+        axis.push({"axisItem":m0Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS1_1, "psOFF":actions.ACT_PS1_2});
+        axis.push({"axisItem":m1Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS2_1, "psOFF":actions.ACT_PS2_2});
+        axis.push({"axisItem":m2Axis,  "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS3_1, "psOFF":actions.ACT_PS3_2});
+        axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
+        axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
+        axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
+//        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+//        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+        pData.axisEditors = axis;
     }
 }

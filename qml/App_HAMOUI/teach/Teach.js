@@ -773,6 +773,7 @@ actions.F_CMD_PROGRAM_JUMP1 = 10001;
 actions.F_CMD_PROGRAM_JUMP2 = 10002;  //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
 actions.F_CMD_PROGRAM_CALL0 = 20000;   //< 程序调用 调用步号  返回步号
 actions.F_CMD_PROGRAM_CALL_BACK = 20001;   //< 程序调用
+actions.F_CMD_FINE_ZERO = 30000;//<  教导寻找原点： 轴ID 类型 速度 延时
 actions.ACT_END        = 60000;
 actions.ACT_COMMENT    = 50000;
 actions.ACT_OUTPUT     = 0x80;
@@ -859,6 +860,22 @@ var generatePathAction = function(action,
     return {
         "action":action,
         "points":points,
+        "speed":speed||80.0,
+        "delay":delay||0.00,
+    };
+}
+
+var generateOriginAction = function(action,
+                                    axis,
+                                    type,
+                                    speed,
+                                    delay
+                                  ){
+
+    return {
+        "action":action,
+        "axis":axis,
+        "type":type,
         "speed":speed||80.0,
         "delay":delay||0.00,
     };
@@ -1064,6 +1081,18 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
+var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
+    var ret =  axisInfos[actionObject.axis].name + ":" + " " +  actionObject.type + " " +
+            qsTranslate("Teach","Speed:") + actionObject.speed + " " +
+            qsTr("Delay:") + actionObject.delay;
+    console.log("hello" + actionObject.speed);
+    if(actionObject.isBadEn)
+        ret += " " + qsTr("Bad En");
+    if(actionObject.isEarlyEnd){
+        ret += " " + qsTr("Early End Pos:") + actionObject.earlyEndPos;
+    }
+    return ret;
+}
 
 var ps1_1ToStringHandler = function(actionObject){
     return psActionToStringHelper(qsTr("X1 OFF"), actionObject)
@@ -1343,6 +1372,7 @@ var pathActionToStringHandler = function(actionObject){
 
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_FINE_ZERO, f_CMD_FINE_ZEROToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);

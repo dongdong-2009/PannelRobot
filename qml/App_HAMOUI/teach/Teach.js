@@ -1081,7 +1081,7 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
-var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 2")]
+var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3")]
 
 var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
     var ret =  qsTr("origin") + "-" + axisInfos[actionObject.axis].name + ":" + " " +  originType[actionObject.originType] + " " +

@@ -305,6 +305,12 @@ Item {
             height: 300
             clip: true
             contentHeight: configContentContainer.height + 10
+            onMovementEnded: {
+                if(atYEnd){
+                    hinttext.text = "∧";
+                }else hinttext.text = "∨";
+            }
+
             Grid{
                 id:configContentContainer
                 columns: 1
@@ -418,9 +424,33 @@ Item {
             }
 
         }
+        SequentialAnimation{
+            id: flicker
+            loops: Animation.Infinite
+            running: visible
+            PropertyAnimation{ target: hinttext;properties: "color";to:"transparent";duration: 200}
+            PropertyAnimation{ target: hinttext;properties: "color";to:"black";duration: 200}
+        }
+
+        Rectangle{
+            id:hint
+            anchors.left: configContainer.right
+            anchors.bottom: configContainer.bottom
+//            anchors.leftMargin: 20
+            height: 20
+            width: 20
+            radius: 5
+            border.width: 1
+            border.color: "gray"
+            Text {
+                id: hinttext
+                anchors.centerIn: parent
+                text: "∨"
+            }
+        }
         Rectangle{
             id:splitLine
-            anchors.left: configContainer.right
+            anchors.left: hint.right
             anchors.leftMargin: 20
             width: 1
             height: configContainer.height + menuContainer.height

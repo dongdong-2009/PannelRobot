@@ -9,7 +9,7 @@ Item {
 
     signal buttonClicked()
     signal triggered()
-    ICImage {
+    Image {
         id: icon
         source: ""
         width: 48

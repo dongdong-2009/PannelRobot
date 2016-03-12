@@ -186,9 +186,12 @@ public:
          qDebug()<<"Program Begin:";
          for(int i = 0 ; i < compiledProgram_.size(); ++i)
          {
-
-             qDebug()<<UIStepToRealStep(compiledLineToUIStep_.value(i))<< compiledProgram_.at(i);
+             int uiStep = compiledLineToUIStep_.value(i);
+             QPair<int, int> realStep = UIStepToRealStep(uiStep);
+             qDebug()<<uiStep<<realStep<< compiledProgram_.at(i)<<RealStepToUIStep(realStep.first);
          }
+//         qDebug()<<"Step map_:"<<stepMap_;
+//         qDebug()<<"realStepToUIStepMap_"<<realStepToUIStepMap_;
      }
 
 private:

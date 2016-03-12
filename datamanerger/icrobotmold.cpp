@@ -689,12 +689,13 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 if(item.at(0) == F_CMD_SYNC_START)
                 {
                     isSyncBegin = true;
+                    ++fStep;
                     continue;
                 }
                 else if(item.at(0) == F_CMD_SYNC_END)
                 {
                     isSyncBegin = false;
-                    ++fStep;
+//                    ++fStep;
                     continue;
                 }
                 if(!isSyncBegin)
@@ -832,6 +833,10 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     }
     //    stacks_ = ICDALHelper::MoldStacksContent(moldName);
     //    stackInfos_ = ParseStacks_(stacks_);
+//    for(int i = 0; i < 10; ++i)
+//    {
+//        qDebug()<<RunningStepToProgramLine(0, i);
+//    }
     return ok;
 }
 
@@ -1114,11 +1119,14 @@ QPair<int, QList<int> > ICRobotMold::RunningStepToProgramLine(int which, int ste
         return ret;
     CompileInfo pI = programs_.at(which);
     int mID = pI.ModuleIDFromLine(step);
+//    qDebug()<<step<<mID;
     QList<int> steps;
     if(mID < 0)
         steps = pI.RealStepToUIStep(step);
     else
+    {
         steps = compiledFunctions_.value(mID).RealStepToUIStep(step - pI.ModuleEntry(mID));
+    }
     return qMakePair<int, QList<int> > (mID, steps);
 }
 

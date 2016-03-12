@@ -77,7 +77,7 @@ Item {
         id:editorContainer
         y:10
         x:10
-        spacing: 6
+        spacing: 10
         ICConfigEdit{
             id:customName
             configNameWidth: PData.configNameWidth
@@ -140,37 +140,7 @@ Item {
             configName: qsTr("Action Time:")
             unit: qsTr("s")
         }
-        Row{
-            id:buttons
-            spacing: 20
-            ICButton{
-                id:okBtn
-                text: qsTr("Ok")
-                onButtonClicked: {
-                    container.visible = false;
-                    var editingObject = PData.editingActionObject;
-                    //                    var modifiedObject = {};
-                    var editor;
-                    for(var i = 0; i < PData.editingEditors.length; ++i){
-                        editor = PData.editingEditors[i];
-                        if(editor == points){
-                            editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
 
-                        }else{
-                            editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
-                        }
-                    }
-                    editConfirm(editingObject);
-                }
-            }
-            ICButton{
-                id:cancelBtn
-                text: qsTr("Cancel")
-                onButtonClicked: {
-                    container.visible = false;
-                }
-            }
-        }
         Component.onCompleted: {
             PData.itemToEditorMap.put("pos", pos);
             PData.itemToEditorMap.put("speed", speed);
@@ -192,6 +162,42 @@ Item {
             PData.editorToItemMap.put(acTime, "acTime");
             PData.editorToItemMap.put(customName, "customName");
 
+        }
+    }
+
+    Row{
+        id:buttons
+        spacing: 20
+        anchors.top: editorContainer.bottom
+        anchors.topMargin: editorContainer.spacing
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        ICButton{
+            id:okBtn
+            text: qsTr("Ok")
+            onButtonClicked: {
+                container.visible = false;
+                var editingObject = PData.editingActionObject;
+                //                    var modifiedObject = {};
+                var editor;
+                for(var i = 0; i < PData.editingEditors.length; ++i){
+                    editor = PData.editingEditors[i];
+                    if(editor == points){
+                        editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
+
+                    }else{
+                        editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
+                    }
+                }
+                editConfirm(editingObject);
+            }
+        }
+        ICButton{
+            id:cancelBtn
+            text: qsTr("Cancel")
+            onButtonClicked: {
+                container.visible = false;
+            }
         }
     }
 }

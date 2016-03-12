@@ -147,7 +147,7 @@ Rectangle {
         model: recordsModel
         delegate: Rectangle{
             width: parent.width - border.width
-            height: 32
+            height: 40
             border.width: 1
             border.color: "gray"
             color: recordsView.currentIndex == index ? "lightsteelblue" : "white"
@@ -208,6 +208,7 @@ Rectangle {
         ICButton{
             id:loadRecord
             text: qsTr("Load")
+            height: 40
             onButtonClicked: {
                 panelRobotController.loadRecord(selectName.text);
                 ICOperationLog.appendOperationLog(qsTr("Load record ") + selectName.text);
@@ -216,6 +217,7 @@ Rectangle {
         ICButton{
             id:newRecord
             text: qsTr("New")
+            height: loadRecord.height
             onButtonClicked: {
                 if(newName.isEmpty()){
                     tipDialog.show(qsTr("Please Enter the new record name!"));
@@ -229,6 +231,7 @@ Rectangle {
         ICButton{
             id:copyRecord
             text: qsTr("Copy")
+            height: loadRecord.height
             onButtonClicked: {
                 if(newName.isEmpty()){
                     tipDialog.show(qsTr("Please Enter the new record name!"));
@@ -245,6 +248,7 @@ Rectangle {
         ICButton{
             id:delRecord
             text: qsTr("Del")
+            height: loadRecord.height
             onButtonClicked: {
                 if(recordsView.currentIndex < 0) return;
                 if(panelRobotController.currentRecordName() == selectName.text){
@@ -259,6 +263,7 @@ Rectangle {
         ICButton{
             id:exportRecord
             text: qsTr("Export")
+            height: loadRecord.height
             visible: false
             onButtonClicked: {
                 var exportMolds = [];
@@ -278,6 +283,7 @@ Rectangle {
         ICButton{
             id:importRecord
             text: qsTr("Import")
+            height: loadRecord.height
             visible: false
             onButtonClicked: {
                 if(recordsView.openBackupPackage == "") return;
@@ -304,7 +310,8 @@ Rectangle {
         }
         ICButton{
             id:viewBackupRecords
-            text: qsTr("Open");
+            text: qsTr("Open")
+            height: loadRecord.height
             visible: importFromUsb.isChecked
             onButtonClicked: {
                 usbModel.clear();

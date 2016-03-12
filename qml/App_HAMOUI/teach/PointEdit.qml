@@ -14,6 +14,7 @@ Item {
     property variant lPointNames: []
     property variant fPointNames: []
     property variant oPointNames: []
+    property bool pointLogged: false
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -38,6 +39,12 @@ Item {
     function getPoints(){
         var ret = [];
         var mP;
+        if(!pointLogged){
+            setIn.clicked();
+            pointViewModel.set(0, pointViewModel.createModelItem());
+        }
+        pointLogged = false;
+
         for(var i = 0; i < pointViewModel.count; ++i){
             mP = Utils.cloneObject(pointViewModel.get(i));
             ret.push(createPoint(mP.pointName, mP.pos));
@@ -289,21 +296,22 @@ Item {
 
         spacing: 2
         isAutoSize: false
-        height: newReferenceName.height + selReferenceName.height + 2* spacing
-        ICCheckableLineEdit{
-            id:newReferenceName
-            configName: qsTr("New Point:")
-            configNameWidth: 120
-            inputWidth: 160
-            isNumberOnly: false
-            visible: false
-        }
+        height: selReferenceName.height + 2* spacing
+//        ICCheckableLineEdit{
+//            id:newReferenceName
+//            configName: qsTr("New Point:")
+//            configNameWidth: 120
+//            inputWidth: 160
+//            isNumberOnly: false
+//            visible: false
+//        }
 
         ICCheckableComboboxEdit{
             id:selReferenceName
             configName: qsTr("Select Point:")
             configNameWidth: 120
-            inputWidth: newReferenceName.inputWidth
+            height: 32
+            inputWidth: 160
             popupMode: 1
             z: 2
         }
@@ -311,7 +319,7 @@ Item {
 
     Row{
         id:speedAndDelayContainer
-        spacing: 6
+        spacing: 10
         anchors.top: pointModeContainer.bottom
         anchors.topMargin: 2
         visible: !isEditorMode
@@ -321,6 +329,7 @@ Item {
             configAddr: "s_rw_0_32_1_1200"
             unit: qsTr("%")
             inputWidth: PData.speedEditWidth
+            height: 32
 
         }
         ICConfigEdit{
@@ -329,6 +338,7 @@ Item {
             configAddr: "s_rw_0_32_2_1100"
             unit: qsTr("s")
             inputWidth: PData.delayEditWidth
+            height: 32
         }
     }
 
@@ -565,12 +575,7 @@ Item {
                     if(motor5.isChecked)
                         ret.m5 = motor5.configValue;
                     var pointName = "";
-                    if(newReferenceName.isChecked){
-                        var point = Teach.definedPoints.addNewPoint(newReferenceName.configValue,
-                                                                    ret);
-                        pointName = point.name;
-                        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
-                    }else if(selReferenceName.isChecked){
+                    if(selReferenceName.isChecked){
                         if(selReferenceName.configValue >= 0){
                             ret = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
                             pointName = selReferenceName.configText();
@@ -604,6 +609,7 @@ Item {
                     }
                     onButtonClicked: {
                         pointViewModel.set(index, pointViewModel.createModelItem());
+                        pointLogged = true;
                     }
                 }
                 Text {

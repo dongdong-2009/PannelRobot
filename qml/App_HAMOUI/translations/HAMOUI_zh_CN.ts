@@ -585,6 +585,54 @@
         <source>Test Clear</source>
         <translation>清除测试</translation>
     </message>
+    <message>
+        <source>Motor Factory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoder Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode Type1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode Type2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode Type3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoder Read Way</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode RW1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode RW2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode RW3</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -1857,6 +1905,36 @@
     </message>
 </context>
 <context>
+    <name>OriginActionEditor</name>
+    <message>
+        <source>Type1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type3</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OriginActionEditorAxisComponent</name>
+    <message>
+        <source>deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OutputActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -2264,6 +2342,10 @@ please chose!</source>
     <message>
         <source>Module</source>
         <translation>模块</translation>
+    </message>
+    <message>
+        <source>origin</source>
+        <translation>原点指令</translation>
     </message>
 </context>
 <context>
@@ -3123,6 +3205,22 @@ please chose!</source>
         <source>Offset Jog:</source>
         <translation>相对关节:</translation>
     </message>
+    <message>
+        <source>Type 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>origin</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -3424,6 +3522,14 @@ please chose!</source>
     </message>
     <message>
         <source>ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>username or password can not be empty!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>please set perm!!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

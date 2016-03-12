@@ -71,16 +71,18 @@ Rectangle {
     Grid{
         id:keyboardSection
         columns: 4
-        spacing: 20
+        spacing: 5
         //        x:50
         anchors.verticalCenter: parent.verticalCenter
         x: 10
+        property int btnWidgth: 70
+        property int btnHeight: 64
         ICButton {
             id: text4
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -90,8 +92,8 @@ Rectangle {
             id: text3
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -102,8 +104,8 @@ Rectangle {
             id: text6
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
@@ -112,8 +114,8 @@ Rectangle {
             id: text5
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -126,8 +128,8 @@ Rectangle {
             id: text9
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
@@ -137,8 +139,8 @@ Rectangle {
             id: text8
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
@@ -148,8 +150,8 @@ Rectangle {
             id: text2
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -160,8 +162,8 @@ Rectangle {
             id: text1
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
         }
@@ -170,8 +172,8 @@ Rectangle {
             id: text10
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -182,8 +184,8 @@ Rectangle {
             id: text7
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -194,8 +196,8 @@ Rectangle {
             id: text11
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -205,8 +207,8 @@ Rectangle {
             id: text12
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
 
@@ -219,8 +221,8 @@ Rectangle {
             id: text15
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Line Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -231,8 +233,8 @@ Rectangle {
             id: text16
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Line Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.COMBINE_ARM_MOVE_TYPE)
         }
@@ -242,8 +244,8 @@ Rectangle {
             id: text23
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Rotate U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -254,8 +256,8 @@ Rectangle {
             id: text24
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Rotate U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -266,8 +268,8 @@ Rectangle {
             id: text18
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Line Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -277,8 +279,8 @@ Rectangle {
             id: text17
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Line Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.COMBINE_ARM_MOVE_TYPE)
         }
@@ -287,8 +289,8 @@ Rectangle {
             id: text21
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Rotate V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -299,8 +301,8 @@ Rectangle {
             id: text22
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Rotate V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.COMBINE_ARM_MOVE_TYPE)
         }
@@ -310,8 +312,8 @@ Rectangle {
             id: text13
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Line X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -321,8 +323,8 @@ Rectangle {
             id: text14
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Line X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -333,8 +335,8 @@ Rectangle {
             id: text19
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Rotate W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.COMBINE_ARM_MOVE_TYPE)
 
@@ -345,8 +347,8 @@ Rectangle {
             id: text20
             isAutoRepeat: true
             autoInterval: 10
-            width: 70
-            height:48
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
             text: qsTr("Rotate W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.COMBINE_ARM_MOVE_TYPE)
 

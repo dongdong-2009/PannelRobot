@@ -31,36 +31,77 @@ Rectangle {
         actionEditorFrame.visible = !actionEditorFrame.visible;
     }
 
-    function onInsertTriggered(){
+    function insertActionToList(actionObject){
         var cI = programListView.currentIndex;
         var oCI = cI;
         if(cI < 0)return;
-        if(actionEditorContainer.isMenuShow()) return;
-        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
-        if(actionObjects.length == 0) return;
+
         var cPI = currentProgramIndex();
         var model = currentModel();
-        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-        for(var i = 0; i < actionObjects.length; ++i){
-            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-                //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
-            }else if(Teach.hasCounterIDAction(actionObjects[i])){
-                var cs = Teach.actionCounterIDs(actionObjects[i]);
-                for(var c in cs){
-                    PData.counterLinesInfo.add(cPI, cs[c], cI);
-                }
-            }else if(Teach.hasStackIDAction(actionObjects[i])){
-                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
-            }
-
-            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
+        PData.counterLinesInfo.syncLines(cPI, oCI, 1);
+        PData.stackLinesInfo.syncLines(cPI, oCI, 1);
+        PData.pointLinesInfo.syncLines(cPI, oCI, 1);
+        if(actionObject.action === Teach.actions.ACT_FLAG){
+            //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
+            Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObject.flag, actionObject.comment));
         }
+        if(Teach.hasCounterIDAction(actionObject)){
+            var cs = Teach.actionCounterIDs(actionObject);
+            for(var c in cs){
+                PData.counterLinesInfo.add(cPI, cs[c], cI);
+            }
+        }
+        if(Teach.hasStackIDAction(actionObject)){
+            PData.stackLinesInfo.add(cPI, actionObject.stackID, cI);
+        }
+        if(Teach.canActionUsePoint(actionObject)){
+            var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
+            for(var p = 0; p < points.length; ++p){
+                PData.pointLinesInfo.add(cPI, points[p].index, cI);
+            }
+        }
+
+        model.insert(cI++, new Teach.ProgramModelItem(actionObject, Teach.actionTypes.kAT_Normal));
+
         hasModify = true;
-        repaintProgramItem(model)
-        //        var msg = {"programModel":model}
-        //        repaintThread.sendMessage(msg);
+//        repaintProgramItem(model);
+    }
+
+    function onInsertTriggered(){
+         if(actionEditorContainer.isMenuShow()) return;
+         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
+         if(actionObjects.length == 0) return;
+         for(var i = 0; i < actionObjects.length; ++i){
+             insertActionToList(actionObjects[i]);
+         }
+         repaintProgramItem(currentModel());
+//        var cI = programListView.currentIndex;
+//        var oCI = cI;
+//        if(cI < 0)return;
+//        if(actionEditorContainer.isMenuShow()) return;
+//        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
+//        if(actionObjects.length == 0) return;
+//        var cPI = currentProgramIndex();
+//        var model = currentModel();
+//        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
+//        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
+//        for(var i = 0; i < actionObjects.length; ++i){
+//            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
+//                //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
+//                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
+//            }else if(Teach.hasCounterIDAction(actionObjects[i])){
+//                var cs = Teach.actionCounterIDs(actionObjects[i]);
+//                for(var c in cs){
+//                    PData.counterLinesInfo.add(cPI, cs[c], cI);
+//                }
+//            }else if(Teach.hasStackIDAction(actionObjects[i])){
+//                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
+//            }
+
+//            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
+//        }
+//        hasModify = true;
+//        repaintProgramItem(model);
     }
 
     function onDeleteTriggered(){
@@ -73,17 +114,27 @@ Rectangle {
         var actionObject = model.get(cI).mI_ActionObject;
         if(actionObject.action === Teach.actions.ACT_FLAG){
             Teach.flagsDefine.delFlag(editing.currentIndex, actionObject.flag);
-        }else if(Teach.hasCounterIDAction(actionObject)){
+        }
+        if(Teach.hasCounterIDAction(actionObject)){
             var cs = Teach.actionCounterIDs(actionObject);
             for(var c in cs){
                 PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI);
             }
-        }else if(Teach.hasStackIDAction(actionObject)){
+        }
+        if(Teach.hasStackIDAction(actionObject)){
             PData.stackLinesInfo.removeIDLine(cPI, actionObject.stackID, cI);
         }
+        if(Teach.canActionUsePoint(actionObject)){
+            var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
+            for(var p = 0; p < points.length; ++p){
+                PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI);
+            }
+        }
+
         model.remove(cI);
         PData.counterLinesInfo.syncLines(cPI, oCI, -1);
         PData.stackLinesInfo.syncLines(cPI, oCI, -1);
+        PData.pointLinesInfo.syncLines(cPI, oCI, -1);
         hasModify = true;
         repaintProgramItem(model);
     }
@@ -97,26 +148,47 @@ Rectangle {
         var cIAction = model.get(cI).mI_ActionObject;
         var cIPAction = model.get(cI - 1).mI_ActionObject;
         var cPI = currentProgramIndex();
+
+        var cs;
+        var c;
         if(Teach.hasCounterIDAction(cIAction)){
-            var cs = Teach.actionCounterIDs(cIAction);
-            for(var c in cs){
+            cs = Teach.actionCounterIDs(cIAction);
+            for(c in cs){
                 PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI);
                 PData.counterLinesInfo.add(cPI, cs[c], cI - 1);
             }
-        }else if(Teach.hasStackIDAction(cIAction)){
+        }
+        if(Teach.hasStackIDAction(cIAction)){
             PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
             PData.stackLinesInfo.add(cPI, cIAction.stackID, cI - 1);
         }
+        var points;
+        var p;
+        if(Teach.canActionUsePoint(cIAction)){
+            points = Teach.definedPoints.parseActionPointsHelper(cIAction);
+            for(p = 0; p < points.length; ++p){
+                PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI);
+                PData.pointLinesInfo.add(cPI, points[p].index, cI - 1);
+            }
+        }
 
         if(Teach.hasCounterIDAction(cIPAction)){
-            var cs = Teach.actionCounterIDs(cIPAction);
-            for(var c in cs){
+            cs = Teach.actionCounterIDs(cIPAction);
+            for(c in cs){
                 PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI - 1);
                 PData.counterLinesInfo.add(cPI, cs[c], cI);
             }
-        }else if(Teach.hasStackIDAction(cIPAction)){
+        }
+        if(Teach.hasStackIDAction(cIPAction)){
             PData.stackLinesInfo.removeIDLine(cPI, cIPAction.stackID, cI - 1);
             PData.stackLinesInfo.add(cPI, cIPAction.stackID, cI);
+        }
+        if(Teach.canActionUsePoint(cIPAction)){
+            points = Teach.definedPoints.parseActionPointsHelper(cIPAction);
+            for(p = 0; p < points.length; ++p){
+                PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI - 1);
+                PData.pointLinesInfo.add(cPI, points[p].index, cI);
+            }
         }
 
         model.move(cI, cI -1, 1);
@@ -136,26 +208,46 @@ Rectangle {
         var cINAction = model.get(cI + 1).mI_ActionObject;
         var cPI = currentProgramIndex();
 
+        var cs;
+        var c;
         if(Teach.hasCounterIDAction(cIAction)){
-            var cs = Teach.actionCounterIDs(cIAction);
-            for(var c in cs){
+            cs = Teach.actionCounterIDs(cIAction);
+            for(c in cs){
                 PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI);
                 PData.counterLinesInfo.add(cPI, cs[c], cI + 1);
             }
-        }else if(Teach.hasStackIDAction(cIAction)){
+        }
+        if(Teach.hasStackIDAction(cIAction)){
             PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
             PData.stackLinesInfo.add(cPI, cIAction.stackID, cI + 1);
         }
+        var points;
+        var p;
+        if(Teach.canActionUsePoint(cIAction)){
+            points = Teach.definedPoints.parseActionPointsHelper(cIAction);
+            for(p = 0; p < points.length; ++p){
+                PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI);
+                PData.pointLinesInfo.add(cPI, points[p].index, cI + 1);
+            }
+        }
 
         if(Teach.hasCounterIDAction(cINAction)){
-            var cs = Teach.actionCounterIDs(cINAction);
-            for(var c in cs){
+            cs = Teach.actionCounterIDs(cINAction);
+            for(c in cs){
                 PData.counterLinesInfo.removeIDLine(cPI, cs[c], cI + 1);
                 PData.counterLinesInfo.add(cPI, cs[c], cI);
             }
-        }else if(Teach.hasStackIDAction(cINAction)){
+        }
+        if(Teach.hasStackIDAction(cINAction)){
             PData.stackLinesInfo.removeIDLine(cPI, cINAction.stackID, cI + 1);
             PData.stackLinesInfo.add(cPI, cINAction.stackID, cI);
+        }
+        if(Teach.canActionUsePoint(cINAction)){
+            points = Teach.definedPoints.parseActionPointsHelper(cINAction);
+            for(p = 0; p < points.length; ++p){
+                PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI + 1);
+                PData.pointLinesInfo.add(cPI, points[p].index, cI);
+            }
         }
 
 
@@ -835,6 +927,19 @@ Rectangle {
                         text: qsTr("DW")
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 2)
+                        }
+                    }
+                    ICButton{
+                        id:copyUp
+                        height: parent.height
+                        width: 40
+                        text: qsTr("CUW")
+                        visible: {
+                            return  (programListView.currentIndex < programListView.count - 1)
+                        }
+                        onButtonClicked: {
+                            insertActionToList(currentModelData().mI_ActionObject);
+                            repaintProgramItem(currentModel());
                         }
                     }
 

@@ -14,6 +14,10 @@ Item {
         return edit.currentText();
     }
 
+    function text(index) {
+        return items[index];
+    }
+
     height: 24
     width: container.width
     Row{

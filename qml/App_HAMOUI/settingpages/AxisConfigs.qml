@@ -188,14 +188,52 @@ Item {
         panelRobotController.syncConfigs();
     }
 
-    function onMotorFactoryChanged(){
+    function onEncoderTypeChanged(){
+        var addr = currentGroupAddr(15);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, encoderType.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, encoderType.text(encoderType.configValue), encoderType.text(oldV));
 
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onMotorFactoryChanged(){
+        var addr = currentGroupAddr(16);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, motorFactory.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, motorFactory.text(motorFactory.configValue), motorFactory.text(oldV));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onEncoderReadWayChanged(){
+        var addr = currentGroupAddr(17);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, encoderReadWay.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, encoderReadWay.text(encoderReadWay.configValue), encoderReadWay.text(oldV));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
     }
 
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
         editor.configValue = panelRobotController.getConfigValueText(addr);
+        editor.configValueChanged.connect(handler);
+    }
+
+    function updateComboBoxValue(editor, addr, handler){
+        editor.configValueChanged.disconnect(handler);
+        editor.configAddr = addr
+        editor.configValue = panelRobotController.getConfigValue(addr);
         editor.configValueChanged.connect(handler);
     }
 
@@ -212,7 +250,10 @@ Item {
         updateConfigValue(acc1, pdata.configAddrs[which][10], onAcc1Changed);
         updateConfigValue(acc2, pdata.configAddrs[which][11], onAcc2Changed);
         updateConfigValue(maxSpeed, pdata.configAddrs[which][12], onMaxSpeedChanged);
-        updateConfigValue(motorFactory, pdata.configAddrs[which][13], onMotorFactoryChanged);
+        updateComboBoxValue(encoderType, pdata.configAddrs[which][15], onEncoderTypeChanged);
+        updateComboBoxValue(motorFactory, pdata.configAddrs[which][16], onMotorFactoryChanged);
+        updateComboBoxValue(encoderReadWay, pdata.configAddrs[which][17], onEncoderReadWayChanged);
+
     }
 
     ICButtonGroup{

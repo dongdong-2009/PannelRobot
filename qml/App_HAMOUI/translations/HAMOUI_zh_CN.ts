@@ -2511,6 +2511,10 @@ please chose!</source>
         <source>Module Name:</source>
         <translation>模块名称:</translation>
     </message>
+    <message>
+        <source>CUW</source>
+        <translation>复制</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -3219,7 +3223,7 @@ please chose!</source>
     </message>
     <message>
         <source>origin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原点指令</translation>
     </message>
 </context>
 <context>

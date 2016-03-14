@@ -1076,8 +1076,9 @@ Rectangle {
 
                             var lastRunning = PData.lastRunning;
 
-                            //                            var cpI = currentProgramIndex();
-                            var programIndex = editing.currentIndex;
+//                                                        var cpI = currentProgramIndex();
+//                            var programIndex = editing.currentIndex;
+                            var programIndex = currentProgramIndex();
                             if(programIndex !== lastRunning.model ||
                                     uiRunningSteps.hostStep !== lastRunning.step)
                             {
@@ -1090,6 +1091,7 @@ Rectangle {
                                 }
 
                                 var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep, "moduleID":uiRunningSteps.moduleID};
+
                                 if(uiRunningSteps.moduleID != lastRunning.moduleID)
                                     moduleSel.setCurrentModule(uiRunningSteps.moduleID);
                                 var cModel = currentModel();

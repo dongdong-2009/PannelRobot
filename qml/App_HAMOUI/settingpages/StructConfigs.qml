@@ -9,7 +9,7 @@ Item {
     height: parent.height
     QtObject{
         id:pdata
-        property int configNameWidth: 150
+        property int configNameWidth: 140
     }
     ICSettingConfigsScope{
         onConfigValueChanged: {
@@ -19,8 +19,8 @@ Item {
         }
 
         Grid{
-            columns: 2
-//            rows:
+//            columns: 2
+            rows:10
             flow: Grid.TopToBottom
             spacing: 15
             ICConfigEdit{
@@ -169,6 +169,28 @@ Item {
                 unit: qsTr("%")
                 configAddr: "s_rw_24_8_0_165"
             }
+            ICConfigEdit{
+                id:sAccTime
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SACC Time");
+                unit: qsTr("m/s²")
+                configAddr: "s_rw_0_16_3_166"
+            }
+            ICConfigEdit{
+                id:sDecTime
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SDec Time");
+                unit: qsTr("m/s²")
+                configAddr: "s_rw_16_16_3_166"
+            }
+            ICConfigEdit{
+                id:pathMaxSpeed
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SACC Max");
+                unit: qsTr("RPM")
+                configAddr: "s_rw_0_16_0_167"
+            }
+
         }
     }
 }

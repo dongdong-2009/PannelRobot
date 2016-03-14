@@ -5,7 +5,10 @@ Rectangle {
     property alias itemText: text.text
     property bool isChecked: false
     id:container
-    color:isChecked ? "yellow" : Theme.defaultTheme.TopHeader.menuItemBG
+    color:{
+        if(!enabled) return "gray";
+        return isChecked ? "yellow" : Theme.defaultTheme.TopHeader.menuItemBG;
+    }
     function setChecked(checked){
         isChecked = checked;
     }

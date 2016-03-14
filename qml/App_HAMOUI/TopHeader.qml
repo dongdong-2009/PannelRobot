@@ -15,6 +15,10 @@ Rectangle {
     property int mode: 0
     property Item lastChecked: null
 
+    function setRecordItemEnabled(en){
+        record.enabled = en;
+    }
+
     signal calculatorItemStatusChanged(bool isChecked)
     signal ioItemStatusChanged(bool isChecked)
     signal recordItemStatusChanged(bool isChecked)

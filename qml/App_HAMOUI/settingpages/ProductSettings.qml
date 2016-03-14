@@ -37,7 +37,7 @@ Item {
         CatalogButton{
             id:valveSettingsMenuBtn
             text: qsTr("Valve Settings")
-            icon: "../images/product.png"
+            icon: "../images/settings_valve_define.png"
             onButtonClicked: {
                 valveSettings.visible = true;
                 menu.visible = false;
@@ -47,6 +47,7 @@ Item {
             id:customVariablesSettingsMenuBtn
             text: qsTr("custom Variables")
             icon: "../images/product.png"
+            visible: false
             onButtonClicked: {
                 if(!customVariableConfigs.hasInit){
                     customVariableConfigs.init();

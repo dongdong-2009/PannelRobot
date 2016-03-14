@@ -54,12 +54,14 @@ Row{
         inputWidth: editorWidth - 20
         visible: axisDefine == Teach.kAxisType_Servo
         unit: qsTr("%")
+        text: "80.0"
         bindConfig: "s_rw_0_32_1_1200"
     }
     ICLineEdit{
         id:delay
         inputWidth: editorWidth - 15
         unit: qsTr("s")
+        text:"0.00"
         bindConfig: "s_rw_0_32_2_1100"
     }
 

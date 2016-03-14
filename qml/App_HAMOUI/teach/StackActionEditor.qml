@@ -381,6 +381,7 @@ Rectangle {
             configName: qsTr("Speed")
             configAddr: "s_rw_0_16_1_294"
             unit: "%"
+            configValue: "80.0"
         }
         ICConfigEdit{
             id:speed1
@@ -388,6 +389,7 @@ Rectangle {
             configName: qsTr("Speed1")
             configAddr: "s_rw_0_16_1_294"
             unit: "%"
+            configValue: "80.0"
         }
     }
     Component.onCompleted: {

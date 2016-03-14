@@ -332,6 +332,7 @@ Item {
             unit: qsTr("%")
             inputWidth: PData.speedEditWidth
             height: 32
+            configValue: "80.0"
 
         }
         ICConfigEdit{
@@ -341,6 +342,7 @@ Item {
             unit: qsTr("s")
             inputWidth: PData.delayEditWidth
             height: 32
+            configValue: "0.00"
         }
     }
 

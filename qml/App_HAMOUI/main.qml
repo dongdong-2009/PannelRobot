@@ -486,8 +486,12 @@ Rectangle {
         //        mainWindow.focus = true;
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
         menuOperation.enabled = !isAuto;
+        mainHeader.setRecordItemEnabled(!isAuto);
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
-        if(isAuto) menuProgram.setChecked(true);
+        if(isAuto) {
+            menuProgram.setChecked(true);
+            recordPageInBtn.clicked();
+        }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(knobStatus === Keymap.KNOB_MANUAL){
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);

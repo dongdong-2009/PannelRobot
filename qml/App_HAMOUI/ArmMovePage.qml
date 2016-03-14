@@ -3,6 +3,7 @@ import "../ICCustomElement"
 import "configs/Keymap.js" as Keymap
 import "configs/AxisDefine.js" as AxisDefine
 import "ShareData.js" as ShareData
+import "../utils/Storage.js" as Storage
 
 
 Rectangle {
@@ -26,45 +27,84 @@ Rectangle {
     border.color: "gray"
     color: "#A0A0F0"
 
-    Row{
+    Column{
         id:speedSection
         anchors.right: parent.right
         anchors.rightMargin: 40
-        spacing: 2
-        Text{
-            id:localType
-            text: currentType
-        }
-        Text {
-            id:hostType
-            onVisibleChanged: {
-                if(visible){
-                    text = panelRobotController.debug_GetAddrValue(24);
+        spacing: 4
+        Row{
+            spacing: 2
+            Text{
+                id:localType
+                text: currentType
+            }
+            Text {
+                id:hostType
+                onVisibleChanged: {
+                    if(visible){
+                        text = panelRobotController.debug_GetAddrValue(24);
+                    }
                 }
             }
-        }
 
-        Text {
-            text: qsTr("Speed")
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Rectangle{
-            border.width: 1
-            border.color: "gray"
-            width: 70
-            height: 32
-            color: "lime"
             Text {
-                id: speed
-                text: "10.0"
-                anchors.centerIn: parent
+                text: qsTr("Speed")
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Rectangle{
+                border.width: 1
+                border.color: "gray"
+                width: 70
+                height: 32
+                color: "lime"
+                Text {
+                    id: speed
+                    text: "10.0"
+                    anchors.centerIn: parent
 
+                }
+            }
+            Text {
+                text: "%"
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
-        Text {
-            text: "%"
-            anchors.verticalCenter: parent.verticalCenter
+        ICButtonGroup{
+            layoutMode: 1
+            spacing: 4
+            ICCheckableLineEdit{
+                id:tuneMove
+                configName: qsTr("Tune Move")
+                unit: "%"
+                configNameWidth: 110
+                configValue: Storage.getSetting("Speed_Tune_Move") || "0.5"
+            }
+            ICCheckableLineEdit{
+                id:slowMove
+                configName: qsTr("Slow Move")
+                unit:"%"
+                configNameWidth: tuneMove.configNameWidth
+                configValue: Storage.getSetting("Speed_Slow_Move") || "10.0"
+
+            }
+
+            ICCheckableLineEdit{
+                id:middleMove
+                configName: qsTr("Middle Move")
+                unit:"%"
+                configNameWidth: tuneMove.configNameWidth
+                configValue: Storage.getSetting("Speed_Middle_Move") || "50.0"
+            }
+
+            ICCheckableLineEdit{
+                id:fastMove
+                configName: qsTr("Fast Move")
+                unit:"%"
+                configNameWidth: tuneMove.configNameWidth
+                configValue: Storage.getSetting("Speed_Fast_Move") || "100.0"
+            }
         }
+
     }
 
 

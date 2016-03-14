@@ -72,6 +72,7 @@ Rectangle {
         ICButtonGroup{
             layoutMode: 1
             spacing: 4
+            visible: false
             ICCheckableLineEdit{
                 id:tuneMove
                 configName: qsTr("Tune Move")

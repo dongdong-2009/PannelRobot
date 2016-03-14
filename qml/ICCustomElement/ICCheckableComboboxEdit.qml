@@ -30,11 +30,12 @@ Item {
         ICCheckBox {
             id: configName
             anchors.verticalCenter: parent.verticalCenter
+            height: parent.height
         }
         ICComboBox{
             id: edit
             enabled: configName.isChecked
-
+            height: parent.height
         }
     }
 }

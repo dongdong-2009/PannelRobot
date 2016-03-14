@@ -359,11 +359,13 @@ Rectangle {
 
     Item{
         id:pointManagerContainer
-        y:100
+        y:110
 //        x:pointManagerBtn.width
         width: 700
         height: 400
         z:4
+        visible: armKeyboardContainer.visible
+
 
         PropertyAnimation{
             id:pointManagerOut
@@ -390,7 +392,8 @@ Rectangle {
         ICButton{
             id:pointManagerBtn
             text: "→"
-            width: 40
+            width: 48
+            height: 48
             anchors.bottom: parent.bottom
             bgColor: "green"
             icon: "images/tools_pointsmanage.png"
@@ -416,10 +419,10 @@ Rectangle {
 
     Item{
         id:armKeyboardContainer
-        y:60
+        y:50
         x:800 - armKeyboardBtn.width
         width: 700
-        height: 400
+        height: 420
         z:4
 
         PropertyAnimation{
@@ -447,7 +450,8 @@ Rectangle {
         ICButton{
             id:armKeyboardBtn
             text: "←"
-            width: 40
+            width: 48
+            height: 48
             bgColor: "green"
             iconPos: 1
             icon: "images/tools_keyboard.png"
@@ -475,9 +479,10 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-        var isAuto = (knobStatus === Keymap.KNOB_AUTO)
+        var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+        var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
-        armKeyboardContainer.visible = !isAuto;
+        armKeyboardContainer.visible = isManual;
         //        mainWindow.focus = true;
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
         menuOperation.enabled = !isAuto;

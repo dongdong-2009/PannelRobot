@@ -4,7 +4,7 @@ import "../../ICCustomElement"
 Rectangle {
     QtObject{
         id:pData
-        property variant menuItemSize: {"width": 130, "height":32}
+        property variant menuItemSize: {"width": 130, "height":40}
     }
 
     signal axisMenuTriggered()
@@ -50,7 +50,7 @@ Rectangle {
 
     Grid{
         columns: 4
-        spacing: 10
+        spacing: 6
         x:20
         y:20
         ICButton{

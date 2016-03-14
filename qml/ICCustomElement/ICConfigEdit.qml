@@ -22,10 +22,13 @@ Item {
         height: parent.height
         Text {
             id: configName
-            anchors.verticalCenter: parent.verticalCenter
+//            anchors.verticalCenter: parent.verticalCenter
+            verticalAlignment: Text.AlignVCenter
+            height: parent.height
         }
         ICLineEdit{
             id: edit
+            height: parent.height
         }
     }
 }

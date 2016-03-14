@@ -257,6 +257,86 @@
 4.Host is broken</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>ALARM_PROGRAM_ERR</source>
+        <translation>教导程序错误</translation>
+    </message>
+    <message>
+        <source>ALARM_CFG_STORAGE_ERR</source>
+        <translation>配置参数存储失败</translation>
+    </message>
+    <message>
+        <source>ALARM_MAHCINE_SET_ERR</source>
+        <translation>机型设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ACC_LIMIT</source>
+        <translation>加速度报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_P</source>
+        <translation>正极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_N</source>
+        <translation>负极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_NOT_SET_ORIGIN</source>
+        <translation>原点信号未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P1_NOTSET</source>
+        <translation>手动关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P2_NOTSET</source>
+        <translation>手动关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_LP_NOTSET</source>
+        <translation>手动直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_JP_NOTSET</source>
+        <translation>手动关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
+        <translation>教导直线轨迹运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
+        <translation>教导直线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
+        <translation>教导关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
+        <translation>教导直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
+        <translation>教导关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
+        <translation>教导弧线轨迹运动起点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
+        <translation>教导弧线轨迹运动中间坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
+        <translation>教导弧线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
+        <translation>教导关节运动终点坐标未设定</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -584,6 +664,54 @@
     <message>
         <source>Test Clear</source>
         <translation>清除测试</translation>
+    </message>
+    <message>
+        <source>Motor Factory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motor 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoder Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode Type1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode Type2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode Type3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoder Read Way</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode RW1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode RW2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encode RW3</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1857,6 +1985,36 @@
     </message>
 </context>
 <context>
+    <name>OriginActionEditor</name>
+    <message>
+        <source>Type1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type3</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OriginActionEditorAxisComponent</name>
+    <message>
+        <source>deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OutputActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -2265,6 +2423,10 @@ please chose!</source>
         <source>Module</source>
         <translation>模块</translation>
     </message>
+    <message>
+        <source>origin</source>
+        <translation>原点指令</translation>
+    </message>
 </context>
 <context>
     <name>ProgramFlowPage</name>
@@ -2428,6 +2590,10 @@ please chose!</source>
     <message>
         <source>Module Name:</source>
         <translation>模块名称:</translation>
+    </message>
+    <message>
+        <source>CUW</source>
+        <translation>复制</translation>
     </message>
 </context>
 <context>
@@ -2763,6 +2929,26 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SACC 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SACC 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SDEC 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SDEC 2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3123,6 +3309,22 @@ please chose!</source>
         <source>Offset Jog:</source>
         <translation>相对关节:</translation>
     </message>
+    <message>
+        <source>Type 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>origin</source>
+        <translation type="unfinished">原点指令</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -3424,6 +3626,14 @@ please chose!</source>
     </message>
     <message>
         <source>ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>username or password can not be empty!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>please set perm!!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

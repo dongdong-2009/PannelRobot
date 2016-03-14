@@ -19,7 +19,7 @@ Item {
         property int configNameWidth: 150
         property int inputWidth: 100
         property int currentGroup: 0
-        property int checkSumPos: 15
+        property int checkSumPos: 18
         property variant configAddrs:
             [
             ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_0_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_4_0_103","s_rw_4_4_0_103","s_rw_8_4_0_103","s_rw_0_32_0_185"],
@@ -59,6 +59,8 @@ Item {
         //        }
         //        return JSON.stringify(ret);
     }
+
+
 
     function onLengthChanged(){
         panelRobotController.setConfigValue(currentGroupAddr(0), length.configValue);
@@ -186,10 +188,52 @@ Item {
         panelRobotController.syncConfigs();
     }
 
+    function onEncoderTypeChanged(){
+        var addr = currentGroupAddr(15);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, encoderType.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, encoderType.text(encoderType.configValue), encoderType.text(oldV));
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onMotorFactoryChanged(){
+        var addr = currentGroupAddr(16);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, motorFactory.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, motorFactory.text(motorFactory.configValue), motorFactory.text(oldV));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onEncoderReadWayChanged(){
+        var addr = currentGroupAddr(17);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, encoderReadWay.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, encoderReadWay.text(encoderReadWay.configValue), encoderReadWay.text(oldV));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
         editor.configValue = panelRobotController.getConfigValueText(addr);
+        editor.configValueChanged.connect(handler);
+    }
+
+    function updateComboBoxValue(editor, addr, handler){
+        editor.configValueChanged.disconnect(handler);
+        editor.configAddr = addr
+        editor.configValue = panelRobotController.getConfigValue(addr);
         editor.configValueChanged.connect(handler);
     }
 
@@ -206,6 +250,10 @@ Item {
         updateConfigValue(acc1, pdata.configAddrs[which][10], onAcc1Changed);
         updateConfigValue(acc2, pdata.configAddrs[which][11], onAcc2Changed);
         updateConfigValue(maxSpeed, pdata.configAddrs[which][12], onMaxSpeedChanged);
+        updateComboBoxValue(encoderType, pdata.configAddrs[which][15], onEncoderTypeChanged);
+        updateComboBoxValue(motorFactory, pdata.configAddrs[which][16], onMotorFactoryChanged);
+        updateComboBoxValue(encoderReadWay, pdata.configAddrs[which][17], onEncoderReadWayChanged);
+
     }
 
     ICButtonGroup{
@@ -428,8 +476,8 @@ Item {
             id: flicker
             loops: Animation.Infinite
             running: visible
-            PropertyAnimation{ target: hinttext;properties: "color";to:"transparent";duration: 200}
-            PropertyAnimation{ target: hinttext;properties: "color";to:"black";duration: 200}
+            PropertyAnimation{ target: hinttext;properties: "color";to:"transparent";duration: 500}
+            PropertyAnimation{ target: hinttext;properties: "color";to:"black";duration: 500}
         }
 
         Rectangle{
@@ -439,9 +487,8 @@ Item {
 //            anchors.leftMargin: 20
             height: 20
             width: 20
-            radius: 5
             border.width: 1
-            border.color: "gray"
+            border.color: "black"
             Text {
                 id: hinttext
                 anchors.centerIn: parent

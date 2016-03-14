@@ -765,6 +765,14 @@ typedef enum
     ALARM_AXIS4_POINT_LIMIT_N,//<名字：轴4负极限信号报警
     ALARM_AXIS5_POINT_LIMIT_N,//<名字：轴5负极限信号报警
     ALARM_AXIS6_POINT_LIMIT_N,//<名字：轴6负极限信号报警
+
+    ALARM_AXIS1_NOT_SET_ORIGIN = 190,//<名字：轴1原点信号未设定
+    ALARM_AXIS2_NOT_SET_ORIGIN,//<名字：轴2原点信号未设定
+    ALARM_AXIS3_NOT_SET_ORIGIN,//<名字：轴3原点信号未设定
+    ALARM_AXIS4_NOT_SET_ORIGIN,//<名字：轴4原点信号未设定
+    ALARM_AXIS5_NOT_SET_ORIGIN,//<名字：轴5原点信号未设定
+    ALARM_AXIS6_NOT_SET_ORIGIN,//<名字：轴6原点信号未设定
+
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
     ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动起始坐标未设定
     ALARM_ROUTE_LINE_P2_NOTSET,//<名字：手动直线轨迹运动终点坐标未设定
@@ -840,6 +848,14 @@ typedef struct {  //<192 + 14X8 = 304
 }Axis_Config0;
 
 typedef struct {
+
+    uint32_t as1 : 8; //<类型:系统;名字:第一段的时间百分比;精度:0;单位: ;
+    uint32_t as2 : 8; //<类型:系统;名字:第三段的时间百分比;精度:0;单位: ;
+    uint32_t ds1 : 8; //<类型:系统;名字:第一段的时间百分比;精度:0;单位: ;
+    uint32_t ds2 : 8; //<类型:系统;名字:第三段的时间百分比;精度:0;单位: ;
+}RAcc;
+
+typedef struct {
     Axis_Config0 para[8];
     uint32_t x;      //<类型:系统;名字:一轴圆心在基坐标系中的X位置;精度:3;单位:mm;
     uint32_t y;      //<类型:系统;名字:一轴圆心在基坐标系中的Y位置;精度:3;单位:mm;
@@ -850,7 +866,8 @@ typedef struct {
     uint32_t L34a;   //<类型:系统;名字:四轴圆心在四轴Z向上与三轴圆心的距离A;精度:3;单位:mm;
     uint32_t L34b;   //<类型:系统;名字:四轴圆心在四轴Z向上与三轴圆心的距离B;精度:3;单位:mm;
     uint32_t L56;    //<类型:系统;名字:六轴圆心在六轴Z向上与五轴圆心的距离;精度:3;单位:mm;
-    uint32_t res[20]; //<类型:系统;名字:预留;精度:0;单位:;
+    RAcc a;   //<类型:系统;名字:加速时S加速;
+    uint32_t res[19]; //<类型:系统;名字:预留;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;
 

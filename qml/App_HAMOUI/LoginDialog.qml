@@ -33,10 +33,14 @@ MouseArea{
             Text {
                 id: userNameLabel
                 text: qsTr("User:")
+                height: 32
+                verticalAlignment: Text.AlignVCenter
+
             }
             ICComboBox{
                 id:userName
                 width: 200
+                height: 32
                 onVisibleChanged: {
                     if(visible){
                         items = ShareData.UserInfo.users();
@@ -47,20 +51,26 @@ MouseArea{
             Text {
                 id: passwordLabel
                 text: qsTr("Password:")
+                height: 32
+                verticalAlignment: Text.AlignVCenter
+
             }
             ICLineEdit{
                 id:password
+                height: 32
                 isNumberOnly: false
                 inputWidth: userName.width
             }
             ICButton{
                 id:cancel
                 text: qsTr("Cancel")
+                height: 48
                 onButtonClicked: container.visible = false
             }
             Row{
                 ICButton{
                     id:logoutBtn
+                    height: cancel.height
                     text: qsTr("Log out")
                     onButtonClicked: {
                         setTologout();
@@ -69,6 +79,7 @@ MouseArea{
                 }
                 ICButton{
                     id:loginBtn
+                    height: cancel.height
                     text: qsTr("Login in")
                     onButtonClicked: {
                         if(ShareData.UserInfo.loginUser(userName.currentText(), password.text)){

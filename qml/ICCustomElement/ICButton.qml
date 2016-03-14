@@ -75,6 +75,7 @@ Rectangle {
             text.horizontalAlignment = Text.AlignLeft;
             text.x = icon.x + icon.paintedWidth + 2;
             text.y = (container.height - text.height) >> 1;
+            icon.y = (container.height - icon.paintedHeight) >> 1;
         }else if(iconPos === 1){
             text.x = 2;
             text.y = (container.height - text.height) >> 1;

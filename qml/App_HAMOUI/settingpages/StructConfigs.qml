@@ -20,6 +20,7 @@ Item {
 
         Grid{
             columns: 2
+//            rows:
             flow: Grid.TopToBottom
             spacing: 15
             ICConfigEdit{
@@ -135,6 +136,38 @@ Item {
                 configName: qsTr("Machine Struct 9");
                 unit: qsTr("mm")
                 configAddr: "s_rw_0_32_3_164"
+            }
+
+            ICConfigEdit{
+                id:sAcc1
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SACC 1");
+                unit: qsTr("%")
+                configAddr: "s_rw_0_8_0_165"
+            }
+
+            ICConfigEdit{
+                id:sAcc2
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SACC 2");
+                unit: qsTr("%")
+                configAddr: "s_rw_8_8_0_165"
+            }
+
+            ICConfigEdit{
+                id:sAcc3
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SDEC 1");
+                unit: qsTr("%")
+                configAddr: "s_rw_16_8_0_165"
+            }
+
+            ICConfigEdit{
+                id:sAcc4
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("SDEC 2");
+                unit: qsTr("%")
+                configAddr: "s_rw_24_8_0_165"
             }
         }
     }

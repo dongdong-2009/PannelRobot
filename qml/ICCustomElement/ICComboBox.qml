@@ -5,7 +5,8 @@ Rectangle {
     property variant items: []
     property int currentIndex: -1
     property int popupMode : 0
-    property int itemHeight: 24
+    property int itemHeight: 32
+    property int contentFontPixelSize: currentText.font.pixelSize
     property alias popupWidth: itemContainer.width
 
     function currentText(){
@@ -66,6 +67,7 @@ Rectangle {
         ListView{
             id:view
             z:10
+            y:1
             clip: true
             model: itemModel
             delegate: Text{
@@ -73,6 +75,7 @@ Rectangle {
                 text: name
                 verticalAlignment: Text.AlignVCenter
                 x:4
+                font.pixelSize: contentFontPixelSize
                 MouseArea{
                     height: itemHeight
                     width: view.width
@@ -83,10 +86,10 @@ Rectangle {
                     }
                 }
             }
-            highlight: Rectangle {x:1; color: "lightsteelblue"; width: itemContainer.width - x; }
+            highlight: Rectangle {x:1;color: "lightsteelblue"; width: itemContainer.width - x;}
             highlightMoveDuration: 1
             width: parent.width
-            height: parent.height
+            height: parent.height - y
         }
         visible: false
         anchors.top: currentText.bottom

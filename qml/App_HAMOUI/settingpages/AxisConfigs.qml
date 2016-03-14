@@ -548,7 +548,6 @@ Item {
                 }
             }
         }
-
         Rectangle{
             id:horSplitLine
             height: 1

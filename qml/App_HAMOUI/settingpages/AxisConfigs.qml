@@ -352,6 +352,7 @@ Item {
             width: 300
             height: 300
             clip: true
+            isshowhint: true
             contentHeight: configContentContainer.height + 10
             Grid{
                 id:configContentContainer
@@ -469,7 +470,7 @@ Item {
         Rectangle{
             id:splitLine
             anchors.left: configContainer.right
-            anchors.leftMargin: 20
+            anchors.leftMargin: 40
             width: 1
             height: configContainer.height + menuContainer.height
             border{

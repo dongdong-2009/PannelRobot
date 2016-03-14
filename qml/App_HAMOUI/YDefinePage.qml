@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "configs/IODefines.js" as IODefines
 import "Theme.js" as Theme
 import "."
+import "../ICCustomElement"
 
 Item {
 
@@ -21,11 +22,15 @@ Item {
         id:valveModel
     }
 
-    GridView{
+    ICGridView{
         id:valveView
         width: parent.width
         height: parent.height
         x:5
+        hintx: 770
+        hinty: 350
+        isshowhint: true
+        isshowviewborder: true
         cellWidth :390
         cellHeight: 48
         clip: true

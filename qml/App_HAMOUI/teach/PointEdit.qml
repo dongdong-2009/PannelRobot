@@ -39,11 +39,13 @@ Item {
     function getPoints(){
         var ret = [];
         var mP;
-        if(!pointLogged){
-            setIn.clicked();
-            pointViewModel.set(0, pointViewModel.createModelItem());
+        if(!isEditorMode){
+            if(!pointLogged){
+                setIn.clicked();
+                pointViewModel.set(0, pointViewModel.createModelItem());
+            }
+            pointLogged = false;
         }
-        pointLogged = false;
 
         for(var i = 0; i < pointViewModel.count; ++i){
             mP = Utils.cloneObject(pointViewModel.get(i));

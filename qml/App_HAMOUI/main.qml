@@ -360,7 +360,7 @@ Rectangle {
     Item{
         id:pointManagerContainer
         y:110
-//        x:pointManagerBtn.width
+        //        x:pointManagerBtn.width
         width: 700
         height: 400
         z:4
@@ -500,7 +500,7 @@ Rectangle {
     }
 
     function onUserChanged(user){
-//        ShareData.UserInfo.currentHasMoldPerm()
+        //        ShareData.UserInfo.currentHasMoldPerm()
     }
 
     Component.onCompleted: {
@@ -522,11 +522,10 @@ Rectangle {
     focus: true
     Keys.onPressed: {
         var key = event.key;
-        console.log("Main key press exec", key);
+//        console.log("Main key press exec", key);
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, true);
-        }
-        else if(Keymap.isCommandKeyType(key)){
+        }else if(Keymap.isCommandKeyType(key)){
             if(key === Keymap.KNOB_MANUAL ||
                     key === Keymap.KNOB_SETTINGS ||
                     key === Keymap.KNOB_AUTO)
@@ -535,39 +534,24 @@ Rectangle {
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
-        }else{
-            // pully speed handler
-            var spd;
-            var pu = Keymap.PULLY_UP;
-            var pd = Keymap.PULLY_DW;
-            if(!panelRobotController.isQWS()){
-                pu = parseInt(0x01000037);
-                pd = parseInt(0x01000039);
-            }
-
-            if(key === pu || key === pd){
-                var tuneGlobalSpeedEn = ShareData.GlobalStatusCenter.getTuneGlobalSpeedEn();
-                if(tuneGlobalSpeedEn){
-                    var speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
-                    spd = parseFloat(speed);
-                    var dir = key === pu ? 1 : -1;
-                    spd = Keymap.endSpeed(spd, dir)
-                    speed = spd.toFixed(1);
-                    ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
-                    panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
-                }
-            }
+        }else if(Keymap.isContinuousType(key)){
+            Keymap.setKeyPressed(key, true);
         }
 
         event.accepted = true;
 
     }
     Keys.onReleased: {
-        console.log("Main key release exec");
+//        console.log("Main key release exec");
         var key = event.key;
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, false);
+        }else if(Keymap.isContinuousType(key)){
+            Keymap.setKeyPressed(key, false);
+            if(key === Keymap.KEY_Up || key === Keymap.KEY_Down)
+                Keymap.endSpeedCaclByTimeStop();
         }
+
         event.accepted = true;
     }
 
@@ -577,8 +561,25 @@ Rectangle {
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             for(var i = 0 ; i < pressedKeys.length; ++i){
-                //                console.log("Send command:", key);
-                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
+                // speed handler
+                if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){
+
+                    var tuneGlobalSpeedEn = ShareData.GlobalStatusCenter.getTuneGlobalSpeedEn();
+                    if(tuneGlobalSpeedEn){
+                        var spd;
+                        var speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
+                        spd = parseFloat(speed);
+                        var dir = pressedKeys[i] === Keymap.KEY_Up ? 1 : -1;
+//                        spd = Keymap.endSpeed(spd, dir)
+                        spd = Keymap.endSpeedCalcByTime(spd, dir);
+                        speed = spd.toFixed(1);
+                        ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
+                        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
+                    }
+
+                }else{
+                    panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
+                }
             }
             if(!panelRobotController.isOrigined()){
                 tipBar.tip = qsTr("Please press origin key and then press start key to find origin signal.")

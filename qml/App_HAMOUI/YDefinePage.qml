@@ -30,7 +30,7 @@ Item {
         hintx: 770
         hinty: 350
         isshowhint: true
-        isshowviewborder: true
+//        isshowviewborder: true
         cellWidth :390
         cellHeight: 48
         clip: true

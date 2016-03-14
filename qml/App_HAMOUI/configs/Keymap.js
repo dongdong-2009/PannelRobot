@@ -195,6 +195,7 @@ var Menu_Type = 0;
 var Axis_Type = 1;
 var Command_Type = 2;
 var Nomal_Type = 3;
+var Continuous_Type = 4;
 
 function KeyStruct(keyVal, actionVal, isPressed, keyType){
     this.keyVal = keyVal;
@@ -222,8 +223,8 @@ keyStructs.put(KEY_Run, new KeyStruct(KEY_Run      , CMD_KEY_RUN    , false, Com
 keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop    , CMD_KEY_STOP   , false, Command_Type));
 keyStructs.put(KEY_Origin, new KeyStruct(KEY_Origin, CMD_KEY_ORIGIN , false, Command_Type));
 keyStructs.put(KEY_Return, new KeyStruct(KEY_Return, CMD_KEY_RETURN , false, Command_Type));
-keyStructs.put(KEY_Up, new KeyStruct(KEY_Up        , CMD_KEY_UP     , false, Command_Type));
-keyStructs.put(KEY_Down, new KeyStruct(KEY_Down    , CMD_KEY_DOWN   , false, Command_Type));
+keyStructs.put(KEY_Up, new KeyStruct(KEY_Up        , CMD_KEY_UP     , false, Continuous_Type));
+keyStructs.put(KEY_Down, new KeyStruct(KEY_Down    , CMD_KEY_DOWN   , false, Continuous_Type));
 keyStructs.put(KNOB_AUTO, new KeyStruct(KNOB_AUTO    , CMD_AUTO   , false, Command_Type));
 keyStructs.put(KNOB_MANUAL, new KeyStruct(KNOB_MANUAL    , CMD_MANUAL   , false, Command_Type));
 keyStructs.put(KNOB_SETTINGS, new KeyStruct(KNOB_SETTINGS    , CMD_MANUAL   , false, Command_Type));
@@ -271,12 +272,16 @@ function getKeyType(key){
 }
 
 function isAxisKeyType(key){
-    return getKeyType(key) == Axis_Type;
+    return getKeyType(key) === Axis_Type;
 }
 
 function isCommandKeyType(key){
-    return getKeyType(key) == Command_Type;
+    return getKeyType(key) === Command_Type;
 
+}
+
+function isContinuousType(key){
+    return getKeyType(key) === Continuous_Type;
 }
 
 function isKeyPressed(key){
@@ -310,4 +315,27 @@ function endSpeed(current, dir){
     if(ret <= 0.1)
         ret = 0.1;
     return ret;
+}
+
+function endSpeedCalcByTime(current, dir){
+    var ret = current;
+    if(speedInfo.changeCount === 0){
+        speedInfo.changeCount = 1;
+        ret += 0.1 * dir;
+        speedInfo.lastTime = new Date();
+    }else{
+        var now = new Date();
+        var delta = (now.getTime() - speedInfo.lastTime.getTime());
+        console.log(delta)
+        ret = current + delta * 0.005 * dir;
+    }
+    if(ret >= 200)
+        ret = 200.0;
+    if(ret <= 0.1)
+        ret = 0.1;
+    return ret;
+}
+
+function endSpeedCaclByTimeStop(){
+    speedInfo.changeCount = 0;
 }

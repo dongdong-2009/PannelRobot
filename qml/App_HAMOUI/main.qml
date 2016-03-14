@@ -364,6 +364,8 @@ Rectangle {
         width: 700
         height: 400
         z:4
+        visible: armKeyboardContainer.visible
+
 
         PropertyAnimation{
             id:pointManagerOut
@@ -477,9 +479,10 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-        var isAuto = (knobStatus === Keymap.KNOB_AUTO)
+        var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+        var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
-        armKeyboardContainer.visible = !isAuto;
+        armKeyboardContainer.visible = isManual;
         //        mainWindow.focus = true;
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
         menuOperation.enabled = !isAuto;

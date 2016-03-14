@@ -347,18 +347,12 @@ Item {
     Item{
         anchors.top: menuContainer.bottom
         anchors.topMargin: 4
-        Flickable{
+        ICFlickable{
             id:configContainer
             width: 300
             height: 300
             clip: true
             contentHeight: configContentContainer.height + 10
-            onMovementEnded: {
-                if(atYEnd){
-                    hinttext.text = "∧";
-                }else hinttext.text = "∨";
-            }
-
             Grid{
                 id:configContentContainer
                 columns: 1
@@ -472,32 +466,9 @@ Item {
             }
 
         }
-        SequentialAnimation{
-            id: flicker
-            loops: Animation.Infinite
-            running: visible
-            PropertyAnimation{ target: hinttext;properties: "color";to:"transparent";duration: 500}
-            PropertyAnimation{ target: hinttext;properties: "color";to:"black";duration: 500}
-        }
-
-        Rectangle{
-            id:hint
-            anchors.left: configContainer.right
-            anchors.bottom: configContainer.bottom
-//            anchors.leftMargin: 20
-            height: 20
-            width: 20
-            border.width: 1
-            border.color: "black"
-            Text {
-                id: hinttext
-                anchors.centerIn: parent
-                text: "∨"
-            }
-        }
         Rectangle{
             id:splitLine
-            anchors.left: hint.right
+            anchors.left: configContainer.right
             anchors.leftMargin: 20
             width: 1
             height: configContainer.height + menuContainer.height

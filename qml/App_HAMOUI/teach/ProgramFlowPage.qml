@@ -192,10 +192,10 @@ Rectangle {
         }
 
         model.move(cI, cI -1, 1);
-        if(Teach.isSyncAction(cIAction) ||
-                Teach.isSyncAction(cIPAction)){
+//        if(Teach.isSyncAction(cIAction) ||
+//                Teach.isSyncAction(cIPAction)){
             repaintProgramItem(model);
-        }
+//        }
     }
 
     function onDownTriggered(){
@@ -252,10 +252,10 @@ Rectangle {
 
 
         model.move(cI, cI  + 1, 1);
-        if(Teach.isSyncAction(cIAction) ||
-                Teach.isSyncAction(cINAction)){
+//        if(Teach.isSyncAction(cIAction) ||
+//                Teach.isSyncAction(cINAction)){
             repaintProgramItem(model);
-        }
+//        }
 
     }
 
@@ -1486,12 +1486,13 @@ Rectangle {
             if(step.action === Teach.actions.F_CMD_SYNC_START){
                 at = Teach.actionTypes.kAT_SyncStart;
                 isSyncStart = true;
-            }
-            else if(step.action === Teach.actions.F_CMD_SYNC_END){
+            }else if(step.action === Teach.actions.F_CMD_SYNC_END){
                 at = Teach.actionTypes.kAT_SyncEnd;
                 isSyncStart = false;
-            }
-            else
+            }else if((step.action === Teach.actions.ACT_FLAG) ||
+                     Teach.isJumpAction(step.action)){
+                at = Teach.actionTypes.kAT_Flag;
+            }else
                 at = Teach.actionTypes.kAT_Normal;
             if(isSyncStart)
                 at = Teach.actionTypes.kAT_SyncStart;
@@ -1538,7 +1539,7 @@ Rectangle {
                 Teach.definedPoints.parseActionPoints(step);
             }
             if(step.action === Teach.actions.ACT_FLAG){
-                //                Teach.pushFlag(step.flag, step.comment);
+                at = Teach.actionTypes.kAT_Flag;
                 Teach.flagsDefine.pushFlag(Teach.currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
             }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                 at = Teach.actionTypes.kAT_SyncStart;
@@ -1548,7 +1549,7 @@ Rectangle {
                 isSyncStart = false;
             }else if(Teach.isJumpAction(step.action)){
                 jumpLines.push(p);
-                at = Teach.actionTypes.kAT_Normal;
+                at = Teach.actionTypes.kAT_Flag;
             }
             else
                 at = Teach.actionTypes.kAT_Normal;

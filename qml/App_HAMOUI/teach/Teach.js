@@ -193,7 +193,8 @@ var definedPoints = DefinePoints.createNew();
 var actionTypes = {
     "kAT_Normal":0,
     "kAT_SyncStart":1,
-    "kAT_SyncEnd":2
+    "kAT_SyncEnd":2,
+    "kAT_Flag":3,
 };
 
 var stackTypes = {

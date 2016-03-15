@@ -7,17 +7,6 @@ import "../ICCustomElement"
 Item {
 
     property variant valves: []
-
-//    Grid{
-//        id:pointsContainer
-//        columns: 2
-//        spacing: 20
-//        flow:Grid.TopToBottom
-//        anchors.fill: parent
-//        anchors.leftMargin: 20
-//        anchors.topMargin: 10
-
-//    }
     ListModel{
         id:valveModel
     }
@@ -30,7 +19,7 @@ Item {
         hintx: valveView.width - 10
         hinty: valveView.height - 30
         isshowhint: true
-        isshowviewborder: true
+//        isshowviewborder: true
         cellWidth :390
         cellHeight: 48
         clip: true

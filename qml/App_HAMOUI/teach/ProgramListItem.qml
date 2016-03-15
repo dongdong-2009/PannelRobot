@@ -26,6 +26,8 @@ Rectangle{
             ret =  "syncstart";
         else if(actionType === Teach.actionTypes.kAT_SyncEnd && ret === "")
             ret = "syncend";
+        else if(actionType === Teach.actionTypes.kAT_Flag && ret === "")
+            ret = "flag";
         return ret;
     }
 
@@ -57,6 +59,10 @@ Rectangle{
         State{
             name: "syncend"
             PropertyChanges {target: container; color:"cyan";}
+        },
+        State{
+            name: "flag"
+            PropertyChanges {target: container; color:"orchid";}
         }
 
     ]

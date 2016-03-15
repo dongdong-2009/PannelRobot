@@ -4,8 +4,8 @@ import "."
 Flickable{
     id: flick
     property bool isshowhint: false
-    property real hintx: 0
-    property real hinty: 0
+    property alias hintx: hint.x
+    property alias hinty: hint.y
     onMovementEnded: {
         hint.item.hintplay(flick);
     }
@@ -13,15 +13,11 @@ Flickable{
         id:hint
         parent: flick.parent
         x: flick.width
-        y: flick.height - 30
-        z: 10
+        y: flick.height - hint.item.height
+        z: flick.z + 1
         visible: isshowhint
     }
     Component.onCompleted: {
         hint.source = "ICHintComp.qml";
-        if(hintx)
-            hint.x = hintx;
-        if(hinty)
-            hint.y = hinty;
     }
 }

@@ -492,6 +492,12 @@ Rectangle {
     WorkerScript{
         id:repaintThread
         source: "repaintProgram.js"
+        onMessage: {
+            var cM = currentModel();
+            for(var i = 0; i < cM.count; ++i){
+                console.log("ws",i, cM.get(i).mI_ActionType);
+            }
+        }
     }
 
     Column{
@@ -965,6 +971,7 @@ Rectangle {
                             insertActionToList(currentModelData().mI_ActionObject);
 //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
                             repaintProgramItem(currentModel());
+//                            repaintThread.sendMessage({"model":currentModel()});
                         }
                     }
 
@@ -1492,7 +1499,7 @@ Rectangle {
         x: 10
 
     }
-
+    
     //TODO:Use WorkerScript to implement this function
     function repaintProgramItem(programModel, start, end){
         var l = programModel.count;

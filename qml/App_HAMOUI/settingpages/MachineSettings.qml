@@ -10,21 +10,12 @@ Item {
         configsContainer.visible = false;
         menu.visible = true;
     }
-//    function showConfigPage(index){
-//        configsContainer.visible = true;
-//        menu.visible = false;
-//    }
 
     function onUserChanged(user){
         var isEn = ShareData.UserInfo.currentHasSystemPerm();
         runningConfigsBtn.enabled = isEn;
         axisConfigBtn.enabled = isEn;
         structConfigBtn.enabled = isEn;
-    }
-
-    QtObject{
-        id:pData
-//        property variant pages: []
     }
 
     width: parent.width
@@ -40,8 +31,6 @@ Item {
             text: qsTr("Running Configs")
             icon: "../images/settings_running_config.png"
             enabled: false
-//            y:10
-//            x:10
         }
         CatalogButton{
             id:axisConfigBtn
@@ -88,8 +77,11 @@ Item {
             visible = true;
             menu.visible = false;
         }
+    }
 
-//        triggerItemToPageMapList:[{"triggerItem":axisConfigBtn,"page":"AxisConfigs.qml"}]
+    onVisibleChanged: {
+        if(visible)
+            showMenu();
     }
 
 
@@ -98,11 +90,6 @@ Item {
         configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
         configsContainer.addNav(structConfigBtn, Qt.createComponent('StructConfigs.qml'));
         ShareData.UserInfo.registUserChangeEvent(container);
-
-//        console.log(url("./AxisConfigs.qml"));
-//        var configs = Qt.createComponent('AxisConfigs.qml');
-//        var axisConfig = configs.createObject(configsContainer);
-//        configsContainer.addPage(axisConfig);
     }
 
 }

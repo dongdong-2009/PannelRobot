@@ -69,41 +69,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-        ICButtonGroup{
-            layoutMode: 1
-            spacing: 4
-            ICCheckableLineEdit{
-                id:tuneMove
-                configName: qsTr("Tune Move")
-                unit: "%"
-                configNameWidth: 110
-                configValue: Storage.getSetting("Speed_Tune_Move") || "0.5"
-            }
-            ICCheckableLineEdit{
-                id:slowMove
-                configName: qsTr("Slow Move")
-                unit:"%"
-                configNameWidth: tuneMove.configNameWidth
-                configValue: Storage.getSetting("Speed_Slow_Move") || "10.0"
 
-            }
-
-            ICCheckableLineEdit{
-                id:middleMove
-                configName: qsTr("Middle Move")
-                unit:"%"
-                configNameWidth: tuneMove.configNameWidth
-                configValue: Storage.getSetting("Speed_Middle_Move") || "50.0"
-            }
-
-            ICCheckableLineEdit{
-                id:fastMove
-                configName: qsTr("Fast Move")
-                unit:"%"
-                configNameWidth: tuneMove.configNameWidth
-                configValue: Storage.getSetting("Speed_Fast_Move") || "100.0"
-            }
-        }
 
     }
 

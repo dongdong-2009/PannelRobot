@@ -458,7 +458,7 @@
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -466,11 +466,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="unfinished"></translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="unfinished"></translation>
+        <translation>设当前位置为终点</translation>
     </message>
 </context>
 <context>
@@ -563,7 +563,7 @@
     <name>AxisConfigs</name>
     <message>
         <source>Arm Length</source>
-        <translation type="unfinished"></translation>
+        <translation>臂长</translation>
     </message>
     <message>
         <source>mm</source>
@@ -571,7 +571,7 @@
     </message>
     <message>
         <source>Pulse Count Per Circle</source>
-        <translation type="unfinished"></translation>
+        <translation>每圈脉冲数</translation>
     </message>
     <message>
         <source>a</source>
@@ -579,31 +579,31 @@
     </message>
     <message>
         <source>Reduction Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>减速比</translation>
     </message>
     <message>
         <source>Positive Limit</source>
-        <translation type="unfinished"></translation>
+        <translation>正极限</translation>
     </message>
     <message>
         <source>Negative Limit</source>
-        <translation type="unfinished"></translation>
+        <translation>负极限</translation>
     </message>
     <message>
         <source>Positive Limit Point</source>
-        <translation type="unfinished"></translation>
+        <translation>正极限点</translation>
     </message>
     <message>
         <source>Negative Limit Point</source>
-        <translation type="unfinished"></translation>
+        <translation>负极限点</translation>
     </message>
     <message>
         <source>Origin Point</source>
-        <translation type="unfinished"></translation>
+        <translation>原点</translation>
     </message>
     <message>
         <source>ACC 1</source>
-        <translation type="unfinished"></translation>
+        <translation>加速时间</translation>
     </message>
     <message>
         <source>s</source>
@@ -611,11 +611,11 @@
     </message>
     <message>
         <source>ACC 2</source>
-        <translation type="unfinished"></translation>
+        <translation>减速时间</translation>
     </message>
     <message>
         <source>Max RPM</source>
-        <translation type="unfinished"></translation>
+        <translation>最大速度</translation>
     </message>
     <message>
         <source>RPM</source>
@@ -667,7 +667,7 @@
     </message>
     <message>
         <source>Motor Factory</source>
-        <translation type="unfinished"></translation>
+        <translation>电机厂家</translation>
     </message>
     <message>
         <source>Motor 1</source>
@@ -683,7 +683,7 @@
     </message>
     <message>
         <source>Encoder Type</source>
-        <translation type="unfinished"></translation>
+        <translation>编码器类型</translation>
     </message>
     <message>
         <source>Encode Type1</source>
@@ -699,7 +699,7 @@
     </message>
     <message>
         <source>Encoder Read Way</source>
-        <translation type="unfinished"></translation>
+        <translation>编码器读取方式</translation>
     </message>
     <message>
         <source>Encode RW1</source>
@@ -2889,11 +2889,11 @@ please chose!</source>
     <name>StructConfigs</name>
     <message>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>臂长</translation>
     </message>
     <message>
         <source>Machine Struct 1</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数1</translation>
     </message>
     <message>
         <source>mm</source>
@@ -2901,39 +2901,39 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 2</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数2</translation>
     </message>
     <message>
         <source>Machine Struct 3</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数3</translation>
     </message>
     <message>
         <source>Machine Struct 4</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数4</translation>
     </message>
     <message>
         <source>Machine Struct 5</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数5</translation>
     </message>
     <message>
         <source>Machine Struct 6</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数6</translation>
     </message>
     <message>
         <source>Machine Struct 7</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数7</translation>
     </message>
     <message>
         <source>Machine Struct 8</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数8</translation>
     </message>
     <message>
         <source>Machine Struct 9</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数9</translation>
     </message>
     <message>
         <source>SACC 1</source>
-        <translation type="unfinished"></translation>
+        <translation>S加速1</translation>
     </message>
     <message>
         <source>%</source>
@@ -2941,14 +2941,34 @@ please chose!</source>
     </message>
     <message>
         <source>SACC 2</source>
-        <translation type="unfinished"></translation>
+        <translation>S加速2</translation>
     </message>
     <message>
         <source>SDEC 1</source>
-        <translation type="unfinished"></translation>
+        <translation>S减速1</translation>
     </message>
     <message>
         <source>SDEC 2</source>
+        <translation>S减速2</translation>
+    </message>
+    <message>
+        <source>SACC Time</source>
+        <translation>S加速时间</translation>
+    </message>
+    <message>
+        <source>m/s²</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SDec Time</source>
+        <translation>S减速时间</translation>
+    </message>
+    <message>
+        <source>SACC Max</source>
+        <translation>S最大速度</translation>
+    </message>
+    <message>
+        <source>RPM</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

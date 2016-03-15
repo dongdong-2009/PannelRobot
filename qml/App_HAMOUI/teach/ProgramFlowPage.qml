@@ -1141,7 +1141,7 @@ Rectangle {
                 width: 80
                 height: 32
                 text: qsTr("Insert")
-                bgColor: "yellow"
+                bgColor: "lime"
             }
 
             Rectangle{
@@ -1206,7 +1206,7 @@ Rectangle {
                 width: insertBtn.width / 2
                 height: insertBtn.height
                 text: qsTr("Menu")
-                bgColor: "lime"
+                bgColor: "yellow"
                 font.pixelSize: 12
             }
             Rectangle{

@@ -130,7 +130,7 @@ Rectangle {
         ICButton{
             id:group
             text:qsTr("Stack")
-            icon: "../images/action_item_parallel.png"
+            icon: "../images/action_item_stack.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: stackMenuTriggered()
@@ -147,7 +147,7 @@ Rectangle {
         ICButton{
             id:callModule
             text: qsTr("Module")
-            icon: "../images/action_item_search.png"
+            icon: "../images/action_item_module.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: moduleMenuTriggered()

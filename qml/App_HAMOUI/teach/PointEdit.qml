@@ -620,7 +620,7 @@ Item {
                     text:pointViewModel.itemText(model.pos, model.pointName)
                     wrapMode: Text.Wrap
                     width: parent.width
-                    height: 32
+                    height: pointView.height - 40
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 12
                     MouseArea{

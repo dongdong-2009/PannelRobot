@@ -175,6 +175,7 @@ Item {
         ICButton{
             id:okBtn
             text: qsTr("Ok")
+            bgColor: "lime"
             onButtonClicked: {
                 container.visible = false;
                 var editingObject = PData.editingActionObject;
@@ -195,6 +196,7 @@ Item {
         ICButton{
             id:cancelBtn
             text: qsTr("Cancel")
+            bgColor: "yellow"
             onButtonClicked: {
                 container.visible = false;
             }

@@ -1,7 +1,7 @@
 import QtQuick 1.1
 Rectangle{
     id: continer
-    width: 15
+    width: hinttext.width
     height: 30
     color: "grey"
     Text {

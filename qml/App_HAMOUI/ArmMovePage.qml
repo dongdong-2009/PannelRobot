@@ -72,6 +72,7 @@ Rectangle {
         ICCheckBox{
             id:tuneSel
             text: qsTr("Tune Sel")
+//            visible: false
             onIsCheckedChanged: {
                 keyboardSection.visible = !isChecked;
             }

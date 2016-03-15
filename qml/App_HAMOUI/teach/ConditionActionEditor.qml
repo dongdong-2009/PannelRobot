@@ -45,9 +45,9 @@ Item {
     function createActionObjects(){
         var ret = [];
         if(defineFlag.isChecked){
-            var flag = Teach.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
+            var dflag = Teach.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
 //            Teach.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
-            ret.push(Teach.generateFlagAction(flag.flagID, flag.descr));
+            ret.push(Teach.generateFlagAction(dflag.flagID, dflag.descr));
             return ret;
         }
 
@@ -98,8 +98,7 @@ Item {
 
         }
 
-        for(var i = 0; i < mD.count; ++i)
-        {
+        for(var i = 0; i < mD.count; ++i){
             data = mD.get(i);
             if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;

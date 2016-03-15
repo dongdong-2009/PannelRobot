@@ -24,13 +24,13 @@ Item {
 
     ICGridView{
         id:valveView
-        width: parent.width
-        height: parent.height
-        x:5
-        hintx: 770
-        hinty: 350
+        width: 785
+        height: 385
+        x: 5
+        hintx: valveView.width - 10
+        hinty: valveView.height - 30
         isshowhint: true
-//        isshowviewborder: true
+        isshowviewborder: true
         cellWidth :390
         cellHeight: 48
         clip: true

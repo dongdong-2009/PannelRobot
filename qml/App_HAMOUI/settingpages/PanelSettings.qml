@@ -46,6 +46,10 @@ Item {
 
 //        triggerItemToPageMapList:[{"triggerItem":axisConfigBtn,"page":"AxisConfigs.qml"}]
     }
+    onVisibleChanged: {
+        if(visible)
+            showMenu();
+    }
 
     Component.onCompleted: {
         configsContainer.addNav(maintainMenuBtn, Qt.createComponent('maintainPage.qml'));

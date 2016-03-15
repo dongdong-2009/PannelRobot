@@ -139,6 +139,16 @@ Rectangle {
         repaintProgramItem(model);
     }
 
+    function findSyncStart(endPos){
+        var cM = currentModel();
+        while(endPos > 0){
+            if(cM.get(endPos).mI_ActionObject.action == Teach.actions.F_CMD_SYNC_START)
+                return endPos;
+            --endPos;
+        }
+        return endPos;
+    }
+
     function onUpTriggered(){
         var cI = programListView.currentIndex;
         if(cI < 1)return;
@@ -192,10 +202,16 @@ Rectangle {
         }
 
         model.move(cI, cI -1, 1);
-//        if(Teach.isSyncAction(cIAction) ||
-//                Teach.isSyncAction(cIPAction)){
-            repaintProgramItem(model);
+//        var startToRepaint = cI;
+//        var mCIT = model.get(cI).mI_ActionType;
+//        var mCIPT = model.get(cI - 1).mI_ActionType;
+//        if(mCIT === Teach.actionTypes.kAT_SyncStart ||
+//                mCIT === Teach.actionTypes.kAT_SyncEnd ||
+//                mCIPT === Teach.actionTypes.kAT_SyncStart ||
+//                mCIPT === Teach.actionTypes.kAT_SyncEnd){
+//            startToRepaint = findSyncStart(startToRepaint);
 //        }
+        repaintProgramItem(model);
     }
 
     function onDownTriggered(){
@@ -252,10 +268,16 @@ Rectangle {
 
 
         model.move(cI, cI  + 1, 1);
-//        if(Teach.isSyncAction(cIAction) ||
-//                Teach.isSyncAction(cINAction)){
-            repaintProgramItem(model);
+//        var startToRepaint = cI;
+//        var mCIT = model.get(cI).mI_ActionType;
+//        var mCINT = model.get(cI + 1).mI_ActionType;
+//        if(mCIT === Teach.actionTypes.kAT_SyncStart ||
+//                mCIT === Teach.actionTypes.kAT_SyncEnd ||
+//                mCINT === Teach.actionTypes.kAT_SyncStart ||
+//                mCINT === Teach.actionTypes.kAT_SyncEnd){
+//            startToRepaint = findSyncStart(startToRepaint);
 //        }
+        repaintProgramItem(model);
 
     }
 
@@ -941,6 +963,7 @@ Rectangle {
                         }
                         onButtonClicked: {
                             insertActionToList(currentModelData().mI_ActionObject);
+//                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
                             repaintProgramItem(currentModel());
                         }
                     }

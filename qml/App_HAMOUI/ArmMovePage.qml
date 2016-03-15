@@ -75,6 +75,10 @@ Rectangle {
             onIsCheckedChanged: {
                 keyboardSection.visible = !isChecked;
             }
+            onVisibleChanged: {
+                if(!visible)
+                    setChecked(false)
+            }
         }
     }
 
@@ -373,106 +377,138 @@ Rectangle {
         y: keyboardSection.y
         isAutoSize: false
         visible: !keyboardSection.visible
+        SequentialAnimation{
+            running: keyboardSectionToSel.visible
+            PropertyAnimation{
+                targets: [zSel, ySel, xSel, uSel, vSel, wSel,
+                    lineXSel, lineYSel, lineZSel,rotateUSel, rotateVSel, rotateWSel]
+                property: "rotation"
+                to: 30
+                duration: 100
+            }
+            PropertyAnimation{
+                targets: [zSel, ySel, xSel, uSel, vSel, wSel,
+                    lineXSel, lineYSel, lineZSel,rotateUSel, rotateVSel, rotateWSel]
+                property: "rotation"
+                to: 0
+                duration: 100
+            }
+            PropertyAnimation{
+                targets: [zSel, ySel, xSel, uSel, vSel, wSel,
+                    lineXSel, lineYSel, lineZSel,rotateUSel, rotateVSel, rotateWSel]
+                property: "rotation"
+                to: -30
+                duration: 100
+            }
+            PropertyAnimation{
+                targets: [zSel, ySel, xSel, uSel, vSel, wSel,
+                    lineXSel, lineYSel, lineZSel,rotateUSel, rotateVSel, rotateWSel]
+                property: "rotation"
+                to: 0
+                duration: 100
+            }
+        }
+
         Grid{
+            id:tuneSelGrid
             columns: 4
             spacing: 5
-            ICButton {
+            ICCheckBox {
                 id: zSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Z")
+                textPos: 2
             }
-            ICButton {
+            ICCheckBox {
                 id: uSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("U")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: lineZSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Line Z")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: rotateUSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Rotate U")
+                textPos: 2
+
             }
 
-            ICButton {
+            ICCheckBox {
                 id: ySel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Y")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: vSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("V")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: lineYSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Line Y")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: rotateVSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Rotate V")
+                textPos: 2
+
             }
 
-            ICButton {
+            ICCheckBox {
                 id: xSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("X")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: wSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("W")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: lineXSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Line X")
+                textPos: 2
+
             }
-            ICButton {
+            ICCheckBox {
                 id: rotateWSel
-                isAutoRepeat: true
-                autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Rotate W")
+                textPos: 2
+
             }
         }
     }
@@ -504,6 +540,7 @@ Rectangle {
             id:functionSel
             mustChecked: true
             spacing: 6
+            checkedIndex: 0
 
             ICCheckBox{
                 id:lineFunction

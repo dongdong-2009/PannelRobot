@@ -1,11 +1,12 @@
 import QtQuick 1.1
 
 Item {
+    id:container
     property alias text: text.text
     property bool isChecked: false
     property bool useCustomClickHandler: false
     property bool isEditable: true
-//    property alias boxWidth: box.width
+    property int textPos: 0
 
     signal clicked();
 
@@ -17,7 +18,7 @@ Item {
         return this.isChecked;
     }
 
-    width: text.width + box.width + box.anchors.leftMargin
+    width: text.width + box.width + 4
     height: 24
     Rectangle{
         id:box
@@ -30,12 +31,22 @@ Item {
     Text {
         id: text
         text: "ICCheckBox"
-//        width:parent.width - box.width
-//        height: parent.height
-        anchors.left: box.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 4
         color: enabled ? "black" : "gray"
+        x:box.x + box.width + 4
+    }
+
+    onTextPosChanged: {
+        if(textPos == 0){
+            box.x = 0
+            text.x = box.x + box.width + 4
+        }else if(textPos == 1){
+            text.x = 0;
+            box.x = text.x + text.width + 4
+        }else if(textPos == 2){
+            box.x = 0;
+            text.anchors.horizontalCenter = container.horizontalCenter
+        }
     }
 
     MouseArea{

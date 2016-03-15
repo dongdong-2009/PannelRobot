@@ -44,7 +44,6 @@ Item {
             menu.visible = false;
         }
 
-//        triggerItemToPageMapList:[{"triggerItem":axisConfigBtn,"page":"AxisConfigs.qml"}]
     }
     onVisibleChanged: {
         if(visible)

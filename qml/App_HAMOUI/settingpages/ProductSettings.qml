@@ -65,12 +65,6 @@ Item {
         height: parent.height
         y:10
         x:10
-        //        color: "green"
-        //        width: parent.width
-        //        height: parent.height
-        //        anchors.fill: parent
-        //        anchors.top: parent.top
-        //        anchors.bottom: parent.bottom
         Row{
             spacing: 10
             Column{
@@ -191,6 +185,11 @@ Item {
         visible: false;
         y:10
         x:10
+    }
+
+    onVisibleChanged: {
+        if(visible)
+            showMenu();
     }
 
     Component.onCompleted: {

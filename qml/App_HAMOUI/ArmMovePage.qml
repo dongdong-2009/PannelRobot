@@ -69,8 +69,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-
-
+        ICCheckBox{
+            id:tuneSel
+            text: qsTr("Tune Sel")
+            onIsCheckedChanged: {
+                keyboardSection.visible = !isChecked;
+            }
+        }
     }
 
 
@@ -360,6 +365,116 @@ Rectangle {
 
         }
 
+    }
+
+    ICButtonGroup{
+        id:keyboardSectionToSel
+        x: keyboardSection.x
+        y: keyboardSection.y
+        isAutoSize: false
+        visible: !keyboardSection.visible
+        Grid{
+            columns: 4
+            spacing: 5
+            ICButton {
+                id: zSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Z")
+            }
+            ICButton {
+                id: uSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("U")
+            }
+            ICButton {
+                id: lineZSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Line Z")
+            }
+            ICButton {
+                id: rotateUSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Rotate U")
+            }
+
+            ICButton {
+                id: ySel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Y")
+            }
+            ICButton {
+                id: vSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("V")
+            }
+            ICButton {
+                id: lineYSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Line Y")
+            }
+            ICButton {
+                id: rotateVSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Rotate V")
+            }
+
+            ICButton {
+                id: xSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("X")
+            }
+            ICButton {
+                id: wSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("W")
+            }
+            ICButton {
+                id: lineXSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Line X")
+            }
+            ICButton {
+                id: rotateWSel
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: qsTr("Rotate W")
+            }
+        }
     }
 
     Rectangle{

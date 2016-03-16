@@ -489,16 +489,16 @@ Rectangle {
     //                           new Teach.ProgramModelItem(actionObject));
     //    }
 
-    WorkerScript{
-        id:repaintThread
-        source: "repaintProgram.js"
-        onMessage: {
-            var cM = currentModel();
-            for(var i = 0; i < cM.count; ++i){
-                console.log("ws",i, cM.get(i).mI_ActionType);
-            }
-        }
-    }
+//    WorkerScript{
+//        id:repaintThread
+//        source: "repaintProgram.js"
+//        onMessage: {
+//            var cM = currentModel();
+//            for(var i = 0; i < cM.count; ++i){
+//                console.log("ws",i, cM.get(i).mI_ActionType);
+//            }
+//        }
+//    }
 
     Column{
         id:container

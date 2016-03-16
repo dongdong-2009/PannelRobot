@@ -5,10 +5,11 @@ Qt.include("Teach.js")
 
 WorkerScript.onMessage = function(msg) {
     var programModel = msg.model;
-    var cM = programModel;
-    for(var i = 0; i < cM.count; ++i){
-        console.log("iws",i, cM.get(i).mI_ActionType);
+    var event = msg.event;
+    if(event == "insert"){
+
     }
+
     var l = programModel.count;
     var start = start || 0;
     var  end = end || l;

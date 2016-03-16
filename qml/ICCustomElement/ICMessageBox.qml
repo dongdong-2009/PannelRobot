@@ -21,15 +21,29 @@ MouseArea {
 
     function show(tip, yesText, noText){
         text = tip || "";
-        yesBtnText = yesText || "Yes";
-        noBtnText = noText || "No";
+        yesBtnText = yesText || ("Yes");
+        noBtnText = noText || ("No");
         container.visible = true;
+        realFrame.color = "#A0A0F0";
+        yesBtn.color = "white"
     }
-    function warning(tip, Text){
+
+    function information(tip, Text){
         text = tip || "";
-        yesBtnText = Text || "OK";
+        yesBtnText = Text || ("OK");
         noBtn.visible = false;
         container.visible = true;
+        realFrame.color = "#A0A0F0";
+        yesBtn.color = "white"
+    }
+
+    function warning(tip, Text){
+        text = tip || "";
+        yesBtnText = Text || ("OK");
+        noBtn.visible = false;
+        container.visible = true;
+        realFrame.color = "yellow"
+        yesBtn.color = "red"
     }
 
     function showInput(tip, configName, isNumberOnly, yesText, noText){
@@ -57,7 +71,6 @@ MouseArea {
                 id:input
                 visible: false
                 inputWidth: tip.width
-                unit: "dfsff"
             }
 
             Row{

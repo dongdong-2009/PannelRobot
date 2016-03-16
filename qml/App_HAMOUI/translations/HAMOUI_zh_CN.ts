@@ -2651,6 +2651,14 @@ please chose!</source>
         <source>CUW</source>
         <translation>复制</translation>
     </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -2736,6 +2744,22 @@ please chose!</source>
     <message>
         <source>Load record </source>
         <translation>载入模号</translation>
+    </message>
+    <message>
+        <source>Expoert Finished!</source>
+        <translation>导出完成!</translation>
+    </message>
+    <message>
+        <source>Import {0} fail!</source>
+        <translation>导入{0}失败!</translation>
+    </message>
+    <message>
+        <source>Import Finished!</source>
+        <translation>导出完成!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
     </message>
 </context>
 <context>

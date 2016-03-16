@@ -355,7 +355,7 @@ Rectangle {
             for(var i = 0; i < errInfo.length; ++i){
                 toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
             }
-            tipBox.show(toShow);
+            tipBox.warning(toShow, qsTr("OK"));
         }
         //        collectSpecialLines(editing.currentIndex);
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
@@ -574,7 +574,9 @@ Rectangle {
                     onButtonClicked: {
                         tipBox.showInput(qsTr("Please Input the new program Name"),
                                          qsTr("Program Name:"),
-                                         false);
+                                         false,
+                                         qsTr("OK"),
+                                         qsTr("Cancel"));
                         tipBox.finished.connect(newManualProgram.newManualProgram);
                     }
 
@@ -662,7 +664,9 @@ Rectangle {
                     onButtonClicked: {
                         tipBox.showInput(qsTr("Please Input the new module Name"),
                                          qsTr("Module Name:"),
-                                         false);
+                                         false,
+                                         qsTr("OK"),
+                                         qsTr("Cancel"));
                         tipBox.finished.connect(newModuleBtn.newModule);
                     }
                 }

@@ -499,11 +499,12 @@ Rectangle {
         //        mainWindow.focus = true;
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
         menuOperation.enabled = !isAuto;
-        mainHeader.setRecordItemEnabled(!isAuto);
+//        mainHeader.setRecordItemEnabled(!isAuto);
+        onUserChanged();
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) {
             menuProgram.setChecked(true);
-            recordPageInBtn.clicked();
+//            recordPageInBtn.clicked();
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(knobStatus === Keymap.KNOB_MANUAL){
@@ -513,7 +514,11 @@ Rectangle {
     }
 
     function onUserChanged(user){
-        //        ShareData.UserInfo.currentHasMoldPerm()
+        var isRecordEn = ShareData.UserInfo.currentHasMoldPerm() && ShareData.GlobalStatusCenter.getKnobStatus() !== Keymap.KNOB_AUTO;
+        mainHeader.setRecordItemEnabled(isRecordEn);
+        if(!isRecordEn)
+            recordPageInBtn.clicked();
+
     }
 
     Component.onCompleted: {
@@ -529,6 +534,7 @@ Rectangle {
         panelRobotController.readCurrentKnobValue();
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
         panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+        mainHeader.setRecordItemEnabled(false);
         console.log("main load finished!")
     }
 

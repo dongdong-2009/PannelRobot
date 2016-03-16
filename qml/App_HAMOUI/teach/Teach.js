@@ -195,6 +195,7 @@ var actionTypes = {
     "kAT_SyncStart":1,
     "kAT_SyncEnd":2,
     "kAT_Flag":3,
+    "kAT_Wait":4
 };
 
 var stackTypes = {

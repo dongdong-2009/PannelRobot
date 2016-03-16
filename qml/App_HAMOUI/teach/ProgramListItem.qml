@@ -28,6 +28,8 @@ Rectangle{
             ret = "syncend";
         else if(actionType === Teach.actionTypes.kAT_Flag && ret === "")
             ret = "flag";
+        else if(actionType === Teach.actionTypes.kAT_Wait && ret === "")
+            ret = "wait";
         return ret;
     }
 
@@ -63,6 +65,10 @@ Rectangle{
         State{
             name: "flag"
             PropertyChanges {target: container; color:"orchid";}
+        },
+        State{
+            name: "wait"
+            PropertyChanges {target: container; color:"red";}
         }
 
     ]

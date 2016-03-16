@@ -2778,6 +2778,11 @@ please chose!</source>
         <source>Panel Settings</source>
         <translation>手控设定</translation>
     </message>
+    <message>
+        <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
+        <translation>请进入具体的设定页面进行设置,
+点击右下方的返回按钮返回上一层菜单</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditor</name>

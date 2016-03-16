@@ -1445,6 +1445,7 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
              actionObject.action === actions.F_CMD_MOVE_POSE ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
@@ -1536,6 +1537,7 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_MOVE_POSE ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE;
 }
 
@@ -1545,6 +1547,7 @@ var canActionTestRun = function(actionObject){
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
             actionObject.action === actions.F_CMD_JOINT_RELATIVE;
 }

@@ -517,6 +517,7 @@ public:
 
     Q_INVOKABLE void readCurrentKnobValue() const
     {
+#ifndef Q_WS_WIN32
         int keyFD_ = open("/dev/input/event1", O_RDWR);
         struct input_event inputEvent;
         inputEvent.type = EV_SYN; //__set_bit
@@ -524,6 +525,7 @@ public:
         inputEvent.value = 1;
         write(keyFD_,&inputEvent,sizeof(inputEvent));
         ::close(keyFD_);
+#endif
     }
 
     Q_INVOKABLE void setMotorTestPulseNum(int pulse)

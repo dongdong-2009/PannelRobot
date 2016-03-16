@@ -48,7 +48,7 @@ typedef QList<ICMoldItem> ICActionProgram;
 #endif
 
 typedef QSharedPointer<ICRobotMold> ICRobotMoldPTR;
-
+typedef QMap<int, StackInfo> StackInfoMap;
 class IRobotMoldError
 {
 public:
@@ -310,7 +310,7 @@ public:
 
     static QMap<int, CompileInfo> ParseFunctions(const QString& functions,
                                                  bool &isok,
-                                                 const QMap<int, StackInfo>& stackInfos = QMap<int, StackInfo>(),
+                                                 const StackInfoMap& stackInfos = StackInfoMap(),
                                                  const QVector<QVariantList>& counters = QVector<QVariantList>(),
                                                  const QVector<QVariantList>& variables = QVector<QVariantList>()
                                                  );

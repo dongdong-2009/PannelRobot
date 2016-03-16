@@ -1413,7 +1413,7 @@ int ICRobotMold::IndexOfVariable(quint32 id) const
 
 QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions,
                                                    bool &isok,
-                                                   const QMap<int, StackInfo>& stackInfos,
+                                                   const StackInfoMap &stackInfos,
                                                    const QVector<QVariantList>& counters,
                                                    const QVector<QVariantList>& variables)
 {

@@ -150,7 +150,20 @@ Rectangle {
         //            focus: false
         //            anchors.left:
         //        }
-
+//        Loader{
+//            id:timelable
+//            x: 650
+//            y: -2
+//            visible: parent.visible
+//            source: "../ICCustomElement/ICTimeLable.qml"
+//        }
+        ICTimeLable{
+            id:timelable
+            x: 550
+            y: 3
+            form: "yyyy-MM-dd  hh:mm:ss  DDD"
+//            form: "yyyy-MM-dd\nhh:ss:mm"
+        }
     }
 
     Item{

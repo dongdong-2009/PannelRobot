@@ -64,44 +64,44 @@ Rectangle {
         model.insert(cI++, new Teach.ProgramModelItem(actionObject, Teach.actionTypes.kAT_Normal));
 
         hasModify = true;
-//        repaintProgramItem(model);
+        //        repaintProgramItem(model);
     }
 
     function onInsertTriggered(){
-         if(actionEditorContainer.isMenuShow()) return;
-         var actionObjects = actionEditorContainer.currentPage().createActionObjects();
-         if(actionObjects.length == 0) return;
-         for(var i = 0; i < actionObjects.length; ++i){
-             insertActionToList(actionObjects[i]);
-         }
-         repaintProgramItem(currentModel());
-//        var cI = programListView.currentIndex;
-//        var oCI = cI;
-//        if(cI < 0)return;
-//        if(actionEditorContainer.isMenuShow()) return;
-//        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
-//        if(actionObjects.length == 0) return;
-//        var cPI = currentProgramIndex();
-//        var model = currentModel();
-//        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-//        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-//        for(var i = 0; i < actionObjects.length; ++i){
-//            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-//                //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-//                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
-//            }else if(Teach.hasCounterIDAction(actionObjects[i])){
-//                var cs = Teach.actionCounterIDs(actionObjects[i]);
-//                for(var c in cs){
-//                    PData.counterLinesInfo.add(cPI, cs[c], cI);
-//                }
-//            }else if(Teach.hasStackIDAction(actionObjects[i])){
-//                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
-//            }
+        if(actionEditorContainer.isMenuShow()) return;
+        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
+        if(actionObjects.length == 0) return;
+        for(var i = 0; i < actionObjects.length; ++i){
+            insertActionToList(actionObjects[i]);
+        }
+        repaintProgramItem(currentModel());
+        //        var cI = programListView.currentIndex;
+        //        var oCI = cI;
+        //        if(cI < 0)return;
+        //        if(actionEditorContainer.isMenuShow()) return;
+        //        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
+        //        if(actionObjects.length == 0) return;
+        //        var cPI = currentProgramIndex();
+        //        var model = currentModel();
+        //        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
+        //        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
+        //        for(var i = 0; i < actionObjects.length; ++i){
+        //            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
+        //                //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
+        //                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
+        //            }else if(Teach.hasCounterIDAction(actionObjects[i])){
+        //                var cs = Teach.actionCounterIDs(actionObjects[i]);
+        //                for(var c in cs){
+        //                    PData.counterLinesInfo.add(cPI, cs[c], cI);
+        //                }
+        //            }else if(Teach.hasStackIDAction(actionObjects[i])){
+        //                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
+        //            }
 
-//            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
-//        }
-//        hasModify = true;
-//        repaintProgramItem(model);
+        //            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
+        //        }
+        //        hasModify = true;
+        //        repaintProgramItem(model);
     }
 
     function onDeleteTriggered(){
@@ -202,15 +202,6 @@ Rectangle {
         }
 
         model.move(cI, cI -1, 1);
-//        var startToRepaint = cI;
-//        var mCIT = model.get(cI).mI_ActionType;
-//        var mCIPT = model.get(cI - 1).mI_ActionType;
-//        if(mCIT === Teach.actionTypes.kAT_SyncStart ||
-//                mCIT === Teach.actionTypes.kAT_SyncEnd ||
-//                mCIPT === Teach.actionTypes.kAT_SyncStart ||
-//                mCIPT === Teach.actionTypes.kAT_SyncEnd){
-//            startToRepaint = findSyncStart(startToRepaint);
-//        }
         repaintProgramItem(model);
     }
 
@@ -268,21 +259,14 @@ Rectangle {
 
 
         model.move(cI, cI  + 1, 1);
-//        var startToRepaint = cI;
-//        var mCIT = model.get(cI).mI_ActionType;
-//        var mCINT = model.get(cI + 1).mI_ActionType;
-//        if(mCIT === Teach.actionTypes.kAT_SyncStart ||
-//                mCIT === Teach.actionTypes.kAT_SyncEnd ||
-//                mCINT === Teach.actionTypes.kAT_SyncStart ||
-//                mCINT === Teach.actionTypes.kAT_SyncEnd){
-//            startToRepaint = findSyncStart(startToRepaint);
-//        }
         repaintProgramItem(model);
 
     }
 
     function onEditConfirm(actionObject){
-        currentModelData().mI_ActionObject = actionObject;
+//        currentModelData().mI_ActionObject = actionObject;
+        var cM = currentModel();
+        cM.setProperty(programListView.currentIndex, "mI_ActionObject", actionObject);
         if(ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO){
             if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
                                                          programListView.currentIndex,
@@ -406,11 +390,11 @@ Rectangle {
 
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
-//        console.log(ret);
+        //        console.log(ret);
         var info = JSON.parse(ret);
         info.steps = JSON.parse(info.steps);
-//        if(info.moduleID >= 0)
-//            console.log(ret);
+        //        if(info.moduleID >= 0)
+        //            console.log(ret);
         return info;
     }
 
@@ -489,16 +473,18 @@ Rectangle {
     //                           new Teach.ProgramModelItem(actionObject));
     //    }
 
-//    WorkerScript{
-//        id:repaintThread
-//        source: "repaintProgram.js"
-//        onMessage: {
-//            var cM = currentModel();
-//            for(var i = 0; i < cM.count; ++i){
-//                console.log("ws",i, cM.get(i).mI_ActionType);
-//            }
-//        }
-//    }
+    WorkerScript{
+        id:repaintThread
+        source: "repaintProgram.js"
+        onMessage: {
+            var toRepainLine = messageObject.toRepainLine;
+            var cM = currentModel();
+            for(var line in toRepainLine){
+                console.log(line, toRepainLine[line]);
+//                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
+            }
+        }
+    }
 
     Column{
         id:container
@@ -967,9 +953,12 @@ Rectangle {
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
+
                         onButtonClicked: {
-                            insertActionToList(currentModelData().mI_ActionObject);
-//                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
+                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+//                            var toInsert = currentModelData().mI_ActionObject;
+                            insertActionToList(toInsert);
+                            //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
                             repaintProgramItem(currentModel());
 //                            repaintThread.sendMessage({"model":currentModel()});
                         }
@@ -1114,8 +1103,8 @@ Rectangle {
 
                             var lastRunning = PData.lastRunning;
 
-//                                                        var cpI = currentProgramIndex();
-//                            var programIndex = editing.currentIndex;
+                            //                                                        var cpI = currentProgramIndex();
+                            //                            var programIndex = editing.currentIndex;
                             var programIndex = currentProgramIndex();
                             if(programIndex !== lastRunning.model ||
                                     uiRunningSteps.hostStep !== lastRunning.step)

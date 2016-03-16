@@ -6,6 +6,10 @@ Qt.include("Teach.js")
 
 WorkerScript.onMessage = function(msg) {
     var programModel = msg.model;
+    var listIndex = msg.listIndex;
+    var programIndex = msg.programIndex;
+    var actionObject = msg.actionObject;
+    var event = msg.event;
 
     var l = programModel.count;
     var start = 0;
@@ -32,9 +36,10 @@ WorkerScript.onMessage = function(msg) {
             at = actionTypes.kAT_Normal;
         if(isSyncStart)
             at = actionTypes.kAT_SyncStart;
-        if(programModel.get(i).mI_ActionType !== at)
-            toRepaintLine[i] = at;
-//        programModel.setProperty(i, "mI_ActionType", at);
+//        if(programModel.get(i).mI_ActionType !== at)
+//            toRepaintLine[i] = at;
+        programModel.setProperty(i, "mI_ActionType", at);
+        programModel.sync();
     }
     WorkerScript.sendMessage({ 'toRepainLine': toRepaintLine});
 }

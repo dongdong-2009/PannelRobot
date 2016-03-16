@@ -473,18 +473,18 @@ Rectangle {
     //                           new Teach.ProgramModelItem(actionObject));
     //    }
 
-    WorkerScript{
-        id:repaintThread
-        source: "repaintProgram.js"
-        onMessage: {
-            var toRepainLine = messageObject.toRepainLine;
-            var cM = currentModel();
-            for(var line in toRepainLine){
-                console.log(line, toRepainLine[line]);
-//                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
-            }
-        }
-    }
+//    WorkerScript{
+//        id:repaintThread
+//        source: "repaintProgram.js"
+//        onMessage: {
+//            var toRepainLine = messageObject.toRepainLine;
+//            var cM = currentModel();
+//            for(var line in toRepainLine){
+//                console.log(line, toRepainLine[line]);
+////                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
+//            }
+//        }
+//    }
 
     Column{
         id:container
@@ -950,17 +950,21 @@ Rectangle {
                         height: parent.height
                         width: 40
                         text: qsTr("CUW")
+
+                        ListModel{
+                            id:testMo
+                        }
+
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
 
                         onButtonClicked: {
-                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-//                            var toInsert = currentModelData().mI_ActionObject;
+//                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+                            var toInsert = currentModelData().mI_ActionObject;
                             insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
                             repaintProgramItem(currentModel());
-//                            repaintThread.sendMessage({"model":currentModel()});
                         }
                     }
 

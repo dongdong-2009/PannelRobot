@@ -960,8 +960,8 @@ Rectangle {
                         }
 
                         onButtonClicked: {
-//                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-                            var toInsert = currentModelData().mI_ActionObject;
+                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+//                            var toInsert = currentModelData().mI_ActionObject;
                             insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
                             repaintProgramItem(currentModel());
@@ -993,6 +993,7 @@ Rectangle {
                         bgColor: "lime"
                         onButtonClicked: {
                             var modelObject = currentModelData();
+                            var cM = currentModel();
                             if(modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT){
                                 if(modelObject.mI_ActionObject.commentAction === null)
                                     return;
@@ -1002,11 +1003,12 @@ Rectangle {
                             }
 
                             if(modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT){
-                                //                                var cO = Teach.generateCommentAction(Teach.actionToString(modelObject.actionObject), modelObject.actionObject);
-                                modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
+//                                modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
+                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", modelObject.mI_ActionObject.commentAction);
                             }
                             else{
-                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
+                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
+//                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
                             }
 
                         }
@@ -1575,6 +1577,8 @@ Rectangle {
             }else if(Teach.isJumpAction(step.action)){
                 jumpLines.push(p);
                 at = Teach.actionTypes.kAT_Flag;
+            }else if(step.action === Teach.actions.F_CMD_IO_INPUT){
+                at = Teach.actionTypes.kAT_Wait;
             }
             else
                 at = Teach.actionTypes.kAT_Normal;

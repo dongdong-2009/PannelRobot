@@ -472,6 +472,58 @@
         <source>Set to CPoint-3</source>
         <translation>设当前位置为终点</translation>
     </message>
+    <message>
+        <source>Tune Sel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rotate U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rotate V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rotate W</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
@@ -2270,6 +2322,10 @@ please chose!</source>
         <source>Offset Jog</source>
         <translation>相对关节</translation>
     </message>
+    <message>
+        <source>Circle</source>
+        <translation>整圆</translation>
+    </message>
 </context>
 <context>
     <name>PointManager</name>
@@ -3343,7 +3399,11 @@ please chose!</source>
     </message>
     <message>
         <source>origin</source>
-        <translation type="unfinished">原点指令</translation>
+        <translation>原点指令</translation>
+    </message>
+    <message>
+        <source>Circle:</source>
+        <translation>整圆:</translation>
     </message>
 </context>
 <context>

@@ -149,6 +149,8 @@ Item {
             offsetPathType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_JOINT_RELATIVE){
             offsetJogType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARC3D_MOVE){
+            circlePathType.setChecked(true);
         }
     }
 
@@ -468,6 +470,13 @@ Item {
 //                    motor5.isEditable = true;
                     pointViewModel.append(pointViewModel.createModelItem());
                     action = Teach.actions.F_CMD_JOINT_RELATIVE;
+                }else if(checkedItem == circlePathType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    action = Teach.actions.F_CMD_ARC3D_MOVE;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
                 }
 
                 motor0.visible = motor0.isChecked;
@@ -516,6 +525,10 @@ Item {
                 ICCheckBox{
                     id:offsetJogType
                     text:qsTr("Offset Jog")
+                }
+                ICCheckBox{
+                    id:circlePathType
+                    text:qsTr("Circle")
                 }
             }
         }

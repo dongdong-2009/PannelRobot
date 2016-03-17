@@ -21,7 +21,7 @@ MouseArea{
     Rectangle {
         id: continer
         width: 360
-        height: 160
+        height: 180
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
@@ -74,6 +74,7 @@ MouseArea{
                 id: warning
                 height: 20
                 text: (" ")
+                color: "red"
             }
             ICButton{
                 id:cancel
@@ -108,7 +109,7 @@ MouseArea{
                     loops: 3
                     running: false
                     PropertyAnimation{ target: warning;properties: "color";to:"transparent";duration: 100}
-                    PropertyAnimation{ target: warning;properties: "color";to:"black";duration: 100}
+                    PropertyAnimation{ target: warning;properties: "color";to:"red";duration: 100}
                 }
             }
         }

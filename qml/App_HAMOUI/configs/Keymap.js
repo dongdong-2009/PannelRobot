@@ -226,8 +226,8 @@ keyStructs.put(KEY_Return, new KeyStruct(KEY_Return, CMD_KEY_RETURN , false, Com
 keyStructs.put(KEY_Up, new KeyStruct(KEY_Up        , CMD_KEY_UP     , false, Continuous_Type));
 keyStructs.put(KEY_Down, new KeyStruct(KEY_Down    , CMD_KEY_DOWN   , false, Continuous_Type));
 keyStructs.put(KNOB_AUTO, new KeyStruct(KNOB_AUTO    , CMD_AUTO   , false, Command_Type));
+keyStructs.put(KNOB_SETTINGS, new KeyStruct(KNOB_SETTINGS    , CMD_CONFIG   , false, Command_Type));
 keyStructs.put(KNOB_MANUAL, new KeyStruct(KNOB_MANUAL    , CMD_MANUAL   , false, Command_Type));
-keyStructs.put(KNOB_SETTINGS, new KeyStruct(KNOB_SETTINGS    , CMD_MANUAL   , false, Command_Type));
 
 
 keyStructs.put(KEY_F1, new KeyStruct(KEY_F1, 0, false, Menu_Type));
@@ -235,8 +235,8 @@ keyStructs.put(KEY_F2, new KeyStruct(KEY_F2, 0, false, Menu_Type));
 keyStructs.put(KEY_F3, new KeyStruct(KEY_F3, 0, false, Menu_Type));
 keyStructs.put(KEY_F4, new KeyStruct(KEY_F4, 0, false, Menu_Type));
 keyStructs.put(KEY_F5, new KeyStruct(KEY_F5, 0, false, Menu_Type));
-keyStructs.put(PULLY_UP, new KeyStruct(PULLY_UP, CMD_WHEEL_JOG_N0, false, Command_Type));
-keyStructs.put(PULLY_DW, new KeyStruct(PULLY_DW, CMD_WHEEL_JOG_P0, false, Command_Type));
+keyStructs.put(PULLY_UP, new KeyStruct(PULLY_UP, CMD_WHEEL_JOG_P0, false, Command_Type));
+keyStructs.put(PULLY_DW, new KeyStruct(PULLY_DW, CMD_WHEEL_JOG_N0, false, Command_Type));
 keyStructs.put(0x01000037, new KeyStruct(0x01000037, CMD_WHEEL_JOG_N0, false, Command_Type)); // for destop F8
 keyStructs.put(0x01000039, new KeyStruct(0x01000039, CMD_WHEEL_JOG_P0, false, Command_Type)); // for destop F10
 

@@ -49,7 +49,6 @@ Item {
             border.width: Theme.defaultTheme.Content.tipBorderWidth
             Text {
                 id: tip
-                text: qsTr("text")
                 color: Theme.defaultTheme.Content.tipTextColor
                 anchors.centerIn: parent
             }

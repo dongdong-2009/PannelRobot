@@ -21,7 +21,7 @@ MouseArea{
     Rectangle {
         id: continer
         width: 360
-        height: 180
+        height: 160 + (warning.visible ? warning.height : 0)
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
@@ -48,7 +48,7 @@ MouseArea{
                         items = ShareData.UserInfo.users();
                     }
                 }
-                onCurrentIndexChanged: warning.text = " ";
+                onCurrentIndexChanged: warning.text = "";
                 z:100
             }
             Text {
@@ -63,19 +63,9 @@ MouseArea{
                 height: 32
                 isNumberOnly: false
                 inputWidth: userName.width
-                onTextChanged: warning.text = " ";
+                onTextChanged: warning.text = "";
             }
-            Text {
-                id: nul
-                height: 20
-                text: qsTr(" ")
-            }
-            Text {
-                id: warning
-                height: 20
-                text: (" ")
-                color: "red"
-            }
+
             ICButton{
                 id:cancel
                 text: qsTr("Cancel")
@@ -100,7 +90,10 @@ MouseArea{
                         if(ShareData.UserInfo.loginUser(userName.currentText(), password.text)){
                             loginSuccessful(userName.currentText());
                             container.visible = false;
-                        }else warning.text = (qsTr("password is incorrect!!"));flicker.running = true;
+                        }else{
+                            warning.text = (qsTr("password is incorrect!!"));
+                            flicker.running = true;
+                        }
                     }
                     bgColor: "lime"
                 }
@@ -111,6 +104,19 @@ MouseArea{
                     PropertyAnimation{ target: warning;properties: "color";to:"transparent";duration: 100}
                     PropertyAnimation{ target: warning;properties: "color";to:"red";duration: 100}
                 }
+            }
+
+//            Text {
+//                id: nul
+//                height: 20
+//                text: qsTr(" ")
+//            }
+            Text {
+                id: warning
+                height: 20
+                text: ""
+                color: "red"
+                visible: text.length > 0
             }
         }
 

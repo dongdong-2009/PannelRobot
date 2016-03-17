@@ -19,7 +19,7 @@ Item {
         hintx: valveView.width - 10
         hinty: valveView.height - 30
         isshowhint: true
-        isshowviewborder: true
+        isshowviewborder: false
         cellWidth :390
         cellHeight: 48
         clip: true

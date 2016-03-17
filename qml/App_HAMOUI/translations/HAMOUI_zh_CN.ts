@@ -474,7 +474,7 @@
     </message>
     <message>
         <source>Tune Sel</source>
-        <translation type="unfinished"></translation>
+        <translation>手轮选择</translation>
     </message>
     <message>
         <source>Z</source>
@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Line Z</source>
-        <translation type="unfinished"></translation>
+        <translation>直线Z</translation>
     </message>
     <message>
         <source>Rotate U</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转U</translation>
     </message>
     <message>
         <source>Y</source>
@@ -502,11 +502,11 @@
     </message>
     <message>
         <source>Line Y</source>
-        <translation type="unfinished"></translation>
+        <translation>直线Y</translation>
     </message>
     <message>
         <source>Rotate V</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转V</translation>
     </message>
     <message>
         <source>X</source>
@@ -518,11 +518,15 @@
     </message>
     <message>
         <source>Line X</source>
-        <translation type="unfinished"></translation>
+        <translation>直线X</translation>
     </message>
     <message>
         <source>Rotate W</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转W</translation>
+    </message>
+    <message>
+        <source>Tune Speed:</source>
+        <translation>手轮速度:</translation>
     </message>
 </context>
 <context>
@@ -1935,6 +1939,14 @@
     <message>
         <source>Login in</source>
         <translation>登入</translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>password is incorrect!!</source>
+        <translation>密码错误!</translation>
     </message>
 </context>
 <context>
@@ -3715,35 +3727,35 @@ please chose!</source>
     <name>UsermanagementPage</name>
     <message>
         <source>namelist:</source>
-        <translation type="unfinished"></translation>
+        <translation>用户列表:</translation>
     </message>
     <message>
         <source>username:</source>
-        <translation type="unfinished"></translation>
+        <translation>用户名:</translation>
     </message>
     <message>
         <source>password:</source>
-        <translation type="unfinished"></translation>
+        <translation>密码:</translation>
     </message>
     <message>
         <source>cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>ok</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>username or password can not be empty!!</source>
-        <translation type="unfinished"></translation>
+        <translation>用户名和密码不能为空!</translation>
     </message>
     <message>
         <source>please set perm!!</source>
-        <translation type="unfinished"></translation>
+        <translation>请设置权限!</translation>
     </message>
 </context>
 <context>

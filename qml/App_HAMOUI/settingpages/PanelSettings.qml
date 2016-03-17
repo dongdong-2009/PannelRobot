@@ -2,12 +2,17 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import '..'
 import "../../utils/utils.js" as Utils
+import "../ShareData.js" as ShareData
 
 Item {
     id:myitem
     function showMenu(){
         configsContainer.visible = false;
         menu.visible = true;
+    }
+    function onUserChanged(user){
+        var isEn = ShareData.UserInfo.currentHasSystemPerm();
+        usermanegement.enabled = isEn;
     }
     property variant pages: []
     Grid{
@@ -31,6 +36,7 @@ Item {
             id:usermanegement
             text: qsTr("Usermanegement")
             icon: "../images/usermanagement.png"
+            enabled: false
         }
     }
 
@@ -54,6 +60,8 @@ Item {
         configsContainer.addNav(maintainMenuBtn, Qt.createComponent('maintainPage.qml'));
         configsContainer.addNav(panelMenuBtn, Qt.createComponent('panelSettingsPage.qml'));
         configsContainer.addNav(usermanegement, Qt.createComponent('UsermanagementPage.qml'));
+        ShareData.UserInfo.registUserChangeEvent(myitem);
+
     }
 
 }

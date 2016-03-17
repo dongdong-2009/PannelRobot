@@ -3,6 +3,7 @@ import QtQuick 1.1
 import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
+import "../../utils/stringhelper.js" as ICString
 //import com.szhc.axis 1.0
 
 import "../../ICCustomElement"
@@ -220,7 +221,7 @@ Rectangle {
             height: loadRecord.height
             onButtonClicked: {
                 if(newName.isEmpty()){
-                    tipDialog.show(qsTr("Please Enter the new record name!"));
+                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
                     return;
                 }
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
@@ -234,7 +235,7 @@ Rectangle {
             height: loadRecord.height
             onButtonClicked: {
                 if(newName.isEmpty()){
-                    tipDialog.show(qsTr("Please Enter the new record name!"));
+                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
                     return;
                 }
                 //                panelRobotController.copyRecord(newName.text,
@@ -252,7 +253,7 @@ Rectangle {
             onButtonClicked: {
                 if(recordsView.currentIndex < 0) return;
                 if(panelRobotController.currentRecordName() == selectName.text){
-                    tipDialog.show(qsTr("This mold is using!"));
+                    tipDialog.warning((qsTr("This mold is using!")), qsTr("OK"));
                     return;
                 }
                 if(panelRobotController.deleteRecord(selectName.text)){
@@ -277,7 +278,9 @@ Rectangle {
                 var now = new Date();
                 var ret = panelRobotController.exportRobotMold(JSON.stringify(exportMolds),
                                                                "HCBackupRobot_" + Utils.formatDate(now, "yyyyMMddhhmmss"));
-                console.log(ret.err);
+                console.log(ret);
+                if(ret === 0)
+                    tipDialog.information(qsTr("Expoert Finished!"), qsTr("OK"));
             }
         }
         ICButton{
@@ -304,7 +307,11 @@ Rectangle {
                         recordsModel.append(
                                     recordsView.createRecordItem(ret[i].recordName,
                                                                      ret[i].createDatetime));
+                    else{
+                        tipDialog.warning(ICString.icStrformat(qsTr("Import {0} fail!"), ret[i].recordName), qsTr("OK"));
+                    }
                 }
+                tipDialog.information(qsTr("Import Finished!"), qsTr("OK"));
             }
 
         }
@@ -325,10 +332,17 @@ Rectangle {
         }
     }
 
-    ICDialog{
+    ICMessageBox{
         id: tipDialog
-        anchors.centerIn: parent
+//        anchors.centerIn: parent
+        x:(parent.width - realWidth) >>1
+        y:(parent.height - realWidth) >> 1
         z: 100
+    }
+
+    onVisibleChanged: {
+        exportToUsb.setChecked(false);
+        importFromUsb.setChecked(false);
     }
 
     Component.onCompleted: {

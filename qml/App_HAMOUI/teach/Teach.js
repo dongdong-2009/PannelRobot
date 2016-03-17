@@ -195,6 +195,7 @@ var actionTypes = {
     "kAT_SyncStart":1,
     "kAT_SyncEnd":2,
     "kAT_Flag":3,
+    "kAT_Wait":4
 };
 
 var stackTypes = {
@@ -761,6 +762,7 @@ actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标
 actions.F_CMD_MOVE_POSE = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
+actions.F_CMD_ARC3D_MOVE = actHelper++;   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
@@ -1339,6 +1341,7 @@ var pathActionToStringHandler = function(actionObject){
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT){
         ret += qsTr("Arc3D:");
+        needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_MOVE_POSE){
         ret += qsTr("Pose:");
         needNewLine = true;
@@ -1353,6 +1356,9 @@ var pathActionToStringHandler = function(actionObject){
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_JOINT_RELATIVE){
         ret += qsTr("Offset Jog:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE){
+        ret += qsTr("Circle:");
         needNewLine = true;
     }
 
@@ -1378,6 +1384,7 @@ actionToStringHandlerMap.put(actions.F_CMD_FINE_ZERO, f_CMD_FINE_ZEROToStringHan
 actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
@@ -1439,6 +1446,7 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
              actionObject.action === actions.F_CMD_MOVE_POSE ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
@@ -1530,6 +1538,7 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_MOVE_POSE ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE;
 }
 
@@ -1539,6 +1548,7 @@ var canActionTestRun = function(actionObject){
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
             actionObject.action === actions.F_CMD_JOINT_RELATIVE;
 }

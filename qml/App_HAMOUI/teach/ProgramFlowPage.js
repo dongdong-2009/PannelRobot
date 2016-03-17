@@ -88,3 +88,11 @@ var programActionMenu = null;
 var moduleActionEditor;
 
 var currentEditingProgram = 0;
+
+function UpdateModelStruct(event,listIndex, programIndex, model, actionObject){
+    this.event = event;
+    this.listIndex = listIndex;
+    this.programIndex = programIndex;
+    this.model = model;
+    this.actionObject = actionObject;
+}

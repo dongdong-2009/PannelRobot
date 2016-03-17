@@ -77,13 +77,14 @@ Item {
         id:editorContainer
         y:10
         x:10
-        spacing: 10
+        spacing: 6
         ICConfigEdit{
             id:customName
             configNameWidth: PData.configNameWidth
             inputWidth: PData.inputWidth
             configName: qsTr("Custom Name:")
             isNumberOnly: false
+            height: 32
         }
 
         ICConfigEdit{
@@ -92,6 +93,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Pos:")
             unit: qsTr("mm")
+            height: 32
+
         }
         PointEdit{
             id:points
@@ -104,6 +107,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Speed:")
             unit: qsTr("%")
+            height: 32
+
         }
         ICConfigEdit{
             id:speed0
@@ -111,6 +116,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Speed:")
             unit: qsTr("%")
+            height: 32
+
         }
         ICConfigEdit{
             id:speed1
@@ -118,6 +125,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Speed1:")
             unit: qsTr("%")
+            height: 32
+
         }
         ICConfigEdit{
             id:delay
@@ -125,6 +134,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Delay:")
             unit: qsTr("s")
+            height: 32
+
         }
         ICConfigEdit{
             id:limit
@@ -132,6 +143,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Limit:")
             unit: qsTr("s")
+            height: 32
+
         }
         ICConfigEdit{
             id:acTime
@@ -139,6 +152,8 @@ Item {
             inputWidth: PData.inputWidth
             configName: qsTr("Action Time:")
             unit: qsTr("s")
+            height: 32
+
         }
 
         Component.onCompleted: {
@@ -176,6 +191,7 @@ Item {
             id:okBtn
             text: qsTr("Ok")
             bgColor: "lime"
+            height: 40
             onButtonClicked: {
                 container.visible = false;
                 var editingObject = PData.editingActionObject;
@@ -197,6 +213,7 @@ Item {
             id:cancelBtn
             text: qsTr("Cancel")
             bgColor: "yellow"
+            height: 40
             onButtonClicked: {
                 container.visible = false;
             }

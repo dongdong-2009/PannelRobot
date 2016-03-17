@@ -1,24 +1,26 @@
 .pragma library
 
 Qt.include("Teach.js")
+//Qt.include("ProgramFlowPage.js")
 
 
 WorkerScript.onMessage = function(msg) {
     var programModel = msg.model;
+    var listIndex = msg.listIndex;
+    var programIndex = msg.programIndex;
+    var actionObject = msg.actionObject;
     var event = msg.event;
-    if(event == "insert"){
-
-    }
 
     var l = programModel.count;
-    var start = start || 0;
-    var  end = end || l;
+    var start = 0;
+    var  end = l;
 
     if(start >= l || end > l)
         return;
     var step;
     var at;
     var isSyncStart = false;
+    var toRepaintLine = {}
     for(var i = start; i < end; ++i){
         step = programModel.get(i).mI_ActionObject;
         if(step.action === actions.F_CMD_SYNC_START){
@@ -34,8 +36,10 @@ WorkerScript.onMessage = function(msg) {
             at = actionTypes.kAT_Normal;
         if(isSyncStart)
             at = actionTypes.kAT_SyncStart;
+//        if(programModel.get(i).mI_ActionType !== at)
+//            toRepaintLine[i] = at;
         programModel.setProperty(i, "mI_ActionType", at);
+        programModel.sync();
     }
-    msg.model.sync();
-    WorkerScript.sendMessage({ 'model': "finshed"});
+    WorkerScript.sendMessage({ 'toRepainLine': toRepaintLine});
 }

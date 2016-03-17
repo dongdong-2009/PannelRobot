@@ -9,13 +9,10 @@ Item {
     Component.onCompleted: {
         PData.deepFindStatus(container)
     }
-    onVisibleChanged: {
-        visible ? refreshTimer.start() : refreshTimer.stop();
-    }
 
     Timer{
         id:refreshTimer
-        interval: 50; running: false; repeat: true;
+        interval: 50; running: visible; repeat: true;
         onTriggered: {
             var count = PData.status.length;
             var w;

@@ -137,33 +137,6 @@ Rectangle {
             }
 
         }
-        //        ICTextEdit{
-        //            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
-        //            height: parent.height
-        //            text: "0"
-        //            focus: false
-        //        }
-        //        ICTextEdit{
-        //            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
-        //            height: parent.height
-        //            text:qsTr("Sample")
-        //            focus: false
-        //            anchors.left:
-        //        }
-//        Loader{
-//            id:timelable
-//            x: 650
-//            y: -2
-//            visible: parent.visible
-//            source: "../ICCustomElement/ICTimeLable.qml"
-//        }
-        ICTimeLable{
-            id:timelable
-            x: 550
-            y: 3
-            form: "yyyy-MM-dd  hh:mm:ss  DDD"
-//            form: "yyyy-MM-dd\nhh:ss:mm"
-        }
     }
 
     Item{
@@ -491,6 +464,15 @@ Rectangle {
 
     }
 
+    ICTimeLable{
+        id:timelable
+        anchors.right: parent.right
+        anchors.rightMargin: armKeyboardBtn.width
+        y:armKeyboardContainer.y
+
+        form: "yyyy-MM-dd  hh:mm:ss  DDD"
+    }
+
     function onKnobChanged(knobStatus){
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
@@ -499,11 +481,12 @@ Rectangle {
         //        mainWindow.focus = true;
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
         menuOperation.enabled = !isAuto;
-        mainHeader.setRecordItemEnabled(!isAuto);
+//        mainHeader.setRecordItemEnabled(!isAuto);
+        onUserChanged();
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) {
             menuProgram.setChecked(true);
-            recordPageInBtn.clicked();
+//            recordPageInBtn.clicked();
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(knobStatus === Keymap.KNOB_MANUAL){
@@ -513,7 +496,11 @@ Rectangle {
     }
 
     function onUserChanged(user){
-        //        ShareData.UserInfo.currentHasMoldPerm()
+        var isRecordEn = ShareData.UserInfo.currentHasMoldPerm() && ShareData.GlobalStatusCenter.getKnobStatus() !== Keymap.KNOB_AUTO;
+        mainHeader.setRecordItemEnabled(isRecordEn);
+        if(!isRecordEn)
+            recordPageInBtn.clicked();
+
     }
 
     Component.onCompleted: {
@@ -529,6 +516,7 @@ Rectangle {
         panelRobotController.readCurrentKnobValue();
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
         panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+        mainHeader.setRecordItemEnabled(false);
         console.log("main load finished!")
     }
 

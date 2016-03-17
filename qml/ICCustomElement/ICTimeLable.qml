@@ -7,6 +7,9 @@ Rectangle {
         triggeredOnStart: true
         onTriggered: time.text = formatDate(form).toString()
     }
+    width: time.width
+    height: time.height
+    color: "transparent"
     function formatDate(fmt)
     { //author: meizz
         var date = new Date();

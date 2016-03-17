@@ -110,7 +110,10 @@ ContentPageBase{
 //    }
 
     content: settingContainer
-//    statusSection: versionContainer
+    statusSection: Text {
+        color: Theme.defaultTheme.Content.tipTextColor
+        text: qsTr("Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu")
+    }
     Component.onCompleted: {
         var settingClass = Qt.createComponent("ProductSettings.qml");
         var psObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});

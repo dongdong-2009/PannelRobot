@@ -766,7 +766,9 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     qDebug()<<cmd;
     ::system(cmd.toUtf8());
 
+#ifndef Q_WS_WIN32
     ::sync();
+#endif
     return ret;
 }
 

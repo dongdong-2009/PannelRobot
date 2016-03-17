@@ -10,7 +10,7 @@ const char* ICAppSettings::UsbPath = "fakeUSB";
 #else
 const char* ICAppSettings::UsbPath = "/mnt/udisk";
 #endif
-#ifdef Q_WS_X11
+#ifndef Q_WS_QWS
 const char* ICAppSettings::QMLPath("../qml");
 #else
 const char* ICAppSettings::QMLPath("qml");

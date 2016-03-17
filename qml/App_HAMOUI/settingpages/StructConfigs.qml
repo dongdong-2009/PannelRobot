@@ -188,7 +188,7 @@ Item {
                 configNameWidth: pdata.configNameWidth
                 configName: qsTr("SACC Max");
                 unit: qsTr("RPM")
-                configAddr: "s_rw_0_16_0_167"
+                configAddr: "s_rw_0_16_3_167"
             }
 
         }

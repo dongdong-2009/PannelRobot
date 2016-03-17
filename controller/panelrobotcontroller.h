@@ -245,8 +245,9 @@ public:
     {
         return getConfigValueText(addr).toDouble();
     }
-    Q_INVOKABLE bool isAutoMode() const { return statusValue("c_ro_1_4_0_938") == CMD_AUTO;}
+    Q_INVOKABLE bool isAutoMode() const { return currentMode() == CMD_AUTO;}
     Q_INVOKABLE bool isOrigined() const { return statusValue("c_ro_0_1_0_938") == 1;}
+    Q_INVOKABLE int currentMode() const { return statusValue("c_ro_1_4_0_938");}
     Q_INVOKABLE QString hostStepToUILines(int which, int step) const;
     Q_INVOKABLE QString currentRunningActionInfo(int which) const;
     Q_INVOKABLE int configDecimal(const QString& addr) const

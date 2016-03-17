@@ -590,6 +590,10 @@ Rectangle {
                 tipBar.visible = false;
             }
 
+            if(panelRobotController.currentMode() == Keymap.CMD_STANDBY){
+                panelRobotController.readCurrentKnobValue();
+            }
+
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;

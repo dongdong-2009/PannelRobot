@@ -14,7 +14,7 @@ extern "C"
 {
 #endif
 
-#define DEBUG_TEST  0 //< 测试
+#define DEBUG_TEST  1 //< 测试
 
 
 #define STRUCE_SIZE(a,b) (b-a+1)
@@ -401,6 +401,8 @@ typedef enum
     CMD_IO, // IO命令
     CMD_ORIGIN, // 原点模式
     CMD_RETURN, // 复归模式
+
+    CMD_STANDBY = 20, // 待机模式
 
     CMD_MANUAL_STOP = 0x0050,  // 手动运行停止
     CMD_MANUAL_START1        ,  // 手动运行主程序
@@ -809,7 +811,7 @@ typedef enum
 
 typedef enum
 {
-    JOINT1,       //< 关节1
+    JOINT1=1,       //< 关节1
     JOINT2,       //< 关节2
     JOINT3,       //< 关节3
     JOINT4,       //< 关节4
@@ -828,13 +830,13 @@ typedef enum
 
 typedef enum
 {
-    LENTH1,       //< 手轮最小单位长度
-    LENTH2,       //< 手轮最小单位长度X2
-    LENTH3,       //< 手轮最小单位长度X5
-    LENTH4,       //< 手轮最小单位长度X10
-    LENTH5,       //< 手轮最小单位长度X20
-    LENTH6,       //< 手轮最小单位长度X50
-    LENTH7,       //< 手轮最小单位长度X100
+    LENTH1 = 1,       //< 手轮最小单位长度
+    LENTH2=2,       //< 手轮最小单位长度X2
+    LENTH5=5,       //< 手轮最小单位长度X5
+    LENTH10=10,       //< 手轮最小单位长度X10
+    LENTH20=20,       //< 手轮最小单位长度X20
+    LENTH50=50,       //< 手轮最小单位长度X50
+    LENTH100=100,       //< 手轮最小单位长度X100
 
 }HANDWHEEL_LENTH;
 
@@ -956,7 +958,7 @@ typedef union {  //<336 + 8X8 = 400
         uint32_t step9:16;//<类型：状态；名字：预留；精度：0;单位：；
     }s;
     struct{
-        uint32_t m0:16;//<类型：状态；名字：手动1；精度：1;单位：；
+        uint32_t wheel;//<类型：手轮状态；名字：手动1；精度：1;单位：；
         uint32_t m1:16;//<类型：状态；名字：手动2；精度：1;单位：；
         uint32_t m2:16;//<类型：状态；名字：手动3；精度：1;单位：；
         uint32_t m3:16;//<类型：状态；名字：手动4；精度：1;单位：；
@@ -965,7 +967,6 @@ typedef union {  //<336 + 8X8 = 400
         uint32_t m6:16;//<类型：状态；名字：手动7；精度：1;单位：；
         uint32_t m7:16;//<类型：状态；名字：手动8；精度：1;单位：；
         uint32_t m8:16;//<类型：状态；名字：手动9；精度：1;单位：；
-        uint32_t m9:16;//<类型：状态；名字：手动10；精度：1;单位：；
     }m;
     uint16_t all[10];
     uint32_t all_32[5];

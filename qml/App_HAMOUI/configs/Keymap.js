@@ -34,6 +34,8 @@ var CMD_AUTO = 2; //< 自动命令
 var CMD_CONFIG = 3; //< 配置命令
 var CMD_IO = 4; // IO命令
 
+var CMD_STANDBY = 15; // 待机模式
+
 cmdHelper = 0x0050;
 var CMD_MANUAL_STOP = cmdHelper++;  // 手动运行停止
 var CMD_MANUAL_START1        = cmdHelper++;  // 手动运行主程序

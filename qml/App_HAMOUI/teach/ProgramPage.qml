@@ -86,13 +86,20 @@ ContentPageBase{
         running: parent.visible
         repeat: true
         onTriggered: {
-            if(mode !== ShareData.GlobalStatusCenter.getKnobStatus()){
-                mode = ShareData.GlobalStatusCenter.getKnobStatus();
-                if(mode === Keymap.KNOB_AUTO)
-                    isReadOnly = true;
-                else if(ShareData.UserInfo.currentHasMoldPerm())
-                    isReadOnly = false;
-            }
+            mode = ShareData.GlobalStatusCenter.getKnobStatus();
+            if(mode === Keymap.KNOB_AUTO)
+                isReadOnly = true;
+            else if(!ShareData.UserInfo.currentHasMoldPerm())
+                isReadOnly = true;
+            else
+                isReadOnly = false;
+//            if(mode !== ShareData.GlobalStatusCenter.getKnobStatus()){
+//                mode = ShareData.GlobalStatusCenter.getKnobStatus();
+//                if(mode === Keymap.KNOB_AUTO)
+//                    isReadOnly = true;
+//                else if(ShareData.UserInfo.currentHasMoldPerm())
+//                    isReadOnly = false;
+//            }
         }
     }
 }

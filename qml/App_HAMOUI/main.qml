@@ -137,33 +137,6 @@ Rectangle {
             }
 
         }
-        //        ICTextEdit{
-        //            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI1Proportion;
-        //            height: parent.height
-        //            text: "0"
-        //            focus: false
-        //        }
-        //        ICTextEdit{
-        //            width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderTI2Proportion;
-        //            height: parent.height
-        //            text:qsTr("Sample")
-        //            focus: false
-        //            anchors.left:
-        //        }
-//        Loader{
-//            id:timelable
-//            x: 650
-//            y: -2
-//            visible: parent.visible
-//            source: "../ICCustomElement/ICTimeLable.qml"
-//        }
-        ICTimeLable{
-            id:timelable
-            x: 550
-            y: 3
-            form: "yyyy-MM-dd  hh:mm:ss  DDD"
-//            form: "yyyy-MM-dd\nhh:ss:mm"
-        }
     }
 
     Item{
@@ -489,6 +462,15 @@ Rectangle {
         }
 
 
+    }
+
+    ICTimeLable{
+        id:timelable
+        anchors.right: parent.right
+        anchors.rightMargin: armKeyboardBtn.width
+        y:armKeyboardContainer.y
+
+        form: "yyyy-MM-dd  hh:mm:ss  DDD"
     }
 
     function onKnobChanged(knobStatus){

@@ -25,7 +25,8 @@ MouseArea {
         noBtnText = noText || ("No");
         container.visible = true;
         realFrame.color = "#A0A0F0";
-        yesBtn.color = "white"
+        yesBtn.color = "lime"
+        noBtn.color = "yellow"
     }
 
     function information(tip, Text){
@@ -34,7 +35,7 @@ MouseArea {
         noBtn.visible = false;
         container.visible = true;
         realFrame.color = "#A0A0F0";
-        yesBtn.color = "white"
+        yesBtn.color = "lime"
     }
 
     function warning(tip, Text){

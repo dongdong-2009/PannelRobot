@@ -419,6 +419,7 @@ Rectangle {
     function onKnobChanged(knobStatus){
         onUserChanged(null);
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+        editing.resetProgramItems(isAuto)
         isFollow.visible = isAuto;
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = false;
@@ -522,8 +523,11 @@ Rectangle {
                         qsTr("Sub-7"),
                         qsTr("Sub-8")
                     ]
-                    function resetProgramItems(){
-                        items = defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
+                    function resetProgramItems(isAutoMode){
+                        if(isAutoMode)
+                            items = defaultPrograms;
+                        else
+                            items = defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
                     }
 
                     items:defaultPrograms
@@ -563,8 +567,8 @@ Rectangle {
                     visible: newModuleBtn.visible
                     height: editing.height
                     font.pixelSize: 12
-                    function newManualProgram(status){
-                        tipBox.finished.disconnect(newManualProgram.newManualProgram);
+                    function onNewManualProgram(status){
+                        tipBox.finished.disconnect(newManualProgram.onNewManualProgram);
                         if(status){
                             var toAdd = ManualProgramManager.manualProgramManager.addProgram(tipBox.inputText, [Teach.generteEndAction()]);
                             editing.resetProgramItems();
@@ -578,7 +582,8 @@ Rectangle {
                                          false,
                                          qsTr("OK"),
                                          qsTr("Cancel"));
-                        tipBox.finished.connect(newManualProgram.newManualProgram);
+                        tipBox.finished.connect(newManualProgram.onNewManualProgram);
+
                     }
 
                 }

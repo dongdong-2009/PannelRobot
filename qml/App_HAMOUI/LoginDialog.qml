@@ -19,8 +19,9 @@ MouseArea{
     }
 
     Rectangle {
+        id: continer
         width: 360
-        height: 140
+        height: 160
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
@@ -28,7 +29,7 @@ MouseArea{
 
         Grid{
             anchors.centerIn: parent
-            spacing: 6
+            spacing: 8
             columns: 2
             Text {
                 id: userNameLabel
@@ -47,6 +48,7 @@ MouseArea{
                         items = ShareData.UserInfo.users();
                     }
                 }
+                onCurrentIndexChanged: warning.text = " ";
                 z:100
             }
             Text {
@@ -61,6 +63,17 @@ MouseArea{
                 height: 32
                 isNumberOnly: false
                 inputWidth: userName.width
+                onTextChanged: warning.text = " ";
+            }
+            Text {
+                id: nul
+                height: 20
+                text: qsTr(" ")
+            }
+            Text {
+                id: warning
+                height: 20
+                text: (" ")
             }
             ICButton{
                 id:cancel
@@ -86,9 +99,16 @@ MouseArea{
                         if(ShareData.UserInfo.loginUser(userName.currentText(), password.text)){
                             loginSuccessful(userName.currentText());
                             container.visible = false;
-                        }
+                        }else warning.text = (qsTr("password is incorrect!!"));flicker.running = true;
                     }
                     bgColor: "lime"
+                }
+                SequentialAnimation{
+                    id: flicker
+                    loops: 3
+                    running: false
+                    PropertyAnimation{ target: warning;properties: "color";to:"transparent";duration: 100}
+                    PropertyAnimation{ target: warning;properties: "color";to:"black";duration: 100}
                 }
             }
         }

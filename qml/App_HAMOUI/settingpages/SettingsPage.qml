@@ -111,6 +111,7 @@ ContentPageBase{
 
     content: settingContainer
     statusSection: Text {
+        width: container.width
         color: Theme.defaultTheme.Content.tipTextColor
         text: qsTr("Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu")
     }

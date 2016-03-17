@@ -7,6 +7,7 @@
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
+QMap<int, quint32> ICRobotVirtualhost::multiplexingConfigs_;
 QString ICRobotVirtualhost::hostVersion_;
 #define REFRESH_COUNT_PER 41
 #define REFRESH_INTERVAL 40
@@ -515,6 +516,10 @@ void ICRobotVirtualhost::CommunicateImpl()
                 {
                     statusCache_.UpdateConfigValue(startIndex_++, statusDataTmp_.at(i));
                     //                qDebug()<<statusDataTmp_.at(i);
+                }
+                if(HostStatusValue(&c_ro_1_4_0_938) != CMD_AUTO)
+                {
+                    multiplexingConfigs_.insert(ICAddr_Read_Status33, statusDataTmp_.at(ICAddr_Read_Status33 - recvFrame_->GetAddr()));
                 }
                 if(currentStatusGroup_ == 0)
                 {

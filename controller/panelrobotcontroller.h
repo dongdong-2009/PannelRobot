@@ -25,6 +25,7 @@
 #ifdef Q_WS_QWS
 #include <QWSScreenSaver>
 
+
 class ScreenFunctionObject: public QObject
 {
     Q_OBJECT
@@ -78,6 +79,17 @@ private:
     ScreenFunctionObject* screenFunctionObject_;
 };
 #endif
+
+union PullyData{
+    struct{
+        quint32 type:8;//< 类型
+        quint32 lenth:8;//< 单位长度
+        quint32 res:15;//< 预留
+        quint32 en:1;//< 使能
+    }b;
+    quint32 all;
+};
+
 
 
 static QString ErrInfoToJSON(const QMap<int, int>& errInfo)
@@ -565,6 +577,34 @@ public:
     }
 
     Q_INVOKABLE QString disableImage(const QString& enabledImage);
+
+    Q_INVOKABLE void setPullySpeed(int speed)
+    {
+//        uint32_t type:8;//< 类型
+//        uint32_t lenth:8;//< 单位长度
+//        uint32_t res:15;//< 预留
+//        uint32_t en:1;//< 使能
+        PullyData pD;
+        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
+        pD.b.lenth = speed & 0xFF;
+        modifyConfigValue(ICAddr_System_Retain_27, pD.all);
+
+    }
+
+    Q_INVOKABLE void setPullyAxis(int axis)
+    {
+        PullyData pD;
+        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
+        pD.b.type = axis & 0xFF;
+        modifyConfigValue(ICAddr_System_Retain_27, pD.all);
+    }
+
+    Q_INVOKABLE int getPullyAxis() const
+    {
+        PullyData pD;
+        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
+        return pD.b.type;
+    }
 
 
 //    Q_INVOKABLE QString debug_LogContent() const

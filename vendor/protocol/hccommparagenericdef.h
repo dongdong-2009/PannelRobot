@@ -14,34 +14,14 @@ extern "C"
 {
 #endif
 
-#define DEBUG_TEST  1 //< 测试
+#define DEBUG_TEST  0 //< 测试
 
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
 
 #define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.2"
-//
-//typedef union {
-//    struct{
-//        uint32_t num:8;//< 序号
-//        uint32_t out_type:3;   //< 阀类型(0:单输出；1：单头阀；2：双头阀-保持型；3：双头阀-非保持型；)
-//        uint32_t board_id1:3;    //< IO 板ID
-//        uint32_t io_id1:6;      //< IO输出点ID
-//        uint32_t board_id2:3;    //< IO 板ID
-//        uint32_t io_id2:6;      //< IO输出点ID
-//        uint32_t in_board_id1:3;      //< 输入 板ID
-//        uint32_t in_id1:6;    //< 输入 板ID
-//        uint32_t in_board_id2:3;      //< 输入 板ID
-//        uint32_t in_id2:6;    //< 输入 板ID
-//        uint32_t io_status:1;  //< 输出状态
-//        uint32_t in_dir1:1;  //< 输入检测方向1
-//        uint32_t in_dir2:1;  //< 输入检测方向1
-//        uint32_t time:14;//< 检测时间
-//        uint32_t timer;//< 检测时间计时器
-//    }bit;
-//    uint32_t io_all[3];
-//}OPERATION;
+
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
 {
@@ -64,6 +44,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_26 = 26,//< 0:关节坐标显示；1：输出累计值；2：反馈累计值;3:轨迹速度;4:脉冲容差;5:脉冲测试显示
+    ICAddr_System_Retain_27 = 27,//< 手轮定义参数
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值
@@ -448,8 +429,8 @@ typedef enum
     CMD_POWER_ON0  = 0x0180,  // 第一个逻辑电机开机
     CMD_POWER_ON  = 0x01FF, // 所有逻辑电机开机
 
-    CMD_JOG_N0     = 0x0200,    // 关节坐标系，第一个轴反向点动
-    CMD_JOG_P0     = 0x0280,  // 关节坐标系，第一个轴正向点动
+    CMD_WHEEL_JOG_P0     = 0x0200,  // 手轮正转
+    CMD_WHEEL_JOG_N0             ,  // 手轮反转
 
     CMD_JOG_PX     = 0x0300,  // 直角坐标系位置轴，X轴正向点动
     CMD_JOG_PY     = 0x0301,  // 直角坐标系位置轴，Y轴正向点动
@@ -824,6 +805,49 @@ typedef enum
     READ_TYPE_SERIAL,       //<名字：绝对值串口读取方式
     READ_TYPE_CAN,       //<名字：绝对值CAN口读取方式
 }ENCODER_READ_TYPE;
+
+
+typedef enum
+{
+    JOINT1,       //< 关节1
+    JOINT2,       //< 关节2
+    JOINT3,       //< 关节3
+    JOINT4,       //< 关节4
+    JOINT5,       //< 关节5
+    JOINT6,       //< 关节6
+
+    LINEX,       //< 世界坐标X
+    LINEY,       //< 世界坐标Y
+    LINEZ,       //< 世界坐标Z
+
+    POSU,       //< 姿势U
+    POSV,       //< 姿势V
+    POSW,       //< 姿势W
+
+}HANDWHEEL_TYPE;
+
+typedef enum
+{
+    LENTH1,       //< 手轮最小单位长度
+    LENTH2,       //< 手轮最小单位长度X2
+    LENTH3,       //< 手轮最小单位长度X5
+    LENTH4,       //< 手轮最小单位长度X10
+    LENTH5,       //< 手轮最小单位长度X20
+    LENTH6,       //< 手轮最小单位长度X50
+    LENTH7,       //< 手轮最小单位长度X100
+
+}HANDWHEEL_LENTH;
+
+typedef union {
+    struct{
+        uint32_t type:8;//< 类型
+        uint32_t lenth:8;//< 单位长度
+        uint32_t res:15;//< 预留
+        uint32_t en:1;//< 使能
+    }bit;
+    uint32_t hand;
+}HANDWHEEL;
+
 /*******************************************************************************/
 static const uint32_t axis_cfg_addr[] = {
     ICAddr_Adapter_Para0, //<类型：系统；名字：电机1；结构：Axis_Config；地址：axis_cfg_addr；

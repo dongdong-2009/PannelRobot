@@ -641,6 +641,10 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
         emit machineConfigChanged();
     }
+//    if(!isAutoMode() && (addr >=  ICAddr_Read_Status0))
+//    {
+
+//    }
 }
 
 void PanelRobotController::OnkeyCheckTimeOut()

@@ -215,6 +215,7 @@ public:
     static void SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem item);
     static QString HostVersion() { return hostVersion_;}
     static void LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<quint32> axisData);
+    static quint32 MultiplexingConfig(int addr) { return multiplexingConfigs_.value(addr);}
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
@@ -235,6 +236,7 @@ private:
     int startIndex_;
     static QMap<int, quint32> iStatusMap_;
     static QMap<int, quint32> oStatusMap_;
+    static QMap<int, quint32> multiplexingConfigs_;
     static QQueue<ICRobotTransceiverData*> keyCommandList_;
     static QString hostVersion_;
 

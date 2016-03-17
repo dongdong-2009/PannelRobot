@@ -62,8 +62,8 @@ var CMD_POWER_OFF  = 0x017F;	// 所有逻辑电机关闭
 var CMD_POWER_ON0  = 0x0180;	// 第一个逻辑电机开机
 var CMD_POWER_ON  = 0x01FF;	// 所有逻辑电机开机
 
-var CMD_JOG_N0     = 0x0200;    // 关节坐标系，第一个轴反向点动
-var CMD_JOG_P0     = 0x0280;	// 关节坐标系，第一个轴正向点动
+var CMD_WHEEL_JOG_P0     = 0x0200;  // 手轮正转
+var CMD_WHEEL_JOG_N0     = 0x0201;          // 手轮反转
 
 var CMD_JOG_PX     = 0x0300;	// 直角坐标系位置轴，X轴正向点动
 var CMD_JOG_PY     = 0x0301;	// 直角坐标系位置轴，Y轴正向点动
@@ -230,28 +230,15 @@ keyStructs.put(KNOB_MANUAL, new KeyStruct(KNOB_MANUAL    , CMD_MANUAL   , false,
 keyStructs.put(KNOB_SETTINGS, new KeyStruct(KNOB_SETTINGS    , CMD_MANUAL   , false, Command_Type));
 
 
-//keyStructs.put(KEY_X1Sub, new KeyStruct(KEY_X1Sub, 0xCB, false, Axis_Type));
-//keyStructs.put(KEY_X1Add, new KeyStruct(KEY_X1Add, 0xCC, false, Axis_Type));
-//keyStructs.put(KEY_Y1Sub, new KeyStruct(KEY_Y1Sub, 0xCD, false, Axis_Type));
-//keyStructs.put(KEY_Y1Add, new KeyStruct(KEY_Y1Add, 0xCE, false, Axis_Type));
-//keyStructs.put(KEY_ZSub,  new KeyStruct(KEY_ZSub,  0xCF, false, Axis_Type));
-//keyStructs.put(KEY_ZAdd,  new KeyStruct(KEY_ZAdd,  0xD1, false, Axis_Type));
-//keyStructs.put(KEY_X2Sub, new KeyStruct(KEY_X2Sub, 0xD4, false, Axis_Type));
-//keyStructs.put(KEY_X2Add, new KeyStruct(KEY_X2Add, 0xD5, false, Axis_Type));
-//keyStructs.put(KEY_Y2Sub, new KeyStruct(KEY_Y2Sub, 0xD6, false, Axis_Type));
-//keyStructs.put(KEY_Y2Add, new KeyStruct(KEY_Y2Add, 0xD7, false, Axis_Type));
-//keyStructs.put(KEY_CSub,  new KeyStruct(KEY_CSub,  0xD2, false, Axis_Type));
-//keyStructs.put(KEY_CAdd,  new KeyStruct(KEY_CAdd,  0xD3, false, Axis_Type));
-
 keyStructs.put(KEY_F1, new KeyStruct(KEY_F1, 0, false, Menu_Type));
 keyStructs.put(KEY_F2, new KeyStruct(KEY_F2, 0, false, Menu_Type));
 keyStructs.put(KEY_F3, new KeyStruct(KEY_F3, 0, false, Menu_Type));
 keyStructs.put(KEY_F4, new KeyStruct(KEY_F4, 0, false, Menu_Type));
 keyStructs.put(KEY_F5, new KeyStruct(KEY_F5, 0, false, Menu_Type));
-keyStructs.put(PULLY_UP, new KeyStruct(PULLY_UP, 0, false, Nomal_Type));
-keyStructs.put(PULLY_DW, new KeyStruct(PULLY_DW, 0, false, Nomal_Type));
-keyStructs.put(0x01000037, new KeyStruct(0x01000037, 0, false, Nomal_Type)); // for destop F8
-keyStructs.put(0x01000039, new KeyStruct(0x01000039, 0, false, Nomal_Type)); // for destop F10
+keyStructs.put(PULLY_UP, new KeyStruct(PULLY_UP, CMD_WHEEL_JOG_N0, false, Command_Type));
+keyStructs.put(PULLY_DW, new KeyStruct(PULLY_DW, CMD_WHEEL_JOG_P0, false, Command_Type));
+keyStructs.put(0x01000037, new KeyStruct(0x01000037, CMD_WHEEL_JOG_N0, false, Command_Type)); // for destop F8
+keyStructs.put(0x01000039, new KeyStruct(0x01000039, CMD_WHEEL_JOG_P0, false, Command_Type)); // for destop F10
 
 //keyStructs.put(KEY_Run, new KeyStruct(KEY_Run   , 0xC1, false, Command_Type));
 //keyStructs.put(KEY_Stop, new KeyStruct(KEY_Stop  , 0xC2, false, Command_Type));

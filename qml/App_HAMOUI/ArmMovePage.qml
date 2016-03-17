@@ -11,6 +11,7 @@ Rectangle {
     width: parent.width
     height: parent.height
     property int currentType: 0
+    property int pullyAxis: -1
     function sendCommand(cmd, type){
         if(currentType !== type){
             currentType = type;
@@ -27,58 +28,99 @@ Rectangle {
     border.color: "gray"
     color: "#A0A0F0"
 
-    Column{
+    Row{
         id:speedSection
         anchors.right: parent.right
-        anchors.rightMargin: 40
-        spacing: 4
-        Row{
-            spacing: 2
-            Text{
-                id:localType
-                text: currentType
-            }
-            Text {
-                id:hostType
-                onVisibleChanged: {
-                    if(visible){
-                        text = panelRobotController.debug_GetAddrValue(24);
-                    }
-                }
-            }
+        anchors.rightMargin: 60
+        spacing: 2
 
+        Text {
+            text: qsTr("Speed")
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        Rectangle{
+            border.width: 1
+            border.color: "gray"
+            width: 70
+            height: 32
+            color: "lime"
             Text {
-                text: qsTr("Speed")
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Rectangle{
-                border.width: 1
-                border.color: "gray"
-                width: 70
-                height: 32
-                color: "lime"
-                Text {
-                    id: speed
-                    text: "10.0"
-                    anchors.centerIn: parent
+                id: speed
+                text: "10.0"
+                anchors.centerIn: parent
 
-                }
-            }
-            Text {
-                text: "%"
-                anchors.verticalCenter: parent.verticalCenter
             }
         }
+        Text {
+            text: "%"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Column{
+        id:tuneSection
+        anchors.top: speedSection.bottom
+        anchors.left: verSpliteLine.left
+        anchors.leftMargin: 4
+
         ICCheckBox{
             id:tuneSel
             text: qsTr("Tune Sel")
-//            visible: false
+            //            visible: false
             onIsCheckedChanged: {
                 keyboardSection.visible = !isChecked;
             }
             onVisibleChanged: {
                 if(!visible)
                     setChecked(false)
+            }
+        }
+        Row{
+            spacing: 4
+            Text {
+                id:tuneSelLabel
+                text: qsTr("Tune Speed:")
+            }
+            ICButtonGroup{
+                isAutoSize: false
+                mustChecked: true
+                checkedIndex: 0
+                layoutMode: 2
+                height: tuneSpeedSel.height
+                width: tuneSpeedSel.width
+                onCheckedItemChanged: {
+                    if(checkedItem == tuneSpeedX1)
+                        panelRobotController.setPullySpeed(1);
+                    else if(checkedItem == tuneSpeedX5)
+                        panelRobotController.setPullySpeed(5);
+                    else if(checkedItem == tuneSpeedX10)
+                        panelRobotController.setPullySpeed(10);
+                    else if(checkedItem == tuneSpeedX50)
+                        panelRobotController.setPullySpeed(50)
+                }
+
+                Grid{
+                    id:tuneSpeedSel
+                    columns: 2
+                    spacing: 4
+                    ICCheckBox{
+                        id:tuneSpeedX1
+                        text:"X1"
+                        isChecked: true
+                    }
+                    ICCheckBox{
+                        id:tuneSpeedX5
+                        text:"X5"
+                    }
+                    ICCheckBox{
+                        id:tuneSpeedX10
+                        text:"X10"
+                    }
+                    ICCheckBox{
+                        id:tuneSpeedX50
+                        text:"X50"
+                    }
+                }
             }
         }
     }
@@ -101,7 +143,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
-
+            bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
 
         }
         ICButton {
@@ -112,7 +154,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
-
+            bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
 
         }
 
@@ -124,6 +166,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
+
         }
 
         ICButton {
@@ -134,6 +178,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
 
 
         }
@@ -148,6 +193,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+
         }
 
 
@@ -159,6 +206,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+
         }
 
 
@@ -170,7 +219,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
-
+            bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
 
         }
 
@@ -182,6 +231,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
         }
 
         ICButton {
@@ -192,6 +242,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
 
 
         }
@@ -204,6 +255,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
 
 
         }
@@ -216,6 +268,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
+
 
         }
 
@@ -227,6 +281,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
 
 
         }
@@ -241,6 +296,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Line Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
 
 
         }
@@ -253,6 +309,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Line Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
+
         }
 
 
@@ -264,6 +322,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Rotate U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
 
 
         }
@@ -276,8 +335,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Rotate U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.COMBINE_ARM_MOVE_TYPE)
-
-
+            bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
         }
 
         ICButton {
@@ -288,6 +346,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Line Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
 
         }
 
@@ -299,6 +358,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Line Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
+
         }
 
         ICButton {
@@ -309,6 +370,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Rotate V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
 
 
         }
@@ -321,6 +383,8 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Rotate V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
+
         }
 
 
@@ -332,6 +396,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Line X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
 
         }
 
@@ -343,6 +408,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Line X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
 
 
         }
@@ -355,6 +421,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Rotate W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
 
 
         }
@@ -367,6 +434,7 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Rotate W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.COMBINE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
 
         }
 
@@ -414,102 +482,129 @@ Rectangle {
             id:tuneSelGrid
             columns: 4
             spacing: 5
-            ICCheckBox {
+            ICButton {
                 id: zSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Z")
-                textPos: 2
+                bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_Z);
+                }
+
             }
-            ICCheckBox {
+            ICButton {
                 id: uSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("U")
-                textPos: 2
+                bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_U);
+                }
 
             }
-            ICCheckBox {
+            ICButton {
                 id: lineZSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Line Z")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_LZ);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: rotateUSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Rotate U")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_RU);
+                }
             }
 
-            ICCheckBox {
+            ICButton {
                 id: ySel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Y")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_Y);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: vSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("V")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_V);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: lineYSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Line Y")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_LY);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: rotateVSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Rotate V")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_RV);
+                }
             }
 
-            ICCheckBox {
+            ICButton {
                 id: xSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("X")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_X);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: wSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("W")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_W);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: lineXSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Line X")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_LX);
+                }
             }
-            ICCheckBox {
+            ICButton {
                 id: rotateWSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
                 text: qsTr("Rotate W")
-                textPos: 2
-
+                bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
+                onButtonClicked: {
+                    panelRobotController.setPullyAxis(AxisDefine.kAP_RW);
+                }
             }
         }
     }
@@ -525,10 +620,10 @@ Rectangle {
     }
     Rectangle{
         id:horSpliteLine
-        width: 300
+        width: 340
         height: 1
         color: "gray"
-        anchors.top: speedSection.bottom
+        anchors.top: tuneSection.bottom
         anchors.topMargin: 4
         x:verSpliteLine.x
     }
@@ -735,6 +830,15 @@ Rectangle {
         //            //            panelRobotController.syncConfigs();
         //        }
 
+    }
+
+    Timer{
+        id:refreshTimer
+        interval: 50; running: visible; repeat: true
+        onTriggered: {
+            pullyAxis = panelRobotController.getPullyAxis();
+
+        }
     }
 
     Component.onCompleted: {

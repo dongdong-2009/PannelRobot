@@ -534,6 +534,7 @@ Rectangle {
                 //                ShareData.knobStatus = key;
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
+//            console.log(Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);

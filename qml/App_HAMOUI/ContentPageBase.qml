@@ -142,6 +142,8 @@ Item {
                 else if (event.key === Keymap.KEY_F5){
                     menuItem5Triggered()
                     event.accepted = true;
+                }else{
+                    event.accepted = false;
                 }
             }
         }

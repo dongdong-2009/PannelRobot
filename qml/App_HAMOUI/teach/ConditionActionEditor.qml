@@ -23,7 +23,7 @@ Item {
     ]
 
     property  variant euYs : ["EuY010", "EuY011", "EuY012", "EuY013",
-    "EuY014", "EuY015", "EuY016", "EuY017", "EuY020", "EuY021", "EuY022", "EuY023"]
+        "EuY014", "EuY015", "EuY016", "EuY017", "EuY020", "EuY021", "EuY022", "EuY023"]
     property variant mYs: ["INY010"]
 
     property variant xs: [
@@ -46,7 +46,7 @@ Item {
         var ret = [];
         if(defineFlag.isChecked){
             var dflag = Teach.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
-//            Teach.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
+            //            Teach.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
             ret.push(Teach.generateFlagAction(dflag.flagID, dflag.descr));
             return ret;
         }
@@ -141,42 +141,51 @@ Item {
             ICButtonGroup{
                 id:typeGroup
                 spacing: 20
-                ICCheckBox{
-                    id:normalY
-                    text: qsTr("Y")
-                    isChecked: true
-                    visible:ys.length > 0
-                }
-                ICCheckBox{
-                    id:euY
-                    text: qsTr("EUY")
-                    visible: euYs.length > 0
-                }
-                ICCheckBox{
-                    id:mY
-                    text: qsTr("MY")
-                    visible: mYs.length > 0
-                }
-                ICCheckBox{
-                    id:normalX
-                    text: qsTr("X")
-                }
-                ICCheckBox{
-                    id:euX
-                    text: qsTr("EUX")
-                }
-                ICCheckBox{
-                    id:mX
-                    text: qsTr("MX")
-                }
-                ICCheckBox{
-                    id:counter
-                    text: qsTr("Counter")
-                }
+                ICFlickable{
+                    width: 650
+                    height: parent.height + 10
+                    contentWidth: parent.width
+                    contentHeight: parent.height
+                    flickDeceleration: Flickable.HorizontalFlick
+                    boundsBehavior: Flickable.StopAtBounds
+                    clip: true
+                    ICCheckBox{
+                        id:normalY
+                        text: qsTr("Y")
+                        isChecked: true
+                        visible:ys.length > 0
+                    }
+                    ICCheckBox{
+                        id:euY
+                        text: qsTr("EUY")
+                        visible: euYs.length > 0
+                    }
+                    ICCheckBox{
+                        id:mY
+                        text: qsTr("MY")
+                        visible: mYs.length > 0
+                    }
+                    ICCheckBox{
+                        id:normalX
+                        text: qsTr("X")
+                    }
+                    ICCheckBox{
+                        id:euX
+                        text: qsTr("EUX")
+                    }
+                    ICCheckBox{
+                        id:mX
+                        text: qsTr("MX")
+                    }
+                    ICCheckBox{
+                        id:counter
+                        text: qsTr("Counter")
+                    }
 
-                ICCheckBox{
-                    id:jump
-                    text: qsTr("Jump")
+                    ICCheckBox{
+                        id:jump
+                        text: qsTr("Jump")
+                    }
                 }
             }
             Rectangle{

@@ -511,6 +511,7 @@ Rectangle {
                 ICComboBox{
                     id:editing
                     z:100
+                    popupHeight: 350
                     property variant defaultPrograms: [qsTr("main"),
                         qsTr("Sub-1"),
                         qsTr("Sub-2"),

@@ -8,6 +8,7 @@ Rectangle {
     property int itemHeight: 32
     property int contentFontPixelSize: currentText.font.pixelSize
     property alias popupWidth: itemContainer.width
+    property int popupHeight: 0
 
     function currentText(){
         return currentIndex < 0 ?  "" : items[currentIndex];
@@ -95,7 +96,8 @@ Rectangle {
         anchors.top: currentText.bottom
         onVisibleChanged: {
             if(visible){
-                height = itemHeight * itemModel.count;
+                var realHeight = itemHeight * itemModel.count;
+                height = popupHeight == 0 ? realHeight : Math.min(realHeight, popupHeight);
                 var maxWidth = container.width - 10;
                 var item;
                 for(var i = 0; i < itemModel.count; ++i){

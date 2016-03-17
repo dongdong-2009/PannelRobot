@@ -914,7 +914,7 @@
     </message>
     <message>
         <source>Jump</source>
-        <translation>跳转</translation>
+        <translation>无条件跳转</translation>
     </message>
     <message>
         <source>Counter</source>

@@ -9,15 +9,25 @@ import "../ShareData.js" as ShareData
 
 ContentPageBase{
     id:programPageInstance
-    property int mode: ShareData.GlobalStatusCenter.getKnobStatus()
-    property bool isReadOnly: true
-    menuItemTexts:{
-        return isReadOnly ? ["", "", "", "", "", "",""]:
-        [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
+//    property int mode: ShareData.GlobalStatusCenter.getKnobStatus()
+//    property bool isReadOnly: true
+//    menuItemTexts:{
+//        return isReadOnly ? ["", "", "", "", "", "",""]:
+//        [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
+//    }
+
+    function setMenuItemTexts(isReadOnly){
+        menuItemTexts =  isReadOnly ? ["", "", "", "", "", "",""]:
+                [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
     }
 
     function onUserChanged(user){
-        isReadOnly = ( (mode === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
+        var isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
+        setMenuItemTexts(isReadOnly);
+    }
+
+    function onKnobChanged(knobStatus){
+        onUserChanged();
     }
 
     Rectangle{
@@ -78,28 +88,9 @@ ContentPageBase{
 
     Component.onCompleted: {
         ShareData.UserInfo.registUserChangeEvent(programPageInstance);
+        ShareData.GlobalStatusCenter.registeKnobChangedEvent(programPageInstance);
+
     }
 
-    Timer{
-        id:refreshTimer
-        interval: 50
-        running: parent.visible
-        repeat: true
-        onTriggered: {
-            mode = ShareData.GlobalStatusCenter.getKnobStatus();
-            if(mode === Keymap.KNOB_AUTO)
-                isReadOnly = true;
-            else if(!ShareData.UserInfo.currentHasMoldPerm())
-                isReadOnly = true;
-            else
-                isReadOnly = false;
-//            if(mode !== ShareData.GlobalStatusCenter.getKnobStatus()){
-//                mode = ShareData.GlobalStatusCenter.getKnobStatus();
-//                if(mode === Keymap.KNOB_AUTO)
-//                    isReadOnly = true;
-//                else if(ShareData.UserInfo.currentHasMoldPerm())
-//                    isReadOnly = false;
-//            }
-        }
-    }
+
 }

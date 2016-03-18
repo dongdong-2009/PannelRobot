@@ -12,7 +12,7 @@ Item {
     property  alias contentContainerHeight: contentContainer.height
 
 
-    focus: true
+//    focus: true
 
     signal menuItem1Triggered();
     signal menuItem2Triggered();
@@ -119,32 +119,32 @@ Item {
                     onItemTriggered: menuItem7Triggered()
                 }
             }
-            focus: true
-            Keys.onPressed: {
-                console.log("contentPage base key exec", event.key)
-                if (event.key === Keymap.KEY_F1) {
-                    menuItem1Triggered()
-                    event.accepted = true;
-                }
-                else if (event.key === Keymap.KEY_F2){
-                    menuItem2Triggered()
-                    event.accepted = true;
-                }
-                else if (event.key === Keymap.KEY_F3){
-                    menuItem3Triggered()
-                    event.accepted = true;
-                }
-                else if (event.key === Keymap.KEY_F4){
-                    menuItem4Triggered()
-                    event.accepted = true;
-                }
-                else if (event.key === Keymap.KEY_F5){
-                    menuItem5Triggered()
-                    event.accepted = true;
-                }else{
-                    event.accepted = false;
-                }
-            }
+//            focus: true
+//            Keys.onPressed: {
+//                console.log("contentPage base key exec", event.key)
+//                if (event.key === Keymap.KEY_F1) {
+//                    menuItem1Triggered()
+//                    event.accepted = true;
+//                }
+//                else if (event.key === Keymap.KEY_F2){
+//                    menuItem2Triggered()
+//                    event.accepted = true;
+//                }
+//                else if (event.key === Keymap.KEY_F3){
+//                    menuItem3Triggered()
+//                    event.accepted = true;
+//                }
+//                else if (event.key === Keymap.KEY_F4){
+//                    menuItem4Triggered()
+//                    event.accepted = true;
+//                }
+//                else if (event.key === Keymap.KEY_F5){
+//                    menuItem5Triggered()
+//                    event.accepted = true;
+//                }else{
+//                    event.accepted = false;
+//                }
+//            }
         }
     }
     onMenuItemTextsChanged: {

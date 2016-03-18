@@ -11,8 +11,10 @@ Item {
         menu.visible = true;
     }
     function onUserChanged(user){
-        var isEn = ShareData.UserInfo.currentHasUserPerm();
-        usermanegement.enabled = isEn;
+        var isuserEn = ShareData.UserInfo.currentHasUserPerm();
+        var issystemEn = ShareData.UserInfo.currentHasSystemPerm();
+        usermanegement.enabled = isuserEn;
+        maintainMenuBtn.enabled = issystemEn;
     }
     property variant pages: []
     Grid{
@@ -31,6 +33,7 @@ Item {
             id:maintainMenuBtn
             text: qsTr("Maintain")
             icon: "../images/settings_maintain.png"
+            enabled: false
         }
         CatalogButton{
             id:usermanegement

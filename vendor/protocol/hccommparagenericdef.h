@@ -402,7 +402,7 @@ typedef enum
     CMD_ORIGIN, // 原点模式
     CMD_RETURN, // 复归模式
 
-    CMD_STANDBY = 20, // 待机模式
+    CMD_STANDBY = 15, // 待机模式
 
     CMD_MANUAL_STOP = 0x0050,  // 手动运行停止
     CMD_MANUAL_START1        ,  // 手动运行主程序

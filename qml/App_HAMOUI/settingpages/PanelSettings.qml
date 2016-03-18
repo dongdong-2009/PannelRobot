@@ -11,7 +11,7 @@ Item {
         menu.visible = true;
     }
     function onUserChanged(user){
-        var isEn = ShareData.UserInfo.currentHasSystemPerm();
+        var isEn = ShareData.UserInfo.currentHasUserPerm();
         usermanegement.enabled = isEn;
     }
     property variant pages: []

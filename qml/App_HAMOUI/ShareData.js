@@ -106,6 +106,9 @@ UserInfo.currentHasMoldPerm = function(){
 UserInfo.currentHasSystemPerm = function(){
     return (UserInfo.current.perm & UserInfo.permType.system) > 0;
 }
+UserInfo.currentHasUserPerm = function(){
+    return (UserInfo.current.perm & UserInfo.permType.user) > 0;
+}
 UserInfo.users = function(){
     var db = getDatabase();
     var users = [];

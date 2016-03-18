@@ -8,4 +8,7 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    OriginReturnmsg.qml
+
 

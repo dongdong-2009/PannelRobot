@@ -21,7 +21,7 @@ MouseArea{
     Rectangle {
         id: continer
         width: 360
-        height: 160 + (warning.visible ? warning.height : 0)
+        height: 140 + (warning.visible ? warning.height : 0)
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
@@ -29,7 +29,7 @@ MouseArea{
 
         Grid{
             anchors.centerIn: parent
-            spacing: 8
+            spacing: 7
             columns: 2
             Text {
                 id: userNameLabel

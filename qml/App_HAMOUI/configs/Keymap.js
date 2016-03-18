@@ -34,6 +34,9 @@ var CMD_AUTO = 2; //< 自动命令
 var CMD_CONFIG = 3; //< 配置命令
 var CMD_IO = 4; // IO命令
 
+var CMD_ORIGIN = 5; // 原点模式
+var CMD_RETURN = 6; // 复归模式
+
 var CMD_STANDBY = 15; // 待机模式
 
 cmdHelper = 0x0050;

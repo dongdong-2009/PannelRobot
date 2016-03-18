@@ -345,7 +345,7 @@ public:
         return ErrInfoToJSON(ret);
     }
 
-    Q_INVOKABLE bool fixProgramOnAutoMode(int which, int line, const QString& lineContent);
+    Q_INVOKABLE bool fixProgramOnAutoMode(int which, int module,int line, const QString& lineContent);
 
     Q_INVOKABLE QString mainProgram() const
     {

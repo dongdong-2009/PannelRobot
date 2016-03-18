@@ -1134,18 +1134,24 @@ QPair<int, QList<int> > ICRobotMold::RunningStepToProgramLine(int which, int ste
     return qMakePair<int, QList<int> > (mID, steps);
 }
 
-ICMoldItem ICRobotMold::SingleLineCompile(int which, int step, const QString &lineContent, QPair<int, int> &hostStep)
+ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const QString &lineContent, QPair<int, int> &hostStep)
 {
     ICMoldItem  ret;
     if(which >= programs_.size())
         return ret;
-    hostStep = programs_.at(which).UIStepToRealStep(step);
+    int realStep = step;
+    if(module >= 0)
+    {
+        int moduleEntry = programs_.at(which).ModuleEntry(module);
+        realStep += moduleEntry;
+    }
+    hostStep = programs_.at(which).UIStepToRealStep(realStep);
     QJson::Parser parser;
     bool ok;
     QVariantMap result = parser.parse (lineContent.toLatin1(), &ok).toMap();
     if(!ok) return ret;
     int err;
-    ret = VariantToMoldItem(step, result, err);
+    ret = VariantToMoldItem(realStep, result, err);
     return ret;
 }
 

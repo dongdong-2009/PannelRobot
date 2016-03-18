@@ -388,7 +388,7 @@ public:
     QPair<int, QList<int> > RunningStepToProgramLine(int which, int step);
 
 
-    ICMoldItem SingleLineCompile(int which, int step, const QString& lineContent, QPair<int, int> &hostStep);
+    ICMoldItem SingleLineCompile(int which, int module, int step, const QString& lineContent, QPair<int, int> &hostStep);
 
 
     QVector<QVariantList> Counters() const { return counters_;}

@@ -268,10 +268,14 @@ Rectangle {
         var cM = currentModel();
         cM.setProperty(programListView.currentIndex, "mI_ActionObject", actionObject);
         if(ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO){
+            var mID = moduleSel.currentIndex == 0 ? -1: Utils.getValueFromBrackets(moduleSel.currentText());
             if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
+                                                         mID,
                                                          programListView.currentIndex,
                                                          JSON.stringify(actionObject))){
-                if(editing.currentIndex === 0)
+                if(mID >=0){
+                    saveModules();
+                }else if(editing.currentIndex === 0)
                     panelRobotController.saveMainProgram(modelToProgram(0));
                 else
                     panelRobotController.saveSubProgram(modelToProgram(editing.currentIndex));
@@ -322,17 +326,28 @@ Rectangle {
         return JSON.stringify(ret);
     }
 
+    function saveModules(){
+        var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
+        if(fun == null) return;
+        fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
+        var fJSON = Teach.functionManager.toJSON();
+        var eIJSON = panelRobotController.saveFunctions(fJSON);
+        var errInfo = JSON.parse(eIJSON)[fun.id];
+        return errInfo;
+    }
+
     function saveProgram(which){
         if(!hasInit) return;
         if(!hasModify) return;
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
-            var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
-            if(fun == null) return;
-            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-            var fJSON = Teach.functionManager.toJSON();
-            var eIJSON = panelRobotController.saveFunctions(fJSON);
-            errInfo = JSON.parse(eIJSON)[fun.id];
+            errInfo = saveModules();
+//            var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
+//            if(fun == null) return;
+//            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
+//            var fJSON = Teach.functionManager.toJSON();
+//            var eIJSON = panelRobotController.saveFunctions(fJSON);
+//            errInfo = JSON.parse(eIJSON)[fun.id];
             //            console.log(eIJSON);
         }else if(which == PData.kManualProgramIndex){
             var program = modelToProgramHelper(PData.kManualProgramIndex);
@@ -566,7 +581,7 @@ Rectangle {
                     text: qsTr("New M CMD")
                     visible: newModuleBtn.visible
                     height: editing.height
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     function onNewManualProgram(status){
                         tipBox.finished.disconnect(newManualProgram.onNewManualProgram);
                         if(status){
@@ -592,7 +607,7 @@ Rectangle {
                     text: qsTr("Del M CMD")
                     height: editing.height
                     visible: false
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     onButtonClicked: {
                         ManualProgramManager.manualProgramManager.removeProgramByName(editing.currentText());
                         editing.currentIndex = 0;

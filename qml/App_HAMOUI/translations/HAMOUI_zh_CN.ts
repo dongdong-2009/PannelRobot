@@ -808,6 +808,10 @@
         <source>W</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -927,13 +931,6 @@
     <message>
         <source>Auto Clear</source>
         <translation>自动清计数器</translation>
-    </message>
-</context>
-<context>
-    <name>ContentPageBase</name>
-    <message>
-        <source>text</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1941,10 +1938,6 @@
         <translation>登入</translation>
     </message>
     <message>
-        <source> </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>password is incorrect!!</source>
         <translation>密码错误!</translation>
     </message>
@@ -2075,6 +2068,17 @@
     </message>
     <message>
         <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OriginReturnmsg</name>
+    <message>
+        <source>top text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>bottom text</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2816,8 +2820,7 @@ please chose!</source>
     </message>
     <message>
         <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
-        <translation>请进入具体的设定页面进行设置,
-点击右下方的返回按钮返回上一层菜单</translation>
+        <translation>请进入具体的设定页面进行设置,点击右下方的返回按钮返回上一层菜单</translation>
     </message>
 </context>
 <context>
@@ -3865,6 +3868,18 @@ please chose!</source>
         <source>Sign in</source>
         <translation>登入</translation>
     </message>
+    <message>
+        <source>please press startup button to origin</source>
+        <translation>请按启动键原点复归.</translation>
+    </message>
+    <message>
+        <source>msgtext</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>please press startup button to return</source>
+        <translation>请按启动键复归.</translation>
+    </message>
 </context>
 <context>
     <name>maintainPage</name>
@@ -3962,6 +3977,10 @@ please chose!</source>
     <message>
         <source>sec</source>
         <translation>秒</translation>
+    </message>
+    <message>
+        <source>minute</source>
+        <translation>分</translation>
     </message>
 </context>
 </TS>

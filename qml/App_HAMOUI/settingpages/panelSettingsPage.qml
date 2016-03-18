@@ -203,7 +203,7 @@ Item{
             }
             ICLineEdit{
                 id:minute
-                unit:qsTr("min")
+                unit:qsTr("minute")
                 alignMode: 1
             }
             ICLineEdit{

@@ -689,10 +689,10 @@ QString PanelRobotController::currentRunningActionInfo(int which) const
     return hostStepToUILines(which, statusValue(stepAddrs.at(which)));
 }
 
-bool PanelRobotController::fixProgramOnAutoMode(int which, int line, const QString &lineContent)
+bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line, const QString &lineContent)
 {
     QPair<int, int> stepInfo;
-    ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, line, lineContent,stepInfo);
+    ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
     return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
 }
 

@@ -11,7 +11,7 @@ MouseArea{
     Rectangle {
         id: continer
         width: 360
-        height: 140
+        height: 60
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
@@ -20,10 +20,14 @@ MouseArea{
 
         Text {
             id: hinttext
+            anchors.centerIn: parent
         }
         Text {
             id: msgtext
             anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.bottomMargin: 6
+            anchors.rightMargin: 6
         }
 
     }

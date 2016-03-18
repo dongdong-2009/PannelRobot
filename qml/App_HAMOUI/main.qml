@@ -613,6 +613,7 @@ Rectangle {
                 originreturnmsgmsg.visible = true;
             }else originreturnmsgmsg.visible = false;
 
+
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;

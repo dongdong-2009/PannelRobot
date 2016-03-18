@@ -12,7 +12,6 @@ import "../ICOperationLog.js" as ICOperationLog
 Rectangle {
     id:recordPage
     color: Theme.defaultTheme.BASE_BG
-
     states: [
         State {
             name: "exportMode"
@@ -206,15 +205,25 @@ Rectangle {
         anchors.left: recordsView.right
         anchors.leftMargin: -1
         y:recordsView.y
+        function inputtest(text){
+            var name = /^[A-Za-z0-9][A-Za-z0-9-_]*$/;
+            if(!name.test(text)){
+                tipDialog.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
+                return;
+            }
+        }
+
         ICButton{
             id:loadRecord
             text: qsTr("Load")
             height: 40
             onButtonClicked: {
+                operationContainer.inputtest(newName.text);
                 panelRobotController.loadRecord(selectName.text);
                 ICOperationLog.appendOperationLog(qsTr("Load record ") + selectName.text);
             }
         }
+
         ICButton{
             id:newRecord
             text: qsTr("New")
@@ -224,13 +233,10 @@ Rectangle {
                     tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
                     return;
                 }
-                var name = /^[^_-][A-Za-z0-9-_]*$/
+                operationContainer.inputtest(newName.text);
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram()));
-                if(!name.test(newName.text)){
-                    tipDialog.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
-                    return;
-                }else if(ret.errno != 0){
+                if(ret.errno != 0){
                     tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
                 }else{
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));

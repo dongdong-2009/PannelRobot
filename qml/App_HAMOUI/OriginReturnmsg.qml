@@ -1,6 +1,4 @@
 import QtQuick 1.1
-import "../ICCustomElement"
-import "ShareData.js" as ShareData
 
 MouseArea{
     id:container
@@ -22,12 +20,10 @@ MouseArea{
 
         Text {
             id: hinttext
-            text: qsTr("top text")
         }
         Text {
             id: msgtext
             anchors.bottom: parent.bottom
-            text: qsTr("bottom text")
         }
 
     }

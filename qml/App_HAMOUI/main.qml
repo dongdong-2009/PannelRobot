@@ -604,8 +604,7 @@ Rectangle {
                 originreturnmsgmsg.hinttext = qsTr("please press startup button to origin");
                 originreturnmsgmsg.msgtext = qsTr("msgtext");
                 originreturnmsgmsg.visible = true;
-            }else originreturnmsgmsg.visible = false;
-            if(panelRobotController.currentMode() == Keymap.CMD_RETURN){
+            }else if(panelRobotController.currentMode() == Keymap.CMD_RETURN){
                 originreturnmsgmsg.hinttext = qsTr("please press startup button to return");
                 originreturnmsgmsg.msgtext = qsTr("msgtext");
                 originreturnmsgmsg.visible = true;

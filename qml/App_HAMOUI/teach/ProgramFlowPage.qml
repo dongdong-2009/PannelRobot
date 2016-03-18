@@ -75,6 +75,7 @@ Rectangle {
             insertActionToList(actionObjects[i]);
         }
         repaintProgramItem(currentModel());
+        programListView.positionViewAtIndex(programListView.currentIndex, ListView.Center);
         //        var cI = programListView.currentIndex;
         //        var oCI = cI;
         //        if(cI < 0)return;

@@ -228,7 +228,7 @@ Rectangle {
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram()));
                 if(!name.test(newName.text)){
-                    tipDialog.warning(qsTr("name must be word number or underline"), qsTr("OK"));
+                    tipDialog.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
                     return;
                 }else if(ret.errno != 0){
                     tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));

@@ -78,6 +78,12 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
     }
 }
 
+void ICVirtualKeyboard::showEvent(QShowEvent *e)
+{
+    ui->inputEdit->setFocus();
+    QWidget::showEvent(e);
+}
+
 void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
 {
     event->accept();

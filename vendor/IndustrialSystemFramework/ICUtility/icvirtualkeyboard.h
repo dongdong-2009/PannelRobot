@@ -33,6 +33,7 @@ signals:
     void reject();
 
 protected:
+    void showEvent(QShowEvent *e);
     void changeEvent(QEvent *e);
     void closeEvent(QCloseEvent * event);
 

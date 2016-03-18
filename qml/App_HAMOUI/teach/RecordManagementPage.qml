@@ -226,7 +226,12 @@ Rectangle {
                 }
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram()));
-                recordsModel.append(recordsView.createRecordItem(ret.recordName, ret.createDatetime));
+                if(ret.errno != 0){
+                    tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
+                }else{
+                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
+                    recordsView.positionViewAtBeginning();
+                }
             }
         }
         ICButton{
@@ -242,7 +247,12 @@ Rectangle {
                 //                                                recordsModel.get(recordsView.currentIndex).name)
                 var ret = JSON.parse(panelRobotController.copyRecord(newName.text,
                                                                      recordsModel.get(recordsView.currentIndex).name));
-                recordsModel.append(recordsView.createRecordItem(ret.recordName, ret.createDatetime));
+                if(ret.errno != 0){
+                    tipDialog.warning(qsTr("Copy record fail! Err") + ret.errno, qsTr("OK"));
+                }else{
+                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
+                    recordsView.positionViewAtBeginning();
+                }
 
             }
         }

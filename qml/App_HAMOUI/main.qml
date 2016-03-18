@@ -489,7 +489,7 @@ Rectangle {
         menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
         menuOperation.enabled = !isAuto;
 //        mainHeader.setRecordItemEnabled(!isAuto);
-        onUserChanged();
+        onUserChanged(ShareData.UserInfo.current);
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) {
             menuProgram.setChecked(true);
@@ -504,6 +504,9 @@ Rectangle {
 
     function onUserChanged(user){
         var isRecordEn = ShareData.UserInfo.currentHasMoldPerm() && ShareData.GlobalStatusCenter.getKnobStatus() !== Keymap.KNOB_AUTO;
+
+        menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm()
+
         mainHeader.setRecordItemEnabled(isRecordEn);
         if(!isRecordEn)
             recordPageInBtn.clicked();

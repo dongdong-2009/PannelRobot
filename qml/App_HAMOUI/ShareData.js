@@ -109,6 +109,10 @@ UserInfo.currentHasSystemPerm = function(){
 UserInfo.currentHasUserPerm = function(){
     return (UserInfo.current.perm & UserInfo.permType.user) > 0;
 }
+UserInfo.isCurrentNoPerm = function(){
+    return UserInfo.current.perm ==  UserInfo.permType.op;
+}
+
 UserInfo.users = function(){
     var db = getDatabase();
     var users = [];

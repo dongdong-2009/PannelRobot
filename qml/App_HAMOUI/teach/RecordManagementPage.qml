@@ -224,9 +224,13 @@ Rectangle {
                     tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
                     return;
                 }
+                var name = /^[^_-][A-Za-z0-9-_]*$/
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram()));
-                if(ret.errno != 0){
+                if(!name.test(newName.text)){
+                    tipDialog.warning(qsTr("name must be word number or underline"), qsTr("OK"));
+                    return;
+                }else if(ret.errno != 0){
                     tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
                 }else{
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));

@@ -209,8 +209,9 @@ Rectangle {
             var name = /^[A-Za-z0-9][A-Za-z0-9-_]*$/;
             if(!name.test(text)){
                 tipDialog.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
-                return;
+                return  false;
             }
+            return true;
         }
 
         ICButton{
@@ -218,7 +219,6 @@ Rectangle {
             text: qsTr("Load")
             height: 40
             onButtonClicked: {
-                operationContainer.inputtest(newName.text);
                 panelRobotController.loadRecord(selectName.text);
                 ICOperationLog.appendOperationLog(qsTr("Load record ") + selectName.text);
             }
@@ -233,7 +233,10 @@ Rectangle {
                     tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
                     return;
                 }
-                operationContainer.inputtest(newName.text);
+                if(!operationContainer.inputtest(newName.text)){
+                    return;
+                }
+
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram()));
                 if(ret.errno != 0){
@@ -255,6 +258,9 @@ Rectangle {
                 }
                 //                panelRobotController.copyRecord(newName.text,
                 //                                                recordsModel.get(recordsView.currentIndex).name)
+                if(!operationContainer.inputtest(newName.text)){
+                    return;
+                }
                 var ret = JSON.parse(panelRobotController.copyRecord(newName.text,
                                                                      recordsModel.get(recordsView.currentIndex).name));
                 if(ret.errno != 0){

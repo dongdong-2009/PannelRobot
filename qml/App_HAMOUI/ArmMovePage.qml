@@ -62,11 +62,12 @@ Rectangle {
         anchors.top: speedSection.bottom
         anchors.left: verSpliteLine.left
         anchors.leftMargin: 4
+        spacing: 6
 
         ICCheckBox{
             id:tuneSel
             text: qsTr("Tune Sel")
-            //            visible: false
+            font.pixelSize: 18
             onIsCheckedChanged: {
                 keyboardSection.visible = !isChecked;
             }
@@ -80,6 +81,7 @@ Rectangle {
             Text {
                 id:tuneSelLabel
                 text: qsTr("Tune Speed:")
+                font.pixelSize: 16
             }
             ICButtonGroup{
                 isAutoSize: false
@@ -102,7 +104,7 @@ Rectangle {
                 Grid{
                     id:tuneSpeedSel
                     columns: 2
-                    spacing: 4
+                    spacing: 10
                     ICCheckBox{
                         id:tuneSpeedX1
                         text:"X1"
@@ -624,13 +626,13 @@ Rectangle {
         height: 1
         color: "gray"
         anchors.top: tuneSection.bottom
-        anchors.topMargin: 4
+        anchors.topMargin: 6
         x:verSpliteLine.x
     }
     Item{
         id:pathTestSection
         anchors.top:  horSpliteLine.bottom;
-        anchors.topMargin: 2
+        anchors.topMargin: 6
         x:horSpliteLine.x + 6
         ICButtonGroup{
             id:functionSel

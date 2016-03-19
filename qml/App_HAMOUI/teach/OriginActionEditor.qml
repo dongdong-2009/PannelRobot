@@ -18,9 +18,6 @@ Rectangle {
         var axis = pData.axisEditors;
         var axisActionInfo;
         var editor
-//        if(isSyncBox.getChecked()){
-//            ret.push(Teach.generateSyncBeginAction());
-//        }
         for(var i = 0; i < axis.length; ++i){
             editor = axis[i];
             if(editor.axisItem.visible){
@@ -33,17 +30,9 @@ Rectangle {
                                                            axisActionInfo.ps,
                                                            axisActionInfo.speed,
                                                            axisActionInfo.delay));
-                    console.log("hello11" + axisActionInfo.ps.text + "" + axisActionInfo.speed)
                 }
-//                else{
-//                    ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
-//                                                                                        axisActionInfo.delay));
-//                }
             }
         }
-//        if(isSyncBox.getChecked()){
-//            ret.push(Teach.generateSyncEndAction());
-//        }
         return ret;
     }
 
@@ -118,8 +107,6 @@ Rectangle {
         axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
         axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-//        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
-//        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
     }
 }

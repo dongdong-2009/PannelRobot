@@ -308,6 +308,7 @@ Rectangle {
                     text: qsTr("Type3")
                     height: parent.height
                     width: parent.height
+                    visible: false
                 }
             }
 

@@ -7,6 +7,7 @@ Item {
     property bool useCustomClickHandler: false
     property bool isEditable: true
     property int textPos: 0
+    property alias font: text.font
 
     signal clicked();
 

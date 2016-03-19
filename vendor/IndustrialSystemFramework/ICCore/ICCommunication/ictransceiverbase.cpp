@@ -65,7 +65,7 @@ bool ICTransceiverBase::Write(const ICTransceiverData *data)
     if(IsCommunicateDebug())
     {
         lastWriteFrame_.clear();
-        lastWriteFrame_ += "Wrte Size:" + QByteArray::number(size);
+        lastWriteFrame_ += "Wrte Size:" + QByteArray::number(static_cast<quint32>(size));
         for(int i = 0; i < static_cast<int>(size); ++i)
         {
             if(IsHexLogFormat())

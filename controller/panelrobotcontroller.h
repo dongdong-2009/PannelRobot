@@ -6,11 +6,14 @@
 #include <QSettings>
 #include "icrobotmold.h"
 #include "icrobotvirtualhost.h"
-#include <QtDeclarative>
+//#include <QtDeclarative>
 #include <QScriptEngine>
 #include <QSharedPointer>
 #include <QTimer>
 #include <QFileSystemWatcher>
+#include <QSplashScreen>
+#include <QTranslator>
+#include <QWidget>
 #include "icdatatype.h"
 #include "icparameterscache.h"
 #include "qtquick1applicationviewer.h"
@@ -18,7 +21,9 @@
 #include "iclog.h"
 
 #ifndef Q_WS_WIN32
+#ifndef Q_OS_MAC
 #include <linux/input.h>
+#endif
 #endif
 
 
@@ -531,6 +536,7 @@ public:
     Q_INVOKABLE void readCurrentKnobValue() const
     {
 #ifndef Q_WS_WIN32
+#ifndef Q_OS_MAC
         int keyFD_ = open("/dev/input/event1", O_RDWR);
         struct input_event inputEvent;
         inputEvent.type = EV_SYN; //__set_bit
@@ -538,6 +544,7 @@ public:
         inputEvent.value = 1;
         write(keyFD_,&inputEvent,sizeof(inputEvent));
         ::close(keyFD_);
+#endif
 #endif
     }
 
@@ -617,7 +624,16 @@ public:
 
     void InitMainView();
 
-    QWidget* MainView() { return mainView_;}
+//    QDeclarativeView* MainView() { return mainView_;}
+    QWidget* MainView()
+    {
+#ifdef QT5
+        QWidget *container = QWidget::createWindowContainer(mainView_);
+        return container;
+#else
+        return mainView_;
+#endif
+    }
 
 signals:
     //    void currentMoldChanged(QString);

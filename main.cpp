@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QDir>
 #include "panelrobotcontroller.h"
 #include "icsplashscreen.h"
 #include <QDebug>
@@ -6,16 +7,27 @@
 
 ICLog iclog("RobotPanel.debuglog", 1024 * 1024);
 
+#ifdef QT5
+void appMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    iclog.MessageOutput(type, msg.toUtf8());
+}
+#else
 void appMessageOutput(QtMsgType type, const char *msg)
 {
     iclog.MessageOutput(type, msg);
 }
+#endif
 
 int main(int argc, char *argv[])
 {
 //    iclog.SetMaxSpace(10*1024);
     iclog.Log("App Run");
+#ifdef QT5
+    qInstallMessageHandler(appMessageOutput);
+#else
     qInstallMsgHandler(appMessageOutput);
+#endif
     QApplication app(argc, argv);
     app.setOrganizationName("SZHC");
     app.setApplicationName("RobotPanel");
@@ -41,7 +53,9 @@ int main(int argc, char *argv[])
     splash->show();
     PanelRobotController robotController(splash, &iclog);
     robotController.Init();
+#ifndef QT5
     splash->finish(robotController.MainView());
+#endif
     delete splash;
 
     return app.exec();

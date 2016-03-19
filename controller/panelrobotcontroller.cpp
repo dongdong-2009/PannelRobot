@@ -949,7 +949,10 @@ void PanelRobotController::OnHostUpdateFinished(QString)
 {
     qDebug("finised");
     disconnect(&hostUpdateFinishedWatcher_, SIGNAL(directoryChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
+#ifdef QT5
+#else
     mainView_->repaint();
+#endif
     mainView_->show();
     qApp->processEvents();
     host_->StartCommunicate();

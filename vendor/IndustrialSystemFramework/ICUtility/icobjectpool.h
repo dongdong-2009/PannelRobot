@@ -2,7 +2,7 @@
 #define ICOBJECTPOOL_H
 
 #include "ICUtility_global.h"
-#include <malloc.h>
+//#include <malloc.h>
 #include <QList>
 
 template <class T>

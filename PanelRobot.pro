@@ -61,7 +61,7 @@ include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 include(vendor/IndustrialSystemFramework/ICCore/ICCore.pri)
 include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
 include(vendor/IndustrialSystemFramework/QJson/QJson.pri)
-include(vendor/qwt/qwt.pri)
+#include(vendor/qwt/qwt.pri)
 
 include(virtualhost/virtualhost.pri)
 include(datamanerger/datamanerger.pri)

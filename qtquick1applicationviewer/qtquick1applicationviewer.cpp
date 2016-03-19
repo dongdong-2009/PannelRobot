@@ -13,9 +13,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QApplication>
-#include <QDeclarativeComponent>
-#include <QDeclarativeEngine>
-#include <QDeclarativeContext>
+
 
 #include <qplatformdefs.h> // MEEGO_EDITION_HARMATTAN
 
@@ -54,6 +52,15 @@ QString QtQuick1ApplicationViewerPrivate::adjustPath(const QString &path)
     return path;
 }
 
+#ifdef QT5
+QtQuick1ApplicationViewer::QtQuick1ApplicationViewer(QWindow *parent)
+    : QDeclarativeView(parent)
+    , d(new QtQuick1ApplicationViewerPrivate())
+{
+    connect(engine(),SIGNAL(quit()),SLOT(close()));
+    setResizeMode(QDeclarativeView::SizeRootObjectToView);
+}
+#else
 QtQuick1ApplicationViewer::QtQuick1ApplicationViewer(QWidget *parent)
     : QDeclarativeView(parent)
     , d(new QtQuick1ApplicationViewerPrivate())
@@ -61,6 +68,7 @@ QtQuick1ApplicationViewer::QtQuick1ApplicationViewer(QWidget *parent)
     connect(engine(), SIGNAL(quit()), SLOT(close()));
     setResizeMode(QDeclarativeView::SizeRootObjectToView);
 }
+#endif
 
 QtQuick1ApplicationViewer::~QtQuick1ApplicationViewer()
 {

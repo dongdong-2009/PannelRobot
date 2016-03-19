@@ -11,7 +11,20 @@
 #ifndef QTQUICK1APPLICATIONVIEWER_H
 #define QTQUICK1APPLICATIONVIEWER_H
 
+#ifdef QT5
+#include <QObject>
+#include <QQMLComponent>
+#include <QQMLEngine>
+#include <QQMLContext>
+#include <QQuickView>
+typedef QQuickView QDeclarativeView;
+#else
+#include <QDeclarativeComponent>
+#include <QDeclarativeEngine>
+#include <QDeclarativeContext>
 #include <QDeclarativeView>
+
+#endif
 
 class QtQuick1ApplicationViewer : public QDeclarativeView
 {
@@ -23,8 +36,11 @@ public:
         ScreenOrientationLockLandscape,
         ScreenOrientationAuto
     };
-
+#ifdef QT5
+    explicit QtQuick1ApplicationViewer(QWindow *parent = 0);
+#else
     explicit QtQuick1ApplicationViewer(QWidget *parent = 0);
+#endif
     virtual ~QtQuick1ApplicationViewer();
 
     static QtQuick1ApplicationViewer *create();

@@ -27,6 +27,14 @@ Item {
         border.width: 1
         border.color: "black"
         color: isChecked ? "lightgreen" :"white"
+        Image{
+            id:checkedImage
+            source: "images/checked.svg"
+            width:parent.width + 6
+            height:parent.height + 6
+            visible: isChecked
+            y:-2
+        }
     }
     Text {
         id: text

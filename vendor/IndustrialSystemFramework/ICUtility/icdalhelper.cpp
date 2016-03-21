@@ -817,7 +817,7 @@ bool ICDALHelper::SaveMold(const QString &moldName, int which, const QString &pr
 QVector<QVariantList> ICDALHelper::GetMoldCounterDef(const QString &name)
 {
     QSqlQuery query;
-    query.exec("SELECT * FROM " + MoldConfigNameWrapper(MoldCounterTableName(name)));
+    query.exec("SELECT id, name, current, target FROM " + MoldConfigNameWrapper(MoldCounterTableName(name)));
     QVector<QVariantList> ret;
     QVariantList tmp;
     while(query.next())

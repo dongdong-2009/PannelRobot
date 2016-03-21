@@ -171,19 +171,7 @@ Rectangle {
                                 anchors.verticalCenter: parent.verticalCenter
 
                             }
-                            ICLineEdit{
-                                text:target
-                                inputWidth: headerTarget.width
-                                anchors.verticalCenter: parent.verticalCenter
-                                onEditFinished: {
-                                    counterview.currentIndex = index;
-                                    var md = counterModel.get(counterview.currentIndex);
-                                    md.target = text;
-                                    Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
-                                    panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
-                                    counterUpdated(md.id);
-                                }
-                            }
+
                             ICLineEdit{
                                 text: current
                                 inputWidth: headerCurrent.width
@@ -192,6 +180,21 @@ Rectangle {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
                                     md.current = text;
+                                    console.log("current", md.target, md.current, text)
+                                    Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
+                                    panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
+                                    counterUpdated(md.id);
+                                }
+                            }
+                            ICLineEdit{
+                                text:target
+                                inputWidth: headerTarget.width
+                                anchors.verticalCenter: parent.verticalCenter
+                                onEditFinished: {
+                                    counterview.currentIndex = index;
+                                    var md = counterModel.get(counterview.currentIndex);
+                                    md.target = text;
+                                    console.log("target", md.target, md.current, text)
                                     Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
                                     counterUpdated(md.id);

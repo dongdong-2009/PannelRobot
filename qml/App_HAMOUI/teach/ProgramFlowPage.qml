@@ -1611,9 +1611,9 @@ Rectangle {
                         onClicked: {
                             if(isChecked){
                                 singleCycle.setChecked(false)
-                                panelRobotController.setAutoRunningMode(editing.currentIndex, 0);
-                            }else
                                 panelRobotController.setAutoRunningMode(editing.currentIndex, Keymap.kAM_SINGLE_STEP_MODE);
+                            }else
+                                panelRobotController.setAutoRunningMode(editing.currentIndex, 0);
 
                         }
                     }
@@ -1640,9 +1640,10 @@ Rectangle {
                         onClicked: {
                             if(isChecked){
                                 singleStep.setChecked(false)
-                                panelRobotController.setAutoRunningMode(editing.currentIndex, 0);
-                            }else
                                 panelRobotController.setAutoRunningMode(editing.currentIndex, Keymap.kAM_SINGLE_CYCLE_MODE);
+                            }else
+                                panelRobotController.setAutoRunningMode(editing.currentIndex, 0);
+
 
                         }
                     }

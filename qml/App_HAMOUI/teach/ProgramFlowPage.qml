@@ -265,7 +265,7 @@ Rectangle {
     }
 
     function onEditConfirm(actionObject){
-//        currentModelData().mI_ActionObject = actionObject;
+        //        currentModelData().mI_ActionObject = actionObject;
         var cM = currentModel();
         cM.setProperty(programListView.currentIndex, "mI_ActionObject", actionObject);
         if(ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO){
@@ -343,12 +343,12 @@ Rectangle {
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
-//            var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
-//            if(fun == null) return;
-//            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-//            var fJSON = Teach.functionManager.toJSON();
-//            var eIJSON = panelRobotController.saveFunctions(fJSON);
-//            errInfo = JSON.parse(eIJSON)[fun.id];
+            //            var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
+            //            if(fun == null) return;
+            //            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
+            //            var fJSON = Teach.functionManager.toJSON();
+            //            var eIJSON = panelRobotController.saveFunctions(fJSON);
+            //            errInfo = JSON.parse(eIJSON)[fun.id];
             //            console.log(eIJSON);
         }else if(which == PData.kManualProgramIndex){
             var program = modelToProgramHelper(PData.kManualProgramIndex);
@@ -490,18 +490,18 @@ Rectangle {
     //                           new Teach.ProgramModelItem(actionObject));
     //    }
 
-//    WorkerScript{
-//        id:repaintThread
-//        source: "repaintProgram.js"
-//        onMessage: {
-//            var toRepainLine = messageObject.toRepainLine;
-//            var cM = currentModel();
-//            for(var line in toRepainLine){
-//                console.log(line, toRepainLine[line]);
-////                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
-//            }
-//        }
-//    }
+    //    WorkerScript{
+    //        id:repaintThread
+    //        source: "repaintProgram.js"
+    //        onMessage: {
+    //            var toRepainLine = messageObject.toRepainLine;
+    //            var cM = currentModel();
+    //            for(var line in toRepainLine){
+    //                console.log(line, toRepainLine[line]);
+    ////                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
+    //            }
+    //        }
+    //    }
 
     Column{
         id:container
@@ -619,7 +619,7 @@ Rectangle {
                 ICComboBox{
                     id: moduleSel
                     z:editing.z - 1
-                    width: 180
+                    width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
 
@@ -716,6 +716,28 @@ Rectangle {
                     text: qsTr("Follow ?")
                     visible: false
                 }
+
+//                ICCheckBox{
+//                    id:singleStep
+//                    text:qsTr("S Step")
+//                    onClicked: {
+//                        if(isChecked){
+//                            singleCycle.setChecked(false);
+//                        }
+//                        panelRobotController.setAutoRunningMode(isChecked ? 1:0);
+//                    }
+//                }
+
+//                ICCheckBox{
+//                    id:singleCycle
+//                    text:qsTr("S Cycle")
+//                    onClicked: {
+//                        if(isChecked){
+//                            singleStep.setChecked(false);
+//                        }
+//                    }
+//                }
+
             }
 
             Row{
@@ -987,7 +1009,7 @@ Rectangle {
 
                         onButtonClicked: {
                             var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-//                            var toInsert = currentModelData().mI_ActionObject;
+                            //                            var toInsert = currentModelData().mI_ActionObject;
                             insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
                             repaintProgramItem(currentModel());
@@ -1029,12 +1051,12 @@ Rectangle {
                             }
 
                             if(modelObject.mI_ActionObject.action === Teach.actions.ACT_COMMENT){
-//                                modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
+                                //                                modelObject.mI_ActionObject = modelObject.mI_ActionObject.commentAction;
                                 cM.setProperty(programListView.currentIndex, "mI_ActionObject", modelObject.mI_ActionObject.commentAction);
                             }
                             else{
                                 cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
-//                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
+                                //                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
                             }
 
                         }

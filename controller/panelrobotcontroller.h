@@ -614,6 +614,13 @@ public:
         return pD.b.type;
     }
 
+    Q_INVOKABLE void setAutoRunningMode(int mode)
+    {
+        modifyConfigValue(ICAddr_System_Retain_17, mode);
+    }
+
+//    Q_INVOKABLE void singleRu
+
 
 //    Q_INVOKABLE QString debug_LogContent() const
 //    {

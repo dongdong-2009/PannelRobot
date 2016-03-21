@@ -528,6 +528,22 @@
         <source>Tune Speed:</source>
         <translation>手轮速度:</translation>
     </message>
+    <message>
+        <source>fullkeybd</source>
+        <translation>全键盘</translation>
+    </message>
+    <message>
+        <source>partkeybd</source>
+        <translation>简键盘</translation>
+    </message>
+    <message>
+        <source>worldcodinate</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>jointcodinate</source>
+        <translation>关节坐标</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
@@ -2072,17 +2088,6 @@
     </message>
 </context>
 <context>
-    <name>OriginReturnmsg</name>
-    <message>
-        <source>top text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>bottom text</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>OutputActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -2776,6 +2781,11 @@ please chose!</source>
     <message>
         <source>OK</source>
         <translation>确定</translation>
+    </message>
+    <message>
+        <source>name must be word number or underline
+ and underline begin is not allowed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

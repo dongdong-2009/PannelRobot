@@ -39,7 +39,10 @@ typedef enum _ICAddr
     ICAddr_System_Retain_7,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
-    ICAddr_System_Retain_17 = 17,//< 1：自动进入单步运行模式，单步运行停止；2：单步运行启动；
+    //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
+    //< 高16位：单步或者单循环的程序ID
+    ICAddr_System_Retain_17 = 17,
+    ICAddr_System_Retain_18 = 18,//< 单步运行或者单循环开始运行行数
     ICAddr_System_Retain_23 = 23,//< 电机正反转测试脉冲数
     ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级
@@ -689,6 +692,7 @@ typedef enum
     ALARM_PROGRAM_ERR, //<名字：教导程序错误
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
+    ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警

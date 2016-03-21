@@ -1158,7 +1158,7 @@ Rectangle {
                         onTriggered: {
 
                             if(!panelRobotController.isAutoMode()) return;
-                            if(editing.currentIndex > 8) return;
+                            if(currentProgramIndex() > 8) return;
                             // update counters show
                             var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");
                             var currentCounterCurrent = panelRobotController.statusValue("c_ro_13_19_0_938");

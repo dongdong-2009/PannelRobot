@@ -546,8 +546,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
-
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white");
+            }
         }
         ICButton {
             id: ptext3
@@ -557,8 +561,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
-
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white");
+            }
         }
 
         ICButton {
@@ -569,7 +577,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_RU ? "lime" : "white");
+            }
 
         }
 
@@ -581,8 +594,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
-
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_RU ? "lime" : "white");
+            }
 
         }
 
@@ -596,7 +613,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LY ? "lime" : "white");
+            }
 
         }
 
@@ -609,7 +631,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LY ? "lime" : "white");
+            }
 
         }
 
@@ -622,7 +649,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_V ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_RV ? "lime" : "white");
+            }
 
         }
 
@@ -634,7 +666,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LY ? "lime" : "white");
+            }
         }
 
         ICButton {
@@ -645,7 +682,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LX ? "lime" : "white");
+            }
 
 
         }
@@ -658,7 +700,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_LX ? "lime" : "white");
+            }
 
 
         }
@@ -671,8 +718,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
-
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+            }
 
         }
 
@@ -684,8 +735,12 @@ Rectangle {
             height:keyboardSection.btnHeight
             text: qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
-            bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
-
+            bgColor:{
+                if(jointcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+                else if(worldcodinate.isChecked)
+                    return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+            }
 
         }
 

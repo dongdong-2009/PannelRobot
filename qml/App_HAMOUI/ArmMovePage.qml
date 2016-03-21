@@ -69,7 +69,19 @@ Rectangle {
             text: qsTr("Tune Sel")
             font.pixelSize: 18
             onIsCheckedChanged: {
-                keyboardSection.visible = !isChecked;
+                if(isChecked){
+                    keyboardSection.visible = false;
+                    partkeyboardSection.visible = false;
+                }else {
+                    if(keybdstyle.currentIndex == 0){
+                        keyboardSection.visible = true;
+                        partkeyboardSection.visible = false;
+                    }
+                    if(keybdstyle.currentIndex == 1){
+                        keyboardSection.visible = false;
+                        partkeyboardSection.visible = true;
+                    }
+                }
             }
             onVisibleChanged: {
                 if(!visible)
@@ -126,8 +138,80 @@ Rectangle {
             }
         }
     }
+    ICButtonGroup{
+        id: continer
+        x: 10
+        height: 25
+        isAutoSize: false
+        mustChecked: true
+        checkedIndex: 0
+        layoutMode: 2
+        ICCheckBox{
+            id:fullkeybd
+            text: qsTr("fullkeybd")
+            font.pixelSize: 18
+            isChecked: true
+            onIsCheckedChanged: {
+                keyboardSection.visible = isChecked;
+                partkeyboardSection.visible = !isChecked;
+            }
+        }
+        ICCheckBox{
+            id:partkeybd
+            anchors.left: fullkeybd.right
+            anchors.leftMargin: 10
+            text: qsTr("partkeybd")
+            font.pixelSize: 18
+            onIsCheckedChanged: {
+                keyboardSection.visible = !isChecked;
+                partkeyboardSection.visible = isChecked;
+            }
+        }
+    }
+    ICButtonGroup{
+        id: ccontiner
+        x: 10
+        visible: partkeybd.isChecked
+        anchors.top: continer.bottom
+        anchors.topMargin: 20
+        height: 50
+        isAutoSize: false
+        mustChecked: true
+        checkedIndex: 0
+        layoutMode: 2
+        onVisibleChanged: {
+            if(!visible){
+                worldcodinate.isChecked = false;
+                jointcodinate.isChecked = true;
+            }
+        }
 
-
+        ICCheckBox{
+            id:worldcodinate
+            x: partkeybd.x
+            text: qsTr("worldcodinate")
+            font.pixelSize: 18
+            onIsCheckedChanged: {
+                if(isChecked)
+                    panelRobotController.modifyConfigValue(24,
+                                                           Keymap.COMBINE_ARM_MOVE_TYPE);
+            }
+        }
+        ICCheckBox{
+            id:jointcodinate
+            x: partkeybd.x
+            isChecked: true
+            anchors.top: worldcodinate.bottom
+            anchors.topMargin: 5
+            text: qsTr("jointcodinate")
+            font.pixelSize: 18
+            onIsCheckedChanged: {
+                if(isChecked)
+                    panelRobotController.modifyConfigValue(24,
+                                                           Keymap.SINGLE_ARM_MOVE_TYPE);
+            }
+        }
+    }
     Grid{
         id:keyboardSection
         columns: 4
@@ -135,8 +219,10 @@ Rectangle {
         //        x:50
         anchors.verticalCenter: parent.verticalCenter
         x: 10
+        anchors.top: continer.bottom
+        anchors.topMargin: 5
         property int btnWidgth: 70
-        property int btnHeight: 64
+        property int btnHeight: 60
         ICButton {
             id: text4
             isAutoRepeat: true
@@ -441,13 +527,176 @@ Rectangle {
         }
 
     }
+    Grid{
+        id:partkeyboardSection
+        columns: 4
+        spacing: 5
+        anchors.verticalCenter: parent.verticalCenter
+        x: 10
+        anchors.top: ccontiner.bottom
+        anchors.topMargin: 5
+        visible: false
+        property int btnWidgth: 70
+        property int btnHeight: 60
+        ICButton {
+            id: ptext4
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("Z-")
+            onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
+
+        }
+        ICButton {
+            id: ptext3
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("Z+")
+            onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
+
+        }
+
+        ICButton {
+            id: ptext6
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("U-")
+            onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
+
+        }
+
+        ICButton {
+            id: ptext5
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("U+")
+            onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
+
+
+        }
+
+
+
+        ICButton {
+            id: ptext9
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("Y-")
+            onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+
+        }
+
+
+        ICButton {
+            id: ptext8
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("Y+")
+            onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+
+        }
+
+
+        ICButton {
+            id: ptext2
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("V-")
+            onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
+
+        }
+
+        ICButton {
+            id: ptext1
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("V+")
+            onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
+        }
+
+        ICButton {
+            id: ptext10
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("X-")
+            onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
+
+
+        }
+
+        ICButton {
+            id: ptext7
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("X+")
+            onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
+
+
+        }
+
+        ICButton {
+            id: ptext11
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("W-")
+            onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
+
+
+        }
+
+        ICButton {
+            id: ptext12
+            isAutoRepeat: true
+            autoInterval: 10
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("W+")
+            onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
+            bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
+
+
+        }
+
+    }
 
     ICButtonGroup{
         id:keyboardSectionToSel
         x: keyboardSection.x
         y: keyboardSection.y
         isAutoSize: false
-        visible: !keyboardSection.visible
+        visible: !(keyboardSection.visible | partkeyboardSection.visible)
         SequentialAnimation{
             running: keyboardSectionToSel.visible
             PropertyAnimation{
@@ -611,19 +860,21 @@ Rectangle {
         }
     }
 
-    Rectangle{
+    ICSpliteLine{
         id:verSpliteLine
-        width: 1
-        height: keyboardSection.height
+        wide: 1
+        linelong: keyboardSection.height
+        direction: "verticality"
         color: "gray"
         anchors.left: keyboardSection.right
         anchors.leftMargin: 4
         y:keyboardSection.y
     }
-    Rectangle{
+    ICSpliteLine{
         id:horSpliteLine
-        width: 340
-        height: 1
+        direction: "horizontal"
+        linelong: 340
+        wide: 1
         color: "gray"
         anchors.top: tuneSection.bottom
         anchors.topMargin: 6

@@ -180,7 +180,6 @@ Rectangle {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
                                     md.current = text;
-                                    console.log("current", md.target, md.current, text)
                                     Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
                                     counterUpdated(md.id);
@@ -194,7 +193,6 @@ Rectangle {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
                                     md.target = text;
-                                    console.log("target", md.target, md.current, text)
                                     Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
                                     panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
                                     counterUpdated(md.id);

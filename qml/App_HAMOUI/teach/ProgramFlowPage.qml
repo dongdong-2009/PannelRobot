@@ -717,26 +717,26 @@ Rectangle {
                     visible: false
                 }
 
-//                ICCheckBox{
-//                    id:singleStep
-//                    text:qsTr("S Step")
-//                    onClicked: {
-//                        if(isChecked){
-//                            singleCycle.setChecked(false);
-//                        }
-//                        panelRobotController.setAutoRunningMode(isChecked ? 1:0);
-//                    }
-//                }
+                //                ICCheckBox{
+                //                    id:singleStep
+                //                    text:qsTr("S Step")
+                //                    onClicked: {
+                //                        if(isChecked){
+                //                            singleCycle.setChecked(false);
+                //                        }
+                //                        panelRobotController.setAutoRunningMode(isChecked ? 1:0);
+                //                    }
+                //                }
 
-//                ICCheckBox{
-//                    id:singleCycle
-//                    text:qsTr("S Cycle")
-//                    onClicked: {
-//                        if(isChecked){
-//                            singleStep.setChecked(false);
-//                        }
-//                    }
-//                }
+                //                ICCheckBox{
+                //                    id:singleCycle
+                //                    text:qsTr("S Cycle")
+                //                    onClicked: {
+                //                        if(isChecked){
+                //                            singleStep.setChecked(false);
+                //                        }
+                //                    }
+                //                }
 
             }
 
@@ -1542,6 +1542,123 @@ Rectangle {
         x: 10
 
     }
+
+    Item{
+        id: autoKeyboard
+        width: 600
+        height:80
+        y:330
+        x:800
+        z:10
+        PropertyAnimation{
+            id:autoKeyboardOut
+            target: autoKeyboard
+            property: "x"
+            to: 800 - autoKeyboard.width
+            duration: 100
+        }
+        SequentialAnimation{
+            id:autoKeyboardIn
+            PropertyAnimation{
+                target: autoKeyboard
+                property: "x"
+                to: 800
+                duration: 100
+            }
+            PropertyAction{
+                target: autoKeyboardContent
+                property: "visible"
+                value:false
+            }
+        }
+        ICButton{
+            id:autoKeyboardBtn
+            text: "←"
+            width: 48
+            height: 48
+            anchors.right: autoKeyboardContent.left
+            y:autoKeyboardContent.y
+            onButtonClicked: {
+                if(!autoKeyboardContent.visible){
+                    autoKeyboardContent.visible = true;
+                    autoKeyboardOut.start();
+                    text = "→";
+                }else{
+                    text = "←";
+                    //                    armKeyboard.visible = false;
+                    autoKeyboardIn.start();
+                }
+            }
+        }
+
+        Rectangle {
+            id:autoKeyboardContent
+            width: parent.width
+            height: parent.height
+            color: "#A0A0F0"
+            border.width: 1
+            border.color: "gray"
+            visible: false
+            Column{
+                spacing: 6
+                anchors.centerIn: parent
+                Row{
+                    spacing: 12
+                    ICCheckBox{
+                        id:singleStep
+                        text: qsTr("Single Step")
+                        height: 32
+                        onClicked: {
+                            if(isChecked){
+                                singleCycle.setChecked(false)
+                                panelRobotController.setAutoRunningMode(editing.currentIndex, 0);
+                            }else
+                                panelRobotController.setAutoRunningMode(editing.currentIndex, Keymap.kAM_SINGLE_STEP_MODE);
+
+                        }
+                    }
+                    ICButton{
+                        id:singleStartLine
+                        text:qsTr("Step Line")
+
+                    }
+                    ICButton{
+                        id:singleStart
+                        text:qsTr("Single Start")
+                        onButtonClicked: {
+                            panelRobotController.setAutoRunningMode(editing.currentIndex, Keymap.kAM_SINGLE_STEP_START);
+                        }
+                    }
+
+
+                }
+                Row{
+                    ICCheckBox{
+                        id:singleCycle
+                        text: qsTr("Single Cycle")
+                        height: 32
+                        onClicked: {
+                            if(isChecked){
+                                singleStep.setChecked(false)
+                                panelRobotController.setAutoRunningMode(editing.currentIndex, 0);
+                            }else
+                                panelRobotController.setAutoRunningMode(editing.currentIndex, Keymap.kAM_SINGLE_CYCLE_MODE);
+
+                        }
+                    }
+                    ICButton{
+                        id:singleCycleStart
+                        text:qsTr("Cycle Start")
+                        onButtonClicked: {
+                            panelRobotController.setAutoRunningMode(editing.currentIndex, Keymap.kAM_SINGLE_CYCLE_START);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     
     //TODO:Use WorkerScript to implement this function
     function repaintProgramItem(programModel, start, end){

@@ -95,6 +95,13 @@ union PullyData{
     quint32 all;
 };
 
+union AutoRunData{
+    struct{
+        quint32 mode:16;
+        quint32 programIndex:16;
+    }b;
+    quint32 all;
+};
 
 
 static QString ErrInfoToJSON(const QMap<int, int>& errInfo)
@@ -614,12 +621,18 @@ public:
         return pD.b.type;
     }
 
-    Q_INVOKABLE void setAutoRunningMode(int mode)
+    Q_INVOKABLE void setAutoRunningMode(int which, int mode)
     {
-        modifyConfigValue(ICAddr_System_Retain_17, mode);
+        AutoRunData d;
+        d.b.programIndex = which;
+        d.b.mode = mode;
+        modifyConfigValue(ICAddr_System_Retain_17, d.all);
     }
 
-//    Q_INVOKABLE void singleRu
+    Q_INVOKABLE void setSingleRunStart(int stepRow)
+    {
+        modifyConfigValue(ICAddr_System_Retain_18, stepRow);
+    }
 
 
 //    Q_INVOKABLE QString debug_LogContent() const

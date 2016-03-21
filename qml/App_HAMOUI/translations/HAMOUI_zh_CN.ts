@@ -2561,7 +2561,7 @@ please chose!</source>
     </message>
     <message>
         <source>C/UC</source>
-        <translation>注释</translation>
+        <translation>屏蔽</translation>
     </message>
     <message>
         <source>Del</source>

@@ -563,6 +563,11 @@ Rectangle {
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
 
                         }else{
+                            if(panelRobotController.isAutoMode()){
+                                singleStep.setChecked(false);
+                                singleCycle.setChecked(false);
+                            }
+
                             PData.currentEditingProgram = currentIndex;
                             Teach.currentParsingProgram = currentIndex;
                             if(currentIndex < 0) return;
@@ -1619,7 +1624,14 @@ Rectangle {
                     }
                     ICButton{
                         id:singleStartLine
-                        text:qsTr("Step Line")
+                        width: 200
+                        text:{
+                            return ICString.icStrformat(qsTr("Start Line:[{0}]"), programListView.currentIndex);
+                        }
+
+                        onButtonClicked: {
+                            panelRobotController.setSingleRunStart(editing.currentIndex, - 1, programListView.currentIndex);
+                        }
 
                     }
                     ICButton{

@@ -2680,6 +2680,26 @@ please chose!</source>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
+    <message>
+        <source>Single Step</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>Start Line:[{0}]</source>
+        <translation>设当前行为单步起始:[{0}]</translation>
+    </message>
+    <message>
+        <source>Single Start</source>
+        <translation>单步开始</translation>
+    </message>
+    <message>
+        <source>Single Cycle</source>
+        <translation>单循环模式</translation>
+    </message>
+    <message>
+        <source>Cycle Start</source>
+        <translation>单循环开始</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>

@@ -629,9 +629,12 @@ public:
         modifyConfigValue(ICAddr_System_Retain_17, d.all);
     }
 
-    Q_INVOKABLE void setSingleRunStart(int stepRow)
+    Q_INVOKABLE void setSingleRunStart(int which, int module,int line)
     {
-        modifyConfigValue(ICAddr_System_Retain_18, stepRow);
+        QPair<int, int> stepInfo = ICRobotMold::CurrentMold()->UIStepToRealStep(which, module, line);
+//        ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
+//        return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
+        modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 
 

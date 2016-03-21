@@ -387,6 +387,7 @@ public:
 
     QPair<int, QList<int> > RunningStepToProgramLine(int which, int step);
 
+    QPair<int, int> UIStepToRealStep(int which, int module, int step) const;
 
     ICMoldItem SingleLineCompile(int which, int module, int step, const QString& lineContent, QPair<int, int> &hostStep);
 

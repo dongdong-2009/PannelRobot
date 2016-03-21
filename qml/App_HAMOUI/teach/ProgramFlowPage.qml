@@ -435,6 +435,12 @@ Rectangle {
     function onKnobChanged(knobStatus){
         onUserChanged(null);
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+        autoKeyboard.visible = isAuto;
+        if(isAuto){
+            singleCycle.setChecked(false);
+            singleStep.setChecked(false);
+        }
+
         editing.resetProgramItems(isAuto)
         isFollow.visible = isAuto;
         modifyEditor.isAutoMode = isAuto;

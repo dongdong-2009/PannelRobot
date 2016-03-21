@@ -485,11 +485,11 @@ Rectangle {
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
         armKeyboardContainer.visible = isManual;
-        //        mainWindow.focus = true;
-        menuSettings.enabled = (!isAuto) && (knobStatus == Keymap.KNOB_SETTINGS);
-        menuOperation.enabled = !isAuto;
-//        mainHeader.setRecordItemEnabled(!isAuto);
+
         onUserChanged(ShareData.UserInfo.current);
+        menuSettings.enabled = (knobStatus == Keymap.KNOB_SETTINGS);
+
+        menuOperation.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) {
             menuProgram.setChecked(true);
@@ -505,7 +505,7 @@ Rectangle {
     function onUserChanged(user){
         var isRecordEn = ShareData.UserInfo.currentHasMoldPerm() && ShareData.GlobalStatusCenter.getKnobStatus() !== Keymap.KNOB_AUTO;
 
-        menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm()
+        menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm() && ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_SETTINGS;
 
         mainHeader.setRecordItemEnabled(isRecordEn);
         if(!isRecordEn)

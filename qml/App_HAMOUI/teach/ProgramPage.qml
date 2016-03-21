@@ -18,7 +18,7 @@ ContentPageBase{
 
     function setMenuItemTexts(isReadOnly){
         menuItemTexts =  isReadOnly ? ["", "", "", "", "", "",""]:
-                [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), "",qsTr("Save")];
+                [qsTr("Editor S/H"), qsTr("Insert"), qsTr("Delete"), qsTr("Up"), qsTr("Down"), qsTr("Fix Index"),qsTr("Save")];
     }
 
     function onUserChanged(user){
@@ -71,6 +71,10 @@ ContentPageBase{
     onMenuItem5Triggered: {
         pageContainer.currentPage().onDownTriggered();
     }
+    onMenuItem6Triggered: {
+        pageContainer.currentPage().onFixIndexTriggered();
+    }
+
     onMenuItem7Triggered: {
         pageContainer.currentPage().onSaveTriggered();
     }

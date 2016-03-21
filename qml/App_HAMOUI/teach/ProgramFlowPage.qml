@@ -36,6 +36,7 @@ Rectangle {
         var oCI = cI;
         if(cI < 0)return;
 
+        actionObject.insertedIndex = PData.programToInsertIndex[currentProgramIndex()]++;
         var cPI = currentProgramIndex();
         var model = currentModel();
         PData.counterLinesInfo.syncLines(cPI, oCI, 1);
@@ -379,6 +380,16 @@ Rectangle {
         hasModify = false;
     }
 
+    function onFixIndexTriggered(){
+        var cM = currentModel();
+        var ao;
+        for(var i = 0; i < cM.count; ++i){
+            ao = cM.get(i).mI_ActionObject;
+            ao.insertedIndex = i;
+            cM.setProperty(i, "mI_ActionObject", ao);
+        }
+    }
+
     function onSaveTriggered(){
         hasModify = true;
         saveProgram(currentProgramIndex());
@@ -561,7 +572,7 @@ Rectangle {
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
                             deleteManualProgram.visible = newManualProgram.visible;
-                            updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(currentIndex)).program);
+                            PData.programToInsertIndex[PData.kManualProgramIndex] = updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(currentIndex)).program);
                             programListView.model = manualProgramModel;
                             programListView.currentIndex = -1;
                             currentEditingProgram = PData.kManualProgramIndex;
@@ -685,7 +696,7 @@ Rectangle {
                             var newP = Teach.functionManager.newFunction(tipBox.inputText);
                             var modulesNames = moduleSel.items;
                             modulesNames.splice(1,0, newP.toString());
-                            updateProgramModel(functionsModel, newP.program);
+                            PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, newP.program);
                             moduleSel.items = modulesNames;
                             moduleSel.currentIndex = 1;
                             collectSpecialLines(PData.programs.length - 1);
@@ -1125,7 +1136,7 @@ Rectangle {
                         isCurrent: ListView.isCurrentItem
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
-                        lineNum: index
+                        lineNum: index + ":" + mI_ActionObject.insertedIndex
                         text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: programListView.actionObjectToText(mI_ActionObject));
 
                         actionType: mI_ActionType
@@ -1744,8 +1755,12 @@ Rectangle {
         var at;
         var isSyncStart = false;
         var jumpLines = [];
+        var insertedIndex = 0;
         for(var p = 0; p < program.length; ++p){
-            step = program[p]
+            step = program[p];
+            step["insertedIndex"] = step.insertedIndex || (insertedIndex++);
+            if(step.insertedIndex > insertedIndex)
+                insertedIndex = step.insertedIndex;
             if(Teach.canActionUsePoint(step)){
                 Teach.definedPoints.parseActionPoints(step);
             }
@@ -1776,6 +1791,7 @@ Rectangle {
             model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
             model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
         }
+        return insertedIndex;
     }
 
     function updateProgramModels(){
@@ -1795,7 +1811,7 @@ Rectangle {
             program = JSON.parse(panelRobotController.programs(i));
             Teach.currentParsingProgram = i;
             Teach.flagsDefine.clear(i);
-            updateProgramModel(PData.programs[i], program);
+            PData.programToInsertIndex[i] = updateProgramModel(PData.programs[i], program);
             collectSpecialLines(i);
         }
         editing.currentIndex = 0;

@@ -3,7 +3,7 @@ import "Teach.js" as Teach
 
 Rectangle{
     id:container
-    property int lineNum: 0
+    property string lineNum: "0"
     property bool isComment: false
     property bool isCurrent: false
     property bool isRunning: false
@@ -75,7 +75,7 @@ Rectangle{
 
     Text{
         id:num
-        width: 35
+        width: 55
         text: lineNum
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter

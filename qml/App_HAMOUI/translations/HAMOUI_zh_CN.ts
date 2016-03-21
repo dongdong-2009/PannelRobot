@@ -2731,6 +2731,10 @@ please chose!</source>
         <source>Save</source>
         <translation>保存</translation>
     </message>
+    <message>
+        <source>Fix Index</source>
+        <translation>整理编号</translation>
+    </message>
 </context>
 <context>
     <name>RecordManagementPage</name>

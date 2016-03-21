@@ -1,5 +1,6 @@
 var programs = [];
 var functions = {};
+var programToInsertIndex = [];
 var stepAddrs =
         ["c_ro_0_16_0_933",
         "c_ro_16_16_0_933",

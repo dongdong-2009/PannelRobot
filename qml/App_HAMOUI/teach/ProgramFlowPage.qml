@@ -1578,18 +1578,20 @@ Rectangle {
         }
         ICButton{
             id:autoKeyboardBtn
-            text: "←"
-            width: 48
-            height: 48
+            text: ""
+            icon: "../images/tools_autokeyboard.png"
+            width: 64
+            height: 64
+            bgColor: "green"
             anchors.right: autoKeyboardContent.left
             y:autoKeyboardContent.y
             onButtonClicked: {
                 if(!autoKeyboardContent.visible){
                     autoKeyboardContent.visible = true;
                     autoKeyboardOut.start();
-                    text = "→";
+//                    text = "→";
                 }else{
-                    text = "←";
+//                    text = "←";
                     //                    armKeyboard.visible = false;
                     autoKeyboardIn.start();
                 }
@@ -1625,14 +1627,12 @@ Rectangle {
                     ICButton{
                         id:singleStartLine
                         width: 200
-                        text:{
-                            return ICString.icStrformat(qsTr("Start Line:[{0}]"), programListView.currentIndex);
-                        }
+                        text:qsTr("Start Line:[-1]")
 
                         onButtonClicked: {
                             panelRobotController.setSingleRunStart(editing.currentIndex, - 1, programListView.currentIndex);
+                            text = ICString.icStrformat(qsTr("Start Line:[{0}]"),  programListView.currentIndex);
                         }
-
                     }
                     ICButton{
                         id:singleStart

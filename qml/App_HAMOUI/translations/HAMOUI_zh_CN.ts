@@ -2700,6 +2700,10 @@ please chose!</source>
         <source>Cycle Start</source>
         <translation>单循环开始</translation>
     </message>
+    <message>
+        <source>Start Line:[-1]</source>
+        <translation>设当前行为单步起始:[-1]</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>

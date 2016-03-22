@@ -230,7 +230,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Z-")
+            text: qsTr("J") + qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
 
@@ -241,7 +241,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Z+")
+            text: qsTr("J") + qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
 
@@ -253,7 +253,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("U-")
+            text:qsTr("J") + qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
 
@@ -265,7 +265,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("U+")
+            text: qsTr("J") + qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
 
@@ -280,7 +280,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Y-")
+            text: qsTr("J") + qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
 
@@ -293,7 +293,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Y+")
+            text: qsTr("J") + qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
 
@@ -306,7 +306,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("V-")
+            text: qsTr("J") + qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
 
@@ -318,7 +318,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("V+")
+            text: qsTr("J") + qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
         }
@@ -329,7 +329,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("X-")
+            text: qsTr("J") + qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
 
@@ -342,7 +342,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("X+")
+            text: qsTr("J") + qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
 
@@ -355,7 +355,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("W-")
+            text: qsTr("J") + qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
 
@@ -368,7 +368,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("W+")
+            text: qsTr("J") + qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
 
@@ -545,7 +545,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Z-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -560,7 +560,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Z+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -576,7 +576,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("U-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -593,7 +593,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("U+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -612,7 +612,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Y-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -630,7 +630,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("Y+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -648,7 +648,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("V-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -665,7 +665,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("V+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -681,7 +681,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("X-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -699,7 +699,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("X+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -717,7 +717,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("W-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -734,7 +734,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: qsTr("W+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)

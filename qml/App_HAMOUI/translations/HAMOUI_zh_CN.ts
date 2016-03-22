@@ -394,51 +394,51 @@
     </message>
     <message>
         <source>Line Z-</source>
-        <translation>直线Z-</translation>
+        <translation>世界Z-</translation>
     </message>
     <message>
         <source>Line Z+</source>
-        <translation>直线Z+</translation>
+        <translation>世界Z+</translation>
     </message>
     <message>
         <source>Rotate U-</source>
-        <translation>旋转U-</translation>
+        <translation>世界U-</translation>
     </message>
     <message>
         <source>Rotate U+</source>
-        <translation>旋转U+</translation>
+        <translation>世界U+</translation>
     </message>
     <message>
         <source>Line Y-</source>
-        <translation>直线Y-</translation>
+        <translation>世界Y-</translation>
     </message>
     <message>
         <source>Line Y+</source>
-        <translation>直线Y+</translation>
+        <translation>世界Y+</translation>
     </message>
     <message>
         <source>Rotate V-</source>
-        <translation>旋转V-</translation>
+        <translation>世界V-</translation>
     </message>
     <message>
         <source>Rotate V+</source>
-        <translation>旋转V+</translation>
+        <translation>世界V+</translation>
     </message>
     <message>
         <source>Line X-</source>
-        <translation>直线X-</translation>
+        <translation>世界X-</translation>
     </message>
     <message>
         <source>Line X+</source>
-        <translation>直线X+</translation>
+        <translation>世界X+</translation>
     </message>
     <message>
         <source>Rotate W-</source>
-        <translation>旋转W-</translation>
+        <translation>世界W-</translation>
     </message>
     <message>
         <source>Rotate W+</source>
-        <translation>旋转W+</translation>
+        <translation>世界W+</translation>
     </message>
     <message>
         <source>Line Test</source>
@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Line Z</source>
-        <translation>直线Z</translation>
+        <translation>世界Z</translation>
     </message>
     <message>
         <source>Rotate U</source>
-        <translation>旋转U</translation>
+        <translation>世界U</translation>
     </message>
     <message>
         <source>Y</source>
@@ -502,11 +502,11 @@
     </message>
     <message>
         <source>Line Y</source>
-        <translation>直线Y</translation>
+        <translation>世界Y</translation>
     </message>
     <message>
         <source>Rotate V</source>
-        <translation>旋转V</translation>
+        <translation>世界V</translation>
     </message>
     <message>
         <source>X</source>
@@ -514,15 +514,15 @@
     </message>
     <message>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>世界</translation>
     </message>
     <message>
         <source>Line X</source>
-        <translation>直线X</translation>
+        <translation>世界X</translation>
     </message>
     <message>
         <source>Rotate W</source>
-        <translation>旋转W</translation>
+        <translation>世界W</translation>
     </message>
     <message>
         <source>Tune Speed:</source>
@@ -543,6 +543,10 @@
     <message>
         <source>jointcodinate</source>
         <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>J</source>
+        <translation>关节</translation>
     </message>
 </context>
 <context>

@@ -76,7 +76,7 @@ Rectangle {
             insertActionToList(actionObjects[i]);
         }
         repaintProgramItem(currentModel());
-        programListView.positionViewAtIndex(programListView.currentIndex, ListView.Center);
+        programListView.positionViewAtIndex(programListView.currentIndex, ListView.Visible);
         //        var cI = programListView.currentIndex;
         //        var oCI = cI;
         //        if(cI < 0)return;
@@ -1166,7 +1166,7 @@ Rectangle {
                             if(counter != null){
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-//                                    console.log("counter info:", counter.id, counter.name, counter.current, counter.target);
+                                    console.log("counter info:", counter.id, counter.name, counter.current, counter.target);
                                     panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
                                     onCounterUpdated(currentCounterID);
 

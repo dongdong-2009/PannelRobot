@@ -514,7 +514,7 @@
     </message>
     <message>
         <source>W</source>
-        <translation>世界</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line X</source>
@@ -547,6 +547,10 @@
     <message>
         <source>J</source>
         <translation>关节</translation>
+    </message>
+    <message>
+        <source>WD</source>
+        <translation>世界</translation>
     </message>
 </context>
 <context>
@@ -826,7 +830,7 @@
     </message>
     <message>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">世界</translation>
     </message>
     <message>
         <source>°</source>

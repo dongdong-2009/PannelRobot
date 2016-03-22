@@ -72,14 +72,17 @@ Rectangle {
                 if(isChecked){
                     keyboardSection.visible = false;
                     partkeyboardSection.visible = false;
+                    axisSelContiner.visible = false;
                 }else {
-                    if(keybdstyle.currentIndex == 0){
+                    if(fullkeybd.isChecked){
                         keyboardSection.visible = true;
                         partkeyboardSection.visible = false;
                     }
-                    if(keybdstyle.currentIndex == 1){
+                    else if(partkeybd.isChecked){
                         keyboardSection.visible = false;
                         partkeyboardSection.visible = true;
+                        axisSelContiner.visible = true;
+
                     }
                 }
             }
@@ -153,6 +156,7 @@ Rectangle {
             onIsCheckedChanged: {
                 keyboardSection.visible = isChecked;
                 partkeyboardSection.visible = !isChecked;
+                axisSelContiner.visible = !isChecked;
             }
         }
         ICCheckBox{
@@ -170,7 +174,7 @@ Rectangle {
         }
     }
     ICButtonGroup{
-        id: ccontiner
+        id: axisSelContiner
         x: 10
         visible: partkeybd.isChecked
         anchors.top: continer.bottom
@@ -534,7 +538,7 @@ Rectangle {
         spacing: 5
         anchors.verticalCenter: parent.verticalCenter
         x: 10
-        anchors.top: ccontiner.bottom
+        anchors.top: axisSelContiner.bottom
         anchors.topMargin: 5
         visible: false
         property int btnWidgth: 70
@@ -545,7 +549,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Z-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -560,7 +564,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Z+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -576,7 +580,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("U-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -593,7 +597,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("U+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -612,7 +616,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Y-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -630,7 +634,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("Y+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -648,7 +652,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("V-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -665,7 +669,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("V+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -681,7 +685,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("X-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -699,7 +703,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("X+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -717,7 +721,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("W-")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -734,7 +738,7 @@ Rectangle {
             autoInterval: 10
             width: keyboardSection.btnWidgth
             height:keyboardSection.btnHeight
-            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("W")) + qsTr("W+")
+            text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
                 if(jointcodinate.isChecked)
@@ -793,7 +797,7 @@ Rectangle {
                 id: zSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Z")
+                text: qsTr("J") + qsTr("Z")
                 bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_Z);
@@ -804,7 +808,7 @@ Rectangle {
                 id: uSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("U")
+                text: qsTr("J") + qsTr("U")
                 bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_U);
@@ -815,7 +819,7 @@ Rectangle {
                 id: lineZSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Line Z")
+                text: qsTr("WD") + qsTr("Z")
                 bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_LZ);
@@ -825,7 +829,7 @@ Rectangle {
                 id: rotateUSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Rotate U")
+                text: qsTr("WD") + qsTr("U")
                 bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_RU);
@@ -836,7 +840,7 @@ Rectangle {
                 id: ySel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Y")
+                text: qsTr("J") + qsTr("Y")
                 bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_Y);
@@ -846,7 +850,7 @@ Rectangle {
                 id: vSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("V")
+                text: qsTr("J") + qsTr("V")
                 bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_V);
@@ -856,7 +860,7 @@ Rectangle {
                 id: lineYSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Line Y")
+                text: qsTr("WD") + qsTr("Y")
                 bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_LY);
@@ -866,7 +870,7 @@ Rectangle {
                 id: rotateVSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Rotate V")
+                text: qsTr("WD") + qsTr("V")
                 bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_RV);
@@ -877,7 +881,7 @@ Rectangle {
                 id: xSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("X")
+                text: qsTr("J") + qsTr("X")
                 bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_X);
@@ -887,7 +891,7 @@ Rectangle {
                 id: wSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("W")
+                text: qsTr("J") + qsTr("W")
                 bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_W);
@@ -897,7 +901,7 @@ Rectangle {
                 id: lineXSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Line X")
+                text: qsTr("WD") + qsTr("X")
                 bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_LX);
@@ -907,7 +911,7 @@ Rectangle {
                 id: rotateWSel
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: qsTr("Rotate W")
+                text: qsTr("WD") + qsTr("W")
                 bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
                 onButtonClicked: {
                     panelRobotController.setPullyAxis(AxisDefine.kAP_RW);

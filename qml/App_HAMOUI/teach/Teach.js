@@ -988,6 +988,7 @@ var generateCommentAction = function(comment, commentdAction){
     return {
         "action": actions.ACT_COMMENT,
         "comment":comment,
+        "insertedIndex": commentdAction.insertedIndex,
         "commentAction":commentdAction || null
     };
 }

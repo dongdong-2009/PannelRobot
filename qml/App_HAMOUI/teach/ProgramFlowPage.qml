@@ -388,6 +388,7 @@ Rectangle {
             ao.insertedIndex = i;
             cM.setProperty(i, "mI_ActionObject", ao);
         }
+        PData.programToInsertIndex[currentProgramIndex()] = i;
     }
 
     function onSaveTriggered(){

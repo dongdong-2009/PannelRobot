@@ -317,7 +317,7 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     int step = v->value("step", -1).toInt();
     int moduleStep = v->value("moduleStep", -1).toInt();
     if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
-//    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
+    //    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
     if(moduleStep < 0)
         item.append(v->value("module").toUInt());
@@ -547,7 +547,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 {
                     err = ICRobotMold::kCCErr_Invaild_ModuleID;
                     ret.AddErr(i, err);
-//                    continue;
+                    //                    continue;
                 }
 
                 action.insert("moduleStep", -1);
@@ -674,7 +674,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         ICMoldItem endProgramItem = ret.GetICMoldItem(ret.CompiledProgramLineCount() -1);
         ICMoldItem jumptoEnd;
         jumptoEnd.append(F_CMD_PROGRAM_JUMP0);
-//        ret.AddICMoldItem(programEndLine - 1, jumptoEnd);
+        //        ret.AddICMoldItem(programEndLine - 1, jumptoEnd);
         const int beginToFix = ret.CompiledProgramLineCount();
         int fStep = ret.RealStepCount();    //
         isSyncBegin = false;                //
@@ -699,7 +699,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 else if(item.at(0) == F_CMD_SYNC_END)
                 {
                     isSyncBegin = false;
-//                    ++fStep;
+                    //                    ++fStep;
                     continue;
                 }
                 if(!isSyncBegin)
@@ -710,8 +710,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             }
             ++fp;
         }
-//UIStepToRealStep(ret.CompiledProgramLineCount() - 1) + 1
-//        jumptoEnd.append(ret.CompiledProgramLineCount());
+        //UIStepToRealStep(ret.CompiledProgramLineCount() - 1) + 1
+        //        jumptoEnd.append(ret.CompiledProgramLineCount());
         ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
         int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
         ret.MapStep(endUIStep, fStep + 1);
@@ -837,10 +837,10 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     }
     //    stacks_ = ICDALHelper::MoldStacksContent(moldName);
     //    stackInfos_ = ParseStacks_(stacks_);
-//    for(int i = 0; i < 10; ++i)
-//    {
-//        qDebug()<<RunningStepToProgramLine(0, i);
-//    }
+    //    for(int i = 0; i < 10; ++i)
+    //    {
+    //        qDebug()<<RunningStepToProgramLine(0, i);
+    //    }
     return ok;
 }
 
@@ -1123,7 +1123,7 @@ QPair<int, QList<int> > ICRobotMold::RunningStepToProgramLine(int which, int ste
         return ret;
     CompileInfo pI = programs_.at(which);
     int mID = pI.ModuleIDFromLine(step);
-//    qDebug()<<step<<mID;
+    //    qDebug()<<step<<mID;
     QList<int> steps;
     if(mID < 0)
         steps = pI.RealStepToUIStep(step);
@@ -1162,7 +1162,7 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
         realStep += moduleEntry;
     }
     hostStep = programs_.at(which).UIStepToRealStep(realStep);
-//    hostStep = UIStepToRealStep(which, module, step);
+    //    hostStep = UIStepToRealStep(which, module, step);
     QJson::Parser parser;
     bool ok;
     QVariantMap result = parser.parse (lineContent.toLatin1(), &ok).toMap();
@@ -1458,7 +1458,7 @@ QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions,
     return ret;
 }
 
-QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions)
+QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, bool syncMold)
 {
     QMap<int, QMap<int, int> > ret;
     bool isOk;
@@ -1483,11 +1483,14 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions)
     if(isOk)
         ICDALHelper::SaveFunctions(moldName_, functions);
 
-    for(int i = 0 ; i < programs_.size(); ++i)
+    if(syncMold)
     {
-        if(programs_.at(i).HasCalledModule())
+        for(int i = 0 ; i < programs_.size(); ++i)
         {
-            SaveMold(i, programsCode_.at(i));
+            if(programs_.at(i).HasCalledModule())
+            {
+                SaveMold(i, programsCode_.at(i));
+            }
         }
     }
     return ret;

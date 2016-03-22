@@ -286,28 +286,54 @@ Rectangle {
         hasModify = true;
     }
 
+    function updatePointsHelper(md, lines, point){
+        var line;
+        var tmp;
+        for(var l in lines){
+            line = lines[l];
+            tmp = md.get(line);
+            var actionObject = tmp.mI_ActionObject;
+            var originpPoints = actionObject.points;
+            for(var p = 0; p < originpPoints.length; ++p){
+                if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
+                    actionObject.points[p].pos = point.point;
+                }
+            }
+            md.setProperty(line, "mI_ActionObject",actionObject);
+        }
+    }
+
     function onPointChanged(point){
 //        var cpI = currentProgramIndex();
         var pointLines;
         var md;
-        var tmp;
-        var line;
-        for(var i = 0; i < PData.kFunctionProgramIndex; ++i){
+        var i;
+
+        // module points execute
+        if(moduleSel.currentIndex > 0)
+            saveModules();
+        var modulesNames = moduleSel.items;
+        for(i = 1; i < modulesNames.length; ++i){
+            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.text(i)).program);
+            collectSpecialLines(PData.kFunctionProgramIndex);
+            pointLines = PData.pointLinesInfo.getLines(PData.kFunctionProgramIndex, point.index);
+            md = functionsModel;
+            if(pointLines.length > 0 ){
+                updatePointsHelper(md, pointLines, point);
+                saveModuleByName(modulesNames[i], false);
+            }
+        }
+        if(moduleSel.currentIndex > 0){
+            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+            collectSpecialLines(PData.kFunctionProgramIndex);
+        }
+
+        // program execute
+        for(i = 0; i < PData.kFunctionProgramIndex; ++i){
             pointLines = PData.pointLinesInfo.getLines(i, point.index);
             md = PData.programs[i];
-            for(var l in pointLines){
-                line = pointLines[l];
-                tmp = md.get(line);
-                var actionObject = tmp.mI_ActionObject;
-                var originpPoints = actionObject.points;
-                for(var p = 0; p < originpPoints.length; ++p){
-                    if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
-                        actionObject.points[p].pos = point.point;
-                    }
-                }
-                md.setProperty(line, "mI_ActionObject",actionObject);
-            }
             if(pointLines.length > 0){
+                updatePointsHelper(md, pointLines, point);
                 hasModify = true;
                 saveProgram(i);
             }
@@ -328,14 +354,18 @@ Rectangle {
         return JSON.stringify(ret);
     }
 
-    function saveModules(){
-        var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
+    function saveModuleByName(name, syncMold){
+        var fun = Teach.functionManager.getFunctionByName(name);
         if(fun == null) return;
         fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
         var fJSON = Teach.functionManager.toJSON();
-        var eIJSON = panelRobotController.saveFunctions(fJSON);
+        var eIJSON = panelRobotController.saveFunctions(fJSON, syncMold);
         var errInfo = JSON.parse(eIJSON)[fun.id];
         return errInfo;
+    }
+
+    function saveModules(){
+        return saveModuleByName(moduleSel.text(currentEditingModule), true);
     }
 
     function saveProgram(which){
@@ -739,28 +769,6 @@ Rectangle {
                     text: qsTr("Follow ?")
                     visible: false
                 }
-
-                //                ICCheckBox{
-                //                    id:singleStep
-                //                    text:qsTr("S Step")
-                //                    onClicked: {
-                //                        if(isChecked){
-                //                            singleCycle.setChecked(false);
-                //                        }
-                //                        panelRobotController.setAutoRunningMode(isChecked ? 1:0);
-                //                    }
-                //                }
-
-                //                ICCheckBox{
-                //                    id:singleCycle
-                //                    text:qsTr("S Cycle")
-                //                    onClicked: {
-                //                        if(isChecked){
-                //                            singleStep.setChecked(false);
-                //                        }
-                //                    }
-                //                }
-
             }
 
             Row{

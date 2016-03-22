@@ -515,9 +515,9 @@ public:
         return ICRobotMold::CurrentMold()->Functions();
     }
 
-    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON)
+    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON, bool syncMold = true)
     {
-        QMap<int, QMap<int, int> > ret =  ICRobotMold::CurrentMold()->SaveFunctions(functionsJSON);
+        QMap<int, QMap<int, int> > ret =  ICRobotMold::CurrentMold()->SaveFunctions(functionsJSON, syncMold);
         QString toJSON = "{";
         QMap<int, QMap<int, int> >::const_iterator p = ret.constBegin();
         while(p != ret.constEnd())

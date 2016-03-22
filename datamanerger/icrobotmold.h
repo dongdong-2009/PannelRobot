@@ -416,7 +416,7 @@ public:
     int IndexOfVariable(quint32 id) const;
 
     QString Functions() const { return functions_;}
-    QMap<int, QMap<int, int> > SaveFunctions(const QString& functions);
+    QMap<int, QMap<int, int> > SaveFunctions(const QString& functions, bool syncMold = true);
 
 
 private:

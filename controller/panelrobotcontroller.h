@@ -606,11 +606,12 @@ public:
 
     }
 
-    Q_INVOKABLE void setPullyAxis(int axis)
+    Q_INVOKABLE void setPullyAxis(int axis, int speed)
     {
         PullyData pD;
-        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
+//        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
         pD.b.type = axis & 0xFF;
+        pD.b.lenth = speed;
         modifyConfigValue(ICAddr_System_Retain_27, pD.all);
     }
 

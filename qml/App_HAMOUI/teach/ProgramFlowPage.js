@@ -67,7 +67,8 @@ function LinesInfo(){
 
     this.getLines = function(programIndex, id){
         if(this.programsLines.length == 0) return [];
-        if(programIndex >= this.programsLines.length) return [];
+        if(!this.programsLines.hasOwnProperty(programIndex)) return [];
+//        if(programIndex >= this.programsLines.length) return [];
         var tmp = this.programsLines[programIndex][id];
         return tmp || [];
     }

@@ -287,30 +287,30 @@ Rectangle {
     }
 
     function onPointChanged(point){
-        var cpI = currentProgramIndex();
-        var pointLines = PData.pointLinesInfo.getLines(cpI, point.index)
-        var md = currentModel();
+//        var cpI = currentProgramIndex();
+        var pointLines;
+        var md;
         var tmp;
         var line;
-
-        for(var l in pointLines){
-            line = pointLines[l];
-            tmp = md.get(line);
-            var actionObject = tmp.mI_ActionObject;
-            var originpPoints = actionObject.points;
-            for(var i = 0; i < originpPoints.length; ++i){
-                if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[i].pointName)){
-                    actionObject.points[i].pos = point.point;
+        for(var i = 0; i < PData.kFunctionProgramIndex; ++i){
+            pointLines = PData.pointLinesInfo.getLines(i, point.index);
+            md = PData.programs[i];
+            for(var l in pointLines){
+                line = pointLines[l];
+                tmp = md.get(line);
+                var actionObject = tmp.mI_ActionObject;
+                var originpPoints = actionObject.points;
+                for(var p = 0; p < originpPoints.length; ++p){
+                    if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
+                        actionObject.points[p].pos = point.point;
+                    }
                 }
+                md.setProperty(line, "mI_ActionObject",actionObject);
             }
-            md.setProperty(line, "mI_ActionObject",actionObject);
-
-            //            md.set(line, {"actionText":Teach.actionToString(tmp.mI_ActionObject)});
-            //            PData.counterLinesInfo.removeLine(cpI, line);
-            //            if(c1 >= 0)
-            //                PData.counterLinesInfo.add(cpI, c1, line);
-            //            if(c2 >= 0)
-            //                PData.counterLinesInfo.add(cpI, c2, line);
+            if(pointLines.length > 0){
+                hasModify = true;
+                saveProgram(i);
+            }
         }
     }
 
@@ -418,7 +418,7 @@ Rectangle {
 
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
-//                console.log(ret);
+        //                console.log(ret);
         var info = JSON.parse(ret);
         info.steps = JSON.parse(info.steps);
         //        if(info.moduleID >= 0)
@@ -1167,7 +1167,7 @@ Rectangle {
                             if(counter != null){
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-//                                    console.log("counter info:", counter.id, counter.name,  counter.target, counter.current, currentProgramIndex());
+                                    //                                    console.log("counter info:", counter.id, counter.name,  counter.target, counter.current, currentProgramIndex());
                                     panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
                                     onCounterUpdated(currentCounterID);
 
@@ -1604,9 +1604,9 @@ Rectangle {
                 if(!autoKeyboardContent.visible){
                     autoKeyboardContent.visible = true;
                     autoKeyboardOut.start();
-//                    text = "→";
+                    //                    text = "→";
                 }else{
-//                    text = "←";
+                    //                    text = "←";
                     //                    armKeyboard.visible = false;
                     autoKeyboardIn.start();
                 }

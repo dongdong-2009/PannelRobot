@@ -99,6 +99,8 @@ Rectangle {
                 font.pixelSize: 16
             }
             ICButtonGroup{
+                id:tuneSpeedGroup
+                property int currentSpeed: 1
                 isAutoSize: false
                 mustChecked: true
                 checkedIndex: 0
@@ -106,14 +108,19 @@ Rectangle {
                 height: tuneSpeedSel.height
                 width: tuneSpeedSel.width
                 onCheckedItemChanged: {
-                    if(checkedItem == tuneSpeedX1)
+                    if(checkedItem == tuneSpeedX1){
                         panelRobotController.setPullySpeed(1);
-                    else if(checkedItem == tuneSpeedX5)
+                        currentSpeed = 1;
+                    }else if(checkedItem == tuneSpeedX5){
                         panelRobotController.setPullySpeed(5);
-                    else if(checkedItem == tuneSpeedX10)
+                        currentSpeed = 5;
+                    }else if(checkedItem == tuneSpeedX10){
                         panelRobotController.setPullySpeed(10);
-                    else if(checkedItem == tuneSpeedX50)
+                        currentSpeed = 10;
+                    }else if(checkedItem == tuneSpeedX50){
                         panelRobotController.setPullySpeed(50)
+                        currentSpeed = 50;
+                    }
                 }
 
                 Grid{
@@ -793,6 +800,10 @@ Rectangle {
             id:tuneSelGrid
             columns: 4
             spacing: 5
+            function setPullyAxis(axis){
+                panelRobotController.setPullyAxis(axis, tuneSpeedGroup.currentSpeed);
+            }
+
             ICButton {
                 id: zSel
                 width: keyboardSection.btnWidgth
@@ -800,7 +811,7 @@ Rectangle {
                 text: qsTr("J") + qsTr("Z")
                 bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_Z);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_Z);
                 }
 
             }
@@ -811,7 +822,7 @@ Rectangle {
                 text: qsTr("J") + qsTr("U")
                 bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_U);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_U);
                 }
 
             }
@@ -822,7 +833,7 @@ Rectangle {
                 text: qsTr("WD") + qsTr("Z")
                 bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_LZ);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_LZ);
                 }
             }
             ICButton {
@@ -832,7 +843,7 @@ Rectangle {
                 text: qsTr("WD") + qsTr("U")
                 bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_RU);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_RU);
                 }
             }
 
@@ -843,7 +854,7 @@ Rectangle {
                 text: qsTr("J") + qsTr("Y")
                 bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_Y);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_Y);
                 }
             }
             ICButton {
@@ -853,7 +864,7 @@ Rectangle {
                 text: qsTr("J") + qsTr("V")
                 bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_V);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_V);
                 }
             }
             ICButton {
@@ -863,7 +874,7 @@ Rectangle {
                 text: qsTr("WD") + qsTr("Y")
                 bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_LY);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_LY);
                 }
             }
             ICButton {
@@ -873,7 +884,7 @@ Rectangle {
                 text: qsTr("WD") + qsTr("V")
                 bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_RV);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_RV);
                 }
             }
 
@@ -884,7 +895,7 @@ Rectangle {
                 text: qsTr("J") + qsTr("X")
                 bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_X);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_X);
                 }
             }
             ICButton {
@@ -894,7 +905,7 @@ Rectangle {
                 text: qsTr("J") + qsTr("W")
                 bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_W);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_W);
                 }
             }
             ICButton {
@@ -904,7 +915,7 @@ Rectangle {
                 text: qsTr("WD") + qsTr("X")
                 bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_LX);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_LX);
                 }
             }
             ICButton {
@@ -914,7 +925,7 @@ Rectangle {
                 text: qsTr("WD") + qsTr("W")
                 bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
                 onButtonClicked: {
-                    panelRobotController.setPullyAxis(AxisDefine.kAP_RW);
+                    tuneSelGrid.setPullyAxis(AxisDefine.kAP_RW);
                 }
             }
         }

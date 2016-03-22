@@ -830,7 +830,7 @@
     </message>
     <message>
         <source>W</source>
-        <translation type="unfinished">世界</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>°</source>
@@ -2821,7 +2821,7 @@ please chose!</source>
     <message>
         <source>name must be word number or underline
  and underline begin is not allowed</source>
-        <translation type="unfinished"></translation>
+        <translation>名称不符合要求</translation>
     </message>
 </context>
 <context>

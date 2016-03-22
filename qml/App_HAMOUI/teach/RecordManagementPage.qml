@@ -206,7 +206,7 @@ Rectangle {
         anchors.leftMargin: -1
         y:recordsView.y
         function inputerr(text){
-            var name = /^[A-Za-z0-9]+[A-Za-z0-9-_]*$/;
+            var name = /^[A-Za-z0-9\u4E00-\u9FA5]+[A-Za-z0-9-_\u4E00-\u9FA5]*$/;
             if(!name.test(text)){
                 tipDialog.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
                 var err = true;

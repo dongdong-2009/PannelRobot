@@ -1166,7 +1166,7 @@ Rectangle {
                             if(counter != null){
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-                                    console.log("counter info:", counter.id, counter.name, counter.current, counter.target);
+//                                    console.log("counter info:", counter.id, counter.name, counter.current, counter.target);
                                     panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
                                     onCounterUpdated(currentCounterID);
 

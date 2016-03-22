@@ -144,13 +144,12 @@ Rectangle {
         height: 25
         isAutoSize: false
         mustChecked: true
-        checkedIndex: 0
+        checkedIndex: 1
         layoutMode: 2
         ICCheckBox{
             id:fullkeybd
             text: qsTr("fullkeybd")
             font.pixelSize: 18
-            isChecked: true
             onIsCheckedChanged: {
                 keyboardSection.visible = isChecked;
                 partkeyboardSection.visible = !isChecked;
@@ -162,6 +161,8 @@ Rectangle {
             anchors.leftMargin: 10
             text: qsTr("partkeybd")
             font.pixelSize: 18
+            isChecked: true
+
             onIsCheckedChanged: {
                 keyboardSection.visible = !isChecked;
                 partkeyboardSection.visible = isChecked;
@@ -1151,5 +1152,8 @@ Rectangle {
 
     Component.onCompleted: {
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(container);
+//        partkeybd.setChecked(true);
+        keyboardSection.visible = false;
+        partkeyboardSection.visible = true;
     }
 }

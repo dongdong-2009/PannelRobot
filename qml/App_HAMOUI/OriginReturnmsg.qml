@@ -28,6 +28,7 @@ MouseArea{
             anchors.right: parent.right
             anchors.bottomMargin: 6
             anchors.rightMargin: 6
+            visible: false
         }
 
     }

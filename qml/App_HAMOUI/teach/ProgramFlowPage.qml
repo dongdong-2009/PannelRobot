@@ -417,7 +417,7 @@ Rectangle {
 
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
-        //        console.log(ret);
+//                console.log(ret);
         var info = JSON.parse(ret);
         info.steps = JSON.parse(info.steps);
         //        if(info.moduleID >= 0)
@@ -1166,7 +1166,7 @@ Rectangle {
                             if(counter != null){
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
-                                    console.log("counter info:", counter.id, counter.name, counter.current, counter.target);
+//                                    console.log("counter info:", counter.id, counter.name,  counter.target, counter.current, currentProgramIndex());
                                     panelRobotController.saveCounterDef(counter.id, counter.name,counter.current, counter.target);
                                     onCounterUpdated(currentCounterID);
 
@@ -1180,32 +1180,28 @@ Rectangle {
 
                             var lastRunning = PData.lastRunning;
 
-                            //                                                        var cpI = currentProgramIndex();
-                            //                            var programIndex = editing.currentIndex;
-                            var programIndex = currentProgramIndex();
+                            var programIndex = uiRunningSteps.programIndex;
                             if(programIndex !== lastRunning.model ||
                                     uiRunningSteps.hostStep !== lastRunning.step)
                             {
                                 var i;
                                 var lastModel = PData.programs[lastRunning.model];
-                                var setStopObject = {"mI_IsActionRunning":false};
 
                                 for(i = 0; i < lastRunning.items.length; ++i){
-                                    lastModel.set(lastRunning.items[i], setStopObject);
+                                    lastModel.setProperty(lastRunning.items[i], "mI_IsActionRunning", false);
                                 }
 
                                 var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep, "moduleID":uiRunningSteps.moduleID};
 
-                                if(uiRunningSteps.moduleID != lastRunning.moduleID)
+                                if(uiRunningSteps.moduleID !== lastRunning.moduleID){
                                     moduleSel.setCurrentModule(uiRunningSteps.moduleID);
+                                }
                                 var cModel = currentModel();
-                                var setRunningObject = {"mI_IsActionRunning":true};
                                 var uiSteps = uiRunningSteps.steps;
                                 for(i = 0; i < uiSteps.length; ++i){
-                                    cModel.set(uiSteps[i], setRunningObject);
+                                    cModel.setProperty(uiSteps[i], "mI_IsActionRunning", true);
                                 }
                                 cRunning.items = uiSteps;
-                                //                                console.log(cRunning.items)
                                 PData.lastRunning = cRunning;
                                 programListView.positionViewAtIndex(uiSteps[0], ListView.Center );
 

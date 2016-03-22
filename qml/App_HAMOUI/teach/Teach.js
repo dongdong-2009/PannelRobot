@@ -555,7 +555,7 @@ function CounterManager(){
         this.counters.length = 0;
         for(var c in bareCounters){
             var counter = bareCounters[c];
-            this.push(new CounterInfo(counter[0], counter[1], counter[3], counter[2]));
+            this.push(new CounterInfo(counter[0], counter[1], counter[2], counter[3]));
         }
     }
 

@@ -554,11 +554,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
             }
         }
         ICButton {
@@ -570,11 +568,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
 
             }
         }
@@ -588,11 +584,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_RU ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
 
             }
 
@@ -607,11 +601,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_RU ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
 
             }
 
@@ -628,11 +620,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_LY ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
 
             }
 
@@ -648,11 +638,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_LY ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
 
             }
 
@@ -668,11 +656,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_V ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_RV ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_V ? "lime" : "white");
 
             }
 
@@ -687,12 +673,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_V ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
-                    return (pullyAxis == AxisDefine.kAP_LV ? "lime" : "white");
-                return "white";
-
+                if(axisSelContiner.checkedItem == worldcodinate)
+                    return (pullyAxis == AxisDefine.kAP_RV ? "lime" : "white");
+                return (pullyAxis == AxisDefine.kAP_V ? "lime" : "white");
             }
         }
 
@@ -705,11 +688,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_LX ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
 
             }
 
@@ -725,11 +706,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_LX ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
 
             }
 
@@ -745,11 +724,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W-")
             onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
-                return "white";
+                return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
 
             }
 
@@ -764,12 +741,9 @@ Rectangle {
             text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W+")
             onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
             bgColor:{
-                if(axisSelContiner.checkedItem == jointcodinate)
-                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
-                else if(axisSelContiner.checkedItem == worldcodinate)
+                if(axisSelContiner.checkedItem == worldcodinate)
                     return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
-                return "white";
-
+                return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
             }
 
         }

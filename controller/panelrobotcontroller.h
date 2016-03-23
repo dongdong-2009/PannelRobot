@@ -258,6 +258,13 @@ public:
         return getConfigValueText(addr).toDouble();
     }
     Q_INVOKABLE bool isAutoMode() const { return currentMode() == CMD_AUTO;}
+    Q_INVOKABLE bool isAutoRunning() const { return currentMode() == CMD_RUNNING;}
+    Q_INVOKABLE bool isInAuto() const
+    {
+        int m = currentMode();
+        return (m == CMD_AUTO) || (m == CMD_RUNNING) || (m == CMD_ONE_CYCLE)
+                || (m == CMD_SINGLE);
+    }
     Q_INVOKABLE bool isOrigined() const { return statusValue("c_ro_0_1_0_938") == 1;}
     Q_INVOKABLE int currentMode() const { return statusValue("c_ro_1_4_0_938");}
     Q_INVOKABLE QString hostStepToUILines(int which, int step) const;

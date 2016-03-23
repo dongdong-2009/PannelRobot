@@ -1184,7 +1184,8 @@ Rectangle {
                         repeat: true
                         onTriggered: {
 
-                            if(!panelRobotController.isAutoMode()) return;
+                            if(!panelRobotController.isInAuto()) return;
+                            autoKeyboard.visible = !panelRobotController.isAutoRunning();
                             if(editing.currentIndex > 8) return;
                             // update counters show
                             var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");

@@ -48,7 +48,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_26 = 26,//< 0:关节坐标显示；1：输出累计值；2：反馈累计值;3:轨迹速度;4:脉冲容差;5:脉冲测试显示
     ICAddr_System_Retain_27 = 27,//< 手轮定义参数
-    ICAddr_System_Retain_28 = 28,//< 原点位置选择：0：取消回原点；1：确认每个轴都已经达到原点附近；2：确认上一次关机前按下急停
+    ICAddr_System_Retain_28 = 28,//< 原点位置选择：0：取消回原点；1：确认每个轴都已经达到原点附近；2：确认上一次关机前按下急停;3:重新找原点
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值
@@ -405,6 +405,9 @@ typedef enum
     CMD_IO, // IO命令
     CMD_ORIGIN, // 原点模式
     CMD_RETURN, // 复归模式
+    CMD_RUNNING, // 自动运行中
+    CMD_SINGLE,//< 单步模式
+    CMD_ONE_CYCLE,//< 单循环模式
 
     CMD_STANDBY = 15, // 待机模式
 

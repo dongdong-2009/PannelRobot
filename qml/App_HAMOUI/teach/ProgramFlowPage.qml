@@ -704,7 +704,7 @@ Rectangle {
                             if(PData.programActionMenu != null)
                                 PData.programActionMenu.state = "";
                         }else{
-                            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+                            PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
@@ -1764,9 +1764,10 @@ Rectangle {
         var insertedIndex = 0;
         for(var p = 0; p < program.length; ++p){
             step = program[p];
-            step["insertedIndex"] = step.insertedIndex || (insertedIndex++);
-            if(step.insertedIndex > insertedIndex)
-                insertedIndex = step.insertedIndex;
+            step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;
+
+            if(step.insertedIndex >= insertedIndex)
+                insertedIndex = step.insertedIndex + 1;
             if(Teach.canActionUsePoint(step)){
                 Teach.definedPoints.parseActionPoints(step);
             }

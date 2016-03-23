@@ -183,6 +183,12 @@ var DefinePoints = {
             }
         }
 
+        definePoints.parseProgram = function(program){
+            for(var i = 0; i < program.length; ++i){
+                definePoints.parseActionPoints(program[i]);
+            }
+        }
+
         return definePoints;
     }
 
@@ -629,11 +635,8 @@ function FunctionInfo(id, name, program){
     this.id = id;
     this.name = name || ("Fun" + id);
     this.program = program || [{"action":actions.F_CMD_PROGRAM_CALL_BACK}];
-    for(var i = 0; i < program.length; ++i){
-        if(canActionUsePoint(program[i])){
-            definedPoints.parseActionPoints(program[i]);
-        }
-    }
+
+    definedPoints.parseProgram(this.program);
 
     this.toString = function(){
         return qsTr("Fun") + "[" + id + "]:" + this.name;

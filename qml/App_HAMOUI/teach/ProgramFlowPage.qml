@@ -312,15 +312,15 @@ Rectangle {
         // module points execute
         if(moduleSel.currentIndex > 0)
             saveModules();
-        var modulesNames = moduleSel.items;
-        for(i = 1; i < modulesNames.length; ++i){
-            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.text(i)).program);
+        var funs = Teach.functionManager.functions;
+        for(i = 0; i < funs.length; ++i){
+            updateProgramModel(functionsModel, funs[i].program);
             collectSpecialLines(PData.kFunctionProgramIndex);
             pointLines = PData.pointLinesInfo.getLines(PData.kFunctionProgramIndex, point.index);
             md = functionsModel;
             if(pointLines.length > 0 ){
                 updatePointsHelper(md, pointLines, point);
-                saveModuleByName(modulesNames[i], false);
+                saveModuleByName(funs[i].toString(), false);
             }
         }
         if(moduleSel.currentIndex > 0){
@@ -337,6 +337,22 @@ Rectangle {
                 hasModify = true;
                 saveProgram(i);
             }
+        }
+
+        var mPs = ManualProgramManager.manualProgramManager.programs;
+        for(i = 0; i < mPs.length; ++i){
+            updateProgramModel(manualProgramModel, mPs[i].program);
+            collectSpecialLines(PData.kManualProgramIndex);
+            pointLines = PData.pointLinesInfo.getLines(PData.kManualProgramIndex, point.index);
+            md = manualProgramModel;
+            if(pointLines.length > 0 ){
+                updatePointsHelper(md, pointLines, point);
+                saveManualProgramByName("[" + mPs[i].id + "]");
+            }
+        }
+        if(editing.currentIndex > 8){
+            updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.currentText()).program);
+            collectSpecialLines(PData.kManualProgramIndex);
         }
     }
 
@@ -364,6 +380,14 @@ Rectangle {
         return errInfo;
     }
 
+    function saveManualProgramByName(name){
+        var program = modelToProgramHelper(PData.kManualProgramIndex);
+        var errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
+        if(errInfo.length == 0)
+            ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+        return errInfo;
+    }
+
     function saveModules(){
         return saveModuleByName(moduleSel.text(currentEditingModule), true);
     }
@@ -374,18 +398,12 @@ Rectangle {
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
-            //            var fun = Teach.functionManager.getFunctionByName(moduleSel.text(currentEditingModule));
-            //            if(fun == null) return;
-            //            fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-            //            var fJSON = Teach.functionManager.toJSON();
-            //            var eIJSON = panelRobotController.saveFunctions(fJSON);
-            //            errInfo = JSON.parse(eIJSON)[fun.id];
-            //            console.log(eIJSON);
         }else if(which == PData.kManualProgramIndex){
-            var program = modelToProgramHelper(PData.kManualProgramIndex);
-            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-            if(errInfo.length == 0)
-                ManualProgramManager.manualProgramManager.updateProgramByName(editing.text(editing.currentIndex), program);
+            saveManualProgramByName(editing.text(editing.currentIndex));
+//            var program = modelToProgramHelper(PData.kManualProgramIndex);
+//            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
+//            if(errInfo.length == 0)
+//                ManualProgramManager.manualProgramManager.updateProgramByName(editing.text(editing.currentIndex), program);
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -1862,6 +1880,11 @@ Rectangle {
 
 
         updateProgramModels();
+        var mPs = ManualProgramManager.manualProgramManager.programs;
+        for(var i = 0; i < mPs.length; ++i){
+            Teach.definedPoints.parseProgram(mPs[i].program);
+        }
+
         panelRobotController.moldChanged.connect(updateProgramModels);
         modifyEditor.editConfirm.connect(onEditConfirm);
         delBtn.buttonClicked.connect(onDeleteTriggered);

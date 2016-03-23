@@ -20,7 +20,7 @@ function LinesInfo(){
     this.clear = function(programIndex){
         var tmp = this.programsLines[programIndex];
         if(tmp != undefined){
-            tmp.length = 0;
+            this.programsLines.splice(programIndex, 1);
         }
     }
     this.add = function(programIndex, id, line){

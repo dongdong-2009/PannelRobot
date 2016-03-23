@@ -321,7 +321,7 @@ Rectangle {
     OriginReturnmsg{
         id: originreturnmsgmsg
         z:100
-        visible: true
+        visible: false
         anchors.centerIn: parent
     }
     ParaChose{

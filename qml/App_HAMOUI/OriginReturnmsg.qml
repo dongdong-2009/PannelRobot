@@ -8,19 +8,22 @@ MouseArea{
     height: 600
     x:0
     y:0
-    property alias hinttext: hinttext.text
     property alias msgtext: msgtext.text
 
     function showForOrigin(){
-        hinttext = qsTr("please press startup button to origin");
-        if(!visible)
+        hinttext.text = qsTr("please press startup button to origin");
+        if(!visible){
+            originMode.visible = true;
             visible = true;
+        }
     }
 
     function showForReturn(){
-        hinttext = qsTr("please press startup button to return");
-        if(!visible)
+        hinttext.text = qsTr("please press startup button to return");
+        if(!visible){
+            originMode.visible = false;
             visible = true;
+        }
     }
 
     function hide(){
@@ -30,8 +33,8 @@ MouseArea{
 
     Rectangle {
         id: continer
-        width: 650
-        height: 80
+        width: 450
+        height: 140
         border.width: 1
         border.color: "black"
         anchors.centerIn: parent
@@ -46,8 +49,8 @@ MouseArea{
         ICButton{
             id:stop
             text: qsTr("Stop")
-            anchors.top: hinttext.bottom
-            anchors.topMargin: 6
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 6
             x:10
             onButtonClicked: {
                 panelRobotController.sendKeyCommandToHost(Keymap.CMD_STOP);
@@ -55,11 +58,14 @@ MouseArea{
         }
 
         ICButtonGroup{
+            id:originMode
             anchors.top: hinttext.bottom
             anchors.topMargin: 6
             anchors.right: parent.right
             anchors.rightMargin: 20
             mustChecked: true
+            layoutMode: 1
+            spacing: 6
             ICCheckBox{
                 id:nearOrigin
                 text: qsTr("Near Origin")
@@ -68,14 +74,24 @@ MouseArea{
                 id:logedPos
                 text:qsTr("Emergence before shutdow")
             }
+            ICCheckBox{
+                id:reOrigin
+                text:qsTr("ReOrigin")
+            }
+
             onCheckedItemChanged: {
                 if(checkedItem == nearOrigin)
                     panelRobotController.modifyConfigValue(28, 1);
                 else if(checkedItem == logedPos)
                     panelRobotController.modifyConfigValue(28, 2);
+                else if(checkedItem == reOrigin)
+                    panelRobotController.modifyConfigValue(28, 3);
             }
             onVisibleChanged: {
-                nearOrigin.setChecked(true);
+                if(checkedItem != nearOrigin)
+                    nearOrigin.setChecked(true);
+                else
+                    panelRobotController.modifyConfigValue(28, 1);
             }
         }
 

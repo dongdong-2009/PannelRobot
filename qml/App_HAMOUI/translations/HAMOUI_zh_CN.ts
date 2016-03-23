@@ -2099,7 +2099,7 @@
     <name>OriginReturnmsg</name>
     <message>
         <source>please press startup button to origin</source>
-        <translation>请按启动键原点复归.</translation>
+        <translation>请确认原点模式后,再按启动键原点复归.</translation>
     </message>
     <message>
         <source>please press startup button to return</source>
@@ -2116,6 +2116,10 @@
     <message>
         <source>Emergence before shutdow</source>
         <translation>关机前已急停</translation>
+    </message>
+    <message>
+        <source>ReOrigin</source>
+        <translation>重新原点</translation>
     </message>
 </context>
 <context>

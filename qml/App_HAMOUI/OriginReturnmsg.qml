@@ -63,7 +63,7 @@ MouseArea{
             anchors.topMargin: 6
             anchors.right: parent.right
             anchors.rightMargin: 20
-            mustChecked: true
+            mustChecked: false
             layoutMode: 1
             spacing: 6
             ICCheckBox{
@@ -88,10 +88,11 @@ MouseArea{
                     panelRobotController.modifyConfigValue(28, 3);
             }
             onVisibleChanged: {
-                if(checkedItem != nearOrigin)
-                    nearOrigin.setChecked(true);
-                else
-                    panelRobotController.modifyConfigValue(28, 1);
+//                if(checkedItem != nearOrigin)
+                if(checkedItem != null)
+                    checkedItem.setChecked(false);
+//                else
+//                    panelRobotController.modifyConfigValue(28, 1);
             }
         }
 

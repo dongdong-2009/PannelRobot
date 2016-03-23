@@ -45,6 +45,10 @@ var CMD_RETURN = 6; // 复归模式
 var CMD_RUNNING = 7 // 自动运行中
 var CMD_SINGLE = 8//< 单步模式
 var CMD_ONE_CYCLE = 9//< 单循环模式
+var CMD_ORIGIN_ING = 10; // 正在寻找原点中
+var CMD_RETURN_ING = 11; // 原点复归中
+
+
 
 var CMD_STANDBY = 15; // 待机模式
 

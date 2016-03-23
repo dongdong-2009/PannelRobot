@@ -42,11 +42,12 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: parent.width * 0.01
         function onKnobChanged(knobStatus){
-            refreshTimer.stop();
             if(knobStatus === Keymap.KNOB_MANUAL){
                 source = "images/modeManual.png";
                 modeText.text = qsTr("Manual");
                 modeBG.source = "images/modeTextBG_Blue.png";
+                refreshTimer.stop();
+
             }else if(knobStatus === Keymap.KNOB_AUTO){
                 source = "images/modeAuto.png"
                 modeText.text = qsTr("Auto");
@@ -57,6 +58,8 @@ Rectangle {
                 source = "images/modeSetting.png";
                 modeText.text = qsTr("Settings");
                 modeBG.source = "images/modeTextBG_Red.png";
+                refreshTimer.stop();
+
             }
         }
     }
@@ -163,10 +166,12 @@ Rectangle {
         id:refreshTimer
         running: false
         interval: 50
+        repeat: true
         onTriggered: {
             var m = panelRobotController.currentMode();
+            modeText.text = qsTr("Auto");
             if(Keymap.modeToText.hasOwnProperty(m))
-                modeText.text = qsTr("Auto") + "/" +  Keymap.modeToText[m];
+                  modeText.text += "/" +  Keymap.modeToText[m];
         }
     }
 

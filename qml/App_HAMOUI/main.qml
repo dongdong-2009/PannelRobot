@@ -611,7 +611,11 @@ Rectangle {
             if(panelRobotController.currentMode() == Keymap.CMD_ORIGIN){
                 originreturnmsgmsg.showForOrigin();
             }else if(panelRobotController.currentMode() == Keymap.CMD_RETURN){
-                originreturnmsgmsg.showForReturn()
+                originreturnmsgmsg.showForReturn();
+            }else if(panelRobotController.isOriginning()){
+                originreturnmsgmsg.showForOriginning();
+            }else if(panelRobotController.isReturnning()){
+                originreturnmsgmsg.showForReturning();
             }else originreturnmsgmsg.hide();
 
 

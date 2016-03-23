@@ -18,8 +18,24 @@ MouseArea{
         }
     }
 
+    function showForOriginning(){
+        hinttext.text = qsTr("Originning");
+        if(!visible){
+//            originMode.visible = true;
+            visible = true;
+        }
+    }
+
     function showForReturn(){
         hinttext.text = qsTr("please press startup button to return");
+        if(!visible){
+            originMode.visible = false;
+            visible = true;
+        }
+    }
+
+    function showForReturning(){
+        hinttext.text = qsTr("Returning");
         if(!visible){
             originMode.visible = false;
             visible = true;
@@ -53,7 +69,7 @@ MouseArea{
             anchors.bottomMargin: 6
             x:10
             onButtonClicked: {
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_STOP);
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
             }
         }
 

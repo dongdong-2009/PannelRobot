@@ -265,7 +265,9 @@ public:
         return (m == CMD_AUTO) || (m == CMD_RUNNING) || (m == CMD_ONE_CYCLE)
                 || (m == CMD_SINGLE);
     }
+    Q_INVOKABLE bool isOriginning() const { return currentMode() == CMD_ORIGIN_ING;}
     Q_INVOKABLE bool isOrigined() const { return statusValue("c_ro_0_1_0_938") == 1;}
+    Q_INVOKABLE bool isReturnning() const { return currentMode() == CMD_RETURN_ING;}
     Q_INVOKABLE int currentMode() const { return statusValue("c_ro_1_4_0_938");}
     Q_INVOKABLE QString hostStepToUILines(int which, int step) const;
     Q_INVOKABLE QString currentRunningActionInfo(int which) const;

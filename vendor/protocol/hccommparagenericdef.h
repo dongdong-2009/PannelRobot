@@ -408,6 +408,8 @@ typedef enum
     CMD_RUNNING, // 自动运行中
     CMD_SINGLE,//< 单步模式
     CMD_ONE_CYCLE,//< 单循环模式
+    CMD_ORIGIN_ING, // 正在寻找原点中
+    CMD_RETURN_ING, // 原点复归中
 
     CMD_STANDBY = 15, // 待机模式
 

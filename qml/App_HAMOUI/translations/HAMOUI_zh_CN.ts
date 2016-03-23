@@ -2136,6 +2136,14 @@
         <source>ReOrigin</source>
         <translation>重新原点</translation>
     </message>
+    <message>
+        <source>Originning</source>
+        <translation>原点复归中...</translation>
+    </message>
+    <message>
+        <source>Returning</source>
+        <translation>复归中...</translation>
+    </message>
 </context>
 <context>
     <name>OutputActionEditor</name>

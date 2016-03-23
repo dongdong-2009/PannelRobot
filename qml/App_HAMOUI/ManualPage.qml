@@ -38,8 +38,9 @@ ContentPageBase {
                 width: 80
                 height: pdata.menuItemHeight
                 itemText: qsTr("Output Y")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
             }
 
             TabMenuItem {
@@ -47,16 +48,18 @@ ContentPageBase {
                 width: 80
                 height: pdata.menuItemHeight
                 itemText: qsTr("Tools Calibration")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
             }
             TabMenuItem{
                 id:programmableBtn
                 width: 100
                 height: pdata.menuItemHeight
                 itemText: qsTr("Custom Btn")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
 
             }
 
@@ -65,18 +68,18 @@ ContentPageBase {
                 width: 50
                 height: pdata.menuItemHeight
                 itemText: qsTr("Debug")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
-                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
             }
             TabMenuItem {
                 id: debugprint
                 width: 80
                 height: pdata.menuItemHeight
                 itemText: qsTr("Debugprint")
-                color: getChecked(
-                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
-                //                x:productSettingsMenuItem.x + productSettingsMenuItem.width + 1
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
                 
             }
             onButtonClickedID: {

@@ -3,6 +3,8 @@ import QtQuick 1.1
 Rectangle {
     property alias itemText: text.text
     property bool isChecked: false
+    property alias textFont: text.font
+    property string textColor:"black"
     signal itemTriggered()
 
 
@@ -21,7 +23,8 @@ Rectangle {
         text: qsTr("TabItem")
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        color: enabled? "black" : "gray"
+        color: enabled? textColor : "gray"
+
     }
 
     onIsCheckedChanged: {

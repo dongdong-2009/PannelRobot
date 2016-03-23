@@ -114,7 +114,9 @@ Rectangle {
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
                 itemText: qsTr("Operation")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
 
             }
             TabMenuItem{
@@ -122,15 +124,18 @@ Rectangle {
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
                 itemText: qsTr("Program")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-
+                color: getChecked() ? "green" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
             }
             TabMenuItem{
                 id:menuSettings
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
                 itemText: qsTr("Settings")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "red" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
             }
             onButtonClickedItem: {
                 middleHeader.onMenuItemTriggered(item);

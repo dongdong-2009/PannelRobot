@@ -32,7 +32,9 @@ ContentPageBase{
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
                 height: pdata.menuItemHeight
                 itemText: qsTr("Product Settings")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "red" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
                 onIsCheckedChanged: {
                     if(isChecked){
                         pageContainer.setCurrentIndex(0)
@@ -44,7 +46,9 @@ ContentPageBase{
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
                 height: pdata.menuItemHeight
                 itemText: qsTr("Machine Settings")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "red" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
                 onIsCheckedChanged: {
                     if(isChecked){
                         pageContainer.setCurrentIndex(1)
@@ -56,7 +60,9 @@ ContentPageBase{
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion;
                 height: pdata.menuItemHeight
                 itemText: qsTr("Panel Settings")
-                color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                color: getChecked() ? "red" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
                 onIsCheckedChanged: {
                     if(isChecked){
                         pageContainer.setCurrentIndex(2)

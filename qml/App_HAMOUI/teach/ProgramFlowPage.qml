@@ -1802,7 +1802,7 @@ Rectangle {
     }
 
     function updateProgramModels(){
-        //        PData.counterLinesInfo.clear();
+        Teach.definedPoints.clear();
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
         Teach.counterManager.init(counters);
@@ -1813,7 +1813,6 @@ Rectangle {
         //        var program = JSON.parse(panelRobotController.mainProgram());
         var program;
         var i;
-        Teach.definedPoints.clear();
         for(i = 0; i < 9; ++i){
             program = JSON.parse(panelRobotController.programs(i));
             Teach.currentParsingProgram = i;

@@ -48,6 +48,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_25 = 25,//< 2:升级
     ICAddr_System_Retain_26 = 26,//< 0:关节坐标显示；1：输出累计值；2：反馈累计值;3:轨迹速度;4:脉冲容差;5:脉冲测试显示
     ICAddr_System_Retain_27 = 27,//< 手轮定义参数
+    ICAddr_System_Retain_28 = 28,//< 原点位置选择：0：取消回原点；1：确认每个轴都已经达到原点附近；2：确认上一次关机前按下急停
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值
@@ -693,6 +694,7 @@ typedef enum
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
+	ALARM_STORAGE_READ_ERR, // 从主机FLASH读取的数据有错
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警

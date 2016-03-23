@@ -320,8 +320,8 @@ Rectangle {
 
     OriginReturnmsg{
         id: originreturnmsgmsg
-        z:1000
-        visible: false
+        z:100
+        visible: true
         anchors.centerIn: parent
     }
     ParaChose{
@@ -609,14 +609,10 @@ Rectangle {
                 panelRobotController.readCurrentKnobValue();
             }
             if(panelRobotController.currentMode() == Keymap.CMD_ORIGIN){
-                originreturnmsgmsg.hinttext = qsTr("please press startup button to origin");
-                originreturnmsgmsg.msgtext = qsTr("msgtext");
-                originreturnmsgmsg.visible = true;
+                originreturnmsgmsg.showForOrigin();
             }else if(panelRobotController.currentMode() == Keymap.CMD_RETURN){
-                originreturnmsgmsg.hinttext = qsTr("please press startup button to return");
-                originreturnmsgmsg.msgtext = qsTr("msgtext");
-                originreturnmsgmsg.visible = true;
-            }else originreturnmsgmsg.visible = false;
+                originreturnmsgmsg.showForReturn()
+            }else originreturnmsgmsg.hide();
 
 
             var alarmNum = panelRobotController.currentErrNum();

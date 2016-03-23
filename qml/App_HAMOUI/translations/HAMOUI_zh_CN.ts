@@ -2096,6 +2096,29 @@
     </message>
 </context>
 <context>
+    <name>OriginReturnmsg</name>
+    <message>
+        <source>please press startup button to origin</source>
+        <translation>请按启动键原点复归.</translation>
+    </message>
+    <message>
+        <source>please press startup button to return</source>
+        <translation>请按启动键复归.</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>Near Origin</source>
+        <translation>已在原点附近</translation>
+    </message>
+    <message>
+        <source>Emergence before shutdow</source>
+        <translation>关机前已急停</translation>
+    </message>
+</context>
+<context>
     <name>OutputActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -3917,10 +3940,6 @@ please chose!</source>
     <message>
         <source>please press startup button to origin</source>
         <translation>请按启动键原点复归.</translation>
-    </message>
-    <message>
-        <source>msgtext</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>please press startup button to return</source>

@@ -629,6 +629,12 @@ function FunctionInfo(id, name, program){
     this.id = id;
     this.name = name || ("Fun" + id);
     this.program = program || [{"action":actions.F_CMD_PROGRAM_CALL_BACK}];
+    for(var i = 0; i < program.length; ++i){
+        if(canActionUsePoint(program[i])){
+            definedPoints.parseActionPoints(program[i]);
+        }
+    }
+
     this.toString = function(){
         return qsTr("Fun") + "[" + id + "]:" + this.name;
     }
@@ -642,7 +648,8 @@ function FunctionManager(){
             return;
         }
         var functinos = JSON.parse(functionsJSON);
-        for(var i = 0; i < functinos.length; ++i){
+        var i;
+        for(i = 0; i < functinos.length; ++i){
             this.push(new FunctionInfo(functinos[i].id, functinos[i].name, JSON.parse(functinos[i].program)));
         }
 

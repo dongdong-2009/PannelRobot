@@ -7,14 +7,10 @@ import "../utils/Storage.js" as Storage
 
 MouseArea{
     id:instance
-    width: 800
-    height: 600
-    x:0
-    y:0
+    width: parent.width
+    height: parent.height
     property int currentType: 0
     property int pullyAxis: -1
-    property alias contentWidth: container.width
-    property alias contentHeight: container.height
     function sendCommand(cmd, type){
         if(currentType !== type){
             currentType = type;

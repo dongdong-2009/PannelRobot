@@ -471,8 +471,6 @@ Rectangle {
             id:armKeyboard
             anchors.left: armKeyboardBtn.right
             visible: false
-            contentWidth: parent.width
-            contentHeight: parent.height
         }
 
 

@@ -304,7 +304,7 @@ Rectangle {
     }
 
     function onPointChanged(point){
-//        var cpI = currentProgramIndex();
+        //        var cpI = currentProgramIndex();
         var pointLines;
         var md;
         var i;
@@ -400,10 +400,10 @@ Rectangle {
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
             saveManualProgramByName(editing.text(editing.currentIndex));
-//            var program = modelToProgramHelper(PData.kManualProgramIndex);
-//            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-//            if(errInfo.length == 0)
-//                ManualProgramManager.manualProgramManager.updateProgramByName(editing.text(editing.currentIndex), program);
+            //            var program = modelToProgramHelper(PData.kManualProgramIndex);
+            //            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
+            //            if(errInfo.length == 0)
+            //                ManualProgramManager.manualProgramManager.updateProgramByName(editing.text(editing.currentIndex), program);
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -1711,6 +1711,8 @@ Rectangle {
                 }
             }
         }
+
+
     }
 
     

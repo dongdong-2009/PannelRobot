@@ -42,6 +42,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: parent.width * 0.01
         function onKnobChanged(knobStatus){
+            refreshTimer.stop();
             if(knobStatus === Keymap.KNOB_MANUAL){
                 source = "images/modeManual.png";
                 modeText.text = qsTr("Manual");
@@ -50,6 +51,7 @@ Rectangle {
                 source = "images/modeAuto.png"
                 modeText.text = qsTr("Auto");
                 modeBG.source = "images/modeTextBG_Green.png";
+                refreshTimer.start();
             }
             else if(knobStatus === Keymap.KNOB_SETTINGS){
                 source = "images/modeSetting.png";
@@ -156,6 +158,17 @@ Rectangle {
 
 //        }
 //    }
+
+    Timer{
+        id:refreshTimer
+        running: false
+        interval: 50
+        onTriggered: {
+            var m = panelRobotController.currentMode();
+            if(Keymap.modeToText.hasOwnProperty(m))
+                modeText.text = qsTr("Auto") + "/" +  Keymap.modeToText[m];
+        }
+    }
 
     Component.onCompleted: {
         buttonGroup.addButton(io);

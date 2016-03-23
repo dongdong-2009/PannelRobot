@@ -1940,6 +1940,21 @@
     </message>
 </context>
 <context>
+    <name>Keymap</name>
+    <message>
+        <source>Running</source>
+        <translation>运行中</translation>
+    </message>
+    <message>
+        <source>Single</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>One Cycle</source>
+        <translation>单循环</translation>
+    </message>
+</context>
+<context>
     <name>LoginDialog</name>
     <message>
         <source>User:</source>

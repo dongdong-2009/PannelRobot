@@ -42,7 +42,17 @@ var CMD_IO = 4; // IO命令
 var CMD_ORIGIN = 5; // 原点模式
 var CMD_RETURN = 6; // 复归模式
 
+var CMD_RUNNING = 7 // 自动运行中
+var CMD_SINGLE = 8//< 单步模式
+var CMD_ONE_CYCLE = 9//< 单循环模式
+
 var CMD_STANDBY = 15; // 待机模式
+
+var modeToText = {
+    7:qsTr("Running"),
+    8:qsTr("Single"),
+    9:qsTr("One Cycle")
+}
 
 cmdHelper = 0x0050;
 var CMD_MANUAL_STOP = cmdHelper++;  // 手动运行停止

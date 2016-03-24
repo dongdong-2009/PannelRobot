@@ -30,6 +30,11 @@ Item {
             icon: "../images/settings_panel_config.png"
         }
         CatalogButton{
+            id:networkMenuBtn
+            text: qsTr("Network Settings")
+            icon: "../images/settings_network_config.png"
+        }
+        CatalogButton{
             id:maintainMenuBtn
             text: qsTr("Maintain")
             icon: "../images/settings_maintain.png"
@@ -63,6 +68,7 @@ Item {
         configsContainer.addNav(maintainMenuBtn, Qt.createComponent('maintainPage.qml'));
         configsContainer.addNav(panelMenuBtn, Qt.createComponent('panelSettingsPage.qml'));
         configsContainer.addNav(usermanegement, Qt.createComponent('UsermanagementPage.qml'));
+        configsContainer.addNav(networkMenuBtn, Qt.createComponent('NetworkSettings.qml'));
         ShareData.UserInfo.registUserChangeEvent(myitem);
 
     }

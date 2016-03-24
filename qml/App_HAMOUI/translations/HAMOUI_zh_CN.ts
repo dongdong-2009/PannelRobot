@@ -2081,6 +2081,37 @@
     </message>
 </context>
 <context>
+    <name>NetworkSettings</name>
+    <message>
+        <source>Network En</source>
+        <translation>网络使能</translation>
+    </message>
+    <message>
+        <source>Local Addr:</source>
+        <translation>本机IP:</translation>
+    </message>
+    <message>
+        <source>Host Addr:</source>
+        <translation>外设目标IP:</translation>
+    </message>
+    <message>
+        <source>Serve</source>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <source>Client</source>
+        <translation>客户端</translation>
+    </message>
+    <message>
+        <source>CommunicateMode</source>
+        <translation>通信模式</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+</context>
+<context>
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
@@ -2289,6 +2320,10 @@
     <message>
         <source>Usermanegement</source>
         <translation>用户管理</translation>
+    </message>
+    <message>
+        <source>Network Settings</source>
+        <translation>网络配置</translation>
     </message>
 </context>
 <context>

@@ -19,6 +19,7 @@
 #include "qtquick1applicationviewer.h"
 #include "icvirtualkeyboard.h"
 #include "iclog.h"
+#include "ictcptransceiver.h"
 
 #ifndef Q_WS_WIN32
 #ifndef Q_OS_MAC
@@ -239,13 +240,13 @@ public:
 
     Q_INVOKABLE bool isInputOn(int index, int board) const
     {
-//        return rand() % 2;
+        //        return rand() % 2;
         quint32 iStatus = ICRobotVirtualhost::IStatus(board);
         return iStatus & (1 << index);
     }
     Q_INVOKABLE bool isOutputOn(int index, int board) const
     {
-//        return rand() % 2;
+        //        return rand() % 2;
         quint32 oStatus = ICRobotVirtualhost::OStatus(board);
         return oStatus & (1 << index);
     }
@@ -355,9 +356,9 @@ public:
 
     Q_INVOKABLE QString saveSubProgram(int which, const QString& program)
     {
-//        if(which < ICRobotMold::kSub1Prog ||
-//                which > ICRobotMold::kSub8Prog)
-//            return -1;
+        //        if(which < ICRobotMold::kSub1Prog ||
+        //                which > ICRobotMold::kSub8Prog)
+        //            return -1;
         QMap<int, int> ret =  ICRobotMold::CurrentMold()->SaveMold(which, program);
         //        if(ret == ICRobotMold::kCCErr_None)
         //        {
@@ -489,7 +490,7 @@ public:
     Q_INVOKABLE QString hostVersion() const { return ICRobotVirtualhost::HostVersion();}
     Q_INVOKABLE QString panelControllerVersion() const { return SW_VER;}
     Q_INVOKABLE QString controllerVersion() const {
-         return panelControllerVersion() + "_" + hostVersion();
+        return panelControllerVersion() + "_" + hostVersion();
     }
     Q_INVOKABLE void recal() const
     {
@@ -604,10 +605,10 @@ public:
 
     Q_INVOKABLE void setPullySpeed(int speed)
     {
-//        uint32_t type:8;//< 类型
-//        uint32_t lenth:8;//< 单位长度
-//        uint32_t res:15;//< 预留
-//        uint32_t en:1;//< 使能
+        //        uint32_t type:8;//< 类型
+        //        uint32_t lenth:8;//< 单位长度
+        //        uint32_t res:15;//< 预留
+        //        uint32_t en:1;//< 使能
         PullyData pD;
         pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
         pD.b.lenth = speed & 0xFF;
@@ -618,7 +619,7 @@ public:
     Q_INVOKABLE void setPullyAxis(int axis, int speed)
     {
         PullyData pD;
-//        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
+        //        pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
         pD.b.type = axis & 0xFF;
         pD.b.lenth = speed;
         modifyConfigValue(ICAddr_System_Retain_27, pD.all);
@@ -642,22 +643,59 @@ public:
     Q_INVOKABLE void setSingleRunStart(int which, int module,int line)
     {
         QPair<int, int> stepInfo = ICRobotMold::CurrentMold()->UIStepToRealStep(which, module, line);
-//        ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
-//        return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
+        //        ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
+        //        return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
         modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 
+    Q_INVOKABLE void setEth0Enable(bool en, int mode, const QString& localAddr, const QString& hostAddr, int hostPort)
+    {
+        if(en)
+        {
+#ifdef Q_WS_QWS
+            ::system(QString("ifconfig eth0 up && ifconfig eth0 %1").arg(localAddr).toAscii());
+#endif
+            if(eth0Transceiver_.isNull())
+            {
+                eth0Transceiver_.reset( new ICTcpTransceiver());
+            }
+            if(eth0DataMonitor_.isNull())
+            {
+                eth0DataMonitor_.reset( new TCPCommunicateMonitor());
+                connect(eth0DataMonitor_.data(),
+                        SIGNAL(dataComeIn(QByteArray)),
+                        SIGNAL(eth0DataComeIn(QByteArray)));
+            }
+            eth0Transceiver_->SetHostAddr(QHostAddress(hostAddr), hostPort);
+            eth0Transceiver_->SetCommuncateMode(static_cast<ICTcpTransceiver::CommunicateMode>(mode));
+            eth0Transceiver_->RegisterCommMonitor(eth0DataMonitor_.data());
+            eth0Transceiver_->StartCommunicate();
+        }
+        else
+        {
+            eth0Transceiver_->StopCommunicate();
+#ifdef Q_WS_QWS
+            ::system("ifconfig eth0 down");
+#endif
+        }
+    }
 
-//    Q_INVOKABLE QString debug_LogContent() const
-//    {
-//        if(logger_ == NULL)
-//            return QString().split("\n");
-//        return logger_->LogContent().split("\n");
-//    }
+    Q_INVOKABLE void writeDataToETH0(const QByteArray& data)
+    {
+        eth0Transceiver_->WriteRawData(data);
+    }
+
+
+    //    Q_INVOKABLE QString debug_LogContent() const
+    //    {
+    //        if(logger_ == NULL)
+    //            return QString().split("\n");
+    //        return logger_->LogContent().split("\n");
+    //    }
 
     void InitMainView();
 
-//    QDeclarativeView* MainView() { return mainView_;}
+    //    QDeclarativeView* MainView() { return mainView_;}
     QWidget* MainView()
     {
 #ifdef QT5
@@ -676,6 +714,7 @@ signals:
     void screenRestore();
     void machineConfigChanged();
     void LoadMessage(const QString&);
+    void eth0DataComeIn(const QByteArray& data);
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
@@ -720,6 +759,9 @@ private:
     QFileSystemWatcher hostUpdateFinishedWatcher_;
     QMap<int, quint32> readedConfigValues_;
     ICLog* logger_;
+
+    QScopedPointer<ICTcpTransceiver> eth0Transceiver_;
+    QScopedPointer<TCPCommunicateMonitor> eth0DataMonitor_;
 
 
 #ifdef Q_WS_QWS

@@ -1590,7 +1590,7 @@ Rectangle {
 
     }
 
-    Item{
+    MouseArea{
         id: autoKeyboard
         width: 600
         height:80

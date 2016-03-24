@@ -340,8 +340,8 @@ function endSpeedCalcByTime(current, dir){
 //        console.log(delta)
         ret = current + delta * 0.005 * dir;
     }
-    if(ret >= 200)
-        ret = 200.0;
+    if(ret >= 100)
+        ret = 100.0;
     if(ret <= 0.1)
         ret = 0.1;
     return ret;

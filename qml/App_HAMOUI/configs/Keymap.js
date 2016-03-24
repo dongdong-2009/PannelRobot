@@ -337,7 +337,7 @@ function endSpeedCalcByTime(current, dir){
     }else{
         var now = new Date();
         var delta = (now.getTime() - speedInfo.lastTime.getTime());
-        console.log(delta)
+//        console.log(delta)
         ret = current + delta * 0.005 * dir;
     }
     if(ret >= 200)

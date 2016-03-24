@@ -30,7 +30,7 @@ Item {
         color: isChecked ? "lightgreen" :"white"
         Image{
             id:checkedImage
-            source: "images/checked.svg"
+            source: "images/checked.png"
             width:parent.width + 6
             height:parent.height + 6
             visible: isChecked

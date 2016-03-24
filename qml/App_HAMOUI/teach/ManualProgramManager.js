@@ -12,6 +12,7 @@ function ManualProgramManager(){
     var manager = this;
     db.transaction(function(tx){
         tx.executeSql('CREATE TABLE IF NOT EXISTS manualprogram(id PK INTEGER NOT NULL, name TEXT  NOT NULL, program TEXT  NOT NULL)');
+//        tx.executeSql('DELETE FROM manualprogram');
     }
     );
     db.transaction(function(tx){

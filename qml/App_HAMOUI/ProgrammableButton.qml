@@ -57,7 +57,6 @@ Item {
     Component.onCompleted: {
         var programs = ManualProgramManager.manualProgramManager.programs;
         for(var i = 0; i < programs.length; ++i){
-            console.log(programs[i].id, programs[i].name);
             buttonModel.append({"po":programs[i]});
         }
         ManualProgramManager.manualProgramManager.registerMonitor(container);

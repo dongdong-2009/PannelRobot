@@ -500,11 +500,8 @@ Rectangle {
             singleCycle.setChecked(false);
             singleStep.setChecked(false);
         }
-        console.log("knob", isAuto);
         editing.resetProgramItems(isAuto);
-        console.log("knob", isAuto);
         isFollow.visible = isAuto;
-        console.log("knob", isAuto, isFollow.visible);
 
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = false;

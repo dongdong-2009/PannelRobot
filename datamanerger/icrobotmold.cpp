@@ -1168,6 +1168,14 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     QVariantMap result = parser.parse (lineContent.toLatin1(), &ok).toMap();
     if(!ok) return ret;
     int err;
+
+    if(result.value("action") == F_CMD_STACK0)
+    {
+        int stackID = result.value("stackID", -1).toInt();
+        StackInfo si = stackInfos_.value(stackID);
+        result.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+    }
+
     ret = VariantToMoldItem(realStep, result, err);
     return ret;
 }

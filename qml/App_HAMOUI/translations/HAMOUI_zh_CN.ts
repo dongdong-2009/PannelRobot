@@ -1564,134 +1564,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>INY010</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY011</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY012</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY013</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY014</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY015</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY016</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY017</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY020</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY021</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY022</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY023</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY024</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY025</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY026</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY027</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY030</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY031</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY032</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY033</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY034</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY035</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY036</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY037</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY040</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY041</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY042</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY043</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY044</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY045</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY046</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INY047</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Normal Y</source>
         <translation>普通输出</translation>
     </message>
@@ -2023,6 +1895,70 @@
         <source>Time Y047</source>
         <translation>时间输出Y047</translation>
     </message>
+    <message>
+        <source>M030</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M031</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M032</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M033</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M034</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M035</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M036</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M037</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M040</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M041</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M042</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M043</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M044</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M045</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M046</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M047</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>JogPage</name>
@@ -2204,11 +2140,11 @@
     </message>
     <message>
         <source>Send Test</source>
-        <translation type="unfinished"></translation>
+        <translation>发送测试数据</translation>
     </message>
     <message>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation>接收的内容</translation>
     </message>
 </context>
 <context>

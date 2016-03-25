@@ -352,10 +352,13 @@ Item {
                     currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(valveDefine.y1Point, valveDefine.y1Board));
                 }
             }else{
+                var realBoard = modelItem.board;
+                if(modelItem.board == IODefines.TIMEY_BOARD_START)
+                    realBoard = IODefines.IO_BOARD_0;
 
                 for(i = 0; i < currentModel.count; ++i){
                     modelItem =  currentModel.get(i);
-                    currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(modelItem.hwPoint, modelItem.board));
+                    currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(modelItem.hwPoint, realBoard));
                 }
             }
         }

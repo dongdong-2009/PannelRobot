@@ -196,12 +196,12 @@ MouseArea{
             checkedIndex: 1
             layoutMode: 1
             spacing: 20
-            onVisibleChanged: {
-                if(!visible){
-                    worldcodinate.isChecked = false;
-                    jointcodinate.isChecked = true;
-                }
-            }
+//            onVisibleChanged: {
+//                if(!visible){
+//                    worldcodinate.isChecked = false;
+//                    jointcodinate.isChecked = true;
+//                }
+//            }
             onCheckedItemChanged: {
                 if(checkedItem == worldcodinate){
                     panelRobotController.modifyConfigValue(24, Keymap.COMBINE_ARM_MOVE_TYPE);

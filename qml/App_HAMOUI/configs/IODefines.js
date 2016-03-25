@@ -20,9 +20,6 @@ var IO_TYPE_NORMAL_Y = 0;
 var IO_TYPE_SINGLE_Y = 1;
 var IO_TYPE_HOLD_DOUBLE_Y = 2;
 var IO_TYPE_UNHOLD_DOUBLE_Y = 3;
-var IO_TYPE_M = 100;
-var IO_TYPE_EUY = 101;
-var IO_TYPE_TIMEY = 102;
 
 var IO_DIR_PP = 1;
 var IO_DIR_RP = 0;
@@ -256,55 +253,55 @@ var valveDefines = {
     "valve30": new ValveItem(30, qsTr("Normal Y046"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 30),
     "valve31": new ValveItem(31, qsTr("Normal Y047"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 31),
 
-    "mValve0": new ValveItem(32, qsTr("M010"), IO_TYPE_M, 0, M_BOARD_0, 0),
-    "mValve1": new ValveItem(33, qsTr("M011"), IO_TYPE_M, 0, M_BOARD_0, 1),
-    "mValve2": new ValveItem(34, qsTr("M012"), IO_TYPE_M, 0, M_BOARD_0, 2),
-    "mValve3": new ValveItem(35, qsTr("M013"), IO_TYPE_M, 0, M_BOARD_0, 3),
-    "mValve4": new ValveItem(36, qsTr("M014"), IO_TYPE_M, 0, M_BOARD_0, 4),
-    "mValve5": new ValveItem(37, qsTr("M015"), IO_TYPE_M, 0, M_BOARD_0, 5),
-    "mValve6": new ValveItem(38, qsTr("M016"), IO_TYPE_M, 0, M_BOARD_0, 6),
-    "mValve7": new ValveItem(39, qsTr("M017"), IO_TYPE_M, 0, M_BOARD_0, 7),
-    "mValve8": new ValveItem(40, qsTr("M020"), IO_TYPE_M, 0, M_BOARD_0, 8),
-    "mValve9": new ValveItem(41, qsTr("M021"), IO_TYPE_M, 0, M_BOARD_0, 9),
-    "mValve10": new ValveItem(42, qsTr("M022"), IO_TYPE_M, 0, M_BOARD_0, 10),
-    "mValve11": new ValveItem(43, qsTr("M023"), IO_TYPE_M, 0, M_BOARD_0, 11),
-    "mValve12": new ValveItem(44, qsTr("M024"), IO_TYPE_M, 0, M_BOARD_0, 12),
-    "mValve13": new ValveItem(45, qsTr("M025"), IO_TYPE_M, 0, M_BOARD_0, 13),
-    "mValve14": new ValveItem(46, qsTr("M026"), IO_TYPE_M, 0, M_BOARD_0, 14),
-    "mValve15": new ValveItem(47, qsTr("M027"), IO_TYPE_M, 0, M_BOARD_0, 15),
+    "mValve0": new ValveItem(32, qsTr("M010"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 0),
+    "mValve1": new ValveItem(33, qsTr("M011"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 1),
+    "mValve2": new ValveItem(34, qsTr("M012"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 2),
+    "mValve3": new ValveItem(35, qsTr("M013"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 3),
+    "mValve4": new ValveItem(36, qsTr("M014"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 4),
+    "mValve5": new ValveItem(37, qsTr("M015"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 5),
+    "mValve6": new ValveItem(38, qsTr("M016"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 6),
+    "mValve7": new ValveItem(39, qsTr("M017"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 7),
+    "mValve8": new ValveItem(40, qsTr("M020"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 8),
+    "mValve9": new ValveItem(41, qsTr("M021"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 9),
+    "mValve10": new ValveItem(42, qsTr("M022"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 10),
+    "mValve11": new ValveItem(43, qsTr("M023"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 11),
+    "mValve12": new ValveItem(44, qsTr("M024"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 12),
+    "mValve13": new ValveItem(45, qsTr("M025"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 13),
+    "mValve14": new ValveItem(46, qsTr("M026"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 14),
+    "mValve15": new ValveItem(47, qsTr("M027"), IO_TYPE_NORMAL_Y, 0, M_BOARD_0, 15),
 
-    "tValve0": new ValveItem(0, qsTr("Time Y010"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 0),
-    "tValve1": new ValveItem(1, qsTr("Time Y011"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 1),
-    "tValve2": new ValveItem(2, qsTr("Time Y012"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 2),
-    "tValve3": new ValveItem(3, qsTr("Time Y013"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 3),
-    "tValve4": new ValveItem(4, qsTr("Time Y014"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 4),
-    "tValve5": new ValveItem(5, qsTr("Time Y015"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 5),
-    "tValve6": new ValveItem(6, qsTr("Time Y016"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 6),
-    "tValve7": new ValveItem(7, qsTr("Time Y017"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 7),
-    "tValve8": new ValveItem(8, qsTr("Time Y020"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 8),
-    "tValve9": new ValveItem(9, qsTr("Time Y021"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 9),
-    "tValve10": new ValveItem(10, qsTr("Time Y022"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 10),
-    "tValve11": new ValveItem(11, qsTr("Time Y023"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 11),
-    "tValve12": new ValveItem(12, qsTr("Time Y024"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 12),
-    "tValve13": new ValveItem(13, qsTr("Time Y025"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 13),
-    "tValve14": new ValveItem(14, qsTr("Time Y026"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 14),
-    "tValve15": new ValveItem(15, qsTr("Time Y027"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 15),
-    "tValve16": new ValveItem(16, qsTr("Time Y030"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 16),
-    "tValve17": new ValveItem(17, qsTr("Time Y031"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 17),
-    "tValve18": new ValveItem(18, qsTr("Time Y032"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 18),
-    "tValve19": new ValveItem(19, qsTr("Time Y033"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 19),
-    "tValve20": new ValveItem(20, qsTr("Time Y034"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 20),
-    "tValve21": new ValveItem(21, qsTr("Time Y035"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 21),
-    "tValve22": new ValveItem(22, qsTr("Time Y036"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 22),
-    "tValve23": new ValveItem(23, qsTr("Time Y037"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 23),
-    "tValve24": new ValveItem(24, qsTr("Time Y040"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 24),
-    "tValve25": new ValveItem(25, qsTr("Time Y041"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 25),
-    "tValve26": new ValveItem(26, qsTr("Time Y042"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 26),
-    "tValve27": new ValveItem(27, qsTr("Time Y043"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 27),
-    "tValve28": new ValveItem(28, qsTr("Time Y044"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 28),
-    "tValve29": new ValveItem(29, qsTr("Time Y045"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 29),
-    "tValve30": new ValveItem(30, qsTr("Time Y046"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 30),
-    "tValve31": new ValveItem(31, qsTr("Time Y047"), IO_TYPE_NORMAL_Y, 1, IO_TYPE_TIMEY, 31),
+    "tValve0": new ValveItem(0, qsTr("Time Y010"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 0),
+    "tValve1": new ValveItem(1, qsTr("Time Y011"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 1),
+    "tValve2": new ValveItem(2, qsTr("Time Y012"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 2),
+    "tValve3": new ValveItem(3, qsTr("Time Y013"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 3),
+    "tValve4": new ValveItem(4, qsTr("Time Y014"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 4),
+    "tValve5": new ValveItem(5, qsTr("Time Y015"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 5),
+    "tValve6": new ValveItem(6, qsTr("Time Y016"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 6),
+    "tValve7": new ValveItem(7, qsTr("Time Y017"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 7),
+    "tValve8": new ValveItem(8, qsTr("Time Y020"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 8),
+    "tValve9": new ValveItem(9, qsTr("Time Y021"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 9),
+    "tValve10": new ValveItem(10, qsTr("Time Y022"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 10),
+    "tValve11": new ValveItem(11, qsTr("Time Y023"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 11),
+    "tValve12": new ValveItem(12, qsTr("Time Y024"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 12),
+    "tValve13": new ValveItem(13, qsTr("Time Y025"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 13),
+    "tValve14": new ValveItem(14, qsTr("Time Y026"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 14),
+    "tValve15": new ValveItem(15, qsTr("Time Y027"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 15),
+    "tValve16": new ValveItem(16, qsTr("Time Y030"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 16),
+    "tValve17": new ValveItem(17, qsTr("Time Y031"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 17),
+    "tValve18": new ValveItem(18, qsTr("Time Y032"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 18),
+    "tValve19": new ValveItem(19, qsTr("Time Y033"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 19),
+    "tValve20": new ValveItem(20, qsTr("Time Y034"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 20),
+    "tValve21": new ValveItem(21, qsTr("Time Y035"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 21),
+    "tValve22": new ValveItem(22, qsTr("Time Y036"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 22),
+    "tValve23": new ValveItem(23, qsTr("Time Y037"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 23),
+    "tValve24": new ValveItem(24, qsTr("Time Y040"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 24),
+    "tValve25": new ValveItem(25, qsTr("Time Y041"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 25),
+    "tValve26": new ValveItem(26, qsTr("Time Y042"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 26),
+    "tValve27": new ValveItem(27, qsTr("Time Y043"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 27),
+    "tValve28": new ValveItem(28, qsTr("Time Y044"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 28),
+    "tValve29": new ValveItem(29, qsTr("Time Y045"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 29),
+    "tValve30": new ValveItem(30, qsTr("Time Y046"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 30),
+    "tValve31": new ValveItem(31, qsTr("Time Y047"), IO_TYPE_NORMAL_Y, 1, TIMEY_BOARD_START, 31),
 
 };
 
@@ -409,7 +406,7 @@ var getYDefineFromHWPoint = function(point, type){
     }
     else if(type == EUIO_BOARD)
         return {"yDefine":euyDefines[point], "hwPoint":point, "type":type};
-    else if(type == IO_TYPE_TIMEY){
+    else if(type == TIMEY_BOARD_START){
         return {"yDefine":yDefines[point], "hwPoint":point, "type":type};
     }
     return null;

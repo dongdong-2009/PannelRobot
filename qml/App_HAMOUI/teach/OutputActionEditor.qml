@@ -200,10 +200,10 @@ Item {
                         "pointNum":pN,
                         "pointDescr":valve.descr,
                         "hwPoint":board == IODefines.VALVE_BOARD ? valve.id: valve.y1Point,
-                        "board":board,
-                        "isOn": false,
-                        "valveID":valve.id,
-                        "valve":valve
+                                                                   "board":board,
+                                                                   "isOn": false,
+                                                                   "valveID":valve.id,
+                                                                   "valve":valve
                     };
                 }
 
@@ -252,7 +252,7 @@ Item {
                         onButtonClicked: {
                             if(valve != null)
                                 panelRobotController.setYStatus(JSON.stringify(valve), !isOn);
-//                            panelRobotController.setYStatus(board, hwPoint, !isOn);
+                            //                            panelRobotController.setYStatus(board, hwPoint, !isOn);
                         }
                     }
                 }
@@ -264,19 +264,20 @@ Item {
             ICButtonGroup{
                 id:statusGroup
                 checkedItem: onBox
-                Row{
-                    spacing: 10
-                    ICCheckBox{
-                        id:onBox
-                        text: qsTr("ON")
-                        isChecked: true
-                    }
-                    ICCheckBox{
-                        id:offBox
-                        text: qsTr("OFF")
-                    }
+                layoutMode: 0
+                isAutoSize: true
+                mustChecked: true
+                spacing: 20
+                ICCheckBox{
+                    id:onBox
+                    text: qsTr("ON")
+                    isChecked: true
                 }
-                height: 32
+                ICCheckBox{
+                    id:offBox
+                    text: qsTr("OFF")
+                }
+
             }
 
             ICConfigEdit{

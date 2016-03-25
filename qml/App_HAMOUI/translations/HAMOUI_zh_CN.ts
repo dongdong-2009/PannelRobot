@@ -956,6 +956,14 @@
         <source>Auto Clear</source>
         <translation>自动清计数器</translation>
     </message>
+    <message>
+        <source>&gt;=T</source>
+        <translation>&gt;=目标</translation>
+    </message>
+    <message>
+        <source>&lt;T</source>
+        <translation>&lt;目标</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -1144,6 +1152,10 @@
         <source>Next</source>
         <translation>下一页</translation>
     </message>
+    <message>
+        <source>M</source>
+        <translation>中间变量</translation>
+    </message>
 </context>
 <context>
     <name>IODefines</name>
@@ -1241,38 +1253,6 @@
     </message>
     <message>
         <source>Y037</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y040</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y041</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y042</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y043</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y044</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y045</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y046</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y047</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1894,70 +1874,6 @@
     <message>
         <source>Time Y047</source>
         <translation>时间输出Y047</translation>
-    </message>
-    <message>
-        <source>M030</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M031</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M032</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M033</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M034</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M035</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M036</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M037</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M040</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M041</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M042</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M043</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M044</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M045</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M046</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M047</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3824,7 +3740,7 @@ please chose!</source>
     </message>
     <message>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">接收的内容</translation>
     </message>
     <message>
         <source>Set to P2</source>

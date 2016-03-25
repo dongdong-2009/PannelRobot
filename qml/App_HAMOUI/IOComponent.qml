@@ -34,7 +34,7 @@ Rectangle {
 
         ICComboBox{
             id:ioType
-            items: [qsTr("Input"), qsTr("Output"), qsTr("EuInput"), qsTr("EuOutput")]
+            items: [qsTr("Input"), qsTr("Output"), qsTr("M")]
             height: next.height
             currentIndex: 0
             onCurrentIndexChanged: {
@@ -97,8 +97,7 @@ Rectangle {
         Component.onCompleted: {
             var xDefs = IODefines.xDefines;
             var yDefs = IODefines.yDefines;
-            var euxDefs = IODefines.euxDefines;
-            var euyDefs = IODefines.euyDefines;
+            var mDefs = IODefines.mYDefines;
 
             PData.xPages = generatePageBaseDefines(xDefs, IODefines.IO_TYPE_INPUT);
             var lastLength = PData.xPages.length;
@@ -108,12 +107,8 @@ Rectangle {
             appendPagesToContainer(PData.yPages, 1, lastLength);
             lastLength += PData.yPages.length;
 
-            PData.euxPages = generatePageBaseDefines(euxDefs, IODefines.IO_TYPE_INPUT);
-            appendPagesToContainer(PData.euxPages, 2, lastLength);
-            lastLength += PData.euxPages.length;
-
-            PData.euyPages = generatePageBaseDefines(euyDefs, IODefines.IO_TYPE_OUTPUT);
-            appendPagesToContainer(PData.euyPages, 3, lastLength);
+            PData.mPages = generatePageBaseDefines(mDefs, IODefines.IO_TYPE_OUTPUT);
+            appendPagesToContainer(PData.mPages, 2, lastLength);
 
             ioContaner.setCurrentIndex(0)
         }
@@ -130,13 +125,9 @@ Rectangle {
             for(i = 0; i < PData.yPages.length; ++i){
                 PData.yPages[i].status = yStatus;
             }
-            xStatus = panelRobotController.iStatus(7).toString(2).split("").reverse().join("");
-            yStatus = panelRobotController.oStatus(7).toString(2).split("").reverse().join("");
-            for(i = 0; i < PData.euxPages.length; ++i){
-                PData.euxPages[i].status = xStatus;
-            }
-            for(i = 0; i < PData.euyPages.length; ++i){
-                PData.euyPages[i].status = yStatus;
+            yStatus = panelRobotController.oStatus(4).toString(2).split("").reverse().join("");
+            for(i = 0; i < PData.mPages.length; ++i){
+                PData.mPages[i].status = yStatus;
             }
 
         }

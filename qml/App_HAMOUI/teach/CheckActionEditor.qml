@@ -39,7 +39,7 @@ Item {
         ICButtonGroup{
             id:typeGroup
             spacing: 20
-//            checkedItem: singleY
+            //            checkedItem: singleY
             ICCheckBox{
                 id:singleY
                 text: qsTr("Single Y")
@@ -133,19 +133,19 @@ Item {
             ICButtonGroup{
                 id:statusGroup
                 checkedItem: onBox
-                Row{
-                    spacing: 10
-                    ICCheckBox{
-                        id:onBox
-                        text: qsTr("Start")
-                        isChecked: true
-                    }
-                    ICCheckBox{
-                        id:offBox
-                        text: qsTr("End")
-                    }
+                layoutMode: 0
+                isAutoSize: true
+                mustChecked: true
+                spacing: 20
+                ICCheckBox{
+                    id:onBox
+                    text: qsTr("Start")
+                    isChecked: true
                 }
-                height: 32
+                ICCheckBox{
+                    id:offBox
+                    text: qsTr("End")
+                }
             }
 
             ICConfigEdit{

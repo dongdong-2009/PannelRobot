@@ -179,19 +179,19 @@ Item {
             ICButtonGroup{
                 id:statusGroup
                 checkedItem: onBox
-                Row{
-                    spacing: 10
-                    ICCheckBox{
-                        id:onBox
-                        text: qsTr("ON")
-                        isChecked: true
-                    }
-                    ICCheckBox{
-                        id:offBox
-                        text: qsTr("OFF")
-                    }
+                mustChecked: true
+                isAutoSize: true
+                layoutMode: 0
+                spacing: 20
+                ICCheckBox{
+                    id:onBox
+                    text: qsTr("ON")
+                    isChecked: true
                 }
-                height: 32
+                ICCheckBox{
+                    id:offBox
+                    text: qsTr("OFF")
+                }
             }
 
             ICConfigEdit{

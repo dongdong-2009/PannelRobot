@@ -1,5 +1,4 @@
 var xPages = [];
 var yPages = [];
-var euxPages = [];
-var euyPages = [];
+var mPages = [];
 var ioViewsInfo = [];

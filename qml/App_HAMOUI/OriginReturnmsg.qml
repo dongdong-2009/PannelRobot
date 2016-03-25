@@ -105,8 +105,10 @@ MouseArea{
             }
             onVisibleChanged: {
 //                if(checkedItem != nearOrigin)
-                if(checkedItem != null)
+                if(checkedItem != null){
                     checkedItem.setChecked(false);
+                    checkedItem = null;
+                }
 //                else
 //                    panelRobotController.modifyConfigValue(28, 1);
             }

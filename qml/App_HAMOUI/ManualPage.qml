@@ -137,8 +137,11 @@ ContentPageBase {
                                     "valve24",
                                     "valve25",
                                     "valve26",
-                                    "valve27"
-
+                                    "valve27",
+                                    "valve28",
+                                    "valve29",
+                                    "valve30",
+                                    "valve31"
                                 ]
                             });
                 pageContainer.addPage(page)

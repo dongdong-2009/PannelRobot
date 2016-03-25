@@ -11,16 +11,55 @@ Item {
         "X010",
         "X011",
         "X012",
+        "X013",
         "X014",
         "X015",
         "X016",
         "X017",
         "X020",
+        "X021",
+        "X022",
+        "X023",
+        "X024",
+        "X025",
+        "X026",
+        "X027",
+        "X030",
+        "X031",
+        "X032",
+        "X033",
+        "X034",
+        "X035",
+        "X036",
+        "X037",
+        "X040",
+        "X041",
+        "X042",
+        "X043",
+        "X044",
+        "X045",
+        "X046",
+        "X047",
     ]
-    property  variant euXs : ["EuX010", "EuX011", "EuX012", "EuX013", "EuX014",
-    "EuX015", "EuX016", "EuX017", "EuX020", "EuX021", "EuX022", "EuX023", "EuX024",
-    "EuX025", "EuX026", "EuX027"]
-    property variant mXs: ["INX010"]
+    property  variant euXs : []
+    property variant mXs: [
+    "M010",
+    "M011",
+    "M012",
+    "M013",
+    "M014",
+    "M015",
+    "M016",
+    "M017",
+    "M020",
+    "M021",
+    "M022",
+    "M023",
+    "M024",
+    "M025",
+    "M026",
+    "M027"
+    ]
 
 
     function createActionObjects(){
@@ -56,14 +95,17 @@ Item {
                 id:normalX
                 text: qsTr("X")
                 isChecked: true
+                visible: xs.length > 0
             }
             ICCheckBox{
                 id:euX
                 text: qsTr("EUX")
+                visible: euXs.length > 0
             }
             ICCheckBox{
                 id:mX
                 text: qsTr("M")
+                visible: mXs.length > 0
             }
         }
         Rectangle{

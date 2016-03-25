@@ -8,6 +8,10 @@ import "../configs/IODefines.js" as IODefines
 Item {
     id:container
     property variant ys: [
+        "valve0",
+        "valve1",
+        "valve2",
+        "valve3",
         "valve4",
         "valve5",
         "valve6",
@@ -28,34 +32,55 @@ Item {
         "valve21",
         "valve22",
         "valve23",
-        "valve24",
-        "valve25",
-        "valve26",
-        "valve27",
-    ]
-    property  variant euYs : ["EuY010", "EuY011", "EuY012", "EuY013",
-        "EuY014", "EuY015", "EuY016", "EuY017", "EuY020", "EuY021", "EuY022", "EuY023"]
-    property variant mYs: ["INY010"]
-    property variant singleYs: ["valve1"]
-    property variant holdDoubleYs: ["valve2"]
-    property variant timeYs: [
-        "Y020",
-        "Y021",
-        "Y022",
-        "Y023",
-        "Y024",
-        "Y025",
-        "Y026",
-        "Y027",
-        "Y030",
-    ]
-    //    QtObject{
-    //        id:pData
 
-    ////        property variant yModel: []
-    ////        property variant euYModel: []
-    ////        property variant mYModel: []
-    //    }
+    ]
+    property  variant euYs : []
+    property variant mYs: [
+        "mValve0",
+        "mValve1",
+        "mValve2",
+        "mValve3",
+        "mValve4",
+        "mValve5",
+        "mValve6",
+        "mValve7",
+        "mValve8",
+        "mValve9",
+        "mValve10",
+        "mValve11",
+        "mValve12",
+        "mValve13",
+        "mValve14",
+        "mValve15"
+    ]
+    property variant singleYs: []
+    property variant holdDoubleYs: []
+    property variant timeYs: [
+        "tValve0",
+        "tValve1",
+        "tValve2",
+        "tValve3",
+        "tValve4",
+        "tValve5",
+        "tValve6",
+        "tValve7",
+        "tValve8",
+        "tValve9",
+        "tValve10",
+        "tValve11",
+        "tValve12",
+        "tValve13",
+        "tValve14",
+        "tValve15",
+        "tValve16",
+        "tValve17",
+        "tValve18",
+        "tValve19",
+        "tValve20",
+        "tValve21",
+        "tValve22",
+        "tValve23",
+    ]
 
     function createActionObjects(){
         var ret = [];
@@ -94,6 +119,8 @@ Item {
         ICButtonGroup{
             id:typeGroup
             spacing: 20
+            mustChecked: true
+            checkedIndex: 0
             ICCheckBox{
                 id:normalY
                 text: qsTr("Y")
@@ -168,8 +195,9 @@ Item {
                 }
 
                 function createValveMoldItem(pointNum, valve, board){
+                    var pN = IODefines.getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
                     return {"isSel":false,
-                        "pointNum":pointNum,
+                        "pointNum":pN,
                         "pointDescr":valve.descr,
                         "hwPoint":board == IODefines.VALVE_BOARD ? valve.id: valve.y1Point,
                         "board":board,
@@ -199,7 +227,7 @@ Item {
                     spacing: 2
                     height: 26
                     ICCheckBox{
-                        text: pointNum
+                        text:pointNum
                         isChecked: isSel
                         width: yView.cellWidth * 0.35
                         MouseArea{
@@ -278,14 +306,14 @@ Item {
 
         yDefines = euYs;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-            euYModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            euYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.EUIO_BOARD));
         }
 
         yDefines = mYs;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-            mYModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            mYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.M_BOARD_0));
         }
 
         yDefines = singleYs;
@@ -302,8 +330,8 @@ Item {
 
         yDefines = timeYs;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-            timeYModel.append(yView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type + IODefines.TIMEY_BOARD_START));
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            timeYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.TIMEY_BOARD_START));
         }
 
     }

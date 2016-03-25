@@ -1260,7 +1260,7 @@ function valveItemToString(valve){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    if(actionObject.valveID >= 0){
+    if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
         var valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;

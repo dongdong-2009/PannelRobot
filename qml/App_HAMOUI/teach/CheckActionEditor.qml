@@ -7,8 +7,8 @@ import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
-    property variant singleYs: ["valve1"]
-    property variant holdDoubleYs: ["valve2"]
+    property variant singleYs: []
+    property variant holdDoubleYs: []
 
     function createActionObjects(){
         var ret = [];

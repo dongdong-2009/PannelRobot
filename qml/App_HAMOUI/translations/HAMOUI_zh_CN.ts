@@ -930,7 +930,7 @@
     </message>
     <message>
         <source>MY</source>
-        <translation>中间变量Y</translation>
+        <translation>中间变量</translation>
     </message>
     <message>
         <source>X</source>
@@ -1405,35 +1405,35 @@
     </message>
     <message>
         <source>X050</source>
-        <translation type="unfinished">X050</translation>
+        <translation type="obsolete">X050</translation>
     </message>
     <message>
         <source>X051</source>
-        <translation type="unfinished">X051</translation>
+        <translation type="obsolete">X051</translation>
     </message>
     <message>
         <source>X052</source>
-        <translation type="unfinished">X052</translation>
+        <translation type="obsolete">X052</translation>
     </message>
     <message>
         <source>X053</source>
-        <translation type="unfinished">X053</translation>
+        <translation type="obsolete">X053</translation>
     </message>
     <message>
         <source>X054</source>
-        <translation type="unfinished">X054</translation>
+        <translation type="obsolete">X054</translation>
     </message>
     <message>
         <source>X055</source>
-        <translation type="unfinished">X055</translation>
+        <translation type="obsolete">X055</translation>
     </message>
     <message>
         <source>X056</source>
-        <translation type="unfinished">X056</translation>
+        <translation type="obsolete">X056</translation>
     </message>
     <message>
         <source>X057</source>
-        <translation type="unfinished">X057</translation>
+        <translation type="obsolete">X057</translation>
     </message>
     <message>
         <source>EuX010</source>
@@ -1561,134 +1561,6 @@
     </message>
     <message>
         <source>EuY027</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX010</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX011</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX012</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX013</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX014</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX015</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX016</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX017</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX020</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX021</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX022</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX023</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX024</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX025</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX026</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX027</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX030</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX031</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX032</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX033</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX034</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX035</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX036</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX037</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX040</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX041</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX042</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX043</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX044</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX045</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX046</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>INX047</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1832,104 +1704,324 @@
         <translation>保持型双头阀Y</translation>
     </message>
     <message>
-        <source>Unhold Double Y</source>
+        <source>Normal Y010</source>
+        <translation>普通输出Y010</translation>
+    </message>
+    <message>
+        <source>Normal Y011</source>
+        <translation>普通输出Y011</translation>
+    </message>
+    <message>
+        <source>Normal Y012</source>
+        <translation>普通输出Y012</translation>
+    </message>
+    <message>
+        <source>Normal Y013</source>
+        <translation>普通输出Y013</translation>
+    </message>
+    <message>
+        <source>Normal Y014</source>
+        <translation>普通输出Y014</translation>
+    </message>
+    <message>
+        <source>Normal Y015</source>
+        <translation>普通输出Y015</translation>
+    </message>
+    <message>
+        <source>Normal Y016</source>
+        <translation>普通输出Y016</translation>
+    </message>
+    <message>
+        <source>Normal Y017</source>
+        <translation>普通输出Y017</translation>
+    </message>
+    <message>
+        <source>Normal Y020</source>
+        <translation>普通输出Y020</translation>
+    </message>
+    <message>
+        <source>Normal Y021</source>
+        <translation>普通输出Y021</translation>
+    </message>
+    <message>
+        <source>Normal Y022</source>
+        <translation>普通输出Y022</translation>
+    </message>
+    <message>
+        <source>Normal Y023</source>
+        <translation>普通输出Y023</translation>
+    </message>
+    <message>
+        <source>Normal Y024</source>
+        <translation>普通输出Y024</translation>
+    </message>
+    <message>
+        <source>Normal Y025</source>
+        <translation>普通输出Y025</translation>
+    </message>
+    <message>
+        <source>Normal Y026</source>
+        <translation>普通输出Y026</translation>
+    </message>
+    <message>
+        <source>Normal Y027</source>
+        <translation>普通输出Y027</translation>
+    </message>
+    <message>
+        <source>Normal Y030</source>
+        <translation>普通输出Y030</translation>
+    </message>
+    <message>
+        <source>Normal Y031</source>
+        <translation>普通输出Y031</translation>
+    </message>
+    <message>
+        <source>Normal Y032</source>
+        <translation>普通输出Y032</translation>
+    </message>
+    <message>
+        <source>Normal Y033</source>
+        <translation>普通输出Y033</translation>
+    </message>
+    <message>
+        <source>Normal Y034</source>
+        <translation>普通输出Y034</translation>
+    </message>
+    <message>
+        <source>Normal Y035</source>
+        <translation>普通输出Y035</translation>
+    </message>
+    <message>
+        <source>Normal Y036</source>
+        <translation>普通输出Y036</translation>
+    </message>
+    <message>
+        <source>Normal Y037</source>
+        <translation>普通输出Y037</translation>
+    </message>
+    <message>
+        <source>Normal Y040</source>
+        <translation>普通输出Y040</translation>
+    </message>
+    <message>
+        <source>Normal Y041</source>
+        <translation>普通输出Y041</translation>
+    </message>
+    <message>
+        <source>Normal Y042</source>
+        <translation>普通输出Y042</translation>
+    </message>
+    <message>
+        <source>Normal Y043</source>
+        <translation>普通输出Y043</translation>
+    </message>
+    <message>
+        <source>Normal Y044</source>
+        <translation>普通输出Y044</translation>
+    </message>
+    <message>
+        <source>Normal Y045</source>
+        <translation>普通输出Y045</translation>
+    </message>
+    <message>
+        <source>Normal Y046</source>
+        <translation>普通输出Y046</translation>
+    </message>
+    <message>
+        <source>Normal Y047</source>
+        <translation>普通输出Y047</translation>
+    </message>
+    <message>
+        <source>M010</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y4</source>
+        <source>M011</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y5</source>
+        <source>M012</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y6</source>
+        <source>M013</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y7</source>
+        <source>M014</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y8</source>
+        <source>M015</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y9</source>
+        <source>M016</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y10</source>
+        <source>M017</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y11</source>
+        <source>M020</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y12</source>
+        <source>M021</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y13</source>
+        <source>M022</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y14</source>
+        <source>M023</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y15</source>
+        <source>M024</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y16</source>
+        <source>M025</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y17</source>
+        <source>M026</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y18</source>
+        <source>M027</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Normal Y19</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y010</source>
+        <translation>时间输出Y010</translation>
     </message>
     <message>
-        <source>Normal Y20</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y011</source>
+        <translation>时间输出Y011</translation>
     </message>
     <message>
-        <source>Normal Y21</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y012</source>
+        <translation>时间输出Y012</translation>
     </message>
     <message>
-        <source>Normal Y22</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y013</source>
+        <translation>时间输出Y013</translation>
     </message>
     <message>
-        <source>Normal Y23</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y014</source>
+        <translation>时间输出Y014</translation>
     </message>
     <message>
-        <source>Normal Y24</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y015</source>
+        <translation>时间输出Y015</translation>
     </message>
     <message>
-        <source>Normal Y25</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y016</source>
+        <translation>时间输出Y016</translation>
     </message>
     <message>
-        <source>Normal Y26</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y017</source>
+        <translation>时间输出Y017</translation>
     </message>
     <message>
-        <source>Normal Y27</source>
-        <translation type="unfinished"></translation>
+        <source>Time Y020</source>
+        <translation>时间输出Y020</translation>
+    </message>
+    <message>
+        <source>Time Y021</source>
+        <translation>时间输出Y021</translation>
+    </message>
+    <message>
+        <source>Time Y022</source>
+        <translation>时间输出Y022</translation>
+    </message>
+    <message>
+        <source>Time Y023</source>
+        <translation>时间输出Y023</translation>
+    </message>
+    <message>
+        <source>Time Y024</source>
+        <translation>时间输出Y024</translation>
+    </message>
+    <message>
+        <source>Time Y025</source>
+        <translation>时间输出Y025</translation>
+    </message>
+    <message>
+        <source>Time Y026</source>
+        <translation>时间输出Y026</translation>
+    </message>
+    <message>
+        <source>Time Y027</source>
+        <translation>时间输出Y027</translation>
+    </message>
+    <message>
+        <source>Time Y030</source>
+        <translation>时间输出Y030</translation>
+    </message>
+    <message>
+        <source>Time Y031</source>
+        <translation>时间输出Y031</translation>
+    </message>
+    <message>
+        <source>Time Y032</source>
+        <translation>时间输出Y032</translation>
+    </message>
+    <message>
+        <source>Time Y033</source>
+        <translation>时间输出Y033</translation>
+    </message>
+    <message>
+        <source>Time Y034</source>
+        <translation>时间输出Y034</translation>
+    </message>
+    <message>
+        <source>Time Y035</source>
+        <translation>时间输出Y035</translation>
+    </message>
+    <message>
+        <source>Time Y036</source>
+        <translation>时间输出Y036</translation>
+    </message>
+    <message>
+        <source>Time Y037</source>
+        <translation>时间输出Y037</translation>
+    </message>
+    <message>
+        <source>Time Y040</source>
+        <translation>时间输出Y040</translation>
+    </message>
+    <message>
+        <source>Time Y041</source>
+        <translation>时间输出Y041</translation>
+    </message>
+    <message>
+        <source>Time Y042</source>
+        <translation>时间输出Y042</translation>
+    </message>
+    <message>
+        <source>Time Y043</source>
+        <translation>时间输出Y043</translation>
+    </message>
+    <message>
+        <source>Time Y044</source>
+        <translation>时间输出Y044</translation>
+    </message>
+    <message>
+        <source>Time Y045</source>
+        <translation>时间输出Y045</translation>
+    </message>
+    <message>
+        <source>Time Y046</source>
+        <translation>时间输出Y046</translation>
+    </message>
+    <message>
+        <source>Time Y047</source>
+        <translation>时间输出Y047</translation>
     </message>
 </context>
 <context>
@@ -2109,6 +2201,14 @@
     <message>
         <source>Save</source>
         <translation>保存</translation>
+    </message>
+    <message>
+        <source>Send Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3915,7 +4015,7 @@ please chose!</source>
     </message>
     <message>
         <source>ON</source>
-        <translation></translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>OFF</source>

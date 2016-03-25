@@ -3008,6 +3008,22 @@ please chose!</source>
         <source>Speed1</source>
         <translation>装箱速度</translation>
     </message>
+    <message>
+        <source>Please input the new stack name</source>
+        <translation>请输入堆叠名称</translation>
+    </message>
+    <message>
+        <source>Stack Name</source>
+        <translation>堆叠名称</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>

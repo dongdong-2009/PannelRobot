@@ -518,6 +518,7 @@ Rectangle {
         var tmp;
         var line;
         var si = Teach.getStackInfoFromID(stackID);
+        if(si == null) return;
         var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
         var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
         for(var l in stackLines){

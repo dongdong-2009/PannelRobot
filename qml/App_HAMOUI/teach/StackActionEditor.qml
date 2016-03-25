@@ -26,11 +26,8 @@ Rectangle {
         Teach.parseStacks(panelRobotController.stacks());
         stackSelector.items =  Teach.stackInfosDescr()
         var hasStacks = Teach.stackInfosDescr();
-        hasStacks.splice(0, 0, qsTr("New"));
         stackViewSel.currentIndex = -1;
         stackViewSel.items = hasStacks;
-        stackViewSel.currentIndex = 0;
-
     }
     onStackTypeChanged: {
         if(stackType == 1){
@@ -86,6 +83,14 @@ Rectangle {
         }
     }
 
+    ICMessageBox{
+        id:tip
+        z:100
+        x:200
+        anchors.top: topContainer.bottom
+        anchors.topMargin: 6
+    }
+
     ICComboBox{
         id:stackViewSel
         z: 11
@@ -93,18 +98,14 @@ Rectangle {
         x:200
         visible: defineStack.isChecked
         popupWidth: 200
-        width: currentIndex == 0 ? 80 : popupWidth
+        width: popupWidth
         onCurrentIndexChanged: {
             if(currentIndex < 0 ) return;
             var si0, si1;
             var stackInfo;
-            if(currentIndex == 0){
-                si0 = new Teach.StackItem();
-                si1 = new Teach.StackItem();
-                stackInfo = new Teach.StackInfo(si0, si1,stackType, "");
-            }else{
-                stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[currentIndex])));
-            }
+
+            stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[currentIndex])));
+
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
             page1.motor2 = stackInfo.si0.m2pos;
@@ -150,19 +151,90 @@ Rectangle {
 
     Item{
         id:topContainer
+
+        function saveStack(id, name, exist){
+            var si0 = new Teach.StackItem(page1.motor0 || 0.000,
+                                          page1.motor1 || 0.000,
+                                          page1.motor2 || 0.000,
+                                          page1.motor3 || 0.000,
+                                          page1.motor4 || 0.000,
+                                          page1.motor5 || 0.000,
+                                          page1.space0 || 0.000,
+                                          page1.space1 || 0.000,
+                                          page1.space2 || 0.000,
+                                          page1.count0 || 0,
+                                          page1.count1 || 0,
+                                          page1.count2 || 0,
+                                          page1.seq,
+                                          page1.dir0,
+                                          page1.dir1,
+                                          page1.dir2,
+                                          page1.realDoesBindingCounter(),
+                                          page1.counterID());
+            var si1 = new Teach.StackItem(page2.motor0 || 0.000,
+                                          page2.motor1 || 0.000,
+                                          page2.motor2 || 0.000,
+                                          page2.motor3 || 0.000,
+                                          page2.motor4 || 0.000,
+                                          page2.motor5 || 0.000,
+                                          page2.space0 || 0.000,
+                                          page2.space1 || 0.000,
+                                          page2.space2 || 0.000,
+                                          page2.count0 || 0,
+                                          page2.count1 || 0,
+                                          page2.count2 || 0,
+                                          page2.seq,
+                                          page2.dir0,
+                                          page2.dir1,
+                                          page2.dir2,
+                                          page2.realDoesBindingCounter(),
+                                          page2.counterID());
+            var stackInfo = new Teach.StackInfo(si0, si1, stackType, name);
+            var sid;
+            if(!exist){
+                sid = Teach.appendStackInfo(stackInfo);
+                panelRobotController.saveStacks(Teach.statcksToJSON());
+                updateStacksSel();
+            }
+            else{
+                sid = Teach.updateStackInfo(id, stackInfo);
+                panelRobotController.saveStacks(Teach.statcksToJSON());
+            }
+            stackUpdated(sid);
+            return sid;
+        }
+
+        function onNewStack(status){
+            tip.finished.disconnect(topContainer.onNewStack);
+            if(status){
+                var toAdd = tip.inputText;
+                var sid = saveStack(null, toAdd, false);
+                var ss = stackViewSel.items;
+                for(var i = 0 ; ss.length; ++i){
+                    if(sid == Utils.getValueFromBrackets(ss[i])){
+                        stackViewSel.currentIndex = i;
+                        break;
+                    }
+                }
+            }
+
+        }
+
         height: flagPageSel.height
         ICButtonGroup{
             id:flagPageSel
             spacing: 10
             mustChecked: true
+            isAutoSize: true
+            layoutMode: 0
+            ICCheckBox{
+                id:useFlag
+                text: qsTr("Use Stack")
+            }
             ICCheckBox{
                 id:defineStack
                 text: qsTr("Define Stack")
                 isChecked: true
-            }
-            ICCheckBox{
-                id:useFlag
-                text: qsTr("Use Stack")
             }
             onCheckedItemChanged: {
                 stackSelector.configValue = -1;
@@ -173,87 +245,46 @@ Rectangle {
 
         }
 
-        ICConfigEdit{
-            id:stackDescr
-            x:300;
-            configName: qsTr("Stack")
-            inputWidth: 200
-            isNumberOnly: false
-            visible: (stackViewSel.currentIndex === 0) && (defineStack.isChecked)
-
+        ICButton{
+            id:newStack
+            text: qsTr("New")
+            width: 60
+            height: stackViewSel.height
+            x:420
+            visible: stackViewSel.visible
+            onButtonClicked: {
+                tip.showInput(qsTr("Please input the new stack name"),
+                              qsTr("Stack Name"), false, qsTr("OK"), qsTr("Cancel"))
+                tip.finished.connect(topContainer.onNewStack);
+            }
         }
 
         ICButton{
             id:save
-            anchors.left: stackDescr.right
-            anchors.leftMargin: 6
-            visible: defineStack.isChecked
             text: qsTr("Save")
-            height: stackDescr.height
             width: 60
+            height: stackViewSel.height
+            visible: stackViewSel.visible
+
+            anchors.left: newStack.right
+            anchors.leftMargin: 6
             onButtonClicked: {
-                var si0 = new Teach.StackItem(page1.motor0 || 0.000,
-                                              page1.motor1 || 0.000,
-                                              page1.motor2 || 0.000,
-                                              page1.motor3 || 0.000,
-                                              page1.motor4 || 0.000,
-                                              page1.motor5 || 0.000,
-                                              page1.space0 || 0.000,
-                                              page1.space1 || 0.000,
-                                              page1.space2 || 0.000,
-                                              page1.count0 || 0,
-                                              page1.count1 || 0,
-                                              page1.count2 || 0,
-                                              page1.seq,
-                                              page1.dir0,
-                                              page1.dir1,
-                                              page1.dir2,
-                                              page1.realDoesBindingCounter(),
-                                              page1.counterID());
-                var si1 = new Teach.StackItem(page2.motor0 || 0.000,
-                                              page2.motor1 || 0.000,
-                                              page2.motor2 || 0.000,
-                                              page2.motor3 || 0.000,
-                                              page2.motor4 || 0.000,
-                                              page2.motor5 || 0.000,
-                                              page2.space0 || 0.000,
-                                              page2.space1 || 0.000,
-                                              page2.space2 || 0.000,
-                                              page2.count0 || 0,
-                                              page2.count1 || 0,
-                                              page2.count2 || 0,
-                                              page2.seq,
-                                              page2.dir0,
-                                              page2.dir1,
-                                              page2.dir2,
-                                              page2.realDoesBindingCounter(),
-                                              page2.counterID());
-                var stackInfo = new Teach.StackInfo(si0, si1, stackType, stackDescr.configValue);
-                var sid;
-                if(stackViewSel.currentIndex === 0){
-                    sid = Teach.appendStackInfo(stackInfo);
-                    panelRobotController.saveStacks(Teach.statcksToJSON());
-                    updateStacksSel();
-                }
-                else{
-                    sid = Teach.updateStackInfo(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())), stackInfo);
-                    panelRobotController.saveStacks(Teach.statcksToJSON());
-                }
-                stackUpdated(sid);
-                //                                stackSelector.items = Teach.stackInfosDescr();
+                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                var sI = Teach.getStackInfoFromID(id);
+                topContainer.saveStack(id,sI.descr, true);
             }
 
         }
         ICButton{
             id:deleteStack
+            text: qsTr("Delete")
+            width: save.width
+            height: stackViewSel.height
+            visible: stackViewSel.visible
+
             anchors.left: save.right
             anchors.leftMargin: 6
-            visible: defineStack.isChecked
-            text: qsTr("Delete")
-            height: stackDescr.height
-            width: save.width
             onButtonClicked: {
-                if(stackViewSel.currentIndex === 0) return;
                 var sid = Teach.delStack(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())));
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
@@ -261,8 +292,6 @@ Rectangle {
             }
 
         }
-
-
 
     }
     Column{
@@ -322,7 +351,6 @@ Rectangle {
                     ICButton{
                         id:setIn
                         text: qsTr("Set In")
-                        height: stackDescr.height
                         onButtonClicked: {
                             page1.motor0 = panelRobotController.statusValueText("c_ro_0_32_3_900");
                             page1.motor1 = panelRobotController.statusValueText("c_ro_0_32_3_904");

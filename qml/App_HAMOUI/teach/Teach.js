@@ -995,10 +995,13 @@ var generateSyncEndAction = function(){
 
 
 var generateCommentAction = function(comment, commentdAction){
+    var temp;
+    if(commentdAction == undefined)temp = undefined;
+    else temp = commentdAction.insertedIndex;
     return {
         "action": actions.ACT_COMMENT,
         "comment":comment,
-        "insertedIndex": commentdAction.insertedIndex,
+        "insertedIndex": temp,
         "commentAction":commentdAction || null
     };
 }

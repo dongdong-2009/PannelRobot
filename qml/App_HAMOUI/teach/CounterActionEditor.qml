@@ -54,6 +54,7 @@ Rectangle {
             id:newCounterBtn
             text: qsTr("New")
             width: 80
+            bgColor: "lime"
             onButtonClicked: {
                 var toAdd = Teach.counterManager.newCounter(newCounterName.text, 0, 0);
                 if(panelRobotController.saveCounterDef(toAdd.id, toAdd.name, toAdd.current, toAdd.target))
@@ -67,6 +68,7 @@ Rectangle {
             text: qsTr("Delete")
             x:newCounterBtn.x
             width: 80
+            bgColor: "red"
             onButtonClicked: {
                 var counterID = counterModel.get(counterview.currentIndex).id;
                 Teach.counterManager.delCounter(counterID);

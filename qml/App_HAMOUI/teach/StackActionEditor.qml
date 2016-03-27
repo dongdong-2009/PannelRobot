@@ -252,6 +252,7 @@ Rectangle {
             height: stackViewSel.height
             x:420
             visible: stackViewSel.visible
+            bgColor: "lime"
             onButtonClicked: {
                 tip.showInput(qsTr("Please input the new stack name"),
                               qsTr("Stack Name"), false, qsTr("OK"), qsTr("Cancel"))
@@ -265,7 +266,7 @@ Rectangle {
             width: 60
             height: stackViewSel.height
             visible: stackViewSel.visible
-
+            bgColor: "yellow"
             anchors.left: newStack.right
             anchors.leftMargin: 6
             onButtonClicked: {
@@ -281,6 +282,7 @@ Rectangle {
             width: save.width
             height: stackViewSel.height
             visible: stackViewSel.visible
+            bgColor: "red"
 
             anchors.left: save.right
             anchors.leftMargin: 6

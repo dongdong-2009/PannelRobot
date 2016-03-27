@@ -735,28 +735,28 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-        file.setFileName(dir.absoluteFilePath(moldName + ".act"));
+        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".act").toUtf8()));
         if(file.open(QFile::WriteOnly))
         {
             QStringList acts = toWrite.mid(0, 11);
             file.write(acts.join("\n").toUtf8());
             file.close();
         }
-        file.setFileName(dir.absoluteFilePath(moldName + ".fnc"));
+        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".fnc").toUtf8()));
         if(file.open(QFile::WriteOnly))
         {
             QString fnc = toWrite.at(11);
             file.write(fnc.toLatin1());
             file.close();
         }
-        file.setFileName(dir.absoluteFilePath(moldName + ".counters"));
+        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".counters").toUtf8()));
         if(file.open(QFile::WriteOnly))
         {
             QString counters = toWrite.at(12);
             file.write(counters.toUtf8());
             file.close();
         }
-        file.setFileName(dir.absoluteFilePath(moldName + ".variables"));
+        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".variables").toUtf8()));
         if(file.open(QFile::WriteOnly))
         {
             QString variables = toWrite.at(13);

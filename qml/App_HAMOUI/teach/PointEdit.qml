@@ -172,6 +172,7 @@ Item {
             id:setIn
             text: qsTr("Set In")
             width: PData.commandBtnWidth
+            bgColor: "lime"
             onButtonClicked: {
                 //                console.log("clicked");
                 //                console.log(panelRobotController.getConfigValueText("c_ro_0_32_0_900"));
@@ -197,6 +198,7 @@ Item {
             id:setZero
             text: qsTr("Zero")
             width: PData.commandBtnWidth
+            bgColor: "yellow"
             onButtonClicked: {
                 motor0.configValue = 0;
                 motor1.configValue = 0;

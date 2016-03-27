@@ -62,6 +62,7 @@ Item {
             ICButton{
                 id:setIn
                 text: qsTr("Set In")
+                bgColor: "lime"
                 onButtonClicked: {
                     m0Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
                     m1Axis.angle = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);

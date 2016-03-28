@@ -735,28 +735,31 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".act").toUtf8()));
+#ifdef Q_WS_QWS
+        moldName = moldName.toUtf8();
+#endif
+        file.setFileName(dir.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::WriteOnly))
         {
             QStringList acts = toWrite.mid(0, 11);
             file.write(acts.join("\n").toUtf8());
             file.close();
         }
-        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".fnc").toUtf8()));
+        file.setFileName(dir.absoluteFilePath(moldName + ".fnc"));
         if(file.open(QFile::WriteOnly))
         {
             QString fnc = toWrite.at(11);
             file.write(fnc.toLatin1());
             file.close();
         }
-        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".counters").toUtf8()));
+        file.setFileName(dir.absoluteFilePath(moldName + ".counters"));
         if(file.open(QFile::WriteOnly))
         {
             QString counters = toWrite.at(12);
             file.write(counters.toUtf8());
             file.close();
         }
-        file.setFileName(QString::fromUtf8(dir.absoluteFilePath(moldName + ".variables").toUtf8()));
+        file.setFileName(dir.absoluteFilePath(moldName + ".variables"));
         if(file.open(QFile::WriteOnly))
         {
             QString variables = toWrite.at(13);
@@ -788,7 +791,11 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     }
     temp.cd(packageDirName);
     QStringList molds = temp.entryList(QStringList()<<"*.act");
+#ifdef Q_WS_QWS
+    QByteArray ret = "[";
+#else
     QString ret = "[";
+#endif
     QString m;
     for(int i = 0; i != molds.size(); ++i)
     {
@@ -799,7 +806,11 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     if(molds.size() != 0)
         ret.chop(1);
     ret.append("]");
+#ifdef Q_WS_QWS
+    return QString::fromUtf8(ret);
+#else
     return ret;
+#endif
 }
 
 QString PanelRobotController::importRobotMold(const QString &molds, const QString& backupPackage)
@@ -824,6 +835,9 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
     for(int i = 0; i < result.size(); ++i)
     {
         moldName = result.at(i).toString();
+#ifdef Q_WS_QWS
+        moldName = moldName.toUtf8();
+#endif
         file.setFileName(temp.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::ReadOnly))
         {
@@ -850,6 +864,9 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
             moldInfo.append(QString::fromUtf8(file.readAll()));
             file.close();
         }
+#ifdef Q_WS_QWS
+        moldName = result.at(i).toString();
+#endif
         imported = ICRobotMold::ImportMold(moldName, moldInfo);
         //        if(imported.errNumber() == ICRobotMold::kRecordErr_None)
         //        {

@@ -2849,7 +2849,7 @@ please chose!</source>
     </message>
     <message>
         <source>Import Finished!</source>
-        <translation>导出完成!</translation>
+        <translation>导入完成!</translation>
     </message>
     <message>
         <source>OK</source>

@@ -73,8 +73,8 @@ Item {
     Column{
         id:content
         spacing: 4
-        property int posWidth: 90
-        property int spaceWidth: 80
+        property int posWidth: 80
+        property int spaceWidth: 70
         property int counteWidth: 60
         Row{
             spacing: 4

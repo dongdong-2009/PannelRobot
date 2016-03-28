@@ -4,14 +4,28 @@
 #include "ictransceiverbase.h"
 #include <QObject>
 #include <QHostAddress>
+#include <QRegExp>
 #include "ICCore_global.h"
 class QTcpSocket;
 class QTcpServer;
 
 class ICCORESHARED_EXPORT TCPCommunicateMonitor: public QObject{
     Q_OBJECT
+public:
+    bool CanIn(const QByteArray& data) const
+    {
+        if(filter_.isEmpty()) return true;
+        return filter_.indexIn(data, 0) == -1;
+    }
+
+    void SetFilter(const QRegExp& re ){filter_ = re;}
+
+    void OnDataComeIn(const QByteArray& data){ emit dataComeIn(data);}
+
 signals:
     void dataComeIn(const QByteArray&);
+private:
+    QRegExp filter_;
 };
 
 class ICCORESHARED_EXPORT _ConnectionHelper: public QObject
@@ -27,9 +41,10 @@ public:
     int Read(uint8_t *dest, size_t size);
     int Write(const uint8_t *buffer, size_t size);
 
-    void RegisterMonitor(const TCPCommunicateMonitor* monitor)
+    void RegisterMonitor(TCPCommunicateMonitor* monitor)
     {
-        connect(this, SIGNAL(dataComeIn(QByteArray)), monitor, SIGNAL(dataComeIn(QByteArray)));
+//        connect(this, SIGNAL(dataComeIn(QByteArray)), monitor, SIGNAL(dataComeIn(QByteArray)));
+        monitors_.append(monitor);
     }
 
 
@@ -42,6 +57,7 @@ public:
     int port_;
 
     bool isBlock_;
+    QList<TCPCommunicateMonitor*> monitors_;
 
 signals:
     void dataComeIn(const QByteArray& data);
@@ -71,7 +87,7 @@ public:
     void SetCommuncateMode(CommunicateMode mode) { connHelper_->mode_ = mode;}
     void SetHostAddr(const QHostAddress & address, quint16 port) { connHelper_->hostAddr_ = address; connHelper_->port_ = port;}
 
-    void RegisterCommMonitor(const TCPCommunicateMonitor* monitor) { connHelper_->RegisterMonitor(monitor);}
+    void RegisterCommMonitor(TCPCommunicateMonitor* monitor) { connHelper_->RegisterMonitor(monitor);}
 
     int WriteRawData(const QByteArray& data) { return WriteImpl((uint8_t*)(data.data()), data.size());}
 

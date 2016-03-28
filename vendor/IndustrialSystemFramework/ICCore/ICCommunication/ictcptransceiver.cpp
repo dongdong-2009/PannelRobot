@@ -133,5 +133,11 @@ void _ConnectionHelper::OnReadyRead()
     int bA = tcpSocket_->bytesAvailable();
     QByteArray toRead(bA, '\0');
     Read((uint8_t*)toRead.data(), bA);
-    emit dataComeIn(toRead);
+//    qDebug()<<"driver:"<<toRead;
+    for(int i = 0; i < monitors_.size(); ++i)
+    {
+        if(monitors_.at(i)->CanIn(toRead))
+            monitors_[i]->OnDataComeIn(toRead);
+    }
+//    emit dataComeIn(toRead);
 }

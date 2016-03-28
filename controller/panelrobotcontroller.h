@@ -662,6 +662,7 @@ public:
             if(eth0DataMonitor_.isNull())
             {
                 eth0DataMonitor_.reset( new TCPCommunicateMonitor());
+//                eth0DataMonitor_->SetFilter(QRegExp("test\r\n"));
                 connect(eth0DataMonitor_.data(),
                         SIGNAL(dataComeIn(QByteArray)),
                         SIGNAL(eth0DataComeIn(QByteArray)));
@@ -683,6 +684,11 @@ public:
     Q_INVOKABLE void writeDataToETH0(const QByteArray& data)
     {
         eth0Transceiver_->WriteRawData(data);
+    }
+
+    Q_INVOKABLE void setETh0Filter(const QString& re)
+    {
+        eth0DataMonitor_->SetFilter(QRegExp(re));
     }
 
 

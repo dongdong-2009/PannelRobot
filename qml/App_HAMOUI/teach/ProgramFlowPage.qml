@@ -1108,6 +1108,7 @@ Rectangle {
                                 cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
                                 //                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
                             }
+                            hasModify = true;
 
                         }
                         visible: {

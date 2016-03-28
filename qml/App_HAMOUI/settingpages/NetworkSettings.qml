@@ -134,7 +134,7 @@ Item {
             id:sendTestData
             text: qsTr("Send Test")
             onButtonClicked: {
-                panelRobotController.writeDataToETH0("Test ETH0");
+                panelRobotController.writeDataToETH0("Test ETH0\r\n");
             }
         }
         Text {

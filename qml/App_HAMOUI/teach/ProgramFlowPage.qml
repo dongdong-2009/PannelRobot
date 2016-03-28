@@ -1129,7 +1129,8 @@ Rectangle {
                             var modelObject = currentModelData();
                             if(modelObject === null) return true;
                             if((programListView.currentIndex == programListView.count - 1) &&
-                                    modelObject.mI_ActionObject.action != Teach.actions.ACT_END){
+                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
+                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
                                 return true;
 
                             }

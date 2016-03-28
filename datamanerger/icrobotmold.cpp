@@ -276,14 +276,39 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     //    item.append(si.si[1].m5pos);
     item.append(si.si[1].space0);
     item.append(si.si[1].space1);
-    //    item.append(si.si[1].space2);
+    item.append(si.si[1].space2);
     item.append(si.si[1].count0);
     item.append(si.si[1].count1);
-    //    item.append(si.si[1].count2);
+    item.append(si.si[1].count2);
     item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
     //    item.append(si.si[1].doesBindingCounter);
     //    item.append(si.si[1].counterID);
     item.append(si.all[25]);
+    if(si.si[0].isOffsetEn)
+    {
+        item.append(si.si[0].offsetX);
+        item.append(si.si[0].offsetY);
+        item.append(si.si[0].offsetZ);
+    }
+    else
+    {
+        item.append(0);
+        item.append(0);
+        item.append(0);
+    }
+
+    if(si.si[1].isOffsetEn)
+    {
+        item.append(si.si[1].offsetX);
+        item.append(si.si[1].offsetY);
+        item.append(si.si[1].offsetZ);
+    }
+    else
+    {
+        item.append(0);
+        item.append(0);
+        item.append(0);
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
 
@@ -1326,6 +1351,11 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[0].type = p.value().toMap().value("type").toInt();
         stackInfo.si[0].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.si[0].counterID = stackMap.value("counterID").toInt();
+        stackInfo.si[0].isOffsetEn = stackMap.value("isOffsetEn").toBool();
+        stackInfo.si[0].offsetX = stackMap.value("offsetX").toInt();
+        stackInfo.si[0].offsetY = stackMap.value("offsetY").toInt();
+        stackInfo.si[0].offsetZ = stackMap.value("offsetZ").toInt();
+
 
         stackMap = p.value().toMap().value("si1").toMap();
         stackInfo.si[1].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
@@ -1347,6 +1377,10 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[1].type = stackInfo.si[0].type;
         stackInfo.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.si[1].counterID = stackMap.value("counterID").toInt();
+        stackInfo.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();
+        stackInfo.si[1].offsetX = stackMap.value("offsetX").toInt();
+        stackInfo.si[1].offsetY = stackMap.value("offsetY").toInt();
+        stackInfo.si[1].offsetZ = stackMap.value("offsetZ").toInt();
         ret.insert(p.key().toInt(), stackInfo);
         ++p;
     }

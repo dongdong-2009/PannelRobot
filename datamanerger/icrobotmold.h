@@ -32,6 +32,10 @@ struct SI{
     quint32 type:8;
     quint32 doesBindingCounter:1;
     quint32 counterID:15;
+    bool isOffsetEn;
+    quint32 offsetX;
+    quint32 offsetY;
+    quint32 offsetZ;
 };
 
 union StackInfo{

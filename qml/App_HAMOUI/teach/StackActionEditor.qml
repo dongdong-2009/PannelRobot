@@ -101,7 +101,6 @@ Rectangle {
         width: popupWidth
         onCurrentIndexChanged: {
             if(currentIndex < 0 ) return;
-            var si0, si1;
             var stackInfo;
 
             stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[currentIndex])));
@@ -124,6 +123,11 @@ Rectangle {
             page1.dir2 = stackInfo.si0.dir2;
             page1.doesBindingCounter = stackInfo.si0.doesBindingCounter;
             page1.setCounterID(stackInfo.si0.counterID);
+            page1.isOffsetEn = stackInfo.si0.isOffsetEn;
+            page1.offsetX = stackInfo.si0.offsetX;
+            page1.offsetY = stackInfo.si0.offsetY;
+            page1.offsetZ = stackInfo.si0.offsetZ;
+
 
             page2.motor0 = stackInfo.si1.m0pos;
             page2.motor1 = stackInfo.si1.m1pos;
@@ -143,6 +147,10 @@ Rectangle {
             page2.dir2 = stackInfo.si1.dir2;
             page2.doesBindingCounter = stackInfo.si1.doesBindingCounter;
             page2.setCounterID(stackInfo.si1.counterID);
+            page2.isOffsetEn = stackInfo.si0.isOffsetEn;
+            page2.offsetX = stackInfo.si0.offsetX;
+            page2.offsetY = stackInfo.si0.offsetY;
+            page2.offsetZ = stackInfo.si0.offsetZ;
 
             stackType = stackInfo.type;
         }
@@ -170,7 +178,11 @@ Rectangle {
                                           page1.dir1,
                                           page1.dir2,
                                           page1.realDoesBindingCounter(),
-                                          page1.counterID());
+                                          page1.counterID(),
+                                          page1.isOffsetEn,
+                                          page1.offsetX,
+                                          page1.offsetY,
+                                          page1.offsetZ);
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -188,7 +200,11 @@ Rectangle {
                                           page2.dir1,
                                           page2.dir2,
                                           page2.realDoesBindingCounter(),
-                                          page2.counterID());
+                                          page2.counterID(),
+                                          page2.isOffsetEn,
+                                          page2.offsetX,
+                                          page2.offsetY,
+                                          page2.offsetZ);
             var stackInfo = new Teach.StackInfo(si0, si1, stackType, name);
             var sid;
             if(!exist){
@@ -270,6 +286,7 @@ Rectangle {
             anchors.left: newStack.right
             anchors.leftMargin: 6
             onButtonClicked: {
+                if(stackViewSel.currentIndex < 0) return;
                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                 var sI = Teach.getStackInfoFromID(id);
                 topContainer.saveStack(id,sI.descr, true);

@@ -3029,27 +3029,27 @@ please chose!</source>
     <name>StackActionEditorComponent</name>
     <message>
         <source>Space0</source>
-        <translation>X方向间距</translation>
+        <translation>X方向:间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation>X方向计数</translation>
+        <translation>,计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation>Y方向间距</translation>
+        <translation>Y方向:间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation>Y方向计数</translation>
+        <translation>,计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation>Z方向间距</translation>
+        <translation>Z方向:间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation>Z方向计数</translation>
+        <translation>,计数</translation>
     </message>
     <message>
         <source>Dir0</source>
@@ -3082,6 +3082,18 @@ please chose!</source>
     <message>
         <source>Self</source>
         <translation>自身</translation>
+    </message>
+    <message>
+        <source>X Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z Offset</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

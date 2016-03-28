@@ -28,6 +28,11 @@ Item {
 
     property bool  doesBindingCounter: false
 
+    property alias isOffsetEn: offsetEn.isChecked
+    property alias offsetX: x_offset.configValue
+    property alias offsetY: y_offset.configValue
+    property alias offsetZ: z_offset.configValue
+
     function realDoesBindingCounter(){
 
         return counterSel.configValue != 0;
@@ -57,10 +62,20 @@ Item {
         return 0;
     }
 
+    ICCheckBox{
+        id:offsetEn
+        text: qsTr("Offset En")
+        x:200
+        y:-32
+
+    }
 
     Column{
         id:content
         spacing: 4
+        property int posWidth: 90
+        property int spaceWidth: 80
+        property int counteWidth: 60
         Row{
             spacing: 4
             Grid{
@@ -68,47 +83,75 @@ Item {
                 //                id:posContainer
                 columns: 2
                 spacing: 4
+                flow: Grid.TopToBottom
                 ICConfigEdit{
                     id:motor0
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.posWidth
                 }
                 ICConfigEdit{
                     id:motor1
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.posWidth
 
                 }
                 ICConfigEdit{
                     id:motor2
                     configName: AxisDefine.axisInfos[2].name
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.posWidth
 
                 }
                 ICConfigEdit{
                     id:motor3
                     configName: AxisDefine.axisInfos[3].name
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.posWidth
 
                 }
                 ICConfigEdit{
                     id:motor4
                     configName: AxisDefine.axisInfos[4].name
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.posWidth
 
                 }
                 ICConfigEdit{
                     id:motor5
                     configName: AxisDefine.axisInfos[5].name
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.posWidth
                 }
 
+            }
+
+            Column{
+                id:offsetPosContainer
+                spacing: 4
+                visible: offsetEn.isChecked
+                ICConfigEdit{
+                    id:x_offset
+                    configName:qsTr("X Offset")
+                    configAddr: "s_rw_0_32_3_1300"
+                    inputWidth: content.posWidth
+
+                }
+                ICConfigEdit{
+                    id:y_offset
+                    configName:qsTr("Y Offset")
+                    configAddr: "s_rw_0_32_3_1300"
+                    inputWidth: content.posWidth
+
+                }
+                ICConfigEdit{
+                    id:z_offset
+                    configName:qsTr("Z Offset")
+                    configAddr: "s_rw_0_32_3_1300"
+                    inputWidth: content.posWidth
+
+                }
             }
 
             Grid{
@@ -118,40 +161,40 @@ Item {
                     id:space0
                     configName: qsTr("Space0")
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.spaceWidth
                 }
                 ICConfigEdit{
                     id:count0
                     configName: qsTr("Count0")
                     configAddr: "s_rw_0_32_0_1400"
-                    inputWidth: 100
+                    inputWidth: content.counteWidth
                 }
                 ICConfigEdit{
                     id:space1
                     configName: qsTr("Space1")
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
+                    inputWidth: content.spaceWidth
                 }
                 ICConfigEdit{
                     id:count1
                     configName: qsTr("Count1")
                     configAddr: "s_rw_0_32_0_1400"
-                    inputWidth: 100
+                    inputWidth: content.counteWidth
                 }
                 ICConfigEdit{
                     id:space2
                     configName: qsTr("Space2")
                     configAddr: "s_rw_0_32_3_1300"
-                    inputWidth: 100
-                    visible: mode == 0
+                    inputWidth: content.spaceWidth
+//                    visible: mode == 0
 
                 }
                 ICConfigEdit{
                     id:count2
                     configName: qsTr("Count2")
                     configAddr: "s_rw_0_32_0_1400"
-                    inputWidth: 100
-                    visible: mode == 0
+                    inputWidth: content.counteWidth
+//                    visible: mode == 0
                 }
             }
         }

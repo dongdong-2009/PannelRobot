@@ -1563,8 +1563,7 @@ var canActionUsePoint = function(actionObject){
 }
 
 var canActionTestRun = function(actionObject){
-    return actionObject.action === actions.F_CMD_SINGLE ||
-            actionObject.action === actions.F_CMD_CoordinatePoint ||
+    return  actionObject.action === actions.F_CMD_CoordinatePoint ||
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||

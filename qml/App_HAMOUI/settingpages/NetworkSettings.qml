@@ -105,6 +105,7 @@ Item {
             id:communicateMode
             items: [qsTr("Serve"), qsTr("Client")]
             configName: qsTr("CommunicateMode")
+            z:10
         }
         ICButton{
             id:saveBtn
@@ -139,17 +140,14 @@ Item {
         }
         Text {
             id: testRecv
-            width: 600
+            width: 780
             height: 200
             text: qsTr("text")
+            wrapMode: Text.WrapAnywhere
         }
     }
     function onETH0DataComeIn(data){
         testRecv.text = data;
-        var camData = JSON.parse(data);
-        console.log(data, camData.camID, camData.data[0].ModelID, camData.data[0].X);
-
-
     }
 
     Component.onCompleted: {
@@ -175,7 +173,6 @@ Item {
         communicateMode.configValue = cMode;
         panelRobotController.setEth0Enable(isNetworkEn, cMode, localAddr, hostAddrs[0], hostAddrs[1]);
 
-        panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataComeIn);
     }
 }

@@ -8,6 +8,7 @@ import "ShareData.js" as ShareData
 import "../utils/Storage.js" as Storage
 import "configs/IODefines.js" as IODefines
 import "ICOperationLog.js" as ICOperationLog
+import "ExternalData.js" as ESData
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -518,6 +519,10 @@ Rectangle {
 
     }
 
+    function onETH0DataIn(data){
+        ESData.externalDataManager.parse(data);
+    }
+
     Component.onCompleted: {
         menuOperation.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
@@ -532,6 +537,9 @@ Rectangle {
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
         panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
         mainHeader.setRecordItemEnabled(false);
+        ESData.externalDataManager.registerDataSource("cam1", ESData.CamDataSource.createNew("Cam1"));
+        panelRobotController.setETh0Filter("test\r\n");
+        panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
         console.log("main load finished!")
     }
 

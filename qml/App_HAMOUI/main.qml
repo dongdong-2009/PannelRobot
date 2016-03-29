@@ -9,6 +9,7 @@ import "../utils/Storage.js" as Storage
 import "configs/IODefines.js" as IODefines
 import "ICOperationLog.js" as ICOperationLog
 import "ExternalData.js" as ESData
+import "../utils/stringhelper.js" as ICString
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -520,7 +521,11 @@ Rectangle {
     }
 
     function onETH0DataIn(data){
-        ESData.externalDataManager.parse(data);
+//        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
+        var posData = ESData.externalDataManager.parse(data);
+//        for(var i = 0; i < posData.length; ++i){
+//            console.log(ESData.externalDataToString(posData[i]));
+//        }
     }
 
     Component.onCompleted: {
@@ -537,7 +542,7 @@ Rectangle {
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
         panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
         mainHeader.setRecordItemEnabled(false);
-        ESData.externalDataManager.registerDataSource("cam1", ESData.CamDataSource.createNew("Cam1"));
+        ESData.externalDataManager.registerDataSource("www.geforcevision.com.cam", ESData.CamDataSource.createNew("GeforceVision-Cam"));
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
         console.log("main load finished!")

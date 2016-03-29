@@ -1,5 +1,10 @@
 .pragma library
 
+function externalDataToString(data){
+    return "motor0:" + data.motor0 + " motor1:" + data.motor1 + " motor2:" + data.motor2 +
+            " motor3:" + data.motor3 + " motor4:" + data.motor4 + " motor5:" + data.motor5;
+}
+
 function ExternalDataPosFormat(){
     this.motor0 = 0;
     this.motor1 = 0;
@@ -21,9 +26,35 @@ var DataSource = {
 var CamDataSource = {
     createNew : function(name){
         var camDS = DataSource.createNew("Cam_DS" + name);
-        camDS.parse = function(object){
-            var d = JSON.parse(jsonStr);
+        camDS.parse = function(dsData){
+            var ret = [];
+            if(!(dsData instanceof Array)){
+                return ret;
+            }
+            var d;
+            var posDatas = [];
+            var pos;
+            for(var i = 0; i < dsData.length; ++i){
+                d = dsData[i];
+                if(d.hasOwnProperty("data")){
+                    posDatas = d.data;
+                    for(var j = 0; j < posDatas.length; ++j){
+                        pos = posDatas[j];
+                        var toAdd = new ExternalDataPosFormat();
+                        if(pos.hasOwnProperty("X"))
+                            toAdd.motor0 = pos.X;
+                        if(pos.hasOwnProperty("Y"))
+                            toAdd.motor1 = pos.Y;
+                        if(pos.hasOwnProperty("Angel"))
+                            toAdd.motor5 = pos.Angel;
+                        ret.push(toAdd);
+
+                    }
+                }
+            }
+            return ret;
         };
+        return camDS;
     }
 }
 
@@ -45,18 +76,8 @@ function ExternalDataManager(){
         if(!this.dataSourceExist(o.dsID)){
             return [];
         }
-        return this.dataSources[o.dsID].parse(o.data)
+        return this.dataSources[o.dsID].parse(o.dsData)
     }
 }
 
 var externalDataManager = new ExternalDataManager();
-
-
-//var test = {
-//    "camID":"0",
-//    "data":[
-//        {"ModelID":"0","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null},
-//        {"ModelID":"1","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null},
-//        {"ModelID":"2","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null},
-//        {"ModelID":"3","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null}]
-//}

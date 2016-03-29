@@ -5,7 +5,7 @@ import "../configs/IODefines.js" as IODefines
 ICGridView {
     id:container
     property variant valves: []
-    property int boardType: IODefines.IO_BOARD_0
+    property int boardType: IODefines.TIMEY_BOARD_START
 
     function getValveInfo(){
         var data;

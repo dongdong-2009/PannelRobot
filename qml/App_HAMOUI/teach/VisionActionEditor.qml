@@ -23,7 +23,10 @@ Item {
                                                          dataSource.configText()));
             }
         }else if(waitDataEn.isChecked){
-            ret.push(Teach.generateWaitVisionDataAction(waitTime.configValue, dataSource.configText()));
+            ret.push(Teach.generateWaitVisionDataAction(waitTime.configValue,
+                                                        dataSource.configText(),
+                                                        ESData.externalDataManager.getDataSource(
+                                                            ESData.externalDataManager.getDSIDFromDisplayName(dataSource.configText()))));
         }
 
         return ret;
@@ -92,30 +95,30 @@ Item {
             height: 110
             visible: catchType.currentIndex == 0 && catchEn.isChecked
             valves: [
-                "valve0",
-                "valve1",
-                "valve2",
-                "valve3",
-                "valve4",
-                "valve5",
-                "valve6",
-                "valve7",
-                "valve8",
-                "valve9",
-                "valve10",
-                "valve11",
-                "valve12",
-                "valve13",
-                "valve14",
-                "valve15",
-                "valve16",
-                "valve17",
-                "valve18",
-                "valve19",
-                "valve20",
-                "valve21",
-                "valve22",
-                "valve23",
+                "tValve0",
+                "tValve1",
+                "tValve2",
+                "tValve3",
+                "tValve4",
+                "tValve5",
+                "tValve6",
+                "tValve7",
+                "tValve8",
+                "tValve9",
+                "tValve10",
+                "tValve11",
+                "tValve12",
+                "tValve13",
+                "tValve14",
+                "tValve15",
+                "tValve16",
+                "tValve17",
+                "tValve18",
+                "tValve19",
+                "tValve20",
+                "tValve21",
+                "tValve22",
+                "tValve23",
             ]
         }
 

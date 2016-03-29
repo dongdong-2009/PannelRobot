@@ -15,17 +15,19 @@ function ExternalDataPosFormat(){
 }
 
 var DataSource = {
-    createNew : function(name){
+    createNew : function(name, hostID){
         var dataSource = {};
         dataSource.name = name;
+        dataSource.hostID = hostID;
         dataSource.getName = function() { return dataSource.name;};
+        dataSource.getHostID = function() { return dataSource.hostID;};
         return dataSource;
     }
 }
 
 var CamDataSource = {
-    createNew : function(name){
-        var camDS = DataSource.createNew(name);
+    createNew : function(name, hostID){
+        var camDS = DataSource.createNew(name, hostID);
         camDS.parse = function(dsData){
             var ret = [];
             if(!(dsData instanceof Array)){
@@ -82,15 +84,20 @@ function ExternalDataManager(){
     this.dataSourceNameList = function(){
         var ret = [];
         for(var d in this.dataSources){
-            ret.push(d + "::" + this.dataSources[d].getName());
+            ret.push(d + "::" + this.dataSources[d].getName() + "::[HID:" + this.dataSources[d].getHostID() + "]");
         }
         return ret;
+
     };
 
     this.getDSIDFromDisplayName = function(displayName){
         return displayName.split("::")[0];
     };
+
+    this.getDataSource = function(dsID){
+        return this.dataSourceExist(dsID) ? this.dataSources[dsID] : null;
+    };
 }
 
 var externalDataManager = new ExternalDataManager();
-externalDataManager.registerDataSource("www.geforcevision.com.cam", CamDataSource.createNew("GeforceVision-Cam"));
+externalDataManager.registerDataSource("www.geforcevision.com.cam", CamDataSource.createNew("GeforceVision-Cam", 100));

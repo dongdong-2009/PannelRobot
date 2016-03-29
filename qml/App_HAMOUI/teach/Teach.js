@@ -1021,11 +1021,12 @@ var generateVisionCatchAction = function(point, type, status, acTime, dataSource
     }
 }
 
-var generateWaitVisionDataAction = function(waitTime, dataSourceName){
+var generateWaitVisionDataAction = function(waitTime, dataSourceName, hostID){
     return {
         "action": actions.F_CMD_WATIT_VISION_DATA,
         "limit": waitTime,
-        "dataSource":dataSourceName
+        "dataSource":dataSourceName,
+        "hostID":hostID
     }
 }
 
@@ -1305,9 +1306,8 @@ var visionCatchActionToStringHandler = function(actionObject){
     var isCommunicate = actionObject.point < 0;
     var detailStr = "";
     if(!isCommunicate){
-        detailStr += qsTr("Output") + " " + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + " " +
-                (actionObject.pointStatus == true ? qsTr("On") : qsTr("Off")) + " " + qsTr("Action Time:")
-        + actionObject.acTime;
+        detailStr += qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                + qsTr("Action Time:") + actionObject.acTime;
     }
 
     return qsTr("Vistion Catch Start:") + qsTr("Data Source:") + actionObject.dataSource + "\n                            "

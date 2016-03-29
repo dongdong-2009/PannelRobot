@@ -196,6 +196,29 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+int VisionCatchActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(F_CMD_IO_OUTPUT);
+    item.append(v->value("type", 0).toInt());
+    item.append(v->value("point", 0).toInt());
+    item.append(v->value("pointStatus", 0).toInt());
+    item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+
+}
+
+int WaitVisionDataActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(F_CMD_IO_INPUT);
+    item.append(1000);
+    item.append(v->value("hostID", 0).toInt());
+    item.append(0);
+    item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+
+}
+
 int CheckActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     return ICRobotMold::kCCErr_None;
@@ -387,6 +410,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
 
     ret.insert(F_CMD_PROGRAM_CALL_BACK, SimpleActionCompiler);
     ret.insert(F_CMD_PROGRAM_CALL0, CallModuleActionCompiler);
+    ret.insert(F_CMD_VISION_CATCH, VisionCatchActionCompiler);
+    ret.insert(F_CMD_WATIT_VISION_DATA, WaitVisionDataActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
     return ret;

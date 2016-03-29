@@ -1352,9 +1352,9 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[0].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.si[0].counterID = stackMap.value("counterID").toInt();
         stackInfo.si[0].isOffsetEn = stackMap.value("isOffsetEn").toBool();
-        stackInfo.si[0].offsetX = stackMap.value("offsetX").toInt();
-        stackInfo.si[0].offsetY = stackMap.value("offsetY").toInt();
-        stackInfo.si[0].offsetZ = stackMap.value("offsetZ").toInt();
+        stackInfo.si[0].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
+        stackInfo.si[0].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
+        stackInfo.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
 
 
         stackMap = p.value().toMap().value("si1").toMap();
@@ -1378,9 +1378,9 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.si[1].counterID = stackMap.value("counterID").toInt();
         stackInfo.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();
-        stackInfo.si[1].offsetX = stackMap.value("offsetX").toInt();
-        stackInfo.si[1].offsetY = stackMap.value("offsetY").toInt();
-        stackInfo.si[1].offsetZ = stackMap.value("offsetZ").toInt();
+        stackInfo.si[1].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
+        stackInfo.si[1].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
+        stackInfo.si[1].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
         ret.insert(p.key().toInt(), stackInfo);
         ++p;
     }

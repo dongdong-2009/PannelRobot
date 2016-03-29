@@ -50,3 +50,13 @@ function ExternalDataManager(){
 }
 
 var externalDataManager = new ExternalDataManager();
+
+
+//var test = {
+//    "camID":"0",
+//    "data":[
+//        {"ModelID":"0","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null},
+//        {"ModelID":"1","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null},
+//        {"ModelID":"2","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null},
+//        {"ModelID":"3","X":"888","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null}]
+//}

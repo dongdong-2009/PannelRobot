@@ -281,7 +281,7 @@ Rectangle {
             text: qsTr("Save")
             width: 60
             height: stackViewSel.height
-            visible: stackViewSel.visible
+            visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
             bgColor: "yellow"
             anchors.left: newStack.right
             anchors.leftMargin: 6
@@ -298,7 +298,7 @@ Rectangle {
             text: qsTr("Delete")
             width: save.width
             height: stackViewSel.height
-            visible: stackViewSel.visible
+            visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
             bgColor: "red"
 
             anchors.left: save.right

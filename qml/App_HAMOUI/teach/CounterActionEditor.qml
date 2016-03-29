@@ -28,7 +28,7 @@ Rectangle {
         id:typeContainer
         layoutMode: 1
         mustChecked: true
-        spacing: 2
+        spacing: 8
         ICCheckBox{
             id:setCounter
             text: qsTr("Set Counter")

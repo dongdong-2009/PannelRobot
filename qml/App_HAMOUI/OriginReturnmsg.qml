@@ -21,7 +21,7 @@ MouseArea{
     function showForOriginning(){
         hinttext.text = qsTr("Originning");
         if(!visible){
-//            originMode.visible = true;
+            //            originMode.visible = true;
             visible = true;
         }
     }
@@ -62,6 +62,13 @@ MouseArea{
             anchors.horizontalCenter: parent.horizontalCenter
             y:6
         }
+        Text {
+            id: helpText
+            visible: false
+            anchors.top: hinttext.bottom
+            anchors.topMargin: 6
+            text: qsTr("1.Mode 1\n2.Mode 2\n3.Mode 3")
+        }
         ICButton{
             id:stop
             text: qsTr("Stop")
@@ -70,6 +77,17 @@ MouseArea{
             x:10
             onButtonClicked: {
                 panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+            }
+        }
+        ICButton{
+            id:help
+            text: qsTr("Show Help")
+            y:stop.y
+            anchors.left: stop.right
+            anchors.leftMargin: 20
+            onButtonClicked: {
+                helpText.visible = !helpText.visible;
+                text = helpText.visible ? qsTr("Hide Help") : qsTr("Show Help");
             }
         }
 
@@ -104,13 +122,14 @@ MouseArea{
                     panelRobotController.modifyConfigValue(28, 3);
             }
             onVisibleChanged: {
-//                if(checkedItem != nearOrigin)
-                if(checkedItem != null){
-                    checkedItem.setChecked(false);
-                    checkedItem = null;
+                if(!visible){
+                    if(checkedItem != null){
+                        checkedItem.setChecked(false);
+                        checkedItem = null;
+                    }
+                    helpText.visible = false;
+                    help.text = qsTr("Show Help");
                 }
-//                else
-//                    panelRobotController.modifyConfigValue(28, 1);
             }
         }
 

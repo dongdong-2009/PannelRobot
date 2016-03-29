@@ -3,7 +3,6 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 
 Item {
-    signal backToMenuTriggered()
 
     function createActionObjects(){
         return [];

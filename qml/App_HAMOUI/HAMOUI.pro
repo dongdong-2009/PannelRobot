@@ -9,6 +9,8 @@ settingpages/*
 }
 
 OTHER_FILES += \
-    ExternalData.js
+    ExternalData.js \
+    teach/VisionActionEditor.qml \
+    teach/ICValveSelectView.qml
 
 

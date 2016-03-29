@@ -2549,6 +2549,10 @@ please chose!</source>
         <source>origin</source>
         <translation>原点指令</translation>
     </message>
+    <message>
+        <source>Vision</source>
+        <translation>视觉指令</translation>
+    </message>
 </context>
 <context>
     <name>ProgramFlowPage</name>
@@ -3085,15 +3089,19 @@ please chose!</source>
     </message>
     <message>
         <source>X Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>X偏移</translation>
     </message>
     <message>
         <source>Y Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Y偏移</translation>
     </message>
     <message>
         <source>Z Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Z偏移</translation>
+    </message>
+    <message>
+        <source>Offset En</source>
+        <translation>使用偏移</translation>
     </message>
 </context>
 <context>
@@ -3885,6 +3893,33 @@ please chose!</source>
     <message>
         <source>PP</source>
         <translation>正相</translation>
+    </message>
+</context>
+<context>
+    <name>VisionActionEditor</name>
+    <message>
+        <source>Catch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>O Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Communicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wait Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wait Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

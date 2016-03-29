@@ -102,6 +102,7 @@ Rectangle{
     }
 
     onIsRunningChanged: {
+        state = "";
         state = judgeState();
     }
 

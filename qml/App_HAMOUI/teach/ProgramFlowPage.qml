@@ -499,7 +499,8 @@ Rectangle {
         if(isAuto){
             singleCycle.setChecked(false);
             singleStep.setChecked(false);
-        }
+        }else
+            programListView.clearLastRunning(PData.lastRunning);
         editing.resetProgramItems(isAuto);
         isFollow.visible = isAuto;
 
@@ -1159,6 +1160,16 @@ Rectangle {
                         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                     }
 
+                    function clearLastRunning(lastRunning){
+                        var i;
+                        var lastModel = PData.programs[lastRunning.model];
+
+                        for(i = 0; i < lastRunning.items.length; ++i){
+                            lastModel.setProperty(lastRunning.items[i], "mI_IsActionRunning", false);
+                        }
+                        lastRunning = {"model": -1, "moduleID":-1, "step":-1, "items":[]}
+                    }
+
                     delegate: ProgramListItem{
                         x:1
                         width: programListView.width - x
@@ -1216,11 +1227,12 @@ Rectangle {
                                     uiRunningSteps.hostStep !== lastRunning.step)
                             {
                                 var i;
-                                var lastModel = PData.programs[lastRunning.model];
+                                programListView.clearLastRunning(lastRunning);
+//                                var lastModel = PData.programs[lastRunning.model];
 
-                                for(i = 0; i < lastRunning.items.length; ++i){
-                                    lastModel.setProperty(lastRunning.items[i], "mI_IsActionRunning", false);
-                                }
+//                                for(i = 0; i < lastRunning.items.length; ++i){
+//                                    lastModel.setProperty(lastRunning.items[i], "mI_IsActionRunning", false);
+//                                }
 
                                 var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep, "moduleID":uiRunningSteps.moduleID};
 
@@ -1391,9 +1403,12 @@ Rectangle {
                 editor = Qt.createComponent('ModuleActionEditor.qml')
                 var moduleEditorObject = editor.createObject(actionEditorContainer);
                 PData.moduleActionEditor = moduleEditorObject;
+
                 editor = Qt.createComponent('OriginActionEditor.qml')
                 var originEditorObject = editor.createObject(actionEditorContainer);
-                PData.moduleActionEditor = originEditorObject;
+
+                editor = Qt.createComponent('VisionActionEditor.qml')
+                var visionEditorObject = editor.createObject(actionEditorContainer);
 
                 actionEditorContainer.addPage(actionMenuObject);
                 actionEditorContainer.addPage(axisEditorObject);
@@ -1410,6 +1425,7 @@ Rectangle {
                 actionEditorContainer.addPage(customAlarmEditorObject);
                 actionEditorContainer.addPage(moduleEditorObject);
                 actionEditorContainer.addPage(originEditorObject);
+                actionEditorContainer.addPage(visionEditorObject);
 
 
                 actionEditorContainer.showMenu();
@@ -1557,6 +1573,12 @@ Rectangle {
                 });
                 actionMenuObject.originMenuTriggered.connect(function(){
                     actionEditorContainer.setCurrentIndex(14);
+                    linkedBtn1.visible = false;
+                    linkedBtn2.visible = false;
+                    linkedBtn3.visible = false;
+                });
+                actionMenuObject.visionMenuTriggered.connect(function(){
+                    actionEditorContainer.setCurrentIndex(15);
                     linkedBtn1.visible = false;
                     linkedBtn2.visible = false;
                     linkedBtn3.visible = false;

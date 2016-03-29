@@ -21,6 +21,7 @@ Rectangle {
     signal moduleMenuTriggered()
     signal searchMenuTriggered()
     signal originMenuTriggered()
+    signal visionMenuTriggered()
 
     states: [
         State {
@@ -152,6 +153,16 @@ Rectangle {
             height: pData.menuItemSize.height
             onButtonClicked: moduleMenuTriggered()
         }
+        ICButton{
+            id:visionCommand
+            text:qsTr("Vision")
+            icon: "../images/action_item_vision.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: visionMenuTriggered()
+            visible: false
+        }
+
         ICButton{
             id:origin
             text: qsTr("origin")

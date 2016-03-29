@@ -32,7 +32,6 @@ Item {
         "valve21",
         "valve22",
         "valve23",
-
     ]
     property  variant euYs : []
     property variant mYs: [

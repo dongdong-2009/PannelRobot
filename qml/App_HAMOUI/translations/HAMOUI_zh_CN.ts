@@ -2864,6 +2864,10 @@ please chose!</source>
  and underline begin is not allowed</source>
         <translation>名称不符合要求</translation>
     </message>
+    <message>
+        <source>Local</source>
+        <translation>本机模号</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>

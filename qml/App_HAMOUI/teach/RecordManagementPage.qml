@@ -77,11 +77,26 @@ Rectangle {
         }
 
     }
-    Row{
+    ICButtonGroup{
         id:usbContainer
         anchors.top: infoContainer.bottom
         anchors.topMargin: 4
         x:infoContainer.x
+        spacing: 10
+        mustChecked: true
+        checkedIndex: 0
+
+        ICCheckBox{
+            id:localRecord
+            text: qsTr("Local")
+            width: 200
+            isChecked: true
+            onIsCheckedChanged: {
+                if(isChecked){
+                    recordPage.state = "";
+                }
+            }
+        }
 
         ICCheckBox{
             id:exportToUsb
@@ -89,10 +104,7 @@ Rectangle {
             width: 200
             onIsCheckedChanged: {
                 if(isChecked){
-                    importFromUsb.isChecked = false;
                     recordPage.state = "exportMode";
-                }else{
-                    recordPage.state = "";
                 }
             }
         }
@@ -102,15 +114,12 @@ Rectangle {
             width: 200
             onIsCheckedChanged: {
                 if(isChecked){
-                    exportToUsb.isChecked = false;
                     backupPackageModel.clear();
                     var backups = JSON.parse(panelRobotController.scanUSBBackupPackages("HCBackupRobot"));
                     for(var i = 0; i < backups.length; ++i){
                         backupPackageModel.append(recordsView.createRecordItem(backups[i], undefined));
                     }
                     recordPage.state = "importMode";
-                }else{
-                    recordPage.state = "";
                 }
             }
 

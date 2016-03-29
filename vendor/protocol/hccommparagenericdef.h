@@ -14,13 +14,13 @@ extern "C"
 {
 #endif
 
-#define DEBUG_TEST  1 //< 测试
+#define DEBUG_TEST  0 //< 测试
 
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
 
-#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.2"
+#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.3"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -800,6 +800,7 @@ typedef enum
 
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
     ALARM_ROUTE_ACC_ERR,//<名字：轨迹规划失败
+    ALARM_ROUTE_REPLAN_ERR,//<名字：轨迹重新规划失败
 
     ALARM_COUNTER_NOT_DEFINE = 300,//<名字：计数器未定义
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址

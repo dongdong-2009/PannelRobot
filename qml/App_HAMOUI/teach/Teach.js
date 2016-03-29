@@ -7,9 +7,6 @@ Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
 Qt.include("../../utils/utils.js")
 
-//var motorText = [qsTr("M1:"), qsTr("M2:"), qsTr("M3:"), qsTr("M4:"), qsTr("M5:"), qsTr("M6:")];
-
-
 var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
@@ -290,45 +287,6 @@ var flagsDefine = {
         return ret;
     }
 }
-
-//var flags = [];
-//var flagStrs = [];
-
-//var pushFlag = function(flag, descr){
-//    for(var i = 0; i < flags.length; ++i){
-//        if(flag < flags[i]){
-//            flags.splice(i, 0, flag);
-//            flagStrs.splice(i, 0,  qsTr("Flag") + "[" + flag + "]" + ":" + descr);
-//            return;
-//        }
-//    }
-//    flags.push(flag);
-//    flagStrs.push(qsTr("Flag") + "[" + flag + "]" + ":" + descr);
-//    return;
-//}
-
-//var delFlag = function(flag){
-//    for(var i = 0; i < flags.length; ++i){
-//        if(flag === flags[i]){
-//            flags.splice(i, 1);
-//            flagStrs.splice(i, 1);
-//            break;
-//        }
-//    }
-//}
-
-//var useableFlag = function(){
-//    if(flags.length === 0) return 0;
-//    //    if(flags.length < 3)
-//    //        return flags[flags.length - 1] + 1;
-//    if(flags[0] !== 0) return 0;
-//    for(var i = 1; i < flags.length; ++i){
-//        if(flags[i] - flags[i - 1] > 1){
-//            return flags[i - 1] + 1;
-//        }
-//    }
-//    return flags[i - 1] + 1;
-//}
 
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
@@ -781,11 +739,13 @@ actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，
 actions.F_CMD_ARC3D_MOVE = actHelper++;   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
+actions.F_CMD_WATIT_VISION_DATA = 101;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
 actions.F_CMD_STACK0 = 300;
 actions.F_CMD_COUNTER = 400; //< 计数器
 actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
+actions.F_CMD_VISION_CATCH = 501;
 
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
@@ -1050,24 +1010,28 @@ var generateCallModuleAction = function(module, flag){
     };
 }
 
+var generateVisionCatchAction = function(point, type, status, acTime, dataSourceName){
+    return {
+        "action": actions.F_CMD_VISION_CATCH,
+        "point":point,
+        "type":type,
+        "pointStatus": status,
+        "acTime": acTime,
+        "dataSource":dataSourceName
+    }
+}
+
+var generateWaitVisionDataAction = function(waitTime, dataSourceName){
+    return {
+        "action": actions.F_CMD_WATIT_VISION_DATA,
+        "limit": waitTime,
+        "dataSource":dataSourceName
+    }
+}
+
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
-    //    initStep.push(generateSyncBeginAction());
-    //    //    initStep.push(axisDefine.s8Axis == kAxisType_Reserve ? generateAxisServoAction(actions.ACT_GS8) :
-    //    //                                                           generateAxisPneumaticAction(actions.ACT_PS8_1));
-    //    var aT;
-    //    for(var i = 1; i < 8; ++i){
-    //        aT = axisDefine["s"+ i + "Axis"];
-    //        if(aT == kAxisType_Servo){
-    //            initStep.push(generateAxisServoAction(actions.F_CMD_SINGLE, i - 1));
-    //        }else if(aT == kAxisType_Pneumatic){
-    //            initStep.push(generateAxisPneumaticAction(actions["ACT_PS" + i + "_1"]));
-    //        }
-    //    }
-
-    //    initStep.push(generateSyncEndAction());
-    //    initStep.push(generateWaitAction(1));
     initStep.push(generteEndAction());
 
     return JSON.stringify(initStep);
@@ -1118,65 +1082,6 @@ var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
     return ret;
 }
 
-var ps1_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("X1 OFF"), actionObject)
-}
-var ps1_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("X1 ON"), actionObject)
-
-}
-
-var ps2_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("Y1 OFF"), actionObject)
-
-}
-var ps2_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("Y1 ON"), actionObject)
-
-}
-
-var ps3_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("Z OFF"), actionObject)
-
-}
-var ps3_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("Z ON"), actionObject)
-
-}
-
-var ps4_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("X2 OFF"), actionObject)
-
-}
-var ps4_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("X2 ON"), actionObject)
-
-}
-
-var ps5_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("A OFF"),actionObject)
-
-}
-var ps5_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("A ON"),actionObject)
-
-}
-
-var ps6_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("B OFF"), actionObject)
-
-}
-var ps6_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("B ON"), actionObject)
-}
-
-var ps8_1ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("C OFF"), actionObject)
-}
-var ps8_2ToStringHandler = function(actionObject){
-    return psActionToStringHelper(qsTr("C ON"), actionObject)
-
-}
 
 var otherActionToStringHandler = function(actionObject){
 
@@ -1396,6 +1301,24 @@ var pathActionToStringHandler = function(actionObject){
     return ret;
 }
 
+var visionCatchActionToStringHandler = function(actionObject){
+    var isCommunicate = actionObject.point < 0;
+    var detailStr = "";
+    if(!isCommunicate){
+        detailStr += qsTr("Output") + " " + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + " " +
+                (actionObject.pointStatus == true ? qsTr("On") : qsTr("Off")) + " " + qsTr("Action Time:")
+        + actionObject.acTime;
+    }
+
+    return qsTr("Vistion Catch Start:") + qsTr("Data Source:") + actionObject.dataSource + "\n                            "
+            + qsTr("Catch Type:") + (isCommunicate ? qsTr("Communicate") : qsTr("O Point")) + " " + detailStr;
+}
+
+var waitVisionDataActionToStringHandler = function(actionObject){
+    return qsTr("Wait Vision Data") + " " + qsTr("Data Source:") + actionObject.dataSource + "\n                            "
+    + qsTr("Limit:") + actionObject.limit;
+}
+
 
 
 var actionToStringHandlerMap = new HashTable();
@@ -1410,41 +1333,11 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringH
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINT_RELATIVE, pathActionToStringHandler);
-
-
-
-
-//actionToStringHandlerMap.put(actions.ACT_GS1, gs1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS2, gs2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS3, gs3ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS4, gs4ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS5, gs5ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS6, gs6ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_GS7, gs7ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS1_1, ps1_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS1_2, ps1_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS2_1, ps2_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS2_2, ps2_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS3_1, ps3_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS3_2, ps3_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS4_1, ps4_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS4_2, ps4_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS5_1, ps5_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS5_2, ps5_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS6_1, ps6_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS6_2, ps6_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS8_1, ps8_1ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PS8_2, ps8_2ToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_OTHER, otherActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_TEACH_ALARM, customAlarmActiontoStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP2, conditionActionToStringHandler);
-
-
 actionToStringHandlerMap.put(actions.F_CMD_IO_INPUT, waitActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_CHECK, checkActionToStringHandler);
-//actionToStringHandlerMap.put(actions.ACT_PARALLEL, parallelActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL_BACK, moduleCallBackActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL0, callModuleActionToStringHandler);
@@ -1456,6 +1349,8 @@ actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_STACK0, stackActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];

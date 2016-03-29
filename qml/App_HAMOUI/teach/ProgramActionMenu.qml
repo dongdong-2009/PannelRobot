@@ -160,7 +160,6 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: visionMenuTriggered()
-            visible: false
         }
 
         ICButton{

@@ -3225,62 +3225,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>X1 OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X1 ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y1 OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y1 ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Z OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Z ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X2 OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X2 ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>IF:</source>
         <translation>如果:</translation>
     </message>
@@ -3567,6 +3511,42 @@ please chose!</source>
     <message>
         <source>Circle:</source>
         <translation>整圆:</translation>
+    </message>
+    <message>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Vistion Catch Start:</source>
+        <translation>相机开始拍照:</translation>
+    </message>
+    <message>
+        <source>Data Source:</source>
+        <translation>数据源:</translation>
+    </message>
+    <message>
+        <source>Catch Type:</source>
+        <translation>触发类型:</translation>
+    </message>
+    <message>
+        <source>Communicate</source>
+        <translation>通信</translation>
+    </message>
+    <message>
+        <source>O Point</source>
+        <translation>输出点</translation>
+    </message>
+    <message>
+        <source>Wait Vision Data</source>
+        <translation>等待视觉数据</translation>
     </message>
 </context>
 <context>
@@ -3899,27 +3879,43 @@ please chose!</source>
     <name>VisionActionEditor</name>
     <message>
         <source>Catch</source>
-        <translation type="unfinished"></translation>
+        <translation>拍照</translation>
     </message>
     <message>
         <source>O Point</source>
-        <translation type="unfinished"></translation>
+        <translation>输出点</translation>
     </message>
     <message>
         <source>Communicate</source>
-        <translation type="unfinished"></translation>
+        <translation>通信</translation>
     </message>
     <message>
         <source>Wait Data</source>
-        <translation type="unfinished"></translation>
+        <translation>等待视觉数据</translation>
     </message>
     <message>
         <source>Wait Time</source>
-        <translation type="unfinished"></translation>
+        <translation>限制时间</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Action Time</source>
+        <translation>动作时间</translation>
     </message>
 </context>
 <context>

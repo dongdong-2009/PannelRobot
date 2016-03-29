@@ -25,7 +25,7 @@ var DataSource = {
 
 var CamDataSource = {
     createNew : function(name){
-        var camDS = DataSource.createNew("Cam_DS" + name);
+        var camDS = DataSource.createNew(name);
         camDS.parse = function(dsData){
             var ret = [];
             if(!(dsData instanceof Array)){
@@ -77,7 +77,20 @@ function ExternalDataManager(){
             return [];
         }
         return this.dataSources[o.dsID].parse(o.dsData)
-    }
+    };
+
+    this.dataSourceNameList = function(){
+        var ret = [];
+        for(var d in this.dataSources){
+            ret.push(d + "::" + this.dataSources[d].getName());
+        }
+        return ret;
+    };
+
+    this.getDSIDFromDisplayName = function(displayName){
+        return displayName.split("::")[0];
+    };
 }
 
 var externalDataManager = new ExternalDataManager();
+externalDataManager.registerDataSource("www.geforcevision.com.cam", CamDataSource.createNew("GeforceVision-Cam"));

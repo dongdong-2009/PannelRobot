@@ -13,13 +13,12 @@ Item {
 
     ICGridView{
         id:valveView
-        width: 785
+        width: 795
         height: 385
         x: 5
-        hintx: valveView.width - 10
+        hintx: valveView.width - 20
         hinty: valveView.height - 30
-        isshowhint: true
-        isshowviewborder: false
+        isShowHint: true
         cellWidth :390
         cellHeight: 48
         clip: true

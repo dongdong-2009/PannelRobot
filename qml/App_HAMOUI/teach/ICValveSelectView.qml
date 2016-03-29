@@ -6,7 +6,24 @@ ICGridView {
     id:container
     property variant valves: []
     property int boardType: IODefines.IO_BOARD_0
-    isshowviewborder: true
+
+    function getValveInfo(){
+        var data;
+        for(var i = 0; i < viewModel.count; ++i){
+            data = viewModel.get(i);
+            if(data.isSel){
+                return {"hwPoint":data.hwPoint, "type":data.board};
+            }
+        }
+        return null;
+    }
+
+    cellWidth: 226
+    cellHeight: 32
+    border.width: 1
+    border.color: "black"
+    color: "#A0A0F0"
+    clip: true
     ListModel{
         id:viewModel
         function createValveMoldItem(pointNum, valve, board){
@@ -23,6 +40,7 @@ ICGridView {
         }
     }
 
+    model:viewModel
     delegate: Row{
         spacing: 2
         height: 26

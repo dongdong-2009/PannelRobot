@@ -334,7 +334,7 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     }
     if(si.si[0].type == 2)
     {
-        item[0] = (si.si[0].dataSourceID);
+        item[1] = (si.si[0].dataSourceID);
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 

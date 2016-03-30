@@ -39,11 +39,18 @@ struct SI{
     quint32 dataSourceID;
 };
 
-union StackInfo{
+union StackInfoPrivate{
     SI si[2];
     quint32 all[26];
 };
-Q_DECLARE_METATYPE(StackInfo)
+struct StackInfo{
+    StackInfoPrivate stackData;
+    QString dsName;
+    int dsHostID;
+    QVector<quint32> posData;
+};
+
+Q_DECLARE_METATYPE(StackInfoPrivate)
 //qRegisterMetaType<StackInfo>("StackInfo");
 #ifdef NEW_PLAT
 typedef QVector<quint32> ICMoldItem;

@@ -32,7 +32,7 @@ Item {
     property alias offsetX: x_offset.configValue
     property alias offsetY: y_offset.configValue
     property alias offsetZ: z_offset.configValue
-    property alias dataSource: dataSourceSel.items
+    property variant dataSource: []
 
     property string dataSourceName: dataSourceSel.configText()
 
@@ -84,20 +84,33 @@ Item {
         visible: mode != 2
     }
 
-
     Column{
         id:content
         spacing: 4
         property int posWidth: 80
         property int spaceWidth: 70
         property int counteWidth: 60
-        ICComboBoxConfigEdit{
-            id:dataSourceSel
-            configName: qsTr("Data Source")
-            inputWidth: 500
-            visible: mode == 2
-            items: dataSource
+        Column{
+            id:dataSourceContainer
+            spacing: 6
             z:101
+            visible: mode == 2
+            ICComboBoxConfigEdit{
+                id:dataSourceSel
+                configName: qsTr("Data Source")
+                inputWidth: 500
+                items: dataSource
+                z:101
+            }
+            ICButton{
+                id:editPos
+                text: qsTr("Edit Pos")
+                visible: dataSourceSel.configValue == 0
+                onButtonClicked: {
+                    customPointEditor.visible = true
+                }
+            }
+
         }
         Row{
             spacing: 4
@@ -210,7 +223,7 @@ Item {
                     configName: qsTr("Space2")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
-//                    visible: mode == 0
+                    //                    visible: mode == 0
 
                 }
                 ICConfigEdit{
@@ -218,7 +231,7 @@ Item {
                     configName: qsTr("Count2")
                     configAddr: "s_rw_0_32_0_1400"
                     inputWidth: content.counteWidth
-//                    visible: mode == 0
+                    //                    visible: mode == 0
                 }
             }
         }
@@ -279,6 +292,12 @@ Item {
     onVisibleChanged: {
         updateCounters();
     }
+    onDataSourceChanged: {
+        var items = dataSource;
+        items.splice(0,0, qsTr("Custom Pos"));
+        dataSourceSel.items = items;
+    }
+
     Component.onCompleted: {
         updateCounters();
     }

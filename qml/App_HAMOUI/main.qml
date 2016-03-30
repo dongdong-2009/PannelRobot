@@ -417,6 +417,14 @@ Rectangle {
         }
     }
 
+    StackCustomPointEditor{
+        id:customPointEditor
+        visible: true
+        y:110
+        width: 600
+        height: 400
+    }
+
     Item{
         id:armKeyboardContainer
         y:50

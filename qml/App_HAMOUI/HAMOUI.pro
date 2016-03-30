@@ -11,6 +11,7 @@ settingpages/*
 OTHER_FILES += \
     ExternalData.js \
     teach/VisionActionEditor.qml \
-    teach/ICValveSelectView.qml
+    teach/ICValveSelectView.qml \
+    teach/StackCustomPointEditor.qml
 
 

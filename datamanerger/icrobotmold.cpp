@@ -274,7 +274,7 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
-    StackInfo si = v->value("stackInfo").value<StackInfo>();
+    StackInfoPrivate si = v->value("stackInfo").value<StackInfoPrivate>();
     item.append(si.si[0].m0pos);
     item.append(si.si[0].m1pos);
     item.append(si.si[0].m2pos);
@@ -621,7 +621,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 continue;
                 //                return ret;
             }
-            StackInfo si = stackInfos.value(stackID);
+            StackInfoPrivate si = stackInfos.value(stackID).stackData;
             for(int j = 0; j < 2; ++j)
             {
                 if(si.si[j].doesBindingCounter)
@@ -634,7 +634,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     }
                 }
             }
-            action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+            action.insert("stackInfo", QVariant::fromValue<StackInfoPrivate>(si));
         }
         if(act == F_CMD_COUNTER ||
                 act == F_CMD_COUNTER_CLEAR ||
@@ -1228,7 +1228,7 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     {
         int stackID = result.value("stackID", -1).toInt();
         StackInfo si = stackInfos_.value(stackID);
-        result.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+        result.insert("stackInfo", QVariant::fromValue<StackInfoPrivate>(si.stackData));
     }
 
     ret = VariantToMoldItem(realStep, result, err);
@@ -1359,60 +1359,65 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
     if(!isOk) return ret;
     QVariantMap::iterator p = result.begin();
     StackInfo stackInfo;
+    QVariantMap tmp;
     while(p != result.end())
     {
-        QVariantMap stackMap = p.value().toMap().value("si0").toMap();
-        stackInfo.si[0].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
-        stackInfo.si[0].m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toDouble(), 3);
-        stackInfo.si[0].m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toDouble(), 3);
-        stackInfo.si[0].m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toDouble(), 3);
-        stackInfo.si[0].m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toDouble(), 3);
-        stackInfo.si[0].m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toDouble(), 3);
-        stackInfo.si[0].space0 = ICUtility::doubleToInt(stackMap.value("space0").toDouble(), 3);
-        stackInfo.si[0].space1 = ICUtility::doubleToInt(stackMap.value("space1").toDouble(), 3);
-        stackInfo.si[0].space2 = ICUtility::doubleToInt(stackMap.value("space2").toDouble(), 3);
-        stackInfo.si[0].count0 = stackMap.value("count0").toInt();
-        stackInfo.si[0].count1 = stackMap.value("count1").toInt();
-        stackInfo.si[0].count2 = stackMap.value("count2").toInt();
-        stackInfo.si[0].sequence = stackMap.value("sequence").toInt();
-        stackInfo.si[0].dir0 = stackMap.value("dir0").toInt();
-        stackInfo.si[0].dir1 = stackMap.value("dir1").toInt();
-        stackInfo.si[0].dir2 = stackMap.value("dir2").toInt();
-        stackInfo.si[0].type = p.value().toMap().value("type").toInt();
-        stackInfo.si[0].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
-        stackInfo.si[0].counterID = stackMap.value("counterID").toInt();
-        stackInfo.si[0].isOffsetEn = stackMap.value("isOffsetEn").toBool();
-        stackInfo.si[0].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
-        stackInfo.si[0].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
-        stackInfo.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
-        stackInfo.si[0].dataSourceID = stackMap.value("dataSourceID").toInt();
+        tmp = p.value().toMap();
+        QVariantMap stackMap = tmp.value("si0").toMap();
+        stackInfo.stackData.si[0].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
+        stackInfo.stackData.si[0].m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toDouble(), 3);
+        stackInfo.stackData.si[0].m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toDouble(), 3);
+        stackInfo.stackData.si[0].m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toDouble(), 3);
+        stackInfo.stackData.si[0].m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toDouble(), 3);
+        stackInfo.stackData.si[0].m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toDouble(), 3);
+        stackInfo.stackData.si[0].space0 = ICUtility::doubleToInt(stackMap.value("space0").toDouble(), 3);
+        stackInfo.stackData.si[0].space1 = ICUtility::doubleToInt(stackMap.value("space1").toDouble(), 3);
+        stackInfo.stackData.si[0].space2 = ICUtility::doubleToInt(stackMap.value("space2").toDouble(), 3);
+        stackInfo.stackData.si[0].count0 = stackMap.value("count0").toInt();
+        stackInfo.stackData.si[0].count1 = stackMap.value("count1").toInt();
+        stackInfo.stackData.si[0].count2 = stackMap.value("count2").toInt();
+        stackInfo.stackData.si[0].sequence = stackMap.value("sequence").toInt();
+        stackInfo.stackData.si[0].dir0 = stackMap.value("dir0").toInt();
+        stackInfo.stackData.si[0].dir1 = stackMap.value("dir1").toInt();
+        stackInfo.stackData.si[0].dir2 = stackMap.value("dir2").toInt();
+        stackInfo.stackData.si[0].type = p.value().toMap().value("type").toInt();
+        stackInfo.stackData.si[0].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
+        stackInfo.stackData.si[0].counterID = stackMap.value("counterID").toInt();
+        stackInfo.stackData.si[0].isOffsetEn = stackMap.value("isOffsetEn").toBool();
+        stackInfo.stackData.si[0].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
+        stackInfo.stackData.si[0].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
+        stackInfo.stackData.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
+        stackInfo.stackData.si[0].dataSourceID = stackMap.value("dataSourceID").toInt();
 
 
-        stackMap = p.value().toMap().value("si1").toMap();
-        stackInfo.si[1].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
-        stackInfo.si[1].m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toDouble(), 3);
-        stackInfo.si[1].m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toDouble(), 3);
-        stackInfo.si[1].m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toDouble(), 3);
-        stackInfo.si[1].m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toDouble(), 3);
-        stackInfo.si[1].m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toDouble(), 3);
-        stackInfo.si[1].space0 = ICUtility::doubleToInt(stackMap.value("space0").toDouble(), 3);
-        stackInfo.si[1].space1 = ICUtility::doubleToInt(stackMap.value("space1").toDouble(), 3);
-        stackInfo.si[1].space2 = ICUtility::doubleToInt(stackMap.value("space2").toDouble(), 3);
-        stackInfo.si[1].count0 = stackMap.value("count0").toInt();
-        stackInfo.si[1].count1 = stackMap.value("count1").toInt();
-        stackInfo.si[1].count2 = stackMap.value("count2").toInt();
-        stackInfo.si[1].sequence = stackMap.value("sequence").toInt();
-        stackInfo.si[1].dir0 = stackMap.value("dir0").toInt();
-        stackInfo.si[1].dir1 = stackMap.value("dir1").toInt();
-        stackInfo.si[1].dir2 = stackMap.value("dir2").toInt();
-        stackInfo.si[1].type = stackInfo.si[0].type;
-        stackInfo.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
-        stackInfo.si[1].counterID = stackMap.value("counterID").toInt();
-        stackInfo.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();
-        stackInfo.si[1].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
-        stackInfo.si[1].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
-        stackInfo.si[1].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
-        stackInfo.si[1].dataSourceID = stackMap.value("dataSourceID").toInt();
+        stackMap = tmp.value("si1").toMap();
+        stackInfo.stackData.si[1].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
+        stackInfo.stackData.si[1].m1pos = ICUtility::doubleToInt(stackMap.value("m1pos").toDouble(), 3);
+        stackInfo.stackData.si[1].m2pos = ICUtility::doubleToInt(stackMap.value("m2pos").toDouble(), 3);
+        stackInfo.stackData.si[1].m3pos = ICUtility::doubleToInt(stackMap.value("m3pos").toDouble(), 3);
+        stackInfo.stackData.si[1].m4pos = ICUtility::doubleToInt(stackMap.value("m4pos").toDouble(), 3);
+        stackInfo.stackData.si[1].m5pos = ICUtility::doubleToInt(stackMap.value("m5pos").toDouble(), 3);
+        stackInfo.stackData.si[1].space0 = ICUtility::doubleToInt(stackMap.value("space0").toDouble(), 3);
+        stackInfo.stackData.si[1].space1 = ICUtility::doubleToInt(stackMap.value("space1").toDouble(), 3);
+        stackInfo.stackData.si[1].space2 = ICUtility::doubleToInt(stackMap.value("space2").toDouble(), 3);
+        stackInfo.stackData.si[1].count0 = stackMap.value("count0").toInt();
+        stackInfo.stackData.si[1].count1 = stackMap.value("count1").toInt();
+        stackInfo.stackData.si[1].count2 = stackMap.value("count2").toInt();
+        stackInfo.stackData.si[1].sequence = stackMap.value("sequence").toInt();
+        stackInfo.stackData.si[1].dir0 = stackMap.value("dir0").toInt();
+        stackInfo.stackData.si[1].dir1 = stackMap.value("dir1").toInt();
+        stackInfo.stackData.si[1].dir2 = stackMap.value("dir2").toInt();
+        stackInfo.stackData.si[1].type = stackInfo.stackData.si[0].type;
+        stackInfo.stackData.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
+        stackInfo.stackData.si[1].counterID = stackMap.value("counterID").toInt();
+        stackInfo.stackData.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();
+        stackInfo.stackData.si[1].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
+        stackInfo.stackData.si[1].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
+        stackInfo.stackData.si[1].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
+        stackInfo.stackData.si[1].dataSourceID = stackMap.value("dataSourceID").toInt();
+
+        stackInfo.dsName = tmp.value("dsName").toString();
+        stackInfo.dsHostID = tmp.value("hostID").toInt();
 
         ret.insert(p.key().toInt(), stackInfo);
         ++p;

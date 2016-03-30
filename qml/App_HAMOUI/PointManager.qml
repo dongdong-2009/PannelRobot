@@ -39,20 +39,6 @@ MouseArea{
         border.color: "gray"
         color: "#A0A0F0"
 
-
-        function newPointHelper(type){
-            var pointPos = {
-                "m0":m0.configValue || 0.000,
-                "m1":m1.configValue || 0.000,
-                "m2":m2.configValue || 0.000,
-                "m3":m3.configValue || 0.000,
-                "m4":m4.configValue || 0.000,
-                "m5":m5.configValue || 0.000};
-            var pointName = text_name.configValue;
-            var point = Teach.definedPoints.addNewPoint(pointName, pointPos, type);
-            //        pointModel.append({"point":point});
-        }
-
         function onPointsCleared(){
             pointModel.clear();
         }

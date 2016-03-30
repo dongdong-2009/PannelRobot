@@ -61,6 +61,7 @@ Rectangle {
             bgColor: "yellow"
             text: "-->"
             visible: defineStack.isChecked
+            enabled: stackViewSel.currentIndex >= 0
             onButtonClicked: {
                 ++currentPage;
                 currentPage %= pageCount;
@@ -376,56 +377,38 @@ Rectangle {
                     onButtonClicked: {
                         stackType = 2;
                         pageCount = 2;
+//                        menuContainer.visible = false;
                         page1.mode = 2;
                     }
                 }
             }
 
-            Item{
+            Column{
                 id:detailPage
                 visible: false;
-                Row{
-                    id:menuContainer
-                    spacing: 6
-                    z:11
-                    ICButton{
-                        id:setIn
-                        text: qsTr("Set In")
-                        visible: page1.mode != 2
-                        onButtonClicked: {
-                            page1.motor0 = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                            page1.motor1 = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                            page1.motor2 = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                            page1.motor3 = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                            page1.motor4 = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                            page1.motor5 = panelRobotController.statusValueText("c_ro_0_32_3_920");
-                        }
-
+                spacing: 4
+                ICButton{
+                    id:setIn
+                    text: qsTr("Set In")
+                    visible: page1.mode != 2
+                    onButtonClicked: {
+                        page1.motor0 = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                        page1.motor1 = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                        page1.motor2 = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                        page1.motor3 = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                        page1.motor4 = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                        page1.motor5 = panelRobotController.statusValueText("c_ro_0_32_3_920");
                     }
-
-
-                }
-
-                Row{
-                    anchors.left: menuContainer.right
-                    anchors.leftMargin: 6
-                    spacing: 6
-                    y:menuContainer.y
-
 
                 }
 
                 StackActionEditorComponent{
-                    anchors.top: menuContainer.bottom
-                    anchors.topMargin: 4
-                    x:menuContainer.x
+                    x:setIn.x
                     id:page1
                     visible: currentPage == 1;
                 }
                 StackActionEditorComponent{
-                    anchors.top: menuContainer.bottom
-                    anchors.topMargin: 4
-                    x:menuContainer.x
+                    x:setIn.x
                     id:page2
                     visible: currentPage == 2;
                     mode: 1

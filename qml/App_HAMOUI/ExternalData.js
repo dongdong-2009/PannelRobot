@@ -99,6 +99,11 @@ function ExternalDataManager(){
     this.getDataSource = function(dsID){
         return this.dataSourceExist(dsID) ? this.dataSources[dsID] : null;
     };
+
+    this.getDataSourceHostIDByDisplayName = function(displayName){
+        var dsID = this.getDSIDFromDisplayName(displayName);
+        return this.getDataSource(dsID).getHostID();
+    }
 }
 
 var externalDataManager = new ExternalDataManager();

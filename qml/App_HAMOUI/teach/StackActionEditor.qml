@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
+import "../ExternalData.js" as ESData
 
 Rectangle {
     property int stackType: 0
@@ -127,6 +128,7 @@ Rectangle {
             page1.offsetX = stackInfo.si0.offsetX;
             page1.offsetY = stackInfo.si0.offsetY;
             page1.offsetZ = stackInfo.si0.offsetZ;
+            page1.setDataSourceName(stackInfo.si0.dataSourceName)
 
 
             page2.motor0 = stackInfo.si1.m0pos;
@@ -147,12 +149,19 @@ Rectangle {
             page2.dir2 = stackInfo.si1.dir2;
             page2.doesBindingCounter = stackInfo.si1.doesBindingCounter;
             page2.setCounterID(stackInfo.si1.counterID);
-            page2.isOffsetEn = stackInfo.si0.isOffsetEn;
-            page2.offsetX = stackInfo.si0.offsetX;
-            page2.offsetY = stackInfo.si0.offsetY;
-            page2.offsetZ = stackInfo.si0.offsetZ;
+            page2.isOffsetEn = stackInfo.si1.isOffsetEn;
+            page2.offsetX = stackInfo.si1.offsetX;
+            page2.offsetY = stackInfo.si1.offsetY;
+            page2.offsetZ = stackInfo.si1.offsetZ;
+            page2.setDataSourceName(stackInfo.si1.dataSourceName)
 
             stackType = stackInfo.type;
+
+            if(stackType != 2){
+                page1.mode = 0;
+            }else{
+                page1.mode = 2;
+            }
         }
     }
 
@@ -182,7 +191,9 @@ Rectangle {
                                           page1.isOffsetEn,
                                           page1.offsetX,
                                           page1.offsetY,
-                                          page1.offsetZ);
+                                          page1.offsetZ,
+                                          page1.dataSourceName,
+                                          ESData.externalDataManager.getDataSourceHostIDByDisplayName(page1.dataSourceName));
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -204,7 +215,9 @@ Rectangle {
                                           page2.isOffsetEn,
                                           page2.offsetX,
                                           page2.offsetY,
-                                          page2.offsetZ);
+                                          page2.offsetZ,
+                                          page1.dataSourceName,
+                                          ESData.externalDataManager.getDataSourceHostIDByDisplayName(page1.dataSourceName));
             var stackInfo = new Teach.StackInfo(si0, si1, stackType, name);
             var sid;
             if(!exist){
@@ -336,6 +349,7 @@ Rectangle {
                     onButtonClicked: {
                         stackType = 0;
                         pageCount = 2;
+                        page1.mode = 0;
                     }
                 }
                 ICButton{
@@ -348,15 +362,22 @@ Rectangle {
                     onButtonClicked: {
                         stackType = 1;
                         pageCount = 3;
+                        page1.mode = 0;
 
                     }
                 }
                 ICButton{
                     id:type3
-                    text: qsTr("Type3")
+                    text: qsTr("Data Source")
                     height: parent.height
                     width: parent.height
-                    visible: false
+                    bgColor: stackType == 2 ? "lime" : "white"
+
+                    onButtonClicked: {
+                        stackType = 2;
+                        pageCount = 2;
+                        page1.mode = 2;
+                    }
                 }
             }
 
@@ -370,6 +391,7 @@ Rectangle {
                     ICButton{
                         id:setIn
                         text: qsTr("Set In")
+                        visible: page1.mode != 2
                         onButtonClicked: {
                             page1.motor0 = panelRobotController.statusValueText("c_ro_0_32_3_900");
                             page1.motor1 = panelRobotController.statusValueText("c_ro_0_32_3_904");
@@ -443,6 +465,9 @@ Rectangle {
     Component.onCompleted: {
         updateStacksSel();
         panelRobotController.moldChanged.connect(updateStacksSel);
+        page1.dataSource = ESData.externalDataManager.dataSourceNameList();
+        page2.dataSource = page1.dataSource;
+
 
     }
 }

@@ -228,7 +228,7 @@ private:
 #ifdef NEW_PLAT
     static bool InitConfigHelper(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> > &vp);
 #endif
-    static void SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data);
+    static void SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data, int fc = FunctionCode_WriteTeach);
     void AddRefreshStatusCommand_();
     int currentStatusGroup_;
     int currentStatusGroupLength_;

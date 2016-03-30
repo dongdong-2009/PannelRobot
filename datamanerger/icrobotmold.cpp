@@ -332,6 +332,10 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
         item.append(0);
     }
+    if(si.si[0].type == 2)
+    {
+        item[0] = (si.si[0].dataSourceID);
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
 
@@ -1380,6 +1384,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[0].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
         stackInfo.si[0].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
         stackInfo.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
+        stackInfo.si[0].dataSourceID = stackMap.value("dataSourceID").toInt();
 
 
         stackMap = p.value().toMap().value("si1").toMap();
@@ -1406,6 +1411,8 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.si[1].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
         stackInfo.si[1].offsetY = ICUtility::doubleToInt(stackMap.value("offsetY").toDouble(), 3);
         stackInfo.si[1].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
+        stackInfo.si[1].dataSourceID = stackMap.value("dataSourceID").toInt();
+
         ret.insert(p.key().toInt(), stackInfo);
         ++p;
     }

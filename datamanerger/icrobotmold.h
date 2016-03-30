@@ -36,6 +36,7 @@ struct SI{
     quint32 offsetX;
     quint32 offsetY;
     quint32 offsetZ;
+    quint32 dataSourceID;
 };
 
 union StackInfo{

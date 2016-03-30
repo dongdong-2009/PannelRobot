@@ -32,10 +32,24 @@ Item {
     property alias offsetX: x_offset.configValue
     property alias offsetY: y_offset.configValue
     property alias offsetZ: z_offset.configValue
+    property alias dataSource: dataSourceSel.items
+
+    property string dataSourceName: dataSourceSel.configText()
 
     function realDoesBindingCounter(){
 
         return counterSel.configValue != 0;
+    }
+
+    function setDataSourceName(dsName){
+        var items = dataSourceSel.items;
+        for(var i = 0; i < items.length; ++i){
+            if(items[i] == dsName){
+                dataSourceSel.configValue = i;
+                return;
+            }
+        }
+        dataSourceSel.configValue = -1;
     }
 
 
@@ -67,8 +81,9 @@ Item {
         text: qsTr("Offset En")
         x:200
         y:-32
-
+        visible: mode != 2
     }
+
 
     Column{
         id:content
@@ -76,8 +91,17 @@ Item {
         property int posWidth: 80
         property int spaceWidth: 70
         property int counteWidth: 60
+        ICComboBoxConfigEdit{
+            id:dataSourceSel
+            configName: qsTr("Data Source")
+            inputWidth: 500
+            visible: mode == 2
+            items: dataSource
+            z:101
+        }
         Row{
             spacing: 4
+            visible: !dataSourceSel.visible
             Grid{
                 visible: mode == 0
                 //                id:posContainer
@@ -202,6 +226,7 @@ Item {
         Row{
             z:10
             spacing: 4
+            visible: !dataSourceSel.visible
             ICComboBoxConfigEdit{
                 id:dir0
                 configName: qsTr("Dir0")
@@ -238,7 +263,7 @@ Item {
 
         ICComboBoxConfigEdit{
             id:counterSel
-            popupMode: 1
+            popupMode: dataSourceSel.visible ? 0 : 1
             configName: qsTr("Counter")
             inputWidth: 300
             z:100

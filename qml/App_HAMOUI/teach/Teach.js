@@ -1386,6 +1386,10 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_FINE_ZERO){
         ret = [{"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"}];
+    }else if(actionObject.action === actions.F_CMD_VISION_CATCH){
+        ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
+    }else if(actionObject.action === actions.F_CMD_WATIT_VISION_DATA){
+        ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }
 
     ret.push({"item":"customName"});

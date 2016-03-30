@@ -25,8 +25,7 @@ Item {
         }else if(waitDataEn.isChecked){
             ret.push(Teach.generateWaitVisionDataAction(waitTime.configValue,
                                                         dataSource.configText(),
-                                                        ESData.externalDataManager.getDataSource(
-                                                            ESData.externalDataManager.getDSIDFromDisplayName(dataSource.configText()))));
+                                                        ESData.externalDataManager.getDataSourceHostIDByDisplayName(dataSource.configText())));
         }
 
         return ret;

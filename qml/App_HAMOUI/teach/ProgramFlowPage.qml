@@ -399,7 +399,7 @@ Rectangle {
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
-            saveManualProgramByName(editing.text(editing.currentIndex));
+            errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
             //            var program = modelToProgramHelper(PData.kManualProgramIndex);
             //            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
             //            if(errInfo.length == 0)
@@ -608,8 +608,10 @@ Rectangle {
                         qsTr("Sub-8")
                     ]
                     function resetProgramItems(isAutoMode){
-                        if(isAutoMode)
+                        if(isAutoMode){
+                            currentIndex = 0;
                             items = defaultPrograms;
+                        }
                         else
                             items = defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
                     }

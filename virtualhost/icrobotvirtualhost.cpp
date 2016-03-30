@@ -76,14 +76,14 @@ static QVector<QVector<quint32> > formatProgramFrame(const QVector<QVector<quint
 static QVector<QVector<quint32> > formatContinuousDataFrame(const QVector<quint32> & data)
 {
     QVector<QVector<quint32> > ret;
-    int splitCount = data.size() / 64;
-    int left = data.size() % 64;
+    int splitCount = data.size() / 30;
+    int left = data.size() % 30;
     int i = 0;
     for(i = 0; i < splitCount; ++i)
     {
-        ret.append(data.mid(i * 64, 64));
+        ret.append(data.mid(i * 30, 30));
     }
-    ret.append(data.mid(i * 64, left));
+    ret.append(data.mid(i * 30, left));
     return ret;
 }
 

@@ -73,6 +73,19 @@ static QVector<QVector<quint32> > formatProgramFrame(const QVector<QVector<quint
     ret.append(oneLine);
     return ret;
 }
+static QVector<QVector<quint32> > formatContinuousDataFrame(const QVector<quint32> & data)
+{
+    QVector<QVector<quint32> > ret;
+    int splitCount = data.size() / 64;
+    int left = data.size() % 64;
+    int i = 0;
+    for(i = 0; i < splitCount; ++i)
+    {
+        ret.append(data.mid(i * 64, 64));
+    }
+    ret.append(data.mid(i * 64, left));
+    return ret;
+}
 
 void ICRobotVirtualhost::SendContinuousDataHelper(ICVirtualHostPtr hostPtr, int startAddr, const QVector<quint32> &data)
 {
@@ -207,6 +220,18 @@ bool ICRobotVirtualhost::SendMoldCountersDef(ICVirtualHostPtr hostPtr, const QVe
     }
     return true;
 
+}
+
+bool ICRobotVirtualhost::SendExternalDatas(ICVirtualHostPtr hostPtr, int externalID, const QVector<quint32> &data)
+{
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_83, 0x80000000 | ((externalID) << 16));
+    QVector<QVector<quint32> > formattedData = formatContinuousDataFrame(data);
+    for(int i = 0; i < formattedData.size(); ++i)
+    {
+        AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_83, formattedData.at(i).size() | ((externalID) << 16));
+        SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
+    }
+    return true;
 }
 
 bool ICRobotVirtualhost::FixProgram(ICVirtualHostPtr hostPtr, int which, int row, int step, const QVector<quint32> &data)

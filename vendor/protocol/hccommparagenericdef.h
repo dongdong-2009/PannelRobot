@@ -62,8 +62,10 @@ typedef enum _ICAddr
     ICAddr_System_Retain_47= 47,//<  // 自定义轴动作8 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_48= 48,//<  // 自定义轴动作9 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_49= 49,//<  // 自定义轴动作10 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
-    ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 高8位：程序ID；低24位：程序长度
+    ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 31：清除；30～24位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
+    ICAddr_System_Retain_82 = 82,//< 堆叠点参数数据长度 最高位：清除；高15位：程序ID；低16位：程序长度
+    ICAddr_System_Retain_83 = 83,//< 堆叠点参数数据初始化
     ICAddr_System_Retain_End = 99,
     /***************************************************************************************/
     ICAddr_Adapter_Para0, //<类型:系统;名字:电机1;结构:Axis_Config;地址:axis_cfg_addr;

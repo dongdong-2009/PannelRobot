@@ -641,10 +641,10 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
         emit machineConfigChanged();
     }
-//    if(!isAutoMode() && (addr >=  ICAddr_Read_Status0))
-//    {
+    //    if(!isAutoMode() && (addr >=  ICAddr_Read_Status0))
+    //    {
 
-//    }
+    //    }
 }
 
 void PanelRobotController::OnkeyCheckTimeOut()
@@ -1134,39 +1134,39 @@ QString PanelRobotController::checkProgram(const QString &program, const QString
 
 QImage ImageToGray( QImage image )
 {
-//    int height = image.height();
-//    int width = image.width();
+    //    int height = image.height();
+    //    int width = image.width();
     QImage ret = image.convertToFormat(QImage::Format_Indexed8);
     ret.setColorCount(256);
     for(int i = 0; i < 256; i++)
     {
         ret.setColor(i, qRgba(i, i, i, qAlpha(ret.color(i))));
     }
-//    switch(image.format())
-//    {
-//    case QImage::Format_Indexed8:
-//        for(int i = 0; i < height; i ++)
-//        {
-//            const uchar *pSrc = (uchar *)image.constScanLine(i);
-//            uchar *pDest = (uchar *)ret.scanLine(i);
-//            memcpy(pDest, pSrc, width);
-//        }
-//        break;
-//    case QImage::Format_RGB32:
-//    case QImage::Format_ARGB32:
-//    case QImage::Format_ARGB32_Premultiplied:
-//        for(int i = 0; i < height; i ++)
-//        {
-//            const QRgb *pSrc = (QRgb *)image.constScanLine(i);
-//            uchar *pDest = (uchar *)ret.scanLine(i);
+    //    switch(image.format())
+    //    {
+    //    case QImage::Format_Indexed8:
+    //        for(int i = 0; i < height; i ++)
+    //        {
+    //            const uchar *pSrc = (uchar *)image.constScanLine(i);
+    //            uchar *pDest = (uchar *)ret.scanLine(i);
+    //            memcpy(pDest, pSrc, width);
+    //        }
+    //        break;
+    //    case QImage::Format_RGB32:
+    //    case QImage::Format_ARGB32:
+    //    case QImage::Format_ARGB32_Premultiplied:
+    //        for(int i = 0; i < height; i ++)
+    //        {
+    //            const QRgb *pSrc = (QRgb *)image.constScanLine(i);
+    //            uchar *pDest = (uchar *)ret.scanLine(i);
 
-//            for( int j = 0; j < width; j ++)
-//            {
-//                pDest[j] = qGray(pSrc[j]);
-//            }
-//        }
-//        break;
-//    }
+    //            for( int j = 0; j < width; j ++)
+    //            {
+    //                pDest[j] = qGray(pSrc[j]);
+    //            }
+    //        }
+    //        break;
+    //    }
     return ret;
 }
 
@@ -1186,4 +1186,29 @@ QString PanelRobotController::disableImage(const QString &enabledImage)
     p = ImageToGray(p);
     p.save(ret);
     return ret;
+}
+
+void PanelRobotController::sendExternalDatas(const QString& dsData)
+{
+    QJson::Parser parser;
+    bool ok;
+    qDebug()<<"sendExternalDatas"<<dsData;
+    QVariantMap result = parser.parse (dsData.toLatin1(), &ok).toMap();
+    if(!ok) return;
+    int hostID = result.value("hostID").toInt();
+    QVariantList ds= result.value("dsData").toList();
+    QVector<quint32> toSendData;
+    QVariantMap posData;
+    for(int i = 0; i < ds.size(); ++i)
+    {
+        posData = ds.at(i).toMap();
+        toSendData<<ICUtility::doubleToInt(posData.value("m0").toDouble(),3)
+                 <<ICUtility::doubleToInt(posData.value("m1").toDouble(),3)
+                <<ICUtility::doubleToInt(posData.value("m2").toDouble(),3)
+               <<ICUtility::doubleToInt(posData.value("m3").toDouble(),3)
+              <<ICUtility::doubleToInt(posData.value("m4").toDouble(),3)
+             <<ICUtility::doubleToInt(posData.value("m5").toDouble(),3);
+    }
+//    qDebug()<<"sendExternalDatas"<<hostID<<toSendData;
+    ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);
 }

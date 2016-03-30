@@ -279,6 +279,8 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionCodeValid(int fc) const
             (fc == FunctionCode_WriteDiffAddr) ||
             (fc == FunctionCode_WriteTeach) ||
             (fc == FunctionCode_EditTeach) ||
+            (fc == FunctionCode_WriteStack) ||
+            (fc == FunctionCode_EditStack) ||
             (fc == FunctionCode_Err);
 #else
     return (fc == FC_HC_QUERY_STATUS) ||
@@ -298,6 +300,8 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionAddrValid(int addr, int
         return (addr > ICAddr_BeginSection);
     case FunctionCode_WriteTeach:
     case FunctionCode_EditTeach:
+    case FunctionCode_EditStack:
+    case FunctionCode_WriteStack:
         return true;
     case FunctionCode_Err:
         return addr == ICAddr_ErrAddr;

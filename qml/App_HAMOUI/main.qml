@@ -521,8 +521,9 @@ Rectangle {
     }
 
     function onETH0DataIn(data){
-//        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
+        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
         var posData = ESData.externalDataManager.parse(data);
+        panelRobotController.sendExternalDatas(JSON.stringify(posData));
 //        for(var i = 0; i < posData.length; ++i){
 //            console.log(ESData.externalDataToString(posData[i]));
 //        }

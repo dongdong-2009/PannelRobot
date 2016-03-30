@@ -1,17 +1,17 @@
 .pragma library
 
 function externalDataToString(data){
-    return "motor0:" + data.motor0 + " motor1:" + data.motor1 + " motor2:" + data.motor2 +
-            " motor3:" + data.motor3 + " motor4:" + data.motor4 + " motor5:" + data.motor5;
+    return "m0:" + data.m0 + " m1:" + data.m1 + " m2:" + data.m2 +
+            " m3:" + data.m3 + " m4:" + data.m4 + " m5:" + data.m5;
 }
 
 function ExternalDataPosFormat(){
-    this.motor0 = 0;
-    this.motor1 = 0;
-    this.motor2 = 0;
-    this.motor3 = 0;
-    this.motor4 = 0;
-    this.motor5 = 0;
+    this.m0 = 0;
+    this.m1 = 0;
+    this.m2 = 0;
+    this.m3 = 0;
+    this.m4 = 0;
+    this.m5 = 0;
 }
 
 var DataSource = {
@@ -29,7 +29,8 @@ var CamDataSource = {
     createNew : function(name, hostID){
         var camDS = DataSource.createNew(name, hostID);
         camDS.parse = function(dsData){
-            var ret = [];
+            var ret = {"hostID":hostID};
+            var retData = [];
             if(!(dsData instanceof Array)){
                 return ret;
             }
@@ -44,16 +45,17 @@ var CamDataSource = {
                         pos = posDatas[j];
                         var toAdd = new ExternalDataPosFormat();
                         if(pos.hasOwnProperty("X"))
-                            toAdd.motor0 = pos.X;
+                            toAdd.m0 = pos.X;
                         if(pos.hasOwnProperty("Y"))
-                            toAdd.motor1 = pos.Y;
+                            toAdd.m1 = pos.Y;
                         if(pos.hasOwnProperty("Angel"))
-                            toAdd.motor5 = pos.Angel;
-                        ret.push(toAdd);
+                            toAdd.m5 = pos.Angel;
+                        retData.push(toAdd);
 
                     }
                 }
             }
+            ret.dsData = retData;
             return ret;
         };
         return camDS;

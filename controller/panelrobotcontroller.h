@@ -691,6 +691,7 @@ public:
         eth0DataMonitor_->SetFilter(QRegExp(re));
     }
 
+    Q_INVOKABLE void sendExternalDatas(const QString& dsData);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

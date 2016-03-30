@@ -1764,7 +1764,8 @@ Rectangle {
             }else if((step.action === Teach.actions.ACT_FLAG) ||
                      Teach.isJumpAction(step.action)){
                 at = Teach.actionTypes.kAT_Flag;
-            }else if(step.action === Teach.actions.F_CMD_IO_INPUT){
+            }else if(step.action === Teach.actions.F_CMD_IO_INPUT
+                     || step.action === Teach.actions.F_CMD_WATIT_VISION_DATA){
                 at = Teach.actionTypes.kAT_Wait;
             }else
                 at = Teach.actionTypes.kAT_Normal;
@@ -1829,7 +1830,8 @@ Rectangle {
             }else if(Teach.isJumpAction(step.action)){
                 jumpLines.push(p);
                 at = Teach.actionTypes.kAT_Flag;
-            }else if(step.action === Teach.actions.F_CMD_IO_INPUT){
+            }else if(step.action === Teach.actions.F_CMD_IO_INPUT ||
+                     step.action === Teach.actions.F_CMD_WATIT_VISION_DATA){
                 at = Teach.actionTypes.kAT_Wait;
             }
             else

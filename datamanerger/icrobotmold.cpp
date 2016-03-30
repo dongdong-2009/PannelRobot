@@ -216,6 +216,7 @@ int WaitVisionDataActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(0);
     item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
 
 }
 

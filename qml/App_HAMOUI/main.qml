@@ -488,6 +488,18 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
+//                    ]
+//                }
+//            ]
+//        };
+//        onETH0DataIn(JSON.stringify(toTest));
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
@@ -500,7 +512,7 @@ Rectangle {
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
         if(isAuto) {
             menuProgram.setChecked(true);
-//            recordPageInBtn.clicked();
+            //            recordPageInBtn.clicked();
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(knobStatus === Keymap.KNOB_MANUAL){
@@ -521,12 +533,41 @@ Rectangle {
     }
 
     function onETH0DataIn(data){
-//        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
+        //        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
+        var basePoint = {"m0":57.820, "m1":475.590, "m2":0, "m3":0, "m4":0, "m5":0};
+        var testPoints = [
+                    {"m0":37.248, "m1":333.757, "m2":0, "m3":0, "m4":0, "m5":-20.811},
+                    {"m0":-95.606, "m1":403.703, "m2":0, "m3":0, "m4":0, "m5":-61.511},
+                    {"m0":-109.961, "m1":548.789, "m2":0, "m3":0, "m4":0, "m5":-110.425}
+/*                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0}*/]
+        console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
+        console.log("cam data:", JSON.stringify(posData));
+        var diffData = posData.dsData[0];
+//        diffData.m0 *= 1000;
+//        diffData.m1 *= 1000;
+
+        for(var i = 0; i < testPoints.length; ++i){
+//            testPoints[i].m0 = (testPoints[i].m0)* Math.cos(diffData.m5)
+//            testPoints[i].m0 += diffData.m0;
+//            testPoints[i].m1 += diffData.m1;
+            testPoints[i].m0= (testPoints[i].m0)* Math.cos(diffData.m5) + (testPoints[i].m1) * Math.sin(diffData.m5) + (basePoint.m0 - diffData.m0);
+            testPoints[i].m1= (testPoints[i].m1)* Math.cos(diffData.m5) - (testPoints[i].m0) * Math.sin(diffData.m5) + (basePoint.m1 - diffData.m1);
+        }
+
+        posData.dsData = testPoints;
+
         panelRobotController.sendExternalDatas(JSON.stringify(posData));
-//        for(var i = 0; i < posData.length; ++i){
-//            console.log(ESData.externalDataToString(posData[i]));
-//        }
     }
 
     Component.onCompleted: {
@@ -552,7 +593,7 @@ Rectangle {
     focus: true
     Keys.onPressed: {
         var key = event.key;
-//        console.log("Main key press exec", key);
+        //        console.log("Main key press exec", key);
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, true);
         }else if(Keymap.isCommandKeyType(key)){
@@ -563,7 +604,7 @@ Rectangle {
                 //                ShareData.knobStatus = key;
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
-//            console.log(Keymap.getKeyMappedAction(key));
+            //            console.log(Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);
@@ -573,7 +614,7 @@ Rectangle {
 
     }
     Keys.onReleased: {
-//        console.log("Main key release exec");
+        //        console.log("Main key release exec");
         var key = event.key;
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, false);
@@ -601,7 +642,7 @@ Rectangle {
                         var speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
                         spd = parseFloat(speed);
                         var dir = pressedKeys[i] === Keymap.KEY_Up ? 1 : -1;
-//                        spd = Keymap.endSpeed(spd, dir)
+                        //                        spd = Keymap.endSpeed(spd, dir)
                         spd = Keymap.endSpeedCalcByTime(spd, dir);
                         speed = spd.toFixed(1);
                         ShareData.GlobalStatusCenter.setGlobalSpeed(speed);

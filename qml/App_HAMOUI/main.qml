@@ -499,7 +499,18 @@ Rectangle {
 //                }
 //            ]
 //        };
-//        onETH0DataIn(JSON.stringify(toTest));
+                var toTest = {
+                    "dsID":"www.geforcevision.com.cam",
+                    "dsData":[
+                        {
+                            "camID":"0",
+                            "data":[
+                                {"ModelID":"0","X":67.733,"Y":463.540,"Angel":-39.625,"ExtValue_0":null,"ExtValue_1":null}
+                            ]
+                        }
+                    ]
+                };
+        onETH0DataIn(JSON.stringify(toTest));
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
@@ -554,6 +565,7 @@ Rectangle {
         var posData = ESData.externalDataManager.parse(data);
         console.log("cam data:", JSON.stringify(posData));
         var diffData = posData.dsData[0];
+        diffData.m5 *= 0.0174533;
 //        diffData.m0 *= 1000;
 //        diffData.m1 *= 1000;
 
@@ -561,8 +573,8 @@ Rectangle {
 //            testPoints[i].m0 = (testPoints[i].m0)* Math.cos(diffData.m5)
 //            testPoints[i].m0 += diffData.m0;
 //            testPoints[i].m1 += diffData.m1;
-            testPoints[i].m0= (testPoints[i].m0)* Math.cos(diffData.m5) + (testPoints[i].m1) * Math.sin(diffData.m5) + (basePoint.m0 - diffData.m0);
-            testPoints[i].m1= (testPoints[i].m1)* Math.cos(diffData.m5) - (testPoints[i].m0) * Math.sin(diffData.m5) + (basePoint.m1 - diffData.m1);
+            testPoints[i].m0= (testPoints[i].m0)* Math.cos(diffData.m5) /*+ (testPoints[i].m1) * Math.sin(diffData.m5)*/ + (basePoint.m0 - diffData.m0);
+            testPoints[i].m1= /*(testPoints[i].m1)* Math.cos(diffData.m5) -*/ (testPoints[i].m0) * Math.sin(diffData.m5) + (basePoint.m1 - diffData.m1);
         }
 
         posData.dsData = testPoints;

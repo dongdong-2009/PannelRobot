@@ -70,6 +70,7 @@ MouseArea{
             }
         }
         Column{
+            id:leftContainer
             spacing: 6
             x:10
             y:10
@@ -139,6 +140,16 @@ MouseArea{
                     newPointHelper();
                 }
             }
+
+        }
+
+        ICButton{
+            id:saveBtn
+            text: qsTr("Save")
+            width: button_setWorldPos.width
+            height: button_setWorldPos.height
+            anchors.bottom: pointViewContainer.bottom
+            anchors.left: leftContainer.left
         }
 
         Rectangle  {

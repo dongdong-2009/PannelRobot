@@ -23,7 +23,6 @@ Rectangle {
         panelRobotController.setBrightness(panelRobotController.getCustomSettings("Brightness", 8));
     }
 
-
     TopHeader{
         id:mainHeader
         z:4

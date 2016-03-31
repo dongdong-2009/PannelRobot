@@ -105,8 +105,9 @@ Rectangle {
             if(currentIndex < 0 ) return;
             var stackInfo;
 
-            stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[currentIndex])));
-
+            var stackID = parseInt(Utils.getValueFromBrackets(items[currentIndex]));
+            stackInfo = Teach.getStackInfoFromID(stackID);
+            ESData.externalDataManager.registerDataSource(stackID, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
             page1.motor2 = stackInfo.si0.m2pos;
@@ -170,7 +171,17 @@ Rectangle {
     Item{
         id:topContainer
 
-        function saveStack(id, name, exist){
+        function saveStack(id, name, exist, posData){
+            var selectedDS;
+            var dsID;
+            if(page1.isCustomDataSource){
+                selectedDS = "custompoint[" + id + "]";
+                dsID = id;
+            }
+            else{
+                selectedDS = page1.dataSourceName;
+                dsID = ESData.externalDataManager.getDataSourceHostIDByDisplayName(page1.dataSourceName);
+            }
             var si0 = new Teach.StackItem(page1.motor0 || 0.000,
                                           page1.motor1 || 0.000,
                                           page1.motor2 || 0.000,
@@ -194,7 +205,8 @@ Rectangle {
                                           page1.offsetY,
                                           page1.offsetZ,
                                           page1.dataSourceName,
-                                          ESData.externalDataManager.getDataSourceHostIDByDisplayName(page1.dataSourceName));
+                                          selectedDS,
+                                          dsID);
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -217,9 +229,9 @@ Rectangle {
                                           page2.offsetX,
                                           page2.offsetY,
                                           page2.offsetZ,
-                                          page1.dataSourceName,
-                                          ESData.externalDataManager.getDataSourceHostIDByDisplayName(page1.dataSourceName));
-            var stackInfo = new Teach.StackInfo(si0, si1, stackType, name);
+                                          selectedDS,
+                                          dsID);
+            var stackInfo = new Teach.StackInfo(si0, si1, stackType, name, "custompoint[" + id + "]", id, posData || []);
             var sid;
             if(!exist){
                 sid = Teach.appendStackInfo(stackInfo);
@@ -407,7 +419,12 @@ Rectangle {
                     visible: page1.isCustomDataSource && page1.mode == 2
                     function onEditConfirm(accepted, points){
                         customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
-                        console.log(JSON.stringify(points), accepted);
+                        if(accepted){
+                            if(stackViewSel.currentIndex < 0) return;
+                            var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                            var sI = Teach.getStackInfoFromID(id);
+                            topContainer.saveStack(id,sI.descr, true, "custompoint[" + id + "]", id);
+                        }
                     }
 
                     onButtonClicked: {

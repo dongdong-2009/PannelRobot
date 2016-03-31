@@ -318,11 +318,14 @@ function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
     this.dataSourceID = dataSourceID || -1;
 }
 
-function StackInfo(si0, si1, type, descr){
+function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
     this.si0 = si0;
     this.si1 = si1;
     this.type = type || 0;
     this.descr = descr;
+    this.dsName = dsName || "";
+    this.dsHostID = dsHostID || -1;
+    this.posData = [];
 }
 
 

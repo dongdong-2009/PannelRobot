@@ -62,6 +62,16 @@ var CamDataSource = {
     }
 }
 
+var CustomDataSource = {
+    createNew : function(name, hostID){
+        var customDS = DataSource.createNew(name, hostID);
+        customDS.parse = function(dsData){
+
+        };
+        return customDS;
+    }
+}
+
 function ExternalDataManager(){
     this.dataSources = {};
     this.dataSourceExist = function(dsID){

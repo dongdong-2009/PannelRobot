@@ -34,6 +34,8 @@ Item {
     property alias offsetZ: z_offset.configValue
     property variant dataSource: []
 
+    property bool isCustomDataSource: dataSourceSel.configValue == 0
+
     property string dataSourceName: dataSourceSel.configText()
 
     function realDoesBindingCounter(){
@@ -102,15 +104,6 @@ Item {
                 items: dataSource
                 z:101
             }
-            ICButton{
-                id:editPos
-                text: qsTr("Edit Pos")
-                visible: dataSourceSel.configValue == 0
-                onButtonClicked: {
-                    customPointEditor.visible = true
-                }
-            }
-
         }
         Row{
             spacing: 4

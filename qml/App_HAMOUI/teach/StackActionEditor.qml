@@ -401,6 +401,20 @@ Rectangle {
                     }
 
                 }
+                ICButton{
+                    id:editPos
+                    text: qsTr("Edit Pos")
+                    visible: page1.isCustomDataSource && page1.mode == 2
+                    function onEditConfirm(accepted, points){
+                        customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
+                        console.log(JSON.stringify(points), accepted);
+                    }
+
+                    onButtonClicked: {
+                        customPointEditor.visible = true;
+                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
+                    }
+                }
 
                 StackActionEditorComponent{
                     x:setIn.x

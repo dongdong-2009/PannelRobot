@@ -20,6 +20,8 @@ MouseArea{
         pointModel.append({"pointName":pointName, "pointPos":pointPos});
     }
 
+    signal editConfirm(bool accept, variant points)
+
 
     Rectangle {
         id:container
@@ -36,6 +38,7 @@ MouseArea{
             anchors.right: parent.right
             onButtonClicked: {
                 instance.visible = false
+                editConfirm(false, []);
             }
         }
         Row{
@@ -150,6 +153,15 @@ MouseArea{
             height: button_setWorldPos.height
             anchors.bottom: pointViewContainer.bottom
             anchors.left: leftContainer.left
+            onButtonClicked: {
+                var points = [];
+                var p;
+                for(var i = 0; i < pointModel.count; ++i){
+                    p = pointModel.get(i);
+                    points.push({"pointName":p.pointName, "pointPos":p.pointPos});
+                }
+                editConfirm(true, points);
+            }
         }
 
         Rectangle  {

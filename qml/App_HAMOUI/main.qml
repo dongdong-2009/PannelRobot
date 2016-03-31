@@ -529,7 +529,7 @@ Rectangle {
     }
 
     function onETH0DataIn(data){
-        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
+//        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
         var posData = ESData.externalDataManager.parse(data);
         panelRobotController.sendExternalDatas(JSON.stringify(posData));
 //        for(var i = 0; i < posData.length; ++i){
@@ -553,6 +553,7 @@ Rectangle {
         mainHeader.setRecordItemEnabled(false);
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
+
         console.log("main load finished!")
     }
 

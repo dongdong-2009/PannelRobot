@@ -1209,6 +1209,6 @@ void PanelRobotController::sendExternalDatas(const QString& dsData)
               <<ICUtility::doubleToInt(posData.value("m4").toDouble(),3)
              <<ICUtility::doubleToInt(posData.value("m5").toDouble(),3);
     }
-//    qDebug()<<"sendExternalDatas"<<hostID<<toSendData;
-    ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);
+    if(ds.size() != 0)
+        ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);
 }

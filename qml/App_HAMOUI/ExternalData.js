@@ -50,8 +50,8 @@ var CamDataSource = {
                             toAdd.m1 = pos.Y;
                         if(pos.hasOwnProperty("Angel"))
                             toAdd.m5 = pos.Angel;
-                        retData.push(toAdd);
-
+                        if(pos.X != null && pos.Y != null && pos.Angel != null)
+                            retData.push(toAdd);
                     }
                 }
             }

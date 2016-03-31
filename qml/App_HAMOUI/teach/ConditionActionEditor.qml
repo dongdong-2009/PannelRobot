@@ -371,7 +371,7 @@ Item {
                     id: flag
                     configName: qsTr("Flag")
                     popupMode: 1
-                    inputWidth: 300
+                    inputWidth: 250
 
                     onVisibleChanged: {
                         if(visible){

@@ -499,18 +499,18 @@ Rectangle {
 //                }
 //            ]
 //        };
-                var toTest = {
-                    "dsID":"www.geforcevision.com.cam",
-                    "dsData":[
-                        {
-                            "camID":"0",
-                            "data":[
-                                {"ModelID":"0","X":67.733,"Y":463.540,"Angel":-39.625,"ExtValue_0":null,"ExtValue_1":null}
-                            ]
-                        }
-                    ]
-                };
-        onETH0DataIn(JSON.stringify(toTest));
+//                var toTest = {
+//                    "dsID":"www.geforcevision.com.cam",
+//                    "dsData":[
+//                        {
+//                            "camID":"0",
+//                            "data":[
+//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
+//                            ]
+//                        }
+//                    ]
+//                };
+//        onETH0DataIn(JSON.stringify(toTest));
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
@@ -545,12 +545,12 @@ Rectangle {
 
     function onETH0DataIn(data){
         //        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
-        var basePoint = {"m0":57.820, "m1":475.590, "m2":0, "m3":0, "m4":0, "m5":0};
+        var basePoint = {"m0":85.627, "m1":599.019, "m2":0, "m3":0, "m4":0, "m5":0};
         var testPoints = [
-                    {"m0":37.248, "m1":333.757, "m2":0, "m3":0, "m4":0, "m5":-20.811},
-                    {"m0":-95.606, "m1":403.703, "m2":0, "m3":0, "m4":0, "m5":-61.511},
-                    {"m0":-109.961, "m1":548.789, "m2":0, "m3":0, "m4":0, "m5":-110.425}
-/*                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":-31.647, "m1":490.700, "m2":0, "m3":0, "m4":0, "m5":0},
+                   {"m0":77.354, "m1":374.612, "m2":0, "m3":0, "m4":0, "m5":0},
+                    {"m0":194.392, "m1":484.078, "m2":0, "m3":0, "m4":0, "m5":0}
+/*                     {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
                     {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
                     {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
                     {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
@@ -565,16 +565,19 @@ Rectangle {
         var posData = ESData.externalDataManager.parse(data);
         console.log("cam data:", JSON.stringify(posData));
         var diffData = posData.dsData[0];
-        diffData.m5 *= 0.0174533;
-//        diffData.m0 *= 1000;
-//        diffData.m1 *= 1000;
+        var diffAngle = diffData.m5;
+        diffData.m5 *= Math.PI / 180;
+        var xEnd, yEnd;
 
         for(var i = 0; i < testPoints.length; ++i){
 //            testPoints[i].m0 = (testPoints[i].m0)* Math.cos(diffData.m5)
-//            testPoints[i].m0 += diffData.m0;
-//            testPoints[i].m1 += diffData.m1;
-            testPoints[i].m0= (testPoints[i].m0)* Math.cos(diffData.m5) /*+ (testPoints[i].m1) * Math.sin(diffData.m5)*/ + (basePoint.m0 - diffData.m0);
-            testPoints[i].m1= /*(testPoints[i].m1)* Math.cos(diffData.m5) -*/ (testPoints[i].m0) * Math.sin(diffData.m5) + (basePoint.m1 - diffData.m1);
+//            testPoints[i].m0 += (diffData.m0 - basePoint.m0);
+//            testPoints[i].m1 += (diffData.m1 - basePoint.m1);
+            xEnd= (testPoints[i].m0 - basePoint.m0)* Math.cos(diffData.m5) - (testPoints[i].m1 - basePoint.m1) * Math.sin(diffData.m5) + diffData.m0;
+            yEnd= (testPoints[i].m0 - basePoint.m0)* Math.sin(diffData.m5) + (testPoints[i].m1 - basePoint.m1) * Math.cos(diffData.m5) + diffData.m1;
+            testPoints[i].m0 = xEnd;
+            testPoints[i].m1 = yEnd;
+            testPoints[i].m5 = diffAngle;
         }
 
         posData.dsData = testPoints;

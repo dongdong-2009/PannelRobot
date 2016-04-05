@@ -159,7 +159,8 @@ Rectangle {
 
             stackType = stackInfo.type;
 
-            if(stackType != 2){
+            if(stackType != 2 &&
+                    stackType != 3){
                 page1.mode = 0;
             }else{
                 page1.mode = 2;
@@ -231,7 +232,12 @@ Rectangle {
                                           page2.offsetZ,
                                           selectedDS,
                                           dsID);
-            var stackInfo = new Teach.StackInfo(si0, si1, stackType, name, "custompoint[" + id + "]", id, posData);
+            var realST = stackType;
+            if((realST == 2) || (realST == 3))
+                realST = page1.isCustomDataSource ? 3 : 2;
+
+
+            var stackInfo = new Teach.StackInfo(si0, si1, realST, name, "custompoint[" + id + "]", id, posData);
             var sid;
             if(!exist){
                 sid = Teach.appendStackInfo(stackInfo);
@@ -384,12 +390,11 @@ Rectangle {
                     text: qsTr("Data Source")
                     height: parent.height
                     width: parent.height
-                    bgColor: stackType == 2 ? "lime" : "white"
+                    bgColor: ((stackType == 2) || (stackType == 3) ? "lime" : "white")
 
                     onButtonClicked: {
                         stackType = 2;
                         pageCount = 2;
-//                        menuContainer.visible = false;
                         page1.mode = 2;
                     }
                 }

@@ -26,6 +26,7 @@ var DataSource = {
         dataSource.hostID = hostID;
         dataSource.getName = function() { return dataSource.name;};
         dataSource.getHostID = function() { return dataSource.hostID;};
+        dataSource.type = 0;
         return dataSource;
     }
 }
@@ -70,6 +71,7 @@ var CamDataSource = {
 var CustomDataSource = {
     createNew : function(name, hostID){
         var customDS = DataSource.createNew(name, hostID);
+        customDS.type = 1;
         customDS.parse = function(dsData){
             var ret = {"hostID":hostID};
             var retData = [];
@@ -111,7 +113,8 @@ function ExternalDataManager(){
     this.dataSourceNameList = function(){
         var ret = [];
         for(var d in this.dataSources){
-            ret.push(d + "::" + this.dataSources[d].getName() + "::[HID:" + this.dataSources[d].getHostID() + "]");
+            if(this.dataSources[d].type != 1)
+                ret.push(d + "::" + this.dataSources[d].getName() + "::[HID:" + this.dataSources[d].getHostID() + "]");
         }
         return ret;
 

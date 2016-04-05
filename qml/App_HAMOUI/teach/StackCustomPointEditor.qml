@@ -20,6 +20,16 @@ MouseArea{
         pointModel.append({"pointName":pointName, "pointPos":pointPos});
     }
 
+    function show(posData, clearOld, confirmHandler){
+        if(clearOld)
+            pointModel.clear();
+        for(var i = 0; i < posData.length; ++i){
+            pointModel.append({"pointName":posData[i].pointName, "pointPos":posData[i].pointPos});
+        }
+        editConfirm.connect(confirmHandler);
+        visible = true;
+    }
+
     signal editConfirm(bool accept, variant points)
 
 

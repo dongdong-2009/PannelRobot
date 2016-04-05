@@ -231,7 +231,7 @@ Rectangle {
                                           page2.offsetZ,
                                           selectedDS,
                                           dsID);
-            var stackInfo = new Teach.StackInfo(si0, si1, stackType, name, "custompoint[" + id + "]", id, posData || []);
+            var stackInfo = new Teach.StackInfo(si0, si1, stackType, name, "custompoint[" + id + "]", id, posData);
             var sid;
             if(!exist){
                 sid = Teach.appendStackInfo(stackInfo);
@@ -423,13 +423,16 @@ Rectangle {
                             if(stackViewSel.currentIndex < 0) return;
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                             var sI = Teach.getStackInfoFromID(id);
-                            topContainer.saveStack(id,sI.descr, true, "custompoint[" + id + "]", id);
+                            topContainer.saveStack(id,sI.descr, true, points);
                         }
                     }
 
                     onButtonClicked: {
-                        customPointEditor.visible = true;
-                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
+//                        customPointEditor.visible = true;
+//                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
+                        var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                        var sI = Teach.getStackInfoFromID(id);
+                        customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
                     }
                 }
 

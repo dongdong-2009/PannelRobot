@@ -418,7 +418,7 @@ Rectangle {
 
     StackCustomPointEditor{
         id:customPointEditor
-        visible: true
+        visible: false
         y:110
         width: 600
         height: 400

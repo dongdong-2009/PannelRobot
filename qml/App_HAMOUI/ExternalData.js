@@ -45,11 +45,11 @@ var CamDataSource = {
                         pos = posDatas[j];
                         var toAdd = new ExternalDataPosFormat();
                         if(pos.hasOwnProperty("X"))
-                            toAdd.m0 = pos.X;
+                            toAdd.m0 = parseFloat(pos.X);
                         if(pos.hasOwnProperty("Y"))
-                            toAdd.m1 = pos.Y;
+                            toAdd.m1 = parseFloat(pos.Y);
                         if(pos.hasOwnProperty("Angel"))
-                            toAdd.m5 = pos.Angel;
+                            toAdd.m5 = parseFloat(pos.Angel);
                         if(pos.X != null && pos.Y != null && pos.Angel != null)
                             retData.push(toAdd);
                     }

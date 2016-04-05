@@ -65,7 +65,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 31：清除；30～24位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
     ICAddr_System_Retain_82 = 82,//< 堆叠点参数数据长度 最高位：清除；高15位：程序ID；低16位：程序长度
-    ICAddr_System_Retain_83 = 83,//< 堆叠点参数数据初始化
+    ICAddr_System_Retain_83 = 83,//< 堆叠点参数数据初始化完
     ICAddr_System_Retain_End = 99,
     /***************************************************************************************/
     ICAddr_Adapter_Para0, //<类型:系统;名字:电机1;结构:Axis_Config;地址:axis_cfg_addr;
@@ -805,6 +805,8 @@ typedef enum
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
     ALARM_ROUTE_ACC_ERR,//<名字：轨迹规划失败
     ALARM_ROUTE_REPLAN_ERR,//<名字：轨迹重新规划失败
+    ALARM_STACK_WAITE_ERR,//<名字：等待堆叠数据源超时
+    ALARM_STACK_SOURCE_ERR,//<名字：堆叠数据源错误
 
     ALARM_COUNTER_NOT_DEFINE = 300,//<名字：计数器未定义
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
@@ -1316,6 +1318,35 @@ typedef struct _ADAPTER_PARA_{
     PARA_Struct P;
 } ADAPTER_PARA;
 
+typedef union {
+    struct {
+        float xpos; //< X坐标
+        float ypos; //< Y坐标
+        float zpos; //< Z坐标
+        float xpos_p; //< X坐标
+        float ypos_p; //< Y坐标
+        float zpos_p; //< Z坐标
+    }c;
+    struct {
+        int32_t xpos; //< X关节坐标
+        int32_t ypos; //< Y关节坐标
+        int32_t zpos; //< Z关节坐标
+        int32_t upos; //< U关节坐标
+        int32_t vpos; //< V关节坐标
+        int32_t wpos; //< W关节坐标
+    }j;
+    struct {
+        int32_t id; //< 外部数据源ID
+        int32_t p_max; //< 外部数据个数
+        int32_t zpos; //< Z关节坐标
+        int32_t upos; //< U关节坐标
+        int32_t vpos; //< V关节坐标
+        int32_t wpos; //< W关节坐标
+    }p;
+    uint32_t pu[6];
+    int32_t pi[6];
+    double pf[6];
+}POINT_TYPE;
 
 typedef union _ALL_PARA_
 {

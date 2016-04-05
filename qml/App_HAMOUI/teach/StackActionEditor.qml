@@ -422,7 +422,10 @@ Rectangle {
                             if(stackViewSel.currentIndex < 0) return;
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                             var sI = Teach.getStackInfoFromID(id);
-                            topContainer.saveStack(id,sI.descr, true, points);
+                            sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
+                            var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                            toSend = ESData.externalDataManager.parseRaw(toSend);
+                            panelRobotController.sendExternalDatas(JSON.stringify(toSend));
                         }else
                             customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
                     }

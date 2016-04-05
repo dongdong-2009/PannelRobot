@@ -14,6 +14,11 @@ function ExternalDataPosFormat(){
     this.m5 = 0;
 }
 
+function RawExternalDataFormat(dsID, dsData){
+    this.dsID = dsID;
+    this.dsData = dsData;
+}
+
 var DataSource = {
     createNew : function(name, hostID){
         var dataSource = {};
@@ -66,6 +71,13 @@ var CustomDataSource = {
     createNew : function(name, hostID){
         var customDS = DataSource.createNew(name, hostID);
         customDS.parse = function(dsData){
+            var ret = {"hostID":hostID};
+            var retData = [];
+            for(var i = 0; i < dsData.length; ++i){
+                retData.push(dsData[i].pointPos);
+            }
+            ret.dsData = retData;
+            return ret;
 
         };
         return customDS;
@@ -85,13 +97,16 @@ function ExternalDataManager(){
         return true;
     };
     this.parse = function(jsonStr){
-        console.log(jsonStr);
         var o = JSON.parse(jsonStr);
-        if(!this.dataSourceExist(o.dsID)){
+        return this.parseRaw(0);
+    };
+
+    this.parseRaw = function(rawData){
+        if(!this.dataSourceExist(rawData.dsID)){
             return [];
         }
-        return this.dataSources[o.dsID].parse(o.dsData)
-    };
+        return this.dataSources[rawData.dsID].parse(rawData.dsData);
+    }
 
     this.dataSourceNameList = function(){
         var ret = [];

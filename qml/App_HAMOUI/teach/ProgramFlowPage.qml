@@ -9,6 +9,7 @@ import "../ShareData.js" as ShareData
 import "../../utils/stringhelper.js" as ICString
 import "../ICOperationLog.js" as ICOperationLog
 import "ManualProgramManager.js" as ManualProgramManager
+import "../ExternalData.js" as ESData
 
 
 Rectangle {
@@ -1860,9 +1861,24 @@ Rectangle {
         Teach.parseStacks(panelRobotController.stacks());
         Teach.functionManager.init(panelRobotController.functions());
 
+
         //        var program = JSON.parse(panelRobotController.mainProgram());
         var program;
         var i;
+        var sI;
+        var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
+        for(i = 0; i < Teach.stackInfos.length; ++i){
+            sI = Teach.stackInfos[i];
+            if(sI.dsHostID >= 0 && sI.posData.length > 0){
+                ESData.externalDataManager.registerDataSource(sI.dsName,
+                                                              ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
+                toSendStackData.dsID = sI.dsName;
+                toSendStackData.dsData = sI.posData;
+                var posData = ESData.externalDataManager.parseRaw(toSendStackData);
+                panelRobotController.sendExternalDatas(JSON.stringify(posData));
+            }
+        }
+
         for(i = 0; i < 9; ++i){
             program = JSON.parse(panelRobotController.programs(i));
             Teach.currentParsingProgram = i;

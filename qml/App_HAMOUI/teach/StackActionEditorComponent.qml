@@ -289,6 +289,7 @@ Item {
         var items = dataSource;
         items.splice(0,0, qsTr("Custom Pos"));
         dataSourceSel.items = items;
+        dataSourceSel.configValue = 0;
     }
 
     Component.onCompleted: {

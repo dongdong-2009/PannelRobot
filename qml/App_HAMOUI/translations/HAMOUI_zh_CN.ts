@@ -337,6 +337,18 @@
         <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
         <translation>教导关节运动终点坐标未设定</translation>
     </message>
+    <message>
+        <source>ALARM_ROUTE_REPLAN_ERR</source>
+        <translation>轨迹重新规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_WAITE_ERR</source>
+        <translation>等待堆叠数据源超时</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_SOURCE_ERR</source>
+        <translation>堆叠数据源错误</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -2127,6 +2139,20 @@
         <source>Returning</source>
         <translation>复归中...</translation>
     </message>
+    <message>
+        <source>1.Mode 1
+2.Mode 2
+3.Mode 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide Help</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OutputActionEditor</name>
@@ -2929,10 +2955,6 @@ please chose!</source>
         <translation>使用堆叠</translation>
     </message>
     <message>
-        <source>Type3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Set In</source>
         <translation>设入</translation>
     </message>
@@ -3032,6 +3054,10 @@ please chose!</source>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
+    <message>
+        <source>Data Source</source>
+        <translation type="unfinished">数据源</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -3106,6 +3132,10 @@ please chose!</source>
     <message>
         <source>Offset En</source>
         <translation>使用偏移</translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation type="unfinished">数据源</translation>
     </message>
 </context>
 <context>

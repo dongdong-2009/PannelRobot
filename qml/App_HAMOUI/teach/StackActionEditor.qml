@@ -418,13 +418,13 @@ Rectangle {
                     text: qsTr("Edit Pos")
                     visible: page1.isCustomDataSource && page1.mode == 2
                     function onEditConfirm(accepted, points){
-                        customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
                         if(accepted){
                             if(stackViewSel.currentIndex < 0) return;
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                             var sI = Teach.getStackInfoFromID(id);
                             topContainer.saveStack(id,sI.descr, true, points);
-                        }
+                        }else
+                            customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
                     }
 
                     onButtonClicked: {
@@ -432,6 +432,8 @@ Rectangle {
 //                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
                         var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                         var sI = Teach.getStackInfoFromID(id);
+                        if(sI.posData === undefined)
+                            sI.podData = [];
                         customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
                     }
                 }

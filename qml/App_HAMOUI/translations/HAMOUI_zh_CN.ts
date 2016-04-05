@@ -3056,7 +3056,11 @@ please chose!</source>
     </message>
     <message>
         <source>Data Source</source>
-        <translation type="unfinished">数据源</translation>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Edit Pos</source>
+        <translation>编辑点位</translation>
     </message>
 </context>
 <context>
@@ -3135,7 +3139,42 @@ please chose!</source>
     </message>
     <message>
         <source>Data Source</source>
-        <translation type="unfinished">数据源</translation>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Custom Pos</source>
+        <translation>不规则点位</translation>
+    </message>
+</context>
+<context>
+    <name>StackCustomPointEditor</name>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <source>Point Name:</source>
+        <translation>点名称:</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Replace</source>
+        <translation>替换位置</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>New</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
 </context>
 <context>

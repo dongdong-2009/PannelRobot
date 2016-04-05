@@ -511,6 +511,22 @@ Rectangle {
 //                    ]
 //                };
 //        onETH0DataIn(JSON.stringify(toTest));
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "reqType":"standardize",
+//            "camID":0,
+//            "data":[
+//                { "X":0.000,"Y":0.000 },
+//                { "X":0.000,"Y":0.000 },
+//                { "X":0.000,"Y":0.000 }
+//            ]
+//        };
+
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "reqType":"photo",
+//            "camID":0,
+//        };
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
         if(armKeyboard.visible) armKeyboardBtn.clicked();

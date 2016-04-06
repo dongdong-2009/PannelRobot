@@ -321,7 +321,7 @@ Rectangle {
                 if(stackViewSel.currentIndex < 0) return;
                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                 var sI = Teach.getStackInfoFromID(id);
-                topContainer.saveStack(id,sI.descr, true);
+                topContainer.saveStack(id,sI.descr, true, sI.posData);
             }
 
         }

@@ -324,7 +324,7 @@ function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
     this.type = type || 0;
     this.descr = descr;
     this.dsName = dsName || "";
-    this.dsHostID = dsHostID || -1;
+    this.dsHostID = dsHostID>=0?dsHostID:-1;
     this.posData = posData || [];
 }
 

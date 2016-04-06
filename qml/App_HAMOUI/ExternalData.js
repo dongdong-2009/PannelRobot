@@ -100,7 +100,7 @@ function ExternalDataManager(){
     };
     this.parse = function(jsonStr){
         var o = JSON.parse(jsonStr);
-        return this.parseRaw(0);
+        return this.parseRaw(o);
     };
 
     this.parseRaw = function(rawData){

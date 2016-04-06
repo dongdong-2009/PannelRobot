@@ -466,6 +466,7 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
 
 //QTime testTime;
 //int oldTime;
+
 void ICRobotVirtualhost::CommunicateImpl()
 {
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());

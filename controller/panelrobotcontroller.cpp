@@ -240,7 +240,7 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 
 void PanelRobotController::sendKnobCommandToHost(int knob)
 {
-    modifyConfigValue(ICAddr_System_Retain_0, knob);
+    modifyConfigValue(ICAddr_System_Retain_1, knob);
 }
 
 quint32 PanelRobotController::getConfigValue(const QString &addr) const

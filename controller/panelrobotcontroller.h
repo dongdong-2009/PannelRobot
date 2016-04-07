@@ -693,6 +693,11 @@ public:
 
     Q_INVOKABLE void sendExternalDatas(const QString& dsData);
 
+    Q_INVOKABLE quint32 getMultiplexingConfig(int addr)
+    {
+        return ICRobotVirtualhost::MultiplexingConfig(addr);
+    }
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

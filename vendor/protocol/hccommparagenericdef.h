@@ -13,9 +13,7 @@
 extern "C"
 {
 #endif
-
-#define DEBUG_TEST  0 //< 测试
-
+#define DEBUG_TEST  1 //< 测试
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
@@ -29,14 +27,14 @@ typedef enum _ICAddr
     /***************************************************************************************/
     // 系统保留区
     ICAddr_System_Retain_Start,
-    ICAddr_System_Retain_0=1, //< 按键命令地址
-    ICAddr_System_Retain_1,//< 版本号地址
-    ICAddr_System_Retain_2,//< 手动IO操作
+    ICAddr_System_Retain_1=1, //< 按键命令地址
+    ICAddr_System_Retain_2,//< 版本号地址
     ICAddr_System_Retain_3,//< 手动IO操作
     ICAddr_System_Retain_4,//< 手动IO操作
     ICAddr_System_Retain_5,//< 手动IO操作
-    ICAddr_System_Retain_6,//< 定义IO操作
-    ICAddr_System_Retain_7,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
+    ICAddr_System_Retain_6,//< 手动IO操作
+    ICAddr_System_Retain_7,//< 定义IO操作
+    ICAddr_System_Retain_8,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
     //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
@@ -389,8 +387,8 @@ typedef enum _ICAddr
     ICAddr_Read_Status38,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
     ICAddr_Read_Status39,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
     ICAddr_Read_Status40,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
-//    ICAddr_Read_Status41,
-//    ICAddr_Read_Status42,
+    ICAddr_Read_Status41,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
+    ICAddr_Read_Status42,    //<类型：状态；名字：步号;结构:READ_PARA;地址:read_addr;
 
     ICAddr_Read_Section_End = 1000, //<
     ICAddr_ErrAddr, //<错误帧用的地址
@@ -609,7 +607,7 @@ typedef enum
     F_CMD_WATIT_VISION_DATA = 101,
     /**************************************************************************/
     /* IO点输出
-     * 类型（EUIO，0~3:IO板，4～6：M值，7：EUIO；8：单头阀或者双头阀；9：停止检测；10：开始检测）
+     * 类型（EUIO，0~3:IO板，4～6：M值，7：EUIO；8：单头阀或者双头阀；9：停止检测；10：开始检测;1000:等待数据源完成信号）
      * IO点 当类型为8～10时候为阀ID
      * 输出状态  当类型为8～10时候不用
      * 输出延时  当类型为8～10时候不用
@@ -712,6 +710,7 @@ typedef enum
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
 	ALARM_STORAGE_READ_ERR, // 从主机FLASH读取的数据有错
+    ALARM_IO_CONNET_ERR, // 于IO板通讯失败
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -792,7 +791,7 @@ typedef enum
     ALARM_TEACH_ROUTE_LINE_P1_NOTSET,//<名字：教导直线轨迹运动起始坐标未设定
     ALARM_TEACH_ROUTE_LINE_P2_NOTSET,//<名字：教导直线轨迹运动终点坐标未设定
     ALARM_TEACH_JOINT_P1_NOTSET,//<名字：教导关节运动起始坐标未设定
-    ALARM_TEACH_JOINT_P2_NOTSET,//<名字：教导关节运动终点坐标未设定
+    ALARM_TEACH_JOINT_P2_NOTSET=210,//<名字：教导关节运动终点坐标未设定
     ALARM_TEACH_RELATIVE_LP_NOTSET,//<名字：教导直线相对移动坐标未设定
     ALARM_TEACH_RELATIVE_JP_NOTSET,//<名字：教导关节相对移动坐标未设定
     ALARM_ROUTE_ARC_P1_NOTSET,//<名字：手动弧线轨迹运动起点坐标未设定
@@ -803,7 +802,7 @@ typedef enum
     ALARM_TEACH_ROUTE_ARC_P3_NOTSET,//<名字：教导弧线轨迹运动终点坐标未设定
 
     ALARM_SETROUTESPEED_FAIL,//<名字：轨迹运动速度设定失败
-    ALARM_ROUTE_ACC_ERR,//<名字：轨迹规划失败
+    ALARM_ROUTE_ACC_ERR=220,//<名字：轨迹规划失败
     ALARM_ROUTE_REPLAN_ERR,//<名字：轨迹重新规划失败
     ALARM_STACK_WAITE_ERR,//<名字：等待堆叠数据源超时
     ALARM_STACK_SOURCE_ERR,//<名字：堆叠数据源错误
@@ -1087,7 +1086,7 @@ typedef union {
 } OUTPUT;
 
 static const uint32_t system_addr[] = {
-    ICAddr_System_Retain_0,
+    ICAddr_System_Retain_1,
     ICAddr_System_Retain_End //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
 };
 typedef struct {
@@ -1272,10 +1271,30 @@ typedef union {
     uint32_t all[STRUCE_SIZE(ICAddr_Mold_Para0,ICAddr_Write_Section_End)];
 }MOLD_PARA;
 
-
+typedef enum _COMMON_ID_ICAddr
+{
+    ICAddr_Common_Para0,//<类型:状态;名字:查询当前周期运行时间;结构:CYCLE_TIME;
+    ICAddr_Common_Para1,//<类型:状态;名字:查询上周期运行时间;结构:CYCLE_TIME;
+    ICAddr_Common_Para2,
+    ICAddr_Common_Para3,
+    ICAddr_Common_Para4,
+    ICAddr_Common_Para5,
+    ICAddr_Common_Para6,
+    ICAddr_Common_Para7,
+    ICAddr_Common_Para8,
+    ICAddr_Common_Para9
+}COMMON_ID_ICAddr;
+typedef struct{
+    uint32_t id;//<类型：状态；名字：查询周期号；精度：0;单位：；
+    uint32_t time;//<类型：状态；名字：周期回显；精度：3;单位：；
+}CYCLE_TIME;
+typedef union {
+    CYCLE_TIME cycle_time;
+    uint32_t all[2];
+}COMMON_ADDR;
 static const uint32_t read_addr[] = {
     ICAddr_Read_Status0,
-    ICAddr_Read_Status40 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
+    ICAddr_Read_Status42 //<类型：模号；名字：；结构：SYSTEM_PARA；地址：system_addr；
 };
 typedef struct{
     Axis_Data axis_data[8];
@@ -1288,6 +1307,7 @@ typedef struct{
     uint32_t cnt:19;//<类型：状态；名字：计数器当前计数；精度：0;单位：；
     uint32_t io_in;//<类型：状态；名字：IO板输入状态；精度：0;单位：；
     uint32_t io_out;//<类型：状态；名字：IO板输出状态；精度：0;单位：；
+    COMMON_ADDR comm;//<类型：状态；名字：通用地址；精度：0;单位：；
 }READ_PARA0;
 
 typedef union {

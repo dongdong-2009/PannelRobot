@@ -440,3 +440,5 @@ extern  const ICAddrWrapper  c_ro_8_5_0_938;  //< 61478153 步号计数器ID
 extern  const ICAddrWrapper  c_ro_13_19_0_938;  //< 61492649 步号计数器当前计数
 extern  const ICAddrWrapper  c_ro_0_32_0_939;    //< 61571081 步号IO板输入状态
 extern  const ICAddrWrapper  c_ro_0_32_0_940;    //< 61636617 步号IO板输出状态
+extern  const ICAddrWrapper  c_ro_0_32_0_941;    //< 61702153 步号查询周期号通用地址
+extern  const ICAddrWrapper  c_ro_0_32_3_942;    //< 3282993161 步号周期回显通用地址

@@ -147,7 +147,7 @@ public:
 #ifdef NEW_PLAT
         return new ICRobotTransceiverData(hostID,
                                           FunctionCode_WriteAddr,
-                                          ICAddr_System_Retain_0,
+                                          ICAddr_System_Retain_1,
                                           1,
                                           ICTransceiverDataBuffer()<<cmd);
 #else

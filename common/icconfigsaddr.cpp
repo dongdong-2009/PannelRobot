@@ -440,3 +440,5 @@ extern  const ICAddrWrapper  c_ro_8_5_0_938(1,1,8,5,938,0,"");   //<步号计数
 extern  const ICAddrWrapper  c_ro_13_19_0_938(1,1,13,19,938,0,"");   //<步号计数器当前计数
 extern  const ICAddrWrapper  c_ro_0_32_0_939(1,1,0,32,939,0,"");    //<步号IO板输入状态
 extern  const ICAddrWrapper  c_ro_0_32_0_940(1,1,0,32,940,0,"");    //<步号IO板输出状态
+extern  const ICAddrWrapper  c_ro_0_32_0_941(1,1,0,32,941,0,"");    //<步号查询周期号通用地址
+extern  const ICAddrWrapper  c_ro_0_32_3_942(1,1,0,32,942,3,"");    //<步号周期回显通用地址

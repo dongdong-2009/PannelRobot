@@ -262,3 +262,16 @@ var machineStructConfigs = [
             "s_rw_0_32_0_184",
         ];
 var machineStructConfigsJSON = JSON.stringify(machineStructConfigs);
+
+var multiplexingConfigAddrs = {
+    "ICAddr_Common_Para0":0, //<类型:状态;名字:查询当前周期运行时间;结构:CYCLE_TIME;
+    "ICAddr_Common_Para1":1,//<类型:状态;名字:查询上周期运行时间;结构:CYCLE_TIME;
+    "ICAddr_Common_Para2":2,
+    "ICAddr_Common_Para3":3,
+    "ICAddr_Common_Para4":4,
+    "ICAddr_Common_Para5":5,
+    "ICAddr_Common_Para6":6,
+    "ICAddr_Common_Para7":7,
+    "ICAddr_Common_Para8":8,
+    "ICAddr_Common_Para9":9
+};

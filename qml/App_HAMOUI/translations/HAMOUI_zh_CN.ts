@@ -566,6 +566,17 @@
     </message>
 </context>
 <context>
+    <name>AutoRunInfoPage</name>
+    <message>
+        <source>Last Cycle:</source>
+        <translation>上模周期:</translation>
+    </message>
+    <message>
+        <source>Cycle</source>
+        <translation>当前周期:</translation>
+    </message>
+</context>
+<context>
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>

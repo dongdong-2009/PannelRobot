@@ -8,5 +8,8 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    teach/AutoRunInfoPage.qml
+
 
 

@@ -497,6 +497,7 @@ Rectangle {
         onUserChanged(null);
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         autoKeyboard.visible = isAuto;
+        autoRunInfoContainer.visible = isAuto;
         if(isAuto){
             singleCycle.setChecked(false);
             singleStep.setChecked(false);
@@ -1741,9 +1742,64 @@ Rectangle {
             }
         }
 
-
     }
 
+    MouseArea{
+        id:autoRunInfoContainer
+        width: 150
+        height:300
+        y:90
+        x:-width
+        z:9
+        PropertyAnimation{
+            id:autoRunInfoOut
+            target: autoRunInfoContainer
+            property: "x"
+            to: 0
+            duration: 100
+        }
+        SequentialAnimation{
+            id:autoRunInfoIn
+            PropertyAnimation{
+                target: autoRunInfoContainer
+                property: "x"
+                to: -autoRunInfoContainer.width
+                duration: 100
+            }
+            PropertyAction{
+                target: autoRunInfoPage
+                property: "visible"
+                value:false
+            }
+        }
+        ICButton{
+            id:autoRunInfoBtn
+            text: ""
+            icon: "../images/tools_autoruninfo.png"
+            width: 64
+            height: 64
+            bgColor: "green"
+            anchors.left: autoRunInfoContainer.right
+            anchors.bottom: autoRunInfoContainer.bottom
+            onButtonClicked: {
+                if(!autoRunInfoPage.visible){
+                    autoRunInfoPage.visible = true;
+                    autoRunInfoOut.start();
+                    //                    text = "→";
+                }else{
+                    //                    text = "←";
+                    //                    armKeyboard.visible = false;
+                    autoRunInfoIn.start();
+                }
+            }
+        }
+        AutoRunInfoPage{
+            id:autoRunInfoPage
+            width: parent.width
+            height: parent.height
+            visible: false
+        }
+    }
     
     //TODO:Use WorkerScript to implement this function
     function repaintProgramItem(programModel, start, end){

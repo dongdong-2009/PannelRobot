@@ -25,9 +25,9 @@ int checkTime = 60;
 int dummy;
 #endif
 
-#define REFRESH_COUNT_PER 41
-#define REFRESH_INTERVAL 40
-#define REFRESH_END ICAddr_Read_Status40
+#define REFRESH_COUNT_PER 43
+#define REFRESH_INTERVAL 41
+#define REFRESH_END ICAddr_Read_Status42
 #define INIT_INTERVAL 20
 #define SHORT_CMD_INTERVAL 10
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
@@ -67,7 +67,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
 #endif
     AddRefreshStatusCommand_();
     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
-                                                                                          ICAddr_System_Retain_1,
+                                                                                          ICAddr_System_Retain_2,
                                                                                           64); // read host version
     AddCommunicationFrame(toSentFrame);
 }
@@ -235,7 +235,7 @@ bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const 
 bool ICRobotVirtualhost::SendMoldCounterDef(ICVirtualHostPtr hostPtr, const QVector<quint32> &data)
 {
     ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
-    toSentFrame->SetAddr(ICAddr_System_Retain_7);
+    toSentFrame->SetAddr(ICAddr_System_Retain_8);
     toSentFrame->SetHostID(kHostID);
     toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
     toSentFrame->SetData(data);
@@ -560,7 +560,7 @@ void ICRobotVirtualhost::CommunicateImpl()
 #ifdef NEW_PLAT
             statusDataTmp_ = recvFrame_->Data();
             startIndex_ = recvFrame_->GetAddr();
-            if(startIndex_ == ICAddr_System_Retain_1)
+            if(startIndex_ == ICAddr_System_Retain_2)
             {
                 ICHCTransceiverData::ICTransceiverDataBuffer temp = recvFrame_->Data();
                 hostVersion_.clear();
@@ -585,6 +585,9 @@ void ICRobotVirtualhost::CommunicateImpl()
                 {
                     multiplexingConfigs_.insert(ICAddr_Read_Status33, statusDataTmp_.at(ICAddr_Read_Status33 - recvFrame_->GetAddr()));
                 }
+                multiplexingConfigs_.insert(statusDataTmp_.at(ICAddr_Read_Status41 - recvFrame_->GetAddr()),
+                                            statusDataTmp_.at(ICAddr_Read_Status42 - recvFrame_->GetAddr()));
+
                 if(currentStatusGroup_ == 0)
                 {
                     int boardID = HostStatusValue(&c_ro_5_3_0_938);
@@ -602,7 +605,7 @@ void ICRobotVirtualhost::CommunicateImpl()
                     //                    SetCommunicateInterval(INIT_INTERVAL);
                     emit NeedToInitHost();
                     ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
-                                                                                                          ICAddr_System_Retain_1,
+                                                                                                          ICAddr_System_Retain_2,
                                                                                                           64); // read host version
                     AddCommunicationFrame(toSentFrame);
                 }
@@ -789,7 +792,7 @@ void ICRobotVirtualhost::SendYControlCommand(ICVirtualHostPtr hostPtr, ValveItem
     ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
     toSentFrame->SetHostID(kHostID);
     toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
-    toSentFrame->SetAddr(ICAddr_System_Retain_2);
+    toSentFrame->SetAddr(ICAddr_System_Retain_3);
     toSentFrame->SetLength(2);
 
     toSentFrame->SetData(item.toDataBuf());
@@ -808,7 +811,7 @@ void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem
     ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
     toSentFrame->SetHostID(kHostID);
     toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
-    toSentFrame->SetAddr(ICAddr_System_Retain_6);
+    toSentFrame->SetAddr(ICAddr_System_Retain_7);
     toSentFrame->SetLength(2);
 
     toSentFrame->SetData(item.toDataBuf());

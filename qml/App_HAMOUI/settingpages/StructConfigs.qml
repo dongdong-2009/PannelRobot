@@ -187,7 +187,7 @@ Item {
                 id:pathMaxSpeed
                 configNameWidth: pdata.configNameWidth
                 configName: qsTr("SACC Max");
-                unit: qsTr("RPM")
+                unit: qsTr("m/s")
                 configAddr: "s_rw_0_16_3_167"
             }
 

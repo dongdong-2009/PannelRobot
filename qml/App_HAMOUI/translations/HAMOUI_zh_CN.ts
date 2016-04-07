@@ -3256,7 +3256,7 @@ please chose!</source>
     </message>
     <message>
         <source>SACC Time</source>
-        <translation>S加速时间</translation>
+        <translation>S加速度</translation>
     </message>
     <message>
         <source>m/s²</source>
@@ -3264,14 +3264,14 @@ please chose!</source>
     </message>
     <message>
         <source>SDec Time</source>
-        <translation>S减速时间</translation>
+        <translation>S减速度</translation>
     </message>
     <message>
         <source>SACC Max</source>
         <translation>S最大速度</translation>
     </message>
     <message>
-        <source>RPM</source>
+        <source>m/s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -11,6 +11,17 @@
 #include "icupdatesystem.h"
 #include "icutility.h"
 
+#ifdef Q_WS_QWS
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+#include <linux/watchdog.h>
+int wdFD;
+int checkTime = 60;
+int dummy;
+#endif
 
 static QScriptValue *getConfigRange_;
 
@@ -140,10 +151,33 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
             SIGNAL(screenRestore()));
     QWSServer::setScreenSaver(screenSaver_);
     QWSServer::setScreenSaverBlockLevel(-1);
+    connect(&watchDogTimer_, SIGNAL(timeout()),
+            SLOT(OnWatchDogTimeOut()));
+    wdFD = open("/dev/watchdog", O_RDWR);
+    if(wdFD < 0)
+    {
+        qWarning("Open watchdog error\n");
+    }
+    else
+    {
+        ioctl(wdFD, WDIOC_SETTIMEOUT, &checkTime);
+        int options = WDIOS_ENABLECARD	;
+        ioctl(wdFD, WDIOC_SETOPTIONS, &options);
+    }
+
+    watchDogTimer_.start(20000);
+
 #endif
 
     emit LoadMessage("Controller inited.");
 
+}
+
+void PanelRobotController::OnWatchDogTimeOut()
+{
+#ifdef Q_WS_QWS
+    ioctl(wdFD, WDIOC_KEEPALIVE, &dummy);
+#endif
 }
 
 void PanelRobotController::Init()
@@ -354,6 +388,9 @@ QString PanelRobotController::records()
 PanelRobotController::~PanelRobotController()
 {
     delete axisDefine_;
+#ifdef Q_WS_QWS
+    close(wdFD);
+#endif
 }
 
 ICAxisDefine* PanelRobotController::axisDefine()

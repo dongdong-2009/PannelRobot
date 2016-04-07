@@ -4,14 +4,7 @@
 #include "hccommparagenericdef.h"
 #include <QTime>
 
-#ifdef Q_WS_QWS
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <linux/watchdog.h>
-#endif
+
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
@@ -19,11 +12,7 @@ QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::multiplexingConfigs_;
 QString ICRobotVirtualhost::hostVersion_;
 
-#ifdef Q_WS_QWS
-int wdFD;
-int checkTime = 60;
-int dummy;
-#endif
+
 
 #define REFRESH_COUNT_PER 43
 #define REFRESH_INTERVAL 41
@@ -33,19 +22,7 @@ int dummy;
 ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
     ICVirtualHost(hostId, parent)
 {
-#ifdef Q_WS_QWS
-    wdFD = open("/dev/watchdog", O_RDWR);
-    if(wdFD < 0)
-    {
-        qWarning("Open watchdog error\n");
-    }
-    else
-    {
-        ioctl(wdFD, WDIOC_SETTIMEOUT, &checkTime);
-        int options = WDIOS_ENABLECARD	;
-        ioctl(wdFD, WDIOC_SETOPTIONS, &options);
-    }
-#endif
+
 #ifdef NEW_PLAT
     currentStatusGroup_ = 0;
     statusGroupCount_ = qCeil(qreal(ICAddr_Read_Status40 - ICAddr_Read_Status0) / REFRESH_COUNT_PER);
@@ -76,9 +53,7 @@ ICRobotVirtualhost::~ICRobotVirtualhost()
 {
     delete frameTransceiverDataMapper_;
     delete recvFrame_;
-#ifdef Q_WS_QWS
-    close(wdFD);
-#endif
+
 }
 
 bool ICRobotVirtualhost::InitConfigsImpl(const QVector<QPair<quint32, quint32> > &configList, int startAddr)
@@ -501,10 +476,6 @@ bool ICRobotVirtualhost::InitMachineConfig(ICVirtualHostPtr hostPtr, const QVect
 
 void ICRobotVirtualhost::CommunicateImpl()
 {
-#ifdef Q_WS_QWS
-    ioctl(wdFD, WDIOC_KEEPALIVE, &dummy);
-#endif
-
     recvRet_ = Transceiver()->Read(recvFrame_, queue_.Head());
     if(recvRet_ == false || recvFrame_->IsError())
     {

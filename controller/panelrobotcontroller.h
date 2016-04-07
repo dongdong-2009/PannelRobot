@@ -735,6 +735,7 @@ public slots:
 
 private slots:
     void OnHostUpdateFinished(QString);
+    void OnWatchDogTimeOut();
 
 private:
     void InitDatabase_();
@@ -771,6 +772,7 @@ private:
     QFileSystemWatcher hostUpdateFinishedWatcher_;
     QMap<int, quint32> readedConfigValues_;
     ICLog* logger_;
+    QTimer watchDogTimer_;
 
     QScopedPointer<ICTcpTransceiver> eth0Transceiver_;
     QScopedPointer<TCPCommunicateMonitor> eth0DataMonitor_;

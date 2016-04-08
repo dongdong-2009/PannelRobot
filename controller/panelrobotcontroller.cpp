@@ -579,7 +579,16 @@ void PanelRobotController::startUpdate(const QString &updater)
     hostUpdateFinishedWatcher_.addPath("updatehost");
     connect(&hostUpdateFinishedWatcher_, SIGNAL(directoryChanged(QString)), this, SLOT(OnHostUpdateFinished(QString)));
     mainView_->hide();
+#ifdef Q_WS_QWS
+    int flags;
+    flags = WDIOS_DISABLECARD;
+    ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
+#endif
     us.StartUpdate(updater);
+#ifdef Q_WS_QWS
+    flags = WDIOS_ENABLECARD;
+    ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
+#endif
 
 }
 

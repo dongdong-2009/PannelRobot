@@ -38,7 +38,8 @@ Row{
     }
     ICLineEdit{
         id:pos
-        width: editorWidth + 25
+//        width: editorWidth + 25
+        inputWidth: editorWidth
         visible: axisDefine == Teach.kAxisType_Servo
         bindConfig: rangeAddr
         unit: qsTr("deg")

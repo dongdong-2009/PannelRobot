@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QVariant>
+#include <QFile>
 #include "icappsettings.h"
 #include "icmachineconfig.h"
 //#include "icdalhelper.h"
@@ -550,10 +551,10 @@ void PanelRobotController::InitMainView()
 
 }
 
-QString scanHelper(const QString& filter)
+QString scanHelper(const QString& filter, QDir::Filters filters = QDir::NoFilter)
 {
     QDir usb(ICAppSettings::UsbPath);
-    QStringList updaters = usb.entryList(QStringList()<<filter);
+    QStringList updaters = usb.entryList(QStringList()<<filter, filters);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
     {
@@ -1257,4 +1258,28 @@ void PanelRobotController::sendExternalDatas(const QString& dsData)
     }
     if(ds.size() != 0)
         ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);
+}
+
+QString PanelRobotController::scanUSBGCodeFiles(const QString &filter) const
+{
+    return scanHelper(QString("%1").arg(filter), QDir::Files);
+}
+
+QByteArray PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const
+{
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+    QFile f(filePath);
+    QByteArray ret;
+    if(f.open(isTextOnly ? (QFile::ReadOnly | QFile::Text) : QFile::ReadOnly))
+    {
+        ret.resize(f.size());
+        f.read(ret.data(), f.size());
+        f.close();
+        if(isTextOnly)
+        {
+            if(ret.contains(char(0)))
+                ret = "";
+        }
+    }
+    return ret;
 }

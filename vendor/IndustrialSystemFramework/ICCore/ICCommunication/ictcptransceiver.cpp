@@ -25,8 +25,11 @@ _ConnectionHelper::_ConnectionHelper()
 
 _ConnectionHelper::~_ConnectionHelper()
 {
-    tcpServer_->close();
-    delete tcpServer_;
+    if(tcpServer_ != NULL)
+    {
+        tcpServer_->close();
+        delete tcpServer_;
+    }
 }
 
 void _ConnectionHelper::StartCommunicate()
@@ -71,7 +74,7 @@ void _ConnectionHelper::StopCommunicate()
         tcpSocket_ = NULL;
     }
     if(tcpServer_ != NULL)
-         tcpServer_->close();
+        tcpServer_->close();
 }
 
 int _ConnectionHelper::Read(uint8_t *dest, size_t size)
@@ -94,7 +97,7 @@ int _ConnectionHelper::Read(uint8_t *dest, size_t size)
         qDebug()<<tcpSocket_->errorString();
         return 0;
     }
-//    qDebug()<<"bytes available:"<<tcpSocket_->bytesAvailable();
+    //    qDebug()<<"bytes available:"<<tcpSocket_->bytesAvailable();
     int ret = tcpSocket_->read((char *)dest,size) ;
     return ret;
 }
@@ -133,11 +136,11 @@ void _ConnectionHelper::OnReadyRead()
     int bA = tcpSocket_->bytesAvailable();
     QByteArray toRead(bA, '\0');
     Read((uint8_t*)toRead.data(), bA);
-//    qDebug()<<"driver:"<<toRead;
+    //    qDebug()<<"driver:"<<toRead;
     for(int i = 0; i < monitors_.size(); ++i)
     {
         if(monitors_.at(i)->CanIn(toRead))
             monitors_[i]->OnDataComeIn(toRead);
     }
-//    emit dataComeIn(toRead);
+    //    emit dataComeIn(toRead);
 }

@@ -5,11 +5,9 @@ SOURCES = *.qml \
 teach/*.js \
 teach/*.qml \
 configs/* \
-settingpages/*
+settingpages/* \
+../ICCustomElement/*
 }
-
-OTHER_FILES += \
-    teach/AutoRunInfoPage.qml
 
 
 

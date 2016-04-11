@@ -81,8 +81,8 @@ Item {
 
         Grid{
             columns: 2
-            rows: 5
-            spacing: 10
+            rows: 3
+            spacing: 20
             flow: Grid.TopToBottom
 
             AxisActionEditorAxisComponent{

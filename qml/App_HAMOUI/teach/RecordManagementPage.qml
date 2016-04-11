@@ -41,9 +41,22 @@ Rectangle {
                 target: recordsView;
                 model:usbModel;
                 isSelectable:true;
-//                openBackupPackage:backupPackageModel.get(recordsView.currentIndex).name;
             }
-
+        },
+        State {
+            name: "gCodeMode"
+            PropertyChanges { target: newRecord; enabled:false;}
+            PropertyChanges { target: loadRecord; enabled:false;}
+            PropertyChanges { target: copyRecord; enabled:false;}
+            PropertyChanges { target: delRecord; enabled:false;}
+            PropertyChanges { target: importGCode; visible:true;}
+            PropertyChanges { target: viewBackupRecords; visible:false;}
+            PropertyChanges { target: exportRecord; visible:false;}
+            PropertyChanges {
+                target: recordsView;
+                model:gCodeModel;
+                isSelectable:false;
+            }
         }
     ]
     Row{
@@ -89,7 +102,7 @@ Rectangle {
         ICCheckBox{
             id:localRecord
             text: qsTr("Local")
-            width: 200
+            width: 160
             isChecked: true
             onIsCheckedChanged: {
                 if(isChecked){
@@ -101,7 +114,7 @@ Rectangle {
         ICCheckBox{
             id:exportToUsb
             text: qsTr("Export To USB")
-            width: 200
+            width: 160
             onIsCheckedChanged: {
                 if(isChecked){
                     recordPage.state = "exportMode";
@@ -111,7 +124,7 @@ Rectangle {
         ICCheckBox{
             id:importFromUsb
             text:qsTr("Import From USB")
-            width: 200
+            width: 160
             onIsCheckedChanged: {
                 if(isChecked){
                     backupPackageModel.clear();
@@ -122,7 +135,21 @@ Rectangle {
                     recordPage.state = "importMode";
                 }
             }
-
+        }
+        ICCheckBox{
+            id:importFromUsbGCode
+            text:qsTr("Import From USB GCode")
+            width: 160
+            onIsCheckedChanged: {
+                if(isChecked){
+                    gCodeModel.clear();
+                    var gCodeFiles = JSON.parse(panelRobotController.scanUSBGCodeFiles("*"));
+                    for(var i = 0; i < gCodeFiles.length; ++i){
+                        gCodeModel.append(recordsView.createRecordItem(gCodeFiles[i], undefined));
+                    }
+                    recordPage.state = "gCodeMode";
+                }
+            }
         }
     }
 
@@ -134,6 +161,9 @@ Rectangle {
     }
     ListModel{
         id:backupPackageModel
+    }
+    ListModel{
+        id:gCodeModel
     }
 
     ListView{
@@ -237,20 +267,10 @@ Rectangle {
             text: qsTr("New")
             height: loadRecord.height
             onButtonClicked: {
-//                if(newName.isEmpty()){
-//                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
-//                    return;
-//                }
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram()));
-//                if(ret.errno != 0){
-//                    tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
-//                }else{
-//                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
-//                    recordsView.positionViewAtBeginning();
-//                }
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();
@@ -262,22 +282,10 @@ Rectangle {
             text: qsTr("Copy")
             height: loadRecord.height
             onButtonClicked: {
-//                if(newName.isEmpty()){
-//                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
-//                    return;
-//                }
-                //                panelRobotController.copyRecord(newName.text,
-                //                                                recordsModel.get(recordsView.currentIndex).name)
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.copyRecord(newName.text,
                                                                      recordsModel.get(recordsView.currentIndex).name));
-//                if(ret.errno != 0){
-//                    tipDialog.warning(qsTr("Copy record fail! Err") + ret.errno, qsTr("OK"));
-//                }else{
-//                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
-//                    recordsView.positionViewAtBeginning();
-//                }
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();
@@ -367,6 +375,15 @@ Rectangle {
                     usbModel.append(recordsView.createRecordItem(molds[i], undefined));
                 }
                 recordPage.state = "openMode";
+            }
+        }
+        ICButton{
+            id:importGCode
+            text:qsTr("Import GCode")
+            height: loadRecord.height
+            visible: importFromUsbGCode.isChecked
+            onButtonClicked: {
+                var cGC = new Utils.CompiledGCode(panelRobotController.usbFileContent(gCodeModel.get(recordsView.currentIndex).name, true));
             }
         }
     }

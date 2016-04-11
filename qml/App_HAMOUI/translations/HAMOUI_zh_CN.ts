@@ -1150,6 +1150,37 @@
     </message>
 </context>
 <context>
+    <name>ICTimeLable</name>
+    <message>
+        <source>Mon</source>
+        <translation>星期一</translation>
+    </message>
+    <message>
+        <source>Tur</source>
+        <translation>星期二</translation>
+    </message>
+    <message>
+        <source>Wen</source>
+        <translation>星期三</translation>
+    </message>
+    <message>
+        <source>Thu</source>
+        <translation>星期四</translation>
+    </message>
+    <message>
+        <source>Fri</source>
+        <translation>星期五</translation>
+    </message>
+    <message>
+        <source>Sat</source>
+        <translation>星期六</translation>
+    </message>
+    <message>
+        <source>Sun</source>
+        <translation>星期天</translation>
+    </message>
+</context>
+<context>
     <name>IOComponent</name>
     <message>
         <source>Prev</source>
@@ -2905,6 +2936,14 @@ please chose!</source>
         <source>Local</source>
         <translation>本机模号</translation>
     </message>
+    <message>
+        <source>Import From USB GCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import GCode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -3288,6 +3327,24 @@ please chose!</source>
     <message>
         <source>Sync End</source>
         <translation>同步结束</translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItem</name>
+    <message>
+        <source>TabItem</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItemWidget</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
+    </message>
+    <message>
+        <source>text1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

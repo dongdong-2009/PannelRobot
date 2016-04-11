@@ -42,3 +42,8 @@ function getValueFromBrackets(str){
     var end = str.indexOf(']');
     return str.slice(begin, end);
 }
+
+function CompiledGCode(gCode){
+    this.compiledActions = [];
+
+}

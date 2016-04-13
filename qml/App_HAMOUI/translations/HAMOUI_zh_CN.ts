@@ -774,11 +774,11 @@
     </message>
     <message>
         <source>Motor 1</source>
-        <translation type="unfinished"></translation>
+        <translation>汇川</translation>
     </message>
     <message>
         <source>Motor 2</source>
-        <translation type="unfinished"></translation>
+        <translation>安川</translation>
     </message>
     <message>
         <source>Motor 3</source>
@@ -790,11 +790,11 @@
     </message>
     <message>
         <source>Encode Type1</source>
-        <translation type="unfinished"></translation>
+        <translation>增量</translation>
     </message>
     <message>
         <source>Encode Type2</source>
-        <translation type="unfinished"></translation>
+        <translation>绝对值</translation>
     </message>
     <message>
         <source>Encode Type3</source>
@@ -806,11 +806,11 @@
     </message>
     <message>
         <source>Encode RW1</source>
-        <translation type="unfinished"></translation>
+        <translation>RS485</translation>
     </message>
     <message>
         <source>Encode RW2</source>
-        <translation type="unfinished"></translation>
+        <translation>Can</translation>
     </message>
     <message>
         <source>Encode RW3</source>

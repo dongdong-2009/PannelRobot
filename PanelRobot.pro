@@ -1,7 +1,7 @@
 
 QT       += script
 #TEMPLATE = app
-VERSION = 0.0.1
+VERSION = 1.0.0
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
 DEFINES += UART_COMM

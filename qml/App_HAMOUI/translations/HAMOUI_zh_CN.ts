@@ -782,7 +782,7 @@
     </message>
     <message>
         <source>Motor 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">安川 {3?}</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -798,7 +798,7 @@
     </message>
     <message>
         <source>Encode Type3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">绝对值 {3?}</translation>
     </message>
     <message>
         <source>Encoder Read Way</source>
@@ -814,7 +814,7 @@
     </message>
     <message>
         <source>Encode RW3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Can {3?}</translation>
     </message>
 </context>
 <context>
@@ -3273,6 +3273,34 @@ please chose!</source>
     <message>
         <source>m/s</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis1 Diff</source>
+        <translation>轴1偏角</translation>
+    </message>
+    <message>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis2 Diff</source>
+        <translation>轴2偏角</translation>
+    </message>
+    <message>
+        <source>Axis3 Diff</source>
+        <translation>轴3偏角</translation>
+    </message>
+    <message>
+        <source>Axis4 Diff</source>
+        <translation>轴4偏角</translation>
+    </message>
+    <message>
+        <source>Axis5 Diff</source>
+        <translation>轴5偏角</translation>
+    </message>
+    <message>
+        <source>Axis6 Diff</source>
+        <translation>轴6偏角</translation>
     </message>
 </context>
 <context>

@@ -161,12 +161,12 @@ extern  const ICAddrWrapper  s_rw_0_16_3_166(3,3,0,16,166,3,"um/ms/ms");   //<�
 extern  const ICAddrWrapper  s_rw_16_16_3_166(3,3,16,16,166,3,"um/ms/ms");   //<机械结构减速度设定加速时S加速
 extern  const ICAddrWrapper  s_rw_0_16_3_167(3,3,0,16,167,3,"mm/ms");   //<机械结构最大加速度设定加速时S加速
 extern  const ICAddrWrapper  s_rw_16_16_0_167(3,3,16,16,167,0,"mm/ms");   //<机械结构预留加速时S加速
-extern  const ICAddrWrapper  s_rw_0_32_0_168(3,3,0,32,168,0,"");    //<机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_169(3,3,0,32,169,0,"");    //<机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_170(3,3,0,32,170,0,"");    //<机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_171(3,3,0,32,171,0,"");    //<机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_172(3,3,0,32,172,0,"");    //<机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_173(3,3,0,32,173,0,"");    //<机械结构预留
+extern  const ICAddrWrapper  s_rw_0_32_3_168(3,3,0,32,168,3,"");    //<机械结构轴1偏角
+extern  const ICAddrWrapper  s_rw_0_32_3_169(3,3,0,32,169,3,"");    //<机械结构轴2偏角
+extern  const ICAddrWrapper  s_rw_0_32_3_170(3,3,0,32,170,3,"");    //<机械结构轴3偏角
+extern  const ICAddrWrapper  s_rw_0_32_3_171(3,3,0,32,171,3,"");    //<机械结构轴4偏角
+extern  const ICAddrWrapper  s_rw_0_32_3_172(3,3,0,32,172,3,"");    //<机械结构轴5偏角
+extern  const ICAddrWrapper  s_rw_0_32_3_173(3,3,0,32,173,3,"");    //<机械结构轴6偏角
 extern  const ICAddrWrapper  s_rw_0_32_0_174(3,3,0,32,174,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_175(3,3,0,32,175,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_176(3,3,0,32,176,0,"");    //<机械结构预留

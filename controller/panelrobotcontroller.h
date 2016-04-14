@@ -699,7 +699,7 @@ public:
     }
 
     Q_INVOKABLE QString scanUSBGCodeFiles(const QString& filter) const;
-    Q_INVOKABLE QByteArray usbFileContent(const QString& fileName, bool isTextOnly = true) const;
+    Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

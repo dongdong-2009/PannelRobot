@@ -1265,7 +1265,7 @@ QString PanelRobotController::scanUSBGCodeFiles(const QString &filter) const
     return scanHelper(QString("%1").arg(filter), QDir::Files);
 }
 
-QByteArray PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const
+QString PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const
 {
     QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
     QFile f(filePath);
@@ -1281,5 +1281,5 @@ QByteArray PanelRobotController::usbFileContent(const QString &fileName, bool is
                 ret = "";
         }
     }
-    return ret;
+    return QString(ret);
 }

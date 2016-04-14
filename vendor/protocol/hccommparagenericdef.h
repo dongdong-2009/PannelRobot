@@ -18,7 +18,7 @@ extern "C"
 #define STRUCE_SIZE(a,b) (b-a+1)
 
 
-#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.3"
+#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.4"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -410,6 +410,7 @@ typedef enum
     CMD_ONE_CYCLE,//< 单循环模式
     CMD_ORIGIN_ING, // 正在寻找原点中
     CMD_RETURN_ING, // 原点复归中
+    CMD_ABS_READING, // 绝对值读取中
 
     CMD_STANDBY = 15, // 待机模式
 
@@ -523,6 +524,7 @@ typedef enum
     CMD_SET_ZERO5  = 0x0415,  // w轴原点设定
     CMD_SET_ZERO   = 0x0416,  // 全部轴原点设定
     CMD_REM_POS    = 0x0417,  // 保存每个轴当前位置
+    CMD_READ_ABS_AGAIN= 0x0418,  // 重新读取绝对值
     CMD_FIND_ZERO  = 0x047F,  // 所有逻辑轴，同时找零
 
     CMD_GO_HOME0   = 0x0500,  // 第一个逻辑轴，回零点
@@ -620,7 +622,7 @@ typedef enum
      *x_dir:1; x轴方向 0：反方向；1正方向；
      *y_dir:1; y轴方向 0：反方向；1正方向；
      *z_dir:1; z轴方向 0：反方向；1正方向；
-     *type:8;  堆叠类型
+     *type:8;  堆叠类型 0为普通堆叠 1为装箱堆叠 2为视觉数据源 3为不规则数据源
      *binding_counter:1;  是否绑定计数器ID，0未绑定；1绑定
      *counter_id:15;  绑定计数器ID
      *
@@ -656,6 +658,14 @@ typedef enum
      *zbox_d;//< Z坐标相对偏移
     */
     F_CMD_STACK0 = 300,//< 堆叠
+    /***************************************************************************/
+    /*
+     *
+     * id:轨迹ID  一段轨迹为1个ID
+     * max:轨迹总数   0:轨迹buff为不满状态，1:轨迹buff为满，需要轮寻请求
+     * speed:轨迹速度
+     */
+    F_CMD_TRAJECTORY = 301,//< 任意轨迹运动
     /***************************************************************************/
     /*
      * id:计数器ID
@@ -710,7 +720,12 @@ typedef enum
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
 	ALARM_STORAGE_READ_ERR, // 从主机FLASH读取的数据有错
-    ALARM_IO_CONNET_ERR, // 于IO板通讯失败
+    ALARM_IO_CONNET_ERR, // 与IO板通讯失败
+    ALARM_SERVO_ABS_READ_ERR, // 伺服绝对值位置读取失败
+    ALARM_SERVO_ABS_CRC_ERR, // 伺服绝对值位置读取校验失败
+    ALARM_SERVO_ABS_FUNC_ERR, // 伺服绝对值位置读取功能码错误
+    ALARM_SERVO_ABS_OVERTIME_ERR, // 伺服绝对值位置读取超时
+
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -927,7 +942,13 @@ typedef struct {
     uint32_t L34b;   //<类型:系统;名字:四轴圆心在四轴Z向上与三轴圆心的距离B;精度:3;单位:mm;
     uint32_t L56;    //<类型:系统;名字:六轴圆心在六轴Z向上与五轴圆心的距离;精度:3;单位:mm;
     RAcc a;   //<类型:系统;名字:加速时S加速;
-    uint32_t res[17]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t a1; //<类型:系统;名字:轴1偏角;精度:3;单位:;
+    uint32_t a2; //<类型:系统;名字:轴2偏角;精度:3;单位:;
+    uint32_t a3; //<类型:系统;名字:轴3偏角;精度:3;单位:;
+    uint32_t a4; //<类型:系统;名字:轴4偏角;精度:3;单位:;
+    uint32_t a5; //<类型:系统;名字:轴5偏角;精度:3;单位:;
+    uint32_t a6; //<类型:系统;名字:轴6偏角;精度:3;单位:;
+    uint32_t res[11]; //<类型:系统;名字:预留;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;
 
@@ -1273,9 +1294,9 @@ typedef union {
 
 typedef enum _COMMON_ID_ICAddr
 {
-    ICAddr_Common_Para0,//<类型:状态;名字:查询当前周期运行时间;结构:CYCLE_TIME;
-    ICAddr_Common_Para1,//<类型:状态;名字:查询上周期运行时间;结构:CYCLE_TIME;
-    ICAddr_Common_Para2,
+    ICAddr_Common_Para0,//<类型:状态;名字:查询当前周期运行时间;精度：3;单位：秒；
+    ICAddr_Common_Para1,//<类型:状态;名字:查询上周期运行时间;精度：3;单位：秒；
+    ICAddr_Common_Para2,//<类型:状态;名字:请求数据源ID发送数据;精度：0;单位：秒；
     ICAddr_Common_Para3,
     ICAddr_Common_Para4,
     ICAddr_Common_Para5,

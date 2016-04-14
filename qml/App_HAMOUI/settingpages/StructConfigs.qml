@@ -137,6 +137,48 @@ Item {
                 unit: qsTr("mm")
                 configAddr: "s_rw_0_32_3_164"
             }
+            ICConfigEdit{
+                id:axis1Diff
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("Axis1 Diff");
+                unit: qsTr("°")
+                configAddr: "s_rw_0_32_3_168"
+            }
+            ICConfigEdit{
+                id:axis2Diff
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("Axis2 Diff");
+                unit: qsTr("°")
+                configAddr: "s_rw_0_32_3_169"
+            }
+            ICConfigEdit{
+                id:axis3Diff
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("Axis3 Diff");
+                unit: qsTr("°")
+                configAddr: "s_rw_0_32_3_170"
+            }
+            ICConfigEdit{
+                id:axis4Diff
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("Axis4 Diff");
+                unit: qsTr("°")
+                configAddr: "s_rw_0_32_3_171"
+            }
+            ICConfigEdit{
+                id:axis5Diff
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("Axis5 Diff");
+                unit: qsTr("°")
+                configAddr: "s_rw_0_32_3_172"
+            }
+            ICConfigEdit{
+                id:axis6Diff
+                configNameWidth: pdata.configNameWidth
+                configName: qsTr("Axis6 Diff");
+                unit: qsTr("°")
+                configAddr: "s_rw_0_32_3_173"
+            }
 
             ICConfigEdit{
                 id:sAcc1

@@ -1413,6 +1413,7 @@ var gcodeLineParser = (function() {
 
 function GCodeParser(gcode){
     this.formatedGCode = "";
+    this.parsedGCode = [];
     this.gcodeScrubber = function(s, enc){
         var in_comment = false;
         for(var result = [], i=0, j=0; i<s.length; i++) {
@@ -1458,7 +1459,7 @@ function GCodeParser(gcode){
         try{
         for(var i = 0, len = lines.length; i < len; ++i){
             if(re.test(lines[i])){
-                console.log(JSON.stringify(gcodeLineParser.parse(lines[i])));
+                this.parsedGCode.push(gcodeLineParser.parse(lines[i]));
             }
         }
         }catch(e){

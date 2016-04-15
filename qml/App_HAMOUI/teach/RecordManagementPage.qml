@@ -4,8 +4,7 @@ import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
 import "../../utils/stringhelper.js" as ICString
-//import com.szhc.axis 1.0
-
+import "RecordManagementPage.js" as PData
 import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 
@@ -383,7 +382,8 @@ Rectangle {
             height: loadRecord.height
             visible: importFromUsbGCode.isChecked
             onButtonClicked: {
-                var cGC = new Utils.CompiledGCode(panelRobotController.usbFileContent(gCodeModel.get(recordsView.currentIndex).name, true));
+                PData.hcInterpreter.interprete(panelRobotController.usbFileContent(gCodeModel.get(recordsView.currentIndex).name, true));
+//                var cGC = new Utils.CompiledGCode();
             }
         }
     }

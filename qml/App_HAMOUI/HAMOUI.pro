@@ -9,5 +9,8 @@ settingpages/* \
 ../ICCustomElement/*
 }
 
+OTHER_FILES += \
+    teach/RecordManagementPage.js
+
 
 

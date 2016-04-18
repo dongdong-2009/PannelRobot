@@ -110,6 +110,12 @@ Rectangle {
                 autoTimer.stop();
             btnReleased()
         }
+        onExited: {
+            parent.color = bgColor;
+            if(isAutoRepeat)
+                autoTimer.stop();
+            btnReleased()
+        }
 
         onClicked: {
             buttonClicked()

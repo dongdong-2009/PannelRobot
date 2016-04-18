@@ -349,6 +349,34 @@
         <source>ALARM_STACK_SOURCE_ERR</source>
         <translation>堆叠数据源错误</translation>
     </message>
+    <message>
+        <source>ALARM_SINGLE_DEBUG_ERR</source>
+        <translation>单步/单循环调试程序设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_STORAGE_READ_ERR</source>
+        <translation>从主机FLASH读取的数据有错</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET_ERR</source>
+        <translation>与IO板通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_READ_ERR</source>
+        <translation>伺服绝对值位置读取失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_CRC_ERR</source>
+        <translation>伺服绝对值位置读取校验失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_FUNC_ERR</source>
+        <translation>伺服绝对值位置读取功能码错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
+        <translation>伺服绝对值位置读取超时</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>

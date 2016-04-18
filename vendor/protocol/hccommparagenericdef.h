@@ -719,12 +719,12 @@ typedef enum
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
-	ALARM_STORAGE_READ_ERR, // 从主机FLASH读取的数据有错
-    ALARM_IO_CONNET_ERR, // 与IO板通讯失败
-    ALARM_SERVO_ABS_READ_ERR, // 伺服绝对值位置读取失败
-    ALARM_SERVO_ABS_CRC_ERR, // 伺服绝对值位置读取校验失败
-    ALARM_SERVO_ABS_FUNC_ERR, // 伺服绝对值位置读取功能码错误
-    ALARM_SERVO_ABS_OVERTIME_ERR, // 伺服绝对值位置读取超时
+	ALARM_STORAGE_READ_ERR, //<名字：从主机FLASH读取的数据有错
+    ALARM_IO_CONNET_ERR, //<名字：与IO板通讯失败
+    ALARM_SERVO_ABS_READ_ERR, //<名字：伺服绝对值位置读取失败
+    ALARM_SERVO_ABS_CRC_ERR, //<名字：伺服绝对值位置读取校验失败
+    ALARM_SERVO_ABS_FUNC_ERR, //<名字：伺服绝对值位置读取功能码错误
+    ALARM_SERVO_ABS_OVERTIME_ERR, //<名字：伺服绝对值位置读取超时
 
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警

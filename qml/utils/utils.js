@@ -1472,7 +1472,7 @@ function GCodeParser(gcode){
 var GCodeInterpreter = {
     createNew:function(options){
         var interpreter = {}
-        interpreter._ = function(cdm, args){ return;}
+//        interpreter._ = function(cdm, args){ return;}
         interpreter._exec = function(cmd, args){
             if((cmd in this) && (typeof this[cmd] == 'function')) {
                 //                var f = this[cmd].bind(this);
@@ -1500,6 +1500,10 @@ var GCodeInterpreter = {
                     break;
                 }
             }
+            if(gCMDs.length == 0){
+                interpreter._NoCmd(args);
+            }
+
             for(i = 0; i < gCMDs.length; ++i){
                 interpreter._exec(gCMDs[i], args);
             }

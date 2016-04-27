@@ -1,4 +1,3 @@
-
 QT       += script
 #TEMPLATE = app
 VERSION = 1.0.0

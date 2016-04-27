@@ -9,5 +9,8 @@ settingpages/* \
 ../ICCustomElement/*
 }
 
+OTHER_FILES += \
+    ../tests/GcodeTests.qml
+
 
 

@@ -11,6 +11,7 @@ import "ICOperationLog.js" as ICOperationLog
 import "ExternalData.js" as ESData
 import "../utils/stringhelper.js" as ICString
 Rectangle {
+
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
     height: Theme.defaultTheme.MainWindow.height

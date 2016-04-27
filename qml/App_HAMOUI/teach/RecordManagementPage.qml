@@ -382,7 +382,7 @@ Rectangle {
             height: loadRecord.height
             visible: importFromUsbGCode.isChecked
             onButtonClicked: {
-                PData.hcInterpreter.interprete(panelRobotController.usbFileContent(gCodeModel.get(recordsView.currentIndex).name, true));
+//                PData.hcInterpreter.interprete(panelRobotController.usbFileContent(gCodeModel.get(recordsView.currentIndex).name, true));
 //                var cGC = new Utils.CompiledGCode();
             }
         }

@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/stringhelper.js" as ICString
+import "StackCustomPointEditor.js" as PData
 
 MouseArea{
     id:instance
@@ -41,6 +42,32 @@ MouseArea{
         border.width: 1
         border.color: "gray"
         color: "#A0A0F0"
+
+        ICFileSelector{
+            id:fileSelector
+            visible: false;
+            width: parent.width * 0.8
+            height: parent.height * 0.6
+            anchors.centerIn:  parent
+            z:10
+            onGotFileContent: {
+                pointModel.clear();
+                PData.hcInterpreter.interprete(content);
+                for(var i = 0, points = PData.hcInterpreter.interpretedPoints, len = points.length; i < len; ++i)
+                {
+                    pointModel.append({"pointName":qsTr("P") + i,
+                                      "pointPos":points[i]});
+                }
+
+            }
+        }
+
+        Text{
+            id:statistics
+            text: qsTr("Total:") + pointModel.count
+            anchors.right: close.left
+            anchors.rightMargin: 20
+        }
 
         ICButton{
             id:close
@@ -154,6 +181,18 @@ MouseArea{
                 }
             }
 
+
+            ICButton{
+                id:importFromCYGCode
+                text: qsTr("Import From \nCY GCode")
+                width: button_setWorldPos.width
+                height: button_setWorldPos.height
+                onButtonClicked: {
+//                    PData.hcInterpreter.interprte()
+                    fileSelector.visible = true;
+                }
+            }
+
         }
 
         ICButton{
@@ -191,6 +230,7 @@ MouseArea{
                 model: pointModel
                 clip: true
                 highlight: Rectangle { width: 490; height: 20;color: "lightsteelblue"; radius: 2}
+                highlightMoveDuration:100
                 delegate: Text {
                     verticalAlignment: Text.AlignVCenter
                     width: pointView.width

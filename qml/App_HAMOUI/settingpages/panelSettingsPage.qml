@@ -266,6 +266,9 @@ Item{
         else
             keyToneOff.setChecked(true);
 
+        panelRobotController.setKeyTone(keyToneOn.isChecked);
+
+
         var brightnessval = panelRobotController.getCustomSettings("Brightness", 8);
         brightness.setValue(brightnessval);
 

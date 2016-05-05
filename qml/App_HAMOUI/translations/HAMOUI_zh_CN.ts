@@ -826,7 +826,7 @@
     </message>
     <message>
         <source>Encode Type3</source>
-        <translation type="unfinished">绝对值 {3?}</translation>
+        <translation>无</translation>
     </message>
     <message>
         <source>Encoder Read Way</source>
@@ -843,6 +843,18 @@
     <message>
         <source>Encode RW3</source>
         <translation>RS485</translation>
+    </message>
+    <message>
+        <source>Axis Type</source>
+        <translation>轴类型</translation>
+    </message>
+    <message>
+        <source>Rotate</source>
+        <translation>旋转</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>直线</translation>
     </message>
 </context>
 <context>

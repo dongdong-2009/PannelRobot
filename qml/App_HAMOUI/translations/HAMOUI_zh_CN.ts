@@ -810,7 +810,7 @@
     </message>
     <message>
         <source>Motor 3</source>
-        <translation type="unfinished">安川 {3?}</translation>
+        <translation>台达伺服</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -834,7 +834,7 @@
     </message>
     <message>
         <source>Encode RW1</source>
-        <translation>RS485</translation>
+        <translation>脉冲</translation>
     </message>
     <message>
         <source>Encode RW2</source>
@@ -842,7 +842,7 @@
     </message>
     <message>
         <source>Encode RW3</source>
-        <translation type="unfinished">Can {3?}</translation>
+        <translation>RS485</translation>
     </message>
 </context>
 <context>

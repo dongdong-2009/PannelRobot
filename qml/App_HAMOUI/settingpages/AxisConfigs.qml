@@ -223,6 +223,18 @@ Item {
         panelRobotController.syncConfigs();
     }
 
+    function onAxisTypeChanged(){
+        var addr = currentGroupAddr(8);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, axisType.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, axisType.text(axisType.configValue), axisType.text(oldV));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
@@ -247,6 +259,7 @@ Item {
         updateConfigValue(pLimitPoint, pdata.configAddrs[which][5], onPLimitPointChanged);
         updateConfigValue(nLimitPoint, pdata.configAddrs[which][6], onNLimitPointChanged);
         updateConfigValue(originPoint, pdata.configAddrs[which][7], onOriginPointChanged);
+        updateComboBoxValue(axisType, pdata.configAddrs[which][8], onAxisTypeChanged);
         updateConfigValue(acc1, pdata.configAddrs[which][10], onAcc1Changed);
         updateConfigValue(acc2, pdata.configAddrs[which][11], onAcc2Changed);
         updateConfigValue(maxSpeed, pdata.configAddrs[which][12], onMaxSpeedChanged);
@@ -364,7 +377,7 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3")]
-                    z:4
+                    z:5
                 }
                 ICComboBoxConfigEdit{
                     id:encoderType
@@ -372,7 +385,7 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3")]
-                    z:3
+                    z:4
                 }
                 ICComboBoxConfigEdit{
                     id:encoderReadWay
@@ -380,6 +393,15 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Encode RW1"), qsTr("Encode RW2"), qsTr("Encode RW3")]
+                    z:3
+                }
+
+                ICComboBoxConfigEdit{
+                    id:axisType
+                    configName: qsTr("Axis Type")
+                    configNameWidth: pdata.configNameWidth
+                    inputWidth: pdata.inputWidth
+                    items:[qsTr("Rotate"), qsTr("Line")]
                     z:2
                 }
 

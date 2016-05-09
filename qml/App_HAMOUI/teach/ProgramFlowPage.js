@@ -1,3 +1,6 @@
+.pragma library
+
+
 var programs = [];
 var functions = {};
 var programToInsertIndex = [];

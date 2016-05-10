@@ -2006,6 +2006,10 @@
         <source>Struct Configs</source>
         <translation>结构参数</translation>
     </message>
+    <message>
+        <source>System Configs</source>
+        <translation>系统参数</translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -3232,7 +3236,7 @@ please chose!</source>
     <name>StructConfigs</name>
     <message>
         <source>Length</source>
-        <translation>臂长</translation>
+        <translation>每转距离</translation>
     </message>
     <message>
         <source>Machine Struct 1</source>
@@ -3356,6 +3360,13 @@ please chose!</source>
     <message>
         <source>Sync End</source>
         <translation>同步结束</translation>
+    </message>
+</context>
+<context>
+    <name>SystemConfigs</name>
+    <message>
+        <source>Host Board</source>
+        <translation>主板选择</translation>
     </message>
 </context>
 <context>

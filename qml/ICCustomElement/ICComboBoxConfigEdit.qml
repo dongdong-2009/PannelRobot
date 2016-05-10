@@ -4,11 +4,15 @@ Item {
     property alias configName: configName.text
     property string configAddr:""
     property alias configValue: edit.currentIndex
+
 //    property string configText:edit.currentText
     property alias configNameWidth: configName.width
     property alias inputWidth: edit.width
     property alias items: edit.items
     property alias popupMode : edit.popupMode
+    property alias popupHeight: edit.popupHeight
+    property variant indexMappedValue: []
+
 
     function configText(){
         return edit.currentText();

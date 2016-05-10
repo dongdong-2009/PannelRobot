@@ -14,11 +14,39 @@ extern "C"
 {
 #endif
 #define DEBUG_TEST  1 //< 测试
+#define ABS_DEBUG_TEST 0 //< 绝对值电机读数测试
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
 
-#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.4"
+/// ----------------------------------------------------------------------------------
+typedef enum {
+	S2V30	= 0x0000,
+	S2V31,
+
+	S3V2x	= 0x0010,
+	S3V30,
+	S3V31,
+	S3V32,
+	S3V33,
+	S3V34,
+
+	S5V2x	= 0x0020,
+	S5V30,
+	S5V31,
+	S5V32,
+	S5V33,
+
+//	ServerV10	= 0x0030,
+//	ServerV11,
+
+	C6V10	= 0x0040,
+	C6V11,
+	C6V12,
+	C6V13,
+
+} BoardId;
+#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.5"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -715,7 +743,7 @@ typedef enum
     ALARM_EMERGENCY_STOP,//<名字：紧急停止
     ALARM_AUTO_JUMP_ERR, //<名字：自动运行跳转错误
     ALARM_LINK_HOST_FAIL, //<名字：连接主机失败
-    ALARM_PROGRAM_ERR, //<名字：教导程序错误
+    ALARM_PROGRAM_ERR=10, //<名字：教导程序错误
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
@@ -948,7 +976,8 @@ typedef struct {
     uint32_t a4; //<类型:系统;名字:轴4偏角;精度:3;单位:;
     uint32_t a5; //<类型:系统;名字:轴5偏角;精度:3;单位:;
     uint32_t a6; //<类型:系统;名字:轴6偏角;精度:3;单位:;
-    uint32_t res[11]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t res[10]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t haardware_version; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;
 

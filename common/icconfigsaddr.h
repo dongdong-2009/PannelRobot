@@ -177,7 +177,7 @@ extern  const ICAddrWrapper  s_rw_0_32_0_180;    //< 11829275 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_181;    //< 11894811 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_182;    //< 11960347 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_183;    //< 12025883 机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_184;    //< 12091419 机械结构预留
+extern  const ICAddrWrapper  s_rw_0_32_0_184;    //< 12091419 机械结构主机硬件版本
 extern  const ICAddrWrapper  s_rw_0_32_0_185;    //< 12156955 电机配置crc电机配置crc
 extern  const ICAddrWrapper  s_rw_0_32_3_186;    //< 3233447963 插补1最大线速度最大线速度
 extern  const ICAddrWrapper  s_rw_0_16_3_187;  //< 3233497115 插补1最小加速时间_二次加速时间比例最小加速时间

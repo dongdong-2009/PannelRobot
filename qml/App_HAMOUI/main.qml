@@ -567,43 +567,9 @@ Rectangle {
     }
 
     function onETH0DataIn(data){
-        //        data = ICString.icStrformat('{"dsID":"www.geforcevision.com.cam","dsData":[{0}]}',data);
-        var basePoint = {"m0":85.627, "m1":599.019, "m2":0, "m3":0, "m4":0, "m5":0};
-        var testPoints = [
-                    {"m0":-31.647, "m1":490.700, "m2":0, "m3":0, "m4":0, "m5":0},
-                   {"m0":77.354, "m1":374.612, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":194.392, "m1":484.078, "m2":0, "m3":0, "m4":0, "m5":0}
-/*                     {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0},
-                    {"m0":0, "m1":0, "m2":0, "m3":0, "m4":0, "m5":0}*/]
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
         console.log("cam data:", JSON.stringify(posData));
-        var diffData = posData.dsData[0];
-        var diffAngle = diffData.m5;
-        diffData.m5 *= Math.PI / 180;
-        var xEnd, yEnd;
-
-        for(var i = 0; i < testPoints.length; ++i){
-//            testPoints[i].m0 = (testPoints[i].m0)* Math.cos(diffData.m5)
-//            testPoints[i].m0 += (diffData.m0 - basePoint.m0);
-//            testPoints[i].m1 += (diffData.m1 - basePoint.m1);
-            xEnd= (testPoints[i].m0 - basePoint.m0)* Math.cos(diffData.m5) - (testPoints[i].m1 - basePoint.m1) * Math.sin(diffData.m5) + diffData.m0;
-            yEnd= (testPoints[i].m0 - basePoint.m0)* Math.sin(diffData.m5) + (testPoints[i].m1 - basePoint.m1) * Math.cos(diffData.m5) + diffData.m1;
-            testPoints[i].m0 = xEnd;
-            testPoints[i].m1 = yEnd;
-            testPoints[i].m5 = diffAngle;
-        }
-
-        posData.dsData = testPoints;
 
         panelRobotController.sendExternalDatas(JSON.stringify(posData));
     }

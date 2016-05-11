@@ -107,11 +107,15 @@ usr_bin_scripts.files += $${reinstallDir}/usr_bin_scripts/*
 usr_bin_scripts.files += $${reinstallDir}/$${SK_SIZE}RunApp/*
 usr_sbin_scripts.path = /usr/sbin
 usr_sbin_scripts.files += $${reinstallDir}/usr_sbin_scripts/*
+configs.path = /opt/Qt/apps/sysconfig
+configs.files += $${reinstallDir}/configs/PanelRobot.ini
+testapp.path = /opt/Qt/apps
+testapp.files += $${reinstallDir}/3a8HardwareTest-8-inch
 
 qmls.path = $${target.path}/qml
 qmls.files += qml/App_*
 
-INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls
+INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls configs testapp
 #INSTALLS += target
 message($${INSTALLS})
 

@@ -1258,3 +1258,22 @@ void PanelRobotController::sendExternalDatas(const QString& dsData)
     if(ds.size() != 0)
         ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);
 }
+
+void PanelRobotController::setWatchDogEnabled(bool en)
+{
+
+#ifdef Q_WS_QWS
+    int flags;
+    if(en)
+    {
+        flags = WDIOS_ENABLECARD;
+        ioctl(wdFD, WDIOC_SETTIMEOUT, &checkTime);
+    }
+    else
+    {
+        flags = WDIOS_DISABLECARD;
+    }
+    ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
+#endif
+
+}

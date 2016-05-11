@@ -598,6 +598,20 @@ Rectangle {
     Keys.onPressed: {
         var key = event.key;
         //        console.log("Main key press exec", key);
+        if(key === Keymap.KNOB_MANUAL ||
+                key === Keymap.KNOB_SETTINGS ||
+                key === Keymap.KNOB_AUTO){
+            Keymap.currentKeySequence.length = 0;
+        }
+        else{
+            Keymap.currentKeySequence.push(key);
+            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length){
+                if(Keymap.matchHWTestSequence())
+                    panelRobotController.runHardwareTest();
+                Keymap.currentKeySequence.length = 0;
+            }
+        }
+
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, true);
         }else if(Keymap.isCommandKeyType(key)){

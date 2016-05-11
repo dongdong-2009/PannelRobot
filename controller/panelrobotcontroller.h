@@ -698,6 +698,16 @@ public:
         return ICRobotVirtualhost::MultiplexingConfig(addr);
     }
 
+    Q_INVOKABLE void runHardwareTest()
+    {
+        setWatchDogEnabled(false);
+        ::system("chmod +x /usr/bin/run_boardtest.sh && run_boardtest.sh");
+        setWatchDogEnabled(true);
+
+    }
+
+    Q_INVOKABLE void setWatchDogEnabled(bool en);
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

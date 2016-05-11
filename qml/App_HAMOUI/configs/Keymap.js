@@ -350,3 +350,17 @@ function endSpeedCalcByTime(current, dir){
 function endSpeedCaclByTimeStop(){
     speedInfo.changeCount = 0;
 }
+
+var hwtestSequence = [ KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5];
+var currentKeySequence = [];
+function matchHWTestSequence(){
+    if(currentKeySequence.length == hwtestSequence.length)
+    {
+        for(var i = 0, len = currentKeySequence.length; i < len; ++i){
+            if(currentKeySequence[i] != hwtestSequence[i])
+                return false;
+        }
+        return true;
+    }
+    return false;
+}

@@ -99,7 +99,7 @@ db.files += $${reinstallDir}/RobotDatabase
 }
 CONFIG(Reinstall, debug|release|Reinstall){
 message("in Reinstall")
-INSTALLS += db
+INSTALLS += db configs
 }
 
 #db.path = /opt/Qt/apps/
@@ -114,12 +114,13 @@ usr_sbin_scripts.files += $${reinstallDir}/usr_sbin_scripts/*
 configs.path = /opt/Qt/apps/sysconfig
 configs.files += $${reinstallDir}/configs/PanelRobot.ini
 testapp.path = /opt/Qt/apps
-testapp.files += $${reinstallDir}/3a8HardwareTest-8-inch
+testapp.files += $${reinstallDir}/3a8HardwareTest*
 
 qmls.path = $${target.path}/qml
 qmls.files += qml/App_*
 
-INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls configs testapp
+INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls testapp
+
 #INSTALLS += target
 message($${INSTALLS})
 

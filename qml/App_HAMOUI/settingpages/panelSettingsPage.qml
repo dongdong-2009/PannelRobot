@@ -17,6 +17,7 @@ Item{
             tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes"), qsTr("No"));
         }
     }
+
     ICMessageBox{
         id:tip
         z:100

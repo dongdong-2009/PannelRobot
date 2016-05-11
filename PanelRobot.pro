@@ -93,9 +93,13 @@ updateDir = tools/Update
 target.path = /opt/Qt/apps
 
 CONFIG(release, debug|release) {
+message("in release")
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
-#INSTALLS += db
+}
+CONFIG(Reinstall, debug|release|Reinstall){
+message("in Reinstall")
+INSTALLS += db
 }
 
 #db.path = /opt/Qt/apps/

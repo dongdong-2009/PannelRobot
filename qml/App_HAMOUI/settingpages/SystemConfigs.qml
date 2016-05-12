@@ -10,6 +10,7 @@ Item {
     ICSettingConfigsScope{
         anchors.fill: parent
         Grid{
+            spacing: 20
             ICComboBoxConfigEdit{
                 id:hostBoard
                 configName: qsTr("Host Board")

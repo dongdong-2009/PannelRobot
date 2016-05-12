@@ -178,6 +178,7 @@ var CMD_KEY_ORIGIN   = 0x0A02; //< 原点命令
 var CMD_KEY_RETURN   = 0x0A03; //< 复归命令
 var CMD_KEY_UP       = 0x0A04; //< 上命令
 var CMD_KEY_DOWN     = 0x0A05; //< 下命令
+var CMD_KEY_CONTINUE = 0x0A06; //< 清除报警后继续运行
 
 var CMD_INVALID = 0x7FFF;
 

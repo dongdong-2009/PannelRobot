@@ -13,7 +13,7 @@ Item {
             ICComboBoxConfigEdit{
                 id:hostBoard
                 configName: qsTr("Host Board")
-                configAddr: "s_rw_0_32_0_184"
+                configAddr: "s_rw_0_16_0_184"
                 popupHeight: 200
                 items: ["S2V30",
                     "S2V31",
@@ -39,6 +39,23 @@ Item {
                     0x0040,0x0041,0x0042,0x0043
                 ]
             }
+            ICComboBoxConfigEdit{
+                id:machineType
+                configName: qsTr("Machine Type")
+                configAddr: "s_rw_24_8_0_184"
+                popupHeight: 200
+                items: [qsTr("kSttIndependent"), qsTr("kSttPP"), qsTr("kSttRR"),
+                qsTr("kSttPPP"), qsTr("kSttRTR"), qsTr("kSttRRP"), qsTr("kSttRRPR"),
+                qsTr("kSttRTRT"), qsTr("kSttRTRTTT"), qsTr("kStt5P"), qsTr("kSttPPP_RRR"),
+                qsTr("kSttRRPR_BRT"), qsTr("kSttRTRTTT_EX")]
+            }
+            ICConfigEdit{
+                id:axisNum
+                configName: qsTr("Axis Num")
+                configAddr: "s_rw_16_8_0_184"
+            }
+
+
         }
         onConfigValueChanged: {
             console.log(addr, newV, oldV);

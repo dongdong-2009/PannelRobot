@@ -259,7 +259,9 @@ var machineStructConfigs = [
             "s_rw_0_32_0_181",
             "s_rw_0_32_0_182",
             "s_rw_0_32_0_183",
-            "s_rw_0_32_0_184",
+            "s_rw_0_16_0_184",
+            "s_rw_16_8_0_184",
+            "s_rw_24_8_0_184"
         ];
 var machineStructConfigsJSON = JSON.stringify(machineStructConfigs);
 

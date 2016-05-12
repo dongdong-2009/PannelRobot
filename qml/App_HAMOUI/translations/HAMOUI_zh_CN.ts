@@ -594,6 +594,17 @@
     </message>
 </context>
 <context>
+    <name>AutoAlarmTipPage</name>
+    <message>
+        <source>Continue</source>
+        <translation>清报警继续</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+</context>
+<context>
     <name>AutoRunInfoPage</name>
     <message>
         <source>Last Cycle:</source>
@@ -2198,15 +2209,17 @@
         <source>1.Mode 1
 2.Mode 2
 3.Mode 3</source>
-        <translation type="unfinished"></translation>
+        <translation>1.已在原点附近:位置大概在原点附近时使用
+2.关机前已急停:只有确定关机前已经拍下急停了才能使用
+3.重新归原点:已在原点附近没归到位的时候,再次归原点的时候使用</translation>
     </message>
     <message>
         <source>Show Help</source>
-        <translation type="unfinished"></translation>
+        <translation>显示帮助</translation>
     </message>
     <message>
         <source>Hide Help</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏帮助</translation>
     </message>
 </context>
 <context>
@@ -3367,6 +3380,66 @@ please chose!</source>
     <message>
         <source>Host Board</source>
         <translation>主板选择</translation>
+    </message>
+    <message>
+        <source>Machine Type</source>
+        <translation>机器类型</translation>
+    </message>
+    <message>
+        <source>kSttIndependent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttPP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttPPP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRRP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRRPR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRTRT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRTRTTT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kStt5P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttPPP_RRR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRRPR_BRT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kSttRTRTTT_EX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis Num</source>
+        <translation>轴数</translation>
     </message>
 </context>
 <context>

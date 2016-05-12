@@ -18,6 +18,26 @@ extern "C"
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
+/// ----------------------------------------------------------------------------------
+// P - 垂直于前一连杆的平移关节
+// R - 旋转平面与前一连杆的旋转平面平行的旋转关节
+// T - 旋转平面与前一连杆的旋转平面垂直的旋转关节
+/// ----------------------------------------------------------------------------------
+typedef enum {
+	kSttIndependent,	// 独立关节
+	kSttPP,		// 平面互相垂直的两平移关节
+	kSttRR,		// 平面串联的两旋转关节
+	kSttPPP,	// 平面互相垂直的三平移关节
+	kSttRTR,	// PUMA560 前三关节
+	kSttRRP,	// SCARA 前三关节
+	kSttRRPR,	// SCARA 四关节
+	kSttRTRT,	// PUMA560 前四关节
+	kSttRTRTTT,	// PUMA560 六关节
+	kStt5P,		//
+	kSttPPP_RRR,// 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
+	kSttRRPR_BRT,	// SCARA 四关节
+	kSttRTRTTT_EX,	// PUMA560 六关节
+} MechanismType;
 
 /// ----------------------------------------------------------------------------------
 typedef enum {
@@ -576,6 +596,7 @@ typedef enum
     CMD_KEY_RETURN   = 0x0A03,//< 复归命令
     CMD_KEY_UP       = 0x0A04,//< 上命令
     CMD_KEY_DOWN     = 0x0A05,//< 下命令
+    CMD_KEY_CONTINUE = 0x0A06,//< 清除报警后继续运行
 
 
     CMD_USE_HOST_PARA     = 0x1000,//< 选择使用主机参数
@@ -976,8 +997,12 @@ typedef struct {
     uint32_t a4; //<类型:系统;名字:轴4偏角;精度:3;单位:;
     uint32_t a5; //<类型:系统;名字:轴5偏角;精度:3;单位:;
     uint32_t a6; //<类型:系统;名字:轴6偏角;精度:3;单位:;
-    uint32_t res[10]; //<类型:系统;名字:预留;精度:0;单位:;
-    uint32_t haardware_version; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
+    uint32_t X1ecc; //<类型:系统;名字:一轴X方向偏心;精度:3;单位:mm;
+    uint32_t Y1ecc; //<类型:系统;名字:一轴X方向偏心;精度:3;单位:mm;
+    uint32_t res[8]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t haardware_version:16; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
+    uint32_t axisnum:8; //<类型:系统;名字:轴数设定;精度:0;单位:;
+    uint32_t mechantype:8; //<类型:系统;名字:机型设定;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;
 

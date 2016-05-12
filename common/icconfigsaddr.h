@@ -167,8 +167,8 @@ extern  const ICAddrWrapper  s_rw_0_32_3_170;    //< 3232399387 机械结构轴3
 extern  const ICAddrWrapper  s_rw_0_32_3_171;    //< 3232464923 机械结构轴4偏角
 extern  const ICAddrWrapper  s_rw_0_32_3_172;    //< 3232530459 机械结构轴5偏角
 extern  const ICAddrWrapper  s_rw_0_32_3_173;    //< 3232595995 机械结构轴6偏角
-extern  const ICAddrWrapper  s_rw_0_32_0_174;    //< 11436059 机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_175;    //< 11501595 机械结构预留
+extern  const ICAddrWrapper  s_rw_0_32_3_174;    //< 3232661531 机械结构一轴X方向偏心
+extern  const ICAddrWrapper  s_rw_0_32_3_175;    //< 3232727067 机械结构一轴X方向偏心
 extern  const ICAddrWrapper  s_rw_0_32_0_176;    //< 11567131 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_177;    //< 11632667 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_178;    //< 11698203 机械结构预留
@@ -177,7 +177,9 @@ extern  const ICAddrWrapper  s_rw_0_32_0_180;    //< 11829275 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_181;    //< 11894811 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_182;    //< 11960347 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_183;    //< 12025883 机械结构预留
-extern  const ICAddrWrapper  s_rw_0_32_0_184;    //< 12091419 机械结构主机硬件版本
+extern  const ICAddrWrapper  s_rw_0_16_0_184;  //< 12075035 机械结构主机硬件版本
+extern  const ICAddrWrapper  s_rw_16_8_0_184;  //< 12067355 机械结构轴数设定
+extern  const ICAddrWrapper  s_rw_24_8_0_184;  //< 12067611 机械结构机型设定
 extern  const ICAddrWrapper  s_rw_0_32_0_185;    //< 12156955 电机配置crc电机配置crc
 extern  const ICAddrWrapper  s_rw_0_32_3_186;    //< 3233447963 插补1最大线速度最大线速度
 extern  const ICAddrWrapper  s_rw_0_16_3_187;  //< 3233497115 插补1最小加速时间_二次加速时间比例最小加速时间

@@ -325,6 +325,14 @@ Rectangle {
         visible: false
         anchors.centerIn: parent
     }
+    AutoAlarmTipPage{
+        id:autoAlarmTipPage
+        z:101
+        visible: false
+        anchors.centerIn: parent
+
+    }
+
     ParaChose{
         id:paraChose
         visible: false
@@ -609,6 +617,14 @@ Rectangle {
                 if(Keymap.matchHWTestSequence())
                     panelRobotController.runHardwareTest();
                 Keymap.currentKeySequence.length = 0;
+            }
+        }
+
+        if(key == Keymap.KEY_Stop){
+            if(panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
+                    panelRobotController.currentMode() == Keymap.CMD_SINGLE){
+                autoAlarmTipPage.visible = true;
+                return;
             }
         }
 

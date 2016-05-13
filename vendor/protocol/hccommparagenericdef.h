@@ -14,7 +14,7 @@ extern "C"
 {
 #endif
 #define DEBUG_TEST  1 //< 测试
-#define ABS_DEBUG_TEST 0 //< 绝对值电机读数测试
+#define ABS_DEBUG_TEST 1 //< 绝对值电机读数测试
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
@@ -35,7 +35,7 @@ typedef enum {
 	kSttRTRTTT,	// PUMA560 六关节
 	kStt5P,		//
 	kSttPPP_RRR,// 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
-	kSttRRPR_BRT,	// SCARA 四关节
+	kSttRRPR_BRT,	// 伯朗特 SCARA 四关节
 	kSttRTRTTT_EX,	// PUMA560 六关节
 } MechanismType;
 
@@ -66,7 +66,7 @@ typedef enum {
 	C6V13,
 
 } BoardId;
-#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.5"
+#define SOFTWARE_VERSION  "HC_S6-0.1-0.5"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -947,7 +947,7 @@ static const uint32_t axis_cfg_addr[] = {
 typedef struct {  //<192 + 14X8 = 304
     uint32_t length;           //<类型：系统；名字：臂长/半径；精度：3;单位：mm；
     uint32_t ppc:16;           //<类型：系统；名字：每转脉冲数；精度：0;单位：num；
-    uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：0;单位：num；
+    uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：2;单位：num；
     uint32_t soft_limit_p:16;  //<类型：系统；名字：正向软极限；精度：0;单位：度；
     uint32_t soft_limit_n:16;  //<类型：系统；名字：负向软极限；精度：0;单位：度；
     uint32_t type:4;           //<类型：系统；名字：编码器类型；精度：0;单位：；

@@ -2,7 +2,7 @@
 
 extern  const ICAddrWrapper  s_rw_0_32_3_100(3,3,0,32,100,3,"mm");    //<电机1臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_101(3,3,0,16,101,0,"num");   //<电机1每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_101(3,3,16,16,101,0,"num");   //<电机1减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_101(3,3,16,16,101,2,"num");   //<电机1减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_102(3,3,0,16,102,0,"度");   //<电机1正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_102(3,3,16,16,102,0,"度");   //<电机1负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_103(3,3,0,4,103,0,"");   //<电机1编码器类型
@@ -20,7 +20,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_106(3,3,0,16,106,3,"s");   //<电机1�
 extern  const ICAddrWrapper  s_rw_16_16_3_106(3,3,16,16,106,3,"");   //<电机1二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_107(3,3,0,32,107,3,"mm");    //<电机2臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_108(3,3,0,16,108,0,"num");   //<电机2每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_108(3,3,16,16,108,0,"num");   //<电机2减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_108(3,3,16,16,108,2,"num");   //<电机2减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_109(3,3,0,16,109,0,"度");   //<电机2正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_109(3,3,16,16,109,0,"度");   //<电机2负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_110(3,3,0,4,110,0,"");   //<电机2编码器类型
@@ -38,7 +38,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_113(3,3,0,16,113,3,"s");   //<电机2�
 extern  const ICAddrWrapper  s_rw_16_16_3_113(3,3,16,16,113,3,"");   //<电机2二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_114(3,3,0,32,114,3,"mm");    //<电机3臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_115(3,3,0,16,115,0,"num");   //<电机3每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_115(3,3,16,16,115,0,"num");   //<电机3减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_115(3,3,16,16,115,2,"num");   //<电机3减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_116(3,3,0,16,116,0,"度");   //<电机3正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_116(3,3,16,16,116,0,"度");   //<电机3负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_117(3,3,0,4,117,0,"");   //<电机3编码器类型
@@ -56,7 +56,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_120(3,3,0,16,120,3,"s");   //<电机3�
 extern  const ICAddrWrapper  s_rw_16_16_3_120(3,3,16,16,120,3,"");   //<电机3二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_121(3,3,0,32,121,3,"mm");    //<电机4臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_122(3,3,0,16,122,0,"num");   //<电机4每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_122(3,3,16,16,122,0,"num");   //<电机4减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_122(3,3,16,16,122,2,"num");   //<电机4减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_123(3,3,0,16,123,0,"度");   //<电机4正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_123(3,3,16,16,123,0,"度");   //<电机4负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_124(3,3,0,4,124,0,"");   //<电机4编码器类型
@@ -74,7 +74,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_127(3,3,0,16,127,3,"s");   //<电机4�
 extern  const ICAddrWrapper  s_rw_16_16_3_127(3,3,16,16,127,3,"");   //<电机4二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_128(3,3,0,32,128,3,"mm");    //<电机5臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_129(3,3,0,16,129,0,"num");   //<电机5每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_129(3,3,16,16,129,0,"num");   //<电机5减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_129(3,3,16,16,129,2,"num");   //<电机5减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_130(3,3,0,16,130,0,"度");   //<电机5正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_130(3,3,16,16,130,0,"度");   //<电机5负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_131(3,3,0,4,131,0,"");   //<电机5编码器类型
@@ -92,7 +92,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_134(3,3,0,16,134,3,"s");   //<电机5�
 extern  const ICAddrWrapper  s_rw_16_16_3_134(3,3,16,16,134,3,"");   //<电机5二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_135(3,3,0,32,135,3,"mm");    //<电机6臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_136(3,3,0,16,136,0,"num");   //<电机6每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_136(3,3,16,16,136,0,"num");   //<电机6减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_136(3,3,16,16,136,2,"num");   //<电机6减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_137(3,3,0,16,137,0,"度");   //<电机6正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_137(3,3,16,16,137,0,"度");   //<电机6负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_138(3,3,0,4,138,0,"");   //<电机6编码器类型
@@ -110,7 +110,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_141(3,3,0,16,141,3,"s");   //<电机6�
 extern  const ICAddrWrapper  s_rw_16_16_3_141(3,3,16,16,141,3,"");   //<电机6二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_142(3,3,0,32,142,3,"mm");    //<电机7臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_143(3,3,0,16,143,0,"num");   //<电机7每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_143(3,3,16,16,143,0,"num");   //<电机7减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_143(3,3,16,16,143,2,"num");   //<电机7减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_144(3,3,0,16,144,0,"度");   //<电机7正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_144(3,3,16,16,144,0,"度");   //<电机7负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_145(3,3,0,4,145,0,"");   //<电机7编码器类型
@@ -128,7 +128,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_148(3,3,0,16,148,3,"s");   //<电机7�
 extern  const ICAddrWrapper  s_rw_16_16_3_148(3,3,16,16,148,3,"");   //<电机7二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_149(3,3,0,32,149,3,"mm");    //<电机8臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_150(3,3,0,16,150,0,"num");   //<电机8每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_150(3,3,16,16,150,0,"num");   //<电机8减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_150(3,3,16,16,150,2,"num");   //<电机8减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_151(3,3,0,16,151,0,"度");   //<电机8正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_151(3,3,16,16,151,0,"度");   //<电机8负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_152(3,3,0,4,152,0,"");   //<电机8编码器类型

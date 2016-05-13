@@ -2,7 +2,7 @@
 
 extern  const ICAddrWrapper  s_rw_0_32_3_100;    //< 3227811867 电机1臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_101;  //< 6635547 电机1每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_101;  //< 6636059 电机1减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_101;  //< 2154119707 电机1减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_102;  //< 6701083 电机1正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_102;  //< 6701595 电机1负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_103;  //< 6754331 电机1编码器类型
@@ -20,7 +20,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_106;  //< 3228188699 电机1最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_106;  //< 3228189211 电机1二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_107;    //< 3228270619 电机2臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_108;  //< 7094299 电机2每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_108;  //< 7094811 电机2减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_108;  //< 2154578459 电机2减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_109;  //< 7159835 电机2正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_109;  //< 7160347 电机2负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_110;  //< 7213083 电机2编码器类型
@@ -38,7 +38,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_113;  //< 3228647451 电机2最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_113;  //< 3228647963 电机2二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_114;    //< 3228729371 电机3臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_115;  //< 7553051 电机3每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_115;  //< 7553563 电机3减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_115;  //< 2155037211 电机3减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_116;  //< 7618587 电机3正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_116;  //< 7619099 电机3负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_117;  //< 7671835 电机3编码器类型
@@ -56,7 +56,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_120;  //< 3229106203 电机3最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_120;  //< 3229106715 电机3二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_121;    //< 3229188123 电机4臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_122;  //< 8011803 电机4每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_122;  //< 8012315 电机4减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_122;  //< 2155495963 电机4减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_123;  //< 8077339 电机4正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_123;  //< 8077851 电机4负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_124;  //< 8130587 电机4编码器类型
@@ -74,7 +74,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_127;  //< 3229564955 电机4最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_127;  //< 3229565467 电机4二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_128;    //< 3229646875 电机5臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_129;  //< 8470555 电机5每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_129;  //< 8471067 电机5减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_129;  //< 2155954715 电机5减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_130;  //< 8536091 电机5正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_130;  //< 8536603 电机5负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_131;  //< 8589339 电机5编码器类型
@@ -92,7 +92,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_134;  //< 3230023707 电机5最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_134;  //< 3230024219 电机5二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_135;    //< 3230105627 电机6臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_136;  //< 8929307 电机6每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_136;  //< 8929819 电机6减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_136;  //< 2156413467 电机6减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_137;  //< 8994843 电机6正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_137;  //< 8995355 电机6负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_138;  //< 9048091 电机6编码器类型
@@ -110,7 +110,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_141;  //< 3230482459 电机6最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_141;  //< 3230482971 电机6二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_142;    //< 3230564379 电机7臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_143;  //< 9388059 电机7每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_143;  //< 9388571 电机7减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_143;  //< 2156872219 电机7减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_144;  //< 9453595 电机7正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_144;  //< 9454107 电机7负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_145;  //< 9506843 电机7编码器类型
@@ -128,7 +128,7 @@ extern  const ICAddrWrapper  s_rw_0_16_3_148;  //< 3230941211 电机7最小加�
 extern  const ICAddrWrapper  s_rw_16_16_3_148;  //< 3230941723 电机7二次加速时间比例
 extern  const ICAddrWrapper  s_rw_0_32_3_149;    //< 3231023131 电机8臂长/半径
 extern  const ICAddrWrapper  s_rw_0_16_0_150;  //< 9846811 电机8每转脉冲数
-extern  const ICAddrWrapper  s_rw_16_16_0_150;  //< 9847323 电机8减速比
+extern  const ICAddrWrapper  s_rw_16_16_2_150;  //< 2157330971 电机8减速比
 extern  const ICAddrWrapper  s_rw_0_16_0_151;  //< 9912347 电机8正向软极限
 extern  const ICAddrWrapper  s_rw_16_16_0_151;  //< 9912859 电机8负向软极限
 extern  const ICAddrWrapper  s_rw_0_4_0_152;  //< 9965595 电机8编码器类型

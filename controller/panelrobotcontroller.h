@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QSettings>
 #include "icrobotmold.h"
+#include "icmachineconfig.h"
 #include "icrobotvirtualhost.h"
 //#include <QtDeclarative>
 #include <QScriptEngine>
@@ -324,6 +325,24 @@ public:
 
         return ret;
     }
+
+    Q_INVOKABLE bool loadSysconfig(const QString& name)
+    {
+        ICMachineConfigPTR mold = ICMachineConfig::CurrentMachineConfig();
+        bool ret =  mold->LoadMachineConfig(name);
+
+        if(ret)
+        {
+            ICRobotVirtualhost::InitMachineConfig(host_,mold->BareMachineConfigs());
+            ICAppSettings as;
+            as.SetCurrentSystemConfig(name);
+
+            emit moldChanged();
+        }
+
+        return ret;
+    }
+
 
     Q_INVOKABLE QString currentRecordName() const
     {

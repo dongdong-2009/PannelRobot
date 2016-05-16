@@ -49,6 +49,7 @@ Item {
                 qsTr("kSttPPP"), qsTr("kSttRTR"), qsTr("kSttRRP"), qsTr("kSttRRPR"),
                 qsTr("kSttRTRT"), qsTr("kSttRTRTTT"), qsTr("kStt5P"), qsTr("kSttPPP_RRR"),
                 qsTr("kSttRRPR_BRT"), qsTr("kSttRTRTTT_EX")]
+
             }
             ICConfigEdit{
                 id:axisNum
@@ -63,6 +64,11 @@ Item {
             ICOperationLog.opLog.appendNumberConfigOperationLog(addr, newV, oldV);
             panelRobotController.setConfigValue("s_rw_0_32_0_185", panelRobotController.configsCheckSum(ConfigDefines.machineStructConfigsJSON));
             panelRobotController.syncConfigs();
+
+            if(addr == "s_rw_24_8_0_184"){
+                panelRobotController.loadSysconfig(machineType.configText());
+            }
+            machineType.configValue = newV;
         }
     }
 }

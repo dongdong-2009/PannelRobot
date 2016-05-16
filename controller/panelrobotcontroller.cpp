@@ -4,7 +4,6 @@
 #include <QApplication>
 #include <QVariant>
 #include "icappsettings.h"
-#include "icmachineconfig.h"
 //#include "icdalhelper.h"
 #include "icconfigsaddr.h"
 #include "parser.h"

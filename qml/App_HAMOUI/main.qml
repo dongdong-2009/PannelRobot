@@ -620,7 +620,7 @@ Rectangle {
             }
         }
 
-        if((key === Keymap.KEY_Stop) || (panelRobotController.currentErrNum() !== 0)){
+        if((key === Keymap.KEY_Stop) && (panelRobotController.currentErrNum() !== 0)){
             if(panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
                     panelRobotController.currentMode() == Keymap.CMD_SINGLE){
                 autoAlarmTipPage.visible = true;

@@ -67,8 +67,11 @@ Item {
 
             if(addr == "s_rw_24_8_0_184"){
                 panelRobotController.loadSysconfig(machineType.configText());
+                machineType.configValue = newV;
             }
-            machineType.configValue = newV;
         }
+    }
+    Component.onCompleted: {
+        console.log("SystemConfigs onCompleted")
     }
 }

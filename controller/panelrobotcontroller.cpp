@@ -880,6 +880,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
     for(int i = 0; i < result.size(); ++i)
     {
         moldName = result.at(i).toString();
+        moldInfo.clear();
 #ifdef Q_WS_QWS
         moldName = moldName.toUtf8();
 #endif
@@ -887,6 +888,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         if(file.open(QFile::ReadOnly))
         {
             actContent = QString::fromUtf8(file.readAll());
+            qDebug()<<"IMPOrt:"<<i<<file.fileName()<<actContent;
             file.close();
             moldInfo.append(actContent.split("\n", QString::SkipEmptyParts));
         }
@@ -912,6 +914,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
 #ifdef Q_WS_QWS
         moldName = result.at(i).toString();
 #endif
+        qDebug()<<"imp"<<moldName<<moldInfo;
         imported = ICRobotMold::ImportMold(moldName, moldInfo);
         //        if(imported.errNumber() == ICRobotMold::kRecordErr_None)
         //        {

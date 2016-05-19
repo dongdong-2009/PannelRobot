@@ -56,6 +56,8 @@ var DefinePoints = {
             return {"index":pID, "name":name, "point":point};
         }
 
+
+
         definePoints.addNewPoint = function(name, point, type){
             var pID = definePoints.createPointID();
             var t = type || DefinePoints.kPT_Free
@@ -105,8 +107,11 @@ var DefinePoints = {
             return parseInt(name.substring(nI - 1, nI));
         }
         definePoints.isPointExist = function(pointID){
-            if(pointID >= definePoints.definedPoints.length) return false;
-            return definePoints.definedPoints[pointID].index === pointID;
+            for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
+                if(pointID == definePoints.definedPoints[i].index)
+                    return true;
+            }
+            return false;
         }
         definePoints.pointNameList = function(){
             var ret = [];

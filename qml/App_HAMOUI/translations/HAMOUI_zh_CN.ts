@@ -394,11 +394,11 @@
     </message>
     <message>
         <source>U-</source>
-        <translation type="unfinished"></translation>
+        <translation>A-</translation>
     </message>
     <message>
         <source>U+</source>
-        <translation type="unfinished"></translation>
+        <translation>A+</translation>
     </message>
     <message>
         <source>Y-</source>
@@ -410,11 +410,11 @@
     </message>
     <message>
         <source>V-</source>
-        <translation type="unfinished"></translation>
+        <translation>B-</translation>
     </message>
     <message>
         <source>V+</source>
-        <translation type="unfinished"></translation>
+        <translation>B+</translation>
     </message>
     <message>
         <source>X-</source>
@@ -426,11 +426,11 @@
     </message>
     <message>
         <source>W-</source>
-        <translation type="unfinished"></translation>
+        <translation>C-</translation>
     </message>
     <message>
         <source>W+</source>
-        <translation type="unfinished"></translation>
+        <translation>C+</translation>
     </message>
     <message>
         <source>Line Z-</source>
@@ -442,11 +442,11 @@
     </message>
     <message>
         <source>Rotate U-</source>
-        <translation>世界U-</translation>
+        <translation>世界A-</translation>
     </message>
     <message>
         <source>Rotate U+</source>
-        <translation>世界U+</translation>
+        <translation>世界A+</translation>
     </message>
     <message>
         <source>Line Y-</source>
@@ -458,11 +458,11 @@
     </message>
     <message>
         <source>Rotate V-</source>
-        <translation>世界V-</translation>
+        <translation>世界B-</translation>
     </message>
     <message>
         <source>Rotate V+</source>
-        <translation>世界V+</translation>
+        <translation>世界B+</translation>
     </message>
     <message>
         <source>Line X-</source>
@@ -474,11 +474,11 @@
     </message>
     <message>
         <source>Rotate W-</source>
-        <translation>世界W-</translation>
+        <translation>世界C-</translation>
     </message>
     <message>
         <source>Rotate W+</source>
-        <translation>世界W+</translation>
+        <translation>世界C+</translation>
     </message>
     <message>
         <source>Line Test</source>
@@ -522,7 +522,7 @@
     </message>
     <message>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>A</translation>
     </message>
     <message>
         <source>Line Z</source>
@@ -530,7 +530,7 @@
     </message>
     <message>
         <source>Rotate U</source>
-        <translation>世界U</translation>
+        <translation>世界A</translation>
     </message>
     <message>
         <source>Y</source>
@@ -538,7 +538,7 @@
     </message>
     <message>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <source>Line Y</source>
@@ -546,7 +546,7 @@
     </message>
     <message>
         <source>Rotate V</source>
-        <translation>世界V</translation>
+        <translation>世界B</translation>
     </message>
     <message>
         <source>X</source>
@@ -554,7 +554,7 @@
     </message>
     <message>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>C</translation>
     </message>
     <message>
         <source>Line X</source>
@@ -562,7 +562,7 @@
     </message>
     <message>
         <source>Rotate W</source>
-        <translation>世界W</translation>
+        <translation>世界C</translation>
     </message>
     <message>
         <source>Tune Speed:</source>
@@ -1235,31 +1235,31 @@
     <name>IODefines</name>
     <message>
         <source>Y010</source>
-        <translation type="unfinished"></translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Y011</source>
-        <translation type="unfinished"></translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Y012</source>
-        <translation type="unfinished"></translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Y013</source>
-        <translation type="unfinished"></translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Y014</source>
-        <translation type="unfinished"></translation>
+        <translation>雾化</translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation type="unfinished"></translation>
+        <translation>油量</translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation type="unfinished"></translation>
+        <translation>喷幅</translation>
     </message>
     <message>
         <source>Y017</source>
@@ -1267,11 +1267,11 @@
     </message>
     <message>
         <source>Y020</source>
-        <translation type="unfinished"></translation>
+        <translation>公转盘正转</translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation type="unfinished"></translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Y022</source>
@@ -1331,35 +1331,35 @@
     </message>
     <message>
         <source>X010</source>
-        <translation type="unfinished">X010</translation>
+        <translation>X轴原点信号</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation type="unfinished">X011</translation>
+        <translation>Y轴原点信号</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation type="unfinished">X012</translation>
+        <translation>Z轴原点信号</translation>
     </message>
     <message>
         <source>X013</source>
-        <translation type="unfinished">X013</translation>
+        <translation>A轴原点信号</translation>
     </message>
     <message>
         <source>X014</source>
-        <translation type="unfinished">X014</translation>
+        <translation>B轴原点信号</translation>
     </message>
     <message>
         <source>X015</source>
-        <translation type="unfinished">X015</translation>
+        <translation>C轴原点信号</translation>
     </message>
     <message>
         <source>X016</source>
-        <translation type="unfinished">X016</translation>
+        <translation>公转盘正转到位</translation>
     </message>
     <message>
         <source>X017</source>
-        <translation type="unfinished">X017</translation>
+        <translation>公转盘反转到位</translation>
     </message>
     <message>
         <source>X020</source>
@@ -3783,6 +3783,10 @@ please chose!</source>
     <message>
         <source>Wait Vision Data</source>
         <translation>等待视觉数据</translation>
+    </message>
+    <message>
+        <source>Invaild Moldule</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

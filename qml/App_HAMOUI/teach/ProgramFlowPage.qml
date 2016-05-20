@@ -78,33 +78,6 @@ Rectangle {
         }
         repaintProgramItem(currentModel());
         programListView.positionViewAtIndex(programListView.currentIndex, ListView.Visible);
-        //        var cI = programListView.currentIndex;
-        //        var oCI = cI;
-        //        if(cI < 0)return;
-        //        if(actionEditorContainer.isMenuShow()) return;
-        //        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
-        //        if(actionObjects.length == 0) return;
-        //        var cPI = currentProgramIndex();
-        //        var model = currentModel();
-        //        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-        //        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-        //        for(var i = 0; i < actionObjects.length; ++i){
-        //            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-        //                //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-        //                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
-        //            }else if(Teach.hasCounterIDAction(actionObjects[i])){
-        //                var cs = Teach.actionCounterIDs(actionObjects[i]);
-        //                for(var c in cs){
-        //                    PData.counterLinesInfo.add(cPI, cs[c], cI);
-        //                }
-        //            }else if(Teach.hasStackIDAction(actionObjects[i])){
-        //                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
-        //            }
-
-        //            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
-        //        }
-        //        hasModify = true;
-        //        repaintProgramItem(model);
     }
 
     function onDeleteTriggered(){
@@ -482,6 +455,11 @@ Rectangle {
 
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
+        if(PData.isReadOnly){
+            showActionEditorPanel();
+            showActionEditorPanel();
+        }
+
         programListView.currentIndex = -1;
         setModuleEnabled(!PData.isReadOnly);
         setManualProgramEnabled(!PData.isReadOnly);

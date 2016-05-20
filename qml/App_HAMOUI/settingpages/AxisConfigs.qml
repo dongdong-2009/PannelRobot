@@ -649,5 +649,7 @@ Item {
         motor4.visible = AxisDefine.axisInfos[3].visiable;
         motor5.visible = AxisDefine.axisInfos[4].visiable;
         motor6.visible = AxisDefine.axisInfos[5].visiable;
+        motor7.visible = false;
+        motor8.visible = false;
     }
 }

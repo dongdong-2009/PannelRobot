@@ -214,11 +214,12 @@ MouseArea{
                 model: pointModel
                 clip: true
                 highlight: Rectangle { width: 490; height: 20;color: "lightsteelblue"; radius: 2}
+                highlightMoveDuration: 1
                 delegate: Item {
                     width: 490;
-                    height: 20
+                    height: 32
                     Text {
-                        text: Teach.definedPoints.pointDescr(point)
+                        text: Teach.definedPoints.pointDescr(point, AxisDefine.axisInfos)
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     MouseArea{

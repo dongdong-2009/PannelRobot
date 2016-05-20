@@ -604,7 +604,6 @@ Rectangle {
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
 
         AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_8_0_184"));
-
         console.log("main load finished!")
     }
 

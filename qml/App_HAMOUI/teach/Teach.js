@@ -120,7 +120,7 @@ var DefinePoints = {
             }
             return ret;
         }
-        definePoints.pointDescr = function(point){
+        definePoints.pointDescr = function(point, axisDefine){
             if(point == undefined)
             {
                 console.log("err");
@@ -136,7 +136,8 @@ var DefinePoints = {
             for(var i = 0; i < 6; ++i){
                 m = "m" + i;
                 if(pointPos.hasOwnProperty(m)){
-                    ret += axisInfos[i].name + ":" + pointPos[m] + ","
+                    if(axisDefine[i].visiable)
+                        ret += axisDefine[i].name + ":" + pointPos[m] + ","
                 }
             }
             ret = ret.substr(0, ret.length - 1);

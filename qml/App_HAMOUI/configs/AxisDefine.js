@@ -20,6 +20,7 @@ var kAP_RU = 10;
 var kAP_RV = 11;
 var kAP_RW = 12;
 
+
 var axisInfos = [new AxisInfo(0, qsTr("X"), qsTr("mm")),
                  new AxisInfo(1, qsTr("Y"), qsTr("mm")),
                  new AxisInfo(2, qsTr("Z"), qsTr("mm")),

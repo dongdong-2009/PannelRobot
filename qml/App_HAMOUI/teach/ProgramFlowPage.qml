@@ -574,7 +574,7 @@ Rectangle {
                     currentIndex: 0
                     onCurrentIndexChanged: {
                         //                        console.log("onCurrentIndexChanged", currentIndex);
-
+                        showActionEditorPanel();
                         deleteManualProgram.visible = false;
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
@@ -669,6 +669,7 @@ Rectangle {
                     }
 
                     onCurrentIndexChanged: {
+                        showActionEditorPanel();
                         saveProgram(currentEditingProgram);
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){

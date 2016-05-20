@@ -375,6 +375,7 @@ Item {
 
                     onVisibleChanged: {
                         if(visible){
+                            configValue = -1;
                             items = Teach.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram);
                         }
                     }

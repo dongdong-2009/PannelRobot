@@ -823,7 +823,11 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             if(act == F_CMD_PROGRAM_CALL0)
             {
                 int moduleStep = ret.ModuleEntry(action.value("module", -1).toInt());
-                if(moduleStep >= 0 &&
+                if(moduleStep < 0)
+                {
+                    ret.AddErr(p.key(), kCCErr_Invaild_ModuleID);
+                }
+                else if(moduleStep >= 0 &&
                         (p.value() == kCCErr_Invaild_ModuleID ||
                          p.value() == kCCErr_Invaild_Flag))
                 {

@@ -401,10 +401,6 @@ Rectangle {
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
             errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
-            //            var program = modelToProgramHelper(PData.kManualProgramIndex);
-            //            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-            //            if(errInfo.length == 0)
-            //                ManualProgramManager.manualProgramManager.updateProgramByName(editing.text(editing.currentIndex), program);
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -423,7 +419,6 @@ Rectangle {
             }
             tipBox.warning(toShow, qsTr("OK"));
         }
-        //        collectSpecialLines(editing.currentIndex);
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
         hasModify = false;
@@ -487,7 +482,6 @@ Rectangle {
 
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
-        //        if(!ShareData.UserInfo.currentHasMoldPerm())
         programListView.currentIndex = -1;
         setModuleEnabled(!PData.isReadOnly);
         setManualProgramEnabled(!PData.isReadOnly);
@@ -509,7 +503,6 @@ Rectangle {
         modifyEditor.isAutoMode = isAuto;
         actionEditorFrame.visible = false;
         speedDispalyContainer.visible = isAuto;
-        //        setModuleEnabled(!isAuto);
         if(hasModify)
             onSaveTriggered();
     }
@@ -534,7 +527,6 @@ Rectangle {
             if(c2 >= 0)
                 PData.counterLinesInfo.add(cpI, c2, line);
         }
-        //        collectSpecialLines(editing.currentIndex);
     }
 
     function onCounterUpdated(counterID){
@@ -554,24 +546,6 @@ Rectangle {
     function onGlobalSpeedChanged(spd){
         speedDisplay.text = parseFloat(spd).toFixed(1);
     }
-
-    //    function setCurrentModelData(actionObject){
-    //        currentModel().set(programListView.currentIndex,
-    //                           new Teach.ProgramModelItem(actionObject));
-    //    }
-
-    //    WorkerScript{
-    //        id:repaintThread
-    //        source: "repaintProgram.js"
-    //        onMessage: {
-    //            var toRepainLine = messageObject.toRepainLine;
-    //            var cM = currentModel();
-    //            for(var line in toRepainLine){
-    //                console.log(line, toRepainLine[line]);
-    ////                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
-    //            }
-    //        }
-    //    }
 
     Column{
         id:container
@@ -757,6 +731,7 @@ Rectangle {
                             collectSpecialLines(PData.programs.length - 1);
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
+                            hasModify = true;
                         }
                     }
 

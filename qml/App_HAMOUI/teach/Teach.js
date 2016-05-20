@@ -783,6 +783,8 @@ var kCCErr_Wrong_Action_Format = 10;
 var kCCErr_Invaild_Flag = 11;
 var kCCErr_Invaild_StackID = 12;
 var kCCErr_Invaild_CounterID = 13;
+var kCCErr_Invaild_ModuleID = 14;
+
 
 var kAxisType_NoUse = 0;
 var kAxisType_Servo = 1;
@@ -1452,6 +1454,8 @@ function ccErrnoToString(errno){
         return qsTr("Invalid stack");
     case kCCErr_Invaild_CounterID:
         return qsTr("Invalid counter");
+    case kCCErr_Invaild_ModuleID:
+        return qsTr("Invaild Moldule");
     }
     return qsTr("Unknow Error");
 }

@@ -111,7 +111,7 @@ public:
         return moduleLineToModuleIDMap_.value(line, -1);
     }
 
-    int ModuleEntry(int id) const { return modulesMap_.value(id, id);}
+    int ModuleEntry(int id) const { return modulesMap_.value(id, -1);}
 
     void AddUsedModule(int id) { usedModules_.append(id);}
 

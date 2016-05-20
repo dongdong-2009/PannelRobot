@@ -568,6 +568,9 @@ Rectangle {
         var isRecordEn = ShareData.UserInfo.currentHasMoldPerm() && ShareData.GlobalStatusCenter.getKnobStatus() !== Keymap.KNOB_AUTO;
 
         menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm() && ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_SETTINGS;
+        if(menuSettings.isChecked && !menuSettings.enabled){
+            menuOperation.setChecked(true);
+        }
 
         mainHeader.setRecordItemEnabled(isRecordEn);
         if(!isRecordEn)

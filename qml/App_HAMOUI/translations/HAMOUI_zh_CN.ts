@@ -1631,31 +1631,31 @@
     </message>
     <message>
         <source>Normal Y010</source>
-        <translation>普通输出Y010</translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Normal Y011</source>
-        <translation>普通输出Y011</translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Normal Y012</source>
-        <translation>普通输出Y012</translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Normal Y013</source>
-        <translation>普通输出Y013</translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>普通输出Y014</translation>
+        <translation>雾化</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>普通输出Y015</translation>
+        <translation>油量</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>普通输出Y016</translation>
+        <translation>喷幅</translation>
     </message>
     <message>
         <source>Normal Y017</source>
@@ -1663,11 +1663,11 @@
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>普通输出Y020</translation>
+        <translation>公转盘正转</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>普通输出Y021</translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Normal Y022</source>
@@ -1823,31 +1823,31 @@
     </message>
     <message>
         <source>Time Y010</source>
-        <translation>时间输出Y010</translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Time Y011</source>
-        <translation>时间输出Y011</translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Time Y012</source>
-        <translation>时间输出Y012</translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Time Y013</source>
-        <translation>时间输出Y013</translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Time Y014</source>
-        <translation>时间输出Y014</translation>
+        <translation>雾化</translation>
     </message>
     <message>
         <source>Time Y015</source>
-        <translation>时间输出Y015</translation>
+        <translation>油量</translation>
     </message>
     <message>
         <source>Time Y016</source>
-        <translation>时间输出Y016</translation>
+        <translation>喷幅</translation>
     </message>
     <message>
         <source>Time Y017</source>
@@ -1855,11 +1855,11 @@
     </message>
     <message>
         <source>Time Y020</source>
-        <translation>时间输出Y020</translation>
+        <translation>公转盘正转</translation>
     </message>
     <message>
         <source>Time Y021</source>
-        <translation>时间输出Y021</translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Time Y022</source>

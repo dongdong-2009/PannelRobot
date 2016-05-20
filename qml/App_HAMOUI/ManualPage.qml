@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "."
 import "../ICCustomElement"
 import "./Theme.js" as Theme
+import "ShareData.js" as ShareData
 
 ContentPageBase {
     Rectangle {
@@ -15,6 +16,10 @@ ContentPageBase {
             id: pdata
             property int menuItemHeight: 32
             property int menuItemY: 4
+        }
+
+        function onUserChanged(user){
+            jog.visible = ShareData.UserInfo.currentSZHCPerm();
         }
 
         ICButtonGroup {
@@ -43,15 +48,15 @@ ContentPageBase {
                 textColor: getChecked() ? "yellow" : "black"
             }
 
-            TabMenuItem {
-                id: toolsCalibrate
-                width: 80
-                height: pdata.menuItemHeight
-                itemText: qsTr("Tools Calibration")
-                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                textFont.pixelSize: getChecked() ? 18 : 16
-                textColor: getChecked() ? "yellow" : "black"
-            }
+//            TabMenuItem {
+//                id: toolsCalibrate
+//                width: 80
+//                height: pdata.menuItemHeight
+//                itemText: qsTr("Tools Calibration")
+//                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+//                textFont.pixelSize: getChecked() ? 18 : 16
+//                textColor: getChecked() ? "yellow" : "black"
+//            }
             TabMenuItem{
                 id:programmableBtn
                 width: 100
@@ -62,16 +67,6 @@ ContentPageBase {
                 textColor: getChecked() ? "yellow" : "black"
 
             }
-
-            TabMenuItem {
-                id: jog
-                width: 50
-                height: pdata.menuItemHeight
-                itemText: qsTr("Debug")
-                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                textFont.pixelSize: getChecked() ? 18 : 16
-                textColor: getChecked() ? "yellow" : "black"
-            }
             TabMenuItem {
                 id: debugprint
                 width: 80
@@ -81,6 +76,15 @@ ContentPageBase {
                 textFont.pixelSize: getChecked() ? 18 : 16
                 textColor: getChecked() ? "yellow" : "black"
                 
+            }
+            TabMenuItem {
+                id: jog
+                width: 50
+                height: pdata.menuItemHeight
+                itemText: qsTr("Debug")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
             }
             onButtonClickedID: {
                 pageContainer.setCurrentIndex(index)
@@ -146,16 +150,20 @@ ContentPageBase {
                             });
                 pageContainer.addPage(page)
             }
-            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
-            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
+//            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
+//            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
 
             var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
             pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
 
-            var jogClass = Qt.createComponent('DebugPage.qml');
-            pageContainer.addPage(jogClass.createObject(pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');
             pageContainer.addPage(debugprintClass.createObject(pageContainer));
+            var jogClass = Qt.createComponent('DebugPage.qml');
+            pageContainer.addPage(jogClass.createObject(pageContainer));
+
+            ShareData.UserInfo.registUserChangeEvent(manualContainer);
+            onUserChanged(ShareData.UserInfo.current);
+
         }
     }
 

@@ -16,7 +16,7 @@ Item {
         runningConfigsBtn.enabled = isEn;
         axisConfigBtn.enabled = isEn;
         structConfigBtn.enabled = isEn;
-        systemConfigBtn.enabled = isEn;
+        systemConfigBtn.enabled = ShareData.UserInfo.currentSZHCPerm();
     }
 
     width: parent.width

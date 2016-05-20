@@ -5,6 +5,7 @@ import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
+    id:container
     width: parent.width
     height: parent.height
     QtObject{
@@ -170,5 +171,16 @@ Item {
 //        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
 //        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        m0Axis.visible = AxisDefine.axisInfos[0].visiable;
+        m1Axis.visible = AxisDefine.axisInfos[1].visiable;
+        m2Axis.visible = AxisDefine.axisInfos[2].visiable;
+        m3Axis.visible = AxisDefine.axisInfos[3].visiable;
+        m4Axis.visible = AxisDefine.axisInfos[4].visiable;
+        m5Axis.visible = AxisDefine.axisInfos[5].visiable;
+
     }
 }

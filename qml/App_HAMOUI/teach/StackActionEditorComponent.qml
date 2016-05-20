@@ -4,6 +4,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../teach/Teach.js" as Teach
 
 Item {
+    id:container
     width: content.width
     height: content.height
     property alias motor0: motor0.configValue
@@ -112,6 +113,7 @@ Item {
                 visible: mode == 0
                 //                id:posContainer
                 columns: 2
+                rows: 3
                 spacing: 4
                 flow: Grid.TopToBottom
                 ICConfigEdit{
@@ -294,5 +296,16 @@ Item {
 
     Component.onCompleted: {
         updateCounters();
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        motor0.visible = AxisDefine.axisInfos[0].visiable;
+        motor1.visible = AxisDefine.axisInfos[1].visiable;
+        motor2.visible = AxisDefine.axisInfos[2].visiable;
+        motor3.visible = AxisDefine.axisInfos[3].visiable;
+        motor4.visible = AxisDefine.axisInfos[4].visiable;
+        motor5.visible = AxisDefine.axisInfos[5].visiable;
+
     }
 }

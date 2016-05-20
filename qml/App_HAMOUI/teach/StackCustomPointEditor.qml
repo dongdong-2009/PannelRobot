@@ -224,4 +224,18 @@ MouseArea{
         }
     }
 
+    function onAxisDefinesChanged(){
+        m0.visible = AxisDefine.axisInfos[0].visiable;
+        m1.visible = AxisDefine.axisInfos[1].visiable;
+        m2.visible = AxisDefine.axisInfos[2].visiable;
+        m3.visible = AxisDefine.axisInfos[3].visiable;
+        m4.visible = AxisDefine.axisInfos[4].visiable;
+        m5.visible = AxisDefine.axisInfos[5].visiable;
+    }
+
+    Component.onCompleted: {
+        AxisDefine.registerMonitors(instance);
+        onAxisDefinesChanged();
+    }
+
 }

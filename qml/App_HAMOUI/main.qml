@@ -10,6 +10,7 @@ import "configs/IODefines.js" as IODefines
 import "ICOperationLog.js" as ICOperationLog
 import "ExternalData.js" as ESData
 import "../utils/stringhelper.js" as ICString
+import "configs/AxisDefine.js" as AxisDefine
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -598,6 +599,8 @@ Rectangle {
         mainHeader.setRecordItemEnabled(false);
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
+
+        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_8_0_184"));
 
         console.log("main load finished!")
     }

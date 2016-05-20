@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
+import "../configs/AxisDefine.js" as AxisDefine
 
 
 Item {
@@ -68,6 +69,8 @@ Item {
             if(addr == "s_rw_24_8_0_184"){
                 panelRobotController.loadSysconfig(machineType.configText());
                 machineType.configValue = newV;
+            }else if(addr == "s_rw_16_8_0_184"){
+                AxisDefine.changeAxisNum(newV);
             }
         }
     }

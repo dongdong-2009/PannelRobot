@@ -5,6 +5,7 @@ import "../ICCustomElement/"
 import "configs/AxisDefine.js" as AxisDefine
 
 Item {
+    id:container
     x:4
     ICStatusScope{
         Column{
@@ -110,4 +111,25 @@ Item {
     }
     }
 
+    function onAxisDefinesChanged(){
+        m0.visible = AxisDefine.axisInfos[0].visiable;
+        m1.visible = AxisDefine.axisInfos[1].visiable;
+        m2.visible = AxisDefine.axisInfos[2].visiable;
+        m3.visible = AxisDefine.axisInfos[3].visiable;
+        m4.visible = AxisDefine.axisInfos[4].visiable;
+        m5.visible = AxisDefine.axisInfos[5].visiable;
+
+        a0.visible = AxisDefine.axisInfos[0].visiable;
+        a1.visible = AxisDefine.axisInfos[1].visiable;
+        a2.visible = AxisDefine.axisInfos[2].visiable;
+        a3.visible = AxisDefine.axisInfos[3].visiable;
+        a4.visible = AxisDefine.axisInfos[4].visiable;
+        a5.visible = AxisDefine.axisInfos[5].visiable;
+
+    }
+
+    Component.onCompleted: {
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
 }

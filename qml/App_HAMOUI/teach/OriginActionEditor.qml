@@ -108,5 +108,16 @@ Rectangle {
         axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
         pData.axisEditors = axis;
+        AxisDefine.registerMonitors(continer);
+        onAxisDefinesChanged();
+
+    }
+    function onAxisDefinesChanged(){
+        m0Axis.visible = AxisDefine.axisInfos[0].visiable;
+        m1Axis.visible = AxisDefine.axisInfos[1].visiable;
+        m2Axis.visible = AxisDefine.axisInfos[2].visiable;
+        m3Axis.visible = AxisDefine.axisInfos[3].visiable;
+        m4Axis.visible = AxisDefine.axisInfos[4].visiable;
+        m5Axis.visible = AxisDefine.axisInfos[5].visiable;
     }
 }

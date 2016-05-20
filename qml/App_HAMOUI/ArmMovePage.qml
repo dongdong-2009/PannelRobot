@@ -256,6 +256,7 @@ MouseArea{
                 onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_Z ? "lime" : "white"
 
+
             }
 
             ICButton {
@@ -268,6 +269,7 @@ MouseArea{
                 onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
 
+
             }
 
             ICButton {
@@ -279,6 +281,7 @@ MouseArea{
                 text: qsTr("J") + qsTr("U+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_U ? "lime" : "white"
+
 
 
             }
@@ -295,6 +298,7 @@ MouseArea{
                 onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
 
+
             }
 
 
@@ -307,6 +311,7 @@ MouseArea{
                 text: qsTr("J") + qsTr("Y+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_Y ? "lime" : "white"
+
 
             }
 
@@ -321,6 +326,7 @@ MouseArea{
                 onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
 
+
             }
 
             ICButton {
@@ -332,6 +338,8 @@ MouseArea{
                 text: qsTr("J") + qsTr("V+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_V ? "lime" : "white"
+
+
             }
 
             ICButton {
@@ -343,6 +351,7 @@ MouseArea{
                 text: qsTr("J") + qsTr("X-")
                 onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
+
 
 
             }
@@ -358,6 +367,7 @@ MouseArea{
                 bgColor: pullyAxis == AxisDefine.kAP_X ? "lime" : "white"
 
 
+
             }
 
             ICButton {
@@ -371,6 +381,7 @@ MouseArea{
                 bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
 
 
+
             }
 
             ICButton {
@@ -382,6 +393,7 @@ MouseArea{
                 text: qsTr("J") + qsTr("W+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_W ? "lime" : "white"
+
 
 
             }
@@ -399,6 +411,7 @@ MouseArea{
                 bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
 
 
+
             }
 
             ICButton {
@@ -410,6 +423,7 @@ MouseArea{
                 text: qsTr("Line Z+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white"
+
 
             }
 
@@ -425,6 +439,7 @@ MouseArea{
                 bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
 
 
+
             }
 
             ICButton {
@@ -436,6 +451,8 @@ MouseArea{
                 text: qsTr("Rotate U+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_RU ? "lime" : "white"
+
+
             }
 
             ICButton {
@@ -448,6 +465,8 @@ MouseArea{
                 onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
 
+
+
             }
 
             ICButton {
@@ -459,6 +478,7 @@ MouseArea{
                 text: qsTr("Line Y+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_LY ? "lime" : "white"
+
 
             }
 
@@ -473,6 +493,7 @@ MouseArea{
                 bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
 
 
+
             }
 
             ICButton {
@@ -484,6 +505,7 @@ MouseArea{
                 text: qsTr("Rotate V+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_RV ? "lime" : "white"
+
 
             }
 
@@ -498,6 +520,7 @@ MouseArea{
                 onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
 
+
             }
 
             ICButton {
@@ -509,6 +532,7 @@ MouseArea{
                 text: qsTr("Line X+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_LX ? "lime" : "white"
+
 
 
             }
@@ -524,6 +548,7 @@ MouseArea{
                 bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
 
 
+
             }
 
             ICButton {
@@ -535,6 +560,7 @@ MouseArea{
                 text: qsTr("Rotate W+")
                 onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.COMBINE_ARM_MOVE_TYPE)
                 bgColor: pullyAxis == AxisDefine.kAP_RW ? "lime" : "white"
+
 
             }
 
@@ -563,6 +589,8 @@ MouseArea{
                         return (pullyAxis == AxisDefine.kAP_LZ ? "lime" : "white");
                     return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
                 }
+
+
             }
             ICButton {
                 id: ptext3
@@ -578,6 +606,8 @@ MouseArea{
                     return (pullyAxis == AxisDefine.kAP_Z ? "lime" : "white");
 
                 }
+
+
             }
 
             ICButton {
@@ -595,6 +625,8 @@ MouseArea{
 
                 }
 
+
+
             }
 
             ICButton {
@@ -611,6 +643,7 @@ MouseArea{
                     return (pullyAxis == AxisDefine.kAP_U ? "lime" : "white");
 
                 }
+
 
             }
 
@@ -631,6 +664,7 @@ MouseArea{
 
                 }
 
+
             }
 
 
@@ -648,6 +682,7 @@ MouseArea{
                     return (pullyAxis == AxisDefine.kAP_Y ? "lime" : "white");
 
                 }
+
 
             }
 
@@ -667,6 +702,7 @@ MouseArea{
 
                 }
 
+
             }
 
             ICButton {
@@ -682,6 +718,8 @@ MouseArea{
                         return (pullyAxis == AxisDefine.kAP_RV ? "lime" : "white");
                     return (pullyAxis == AxisDefine.kAP_V ? "lime" : "white");
                 }
+
+
             }
 
             ICButton {
@@ -698,6 +736,7 @@ MouseArea{
                     return (pullyAxis == AxisDefine.kAP_X ? "lime" : "white");
 
                 }
+
 
 
             }
@@ -718,6 +757,7 @@ MouseArea{
                 }
 
 
+
             }
 
             ICButton {
@@ -735,6 +775,7 @@ MouseArea{
 
                 }
 
+
             }
 
             ICButton {
@@ -750,6 +791,7 @@ MouseArea{
                         return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
                     return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
                 }
+
 
             }
 
@@ -811,6 +853,8 @@ MouseArea{
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_Z);
                     }
 
+
+
                 }
                 ICButton {
                     id: uSel
@@ -822,6 +866,8 @@ MouseArea{
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_U);
                     }
 
+
+
                 }
                 ICButton {
                     id: lineZSel
@@ -832,6 +878,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_LZ);
                     }
+
+
                 }
                 ICButton {
                     id: rotateUSel
@@ -842,6 +890,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_RU);
                     }
+
+
                 }
 
                 ICButton {
@@ -853,6 +903,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_Y);
                     }
+
+
                 }
                 ICButton {
                     id: vSel
@@ -863,6 +915,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_V);
                     }
+
+
                 }
                 ICButton {
                     id: lineYSel
@@ -873,6 +927,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_LY);
                     }
+
+
                 }
                 ICButton {
                     id: rotateVSel
@@ -883,6 +939,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_RV);
                     }
+
+
                 }
 
                 ICButton {
@@ -894,6 +952,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_X);
                     }
+
+
                 }
                 ICButton {
                     id: wSel
@@ -904,6 +964,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_W);
                     }
+
+
                 }
                 ICButton {
                     id: lineXSel
@@ -914,6 +976,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_LX);
                     }
+
+
                 }
                 ICButton {
                     id: rotateWSel
@@ -924,6 +988,8 @@ MouseArea{
                     onButtonClicked: {
                         tuneSelGrid.setPullyAxis(AxisDefine.kAP_RW);
                     }
+
+
                 }
             }
         }
@@ -982,12 +1048,20 @@ MouseArea{
                             panelRobotController.statusValueText("c_ro_0_32_3_920")];
                 }
                 function pointToText(point){
-                    return AxisDefine.axisInfos[0].name + ":" + point[0] + "," +
-                            AxisDefine.axisInfos[1].name + ":" + point[1] + "," +
-                            AxisDefine.axisInfos[2].name + ":" + point[2] + "\n" +
-                            AxisDefine.axisInfos[3].name + ":" + point[3] + "," +
-                            AxisDefine.axisInfos[4].name + ":" + point[4] + "," +
-                            AxisDefine.axisInfos[5].name + ":" + point[5];
+                    var ret = "";
+                    var count = 0;
+                    for(var i = 0, len = AxisDefine.axisInfos.length; i < len; ++i){
+                        ++count;
+                        if(AxisDefine.axisInfos[i].visiable){
+                            ret += AxisDefine.axisInfos[i].name + ":" + point[i];
+                            if(count == 2)
+                                ret += "\n";
+                            else
+                                ret += ",";
+                        }
+                    }
+                    ret.length = ret.length - 1;
+                    return ret;
                 }
                 function runToPoint(cmd){
                     if(panelRobotController.isOrigined()){
@@ -1162,11 +1236,68 @@ MouseArea{
             }
         }
 
+
         Component.onCompleted: {
             ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(container);
             //        partkeybd.setChecked(true);
             keyboardSection.visible = false;
             partkeyboardSection.visible = true;
+            AxisDefine.registerMonitors(instance);
+            onAxisDefinesChanged();
         }
     }
+    function onAxisDefinesChanged(){
+        text4.visible = AxisDefine.axisInfos[2].visiable;
+        text3.visible = AxisDefine.axisInfos[2].visiable;
+        text5.visible = AxisDefine.axisInfos[3].visiable;
+        text6.visible = AxisDefine.axisInfos[3].visiable;
+        text8.visible = AxisDefine.axisInfos[1].visiable;
+        text9.visible = AxisDefine.axisInfos[1].visiable;
+        text1.visible = AxisDefine.axisInfos[4].visiable;
+        text2.visible = AxisDefine.axisInfos[4].visiable;
+        text7.visible = AxisDefine.axisInfos[0].visiable;
+        text10.visible = AxisDefine.axisInfos[0].visiable;
+        text11.visible = AxisDefine.axisInfos[5].visiable;
+        text12.visible = AxisDefine.axisInfos[5].visiable;
+        text15.visible = AxisDefine.axisInfos[2].visiable;
+        text16.visible = AxisDefine.axisInfos[2].visiable;
+        text24.visible = AxisDefine.axisInfos[3].visiable;
+        text23.visible = AxisDefine.axisInfos[3].visiable;
+        text18.visible = AxisDefine.axisInfos[1].visiable;
+        text17.visible = AxisDefine.axisInfos[1].visiable;
+        text21.visible = AxisDefine.axisInfos[4].visiable;
+        text22.visible = AxisDefine.axisInfos[4].visiable;
+        text14.visible = AxisDefine.axisInfos[0].visiable;
+        text13.visible = AxisDefine.axisInfos[0].visiable;
+        text19.visible = AxisDefine.axisInfos[5].visiable;
+        text20.visible = AxisDefine.axisInfos[5].visiable;
+
+        ptext4.visible = AxisDefine.axisInfos[2].visiable;
+        ptext3.visible = AxisDefine.axisInfos[2].visiable;
+        ptext6.visible = AxisDefine.axisInfos[3].visiable;
+        ptext5.visible = AxisDefine.axisInfos[3].visiable;
+        ptext9.visible = AxisDefine.axisInfos[1].visiable;
+        ptext8.visible = AxisDefine.axisInfos[1].visiable;
+        ptext2.visible = AxisDefine.axisInfos[4].visiable;
+        ptext1.visible = AxisDefine.axisInfos[4].visiable;
+        ptext10.visible = AxisDefine.axisInfos[0].visiable;
+        ptext7.visible = AxisDefine.axisInfos[0].visiable;
+        ptext11.visible = AxisDefine.axisInfos[5].visiable;
+        ptext12.visible = AxisDefine.axisInfos[5].visiable;
+
+        xSel.visible = AxisDefine.axisInfos[0].visiable;
+        ySel.visible = AxisDefine.axisInfos[1].visiable;
+        zSel.visible = AxisDefine.axisInfos[2].visiable;
+        uSel.visible = AxisDefine.axisInfos[3].visiable;
+        vSel.visible = AxisDefine.axisInfos[4].visiable;
+        wSel.visible = AxisDefine.axisInfos[5].visiable;
+        lineXSel.visible = AxisDefine.axisInfos[0].visiable;
+        lineYSel.visible = AxisDefine.axisInfos[1].visiable;
+        lineZSel.visible = AxisDefine.axisInfos[2].visiable;
+        rotateUSel.visible = AxisDefine.axisInfos[3].visiable;
+        rotateVSel.visible = AxisDefine.axisInfos[4].visiable;
+        rotateWSel.visible = AxisDefine.axisInfos[5].visiable;
+
+    }
+
 }

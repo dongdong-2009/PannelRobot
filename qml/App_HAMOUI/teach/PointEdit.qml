@@ -481,12 +481,12 @@ Item {
                     pointViewModel.append(pointViewModel.createModelItem());
                 }
 
-                motor0.visible = motor0.isChecked;
-                motor1.visible = motor1.isChecked;
-                motor2.visible = motor2.isChecked;
-                motor3.visible = motor3.isChecked;
-                motor4.visible = motor4.isChecked;
-                motor5.visible = motor5.isChecked;
+                motor0.visible = motor0.isChecked && AxisDefine.axisInfos[0].visiable;
+                motor1.visible = motor1.isChecked && AxisDefine.axisInfos[1].visiable;
+                motor2.visible = motor2.isChecked && AxisDefine.axisInfos[2].visiable;
+                motor3.visible = motor3.isChecked && AxisDefine.axisInfos[3].visiable;
+                motor4.visible = motor4.isChecked && AxisDefine.axisInfos[4].visiable;
+                motor5.visible = motor5.isChecked && AxisDefine.axisInfos[5].visiable;
                 refreshSelectablePoisnts();
 
             }

@@ -4,6 +4,7 @@ function AxisInfo(id, name, unit){
     this.id = id;
     this.name = name;
     this.unit = unit;
+    this.visiable = true;
 }
 
 var kAP_X = 1;
@@ -29,3 +30,24 @@ var axisInfos = [new AxisInfo(0, qsTr("X"), qsTr("mm")),
                  new AxisInfo(7, qsTr("M8"), qsTr("mm"))];
 
 
+var axisDefineMonitors = [];
+function registerMonitors(obj){
+    axisDefineMonitors.push(obj);
+}
+
+function informMonitors(){
+    for(var i = 0, len = axisDefineMonitors.length; i < len; ++i){
+        if(axisDefineMonitors[i].hasOwnProperty("onAxisDefinesChanged"))
+            axisDefineMonitors[i]["onAxisDefinesChanged"]();
+    }
+}
+
+function changeAxisNum(num){
+    for(var i = 0, len = axisInfos.length; i < len; ++i){
+        axisInfos[i].visiable = true;
+    }
+    for(i = num; i < len; ++i){
+        axisInfos[i].visiable = false;
+    }
+    informMonitors();
+}

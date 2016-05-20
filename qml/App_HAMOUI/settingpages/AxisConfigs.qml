@@ -638,6 +638,16 @@ Item {
 
     Component.onCompleted: {
         motor1.setChecked(true);
-        showMotorConfigs(pdata.currentGroup)
+        showMotorConfigs(pdata.currentGroup);
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        motor1.visible = AxisDefine.axisInfos[0].visiable;
+        motor2.visible = AxisDefine.axisInfos[1].visiable;
+        motor3.visible = AxisDefine.axisInfos[2].visiable;
+        motor4.visible = AxisDefine.axisInfos[3].visiable;
+        motor5.visible = AxisDefine.axisInfos[4].visiable;
+        motor6.visible = AxisDefine.axisInfos[5].visiable;
     }
 }

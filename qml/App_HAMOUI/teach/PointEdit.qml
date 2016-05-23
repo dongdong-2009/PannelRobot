@@ -122,15 +122,6 @@ Item {
         onPointAdded(null);
     }
 
-//    onVisibleChanged: {
-//        if(visible){
-//            refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
-//            //            if(!isEditorMode){
-//            //                clearPoints();
-//            //            }
-//        }
-//    }
-
     onActionChanged: {
         if(action < 0) return;
         if(action == Teach.actions.F_CMD_LINE2D_MOVE_POINT){
@@ -139,6 +130,12 @@ Item {
             line3DType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_ARC3D_MOVE_POINT){
             curve3DType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARCXY_MOVE_POINT){
+            cureveXYType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARCXZ_MOVE_POINT){
+            cureveXZType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARCYZ_MOVE_POINT){
+            cureveYZType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_MOVE_POSE){
             singlePoseType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_LINE3D_MOVE_POSE){
@@ -318,6 +315,7 @@ Item {
             configNameWidth: 120
             height: 32
             inputWidth: 160
+            popupHeight: 250
             popupMode: 1
             z: 2
         }
@@ -479,6 +477,24 @@ Item {
                     action = Teach.actions.F_CMD_ARC3D_MOVE;
                     pointViewModel.append(pointViewModel.createModelItem());
                     pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == cureveXYType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    action = Teach.actions.F_CMD_ARCXY_MOVE_POINT;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == cureveXZType){
+                    motor0.setChecked(true);
+                    motor2.setChecked(true);
+                    action = Teach.actions.F_CMD_ARCXZ_MOVE_POINT;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == cureveYZType){
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    action = Teach.actions.F_CMD_ARCYZ_MOVE_POINT;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
                 }
 
                 motor0.visible = motor0.isChecked && AxisDefine.axisInfos[0].visiable;
@@ -504,6 +520,19 @@ Item {
                     id:line3DType
                     text: qsTr("Line 3D")
                 }
+                ICCheckBox{
+                    id:cureveXYType
+                    text:qsTr("Curve XY")
+                }
+                ICCheckBox{
+                    id:cureveXZType
+                    text:qsTr("Curve XZ")
+                }
+                ICCheckBox{
+                    id:cureveYZType
+                    text:qsTr("Curve YZ")
+                }
+
                 ICCheckBox{
                     id:curve3DType
                     text:qsTr("Curve 3D")

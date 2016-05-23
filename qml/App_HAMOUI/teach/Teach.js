@@ -56,14 +56,23 @@ var DefinePoints = {
             return {"index":pID, "name":name, "point":point};
         }
 
-
+        definePoints.pushPoint = function(pID, point){
+            for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
+                if(pID < definePoints.definedPoints[i].index){
+                    definePoints.definedPoints.splice(i, 0, point);
+                    return;
+                }
+            }
+            definePoints.definedPoints.push(point);
+        }
 
         definePoints.addNewPoint = function(name, point, type){
             var pID = definePoints.createPointID();
             var t = type || DefinePoints.kPT_Free
             name = t + "P" + pID + ":" + name;
             var iPoint = definePoints.createPointObject(pID, name, point);
-            definePoints.definedPoints.splice(pID, 0, iPoint);
+//            definePoints.definedPoints.splice(pID, 0, iPoint);
+            definePoints.pushPoint(pID, iPoint);
             definePoints.informPointAdded(iPoint);
             return iPoint;
         }
@@ -104,7 +113,7 @@ var DefinePoints = {
 
         definePoints.extractPointIDFromPointName = function(name){
             var nI = name.indexOf(":");
-            return parseInt(name.substring(nI - 1, nI));
+            return parseInt(name.substring(2, nI));
         }
         definePoints.isPointExist = function(pointID){
             for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
@@ -115,7 +124,7 @@ var DefinePoints = {
         }
         definePoints.pointNameList = function(){
             var ret = [];
-            for(var i = 0; i < definePoints.definedPoints.length; ++i){
+            for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
                 ret.push(definePoints.definedPoints[i].name);
             }
             return ret;
@@ -168,9 +177,6 @@ var DefinePoints = {
                     continue;
                 pID = definePoints.extractPointIDFromPointName(name);
                 ret.push(definePoints.createPointObject(pID, name, points[i].pos))
-//                if(!definePoints.isPointExist(pID)){
-//                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
-//                }
             }
             return ret;
         }
@@ -179,9 +185,8 @@ var DefinePoints = {
             var points = definePoints.parseActionPointsHelper(actionObject);
             for(var i = 0; i < points.length; ++i){
                 if(!definePoints.isPointExist(points[i].index)){
-                    definePoints.definedPoints.splice(points[i].index, 0, points[i]);
+                    definePoints.pushPoint(points[i].index, points[i]);
                     definePoints.informPointAdded(points[i]);
-
                 }
             }
         }
@@ -743,6 +748,9 @@ actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+actions.F_CMD_ARCXY_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51000
+actions.F_CMD_ARCXZ_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51001
+actions.F_CMD_ARCYZ_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51002
 actions.F_CMD_MOVE_POSE = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
@@ -1298,6 +1306,15 @@ var pathActionToStringHandler = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE){
         ret += qsTr("Circle:");
         needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT){
+        ret += qsTr("ArcXY:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT){
+        ret += qsTr("ArcXZ:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT){
+        ret += qsTr("ArcYZ:");
+        needNewLine = true;
     }
 
     var points = actionObject.points;
@@ -1339,6 +1356,9 @@ actionToStringHandlerMap.put(actions.F_CMD_FINE_ZERO, f_CMD_FINE_ZEROToStringHan
 actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARCXY_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARCXZ_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARCYZ_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
@@ -1373,11 +1393,15 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE ||
              actionObject.action === actions.F_CMD_MOVE_POSE ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
+             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
+             actionObject.action === actions.F_CMD_JOINT_RELATIVE){
         ret = [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -1472,7 +1496,10 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_MOVE_POSE ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
-            actionObject.action === actions.F_CMD_JOINTCOORDINATE;
+            actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
+            actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT;
 }
 
 var canActionTestRun = function(actionObject){

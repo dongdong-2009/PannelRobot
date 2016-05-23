@@ -13,6 +13,9 @@ QMap<int, QStringList> CreatePathActionMotorNamesMap()
     ret.insert(F_CMD_LINE2D_MOVE_POINT, QStringList()<<"m0"<<"m1");
     ret.insert(F_CMD_LINE3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_ARC3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_ARCXY_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_ARCXZ_MOVE_POINT, QStringList()<<"m0"<<"m2");
+    ret.insert(F_CMD_ARCYZ_MOVE_POINT, QStringList()<<"m1"<<"m2");
     ret.insert(F_CMD_MOVE_POSE, QStringList()<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_LINE3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_JOINT_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
@@ -104,13 +107,25 @@ QVector<quint32> PointToPosList(int action, const QVariantMap& point)
 
 int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
 {
+    int action = v->value("action").toInt();
+    int type = 0;
+    if(action == F_CMD_ARCXY_MOVE_POINT ||
+            action == F_CMD_ARCXZ_MOVE_POINT || action == F_CMD_ARCYZ_MOVE_POINT)
+    {
+        type = action - F_CMD_ARCXY_MOVE_POINT;
+        action = F_CMD_ARC2D_MOVE_POINT;
+    }
     item.append(v->value("action").toInt());
+    if(action == F_CMD_ARC2D_MOVE_POINT)
+        item.append(type);
     QVariantList points = v->value("points").toList();
     if(item.at(0) == F_CMD_LINE2D_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_ARC3D_MOVE_POINT && points.size() != 2)
+    if((item.at(0) == F_CMD_ARC3D_MOVE_POINT || item.at(0) == F_CMD_ARCXY_MOVE_POINT ||
+        item.at(0) == F_CMD_ARCXZ_MOVE_POINT || item.at(0) == F_CMD_ARCYZ_MOVE_POINT)
+            && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_MOVE_POSE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
@@ -165,6 +180,8 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     }
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+
+    item[0] = action;
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 }

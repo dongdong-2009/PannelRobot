@@ -2486,6 +2486,18 @@ please chose!</source>
         <source>Circle</source>
         <translation>整圆</translation>
     </message>
+    <message>
+        <source>Curve XY</source>
+        <translation>曲线XY</translation>
+    </message>
+    <message>
+        <source>Curve XZ</source>
+        <translation>曲线XZ</translation>
+    </message>
+    <message>
+        <source>Curve YZ</source>
+        <translation>曲线YZ</translation>
+    </message>
 </context>
 <context>
     <name>PointManager</name>
@@ -3786,7 +3798,19 @@ please chose!</source>
     </message>
     <message>
         <source>Invaild Moldule</source>
-        <translation type="unfinished"></translation>
+        <translation>无效模块</translation>
+    </message>
+    <message>
+        <source>ArcXY:</source>
+        <translation>曲线XY:</translation>
+    </message>
+    <message>
+        <source>ArcXZ:</source>
+        <translation>曲线XZ:</translation>
+    </message>
+    <message>
+        <source>ArcYZ:</source>
+        <translation>曲线YZ:</translation>
     </message>
 </context>
 <context>
@@ -3985,7 +4009,7 @@ please chose!</source>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation type="unfinished">未知错误</translation>
+        <translation>未知错误</translation>
     </message>
 </context>
 <context>

@@ -462,6 +462,7 @@ void PanelRobotController::setToRunningUIPath(const QString &dirname)
         {
             ICAppSettings settings;
             settings.SetUIMainName(qml.path());
+            settings.sync();
         }
     }
 }

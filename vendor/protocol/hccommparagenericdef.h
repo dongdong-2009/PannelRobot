@@ -653,6 +653,7 @@ typedef enum
     F_CMD_JOINT_RELATIVE,
 
     F_CMD_ARC3D_MOVE,   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+    F_CMD_ARC2D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
@@ -747,6 +748,9 @@ typedef enum
 
     /***************************************************************************/
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
+    F_CMD_ARCXY_MOVE_POINT = 51008,
+    F_CMD_ARCXZ_MOVE_POINT = 51009,
+    F_CMD_ARCYZ_MOVE_POINT = 51010,
     F_CMD_FLAG = 59999,    //<跳转标志
 	F_CMD_END=60000//< 动作结束
 

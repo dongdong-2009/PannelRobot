@@ -410,6 +410,9 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARCXY_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARCXZ_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARCYZ_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARC3D_MOVE, PathActionCompiler);
     ret.insert(F_CMD_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POSE, PathActionCompiler);

@@ -107,7 +107,7 @@ Rectangle {
 
             var stackID = parseInt(Utils.getValueFromBrackets(items[currentIndex]));
             stackInfo = Teach.getStackInfoFromID(stackID);
-            ESData.externalDataManager.registerDataSource(stackID, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
+            ESData.externalDataManager.registerDataSource(stackInfo.dsName, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
             page1.motor2 = stackInfo.si0.m2pos;

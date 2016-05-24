@@ -100,6 +100,7 @@ function ExternalDataManager(){
     };
 
     this.registerDataSource = function(dsID, ds){
+        console.log("registerDataSource", dsID)
         if(this.dataSourceExist(dsID))
             return false;
         this.dataSources[dsID] = ds;

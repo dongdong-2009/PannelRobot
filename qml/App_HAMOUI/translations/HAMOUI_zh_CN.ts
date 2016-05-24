@@ -2498,6 +2498,18 @@ please chose!</source>
         <source>Curve YZ</source>
         <translation>曲线YZ</translation>
     </message>
+    <message>
+        <source>Line XY</source>
+        <translation>直线XY</translation>
+    </message>
+    <message>
+        <source>Line XZ</source>
+        <translation>直线XZ</translation>
+    </message>
+    <message>
+        <source>Line YZ</source>
+        <translation>直线YZ</translation>
+    </message>
 </context>
 <context>
     <name>PointManager</name>
@@ -3811,6 +3823,18 @@ please chose!</source>
     <message>
         <source>Invaild Moldule</source>
         <translation>无效模块</translation>
+    </message>
+    <message>
+        <source>LineXY:</source>
+        <translation>直线XY:</translation>
+    </message>
+    <message>
+        <source>LineXZ:</source>
+        <translation>直线XZ:</translation>
+    </message>
+    <message>
+        <source>LineYZ:</source>
+        <translation>直线YZ:</translation>
     </message>
 </context>
 <context>

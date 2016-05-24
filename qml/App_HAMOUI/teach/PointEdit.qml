@@ -124,8 +124,12 @@ Item {
 
     onActionChanged: {
         if(action < 0) return;
-        if(action == Teach.actions.F_CMD_LINE2D_MOVE_POINT){
-            line2DType.setChecked(true);
+        if(action == Teach.actions.F_CMD_LINEXY_MOVE_POINT){
+            lineXYType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_LINEXZ_MOVE_POINT){
+            lineXZType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_LINEYZ_MOVE_POINT){
+            lineYZType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_LINE3D_MOVE_POINT){
             line3DType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_ARC3D_MOVE_POINT){
@@ -312,7 +316,7 @@ Item {
         ICCheckableComboboxEdit{
             id:selReferenceName
             configName: qsTr("Select Point:")
-            configNameWidth: 120
+            configNameWidth: 100
             height: 32
             inputWidth: 160
             popupHeight: 250
@@ -362,8 +366,8 @@ Item {
         id:rightCommandContainer
         anchors.left: middleVercSplitLine.right
         anchors.leftMargin: 2
-        width: 400
-        height: 90
+        width: 420
+        height: 114
         SequentialAnimation{
             id: flicker
             loops: 1
@@ -398,11 +402,21 @@ Item {
                 pointViewModel.clear();
                 //                motorSettingContainer.color = rightCommandContainer.color;
                 flicker.start();
-                if(checkedItem == line2DType){
+                if(checkedItem == lineXYType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
-                    action = Teach.actions.F_CMD_LINE2D_MOVE_POINT;
+                    action = Teach.actions.F_CMD_LINEXY_MOVE_POINT;
+                }else if(checkedItem == lineXZType){
+                    motor0.setChecked(true);
+                    motor2.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_LINEXZ_MOVE_POINT;
+                }else if(checkedItem == lineYZType){
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    action = Teach.actions.F_CMD_LINEYZ_MOVE_POINT;
                 }else if(checkedItem == line3DType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
@@ -508,17 +522,29 @@ Item {
             }
 
             Flow{
-                width: 395
+                width: rightCommandContainer.width
                 spacing: 4
                 x:4
                 y:2
                 ICCheckBox{
-                    id:line2DType
-                    text: qsTr("Line 2D")
+                    id:lineXYType
+                    text: qsTr("Line XY")
+                }
+                ICCheckBox{
+                    id:lineXZType
+                    text: qsTr("Line XZ")
+                }
+                ICCheckBox{
+                    id:lineYZType
+                    text: qsTr("Line YZ")
                 }
                 ICCheckBox{
                     id:line3DType
                     text: qsTr("Line 3D")
+                }
+                ICCheckBox{
+                    id:offsetPathType
+                    text: qsTr("Offset Line")
                 }
                 ICCheckBox{
                     id:cureveXYType
@@ -538,6 +564,10 @@ Item {
                     text:qsTr("Curve 3D")
                 }
                 ICCheckBox{
+                    id:circlePathType
+                    text:qsTr("Circle")
+                }
+                ICCheckBox{
                     id:singlePoseType
                     text: qsTr("Pose")
                 }
@@ -549,18 +579,12 @@ Item {
                     id:freePathType
                     text: qsTr("Free Path")
                 }
-                ICCheckBox{
-                    id:offsetPathType
-                    text: qsTr("Offset Line")
-                }
+
                 ICCheckBox{
                     id:offsetJogType
                     text:qsTr("Offset Jog")
                 }
-                ICCheckBox{
-                    id:circlePathType
-                    text:qsTr("Circle")
-                }
+
             }
         }
     }
@@ -570,7 +594,7 @@ Item {
         height: 202 - rightCommandContainer.height
         anchors.top: rightCommandContainer.bottom
         anchors.topMargin: 2
-        width: 400
+        width: rightCommandContainer.width
         border.width: 1
         border.color: "black"
         ListView{

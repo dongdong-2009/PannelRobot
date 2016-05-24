@@ -746,6 +746,9 @@ actions.F_CMD_SINGLE = actHelper++;
 actions.F_CMD_JOINTCOORDINATE = actHelper++;
 actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
+actions.F_CMD_LINEXY_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52000;
+actions.F_CMD_LINEXZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52001;
+actions.F_CMD_LINEYZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52002;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
 actions.F_CMD_ARCXY_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51000
@@ -1279,8 +1282,14 @@ var pointToString = function(point){
 var pathActionToStringHandler = function(actionObject){
     var ret = "";
     var needNewLine = false;
-    if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT){
-        ret += qsTr("Line2D:");
+    if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT){
+        ret += qsTr("LineXY:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT){
+        ret += qsTr("LineXZ:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT){
+        ret += qsTr("LineYZ:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT){
         ret += qsTr("Line3D:");
@@ -1353,7 +1362,9 @@ var waitVisionDataActionToStringHandler = function(actionObject){
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_FINE_ZERO, f_CMD_FINE_ZEROToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINEXY_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINEXZ_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINEYZ_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARCXY_MOVE_POINT, pathActionToStringHandler);
@@ -1390,7 +1401,9 @@ var actionObjectToEditableITems = function(actionObject){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"}];
-    }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
+    }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
@@ -1490,7 +1503,9 @@ var canActionUsePoint = function(actionObject){
     return actionObject.action === actions.F_CMD_SINGLE ||
             actionObject.action === actions.F_CMD_CoordinatePoint ||
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-            actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_MOVE_POSE ||

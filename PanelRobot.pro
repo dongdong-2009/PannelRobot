@@ -132,8 +132,8 @@ OTHER_FILES += \
 
 UPDir = $${DESTDIR}/HCRobot-$${VERSION}
 updateCmd = '"tar xvf PanelRobot.tar -C / ; cp /opt/Qt/apps/RobotDatabase /mnt/udisk -f"'
-UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar"
-unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}' > UPMaker && chmod +x UPMaker"
+UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar  &&  cd ../ && tools/versionUpdater.sh $${DESTDIR} $${UPDir}.tar.bfe"
+unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}'> UPMaker && chmod +x UPMaker && chmod +x tools/versionUpdater.sh"
 #unix:QMAKE_PRE_LINK += ""
 
 HEADERS += \

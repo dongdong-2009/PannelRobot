@@ -241,6 +241,8 @@ Rectangle {
             var sid;
             if(!exist){
                 sid = Teach.appendStackInfo(stackInfo);
+                stackInfo.dsName = "custompoint[" + sid + "]";
+                stackInfo.dsHostID = sid;
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
             }

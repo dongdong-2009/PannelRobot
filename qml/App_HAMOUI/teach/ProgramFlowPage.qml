@@ -504,6 +504,7 @@ Rectangle {
             if(c2 >= 0)
                 PData.counterLinesInfo.add(cpI, c2, line);
         }
+        hasModify = true;
     }
 
     function onCounterUpdated(counterID){

@@ -456,8 +456,7 @@ Rectangle {
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
         if(PData.isReadOnly){
-            showActionEditorPanel();
-            showActionEditorPanel();
+            actionEditorFrame.visible = false;
         }
 
         programListView.currentIndex = -1;
@@ -671,7 +670,9 @@ Rectangle {
                     }
 
                     onCurrentIndexChanged: {
-                        showActionEditorPanel();
+                        if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
+                            actionEditorContainer.showMenu();
+                        }
                         saveProgram(currentEditingProgram);
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){

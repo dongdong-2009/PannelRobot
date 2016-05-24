@@ -50,7 +50,7 @@ struct StackInfo{
     QVector<quint32> posData;
 };
 
-Q_DECLARE_METATYPE(StackInfoPrivate)
+Q_DECLARE_METATYPE(StackInfo)
 //qRegisterMetaType<StackInfo>("StackInfo");
 #ifdef NEW_PLAT
 typedef QVector<quint32> ICMoldItem;

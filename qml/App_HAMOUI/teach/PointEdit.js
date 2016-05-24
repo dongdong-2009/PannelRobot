@@ -1,7 +1,7 @@
 .pragma library
 
 var commandBtnWidth = 64;
-var axisEditWidth = 80;
+var axisEditWidth = 75;
 var axisNameWidth = 45;
 var speedEditWidth = 70;
 var delayEditWidth = 70;

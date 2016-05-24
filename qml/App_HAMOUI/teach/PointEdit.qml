@@ -318,7 +318,7 @@ Item {
             configName: qsTr("Select Point:")
             configNameWidth: 100
             height: 32
-            inputWidth: 160
+            inputWidth: 150
             popupHeight: 250
             popupMode: 1
             z: 2
@@ -366,7 +366,7 @@ Item {
         id:rightCommandContainer
         anchors.left: middleVercSplitLine.right
         anchors.leftMargin: 2
-        width: 420
+        width: 430
         height: 114
         SequentialAnimation{
             id: flicker

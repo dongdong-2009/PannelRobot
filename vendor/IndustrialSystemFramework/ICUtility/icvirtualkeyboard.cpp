@@ -81,6 +81,8 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
 void ICVirtualKeyboard::showEvent(QShowEvent *e)
 {
     ui->inputEdit->setFocus();
+    ui->inputEdit->setCursorPosition(0);
+
     QWidget::showEvent(e);
 }
 

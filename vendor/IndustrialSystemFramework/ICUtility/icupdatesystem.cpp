@@ -27,18 +27,30 @@ QString ICUpdateSystem::PackProfile(const QString &packName)
 bool ICUpdateSystem::StartUpdate(const QString &packName)
 {
     if(packPath_.exists(packName))
-    {
-        QFile file(packPath_.absoluteFilePath(packName));
-        QString tmpFile = QDir::temp().absoluteFilePath(packName);
-        system(QString("rm " + tmpFile).toLatin1());
-        if(file.copy(tmpFile))
-        {
-            system((unpackCmd_ + " " + tmpFile).toLatin1());
-            tmpFile.chop(4);
-            system(QString("cd %1 && tar -xf %2").arg(QDir::tempPath()).arg(tmpFile).toLatin1());
-            tmpFile.chop(4);
-            return system(QString("cd %1 && chmod +x ./UpdateSystem.sh &&./UpdateSystem.sh").arg(QDir::temp().absoluteFilePath(tmpFile)).toLatin1()) > 0;
-        }
-    }
-    return false;
+     {
+         QFile file(packPath_.absoluteFilePath(packName));
+         QDir tmpDir = QDir::temp();
+         QString tmpFile = tmpDir.absoluteFilePath(packName);
+         system(QString("rm " + tmpFile).toAscii());
+         if(file.copy(tmpFile))
+         {
+             system((unpackCmd_ + " " + tmpFile).toAscii());
+             QStringList tars = tmpDir.entryList(QStringList()<<"*.tar");
+             if(tars.isEmpty()) return false;
+             tmpFile = tmpDir.absoluteFilePath(tars.at(0));
+             system(QString("rm -r %1/HCUpdateTmp").arg(QDir::tempPath()).toLatin1());
+             system(QString("mkdir -p %1/HCUpdateTmp && cd %1 && tar -xf %2 -C %1/HCUpdateTmp").arg(QDir::tempPath()).arg(tmpFile).toLatin1());
+             tmpDir.cd("HCUpdateTmp");
+             QStringList tarDirs = tmpDir.entryList(QStringList()<<"HC*");
+             if(tarDirs.isEmpty()) return false;
+             tmpDir.cdUp();
+             tmpFile = tmpDir.absoluteFilePath("HCUpdateTmp/" + tarDirs.at(0));
+             system(QString("chmod 777 %1/ -R").arg(tmpFile).toLatin1());
+             system(QString("cd %1 && ./UpdateSystem.sh").arg(tmpFile).toLatin1());
+             system(QString("rm %1/*.tar").arg(QDir::tempPath()).toLatin1());
+             return true;
+         }
+     }
+     return false;
+
 }

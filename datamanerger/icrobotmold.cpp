@@ -11,6 +11,9 @@ QMap<int, QStringList> CreatePathActionMotorNamesMap()
 {
     QMap<int, QStringList> ret;
     ret.insert(F_CMD_LINE2D_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_LINEXY_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_LINEXZ_MOVE_POINT, QStringList()<<"m0"<<"m2");
+    ret.insert(F_CMD_LINEYZ_MOVE_POINT, QStringList()<<"m1"<<"m2");
     ret.insert(F_CMD_LINE3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_ARC3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_ARCXY_MOVE_POINT, QStringList()<<"m0"<<"m1");
@@ -115,11 +118,19 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
         type = action - F_CMD_ARCXY_MOVE_POINT;
         action = F_CMD_ARC2D_MOVE_POINT;
     }
+    else if(action == F_CMD_LINEXY_MOVE_POINT ||
+            action == F_CMD_LINEXZ_MOVE_POINT || action == F_CMD_LINEYZ_MOVE_POINT)
+    {
+        type = action - F_CMD_LINEXY_MOVE_POINT;
+        action = F_CMD_LINE2D_MOVE_POINT;
+    }
     item.append(v->value("action").toInt());
     if(action == F_CMD_ARC2D_MOVE_POINT)
         item.append(type);
     QVariantList points = v->value("points").toList();
-    if(item.at(0) == F_CMD_LINE2D_MOVE_POINT && points.size() != 1)
+    if((item.at(0) == F_CMD_LINE2D_MOVE_POINT || item.at(0) == F_CMD_LINEXY_MOVE_POINT ||
+        item.at(0) == F_CMD_LINEXZ_MOVE_POINT || item.at(0) == F_CMD_LINEYZ_MOVE_POINT)
+            && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
@@ -181,6 +192,8 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
 
+    if(action == F_CMD_LINE2D_MOVE_POINT)
+        item.append(type);
     item[0] = action;
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
@@ -291,21 +304,21 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
-    StackInfoPrivate si = v->value("stackInfo").value<StackInfoPrivate>();
-    item.append(si.si[0].m0pos);
-    item.append(si.si[0].m1pos);
-    item.append(si.si[0].m2pos);
-    item.append(si.si[0].m3pos);
-    item.append(si.si[0].m4pos);
-    item.append(si.si[0].m5pos);
+    StackInfo si = v->value("stackInfo").value<StackInfo>();
+    item.append(si.stackData.si[0].m0pos);
+    item.append(si.stackData.si[0].m1pos);
+    item.append(si.stackData.si[0].m2pos);
+    item.append(si.stackData.si[0].m3pos);
+    item.append(si.stackData.si[0].m4pos);
+    item.append(si.stackData.si[0].m5pos);
     item.append(ICUtility::doubleToInt(v->value("speed0", 80).toDouble(), 1));
-    item.append(si.si[0].space0);
-    item.append(si.si[0].space1);
-    item.append(si.si[0].space2);
-    item.append(si.si[0].count0);
-    item.append(si.si[0].count1);
-    item.append(si.si[0].count2);
-    item.append(si.all[12]);
+    item.append(si.stackData.si[0].space0);
+    item.append(si.stackData.si[0].space1);
+    item.append(si.stackData.si[0].space2);
+    item.append(si.stackData.si[0].count0);
+    item.append(si.stackData.si[0].count1);
+    item.append(si.stackData.si[0].count2);
+    item.append(si.stackData.all[12]);
     //    item.append(si.si[0].doesBindingCounter);
     //    item.append(si.si[0].counterID);
 
@@ -315,21 +328,21 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     //    item.append(si.si[1].m3pos);
     //    item.append(si.si[1].m4pos);
     //    item.append(si.si[1].m5pos);
-    item.append(si.si[1].space0);
-    item.append(si.si[1].space1);
-    item.append(si.si[1].space2);
-    item.append(si.si[1].count0);
-    item.append(si.si[1].count1);
-    item.append(si.si[1].count2);
+    item.append(si.stackData.si[1].space0);
+    item.append(si.stackData.si[1].space1);
+    item.append(si.stackData.si[1].space2);
+    item.append(si.stackData.si[1].count0);
+    item.append(si.stackData.si[1].count1);
+    item.append(si.stackData.si[1].count2);
     item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
     //    item.append(si.si[1].doesBindingCounter);
     //    item.append(si.si[1].counterID);
-    item.append(si.all[25]);
-    if(si.si[0].isOffsetEn)
+    item.append(si.stackData.all[25]);
+    if(si.stackData.si[0].isOffsetEn)
     {
-        item.append(si.si[0].offsetX);
-        item.append(si.si[0].offsetY);
-        item.append(si.si[0].offsetZ);
+        item.append(si.stackData.si[0].offsetX);
+        item.append(si.stackData.si[0].offsetY);
+        item.append(si.stackData.si[0].offsetZ);
     }
     else
     {
@@ -338,11 +351,11 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
     }
 
-    if(si.si[1].isOffsetEn)
+    if(si.stackData.si[1].isOffsetEn)
     {
-        item.append(si.si[1].offsetX);
-        item.append(si.si[1].offsetY);
-        item.append(si.si[1].offsetZ);
+        item.append(si.stackData.si[1].offsetX);
+        item.append(si.stackData.si[1].offsetY);
+        item.append(si.stackData.si[1].offsetZ);
     }
     else
     {
@@ -350,9 +363,10 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
         item.append(0);
     }
-    if(si.si[0].type == 2)
+    if(si.stackData.si[0].type == 2 ||
+            si.stackData.si[0].type == 3)
     {
-        item[1] = (si.si[0].dataSourceID);
+        item[1] = (si.dsHostID);
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
@@ -408,6 +422,9 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_SINGLE, AxisServoActionCompiler);
     ret.insert(F_CMD_FINE_ZERO, OriginActionCompiler);
     ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINEXY_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINEXZ_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINEYZ_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARCXY_MOVE_POINT, PathActionCompiler);
@@ -641,12 +658,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 continue;
                 //                return ret;
             }
-            StackInfoPrivate si = stackInfos.value(stackID).stackData;
+            StackInfo si = stackInfos.value(stackID);
             for(int j = 0; j < 2; ++j)
             {
-                if(si.si[j].doesBindingCounter)
+                if(si.stackData.si[j].doesBindingCounter)
                 {
-                    if(IsCounterValid(counters, si.si[j].counterID) < 0)
+                    if(IsCounterValid(counters, si.stackData.si[j].counterID) < 0)
                     {
                         //                        ret.Clear();
                         err = ICRobotMold::kCCErr_Invaild_CounterID;
@@ -654,7 +671,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     }
                 }
             }
-            action.insert("stackInfo", QVariant::fromValue<StackInfoPrivate>(si));
+            action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
         }
         if(act == F_CMD_COUNTER ||
                 act == F_CMD_COUNTER_CLEAR ||
@@ -1252,7 +1269,7 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     {
         int stackID = result.value("stackID", -1).toInt();
         StackInfo si = stackInfos_.value(stackID);
-        result.insert("stackInfo", QVariant::fromValue<StackInfoPrivate>(si.stackData));
+        result.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
     }
 
     ret = VariantToMoldItem(realStep, result, err);
@@ -1441,7 +1458,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dataSourceID = stackMap.value("dataSourceID").toInt();
 
         stackInfo.dsName = tmp.value("dsName").toString();
-        stackInfo.dsHostID = tmp.value("hostID").toInt();
+        stackInfo.dsHostID = tmp.value("dsHostID").toInt();
 
         ret.insert(p.key().toInt(), stackInfo);
         ++p;

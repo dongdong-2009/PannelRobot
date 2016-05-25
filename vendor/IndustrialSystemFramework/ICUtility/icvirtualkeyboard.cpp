@@ -80,7 +80,11 @@ void ICVirtualKeyboard::changeEvent(QEvent *e)
 
 void ICVirtualKeyboard::showEvent(QShowEvent *e)
 {
-    ui->inputEdit->setFocus();
+//    ui->inputEdit->setFocus();
+//    ui->inputEdit->setCursorPosition(0);
+    QMouseEvent *me = new QMouseEvent(QEvent::MouseButtonPress, QPoint(10, 10),
+                                      Qt::LeftButton,Qt::LeftButton,Qt::NoModifier);
+    qApp->postEvent(ui->inputEdit, me);
     QWidget::showEvent(e);
 }
 

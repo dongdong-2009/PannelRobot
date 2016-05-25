@@ -224,6 +224,15 @@ Rectangle {
         }
     }
 
+    onVisibleChanged: {
+        if(visible){
+            for(var i = 0, len = counterModel.count; i < len; ++i){
+                counterModel.setProperty(i, "current",
+                                         Teach.counterManager.getCounter(counterModel.get(i).id).current);
+            }
+        }
+    }
+
     Component.onCompleted: {
         panelRobotController.moldChanged.connect(onMoldChanged);
         onMoldChanged();

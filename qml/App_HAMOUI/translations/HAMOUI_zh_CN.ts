@@ -895,19 +895,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>V</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>W</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1263,7 +1263,7 @@
     </message>
     <message>
         <source>Y017</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {017?}</translation>
     </message>
     <message>
         <source>Y020</source>
@@ -1275,59 +1275,59 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {022?}</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {023?}</translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {024?}</translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {025?}</translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {026?}</translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {027?}</translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {030?}</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {031?}</translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {032?}</translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {033?}</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {034?}</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {035?}</translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {036?}</translation>
     </message>
     <message>
         <source>Y037</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {037?}</translation>
     </message>
     <message>
         <source>X010</source>
@@ -2497,6 +2497,18 @@ please chose!</source>
     <message>
         <source>Curve YZ</source>
         <translation>曲线YZ</translation>
+    </message>
+    <message>
+        <source>Line XY</source>
+        <translation>直线XY</translation>
+    </message>
+    <message>
+        <source>Line XZ</source>
+        <translation>直线XZ</translation>
+    </message>
+    <message>
+        <source>Line YZ</source>
+        <translation>直线YZ</translation>
     </message>
 </context>
 <context>
@@ -3812,6 +3824,18 @@ please chose!</source>
         <source>ArcYZ:</source>
         <translation>曲线YZ:</translation>
     </message>
+    <message>
+        <source>LineXY:</source>
+        <translation>直线XY:</translation>
+    </message>
+    <message>
+        <source>LineXZ:</source>
+        <translation>直线XZ:</translation>
+    </message>
+    <message>
+        <source>LineYZ:</source>
+        <translation>直线YZ:</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -3841,7 +3865,7 @@ please chose!</source>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {1?}</translation>
     </message>
     <message>
         <source>Z</source>
@@ -3849,7 +3873,7 @@ please chose!</source>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">公转盘反转 {2?}</translation>
     </message>
     <message>
         <source>A</source>

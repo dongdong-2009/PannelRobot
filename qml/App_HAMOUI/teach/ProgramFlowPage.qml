@@ -456,8 +456,7 @@ Rectangle {
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
         if(PData.isReadOnly){
-            showActionEditorPanel();
-            showActionEditorPanel();
+            actionEditorFrame.visible = false;
         }
 
         programListView.currentIndex = -1;
@@ -505,6 +504,7 @@ Rectangle {
             if(c2 >= 0)
                 PData.counterLinesInfo.add(cpI, c2, line);
         }
+        hasModify = true;
     }
 
     function onCounterUpdated(counterID){
@@ -574,7 +574,9 @@ Rectangle {
                     currentIndex: 0
                     onCurrentIndexChanged: {
                         //                        console.log("onCurrentIndexChanged", currentIndex);
-                        showActionEditorPanel();
+                        if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
+                            actionEditorContainer.showMenu();
+                        }
                         deleteManualProgram.visible = false;
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
@@ -669,7 +671,9 @@ Rectangle {
                     }
 
                     onCurrentIndexChanged: {
-                        showActionEditorPanel();
+                        if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
+                            actionEditorContainer.showMenu();
+                        }
                         saveProgram(currentEditingProgram);
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){
@@ -1479,7 +1483,7 @@ Rectangle {
                     actionEditorContainer.setCurrentIndex(9);
                     linkedBtn1.text = qsTr("Output Action");
                     linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+                    PData.linked1Function = actionMenuObject.outputMenuTriggered;
 
                     linkedBtn2.text = qsTr("Wait");
                     linkedBtn2.visible = true;

@@ -318,7 +318,7 @@ Item {
             configName: qsTr("Select Point:")
             configNameWidth: 100
             height: 32
-            inputWidth: 150
+            inputWidth: 160
             popupHeight: 250
             popupMode: 1
             z: 2
@@ -366,7 +366,7 @@ Item {
         id:rightCommandContainer
         anchors.left: middleVercSplitLine.right
         anchors.leftMargin: 2
-        width: 430
+        width: 420
         height: 114
         SequentialAnimation{
             id: flicker
@@ -522,67 +522,94 @@ Item {
             }
 
             Flow{
-                width: rightCommandContainer.width
+                width: rightCommandContainer.width - x
                 spacing: 4
                 x:4
                 y:2
                 ICCheckBox{
                     id:lineXYType
                     text: qsTr("Line XY")
+                    font.pointSize: PData.actionTypeFontPS
                 }
                 ICCheckBox{
                     id:lineXZType
                     text: qsTr("Line XZ")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:lineYZType
                     text: qsTr("Line YZ")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:line3DType
                     text: qsTr("Line 3D")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:offsetPathType
                     text: qsTr("Offset Line")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:cureveXYType
                     text:qsTr("Curve XY")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:cureveXZType
                     text:qsTr("Curve XZ")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:cureveYZType
                     text:qsTr("Curve YZ")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
 
                 ICCheckBox{
                     id:curve3DType
                     text:qsTr("Curve 3D")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:circlePathType
                     text:qsTr("Circle")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:singlePoseType
                     text: qsTr("Pose")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:pose3DType
                     text: qsTr("Pose 3D")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
                 ICCheckBox{
                     id:freePathType
                     text: qsTr("Free Path")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
 
                 ICCheckBox{
                     id:offsetJogType
                     text:qsTr("Offset Jog")
+                    font.pointSize: PData.actionTypeFontPS
+
                 }
 
             }

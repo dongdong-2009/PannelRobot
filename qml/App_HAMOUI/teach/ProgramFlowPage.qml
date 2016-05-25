@@ -1483,7 +1483,7 @@ Rectangle {
                     actionEditorContainer.setCurrentIndex(9);
                     linkedBtn1.text = qsTr("Output Action");
                     linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
+                    PData.linked1Function = actionMenuObject.outputMenuTriggered;
 
                     linkedBtn2.text = qsTr("Wait");
                     linkedBtn2.visible = true;

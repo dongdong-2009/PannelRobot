@@ -5,7 +5,8 @@ SOURCES = *.qml \
 teach/*.js \
 teach/*.qml \
 configs/* \
-settingpages/*
+settingpages/* \
+kexuye-pentu-spec/*
 }
 
 

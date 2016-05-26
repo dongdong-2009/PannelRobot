@@ -19,6 +19,20 @@ Rectangle {
     property int currentEditingProgram: 0
     property int currentEditingModule: 0
     property bool hasModify: false
+
+    function getRecordContent(which){
+        return JSON.parse(panelRobotController.programs(which));
+    }
+
+    function actionObjectToText(actionObject){
+        var originText = Teach.actionToStringNoCusomName(actionObject);
+        if(actionObject.customName){
+            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+            originText = styledCN + " " + originText;
+        }
+        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+    }
+
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
             actionEditorContainer.showMenu();
@@ -505,7 +519,7 @@ Rectangle {
         for(var l in stackLines){
             line = stackLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":programListView.actionObjectToText(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
             PData.counterLinesInfo.removeLine(cpI, line);
             if(c1 >= 0)
                 PData.counterLinesInfo.add(cpI, c1, line);
@@ -524,7 +538,7 @@ Rectangle {
         for(var l in counterLines){
             line = counterLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":programListView.actionObjectToText(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
 
         }
     }
@@ -1076,8 +1090,7 @@ Rectangle {
                                 cM.setProperty(programListView.currentIndex, "mI_ActionObject", modelObject.mI_ActionObject.commentAction);
                             }
                             else{
-                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
-                                //                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
+                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
                             }
                             hasModify = true;
 
@@ -1121,14 +1134,7 @@ Rectangle {
                     height: parent.height - 2
                     spacing:2
                     clip: true
-                    function actionObjectToText(actionObject){
-                        var originText = Teach.actionToStringNoCusomName(actionObject);
-                        if(actionObject.customName){
-                            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
-                            originText = styledCN + " " + originText;
-                        }
-                        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-                    }
+
 
                     function clearLastRunning(lastRunning){
                         var i;
@@ -1148,7 +1154,7 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index + ":" + mI_ActionObject.insertedIndex
-                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: programListView.actionObjectToText(mI_ActionObject));
+                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: actionObjectToText(mI_ActionObject));
 
                         actionType: mI_ActionType
                         MouseArea{
@@ -1905,7 +1911,8 @@ Rectangle {
         }
 
         for(i = 0; i < 9; ++i){
-            program = JSON.parse(panelRobotController.programs(i));
+//            program = JSON.parse(panelRobotController.programs(i));
+            program = getRecordContent(i);
             Teach.currentParsingProgram = i;
             Teach.flagsDefine.clear(i);
             PData.programToInsertIndex[i] = updateProgramModel(PData.programs[i], program);

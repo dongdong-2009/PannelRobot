@@ -9,9 +9,6 @@ settingpages/* \
 kexuye-pentu-spec/*
 }
 
-OTHER_FILES += \
-    kexuye-pentu-spec/ProgramFlowPage.qml \
-    kexuye-pentu-spec/ProgramActionMenu.qml
 
 
 

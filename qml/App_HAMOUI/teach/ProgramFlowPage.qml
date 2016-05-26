@@ -33,6 +33,14 @@ Rectangle {
         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
+    function beforeSaveProgram(which){
+
+    }
+
+    function afterSaveProgram(which){
+
+    }
+
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
             actionEditorContainer.showMenu();
@@ -390,6 +398,7 @@ Rectangle {
     function saveProgram(which){
         if(!hasInit) return;
         if(!hasModify) return;
+        beforeSaveProgram(which);
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
@@ -416,6 +425,7 @@ Rectangle {
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
         hasModify = false;
+        afterSaveProgram(which);
     }
 
     function onFixIndexTriggered(){

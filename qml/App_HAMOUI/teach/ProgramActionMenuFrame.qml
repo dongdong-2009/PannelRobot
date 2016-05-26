@@ -25,6 +25,8 @@ Rectangle{
             actionEditorContainer.showMenu();
     }
 
+    function actionEditorContainerInstance() { return actionEditorContainer;}
+
     ICButton{
         id:insertBtn
         x:4

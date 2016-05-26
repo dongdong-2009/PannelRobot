@@ -476,6 +476,7 @@ Rectangle {
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         autoKeyboard.visible = isAuto;
         autoRunInfoContainer.visible = isAuto;
+        moduleSel.currentIndex = 0;
         if(isAuto){
             singleCycle.setChecked(false);
             singleStep.setChecked(false);

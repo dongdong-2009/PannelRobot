@@ -32,6 +32,13 @@ Rectangle {
         actionEditorFrame.visible = !actionEditorFrame.visible;
     }
 
+    function hideActionEditorPanel(){
+        if(actionEditorFrame.visible){
+            programListView.contentY -= actionEditorFrame.height;
+            actionEditorFrame.visible = false;
+        }
+    }
+
     function insertActionToList(actionObject){
         var cI = programListView.currentIndex;
         var oCI = cI;
@@ -456,7 +463,7 @@ Rectangle {
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
         if(PData.isReadOnly){
-            actionEditorFrame.visible = false;
+            hideActionEditorPanel();
         }
 
         programListView.currentIndex = -1;
@@ -478,7 +485,7 @@ Rectangle {
         isFollow.visible = isAuto;
 
         modifyEditor.isAutoMode = isAuto;
-        actionEditorFrame.visible = false;
+        hideActionEditorPanel();
         speedDispalyContainer.visible = isAuto;
         if(hasModify)
             onSaveTriggered();
@@ -1035,7 +1042,7 @@ Rectangle {
                         width: 40
                         text: qsTr("Edit")
                         onButtonClicked: {
-                            actionEditorFrame.visible = false;
+                            hideActionEditorPanel();
                             toolBar.showModify()
                         }
 
@@ -1403,6 +1410,7 @@ Rectangle {
 
                     linkedBtn3.text = qsTr("Condition")
                     linkedBtn3.visible = true;
+                    linkedBtn3.enabled = moduleSel.currentIndex == 0;
                     PData.linked3Function = actionMenuObject.conditionMenuTriggered;
                 });
                 actionMenuObject.outputMenuTriggered.connect(function(){
@@ -1491,6 +1499,7 @@ Rectangle {
 
                     linkedBtn3.text = qsTr("Condition")
                     linkedBtn3.visible = true;
+                    linkedBtn3.enabled = moduleSel.currentIndex == 0;
                     PData.linked3Function = actionMenuObject.conditionMenuTriggered;
                 });
                 actionMenuObject.stackMenuTriggered.connect(function(){
@@ -1519,6 +1528,7 @@ Rectangle {
 
                     linkedBtn3.text = qsTr("Condition")
                     linkedBtn3.visible = true;
+                    linkedBtn3.enabled = moduleSel.currentIndex == 0;
                     PData.linked3Function = actionMenuObject.conditionMenuTriggered;
                 });
                 actionMenuObject.customAlarmMenuTriggered.connect(function(){
@@ -1915,7 +1925,7 @@ Rectangle {
     }
 
     onVisibleChanged: {
-        actionEditorFrame.visible = false;
+        hideActionEditorPanel();
         programListView.currentIndex = -1;
         if(!visible){
             if(hasModify)

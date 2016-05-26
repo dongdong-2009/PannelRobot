@@ -7,6 +7,7 @@ import "../teach/ProgramFlowPage.js" as BasePData
 ProgramFlowPage {
 
     id:base
+    actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
     function getRecordContent(which){
         if(which == 0)

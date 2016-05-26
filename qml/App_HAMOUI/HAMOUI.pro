@@ -8,6 +8,10 @@ configs/* \
 settingpages/*
 }
 
+OTHER_FILES += \
+    teach/ProgramActionMenuFrame.qml \
+    teach/ProgramActionMenuFrame.js
+
 
 
 

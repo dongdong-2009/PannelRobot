@@ -2673,6 +2673,42 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>ProgramActionMenuFrame</name>
+    <message>
+        <source>Insert</source>
+        <translation>插入</translation>
+    </message>
+    <message>
+        <source>Menu</source>
+        <translation>动作
+菜单</translation>
+    </message>
+    <message>
+        <source>Output Action</source>
+        <translation>信号输出</translation>
+    </message>
+    <message>
+        <source>Wait</source>
+        <translation>等待</translation>
+    </message>
+    <message>
+        <source>Condition</source>
+        <translation>条件跳转</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>路径</translation>
+    </message>
+    <message>
+        <source>Check</source>
+        <translation>阀检测</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+</context>
+<context>
     <name>ProgramFlowPage</name>
     <message>
         <source>Editing</source>

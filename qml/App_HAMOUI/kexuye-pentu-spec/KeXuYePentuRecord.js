@@ -47,7 +47,7 @@ function KeXuyePentuRecord(){
 
     this.getRecordContent = function(name){
         var db = getDatabase();
-        var ret  = "";
+        var ret  = "[]";
         db.transaction(function(tx){
             var rs = tx.executeSql(icStrformat('SELECT value FROM kxyrecord WHERE name = "{0}"', name));
             if(rs.rows.length > 0){

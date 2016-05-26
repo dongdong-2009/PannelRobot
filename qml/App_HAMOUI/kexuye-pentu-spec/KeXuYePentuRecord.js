@@ -47,7 +47,7 @@ function KeXuyePentuRecord(){
 
     this.getRecordContent = function(name){
         var db = getDatabase();
-        var ret  = "[]";
+        var ret  = '[{"action":60000,"insertedIndex":0}]';
         db.transaction(function(tx){
             var rs = tx.executeSql(icStrformat('SELECT value FROM kxyrecord WHERE name = "{0}"', name));
             if(rs.rows.length > 0){
@@ -57,3 +57,6 @@ function KeXuyePentuRecord(){
         return ret;
     };
 }
+
+var keXuyePentuRecord = new KeXuyePentuRecord();
+keXuyePentuRecord.init();

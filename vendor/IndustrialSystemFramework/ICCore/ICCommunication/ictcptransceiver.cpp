@@ -25,8 +25,11 @@ _ConnectionHelper::_ConnectionHelper()
 
 _ConnectionHelper::~_ConnectionHelper()
 {
-    tcpServer_->close();
-    delete tcpServer_;
+    if(tcpServer_ != NULL)
+    {
+        tcpServer_->close();
+        delete tcpServer_;
+    }
 }
 
 void _ConnectionHelper::StartCommunicate()

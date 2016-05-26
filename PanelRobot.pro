@@ -1,7 +1,7 @@
 
 QT       += script opengl
 #TEMPLATE = app
-VERSION = 1.0.0
+VERSION = 1.0.1
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
 DEFINES += UART_COMM

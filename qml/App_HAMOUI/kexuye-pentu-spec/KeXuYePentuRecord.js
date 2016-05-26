@@ -15,7 +15,7 @@ function KeXuyePentuRecord(){
         var ret = false;
         db.transaction(function(tx){
             var rs = tx.executeSql(icStrformat('SELECT * FROM kxyrecord WHERE name="{0}"', name));
-            if(rs.rowsAffected > 0) ret = true;
+            if(rs.rows.length > 0) ret = true;
         });
         return ret;
     };
@@ -24,7 +24,7 @@ function KeXuyePentuRecord(){
         if(this.exist(name)) return false;
         var db = getDatabase();
         db.transaction(function(tx){
-            tx.executeSql(icStrformat('INSERT INTO kxyrecord VALUES("{0}","{1}")', name, content));
+            tx.executeSql(icStrformat("INSERT INTO kxyrecord VALUES('{0}','{1}')", name, content));
         });
         return true;
     };
@@ -33,8 +33,10 @@ function KeXuyePentuRecord(){
         if(this.exist(name)){
             var db = getDatabase();
             db.transaction(function(tx){
-                tx.executeSql(icStrformat('UPDATE kxyrecord SET value="{0}" WHERE name="{1}"', content, name));
+                tx.executeSql(icStrformat("UPDATE kxyrecord SET value='{0}' WHERE name='{1}'", content, name));
             });
+        }else{
+            this.newRecord(name, content);
         }
     };
 

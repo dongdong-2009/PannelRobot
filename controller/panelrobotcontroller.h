@@ -560,6 +560,11 @@ public:
             toJSON.chop(1);
         }
         toJSON += "}";
+        sendMainProgramToHost();
+        for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+        {
+            sendSubProgramToHost(i);
+        }
         return toJSON;
     }
 

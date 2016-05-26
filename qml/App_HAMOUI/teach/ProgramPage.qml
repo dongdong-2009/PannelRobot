@@ -46,7 +46,8 @@ ContentPageBase{
             id:pageContainer
         }
         Component.onCompleted: {
-            var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');
+//            var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');
+            var programFlowClass = Qt.createComponent('../kexuye-pentu-spec/ProgramFlowPage.qml');
             if (programFlowClass.status == Component.Ready){
                 var page = programFlowClass.createObject(pageContainer)
                 pageContainer.addPage(page);

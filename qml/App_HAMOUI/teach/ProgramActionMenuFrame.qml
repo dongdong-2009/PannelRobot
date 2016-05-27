@@ -9,6 +9,13 @@ Rectangle{
 
     signal insertActionTriggered()
 
+    function showActionMenu() {
+        actionEditorContainer.setCurrentIndex(0);
+        linkedBtn1.visible = false;
+        linkedBtn2.visible = false;
+        linkedBtn3.visible = false;
+    }
+
     function setMode(mode){
         actionMenuObject.state = mode;
     }
@@ -22,7 +29,7 @@ Rectangle{
 
     function showMenu(){
         if(!actionEditorContainer.isMenuShow() && visible)
-            actionEditorContainer.showMenu();
+            showActionMenu();
     }
 
     function actionEditorContainerInstance() { return actionEditorContainer;}
@@ -113,12 +120,7 @@ Rectangle{
     }
 
     ICStackContainer{
-        function showMenu() {
-            setCurrentIndex(0);
-            linkedBtn1.visible = false;
-            linkedBtn2.visible = false;
-            linkedBtn3.visible = false;
-        }
+
         function isMenuShow() { return currentIndex == 0;}
         id:actionEditorContainer
         width: parent.width - insertBtn.width - anchors.leftMargin - splitLine.width -splitLine.anchors.leftMargin
@@ -185,7 +187,7 @@ Rectangle{
         actionEditorContainer.addPage(visionEditorObject);
 
 
-        actionEditorContainer.showMenu();
+        showActionMenu();
         actionMenuObject.axisMenuTriggered.connect(function(){
             actionEditorContainer.setCurrentIndex(1);
             linkedBtn1.text = qsTr("Output Action");
@@ -344,7 +346,7 @@ Rectangle{
             linkedBtn3.visible = false;
         });
 
-        actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
+        actionMenuBtn.buttonClicked.connect(showActionMenu);
         insertBtn.buttonClicked.connect(insertActionTriggered);
     }
 }

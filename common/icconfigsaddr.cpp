@@ -168,7 +168,7 @@ extern  const ICAddrWrapper  s_rw_0_32_3_171(3,3,0,32,171,3,"");    //<机械结
 extern  const ICAddrWrapper  s_rw_0_32_3_172(3,3,0,32,172,3,"");    //<机械结构轴5偏角
 extern  const ICAddrWrapper  s_rw_0_32_3_173(3,3,0,32,173,3,"");    //<机械结构轴6偏角
 extern  const ICAddrWrapper  s_rw_0_32_3_174(3,3,0,32,174,3,"mm");    //<机械结构一轴X方向偏心
-extern  const ICAddrWrapper  s_rw_0_32_3_175(3,3,0,32,175,3,"mm");    //<机械结构一轴X方向偏心
+extern  const ICAddrWrapper  s_rw_0_32_3_175(3,3,0,32,175,3,"mm");    //<机械结构一轴Y方向偏心
 extern  const ICAddrWrapper  s_rw_0_32_0_176(3,3,0,32,176,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_177(3,3,0,32,177,0,"");    //<机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_178(3,3,0,32,178,0,"");    //<机械结构预留

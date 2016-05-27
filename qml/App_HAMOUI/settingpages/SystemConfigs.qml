@@ -49,7 +49,7 @@ Item {
                 items: [qsTr("kSttIndependent"), qsTr("kSttPP"), qsTr("kSttRR"),
                 qsTr("kSttPPP"), qsTr("kSttRTR"), qsTr("kSttRRP"), qsTr("kSttRRPR"),
                 qsTr("kSttRTRT"), qsTr("kSttRTRTTT"), qsTr("kStt5P"), qsTr("kSttPPP_RRR"),
-                qsTr("kSttRRPR_BRT"), qsTr("kSttRTRTTT_EX")]
+                qsTr("kSttRRPR_BRT"), qsTr("kSttRTRTTT_EX"), qsTr("kSttLathe_6p")]
 
             }
             ICConfigEdit{

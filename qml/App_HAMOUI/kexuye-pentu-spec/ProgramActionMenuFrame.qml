@@ -9,14 +9,23 @@ ProgramActionMenuFrame{
         parent: actionEditorContainerInstance()
         Grid{
             ICButton{
-                id:action1
-                text:qsTr("Action1")
+                id:ptLineXY
+                text:qsTr("PT Line XY")
             }
         }
     }
     Component.onCompleted: {
         var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame);
         actionEditorContainerInstance().setCurrentIndex(frameIndex - 1);
-        console.log("dfsdfdsf", frameIndex);
+        actionEditorContainerInstance().showMenu = function(){
+            actionEditorContainerInstance().setCurrentIndex(frameIndex - 1);
+        }
+
+        var editor = Qt.createComponent('KexuYeActionEdit.qml');
+        var kxyObject = editor.createObject(actionEditorContainerInstance());
+        var keyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;
+        ptLineXY.buttonClicked.connect(function(){
+            actionEditorContainerInstance().setCurrentIndex(keyObjectIndex);
+        });
     }
 }

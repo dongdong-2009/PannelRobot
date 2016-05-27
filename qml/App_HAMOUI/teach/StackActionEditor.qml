@@ -100,6 +100,7 @@ Rectangle {
         x:200
         visible: defineStack.isChecked
         popupWidth: 200
+        popupHeight: 150
         width: popupWidth
         onCurrentIndexChanged: {
             if(currentIndex < 0 ) return;
@@ -467,6 +468,7 @@ Rectangle {
             visible: useFlag.isChecked
             configName: qsTr("Stack")
             inputWidth: 200
+            popupHeight: 150
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;

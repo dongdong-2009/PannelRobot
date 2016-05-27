@@ -1,0 +1,1 @@
+var menuIndex = 0;

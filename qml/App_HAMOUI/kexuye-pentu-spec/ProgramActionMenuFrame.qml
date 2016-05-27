@@ -1,8 +1,14 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "../teach"
+import "ProgramActionMenuFrame.js" as LocalPData
 
 ProgramActionMenuFrame{
+    function showActionMenu(){
+        actionEditorContainerInstance().setCurrentIndex(LocalPData.menuIndex);
+    }
+
+
 
     Rectangle{
         id:kexuyeActionsFrame
@@ -15,12 +21,9 @@ ProgramActionMenuFrame{
         }
     }
     Component.onCompleted: {
-        var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame);
-        actionEditorContainerInstance().setCurrentIndex(frameIndex - 1);
-        actionEditorContainerInstance().showMenu = function(){
-            actionEditorContainerInstance().setCurrentIndex(frameIndex - 1);
-        }
-
+        var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame) - 1;
+        actionEditorContainerInstance().setCurrentIndex(frameIndex );
+        LocalPData.menuIndex = frameIndex;
         var editor = Qt.createComponent('KexuYeActionEdit.qml');
         var kxyObject = editor.createObject(actionEditorContainerInstance());
         var keyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;

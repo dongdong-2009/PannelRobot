@@ -13,8 +13,8 @@
 extern "C"
 {
 #endif
-#define DEBUG_TEST  1 //< 测试
-#define ABS_DEBUG_TEST 1 //< 绝对值电机读数测试
+#define DEBUG_TEST  all_para->all[ICAddr_System_Retain_9] //< 测试
+#define ABS_DEBUG_TEST all_para->all[ICAddr_System_Retain_10] //< 绝对值电机读数测试
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
@@ -37,6 +37,7 @@ typedef enum {
 	kSttPPP_RRR,// 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
 	kSttRRPR_BRT,	// 伯朗特 SCARA 四关节
 	kSttRTRTTT_EX,	// PUMA560 六关节
+	kSttLathe_6p,	// 车床机型 6轴
 } MechanismType;
 
 /// ----------------------------------------------------------------------------------
@@ -66,7 +67,7 @@ typedef enum {
 	C6V13,
 
 } BoardId;
-#define SOFTWARE_VERSION  "HC_S6-0.1-0.5"
+#define SOFTWARE_VERSION  "HC_S6-0.1-0.6"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -83,6 +84,8 @@ typedef enum _ICAddr
     ICAddr_System_Retain_6,//< 手动IO操作
     ICAddr_System_Retain_7,//< 定义IO操作
     ICAddr_System_Retain_8,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
+    ICAddr_System_Retain_9,//< 0：正常发机程序；1：测试程序
+    ICAddr_System_Retain_10,//< 0：正常发机程序；1：绝对值电机读数测试
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
     //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
@@ -644,7 +647,7 @@ typedef enum
 	F_CMD_JOINT_MOVE_POINT,
 	//< 直线坐标偏移位置（X，Y，Z） 速度  延时
 	F_CMD_LINE_RELATIVE,
-	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
+	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
     F_CMD_MOVE_POSE,   //< 运动目标姿势 姿势（X，Y，Z） 速度  延时
@@ -653,7 +656,7 @@ typedef enum
     F_CMD_JOINT_RELATIVE,
 
     F_CMD_ARC3D_MOVE,   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
-    F_CMD_ARC2D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+    F_CMD_ARC2D_MOVE_POINT,   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
@@ -1005,7 +1008,7 @@ typedef struct {
     uint32_t a5; //<类型:系统;名字:轴5偏角;精度:3;单位:;
     uint32_t a6; //<类型:系统;名字:轴6偏角;精度:3;单位:;
     uint32_t X1ecc; //<类型:系统;名字:一轴X方向偏心;精度:3;单位:mm;
-    uint32_t Y1ecc; //<类型:系统;名字:一轴X方向偏心;精度:3;单位:mm;
+    uint32_t Y1ecc; //<类型:系统;名字:一轴Y方向偏心;精度:3;单位:mm;
     uint32_t res[8]; //<类型:系统;名字:预留;精度:0;单位:;
     uint32_t haardware_version:16; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
     uint32_t axisnum:8; //<类型:系统;名字:轴数设定;精度:0;单位:;

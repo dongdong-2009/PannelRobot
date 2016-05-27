@@ -33,6 +33,9 @@ Rectangle{
     }
 
     function actionEditorContainerInstance() { return actionEditorContainer;}
+    function linkedBtn1Instance() { return linkedBtn1;}
+    function linkedBtn2Instance() { return linkedBtn2;}
+    function linkedBtn3Instance() { return linkedBtn3;}
 
     ICButton{
         id:insertBtn

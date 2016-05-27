@@ -6,6 +6,9 @@ import "ProgramActionMenuFrame.js" as LocalPData
 ProgramActionMenuFrame{
     function showActionMenu(){
         actionEditorContainerInstance().setCurrentIndex(LocalPData.menuIndex);
+        linkedBtn1Instance().visible = false;
+        linkedBtn2Instance().visible = false;
+        linkedBtn3Instance().visible = false;
     }
 
 

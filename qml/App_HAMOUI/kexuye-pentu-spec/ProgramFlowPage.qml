@@ -53,11 +53,11 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateOutputAction(0, 0, 0, 0, actionObject.fixtureDelay));
 
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, actionObject.dirAxis, actionObject.dirLength, actionObject.dirSpeed));
+        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, actionObject.dirAxis, actionObject.dirLength, actionObject.dirSpeed));
         ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
 
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, 4, 90, actionObject.dirSpeed));
+        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, 4, 90, actionObject.dirSpeed));
         ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.dirCounterID, 0, 1));
 

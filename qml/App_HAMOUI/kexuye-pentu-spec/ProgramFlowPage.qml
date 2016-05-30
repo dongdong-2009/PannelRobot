@@ -28,7 +28,19 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
-        ret.push(LocalTeach.generateCounterAction(repeateSpeed));
+        ret.push(LocalTeach.generateCounterAction(dirCounterID));
+        ret.push(LocalTeach.generateCounterAction(repeateCounterID));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag0, "mojuxuanzhuan"));      //biaoqian?
+
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, actionObject.startPos.pos.m2, actionObject.startPosSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, actionObject.startPos.pos.m2, actionObject.startPosSpeed2));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag1, "ycundong"));      //biaoqian?
+
+        ret.push(LocalTeach.generateOutputAction())
 
         return ret;
     }

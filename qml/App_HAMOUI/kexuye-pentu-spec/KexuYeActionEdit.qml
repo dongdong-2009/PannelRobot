@@ -11,11 +11,21 @@ Item {
     property variant plane: [0, 1]
     function createActionObjects(){
         var ret = [];
+        var c = LocalTeach.counterManager.newCounter("", 0, repeateCount);
+        var rcID = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+        c = LocalTeach.counterManager.newCounter("", 0, dirCount);
+        var dirCID = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+        c= LocalTeach.counterManager.newCounter("", 0, rotateCount);
+        var rotateCID = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),[800, 800, 800, 800, 800, 800],
                                                 repeateSpeed.configValue, repeateCount.configValue,
                                                 dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue, dirCount.configValue,
                                                 pos2Container.getPoint(), pos3Container.getPoint(),
-                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue, 5));
+                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue, 5,
+                                                rcID, dirCID, rotateCID));
         return ret;
     }
 

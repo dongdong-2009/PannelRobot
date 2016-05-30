@@ -20,13 +20,9 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeeds,
                                    repeatSpeed, repeateCount,
                                    dirAxis, dirLength, dirSpeed, dirCount,
                                    point1, point2, rotate, rotateSpeed, rotateCount,
-                                   fixtureDelay){
-    var c = counterManager.newCounter("", 0, repeateCount);
-    var rcID = c.id;
-    c = counterManager.newCounter("", 0, dirCount);
-    var dirCID = c.id;
-    c= counterManager.newCounter("", 0, rotateCount);
-    var rotateCID = c.id;
+                                   fixtureDelay, rcID, dirCID, rotateCID){
+
+
     var f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag0 = f.flagID;

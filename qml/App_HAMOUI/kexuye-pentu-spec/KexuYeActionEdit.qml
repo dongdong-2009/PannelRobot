@@ -11,10 +11,11 @@ Item {
     property variant plane: [0, 1]
     function createActionObjects(){
         var ret = [];
-        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),
+        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),[800, 800, 800, 800, 800, 800],
                                                 repeateSpeed.configValue, repeateCount.configValue,
                                                 dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue, dirCount.configValue,
-                                                pos2Container.getPoint(), pos3Container.getPoint()));
+                                                pos2Container.getPoint(), pos3Container.getPoint(),
+                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue, 5));
         return ret;
     }
 
@@ -216,6 +217,26 @@ Item {
             ICConfigEdit{
                 id:dirCount
                 configName: qsTr("Dir Count")
+            }
+        }
+
+        Row{
+            id:rotateContainer
+            spacing: 10
+            ICConfigEdit{
+                id:rotate
+                configName: qsTr("Rotate")
+                configAddr: "s_rw_0_32_3_1300"
+            }
+            ICConfigEdit{
+                id:rotateSpeed
+                configName: qsTr("Rotate Speed")
+                configAddr: "s_rw_0_32_1_1200"
+                unit: qsTr("%")
+            }
+            ICConfigEdit{
+                id:rotateCount
+                configName: qsTr("Rotate Count")
             }
         }
     }

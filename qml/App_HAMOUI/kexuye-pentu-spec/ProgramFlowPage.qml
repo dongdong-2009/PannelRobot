@@ -28,8 +28,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
-        ret.push(LocalTeach.generateCounterAction(dirCounterID));
-        ret.push(LocalTeach.generateCounterAction(repeateCounterID));
+        ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+        ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag0, "mojuxuanzhuan"));      //biaoqian?
 
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, actionObject.startPos.pos.m2, actionObject.startPosSpeed2));

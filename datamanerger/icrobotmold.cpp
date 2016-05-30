@@ -128,6 +128,7 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     if(action == F_CMD_ARC2D_MOVE_POINT)
         item.append(type);
     QVariantList points = v->value("points").toList();
+    qDebug()<<points;
     if((item.at(0) == F_CMD_LINE2D_MOVE_POINT || item.at(0) == F_CMD_LINEXY_MOVE_POINT ||
         item.at(0) == F_CMD_LINEXZ_MOVE_POINT || item.at(0) == F_CMD_LINEYZ_MOVE_POINT)
             && points.size() != 1)

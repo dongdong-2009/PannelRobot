@@ -2,7 +2,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "../teach"
 import "ProgramActionMenuFrame.js" as LocalPData
-
+import "Teach.js" as LocalTeach
 ProgramActionMenuFrame{
     function showActionMenu(){
         actionEditorContainerInstance().setCurrentIndex(LocalPData.menuIndex);
@@ -21,6 +21,13 @@ ProgramActionMenuFrame{
                 id:ptLineXY
                 text:qsTr("PT Line XY")
             }
+            ICButton{
+                id:baseCmd
+                text:qsTr("Base CMD")
+                onButtonClicked: {
+                    actionEditorContainerInstance().setCurrentIndex(0);
+                }
+            }
         }
     }
     Component.onCompleted: {
@@ -31,7 +38,9 @@ ProgramActionMenuFrame{
         var kxyObject = editor.createObject(actionEditorContainerInstance());
         var keyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;
         ptLineXY.buttonClicked.connect(function(){
+            kxyObject.mode = LocalTeach.pentuModes.singleAxisRepeat;
             actionEditorContainerInstance().setCurrentIndex(keyObjectIndex);
         });
+
     }
 }

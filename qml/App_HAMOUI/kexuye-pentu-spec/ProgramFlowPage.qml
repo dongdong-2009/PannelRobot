@@ -20,6 +20,7 @@ ProgramFlowPage {
 
     function pentuActionToProgram(actionObject){
         var ret = [];
+//        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE,2, actionObject.startPos.pos.m2,))
         return ret;
     }
 

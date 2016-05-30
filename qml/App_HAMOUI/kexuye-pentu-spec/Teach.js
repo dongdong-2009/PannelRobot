@@ -35,7 +35,14 @@ var generatePENTUAction = function(mode, plane, startPos,
         "dirCount":dirCount,
         "dirCounterID":dirCID,
         "point1":point1,
-        "point2":point2
+        "point2":point2,
+        "startPosSpeed0":80,
+        "startPosSpeed1":80,
+        "startPosSpeed2":80,
+        "startPosSpeed3":80,
+        "startPosSpeed4":80,
+        "startPosSpeed5":80,
+        "fixtureDelay":0.5
     };
 }
 

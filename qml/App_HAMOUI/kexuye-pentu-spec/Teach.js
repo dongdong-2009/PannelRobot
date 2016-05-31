@@ -4,13 +4,6 @@ Qt.include("../teach/Teach.js")
 Qt.include("../configs/AxisDefine.js")
 actions.F_CMD_PENTU = 70000;
 
-//var baseHasCounterIDAction = hasCounterIDAction();
-//hasCounterIDAction = function(action){
-//    if(action.action == actions.F_CMD_PENTU)
-//        return true;
-//    return baseHasCounterIDAction(action);
-//}
-
 var pentuModes = {
 
 }

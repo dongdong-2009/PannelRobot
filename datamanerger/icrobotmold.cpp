@@ -607,7 +607,6 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         ret.AddErr(-1, err);
         return ret;
     }
-    qDebug()<<programText<<result;
     QVariantMap action;
     int step = 0;
     int subStep = 255;

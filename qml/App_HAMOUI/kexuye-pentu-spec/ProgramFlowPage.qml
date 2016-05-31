@@ -3,6 +3,7 @@ import "../teach"
 import "KeXuYePentuRecord.js" as KXYRecord
 import "../teach/ProgramFlowPage.js" as BasePData
 import "Teach.js" as LocalTeach
+import "../teach/Teach.js" as BaseTeach
 import "../../utils/stringhelper.js" as ICString
 
 
@@ -92,7 +93,7 @@ ProgramFlowPage {
         if(actionObject.action == LocalTeach.actions.F_CMD_PENTU)
             originText = LocalTeach.pentuActionToStringHandler(actionObject);
         else
-            originText = LocalTeach.actionToStringNoCusomName(actionObject);
+            originText = BaseTeach.actionToStringNoCusomName(actionObject);
         if(actionObject.customName){
             var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
             originText = styledCN + " " + originText;

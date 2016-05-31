@@ -11,13 +11,13 @@ Item {
     property variant plane: [0, 1]
     function createActionObjects(){
         var ret = [];
-        var c = LocalTeach.counterManager.newCounter("", 0, repeateCount);
+        var c = LocalTeach.counterManager.newCounter("", 0, repeateCount.configValue);
         var rcID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c = LocalTeach.counterManager.newCounter("", 0, dirCount);
+        c = LocalTeach.counterManager.newCounter("", 0, dirCount.configValue);
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c= LocalTeach.counterManager.newCounter("", 0, rotateCount);
+        c= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
         var rotateCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),[800, 800, 800, 800, 800, 800],
@@ -253,5 +253,27 @@ Item {
     Component.onCompleted: {
         planeSel.configValue = 0;
         dirAxisSel.configValue = 0;
+        sPosM0.configValue = 0.000;
+        sPosM1.configValue = 0.000;
+        sPosM2.configValue = 0.000;
+        sPosM3.configValue = 0.000;
+        sPosM4.configValue = 0.000;
+        sPosM0.configValue = 0.000;
+
+        pos1Axis1.configValue = 0.000;
+        pos1Axis2.configValue = 0.000;
+
+        pos2Axis1.configValue = 0.000;
+        pos2Axis2.configValue = 0.000;
+
+        repeateSpeed.configValue = 80.0;
+        dirSpeed.configValue = 80.0;
+        dirLength.configValue = 0.000;
+        repeateCount.configValue = 4;
+        dirCount.configValue = 4;
+        rotate.configValue = 90.000;
+        rotateSpeed.configValue = 80.0;
+        rotateCount.configValue = 4;
+
     }
 }

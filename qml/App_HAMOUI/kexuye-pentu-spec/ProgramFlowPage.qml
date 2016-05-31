@@ -11,12 +11,12 @@ ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
-    function getRecordContent(which){
-        if(which == 0)
-            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-        else
-            return JSON.parse(panelRobotController.programs(which));
-    }
+//    function getRecordContent(which){
+//        if(which == 0)
+//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+//        else
+//            return JSON.parse(panelRobotController.programs(which));
+//    }
 
     function pentuActionToProgram(actionObject){
         var ret = [];

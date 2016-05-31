@@ -3,6 +3,7 @@ import "../teach"
 import "KeXuYePentuRecord.js" as KXYRecord
 import "../teach/ProgramFlowPage.js" as BasePData
 import "Teach.js" as LocalTeach
+import "../teach/Teach.js" as BaseTeach
 import "../../utils/stringhelper.js" as ICString
 
 
@@ -11,12 +12,12 @@ ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
-//    function getRecordContent(which){
-//        if(which == 0)
-//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0)
+            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
 
     function pentuActionToProgram(actionObject){
         var ret = [];
@@ -92,7 +93,7 @@ ProgramFlowPage {
         if(actionObject.action == LocalTeach.actions.F_CMD_PENTU)
             originText = LocalTeach.pentuActionToStringHandler(actionObject);
         else
-            originText = LocalTeach.actionToStringNoCusomName(actionObject);
+            originText = BaseTeach.actionToStringNoCusomName(actionObject);
         if(actionObject.customName){
             var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
             originText = styledCN + " " + originText;

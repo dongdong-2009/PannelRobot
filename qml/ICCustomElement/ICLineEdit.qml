@@ -60,6 +60,8 @@ FocusScope{
                         virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
                     }
                     rectangle.color = "green";
+                    virtualKeyboard.commit.disconnect(onCommit);
+                    virtualKeyboard.reject.disconnect(onReject);
                     virtualKeyboard.commit.connect(onCommit);
                     virtualKeyboard.reject.connect(onReject);
                 }else{

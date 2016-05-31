@@ -28,6 +28,11 @@ Item {
                                                 rcID, dirCID, rotateCID));
         return ret;
     }
+
+    function setModeName(name){
+        actionName.text = name;
+    }
+
     Column{
         id:configContainer
         property int posNameWidth: 60
@@ -37,7 +42,6 @@ Item {
             z:10
             Text {
                 id: actionName
-                text: mode == 0 ? qsTr("PT Line 2D") : qsTr("PT Arc 3D")
                 width: 200
                 anchors.verticalCenter: parent.verticalCenter
                 color: "green"

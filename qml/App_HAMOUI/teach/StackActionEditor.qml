@@ -248,6 +248,8 @@ Rectangle {
                 updateStacksSel();
             }
             else{
+                stackInfo.dsName = selectedDS;
+                stackInfo.dsHostID = dsID;
                 sid = Teach.updateStackInfo(id, stackInfo);
                 panelRobotController.saveStacks(Teach.statcksToJSON());
             }

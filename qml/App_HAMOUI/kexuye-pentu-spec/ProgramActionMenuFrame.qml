@@ -16,8 +16,11 @@ ProgramActionMenuFrame{
 
     Rectangle{
         id:kexuyeActionsFrame
+        color: "#A0A0F0"
         parent: actionEditorContainerInstance()
         Grid{
+            anchors.centerIn: parent
+            spacing: 20
             ICButton{
                 id:ptLine2D
                 text:qsTr("PT Line 2D")
@@ -50,23 +53,22 @@ ProgramActionMenuFrame{
                 actionEditorContainerInstance().setCurrentIndex(kxyAxisSpeedIndex);
         }
 
-        //mode-0
-        ptLine2D.buttonClicked.connect(function(){
-            kxyObject.mode = LocalTeach.pentuModes.Line2DRepeat;
+        var setModeEditorHelper = function(mode, name){
+            kxyObject.mode = mode;
+            kxyObject.setModeName(name);
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
             linkedBtn1Instance().text = qsTr("AxisSpeed");
             BasePData.linked1Function = kxySpeedIndex;
+        }
+
+        //mode-0
+        ptLine2D.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.Line2DRepeat, ptLine2D.text);
         });
         //mode-1
         ptArc3D.buttonClicked.connect(function(){
-            kxyObject.mode = LocalTeach.pentuModes.Arc3DRepeat;
-            actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
-            linkedBtn1Instance().visible = true;
-            linkedBtn1Instance().text = qsTr("AxisSpeed");
-            BasePData.linked1Function = kxySpeedIndex;
+            setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text);
         });
-
-
     }
 }

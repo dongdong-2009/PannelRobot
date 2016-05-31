@@ -51,7 +51,6 @@ ContentPageBase{
             if (programFlowClass.status == Component.Ready){
                 var page = programFlowClass.createObject(pageContainer)
                 pageContainer.addPage(page);
-                console.log("fsfsfsfsf",page.menuFrame().width);
             }
             pageContainer.setCurrentIndex(0);
         }

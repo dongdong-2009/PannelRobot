@@ -7,10 +7,11 @@ actions.F_CMD_PENTU = 70000;
 var pentuModes = {
 
 }
-pentuModes.singleAxisRepeat = 0;
+pentuModes.Line2DRepeat = 0;
+pentuModes.Arc3DRepeat = 1;
 
 var generatePENTUAction = function(mode, plane, startPos, startPosSpeeds,
-                                   repeatSpeed, repeateCount,
+                                   repeatSpeed, repeateCount, zlength,
                                    dirAxis, dirLength, dirSpeed, dirCount,
                                    point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay, rcID, dirCID, rotateCID){
@@ -25,13 +26,66 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeeds,
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag2 = f.flagID;
+    switch(plane){
+        case 0:
+            if(dirAxis == 0){
+                var rpeateAxis = 1;
+                var startPos0 = startPos.pos.m1;
+                var startPos1 = startPos.pos.m0;
+                var startPos2 = startPos.pos.m2;
+            }
+            else {
+                rpeateAxis = 0;
+                startPos0 = startPos.pos.m0;
+                startPos1 = startPos.pos.m1;
+                startPos2 = startPos.pos.m2;
+            }
+            var deepAxis = 2;
+            break;
+        case 1:
+            if(dirAxis == 0){
+                rpeateAxis = 2;
+                startPos0 = startPos.pos.m1;
+                startPos1 = startPos.pos.m2;
+                startPos2 = startPos.pos.m0;
+            }
+            else {
+                rpeateAxis = 0;
+                startPos0 = startPos.pos.m0;
+                startPos1 = startPos.pos.m2;
+                startPos2 = startPos.pos.m1;
+            }
+            deepAxis = 1;
+            break;
+        case 2:
+            if(dirAxis == 1){
+                rpeateAxis = 2;
+                startPos0 = startPos.pos.m2;
+                startPos1 = startPos.pos.m1;
+                startPos2 = startPos.pos.m0;
+            }
+            else {
+                rpeateAxis = 1;
+                startPos0 = startPos.pos.m2;
+                startPos1 = startPos.pos.m0;
+                startPos2 = startPos.pos.m1;
+            }
+            deepAxis = 0;
+            break;
+    }
+
     return {
         "action":actions.F_CMD_PENTU,
         "mode":mode,
-        "plane":plane,
+        "rpeateAxis":rpeateAxis,
+        "deepAxis":deepAxis,
         "startPos":startPos,
+        "startPos0":startPos0,
+        "startPos1":startPos1,
+        "startPos2":startPos2,
         "repeateSpeed":repeatSpeed,
         "repeateCount":repeateCount,
+        "zlength":zlength,
         "repeateCounterID":rcID,
         "dirAxis":dirAxis,
         "dirLength":dirLength,

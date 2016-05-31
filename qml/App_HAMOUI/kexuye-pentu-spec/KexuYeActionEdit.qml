@@ -20,15 +20,14 @@ Item {
         c= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
         var rotateCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),[800, 800, 800, 800, 800, 800],
-                                                repeateSpeed.configValue, repeateCount.configValue,
+        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),[80.0, 80.0, 80.0, 80.0, 80.0, 80.0],
+                                                repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
                                                 dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue, dirCount.configValue,
                                                 pos2Container.getPoint(), pos3Container.getPoint(),
-                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue, 5,
+                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue, 0.1,
                                                 rcID, dirCID, rotateCID));
         return ret;
     }
-
     Column{
         id:configContainer
         property int posNameWidth: 60
@@ -38,7 +37,7 @@ Item {
             z:10
             Text {
                 id: actionName
-                text: qsTr("text")
+                text: mode == 0 ? qsTr("PT Line 2D") : qsTr("PT Arc 3D")
                 width: 200
                 anchors.verticalCenter: parent.verticalCenter
                 color: "green"
@@ -55,18 +54,21 @@ Item {
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
+                        dirAxisSel.items = ["X", "Y"]
                     }else if(configValue == 1){
                         plane = [0, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
+                        dirAxisSel.items = ["X", "Z"]
                     }else if(configValue == 2){
                         plane = [1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
+                        dirAxisSel.items = ["Y", "Z"]
                     }
                 }
             }
@@ -131,64 +133,68 @@ Item {
             }
         }
         Row{
-            id:pos2Container
             spacing: 4
-            function getPoint(){
-                var ret = {};
-                var axis1 = "m" + plane[0];
-                var axis2 = "m" + plane[1];
-                ret.pointName = "";
-                ret.pos = {};
-                ret.pos[axis1] = pos1Axis1.configValue;
-                ret.pos[axis2] = pos1Axis2.configValue;
-                return ret;
+            Row{
+                id:pos2Container
+                spacing: 4
+                function getPoint(){
+                    var ret = {};
+                    var axis1 = "m" + plane[0];
+                    var axis2 = "m" + plane[1];
+                    ret.pointName = "";
+                    ret.pos = {};
+                    ret.pos[axis1] = pos1Axis1.configValue;
+                    ret.pos[axis2] = pos1Axis2.configValue;
+                    return ret;
+                }
+
+                Text {
+                    text: qsTr("Pos 1:")
+                    width: configContainer.posNameWidth
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                ICConfigEdit{
+                    id:pos1Axis1
+                    configName: AxisDefine.axisInfos[0].name
+                    configAddr: "s_rw_0_32_3_1300"
+                }
+                ICConfigEdit{
+                    id:pos1Axis2
+                    configName: AxisDefine.axisInfos[1].name
+                    configAddr: "s_rw_0_32_3_1300"
+                }
+
             }
 
-            Text {
-                text: qsTr("Pos 1:")
-                width: configContainer.posNameWidth
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ICConfigEdit{
-                id:pos1Axis1
-                configName: AxisDefine.axisInfos[0].name
-                configAddr: "s_rw_0_32_3_1300"
-            }
-            ICConfigEdit{
-                id:pos1Axis2
-                configName: AxisDefine.axisInfos[1].name
-                configAddr: "s_rw_0_32_3_1300"
-            }
-
-        }
-
-        Row{
-            id:pos3Container
-            spacing: 4
-            function getPoint(){
-                var ret = {};
-                var axis1 = "m" + plane[0];
-                var axis2 = "m" + plane[1];
-                ret.pointName = "";
-                ret.pos = {};
-                ret.pos[axis1] = pos2Axis1.configValue;
-                ret.pos[axis2] = pos2Axis2.configValue;
-                return ret;
-            }
-            Text {
-                text: qsTr("Pos 2:")
-                width: configContainer.posNameWidth
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ICConfigEdit{
-                id:pos2Axis1
-                configName: AxisDefine.axisInfos[0].name
-                configAddr: "s_rw_0_32_3_1300"
-            }
-            ICConfigEdit{
-                id:pos2Axis2
-                configName: AxisDefine.axisInfos[1].name
-                configAddr: "s_rw_0_32_3_1300"
+            Row{
+                id:pos3Container
+                spacing: 4
+                visible: mode == 0 ? false : true
+                function getPoint(){
+                    var ret = {};
+                    var axis1 = "m" + plane[0];
+                    var axis2 = "m" + plane[1];
+                    ret.pointName = "";
+                    ret.pos = {};
+                    ret.pos[axis1] = pos2Axis1.configValue;
+                    ret.pos[axis2] = pos2Axis2.configValue;
+                    return ret;
+                }
+                Text {
+                    text: qsTr("Pos 2:")
+                    width: configContainer.posNameWidth
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                ICConfigEdit{
+                    id:pos2Axis1
+                    configName: AxisDefine.axisInfos[0].name
+                    configAddr: "s_rw_0_32_3_1300"
+                }
+                ICConfigEdit{
+                    id:pos2Axis2
+                    configName: AxisDefine.axisInfos[1].name
+                    configAddr: "s_rw_0_32_3_1300"
+                }
             }
         }
 
@@ -206,6 +212,10 @@ Item {
             ICConfigEdit{
                 id:repeateCount
                 configName: qsTr("Repeate Count")
+            }
+            ICConfigEdit{
+                id:zlength
+                configName: qsTr("z length")
             }
         }
 
@@ -252,15 +262,15 @@ Item {
     }
     Component.onCompleted: {
         planeSel.configValue = 0;
-        dirAxisSel.configValue = 0;
-        sPosM0.configValue = 0.000;
-        sPosM1.configValue = 0.000;
+        dirAxisSel.configValue = 1;
+        sPosM0.configValue = 20.000;
+        sPosM1.configValue = 20.000;
         sPosM2.configValue = 0.000;
         sPosM3.configValue = 0.000;
         sPosM4.configValue = 0.000;
-        sPosM0.configValue = 0.000;
+        sPosM5.configValue = 0.000;
 
-        pos1Axis1.configValue = 0.000;
+        pos1Axis1.configValue = 500.000;
         pos1Axis2.configValue = 0.000;
 
         pos2Axis1.configValue = 0.000;
@@ -268,11 +278,12 @@ Item {
 
         repeateSpeed.configValue = 80.0;
         dirSpeed.configValue = 80.0;
-        dirLength.configValue = 0.000;
-        repeateCount.configValue = 4;
-        dirCount.configValue = 4;
+        dirLength.configValue = 50.000;
+        repeateCount.configValue = 2;
+        zlength.configValue = 100;
+        dirCount.configValue = 10;
         rotate.configValue = 90.000;
-        rotateSpeed.configValue = 80.0;
+        rotateSpeed.configValue = 5.0;
         rotateCount.configValue = 4;
 
     }

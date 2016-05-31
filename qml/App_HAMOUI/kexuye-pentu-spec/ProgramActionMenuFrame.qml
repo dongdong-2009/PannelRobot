@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "../teach"
 import "ProgramActionMenuFrame.js" as LocalPData
 import "Teach.js" as LocalTeach
+import "../teach/ProgramActionMenuFrame.js" as BasePData
 ProgramActionMenuFrame{
     function showActionMenu(){
         actionEditorContainerInstance().setCurrentIndex(LocalPData.menuIndex);
@@ -18,8 +19,12 @@ ProgramActionMenuFrame{
         parent: actionEditorContainerInstance()
         Grid{
             ICButton{
-                id:ptLineXY
-                text:qsTr("PT Line XY")
+                id:ptLine2D
+                text:qsTr("PT Line 2D")
+            }
+            ICButton{
+                id:ptArc3D
+                text:qsTr("PT Arc 3D")
             }
             ICButton{
                 id:baseCmd
@@ -30,17 +35,38 @@ ProgramActionMenuFrame{
             }
         }
     }
+
     Component.onCompleted: {
         var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame) - 1;
         actionEditorContainerInstance().setCurrentIndex(frameIndex );
         LocalPData.menuIndex = frameIndex;
         var editor = Qt.createComponent('KexuYeActionEdit.qml');
         var kxyObject = editor.createObject(actionEditorContainerInstance());
-        var keyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;
-        ptLineXY.buttonClicked.connect(function(){
-            kxyObject.mode = LocalTeach.pentuModes.singleAxisRepeat;
-            actionEditorContainerInstance().setCurrentIndex(keyObjectIndex);
+        var kxyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;
+        editor = Qt.createComponent('KexuYeAxisSpeed.qml');
+        var kxyspeed = editor.createObject(actionEditorContainerInstance());
+        var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed) - 1;
+        var kxySpeedIndex = function(){
+                actionEditorContainerInstance().setCurrentIndex(kxyAxisSpeedIndex);
+        }
+
+        //mode-0
+        ptLine2D.buttonClicked.connect(function(){
+            kxyObject.mode = LocalTeach.pentuModes.Line2DRepeat;
+            actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
+            linkedBtn1Instance().visible = true;
+            linkedBtn1Instance().text = qsTr("AxisSpeed");
+            BasePData.linked1Function = kxySpeedIndex;
         });
+        //mode-1
+        ptArc3D.buttonClicked.connect(function(){
+            kxyObject.mode = LocalTeach.pentuModes.Arc3DRepeat;
+            actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
+            linkedBtn1Instance().visible = true;
+            linkedBtn1Instance().text = qsTr("AxisSpeed");
+            BasePData.linked1Function = kxySpeedIndex;
+        });
+
 
     }
 }

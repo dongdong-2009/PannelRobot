@@ -9,6 +9,7 @@ Item {
     height: parent.height
     property int mode: 0
     property variant plane: [0, 1]
+    property variant actionObject: null
     function createActionObjects(){
         var ret = [];
         var c = LocalTeach.counterManager.newCounter("", 0, repeateCount.configValue);

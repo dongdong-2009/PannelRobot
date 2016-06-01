@@ -132,7 +132,7 @@ ProgramFlowPage {
     }
 
     Component.onCompleted: {
-        actionModifyEditor().registerEditableItem(kexuyeActionEdit, "kexuyeAction");
+        registerEditableAction(LocalTeach.actions.F_CMD_PENTU, kexuyeActionEdit, "kexuyeaction", [{"item":"kexuyeaction"}, {"item":"customName"}]);
     }
 
     onActionLineDeleted: {

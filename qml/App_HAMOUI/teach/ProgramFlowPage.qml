@@ -931,7 +931,7 @@ Rectangle {
 
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
-                        modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                        modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = toolBar.y + toolBar.height + 30;
                         if(showY + modifyEditor.height >= container.height)
                             showY = toolBar.y - modifyEditor.height + 20;

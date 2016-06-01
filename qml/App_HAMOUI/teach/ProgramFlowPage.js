@@ -98,3 +98,11 @@ function UpdateModelStruct(event,listIndex, programIndex, model, actionObject){
     this.model = model;
     this.actionObject = actionObject;
 }
+
+var registerEditableActions = {
+
+}
+
+function isRegisterEditableAction(action){
+    return registerEditableActions.hasOwnProperty(action);
+}

@@ -27,6 +27,11 @@ Rectangle {
 
     function actionModifyEditor() { return modifyEditor;}
 
+    function registerEditableAction(action, editor, itemName, editableItems){
+        modifyEditor.registerEditableItem(editor, itemName);
+        PData.registerEditableActions[action] = editableItems;
+    }
+
     function getRecordContent(which){
         return JSON.parse(panelRobotController.programs(which));
     }
@@ -882,7 +887,7 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
-                        modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                        modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
                         if(showY + modifyEditor.height >= container.height)
                             showY = autoEditBtn.y - modifyEditor.height + 20;

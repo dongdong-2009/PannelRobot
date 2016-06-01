@@ -1958,6 +1958,124 @@
     </message>
 </context>
 <context>
+    <name>KexuYeActionEdit</name>
+    <message>
+        <source>plane</source>
+        <translation>平面</translation>
+    </message>
+    <message>
+        <source>Dir Axis</source>
+        <translation>寸动轴</translation>
+    </message>
+    <message>
+        <source>SPos:</source>
+        <translation>起始位置</translation>
+    </message>
+    <message>
+        <source>Pos 1:</source>
+        <translation>目标位置1：</translation>
+    </message>
+    <message>
+        <source>Pos 2:</source>
+        <translation>目标位置2：</translation>
+    </message>
+    <message>
+        <source>Rpeate Speed</source>
+        <translation>重复速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeate Count</source>
+        <translation>重复次数</translation>
+    </message>
+    <message>
+        <source>z length</source>
+        <translation>喷嘴高度</translation>
+    </message>
+    <message>
+        <source>Dir Length</source>
+        <translation>寸动长度</translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dir Speed</source>
+        <translation>寸动速度</translation>
+    </message>
+    <message>
+        <source>Dir Count</source>
+        <translation>寸动次数</translation>
+    </message>
+    <message>
+        <source>Rotate</source>
+        <translation>旋转角度</translation>
+    </message>
+    <message>
+        <source>Rotate Speed</source>
+        <translation>旋转速度</translation>
+    </message>
+    <message>
+        <source>Rotate Count</source>
+        <translation>旋转次数</translation>
+    </message>
+</context>
+<context>
+    <name>KexuYeAxisSpeed</name>
+    <message>
+        <source>Return Speed</source>
+        <translation>返回速度</translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fixture Delay</source>
+        <translation>阀门延时</translation>
+    </message>
+    <message>
+        <source>Atomization Delay</source>
+        <translation>雾化阀</translation>
+    </message>
+    <message>
+        <source>Oil Delay</source>
+        <translation>油量阀</translation>
+    </message>
+    <message>
+        <source>Amplitude Delay</source>
+        <translation>喷幅阀</translation>
+    </message>
+</context>
+<context>
     <name>Keymap</name>
     <message>
         <source>Running</source>
@@ -2707,6 +2825,34 @@ please chose!</source>
         <source>Counter</source>
         <translation>计数器</translation>
     </message>
+    <message>
+        <source>PT Line 2D</source>
+        <translation>喷涂直线2D</translation>
+    </message>
+    <message>
+        <source>PT Arc 3D</source>
+        <translation>喷涂曲线3D</translation>
+    </message>
+    <message>
+        <source>Base CMD</source>
+        <translation type="unfinished">基本动作</translation>
+    </message>
+    <message>
+        <source>DetailFace</source>
+        <translation>详细参数</translation>
+    </message>
+    <message>
+        <source>Return</source>
+        <translation>返回</translation>
+    </message>
+    <message>
+        <source>EPos</source>
+        <translation>终点位置</translation>
+    </message>
+    <message>
+        <source>TPos</source>
+        <translation>经过位置</translation>
+    </message>
 </context>
 <context>
     <name>ProgramFlowPage</name>
@@ -2906,6 +3052,18 @@ please chose!</source>
     <message>
         <source>Start Line:[-1]</source>
         <translation>设当前行为单步起始:[-1]</translation>
+    </message>
+    <message>
+        <source>Fixture Rotation</source>
+        <translation>模具旋转</translation>
+    </message>
+    <message>
+        <source>Dir Move</source>
+        <translation>寸动</translation>
+    </message>
+    <message>
+        <source>Repeate</source>
+        <translation>重复喷涂</translation>
     </message>
 </context>
 <context>
@@ -3501,6 +3659,10 @@ please chose!</source>
         <source>Axis Num</source>
         <translation>轴数</translation>
     </message>
+    <message>
+        <source>kSttLathe_6p</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Teach</name>
@@ -3871,6 +4033,42 @@ please chose!</source>
     <message>
         <source>LineYZ:</source>
         <translation>直线YZ:</translation>
+    </message>
+    <message>
+        <source>SingleAxisRepeat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Pos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeate Pos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeate Speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeate </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dir Length:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dir Speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dir</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

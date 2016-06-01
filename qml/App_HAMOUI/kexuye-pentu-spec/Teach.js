@@ -10,11 +10,11 @@ var pentuModes = {
 pentuModes.Line2DRepeat = 0;
 pentuModes.Arc3DRepeat = 1;
 
-var generatePENTUAction = function(mode, plane, startPos, startPosSpeeds,
-                                   repeatSpeed, repeateCount, zlength,
-                                   dirAxis, dirLength, dirSpeed, dirCount,
-                                   point1, point2, rotate, rotateSpeed, rotateCount,
-                                   fixtureDelay, rcID, dirCID, rotateCID){
+var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startPosSpeed1,
+                                   startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,
+                                   repeatSpeed, repeateCount, zlength, dirAxis, dirLength, dirSpeed,
+                                   dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
+                                   fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -32,51 +32,64 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeeds,
                 var rpeateAxis = 1;
                 var startPos0 = startPos.pos.m1;
                 var startPos1 = startPos.pos.m0;
-                var startPos2 = startPos.pos.m2;
+                var startSpeed0 = startPosSpeed1;
+                var startSpeed1 = startPosSpeed0;
             }
             else {
                 rpeateAxis = 0;
                 startPos0 = startPos.pos.m0;
                 startPos1 = startPos.pos.m1;
-                startPos2 = startPos.pos.m2;
+                startSpeed0 = startPosSpeed0;
+                startSpeed1 = startPosSpeed1;
             }
             var deepAxis = 2;
+            var startPos2 = startPos.pos.m2;
+            var startSpeed2 = startPosSpeed2;
             break;
         case 1:
             if(dirAxis == 0){
                 rpeateAxis = 2;
                 startPos0 = startPos.pos.m1;
-                startPos1 = startPos.pos.m2;
                 startPos2 = startPos.pos.m0;
+                startSpeed0 = startPosSpeed1;
+                startSpeed2 = startPosSpeed0;
             }
             else {
                 rpeateAxis = 0;
                 startPos0 = startPos.pos.m0;
-                startPos1 = startPos.pos.m2;
                 startPos2 = startPos.pos.m1;
+                startSpeed0 = startPosSpeed0;
+                startSpeed2 = startPosSpeed1;
             }
             deepAxis = 1;
+            startPos1 = startPos.pos.m2;
+            starSpeed1 = startPosSpeed2;
             break;
         case 2:
             if(dirAxis == 1){
                 rpeateAxis = 2;
-                startPos0 = startPos.pos.m2;
                 startPos1 = startPos.pos.m1;
                 startPos2 = startPos.pos.m0;
+                startSpeed1 = startPosSpeed1;
+                startSpeed2 = startPosSpeed0;
             }
             else {
                 rpeateAxis = 1;
-                startPos0 = startPos.pos.m2;
                 startPos1 = startPos.pos.m0;
                 startPos2 = startPos.pos.m1;
+                startSpeed1 = startPosSpeed0;
+                startSpeed2 = startPosSpeed1;
             }
             deepAxis = 0;
+            startPos0 = startPos.pos.m2;
+            startSpeed0 = startPosSpeed2;
             break;
     }
 
     return {
         "action":actions.F_CMD_PENTU,
         "mode":mode,
+        "plane":plane,
         "rpeateAxis":rpeateAxis,
         "deepAxis":deepAxis,
         "startPos":startPos,
@@ -100,13 +113,25 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeeds,
         "flag0":flag0,
         "flag1":flag1,
         "flag2":flag2,
-        "startPosSpeed0":startPosSpeeds[0],
-        "startPosSpeed1":startPosSpeeds[1],
-        "startPosSpeed2":startPosSpeeds[2],
-        "startPosSpeed3":startPosSpeeds[3],
-        "startPosSpeed4":startPosSpeeds[4],
-        "startPosSpeed5":startPosSpeeds[5],
-        "fixtureDelay":fixtureDelay
+//        "startPosSpeed0":startPosSpeed0,
+//        "startPosSpeed1":startPosSpeed1,
+//        "startPosSpeed2":startPosSpeed2,
+//        "startPosSpeed3":startPosSpeed3,
+//        "startPosSpeed4":startPosSpeed4,
+//        "startPosSpeed5":startPosSpeed5,
+//        "fixtureDelay0":fixtureDelay0,
+//        "fixtureDelay1":fixtureDelay1,
+//        "fixtureDelay2":fixtureDelay2,
+
+        "startSpeed0":startSpeed0,
+        "startSpeed1":startSpeed1,
+        "startSpeed2":startSpeed2,
+        "startSpeed3":startPosSpeed3,
+        "startSpeed4":startPosSpeed4,
+        "startSpeed5":startPosSpeed5,
+        "fixtureDelay0":fixtureDelay0,
+        "fixtureDelay1":fixtureDelay1,
+        "fixtureDelay2":fixtureDelay2
     };
 }
 

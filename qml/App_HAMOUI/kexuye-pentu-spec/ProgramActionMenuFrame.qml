@@ -49,26 +49,36 @@ ProgramActionMenuFrame{
         editor = Qt.createComponent('KexuYeAxisSpeed.qml');
         var kxyspeed = editor.createObject(actionEditorContainerInstance());
         var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed) - 1;
+        kxyObject.detailInstance = kxyspeed;
         var kxySpeedIndex = function(){
+            if(kxyspeed.speedcontainer().visible){
+                linkedBtn1Instance().text = qsTr("DetailFace");
+                actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
+            }
+            else{
+                linkedBtn1Instance().text = qsTr("Return");
                 actionEditorContainerInstance().setCurrentIndex(kxyAxisSpeedIndex);
+            }
+
         }
 
-        var setModeEditorHelper = function(mode, name){
+        var setModeEditorHelper = function(mode, name, pos1name, pos2name){
             kxyObject.mode = mode;
             kxyObject.setModeName(name);
+            kxyObject.setPosName(pos1name, pos2name);
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
-            linkedBtn1Instance().text = qsTr("AxisSpeed");
+            linkedBtn1Instance().text = qsTr("DetailFace");
             BasePData.linked1Function = kxySpeedIndex;
         }
 
         //mode-0
         ptLine2D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.Line2DRepeat, ptLine2D.text);
+            setModeEditorHelper(LocalTeach.pentuModes.Line2DRepeat, ptLine2D.text, qsTr("EPos"), qsTr("TPos"));
         });
         //mode-1
         ptArc3D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text);
+            setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text, qsTr("TPos"), qsTr("EPos"));
         });
     }
 }

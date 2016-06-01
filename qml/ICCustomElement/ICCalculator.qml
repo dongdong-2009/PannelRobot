@@ -28,6 +28,7 @@ MouseArea
                 anchors.rightMargin: 4
                 anchors.verticalCenter: parent.verticalCenter
                 horizontalAlignment: Text.AlignRight
+                readOnly: true
             }
         }
 

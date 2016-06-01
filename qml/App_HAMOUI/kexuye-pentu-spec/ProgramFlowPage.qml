@@ -126,4 +126,12 @@ ProgramFlowPage {
         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
+    onActionLineDeleted: {
+        BaseTeach.counterManager.delCounter(actionObject.repeateCounterID);
+        panelRobotController.delCounterDef(actionObject.repeateCounterID);
+        BaseTeach.counterManager.delCounter(actionObject.dirCounterID);
+        panelRobotController.delCounterDef(actionObject.dirCounterID);
+        BaseTeach.counterManager.delCounter(actionObject.rotateCounterID);
+        panelRobotController.delCounterDef(actionObject.rotateCounterID);
+    }
 }

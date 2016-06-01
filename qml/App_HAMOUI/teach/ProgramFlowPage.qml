@@ -21,6 +21,8 @@ Rectangle {
     property int currentEditingModule: 0
     property bool hasModify: false
 
+    signal actionLineDeleted(int index, variant actionObject);
+
     function menuFrame(){ return actionEditorFrame;}
 
     function getRecordContent(which){
@@ -139,6 +141,7 @@ Rectangle {
         }
 
         model.remove(cI);
+        actionLineDeleted(cI, actionObject);
         PData.counterLinesInfo.syncLines(cPI, oCI, -1);
         PData.stackLinesInfo.syncLines(cPI, oCI, -1);
         PData.pointLinesInfo.syncLines(cPI, oCI, -1);

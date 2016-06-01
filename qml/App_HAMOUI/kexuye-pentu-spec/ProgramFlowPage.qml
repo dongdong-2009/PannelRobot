@@ -126,6 +126,15 @@ ProgramFlowPage {
         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
+    KexuYeActionEdit{
+        id:kexuyeActionEdit
+        visible: false
+    }
+
+    Component.onCompleted: {
+        actionModifyEditor().registerEditableItem(kexuyeActionEdit, "kexuyeAction");
+    }
+
     onActionLineDeleted: {
         BaseTeach.counterManager.delCounter(actionObject.repeateCounterID);
         panelRobotController.delCounterDef(actionObject.repeateCounterID);

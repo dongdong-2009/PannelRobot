@@ -29,6 +29,7 @@ MouseArea
                 anchors.verticalCenter: parent.verticalCenter
                 horizontalAlignment: Text.AlignRight
                 readOnly: true
+                activeFocusOnPress: false
             }
         }
 

@@ -25,6 +25,8 @@ Rectangle {
 
     function menuFrame(){ return actionEditorFrame;}
 
+    function actionModifyEditor() { return modifyEditor;}
+
     function getRecordContent(which){
         return JSON.parse(panelRobotController.programs(which));
     }

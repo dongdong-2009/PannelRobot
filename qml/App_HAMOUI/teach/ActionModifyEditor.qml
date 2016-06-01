@@ -7,6 +7,14 @@ Item {
     id:container
     property bool isAutoMode: false
     property variant autoEditableItems: ["speed", "delay", "limit", "acTime", "speed0", "speed1"]
+
+    function registerEditableItem(editor, itemName){
+        editor.parent = editorContainer;
+        PData.itemToEditorMap.put(itemName, editor);
+        PData.editorToItemMap.put(editor, itemName);
+        PData.registerEditors.push(editor);
+    }
+
     Rectangle{
         id:bgLayer
         border.color: "black"
@@ -32,16 +40,23 @@ Item {
         points.visible = false;
         acTime.visible = false;
         customName.visible = false;
+        for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
+            PData.registerEditors[i].visible = false;
+        }
+
         var item;
         var editor;
         var maxWidth = 0;
         height = 0;
         PData.editingActionObject = actionObject;
         PData.editingEditors = [];
-        for(var i = 0; i < editableItems.length; ++i){
+        for(i = 0; i < editableItems.length; ++i){
             item = editableItems[i];
             editor = PData.itemToEditorMap.get(item.item);
-            if(editor == points){
+            if(PData.isRegisterEditor(editor)){
+                editor.actionObject = actionObject;
+            }
+            else if(editor == points){
                 editor.action = actionObject.action;
                 editor.points = actionObject[item.item];
             }else{

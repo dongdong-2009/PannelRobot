@@ -10,6 +10,7 @@ Item {
     property int mode: 0
     property variant plane: [0, 1]
     property variant actionObject: null
+    property variant detailInstance: null
     function createActionObjects(){
         var ret = [];
         var c = LocalTeach.counterManager.newCounter("", 0, repeateCount.configValue);
@@ -21,17 +22,23 @@ Item {
         c= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
         var rotateCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(),[80.0, 80.0, 80.0, 80.0, 80.0, 80.0],
+        var details = detailInstance.getDetails();
+        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
+                                                details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
                                                 repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
-                                                dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue, dirCount.configValue,
-                                                pos2Container.getPoint(), pos3Container.getPoint(),
-                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue, 0.1,
-                                                rcID, dirCID, rotateCID));
+                                                dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
+                                                dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
+                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
+                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID));
         return ret;
     }
 
     function setModeName(name){
         actionName.text = name;
+    }
+    function setPosName(name1,name2){
+        pos1.text = name1;
+        pos2.text = name2;
     }
 
     Column{
@@ -59,21 +66,21 @@ Item {
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
-                        dirAxisSel.items = ["X", "Y"]
+//                        dirAxisSel.items = ["X", "Y"]
                     }else if(configValue == 1){
                         plane = [0, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-                        dirAxisSel.items = ["X", "Z"]
+//                        dirAxisSel.items = ["X", "Z"]
                     }else if(configValue == 2){
                         plane = [1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-                        dirAxisSel.items = ["Y", "Z"]
+//                        dirAxisSel.items = ["Y", "Z"]
                     }
                 }
             }
@@ -81,7 +88,7 @@ Item {
             ICComboBoxConfigEdit{
                 id:dirAxisSel
                 configName: qsTr("Dir Axis")
-                items: ["X", "Y"]
+                items: ["X", "Y", "Z"]
             }
         }
         Row{
@@ -103,7 +110,7 @@ Item {
 
             Text {
                 text: qsTr("SPos:")
-                width: configContainer.posNameWidth
+                width: configContainer.posNameWidth + 10
                 anchors.verticalCenter: parent.verticalCenter
             }
             ICConfigEdit{
@@ -138,7 +145,7 @@ Item {
             }
         }
         Row{
-            spacing: 4
+            spacing: 124
             Row{
                 id:pos2Container
                 spacing: 4
@@ -154,8 +161,8 @@ Item {
                 }
 
                 Text {
-                    text: qsTr("Pos 1:")
-                    width: configContainer.posNameWidth
+                    id:pos1
+                    width: configContainer.posNameWidth + 10
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 ICConfigEdit{
@@ -186,8 +193,8 @@ Item {
                     return ret;
                 }
                 Text {
-                    text: qsTr("Pos 2:")
-                    width: configContainer.posNameWidth
+                    id:pos2
+                    width: configContainer.posNameWidth + 10
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 ICConfigEdit{
@@ -209,6 +216,7 @@ Item {
             id:repeateContainer
             ICConfigEdit{
                 id:repeateSpeed
+                width: 237
                 configName: qsTr("Rpeate Speed")
                 configAddr: "s_rw_0_32_1_1200"
                 unit: qsTr("%")
@@ -216,11 +224,15 @@ Item {
             }
             ICConfigEdit{
                 id:repeateCount
+                width: repeateSpeed.width
                 configName: qsTr("Repeate Count")
             }
             ICConfigEdit{
                 id:zlength
+                width: repeateSpeed.width
                 configName: qsTr("z length")
+                configAddr: "s_rw_0_32_3_1300"
+
             }
         }
 
@@ -229,18 +241,21 @@ Item {
             spacing: 10
             ICConfigEdit{
                 id:dirLength
+                width: repeateSpeed.width
                 configName: qsTr("Dir Length")
                 configAddr: "s_rw_0_32_3_1300"
                 unit: qsTr("mm")
             }
             ICConfigEdit{
                 id:dirSpeed
+                width: repeateSpeed.width
                 configName: qsTr("Dir Speed")
                 configAddr: "s_rw_0_32_1_1200"
                 unit: qsTr("%")
             }
             ICConfigEdit{
                 id:dirCount
+                width: repeateSpeed.width
                 configName: qsTr("Dir Count")
             }
         }
@@ -250,17 +265,20 @@ Item {
             spacing: 10
             ICConfigEdit{
                 id:rotate
+                width: repeateSpeed.width
                 configName: qsTr("Rotate")
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:rotateSpeed
+                width: repeateSpeed.width
                 configName: qsTr("Rotate Speed")
                 configAddr: "s_rw_0_32_1_1200"
                 unit: qsTr("%")
             }
             ICConfigEdit{
                 id:rotateCount
+                width: repeateSpeed.width
                 configName: qsTr("Rotate Count")
             }
         }
@@ -290,6 +308,5 @@ Item {
         rotate.configValue = 90.000;
         rotateSpeed.configValue = 5.0;
         rotateCount.configValue = 4;
-
     }
 }

@@ -1263,7 +1263,7 @@
     </message>
     <message>
         <source>Y017</source>
-        <translation type="unfinished">公转盘反转 {017?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y020</source>
@@ -1275,59 +1275,59 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation type="unfinished">公转盘反转 {022?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation type="unfinished">公转盘反转 {023?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation type="unfinished">公转盘反转 {024?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation type="unfinished">公转盘反转 {025?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation type="unfinished">公转盘反转 {026?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation type="unfinished">公转盘反转 {027?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation type="unfinished">公转盘反转 {030?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation type="unfinished">公转盘反转 {031?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation type="unfinished">公转盘反转 {032?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation type="unfinished">公转盘反转 {033?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation type="unfinished">公转盘反转 {034?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation type="unfinished">公转盘反转 {035?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation type="unfinished">公转盘反转 {036?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y037</source>
-        <translation type="unfinished">公转盘反转 {037?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X010</source>
@@ -2835,7 +2835,7 @@ please chose!</source>
     </message>
     <message>
         <source>Base CMD</source>
-        <translation type="unfinished">基本动作</translation>
+        <translation>基本动作</translation>
     </message>
     <message>
         <source>DetailFace</source>

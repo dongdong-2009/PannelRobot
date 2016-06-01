@@ -65,21 +65,21 @@ Item {
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
-                        dirAxisSel.items = ["X", "Y"]
+//                        dirAxisSel.items = ["X", "Y"]
                     }else if(configValue == 1){
                         plane = [0, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-                        dirAxisSel.items = ["X", "Z"]
+//                        dirAxisSel.items = ["X", "Z"]
                     }else if(configValue == 2){
                         plane = [1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-                        dirAxisSel.items = ["Y", "Z"]
+//                        dirAxisSel.items = ["Y", "Z"]
                     }
                 }
             }
@@ -87,7 +87,7 @@ Item {
             ICComboBoxConfigEdit{
                 id:dirAxisSel
                 configName: qsTr("Dir Axis")
-                items: ["X", "Y"]
+                items: ["X", "Y", "Z"]
             }
         }
         Row{
@@ -230,6 +230,8 @@ Item {
                 id:zlength
                 width: repeateSpeed.width
                 configName: qsTr("z length")
+                configAddr: "s_rw_0_32_3_1300"
+
             }
         }
 

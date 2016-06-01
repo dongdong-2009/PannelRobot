@@ -63,7 +63,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
             }
             deepAxis = 1;
             startPos1 = startPos.pos.m2;
-            starSpeed1 = startPosSpeed2;
+            startSpeed1 = startPosSpeed2;
             break;
         case 2:
             if(dirAxis == 1){

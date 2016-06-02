@@ -126,17 +126,21 @@ ProgramFlowPage {
         id:kexuyeActionEdit
         visible: false
         width: menuFrame().width - 20
-        height: menuFrame().height
+        height: menuFrame().height - 50
     }
     KexuYeAxisSpeed{
         id:kexuyeDetailEdit
         visible: false
         width: menuFrame().width - 20
-        height: 100
+        height: 80
     }
 
     Component.onCompleted: {
-        registerEditableAction(LocalTeach.actions.F_CMD_PENTU, kexuyeActionEdit, "kexuyeaction", [{"item":"kexuyeaction"}, {"item":"customName"}]);
+        registerEditableAction(LocalTeach.actions.F_CMD_PENTU,
+                               [{"editor":kexuyeActionEdit, "itemName":"kexuyeaction"},
+                                {"editor":kexuyeDetailEdit, "itemName":"kexuyedetail"}
+                               ],
+                               [{"item":"kexuyeaction"}, {"item":"kexuyedetail"},{"item":"customName"}]);
     }
 
     onActionLineDeleted: {

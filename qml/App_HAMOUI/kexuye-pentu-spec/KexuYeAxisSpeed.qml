@@ -5,6 +5,7 @@ Item {
     id:container
     width: parent.width
     height: parent.height
+    property variant actionObject: null
 
     function getDetails(){
         return {
@@ -123,6 +124,19 @@ Item {
             }
         }
     }
+    onActionObjectChanged: {
+        if(actionObject == null) return;
+        m0Speed.configValue = actionObject.startSpeed0;
+        m1Speed.configValue = actionObject.startSpeed1;
+        m2Speed.configValue = actionObject.startSpeed2;
+        m3Speed.configValue = actionObject.startSpeed3;
+        m4Speed.configValue = actionObject.startSpeed4;
+        m5Speed.configValue = actionObject.startSpeed5;
+        delay0.configValue = actionObject.fixtureDelay0;
+        delay1.configValue = actionObject.fixtureDelay1;
+        delay2.configValue = actionObject.fixtureDelay2;
+    }
+
     Component.onCompleted: {
         m0Speed.configValue = 50;
         m1Speed.configValue = 50;

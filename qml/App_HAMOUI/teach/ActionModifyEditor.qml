@@ -214,7 +214,10 @@ Item {
                 var editor;
                 for(var i = 0; i < PData.editingEditors.length; ++i){
                     editor = PData.editingEditors[i];
-                    if(editor == points){
+                    if(PData.isRegisterEditor(editor)){
+                        editor.updateActionObject(editingObject);
+                    }
+                    else if(editor == points){
                         editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
 
                     }else{

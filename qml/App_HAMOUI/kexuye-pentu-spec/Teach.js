@@ -141,6 +141,8 @@ var pentuActionToStringHandler = function(actionObject){
     var ret = "";
     if(mode == pentuModes.singleAxisRepeat)
         ret += qsTr("SingleAxisRepeat");
+    else if(mode == pentuModes.Arc3DRepeat)
+        ret += qsTr("Arc3DRepeat");
     ret += " ";
     if(actionObject.plane == 0)
         ret += "XY " + qsTr("Plane");
@@ -150,11 +152,14 @@ var pentuActionToStringHandler = function(actionObject){
         ret += "YZ " + qsTr("Plane");
     ret += " ";
     ret += qsTr("Start Pos:") + pointToString(actionObject.startPos) + "\n                            ";
-    ret += qsTr("Repeate Pos:") + pointToString(actionObject.point1) + " " +
-            qsTr("Repeate Speed:") + actionObject.repeateSpeed + " " +
-            qsTr("Repeate ") + actionObject.repeateCount + "Times" + "\n                            " +
+
+    ret += qsTr("Next Pos:") + pointToString(actionObject.point1) + " ";
+    if(mode == pentuModes.Arc3DRepeat)
+        ret += qsTr("End Pos:") + pointToString(actionObject.point2) + " ";
+    ret += qsTr("Repeate Speed:") + actionObject.repeateSpeed + " " +
+            qsTr("Repeate ") + actionObject.repeateCount + qsTr("Times") + "\n                            " +
             axisInfos[actionObject.dirAxis].name + qsTr("Dir Length:") + actionObject.dirLength + " " +
             qsTr("Dir Speed:") + actionObject.dirSpeed + " " +
-            qsTr("Dir") + actionObject.dirCount + "Times";
+            qsTr("Dir") + actionObject.dirCount + qsTr("Times");
     return ret;
 }

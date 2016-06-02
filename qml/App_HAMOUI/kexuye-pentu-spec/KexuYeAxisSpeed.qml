@@ -7,6 +7,18 @@ Item {
     height: parent.height
     property variant actionObject: null
 
+    function updateActionObject(ao){
+        ao.startSpeed0 = m0Speed.configValue;
+        ao.startSpeed1 = m1Speed.configValue;
+        ao.startSpeed2 = m2Speed.configValue;
+        ao.startSpeed3 = m3Speed.configValue;
+        ao.startSpeed4 = m4Speed.configValue;
+        ao.startSpeed5 = m5Speed.configValue;
+        ao.fixtureDelay0 = delay0.configValue;
+        ao.fixtureDelay1 = delay1.configValue;
+        ao.fixtureDelay2 = delay2.configValue;
+    }
+
     function getDetails(){
         return {
             "spd0":m0Speed.configValue,

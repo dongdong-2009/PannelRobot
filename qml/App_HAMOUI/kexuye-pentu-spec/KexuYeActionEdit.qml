@@ -33,6 +33,24 @@ Item {
         return ret;
     }
 
+    function updateActionObject(ao){
+        ao.plane = planeSel.configValue;
+        ao.dirAxis = dirAxisSel.configValue;
+        ao.startPos = pos1Container.getPoint();
+        ao.point1 = pos2Container.getPoint();
+        ao.point2 = pos3Container.getPoint();
+
+        ao.repeateSpeed = repeateSpeed.configValue;
+        ao.dirSpeed = dirSpeed.configValue;
+        ao.dirLength  = dirLength.configValue;
+        ao.repeateCount = repeateCount.configValue;
+        ao.zlength = zlength.configValue;
+        ao.dirCount  = dirCount.configValue;
+        ao.rotate = rotate.configValue;
+        ao.rotateSpeed = rotateSpeed.configValue;
+        ao.rotateCount = rotateCount.configValue;
+    }
+
     function setModeName(name){
         actionName.text = name;
     }

@@ -4036,39 +4036,51 @@ please chose!</source>
     </message>
     <message>
         <source>SingleAxisRepeat</source>
-        <translation type="unfinished"></translation>
+        <translation>喷涂直线2D</translation>
     </message>
     <message>
         <source>Plane</source>
-        <translation type="unfinished"></translation>
+        <translation>平面</translation>
     </message>
     <message>
         <source>Start Pos:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Repeate Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation>起点:</translation>
     </message>
     <message>
         <source>Repeate Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>重复速度:</translation>
     </message>
     <message>
         <source>Repeate </source>
-        <translation type="unfinished"></translation>
+        <translation>重复</translation>
     </message>
     <message>
         <source>Dir Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>寸动长度:</translation>
     </message>
     <message>
         <source>Dir Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>寸动速度:</translation>
     </message>
     <message>
         <source>Dir</source>
-        <translation type="unfinished"></translation>
+        <translation>寸动</translation>
+    </message>
+    <message>
+        <source>Arc3DRepeat</source>
+        <translation>喷涂曲线3D</translation>
+    </message>
+    <message>
+        <source>Next Pos:</source>
+        <translation>下一位置:</translation>
+    </message>
+    <message>
+        <source>End Pos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>Times</source>
+        <translation>次</translation>
     </message>
 </context>
 <context>

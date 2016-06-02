@@ -111,15 +111,16 @@ ProgramFlowPage {
 
     function actionObjectToText(actionObject){
         var originText;
-        if(actionObject.action == LocalTeach.actions.F_CMD_PENTU)
+        if(actionObject.action == LocalTeach.actions.F_CMD_PENTU){
             originText = LocalTeach.pentuActionToStringHandler(actionObject);
+        }
         else
             originText = BaseTeach.actionToStringNoCusomName(actionObject);
         if(actionObject.customName){
             var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
             originText = styledCN + " " + originText;
         }
-        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(/\n                            /g, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
     KexuYeActionEdit{

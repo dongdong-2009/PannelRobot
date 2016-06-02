@@ -109,6 +109,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "point2":point2,
         "rotate":rotate,
         "rotateSpeed":rotateSpeed,
+        "rotateCount":rotateCount,
         "rotateCounterID":rotateCID,
         "flag0":flag0,
         "flag1":flag1,

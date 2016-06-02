@@ -283,6 +283,34 @@ Item {
             }
         }
     }
+    onActionObjectChanged: {
+        if(actionObject == null) return;
+        planeSel.configValue = actionObject.plane;
+        dirAxisSel.configValue = actionObject.dirAxis;
+        sPosM0.configValue = actionObject.startPos.pos.m0;
+        sPosM1.configValue = actionObject.startPos.pos.m1;
+        sPosM2.configValue = actionObject.startPos.pos.m2;
+        sPosM3.configValue = actionObject.startPos.pos.m3;
+        sPosM4.configValue = actionObject.startPos.pos.m4;
+        sPosM5.configValue = actionObject.startPos.pos.m5;
+
+        pos1Axis1.configValue = actionObject.point1.pos["m" + plane[0]];
+        pos1Axis2.configValue = actionObject.point1.pos["m" + plane[1]];
+
+        pos2Axis1.configValue = actionObject.point2.pos["m" + plane[0]];
+        pos2Axis2.configValue = actionObject.point2.pos["m" + plane[1]];
+
+        repeateSpeed.configValue = actionObject.repeateSpeed;
+        dirSpeed.configValue = actionObject.dirSpeed;
+        dirLength.configValue = actionObject.dirLength;
+        repeateCount.configValue = actionObject.repeateCount;
+        zlength.configValue = actionObject.zlength;
+        dirCount.configValue = actionObject.dirCount;
+        rotate.configValue = actionObject.rotate;
+        rotateSpeed.configValue = actionObject.rotateSpeed;
+        rotateCount.configValue = actionObject.rotateCount;
+    }
+
     Component.onCompleted: {
         planeSel.configValue = 0;
         dirAxisSel.configValue = 1;

@@ -128,6 +128,12 @@ ProgramFlowPage {
         width: menuFrame().width - 20
         height: menuFrame().height
     }
+    KexuYeAxisSpeed{
+        id:kexuyeDetailEdit
+        visible: false
+        width: menuFrame().width - 20
+        height: 100
+    }
 
     Component.onCompleted: {
         registerEditableAction(LocalTeach.actions.F_CMD_PENTU, kexuyeActionEdit, "kexuyeaction", [{"item":"kexuyeaction"}, {"item":"customName"}]);

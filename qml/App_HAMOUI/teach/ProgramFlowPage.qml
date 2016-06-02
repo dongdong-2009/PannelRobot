@@ -27,8 +27,11 @@ Rectangle {
 
     function actionModifyEditor() { return modifyEditor;}
 
-    function registerEditableAction(action, editor, itemName, editableItems){
-        modifyEditor.registerEditableItem(editor, itemName);
+    function registerEditableAction(action, editorsList, editableItems){
+        for(var i = 0, len = editorsList.length; i < len; ++i){
+            modifyEditor.registerEditableItem(editorsList[i].editor, editorsList[i].itemName);
+        }
+
         PData.registerEditableActions[action] = editableItems;
     }
 

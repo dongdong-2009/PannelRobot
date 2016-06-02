@@ -4082,6 +4082,10 @@ please chose!</source>
         <source>Times</source>
         <translation>次</translation>
     </message>
+    <message>
+        <source>Line2DRepeat</source>
+        <translation>喷涂直线2D</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>

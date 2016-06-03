@@ -55,8 +55,8 @@ Item {
         actionName.text = name;
     }
     function setPosName(name1,name2){
-        pos1.text = name1;
-        pos2.text = name2;
+        button_setPos1.text = name1;
+        button_setPos1.text = name2;
     }
 
     Column{
@@ -125,12 +125,26 @@ Item {
                     }
                 };
             }
-
-            Text {
-                text: qsTr("SPos:")
+            ICButton{
+                id:button_setStartPos
+                text: qsTr("Set SPos")
                 width: configContainer.posNameWidth + 10
+                height: sPosM0.height
                 anchors.verticalCenter: parent.verticalCenter
+                onButtonClicked: {
+                    sPosM0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                    sPosM1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                    sPosM2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                    sPosM3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                    sPosM4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                    sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                }
             }
+//            Text {
+//                text: qsTr("SPos:")
+//                width: 35
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
             ICConfigEdit{
                 id:sPosM0
                 configName: AxisDefine.axisInfos[0].name
@@ -163,7 +177,7 @@ Item {
             }
         }
         Row{
-            spacing: 124
+            spacing: 120
             Row{
                 id:pos2Container
                 spacing: 4
@@ -177,12 +191,33 @@ Item {
                     ret.pos[axis2] = pos1Axis2.configValue;
                     return ret;
                 }
-
-                Text {
-                    id:pos1
+                ICButton{
+                    id:button_setPos1
                     width: configContainer.posNameWidth + 10
+                    height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    onButtonClicked: {
+                        switch(planeSel.configValue){
+                        case 0:{
+                            pos1Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            break;}
+                        case 1:{
+                            pos1Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        case 2:{
+                            pos1Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        }
+                    }
                 }
+//                Text {
+//                    id:pos1
+//                    width: 35
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
                 ICConfigEdit{
                     id:pos1Axis1
                     configName: AxisDefine.axisInfos[0].name
@@ -210,11 +245,33 @@ Item {
                     ret.pos[axis2] = pos2Axis2.configValue;
                     return ret;
                 }
-                Text {
-                    id:pos2
+                ICButton{
+                    id:button_setPos2
                     width: configContainer.posNameWidth + 10
+                    height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    onButtonClicked: {
+                        switch(planeSel.configValue){
+                        case 0:{
+                            pos2Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos2Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            break;}
+                        case 1:{
+                            pos2Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos2Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        case 2:{
+                            pos2Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            pos2Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        }
+                    }
                 }
+//                Text {
+//                    id:pos2
+//                    width: 35
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
                 ICConfigEdit{
                     id:pos2Axis1
                     configName: AxisDefine.axisInfos[0].name

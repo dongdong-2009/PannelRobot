@@ -139,7 +139,6 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
 var pentuActionToStringHandler = function(actionObject){
     var mode = actionObject.mode;
     var ret = "";
-    console.log("mode", mode, pentuModes.singleAxisRepeat);
     if(mode == pentuModes.Line2DRepeat)
         ret += qsTr("Line2DRepeat");
     else if(mode == pentuModes.Arc3DRepeat)

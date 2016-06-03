@@ -169,6 +169,10 @@ ContentPageBase {
 
     AxisPosDisplayBar{
         id:posDisplayBar
+        Component.onCompleted: {
+            setJogPosVisible(true);
+            setWorldPosVisible(false);
+        }
     }
 
     content: manualContainer

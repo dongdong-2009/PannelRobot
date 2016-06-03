@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>resources/logo_icon.png</file>
         <file>PanelRobot_zh_CN.qm</file>
         <file>PanelRobot_en_US.qm</file>
-        <file>resources/logo_icon.png</file>
     </qresource>
 </RCC>

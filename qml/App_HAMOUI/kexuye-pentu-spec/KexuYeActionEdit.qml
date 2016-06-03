@@ -56,7 +56,7 @@ Item {
     }
     function setPosName(name1,name2){
         button_setPos1.text = name1;
-        button_setPos1.text = name2;
+        button_setPos2.text = name2;
     }
 
     Column{

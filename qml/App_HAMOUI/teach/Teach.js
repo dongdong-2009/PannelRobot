@@ -406,7 +406,9 @@ var useableStack = function(){
 }
 
 function parseStacks(stacks){
-    if(stacks.length < 4) return;
+    if(stacks.length < 4) {
+        stacks = "{}";
+    }
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;

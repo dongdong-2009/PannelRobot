@@ -57,16 +57,6 @@ ContentPageBase {
 //                textFont.pixelSize: getChecked() ? 18 : 16
 //                textColor: getChecked() ? "yellow" : "black"
 //            }
-            TabMenuItem{
-                id:programmableBtn
-                width: 100
-                height: pdata.menuItemHeight
-                itemText: qsTr("Custom Btn")
-                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                textFont.pixelSize: getChecked() ? 18 : 16
-                textColor: getChecked() ? "yellow" : "black"
-
-            }
             TabMenuItem {
                 id: debugprint
                 width: 80
@@ -76,6 +66,16 @@ ContentPageBase {
                 textFont.pixelSize: getChecked() ? 18 : 16
                 textColor: getChecked() ? "yellow" : "black"
                 
+            }
+            TabMenuItem{
+                id:programmableBtn
+                width: 100
+                height: pdata.menuItemHeight
+                itemText: qsTr("Custom Btn")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+                visible: false
             }
             TabMenuItem {
                 id: jog
@@ -153,11 +153,11 @@ ContentPageBase {
 //            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
 //            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
 
-            var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
-            pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
-
             var debugprintClass = Qt.createComponent('Debugprint.qml');
             pageContainer.addPage(debugprintClass.createObject(pageContainer));
+
+            var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
+            pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
             var jogClass = Qt.createComponent('DebugPage.qml');
             pageContainer.addPage(jogClass.createObject(pageContainer));
 

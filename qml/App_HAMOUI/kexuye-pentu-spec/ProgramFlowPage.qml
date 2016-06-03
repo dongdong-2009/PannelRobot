@@ -125,6 +125,17 @@ ProgramFlowPage {
         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(/\n                            /g, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
+    Rectangle{
+        id:mask
+        color: "#D0D0D0"
+        height: 28
+        width: 600
+        x:2
+        MouseArea{
+            anchors.fill: parent
+        }
+    }
+
     KexuYeActionEdit{
         id:kexuyeActionEdit
         visible: false

@@ -25,9 +25,10 @@ Rectangle {
     }
     function updateStacksSel(){
         Teach.parseStacks(panelRobotController.stacks());
-        stackSelector.items =  Teach.stackInfosDescr()
         var hasStacks = Teach.stackInfosDescr();
+        stackSelector.configValue = -1;
         stackViewSel.currentIndex = -1;
+        stackSelector.items =  hasStacks;
         stackViewSel.items = hasStacks;
     }
     onStackTypeChanged: {
@@ -291,7 +292,7 @@ Rectangle {
             }
             onCheckedItemChanged: {
                 stackSelector.configValue = -1;
-                stackViewSel.currentIndex = 0;
+                stackViewSel.currentIndex = -1;
                 stackType = 0;
                 speed1.visible = false;
             }
@@ -495,6 +496,7 @@ Rectangle {
             configValue: "80.0"
         }
     }
+
     Component.onCompleted: {
         updateStacksSel();
         panelRobotController.moldChanged.connect(updateStacksSel);

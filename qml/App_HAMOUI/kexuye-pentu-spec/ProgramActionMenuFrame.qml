@@ -12,6 +12,9 @@ ProgramActionMenuFrame{
         linkedBtn3Instance().visible = false;
     }
 
+    function isMenuVisiable() { return kexuyeActionsFrame.visible;}
+
+
 
 
     Rectangle{

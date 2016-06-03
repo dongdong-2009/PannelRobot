@@ -340,7 +340,7 @@ Item {
         sPosM5.configValue = 0.000;
 
         pos1Axis1.configValue = 500.000;
-        pos1Axis2.configValue = 0.000;
+        pos1Axis2.configValue = 20.000;
 
         pos2Axis1.configValue = 0.000;
         pos2Axis2.configValue = 0.000;
@@ -349,7 +349,7 @@ Item {
         dirSpeed.configValue = 80.0;
         dirLength.configValue = 50.000;
         repeateCount.configValue = 2;
-        zlength.configValue = 100;
+        zlength.configValue = -100;
         dirCount.configValue = 10;
         rotate.configValue = 90.000;
         rotateSpeed.configValue = 5.0;

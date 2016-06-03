@@ -150,13 +150,13 @@ Item {
     }
 
     Component.onCompleted: {
-        m0Speed.configValue = 50;
-        m1Speed.configValue = 50;
-        m2Speed.configValue = 50;
+        m0Speed.configValue = 30;
+        m1Speed.configValue = 30;
+        m2Speed.configValue = 30;
         m3Speed.configValue = 5;
         m4Speed.configValue = 5;
         m5Speed.configValue = 5;
-        delay0.configValue = 0;
+        delay0.configValue = 0.1;
         delay1.configValue = 0;
         delay2.configValue = 0;
     }

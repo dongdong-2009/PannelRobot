@@ -1565,15 +1565,11 @@ Rectangle {
 
             model.append(new Teach.ProgramModelItem(step, at));
         }
-        for(var l = 0; l < jumpLines.length; ++l){
-            step = program[jumpLines[l]];
-            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
-            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
-        }
         return insertedIndex;
     }
 
     function updateProgramModels(){
+        programListView.model = null;
         Teach.definedPoints.clear();
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
@@ -1619,6 +1615,7 @@ Rectangle {
         moduleSel.currentIndex = 0;
         currentEditingProgram = 0;
         currentEditingModule = 0;
+        programListView.model = mainProgramModel;
 
     }
 
@@ -1645,7 +1642,6 @@ Rectangle {
         PData.programs.push(sub8ProgramModel);
         PData.programs.push(functionsModel);
         PData.programs.push(manualProgramModel);
-
 
         updateProgramModels();
         var mPs = ManualProgramManager.manualProgramManager.programs;

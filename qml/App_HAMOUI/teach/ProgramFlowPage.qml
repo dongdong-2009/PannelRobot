@@ -760,6 +760,7 @@ Rectangle {
                             collectSpecialLines(PData.programs.length - 1);
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
+                            saveModules();
                             hasModify = true;
                         }
                     }

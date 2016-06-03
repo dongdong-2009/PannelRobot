@@ -922,7 +922,11 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         programsCode_.append(programs.at(i));
         p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
-        if(p.IsCompileErr()) ok = false;
+        if(p.IsCompileErr())
+        {
+            ok = false;
+            qDebug()<<"Load Mold Err:"<<p.ErrInfo();
+        }
         programs_.append(p);
     }
 

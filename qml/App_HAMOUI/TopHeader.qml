@@ -113,6 +113,7 @@ Rectangle {
             height: menuItemHeight
             itemText: qsTr("Calculator")
             onIsCheckedChanged: calculatorItemStatusChanged(isChecked)
+            visible: false
         }
         TopMenuItem{
             id: io

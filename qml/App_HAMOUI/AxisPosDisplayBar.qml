@@ -7,10 +7,19 @@ import "configs/AxisDefine.js" as AxisDefine
 Item {
     id:container
     x:4
+    function setWorldPosVisible(en){
+        worldPos.visible = en;
+    }
+
+    function setJogPosVisible(en){
+        jogPos.visible = en;
+    }
+
     ICStatusScope{
         Column{
 
         Grid{
+            id:worldPos
             rows: 1
             columns: 6
             spacing: 25
@@ -57,6 +66,7 @@ Item {
             }
         }
         Grid{
+            id:jogPos
             rows: 1
             columns: 6
             spacing: 25

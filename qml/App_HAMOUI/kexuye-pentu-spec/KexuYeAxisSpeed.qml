@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
+import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
     id:container
@@ -149,42 +150,42 @@ Item {
                 id:rspeedContainer
                 ICConfigEdit{
                     id:m0Speed
-                    configName: qsTr("X")
+                    configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:m1Speed
-                    configName: qsTr("Y")
+                    configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:m2Speed
-                    configName: qsTr("Z")
+                    configName: AxisDefine.axisInfos[2].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:m3Speed
-                    configName: qsTr("A")
+                    configName: AxisDefine.axisInfos[3].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:m4Speed
-                    configName: qsTr("B")
+                    configName: AxisDefine.axisInfos[4].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:m5Speed
-                    configName: qsTr("C")
+                    configName: AxisDefine.axisInfos[5].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 

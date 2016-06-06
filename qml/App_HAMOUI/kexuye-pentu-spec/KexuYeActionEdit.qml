@@ -2,6 +2,8 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "Teach.js" as LocalTeach
+import "../teach/Teach.js" as BaseTeach
+
 
 Item {
     id:container
@@ -13,15 +15,15 @@ Item {
     property variant detailInstance: null
     function createActionObjects(){
         var ret = [];
-         var rc = LocalTeach.counterManager.getCounter(0);
+         var rc = BaseTeach.counterManager.getCounter(0);
         if(rc == null){
-            rc= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+            rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
         }
-        var c = LocalTeach.counterManager.newCounter("", 0, repeateCount.configValue);
+        var c = BaseTeach.counterManager.newCounter("", 0, repeateCount.configValue);
         var rcID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c = LocalTeach.counterManager.newCounter("", 0, dirCount.configValue);
+        c = BaseTeach.counterManager.newCounter("", 0, dirCount.configValue);
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         var rotateCID = rc.id;

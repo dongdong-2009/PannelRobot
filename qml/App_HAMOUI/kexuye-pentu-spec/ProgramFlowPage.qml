@@ -125,8 +125,8 @@ ProgramFlowPage {
 //            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
 //                     actionObject.startPos0, actionObject.repeatSpeed));
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":{"m0":-actionObject.point1.pos.m0, "m1":-actionObject.point1.pos.m0,
-                                              "m2":-actionObject.point1.pos.m0}}], actionObject.repeatSpeed, 0.0));
+                     [{"pointName":"", "pos":{"m0":-actionObject.point1.pos.m0, "m1":-actionObject.point1.pos.m1,
+                                              "m2":-actionObject.point1.pos.m2}}], actionObject.repeatSpeed, 0.0));
 
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
@@ -224,7 +224,7 @@ ProgramFlowPage {
         id:mask
         color: "#D0D0D0"
         height: 28
-        width: 600
+        width: 315
         x:2
         MouseArea{
             anchors.fill: parent

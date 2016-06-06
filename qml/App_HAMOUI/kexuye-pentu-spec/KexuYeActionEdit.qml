@@ -2,26 +2,31 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "Teach.js" as LocalTeach
+import "../teach/Teach.js" as BaseTeach
+
 
 Item {
     id:container
     width: parent.width
     height: parent.height
     property int mode: 0
-    property variant plane: [0, 1]
+    property variant plane: [0, 1, 2]
     property variant actionObject: null
     property variant detailInstance: null
     function createActionObjects(){
         var ret = [];
-        var c = LocalTeach.counterManager.newCounter("", 0, repeateCount.configValue);
+         var rc = BaseTeach.counterManager.getCounter(0);
+        if(rc == null){
+            rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+            panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
+        }
+        var c = BaseTeach.counterManager.newCounter("", 0, repeateCount.configValue);
         var rcID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c = LocalTeach.counterManager.newCounter("", 0, dirCount.configValue);
+        c = BaseTeach.counterManager.newCounter("", 0, dirCount.configValue);
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
-        var rotateCID = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+        var rotateCID = rc.id;
         var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
@@ -29,7 +34,9 @@ Item {
                                                 dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
                                                 dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
                                                 rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
-                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID));
+                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
+                                                details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
+                                                details.fixture1Switch));
         return ret;
     }
 
@@ -55,8 +62,8 @@ Item {
         actionName.text = name;
     }
     function setPosName(name1,name2){
-        pos1.text = name1;
-        pos2.text = name2;
+        button_setPos1.text = name1;
+        button_setPos2.text = name2;
     }
 
     Column{
@@ -79,21 +86,21 @@ Item {
                 //                configValue: 0
                 onConfigValueChanged: {
                     if(configValue == 0){
-                        container.plane = [0, 1];
+                        container.plane = [0, 1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
 //                        dirAxisSel.items = ["X", "Y"]
                     }else if(configValue == 1){
-                        plane = [0, 2];
+                        plane = [0, 2, 1];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
 //                        dirAxisSel.items = ["X", "Z"]
                     }else if(configValue == 2){
-                        plane = [1, 2];
+                        plane = [1, 2, 0];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[1].name;
@@ -125,12 +132,26 @@ Item {
                     }
                 };
             }
-
-            Text {
-                text: qsTr("SPos:")
+            ICButton{
+                id:button_setStartPos
+                text: qsTr("Set SPos")
                 width: configContainer.posNameWidth + 10
+                height: sPosM0.height
                 anchors.verticalCenter: parent.verticalCenter
+                onButtonClicked: {
+                    sPosM0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                    sPosM1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                    sPosM2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                    sPosM3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                    sPosM4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                    sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                }
             }
+//            Text {
+//                text: qsTr("SPos:")
+//                width: 35
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
             ICConfigEdit{
                 id:sPosM0
                 configName: AxisDefine.axisInfos[0].name
@@ -171,18 +192,41 @@ Item {
                     var ret = {};
                     var axis1 = "m" + plane[0];
                     var axis2 = "m" + plane[1];
+                    var axis3 = "m" + plane[2];
                     ret.pointName = "";
                     ret.pos = {};
                     ret.pos[axis1] = pos1Axis1.configValue;
                     ret.pos[axis2] = pos1Axis2.configValue;
+                    ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
                     return ret;
                 }
-
-                Text {
-                    id:pos1
+                ICButton{
+                    id:button_setPos1
                     width: configContainer.posNameWidth + 10
+                    height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    onButtonClicked: {
+                        switch(planeSel.configValue){
+                        case 0:{
+                            pos1Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            break;}
+                        case 1:{
+                            pos1Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        case 2:{
+                            pos1Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        }
+                    }
                 }
+//                Text {
+//                    id:pos1
+//                    width: 35
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
                 ICConfigEdit{
                     id:pos1Axis1
                     configName: AxisDefine.axisInfos[0].name
@@ -204,17 +248,41 @@ Item {
                     var ret = {};
                     var axis1 = "m" + plane[0];
                     var axis2 = "m" + plane[1];
+                    var axis3 = "m" + plane[2];
                     ret.pointName = "";
                     ret.pos = {};
                     ret.pos[axis1] = pos2Axis1.configValue;
                     ret.pos[axis2] = pos2Axis2.configValue;
+                    ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
                     return ret;
                 }
-                Text {
-                    id:pos2
+                ICButton{
+                    id:button_setPos2
                     width: configContainer.posNameWidth + 10
+                    height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    onButtonClicked: {
+                        switch(planeSel.configValue){
+                        case 0:{
+                            pos2Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos2Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            break;}
+                        case 1:{
+                            pos2Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                            pos2Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        case 2:{
+                            pos2Axis1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                            pos2Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                            break;}
+                        }
+                    }
                 }
+//                Text {
+//                    id:pos2
+//                    width: 35
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
                 ICConfigEdit{
                     id:pos2Axis1
                     configName: AxisDefine.axisInfos[0].name

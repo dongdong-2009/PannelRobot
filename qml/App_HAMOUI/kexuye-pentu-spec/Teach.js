@@ -14,7 +14,8 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,
                                    repeatSpeed, repeateCount, zlength, dirAxis, dirLength, dirSpeed,
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
-                                   fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID){
+                                   fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
+                                   fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -103,13 +104,13 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         switch(plane){
             case 0:
                 if(dirAxis == 0){
-                    var rpeateAxis = 1;
-                    var startPos0 = startPos.pos.m1;
-                    var startPos1 = startPos.pos.m0;
-                    var startSpeed0 = startPosSpeed1;
-                    var startSpeed1 = startPosSpeed0;
-                    var point1_m0 = point1.pos.m1;
-                    var point1_m1 = point1.pos.m0;
+                    rpeateAxis = 1;
+                    startPos0 = startPos.pos.m1;
+                    startPos1 = startPos.pos.m0;
+                    startSpeed0 = startPosSpeed1;
+                    startSpeed1 = startPosSpeed0;
+                    point1_m0 = point1.pos.m1;
+                    point1_m1 = point1.pos.m0;
                 }
                 else if(dirAxis == 1){
                     rpeateAxis = 0;
@@ -120,9 +121,9 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                     point1_m0 = point1.pos.m0;
                     point1_m1 = point1.pos.m1;
                 }
-                var deepAxis = 2;
-                var startPos2 = startPos.pos.m2;
-                var startSpeed2 = startPosSpeed2;
+                deepAxis = 2;
+                startPos2 = startPos.pos.m2;
+                startSpeed2 = startPosSpeed2;
                 break;
             case 1:
                 if(dirAxis == 0){
@@ -212,7 +213,12 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "startSpeed5":startPosSpeed5,
         "fixtureDelay0":fixtureDelay0,
         "fixtureDelay1":fixtureDelay1,
-        "fixtureDelay2":fixtureDelay2
+        "fixtureDelay2":fixtureDelay2,
+        "fixture2Delay0":fixtureDelay0,
+        "fixture2Delay1":fixtureDelay1,
+        "fixture2Delay2":fixtureDelay2,
+        "fixture1Switch":fixture1Switch,
+        "fixture2Switch":fixture2Switch
     };
 }
 

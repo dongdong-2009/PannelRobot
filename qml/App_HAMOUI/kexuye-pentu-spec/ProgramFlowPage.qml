@@ -12,14 +12,14 @@ ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
-//    function getRecordContent(which){
-//        if(which == 0)
-//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0)
+            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
 
-    function pentuActionToProgram(actionObject){
+    function pentuActionHead(actionObject){
         var ret = [];
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
@@ -35,6 +35,16 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
+        return ret;
+    }
+    function pentuActionEnd(actionObject){
+        var ret = [];
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
+        return ret;
+    }
+
+    function pentuActionToProgram(actionObject){
+        var ret = [];
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
@@ -43,15 +53,85 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.zlength, actionObject.startSpeed2));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag1, qsTr("Dir Move")));
-
-        ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-        ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-        ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay3));
-
+        if(actionObject.fixture1Switch == 4){
+            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+            ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+        }
+        else if(actionObject.fixture1Switch == 3){
+            ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
+            ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
+            ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
+        }
+        if(actionObject.fixture2Switch == 4){
+            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+        }
+        else if(actionObject.fixture2Switch == 3){
+            ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
+            ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
+            ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
+        }
         ret.push(LocalTeach.generateFlagAction(actionObject.flag2, qsTr("Repeate")));
         if(actionObject.mode == 0){
-            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.point1_m0, actionObject.repeatSpeed));
-            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.repeatSpeed));
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+            }
+            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+            }
+
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
+//                     actionObject.point1_m0, actionObject.repeatSpeed));
+            var pos = {};
+            pos["m" + 0] = actionObject.point1.pos.m0 - actionObject.startPos.pos.m0;
+            pos["m" + 1] = actionObject.point1.pos.m1 - actionObject.startPos.pos.m1;
+            pos["m" + 2] = actionObject.point1.pos.m2 - actionObject.startPos.pos.m2;
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                     [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
+
+            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
+                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+            }
+            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
+                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+            }
+
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
+//                     actionObject.startPos0, actionObject.repeatSpeed));
+            var tmp = {};
+            tmp["m" + 0] = -pos["m" + 0];
+            tmp["m" + 1] = -pos["m" + 1];
+            tmp["m" + 2] = -pos["m" + 2];
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                     [{"pointName":"", "pos":tmp}], actionObject.repeatSpeed, 0.0));
+
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
+            }
+            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
+            }
+
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_LINEXY_MOVE_POINT + actionObject.plane,
 //                     [{"pointName":"", "pos":actionObject.point1.pos}],actionObject.repeatSpeed, 0.0));
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_LINEXY_MOVE_POINT + actionObject.plane,
@@ -68,10 +148,6 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
 
-        ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
-        ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
-        ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
-
         if(actionObject.dirAxis == 0)
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
         else if(actionObject.dirAxis == 1)
@@ -84,7 +160,7 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
-        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
+//        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 
 
 
@@ -96,9 +172,21 @@ ProgramFlowPage {
         var ret = [];
         for(var i = 0; i < model.count; ++i){
             if(model.get(i).mI_ActionObject.action == LocalTeach.actions.F_CMD_PENTU){
+                if(i == 0){
+                    var rs = pentuActionHead(model.get(0).mI_ActionObject);
+                    for(var j = 0, len = rs.length; j < len; ++j){
+                        ret.push(rs[j]);
+                    }
+                }
                 var ps = pentuActionToProgram(model.get(i).mI_ActionObject);
-                for(var j = 0, len = ps.length; j < len; ++j){
+                for(j = 0, len = ps.length; j < len; ++j){
                     ret.push(ps[j]);
+                }
+                if(i == (model.count - 2)){
+                    rs = pentuActionEnd(model.get(0).mI_ActionObject);
+                    for(j = 0, len = rs.length; j < len; ++j){
+                        ret.push(rs[j]);
+                    }
                 }
             }else
                 ret.push(model.get(i).mI_ActionObject);
@@ -129,7 +217,7 @@ ProgramFlowPage {
         id:mask
         color: "#D0D0D0"
         height: 28
-        width: 600
+        width: 315
         x:2
         MouseArea{
             anchors.fill: parent

@@ -77,11 +77,11 @@ ProgramActionMenuFrame{
 
         //mode-0
         ptLine2D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.Line2DRepeat, ptLine2D.text, qsTr("EPos"), qsTr("TPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.Line2DRepeat, ptLine2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         //mode-1
         ptArc3D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text, qsTr("TPos"), qsTr("EPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text, qsTr("Set TPos"), qsTr("Set EPos"));
         });
     }
 }

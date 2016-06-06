@@ -29,7 +29,9 @@ Item {
                                                 dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
                                                 dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
                                                 rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
-                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID));
+                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
+                                                details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
+                                                details.fixture1Switch));
         return ret;
     }
 
@@ -177,7 +179,7 @@ Item {
             }
         }
         Row{
-            spacing: 120
+            spacing: 124
             Row{
                 id:pos2Container
                 spacing: 4

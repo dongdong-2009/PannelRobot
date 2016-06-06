@@ -14,7 +14,8 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,
                                    repeatSpeed, repeateCount, zlength, dirAxis, dirLength, dirSpeed,
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
-                                   fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID){
+                                   fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
+                                   fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -212,7 +213,12 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "startSpeed5":startPosSpeed5,
         "fixtureDelay0":fixtureDelay0,
         "fixtureDelay1":fixtureDelay1,
-        "fixtureDelay2":fixtureDelay2
+        "fixtureDelay2":fixtureDelay2,
+        "fixture2Delay0":fixtureDelay0,
+        "fixture2Delay1":fixtureDelay1,
+        "fixture2Delay2":fixtureDelay2,
+        "fixture1Switch":fixture1Switch,
+        "fixture2Switch":fixture2Switch
     };
 }
 

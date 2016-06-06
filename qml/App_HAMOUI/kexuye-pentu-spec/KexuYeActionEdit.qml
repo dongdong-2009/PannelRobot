@@ -197,7 +197,7 @@ Item {
                     ret.pos = {};
                     ret.pos[axis1] = pos1Axis1.configValue;
                     ret.pos[axis2] = pos1Axis2.configValue;
-                    ret.pos[axis3] = 0;
+                    ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
                     return ret;
                 }
                 ICButton{
@@ -253,7 +253,7 @@ Item {
                     ret.pos = {};
                     ret.pos[axis1] = pos2Axis1.configValue;
                     ret.pos[axis2] = pos2Axis2.configValue;
-                    ret.pos[axis3] = 0;
+                    ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
                     return ret;
                 }
                 ICButton{

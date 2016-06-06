@@ -49,20 +49,6 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
-
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
-
-        ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.zlength, actionObject.startSpeed2));
 
@@ -102,8 +88,12 @@ ProgramFlowPage {
 
 //            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
 //                     actionObject.point1_m0, actionObject.repeatSpeed));
+            var pos = {};
+            pos["m" + 0] = actionObject.point1.pos.m0 - actionObject.startPos.pos.m0;
+            pos["m" + 1] = actionObject.point1.pos.m1 - actionObject.startPos.pos.m1;
+            pos["m" + 2] = actionObject.point1.pos.m2 - actionObject.startPos.pos.m2;
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":actionObject.point1.pos}], actionObject.repeatSpeed, 0.0));
+                     [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
 
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
@@ -124,9 +114,12 @@ ProgramFlowPage {
 
 //            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
 //                     actionObject.startPos0, actionObject.repeatSpeed));
+            var tmp = {};
+            tmp["m" + 0] = -pos["m" + 0];
+            tmp["m" + 1] = -pos["m" + 1];
+            tmp["m" + 2] = -pos["m" + 2];
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":{"m0":-actionObject.point1.pos.m0, "m1":-actionObject.point1.pos.m1,
-                                              "m2":-actionObject.point1.pos.m2}}], actionObject.repeatSpeed, 0.0));
+                     [{"pointName":"", "pos":tmp}], actionObject.repeatSpeed, 0.0));
 
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));

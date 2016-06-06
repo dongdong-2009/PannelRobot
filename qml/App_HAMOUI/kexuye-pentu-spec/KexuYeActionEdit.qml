@@ -8,20 +8,23 @@ Item {
     width: parent.width
     height: parent.height
     property int mode: 0
-    property variant plane: [0, 1]
+    property variant plane: [0, 1, 2]
     property variant actionObject: null
     property variant detailInstance: null
     function createActionObjects(){
         var ret = [];
+         var rc = LocalTeach.counterManager.getCounter(0);
+        if(rc == null){
+            rc= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+            panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
+        }
         var c = LocalTeach.counterManager.newCounter("", 0, repeateCount.configValue);
         var rcID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         c = LocalTeach.counterManager.newCounter("", 0, dirCount.configValue);
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c= LocalTeach.counterManager.newCounter("", 0, rotateCount.configValue);
-        var rotateCID = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+        var rotateCID = rc.id;
         var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
@@ -81,21 +84,21 @@ Item {
                 //                configValue: 0
                 onConfigValueChanged: {
                     if(configValue == 0){
-                        container.plane = [0, 1];
+                        container.plane = [0, 1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
 //                        dirAxisSel.items = ["X", "Y"]
                     }else if(configValue == 1){
-                        plane = [0, 2];
+                        plane = [0, 2, 1];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
 //                        dirAxisSel.items = ["X", "Z"]
                     }else if(configValue == 2){
-                        plane = [1, 2];
+                        plane = [1, 2, 0];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[1].name;
@@ -187,10 +190,12 @@ Item {
                     var ret = {};
                     var axis1 = "m" + plane[0];
                     var axis2 = "m" + plane[1];
+                    var axis3 = "m" + plane[2];
                     ret.pointName = "";
                     ret.pos = {};
                     ret.pos[axis1] = pos1Axis1.configValue;
                     ret.pos[axis2] = pos1Axis2.configValue;
+                    ret.pos[axis3] = 0;
                     return ret;
                 }
                 ICButton{
@@ -241,10 +246,12 @@ Item {
                     var ret = {};
                     var axis1 = "m" + plane[0];
                     var axis2 = "m" + plane[1];
+                    var axis3 = "m" + plane[2];
                     ret.pointName = "";
                     ret.pos = {};
                     ret.pos[axis1] = pos2Axis1.configValue;
                     ret.pos[axis2] = pos2Axis2.configValue;
+                    ret.pos[axis3] = 0;
                     return ret;
                 }
                 ICButton{

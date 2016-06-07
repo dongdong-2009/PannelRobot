@@ -19,6 +19,10 @@ ContentPageBase
             standbyImg.source = "images/Standby.png";
         }
     }
+    AxisPosDisplayBar{
+        id:posDisplayBar
+    }
     content: standbyPageContainer
+    statusSection: posDisplayBar
 
 }

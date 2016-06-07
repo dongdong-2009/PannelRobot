@@ -530,40 +530,41 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-        if(pData.lastKnob != knobStatus){
-            pData.lastKnob = knobStatus;
-            var isAuto = (knobStatus === Keymap.KNOB_AUTO);
-            var isManual = (knobStatus === Keymap.KNOB_MANUAL);
-            var isStop  = (knobStatus === Keymap.KNOB_SETTINGS);
-            if(armKeyboard.visible) armKeyboardBtn.clicked();
-            armKeyboardContainer.visible = isManual;
 
-            onUserChanged(ShareData.UserInfo.current);
-            menuSettings.enabled = (isStop);
+        var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+        var isManual = (knobStatus === Keymap.KNOB_MANUAL);
+        var isStop  = (knobStatus === Keymap.KNOB_SETTINGS);
+        if(armKeyboard.visible) armKeyboardBtn.clicked();
+        armKeyboardContainer.visible = isManual;
 
-            menuOperation.enabled = !isAuto;
-            menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
-            if(isAuto) {
-                menuProgram.setChecked(true);
-                //            recordPageInBtn.clicked();
+        onUserChanged(ShareData.UserInfo.current);
+        menuSettings.enabled = (isStop);
+
+        menuOperation.enabled = !isAuto;
+        menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
+        if(isAuto) {
+            menuProgram.setChecked(true);
+            //            recordPageInBtn.clicked();
+        }
+        if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
+        if(isManual){
+            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+            menuOperation.setChecked(true);
+            middleHeader.onMenuItemTriggered(menuOperation);
+        }else if(isAuto){
+            var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
+            if(gsEn > 0){
+                var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
+                ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
+                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
             }
-            if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
-            if(isManual){
-                ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
-                menuOperation.setChecked(true);
-                middleHeader.onMenuItemTriggered(menuOperation);
-            }else if(isAuto){
-                var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
-                if(gsEn > 0){
-                    var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
-                    ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
-                    panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
-                }
-            }else if(isStop){
+        }else if(isStop){
+            if(pData.lastKnob != knobStatus){
                 middleHeader.showStandbyPage();
             }
         }
+        pData.lastKnob = knobStatus;
     }
 
     function onUserChanged(user){

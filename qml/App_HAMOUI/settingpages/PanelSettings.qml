@@ -26,7 +26,7 @@ Item {
         id:menu
         x:6
         columns: 4
-        spacing: 20
+        spacing: 50
         anchors.centerIn: parent
 
         CatalogButton{

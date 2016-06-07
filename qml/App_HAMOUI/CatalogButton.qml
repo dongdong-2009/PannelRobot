@@ -4,8 +4,10 @@ import "../ICCustomElement"
 Item {
     property alias text: text.text
     property alias icon: icon.source
-    width: 100
-    height: 62
+    property alias iconwidth: icon.width
+    property alias iconheight: icon.height
+    width: Math.max(icon.width, text.width)
+    height: icon.height + text.height
 
     signal buttonClicked()
     signal triggered()

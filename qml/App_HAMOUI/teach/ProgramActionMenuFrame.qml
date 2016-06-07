@@ -191,7 +191,14 @@ Rectangle{
 
 
         showActionMenu();
+        var linkedBtnEn = function(en){
+            linkedBtn1.enabled = en;
+            linkedBtn2.enabled = en;
+            linkedBtn3.enabled = en;
+        }
+
         actionMenuObject.axisMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(1);
             linkedBtn1.text = qsTr("Output Action");
             linkedBtn1.visible = true;
@@ -207,6 +214,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.outputMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(2);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -221,6 +229,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.checkMenuTriggered;
         });
         actionMenuObject.waitMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(3);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -235,6 +244,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.checkMenuTriggered;
         });
         actionMenuObject.checkMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(4);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -249,6 +259,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.checkMenuTriggered;
         });
         actionMenuObject.conditionMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(5);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -281,6 +292,7 @@ Rectangle{
             linkedBtn3.visible = false;
         });
         actionMenuObject.pathMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(9);
             linkedBtn1.text = qsTr("Output Action");
             linkedBtn1.visible = true;
@@ -296,6 +308,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.stackMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(10);
             linkedBtn1.text = qsTr("Output Action");
             linkedBtn1.visible = true;
@@ -310,6 +323,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.counterMenuTriggered;
         });
         actionMenuObject.counterMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(11);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;

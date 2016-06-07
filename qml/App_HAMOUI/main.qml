@@ -23,6 +23,10 @@ Rectangle {
     function onScreenRestore(){
         panelRobotController.setBrightness(panelRobotController.getCustomSettings("Brightness", 8));
     }
+    QtObject{
+        id:pData
+        property int lastKnob: -1
+    }
 
     TopHeader{
         id:mainHeader
@@ -526,29 +530,39 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-        var isAuto = (knobStatus === Keymap.KNOB_AUTO);
-        var isManual = (knobStatus === Keymap.KNOB_MANUAL);
-        var isStop  = (knobStatus === Keymap.KNOB_SETTINGS);
-        if(armKeyboard.visible) armKeyboardBtn.clicked();
-        armKeyboardContainer.visible = isManual;
+        if(pData.lastKnob != knobStatus){
+            pData.lastKnob = knobStatus;
+            var isAuto = (knobStatus === Keymap.KNOB_AUTO);
+            var isManual = (knobStatus === Keymap.KNOB_MANUAL);
+            var isStop  = (knobStatus === Keymap.KNOB_SETTINGS);
+            if(armKeyboard.visible) armKeyboardBtn.clicked();
+            armKeyboardContainer.visible = isManual;
 
-        onUserChanged(ShareData.UserInfo.current);
-        menuSettings.enabled = (isStop);
+            onUserChanged(ShareData.UserInfo.current);
+            menuSettings.enabled = (isStop);
 
-        menuOperation.enabled = !isAuto;
-        menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
-        if(isAuto) {
-            menuProgram.setChecked(true);
-            //            recordPageInBtn.clicked();
-        }
-        if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
-        if(isManual){
-            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
-            menuOperation.setChecked(true);
-            middleHeader.onMenuItemTriggered(menuOperation);
-        }else if(isStop){
-            middleHeader.showStandbyPage();
+            menuOperation.enabled = !isAuto;
+            menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
+            if(isAuto) {
+                menuProgram.setChecked(true);
+                //            recordPageInBtn.clicked();
+            }
+            if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
+            if(isManual){
+                ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+                menuOperation.setChecked(true);
+                middleHeader.onMenuItemTriggered(menuOperation);
+            }else if(isAuto){
+                var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
+                if(gsEn > 0){
+                    var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
+                    ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
+                    panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
+                }
+            }else if(isStop){
+                middleHeader.showStandbyPage();
+            }
         }
     }
 
@@ -557,7 +571,7 @@ Rectangle {
 
         menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm() && ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_SETTINGS;
         if(menuSettings.isChecked && !menuSettings.enabled){
-//            menuOperation.setChecked(true);
+            //            menuOperation.setChecked(true);
             middleHeader.showStandbyPage();
         }
 
@@ -576,7 +590,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        menuOperation.setChecked(true);
+        //        menuOperation.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

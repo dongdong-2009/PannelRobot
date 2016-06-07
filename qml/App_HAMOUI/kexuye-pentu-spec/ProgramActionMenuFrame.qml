@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
+import '..'
 import "../teach"
 import "ProgramActionMenuFrame.js" as LocalPData
 import "Teach.js" as LocalTeach
@@ -21,28 +22,70 @@ ProgramActionMenuFrame{
         id:kexuyeActionsFrame
         color: "#A0A0F0"
         parent: actionEditorContainerInstance()
-        Grid{
+        Column{
             anchors.centerIn: parent
-            spacing: 20
-            ICButton{
-                id:ptLine_U_2D
-                text:qsTr("PT U 2D")
+            spacing: 10
+            Row{
+                spacing: 20
+                CatalogButton{
+                    id:ptLine_U_2D
+                    text:qsTr("PT U 2D")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: 80
+                    iconheight: 80
+                }
+                CatalogButton{
+                    id:ptLine_Z_2D
+                    text:qsTr("PT Z 2D")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
+                CatalogButton{
+                    id:ptLine_Saw_2D
+                    text:qsTr("PT Saw 2D")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
+                CatalogButton{
+                    id:ptLine_Dir_2D
+                    text:qsTr("PT Dir 2D")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
             }
-            ICButton{
-                id:ptLine_Z_2D
-                text:qsTr("PT Z 2D")
-            }
-            ICButton{
-                id:ptLine_Saw_2D
-                text:qsTr("PT Saw 2D")
-            }
-            ICButton{
-                id:ptLine_Dir_2D
-                text:qsTr("PT Dir 2D")
-            }
-            ICButton{
-                id:ptArc3D
-                text:qsTr("PT Arc 3D")
+            Row{
+                spacing: 20
+                CatalogButton{
+                    id:ptArc_U
+                    text:qsTr("PT Arc U")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
+                CatalogButton{
+                    id:ptArc_Z
+                    text:qsTr("PT Arc Z")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
+                CatalogButton{
+                    id:ptArc_Saw
+                    text:qsTr("PT Arc Saw")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
+                CatalogButton{
+                    id:ptArc_Dir
+                    text:qsTr("PT Arc Dir")
+                    icon: "../images/usermanagement.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
             }
         }
         ICButton{
@@ -104,7 +147,7 @@ ProgramActionMenuFrame{
             setModeEditorHelper(LocalTeach.pentuModes.LineDir2DRepeat, ptLine_Dir_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         //mode-4
-        ptArc3D.buttonClicked.connect(function(){
+        ptArc_Dir.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text, qsTr("Set TPos"), qsTr("Set EPos"));
         });
     }

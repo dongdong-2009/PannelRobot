@@ -3246,6 +3246,14 @@ please chose!</source>
         <source>Pulse</source>
         <translation>脉冲</translation>
     </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Turn Auto Speed</source>
+        <translation>转自动后速度</translation>
+    </message>
 </context>
 <context>
     <name>SearchActionEditor</name>

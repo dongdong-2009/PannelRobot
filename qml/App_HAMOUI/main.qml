@@ -81,10 +81,27 @@ Rectangle {
 
             else return null;
         }
-        function onMenuItemTriggered(which){
+        function showStandbyPage(){
             var c = menuContainer.children;
             var page;
-            for(var i = 0; i < c.length;++i){
+            for(var i = 0, len = c.length; i < len;++i){
+                if(c[i].hasOwnProperty("setChecked")){
+                    c[i].setChecked(false);
+                }
+                page = buttonToPage(c[i]);
+                if(page == null) continue
+                page.visible = false;
+                page.focus = false;
+            }
+            standbyPage.visible = true;
+            standbyPage.focus = true;
+        }
+
+        function onMenuItemTriggered(which){
+            standbyPage.visible = false;
+            var c = menuContainer.children;
+            var page;
+            for(var i = 0, len = c.length; i < len;++i){
                 if(c[i] == which){
                     page = buttonToPage(which);
                     if(page == null) continue
@@ -93,7 +110,6 @@ Rectangle {
                     continue;
                 }
                 if(c[i].hasOwnProperty("setChecked")){
-                    //                    c[i].setChecked(false);
                     page = buttonToPage(c[i]);
                     if(page == null) continue
                     page.visible = false;
@@ -155,6 +171,13 @@ Rectangle {
         //        anchors.topMargin: 1
         focus: true
         Loader{
+            id:standbyPage
+            source: "StandbyPage.qml"
+            width: parent.width
+            height: parent.height
+        }
+
+        Loader{
             id:settingPage
             source: "settingpages/SettingsPage.qml"
             anchors.fill: parent
@@ -167,8 +190,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             source: "ManualPage.qml"
-            //            anchors.fill: parent
-            //            visible: false
+            visible: false
         }
         Loader{
             id:programPage
@@ -504,52 +526,14 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "dsData":[
-//                {
-//                    "camID":"0",
-//                    "data":[
-//                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
-//                    ]
-//                }
-//            ]
-//        };
-//                var toTest = {
-//                    "dsID":"www.geforcevision.com.cam",
-//                    "dsData":[
-//                        {
-//                            "camID":"0",
-//                            "data":[
-//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-//                            ]
-//                        }
-//                    ]
-//                };
-//        onETH0DataIn(JSON.stringify(toTest));
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"standardize",
-//            "camID":0,
-//            "data":[
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 }
-//            ]
-//        };
-
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"photo",
-//            "camID":0,
-//        };
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
+        var isStop  = (knobStatus === Keymap.KNOB_SETTINGS);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
         armKeyboardContainer.visible = isManual;
 
         onUserChanged(ShareData.UserInfo.current);
-        menuSettings.enabled = (knobStatus == Keymap.KNOB_SETTINGS);
+        menuSettings.enabled = (isStop);
 
         menuOperation.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
@@ -558,9 +542,13 @@ Rectangle {
             //            recordPageInBtn.clicked();
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
-        if(knobStatus === Keymap.KNOB_MANUAL){
+        if(isManual){
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
             panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+            menuOperation.setChecked(true);
+            middleHeader.onMenuItemTriggered(menuOperation);
+        }else if(isStop){
+            middleHeader.showStandbyPage();
         }
     }
 
@@ -569,7 +557,8 @@ Rectangle {
 
         menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm() && ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_SETTINGS;
         if(menuSettings.isChecked && !menuSettings.enabled){
-            menuOperation.setChecked(true);
+//            menuOperation.setChecked(true);
+            middleHeader.showStandbyPage();
         }
 
         mainHeader.setRecordItemEnabled(isRecordEn);
@@ -587,7 +576,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        menuOperation.setChecked(true);
+//        menuOperation.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);
@@ -604,6 +593,7 @@ Rectangle {
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
 
         AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_8_0_184"));
+        onUserChanged(ShareData.UserInfo.currentUser());
         console.log("main load finished!")
     }
 

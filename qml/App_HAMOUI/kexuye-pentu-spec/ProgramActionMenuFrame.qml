@@ -94,10 +94,16 @@ ProgramActionMenuFrame{
         ptLine_U_2D.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.LineU2DRepeat, ptLine_U_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
+        ptLine_Z_2D.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.LineZ2DRepeat, ptLine_Z_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
+        });
+        ptLine_Saw_2D.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.LineSaw2DRepeat, ptLine_Saw_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
+        });
         ptLine_Dir_2D.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.LineDir2DRepeat, ptLine_Dir_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
-        //mode-1
+        //mode-4
         ptArc3D.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text, qsTr("Set TPos"), qsTr("Set EPos"));
         });

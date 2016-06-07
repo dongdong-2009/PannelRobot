@@ -31,144 +31,144 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag2 = f.flagID;
-    if(mode == 0){
-        switch(plane){
-            case 0:
-                if(dirAxis == 0){
-                    var rpeateAxis = 1;
-                    var startPos0 = startPos.pos.m1;
-                    var startPos1 = startPos.pos.m0;
-                    var startSpeed0 = startPosSpeed1;
-                    var startSpeed1 = startPosSpeed0;
-                    var point1_m0 = point1.pos.m1;
-                    var point1_m1 = point1.pos.m0;
-                }
-                else if(dirAxis == 1){
-                    rpeateAxis = 0;
-                    startPos0 = startPos.pos.m0;
-                    startPos1 = startPos.pos.m1;
-                    startSpeed0 = startPosSpeed0;
-                    startSpeed1 = startPosSpeed1;
-                    point1_m0 = point1.pos.m0;
-                    point1_m1 = point1.pos.m1;
-                }
-                var deepAxis = 2;
-                var startPos2 = startPos.pos.m2;
-                var startSpeed2 = startPosSpeed2;
-                break;
-            case 1:
-                if(dirAxis == 0){
-                    rpeateAxis = 2;
-                    startPos0 = startPos.pos.m2;
-                    startPos1 = startPos.pos.m0;
-                    startSpeed0 = startPosSpeed2;
-                    startSpeed1 = startPosSpeed0;
-                    point1_m0 = point1.pos.m2;
-                    point1_m1 = point1.pos.m0;
-                }
-                else {
-                    rpeateAxis = 0;
-                    startPos0 = startPos.pos.m0;
-                    startPos1 = startPos.pos.m2;
-                    startSpeed0 = startPosSpeed0;
-                    startSpeed1 = startPosSpeed2;
-                    point1_m0 = point1.pos.m0;
-                    point1_m1 = point1.pos.m2;
-                }
-                deepAxis = 1;
-                startPos2 = startPos.pos.m1;
-                startSpeed2 = startPosSpeed1;
-                break;
-            case 2:
-                if(dirAxis == 1){
-                    rpeateAxis = 2;
-                    startPos0 = startPos.pos.m2;
-                    startPos1 = startPos.pos.m1;
-                    startSpeed0 = startPosSpeed2;
-                    startSpeed1 = startPosSpeed1;
-                    point1_m0 = point1.pos.m2;
-                    point1_m1 = point1.pos.m1;
-                }
-                else {
-                    rpeateAxis = 1;
-                    startPos0 = startPos.pos.m1;
-                    startPos1 = startPos.pos.m2;
-                    startSpeed0 = startPosSpeed1;
-                    startSpeed1 = startPosSpeed2;
-                    point1_m0 = point1.pos.m1;
-                    point1_m1 = point1.pos.m2;
-                }
-                deepAxis = 0;
-                startPos2 = startPos.pos.m0;
-                startSpeed2 = startPosSpeed0;
-                break;
-        }
-    }
-    if(mode == 1){
-        switch(plane){
-            case 0:
-                if(dirAxis == 0){
-                    rpeateAxis = 1;
-                    startPos0 = startPos.pos.m1;
-                    startPos1 = startPos.pos.m0;
-                    startSpeed0 = startPosSpeed1;
-                    startSpeed1 = startPosSpeed0;
-                    point1_m0 = point1.pos.m1;
-                    point1_m1 = point1.pos.m0;
-                }
-                else if(dirAxis == 1){
-                    rpeateAxis = 0;
-                    startPos0 = startPos.pos.m0;
-                    startPos1 = startPos.pos.m1;
-                    startSpeed0 = startPosSpeed0;
-                    startSpeed1 = startPosSpeed1;
-                    point1_m0 = point1.pos.m0;
-                    point1_m1 = point1.pos.m1;
-                }
-                deepAxis = 2;
-                startPos2 = startPos.pos.m2;
-                startSpeed2 = startPosSpeed2;
-                break;
-            case 1:
-                if(dirAxis == 0){
-                    rpeateAxis = 1;
-                    startPos0 = startPos.pos.m1;
-                    startPos1 = startPos.pos.m0;
-                    startSpeed0 = startPosSpeed1;
-                    startSpeed2 = startPosSpeed0;
-                }
-                else {
-                    rpeateAxis = 0;
-                    startPos0 = startPos.pos.m0;
-                    startPos1 = startPos.pos.m1;
-                    startSpeed0 = startPosSpeed0;
-                    startSpeed1 = startPosSpeed1;
-                }
-                deepAxis = 2;
-                startPos2 = startPos.pos.m2;
-                startSpeed2 = startPosSpeed2;
-                break;
-            case 2:
-                if(dirAxis == 1){
-                    rpeateAxis = 2;
-                    startPos1 = startPos.pos.m1;
-                    startPos2 = startPos.pos.m0;
-                    startSpeed1 = startPosSpeed1;
-                    startSpeed2 = startPosSpeed0;
-                }
-                else {
-                    rpeateAxis = 1;
-                    startPos1 = startPos.pos.m0;
-                    startPos2 = startPos.pos.m1;
-                    startSpeed1 = startPosSpeed0;
-                    startSpeed2 = startPosSpeed1;
-                }
-                deepAxis = 0;
+//    if(mode == 0){
+    switch(plane){
+        case 0:
+            if(dirAxis == 0){
+                var rpeateAxis = 1;
+                var startPos0 = startPos.pos.m1;
+                var startPos1 = startPos.pos.m0;
+                var startSpeed0 = startPosSpeed1;
+                var startSpeed1 = startPosSpeed0;
+                var point1_m0 = point1.pos.m1;
+                var point1_m1 = point1.pos.m0;
+            }
+            else if(dirAxis == 1){
+                rpeateAxis = 0;
+                startPos0 = startPos.pos.m0;
+                startPos1 = startPos.pos.m1;
+                startSpeed0 = startPosSpeed0;
+                startSpeed1 = startPosSpeed1;
+                point1_m0 = point1.pos.m0;
+                point1_m1 = point1.pos.m1;
+            }
+            var deepAxis = 2;
+            var startPos2 = startPos.pos.m2;
+            var startSpeed2 = startPosSpeed2;
+            break;
+        case 1:
+            if(dirAxis == 0){
+                rpeateAxis = 2;
                 startPos0 = startPos.pos.m2;
+                startPos1 = startPos.pos.m0;
                 startSpeed0 = startPosSpeed2;
-                break;
-        }
+                startSpeed1 = startPosSpeed0;
+                point1_m0 = point1.pos.m2;
+                point1_m1 = point1.pos.m0;
+            }
+            else {
+                rpeateAxis = 0;
+                startPos0 = startPos.pos.m0;
+                startPos1 = startPos.pos.m2;
+                startSpeed0 = startPosSpeed0;
+                startSpeed1 = startPosSpeed2;
+                point1_m0 = point1.pos.m0;
+                point1_m1 = point1.pos.m2;
+            }
+            deepAxis = 1;
+            startPos2 = startPos.pos.m1;
+            startSpeed2 = startPosSpeed1;
+            break;
+        case 2:
+            if(dirAxis == 1){
+                rpeateAxis = 2;
+                startPos0 = startPos.pos.m2;
+                startPos1 = startPos.pos.m1;
+                startSpeed0 = startPosSpeed2;
+                startSpeed1 = startPosSpeed1;
+                point1_m0 = point1.pos.m2;
+                point1_m1 = point1.pos.m1;
+            }
+            else {
+                rpeateAxis = 1;
+                startPos0 = startPos.pos.m1;
+                startPos1 = startPos.pos.m2;
+                startSpeed0 = startPosSpeed1;
+                startSpeed1 = startPosSpeed2;
+                point1_m0 = point1.pos.m1;
+                point1_m1 = point1.pos.m2;
+            }
+            deepAxis = 0;
+            startPos2 = startPos.pos.m0;
+            startSpeed2 = startPosSpeed0;
+            break;
     }
+//    }
+//    if(mode == 1){
+//        switch(plane){
+//            case 0:
+//                if(dirAxis == 0){
+//                    rpeateAxis = 1;
+//                    startPos0 = startPos.pos.m1;
+//                    startPos1 = startPos.pos.m0;
+//                    startSpeed0 = startPosSpeed1;
+//                    startSpeed1 = startPosSpeed0;
+//                    point1_m0 = point1.pos.m1;
+//                    point1_m1 = point1.pos.m0;
+//                }
+//                else if(dirAxis == 1){
+//                    rpeateAxis = 0;
+//                    startPos0 = startPos.pos.m0;
+//                    startPos1 = startPos.pos.m1;
+//                    startSpeed0 = startPosSpeed0;
+//                    startSpeed1 = startPosSpeed1;
+//                    point1_m0 = point1.pos.m0;
+//                    point1_m1 = point1.pos.m1;
+//                }
+//                deepAxis = 2;
+//                startPos2 = startPos.pos.m2;
+//                startSpeed2 = startPosSpeed2;
+//                break;
+//            case 1:
+//                if(dirAxis == 0){
+//                    rpeateAxis = 1;
+//                    startPos0 = startPos.pos.m1;
+//                    startPos1 = startPos.pos.m0;
+//                    startSpeed0 = startPosSpeed1;
+//                    startSpeed2 = startPosSpeed0;
+//                }
+//                else {
+//                    rpeateAxis = 0;
+//                    startPos0 = startPos.pos.m0;
+//                    startPos1 = startPos.pos.m1;
+//                    startSpeed0 = startPosSpeed0;
+//                    startSpeed1 = startPosSpeed1;
+//                }
+//                deepAxis = 2;
+//                startPos2 = startPos.pos.m2;
+//                startSpeed2 = startPosSpeed2;
+//                break;
+//            case 2:
+//                if(dirAxis == 1){
+//                    rpeateAxis = 2;
+//                    startPos1 = startPos.pos.m1;
+//                    startPos2 = startPos.pos.m0;
+//                    startSpeed1 = startPosSpeed1;
+//                    startSpeed2 = startPosSpeed0;
+//                }
+//                else {
+//                    rpeateAxis = 1;
+//                    startPos1 = startPos.pos.m0;
+//                    startPos2 = startPos.pos.m1;
+//                    startSpeed1 = startPosSpeed0;
+//                    startSpeed2 = startPosSpeed1;
+//                }
+//                deepAxis = 0;
+//                startPos0 = startPos.pos.m2;
+//                startSpeed0 = startPosSpeed2;
+//                break;
+//        }
+//    }
     return {
         "action":actions.F_CMD_PENTU,
         "mode":mode,

@@ -1083,6 +1083,7 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
+    console.log("aaaaaa" + actionObject.axis);
     var ret =  axisInfos[actionObject.axis].name + ":" +  actionObject.pos + " " +
             qsTranslate("Teach","Speed:") + actionObject.speed + " " +
             qsTr("Delay:") + actionObject.delay;

@@ -1280,3 +1280,43 @@ void PanelRobotController::setWatchDogEnabled(bool en)
 #endif
 
 }
+
+QString PanelRobotController::getPictures() const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return "[]";
+    usb.cd("HCUpdate_pic");
+    QStringList updaters = usb.entryList(QStringList()<<"*.png");
+    QString ret = "[";
+    for(int i = 0; i != updaters.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(updaters.at(i)));
+    }
+    if(updaters.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+QString PanelRobotController::getPicturesPath(const QString& picName) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return "";
+    usb.cd("HCUpdate_pic");
+    return usb.absoluteFilePath(picName);
+}
+
+void PanelRobotController::copyPicture(const QString &picName, const QString& to) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return;
+    usb.cd("HCUpdate_pic");
+    ICAppSettings settings;
+    QString uiMain = settings.UIMainName();
+    QDir appDir = QDir::current();
+    appDir.cd(uiMain);
+    appDir.cd("images");
+    ::system(QString("cp %1 %2 -f").arg(usb.absoluteFilePath(picName))
+             .arg(appDir.absoluteFilePath(to)).toLatin1());
+    ::system("sync");
+}

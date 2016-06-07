@@ -302,7 +302,7 @@ Item {
             id:repeateContainer
             ICConfigEdit{
                 id:repeateSpeed
-                visible: mode == 3 ? true : false
+//                visible: mode == 3 ? true : false
                 width: 237
                 configName: qsTr("Rpeate Speed")
                 configAddr: "s_rw_0_32_1_1200"
@@ -329,6 +329,7 @@ Item {
             spacing: 10
             ICConfigEdit{
                 id:dirLength
+                visible: mode == 2 ? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
                 configAddr: "s_rw_0_32_3_1300"

@@ -732,6 +732,10 @@ public:
 
     Q_INVOKABLE void setWatchDogEnabled(bool en);
 
+    Q_INVOKABLE QString getPictures() const;
+    Q_INVOKABLE QString getPicturesPath(const QString& picName) const;
+    Q_INVOKABLE void copyPicture(const QString &picName, const QString& to) const;
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

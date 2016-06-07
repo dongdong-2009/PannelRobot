@@ -641,7 +641,7 @@ typedef enum
 	F_CMD_NULL,
 	F_CMD_SYNC_START,     //< 同步功能开始
 	F_CMD_SYNC_END,       //< 同步功能结束
-    F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
+    F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时 功能码（0正常动组，1提前减速，2提前结束）提前减速或者提前结束位置设定（无小数位）
     //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
     //< 坐标（X，Y，Z,U,V,W） 速度 延时
 	F_CMD_JOINT_MOVE_POINT,

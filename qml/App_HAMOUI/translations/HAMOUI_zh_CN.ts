@@ -1235,19 +1235,19 @@
     <name>IODefines</name>
     <message>
         <source>Y010</source>
-        <translation type="unfinished"></translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Y011</source>
-        <translation type="unfinished"></translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Y012</source>
-        <translation type="unfinished"></translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Y013</source>
-        <translation type="unfinished"></translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Y014</source>
@@ -1631,19 +1631,19 @@
     </message>
     <message>
         <source>Normal Y010</source>
-        <translation>普通输出Y010</translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Normal Y011</source>
-        <translation>普通输出Y011</translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Normal Y012</source>
-        <translation>普通输出Y012</translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Normal Y013</source>
-        <translation>普通输出Y013</translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Normal Y014</source>
@@ -3051,6 +3051,14 @@ please chose!</source>
     <message>
         <source>Pulse</source>
         <translation>脉冲</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Turn Auto Speed</source>
+        <translation>转自动后速度</translation>
     </message>
 </context>
 <context>

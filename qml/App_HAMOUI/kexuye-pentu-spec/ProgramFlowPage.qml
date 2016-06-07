@@ -5,6 +5,8 @@ import "../teach/ProgramFlowPage.js" as BasePData
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
 import "../../utils/stringhelper.js" as ICString
+import "../ShareData.js" as ShareData
+import "../configs/Keymap.js" as Keymap
 
 
 ProgramFlowPage {
@@ -219,6 +221,15 @@ ProgramFlowPage {
         height: 28
         width: 315
         x:2
+
+        function onKnobChanged(knobStatus){
+            mask.width = knobStatus == Keymap.KNOB_AUTO ? 315 : 550;
+        }
+
+        Component.onCompleted: {
+            ShareData.GlobalStatusCenter.registeKnobChangedEvent(mask);
+        }
+
         MouseArea{
             anchors.fill: parent
         }

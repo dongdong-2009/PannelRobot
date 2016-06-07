@@ -518,7 +518,7 @@
     </message>
     <message>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z轴</translation>
     </message>
     <message>
         <source>U</source>
@@ -534,7 +534,7 @@
     </message>
     <message>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y轴</translation>
     </message>
     <message>
         <source>V</source>
@@ -550,7 +550,7 @@
     </message>
     <message>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">X轴</translation>
     </message>
     <message>
         <source>W</source>
@@ -2039,31 +2039,7 @@
         <translation>返回速度</translation>
     </message>
     <message>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2525,6 +2501,10 @@
         <source>Network Settings</source>
         <translation>网络配置</translation>
     </message>
+    <message>
+        <source>Picture Settings</source>
+        <translation>图片设定</translation>
+    </message>
 </context>
 <context>
     <name>ParaChose</name>
@@ -2544,6 +2524,21 @@ please chose!</source>
     <message>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>PictureSettings</name>
+    <message>
+        <source>Scan Pic</source>
+        <translation>扫描图片</translation>
+    </message>
+    <message>
+        <source>Set As Start Up</source>
+        <translation>设为启动图片</translation>
+    </message>
+    <message>
+        <source>Set As Standby</source>
+        <translation>设为待机图片</translation>
     </message>
 </context>
 <context>
@@ -4163,7 +4158,7 @@ please chose!</source>
     </message>
     <message>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z轴</translation>
     </message>
     <message>
         <source>Y2</source>
@@ -4171,15 +4166,15 @@ please chose!</source>
     </message>
     <message>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A轴</translation>
     </message>
     <message>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B轴</translation>
     </message>
     <message>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C轴</translation>
     </message>
     <message>
         <source>X1 OFF</source>

@@ -243,7 +243,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-                visible: mode == 0 ? false : true
+                visible: mode == 4 ? true : false
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -302,6 +302,7 @@ Item {
             id:repeateContainer
             ICConfigEdit{
                 id:repeateSpeed
+                visible: mode == 3 ? true : false
                 width: 237
                 configName: qsTr("Rpeate Speed")
                 configAddr: "s_rw_0_32_1_1200"
@@ -310,6 +311,7 @@ Item {
             }
             ICConfigEdit{
                 id:repeateCount
+                visible: mode == 3 ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("Repeate Count")
             }

@@ -74,7 +74,7 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
         }
         ret.push(LocalTeach.generateFlagAction(actionObject.flag2, qsTr("Repeate")));
-        if(actionObject.mode == 0){
+        if(actionObject.mode == 3){
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));

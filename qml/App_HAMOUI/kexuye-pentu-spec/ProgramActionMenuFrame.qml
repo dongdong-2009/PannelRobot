@@ -25,21 +25,36 @@ ProgramActionMenuFrame{
             anchors.centerIn: parent
             spacing: 20
             ICButton{
-                id:ptLine2D
-                text:qsTr("PT Line 2D")
+                id:ptLine_U_2D
+                text:qsTr("PT U 2D")
+            }
+            ICButton{
+                id:ptLine_Z_2D
+                text:qsTr("PT Z 2D")
+            }
+            ICButton{
+                id:ptLine_Saw_2D
+                text:qsTr("PT Saw 2D")
+            }
+            ICButton{
+                id:ptLine_Dir_2D
+                text:qsTr("PT Dir 2D")
             }
             ICButton{
                 id:ptArc3D
                 text:qsTr("PT Arc 3D")
             }
-            ICButton{
-                id:baseCmd
-                text:qsTr("Base CMD")
-                onButtonClicked: {
-                    actionEditorContainerInstance().setCurrentIndex(0);
-                }
+        }
+        ICButton{
+            id:baseCmd
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            text:qsTr("Base CMD")
+            onButtonClicked: {
+                actionEditorContainerInstance().setCurrentIndex(0);
             }
         }
+
     }
 
     Component.onCompleted: {
@@ -76,8 +91,11 @@ ProgramActionMenuFrame{
         }
 
         //mode-0
-        ptLine2D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.Line2DRepeat, ptLine2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
+        ptLine_U_2D.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.LineU2DRepeat, ptLine_U_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
+        });
+        ptLine_Dir_2D.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.LineDir2DRepeat, ptLine_Dir_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         //mode-1
         ptArc3D.buttonClicked.connect(function(){

@@ -7,8 +7,12 @@ actions.F_CMD_PENTU = 70000;
 var pentuModes = {
 
 }
-pentuModes.Line2DRepeat = 0;
-pentuModes.Arc3DRepeat = 1;
+pentuModes.LineU2DRepeat = 0;
+pentuModes.LineZ2DRepeat = 1;
+pentuModes.LineSaw2DRepeat = 2;
+pentuModes.LineDir2DRepeat = 3;
+
+pentuModes.Arc3DRepeat = 4;
 
 var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startPosSpeed1,
                                    startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,

@@ -69,14 +69,14 @@ Item {
                 }
                 ICConfigEdit{
                     id:delay1
-                    configName: qsTr("Oil Delay")
+                    configName: qsTr("Amplitude Delay")
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:delay2
-                    configName: qsTr("Amplitude Delay")
+                    configName: qsTr("Oil Delay")
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
@@ -113,14 +113,14 @@ Item {
                 }
                 ICConfigEdit{
                     id:delay21
-                    configName: qsTr("Oil Delay")
+                    configName: qsTr("Amplitude Delay")
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 
                 }
                 ICConfigEdit{
                     id:delay22
-                    configName: qsTr("Amplitude Delay")
+                    configName: qsTr("Oil Delay")
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
 

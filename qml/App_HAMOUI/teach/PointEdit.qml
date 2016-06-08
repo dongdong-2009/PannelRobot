@@ -70,7 +70,8 @@ Item {
         else if(action === Teach.actions.F_CMD_JOINTCOORDINATE)
             selReferenceName.items = fPointNames;
         else if(action === Teach.actions.F_CMD_COORDINATE_DEVIATION ||
-                action === Teach.actions.F_CMD_JOINT_RELATIVE)
+                action === Teach.actions.F_CMD_JOINT_RELATIVE ||
+                action === Teach.actions.F_CMD_ARC_RELATIVE)
             selReferenceName.items = oPointNames;
         else
             selReferenceName.items = lPointNames;
@@ -152,6 +153,8 @@ Item {
             offsetJogType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_ARC3D_MOVE){
             circlePathType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARC_RELATIVE){
+            arcRelPathType.setChecked(true);
         }
     }
 
@@ -168,7 +171,7 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
-        enabled: (!offsetPathType.isChecked)
+        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked)
         ICButton{
             id:setIn
             text: qsTr("Set In")
@@ -509,6 +512,13 @@ Item {
                     action = Teach.actions.F_CMD_ARCYZ_MOVE_POINT;
                     pointViewModel.append(pointViewModel.createModelItem());
                     pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == arcRelPathType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    action = Teach.actions.F_CMD_ARC_RELATIVE;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
                 }
 
                 motor0.visible = motor0.isChecked && AxisDefine.axisInfos[0].visiable;
@@ -577,6 +587,12 @@ Item {
                 ICCheckBox{
                     id:curve3DType
                     text:qsTr("Curve 3D")
+                    font.pointSize: PData.actionTypeFontPS
+
+                }
+                ICCheckBox{
+                    id:arcRelPathType
+                    text:qsTr("Offset Curve")
                     font.pointSize: PData.actionTypeFontPS
 
                 }

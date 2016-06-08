@@ -641,7 +641,7 @@ typedef enum
 	F_CMD_NULL,
 	F_CMD_SYNC_START,     //< 同步功能开始
 	F_CMD_SYNC_END,       //< 同步功能结束
-    F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时 功能码（0正常动组，1提前减速，2提前结束）提前减速或者提前结束位置设定（无小数位）
+    F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
     //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
     //< 坐标（X，Y，Z,U,V,W） 速度 延时
 	F_CMD_JOINT_MOVE_POINT,
@@ -654,9 +654,12 @@ typedef enum
     F_CMD_LINE3D_MOVE_POSE,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时
     //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
     F_CMD_JOINT_RELATIVE,
-
     F_CMD_ARC3D_MOVE,   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
     F_CMD_ARC2D_MOVE_POINT,   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+	//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+	//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
+    F_CMD_SINGLE_ADD_FUNC,
+	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,

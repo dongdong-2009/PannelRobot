@@ -560,9 +560,9 @@ Rectangle {
                 panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
             }
         }else if(isStop){
-            if(pData.lastKnob != knobStatus){
+//            if(pData.lastKnob != knobStatus){
                 middleHeader.showStandbyPage();
-            }
+//            }
         }
         pData.lastKnob = knobStatus;
     }
@@ -648,7 +648,7 @@ Rectangle {
                 //                ShareData.knobStatus = key;
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
-            //            console.log(Keymap.getKeyMappedAction(key));
+//                        console.log("knob", key, Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);

@@ -12,7 +12,10 @@ pentuModes.LineZ2DRepeat = 1;
 pentuModes.LineSaw2DRepeat = 2;
 pentuModes.LineDir2DRepeat = 3;
 
-pentuModes.Arc3DRepeat = 4;
+pentuModes.ArcU3DRepeat = 4;
+pentuModes.ArcZ3DRepeat = 5;
+pentuModes.ArcSaw3DRepeat = 6;
+pentuModes.ArcDir3DRepeat = 7;
 
 var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startPosSpeed1,
                                    startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,

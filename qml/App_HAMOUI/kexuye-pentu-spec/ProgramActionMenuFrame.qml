@@ -30,28 +30,28 @@ ProgramActionMenuFrame{
                 CatalogButton{
                     id:ptLine_U_2D
                     text:qsTr("PT U 2D")
-                    icon: "../images/usermanagement.png"
-                    iconwidth: 80
-                    iconheight: 80
+                    icon: "../images/1-1.png"
+                    iconwidth: 75
+                    iconheight: 75
                 }
                 CatalogButton{
                     id:ptLine_Z_2D
                     text:qsTr("PT Z 2D")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-2.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptLine_Saw_2D
                     text:qsTr("PT Saw 2D")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-3.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptLine_Dir_2D
                     text:qsTr("PT Dir 2D")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-4.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
@@ -61,28 +61,28 @@ ProgramActionMenuFrame{
                 CatalogButton{
                     id:ptArc_U
                     text:qsTr("PT Arc U")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-1.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptArc_Z
                     text:qsTr("PT Arc Z")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-2.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptArc_Saw
                     text:qsTr("PT Arc Saw")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-3.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptArc_Dir
                     text:qsTr("PT Arc Dir")
-                    icon: "../images/usermanagement.png"
+                    icon: "../images/1-4.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
@@ -147,8 +147,17 @@ ProgramActionMenuFrame{
             setModeEditorHelper(LocalTeach.pentuModes.LineDir2DRepeat, ptLine_Dir_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         //mode-4
+        ptArc_U.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.ArcU3DRepeat, ptArc_U.text, qsTr("Set TPos"), qsTr("Set EPos"));
+        });
+        ptArc_Z.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.ArcZ3DRepeat, ptArc_Z.text, qsTr("Set TPos"), qsTr("Set EPos"));
+        });
+        ptArc_Saw.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.ArcSaw3DRepeat, ptArc_Saw.text, qsTr("Set TPos"), qsTr("Set EPos"));
+        });
         ptArc_Dir.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.Arc3DRepeat, ptArc3D.text, qsTr("Set TPos"), qsTr("Set EPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.ArcDir3DRepeat, ptArc_Dir.text, qsTr("Set TPos"), qsTr("Set EPos"));
         });
     }
 }

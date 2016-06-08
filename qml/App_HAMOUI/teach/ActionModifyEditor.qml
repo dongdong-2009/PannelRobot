@@ -40,6 +40,8 @@ Item {
         points.visible = false;
         acTime.visible = false;
         customName.visible = false;
+        earlyEndPos.visible = false;
+        earlyEndSpdEditor.visible = false;
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
@@ -184,7 +186,7 @@ Item {
         Row{
             id:earlyEndSpdEditor
             spacing: 4
-            width: 350
+            width: 380
             ICCheckableLineEdit{
                 id:earlyEndSpeedPos
                 configName: qsTr("ESD Pos")

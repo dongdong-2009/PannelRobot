@@ -25,6 +25,7 @@ QMap<int, QStringList> CreatePathActionMotorNamesMap()
     ret.insert(F_CMD_LINE_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_JOINT_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_ARC3D_MOVE, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_ARC_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2");
     return ret;
 }
 static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
@@ -149,6 +150,8 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     if(item.at(0) == F_CMD_JOINT_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(item.at(0) == F_CMD_ARC3D_MOVE && points.size() != 2)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if(item.at(0) == F_CMD_ARC_RELATIVE && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
 
     QVariantMap point;
@@ -436,6 +439,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_JOINT_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE_RELATIVE, PathActionCompiler);
     ret.insert(F_CMD_JOINT_RELATIVE, PathActionCompiler);
+    ret.insert(F_CMD_ARC_RELATIVE, PathActionCompiler);
 
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);

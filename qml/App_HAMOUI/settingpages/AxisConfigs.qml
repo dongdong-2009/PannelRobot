@@ -555,9 +555,13 @@ Item {
                     }
                 }
                 onVisibleChanged: {
-                    panelRobotController.setMotorTestPulseNum(testPulseNum.text);
+                    if(visible){
+                        console.log("IN Config");
+                        testClear.clicked();
+                        panelRobotController.setMotorTestPulseNum(testPulseNum.text);
+                    }
+                    console.log("Out Config");
                     panelRobotController.swichPulseAngleDisplay(visible ? 5:0);
-                    testClear.clicked();
                 }
             }
 

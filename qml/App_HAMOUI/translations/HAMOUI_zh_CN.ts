@@ -1363,99 +1363,99 @@
     </message>
     <message>
         <source>X020</source>
-        <translation type="unfinished">X020</translation>
+        <translation>X020</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation type="unfinished">X021</translation>
+        <translation>X021</translation>
     </message>
     <message>
         <source>X022</source>
-        <translation type="unfinished">X022</translation>
+        <translation>X022</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation type="unfinished">X023</translation>
+        <translation>X023</translation>
     </message>
     <message>
         <source>X024</source>
-        <translation type="unfinished">X024</translation>
+        <translation>X024</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation type="unfinished">X025</translation>
+        <translation>X025</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation type="unfinished">X026</translation>
+        <translation>X026</translation>
     </message>
     <message>
         <source>X027</source>
-        <translation type="unfinished">X027</translation>
+        <translation>X027</translation>
     </message>
     <message>
         <source>X030</source>
-        <translation type="unfinished">X030</translation>
+        <translation>X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation type="unfinished">X031</translation>
+        <translation>X031</translation>
     </message>
     <message>
         <source>X032</source>
-        <translation type="unfinished">X032</translation>
+        <translation>X032</translation>
     </message>
     <message>
         <source>X033</source>
-        <translation type="unfinished">X033</translation>
+        <translation>X033</translation>
     </message>
     <message>
         <source>X034</source>
-        <translation type="unfinished">X034</translation>
+        <translation>X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation type="unfinished">X035</translation>
+        <translation>X035</translation>
     </message>
     <message>
         <source>X036</source>
-        <translation type="unfinished">X036</translation>
+        <translation>X036</translation>
     </message>
     <message>
         <source>X037</source>
-        <translation type="unfinished">X037</translation>
+        <translation>X037</translation>
     </message>
     <message>
         <source>X040</source>
-        <translation type="unfinished">X040</translation>
+        <translation>X040</translation>
     </message>
     <message>
         <source>X041</source>
-        <translation type="unfinished">X041</translation>
+        <translation>X041</translation>
     </message>
     <message>
         <source>X042</source>
-        <translation type="unfinished">X042</translation>
+        <translation>X042</translation>
     </message>
     <message>
         <source>X043</source>
-        <translation type="unfinished">X043</translation>
+        <translation>X043</translation>
     </message>
     <message>
         <source>X044</source>
-        <translation type="unfinished">X044</translation>
+        <translation>X044</translation>
     </message>
     <message>
         <source>X045</source>
-        <translation type="unfinished">X045</translation>
+        <translation>X045</translation>
     </message>
     <message>
         <source>X046</source>
-        <translation type="unfinished">X046</translation>
+        <translation>X046</translation>
     </message>
     <message>
         <source>X047</source>
-        <translation type="unfinished">X047</translation>
+        <translation>X047</translation>
     </message>
     <message>
         <source>X050</source>
@@ -2659,6 +2659,10 @@ please chose!</source>
         <source>Line YZ</source>
         <translation>直线YZ</translation>
     </message>
+    <message>
+        <source>Offset Curve</source>
+        <translation>相对曲线</translation>
+    </message>
 </context>
 <context>
     <name>PointManager</name>
@@ -2862,7 +2866,7 @@ please chose!</source>
     </message>
     <message>
         <source>PT Arc 3D</source>
-        <translation type="unfinished">喷涂曲线3D</translation>
+        <translation type="obsolete">喷涂曲线3D</translation>
     </message>
     <message>
         <source>Base CMD</source>
@@ -2907,6 +2911,22 @@ please chose!</source>
     <message>
         <source>PT Dir 2D</source>
         <translation>直线寸动型</translation>
+    </message>
+    <message>
+        <source>PT Arc U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PT Arc Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PT Arc Saw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PT Arc Dir</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4148,6 +4168,10 @@ please chose!</source>
     <message>
         <source>Line2DRepeat</source>
         <translation>喷涂直线2D</translation>
+    </message>
+    <message>
+        <source>Offset Curve:</source>
+        <translation>相对曲线:</translation>
     </message>
 </context>
 <context>

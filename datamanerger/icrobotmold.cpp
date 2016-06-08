@@ -55,6 +55,19 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+    bool isEarlyEnd = v->value("isEarlyEnd", false).toBool();
+    bool isEarlySpd = v->value("isEarlySpd", false).toBool();
+    if(isEarlyEnd || isEarlySpd)
+    {
+        int op = 0;
+        op |= isEarlySpd ? 1 : 0;
+        op |= isEarlyEnd ? 2 : 0;
+        item.append(op);
+        item.append(v->value("earlySpdPos", 0).toInt());
+        item.append(v->value("earlyEndPos", 0).toInt());
+        item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
+        item[0] = F_CMD_SINGLE_ADD_FUNC;
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
     item.SetActualPos(v->value("pos", 0).toDouble() * 100);

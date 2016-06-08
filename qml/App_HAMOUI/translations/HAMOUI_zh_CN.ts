@@ -685,6 +685,22 @@
         <source>Set In</source>
         <translation>设入</translation>
     </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -3553,7 +3569,7 @@ please chose!</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation>提前结束位置:</translation>
     </message>
     <message>
         <source>IF:</source>
@@ -3910,6 +3926,14 @@ please chose!</source>
     <message>
         <source>Offset Curve:</source>
         <translation>相对曲线:</translation>
+    </message>
+    <message>
+        <source>Early End Spd pos:</source>
+        <translation>提前减速位置:</translation>
+    </message>
+    <message>
+        <source>Early End Spd:</source>
+        <translation>提前减速速度:</translation>
     </message>
 </context>
 <context>

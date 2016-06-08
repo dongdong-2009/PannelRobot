@@ -1251,211 +1251,211 @@
     </message>
     <message>
         <source>Y014</source>
-        <translation type="unfinished">报警声 {014?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation type="unfinished">报警声 {015?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation type="unfinished">报警声 {016?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation type="unfinished">报警声 {017?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y020</source>
-        <translation type="unfinished">报警声 {020?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation type="unfinished">报警声 {021?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y022</source>
-        <translation type="unfinished">报警声 {022?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation type="unfinished">报警声 {023?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation type="unfinished">报警声 {024?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation type="unfinished">报警声 {025?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation type="unfinished">报警声 {026?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation type="unfinished">报警声 {027?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation type="unfinished">报警声 {030?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation type="unfinished">报警声 {031?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation type="unfinished">报警声 {032?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation type="unfinished">报警声 {033?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation type="unfinished">报警声 {034?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation type="unfinished">报警声 {035?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation type="unfinished">报警声 {036?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y037</source>
-        <translation type="unfinished">报警声 {037?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X010</source>
-        <translation type="unfinished">X010</translation>
+        <translation>X010</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation type="unfinished">X011</translation>
+        <translation>X011</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation type="unfinished">X012</translation>
+        <translation>X012</translation>
     </message>
     <message>
         <source>X013</source>
-        <translation type="unfinished">X013</translation>
+        <translation>X013</translation>
     </message>
     <message>
         <source>X014</source>
-        <translation type="unfinished">X014</translation>
+        <translation>X014</translation>
     </message>
     <message>
         <source>X015</source>
-        <translation type="unfinished">X015</translation>
+        <translation>X015</translation>
     </message>
     <message>
         <source>X016</source>
-        <translation type="unfinished">X016</translation>
+        <translation>X016</translation>
     </message>
     <message>
         <source>X017</source>
-        <translation type="unfinished">X017</translation>
+        <translation>X017</translation>
     </message>
     <message>
         <source>X020</source>
-        <translation type="unfinished">X020</translation>
+        <translation>X020</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation type="unfinished">X021</translation>
+        <translation>X021</translation>
     </message>
     <message>
         <source>X022</source>
-        <translation type="unfinished">X022</translation>
+        <translation>X022</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation type="unfinished">X023</translation>
+        <translation>X023</translation>
     </message>
     <message>
         <source>X024</source>
-        <translation type="unfinished">X024</translation>
+        <translation>X024</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation type="unfinished">X025</translation>
+        <translation>X025</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation type="unfinished">X026</translation>
+        <translation>X026</translation>
     </message>
     <message>
         <source>X027</source>
-        <translation type="unfinished">X027</translation>
+        <translation>X027</translation>
     </message>
     <message>
         <source>X030</source>
-        <translation type="unfinished">X030</translation>
+        <translation>X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation type="unfinished">X031</translation>
+        <translation>X031</translation>
     </message>
     <message>
         <source>X032</source>
-        <translation type="unfinished">X032</translation>
+        <translation>X032</translation>
     </message>
     <message>
         <source>X033</source>
-        <translation type="unfinished">X033</translation>
+        <translation>X033</translation>
     </message>
     <message>
         <source>X034</source>
-        <translation type="unfinished">X034</translation>
+        <translation>X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation type="unfinished">X035</translation>
+        <translation>X035</translation>
     </message>
     <message>
         <source>X036</source>
-        <translation type="unfinished">X036</translation>
+        <translation>X036</translation>
     </message>
     <message>
         <source>X037</source>
-        <translation type="unfinished">X037</translation>
+        <translation>X037</translation>
     </message>
     <message>
         <source>X040</source>
-        <translation type="unfinished">X040</translation>
+        <translation>X040</translation>
     </message>
     <message>
         <source>X041</source>
-        <translation type="unfinished">X041</translation>
+        <translation>X041</translation>
     </message>
     <message>
         <source>X042</source>
-        <translation type="unfinished">X042</translation>
+        <translation>X042</translation>
     </message>
     <message>
         <source>X043</source>
-        <translation type="unfinished">X043</translation>
+        <translation>X043</translation>
     </message>
     <message>
         <source>X044</source>
-        <translation type="unfinished">X044</translation>
+        <translation>X044</translation>
     </message>
     <message>
         <source>X045</source>
-        <translation type="unfinished">X045</translation>
+        <translation>X045</translation>
     </message>
     <message>
         <source>X046</source>
-        <translation type="unfinished">X046</translation>
+        <translation>X046</translation>
     </message>
     <message>
         <source>X047</source>
-        <translation type="unfinished">X047</translation>
+        <translation>X047</translation>
     </message>
     <message>
         <source>X050</source>

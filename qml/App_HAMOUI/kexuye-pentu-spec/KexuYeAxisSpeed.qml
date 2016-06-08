@@ -169,6 +169,10 @@ Item {
                     unit: qsTr("%")
 
                 }
+            }
+            Row{
+                spacing: 10
+                id:rspeedContainer1
                 ICConfigEdit{
                     id:m3Speed
                     configName: AxisDefine.axisInfos[3].name

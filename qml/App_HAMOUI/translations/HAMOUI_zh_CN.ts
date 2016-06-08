@@ -2898,35 +2898,35 @@ please chose!</source>
     </message>
     <message>
         <source>PT U 2D</source>
-        <translation>直线U型</translation>
+        <translation>直线U形</translation>
     </message>
     <message>
         <source>PT Z 2D</source>
-        <translation>直线Z型</translation>
+        <translation>直线Z形</translation>
     </message>
     <message>
         <source>PT Saw 2D</source>
-        <translation>直线锯齿型</translation>
+        <translation>直线锯齿形</translation>
     </message>
     <message>
         <source>PT Dir 2D</source>
-        <translation>直线寸动型</translation>
+        <translation>直线寸动形</translation>
     </message>
     <message>
         <source>PT Arc U</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线U形</translation>
     </message>
     <message>
         <source>PT Arc Z</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线Z形</translation>
     </message>
     <message>
         <source>PT Arc Saw</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线锯齿形</translation>
     </message>
     <message>
         <source>PT Arc Dir</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线寸动形</translation>
     </message>
 </context>
 <context>

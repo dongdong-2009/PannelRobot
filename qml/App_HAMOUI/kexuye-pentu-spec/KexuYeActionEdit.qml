@@ -147,11 +147,6 @@ Item {
                     sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
                 }
             }
-//            Text {
-//                text: qsTr("SPos:")
-//                width: 35
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
             ICConfigEdit{
                 id:sPosM0
                 configName: AxisDefine.axisInfos[0].name
@@ -167,6 +162,11 @@ Item {
                 configName: AxisDefine.axisInfos[2].name
                 configAddr: "s_rw_0_32_3_1300"
             }
+        }
+        Row{
+            id:linkpos1Container
+            spacing: 4
+            x: 71
             ICConfigEdit{
                 id:sPosM3
                 configName: AxisDefine.axisInfos[3].name
@@ -243,7 +243,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-                visible: mode == 4 ? true : false
+                visible: false
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -311,7 +311,7 @@ Item {
             }
             ICConfigEdit{
                 id:repeateCount
-                visible: mode == 3 ? true : false
+                visible: (mode == 3 || mode == 7) ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("Repeate Count")
             }

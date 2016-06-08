@@ -24,7 +24,7 @@ ProgramFlowPage {
     function pentuActionHead(actionObject){
         var ret = [];
         console.log("bbbbb", actionObject.deepAxis);
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
@@ -48,7 +48,7 @@ ProgramFlowPage {
 
     function pentuActionToProgram(actionObject){
         var ret = [];
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
@@ -89,10 +89,11 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
         }
 
-//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
-//                     actionObject.point1_m0, actionObject.repeatSpeed));
+
         var pos = {};
+        var pos1 = {};
         var tmp = {};
+        var tmp1 = {};
         pos["m" + 0] = actionObject.point1.pos.m0 - actionObject.startPos.pos.m0;
         pos["m" + 1] = actionObject.point1.pos.m1 - actionObject.startPos.pos.m1;
         pos["m" + 2] = actionObject.point1.pos.m2 - actionObject.startPos.pos.m2;
@@ -100,32 +101,27 @@ ProgramFlowPage {
             tmp["m" + 0] = pos["m" + 0] / 2;
             tmp["m" + 1] = pos["m" + 1] / 2;
             tmp["m" + 2] = pos["m" + 2] / 2;
-            var tmp1 = {};
             tmp1["m" + 0] = -tmp["m" + 0];
             tmp1["m" + 1] = -tmp["m" + 1];
             tmp1["m" + 2] = -tmp["m" + 2];
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0)
-                    pos["m" + 0] = 0;
-                else pos["m" + 1] = 0;
-                if(actionObject.mode == 4)
-                    tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
+                    tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                else tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0)
-                    pos["m" + 0] = 0;
-                else pos["m" + 2] = 0;
-                if(actionObject.mode == 4)
-                    tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
+                    tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                else tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1)
-                    pos["m" + 1] = 0;
-                else pos["m" + 2] = 0;
-                if(actionObject.mode == 4)
-                    tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
+                    tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                else tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
             }
-            var pos1 = {};
             pos1["m" + 0] = -pos["m" + 0];
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
@@ -133,8 +129,10 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 4)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                         [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp},
+                          {"pointName":"", "pos":pos}],
+                          actionObject.repeatSpeed, 0.0));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
@@ -162,8 +160,113 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
+            if(actionObject.mode == 0)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                         [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 4)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp1},
+                          {"pointName":"", "pos":pos1}],
+                          actionObject.repeatSpeed, 0.0));
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
+            }
+            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
+            }
+            if(actionObject.dirAxis == 0)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
+            else if(actionObject.dirAxis == 1)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":actionObject.dirLength,"m2":"0.000"}}], actionObject.dirSpeed, 0.0));
+            else if(actionObject.dirAxis == 2)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
+        }
+
+        else if(actionObject.mode == 1 || actionObject.mode == 5){
+            pos1["m" + 0] = -pos["m" + 0];
+            pos1["m" + 1] = -pos["m" + 1];
+            pos1["m" + 2] = -pos["m" + 2];
+            tmp["m" + 0] = pos["m" + 0] / 2;
+            tmp["m" + 1] = pos["m" + 1] / 2;
+            tmp["m" + 2] = pos["m" + 2] / 2;
+            tmp1["m" + 0] = -tmp["m" + 0];
+            tmp1["m" + 1] = -tmp["m" + 1];
+            tmp1["m" + 2] = -tmp["m" + 2];
+            if(actionObject.plane == 0){
+                if(actionObject.dirAxis == 0){
+                    tmp["m" + 0] = pos["m" + 0] = 0;
+                    tmp1["m" + 0] = actionObject.dirLength / 2;
+                    pos1["m" + 0] = actionObject.dirLength;
+                }
+                else {
+                    tmp["m" + 1] = pos["m" + 1] = 0;
+                    tmp1["m" + 1] = actionObject.dirLength / 2;
+                    pos1["m" + 1] = actionObject.dirLength;
+                }
+                tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
+            }
+            else if(actionObject.plane == 1){
+                if(actionObject.dirAxis == 0){
+                    tmp["m" + 0] = pos["m" + 0] = 0;
+                    tmp1["m" + 0] = actionObject.dirLength / 2;
+                    pos1["m" + 0] = actionObject.dirLength;
+                }
+                else {
+                    tmp["m" + 2] = pos["m" + 2] = 0;
+                    tmp1["m" + 2] = actionObject.dirLength / 2;
+                    pos1["m" + 2] = actionObject.dirLength;
+                }
+                tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
+            }
+            else if(actionObject.plane == 2){
+                if(actionObject.dirAxis == 1){
+                    tmp["m" + 1] = pos["m" + 1] = 0;
+                    tmp1["m" + 1] = actionObject.dirLength / 2;
+                    pos1["m" + 1] = actionObject.dirLength;
+                }
+                else {
+                    tmp["m" + 2] = pos["m" + 2] = 0;
+                    tmp1["m" + 2] = actionObject.dirLength / 2;
+                    pos1["m" + 2] = actionObject.dirLength;
+                }
+                tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
+            }
+            if(actionObject.mode == 1)
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                     [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 5)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp},
+                          {"pointName":"", "pos":pos}],
+                          actionObject.repeatSpeed, 0.0));
+            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
+                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+            }
+            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
+                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+            }
+            if(actionObject.mode == 1)
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 5)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp1},
+                          {"pointName":"", "pos":pos1}],
+                          actionObject.repeatSpeed, 0.0));
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
@@ -174,50 +277,65 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
             }
-            if(actionObject.dirAxis == 0)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-            else if(actionObject.dirAxis == 1)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":actionObject.dirLength,"m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-            else if(actionObject.dirAxis == 2)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
         }
 
-        else if(actionObject.mode == 1){
-            tmp["m" + 0] = -pos["m" + 0];
-            tmp["m" + 1] = -pos["m" + 1];
-            tmp["m" + 2] = -pos["m" + 2];
+        else if(actionObject.mode == 2 || actionObject.mode == 6){
+            pos1["m" + 0] = -pos["m" + 0];
+            pos1["m" + 1] = -pos["m" + 1];
+            pos1["m" + 2] = -pos["m" + 2];
+            tmp["m" + 0] = pos["m" + 0] / 2;
+            tmp["m" + 1] = pos["m" + 1] / 2;
+            tmp["m" + 2] = pos["m" + 2] / 2;
+            tmp1["m" + 0] = -tmp["m" + 0];
+            tmp1["m" + 1] = -tmp["m" + 1];
+            tmp1["m" + 2] = -tmp["m" + 2];
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0){
-                    pos["m" + 0] = 0;
-                    tmp["m" + 0] = actionObject.dirLength;
+                    pos1["m" + 0] = pos["m" + 0];
+                    tmp1["m" + 0] = tmp["m" + 0];
+//                    pos1["m" + 1] = -pos["m" + 1];
                 }
                 else {
-                    pos["m" + 1] = 0;
-                    tmp["m" + 1] = actionObject.dirLength;
+//                    pos1["m" + 0] = -pos["m" + 0];
+                    pos1["m" + 1] = pos["m" + 1];
+                    tmp1["m" + 1] = tmp["m" + 1] ;
                 }
+                tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
-                    pos["m" + 0] = 0;
-                    tmp["m" + 0] = actionObject.dirLength;
+                    pos1["m" + 0] = pos["m" + 0];
+                    tmp1["m" + 0] = tmp["m" + 0];
+//                    pos1["m" + 2] = -pos["m" + 2];
                 }
                 else {
-                    pos["m" + 2] = 0;
-                    tmp["m" + 2] = actionObject.dirLength;
+//                    pos1["m" + 0] = -pos["m" + 0];
+                    pos1["m" + 2] = pos["m" + 2];
+                    tmp1["m" + 2] = tmp["m" + 2];
                 }
+                tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
-                    pos["m" + 1] = 0;
-                    tmp["m" + 1] = actionObject.dirLength;
+                    pos1["m" + 1] = pos["m" + 1];
+                    tmp1["m" + 1] = tmp["m" + 1];
+//                    pos1["m" + 2] = -pos["m" + 2];
                 }
                 else {
-                    pos["m" + 2] = 0;
-                    tmp["m" + 2] = actionObject.dirLength;
+//                    pos1["m" + 1] = -pos["m" + 1];
+                    pos1["m" + 2] = pos["m" + 2];
+                    tmp1["m" + 2] = tmp["m" + 2];
                 }
+                tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
             }
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
+            if(actionObject.mode == 2)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                         [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 6)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp},
+                          {"pointName":"", "pos":pos}],
+                          actionObject.repeatSpeed, 0.0));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
@@ -234,9 +352,14 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
-
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":tmp}], actionObject.repeatSpeed, 0.0));
+            if(actionObject.mode == 2)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                         [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 6)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp1},
+                          {"pointName":"", "pos":pos1}],
+                          actionObject.repeatSpeed, 0.0));
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
@@ -249,92 +372,42 @@ ProgramFlowPage {
             }
         }
 
-        else if(actionObject.mode == 2){
-            tmp["m" + 0] = -pos["m" + 0];
-            tmp["m" + 1] = -pos["m" + 1];
-            tmp["m" + 2] = -pos["m" + 2];
-            if(actionObject.plane == 0){
-                if(actionObject.dirAxis == 0){
-                    tmp["m" + 0] = pos["m" + 0];
-                    tmp["m" + 1] = -pos["m" + 1];
-                }
-                else {
-                    tmp["m" + 0] = -pos["m" + 0];
-                    tmp["m" + 1] = pos["m" + 1];
-                }
-            }
-            else if(actionObject.plane == 1){
-                if(actionObject.dirAxis == 0){
-                    tmp["m" + 0] = pos["m" + 0];
-                    tmp["m" + 2] = -pos["m" + 2];
-                }
-                else {
-                    tmp["m" + 0] = -pos["m" + 0];
-                    tmp["m" + 2] = pos["m" + 2];
-                }
-            }
-            else if(actionObject.plane == 2){
-                if(actionObject.dirAxis == 1){
-                    tmp["m" + 1] = pos["m" + 1];
-                    tmp["m" + 2] = -pos["m" + 2];
-                }
-                else {
-                    tmp["m" + 1] = -pos["m" + 1];
-                    tmp["m" + 2] = pos["m" + 2];
-                }
-            }
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
-            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
-                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
-                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-            }
-
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":tmp}], actionObject.repeatSpeed, 0.0));
-            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
-            }
-        }
-
-        else if(actionObject.mode == 3){
+        else if(actionObject.mode == 3 || actionObject.mode == 7){
+            tmp["m" + 0] = pos["m" + 0] / 2;
+            tmp["m" + 1] = pos["m" + 1] / 2;
+            tmp["m" + 2] = pos["m" + 2] / 2;
+            tmp1["m" + 0] = -tmp["m" + 0];
+            tmp1["m" + 1] = -tmp["m" + 1];
+            tmp1["m" + 2] = -tmp["m" + 2];
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0)
-                    pos["m" + 0] = 0;
-                else pos["m" + 1] = 0;
+                    tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                else tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0)
-                    pos["m" + 0] = 0;
-                else pos["m" + 2] = 0;
+                    tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                else tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1)
-                    pos["m" + 1] = 0;
-                else pos["m" + 2] = 0;
+                    tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                else tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
             }
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
-
+            pos1["m" + 0] = -pos["m" + 0];
+            pos1["m" + 1] = -pos["m" + 1];
+            pos1["m" + 2] = -pos["m" + 2];
+            if(actionObject.mode == 3)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                         [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 7)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp},
+                          {"pointName":"", "pos":pos}],
+                          actionObject.repeatSpeed, 0.0));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
@@ -351,15 +424,14 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
-
-    //            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis,
-    //                     actionObject.startPos0, actionObject.repeatSpeed));
-            tmp["m" + 0] = -pos["m" + 0];
-            tmp["m" + 1] = -pos["m" + 1];
-            tmp["m" + 2] = -pos["m" + 2];
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":tmp}], actionObject.repeatSpeed, 0.0));
-
+            if(actionObject.mode == 3)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                         [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
+            else if(actionObject.mode == 7)
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                         [{"pointName":"", "pos":tmp1},
+                          {"pointName":"", "pos":pos1}],
+                          actionObject.repeatSpeed, 0.0));
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
@@ -381,10 +453,6 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
         }
 
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_LINEXY_MOVE_POINT + actionObject.plane,
-//                     [{"pointName":"", "pos":actionObject.point1.pos}],actionObject.repeatSpeed, 0.0));
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_LINEXY_MOVE_POINT + actionObject.plane,
-//                     [{"pointName":"", "pos":actionObject.startPos.pos}],actionObject.repeatSpeed, 0.0));
 //        else if(actionObject.mode == 1){
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARCXY_MOVE_POINT + actionObject.plane,
 //                  [{"pointName":"", "pos":actionObject.point1.pos},{"pointName":"", "pos":actionObject.point2.pos}],
@@ -394,21 +462,6 @@ ProgramFlowPage {
 //                  actionObject.repeatSpeed, 0.0));
 //        }
 
-//        if(actionObject.dirAxis == 0)
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-//        else if(actionObject.dirAxis == 1)
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":actionObject.dirLength,"m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-//        else if(actionObject.dirAxis == 2)
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
-//        if(actionObject.mode == 0){
-//            var tmp = {};
-//            tmp["m" + 0] = -pos["m" + 0];
-//            tmp["m" + 1] = -pos["m" + 1];
-//            tmp["m" + 2] = -pos["m" + 2];
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-//                     [{"pointName":"", "pos":tmp}], actionObject.repeatSpeed, 0.0));
-//        }
-
         ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
 
@@ -416,8 +469,6 @@ ProgramFlowPage {
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
 //        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
-
-
 
         return ret;
     }

@@ -148,7 +148,7 @@ ProgramActionMenuFrame{
         });
         //mode-4
         ptArc_U.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.ArcU3DRepeat, ptArc_U.text, qsTr("Set TPos"), qsTr("Set EPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.ArcU3DRepeat, ptArc_U.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptArc_Z.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.ArcZ3DRepeat, ptArc_Z.text, qsTr("Set TPos"), qsTr("Set EPos"));

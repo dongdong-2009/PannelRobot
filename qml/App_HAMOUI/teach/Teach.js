@@ -760,6 +760,11 @@ actions.F_CMD_MOVE_POSE = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
 actions.F_CMD_ARC3D_MOVE = actHelper++;   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+actions.F_CMD_ARC2D_MOVE_POINT = actHelper++;   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
+actions.F_CMD_SINGLE_ADD_FUNC = actHelper++;
+actions.F_CMD_ARC_RELATIVE = actHelper++;		//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
@@ -1326,6 +1331,9 @@ var pathActionToStringHandler = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT){
         ret += qsTr("ArcYZ:");
         needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE){
+        ret += qsTr("Offset Curve:");
+        needNewLine = true;
     }
 
     var points = actionObject.points;
@@ -1378,6 +1386,7 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringH
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINT_RELATIVE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_TEACH_ALARM, customAlarmActiontoStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
@@ -1416,7 +1425,8 @@ var actionObjectToEditableITems = function(actionObject){
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
              actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-             actionObject.action === actions.F_CMD_JOINT_RELATIVE){
+             actionObject.action === actions.F_CMD_JOINT_RELATIVE ||
+             actionObject.action === actions.F_CMD_ARC_RELATIVE){
         ret = [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -1516,7 +1526,8 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
             actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT;
+            actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARC_RELATIVE;
 }
 
 var canActionTestRun = function(actionObject){

@@ -1251,83 +1251,83 @@
     </message>
     <message>
         <source>Y014</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {014?}</translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {015?}</translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {016?}</translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {017?}</translation>
     </message>
     <message>
         <source>Y020</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {020?}</translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {021?}</translation>
     </message>
     <message>
         <source>Y022</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {022?}</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {023?}</translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {024?}</translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {025?}</translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {026?}</translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {027?}</translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {030?}</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {031?}</translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {032?}</translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {033?}</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {034?}</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {035?}</translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {036?}</translation>
     </message>
     <message>
         <source>Y037</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {037?}</translation>
     </message>
     <message>
         <source>X010</source>
@@ -2528,6 +2528,10 @@ please chose!</source>
     <message>
         <source>Line YZ</source>
         <translation>直线YZ</translation>
+    </message>
+    <message>
+        <source>Offset Curve</source>
+        <translation>相对曲线</translation>
     </message>
 </context>
 <context>
@@ -3903,6 +3907,10 @@ please chose!</source>
         <source>LineYZ:</source>
         <translation>直线YZ:</translation>
     </message>
+    <message>
+        <source>Offset Curve:</source>
+        <translation>相对曲线:</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -3932,7 +3940,7 @@ please chose!</source>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {1?}</translation>
     </message>
     <message>
         <source>Z</source>
@@ -3940,7 +3948,7 @@ please chose!</source>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {2?}</translation>
     </message>
     <message>
         <source>A</source>

@@ -3552,6 +3552,10 @@ please chose!</source>
         <source>kSttLathe_6p</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear Program Btn</source>
+        <translation>清空可编程按键</translation>
+    </message>
 </context>
 <context>
     <name>Teach</name>
@@ -3960,7 +3964,7 @@ please chose!</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>

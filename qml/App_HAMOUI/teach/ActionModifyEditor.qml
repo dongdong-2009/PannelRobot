@@ -170,6 +170,13 @@ Item {
             height: 32
 
         }
+//        ICCheckableLineEdit{
+//            id:earlyEndPos
+//            configName: qsTr("Early End Pos");
+//        }
+//        Row{
+
+//        }
 
         Component.onCompleted: {
             PData.itemToEditorMap.put("pos", pos);

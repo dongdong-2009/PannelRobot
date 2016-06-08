@@ -1424,7 +1424,9 @@ var actionObjectToEditableITems = function(actionObject){
     if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
+                {"item":"delay", "range":"s_rw_0_32_2_1100"},
+                {"item":"earlyEnd"},
+                {"item":"earlyEndSpd"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||

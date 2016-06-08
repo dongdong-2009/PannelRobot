@@ -63,6 +63,18 @@
         <source>Custom Name:</source>
         <translation>自定义名称:</translation>
     </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>

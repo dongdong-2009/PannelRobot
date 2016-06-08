@@ -59,6 +59,13 @@ Item {
             else if(editor == points){
                 editor.action = actionObject.action;
                 editor.points = actionObject[item.item];
+            }else if(editor == earlyEndPos){
+                editor.configValue = actionObject.earlyEndPos || 0.0;
+                editor.isChecked = actionObject.isEarlyEnd || false;
+            }else if(editor == earlyEndSpdEditor){
+                earlyEndSpeedPos.isChecked = actionObject.isEarlySpd || false;
+                earlyEndSpeedPos.configValue = actionObject.earlySpdPos ||"";
+                earlyEndSpeed.configValue = actionObject.earlySpd || 0.0;
             }else{
                 editor.configAddr = item.range || "";
                 editor.configValue = actionObject[item.item] ||"";
@@ -170,13 +177,27 @@ Item {
             height: 32
 
         }
-//        ICCheckableLineEdit{
-//            id:earlyEndPos
-//            configName: qsTr("Early End Pos");
-//        }
-//        Row{
+        ICCheckableLineEdit{
+            id:earlyEndPos
+            configName: qsTr("Early End Pos");
+        }
+        Row{
+            id:earlyEndSpdEditor
+            spacing: 4
+            width: 350
+            ICCheckableLineEdit{
+                id:earlyEndSpeedPos
+                configName: qsTr("ESD Pos")
+            }
 
-//        }
+            ICConfigEdit{
+                id:earlyEndSpeed
+                configName: qsTr("ESD")
+                unit: qsTr("%")
+                configAddr: "s_rw_0_32_1_1200"
+                enabled: earlyEndSpeedPos.isChecked
+            }
+        }
 
         Component.onCompleted: {
             PData.itemToEditorMap.put("pos", pos);
@@ -188,6 +209,8 @@ Item {
             PData.itemToEditorMap.put("limit", limit);
             PData.itemToEditorMap.put("acTime", acTime);
             PData.itemToEditorMap.put("customName", customName);
+            PData.itemToEditorMap.put("earlyEnd", earlyEndPos);
+            PData.itemToEditorMap.put("earlyEndSpd", earlyEndSpdEditor);
 
             PData.editorToItemMap.put(pos, "pos");
             PData.editorToItemMap.put(speed, "speed");
@@ -198,6 +221,8 @@ Item {
             PData.editorToItemMap.put(limit, "limit");
             PData.editorToItemMap.put(acTime, "acTime");
             PData.editorToItemMap.put(customName, "customName");
+            PData.editorToItemMap.put(earlyEndPos, "earlyEnd");
+            PData.editorToItemMap.put(earlyEndSpdEditor, "earlyEndSpd");
 
         }
     }
@@ -227,6 +252,13 @@ Item {
                     else if(editor == points){
                         editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
 
+                    }else if(editor == earlyEndPos){
+                        editingObject.isEarlyEnd = earlyEndPos.isChecked;
+                        editingObject.earlyEndPos = earlyEndPos.configValue;
+                    }else if(editor == earlyEndSpdEditor){
+                        editingObject.isEarlySpd = earlyEndSpeedPos.isChecked;
+                        editingObject.earlySpdPos = earlyEndSpeedPos.configValue;
+                        editingObject.earlySpd = earlyEndSpeed.configValue;
                     }else{
                         editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
                     }

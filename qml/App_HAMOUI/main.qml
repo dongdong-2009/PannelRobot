@@ -176,7 +176,7 @@ Rectangle {
         focus: true
         Loader{
             id:standbyPage
-            source: "StandbyPage.qml"
+//            source: "StandbyPage.qml"
             width: parent.width
             height: parent.height
         }
@@ -609,6 +609,7 @@ Rectangle {
 
         AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_8_0_184"));
         onUserChanged(ShareData.UserInfo.currentUser());
+        standbyPage.source = "StandbyPage.qml";
         console.log("main load finished!")
     }
 

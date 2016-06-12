@@ -61,28 +61,28 @@ ProgramActionMenuFrame{
                 CatalogButton{
                     id:ptArc_U
                     text:qsTr("PT Arc U")
-                    icon: "../images/1-1.png"
+                    icon: "../images/2-1.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptArc_Z
                     text:qsTr("PT Arc Z")
-                    icon: "../images/1-2.png"
+                    icon: "../images/2-2.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptArc_Saw
                     text:qsTr("PT Arc Saw")
-                    icon: "../images/1-3.png"
+                    icon: "../images/2-3.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
                 CatalogButton{
                     id:ptArc_Dir
                     text:qsTr("PT Arc Dir")
-                    icon: "../images/1-4.png"
+                    icon: "../images/2-4.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }

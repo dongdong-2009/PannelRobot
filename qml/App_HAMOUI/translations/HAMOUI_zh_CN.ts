@@ -4412,7 +4412,7 @@ please chose!</source>
     <name>TopHeader</name>
     <message>
         <source>Records:</source>
-        <translation>模号:</translation>
+        <translation type="unfinished">程序:</translation>
     </message>
     <message>
         <source>Calculator</source>

@@ -98,8 +98,8 @@ int OriginActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int SpeedActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
-    item.append(ICUtility::doubleToInt(v->value("StartSpeed").toDouble(), 1));
-    item.append(ICUtility::doubleToInt(v->value("EndSpeed").toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("startSpeed").toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("endSpeed").toDouble(), 1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 

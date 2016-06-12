@@ -823,12 +823,22 @@ function hasCounterIDAction(action){
         var si = getStackInfoFromID(action.stackID);
         if(si != null)
             return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
+    }else if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return action.commentAction.hasOwnProperty("counterID");
+        }
     }
 
     return action.hasOwnProperty("counterID");
 }
 
 function hasStackIDAction(action){
+    if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return action.commentAction.hasOwnProperty("stackID");
+        }
+    }
+
     return action.hasOwnProperty("stackID");
 }
 

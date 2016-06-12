@@ -558,6 +558,8 @@ ProgramFlowPage {
                                 {"editor":kexuyeDetailEdit, "itemName":"kexuyedetail"}
                                ],
                                [{"item":"kexuyeaction"}, {"item":"kexuyedetail"},{"item":"customName"}]);
+
+        actionModifyEditor().maxHeight = 200;
     }
 
     onActionLineDeleted: {

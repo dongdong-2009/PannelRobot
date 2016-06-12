@@ -765,7 +765,7 @@ actions.F_CMD_ARC2D_MOVE_POINT = actHelper++;   //< 按点位2D弧线运动 平�
 //< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
 actions.F_CMD_SINGLE_ADD_FUNC = actHelper++;
 actions.F_CMD_ARC_RELATIVE = actHelper++;		//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
-
+actions.F_CMD_SPEED_SMOOTH = actHelper++;       //< 轨迹速度平滑设定 起始速度，终止速度
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
@@ -894,6 +894,14 @@ var generateOriginAction = function(action,
         "speed":speed||80.0,
         "delay":delay||0.00,
     };
+}
+
+var generateSpeedAction = function(startSpeed,endSpeed){
+    return {
+        "action":actions.F_CMD_SPEED_SMOOTH,
+        "startSpeed":startSpeed,
+        "endSpeed":endSpeed
+    }
 }
 
 var generateAxisPneumaticAction = function(action,delay){
@@ -1380,6 +1388,9 @@ var waitVisionDataActionToStringHandler = function(actionObject){
     + qsTr("Limit:") + actionObject.limit;
 }
 
+var speedActionToStringHandler = function(actionObject){
+    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+}
 
 
 var actionToStringHandlerMap = new HashTable();
@@ -1418,7 +1429,7 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
-
+actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
     if(actionObject.action === actions.F_CMD_SINGLE){

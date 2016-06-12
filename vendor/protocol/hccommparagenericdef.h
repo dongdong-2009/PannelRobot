@@ -32,12 +32,12 @@ typedef enum {
 	kSttRRP,	// SCARA 前三关节
 	kSttRRPR,	// SCARA 四关节
 	kSttRTRT,	// PUMA560 前四关节
-	kSttRTRTTT,	// PUMA560 六关节
+	kSttRTRTTT,	//* PUMA560 六关节
 	kStt5P,		//
-	kSttPPP_RRR,// 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
-	kSttRRPR_BRT,	// 伯朗特 SCARA 四关节
+	kSttPPP_RRR,//* 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
+	kSttRRPR_BRT,	//* 伯朗特 SCARA 四关节
 	kSttRTRTTT_EX,	// PUMA560 六关节
-	kSttLathe_6p,	// 车床机型 6轴
+	kSttLathe_6p,	//* 车床机型 6轴
 } MechanismType;
 
 /// ----------------------------------------------------------------------------------
@@ -660,6 +660,7 @@ typedef enum
 	//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
     F_CMD_SINGLE_ADD_FUNC,
 	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+	F_CMD_SPEED_SMOOTH,			//< 轨迹速度平滑设定 起始速度，终止速度
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,

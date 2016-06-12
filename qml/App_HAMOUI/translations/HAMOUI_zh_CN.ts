@@ -2722,6 +2722,10 @@ please chose!</source>
         <source>Vision</source>
         <translation>视觉指令</translation>
     </message>
+    <message>
+        <source>Path Speed</source>
+        <translation>路径速度</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenuFrame</name>
@@ -3073,6 +3077,10 @@ please chose!</source>
         <source>Local</source>
         <translation>本机模号</translation>
     </message>
+    <message>
+        <source>No USB Found!</source>
+        <translation>没有发现U盘!</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -3125,6 +3133,25 @@ please chose!</source>
     <message>
         <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
         <translation>请进入具体的设定页面进行设置,点击右下方的返回按钮返回上一层菜单</translation>
+    </message>
+</context>
+<context>
+    <name>SpeedActionEditor</name>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed</source>
+        <translation>起始速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>End Speed</source>
+        <translation>结束速度</translation>
     </message>
 </context>
 <context>
@@ -3950,6 +3977,18 @@ please chose!</source>
     <message>
         <source>Early End Spd:</source>
         <translation>提前减速速度:</translation>
+    </message>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed:</source>
+        <translation>起始速度:</translation>
+    </message>
+    <message>
+        <source>End Speed:</source>
+        <translation>结束速度:</translation>
     </message>
 </context>
 <context>

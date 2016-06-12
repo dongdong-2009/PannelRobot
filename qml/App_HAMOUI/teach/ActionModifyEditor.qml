@@ -8,6 +8,7 @@ Item {
     property bool isAutoMode: false
     property variant autoEditableItems: ["speed", "delay", "limit", "acTime", "speed0", "speed1"]
 
+    property int maxHeight: 300
     function registerEditableItem(editor, itemName){
         editor.parent = editorContainer;
         PData.itemToEditorMap.put(itemName, editor);
@@ -105,7 +106,7 @@ Item {
         clip: true
         isshowhint: true
         width: editorContainer.width
-        height: Math.min(editorContainer.height, 300) + 4
+        height: Math.min(editorContainer.height, maxHeight) + 4
         contentWidth: editorContainer.width
         contentHeight: editorContainer.height
         Column{

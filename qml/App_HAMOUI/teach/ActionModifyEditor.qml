@@ -92,8 +92,8 @@ Item {
                 }
             }
         }
-        height += buttons.height;
-        height += 20
+        height += buttons.height + buttons.spacing + 6;
+//        height += 20
         width = maxWidth < 300 ? 300 : maxWidth;
         visible = true;
     }
@@ -108,6 +108,7 @@ Item {
         isshowhint: true
         width: editorContainer.width
         height: Math.min(editorContainer.height, maxHeight) + 4
+        hintx: width - 15
         contentWidth: editorContainer.width
         contentHeight: editorContainer.height
         Column{

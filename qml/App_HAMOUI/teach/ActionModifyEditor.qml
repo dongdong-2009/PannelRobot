@@ -77,6 +77,7 @@ Item {
             if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
                 editor.visible = true;
                 height += editor.height + editorContainer.spacing;
+                if(height > maxHeight) height = maxHeight;
                 if(editor.width > maxWidth)
                     maxWidth = editor.width;
                 PData.editingEditors.push(editor);

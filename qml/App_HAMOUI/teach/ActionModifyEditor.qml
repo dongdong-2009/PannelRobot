@@ -97,142 +97,152 @@ Item {
     }
     visible: false
     width: 300
-    Column{
-        id:editorContainer
+    ICFlickable{
+        id:editorContainerFrame
         y:10
         x:10
-        spacing: 6
-        ICConfigEdit{
-            id:customName
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Custom Name:")
-            isNumberOnly: false
-            height: 32
-        }
-
-        ICConfigEdit{
-            id:pos
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Pos:")
-            unit: qsTr("mm")
-            height: 32
-
-        }
-        PointEdit{
-            id:points
-            isEditorMode: true
-        }
-
-        ICConfigEdit{
-            id:speed
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Speed:")
-            unit: qsTr("%")
-            height: 32
-
-        }
-        ICConfigEdit{
-            id:speed0
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Speed:")
-            unit: qsTr("%")
-            height: 32
-
-        }
-        ICConfigEdit{
-            id:speed1
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Speed1:")
-            unit: qsTr("%")
-            height: 32
-
-        }
-        ICConfigEdit{
-            id:delay
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Delay:")
-            unit: qsTr("s")
-            height: 32
-
-        }
-        ICConfigEdit{
-            id:limit
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Limit:")
-            unit: qsTr("s")
-            height: 32
-
-        }
-        ICConfigEdit{
-            id:acTime
-            configNameWidth: PData.configNameWidth
-            inputWidth: PData.inputWidth
-            configName: qsTr("Action Time:")
-            unit: qsTr("s")
-            height: 32
-
-        }
-        ICCheckableLineEdit{
-            id:earlyEndPos
-            configName: qsTr("Early End Pos");
-        }
-        Row{
-            id:earlyEndSpdEditor
-            spacing: 4
-            width: 380
-            ICCheckableLineEdit{
-                id:earlyEndSpeedPos
-                configName: qsTr("ESD Pos")
+        flickableDirection: Flickable.VerticalFlick
+        clip: true
+        isshowhint: true
+        width: editorContainer.width
+        height: Math.min(editorContainer.height, 300) + 4
+        contentWidth: editorContainer.width
+        contentHeight: editorContainer.height
+        Column{
+            id:editorContainer
+            spacing: 6
+            ICConfigEdit{
+                id:customName
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Custom Name:")
+                isNumberOnly: false
+                height: 32
             }
 
             ICConfigEdit{
-                id:earlyEndSpeed
-                configName: qsTr("ESD")
-                unit: qsTr("%")
-                configAddr: "s_rw_0_32_1_1200"
-                enabled: earlyEndSpeedPos.isChecked
+                id:pos
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Pos:")
+                unit: qsTr("mm")
+                height: 32
+
             }
-        }
+            PointEdit{
+                id:points
+                isEditorMode: true
+            }
 
-        Component.onCompleted: {
-            PData.itemToEditorMap.put("pos", pos);
-            PData.itemToEditorMap.put("speed", speed);
-            PData.itemToEditorMap.put("speed0", speed0);
-            PData.itemToEditorMap.put("speed1", speed1);
-            PData.itemToEditorMap.put("delay", delay);
-            PData.itemToEditorMap.put("points", points);
-            PData.itemToEditorMap.put("limit", limit);
-            PData.itemToEditorMap.put("acTime", acTime);
-            PData.itemToEditorMap.put("customName", customName);
-            PData.itemToEditorMap.put("earlyEnd", earlyEndPos);
-            PData.itemToEditorMap.put("earlyEndSpd", earlyEndSpdEditor);
+            ICConfigEdit{
+                id:speed
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Speed:")
+                unit: qsTr("%")
+                height: 32
 
-            PData.editorToItemMap.put(pos, "pos");
-            PData.editorToItemMap.put(speed, "speed");
-            PData.editorToItemMap.put(speed0, "speed0");
-            PData.editorToItemMap.put(speed1, "speed1");
-            PData.editorToItemMap.put(delay, "delay");
-            PData.editorToItemMap.put(points, "points")
-            PData.editorToItemMap.put(limit, "limit");
-            PData.editorToItemMap.put(acTime, "acTime");
-            PData.editorToItemMap.put(customName, "customName");
-            PData.editorToItemMap.put(earlyEndPos, "earlyEnd");
-            PData.editorToItemMap.put(earlyEndSpdEditor, "earlyEndSpd");
+            }
+            ICConfigEdit{
+                id:speed0
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Speed:")
+                unit: qsTr("%")
+                height: 32
 
+            }
+            ICConfigEdit{
+                id:speed1
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Speed1:")
+                unit: qsTr("%")
+                height: 32
+
+            }
+            ICConfigEdit{
+                id:delay
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Delay:")
+                unit: qsTr("s")
+                height: 32
+
+            }
+            ICConfigEdit{
+                id:limit
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Limit:")
+                unit: qsTr("s")
+                height: 32
+
+            }
+            ICConfigEdit{
+                id:acTime
+                configNameWidth: PData.configNameWidth
+                inputWidth: PData.inputWidth
+                configName: qsTr("Action Time:")
+                unit: qsTr("s")
+                height: 32
+
+            }
+            ICCheckableLineEdit{
+                id:earlyEndPos
+                configName: qsTr("Early End Pos");
+            }
+            Row{
+                id:earlyEndSpdEditor
+                spacing: 4
+                width: 380
+                ICCheckableLineEdit{
+                    id:earlyEndSpeedPos
+                    configName: qsTr("ESD Pos")
+                }
+
+                ICConfigEdit{
+                    id:earlyEndSpeed
+                    configName: qsTr("ESD")
+                    unit: qsTr("%")
+                    configAddr: "s_rw_0_32_1_1200"
+                    enabled: earlyEndSpeedPos.isChecked
+                }
+            }
+
+            Component.onCompleted: {
+                PData.itemToEditorMap.put("pos", pos);
+                PData.itemToEditorMap.put("speed", speed);
+                PData.itemToEditorMap.put("speed0", speed0);
+                PData.itemToEditorMap.put("speed1", speed1);
+                PData.itemToEditorMap.put("delay", delay);
+                PData.itemToEditorMap.put("points", points);
+                PData.itemToEditorMap.put("limit", limit);
+                PData.itemToEditorMap.put("acTime", acTime);
+                PData.itemToEditorMap.put("customName", customName);
+                PData.itemToEditorMap.put("earlyEnd", earlyEndPos);
+                PData.itemToEditorMap.put("earlyEndSpd", earlyEndSpdEditor);
+
+                PData.editorToItemMap.put(pos, "pos");
+                PData.editorToItemMap.put(speed, "speed");
+                PData.editorToItemMap.put(speed0, "speed0");
+                PData.editorToItemMap.put(speed1, "speed1");
+                PData.editorToItemMap.put(delay, "delay");
+                PData.editorToItemMap.put(points, "points")
+                PData.editorToItemMap.put(limit, "limit");
+                PData.editorToItemMap.put(acTime, "acTime");
+                PData.editorToItemMap.put(customName, "customName");
+                PData.editorToItemMap.put(earlyEndPos, "earlyEnd");
+                PData.editorToItemMap.put(earlyEndSpdEditor, "earlyEndSpd");
+
+            }
         }
     }
 
     Row{
         id:buttons
         spacing: 20
-        anchors.top: editorContainer.bottom
+        anchors.top: editorContainerFrame.bottom
         anchors.topMargin: editorContainer.spacing
         anchors.right: parent.right
         anchors.rightMargin: 10

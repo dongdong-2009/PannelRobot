@@ -63,6 +63,18 @@
         <source>Custom Name:</source>
         <translation>自定义名称:</translation>
     </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -684,6 +696,22 @@
     <message>
         <source>Set In</source>
         <translation>设入</translation>
+    </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3746,6 +3774,10 @@ please chose!</source>
         <source>kSttLathe_6p</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear Program Btn</source>
+        <translation>清空可编程按键</translation>
+    </message>
 </context>
 <context>
     <name>Teach</name>
@@ -3763,7 +3795,7 @@ please chose!</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation>提前结束位置:</translation>
     </message>
     <message>
         <source>IF:</source>
@@ -4173,6 +4205,14 @@ please chose!</source>
         <source>Offset Curve:</source>
         <translation>相对曲线:</translation>
     </message>
+    <message>
+        <source>Early End Spd pos:</source>
+        <translation>提前减速位置:</translation>
+    </message>
+    <message>
+        <source>Early End Spd:</source>
+        <translation>提前减速速度:</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -4198,7 +4238,7 @@ please chose!</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>

@@ -15,7 +15,7 @@ Flickable{
         x: flick.width
         y: flick.height - hint.item.height
         z: flick.z + 1
-        visible: isshowhint
+        visible: isshowhint && flick.contentHeight > flick.height
     }
     Component.onCompleted: {
         hint.source = "ICHintComp.qml";

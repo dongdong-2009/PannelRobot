@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
+import "../teach/ManualProgramManager.js" as MPM
 
 
 Item {
@@ -56,6 +57,14 @@ Item {
                 id:axisNum
                 configName: qsTr("Axis Num")
                 configAddr: "s_rw_16_8_0_184"
+            }
+            ICButton{
+                id:clearProgramBtn
+                text: qsTr("Clear Program Btn")
+                width: 150
+                onButtonClicked: {
+                    MPM.manualProgramManager.clear();
+                }
             }
 
 

@@ -542,13 +542,13 @@ ProgramFlowPage {
     KexuYeActionEdit{
         id:kexuyeActionEdit
         visible: false
-        width: menuFrame().width - 80
+        width: menuFrame().width - 90
         height: menuFrame().height - 20
     }
     KexuYeAxisSpeed{
         id:kexuyeDetailEdit
         visible: false
-        width: menuFrame().width - 80
+        width: menuFrame().width - 90
         height: 200
     }
 

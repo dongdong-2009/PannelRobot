@@ -18,6 +18,11 @@ Item {
         ao.fixtureDelay0 = delay0.configValue;
         ao.fixtureDelay1 = delay1.configValue;
         ao.fixtureDelay2 = delay2.configValue;
+        ao.fixture1Switch = fixtureSwitch.configValue;
+        ao.fixture1Delay0 = delay0.configValue;
+        ao.fixture1Delay1 = delay1.configValue;
+        ao.fixture1Delay2 = delay2.configValue;
+        ao.fixture2Switch = fixture1Switch.configValue
     }
 
     function getDetails(){
@@ -150,6 +155,7 @@ Item {
                 id:rspeedContainer
                 ICConfigEdit{
                     id:m0Speed
+                    configNameWidth: 28
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
@@ -157,6 +163,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:m1Speed
+                    configNameWidth: m0Speed.configNameWidth
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
@@ -164,6 +171,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:m2Speed
+                    configNameWidth: m0Speed.configNameWidth
                     configName: AxisDefine.axisInfos[2].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
@@ -175,6 +183,7 @@ Item {
                 id:rspeedContainer1
                 ICConfigEdit{
                     id:m3Speed
+                    configNameWidth: m0Speed.configNameWidth
                     configName: AxisDefine.axisInfos[3].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
@@ -182,6 +191,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:m4Speed
+                    configNameWidth: m0Speed.configNameWidth
                     configName: AxisDefine.axisInfos[4].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
@@ -189,6 +199,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:m5Speed
+                    configNameWidth: m0Speed.configNameWidth
                     configName: AxisDefine.axisInfos[5].name
                     configAddr: "s_rw_0_32_1_1200"
                     unit: qsTr("%")
@@ -208,6 +219,11 @@ Item {
         delay0.configValue = actionObject.fixtureDelay0;
         delay1.configValue = actionObject.fixtureDelay1;
         delay2.configValue = actionObject.fixtureDelay2;
+        fixtureSwitch.configValue = actionObject.fixture1Switch;
+        delay20.configValue = actionObject.fixture1Delay0;
+        delay21.configValue = actionObject.fixture1Delay1;
+        delay22.configValue = actionObject.fixture1Delay2;
+        fixture1Switch.configValue = actionObject.fixture2Switch;
     }
 
     Component.onCompleted: {

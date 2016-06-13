@@ -149,16 +149,19 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM0
+                configNameWidth: 28
                 configName: AxisDefine.axisInfos[0].name
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM1
+                configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[1].name
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM2
+                configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[2].name
                 configAddr: "s_rw_0_32_3_1300"
             }
@@ -166,19 +169,22 @@ Item {
         Row{
             id:linkpos1Container
             spacing: 4
-            x: 71
+            x: 74
             ICConfigEdit{
                 id:sPosM3
+                configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[3].name
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM4
+                configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM5
+                configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
                 configAddr: "s_rw_0_32_3_1300"
             }
@@ -229,11 +235,13 @@ Item {
 //                }
                 ICConfigEdit{
                     id:pos1Axis1
+                    configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_3_1300"
                 }
                 ICConfigEdit{
                     id:pos1Axis2
+                    configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
                 }
@@ -385,7 +393,7 @@ Item {
 
         pos1Axis1.configValue = actionObject.point1.pos["m" + plane[0]];
         pos1Axis2.configValue = actionObject.point1.pos["m" + plane[1]];
-
+        button_setPos1.text = qsTr("Set EPos");
         pos2Axis1.configValue = actionObject.point2.pos["m" + plane[0]];
         pos2Axis2.configValue = actionObject.point2.pos["m" + plane[1]];
 

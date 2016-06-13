@@ -2059,6 +2059,10 @@
         <source>Set SPos</source>
         <translation>设入起点</translation>
     </message>
+    <message>
+        <source>Set EPos</source>
+        <translation>设入终点</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>

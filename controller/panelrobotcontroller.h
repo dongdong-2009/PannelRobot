@@ -219,6 +219,7 @@ struct MoldMaintainRet
     enum MoldErr{
         kME_None,
         kME_InvalidMolds,
+        kME_USBNotFound,
         kME_UnknowError,
     };
 

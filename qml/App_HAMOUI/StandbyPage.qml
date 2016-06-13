@@ -11,12 +11,11 @@ ContentPageBase
         height: parent.height
         Image {
             id: standbyImg
-            source: "images/Standby.png"
-            cache: false
+            source: "images/" + panelRobotController.getCustomSettings("StandbyPicName", "Standby.png");
         }
         onVisibleChanged: {
-            standbyImg.source = "";
-            standbyImg.source = "images/Standby.png";
+            if(visible)
+                standbyImg.source = "images/" + panelRobotController.getCustomSettings("StandbyPicName", "Standby.png");
         }
     }
     AxisPosDisplayBar{

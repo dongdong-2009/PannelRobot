@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../teach"
 import "KeXuYePentuRecord.js" as KXYRecord
 import "../teach/ProgramFlowPage.js" as BasePData
+import "ProgramFlowPage.js" as LocalPData
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
 import "../../utils/stringhelper.js" as ICString
@@ -15,10 +16,16 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
     function getRecordContent(which){
-        if(which == 0)
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
             return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+        }
         else
             return JSON.parse(panelRobotController.programs(which));
+    }
+
+    function mappedModelRunningActionInfo(baseRunningInfo){
+        return baseRunningInfo;
     }
 
     function pentuActionHead(actionObject){
@@ -476,26 +483,32 @@ ProgramFlowPage {
     function modelToProgram(which){
         var model = BasePData.programs[which];
         var ret = [];
+        LocalPData.stepToKeXuYeRowMap = {};
         for(var i = 0; i < model.count; ++i){
             if(model.get(i).mI_ActionObject.action == LocalTeach.actions.F_CMD_PENTU){
                 if(i == 0){
                     var rs = pentuActionHead(model.get(0).mI_ActionObject);
                     for(var j = 0, len = rs.length; j < len; ++j){
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                         ret.push(rs[j]);
                     }
                 }
                 var ps = pentuActionToProgram(model.get(i).mI_ActionObject);
                 for(j = 0, len = ps.length; j < len; ++j){
+                    LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                     ret.push(ps[j]);
                 }
                 if(i == (model.count - 2)){
                     rs = pentuActionEnd(model.get(0).mI_ActionObject);
                     for(j = 0, len = rs.length; j < len; ++j){
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                         ret.push(rs[j]);
                     }
                 }
-            }else
+            }else{
+                LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                 ret.push(model.get(i).mI_ActionObject);
+            }
         }
         return JSON.stringify(ret);
     }
@@ -503,6 +516,7 @@ ProgramFlowPage {
     function afterSaveProgram(which){
         var p = modelToProgramHelper(which);
         KXYRecord.keXuyePentuRecord.updateRecord(panelRobotController.currentRecordName(), JSON.stringify(p));
+        KXYRecord.keXuyePentuRecord.updateLineInfo(panelRobotController.currentRecordName(),JSON.stringify(LocalPData.stepToKeXuYeRowMap));
     }
 
     function actionObjectToText(actionObject){

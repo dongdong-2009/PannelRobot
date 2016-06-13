@@ -6,7 +6,12 @@ function KeXuyePentuRecord(){
     this.init = function(){
         var db = getDatabase();
         db.transaction(function(tx){
-            tx.executeSql('CREATE TABLE IF NOT EXISTS kxyrecord(name TEXT UNIQUE, value TEXT)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS kxyrecord(name TEXT UNIQUE, value TEXT, lineInfo TEXT)');
+            var rs = tx.executeSql("SELECT sql FROM sqlite_master WHERE name = 'kxyrecord'");
+            var sql = rs.rows.item(0).sql;
+            if(sql.indexOf("lineInfo") < 0){
+                tx.executeSql('ALTER TABLE kxyrecord ADD COLUMN lineInfo TEXT;');
+            }
         });
     };
 
@@ -24,7 +29,7 @@ function KeXuyePentuRecord(){
         if(this.exist(name)) return false;
         var db = getDatabase();
         db.transaction(function(tx){
-            tx.executeSql(icStrformat("INSERT INTO kxyrecord VALUES('{0}','{1}')", name, content));
+            tx.executeSql(icStrformat("INSERT INTO kxyrecord VALUES('{0}','{1}','{}')", name, content));
         });
         return true;
     };
@@ -34,6 +39,17 @@ function KeXuyePentuRecord(){
             var db = getDatabase();
             db.transaction(function(tx){
                 tx.executeSql(icStrformat("UPDATE kxyrecord SET value='{0}' WHERE name='{1}'", content, name));
+            });
+        }else{
+            this.newRecord(name, content);
+        }
+    };
+
+    this.updateLineInfo= function(name, content){
+        if(this.exist(name)){
+            var db = getDatabase();
+            db.transaction(function(tx){
+                tx.executeSql(icStrformat("UPDATE kxyrecord SET lineInfo='{0}' WHERE name='{1}'", content, name));
             });
         }else{
             this.newRecord(name, content);
@@ -58,6 +74,19 @@ function KeXuyePentuRecord(){
         });
         return ret;
     };
+    this.getLineInfo = function(name){
+        var db = getDatabase();
+        var ret = "{}";
+        db.transaction(function(tx){
+            var rs = tx.executeSql(icStrformat('SELECT lineInfo FROM kxyrecord WHERE name = "{0}"', name));
+            if(rs.rows.length > 0){
+                ret = rs.rows.item(0).lineInfo;
+                if(ret == null || ret == "")
+                    ret = "{}";
+            }
+        });
+        return ret;
+    }
 }
 
 var keXuyePentuRecord = new KeXuyePentuRecord();

@@ -813,6 +813,11 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
             file.close();
         }
     }
+    if(!ICUtility::IsUsbAttached())
+    {
+        ret = MoldMaintainRet::kME_USBNotFound;
+        return ret;
+    }
     QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
             .arg(name)
             .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));

@@ -25,12 +25,11 @@ ProgramFlowPage {
     }
 
     function mappedModelRunningActionInfo(baseRunningInfo){
-        if(baseRunningInfo.model != 0) return baseRunningInfo;
+        if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
         for(var i = 0, len = uiSteps.length; i < len; ++i){
             baseRunningInfo.steps[i] = LocalPData.stepToKeXuYeRowMap[uiSteps[i]];
         }
-
         return baseRunningInfo;
     }
 

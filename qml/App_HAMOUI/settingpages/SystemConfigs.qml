@@ -84,7 +84,7 @@ Item {
             if(addr == "s_rw_24_8_0_184"){
                 panelRobotController.loadSysconfig(machineType.configText());
                 machineType.configValue = newV;
-            }else if(addr == "s_rw_16_8_0_184"){
+            }else if(addr == "s_rw_16_6_0_184"){
                 AxisDefine.changeAxisNum(newV);
             }
         }

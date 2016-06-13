@@ -440,9 +440,9 @@ function CounterInfo(id, name, current, target){
     this.name = name || "Counter-" + this.id;
     this.current = current || 0;
     this.target = target || 0;
-    this.toString = function(){
-       return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]";
-
+    this.toString = function(withName){
+        var wn = withName || false;
+        return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]" + (wn ? ":" + this.name : "");
     }
 }
 
@@ -576,10 +576,10 @@ function CounterManager(){
         }
         return null;
     }
-    this.counterToString = function(id){
+    this.counterToString = function(id, withName){
         var cs = this.getCounter(id);
         if(cs == null) return "Invalid Counter";
-        return cs.toString();
+        return cs.toString(withName);
     }
 
     this.countersStrList = function(){
@@ -1282,12 +1282,12 @@ var stackActionToStringHandler = function(actionObject){
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                                                           "";
-    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID) : qsTr("Counter:Self");
-    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID) : qsTr("Counter:Self"))
+    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
+    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                                              : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + " " + counterID1 + " " + counterID2;
+            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){

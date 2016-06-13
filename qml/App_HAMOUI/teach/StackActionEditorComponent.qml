@@ -286,7 +286,8 @@ Item {
     }
 
     onVisibleChanged: {
-        updateCounters();
+        if(visible)
+            updateCounters();
     }
     onDataSourceChanged: {
         var items = dataSource;

@@ -295,6 +295,7 @@ Rectangle {
                 stackViewSel.currentIndex = -1;
                 stackType = 0;
                 speed1.visible = false;
+//                currentPage = 0;
             }
 
         }
@@ -494,6 +495,13 @@ Rectangle {
             configAddr: "s_rw_0_16_1_294"
             unit: "%"
             configValue: "80.0"
+        }
+    }
+
+    onVisibleChanged:{
+        if(visible){
+            page1.updateCounters();
+            page2.updateCounters();
         }
     }
 

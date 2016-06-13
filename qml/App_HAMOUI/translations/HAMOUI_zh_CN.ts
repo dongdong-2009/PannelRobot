@@ -2059,6 +2059,10 @@
         <source>Set SPos</source>
         <translation>设入起点</translation>
     </message>
+    <message>
+        <source>Set EPos</source>
+        <translation>设入终点</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -4495,7 +4499,7 @@ please chose!</source>
     <name>TopHeader</name>
     <message>
         <source>Records:</source>
-        <translation>模号:</translation>
+        <translation type="unfinished">程序:</translation>
     </message>
     <message>
         <source>Calculator</source>

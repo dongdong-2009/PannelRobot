@@ -67,7 +67,7 @@ typedef enum {
 	C6V13,
 
 } BoardId;
-#define SOFTWARE_VERSION  "HC_S6-0.1-0.6"
+#define SOFTWARE_VERSION  "HC_S6-0.1-0.7"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -1015,7 +1015,8 @@ typedef struct {
     uint32_t Y1ecc; //<类型:系统;名字:一轴Y方向偏心;精度:3;单位:mm;
     uint32_t res[8]; //<类型:系统;名字:预留;精度:0;单位:;
     uint32_t haardware_version:16; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
-    uint32_t axisnum:8; //<类型:系统;名字:轴数设定;精度:0;单位:;
+    uint32_t axisnum:6; //<类型:系统;名字:轴数设定;精度:0;单位:;
+    uint32_t ioboard:2; //<类型:系统;名字:IO板数设定;精度:0;单位:;
     uint32_t mechantype:8; //<类型:系统;名字:机型设定;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;

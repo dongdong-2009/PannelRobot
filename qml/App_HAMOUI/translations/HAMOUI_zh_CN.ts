@@ -3595,6 +3595,10 @@ please chose!</source>
         <source>Clear Program Btn</source>
         <translation>清空可编程按键</translation>
     </message>
+    <message>
+        <source>IO Board Num</source>
+        <translation>IO板数</translation>
+    </message>
 </context>
 <context>
     <name>Teach</name>

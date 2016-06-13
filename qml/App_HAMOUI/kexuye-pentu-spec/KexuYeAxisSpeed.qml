@@ -19,9 +19,9 @@ Item {
         ao.fixtureDelay1 = delay1.configValue;
         ao.fixtureDelay2 = delay2.configValue;
         ao.fixture1Switch = fixtureSwitch.configValue;
-        ao.fixture1Delay0 = delay0.configValue;
-        ao.fixture1Delay1 = delay1.configValue;
-        ao.fixture1Delay2 = delay2.configValue;
+        ao.fixture2Delay0 = delay20.configValue;
+        ao.fixture2Delay1 = delay21.configValue;
+        ao.fixture2Delay2 = delay22.configValue;
         ao.fixture2Switch = fixture1Switch.configValue
     }
 
@@ -220,9 +220,9 @@ Item {
         delay1.configValue = actionObject.fixtureDelay1;
         delay2.configValue = actionObject.fixtureDelay2;
         fixtureSwitch.configValue = actionObject.fixture1Switch;
-        delay20.configValue = actionObject.fixture1Delay0;
-        delay21.configValue = actionObject.fixture1Delay1;
-        delay22.configValue = actionObject.fixture1Delay2;
+        delay20.configValue = actionObject.fixture2Delay0;
+        delay21.configValue = actionObject.fixture2Delay1;
+        delay22.configValue = actionObject.fixture2Delay2;
         fixture1Switch.configValue = actionObject.fixture2Switch;
     }
 

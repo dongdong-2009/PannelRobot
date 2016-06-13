@@ -178,7 +178,8 @@ extern  const ICAddrWrapper  s_rw_0_32_0_181;    //< 11894811 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_182;    //< 11960347 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_183;    //< 12025883 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_16_0_184;  //< 12075035 机械结构主机硬件版本
-extern  const ICAddrWrapper  s_rw_16_8_0_184;  //< 12067355 机械结构轴数设定
+extern  const ICAddrWrapper  s_rw_16_6_0_184;  //< 12065307 机械结构轴数设定
+extern  const ICAddrWrapper  s_rw_22_2_0_184;  //< 12061403 机械结构IO板数设定
 extern  const ICAddrWrapper  s_rw_24_8_0_184;  //< 12067611 机械结构机型设定
 extern  const ICAddrWrapper  s_rw_0_32_0_185;    //< 12156955 电机配置crc电机配置crc
 extern  const ICAddrWrapper  s_rw_0_32_3_186;    //< 3233447963 插补1最大线速度最大线速度

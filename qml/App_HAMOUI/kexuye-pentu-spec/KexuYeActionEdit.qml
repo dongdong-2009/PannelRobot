@@ -36,7 +36,7 @@ Item {
                                                 rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
                                                 details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                                                 details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                                                details.fixture1Switch));
+                                                details.fixture1Switch, details.slope));
         return ret;
     }
 
@@ -149,20 +149,26 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM0
+                width: 150
                 configNameWidth: 28
                 configName: AxisDefine.axisInfos[0].name
+                unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM1
+                width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[1].name
+                unit: AxisDefine.axisInfos[1].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM2
+                width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[2].name
+                unit: AxisDefine.axisInfos[2].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
         }
@@ -172,20 +178,26 @@ Item {
             x: 74
             ICConfigEdit{
                 id:sPosM3
+                width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[3].name
+                unit: AxisDefine.axisInfos[3].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM4
+                width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
+                unit: AxisDefine.axisInfos[4].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
             ICConfigEdit{
                 id:sPosM5
+                width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
+                unit: AxisDefine.axisInfos[5].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
         }
@@ -235,17 +247,20 @@ Item {
 //                }
                 ICConfigEdit{
                     id:pos1Axis1
+                    width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_3_1300"
+                    unit: AxisDefine.axisInfos[0].unit
                 }
                 ICConfigEdit{
                     id:pos1Axis2
+                    width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
+                    unit: AxisDefine.axisInfos[1].unit
                 }
-
             }
 
             Row{
@@ -295,11 +310,13 @@ Item {
                     id:pos2Axis1
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_3_1300"
+                    unit: AxisDefine.axisInfos[0].unit
                 }
                 ICConfigEdit{
                     id:pos2Axis2
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
+                    unit: AxisDefine.axisInfos[1].unit
                 }
             }
         }
@@ -328,7 +345,7 @@ Item {
                 width: repeateSpeed.width
                 configName: qsTr("z length")
                 configAddr: "s_rw_0_32_3_1300"
-
+                unit: qsTr("mm")
             }
         }
 
@@ -365,6 +382,7 @@ Item {
                 width: repeateSpeed.width
                 configName: qsTr("Rotate")
                 configAddr: "s_rw_0_32_3_1300"
+                unit: qsTr("°")
             }
             ICConfigEdit{
                 id:rotateSpeed

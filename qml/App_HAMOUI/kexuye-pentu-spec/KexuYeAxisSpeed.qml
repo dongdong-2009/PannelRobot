@@ -23,6 +23,7 @@ Item {
         ao.fixture2Delay1 = delay21.configValue;
         ao.fixture2Delay2 = delay22.configValue;
         ao.fixture2Switch = fixture1Switch.configValue
+        ao.slope = slope.configValue
     }
 
     function getDetails(){
@@ -40,174 +41,197 @@ Item {
             "delay21":delay21.configValue,
             "delay22":delay22.configValue,
             "fixtureSwitch":fixtureSwitch.configValue,
-            "fixture1Switch":fixture1Switch.configValue
+            "fixture1Switch":fixture1Switch.configValue,
+            "slope":slope.configValue
         };
     }
     function speedcontainer() {return configContainer;}
-
-    Column{
-        id:configContainer
-        property int posNameWidth: 60
-        spacing: 10
+    Row{
+        spacing: 50
         Column{
-            spacing: 4
-            z: 3
-            Row{
-                spacing: 10
-                Text {
-                    id: fixtureDelay
-                    text: qsTr("Fixture Delay")
-                    width: 200
-                    anchors.verticalCenter: parent.verticalCenter
-                    color: "green"
+            id:configContainer
+            property int posNameWidth: 60
+            spacing: 10
+            Column{
+                spacing: 4
+                Row{
+                    id:delayrow
+                    spacing: 10
+                    Text {
+                        id: fixtureDelay
+                        text: qsTr("Fixture Delay")
+                        width: 200
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: "green"
+                    }
+                }
+                Row{
+                    spacing: 10
+                    id:delaycontiner
+                    ICConfigEdit{
+                        id:delay0
+                        configName: qsTr("Atomization Delay")
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("s")
+
+                    }
+                    ICConfigEdit{
+                        id:delay1
+                        configName: qsTr("Amplitude Delay")
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("s")
+
+                    }
+                    ICConfigEdit{
+                        id:delay2
+                        configName: qsTr("Oil Delay")
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("s")
+
+                    }
+
                 }
             }
-            Row{
-                spacing: 10
-                id:delaycontiner
-                ICConfigEdit{
-                    id:delay0
-                    configName: qsTr("Atomization Delay")
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
+            Column{
+                spacing: 4
+                Row{
+                    spacing: 10
+                    Text {
+                        id: fixture1Delay
+                        text: qsTr("Fixture1 Delay")
+                        width: 200
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: "green"
+                    }
                 }
-                ICConfigEdit{
-                    id:delay1
-                    configName: qsTr("Amplitude Delay")
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
+                Row{
+                    spacing: 10
+                    id:delaycontiner2
+                    ICConfigEdit{
+                        id:delay20
+                        configName: qsTr("Atomization Delay")
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("s")
 
-                }
-                ICConfigEdit{
-                    id:delay2
-                    configName: qsTr("Oil Delay")
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
+                    }
+                    ICConfigEdit{
+                        id:delay21
+                        configName: qsTr("Amplitude Delay")
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("s")
 
+                    }
+                    ICConfigEdit{
+                        id:delay22
+                        configName: qsTr("Oil Delay")
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("s")
+
+                    }
                 }
-                ICComboBoxConfigEdit{
-                    id:fixtureSwitch
-                    configName: qsTr("FixSwitch")
-                    items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
+            }
+            Column{
+                spacing: 4
+                Row{
+                    spacing: 10
+                    Text {
+                        id: returnspeed
+                        text: qsTr("Return Speed")
+                        width: 200
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: "green"
+                    }
+                }
+                Row{
+                    spacing: 10
+                    id:rspeedContainer
+                    ICConfigEdit{
+                        id:m0Speed
+                        configNameWidth: 28
+                        configName: AxisDefine.axisInfos[0].name
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("%")
+
+                    }
+                    ICConfigEdit{
+                        id:m1Speed
+                        configNameWidth: m0Speed.configNameWidth
+                        configName: AxisDefine.axisInfos[1].name
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("%")
+
+                    }
+                    ICConfigEdit{
+                        id:m2Speed
+                        configNameWidth: m0Speed.configNameWidth
+                        configName: AxisDefine.axisInfos[2].name
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("%")
+
+                    }
+                }
+                Row{
+                    spacing: 10
+                    id:rspeedContainer1
+                    ICConfigEdit{
+                        id:m3Speed
+                        configNameWidth: m0Speed.configNameWidth
+                        configName: AxisDefine.axisInfos[3].name
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("%")
+
+                    }
+                    ICConfigEdit{
+                        id:m4Speed
+                        configNameWidth: m0Speed.configNameWidth
+                        configName: AxisDefine.axisInfos[4].name
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("%")
+
+                    }
+                    ICConfigEdit{
+                        id:m5Speed
+                        configNameWidth: m0Speed.configNameWidth
+                        configName: AxisDefine.axisInfos[5].name
+                        configAddr: "s_rw_0_32_1_1200"
+                        unit: qsTr("%")
+
+                    }
                 }
             }
         }
+
+//        Rectangle{
+//            width: 1
+//            height: container.height
+//            border.width: 1
+//        }
+
         Column{
-            spacing: 4
-            z: 2
-            Row{
-                spacing: 10
-                Text {
-                    id: fixture1Delay
-                    text: qsTr("Fixture1 Delay")
-                    width: 200
-                    anchors.verticalCenter: parent.verticalCenter
-                    color: "green"
-                }
+            spacing: 20
+            y: fixtureDelay.height
+            ICComboBoxConfigEdit{
+                id:fixtureSwitch
+                z: 3
+                configName: qsTr("FixSwitch")
+                items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
             }
-            Row{
-                spacing: 10
-                id:delaycontiner2
-                ICConfigEdit{
-                    id:delay20
-                    configName: qsTr("Atomization Delay")
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICConfigEdit{
-                    id:delay21
-                    configName: qsTr("Amplitude Delay")
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICConfigEdit{
-                    id:delay22
-                    configName: qsTr("Oil Delay")
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICComboBoxConfigEdit{
-                    id:fixture1Switch
-                    configName: qsTr("FixSwitch")
-                    items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
-                    popupHeight: 100
-                }
+            ICComboBoxConfigEdit{
+                id:fixture1Switch
+                z: 2
+                configName: qsTr("FixSwitch")
+                items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
             }
-        }
-        Column{
-            spacing: 4
-            Row{
-                spacing: 10
-                Text {
-                    id: returnspeed
-                    text: qsTr("Return Speed")
-                    width: 200
-                    anchors.verticalCenter: parent.verticalCenter
-                    color: "green"
-                }
-            }
-            Row{
-                spacing: 10
-                id:rspeedContainer
-                ICConfigEdit{
-                    id:m0Speed
-                    configNameWidth: 28
-                    configName: AxisDefine.axisInfos[0].name
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICConfigEdit{
-                    id:m1Speed
-                    configNameWidth: m0Speed.configNameWidth
-                    configName: AxisDefine.axisInfos[1].name
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICConfigEdit{
-                    id:m2Speed
-                    configNameWidth: m0Speed.configNameWidth
-                    configName: AxisDefine.axisInfos[2].name
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-            }
-            Row{
-                spacing: 10
-                id:rspeedContainer1
-                ICConfigEdit{
-                    id:m3Speed
-                    configNameWidth: m0Speed.configNameWidth
-                    configName: AxisDefine.axisInfos[3].name
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICConfigEdit{
-                    id:m4Speed
-                    configNameWidth: m0Speed.configNameWidth
-                    configName: AxisDefine.axisInfos[4].name
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
-                ICConfigEdit{
-                    id:m5Speed
-                    configNameWidth: m0Speed.configNameWidth
-                    configName: AxisDefine.axisInfos[5].name
-                    configAddr: "s_rw_0_32_1_1200"
-                    unit: qsTr("%")
-
-                }
+            ICConfigEdit{
+                id:slope
+                z: 1
+                configName: qsTr("slope")
+                configAddr: "s_rw_0_32_3_1300"
+                unit: qsTr("°")
             }
         }
     }
+
     onActionObjectChanged: {
         if(actionObject == null) return;
         m0Speed.configValue = actionObject.startSpeed0;
@@ -224,6 +248,7 @@ Item {
         delay21.configValue = actionObject.fixture2Delay1;
         delay22.configValue = actionObject.fixture2Delay2;
         fixture1Switch.configValue = actionObject.fixture2Switch;
+        slope.configValue = actionObject.slope
     }
 
     Component.onCompleted: {
@@ -241,6 +266,7 @@ Item {
         m3Speed.configValue = 5;
         m4Speed.configValue = 5;
         m5Speed.configValue = 5;
+        slope.configValue = 0;
 
 
     }

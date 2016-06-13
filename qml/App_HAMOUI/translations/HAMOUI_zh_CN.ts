@@ -2063,6 +2063,10 @@
         <source>Set EPos</source>
         <translation>设入终点</translation>
     </message>
+    <message>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -2117,6 +2121,18 @@
     <message>
         <source>Open</source>
         <translation>常开</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>slope</source>
+        <translation>倾斜角度</translation>
+    </message>
+    <message>
+        <source>°</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

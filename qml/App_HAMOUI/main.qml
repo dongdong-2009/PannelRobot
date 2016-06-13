@@ -560,9 +560,9 @@ Rectangle {
                 panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
             }
         }else if(isStop){
-//            if(pData.lastKnob != knobStatus){
+            if(pData.lastKnob != knobStatus){
                 middleHeader.showStandbyPage();
-//            }
+            }
         }
         pData.lastKnob = knobStatus;
     }

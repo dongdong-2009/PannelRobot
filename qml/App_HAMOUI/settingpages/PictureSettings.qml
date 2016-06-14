@@ -72,7 +72,9 @@ Item {
                 text: qsTr("Set As Standby")
                 width: 200
                 onButtonClicked: {
-                    panelRobotController.copyPicture(picModel.get(picView.currentIndex).picname, "Standby.png");
+                    var name = picModel.get(picView.currentIndex).picname;
+                    panelRobotController.copyPicture(name, name);
+                    panelRobotController.setCustomSettings("StandbyPicName", name);
                 }
             }
         }

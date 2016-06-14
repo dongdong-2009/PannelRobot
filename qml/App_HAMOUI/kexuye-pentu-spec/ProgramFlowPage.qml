@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../teach"
 import "KeXuYePentuRecord.js" as KXYRecord
 import "../teach/ProgramFlowPage.js" as BasePData
+import "ProgramFlowPage.js" as LocalPData
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
 import "../../utils/stringhelper.js" as ICString
@@ -15,10 +16,21 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
     function getRecordContent(which){
-        if(which == 0)
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
             return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+        }
         else
             return JSON.parse(panelRobotController.programs(which));
+    }
+
+    function mappedModelRunningActionInfo(baseRunningInfo){
+        if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
+        var uiSteps = baseRunningInfo.steps;
+        for(var i = 0, len = uiSteps.length; i < len; ++i){
+            baseRunningInfo.steps[i] = LocalPData.stepToKeXuYeRowMap[uiSteps[i]];
+        }
+        return baseRunningInfo;
     }
 
     function pentuActionHead(actionObject){
@@ -108,38 +120,38 @@ ProgramFlowPage {
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0){
                     dirpos["m" + 1] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
-                    dirpos["m" + 0] = actionObject.dirLength;
+                    dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else{
                     dirpos["m" + 0] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
-                    dirpos["m" + 1] = actionObject.dirLength;
+                    dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
-                dirpos["m" + 2] = actionObject.dirLength * Math.sin(actionObject.slop * Math.PI / 180);
+                dirpos["m" + 2] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
                     dirpos["m" + 2] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
-                    dirpos["m" + 0] = actionObject.dirLength;
+                    dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else{
-                    dirpos["m" + 0] = ["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
-                    dirpos["m" + 2] = actionObject.dirLength;
+                    dirpos["m" + 0] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                    dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
-                dirpos["m" + 1] = actionObject.dirLength * Math.sin(actionObject.slop * Math.PI / 180);
+                dirpos["m" + 1] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
                     dirpos["m" + 2] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
-                    dirpos["m" + 1] = actionObject.dirLength;
+                    dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else{
                     dirpos["m" + 1] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
-                    dirpos["m" + 2] = actionObject.dirLength;
+                    dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
-                dirpos["m" + 0] = actionObject.dirLength * Math.sin(actionObject.slop * Math.PI / 180);
+                dirpos["m" + 0] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             pos1["m" + 0] = -pos["m" + 0];
             pos1["m" + 1] = -pos["m" + 1];
@@ -166,13 +178,7 @@ ProgramFlowPage {
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 
-//            if(actionObject.dirAxis == 0)
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-//            else if(actionObject.dirAxis == 1)
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":actionObject.dirLength,"m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-//            else if(actionObject.dirAxis == 2)
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
-            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
+           if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
                 ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
                 ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
                 ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
@@ -200,14 +206,9 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
             }
+
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
-//            if(actionObject.dirAxis == 0)
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-//            else if(actionObject.dirAxis == 1)
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":actionObject.dirLength,"m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-//            else if(actionObject.dirAxis == 2)
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
         }
 
         else if(actionObject.mode == 1 || actionObject.mode == 5){
@@ -224,40 +225,43 @@ ProgramFlowPage {
                 if(actionObject.dirAxis == 0){
                     tmp["m" + 0] = pos["m" + 0] = 0;
                     tmp1["m" + 0] = actionObject.dirLength / 2;
-                    pos1["m" + 0] = actionObject.dirLength;
+                    pos1["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else {
                     tmp["m" + 1] = pos["m" + 1] = 0;
                     tmp1["m" + 1] = actionObject.dirLength / 2;
-                    pos1["m" + 1] = actionObject.dirLength;
+                    pos1["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
+                pos1["m" + 2] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
                     tmp["m" + 0] = pos["m" + 0] = 0;
                     tmp1["m" + 0] = actionObject.dirLength / 2;
-                    pos1["m" + 0] = actionObject.dirLength;
+                    pos1["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else {
                     tmp["m" + 2] = pos["m" + 2] = 0;
                     tmp1["m" + 2] = actionObject.dirLength / 2;
-                    pos1["m" + 2] = actionObject.dirLength;
+                    pos1["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
+                pos1["m" + 1] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
                     tmp["m" + 1] = pos["m" + 1] = 0;
                     tmp1["m" + 1] = actionObject.dirLength / 2;
-                    pos1["m" + 1] = actionObject.dirLength;
+                    pos1["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else {
                     tmp["m" + 2] = pos["m" + 2] = 0;
                     tmp1["m" + 2] = actionObject.dirLength / 2;
-                    pos1["m" + 2] = actionObject.dirLength;
+                    pos1["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
+                pos1["m" + 0] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             if(actionObject.mode == 1)
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
@@ -315,12 +319,18 @@ ProgramFlowPage {
             tmp1["m" + 2] = -tmp["m" + 2];
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0){
+                    if(actionObject.mode == 2){
+                        pos["m" + 0] = (pos["m" + 0] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
+                        pos1["m" + 2] = pos["m" + 2] = (pos["m" + 0] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                    }
                     pos1["m" + 0] = pos["m" + 0];
                     tmp1["m" + 0] = tmp["m" + 0];
-//                    pos1["m" + 1] = -pos["m" + 1];
                 }
                 else {
-//                    pos1["m" + 0] = -pos["m" + 0];
+                    if(actionObject.mode == 2){
+                        pos["m" + 1] = (pos["m" + 1] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
+                        pos1["m" + 2] = pos["m" + 2] = (pos["m" + 1] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                    }
                     pos1["m" + 1] = pos["m" + 1];
                     tmp1["m" + 1] = tmp["m" + 1] ;
                 }
@@ -328,12 +338,18 @@ ProgramFlowPage {
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
+                    if(actionObject.mode == 2){
+                        pos["m" + 0] = (pos["m" + 0] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
+                        pos1["m" + 1] = pos["m" + 1] = (pos["m" + 0] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                    }
                     pos1["m" + 0] = pos["m" + 0];
                     tmp1["m" + 0] = tmp["m" + 0];
-//                    pos1["m" + 2] = -pos["m" + 2];
                 }
                 else {
-//                    pos1["m" + 0] = -pos["m" + 0];
+                    if(actionObject.mode == 2){
+                        pos["m" + 2] = (pos["m" + 2] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
+                        pos1["m" + 1] = pos["m" + 1] = (pos["m" + 2] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                    }
                     pos1["m" + 2] = pos["m" + 2];
                     tmp1["m" + 2] = tmp["m" + 2];
                 }
@@ -341,12 +357,18 @@ ProgramFlowPage {
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
+                    if(actionObject.mode == 2){
+                        pos["m" + 1] = (pos["m" + 1] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
+                        pos1["m" + 0] = pos["m" + 0] = (pos["m" + 1] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                    }
                     pos1["m" + 1] = pos["m" + 1];
                     tmp1["m" + 1] = tmp["m" + 1];
-//                    pos1["m" + 2] = -pos["m" + 2];
                 }
                 else {
-//                    pos1["m" + 1] = -pos["m" + 1];
+                    if(actionObject.mode == 2){
+                        pos["m" + 2] = (pos["m" + 2] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
+                        pos1["m" + 0] = pos["m" + 0] = (pos["m" + 2] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                    }
                     pos1["m" + 2] = pos["m" + 2];
                     tmp1["m" + 2] = tmp["m" + 2];
                 }
@@ -404,22 +426,40 @@ ProgramFlowPage {
             tmp1["m" + 1] = -tmp["m" + 1];
             tmp1["m" + 2] = -tmp["m" + 2];
             if(actionObject.plane == 0){
-                if(actionObject.dirAxis == 0)
-                    tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
-                else tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                if(actionObject.dirAxis == 0){
+                    dirpos["m" + 1] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                    dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+                }
+                else{
+                    dirpos["m" + 0] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                    dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+                }
                 tmp["m" + 2] = tmp1["m" + 2] = actionObject.startPos2 - actionObject.zlength;
+                dirpos["m" + 2] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 1){
-                if(actionObject.dirAxis == 0)
-                    tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
-                else tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                if(actionObject.dirAxis == 0){
+                    dirpos["m" + 2] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                    dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+                }
+                else{
+                    dirpos["m" + 0] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                    dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+                }
                 tmp["m" + 1] = tmp1["m" + 1] = actionObject.startPos2 - actionObject.zlength;
+                dirpos["m" + 1] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 2){
-                if(actionObject.dirAxis == 1)
-                    tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
-                else tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                if(actionObject.dirAxis == 1){
+                    dirpos["m" + 2] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                    dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+                }
+                else{
+                    dirpos["m" + 1] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                    dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+                }
                 tmp["m" + 0] = tmp1["m" + 0] = actionObject.startPos2 - actionObject.zlength;
+                dirpos["m" + 0] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             pos1["m" + 0] = -pos["m" + 0];
             pos1["m" + 1] = -pos["m" + 1];
@@ -469,12 +509,8 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
 
-            if(actionObject.dirAxis == 0)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":actionObject.dirLength,"m1":"0.000","m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-            else if(actionObject.dirAxis == 1)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":actionObject.dirLength,"m2":"0.000"}}], actionObject.dirSpeed, 0.0));
-            else if(actionObject.dirAxis == 2)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":actionObject.dirLength}}], actionObject.dirSpeed, 0.0));
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
         }
 
 //        else if(actionObject.mode == 1){
@@ -492,7 +528,6 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
-//        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 
         return ret;
     }
@@ -500,26 +535,32 @@ ProgramFlowPage {
     function modelToProgram(which){
         var model = BasePData.programs[which];
         var ret = [];
+        LocalPData.stepToKeXuYeRowMap = {};
         for(var i = 0; i < model.count; ++i){
             if(model.get(i).mI_ActionObject.action == LocalTeach.actions.F_CMD_PENTU){
                 if(i == 0){
                     var rs = pentuActionHead(model.get(0).mI_ActionObject);
                     for(var j = 0, len = rs.length; j < len; ++j){
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                         ret.push(rs[j]);
                     }
                 }
                 var ps = pentuActionToProgram(model.get(i).mI_ActionObject);
                 for(j = 0, len = ps.length; j < len; ++j){
+                    LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                     ret.push(ps[j]);
                 }
                 if(i == (model.count - 2)){
                     rs = pentuActionEnd(model.get(0).mI_ActionObject);
                     for(j = 0, len = rs.length; j < len; ++j){
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                         ret.push(rs[j]);
                     }
                 }
-            }else
+            }else{
+                LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                 ret.push(model.get(i).mI_ActionObject);
+            }
         }
         return JSON.stringify(ret);
     }
@@ -527,6 +568,7 @@ ProgramFlowPage {
     function afterSaveProgram(which){
         var p = modelToProgramHelper(which);
         KXYRecord.keXuyePentuRecord.updateRecord(panelRobotController.currentRecordName(), JSON.stringify(p));
+        KXYRecord.keXuyePentuRecord.updateLineInfo(panelRobotController.currentRecordName(),JSON.stringify(LocalPData.stepToKeXuYeRowMap));
     }
 
     function actionObjectToText(actionObject){

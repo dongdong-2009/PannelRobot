@@ -95,6 +95,16 @@ int OriginActionCompiler(ICMoldItem & item, const QVariantMap* v)
     return ICRobotMold::kCCErr_None;
 }
 
+int SpeedActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(v->value("action").toInt());
+    item.append(ICUtility::doubleToInt(v->value("startSpeed").toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("endSpeed").toDouble(), 1));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+
+}
+
 int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
@@ -471,6 +481,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_PROGRAM_CALL0, CallModuleActionCompiler);
     ret.insert(F_CMD_VISION_CATCH, VisionCatchActionCompiler);
     ret.insert(F_CMD_WATIT_VISION_DATA, WaitVisionDataActionCompiler);
+    ret.insert(F_CMD_SPEED_SMOOTH, SpeedActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
     return ret;

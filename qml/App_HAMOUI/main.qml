@@ -607,7 +607,7 @@ Rectangle {
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
 
-        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_8_0_184"));
+        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_6_0_184"));
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         console.log("main load finished!")

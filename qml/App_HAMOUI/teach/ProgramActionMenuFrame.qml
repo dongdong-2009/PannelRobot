@@ -138,39 +138,42 @@ Rectangle{
     Component.onCompleted: {
         var editor = Qt.createComponent('AxisActionEditor.qml');
         var axisEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('OutputActionEditor.qml')
+        editor = Qt.createComponent('OutputActionEditor.qml');
         var outputEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('WaitActionEditor.qml')
+        editor = Qt.createComponent('WaitActionEditor.qml');
         var waitEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('CheckActionEditor.qml')
+        editor = Qt.createComponent('CheckActionEditor.qml');
         var checkEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('ConditionActionEditor.qml')
+        editor = Qt.createComponent('ConditionActionEditor.qml');
         var conditionEditorObject = editor.createObject(actionEditorContainer);
         editor = Qt.createComponent('SyncActionEditor.qml')
         var syncEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('CommentActionEditor.qml')
+        editor = Qt.createComponent('CommentActionEditor.qml');
         var commentEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('SearchActionEditor.qml')
+        editor = Qt.createComponent('SearchActionEditor.qml');
         var searchEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('PathActionEditor.qml')
+        editor = Qt.createComponent('PathActionEditor.qml');
         var pathEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('StackActionEditor.qml')
+        editor = Qt.createComponent('StackActionEditor.qml');
         var stackEditorObject = editor.createObject(actionEditorContainer);
         stackEditorObject.stackUpdated.connect(onStackUpdated);
-        editor = Qt.createComponent('CounterActionEditor.qml')
+        editor = Qt.createComponent('CounterActionEditor.qml');
         var counterEditorObject = editor.createObject(actionEditorContainer);
         counterEditorObject.counterUpdated.connect(onCounterUpdated);
-        editor = Qt.createComponent('CustomAlarmActionEditor.qml')
+        editor = Qt.createComponent('CustomAlarmActionEditor.qml');
         var customAlarmEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('ModuleActionEditor.qml')
+        editor = Qt.createComponent('ModuleActionEditor.qml');
         var moduleEditorObject = editor.createObject(actionEditorContainer);
 //        PData.moduleActionEditor = moduleEditorObject;
 
-        editor = Qt.createComponent('OriginActionEditor.qml')
+        editor = Qt.createComponent('OriginActionEditor.qml');
         var originEditorObject = editor.createObject(actionEditorContainer);
 
-        editor = Qt.createComponent('VisionActionEditor.qml')
+        editor = Qt.createComponent('VisionActionEditor.qml');
         var visionEditorObject = editor.createObject(actionEditorContainer);
+
+        editor = Qt.createComponent('SpeedActionEditor.qml');
+        var speedEditorObject = editor.createObject(actionEditorContainer);
 
         actionEditorContainer.addPage(actionMenuObject);
         actionEditorContainer.addPage(axisEditorObject);
@@ -188,6 +191,7 @@ Rectangle{
         actionEditorContainer.addPage(moduleEditorObject);
         actionEditorContainer.addPage(originEditorObject);
         actionEditorContainer.addPage(visionEditorObject);
+        actionEditorContainer.addPage(speedEditorObject);
 
 
         showActionMenu();
@@ -358,6 +362,12 @@ Rectangle{
         });
         actionMenuObject.visionMenuTriggered.connect(function(){
             actionEditorContainer.setCurrentIndex(15);
+            linkedBtn1.visible = false;
+            linkedBtn2.visible = false;
+            linkedBtn3.visible = false;
+        });
+        actionMenuObject.speedMenuTriggered.connect(function(){
+            actionEditorContainer.setCurrentIndex(16);
             linkedBtn1.visible = false;
             linkedBtn2.visible = false;
             linkedBtn3.visible = false;

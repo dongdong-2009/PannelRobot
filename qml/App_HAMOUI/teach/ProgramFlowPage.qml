@@ -479,6 +479,10 @@ Rectangle {
         return panelRobotController.statusValue(PData.stepAddrs[editing.currentIndex]);
     }
 
+    function mappedModelRunningActionInfo(baseRunningActionInfo){
+        return baseRunningActionInfo;
+    }
+
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
         //                console.log(ret);
@@ -486,7 +490,7 @@ Rectangle {
         info.steps = JSON.parse(info.steps);
         //        if(info.moduleID >= 0)
         //            console.log(ret);
-        return info;
+        return mappedModelRunningActionInfo(info);
     }
 
     function setModuleEnabled(en){

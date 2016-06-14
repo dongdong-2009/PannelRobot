@@ -765,7 +765,7 @@ Rectangle {
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
                             saveModules();
-                            hasModify = true;
+//                            hasModify = true;
                         }
                     }
 

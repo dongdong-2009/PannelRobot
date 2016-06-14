@@ -627,6 +627,22 @@ Rectangle {
             if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length){
                 if(Keymap.matchHWTestSequence())
                     panelRobotController.runHardwareTest();
+                else if(Keymap.matchRecalSequence()){
+                    var tipC = Qt.createComponent("../ICCustomElement/ICMessageBox.qml");
+                    var tip = tipC.createObject(mainWindow);
+                    tip.z = 100;
+                    tip.x = 300;
+                    tip.y = 100;
+                    tip.useKeyboard = true;
+                    tip.acceptKey = Keymap.KEY_F4;
+                    tip.rejectKey = Keymap.KEY_F5;
+                    tip.accept.connect(function(){
+                        panelRobotController.recal();
+                    });
+                    tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes[F4]"), qsTr("No[F5]"));
+                }
+
+//                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
             }
         }

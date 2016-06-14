@@ -5616,6 +5616,18 @@ please chose!</source>
         <source>please press startup button to return</source>
         <translation>请按启动键复归.</translation>
     </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation>触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes[F4]</source>
+        <translation>确定[F4]</translation>
+    </message>
+    <message>
+        <source>No[F5]</source>
+        <translation>取消[F5]</translation>
+    </message>
 </context>
 <context>
     <name>maintainPage</name>

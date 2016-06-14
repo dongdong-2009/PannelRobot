@@ -414,35 +414,43 @@ Item {
 
         panelRobotController.moldChanged.connect(onMoldChanged);
         onMoldChanged();
+        var i;
+        var l;
+        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+        if(ioBoardCount == 0)
+            ioBoardCount = 1;
+
+        ys = IODefines.generateIOBaseBoardCount("Y", ioBoardCount);
+        xs = IODefines.generateIOBaseBoardCount("X", ioBoardCount);
+
         var yDefines = ys;
         var yDefine;
-        var i;
-        for(i = 0; i < yDefines.length; ++i){
+        for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             yModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
         yDefines = euYs;
-        for(i = 0; i < yDefines.length; ++i){
+        for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             euYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
         yDefines = mYs;
-        for(i = 0; i < yDefines.length; ++i){
+        for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             mYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
         var xDefines = xs;
         var xDefine;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
         xDefines = euXs;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             euXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }

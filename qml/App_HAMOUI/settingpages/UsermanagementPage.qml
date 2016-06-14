@@ -226,11 +226,19 @@ Item {
         }
 
         Component.onCompleted: {
-            usermsgBuff  = ShareData.UserInfo.users_();
+            var u = ShareData.UserInfo.users_();
+            for(var i = 0, len = u.length; i < len; ++i){
+                if(u[i].name === "szhcroot"){
+                    u.splice(i, 1);
+                    break;
+                }
+            }
+
+            usermsgBuff  = u;
             username.configValue = usermsgBuff[0][ShareData.USERS_TB_INFO.user_name_col];
             password.configValue = usermsgBuff[0][ShareData.USERS_TB_INFO.password_col];
             perms(usermsgBuff[0][ShareData.USERS_TB_INFO.perm_col]);
-            for(var i = 0 ;i < usermsgBuff.length;i++){
+            for(i = 0 ;i < usermsgBuff.length;i++){
                 userModel.append({"name": usermsgBuff[i][ShareData.USERS_TB_INFO.user_name_col]});
             }
         }

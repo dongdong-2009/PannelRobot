@@ -700,7 +700,7 @@ Rectangle {
             }
             if(!panelRobotController.isOrigined()){
                 tipBar.tip = qsTr("Please press origin key and then press start key to find origin signal.")
-                tipBar.visible = true;
+                tipBar.visible = !originreturnmsgmsg.visible;
             }else{
                 tipBar.visible = false;
             }

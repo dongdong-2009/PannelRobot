@@ -295,7 +295,10 @@ Rectangle {
                 stackViewSel.currentIndex = -1;
                 stackType = 0;
                 speed1.visible = false;
-//                currentPage = 0;
+                currentPage = 0;
+                changePage.text = "-->";
+                detailPage.visible  = false;
+                typeSelector.visible = true;
             }
 
         }

@@ -165,6 +165,10 @@ var DefinePoints = {
             definePoints.informPointsCleared();
         }
         definePoints.parseActionPointsHelper = function(actionObject){
+            if(actionObject.action === actions.ACT_COMMENT){
+                return arguments.callee(actionObject.commentAction);
+            }
+
             if(!actionObject.hasOwnProperty("points"))
                 return [];
             var points = actionObject.points;
@@ -825,7 +829,7 @@ function hasCounterIDAction(action){
             return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
     }else if(action.action === actions.ACT_COMMENT){
         if(action.commentAction != null){
-            return action.commentAction.hasOwnProperty("counterID");
+            return arguments.callee(action.commentAction);
         }
     }
 
@@ -842,11 +846,21 @@ function hasStackIDAction(action){
     return action.hasOwnProperty("stackID");
 }
 
+function actionStackID(action){
+    if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
+    }
+    return action.stackID;
+}
+
 function actionCounterIDs(action){
     if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         return [si.si0.counterID, si.si1.counterID];
+    }else if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
     }
+
     return [action.counterID];
 }
 
@@ -1442,6 +1456,8 @@ actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActi
 actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
+    if(actionObject.action === actions.ACT_COMMENT)
+        return ret;
     if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -1548,6 +1564,10 @@ function ccErrnoToString(errno){
 
 
 var canActionUsePoint = function(actionObject){
+    if(actionObject.action === actions.ACT_COMMENT){
+        return canActionUsePoint(actionObject.commentAction);
+    }
+
     return actionObject.action === actions.F_CMD_SINGLE ||
             actionObject.action === actions.F_CMD_CoordinatePoint ||
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||

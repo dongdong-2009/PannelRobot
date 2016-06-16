@@ -98,7 +98,7 @@ Rectangle {
         id:stackViewSel
         z: 11
         y:topContainer.y
-        x:200
+        x:220
         visible: defineStack.isChecked
         popupWidth: 200
         popupHeight: 150
@@ -308,7 +308,7 @@ Rectangle {
             text: qsTr("New")
             width: 60
             height: stackViewSel.height
-            x:420
+            x:450
             visible: stackViewSel.visible
             bgColor: "lime"
             onButtonClicked: {

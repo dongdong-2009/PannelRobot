@@ -62,12 +62,23 @@ MouseArea{
             anchors.horizontalCenter: parent.horizontalCenter
             y:6
         }
-        Text {
-            id: helpText
-            visible: false
+        ICFlickable{
+//            isshowhint: helpText.visible
+            width: 280
+            height: originMode.height - 20
+            clip: true
+            flickableDirection: Flickable.VerticalFlick
+            contentWidth: helpText.width
+            contentHeight: helpText.height
             anchors.top: hinttext.bottom
             anchors.topMargin: 6
-            text: qsTr("1.Mode 1\n2.Mode 2\n3.Mode 3")
+            Text {
+                id: helpText
+                visible: false
+                width: parent.width
+                wrapMode: Text.WrapAnywhere
+                text: qsTr("1.Mode 1\n2.Mode 2\n3.Mode 3")
+            }
         }
         ICButton{
             id:stop

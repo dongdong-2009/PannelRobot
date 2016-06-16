@@ -3389,9 +3389,12 @@
         <source>1.Mode 1
 2.Mode 2
 3.Mode 3</source>
-        <translation>1.已在原点附近:位置大概在原点附近时使用
-2.关机前已急停:只有确定关机前已经拍下急停了才能使用
-3.重新归原点:已在原点附近没归到位的时候,再次归原点的时候使用</translation>
+        <translation>1.已在原点附近:位置大概在原点
+附近时使用
+2.关机前已急停:只有确定关机前
+已经拍下急停了才能使用
+3.重新归原点:已在原点附近没归
+到位的时候,再次归原点的时候使用</translation>
     </message>
     <message>
         <source>Show Help</source>
@@ -4541,6 +4544,10 @@ please chose!</source>
     <message>
         <source>Save</source>
         <translation>保存</translation>
+    </message>
+    <message>
+        <source>Total:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

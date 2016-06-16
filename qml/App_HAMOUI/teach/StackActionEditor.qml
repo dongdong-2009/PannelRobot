@@ -505,6 +505,14 @@ Rectangle {
         if(visible){
             page1.updateCounters();
             page2.updateCounters();
+            stackSelector.configValue = -1;
+            stackViewSel.currentIndex = -1;
+            stackType = 0;
+            speed1.visible = false;
+            currentPage = 0;
+            changePage.text = "-->";
+            detailPage.visible  = false;
+            typeSelector.visible = true;
         }
     }
 

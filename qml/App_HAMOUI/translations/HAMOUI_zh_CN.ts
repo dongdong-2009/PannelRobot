@@ -389,6 +389,22 @@
         <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
         <translation>伺服绝对值位置读取超时</translation>
     </message>
+    <message>
+        <source>ALARM_IO_CONNET2_ERR</source>
+        <translation>与IO板2通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET3_ERR</source>
+        <translation>与IO板3通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET4_ERR</source>
+        <translation>与IO板4通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_CHANGE_ERR</source>
+        <translation>手控和主机教导程序不一致</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>

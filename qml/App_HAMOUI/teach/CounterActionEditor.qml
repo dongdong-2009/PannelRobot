@@ -9,9 +9,9 @@ Rectangle {
         var ret = [];
         var md = counterModel.get(counterview.currentIndex);
         if(setCounter.isChecked)
-            ret.push(Teach.generateCounterAction(md.id));
+            ret.push(Teach.generateCounterAction(md.cID));
         else if(clearCounter.isChecked)
-            ret.push(Teach.generateClearCounterAction(md.id));
+            ret.push(Teach.generateClearCounterAction(md.cID));
         //        if(useFlag.isChecked){
         //            var statckStr = stackSelector.configText;
         //            if(statckStr.currentIndex < 0) return ret;
@@ -58,7 +58,7 @@ Rectangle {
             onButtonClicked: {
                 var toAdd = Teach.counterManager.newCounter(newCounterName.text, 0, 0);
                 if(panelRobotController.saveCounterDef(toAdd.id, toAdd.name, toAdd.current, toAdd.target))
-                    counterModel.append(toAdd);
+                    counterModel.append({"cID":toAdd.id, "cName":toAdd.name, "ct":toAdd.target, "cc":toAdd.current});
                 counterUpdated(toAdd.id);
             }
         }
@@ -162,42 +162,44 @@ Rectangle {
                             height: 32
                             spacing: viewHeader.spacing
                             Text {
-                                text: id
+                                text: cID
                                 width: headerID.width
                                 horizontalAlignment: headerID.horizontalAlignment
                                 anchors.verticalCenter: parent.verticalCenter
                             }
                             Text {
-                                text: name
+                                text: cName
                                 width: headerName.width
                                 anchors.verticalCenter: parent.verticalCenter
 
                             }
 
                             ICLineEdit{
-                                text: current
+                                text: cc
                                 inputWidth: headerCurrent.width
                                 anchors.verticalCenter: parent.verticalCenter
                                 onEditFinished: {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
-                                    md.current = text;
-                                    Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
-                                    panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
-                                    counterUpdated(md.id);
+                                    md.cc = text;
+                                    Teach.counterManager.updateCounter(md.cID, md.cName, md.cc, md.ct);
+                                    panelRobotController.saveCounterDef(md.cID, md.cName, md.cc, md.ct);
+                                    counterUpdated(md.cID);
+                                    counterModel.setProperty(index, "cc", md.cc);
                                 }
                             }
                             ICLineEdit{
-                                text:target
+                                text:ct
                                 inputWidth: headerTarget.width
                                 anchors.verticalCenter: parent.verticalCenter
                                 onEditFinished: {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
-                                    md.target = text;
-                                    Teach.counterManager.updateCounter(md.id, md.name, md.current, md.target);
-                                    panelRobotController.saveCounterDef(md.id, md.name, md.current, md.target);
-                                    counterUpdated(md.id);
+                                    md.ct = text;
+                                    Teach.counterManager.updateCounter(md.cID, md.cName, md.cc, md.ct);
+                                    panelRobotController.saveCounterDef(md.cID, md.cName, md.cc, md.ct);
+                                    counterUpdated(md.cID);
+                                    counterModel.setProperty(index, "ct", md.ct);
                                 }
                             }
                         }
@@ -219,16 +221,18 @@ Rectangle {
         Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
         counterModel.clear();
         var cs = Teach.counterManager.counters;
+        var cc;
         for(var c in cs){
-            counterModel.append(cs[c]);
+            cc = cs[c];
+            counterModel.append({"cID":cc.id, "cName":cc.name, "ct":cc.target, "cc":cc.current});
         }
     }
 
     onVisibleChanged: {
         if(visible){
             for(var i = 0, len = counterModel.count; i < len; ++i){
-                counterModel.setProperty(i, "current",
-                                         Teach.counterManager.getCounter(counterModel.get(i).id).current);
+                counterModel.setProperty(i, "cc",
+                                         Teach.counterManager.getCounter(counterModel.get(i).cID).current);
             }
         }
     }

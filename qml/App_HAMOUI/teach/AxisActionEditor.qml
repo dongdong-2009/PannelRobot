@@ -139,6 +139,7 @@ Item {
                 id:earlyEnd
                 configName: qsTr("Early End Pos")
                 configValue: "0"
+                inputWidth: 60
             }
             Row{
                 spacing: 4
@@ -146,6 +147,8 @@ Item {
                     id:earlyEndSpeedPos
                     configName: qsTr("ESD Pos")
                     configValue: "0"
+                    inputWidth: 60
+
                 }
 
                 ICConfigEdit{
@@ -155,6 +158,8 @@ Item {
                     configAddr: "s_rw_0_32_1_1200"
                     enabled: earlyEndSpeedPos.isChecked
                     configValue: "10.0"
+                    inputWidth: 60
+
                 }
             }
 

@@ -193,6 +193,8 @@ public:
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
 
+     quint32 CheckSum() const;
+
      void PrintDebugInfo() const
      {
          qDebug()<<"Program Begin:";
@@ -430,6 +432,7 @@ public:
     QString Functions() const { return functions_;}
     QMap<int, QMap<int, int> > SaveFunctions(const QString& functions, bool syncMold = true);
 
+    quint32 CheckSum() const;
 
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);

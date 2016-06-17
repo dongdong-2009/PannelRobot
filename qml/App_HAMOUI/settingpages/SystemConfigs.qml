@@ -51,7 +51,7 @@ Item {
                 qsTr("kSttPPP"), qsTr("kSttRTR"), qsTr("kSttRRP"), qsTr("kSttRRPR"),
                 qsTr("kSttRTRT"), qsTr("kSttRTRTTT"), qsTr("kStt5P"), qsTr("kSttPPP_RRR"),
                 qsTr("kSttRRPR_BRT"), qsTr("kSttRTRTTT_EX"), qsTr("kSttLathe_6p")]
-
+//                enabled: false
             }
             ICConfigEdit{
                 id:axisNum

@@ -42,6 +42,13 @@ MouseArea{
         border.color: "gray"
         color: "#A0A0F0"
 
+        Text{
+            id:statistics
+            text: qsTr("Total:") + pointModel.count
+            anchors.right: close.left
+            anchors.rightMargin: 20
+        }
+
         ICButton{
             id:close
             text: qsTr("Close")

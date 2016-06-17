@@ -98,7 +98,7 @@ Rectangle {
         id:stackViewSel
         z: 11
         y:topContainer.y
-        x:200
+        x:220
         visible: defineStack.isChecked
         popupWidth: 200
         popupHeight: 150
@@ -295,6 +295,10 @@ Rectangle {
                 stackViewSel.currentIndex = -1;
                 stackType = 0;
                 speed1.visible = false;
+                currentPage = 0;
+                changePage.text = "-->";
+                detailPage.visible  = false;
+                typeSelector.visible = true;
             }
 
         }
@@ -304,7 +308,7 @@ Rectangle {
             text: qsTr("New")
             width: 60
             height: stackViewSel.height
-            x:420
+            x:450
             visible: stackViewSel.visible
             bgColor: "lime"
             onButtonClicked: {
@@ -494,6 +498,21 @@ Rectangle {
             configAddr: "s_rw_0_16_1_294"
             unit: "%"
             configValue: "80.0"
+        }
+    }
+
+    onVisibleChanged:{
+        if(visible){
+            page1.updateCounters();
+            page2.updateCounters();
+            stackSelector.configValue = -1;
+            stackViewSel.currentIndex = -1;
+            stackType = 0;
+            speed1.visible = false;
+            currentPage = 0;
+            changePage.text = "-->";
+            detailPage.visible  = false;
+            typeSelector.visible = true;
         }
     }
 

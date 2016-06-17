@@ -93,6 +93,7 @@ Item {
         property int posWidth: 80
         property int spaceWidth: 70
         property int counteWidth: 60
+        property int axisNameWidth: 30
         Column{
             id:dataSourceContainer
             spacing: 6
@@ -121,12 +122,14 @@ Item {
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
                 }
                 ICConfigEdit{
                     id:motor1
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -134,6 +137,7 @@ Item {
                     configName: AxisDefine.axisInfos[2].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -141,6 +145,7 @@ Item {
                     configName: AxisDefine.axisInfos[3].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -148,6 +153,7 @@ Item {
                     configName: AxisDefine.axisInfos[4].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -155,12 +161,14 @@ Item {
                     configName: AxisDefine.axisInfos[5].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
                 }
 
             }
 
             Column{
                 id:offsetPosContainer
+                property int offsetNameWidth: 50
                 spacing: 4
                 visible: offsetEn.isChecked
                 ICConfigEdit{
@@ -168,6 +176,7 @@ Item {
                     configName:qsTr("X Offset")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: offsetPosContainer.offsetNameWidth
 
                 }
                 ICConfigEdit{
@@ -175,6 +184,7 @@ Item {
                     configName:qsTr("Y Offset")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: offsetPosContainer.offsetNameWidth
 
                 }
                 ICConfigEdit{
@@ -182,6 +192,7 @@ Item {
                     configName:qsTr("Z Offset")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: offsetPosContainer.offsetNameWidth
 
                 }
             }
@@ -194,6 +205,7 @@ Item {
                     configName: qsTr("Space0")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
+                    configNameWidth: 80
                 }
                 ICConfigEdit{
                     id:count0
@@ -206,6 +218,7 @@ Item {
                     configName: qsTr("Space1")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
+                    configNameWidth: space0.configNameWidth
                 }
                 ICConfigEdit{
                     id:count1
@@ -218,7 +231,7 @@ Item {
                     configName: qsTr("Space2")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
-                    //                    visible: mode == 0
+                    configNameWidth: space0.configNameWidth
 
                 }
                 ICConfigEdit{
@@ -286,7 +299,8 @@ Item {
     }
 
     onVisibleChanged: {
-        updateCounters();
+        if(visible)
+            updateCounters();
     }
     onDataSourceChanged: {
         var items = dataSource;

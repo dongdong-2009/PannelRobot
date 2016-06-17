@@ -273,6 +273,10 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 
 void PanelRobotController::sendKnobCommandToHost(int knob)
 {
+    if(knob == CMD_AUTO)
+    {
+        modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
+    }
     modifyConfigValue(ICAddr_System_Retain_1, knob);
 }
 

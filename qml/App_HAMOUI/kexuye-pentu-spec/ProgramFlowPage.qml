@@ -41,9 +41,14 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5));
+//        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
+//        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+        ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));     //close
+        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
 
         ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
@@ -55,6 +60,9 @@ ProgramFlowPage {
     }
     function pentuActionEnd(actionObject){
         var ret = [];
+
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
+
 //         generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
@@ -65,7 +73,7 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 poen
 //        ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));                       //Y034 poen
-        ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag5));
+        ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag5));
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 0, 0,actionObject.flag5));  //Y034
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
@@ -76,8 +84,6 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
 //        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));                     //Y034 poen
         ret.push(LocalTeach.generateFlagAction(actionObject.flag5, qsTr("positive")));
-
-        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 
         return ret;
     }

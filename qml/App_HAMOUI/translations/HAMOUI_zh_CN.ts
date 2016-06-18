@@ -3914,6 +3914,26 @@ please chose!</source>
         <source>Offset Curve</source>
         <translation>相对曲线</translation>
     </message>
+    <message>
+        <source>P Line 3D</source>
+        <translation>姿势直线</translation>
+    </message>
+    <message>
+        <source>P Curve 3D</source>
+        <translation>姿势曲线</translation>
+    </message>
+    <message>
+        <source>PO Line 3D</source>
+        <translation>相对姿势直线</translation>
+    </message>
+    <message>
+        <source>PO Curve 3D</source>
+        <translation>相对姿势曲线</translation>
+    </message>
+    <message>
+        <source>PCircle</source>
+        <translation>姿势整圆</translation>
+    </message>
 </context>
 <context>
     <name>PointManager</name>
@@ -5482,6 +5502,22 @@ please chose!</source>
     <message>
         <source>End Speed:</source>
         <translation>结束速度:</translation>
+    </message>
+    <message>
+        <source>Curve3D-Pose:</source>
+        <translation>姿势曲线:</translation>
+    </message>
+    <message>
+        <source>PO Curve 3D:</source>
+        <translation>相对姿势曲线:</translation>
+    </message>
+    <message>
+        <source>P Circle:</source>
+        <translation>姿势整圆:</translation>
+    </message>
+    <message>
+        <source>PO Line 3D:</source>
+        <translation>相对姿势直线:</translation>
     </message>
 </context>
 <context>

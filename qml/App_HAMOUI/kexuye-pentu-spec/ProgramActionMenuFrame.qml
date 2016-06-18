@@ -151,13 +151,13 @@ ProgramActionMenuFrame{
             setModeEditorHelper(LocalTeach.pentuModes.ArcU3DRepeat, ptArc_U.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptArc_Z.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.ArcZ3DRepeat, ptArc_Z.text, qsTr("Set TPos"), qsTr("Set EPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.ArcZ3DRepeat, ptArc_Z.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptArc_Saw.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.ArcSaw3DRepeat, ptArc_Saw.text, qsTr("Set TPos"), qsTr("Set EPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.ArcSaw3DRepeat, ptArc_Saw.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptArc_Dir.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.ArcDir3DRepeat, ptArc_Dir.text, qsTr("Set TPos"), qsTr("Set EPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.ArcDir3DRepeat, ptArc_Dir.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
     }
 }

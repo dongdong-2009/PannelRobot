@@ -3189,7 +3189,7 @@
     </message>
     <message>
         <source>z length</source>
-        <translation>喷嘴高度</translation>
+        <translation>弧顶高度</translation>
     </message>
     <message>
         <source>Dir Length</source>

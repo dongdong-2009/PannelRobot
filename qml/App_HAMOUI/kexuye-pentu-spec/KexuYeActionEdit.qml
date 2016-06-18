@@ -342,6 +342,7 @@ Item {
             }
             ICConfigEdit{
                 id:zlength
+                visible: mode > 3 ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("z length")
                 configAddr: "s_rw_0_32_3_1300"

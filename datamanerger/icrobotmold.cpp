@@ -1648,3 +1648,25 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
     }
     return ret;
 }
+
+quint32 CompileInfo::CheckSum() const
+{
+    quint32 sum = 0;
+    for(int i = 0; i < compiledProgram_.size(); ++i)
+    {
+        if(compiledProgram_.at(i).at(0) != F_CMD_SYNC_END &&
+                compiledProgram_.at(i).at(0) != F_CMD_SYNC_START)
+            sum += compiledProgram_.at(i).last();
+    }
+    return sum;
+}
+
+quint32 ICRobotMold::CheckSum() const
+{
+    quint32 sum = 0;
+    for(int i = 0; i < 9; ++i)
+    {
+        sum += programs_.at(i).CheckSum();
+    }
+    return (-sum) & 0xFFFF;
+}

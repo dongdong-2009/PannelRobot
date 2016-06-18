@@ -86,6 +86,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_8,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
     ICAddr_System_Retain_9,//< 0：正常发机程序；1：测试程序
     ICAddr_System_Retain_10,//< 0：正常发机程序；1：绝对值电机读数测试
+    ICAddr_System_Retain_11,//< 所有教导程序校验和
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
     //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
@@ -662,6 +663,11 @@ typedef enum
 	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
 	F_CMD_SPEED_SMOOTH,			//< 轨迹速度平滑设定 起始速度，终止速度
 
+
+    F_CMD_ARC3D_MOVE_POINT_POSE,   //< 按点位姿势弧线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+	F_CMD_ARC_RELATIVE_POSE,	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+    F_CMD_ARC3D_MOVE_POSE,         //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
     /**************************************************************************/
@@ -788,6 +794,10 @@ typedef enum
     ALARM_SERVO_ABS_CRC_ERR, //<名字：伺服绝对值位置读取校验失败
     ALARM_SERVO_ABS_FUNC_ERR, //<名字：伺服绝对值位置读取功能码错误
     ALARM_SERVO_ABS_OVERTIME_ERR, //<名字：伺服绝对值位置读取超时
+    ALARM_IO_CONNET2_ERR, //<名字：与IO板2通讯失败
+    ALARM_IO_CONNET3_ERR, //<名字：与IO板3通讯失败
+    ALARM_IO_CONNET4_ERR, //<名字：与IO板4通讯失败
+    ALARM_PROGRAM_CHANGE_ERR, //<名字：手控和主机教导程序不一致
 
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警

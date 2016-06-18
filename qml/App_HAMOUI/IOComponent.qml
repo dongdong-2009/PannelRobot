@@ -77,8 +77,12 @@ Rectangle {
         function generatePageBaseDefines(defs,type){
             var ioView = Qt.createComponent('IOComponentView.qml');
             var ret = [];
+            var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+            if(ioBoardCount == 0)
+                ioBoardCount = 1;
             if (ioView.status === Component.Ready){
-                var pageCount = Math.ceil(defs.length / 8);
+                var l = Math.min(ioBoardCount * 32, defs.length);
+                var pageCount = Math.ceil(l / 8);
                 for(var i = 0; i < pageCount; ++i){
                     ret[i] = ioView.createObject(ioContaner,
                                                  {"ioDefines":ioDefinesToViewDefines(defs.slice(i * 8, (i + 1) * 8), i * 8), "type":type})

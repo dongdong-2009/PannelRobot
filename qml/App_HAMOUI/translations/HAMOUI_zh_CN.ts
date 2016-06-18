@@ -389,6 +389,22 @@
         <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
         <translation>伺服绝对值位置读取超时</translation>
     </message>
+    <message>
+        <source>ALARM_IO_CONNET2_ERR</source>
+        <translation>与IO板2通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET3_ERR</source>
+        <translation>与IO板3通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET4_ERR</source>
+        <translation>与IO板4通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_CHANGE_ERR</source>
+        <translation>手控和主机教导程序不一致</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -1487,35 +1503,35 @@
     </message>
     <message>
         <source>X050</source>
-        <translation type="obsolete">X050</translation>
+        <translation>X050</translation>
     </message>
     <message>
         <source>X051</source>
-        <translation type="obsolete">X051</translation>
+        <translation>X051</translation>
     </message>
     <message>
         <source>X052</source>
-        <translation type="obsolete">X052</translation>
+        <translation>X052</translation>
     </message>
     <message>
         <source>X053</source>
-        <translation type="obsolete">X053</translation>
+        <translation>X053</translation>
     </message>
     <message>
         <source>X054</source>
-        <translation type="obsolete">X054</translation>
+        <translation>X054</translation>
     </message>
     <message>
         <source>X055</source>
-        <translation type="obsolete">X055</translation>
+        <translation>X055</translation>
     </message>
     <message>
         <source>X056</source>
-        <translation type="obsolete">X056</translation>
+        <translation>X056</translation>
     </message>
     <message>
         <source>X057</source>
-        <translation type="obsolete">X057</translation>
+        <translation>X057</translation>
     </message>
     <message>
         <source>EuX010</source>
@@ -1977,6 +1993,1158 @@
         <source>Time Y047</source>
         <translation>时间输出Y047</translation>
     </message>
+    <message>
+        <source>Y040</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y041</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y042</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y043</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y044</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y045</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y046</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y047</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y050</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y051</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y052</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y053</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y054</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y055</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y056</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y057</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y060</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y061</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y062</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y063</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y064</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y065</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y066</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y067</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y070</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y071</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y072</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y073</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y074</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y075</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y076</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y077</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y100</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y101</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y102</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y103</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y104</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y105</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y106</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y107</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y110</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y111</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y112</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y113</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y114</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y115</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y116</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y117</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y120</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y121</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y122</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y123</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y124</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y125</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y126</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y127</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y130</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y131</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y132</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y133</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y134</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y135</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y136</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y137</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y140</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y141</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y142</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y143</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y144</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y145</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y146</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y147</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y150</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y151</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y152</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y153</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y154</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y155</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y156</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y157</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y160</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y161</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y162</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y163</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y164</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y165</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y166</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y167</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y170</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y171</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y172</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y173</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y174</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y175</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y176</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y177</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y200</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y201</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y202</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y203</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y204</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y205</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y206</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y207</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>X060</source>
+        <translation>X060</translation>
+    </message>
+    <message>
+        <source>X061</source>
+        <translation>X061</translation>
+    </message>
+    <message>
+        <source>X062</source>
+        <translation>X062</translation>
+    </message>
+    <message>
+        <source>X063</source>
+        <translation>X063</translation>
+    </message>
+    <message>
+        <source>X064</source>
+        <translation>X064</translation>
+    </message>
+    <message>
+        <source>X065</source>
+        <translation>X065</translation>
+    </message>
+    <message>
+        <source>X066</source>
+        <translation>X066</translation>
+    </message>
+    <message>
+        <source>X067</source>
+        <translation>X067</translation>
+    </message>
+    <message>
+        <source>X070</source>
+        <translation>X070</translation>
+    </message>
+    <message>
+        <source>X071</source>
+        <translation>X071</translation>
+    </message>
+    <message>
+        <source>X072</source>
+        <translation>X072</translation>
+    </message>
+    <message>
+        <source>X073</source>
+        <translation>X073</translation>
+    </message>
+    <message>
+        <source>X074</source>
+        <translation>X074</translation>
+    </message>
+    <message>
+        <source>X075</source>
+        <translation>X075</translation>
+    </message>
+    <message>
+        <source>X076</source>
+        <translation>X076</translation>
+    </message>
+    <message>
+        <source>X077</source>
+        <translation>X077</translation>
+    </message>
+    <message>
+        <source>X100</source>
+        <translation>X100</translation>
+    </message>
+    <message>
+        <source>X101</source>
+        <translation>X101</translation>
+    </message>
+    <message>
+        <source>X102</source>
+        <translation>X102</translation>
+    </message>
+    <message>
+        <source>X103</source>
+        <translation>X103</translation>
+    </message>
+    <message>
+        <source>X104</source>
+        <translation>X104</translation>
+    </message>
+    <message>
+        <source>X105</source>
+        <translation>X105</translation>
+    </message>
+    <message>
+        <source>X106</source>
+        <translation>X106</translation>
+    </message>
+    <message>
+        <source>X107</source>
+        <translation>X107</translation>
+    </message>
+    <message>
+        <source>X110</source>
+        <translation>X110</translation>
+    </message>
+    <message>
+        <source>X111</source>
+        <translation>X111</translation>
+    </message>
+    <message>
+        <source>X112</source>
+        <translation>X112</translation>
+    </message>
+    <message>
+        <source>X113</source>
+        <translation>X113</translation>
+    </message>
+    <message>
+        <source>X114</source>
+        <translation>X114</translation>
+    </message>
+    <message>
+        <source>X115</source>
+        <translation>X115</translation>
+    </message>
+    <message>
+        <source>X116</source>
+        <translation>X116</translation>
+    </message>
+    <message>
+        <source>X117</source>
+        <translation>X117</translation>
+    </message>
+    <message>
+        <source>X120</source>
+        <translation>X120</translation>
+    </message>
+    <message>
+        <source>X121</source>
+        <translation>X121</translation>
+    </message>
+    <message>
+        <source>X122</source>
+        <translation>X122</translation>
+    </message>
+    <message>
+        <source>X123</source>
+        <translation>X123</translation>
+    </message>
+    <message>
+        <source>X124</source>
+        <translation>X124</translation>
+    </message>
+    <message>
+        <source>X125</source>
+        <translation>X125</translation>
+    </message>
+    <message>
+        <source>X126</source>
+        <translation>X126</translation>
+    </message>
+    <message>
+        <source>X127</source>
+        <translation>X127</translation>
+    </message>
+    <message>
+        <source>X130</source>
+        <translation>X130</translation>
+    </message>
+    <message>
+        <source>X131</source>
+        <translation>X131</translation>
+    </message>
+    <message>
+        <source>X132</source>
+        <translation>X132</translation>
+    </message>
+    <message>
+        <source>X133</source>
+        <translation>X133</translation>
+    </message>
+    <message>
+        <source>X134</source>
+        <translation>X134</translation>
+    </message>
+    <message>
+        <source>X135</source>
+        <translation>X135</translation>
+    </message>
+    <message>
+        <source>X136</source>
+        <translation>X136</translation>
+    </message>
+    <message>
+        <source>X137</source>
+        <translation>X137</translation>
+    </message>
+    <message>
+        <source>X140</source>
+        <translation>X140</translation>
+    </message>
+    <message>
+        <source>X141</source>
+        <translation>X141</translation>
+    </message>
+    <message>
+        <source>X142</source>
+        <translation>X142</translation>
+    </message>
+    <message>
+        <source>X143</source>
+        <translation>X143</translation>
+    </message>
+    <message>
+        <source>X144</source>
+        <translation>X144</translation>
+    </message>
+    <message>
+        <source>X145</source>
+        <translation>X145</translation>
+    </message>
+    <message>
+        <source>X146</source>
+        <translation>X146</translation>
+    </message>
+    <message>
+        <source>X147</source>
+        <translation>X147</translation>
+    </message>
+    <message>
+        <source>X150</source>
+        <translation>X150</translation>
+    </message>
+    <message>
+        <source>X151</source>
+        <translation>X151</translation>
+    </message>
+    <message>
+        <source>X152</source>
+        <translation>X152</translation>
+    </message>
+    <message>
+        <source>X153</source>
+        <translation>X153</translation>
+    </message>
+    <message>
+        <source>X154</source>
+        <translation>X154</translation>
+    </message>
+    <message>
+        <source>X155</source>
+        <translation>X155</translation>
+    </message>
+    <message>
+        <source>X156</source>
+        <translation>X156</translation>
+    </message>
+    <message>
+        <source>X157</source>
+        <translation>X157</translation>
+    </message>
+    <message>
+        <source>X160</source>
+        <translation>X160</translation>
+    </message>
+    <message>
+        <source>X161</source>
+        <translation>X161</translation>
+    </message>
+    <message>
+        <source>X162</source>
+        <translation>X162</translation>
+    </message>
+    <message>
+        <source>X163</source>
+        <translation>X163</translation>
+    </message>
+    <message>
+        <source>X164</source>
+        <translation>X164</translation>
+    </message>
+    <message>
+        <source>X165</source>
+        <translation>X165</translation>
+    </message>
+    <message>
+        <source>X166</source>
+        <translation>X166</translation>
+    </message>
+    <message>
+        <source>X167</source>
+        <translation>X167</translation>
+    </message>
+    <message>
+        <source>X170</source>
+        <translation>X170</translation>
+    </message>
+    <message>
+        <source>X171</source>
+        <translation>X171</translation>
+    </message>
+    <message>
+        <source>X172</source>
+        <translation>X172</translation>
+    </message>
+    <message>
+        <source>X173</source>
+        <translation>X173</translation>
+    </message>
+    <message>
+        <source>X174</source>
+        <translation>X174</translation>
+    </message>
+    <message>
+        <source>X175</source>
+        <translation>X175</translation>
+    </message>
+    <message>
+        <source>X176</source>
+        <translation>X176</translation>
+    </message>
+    <message>
+        <source>X177</source>
+        <translation>X177</translation>
+    </message>
+    <message>
+        <source>X200</source>
+        <translation>X200</translation>
+    </message>
+    <message>
+        <source>X201</source>
+        <translation>X201</translation>
+    </message>
+    <message>
+        <source>X202</source>
+        <translation>X202</translation>
+    </message>
+    <message>
+        <source>X203</source>
+        <translation>X203</translation>
+    </message>
+    <message>
+        <source>X204</source>
+        <translation>X204</translation>
+    </message>
+    <message>
+        <source>X205</source>
+        <translation>X205</translation>
+    </message>
+    <message>
+        <source>X206</source>
+        <translation>X206</translation>
+    </message>
+    <message>
+        <source>X207</source>
+        <translation>X207</translation>
+    </message>
+    <message>
+        <source>Normal Y050</source>
+        <translation>普通输出Y050</translation>
+    </message>
+    <message>
+        <source>Normal Y051</source>
+        <translation>普通输出Y051</translation>
+    </message>
+    <message>
+        <source>Normal Y052</source>
+        <translation>普通输出Y052</translation>
+    </message>
+    <message>
+        <source>Normal Y053</source>
+        <translation>普通输出Y053</translation>
+    </message>
+    <message>
+        <source>Normal Y054</source>
+        <translation>普通输出Y054</translation>
+    </message>
+    <message>
+        <source>Normal Y055</source>
+        <translation>普通输出Y055</translation>
+    </message>
+    <message>
+        <source>Normal Y056</source>
+        <translation>普通输出Y056</translation>
+    </message>
+    <message>
+        <source>Normal Y057</source>
+        <translation>普通输出Y057</translation>
+    </message>
+    <message>
+        <source>Normal Y060</source>
+        <translation>普通输出Y060</translation>
+    </message>
+    <message>
+        <source>Normal Y061</source>
+        <translation>普通输出Y061</translation>
+    </message>
+    <message>
+        <source>Normal Y062</source>
+        <translation>普通输出Y062</translation>
+    </message>
+    <message>
+        <source>Normal Y063</source>
+        <translation>普通输出Y063</translation>
+    </message>
+    <message>
+        <source>Normal Y064</source>
+        <translation>普通输出Y064</translation>
+    </message>
+    <message>
+        <source>Normal Y065</source>
+        <translation>普通输出Y065</translation>
+    </message>
+    <message>
+        <source>Normal Y066</source>
+        <translation>普通输出Y066</translation>
+    </message>
+    <message>
+        <source>Normal Y067</source>
+        <translation>普通输出Y067</translation>
+    </message>
+    <message>
+        <source>Normal Y070</source>
+        <translation>普通输出Y070</translation>
+    </message>
+    <message>
+        <source>Normal Y071</source>
+        <translation>普通输出Y071</translation>
+    </message>
+    <message>
+        <source>Normal Y072</source>
+        <translation>普通输出Y072</translation>
+    </message>
+    <message>
+        <source>Normal Y073</source>
+        <translation>普通输出Y073</translation>
+    </message>
+    <message>
+        <source>Normal Y074</source>
+        <translation>普通输出Y074</translation>
+    </message>
+    <message>
+        <source>Normal Y075</source>
+        <translation>普通输出Y075</translation>
+    </message>
+    <message>
+        <source>Normal Y076</source>
+        <translation>普通输出Y076</translation>
+    </message>
+    <message>
+        <source>Normal Y077</source>
+        <translation>普通输出Y077</translation>
+    </message>
+    <message>
+        <source>Normal Y100</source>
+        <translation>普通输出Y100</translation>
+    </message>
+    <message>
+        <source>Normal Y101</source>
+        <translation>普通输出Y101</translation>
+    </message>
+    <message>
+        <source>Normal Y102</source>
+        <translation>普通输出Y102</translation>
+    </message>
+    <message>
+        <source>Normal Y103</source>
+        <translation>普通输出Y103</translation>
+    </message>
+    <message>
+        <source>Normal Y104</source>
+        <translation>普通输出Y104</translation>
+    </message>
+    <message>
+        <source>Normal Y105</source>
+        <translation>普通输出Y105</translation>
+    </message>
+    <message>
+        <source>Normal Y106</source>
+        <translation>普通输出Y106</translation>
+    </message>
+    <message>
+        <source>Normal Y107</source>
+        <translation>普通输出Y107</translation>
+    </message>
+    <message>
+        <source>Normal Y110</source>
+        <translation>普通输出Y110</translation>
+    </message>
+    <message>
+        <source>Normal Y111</source>
+        <translation>普通输出Y111</translation>
+    </message>
+    <message>
+        <source>Normal Y112</source>
+        <translation>普通输出Y112</translation>
+    </message>
+    <message>
+        <source>Normal Y113</source>
+        <translation>普通输出Y113</translation>
+    </message>
+    <message>
+        <source>Normal Y114</source>
+        <translation>普通输出Y114</translation>
+    </message>
+    <message>
+        <source>Normal Y115</source>
+        <translation>普通输出Y115</translation>
+    </message>
+    <message>
+        <source>Normal Y116</source>
+        <translation>普通输出Y116</translation>
+    </message>
+    <message>
+        <source>Normal Y117</source>
+        <translation>普通输出Y117</translation>
+    </message>
+    <message>
+        <source>Normal Y120</source>
+        <translation>普通输出Y120</translation>
+    </message>
+    <message>
+        <source>Normal Y121</source>
+        <translation>普通输出Y121</translation>
+    </message>
+    <message>
+        <source>Normal Y122</source>
+        <translation>普通输出Y122</translation>
+    </message>
+    <message>
+        <source>Normal Y123</source>
+        <translation>普通输出Y123</translation>
+    </message>
+    <message>
+        <source>Normal Y124</source>
+        <translation>普通输出Y124</translation>
+    </message>
+    <message>
+        <source>Normal Y125</source>
+        <translation>普通输出Y125</translation>
+    </message>
+    <message>
+        <source>Normal Y126</source>
+        <translation>普通输出Y126</translation>
+    </message>
+    <message>
+        <source>Normal Y127</source>
+        <translation>普通输出Y127</translation>
+    </message>
+    <message>
+        <source>Normal Y130</source>
+        <translation>普通输出Y130</translation>
+    </message>
+    <message>
+        <source>Normal Y131</source>
+        <translation>普通输出Y131</translation>
+    </message>
+    <message>
+        <source>Normal Y132</source>
+        <translation>普通输出Y132</translation>
+    </message>
+    <message>
+        <source>Normal Y133</source>
+        <translation>普通输出Y133</translation>
+    </message>
+    <message>
+        <source>Normal Y134</source>
+        <translation>普通输出Y134</translation>
+    </message>
+    <message>
+        <source>Normal Y135</source>
+        <translation>普通输出Y135</translation>
+    </message>
+    <message>
+        <source>Normal Y136</source>
+        <translation>普通输出Y136</translation>
+    </message>
+    <message>
+        <source>Normal Y137</source>
+        <translation>普通输出Y137</translation>
+    </message>
+    <message>
+        <source>Normal Y140</source>
+        <translation>普通输出Y140</translation>
+    </message>
+    <message>
+        <source>Normal Y141</source>
+        <translation>普通输出Y141</translation>
+    </message>
+    <message>
+        <source>Normal Y142</source>
+        <translation>普通输出Y142</translation>
+    </message>
+    <message>
+        <source>Normal Y143</source>
+        <translation>普通输出Y143</translation>
+    </message>
+    <message>
+        <source>Normal Y144</source>
+        <translation>普通输出Y144</translation>
+    </message>
+    <message>
+        <source>Normal Y145</source>
+        <translation>普通输出Y145</translation>
+    </message>
+    <message>
+        <source>Normal Y146</source>
+        <translation>普通输出Y146</translation>
+    </message>
+    <message>
+        <source>Normal Y147</source>
+        <translation>普通输出Y147</translation>
+    </message>
+    <message>
+        <source>Normal Y150</source>
+        <translation>普通输出Y150</translation>
+    </message>
+    <message>
+        <source>Normal Y151</source>
+        <translation>普通输出Y151</translation>
+    </message>
+    <message>
+        <source>Normal Y152</source>
+        <translation>普通输出Y152</translation>
+    </message>
+    <message>
+        <source>Normal Y153</source>
+        <translation>普通输出Y153</translation>
+    </message>
+    <message>
+        <source>Normal Y154</source>
+        <translation>普通输出Y154</translation>
+    </message>
+    <message>
+        <source>Normal Y155</source>
+        <translation>普通输出Y155</translation>
+    </message>
+    <message>
+        <source>Normal Y156</source>
+        <translation>普通输出Y156</translation>
+    </message>
+    <message>
+        <source>Normal Y157</source>
+        <translation>普通输出Y157</translation>
+    </message>
+    <message>
+        <source>Normal Y160</source>
+        <translation>普通输出Y160</translation>
+    </message>
+    <message>
+        <source>Normal Y161</source>
+        <translation>普通输出Y161</translation>
+    </message>
+    <message>
+        <source>Normal Y162</source>
+        <translation>普通输出Y162</translation>
+    </message>
+    <message>
+        <source>Normal Y163</source>
+        <translation>普通输出Y163</translation>
+    </message>
+    <message>
+        <source>Normal Y164</source>
+        <translation>普通输出Y164</translation>
+    </message>
+    <message>
+        <source>Normal Y165</source>
+        <translation>普通输出Y165</translation>
+    </message>
+    <message>
+        <source>Normal Y166</source>
+        <translation>普通输出Y166</translation>
+    </message>
+    <message>
+        <source>Normal Y167</source>
+        <translation>普通输出Y167</translation>
+    </message>
+    <message>
+        <source>Normal Y170</source>
+        <translation>普通输出Y170</translation>
+    </message>
+    <message>
+        <source>Normal Y171</source>
+        <translation>普通输出Y171</translation>
+    </message>
+    <message>
+        <source>Normal Y172</source>
+        <translation>普通输出Y172</translation>
+    </message>
+    <message>
+        <source>Normal Y173</source>
+        <translation>普通输出Y173</translation>
+    </message>
+    <message>
+        <source>Normal Y174</source>
+        <translation>普通输出Y174</translation>
+    </message>
+    <message>
+        <source>Normal Y175</source>
+        <translation>普通输出Y175</translation>
+    </message>
+    <message>
+        <source>Normal Y176</source>
+        <translation>普通输出Y176</translation>
+    </message>
+    <message>
+        <source>Normal Y177</source>
+        <translation>普通输出Y177</translation>
+    </message>
+    <message>
+        <source>Normal Y200</source>
+        <translation>普通输出Y200</translation>
+    </message>
+    <message>
+        <source>Normal Y201</source>
+        <translation>普通输出Y201</translation>
+    </message>
+    <message>
+        <source>Normal Y202</source>
+        <translation>普通输出Y202</translation>
+    </message>
+    <message>
+        <source>Normal Y203</source>
+        <translation>普通输出Y203</translation>
+    </message>
+    <message>
+        <source>Normal Y204</source>
+        <translation>普通输出Y204</translation>
+    </message>
+    <message>
+        <source>Normal Y205</source>
+        <translation>普通输出Y205</translation>
+    </message>
+    <message>
+        <source>Normal Y206</source>
+        <translation>普通输出Y206</translation>
+    </message>
+    <message>
+        <source>Normal Y207</source>
+        <translation>普通输出Y207</translation>
+    </message>
 </context>
 <context>
     <name>JogPage</name>
@@ -2323,30 +3491,30 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>OriginActionEditorAxisComponent</name>
     <message>
         <source>deg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2387,9 +3555,12 @@
         <source>1.Mode 1
 2.Mode 2
 3.Mode 3</source>
-        <translation>1.已在原点附近:位置大概在原点附近时使用
-2.关机前已急停:只有确定关机前已经拍下急停了才能使用
-3.重新归原点:已在原点附近没归到位的时候,再次归原点的时候使用</translation>
+        <translation>1.已在原点附近:位置大概在原点
+附近时使用
+2.关机前已急停:只有确定关机前
+已经拍下急停了才能使用
+3.重新归原点:已在原点附近没归
+到位的时候,再次归原点的时候使用</translation>
     </message>
     <message>
         <source>Show Help</source>
@@ -3620,6 +4791,10 @@ please chose!</source>
         <source>Save</source>
         <translation>保存</translation>
     </message>
+    <message>
+        <source>Total:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StructConfigs</name>
@@ -3633,7 +4808,7 @@ please chose!</source>
     </message>
     <message>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Machine Struct 2</source>
@@ -3673,7 +4848,7 @@ please chose!</source>
     </message>
     <message>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SACC 2</source>
@@ -3693,7 +4868,7 @@ please chose!</source>
     </message>
     <message>
         <source>m/s²</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SDec Time</source>
@@ -3705,7 +4880,7 @@ please chose!</source>
     </message>
     <message>
         <source>m/s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Axis1 Diff</source>
@@ -3713,7 +4888,7 @@ please chose!</source>
     </message>
     <message>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Axis2 Diff</source>
@@ -3763,55 +4938,55 @@ please chose!</source>
     </message>
     <message>
         <source>kSttIndependent</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttPP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttPPP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRRP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRRPR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTRT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTRTTT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kStt5P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttPPP_RRR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRRPR_BRT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTRTTT_EX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Axis Num</source>
@@ -4745,6 +5920,18 @@ please chose!</source>
     <message>
         <source>please press startup button to return</source>
         <translation>请按启动键复归.</translation>
+    </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation>触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes[F4]</source>
+        <translation>确定[F4]</translation>
+    </message>
+    <message>
+        <source>No[F5]</source>
+        <translation>取消[F5]</translation>
     </message>
 </context>
 <context>

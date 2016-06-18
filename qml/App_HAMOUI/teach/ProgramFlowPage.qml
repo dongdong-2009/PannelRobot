@@ -181,6 +181,7 @@ Rectangle {
 
         var cs;
         var c;
+        var sid;
         if(Teach.hasCounterIDAction(cIAction)){
             cs = Teach.actionCounterIDs(cIAction);
             for(c in cs){
@@ -189,8 +190,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
-            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI - 1);
+            sid = Teach.actionStackID(cIAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI);
+            PData.stackLinesInfo.add(cPI, sid, cI - 1);
         }
         var points;
         var p;
@@ -210,8 +212,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIPAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIPAction.stackID, cI - 1);
-            PData.stackLinesInfo.add(cPI, cIPAction.stackID, cI);
+            sid = Teach.actionStackID(cIPAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI - 1);
+            PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cIPAction)){
             points = Teach.definedPoints.parseActionPointsHelper(cIPAction);
@@ -237,6 +240,7 @@ Rectangle {
 
         var cs;
         var c;
+        var sid;
         if(Teach.hasCounterIDAction(cIAction)){
             cs = Teach.actionCounterIDs(cIAction);
             for(c in cs){
@@ -245,8 +249,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
-            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI + 1);
+            sid = Teach.actionStackID(cIAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI);
+            PData.stackLinesInfo.add(cPI, sid, cI + 1);
         }
         var points;
         var p;
@@ -266,8 +271,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cINAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cINAction.stackID, cI + 1);
-            PData.stackLinesInfo.add(cPI, cINAction.stackID, cI);
+            sid = Teach.actionStackID(cINAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI + 1);
+            PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cINAction)){
             points = Teach.definedPoints.parseActionPointsHelper(cINAction);
@@ -765,7 +771,7 @@ Rectangle {
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
                             saveModules();
-                            hasModify = true;
+//                            hasModify = true;
                         }
                     }
 
@@ -1519,7 +1525,7 @@ Rectangle {
 
             }
             if(Teach.hasStackIDAction(step.mI_ActionObject)){
-                PData.stackLinesInfo.add(which, step.mI_ActionObject.stackID, i);
+                PData.stackLinesInfo.add(which, Teach.actionStackID(step.mI_ActionObject), i);
             }
             if(Teach.canActionUsePoint(step.mI_ActionObject)){
                 var points = Teach.definedPoints.parseActionPointsHelper(step.mI_ActionObject);

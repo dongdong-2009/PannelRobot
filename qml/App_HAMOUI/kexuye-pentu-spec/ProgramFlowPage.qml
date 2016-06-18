@@ -14,14 +14,14 @@ ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
-    function getRecordContent(which){
-        if(which == 0){
-            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-        }
-        else
-            return JSON.parse(panelRobotController.programs(which));
-    }
+//    function getRecordContent(which){
+//        if(which == 0){
+//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+//        }
+//        else
+//            return JSON.parse(panelRobotController.programs(which));
+//    }
 
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
@@ -53,6 +53,7 @@ ProgramFlowPage {
     function pentuActionEnd(actionObject){
         var ret = [];
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
+
         return ret;
     }
 
@@ -523,8 +524,18 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
 
+//        Rotate  degree:
+//         generateOutputAction = function(point, type, status, valveID, time)
+//        generateWaitAction = function(which, type, status, limit)
+        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Rotate OK")));
+        ret.push(LocalTeach.generateWaitAction(17,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(17,0,1,100));
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag3, actionObject.rotateOKCID, 0, 1));
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));
 
-        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
+//        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
 
         return ret;
@@ -636,5 +647,7 @@ ProgramFlowPage {
         panelRobotController.delCounterDef(actionObject.dirCounterID);
         BaseTeach.counterManager.delCounter(actionObject.rotateCounterID);
         panelRobotController.delCounterDef(actionObject.rotateCounterID);
+        BaseTeach.counterManager.delCounter(actionObject.rotateOKCID);
+        panelRobotController.delCounterDef(actionObject.rotateOKCID);
     }
 }

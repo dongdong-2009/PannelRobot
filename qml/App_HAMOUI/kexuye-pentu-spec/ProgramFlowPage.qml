@@ -11,18 +11,17 @@ import "../configs/Keymap.js" as Keymap
 
 
 ProgramFlowPage {
-
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
-//    function getRecordContent(which){
-//        if(which == 0){
-//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//        }
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+        }
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
 
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
@@ -535,13 +534,16 @@ ProgramFlowPage {
         var model = BasePData.programs[which];
         var ret = [];
         LocalPData.stepToKeXuYeRowMap = {};
+        var count = -1;
         for(var i = 0; i < model.count; ++i){
             if(model.get(i).mI_ActionObject.action == LocalTeach.actions.F_CMD_PENTU){
-                if(i == 0){
-                    var rs = pentuActionHead(model.get(0).mI_ActionObject);
+                if(count == -1){
+                    var rs = pentuActionHead(model.get(i).mI_ActionObject);
+                    count = i;
                     for(var j = 0, len = rs.length; j < len; ++j){
-                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
-                        ret.push(rs[j]);
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = 0;
+                        ret.splice(j, 0, rs[j]);
+//                        ret.push(rs[j]);
                     }
                 }
                 var ps = pentuActionToProgram(model.get(i).mI_ActionObject);
@@ -549,14 +551,14 @@ ProgramFlowPage {
                     LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                     ret.push(ps[j]);
                 }
-                if(i == (model.count - 2)){
-                    rs = pentuActionEnd(model.get(0).mI_ActionObject);
+            }else{
+                if(model.get(i).mI_ActionObject.action == LocalTeach.actions.ACT_END && count != -1){
+                    rs = pentuActionEnd(model.get(count).mI_ActionObject);
                     for(j = 0, len = rs.length; j < len; ++j){
                         LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                         ret.push(rs[j]);
                     }
                 }
-            }else{
                 LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                 ret.push(model.get(i).mI_ActionObject);
             }

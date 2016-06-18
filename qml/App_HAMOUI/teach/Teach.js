@@ -770,6 +770,12 @@ actions.F_CMD_ARC2D_MOVE_POINT = actHelper++;   //< 按点位2D弧线运动 平�
 actions.F_CMD_SINGLE_ADD_FUNC = actHelper++;
 actions.F_CMD_ARC_RELATIVE = actHelper++;		//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
 actions.F_CMD_SPEED_SMOOTH = actHelper++;       //< 轨迹速度平滑设定 起始速度，终止速度
+actions.F_CMD_ARC3D_MOVE_POINT_POSE = actHelper++;    //< 按点位姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+actions.F_CMD_ARC_RELATIVE_POSE = actHelper++; 	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+actions.F_CMD_ARC3D_MOVE_POSE = actHelper++;          //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
+actions.F_CMD_LINE_RELATIVE_POSE = actHelper++; 	   //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
@@ -1379,6 +1385,18 @@ var pathActionToStringHandler = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE){
         ret += qsTr("Offset Curve:");
         needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE){
+        ret += qsTr("Curve3D-Pose:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE){
+        ret += qsTr("PO Curve 3D:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE){
+        ret += qsTr("P Circle:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
+        ret += qsTr("PO Line 3D:");
+        needNewLine = true;
     }
 
     var points = actionObject.points;
@@ -1435,6 +1453,12 @@ actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHa
 actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINT_RELATIVE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINE_RELATIVE_POSE, pathActionToStringHandler);
+
+
 actionToStringHandlerMap.put(actions.F_CMD_TEACH_ALARM, customAlarmActiontoStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
@@ -1478,7 +1502,11 @@ var actionObjectToEditableITems = function(actionObject){
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
              actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
              actionObject.action === actions.F_CMD_JOINT_RELATIVE ||
-             actionObject.action === actions.F_CMD_ARC_RELATIVE){
+             actionObject.action === actions.F_CMD_ARC_RELATIVE ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
+             actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
+             actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
         ret = [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -1583,7 +1611,11 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC_RELATIVE;
+            actionObject.action === actions.F_CMD_ARC_RELATIVE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
+            actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
+            actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE;
 }
 
 var canActionTestRun = function(actionObject){

@@ -21,6 +21,11 @@ QMap<int, QStringList> CreatePathActionMotorNamesMap()
     ret.insert(F_CMD_ARCYZ_MOVE_POINT, QStringList()<<"m1"<<"m2");
     ret.insert(F_CMD_MOVE_POSE, QStringList()<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_LINE3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_ARC3D_MOVE_POINT_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_ARC_RELATIVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_ARC3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_LINE_RELATIVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+
     ret.insert(F_CMD_JOINT_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_LINE_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_JOINT_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
@@ -151,30 +156,40 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     item.append(v->value("action").toInt());
     if(action == F_CMD_ARC2D_MOVE_POINT)
         item.append(type);
+    int moldItemAction = item.at(0);
     QVariantList points = v->value("points").toList();
-    if((item.at(0) == F_CMD_LINE2D_MOVE_POINT || item.at(0) == F_CMD_LINEXY_MOVE_POINT ||
-        item.at(0) == F_CMD_LINEXZ_MOVE_POINT || item.at(0) == F_CMD_LINEYZ_MOVE_POINT)
+    if((moldItemAction == F_CMD_LINE2D_MOVE_POINT || moldItemAction == F_CMD_LINEXY_MOVE_POINT ||
+        moldItemAction == F_CMD_LINEXZ_MOVE_POINT || moldItemAction == F_CMD_LINEYZ_MOVE_POINT)
             && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
+    if(moldItemAction == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if((item.at(0) == F_CMD_ARC3D_MOVE_POINT || item.at(0) == F_CMD_ARCXY_MOVE_POINT ||
-        item.at(0) == F_CMD_ARCXZ_MOVE_POINT || item.at(0) == F_CMD_ARCYZ_MOVE_POINT)
+    if((moldItemAction == F_CMD_ARC3D_MOVE_POINT || moldItemAction == F_CMD_ARCXY_MOVE_POINT ||
+        moldItemAction == F_CMD_ARCXZ_MOVE_POINT || moldItemAction == F_CMD_ARCYZ_MOVE_POINT)
             && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_MOVE_POSE && points.size() != 1)
+    if(moldItemAction == F_CMD_MOVE_POSE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_LINE3D_MOVE_POSE && points.size() != 1)
+    if((moldItemAction == F_CMD_LINE3D_MOVE_POSE ||
+//        moldItemAction == F_CMD_ARC3D_MOVE_POINT_POSE ||
+//        moldItemAction == F_CMD_ARC_RELATIVE_POSE ||
+//        moldItemAction == F_CMD_ARC3D_MOVE_POSE ||
+        moldItemAction == F_CMD_LINE_RELATIVE_POSE) && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_JOINT_MOVE_POINT && points.size() != 1)
+    if(moldItemAction == F_CMD_JOINT_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_LINE_RELATIVE && points.size() != 1)
+    if(moldItemAction == F_CMD_LINE_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_JOINT_RELATIVE && points.size() != 1)
+    if(moldItemAction == F_CMD_JOINT_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_ARC3D_MOVE && points.size() != 2)
+    if(moldItemAction == F_CMD_ARC3D_MOVE && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_ARC_RELATIVE && points.size() != 2)
+    if(moldItemAction == F_CMD_ARC_RELATIVE && points.size() != 2)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if((moldItemAction == F_CMD_ARC3D_MOVE_POINT_POSE ||
+        moldItemAction == F_CMD_ARC_RELATIVE_POSE ||
+        moldItemAction == F_CMD_ARC3D_MOVE_POSE
+        ) && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
 
     QVariantMap point;
@@ -459,6 +474,11 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_ARC3D_MOVE, PathActionCompiler);
     ret.insert(F_CMD_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_ARC3D_MOVE_POINT_POSE, PathActionCompiler);
+    ret.insert(F_CMD_ARC_RELATIVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_ARC3D_MOVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_LINE_RELATIVE_POSE, PathActionCompiler);
+
     ret.insert(F_CMD_JOINT_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE_RELATIVE, PathActionCompiler);
     ret.insert(F_CMD_JOINT_RELATIVE, PathActionCompiler);

@@ -8,20 +8,22 @@ import "../teach/Teach.js" as BaseTeach
 import "../../utils/stringhelper.js" as ICString
 import "../ShareData.js" as ShareData
 import "../configs/Keymap.js" as Keymap
+import "../configs/IODefines.js" as IODefines
+
 
 
 ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
-//    function getRecordContent(which){
-//        if(which == 0){
-//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//        }
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+        }
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
 
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
@@ -46,12 +48,35 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
         return ret;
     }
     function pentuActionEnd(actionObject){
         var ret = [];
+//         generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
+        ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
+//        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
+
+        ret.push(LocalTeach.generateOutputAction(17,0,1,17,0));   //gongzhuangzhengzhuang open
+        ret.push(LocalTeach.generateWaitAction(17,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(17,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
+        ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 poen
+//        ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));                       //Y034 poen
+        ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag5));
+//        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 0, 0,actionObject.flag5));  //Y034
+
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
+        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));   //gongzhuangfanzhuang open
+        ret.push(LocalTeach.generateWaitAction(18,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(18,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));                         //close
+        ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
+//        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));                     //Y034 poen
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag5, qsTr("positive")));
+
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 
         return ret;
@@ -529,8 +554,8 @@ ProgramFlowPage {
 //        generateWaitAction = function(which, type, status, limit)
         ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Rotate OK")));
-        ret.push(LocalTeach.generateWaitAction(17,0,0,10));
-        ret.push(LocalTeach.generateWaitAction(17,0,1,100));
+        ret.push(LocalTeach.generateWaitAction(16,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(16,0,1,100));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag3, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));

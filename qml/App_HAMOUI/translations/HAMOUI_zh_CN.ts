@@ -911,6 +911,38 @@
         <source>Line</source>
         <translation>直线</translation>
     </message>
+    <message>
+        <source>pLimit Dir Change to</source>
+        <translation>正极限输入改为</translation>
+    </message>
+    <message>
+        <source>A ON</source>
+        <translation>常开</translation>
+    </message>
+    <message>
+        <source>A OFF</source>
+        <translation>常闭</translation>
+    </message>
+    <message>
+        <source>nLimit Dir Change to</source>
+        <translation>负极限输入改为</translation>
+    </message>
+    <message>
+        <source>Origin move dir Change to</source>
+        <translation>原点复归移动方向改为</translation>
+    </message>
+    <message>
+        <source>N Dir</source>
+        <translation>负方向</translation>
+    </message>
+    <message>
+        <source>P Dir</source>
+        <translation>正方向</translation>
+    </message>
+    <message>
+        <source>INV Move</source>
+        <translation>反向移动</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>

@@ -660,13 +660,15 @@ typedef enum
 	//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
 	//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
     F_CMD_SINGLE_ADD_FUNC,
-	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（X，Y,Z）经过点（X,Y,Z） 速度  延时
 	F_CMD_SPEED_SMOOTH,			//< 轨迹速度平滑设定 起始速度，终止速度
 
 
-    F_CMD_ARC3D_MOVE_POINT_POSE,   //< 按点位姿势弧线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+    F_CMD_ARC3D_MOVE_POINT_POSE,   //< 按点位姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 	F_CMD_ARC_RELATIVE_POSE,	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
     F_CMD_ARC3D_MOVE_POSE,         //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
+	F_CMD_LINE_RELATIVE_POSE,	   //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
@@ -982,7 +984,10 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
     uint32_t atype:4;          //<类型：系统；名字：轴类型；精度：0;单位：；
-    uint32_t reserve1:4;       //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t limit_p_dir:1;    //<类型：系统；名字：正极限输入方向；精度：0;单位：；
+    uint32_t limit_n_dir:1;    //<类型：系统；名字：负极限输入方向；精度：0;单位：；
+    uint32_t origin_dir:1;     //<类型：系统；名字：原点方向选择；精度：0;单位：；
+    uint32_t reserve1:1;       //<类型：系统；名字：预留；精度：0;单位：；
     uint16_t reserve2;         //<类型：系统；名字：预留；精度：0;单位：；
     uint16_t max_speed;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
     uint16_t min_acc_time;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；

@@ -109,6 +109,7 @@ MouseArea{
             ICButton{
                 id:setAsObjectOrigin
                 text: qsTr("Set As Origin")
+                width: 116
                 onButtonClicked: {
                     var tmpPos;
                     var m;

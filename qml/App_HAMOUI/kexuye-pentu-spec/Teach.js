@@ -23,7 +23,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
                                    fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch,
-                                   slope){
+                                   slope, rotateOKCID){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -35,6 +35,15 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag2 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag3 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag4 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag5 = f.flagID;
 //    if(mode == 0){
     switch(plane){
         case 0:
@@ -187,6 +196,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "repeateCount":repeateCount,
         "zlength":zlength,
         "repeateCounterID":rcID,
+        "rotateOKCID":rotateOKCID,
         "dirAxis":dirAxis,
         "dirLength":dirLength,
         "dirSpeed":dirSpeed,
@@ -203,6 +213,9 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "flag0":flag0,
         "flag1":flag1,
         "flag2":flag2,
+        "flag3":flag3,
+        "flag4":flag4,
+        "flag5":flag5,
 //        "startPosSpeed0":startPosSpeed0,
 //        "startPosSpeed1":startPosSpeed1,
 //        "startPosSpeed2":startPosSpeed2,

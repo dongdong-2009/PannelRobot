@@ -27,6 +27,11 @@ Item {
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         var rotateCID = rc.id;
+        var rotateOKCount = rotate.configValue / 90;
+        c = BaseTeach.counterManager.newCounter("", 0, rotateOKCount);
+        var rotateOKCID = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+
         var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
@@ -36,7 +41,7 @@ Item {
                                                 rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
                                                 details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                                                 details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                                                details.fixture1Switch, details.slope));
+                                                details.fixture1Switch, details.slope, rotateOKCID));
         return ret;
     }
 

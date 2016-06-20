@@ -14,22 +14,23 @@ Item {
     height: parent.height
     QtObject{
         id:pdata
-        property int tabWidth: 80
+        property int tabWidth: 98
         property int menuItemHeight: 32
         property int configNameWidth: 150
         property int inputWidth: 100
         property int currentGroup: 0
-        property int checkSumPos: 21
+        property int checkSumPos: 22
+        property bool isInit: false
         property variant configAddrs:
             [
-            ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_2_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_4_0_103","s_rw_4_4_0_103","s_rw_8_4_0_103","s_rw_28_1_0_104","s_rw_29_1_0_104","s_rw_30_1_0_104","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_2_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_4_0_110","s_rw_4_4_0_110","s_rw_8_4_0_110","s_rw_28_1_0_111","s_rw_29_1_0_111","s_rw_30_1_0_111","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_2_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_4_0_117","s_rw_4_4_0_117","s_rw_8_4_0_117","s_rw_28_1_0_118","s_rw_29_1_0_118","s_rw_30_1_0_118","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_121", "s_rw_0_16_0_122", "s_rw_16_16_2_122", "s_rw_0_16_0_123", "s_rw_16_16_0_123", "s_rw_0_8_0_125", "s_rw_8_8_0_125", "s_rw_16_8_0_125", "s_rw_24_4_0_125", "s_rw_0_16_0_126","s_rw_0_16_3_127","s_rw_16_16_3_127","s_rw_16_16_1_126", "s_rw_0_32_0_124", "s_rw_28_4_0_125","s_rw_0_4_0_124","s_rw_4_4_0_124","s_rw_8_4_0_124","s_rw_28_1_0_125","s_rw_29_1_0_125","s_rw_30_1_0_125","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_128", "s_rw_0_16_0_129", "s_rw_16_16_2_129", "s_rw_0_16_0_130", "s_rw_16_16_0_130", "s_rw_0_8_0_132", "s_rw_8_8_0_132", "s_rw_16_8_0_132", "s_rw_24_4_0_132", "s_rw_0_16_0_133","s_rw_0_16_3_134","s_rw_16_16_3_134","s_rw_16_16_1_133", "s_rw_0_32_0_131", "s_rw_28_4_0_132","s_rw_0_4_0_131","s_rw_4_4_0_131","s_rw_8_4_0_131","s_rw_28_1_0_132","s_rw_29_1_0_132","s_rw_30_1_0_132","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_135", "s_rw_0_16_0_136", "s_rw_16_16_2_136", "s_rw_0_16_0_137", "s_rw_16_16_0_137", "s_rw_0_8_0_139", "s_rw_8_8_0_139", "s_rw_16_8_0_139", "s_rw_24_4_0_139", "s_rw_0_16_0_140","s_rw_0_16_3_141","s_rw_16_16_3_141","s_rw_16_16_1_140", "s_rw_0_32_0_138", "s_rw_28_4_0_139","s_rw_0_4_0_138","s_rw_4_4_0_138","s_rw_8_4_0_138","s_rw_28_1_0_139","s_rw_29_1_0_139","s_rw_30_1_0_139","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_2_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_4_0_145","s_rw_4_4_0_145","s_rw_8_4_0_145","s_rw_28_1_0_146","s_rw_29_1_0_146","s_rw_30_1_0_146","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_2_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_4_0_152","s_rw_4_4_0_152","s_rw_8_4_0_152","s_rw_28_1_0_153","s_rw_29_1_0_153","s_rw_30_1_0_153","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_2_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_4_0_103","s_rw_4_4_0_103","s_rw_8_4_0_103","s_rw_28_1_0_104","s_rw_29_1_0_104","s_rw_30_1_0_104","s_rw_31_1_0_104","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_2_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_4_0_110","s_rw_4_4_0_110","s_rw_8_4_0_110","s_rw_28_1_0_111","s_rw_29_1_0_111","s_rw_30_1_0_111","s_rw_31_1_0_111","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_2_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_4_0_117","s_rw_4_4_0_117","s_rw_8_4_0_117","s_rw_28_1_0_118","s_rw_29_1_0_118","s_rw_30_1_0_118","s_rw_31_1_0_118","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_121", "s_rw_0_16_0_122", "s_rw_16_16_2_122", "s_rw_0_16_0_123", "s_rw_16_16_0_123", "s_rw_0_8_0_125", "s_rw_8_8_0_125", "s_rw_16_8_0_125", "s_rw_24_4_0_125", "s_rw_0_16_0_126","s_rw_0_16_3_127","s_rw_16_16_3_127","s_rw_16_16_1_126", "s_rw_0_32_0_124", "s_rw_28_4_0_125","s_rw_0_4_0_124","s_rw_4_4_0_124","s_rw_8_4_0_124","s_rw_28_1_0_125","s_rw_29_1_0_125","s_rw_30_1_0_125","s_rw_31_1_0_125","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_128", "s_rw_0_16_0_129", "s_rw_16_16_2_129", "s_rw_0_16_0_130", "s_rw_16_16_0_130", "s_rw_0_8_0_132", "s_rw_8_8_0_132", "s_rw_16_8_0_132", "s_rw_24_4_0_132", "s_rw_0_16_0_133","s_rw_0_16_3_134","s_rw_16_16_3_134","s_rw_16_16_1_133", "s_rw_0_32_0_131", "s_rw_28_4_0_132","s_rw_0_4_0_131","s_rw_4_4_0_131","s_rw_8_4_0_131","s_rw_28_1_0_132","s_rw_29_1_0_132","s_rw_30_1_0_132","s_rw_31_1_0_132","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_135", "s_rw_0_16_0_136", "s_rw_16_16_2_136", "s_rw_0_16_0_137", "s_rw_16_16_0_137", "s_rw_0_8_0_139", "s_rw_8_8_0_139", "s_rw_16_8_0_139", "s_rw_24_4_0_139", "s_rw_0_16_0_140","s_rw_0_16_3_141","s_rw_16_16_3_141","s_rw_16_16_1_140", "s_rw_0_32_0_138", "s_rw_28_4_0_139","s_rw_0_4_0_138","s_rw_4_4_0_138","s_rw_8_4_0_138","s_rw_28_1_0_139","s_rw_29_1_0_139","s_rw_30_1_0_139","s_rw_31_1_0_139","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_2_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_4_0_145","s_rw_4_4_0_145","s_rw_8_4_0_145","s_rw_28_1_0_146","s_rw_29_1_0_146","s_rw_30_1_0_146","s_rw_31_1_0_146","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_2_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_4_0_152","s_rw_4_4_0_152","s_rw_8_4_0_152","s_rw_28_1_0_153","s_rw_29_1_0_153","s_rw_30_1_0_153","s_rw_31_1_0_153","s_rw_0_32_0_185"],
         ]
 
         property variant sentPulseAddrs: ["c_ro_0_32_3_900","c_ro_0_32_3_904",
@@ -271,6 +272,19 @@ Item {
         panelRobotController.syncConfigs();
     }
 
+    function onMotorEnChanged(group, isChecked){
+        if(!pdata.isInit) return;
+        var addr = pdata.configAddrs[group][21];
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, isChecked ? 1 : 0);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendOperationLog(AxisDefine.axisInfos[group].name + qsTr("Change to") + (isChecked ? qsTr("Un") : qsTr("En")));
+
+
+        panelRobotController.setConfigValue(pdata.configAddrs[group][pdata.checkSumPos], panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
@@ -324,84 +338,165 @@ Item {
         isAutoSize: false
         y:2
         z:1
+
         TabMenuItem{
             id:motor1
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[0].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(0)
+            }
+            ICCheckBox{
+                id:motor1En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(0, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor2
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[1].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(1)
+            }
+            ICCheckBox{
+                id:motor2En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(1, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor3
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[2].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(2)
+            }
+            ICCheckBox{
+                id:motor3En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(2, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor4
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[3].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(3)
+            }
+            ICCheckBox{
+                id:motor4En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(3, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor5
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[4].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(4)
+            }
+            ICCheckBox{
+                id:motor5En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(4, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor6
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[5].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(5)
+            }
+            ICCheckBox{
+                id:motor6En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(5, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor7
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[6].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(6)
+            }
+            ICCheckBox{
+                id:motor7En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(6, isChecked)
+                }
             }
         }
         TabMenuItem{
             id:motor8
             width: pdata.tabWidth;
             height: pdata.menuItemHeight
+            horizontalAlignment: Text.AlignLeft
             itemText: AxisDefine.axisInfos[7].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
                 showMotorConfigs(7)
+            }
+            ICCheckBox{
+                id:motor8En
+                text: qsTr("Un")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                onIsCheckedChanged: {
+                    onMotorEnChanged(7, isChecked)
+                }
             }
         }
     }
@@ -711,6 +806,15 @@ Item {
         showMotorConfigs(pdata.currentGroup);
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+        motor1En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[0][21]));
+        motor2En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[1][21]));
+        motor3En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[2][21]));
+        motor4En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[3][21]));
+        motor5En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[4][21]));
+        motor6En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[5][21]));
+        motor7En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[6][21]));
+        motor8En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[7][21]));
+        pdata.isInit = true;
     }
     function onAxisDefinesChanged(){
         motor1.visible = AxisDefine.axisInfos[0].visiable;

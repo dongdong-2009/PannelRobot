@@ -943,6 +943,18 @@
         <source>INV Move</source>
         <translation>反向移动</translation>
     </message>
+    <message>
+        <source>Change to</source>
+        <translation>改为</translation>
+    </message>
+    <message>
+        <source>Un</source>
+        <translation>不用</translation>
+    </message>
+    <message>
+        <source>En</source>
+        <translation>使用</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>

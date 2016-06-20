@@ -1635,7 +1635,7 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
 {
     QMap<int, QMap<int, int> > ret;
     bool isOk;
-    QMap<int, CompileInfo> functionsMap = ParseFunctions(functions, isOk);
+    QMap<int, CompileInfo> functionsMap = ParseFunctions(functions, isOk, stackInfos_, counters_, variables_);
     if(!isOk)
         return ret;
     functions_ = functions;

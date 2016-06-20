@@ -86,7 +86,7 @@ Item {
                                     isnew = true;
                                 if(userModel.count == 0)
                                     return
-                                for(var i =0 ;i < ShareData.UserInfo.userscount();i++){
+                                for(var i =0 , len = ShareData.UserInfo.userscount(); i < len; i++){
                                     if(username.configValue == userModel.get(i).name){
                                         okBtn.enabled = false;
                                         isnew = false;

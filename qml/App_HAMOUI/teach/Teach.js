@@ -1231,6 +1231,9 @@ var callModuleActionToStringHandler = function(actionObject){
 }
 
 var commentActionToStringHandler = function(actionObject){
+    if(actionObject.commentAction != null){
+       actionObject.comment = actionToString(actionObject.commentAction);
+    }
     return actionObject.comment;
 }
 

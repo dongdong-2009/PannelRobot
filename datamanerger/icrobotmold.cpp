@@ -11,14 +11,26 @@ QMap<int, QStringList> CreatePathActionMotorNamesMap()
 {
     QMap<int, QStringList> ret;
     ret.insert(F_CMD_LINE2D_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_LINEXY_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_LINEXZ_MOVE_POINT, QStringList()<<"m0"<<"m2");
+    ret.insert(F_CMD_LINEYZ_MOVE_POINT, QStringList()<<"m1"<<"m2");
     ret.insert(F_CMD_LINE3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_ARC3D_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_ARCXY_MOVE_POINT, QStringList()<<"m0"<<"m1");
+    ret.insert(F_CMD_ARCXZ_MOVE_POINT, QStringList()<<"m0"<<"m2");
+    ret.insert(F_CMD_ARCYZ_MOVE_POINT, QStringList()<<"m1"<<"m2");
     ret.insert(F_CMD_MOVE_POSE, QStringList()<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_LINE3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_ARC3D_MOVE_POINT_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_ARC_RELATIVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_ARC3D_MOVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+    ret.insert(F_CMD_LINE_RELATIVE_POSE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
+
     ret.insert(F_CMD_JOINT_MOVE_POINT, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_LINE_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2");
     ret.insert(F_CMD_JOINT_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5");
     ret.insert(F_CMD_ARC3D_MOVE, QStringList()<<"m0"<<"m1"<<"m2");
+    ret.insert(F_CMD_ARC_RELATIVE, QStringList()<<"m0"<<"m1"<<"m2");
     return ret;
 }
 static QStringList motorNames = QStringList()<<"m0"<<"m1"<<"m2"<<"m3"<<"m4"<<"m5";
@@ -48,6 +60,19 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+    bool isEarlyEnd = v->value("isEarlyEnd", false).toBool();
+    bool isEarlySpd = v->value("isEarlySpd", false).toBool();
+    if(isEarlyEnd || isEarlySpd)
+    {
+        int op = 0;
+        op |= isEarlySpd ? 1 : 0;
+        op |= isEarlyEnd ? 2 : 0;
+        item.append(op);
+        item.append(v->value("earlySpdPos", 0).toInt());
+        item.append(v->value("earlyEndPos", 0).toInt());
+        item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
+        item[0] = F_CMD_SINGLE_ADD_FUNC;
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
     item.SetActualPos(v->value("pos", 0).toDouble() * 100);
@@ -73,6 +98,16 @@ int OriginActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
+}
+
+int SpeedActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(v->value("action").toInt());
+    item.append(ICUtility::doubleToInt(v->value("startSpeed").toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("endSpeed").toDouble(), 1));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+
 }
 
 int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
@@ -104,25 +139,57 @@ QVector<quint32> PointToPosList(int action, const QVariantMap& point)
 
 int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
 {
+    int action = v->value("action").toInt();
+    int type = 0;
+    if(action == F_CMD_ARCXY_MOVE_POINT ||
+            action == F_CMD_ARCXZ_MOVE_POINT || action == F_CMD_ARCYZ_MOVE_POINT)
+    {
+        type = action - F_CMD_ARCXY_MOVE_POINT;
+        action = F_CMD_ARC2D_MOVE_POINT;
+    }
+    else if(action == F_CMD_LINEXY_MOVE_POINT ||
+            action == F_CMD_LINEXZ_MOVE_POINT || action == F_CMD_LINEYZ_MOVE_POINT)
+    {
+        type = action - F_CMD_LINEXY_MOVE_POINT;
+        action = F_CMD_LINE2D_MOVE_POINT;
+    }
     item.append(v->value("action").toInt());
+    if(action == F_CMD_ARC2D_MOVE_POINT)
+        item.append(type);
+    int moldItemAction = item.at(0);
     QVariantList points = v->value("points").toList();
-    if(item.at(0) == F_CMD_LINE2D_MOVE_POINT && points.size() != 1)
+    if((moldItemAction == F_CMD_LINE2D_MOVE_POINT || moldItemAction == F_CMD_LINEXY_MOVE_POINT ||
+        moldItemAction == F_CMD_LINEXZ_MOVE_POINT || moldItemAction == F_CMD_LINEYZ_MOVE_POINT)
+            && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
+    if(moldItemAction == F_CMD_LINE3D_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_ARC3D_MOVE_POINT && points.size() != 2)
+    if((moldItemAction == F_CMD_ARC3D_MOVE_POINT || moldItemAction == F_CMD_ARCXY_MOVE_POINT ||
+        moldItemAction == F_CMD_ARCXZ_MOVE_POINT || moldItemAction == F_CMD_ARCYZ_MOVE_POINT)
+            && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_MOVE_POSE && points.size() != 1)
+    if(moldItemAction == F_CMD_MOVE_POSE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_LINE3D_MOVE_POSE && points.size() != 1)
+    if((moldItemAction == F_CMD_LINE3D_MOVE_POSE ||
+//        moldItemAction == F_CMD_ARC3D_MOVE_POINT_POSE ||
+//        moldItemAction == F_CMD_ARC_RELATIVE_POSE ||
+//        moldItemAction == F_CMD_ARC3D_MOVE_POSE ||
+        moldItemAction == F_CMD_LINE_RELATIVE_POSE) && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_JOINT_MOVE_POINT && points.size() != 1)
+    if(moldItemAction == F_CMD_JOINT_MOVE_POINT && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_LINE_RELATIVE && points.size() != 1)
+    if(moldItemAction == F_CMD_LINE_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_JOINT_RELATIVE && points.size() != 1)
+    if(moldItemAction == F_CMD_JOINT_RELATIVE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
-    if(item.at(0) == F_CMD_ARC3D_MOVE && points.size() != 2)
+    if(moldItemAction == F_CMD_ARC3D_MOVE && points.size() != 2)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if(moldItemAction == F_CMD_ARC_RELATIVE && points.size() != 2)
+        return ICRobotMold::kCCErr_Wrong_Action_Format;
+    if((moldItemAction == F_CMD_ARC3D_MOVE_POINT_POSE ||
+        moldItemAction == F_CMD_ARC_RELATIVE_POSE ||
+        moldItemAction == F_CMD_ARC3D_MOVE_POSE
+        ) && points.size() != 2)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
 
     QVariantMap point;
@@ -165,6 +232,10 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     }
     item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+
+    if(action == F_CMD_LINE2D_MOVE_POINT)
+        item.append(type);
+    item[0] = action;
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 }
@@ -274,21 +345,21 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
-    StackInfoPrivate si = v->value("stackInfo").value<StackInfoPrivate>();
-    item.append(si.si[0].m0pos);
-    item.append(si.si[0].m1pos);
-    item.append(si.si[0].m2pos);
-    item.append(si.si[0].m3pos);
-    item.append(si.si[0].m4pos);
-    item.append(si.si[0].m5pos);
+    StackInfo si = v->value("stackInfo").value<StackInfo>();
+    item.append(si.stackData.si[0].m0pos);
+    item.append(si.stackData.si[0].m1pos);
+    item.append(si.stackData.si[0].m2pos);
+    item.append(si.stackData.si[0].m3pos);
+    item.append(si.stackData.si[0].m4pos);
+    item.append(si.stackData.si[0].m5pos);
     item.append(ICUtility::doubleToInt(v->value("speed0", 80).toDouble(), 1));
-    item.append(si.si[0].space0);
-    item.append(si.si[0].space1);
-    item.append(si.si[0].space2);
-    item.append(si.si[0].count0);
-    item.append(si.si[0].count1);
-    item.append(si.si[0].count2);
-    item.append(si.all[12]);
+    item.append(si.stackData.si[0].space0);
+    item.append(si.stackData.si[0].space1);
+    item.append(si.stackData.si[0].space2);
+    item.append(si.stackData.si[0].count0);
+    item.append(si.stackData.si[0].count1);
+    item.append(si.stackData.si[0].count2);
+    item.append(si.stackData.all[12]);
     //    item.append(si.si[0].doesBindingCounter);
     //    item.append(si.si[0].counterID);
 
@@ -298,21 +369,21 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     //    item.append(si.si[1].m3pos);
     //    item.append(si.si[1].m4pos);
     //    item.append(si.si[1].m5pos);
-    item.append(si.si[1].space0);
-    item.append(si.si[1].space1);
-    item.append(si.si[1].space2);
-    item.append(si.si[1].count0);
-    item.append(si.si[1].count1);
-    item.append(si.si[1].count2);
+    item.append(si.stackData.si[1].space0);
+    item.append(si.stackData.si[1].space1);
+    item.append(si.stackData.si[1].space2);
+    item.append(si.stackData.si[1].count0);
+    item.append(si.stackData.si[1].count1);
+    item.append(si.stackData.si[1].count2);
     item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
     //    item.append(si.si[1].doesBindingCounter);
     //    item.append(si.si[1].counterID);
-    item.append(si.all[25]);
-    if(si.si[0].isOffsetEn)
+    item.append(si.stackData.all[25]);
+    if(si.stackData.si[0].isOffsetEn)
     {
-        item.append(si.si[0].offsetX);
-        item.append(si.si[0].offsetY);
-        item.append(si.si[0].offsetZ);
+        item.append(si.stackData.si[0].offsetX);
+        item.append(si.stackData.si[0].offsetY);
+        item.append(si.stackData.si[0].offsetZ);
     }
     else
     {
@@ -321,11 +392,11 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
     }
 
-    if(si.si[1].isOffsetEn)
+    if(si.stackData.si[1].isOffsetEn)
     {
-        item.append(si.si[1].offsetX);
-        item.append(si.si[1].offsetY);
-        item.append(si.si[1].offsetZ);
+        item.append(si.stackData.si[1].offsetX);
+        item.append(si.stackData.si[1].offsetY);
+        item.append(si.stackData.si[1].offsetZ);
     }
     else
     {
@@ -333,9 +404,10 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
         item.append(0);
     }
-    if(si.si[0].type == 2)
+    if(si.stackData.si[0].type == 2 ||
+            si.stackData.si[0].type == 3)
     {
-        item[1] = (si.si[0].dataSourceID);
+        item[1] = (si.dsHostID);
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
@@ -391,14 +463,26 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_SINGLE, AxisServoActionCompiler);
     ret.insert(F_CMD_FINE_ZERO, OriginActionCompiler);
     ret.insert(F_CMD_LINE2D_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINEXY_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINEXZ_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_LINEYZ_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARC3D_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARCXY_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARCXZ_MOVE_POINT, PathActionCompiler);
+    ret.insert(F_CMD_ARCYZ_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_ARC3D_MOVE, PathActionCompiler);
     ret.insert(F_CMD_MOVE_POSE, PathActionCompiler);
     ret.insert(F_CMD_LINE3D_MOVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_ARC3D_MOVE_POINT_POSE, PathActionCompiler);
+    ret.insert(F_CMD_ARC_RELATIVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_ARC3D_MOVE_POSE, PathActionCompiler);
+    ret.insert(F_CMD_LINE_RELATIVE_POSE, PathActionCompiler);
+
     ret.insert(F_CMD_JOINT_MOVE_POINT, PathActionCompiler);
     ret.insert(F_CMD_LINE_RELATIVE, PathActionCompiler);
     ret.insert(F_CMD_JOINT_RELATIVE, PathActionCompiler);
+    ret.insert(F_CMD_ARC_RELATIVE, PathActionCompiler);
 
     ret.insert(F_CMD_SYNC_END, SimpleActionCompiler);
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
@@ -417,6 +501,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_PROGRAM_CALL0, CallModuleActionCompiler);
     ret.insert(F_CMD_VISION_CATCH, VisionCatchActionCompiler);
     ret.insert(F_CMD_WATIT_VISION_DATA, WaitVisionDataActionCompiler);
+    ret.insert(F_CMD_SPEED_SMOOTH, SpeedActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
     return ret;
@@ -621,12 +706,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 continue;
                 //                return ret;
             }
-            StackInfoPrivate si = stackInfos.value(stackID).stackData;
+            StackInfo si = stackInfos.value(stackID);
             for(int j = 0; j < 2; ++j)
             {
-                if(si.si[j].doesBindingCounter)
+                if(si.stackData.si[j].doesBindingCounter)
                 {
-                    if(IsCounterValid(counters, si.si[j].counterID) < 0)
+                    if(IsCounterValid(counters, si.stackData.si[j].counterID) < 0)
                     {
                         //                        ret.Clear();
                         err = ICRobotMold::kCCErr_Invaild_CounterID;
@@ -634,7 +719,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     }
                 }
             }
-            action.insert("stackInfo", QVariant::fromValue<StackInfoPrivate>(si));
+            action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
         }
         if(act == F_CMD_COUNTER ||
                 act == F_CMD_COUNTER_CLEAR ||
@@ -823,7 +908,11 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             if(act == F_CMD_PROGRAM_CALL0)
             {
                 int moduleStep = ret.ModuleEntry(action.value("module", -1).toInt());
-                if(moduleStep >= 0 &&
+                if(moduleStep < 0)
+                {
+                    ret.AddErr(p.key(), kCCErr_Invaild_ModuleID);
+                }
+                else if(moduleStep >= 0 &&
                         (p.value() == kCCErr_Invaild_ModuleID ||
                          p.value() == kCCErr_Invaild_Flag))
                 {
@@ -881,7 +970,11 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     {
         programsCode_.append(programs.at(i));
         p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
-        if(p.IsCompileErr()) ok = false;
+        if(p.IsCompileErr())
+        {
+            ok = false;
+            qDebug()<<"Load Mold Err:"<<p.ErrInfo();
+        }
         programs_.append(p);
     }
 
@@ -1228,7 +1321,7 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     {
         int stackID = result.value("stackID", -1).toInt();
         StackInfo si = stackInfos_.value(stackID);
-        result.insert("stackInfo", QVariant::fromValue<StackInfoPrivate>(si.stackData));
+        result.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
     }
 
     ret = VariantToMoldItem(realStep, result, err);
@@ -1417,7 +1510,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dataSourceID = stackMap.value("dataSourceID").toInt();
 
         stackInfo.dsName = tmp.value("dsName").toString();
-        stackInfo.dsHostID = tmp.value("hostID").toInt();
+        stackInfo.dsHostID = tmp.value("dsHostID").toInt();
 
         ret.insert(p.key().toInt(), stackInfo);
         ++p;
@@ -1574,4 +1667,26 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
         }
     }
     return ret;
+}
+
+quint32 CompileInfo::CheckSum() const
+{
+    quint32 sum = 0;
+    for(int i = 0; i < compiledProgram_.size(); ++i)
+    {
+        if(compiledProgram_.at(i).at(0) != F_CMD_SYNC_END &&
+                compiledProgram_.at(i).at(0) != F_CMD_SYNC_START)
+            sum += compiledProgram_.at(i).last();
+    }
+    return sum;
+}
+
+quint32 ICRobotMold::CheckSum() const
+{
+    quint32 sum = 0;
+    for(int i = 0; i < 9; ++i)
+    {
+        sum += programs_.at(i).CheckSum();
+    }
+    return (-sum) & 0xFFFF;
 }

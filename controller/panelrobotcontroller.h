@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QSettings>
 #include "icrobotmold.h"
+#include "icmachineconfig.h"
 #include "icrobotvirtualhost.h"
 //#include <QtDeclarative>
 #include <QScriptEngine>
@@ -218,6 +219,7 @@ struct MoldMaintainRet
     enum MoldErr{
         kME_None,
         kME_InvalidMolds,
+        kME_USBNotFound,
         kME_UnknowError,
     };
 
@@ -324,6 +326,24 @@ public:
 
         return ret;
     }
+
+    Q_INVOKABLE bool loadSysconfig(const QString& name)
+    {
+        ICMachineConfigPTR mold = ICMachineConfig::CurrentMachineConfig();
+        bool ret =  mold->LoadMachineConfig(name);
+
+        if(ret)
+        {
+            ICRobotVirtualhost::InitMachineConfig(host_,mold->BareMachineConfigs());
+            ICAppSettings as;
+            as.SetCurrentSystemConfig(name);
+
+            emit moldChanged();
+        }
+
+        return ret;
+    }
+
 
     Q_INVOKABLE QString currentRecordName() const
     {
@@ -541,6 +561,11 @@ public:
             toJSON.chop(1);
         }
         toJSON += "}";
+        sendMainProgramToHost();
+        for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+        {
+            sendSubProgramToHost(i);
+        }
         return toJSON;
     }
 
@@ -697,6 +722,20 @@ public:
     {
         return ICRobotVirtualhost::MultiplexingConfig(addr);
     }
+
+    Q_INVOKABLE void runHardwareTest()
+    {
+        setWatchDogEnabled(false);
+        ::system("chmod +x /usr/bin/run_boardtest.sh && run_boardtest.sh");
+        setWatchDogEnabled(true);
+
+    }
+
+    Q_INVOKABLE void setWatchDogEnabled(bool en);
+
+    Q_INVOKABLE QString getPictures() const;
+    Q_INVOKABLE QString getPicturesPath(const QString& picName) const;
+    Q_INVOKABLE void copyPicture(const QString &picName, const QString& to) const;
 
     Q_INVOKABLE QString scanUSBGCodeFiles(const QString& filter) const;
     Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;

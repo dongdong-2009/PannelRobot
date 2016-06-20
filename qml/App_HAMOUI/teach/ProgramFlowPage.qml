@@ -14,14 +14,51 @@ import "../ExternalData.js" as ESData
 
 Rectangle {
     id:programFlowPageInstance
+    property alias actionMenuFrameSource:actionEditorFrame.source
     property alias isActionEditorPanelVisable: actionEditorFrame.visible
     property bool hasInit: false
     property int currentEditingProgram: 0
     property int currentEditingModule: 0
     property bool hasModify: false
+
+    signal actionLineDeleted(int index, variant actionObject);
+
+    function menuFrame(){ return actionEditorFrame;}
+
+    function actionModifyEditor() { return modifyEditor;}
+
+    function registerEditableAction(action, editorsList, editableItems){
+        for(var i = 0, len = editorsList.length; i < len; ++i){
+            modifyEditor.registerEditableItem(editorsList[i].editor, editorsList[i].itemName);
+        }
+
+        PData.registerEditableActions[action] = editableItems;
+    }
+
+    function getRecordContent(which){
+        return JSON.parse(panelRobotController.programs(which));
+    }
+
+    function actionObjectToText(actionObject){
+        var originText = Teach.actionToStringNoCusomName(actionObject);
+        if(actionObject.customName){
+            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+            originText = styledCN + " " + originText;
+        }
+        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+    }
+
+    function beforeSaveProgram(which){
+
+    }
+
+    function afterSaveProgram(which){
+
+    }
+
     function showActionEditorPanel(){
-        if(actionEditorFrame.visible && actionEditorContainer.currentIndex != 0){
-            actionEditorContainer.showMenu();
+        if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
+            actionEditorFrame.item.showMenu();
             return;
         }
         if(!actionEditorFrame.visible)
@@ -30,6 +67,13 @@ Rectangle {
             programListView.contentY -= actionEditorFrame.height;
 
         actionEditorFrame.visible = !actionEditorFrame.visible;
+    }
+
+    function hideActionEditorPanel(){
+        if(actionEditorFrame.visible){
+            programListView.contentY -= actionEditorFrame.height;
+            actionEditorFrame.visible = false;
+        }
     }
 
     function insertActionToList(actionObject){
@@ -70,41 +114,13 @@ Rectangle {
     }
 
     function onInsertTriggered(){
-        if(actionEditorContainer.isMenuShow()) return;
-        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
+        var actionObjects = actionEditorFrame.item.createActionObjects();
         if(actionObjects.length == 0) return;
         for(var i = 0; i < actionObjects.length; ++i){
             insertActionToList(actionObjects[i]);
         }
         repaintProgramItem(currentModel());
         programListView.positionViewAtIndex(programListView.currentIndex, ListView.Visible);
-        //        var cI = programListView.currentIndex;
-        //        var oCI = cI;
-        //        if(cI < 0)return;
-        //        if(actionEditorContainer.isMenuShow()) return;
-        //        var actionObjects = actionEditorContainer.currentPage().createActionObjects();
-        //        if(actionObjects.length == 0) return;
-        //        var cPI = currentProgramIndex();
-        //        var model = currentModel();
-        //        PData.counterLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-        //        PData.stackLinesInfo.syncLines(cPI, oCI, actionObjects.length);
-        //        for(var i = 0; i < actionObjects.length; ++i){
-        //            if(actionObjects[i].action === Teach.actions.ACT_FLAG){
-        //                //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-        //                Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObjects[i].flag, actionObjects[i].comment));
-        //            }else if(Teach.hasCounterIDAction(actionObjects[i])){
-        //                var cs = Teach.actionCounterIDs(actionObjects[i]);
-        //                for(var c in cs){
-        //                    PData.counterLinesInfo.add(cPI, cs[c], cI);
-        //                }
-        //            }else if(Teach.hasStackIDAction(actionObjects[i])){
-        //                PData.stackLinesInfo.add(cPI, actionObjects[i].stackID, cI);
-        //            }
-
-        //            model.insert(cI++, new Teach.ProgramModelItem(actionObjects[i], Teach.actionTypes.kAT_Normal));
-        //        }
-        //        hasModify = true;
-        //        repaintProgramItem(model);
     }
 
     function onDeleteTriggered(){
@@ -135,6 +151,7 @@ Rectangle {
         }
 
         model.remove(cI);
+        actionLineDeleted(cI, actionObject);
         PData.counterLinesInfo.syncLines(cPI, oCI, -1);
         PData.stackLinesInfo.syncLines(cPI, oCI, -1);
         PData.pointLinesInfo.syncLines(cPI, oCI, -1);
@@ -164,6 +181,7 @@ Rectangle {
 
         var cs;
         var c;
+        var sid;
         if(Teach.hasCounterIDAction(cIAction)){
             cs = Teach.actionCounterIDs(cIAction);
             for(c in cs){
@@ -172,8 +190,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
-            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI - 1);
+            sid = Teach.actionStackID(cIAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI);
+            PData.stackLinesInfo.add(cPI, sid, cI - 1);
         }
         var points;
         var p;
@@ -193,8 +212,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIPAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIPAction.stackID, cI - 1);
-            PData.stackLinesInfo.add(cPI, cIPAction.stackID, cI);
+            sid = Teach.actionStackID(cIPAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI - 1);
+            PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cIPAction)){
             points = Teach.definedPoints.parseActionPointsHelper(cIPAction);
@@ -220,6 +240,7 @@ Rectangle {
 
         var cs;
         var c;
+        var sid;
         if(Teach.hasCounterIDAction(cIAction)){
             cs = Teach.actionCounterIDs(cIAction);
             for(c in cs){
@@ -228,8 +249,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
-            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI + 1);
+            sid = Teach.actionStackID(cIAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI);
+            PData.stackLinesInfo.add(cPI, sid, cI + 1);
         }
         var points;
         var p;
@@ -249,8 +271,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cINAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cINAction.stackID, cI + 1);
-            PData.stackLinesInfo.add(cPI, cINAction.stackID, cI);
+            sid = Teach.actionStackID(cINAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI + 1);
+            PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cINAction)){
             points = Teach.definedPoints.parseActionPointsHelper(cINAction);
@@ -396,15 +419,12 @@ Rectangle {
     function saveProgram(which){
         if(!hasInit) return;
         if(!hasModify) return;
+        beforeSaveProgram(which);
         var errInfo;
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
             errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
-            //            var program = modelToProgramHelper(PData.kManualProgramIndex);
-            //            errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-            //            if(errInfo.length == 0)
-            //                ManualProgramManager.manualProgramManager.updateProgramByName(editing.text(editing.currentIndex), program);
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -423,10 +443,10 @@ Rectangle {
             }
             tipBox.warning(toShow, qsTr("OK"));
         }
-        //        collectSpecialLines(editing.currentIndex);
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
         hasModify = false;
+        afterSaveProgram(which);
     }
 
     function onFixIndexTriggered(){
@@ -465,6 +485,10 @@ Rectangle {
         return panelRobotController.statusValue(PData.stepAddrs[editing.currentIndex]);
     }
 
+    function mappedModelRunningActionInfo(baseRunningActionInfo){
+        return baseRunningActionInfo;
+    }
+
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
         //                console.log(ret);
@@ -472,7 +496,7 @@ Rectangle {
         info.steps = JSON.parse(info.steps);
         //        if(info.moduleID >= 0)
         //            console.log(ret);
-        return info;
+        return mappedModelRunningActionInfo(info);
     }
 
     function setModuleEnabled(en){
@@ -487,7 +511,10 @@ Rectangle {
 
     function onUserChanged(user){
         PData.isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
-        //        if(!ShareData.UserInfo.currentHasMoldPerm())
+        if(PData.isReadOnly){
+            hideActionEditorPanel();
+        }
+
         programListView.currentIndex = -1;
         setModuleEnabled(!PData.isReadOnly);
         setManualProgramEnabled(!PData.isReadOnly);
@@ -498,6 +525,7 @@ Rectangle {
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         autoKeyboard.visible = isAuto;
         autoRunInfoContainer.visible = isAuto;
+        moduleSel.currentIndex = 0;
         if(isAuto){
             singleCycle.setChecked(false);
             singleStep.setChecked(false);
@@ -507,9 +535,8 @@ Rectangle {
         isFollow.visible = isAuto;
 
         modifyEditor.isAutoMode = isAuto;
-        actionEditorFrame.visible = false;
+        hideActionEditorPanel();
         speedDispalyContainer.visible = isAuto;
-        //        setModuleEnabled(!isAuto);
         if(hasModify)
             onSaveTriggered();
     }
@@ -527,14 +554,14 @@ Rectangle {
         for(var l in stackLines){
             line = stackLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":programListView.actionObjectToText(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
             PData.counterLinesInfo.removeLine(cpI, line);
             if(c1 >= 0)
                 PData.counterLinesInfo.add(cpI, c1, line);
             if(c2 >= 0)
                 PData.counterLinesInfo.add(cpI, c2, line);
         }
-        //        collectSpecialLines(editing.currentIndex);
+        hasModify = true;
     }
 
     function onCounterUpdated(counterID){
@@ -546,7 +573,7 @@ Rectangle {
         for(var l in counterLines){
             line = counterLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":programListView.actionObjectToText(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
 
         }
     }
@@ -554,24 +581,6 @@ Rectangle {
     function onGlobalSpeedChanged(spd){
         speedDisplay.text = parseFloat(spd).toFixed(1);
     }
-
-    //    function setCurrentModelData(actionObject){
-    //        currentModel().set(programListView.currentIndex,
-    //                           new Teach.ProgramModelItem(actionObject));
-    //    }
-
-    //    WorkerScript{
-    //        id:repaintThread
-    //        source: "repaintProgram.js"
-    //        onMessage: {
-    //            var toRepainLine = messageObject.toRepainLine;
-    //            var cM = currentModel();
-    //            for(var line in toRepainLine){
-    //                console.log(line, toRepainLine[line]);
-    ////                cM.setProperty(line, "mI_ActionType", toRepainLine[line]);
-    //            }
-    //        }
-    //    }
 
     Column{
         id:container
@@ -622,7 +631,9 @@ Rectangle {
                     currentIndex: 0
                     onCurrentIndexChanged: {
                         //                        console.log("onCurrentIndexChanged", currentIndex);
-
+                        if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
+                            actionEditorFrame.item.showMenu();
+                        }
                         deleteManualProgram.visible = false;
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
@@ -717,6 +728,9 @@ Rectangle {
                     }
 
                     onCurrentIndexChanged: {
+                        if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
+                            actionEditorFrame.item.showMenu();
+                        }
                         saveProgram(currentEditingProgram);
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){
@@ -725,8 +739,8 @@ Rectangle {
                             currentEditingProgram = editing.currentIndex;
                             currentEditingModule = 0;
                             delModuleBtn.visible = false;
-                            if(PData.programActionMenu != null)
-                                PData.programActionMenu.state = "";
+                            if(actionEditorFrame.progress == 1)
+                                actionEditorFrame.item.setMode("");
                         }else{
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
@@ -735,8 +749,7 @@ Rectangle {
                             currentEditingProgram = PData.kFunctionProgramIndex
                             currentEditingModule = moduleSel.currentIndex;
                             delModuleBtn.visible = newModuleBtn.visible;
-                            PData.programActionMenu.state = "moduleEditMode";
-                            actionMenuBtn.clicked();
+                            actionEditorFrame.item.setMode("moduleEditMode");
                         }
                     }
                 }
@@ -757,6 +770,8 @@ Rectangle {
                             collectSpecialLines(PData.programs.length - 1);
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
+                            saveModules();
+//                            hasModify = true;
                         }
                     }
 
@@ -886,7 +901,7 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
-                        modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                        modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
                         if(showY + modifyEditor.height >= container.height)
                             showY = autoEditBtn.y - modifyEditor.height + 20;
@@ -1077,7 +1092,7 @@ Rectangle {
                         width: 40
                         text: qsTr("Edit")
                         onButtonClicked: {
-                            actionEditorFrame.visible = false;
+                            hideActionEditorPanel();
                             toolBar.showModify()
                         }
 
@@ -1110,8 +1125,7 @@ Rectangle {
                                 cM.setProperty(programListView.currentIndex, "mI_ActionObject", modelObject.mI_ActionObject.commentAction);
                             }
                             else{
-                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
-                                //                                modelObject.mI_ActionObject = Teach.generateCommentAction(programListView.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject);
+                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
                             }
                             hasModify = true;
 
@@ -1155,14 +1169,7 @@ Rectangle {
                     height: parent.height - 2
                     spacing:2
                     clip: true
-                    function actionObjectToText(actionObject){
-                        var originText = Teach.actionToStringNoCusomName(actionObject);
-                        if(actionObject.customName){
-                            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
-                            originText = styledCN + " " + originText;
-                        }
-                        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-                    }
+
 
                     function clearLastRunning(lastRunning){
                         var i;
@@ -1182,7 +1189,7 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index + ":" + mI_ActionObject.insertedIndex
-                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: programListView.actionObjectToText(mI_ActionObject));
+                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: actionObjectToText(mI_ActionObject));
 
                         actionType: mI_ActionType
                         MouseArea{
@@ -1261,346 +1268,14 @@ Rectangle {
 
             }
         }
-        Rectangle{
+        Loader{
             id:actionEditorFrame
-            //            visible: false
             width: container.width
             height: container.height / 2
-            //            y:2
             x:2
-
-            //            anchors.left: programViewContainer.right
-            //            anchors.right: container.right
-            border.width: 1
-            border.color: "black"
-            ICButton{
-                id:insertBtn
-                x:4
-                y:4
-                width: 80
-                height: 32
-                text: qsTr("Insert")
-                bgColor: "lime"
-            }
-
-            Rectangle{
-                id:menuSplitLine1
-                height: 1
-                width: 70
-                x:8
-                anchors.top: insertBtn.bottom
-                anchors.topMargin: 4
-                color: "gray"
-            }
-
-            ICButton{
-                id:linkedBtn1
-                x:insertBtn.x
-                anchors.top: menuSplitLine1.bottom
-                anchors.topMargin: 8
-                width: 80
-                height: 32
-                bgColor: "#A0A0F0"
-                onButtonClicked: PData.linked1Function();
-
-            }
-
-            ICButton{
-                id:linkedBtn2
-                x:insertBtn.x
-                anchors.top: linkedBtn1.bottom
-                anchors.topMargin: 8
-                width: 80
-                height: 32
-                bgColor: "mediumspringgreen"
-                onButtonClicked: PData.linked2Function();
-
-            }
-
-            ICButton{
-                id:linkedBtn3
-                x:insertBtn.x
-                anchors.top: linkedBtn2.bottom
-                anchors.topMargin: 8
-                width: 80
-                height: 32
-                bgColor: "mediumturquoise"
-                onButtonClicked: PData.linked3Function();
-
-            }
-
-            Rectangle{
-                height: 1
-                width: 70
-                x:8
-                anchors.bottom: actionMenuBtn.top
-                anchors.bottomMargin: 4
-                color: "gray"
-            }
-
-            ICButton{
-                id:actionMenuBtn
-                x:insertBtn.x + insertBtn.width / 2
-                y: 176
-                width: insertBtn.width / 2
-                height: insertBtn.height
-                text: qsTr("Menu")
-                bgColor: "yellow"
-                font.pixelSize: 12
-            }
-            Rectangle{
-                id:splitLine
-                width: 1
-                y:2
-                height:parent.height -3
-                anchors.left: insertBtn.right
-                anchors.leftMargin: 5
-                color: "gray"
-            }
-
-            ICStackContainer{
-                function showMenu() {
-                    setCurrentIndex(0);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                }
-                //                function showAxis() { setCurrentIndex(1);}
-                //                function showOutput() { setCurrentIndex(2);}
-                function isMenuShow() { return currentIndex == 0;}
-                id:actionEditorContainer
-                width: parent.width - insertBtn.width - anchors.leftMargin - splitLine.width -splitLine.anchors.leftMargin
-                height: parent.height - 1
-                anchors.left: insertBtn.right
-                anchors.leftMargin: 10
-            }
-            Component.onCompleted: {
-                var editor = Qt.createComponent('ProgramActionMenu.qml');
-                var actionMenuObject = editor.createObject(actionEditorContainer);
-                PData.programActionMenu = actionMenuObject;
-                editor = Qt.createComponent('AxisActionEditor.qml');
-                var axisEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('OutputActionEditor.qml')
-                var outputEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('WaitActionEditor.qml')
-                var waitEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('CheckActionEditor.qml')
-                var checkEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('ConditionActionEditor.qml')
-                var conditionEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('SyncActionEditor.qml')
-                var syncEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('CommentActionEditor.qml')
-                var commentEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('SearchActionEditor.qml')
-                var searchEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('PathActionEditor.qml')
-                var pathEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('StackActionEditor.qml')
-                var stackEditorObject = editor.createObject(actionEditorContainer);
-                stackEditorObject.stackUpdated.connect(onStackUpdated);
-                editor = Qt.createComponent('CounterActionEditor.qml')
-                var counterEditorObject = editor.createObject(actionEditorContainer);
-                counterEditorObject.counterUpdated.connect(onCounterUpdated);
-                editor = Qt.createComponent('CustomAlarmActionEditor.qml')
-                var customAlarmEditorObject = editor.createObject(actionEditorContainer);
-                editor = Qt.createComponent('ModuleActionEditor.qml')
-                var moduleEditorObject = editor.createObject(actionEditorContainer);
-                PData.moduleActionEditor = moduleEditorObject;
-
-                editor = Qt.createComponent('OriginActionEditor.qml')
-                var originEditorObject = editor.createObject(actionEditorContainer);
-
-                editor = Qt.createComponent('VisionActionEditor.qml')
-                var visionEditorObject = editor.createObject(actionEditorContainer);
-
-                actionEditorContainer.addPage(actionMenuObject);
-                actionEditorContainer.addPage(axisEditorObject);
-                actionEditorContainer.addPage(outputEditorObject);
-                actionEditorContainer.addPage(waitEditorObject);
-                actionEditorContainer.addPage(checkEditorObject);
-                actionEditorContainer.addPage(conditionEditorObject);
-                actionEditorContainer.addPage(syncEditorObject);
-                actionEditorContainer.addPage(commentEditorObject);
-                actionEditorContainer.addPage(searchEditorObject);
-                actionEditorContainer.addPage(pathEditorObject);
-                actionEditorContainer.addPage(stackEditorObject);
-                actionEditorContainer.addPage(counterEditorObject);
-                actionEditorContainer.addPage(customAlarmEditorObject);
-                actionEditorContainer.addPage(moduleEditorObject);
-                actionEditorContainer.addPage(originEditorObject);
-                actionEditorContainer.addPage(visionEditorObject);
-
-
-                actionEditorContainer.showMenu();
-                actionMenuObject.axisMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(1);
-                    linkedBtn1.text = qsTr("Output Action");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.outputMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Wait");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Condition")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.conditionMenuTriggered;
-                });
-                actionMenuObject.outputMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(2);
-                    linkedBtn1.text = qsTr("Path");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Wait");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Check")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
-                });
-                actionMenuObject.waitMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(3);
-                    linkedBtn1.text = qsTr("Path");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Output Action");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.outputMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Check")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
-                });
-                actionMenuObject.checkMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(4);
-                    linkedBtn1.text = qsTr("Path");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Wait");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Output Action")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
-                });
-                actionMenuObject.conditionMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(5);
-                    linkedBtn1.text = qsTr("Path");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Output Action");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.outputMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Check")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.checkMenuTriggered;
-                });
-                actionMenuObject.syncMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(6);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-                actionMenuObject.commentMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(7);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-                actionMenuObject.searchMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(8);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-                actionMenuObject.pathMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(9);
-                    linkedBtn1.text = qsTr("Output Action");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Wait");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Condition")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.conditionMenuTriggered;
-                });
-                actionMenuObject.stackMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(10);
-                    linkedBtn1.text = qsTr("Output Action");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.outputMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Path");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Counter")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.counterMenuTriggered;
-                });
-                actionMenuObject.counterMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(11);
-                    linkedBtn1.text = qsTr("Path");
-                    linkedBtn1.visible = true;
-                    PData.linked1Function = actionMenuObject.pathMenuTriggered;
-
-                    linkedBtn2.text = qsTr("Wait");
-                    linkedBtn2.visible = true;
-                    PData.linked2Function = actionMenuObject.waitMenuTriggered;
-
-                    linkedBtn3.text = qsTr("Condition")
-                    linkedBtn3.visible = true;
-                    PData.linked3Function = actionMenuObject.conditionMenuTriggered;
-                });
-                actionMenuObject.customAlarmMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(12);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-                actionMenuObject.moduleMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(13);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-                actionMenuObject.originMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(14);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-                actionMenuObject.visionMenuTriggered.connect(function(){
-                    actionEditorContainer.setCurrentIndex(15);
-                    linkedBtn1.visible = false;
-                    linkedBtn2.visible = false;
-                    linkedBtn3.visible = false;
-                });
-
-                //                axisEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                outputEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                waitEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                checkEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                conditionEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                syncEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                commentEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-                //                searchEditorObject.backToMenuTriggered.connect(actionEditorContainer.showMenu);
-
-                actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
-                insertBtn.buttonClicked.connect(onInsertTriggered);
-
-
+            source: "ProgramActionMenuFrame.qml"
+            onLoaded: {
+                actionEditorFrame.item.insertActionTriggered.connect(onInsertTriggered);
             }
         }
     }
@@ -1850,7 +1525,7 @@ Rectangle {
 
             }
             if(Teach.hasStackIDAction(step.mI_ActionObject)){
-                PData.stackLinesInfo.add(which, step.mI_ActionObject.stackID, i);
+                PData.stackLinesInfo.add(which, Teach.actionStackID(step.mI_ActionObject), i);
             }
             if(Teach.canActionUsePoint(step.mI_ActionObject)){
                 var points = Teach.definedPoints.parseActionPointsHelper(step.mI_ActionObject);
@@ -1900,15 +1575,11 @@ Rectangle {
 
             model.append(new Teach.ProgramModelItem(step, at));
         }
-        for(var l = 0; l < jumpLines.length; ++l){
-            step = program[jumpLines[l]];
-            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
-            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
-        }
         return insertedIndex;
     }
 
     function updateProgramModels(){
+        programListView.model = null;
         Teach.definedPoints.clear();
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
@@ -1936,7 +1607,8 @@ Rectangle {
         }
 
         for(i = 0; i < 9; ++i){
-            program = JSON.parse(panelRobotController.programs(i));
+//            program = JSON.parse(panelRobotController.programs(i));
+            program = getRecordContent(i);
             Teach.currentParsingProgram = i;
             Teach.flagsDefine.clear(i);
             PData.programToInsertIndex[i] = updateProgramModel(PData.programs[i], program);
@@ -1953,21 +1625,20 @@ Rectangle {
         moduleSel.currentIndex = 0;
         currentEditingProgram = 0;
         currentEditingModule = 0;
+        programListView.model = mainProgramModel;
 
     }
 
     onVisibleChanged: {
-        actionEditorFrame.visible = false;
+        hideActionEditorPanel();
         programListView.currentIndex = -1;
         if(!visible){
             if(hasModify)
                 onSaveTriggered();
         }
-        //        programListView.contentY = 0;
     }
 
     Component.onCompleted: {
-        //        Teach.parseStacks(panelRobotController.stacks());
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);
@@ -1981,7 +1652,6 @@ Rectangle {
         PData.programs.push(sub8ProgramModel);
         PData.programs.push(functionsModel);
         PData.programs.push(manualProgramModel);
-
 
         updateProgramModels();
         var mPs = ManualProgramManager.manualProgramManager.programs;

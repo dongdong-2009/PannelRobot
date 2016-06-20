@@ -11,6 +11,9 @@ Item {
     property alias isNumberOnly: edit.isNumberOnly
     property alias isChecked:configName.isChecked
     property alias isEditable: configName.isEditable
+    property alias min: edit.min
+    property alias max: edit.max
+    property alias decimal: edit.decimal
 
     function setChecked(status){
         configName.isChecked = status;

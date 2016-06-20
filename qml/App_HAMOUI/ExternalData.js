@@ -75,8 +75,15 @@ var CustomDataSource = {
         customDS.parse = function(dsData){
             var ret = {"hostID":hostID};
             var retData = [];
+            var tmp;
             for(var i = 0; i < dsData.length; ++i){
-                retData.push(dsData[i].pointPos);
+                tmp = dsData[i].pointPos;
+                retData.push({"m0":parseFloat(tmp.m0),
+                             "m1":parseFloat(tmp.m1),
+                             "m2":parseFloat(tmp.m2),
+                             "m3":parseFloat(tmp.m3),
+                             "m4":parseFloat(tmp.m4),
+                             "m5":parseFloat(tmp.m5)});
             }
             ret.dsData = retData;
             return ret;
@@ -93,6 +100,7 @@ function ExternalDataManager(){
     };
 
     this.registerDataSource = function(dsID, ds){
+        console.log("registerDataSource", dsID)
         if(this.dataSourceExist(dsID))
             return false;
         this.dataSources[dsID] = ds;

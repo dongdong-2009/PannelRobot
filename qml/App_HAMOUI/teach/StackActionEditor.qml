@@ -25,9 +25,10 @@ Rectangle {
     }
     function updateStacksSel(){
         Teach.parseStacks(panelRobotController.stacks());
-        stackSelector.items =  Teach.stackInfosDescr()
         var hasStacks = Teach.stackInfosDescr();
+        stackSelector.configValue = -1;
         stackViewSel.currentIndex = -1;
+        stackSelector.items =  hasStacks;
         stackViewSel.items = hasStacks;
     }
     onStackTypeChanged: {
@@ -97,9 +98,10 @@ Rectangle {
         id:stackViewSel
         z: 11
         y:topContainer.y
-        x:200
+        x:220
         visible: defineStack.isChecked
         popupWidth: 200
+        popupHeight: 150
         width: popupWidth
         onCurrentIndexChanged: {
             if(currentIndex < 0 ) return;
@@ -107,7 +109,7 @@ Rectangle {
 
             var stackID = parseInt(Utils.getValueFromBrackets(items[currentIndex]));
             stackInfo = Teach.getStackInfoFromID(stackID);
-            ESData.externalDataManager.registerDataSource(stackID, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
+            ESData.externalDataManager.registerDataSource(stackInfo.dsName, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
             page1.motor2 = stackInfo.si0.m2pos;
@@ -242,10 +244,14 @@ Rectangle {
             var sid;
             if(!exist){
                 sid = Teach.appendStackInfo(stackInfo);
+                stackInfo.dsName = "custompoint[" + sid + "]";
+                stackInfo.dsHostID = sid;
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
             }
             else{
+                stackInfo.dsName = selectedDS;
+                stackInfo.dsHostID = dsID;
                 sid = Teach.updateStackInfo(id, stackInfo);
                 panelRobotController.saveStacks(Teach.statcksToJSON());
             }
@@ -287,9 +293,13 @@ Rectangle {
             }
             onCheckedItemChanged: {
                 stackSelector.configValue = -1;
-                stackViewSel.currentIndex = 0;
+                stackViewSel.currentIndex = -1;
                 stackType = 0;
                 speed1.visible = false;
+                currentPage = 0;
+                changePage.text = "-->";
+                detailPage.visible  = false;
+                typeSelector.visible = true;
             }
 
         }
@@ -299,7 +309,7 @@ Rectangle {
             text: qsTr("New")
             width: 60
             height: stackViewSel.height
-            x:420
+            x:450
             visible: stackViewSel.visible
             bgColor: "lime"
             onButtonClicked: {
@@ -474,6 +484,7 @@ Rectangle {
             visible: useFlag.isChecked
             configName: qsTr("Stack")
             inputWidth: 200
+            popupHeight: 150
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;
@@ -498,6 +509,22 @@ Rectangle {
             configValue: "80.0"
         }
     }
+
+    onVisibleChanged:{
+        if(visible){
+            page1.updateCounters();
+            page2.updateCounters();
+            stackSelector.configValue = -1;
+            stackViewSel.currentIndex = -1;
+            stackType = 0;
+            speed1.visible = false;
+            currentPage = 0;
+            changePage.text = "-->";
+            detailPage.visible  = false;
+            typeSelector.visible = true;
+        }
+    }
+
     Component.onCompleted: {
         updateStacksSel();
         panelRobotController.moldChanged.connect(updateStacksSel);

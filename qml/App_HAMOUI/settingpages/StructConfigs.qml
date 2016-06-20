@@ -5,6 +5,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../ICOperationLog.js" as ICOperationLog
 
 Item {
+    id:container
     width: parent.width
     height: parent.height
     QtObject{
@@ -234,5 +235,17 @@ Item {
             }
 
         }
+    }
+    function onAxisDefinesChanged(){
+        axis1Length.visible = AxisDefine.axisInfos[0].visiable;
+        axis2Length.visible = AxisDefine.axisInfos[1].visiable;
+        axis3Length.visible = AxisDefine.axisInfos[2].visiable;
+        axis4Length.visible = AxisDefine.axisInfos[3].visiable;
+        axis5Length.visible = AxisDefine.axisInfos[4].visiable;
+        axis6Length.visible = AxisDefine.axisInfos[5].visiable;
+    }
+    Component.onCompleted: {
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
     }
 }

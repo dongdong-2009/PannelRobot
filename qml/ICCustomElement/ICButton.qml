@@ -96,6 +96,7 @@ Rectangle {
 
     MouseArea{
         anchors.fill: parent
+        preventStealing: true
         onPressed: {
             parent.color = "lightsteelblue";
             if(isAutoRepeat){
@@ -103,8 +104,15 @@ Rectangle {
                 autoTimer.start();
             }
             btnPressed();
+
         }
         onReleased: {
+            parent.color = bgColor;
+            if(isAutoRepeat)
+                autoTimer.stop();
+            btnReleased()
+        }
+        onExited: {
             parent.color = bgColor;
             if(isAutoRepeat)
                 autoTimer.stop();

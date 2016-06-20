@@ -13,12 +13,61 @@
 extern "C"
 {
 #endif
-#define DEBUG_TEST  1 //< 测试
+#define DEBUG_TEST  all_para->all[ICAddr_System_Retain_9] //< 测试
+#define ABS_DEBUG_TEST all_para->all[ICAddr_System_Retain_10] //< 绝对值电机读数测试
 
 #define STRUCE_SIZE(a,b) (b-a+1)
 
+/// ----------------------------------------------------------------------------------
+// P - 垂直于前一连杆的平移关节
+// R - 旋转平面与前一连杆的旋转平面平行的旋转关节
+// T - 旋转平面与前一连杆的旋转平面垂直的旋转关节
+/// ----------------------------------------------------------------------------------
+typedef enum {
+	kSttIndependent,	// 独立关节
+	kSttPP,		// 平面互相垂直的两平移关节
+	kSttRR,		// 平面串联的两旋转关节
+	kSttPPP,	// 平面互相垂直的三平移关节
+	kSttRTR,	// PUMA560 前三关节
+	kSttRRP,	// SCARA 前三关节
+	kSttRRPR,	// SCARA 四关节
+	kSttRTRT,	// PUMA560 前四关节
+	kSttRTRTTT,	//* PUMA560 六关节
+	kStt5P,		//
+	kSttPPP_RRR,//* 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
+	kSttRRPR_BRT,	//* 伯朗特 SCARA 四关节
+	kSttRTRTTT_EX,	// PUMA560 六关节
+	kSttLathe_6p,	//* 车床机型 6轴
+} MechanismType;
 
-#define SOFTWARE_VERSION  "HC_S3_S5_NEW-0.1-0.4"
+/// ----------------------------------------------------------------------------------
+typedef enum {
+	S2V30	= 0x0000,
+	S2V31,
+
+	S3V2x	= 0x0010,
+	S3V30,
+	S3V31,
+	S3V32,
+	S3V33,
+	S3V34,
+
+	S5V2x	= 0x0020,
+	S5V30,
+	S5V31,
+	S5V32,
+	S5V33,
+
+//	ServerV10	= 0x0030,
+//	ServerV11,
+
+	C6V10	= 0x0040,
+	C6V11,
+	C6V12,
+	C6V13,
+
+} BoardId;
+#define SOFTWARE_VERSION  "HC_S6-0.1-0.7"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -35,6 +84,9 @@ typedef enum _ICAddr
     ICAddr_System_Retain_6,//< 手动IO操作
     ICAddr_System_Retain_7,//< 定义IO操作
     ICAddr_System_Retain_8,//< 定义计数器 id;//< 计数器ID target_cnt;//< 计数器当前值 cnt;//< 计数器当前值
+    ICAddr_System_Retain_9,//< 0：正常发机程序；1：测试程序
+    ICAddr_System_Retain_10,//< 0：正常发机程序；1：绝对值电机读数测试
+    ICAddr_System_Retain_11,//< 所有教导程序校验和
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
     //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
@@ -548,6 +600,7 @@ typedef enum
     CMD_KEY_RETURN   = 0x0A03,//< 复归命令
     CMD_KEY_UP       = 0x0A04,//< 上命令
     CMD_KEY_DOWN     = 0x0A05,//< 下命令
+    CMD_KEY_CONTINUE = 0x0A06,//< 清除报警后继续运行
 
 
     CMD_USE_HOST_PARA     = 0x1000,//< 选择使用主机参数
@@ -595,15 +648,27 @@ typedef enum
 	F_CMD_JOINT_MOVE_POINT,
 	//< 直线坐标偏移位置（X，Y，Z） 速度  延时
 	F_CMD_LINE_RELATIVE,
-	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 坐标（X，Y） 速度  延时
+	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 坐标（X，Y） 速度  延时
 	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
     F_CMD_MOVE_POSE,   //< 运动目标姿势 姿势（X，Y，Z） 速度  延时
     F_CMD_LINE3D_MOVE_POSE,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时
     //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
     F_CMD_JOINT_RELATIVE,
-
     F_CMD_ARC3D_MOVE,   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+    F_CMD_ARC2D_MOVE_POINT,   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+	//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+	//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
+    F_CMD_SINGLE_ADD_FUNC,
+	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（X，Y,Z）经过点（X,Y,Z） 速度  延时
+	F_CMD_SPEED_SMOOTH,			//< 轨迹速度平滑设定 起始速度，终止速度
+
+
+    F_CMD_ARC3D_MOVE_POINT_POSE,   //< 按点位姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+	F_CMD_ARC_RELATIVE_POSE,	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+    F_CMD_ARC3D_MOVE_POSE,         //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
+	F_CMD_LINE_RELATIVE_POSE,	   //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
@@ -698,6 +763,12 @@ typedef enum
 
     /***************************************************************************/
     F_CMD_NOTES = 50000,   //< 注释该行教导程序
+    F_CMD_ARCXY_MOVE_POINT = 51008,
+    F_CMD_ARCXZ_MOVE_POINT = 51009,
+    F_CMD_ARCYZ_MOVE_POINT = 51010,
+    F_CMD_LINEXY_MOVE_POINT = 52006,
+    F_CMD_LINEXZ_MOVE_POINT = 52007,
+    F_CMD_LINEYZ_MOVE_POINT = 52008,
     F_CMD_FLAG = 59999,    //<跳转标志
 	F_CMD_END=60000//< 动作结束
 
@@ -715,16 +786,20 @@ typedef enum
     ALARM_EMERGENCY_STOP,//<名字：紧急停止
     ALARM_AUTO_JUMP_ERR, //<名字：自动运行跳转错误
     ALARM_LINK_HOST_FAIL, //<名字：连接主机失败
-    ALARM_PROGRAM_ERR, //<名字：教导程序错误
+    ALARM_PROGRAM_ERR=10, //<名字：教导程序错误
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
-	ALARM_STORAGE_READ_ERR, // 从主机FLASH读取的数据有错
-    ALARM_IO_CONNET_ERR, // 与IO板通讯失败
-    ALARM_SERVO_ABS_READ_ERR, // 伺服绝对值位置读取失败
-    ALARM_SERVO_ABS_CRC_ERR, // 伺服绝对值位置读取校验失败
-    ALARM_SERVO_ABS_FUNC_ERR, // 伺服绝对值位置读取功能码错误
-    ALARM_SERVO_ABS_OVERTIME_ERR, // 伺服绝对值位置读取超时
+	ALARM_STORAGE_READ_ERR, //<名字：从主机FLASH读取的数据有错
+    ALARM_IO_CONNET_ERR, //<名字：与IO板通讯失败
+    ALARM_SERVO_ABS_READ_ERR, //<名字：伺服绝对值位置读取失败
+    ALARM_SERVO_ABS_CRC_ERR, //<名字：伺服绝对值位置读取校验失败
+    ALARM_SERVO_ABS_FUNC_ERR, //<名字：伺服绝对值位置读取功能码错误
+    ALARM_SERVO_ABS_OVERTIME_ERR, //<名字：伺服绝对值位置读取超时
+    ALARM_IO_CONNET2_ERR, //<名字：与IO板2通讯失败
+    ALARM_IO_CONNET3_ERR, //<名字：与IO板3通讯失败
+    ALARM_IO_CONNET4_ERR, //<名字：与IO板4通讯失败
+    ALARM_PROGRAM_CHANGE_ERR, //<名字：手控和主机教导程序不一致
 
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
@@ -898,7 +973,7 @@ static const uint32_t axis_cfg_addr[] = {
 typedef struct {  //<192 + 14X8 = 304
     uint32_t length;           //<类型：系统；名字：臂长/半径；精度：3;单位：mm；
     uint32_t ppc:16;           //<类型：系统；名字：每转脉冲数；精度：0;单位：num；
-    uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：0;单位：num；
+    uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：2;单位：num；
     uint32_t soft_limit_p:16;  //<类型：系统；名字：正向软极限；精度：0;单位：度；
     uint32_t soft_limit_n:16;  //<类型：系统；名字：负向软极限；精度：0;单位：度；
     uint32_t type:4;           //<类型：系统；名字：编码器类型；精度：0;单位：；
@@ -909,7 +984,10 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
     uint32_t atype:4;          //<类型：系统；名字：轴类型；精度：0;单位：；
-    uint32_t reserve1:4;       //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t limit_p_dir:1;    //<类型：系统；名字：正极限输入方向；精度：0;单位：；
+    uint32_t limit_n_dir:1;    //<类型：系统；名字：负极限输入方向；精度：0;单位：；
+    uint32_t origin_dir:1;     //<类型：系统；名字：原点方向选择；精度：0;单位：；
+    uint32_t reserve1:1;       //<类型：系统；名字：预留；精度：0;单位：；
     uint16_t reserve2;         //<类型：系统；名字：预留；精度：0;单位：；
     uint16_t max_speed;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
     uint16_t min_acc_time;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；
@@ -948,7 +1026,13 @@ typedef struct {
     uint32_t a4; //<类型:系统;名字:轴4偏角;精度:3;单位:;
     uint32_t a5; //<类型:系统;名字:轴5偏角;精度:3;单位:;
     uint32_t a6; //<类型:系统;名字:轴6偏角;精度:3;单位:;
-    uint32_t res[11]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t X1ecc; //<类型:系统;名字:一轴X方向偏心;精度:3;单位:mm;
+    uint32_t Y1ecc; //<类型:系统;名字:一轴Y方向偏心;精度:3;单位:mm;
+    uint32_t res[8]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t haardware_version:16; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
+    uint32_t axisnum:6; //<类型:系统;名字:轴数设定;精度:0;单位:;
+    uint32_t ioboard:2; //<类型:系统;名字:IO板数设定;精度:0;单位:;
+    uint32_t mechantype:8; //<类型:系统;名字:机型设定;精度:0;单位:;
     uint32_t crc;//<类型:系统;名字:电机配置crc;精度：0;单位：；
 }Axis_Config1;
 

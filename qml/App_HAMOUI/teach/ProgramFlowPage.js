@@ -1,3 +1,6 @@
+.pragma library
+
+
 var programs = [];
 var functions = {};
 var programToInsertIndex = [];
@@ -80,10 +83,6 @@ var stackLinesInfo = new LinesInfo();
 
 var pointLinesInfo = new LinesInfo();
 
-var linked1Function = null;
-var linked2Function = null;
-var linked3Function = null;
-
 var kFunctionProgramIndex = 9;
 var kManualProgramIndex = 10;
 
@@ -98,4 +97,12 @@ function UpdateModelStruct(event,listIndex, programIndex, model, actionObject){
     this.programIndex = programIndex;
     this.model = model;
     this.actionObject = actionObject;
+}
+
+var registerEditableActions = {
+
+}
+
+function isRegisterEditableAction(action){
+    return registerEditableActions.hasOwnProperty(action);
 }

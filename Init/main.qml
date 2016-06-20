@@ -126,6 +126,7 @@ Rectangle {
             id:setAsMain
             text: qsTr("Set as Running")
             visible: local.isChecked
+            width: 120
             onButtonClicked: {
                 panelRobotController.setToRunningUIPath(qmlDirsModel.get(qmlDirs.currentIndex).dirName)
             }

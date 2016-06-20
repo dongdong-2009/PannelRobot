@@ -230,12 +230,12 @@ MouseArea{
                 model: pointModel
                 clip: true
                 highlight: Rectangle { width: 490; height: 20;color: "lightsteelblue"; radius: 2}
-                highlightMoveDuration:100
+                highlightMoveDuration: 1
                 delegate: Text {
                     verticalAlignment: Text.AlignVCenter
                     width: pointView.width
                     height: 32
-                    text: ICString.icStrformat("{0}:({1}:{2},{3}:{4},{5}:{6},{7}:{8},{9}:{10},{11}:{12})",
+                    text: {ICString.icStrformat("{0}:({1}:{2},{3}:{4},{5}:{6},{7}:{8},{9}:{10},{11}:{12})",
                                                pointName,
                                                AxisDefine.axisInfos[0].name, pointPos.m0,
                                                AxisDefine.axisInfos[1].name, pointPos.m1,
@@ -243,6 +243,23 @@ MouseArea{
                                                AxisDefine.axisInfos[3].name, pointPos.m3,
                                                AxisDefine.axisInfos[4].name, pointPos.m4,
                                                AxisDefine.axisInfos[5].name, pointPos.m5);
+                        var ret = pointName + ":(";
+                        if(AxisDefine.axisInfos[0].visiable)
+                            ret += AxisDefine.axisInfos[0].name + ":" + pointPos.m0 + ","
+                        if(AxisDefine.axisInfos[1].visiable)
+                            ret += AxisDefine.axisInfos[1].name + ":" + pointPos.m1 + ","
+                        if(AxisDefine.axisInfos[2].visiable)
+                            ret += AxisDefine.axisInfos[2].name + ":" + pointPos.m2 + ","
+                        if(AxisDefine.axisInfos[3].visiable)
+                            ret += AxisDefine.axisInfos[3].name + ":" + pointPos.m3 + ","
+                        if(AxisDefine.axisInfos[4].visiable)
+                            ret += AxisDefine.axisInfos[4].name + ":" + pointPos.m4 + ","
+                        if(AxisDefine.axisInfos[5].visiable)
+                            ret += AxisDefine.axisInfos[5].name + ":" + pointPos.m5 + ","
+                        ret = ret.slice(0, ret.length - 1);
+                        ret += ")";
+                        return ret;
+                    }
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -262,6 +279,20 @@ MouseArea{
                 }
             }
         }
+    }
+
+    function onAxisDefinesChanged(){
+        m0.visible = AxisDefine.axisInfos[0].visiable;
+        m1.visible = AxisDefine.axisInfos[1].visiable;
+        m2.visible = AxisDefine.axisInfos[2].visiable;
+        m3.visible = AxisDefine.axisInfos[3].visiable;
+        m4.visible = AxisDefine.axisInfos[4].visiable;
+        m5.visible = AxisDefine.axisInfos[5].visiable;
+    }
+
+    Component.onCompleted: {
+        AxisDefine.registerMonitors(instance);
+        onAxisDefinesChanged();
     }
 
 }

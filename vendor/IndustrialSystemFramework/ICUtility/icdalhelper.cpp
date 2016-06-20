@@ -678,7 +678,7 @@ QString ICDALHelper::NewMold(const QString &moldName,
     }
     if(p.size() < 10)
     {
-        p.append("\"\"");
+        p.append("{}");
     }
     if(p.size() < 11)
     {

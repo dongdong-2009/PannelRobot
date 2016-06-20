@@ -10,6 +10,8 @@ Item {
     property alias items: edit.items
     property alias isChecked:configName.isChecked
     property alias popupMode: edit.popupMode
+    property alias popupHeight: edit.popupHeight
+
 
     function configText(){
         return edit.currentText();

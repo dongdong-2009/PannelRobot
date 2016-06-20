@@ -214,11 +214,12 @@ MouseArea{
                 model: pointModel
                 clip: true
                 highlight: Rectangle { width: 490; height: 20;color: "lightsteelblue"; radius: 2}
+                highlightMoveDuration: 1
                 delegate: Item {
                     width: 490;
-                    height: 20
+                    height: 32
                     Text {
-                        text: Teach.definedPoints.pointDescr(point)
+                        text: Teach.definedPoints.pointDescr(point, AxisDefine.axisInfos)
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     MouseArea{
@@ -246,6 +247,18 @@ MouseArea{
                 pointModel.append({"point":Teach.definedPoints.getPoint(ps[i])});
             }
             Teach.definedPoints.registerPointsMonitor(container);
+            AxisDefine.registerMonitors(instance);
+            onAxisDefinesChanged();
         }
+    }
+
+    function onAxisDefinesChanged(){
+        m0.visible = AxisDefine.axisInfos[0].visiable;
+        m1.visible = AxisDefine.axisInfos[1].visiable;
+        m2.visible = AxisDefine.axisInfos[2].visiable;
+        m3.visible = AxisDefine.axisInfos[3].visiable;
+        m4.visible = AxisDefine.axisInfos[4].visiable;
+        m5.visible = AxisDefine.axisInfos[5].visiable;
+
     }
 }

@@ -327,6 +327,8 @@ Rectangle {
                 console.log(ret);
                 if(ret === 0)
                     tipDialog.information(qsTr("Expoert Finished!"), qsTr("OK"));
+                else
+                    tipDialog.warning(qsTr("No USB Found!"), qsTr("OK"));
             }
         }
         ICButton{

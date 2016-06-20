@@ -211,22 +211,28 @@ Item {
 
     Component.onCompleted: {
 
+        var i;
+        var l;
+        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+        if(ioBoardCount == 0)
+            ioBoardCount = 1;
+
+        xs = IODefines.generateIOBaseBoardCount("X", ioBoardCount);
         var xDefines = xs;
         var xDefine;
-        var i;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             xModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
         xDefines = euXs;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             euXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
         xDefines = mXs;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             mXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }

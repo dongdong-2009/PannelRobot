@@ -50,7 +50,7 @@ struct StackInfo{
     QVector<quint32> posData;
 };
 
-Q_DECLARE_METATYPE(StackInfoPrivate)
+Q_DECLARE_METATYPE(StackInfo)
 //qRegisterMetaType<StackInfo>("StackInfo");
 #ifdef NEW_PLAT
 typedef QVector<quint32> ICMoldItem;
@@ -111,7 +111,7 @@ public:
         return moduleLineToModuleIDMap_.value(line, -1);
     }
 
-    int ModuleEntry(int id) const { return modulesMap_.value(id, id);}
+    int ModuleEntry(int id) const { return modulesMap_.value(id, -1);}
 
     void AddUsedModule(int id) { usedModules_.append(id);}
 
@@ -192,6 +192,8 @@ public:
 
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
+
+     quint32 CheckSum() const;
 
      void PrintDebugInfo() const
      {
@@ -430,6 +432,7 @@ public:
     QString Functions() const { return functions_;}
     QMap<int, QMap<int, int> > SaveFunctions(const QString& functions, bool syncMold = true);
 
+    quint32 CheckSum() const;
 
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);

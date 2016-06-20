@@ -19,17 +19,17 @@ Item {
         property int configNameWidth: 150
         property int inputWidth: 100
         property int currentGroup: 0
-        property int checkSumPos: 18
+        property int checkSumPos: 21
         property variant configAddrs:
             [
-            ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_0_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_4_0_103","s_rw_4_4_0_103","s_rw_8_4_0_103","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_0_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_4_0_110","s_rw_4_4_0_110","s_rw_8_4_0_110","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_0_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_4_0_117","s_rw_4_4_0_117","s_rw_8_4_0_117","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_121", "s_rw_0_16_0_122", "s_rw_16_16_0_122", "s_rw_0_16_0_123", "s_rw_16_16_0_123", "s_rw_0_8_0_125", "s_rw_8_8_0_125", "s_rw_16_8_0_125", "s_rw_24_4_0_125", "s_rw_0_16_0_126","s_rw_0_16_3_127","s_rw_16_16_3_127","s_rw_16_16_1_126", "s_rw_0_32_0_124", "s_rw_28_4_0_125","s_rw_0_4_0_124","s_rw_4_4_0_124","s_rw_8_4_0_124","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_128", "s_rw_0_16_0_129", "s_rw_16_16_0_129", "s_rw_0_16_0_130", "s_rw_16_16_0_130", "s_rw_0_8_0_132", "s_rw_8_8_0_132", "s_rw_16_8_0_132", "s_rw_24_4_0_132", "s_rw_0_16_0_133","s_rw_0_16_3_134","s_rw_16_16_3_134","s_rw_16_16_1_133", "s_rw_0_32_0_131", "s_rw_28_4_0_132","s_rw_0_4_0_131","s_rw_4_4_0_131","s_rw_8_4_0_131","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_135", "s_rw_0_16_0_136", "s_rw_16_16_0_136", "s_rw_0_16_0_137", "s_rw_16_16_0_137", "s_rw_0_8_0_139", "s_rw_8_8_0_139", "s_rw_16_8_0_139", "s_rw_24_4_0_139", "s_rw_0_16_0_140","s_rw_0_16_3_141","s_rw_16_16_3_141","s_rw_16_16_1_140", "s_rw_0_32_0_138", "s_rw_28_4_0_139","s_rw_0_4_0_138","s_rw_4_4_0_138","s_rw_8_4_0_138","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_0_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_4_0_145","s_rw_4_4_0_145","s_rw_8_4_0_145","s_rw_0_32_0_185"],
-            ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_0_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_4_0_152","s_rw_4_4_0_152","s_rw_8_4_0_152","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_100", "s_rw_0_16_0_101", "s_rw_16_16_2_101", "s_rw_0_16_0_102", "s_rw_16_16_0_102", "s_rw_0_8_0_104", "s_rw_8_8_0_104", "s_rw_16_8_0_104", "s_rw_24_4_0_104", "s_rw_0_16_0_105","s_rw_0_16_3_106","s_rw_16_16_3_106","s_rw_16_16_1_105", "s_rw_0_32_0_103", "s_rw_28_4_0_104","s_rw_0_4_0_103","s_rw_4_4_0_103","s_rw_8_4_0_103","s_rw_28_1_0_104","s_rw_29_1_0_104","s_rw_30_1_0_104","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_107", "s_rw_0_16_0_108", "s_rw_16_16_2_108", "s_rw_0_16_0_109", "s_rw_16_16_0_109", "s_rw_0_8_0_111", "s_rw_8_8_0_111", "s_rw_16_8_0_111", "s_rw_24_4_0_111", "s_rw_0_16_0_112","s_rw_0_16_3_113","s_rw_16_16_3_113","s_rw_16_16_1_112", "s_rw_0_32_0_110", "s_rw_28_4_0_111","s_rw_0_4_0_110","s_rw_4_4_0_110","s_rw_8_4_0_110","s_rw_28_1_0_111","s_rw_29_1_0_111","s_rw_30_1_0_111","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_114", "s_rw_0_16_0_115", "s_rw_16_16_2_115", "s_rw_0_16_0_116", "s_rw_16_16_0_116", "s_rw_0_8_0_118", "s_rw_8_8_0_118", "s_rw_16_8_0_118", "s_rw_24_4_0_118", "s_rw_0_16_0_119","s_rw_0_16_3_120","s_rw_16_16_3_120","s_rw_16_16_1_119", "s_rw_0_32_0_117", "s_rw_28_4_0_118","s_rw_0_4_0_117","s_rw_4_4_0_117","s_rw_8_4_0_117","s_rw_28_1_0_118","s_rw_29_1_0_118","s_rw_30_1_0_118","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_121", "s_rw_0_16_0_122", "s_rw_16_16_2_122", "s_rw_0_16_0_123", "s_rw_16_16_0_123", "s_rw_0_8_0_125", "s_rw_8_8_0_125", "s_rw_16_8_0_125", "s_rw_24_4_0_125", "s_rw_0_16_0_126","s_rw_0_16_3_127","s_rw_16_16_3_127","s_rw_16_16_1_126", "s_rw_0_32_0_124", "s_rw_28_4_0_125","s_rw_0_4_0_124","s_rw_4_4_0_124","s_rw_8_4_0_124","s_rw_28_1_0_125","s_rw_29_1_0_125","s_rw_30_1_0_125","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_128", "s_rw_0_16_0_129", "s_rw_16_16_2_129", "s_rw_0_16_0_130", "s_rw_16_16_0_130", "s_rw_0_8_0_132", "s_rw_8_8_0_132", "s_rw_16_8_0_132", "s_rw_24_4_0_132", "s_rw_0_16_0_133","s_rw_0_16_3_134","s_rw_16_16_3_134","s_rw_16_16_1_133", "s_rw_0_32_0_131", "s_rw_28_4_0_132","s_rw_0_4_0_131","s_rw_4_4_0_131","s_rw_8_4_0_131","s_rw_28_1_0_132","s_rw_29_1_0_132","s_rw_30_1_0_132","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_135", "s_rw_0_16_0_136", "s_rw_16_16_2_136", "s_rw_0_16_0_137", "s_rw_16_16_0_137", "s_rw_0_8_0_139", "s_rw_8_8_0_139", "s_rw_16_8_0_139", "s_rw_24_4_0_139", "s_rw_0_16_0_140","s_rw_0_16_3_141","s_rw_16_16_3_141","s_rw_16_16_1_140", "s_rw_0_32_0_138", "s_rw_28_4_0_139","s_rw_0_4_0_138","s_rw_4_4_0_138","s_rw_8_4_0_138","s_rw_28_1_0_139","s_rw_29_1_0_139","s_rw_30_1_0_139","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_142", "s_rw_0_16_0_143", "s_rw_16_16_2_143", "s_rw_0_16_0_144", "s_rw_16_16_0_144", "s_rw_0_8_0_146", "s_rw_8_8_0_146", "s_rw_16_8_0_146", "s_rw_24_4_0_146", "s_rw_0_16_0_147","s_rw_0_16_3_148","s_rw_16_16_3_148","s_rw_16_16_1_147", "s_rw_0_32_0_145", "s_rw_28_4_0_146","s_rw_0_4_0_145","s_rw_4_4_0_145","s_rw_8_4_0_145","s_rw_28_1_0_146","s_rw_29_1_0_146","s_rw_30_1_0_146","s_rw_0_32_0_185"],
+            ["s_rw_0_32_3_149", "s_rw_0_16_0_150", "s_rw_16_16_2_150", "s_rw_0_16_0_151", "s_rw_16_16_0_151", "s_rw_0_8_0_153", "s_rw_8_8_0_153", "s_rw_16_8_0_153", "s_rw_24_4_0_153", "s_rw_0_16_0_154","s_rw_0_16_3_155","s_rw_16_16_3_155","s_rw_16_16_1_154", "s_rw_0_32_0_152", "s_rw_28_4_0_153","s_rw_0_4_0_152","s_rw_4_4_0_152","s_rw_8_4_0_152","s_rw_28_1_0_153","s_rw_29_1_0_153","s_rw_30_1_0_153","s_rw_0_32_0_185"],
         ]
 
         property variant sentPulseAddrs: ["c_ro_0_32_3_900","c_ro_0_32_3_904",
@@ -223,6 +223,54 @@ Item {
         panelRobotController.syncConfigs();
     }
 
+    function onAxisTypeChanged(){
+        var addr = currentGroupAddr(8);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, axisType.configValue);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendNumberConfigOperationLog(addr, axisType.text(axisType.configValue), axisType.text(oldV));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onPLimitDirChanged(){
+        var addr = currentGroupAddr(18);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, pLimitPointDir.isChecked ? 1 : 0);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendOperationLog(AxisDefine.axisInfos[pdata.currentGroup].name + qsTr("pLimit Dir Change to") + (pLimitPointDir.isChecked ? qsTr("A ON") : qsTr("A OFF")));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onNLimitDirChanged(){
+        var addr = currentGroupAddr(19);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, nLimitPointDir.isChecked ? 1 : 0);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendOperationLog(AxisDefine.axisInfos[pdata.currentGroup].name + qsTr("nLimit Dir Change to") + (nLimitPointDir.isChecked ? qsTr("A ON") : qsTr("A OFF")));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
+    function onOriginMoveDirChanged(){
+        var addr = currentGroupAddr(20);
+        var oldV = panelRobotController.getConfigValue(addr);
+        panelRobotController.setConfigValue(addr, originRunDirInvert.isChecked ? 1 : 0);
+        panelRobotController.syncConfigs();
+        ICOperationLog.appendOperationLog(AxisDefine.axisInfos[pdata.currentGroup].name + qsTr("Origin move dir Change to") + (originRunDirInvert.isChecked ? qsTr("N Dir") : qsTr("P Dir")));
+
+
+        panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+        panelRobotController.syncConfigs();
+    }
+
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
@@ -237,6 +285,13 @@ Item {
         editor.configValueChanged.connect(handler);
     }
 
+    function updateCheckBoxValue(editor, addr, handler){
+        editor.isCheckedChanged.disconnect(handler);
+        editor.isChecked = panelRobotController.getConfigValue(addr);
+        editor.isCheckedChanged.connect(handler);
+    }
+
+
     function showMotorConfigs(which){
         pdata.currentGroup = which;
         updateConfigValue(length, pdata.configAddrs[which][0], onLengthChanged);
@@ -247,12 +302,18 @@ Item {
         updateConfigValue(pLimitPoint, pdata.configAddrs[which][5], onPLimitPointChanged);
         updateConfigValue(nLimitPoint, pdata.configAddrs[which][6], onNLimitPointChanged);
         updateConfigValue(originPoint, pdata.configAddrs[which][7], onOriginPointChanged);
+        updateComboBoxValue(axisType, pdata.configAddrs[which][8], onAxisTypeChanged);
         updateConfigValue(acc1, pdata.configAddrs[which][10], onAcc1Changed);
         updateConfigValue(acc2, pdata.configAddrs[which][11], onAcc2Changed);
         updateConfigValue(maxSpeed, pdata.configAddrs[which][12], onMaxSpeedChanged);
         updateComboBoxValue(encoderType, pdata.configAddrs[which][15], onEncoderTypeChanged);
         updateComboBoxValue(motorFactory, pdata.configAddrs[which][16], onMotorFactoryChanged);
         updateComboBoxValue(encoderReadWay, pdata.configAddrs[which][17], onEncoderReadWayChanged);
+        updateCheckBoxValue(pLimitPointDir, pdata.configAddrs[which][18], onPLimitDirChanged);
+        updateCheckBoxValue(nLimitPointDir, pdata.configAddrs[which][19], onNLimitDirChanged);
+        updateCheckBoxValue(originRunDirInvert, pdata.configAddrs[which][20], onOriginMoveDirChanged);
+
+
 
     }
 
@@ -364,7 +425,7 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3")]
-                    z:4
+                    z:5
                 }
                 ICComboBoxConfigEdit{
                     id:encoderType
@@ -372,7 +433,7 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3")]
-                    z:3
+                    z:4
                 }
                 ICComboBoxConfigEdit{
                     id:encoderReadWay
@@ -380,6 +441,15 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Encode RW1"), qsTr("Encode RW2"), qsTr("Encode RW3")]
+                    z:3
+                }
+
+                ICComboBoxConfigEdit{
+                    id:axisType
+                    configName: qsTr("Axis Type")
+                    configNameWidth: pdata.configNameWidth
+                    inputWidth: pdata.inputWidth
+                    items:[qsTr("Rotate"), qsTr("Line")]
                     z:2
                 }
 
@@ -418,27 +488,45 @@ Item {
                     inputWidth: pdata.inputWidth
                     unit: qsTr("mm")
                 }
-                ICConfigEdit{
-                    id:pLimitPoint
-                    configName: qsTr("Positive Limit Point")
-                    configNameWidth: pdata.configNameWidth
-                    inputWidth: pdata.inputWidth
+                Row{
+                    ICConfigEdit{
+                        id:pLimitPoint
+                        configName: qsTr("Positive Limit Point")
+                        configNameWidth: pdata.configNameWidth
+                        inputWidth: pdata.inputWidth / 2
 
+                    }
+                    ICCheckBox{
+                        id:pLimitPointDir
+                        text: qsTr("A ON")
+                    }
                 }
-                ICConfigEdit{
-                    id:nLimitPoint
-                    configName: qsTr("Negative Limit Point")
-                    configNameWidth: pdata.configNameWidth
-                    inputWidth: pdata.inputWidth
+                Row{
+                    ICConfigEdit{
+                        id:nLimitPoint
+                        configName: qsTr("Negative Limit Point")
+                        configNameWidth: pdata.configNameWidth
+                        inputWidth: pdata.inputWidth / 2
+                    }
+                    ICCheckBox{
+                        id:nLimitPointDir
+                        text: qsTr("A ON")
+                    }
+                }
+                Row{
+                    ICConfigEdit{
+                        id:originPoint
+                        configName: qsTr("Origin Point")
+                        configNameWidth: pdata.configNameWidth
+                        inputWidth: pdata.inputWidth / 2
 
+                    }
+                    ICCheckBox{
+                        id:originRunDirInvert
+                        text: qsTr("INV Move")
+                    }
                 }
-                ICConfigEdit{
-                    id:originPoint
-                    configName: qsTr("Origin Point")
-                    configNameWidth: pdata.configNameWidth
-                    inputWidth: pdata.inputWidth
 
-                }
                 ICConfigEdit{
                     id:acc1
                     configName: qsTr("ACC 1")
@@ -533,9 +621,13 @@ Item {
                     }
                 }
                 onVisibleChanged: {
-                    panelRobotController.setMotorTestPulseNum(testPulseNum.text);
+                    if(visible){
+                        console.log("IN Config");
+                        testClear.clicked();
+                        panelRobotController.setMotorTestPulseNum(testPulseNum.text);
+                    }
+                    console.log("Out Config");
                     panelRobotController.swichPulseAngleDisplay(visible ? 5:0);
-                    testClear.clicked();
                 }
             }
 
@@ -616,6 +708,18 @@ Item {
 
     Component.onCompleted: {
         motor1.setChecked(true);
-        showMotorConfigs(pdata.currentGroup)
+        showMotorConfigs(pdata.currentGroup);
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        motor1.visible = AxisDefine.axisInfos[0].visiable;
+        motor2.visible = AxisDefine.axisInfos[1].visiable;
+        motor3.visible = AxisDefine.axisInfos[2].visiable;
+        motor4.visible = AxisDefine.axisInfos[3].visiable;
+        motor5.visible = AxisDefine.axisInfos[4].visiable;
+        motor6.visible = AxisDefine.axisInfos[5].visiable;
+        motor7.visible = false;
+        motor8.visible = false;
     }
 }

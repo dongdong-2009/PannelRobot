@@ -58,8 +58,12 @@ inline uint ICUtility::CountOneInNumber(uint x)
 
 inline bool ICUtility::IsUsbAttached()
 {
+#ifdef Q_WS_QWS
     QDir dir("/proc/scsi/usb-storage");
     return !(dir.entryList(QDir::Files).isEmpty());
+#else
+    return QDir::current().exists("./fakeUSB");
+#endif
 }
 
 inline int ICUtility::ConvertFontPointSizeToEmbedded(int desktopPointSize)

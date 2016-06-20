@@ -4,6 +4,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../teach/Teach.js" as Teach
 
 Item {
+    id:container
     width: content.width
     height: content.height
     property alias motor0: motor0.configValue
@@ -92,6 +93,7 @@ Item {
         property int posWidth: 80
         property int spaceWidth: 70
         property int counteWidth: 60
+        property int axisNameWidth: 30
         Column{
             id:dataSourceContainer
             spacing: 6
@@ -112,6 +114,7 @@ Item {
                 visible: mode == 0
                 //                id:posContainer
                 columns: 2
+                rows: 3
                 spacing: 4
                 flow: Grid.TopToBottom
                 ICConfigEdit{
@@ -119,12 +122,14 @@ Item {
                     configName: AxisDefine.axisInfos[0].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
                 }
                 ICConfigEdit{
                     id:motor1
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -132,6 +137,7 @@ Item {
                     configName: AxisDefine.axisInfos[2].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -139,6 +145,7 @@ Item {
                     configName: AxisDefine.axisInfos[3].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -146,6 +153,7 @@ Item {
                     configName: AxisDefine.axisInfos[4].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
 
                 }
                 ICConfigEdit{
@@ -153,12 +161,14 @@ Item {
                     configName: AxisDefine.axisInfos[5].name
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: content.axisNameWidth
                 }
 
             }
 
             Column{
                 id:offsetPosContainer
+                property int offsetNameWidth: 50
                 spacing: 4
                 visible: offsetEn.isChecked
                 ICConfigEdit{
@@ -166,6 +176,7 @@ Item {
                     configName:qsTr("X Offset")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: offsetPosContainer.offsetNameWidth
 
                 }
                 ICConfigEdit{
@@ -173,6 +184,7 @@ Item {
                     configName:qsTr("Y Offset")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: offsetPosContainer.offsetNameWidth
 
                 }
                 ICConfigEdit{
@@ -180,6 +192,7 @@ Item {
                     configName:qsTr("Z Offset")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.posWidth
+                    configNameWidth: offsetPosContainer.offsetNameWidth
 
                 }
             }
@@ -192,6 +205,7 @@ Item {
                     configName: qsTr("Space0")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
+                    configNameWidth: 80
                 }
                 ICConfigEdit{
                     id:count0
@@ -204,6 +218,7 @@ Item {
                     configName: qsTr("Space1")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
+                    configNameWidth: space0.configNameWidth
                 }
                 ICConfigEdit{
                     id:count1
@@ -216,7 +231,7 @@ Item {
                     configName: qsTr("Space2")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
-                    //                    visible: mode == 0
+                    configNameWidth: space0.configNameWidth
 
                 }
                 ICConfigEdit{
@@ -272,6 +287,7 @@ Item {
             popupMode: dataSourceSel.visible ? 0 : 1
             configName: qsTr("Counter")
             inputWidth: 300
+            popupHeight: 150
             z:100
         }
     }
@@ -283,7 +299,8 @@ Item {
     }
 
     onVisibleChanged: {
-        updateCounters();
+        if(visible)
+            updateCounters();
     }
     onDataSourceChanged: {
         var items = dataSource;
@@ -294,5 +311,16 @@ Item {
 
     Component.onCompleted: {
         updateCounters();
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        motor0.visible = AxisDefine.axisInfos[0].visiable;
+        motor1.visible = AxisDefine.axisInfos[1].visiable;
+        motor2.visible = AxisDefine.axisInfos[2].visiable;
+        motor3.visible = AxisDefine.axisInfos[3].visiable;
+        motor4.visible = AxisDefine.axisInfos[4].visiable;
+        motor5.visible = AxisDefine.axisInfos[5].visiable;
+
     }
 }

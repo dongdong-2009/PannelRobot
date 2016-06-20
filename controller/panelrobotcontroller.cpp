@@ -5,7 +5,6 @@
 #include <QVariant>
 #include <QFile>
 #include "icappsettings.h"
-#include "icmachineconfig.h"
 //#include "icdalhelper.h"
 #include "icconfigsaddr.h"
 #include "parser.h"
@@ -275,6 +274,10 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 
 void PanelRobotController::sendKnobCommandToHost(int knob)
 {
+    if(knob == CMD_AUTO)
+    {
+        modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
+    }
     modifyConfigValue(ICAddr_System_Retain_1, knob);
 }
 
@@ -464,6 +467,7 @@ void PanelRobotController::setToRunningUIPath(const QString &dirname)
         {
             ICAppSettings settings;
             settings.SetUIMainName(qml.path());
+            settings.sync();
         }
     }
 }
@@ -814,6 +818,11 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
             file.close();
         }
     }
+    if(!ICUtility::IsUsbAttached())
+    {
+        ret = MoldMaintainRet::kME_USBNotFound;
+        return ret;
+    }
     QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
             .arg(name)
             .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
@@ -882,6 +891,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
     for(int i = 0; i < result.size(); ++i)
     {
         moldName = result.at(i).toString();
+        moldInfo.clear();
 #ifdef Q_WS_QWS
         moldName = moldName.toUtf8();
 #endif
@@ -889,6 +899,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
         if(file.open(QFile::ReadOnly))
         {
             actContent = QString::fromUtf8(file.readAll());
+            qDebug()<<"IMPOrt:"<<i<<file.fileName()<<actContent;
             file.close();
             moldInfo.append(actContent.split("\n", QString::SkipEmptyParts));
         }
@@ -914,6 +925,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
 #ifdef Q_WS_QWS
         moldName = result.at(i).toString();
 #endif
+        qDebug()<<"imp"<<moldName<<moldInfo;
         imported = ICRobotMold::ImportMold(moldName, moldInfo);
         //        if(imported.errNumber() == ICRobotMold::kRecordErr_None)
         //        {
@@ -1282,4 +1294,63 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
         }
     }
     return QString(ret);
+}
+
+void PanelRobotController::setWatchDogEnabled(bool en)
+{
+
+#ifdef Q_WS_QWS
+    int flags;
+    if(en)
+    {
+        flags = WDIOS_ENABLECARD;
+        ioctl(wdFD, WDIOC_SETTIMEOUT, &checkTime);
+    }
+    else
+    {
+        flags = WDIOS_DISABLECARD;
+    }
+    ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
+#endif
+
+}
+
+QString PanelRobotController::getPictures() const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return "[]";
+    usb.cd("HCUpdate_pic");
+    QStringList updaters = usb.entryList(QStringList()<<"*.png");
+    QString ret = "[";
+    for(int i = 0; i != updaters.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(updaters.at(i)));
+    }
+    if(updaters.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+QString PanelRobotController::getPicturesPath(const QString& picName) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return "";
+    usb.cd("HCUpdate_pic");
+    return usb.absoluteFilePath(picName);
+}
+
+void PanelRobotController::copyPicture(const QString &picName, const QString& to) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return;
+    usb.cd("HCUpdate_pic");
+    ICAppSettings settings;
+    QString uiMain = settings.UIMainName();
+    QDir appDir = QDir::current();
+    appDir.cd(uiMain);
+    appDir.cd("images");
+    ::system(QString("cp %1 %2 -f").arg(usb.absoluteFilePath(picName))
+             .arg(appDir.absoluteFilePath(to)).toLatin1());
+    ::system("sync");
 }

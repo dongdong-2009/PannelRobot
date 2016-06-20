@@ -26,6 +26,14 @@ function ManualProgramManager(){
         }
     }
     );
+
+    this.clear = function(){
+        db.transaction(function(tx){
+//            tx.executeSql('CREATE TABLE IF NOT EXISTS manualprogram(id PK INTEGER NOT NULL, name TEXT  NOT NULL, program TEXT  NOT NULL)');
+            tx.executeSql('DELETE FROM manualprogram');
+        });
+    }
+
     this.findUsableID = function(){
         for(var i = 0 ; i < programs.length; ++i){
             if(programs[i] === undefined)

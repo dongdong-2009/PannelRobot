@@ -1,6 +1,7 @@
-QT       += script
+
+QT       += script opengl
 #TEMPLATE = app
-VERSION = 1.0.0
+VERSION = 1.0.1
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += SW_VER=\"$${VERSTR}\"
 DEFINES += UART_COMM
@@ -92,9 +93,13 @@ updateDir = tools/Update
 target.path = /opt/Qt/apps
 
 CONFIG(release, debug|release) {
+message("in release")
 db.path = /opt/Qt/apps/
 db.files += $${reinstallDir}/RobotDatabase
-#INSTALLS += db
+}
+CONFIG(Reinstall, debug|release|Reinstall){
+message("in Reinstall")
+INSTALLS += db configs
 }
 
 #db.path = /opt/Qt/apps/
@@ -106,11 +111,16 @@ usr_bin_scripts.files += $${reinstallDir}/usr_bin_scripts/*
 usr_bin_scripts.files += $${reinstallDir}/$${SK_SIZE}RunApp/*
 usr_sbin_scripts.path = /usr/sbin
 usr_sbin_scripts.files += $${reinstallDir}/usr_sbin_scripts/*
+configs.path = /opt/Qt/apps/sysconfig
+configs.files += $${reinstallDir}/configs/PanelRobot.ini
+testapp.path = /opt/Qt/apps
+testapp.files += $${reinstallDir}/3a8HardwareTest*
 
 qmls.path = $${target.path}/qml
 qmls.files += qml/App_*
 
-INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls
+INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls testapp
+
 #INSTALLS += target
 message($${INSTALLS})
 
@@ -122,8 +132,8 @@ OTHER_FILES += \
 
 UPDir = $${DESTDIR}/HCRobot-$${VERSION}
 updateCmd = '"tar xvf PanelRobot.tar -C / ; cp /opt/Qt/apps/RobotDatabase /mnt/udisk -f"'
-UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar"
-unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}' > UPMaker && chmod +x UPMaker"
+UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar  &&  cd ../ && tools/versionUpdater.sh $${DESTDIR} $${UPDir}.tar.bfe"
+unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}'> UPMaker && chmod +x UPMaker && chmod +x tools/versionUpdater.sh"
 #unix:QMAKE_PRE_LINK += ""
 
 HEADERS += \
@@ -133,4 +143,3 @@ TRANSLATIONS += PanelRobot_zh_CN.ts PanelRobot_en_US.ts
 
 RESOURCES += \
     resource.qrc
-

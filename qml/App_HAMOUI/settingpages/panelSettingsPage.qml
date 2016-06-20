@@ -17,6 +17,7 @@ Item{
             tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes"), qsTr("No"));
         }
     }
+
     ICMessageBox{
         id:tip
         z:100
@@ -265,16 +266,21 @@ Item{
             keyToneOn.setChecked(true);
         else
             keyToneOff.setChecked(true);
+        panelRobotController.setKeyTone(keyToneOn.isChecked);
+
 
         panelRobotController.setKeyTone(keyToneOn.isChecked);
 
 
         var brightnessval = panelRobotController.getCustomSettings("Brightness", 8);
         brightness.setValue(brightnessval);
+        panelRobotController.setBrightness(brightness.value());
 
 
         var scsT = panelRobotController.getCustomSettings("ScreensaverTime", 5);
         screensaverTime.text = scsT;
+        panelRobotController.setScreenSaverTime(screensaverTime.text);
+
     }
 
     onVisibleChanged: {

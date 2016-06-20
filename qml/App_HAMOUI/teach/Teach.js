@@ -56,12 +56,23 @@ var DefinePoints = {
             return {"index":pID, "name":name, "point":point};
         }
 
+        definePoints.pushPoint = function(pID, point){
+            for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
+                if(pID < definePoints.definedPoints[i].index){
+                    definePoints.definedPoints.splice(i, 0, point);
+                    return;
+                }
+            }
+            definePoints.definedPoints.push(point);
+        }
+
         definePoints.addNewPoint = function(name, point, type){
             var pID = definePoints.createPointID();
             var t = type || DefinePoints.kPT_Free
             name = t + "P" + pID + ":" + name;
             var iPoint = definePoints.createPointObject(pID, name, point);
-            definePoints.definedPoints.splice(pID, 0, iPoint);
+//            definePoints.definedPoints.splice(pID, 0, iPoint);
+            definePoints.pushPoint(pID, iPoint);
             definePoints.informPointAdded(iPoint);
             return iPoint;
         }
@@ -102,20 +113,23 @@ var DefinePoints = {
 
         definePoints.extractPointIDFromPointName = function(name){
             var nI = name.indexOf(":");
-            return parseInt(name.substring(nI - 1, nI));
+            return parseInt(name.substring(2, nI));
         }
         definePoints.isPointExist = function(pointID){
-            if(pointID >= definePoints.definedPoints.length) return false;
-            return definePoints.definedPoints[pointID].index === pointID;
+            for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
+                if(pointID == definePoints.definedPoints[i].index)
+                    return true;
+            }
+            return false;
         }
         definePoints.pointNameList = function(){
             var ret = [];
-            for(var i = 0; i < definePoints.definedPoints.length; ++i){
+            for(var i = 0, len = definePoints.definedPoints.length; i < len; ++i){
                 ret.push(definePoints.definedPoints[i].name);
             }
             return ret;
         }
-        definePoints.pointDescr = function(point){
+        definePoints.pointDescr = function(point, axisDefine){
             if(point == undefined)
             {
                 console.log("err");
@@ -131,7 +145,8 @@ var DefinePoints = {
             for(var i = 0; i < 6; ++i){
                 m = "m" + i;
                 if(pointPos.hasOwnProperty(m)){
-                    ret += axisInfos[i].name + ":" + pointPos[m] + ","
+                    if(axisDefine[i].visiable)
+                        ret += axisDefine[i].name + ":" + pointPos[m] + ","
                 }
             }
             ret = ret.substr(0, ret.length - 1);
@@ -150,6 +165,10 @@ var DefinePoints = {
             definePoints.informPointsCleared();
         }
         definePoints.parseActionPointsHelper = function(actionObject){
+            if(actionObject.action === actions.ACT_COMMENT){
+                return arguments.callee(actionObject.commentAction);
+            }
+
             if(!actionObject.hasOwnProperty("points"))
                 return [];
             var points = actionObject.points;
@@ -162,9 +181,6 @@ var DefinePoints = {
                     continue;
                 pID = definePoints.extractPointIDFromPointName(name);
                 ret.push(definePoints.createPointObject(pID, name, points[i].pos))
-//                if(!definePoints.isPointExist(pID)){
-//                    definePoints.definedPoints.splice(pID, 0, definePoints.createPointObject(pID, name, points[i].pos));
-//                }
             }
             return ret;
         }
@@ -173,9 +189,8 @@ var DefinePoints = {
             var points = definePoints.parseActionPointsHelper(actionObject);
             for(var i = 0; i < points.length; ++i){
                 if(!definePoints.isPointExist(points[i].index)){
-                    definePoints.definedPoints.splice(points[i].index, 0, points[i]);
+                    definePoints.pushPoint(points[i].index, points[i]);
                     definePoints.informPointAdded(points[i]);
-
                 }
             }
         }
@@ -395,7 +410,9 @@ var useableStack = function(){
 }
 
 function parseStacks(stacks){
-    if(stacks.length === 0) return;
+    if(stacks.length < 4) {
+        stacks = "{}";
+    }
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;
@@ -427,9 +444,9 @@ function CounterInfo(id, name, current, target){
     this.name = name || "Counter-" + this.id;
     this.current = current || 0;
     this.target = target || 0;
-    this.toString = function(){
-       return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]";
-
+    this.toString = function(withName){
+        var wn = withName || false;
+        return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]" + (wn ? ":" + this.name : "");
     }
 }
 
@@ -563,10 +580,10 @@ function CounterManager(){
         }
         return null;
     }
-    this.counterToString = function(id){
+    this.counterToString = function(id, withName){
         var cs = this.getCounter(id);
         if(cs == null) return "Invalid Counter";
-        return cs.toString();
+        return cs.toString(withName);
     }
 
     this.countersStrList = function(){
@@ -735,12 +752,29 @@ actions.F_CMD_SINGLE = actHelper++;
 actions.F_CMD_JOINTCOORDINATE = actHelper++;
 actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
+actions.F_CMD_LINEXY_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52000;
+actions.F_CMD_LINEXZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52001;
+actions.F_CMD_LINEYZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52002;
 actions.F_CMD_LINE3D_MOVE_POINT = actHelper++;
 actions.F_CMD_ARC3D_MOVE_POINT = actHelper++;   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+actions.F_CMD_ARCXY_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51000
+actions.F_CMD_ARCXZ_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51001
+actions.F_CMD_ARCYZ_MOVE_POINT = actions.F_CMD_ARC3D_MOVE_POINT + 51002
 actions.F_CMD_MOVE_POSE = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
 actions.F_CMD_ARC3D_MOVE = actHelper++;   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+actions.F_CMD_ARC2D_MOVE_POINT = actHelper++;   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
+actions.F_CMD_SINGLE_ADD_FUNC = actHelper++;
+actions.F_CMD_ARC_RELATIVE = actHelper++;		//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+actions.F_CMD_SPEED_SMOOTH = actHelper++;       //< 轨迹速度平滑设定 起始速度，终止速度
+actions.F_CMD_ARC3D_MOVE_POINT_POSE = actHelper++;    //< 按点位姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+actions.F_CMD_ARC_RELATIVE_POSE = actHelper++; 	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+actions.F_CMD_ARC3D_MOVE_POSE = actHelper++;          //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
+actions.F_CMD_LINE_RELATIVE_POSE = actHelper++; 	   //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
@@ -778,6 +812,8 @@ var kCCErr_Wrong_Action_Format = 10;
 var kCCErr_Invaild_Flag = 11;
 var kCCErr_Invaild_StackID = 12;
 var kCCErr_Invaild_CounterID = 13;
+var kCCErr_Invaild_ModuleID = 14;
+
 
 var kAxisType_NoUse = 0;
 var kAxisType_Servo = 1;
@@ -797,20 +833,40 @@ function hasCounterIDAction(action){
         var si = getStackInfoFromID(action.stackID);
         if(si != null)
             return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
+    }else if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return arguments.callee(action.commentAction);
+        }
     }
 
     return action.hasOwnProperty("counterID");
 }
 
 function hasStackIDAction(action){
+    if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return action.commentAction.hasOwnProperty("stackID");
+        }
+    }
+
     return action.hasOwnProperty("stackID");
+}
+
+function actionStackID(action){
+    if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
+    }
+    return action.stackID;
 }
 
 function actionCounterIDs(action){
     if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         return [si.si0.counterID, si.si1.counterID];
+    }else if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
     }
+
     return [action.counterID];
 }
 
@@ -821,7 +877,10 @@ var generateAxisServoAction = function(action,
                                        delay,
                                        isBadEn,
                                        isEarlyEnd,
-                                       earlyEndPos){
+                                       earlyEndPos,
+                                       isEarlySpd,
+                                       earlySpdPos,
+                                       earlySpd){
     return {
         "action":action,
         "axis":axis,
@@ -829,8 +888,11 @@ var generateAxisServoAction = function(action,
         "speed":speed||80.0,
         "delay":delay||0.00,
         //        "isBadEn":isBadEn||false,
-        //        "isEarlyEnd":isEarlyEnd||false,
-        //        "earlyEndPos":earlyEndPos||0.00
+        "isEarlyEnd":isEarlyEnd||false,
+        "earlyEndPos":earlyEndPos||0,
+        "isEarlySpd":isEarlySpd || false,
+        "earlySpdPos":earlySpdPos || 0,
+        "earlySpd":earlySpd || 0
     };
 }
 
@@ -862,6 +924,14 @@ var generateOriginAction = function(action,
         "speed":speed||80.0,
         "delay":delay||0.00,
     };
+}
+
+var generateSpeedAction = function(startSpeed,endSpeed){
+    return {
+        "action":actions.F_CMD_SPEED_SMOOTH,
+        "startSpeed":startSpeed,
+        "endSpeed":endSpeed
+    }
 }
 
 var generateAxisPneumaticAction = function(action,delay){
@@ -1068,8 +1138,15 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     if(actionObject.isBadEn)
         ret += " " + qsTr("Bad En");
     if(actionObject.isEarlyEnd){
-        ret += " " + qsTr("Early End Pos:") + actionObject.earlyEndPos;
+        ret += "\n                            ";
+        ret += qsTr("Early End Pos:") + actionObject.earlyEndPos;
     }
+    if(actionObject.isEarlySpd){
+        ret += "\n                            ";
+        ret += " " + qsTr("Early End Spd pos:") + actionObject.earlySpdPos;
+        ret += " " + qsTr("Early End Spd:") + actionObject.earlySpd;
+    }
+
     return ret;
 }
 
@@ -1225,12 +1302,12 @@ var stackActionToStringHandler = function(actionObject){
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                                                           "";
-    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID) : qsTr("Counter:Self");
-    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID) : qsTr("Counter:Self"))
+    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
+    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                                              : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + " " + counterID1 + " " + counterID2;
+            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){
@@ -1263,8 +1340,14 @@ var pointToString = function(point){
 var pathActionToStringHandler = function(actionObject){
     var ret = "";
     var needNewLine = false;
-    if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT){
-        ret += qsTr("Line2D:");
+    if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT){
+        ret += qsTr("LineXY:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT){
+        ret += qsTr("LineXZ:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT){
+        ret += qsTr("LineYZ:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT){
         ret += qsTr("Line3D:");
@@ -1289,6 +1372,30 @@ var pathActionToStringHandler = function(actionObject){
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE){
         ret += qsTr("Circle:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT){
+        ret += qsTr("ArcXY:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT){
+        ret += qsTr("ArcXZ:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT){
+        ret += qsTr("ArcYZ:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE){
+        ret += qsTr("Offset Curve:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE){
+        ret += qsTr("Curve3D-Pose:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE){
+        ret += qsTr("PO Curve 3D:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE){
+        ret += qsTr("P Circle:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
+        ret += qsTr("PO Line 3D:");
         needNewLine = true;
     }
 
@@ -1323,20 +1430,35 @@ var waitVisionDataActionToStringHandler = function(actionObject){
     + qsTr("Limit:") + actionObject.limit;
 }
 
+var speedActionToStringHandler = function(actionObject){
+    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+}
 
 
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_FINE_ZERO, f_CMD_FINE_ZEROToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_LINE2D_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINEXY_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINEXZ_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINEYZ_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARCXY_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARCXZ_MOVE_POINT, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARCYZ_MOVE_POINT, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINT_RELATIVE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINE_RELATIVE_POSE, pathActionToStringHandler);
+
+
 actionToStringHandlerMap.put(actions.F_CMD_TEACH_ALARM, customAlarmActiontoStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
@@ -1355,21 +1477,36 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
-
+actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
+    if(actionObject.action === actions.ACT_COMMENT)
+        return ret;
     if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
-    }else if(actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
+                {"item":"delay", "range":"s_rw_0_32_2_1100"},
+                {"item":"earlyEnd"},
+                {"item":"earlyEndSpd"}];
+    }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
+             actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_ARC3D_MOVE ||
              actionObject.action === actions.F_CMD_MOVE_POSE ||
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION){
+             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
+             actionObject.action === actions.F_CMD_JOINT_RELATIVE ||
+             actionObject.action === actions.F_CMD_ARC_RELATIVE ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
+             actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
+             actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
         ret = [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -1447,22 +1584,38 @@ function ccErrnoToString(errno){
         return qsTr("Invalid stack");
     case kCCErr_Invaild_CounterID:
         return qsTr("Invalid counter");
+    case kCCErr_Invaild_ModuleID:
+        return qsTr("Invaild Moldule");
     }
     return qsTr("Unknow Error");
 }
 
 
 var canActionUsePoint = function(actionObject){
+    if(actionObject.action === actions.ACT_COMMENT){
+        return canActionUsePoint(actionObject.commentAction);
+    }
+
     return actionObject.action === actions.F_CMD_SINGLE ||
             actionObject.action === actions.F_CMD_CoordinatePoint ||
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-            actionObject.action === actions.F_CMD_LINE2D_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_MOVE_POSE ||
             actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
-            actionObject.action === actions.F_CMD_JOINTCOORDINATE;
+            actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
+            actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARC_RELATIVE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
+            actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
+            actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE;
 }
 
 var canActionTestRun = function(actionObject){

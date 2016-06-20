@@ -5,6 +5,7 @@ import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
+    id:container
     width: parent.width
     height: parent.height
     QtObject{
@@ -33,7 +34,13 @@ Item {
                                                            i,
                                                            axisActionInfo.pos,
                                                            axisActionInfo.speed,
-                                                           axisActionInfo.delay));
+                                                           axisActionInfo.delay,
+                                                           false,
+                                                           earlyEnd.isChecked,
+                                                           earlyEnd.configValue,
+                                                           earlyEndSpeedPos.isChecked,
+                                                           earlyEndSpeedPos.configValue,
+                                                           earlyEndSpeed.configValue));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -128,6 +135,34 @@ Item {
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
             }
+            ICCheckableLineEdit{
+                id:earlyEnd
+                configName: qsTr("Early End Pos")
+                configValue: "0"
+                inputWidth: 60
+            }
+            Row{
+                spacing: 4
+                ICCheckableLineEdit{
+                    id:earlyEndSpeedPos
+                    configName: qsTr("ESD Pos")
+                    configValue: "0"
+                    inputWidth: 60
+
+                }
+
+                ICConfigEdit{
+                    id:earlyEndSpeed
+                    configName: qsTr("ESD")
+                    unit: qsTr("%")
+                    configAddr: "s_rw_0_32_1_1200"
+                    enabled: earlyEndSpeedPos.isChecked
+                    configValue: "10.0"
+                    inputWidth: 60
+
+                }
+            }
+
 //            AxisActionEditorAxisComponent{
 //                id:m6Axis
 //                axisName: AxisDefine.axisInfos[6].name
@@ -170,5 +205,16 @@ Item {
 //        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
 //        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        m0Axis.visible = AxisDefine.axisInfos[0].visiable;
+        m1Axis.visible = AxisDefine.axisInfos[1].visiable;
+        m2Axis.visible = AxisDefine.axisInfos[2].visiable;
+        m3Axis.visible = AxisDefine.axisInfos[3].visiable;
+        m4Axis.visible = AxisDefine.axisInfos[4].visiable;
+        m5Axis.visible = AxisDefine.axisInfos[5].visiable;
+
     }
 }

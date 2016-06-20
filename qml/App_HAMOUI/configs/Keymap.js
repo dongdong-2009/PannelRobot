@@ -178,6 +178,7 @@ var CMD_KEY_ORIGIN   = 0x0A02; //< 原点命令
 var CMD_KEY_RETURN   = 0x0A03; //< 复归命令
 var CMD_KEY_UP       = 0x0A04; //< 上命令
 var CMD_KEY_DOWN     = 0x0A05; //< 下命令
+var CMD_KEY_CONTINUE = 0x0A06; //< 清除报警后继续运行
 
 var CMD_INVALID = 0x7FFF;
 
@@ -349,4 +350,28 @@ function endSpeedCalcByTime(current, dir){
 
 function endSpeedCaclByTimeStop(){
     speedInfo.changeCount = 0;
+}
+
+var hwtestSequence = [ KEY_F5, KEY_F1, KEY_F4, KEY_F1, KEY_F3, KEY_F1, KEY_F2, KEY_F5];
+var recalSequence = [ KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5]
+var currentKeySequence = [];
+
+function matchSequenceHelper(sequence){
+    if(currentKeySequence.length == sequence.length)
+    {
+        for(var i = 0, len = currentKeySequence.length; i < len; ++i){
+            if(currentKeySequence[i] != sequence[i])
+                return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+function matchHWTestSequence(){
+    return matchSequenceHelper(hwtestSequence);
+}
+
+function matchRecalSequence(){
+    return matchSequenceHelper(recalSequence);
 }

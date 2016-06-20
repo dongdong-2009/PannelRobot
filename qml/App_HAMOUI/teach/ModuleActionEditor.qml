@@ -10,10 +10,12 @@ import "ProgramFlowPage.js" as ProgramFlowPage
 Item {
     function setModuleSelections(moduleNames){
         moduleSel.items = moduleNames;
+        moduleSel.configValue = -1;
     }
     function setFlagSelections(flags){
         flags.splice(0, 0, qsTr("Next Line"));
         callBackSel.items = flags;
+        callBackSel.configValue = -1;
     }
 
     function createActionObjects(){

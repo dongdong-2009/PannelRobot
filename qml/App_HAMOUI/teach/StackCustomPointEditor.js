@@ -126,7 +126,7 @@ var HCCYGCodeInterpreter = {
                 m = axisNames[m];
                 if( m in args){
                     if(args[m] != null)
-                        point[m] = args[m] + virtualOriginPos[m] /*+ originPos[m]*/;
+                        point[m] = args[m] + virtualOriginPos[m]/* + originPos[m]*/;
                 }
             }
             if("T" in args)

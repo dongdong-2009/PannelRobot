@@ -33,7 +33,6 @@ MouseArea{
 
     signal editConfirm(bool accept, variant points)
 
-
     Rectangle {
         id:container
         width: parent.width
@@ -78,6 +77,58 @@ MouseArea{
                 editConfirm(false, []);
             }
         }
+        Row{
+            id:objectOriginContainer
+            anchors.left: pointViewContainer.left
+            anchors.bottom: pointViewContainer.top
+            anchors.bottomMargin: 4
+            spacing: 2
+            ICButton{
+                id:setInObjectOrigin
+                text: qsTr("Set In")
+                width: 60
+            }
+            ICConfigEdit{
+                id:objectOriginX
+                configName: qsTr(AxisDefine.axisInfos[0].name)
+                configAddr: "s_rw_0_32_3_1300"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ICConfigEdit{
+                id:objectOriginY
+                configName: qsTr(AxisDefine.axisInfos[1].name)
+                configAddr: "s_rw_0_32_3_1300"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ICConfigEdit{
+                id:objectOriginZ
+                configName: qsTr(AxisDefine.axisInfos[2].name)
+                configAddr: "s_rw_0_32_3_1300"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ICButton{
+                id:setAsObjectOrigin
+                text: qsTr("Set As Origin")
+                onButtonClicked: {
+                    var tmpPos;
+                    var m;
+                    for(var i = 0, len = pointModel.count; i < len; ++i){
+                        tmpPos = pointModel.get(i).pointPos;
+                        if(tmpPos.hasOwnProperty("m0")){
+                            tmpPos.m0 = (parseFloat(tmpPos.m0) + parseFloat(objectOriginX.configValue)).toFixed(3);
+                        }
+                        if(tmpPos.hasOwnProperty("m1")){
+                            tmpPos.m1 = (parseFloat(tmpPos.m1) + parseFloat(objectOriginY.configValue)).toFixed(3);
+                        }
+                        if(tmpPos.hasOwnProperty("m2")){
+                            tmpPos.m2 = (parseFloat(tmpPos.m2) + parseFloat(objectOriginZ.configValue)).toFixed(3);
+                        }
+                        pointModel.setProperty(i, "pointPos", tmpPos);
+                    }
+                }
+            }
+        }
+
         Row{
             y:365
             x:pointViewContainer.x
@@ -216,9 +267,9 @@ MouseArea{
         Rectangle  {
             id:pointViewContainer
             width: 460
-            height: 300
+            height: 270
             x:130
-            y:50
+            y:80
             ListModel {
                 id:pointModel
             }

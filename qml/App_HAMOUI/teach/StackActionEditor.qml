@@ -160,7 +160,7 @@ Rectangle {
             page2.setDataSourceName(stackInfo.si1.dataSourceName)
 
             stackType = stackInfo.type;
-            ignoreZ.setChecked(stackType == 3);
+            ignoreZ.setChecked(stackType == 2);
 
             if(stackType != 2 &&
                     stackType != 3){

@@ -135,21 +135,6 @@ Rectangle {
                 }
             }
         }
-        ICCheckBox{
-            id:importFromUsbGCode
-            text:qsTr("Import From USB GCode")
-            width: 160
-            onIsCheckedChanged: {
-                if(isChecked){
-                    gCodeModel.clear();
-                    var gCodeFiles = JSON.parse(panelRobotController.scanUSBGCodeFiles("*"));
-                    for(var i = 0; i < gCodeFiles.length; ++i){
-                        gCodeModel.append(recordsView.createRecordItem(gCodeFiles[i], undefined));
-                    }
-                    recordPage.state = "gCodeMode";
-                }
-            }
-        }
     }
 
     ListModel{
@@ -376,16 +361,6 @@ Rectangle {
                     usbModel.append(recordsView.createRecordItem(molds[i], undefined));
                 }
                 recordPage.state = "openMode";
-            }
-        }
-        ICButton{
-            id:importGCode
-            text:qsTr("Import GCode")
-            height: loadRecord.height
-            visible: importFromUsbGCode.isChecked
-            onButtonClicked: {
-//                PData.hcInterpreter.interprete(panelRobotController.usbFileContent(gCodeModel.get(recordsView.currentIndex).name, true));
-//                var cGC = new Utils.CompiledGCode();
             }
         }
     }

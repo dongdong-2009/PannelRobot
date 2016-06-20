@@ -943,6 +943,18 @@
         <source>INV Move</source>
         <translation>反向移动</translation>
     </message>
+    <message>
+        <source>Change to</source>
+        <translation>改为</translation>
+    </message>
+    <message>
+        <source>Un</source>
+        <translation>不用</translation>
+    </message>
+    <message>
+        <source>En</source>
+        <translation>使用</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -1255,6 +1267,17 @@
     </message>
 </context>
 <context>
+    <name>ICFileSelector</name>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished">确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+</context>
+<context>
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
@@ -1274,6 +1297,37 @@
     <message>
         <source>Descr</source>
         <translation>描述</translation>
+    </message>
+</context>
+<context>
+    <name>ICTimeLable</name>
+    <message>
+        <source>Mon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fri</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sun</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4499,6 +4553,10 @@ please chose!</source>
         <source>Edit Pos</source>
         <translation>编辑点位</translation>
     </message>
+    <message>
+        <source>Ignore Z</source>
+        <translation>保持Z位置</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -4616,6 +4674,19 @@ please chose!</source>
     <message>
         <source>Total:</source>
         <translation>总共:</translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import From 
+CY GCode</source>
+        <translation>G代码导入</translation>
+    </message>
+    <message>
+        <source>Set As Origin</source>
+        <translation>设为工件原点</translation>
     </message>
 </context>
 <context>
@@ -4825,6 +4896,24 @@ please chose!</source>
     <message>
         <source>IO Board Num</source>
         <translation>IO板数</translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItem</name>
+    <message>
+        <source>TabItem</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItemWidget</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
+    </message>
+    <message>
+        <source>text1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -6,8 +6,6 @@ Item {
     id:myItem
     width: parent.width
     height: parent.height
-    property bool isnew: true
-    property variant usermsgBuff: []
     function perms(perm){
         switch(parseInt(perm)){
         case 0: op.setChecked(true);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
@@ -55,13 +53,14 @@ Item {
                         highlightMoveDuration:100
                         delegate: Text {
                             width: parent.width
-                            text: name
+                            text: user.name
                             wrapMode: Text.WordWrap
                             MouseArea{
                                 anchors.fill: parent
                                 onClicked: {
                                     userView.currentIndex = index;
-                                    username.configValue = userModel.get(index).name;
+                                    username.configValue = userModel.get(index).user.name;
+
                                 }
                             }
                         }
@@ -82,23 +81,21 @@ Item {
                             configName: qsTr("username:")
                             inputWidth: 200
                             onConfigValueChanged: {
-                                if(ShareData.UserInfo.userscount() == 0)
-                                    isnew = true;
                                 if(userModel.count == 0)
                                     return
-                                for(var i =0 , len = ShareData.UserInfo.userscount(); i < len; i++){
-                                    if(username.configValue == userModel.get(i).name){
-                                        okBtn.enabled = false;
-                                        isnew = false;
+                                var u
+                                var isNew = true;
+                                for(var i =0 , len = userModel.count; i < len; i++){
+                                    u = userModel.get(i).user;
+                                    if(username.configValue == u.name){
                                         userView.currentIndex = i;
-                                        usermsgBuff  = ShareData.UserInfo.users_();
-                                        perms(usermsgBuff[i][ShareData.USERS_TB_INFO.perm_col]);
-                                        password.configValue = usermsgBuff[i][ShareData.USERS_TB_INFO.password_col];
+                                        perms(u[ShareData.USERS_TB_INFO.perm_col]);
+                                        password.configValue = u[ShareData.USERS_TB_INFO.password_col];
+                                        isNew = false;
                                         break;
-                                    }else isnew = true;
+                                    }
                                 }
-                                if(isnew){
-                                    okBtn.enabled = true;
+                                if(isNew){
                                     op.isChecked = false;
                                     mold.isChecked = false;
                                     system.isChecked = false;
@@ -162,54 +159,49 @@ Item {
                         text: qsTr("delete")
                         radius:5
                         onButtonClicked: {
-                            ShareData.UserInfo.deleteUser(usermsgBuff[userView.currentIndex][ShareData.USERS_TB_INFO.user_name_col]);
-                            usermsgBuff  = ShareData.UserInfo.users_();
+                            ShareData.UserInfo.deleteUser(userModel.get(userView.currentIndex)[ShareData.USERS_TB_INFO.user_name_col]);
                             userModel.remove(userView.currentIndex);
                             if(userView.currentIndex >= 0)
                                 username.configValue = userModel.get(userView.currentIndex).name;
-                            if(userModel.count == 0){
-                                okBtn.enabled = true;
-                                isnew = true;
-                            }
                         }
                     }
                     ICButton{
                         id:okBtn
                         text: qsTr("ok")
                         radius:5
-                        enabled: false
+                        enabled: true
                         onButtonClicked: {
                             if(username.configValue == "" || password.configValue == ""){
                                 msg.warning(qsTr("username or password can not be empty!!"));
                                 return;
                             }
-                            var newAddbuffer = [];
-                            newAddbuffer[0] = username.configValue;
-                            console.log(newAddbuffer[0]);
-                            for(var i =0 ;i < userModel.count;i++){
-                                if(username.configValue == userModel.get(i).name){
+                            var newAddbuffer = {};
+                            newAddbuffer.name = username.configValue;
+                            var isnew = true;
+                            for(var i =0, len = userModel.count;i < len;i++){
+                                if(username.configValue == userModel.get(i).user.name){
                                     isnew = false;
                                     break;
-                                }else isnew = true;
+                                }
                             }
-                            newAddbuffer[1] = password.configValue;
+                            newAddbuffer.password = password.configValue;
                             var perm1 = (op.isChecked ? 0 : 0);
                             var perm2 = (mold.isChecked ? 1 : 0);
                             var perm3 = (system.isChecked ? 2 : 0);
                             var perm4 = (user.isChecked ? 4 : 0);
-                            newAddbuffer[2] = perm1 + perm2 + perm3 + perm4;
+                            newAddbuffer.perm = perm1 + perm2 + perm3 + perm4;
                             if(!op.isChecked)
-                                if(newAddbuffer[2] == 0){
+                                if(newAddbuffer.perm == 0){
                                     msg.warning(qsTr("please set perm!!"));
                                     return;
                                 }
                             if(isnew){
-//                                userModel.insert(0,{"name": newAddbuffer[0]});
-                                userModel.append({"name": newAddbuffer[0]});
+                                userModel.append({"user":newAddbuffer});
                                 userView.currentIndex = userModel.count - 1;
-                                ShareData.UserInfo.addUser(newAddbuffer[0],newAddbuffer[1],parseInt(newAddbuffer[2]));
-                                usermsgBuff  = ShareData.UserInfo.users_();
-                                okBtn.enabled = false;
+                                ShareData.UserInfo.addUser(newAddbuffer.name,newAddbuffer.password,parseInt(newAddbuffer.perm));
+                            }else{
+                                userModel.setProperty(i, "user", newAddbuffer);
+                                ShareData.UserInfo.updateUser(newAddbuffer.name, newAddbuffer.password, parseInt(newAddbuffer.perm));
                             }
 
                         }
@@ -234,13 +226,10 @@ Item {
                 }
             }
 
-            usermsgBuff  = u;
-            username.configValue = usermsgBuff[0][ShareData.USERS_TB_INFO.user_name_col];
-            password.configValue = usermsgBuff[0][ShareData.USERS_TB_INFO.password_col];
-            perms(usermsgBuff[0][ShareData.USERS_TB_INFO.perm_col]);
-            for(i = 0 ;i < usermsgBuff.length;i++){
-                userModel.append({"name": usermsgBuff[i][ShareData.USERS_TB_INFO.user_name_col]});
+            for(i = 0 ;i < u.length;i++){
+                userModel.append({"user": u[i]});
             }
+            userView.currentIndex = -1;
         }
     }
 }

@@ -98,7 +98,7 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(actionObject)){
-            PData.stackLinesInfo.add(cPI, actionObject.stackID, cI);
+            PData.stackLinesInfo.add(cPI, Teach.actionStackID(actionObject), cI);
         }
         if(Teach.canActionUsePoint(actionObject)){
             var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
@@ -141,7 +141,7 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(actionObject)){
-            PData.stackLinesInfo.removeIDLine(cPI, actionObject.stackID, cI);
+            PData.stackLinesInfo.removeIDLine(cPI, Teach.actionStackID(actionObject), cI);
         }
         if(Teach.canActionUsePoint(actionObject)){
             var points = Teach.definedPoints.parseActionPointsHelper(actionObject);

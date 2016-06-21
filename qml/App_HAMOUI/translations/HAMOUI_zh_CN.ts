@@ -943,6 +943,18 @@
         <source>INV Move</source>
         <translation>反向移动</translation>
     </message>
+    <message>
+        <source>Change to</source>
+        <translation>改为</translation>
+    </message>
+    <message>
+        <source>Un</source>
+        <translation>不用</translation>
+    </message>
+    <message>
+        <source>En</source>
+        <translation>使用</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -3856,7 +3868,7 @@ please chose!</source>
     </message>
     <message>
         <source>Pose 3D</source>
-        <translation>姿势直线</translation>
+        <translation type="vanished">姿势直线</translation>
     </message>
     <message>
         <source>Set to Middle Point</source>
@@ -4414,6 +4426,18 @@ please chose!</source>
     <message>
         <source>Repeate</source>
         <translation>重复喷涂</translation>
+    </message>
+    <message>
+        <source>negative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>positive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rotate OK</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

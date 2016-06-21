@@ -163,6 +163,14 @@ UserInfo.addUser = function(username, password, perm){
                 });
 }
 
+UserInfo.updateUser = function(userName, password, perm){
+    var db = getDatabase();
+    db.transaction(function(tx){
+        tx.executeSql(icStrformat("UPDATE {0} SET password='{1}', perm={2} WHERE name='{3}'",
+                                  USERS_TB_INFO.tb_name, password, perm, userName));
+    });
+}
+
 UserInfo.deleteUser = function(username){
     var db = getDatabase();
     db.transaction(

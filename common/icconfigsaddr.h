@@ -16,7 +16,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_104;  //< 6820635 电机1轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_104;  //< 6817691 电机1正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_104;  //< 6817723 电机1负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_104;  //< 6817755 电机1原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_104;  //< 6817787 电机1预留
+extern  const ICAddrWrapper  s_rw_31_1_0_104;  //< 6817787 电机1不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_105;  //< 6897691 电机1预留
 extern  const ICAddrWrapper  s_rw_16_16_1_105;  //< 1080640027 电机1最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_106;  //< 3228188699 电机1最小加速时间毫秒
@@ -37,7 +37,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_111;  //< 7279387 电机2轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_111;  //< 7276443 电机2正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_111;  //< 7276475 电机2负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_111;  //< 7276507 电机2原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_111;  //< 7276539 电机2预留
+extern  const ICAddrWrapper  s_rw_31_1_0_111;  //< 7276539 电机2不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_112;  //< 7356443 电机2预留
 extern  const ICAddrWrapper  s_rw_16_16_1_112;  //< 1081098779 电机2最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_113;  //< 3228647451 电机2最小加速时间毫秒
@@ -58,7 +58,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_118;  //< 7738139 电机3轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_118;  //< 7735195 电机3正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_118;  //< 7735227 电机3负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_118;  //< 7735259 电机3原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_118;  //< 7735291 电机3预留
+extern  const ICAddrWrapper  s_rw_31_1_0_118;  //< 7735291 电机3不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_119;  //< 7815195 电机3预留
 extern  const ICAddrWrapper  s_rw_16_16_1_119;  //< 1081557531 电机3最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_120;  //< 3229106203 电机3最小加速时间毫秒
@@ -79,7 +79,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_125;  //< 8196891 电机4轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_125;  //< 8193947 电机4正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_125;  //< 8193979 电机4负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_125;  //< 8194011 电机4原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_125;  //< 8194043 电机4预留
+extern  const ICAddrWrapper  s_rw_31_1_0_125;  //< 8194043 电机4不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_126;  //< 8273947 电机4预留
 extern  const ICAddrWrapper  s_rw_16_16_1_126;  //< 1082016283 电机4最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_127;  //< 3229564955 电机4最小加速时间毫秒
@@ -100,7 +100,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_132;  //< 8655643 电机5轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_132;  //< 8652699 电机5正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_132;  //< 8652731 电机5负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_132;  //< 8652763 电机5原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_132;  //< 8652795 电机5预留
+extern  const ICAddrWrapper  s_rw_31_1_0_132;  //< 8652795 电机5不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_133;  //< 8732699 电机5预留
 extern  const ICAddrWrapper  s_rw_16_16_1_133;  //< 1082475035 电机5最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_134;  //< 3230023707 电机5最小加速时间毫秒
@@ -121,7 +121,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_139;  //< 9114395 电机6轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_139;  //< 9111451 电机6正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_139;  //< 9111483 电机6负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_139;  //< 9111515 电机6原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_139;  //< 9111547 电机6预留
+extern  const ICAddrWrapper  s_rw_31_1_0_139;  //< 9111547 电机6不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_140;  //< 9191451 电机6预留
 extern  const ICAddrWrapper  s_rw_16_16_1_140;  //< 1082933787 电机6最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_141;  //< 3230482459 电机6最小加速时间毫秒
@@ -142,7 +142,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_146;  //< 9573147 电机7轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_146;  //< 9570203 电机7正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_146;  //< 9570235 电机7负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_146;  //< 9570267 电机7原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_146;  //< 9570299 电机7预留
+extern  const ICAddrWrapper  s_rw_31_1_0_146;  //< 9570299 电机7不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_147;  //< 9650203 电机7预留
 extern  const ICAddrWrapper  s_rw_16_16_1_147;  //< 1083392539 电机7最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_148;  //< 3230941211 电机7最小加速时间毫秒
@@ -163,7 +163,7 @@ extern  const ICAddrWrapper  s_rw_24_4_0_153;  //< 10031899 电机8轴类型
 extern  const ICAddrWrapper  s_rw_28_1_0_153;  //< 10028955 电机8正极限输入方向
 extern  const ICAddrWrapper  s_rw_29_1_0_153;  //< 10028987 电机8负极限输入方向
 extern  const ICAddrWrapper  s_rw_30_1_0_153;  //< 10029019 电机8原点方向选择
-extern  const ICAddrWrapper  s_rw_31_1_0_153;  //< 10029051 电机8预留
+extern  const ICAddrWrapper  s_rw_31_1_0_153;  //< 10029051 电机8不使用伺服
 extern  const ICAddrWrapper  s_rw_0_16_0_154;  //< 10108955 电机8预留
 extern  const ICAddrWrapper  s_rw_16_16_1_154;  //< 1083851291 电机8最高转速RPM
 extern  const ICAddrWrapper  s_rw_0_16_3_155;  //< 3231399963 电机8最小加速时间毫秒

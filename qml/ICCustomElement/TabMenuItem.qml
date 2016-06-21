@@ -5,6 +5,7 @@ Rectangle {
     property bool isChecked: false
     property alias textFont: text.font
     property string textColor:"black"
+    property alias horizontalAlignment: text.horizontalAlignment
     signal itemTriggered()
 
 
@@ -21,8 +22,11 @@ Rectangle {
     Text {
         id: text
         text: qsTr("TabItem")
+        x:2
+        width: parent.width - x
         anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.horizontalCenter: parent.horizontalCenter
+        horizontalAlignment: Text.AlignHCenter
         color: enabled? textColor : "gray"
 
     }

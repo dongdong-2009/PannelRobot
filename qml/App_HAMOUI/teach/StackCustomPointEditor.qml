@@ -87,6 +87,11 @@ MouseArea{
                 id:setInObjectOrigin
                 text: qsTr("Set In")
                 width: 60
+                onButtonClicked: {
+                    objectOrigin.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                    objectOriginY.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                    objectOriginZ.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                }
             }
             ICConfigEdit{
                 id:objectOriginX

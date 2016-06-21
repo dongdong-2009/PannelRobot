@@ -10,7 +10,7 @@ Item {
     height: parent.height
     QtObject{
         id:pdata
-        property int configNameWidth: 140
+        property int configNameWidth: 80
     }
     ICSettingConfigsScope{
         onConfigValueChanged: {
@@ -18,12 +18,15 @@ Item {
             panelRobotController.setConfigValue("s_rw_0_32_0_185", panelRobotController.configsCheckSum(ConfigDefines.machineStructConfigsJSON));
             panelRobotController.syncConfigs();
         }
-
-        Grid{
-//            columns: 2
-            rows:10
-            flow: Grid.TopToBottom
-            spacing: 15
+        Image {
+            id: structGuideImg
+            source: "../images/struct-guide.png"
+            visible: true
+        }
+        Column{
+            id:lengthContainer
+            spacing: 12
+            visible: !structGuideImg.visible
             ICConfigEdit{
                 id:axis1Length
                 configNameWidth: pdata.configNameWidth
@@ -37,6 +40,7 @@ Item {
                 configName: AxisDefine.axisInfos[1].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_107"
+
             }
             ICConfigEdit{
                 id:axis3Length
@@ -66,6 +70,17 @@ Item {
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_135"
             }
+
+        }
+
+        Grid{
+//            columns: 2
+            id:structContainer
+            anchors.top: structGuideImg.bottom
+            anchors.topMargin: 12
+            rows:4
+            spacing: 12
+            flow: Grid.TopToBottom
 
             ICConfigEdit{
                 id:struct1
@@ -180,7 +195,12 @@ Item {
                 unit: qsTr("°")
                 configAddr: "s_rw_0_32_3_173"
             }
+        }
+        Column{
 
+            anchors.left: structGuideImg.right
+            anchors.leftMargin: 12
+            spacing: 12
             ICConfigEdit{
                 id:sAcc1
                 configNameWidth: pdata.configNameWidth

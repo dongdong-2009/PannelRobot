@@ -15,6 +15,9 @@ Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
     height: Theme.defaultTheme.MainWindow.height
+    property bool run_Ready: false
+    property bool stop_Ready: false
+    property bool return_Ready: false
     function onScreenSave(){
         panelRobotController.closeBacklight();
         loginDialog.setTologout();
@@ -749,6 +752,26 @@ Rectangle {
                     paraChose.visible = false;
                 }
             }
+            var myiStatus = panelRobotController.iStatus(0);
+            if(!(myiStatus & 0x400000))     //x36
+                mainWindow.run_Ready = true;
+            if(run_Ready && (myiStatus & 0x400000)){
+                mainWindow.run_Ready = false;
+                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Run));
+            }
+            if(!(myiStatus & 0x800000))
+                mainWindow.stop_Ready = true;
+            if(stop_Ready && (myiStatus & 0x800000)){
+                mainWindow.stop_Ready = false;
+                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Stop));
+            }
+            if(!(myiStatus & 0x1000000))
+                mainWindow.return_Ready = true;
+            if(return_Ready && (myiStatus & 0x1000000)){
+                mainWindow.return_Ready = false;
+                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Return));
+            }
+
 
         }
     }

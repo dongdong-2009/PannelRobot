@@ -1596,7 +1596,8 @@ function ccErrnoToString(errno){
 
 var canActionUsePoint = function(actionObject){
     if(actionObject.action === actions.ACT_COMMENT){
-        return canActionUsePoint(actionObject.commentAction);
+        if(actionObject.commentAction != null)
+            return canActionUsePoint(actionObject.commentAction);
     }
 
     return actionObject.action === actions.F_CMD_SINGLE ||

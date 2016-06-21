@@ -1232,6 +1232,9 @@ var callModuleActionToStringHandler = function(actionObject){
 }
 
 var commentActionToStringHandler = function(actionObject){
+    if(actionObject.commentAction != null){
+       actionObject.comment = actionToString(actionObject.commentAction);
+    }
     return actionObject.comment;
 }
 
@@ -1595,7 +1598,8 @@ function ccErrnoToString(errno){
 
 var canActionUsePoint = function(actionObject){
     if(actionObject.action === actions.ACT_COMMENT){
-        return canActionUsePoint(actionObject.commentAction);
+        if(actionObject.commentAction != null)
+            return canActionUsePoint(actionObject.commentAction);
     }
 
     return actionObject.action === actions.F_CMD_SINGLE ||

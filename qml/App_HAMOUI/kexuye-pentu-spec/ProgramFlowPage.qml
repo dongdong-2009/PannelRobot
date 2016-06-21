@@ -45,10 +45,12 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
-        ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
         ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));     //close
         ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
         ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
+        ret.push(LocalTeach.generateOutputAction(19,0,0,19,0));     //close
+        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //close
+        ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));     //close
 
         ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
@@ -67,20 +69,20 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
 
-        ret.push(LocalTeach.generateOutputAction(17,0,1,17,0));   //gongzhuangzhengzhuang open
-        ret.push(LocalTeach.generateWaitAction(17,0,0,10));
-        ret.push(LocalTeach.generateWaitAction(17,0,1,100));
-        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
+        ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));   //gongzhuangzhengzhuang open
+        ret.push(LocalTeach.generateWaitAction(20,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(20,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 poen
 //        ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));                       //Y034 poen
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag5));
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 0, 0,actionObject.flag5));  //Y034
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
-        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));   //gongzhuangfanzhuang open
-        ret.push(LocalTeach.generateWaitAction(18,0,0,10));
-        ret.push(LocalTeach.generateWaitAction(18,0,1,100));
-        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));                         //close
+        ret.push(LocalTeach.generateOutputAction(21,0,1,21,0));   //gongzhuangfanzhuang open
+        ret.push(LocalTeach.generateWaitAction(21,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(21,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));                         //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
 //        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));                     //Y034 poen
         ret.push(LocalTeach.generateFlagAction(actionObject.flag5, qsTr("positive")));
@@ -555,16 +557,45 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
 
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 //        Rotate  degree:
 //         generateOutputAction = function(point, type, status, valveID, time)
 //        generateWaitAction = function(which, type, status, limit)
-        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));
-        ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Rotate OK")));
-        ret.push(LocalTeach.generateWaitAction(16,0,0,10));
-        ret.push(LocalTeach.generateWaitAction(16,0,1,100));
+        if(actionObject.rotate >= 0)
+            var rotateO1 = 16;
+        else rotateO1 = 17;
+        var rotateO2 = rotateO1 + 2;
+        var rotateI1 = 16;
+        var rotateI2 = 17;
+//         generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
+        ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag6));
+//        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
+
+        ret.push(LocalTeach.generateOutputAction(rotateO1,0,1,rotateO1,0));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Rotate1 OK")));
+        ret.push(LocalTeach.generateWaitAction(rotateI1,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(rotateI1,0,1,100));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag3, actionObject.rotateOKCID, 0, 1));
-        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));
+        ret.push(LocalTeach.generateOutputAction(rotateO1,0,0,rotateO1,0));
+        ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,1,1,0));     //m1 poen
+        ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag7));
+
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("negative1")));
+        ret.push(LocalTeach.generateOutputAction(rotateO2,0,1,rotateO2,0));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag8, qsTr("Rotate2 OK")));
+        ret.push(LocalTeach.generateWaitAction(rotateI2,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(rotateI2,0,1,100));
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag8, actionObject.rotateOKCID, 0, 1));
+        ret.push(LocalTeach.generateOutputAction(rotateO2,0,0,rotateO2,0));
+        ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,1,0));     //m0 close
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("positive1")));
 
 //        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));

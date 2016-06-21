@@ -28,6 +28,7 @@ Item {
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         var rotateCID = rc.id;
         var rotateOKCount = rotate.configValue / 90;
+        if(rotate.configValue < 0)rotateOKCount = -rotateOKCount;
         c = BaseTeach.counterManager.newCounter("", 0, rotateOKCount);
         var rotateOKCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);

@@ -181,11 +181,11 @@ Rectangle {
                                 onEditFinished: {
                                     counterview.currentIndex = index;
                                     var md = counterModel.get(counterview.currentIndex);
-                                    md.cc = text;
-                                    Teach.counterManager.updateCounter(md.cID, md.cName, md.cc, md.ct);
-                                    panelRobotController.saveCounterDef(md.cID, md.cName, md.cc, md.ct);
+//                                    md.cc = text;
+                                    Teach.counterManager.updateCounter(md.cID, md.cName, text, md.ct);
+                                    panelRobotController.saveCounterDef(md.cID, md.cName, text, md.ct);
                                     counterUpdated(md.cID);
-                                    counterModel.setProperty(index, "cc", md.cc);
+                                    counterModel.setProperty(index, "cc", text);
                                 }
                             }
                             ICLineEdit{
@@ -231,6 +231,7 @@ Rectangle {
     onVisibleChanged: {
         if(visible){
             for(var i = 0, len = counterModel.count; i < len; ++i){
+                console.log("CounterAction", i, Teach.counterManager.getCounter(counterModel.get(i).cID).current);
                 counterModel.setProperty(i, "cc",
                                          Teach.counterManager.getCounter(counterModel.get(i).cID).current);
             }

@@ -4627,7 +4627,7 @@ please chose!</source>
     </message>
     <message>
         <source>Total:</source>
-        <translation type="unfinished"></translation>
+        <translation>总共:</translation>
     </message>
 </context>
 <context>
@@ -4638,7 +4638,7 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 1</source>
-        <translation>结构参数1</translation>
+        <translation>结构1</translation>
     </message>
     <message>
         <source>mm</source>
@@ -4646,7 +4646,7 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 2</source>
-        <translation>结构参数2</translation>
+        <translation>结构2</translation>
     </message>
     <message>
         <source>Machine Struct 3</source>
@@ -4654,7 +4654,7 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 4</source>
-        <translation>结构参数4</translation>
+        <translation>结构4</translation>
     </message>
     <message>
         <source>Machine Struct 5</source>
@@ -4662,7 +4662,7 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 6</source>
-        <translation>结构参数6</translation>
+        <translation>结构6</translation>
     </message>
     <message>
         <source>Machine Struct 7</source>
@@ -4718,7 +4718,7 @@ please chose!</source>
     </message>
     <message>
         <source>Axis1 Diff</source>
-        <translation>轴1偏角</translation>
+        <translation>偏角1</translation>
     </message>
     <message>
         <source>°</source>
@@ -4726,23 +4726,51 @@ please chose!</source>
     </message>
     <message>
         <source>Axis2 Diff</source>
-        <translation>轴2偏角</translation>
+        <translation>偏角2</translation>
     </message>
     <message>
         <source>Axis3 Diff</source>
-        <translation>轴3偏角</translation>
+        <translation>偏角3</translation>
     </message>
     <message>
         <source>Axis4 Diff</source>
-        <translation>轴4偏角</translation>
+        <translation>偏角4</translation>
     </message>
     <message>
         <source>Axis5 Diff</source>
-        <translation>轴5偏角</translation>
+        <translation>偏角5</translation>
     </message>
     <message>
         <source>Axis6 Diff</source>
-        <translation>轴6偏角</translation>
+        <translation>偏角6</translation>
+    </message>
+    <message>
+        <source>L01</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L34a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L34b</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L24</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

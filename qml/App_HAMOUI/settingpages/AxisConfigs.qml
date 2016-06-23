@@ -514,7 +514,7 @@ Item {
         width: 800
         height: 1
         y:menuContainer.y
-        x:menuContainer.checkedItem.x + menuContainer.checkedItem.width
+        x:0
         color: "black"
         anchors.top: menuContainer.bottom
     }

@@ -354,6 +354,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(0, isChecked)
                 }
@@ -374,6 +375,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(1, isChecked)
                 }
@@ -394,6 +396,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(2, isChecked)
                 }
@@ -414,6 +417,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(3, isChecked)
                 }
@@ -434,6 +438,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(4, isChecked)
                 }
@@ -454,6 +459,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(5, isChecked)
                 }
@@ -474,6 +480,7 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(6, isChecked)
                 }
@@ -494,14 +501,26 @@ Item {
                 text: qsTr("Un")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(7, isChecked)
                 }
             }
         }
     }
-    Item{
+
+    Rectangle{
+        id:line
+        width: 800
+        height: 1
+        y:menuContainer.y
+        x:0
+        color: "black"
         anchors.top: menuContainer.bottom
+    }
+
+    Item{
+        anchors.top: line.bottom
         anchors.topMargin: 4
         ICFlickable{
             id:configContainer

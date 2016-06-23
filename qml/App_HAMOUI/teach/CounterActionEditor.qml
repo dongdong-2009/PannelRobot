@@ -175,6 +175,12 @@ Rectangle {
         Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
         var cs = Teach.counterManager.counters;
         var cc;
+        var editor;
+        for(var cid in PData.editors){
+            editor = PData.editors[cid];
+            PData.editors[editor.cID].destroy();
+            delete PData.editors[editor.cID];
+        }
         for(var c in cs){
             cc = cs[c];
             counterContainer.addCounter(cc.id, cc.name, cc.current, cc.target);

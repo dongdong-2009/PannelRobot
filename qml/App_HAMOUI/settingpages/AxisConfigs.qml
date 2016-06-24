@@ -677,9 +677,6 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     unit: qsTr("%")
                     inputWidth: pdata.inputWidth
-                    min: 1
-                    max:30
-                    decimal: 1
                 }
 
                 ICConfigEdit{

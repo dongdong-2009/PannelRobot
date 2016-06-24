@@ -89,7 +89,7 @@ Rectangle {
         PData.pointLinesInfo.syncLines(cPI, oCI, 1);
         if(actionObject.action === Teach.actions.ACT_FLAG){
             //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-            Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObject.flag, actionObject.comment));
+            Teach.flagsDefine.pushFlag(cPI, new Teach.FlagItem(actionObject.flag, actionObject.comment));
         }
         if(Teach.hasCounterIDAction(actionObject)){
             var cs = Teach.actionCounterIDs(actionObject);

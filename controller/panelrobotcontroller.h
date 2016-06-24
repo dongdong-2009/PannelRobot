@@ -739,6 +739,20 @@ public:
 
     Q_INVOKABLE QString scanUSBGCodeFiles(const QString& filter) const;
     Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
+    Q_INVOKABLE QString usedSourceStacks() const
+    {
+        QMap<int, int> sids = ICRobotMold::CurrentMold()->UsedSourceStack();
+        QString ret = "{";
+        QMap<int, int>::const_iterator p = sids.constBegin();
+        while(p != sids.constEnd())
+        {
+            ret += QString("\"%1:%2\",").arg(p.key(), p.value());
+        }
+        if(!sids.isEmpty())
+            ret.chop(1);
+        ret += "}";
+        return ret;
+    }
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

@@ -193,6 +193,9 @@ public:
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
 
+     void AddUsedSourceStack(int stackID, int dsID) { usedSourceStacks_.insert(stackID, dsID);}
+     QMap<int, int> UsedSourceStack() const { return usedSourceStacks_;}
+
      quint32 CheckSum() const;
 
      void PrintDebugInfo() const
@@ -217,6 +220,7 @@ private:
     QMap<int, int> errList_;
     QMap<int, int> uiStepToCompiledLine_;
     QMap<int, int> compiledLineToUIStep_;
+    QMap<int, int> usedSourceStacks_;
     ICActionProgram compiledProgram_;
 };
 
@@ -431,6 +435,8 @@ public:
 
     QString Functions() const { return functions_;}
     QMap<int, QMap<int, int> > SaveFunctions(const QString& functions, bool syncMold = true);
+
+    QMap<int, int> UsedSourceStack(int which = -1) const;
 
     quint32 CheckSum() const;
 

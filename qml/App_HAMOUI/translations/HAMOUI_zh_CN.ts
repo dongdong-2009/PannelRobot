@@ -955,6 +955,26 @@
         <source>En</source>
         <translation>使用</translation>
     </message>
+    <message>
+        <source>Motor Dir</source>
+        <translation>电机方向</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正转</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation>反转</translation>
+    </message>
+    <message>
+        <source>Origin SPD</source>
+        <translation>原点速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>

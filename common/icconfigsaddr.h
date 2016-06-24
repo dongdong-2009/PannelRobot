@@ -8,7 +8,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_102;  //< 6701595 电机1负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_103;  //< 6754331 电机1编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_103;  //< 6754459 电机1厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_103;  //< 6754587 电机1绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_103;  //< 6771099 电机1预留
+extern  const ICAddrWrapper  s_rw_12_6_0_103;  //< 6756763 电机1归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_103;  //< 6751835 电机1电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_103;  //< 6764155 电机1预留
 extern  const ICAddrWrapper  s_rw_0_8_0_104;  //< 6823963 电机1正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_104;  //< 6824219 电机1负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_104;  //< 6824475 电机1原点输入
@@ -29,7 +31,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_109;  //< 7160347 电机2负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_110;  //< 7213083 电机2编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_110;  //< 7213211 电机2厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_110;  //< 7213339 电机2绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_110;  //< 7229851 电机2预留
+extern  const ICAddrWrapper  s_rw_12_6_0_110;  //< 7215515 电机2归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_110;  //< 7210587 电机2电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_110;  //< 7222907 电机2预留
 extern  const ICAddrWrapper  s_rw_0_8_0_111;  //< 7282715 电机2正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_111;  //< 7282971 电机2负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_111;  //< 7283227 电机2原点输入
@@ -50,7 +54,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_116;  //< 7619099 电机3负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_117;  //< 7671835 电机3编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_117;  //< 7671963 电机3厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_117;  //< 7672091 电机3绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_117;  //< 7688603 电机3预留
+extern  const ICAddrWrapper  s_rw_12_6_0_117;  //< 7674267 电机3归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_117;  //< 7669339 电机3电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_117;  //< 7681659 电机3预留
 extern  const ICAddrWrapper  s_rw_0_8_0_118;  //< 7741467 电机3正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_118;  //< 7741723 电机3负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_118;  //< 7741979 电机3原点输入
@@ -71,7 +77,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_123;  //< 8077851 电机4负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_124;  //< 8130587 电机4编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_124;  //< 8130715 电机4厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_124;  //< 8130843 电机4绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_124;  //< 8147355 电机4预留
+extern  const ICAddrWrapper  s_rw_12_6_0_124;  //< 8133019 电机4归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_124;  //< 8128091 电机4电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_124;  //< 8140411 电机4预留
 extern  const ICAddrWrapper  s_rw_0_8_0_125;  //< 8200219 电机4正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_125;  //< 8200475 电机4负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_125;  //< 8200731 电机4原点输入
@@ -92,7 +100,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_130;  //< 8536603 电机5负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_131;  //< 8589339 电机5编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_131;  //< 8589467 电机5厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_131;  //< 8589595 电机5绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_131;  //< 8606107 电机5预留
+extern  const ICAddrWrapper  s_rw_12_6_0_131;  //< 8591771 电机5归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_131;  //< 8586843 电机5电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_131;  //< 8599163 电机5预留
 extern  const ICAddrWrapper  s_rw_0_8_0_132;  //< 8658971 电机5正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_132;  //< 8659227 电机5负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_132;  //< 8659483 电机5原点输入
@@ -113,7 +123,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_137;  //< 8995355 电机6负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_138;  //< 9048091 电机6编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_138;  //< 9048219 电机6厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_138;  //< 9048347 电机6绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_138;  //< 9064859 电机6预留
+extern  const ICAddrWrapper  s_rw_12_6_0_138;  //< 9050523 电机6归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_138;  //< 9045595 电机6电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_138;  //< 9057915 电机6预留
 extern  const ICAddrWrapper  s_rw_0_8_0_139;  //< 9117723 电机6正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_139;  //< 9117979 电机6负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_139;  //< 9118235 电机6原点输入
@@ -134,7 +146,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_144;  //< 9454107 电机7负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_145;  //< 9506843 电机7编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_145;  //< 9506971 电机7厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_145;  //< 9507099 电机7绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_145;  //< 9523611 电机7预留
+extern  const ICAddrWrapper  s_rw_12_6_0_145;  //< 9509275 电机7归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_145;  //< 9504347 电机7电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_145;  //< 9516667 电机7预留
 extern  const ICAddrWrapper  s_rw_0_8_0_146;  //< 9576475 电机7正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_146;  //< 9576731 电机7负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_146;  //< 9576987 电机7原点输入
@@ -155,7 +169,9 @@ extern  const ICAddrWrapper  s_rw_16_16_0_151;  //< 9912859 电机8负向软极�
 extern  const ICAddrWrapper  s_rw_0_4_0_152;  //< 9965595 电机8编码器类型
 extern  const ICAddrWrapper  s_rw_4_4_0_152;  //< 9965723 电机8厂家
 extern  const ICAddrWrapper  s_rw_8_4_0_152;  //< 9965851 电机8绝对值读取方式
-extern  const ICAddrWrapper  s_rw_12_20_0_152;  //< 9982363 电机8预留
+extern  const ICAddrWrapper  s_rw_12_6_0_152;  //< 9968027 电机8归原点速度设定
+extern  const ICAddrWrapper  s_rw_18_1_0_152;  //< 9963099 电机8电机方向设定
+extern  const ICAddrWrapper  s_rw_19_13_0_152;  //< 9975419 电机8预留
 extern  const ICAddrWrapper  s_rw_0_8_0_153;  //< 10035227 电机8正向极限输入
 extern  const ICAddrWrapper  s_rw_8_8_0_153;  //< 10035483 电机8负向极限输入
 extern  const ICAddrWrapper  s_rw_16_8_0_153;  //< 10035739 电机8原点输入
@@ -193,7 +209,8 @@ extern  const ICAddrWrapper  s_rw_0_32_3_172;    //< 3232530459 机械结构轴5
 extern  const ICAddrWrapper  s_rw_0_32_3_173;    //< 3232595995 机械结构轴6偏角
 extern  const ICAddrWrapper  s_rw_0_32_3_174;    //< 3232661531 机械结构一轴X方向偏心
 extern  const ICAddrWrapper  s_rw_0_32_3_175;    //< 3232727067 机械结构一轴Y方向偏心
-extern  const ICAddrWrapper  s_rw_0_32_0_176;    //< 11567131 机械结构预留
+extern  const ICAddrWrapper  s_rw_0_8_0_176;  //< 11542555 机械结构报警声音输出次数
+extern  const ICAddrWrapper  s_rw_8_24_0_176;  //< 11559195 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_177;    //< 11632667 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_178;    //< 11698203 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_179;    //< 11763739 机械结构预留

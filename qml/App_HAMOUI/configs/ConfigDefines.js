@@ -47,15 +47,22 @@ var configRanges = {
     "s_rw_0_32_1_1200":[0, 100],
     "s_rw_0_32_1_1201":[0, 600000], //IO Teach delay
     "s_rw_0_32_3_1300":[MIN_INT_32, MAX_INT_32], //Path limit
-    "s_rw_0_32_0_1400":[0, MAX_UINT_32] // count
-
+    "s_rw_0_32_0_1400":[0, MAX_UINT_32], // count
+    "s_rw_12_6_0_103":[1, 30], // origin spd
+    "s_rw_12_6_0_110":[1, 30], // origin spd
+    "s_rw_12_6_0_117":[1, 30], // origin spd
+    "s_rw_12_6_0_124":[1, 30], // origin spd
+    "s_rw_12_6_0_131":[1, 30], // origin spd
+    "s_rw_12_6_0_138":[1, 30], // origin spd
+    "s_rw_12_6_0_145":[1, 30], // origin spd
+    "s_rw_12_6_0_152":[1, 30], // origin spd
 };
 
 var getConfigRange = function(config){
     var r = configRanges[config];
     var items = config.split("_");
     if(r === undefined){
-        return {"min":0, "max":MAX_INT_32, "decimal":parseInt(items[4])};
+        return {"min":0, "max":Math.pow(2, parseInt(items[3])), "decimal":parseInt(items[4])};
     }
     return {"min":r[0], "max":r[1], "decimal":parseInt(items[4])};
 };
@@ -90,7 +97,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_103",
             "s_rw_4_4_0_103",
             "s_rw_8_4_0_103",
-            "s_rw_12_20_0_103",
+            "s_rw_12_6_0_103",
+            "s_rw_18_1_0_103",
+            "s_rw_19_13_0_103",
             "s_rw_0_8_0_104",
             "s_rw_8_8_0_104",
             "s_rw_16_8_0_104",
@@ -111,7 +120,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_110",
             "s_rw_4_4_0_110",
             "s_rw_8_4_0_110",
-            "s_rw_12_20_0_110",
+            "s_rw_12_6_0_110",
+            "s_rw_18_1_0_110",
+            "s_rw_19_13_0_110",
             "s_rw_0_8_0_111",
             "s_rw_8_8_0_111",
             "s_rw_16_8_0_111",
@@ -132,7 +143,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_117",
             "s_rw_4_4_0_117",
             "s_rw_8_4_0_117",
-            "s_rw_12_20_0_117",
+            "s_rw_12_6_0_117",
+            "s_rw_18_1_0_117",
+            "s_rw_19_13_0_117",
             "s_rw_0_8_0_118",
             "s_rw_8_8_0_118",
             "s_rw_16_8_0_118",
@@ -153,7 +166,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_124",
             "s_rw_4_4_0_124",
             "s_rw_8_4_0_124",
-            "s_rw_12_20_0_124",
+            "s_rw_12_6_0_124",
+            "s_rw_18_1_0_124",
+            "s_rw_19_13_0_124",
             "s_rw_0_8_0_125",
             "s_rw_8_8_0_125",
             "s_rw_16_8_0_125",
@@ -174,7 +189,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_131",
             "s_rw_4_4_0_131",
             "s_rw_8_4_0_131",
-            "s_rw_12_20_0_131",
+            "s_rw_12_6_0_131",
+            "s_rw_18_1_0_131",
+            "s_rw_19_13_0_131",
             "s_rw_0_8_0_132",
             "s_rw_8_8_0_132",
             "s_rw_16_8_0_132",
@@ -195,7 +212,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_138",
             "s_rw_4_4_0_138",
             "s_rw_8_4_0_138",
-            "s_rw_12_20_0_138",
+            "s_rw_12_6_0_138",
+            "s_rw_18_1_0_138",
+            "s_rw_19_13_0_138",
             "s_rw_0_8_0_139",
             "s_rw_8_8_0_139",
             "s_rw_16_8_0_139",
@@ -216,7 +235,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_145",
             "s_rw_4_4_0_145",
             "s_rw_8_4_0_145",
-            "s_rw_12_20_0_145",
+            "s_rw_12_6_0_145",
+            "s_rw_18_1_0_145",
+            "s_rw_19_13_0_145",
             "s_rw_0_8_0_146",
             "s_rw_8_8_0_146",
             "s_rw_16_8_0_146",
@@ -237,7 +258,9 @@ var machineStructConfigs = [
             "s_rw_0_4_0_152",
             "s_rw_4_4_0_152",
             "s_rw_8_4_0_152",
-            "s_rw_12_20_0_152",
+            "s_rw_12_6_0_152",
+            "s_rw_18_1_0_152",
+            "s_rw_19_13_0_152",
             "s_rw_0_8_0_153",
             "s_rw_8_8_0_153",
             "s_rw_16_8_0_153",
@@ -275,7 +298,8 @@ var machineStructConfigs = [
             "s_rw_0_32_3_173",
             "s_rw_0_32_3_174",
             "s_rw_0_32_3_175",
-            "s_rw_0_32_0_176",
+            "s_rw_0_8_0_176",
+            "s_rw_8_24_0_176",
             "s_rw_0_32_0_177",
             "s_rw_0_32_0_178",
             "s_rw_0_32_0_179",

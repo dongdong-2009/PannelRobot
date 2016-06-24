@@ -719,6 +719,10 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     }
                 }
             }
+            if(si.stackData.si[0].type == 2 || si.stackData.si[0].type == 3)
+            {
+                ret.AddUsedSourceStack(stackID, si.dsHostID);
+            }
             action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
         }
         if(act == F_CMD_COUNTER ||
@@ -1689,4 +1693,22 @@ quint32 ICRobotMold::CheckSum() const
         sum += programs_.at(i).CheckSum();
     }
     return (-sum) & 0xFFFF;
+}
+
+QMap<int, int> ICRobotMold::UsedSourceStack(int which) const
+{
+    if(which > 0 && which< programs_.size())
+        return programs_.at(which).UsedSourceStack();
+    QMap<int, int> ret;
+    for(int i = 0; i < programs_.size(); ++i)
+    {
+        QMap<int, int> ps = programs_.at(i).UsedSourceStack();
+        QMap<int, int>::const_iterator p = ps.constBegin();
+        while(p != ps.constEnd())
+        {
+            ret.insert(p.key(), p.value());
+            ++p;
+        }
+    }
+    return ret;
 }

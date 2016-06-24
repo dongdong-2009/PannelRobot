@@ -737,6 +737,21 @@ public:
     Q_INVOKABLE QString getPicturesPath(const QString& picName) const;
     Q_INVOKABLE void copyPicture(const QString &picName, const QString& to) const;
 
+    Q_INVOKABLE QString usedSourceStacks() const
+    {
+        QMap<int, int> sids = ICRobotMold::CurrentMold()->UsedSourceStack();
+        QString ret = "{";
+        QMap<int, int>::const_iterator p = sids.constBegin();
+        while(p != sids.constEnd())
+        {
+            ret += QString("\"%1:%2\",").arg(p.key(), p.value());
+        }
+        if(!sids.isEmpty())
+            ret.chop(1);
+        ret += "}";
+        return ret;
+    }
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

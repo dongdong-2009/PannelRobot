@@ -9,10 +9,6 @@ settingpages/* \
 kexuye-pentu-spec/*
 }
 
-OTHER_FILES += \
-    kexuye-pentu-spec/ProgramFlowPage.js
-
-
 
 
 

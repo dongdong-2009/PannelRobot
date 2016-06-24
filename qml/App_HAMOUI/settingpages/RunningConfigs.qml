@@ -32,10 +32,23 @@ Item {
                     panelRobotController.setCustomSettings("TurnAutoSpeed", configValue);
                 }
             }
+            ICConfigEdit{
+                id:alarmTimes
+                configName: qsTr("Alarm Times")
+                min:0
+                max:200
+                decimal: 1
+                unit: qsTr("Times")
+                configAddr: "s_rw_0_8_0_176"
+            }
         }
         onConfigValueChanged: {
             console.log(addr, newV, oldV);
             ICOperationLog.opLog.appendNumberConfigOperationLog(addr, newV, oldV);
+            if(addr == "s_rw_0_8_0_176"){
+                panelRobotController.setConfigValue("s_rw_0_32_0_185", panelRobotController.configsCheckSum(ConfigDefines.machineStructConfigsJSON));
+                panelRobotController.syncConfigs();
+            }
         }
     }
     Component.onCompleted: {

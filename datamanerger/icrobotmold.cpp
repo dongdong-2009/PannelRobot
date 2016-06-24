@@ -721,7 +721,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             }
             if(si.stackData.si[0].type == 2 || si.stackData.si[0].type == 3)
             {
-                ret.AddUsedSourceStack(stackID);
+                ret.AddUsedSourceStack(stackID, si.dsHostID);
             }
             action.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
         }

@@ -209,7 +209,8 @@ extern  const ICAddrWrapper  s_rw_0_32_3_172;    //< 3232530459 机械结构轴5
 extern  const ICAddrWrapper  s_rw_0_32_3_173;    //< 3232595995 机械结构轴6偏角
 extern  const ICAddrWrapper  s_rw_0_32_3_174;    //< 3232661531 机械结构一轴X方向偏心
 extern  const ICAddrWrapper  s_rw_0_32_3_175;    //< 3232727067 机械结构一轴Y方向偏心
-extern  const ICAddrWrapper  s_rw_0_32_0_176;    //< 11567131 机械结构预留
+extern  const ICAddrWrapper  s_rw_0_8_0_176;  //< 11542555 机械结构报警声音输出次数
+extern  const ICAddrWrapper  s_rw_8_24_0_176;  //< 11559195 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_177;    //< 11632667 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_178;    //< 11698203 机械结构预留
 extern  const ICAddrWrapper  s_rw_0_32_0_179;    //< 11763739 机械结构预留

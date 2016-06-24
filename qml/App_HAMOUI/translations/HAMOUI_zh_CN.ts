@@ -4397,6 +4397,14 @@ please chose!</source>
         <source>Turn Auto Speed</source>
         <translation>转自动后速度</translation>
     </message>
+    <message>
+        <source>Alarm Times</source>
+        <translation>报警声音次数</translation>
+    </message>
+    <message>
+        <source>Times</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>SearchActionEditor</name>

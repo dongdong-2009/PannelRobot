@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
+import "../configs/ConfigDefines.js" as ConfigDefines
 
 
 

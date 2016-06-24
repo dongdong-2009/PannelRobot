@@ -47,8 +47,15 @@ var configRanges = {
     "s_rw_0_32_1_1200":[0, 100],
     "s_rw_0_32_1_1201":[0, 600000], //IO Teach delay
     "s_rw_0_32_3_1300":[MIN_INT_32, MAX_INT_32], //Path limit
-    "s_rw_0_32_0_1400":[0, MAX_UINT_32] // count
-
+    "s_rw_0_32_0_1400":[0, MAX_UINT_32], // count
+    "s_rw_12_6_0_103":[1, 30], // origin spd
+    "s_rw_12_6_0_110":[1, 30], // origin spd
+    "s_rw_12_6_0_117":[1, 30], // origin spd
+    "s_rw_12_6_0_124":[1, 30], // origin spd
+    "s_rw_12_6_0_131":[1, 30], // origin spd
+    "s_rw_12_6_0_138":[1, 30], // origin spd
+    "s_rw_12_6_0_145":[1, 30], // origin spd
+    "s_rw_12_6_0_152":[1, 30], // origin spd
 };
 
 var getConfigRange = function(config){

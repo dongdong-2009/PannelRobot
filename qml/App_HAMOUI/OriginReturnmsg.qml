@@ -104,6 +104,7 @@ MouseArea{
 
         ICButtonGroup{
             id:originMode
+            visible: false
             anchors.top: hinttext.bottom
             anchors.topMargin: 6
             anchors.right: parent.right
@@ -141,6 +142,8 @@ MouseArea{
                     helpText.visible = false;
                     help.text = qsTr("Show Help");
                 }
+                else panelRobotController.modifyConfigValue(28, 3);
+
             }
         }
 

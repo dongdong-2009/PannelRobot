@@ -3279,6 +3279,10 @@
         <source>°</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Gun Follow En</source>
+        <translation>喷枪跟随</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -3868,7 +3872,7 @@ please chose!</source>
     </message>
     <message>
         <source>Pose 3D</source>
-        <translation type="vanished">姿势直线</translation>
+        <translation>姿势直线</translation>
     </message>
     <message>
         <source>Set to Middle Point</source>
@@ -4429,7 +4433,6 @@ please chose!</source>
     </message>
     <message>
         <source>negative</source>
-<<<<<<< HEAD
         <translation>公转反转</translation>
     </message>
     <message>
@@ -4454,18 +4457,7 @@ please chose!</source>
     </message>
     <message>
         <source>positive1</source>
-        <translation>模具1转动</translation>
-=======
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>positive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate OK</source>
-        <translation type="unfinished"></translation>
->>>>>>> 32eb6bb92fda6f5e09f742375acb780d6547e1a0
     </message>
 </context>
 <context>

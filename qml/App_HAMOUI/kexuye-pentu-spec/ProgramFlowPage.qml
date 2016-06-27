@@ -96,6 +96,7 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.zlength, actionObject.startSpeed2));
 
@@ -142,6 +143,17 @@ ProgramFlowPage {
         pos["m" + 0] = actionObject.point1.pos.m0 - actionObject.startPos.pos.m0;
         pos["m" + 1] = actionObject.point1.pos.m1 - actionObject.startPos.pos.m1;
         pos["m" + 2] = actionObject.point1.pos.m2 - actionObject.startPos.pos.m2;
+        if(actionObject.mode > 3){
+            pos["m" + 3] = actionObject.point1.pos.m3 - actionObject.startPos.pos.m3;
+            tmp["m" + 3] = pos["m" + 3] / 2;
+            tmp1["m" + 3] = -tmp["m" + 3];
+            pos1["m" + 3] = -pos["m" + 3];
+
+            pos["m" + 4] = pos["m" + 5] = pos["m" + 6] = 0;
+            pos1["m" + 4] = pos1["m" + 5] = pos1["m" + 6] = 0;
+            tmp["m" + 4] = tmp["m" + 5] = tmp["m" + 6] = 0;
+            tmp1["m" + 4] = tmp1["m" + 5] = tmp1["m" + 6] = 0;
+        }
         if(actionObject.mode == 0 || actionObject.mode == 4){
             tmp["m" + 0] = pos["m" + 0] / 2;
             tmp["m" + 1] = pos["m" + 1] / 2;
@@ -192,7 +204,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 4)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp},
                           {"pointName":"", "pos":pos}],
                           actionObject.repeatSpeed, 0.0));
@@ -224,7 +236,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 4)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp1},
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeatSpeed, 0.0));
@@ -299,7 +311,7 @@ ProgramFlowPage {
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 5)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp},
                           {"pointName":"", "pos":pos}],
                           actionObject.repeatSpeed, 0.0));
@@ -323,7 +335,7 @@ ProgramFlowPage {
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 5)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp1},
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeatSpeed, 0.0));
@@ -410,7 +422,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 6)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp},
                           {"pointName":"", "pos":pos}],
                           actionObject.repeatSpeed, 0.0));
@@ -434,7 +446,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 6)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp1},
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeatSpeed, 0.0));
@@ -500,7 +512,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 7)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp},
                           {"pointName":"", "pos":pos}],
                           actionObject.repeatSpeed, 0.0));
@@ -524,7 +536,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos1}], actionObject.repeatSpeed, 0.0));
             else if(actionObject.mode == 7)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE,
+                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp1},
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeatSpeed, 0.0));
@@ -661,6 +673,7 @@ ProgramFlowPage {
 
     Rectangle{
         id:mask
+        visible: false
         color: "#D0D0D0"
         height: 28
         width: 315

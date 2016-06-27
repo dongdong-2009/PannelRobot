@@ -75,7 +75,7 @@ ContentPageBase {
                 color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
                 textFont.pixelSize: getChecked() ? 18 : 16
                 textColor: getChecked() ? "yellow" : "black"
-                visible: false
+//                visible: false
             }
             TabMenuItem {
                 id: jog

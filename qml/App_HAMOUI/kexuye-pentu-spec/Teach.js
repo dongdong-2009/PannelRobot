@@ -23,7 +23,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
                                    fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch,
-                                   slope, rotateOKCID){
+                                   slope, rotateOKCID, gunFollowEn){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -125,6 +125,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
             startSpeed2 = startPosSpeed0;
             break;
     }
+
 //    }
 //    if(mode == 1){
 //        switch(plane){
@@ -252,7 +253,8 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "fixture2Delay2":fixtureDelay2,
         "fixture1Switch":fixture1Switch,
         "fixture2Switch":fixture2Switch,
-        "slope":slope
+        "slope":slope,
+        "gunFollowEn":gunFollowEn
     };
 }
 

@@ -772,6 +772,26 @@ Rectangle {
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Return));
             }
 
+            myiStatus = panelRobotController.iStatus(1);
+            if((myiStatus & 0x8000)){
+                if((myiStatus & 0x8000)){
+                    mainWindow.stop_Ready = false;
+                    panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Stop));
+                }
+//                var toSend = IODefines.valveItemJSON("valve16");
+//                panelRobotController.setYStatus(toSend, 1);
+//                toSend = IODefines.valveItemJSON("valve17");
+//                panelRobotController.setYStatus(toSend, 0);
+//                toSend = IODefines.valveItemJSON("valve18");
+//                panelRobotController.setYStatus(toSend, 1);
+//                toSend = IODefines.valveItemJSON("valve19");
+//                panelRobotController.setYStatus(toSend, 0);
+//                toSend = IODefines.valveItemJSON("valve20");
+//                panelRobotController.setYStatus(toSend, 0);
+//                toSend = IODefines.valveItemJSON("valve21");
+//                panelRobotController.setYStatus(toSend, 0);
+            }
+
 
         }
     }

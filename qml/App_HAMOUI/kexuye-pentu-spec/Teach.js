@@ -23,7 +23,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
                                    fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch,
-                                   slope, rotateOKCID, gunFollowEn,aaaa){
+                                   slope, rotateOKCID, gunFollowEn,aaaa,bbbb){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -53,6 +53,12 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag8 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag9 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag10 = f.flagID;
 //    if(mode == 0){
     switch(plane){
         case 0:
@@ -229,6 +235,8 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "flag6":flag6,
         "flag7":flag7,
         "flag8":flag8,
+        "flag9":flag9,
+        "flag10":flag10,
 //        "startPosSpeed0":startPosSpeed0,
 //        "startPosSpeed1":startPosSpeed1,
 //        "startPosSpeed2":startPosSpeed2,
@@ -255,7 +263,8 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "fixture2Switch":fixture2Switch,
         "slope":slope,
         "gunFollowEn":gunFollowEn,
-        "aaaa":aaaa
+        "aaaa":aaaa,
+        "bbbb":bbbb
     };
 }
 

@@ -684,6 +684,20 @@ Rectangle {
             }
 //                        console.log("knob", key, Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
+            if((key === Keymap.KEY_Stop)){
+                var toSend = IODefines.valveItemJSON("valve16");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve17");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve18");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve19");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve20");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve21");
+                panelRobotController.setYStatus(toSend, 0);
+            }
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);
         }

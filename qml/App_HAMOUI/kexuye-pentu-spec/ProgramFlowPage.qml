@@ -16,6 +16,7 @@ ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
+
     function getRecordContent(which){
         if(which == 0){
             LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
@@ -24,7 +25,6 @@ ProgramFlowPage {
         else
             return JSON.parse(panelRobotController.programs(which));
     }
-
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
@@ -52,10 +52,24 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //close
         ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));     //close
 
+        ret.push(LocalTeach.generateOutputAction(21,0,1,21,0));     //gongzhuanhuiyuan
+        ret.push(LocalTeach.generateWaitAction(21,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));
+
+        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //mujuhuiyuan
+        ret.push(LocalTeach.generateWaitAction(18,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));
+
+        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));
+        ret.push(LocalTeach.generateWaitAction(19,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));
+
         ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
         ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
         return ret;
@@ -200,6 +214,10 @@ ProgramFlowPage {
             pos1["m" + 0] = -pos["m" + 0];
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
+
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
+                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+
             if(actionObject.mode == 0)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
@@ -251,8 +269,8 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
             }
 
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
         }
 
         else if(actionObject.mode == 1 || actionObject.mode == 5){
@@ -508,6 +526,10 @@ ProgramFlowPage {
             pos1["m" + 0] = -pos["m" + 0];
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
+
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
+                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+
             if(actionObject.mode == 3)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos}], actionObject.repeatSpeed, 0.0));
@@ -553,8 +575,8 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
 
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
         }
 
 //        else if(actionObject.mode == 1){
@@ -588,6 +610,9 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag6));
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
 
+        ret.push(LocalTeach.generateCounterAction(actionObject.bbbb));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag9, actionObject.bbbb, 1, 1));
+
         ret.push(LocalTeach.generateOutputAction(rotateO1,0,1,rotateO1,0));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Rotate1 OK")));
         ret.push(LocalTeach.generateWaitAction(rotateI1,0,0,10));
@@ -596,6 +621,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag3, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(rotateO1,0,0,rotateO1,0));
 
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag9, qsTr("duoyurotate")));
+
         ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.aaaa, 0, 1));
 
@@ -603,6 +630,10 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag7));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("negative1")));
+
+        ret.push(LocalTeach.generateCounterAction(actionObject.bbbb));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag9, actionObject.bbbb, 1, 1));
+
         ret.push(LocalTeach.generateOutputAction(rotateO2,0,1,rotateO2,0));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag8, qsTr("Rotate2 OK")));
         ret.push(LocalTeach.generateWaitAction(rotateI2,0,0,10));
@@ -610,6 +641,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag8, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(rotateO2,0,0,rotateO2,0));
+
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("duoyurotate")));
 
         ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.aaaa, 0, 1));
@@ -681,7 +714,7 @@ ProgramFlowPage {
 
     Rectangle{
         id:mask
-        visible: false
+        visible: true
         color: "#D0D0D0"
         height: 28
         width: 315

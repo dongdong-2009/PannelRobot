@@ -16,14 +16,17 @@ MouseArea{
             originMode.visible = true;
             visible = true;
         }
+        originMode.visible = false;
+
     }
 
     function showForOriginning(){
         hinttext.text = qsTr("Originning");
-        if(!visible){
-            //            originMode.visible = true;
-            visible = false;
-        }
+//        if(!visible){
+//            //            originMode.visible = true;
+
+//        }
+        originMode.visible = false;
     }
 
     function showForReturn(){

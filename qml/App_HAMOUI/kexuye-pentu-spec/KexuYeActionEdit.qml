@@ -37,6 +37,10 @@ Item {
         var aaaa = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
+        c = BaseTeach.counterManager.newCounter("", 0, (rotateCount.configValue - 1));
+        var bbbb = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+
         var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
@@ -47,7 +51,7 @@ Item {
                                                 details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                                                 details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
                                                 details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
-                                                aaaa));
+                                                aaaa,bbbb));
         return ret;
     }
 

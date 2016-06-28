@@ -62,17 +62,17 @@ Item {
         var ppProgram = {"id":0, "name":"公转盘正转", "program":[]};
         var rpProgram = {"id":1, "name":"公转盘反转", "program":[]};
         ppProgram.program.push(Teach.generateFlagAction(0, ""));
-        ppProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 20, 0, false, 0, 1))
+        ppProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 20, 0, true, 0, 1))
         ppProgram.program.push(Teach.generateOutputAction(20, IODefines.TIMEY_BOARD_START, true, 68, 0.2));
-        ppProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 20, 0, true, 0, 0));
+        ppProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 20, 0, false, 0, 0));
         ppProgram.program.push(Teach.generateOutputAction(20, IODefines.IO_BOARD_0, false, 20, 0));
         ppProgram.program.push(Teach.generateFlagAction(1, ""));
         ppProgram.program.push(Teach.generteEndAction());
 
         rpProgram.program.push(Teach.generateFlagAction(0, ""));
-        rpProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 21, 0, false, 0, 1))
+        rpProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 21, 0, true, 0, 1))
         rpProgram.program.push(Teach.generateOutputAction(21, IODefines.TIMEY_BOARD_START, true, 69, 0.2));
-        rpProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 21, 0, true, 0, 0));
+        rpProgram.program.push(Teach.generateConditionAction(IODefines.IO_BOARD_0, 21, 0, false, 0, 0));
         rpProgram.program.push(Teach.generateOutputAction(21, IODefines.IO_BOARD_0, false, 21, 0));
         rpProgram.program.push(Teach.generateFlagAction(1, ""));
         rpProgram.program.push(Teach.generteEndAction());

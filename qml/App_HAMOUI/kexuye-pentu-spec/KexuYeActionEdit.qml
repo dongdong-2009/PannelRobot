@@ -504,8 +504,8 @@ Item {
         pos2Axis1.configValue = 0.000;
         pos2Axis2.configValue = 0.000;
 
-        repeateSpeed.configValue = 80.0;
-        dirSpeed.configValue = 80.0;
+        repeateSpeed.configValue = 100.0;
+        dirSpeed.configValue = 100.0;
         dirLength.configValue = 50.000;
         repeateCount.configValue = 2;
         zlength.configValue = -100;

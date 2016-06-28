@@ -301,6 +301,8 @@ Item {
     onVisibleChanged: {
         if(visible)
             updateCounters();
+        else
+            counterSel.configValue = -1;
     }
     onDataSourceChanged: {
         var items = dataSource;

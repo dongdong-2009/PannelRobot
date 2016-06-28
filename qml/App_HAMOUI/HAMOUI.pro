@@ -13,6 +13,10 @@ OTHER_FILES += \
     kexuye-pentu-spec/ProgramFlowPage.js
 
 
+OTHER_FILES += \
+    teach/CounterActionEditorComponent.qml \
+    teach/CounterActionEditor.js
+
 
 
 

@@ -3,22 +3,22 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
+import "CounterActionEditor.js" as PData
 
 Rectangle {
     function createActionObjects(){
         var ret = [];
-        var md = counterModel.get(counterview.currentIndex);
-        if(setCounter.isChecked)
-            ret.push(Teach.generateCounterAction(md.cID));
-        else if(clearCounter.isChecked)
-            ret.push(Teach.generateClearCounterAction(md.cID));
-        //        if(useFlag.isChecked){
-        //            var statckStr = stackSelector.configText;
-        //            if(statckStr.currentIndex < 0) return ret;
-        //            var begin = statckStr.indexOf('[') + 1;
-        //            var end = statckStr.indexOf(']');
-        //            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed.configValue));
-        //        }
+        var editor;
+        for(var cid in PData.editors){
+            editor = PData.editors[cid];
+            if(editor.isSel){
+                if(setCounter.isChecked)
+                    ret.push(Teach.generateCounterAction(editor.cID));
+                else if(clearCounter.isChecked)
+                    ret.push(Teach.generateClearCounterAction(editor.cID));
+            }
+        }
+
         return ret;
     }
 
@@ -58,7 +58,7 @@ Rectangle {
             onButtonClicked: {
                 var toAdd = Teach.counterManager.newCounter(newCounterName.text, 0, 0);
                 if(panelRobotController.saveCounterDef(toAdd.id, toAdd.name, toAdd.current, toAdd.target))
-                    counterModel.append({"cID":toAdd.id, "cName":toAdd.name, "ct":toAdd.target, "cc":toAdd.current});
+                    counterContainer.addCounter(toAdd.id, toAdd.name, toAdd.current, toAdd.target);
                 counterUpdated(toAdd.id);
             }
         }
@@ -70,11 +70,18 @@ Rectangle {
             width: 80
             bgColor: "red"
             onButtonClicked: {
-                var counterID = counterModel.get(counterview.currentIndex).id;
-                Teach.counterManager.delCounter(counterID);
-                if(panelRobotController.delCounterDef(counterID))
-                    counterModel.remove(counterview.currentIndex);
-                counterUpdated(counterID)
+                var editor;
+                for(var cid in PData.editors){
+                    editor = PData.editors[cid];
+                    if(editor.isSel){
+                        Teach.counterManager.delCounter(editor.cID);
+                        panelRobotController.delCounterDef(editor.cID);
+                        counterUpdated(editor.cID);
+                         PData.editors[editor.cID].destroy();
+                        delete PData.editors[editor.cID];
+
+                    }
+                }
             }
 
         }
@@ -113,7 +120,7 @@ Rectangle {
                     text: qsTr("Current")
                     horizontalAlignment: Text.AlignHCenter
 
-                    width: headerSplitLine.width * 0.2 - parent.spacing
+                    width: headerSplitLine.width * 0.19 - parent.spacing
 
                 }
                 Text {
@@ -121,7 +128,7 @@ Rectangle {
                     text: qsTr("Target")
                     horizontalAlignment: Text.AlignHCenter
 
-                    width: headerSplitLine.width * 0.2 - parent.spacing
+                    width: headerSplitLine.width * 0.19 - parent.spacing
 
                 }
             }
@@ -133,106 +140,59 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
-            ListModel{
-                id:counterModel
-            }
-
-            ListView{
-                id:counterview
-                clip: true
+            ICFlickable{
+                contentWidth: counterContainer.width
+                contentHeight: counterContainer.height
+                flickableDirection: Flickable.VerticalFlick
                 width: headerSplitLine.width
                 height: counterViewContaienr.height - viewHeader.height - headerSplitLine.height - parent.spacing - 5
-                x: headerSplitLine.x
-                model: counterModel
-                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
-                delegate: Item{
-                    height: 35
-                    width: headerSplitLine.width
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            counterview.currentIndex = index;
-                        }
+                clip: true
+                Column{
+                    x:2
+                    id:counterContainer
+                    spacing: 4
+                    function onCounterEditFinished(cid, name, current, target){
+                        Teach.counterManager.updateCounter(cid, name, current, target);
+                        panelRobotController.saveCounterDef(cid, name, current, target);
+                        counterUpdated(cid);
                     }
 
-                    Column{
-                        spacing: 2
-
-                        Row{
-                            height: 32
-                            spacing: viewHeader.spacing
-                            Text {
-                                text: cID
-                                width: headerID.width
-                                horizontalAlignment: headerID.horizontalAlignment
-                                anchors.verticalCenter: parent.verticalCenter
-                            }
-                            Text {
-                                text: cName
-                                width: headerName.width
-                                anchors.verticalCenter: parent.verticalCenter
-
-                            }
-
-                            ICLineEdit{
-                                text: cc
-                                inputWidth: headerCurrent.width
-                                anchors.verticalCenter: parent.verticalCenter
-                                onEditFinished: {
-                                    counterview.currentIndex = index;
-                                    var md = counterModel.get(counterview.currentIndex);
-                                    md.cc = text;
-                                    Teach.counterManager.updateCounter(md.cID, md.cName, md.cc, md.ct);
-                                    panelRobotController.saveCounterDef(md.cID, md.cName, md.cc, md.ct);
-                                    counterUpdated(md.cID);
-                                    counterModel.setProperty(index, "cc", md.cc);
-                                }
-                            }
-                            ICLineEdit{
-                                text:ct
-                                inputWidth: headerTarget.width
-                                anchors.verticalCenter: parent.verticalCenter
-                                onEditFinished: {
-                                    counterview.currentIndex = index;
-                                    var md = counterModel.get(counterview.currentIndex);
-                                    md.ct = text;
-                                    Teach.counterManager.updateCounter(md.cID, md.cName, md.cc, md.ct);
-                                    panelRobotController.saveCounterDef(md.cID, md.cName, md.cc, md.ct);
-                                    counterUpdated(md.cID);
-                                    counterModel.setProperty(index, "ct", md.ct);
-                                }
-                            }
-                        }
-                        Rectangle{
-                            height: 1
-                            width: headerSplitLine.width
-                            //                        anchors.horizontalCenterOffset: -4
-                            color: "gray "
-                        }
+                    function addCounter(cid, name, cc, ct){
+                        var editorClass = Qt.createComponent("CounterActionEditorComponent.qml");
+                        var editor = editorClass.createObject(counterContainer, {"cID":cid, "cName":name, "cc":cc, "ct":ct,
+                                                                  "cIDWidth":headerID.width, "nameWidth":headerName.width,
+                                                                  "currentWidth":headerCurrent.width, "targetWidth":headerTarget.width});
+                        editor.counterEditFinished.connect(counterContainer.onCounterEditFinished);
+                        PData.editors[cid] = editor;
                     }
                 }
             }
-
         }
     }
     function onMoldChanged(){
         var counters = JSON.parse(panelRobotController.counterDefs());
         Teach.counterManager.init(counters);
         Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
-        counterModel.clear();
         var cs = Teach.counterManager.counters;
         var cc;
+        var editor;
+        for(var cid in PData.editors){
+            editor = PData.editors[cid];
+            PData.editors[editor.cID].destroy();
+            delete PData.editors[editor.cID];
+        }
         for(var c in cs){
             cc = cs[c];
-            counterModel.append({"cID":cc.id, "cName":cc.name, "ct":cc.target, "cc":cc.current});
+            counterContainer.addCounter(cc.id, cc.name, cc.current, cc.target);
         }
     }
 
     onVisibleChanged: {
         if(visible){
-            for(var i = 0, len = counterModel.count; i < len; ++i){
-                counterModel.setProperty(i, "cc",
-                                         Teach.counterManager.getCounter(counterModel.get(i).cID).current);
+            var editor;
+            for(var p in PData.editors){
+                editor = PData.editors[p];
+                editor.cc = Teach.counterManager.getCounter(editor.cID).current;
             }
         }
     }

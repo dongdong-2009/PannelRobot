@@ -569,8 +569,8 @@ Item {
             }
 
             Flow{
-                width: rightCommandContainer.width - x
-                spacing: 4
+                width: rightCommandContainer.width - x + 8
+                spacing: 3
                 x:4
                 y:2
                 ICCheckBox{

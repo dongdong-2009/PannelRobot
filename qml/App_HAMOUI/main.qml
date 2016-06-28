@@ -11,6 +11,7 @@ import "ICOperationLog.js" as ICOperationLog
 import "ExternalData.js" as ESData
 import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
+import "teach/Teach.js" as Teach
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -590,6 +591,18 @@ Rectangle {
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
         console.log("cam data:", JSON.stringify(posData));
+        var usid = JSON.parse(panelRobotController.usedSourceStacks());
+        for(var sid in usid){
+            if(usid[sid] == posData.hostID){
+                var stackInfo = Teach.getStackInfoFromID(sid);
+                if(stackInfo.si0.doesBindingCounter){
+                    var c = Teach.counterManager.getCounter(stackInfo.si0.counterID);
+                    Teach.counterManager.updateCounter(c.id, c.name, c.current, c.target);
+                    panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+                    counterUpdated(c.id);
+                }
+            }
+        }
 
         panelRobotController.sendExternalDatas(JSON.stringify(posData));
     }

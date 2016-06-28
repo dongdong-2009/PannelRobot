@@ -67,7 +67,7 @@ typedef enum {
 	C6V13,
 
 } BoardId;
-#define SOFTWARE_VERSION  "HC_S6-0.1-0.7"
+#define SOFTWARE_VERSION  "HC_S6-0.1-0.8"
 
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -502,7 +502,8 @@ typedef enum
     CMD_JOG_PU     = 0x0303,  // 直角坐标系姿势轴，U轴正向点动
     CMD_JOG_PV     = 0x0304,  // 直角坐标系姿势轴，V轴正向点动
     CMD_JOG_PW     = 0x0305,  // 直角坐标系姿势轴，W轴正向点动
-    CMD_JOG_PR     = 0x0306,  // 极坐标系，远离原点点动
+    CMD_JOG_PR     = 0x0306,  // 直角坐标系姿势轴，R轴正向点动
+    CMD_JOG_PT     = 0x0307,  // 直角坐标系姿势轴，T轴正向点动
 
     /*手动*/
     CMD_LINE_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
@@ -562,7 +563,8 @@ typedef enum
     CMD_JOG_NU     = 0x0383,  // 直角坐标系姿势轴，U轴反向点动
     CMD_JOG_NV     = 0x0384,  // 直角坐标系姿势轴，V轴反向点动
     CMD_JOG_NW     = 0x0385,  // 直角坐标系姿势轴，W轴反向点动
-    CMD_JOG_NR     = 0x0386,  // 极坐标系，靠近原点点动
+    CMD_JOG_NR     = 0x0386,  // 直角坐标系姿势轴，R轴正向点动
+    CMD_JOG_NT     = 0x0387,  // 直角坐标系姿势轴，T轴正向点动
 
 //    CMD_JOG_NR     = 0x0386,  // 极坐标系，靠近原点点动
 
@@ -800,6 +802,7 @@ typedef enum
     ALARM_IO_CONNET3_ERR, //<名字：与IO板3通讯失败
     ALARM_IO_CONNET4_ERR, //<名字：与IO板4通讯失败
     ALARM_PROGRAM_CHANGE_ERR, //<名字：手控和主机教导程序不一致
+    ALARM_FPGA_ERR,//<名字：FPGA报警，请断电重启！！！！
 
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
@@ -808,6 +811,8 @@ typedef enum
     ALARM_AXIS4_ALARM_ERR,//<名字：电机4报警
     ALARM_AXIS5_ALARM_ERR,//<名字：电机5报警
     ALARM_AXIS6_ALARM_ERR, //<名字：电机6报警
+    ALARM_AXIS7_ALARM_ERR, //<名字：电机7报警
+    ALARM_AXIS8_ALARM_ERR, //<名字：电机8报警
 
     ALARM_AXIS_RUN_ERR = 100,//<名字：轴1运动失败
     ALARM_AXIS2_RUN_ERR,//<名字：轴2运动失败
@@ -815,54 +820,72 @@ typedef enum
     ALARM_AXIS4_RUN_ERR,//<名字：轴4运动失败
     ALARM_AXIS5_RUN_ERR,//<名字：轴5运动失败
     ALARM_AXIS6_RUN_ERR,//<名字：轴6运动失败
+    ALARM_AXIS7_RUN_ERR,//<名字：轴7运动失败
+    ALARM_AXIS8_RUN_ERR,//<名字：轴8运动失败
     ALARM_AXIS_SPEED_SET_ERR = 110,//<名字：轴1速度设定错误
     ALARM_AXIS2_SPEED_SET_ERR,//<名字：轴2速度设定错误
     ALARM_AXIS3_SPEED_SET_ERR,//<名字：轴3速度设定错误
     ALARM_AXIS4_SPEED_SET_ERR,//<名字：轴4速度设定错误
     ALARM_AXIS5_SPEED_SET_ERR,//<名字：轴5速度设定错误
     ALARM_AXIS6_SPEED_SET_ERR,//<名字：轴6速度设定错误
+    ALARM_AXIS7_SPEED_SET_ERR,//<名字：轴7速度设定错误
+    ALARM_AXIS8_SPEED_SET_ERR,//<名字：轴8速度设定错误
     ALARM_AXIS_OVER_SPEED_ERR = 120,//<名字：轴1运动过速
     ALARM_AXIS2_OVER_SPEED_ERR,//<名字：轴2运动过速
     ALARM_AXIS3_OVER_SPEED_ERR,//<名字：轴3运动过速
     ALARM_AXIS4_OVER_SPEED_ERR,//<名字：轴4运动过速
     ALARM_AXIS5_OVER_SPEED_ERR,//<名字：轴5运动过速
     ALARM_AXIS6_OVER_SPEED_ERR, //<名字：轴6运动过速
+    ALARM_AXIS7_OVER_SPEED_ERR, //<名字：轴7运动过速
+    ALARM_AXIS8_OVER_SPEED_ERR, //<名字：轴8运动过速
     ALARM_AXIS1_SOFT_LIMIT_P = 130,//<名字：轴1正极限报警
     ALARM_AXIS2_SOFT_LIMIT_P,//<名字：轴2正极限报警
     ALARM_AXIS3_SOFT_LIMIT_P,//<名字：轴3正极限报警
     ALARM_AXIS4_SOFT_LIMIT_P,//<名字：轴4正极限报警
     ALARM_AXIS5_SOFT_LIMIT_P,//<名字：轴5正极限报警
     ALARM_AXIS6_SOFT_LIMIT_P,//<名字：轴6正极限报警
+    ALARM_AXIS7_SOFT_LIMIT_P,//<名字：轴7正极限报警
+    ALARM_AXIS8_SOFT_LIMIT_P,//<名字：轴8正极限报警
     ALARM_AXIS1_SOFT_LIMIT_N = 140,//<名字：轴1负极限报警
     ALARM_AXIS2_SOFT_LIMIT_N,//<名字：轴2负极限报警
     ALARM_AXIS3_SOFT_LIMIT_N,//<名字：轴3负极限报警
     ALARM_AXIS4_SOFT_LIMIT_N,//<名字：轴4负极限报警
     ALARM_AXIS5_SOFT_LIMIT_N,//<名字：轴5负极限报警
     ALARM_AXIS6_SOFT_LIMIT_N,//<名字：轴6负极限报警
+    ALARM_AXIS7_SOFT_LIMIT_N,//<名字：轴7负极限报警
+    ALARM_AXIS8_SOFT_LIMIT_N,//<名字：轴8负极限报警
     ALARM_ERROR_SERVO1_WARP = 150,//<名字：轴1偏差过大
     ALARM_ERROR_SERVO2_WARP,//<名字：轴2偏差过大
     ALARM_ERROR_SERVO3_WARP,//<名字：轴3偏差过大
     ALARM_ERROR_SERVO4_WARP,//<名字：轴4偏差过大
     ALARM_ERROR_SERVO5_WARP,//<名字：轴5偏差过大
     ALARM_ERROR_SERVO6_WARP,//<名字：轴6偏差过大
+    ALARM_ERROR_SERVO7_WARP,//<名字：轴7偏差过大
+    ALARM_ERROR_SERVO8_WARP,//<名字：轴8偏差过大
     ALARM_AXIS1_ACC_LIMIT = 160,//<名字：轴1加速度报警
     ALARM_AXIS2_ACC_LIMIT,//<名字：轴2加速度报警
     ALARM_AXIS3_ACC_LIMIT,//<名字：轴3加速度报警
     ALARM_AXIS4_ACC_LIMIT,//<名字：轴4加速度报警
     ALARM_AXIS5_ACC_LIMIT,//<名字：轴5加速度报警
     ALARM_AXIS6_ACC_LIMIT,//<名字：轴6加速度报警
+    ALARM_AXIS7_ACC_LIMIT,//<名字：轴7加速度报警
+    ALARM_AXIS8_ACC_LIMIT,//<名字：轴8加速度报警
     ALARM_AXIS1_POINT_LIMIT_P = 170,//<名字：轴1正极限信号报警
     ALARM_AXIS2_POINT_LIMIT_P,//<名字：轴2正极限信号报警
     ALARM_AXIS3_POINT_LIMIT_P,//<名字：轴3正极限信号报警
     ALARM_AXIS4_POINT_LIMIT_P,//<名字：轴4正极限信号报警
     ALARM_AXIS5_POINT_LIMIT_P,//<名字：轴5正极限信号报警
     ALARM_AXIS6_POINT_LIMIT_P,//<名字：轴6正极限信号报警
+    ALARM_AXIS7_POINT_LIMIT_P,//<名字：轴7正极限信号报警
+    ALARM_AXIS8_POINT_LIMIT_P,//<名字：轴8正极限信号报警
     ALARM_AXIS1_POINT_LIMIT_N = 180,//<名字：轴1负极限信号报警
     ALARM_AXIS2_POINT_LIMIT_N,//<名字：轴2负极限信号报警
     ALARM_AXIS3_POINT_LIMIT_N,//<名字：轴3负极限信号报警
     ALARM_AXIS4_POINT_LIMIT_N,//<名字：轴4负极限信号报警
     ALARM_AXIS5_POINT_LIMIT_N,//<名字：轴5负极限信号报警
     ALARM_AXIS6_POINT_LIMIT_N,//<名字：轴6负极限信号报警
+    ALARM_AXIS7_POINT_LIMIT_N,//<名字：轴7负极限信号报警
+    ALARM_AXIS8_POINT_LIMIT_N,//<名字：轴8负极限信号报警
 
     ALARM_AXIS1_NOT_SET_ORIGIN = 190,//<名字：轴1原点信号未设定
     ALARM_AXIS2_NOT_SET_ORIGIN,//<名字：轴2原点信号未设定
@@ -870,6 +893,8 @@ typedef enum
     ALARM_AXIS4_NOT_SET_ORIGIN,//<名字：轴4原点信号未设定
     ALARM_AXIS5_NOT_SET_ORIGIN,//<名字：轴5原点信号未设定
     ALARM_AXIS6_NOT_SET_ORIGIN,//<名字：轴6原点信号未设定
+    ALARM_AXIS7_NOT_SET_ORIGIN,//<名字：轴7原点信号未设定
+    ALARM_AXIS8_NOT_SET_ORIGIN,//<名字：轴8原点信号未设定
 
     ALARM_ROUTE_ACTION_FAIL = 200,//<名字：轨迹运动失败
     ALARM_ROUTE_LINE_P1_NOTSET,//<名字：手动直线轨迹运动起始坐标未设定
@@ -898,6 +923,17 @@ typedef enum
     ALARM_STACK_SOURCE_ERR,//<名字：堆叠数据源错误
 
     ALARM_COUNTER_NOT_DEFINE = 300,//<名字：计数器未定义
+
+
+    ALARM_AXIS1_OVER_CURRENT = 500,//<名字：轴1过电流报警
+    ALARM_AXIS2_OVER_CURRENT,//<名字：轴2过电流报警
+    ALARM_AXIS3_OVER_CURRENT,//<名字：轴3过电流报警
+    ALARM_AXIS4_OVER_CURRENT,//<名字：轴4过电流报警
+    ALARM_AXIS5_OVER_CURRENT,//<名字：轴5过电流报警
+    ALARM_AXIS6_OVER_CURRENT,//<名字：轴6过电流报警
+    ALARM_AXIS7_OVER_CURRENT,//<名字：轴7过电流报警
+    ALARM_AXIS8_OVER_CURRENT,//<名字：轴8过电流报警
+
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
 
@@ -979,7 +1015,9 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t type:4;           //<类型：系统；名字：编码器类型；精度：0;单位：；
     uint32_t vender:4;         //<类型：系统；名字：厂家；精度：0;单位：；
     uint32_t read_type:4;      //<类型：系统；名字：绝对值读取方式；精度：0;单位：；
-    uint32_t res:20;           //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t origin_speed:6;   //<类型：系统；名字：归原点速度设定；精度：0;单位：%；
+    uint32_t dir:1;            //<类型：系统；名字：电机方向设定；精度：0;单位：%；
+    uint32_t res:13;           //<类型：系统；名字：预留；精度：0;单位：；
     uint32_t limit_p:8;        //<类型：系统；名字：正向极限输入；精度：0;单位：；
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
@@ -1028,7 +1066,9 @@ typedef struct {
     uint32_t a6; //<类型:系统;名字:轴6偏角;精度:3;单位:;
     uint32_t X1ecc; //<类型:系统;名字:一轴X方向偏心;精度:3;单位:mm;
     uint32_t Y1ecc; //<类型:系统;名字:一轴Y方向偏心;精度:3;单位:mm;
-    uint32_t res[8]; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t alarm:8; //<类型:系统;名字:报警声音输出次数;精度:0;单位:;
+    uint32_t res0:24; //<类型:系统;名字:预留;精度:0;单位:;
+    uint32_t res[7]; //<类型:系统;名字:预留;精度:0;单位:;
     uint32_t haardware_version:16; //<类型:系统;名字:主机硬件版本;精度:0;单位:;
     uint32_t axisnum:6; //<类型:系统;名字:轴数设定;精度:0;单位:;
     uint32_t ioboard:2; //<类型:系统;名字:IO板数设定;精度:0;单位:;

@@ -949,7 +949,7 @@
     </message>
     <message>
         <source>Un</source>
-        <translation>不用</translation>
+        <translation>无</translation>
     </message>
     <message>
         <source>En</source>

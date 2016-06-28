@@ -18,6 +18,7 @@ Rectangle {
     property bool run_Ready: false
     property bool stop_Ready: false
     property bool return_Ready: false
+    property bool output_off: false
     function onScreenSave(){
         panelRobotController.closeBacklight();
         loginDialog.setTologout();
@@ -740,6 +741,21 @@ Rectangle {
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;
+                if(alarmNum == 7){
+                    var toSend = IODefines.valveItemJSON("valve16");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve17");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve18");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve19");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve20");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve21");
+                    panelRobotController.setYStatus(toSend, 0);
+                }
+
                 if(alarmNum === 0){
                     alarmlogPage.resolvedAlarms();
                 }else{
@@ -772,27 +788,31 @@ Rectangle {
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Return));
             }
 
-            myiStatus = panelRobotController.iStatus(1);
-            if((myiStatus & 0x8000)){
-                if((myiStatus & 0x8000)){
-                    mainWindow.stop_Ready = false;
-                    panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Stop));
-                }
+//            myiStatus = panelRobotController.iStatus(1);
+//            if((myiStatus & 0x8000))
+//                mainWindow.stop_Ready = true;
+//            if(mainWindow.stop_Ready && !(myiStatus & 0x8000)){
+//                mainWindow.stop_Ready = false;
+//                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Stop));
+//            }
+
+//            if(!(myiStatus & 0x8000))
+//                mainWindow.output_off = ture;
+//            if(mainWindow.output_off && (myiStatus & 0x8000)){
+//                mainWindow.output_off = false;
 //                var toSend = IODefines.valveItemJSON("valve16");
-//                panelRobotController.setYStatus(toSend, 1);
+//                panelRobotController.setYStatus(toSend, 0);
 //                toSend = IODefines.valveItemJSON("valve17");
 //                panelRobotController.setYStatus(toSend, 0);
 //                toSend = IODefines.valveItemJSON("valve18");
-//                panelRobotController.setYStatus(toSend, 1);
+//                panelRobotController.setYStatus(toSend, 0);
 //                toSend = IODefines.valveItemJSON("valve19");
 //                panelRobotController.setYStatus(toSend, 0);
 //                toSend = IODefines.valveItemJSON("valve20");
 //                panelRobotController.setYStatus(toSend, 0);
 //                toSend = IODefines.valveItemJSON("valve21");
 //                panelRobotController.setYStatus(toSend, 0);
-            }
-
-
+//            }
         }
     }
 }

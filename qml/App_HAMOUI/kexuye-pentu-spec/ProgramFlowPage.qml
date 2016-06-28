@@ -595,6 +595,10 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag3, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(rotateO1,0,0,rotateO1,0));
+
+        ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.aaaa, 0, 1));
+
         ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,1,1,0));     //m1 poen
         ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag7));
 
@@ -606,6 +610,10 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag8, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(rotateO2,0,0,rotateO2,0));
+
+        ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.aaaa, 0, 1));
+
         ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,1,0));     //m0 close
         ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("positive1")));
 

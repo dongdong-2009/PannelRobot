@@ -22,7 +22,7 @@ MouseArea{
         hinttext.text = qsTr("Originning");
         if(!visible){
             //            originMode.visible = true;
-            visible = true;
+            visible = false;
         }
     }
 

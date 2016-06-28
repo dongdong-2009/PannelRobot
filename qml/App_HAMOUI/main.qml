@@ -729,6 +729,7 @@ Rectangle {
 
                 }else{
                     panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
+
                 }
             }
             if(!panelRobotController.isOrigined()){

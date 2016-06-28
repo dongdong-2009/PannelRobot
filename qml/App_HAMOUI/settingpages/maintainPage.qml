@@ -8,7 +8,7 @@ ICSettingConfigsScope{
     Row{
         id:versionContainer
         Text {
-            text: qsTr("UI Version:") + "S6-1.0.2" + ";"
+            text: qsTr("UI Version:") + "S6-1.0.3" + ";"
         }
         Text {
             id:hostVersion

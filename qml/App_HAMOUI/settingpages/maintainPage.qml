@@ -8,7 +8,7 @@ ICSettingConfigsScope{
     Row{
         id:versionContainer
         Text {
-            text: qsTr("UI Version:") + "KEXUYE-PENTU-1.0-S6-1.0.2" + ";"
+            text: qsTr("UI Version:") + "PENTU-1.0-S6-1.0.2" + ";"
         }
         Text {
             id:hostVersion

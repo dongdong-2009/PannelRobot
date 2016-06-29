@@ -80,7 +80,7 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     if(!backupDir.exists())
     {
 #ifdef Q_WS_QWS
-        backupDir.mkpath(ICAppSettings::backupsPath);
+        backupDir.mkpath(ICAppSettings::userPath);
 #else
         QDir::current().mkdir(ICAppSettings::userPath);
 #endif
@@ -1356,9 +1356,4 @@ QString PanelRobotController::scanUserDir(const QString &path, const QString &fi
         ret.chop(1);
     ret.append("]");
     return ret;
-}
-
-QString PanelRobotController::scanMachineBackups() const
-{
-    return scanUserDir("mrbps", "*.mr.hcdb");
 }

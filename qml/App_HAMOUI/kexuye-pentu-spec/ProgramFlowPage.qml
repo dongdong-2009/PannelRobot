@@ -17,14 +17,14 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
 
-    function getRecordContent(which){
-        if(which == 0){
-            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-        }
-        else
-            return JSON.parse(panelRobotController.programs(which));
-    }
+//    function getRecordContent(which){
+//        if(which == 0){
+//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+//            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+//        }
+//        else
+//            return JSON.parse(panelRobotController.programs(which));
+//    }
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
@@ -51,6 +51,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(19,0,0,19,0));     //close
         ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //close
         ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));     //close
+//        ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
+        ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,1,0));     //m1 close
 
         ret.push(LocalTeach.generateOutputAction(21,0,1,21,0));     //gongzhuanhuiyuan
         ret.push(LocalTeach.generateWaitAction(21,0,1,100));
@@ -84,7 +86,7 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
 
         ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));   //gongzhuangzhengzhuang open
-        ret.push(LocalTeach.generateWaitAction(20,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(21,0,0,10));
         ret.push(LocalTeach.generateWaitAction(20,0,1,100));
         ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 poen
@@ -94,7 +96,7 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
         ret.push(LocalTeach.generateOutputAction(21,0,1,21,0));   //gongzhuangfanzhuang open
-        ret.push(LocalTeach.generateWaitAction(21,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(20,0,0,10));
         ret.push(LocalTeach.generateWaitAction(21,0,1,100));
         ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));                         //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close

@@ -37,7 +37,7 @@ Item {
         var aaaa = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("", 0, (rotateCount.configValue - 1));
+        c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
         var bbbb = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 

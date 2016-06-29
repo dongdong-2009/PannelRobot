@@ -82,7 +82,7 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
 #ifdef Q_WS_QWS
         backupDir.mkpath(ICAppSettings::backupsPath);
 #else
-        backupDir.mkdir(ICAppSettings::backupsPath);
+        QDir::current().mkdir(ICAppSettings::backupsPath);
 #endif
     }
     connect(this,

@@ -8,10 +8,6 @@ configs/* \
 settingpages/*
 }
 
-OTHER_FILES += \
-    teach/CounterActionEditorComponent.qml \
-    teach/CounterActionEditor.js
-
 
 
 

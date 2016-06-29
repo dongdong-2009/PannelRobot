@@ -76,6 +76,15 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
+    QDir backupDir(ICAppSettings::backupsPath);
+    if(!backupDir.exists())
+    {
+#ifdef Q_WS_QWS
+        backupDir.mkpath(ICAppSettings::backupsPath);
+#else
+        backupDir.mkdir(ICAppSettings::backupsPath);
+#endif
+    }
     connect(this,
             SIGNAL(LoadMessage(QString)),
             splash,

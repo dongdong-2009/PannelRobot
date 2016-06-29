@@ -40,6 +40,18 @@ Item {
                 height: 300
                 isShowHint: true
                 border.color: "black"
+                ListModel{
+                    id:localMachineBackupModel
+                }
+                ListModel{
+                    id:localHMIBackupModel
+                }
+                ListModel{
+                    id:uDiskMachineBackupModel
+                }
+                ListModel{
+                    id:uDiskHMIBackupModel
+                }
             }
             Column{
                 ICButton{

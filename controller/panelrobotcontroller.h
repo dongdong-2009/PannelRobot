@@ -752,6 +752,15 @@ public:
         return ret;
     }
 
+    Q_INVOKABLE QString scanUserDir(const QString& path, const QString& filter) const;
+    Q_INVOKABLE QString scanMachineBackups() const
+    {
+        return scanUserDir("mrbps", "*.mr.hcdb");
+    }
+    Q_INVOKABLE QString scanHMIBackups() const
+    {
+        return scanUserDir("mrbps", "*.hmi.hcdb");
+    }
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

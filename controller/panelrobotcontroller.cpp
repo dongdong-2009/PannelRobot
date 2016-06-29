@@ -76,13 +76,13 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
-    QDir backupDir(ICAppSettings::backupsPath);
+    QDir backupDir(ICAppSettings::userPath);
     if(!backupDir.exists())
     {
 #ifdef Q_WS_QWS
         backupDir.mkpath(ICAppSettings::backupsPath);
 #else
-        QDir::current().mkdir(ICAppSettings::backupsPath);
+        QDir::current().mkdir(ICAppSettings::userPath);
 #endif
     }
     connect(this,
@@ -1337,4 +1337,28 @@ void PanelRobotController::copyPicture(const QString &picName, const QString& to
     ::system(QString("cp %1 %2 -f").arg(usb.absoluteFilePath(picName))
              .arg(appDir.absoluteFilePath(to)).toLatin1());
     ::system("sync");
+}
+
+
+QString PanelRobotController::scanUserDir(const QString &path, const QString &filter) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists(path))
+        return "[]";
+    dir.cd(path);
+    QStringList toSearch = dir.entryList(QStringList()<<filter);
+    QString ret = "[";
+    for(int i = 0; i != toSearch.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(toSearch.at(i)));
+    }
+    if(toSearch.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+QString PanelRobotController::scanMachineBackups() const
+{
+    return scanUserDir("mrbps", "*.mr.hcdb");
 }

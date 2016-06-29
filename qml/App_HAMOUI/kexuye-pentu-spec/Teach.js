@@ -59,6 +59,9 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag10 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag11 = f.flagID;
 //    if(mode == 0){
     switch(plane){
         case 0:
@@ -237,6 +240,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "flag8":flag8,
         "flag9":flag9,
         "flag10":flag10,
+        "flag11":flag11,
 //        "startPosSpeed0":startPosSpeed0,
 //        "startPosSpeed1":startPosSpeed1,
 //        "startPosSpeed2":startPosSpeed2,

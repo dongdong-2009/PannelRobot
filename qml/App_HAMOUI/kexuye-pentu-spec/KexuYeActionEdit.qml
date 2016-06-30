@@ -41,6 +41,7 @@ Item {
         var bbbb = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
+
         var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,

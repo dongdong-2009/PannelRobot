@@ -219,8 +219,8 @@ ProgramFlowPage {
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
 
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
-                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
+//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 
             if(actionObject.mode == 0)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
@@ -273,8 +273,13 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
             }
 
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+            ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
+
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag12, qsTr("duoyu dir")));
+
         }
 
         else if(actionObject.mode == 1 || actionObject.mode == 5){
@@ -531,8 +536,8 @@ ProgramFlowPage {
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
 
-            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
-                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
+//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 
             if(actionObject.mode == 3)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
@@ -579,8 +584,14 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
 
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+            ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
+
+            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag12, qsTr("duoyu dir")));
+
         }
 
 //        else if(actionObject.mode == 1){
@@ -592,7 +603,7 @@ ProgramFlowPage {
 //                  actionObject.repeatSpeed, 0.0));
 //        }
 
-        ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+//        ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
 
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
@@ -718,7 +729,7 @@ ProgramFlowPage {
 
     Rectangle{
         id:mask
-        visible: true
+        visible: false
         color: "#D0D0D0"
         height: 28
         width: 315

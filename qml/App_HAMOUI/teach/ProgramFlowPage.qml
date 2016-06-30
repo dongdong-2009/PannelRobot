@@ -424,7 +424,7 @@ Rectangle {
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
-            errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
+            errInfo = saveManualProgramByName(editing.text(PData.lastEditingIndex));
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -644,6 +644,7 @@ Rectangle {
                             currentEditingProgram = PData.kManualProgramIndex;
                             PData.currentEditingProgram = PData.kManualProgramIndex;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
+                            PData.lastEditingIndex = currentIndex;
 
                         }else{
                             if(panelRobotController.isAutoMode()){
@@ -662,6 +663,7 @@ Rectangle {
                                 programListView.currentIndex = -1;
                                 currentEditingProgram = currentIndex;
                             }
+                            PData.lastEditingIndex = currentIndex;
                         }
                     }
                 }

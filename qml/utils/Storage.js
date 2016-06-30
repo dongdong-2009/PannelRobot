@@ -155,7 +155,7 @@ function alarmlog(){
         var rs = tx.executeSql(icStrformat('SELECT * FROM {0} ORDER BY {1} DESC;',
                                            ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col));
         var rowItem;
-        for(var i = 0; i < rs.rows.length; ++i){
+        for(var i = 0, len = rs.rows.length; i < len; ++i){
             rowItem = rs.rows.item(i);
             ret.push(new AlarmItem(rowItem[ALARM_LOG_TB_INFO.id_col],
                                    rowItem[ALARM_LOG_TB_INFO.alarm_num_col],
@@ -219,7 +219,7 @@ function oplog(){
         var rs = tx.executeSql(icStrformat('SELECT * FROM {0} ORDER BY {1} DESC;',
                                            OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col));
         var rowItem;
-        for(var i = 0; i < rs.rows.length; ++i){
+        for(var i = 0, len = rs.rows.length; i < len; ++i){
             rowItem = rs.rows.item(i);
             ret.push(new OperationLogItem(rowItem[OPERATION_LOG_TB_INFO.id_col],
                                    rowItem[OPERATION_LOG_TB_INFO.opTime_col],
@@ -242,3 +242,10 @@ function updateOpLog(opItem){
     });
 }
 
+function backup(){
+    var db = getDatabase();
+    db.transaction(function(tx){
+        var rs = tx.executeSql("SELECT * FROM sqlite_master");
+
+    });
+}

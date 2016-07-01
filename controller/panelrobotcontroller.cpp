@@ -1046,8 +1046,15 @@ void PanelRobotController::OnHostUpdateFinished(QString)
 
 bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint32 current, quint32 target)
 {
-//    if(!isInAuto())
-    ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    if(!isInAuto())
+        ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    else
+    {
+        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
+        if(c.isEmpty()) return false;
+        if(c.last() != target)
+            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
@@ -1356,4 +1363,13 @@ QString PanelRobotController::scanUserDir(const QString &path, const QString &fi
         ret.chop(1);
     ret.append("]");
     return ret;
+}
+
+void PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("hmibps"))
+    {
+
+    }
 }

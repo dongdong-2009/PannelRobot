@@ -1337,12 +1337,12 @@ void PanelRobotController::copyPicture(const QString &picName, const QString& to
     ::system("sync");
 }
 
-}
 
-void PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
-{
-    QDir dir(ICAppSettings::userPath);
-    if(!dir.exists("hmibps"))
-    {
+//void PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
+//{
+//    QDir dir(ICAppSettings::userPath);
+//    if(!dir.exists("hmibps"))
+//    {
 
-    }
+//    }
+//}

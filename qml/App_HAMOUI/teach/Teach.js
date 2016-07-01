@@ -929,8 +929,8 @@ var generateOriginAction = function(action,
 var generateSpeedAction = function(startSpeed,endSpeed){
     return {
         "action":actions.F_CMD_SPEED_SMOOTH,
-        "startSpeed":startSpeed,
-        "endSpeed":endSpeed
+        "startSpeed":startSpeed||0.0,
+        "endSpeed":endSpeed||0.0
     }
 }
 

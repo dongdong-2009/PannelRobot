@@ -684,7 +684,7 @@ Rectangle {
             }
 //                        console.log("knob", key, Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
-            if((key === Keymap.KEY_Stop)){
+            if((key === Keymap.KNOB_SETTINGS)){
                 var toSend = IODefines.valveItemJSON("valve16");
                 panelRobotController.setYStatus(toSend, 0);
                 toSend = IODefines.valveItemJSON("valve17");
@@ -769,7 +769,7 @@ Rectangle {
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;
-                if(alarmNum == 7){
+                if(alarmNum != 0){
                     var toSend = IODefines.valveItemJSON("valve16");
                     panelRobotController.setYStatus(toSend, 0);
                     toSend = IODefines.valveItemJSON("valve17");

@@ -72,6 +72,16 @@ Item {
         ao.rotate = rotate.configValue;
         ao.rotateSpeed = rotateSpeed.configValue;
         ao.rotateCount = rotateCount.configValue;
+
+        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
+        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.dirCount);
+        counterUpdated(c.id);
+
+        c = BaseTeach.counterManager.getCounter(ao.rotateCounterID);
+        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.rotateCount);
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.rotateCount);
+        counterUpdated(c.id);
     }
 
     function setModeName(name){

@@ -283,9 +283,9 @@ public:
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();
     Q_INVOKABLE ICAxisDefine* axisDefine();
-    Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram)
+    Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram, const QStringList& subPrograms = QStringList())
     {
-        return ICRobotMold::NewRecord(name, initProgram, baseFncs_).toJSON();
+        return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subPrograms).toJSON();
     }
     Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
     {

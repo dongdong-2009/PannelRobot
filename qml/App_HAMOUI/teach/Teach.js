@@ -785,6 +785,9 @@ actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
+actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
+
+
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
 actions.F_CMD_PROGRAM_JUMP2 = 10002;  //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
@@ -931,6 +934,14 @@ var generateSpeedAction = function(startSpeed,endSpeed){
         "action":actions.F_CMD_SPEED_SMOOTH,
         "startSpeed":startSpeed,
         "endSpeed":endSpeed
+    }
+}
+
+var generateDataAction = function(addr, type, data){
+    return {
+        "action":actions.F_CMD_MEM_CMD,
+        "type":type,
+        "data":data
     }
 }
 

@@ -759,9 +759,9 @@ public:
     }
     Q_INVOKABLE QString scanHMIBackups() const
     {
-        return scanUserDir("mrbps", "*.hmi.hcdb");
+        return scanUserDir("hmibps", "*.hmi.hcdb");
     }
-    Q_INVOKABLE void backupHMIBackups(const backupName, const QString& sqlData);
+    Q_INVOKABLE void backupHMIBackups(const QString& backupName, const QString& sqlData) const;
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

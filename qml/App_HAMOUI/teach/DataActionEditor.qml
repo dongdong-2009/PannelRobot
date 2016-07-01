@@ -31,6 +31,7 @@ Item {
             }
         }
         Row{
+            spacing: 24
             ICConfigEdit{
                 id:targetAddr
                 configName: qsTr("Target Addr")

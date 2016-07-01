@@ -1378,7 +1378,40 @@ void PanelRobotController::backupHMIBackups(const QString& backupName, const QSt
     {
         QFile::remove(dir.absoluteFilePath(bf));
     }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
+    QFile sql(dir.absoluteFilePath("hmi.sql"));
+    if(sql.open(QFile::WriteOnly))
+    {
+        sql.write(sqlData.toUtf8());
+        sql.close();
+    }
+    QFile::copy("usr/customsettings.ini", dir.absoluteFilePath("customsettings.ini"));
+    QFile::copy("sysconfig/PanelRobot.ini", dir.absoluteFilePath("PanelRobot.ini"));
+    dir.cdUp();
+    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.hmi.hcdb")
+             .arg(dir.absolutePath()).arg(backupName).toUtf8());
+}
 
+void PanelRobotController::backupMRBackups(const QString &backupName) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("mrbps"))
+    {
+        dir.mkdir("mrbps");
+    }
+    dir.cd("mrbps");
+    QString bf = backupName + ".mr.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
+    QFile::copy("RobotDatabase", dir.absoluteFilePath("RobotDatabase"));
+    dir.cdUp();
+    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.mr.hcdb")
+             .arg(dir.absolutePath()).arg(backupName).toUtf8());
 }
 
 QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)

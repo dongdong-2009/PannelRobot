@@ -1414,6 +1414,11 @@ void PanelRobotController::backupMRBackups(const QString &backupName) const
              .arg(dir.absolutePath()).arg(backupName).toUtf8());
 }
 
+void PanelRobotController::makeGhost(const QString &ghostName) const
+{
+
+}
+
 QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)
 {
     QJson::Parser parser;

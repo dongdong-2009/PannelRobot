@@ -684,8 +684,27 @@ Rectangle {
             }
 //                        console.log("knob", key, Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
+            console.log(panelRobotController.currentMode(),Keymap.CMD_ONE_CYCLE,key,Keymap.CMD_KEY_STOP);
+            if(panelRobotController.currentMode() == Keymap.CMD_ONE_CYCLE){
+                if(key === Keymap.KEY_Stop){
+                    console.log("123321123321");
+                    var toSend = IODefines.valveItemJSON("valve16");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve17");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve18");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve19");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve20");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve21");
+                    panelRobotController.setYStatus(toSend, 0);
+                }
+            }
+
             if((key === Keymap.KNOB_SETTINGS)){
-                var toSend = IODefines.valveItemJSON("valve16");
+                toSend = IODefines.valveItemJSON("valve16");
                 panelRobotController.setYStatus(toSend, 0);
                 toSend = IODefines.valveItemJSON("valve17");
                 panelRobotController.setYStatus(toSend, 0);

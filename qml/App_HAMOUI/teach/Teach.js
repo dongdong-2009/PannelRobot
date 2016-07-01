@@ -1113,6 +1113,29 @@ var generateInitProgram = function(axisDefine){
 
 }
 
+var cycle8 = function(){
+    var f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag1 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag2 = f.flagID;
+    var ret = [];
+//      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
+    ret.push(generateConditionAction(0, 20, 1, 0, 0,flag1));
+    ret.push(generateConditionAction(0, 20, 0, 0, 0,flag1));
+    ret.push(generateOutputAction(20,0,0,20,0));     //close
+    ret.push(generateFlagAction(flag1, qsTr("positive")));
+
+    ret.push(generateConditionAction(0, 21, 1, 0, 0,flag1));
+    ret.push(generateConditionAction(0, 21, 0, 0, 0,flag1));
+    ret.push(generateOutputAction(21,0,0,21,0));     //close
+    ret.push(generateFlagAction(flag2, qsTr("negative")));
+
+    ret.push(generteEndAction());
+    return JSON.stringify(ret);
+}
+
 var generateInitSubPrograms = function(){
     var initStep = [];
     var p = JSON.stringify([generteEndAction()]);
@@ -1123,7 +1146,7 @@ var generateInitSubPrograms = function(){
     initStep.push(p);
     initStep.push(p);
     initStep.push(p);
-    initStep.push(p);
+    initStep.push(cycle8());
     return JSON.stringify(initStep);
 }
 

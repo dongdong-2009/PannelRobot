@@ -761,6 +761,7 @@ public:
     {
         return scanUserDir("mrbps", "*.hmi.hcdb");
     }
+    Q_INVOKABLE void backupHMIBackups(const backupName, const QString& sqlData);
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

@@ -244,8 +244,30 @@ function updateOpLog(opItem){
 
 function backup(){
     var db = getDatabase();
+    var ret = "BEGIN TRANSACTION;";
     db.transaction(function(tx){
         var rs = tx.executeSql("SELECT * FROM sqlite_master");
-
+        var rowItem;
+        var dataRowItem;
+        for(var i = 0, len = rs.rows.length; i < len; ++i){
+            rowItem = rs.rows.item(i);
+            if(rowItem.tbl_name == "sqlite_stat1" ||
+                    rowItem.type != "table")
+                continue;
+            ret += "\nDROP TABLE " + rowItem.tbl_name + ";\n";
+            ret += rowItem.sql + ";\n";
+            var data = tx.executeSql("SELECT * FROM " + rowItem.tbl_name);
+            for(var j = 0, dlen = data.rows.length; j < dlen; ++j){
+                dataRowItem = data.rows.item(j);
+                var values = "";
+                for(var v in dataRowItem){
+                    values += ",'" + dataRowItem[v] + "'";
+                }
+                values = values.substr(1);
+                ret += icStrformat("INSERT INTO {0} VALUES({1});\n",rowItem.tbl_name, values);
+            }
+        }
     });
+    ret += "COMMIT;"
+    return ret;
 }

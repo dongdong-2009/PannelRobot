@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
+import "../../utils/Storage.js" as Storage
 
 Item {
     Column{
@@ -58,6 +59,9 @@ Item {
                     id:newBackup
                     width: 150
                     text: qsTr("Backup Current")
+                    onButtonClicked: {
+                        console.log(Storage.backup());
+                    }
                 }
                 ICButton{
                     id:restore

@@ -244,7 +244,7 @@ Rectangle {
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
-                                                                    Teach.generateInitProgram()));
+                                                                    Teach.generateInitProgram(), Teach.generateInitSubPrograms()));
 //                if(ret.errno != 0){
 //                    tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
 //                }else{

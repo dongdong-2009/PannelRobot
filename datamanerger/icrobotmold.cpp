@@ -551,7 +551,7 @@ static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, i
 #ifdef NEW_PLAT
 
 RecordDataObject ICRobotMold::NewRecord(const QString &name,
-                                        const QStringList &initProgram,
+                                        const QString &initProgram,
                                         const QList<QPair<int, quint32> > &values,
                                         const QStringList &subPrograms,
                                         const QVector<QVariantList>& counters,

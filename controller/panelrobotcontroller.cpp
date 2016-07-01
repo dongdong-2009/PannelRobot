@@ -1380,3 +1380,19 @@ void PanelRobotController::backupHMIBackups(const QString& backupName, const QSt
     }
 
 }
+
+QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse (subPrograms.toUtf8(), &ok).toList();
+    QStringList subs;
+    if(ok)
+    {
+        for(int i = 0; i < result.size(); ++i)
+        {
+            subs.append(result.at(i).toString());
+        }
+    }
+    return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
+}

@@ -46,7 +46,7 @@ Item {
             "fixture1Switch":fixture1Switch.configValue,
             "slope":slope.configValue,
             "chamferRadius":chamferRadius.configValue,
-            "linglong":linglong.configValue
+            "linglong":linelong.configValue
         };
     }
     function speedcontainer() {return configContainer;}

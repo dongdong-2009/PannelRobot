@@ -684,11 +684,26 @@ Rectangle {
             }
 //                        console.log("knob", key, Keymap.getKeyMappedAction(key));
             panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
-            console.log(panelRobotController.currentMode(),Keymap.CMD_ONE_CYCLE,key,Keymap.CMD_KEY_STOP);
             if(panelRobotController.currentMode() == Keymap.CMD_ONE_CYCLE){
                 if(key === Keymap.KEY_Stop){
-                    console.log("123321123321");
                     var toSend = IODefines.valveItemJSON("valve16");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve17");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve18");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve19");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve20");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve21");
+                    panelRobotController.setYStatus(toSend, 0);
+                }
+            }
+
+            if(panelRobotController.currentMode() === Keymap.CMD_MANUAL){
+                if(key === Keymap.KEY_Stop){
+                    toSend = IODefines.valveItemJSON("valve16");
                     panelRobotController.setYStatus(toSend, 0);
                     toSend = IODefines.valveItemJSON("valve17");
                     panelRobotController.setYStatus(toSend, 0);
@@ -834,32 +849,6 @@ Rectangle {
                 mainWindow.return_Ready = false;
                 panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Return));
             }
-
-//            myiStatus = panelRobotController.iStatus(1);
-//            if((myiStatus & 0x8000))
-//                mainWindow.stop_Ready = true;
-//            if(mainWindow.stop_Ready && !(myiStatus & 0x8000)){
-//                mainWindow.stop_Ready = false;
-//                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Stop));
-//            }
-
-//            if(!(myiStatus & 0x8000))
-//                mainWindow.output_off = ture;
-//            if(mainWindow.output_off && (myiStatus & 0x8000)){
-//                mainWindow.output_off = false;
-//                var toSend = IODefines.valveItemJSON("valve16");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve17");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve18");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve19");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve20");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve21");
-//                panelRobotController.setYStatus(toSend, 0);
-//            }
         }
     }
 }

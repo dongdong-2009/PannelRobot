@@ -1370,6 +1370,13 @@ void PanelRobotController::backupHMIBackups(const QString& backupName, const QSt
     QDir dir(ICAppSettings::userPath);
     if(!dir.exists("hmibps"))
     {
-
+        dir.mkdir("hmibps");
     }
+    dir.cd("hmibps");
+    QString bf = backupName + ".hmi.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+
 }

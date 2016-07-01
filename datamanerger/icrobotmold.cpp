@@ -560,7 +560,9 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     if(name.isEmpty()) return RecordDataObject(kRecordErr_Name_Is_Empty);
     if(ICDALHelper::IsExistsRecordTable(name))
     {
-        return RecordDataObject(kRecordErr_Name_Is_Exists);
+        RecordDataObject ret(kRecordErr_Name_Is_Exists);
+        ret.setRecordName(name);
+        return ret;
     }
     QStringList programList;
     int err;

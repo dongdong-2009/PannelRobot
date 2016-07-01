@@ -848,8 +848,8 @@ ProgramFlowPage {
             panelRobotController.delCounterDef(actionObject.repeateCounterID);
             BaseTeach.counterManager.delCounter(actionObject.dirCounterID);
             panelRobotController.delCounterDef(actionObject.dirCounterID);
-            BaseTeach.counterManager.delCounter(actionObject.rotateCounterID);
-            panelRobotController.delCounterDef(actionObject.rotateCounterID);
+//            BaseTeach.counterManager.delCounter(actionObject.rotateCounterID);
+//            panelRobotController.delCounterDef(actionObject.rotateCounterID);
             BaseTeach.counterManager.delCounter(actionObject.rotateOKCID);
             panelRobotController.delCounterDef(actionObject.rotateOKCID);
             BaseTeach.counterManager.delCounter(actionObject.aaaa);

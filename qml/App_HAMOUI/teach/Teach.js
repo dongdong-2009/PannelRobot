@@ -1113,6 +1113,20 @@ var generateInitProgram = function(axisDefine){
 
 }
 
+var generateInitSubPrograms = function(){
+    var initStep = [];
+    var p = JSON.stringify([generteEndAction()]);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    return JSON.stringify(initStep);
+}
+
 var gsActionToStringHelper = function(actionStr, actionObject){
     var ret =  actionStr + ":" +  actionObject.pos + " " +
             qsTr("Speed:") + actionObject.speed + " " +

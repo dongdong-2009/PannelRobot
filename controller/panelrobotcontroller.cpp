@@ -76,6 +76,15 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
+    QDir backupDir(ICAppSettings::userPath);
+    if(!backupDir.exists())
+    {
+#ifdef Q_WS_QWS
+        backupDir.mkpath(ICAppSettings::userPath);
+#else
+        QDir::current().mkdir(ICAppSettings::userPath);
+#endif
+    }
     connect(this,
             SIGNAL(LoadMessage(QString)),
             splash,
@@ -1338,11 +1347,36 @@ void PanelRobotController::copyPicture(const QString &picName, const QString& to
 }
 
 
-//void PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
-//{
-//    QDir dir(ICAppSettings::userPath);
-//    if(!dir.exists("hmibps"))
-//    {
+QString PanelRobotController::scanUserDir(const QString &path, const QString &filter) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists(path))
+        return "[]";
+    dir.cd(path);
+    QStringList toSearch = dir.entryList(QStringList()<<filter);
+    QString ret = "[";
+    for(int i = 0; i != toSearch.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(toSearch.at(i)));
+    }
+    if(toSearch.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
 
-//    }
-//}
+void PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("hmibps"))
+    {
+        dir.mkdir("hmibps");
+    }
+    dir.cd("hmibps");
+    QString bf = backupName + ".hmi.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+
+}

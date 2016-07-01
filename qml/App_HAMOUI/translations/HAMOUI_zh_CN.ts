@@ -422,11 +422,11 @@
     </message>
     <message>
         <source>U-</source>
-        <translation>A-</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>U+</source>
-        <translation>A+</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Y-</source>
@@ -438,11 +438,11 @@
     </message>
     <message>
         <source>V-</source>
-        <translation>B-</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>V+</source>
-        <translation>B+</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>X-</source>
@@ -454,11 +454,11 @@
     </message>
     <message>
         <source>W-</source>
-        <translation>C-</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>W+</source>
-        <translation>C+</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line Z-</source>
@@ -470,11 +470,11 @@
     </message>
     <message>
         <source>Rotate U-</source>
-        <translation>世界A-</translation>
+        <translation>世界U-</translation>
     </message>
     <message>
         <source>Rotate U+</source>
-        <translation>世界A+</translation>
+        <translation>世界U+</translation>
     </message>
     <message>
         <source>Line Y-</source>
@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Rotate V-</source>
-        <translation>世界B-</translation>
+        <translation>世界V-</translation>
     </message>
     <message>
         <source>Rotate V+</source>
-        <translation>世界B+</translation>
+        <translation>世界V+</translation>
     </message>
     <message>
         <source>Line X-</source>
@@ -502,11 +502,11 @@
     </message>
     <message>
         <source>Rotate W-</source>
-        <translation>世界C-</translation>
+        <translation>世界W-</translation>
     </message>
     <message>
         <source>Rotate W+</source>
-        <translation>世界C+</translation>
+        <translation>世界W+</translation>
     </message>
     <message>
         <source>Line Test</source>
@@ -546,11 +546,11 @@
     </message>
     <message>
         <source>Z</source>
-        <translation type="unfinished">Z轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>U</source>
-        <translation>A</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line Z</source>
@@ -558,15 +558,15 @@
     </message>
     <message>
         <source>Rotate U</source>
-        <translation type="vanished">世界A</translation>
+        <translation type="vanished">世界U</translation>
     </message>
     <message>
         <source>Y</source>
-        <translation type="unfinished">Y轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>V</source>
-        <translation>B</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line Y</source>
@@ -574,15 +574,15 @@
     </message>
     <message>
         <source>Rotate V</source>
-        <translation type="vanished">世界B</translation>
+        <translation type="vanished">世界V</translation>
     </message>
     <message>
         <source>X</source>
-        <translation type="unfinished">X轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>W</source>
-        <translation>C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line X</source>
@@ -590,7 +590,7 @@
     </message>
     <message>
         <source>Rotate W</source>
-        <translation type="vanished">世界C</translation>
+        <translation type="vanished">世界W</translation>
     </message>
     <message>
         <source>Tune Speed:</source>
@@ -949,7 +949,7 @@
     </message>
     <message>
         <source>Un</source>
-        <translation>不用</translation>
+        <translation>无</translation>
     </message>
     <message>
         <source>En</source>
@@ -992,31 +992,31 @@
     </message>
     <message>
         <source>X</source>
-        <translation>X轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Y</source>
-        <translation>Y轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Z</source>
-        <translation>Z轴</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>°</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation>A轴</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation>B轴</translation>
-    </message>
-    <message>
-        <source>C</source>
-        <translation>C轴</translation>
     </message>
 </context>
 <context>
@@ -1359,27 +1359,27 @@
     </message>
     <message>
         <source>Y014</source>
-        <translation>雾化1</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation>喷幅1</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation>油量1</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation>雾化2</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y020</source>
-        <translation>喷幅2</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation>油量2</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y022</source>
@@ -1407,27 +1407,27 @@
     </message>
     <message>
         <source>Y030</source>
-        <translation>模具1正传</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation>模具1反转</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation>模具2正传</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation>模具2反转</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation>公转盘正传</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation>公转盘反转</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y036</source>
@@ -1439,35 +1439,35 @@
     </message>
     <message>
         <source>X010</source>
-        <translation>X轴原点信号</translation>
+        <translation>X010</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation>Y轴原点信号</translation>
+        <translation>X011</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation>Z轴原点信号</translation>
+        <translation>X012</translation>
     </message>
     <message>
         <source>X013</source>
-        <translation>A轴原点信号</translation>
+        <translation>X013</translation>
     </message>
     <message>
         <source>X014</source>
-        <translation>B轴原点信号</translation>
+        <translation>X014</translation>
     </message>
     <message>
         <source>X015</source>
-        <translation>C轴原点信号</translation>
+        <translation>X015</translation>
     </message>
     <message>
         <source>X016</source>
-        <translation></translation>
+        <translation>X016</translation>
     </message>
     <message>
         <source>X017</source>
-        <translation></translation>
+        <translation>X017</translation>
     </message>
     <message>
         <source>X020</source>
@@ -1503,11 +1503,11 @@
     </message>
     <message>
         <source>X030</source>
-        <translation>模具1转动到位</translation>
+        <translation>X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation>模具2转动到位</translation>
+        <translation>X031</translation>
     </message>
     <message>
         <source>X032</source>
@@ -1519,11 +1519,11 @@
     </message>
     <message>
         <source>X034</source>
-        <translation>公转盘正转到位</translation>
+        <translation>X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation>公转盘反转到位</translation>
+        <translation>X035</translation>
     </message>
     <message>
         <source>X036</source>
@@ -1755,15 +1755,15 @@
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>雾化</translation>
+        <translation>普通输出Y014</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>油量</translation>
+        <translation>普通输出Y015</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>喷幅</translation>
+        <translation>普通输出Y016</translation>
     </message>
     <message>
         <source>Normal Y017</source>
@@ -1771,11 +1771,11 @@
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>公转盘正转</translation>
+        <translation>普通输出Y020</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>公转盘反转</translation>
+        <translation>普通输出Y021</translation>
     </message>
     <message>
         <source>Normal Y022</source>
@@ -1931,31 +1931,31 @@
     </message>
     <message>
         <source>Time Y010</source>
-        <translation>绿灯</translation>
+        <translation>时间输出Y010</translation>
     </message>
     <message>
         <source>Time Y011</source>
-        <translation>黄灯</translation>
+        <translation>时间输出Y011</translation>
     </message>
     <message>
         <source>Time Y012</source>
-        <translation>红灯</translation>
+        <translation>时间输出Y012</translation>
     </message>
     <message>
         <source>Time Y013</source>
-        <translation>报警声</translation>
+        <translation>时间输出Y013</translation>
     </message>
     <message>
         <source>Time Y014</source>
-        <translation>雾化</translation>
+        <translation>时间输出Y014</translation>
     </message>
     <message>
         <source>Time Y015</source>
-        <translation>油量</translation>
+        <translation>时间输出Y015</translation>
     </message>
     <message>
         <source>Time Y016</source>
-        <translation>喷幅</translation>
+        <translation>时间输出Y016</translation>
     </message>
     <message>
         <source>Time Y017</source>
@@ -1963,11 +1963,11 @@
     </message>
     <message>
         <source>Time Y020</source>
-        <translation>公转盘正转</translation>
+        <translation>时间输出Y020</translation>
     </message>
     <message>
         <source>Time Y021</source>
-        <translation>公转盘反转</translation>
+        <translation>时间输出Y021</translation>
     </message>
     <message>
         <source>Time Y022</source>
@@ -3218,160 +3218,6 @@
     </message>
 </context>
 <context>
-    <name>KexuYeActionEdit</name>
-    <message>
-        <source>plane</source>
-        <translation>平面</translation>
-    </message>
-    <message>
-        <source>Dir Axis</source>
-        <translation>寸动轴</translation>
-    </message>
-    <message>
-        <source>SPos:</source>
-        <translation type="vanished">起点:</translation>
-    </message>
-    <message>
-        <source>Pos 1:</source>
-        <translation type="vanished">目标位置1：</translation>
-    </message>
-    <message>
-        <source>Pos 2:</source>
-        <translation type="vanished">目标位置2：</translation>
-    </message>
-    <message>
-        <source>Rpeate Speed</source>
-        <translation>重复速度</translation>
-    </message>
-    <message>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Repeate Count</source>
-        <translation>重复次数</translation>
-    </message>
-    <message>
-        <source>z length</source>
-        <translation>弧顶高度</translation>
-    </message>
-    <message>
-        <source>Dir Length</source>
-        <translation>寸动长度</translation>
-    </message>
-    <message>
-        <source>mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dir Speed</source>
-        <translation>寸动速度</translation>
-    </message>
-    <message>
-        <source>Dir Count</source>
-        <translation>循环次数</translation>
-    </message>
-    <message>
-        <source>Rotate</source>
-        <translation>旋转角度</translation>
-    </message>
-    <message>
-        <source>Rotate Speed</source>
-        <translation>旋转速度</translation>
-    </message>
-    <message>
-        <source>Rotate Count</source>
-        <translation>旋转次数</translation>
-    </message>
-    <message>
-        <source>Set In</source>
-        <translation type="obsolete">设入</translation>
-    </message>
-    <message>
-        <source>Set SPos</source>
-        <translation>设入起点</translation>
-    </message>
-    <message>
-        <source>Set EPos</source>
-        <translation>设入终点</translation>
-    </message>
-    <message>
-        <source>°</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gun Follow En</source>
-        <translation>喷枪跟随</translation>
-    </message>
-</context>
-<context>
-    <name>KexuYeAxisSpeed</name>
-    <message>
-        <source>Return Speed</source>
-        <translation>返回速度</translation>
-    </message>
-    <message>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fixture Delay</source>
-        <translation>喷枪1延时</translation>
-    </message>
-    <message>
-        <source>Atomization Delay</source>
-        <translation>雾化阀</translation>
-    </message>
-    <message>
-        <source>Oil Delay</source>
-        <translation>油量阀</translation>
-    </message>
-    <message>
-        <source>Amplitude Delay</source>
-        <translation>喷幅阀</translation>
-    </message>
-    <message>
-        <source>FixSwitch</source>
-        <translation>喷枪闭合</translation>
-    </message>
-    <message>
-        <source>Fixture1 Delay</source>
-        <translation>喷枪2延时</translation>
-    </message>
-    <message>
-        <source>L</source>
-        <translation>左边</translation>
-    </message>
-    <message>
-        <source>R</source>
-        <translation>右边</translation>
-    </message>
-    <message>
-        <source>D</source>
-        <translation>双边</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>常闭</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>常开</translation>
-    </message>
-    <message>
-        <source>s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>slope</source>
-        <translation>倾斜角度</translation>
-    </message>
-    <message>
-        <source>°</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Keymap</name>
     <message>
         <source>Running</source>
@@ -4171,74 +4017,6 @@ please chose!</source>
         <source>Counter</source>
         <translation>计数器</translation>
     </message>
-    <message>
-        <source>PT Line 2D</source>
-        <translation type="vanished">喷涂直线2D</translation>
-    </message>
-    <message>
-        <source>PT Arc 3D</source>
-        <translation type="obsolete">喷涂曲线3D</translation>
-    </message>
-    <message>
-        <source>Base CMD</source>
-        <translation>基本动作</translation>
-    </message>
-    <message>
-        <source>DetailFace</source>
-        <translation>详细参数</translation>
-    </message>
-    <message>
-        <source>Return</source>
-        <translation>返回</translation>
-    </message>
-    <message>
-        <source>EPos</source>
-        <translation type="vanished">终点:</translation>
-    </message>
-    <message>
-        <source>TPos</source>
-        <translation type="vanished">经过:</translation>
-    </message>
-    <message>
-        <source>Set EPos</source>
-        <translation>设入终点</translation>
-    </message>
-    <message>
-        <source>Set TPos</source>
-        <translation>设入经过</translation>
-    </message>
-    <message>
-        <source>PT U 2D</source>
-        <translation>直线U形</translation>
-    </message>
-    <message>
-        <source>PT Z 2D</source>
-        <translation>直线Z形</translation>
-    </message>
-    <message>
-        <source>PT Saw 2D</source>
-        <translation>直线锯齿形</translation>
-    </message>
-    <message>
-        <source>PT Dir 2D</source>
-        <translation>直线寸动形</translation>
-    </message>
-    <message>
-        <source>PT Arc U</source>
-        <translation>曲线U形</translation>
-    </message>
-    <message>
-        <source>PT Arc Z</source>
-        <translation>曲线Z形</translation>
-    </message>
-    <message>
-        <source>PT Arc Saw</source>
-        <translation>曲线锯齿形</translation>
-    </message>
-    <message>
-        <source>PT Arc Dir</source>
-        <translation>曲线寸动形</translation>
-    </message>
 </context>
 <context>
     <name>ProgramFlowPage</name>
@@ -4438,46 +4216,6 @@ please chose!</source>
     <message>
         <source>Start Line:[-1]</source>
         <translation>设当前行为单步起始:[-1]</translation>
-    </message>
-    <message>
-        <source>Fixture Rotation</source>
-        <translation>模具旋转</translation>
-    </message>
-    <message>
-        <source>Dir Move</source>
-        <translation>寸动</translation>
-    </message>
-    <message>
-        <source>Repeate</source>
-        <translation>重复喷涂</translation>
-    </message>
-    <message>
-        <source>negative</source>
-        <translation>公转反转</translation>
-    </message>
-    <message>
-        <source>positive</source>
-        <translation>公转正传</translation>
-    </message>
-    <message>
-        <source>Rotate OK</source>
-        <translation type="vanished">模具旋转到位</translation>
-    </message>
-    <message>
-        <source>Rotate1 OK</source>
-        <translation>模具1旋转到位</translation>
-    </message>
-    <message>
-        <source>negative1</source>
-        <translation>模具2转动</translation>
-    </message>
-    <message>
-        <source>Rotate2 OK</source>
-        <translation>模具2旋转到位</translation>
-    </message>
-    <message>
-        <source>positive1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5500,10 +5238,6 @@ please chose!</source>
         <translation>等待视觉数据</translation>
     </message>
     <message>
-        <source>Invaild Moldule</source>
-        <translation>无效模块</translation>
-    </message>
-    <message>
         <source>ArcXY:</source>
         <translation>曲线XY:</translation>
     </message>
@@ -5516,6 +5250,10 @@ please chose!</source>
         <translation>曲线YZ:</translation>
     </message>
     <message>
+        <source>Invaild Moldule</source>
+        <translation>无效模块</translation>
+    </message>
+    <message>
         <source>LineXY:</source>
         <translation>直线XY:</translation>
     </message>
@@ -5526,58 +5264,6 @@ please chose!</source>
     <message>
         <source>LineYZ:</source>
         <translation>直线YZ:</translation>
-    </message>
-    <message>
-        <source>SingleAxisRepeat</source>
-        <translation type="vanished">喷涂直线2D</translation>
-    </message>
-    <message>
-        <source>Plane</source>
-        <translation>平面</translation>
-    </message>
-    <message>
-        <source>Start Pos:</source>
-        <translation>起点:</translation>
-    </message>
-    <message>
-        <source>Repeate Speed:</source>
-        <translation>重复速度:</translation>
-    </message>
-    <message>
-        <source>Repeate </source>
-        <translation>重复</translation>
-    </message>
-    <message>
-        <source>Dir Length:</source>
-        <translation>寸动长度:</translation>
-    </message>
-    <message>
-        <source>Dir Speed:</source>
-        <translation>寸动速度:</translation>
-    </message>
-    <message>
-        <source>Dir</source>
-        <translation>寸动</translation>
-    </message>
-    <message>
-        <source>Arc3DRepeat</source>
-        <translation>喷涂曲线3D</translation>
-    </message>
-    <message>
-        <source>Next Pos:</source>
-        <translation>下一位置:</translation>
-    </message>
-    <message>
-        <source>End Pos:</source>
-        <translation>终点位置:</translation>
-    </message>
-    <message>
-        <source>Times</source>
-        <translation>次</translation>
-    </message>
-    <message>
-        <source>Line2DRepeat</source>
-        <translation>喷涂直线2D</translation>
     </message>
     <message>
         <source>Offset Curve:</source>
@@ -5648,27 +5334,27 @@ please chose!</source>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="unfinished">公转盘反转 {1?}</translation>
+        <translation type="unfinished">报警声 {1?}</translation>
     </message>
     <message>
         <source>Z</source>
-        <translation type="unfinished">Z轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="unfinished">公转盘反转 {2?}</translation>
+        <translation type="unfinished">报警声 {2?}</translation>
     </message>
     <message>
         <source>A</source>
-        <translation type="unfinished">A轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>B</source>
-        <translation type="unfinished">B轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>C</source>
-        <translation type="unfinished">C轴</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>X1 OFF</source>
@@ -5858,7 +5544,7 @@ please chose!</source>
     <name>TopHeader</name>
     <message>
         <source>Records:</source>
-        <translation type="unfinished">程序:</translation>
+        <translation>模号:</translation>
     </message>
     <message>
         <source>Calculator</source>

@@ -1416,7 +1416,19 @@ void PanelRobotController::backupMRBackups(const QString &backupName) const
 
 void PanelRobotController::makeGhost(const QString &ghostName) const
 {
-
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("ghosts"))
+    {
+        dir.mkdir("ghosts");
+    }
+    dir.cd("ghosts");
+    QString bf = backupName + ".ghost.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
 }
 
 QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)

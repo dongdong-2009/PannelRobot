@@ -332,7 +332,10 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
     else if(act == F_CMD_MEMCOMPARE_CMD)
     {
         item.append(v->value("leftAddr").toUInt());
-        item.append(v->value("cmd").toUInt());
+        if(v->value("type") == 0)
+            item.append(v->value("cmd").toUInt() + 100);
+        else
+            item.append(v->value("cmd").toUInt());
         item.append(v->value("rightAddr").toUInt());
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));

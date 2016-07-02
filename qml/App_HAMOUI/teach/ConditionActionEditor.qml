@@ -206,11 +206,6 @@ Item {
                         visible:ys.length > 0
                     }
                     ICCheckBox{
-                        id:euY
-                        text: qsTr("EUY")
-                        visible: euYs.length > 0
-                    }
-                    ICCheckBox{
                         id:mY
                         text: qsTr("MY")
                         visible: mYs.length > 0
@@ -221,19 +216,28 @@ Item {
                         visible: xs.length > 0
                     }
                     ICCheckBox{
-                        id:euX
-                        text: qsTr("EUX")
-                        visible: euXs.length > 0
-                    }
-                    ICCheckBox{
                         id:counter
                         text: qsTr("Counter")
                         visible: counters.length > 0
+                    }
+                    ICCheckBox{
+                        id:memData
+                        text: qsTr("Mem")
                     }
 
                     ICCheckBox{
                         id:jump
                         text: qsTr("Jump")
+                    }
+                    ICCheckBox{
+                        id:euX
+                        text: qsTr("EUX")
+                        visible: euXs.length > 0
+                    }
+                    ICCheckBox{
+                        id:euY
+                        text: qsTr("EUY")
+                        visible: euYs.length > 0
                     }
                 }
             }
@@ -337,6 +341,7 @@ Item {
                     layoutMode: 0
                     isAutoSize: true
                     spacing: 20
+                    visible: !memData.isChecked
                     ICCheckBox{
                         id:onBox
                         text: counter.isChecked ? qsTr(">=T") : qsTr("ON")
@@ -349,6 +354,38 @@ Item {
                         width: 80
                     }
                 }
+                ICButtonGroup{
+                    spacing: 4
+                    id:memCmpGroup
+                    mustChecked: true
+                    checkedIndex: 0
+                    visible: memData.isChecked
+                    ICCheckBox{
+                        id: largerThan
+                        text: qsTr(">")
+                    }
+                    ICCheckBox{
+                        id:largerEqual
+                        text: qsTr(">=")
+                    }
+                    ICCheckBox{
+                        id: lessThan
+                        text: qsTr("<")
+                    }
+                    ICCheckBox{
+                        id:lessEqual
+                        text: qsTr("<=")
+                    }
+                    ICCheckBox{
+                        id:equal
+                        text: qsTr("==")
+                    }
+                    ICCheckBox{
+                        id:notEqual
+                        text: qsTr("!=")
+                    }
+                }
+
                 ICCheckBox{
                     id:autoClear
                     text: qsTr("Auto Clear")

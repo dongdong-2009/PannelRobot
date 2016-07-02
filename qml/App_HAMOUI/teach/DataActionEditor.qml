@@ -35,10 +35,12 @@ Item {
             ICConfigEdit{
                 id:targetAddr
                 configName: qsTr("Target Addr")
+                inputWidth: 120
             }
             ICConfigEdit{
                 id:data
                 configName: qsTr("Data")
+                inputWidth: 120
             }
         }
     }

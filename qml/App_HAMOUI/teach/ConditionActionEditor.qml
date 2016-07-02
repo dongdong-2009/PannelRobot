@@ -143,13 +143,12 @@ Item {
 
         }else if(memData.isChecked){
             ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
-                                                    lAddr.configValue, rAddr.configValue, memCmpGroup.checkedIndex));
+                                                    lAddr.configValue, rAddr.configValue, memCmpGroup.checkedIndex,
+                                                    constData.isChecked ? 0 : 1));
             return ret;
         }else{
-
             ret.push(Teach.generateJumpAction(parseInt(flagStr.slice(begin,end))));
             return ret;
-
         }
 
         for(var i = 0; i < mD.count; ++i){
@@ -347,15 +346,32 @@ Item {
                 Column{
                     spacing: 10
                     anchors.centerIn: parent
+                    ICButtonGroup{
+                        spacing: 24
+                        mustChecked: true
+                        checkedIndex: 0
+                        ICCheckBox{
+                            id:constData
+                            text:qsTr("Const Data")
+                            isChecked: true
+                        }
+                        ICCheckBox{
+                            id:addrData
+                            text:qsTr("Addr Data")
+                        }
+                    }
+
                     Row{
                         spacing: 24
                         ICConfigEdit{
                             id:lAddr
                             configName: qsTr("Left Addr")
+                            inputWidth: 120
                         }
                         ICConfigEdit{
                             id:rAddr
-                            configName: qsTr("Right Addr")
+                            configName: qsTr("Right Value")
+                            inputWidth: 120
                         }
                     }
                     ICButtonGroup{

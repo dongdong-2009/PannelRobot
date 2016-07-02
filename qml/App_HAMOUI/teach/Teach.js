@@ -1035,13 +1035,14 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
     };
 }
 
-var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd){
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){
     return {
         "action":actions.F_CMD_MEMCOMPARE_CMD,
         "flag": flag || 0,
         "leftAddr":leftAddr,
         "rightAddr":rightAddr,
-        "cmd": cmd
+        "cmd": cmd,
+        "type": type || 0
     };
 }
 
@@ -1234,7 +1235,7 @@ var conditionActionToStringHandler = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
                 cmdStrs[actionObject.cmd] + " " +
-                qsTr("Right Addr:") + actionObject.rightAddr + " "
+                (actionObject.type == 1 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
                 + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 

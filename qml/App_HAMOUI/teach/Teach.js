@@ -1235,7 +1235,7 @@ var conditionActionToStringHandler = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
                 cmdStrs[actionObject.cmd] + " " +
-                (actionObject.type == 1 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
+                (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
                 + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 

@@ -141,6 +141,10 @@ Item {
             }
             return ret;
 
+        }else if(memData.isChecked){
+            ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
+                                                    lAddr.configValue, rAddr.configValue, memCmpGroup.checkedIndex));
+            return ret;
         }else{
 
             ret.push(Teach.generateJumpAction(parseInt(flagStr.slice(begin,end))));
@@ -248,7 +252,7 @@ Item {
                 color: "#A0A0F0"
                 border.width: 1
                 border.color: "black"
-                //            visible: normalY.isChecked
+                visible: !memData.isChecked
                 ListModel{
                     id:yModel
                 }
@@ -330,6 +334,62 @@ Item {
                         }
                     }
                 }
+
+            }
+            Rectangle{
+                id:memDataConfigsContainer
+                width: yContainer.width
+                height: yContainer.height
+                visible: memData.isChecked
+                color: "#A0A0F0"
+                border.width: 1
+                border.color: "black"
+                Column{
+                    spacing: 10
+                    anchors.centerIn: parent
+                    Row{
+                        spacing: 24
+                        ICConfigEdit{
+                            id:lAddr
+                            configName: qsTr("Left Addr")
+                        }
+                        ICConfigEdit{
+                            id:rAddr
+                            configName: qsTr("Right Addr")
+                        }
+                    }
+                    ICButtonGroup{
+                        spacing: 24
+                        id:memCmpGroup
+                        mustChecked: true
+                        checkedIndex: 0
+                        ICCheckBox{
+                            id: largerThan
+                            text: qsTr(">")
+                            isChecked: true
+                        }
+                        ICCheckBox{
+                            id:largerEqual
+                            text: qsTr(">=")
+                        }
+                        ICCheckBox{
+                            id: lessThan
+                            text: qsTr("<")
+                        }
+                        ICCheckBox{
+                            id:lessEqual
+                            text: qsTr("<=")
+                        }
+                        ICCheckBox{
+                            id:equal
+                            text: qsTr("==")
+                        }
+                        ICCheckBox{
+                            id:notEqual
+                            text: qsTr("!=")
+                        }
+                    }
+                }
             }
 
             Row{
@@ -354,37 +414,7 @@ Item {
                         width: 80
                     }
                 }
-                ICButtonGroup{
-                    spacing: 4
-                    id:memCmpGroup
-                    mustChecked: true
-                    checkedIndex: 0
-                    visible: memData.isChecked
-                    ICCheckBox{
-                        id: largerThan
-                        text: qsTr(">")
-                    }
-                    ICCheckBox{
-                        id:largerEqual
-                        text: qsTr(">=")
-                    }
-                    ICCheckBox{
-                        id: lessThan
-                        text: qsTr("<")
-                    }
-                    ICCheckBox{
-                        id:lessEqual
-                        text: qsTr("<=")
-                    }
-                    ICCheckBox{
-                        id:equal
-                        text: qsTr("==")
-                    }
-                    ICCheckBox{
-                        id:notEqual
-                        text: qsTr("!=")
-                    }
-                }
+
 
                 ICCheckBox{
                     id:autoClear
@@ -408,7 +438,7 @@ Item {
                     id: flag
                     configName: qsTr("Flag")
                     popupMode: 1
-                    inputWidth: 250
+                    inputWidth:  250
                     popupHeight: 200
 
                     onVisibleChanged: {

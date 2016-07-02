@@ -329,6 +329,12 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(v->value("autoClear").toInt());
         item.append(v->value("pointStatus").toInt());
     }
+    else if(act == F_CMD_MEMCOMPARE_CMD)
+    {
+        item.append(v->value("leftAddr").toUInt());
+        item.append(v->value("cmd").toUInt());
+        item.append(v->value("rightAddr").toUInt());
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
@@ -501,6 +507,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP2, ConditionActionCompiler);
+    ret.insert(F_CMD_MEMCOMPARE_CMD, ConditionActionCompiler);
 
     ret.insert(F_CMD_STACK0, StackActionCompiler);
     ret.insert(F_CMD_COUNTER, CounterActionCompiler);
@@ -636,6 +643,7 @@ static bool IsJumpAction(int act)
     return act == F_CMD_PROGRAM_JUMP1 ||
             act == F_CMD_PROGRAM_JUMP0 ||
             act == F_CMD_PROGRAM_JUMP2 ||
+            act == F_CMD_MEMCOMPARE_CMD ||
             act == F_CMD_PROGRAM_CALL0;
 }
 
@@ -740,7 +748,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         }
         if(act == F_CMD_COUNTER ||
                 act == F_CMD_COUNTER_CLEAR ||
-                act == F_CMD_PROGRAM_JUMP2)
+                act == F_CMD_PROGRAM_JUMP2 )
         {
             int cID =  action.value("counterID", -1).toUInt();
             if(cID >= 0)

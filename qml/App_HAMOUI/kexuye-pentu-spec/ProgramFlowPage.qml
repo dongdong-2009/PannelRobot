@@ -34,7 +34,82 @@ ProgramFlowPage {
         return baseRunningInfo;
     }
 
+    function axischange(actionObject){
+        switch(actionObject.plane){
+            case 0:
+                if(actionObject.dirAxis == 0){
+                    actionObject.rpeateAxis = 1;
+                    var tmp = actionObject.startPos0;
+                    actionObject.startPos0 = actionObject.startPos1;
+                    actionObject.startPos1 = tmp;
+                    tmp = actionObject.startSpeed0;
+                    actionObject.startSpeed0 = actionObject.startSpeed1;
+                    actionObject.startSpeed1 = tmp;
+                    tmp = actionObject.point1_m0;
+                    actionObject.point1_m0 = actionObject.point1_m1;
+                    actionObject.point1_m1 = tmp;
+                }
+                else if(actionObject.dirAxis == 1){
+                    actionObject.rpeateAxis = 0;
+//                    startPos0 = startPos.pos.m0;
+//                    startPos1 = startPos.pos.m1;
+//                    startSpeed0 = startPosSpeed0;
+//                    startSpeed1 = startPosSpeed1;
+//                    point1_m0 = point1.pos.m0;
+//                    point1_m1 = point1.pos.m1;
+                }
+                actionObject.deepAxis = 2;
+//                var startPos2 = startPos.pos.m2;
+//                var startSpeed2 = startPosSpeed2;
+                break;
+            case 1:
+                if(actionObject.dirAxis == 0){
+                    actionObject.rpeateAxis = 2;
+                    tmp = actionObject.startPos0;
+                    actionObject.startPos0 = actionObject.startPos2;
+                    actionObject.startPos2 = tmp;
+                    tmp = actionObject.startSpeed0;
+                    actionObject.startSpeed0 = actionObject.startSpeed2;
+                    actionObject.startSpeed2 = tmp;
+                    tmp = actionObject.point1_m0;
+                    actionObject.point1_m0 = actionObject.point1_m2;
+                    actionObject.point1_m2 = tmp;
+                }
+                else {
+                    actionObject.rpeateAxis = 0;
+                    actionObject.startPos1 = actionObject.startPos2;
+                    actionObject.startSpeed1 = actionObject.startSpeed2;
+                    actionObject.point1_m1 = point1_m2;
+                }
+                actionObject.deepAxis = 1;
+                actionObject.startPos2 = actionObject.startPos1;
+                actionObject.startSpeed2 = actionObject.startSpeed1;
+                break;
+            case 2:
+                if(actionObject.dirAxis == 1){
+                    actionObject.rpeateAxis = 2;
+                    actionObject.startPos0 = actionObject.startPos2;
+                    actionObject.startSpeed0 = actionObject.startSpeed2;
+                    actionObject.point1_m0 = actionObject.point1_m2;
+                }
+                else {
+                    actionObject.rpeateAxis = 1;
+                    actionObject.startPos0 = actionObject.startPos1;
+                    actionObject.startPos1 = actionObject.startPos2;
+                    actionObject.startSpeed0 = actionObject.startSpeed1;
+                    actionObject.startSpeed1 = actionObject.startSpeed2;
+                    actionObject.point1_m0 = actionObject.point1_m1;
+                    actionObject.point1_m1 = actionObject.point1_m2;
+                }
+                actionObject.deepAxis = 0;
+                actionObject.startPos2 = actionObject.startPos0;
+                actionObject.startSpeed2 = actionObject.startSpeed0;
+                break;
+        }
+    }
+
     function pentuActionHead(actionObject){
+        axischange(actionObject);
         var ret = [];
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
@@ -109,6 +184,7 @@ ProgramFlowPage {
     }
 
     function pentuActionToProgram(actionObject){
+        axischange(actionObject);
         var ret = [];
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));

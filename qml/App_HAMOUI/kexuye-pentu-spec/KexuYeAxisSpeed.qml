@@ -269,8 +269,8 @@ Item {
         delay22.configValue = actionObject.fixture2Delay2;
         fixture1Switch.configValue = actionObject.fixture2Switch;
         slope.configValue = actionObject.slope;
-        chamferRadius.configValue = actionObject.chamferRadius;
-        linelong.configValue = actionObject.linelong
+//        chamferRadius.configValue = actionObject.chamferRadius;
+//        linelong.configValue = actionObject.linelong
     }
 
     Component.onCompleted: {

@@ -1211,11 +1211,11 @@ var cycle8 = function(){
     ret.push(generateFlagAction(flag6, qsTr("Emergency End")));
 
 //    generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type)
-    ret.push(generateMemCmpJumpAction(flag8,61476905,CMD_AUTO,5,1));
+    ret.push(generateMemCmpJumpAction(flag8,61476905,CMD_AUTO,5,0));
     ret.push(generateJumpAction(flag7));
     ret.push(generateFlagAction(flag8, qsTr("CMD_CONFIG")));
 
-    ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,1));
+    ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,0));
     ret.push(generateFlagAction(flag7, qsTr("Close Out Put")));
     ret.push(generateOutputAction(16,0,0,16,0));     //close
     ret.push(generateOutputAction(17,0,0,17,0));     //close

@@ -277,11 +277,11 @@ Item {
         delay0.configValue = 0.1;
         delay1.configValue = 0;
         delay2.configValue = 0;
-        fixtureSwitch.configValue = 2;
+        fixtureSwitch.configValue = 3;
         delay20.configValue = 0.1;
         delay21.configValue = 0;
         delay22.configValue = 0;
-        fixture1Switch.configValue = 2;
+        fixture1Switch.configValue = 3;
         m0Speed.configValue = 30;
         m1Speed.configValue = 30;
         m2Speed.configValue = 30;

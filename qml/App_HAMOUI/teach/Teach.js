@@ -1153,17 +1153,60 @@ var cycle8 = function(){
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag2 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag3 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag4 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag5 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag6 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag7 = f.flagID;
     var ret = [];
 //      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
     ret.push(generateConditionAction(0, 20, 1, 0, 0,flag1));
     ret.push(generateConditionAction(0, 20, 0, 0, 0,flag1));
     ret.push(generateOutputAction(20,0,0,20,0));     //close
-    ret.push(generateFlagAction(flag1, qsTr("positive")));
+    ret.push(generateFlagAction(flag1, qsTr("Positive")));
 
-    ret.push(generateConditionAction(0, 21, 1, 0, 0,flag1));
-    ret.push(generateConditionAction(0, 21, 0, 0, 0,flag1));
+    ret.push(generateConditionAction(0, 21, 1, 0, 0,flag2));
+    ret.push(generateConditionAction(0, 21, 0, 0, 0,flag2));
     ret.push(generateOutputAction(21,0,0,21,0));     //close
-    ret.push(generateFlagAction(flag2, qsTr("negative")));
+    ret.push(generateFlagAction(flag2, qsTr("Negative")));
+
+    ret.push(generateConditionAction(0, 22, 0, 0, 0,flag3));        //X36
+//    generateWaitAction = function(which, type, status, limit)
+    ret.push(generateWaitAction(22,0,0,10));
+    ret.push(generateDataAction(98304,0,2560));
+    ret.push(generateFlagAction(flag3, qsTr("Run End")));
+
+    ret.push(generateConditionAction(0, 23, 0, 0, 0,flag4));
+    ret.push(generateWaitAction(23,0,0,10));
+    ret.push(generateDataAction(98304,0,2561));
+    ret.push(generateJumpAction(flag7));
+    ret.push(generateFlagAction(flag4, qsTr("Stop End")));
+
+    ret.push(generateConditionAction(0, 24, 0, 0, 0,flag5));
+    ret.push(generateWaitAction(24,0,0,10));
+    ret.push(generateDataAction(98304,0,2563));
+    ret.push(generateFlagAction(flag5, qsTr("Return End")));
+
+    ret.push(generateConditionAction(4, 15, 1, 0, 0,flag6));
+    ret.push(generateOutputAction(15,4,0,0,0));     //m0 close
+    ret.push(generateFlagAction(flag7, qsTr("Close Out")));
+    ret.push(generateOutputAction(16,0,0,16,0));     //close
+    ret.push(generateOutputAction(17,0,0,17,0));     //close
+    ret.push(generateOutputAction(18,0,0,18,0));     //close
+    ret.push(generateOutputAction(19,0,0,19,0));     //close
+    ret.push(generateOutputAction(20,0,0,20,0));     //close
+    ret.push(generateOutputAction(21,0,0,21,0));     //close
+    ret.push(generateFlagAction(flag6, qsTr("Emergency End")));
 
     ret.push(generteEndAction());
     return JSON.stringify(ret);

@@ -1581,7 +1581,9 @@ var actionObjectToEditableITems = function(actionObject){
         else
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP1){
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
+             actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},

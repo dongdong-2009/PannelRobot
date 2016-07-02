@@ -785,6 +785,9 @@ actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
+actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
+
+
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
 actions.F_CMD_PROGRAM_JUMP2 = 10002;  //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
@@ -931,6 +934,15 @@ var generateSpeedAction = function(startSpeed,endSpeed){
         "action":actions.F_CMD_SPEED_SMOOTH,
         "startSpeed":startSpeed||0.0,
         "endSpeed":endSpeed||0.0
+    }
+}
+
+var generateDataAction = function(addr, type, data){
+    return {
+        "action":actions.F_CMD_MEM_CMD,
+        "addr":addr,
+        "type":type,
+        "data":data
     }
 }
 
@@ -1476,6 +1488,12 @@ var speedActionToStringHandler = function(actionObject){
     return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
 }
 
+var dataActionToStringHandler = function(actionObject){
+    var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
+    var typeName = (actionObject.type == 0? qsTr("Const Data:") : qsTr("Addr Data:"));
+    return ac + qsTr("Target Addr:") + actionObject.addr + " " + typeName + actionObject.data;
+}
+
 
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
@@ -1520,6 +1538,8 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringH
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
+
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
     if(actionObject.action === actions.ACT_COMMENT)
@@ -1572,6 +1592,11 @@ var actionObjectToEditableITems = function(actionObject){
         ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_WATIT_VISION_DATA){
         ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
+    }else if(actionObject.action === actions.F_CMD_SPEED_SMOOTH){
+        ret = [{"item":"startSpeed", "range":"s_rw_0_32_1_1200"},
+               {"item":"endSpeed", "range":"s_rw_0_32_1_1200"} ];
+    }else if(actionObject.action === actions.F_CMD_MEM_CMD){
+        ret = [{"item":"addr"}, {"item":"data"}];
     }
 
     ret.push({"item":"customName"});

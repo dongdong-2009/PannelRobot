@@ -701,8 +701,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag6));
 //        ret.push(LocalTeach.generateConditionAction(0, 20, 1, 1, 0,actionObject.flag4));  //Y034
 
-        ret.push(LocalTeach.generateCounterAction(actionObject.bbbb));
-        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag9, actionObject.bbbb, 1, 1));
+//        ret.push(LocalTeach.generateCounterAction(actionObject.bbbb));
+//        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag9, actionObject.bbbb, 1, 1));
 
 //        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //muju1Huiyuan
 //        ret.push(LocalTeach.generateWaitAction(18,0,1,10));
@@ -716,7 +716,7 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag3, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(rotateO1,0,0,rotateO1,0));
 
-        ret.push(LocalTeach.generateFlagAction(actionObject.flag9, qsTr("duoyurotate")));
+//        ret.push(LocalTeach.generateFlagAction(actionObject.flag9, qsTr("duoyurotate")));
 
         ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.aaaa, 0, 1));
@@ -726,8 +726,8 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("negative1")));
 
-        ret.push(LocalTeach.generateCounterAction(actionObject.bbbb));
-        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag10, actionObject.bbbb, 1, 1));
+//        ret.push(LocalTeach.generateCounterAction(actionObject.bbbb));
+//        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag10, actionObject.bbbb, 1, 1));
 
 
 //        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));     //muju2Huiyuan
@@ -742,7 +742,7 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag8, actionObject.rotateOKCID, 0, 1));
         ret.push(LocalTeach.generateOutputAction(rotateO2,0,0,rotateO2,0));
 
-        ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("duoyurotate")));
+//        ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("duoyurotate")));
 
         ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.aaaa, 0, 1));

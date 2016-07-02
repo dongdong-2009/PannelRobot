@@ -7,6 +7,14 @@ Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
 Qt.include("../../utils/utils.js")
 
+var cmdStrs = [">",
+               ">=",
+               "&lt;",
+               "&lt;=",
+               "==",
+               "!="
+        ];
+
 var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
@@ -785,6 +793,7 @@ actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
+actions.F_CMD_MEMCOMPARE_CMD = 602;
 actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
 
 
@@ -827,6 +836,7 @@ function isJumpAction(act){
     return act === actions.F_CMD_PROGRAM_JUMP0 ||
             act === actions.F_CMD_PROGRAM_JUMP1 ||
             act === actions.F_CMD_PROGRAM_JUMP3 ||
+            act === actions.F_CMD_MEMCOMPARE_CMD ||
             act === actions.F_CMD_PROGRAM_CALL0;
 
 }
@@ -1022,6 +1032,16 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
         "counterID":counterID,
         "pointStatus":status,
         "autoClear": autoClear || false
+    };
+}
+
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd){
+    return {
+        "action":actions.F_CMD_MEMCOMPARE_CMD,
+        "flag": flag || 0,
+        "leftAddr":leftAddr,
+        "rightAddr":rightAddr,
+        "cmd": cmd
     };
 }
 
@@ -1235,6 +1255,11 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+    }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
+        return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
+                cmdStrs[actionObject.cmd] + " " +
+                qsTr("Right Addr:") + actionObject.rightAddr + " "
+                + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 
     var pointDescr;
@@ -1539,6 +1564,7 @@ actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStri
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
@@ -1580,7 +1606,9 @@ var actionObjectToEditableITems = function(actionObject){
         else
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP1){
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
+             actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},

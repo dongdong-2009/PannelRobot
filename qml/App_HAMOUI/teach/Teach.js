@@ -6,6 +6,8 @@ Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
 Qt.include("../../utils/utils.js")
+Qt.include("../configs/Keymap.js")
+
 
 var cmdStrs = [">",
                ">=",
@@ -1035,7 +1037,7 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
     };
 }
 
-var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){      //type 1:add-num  0:add-add
     return {
         "action":actions.F_CMD_MEMCOMPARE_CMD,
         "flag": flag || 0,
@@ -1168,6 +1170,12 @@ var cycle8 = function(){
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag7 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag8 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag9 = f.flagID;
     var ret = [];
 //      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
     ret.push(generateConditionAction(0, 20, 1, 0, 0,flag1));
@@ -1199,14 +1207,24 @@ var cycle8 = function(){
 
     ret.push(generateConditionAction(4, 15, 1, 0, 0,flag6));
     ret.push(generateOutputAction(15,4,0,0,0));     //m0 close
-    ret.push(generateFlagAction(flag7, qsTr("Close Out")));
+    ret.push(generateJumpAction(flag7));
+    ret.push(generateFlagAction(flag6, qsTr("Emergency End")));
+
+//    generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type)
+    ret.push(generateMemCmpJumpAction(flag8,61476905,CMD_AUTO,5,1));
+    ret.push(generateJumpAction(flag7));
+    ret.push(generateFlagAction(flag8, qsTr("CMD_CONFIG")));
+
+    ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,1));
+    ret.push(generateFlagAction(flag7, qsTr("Close Out Put")));
     ret.push(generateOutputAction(16,0,0,16,0));     //close
     ret.push(generateOutputAction(17,0,0,17,0));     //close
     ret.push(generateOutputAction(18,0,0,18,0));     //close
     ret.push(generateOutputAction(19,0,0,19,0));     //close
     ret.push(generateOutputAction(20,0,0,20,0));     //close
     ret.push(generateOutputAction(21,0,0,21,0));     //close
-    ret.push(generateFlagAction(flag6, qsTr("Emergency End")));
+    ret.push(generateFlagAction(flag9, qsTr("CMD_CONFIG")));
+
 
     ret.push(generteEndAction());
     return JSON.stringify(ret);

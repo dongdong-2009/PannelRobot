@@ -949,7 +949,7 @@ var generateSpeedAction = function(startSpeed,endSpeed){
     }
 }
 
-var generateDataAction = function(addr, type, data){
+var generateDataAction = function(addr, type, data){            //type 0:lijishu  1:addr value
     return {
         "action":actions.F_CMD_MEM_CMD,
         "addr":addr,
@@ -1037,7 +1037,7 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
     };
 }
 
-var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){      //type 1:add-num  0:add-add
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){      //type 0:add-num  1:add-add
     return {
         "action":actions.F_CMD_MEMCOMPARE_CMD,
         "flag": flag || 0,

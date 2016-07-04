@@ -9,6 +9,7 @@ import "../../utils/stringhelper.js" as ICString
 import "../ShareData.js" as ShareData
 import "../configs/Keymap.js" as Keymap
 import "../configs/IODefines.js" as IODefines
+import "../../utils/utils.js" as Utils
 
 
 
@@ -35,80 +36,155 @@ ProgramFlowPage {
     }
 
     function axischange(actionObject){
-        switch(actionObject.plane){
-            case 0:
-                if(actionObject.dirAxis == 0){
-                    actionObject.rpeateAxis = 1;
-                    var tmp = actionObject.startPos0;
-                    actionObject.startPos0 = actionObject.startPos1;
-                    actionObject.startPos1 = tmp;
-                    tmp = actionObject.startSpeed0;
-                    actionObject.startSpeed0 = actionObject.startSpeed1;
-                    actionObject.startSpeed1 = tmp;
-                    tmp = actionObject.point1_m0;
-                    actionObject.point1_m0 = actionObject.point1_m1;
-                    actionObject.point1_m1 = tmp;
-                }
-                else if(actionObject.dirAxis == 1){
-                    actionObject.rpeateAxis = 0;
-//                    startPos0 = startPos.pos.m0;
-//                    startPos1 = startPos.pos.m1;
-//                    startSpeed0 = startPosSpeed0;
-//                    startSpeed1 = startPosSpeed1;
-//                    point1_m0 = point1.pos.m0;
-//                    point1_m1 = point1.pos.m1;
-                }
-                actionObject.deepAxis = 2;
-//                var startPos2 = startPos.pos.m2;
-//                var startSpeed2 = startPosSpeed2;
-                break;
-            case 1:
-                if(actionObject.dirAxis == 0){
-                    actionObject.rpeateAxis = 2;
-                    tmp = actionObject.startPos0;
-                    actionObject.startPos0 = actionObject.startPos2;
-                    actionObject.startPos2 = tmp;
-                    tmp = actionObject.startSpeed0;
-                    actionObject.startSpeed0 = actionObject.startSpeed2;
-                    actionObject.startSpeed2 = tmp;
-                    tmp = actionObject.point1_m0;
-                    actionObject.point1_m0 = actionObject.point1_m2;
-                    actionObject.point1_m2 = tmp;
-                }
-                else {
-                    actionObject.rpeateAxis = 0;
-                    actionObject.startPos1 = actionObject.startPos2;
-                    actionObject.startSpeed1 = actionObject.startSpeed2;
-                    actionObject.point1_m1 = point1_m2;
-                }
-                actionObject.deepAxis = 1;
-                actionObject.startPos2 = actionObject.startPos1;
-                actionObject.startSpeed2 = actionObject.startSpeed1;
-                break;
-            case 2:
-                if(actionObject.dirAxis == 1){
-                    actionObject.rpeateAxis = 2;
-                    actionObject.startPos0 = actionObject.startPos2;
-                    actionObject.startSpeed0 = actionObject.startSpeed2;
-                    actionObject.point1_m0 = actionObject.point1_m2;
-                }
-                else {
-                    actionObject.rpeateAxis = 1;
-                    actionObject.startPos0 = actionObject.startPos1;
-                    actionObject.startPos1 = actionObject.startPos2;
-                    actionObject.startSpeed0 = actionObject.startSpeed1;
-                    actionObject.startSpeed1 = actionObject.startSpeed2;
-                    actionObject.point1_m0 = actionObject.point1_m1;
-                    actionObject.point1_m1 = actionObject.point1_m2;
-                }
-                actionObject.deepAxis = 0;
-                actionObject.startPos2 = actionObject.startPos0;
-                actionObject.startSpeed2 = actionObject.startSpeed0;
-                break;
-        }
+            switch(actionObject.plane){
+                case 0:
+                    if(actionObject.dirAxis == 0){
+                        actionObject.rpeateAxis = 1;
+                        actionObject.startPos0 = actionObject.startPos.pos.m1;
+                        actionObject.startPos1 = actionObject.startPos.pos.m0;
+                        actionObject.startSpeed0 = actionObject.startPosSpeed1;
+                        actionObject.startSpeed1 = actionObject.startPosSpeed0;
+                        actionObject.point1_m0 = actionObject.point1.pos.m1;
+                        actionObject.point1_m1 = actionObject.point1.pos.m0;
+                    }
+                    else if(actionObject.dirAxis == 1){
+                        actionObject.rpeateAxis = 0;
+                        actionObject.startPos0 = actionObject.startPos.pos.m0;
+                        actionObject.startPos1 = actionObject.startPos.pos.m1;
+                        actionObject.startSpeed0 = actionObject.startPosSpeed0;
+                        actionObject.startSpeed1 = actionObject.startPosSpeed1;
+                        actionObject.point1_m0 = actionObject.point1.pos.m0;
+                        actionObject.point1_m1 = actionObject.point1.pos.m1;
+                    }
+                    actionObject.deepAxis = 2;
+                    actionObject.startPos2 = actionObject.startPos.pos.m2;
+                    actionObject.startSpeed2 = actionObject.startPosSpeed2;
+                    break;
+                case 1:
+                    if(actionObject.dirAxis == 0){
+                        actionObject.rpeateAxis = 2;
+                        actionObject.startPos0 = actionObject.startPos.pos.m2;
+                        actionObject.startPos1 = actionObject.startPos.pos.m0;
+                        actionObject.startSpeed0 = actionObject.startPosSpeed2;
+                        actionObject.startSpeed1 = actionObject.startPosSpeed0;
+                        actionObject.point1_m0 = actionObject.point1.pos.m2;
+                        actionObject.point1_m1 = actionObject.point1.pos.m0;
+                    }
+                    else {
+                        actionObject.dirAxis += 1;
+                        actionObject.rpeateAxis = 0;
+                        actionObject.startPos0 = actionObject.startPos.pos.m0;
+                        actionObject.startPos1 = actionObject.startPos.pos.m2;
+                        actionObject.startSpeed0 = actionObject.startPosSpeed0;
+                        actionObject.startSpeed1 = actionObject.startPosSpeed2;
+                        actionObject.point1_m0 = actionObject.point1.pos.m0;
+                        actionObject.point1_m1 = actionObject.point1.pos.m2;
+                    }
+                    actionObject.deepAxis = 1;
+                    actionObject.startPos2 = actionObject.startPos.pos.m1;
+                    actionObject.startSpeed2 = actionObject.startPosSpeed1;
+                    break;
+                case 2:
+                    actionObject.dirAxis += 1;
+                    if(actionObject.dirAxis == 1){
+                        actionObject.rpeateAxis = 2;
+                        actionObject.startPos0 = actionObject.startPos.pos.m2;
+                        actionObject.startPos1 = actionObject.startPos.pos.m1;
+                        actionObject.startSpeed0 = actionObject.startPosSpeed2;
+                        actionObject.startSpeed1 = actionObject.startPosSpeed1;
+                        actionObject.point1_m0 = actionObject.point1.pos.m2;
+                        actionObject.point1_m1 = actionObject.point1.pos.m1;
+                    }
+                    else {
+                        actionObject.rpeateAxis = 1;
+                        actionObject.startPos0 = actionObject.startPos.pos.m1;
+                        actionObject.startPos1 = actionObject.startPos.pos.m2;
+                        actionObject.startSpeed0 = actionObject.startPosSpeed1;
+                        actionObject.startSpeed1 = actionObject.startPosSpeed2;
+                        actionObject.point1_m0 = actionObject.point1.pos.m1;
+                        actionObject.point1_m1 = actionObject.point1.pos.m2;
+                    }
+                    actionObject.deepAxis = 0;
+                    actionObject.startPos2 = actionObject.startPos.pos.m0;
+                    actionObject.startSpeed2 = actionObject.startPosSpeed0;
+                    break;
+            }
+
+//        switch(actionObject.plane){
+//            case 0:
+//                if(actionObject.dirAxis == 0){
+//                    actionObject.rpeateAxis = 1;
+//                    var tmp = actionObject.startPos0;
+//                    actionObject.startPos0 = actionObject.startPos1;
+//                    actionObject.startPos1 = tmp;
+//                    tmp = actionObject.startSpeed0;
+//                    actionObject.startSpeed0 = actionObject.startSpeed1;
+//                    actionObject.startSpeed1 = tmp;
+//                    tmp = actionObject.point1_m0;
+//                    actionObject.point1_m0 = actionObject.point1_m1;
+//                    actionObject.point1_m1 = tmp;
+//                }
+//                else if(actionObject.dirAxis == 1){
+//                    actionObject.rpeateAxis = 0;
+////                    startPos0 = startPos.pos.m0;
+////                    startPos1 = startPos.pos.m1;
+////                    startSpeed0 = startPosSpeed0;
+////                    startSpeed1 = startPosSpeed1;
+////                    point1_m0 = point1.pos.m0;
+////                    point1_m1 = point1.pos.m1;
+//                }
+//                actionObject.deepAxis = 2;
+////                var startPos2 = startPos.pos.m2;
+////                var startSpeed2 = startPosSpeed2;
+//                break;
+//            case 1:
+//                if(actionObject.dirAxis == 0){
+//                    actionObject.rpeateAxis = 2;
+//                    tmp = actionObject.startPos0;
+//                    actionObject.startPos0 = actionObject.startPos2;
+//                    actionObject.startPos2 = tmp;
+//                    tmp = actionObject.startSpeed0;
+//                    actionObject.startSpeed0 = actionObject.startSpeed2;
+//                    actionObject.startSpeed2 = tmp;
+//                    tmp = actionObject.point1_m0;
+//                    actionObject.point1_m0 = actionObject.point1_m2;
+//                    actionObject.point1_m2 = tmp;
+//                }
+//                else {
+//                    actionObject.rpeateAxis = 0;
+//                    actionObject.startPos1 = actionObject.startPos2;
+//                    actionObject.startSpeed1 = actionObject.startSpeed2;
+//                    actionObject.point1_m1 = point1_m2;
+//                }
+//                actionObject.deepAxis = 1;
+//                actionObject.startPos2 = actionObject.startPos1;
+//                actionObject.startSpeed2 = actionObject.startSpeed1;
+//                break;
+//            case 2:
+//                if(actionObject.dirAxis == 1){
+//                    actionObject.rpeateAxis = 2;
+//                    actionObject.startPos0 = actionObject.startPos2;
+//                    actionObject.startSpeed0 = actionObject.startSpeed2;
+//                    actionObject.point1_m0 = actionObject.point1_m2;
+//                }
+//                else {
+//                    actionObject.rpeateAxis = 1;
+//                    actionObject.startPos0 = actionObject.startPos1;
+//                    actionObject.startPos1 = actionObject.startPos2;
+//                    actionObject.startSpeed0 = actionObject.startSpeed1;
+//                    actionObject.startSpeed1 = actionObject.startSpeed2;
+//                    actionObject.point1_m0 = actionObject.point1_m1;
+//                    actionObject.point1_m1 = actionObject.point1_m2;
+//                }
+//                actionObject.deepAxis = 0;
+//                actionObject.startPos2 = actionObject.startPos0;
+//                actionObject.startSpeed2 = actionObject.startSpeed0;
+//                break;
+//        }
     }
 
-    function pentuActionHead(actionObject){
+    function pentuActionHead(actionObject1){
+        var actionObject = Utils.cloneObject(actionObject1);
         axischange(actionObject);
         var ret = [];
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
@@ -143,19 +219,21 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
+        ret.push(LocalTeach.generateDataAction(819206,0,1));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
         return ret;
     }
-    function pentuActionEnd(actionObject){
+    function pentuActionEnd(actionObject1){
+        var actionObject = Utils.cloneObject(actionObject1);
+        axischange(actionObject);
         var ret = [];
-
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 
 //         generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
@@ -183,7 +261,8 @@ ProgramFlowPage {
         return ret;
     }
 
-    function pentuActionToProgram(actionObject){
+    function pentuActionToProgram(actionObject1){
+        var actionObject = Utils.cloneObject(actionObject1);
         axischange(actionObject);
         var ret = [];
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));

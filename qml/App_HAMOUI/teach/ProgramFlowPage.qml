@@ -121,6 +121,7 @@ Rectangle {
         }
         repaintProgramItem(currentModel());
         programListView.positionViewAtIndex(programListView.currentIndex, ListView.Visible);
+        onSaveTriggered();
     }
 
     function onDeleteTriggered(){
@@ -157,6 +158,7 @@ Rectangle {
         PData.pointLinesInfo.syncLines(cPI, oCI, -1);
         hasModify = true;
         repaintProgramItem(model);
+        onSaveTriggered();
     }
 
     function findSyncStart(endPos){

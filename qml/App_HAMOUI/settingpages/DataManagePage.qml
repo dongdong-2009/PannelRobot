@@ -14,6 +14,8 @@ Item {
                 panelRobotController.backupHMIBackups(backupName, Storage.backup());
             }else if(machineRunningConfigs.isChecked){
                 panelRobotController.backupMRBackups(backupName);
+            }else if(ghost.isChecked){
+                panelRobotController.makeGhost(backupName, Storage.backup());
             }
         }
     }

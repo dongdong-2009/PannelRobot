@@ -1414,7 +1414,7 @@ void PanelRobotController::backupMRBackups(const QString &backupName) const
              .arg(dir.absolutePath()).arg(backupName).toUtf8());
 }
 
-void PanelRobotController::makeGhost(const QString &ghostName) const
+void PanelRobotController::makeGhost(const QString &ghostName, const QString& hmiSqlData) const
 {
     QDir dir(ICAppSettings::userPath);
     if(!dir.exists("ghosts"))
@@ -1422,13 +1422,20 @@ void PanelRobotController::makeGhost(const QString &ghostName) const
         dir.mkdir("ghosts");
     }
     dir.cd("ghosts");
-    QString bf = backupName + ".ghost.hcdb";
+    QString bf = ghostName + ".ghost.hcdb";
     if(dir.exists(bf))
     {
         QFile::remove(dir.absoluteFilePath(bf));
     }
-    dir.mkdir(backupName);
-    dir.cd(backupName);
+    QFile sql("hmi.sql");
+    if(sql.open(QFile::WriteOnly))
+    {
+        sql.write(hmiSqlData.toUtf8());
+        sql.close();
+    }
+    ::system(QString("tar -zcvf - %1 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2")
+             .arg(QDir::current().absolutePath())
+             .arg(dir.absoluteFilePath(ghostName + ".ghost.hcdb")).toUtf8());
 }
 
 QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)

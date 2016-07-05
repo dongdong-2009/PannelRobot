@@ -2,21 +2,11 @@ import QtQuick 1.1
 
 Item {
     property alias addr_edit: addr_edit.text
-//    property alias startPos_: startPos_.text
-//    property alias size_: size_.text
-//    property alias baseAddr_: baseAddr_.text
-//    property alias decimal_: decimal_.text
 
     property alias startPos_configValue: edit_startPos_.text
     property alias size_configValue: edit_size_.text
     property alias baseAddr_configValue: edit_baseAddr_.text
     property alias decimal_configValue: edit_decimal_.text
-
-
-    property alias startPos_inputWidth: edit_startPos_.inputWidth
-    property alias size_inputWidth: edit_size_.inputWidth
-    property alias baseAddr_inputWidth: edit_baseAddr_.inputWidth
-    property alias decimal_inputWidth: edit_decimal_.inputWidth
 
     function addr(){
         return (parseInt(startPos_configValue)<<22) | (parseInt(size_configValue)<<16) | (parseInt(baseAddr_configValue)<<2) | parseInt(decimal_configValue) ;
@@ -43,6 +33,8 @@ Item {
         ICLineEdit{
             id: edit_startPos_
             height: parent.height
+            text:qsTr("0")
+            inputWidth:80
             min:0
             max:32-1
          }
@@ -55,6 +47,8 @@ Item {
         ICLineEdit{
             id: edit_size_
             height: parent.height
+            text:qsTr("32")
+            inputWidth:80
             min:0
             max:64-1
          }
@@ -67,6 +61,8 @@ Item {
         ICLineEdit{
             id: edit_baseAddr_
             height: parent.height
+            text:qsTr("1")
+            inputWidth:80
             min:0
             max:16*1024-1
          }
@@ -79,6 +75,8 @@ Item {
         ICLineEdit{
             id: edit_decimal_
             height: parent.height
+            text:qsTr("0")
+            inputWidth:80
             min:0
             max:4-1
          }

@@ -8,7 +8,7 @@ Item {
 
     function createActionObjects(){
         var ret = [];
-        ret.push(Teach.generateDataAction(targetAddr.configValue,
+        ret.push(Teach.generateDataAction(addrEdit.addr(),
                                           constData.isChecked ? 0 : 1,
                                                                 data.configValue));
         return ret;
@@ -43,6 +43,15 @@ Item {
                 inputWidth: 120
             }
         }
+       Row{
+         ICHCAddrEdit{
+              id:addrEdit
+              addr_edit: qsTr("addr:")
+              startPos_inputWidth: 80
+              size_inputWidth: 80
+              baseAddr_inputWidth: 80
+              decimal_inputWidth: 80
+              }
+            }
+        }
     }
-
-}

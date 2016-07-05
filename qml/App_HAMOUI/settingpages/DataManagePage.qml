@@ -3,6 +3,8 @@ import "../../ICCustomElement"
 import "../../utils/Storage.js" as Storage
 
 Item {
+
+
     ICMessageBox{
         id:backupNameDialog
         x:250
@@ -61,7 +63,7 @@ Item {
             ICListView{
                 id:backuViews
                 width: 600
-                height: 300
+                height: 250
                 isShowHint: true
                 border.color: "black"
                 ListModel{
@@ -69,6 +71,11 @@ Item {
                 }
                 ListModel{
                     id:localHMIBackupModel
+                    function syncModel(){
+                        localHMIBackupModel.clear();
+                        var backups = JSON.parse(nelRobotController.scanHMIBackups(0));
+
+                    }
                 }
                 ListModel{
                     id:uDiskMachineBackupModel

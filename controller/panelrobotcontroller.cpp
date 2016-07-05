@@ -563,9 +563,9 @@ void PanelRobotController::InitMainView()
 
 }
 
-QString scanHelper(const QString& filter)
+QString scanHelper(const QString& filter, const QString &path = ICAppSettings::UsbPath)
 {
-    QDir usb(ICAppSettings::UsbPath);
+    QDir usb(path);
     QStringList updaters = usb.entryList(QStringList()<<filter);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
@@ -1452,4 +1452,11 @@ QString PanelRobotController::newRecord(const QString &name, const QString &init
         }
     }
     return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
+}
+
+QString PanelRobotController::scanHMIBackups(int mode) const
+{
+    if(mode == 1)
+        return scanHelper("*.hmi.hcdb", "hmibps");
+    return scanUserDir("hmibps", "*.hmi.hcdb");
 }

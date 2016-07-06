@@ -750,14 +750,17 @@ public:
     }
 
     Q_INVOKABLE QString scanUserDir(const QString& path, const QString& filter) const;
-    Q_INVOKABLE QString scanMachineBackups() const
-    {
-        return scanUserDir("mrbps", "*.mr.hcdb");
-    }
+    Q_INVOKABLE QString scanMachineBackups(int mode) const;
     Q_INVOKABLE QString scanHMIBackups(int mode) const;
-    Q_INVOKABLE void backupHMIBackups(const QString& backupName, const QString& sqlData) const;
-    Q_INVOKABLE void backupMRBackups(const QString& backupName) const;
-    Q_INVOKABLE void makeGhost(const QString& ghostName, const QString& hmiSqlData) const;
+    Q_INVOKABLE QString scanGhostBackups(int mode) const;
+    Q_INVOKABLE QString backupHMIBackups(const QString& backupName, const QString& sqlData) const;
+    Q_INVOKABLE QString backupMRBackups(const QString& backupName) const;
+    Q_INVOKABLE QString makeGhost(const QString& ghostName, const QString& hmiSqlData) const;
+    Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
+    Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
+    Q_INVOKABLE int exportGhost(const QString& backupName) const;
+
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

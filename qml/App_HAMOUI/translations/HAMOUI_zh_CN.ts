@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -45,11 +45,11 @@
     </message>
     <message>
         <source>Speed0</source>
-        <translation>箱内堆速度</translation>
+        <translation type="vanished">箱内堆速度</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Speed1:</source>
@@ -62,6 +62,34 @@
     <message>
         <source>Custom Name:</source>
         <translation>自定义名称:</translation>
+    </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>startSpeed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>endSpeed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -108,27 +136,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation>电机1报警</translation>
+        <translation type="vanished">电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation>电机2报警</translation>
+        <translation type="vanished">电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation>电机3报警</translation>
+        <translation type="vanished">电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation>电机4报警</translation>
+        <translation type="vanished">电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation>电机5报警</translation>
+        <translation type="vanished">电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation>电机6报警</translation>
+        <translation type="vanished">电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -377,6 +405,22 @@
         <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
         <translation>伺服绝对值位置读取超时</translation>
     </message>
+    <message>
+        <source>ALARM_IO_CONNET2_ERR</source>
+        <translation>与IO板2通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET3_ERR</source>
+        <translation>与IO板3通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET4_ERR</source>
+        <translation>与IO板4通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_CHANGE_ERR</source>
+        <translation>手控和主机教导程序不一致</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -502,7 +546,7 @@
     </message>
     <message>
         <source>Set to Point-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to CPoint-2</source>
@@ -526,11 +570,11 @@
     </message>
     <message>
         <source>Line Z</source>
-        <translation>世界Z</translation>
+        <translation type="vanished">世界Z</translation>
     </message>
     <message>
         <source>Rotate U</source>
-        <translation>世界U</translation>
+        <translation type="vanished">世界U</translation>
     </message>
     <message>
         <source>Y</source>
@@ -542,11 +586,11 @@
     </message>
     <message>
         <source>Line Y</source>
-        <translation>世界Y</translation>
+        <translation type="vanished">世界Y</translation>
     </message>
     <message>
         <source>Rotate V</source>
-        <translation>世界V</translation>
+        <translation type="vanished">世界V</translation>
     </message>
     <message>
         <source>X</source>
@@ -558,11 +602,11 @@
     </message>
     <message>
         <source>Line X</source>
-        <translation>世界X</translation>
+        <translation type="vanished">世界X</translation>
     </message>
     <message>
         <source>Rotate W</source>
-        <translation>世界W</translation>
+        <translation type="vanished">世界W</translation>
     </message>
     <message>
         <source>Tune Speed:</source>
@@ -619,7 +663,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回</translation>
+        <translation type="vanished">返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -675,15 +719,31 @@
     </message>
     <message>
         <source>A ON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常开</translation>
     </message>
     <message>
         <source>A OFF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常闭</translation>
     </message>
     <message>
         <source>Set In</source>
         <translation>设入</translation>
+    </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -867,6 +927,70 @@
         <source>Line</source>
         <translation>直线</translation>
     </message>
+    <message>
+        <source>pLimit Dir Change to</source>
+        <translation>正极限输入改为</translation>
+    </message>
+    <message>
+        <source>A ON</source>
+        <translation>常开</translation>
+    </message>
+    <message>
+        <source>A OFF</source>
+        <translation>常闭</translation>
+    </message>
+    <message>
+        <source>nLimit Dir Change to</source>
+        <translation>负极限输入改为</translation>
+    </message>
+    <message>
+        <source>Origin move dir Change to</source>
+        <translation>原点复归移动方向改为</translation>
+    </message>
+    <message>
+        <source>N Dir</source>
+        <translation>负方向</translation>
+    </message>
+    <message>
+        <source>P Dir</source>
+        <translation>正方向</translation>
+    </message>
+    <message>
+        <source>INV Move</source>
+        <translation>反向移动</translation>
+    </message>
+    <message>
+        <source>Change to</source>
+        <translation>改为</translation>
+    </message>
+    <message>
+        <source>Un</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>En</source>
+        <translation>使用</translation>
+    </message>
+    <message>
+        <source>Motor Dir</source>
+        <translation>电机方向</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正转</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation>反转</translation>
+    </message>
+    <message>
+        <source>Origin SPD</source>
+        <translation>原点速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -953,7 +1077,7 @@
     <name>CommentActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回主菜单</translation>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
         <source>Comment:</source>
@@ -1016,7 +1140,7 @@
     </message>
     <message>
         <source>MX</source>
-        <translation>中间变量X</translation>
+        <translation type="vanished">中间变量X</translation>
     </message>
     <message>
         <source>Jump</source>
@@ -1037,6 +1161,50 @@
     <message>
         <source>&lt;T</source>
         <translation>&lt;目标</translation>
+    </message>
+    <message>
+        <source>Mem</source>
+        <translation>数据比较</translation>
+    </message>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Left Addr</source>
+        <translation>左地址</translation>
+    </message>
+    <message>
+        <source>Right Value</source>
+        <translation>右值</translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&gt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>==</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>!=</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1099,6 +1267,92 @@
     <message>
         <source>Decimal</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataActionEditor</name>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Addr Target:</source>
+        <translation>目标地址:</translation>
+    </message>
+    <message>
+        <source>Data:</source>
+        <translation>立即数数据:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+</context>
+<context>
+    <name>DataManagePage</name>
+    <message>
+        <source>Local</source>
+        <translation>本机</translation>
+    </message>
+    <message>
+        <source>U Disk</source>
+        <translation>U盘</translation>
+    </message>
+    <message>
+        <source>Machine Running(Mold, Machine)</source>
+        <translation>机器参数(模号,机器设定)</translation>
+    </message>
+    <message>
+        <source>HMI Configs(Programable Button, Panel Settings)</source>
+        <translation>手控参数(可编程按键,手控设定)</translation>
+    </message>
+    <message>
+        <source>ghost</source>
+        <translation>ghost</translation>
+    </message>
+    <message>
+        <source>Backup Current</source>
+        <translation>备份当前状态</translation>
+    </message>
+    <message>
+        <source>Please input the backup name</source>
+        <translation>请输入备份名字</translation>
+    </message>
+    <message>
+        <source>Backup Name</source>
+        <translation>备份名字</translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Restore Selected</source>
+        <translation>还原选中备份</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Export successfully!</source>
+        <translation>导出成功!</translation>
     </message>
 </context>
 <context>
@@ -1179,6 +1433,25 @@
     </message>
 </context>
 <context>
+    <name>ICHCAddrEdit</name>
+    <message>
+        <source>startPos</source>
+        <translation>开始位</translation>
+    </message>
+    <message>
+        <source>size</source>
+        <translation>数据长度</translation>
+    </message>
+    <message>
+        <source>baseAddr</source>
+        <translation>基地址</translation>
+    </message>
+    <message>
+        <source>decimal</source>
+        <translation>精度</translation>
+    </message>
+</context>
+<context>
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
@@ -1216,11 +1489,11 @@
     </message>
     <message>
         <source>EuInput</source>
-        <translation>EU输入</translation>
+        <translation type="vanished">EU输入</translation>
     </message>
     <message>
         <source>EuOutput</source>
-        <translation>EU输出</translation>
+        <translation type="vanished">EU输出</translation>
     </message>
     <message>
         <source>Next</source>
@@ -1235,259 +1508,259 @@
     <name>IODefines</name>
     <message>
         <source>Y010</source>
-        <translation type="unfinished"></translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Y011</source>
-        <translation type="unfinished"></translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Y012</source>
-        <translation type="unfinished"></translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Y013</source>
-        <translation type="unfinished"></translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Y014</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y020</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y022</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y037</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>X010</source>
-        <translation type="unfinished">X010</translation>
+        <translation>X010</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation type="unfinished">X011</translation>
+        <translation>X011</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation type="unfinished">X012</translation>
+        <translation>X012</translation>
     </message>
     <message>
         <source>X013</source>
-        <translation type="unfinished">X013</translation>
+        <translation>X013</translation>
     </message>
     <message>
         <source>X014</source>
-        <translation type="unfinished">X014</translation>
+        <translation>X014</translation>
     </message>
     <message>
         <source>X015</source>
-        <translation type="unfinished">X015</translation>
+        <translation>X015</translation>
     </message>
     <message>
         <source>X016</source>
-        <translation type="unfinished">X016</translation>
+        <translation>X016</translation>
     </message>
     <message>
         <source>X017</source>
-        <translation type="unfinished">X017</translation>
+        <translation>X017</translation>
     </message>
     <message>
         <source>X020</source>
-        <translation type="unfinished">X020</translation>
+        <translation>X020</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation type="unfinished">X021</translation>
+        <translation>X021</translation>
     </message>
     <message>
         <source>X022</source>
-        <translation type="unfinished">X022</translation>
+        <translation>X022</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation type="unfinished">X023</translation>
+        <translation>X023</translation>
     </message>
     <message>
         <source>X024</source>
-        <translation type="unfinished">X024</translation>
+        <translation>X024</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation type="unfinished">X025</translation>
+        <translation>X025</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation type="unfinished">X026</translation>
+        <translation>X026</translation>
     </message>
     <message>
         <source>X027</source>
-        <translation type="unfinished">X027</translation>
+        <translation>X027</translation>
     </message>
     <message>
         <source>X030</source>
-        <translation type="unfinished">X030</translation>
+        <translation>X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation type="unfinished">X031</translation>
+        <translation>X031</translation>
     </message>
     <message>
         <source>X032</source>
-        <translation type="unfinished">X032</translation>
+        <translation>X032</translation>
     </message>
     <message>
         <source>X033</source>
-        <translation type="unfinished">X033</translation>
+        <translation>X033</translation>
     </message>
     <message>
         <source>X034</source>
-        <translation type="unfinished">X034</translation>
+        <translation>X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation type="unfinished">X035</translation>
+        <translation>X035</translation>
     </message>
     <message>
         <source>X036</source>
-        <translation type="unfinished">X036</translation>
+        <translation>X036</translation>
     </message>
     <message>
         <source>X037</source>
-        <translation type="unfinished">X037</translation>
+        <translation>X037</translation>
     </message>
     <message>
         <source>X040</source>
-        <translation type="unfinished">X040</translation>
+        <translation>X040</translation>
     </message>
     <message>
         <source>X041</source>
-        <translation type="unfinished">X041</translation>
+        <translation>X041</translation>
     </message>
     <message>
         <source>X042</source>
-        <translation type="unfinished">X042</translation>
+        <translation>X042</translation>
     </message>
     <message>
         <source>X043</source>
-        <translation type="unfinished">X043</translation>
+        <translation>X043</translation>
     </message>
     <message>
         <source>X044</source>
-        <translation type="unfinished">X044</translation>
+        <translation>X044</translation>
     </message>
     <message>
         <source>X045</source>
-        <translation type="unfinished">X045</translation>
+        <translation>X045</translation>
     </message>
     <message>
         <source>X046</source>
-        <translation type="unfinished">X046</translation>
+        <translation>X046</translation>
     </message>
     <message>
         <source>X047</source>
-        <translation type="unfinished">X047</translation>
+        <translation>X047</translation>
     </message>
     <message>
         <source>X050</source>
-        <translation type="obsolete">X050</translation>
+        <translation>X050</translation>
     </message>
     <message>
         <source>X051</source>
-        <translation type="obsolete">X051</translation>
+        <translation>X051</translation>
     </message>
     <message>
         <source>X052</source>
-        <translation type="obsolete">X052</translation>
+        <translation>X052</translation>
     </message>
     <message>
         <source>X053</source>
-        <translation type="obsolete">X053</translation>
+        <translation>X053</translation>
     </message>
     <message>
         <source>X054</source>
-        <translation type="obsolete">X054</translation>
+        <translation>X054</translation>
     </message>
     <message>
         <source>X055</source>
-        <translation type="obsolete">X055</translation>
+        <translation>X055</translation>
     </message>
     <message>
         <source>X056</source>
-        <translation type="obsolete">X056</translation>
+        <translation>X056</translation>
     </message>
     <message>
         <source>X057</source>
-        <translation type="obsolete">X057</translation>
+        <translation>X057</translation>
     </message>
     <message>
         <source>EuX010</source>
@@ -1619,31 +1892,31 @@
     </message>
     <message>
         <source>Normal Y</source>
-        <translation>普通输出</translation>
+        <translation type="vanished">普通输出</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation>单头阀Y</translation>
+        <translation type="vanished">单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation>保持型双头阀Y</translation>
+        <translation type="vanished">保持型双头阀Y</translation>
     </message>
     <message>
         <source>Normal Y010</source>
-        <translation>普通输出Y010</translation>
+        <translation>绿灯</translation>
     </message>
     <message>
         <source>Normal Y011</source>
-        <translation>普通输出Y011</translation>
+        <translation>黄灯</translation>
     </message>
     <message>
         <source>Normal Y012</source>
-        <translation>普通输出Y012</translation>
+        <translation>红灯</translation>
     </message>
     <message>
         <source>Normal Y013</source>
-        <translation>普通输出Y013</translation>
+        <translation>报警声</translation>
     </message>
     <message>
         <source>Normal Y014</source>
@@ -1949,6 +2222,1158 @@
         <source>Time Y047</source>
         <translation>时间输出Y047</translation>
     </message>
+    <message>
+        <source>Y040</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y041</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y042</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y043</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y044</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y045</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y046</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y047</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y050</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y051</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y052</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y053</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y054</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y055</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y056</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y057</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y060</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y061</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y062</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y063</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y064</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y065</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y066</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y067</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y070</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y071</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y072</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y073</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y074</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y075</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y076</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y077</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y100</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y101</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y102</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y103</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y104</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y105</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y106</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y107</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y110</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y111</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y112</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y113</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y114</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y115</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y116</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y117</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y120</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y121</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y122</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y123</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y124</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y125</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y126</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y127</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y130</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y131</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y132</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y133</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y134</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y135</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y136</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y137</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y140</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y141</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y142</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y143</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y144</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y145</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y146</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y147</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y150</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y151</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y152</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y153</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y154</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y155</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y156</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y157</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y160</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y161</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y162</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y163</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y164</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y165</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y166</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y167</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y170</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y171</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y172</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y173</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y174</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y175</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y176</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y177</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y200</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y201</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y202</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y203</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y204</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y205</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y206</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y207</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>X060</source>
+        <translation>X060</translation>
+    </message>
+    <message>
+        <source>X061</source>
+        <translation>X061</translation>
+    </message>
+    <message>
+        <source>X062</source>
+        <translation>X062</translation>
+    </message>
+    <message>
+        <source>X063</source>
+        <translation>X063</translation>
+    </message>
+    <message>
+        <source>X064</source>
+        <translation>X064</translation>
+    </message>
+    <message>
+        <source>X065</source>
+        <translation>X065</translation>
+    </message>
+    <message>
+        <source>X066</source>
+        <translation>X066</translation>
+    </message>
+    <message>
+        <source>X067</source>
+        <translation>X067</translation>
+    </message>
+    <message>
+        <source>X070</source>
+        <translation>X070</translation>
+    </message>
+    <message>
+        <source>X071</source>
+        <translation>X071</translation>
+    </message>
+    <message>
+        <source>X072</source>
+        <translation>X072</translation>
+    </message>
+    <message>
+        <source>X073</source>
+        <translation>X073</translation>
+    </message>
+    <message>
+        <source>X074</source>
+        <translation>X074</translation>
+    </message>
+    <message>
+        <source>X075</source>
+        <translation>X075</translation>
+    </message>
+    <message>
+        <source>X076</source>
+        <translation>X076</translation>
+    </message>
+    <message>
+        <source>X077</source>
+        <translation>X077</translation>
+    </message>
+    <message>
+        <source>X100</source>
+        <translation>X100</translation>
+    </message>
+    <message>
+        <source>X101</source>
+        <translation>X101</translation>
+    </message>
+    <message>
+        <source>X102</source>
+        <translation>X102</translation>
+    </message>
+    <message>
+        <source>X103</source>
+        <translation>X103</translation>
+    </message>
+    <message>
+        <source>X104</source>
+        <translation>X104</translation>
+    </message>
+    <message>
+        <source>X105</source>
+        <translation>X105</translation>
+    </message>
+    <message>
+        <source>X106</source>
+        <translation>X106</translation>
+    </message>
+    <message>
+        <source>X107</source>
+        <translation>X107</translation>
+    </message>
+    <message>
+        <source>X110</source>
+        <translation>X110</translation>
+    </message>
+    <message>
+        <source>X111</source>
+        <translation>X111</translation>
+    </message>
+    <message>
+        <source>X112</source>
+        <translation>X112</translation>
+    </message>
+    <message>
+        <source>X113</source>
+        <translation>X113</translation>
+    </message>
+    <message>
+        <source>X114</source>
+        <translation>X114</translation>
+    </message>
+    <message>
+        <source>X115</source>
+        <translation>X115</translation>
+    </message>
+    <message>
+        <source>X116</source>
+        <translation>X116</translation>
+    </message>
+    <message>
+        <source>X117</source>
+        <translation>X117</translation>
+    </message>
+    <message>
+        <source>X120</source>
+        <translation>X120</translation>
+    </message>
+    <message>
+        <source>X121</source>
+        <translation>X121</translation>
+    </message>
+    <message>
+        <source>X122</source>
+        <translation>X122</translation>
+    </message>
+    <message>
+        <source>X123</source>
+        <translation>X123</translation>
+    </message>
+    <message>
+        <source>X124</source>
+        <translation>X124</translation>
+    </message>
+    <message>
+        <source>X125</source>
+        <translation>X125</translation>
+    </message>
+    <message>
+        <source>X126</source>
+        <translation>X126</translation>
+    </message>
+    <message>
+        <source>X127</source>
+        <translation>X127</translation>
+    </message>
+    <message>
+        <source>X130</source>
+        <translation>X130</translation>
+    </message>
+    <message>
+        <source>X131</source>
+        <translation>X131</translation>
+    </message>
+    <message>
+        <source>X132</source>
+        <translation>X132</translation>
+    </message>
+    <message>
+        <source>X133</source>
+        <translation>X133</translation>
+    </message>
+    <message>
+        <source>X134</source>
+        <translation>X134</translation>
+    </message>
+    <message>
+        <source>X135</source>
+        <translation>X135</translation>
+    </message>
+    <message>
+        <source>X136</source>
+        <translation>X136</translation>
+    </message>
+    <message>
+        <source>X137</source>
+        <translation>X137</translation>
+    </message>
+    <message>
+        <source>X140</source>
+        <translation>X140</translation>
+    </message>
+    <message>
+        <source>X141</source>
+        <translation>X141</translation>
+    </message>
+    <message>
+        <source>X142</source>
+        <translation>X142</translation>
+    </message>
+    <message>
+        <source>X143</source>
+        <translation>X143</translation>
+    </message>
+    <message>
+        <source>X144</source>
+        <translation>X144</translation>
+    </message>
+    <message>
+        <source>X145</source>
+        <translation>X145</translation>
+    </message>
+    <message>
+        <source>X146</source>
+        <translation>X146</translation>
+    </message>
+    <message>
+        <source>X147</source>
+        <translation>X147</translation>
+    </message>
+    <message>
+        <source>X150</source>
+        <translation>X150</translation>
+    </message>
+    <message>
+        <source>X151</source>
+        <translation>X151</translation>
+    </message>
+    <message>
+        <source>X152</source>
+        <translation>X152</translation>
+    </message>
+    <message>
+        <source>X153</source>
+        <translation>X153</translation>
+    </message>
+    <message>
+        <source>X154</source>
+        <translation>X154</translation>
+    </message>
+    <message>
+        <source>X155</source>
+        <translation>X155</translation>
+    </message>
+    <message>
+        <source>X156</source>
+        <translation>X156</translation>
+    </message>
+    <message>
+        <source>X157</source>
+        <translation>X157</translation>
+    </message>
+    <message>
+        <source>X160</source>
+        <translation>X160</translation>
+    </message>
+    <message>
+        <source>X161</source>
+        <translation>X161</translation>
+    </message>
+    <message>
+        <source>X162</source>
+        <translation>X162</translation>
+    </message>
+    <message>
+        <source>X163</source>
+        <translation>X163</translation>
+    </message>
+    <message>
+        <source>X164</source>
+        <translation>X164</translation>
+    </message>
+    <message>
+        <source>X165</source>
+        <translation>X165</translation>
+    </message>
+    <message>
+        <source>X166</source>
+        <translation>X166</translation>
+    </message>
+    <message>
+        <source>X167</source>
+        <translation>X167</translation>
+    </message>
+    <message>
+        <source>X170</source>
+        <translation>X170</translation>
+    </message>
+    <message>
+        <source>X171</source>
+        <translation>X171</translation>
+    </message>
+    <message>
+        <source>X172</source>
+        <translation>X172</translation>
+    </message>
+    <message>
+        <source>X173</source>
+        <translation>X173</translation>
+    </message>
+    <message>
+        <source>X174</source>
+        <translation>X174</translation>
+    </message>
+    <message>
+        <source>X175</source>
+        <translation>X175</translation>
+    </message>
+    <message>
+        <source>X176</source>
+        <translation>X176</translation>
+    </message>
+    <message>
+        <source>X177</source>
+        <translation>X177</translation>
+    </message>
+    <message>
+        <source>X200</source>
+        <translation>X200</translation>
+    </message>
+    <message>
+        <source>X201</source>
+        <translation>X201</translation>
+    </message>
+    <message>
+        <source>X202</source>
+        <translation>X202</translation>
+    </message>
+    <message>
+        <source>X203</source>
+        <translation>X203</translation>
+    </message>
+    <message>
+        <source>X204</source>
+        <translation>X204</translation>
+    </message>
+    <message>
+        <source>X205</source>
+        <translation>X205</translation>
+    </message>
+    <message>
+        <source>X206</source>
+        <translation>X206</translation>
+    </message>
+    <message>
+        <source>X207</source>
+        <translation>X207</translation>
+    </message>
+    <message>
+        <source>Normal Y050</source>
+        <translation>普通输出Y050</translation>
+    </message>
+    <message>
+        <source>Normal Y051</source>
+        <translation>普通输出Y051</translation>
+    </message>
+    <message>
+        <source>Normal Y052</source>
+        <translation>普通输出Y052</translation>
+    </message>
+    <message>
+        <source>Normal Y053</source>
+        <translation>普通输出Y053</translation>
+    </message>
+    <message>
+        <source>Normal Y054</source>
+        <translation>普通输出Y054</translation>
+    </message>
+    <message>
+        <source>Normal Y055</source>
+        <translation>普通输出Y055</translation>
+    </message>
+    <message>
+        <source>Normal Y056</source>
+        <translation>普通输出Y056</translation>
+    </message>
+    <message>
+        <source>Normal Y057</source>
+        <translation>普通输出Y057</translation>
+    </message>
+    <message>
+        <source>Normal Y060</source>
+        <translation>普通输出Y060</translation>
+    </message>
+    <message>
+        <source>Normal Y061</source>
+        <translation>普通输出Y061</translation>
+    </message>
+    <message>
+        <source>Normal Y062</source>
+        <translation>普通输出Y062</translation>
+    </message>
+    <message>
+        <source>Normal Y063</source>
+        <translation>普通输出Y063</translation>
+    </message>
+    <message>
+        <source>Normal Y064</source>
+        <translation>普通输出Y064</translation>
+    </message>
+    <message>
+        <source>Normal Y065</source>
+        <translation>普通输出Y065</translation>
+    </message>
+    <message>
+        <source>Normal Y066</source>
+        <translation>普通输出Y066</translation>
+    </message>
+    <message>
+        <source>Normal Y067</source>
+        <translation>普通输出Y067</translation>
+    </message>
+    <message>
+        <source>Normal Y070</source>
+        <translation>普通输出Y070</translation>
+    </message>
+    <message>
+        <source>Normal Y071</source>
+        <translation>普通输出Y071</translation>
+    </message>
+    <message>
+        <source>Normal Y072</source>
+        <translation>普通输出Y072</translation>
+    </message>
+    <message>
+        <source>Normal Y073</source>
+        <translation>普通输出Y073</translation>
+    </message>
+    <message>
+        <source>Normal Y074</source>
+        <translation>普通输出Y074</translation>
+    </message>
+    <message>
+        <source>Normal Y075</source>
+        <translation>普通输出Y075</translation>
+    </message>
+    <message>
+        <source>Normal Y076</source>
+        <translation>普通输出Y076</translation>
+    </message>
+    <message>
+        <source>Normal Y077</source>
+        <translation>普通输出Y077</translation>
+    </message>
+    <message>
+        <source>Normal Y100</source>
+        <translation>普通输出Y100</translation>
+    </message>
+    <message>
+        <source>Normal Y101</source>
+        <translation>普通输出Y101</translation>
+    </message>
+    <message>
+        <source>Normal Y102</source>
+        <translation>普通输出Y102</translation>
+    </message>
+    <message>
+        <source>Normal Y103</source>
+        <translation>普通输出Y103</translation>
+    </message>
+    <message>
+        <source>Normal Y104</source>
+        <translation>普通输出Y104</translation>
+    </message>
+    <message>
+        <source>Normal Y105</source>
+        <translation>普通输出Y105</translation>
+    </message>
+    <message>
+        <source>Normal Y106</source>
+        <translation>普通输出Y106</translation>
+    </message>
+    <message>
+        <source>Normal Y107</source>
+        <translation>普通输出Y107</translation>
+    </message>
+    <message>
+        <source>Normal Y110</source>
+        <translation>普通输出Y110</translation>
+    </message>
+    <message>
+        <source>Normal Y111</source>
+        <translation>普通输出Y111</translation>
+    </message>
+    <message>
+        <source>Normal Y112</source>
+        <translation>普通输出Y112</translation>
+    </message>
+    <message>
+        <source>Normal Y113</source>
+        <translation>普通输出Y113</translation>
+    </message>
+    <message>
+        <source>Normal Y114</source>
+        <translation>普通输出Y114</translation>
+    </message>
+    <message>
+        <source>Normal Y115</source>
+        <translation>普通输出Y115</translation>
+    </message>
+    <message>
+        <source>Normal Y116</source>
+        <translation>普通输出Y116</translation>
+    </message>
+    <message>
+        <source>Normal Y117</source>
+        <translation>普通输出Y117</translation>
+    </message>
+    <message>
+        <source>Normal Y120</source>
+        <translation>普通输出Y120</translation>
+    </message>
+    <message>
+        <source>Normal Y121</source>
+        <translation>普通输出Y121</translation>
+    </message>
+    <message>
+        <source>Normal Y122</source>
+        <translation>普通输出Y122</translation>
+    </message>
+    <message>
+        <source>Normal Y123</source>
+        <translation>普通输出Y123</translation>
+    </message>
+    <message>
+        <source>Normal Y124</source>
+        <translation>普通输出Y124</translation>
+    </message>
+    <message>
+        <source>Normal Y125</source>
+        <translation>普通输出Y125</translation>
+    </message>
+    <message>
+        <source>Normal Y126</source>
+        <translation>普通输出Y126</translation>
+    </message>
+    <message>
+        <source>Normal Y127</source>
+        <translation>普通输出Y127</translation>
+    </message>
+    <message>
+        <source>Normal Y130</source>
+        <translation>普通输出Y130</translation>
+    </message>
+    <message>
+        <source>Normal Y131</source>
+        <translation>普通输出Y131</translation>
+    </message>
+    <message>
+        <source>Normal Y132</source>
+        <translation>普通输出Y132</translation>
+    </message>
+    <message>
+        <source>Normal Y133</source>
+        <translation>普通输出Y133</translation>
+    </message>
+    <message>
+        <source>Normal Y134</source>
+        <translation>普通输出Y134</translation>
+    </message>
+    <message>
+        <source>Normal Y135</source>
+        <translation>普通输出Y135</translation>
+    </message>
+    <message>
+        <source>Normal Y136</source>
+        <translation>普通输出Y136</translation>
+    </message>
+    <message>
+        <source>Normal Y137</source>
+        <translation>普通输出Y137</translation>
+    </message>
+    <message>
+        <source>Normal Y140</source>
+        <translation>普通输出Y140</translation>
+    </message>
+    <message>
+        <source>Normal Y141</source>
+        <translation>普通输出Y141</translation>
+    </message>
+    <message>
+        <source>Normal Y142</source>
+        <translation>普通输出Y142</translation>
+    </message>
+    <message>
+        <source>Normal Y143</source>
+        <translation>普通输出Y143</translation>
+    </message>
+    <message>
+        <source>Normal Y144</source>
+        <translation>普通输出Y144</translation>
+    </message>
+    <message>
+        <source>Normal Y145</source>
+        <translation>普通输出Y145</translation>
+    </message>
+    <message>
+        <source>Normal Y146</source>
+        <translation>普通输出Y146</translation>
+    </message>
+    <message>
+        <source>Normal Y147</source>
+        <translation>普通输出Y147</translation>
+    </message>
+    <message>
+        <source>Normal Y150</source>
+        <translation>普通输出Y150</translation>
+    </message>
+    <message>
+        <source>Normal Y151</source>
+        <translation>普通输出Y151</translation>
+    </message>
+    <message>
+        <source>Normal Y152</source>
+        <translation>普通输出Y152</translation>
+    </message>
+    <message>
+        <source>Normal Y153</source>
+        <translation>普通输出Y153</translation>
+    </message>
+    <message>
+        <source>Normal Y154</source>
+        <translation>普通输出Y154</translation>
+    </message>
+    <message>
+        <source>Normal Y155</source>
+        <translation>普通输出Y155</translation>
+    </message>
+    <message>
+        <source>Normal Y156</source>
+        <translation>普通输出Y156</translation>
+    </message>
+    <message>
+        <source>Normal Y157</source>
+        <translation>普通输出Y157</translation>
+    </message>
+    <message>
+        <source>Normal Y160</source>
+        <translation>普通输出Y160</translation>
+    </message>
+    <message>
+        <source>Normal Y161</source>
+        <translation>普通输出Y161</translation>
+    </message>
+    <message>
+        <source>Normal Y162</source>
+        <translation>普通输出Y162</translation>
+    </message>
+    <message>
+        <source>Normal Y163</source>
+        <translation>普通输出Y163</translation>
+    </message>
+    <message>
+        <source>Normal Y164</source>
+        <translation>普通输出Y164</translation>
+    </message>
+    <message>
+        <source>Normal Y165</source>
+        <translation>普通输出Y165</translation>
+    </message>
+    <message>
+        <source>Normal Y166</source>
+        <translation>普通输出Y166</translation>
+    </message>
+    <message>
+        <source>Normal Y167</source>
+        <translation>普通输出Y167</translation>
+    </message>
+    <message>
+        <source>Normal Y170</source>
+        <translation>普通输出Y170</translation>
+    </message>
+    <message>
+        <source>Normal Y171</source>
+        <translation>普通输出Y171</translation>
+    </message>
+    <message>
+        <source>Normal Y172</source>
+        <translation>普通输出Y172</translation>
+    </message>
+    <message>
+        <source>Normal Y173</source>
+        <translation>普通输出Y173</translation>
+    </message>
+    <message>
+        <source>Normal Y174</source>
+        <translation>普通输出Y174</translation>
+    </message>
+    <message>
+        <source>Normal Y175</source>
+        <translation>普通输出Y175</translation>
+    </message>
+    <message>
+        <source>Normal Y176</source>
+        <translation>普通输出Y176</translation>
+    </message>
+    <message>
+        <source>Normal Y177</source>
+        <translation>普通输出Y177</translation>
+    </message>
+    <message>
+        <source>Normal Y200</source>
+        <translation>普通输出Y200</translation>
+    </message>
+    <message>
+        <source>Normal Y201</source>
+        <translation>普通输出Y201</translation>
+    </message>
+    <message>
+        <source>Normal Y202</source>
+        <translation>普通输出Y202</translation>
+    </message>
+    <message>
+        <source>Normal Y203</source>
+        <translation>普通输出Y203</translation>
+    </message>
+    <message>
+        <source>Normal Y204</source>
+        <translation>普通输出Y204</translation>
+    </message>
+    <message>
+        <source>Normal Y205</source>
+        <translation>普通输出Y205</translation>
+    </message>
+    <message>
+        <source>Normal Y206</source>
+        <translation>普通输出Y206</translation>
+    </message>
+    <message>
+        <source>Normal Y207</source>
+        <translation>普通输出Y207</translation>
+    </message>
 </context>
 <context>
     <name>JogPage</name>
@@ -2007,7 +3432,7 @@
     </message>
     <message>
         <source>Axis Configs</source>
-        <translation>电机参数</translation>
+        <translation type="vanished">电机参数</translation>
     </message>
     <message>
         <source>Motor Configs</source>
@@ -2061,7 +3486,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具校准</translation>
+        <translation type="vanished">工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -2145,30 +3570,30 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>OriginActionEditorAxisComponent</name>
     <message>
         <source>deg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2209,9 +3634,12 @@
         <source>1.Mode 1
 2.Mode 2
 3.Mode 3</source>
-        <translation>1.已在原点附近:位置大概在原点附近时使用
-2.关机前已急停:只有确定关机前已经拍下急停了才能使用
-3.重新归原点:已在原点附近没归到位的时候,再次归原点的时候使用</translation>
+        <translation>1.已在原点附近:位置大概在原点
+附近时使用
+2.关机前已急停:只有确定关机前
+已经拍下急停了才能使用
+3.重新归原点:已在原点附近没归
+到位的时候,再次归原点的时候使用</translation>
     </message>
     <message>
         <source>Show Help</source>
@@ -2281,11 +3709,11 @@
     </message>
     <message>
         <source>Scan Updater</source>
-        <translation>扫描更新包</translation>
+        <translation type="vanished">扫描更新包</translation>
     </message>
     <message>
         <source>Start Update</source>
-        <translation>开始更新</translation>
+        <translation type="vanished">开始更新</translation>
     </message>
     <message>
         <source>Panel Settings</source>
@@ -2293,75 +3721,75 @@
     </message>
     <message>
         <source>UI Version:</source>
-        <translation>UI版本:</translation>
+        <translation type="vanished">UI版本:</translation>
     </message>
     <message>
         <source>Controller Version:</source>
-        <translation>中间件版本:</translation>
+        <translation type="vanished">中间件版本:</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation>语言</translation>
+        <translation type="vanished">语言</translation>
     </message>
     <message>
         <source>Key Tone</source>
-        <translation>按键音</translation>
+        <translation type="vanished">按键音</translation>
     </message>
     <message>
         <source>Key Tone Off</source>
-        <translation>关</translation>
+        <translation type="vanished">关</translation>
     </message>
     <message>
         <source>Key Tone On</source>
-        <translation>开</translation>
+        <translation type="vanished">开</translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation>屏幕亮度</translation>
+        <translation type="vanished">屏幕亮度</translation>
     </message>
     <message>
         <source>Screensaver Time</source>
-        <translation>屏幕保护时间</translation>
+        <translation type="vanished">屏幕保护时间</translation>
     </message>
     <message>
         <source>Date time</source>
-        <translation>日期时间</translation>
+        <translation type="vanished">日期时间</translation>
     </message>
     <message>
         <source>year</source>
-        <translation>年</translation>
+        <translation type="vanished">年</translation>
     </message>
     <message>
         <source>mon</source>
-        <translation>月</translation>
+        <translation type="vanished">月</translation>
     </message>
     <message>
         <source>day</source>
-        <translation>日</translation>
+        <translation type="vanished">日</translation>
     </message>
     <message>
         <source>hour</source>
-        <translation>时</translation>
+        <translation type="vanished">时</translation>
     </message>
     <message>
         <source>sec</source>
-        <translation>秒</translation>
+        <translation type="vanished">秒</translation>
     </message>
     <message>
         <source>Touch Calibrate</source>
-        <translation>触摸校正</translation>
+        <translation type="vanished">触摸校正</translation>
     </message>
     <message>
         <source>Recalibrate need to reboot. Continue?</source>
-        <translation>触摸校正需要重启.继续吗?</translation>
+        <translation type="vanished">触摸校正需要重启.继续吗?</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>是</translation>
+        <translation type="vanished">是</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>否</translation>
+        <translation type="vanished">否</translation>
     </message>
     <message>
         <source>Usermanegement</source>
@@ -2370,6 +3798,10 @@
     <message>
         <source>Network Settings</source>
         <translation>网络配置</translation>
+    </message>
+    <message>
+        <source>Picture Settings</source>
+        <translation>图片设定</translation>
     </message>
 </context>
 <context>
@@ -2393,6 +3825,21 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>PictureSettings</name>
+    <message>
+        <source>Scan Pic</source>
+        <translation>扫描图片</translation>
+    </message>
+    <message>
+        <source>Set As Start Up</source>
+        <translation>设为启动图片</translation>
+    </message>
+    <message>
+        <source>Set As Standby</source>
+        <translation>设为待机图片</translation>
+    </message>
+</context>
+<context>
     <name>PointEdit</name>
     <message>
         <source>Set In</source>
@@ -2404,11 +3851,11 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation>添加点</translation>
+        <translation type="vanished">添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
-        <translation>新点:</translation>
+        <translation type="vanished">新点:</translation>
     </message>
     <message>
         <source>Select Point:</source>
@@ -2432,15 +3879,15 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
-        <translation>直线2D</translation>
+        <translation type="vanished">直线2D</translation>
     </message>
     <message>
         <source>Line 3D</source>
@@ -2456,7 +3903,7 @@ please chose!</source>
     </message>
     <message>
         <source>Pose 3D</source>
-        <translation>姿势直线</translation>
+        <translation type="vanished">姿势直线</translation>
     </message>
     <message>
         <source>Set to Middle Point</source>
@@ -2472,7 +3919,7 @@ please chose!</source>
     </message>
     <message>
         <source>Offset Move</source>
-        <translation>相对移动</translation>
+        <translation type="vanished">相对移动</translation>
     </message>
     <message>
         <source>Offset Line</source>
@@ -2509,6 +3956,30 @@ please chose!</source>
     <message>
         <source>Line YZ</source>
         <translation>直线YZ</translation>
+    </message>
+    <message>
+        <source>Offset Curve</source>
+        <translation>相对曲线</translation>
+    </message>
+    <message>
+        <source>P Line 3D</source>
+        <translation>姿势直线</translation>
+    </message>
+    <message>
+        <source>P Curve 3D</source>
+        <translation>姿势曲线</translation>
+    </message>
+    <message>
+        <source>PO Line 3D</source>
+        <translation>相对姿势直线</translation>
+    </message>
+    <message>
+        <source>PO Curve 3D</source>
+        <translation>相对姿势曲线</translation>
+    </message>
+    <message>
+        <source>PCircle</source>
+        <translation>姿势整圆</translation>
     </message>
 </context>
 <context>
@@ -2629,7 +4100,7 @@ please chose!</source>
     </message>
     <message>
         <source>Other/Flag</source>
-        <translation>标签</translation>
+        <translation type="vanished">标签</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -2641,7 +4112,7 @@ please chose!</source>
     </message>
     <message>
         <source>Search</source>
-        <translation>搜索</translation>
+        <translation type="vanished">搜索</translation>
     </message>
     <message>
         <source>Path</source>
@@ -2670,6 +4141,14 @@ please chose!</source>
     <message>
         <source>Vision</source>
         <translation>视觉指令</translation>
+    </message>
+    <message>
+        <source>Path Speed</source>
+        <translation>路径速度</translation>
+    </message>
+    <message>
+        <source>Data Command</source>
+        <translation>数据指令</translation>
     </message>
 </context>
 <context>
@@ -2772,11 +4251,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
         <source>Menu</source>
-        <translation>动作
+        <translation type="vanished">动作
 菜单</translation>
     </message>
     <message>
@@ -2809,27 +4288,27 @@ please chose!</source>
     </message>
     <message>
         <source>Output Action</source>
-        <translation>信号输出</translation>
+        <translation type="vanished">信号输出</translation>
     </message>
     <message>
         <source>Wait</source>
-        <translation>等待</translation>
+        <translation type="vanished">等待</translation>
     </message>
     <message>
         <source>Condition</source>
-        <translation>条件跳转</translation>
+        <translation type="vanished">条件跳转</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>路径</translation>
+        <translation type="vanished">路径</translation>
     </message>
     <message>
         <source>Check</source>
-        <translation>阀检测</translation>
+        <translation type="vanished">阀检测</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation>计数器</translation>
+        <translation type="vanished">计数器</translation>
     </message>
     <message>
         <source>Main Module</source>
@@ -2959,7 +4438,7 @@ please chose!</source>
     </message>
     <message>
         <source>Please Enter the new record name!</source>
-        <translation>请输入新模号名!</translation>
+        <translation type="vanished">请输入新模号名!</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -3003,11 +4482,11 @@ please chose!</source>
     </message>
     <message>
         <source>Import {0} fail!</source>
-        <translation>导入{0}失败!</translation>
+        <translation type="vanished">导入{0}失败!</translation>
     </message>
     <message>
         <source>Import Finished!</source>
-        <translation>导入完成!</translation>
+        <translation type="vanished">导入完成!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -3022,6 +4501,20 @@ please chose!</source>
         <source>Local</source>
         <translation>本机模号</translation>
     </message>
+    <message>
+        <source>No USB Found!</source>
+        <translation>没有发现U盘!</translation>
+    </message>
+    <message>
+        <source>Import {0} fail!
+</source>
+        <translation>导入{0}失败!</translation>
+    </message>
+    <message>
+        <source>Import Finished!
+</source>
+        <translation>导入完成!</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -3032,6 +4525,22 @@ please chose!</source>
     <message>
         <source>Pulse</source>
         <translation>脉冲</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Turn Auto Speed</source>
+        <translation>转自动后速度</translation>
+    </message>
+    <message>
+        <source>Alarm Times</source>
+        <translation>报警声音次数</translation>
+    </message>
+    <message>
+        <source>Times</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3069,6 +4578,25 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>SpeedActionEditor</name>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed</source>
+        <translation>起始速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>End Speed</source>
+        <translation>结束速度</translation>
+    </message>
+</context>
+<context>
     <name>StackActionEditor</name>
     <message>
         <source>New</source>
@@ -3100,51 +4628,51 @@ please chose!</source>
     </message>
     <message>
         <source>Space0</source>
-        <translation>X方向间距</translation>
+        <translation type="vanished">X方向间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation>X方向计数</translation>
+        <translation type="vanished">X方向计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation>Y方向间距</translation>
+        <translation type="vanished">Y方向间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation>Y方向计数</translation>
+        <translation type="vanished">Y方向计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation>Z方向间距</translation>
+        <translation type="vanished">Z方向间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation>Z方向计数</translation>
+        <translation type="vanished">Z方向计数</translation>
     </message>
     <message>
         <source>Dir0</source>
-        <translation>X方向</translation>
+        <translation type="vanished">X方向</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation>反相</translation>
+        <translation type="vanished">反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation>正相</translation>
+        <translation type="vanished">正相</translation>
     </message>
     <message>
         <source>Dir1</source>
-        <translation>Y方向</translation>
+        <translation type="vanished">Y方向</translation>
     </message>
     <message>
         <source>Dir2</source>
-        <translation>Z方向</translation>
+        <translation type="vanished">Z方向</translation>
     </message>
     <message>
         <source>Sequence</source>
-        <translation>顺序</translation>
+        <translation type="vanished">顺序</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -3304,6 +4832,10 @@ please chose!</source>
         <source>Save</source>
         <translation>保存</translation>
     </message>
+    <message>
+        <source>Total:</source>
+        <translation>总共:</translation>
+    </message>
 </context>
 <context>
     <name>StructConfigs</name>
@@ -3313,43 +4845,43 @@ please chose!</source>
     </message>
     <message>
         <source>Machine Struct 1</source>
-        <translation>结构参数1</translation>
+        <translation>结构1</translation>
     </message>
     <message>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Machine Struct 2</source>
-        <translation>结构参数2</translation>
+        <translation>结构2</translation>
     </message>
     <message>
         <source>Machine Struct 3</source>
-        <translation>结构参数3</translation>
+        <translation type="vanished">结构参数3</translation>
     </message>
     <message>
         <source>Machine Struct 4</source>
-        <translation>结构参数4</translation>
+        <translation>结构4</translation>
     </message>
     <message>
         <source>Machine Struct 5</source>
-        <translation>结构参数5</translation>
+        <translation type="vanished">结构参数5</translation>
     </message>
     <message>
         <source>Machine Struct 6</source>
-        <translation>结构参数6</translation>
+        <translation>结构6</translation>
     </message>
     <message>
         <source>Machine Struct 7</source>
-        <translation>结构参数7</translation>
+        <translation type="vanished">结构参数7</translation>
     </message>
     <message>
         <source>Machine Struct 8</source>
-        <translation>结构参数8</translation>
+        <translation type="vanished">结构参数8</translation>
     </message>
     <message>
         <source>Machine Struct 9</source>
-        <translation>结构参数9</translation>
+        <translation type="vanished">结构参数9</translation>
     </message>
     <message>
         <source>SACC 1</source>
@@ -3357,7 +4889,7 @@ please chose!</source>
     </message>
     <message>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SACC 2</source>
@@ -3377,7 +4909,7 @@ please chose!</source>
     </message>
     <message>
         <source>m/s²</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SDec Time</source>
@@ -3389,42 +4921,70 @@ please chose!</source>
     </message>
     <message>
         <source>m/s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Axis1 Diff</source>
-        <translation>轴1偏角</translation>
+        <translation>偏角1</translation>
     </message>
     <message>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Axis2 Diff</source>
-        <translation>轴2偏角</translation>
+        <translation>偏角2</translation>
     </message>
     <message>
         <source>Axis3 Diff</source>
-        <translation>轴3偏角</translation>
+        <translation>偏角3</translation>
     </message>
     <message>
         <source>Axis4 Diff</source>
-        <translation>轴4偏角</translation>
+        <translation>偏角4</translation>
     </message>
     <message>
         <source>Axis5 Diff</source>
-        <translation>轴5偏角</translation>
+        <translation>偏角5</translation>
     </message>
     <message>
         <source>Axis6 Diff</source>
-        <translation>轴6偏角</translation>
+        <translation>偏角6</translation>
+    </message>
+    <message>
+        <source>L01</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L34a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L34b</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L24</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回主菜单</translation>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -3447,59 +5007,89 @@ please chose!</source>
     </message>
     <message>
         <source>kSttIndependent</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttPP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttPPP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRRP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRRPR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTRT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTRTTT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kStt5P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttPPP_RRR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRRPR_BRT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>kSttRTRTTT_EX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Axis Num</source>
         <translation>轴数</translation>
+    </message>
+    <message>
+        <source>kSttLathe_6p</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Clear Program Btn</source>
+        <translation>清空可编程按键</translation>
+    </message>
+    <message>
+        <source>IO Board Num</source>
+        <translation>IO板数</translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItem</name>
+    <message>
+        <source>TabItem</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItemWidget</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
+    </message>
+    <message>
+        <source>text1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3518,7 +5108,7 @@ please chose!</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation>提前结束位置:</translation>
     </message>
     <message>
         <source>IF:</source>
@@ -3566,7 +5156,7 @@ please chose!</source>
     </message>
     <message>
         <source>Line2D:</source>
-        <translation>直线2D:</translation>
+        <translation type="vanished">直线2D:</translation>
     </message>
     <message>
         <source>Line3D:</source>
@@ -3730,7 +5320,7 @@ please chose!</source>
     </message>
     <message>
         <source>Offset Move:</source>
-        <translation>相对移动:</translation>
+        <translation type="vanished">相对移动:</translation>
     </message>
     <message>
         <source>Alarm</source>
@@ -3810,15 +5400,15 @@ please chose!</source>
     </message>
     <message>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="vanished">输出</translation>
     </message>
     <message>
         <source>On</source>
-        <translation>通</translation>
+        <translation type="vanished">通</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation>断</translation>
+        <translation type="vanished">断</translation>
     </message>
     <message>
         <source>Vistion Catch Start:</source>
@@ -3872,6 +5462,82 @@ please chose!</source>
         <source>LineYZ:</source>
         <translation>直线YZ:</translation>
     </message>
+    <message>
+        <source>Offset Curve:</source>
+        <translation>相对曲线:</translation>
+    </message>
+    <message>
+        <source>Early End Spd pos:</source>
+        <translation>提前减速位置:</translation>
+    </message>
+    <message>
+        <source>Early End Spd:</source>
+        <translation>提前减速速度:</translation>
+    </message>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed:</source>
+        <translation>起始速度:</translation>
+    </message>
+    <message>
+        <source>End Speed:</source>
+        <translation>结束速度:</translation>
+    </message>
+    <message>
+        <source>Curve3D-Pose:</source>
+        <translation>姿势曲线:</translation>
+    </message>
+    <message>
+        <source>PO Curve 3D:</source>
+        <translation>相对姿势曲线:</translation>
+    </message>
+    <message>
+        <source>P Circle:</source>
+        <translation>姿势整圆:</translation>
+    </message>
+    <message>
+        <source>PO Line 3D:</source>
+        <translation>相对姿势直线:</translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据值:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址值:</translation>
+    </message>
+    <message>
+        <source>Go to</source>
+        <translation>跳转到</translation>
+    </message>
+    <message>
+        <source>Write Const Data To Addr:</source>
+        <translation>写立即数到地址:</translation>
+    </message>
+    <message>
+        <source>Write Addr Data To Addr:</source>
+        <translation>写地址值到地址:</translation>
+    </message>
+    <message>
+        <source>Const Data:</source>
+        <translation>立即数:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+    <message>
+        <source>Target Addr:</source>
+        <translation>目标地址:</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -3897,11 +5563,11 @@ please chose!</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {1?}</translation>
     </message>
     <message>
         <source>Z</source>
@@ -3909,7 +5575,7 @@ please chose!</source>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {2?}</translation>
     </message>
     <message>
         <source>A</source>
@@ -3957,11 +5623,11 @@ please chose!</source>
     </message>
     <message>
         <source>A OFF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常闭</translation>
     </message>
     <message>
         <source>A ON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常开</translation>
     </message>
     <message>
         <source>B OFF</source>
@@ -4336,11 +6002,23 @@ please chose!</source>
     </message>
     <message>
         <source>please press startup button to origin</source>
-        <translation>请按启动键原点复归.</translation>
+        <translation type="vanished">请按启动键原点复归.</translation>
     </message>
     <message>
         <source>please press startup button to return</source>
-        <translation>请按启动键复归.</translation>
+        <translation type="vanished">请按启动键复归.</translation>
+    </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation>触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes[F4]</source>
+        <translation>确定[F4]</translation>
+    </message>
+    <message>
+        <source>No[F5]</source>
+        <translation>取消[F5]</translation>
     </message>
 </context>
 <context>
@@ -4360,6 +6038,14 @@ please chose!</source>
     <message>
         <source>Start Update</source>
         <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <source>Backup/Restore</source>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>

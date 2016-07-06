@@ -22,6 +22,8 @@ Rectangle {
     signal searchMenuTriggered()
     signal originMenuTriggered()
     signal visionMenuTriggered()
+    signal speedMenuTriggered()
+    signal dataMenuTriggered()
 
     states: [
         State {
@@ -163,12 +165,31 @@ Rectangle {
         }
 
         ICButton{
+            id:speedSettings
+            text: qsTr("Path Speed")
+            icon: "../images/origin.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: speedMenuTriggered()
+        }
+
+        ICButton{
+            id:dataCommand
+            text: qsTr("Data Command")
+            icon: "../images/origin.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: dataMenuTriggered()
+        }
+
+        ICButton{
             id:origin
             text: qsTr("origin")
             icon: "../images/origin.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: originMenuTriggered()
+            visible: false
         }
     }
 }

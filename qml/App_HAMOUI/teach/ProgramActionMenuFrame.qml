@@ -9,6 +9,13 @@ Rectangle{
 
     signal insertActionTriggered()
 
+    function showActionMenu() {
+        actionEditorContainer.setCurrentIndex(0);
+        linkedBtn1.visible = false;
+        linkedBtn2.visible = false;
+        linkedBtn3.visible = false;
+    }
+
     function setMode(mode){
         actionMenuObject.state = mode;
     }
@@ -22,10 +29,13 @@ Rectangle{
 
     function showMenu(){
         if(!actionEditorContainer.isMenuShow() && visible)
-            actionEditorContainer.showMenu();
+            showActionMenu();
     }
 
     function actionEditorContainerInstance() { return actionEditorContainer;}
+    function linkedBtn1Instance() { return linkedBtn1;}
+    function linkedBtn2Instance() { return linkedBtn2;}
+    function linkedBtn3Instance() { return linkedBtn3;}
 
     ICButton{
         id:insertBtn
@@ -113,12 +123,7 @@ Rectangle{
     }
 
     ICStackContainer{
-        function showMenu() {
-            setCurrentIndex(0);
-            linkedBtn1.visible = false;
-            linkedBtn2.visible = false;
-            linkedBtn3.visible = false;
-        }
+
         function isMenuShow() { return currentIndex == 0;}
         id:actionEditorContainer
         width: parent.width - insertBtn.width - anchors.leftMargin - splitLine.width -splitLine.anchors.leftMargin
@@ -133,39 +138,45 @@ Rectangle{
     Component.onCompleted: {
         var editor = Qt.createComponent('AxisActionEditor.qml');
         var axisEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('OutputActionEditor.qml')
+        editor = Qt.createComponent('OutputActionEditor.qml');
         var outputEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('WaitActionEditor.qml')
+        editor = Qt.createComponent('WaitActionEditor.qml');
         var waitEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('CheckActionEditor.qml')
+        editor = Qt.createComponent('CheckActionEditor.qml');
         var checkEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('ConditionActionEditor.qml')
+        editor = Qt.createComponent('ConditionActionEditor.qml');
         var conditionEditorObject = editor.createObject(actionEditorContainer);
         editor = Qt.createComponent('SyncActionEditor.qml')
         var syncEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('CommentActionEditor.qml')
+        editor = Qt.createComponent('CommentActionEditor.qml');
         var commentEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('SearchActionEditor.qml')
+        editor = Qt.createComponent('SearchActionEditor.qml');
         var searchEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('PathActionEditor.qml')
+        editor = Qt.createComponent('PathActionEditor.qml');
         var pathEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('StackActionEditor.qml')
+        editor = Qt.createComponent('StackActionEditor.qml');
         var stackEditorObject = editor.createObject(actionEditorContainer);
         stackEditorObject.stackUpdated.connect(onStackUpdated);
-        editor = Qt.createComponent('CounterActionEditor.qml')
+        editor = Qt.createComponent('CounterActionEditor.qml');
         var counterEditorObject = editor.createObject(actionEditorContainer);
         counterEditorObject.counterUpdated.connect(onCounterUpdated);
-        editor = Qt.createComponent('CustomAlarmActionEditor.qml')
+        editor = Qt.createComponent('CustomAlarmActionEditor.qml');
         var customAlarmEditorObject = editor.createObject(actionEditorContainer);
-        editor = Qt.createComponent('ModuleActionEditor.qml')
+        editor = Qt.createComponent('ModuleActionEditor.qml');
         var moduleEditorObject = editor.createObject(actionEditorContainer);
 //        PData.moduleActionEditor = moduleEditorObject;
 
-        editor = Qt.createComponent('OriginActionEditor.qml')
+        editor = Qt.createComponent('OriginActionEditor.qml');
         var originEditorObject = editor.createObject(actionEditorContainer);
 
-        editor = Qt.createComponent('VisionActionEditor.qml')
+        editor = Qt.createComponent('VisionActionEditor.qml');
         var visionEditorObject = editor.createObject(actionEditorContainer);
+
+        editor = Qt.createComponent('SpeedActionEditor.qml');
+        var speedEditorObject = editor.createObject(actionEditorContainer);
+
+        editor = Qt.createComponent('DataActionEditor.qml');
+        var dataEditorObject = editor.createObject(actionEditorContainer);
 
         actionEditorContainer.addPage(actionMenuObject);
         actionEditorContainer.addPage(axisEditorObject);
@@ -183,10 +194,19 @@ Rectangle{
         actionEditorContainer.addPage(moduleEditorObject);
         actionEditorContainer.addPage(originEditorObject);
         actionEditorContainer.addPage(visionEditorObject);
+        actionEditorContainer.addPage(speedEditorObject);
+        actionEditorContainer.addPage(dataEditorObject);
 
 
-        actionEditorContainer.showMenu();
+        showActionMenu();
+        var linkedBtnEn = function(en){
+            linkedBtn1.enabled = en;
+            linkedBtn2.enabled = en;
+            linkedBtn3.enabled = en;
+        }
+
         actionMenuObject.axisMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(1);
             linkedBtn1.text = qsTr("Output Action");
             linkedBtn1.visible = true;
@@ -202,6 +222,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.outputMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(2);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -216,6 +237,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.checkMenuTriggered;
         });
         actionMenuObject.waitMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(3);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -230,6 +252,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.checkMenuTriggered;
         });
         actionMenuObject.checkMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(4);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -244,6 +267,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.checkMenuTriggered;
         });
         actionMenuObject.conditionMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(5);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -276,6 +300,7 @@ Rectangle{
             linkedBtn3.visible = false;
         });
         actionMenuObject.pathMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(9);
             linkedBtn1.text = qsTr("Output Action");
             linkedBtn1.visible = true;
@@ -291,6 +316,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.stackMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(10);
             linkedBtn1.text = qsTr("Output Action");
             linkedBtn1.visible = true;
@@ -305,6 +331,7 @@ Rectangle{
             PData.linked3Function = actionMenuObject.counterMenuTriggered;
         });
         actionMenuObject.counterMenuTriggered.connect(function(){
+            linkedBtnEn(true);
             actionEditorContainer.setCurrentIndex(11);
             linkedBtn1.text = qsTr("Path");
             linkedBtn1.visible = true;
@@ -343,8 +370,20 @@ Rectangle{
             linkedBtn2.visible = false;
             linkedBtn3.visible = false;
         });
+        actionMenuObject.speedMenuTriggered.connect(function(){
+            actionEditorContainer.setCurrentIndex(16);
+            linkedBtn1.visible = false;
+            linkedBtn2.visible = false;
+            linkedBtn3.visible = false;
+        });
+        actionMenuObject.dataMenuTriggered.connect(function(){
+            actionEditorContainer.setCurrentIndex(17);
+            linkedBtn1.visible = false;
+            linkedBtn2.visible = false;
+            linkedBtn3.visible = false;
+        });
 
-        actionMenuBtn.buttonClicked.connect(actionEditorContainer.showMenu);
+        actionMenuBtn.buttonClicked.connect(showActionMenu);
         insertBtn.buttonClicked.connect(insertActionTriggered);
     }
 }

@@ -219,6 +219,7 @@ struct MoldMaintainRet
     enum MoldErr{
         kME_None,
         kME_InvalidMolds,
+        kME_USBNotFound,
         kME_UnknowError,
     };
 
@@ -282,10 +283,7 @@ public:
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();
     Q_INVOKABLE ICAxisDefine* axisDefine();
-    Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram)
-    {
-        return ICRobotMold::NewRecord(name, initProgram, baseFncs_).toJSON();
-    }
+    Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram, const QString& subPrograms = "[]");
     Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
     {
         return ICRobotMold::CopyRecord(name, source).toJSON();
@@ -731,6 +729,38 @@ public:
     }
 
     Q_INVOKABLE void setWatchDogEnabled(bool en);
+
+    Q_INVOKABLE QString getPictures() const;
+    Q_INVOKABLE QString getPicturesPath(const QString& picName) const;
+    Q_INVOKABLE void copyPicture(const QString &picName, const QString& to) const;
+
+    Q_INVOKABLE QString usedSourceStacks() const
+    {
+        QMap<int, int> sids = ICRobotMold::CurrentMold()->UsedSourceStack();
+        QString ret = "{";
+        QMap<int, int>::const_iterator p = sids.constBegin();
+        while(p != sids.constEnd())
+        {
+            ret += QString("\"%1:%2\",").arg(p.key(), p.value());
+        }
+        if(!sids.isEmpty())
+            ret.chop(1);
+        ret += "}";
+        return ret;
+    }
+
+    Q_INVOKABLE QString scanUserDir(const QString& path, const QString& filter) const;
+    Q_INVOKABLE QString scanMachineBackups(int mode) const;
+    Q_INVOKABLE QString scanHMIBackups(int mode) const;
+    Q_INVOKABLE QString scanGhostBackups(int mode) const;
+    Q_INVOKABLE QString backupHMIBackups(const QString& backupName, const QString& sqlData) const;
+    Q_INVOKABLE QString backupMRBackups(const QString& backupName) const;
+    Q_INVOKABLE QString makeGhost(const QString& ghostName, const QString& hmiSqlData) const;
+    Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
+    Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
+    Q_INVOKABLE int exportGhost(const QString& backupName) const;
+    Q_INVOKABLE QString restoreHMIBackups(const QString& backupName, int mode);
+
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

@@ -90,6 +90,7 @@ var programActionMenu = null;
 var moduleActionEditor;
 
 var currentEditingProgram = 0;
+var lastEditingIndex = 0;
 
 function UpdateModelStruct(event,listIndex, programIndex, model, actionObject){
     this.event = event;
@@ -97,4 +98,12 @@ function UpdateModelStruct(event,listIndex, programIndex, model, actionObject){
     this.programIndex = programIndex;
     this.model = model;
     this.actionObject = actionObject;
+}
+
+var registerEditableActions = {
+
+}
+
+function isRegisterEditableAction(action){
+    return registerEditableActions.hasOwnProperty(action);
 }

@@ -7,6 +7,14 @@ Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
 Qt.include("../../utils/utils.js")
 
+var cmdStrs = [">",
+               ">=",
+               "&lt;",
+               "&lt;=",
+               "==",
+               "!="
+        ];
+
 var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
@@ -165,6 +173,10 @@ var DefinePoints = {
             definePoints.informPointsCleared();
         }
         definePoints.parseActionPointsHelper = function(actionObject){
+            if(actionObject.action === actions.ACT_COMMENT){
+                return arguments.callee(actionObject.commentAction);
+            }
+
             if(!actionObject.hasOwnProperty("points"))
                 return [];
             var points = actionObject.points;
@@ -406,7 +418,9 @@ var useableStack = function(){
 }
 
 function parseStacks(stacks){
-    if(stacks.length < 4) return;
+    if(stacks.length < 4) {
+        stacks = "{}";
+    }
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;
@@ -438,9 +452,9 @@ function CounterInfo(id, name, current, target){
     this.name = name || "Counter-" + this.id;
     this.current = current || 0;
     this.target = target || 0;
-    this.toString = function(){
-       return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]";
-
+    this.toString = function(withName){
+        var wn = withName || false;
+        return qsTr("Counter") + "[" + this.id + "][T:" + this.target + "][C:" + this.current + "]" + (wn ? ":" + this.name : "");
     }
 }
 
@@ -574,10 +588,10 @@ function CounterManager(){
         }
         return null;
     }
-    this.counterToString = function(id){
+    this.counterToString = function(id, withName){
         var cs = this.getCounter(id);
         if(cs == null) return "Invalid Counter";
-        return cs.toString();
+        return cs.toString(withName);
     }
 
     this.countersStrList = function(){
@@ -758,6 +772,17 @@ actions.F_CMD_MOVE_POSE = actHelper++;
 actions.F_CMD_LINE3D_MOVE_POSE = actHelper++;
 actions.F_CMD_JOINT_RELATIVE = actHelper++;  //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
 actions.F_CMD_ARC3D_MOVE = actHelper++;   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
+actions.F_CMD_ARC2D_MOVE_POINT = actHelper++;   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
+actions.F_CMD_SINGLE_ADD_FUNC = actHelper++;
+actions.F_CMD_ARC_RELATIVE = actHelper++;		//< 相对曲线运动 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
+actions.F_CMD_SPEED_SMOOTH = actHelper++;       //< 轨迹速度平滑设定 起始速度，终止速度
+actions.F_CMD_ARC3D_MOVE_POINT_POSE = actHelper++;    //< 按点位姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+actions.F_CMD_ARC_RELATIVE_POSE = actHelper++; 	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+actions.F_CMD_ARC3D_MOVE_POSE = actHelper++;          //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+
+actions.F_CMD_LINE_RELATIVE_POSE = actHelper++; 	   //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
@@ -767,6 +792,10 @@ actions.F_CMD_COUNTER = 400; //< 计数器
 actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
+
+actions.F_CMD_MEMCOMPARE_CMD = 602;
+actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
+
 
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
@@ -807,6 +836,7 @@ function isJumpAction(act){
     return act === actions.F_CMD_PROGRAM_JUMP0 ||
             act === actions.F_CMD_PROGRAM_JUMP1 ||
             act === actions.F_CMD_PROGRAM_JUMP3 ||
+            act === actions.F_CMD_MEMCOMPARE_CMD ||
             act === actions.F_CMD_PROGRAM_CALL0;
 
 }
@@ -816,20 +846,40 @@ function hasCounterIDAction(action){
         var si = getStackInfoFromID(action.stackID);
         if(si != null)
             return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
+    }else if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return arguments.callee(action.commentAction);
+        }
     }
 
     return action.hasOwnProperty("counterID");
 }
 
 function hasStackIDAction(action){
+    if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return action.commentAction.hasOwnProperty("stackID");
+        }
+    }
+
     return action.hasOwnProperty("stackID");
+}
+
+function actionStackID(action){
+    if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
+    }
+    return action.stackID;
 }
 
 function actionCounterIDs(action){
     if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         return [si.si0.counterID, si.si1.counterID];
+    }else if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
     }
+
     return [action.counterID];
 }
 
@@ -840,7 +890,10 @@ var generateAxisServoAction = function(action,
                                        delay,
                                        isBadEn,
                                        isEarlyEnd,
-                                       earlyEndPos){
+                                       earlyEndPos,
+                                       isEarlySpd,
+                                       earlySpdPos,
+                                       earlySpd){
     return {
         "action":action,
         "axis":axis,
@@ -848,8 +901,11 @@ var generateAxisServoAction = function(action,
         "speed":speed||80.0,
         "delay":delay||0.00,
         //        "isBadEn":isBadEn||false,
-        //        "isEarlyEnd":isEarlyEnd||false,
-        //        "earlyEndPos":earlyEndPos||0.00
+        "isEarlyEnd":isEarlyEnd||false,
+        "earlyEndPos":earlyEndPos||0,
+        "isEarlySpd":isEarlySpd || false,
+        "earlySpdPos":earlySpdPos || 0,
+        "earlySpd":earlySpd || 0
     };
 }
 
@@ -881,6 +937,23 @@ var generateOriginAction = function(action,
         "speed":speed||80.0,
         "delay":delay||0.00,
     };
+}
+
+var generateSpeedAction = function(startSpeed,endSpeed){
+    return {
+        "action":actions.F_CMD_SPEED_SMOOTH,
+        "startSpeed":startSpeed,
+        "endSpeed":endSpeed
+    }
+}
+
+var generateDataAction = function(addr, type, data){
+    return {
+        "action":actions.F_CMD_MEM_CMD,
+        "addr":addr,
+        "type":type,
+        "data":data
+    }
 }
 
 var generateAxisPneumaticAction = function(action,delay){
@@ -959,6 +1032,17 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
         "counterID":counterID,
         "pointStatus":status,
         "autoClear": autoClear || false
+    };
+}
+
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){
+    return {
+        "action":actions.F_CMD_MEMCOMPARE_CMD,
+        "flag": flag || 0,
+        "leftAddr":leftAddr,
+        "rightAddr":rightAddr,
+        "cmd": cmd,
+        "type": type || 0
     };
 }
 
@@ -1062,6 +1146,20 @@ var generateInitProgram = function(axisDefine){
 
 }
 
+var generateInitSubPrograms = function(){
+    var initStep = [];
+    var p = JSON.stringify([generteEndAction()]);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    return JSON.stringify(initStep);
+}
+
 var gsActionToStringHelper = function(actionStr, actionObject){
     var ret =  actionStr + ":" +  actionObject.pos + " " +
             qsTr("Speed:") + actionObject.speed + " " +
@@ -1087,8 +1185,15 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     if(actionObject.isBadEn)
         ret += " " + qsTr("Bad En");
     if(actionObject.isEarlyEnd){
-        ret += " " + qsTr("Early End Pos:") + actionObject.earlyEndPos;
+        ret += "\n                            ";
+        ret += qsTr("Early End Pos:") + actionObject.earlyEndPos;
     }
+    if(actionObject.isEarlySpd){
+        ret += "\n                            ";
+        ret += " " + qsTr("Early End Spd pos:") + actionObject.earlySpdPos;
+        ret += " " + qsTr("Early End Spd:") + actionObject.earlySpd;
+    }
+
     return ret;
 }
 
@@ -1127,6 +1232,11 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+    }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
+        return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
+                cmdStrs[actionObject.cmd] + " " +
+                (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
+                + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 
     var pointDescr;
@@ -1173,6 +1283,9 @@ var callModuleActionToStringHandler = function(actionObject){
 }
 
 var commentActionToStringHandler = function(actionObject){
+    if(actionObject.commentAction != null){
+       actionObject.comment = actionToString(actionObject.commentAction);
+    }
     return actionObject.comment;
 }
 
@@ -1244,12 +1357,12 @@ var stackActionToStringHandler = function(actionObject){
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                                                           "";
-    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID) : qsTr("Counter:Self");
-    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID) : qsTr("Counter:Self"))
+    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
+    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                                              : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + " " + counterID1 + " " + counterID2;
+            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){
@@ -1324,6 +1437,21 @@ var pathActionToStringHandler = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT){
         ret += qsTr("ArcYZ:");
         needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE){
+        ret += qsTr("Offset Curve:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE){
+        ret += qsTr("Curve3D-Pose:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE){
+        ret += qsTr("PO Curve 3D:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE){
+        ret += qsTr("P Circle:");
+        needNewLine = true;
+    }else if(actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
+        ret += qsTr("PO Line 3D:");
+        needNewLine = true;
     }
 
     var points = actionObject.points;
@@ -1357,6 +1485,15 @@ var waitVisionDataActionToStringHandler = function(actionObject){
     + qsTr("Limit:") + actionObject.limit;
 }
 
+var speedActionToStringHandler = function(actionObject){
+    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+}
+
+var dataActionToStringHandler = function(actionObject){
+    var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
+    var typeName = (actionObject.type == 0? qsTr("Const Data:") : qsTr("Addr Data:"));
+    return ac + qsTr("Target Addr:") + actionObject.addr + " " + typeName + actionObject.data;
+}
 
 
 var actionToStringHandlerMap = new HashTable();
@@ -1376,6 +1513,13 @@ actionToStringHandlerMap.put(actions.F_CMD_LINE3D_MOVE_POSE, pathActionToStringH
 actionToStringHandlerMap.put(actions.F_CMD_JOINTCOORDINATE, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_COORDINATE_DEVIATION, pathActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_JOINT_RELATIVE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POINT_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC_RELATIVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_ARC3D_MOVE_POSE, pathActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_LINE_RELATIVE_POSE, pathActionToStringHandler);
+
+
 actionToStringHandlerMap.put(actions.F_CMD_TEACH_ALARM, customAlarmActiontoStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP0, conditionActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_JUMP1, conditionActionToStringHandler);
@@ -1394,13 +1538,20 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStringHandler);
 
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
+    if(actionObject.action === actions.ACT_COMMENT)
+        return ret;
     if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
+                {"item":"delay", "range":"s_rw_0_32_2_1100"},
+                {"item":"earlyEnd"},
+                {"item":"earlyEndSpd"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
@@ -1414,7 +1565,12 @@ var actionObjectToEditableITems = function(actionObject){
              actionObject.action === actions.F_CMD_LINE3D_MOVE_POSE ||
              actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
              actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-             actionObject.action === actions.F_CMD_JOINT_RELATIVE){
+             actionObject.action === actions.F_CMD_JOINT_RELATIVE ||
+             actionObject.action === actions.F_CMD_ARC_RELATIVE ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
+             actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
+             actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
+             actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
         ret = [
                     {"item":"points"},
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
@@ -1426,7 +1582,9 @@ var actionObjectToEditableITems = function(actionObject){
         else
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP1){
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
+             actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
@@ -1438,6 +1596,11 @@ var actionObjectToEditableITems = function(actionObject){
         ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_WATIT_VISION_DATA){
         ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
+    }else if(actionObject.action === actions.F_CMD_SPEED_SMOOTH){
+        ret = [{"item":"startSpeed", "range":"s_rw_0_32_1_1200"},
+               {"item":"endSpeed", "range":"s_rw_0_32_1_1200"} ];
+    }else if(actionObject.action === actions.F_CMD_MEM_CMD){
+        ret = [{"item":"addr"}, {"item":"data"}];
     }
 
     ret.push({"item":"customName"});
@@ -1500,6 +1663,11 @@ function ccErrnoToString(errno){
 
 
 var canActionUsePoint = function(actionObject){
+    if(actionObject.action === actions.ACT_COMMENT){
+        if(actionObject.commentAction != null)
+            return canActionUsePoint(actionObject.commentAction);
+    }
+
     return actionObject.action === actions.F_CMD_SINGLE ||
             actionObject.action === actions.F_CMD_CoordinatePoint ||
             actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
@@ -1514,7 +1682,12 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
             actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARCXZ_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT;
+            actionObject.action === actions.F_CMD_ARCYZ_MOVE_POINT ||
+            actionObject.action === actions.F_CMD_ARC_RELATIVE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
+            actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
+            actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
+            actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE;
 }
 
 var canActionTestRun = function(actionObject){

@@ -70,14 +70,17 @@ Item {
         else if(action === Teach.actions.F_CMD_JOINTCOORDINATE)
             selReferenceName.items = fPointNames;
         else if(action === Teach.actions.F_CMD_COORDINATE_DEVIATION ||
-                action === Teach.actions.F_CMD_JOINT_RELATIVE)
+                action === Teach.actions.F_CMD_JOINT_RELATIVE ||
+                action === Teach.actions.F_CMD_ARC_RELATIVE)
             selReferenceName.items = oPointNames;
         else
             selReferenceName.items = lPointNames;
     }
 
     function isPoseMode(){
-        return singlePoseType.isChecked || pose3DType.isChecked;
+        return singlePoseType.isChecked || poseLine3DType.isChecked
+                || poseCurve3DType.isChecked || poseOffsetCurve3DType.isChecked
+        || poseOffsetLine3DType.isChecked || poseCirclePathType.isChecked;
     }
 
     function clearPoints(){
@@ -143,7 +146,7 @@ Item {
         }else if(action == Teach.actions.F_CMD_MOVE_POSE){
             singlePoseType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_LINE3D_MOVE_POSE){
-            pose3DType.setChecked(true);
+            poseLine3DType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_JOINTCOORDINATE){
             freePathType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_COORDINATE_DEVIATION){
@@ -152,6 +155,16 @@ Item {
             offsetJogType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_ARC3D_MOVE){
             circlePathType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARC_RELATIVE){
+            arcRelPathType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARC3D_MOVE_POINT_POSE){
+            poseCurve3DType.setChecked(true);
+        }else if(action == Teach.actions.F_CMD_ARC_RELATIVE_POSE){
+            poseOffsetCurve3DType.setChecked(true);
+        }else if(action == Teach.F_CMD_ARC3D_MOVE_POSE){
+            poseCirclePathType.setChecked(true);
+        }else if(action == Teach.F_CMD_LINE_RELATIVE_POSE){
+            poseOffsetLine3DType.setChecked(true)
         }
     }
 
@@ -168,7 +181,7 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
-        enabled: (!offsetPathType.isChecked)
+        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked)
         ICButton{
             id:setIn
             text: qsTr("Set In")
@@ -439,7 +452,9 @@ Item {
                     pointViewModel.append(pointViewModel.createModelItem());
                     action = Teach.actions.F_CMD_MOVE_POSE;
 
-                }else if(checkedItem == pose3DType){
+                }else if(checkedItem == poseLine3DType ||
+                         checkedItem == poseCurve3DType ||
+                         checkedItem == poseCirclePathType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
                     motor2.setChecked(true);
@@ -447,7 +462,17 @@ Item {
                     motor4.setChecked(true);
                     motor5.setChecked(true);
                     pointViewModel.append(pointViewModel.createModelItem());
-                    action = Teach.actions.F_CMD_LINE3D_MOVE_POSE;
+                    if(checkedItem == poseLine3DType)
+                        action = Teach.actions.F_CMD_LINE3D_MOVE_POSE;
+                    else if(checkedItem == poseCurve3DType ){
+                        action = Teach.actions.F_CMD_ARC3D_MOVE_POINT_POSE;
+                        pointViewModel.append(pointViewModel.createModelItem());
+                    }
+                    else if(checkedItem == poseCirclePathType){
+                        action = Teach.actions.F_CMD_ARC3D_MOVE_POSE;
+                        pointViewModel.append(pointViewModel.createModelItem());
+                    }
+
                 }else if(checkedItem == freePathType){
                     motor0.setChecked(true);
                     motor1.setChecked(true);
@@ -509,6 +534,28 @@ Item {
                     action = Teach.actions.F_CMD_ARCYZ_MOVE_POINT;
                     pointViewModel.append(pointViewModel.createModelItem());
                     pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == arcRelPathType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    action = Teach.actions.F_CMD_ARC_RELATIVE;
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    pointViewModel.append(pointViewModel.createModelItem());
+                }else if(checkedItem == poseOffsetLine3DType ||
+                         checkedItem == poseOffsetCurve3DType){
+                    motor0.setChecked(true);
+                    motor1.setChecked(true);
+                    motor2.setChecked(true);
+                    motor3.setChecked(true);
+                    motor4.setChecked(true);
+                    motor5.setChecked(true);
+                    pointViewModel.append(pointViewModel.createModelItem());
+                    if(checkedItem == poseOffsetLine3DType)
+                        action = Teach.actions.F_CMD_LINE_RELATIVE_POSE;
+                    else if(checkedItem == poseOffsetCurve3DType){
+                        action = Teach.actions.F_CMD_ARC_RELATIVE_POSE;
+                        pointViewModel.append(pointViewModel.createModelItem());
+                    }
                 }
 
                 motor0.visible = motor0.isChecked && AxisDefine.axisInfos[0].visiable;
@@ -522,8 +569,8 @@ Item {
             }
 
             Flow{
-                width: rightCommandContainer.width - x
-                spacing: 4
+                width: rightCommandContainer.width - x + 8
+                spacing: 3
                 x:4
                 y:2
                 ICCheckBox{
@@ -581,6 +628,12 @@ Item {
 
                 }
                 ICCheckBox{
+                    id:arcRelPathType
+                    text:qsTr("Offset Curve")
+                    font.pointSize: PData.actionTypeFontPS
+
+                }
+                ICCheckBox{
                     id:circlePathType
                     text:qsTr("Circle")
                     font.pointSize: PData.actionTypeFontPS
@@ -593,11 +646,34 @@ Item {
 
                 }
                 ICCheckBox{
-                    id:pose3DType
-                    text: qsTr("Pose 3D")
+                    id:poseLine3DType
+                    text: qsTr("P Line 3D")
                     font.pointSize: PData.actionTypeFontPS
 
                 }
+                ICCheckBox{
+                    id:poseCurve3DType
+                    text: qsTr("P Curve 3D")
+                    font.pointSize: PData.actionTypeFontPS
+
+                }
+                ICCheckBox{
+                    id:poseCirclePathType
+                    text:qsTr("PCircle")
+                    font.pointSize: PData.actionTypeFontPS
+
+                }
+                ICCheckBox{
+                    id:poseOffsetLine3DType
+                    text: qsTr("PO Line 3D")
+                    font.pointSize: PData.actionTypeFontPS
+                }
+                ICCheckBox{
+                    id:poseOffsetCurve3DType
+                    text: qsTr("PO Curve 3D")
+                    font.pointSize: PData.actionTypeFontPS
+                }
+
                 ICCheckBox{
                     id:freePathType
                     text: qsTr("Free Path")

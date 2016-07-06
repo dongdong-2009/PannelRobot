@@ -141,11 +141,14 @@ Item {
             }
             return ret;
 
+        }else if(memData.isChecked){
+            ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
+                                                    lAddr.configValue, rAddr.configValue, memCmpGroup.checkedIndex,
+                                                    constData.isChecked ? 0 : 1));
+            return ret;
         }else{
-
             ret.push(Teach.generateJumpAction(parseInt(flagStr.slice(begin,end))));
             return ret;
-
         }
 
         for(var i = 0; i < mD.count; ++i){
@@ -206,11 +209,6 @@ Item {
                         visible:ys.length > 0
                     }
                     ICCheckBox{
-                        id:euY
-                        text: qsTr("EUY")
-                        visible: euYs.length > 0
-                    }
-                    ICCheckBox{
                         id:mY
                         text: qsTr("MY")
                         visible: mYs.length > 0
@@ -221,19 +219,28 @@ Item {
                         visible: xs.length > 0
                     }
                     ICCheckBox{
-                        id:euX
-                        text: qsTr("EUX")
-                        visible: euXs.length > 0
-                    }
-                    ICCheckBox{
                         id:counter
                         text: qsTr("Counter")
                         visible: counters.length > 0
+                    }
+                    ICCheckBox{
+                        id:memData
+                        text: qsTr("Mem")
                     }
 
                     ICCheckBox{
                         id:jump
                         text: qsTr("Jump")
+                    }
+                    ICCheckBox{
+                        id:euX
+                        text: qsTr("EUX")
+                        visible: euXs.length > 0
+                    }
+                    ICCheckBox{
+                        id:euY
+                        text: qsTr("EUY")
+                        visible: euYs.length > 0
                     }
                 }
             }
@@ -244,7 +251,7 @@ Item {
                 color: "#A0A0F0"
                 border.width: 1
                 border.color: "black"
-                //            visible: normalY.isChecked
+                visible: !memData.isChecked
                 ListModel{
                     id:yModel
                 }
@@ -326,6 +333,79 @@ Item {
                         }
                     }
                 }
+
+            }
+            Rectangle{
+                id:memDataConfigsContainer
+                width: yContainer.width
+                height: yContainer.height
+                visible: memData.isChecked
+                color: "#A0A0F0"
+                border.width: 1
+                border.color: "black"
+                Column{
+                    spacing: 10
+                    anchors.centerIn: parent
+                    ICButtonGroup{
+                        spacing: 24
+                        mustChecked: true
+                        checkedIndex: 0
+                        ICCheckBox{
+                            id:constData
+                            text:qsTr("Const Data")
+                            isChecked: true
+                        }
+                        ICCheckBox{
+                            id:addrData
+                            text:qsTr("Addr Data")
+                        }
+                    }
+
+                    Row{
+                        spacing: 24
+                        ICConfigEdit{
+                            id:lAddr
+                            configName: qsTr("Left Addr")
+                            inputWidth: 120
+                        }
+                        ICConfigEdit{
+                            id:rAddr
+                            configName: qsTr("Right Value")
+                            inputWidth: 120
+                        }
+                    }
+                    ICButtonGroup{
+                        spacing: 24
+                        id:memCmpGroup
+                        mustChecked: true
+                        checkedIndex: 0
+                        ICCheckBox{
+                            id: largerThan
+                            text: qsTr(">")
+                            isChecked: true
+                        }
+                        ICCheckBox{
+                            id:largerEqual
+                            text: qsTr(">=")
+                        }
+                        ICCheckBox{
+                            id: lessThan
+                            text: qsTr("<")
+                        }
+                        ICCheckBox{
+                            id:lessEqual
+                            text: qsTr("<=")
+                        }
+                        ICCheckBox{
+                            id:equal
+                            text: qsTr("==")
+                        }
+                        ICCheckBox{
+                            id:notEqual
+                            text: qsTr("!=")
+                        }
+                    }
+                }
             }
 
             Row{
@@ -337,6 +417,7 @@ Item {
                     layoutMode: 0
                     isAutoSize: true
                     spacing: 20
+                    visible: !memData.isChecked
                     ICCheckBox{
                         id:onBox
                         text: counter.isChecked ? qsTr(">=T") : qsTr("ON")
@@ -349,6 +430,8 @@ Item {
                         width: 80
                     }
                 }
+
+
                 ICCheckBox{
                     id:autoClear
                     text: qsTr("Auto Clear")
@@ -371,7 +454,7 @@ Item {
                     id: flag
                     configName: qsTr("Flag")
                     popupMode: 1
-                    inputWidth: 250
+                    inputWidth:  250
                     popupHeight: 200
 
                     onVisibleChanged: {
@@ -414,35 +497,43 @@ Item {
 
         panelRobotController.moldChanged.connect(onMoldChanged);
         onMoldChanged();
+        var i;
+        var l;
+        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+        if(ioBoardCount == 0)
+            ioBoardCount = 1;
+
+        ys = IODefines.generateIOBaseBoardCount("Y", ioBoardCount);
+        xs = IODefines.generateIOBaseBoardCount("X", ioBoardCount);
+
         var yDefines = ys;
         var yDefine;
-        var i;
-        for(i = 0; i < yDefines.length; ++i){
+        for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             yModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
         yDefines = euYs;
-        for(i = 0; i < yDefines.length; ++i){
+        for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             euYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
         yDefines = mYs;
-        for(i = 0; i < yDefines.length; ++i){
+        for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
             mYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
         var xDefines = xs;
         var xDefine;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
         xDefines = euXs;
-        for(i = 0; i < xDefines.length; ++i){
+        for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
             euXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }

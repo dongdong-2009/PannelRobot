@@ -11,6 +11,7 @@ import "ICOperationLog.js" as ICOperationLog
 import "ExternalData.js" as ESData
 import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
+import "teach/Teach.js" as Teach
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -22,6 +23,10 @@ Rectangle {
 
     function onScreenRestore(){
         panelRobotController.setBrightness(panelRobotController.getCustomSettings("Brightness", 8));
+    }
+    QtObject{
+        id:pData
+        property int lastKnob: -1
     }
 
     TopHeader{
@@ -81,10 +86,27 @@ Rectangle {
 
             else return null;
         }
-        function onMenuItemTriggered(which){
+        function showStandbyPage(){
             var c = menuContainer.children;
             var page;
-            for(var i = 0; i < c.length;++i){
+            for(var i = 0, len = c.length; i < len;++i){
+                if(c[i].hasOwnProperty("setChecked")){
+                    c[i].setChecked(false);
+                }
+                page = buttonToPage(c[i]);
+                if(page == null) continue
+                page.visible = false;
+                page.focus = false;
+            }
+            standbyPage.visible = true;
+            standbyPage.focus = true;
+        }
+
+        function onMenuItemTriggered(which){
+            standbyPage.visible = false;
+            var c = menuContainer.children;
+            var page;
+            for(var i = 0, len = c.length; i < len;++i){
                 if(c[i] == which){
                     page = buttonToPage(which);
                     if(page == null) continue
@@ -93,7 +115,6 @@ Rectangle {
                     continue;
                 }
                 if(c[i].hasOwnProperty("setChecked")){
-                    //                    c[i].setChecked(false);
                     page = buttonToPage(c[i]);
                     if(page == null) continue
                     page.visible = false;
@@ -155,6 +176,13 @@ Rectangle {
         //        anchors.topMargin: 1
         focus: true
         Loader{
+            id:standbyPage
+//            source: "StandbyPage.qml"
+            width: parent.width
+            height: parent.height
+        }
+
+        Loader{
             id:settingPage
             source: "settingpages/SettingsPage.qml"
             anchors.fill: parent
@@ -167,8 +195,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             source: "ManualPage.qml"
-            //            anchors.fill: parent
-            //            visible: false
+            visible: false
         }
         Loader{
             id:programPage
@@ -504,52 +531,15 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "dsData":[
-//                {
-//                    "camID":"0",
-//                    "data":[
-//                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
-//                    ]
-//                }
-//            ]
-//        };
-//                var toTest = {
-//                    "dsID":"www.geforcevision.com.cam",
-//                    "dsData":[
-//                        {
-//                            "camID":"0",
-//                            "data":[
-//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-//                            ]
-//                        }
-//                    ]
-//                };
-//        onETH0DataIn(JSON.stringify(toTest));
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"standardize",
-//            "camID":0,
-//            "data":[
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 }
-//            ]
-//        };
 
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"photo",
-//            "camID":0,
-//        };
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
+        var isStop  = (knobStatus === Keymap.KNOB_SETTINGS);
         if(armKeyboard.visible) armKeyboardBtn.clicked();
         armKeyboardContainer.visible = isManual;
 
         onUserChanged(ShareData.UserInfo.current);
-        menuSettings.enabled = (knobStatus == Keymap.KNOB_SETTINGS);
+        menuSettings.enabled = (isStop);
 
         menuOperation.enabled = !isAuto;
         menuProgram.itemText = isAuto ? qsTr("V Program") : qsTr("Program");
@@ -558,10 +548,24 @@ Rectangle {
             //            recordPageInBtn.clicked();
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
-        if(knobStatus === Keymap.KNOB_MANUAL){
+        if(isManual){
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
             panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+            menuOperation.setChecked(true);
+            middleHeader.onMenuItemTriggered(menuOperation);
+        }else if(isAuto){
+            var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
+            if(gsEn > 0){
+                var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
+                ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
+                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
+            }
+        }else if(isStop){
+            if(pData.lastKnob != knobStatus){
+                middleHeader.showStandbyPage();
+            }
         }
+        pData.lastKnob = knobStatus;
     }
 
     function onUserChanged(user){
@@ -569,7 +573,8 @@ Rectangle {
 
         menuSettings.enabled = !ShareData.UserInfo.isCurrentNoPerm() && ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_SETTINGS;
         if(menuSettings.isChecked && !menuSettings.enabled){
-            menuOperation.setChecked(true);
+            //            menuOperation.setChecked(true);
+            middleHeader.showStandbyPage();
         }
 
         mainHeader.setRecordItemEnabled(isRecordEn);
@@ -582,12 +587,24 @@ Rectangle {
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
         console.log("cam data:", JSON.stringify(posData));
+        var usid = JSON.parse(panelRobotController.usedSourceStacks());
+        for(var sid in usid){
+            if(usid[sid] == posData.hostID){
+                var stackInfo = Teach.getStackInfoFromID(sid);
+                if(stackInfo.si0.doesBindingCounter){
+                    var c = Teach.counterManager.getCounter(stackInfo.si0.counterID);
+                    Teach.counterManager.updateCounter(c.id, c.name, c.current, c.target);
+                    panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+                    counterUpdated(c.id);
+                }
+            }
+        }
 
         panelRobotController.sendExternalDatas(JSON.stringify(posData));
     }
 
     Component.onCompleted: {
-        menuOperation.setChecked(true);
+        //        menuOperation.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);
@@ -603,7 +620,9 @@ Rectangle {
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
 
-        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_8_0_184"));
+        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_6_0_184"));
+        onUserChanged(ShareData.UserInfo.currentUser());
+        standbyPage.source = "StandbyPage.qml";
         console.log("main load finished!")
     }
 
@@ -621,6 +640,22 @@ Rectangle {
             if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length){
                 if(Keymap.matchHWTestSequence())
                     panelRobotController.runHardwareTest();
+                else if(Keymap.matchRecalSequence()){
+                    var tipC = Qt.createComponent("../ICCustomElement/ICMessageBox.qml");
+                    var tip = tipC.createObject(mainWindow);
+                    tip.z = 100;
+                    tip.x = 300;
+                    tip.y = 100;
+                    tip.useKeyboard = true;
+                    tip.acceptKey = Keymap.KEY_F4;
+                    tip.rejectKey = Keymap.KEY_F5;
+                    tip.accept.connect(function(){
+                        panelRobotController.recal();
+                    });
+                    tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes[F4]"), qsTr("No[F5]"));
+                }
+
+//                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
             }
         }
@@ -694,7 +729,7 @@ Rectangle {
             }
             if(!panelRobotController.isOrigined()){
                 tipBar.tip = qsTr("Please press origin key and then press start key to find origin signal.")
-                tipBar.visible = true;
+                tipBar.visible = !originreturnmsgmsg.visible;
             }else{
                 tipBar.visible = false;
             }

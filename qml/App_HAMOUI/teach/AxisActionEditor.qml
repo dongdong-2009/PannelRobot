@@ -34,7 +34,13 @@ Item {
                                                            i,
                                                            axisActionInfo.pos,
                                                            axisActionInfo.speed,
-                                                           axisActionInfo.delay));
+                                                           axisActionInfo.delay,
+                                                           false,
+                                                           earlyEnd.isChecked,
+                                                           earlyEnd.configValue,
+                                                           earlyEndSpeedPos.isChecked,
+                                                           earlyEndSpeedPos.configValue,
+                                                           earlyEndSpeed.configValue));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -129,6 +135,34 @@ Item {
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
             }
+            ICCheckableLineEdit{
+                id:earlyEnd
+                configName: qsTr("Early End Pos")
+                configValue: "0"
+                inputWidth: 60
+            }
+            Row{
+                spacing: 4
+                ICCheckableLineEdit{
+                    id:earlyEndSpeedPos
+                    configName: qsTr("ESD Pos")
+                    configValue: "0"
+                    inputWidth: 60
+
+                }
+
+                ICConfigEdit{
+                    id:earlyEndSpeed
+                    configName: qsTr("ESD")
+                    unit: qsTr("%")
+                    configAddr: "s_rw_0_32_1_1200"
+                    enabled: earlyEndSpeedPos.isChecked
+                    configValue: "10.0"
+                    inputWidth: 60
+
+                }
+            }
+
 //            AxisActionEditorAxisComponent{
 //                id:m6Axis
 //                axisName: AxisDefine.axisInfos[6].name

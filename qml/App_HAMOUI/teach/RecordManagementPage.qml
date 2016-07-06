@@ -41,7 +41,6 @@ Rectangle {
                 target: recordsView;
                 model:usbModel;
                 isSelectable:true;
-//                openBackupPackage:backupPackageModel.get(recordsView.currentIndex).name;
             }
 
         }
@@ -237,20 +236,10 @@ Rectangle {
             text: qsTr("New")
             height: loadRecord.height
             onButtonClicked: {
-//                if(newName.isEmpty()){
-//                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
-//                    return;
-//                }
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
-                                                                    Teach.generateInitProgram()));
-//                if(ret.errno != 0){
-//                    tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
-//                }else{
-//                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
-//                    recordsView.positionViewAtBeginning();
-//                }
+                                                                    Teach.generateInitProgram(), Teach.generateInitSubPrograms()));
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();
@@ -262,22 +251,10 @@ Rectangle {
             text: qsTr("Copy")
             height: loadRecord.height
             onButtonClicked: {
-//                if(newName.isEmpty()){
-//                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
-//                    return;
-//                }
-                //                panelRobotController.copyRecord(newName.text,
-                //                                                recordsModel.get(recordsView.currentIndex).name)
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.copyRecord(newName.text,
                                                                      recordsModel.get(recordsView.currentIndex).name));
-//                if(ret.errno != 0){
-//                    tipDialog.warning(qsTr("Copy record fail! Err") + ret.errno, qsTr("OK"));
-//                }else{
-//                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
-//                    recordsView.positionViewAtBeginning();
-//                }
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();
@@ -320,6 +297,8 @@ Rectangle {
                 console.log(ret);
                 if(ret === 0)
                     tipDialog.information(qsTr("Expoert Finished!"), qsTr("OK"));
+                else
+                    tipDialog.warning(qsTr("No USB Found!"), qsTr("OK"));
             }
         }
         ICButton{
@@ -341,16 +320,18 @@ Rectangle {
                 var ret = JSON.parse(panelRobotController.importRobotMold(JSON.stringify(importMolds),
                                                                         recordsView.openBackupPackage));
 
+                var errLog = "";
                 for(i = 0; i < ret.length; ++i){
                     if(ret[i].errno === 0)
                         recordsModel.append(
                                     recordsView.createRecordItem(ret[i].recordName,
                                                                      ret[i].createDatetime));
                     else{
-                        tipDialog.warning(ICString.icStrformat(qsTr("Import {0} fail!"), ret[i].recordName), qsTr("OK"));
+                        errLog += ICString.icStrformat(qsTr("Import {0} fail!\n"), ret[i].recordName);
+//                        tipDialog.warning(ICString.icStrformat(qsTr("Import {0} fail!"), ret[i].recordName), qsTr("OK"));
                     }
                 }
-                tipDialog.information(qsTr("Import Finished!"), qsTr("OK"));
+                tipDialog.information(qsTr("Import Finished!\n") + errLog, qsTr("OK"));
             }
 
         }

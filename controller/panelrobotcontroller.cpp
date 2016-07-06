@@ -76,6 +76,15 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
+    QDir backupDir(ICAppSettings::userPath);
+    if(!backupDir.exists())
+    {
+#ifdef Q_WS_QWS
+        backupDir.mkpath(ICAppSettings::userPath);
+#else
+        QDir::current().mkdir(ICAppSettings::userPath);
+#endif
+    }
     connect(this,
             SIGNAL(LoadMessage(QString)),
             splash,
@@ -273,6 +282,10 @@ void PanelRobotController::sendKeyCommandToHost(int key)
 
 void PanelRobotController::sendKnobCommandToHost(int knob)
 {
+    if(knob == CMD_AUTO)
+    {
+        modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
+    }
     modifyConfigValue(ICAddr_System_Retain_1, knob);
 }
 
@@ -550,9 +563,9 @@ void PanelRobotController::InitMainView()
 
 }
 
-QString scanHelper(const QString& filter)
+QString scanHelper(const QString& filter, const QString &path = ICAppSettings::UsbPath)
 {
-    QDir usb(ICAppSettings::UsbPath);
+    QDir usb(path);
     QStringList updaters = usb.entryList(QStringList()<<filter);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
@@ -813,6 +826,11 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
             file.close();
         }
     }
+    if(!ICUtility::IsUsbAttached())
+    {
+        ret = MoldMaintainRet::kME_USBNotFound;
+        return ret;
+    }
     QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
             .arg(name)
             .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
@@ -1030,6 +1048,13 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
 {
     if(!isInAuto())
         ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    else
+    {
+        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
+        if(c.isEmpty()) return false;
+        if(c.last() != target)
+            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
@@ -1279,4 +1304,228 @@ void PanelRobotController::setWatchDogEnabled(bool en)
     ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
 #endif
 
+}
+
+QString PanelRobotController::getPictures() const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return "[]";
+    usb.cd("HCUpdate_pic");
+    QStringList updaters = usb.entryList(QStringList()<<"*.png");
+    QString ret = "[";
+    for(int i = 0; i != updaters.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(updaters.at(i)));
+    }
+    if(updaters.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+QString PanelRobotController::getPicturesPath(const QString& picName) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return "";
+    usb.cd("HCUpdate_pic");
+    return usb.absoluteFilePath(picName);
+}
+
+void PanelRobotController::copyPicture(const QString &picName, const QString& to) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists("HCUpdate_pic")) return;
+    usb.cd("HCUpdate_pic");
+    ICAppSettings settings;
+    QString uiMain = settings.UIMainName();
+    QDir appDir = QDir::current();
+    appDir.cd(uiMain);
+    appDir.cd("images");
+    ::system(QString("cp %1 %2 -f").arg(usb.absoluteFilePath(picName))
+             .arg(appDir.absoluteFilePath(to)).toLatin1());
+    ::system("sync");
+}
+
+
+QString PanelRobotController::scanUserDir(const QString &path, const QString &filter) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists(path))
+        return "[]";
+    dir.cd(path);
+    QStringList toSearch = dir.entryList(QStringList()<<filter);
+    QString ret = "[";
+    for(int i = 0; i != toSearch.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(toSearch.at(i)));
+    }
+    if(toSearch.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+QString PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("hmibps"))
+    {
+        dir.mkdir("hmibps");
+    }
+    dir.cd("hmibps");
+    QString bf = backupName + ".hmi.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
+    QFile sql(dir.absoluteFilePath("hmi.sql"));
+    if(sql.open(QFile::WriteOnly))
+    {
+        sql.write(sqlData.toUtf8());
+        sql.close();
+    }
+    QFile::copy("usr/customsettings.ini", dir.absoluteFilePath("customsettings.ini"));
+    QFile::copy("sysconfig/PanelRobot.ini", dir.absoluteFilePath("PanelRobot.ini"));
+    dir.cdUp();
+    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.hmi.hcdb")
+             .arg(dir.absolutePath()).arg(backupName).toUtf8());
+    return backupName + ".hmi.hcdb";
+}
+
+QString PanelRobotController::restoreHMIBackups(const QString &backupName, int mode)
+{
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::userPath) + "/hmibps" : ICAppSettings::UsbPath);
+    QDir dir(dirPath);
+    if(!dir.exists(backupName)) return "";
+    ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
+    QString backupDirName = backupName;
+    backupDirName.chop(9);
+    QDir backupDir(dir.absoluteFilePath(backupDirName));
+//    backupDir.cd(backupDirName);
+    QFile sqlData(backupDir.absoluteFilePath("hmi.sql"));
+    sqlData.open(QFile::ReadOnly);
+    QString ret = QString::fromUtf8(sqlData.readAll());
+    sqlData.close();
+    QFile::remove("usr/customsettings.ini");
+    QFile::remove("sysconfig/PanelRobot.ini");
+    QFile::copy(backupDir.absoluteFilePath("customsettings.ini"), "usr/customsettings.ini");
+    QFile::copy(backupDir.absoluteFilePath("PanelRobot.ini"), "sysconfig/PanelRobot.ini");
+    ::system("sync");
+    return ret;
+}
+
+QString PanelRobotController::backupMRBackups(const QString &backupName) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("mrbps"))
+    {
+        dir.mkdir("mrbps");
+    }
+    dir.cd("mrbps");
+    QString bf = backupName + ".mr.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
+    QFile::copy("RobotDatabase", dir.absoluteFilePath("RobotDatabase"));
+    dir.cdUp();
+    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.mr.hcdb")
+             .arg(dir.absolutePath()).arg(backupName).toUtf8());
+    return backupName + ".mr.hcdb";
+
+}
+
+QString PanelRobotController::makeGhost(const QString &ghostName, const QString& hmiSqlData) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("ghosts"))
+    {
+        dir.mkdir("ghosts");
+    }
+    dir.cd("ghosts");
+    QString bf = ghostName + ".ghost.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    QFile sql("hmi.sql");
+    if(sql.open(QFile::WriteOnly))
+    {
+        sql.write(hmiSqlData.toUtf8());
+        sql.close();
+    }
+    ::system(QString("tar -zcvf - %1 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2")
+             .arg(QDir::current().absolutePath())
+             .arg(dir.absoluteFilePath(ghostName + ".ghost.hcdb")).toUtf8());
+    return ghostName + ".ghost.hcdb";
+}
+
+QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse (subPrograms.toUtf8(), &ok).toList();
+    QStringList subs;
+    if(ok)
+    {
+        for(int i = 0; i < result.size(); ++i)
+        {
+            subs.append(result.at(i).toString());
+        }
+    }
+    return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
+}
+
+QString PanelRobotController::scanHMIBackups(int mode) const
+{
+    if(mode == 1)
+        return scanHelper("*.hmi.hcdb", "hmibps");
+    return scanUserDir("hmibps", "*.hmi.hcdb");
+}
+
+QString PanelRobotController::scanMachineBackups(int mode) const
+{
+    if(mode == 1)
+        return scanHelper("*.mr.hcdb", "mrbps");
+    return scanUserDir("mrbps", "*.mr.hcdb");
+
+}
+
+QString PanelRobotController::scanGhostBackups(int mode) const
+{
+    if(mode == 1)
+        return scanHelper("*.ghost.hcdb", "ghosts");
+    return scanUserDir("ghosts", "*.ghost.hcdb");
+}
+
+int exportBackupHelper(const QString& backupName, const QString& path)
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.cd(path)) return -1;
+    if(!dir.exists(backupName)) return -1;
+    if(!ICUtility::IsUsbAttached()) return -2;
+    if(QFile::copy(dir.absoluteFilePath(backupName), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)))
+    {
+        return 0;
+    }
+    return -3;
+}
+
+int PanelRobotController::exportHMIBackup(const QString &backupName) const
+{
+    return exportBackupHelper(backupName, "hmibps");
+}
+
+int PanelRobotController::exportMachineBackup(const QString &backupName) const
+{
+    return exportBackupHelper(backupName, "mrbps");
+}
+
+int PanelRobotController::exportGhost(const QString &backupName) const
+{
+    return exportBackupHelper(backupName, "ghosts");
 }

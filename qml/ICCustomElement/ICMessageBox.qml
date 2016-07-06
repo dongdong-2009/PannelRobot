@@ -14,10 +14,15 @@ MouseArea {
     property alias realWidth: realFrame.width
     property alias realHeight: realFrame.height
     property alias inputText: input.configValue
+    property bool useKeyboard: false
+    property int acceptKey: -1
+    property int rejectKey: -1
 
     signal accept();
     signal reject();
     signal finished(int status)
+
+
 
     function show(tip, yesText, noText){
         text = tip || "";
@@ -54,6 +59,21 @@ MouseArea {
         input.configValue = "";
         show(tip, yesText, noText)
     }
+
+    focus: useKeyboard && visible
+    Keys.onPressed: {
+        if(!useKeyboard) return;
+        if(event.key == acceptKey){
+            yesBtn.clicked();
+            event.accepted = true;
+        }
+        else if(event.key == rejectKey){
+            noBtn.clicked();
+            event.accepted = true;
+        }
+
+    }
+
 
     Rectangle{
         id:realFrame

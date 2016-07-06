@@ -21,7 +21,19 @@ Rectangle {
     property int currentEditingModule: 0
     property bool hasModify: false
 
+    signal actionLineDeleted(int index, variant actionObject);
+
     function menuFrame(){ return actionEditorFrame;}
+
+    function actionModifyEditor() { return modifyEditor;}
+
+    function registerEditableAction(action, editorsList, editableItems){
+        for(var i = 0, len = editorsList.length; i < len; ++i){
+            modifyEditor.registerEditableItem(editorsList[i].editor, editorsList[i].itemName);
+        }
+
+        PData.registerEditableActions[action] = editableItems;
+    }
 
     function getRecordContent(which){
         return JSON.parse(panelRobotController.programs(which));
@@ -77,7 +89,7 @@ Rectangle {
         PData.pointLinesInfo.syncLines(cPI, oCI, 1);
         if(actionObject.action === Teach.actions.ACT_FLAG){
             //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-            Teach.flagsDefine.pushFlag(editing.currentIndex, new Teach.FlagItem(actionObject.flag, actionObject.comment));
+            Teach.flagsDefine.pushFlag(cPI, new Teach.FlagItem(actionObject.flag, actionObject.comment));
         }
         if(Teach.hasCounterIDAction(actionObject)){
             var cs = Teach.actionCounterIDs(actionObject);
@@ -86,7 +98,7 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(actionObject)){
-            PData.stackLinesInfo.add(cPI, actionObject.stackID, cI);
+            PData.stackLinesInfo.add(cPI, Teach.actionStackID(actionObject), cI);
         }
         if(Teach.canActionUsePoint(actionObject)){
             var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
@@ -129,7 +141,7 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(actionObject)){
-            PData.stackLinesInfo.removeIDLine(cPI, actionObject.stackID, cI);
+            PData.stackLinesInfo.removeIDLine(cPI, Teach.actionStackID(actionObject), cI);
         }
         if(Teach.canActionUsePoint(actionObject)){
             var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
@@ -139,6 +151,7 @@ Rectangle {
         }
 
         model.remove(cI);
+        actionLineDeleted(cI, actionObject);
         PData.counterLinesInfo.syncLines(cPI, oCI, -1);
         PData.stackLinesInfo.syncLines(cPI, oCI, -1);
         PData.pointLinesInfo.syncLines(cPI, oCI, -1);
@@ -168,6 +181,7 @@ Rectangle {
 
         var cs;
         var c;
+        var sid;
         if(Teach.hasCounterIDAction(cIAction)){
             cs = Teach.actionCounterIDs(cIAction);
             for(c in cs){
@@ -176,8 +190,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
-            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI - 1);
+            sid = Teach.actionStackID(cIAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI);
+            PData.stackLinesInfo.add(cPI, sid, cI - 1);
         }
         var points;
         var p;
@@ -197,8 +212,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIPAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIPAction.stackID, cI - 1);
-            PData.stackLinesInfo.add(cPI, cIPAction.stackID, cI);
+            sid = Teach.actionStackID(cIPAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI - 1);
+            PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cIPAction)){
             points = Teach.definedPoints.parseActionPointsHelper(cIPAction);
@@ -224,6 +240,7 @@ Rectangle {
 
         var cs;
         var c;
+        var sid;
         if(Teach.hasCounterIDAction(cIAction)){
             cs = Teach.actionCounterIDs(cIAction);
             for(c in cs){
@@ -232,8 +249,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cIAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cIAction.stackID, cI);
-            PData.stackLinesInfo.add(cPI, cIAction.stackID, cI + 1);
+            sid = Teach.actionStackID(cIAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI);
+            PData.stackLinesInfo.add(cPI, sid, cI + 1);
         }
         var points;
         var p;
@@ -253,8 +271,9 @@ Rectangle {
             }
         }
         if(Teach.hasStackIDAction(cINAction)){
-            PData.stackLinesInfo.removeIDLine(cPI, cINAction.stackID, cI + 1);
-            PData.stackLinesInfo.add(cPI, cINAction.stackID, cI);
+            sid = Teach.actionStackID(cINAction);
+            PData.stackLinesInfo.removeIDLine(cPI, sid, cI + 1);
+            PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cINAction)){
             points = Teach.definedPoints.parseActionPointsHelper(cINAction);
@@ -405,7 +424,7 @@ Rectangle {
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
-            errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
+            errInfo = saveManualProgramByName(editing.text(PData.lastEditingIndex));
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -466,6 +485,10 @@ Rectangle {
         return panelRobotController.statusValue(PData.stepAddrs[editing.currentIndex]);
     }
 
+    function mappedModelRunningActionInfo(baseRunningActionInfo){
+        return baseRunningActionInfo;
+    }
+
     function currentModelRunningActionInfo(){
         var ret = panelRobotController.currentRunningActionInfo(editing.currentIndex);
         //                console.log(ret);
@@ -473,7 +496,7 @@ Rectangle {
         info.steps = JSON.parse(info.steps);
         //        if(info.moduleID >= 0)
         //            console.log(ret);
-        return info;
+        return mappedModelRunningActionInfo(info);
     }
 
     function setModuleEnabled(en){
@@ -621,6 +644,7 @@ Rectangle {
                             currentEditingProgram = PData.kManualProgramIndex;
                             PData.currentEditingProgram = PData.kManualProgramIndex;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
+                            PData.lastEditingIndex = currentIndex;
 
                         }else{
                             if(panelRobotController.isAutoMode()){
@@ -639,6 +663,7 @@ Rectangle {
                                 programListView.currentIndex = -1;
                                 currentEditingProgram = currentIndex;
                             }
+                            PData.lastEditingIndex = currentIndex;
                         }
                     }
                 }
@@ -747,7 +772,8 @@ Rectangle {
                             collectSpecialLines(PData.programs.length - 1);
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
-                            hasModify = true;
+                            saveModules();
+//                            hasModify = true;
                         }
                     }
 
@@ -877,7 +903,7 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
-                        modifyEditor.openEditor(actionObject, Teach.actionObjectToEditableITems(actionObject));
+                        modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
                         if(showY + modifyEditor.height >= container.height)
                             showY = autoEditBtn.y - modifyEditor.height + 20;
@@ -1501,7 +1527,7 @@ Rectangle {
 
             }
             if(Teach.hasStackIDAction(step.mI_ActionObject)){
-                PData.stackLinesInfo.add(which, step.mI_ActionObject.stackID, i);
+                PData.stackLinesInfo.add(which, Teach.actionStackID(step.mI_ActionObject), i);
             }
             if(Teach.canActionUsePoint(step.mI_ActionObject)){
                 var points = Teach.definedPoints.parseActionPointsHelper(step.mI_ActionObject);
@@ -1551,15 +1577,11 @@ Rectangle {
 
             model.append(new Teach.ProgramModelItem(step, at));
         }
-        for(var l = 0; l < jumpLines.length; ++l){
-            step = program[jumpLines[l]];
-            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": true});
-            model.set(jumpLines[l], {"mI_ActionObject":step, "mI_IsActionRunning": false});
-        }
         return insertedIndex;
     }
 
     function updateProgramModels(){
+        programListView.model = null;
         Teach.definedPoints.clear();
         editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
@@ -1605,6 +1627,7 @@ Rectangle {
         moduleSel.currentIndex = 0;
         currentEditingProgram = 0;
         currentEditingModule = 0;
+        programListView.model = mainProgramModel;
 
     }
 
@@ -1631,7 +1654,6 @@ Rectangle {
         PData.programs.push(sub8ProgramModel);
         PData.programs.push(functionsModel);
         PData.programs.push(manualProgramModel);
-
 
         updateProgramModels();
         var mPs = ManualProgramManager.manualProgramManager.programs;

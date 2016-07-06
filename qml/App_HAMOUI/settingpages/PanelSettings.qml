@@ -13,8 +13,13 @@ Item {
     function onUserChanged(user){
         var isuserEn = ShareData.UserInfo.currentHasUserPerm();
         var issystemEn = ShareData.UserInfo.currentHasSystemPerm();
+        var isClientEn = ShareData.UserInfo.currentHasMoldPerm() ||
+                ShareData.UserInfo.currentHasSystemPerm();
         usermanegement.enabled = isuserEn;
         maintainMenuBtn.enabled = issystemEn;
+        panelMenuBtn.enabled = isClientEn;
+        picSettingMenuBtn.enabled = isClientEn;
+        networkMenuBtn.enabled = isClientEn;
     }
     property variant pages: []
     Grid{
@@ -28,11 +33,20 @@ Item {
             id:panelMenuBtn
             text: qsTr("Panel Settings")
             icon: "../images/settings_panel_config.png"
+            enabled: false
+
         }
         CatalogButton{
             id:networkMenuBtn
             text: qsTr("Network Settings")
             icon: "../images/settings_network_config.png"
+            enabled: false
+        }
+        CatalogButton{
+            id:picSettingMenuBtn
+            text: qsTr("Picture Settings")
+            icon: "../images/settings_picture_config.png"
+            enabled: false
         }
         CatalogButton{
             id:maintainMenuBtn
@@ -67,6 +81,7 @@ Item {
     Component.onCompleted: {
         configsContainer.addNav(maintainMenuBtn, Qt.createComponent('maintainPage.qml'));
         configsContainer.addNav(panelMenuBtn, Qt.createComponent('panelSettingsPage.qml'));
+        configsContainer.addNav(picSettingMenuBtn, Qt.createComponent('PictureSettings.qml'));
         configsContainer.addNav(usermanegement, Qt.createComponent('UsermanagementPage.qml'));
         configsContainer.addNav(networkMenuBtn, Qt.createComponent('NetworkSettings.qml'));
         ShareData.UserInfo.registUserChangeEvent(myitem);

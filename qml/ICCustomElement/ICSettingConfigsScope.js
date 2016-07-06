@@ -4,14 +4,16 @@ var isLoaded = false;
 function deepFindFitItem(item){
     var l = configs.length;
     if(item.hasOwnProperty("configAddr")){
-        console.log("settingscope:",item.configAddr)
+        if(item.configAddr.length > 0){
+            console.log("settingscope:",item.configAddr)
 
-        configs.push(item);
-        var fun = function(){
-            onConfigValueEditFinished(l);
-        };
-        handlers.push(fun);
-        return;
+            configs.push(item);
+            var fun = function(){
+                onConfigValueEditFinished(l);
+            };
+            handlers.push(fun);
+            return;
+        }
     }
     var itemChildren = item.children;
 

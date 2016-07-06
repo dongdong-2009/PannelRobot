@@ -25,9 +25,10 @@ Rectangle {
     }
     function updateStacksSel(){
         Teach.parseStacks(panelRobotController.stacks());
-        stackSelector.items =  Teach.stackInfosDescr()
         var hasStacks = Teach.stackInfosDescr();
+        stackSelector.configValue = -1;
         stackViewSel.currentIndex = -1;
+        stackSelector.items =  hasStacks;
         stackViewSel.items = hasStacks;
     }
     onStackTypeChanged: {
@@ -97,9 +98,10 @@ Rectangle {
         id:stackViewSel
         z: 11
         y:topContainer.y
-        x:200
+        x:220
         visible: defineStack.isChecked
         popupWidth: 200
+        popupHeight: 150
         width: popupWidth
         onCurrentIndexChanged: {
             if(currentIndex < 0 ) return;
@@ -247,6 +249,8 @@ Rectangle {
                 updateStacksSel();
             }
             else{
+                stackInfo.dsName = selectedDS;
+                stackInfo.dsHostID = dsID;
                 sid = Teach.updateStackInfo(id, stackInfo);
                 panelRobotController.saveStacks(Teach.statcksToJSON());
             }
@@ -288,9 +292,13 @@ Rectangle {
             }
             onCheckedItemChanged: {
                 stackSelector.configValue = -1;
-                stackViewSel.currentIndex = 0;
+                stackViewSel.currentIndex = -1;
                 stackType = 0;
                 speed1.visible = false;
+                currentPage = 0;
+                changePage.text = "-->";
+                detailPage.visible  = false;
+                typeSelector.visible = true;
             }
 
         }
@@ -300,7 +308,7 @@ Rectangle {
             text: qsTr("New")
             width: 60
             height: stackViewSel.height
-            x:420
+            x:450
             visible: stackViewSel.visible
             bgColor: "lime"
             onButtonClicked: {
@@ -311,31 +319,14 @@ Rectangle {
         }
 
         ICButton{
-            id:save
-            text: qsTr("Save")
-            width: 60
-            height: stackViewSel.height
-            visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
-            bgColor: "yellow"
-            anchors.left: newStack.right
-            anchors.leftMargin: 6
-            onButtonClicked: {
-                if(stackViewSel.currentIndex < 0) return;
-                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                var sI = Teach.getStackInfoFromID(id);
-                topContainer.saveStack(id,sI.descr, true, sI.posData);
-            }
-
-        }
-        ICButton{
             id:deleteStack
             text: qsTr("Delete")
-            width: save.width
+            width: newStack.width
             height: stackViewSel.height
             visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
             bgColor: "red"
 
-            anchors.left: save.right
+            anchors.left: newStack.right
             anchors.leftMargin: 6
             onButtonClicked: {
                 var sid = Teach.delStack(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())));
@@ -345,6 +336,25 @@ Rectangle {
             }
 
         }
+
+        ICButton{
+            id:save
+            text: qsTr("Save")
+            width: 80
+            height: stackViewSel.height
+            visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
+            bgColor: "yellow"
+            anchors.left: deleteStack.right
+            anchors.leftMargin: 6
+            onButtonClicked: {
+                if(stackViewSel.currentIndex < 0) return;
+                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                var sI = Teach.getStackInfoFromID(id);
+                topContainer.saveStack(id,sI.descr, true, sI.posData);
+            }
+
+        }
+
 
     }
     Column{
@@ -467,6 +477,7 @@ Rectangle {
             visible: useFlag.isChecked
             configName: qsTr("Stack")
             inputWidth: 200
+            popupHeight: 150
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;
@@ -491,6 +502,22 @@ Rectangle {
             configValue: "80.0"
         }
     }
+
+    onVisibleChanged:{
+        if(visible){
+            page1.updateCounters();
+            page2.updateCounters();
+            stackSelector.configValue = -1;
+            stackViewSel.currentIndex = -1;
+            stackType = 0;
+            speed1.visible = false;
+            currentPage = 0;
+            changePage.text = "-->";
+            detailPage.visible  = false;
+            typeSelector.visible = true;
+        }
+    }
+
     Component.onCompleted: {
         updateStacksSel();
         panelRobotController.moldChanged.connect(updateStacksSel);

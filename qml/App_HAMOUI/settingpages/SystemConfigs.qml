@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
+import "../teach/ManualProgramManager.js" as MPM
 
 
 Item {
@@ -50,12 +51,26 @@ Item {
                 qsTr("kSttPPP"), qsTr("kSttRTR"), qsTr("kSttRRP"), qsTr("kSttRRPR"),
                 qsTr("kSttRTRT"), qsTr("kSttRTRTTT"), qsTr("kStt5P"), qsTr("kSttPPP_RRR"),
                 qsTr("kSttRRPR_BRT"), qsTr("kSttRTRTTT_EX"), qsTr("kSttLathe_6p")]
-
+//                enabled: false
             }
             ICConfigEdit{
                 id:axisNum
                 configName: qsTr("Axis Num")
-                configAddr: "s_rw_16_8_0_184"
+                configAddr: "s_rw_16_6_0_184"
+            }
+            ICConfigEdit{
+                id:ioBoardNum
+                configName: qsTr("IO Board Num")
+                configAddr: "s_rw_22_2_0_184"
+            }
+
+            ICButton{
+                id:clearProgramBtn
+                text: qsTr("Clear Program Btn")
+                width: 150
+                onButtonClicked: {
+                    MPM.manualProgramManager.clear();
+                }
             }
 
 
@@ -69,7 +84,7 @@ Item {
             if(addr == "s_rw_24_8_0_184"){
                 panelRobotController.loadSysconfig(machineType.configText());
                 machineType.configValue = newV;
-            }else if(addr == "s_rw_16_8_0_184"){
+            }else if(addr == "s_rw_16_6_0_184"){
                 AxisDefine.changeAxisNum(newV);
             }
         }

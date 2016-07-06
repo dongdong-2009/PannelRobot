@@ -193,6 +193,11 @@ public:
      QMap<int, int> ErrInfo() const { return errList_;}
      void RemoveErr(int line) { errList_.remove(line);}
 
+     void AddUsedSourceStack(int stackID, int dsID) { usedSourceStacks_.insert(stackID, dsID);}
+     QMap<int, int> UsedSourceStack() const { return usedSourceStacks_;}
+
+     quint32 CheckSum() const;
+
      void PrintDebugInfo() const
      {
          qDebug()<<"Program Begin:";
@@ -215,6 +220,7 @@ private:
     QMap<int, int> errList_;
     QMap<int, int> uiStepToCompiledLine_;
     QMap<int, int> compiledLineToUIStep_;
+    QMap<int, int> usedSourceStacks_;
     ICActionProgram compiledProgram_;
 };
 
@@ -421,6 +427,13 @@ public:
     bool CreateCounter(quint32 id, const QString& name, quint32 current, quint32 target);
     bool DeleteCounter(quint32 id);
     int IndexOfCounter(quint32 id) const;
+    QVariantList GetCounter(quint32 id) const
+    {
+        QVariantList ret;
+        int index = IndexOfCounter(id);
+        if(index < 0) return ret;
+        return counters_.at(index);
+    }
 
     QVector<QVariantList> Variables() const { return variables_;}
     bool CreateVariables(quint32 id, const QString& name, const QString& unit, quint32 v, quint32 decimal);
@@ -430,6 +443,9 @@ public:
     QString Functions() const { return functions_;}
     QMap<int, QMap<int, int> > SaveFunctions(const QString& functions, bool syncMold = true);
 
+    QMap<int, int> UsedSourceStack(int which = -1) const;
+
+    quint32 CheckSum() const;
 
 private:
 //    ICActionProgram ParseActionProgram_(const QString& content);

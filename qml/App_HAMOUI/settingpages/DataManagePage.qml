@@ -173,6 +173,7 @@ Item {
                         var mode = local.isChecked ? 0 : 1;
                         if(hmiConfigs.isChecked){
                             var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
+                            Storage.restore(sqlData);
 
                         }
                     }

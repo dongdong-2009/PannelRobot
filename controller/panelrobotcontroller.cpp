@@ -1412,6 +1412,7 @@ QString PanelRobotController::restoreHMIBackups(const QString &backupName, int m
     QFile::remove("sysconfig/PanelRobot.ini");
     QFile::copy(backupDir.absoluteFilePath("customsettings.ini"), "usr/customsettings.ini");
     QFile::copy(backupDir.absoluteFilePath("PanelRobot.ini"), "sysconfig/PanelRobot.ini");
+    ::system(QString("rm -r %1").arg(backupDir.absolutePath()).toUtf8());
     ::system("sync");
     return ret;
 }

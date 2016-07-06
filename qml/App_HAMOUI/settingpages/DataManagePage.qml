@@ -172,7 +172,8 @@ Item {
                         var backupName = backuViews.model.get(backuViews.currentIndex).name;
                         var mode = local.isChecked ? 0 : 1;
                         if(hmiConfigs.isChecked){
-                            console.log(panelRobotController.restoreHMIBackups(backupName, mode));
+                            var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
+
                         }
                     }
                 }

@@ -271,3 +271,9 @@ function backup(){
     ret += "COMMIT;"
     return ret;
 }
+
+function restore(sqlData){
+    var db = getDatabase();
+    db.transaction(function(tx){
+    });
+}

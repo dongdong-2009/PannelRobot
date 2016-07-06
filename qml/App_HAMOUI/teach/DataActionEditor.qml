@@ -8,9 +8,9 @@ Item {
 
     function createActionObjects(){
         var ret = [];
-        ret.push(Teach.generateDataAction(targetAddr.configValue,
+        ret.push(Teach.generateDataAction(addrtarget.addr(),
                                           constData.isChecked ? 0 : 1,
-                                                                data.configValue));
+                                                                constData.isChecked ? data.configValue:addrEdit.addr()));
         return ret;
     }
 
@@ -30,19 +30,30 @@ Item {
                 text: qsTr("Addr Data")
             }
         }
-        Row{
-            spacing: 24
-            ICConfigEdit{
-                id:targetAddr
-                configName: qsTr("Target Addr")
-                inputWidth: 120
+
+           Row{
+             ICHCAddrEdit{
+                  id:addrtarget
+                  addr_edit: qsTr("Addr Target:")
+                  }
+                }
+
+           Row{
+               ICConfigEdit{
+                   id:data
+                   visible:constData.isChecked? true:false
+                   configName: qsTr("Data:")
+                   inputWidth: 120
+               }
             }
-            ICConfigEdit{
-                id:data
-                configName: qsTr("Data")
-                inputWidth: 120
-            }
+
+           Row{
+             ICHCAddrEdit{
+                  id:addrEdit
+                  visible:constData.isChecked? false:true
+                  addr_edit: qsTr("Addr Data:")
+                  }
+                }
+
         }
     }
-
-}

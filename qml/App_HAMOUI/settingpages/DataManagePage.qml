@@ -168,6 +168,13 @@ Item {
                     id:restore
                     width: newBackup.width
                     text: qsTr("Restore Selected")
+                    onButtonClicked: {
+                        var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                        var mode = local.isChecked ? 0 : 1;
+                        if(hmiConfigs.isChecked){
+                            console.log(panelRobotController.restoreHMIBackups(backupName, mode));
+                        }
+                    }
                 }
                 ICButton{
                     id:deleteBackup

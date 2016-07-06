@@ -33,7 +33,7 @@ Item {
         ICLineEdit{
             id: edit_startPos_
             height: parent.height
-            text:qsTr("0")
+            text:"0"
             inputWidth:80
             min:0
             max:32-1
@@ -47,7 +47,7 @@ Item {
         ICLineEdit{
             id: edit_size_
             height: parent.height
-            text:qsTr("32")
+            text:"32"
             inputWidth:80
             min:0
             max:64-1
@@ -61,7 +61,7 @@ Item {
         ICLineEdit{
             id: edit_baseAddr_
             height: parent.height
-            text:qsTr("1")
+            text:("1")
             inputWidth:80
             min:0
             max:16*1024-1
@@ -75,7 +75,7 @@ Item {
         ICLineEdit{
             id: edit_decimal_
             height: parent.height
-            text:qsTr("0")
+            text:("0")
             inputWidth:80
             min:0
             max:4-1

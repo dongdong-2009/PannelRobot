@@ -1164,7 +1164,7 @@
     </message>
     <message>
         <source>Mem</source>
-        <translation type="unfinished"></translation>
+        <translation>数据比较</translation>
     </message>
     <message>
         <source>Const Data</source>
@@ -1273,74 +1273,86 @@
     <name>DataActionEditor</name>
     <message>
         <source>Const Data</source>
-        <translation type="unfinished"></translation>
+        <translation>立即数</translation>
     </message>
     <message>
         <source>Addr Data</source>
-        <translation type="unfinished"></translation>
+        <translation>地址数据</translation>
     </message>
     <message>
-        <source>Target Addr</source>
-        <translation type="unfinished"></translation>
+        <source>Addr Target:</source>
+        <translation>目标地址:</translation>
     </message>
     <message>
-        <source>Data</source>
-        <translation type="unfinished"></translation>
+        <source>Data:</source>
+        <translation>立即数数据:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
     </message>
 </context>
 <context>
     <name>DataManagePage</name>
     <message>
         <source>Local</source>
-        <translation type="unfinished">本机模号</translation>
+        <translation>本机</translation>
     </message>
     <message>
         <source>U Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>U盘</translation>
     </message>
     <message>
         <source>Machine Running(Mold, Machine)</source>
-        <translation type="unfinished"></translation>
+        <translation>机器参数(模号,机器设定)</translation>
     </message>
     <message>
         <source>HMI Configs(Programable Button, Panel Settings)</source>
-        <translation type="unfinished"></translation>
+        <translation>手控参数(可编程按键,手控设定)</translation>
     </message>
     <message>
         <source>ghost</source>
-        <translation type="unfinished"></translation>
+        <translation>ghost</translation>
     </message>
     <message>
         <source>Backup Current</source>
-        <translation type="unfinished"></translation>
+        <translation>备份当前状态</translation>
     </message>
     <message>
         <source>Please input the backup name</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入备份名字</translation>
     </message>
     <message>
         <source>Backup Name</source>
-        <translation type="unfinished"></translation>
+        <translation>备份名字</translation>
     </message>
     <message>
         <source>Ok</source>
-        <translation type="unfinished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Restore Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>还原选中备份</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished">导出</translation>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Export successfully!</source>
+        <translation>导出成功!</translation>
     </message>
 </context>
 <context>
@@ -1418,6 +1430,37 @@
     <message>
         <source>End Time</source>
         <translation>结束时间</translation>
+    </message>
+</context>
+<context>
+    <name>ICHCAddrEdit</name>
+    <message>
+        <source>startPos</source>
+        <translation>开始位</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>size</source>
+        <translation>数据长度</translation>
+    </message>
+    <message>
+        <source>32</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>baseAddr</source>
+        <translation>基地址</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>decimal</source>
+        <translation>精度</translation>
     </message>
 </context>
 <context>
@@ -3415,10 +3458,6 @@
         <source>System Configs</source>
         <translation>系统参数</translation>
     </message>
-    <message>
-        <source>Data Manage</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -5048,6 +5087,24 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>TabMenuItem</name>
+    <message>
+        <source>TabItem</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItemWidget</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
+    </message>
+    <message>
+        <source>text1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Teach</name>
     <message>
         <source>Speed:</source>
@@ -5993,6 +6050,14 @@ please chose!</source>
     <message>
         <source>Start Update</source>
         <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <source>Backup/Restore</source>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>

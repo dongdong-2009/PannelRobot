@@ -1394,6 +1394,28 @@ QString PanelRobotController::backupHMIBackups(const QString& backupName, const 
     return backupName + ".hmi.hcdb";
 }
 
+QString PanelRobotController::restoreHMIBackups(const QString &backupName, int mode)
+{
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::userPath) + "/hmibps" : ICAppSettings::UsbPath);
+    QDir dir(dirPath);
+    if(!dir.exists(backupName)) return "";
+    ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
+    QString backupDirName = backupName;
+    backupDirName.chop(9);
+    QDir backupDir(dir.absoluteFilePath(backupDirName));
+//    backupDir.cd(backupDirName);
+    QFile sqlData(backupDir.absoluteFilePath("hmi.sql"));
+    sqlData.open(QFile::ReadOnly);
+    QString ret = QString::fromUtf8(sqlData.readAll());
+    sqlData.close();
+    QFile::remove("usr/customsettings.ini");
+    QFile::remove("sysconfig/PanelRobot.ini");
+    QFile::copy(backupDir.absoluteFilePath("customsettings.ini"), "usr/customsettings.ini");
+    QFile::copy(backupDir.absoluteFilePath("PanelRobot.ini"), "sysconfig/PanelRobot.ini");
+    ::system("sync");
+    return ret;
+}
+
 QString PanelRobotController::backupMRBackups(const QString &backupName) const
 {
     QDir dir(ICAppSettings::userPath);

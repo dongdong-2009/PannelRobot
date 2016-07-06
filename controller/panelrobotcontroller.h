@@ -759,6 +759,7 @@ public:
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
+    Q_INVOKABLE QString restoreHMIBackups(const QString& backupName, int mode);
 
 
     //    Q_INVOKABLE QString debug_LogContent() const

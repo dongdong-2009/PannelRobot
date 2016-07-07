@@ -61,11 +61,9 @@ ContentPageBase{
     }
     onMenuItem2Triggered: {
         pageContainer.currentPage().onInsertTriggered();
-//        pageContainer.currentPage().onSaveTriggered();
     }
     onMenuItem3Triggered: {
         pageContainer.currentPage().onDeleteTriggered();
-//        pageContainer.currentPage().onSaveTriggered();
 
     }
     onMenuItem4Triggered: {

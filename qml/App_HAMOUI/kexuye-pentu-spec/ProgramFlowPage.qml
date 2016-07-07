@@ -948,9 +948,11 @@ ProgramFlowPage {
     }
 
     function afterSaveProgram(which){
-        var p = modelToProgramHelper(which);
-        KXYRecord.keXuyePentuRecord.updateRecord(panelRobotController.currentRecordName(), JSON.stringify(p));
-        KXYRecord.keXuyePentuRecord.updateLineInfo(panelRobotController.currentRecordName(),JSON.stringify(LocalPData.stepToKeXuYeRowMap));
+        if(which == 0){
+            var p = modelToProgramHelper(which);
+            KXYRecord.keXuyePentuRecord.updateRecord(panelRobotController.currentRecordName(), JSON.stringify(p));
+            KXYRecord.keXuyePentuRecord.updateLineInfo(panelRobotController.currentRecordName(),JSON.stringify(LocalPData.stepToKeXuYeRowMap));
+        }
     }
 
     function actionObjectToText(actionObject){

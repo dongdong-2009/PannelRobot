@@ -752,6 +752,8 @@ Rectangle {
                 alarmBar.errID = alarmNum;
                 if(alarmNum === 0){
                     alarmlogPage.resolvedAlarms();
+                }else if(alarmNum === 1){
+
                 }else{
                     alarmlogPage.appendAlarm(alarmNum);
                 }

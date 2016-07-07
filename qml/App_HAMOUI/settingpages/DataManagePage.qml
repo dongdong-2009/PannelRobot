@@ -174,6 +174,8 @@ Item {
                         if(hmiConfigs.isChecked){
                             var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
 
+                        }else if(machineRunningConfigs.isChecked){
+                            panelRobotController.restoreMRBackups(backupName,mode);
                         }
                     }
                 }

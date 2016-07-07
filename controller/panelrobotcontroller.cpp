@@ -1440,6 +1440,23 @@ QString PanelRobotController::backupMRBackups(const QString &backupName) const
 
 }
 
+QString PanelRobotController::restoreMRBackups(const QString &backupName, int mode)
+{
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::userPath) + "/mrbps" : ICAppSettings::UsbPath);
+    QDir dir(dirPath);
+    if(!dir.exists(backupName)) return "";
+    ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
+    QString backupDirName = backupName;
+    backupDirName.chop(8);
+    QDir backupDir(dir.absoluteFilePath(backupDirName));
+    QFile::remove("RobotDatabase");
+    QFile::copy(backupDir.absoluteFilePath("RobotDatabase"), "RobotDatabase");
+    ::system(QString("rm -rf %1").arg(backupDir.absolutePath()).toUtf8());
+    return "";
+
+}
+
+
 QString PanelRobotController::makeGhost(const QString &ghostName, const QString& hmiSqlData) const
 {
     QDir dir(ICAppSettings::userPath);

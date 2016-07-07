@@ -175,6 +175,8 @@ Item {
                             var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
                             Storage.restore(sqlData);
 
+                        }else if(machineRunningConfigs.isChecked){
+                            panelRobotController.restoreMRBackups(backupName,mode);
                         }
                     }
                 }

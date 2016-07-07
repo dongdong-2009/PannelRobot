@@ -283,10 +283,7 @@ public:
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();
     Q_INVOKABLE ICAxisDefine* axisDefine();
-    Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram)
-    {
-        return ICRobotMold::NewRecord(name, initProgram, baseFncs_).toJSON();
-    }
+    Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram, const QString& subPrograms = "[]");
     Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
     {
         return ICRobotMold::CopyRecord(name, source).toJSON();
@@ -752,6 +749,18 @@ public:
         return ret;
     }
 
+    Q_INVOKABLE QString scanUserDir(const QString& path, const QString& filter) const;
+    Q_INVOKABLE QString scanMachineBackups() const
+    {
+        return scanUserDir("mrbps", "*.mr.hcdb");
+    }
+    Q_INVOKABLE QString scanHMIBackups() const
+    {
+        return scanUserDir("hmibps", "*.hmi.hcdb");
+    }
+    Q_INVOKABLE void backupHMIBackups(const QString& backupName, const QString& sqlData) const;
+    Q_INVOKABLE void backupMRBackups(const QString& backupName) const;
+    Q_INVOKABLE void makeGhost(const QString& ghostName) const;
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

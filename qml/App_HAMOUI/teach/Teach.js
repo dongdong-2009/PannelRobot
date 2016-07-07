@@ -6,6 +6,16 @@ Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
 Qt.include("../../utils/utils.js")
+Qt.include("../configs/Keymap.js")
+
+
+var cmdStrs = [">",
+               ">=",
+               "&lt;",
+               "&lt;=",
+               "==",
+               "!="
+        ];
 
 var DefinePoints = {
     kPT_Locus: "L",
@@ -785,6 +795,10 @@ actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
+actions.F_CMD_MEMCOMPARE_CMD = 602;
+actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
+
+
 actions.F_CMD_PROGRAM_JUMP0 = 10000;
 actions.F_CMD_PROGRAM_JUMP1 = 10001;
 actions.F_CMD_PROGRAM_JUMP2 = 10002;  //< 计数器跳转 跳转步号 计数器ID 清零操作（0：不自动清零；1：到达计数时候自动清零）
@@ -824,6 +838,7 @@ function isJumpAction(act){
     return act === actions.F_CMD_PROGRAM_JUMP0 ||
             act === actions.F_CMD_PROGRAM_JUMP1 ||
             act === actions.F_CMD_PROGRAM_JUMP3 ||
+            act === actions.F_CMD_MEMCOMPARE_CMD ||
             act === actions.F_CMD_PROGRAM_CALL0;
 
 }
@@ -929,8 +944,17 @@ var generateOriginAction = function(action,
 var generateSpeedAction = function(startSpeed,endSpeed){
     return {
         "action":actions.F_CMD_SPEED_SMOOTH,
-        "startSpeed":startSpeed,
-        "endSpeed":endSpeed
+        "startSpeed":startSpeed||0.0,
+        "endSpeed":endSpeed||0.0
+    }
+}
+
+var generateDataAction = function(addr, type, data){            //type 0:lijishu  1:addr value
+    return {
+        "action":actions.F_CMD_MEM_CMD,
+        "addr":addr,
+        "type":type,
+        "data":data
     }
 }
 
@@ -991,7 +1015,7 @@ var generateConditionAction = function(type, point, inout, status, limit, flag){
         "point":point,
         "pointStatus":status,
         "inout":inout || 0,
-        "limit":limit || 0.50,
+        "limit":limit || 0.00,
         "flag": flag || 0,
     };
 }
@@ -1010,6 +1034,17 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
         "counterID":counterID,
         "pointStatus":status,
         "autoClear": autoClear || false
+    };
+}
+
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){      //type 0:add-num  1:add-add
+    return {
+        "action":actions.F_CMD_MEMCOMPARE_CMD,
+        "flag": flag || 0,
+        "leftAddr":leftAddr,
+        "rightAddr":rightAddr,
+        "cmd": cmd,
+        "type": type || 0
     };
 }
 
@@ -1113,6 +1148,102 @@ var generateInitProgram = function(axisDefine){
 
 }
 
+var cycle8 = function(){
+    var f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag1 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag2 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag3 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag4 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag5 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag6 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag7 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag8 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag9 = f.flagID;
+    var ret = [];
+//      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
+    ret.push(generateConditionAction(0, 20, 1, 0, 0,flag1));
+    ret.push(generateConditionAction(0, 20, 0, 0, 0,flag1));
+    ret.push(generateOutputAction(20,0,0,20,0));     //close
+    ret.push(generateFlagAction(flag1, qsTr("Positive")));
+
+    ret.push(generateConditionAction(0, 21, 1, 0, 0,flag2));
+    ret.push(generateConditionAction(0, 21, 0, 0, 0,flag2));
+    ret.push(generateOutputAction(21,0,0,21,0));     //close
+    ret.push(generateFlagAction(flag2, qsTr("Negative")));
+
+    ret.push(generateConditionAction(0, 22, 0, 0, 0,flag3));        //X36
+//    generateWaitAction = function(which, type, status, limit)
+    ret.push(generateWaitAction(22,0,0,10));
+    ret.push(generateDataAction(98304,0,2560));
+    ret.push(generateFlagAction(flag3, qsTr("Run End")));
+
+    ret.push(generateConditionAction(0, 23, 0, 0, 0,flag4));
+    ret.push(generateWaitAction(23,0,0,10));
+    ret.push(generateDataAction(98304,0,2561));
+    ret.push(generateJumpAction(flag7));
+    ret.push(generateFlagAction(flag4, qsTr("Stop End")));
+
+    ret.push(generateConditionAction(0, 24, 0, 0, 0,flag5));
+    ret.push(generateWaitAction(24,0,0,10));
+    ret.push(generateDataAction(98304,0,2563));
+    ret.push(generateFlagAction(flag5, qsTr("Return End")));
+
+    ret.push(generateConditionAction(4, 15, 1, 0, 0,flag6));
+    ret.push(generateOutputAction(15,4,0,0,0));     //m0 close
+    ret.push(generateJumpAction(flag7));
+    ret.push(generateFlagAction(flag6, qsTr("Emergency End")));
+
+//    generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type)
+    ret.push(generateMemCmpJumpAction(flag8,61476905,CMD_AUTO,5,0));
+    ret.push(generateJumpAction(flag7));
+    ret.push(generateFlagAction(flag8, qsTr("CMD_CONFIG")));
+
+    ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,0));
+    ret.push(generateFlagAction(flag7, qsTr("Close Out Put")));
+    ret.push(generateOutputAction(16,0,0,16,0));     //close
+    ret.push(generateOutputAction(17,0,0,17,0));     //close
+    ret.push(generateOutputAction(18,0,0,18,0));     //close
+    ret.push(generateOutputAction(19,0,0,19,0));     //close
+    ret.push(generateOutputAction(20,0,0,20,0));     //close
+    ret.push(generateOutputAction(21,0,0,21,0));     //close
+    ret.push(generateFlagAction(flag9, qsTr("CMD_CONFIG")));
+
+
+    ret.push(generteEndAction());
+    return JSON.stringify(ret);
+}
+
+var generateInitSubPrograms = function(){
+    var initStep = [];
+    var p = JSON.stringify([generteEndAction()]);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(p);
+    initStep.push(cycle8());
+    return JSON.stringify(initStep);
+}
+
 var gsActionToStringHelper = function(actionStr, actionObject){
     var ret =  actionStr + ":" +  actionObject.pos + " " +
             qsTr("Speed:") + actionObject.speed + " " +
@@ -1186,6 +1317,11 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
+    }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
+        return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
+                cmdStrs[actionObject.cmd] + " " +
+                (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
+                + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 
     var pointDescr;
@@ -1439,6 +1575,12 @@ var speedActionToStringHandler = function(actionObject){
     return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
 }
 
+var dataActionToStringHandler = function(actionObject){
+    var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
+    var typeName = (actionObject.type == 0? qsTr("Const Data:") : qsTr("Addr Data:"));
+    return ac + qsTr("Target Addr:") + actionObject.addr + " " + typeName + actionObject.data;
+}
+
 
 var actionToStringHandlerMap = new HashTable();
 actionToStringHandlerMap.put(actions.F_CMD_SINGLE, f_CMD_SINGLEToStringHandler);
@@ -1483,6 +1625,9 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringH
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStringHandler);
+
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
     if(actionObject.action === actions.ACT_COMMENT)
@@ -1523,7 +1668,9 @@ var actionObjectToEditableITems = function(actionObject){
         else
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP1){
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
+             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
+             actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
@@ -1535,6 +1682,11 @@ var actionObjectToEditableITems = function(actionObject){
         ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_WATIT_VISION_DATA){
         ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
+    }else if(actionObject.action === actions.F_CMD_SPEED_SMOOTH){
+        ret = [{"item":"startSpeed", "range":"s_rw_0_32_1_1200"},
+               {"item":"endSpeed", "range":"s_rw_0_32_1_1200"} ];
+    }else if(actionObject.action === actions.F_CMD_MEM_CMD){
+        ret = [{"item":"addr"}, {"item":"data"}];
     }
 
     ret.push({"item":"customName"});

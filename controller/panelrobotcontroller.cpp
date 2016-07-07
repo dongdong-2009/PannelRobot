@@ -76,6 +76,15 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
+    QDir backupDir(ICAppSettings::userPath);
+    if(!backupDir.exists())
+    {
+#ifdef Q_WS_QWS
+        backupDir.mkpath(ICAppSettings::userPath);
+#else
+        QDir::current().mkdir(ICAppSettings::userPath);
+#endif
+    }
     connect(this,
             SIGNAL(LoadMessage(QString)),
             splash,
@@ -1037,8 +1046,15 @@ void PanelRobotController::OnHostUpdateFinished(QString)
 
 bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint32 current, quint32 target)
 {
-//    if(!isInAuto())
-    ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    if(!isInAuto())
+        ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+//    else
+//    {
+//        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
+//        if(c.isEmpty()) return false;
+//        if(c.last() != target)
+//            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+//    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
@@ -1328,4 +1344,93 @@ void PanelRobotController::copyPicture(const QString &picName, const QString& to
     ::system(QString("cp %1 %2 -f").arg(usb.absoluteFilePath(picName))
              .arg(appDir.absoluteFilePath(to)).toLatin1());
     ::system("sync");
+}
+
+
+QString PanelRobotController::scanUserDir(const QString &path, const QString &filter) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists(path))
+        return "[]";
+    dir.cd(path);
+    QStringList toSearch = dir.entryList(QStringList()<<filter);
+    QString ret = "[";
+    for(int i = 0; i != toSearch.size(); ++i)
+    {
+        ret.append(QString("\"%1\",").arg(toSearch.at(i)));
+    }
+    if(toSearch.size() != 0)
+        ret.chop(1);
+    ret.append("]");
+    return ret;
+}
+
+void PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("hmibps"))
+    {
+        dir.mkdir("hmibps");
+    }
+    dir.cd("hmibps");
+    QString bf = backupName + ".hmi.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
+    QFile sql(dir.absoluteFilePath("hmi.sql"));
+    if(sql.open(QFile::WriteOnly))
+    {
+        sql.write(sqlData.toUtf8());
+        sql.close();
+    }
+    QFile::copy("usr/customsettings.ini", dir.absoluteFilePath("customsettings.ini"));
+    QFile::copy("sysconfig/PanelRobot.ini", dir.absoluteFilePath("PanelRobot.ini"));
+    dir.cdUp();
+    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.hmi.hcdb")
+             .arg(dir.absolutePath()).arg(backupName).toUtf8());
+}
+
+void PanelRobotController::backupMRBackups(const QString &backupName) const
+{
+    QDir dir(ICAppSettings::userPath);
+    if(!dir.exists("mrbps"))
+    {
+        dir.mkdir("mrbps");
+    }
+    dir.cd("mrbps");
+    QString bf = backupName + ".mr.hcdb";
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    dir.mkdir(backupName);
+    dir.cd(backupName);
+    QFile::copy("RobotDatabase", dir.absoluteFilePath("RobotDatabase"));
+    dir.cdUp();
+    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.mr.hcdb")
+             .arg(dir.absolutePath()).arg(backupName).toUtf8());
+}
+
+void PanelRobotController::makeGhost(const QString &ghostName) const
+{
+
+}
+
+QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse (subPrograms.toUtf8(), &ok).toList();
+    QStringList subs;
+    if(ok)
+    {
+        for(int i = 0; i < result.size(); ++i)
+        {
+            subs.append(result.at(i).toString());
+        }
+    }
+    return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
 }

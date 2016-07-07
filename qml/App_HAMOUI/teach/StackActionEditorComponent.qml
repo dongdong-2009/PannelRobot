@@ -293,17 +293,18 @@ Item {
     }
 
     function updateCounters(){
+        counterSel.configValue = -1;
         var countersStrList = Teach.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         counterSel.items = countersStrList;
     }
 
-    onVisibleChanged: {
-        if(visible)
-            updateCounters();
-        else
-            counterSel.configValue = -1;
-    }
+//    onVisibleChanged: {
+//        if(visible)
+//            updateCounters();
+//        else
+//            counterSel.configValue = -1;
+//    }
     onDataSourceChanged: {
         var items = dataSource;
         items.splice(0,0, qsTr("Custom Pos"));

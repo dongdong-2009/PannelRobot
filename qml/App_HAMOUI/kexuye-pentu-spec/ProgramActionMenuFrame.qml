@@ -127,6 +127,7 @@ ProgramActionMenuFrame{
             kxyObject.mode = mode;
             kxyObject.setModeName(name);
             kxyObject.setPosName(pos1name, pos2name);
+            kxyObject.gunFollowEnvisible();
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
             linkedBtn1Instance().text = qsTr("DetailFace");

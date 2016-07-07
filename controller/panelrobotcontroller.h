@@ -753,14 +753,16 @@ public:
     Q_INVOKABLE QString scanMachineBackups(int mode) const;
     Q_INVOKABLE QString scanHMIBackups(int mode) const;
     Q_INVOKABLE QString scanGhostBackups(int mode) const;
-    Q_INVOKABLE QString backupHMIBackups(const QString& backupName, const QString& sqlData) const;
-    Q_INVOKABLE QString backupMRBackups(const QString& backupName) const;
+    Q_INVOKABLE QString backupHMIBackup(const QString& backupName, const QString& sqlData) const;
+    Q_INVOKABLE QString backupMRBackup(const QString& backupName) const;
     Q_INVOKABLE QString makeGhost(const QString& ghostName, const QString& hmiSqlData) const;
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
-    Q_INVOKABLE QString restoreHMIBackups(const QString& backupName, int mode);
-    Q_INVOKABLE QString restoreMRBackups(const QString& backupName, int mode);
+    Q_INVOKABLE QString restoreHMIBackup(const QString& backupName, int mode);
+    Q_INVOKABLE void restoreMRBackup(const QString& backupName, int mode);
+    Q_INVOKABLE QString restoreGhost(const QString& backupName, int mode);
+    Q_INVOKABLE void reboot() { ::system("reboot");}
 
 
     //    Q_INVOKABLE QString debug_LogContent() const

@@ -76,13 +76,13 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     virtualKeyboard(ICRobotRangeGetter)
 {
     mainView_ = NULL;
-    QDir backupDir(ICAppSettings::userPath);
+    QDir backupDir(ICAppSettings::UserPath);
     if(!backupDir.exists())
     {
 #ifdef Q_WS_QWS
         backupDir.mkpath(ICAppSettings::userPath);
 #else
-        QDir::current().mkdir(ICAppSettings::userPath);
+        QDir::current().mkdir(ICAppSettings::UserPath);
 #endif
     }
     connect(this,
@@ -1349,7 +1349,7 @@ void PanelRobotController::copyPicture(const QString &picName, const QString& to
 
 QString PanelRobotController::scanUserDir(const QString &path, const QString &filter) const
 {
-    QDir dir(ICAppSettings::userPath);
+    QDir dir(ICAppSettings::UserPath);
     if(!dir.exists(path))
         return "[]";
     dir.cd(path);
@@ -1365,9 +1365,9 @@ QString PanelRobotController::scanUserDir(const QString &path, const QString &fi
     return ret;
 }
 
-QString PanelRobotController::backupHMIBackups(const QString& backupName, const QString& sqlData) const
+QString PanelRobotController::backupHMIBackup(const QString& backupName, const QString& sqlData) const
 {
-    QDir dir(ICAppSettings::userPath);
+    QDir dir(ICAppSettings::UserPath);
     if(!dir.exists("hmibps"))
     {
         dir.mkdir("hmibps");
@@ -1394,9 +1394,9 @@ QString PanelRobotController::backupHMIBackups(const QString& backupName, const 
     return backupName + ".hmi.hcdb";
 }
 
-QString PanelRobotController::restoreHMIBackups(const QString &backupName, int mode)
+QString PanelRobotController::restoreHMIBackup(const QString &backupName, int mode)
 {
-    QString dirPath = (mode == 0 ? QString(ICAppSettings::userPath) + "/hmibps" : ICAppSettings::UsbPath);
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/hmibps" : ICAppSettings::UsbPath);
     QDir dir(dirPath);
     if(!dir.exists(backupName)) return "";
     ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
@@ -1417,9 +1417,9 @@ QString PanelRobotController::restoreHMIBackups(const QString &backupName, int m
     return ret;
 }
 
-QString PanelRobotController::backupMRBackups(const QString &backupName) const
+QString PanelRobotController::backupMRBackup(const QString &backupName) const
 {
-    QDir dir(ICAppSettings::userPath);
+    QDir dir(ICAppSettings::UserPath);
     if(!dir.exists("mrbps"))
     {
         dir.mkdir("mrbps");
@@ -1440,11 +1440,11 @@ QString PanelRobotController::backupMRBackups(const QString &backupName) const
 
 }
 
-QString PanelRobotController::restoreMRBackups(const QString &backupName, int mode)
+void PanelRobotController::restoreMRBackup(const QString &backupName, int mode)
 {
-    QString dirPath = (mode == 0 ? QString(ICAppSettings::userPath) + "/mrbps" : ICAppSettings::UsbPath);
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/mrbps" : ICAppSettings::UsbPath);
     QDir dir(dirPath);
-    if(!dir.exists(backupName)) return "";
+    if(!dir.exists(backupName)) return;
     ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
     QString backupDirName = backupName;
     backupDirName.chop(8);
@@ -1452,14 +1452,13 @@ QString PanelRobotController::restoreMRBackups(const QString &backupName, int mo
     QFile::remove("RobotDatabase");
     QFile::copy(backupDir.absoluteFilePath("RobotDatabase"), "RobotDatabase");
     ::system(QString("rm -rf %1").arg(backupDir.absolutePath()).toUtf8());
-    return "";
 
 }
 
 
 QString PanelRobotController::makeGhost(const QString &ghostName, const QString& hmiSqlData) const
 {
-    QDir dir(ICAppSettings::userPath);
+    QDir dir(ICAppSettings::UserPath);
     if(!dir.exists("ghosts"))
     {
         dir.mkdir("ghosts");
@@ -1480,6 +1479,24 @@ QString PanelRobotController::makeGhost(const QString &ghostName, const QString&
              .arg(QDir::current().absolutePath())
              .arg(dir.absoluteFilePath(ghostName + ".ghost.hcdb")).toUtf8());
     return ghostName + ".ghost.hcdb";
+}
+
+QString PanelRobotController::restoreGhost(const QString& backupName, int mode)
+{
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/ghosts" : ICAppSettings::UsbPath);
+    QDir dir(dirPath);
+    if(!dir.exists(backupName)) return "";
+    ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf - -C /")
+             .arg(backupName)
+             .arg(dir.absolutePath()).toUtf8());
+    QFile sql("hmi.sql");
+    QString ret;
+    if(sql.open(QFile::ReadOnly))
+    {
+        ret = QString::fromUtf8(sql.readAll());
+        sql.close();
+    }
+    return ret;
 }
 
 QString PanelRobotController::newRecord(const QString &name, const QString &initProgram, const QString &subPrograms)
@@ -1522,7 +1539,7 @@ QString PanelRobotController::scanGhostBackups(int mode) const
 
 int exportBackupHelper(const QString& backupName, const QString& path)
 {
-    QDir dir(ICAppSettings::userPath);
+    QDir dir(ICAppSettings::UserPath);
     if(!dir.cd(path)) return -1;
     if(!dir.exists(backupName)) return -1;
     if(!ICUtility::IsUsbAttached()) return -2;

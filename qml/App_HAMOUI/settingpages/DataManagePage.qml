@@ -29,6 +29,27 @@ Item {
         z:2
     }
 
+    ICMessageBox{
+        id:restoreTip
+        x:250
+        y:50
+        z:2
+        onAccept: {
+            var backupName = backuViews.model.get(backuViews.currentIndex).name;
+            var mode = local.isChecked ? 0 : 1;
+            if(hmiConfigs.isChecked){
+                var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
+                Storage.restore(sqlData);
+
+            }else if(machineRunningConfigs.isChecked){
+                panelRobotController.restoreMRBackups(backupName,mode);
+            }else if(ghost.isChecked){
+                Storage.restore(panelRobotController.restoreGhost(backupName, mode));
+            }
+            panelRobotController.reboot();
+        }
+    }
+
     function refreshDataModel(){
         if(local.isChecked){
             if(hmiConfigs.isChecked){
@@ -169,15 +190,8 @@ Item {
                     width: newBackup.width
                     text: qsTr("Restore Selected")
                     onButtonClicked: {
-                        var backupName = backuViews.model.get(backuViews.currentIndex).name;
-                        var mode = local.isChecked ? 0 : 1;
-                        if(hmiConfigs.isChecked){
-                            var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
-                            Storage.restore(sqlData);
-
-                        }else if(machineRunningConfigs.isChecked){
-                            panelRobotController.restoreMRBackups(backupName,mode);
-                        }
+                        if(backuViews.currentIndex < 0) return;
+                        restoreTip.show(qsTr("System will reboot after restore! Are you sure?"), qsTr("OK"), qsTr("Cancel"));
                     }
                 }
                 ICButton{

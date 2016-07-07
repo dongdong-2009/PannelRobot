@@ -21,7 +21,7 @@ Item {
         Image {
             id: structGuideImg
             source: "../images/struct-guide.png"
-            visible: true
+            visible: false
         }
         Column{
             id:lengthContainer
@@ -29,14 +29,14 @@ Item {
             visible: !structGuideImg.visible
             ICConfigEdit{
                 id:axis1Length
-                configNameWidth: pdata.configNameWidth
+                configNameWidth: pdata.configNameWidth + 50
                 configName: AxisDefine.axisInfos[0].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_100"
             }
             ICConfigEdit{
                 id:axis2Length
-                configNameWidth: pdata.configNameWidth
+                configNameWidth: axis1Length.configNameWidth
                 configName: AxisDefine.axisInfos[1].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_107"
@@ -44,28 +44,28 @@ Item {
             }
             ICConfigEdit{
                 id:axis3Length
-                configNameWidth: pdata.configNameWidth
+                configNameWidth: axis1Length.configNameWidth
                 configName: AxisDefine.axisInfos[2].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_114"
             }
             ICConfigEdit{
                 id:axis4Length
-                configNameWidth: pdata.configNameWidth
+                configNameWidth: axis1Length.configNameWidth
                 configName: AxisDefine.axisInfos[3].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_121"
             }
             ICConfigEdit{
                 id:axis5Length
-                configNameWidth: pdata.configNameWidth
+                configNameWidth: axis1Length.configNameWidth
                 configName: AxisDefine.axisInfos[4].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_128"
             }
             ICConfigEdit{
                 id:axis6Length
-                configNameWidth: pdata.configNameWidth
+                configNameWidth: axis1Length.configNameWidth
                 configName: AxisDefine.axisInfos[5].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_135"

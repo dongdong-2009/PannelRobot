@@ -80,7 +80,7 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     if(!backupDir.exists())
     {
 #ifdef Q_WS_QWS
-        backupDir.mkpath(ICAppSettings::userPath);
+        backupDir.mkpath(ICAppSettings::UserPath);
 #else
         QDir::current().mkdir(ICAppSettings::UserPath);
 #endif

@@ -11,7 +11,7 @@ const char* ICAppSettings::UserPath = "fakeUserHome";
 const char* ICAppSettings::AppPath = ".";
 #else
 const char* ICAppSettings::UsbPath = "/mnt/udisk";
-const char* ICAppSettings::userPath = "/home/szhc/userHome";
+const char* ICAppSettings::UserPath = "/home/szhc/userHome";
 const char* ICAppSettings::AppPath = "/opt/Qt/apps";
 
 #endif

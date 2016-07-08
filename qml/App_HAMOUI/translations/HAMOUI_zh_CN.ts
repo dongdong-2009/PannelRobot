@@ -4722,6 +4722,14 @@ please chose!</source>
         <source>Edit Pos</source>
         <translation>编辑点位</translation>
     </message>
+    <message>
+        <source>Pos And Cmp</source>
+        <translation>位置和相似度</translation>
+    </message>
+    <message>
+        <source>Only Cmp</source>
+        <translation>只有相似度</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>

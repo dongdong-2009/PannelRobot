@@ -423,8 +423,7 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
         item.append(0);
     }
-    if(si.stackData.si[0].type == 2 ||
-            si.stackData.si[0].type == 3)
+    if(si.stackData.si[0].type >= 2)
     {
         item[1] = (si.dsHostID);
     }

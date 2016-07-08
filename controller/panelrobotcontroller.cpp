@@ -1564,3 +1564,26 @@ int PanelRobotController::exportGhost(const QString &backupName) const
 {
     return exportBackupHelper(backupName, "ghosts");
 }
+
+void deleteBackupHelper(const QString& subPath, const QString &backupName, int mode)
+{
+    QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/" + subPath : ICAppSettings::UsbPath);
+    QDir dir(dirPath);
+    if(!dir.exists(backupName)) return;
+    QFile::remove(dir.absoluteFilePath(backupName));
+}
+
+void PanelRobotController::deleteHIMBackup(const QString &backupName, int mode)
+{
+    deleteBackupHelper("hmibps", backupName, mode);
+}
+
+void PanelRobotController::deleteMRBackup(const QString &backupName, int mode)
+{
+    deleteBackupHelper("mrbps", backupName, mode);
+}
+
+void PanelRobotController::deleteGhost(const QString &backupName, int mode)
+{
+    deleteBackupHelper("ghosts", backupName, mode);
+}

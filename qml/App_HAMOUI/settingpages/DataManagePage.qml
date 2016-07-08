@@ -210,6 +210,7 @@ Item {
                     id:newBackup
                     width: 150
                     text: qsTr("Backup Current")
+                    enabled: local.isChecked
                     onButtonClicked: {
                         backupNameDialog.showInput(qsTr("Please input the backup name"),
                                                    qsTr("Backup Name"),
@@ -230,12 +231,25 @@ Item {
                     id:deleteBackup
                     width: newBackup.width
                     text: qsTr("Delete")
+                    onButtonClicked: {
+                        var mode = local.isChecked ? 0 : 1;
+                        var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                        if(hmiConfigs.isChecked){
+                            panelRobotController.deleteHIMBackup(backupName, mode);
+                        }else if(machineRunningConfigs.isChecked){
+                            panelRobotController.deleteMRBackup(backupName, mode);
+                        }else if(ghost.isChecked){
+                            panelRobotController.deleteGhost(backupName, mode);
+                        }
+                        backuViews.model.remove(backuViews.currentIndex);
+                    }
                 }
 
                 ICButton{
                     id:exportOrImport
                     width: newBackup.width
                     text: qsTr("Export")
+                    enabled: local.isChecked
                     onButtonClicked: {
                         var ret = 0;
                         if(backuViews.currentIndex < 0) return;

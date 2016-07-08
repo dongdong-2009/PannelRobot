@@ -92,7 +92,7 @@ Item {
         spacing: 4
         property int posWidth: 80
         property int spaceWidth: 70
-        property int counteWidth: 60
+        property int counteWidth: 50
         property int axisNameWidth: 30
         Column{
             id:dataSourceContainer
@@ -205,7 +205,7 @@ Item {
                     configName: qsTr("Space0")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
-                    configNameWidth: 80
+                    configNameWidth: 90
                 }
                 ICConfigEdit{
                     id:count0

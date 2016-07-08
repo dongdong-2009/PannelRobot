@@ -30,7 +30,7 @@ Rectangle {
             name: "moduleEditMode"
             PropertyChanges {
                 target: condition
-                enabled:false
+                enabled:true
             }
         },
         State {

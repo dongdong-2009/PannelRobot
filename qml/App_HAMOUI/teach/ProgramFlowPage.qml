@@ -754,6 +754,9 @@ Rectangle {
                             currentEditingModule = moduleSel.currentIndex;
                             delModuleBtn.visible = newModuleBtn.visible;
                             actionEditorFrame.item.setMode("moduleEditMode");
+                            PData.currentEditingProgram = PData.kFunctionProgramIndex;
+                            Teach.currentParsingProgram = PData.kFunctionProgramIndex;
+
                         }
                     }
                 }

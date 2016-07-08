@@ -645,8 +645,10 @@ Rectangle {
                             PData.currentEditingProgram = PData.kManualProgramIndex;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
                             PData.lastEditingIndex = currentIndex;
+                            actionEditorFrame.item.setMode("manualProgramEditMode");
 
                         }else{
+                            actionEditorFrame.item.setMode("");
                             if(panelRobotController.isAutoMode()){
                                 singleStep.setChecked(false);
                                 singleCycle.setChecked(false);

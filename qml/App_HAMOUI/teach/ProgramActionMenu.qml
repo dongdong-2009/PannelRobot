@@ -32,7 +32,20 @@ Rectangle {
                 target: condition
                 enabled:false
             }
+        },
+        State {
+            name: "manualProgramEditMode"
+            PropertyChanges {
+                target: group
+                enabled:false
+            }
+            PropertyChanges {
+                target: other
+                enabled:false
+
+            }
         }
+
     ]
 
 

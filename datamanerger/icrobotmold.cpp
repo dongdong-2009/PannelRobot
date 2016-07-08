@@ -397,7 +397,7 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
     //    item.append(si.si[1].doesBindingCounter);
     //    item.append(si.si[1].counterID);
-    item.append(si.stackData.all[25]);
+    item.append(si.stackData.all[30]);
     if(si.stackData.si[0].isOffsetEn)
     {
         item.append(si.stackData.si[0].offsetX);

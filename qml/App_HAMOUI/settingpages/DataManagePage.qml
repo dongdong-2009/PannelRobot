@@ -62,6 +62,17 @@ Item {
                 localGhostModel.syncModel();
                 backuViews.model = localGhostModel;
             }
+        }else if(uDisk.isChecked){
+            if(hmiConfigs.isChecked){
+                uDiskHMIBackupModel.syncModel();
+                backuViews.model = uDiskHMIBackupModel;
+            }else if(machineRunningConfigs.isChecked){
+                uDiskMachineBackupModel.syncModel();
+                backuViews.model = uDiskMachineBackupModel;
+            }else if(ghost.isChecked){
+                uDiskGhostModel.syncModel();
+                backuViews.model = uDiskGhostModel;
+            }
         }
     }
 
@@ -165,12 +176,33 @@ Item {
 
                 ListModel{
                     id:uDiskMachineBackupModel
+                    function syncModel(){
+                        uDiskMachineBackupModel.clear();
+                        var backups = JSON.parse(panelRobotController.scanMachineBackups(1));
+                        for(var i = 0, len = backups.length; i < len; ++i){
+                            uDiskMachineBackupModel.append({"name":backups[i]});
+                        }
+                    }
                 }
                 ListModel{
                     id:uDiskHMIBackupModel
+                    function syncModel(){
+                        uDiskHMIBackupModel.clear();
+                        var backups = JSON.parse(panelRobotController.scanHMIBackups(1));
+                        for(var i = 0, len = backups.length; i < len; ++i){
+                            uDiskHMIBackupModel.append({"name":backups[i]});
+                        }
+                    }
                 }
                 ListModel{
                     id:uDiskGhostModel
+                    function syncModel(){
+                        uDiskGhostModel.clear();
+                        var backups = JSON.parse(panelRobotController.scanGhostBackups(1));
+                        for(var i = 0, len = backups.length; i < len; ++i){
+                            uDiskGhostModel.append({"name":backups[i]});
+                        }
+                    }
                 }
             }
             Column{

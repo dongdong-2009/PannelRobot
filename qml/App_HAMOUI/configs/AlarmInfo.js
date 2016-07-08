@@ -233,9 +233,9 @@ function getAlarmDescr(errNum){
     }else{
         var alarm = analysisAlarmNum(errNum);
         if(alarm.type === ALARM_IO_ON_SIGNAL_START){
-            return qsTr("Wait Input:") + getXDefineFromHWPoint(alarm.point, alarm.type).xDefine.descr + qsTr("ON over time")
+            return qsTr("Wait Input:") + getXDefineFromHWPoint(alarm.point, alarm.board).xDefine.descr + qsTr("ON over time")
         }else if(alarm.type === ALARM_IO_OFF_SIGNAL_START){
-            return qsTr("Wait Input:") + getXDefineFromHWPoint(alarm.point, alarm.type).xDefine.descr + qsTr("OFF over time")
+            return qsTr("Wait Input:") + getXDefineFromHWPoint(alarm.point, alarm.board).xDefine.descr + qsTr("OFF over time")
         }else if(alarm.type === ALARM_SINGLE_ON_START){
             return qsTr("Wait Single Input:") + getValveItemFromValveID(alarm.point).descr + qsTr("ON over time")
         }else if(alarm.type === ALARM_SINGLE_OFF_START){

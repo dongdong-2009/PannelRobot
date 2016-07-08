@@ -1518,14 +1518,14 @@ QString PanelRobotController::newRecord(const QString &name, const QString &init
 QString PanelRobotController::scanHMIBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.hmi.hcdb", "hmibps");
+        return scanHelper("*.hmi.hcdb");
     return scanUserDir("hmibps", "*.hmi.hcdb");
 }
 
 QString PanelRobotController::scanMachineBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.mr.hcdb", "mrbps");
+        return scanHelper("*.mr.hcdb");
     return scanUserDir("mrbps", "*.mr.hcdb");
 
 }
@@ -1533,7 +1533,7 @@ QString PanelRobotController::scanMachineBackups(int mode) const
 QString PanelRobotController::scanGhostBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.ghost.hcdb", "ghosts");
+        return scanHelper("*.ghost.hcdb");
     return scanUserDir("ghosts", "*.ghost.hcdb");
 }
 

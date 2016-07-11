@@ -746,6 +746,7 @@ Rectangle {
                             if(actionEditorFrame.progress == 1)
                                 actionEditorFrame.item.setMode("");
                         }else{
+                            Teach.currentParsingProgram = PData.kFunctionProgramIndex;
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
                             programListView.currentIndex = -1;
@@ -755,7 +756,7 @@ Rectangle {
                             delModuleBtn.visible = newModuleBtn.visible;
                             actionEditorFrame.item.setMode("moduleEditMode");
                             PData.currentEditingProgram = PData.kFunctionProgramIndex;
-                            Teach.currentParsingProgram = PData.kFunctionProgramIndex;
+
 
                         }
                     }

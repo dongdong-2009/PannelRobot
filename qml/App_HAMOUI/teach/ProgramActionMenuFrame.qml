@@ -218,7 +218,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Condition")
             linkedBtn3.visible = true;
-            linkedBtn3.enabled = moduleSel.currentIndex == 0;
+//            linkedBtn3.enabled = moduleSel.currentIndex == 0;
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.outputMenuTriggered.connect(function(){
@@ -312,7 +312,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Condition")
             linkedBtn3.visible = true;
-            linkedBtn3.enabled = moduleSel.currentIndex == 0;
+//            linkedBtn3.enabled = moduleSel.currentIndex == 0;
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.stackMenuTriggered.connect(function(){
@@ -343,7 +343,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Condition")
             linkedBtn3.visible = true;
-            linkedBtn3.enabled = moduleSel.currentIndex == 0;
+//            linkedBtn3.enabled = moduleSel.currentIndex == 0;
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.customAlarmMenuTriggered.connect(function(){

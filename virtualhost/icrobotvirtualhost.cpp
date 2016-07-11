@@ -75,7 +75,6 @@ static QVector<QVector<quint32> > formatProgramFrame(const QVector<QVector<quint
         }
         oneLine<<data.at(i);
 
-
     }
     ret.append(oneLine);
     return ret;

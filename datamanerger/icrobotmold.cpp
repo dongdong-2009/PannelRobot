@@ -856,6 +856,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             for(int i = 0; i < cflc; ++i)
             {
                 item = f.GetICMoldItem(i);
+                if(IsJumpAction(item.at(0)))
+                {
+                    item[1] += ret.ModuleEntry(mID);
+                    item.pop_back();
+                    item.append(ICRobotMold::MoldItemCheckSum(item));
+                }
                 ret.AddICMoldItem(programEndLine, item);
                 if(item.at(0) == F_CMD_SYNC_START)
                 {

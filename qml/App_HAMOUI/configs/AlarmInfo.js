@@ -213,14 +213,14 @@ var alarmDetails = {
 
 function analysisAlarmNum(errNum){
     return {
-        "type":(errNum <=2048 ? NORMAL_TYPE: (errNum >> 8) & 0x7),
+        "type":(errNum < 2048 ? NORMAL_TYPE: (errNum >> 8) & 0x7),
         "board":(errNum >> 5) & 0x7,
         "point":(errNum & 0x1F)
     };
 }
 
 function isWaitONAlarmType(errNum){
-    if(errNum > 2048)
+    if(errNum >= 2048)
     {
         return ((errNum >> 8) & 0x7) == ALARM_IO_ON_SIGNAL_START;
     }

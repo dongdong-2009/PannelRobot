@@ -13,9 +13,9 @@ Item {
         onAccept: {
             var backupName = inputText;
             if(hmiConfigs.isChecked){
-                localHMIBackupModel.append({"name":panelRobotController.backupHMIBackups(backupName, Storage.backup())});
+                localHMIBackupModel.append({"name":panelRobotController.backupHMIBackup(backupName, Storage.backup())});
             }else if(machineRunningConfigs.isChecked){
-                localMachineBackupModel.append({"name": panelRobotController.backupMRBackups(backupName)});
+                localMachineBackupModel.append({"name": panelRobotController.backupMRBackup(backupName)});
             }else if(ghost.isChecked){
                 localGhostModel.append({"name":panelRobotController.makeGhost(backupName, Storage.backup())});
             }

@@ -189,7 +189,7 @@ Rectangle {
         ICButton{
             id:dataCommand
             text: qsTr("Data Command")
-            icon: "../images/origin.png"
+            icon: "../images/write_ram.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: dataMenuTriggered()

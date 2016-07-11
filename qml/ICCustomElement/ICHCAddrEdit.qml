@@ -1,7 +1,7 @@
 import QtQuick 1.1
 
 Item {
-    property alias addr_edit: addr_edit.text
+    property alias configName: addr_edit.text
 
     property alias startPos_configValue: edit_startPos_.text
     property alias size_configValue: edit_size_.text

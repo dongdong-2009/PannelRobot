@@ -1206,6 +1206,18 @@
         <source>!=</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据:</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -5516,7 +5528,7 @@ please chose!</source>
     </message>
     <message>
         <source>Left Addr:</source>
-        <translation>左地址:</translation>
+        <translation>左地址值:</translation>
     </message>
     <message>
         <source>Right Data:</source>

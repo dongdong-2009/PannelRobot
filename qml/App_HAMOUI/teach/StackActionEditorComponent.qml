@@ -287,8 +287,9 @@ Item {
             popupMode: dataSourceSel.visible ? 0 : 1
             configName: qsTr("Counter")
             inputWidth: 300
-            popupHeight: 150
+            popupHeight: dataSourceSel.visible ? 80 : 150
             z:100
+            visible: mode != 1
         }
     }
 

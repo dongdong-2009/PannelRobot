@@ -819,6 +819,8 @@ private:
     quint32 AddrStrValueToInt(ICAddrWrapperCPTR addr, const QString& value)
     {
         double v = value.toDouble();
+        double diff = 5 * (v < 0 ? -1 : 1) / qPow(10, addr->Decimal() + 1);
+        v += diff;
         qint32 ret = v * qPow(10, addr->Decimal());
         return static_cast<quint32>(ret);
     }

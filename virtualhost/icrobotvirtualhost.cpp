@@ -7,6 +7,7 @@
 
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
+
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::multiplexingConfigs_;
@@ -482,6 +483,7 @@ void ICRobotVirtualhost::CommunicateImpl()
         emit CommunicateError(ec);
         IncreaseCommunicateErrCount();
         if(CommunicateErrCount() > 50){
+            qDebug("Connect to host fail!");
             statusCache_.UpdateConfigValue(&c_ro_0_32_0_932, 9);
         }
 #ifdef NEW_PLAT
@@ -523,7 +525,6 @@ void ICRobotVirtualhost::CommunicateImpl()
         //        }
     }
     if(likely(recvRet_ && !recvFrame_->IsError()))
-        //    if(1)
     {
         if(recvFrame_->IsQuery())
         {
@@ -623,6 +624,12 @@ if(queue_.IsEmpty())
 }
 const ICRobotTransceiverData* toSend = static_cast<const ICRobotTransceiverData*>(queue_.Head());
 Transceiver()->Write(toSend);
+#ifdef COMM_DEBUG
+if(!toSend->IsQuery())
+{
+    qDebug()<<"toSend:"<<toSend->ToString();
+}
+#endif
 SetCommunicateInterval(toSend->IsQuery()?REFRESH_INTERVAL:(toSend->GetLength() + 5));
 }
 

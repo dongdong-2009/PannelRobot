@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
+import "../teach/ManualProgramManager.js" as ManualProgramManager
 
 
 Item {
@@ -52,7 +53,7 @@ Item {
                                                 details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                                                 details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
                                                 details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
-                                                aaaa,bbbb));
+                                                aaaa,bbbb,editaction.configValue));
         return ret;
     }
 
@@ -92,13 +93,44 @@ Item {
         button_setPos2.text = name2;
     }
     function gunFollowEnvisible(){
-        if(mode < 4)
+        if(mode < 4 || mode == 8)
             gunFollowEn.visible  = false;
         else{
             if(planeSel.configValue == 0 && dirAxisSel.configValue == 0)
                 gunFollowEn.visible  = true;
             else gunFollowEn.visible  = false;
         }
+    }
+    function hideUselessEdit(){
+        planeSel.visible = mode == 8 ? false : true;
+        dirAxisSel.visible = mode == 8 ? false : true;
+        editaction.visible = mode == 8 ? true : false;
+        button_setPos1.visible = mode == 8 ? false : true;
+        pos1Axis1.visible = mode == 8 ? false : true;
+        pos1Axis2.visible = mode == 8 ? false : true;
+        repeateSpeed.visible = mode == 8 ? false : true;
+        repeateCount.visible = mode == 8 ? false : true;
+        zlength.visible = mode == 8 ? false : true;
+        dirLength.visible = mode == 8 ? false : true;
+        dirSpeed.visible = mode == 8 ? false : true;
+    }
+
+    function onProgramAdded(program){
+        resetItems();
+    }
+
+    function onProgramChanged(program){
+        resetItems();
+    }
+
+    function onProgramRemoved(programID){
+        resetItems();
+    }
+
+    function resetItems(){
+        var ret = [];
+        editaction.configValue = -1;
+        editaction.items = ManualProgramManager.manualProgramManager.programsNameList();
     }
 
     Column{
@@ -116,6 +148,7 @@ Item {
             }
             ICComboBoxConfigEdit{
                 id:planeSel
+//                enabled: !useEn.isChecked
                 configName: qsTr("plane")
                 items: ["XY", "XZ", "YZ"]
                 //                configValue: 0
@@ -150,6 +183,8 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:dirAxisSel
+                width: 200
+//                enabled: !useEn.isChecked
                 configName: qsTr("Dir Axis")
 //                items: ["X", "Y", "Z"]
                 onConfigValueChanged:
@@ -157,6 +192,27 @@ Item {
                         gunFollowEn.visible = true;
                     else gunFollowEn.visible = false;
             }
+            ICComboBoxConfigEdit{
+                id: editaction
+                visible: false
+//                enabled: useEn.isChecked
+                configName: qsTr("Actions")
+            }
+//            ICCheckBox{
+//                id:useEn
+//                width: 60
+//                text: qsTr("UseEn")
+//                isChecked: false
+//                useCustomClickHandler: true
+//                MouseArea{
+//                    anchors.fill: parent
+//                    onClicked: {
+//                        if(!useEn.isChecked)
+//                            useEn.isChecked = true;
+//                        else useEn.isChecked = false;
+//                    }
+//                }
+//            }
         }
         Row{
             id:pos1Container
@@ -176,6 +232,7 @@ Item {
             }
             ICButton{
                 id:button_setStartPos
+//                enabled: !useEn.isChecked
                 text: qsTr("Set SPos")
                 width: configContainer.posNameWidth + 10
                 height: sPosM0.height
@@ -191,6 +248,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM0
+//                enabled: !useEn.isChecked
                 width: 150
                 configNameWidth: 28
                 configName: AxisDefine.axisInfos[0].name
@@ -199,6 +257,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM1
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[1].name
@@ -207,6 +266,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM2
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[2].name
@@ -220,6 +280,7 @@ Item {
             x: 74
             ICConfigEdit{
                 id:sPosM3
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[3].name
@@ -228,6 +289,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM4
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
@@ -236,6 +298,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM5
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
@@ -263,6 +326,7 @@ Item {
                 }
                 ICButton{
                     id:button_setPos1
+//                    enabled: !useEn.isChecked
                     width: configContainer.posNameWidth + 10
                     height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
@@ -291,6 +355,7 @@ Item {
 //                }
                 ICConfigEdit{
                     id:pos1Axis1
+//                    enabled: !useEn.isChecked
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[0].name
@@ -299,6 +364,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:pos1Axis2
+//                    enabled: !useEn.isChecked
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[1].name
@@ -307,6 +373,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:pos1Axis4
+//                    enabled: !useEn.isChecked
                     visible: false
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
@@ -316,6 +383,7 @@ Item {
                 }
                 ICCheckBox{
                     id:gunFollowEn
+//                    enabled: !useEn.isChecked
                     text: qsTr("Gun Follow En")
                     onVisibleChanged: {
                         isChecked = false;
@@ -387,6 +455,7 @@ Item {
             id:repeateContainer
             ICConfigEdit{
                 id:repeateSpeed
+//                enabled: !useEn.isChecked
 //                visible: mode == 3 ? true : false
                 width: 237
                 configName: qsTr("Rpeate Speed")
@@ -396,12 +465,14 @@ Item {
             }
             ICConfigEdit{
                 id:repeateCount
+//                enabled: !useEn.isChecked
                 visible: (mode == 3 || mode == 7) ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("Repeate Count")
             }
             ICConfigEdit{
                 id:zlength
+//                enabled: !useEn.isChecked
                 visible: mode > 3 ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("z length")
@@ -415,6 +486,7 @@ Item {
             spacing: 10
             ICConfigEdit{
                 id:dirLength
+//                enabled: !useEn.isChecked
                 visible: mode == 2 ? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
@@ -423,6 +495,7 @@ Item {
             }
             ICConfigEdit{
                 id:dirSpeed
+//                enabled: !useEn.isChecked
                 width: repeateSpeed.width
                 configName: qsTr("Dir Speed")
                 configAddr: "s_rw_0_32_1_1200"
@@ -524,5 +597,8 @@ Item {
         rotate.configValue = 90.000;
         rotateSpeed.configValue = 5.0;
         rotateCount.configValue = 4;
+
+        resetItems();
+        ManualProgramManager.manualProgramManager.registerMonitor(container);
     }
 }

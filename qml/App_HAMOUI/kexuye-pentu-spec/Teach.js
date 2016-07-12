@@ -16,6 +16,7 @@ pentuModes.ArcU3DRepeat = 4;
 pentuModes.ArcZ3DRepeat = 5;
 pentuModes.ArcSaw3DRepeat = 6;
 pentuModes.ArcDir3DRepeat = 7;
+pentuModes.DIYAction = 8;
 
 var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startPosSpeed1,
                                    startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,
@@ -23,7 +24,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
                                    fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch,
-                                   slope, rotateOKCID, gunFollowEn,aaaa,bbbb){
+                                   slope, rotateOKCID, gunFollowEn,aaaa,bbbb,editaction,useEn){
 
 
     var f = flagsDefine.createFlag(0, "");
@@ -65,6 +66,9 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag12 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag13 = f.flagID;
 //    if(mode == 0){
 
     var rpeateAxis = 0;
@@ -256,6 +260,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "flag10":flag10,
         "flag11":flag11,
         "flag12":flag12,
+        "flag13":flag13,
 //        "startPosSpeed0":startPosSpeed0,
 //        "startPosSpeed1":startPosSpeed1,
 //        "startPosSpeed2":startPosSpeed2,
@@ -283,7 +288,9 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "slope":slope,
         "gunFollowEn":gunFollowEn,
         "aaaa":aaaa,
-        "bbbb":bbbb
+        "bbbb":bbbb,
+        "editaction":editaction,
+        "useEn":useEn
     };
 }
 

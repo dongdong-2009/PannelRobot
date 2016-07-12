@@ -678,6 +678,16 @@ Rectangle {
                     function onNewManualProgram(status){
                         tipBox.finished.disconnect(newManualProgram.onNewManualProgram);
                         if(status){
+//                            var f = Teach.flagsDefine.createFlag(0, "");
+//                            Teach.flagsDefine.pushFlag(0, f);
+//                            var flag0 = f.flagID;
+//                            var f = Teach.flagsDefine.createFlag(0, "");
+//                            Teach.flagsDefine.pushFlag(0, f);
+//                            var flag1 = f.flagID;
+//                            var ret = [];
+//                            ret.push(Teach.generateFlagAction(flag0, qsTr("NoUse")));
+//                            ret.push(Teach.generateFlagAction(flag1, qsTr("NoUse")));
+//                            ret.push(Teach.generteEndAction());
                             var toAdd = ManualProgramManager.manualProgramManager.addProgram(tipBox.inputText, [Teach.generteEndAction()]);
                             editing.resetProgramItems();
                         }

@@ -77,19 +77,19 @@
     </message>
     <message>
         <source>startSpeed</source>
-        <translation type="unfinished"></translation>
+        <translation>起始速度</translation>
     </message>
     <message>
         <source>endSpeed</source>
-        <translation type="unfinished"></translation>
+        <translation>结束速度</translation>
     </message>
     <message>
         <source>addr</source>
-        <translation type="unfinished"></translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>data</source>
-        <translation type="unfinished"></translation>
+        <translation>数据</translation>
     </message>
 </context>
 <context>
@@ -5964,7 +5964,7 @@ please chose!</source>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation>限时:</translation>
     </message>
 </context>
 <context>

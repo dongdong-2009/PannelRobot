@@ -99,7 +99,7 @@ Item {
         height += buttons.height + buttons.spacing + 6;
 //        height += 20
         width = maxWidth < 300 ? 300 : maxWidth;
-        visible = true;
+        visible = height > buttons.height + buttons.spacing + 6;
     }
     visible: false
     width: 300
@@ -110,10 +110,10 @@ Item {
         flickableDirection: Flickable.VerticalFlick
         clip: true
         isshowhint: true
-        width: editorContainer.width
+        width: editorContainer.width + 10
         height: Math.min(editorContainer.height, maxHeight) + 4
         hintx: width - 15
-        contentWidth: editorContainer.width
+        contentWidth: editorContainer.width + 10
         contentHeight: editorContainer.height
         Column{
             id:editorContainer

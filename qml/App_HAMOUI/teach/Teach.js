@@ -1599,8 +1599,6 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_SPEED_SMOOTH){
         ret = [{"item":"startSpeed", "range":"s_rw_0_32_1_1200"},
                {"item":"endSpeed", "range":"s_rw_0_32_1_1200"} ];
-    }else if(actionObject.action === actions.F_CMD_MEM_CMD){
-        ret = [{"item":"addr"}, {"item":"data"}];
     }
 
     ret.push({"item":"customName"});

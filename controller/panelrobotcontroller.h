@@ -767,6 +767,10 @@ public:
     Q_INVOKABLE void deleteGhost(const QString& backupName, int mode);
     Q_INVOKABLE void reboot() { ::system("reboot");}
 
+    Q_INVOKABLE void processEvents()
+    {
+        qApp->processEvents();
+    }
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

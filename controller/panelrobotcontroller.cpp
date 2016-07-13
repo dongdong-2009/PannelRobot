@@ -476,6 +476,9 @@ void PanelRobotController::setToRunningUIPath(const QString &dirname)
             ICAppSettings settings;
             settings.SetUIMainName(qml.path());
             settings.sync();
+#ifdef Q_WS_QWS
+            ::system("reboot");
+#endif
         }
     }
 }

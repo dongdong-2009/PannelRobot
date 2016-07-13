@@ -221,6 +221,8 @@ signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
     void QueryFinished(int addr, const QVector<quint32>& v);
+//    void SendingContinuousData();
+//    void SentContinuousData(int);
 
 public slots:
 

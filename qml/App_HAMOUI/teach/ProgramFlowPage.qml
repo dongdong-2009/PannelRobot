@@ -421,6 +421,7 @@ Rectangle {
         if(!hasModify) return;
         beforeSaveProgram(which);
         var errInfo;
+        tipBox.runningTip(qsTr("Program Compiling..."));
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
@@ -443,6 +444,8 @@ Rectangle {
             }
             tipBox.warning(toShow, qsTr("OK"));
         }
+        else
+            tipBox.visible = false;
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
         hasModify = false;

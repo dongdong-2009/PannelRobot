@@ -991,6 +991,10 @@
         <source>%</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Motor 4</source>
+        <translation type="unfinished">台达伺服 {4?}</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -4401,6 +4405,10 @@ please chose!</source>
     <message>
         <source>Start Line:[-1]</source>
         <translation>设当前行为单步起始:[-1]</translation>
+    </message>
+    <message>
+        <source>Program Compiling...</source>
+        <translation>程序编译中...</translation>
     </message>
 </context>
 <context>

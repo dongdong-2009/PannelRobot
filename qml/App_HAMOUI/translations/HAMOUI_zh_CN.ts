@@ -77,19 +77,19 @@
     </message>
     <message>
         <source>startSpeed</source>
-        <translation type="unfinished"></translation>
+        <translation>起始速度</translation>
     </message>
     <message>
         <source>endSpeed</source>
-        <translation type="unfinished"></translation>
+        <translation>结束速度</translation>
     </message>
     <message>
         <source>addr</source>
-        <translation type="unfinished"></translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>data</source>
-        <translation type="unfinished"></translation>
+        <translation>数据</translation>
     </message>
 </context>
 <context>
@@ -991,6 +991,10 @@
         <source>%</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Motor 4</source>
+        <translation type="unfinished">台达伺服 {4?}</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -1176,11 +1180,11 @@
     </message>
     <message>
         <source>Left Addr</source>
-        <translation>左地址</translation>
+        <translation type="vanished">左地址</translation>
     </message>
     <message>
         <source>Right Value</source>
-        <translation>右值</translation>
+        <translation type="vanished">右值</translation>
     </message>
     <message>
         <source>&gt;</source>
@@ -1205,6 +1209,18 @@
     <message>
         <source>!=</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据:</translation>
     </message>
 </context>
 <context>
@@ -1353,6 +1369,10 @@
     <message>
         <source>Export successfully!</source>
         <translation>导出成功!</translation>
+    </message>
+    <message>
+        <source>System will reboot after restore! Are you sure?</source>
+        <translation>系统在还原后会重启.确定吗?</translation>
     </message>
 </context>
 <context>
@@ -4386,6 +4406,10 @@ please chose!</source>
         <source>Start Line:[-1]</source>
         <translation>设当前行为单步起始:[-1]</translation>
     </message>
+    <message>
+        <source>Program Compiling...</source>
+        <translation>程序编译中...</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4717,6 +4741,14 @@ please chose!</source>
     <message>
         <source>Edit Pos</source>
         <translation>编辑点位</translation>
+    </message>
+    <message>
+        <source>Pos And Cmp</source>
+        <translation>位置和相似度</translation>
+    </message>
+    <message>
+        <source>Only Cmp</source>
+        <translation>只有相似度</translation>
     </message>
 </context>
 <context>
@@ -5504,7 +5536,7 @@ please chose!</source>
     </message>
     <message>
         <source>Left Addr:</source>
-        <translation>左地址:</translation>
+        <translation>左地址值:</translation>
     </message>
     <message>
         <source>Right Data:</source>
@@ -5940,7 +5972,7 @@ please chose!</source>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation>限时:</translation>
     </message>
 </context>
 <context>
@@ -6019,6 +6051,10 @@ please chose!</source>
     <message>
         <source>No[F5]</source>
         <translation>取消[F5]</translation>
+    </message>
+    <message>
+        <source>Sending Data...</source>
+        <translation type="unfinished">数据发送中...</translation>
     </message>
 </context>
 <context>

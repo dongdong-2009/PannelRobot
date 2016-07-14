@@ -31,29 +31,29 @@ Item {
             }
         }
 
-           Row{
-             ICHCAddrEdit{
-                  id:addrtarget
-                  addr_edit: qsTr("Addr Target:")
-                  }
-                }
-
-           Row{
-               ICConfigEdit{
-                   id:data
-                   visible:constData.isChecked? true:false
-                   configName: qsTr("Data:")
-                   inputWidth: 120
-               }
+        Row{
+            ICHCAddrEdit{
+                id:addrtarget
+                configName: qsTr("Addr Target:")
             }
-
-           Row{
-             ICHCAddrEdit{
-                  id:addrEdit
-                  visible:constData.isChecked? false:true
-                  addr_edit: qsTr("Addr Data:")
-                  }
-                }
-
         }
+
+        Row{
+            ICConfigEdit{
+                id:data
+                visible:constData.isChecked? true:false
+                configName: qsTr("Data:")
+                inputWidth: 120
+            }
+        }
+
+        Row{
+            ICHCAddrEdit{
+                id:addrEdit
+                visible:constData.isChecked? false:true
+                configName: qsTr("Addr Data:")
+            }
+        }
+
     }
+}

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QMap>
 #include <QSettings>
+#include <QApplication>
 #include "icrobotmold.h"
 #include "icmachineconfig.h"
 #include "icrobotvirtualhost.h"
@@ -753,14 +754,24 @@ public:
     Q_INVOKABLE QString scanMachineBackups(int mode) const;
     Q_INVOKABLE QString scanHMIBackups(int mode) const;
     Q_INVOKABLE QString scanGhostBackups(int mode) const;
-    Q_INVOKABLE QString backupHMIBackups(const QString& backupName, const QString& sqlData) const;
-    Q_INVOKABLE QString backupMRBackups(const QString& backupName) const;
+    Q_INVOKABLE QString backupHMIBackup(const QString& backupName, const QString& sqlData) const;
+    Q_INVOKABLE QString backupMRBackup(const QString& backupName) const;
     Q_INVOKABLE QString makeGhost(const QString& ghostName, const QString& hmiSqlData) const;
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
-    Q_INVOKABLE QString restoreHMIBackups(const QString& backupName, int mode);
+    Q_INVOKABLE QString restoreHMIBackup(const QString& backupName, int mode);
+    Q_INVOKABLE void restoreMRBackup(const QString& backupName, int mode);
+    Q_INVOKABLE QString restoreGhost(const QString& backupName, int mode);
+    Q_INVOKABLE void deleteHIMBackup(const QString& backupName, int mode);
+    Q_INVOKABLE void deleteMRBackup(const QString& backupName, int mode);
+    Q_INVOKABLE void deleteGhost(const QString& backupName, int mode);
+    Q_INVOKABLE void reboot() { ::system("reboot");}
 
+    Q_INVOKABLE void processEvents()
+    {
+        qApp->processEvents();
+    }
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
@@ -791,6 +802,8 @@ signals:
     void machineConfigChanged();
     void LoadMessage(const QString&);
     void eth0DataComeIn(const QByteArray& data);
+    void sendingContinuousData();
+    void sentContinuousData(int);
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
@@ -813,6 +826,8 @@ private:
     quint32 AddrStrValueToInt(ICAddrWrapperCPTR addr, const QString& value)
     {
         double v = value.toDouble();
+        double diff = 5 * (v < 0 ? -1 : 1) / qPow(10, addr->Decimal() + 1);
+        v += diff;
         qint32 ret = v * qPow(10, addr->Decimal());
         return static_cast<quint32>(ret);
     }

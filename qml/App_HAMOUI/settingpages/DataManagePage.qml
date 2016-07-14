@@ -13,9 +13,9 @@ Item {
         onAccept: {
             var backupName = inputText;
             if(hmiConfigs.isChecked){
-                localHMIBackupModel.append({"name":panelRobotController.backupHMIBackups(backupName, Storage.backup())});
+                localHMIBackupModel.append({"name":panelRobotController.backupHMIBackup(backupName, Storage.backup())});
             }else if(machineRunningConfigs.isChecked){
-                localMachineBackupModel.append({"name": panelRobotController.backupMRBackups(backupName)});
+                localMachineBackupModel.append({"name": panelRobotController.backupMRBackup(backupName)});
             }else if(ghost.isChecked){
                 localGhostModel.append({"name":panelRobotController.makeGhost(backupName, Storage.backup())});
             }
@@ -29,6 +29,27 @@ Item {
         z:2
     }
 
+    ICMessageBox{
+        id:restoreTip
+        x:250
+        y:50
+        z:2
+        onAccept: {
+            var backupName = backuViews.model.get(backuViews.currentIndex).name;
+            var mode = local.isChecked ? 0 : 1;
+            if(hmiConfigs.isChecked){
+                var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
+                Storage.restore(sqlData);
+
+            }else if(machineRunningConfigs.isChecked){
+                panelRobotController.restoreMRBackups(backupName,mode);
+            }else if(ghost.isChecked){
+                Storage.restore(panelRobotController.restoreGhost(backupName, mode));
+            }
+            panelRobotController.reboot();
+        }
+    }
+
     function refreshDataModel(){
         if(local.isChecked){
             if(hmiConfigs.isChecked){
@@ -40,6 +61,17 @@ Item {
             }else if(ghost.isChecked){
                 localGhostModel.syncModel();
                 backuViews.model = localGhostModel;
+            }
+        }else if(uDisk.isChecked){
+            if(hmiConfigs.isChecked){
+                uDiskHMIBackupModel.syncModel();
+                backuViews.model = uDiskHMIBackupModel;
+            }else if(machineRunningConfigs.isChecked){
+                uDiskMachineBackupModel.syncModel();
+                backuViews.model = uDiskMachineBackupModel;
+            }else if(ghost.isChecked){
+                uDiskGhostModel.syncModel();
+                backuViews.model = uDiskGhostModel;
             }
         }
     }
@@ -144,12 +176,33 @@ Item {
 
                 ListModel{
                     id:uDiskMachineBackupModel
+                    function syncModel(){
+                        uDiskMachineBackupModel.clear();
+                        var backups = JSON.parse(panelRobotController.scanMachineBackups(1));
+                        for(var i = 0, len = backups.length; i < len; ++i){
+                            uDiskMachineBackupModel.append({"name":backups[i]});
+                        }
+                    }
                 }
                 ListModel{
                     id:uDiskHMIBackupModel
+                    function syncModel(){
+                        uDiskHMIBackupModel.clear();
+                        var backups = JSON.parse(panelRobotController.scanHMIBackups(1));
+                        for(var i = 0, len = backups.length; i < len; ++i){
+                            uDiskHMIBackupModel.append({"name":backups[i]});
+                        }
+                    }
                 }
                 ListModel{
                     id:uDiskGhostModel
+                    function syncModel(){
+                        uDiskGhostModel.clear();
+                        var backups = JSON.parse(panelRobotController.scanGhostBackups(1));
+                        for(var i = 0, len = backups.length; i < len; ++i){
+                            uDiskGhostModel.append({"name":backups[i]});
+                        }
+                    }
                 }
             }
             Column{
@@ -157,6 +210,7 @@ Item {
                     id:newBackup
                     width: 150
                     text: qsTr("Backup Current")
+                    enabled: local.isChecked
                     onButtonClicked: {
                         backupNameDialog.showInput(qsTr("Please input the backup name"),
                                                    qsTr("Backup Name"),
@@ -169,23 +223,33 @@ Item {
                     width: newBackup.width
                     text: qsTr("Restore Selected")
                     onButtonClicked: {
-                        var backupName = backuViews.model.get(backuViews.currentIndex).name;
-                        var mode = local.isChecked ? 0 : 1;
-                        if(hmiConfigs.isChecked){
-                            console.log(panelRobotController.restoreHMIBackups(backupName, mode));
-                        }
+                        if(backuViews.currentIndex < 0) return;
+                        restoreTip.show(qsTr("System will reboot after restore! Are you sure?"), qsTr("OK"), qsTr("Cancel"));
                     }
                 }
                 ICButton{
                     id:deleteBackup
                     width: newBackup.width
                     text: qsTr("Delete")
+                    onButtonClicked: {
+                        var mode = local.isChecked ? 0 : 1;
+                        var backupName = backuViews.model.get(backuViews.currentIndex).name;
+                        if(hmiConfigs.isChecked){
+                            panelRobotController.deleteHIMBackup(backupName, mode);
+                        }else if(machineRunningConfigs.isChecked){
+                            panelRobotController.deleteMRBackup(backupName, mode);
+                        }else if(ghost.isChecked){
+                            panelRobotController.deleteGhost(backupName, mode);
+                        }
+                        backuViews.model.remove(backuViews.currentIndex);
+                    }
                 }
 
                 ICButton{
                     id:exportOrImport
                     width: newBackup.width
                     text: qsTr("Export")
+                    enabled: local.isChecked
                     onButtonClicked: {
                         var ret = 0;
                         if(backuViews.currentIndex < 0) return;

@@ -161,11 +161,13 @@ Rectangle {
 
             stackType = stackInfo.type;
 
-            if(stackType != 2 &&
-                    stackType != 3){
+            if(stackType == 0 ||
+                    stackType == 1){
                 page1.mode = 0;
             }else{
                 page1.mode = 2;
+                posAndCmp.setChecked(stackType == 4);
+                onlyCmp.setChecked(stackType == 5);
             }
         }
     }
@@ -235,8 +237,15 @@ Rectangle {
                                           selectedDS,
                                           dsID);
             var realST = stackType;
-            if((realST == 2) || (realST == 3))
+            if((realST == 2) || (realST == 3)){
                 realST = page1.isCustomDataSource ? 3 : 2;
+                if(realST == 2){
+                    if(posAndCmp.isChecked)
+                        realST = 4;
+                    else if(onlyCmp.isChecked)
+                        realST = 5;
+                }
+            }
 
 
             var stackInfo = new Teach.StackInfo(si0, si1, realST, name, "custompoint[" + id + "]", id, posData);
@@ -402,7 +411,7 @@ Rectangle {
                     text: qsTr("Data Source")
                     height: parent.height
                     width: parent.height
-                    bgColor: ((stackType == 2) || (stackType == 3) ? "lime" : "white")
+                    bgColor: ((stackType >= 2) ? "lime" : "white")
 
                     onButtonClicked: {
                         stackType = 2;
@@ -455,6 +464,20 @@ Rectangle {
                         if(sI.posData === undefined)
                             sI.podData = [];
                         customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
+                    }
+                }
+
+                ICButtonGroup{
+                    spacing: 24
+                    id:visionType
+                    visible: !page1.isCustomDataSource && page1.mode == 2
+                    ICCheckBox{
+                        id:posAndCmp
+                        text: qsTr("Pos And Cmp")
+                    }
+                    ICCheckBox{
+                        id:onlyCmp
+                        text: qsTr("Only Cmp")
                     }
                 }
 

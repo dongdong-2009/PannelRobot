@@ -155,7 +155,7 @@ function alarmlog(){
         var rs = tx.executeSql(icStrformat('SELECT * FROM {0} ORDER BY {1} DESC;',
                                            ALARM_LOG_TB_INFO.tb_name, ALARM_LOG_TB_INFO.id_col));
         var rowItem;
-        for(var i = 0; i < rs.rows.length; ++i){
+        for(var i = 0, len = rs.rows.length; i < len; ++i){
             rowItem = rs.rows.item(i);
             ret.push(new AlarmItem(rowItem[ALARM_LOG_TB_INFO.id_col],
                                    rowItem[ALARM_LOG_TB_INFO.alarm_num_col],
@@ -219,7 +219,7 @@ function oplog(){
         var rs = tx.executeSql(icStrformat('SELECT * FROM {0} ORDER BY {1} DESC;',
                                            OPERATION_LOG_TB_INFO.tb_name, OPERATION_LOG_TB_INFO.id_col));
         var rowItem;
-        for(var i = 0; i < rs.rows.length; ++i){
+        for(var i = 0, len = rs.rows.length; i < len; ++i){
             rowItem = rs.rows.item(i);
             ret.push(new OperationLogItem(rowItem[OPERATION_LOG_TB_INFO.id_col],
                                    rowItem[OPERATION_LOG_TB_INFO.opTime_col],
@@ -242,3 +242,47 @@ function updateOpLog(opItem){
     });
 }
 
+function backup(){
+    var db = getDatabase();
+    var ret = "BEGIN TRANSACTION;";
+    db.transaction(function(tx){
+        var rs = tx.executeSql("SELECT * FROM sqlite_master");
+        var rowItem;
+        var dataRowItem;
+        for(var i = 0, len = rs.rows.length; i < len; ++i){
+            rowItem = rs.rows.item(i);
+            if(rowItem.tbl_name == "sqlite_stat1" ||
+                    rowItem.type != "table")
+                continue;
+            ret += "\nDROP TABLE " + rowItem.tbl_name + ";\n";
+            ret += rowItem.sql + ";\n";
+            var data = tx.executeSql("SELECT * FROM " + rowItem.tbl_name);
+            for(var j = 0, dlen = data.rows.length; j < dlen; ++j){
+                dataRowItem = data.rows.item(j);
+                var values = "";
+                for(var v in dataRowItem){
+                    values += ",'" + dataRowItem[v] + "'";
+                }
+                values = values.substr(1);
+                ret += icStrformat("INSERT INTO {0} VALUES({1});\n",rowItem.tbl_name, values);
+            }
+        }
+    });
+    ret += "COMMIT;"
+    return ret;
+}
+
+function restore(sqlData){
+    var db = getDatabase();
+    db.transaction(function(tx){
+        var sqlline = sqlData.split(";\n");
+        for(var i = 0, len = sqlline.length; i < len; ++i){
+            if(sqlline[i] == "BEGIN TRANSACTION" ||
+                    sqlline[i] == "COMMIT;"){
+                continue;
+            }
+            tx.executeSql(sqlline[i]);
+        }
+
+    });
+}

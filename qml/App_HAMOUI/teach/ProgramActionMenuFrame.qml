@@ -175,6 +175,9 @@ Rectangle{
         editor = Qt.createComponent('SpeedActionEditor.qml');
         var speedEditorObject = editor.createObject(actionEditorContainer);
 
+        editor = Qt.createComponent('DataActionEditor.qml');
+        var dataEditorObject = editor.createObject(actionEditorContainer);
+
         actionEditorContainer.addPage(actionMenuObject);
         actionEditorContainer.addPage(axisEditorObject);
         actionEditorContainer.addPage(outputEditorObject);
@@ -192,6 +195,7 @@ Rectangle{
         actionEditorContainer.addPage(originEditorObject);
         actionEditorContainer.addPage(visionEditorObject);
         actionEditorContainer.addPage(speedEditorObject);
+        actionEditorContainer.addPage(dataEditorObject);
 
 
         showActionMenu();
@@ -214,7 +218,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Condition")
             linkedBtn3.visible = true;
-            linkedBtn3.enabled = moduleSel.currentIndex == 0;
+//            linkedBtn3.enabled = moduleSel.currentIndex == 0;
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.outputMenuTriggered.connect(function(){
@@ -308,7 +312,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Condition")
             linkedBtn3.visible = true;
-            linkedBtn3.enabled = moduleSel.currentIndex == 0;
+//            linkedBtn3.enabled = moduleSel.currentIndex == 0;
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.stackMenuTriggered.connect(function(){
@@ -339,7 +343,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Condition")
             linkedBtn3.visible = true;
-            linkedBtn3.enabled = moduleSel.currentIndex == 0;
+//            linkedBtn3.enabled = moduleSel.currentIndex == 0;
             PData.linked3Function = actionMenuObject.conditionMenuTriggered;
         });
         actionMenuObject.customAlarmMenuTriggered.connect(function(){
@@ -368,6 +372,12 @@ Rectangle{
         });
         actionMenuObject.speedMenuTriggered.connect(function(){
             actionEditorContainer.setCurrentIndex(16);
+            linkedBtn1.visible = false;
+            linkedBtn2.visible = false;
+            linkedBtn3.visible = false;
+        });
+        actionMenuObject.dataMenuTriggered.connect(function(){
+            actionEditorContainer.setCurrentIndex(17);
             linkedBtn1.visible = false;
             linkedBtn2.visible = false;
             linkedBtn3.visible = false;

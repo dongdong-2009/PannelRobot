@@ -43,6 +43,10 @@ Item {
         customName.visible = false;
         earlyEndPos.visible = false;
         earlyEndSpdEditor.visible = false;
+        startSpeed.visible = false;
+        endSpeed.visible = false;
+        addr.visible = false;
+        data.visible = false;
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
@@ -95,7 +99,7 @@ Item {
         height += buttons.height + buttons.spacing + 6;
 //        height += 20
         width = maxWidth < 300 ? 300 : maxWidth;
-        visible = true;
+        visible = height > buttons.height + buttons.spacing + 6;
     }
     visible: false
     width: 300
@@ -106,10 +110,10 @@ Item {
         flickableDirection: Flickable.VerticalFlick
         clip: true
         isshowhint: true
-        width: editorContainer.width
+        width: editorContainer.width + 10
         height: Math.min(editorContainer.height, maxHeight) + 4
         hintx: width - 15
-        contentWidth: editorContainer.width
+        contentWidth: editorContainer.width + 10
         contentHeight: editorContainer.height
         Column{
             id:editorContainer
@@ -212,6 +216,36 @@ Item {
                     enabled: earlyEndSpeedPos.isChecked
                 }
             }
+            ICConfigEdit{
+                id:startSpeed
+                configNameWidth: PData.configNameWidth
+                configName: qsTr("startSpeed")
+                inputWidth: PData.inputWidth
+                unit: qsTr("%")
+                height: 32
+            }
+            ICConfigEdit{
+                id:endSpeed
+                configNameWidth: PData.configNameWidth
+                configName: qsTr("endSpeed")
+                inputWidth: PData.inputWidth
+                unit: qsTr("%")
+                height: 32
+            }
+            ICConfigEdit{
+                id:addr
+                configNameWidth: PData.configNameWidth
+                configName: qsTr("addr")
+                inputWidth: PData.inputWidth
+                height: 32
+            }
+            ICConfigEdit{
+                id:data
+                configNameWidth: PData.configNameWidth
+                configName: qsTr("data")
+                inputWidth: PData.inputWidth
+                height: 32
+            }
 
             Component.onCompleted: {
                 PData.itemToEditorMap.put("pos", pos);
@@ -225,6 +259,10 @@ Item {
                 PData.itemToEditorMap.put("customName", customName);
                 PData.itemToEditorMap.put("earlyEnd", earlyEndPos);
                 PData.itemToEditorMap.put("earlyEndSpd", earlyEndSpdEditor);
+                PData.itemToEditorMap.put("startSpeed", startSpeed);
+                PData.itemToEditorMap.put("endSpeed", endSpeed);
+                PData.itemToEditorMap.put("addr",addr);
+                PData.itemToEditorMap.put("data",data);
 
                 PData.editorToItemMap.put(pos, "pos");
                 PData.editorToItemMap.put(speed, "speed");
@@ -237,6 +275,10 @@ Item {
                 PData.editorToItemMap.put(customName, "customName");
                 PData.editorToItemMap.put(earlyEndPos, "earlyEnd");
                 PData.editorToItemMap.put(earlyEndSpdEditor, "earlyEndSpd");
+                PData.editorToItemMap.put(startSpeed, "startSpeed");
+                PData.editorToItemMap.put(endSpeed, "endSpeed");
+                PData.editorToItemMap.put(addr, "addr");
+                PData.editorToItemMap.put(data, "data");
 
             }
         }

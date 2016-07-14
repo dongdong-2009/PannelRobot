@@ -28,6 +28,13 @@ Rectangle {
         id:pData
         property int lastKnob: -1
     }
+    ICMessageBox{
+        id:tipBox
+        x:300
+        y:200
+        visible: false
+        z:1000
+    }
 
     TopHeader{
         id:mainHeader
@@ -623,6 +630,13 @@ Rectangle {
         AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_6_0_184"));
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
+        panelRobotController.sendingContinuousData.connect(function(){
+           tipBox.runningTip(qsTr("Sending Data..."));
+        });
+        panelRobotController.sentContinuousData.connect(function(t){
+            tipBox.visible = false;
+        });
+
         console.log("main load finished!")
     }
 
@@ -752,6 +766,8 @@ Rectangle {
                 alarmBar.errID = alarmNum;
                 if(alarmNum === 0){
                     alarmlogPage.resolvedAlarms();
+                }else if(alarmNum === 1){
+
                 }else{
                     alarmlogPage.appendAlarm(alarmNum);
                 }

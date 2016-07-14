@@ -23,15 +23,29 @@ Rectangle {
     signal originMenuTriggered()
     signal visionMenuTriggered()
     signal speedMenuTriggered()
+    signal dataMenuTriggered()
 
     states: [
         State {
             name: "moduleEditMode"
             PropertyChanges {
                 target: condition
+                enabled:true
+            }
+        },
+        State {
+            name: "manualProgramEditMode"
+            PropertyChanges {
+                target: group
                 enabled:false
             }
+            PropertyChanges {
+                target: other
+                enabled:false
+
+            }
         }
+
     ]
 
 
@@ -170,6 +184,15 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: speedMenuTriggered()
+        }
+
+        ICButton{
+            id:dataCommand
+            text: qsTr("Data Command")
+            icon: "../images/write_ram.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: dataMenuTriggered()
         }
 
         ICButton{

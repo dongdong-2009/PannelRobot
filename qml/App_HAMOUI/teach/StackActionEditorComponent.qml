@@ -92,7 +92,7 @@ Item {
         spacing: 4
         property int posWidth: 80
         property int spaceWidth: 70
-        property int counteWidth: 60
+        property int counteWidth: 50
         property int axisNameWidth: 30
         Column{
             id:dataSourceContainer
@@ -205,7 +205,7 @@ Item {
                     configName: qsTr("Space0")
                     configAddr: "s_rw_0_32_3_1300"
                     inputWidth: content.spaceWidth
-                    configNameWidth: 80
+                    configNameWidth: 90
                 }
                 ICConfigEdit{
                     id:count0
@@ -287,23 +287,25 @@ Item {
             popupMode: dataSourceSel.visible ? 0 : 1
             configName: qsTr("Counter")
             inputWidth: 300
-            popupHeight: 150
+            popupHeight: dataSourceSel.visible ? 80 : 150
             z:100
+            visible: mode != 1
         }
     }
 
     function updateCounters(){
+        counterSel.configValue = -1;
         var countersStrList = Teach.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         counterSel.items = countersStrList;
     }
 
-    onVisibleChanged: {
-        if(visible)
-            updateCounters();
-        else
-            counterSel.configValue = -1;
-    }
+//    onVisibleChanged: {
+//        if(visible)
+//            updateCounters();
+//        else
+//            counterSel.configValue = -1;
+//    }
     onDataSourceChanged: {
         var items = dataSource;
         items.splice(0,0, qsTr("Custom Pos"));

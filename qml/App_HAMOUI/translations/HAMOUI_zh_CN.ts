@@ -75,6 +75,22 @@
         <source>ESD</source>
         <translation>速度</translation>
     </message>
+    <message>
+        <source>startSpeed</source>
+        <translation>起始速度</translation>
+    </message>
+    <message>
+        <source>endSpeed</source>
+        <translation>结束速度</translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation>地址</translation>
+    </message>
+    <message>
+        <source>data</source>
+        <translation>数据</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -949,7 +965,7 @@
     </message>
     <message>
         <source>Un</source>
-        <translation>不用</translation>
+        <translation>无</translation>
     </message>
     <message>
         <source>En</source>
@@ -974,6 +990,10 @@
     <message>
         <source>%</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Motor 4</source>
+        <translation type="unfinished">台达伺服 {4?}</translation>
     </message>
 </context>
 <context>
@@ -1146,6 +1166,62 @@
         <source>&lt;T</source>
         <translation>&lt;目标</translation>
     </message>
+    <message>
+        <source>Mem</source>
+        <translation>数据比较</translation>
+    </message>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Left Addr</source>
+        <translation type="vanished">左地址</translation>
+    </message>
+    <message>
+        <source>Right Value</source>
+        <translation type="vanished">右值</translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&gt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>==</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>!=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据:</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -1207,6 +1283,96 @@
     <message>
         <source>Decimal</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataActionEditor</name>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Addr Target:</source>
+        <translation>目标地址:</translation>
+    </message>
+    <message>
+        <source>Data:</source>
+        <translation>立即数数据:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+</context>
+<context>
+    <name>DataManagePage</name>
+    <message>
+        <source>Local</source>
+        <translation>本机</translation>
+    </message>
+    <message>
+        <source>U Disk</source>
+        <translation>U盘</translation>
+    </message>
+    <message>
+        <source>Machine Running(Mold, Machine)</source>
+        <translation>机器参数(模号,机器设定)</translation>
+    </message>
+    <message>
+        <source>HMI Configs(Programable Button, Panel Settings)</source>
+        <translation>手控参数(可编程按键,手控设定)</translation>
+    </message>
+    <message>
+        <source>ghost</source>
+        <translation>ghost</translation>
+    </message>
+    <message>
+        <source>Backup Current</source>
+        <translation>备份当前状态</translation>
+    </message>
+    <message>
+        <source>Please input the backup name</source>
+        <translation>请输入备份名字</translation>
+    </message>
+    <message>
+        <source>Backup Name</source>
+        <translation>备份名字</translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Restore Selected</source>
+        <translation>还原选中备份</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Export successfully!</source>
+        <translation>导出成功!</translation>
+    </message>
+    <message>
+        <source>System will reboot after restore! Are you sure?</source>
+        <translation>系统在还原后会重启.确定吗?</translation>
     </message>
 </context>
 <context>
@@ -1284,6 +1450,25 @@
     <message>
         <source>End Time</source>
         <translation>结束时间</translation>
+    </message>
+</context>
+<context>
+    <name>ICHCAddrEdit</name>
+    <message>
+        <source>startPos</source>
+        <translation>开始位</translation>
+    </message>
+    <message>
+        <source>size</source>
+        <translation>数据长度</translation>
+    </message>
+    <message>
+        <source>baseAddr</source>
+        <translation>基地址</translation>
+    </message>
+    <message>
+        <source>decimal</source>
+        <translation>精度</translation>
     </message>
 </context>
 <context>
@@ -3981,6 +4166,10 @@ please chose!</source>
         <source>Path Speed</source>
         <translation>路径速度</translation>
     </message>
+    <message>
+        <source>Data Command</source>
+        <translation>数据指令</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenuFrame</name>
@@ -4217,6 +4406,10 @@ please chose!</source>
         <source>Start Line:[-1]</source>
         <translation>设当前行为单步起始:[-1]</translation>
     </message>
+    <message>
+        <source>Program Compiling...</source>
+        <translation>程序编译中...</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4313,11 +4506,11 @@ please chose!</source>
     </message>
     <message>
         <source>Import {0} fail!</source>
-        <translation>导入{0}失败!</translation>
+        <translation type="vanished">导入{0}失败!</translation>
     </message>
     <message>
         <source>Import Finished!</source>
-        <translation>导入完成!</translation>
+        <translation type="vanished">导入完成!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -4335,6 +4528,16 @@ please chose!</source>
     <message>
         <source>No USB Found!</source>
         <translation>没有发现U盘!</translation>
+    </message>
+    <message>
+        <source>Import {0} fail!
+</source>
+        <translation>导入{0}失败!</translation>
+    </message>
+    <message>
+        <source>Import Finished!
+</source>
+        <translation>导入完成!</translation>
     </message>
 </context>
 <context>
@@ -4538,6 +4741,14 @@ please chose!</source>
     <message>
         <source>Edit Pos</source>
         <translation>编辑点位</translation>
+    </message>
+    <message>
+        <source>Pos And Cmp</source>
+        <translation>位置和相似度</translation>
+    </message>
+    <message>
+        <source>Only Cmp</source>
+        <translation>只有相似度</translation>
     </message>
 </context>
 <context>
@@ -4884,7 +5095,7 @@ please chose!</source>
     </message>
     <message>
         <source>kSttLathe_6p</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Clear Program Btn</source>
@@ -4893,6 +5104,24 @@ please chose!</source>
     <message>
         <source>IO Board Num</source>
         <translation>IO板数</translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItem</name>
+    <message>
+        <source>TabItem</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TabMenuItemWidget</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
+    </message>
+    <message>
+        <source>text1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5305,6 +5534,42 @@ please chose!</source>
         <source>PO Line 3D:</source>
         <translation>相对姿势直线:</translation>
     </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址值:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据值:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址值:</translation>
+    </message>
+    <message>
+        <source>Go to</source>
+        <translation>跳转到</translation>
+    </message>
+    <message>
+        <source>Write Const Data To Addr:</source>
+        <translation>写立即数到地址:</translation>
+    </message>
+    <message>
+        <source>Write Addr Data To Addr:</source>
+        <translation>写地址值到地址:</translation>
+    </message>
+    <message>
+        <source>Const Data:</source>
+        <translation>立即数:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+    <message>
+        <source>Target Addr:</source>
+        <translation>目标地址:</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -5707,7 +5972,7 @@ please chose!</source>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation>限时:</translation>
     </message>
 </context>
 <context>
@@ -5787,6 +6052,10 @@ please chose!</source>
         <source>No[F5]</source>
         <translation>取消[F5]</translation>
     </message>
+    <message>
+        <source>Sending Data...</source>
+        <translation type="unfinished">数据发送中...</translation>
+    </message>
 </context>
 <context>
     <name>maintainPage</name>
@@ -5805,6 +6074,14 @@ please chose!</source>
     <message>
         <source>Start Update</source>
         <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <source>Backup/Restore</source>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>

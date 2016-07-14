@@ -202,7 +202,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: originMenuTriggered()
-            visible: false
+//            visible: false
         }
     }
 }

@@ -4,6 +4,7 @@ import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 import "../ExternalData.js" as ESData
+import "ProgramFlowPage.js" as ProgramList
 
 Rectangle {
     property int stackType: 0
@@ -41,6 +42,14 @@ Rectangle {
             speed0.configName = qsTr("Speed");
             speed1.visible = false;
         }
+    }
+
+    ICMessageBox{
+        id:tipBox
+        visible: false
+        x:200
+        y:-50
+        z:10
     }
 
     Row{
@@ -339,7 +348,13 @@ Rectangle {
             anchors.left: newStack.right
             anchors.leftMargin: 6
             onButtonClicked: {
-                var sid = Teach.delStack(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())));
+                var sid = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                if(ProgramList.stackLinesInfo.idUsed(sid)){
+                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + qsTr("is using!"));
+                    return;
+                }
+
+                Teach.delStack(sid);
                 panelRobotController.saveStacks(Teach.statcksToJSON());
                 updateStacksSel();
                 stackUpdated(sid);

@@ -446,13 +446,15 @@ Rectangle {
                         id:editPos
                         text: qsTr("Edit Pos")
                         visible: page1.isCustomDataSource && page1.mode == 2
-                        function onEditConfirm(accepted, points){
+                        function onEditConfirm(accepted, points, onlySend){
                             if(accepted){
                                 if(stackViewSel.currentIndex < 0) return;
                                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                                 var sI = Teach.getStackInfoFromID(id);
-                                sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
-                                var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                                if(!onlySend)
+                                    topContainer.saveStack(id,sI.descr, true, points)
+                                sI = Teach.getStackInfoFromID(id);
+                                var toSend = new ESData.RawExternalDataFormat(sI.dsName, points);
                                 toSend = ESData.externalDataManager.parseRaw(toSend);
                                 panelRobotController.sendExternalDatas(JSON.stringify(toSend));
                             }else

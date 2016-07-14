@@ -31,7 +31,7 @@ MouseArea{
         visible = true;
     }
 
-    signal editConfirm(bool accept, variant points)
+    signal editConfirm(bool accept, variant points, bool onlySend)
 
     Rectangle {
         id:container
@@ -74,7 +74,7 @@ MouseArea{
             anchors.right: parent.right
             onButtonClicked: {
                 instance.visible = false
-                editConfirm(false, []);
+                editConfirm(false, [], true);
             }
         }
         Row{
@@ -121,8 +121,11 @@ MouseArea{
                 onButtonClicked: {
                     var tmpPos;
                     var m;
+                    var points = [];
+                    var p;
                     for(var i = 0, len = pointModel.count; i < len; ++i){
-                        tmpPos = pointModel.get(i).pointPos;
+                        p = pointModel.get(i);
+                        tmpPos = p.pointPos;
                         if(tmpPos.hasOwnProperty("m0")){
                             tmpPos.m0 = (parseFloat(tmpPos.m0) + parseFloat(objectOriginX.configValue)).toFixed(3);
                         }
@@ -132,8 +135,10 @@ MouseArea{
                         if(tmpPos.hasOwnProperty("m2")){
                             tmpPos.m2 = (parseFloat(tmpPos.m2) + parseFloat(objectOriginZ.configValue)).toFixed(3);
                         }
-                        pointModel.setProperty(i, "pointPos", tmpPos);
+                        points.push({"pointName":p.pointName, "pointPos":tmpPos});
                     }
+                    editConfirm(true, points, true);
+
                 }
             }
         }
@@ -269,7 +274,7 @@ MouseArea{
                     p = pointModel.get(i);
                     points.push({"pointName":p.pointName, "pointPos":p.pointPos});
                 }
-                editConfirm(true, points);
+                editConfirm(true, points, false);
             }
         }
 

@@ -94,6 +94,12 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
             SLOT(OnNeedToInitHost()));
+    connect(host_.data(),
+            SIGNAL(SendingContinuousData()),
+            SIGNAL(sendingContinuousData()));
+    connect(host_.data(),
+            SIGNAL(SentContinuousData(int)),
+            SIGNAL(sentContinuousData(int)));
     isMoldFncsChanged_ = false;
     isMachineConfigsChanged_ = false;
     axisDefine_ = new ICAxisDefine();

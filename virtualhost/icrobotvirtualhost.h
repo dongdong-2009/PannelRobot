@@ -5,6 +5,7 @@
 #include <qmath.h>
 #include <QQueue>
 #include <QList>
+#include <QTime>
 #include "icrobottransceiverdata.h"
 #include "icparameterscache.h"
 #include "icconfigsaddr.h"
@@ -221,8 +222,8 @@ signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
     void QueryFinished(int addr, const QVector<quint32>& v);
-//    void SendingContinuousData();
-//    void SentContinuousData(int);
+    void SendingContinuousData();
+    void SentContinuousData(int);
 
 public slots:
 
@@ -255,6 +256,10 @@ private:
 ////    QMap<ICAddr, HostStatusFormator> statusFormatorMap_;
     ICParametersCache statusCache_;
     const static int kHostID = 1;
+
+    bool sendingContinuousData_;
+    QTime sendingDataTime_;
+
 //    int conjectionCommErrCount_;
 
 };

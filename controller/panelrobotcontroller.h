@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QMap>
 #include <QSettings>
+#include <QApplication>
 #include "icrobotmold.h"
 #include "icmachineconfig.h"
 #include "icrobotvirtualhost.h"
@@ -801,6 +802,8 @@ signals:
     void machineConfigChanged();
     void LoadMessage(const QString&);
     void eth0DataComeIn(const QByteArray& data);
+    void sendingContinuousData();
+    void sentContinuousData(int);
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

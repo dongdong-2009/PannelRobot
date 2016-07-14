@@ -6052,6 +6052,10 @@ please chose!</source>
         <source>No[F5]</source>
         <translation>取消[F5]</translation>
     </message>
+    <message>
+        <source>Sending Data...</source>
+        <translation type="unfinished">数据发送中...</translation>
+    </message>
 </context>
 <context>
     <name>maintainPage</name>

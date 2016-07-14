@@ -27,6 +27,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
 #ifdef NEW_PLAT
     currentStatusGroup_ = 0;
     statusGroupCount_ = qCeil(qreal(ICAddr_Read_Status40 - ICAddr_Read_Status0) / REFRESH_COUNT_PER);
+    sendingContinuousData_ = false;
 #else
     currentStatusGroup_ = 0;
 #endif
@@ -599,6 +600,16 @@ void ICRobotVirtualhost::CommunicateImpl()
 #endif
         }
     }
+    else if(unlikely(recvFrame_->GetAddr() >= ICAddr_System_Retain_80 &&
+            recvFrame_->GetAddr() <= ICAddr_System_Retain_83))
+    {
+        if(!sendingContinuousData_)
+        {
+            sendingContinuousData_ = true;
+            sendingDataTime_.restart();
+            emit SendingContinuousData();
+        }
+    }
     ClearCommunicateErrCount();
     queue_.DeQueue();
 }
@@ -618,6 +629,11 @@ if(!keyCommandList_.isEmpty())
 if(queue_.IsEmpty())
 {
     AddRefreshStatusCommand_();
+    if(sendingContinuousData_)
+    {
+        sendingContinuousData_ = false;
+        emit SentContinuousData(sendingDataTime_.elapsed());
+    }
     //    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
     //        SetCommunicateInterval(REFRESH_INTERVAL);
     //        return;

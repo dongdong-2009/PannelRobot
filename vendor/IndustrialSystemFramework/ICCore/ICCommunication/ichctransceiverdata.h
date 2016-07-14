@@ -5,6 +5,7 @@
 #include "icoptimize.h"
 #include "icobjectpool.h"
 #include "ICCore_global.h"
+#include <QString>
 
 class ICCORESHARED_EXPORT ICHCTransceiverData: public ICTransceiverData
 {
@@ -20,6 +21,15 @@ public:
             const ICTransceiverDataBuffer& data = ICTransceiverDataBuffer())
         :functionCode_(fc), addr_(addr), length_(length), data_(data){SetHostID(hostID);}
 
+    QString ToString() const
+    {
+        QString data;
+        for(int i = 0; i < data_.size(); ++i)
+        {
+            data += "," + QString::number(data_.at(i));
+        }
+        return QString("[%1,%2,%3,%4%5]").arg(HostID()).arg(functionCode_).arg(addr_).arg(length_).arg(data);
+    }
     virtual ~ICHCTransceiverData(){data_.clear();}
     virtual bool IsEqual(const ICTransceiverData* other) const;
     virtual int ErrorCode() const { return data_[0];}

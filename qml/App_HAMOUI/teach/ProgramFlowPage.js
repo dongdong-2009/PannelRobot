@@ -90,6 +90,7 @@ var programActionMenu = null;
 var moduleActionEditor;
 
 var currentEditingProgram = 0;
+var lastEditingIndex = 0;
 
 function UpdateModelStruct(event,listIndex, programIndex, model, actionObject){
     this.event = event;

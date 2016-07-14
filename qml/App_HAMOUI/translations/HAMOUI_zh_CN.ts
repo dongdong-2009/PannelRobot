@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -45,11 +45,11 @@
     </message>
     <message>
         <source>Speed0</source>
-        <translation type="vanished">箱内堆速度</translation>
+        <translation>箱内堆速度</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Speed1:</source>
@@ -74,6 +74,22 @@
     <message>
         <source>ESD</source>
         <translation>速度</translation>
+    </message>
+    <message>
+        <source>startSpeed</source>
+        <translation>起始速度</translation>
+    </message>
+    <message>
+        <source>endSpeed</source>
+        <translation>结束速度</translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation>地址</translation>
+    </message>
+    <message>
+        <source>data</source>
+        <translation>数据</translation>
     </message>
 </context>
 <context>
@@ -120,27 +136,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation type="vanished">电机1报警</translation>
+        <translation>电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation type="vanished">电机2报警</translation>
+        <translation>电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation type="vanished">电机3报警</translation>
+        <translation>电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation type="vanished">电机4报警</translation>
+        <translation>电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation type="vanished">电机5报警</translation>
+        <translation>电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation type="vanished">电机6报警</translation>
+        <translation>电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -530,7 +546,7 @@
     </message>
     <message>
         <source>Set to Point-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to CPoint-2</source>
@@ -554,11 +570,11 @@
     </message>
     <message>
         <source>Line Z</source>
-        <translation type="vanished">世界Z</translation>
+        <translation>世界Z</translation>
     </message>
     <message>
         <source>Rotate U</source>
-        <translation type="vanished">世界U</translation>
+        <translation>世界U</translation>
     </message>
     <message>
         <source>Y</source>
@@ -570,11 +586,11 @@
     </message>
     <message>
         <source>Line Y</source>
-        <translation type="vanished">世界Y</translation>
+        <translation>世界Y</translation>
     </message>
     <message>
         <source>Rotate V</source>
-        <translation type="vanished">世界V</translation>
+        <translation>世界V</translation>
     </message>
     <message>
         <source>X</source>
@@ -586,11 +602,11 @@
     </message>
     <message>
         <source>Line X</source>
-        <translation type="vanished">世界X</translation>
+        <translation>世界X</translation>
     </message>
     <message>
         <source>Rotate W</source>
-        <translation type="vanished">世界W</translation>
+        <translation>世界W</translation>
     </message>
     <message>
         <source>Tune Speed:</source>
@@ -647,7 +663,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回</translation>
+        <translation>返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -975,6 +991,10 @@
         <source>%</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Motor 4</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -1061,7 +1081,7 @@
     <name>CommentActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回主菜单</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Comment:</source>
@@ -1124,7 +1144,7 @@
     </message>
     <message>
         <source>MX</source>
-        <translation type="vanished">中间变量X</translation>
+        <translation>中间变量X</translation>
     </message>
     <message>
         <source>Jump</source>
@@ -1145,6 +1165,62 @@
     <message>
         <source>&lt;T</source>
         <translation>&lt;目标</translation>
+    </message>
+    <message>
+        <source>Mem</source>
+        <translation>数据比较</translation>
+    </message>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Left Addr</source>
+        <translation>左地址</translation>
+    </message>
+    <message>
+        <source>Right Value</source>
+        <translation>右值</translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&gt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>==</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>!=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据:</translation>
     </message>
 </context>
 <context>
@@ -1207,6 +1283,96 @@
     <message>
         <source>Decimal</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataActionEditor</name>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Addr Target:</source>
+        <translation>目标地址:</translation>
+    </message>
+    <message>
+        <source>Data:</source>
+        <translation>立即数数据:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+</context>
+<context>
+    <name>DataManagePage</name>
+    <message>
+        <source>Local</source>
+        <translation>本机</translation>
+    </message>
+    <message>
+        <source>U Disk</source>
+        <translation>U盘</translation>
+    </message>
+    <message>
+        <source>Machine Running(Mold, Machine)</source>
+        <translation>机器参数(模号,机器设定)</translation>
+    </message>
+    <message>
+        <source>HMI Configs(Programable Button, Panel Settings)</source>
+        <translation>手控参数(可编程按键,手控设定)</translation>
+    </message>
+    <message>
+        <source>ghost</source>
+        <translation>ghost</translation>
+    </message>
+    <message>
+        <source>Backup Current</source>
+        <translation>备份当前状态</translation>
+    </message>
+    <message>
+        <source>Please input the backup name</source>
+        <translation>请输入备份名字</translation>
+    </message>
+    <message>
+        <source>Backup Name</source>
+        <translation>备份名字</translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Restore Selected</source>
+        <translation>还原选中备份</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Export successfully!</source>
+        <translation>导出成功!</translation>
+    </message>
+    <message>
+        <source>System will reboot after restore! Are you sure?</source>
+        <translation>系统在还原后会重启.确定吗?</translation>
     </message>
 </context>
 <context>
@@ -1290,11 +1456,30 @@
     <name>ICFileSelector</name>
     <message>
         <source>Ok</source>
-        <translation type="unfinished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>ICHCAddrEdit</name>
+    <message>
+        <source>startPos</source>
+        <translation>开始位</translation>
+    </message>
+    <message>
+        <source>size</source>
+        <translation>数据长度</translation>
+    </message>
+    <message>
+        <source>baseAddr</source>
+        <translation>基地址</translation>
+    </message>
+    <message>
+        <source>decimal</source>
+        <translation>精度</translation>
     </message>
 </context>
 <context>
@@ -1366,11 +1551,11 @@
     </message>
     <message>
         <source>EuInput</source>
-        <translation type="vanished">EU输入</translation>
+        <translation>EU输入</translation>
     </message>
     <message>
         <source>EuOutput</source>
-        <translation type="vanished">EU输出</translation>
+        <translation>EU输出</translation>
     </message>
     <message>
         <source>Next</source>
@@ -1769,15 +1954,15 @@
     </message>
     <message>
         <source>Normal Y</source>
-        <translation type="vanished">普通输出</translation>
+        <translation>普通输出</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation type="vanished">单头阀Y</translation>
+        <translation>单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation type="vanished">保持型双头阀Y</translation>
+        <translation>保持型双头阀Y</translation>
     </message>
     <message>
         <source>Normal Y010</source>
@@ -3309,7 +3494,7 @@
     </message>
     <message>
         <source>Axis Configs</source>
-        <translation type="vanished">电机参数</translation>
+        <translation>电机参数</translation>
     </message>
     <message>
         <source>Motor Configs</source>
@@ -3363,7 +3548,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="vanished">工具校准</translation>
+        <translation>工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -3586,11 +3771,11 @@
     </message>
     <message>
         <source>Scan Updater</source>
-        <translation type="vanished">扫描更新包</translation>
+        <translation>扫描更新包</translation>
     </message>
     <message>
         <source>Start Update</source>
-        <translation type="vanished">开始更新</translation>
+        <translation>开始更新</translation>
     </message>
     <message>
         <source>Panel Settings</source>
@@ -3598,75 +3783,75 @@
     </message>
     <message>
         <source>UI Version:</source>
-        <translation type="vanished">UI版本:</translation>
+        <translation>UI版本:</translation>
     </message>
     <message>
         <source>Controller Version:</source>
-        <translation type="vanished">中间件版本:</translation>
+        <translation>中间件版本:</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="vanished">语言</translation>
+        <translation>语言</translation>
     </message>
     <message>
         <source>Key Tone</source>
-        <translation type="vanished">按键音</translation>
+        <translation>按键音</translation>
     </message>
     <message>
         <source>Key Tone Off</source>
-        <translation type="vanished">关</translation>
+        <translation>关</translation>
     </message>
     <message>
         <source>Key Tone On</source>
-        <translation type="vanished">开</translation>
+        <translation>开</translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation type="vanished">屏幕亮度</translation>
+        <translation>屏幕亮度</translation>
     </message>
     <message>
         <source>Screensaver Time</source>
-        <translation type="vanished">屏幕保护时间</translation>
+        <translation>屏幕保护时间</translation>
     </message>
     <message>
         <source>Date time</source>
-        <translation type="vanished">日期时间</translation>
+        <translation>日期时间</translation>
     </message>
     <message>
         <source>year</source>
-        <translation type="vanished">年</translation>
+        <translation>年</translation>
     </message>
     <message>
         <source>mon</source>
-        <translation type="vanished">月</translation>
+        <translation>月</translation>
     </message>
     <message>
         <source>day</source>
-        <translation type="vanished">日</translation>
+        <translation>日</translation>
     </message>
     <message>
         <source>hour</source>
-        <translation type="vanished">时</translation>
+        <translation>时</translation>
     </message>
     <message>
         <source>sec</source>
-        <translation type="vanished">秒</translation>
+        <translation>秒</translation>
     </message>
     <message>
         <source>Touch Calibrate</source>
-        <translation type="vanished">触摸校正</translation>
+        <translation>触摸校正</translation>
     </message>
     <message>
         <source>Recalibrate need to reboot. Continue?</source>
-        <translation type="vanished">触摸校正需要重启.继续吗?</translation>
+        <translation>触摸校正需要重启.继续吗?</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation type="vanished">是</translation>
+        <translation>是</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="vanished">否</translation>
+        <translation>否</translation>
     </message>
     <message>
         <source>Usermanegement</source>
@@ -3728,11 +3913,11 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">添加点</translation>
+        <translation>添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
-        <translation type="vanished">新点:</translation>
+        <translation>新点:</translation>
     </message>
     <message>
         <source>Select Point:</source>
@@ -3756,15 +3941,15 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation type="vanished">插入</translation>
+        <translation>插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation type="vanished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
-        <translation type="vanished">直线2D</translation>
+        <translation>直线2D</translation>
     </message>
     <message>
         <source>Line 3D</source>
@@ -3780,7 +3965,7 @@ please chose!</source>
     </message>
     <message>
         <source>Pose 3D</source>
-        <translation type="vanished">姿势直线</translation>
+        <translation>姿势直线</translation>
     </message>
     <message>
         <source>Set to Middle Point</source>
@@ -3796,7 +3981,7 @@ please chose!</source>
     </message>
     <message>
         <source>Offset Move</source>
-        <translation type="vanished">相对移动</translation>
+        <translation>相对移动</translation>
     </message>
     <message>
         <source>Offset Line</source>
@@ -3977,7 +4162,7 @@ please chose!</source>
     </message>
     <message>
         <source>Other/Flag</source>
-        <translation type="vanished">标签</translation>
+        <translation>标签</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -3989,7 +4174,7 @@ please chose!</source>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">搜索</translation>
+        <translation>搜索</translation>
     </message>
     <message>
         <source>Path</source>
@@ -4022,6 +4207,10 @@ please chose!</source>
     <message>
         <source>Path Speed</source>
         <translation>路径速度</translation>
+    </message>
+    <message>
+        <source>Data Command</source>
+        <translation>数据指令</translation>
     </message>
 </context>
 <context>
@@ -4124,11 +4313,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation type="vanished">插入</translation>
+        <translation>插入</translation>
     </message>
     <message>
         <source>Menu</source>
-        <translation type="vanished">动作
+        <translation>动作
 菜单</translation>
     </message>
     <message>
@@ -4161,27 +4350,27 @@ please chose!</source>
     </message>
     <message>
         <source>Output Action</source>
-        <translation type="vanished">信号输出</translation>
+        <translation>信号输出</translation>
     </message>
     <message>
         <source>Wait</source>
-        <translation type="vanished">等待</translation>
+        <translation>等待</translation>
     </message>
     <message>
         <source>Condition</source>
-        <translation type="vanished">条件跳转</translation>
+        <translation>条件跳转</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">路径</translation>
+        <translation>路径</translation>
     </message>
     <message>
         <source>Check</source>
-        <translation type="vanished">阀检测</translation>
+        <translation>阀检测</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation type="vanished">计数器</translation>
+        <translation>计数器</translation>
     </message>
     <message>
         <source>Main Module</source>
@@ -4259,6 +4448,10 @@ please chose!</source>
         <source>Start Line:[-1]</source>
         <translation>设当前行为单步起始:[-1]</translation>
     </message>
+    <message>
+        <source>Program Compiling...</source>
+        <translation>程序编译中...</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4311,7 +4504,7 @@ please chose!</source>
     </message>
     <message>
         <source>Please Enter the new record name!</source>
-        <translation type="vanished">请输入新模号名!</translation>
+        <translation>请输入新模号名!</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -4377,6 +4570,16 @@ please chose!</source>
     <message>
         <source>No USB Found!</source>
         <translation>没有发现U盘!</translation>
+    </message>
+    <message>
+        <source>Import {0} fail!
+</source>
+        <translation>导入{0}失败!</translation>
+    </message>
+    <message>
+        <source>Import Finished!
+</source>
+        <translation>导入完成!</translation>
     </message>
 </context>
 <context>
@@ -4491,51 +4694,51 @@ please chose!</source>
     </message>
     <message>
         <source>Space0</source>
-        <translation type="vanished">X方向间距</translation>
+        <translation>X方向间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation type="vanished">X方向计数</translation>
+        <translation>X方向计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation type="vanished">Y方向间距</translation>
+        <translation>Y方向间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation type="vanished">Y方向计数</translation>
+        <translation>Y方向计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation type="vanished">Z方向间距</translation>
+        <translation>Z方向间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation type="vanished">Z方向计数</translation>
+        <translation>Z方向计数</translation>
     </message>
     <message>
         <source>Dir0</source>
-        <translation type="vanished">X方向</translation>
+        <translation>X方向</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation type="vanished">反相</translation>
+        <translation>反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="vanished">正相</translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>Dir1</source>
-        <translation type="vanished">Y方向</translation>
+        <translation>Y方向</translation>
     </message>
     <message>
         <source>Dir2</source>
-        <translation type="vanished">Z方向</translation>
+        <translation>Z方向</translation>
     </message>
     <message>
         <source>Sequence</source>
-        <translation type="vanished">顺序</translation>
+        <translation>顺序</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -4580,6 +4783,14 @@ please chose!</source>
     <message>
         <source>Edit Pos</source>
         <translation>编辑点位</translation>
+    </message>
+    <message>
+        <source>Pos And Cmp</source>
+        <translation>位置和相似度</translation>
+    </message>
+    <message>
+        <source>Only Cmp</source>
+        <translation>只有相似度</translation>
     </message>
     <message>
         <source>Ignore Z</source>
@@ -4705,16 +4916,16 @@ please chose!</source>
     </message>
     <message>
         <source>P</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set As Origin</source>
+        <translation>设为工件原点</translation>
     </message>
     <message>
         <source>Import From 
 CY GCode</source>
         <translation>G代码导入</translation>
-    </message>
-    <message>
-        <source>Set As Origin</source>
-        <translation>设为工件原点</translation>
     </message>
 </context>
 <context>
@@ -4737,7 +4948,7 @@ CY GCode</source>
     </message>
     <message>
         <source>Machine Struct 3</source>
-        <translation type="vanished">结构参数3</translation>
+        <translation>结构参数3</translation>
     </message>
     <message>
         <source>Machine Struct 4</source>
@@ -4745,7 +4956,7 @@ CY GCode</source>
     </message>
     <message>
         <source>Machine Struct 5</source>
-        <translation type="vanished">结构参数5</translation>
+        <translation>结构参数5</translation>
     </message>
     <message>
         <source>Machine Struct 6</source>
@@ -4753,15 +4964,15 @@ CY GCode</source>
     </message>
     <message>
         <source>Machine Struct 7</source>
-        <translation type="vanished">结构参数7</translation>
+        <translation>结构参数7</translation>
     </message>
     <message>
         <source>Machine Struct 8</source>
-        <translation type="vanished">结构参数8</translation>
+        <translation>结构参数8</translation>
     </message>
     <message>
         <source>Machine Struct 9</source>
-        <translation type="vanished">结构参数9</translation>
+        <translation>结构参数9</translation>
     </message>
     <message>
         <source>SACC 1</source>
@@ -4864,7 +5075,7 @@ CY GCode</source>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation type="vanished">返回主菜单</translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -5036,7 +5247,7 @@ CY GCode</source>
     </message>
     <message>
         <source>Line2D:</source>
-        <translation type="vanished">直线2D:</translation>
+        <translation>直线2D:</translation>
     </message>
     <message>
         <source>Line3D:</source>
@@ -5200,7 +5411,7 @@ CY GCode</source>
     </message>
     <message>
         <source>Offset Move:</source>
-        <translation type="vanished">相对移动:</translation>
+        <translation>相对移动:</translation>
     </message>
     <message>
         <source>Alarm</source>
@@ -5280,15 +5491,15 @@ CY GCode</source>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">输出</translation>
+        <translation>输出</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="vanished">通</translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="vanished">断</translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>Vistion Catch Start:</source>
@@ -5381,6 +5592,42 @@ CY GCode</source>
     <message>
         <source>PO Line 3D:</source>
         <translation>相对姿势直线:</translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址值:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据值:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址值:</translation>
+    </message>
+    <message>
+        <source>Go to</source>
+        <translation>跳转到</translation>
+    </message>
+    <message>
+        <source>Write Const Data To Addr:</source>
+        <translation>写立即数到地址:</translation>
+    </message>
+    <message>
+        <source>Write Addr Data To Addr:</source>
+        <translation>写地址值到地址:</translation>
+    </message>
+    <message>
+        <source>Const Data:</source>
+        <translation>立即数:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+    <message>
+        <source>Target Addr:</source>
+        <translation>目标地址:</translation>
     </message>
 </context>
 <context>
@@ -5784,7 +6031,7 @@ CY GCode</source>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation>限时:</translation>
     </message>
 </context>
 <context>
@@ -5846,11 +6093,11 @@ CY GCode</source>
     </message>
     <message>
         <source>please press startup button to origin</source>
-        <translation type="vanished">请按启动键原点复归.</translation>
+        <translation>请按启动键原点复归.</translation>
     </message>
     <message>
         <source>please press startup button to return</source>
-        <translation type="vanished">请按启动键复归.</translation>
+        <translation>请按启动键复归.</translation>
     </message>
     <message>
         <source>Recalibrate need to reboot. Continue?</source>
@@ -5863,6 +6110,10 @@ CY GCode</source>
     <message>
         <source>No[F5]</source>
         <translation>取消[F5]</translation>
+    </message>
+    <message>
+        <source>Sending Data...</source>
+        <translation>数据发送中...</translation>
     </message>
 </context>
 <context>
@@ -5882,6 +6133,14 @@ CY GCode</source>
     <message>
         <source>Start Update</source>
         <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <source>Backup/Restore</source>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>

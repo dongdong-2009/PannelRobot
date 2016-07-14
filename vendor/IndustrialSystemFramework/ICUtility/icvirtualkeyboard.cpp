@@ -134,8 +134,11 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
      }
      if(curText == tr("BS"))
      {
-         preeditString_.chop(1);
+         int cp = ui->inputEdit->cursorPosition();
+         if(cp == 0) return;
+         preeditString_.remove(ui->inputEdit->cursorPosition() - 1, 1);
          ui->inputEdit->setText(preeditString_);
+         ui->inputEdit->setCursorPosition(cp - 1);
          emit characterGenerated(preeditString_);
          return;
      }

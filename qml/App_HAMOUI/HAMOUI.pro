@@ -9,13 +9,9 @@ settingpages/* \
 ../ICCustomElement/*
 }
 
-OTHER_FILES += \
 <<<<<<< HEAD
     ../tests/GcodeTests.qml
 =======
-    teach/CounterActionEditorComponent.qml \
-    teach/CounterActionEditor.js
-
 >>>>>>> vision_develop_manual_ds
 
 

@@ -88,7 +88,7 @@ MouseArea{
                 text: qsTr("Set In")
                 width: 60
                 onButtonClicked: {
-                    objectOrigin.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                    objectOriginX.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                     objectOriginY.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                     objectOriginZ.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
                 }
@@ -98,18 +98,21 @@ MouseArea{
                 configName: qsTr(AxisDefine.axisInfos[0].name)
                 configAddr: "s_rw_0_32_3_1300"
                 anchors.verticalCenter: parent.verticalCenter
+                configValue: "0.000"
             }
             ICConfigEdit{
                 id:objectOriginY
                 configName: qsTr(AxisDefine.axisInfos[1].name)
                 configAddr: "s_rw_0_32_3_1300"
                 anchors.verticalCenter: parent.verticalCenter
+                configValue: "0.000"
             }
             ICConfigEdit{
                 id:objectOriginZ
                 configName: qsTr(AxisDefine.axisInfos[2].name)
                 configAddr: "s_rw_0_32_3_1300"
                 anchors.verticalCenter: parent.verticalCenter
+                configValue: "0.000"
             }
             ICButton{
                 id:setAsObjectOrigin

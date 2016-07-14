@@ -254,7 +254,7 @@ Rectangle {
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
-                                                                    Teach.generateInitProgram()));
+                                                                    Teach.generateInitProgram(), Teach.generateInitSubPrograms()));
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();
@@ -335,16 +335,18 @@ Rectangle {
                 var ret = JSON.parse(panelRobotController.importRobotMold(JSON.stringify(importMolds),
                                                                         recordsView.openBackupPackage));
 
+                var errLog = "";
                 for(i = 0; i < ret.length; ++i){
                     if(ret[i].errno === 0)
                         recordsModel.append(
                                     recordsView.createRecordItem(ret[i].recordName,
                                                                      ret[i].createDatetime));
                     else{
-                        tipDialog.warning(ICString.icStrformat(qsTr("Import {0} fail!"), ret[i].recordName), qsTr("OK"));
+                        errLog += ICString.icStrformat(qsTr("Import {0} fail!\n"), ret[i].recordName);
+//                        tipDialog.warning(ICString.icStrformat(qsTr("Import {0} fail!"), ret[i].recordName), qsTr("OK"));
                     }
                 }
-                tipDialog.information(qsTr("Import Finished!"), qsTr("OK"));
+                tipDialog.information(qsTr("Import Finished!\n") + errLog, qsTr("OK"));
             }
 
         }

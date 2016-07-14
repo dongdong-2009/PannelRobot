@@ -421,10 +421,11 @@ Rectangle {
         if(!hasModify) return;
         beforeSaveProgram(which);
         var errInfo;
+        tipBox.runningTip(qsTr("Program Compiling..."));
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
-            errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
+            errInfo = saveManualProgramByName(editing.text(PData.lastEditingIndex));
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -443,6 +444,8 @@ Rectangle {
             }
             tipBox.warning(toShow, qsTr("OK"));
         }
+        else
+            tipBox.visible = false;
         var programStr = which == 0 ? qsTr("Main Program") : ICString.icStrformat(qsTr("Sub-{0} Program"), which);
         ICOperationLog.opLog.appendOperationLog(ICString.icStrformat(qsTr("Save {0} of Record:{1}"), programStr, panelRobotController.currentRecordName()));
         hasModify = false;
@@ -644,8 +647,11 @@ Rectangle {
                             currentEditingProgram = PData.kManualProgramIndex;
                             PData.currentEditingProgram = PData.kManualProgramIndex;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
+                            PData.lastEditingIndex = currentIndex;
+                            actionEditorFrame.item.setMode("manualProgramEditMode");
 
                         }else{
+                            actionEditorFrame.item.setMode("");
                             if(panelRobotController.isAutoMode()){
                                 singleStep.setChecked(false);
                                 singleCycle.setChecked(false);
@@ -662,6 +668,7 @@ Rectangle {
                                 programListView.currentIndex = -1;
                                 currentEditingProgram = currentIndex;
                             }
+                            PData.lastEditingIndex = currentIndex;
                         }
                     }
                 }
@@ -742,6 +749,7 @@ Rectangle {
                             if(actionEditorFrame.progress == 1)
                                 actionEditorFrame.item.setMode("");
                         }else{
+                            Teach.currentParsingProgram = PData.kFunctionProgramIndex;
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
                             programListView.currentIndex = -1;
@@ -750,6 +758,9 @@ Rectangle {
                             currentEditingModule = moduleSel.currentIndex;
                             delModuleBtn.visible = newModuleBtn.visible;
                             actionEditorFrame.item.setMode("moduleEditMode");
+                            PData.currentEditingProgram = PData.kFunctionProgramIndex;
+
+
                         }
                     }
                 }

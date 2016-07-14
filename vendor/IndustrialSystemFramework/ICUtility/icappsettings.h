@@ -65,6 +65,8 @@ public:
 //    static uint Used
     const static char* UsbPath;
     const static char* QMLPath;
+    const static char* UserPath;
+    const static char* AppPath;
 private:
     const static char* SystemConfigGroup;
     const static char* SessionGroup;

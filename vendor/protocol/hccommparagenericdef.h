@@ -67,8 +67,13 @@ typedef enum {
 	C6V13,
 
 } BoardId;
-#define SOFTWARE_VERSION  "HC_S6-0.1-0.8"
 
+// ！！！ 递增版本号时请将两者都进行递增！！！
+#ifdef _F2837x
+#define SOFTWARE_VERSION  "HCQS6-0.1-0.9"
+#else
+#define SOFTWARE_VERSION  "HC_S6-0.1-0.9"
+#endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
 {
@@ -87,6 +92,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_9,//< 0：正常发机程序；1：测试程序
     ICAddr_System_Retain_10,//< 0：正常发机程序；1：绝对值电机读数测试
     ICAddr_System_Retain_11,//< 所有教导程序校验和
+    ICAddr_System_Retain_12,//< 1：计数器一键清零，所有计数器清零
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
     //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
@@ -394,8 +400,105 @@ typedef enum _ICAddr
 //    ICAddr_Mold_Para69,//<类型:模号;名字:速度;结构:MOLD_PARA;地址:mold_addr;
 
 
-
-
+//    ICAddr_Mold_Para800=800,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para801,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para802,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para803,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para804,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para805,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para806,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para807,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para808,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para809,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para810,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para811,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para812,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para813,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para814,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para815,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para816,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para817,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para818,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para819,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para820,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para821,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para822,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para823,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para824,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para825,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para826,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para827,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para828,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para829,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para830,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para831,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para832,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para833,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para834,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para835,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para836,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para837,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para838,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para839,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para840,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para841,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para842,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para843,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para844,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para845,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para846,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para847,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para848,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para849,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para850,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para851,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para852,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para853,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para854,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para855,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para856,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para857,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para858,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para859,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para860,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para861,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para862,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para863,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para864,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para865,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para866,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para867,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para868,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para869,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para870,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para871,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para872,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para873,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para874,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para875,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para876,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para877,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para878,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para879,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para880,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para881,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para882,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para883,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para884,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para885,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para886,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para887,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para888,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para889,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para890,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para891,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para892,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para893,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para894,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para895,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para896,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para897,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
+//    ICAddr_Mold_Para898,//<类型:模号;名字:速度;结构:MEM_PARA;地址:memory_addr;
     ICAddr_Write_Section_End = 899, //<可写参数地址段结束哨兵
 
     ICAddr_Read_Status0 = 900, //<类型：状态；名字：轴1当前输出脉冲位置;结构:READ_PARA;地址:read_addr;
@@ -689,7 +792,7 @@ typedef enum
      *x_dir:1; x轴方向 0：反方向；1正方向；
      *y_dir:1; y轴方向 0：反方向；1正方向；
      *z_dir:1; z轴方向 0：反方向；1正方向；
-     *type:8;  堆叠类型 0为普通堆叠 1为装箱堆叠 2为视觉数据源 3为不规则数据源
+     *type:8;  堆叠类型 0为普通堆叠 1为装箱堆叠 2为视觉数据源 3为不规则数据源 4视觉定位和相似度辨别 5纯相似度辨别
      *binding_counter:1;  是否绑定计数器ID，0未绑定；1绑定
      *counter_id:15;  绑定计数器ID
      *
@@ -752,6 +855,23 @@ typedef enum
     F_CMD_TEACH_ALARM = 500,//< 报警教导
     F_CMD_VISION_CATCH = 501,
     /***************************************************************************/
+    /*
+     * addr:写地址 value:设定值
+     */
+    F_CMD_MEMSET_CMD = 600,//< 写地址命令教导
+    /***************************************************************************/
+    /*
+     * addr1:读取地址 addr2:目标地址
+     */
+    F_CMD_MEMMOVE_CMD,//< 地址指针命令教导
+    /***************************************************************************/
+    /*
+     * step:跳转步号 条件不满足跳转下一行 addr1:比较地址1 cmd: 0 >,>=,<,<=,==,!=    addr2:比较地址2
+     */
+    F_CMD_MEMCOMPARE_CMD,//< 地址指针命令教导
+    /***************************************************************************/
+
+    F_CMD_MEM_CMD = 53000,
 
     F_CMD_PROGRAM_JUMP0=10000,   //< 程序无条件跳转 跳转步号
     F_CMD_PROGRAM_JUMP1,   //< 程序跳转 跳转步号 跳转类型（IO板类型） 延迟时间（0.1S） 检测对象（0输入；1输出） 检测ID 检测状态（0：OFF；1：ON）
@@ -1405,9 +1525,19 @@ typedef union{
     uint32_t p[36];
 }MOLD_P;
 
+
+//static const uint32_t memory_addr[] = {
+//    ICAddr_Mold_Para800,
+//    ICAddr_Mold_Para898 //<类型：模号；名字：；结构：MEM_PARA；地址：memory_addr；
+//};
+//typedef union{
+//    uint32_t a[99];
+//}MEM_PARA;
 typedef struct{
     MOLD_PRO_USE use_p;
     MOLD_P tool;
+//    uint32_t res[ICAddr_Mold_Para800-ICAddr_Mold_Para36];
+//    MEM_PARA mem;
 }MOLD_PARAStruct;
 
 

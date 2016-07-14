@@ -7,6 +7,7 @@
 
 
 QQueue<ICRobotTransceiverData*> ICRobotVirtualhost::keyCommandList_;
+
 QMap<int, quint32> ICRobotVirtualhost::iStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::oStatusMap_;
 QMap<int, quint32> ICRobotVirtualhost::multiplexingConfigs_;
@@ -26,6 +27,7 @@ ICRobotVirtualhost::ICRobotVirtualhost(uint64_t hostId, QObject *parent) :
 #ifdef NEW_PLAT
     currentStatusGroup_ = 0;
     statusGroupCount_ = qCeil(qreal(ICAddr_Read_Status40 - ICAddr_Read_Status0) / REFRESH_COUNT_PER);
+    sendingContinuousData_ = false;
 #else
     currentStatusGroup_ = 0;
 #endif
@@ -74,7 +76,6 @@ static QVector<QVector<quint32> > formatProgramFrame(const QVector<QVector<quint
 
         }
         oneLine<<data.at(i);
-
 
     }
     ret.append(oneLine);
@@ -482,7 +483,8 @@ void ICRobotVirtualhost::CommunicateImpl()
         int ec = recvFrame_->ErrorCode();
         emit CommunicateError(ec);
         IncreaseCommunicateErrCount();
-        if(CommunicateErrCount() > 50){
+        if(CommunicateErrCount() > 50)
+        {
             statusCache_.UpdateConfigValue(&c_ro_0_32_0_932, 9);
         }
 #ifdef NEW_PLAT
@@ -524,7 +526,6 @@ void ICRobotVirtualhost::CommunicateImpl()
         //        }
     }
     if(likely(recvRet_ && !recvFrame_->IsError()))
-        //    if(1)
     {
         if(recvFrame_->IsQuery())
         {
@@ -599,6 +600,16 @@ void ICRobotVirtualhost::CommunicateImpl()
 #endif
         }
     }
+    else if(unlikely(recvFrame_->GetAddr() >= ICAddr_System_Retain_80 &&
+            recvFrame_->GetAddr() <= ICAddr_System_Retain_83))
+    {
+        if(!sendingContinuousData_)
+        {
+            sendingContinuousData_ = true;
+            sendingDataTime_.restart();
+            emit SendingContinuousData();
+        }
+    }
     ClearCommunicateErrCount();
     queue_.DeQueue();
 }
@@ -618,12 +629,23 @@ if(!keyCommandList_.isEmpty())
 if(queue_.IsEmpty())
 {
     AddRefreshStatusCommand_();
+    if(sendingContinuousData_)
+    {
+        sendingContinuousData_ = false;
+        emit SentContinuousData(sendingDataTime_.elapsed());
+    }
     //    if(likely(CommunicateInterval() != REFRESH_INTERVAL))
     //        SetCommunicateInterval(REFRESH_INTERVAL);
     //        return;
 }
 const ICRobotTransceiverData* toSend = static_cast<const ICRobotTransceiverData*>(queue_.Head());
 Transceiver()->Write(toSend);
+#ifdef COMM_DEBUG
+if(!toSend->IsQuery())
+{
+    qDebug()<<"toSend:"<<toSend->ToString();
+}
+#endif
 SetCommunicateInterval(toSend->IsQuery()?REFRESH_INTERVAL:(toSend->GetLength() + 5));
 }
 

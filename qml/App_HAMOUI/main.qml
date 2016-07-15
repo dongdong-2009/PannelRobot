@@ -549,18 +549,18 @@ Rectangle {
 //                }
 //            ]
 //        };
-        var toTest = {
-            "dsID":"www.geforcevision.com.cam",
-            "dsData":[
-                {
-                    "camID":"0",
-                    "data":[
-                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-                    ]
-                }
-            ]
-        };
-        onETH0DataIn(JSON.stringify(toTest));
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
+//                    ]
+//                }
+//            ]
+//        };
+//        onETH0DataIn(JSON.stringify(toTest));
 //        var toTest = {
 //            "dsID":"www.geforcevision.com.cam",
 //            "reqType":"standardize",

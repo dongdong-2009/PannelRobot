@@ -75,6 +75,13 @@ function LinesInfo(){
         var tmp = this.programsLines[programIndex][id];
         return tmp || [];
     }
+
+    this.idUsed = function(id){
+        for(var i = 0, len = this.programsLines.length; i < len; ++i){
+            if(this.getLines(i, id).length > 0) return true;
+        }
+        return false;
+    }
 }
 
 var counterLinesInfo = new LinesInfo();

@@ -742,7 +742,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     }
                 }
             }
-            if(si.stackData.si[0].type == 2 || si.stackData.si[0].type == 3)
+            if(si.stackData.si[0].type >= 2)
             {
                 ret.AddUsedSourceStack(stackID, si.dsHostID);
             }

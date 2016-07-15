@@ -742,7 +742,8 @@ public:
         QMap<int, int>::const_iterator p = sids.constBegin();
         while(p != sids.constEnd())
         {
-            ret += QString("\"%1:%2\",").arg(p.key(), p.value());
+            ret += QString("\"%1\":\"%2\",").arg(p.key()).arg(p.value());
+            ++p;
         }
         if(!sids.isEmpty())
             ret.chop(1);

@@ -246,7 +246,7 @@ Rectangle {
                                           selectedDS,
                                           dsID);
             var realST = stackType;
-            if((realST == 2) || (realST == 3)){
+            if(realST >= 2){
                 realST = page1.isCustomDataSource ? 3 : 2;
                 if(realST == 2){
                     if(posAndCmp.isChecked)
@@ -349,7 +349,7 @@ Rectangle {
             onButtonClicked: {
                 var sid = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                 if(ProgramList.stackLinesInfo.idUsed(sid)){
-                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + qsTr("is using!"));
+                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + " " + qsTr("is using!"));
                     return;
                 }
 

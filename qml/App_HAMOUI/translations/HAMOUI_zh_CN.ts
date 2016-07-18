@@ -1257,6 +1257,14 @@
         <source>Target</source>
         <translation>目标</translation>
     </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
 </context>
 <context>
     <name>CustomVariableConfigs</name>
@@ -4749,6 +4757,14 @@ please chose!</source>
     <message>
         <source>Only Cmp</source>
         <translation>只有相似度</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
     </message>
 </context>
 <context>

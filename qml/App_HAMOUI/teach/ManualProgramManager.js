@@ -117,6 +117,14 @@ function ManualProgramManager(){
                 m[event](program);
         }
     }
+
+
+    if(this.getProgram(0) === undefined){
+        this.addProgram(qsTr("Custom Origin"),[{"action":60000}]);
+    }
+    if(this.getProgram(1) === undefined){
+        this.addProgram(qsTr("Custom Return"),[{"action":60000}]);
+    }
 }
 
 var manualProgramManager = new ManualProgramManager();

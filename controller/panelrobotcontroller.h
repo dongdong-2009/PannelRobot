@@ -600,6 +600,7 @@ public:
                                       const QString &functions,
                                       int channel = 10);
 
+
     Q_INVOKABLE QString checkProgram(const QString& program,
                                      const QString& stacks,
                                      const QString& counters,

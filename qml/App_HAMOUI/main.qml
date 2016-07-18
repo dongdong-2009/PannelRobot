@@ -12,6 +12,8 @@ import "ExternalData.js" as ESData
 import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
+import "teach/ManualProgramManager.js" as ManualProgramManager
+
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -675,8 +677,12 @@ Rectangle {
         panelRobotController.sentContinuousData.connect(function(t){
             tipBox.visible = false;
         });
+        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+                                              "","", "", "", 19);
+        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+                                              "","", "", "", 18);
 
-        console.log("main load finished!")
+        console.log("main load finished!");
     }
 
     focus: true

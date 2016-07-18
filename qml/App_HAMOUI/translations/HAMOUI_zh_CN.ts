@@ -4884,6 +4884,10 @@ please chose!</source>
         <source>Total:</source>
         <translation>总共:</translation>
     </message>
+    <message>
+        <source>Sync Replace</source>
+        <translation>同步替换</translation>
+    </message>
 </context>
 <context>
     <name>StructConfigs</name>

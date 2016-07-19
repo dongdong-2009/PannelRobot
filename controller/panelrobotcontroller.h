@@ -806,6 +806,7 @@ signals:
     void eth0DataComeIn(const QByteArray& data);
     void sendingContinuousData();
     void sentContinuousData(int);
+    void needToInitHost();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

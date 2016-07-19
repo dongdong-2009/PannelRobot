@@ -273,6 +273,7 @@ void PanelRobotController::OnNeedToInitHost()
     ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->MachineConfigsBuffer());
 #endif
+    emit needToInitHost();
 }
 
 void PanelRobotController::sendKeyCommandToHost(int key)

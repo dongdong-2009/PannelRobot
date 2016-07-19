@@ -677,6 +677,12 @@ Rectangle {
         panelRobotController.sentContinuousData.connect(function(t){
             tipBox.visible = false;
         });
+        panelRobotController.needToInitHost.connect(function(){
+            panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+                                                  "","", "", "", 19);
+            panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+                                                  "","", "", "", 18);
+        });
         panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
                                               "","", "", "", 19);
         panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),

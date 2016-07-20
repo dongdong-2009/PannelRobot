@@ -22,7 +22,16 @@ ProgramFlowPage {
     function getRecordContent(which){
         if(which == 0){
             LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-            return JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+            for(var i = 0;i < ret.length;i++){
+                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
+                    for(i = 0;i < 16;i++){
+                        var a = flag + "i";
+                        BaseTeach.flagsDefine.pushFlag(0,new BaseTeach.FlagItem(ret[i].a,""));
+                    }
+                }
+            }
+            return ret;
         }
         else
             return JSON.parse(panelRobotController.programs(which));

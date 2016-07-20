@@ -7,8 +7,10 @@ const char* ICAppSettings::SessionGroup = "Session";
 const char* ICAppSettings::LocaleGroup = "Locale";
 #ifndef Q_WS_QWS
 const char* ICAppSettings::UsbPath = "fakeUSB";
+const char* ICAppSettings::userPath = "fakeUserHome";
 #else
 const char* ICAppSettings::UsbPath = "/mnt/udisk";
+const char* ICAppSettings::userPath = "/home/szhc/userHome";
 #endif
 #ifndef Q_WS_QWS
 const char* ICAppSettings::QMLPath("../qml");

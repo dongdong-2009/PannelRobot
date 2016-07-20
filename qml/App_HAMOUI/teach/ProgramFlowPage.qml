@@ -121,6 +121,7 @@ Rectangle {
         }
         repaintProgramItem(currentModel());
         programListView.positionViewAtIndex(programListView.currentIndex, ListView.Visible);
+        onSaveTriggered();
     }
 
     function onDeleteTriggered(){
@@ -157,6 +158,7 @@ Rectangle {
         PData.pointLinesInfo.syncLines(cPI, oCI, -1);
         hasModify = true;
         repaintProgramItem(model);
+        onSaveTriggered();
     }
 
     function findSyncStart(endPos){
@@ -424,7 +426,7 @@ Rectangle {
         if(which == PData.kFunctionProgramIndex){
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
-            errInfo = saveManualProgramByName(editing.text(editing.currentIndex));
+            errInfo = saveManualProgramByName(editing.text(PData.lastEditingIndex));
         }else if(which == 0){
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
@@ -644,6 +646,7 @@ Rectangle {
                             currentEditingProgram = PData.kManualProgramIndex;
                             PData.currentEditingProgram = PData.kManualProgramIndex;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
+                            PData.lastEditingIndex = currentIndex;
 
                         }else{
                             if(panelRobotController.isAutoMode()){
@@ -662,6 +665,7 @@ Rectangle {
                                 programListView.currentIndex = -1;
                                 currentEditingProgram = currentIndex;
                             }
+                            PData.lastEditingIndex = currentIndex;
                         }
                     }
                 }
@@ -674,6 +678,16 @@ Rectangle {
                     function onNewManualProgram(status){
                         tipBox.finished.disconnect(newManualProgram.onNewManualProgram);
                         if(status){
+//                            var f = Teach.flagsDefine.createFlag(0, "");
+//                            Teach.flagsDefine.pushFlag(0, f);
+//                            var flag0 = f.flagID;
+//                            var f = Teach.flagsDefine.createFlag(0, "");
+//                            Teach.flagsDefine.pushFlag(0, f);
+//                            var flag1 = f.flagID;
+//                            var ret = [];
+//                            ret.push(Teach.generateFlagAction(flag0, qsTr("NoUse")));
+//                            ret.push(Teach.generateFlagAction(flag1, qsTr("NoUse")));
+//                            ret.push(Teach.generteEndAction());
                             var toAdd = ManualProgramManager.manualProgramManager.addProgram(tipBox.inputText, [Teach.generteEndAction()]);
                             editing.resetProgramItems();
                         }

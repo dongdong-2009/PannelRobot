@@ -22,8 +22,10 @@ Item {
         ao.fixture2Delay0 = delay20.configValue;
         ao.fixture2Delay1 = delay21.configValue;
         ao.fixture2Delay2 = delay22.configValue;
-        ao.fixture2Switch = fixture1Switch.configValue
-        ao.slope = slope.configValue
+        ao.fixture2Switch = fixture1Switch.configValue;
+        ao.slope = slope.configValue;
+        ao.chamferRadius = chamferRadius.configValue;
+        ao.linglong = linelong.configValue
     }
 
     function getDetails(){
@@ -42,7 +44,9 @@ Item {
             "delay22":delay22.configValue,
             "fixtureSwitch":fixtureSwitch.configValue,
             "fixture1Switch":fixture1Switch.configValue,
-            "slope":slope.configValue
+            "slope":slope.configValue,
+            "chamferRadius":chamferRadius.configValue,
+            "linglong":linelong.configValue
         };
     }
     function speedcontainer() {return configContainer;}
@@ -208,7 +212,7 @@ Item {
 //        }
 
         Column{
-            spacing: 20
+            spacing: 10
             y: fixtureDelay.height
             ICComboBoxConfigEdit{
                 id:fixtureSwitch
@@ -229,6 +233,22 @@ Item {
                 configAddr: "s_rw_0_32_3_1300"
                 unit: qsTr("°")
             }
+            ICConfigEdit{
+                id:chamferRadius
+                visible: false
+                z: 1
+                configName: qsTr("radius")
+                configAddr: "s_rw_0_32_1_1200"
+                unit: qsTr("mm")
+            }
+            ICConfigEdit{
+                id:linelong
+                visible: false
+                z: 1
+                configName: qsTr("Line Long")
+                configAddr: "s_rw_0_32_1_1200"
+                unit: qsTr("mm")
+            }
         }
     }
 
@@ -248,18 +268,20 @@ Item {
         delay21.configValue = actionObject.fixture2Delay1;
         delay22.configValue = actionObject.fixture2Delay2;
         fixture1Switch.configValue = actionObject.fixture2Switch;
-        slope.configValue = actionObject.slope
+        slope.configValue = actionObject.slope;
+//        chamferRadius.configValue = actionObject.chamferRadius;
+//        linelong.configValue = actionObject.linelong
     }
 
     Component.onCompleted: {
         delay0.configValue = 0.1;
         delay1.configValue = 0;
         delay2.configValue = 0;
-        fixtureSwitch.configValue = 2;
+        fixtureSwitch.configValue = 3;
         delay20.configValue = 0.1;
         delay21.configValue = 0;
         delay22.configValue = 0;
-        fixture1Switch.configValue = 2;
+        fixture1Switch.configValue = 3;
         m0Speed.configValue = 30;
         m1Speed.configValue = 30;
         m2Speed.configValue = 30;
@@ -267,6 +289,8 @@ Item {
         m4Speed.configValue = 5;
         m5Speed.configValue = 5;
         slope.configValue = 0;
+        chamferRadius.configValue = 4;
+        linelong.configValue = 100;
 
 
     }

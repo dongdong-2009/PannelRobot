@@ -110,6 +110,16 @@ int SpeedActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+int DataActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    item.append(v->value("type").toInt() + 600);
+    item.append(v->value("addr").toInt());
+    item.append(v->value("data").toInt());
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+
+}
+
 int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
@@ -319,6 +329,15 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(v->value("autoClear").toInt());
         item.append(v->value("pointStatus").toInt());
     }
+    else if(act == F_CMD_MEMCOMPARE_CMD)
+    {
+        item.append(v->value("leftAddr").toUInt());
+        if(v->value("type") == 0)
+            item.append(v->value("cmd").toUInt() + 100);
+        else
+            item.append(v->value("cmd").toUInt());
+        item.append(v->value("rightAddr").toUInt());
+    }
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
@@ -491,6 +510,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP2, ConditionActionCompiler);
+    ret.insert(F_CMD_MEMCOMPARE_CMD, ConditionActionCompiler);
 
     ret.insert(F_CMD_STACK0, StackActionCompiler);
     ret.insert(F_CMD_COUNTER, CounterActionCompiler);
@@ -502,6 +522,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_VISION_CATCH, VisionCatchActionCompiler);
     ret.insert(F_CMD_WATIT_VISION_DATA, WaitVisionDataActionCompiler);
     ret.insert(F_CMD_SPEED_SMOOTH, SpeedActionCompiler);
+    ret.insert(F_CMD_MEM_CMD, DataActionCompiler);
     ret.insert(F_CMD_END, SimpleActionCompiler);
 
     return ret;
@@ -560,7 +581,9 @@ RecordDataObject ICRobotMold::NewRecord(const QString &name,
     if(name.isEmpty()) return RecordDataObject(kRecordErr_Name_Is_Empty);
     if(ICDALHelper::IsExistsRecordTable(name))
     {
-        return RecordDataObject(kRecordErr_Name_Is_Exists);
+        RecordDataObject ret(kRecordErr_Name_Is_Exists);
+        ret.setRecordName(name);
+        return ret;
     }
     QStringList programList;
     int err;
@@ -623,6 +646,7 @@ static bool IsJumpAction(int act)
     return act == F_CMD_PROGRAM_JUMP1 ||
             act == F_CMD_PROGRAM_JUMP0 ||
             act == F_CMD_PROGRAM_JUMP2 ||
+            act == F_CMD_MEMCOMPARE_CMD ||
             act == F_CMD_PROGRAM_CALL0;
 }
 
@@ -727,7 +751,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         }
         if(act == F_CMD_COUNTER ||
                 act == F_CMD_COUNTER_CLEAR ||
-                act == F_CMD_PROGRAM_JUMP2)
+                act == F_CMD_PROGRAM_JUMP2 )
         {
             int cID =  action.value("counterID", -1).toUInt();
             if(cID >= 0)

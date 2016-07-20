@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
+import "../teach/ManualProgramManager.js" as ManualProgramManager
 
 
 Item {
@@ -27,6 +28,21 @@ Item {
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         var rotateCID = rc.id;
+        var rotateOKCount = rotate.configValue / 90;
+        if(rotate.configValue < 0)rotateOKCount = -rotateOKCount;
+        c = BaseTeach.counterManager.newCounter("", 0, rotateOKCount);
+        var rotateOKCID = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+
+        c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+        var aaaa = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+
+        c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+        var bbbb = c.id;
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+
+
         var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
@@ -36,7 +52,8 @@ Item {
                                                 rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
                                                 details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                                                 details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                                                details.fixture1Switch, details.slope));
+                                                details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
+                                                aaaa,bbbb,editaction.configValue));
         return ret;
     }
 
@@ -56,6 +73,16 @@ Item {
         ao.rotate = rotate.configValue;
         ao.rotateSpeed = rotateSpeed.configValue;
         ao.rotateCount = rotateCount.configValue;
+
+        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
+        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.dirCount);
+//        counterUpdated(c.id);
+
+        c = BaseTeach.counterManager.getCounter(ao.rotateCounterID);
+        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.rotateCount);
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.rotateCount);
+//        counterUpdated(c.id);
     }
 
     function setModeName(name){
@@ -64,6 +91,46 @@ Item {
     function setPosName(name1,name2){
         button_setPos1.text = name1;
         button_setPos2.text = name2;
+    }
+    function gunFollowEnvisible(){
+        if(mode < 4 || mode == 8)
+            gunFollowEn.visible  = false;
+        else{
+            if(planeSel.configValue == 0 && dirAxisSel.configValue == 0)
+                gunFollowEn.visible  = true;
+            else gunFollowEn.visible  = false;
+        }
+    }
+    function hideUselessEdit(){
+        planeSel.visible = mode == 8 ? false : true;
+        dirAxisSel.visible = mode == 8 ? false : true;
+        editaction.visible = mode == 8 ? true : false;
+        button_setPos1.visible = mode == 8 ? false : true;
+        pos1Axis1.visible = mode == 8 ? false : true;
+        pos1Axis2.visible = mode == 8 ? false : true;
+        repeateSpeed.visible = mode == 8 ? false : true;
+        repeateCount.visible = mode == 8 ? false : true;
+        zlength.visible = mode == 8 ? false : true;
+        dirLength.visible = mode == 8 ? false : true;
+        dirSpeed.visible = mode == 8 ? false : true;
+    }
+
+    function onProgramAdded(program){
+        resetItems();
+    }
+
+    function onProgramChanged(program){
+        resetItems();
+    }
+
+    function onProgramRemoved(programID){
+        resetItems();
+    }
+
+    function resetItems(){
+        var ret = [];
+        editaction.configValue = -1;
+        editaction.items = ManualProgramManager.manualProgramManager.programsNameList();
     }
 
     Column{
@@ -81,40 +148,71 @@ Item {
             }
             ICComboBoxConfigEdit{
                 id:planeSel
+//                enabled: !useEn.isChecked
                 configName: qsTr("plane")
                 items: ["XY", "XZ", "YZ"]
                 //                configValue: 0
                 onConfigValueChanged: {
+                    if(mode > 3 && configValue == 0 && dirAxisSel.configValue == 0)
+                        gunFollowEn.visible = true;
+                    else gunFollowEn.visible = false;
                     if(configValue == 0){
                         container.plane = [0, 1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
-//                        dirAxisSel.items = ["X", "Y"]
+                        dirAxisSel.items = ["X", "Y"]
                     }else if(configValue == 1){
                         plane = [0, 2, 1];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-//                        dirAxisSel.items = ["X", "Z"]
+                        dirAxisSel.items = ["X", "Z"]
                     }else if(configValue == 2){
                         plane = [1, 2, 0];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-//                        dirAxisSel.items = ["Y", "Z"]
+                        dirAxisSel.items = ["Y", "Z"]
                     }
                 }
             }
 
             ICComboBoxConfigEdit{
                 id:dirAxisSel
+                width: 200
+//                enabled: !useEn.isChecked
                 configName: qsTr("Dir Axis")
-                items: ["X", "Y", "Z"]
+//                items: ["X", "Y", "Z"]
+                onConfigValueChanged:
+                    if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
+                        gunFollowEn.visible = true;
+                    else gunFollowEn.visible = false;
             }
+            ICComboBoxConfigEdit{
+                id: editaction
+                visible: false
+//                enabled: useEn.isChecked
+                configName: qsTr("Actions")
+            }
+//            ICCheckBox{
+//                id:useEn
+//                width: 60
+//                text: qsTr("UseEn")
+//                isChecked: false
+//                useCustomClickHandler: true
+//                MouseArea{
+//                    anchors.fill: parent
+//                    onClicked: {
+//                        if(!useEn.isChecked)
+//                            useEn.isChecked = true;
+//                        else useEn.isChecked = false;
+//                    }
+//                }
+//            }
         }
         Row{
             id:pos1Container
@@ -134,6 +232,7 @@ Item {
             }
             ICButton{
                 id:button_setStartPos
+//                enabled: !useEn.isChecked
                 text: qsTr("Set SPos")
                 width: configContainer.posNameWidth + 10
                 height: sPosM0.height
@@ -149,6 +248,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM0
+//                enabled: !useEn.isChecked
                 width: 150
                 configNameWidth: 28
                 configName: AxisDefine.axisInfos[0].name
@@ -157,6 +257,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM1
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[1].name
@@ -165,6 +266,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM2
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[2].name
@@ -178,6 +280,7 @@ Item {
             x: 74
             ICConfigEdit{
                 id:sPosM3
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[3].name
@@ -186,6 +289,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM4
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
@@ -194,6 +298,7 @@ Item {
             }
             ICConfigEdit{
                 id:sPosM5
+//                enabled: !useEn.isChecked
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
@@ -216,10 +321,12 @@ Item {
                     ret.pos[axis1] = pos1Axis1.configValue;
                     ret.pos[axis2] = pos1Axis2.configValue;
                     ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
+                    ret.pos["m" + 3] = pos1Axis4.configValue;
                     return ret;
                 }
                 ICButton{
                     id:button_setPos1
+//                    enabled: !useEn.isChecked
                     width: configContainer.posNameWidth + 10
                     height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
@@ -238,6 +345,7 @@ Item {
                             pos1Axis2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
                             break;}
                         }
+                        pos1Axis4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
                     }
                 }
 //                Text {
@@ -247,6 +355,7 @@ Item {
 //                }
                 ICConfigEdit{
                     id:pos1Axis1
+//                    enabled: !useEn.isChecked
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[0].name
@@ -255,11 +364,30 @@ Item {
                 }
                 ICConfigEdit{
                     id:pos1Axis2
+//                    enabled: !useEn.isChecked
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[1].name
                     configAddr: "s_rw_0_32_3_1300"
                     unit: AxisDefine.axisInfos[1].unit
+                }
+                ICConfigEdit{
+                    id:pos1Axis4
+//                    enabled: !useEn.isChecked
+                    visible: false
+                    width: sPosM0.width
+                    configNameWidth: sPosM0.configNameWidth
+                    configName: AxisDefine.axisInfos[3].name
+                    configAddr: "s_rw_0_32_3_1300"
+                    unit: AxisDefine.axisInfos[3].unit
+                }
+                ICCheckBox{
+                    id:gunFollowEn
+//                    enabled: !useEn.isChecked
+                    text: qsTr("Gun Follow En")
+                    onVisibleChanged: {
+                        isChecked = false;
+                    }
                 }
             }
 
@@ -327,6 +455,7 @@ Item {
             id:repeateContainer
             ICConfigEdit{
                 id:repeateSpeed
+//                enabled: !useEn.isChecked
 //                visible: mode == 3 ? true : false
                 width: 237
                 configName: qsTr("Rpeate Speed")
@@ -336,12 +465,14 @@ Item {
             }
             ICConfigEdit{
                 id:repeateCount
+//                enabled: !useEn.isChecked
                 visible: (mode == 3 || mode == 7) ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("Repeate Count")
             }
             ICConfigEdit{
                 id:zlength
+//                enabled: !useEn.isChecked
                 visible: mode > 3 ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("z length")
@@ -355,6 +486,7 @@ Item {
             spacing: 10
             ICConfigEdit{
                 id:dirLength
+//                enabled: !useEn.isChecked
                 visible: mode == 2 ? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
@@ -363,6 +495,7 @@ Item {
             }
             ICConfigEdit{
                 id:dirSpeed
+//                enabled: !useEn.isChecked
                 width: repeateSpeed.width
                 configName: qsTr("Dir Speed")
                 configAddr: "s_rw_0_32_1_1200"
@@ -401,6 +534,9 @@ Item {
     }
     onActionObjectChanged: {
         if(actionObject == null) return;
+
+        pos1Axis4.configValue = actionObject.point1.pos["m" + 3];
+
         planeSel.configValue = actionObject.plane;
         dirAxisSel.configValue = actionObject.dirAxis;
         sPosM0.configValue = actionObject.startPos.pos.m0;
@@ -425,6 +561,14 @@ Item {
         rotate.configValue = actionObject.rotate;
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
+
+        if(actionObject.mode > 3){
+            if(actionObject.plane == 0 && actionObject.dirAxis == 0)
+                gunFollowEn.visible = true;
+            zlength.visible = true;
+        }
+        if(actionObject.mode == 3 || actionObject.mode == 7)
+            repeateCount.visible = true;
     }
 
     Component.onCompleted: {
@@ -439,12 +583,13 @@ Item {
 
         pos1Axis1.configValue = 500.000;
         pos1Axis2.configValue = 20.000;
+        pos1Axis4.configValue = 0.000;
 
         pos2Axis1.configValue = 0.000;
         pos2Axis2.configValue = 0.000;
 
-        repeateSpeed.configValue = 80.0;
-        dirSpeed.configValue = 80.0;
+        repeateSpeed.configValue = 100.0;
+        dirSpeed.configValue = 100.0;
         dirLength.configValue = 50.000;
         repeateCount.configValue = 2;
         zlength.configValue = -100;
@@ -452,5 +597,8 @@ Item {
         rotate.configValue = 90.000;
         rotateSpeed.configValue = 5.0;
         rotateCount.configValue = 4;
+
+        resetItems();
+        ManualProgramManager.manualProgramManager.registerMonitor(container);
     }
 }

@@ -427,6 +427,13 @@ public:
     bool CreateCounter(quint32 id, const QString& name, quint32 current, quint32 target);
     bool DeleteCounter(quint32 id);
     int IndexOfCounter(quint32 id) const;
+    QVariantList GetCounter(quint32 id) const
+    {
+        QVariantList ret;
+        int index = IndexOfCounter(id);
+        if(index < 0) return ret;
+        return counters_.at(index);
+    }
 
     QVector<QVariantList> Variables() const { return variables_;}
     bool CreateVariables(quint32 id, const QString& name, const QString& unit, quint32 v, quint32 decimal);

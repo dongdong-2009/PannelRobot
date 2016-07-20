@@ -319,31 +319,14 @@ Rectangle {
         }
 
         ICButton{
-            id:save
-            text: qsTr("Save")
-            width: 60
-            height: stackViewSel.height
-            visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
-            bgColor: "yellow"
-            anchors.left: newStack.right
-            anchors.leftMargin: 6
-            onButtonClicked: {
-                if(stackViewSel.currentIndex < 0) return;
-                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                var sI = Teach.getStackInfoFromID(id);
-                topContainer.saveStack(id,sI.descr, true, sI.posData);
-            }
-
-        }
-        ICButton{
             id:deleteStack
             text: qsTr("Delete")
-            width: save.width
+            width: newStack.width
             height: stackViewSel.height
             visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
             bgColor: "red"
 
-            anchors.left: save.right
+            anchors.left: newStack.right
             anchors.leftMargin: 6
             onButtonClicked: {
                 var sid = Teach.delStack(parseInt(Utils.getValueFromBrackets(stackViewSel.currentText())));
@@ -353,6 +336,25 @@ Rectangle {
             }
 
         }
+
+        ICButton{
+            id:save
+            text: qsTr("Save")
+            width: 80
+            height: stackViewSel.height
+            visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
+            bgColor: "yellow"
+            anchors.left: deleteStack.right
+            anchors.leftMargin: 6
+            onButtonClicked: {
+                if(stackViewSel.currentIndex < 0) return;
+                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                var sI = Teach.getStackInfoFromID(id);
+                topContainer.saveStack(id,sI.descr, true, sI.posData);
+            }
+
+        }
+
 
     }
     Column{

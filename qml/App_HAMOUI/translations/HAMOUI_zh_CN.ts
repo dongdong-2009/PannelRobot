@@ -75,6 +75,22 @@
         <source>ESD</source>
         <translation>速度</translation>
     </message>
+    <message>
+        <source>startSpeed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>endSpeed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>data</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -1146,6 +1162,50 @@
         <source>&lt;T</source>
         <translation>&lt;目标</translation>
     </message>
+    <message>
+        <source>Mem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Const Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left Addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&gt;=</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;=</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>==</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>!=</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -1207,6 +1267,80 @@
     <message>
         <source>Decimal</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataActionEditor</name>
+    <message>
+        <source>Const Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target Addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataManagePage</name>
+    <message>
+        <source>Local</source>
+        <translation type="unfinished">本机模号</translation>
+    </message>
+    <message>
+        <source>U Disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Machine Running(Mold, Machine)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HMI Configs(Programable Button, Panel Settings)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup Current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">删除</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">导出</translation>
+    </message>
+    <message>
+        <source>ghost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please input the backup name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished">确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
     </message>
 </context>
 <context>
@@ -1383,11 +1517,11 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation>公转盘正转</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation>公转盘反转</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y024</source>
@@ -1407,27 +1541,27 @@
     </message>
     <message>
         <source>Y030</source>
-        <translation></translation>
+        <translation>模具1正传</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation></translation>
+        <translation>模具1反转</translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation></translation>
+        <translation>模具2正传</translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation></translation>
+        <translation>模具2反转</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation></translation>
+        <translation>公转盘正传</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation></translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Y036</source>
@@ -1463,11 +1597,11 @@
     </message>
     <message>
         <source>X016</source>
-        <translation>公转盘正转到位</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X017</source>
-        <translation>公转盘反转到位</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X020</source>
@@ -1503,11 +1637,11 @@
     </message>
     <message>
         <source>X030</source>
-        <translation>X030</translation>
+        <translation>模具1转动到位</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation>X031</translation>
+        <translation>模具2转动到位</translation>
     </message>
     <message>
         <source>X032</source>
@@ -1519,11 +1653,11 @@
     </message>
     <message>
         <source>X034</source>
-        <translation>X034</translation>
+        <translation>公转盘正转到位</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation>X035</translation>
+        <translation>公转盘反转到位</translation>
     </message>
     <message>
         <source>X036</source>
@@ -3299,6 +3433,10 @@
         <source>°</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Gun Follow En</source>
+        <translation>喷枪跟随</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -3366,6 +3504,18 @@
         <source>°</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>radius</source>
+        <translation>倒角半径</translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Line Long</source>
+        <translation>线段长度</translation>
+    </message>
 </context>
 <context>
     <name>Keymap</name>
@@ -3430,6 +3580,10 @@
     <message>
         <source>System Configs</source>
         <translation>系统参数</translation>
+    </message>
+    <message>
+        <source>Data Manage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4131,6 +4285,10 @@ please chose!</source>
         <source>Path Speed</source>
         <translation>路径速度</translation>
     </message>
+    <message>
+        <source>Data Command</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenuFrame</name>
@@ -4447,6 +4605,42 @@ please chose!</source>
         <source>Repeate</source>
         <translation>重复喷涂</translation>
     </message>
+    <message>
+        <source>negative</source>
+        <translation>公转反转</translation>
+    </message>
+    <message>
+        <source>positive</source>
+        <translation type="vanished">公转正传</translation>
+    </message>
+    <message>
+        <source>Rotate OK</source>
+        <translation type="vanished">模具旋转到位</translation>
+    </message>
+    <message>
+        <source>Rotate1 OK</source>
+        <translation>模具1旋转到位</translation>
+    </message>
+    <message>
+        <source>negative1</source>
+        <translation>模具2转动</translation>
+    </message>
+    <message>
+        <source>Rotate2 OK</source>
+        <translation>模具2旋转到位</translation>
+    </message>
+    <message>
+        <source>positive1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>gongzhuan Postv OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>duoyu dir</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4543,11 +4737,11 @@ please chose!</source>
     </message>
     <message>
         <source>Import {0} fail!</source>
-        <translation>导入{0}失败!</translation>
+        <translation type="vanished">导入{0}失败!</translation>
     </message>
     <message>
         <source>Import Finished!</source>
-        <translation>导入完成!</translation>
+        <translation type="vanished">导入完成!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -4565,6 +4759,16 @@ please chose!</source>
     <message>
         <source>No USB Found!</source>
         <translation>没有发现U盘!</translation>
+    </message>
+    <message>
+        <source>Import {0} fail!
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Finished!
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5586,6 +5790,70 @@ please chose!</source>
     <message>
         <source>PO Line 3D:</source>
         <translation>相对姿势直线:</translation>
+    </message>
+    <message>
+        <source>Positive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Negative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Emergency End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write Const Data To Addr:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write Addr Data To Addr:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Const Data:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target Addr:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

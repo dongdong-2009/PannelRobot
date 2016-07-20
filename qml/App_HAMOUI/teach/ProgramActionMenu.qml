@@ -23,6 +23,7 @@ Rectangle {
     signal originMenuTriggered()
     signal visionMenuTriggered()
     signal speedMenuTriggered()
+    signal dataMenuTriggered()
 
     states: [
         State {
@@ -170,6 +171,15 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: speedMenuTriggered()
+        }
+
+        ICButton{
+            id:dataCommand
+            text: qsTr("Data Command")
+            icon: "../images/origin.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            onButtonClicked: dataMenuTriggered()
         }
 
         ICButton{

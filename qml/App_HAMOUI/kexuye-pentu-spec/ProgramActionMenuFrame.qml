@@ -6,6 +6,7 @@ import "ProgramActionMenuFrame.js" as LocalPData
 import "Teach.js" as LocalTeach
 import "../teach/ProgramActionMenuFrame.js" as BasePData
 ProgramActionMenuFrame{
+    id: container
     function showActionMenu(){
         actionEditorContainerInstance().setCurrentIndex(LocalPData.menuIndex);
         linkedBtn1Instance().visible = false;
@@ -14,8 +15,6 @@ ProgramActionMenuFrame{
     }
 
     function isMenuVisiable() { return kexuyeActionsFrame.visible;}
-
-
 
 
     Rectangle{
@@ -86,6 +85,13 @@ ProgramActionMenuFrame{
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
+                CatalogButton{
+                    id:dIY_Action
+                    text:qsTr("DIY Action")
+//                    icon: "../images/timg.jpeg"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
             }
         }
         ICButton{
@@ -127,6 +133,8 @@ ProgramActionMenuFrame{
             kxyObject.mode = mode;
             kxyObject.setModeName(name);
             kxyObject.setPosName(pos1name, pos2name);
+            kxyObject.gunFollowEnvisible();
+            kxyObject.hideUselessEdit();
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
             linkedBtn1Instance().text = qsTr("DetailFace");
@@ -158,6 +166,9 @@ ProgramActionMenuFrame{
         });
         ptArc_Dir.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.ArcDir3DRepeat, ptArc_Dir.text, qsTr("Set EPos"), qsTr("Set TPos"));
+        });
+        dIY_Action.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.DIYAction, dIY_Action.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
     }
 }

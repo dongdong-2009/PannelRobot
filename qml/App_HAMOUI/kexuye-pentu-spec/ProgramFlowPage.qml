@@ -25,9 +25,9 @@ ProgramFlowPage {
             var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
             for(var i = 0;i < ret.length;i++){
                 if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
-                    for(i = 0;i < 16;i++){
-                        var a = flag + "i";
-                        BaseTeach.flagsDefine.pushFlag(0,new BaseTeach.FlagItem(ret[i].a,""));
+                    for(var j = 0;j < 16;j++){
+                        var a = "flag" + j;
+                        BaseTeach.flagsDefine.pushFlag(0,new BaseTeach.FlagItem(ret[i][a],""));
                     }
                 }
             }

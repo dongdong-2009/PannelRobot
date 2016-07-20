@@ -285,7 +285,7 @@ Item {
         m0Speed.configValue = 30;
         m1Speed.configValue = 30;
         m2Speed.configValue = 30;
-        m3Speed.configValue = 30;
+        m3Speed.configValue = 5;
         m4Speed.configValue = 5;
         m5Speed.configValue = 5;
         slope.configValue = 0;

@@ -4,6 +4,7 @@ import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 import "CounterActionEditor.js" as PData
+import "ProgramFlowPage.js" as ProgramList
 
 Rectangle {
     function createActionObjects(){
@@ -38,6 +39,13 @@ Rectangle {
             text: qsTr("Clear Counter")
         }
     }
+    ICMessageBox{
+        id:tipBox
+        visible: false
+        x:200
+        y:-50
+        z:10
+    }
 
     Column{
         id:commandContainer
@@ -71,9 +79,15 @@ Rectangle {
             bgColor: "red"
             onButtonClicked: {
                 var editor;
+                var tip = "";
                 for(var cid in PData.editors){
                     editor = PData.editors[cid];
                     if(editor.isSel){
+                        if(ProgramList.counterLinesInfo.idUsed(editor.cID)){
+                            tip += Teach.counterManager.counterToString(editor.cID) + " " +  qsTr("is using!") + "\n";
+                            continue;
+                        }
+
                         Teach.counterManager.delCounter(editor.cID);
                         panelRobotController.delCounterDef(editor.cID);
                         counterUpdated(editor.cID);
@@ -81,6 +95,9 @@ Rectangle {
                         delete PData.editors[editor.cID];
 
                     }
+                }
+                if(tip != ""){
+                    tipBox.warning(tip, qsTr("OK"));
                 }
             }
 

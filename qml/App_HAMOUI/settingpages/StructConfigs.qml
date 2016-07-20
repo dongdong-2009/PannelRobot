@@ -29,7 +29,7 @@ Item {
             visible: !structGuideImg.visible
             ICConfigEdit{
                 id:axis1Length
-                configNameWidth: pdata.configNameWidth + 40
+                configNameWidth: pdata.configNameWidth + 50
                 configName: AxisDefine.axisInfos[0].name + " " + qsTr("Length");
                 unit: AxisDefine.axisInfos[0].unit
                 configAddr: "s_rw_0_32_3_100"

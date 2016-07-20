@@ -5,6 +5,7 @@
 #include <qmath.h>
 #include <QQueue>
 #include <QList>
+#include <QTime>
 #include "icrobottransceiverdata.h"
 #include "icparameterscache.h"
 #include "icconfigsaddr.h"
@@ -175,6 +176,12 @@ public:
 
     static void SendConfigs(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vals);
 
+    void ClearCommunicationQueue()
+    {
+        if(!sendingContinuousData_)
+            ICVirtualHost::ClearCommunicationQueue();
+    }
+
 
 protected:
     void InitStatusFormatorMap_(){}
@@ -198,7 +205,11 @@ public:
 
 #ifdef NEW_PLAT
     static void SendKeyCommand(int cmd);
-    static void ClearKeyCommandQueue(ICVirtualHostPtr hostPtr) {keyCommandList_.clear();hostPtr->ClearCommunicationQueue();}
+    static void ClearKeyCommandQueue(ICVirtualHostPtr hostPtr)
+    {
+        keyCommandList_.clear();
+        hostPtr->ClearCommunicationQueue();
+    }
     static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
 //    static void AddReadHostConfigsCommand(ICVirtualHostPtr hostPtr);
@@ -221,6 +232,8 @@ signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
     void QueryFinished(int addr, const QVector<quint32>& v);
+    void SendingContinuousData();
+    void SentContinuousData(int);
 
 public slots:
 
@@ -253,6 +266,10 @@ private:
 ////    QMap<ICAddr, HostStatusFormator> statusFormatorMap_;
     ICParametersCache statusCache_;
     const static int kHostID = 1;
+
+    bool sendingContinuousData_;
+    QTime sendingDataTime_;
+
 //    int conjectionCommErrCount_;
 
 };

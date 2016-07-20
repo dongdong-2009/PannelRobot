@@ -433,7 +433,7 @@ function parseStacks(stacks){
 }
 
 
-function statcksToJSON(){
+function stacksToJSON(){
     var ret = {};
     for(var i = 0; i < stackIDs.length; ++i){
         ret[stackIDs[i].toString()] = stackInfos[i];
@@ -1263,7 +1263,6 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
-    console.log("aaaaaa" + actionObject.axis);
     var ret =  axisInfos[actionObject.axis].name + ":" +  actionObject.pos + " " +
             qsTranslate("Teach","Speed:") + actionObject.speed + " " +
             qsTr("Delay:") + actionObject.delay;
@@ -1451,7 +1450,6 @@ var stackActionToStringHandler = function(actionObject){
 }
 
 var counterActionToStringHandler = function(actionObject){
-    console.log("counterActionToStringHandler", actionObject.counterID);
     var c = counterManager.getCounter(actionObject.counterID);
     var clearStr = actionObject.action == actions.F_CMD_COUNTER_CLEAR ? qsTr("Clear ") : qsTr("Plus 1");
     return clearStr + c.toString() + ":" + c.name;
@@ -1685,8 +1683,6 @@ var actionObjectToEditableITems = function(actionObject){
     }else if(actionObject.action === actions.F_CMD_SPEED_SMOOTH){
         ret = [{"item":"startSpeed", "range":"s_rw_0_32_1_1200"},
                {"item":"endSpeed", "range":"s_rw_0_32_1_1200"} ];
-    }else if(actionObject.action === actions.F_CMD_MEM_CMD){
-        ret = [{"item":"addr"}, {"item":"data"}];
     }
 
     ret.push({"item":"customName"});

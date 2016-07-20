@@ -271,3 +271,18 @@ function backup(){
     ret += "COMMIT;"
     return ret;
 }
+
+function restore(sqlData){
+    var db = getDatabase();
+    db.transaction(function(tx){
+        var sqlline = sqlData.split(";\n");
+        for(var i = 0, len = sqlline.length; i < len; ++i){
+            if(sqlline[i] == "BEGIN TRANSACTION" ||
+                    sqlline[i] == "COMMIT;"){
+                continue;
+            }
+            tx.executeSql(sqlline[i]);
+        }
+
+    });
+}

@@ -55,13 +55,13 @@ Item {
 
         }
 
-        CatalogButton{
-            id:configsManageBtn
-            text: qsTr("Data Manage")
-            icon: "../images/data_manage.png"
+//        CatalogButton{
+//            id:configsManageBtn
+//            text: qsTr("Data Manage")
+//            icon: "../images/data_manage.png"
             visible: false
 
-        }
+//        }
 
 //        CatalogButton{
 //            id:otherConfigBtn
@@ -92,7 +92,6 @@ Item {
         configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
         configsContainer.addNav(structConfigBtn, Qt.createComponent('StructConfigs.qml'));
         configsContainer.addNav(systemConfigBtn, Qt.createComponent('SystemConfigs.qml'));
-        configsContainer.addNav(configsManageBtn, Qt.createComponent('DataManagePage.qml'))
         ShareData.UserInfo.registUserChangeEvent(container);
     }
 

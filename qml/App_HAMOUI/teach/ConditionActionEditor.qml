@@ -143,7 +143,7 @@ Item {
 
         }else if(memData.isChecked){
             ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
-                                                    lAddr.configValue, rAddr.configValue, memCmpGroup.checkedIndex,
+                                                    lAddr.addr(), addrData.isChecked ? rAddr.addr() : rData.configValue, memCmpGroup.checkedIndex,
                                                     constData.isChecked ? 0 : 1));
             return ret;
         }else{
@@ -344,8 +344,9 @@ Item {
                 border.width: 1
                 border.color: "black"
                 Column{
-                    spacing: 10
-                    anchors.centerIn: parent
+                    spacing: 6
+                    x:6
+                    y:4
                     ICButtonGroup{
                         spacing: 24
                         mustChecked: true
@@ -361,17 +362,21 @@ Item {
                         }
                     }
 
-                    Row{
-                        spacing: 24
-                        ICConfigEdit{
+                    Column{
+                        spacing: 4
+                        ICHCAddrEdit{
                             id:lAddr
-                            configName: qsTr("Left Addr")
-                            inputWidth: 120
+                            configName: qsTr("Left Addr:")
+                        }
+                        ICHCAddrEdit{
+                            id:rAddr
+                            configName: qsTr("Right Addr:")
+                            visible: addrData.isChecked
                         }
                         ICConfigEdit{
-                            id:rAddr
-                            configName: qsTr("Right Value")
-                            inputWidth: 120
+                            id:rData
+                            configName: qsTr("Right Data:")
+                            visible: constData.isChecked
                         }
                     }
                     ICButtonGroup{

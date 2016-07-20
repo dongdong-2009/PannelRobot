@@ -32,12 +32,25 @@ MouseArea {
         realFrame.color = "#A0A0F0";
         yesBtn.color = "lime"
         noBtn.color = "yellow"
+        yesBtn.visible = true;
+        noBtn.visible = true;
+    }
+
+    function runningTip(tip){
+        text = tip || "";
+        yesBtn.visible = false;
+        noBtn.visible = false;
+        container.visible = true;
+        realFrame.color = "#A0A0F0";
+        yesBtn.color = "lime";
+        panelRobotController.processEvents();
     }
 
     function information(tip, Text){
         text = tip || "";
         yesBtnText = Text || ("OK");
         noBtn.visible = false;
+        yesBtn.visible = true;
         container.visible = true;
         realFrame.color = "#A0A0F0";
         yesBtn.color = "lime"
@@ -47,6 +60,7 @@ MouseArea {
         text = tip || "";
         yesBtnText = Text || ("OK");
         noBtn.visible = false;
+        yesBtn.visible = true;
         container.visible = true;
         realFrame.color = "yellow"
         yesBtn.color = "red"

@@ -12,6 +12,8 @@ import "ExternalData.js" as ESData
 import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
+import "teach/ManualProgramManager.js" as ManualProgramManager
+
 Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
@@ -31,6 +33,13 @@ Rectangle {
     QtObject{
         id:pData
         property int lastKnob: -1
+    }
+    ICMessageBox{
+        id:tipBox
+        x:300
+        y:200
+        visible: false
+        z:1000
     }
 
     TopHeader{
@@ -535,6 +544,45 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
+//                    ]
+//                }
+//            ]
+//        };
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
+//                    ]
+//                }
+//            ]
+//        };
+//        onETH0DataIn(JSON.stringify(toTest));
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "reqType":"standardize",
+//            "camID":0,
+//            "data":[
+//                { "X":0.000,"Y":0.000 },
+//                { "X":0.000,"Y":0.000 },
+//                { "X":0.000,"Y":0.000 }
+//            ]
+//        };
+
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "reqType":"photo",
+//            "camID":0,
+//        };
 
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
@@ -627,7 +675,24 @@ Rectangle {
         AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_6_0_184"));
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
-        console.log("main load finished!")
+        panelRobotController.sendingContinuousData.connect(function(){
+           tipBox.runningTip(qsTr("Sending Data..."));
+        });
+        panelRobotController.sentContinuousData.connect(function(t){
+            tipBox.visible = false;
+        });
+        panelRobotController.needToInitHost.connect(function(){
+            panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+                                                  "","", "", "", 19);
+            panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+                                                  "","", "", "", 18);
+        });
+        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+                                              "","", "", "", 19);
+        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+                                              "","", "", "", 18);
+
+        console.log("main load finished!");
     }
 
     focus: true
@@ -820,6 +885,8 @@ Rectangle {
 
                 if(alarmNum === 0){
                     alarmlogPage.resolvedAlarms();
+                }else if(alarmNum === 1){
+
                 }else{
                     alarmlogPage.appendAlarm(alarmNum);
                 }

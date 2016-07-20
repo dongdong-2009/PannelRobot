@@ -41,7 +41,6 @@ Rectangle {
                 target: recordsView;
                 model:usbModel;
                 isSelectable:true;
-//                openBackupPackage:backupPackageModel.get(recordsView.currentIndex).name;
             }
 
         }
@@ -237,20 +236,10 @@ Rectangle {
             text: qsTr("New")
             height: loadRecord.height
             onButtonClicked: {
-//                if(newName.isEmpty()){
-//                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
-//                    return;
-//                }
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.newRecord(newName.text,
                                                                     Teach.generateInitProgram(), Teach.generateInitSubPrograms()));
-//                if(ret.errno != 0){
-//                    tipDialog.warning(qsTr("New record fail! Err") + ret.errno, qsTr("OK"));
-//                }else{
-//                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
-//                    recordsView.positionViewAtBeginning();
-//                }
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();
@@ -262,22 +251,10 @@ Rectangle {
             text: qsTr("Copy")
             height: loadRecord.height
             onButtonClicked: {
-//                if(newName.isEmpty()){
-//                    tipDialog.warning(qsTr("Please Enter the new record name!"), qsTr("OK"));
-//                    return;
-//                }
-                //                panelRobotController.copyRecord(newName.text,
-                //                                                recordsModel.get(recordsView.currentIndex).name)
                 if(operationContainer.inputerr(newName.text))
                     return;
                 var ret = JSON.parse(panelRobotController.copyRecord(newName.text,
                                                                      recordsModel.get(recordsView.currentIndex).name));
-//                if(ret.errno != 0){
-//                    tipDialog.warning(qsTr("Copy record fail! Err") + ret.errno, qsTr("OK"));
-//                }else{
-//                    recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
-//                    recordsView.positionViewAtBeginning();
-//                }
                 if(!ret.errno){
                     recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                     recordsView.positionViewAtBeginning();

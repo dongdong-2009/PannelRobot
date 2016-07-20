@@ -397,7 +397,7 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
     //    item.append(si.si[1].doesBindingCounter);
     //    item.append(si.si[1].counterID);
-    item.append(si.stackData.all[25]);
+    item.append(si.stackData.all[30]);
     if(si.stackData.si[0].isOffsetEn)
     {
         item.append(si.stackData.si[0].offsetX);
@@ -423,8 +423,7 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(0);
         item.append(0);
     }
-    if(si.stackData.si[0].type == 2 ||
-            si.stackData.si[0].type == 3)
+    if(si.stackData.si[0].type >= 2)
     {
         item[1] = (si.dsHostID);
     }
@@ -743,7 +742,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     }
                 }
             }
-            if(si.stackData.si[0].type == 2 || si.stackData.si[0].type == 3)
+            if(si.stackData.si[0].type >= 2)
             {
                 ret.AddUsedSourceStack(stackID, si.dsHostID);
             }
@@ -857,6 +856,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             for(int i = 0; i < cflc; ++i)
             {
                 item = f.GetICMoldItem(i);
+                if(IsJumpAction(item.at(0)))
+                {
+                    item[1] += ret.ModuleEntry(mID);
+                    item.pop_back();
+                    item.append(ICRobotMold::MoldItemCheckSum(item));
+                }
                 ret.AddICMoldItem(programEndLine, item);
                 if(item.at(0) == F_CMD_SYNC_START)
                 {

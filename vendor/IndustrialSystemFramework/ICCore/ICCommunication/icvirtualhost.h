@@ -63,7 +63,7 @@ public:
     int CommunicationFrameSize() const { return queue_.Size();}
     void Communicate(){CommunicateImpl();}
 
-    void ClearCommunicationQueue()
+    virtual void ClearCommunicationQueue()
     {
         queue_.SaveHeadClear();
     }

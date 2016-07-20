@@ -30,9 +30,22 @@ Rectangle {
             name: "moduleEditMode"
             PropertyChanges {
                 target: condition
+                enabled:true
+            }
+        },
+        State {
+            name: "manualProgramEditMode"
+            PropertyChanges {
+                target: group
                 enabled:false
             }
+            PropertyChanges {
+                target: other
+                enabled:false
+
+            }
         }
+
     ]
 
 
@@ -176,7 +189,7 @@ Rectangle {
         ICButton{
             id:dataCommand
             text: qsTr("Data Command")
-            icon: "../images/origin.png"
+            icon: "../images/write_ram.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: dataMenuTriggered()
@@ -189,7 +202,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: originMenuTriggered()
-            visible: false
+//            visible: false
         }
     }
 }

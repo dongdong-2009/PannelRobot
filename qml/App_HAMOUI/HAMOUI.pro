@@ -6,7 +6,7 @@ teach/*.js \
 teach/*.qml \
 configs/* \
 settingpages/* \
-../ICCustomElement/*
+../ICCustomElement/* \
 kexuye-pentu-spec/*
 }
 

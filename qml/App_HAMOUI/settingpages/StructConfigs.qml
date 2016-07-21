@@ -21,7 +21,7 @@ Item {
         Image {
             id: structGuideImg
             source: "../images/struct-guide.png"
-            visible: false
+            visible: true
         }
         Column{
             id:lengthContainer

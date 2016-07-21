@@ -876,7 +876,8 @@ ProgramFlowPage {
                 if(LocalTeach.isJumpAction(actionLine.action) ||
                    actionLine.action == LocalTeach.actions.ACT_FLAG){
                     if(!tmpMap.hasOwnProperty(actionLine.flag)){
-                        var f = LocalTeach.flagsDefine.createFlag(0, actionLine.flag);
+                        var f = BaseTeach.flagsDefine.createFlag(0, actionLine.flag);
+                        BaseTeach.flagsDefine.pushFlag(0, f);
                         tmpMap[actionLine.flag] =  f.flagID;
                     }
                     actionLine.flag = tmpMap[actionLine.flag];

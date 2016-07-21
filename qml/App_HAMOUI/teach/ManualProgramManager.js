@@ -104,6 +104,7 @@ function ManualProgramManager(){
     this.updateProgramByName = function(name, program){
         var toUpdateID = getValueFromBrackets(name);
         this.updateProgram(toUpdateID, programs[toUpdateID].name, program);
+        return toUpdateID;
     }
 
     this.registerMonitor = function(obj){

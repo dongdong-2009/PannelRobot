@@ -407,8 +407,15 @@ Rectangle {
     function saveManualProgramByName(name){
         var program = modelToProgramHelper(PData.kManualProgramIndex);
         var errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-        if(errInfo.length == 0)
-            ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+        if(errInfo.length == 0){
+            var updateID = ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+            if(updateID == 0)
+                panelRobotController.manualRunProgram(JSON.stringify(program),
+                                                      "","", "", "", 19);
+            else if(updateID == 1)
+                panelRobotController.manualRunProgram(JSON.stringify(program),
+                                                      "","", "", "", 18);
+        }
         return errInfo;
     }
 

@@ -3539,6 +3539,14 @@
         <source>M CMD[{0}]:{1}</source>
         <translation>可编程按键[{0}]:{1}</translation>
     </message>
+    <message>
+        <source>Custom Origin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Return</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ModuleActionEditor</name>
@@ -3598,15 +3606,15 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation></translation>
+        <translation>无开关</translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation></translation>
+        <translation>有开关</translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation></translation>
+        <translation>备用</translation>
     </message>
 </context>
 <context>
@@ -6074,7 +6082,7 @@ please chose!</source>
     </message>
     <message>
         <source>Sending Data...</source>
-        <translation type="unfinished">数据发送中...</translation>
+        <translation>数据发送中...</translation>
     </message>
 </context>
 <context>

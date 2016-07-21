@@ -600,6 +600,7 @@ public:
                                       const QString &functions,
                                       int channel = 10);
 
+
     Q_INVOKABLE QString checkProgram(const QString& program,
                                      const QString& stacks,
                                      const QString& counters,
@@ -805,6 +806,7 @@ signals:
     void eth0DataComeIn(const QByteArray& data);
     void sendingContinuousData();
     void sentContinuousData(int);
+    void needToInitHost();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

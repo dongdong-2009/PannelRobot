@@ -407,8 +407,15 @@ Rectangle {
     function saveManualProgramByName(name){
         var program = modelToProgramHelper(PData.kManualProgramIndex);
         var errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-        if(errInfo.length == 0)
-            ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+        if(errInfo.length == 0){
+            var updateID = ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+            if(updateID == 0)
+                panelRobotController.manualRunProgram(JSON.stringify(program),
+                                                      "","", "", "", 19);
+            else if(updateID == 1)
+                panelRobotController.manualRunProgram(JSON.stringify(program),
+                                                      "","", "", "", 18);
+        }
         return errInfo;
     }
 
@@ -641,12 +648,12 @@ Rectangle {
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
                             deleteManualProgram.visible = newManualProgram.visible;
+                            Teach.currentParsingProgram = PData.kManualProgramIndex;
                             PData.programToInsertIndex[PData.kManualProgramIndex] = updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(currentIndex)).program);
                             programListView.model = manualProgramModel;
                             programListView.currentIndex = -1;
                             currentEditingProgram = PData.kManualProgramIndex;
                             PData.currentEditingProgram = PData.kManualProgramIndex;
-                            Teach.currentParsingProgram = PData.kManualProgramIndex;
                             PData.lastEditingIndex = currentIndex;
                             actionEditorFrame.item.setMode("manualProgramEditMode");
 

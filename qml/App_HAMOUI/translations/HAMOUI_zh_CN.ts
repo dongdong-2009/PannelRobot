@@ -1259,11 +1259,11 @@
     </message>
     <message>
         <source>is using!</source>
-        <translation type="unfinished"></translation>
+        <translation>使用中!</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">确定</translation>
+        <translation>确定</translation>
     </message>
 </context>
 <context>
@@ -3539,6 +3539,14 @@
         <source>M CMD[{0}]:{1}</source>
         <translation>可编程按键[{0}]:{1}</translation>
     </message>
+    <message>
+        <source>Custom Origin</source>
+        <translation>原点</translation>
+    </message>
+    <message>
+        <source>Custom Return</source>
+        <translation>复归</translation>
+    </message>
 </context>
 <context>
     <name>ModuleActionEditor</name>
@@ -3598,15 +3606,15 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation></translation>
+        <translation>无开关</translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation></translation>
+        <translation>有开关</translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation></translation>
+        <translation>备用</translation>
     </message>
 </context>
 <context>
@@ -4759,8 +4767,12 @@ please chose!</source>
         <translation>只有相似度</translation>
     </message>
     <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
         <source>is using!</source>
-        <translation type="unfinished"></translation>
+        <translation>使用中!</translation>
     </message>
 </context>
 <context>
@@ -4879,6 +4891,10 @@ please chose!</source>
     <message>
         <source>Total:</source>
         <translation>总共:</translation>
+    </message>
+    <message>
+        <source>Sync Replace</source>
+        <translation>同步替换</translation>
     </message>
 </context>
 <context>
@@ -6066,7 +6082,7 @@ please chose!</source>
     </message>
     <message>
         <source>Sending Data...</source>
-        <translation type="unfinished">数据发送中...</translation>
+        <translation>数据发送中...</translation>
     </message>
 </context>
 <context>

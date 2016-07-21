@@ -176,6 +176,12 @@ public:
 
     static void SendConfigs(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vals);
 
+    void ClearCommunicationQueue()
+    {
+        if(!sendingContinuousData_)
+            ICVirtualHost::ClearCommunicationQueue();
+    }
+
 
 protected:
     void InitStatusFormatorMap_(){}
@@ -199,7 +205,11 @@ public:
 
 #ifdef NEW_PLAT
     static void SendKeyCommand(int cmd);
-    static void ClearKeyCommandQueue(ICVirtualHostPtr hostPtr) {keyCommandList_.clear();hostPtr->ClearCommunicationQueue();}
+    static void ClearKeyCommandQueue(ICVirtualHostPtr hostPtr)
+    {
+        keyCommandList_.clear();
+        hostPtr->ClearCommunicationQueue();
+    }
     static bool InitMachineConfig(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
     static bool InitMoldFnc(ICVirtualHostPtr hostPtr, const QList<QPair<int, quint32> >& vp);
 //    static void AddReadHostConfigsCommand(ICVirtualHostPtr hostPtr);

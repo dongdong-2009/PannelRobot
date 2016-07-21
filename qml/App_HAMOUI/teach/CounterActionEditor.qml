@@ -84,7 +84,7 @@ Rectangle {
                     editor = PData.editors[cid];
                     if(editor.isSel){
                         if(ProgramList.counterLinesInfo.idUsed(editor.cID)){
-                            tip += Teach.counterManager.counterToString(editor.cID) + qsTr("is using!") + "\n";
+                            tip += Teach.counterManager.counterToString(editor.cID) + " " +  qsTr("is using!") + "\n";
                             continue;
                         }
 

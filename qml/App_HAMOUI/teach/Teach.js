@@ -431,7 +431,7 @@ function parseStacks(stacks){
 }
 
 
-function statcksToJSON(){
+function stacksToJSON(){
     var ret = {};
     for(var i = 0; i < stackIDs.length; ++i){
         ret[stackIDs[i].toString()] = stackInfos[i];

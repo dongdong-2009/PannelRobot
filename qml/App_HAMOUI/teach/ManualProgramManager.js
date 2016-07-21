@@ -104,6 +104,7 @@ function ManualProgramManager(){
     this.updateProgramByName = function(name, program){
         var toUpdateID = getValueFromBrackets(name);
         this.updateProgram(toUpdateID, programs[toUpdateID].name, program);
+        return toUpdateID;
     }
 
     this.registerMonitor = function(obj){
@@ -116,6 +117,14 @@ function ManualProgramManager(){
             if(m.hasOwnProperty(event))
                 m[event](program);
         }
+    }
+
+
+    if(this.getProgram(0) === undefined){
+        this.addProgram(qsTr("Custom Origin"),[{"action":60000}]);
+    }
+    if(this.getProgram(1) === undefined){
+        this.addProgram(qsTr("Custom Return"),[{"action":60000}]);
     }
 }
 

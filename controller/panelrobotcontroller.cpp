@@ -274,6 +274,7 @@ void PanelRobotController::OnNeedToInitHost()
     ICRobotVirtualhost::InitMoldFnc(host_,mold->MoldFncsBuffer());
     ICRobotVirtualhost::InitMachineConfig(host_,machineConfig->MachineConfigsBuffer());
 #endif
+    emit needToInitHost();
 }
 
 void PanelRobotController::sendKeyCommandToHost(int key)
@@ -1191,7 +1192,9 @@ void PanelRobotController::manualRunProgram(const QString& program,
     if(!compliedCounters.isEmpty())
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
-    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
+//    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
+    ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
+
 }
 
 QString PanelRobotController::checkProgram(const QString &program, const QString &stacks, const QString &counters, const QString &variables, const QString &functions)

@@ -600,6 +600,7 @@ public:
                                       const QString &functions,
                                       int channel = 10);
 
+
     Q_INVOKABLE QString checkProgram(const QString& program,
                                      const QString& stacks,
                                      const QString& counters,
@@ -744,7 +745,8 @@ public:
         QMap<int, int>::const_iterator p = sids.constBegin();
         while(p != sids.constEnd())
         {
-            ret += QString("\"%1:%2\",").arg(p.key(), p.value());
+            ret += QString("\"%1\":\"%2\",").arg(p.key()).arg(p.value());
+            ++p;
         }
         if(!sids.isEmpty())
             ret.chop(1);
@@ -806,6 +808,7 @@ signals:
     void eth0DataComeIn(const QByteArray& data);
     void sendingContinuousData();
     void sentContinuousData(int);
+    void needToInitHost();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

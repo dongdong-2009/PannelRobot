@@ -109,7 +109,7 @@ Rectangle {
         y:topContainer.y
         x:220
         visible: defineStack.isChecked
-        popupWidth: 200
+        popupWidth: 170
         popupHeight: 150
         width: popupWidth
         onCurrentIndexChanged: {
@@ -247,7 +247,7 @@ Rectangle {
                                           selectedDS,
                                           dsID);
             var realST = stackType;
-            if((realST == 2) || (realST == 3)){
+            if(realST >= 2){
                 realST = ignoreZ.isChecked ? 2 : 3;
                 if(realST == 2 && !ignoreZ.isChecked){
                     if(posAndCmp.isChecked)
@@ -264,15 +264,30 @@ Rectangle {
                 sid = Teach.appendStackInfo(stackInfo);
                 stackInfo.dsName = "custompoint[" + sid + "]";
                 stackInfo.dsHostID = sid;
-                panelRobotController.saveStacks(Teach.statcksToJSON());
+                panelRobotController.saveStacks(Teach.stacksToJSON());
                 updateStacksSel();
             }
             else{
                 stackInfo.dsName = selectedDS;
                 stackInfo.dsHostID = dsID;
                 sid = Teach.updateStackInfo(id, stackInfo);
-                panelRobotController.saveStacks(Teach.statcksToJSON());
+                panelRobotController.saveStacks(Teach.stacksToJSON());
             }
+            stackUpdated(sid);
+            return sid;
+        }
+
+        function copyStack(toCopySID, name){
+            var sI = Teach.getStackInfoFromID(toCopySID);
+            var cpSI = Utils.cloneObject(sI);
+            cpSI.descr = name;
+            var sid = Teach.appendStackInfo(cpSI);
+            if(cpSI.dsHostID == toCopySID){
+                cpSI.dsName = "custompoint[" + sid + "]";
+                cpSI.dsHostID = sid;
+            }
+            panelRobotController.saveStacks(Teach.stacksToJSON());
+            updateStacksSel();
             stackUpdated(sid);
             return sid;
         }
@@ -291,6 +306,21 @@ Rectangle {
                 }
             }
 
+        }
+
+        function onCopyStack(status){
+            tip.finished.disconnect(topContainer.onCopyStack);
+            if(status){
+                var sid = copyStack(Utils.getValueFromBrackets(stackViewSel.currentText()),
+                                   tip.inputText);
+                var ss = stackViewSel.items;
+                for(var i = 0 ; ss.length; ++i){
+                    if(sid == Utils.getValueFromBrackets(ss[i])){
+                        stackViewSel.currentIndex = i;
+                        break;
+                    }
+                }
+            }
         }
 
         height: flagPageSel.height
@@ -323,11 +353,11 @@ Rectangle {
         }
 
         ICButton{
-            id:newStack
+            id:newStackBtn
             text: qsTr("New")
             width: 60
             height: stackViewSel.height
-            x:450
+            x:400
             visible: stackViewSel.visible
             bgColor: "lime"
             onButtonClicked: {
@@ -338,24 +368,43 @@ Rectangle {
         }
 
         ICButton{
+            id:copyStackBtn
+            text: qsTr("Copy")
+            width: newStackBtn.width
+            height: stackViewSel.height
+            visible: newStackBtn.visible && stackViewSel.currentIndex >= 0
+            bgColor: "lime"
+
+            anchors.left: newStackBtn.right
+            anchors.leftMargin: 6
+            onButtonClicked: {
+                tip.showInput(qsTr("Please input the new stack name"),
+                              qsTr("Stack Name"), false, qsTr("OK"), qsTr("Cancel"))
+                tip.finished.connect(topContainer.onCopyStack);
+            }
+
+        }
+
+
+        ICButton{
             id:deleteStack
             text: qsTr("Delete")
-            width: newStack.width
+            width: newStackBtn.width
             height: stackViewSel.height
             visible: stackViewSel.visible && stackViewSel.currentIndex >= 0
             bgColor: "red"
 
-            anchors.left: newStack.right
+            anchors.left: copyStackBtn.right
             anchors.leftMargin: 6
             onButtonClicked: {
                 var sid = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                 if(ProgramList.stackLinesInfo.idUsed(sid)){
-                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + qsTr("is using!"));
+                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + " " + qsTr("is using!"));
                     return;
                 }
 
                 Teach.delStack(sid);
-                panelRobotController.saveStacks(Teach.statcksToJSON());
+                panelRobotController.saveStacks(Teach.stacksToJSON());
                 updateStacksSel();
                 stackUpdated(sid);
             }

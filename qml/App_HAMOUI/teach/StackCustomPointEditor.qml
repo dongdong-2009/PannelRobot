@@ -77,68 +77,34 @@ MouseArea{
                 editConfirm(false, [], true);
             }
         }
-        Row{
-            id:objectOriginContainer
-            anchors.left: pointViewContainer.left
+        ICButton{
+            id:syncReplace
+            text:qsTr("Sync Replace")
             anchors.bottom: pointViewContainer.top
-            anchors.bottomMargin: 4
-            spacing: 2
-            ICButton{
-                id:setInObjectOrigin
-                text: qsTr("Set In")
-                width: 60
-                onButtonClicked: {
-                    objectOriginX.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                    objectOriginY.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                    objectOriginZ.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                }
-            }
-            ICConfigEdit{
-                id:objectOriginX
-                configName: qsTr(AxisDefine.axisInfos[0].name)
-                configAddr: "s_rw_0_32_3_1300"
-                anchors.verticalCenter: parent.verticalCenter
-                configValue: "0.000"
-            }
-            ICConfigEdit{
-                id:objectOriginY
-                configName: qsTr(AxisDefine.axisInfos[1].name)
-                configAddr: "s_rw_0_32_3_1300"
-                anchors.verticalCenter: parent.verticalCenter
-                configValue: "0.000"
-            }
-            ICConfigEdit{
-                id:objectOriginZ
-                configName: qsTr(AxisDefine.axisInfos[2].name)
-                configAddr: "s_rw_0_32_3_1300"
-                anchors.verticalCenter: parent.verticalCenter
-                configValue: "0.000"
-            }
-            ICButton{
-                id:setAsObjectOrigin
-                text: qsTr("Set As Origin")
-                width: 116
-                onButtonClicked: {
-                    var tmpPos;
-                    var m;
-                    var points = [];
-                    var p;
-                    for(var i = 0, len = pointModel.count; i < len; ++i){
-                        p = pointModel.get(i);
-                        tmpPos = p.pointPos;
-                        if(tmpPos.hasOwnProperty("m0")){
-                            tmpPos.m0 = (parseFloat(tmpPos.m0) + parseFloat(objectOriginX.configValue)).toFixed(3);
-                        }
-                        if(tmpPos.hasOwnProperty("m1")){
-                            tmpPos.m1 = (parseFloat(tmpPos.m1) + parseFloat(objectOriginY.configValue)).toFixed(3);
-                        }
-                        if(tmpPos.hasOwnProperty("m2")){
-                            tmpPos.m2 = (parseFloat(tmpPos.m2) + parseFloat(objectOriginZ.configValue)).toFixed(3);
-                        }
-                        points.push({"pointName":p.pointName, "pointPos":tmpPos});
-                    }
-                    editConfirm(true, points, true);
+            anchors.bottomMargin: 6
+            anchors.left: pointViewContainer.left
+            onButtonClicked: {
+                var baseCurrent = pointModel.get(pointView.currentIndex).pointPos;
+                var toReplace = {"m0":parseFloat(m0.configValue),"m1":parseFloat(m1.configValue),"m2":parseFloat(m2.configValue),
+                    "m3":parseFloat(m3.configValue),"m4":parseFloat(m4.configValue),"m5":parseFloat(m5.configValue)};
+                var diff = toReplace;
+                diff.m0 -= parseFloat(baseCurrent.m0);
+                diff.m1 -= parseFloat(baseCurrent.m1);
+                diff.m2 -= parseFloat(baseCurrent.m2);
+                diff.m3 -= parseFloat(baseCurrent.m3);
+                diff.m4 -= parseFloat(baseCurrent.m4);
+                diff.m5 -= parseFloat(baseCurrent.m5);
 
+                var tmpPointPos;
+                for(var i = 0, len = pointModel.count; i < len; ++i){
+                    tmpPointPos = pointModel.get(i).pointPos;
+                    tmpPointPos.m0 = (parseFloat(tmpPointPos.m0) + diff.m0).toFixed(3);
+                    tmpPointPos.m1 = (parseFloat(tmpPointPos.m1) + diff.m1).toFixed(3);
+                    tmpPointPos.m2 = (parseFloat(tmpPointPos.m2) + diff.m2).toFixed(3);
+                    tmpPointPos.m3 = (parseFloat(tmpPointPos.m3) + diff.m3).toFixed(3);
+                    tmpPointPos.m4 = (parseFloat(tmpPointPos.m4) + diff.m4).toFixed(3);
+                    tmpPointPos.m5 = (parseFloat(tmpPointPos.m5) + diff.m5).toFixed(3);
+                    pointModel.setProperty(i, "pointPos", tmpPointPos);
                 }
             }
         }

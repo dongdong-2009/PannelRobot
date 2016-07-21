@@ -6,13 +6,9 @@ teach/*.js \
 teach/*.qml \
 configs/* \
 settingpages/* \
-../ICCustomElement/*
+../ICCustomElement/* \
+../tests/GcodeTests.qml
 }
-
-<<<<<<< HEAD
-    ../tests/GcodeTests.qml
-=======
->>>>>>> vision_develop_manual_ds
 
 
 

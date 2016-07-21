@@ -719,11 +719,11 @@
     </message>
     <message>
         <source>A ON</source>
-        <translation>常开</translation>
+        <translation type="unfinished">常开</translation>
     </message>
     <message>
         <source>A OFF</source>
-        <translation>常闭</translation>
+        <translation type="unfinished">常闭</translation>
     </message>
     <message>
         <source>Set In</source>
@@ -1257,6 +1257,14 @@
         <source>Target</source>
         <translation>目标</translation>
     </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
 </context>
 <context>
     <name>CustomVariableConfigs</name>
@@ -1508,31 +1516,31 @@
     <name>ICTimeLable</name>
     <message>
         <source>Mon</source>
-        <translation type="unfinished"></translation>
+        <translation>周一</translation>
     </message>
     <message>
         <source>Tur</source>
-        <translation type="unfinished"></translation>
+        <translation>周二</translation>
     </message>
     <message>
         <source>Wen</source>
-        <translation type="unfinished"></translation>
+        <translation>周三</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation type="unfinished"></translation>
+        <translation>周四</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation type="unfinished"></translation>
+        <translation>周五</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation type="unfinished"></translation>
+        <translation>周六</translation>
     </message>
     <message>
         <source>Sun</source>
-        <translation type="unfinished"></translation>
+        <translation>周日</translation>
     </message>
 </context>
 <context>
@@ -3573,6 +3581,14 @@
         <source>M CMD[{0}]:{1}</source>
         <translation>可编程按键[{0}]:{1}</translation>
     </message>
+    <message>
+        <source>Custom Origin</source>
+        <translation>原点</translation>
+    </message>
+    <message>
+        <source>Custom Return</source>
+        <translation>复归</translation>
+    </message>
 </context>
 <context>
     <name>ModuleActionEditor</name>
@@ -3632,15 +3648,15 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation></translation>
+        <translation>无开关</translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation></translation>
+        <translation>有开关</translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation></translation>
+        <translation>备用</translation>
     </message>
 </context>
 <context>
@@ -4793,6 +4809,14 @@ please chose!</source>
         <translation>只有相似度</translation>
     </message>
     <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
+    </message>
+    <message>
         <source>Ignore Z</source>
         <translation>保持Z位置</translation>
     </message>
@@ -4915,12 +4939,12 @@ please chose!</source>
         <translation>总共:</translation>
     </message>
     <message>
-        <source>P</source>
-        <translation type="unfinished"></translation>
+        <source>Sync Replace</source>
+        <translation>同步替换</translation>
     </message>
     <message>
-        <source>Set As Origin</source>
-        <translation>设为工件原点</translation>
+        <source>P</source>
+        <translation></translation>
     </message>
     <message>
         <source>Import From 

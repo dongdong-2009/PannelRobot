@@ -15,6 +15,8 @@ var cmdStrs = [">",
                "!="
         ];
 
+var opStrs = ["=", "+=", "-=", "x=", "÷="];
+
 var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
@@ -947,12 +949,13 @@ var generateSpeedAction = function(startSpeed,endSpeed){
     }
 }
 
-var generateDataAction = function(addr, type, data){
+var generateDataAction = function(addr, type, data, op){
     return {
         "action":actions.F_CMD_MEM_CMD,
         "addr":addr,
         "type":type,
-        "data":data
+        "data":data,
+        "op":op == undefined ? 0 : op
     }
 }
 
@@ -1492,7 +1495,8 @@ var speedActionToStringHandler = function(actionObject){
 var dataActionToStringHandler = function(actionObject){
     var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
     var typeName = (actionObject.type == 0? qsTr("Const Data:") : qsTr("Addr Data:"));
-    return ac + qsTr("Target Addr:") + actionObject.addr + " " + typeName + actionObject.data;
+    var op = actionObject.hasOwnProperty("op") ? opStrs[actionObject.op] : "=";
+    return ac + qsTr("Target Addr:") + actionObject.addr + op + typeName + actionObject.data;
 }
 
 

@@ -113,7 +113,7 @@ int SpeedActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int DataActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("type").toInt() + 600);
-    item.append(v->value("addr").toInt());
+    item.append(v->value("addr").toInt() + v->value("op", 0).toInt());
     item.append(v->value("data").toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;

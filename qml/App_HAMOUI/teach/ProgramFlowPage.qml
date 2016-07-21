@@ -1626,9 +1626,9 @@ Rectangle {
 
         for(i = 0; i < 9; ++i){
 //            program = JSON.parse(panelRobotController.programs(i));
-            program = getRecordContent(i);
             Teach.currentParsingProgram = i;
             Teach.flagsDefine.clear(i);
+            program = getRecordContent(i);
             PData.programToInsertIndex[i] = updateProgramModel(PData.programs[i], program);
             collectSpecialLines(i);
         }

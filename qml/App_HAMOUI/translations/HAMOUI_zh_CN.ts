@@ -3541,11 +3541,11 @@
     </message>
     <message>
         <source>Custom Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>原点</translation>
     </message>
     <message>
         <source>Custom Return</source>
-        <translation type="unfinished"></translation>
+        <translation>复归</translation>
     </message>
 </context>
 <context>

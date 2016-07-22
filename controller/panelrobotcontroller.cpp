@@ -1059,13 +1059,13 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
 {
     if(!isInAuto())
         ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
-    else
-    {
-        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
-        if(c.isEmpty()) return false;
-        if(c.last() != target)
-            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
-    }
+//    else
+//    {
+//        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
+//        if(c.isEmpty()) return false;
+//        if(c.last() != target)
+//            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+//    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 

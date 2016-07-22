@@ -1562,6 +1562,7 @@ Rectangle {
         var isSyncStart = false;
         var jumpLines = [];
         var insertedIndex = 0;
+        Teach.flagsDefine.clear(Teach.currentParsingProgram);
         for(var p = 0; p < program.length; ++p){
             step = program[p];
             step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;

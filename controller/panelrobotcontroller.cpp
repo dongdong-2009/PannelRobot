@@ -1564,6 +1564,7 @@ int exportBackupHelper(const QString& backupName, const QString& path)
     if(!ICUtility::IsUsbAttached()) return -2;
     if(QFile::copy(dir.absoluteFilePath(backupName), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)))
     {
+        ::sync();
         return 0;
     }
     return -3;

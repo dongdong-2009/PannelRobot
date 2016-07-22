@@ -506,6 +506,7 @@ Rectangle {
                 }
                 Row{
                     spacing: 30
+                    visible:  page1.mode >= 2
                     ICButton{
                         id:editPos
                         text: qsTr("Edit Pos")
@@ -538,7 +539,7 @@ Rectangle {
                     ICCheckBox{
                         id:ignoreZ
                         text: qsTr("Ignore Z")
-                        visible: page1.mode == 2
+                        visible: page1.mode >= 2
                     }
                 }
 

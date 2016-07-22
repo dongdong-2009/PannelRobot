@@ -83,8 +83,9 @@ Item {
         id:offsetEn
         text: qsTr("Offset En")
         x:200
-        y:-32
-        visible: mode != 2
+        anchors.bottom: content.top
+        anchors.bottomMargin: 6
+        visible: mode < 2
     }
 
     Column{

@@ -107,8 +107,9 @@ ICSettingConfigsScope{
                     width: 150
                     height: 32
                     onButtonClicked: {
-                        panelRobotController.startUpdate(updaterModel.get(updaterView.currentIndex).name);
-
+                        var name = updaterModel.get(updaterView.currentIndex).name;
+                        panelRobotController.backupUpdater(name)
+                        panelRobotController.startUpdate(name);
                     }
                 }
 

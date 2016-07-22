@@ -415,7 +415,7 @@ public:
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
     Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
     Q_INVOKABLE void startUpdate(const QString& updater);
-//    Q_INVOKABLE QString backupUpdater(const QString& updater);
+    Q_INVOKABLE QString backupUpdater(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
     Q_INVOKABLE void modifyConfigValue(const QString& addr, const QString &value);

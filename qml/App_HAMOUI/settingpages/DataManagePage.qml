@@ -306,6 +306,12 @@ Item {
                     width: newBackup.width
                     text: qsTr("Start Update")
                     enabled: updater.isChecked
+                    onButtonClicked: {
+                        var name = backuViews.model.get(backuViews.currentIndex).name;
+                        if(uDisk.isChecked)
+                            panelRobotController.backupUpdater(name)
+                        panelRobotController.startUpdate(name);
+                    }
                 }
             }
         }

@@ -993,7 +993,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation type="unfinished">台达伺服 {4?}</translation>
+        <translation>Motor4</translation>
     </message>
 </context>
 <context>
@@ -1315,6 +1315,26 @@
         <source>Addr Data:</source>
         <translation>地址数据:</translation>
     </message>
+    <message>
+        <source>=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>+=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>-=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>x=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>÷=</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>DataManagePage</name>
@@ -1381,6 +1401,14 @@
     <message>
         <source>System will reboot after restore! Are you sure?</source>
         <translation>系统在还原后会重启.确定吗?</translation>
+    </message>
+    <message>
+        <source>Updater</source>
+        <translation>更新包</translation>
+    </message>
+    <message>
+        <source>Start Update</source>
+        <translation>开始更新</translation>
     </message>
 </context>
 <context>
@@ -4857,6 +4885,18 @@ please chose!</source>
         <source>Custom Pos</source>
         <translation>不规则点位</translation>
     </message>
+    <message>
+        <source>Only X</source>
+        <translation>只堆X</translation>
+    </message>
+    <message>
+        <source>Only Y</source>
+        <translation>只堆Y</translation>
+    </message>
+    <message>
+        <source>Only Z</source>
+        <translation>只堆Z</translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
@@ -6083,6 +6123,10 @@ please chose!</source>
     <message>
         <source>Sending Data...</source>
         <translation>数据发送中...</translation>
+    </message>
+    <message>
+        <source>Get it</source>
+        <translation>知道了</translation>
     </message>
 </context>
 <context>

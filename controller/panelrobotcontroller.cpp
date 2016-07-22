@@ -622,6 +622,24 @@ void PanelRobotController::startUpdate(const QString &updater)
 
 }
 
+QString PanelRobotController::backupUpdater(const QString &updater)
+{
+    QDir dir(ICAppSettings::UserPath);
+    if(!dir.exists("updaters"))
+    {
+        dir.mkdir("updaters");
+    }
+    dir.cd("updaters");
+    QString bf = updater;
+    if(dir.exists(bf))
+    {
+        QFile::remove(dir.absoluteFilePath(bf));
+    }
+    QDir usbDir(ICAppSettings::UsbPath);
+    QFile::copy(usbDir.absoluteFilePath(bf), dir.absoluteFilePath(bf));
+    return bf;
+}
+
 void PanelRobotController::modifyConfigValue(int addr, int value)
 {
     ICRobotVirtualhost::AddWriteConfigCommand(host_, addr, value);

@@ -756,6 +756,7 @@ Rectangle {
                             delModuleBtn.visible = false;
                             if(actionEditorFrame.progress == 1)
                                 actionEditorFrame.item.setMode("");
+                            PData.currentEditingProgram = editing.currentIndex;
                         }else{
                             Teach.currentParsingProgram = PData.kFunctionProgramIndex;
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);

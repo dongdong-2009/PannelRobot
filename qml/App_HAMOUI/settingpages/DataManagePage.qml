@@ -3,8 +3,6 @@ import "../../ICCustomElement"
 import "../../utils/Storage.js" as Storage
 
 Item {
-
-
     ICMessageBox{
         id:backupNameDialog
         x:250
@@ -61,6 +59,9 @@ Item {
             }else if(ghost.isChecked){
                 localGhostModel.syncModel();
                 backuViews.model = localGhostModel;
+            }else if(updater.isChecked){
+                localUpdaterModel.syncModel();
+                backuViews.model = localUpdaterModel;
             }
         }else if(uDisk.isChecked){
             if(hmiConfigs.isChecked){
@@ -72,6 +73,9 @@ Item {
             }else if(ghost.isChecked){
                 uDiskGhostModel.syncModel();
                 backuViews.model = uDiskGhostModel;
+            }else if(updater.isChecked){
+                uDiskUpdaterModel.syncModel();
+                backuViews.model = uDiskUpdaterModel;
             }
         }
     }
@@ -114,6 +118,11 @@ Item {
                 id:ghost
                 text: qsTr("ghost")
             }
+            ICCheckBox{
+                id:updater
+                text: qsTr("Updater")
+            }
+
             onButtonClickedItem: {
                 refreshDataModel();
             }
@@ -173,6 +182,17 @@ Item {
                         }
                     }
                 }
+                ListModel{
+                    id:localUpdaterModel
+                    function syncModel(){
+                        localUpdaterModel.clear();
+                        var updatersJSON = panelRobotController.scanUpdaters("HCRobot", 0);
+                        var updaters = JSON.parse(updatersJSON);
+                        for(var i = 0, len = updaters.length; i < len; ++i){
+                            localUpdaterModel.append({"name":updaters[i]});
+                        }
+                    }
+                }
 
                 ListModel{
                     id:uDiskMachineBackupModel
@@ -204,13 +224,24 @@ Item {
                         }
                     }
                 }
+                ListModel{
+                    id:uDiskUpdaterModel
+                    function syncModel(){
+                        uDiskUpdaterModel.clear();
+                        var updatersJSON = panelRobotController.scanUpdaters("HCRobot", 1);
+                        var updaters = JSON.parse(updatersJSON);
+                        for(var i = 0, len = updaters.length; i < len; ++i){
+                            uDiskUpdaterModel.append({"name":updaters[i]});
+                        }
+                    }
+                }
             }
             Column{
                 ICButton{
                     id:newBackup
                     width: 150
                     text: qsTr("Backup Current")
-                    enabled: local.isChecked
+                    enabled: local.isChecked && !updater.isChecked
                     onButtonClicked: {
                         backupNameDialog.showInput(qsTr("Please input the backup name"),
                                                    qsTr("Backup Name"),
@@ -222,6 +253,7 @@ Item {
                     id:restore
                     width: newBackup.width
                     text: qsTr("Restore Selected")
+                    enabled: !updater.isChecked
                     onButtonClicked: {
                         if(backuViews.currentIndex < 0) return;
                         restoreTip.show(qsTr("System will reboot after restore! Are you sure?"), qsTr("OK"), qsTr("Cancel"));
@@ -268,6 +300,12 @@ Item {
                             tip.information(qsTr("Export successfully!"), qsTr("OK"));
                         }
                     }
+                }
+                ICButton{
+                    id:startUpdate
+                    width: newBackup.width
+                    text: qsTr("Start Update")
+                    enabled: updater.isChecked
                 }
             }
         }

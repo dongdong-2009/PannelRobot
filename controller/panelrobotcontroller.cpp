@@ -593,6 +593,13 @@ QString PanelRobotController::scanUSBUpdaters(const QString &filter) const
     return scanHelper(QString("%1*.bfe").arg(filter));
 }
 
+QString PanelRobotController::scanUpdaters(const QString &filter, int mode) const
+{
+    if(mode == 1)
+        return scanUSBUpdaters(filter);
+    return scanUserDir("updaters", QString("%1*.bfe").arg(filter));
+}
+
 void PanelRobotController::startUpdate(const QString &updater)
 {
     ICUpdateSystem us;

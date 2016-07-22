@@ -413,6 +413,7 @@ public:
     Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
+    Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
     Q_INVOKABLE void startUpdate(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);

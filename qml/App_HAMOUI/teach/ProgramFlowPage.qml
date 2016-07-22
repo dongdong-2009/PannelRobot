@@ -483,6 +483,7 @@ Rectangle {
         if(PData.programs.length == 0) return 0;
         if(moduleSel.currentIndex != 0) return PData.kFunctionProgramIndex;
         if(editing.currentIndex > 8) return PData.kManualProgramIndex;
+        if(editing.currentIndex < 0) return 0;
         return editing.currentIndex;
     }
 

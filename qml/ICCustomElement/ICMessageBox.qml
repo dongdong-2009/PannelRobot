@@ -36,9 +36,14 @@ MouseArea {
         noBtn.visible = true;
     }
 
-    function runningTip(tip){
+    function hide(){
+        container.visible = false;
+    }
+
+    function runningTip(tip, yesText){
         text = tip || "";
-        yesBtn.visible = false;
+        yesBtnText = yesText || ("Get it");
+        yesBtn.visible = (yesText == undefined ? false : true);
         noBtn.visible = false;
         container.visible = true;
         realFrame.color = "#A0A0F0";

@@ -19,23 +19,23 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
 
-    function getRecordContent(which){
-        if(which == 0){
-            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-            for(var i = 0;i < ret.length;i++){
-                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
-                    for(var j = 0;j < 16;j++){
-                        var a = "flag" + j;
-                        BaseTeach.flagsDefine.pushFlag(0,new BaseTeach.FlagItem(ret[i][a],""));
-                    }
-                }
-            }
-            return ret;
-        }
-        else
-            return JSON.parse(panelRobotController.programs(which));
-    }
+//    function getRecordContent(which){
+//        if(which == 0){
+//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+//            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+//            for(var i = 0;i < ret.length;i++){
+//                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
+//                    for(var j = 0;j < 16;j++){
+//                        var a = "flag" + j;
+//                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
+//                    }
+//                }
+//            }
+//            return ret;
+//        }
+//        else
+//            return JSON.parse(panelRobotController.programs(which));
+//    }
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
@@ -197,9 +197,11 @@ ProgramFlowPage {
         var actionObject = Utils.cloneObject(actionObject1);
         axischange(actionObject);
         var ret = [];
-//        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));     //Y30 close
-//        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
-//        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
+        ret.push(LocalTeach.generateOutputAction(8,0,1,8,0));     //Y20 open
+        ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));     //Y23 open
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));     //Y30 close
+        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
 //        ret.push(LocalTeach.generateOutputAction(19,0,0,19,0));     //close
         ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //Y34 close
         ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));     //close
@@ -214,7 +216,7 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed2));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed3));
+//        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed3));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startPosSpeed2));
@@ -225,13 +227,21 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateWaitAction(21,0,1,10));
         ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));
 
-//        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //mujuhuiyuan
-//        ret.push(LocalTeach.generateWaitAction(18,0,1,100));
-//        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));
+//        ret.push(LocalTeach.generateConditionAction(0, 18, 0, 0, 0,actionObject.flag10));
+        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //mujuhuiyuan
+        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));
+        ret.push(LocalTeach.generateWaitAction(18,0,0,100));
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0.5));
+//        ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("muju1origin")));
 
-//        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));
-//        ret.push(LocalTeach.generateWaitAction(19,0,1,100));
-//        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));
+//        ret.push(LocalTeach.generateConditionAction(0, 19, 0, 0, 0,actionObject.flag7));
+        ret.push(LocalTeach.generateOutputAction(17,0,1,17,0));
+        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));
+        ret.push(LocalTeach.generateWaitAction(19,0,0,100));
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));
+        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0.5));
+//        ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("muju2origin")));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
@@ -255,6 +265,11 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
 
+        ret.push(LocalTeach.generateOutputAction(8,0,0,8,0));     //Y20 open
+        ret.push(LocalTeach.generateOutputAction(11,0,0,11,0));     //Y20 open
+        ret.push(LocalTeach.generateWaitAction(24,0,1,120));
+        ret.push(LocalTeach.generateOutputAction(8,0,1,8,0));     //Y20 open
+        ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));     //Y20 open
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
 
         ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));   //gongzhuangzhengzhuang open
@@ -275,7 +290,7 @@ ProgramFlowPage {
         return ret;
     }
 
-    function pentuActionToProgram(actionObject1){
+    function pentuActionToProgram(actionObject1,actionObject2){
         var actionObject = Utils.cloneObject(actionObject1);
         axischange(actionObject);
         var ret = [];
@@ -296,9 +311,9 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
         }
         else if(actionObject.fixture1Switch == 3){
-            ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
-            ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
-            ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
+//            ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, 0, actionObject.fixtureDelay0));
+//            ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, 0, actionObject.fixtureDelay1));
+//            ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0, actionObject.fixtureDelay2));
         }
         if(actionObject.fixture2Switch == 4){
             ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
@@ -306,9 +321,9 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
         }
         else if(actionObject.fixture2Switch == 3){
-            ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
-            ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
-            ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
+//            ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, 0, actionObject.fixture2Delay0));
+//            ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, 0, actionObject.fixture2Delay1));
+//            ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0, actionObject.fixture2Delay2));
         }
         if(actionObject.mode == 3 || actionObject.mode == 7)
             ret.push(LocalTeach.generateFlagAction(actionObject.flag2, qsTr("Repeate")));
@@ -876,8 +891,8 @@ ProgramFlowPage {
                 if(LocalTeach.isJumpAction(actionLine.action) ||
                    actionLine.action == LocalTeach.actions.ACT_FLAG){
                     if(!tmpMap.hasOwnProperty(actionLine.flag)){
-                        var f = BaseTeach.flagsDefine.createFlag(0, actionLine.flag);
-                        BaseTeach.flagsDefine.pushFlag(0, f);
+                        var f = LocalTeach.flagsDefine.createFlag(0, actionLine.flag);
+                        LocalTeach.flagsDefine.pushFlag(0, f);
                         tmpMap[actionLine.flag] =  f.flagID;
                     }
                     actionLine.flag = tmpMap[actionLine.flag];
@@ -905,23 +920,41 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed2));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed3));
+//        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed3));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
-        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
-        var flag13 = 13;
-        ret.push(LocalTeach.generateCounterJumpAction(flag13, actionObject.rotateCounterID, 1, 0));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag14));
 //        ret.push(LocalTeach.generateOutputAction(14,100,0,14,2));     //Y30 close
-        ret.push(LocalTeach.generateOutputAction(4,100,1,4,1));     //Y14 open
-        ret.push(LocalTeach.generateOutputAction(4,0,0,4,3));     //Y14 close
+        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //Y30 open
+        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));     //Y32 open
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag8, qsTr("Rotate1ok")));
+        ret.push(LocalTeach.generateWaitAction(16,0,1,100));
+        ret.push(LocalTeach.generateWaitAction(16,0,0,100));
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag8, actionObject.rotateOKCID, 0, 1));
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //Y32 close
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0.5));     //Y30 close
+//        ret.push(LocalTeach.generateOutputAction(4,0,0,4,3));     //Y14 close
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag15));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag14, qsTr("Rotate1")));
-        ret.push(LocalTeach.generateOutputAction(6,100,1,6,1));     //Y16 open
-        ret.push(LocalTeach.generateOutputAction(6,0,0,6,3));     //Y16 close
+
+        ret.push(LocalTeach.generateOutputAction(17,0,1,17,0));     //Y31 open
+        ret.push(LocalTeach.generateOutputAction(18,0,1,18,0));     //Y32 open
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag9, qsTr("Rotate2ok")));
+        ret.push(LocalTeach.generateWaitAction(17,0,1,100));
+        ret.push(LocalTeach.generateWaitAction(17,0,0,100));
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateOKCID));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag9, actionObject.rotateOKCID, 0, 1));
+        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //Y32 close
+        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0.5));     //Y31 close
+
+//        ret.push(LocalTeach.generateOutputAction(6,100,1,6,1));     //Y16 open
+//        ret.push(LocalTeach.generateOutputAction(6,0,0,6,3));     //Y16 close
         ret.push(LocalTeach.generateFlagAction(actionObject.flag15, qsTr("Rotate2")));
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag13, actionObject.rotateCounterID, 1, 0));
 
 //        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
 
@@ -945,7 +978,7 @@ ProgramFlowPage {
 //                        ret.push(rs[j]);
                     }
                 }
-                var ps = pentuActionToProgram(model.get(i).mI_ActionObject);
+                var ps = pentuActionToProgram(model.get(i).mI_ActionObject,model.get(count).mI_ActionObject);
                 for(j = 0, len = ps.length; j < len; ++j){
                     LocalPData.stepToKeXuYeRowMap[ret.length] = i;
                     ret.push(ps[j]);

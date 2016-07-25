@@ -1217,6 +1217,11 @@ var cycle8 = function(){
 
     ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,0));
     ret.push(generateFlagAction(flag7, qsTr("Close Out Put")));
+    ret.push(generateOutputAction(8,0,0,8,0));     //close
+    ret.push(generateOutputAction(9,0,0,9,0));     //close
+    ret.push(generateOutputAction(10,0,0,10,0));     //close
+    ret.push(generateOutputAction(11,0,0,11,0));     //close
+    ret.push(generateOutputAction(12,0,0,12,0));     //close
     ret.push(generateOutputAction(16,0,0,16,0));     //close
     ret.push(generateOutputAction(17,0,0,17,0));     //close
     ret.push(generateOutputAction(18,0,0,18,0));     //close

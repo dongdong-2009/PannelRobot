@@ -1,10 +1,9 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "../../utils/Storage.js" as Storage
+import "../../utils/stringhelper.js" as ICString
 
 Item {
-
-
     ICMessageBox{
         id:backupNameDialog
         x:250
@@ -13,12 +12,13 @@ Item {
         onAccept: {
             var backupName = inputText;
             if(hmiConfigs.isChecked){
-                localHMIBackupModel.append({"name":panelRobotController.backupHMIBackup(backupName, Storage.backup())});
+                panelRobotController.backupHMIBackup(backupName, Storage.backup());
             }else if(machineRunningConfigs.isChecked){
-                localMachineBackupModel.append({"name": panelRobotController.backupMRBackup(backupName)});
+                panelRobotController.backupMRBackup(backupName);
             }else if(ghost.isChecked){
-                localGhostModel.append({"name":panelRobotController.makeGhost(backupName, Storage.backup())});
+                panelRobotController.makeGhost(backupName, Storage.backup());
             }
+            refreshDataModel();
         }
     }
 
@@ -38,11 +38,12 @@ Item {
             var backupName = backuViews.model.get(backuViews.currentIndex).name;
             var mode = local.isChecked ? 0 : 1;
             if(hmiConfigs.isChecked){
-                var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
+                var sqlData = panelRobotController.restoreHMIBackup(backupName, mode);
+                if(sqlData.length == 0) return;
                 Storage.restore(sqlData);
 
             }else if(machineRunningConfigs.isChecked){
-                panelRobotController.restoreMRBackups(backupName,mode);
+                panelRobotController.restoreMRBackup(backupName,mode);
             }else if(ghost.isChecked){
                 Storage.restore(panelRobotController.restoreGhost(backupName, mode));
             }
@@ -61,6 +62,9 @@ Item {
             }else if(ghost.isChecked){
                 localGhostModel.syncModel();
                 backuViews.model = localGhostModel;
+            }else if(updater.isChecked){
+                localUpdaterModel.syncModel();
+                backuViews.model = localUpdaterModel;
             }
         }else if(uDisk.isChecked){
             if(hmiConfigs.isChecked){
@@ -72,6 +76,9 @@ Item {
             }else if(ghost.isChecked){
                 uDiskGhostModel.syncModel();
                 backuViews.model = uDiskGhostModel;
+            }else if(updater.isChecked){
+                uDiskUpdaterModel.syncModel();
+                backuViews.model = uDiskUpdaterModel;
             }
         }
     }
@@ -114,6 +121,11 @@ Item {
                 id:ghost
                 text: qsTr("ghost")
             }
+            ICCheckBox{
+                id:updater
+                text: qsTr("Updater")
+            }
+
             onButtonClickedItem: {
                 refreshDataModel();
             }
@@ -146,7 +158,7 @@ Item {
                     id:localMachineBackupModel
                     function syncModel(){
                         localMachineBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanMachineBackups(0));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanMachineBackups(0)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             localMachineBackupModel.append({"name":backups[i]});
                         }
@@ -157,7 +169,7 @@ Item {
                     id:localHMIBackupModel
                     function syncModel(){
                         localHMIBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanHMIBackups(0));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanHMIBackups(0)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             localHMIBackupModel.append({"name":backups[i]});
                         }
@@ -167,9 +179,20 @@ Item {
                     id:localGhostModel
                     function syncModel(){
                         localGhostModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanGhostBackups(0));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanGhostBackups(0)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             localGhostModel.append({"name":backups[i]});
+                        }
+                    }
+                }
+                ListModel{
+                    id:localUpdaterModel
+                    function syncModel(){
+                        localUpdaterModel.clear();
+                        var updatersJSON = panelRobotController.scanUpdaters("HCRobot", 0);
+                        var updaters = JSON.parse(updatersJSON);
+                        for(var i = 0, len = updaters.length; i < len; ++i){
+                            localUpdaterModel.append({"name":updaters[i]});
                         }
                     }
                 }
@@ -178,7 +201,7 @@ Item {
                     id:uDiskMachineBackupModel
                     function syncModel(){
                         uDiskMachineBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanMachineBackups(1));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanMachineBackups(1)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             uDiskMachineBackupModel.append({"name":backups[i]});
                         }
@@ -188,7 +211,7 @@ Item {
                     id:uDiskHMIBackupModel
                     function syncModel(){
                         uDiskHMIBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanHMIBackups(1));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanHMIBackups(1)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             uDiskHMIBackupModel.append({"name":backups[i]});
                         }
@@ -198,9 +221,20 @@ Item {
                     id:uDiskGhostModel
                     function syncModel(){
                         uDiskGhostModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanGhostBackups(1));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanGhostBackups(1)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             uDiskGhostModel.append({"name":backups[i]});
+                        }
+                    }
+                }
+                ListModel{
+                    id:uDiskUpdaterModel
+                    function syncModel(){
+                        uDiskUpdaterModel.clear();
+                        var updatersJSON = panelRobotController.scanUpdaters("HCRobot", 1);
+                        var updaters = JSON.parse(updatersJSON);
+                        for(var i = 0, len = updaters.length; i < len; ++i){
+                            uDiskUpdaterModel.append({"name":updaters[i]});
                         }
                     }
                 }
@@ -210,7 +244,7 @@ Item {
                     id:newBackup
                     width: 150
                     text: qsTr("Backup Current")
-                    enabled: local.isChecked
+                    enabled: local.isChecked && !updater.isChecked
                     onButtonClicked: {
                         backupNameDialog.showInput(qsTr("Please input the backup name"),
                                                    qsTr("Backup Name"),
@@ -222,6 +256,7 @@ Item {
                     id:restore
                     width: newBackup.width
                     text: qsTr("Restore Selected")
+                    enabled: !updater.isChecked
                     onButtonClicked: {
                         if(backuViews.currentIndex < 0) return;
                         restoreTip.show(qsTr("System will reboot after restore! Are you sure?"), qsTr("OK"), qsTr("Cancel"));
@@ -240,7 +275,10 @@ Item {
                             panelRobotController.deleteMRBackup(backupName, mode);
                         }else if(ghost.isChecked){
                             panelRobotController.deleteGhost(backupName, mode);
+                        }else if(updater.isChecked){
+                            panelRobotController.deleteUpdater(backupName, mode);
                         }
+
                         backuViews.model.remove(backuViews.currentIndex);
                     }
                 }
@@ -260,6 +298,8 @@ Item {
                             ret = panelRobotController.exportMachineBackup(backupName);
                         }else if(ghost.isChecked){
                             ret = panelRobotController.exportGhost(backupName);
+                        }else if(updater.isChecked){
+                            ret = panelRobotController.exportUpdater(backupName);
                         }
 
                         if(ret !== 0){
@@ -267,6 +307,18 @@ Item {
                         }else{
                             tip.information(qsTr("Export successfully!"), qsTr("OK"));
                         }
+                    }
+                }
+                ICButton{
+                    id:startUpdate
+                    width: newBackup.width
+                    text: qsTr("Start Update")
+                    enabled: updater.isChecked
+                    onButtonClicked: {
+                        var name = backuViews.model.get(backuViews.currentIndex).name;
+                        if(uDisk.isChecked)
+                            panelRobotController.backupUpdater(name)
+                        panelRobotController.startUpdate(name);
                     }
                 }
             }

@@ -84,6 +84,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: pathMenuTriggered()
+            visible: false
         }
 
         ICButton{
@@ -175,6 +176,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: visionMenuTriggered()
+            visible: false
         }
 
         ICButton{
@@ -184,6 +186,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: speedMenuTriggered()
+            visible: false
         }
 
         ICButton{
@@ -193,6 +196,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: dataMenuTriggered()
+            visible: false
         }
 
         ICButton{
@@ -202,7 +206,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: originMenuTriggered()
-//            visible: false
+            visible: false
         }
     }
 }

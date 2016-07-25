@@ -413,7 +413,9 @@ public:
     Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
+    Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
     Q_INVOKABLE void startUpdate(const QString& updater);
+    Q_INVOKABLE QString backupUpdater(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
     Q_INVOKABLE void modifyConfigValue(const QString& addr, const QString &value);
@@ -764,12 +766,14 @@ public:
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
+    Q_INVOKABLE int exportUpdater(const QString& updaterName) const;
     Q_INVOKABLE QString restoreHMIBackup(const QString& backupName, int mode);
     Q_INVOKABLE void restoreMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE QString restoreGhost(const QString& backupName, int mode);
     Q_INVOKABLE void deleteHIMBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteGhost(const QString& backupName, int mode);
+    Q_INVOKABLE void deleteUpdater(const QString& updater, int mode);
     Q_INVOKABLE void reboot() { ::system("reboot");}
 
     Q_INVOKABLE void processEvents()

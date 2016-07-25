@@ -483,6 +483,7 @@ Rectangle {
         if(PData.programs.length == 0) return 0;
         if(moduleSel.currentIndex != 0) return PData.kFunctionProgramIndex;
         if(editing.currentIndex > 8) return PData.kManualProgramIndex;
+        if(editing.currentIndex < 0) return 0;
         return editing.currentIndex;
     }
 
@@ -755,6 +756,7 @@ Rectangle {
                             delModuleBtn.visible = false;
                             if(actionEditorFrame.progress == 1)
                                 actionEditorFrame.item.setMode("");
+                            PData.currentEditingProgram = editing.currentIndex;
                         }else{
                             Teach.currentParsingProgram = PData.kFunctionProgramIndex;
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
@@ -1561,6 +1563,7 @@ Rectangle {
         var isSyncStart = false;
         var jumpLines = [];
         var insertedIndex = 0;
+        Teach.flagsDefine.clear(Teach.currentParsingProgram);
         for(var p = 0; p < program.length; ++p){
             step = program[p];
             step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;

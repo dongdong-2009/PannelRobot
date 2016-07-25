@@ -673,7 +673,7 @@ Rectangle {
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){
-           tipBox.runningTip(qsTr("Sending Data..."));
+           tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
         });
         panelRobotController.sentContinuousData.connect(function(t){
             tipBox.visible = false;

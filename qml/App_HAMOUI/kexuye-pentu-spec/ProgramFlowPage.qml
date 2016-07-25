@@ -19,23 +19,23 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
 
-//    function getRecordContent(which){
-//        if(which == 0){
-//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-//            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//            for(var i = 0;i < ret.length;i++){
-//                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
-//                    for(var j = 0;j < 16;j++){
-//                        var a = "flag" + j;
-//                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
-//                    }
-//                }
-//            }
-//            return ret;
-//        }
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+            for(var i = 0;i < ret.length;i++){
+                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
+                    for(var j = 0;j < 16;j++){
+                        var a = "flag" + j;
+                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
+                    }
+                }
+            }
+            return ret;
+        }
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;

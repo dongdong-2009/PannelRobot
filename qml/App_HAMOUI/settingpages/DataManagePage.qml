@@ -275,7 +275,10 @@ Item {
                             panelRobotController.deleteMRBackup(backupName, mode);
                         }else if(ghost.isChecked){
                             panelRobotController.deleteGhost(backupName, mode);
+                        }else if(updater.isChecked){
+                            panelRobotController.deleteUpdater(backupName, mode);
                         }
+
                         backuViews.model.remove(backuViews.currentIndex);
                     }
                 }
@@ -295,6 +298,8 @@ Item {
                             ret = panelRobotController.exportMachineBackup(backupName);
                         }else if(ghost.isChecked){
                             ret = panelRobotController.exportGhost(backupName);
+                        }else if(updater.isChecked){
+                            ret = panelRobotController.exportUpdater(backupName);
                         }
 
                         if(ret !== 0){

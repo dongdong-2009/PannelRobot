@@ -1581,9 +1581,10 @@ int exportBackupHelper(const QString& backupName, const QString& path)
 {
     QDir dir(ICAppSettings::UserPath);
     if(!dir.cd(path)) return -1;
-    if(!dir.exists(backupName)) return -1;
+    if(!dir.exists(backupName.toUtf8())) return -1;
     if(!ICUtility::IsUsbAttached()) return -2;
-    if(QFile::copy(dir.absoluteFilePath(backupName), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)))
+//    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
+    if(QFile::copy(dir.absoluteFilePath(backupName.toUtf8()), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8())))
     {
         ::sync();
         return 0;
@@ -1606,12 +1607,17 @@ int PanelRobotController::exportGhost(const QString &backupName) const
     return exportBackupHelper(backupName, "ghosts");
 }
 
+int PanelRobotController::exportUpdater(const QString &updaterName) const
+{
+    return exportBackupHelper(updaterName, "updaters");
+}
+
 void deleteBackupHelper(const QString& subPath, const QString &backupName, int mode)
 {
     QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/" + subPath : ICAppSettings::UsbPath);
     QDir dir(dirPath);
-    if(!dir.exists(backupName)) return;
-    QFile::remove(dir.absoluteFilePath(backupName));
+    if(!dir.exists(backupName.toUtf8())) return;
+    QFile::remove(dir.absoluteFilePath(backupName.toUtf8()));
 }
 
 void PanelRobotController::deleteHIMBackup(const QString &backupName, int mode)
@@ -1627,4 +1633,9 @@ void PanelRobotController::deleteMRBackup(const QString &backupName, int mode)
 void PanelRobotController::deleteGhost(const QString &backupName, int mode)
 {
     deleteBackupHelper("ghosts", backupName, mode);
+}
+
+void PanelRobotController::deleteUpdater(const QString &updater, int mode)
+{
+    deleteBackupHelper("updaters", updater, mode);
 }

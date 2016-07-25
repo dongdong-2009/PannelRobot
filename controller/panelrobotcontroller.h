@@ -764,12 +764,14 @@ public:
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
+    Q_INVOKABLE int exportUpdater(const QString& updaterName) const;
     Q_INVOKABLE QString restoreHMIBackup(const QString& backupName, int mode);
     Q_INVOKABLE void restoreMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE QString restoreGhost(const QString& backupName, int mode);
     Q_INVOKABLE void deleteHIMBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteGhost(const QString& backupName, int mode);
+    Q_INVOKABLE void deleteUpdater(const QString& updater, int mode);
     Q_INVOKABLE void reboot() { ::system("reboot");}
 
     Q_INVOKABLE void processEvents()

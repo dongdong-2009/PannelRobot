@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "../../utils/Storage.js" as Storage
+import "../../utils/stringhelper.js" as ICString
 
 Item {
     ICMessageBox{
@@ -11,12 +12,13 @@ Item {
         onAccept: {
             var backupName = inputText;
             if(hmiConfigs.isChecked){
-                localHMIBackupModel.append({"name":panelRobotController.backupHMIBackup(backupName, Storage.backup())});
+                panelRobotController.backupHMIBackup(backupName, Storage.backup());
             }else if(machineRunningConfigs.isChecked){
-                localMachineBackupModel.append({"name": panelRobotController.backupMRBackup(backupName)});
+                panelRobotController.backupMRBackup(backupName);
             }else if(ghost.isChecked){
-                localGhostModel.append({"name":panelRobotController.makeGhost(backupName, Storage.backup())});
+                panelRobotController.makeGhost(backupName, Storage.backup());
             }
+            refreshDataModel();
         }
     }
 
@@ -36,11 +38,12 @@ Item {
             var backupName = backuViews.model.get(backuViews.currentIndex).name;
             var mode = local.isChecked ? 0 : 1;
             if(hmiConfigs.isChecked){
-                var sqlData = panelRobotController.restoreHMIBackups(backupName, mode);
+                var sqlData = panelRobotController.restoreHMIBackup(backupName, mode);
+                if(sqlData.length == 0) return;
                 Storage.restore(sqlData);
 
             }else if(machineRunningConfigs.isChecked){
-                panelRobotController.restoreMRBackups(backupName,mode);
+                panelRobotController.restoreMRBackup(backupName,mode);
             }else if(ghost.isChecked){
                 Storage.restore(panelRobotController.restoreGhost(backupName, mode));
             }
@@ -155,7 +158,7 @@ Item {
                     id:localMachineBackupModel
                     function syncModel(){
                         localMachineBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanMachineBackups(0));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanMachineBackups(0)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             localMachineBackupModel.append({"name":backups[i]});
                         }
@@ -166,7 +169,7 @@ Item {
                     id:localHMIBackupModel
                     function syncModel(){
                         localHMIBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanHMIBackups(0));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanHMIBackups(0)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             localHMIBackupModel.append({"name":backups[i]});
                         }
@@ -176,7 +179,7 @@ Item {
                     id:localGhostModel
                     function syncModel(){
                         localGhostModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanGhostBackups(0));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanGhostBackups(0)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             localGhostModel.append({"name":backups[i]});
                         }
@@ -198,7 +201,7 @@ Item {
                     id:uDiskMachineBackupModel
                     function syncModel(){
                         uDiskMachineBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanMachineBackups(1));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanMachineBackups(1)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             uDiskMachineBackupModel.append({"name":backups[i]});
                         }
@@ -208,7 +211,7 @@ Item {
                     id:uDiskHMIBackupModel
                     function syncModel(){
                         uDiskHMIBackupModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanHMIBackups(1));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanHMIBackups(1)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             uDiskHMIBackupModel.append({"name":backups[i]});
                         }
@@ -218,7 +221,7 @@ Item {
                     id:uDiskGhostModel
                     function syncModel(){
                         uDiskGhostModel.clear();
-                        var backups = JSON.parse(panelRobotController.scanGhostBackups(1));
+                        var backups = JSON.parse(ICString.utf8ToUtf16(panelRobotController.scanGhostBackups(1)));
                         for(var i = 0, len = backups.length; i < len; ++i){
                             uDiskGhostModel.append({"name":backups[i]});
                         }

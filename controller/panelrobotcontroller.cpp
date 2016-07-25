@@ -1410,13 +1410,14 @@ QString PanelRobotController::backupHMIBackup(const QString& backupName, const Q
         dir.mkdir("hmibps");
     }
     dir.cd("hmibps");
-    QString bf = backupName + ".hmi.hcdb";
-    if(dir.exists(bf))
+    QString utf8BackupName = backupName;
+    QString bf = utf8BackupName + ".hmi.hcdb";
+    if(dir.exists(bf.toUtf8()))
     {
-        QFile::remove(dir.absoluteFilePath(bf));
+        QFile::remove(dir.absoluteFilePath(bf.toUtf8()));
     }
-    dir.mkdir(backupName);
-    dir.cd(backupName);
+    dir.mkdir(utf8BackupName.toUtf8());
+    dir.cd(utf8BackupName.toUtf8());
     QFile sql(dir.absoluteFilePath("hmi.sql"));
     if(sql.open(QFile::WriteOnly))
     {
@@ -1426,21 +1427,22 @@ QString PanelRobotController::backupHMIBackup(const QString& backupName, const Q
     QFile::copy("usr/customsettings.ini", dir.absoluteFilePath("customsettings.ini"));
     QFile::copy("sysconfig/PanelRobot.ini", dir.absoluteFilePath("PanelRobot.ini"));
     dir.cdUp();
-    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.hmi.hcdb")
-             .arg(dir.absolutePath()).arg(backupName).toUtf8());
-    return backupName + ".hmi.hcdb";
+    ::system(QString("cd %1 && tar -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.hmi.hcdb")
+             .arg(dir.absolutePath()).arg(utf8BackupName).toUtf8());
+
+    ICUtility::DeleteDirectory(dir.absoluteFilePath(utf8BackupName.toUtf8()));
+    return utf8BackupName + ".hmi.hcdb";
 }
 
 QString PanelRobotController::restoreHMIBackup(const QString &backupName, int mode)
 {
     QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/hmibps" : ICAppSettings::UsbPath);
     QDir dir(dirPath);
-    if(!dir.exists(backupName)) return "";
+    if(!dir.exists(backupName.toUtf8())) return "";
     ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
     QString backupDirName = backupName;
     backupDirName.chop(9);
-    QDir backupDir(dir.absoluteFilePath(backupDirName));
-//    backupDir.cd(backupDirName);
+    QDir backupDir(dir.absoluteFilePath(backupDirName.toUtf8()));
     QFile sqlData(backupDir.absoluteFilePath("hmi.sql"));
     sqlData.open(QFile::ReadOnly);
     QString ret = QString::fromUtf8(sqlData.readAll());
@@ -1463,16 +1465,17 @@ QString PanelRobotController::backupMRBackup(const QString &backupName) const
     }
     dir.cd("mrbps");
     QString bf = backupName + ".mr.hcdb";
-    if(dir.exists(bf))
+    if(dir.exists(bf.toUtf8()))
     {
-        QFile::remove(dir.absoluteFilePath(bf));
+        QFile::remove(dir.absoluteFilePath(bf.toUtf8()));
     }
-    dir.mkdir(backupName);
-    dir.cd(backupName);
+    dir.mkdir(backupName.toUtf8());
+    dir.cd(backupName.toUtf8());
     QFile::copy("RobotDatabase", dir.absoluteFilePath("RobotDatabase"));
     dir.cdUp();
-    ::system(QString("cd %1 && tar --remove-files -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.mr.hcdb")
+    ::system(QString("cd %1 && tar -zcvf - %2 | openssl des3 -salt -k szhcSZHCGaussCheng | dd of=%2.mr.hcdb")
              .arg(dir.absolutePath()).arg(backupName).toUtf8());
+    ICUtility::DeleteDirectory(dir.absoluteFilePath(backupName.toUtf8()));
     return backupName + ".mr.hcdb";
 
 }
@@ -1481,11 +1484,11 @@ void PanelRobotController::restoreMRBackup(const QString &backupName, int mode)
 {
     QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/mrbps" : ICAppSettings::UsbPath);
     QDir dir(dirPath);
-    if(!dir.exists(backupName)) return;
+    if(!dir.exists(backupName.toUtf8())) return;
     ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf -").arg(backupName).arg(dir.absolutePath()).toUtf8());
     QString backupDirName = backupName;
     backupDirName.chop(8);
-    QDir backupDir(dir.absoluteFilePath(backupDirName));
+    QDir backupDir(dir.absoluteFilePath(backupDirName.toUtf8()));
     QFile::remove("RobotDatabase");
     QFile::copy(backupDir.absoluteFilePath("RobotDatabase"), "RobotDatabase");
     ::system(QString("rm -rf %1").arg(backupDir.absolutePath()).toUtf8());
@@ -1502,9 +1505,9 @@ QString PanelRobotController::makeGhost(const QString &ghostName, const QString&
     }
     dir.cd("ghosts");
     QString bf = ghostName + ".ghost.hcdb";
-    if(dir.exists(bf))
+    if(dir.exists(bf.toUtf8()))
     {
-        QFile::remove(dir.absoluteFilePath(bf));
+        QFile::remove(dir.absoluteFilePath(bf.toUtf8()));
     }
     QFile sql("hmi.sql");
     if(sql.open(QFile::WriteOnly))
@@ -1522,7 +1525,7 @@ QString PanelRobotController::restoreGhost(const QString& backupName, int mode)
 {
     QString dirPath = (mode == 0 ? QString(ICAppSettings::UserPath) + "/ghosts" : ICAppSettings::UsbPath);
     QDir dir(dirPath);
-    if(!dir.exists(backupName)) return "";
+    if(!dir.exists(backupName.toUtf8())) return "";
     ::system(QString("cd %2 && dd if=%1 | openssl des3 -d -k szhcSZHCGaussCheng | tar zxf - -C /")
              .arg(backupName)
              .arg(dir.absolutePath()).toUtf8());

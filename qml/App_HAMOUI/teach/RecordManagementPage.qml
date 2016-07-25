@@ -369,7 +369,6 @@ Rectangle {
         var records = JSON.parse(panelRobotController.records());
         for(var i = 0; i < records.length; ++i){
             recordsModel.append(recordsView.createRecordItem(records[i].recordName, records[i].createDatetime));
-
         }
     }
 }

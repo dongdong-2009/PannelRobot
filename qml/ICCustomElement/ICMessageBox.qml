@@ -36,6 +36,10 @@ MouseArea {
         noBtn.visible = true;
     }
 
+    function hide(){
+        container.visible = false;
+    }
+
     function runningTip(tip, yesText){
         text = tip || "";
         yesBtnText = yesText || ("Get it");

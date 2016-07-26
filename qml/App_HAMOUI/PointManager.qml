@@ -48,6 +48,46 @@ MouseArea{
         }
 
         Row{
+            id:boxRectContainer
+            anchors.bottom: pointViewContainer.top
+            anchors.bottomMargin: 4
+            anchors.left: pointViewContainer.left
+            spacing: 6
+            ICConfigEdit{
+                id:boxLength
+                configName: qsTr("Length(mm)")
+                configValue: "0.00"
+                anchors.verticalCenter: parent.verticalCenter
+                decimal: 2
+            }
+            ICConfigEdit{
+                id:boxWidth
+                configName: qsTr("Width(mm)")
+                configValue: "0.00"
+                anchors.verticalCenter: parent.verticalCenter
+                decimal: 2
+            }
+            ICButton{
+                id:calcCenter
+                text: qsTr("Calc Center to current")
+                width: 157
+                onButtonClicked: {
+                    var l = parseFloat(boxLength.configValue);
+                    var w = parseFloat(boxWidth.configValue);
+                    l = l / 2;
+                    w = w / 2;
+                    if(pointView.currentIndex < 1) return;
+                    var iPoint = pointModel.get(pointView.currentIndex).point;
+                    var oPoint = pointModel.get(0).point;
+                    iPoint.point.m0 = (parseFloat(oPoint.point.m0) + l).toFixed(3);
+                    iPoint.point.m1 = (parseFloat(oPoint.point.m1) + w).toFixed(3);
+                    pointModel.setProperty(pointView.currentIndex, "point", iPoint);
+
+                }
+            }
+        }
+
+        Row{
             y:370
             x:pointViewContainer.x
             spacing: 6

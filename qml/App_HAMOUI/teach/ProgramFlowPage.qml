@@ -750,6 +750,7 @@ Rectangle {
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){
                             programListView.currentIndex = -1;
+                            Teach.currentParsingProgram = editing.currentIndex;
                             programListView.model = PData.programs[editing.currentIndex];
                             currentEditingProgram = editing.currentIndex;
                             currentEditingModule = 0;

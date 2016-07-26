@@ -1586,7 +1586,9 @@ int exportBackupHelper(const QString& backupName, const QString& path)
 //    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
     if(QFile::copy(dir.absoluteFilePath(backupName.toUtf8()), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8())))
     {
+#ifdef  Q_WS_QWS
         ::sync();
+#endif
         return 0;
     }
     return -3;

@@ -8,8 +8,17 @@ import "../../utils/stringhelper.js" as ICString
 
 import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
+import "../ExternalData.js" as ESData
+
 
 Rectangle {
+    function onGetVisionData(visionData){
+        if(visionData.reqType == "listModel"){
+            visionModel.clear();
+
+        }
+    }
+
     MouseArea{
         anchors.fill: parent
     }
@@ -416,11 +425,23 @@ Rectangle {
         width: parent.width
         height: parent.height - recordType.height - anchors.topMargin
         visible: vision.isChecked
-        ICButton{
-            id:scanModel
-            text:qsTr("Scan Model")
+        ICComboBoxConfigEdit{
+            id:dataSource
+            configName: qsTr("Data Source")
+            inputWidth: 500
+            z:100
             x:10
             y:10
+        }
+        ICButton{
+            id:scanModel
+            x:dataSource.x
+            text:qsTr("Scan Model")
+            anchors.top: dataSource.bottom
+            anchors.topMargin: 10
+            onButtonClicked: {
+                panelRobotController.writeDataToETH0(ESData.externalDataManager.getModelListCmd(dataSource.configText()));
+            }
         }
         ICListView{
             id:visionModelView
@@ -428,15 +449,19 @@ Rectangle {
             border.color: "black"
             border.width: 1
             width: parent.width - 20
-            x:10
+            x:dataSource.x
             anchors.top: scanModel.bottom
             anchors.topMargin: 10
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
+            model: visionModel
 
             ListModel{
                 id:visionModel
             }
+        }
+        Component.onCompleted: {
+            dataSource.items = ESData.externalDataManager.dataSourceNameList(false);
         }
     }
 }

@@ -15,7 +15,20 @@ Rectangle {
     function onGetVisionData(visionData){
         if(visionData.reqType == "listModel"){
             visionModel.clear();
-
+            var models = visionData.data;
+            var subModels;
+            for(var i = 0, len = models.length; i < len; ++i){
+                subModels = models[i].models;
+                for(var j = 0, sLen = subModels.length; j < sLen; ++j){
+                    visionModel.append({
+                                           "name":models[i].name + "[" + subModels[j].id + "]",
+                                           "offsetX":subModels[j].offsetX,
+                                           "offsetY":subModels[j].offsetY,
+                                           "offsetA":subModels[j].offsetA,
+                                           "modelImgPath":subModels[j].modelImgPath
+                                       });
+                }
+            }
         }
     }
 
@@ -455,6 +468,36 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             model: visionModel
+            delegate: Column{
+                Text {
+                    text: name
+
+                }
+                Row{
+                    Image {
+                        source: modelImgPath
+                    }
+                    Column{
+                        ICConfigEdit{
+                            configName: qsTr("Offset X")
+                            configValue: offsetX
+                        }
+                        ICConfigEdit{
+                           configName: qsTr("Offset Y")
+                           configValue: offsetY
+                        }
+                        ICConfigEdit{
+                           configName: qsTr("Offset A")
+                           configValue: offsetA
+                        }
+                    }
+                }
+                Rectangle{
+                    height: 1
+                    color: "black"
+
+                }
+            }
 
             ListModel{
                 id:visionModel

@@ -387,7 +387,7 @@ Rectangle {
         onAccept: {
             panelRobotController.modifyConfigValue(28, 4);
         }
-        onCanceled: {
+        onReject: {
             panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
         }
     }
@@ -699,11 +699,26 @@ Rectangle {
                                                   "","", "", "", 19);
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
                                                   "","", "", "", 18);
+
+            var i;
+            var sI;
+            var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
+            for(i = 0; i < Teach.stackInfos.length; ++i){
+                sI = Teach.stackInfos[i];
+                if(sI.dsHostID >= 0 && sI.posData.length > 0){
+                    ESData.externalDataManager.registerDataSource(sI.dsName,
+                                                                  ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
+                    toSendStackData.dsID = sI.dsName;
+                    toSendStackData.dsData = sI.posData;
+                    var posData = ESData.externalDataManager.parseRaw(toSendStackData);
+                    panelRobotController.sendExternalDatas(JSON.stringify(posData));
+                }
+            }
         });
-        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
-                                              "","", "", "", 19);
-        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
-                                              "","", "", "", 18);
+//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+//                                              "","", "", "", 19);
+//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+//                                              "","", "", "", 18);
 
         console.log("main load finished!");
     }

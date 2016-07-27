@@ -377,6 +377,21 @@ Rectangle {
         anchors.centerIn: parent
     }
 
+    ICMessageBox{
+        id:originAlarm
+        z:1001
+        anchors.centerIn: parent
+        visible: false
+        x:200
+        y:200
+        onAccept: {
+            panelRobotController.modifyConfigValue(28, 4);
+        }
+        onCanceled: {
+            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+        }
+    }
+
     ICCalculator{
         id:calculator
         z:100
@@ -827,6 +842,8 @@ Rectangle {
 
                 if(alarmNum === 2){
                     paraChose.visible = true;
+                }else if(alarmNum >= 530 && alarmNum <= 537){
+                    originAlarm.show(qsTr("Origin is changed? Do you want to refind an origin?"), qsTr("Refind"), qsTr("Stop"));
                 }else{
                     paraChose.visible = false;
                 }

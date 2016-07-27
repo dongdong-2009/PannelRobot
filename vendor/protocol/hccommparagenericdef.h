@@ -1078,6 +1078,33 @@ typedef enum
     ALARM_AXIS7_OVER_CURRENT,//<名字：轴7过电流报警
     ALARM_AXIS8_OVER_CURRENT,//<名字：轴8过电流报警
 
+    ALARM_AXIS1_ZPULSER_ERR = 510,//<名字：轴1 z脉冲错误
+    ALARM_AXIS2_ZPULSER_ERR ,//<名字：轴2 z脉冲错误
+    ALARM_AXIS3_ZPULSER_ERR ,//<名字：轴3 z脉冲错误
+    NO_ZPULSER ,//<名字：轴4 z脉冲错误
+    ALARM_AXIS5_ZPULSER_ERR ,//<名字：轴5 z脉冲错误
+    ALARM_AXIS6_ZPULSER_ERR ,//<名字：轴6 z脉冲错误
+    ALARM_AXIS7_ZPULSER_ERR ,//<名字：轴7 z脉冲错误
+    ALARM_AXIS8_ZPULSER_ERR ,//<名字：轴8 z脉冲错误
+
+    ALARM_AXIS1_NO_ZPULSER = 520,//<名字：轴1无z脉冲
+    ALARM_AXIS2_NO_ZPULSER ,//<名字：轴2无z脉冲
+    ALARM_AXIS3_NO_ZPULSER ,//<名字：轴3无z脉冲
+    ALARM_AXIS4_NO_ZPULSER ,//<名字：轴4无z脉冲
+    ALARM_AXIS5_NO_ZPULSER ,//<名字：轴5无z脉冲
+    ALARM_AXIS6_NO_ZPULSER ,//<名字：轴6无z脉冲
+    ALARM_AXIS7_NO_ZPULSER ,//<名字：轴7无z脉冲
+    ALARM_AXIS8_NO_ZPULSER ,//<名字：轴8无z脉冲
+
+	ALARM_AXIS1_ORIGIN_DEVIATION = 530,//<名字：轴1原点偏移
+	ALARM_AXIS2_ORIGIN_DEVIATION,//<名字：轴2原点偏移
+	ALARM_AXIS3_ORIGIN_DEVIATION,//<名字：轴3原点偏移
+	ALARM_AXIS4_ORIGIN_DEVIATION,//<名字：轴4原点偏移
+	ALARM_AXIS5_ORIGIN_DEVIATION,//<名字：轴5原点偏移
+	ALARM_AXIS6_ORIGIN_DEVIATION,//<名字：轴6原点偏移
+	ALARM_AXIS7_ORIGIN_DEVIATION,//<名字：轴7原点偏移
+	ALARM_AXIS8_ORIGIN_DEVIATION,//<名字：轴8原点偏移
+
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
 

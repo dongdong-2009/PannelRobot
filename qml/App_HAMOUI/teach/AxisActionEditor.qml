@@ -40,7 +40,10 @@ Item {
                                                            earlyEnd.configValue,
                                                            earlyEndSpeedPos.isChecked,
                                                            earlyEndSpeedPos.configValue,
-                                                           earlyEndSpeed.configValue));
+                                                           earlyEndSpeed.configValue,
+                                                           signalStop.isChecked,
+                                                           signalStop.configValue,
+                                                           fastStop.isChecked));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,

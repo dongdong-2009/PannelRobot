@@ -28,6 +28,9 @@ var IOItem = function(pointName, descr)
 {
     this.pointName = pointName;
     this.descr = descr;
+    this.displayName = function(){
+        return this.pointName + ":" + this.displayName;
+    }
 }
 
 function ValveItem(id, descr, type, time,

@@ -1202,6 +1202,11 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += " " + qsTr("Early End Spd pos:") + actionObject.earlySpdPos;
         ret += " " + qsTr("Early End Spd:") + actionObject.earlySpd;
     }
+    if(actionObject.signalStopEn){
+        ret += "\n                            ";
+        ret += " " + qsTr("When ") + xDefines[actionObject.signalStopPoint].displayName() + " " + qsTr("is On");
+        ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
+    }
 
     return ret;
 }

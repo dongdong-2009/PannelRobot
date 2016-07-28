@@ -3,6 +3,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
+import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
@@ -143,7 +144,7 @@ Item {
                 configName: qsTr("Early End Pos")
                 configValue: "0"
                 inputWidth: 60
-                configNameWidth: 130
+                configNameWidth: 140
                 enabled: !signalStop.isChecked;
             }
             Row{
@@ -174,43 +175,55 @@ Item {
                     id:signalStop
                     configName: qsTr("Signal Stop")
                     configValue: -1
-                    inputWidth: 60
+                    inputWidth: 100
+                    z:2
                     enabled: !earlyEnd.isChecked;
                     configNameWidth: earlyEnd.configNameWidth
-                    items: [  "X010",
-                        "X011",
-                        "X012",
-                        "X013",
-                        "X014",
-                        "X015",
-                        "X016",
-                        "X017",
-                        "X020",
-                        "X021",
-                        "X022",
-                        "X023",
-                        "X024",
-                        "X025",
-                        "X026",
-                        "X027",
-                        "X030",
-                        "X031",
-                        "X032",
-                        "X033",
-                        "X034",
-                        "X035",
-                        "X036",
-                        "X037",
-                        "X040",
-                        "X041",
-                        "X042",
-                        "X043",
-                        "X044",
-                        "X045",
-                        "X046",
-                        "X047"]
+//                    items: [  "X010",
+//                        "X011",
+//                        "X012",
+//                        "X013",
+//                        "X014",
+//                        "X015",
+//                        "X016",
+//                        "X017",
+//                        "X020",
+//                        "X021",
+//                        "X022",
+//                        "X023",
+//                        "X024",
+//                        "X025",
+//                        "X026",
+//                        "X027",
+//                        "X030",
+//                        "X031",
+//                        "X032",
+//                        "X033",
+//                        "X034",
+//                        "X035",
+//                        "X036",
+//                        "X037",
+//                        "X040",
+//                        "X041",
+//                        "X042",
+//                        "X043",
+//                        "X044",
+//                        "X045",
+//                        "X046",
+//                        "X047"]
                     popupMode: 1
                     popupHeight: 300
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
+                        }
+                        items = ioItems;
+                    }
                 }
                 ICCheckBox{
                     id:fastStop

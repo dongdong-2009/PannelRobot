@@ -93,8 +93,9 @@ var CustomDataSource = {
             var ret = {"hostID":hostID};
             var retData = [];
             var tmp;
-            for(var i = 0; i < dsData.length; ++i){
-                tmp = dsData[i].pointPos;
+            var len = dsData.dsData.length;
+            for(var i = 0; i < len; ++i){
+                tmp = dsData.dsData[i].pointPos;
                 retData.push({"m0":parseFloat(tmp.m0),
                              "m1":parseFloat(tmp.m1),
                              "m2":parseFloat(tmp.m2),

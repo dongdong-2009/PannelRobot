@@ -828,6 +828,22 @@ typedef enum
      *zbox_d;//< Z坐标相对偏移
     */
     F_CMD_STACK0 = 300,//< 堆叠
+    /*
+     *
+     *stack：
+     *order:5; 轴ID
+     *x_dir:1; 轴方向 0：反方向；1正方向；
+     *y_dir:1; 预留
+     *z_dir:1; 预留
+     *type:8;  堆叠类型 0为普通堆叠
+     *binding_counter:1;  是否绑定计数器ID，0未绑定；1绑定
+     *counter_id:15;  绑定计数器ID
+     *pos;  起始位置  0.001精度
+     *dis; 轴间距  0.001精度
+     *num; 轴个数  0精度
+     * speed:轨迹速度
+     */
+    F_CMD_SINGLE_STACK = 301,//< 单轴堆叠
     /***************************************************************************/
     /*
      *
@@ -835,7 +851,7 @@ typedef enum
      * max:轨迹总数   0:轨迹buff为不满状态，1:轨迹buff为满，需要轮寻请求
      * speed:轨迹速度
      */
-    F_CMD_TRAJECTORY = 301,//< 任意轨迹运动
+    F_CMD_TRAJECTORY = 302,//< 任意轨迹运动
     /***************************************************************************/
     /*
      * id:计数器ID
@@ -857,11 +873,14 @@ typedef enum
     /***************************************************************************/
     /*
      * addr:写地址 value:设定值
+     * addr.addrType:  0直接赋值；1、地址值加等于value；2、地址值减等于value；3、地址值乘等于value；4、地址值除等于value
      */
     F_CMD_MEMSET_CMD = 600,//< 写地址命令教导
     /***************************************************************************/
     /*
      * addr1:读取地址 addr2:目标地址
+     * addr.addrType:  0直接赋值；1、地址addr1值加等于addr2值；2、地址addr1值减等于addr2值；3、地址addr1值乘等于addr2值；4、地址addr1值除等于addr2值
+     * 结果存入addr1
      */
     F_CMD_MEMMOVE_CMD,//< 地址指针命令教导
     /***************************************************************************/
@@ -869,6 +888,11 @@ typedef enum
      * step:跳转步号 条件不满足跳转下一行 addr1:比较地址1 cmd: 0 >,>=,<,<=,==,!=    addr2:比较地址2
      */
     F_CMD_MEMCOMPARE_CMD,//< 地址指针命令教导
+    /***************************************************************************/
+    /*
+     *
+     */
+    F_CMD_CONTRAIL_FITTING_CMD = 700,//< 轨迹拟合教导命令
     /***************************************************************************/
 
     F_CMD_MEM_CMD = 53000,
@@ -1053,6 +1077,33 @@ typedef enum
     ALARM_AXIS6_OVER_CURRENT,//<名字：轴6过电流报警
     ALARM_AXIS7_OVER_CURRENT,//<名字：轴7过电流报警
     ALARM_AXIS8_OVER_CURRENT,//<名字：轴8过电流报警
+
+    ALARM_AXIS1_ZPULSER_ERR = 510,//<名字：轴1 z脉冲错误
+    ALARM_AXIS2_ZPULSER_ERR ,//<名字：轴2 z脉冲错误
+    ALARM_AXIS3_ZPULSER_ERR ,//<名字：轴3 z脉冲错误
+    NO_ZPULSER ,//<名字：轴4 z脉冲错误
+    ALARM_AXIS5_ZPULSER_ERR ,//<名字：轴5 z脉冲错误
+    ALARM_AXIS6_ZPULSER_ERR ,//<名字：轴6 z脉冲错误
+    ALARM_AXIS7_ZPULSER_ERR ,//<名字：轴7 z脉冲错误
+    ALARM_AXIS8_ZPULSER_ERR ,//<名字：轴8 z脉冲错误
+
+    ALARM_AXIS1_NO_ZPULSER = 520,//<名字：轴1无z脉冲
+    ALARM_AXIS2_NO_ZPULSER ,//<名字：轴2无z脉冲
+    ALARM_AXIS3_NO_ZPULSER ,//<名字：轴3无z脉冲
+    ALARM_AXIS4_NO_ZPULSER ,//<名字：轴4无z脉冲
+    ALARM_AXIS5_NO_ZPULSER ,//<名字：轴5无z脉冲
+    ALARM_AXIS6_NO_ZPULSER ,//<名字：轴6无z脉冲
+    ALARM_AXIS7_NO_ZPULSER ,//<名字：轴7无z脉冲
+    ALARM_AXIS8_NO_ZPULSER ,//<名字：轴8无z脉冲
+
+	ALARM_AXIS1_ORIGIN_DEVIATION = 530,//<名字：轴1原点偏移
+	ALARM_AXIS2_ORIGIN_DEVIATION,//<名字：轴2原点偏移
+	ALARM_AXIS3_ORIGIN_DEVIATION,//<名字：轴3原点偏移
+	ALARM_AXIS4_ORIGIN_DEVIATION,//<名字：轴4原点偏移
+	ALARM_AXIS5_ORIGIN_DEVIATION,//<名字：轴5原点偏移
+	ALARM_AXIS6_ORIGIN_DEVIATION,//<名字：轴6原点偏移
+	ALARM_AXIS7_ORIGIN_DEVIATION,//<名字：轴7原点偏移
+	ALARM_AXIS8_ORIGIN_DEVIATION,//<名字：轴8原点偏移
 
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583

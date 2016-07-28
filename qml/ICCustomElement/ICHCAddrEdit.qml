@@ -9,7 +9,7 @@ Item {
     property alias decimal_configValue: edit_decimal_.text
 
     function addr(){
-        return (parseInt(startPos_configValue)<<22) | (parseInt(size_configValue)<<16) | (parseInt(baseAddr_configValue)<<2) | parseInt(decimal_configValue) ;
+        return (parseInt(startPos_configValue)<<5) | (parseInt(size_configValue)<<10) | (parseInt(baseAddr_configValue)<<16) | (parseInt(decimal_configValue)<<30) ;
     }
 
     height: 24

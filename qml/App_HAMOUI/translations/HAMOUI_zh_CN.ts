@@ -91,6 +91,14 @@
         <source>data</source>
         <translation>数据</translation>
     </message>
+    <message>
+        <source>Signal Stop</source>
+        <translation>输入通就停止</translation>
+    </message>
+    <message>
+        <source>Fast Stop</source>
+        <translation>立即停</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -421,6 +429,22 @@
         <source>ALARM_PROGRAM_CHANGE_ERR</source>
         <translation>手控和主机教导程序不一致</translation>
     </message>
+    <message>
+        <source>ALARM_OVER_CURRENT</source>
+        <translation>过电流报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ZPULSER_ERR</source>
+        <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>ALARM_NO_ZPULSER</source>
+        <translation>无Z脉冲</translation>
+    </message>
+    <message>
+        <source>ALARM_ORIGIN_DEVIATION</source>
+        <translation>原点偏移</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -745,6 +769,14 @@
         <source>%</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Signal Stop</source>
+        <translation>输入通就停止</translation>
+    </message>
+    <message>
+        <source>Fast Stop</source>
+        <translation>立即停</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -993,7 +1025,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation type="unfinished">台达伺服 {4?}</translation>
+        <translation>Motor4</translation>
     </message>
 </context>
 <context>
@@ -1257,6 +1289,14 @@
         <source>Target</source>
         <translation>目标</translation>
     </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
 </context>
 <context>
     <name>CustomVariableConfigs</name>
@@ -1306,6 +1346,26 @@
     <message>
         <source>Addr Data:</source>
         <translation>地址数据:</translation>
+    </message>
+    <message>
+        <source>=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>+=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>-=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>x=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>÷=</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1373,6 +1433,26 @@
     <message>
         <source>System will reboot after restore! Are you sure?</source>
         <translation>系统在还原后会重启.确定吗?</translation>
+    </message>
+    <message>
+        <source>Updater</source>
+        <translation>更新包</translation>
+    </message>
+    <message>
+        <source>Start Update</source>
+        <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Backup...</source>
+        <translation>备份中...</translation>
+    </message>
+    <message>
+        <source>Restoring...</source>
+        <translation>还原中...</translation>
+    </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
     </message>
 </context>
 <context>
@@ -1624,15 +1704,15 @@
     </message>
     <message>
         <source>X010</source>
-        <translation>X010</translation>
+        <translation>X轴原点</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation>X011</translation>
+        <translation>Y轴原点</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation>X012</translation>
+        <translation>Z轴原点</translation>
     </message>
     <message>
         <source>X013</source>
@@ -3531,6 +3611,14 @@
         <source>M CMD[{0}]:{1}</source>
         <translation>可编程按键[{0}]:{1}</translation>
     </message>
+    <message>
+        <source>Custom Origin</source>
+        <translation>原点</translation>
+    </message>
+    <message>
+        <source>Custom Return</source>
+        <translation>复归</translation>
+    </message>
 </context>
 <context>
     <name>ModuleActionEditor</name>
@@ -3590,15 +3678,15 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation></translation>
+        <translation>无开关</translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation></translation>
+        <translation>有开关</translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation></translation>
+        <translation>备用</translation>
     </message>
 </context>
 <context>
@@ -4539,6 +4627,34 @@ please chose!</source>
 </source>
         <translation>导入完成!</translation>
     </message>
+    <message>
+        <source>Robot</source>
+        <translation>机械手</translation>
+    </message>
+    <message>
+        <source>Vision</source>
+        <translation>视觉模板</translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Scan Model</source>
+        <translation>扫描模板</translation>
+    </message>
+    <message>
+        <source>Offset X</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset Y</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset A</source>
+        <translation>A偏移</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -4750,6 +4866,14 @@ please chose!</source>
         <source>Only Cmp</source>
         <translation>只有相似度</translation>
     </message>
+    <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -4833,6 +4957,18 @@ please chose!</source>
         <source>Custom Pos</source>
         <translation>不规则点位</translation>
     </message>
+    <message>
+        <source>Only X</source>
+        <translation>只堆X</translation>
+    </message>
+    <message>
+        <source>Only Y</source>
+        <translation>只堆Y</translation>
+    </message>
+    <message>
+        <source>Only Z</source>
+        <translation>只堆Z</translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
@@ -4867,6 +5003,10 @@ please chose!</source>
     <message>
         <source>Total:</source>
         <translation>总共:</translation>
+    </message>
+    <message>
+        <source>Sync Replace</source>
+        <translation>同步替换</translation>
     </message>
 </context>
 <context>
@@ -5570,6 +5710,22 @@ please chose!</source>
         <source>Target Addr:</source>
         <translation>目标地址:</translation>
     </message>
+    <message>
+        <source>When </source>
+        <translation>当</translation>
+    </message>
+    <message>
+        <source>is On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>slow stop</source>
+        <translation>就减速停</translation>
+    </message>
+    <message>
+        <source>fast stop</source>
+        <translation>就立即停</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6054,7 +6210,23 @@ please chose!</source>
     </message>
     <message>
         <source>Sending Data...</source>
-        <translation type="unfinished">数据发送中...</translation>
+        <translation>数据发送中...</translation>
+    </message>
+    <message>
+        <source>Get it</source>
+        <translation>知道了</translation>
+    </message>
+    <message>
+        <source>Origin is changed? Do you want to refind an origin?</source>
+        <translation>原点已经改变.需要重设原点位置吗?</translation>
+    </message>
+    <message>
+        <source>Refind</source>
+        <translation>重设原点</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
     </message>
 </context>
 <context>

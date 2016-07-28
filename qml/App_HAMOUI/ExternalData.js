@@ -36,34 +36,51 @@ var CamDataSource = {
         var camDS = DataSource.createNew(name, hostID);
         camDS.parse = function(dsData){
             var ret = {"hostID":hostID};
-            var retData = [];
-            if(!(dsData instanceof Array)){
-                return ret;
-            }
-            var d;
-            var posDatas = [];
-            var pos;
-            for(var i = 0; i < dsData.length; ++i){
-                d = dsData[i];
-                if(d.hasOwnProperty("data")){
-                    posDatas = d.data;
-                    for(var j = 0; j < posDatas.length; ++j){
-                        pos = posDatas[j];
-                        var toAdd = new ExternalDataPosFormat();
-                        if(pos.hasOwnProperty("X"))
-                            toAdd.m0 = parseFloat(pos.X);
-                        if(pos.hasOwnProperty("Y"))
-                            toAdd.m1 = parseFloat(pos.Y);
-                        if(pos.hasOwnProperty("Angel"))
-                            toAdd.m5 = parseFloat(pos.Angel);
-                        if(pos.X != null && pos.Y != null && pos.Angel != null)
-                            retData.push(toAdd);
+            if(dsData.hasOwnProperty("reqType"))
+                ret.reqType = dsData.reqType;
+            else
+                ret.reqType = "query";
+            if(ret.reqType == "query"){
+                var retData = [];
+                if(!(dsData.dsData instanceof Array)){
+                    return ret;
+                }
+                var d;
+                var posDatas = [];
+                var pos;
+                for(var i = 0, len = dsData.dsData.length; i < len; ++i){
+                    d = dsData.dsData[i];
+                    if(d.hasOwnProperty("data")){
+                        posDatas = d.data;
+                        for(var j = 0; j < posDatas.length; ++j){
+                            pos = posDatas[j];
+                            var toAdd = new ExternalDataPosFormat();
+                            if(pos.hasOwnProperty("X"))
+                                toAdd.m0 = parseFloat(pos.X);
+                            if(pos.hasOwnProperty("Y"))
+                                toAdd.m1 = parseFloat(pos.Y);
+                            if(pos.hasOwnProperty("Angel"))
+                                toAdd.m5 = parseFloat(pos.Angel);
+                            if(pos.X != null && pos.Y != null && pos.Angel != null)
+                                retData.push(toAdd);
+                        }
                     }
                 }
+                ret.dsData = retData;
+            }else if(ret.reqType == "listModel"){
+                ret.data = dsData.data;
             }
-            ret.dsData = retData;
+
             return ret;
         };
+        camDS.getModelListCmd = function(){
+            var toSend = {
+                "dsID":"www.geforcevision.com.cam",
+                "reqType":"listModel"
+            };
+            return JSON.stringify(toSend);
+        }
+
         return camDS;
     }
 }
@@ -115,14 +132,24 @@ function ExternalDataManager(){
         if(!this.dataSourceExist(rawData.dsID)){
             return [];
         }
-        return this.dataSources[rawData.dsID].parse(rawData.dsData);
+//        return this.dataSources[rawData.dsID].parse(rawData.dsData);
+        return this.dataSources[rawData.dsID].parse(rawData);
+
     }
 
-    this.dataSourceNameList = function(){
+    this.getModelListCmd = function(dsID){
+        if(this.dataSourceExist(dsID)){
+            return this.dataSources[dsID].getModelListCmd();
+        }
+        return "";
+    }
+
+    this.dataSourceNameList = function(withHID){
         var ret = [];
+        var whd = (withHID == undefined ? true : withHID);
         for(var d in this.dataSources){
             if(this.dataSources[d].type != 1)
-                ret.push(d + "::" + this.dataSources[d].getName() + "::[HID:" + this.dataSources[d].getHostID() + "]");
+                ret.push(d + (whd ? "::" + this.dataSources[d].getName() +  "::[HID:" + this.dataSources[d].getHostID() + "]" : ""));
         }
         return ret;
 

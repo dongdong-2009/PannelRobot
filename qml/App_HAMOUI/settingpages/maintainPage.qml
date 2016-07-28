@@ -10,7 +10,7 @@ ICSettingConfigsScope{
         Row{
             id:versionContainer
             Text {
-            text: qsTr("UI Version:") + "L6-1.0-S6-1.0.4" + ";"
+            text: qsTr("UI Version:") + "L6-1.1-S6-1.0.5" + ";"
             }
             Text {
                 id:hostVersion
@@ -107,7 +107,9 @@ ICSettingConfigsScope{
                     width: 150
                     height: 32
                     onButtonClicked: {
-                        panelRobotController.startUpdate(updaterModel.get(updaterView.currentIndex).name)
+                        var name = updaterModel.get(updaterView.currentIndex).name;
+                        panelRobotController.backupUpdater(name)
+                        panelRobotController.startUpdate(name);
                     }
                 }
 

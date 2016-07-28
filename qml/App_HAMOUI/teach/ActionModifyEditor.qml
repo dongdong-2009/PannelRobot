@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "ActionModifyEditor.js" as PData
+import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
@@ -47,6 +48,7 @@ Item {
         endSpeed.visible = false;
         addr.visible = false;
         data.visible = false;
+        signalStopEditor.visible = false;
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
@@ -73,6 +75,10 @@ Item {
                 earlyEndSpeedPos.isChecked = actionObject.isEarlySpd || false;
                 earlyEndSpeedPos.configValue = actionObject.earlySpdPos ||"";
                 earlyEndSpeed.configValue = actionObject.earlySpd || 0.0;
+            }else if(editor == signalStopEditor){
+                signalStop.isChecked = actionObject.signalStopEn;
+                signalStop.configValue = actionObject.signalStopPoint;
+                fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
             }else{
                 editor.configAddr = item.range || "";
                 editor.configValue = actionObject[item.item] ||"";
@@ -198,6 +204,7 @@ Item {
             ICCheckableLineEdit{
                 id:earlyEndPos
                 configName: qsTr("Early End Pos");
+                enabled: !signalStop.isChecked;
             }
             Row{
                 id:earlyEndSpdEditor
@@ -216,6 +223,69 @@ Item {
                     enabled: earlyEndSpeedPos.isChecked
                 }
             }
+
+            Row{
+                id:signalStopEditor
+                spacing: 6
+                ICCheckableComboboxEdit{
+                    id:signalStop
+                    configName: qsTr("Signal Stop")
+                    configValue: -1
+                    inputWidth: 100
+                    z:2
+                    enabled: !earlyEndPos.isChecked;
+//                    items: [  "X010",
+//                        "X011",
+//                        "X012",
+//                        "X013",
+//                        "X014",
+//                        "X015",
+//                        "X016",
+//                        "X017",
+//                        "X020",
+//                        "X021",
+//                        "X022",
+//                        "X023",
+//                        "X024",
+//                        "X025",
+//                        "X026",
+//                        "X027",
+//                        "X030",
+//                        "X031",
+//                        "X032",
+//                        "X033",
+//                        "X034",
+//                        "X035",
+//                        "X036",
+//                        "X037",
+//                        "X040",
+//                        "X041",
+//                        "X042",
+//                        "X043",
+//                        "X044",
+//                        "X045",
+//                        "X046",
+//                        "X047"]
+                    popupMode: 1
+                    popupHeight: 300
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
+                        }
+                        items = ioItems;
+                    }
+                }
+                ICCheckBox{
+                    id:fastStop
+                    text: qsTr("Fast Stop")
+                }
+            }
+
             ICConfigEdit{
                 id:startSpeed
                 configNameWidth: PData.configNameWidth
@@ -263,6 +333,7 @@ Item {
                 PData.itemToEditorMap.put("endSpeed", endSpeed);
                 PData.itemToEditorMap.put("addr",addr);
                 PData.itemToEditorMap.put("data",data);
+                PData.itemToEditorMap.put("signalStop", signalStopEditor);
 
                 PData.editorToItemMap.put(pos, "pos");
                 PData.editorToItemMap.put(speed, "speed");
@@ -279,6 +350,7 @@ Item {
                 PData.editorToItemMap.put(endSpeed, "endSpeed");
                 PData.editorToItemMap.put(addr, "addr");
                 PData.editorToItemMap.put(data, "data");
+                PData.editorToItemMap.put(signalStopEditor, "signalStop")
 
             }
         }
@@ -316,6 +388,10 @@ Item {
                         editingObject.isEarlySpd = earlyEndSpeedPos.isChecked;
                         editingObject.earlySpdPos = earlyEndSpeedPos.configValue;
                         editingObject.earlySpd = earlyEndSpeed.configValue;
+                    }else if(editor == signalStopEditor){
+                        editingObject.signalStopEn = signalStop.isChecked;
+                        editingObject.signalStopPoint = signalStop.configValue;
+                        editingObject.signalStopMode = (fastStop.isChecked ? 1 : 0);
                     }else{
                         editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
                     }

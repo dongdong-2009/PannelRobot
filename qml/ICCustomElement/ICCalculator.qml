@@ -181,7 +181,9 @@ MouseArea
             y:keyboard.y + (keyboard.rows - 1) * (keyboard.spacing + height)
             onButtonClicked: {
                 var exepr = input.text;
-                exepr = exepr.replace(btnDiv.text, "/").replace(btnMul.text, "*");
+                var md = new RegExp(btnDiv.text, "g");
+                var mp = new RegExp(btnMul.text, "g");
+                exepr = exepr.replace(md, "/").replace(mp, "*");
                 console.log(exepr);
                 var ret = eval(exepr);
                 input.text = ret;

@@ -58,6 +58,38 @@ MouseArea{
                 editConfirm(false, []);
             }
         }
+        ICButton{
+            id:syncReplace
+            text:qsTr("Sync Replace")
+            anchors.bottom: pointViewContainer.top
+            anchors.bottomMargin: 6
+            anchors.left: pointViewContainer.left
+            onButtonClicked: {
+                var baseCurrent = pointModel.get(pointView.currentIndex).pointPos;
+                var toReplace = {"m0":parseFloat(m0.configValue),"m1":parseFloat(m1.configValue),"m2":parseFloat(m2.configValue),
+                    "m3":parseFloat(m3.configValue),"m4":parseFloat(m4.configValue),"m5":parseFloat(m5.configValue)};
+                var diff = toReplace;
+                diff.m0 -= parseFloat(baseCurrent.m0);
+                diff.m1 -= parseFloat(baseCurrent.m1);
+                diff.m2 -= parseFloat(baseCurrent.m2);
+                diff.m3 -= parseFloat(baseCurrent.m3);
+                diff.m4 -= parseFloat(baseCurrent.m4);
+                diff.m5 -= parseFloat(baseCurrent.m5);
+
+                var tmpPointPos;
+                for(var i = 0, len = pointModel.count; i < len; ++i){
+                    tmpPointPos = pointModel.get(i).pointPos;
+                    tmpPointPos.m0 = (parseFloat(tmpPointPos.m0) + diff.m0).toFixed(3);
+                    tmpPointPos.m1 = (parseFloat(tmpPointPos.m1) + diff.m1).toFixed(3);
+                    tmpPointPos.m2 = (parseFloat(tmpPointPos.m2) + diff.m2).toFixed(3);
+                    tmpPointPos.m3 = (parseFloat(tmpPointPos.m3) + diff.m3).toFixed(3);
+                    tmpPointPos.m4 = (parseFloat(tmpPointPos.m4) + diff.m4).toFixed(3);
+                    tmpPointPos.m5 = (parseFloat(tmpPointPos.m5) + diff.m5).toFixed(3);
+                    pointModel.setProperty(i, "pointPos", tmpPointPos);
+                }
+            }
+        }
+
         Row{
             y:365
             x:pointViewContainer.x

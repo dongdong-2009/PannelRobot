@@ -172,6 +172,7 @@ bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const 
         AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, formattedData.at(i).size() | ((which) << 24));
         SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
     }
+    qDebug()<<"Send:"<<which<<formattedData;
     //    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
     //    SendContinuousDataHelper(hostPtr, 0, data);
     return true;

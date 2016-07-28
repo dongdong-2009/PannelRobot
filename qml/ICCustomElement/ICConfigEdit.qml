@@ -32,7 +32,7 @@ Item {
         ICLineEdit{
             id: edit
             height: parent.height
-            onEditFinished: editFinished()
+//            onEditFinished: editFinished()
         }
     }
 

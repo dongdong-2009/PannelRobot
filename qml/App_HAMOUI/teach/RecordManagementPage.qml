@@ -17,9 +17,16 @@ Rectangle {
             visionModel.clear();
             var models = visionData.data;
             var subModels;
+            var current = visionData.currentModel;
+            var currentIndex = 0;
             for(var i = 0, len = models.length; i < len; ++i){
                 subModels = models[i].models;
                 for(var j = 0, sLen = subModels.length; j < sLen; ++j){
+                    if(current.name == models[i].name &&
+                            current.modelID == subModels[j].id){
+                        currentIndex = visionModel.count;
+                    }
+
                     visionModel.append({
                                            "name":models[i].name + "[" + subModels[j].id + "]",
                                            "offsetX":subModels[j].offsetX,
@@ -468,19 +475,28 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             model: visionModel
+            clip: true
             delegate: Column{
+                spacing: 6
                 Text {
                     text: name
 
                 }
                 Row{
+                    spacing: 32
                     Image {
-                        source: modelImgPath
+//                        source: modelImgPath
+                        width: 128
+                        height: 128
                     }
                     Column{
+                        spacing: 6
                         ICConfigEdit{
                             configName: qsTr("Offset X")
                             configValue: offsetX
+                            onEditFinished: {
+
+                            }
                         }
                         ICConfigEdit{
                            configName: qsTr("Offset Y")
@@ -495,7 +511,7 @@ Rectangle {
                 Rectangle{
                     height: 1
                     color: "black"
-
+                    width: visionModelView.width - visionModelView.x
                 }
             }
 

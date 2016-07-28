@@ -67,7 +67,10 @@ var CamDataSource = {
                     }
                 }
                 ret.dsData = retData;
+            }else if(ret.reqType == "listModel"){
+                ret.data = dsData.data;
             }
+
             return ret;
         };
         camDS.getModelListCmd = function(){

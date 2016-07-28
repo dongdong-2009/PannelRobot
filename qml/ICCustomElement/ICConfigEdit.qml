@@ -13,6 +13,9 @@ Item {
     property alias max: edit.max
     property alias decimal: edit.decimal
 
+    signal editFinished();
+
+
     height: 24
     width: container.width + container.spacing
     Row{
@@ -29,6 +32,8 @@ Item {
         ICLineEdit{
             id: edit
             height: parent.height
+            onEditFinished: editFinished()
         }
     }
+
 }

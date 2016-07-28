@@ -895,7 +895,10 @@ var generateAxisServoAction = function(action,
                                        earlyEndPos,
                                        isEarlySpd,
                                        earlySpdPos,
-                                       earlySpd){
+                                       earlySpd,
+                                       signalStopEn,
+                                       signalStopPoint,
+                                       signalStopMode){
     return {
         "action":action,
         "axis":axis,
@@ -907,7 +910,10 @@ var generateAxisServoAction = function(action,
         "earlyEndPos":earlyEndPos||0,
         "isEarlySpd":isEarlySpd || false,
         "earlySpdPos":earlySpdPos || 0,
-        "earlySpd":earlySpd || 0
+        "earlySpd":earlySpd || 0,
+        "signalStopEn":signalStopEn || false,
+        "signalStopPoint":0,
+        "signalStopMode":0
     };
 }
 

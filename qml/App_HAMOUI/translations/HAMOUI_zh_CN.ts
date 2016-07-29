@@ -929,7 +929,7 @@
     </message>
     <message>
         <source>Encode Type3</source>
-        <translation>无</translation>
+        <translation>步进</translation>
     </message>
     <message>
         <source>Encoder Read Way</source>
@@ -6100,19 +6100,19 @@ please chose!</source>
     <name>VisionModelItem</name>
     <message>
         <source>Offset X</source>
-        <translation type="unfinished">X偏移</translation>
+        <translation>X偏移</translation>
     </message>
     <message>
         <source>Offset Y</source>
-        <translation type="unfinished">X偏移</translation>
+        <translation>X偏移</translation>
     </message>
     <message>
         <source>Offset A</source>
-        <translation type="unfinished">A偏移</translation>
+        <translation>A偏移</translation>
     </message>
     <message>
         <source>Use this Model</source>
-        <translation type="unfinished"></translation>
+        <translation>使用该模板</translation>
     </message>
 </context>
 <context>

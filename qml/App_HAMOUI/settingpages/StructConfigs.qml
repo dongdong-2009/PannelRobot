@@ -23,55 +23,55 @@ Item {
             source: "../images/struct-guide.png"
             visible: false
         }
-        Column{
-            id:lengthContainer
-            spacing: 12
-            visible: !structGuideImg.visible
-            ICConfigEdit{
-                id:axis1Length
-                configNameWidth: pdata.configNameWidth + 50
-                configName: AxisDefine.axisInfos[0].name + " " + qsTr("Length");
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_100"
-            }
-            ICConfigEdit{
-                id:axis2Length
-                configNameWidth: axis1Length.configNameWidth
-                configName: AxisDefine.axisInfos[1].name + " " + qsTr("Length");
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_107"
+//        Column{
+//            id:lengthContainer
+//            spacing: 12
+//            visible: !structGuideImg.visible
+//            ICConfigEdit{
+//                id:axis1Length
+//                configNameWidth: pdata.configNameWidth + 50
+//                configName: AxisDefine.axisInfos[0].name + " " + qsTr("Length");
+//                unit: AxisDefine.axisInfos[0].unit
+//                configAddr: "s_rw_0_32_3_100"
+//            }
+//            ICConfigEdit{
+//                id:axis2Length
+//                configNameWidth: axis1Length.configNameWidth
+//                configName: AxisDefine.axisInfos[1].name + " " + qsTr("Length");
+//                unit: AxisDefine.axisInfos[0].unit
+//                configAddr: "s_rw_0_32_3_107"
 
-            }
-            ICConfigEdit{
-                id:axis3Length
-                configNameWidth: axis1Length.configNameWidth
-                configName: AxisDefine.axisInfos[2].name + " " + qsTr("Length");
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_114"
-            }
-            ICConfigEdit{
-                id:axis4Length
-                configNameWidth: axis1Length.configNameWidth
-                configName: AxisDefine.axisInfos[3].name + " " + qsTr("Length");
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_121"
-            }
-            ICConfigEdit{
-                id:axis5Length
-                configNameWidth: axis1Length.configNameWidth
-                configName: AxisDefine.axisInfos[4].name + " " + qsTr("Length");
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_128"
-            }
-            ICConfigEdit{
-                id:axis6Length
-                configNameWidth: axis1Length.configNameWidth
-                configName: AxisDefine.axisInfos[5].name + " " + qsTr("Length");
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_135"
-            }
+//            }
+//            ICConfigEdit{
+//                id:axis3Length
+//                configNameWidth: axis1Length.configNameWidth
+//                configName: AxisDefine.axisInfos[2].name + " " + qsTr("Length");
+//                unit: AxisDefine.axisInfos[0].unit
+//                configAddr: "s_rw_0_32_3_114"
+//            }
+//            ICConfigEdit{
+//                id:axis4Length
+//                configNameWidth: axis1Length.configNameWidth
+//                configName: AxisDefine.axisInfos[3].name + " " + qsTr("Length");
+//                unit: AxisDefine.axisInfos[0].unit
+//                configAddr: "s_rw_0_32_3_121"
+//            }
+//            ICConfigEdit{
+//                id:axis5Length
+//                configNameWidth: axis1Length.configNameWidth
+//                configName: AxisDefine.axisInfos[4].name + " " + qsTr("Length");
+//                unit: AxisDefine.axisInfos[0].unit
+//                configAddr: "s_rw_0_32_3_128"
+//            }
+//            ICConfigEdit{
+//                id:axis6Length
+//                configNameWidth: axis1Length.configNameWidth
+//                configName: AxisDefine.axisInfos[5].name + " " + qsTr("Length");
+//                unit: AxisDefine.axisInfos[0].unit
+//                configAddr: "s_rw_0_32_3_135"
+//            }
 
-        }
+//        }
 
         Grid{
 //            columns: 2
@@ -215,7 +215,7 @@ Item {
             rows:4
             spacing: 12
             flow: Grid.TopToBottom
-            anchors.left: structGuideImg.right
+            anchors.left: structGuideImg.visible ? structGuideImg.anchors.right : structGuideImg.anchors.left
             anchors.leftMargin: 12
             ICConfigEdit{
                 id:sAcc1
@@ -272,16 +272,16 @@ Item {
 
         }
     }
-    function onAxisDefinesChanged(){
-        axis1Length.visible = AxisDefine.axisInfos[0].visiable;
-        axis2Length.visible = AxisDefine.axisInfos[1].visiable;
-        axis3Length.visible = AxisDefine.axisInfos[2].visiable;
-        axis4Length.visible = AxisDefine.axisInfos[3].visiable;
-        axis5Length.visible = AxisDefine.axisInfos[4].visiable;
-        axis6Length.visible = AxisDefine.axisInfos[5].visiable;
-    }
+//    function onAxisDefinesChanged(){
+//        axis1Length.visible = AxisDefine.axisInfos[0].visiable;
+//        axis2Length.visible = AxisDefine.axisInfos[1].visiable;
+//        axis3Length.visible = AxisDefine.axisInfos[2].visiable;
+//        axis4Length.visible = AxisDefine.axisInfos[3].visiable;
+//        axis5Length.visible = AxisDefine.axisInfos[4].visiable;
+//        axis6Length.visible = AxisDefine.axisInfos[5].visiable;
+//    }
     Component.onCompleted: {
-        AxisDefine.registerMonitors(container);
-        onAxisDefinesChanged();
+//        AxisDefine.registerMonitors(container);
+//        onAxisDefinesChanged();
     }
 }

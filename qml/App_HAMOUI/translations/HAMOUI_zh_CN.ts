@@ -797,7 +797,7 @@
     <name>AxisConfigs</name>
     <message>
         <source>Arm Length</source>
-        <translation>臂长</translation>
+        <translation>每转距离</translation>
     </message>
     <message>
         <source>mm</source>
@@ -6094,6 +6094,25 @@ please chose!</source>
     <message>
         <source>Action Time</source>
         <translation>动作时间</translation>
+    </message>
+</context>
+<context>
+    <name>VisionModelItem</name>
+    <message>
+        <source>Offset X</source>
+        <translation type="unfinished">X偏移</translation>
+    </message>
+    <message>
+        <source>Offset Y</source>
+        <translation type="unfinished">X偏移</translation>
+    </message>
+    <message>
+        <source>Offset A</source>
+        <translation type="unfinished">A偏移</translation>
+    </message>
+    <message>
+        <source>Use this Model</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

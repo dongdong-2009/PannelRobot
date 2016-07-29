@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Item {
+    id:instance
     property alias configName: configName.text
     property alias configAddr: edit.bindConfig
     property alias unit: edit.unit
@@ -32,7 +33,7 @@ Item {
         ICLineEdit{
             id: edit
             height: parent.height
-//            onEditFinished: editFinished()
+            onEditFinished: instance.editFinished()
         }
     }
 

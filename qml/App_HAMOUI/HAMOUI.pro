@@ -9,6 +9,9 @@ settingpages/* \
 ../ICCustomElement/*
 }
 
+OTHER_FILES += \
+    teach/VisionModelItem.qml
+
 
 
 

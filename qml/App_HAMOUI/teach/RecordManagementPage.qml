@@ -465,6 +465,11 @@ Rectangle {
         }
         ICListView{
             id:visionModelView
+            function setModelOffset(data){
+                var toSend = ESData.externalDataManager.getSetModelOffsetCmd(dataSource.configText(), data);
+                panelRobotController.writeDataToETH0(toSend);
+            }
+
             isShowHint: true
             border.color: "black"
             border.width: 1
@@ -476,43 +481,15 @@ Rectangle {
             anchors.bottomMargin: 10
             model: visionModel
             clip: true
-            delegate: Column{
-                spacing: 6
-                Text {
-                    text: name
-
-                }
-                Row{
-                    spacing: 32
-                    Image {
-//                        source: modelImgPath
-                        width: 128
-                        height: 128
-                    }
-                    Column{
-                        spacing: 6
-                        ICConfigEdit{
-                            configName: qsTr("Offset X")
-                            configValue: offsetX
-                            onEditFinished: {
-
-                            }
-                        }
-                        ICConfigEdit{
-                           configName: qsTr("Offset Y")
-                           configValue: offsetY
-                        }
-                        ICConfigEdit{
-                           configName: qsTr("Offset A")
-                           configValue: offsetA
-                        }
-                    }
-                }
-                Rectangle{
-                    height: 1
-                    color: "black"
-                    width: visionModelView.width - visionModelView.x
-                }
+            delegate:VisionModelItem{
+                width: visionModelView.width
+//                modelImg: modelImgPath
+                modelName: name
+                offsetX:offsetX
+                offsetY:offsetY
+                offsetA:offsetA
+                onOffsetChanged: visionModelView.setModelOffset(data);
+//                onModelChanged:
             }
 
             ListModel{

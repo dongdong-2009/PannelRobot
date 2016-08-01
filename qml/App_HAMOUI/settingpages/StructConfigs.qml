@@ -215,7 +215,7 @@ Item {
             rows:4
             spacing: 12
             flow: Grid.TopToBottom
-            anchors.left: structGuideImg.visible ? structGuideImg.anchors.right : structGuideImg.anchors.left
+            anchors.left:structGuideImg.visible ? structGuideImg.right : structGuideImg.left
             anchors.leftMargin: 12
             ICConfigEdit{
                 id:sAcc1

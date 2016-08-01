@@ -867,6 +867,15 @@ function hasStackIDAction(action){
     return action.hasOwnProperty("stackID");
 }
 
+function hasPosAction(action){
+    if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return hasPosAction(action.commentAction);
+        }
+    }
+    return action.hasOwnProperty("pos");
+}
+
 function actionStackID(action){
     if(action.action == actions.ACT_COMMENT){
         return arguments.callee(action.commentAction);

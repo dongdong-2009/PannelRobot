@@ -7,7 +7,7 @@ import "../configs/IODefines.js" as IODefines
 Item {
     id:container
     property bool isAutoMode: false
-    property variant autoEditableItems: ["speed", "delay", "limit", "acTime", "speed0", "speed1"]
+    property variant autoEditableItems: ["speed", "delay", "limit", "acTime", "speed0", "speed1", "pos"]
 
     property int maxHeight: 310
     function registerEditableItem(editor, itemName){
@@ -33,6 +33,7 @@ Item {
 
     function openEditor(actionObject,editableItems){
         pos.visible = false;
+
         speed.visible = false;
         speed0.visible = false;
         speed1.visible = false;
@@ -79,6 +80,19 @@ Item {
                 signalStop.isChecked = actionObject.signalStopEn;
                 signalStop.configValue = actionObject.signalStopPoint;
                 fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
+            }else if(editor == pos){
+                if(isAutoMode){
+                    pos.configAddr = "";
+                    pos.min = -5;
+                    pos.max = 5;
+                    pos.decimal = 3;
+                    pos.configValue = "0.000";
+
+                }else{
+                    pos.configAddr = item.range || "";
+                    pos.configValue = actionObject[item.item] ||"";
+                }
+
             }else{
                 editor.configAddr = item.range || "";
                 editor.configValue = actionObject[item.item] ||"";
@@ -392,6 +406,14 @@ Item {
                         editingObject.signalStopEn = signalStop.isChecked;
                         editingObject.signalStopPoint = signalStop.configValue;
                         editingObject.signalStopMode = (fastStop.isChecked ? 1 : 0);
+                    }else if(editor == pos){
+                        if(isAutoMode){
+                            var o = parseFloat(editingObject.pos);
+                            o += parseFloat(pos.configValue);
+                            editingObject.pos = o.toFixed(3);
+                        }else{
+                            editingObject.pos = editor.configValue;
+                        }
                     }else{
                         editingObject[PData.editorToItemMap.get(editor)] = editor.configValue;
                     }

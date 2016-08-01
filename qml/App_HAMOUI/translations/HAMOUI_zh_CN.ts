@@ -4655,6 +4655,10 @@ please chose!</source>
         <source>Offset A</source>
         <translation>A偏移</translation>
     </message>
+    <message>
+        <source>Mold has error!</source>
+        <translation>模号有错!</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>

@@ -180,7 +180,7 @@ Rectangle {
         ICButton{
             id:speedSettings
             text: qsTr("Path Speed")
-            icon: "../images/origin.png"
+            icon: "../images/pathSpeed.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: speedMenuTriggered()

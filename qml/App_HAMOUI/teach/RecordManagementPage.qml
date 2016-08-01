@@ -290,7 +290,11 @@ Rectangle {
                 text: qsTr("Load")
                 height: 40
                 onButtonClicked: {
-                    panelRobotController.loadRecord(selectName.text);
+                    if(!panelRobotController.loadRecord(selectName.text))
+                    {
+                        tipDialog.warning(qsTr("Mold has error!"));
+                        return;
+                    }
                     ICOperationLog.appendOperationLog(qsTr("Load record ") + selectName.text);
                 }
             }

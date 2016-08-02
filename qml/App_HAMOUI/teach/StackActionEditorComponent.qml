@@ -85,6 +85,19 @@ Item {
         z:100
         y:-40
         visible: false
+        onEditConfirm: {
+            motor0.configValue = data.sp.m0;
+            motor1.configValue = data.sp.m1;
+            motor2.configValue = data.sp.m2;
+            motor3.configValue = data.sp.m3;
+            motor4.configValue = data.sp.m4;
+            motor5.configValue = data.sp.m5;
+            offsetX = data.offset.m0;
+            offsetY = data.offset.m1;
+            space0.configValue = data.space.m0;
+            space1.configValue = data.space.m1;
+
+        }
     }
 
     ICCheckBox{
@@ -111,8 +124,8 @@ Item {
                                              "m3":motor3.configValue,
                                              "m4":motor4.configValue,
                                              "m5":motor5.configValue},
-                                         "offset":{"m0":offsetX, "m1":offsetY, "m2":offsetZ},
-                                         "space":{"m0":space0.configValue, "m1":space1.configValue, "m2":space2.configValue}
+                                         "offset":{"m0":x_offset.getConfigValue(), "m1":y_offset.getConfigValue(), "m2":z_offset.getConfigValue()},
+                                         "space":{"m0":space0.getConfigValue(), "m1":space1.getConfigValue(), "m2":space2.getConfigValue()}
                                      });
         }
     }

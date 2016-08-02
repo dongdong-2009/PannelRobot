@@ -13,6 +13,17 @@ Rectangle {
     }
 
     function show(data){
+        spMotor0.configValue = data.sp.m0;
+        spMotor1.configValue = data.sp.m1;
+        spMotor2.configValue = data.sp.m2;
+        spMotor3.configValue = data.sp.m3;
+        spMotor4.configValue = data.sp.m4;
+        spMotor5.configValue = data.sp.m5;
+
+        xNMotor0.configValue = (spMotor0.getConfigValue() + data.space.m0).toFixed(3);
+        xNMotor1.configValue = (spMotor1.getConfigValue() + data.offset.m1).toFixed(3);
+        yNMotor0.configValue = (spMotor0.getConfigValue() + data.offset.m0).toFixed(3);
+        yNMotor1.configValue = (spMotor1.getConfigValue() + data.space.m1).toFixed(3);
         visible = true;
     }
 
@@ -25,7 +36,17 @@ Rectangle {
             bgColor: "lime"
             width: 60
             onButtonClicked: {
-                editConfirm({});
+                editConfirm({"sp":{"m0":spMotor0.configValue,
+                                    "m1":spMotor1.configValue,
+                                    "m2":spMotor2.configValue,
+                                    "m3":spMotor3.configValue,
+                                    "m4":spMotor4.configValue,
+                                    "m5":spMotor5.configValue},
+                                "offset":{"m0":(yNMotor0.getConfigValue() - spMotor0.getConfigValue()).toFixed(3),
+                                    "m1":(xNMotor1.getConfigValue() - spMotor1.getConfigValue()).toFixed(3)},
+                                "space":{"m0":(xNMotor0.getConfigValue() - spMotor0.getConfigValue()).toFixed(3),
+                                    "m1":(yNMotor1.getConfigValue() - spMotor1.getConfigValue()).toFixed(3)}
+                            });
                 instance.visible = false;
             }
 
@@ -170,6 +191,7 @@ Rectangle {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: spMotor0.inputWidth
                 configNameWidth: 30
+                visible: false
 
             }
         }
@@ -182,6 +204,7 @@ Rectangle {
         anchors.left: spContainer.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 32
+        color: "red"
         text: qsTr("The system will caculate the offset and space when comfirm. \nYou just need to set the count configs after this setting.")
     }
     Column{
@@ -218,6 +241,7 @@ Rectangle {
                 configAddr: "s_rw_0_32_3_1300"
                 inputWidth: spMotor0.inputWidth
                 configNameWidth: 30
+                visible: false
 
             }
         }
@@ -228,11 +252,11 @@ Rectangle {
         onAxisDefinesChanged();
     }
     function onAxisDefinesChanged(){
-        //        motor0.visible = AxisDefine.axisInfos[0].visiable;
-        //        motor1.visible = AxisDefine.axisInfos[1].visiable;
-        //        motor2.visible = AxisDefine.axisInfos[2].visiable;
-        //        motor3.visible = AxisDefine.axisInfos[3].visiable;
-        //        motor4.visible = AxisDefine.axisInfos[4].visiable;
-        //        motor5.visible = AxisDefine.axisInfos[5].visiable;
+        spMotor0.visible = AxisDefine.axisInfos[0].visiable;
+        spMotor1.visible = AxisDefine.axisInfos[1].visiable;
+        spMotor2.visible = AxisDefine.axisInfos[2].visiable;
+        spMotor3.visible = AxisDefine.axisInfos[3].visiable;
+        spMotor4.visible = AxisDefine.axisInfos[4].visiable;
+        spMotor5.visible = AxisDefine.axisInfos[5].visiable;
     }
 }

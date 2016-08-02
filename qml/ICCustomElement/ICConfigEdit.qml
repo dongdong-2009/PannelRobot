@@ -14,8 +14,12 @@ Item {
     property alias max: edit.max
     property alias decimal: edit.decimal
 
+
     signal editFinished();
 
+    function getConfigValue(){
+        return parseFloat(configValue);
+    }
 
     height: 24
     width: container.width + container.spacing

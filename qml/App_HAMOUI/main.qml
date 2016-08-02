@@ -380,7 +380,6 @@ Rectangle {
     ICMessageBox{
         id:originAlarm
         z:1001
-        anchors.centerIn: parent
         visible: false
         x:200
         y:200

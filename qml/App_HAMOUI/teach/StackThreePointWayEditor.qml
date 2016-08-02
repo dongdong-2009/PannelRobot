@@ -44,8 +44,8 @@ Rectangle {
                                     "m5":spMotor5.configValue},
                                 "offset":{"m0":(yNMotor0.getConfigValue() - spMotor0.getConfigValue()).toFixed(3),
                                     "m1":(xNMotor1.getConfigValue() - spMotor1.getConfigValue()).toFixed(3)},
-                                "space":{"m0":(xNMotor0.getConfigValue() - spMotor0.getConfigValue()).toFixed(3),
-                                    "m1":(yNMotor1.getConfigValue() - spMotor1.getConfigValue()).toFixed(3)}
+                                "space":{"m0":(xNMotor0.getConfigValue() - spMotor0.getConfigValue()),
+                                    "m1":(yNMotor1.getConfigValue() - spMotor1.getConfigValue())}
                             });
                 instance.visible = false;
             }

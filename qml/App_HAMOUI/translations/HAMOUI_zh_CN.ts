@@ -4973,6 +4973,10 @@ please chose!</source>
         <source>Only Z</source>
         <translation>只堆Z</translation>
     </message>
+    <message>
+        <source>Three Point Way</source>
+        <translation>三点法设定</translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
@@ -5011,6 +5015,35 @@ please chose!</source>
     <message>
         <source>Sync Replace</source>
         <translation>同步替换</translation>
+    </message>
+</context>
+<context>
+    <name>StackThreePointWayEditor</name>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Start Point</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source> dir next Point</source>
+        <translation>方向下一点</translation>
+    </message>
+    <message>
+        <source>The system will caculate the offset and space when comfirm. 
+You just need to set the count configs after this setting.</source>
+        <translation>设定三点之后,系统会自动计算偏移和间距.你只需在外面设定
+各方向的计数即可.</translation>
     </message>
 </context>
 <context>

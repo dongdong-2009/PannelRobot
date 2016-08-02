@@ -94,8 +94,12 @@ Item {
             motor5.configValue = data.sp.m5;
             offsetX = data.offset.m0;
             offsetY = data.offset.m1;
-            space0.configValue = data.space.m0;
-            space1.configValue = data.space.m1;
+            space0.configValue = Math.abs(data.space.m0).toFixed(3);
+            space1.configValue = Math.abs(data.space.m1).toFixed(3);
+            dir0.configValue = data.space.m0 >= 0 ? 1 : 0;
+            dir1.configValue = data.space.m1 >= 0 ? 1 : 0;
+            if((offsetX != "0.000") || (offsetY != "0.000"))
+                offsetEn.isChecked = true;
 
         }
     }

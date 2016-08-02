@@ -78,6 +78,14 @@ Item {
         counterSel.configValue = 0;
         return 0;
     }
+    StackThreePointWayEditor{
+        id:threePointWayEditor
+        width: 680
+        height: 180
+        z:100
+        y:-40
+        visible: false
+    }
 
     ICCheckBox{
         id:offsetEn
@@ -85,6 +93,28 @@ Item {
         x:200
         y:-32
         visible: mode != 2
+    }
+    ICButton{
+        id:threePointWayBtn
+        text:qsTr("Three Point Way")
+        anchors.left: offsetEn.right
+        anchors.leftMargin: 32
+        anchors.top: offsetEn.top
+
+        height: offsetEn.height
+        width: 150
+        visible: offsetEn.visible
+        onButtonClicked: {
+            threePointWayEditor.show({"sp":{"m0":motor0.configValue,
+                                             "m1":motor1.configValue,
+                                             "m2":motor2.configValue,
+                                             "m3":motor3.configValue,
+                                             "m4":motor4.configValue,
+                                             "m5":motor5.configValue},
+                                         "offset":{"m0":offsetX, "m1":offsetY, "m2":offsetZ},
+                                         "space":{"m0":space0.configValue, "m1":space1.configValue, "m2":space2.configValue}
+                                     });
+        }
     }
 
     Column{
@@ -300,12 +330,12 @@ Item {
         counterSel.items = countersStrList;
     }
 
-//    onVisibleChanged: {
-//        if(visible)
-//            updateCounters();
-//        else
-//            counterSel.configValue = -1;
-//    }
+    //    onVisibleChanged: {
+    //        if(visible)
+    //            updateCounters();
+    //        else
+    //            counterSel.configValue = -1;
+    //    }
     onDataSourceChanged: {
         var items = dataSource;
         items.splice(0,0, qsTr("Custom Pos"));

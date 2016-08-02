@@ -10,7 +10,8 @@ settingpages/* \
 }
 
 OTHER_FILES += \
-    teach/VisionModelItem.qml
+    teach/VisionModelItem.qml \
+    teach/StackThreePointWayEditor.qml
 
 
 

@@ -87,10 +87,12 @@ Item {
                     pos.max = 5;
                     pos.decimal = 3;
                     pos.configValue = "0.000";
+                    pos.configName = qsTr("Pos(+/-):")
 
                 }else{
                     pos.configAddr = item.range || "";
                     pos.configValue = actionObject[item.item] ||"";
+                    pos.configName = qsTr("Pos:")
                 }
 
             }else{

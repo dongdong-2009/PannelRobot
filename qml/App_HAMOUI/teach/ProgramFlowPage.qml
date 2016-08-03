@@ -925,17 +925,17 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
-                        if(Teach.hasPosAction(actionObject)){
-                            var index = programListView.currentIndex;
-                            var pIndex = editing.currentIndex;
-                            var mIndex = moduleSel.currentIndex;
-                            var lineID = (mIndex > 0 ? (mIndex + 8) : pIndex) + ":" + index;
-                            console.log(lineID);
-                            if(PData.hasAutoModified(lineID)){
-                                actionObject.pos = PData.autoModifyPosActions[lineID];
-                            }
-                            PData.autoModifyPosActions[lineID] = actionObject.pos;
-                        }
+//                        if(Teach.hasPosAction(actionObject)){
+//                            var index = programListView.currentIndex;
+//                            var pIndex = editing.currentIndex;
+//                            var mIndex = moduleSel.currentIndex;
+//                            var lineID = (mIndex > 0 ? (mIndex + 8) : pIndex) + ":" + index;
+//                            console.log(lineID);
+//                            if(PData.hasAutoModified(lineID)){
+//                                actionObject.pos = PData.autoModifyPosActions[lineID];
+//                            }
+//                            PData.autoModifyPosActions[lineID] = actionObject.pos;
+//                        }
 
                         modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;

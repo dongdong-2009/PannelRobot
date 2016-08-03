@@ -49,7 +49,6 @@ Rectangle {
                             });
                 instance.visible = false;
             }
-
         }
         ICButton{
             id:cancelBtn

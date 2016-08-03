@@ -99,6 +99,10 @@
         <source>Fast Stop</source>
         <translation>立即停</translation>
     </message>
+    <message>
+        <source>Pos(+/-):</source>
+        <translation>位置(+/-):</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>

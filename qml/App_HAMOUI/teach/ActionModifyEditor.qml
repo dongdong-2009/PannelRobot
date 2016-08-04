@@ -77,8 +77,8 @@ Item {
                 earlyEndSpeedPos.configValue = actionObject.earlySpdPos ||"";
                 earlyEndSpeed.configValue = actionObject.earlySpd || 0.0;
             }else if(editor == signalStopEditor){
-                signalStop.isChecked = actionObject.signalStopEn;
-                signalStop.configValue = actionObject.signalStopPoint;
+                signalStop.isChecked = actionObject.signalStopEn || false;
+                signalStop.configValue = actionObject.signalStopPoint || 0;
                 fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
             }else if(editor == pos){
                 if(isAutoMode){

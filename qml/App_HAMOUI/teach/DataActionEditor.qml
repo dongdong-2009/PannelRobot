@@ -10,7 +10,8 @@ Item {
         var ret = [];
         ret.push(Teach.generateDataAction(addrtarget.addr(),
                                           constData.isChecked ? 0 : 1,
-                                                                constData.isChecked ? data.configValue:addrEdit.addr()));
+                                          constData.isChecked ? data.configValue:addrEdit.addr(),
+                                                                opContainer.checkedIndex));
         return ret;
     }
 
@@ -31,29 +32,52 @@ Item {
             }
         }
 
-        Row{
-            ICHCAddrEdit{
-                id:addrtarget
-                configName: qsTr("Addr Target:")
-            }
+        ICHCAddrEdit{
+            id:addrtarget
+            configName: qsTr("Addr Target:")
         }
 
-        Row{
-            ICConfigEdit{
-                id:data
-                visible:constData.isChecked? true:false
-                configName: qsTr("Data:")
-                inputWidth: 120
-            }
+
+        ICConfigEdit{
+            id:data
+            visible:constData.isChecked? true:false
+            configName: qsTr("Data:")
+            inputWidth: 120
+            configValue: "0"
         }
 
-        Row{
-            ICHCAddrEdit{
-                id:addrEdit
-                visible:constData.isChecked? false:true
-                configName: qsTr("Addr Data:")
-            }
+        ICHCAddrEdit{
+            id:addrEdit
+            visible:constData.isChecked? false:true
+            configName: qsTr("Addr Data:")
         }
 
+        ICButtonGroup{
+            id:opContainer
+            spacing: 12
+            mustChecked: true
+            checkedIndex: 0
+            ICCheckBox{
+                id:opEqual
+                text: qsTr("=")
+                isChecked: true
+            }
+            ICCheckBox{
+                id:opAddEqual
+                text: qsTr("+=")
+            }
+            ICCheckBox{
+                id:opMinusEqual
+                text: qsTr("-=")
+            }
+            ICCheckBox{
+                id:opMulEqual
+                text: qsTr("x=")
+            }
+            ICCheckBox{
+                id:opDivEqual
+                text:qsTr("÷=")
+            }
+        }
     }
 }

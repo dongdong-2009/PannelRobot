@@ -88,7 +88,7 @@ ProgramActionMenuFrame{
                 CatalogButton{
                     id:dIY_Action
                     text:qsTr("DIY Action")
-                    icon: "../images/timg.jpeg"
+                    icon: "../images/DIY.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }

@@ -274,6 +274,7 @@ Rectangle {
         z:3
 
         RecordManagementPage{
+            id:recordManagementPageInstance
             width: parent.width
             height: container.height - 95
         }
@@ -378,6 +379,21 @@ Rectangle {
         id:paraChose
         visible: false
         anchors.centerIn: parent
+    }
+
+    ICMessageBox{
+        id:originAlarm
+        z:1001
+        anchors.centerIn: parent
+        visible: false
+        x:200
+        y:200
+        onAccept: {
+            panelRobotController.modifyConfigValue(28, 4);
+        }
+        onReject: {
+            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+        }
     }
 
     ICCalculator{
@@ -566,6 +582,30 @@ Rectangle {
 //                }
 //            ]
 //        };
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "reqType":"listModel", //命令类型:获取模板信息
+//            "data":
+//            [
+//                {
+//                    "name":"模板名称",
+//                    "models":
+//                    [
+//                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+//                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+//                    ]
+//                },
+//                {
+//                    "name":"模板名称",
+//                    "models":
+//                    [
+//                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+//                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+//                    ]
+//                },
+//            ]
+//        };
+
 //        onETH0DataIn(JSON.stringify(toTest));
 //        var toTest = {
 //            "dsID":"www.geforcevision.com.cam",
@@ -651,8 +691,9 @@ Rectangle {
                 }
             }
         }
-
-        panelRobotController.sendExternalDatas(JSON.stringify(posData));
+        if(posData.reqType == "query")
+            panelRobotController.sendExternalDatas(JSON.stringify(posData));
+        recordManagementPageInstance.onGetVisionData(posData);
     }
 
     Component.onCompleted: {
@@ -676,7 +717,7 @@ Rectangle {
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){
-           tipBox.runningTip(qsTr("Sending Data..."));
+           tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
         });
         panelRobotController.sentContinuousData.connect(function(t){
             tipBox.visible = false;
@@ -686,11 +727,26 @@ Rectangle {
                                                   "","", "", "", 19);
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
                                                   "","", "", "", 18);
+
+            var i;
+            var sI;
+            var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
+            for(i = 0; i < Teach.stackInfos.length; ++i){
+                sI = Teach.stackInfos[i];
+                if(sI.dsHostID >= 0 && sI.posData.length > 0){
+                    ESData.externalDataManager.registerDataSource(sI.dsName,
+                                                                  ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
+                    toSendStackData.dsID = sI.dsName;
+                    toSendStackData.dsData = sI.posData;
+                    var posData = ESData.externalDataManager.parseRaw(toSendStackData);
+                    panelRobotController.sendExternalDatas(JSON.stringify(posData));
+                }
+            }
         });
-        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
-                                              "","", "", "", 19);
-        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
-                                              "","", "", "", 18);
+//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+//                                              "","", "", "", 19);
+//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+//                                              "","", "", "", 18);
 
         console.log("main load finished!");
     }
@@ -893,6 +949,8 @@ Rectangle {
 
                 if(alarmNum === 2){
                     paraChose.visible = true;
+                }else if(alarmNum >= 530 && alarmNum <= 537){
+                    originAlarm.show(qsTr("Origin is changed? Do you want to refind an origin?"), qsTr("Refind"), qsTr("Stop"));
                 }else{
                     paraChose.visible = false;
                 }

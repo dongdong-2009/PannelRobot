@@ -17,6 +17,8 @@ var cmdStrs = [">",
                "!="
         ];
 
+var opStrs = ["=", "+=", "-=", "x=", "÷="];
+
 var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
@@ -895,7 +897,10 @@ var generateAxisServoAction = function(action,
                                        earlyEndPos,
                                        isEarlySpd,
                                        earlySpdPos,
-                                       earlySpd){
+                                       earlySpd,
+                                       signalStopEn,
+                                       signalStopPoint,
+                                       signalStopMode){
     return {
         "action":action,
         "axis":axis,
@@ -907,7 +912,10 @@ var generateAxisServoAction = function(action,
         "earlyEndPos":earlyEndPos||0,
         "isEarlySpd":isEarlySpd || false,
         "earlySpdPos":earlySpdPos || 0,
-        "earlySpd":earlySpd || 0
+        "earlySpd":earlySpd || 0,
+        "signalStopEn":signalStopEn || false,
+        "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
+        "signalStopMode":signalStopMode ? 1 : 0
     };
 }
 
@@ -949,12 +957,13 @@ var generateSpeedAction = function(startSpeed,endSpeed){
     }
 }
 
-var generateDataAction = function(addr, type, data){            //type 0:lijishu  1:addr value
+var generateDataAction = function(addr, type, data, op){
     return {
         "action":actions.F_CMD_MEM_CMD,
         "addr":addr,
         "type":type,
-        "data":data
+        "data":data,
+        "op":op == undefined ? 0 : op
     }
 }
 
@@ -1282,6 +1291,11 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += " " + qsTr("Early End Spd pos:") + actionObject.earlySpdPos;
         ret += " " + qsTr("Early End Spd:") + actionObject.earlySpd;
     }
+    if(actionObject.signalStopEn){
+        ret += "\n                            ";
+        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
+        ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
+    }
 
     return ret;
 }
@@ -1581,7 +1595,8 @@ var speedActionToStringHandler = function(actionObject){
 var dataActionToStringHandler = function(actionObject){
     var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
     var typeName = (actionObject.type == 0? qsTr("Const Data:") : qsTr("Addr Data:"));
-    return ac + qsTr("Target Addr:") + actionObject.addr + " " + typeName + actionObject.data;
+    var op = actionObject.hasOwnProperty("op") ? opStrs[actionObject.op] : "=";
+    return ac + qsTr("Target Addr:") + actionObject.addr + op + typeName + actionObject.data;
 }
 
 
@@ -1640,7 +1655,8 @@ var actionObjectToEditableITems = function(actionObject){
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"},
                 {"item":"earlyEnd"},
-                {"item":"earlyEndSpd"}];
+                {"item":"earlyEndSpd"},
+                {"item":"signalStop"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||

@@ -62,15 +62,21 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
     bool isEarlyEnd = v->value("isEarlyEnd", false).toBool();
     bool isEarlySpd = v->value("isEarlySpd", false).toBool();
-    if(isEarlyEnd || isEarlySpd)
+    bool isSignalStop = v->value("signalStopEn", false).toBool();
+    if(isEarlyEnd || isEarlySpd || isSignalStop)
     {
         int op = 0;
         op |= isEarlySpd ? 1 : 0;
         op |= isEarlyEnd ? 2 : 0;
         item.append(op);
         item.append(v->value("earlySpdPos", 0).toInt());
-        item.append(v->value("earlyEndPos", 0).toInt());
+        if(isSignalStop)
+            item.append(v->value("signalStopPoint", 0).toInt());
+        else
+            item.append(v->value("earlyEndPos", 0).toInt());
         item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
+        item.append(isSignalStop ? 1 : 0);
+        item.append(v->value("signalStopMode", 0).toInt());
         item[0] = F_CMD_SINGLE_ADD_FUNC;
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
@@ -113,7 +119,7 @@ int SpeedActionCompiler(ICMoldItem & item, const QVariantMap* v)
 int DataActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("type").toInt() + 600);
-    item.append(v->value("addr").toInt());
+    item.append(v->value("addr").toInt() + v->value("op", 0).toInt());
     item.append(v->value("data").toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
@@ -379,15 +385,11 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(si.stackData.si[0].count1);
     item.append(si.stackData.si[0].count2);
     item.append(si.stackData.all[12]);
-    //    item.append(si.si[0].doesBindingCounter);
-    //    item.append(si.si[0].counterID);
+//    if(si.stackData.si[0].sequence > 5)
+//    {
+//        item[0] = F_CMD_SINGLE_STACK;
 
-    //    item.append(si.si[1].m0pos);
-    //    item.append(si.si[1].m1pos);
-    //    item.append(si.si[1].m2pos);
-    //    item.append(si.si[1].m3pos);
-    //    item.append(si.si[1].m4pos);
-    //    item.append(si.si[1].m5pos);
+//    }
     item.append(si.stackData.si[1].space0);
     item.append(si.stackData.si[1].space1);
     item.append(si.stackData.si[1].space2);

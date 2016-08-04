@@ -45,7 +45,8 @@ Rectangle {
             var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
             originText = styledCN + " " + originText;
         }
-        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        var reg = new RegExp("\n                            ", 'g');
+        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
     function beforeSaveProgram(which){
@@ -409,8 +410,15 @@ Rectangle {
     function saveManualProgramByName(name){
         var program = modelToProgramHelper(PData.kManualProgramIndex);
         var errInfo = JSON.parse(panelRobotController.checkProgram(JSON.stringify(program), "","","", ""));
-        if(errInfo.length == 0)
-            ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+        if(errInfo.length == 0){
+            var updateID = ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
+            if(updateID == 0)
+                panelRobotController.manualRunProgram(JSON.stringify(program),
+                                                      "","", "", "", 19);
+            else if(updateID == 1)
+                panelRobotController.manualRunProgram(JSON.stringify(program),
+                                                      "","", "", "", 18);
+        }
         return errInfo;
     }
 
@@ -478,6 +486,7 @@ Rectangle {
         if(PData.programs.length == 0) return 0;
         if(moduleSel.currentIndex != 0) return PData.kFunctionProgramIndex;
         if(editing.currentIndex > 8) return PData.kManualProgramIndex;
+        if(editing.currentIndex < 0) return 0;
         return editing.currentIndex;
     }
 
@@ -754,12 +763,14 @@ Rectangle {
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){
                             programListView.currentIndex = -1;
+                            Teach.currentParsingProgram = editing.currentIndex;
                             programListView.model = PData.programs[editing.currentIndex];
                             currentEditingProgram = editing.currentIndex;
                             currentEditingModule = 0;
                             delModuleBtn.visible = false;
                             if(actionEditorFrame.progress == 1)
                                 actionEditorFrame.item.setMode("");
+                            PData.currentEditingProgram = editing.currentIndex;
                         }else{
                             Teach.currentParsingProgram = PData.kFunctionProgramIndex;
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
@@ -1566,6 +1577,7 @@ Rectangle {
         var isSyncStart = false;
         var jumpLines = [];
         var insertedIndex = 0;
+        Teach.flagsDefine.clear(Teach.currentParsingProgram);
         for(var p = 0; p < program.length; ++p){
             step = program[p];
             step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;
@@ -1615,19 +1627,19 @@ Rectangle {
         //        var program = JSON.parse(panelRobotController.mainProgram());
         var program;
         var i;
-        var sI;
-        var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
-        for(i = 0; i < Teach.stackInfos.length; ++i){
-            sI = Teach.stackInfos[i];
-            if(sI.dsHostID >= 0 && sI.posData.length > 0){
-                ESData.externalDataManager.registerDataSource(sI.dsName,
-                                                              ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
-                toSendStackData.dsID = sI.dsName;
-                toSendStackData.dsData = sI.posData;
-                var posData = ESData.externalDataManager.parseRaw(toSendStackData);
-                panelRobotController.sendExternalDatas(JSON.stringify(posData));
-            }
-        }
+//        var sI;
+//        var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
+//        for(i = 0; i < Teach.stackInfos.length; ++i){
+//            sI = Teach.stackInfos[i];
+//            if(sI.dsHostID >= 0 && sI.posData.length > 0){
+//                ESData.externalDataManager.registerDataSource(sI.dsName,
+//                                                              ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
+//                toSendStackData.dsID = sI.dsName;
+//                toSendStackData.dsData = sI.posData;
+//                var posData = ESData.externalDataManager.parseRaw(toSendStackData);
+//                panelRobotController.sendExternalDatas(JSON.stringify(posData));
+//            }
+//        }
 
         for(i = 0; i < 9; ++i){
 //            program = JSON.parse(panelRobotController.programs(i));

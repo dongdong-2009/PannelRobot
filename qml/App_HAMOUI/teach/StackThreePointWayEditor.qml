@@ -102,6 +102,14 @@ Rectangle {
             id:spSetIn
             text: qsTr("Set In")
             width: spMotor0.width
+            onButtonClicked: {
+                spMotor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                spMotor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                spMotor2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                spMotor3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                spMotor4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                spMotor5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+            }
         }
 
         ICConfigEdit{
@@ -197,6 +205,10 @@ Rectangle {
         ICButton{
             id:xNSetIn
             text: qsTr("Set In")
+            onButtonClicked: {
+                xNMotor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                xNMotor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+            }
         }
     }
     Text {
@@ -213,6 +225,10 @@ Rectangle {
         ICButton{
             id:yNSetIn
             text:qsTr("Set In")
+            onButtonClicked: {
+                yNMotor0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                yNMotor1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+            }
         }
 
         Row{

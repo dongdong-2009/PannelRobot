@@ -898,17 +898,20 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 {
                     isSyncBegin = true;
                     ++fStep;
+                    ++programEndLine;
                     continue;
                 }
                 else if(item.at(0) == F_CMD_SYNC_END)
                 {
                     isSyncBegin = false;
                     //                    ++fStep;
+                    ++programEndLine;
                     continue;
                 }
                 if(!isSyncBegin)
                     ++fStep;
                 ret.MapModuleLineToModuleID(fStep, mID);
+//                qDebug()<<fp.key()<<programEndLine<<fStep;
                 ret.MapStep(programEndLine , fStep);
                 ++programEndLine;
             }
@@ -1371,7 +1374,8 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     if(module >= 0)
     {
         int moduleEntry = programs_.at(which).ModuleEntry(module);
-        realStep += moduleEntry;
+
+        realStep += programs_.at(which).RealStepToUIStep(moduleEntry).first();
     }
     hostStep = programs_.at(which).UIStepToRealStep(realStep);
     //    hostStep = UIStepToRealStep(which, module, step);

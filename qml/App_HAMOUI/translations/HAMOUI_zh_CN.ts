@@ -781,6 +781,18 @@
         <source>Fast Stop</source>
         <translation>立即停</translation>
     </message>
+    <message>
+        <source>Speed PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -5766,6 +5778,18 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>fast stop</source>
         <translation>就立即停</translation>
+    </message>
+    <message>
+        <source>Speed Control PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed Control RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
     </message>
 </context>
 <context>

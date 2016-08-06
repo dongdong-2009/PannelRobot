@@ -907,7 +907,9 @@ var generateAxisServoAction = function(action,
                                        earlySpd,
                                        signalStopEn,
                                        signalStopPoint,
-                                       signalStopMode){
+                                       signalStopMode,
+                                       speedMode,
+                                       stop){
     return {
         "action":action,
         "axis":axis,
@@ -922,7 +924,9 @@ var generateAxisServoAction = function(action,
         "earlySpd":earlySpd || 0,
         "signalStopEn":signalStopEn || false,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
-        "signalStopMode":signalStopMode ? 1 : 0
+        "signalStopMode":signalStopMode ? 1 : 0,
+        "speedMode":speedMode == undefined ? 0 : speedMode,
+        "stop":stop || false
     };
 }
 
@@ -1197,9 +1201,16 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
-    var ret =  axisInfos[actionObject.axis].name + ":" +  actionObject.pos + " " +
-            qsTranslate("Teach","Speed:") + actionObject.speed + " " +
-            qsTr("Delay:") + actionObject.delay;
+     var ret =  axisInfos[actionObject.axis].name + ":";
+    if(actionObject.speedMode){
+        ret += (actionObject.speedMode == 1 ? qsTr("Speed Control PP Start") :  qsTr("Speed Control RP Start") ) + " " + qsTranslate("Teach","Speed:") + actionObject.speed ;
+    }else if(actionObject.stop){
+        ret += qsTr("Stop");
+    }else{
+        ret +=  actionObject.pos + " " +
+                qsTranslate("Teach","Speed:") + actionObject.speed + " " +
+                qsTr("Delay:") + actionObject.delay;
+    }
     if(actionObject.isBadEn)
         ret += " " + qsTr("Bad En");
     if(actionObject.isEarlyEnd){

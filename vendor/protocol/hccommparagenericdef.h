@@ -30,7 +30,7 @@ typedef enum {
 	kSttPPP,	// 平面互相垂直的三平移关节
 	kSttRTR,	// PUMA560 前三关节
 	kSttRRP,	// SCARA 前三关节
-	kSttRRPR,	// SCARA 四关节
+	kSttDELTA,	// *DELTA 并联3R机器人，动平台+静平台，三轴平均分配（120°）
 	kSttRTRT,	// PUMA560 前四关节
 	kSttRTRTTT,	//* PUMA560 六关节
 	kStt5P,		//
@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-0.9"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.0"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-0.9"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.0"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -852,6 +852,19 @@ typedef enum
      * speed:轨迹速度
      */
     F_CMD_TRAJECTORY = 302,//< 任意轨迹运动
+    /*
+     *
+     *stack：
+     *order:5; 轴ID
+     *x_dir:1; 轴方向 0：反方向；1正方向；
+     *y_dir:1; 0：停止；1：启动；
+     *z_dir:1; 预留
+     *type:8;
+     *binding_counter:1;
+     *counter_id:15;
+     * speed:速度
+     */
+    F_CMD_SINGLE_SPEED = 303,//< 单轴速度控制
     /***************************************************************************/
     /*
      * id:计数器ID

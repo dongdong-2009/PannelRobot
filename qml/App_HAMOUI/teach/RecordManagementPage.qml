@@ -49,6 +49,7 @@ Rectangle {
         mustChecked: true
         checkedIndex: 0
         spacing: 48
+        x:48
         ICCheckBox{
             id:robot
             text: qsTr("Robot")

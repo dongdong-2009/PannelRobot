@@ -9,9 +9,6 @@ settingpages/* \
 ../ICCustomElement/*
 }
 
-OTHER_FILES += \
-    teach/VisionModelItem.qml \
-    teach/StackThreePointWayEditor.qml
 
 
 

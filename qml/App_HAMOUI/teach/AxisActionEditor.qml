@@ -31,6 +31,9 @@ Item {
                 if(axisActionInfo == null)
                     continue;
                 if(axisActionInfo.hasOwnProperty("pos")){
+                    var speedMode = 0;
+                    if(speedPPStart.isChecked) speedMode = 1;
+                    if(speedRPStart.isChecked) speedMode = 2;
                     ret.push(Teach.generateAxisServoAction(editor.servoAction,
                                                            i,
                                                            axisActionInfo.pos,
@@ -44,7 +47,9 @@ Item {
                                                            earlyEndSpeed.configValue,
                                                            signalStop.isChecked,
                                                            signalStop.configValue,
-                                                           fastStop.isChecked));
+                                                           fastStop.isChecked,
+                                                           speedMode,
+                                                           stop.isChecked));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -145,7 +150,7 @@ Item {
                 configValue: "0"
                 inputWidth: 60
                 configNameWidth: 140
-                enabled: !signalStop.isChecked;
+                enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
             }
             Row{
                 spacing: 4
@@ -155,6 +160,7 @@ Item {
                     configValue: "0"
                     inputWidth: 60
                     configNameWidth: earlyEnd.configNameWidth
+                    enabled: earlyEnd.enabled
                 }
 
                 ICConfigEdit{
@@ -177,7 +183,7 @@ Item {
                     configValue: -1
                     inputWidth: 100
                     z:2
-                    enabled: !earlyEnd.isChecked;
+                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
                     configNameWidth: earlyEnd.configNameWidth
 //                    items: [  "X010",
 //                        "X011",
@@ -223,11 +229,34 @@ Item {
                             ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
                         }
                         items = ioItems;
+                        configValue = 0;
                     }
                 }
                 ICCheckBox{
                     id:fastStop
                     text: qsTr("Fast Stop")
+                }
+            }
+
+            ICButtonGroup{
+                id:speedControlGroup
+                spacing: 10
+
+                ICCheckBox{
+                    id:speedPPStart
+                    text: qsTr("Speed PP Start")
+                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked)
+                }
+                ICCheckBox{
+                    id:speedRPStart
+                    text: qsTr("Speed RP Start")
+                    enabled: speedPPStart.enabled
+                }
+
+                ICCheckBox{
+                    id:stop
+                    text:qsTr("Stop")
+                    enabled: speedPPStart.enabled
                 }
             }
         }

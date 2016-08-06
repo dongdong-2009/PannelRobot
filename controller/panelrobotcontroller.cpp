@@ -787,6 +787,7 @@ bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line,
 {
     QPair<int, int> stepInfo;
     ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
+    qDebug()<<"fixProgramOnAutoMode"<<item<<stepInfo;
     return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
 }
 

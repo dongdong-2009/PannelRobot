@@ -303,12 +303,13 @@ Rectangle {
                                                          programListView.currentIndex,
                                                          JSON.stringify(actionObject))){
                 if(mID >=0){
-                    saveModules();
+                    saveModules(false);
                 }else if(editing.currentIndex === 0)
                     panelRobotController.saveMainProgram(modelToProgram(0));
                 else
-                    panelRobotController.saveSubProgram(modelToProgram(editing.currentIndex));
+                    panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
             }
+            return;
         }
         hasModify = true;
     }
@@ -397,12 +398,12 @@ Rectangle {
         return JSON.stringify(ret);
     }
 
-    function saveModuleByName(name, syncMold){
+    function saveModuleByName(name, syncMold, sendToHost){
         var fun = Teach.functionManager.getFunctionByName(name);
         if(fun == null) return;
         fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
         var fJSON = Teach.functionManager.toJSON();
-        var eIJSON = panelRobotController.saveFunctions(fJSON, syncMold);
+        var eIJSON = panelRobotController.saveFunctions(fJSON, syncMold, (sendToHost == undefined ? true : sendToHost));
         var errInfo = JSON.parse(eIJSON)[fun.id];
         return errInfo;
     }
@@ -422,8 +423,8 @@ Rectangle {
         return errInfo;
     }
 
-    function saveModules(){
-        return saveModuleByName(moduleSel.text(currentEditingModule), true);
+    function saveModules(sendToHost){
+        return saveModuleByName(moduleSel.text(currentEditingModule), true, (sendToHost == undefined ?  true : sendToHost));
     }
 
     function saveProgram(which){
@@ -549,6 +550,7 @@ Rectangle {
         isFollow.visible = isAuto;
 
         modifyEditor.isAutoMode = isAuto;
+        PData.clearAutoModifyPosActions();
         hideActionEditorPanel();
         speedDispalyContainer.visible = isAuto;
         if(hasModify)
@@ -935,6 +937,18 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
+//                        if(Teach.hasPosAction(actionObject)){
+//                            var index = programListView.currentIndex;
+//                            var pIndex = editing.currentIndex;
+//                            var mIndex = moduleSel.currentIndex;
+//                            var lineID = (mIndex > 0 ? (mIndex + 8) : pIndex) + ":" + index;
+//                            console.log(lineID);
+//                            if(PData.hasAutoModified(lineID)){
+//                                actionObject.pos = PData.autoModifyPosActions[lineID];
+//                            }
+//                            PData.autoModifyPosActions[lineID] = actionObject.pos;
+//                        }
+
                         modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
                         if(showY + modifyEditor.height >= container.height)

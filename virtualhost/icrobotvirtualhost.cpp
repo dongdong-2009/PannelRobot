@@ -133,6 +133,7 @@ bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<QVecto
         AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, formattedData.at(i).size());
         SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
     }
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_81, 1);
     return true;
 
 
@@ -172,7 +173,8 @@ bool ICRobotVirtualhost::SendMoldSub(ICVirtualHostPtr hostPtr, int which, const 
         AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, formattedData.at(i).size() | ((which) << 24));
         SendContinuousDataHelper(hostPtr, 0, formattedData.at(i));
     }
-    qDebug()<<"Send:"<<which<<formattedData;
+//    qDebug()<<"Send:"<<which<<formattedData;
+    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_81, 1);
     //    AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, (data.size() | ((which) << 24)));
     //    SendContinuousDataHelper(hostPtr, 0, data);
     return true;

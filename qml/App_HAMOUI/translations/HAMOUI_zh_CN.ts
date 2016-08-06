@@ -99,6 +99,10 @@
         <source>Fast Stop</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pos(+/-):</source>
+        <translation>位置(+/-):</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -777,6 +781,18 @@
         <source>Fast Stop</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Speed PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -797,7 +813,7 @@
     <name>AxisConfigs</name>
     <message>
         <source>Arm Length</source>
-        <translation>臂长</translation>
+        <translation>每转距离</translation>
     </message>
     <message>
         <source>mm</source>
@@ -929,7 +945,7 @@
     </message>
     <message>
         <source>Encode Type3</source>
-        <translation>无</translation>
+        <translation>步进</translation>
     </message>
     <message>
         <source>Encoder Read Way</source>
@@ -4945,6 +4961,10 @@ please chose!</source>
         <source>Offset A</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mold has error!</source>
+        <translation>模号有错!</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -5259,6 +5279,10 @@ please chose!</source>
         <source>Only Z</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Three Point Way</source>
+        <translation>三点法设定</translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
@@ -5297,6 +5321,35 @@ please chose!</source>
     <message>
         <source>Sync Replace</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StackThreePointWayEditor</name>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Start Point</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source> dir next Point</source>
+        <translation>方向下一点</translation>
+    </message>
+    <message>
+        <source>The system will caculate the offset and space when comfirm. 
+You just need to set the count configs after this setting.</source>
+        <translation>设定三点之后,系统会自动计算偏移和间距.你只需在外面设定
+各方向的计数即可.</translation>
     </message>
 </context>
 <context>
@@ -6100,6 +6153,18 @@ please chose!</source>
         <source>fast stop</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Speed Control PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed Control RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6468,6 +6533,25 @@ please chose!</source>
     <message>
         <source>Action Time</source>
         <translation>动作时间</translation>
+    </message>
+</context>
+<context>
+    <name>VisionModelItem</name>
+    <message>
+        <source>Offset X</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset Y</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset A</source>
+        <translation>A偏移</translation>
+    </message>
+    <message>
+        <source>Use this Model</source>
+        <translation>使用该模板</translation>
     </message>
 </context>
 <context>

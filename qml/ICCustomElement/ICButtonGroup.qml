@@ -34,7 +34,7 @@ Item {
     QtObject{
         id:pData
         property variant buttons: []
-        property double startPos: spacing
+        property double startPos: 0
         function deepFindCheckBox(item){
             if(item.hasOwnProperty("isChecked")){
                 addButton(item);

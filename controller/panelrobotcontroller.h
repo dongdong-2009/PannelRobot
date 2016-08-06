@@ -545,7 +545,7 @@ public:
         return ICRobotMold::CurrentMold()->Functions();
     }
 
-    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON, bool syncMold = true)
+    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON, bool syncMold = true, bool sendToHost = true)
     {
         QMap<int, QMap<int, int> > ret =  ICRobotMold::CurrentMold()->SaveFunctions(functionsJSON, syncMold);
         QString toJSON = "{";
@@ -561,10 +561,13 @@ public:
             toJSON.chop(1);
         }
         toJSON += "}";
-        sendMainProgramToHost();
-        for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+        if(sendToHost)
         {
-            sendSubProgramToHost(i);
+            sendMainProgramToHost();
+            for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+            {
+                sendSubProgramToHost(i);
+            }
         }
         return toJSON;
     }

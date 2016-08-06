@@ -24,6 +24,7 @@ Rectangle {
         }
         return ret;
     }
+
     function updateStacksSel(){
         Teach.parseStacks(panelRobotController.stacks());
         var hasStacks = Teach.stackInfosDescr();

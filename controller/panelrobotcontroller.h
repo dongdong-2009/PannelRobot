@@ -294,36 +294,7 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
-    Q_INVOKABLE bool loadRecord(const QString& name)
-    {
-        ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
-        bool ret =  mold->LoadMold(name);
-        if(ret)
-        {
-            ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
-            ret = sendMainProgramToHost();
-            if(ret)
-            {
-                for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
-                {
-                    ret = sendSubProgramToHost(i);
-                    if(!ret)
-                    {
-                        break;
-                    }
-                }
-            }
-
-#ifndef Q_WS_QWS
-            ret = true;
-#endif
-            ICAppSettings as;
-            as.SetCurrentMoldConfig(name);
-            emit moldChanged();
-        }
-
-        return ret;
-    }
+    Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)
     {

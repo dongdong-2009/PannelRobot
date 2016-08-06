@@ -419,10 +419,13 @@ var useableStack = function(){
     return stackIDs[i - 1] + 1;
 }
 
+var lastStacks = "";
 function parseStacks(stacks){
+    if(stacks === lastStacks) return;
     if(stacks.length < 4) {
         stacks = "{}";
     }
+    lastStacks = stacks;
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;

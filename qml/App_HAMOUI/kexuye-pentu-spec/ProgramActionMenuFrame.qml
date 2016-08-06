@@ -117,6 +117,12 @@ ProgramActionMenuFrame{
         var kxyspeed = editor.createObject(actionEditorContainerInstance());
         var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed) - 1;
         kxyObject.detailInstance = kxyspeed;
+
+        editor = Qt.createComponent('KXYStackAction.qml');
+        var kxystack = editor.createObject(actionEditorContainerInstance());
+        var kxystackactionIndex = actionEditorContainerInstance().addPage(kxystack) - 1;
+        kxyObject.stackInstance = kxystack;
+
         var kxySpeedIndex = function(){
             if(kxyspeed.speedcontainer().visible){
                 linkedBtn1Instance().text = qsTr("DetailFace");
@@ -126,7 +132,20 @@ ProgramActionMenuFrame{
                 linkedBtn1Instance().text = qsTr("Return");
                 actionEditorContainerInstance().setCurrentIndex(kxyAxisSpeedIndex);
             }
-
+            if(!kxystack.speedcontainer().visible)
+                linkedBtn2Instance().text = qsTr("StackAction");
+        }
+        var KXYStackIndex = function(){
+            if(kxystack.speedcontainer().visible){
+                linkedBtn2Instance().text = qsTr("StackAction");
+                actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
+            }
+            else{
+                linkedBtn2Instance().text = qsTr("Return");
+                actionEditorContainerInstance().setCurrentIndex(kxystackactionIndex);
+            }
+            if(!kxyspeed.speedcontainer().visible)
+                linkedBtn1Instance().text = qsTr("DetailFace");
         }
 
         var setModeEditorHelper = function(mode, name, pos1name, pos2name){
@@ -137,8 +156,11 @@ ProgramActionMenuFrame{
             kxyObject.hideUselessEdit();
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
+            linkedBtn2Instance().visible = true;
             linkedBtn1Instance().text = qsTr("DetailFace");
+            linkedBtn2Instance().text = qsTr("StackAction");
             BasePData.linked1Function = kxySpeedIndex;
+            BasePData.linked2Function = KXYStackIndex;
         }
 
         //mode-0

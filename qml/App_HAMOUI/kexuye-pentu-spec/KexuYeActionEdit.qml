@@ -14,9 +14,13 @@ Item {
     property variant plane: [0, 1, 2]
     property variant actionObject: null
     property variant detailInstance: null
+    property variant stackInstance: null
+    property variant stackCount: []
     function createActionObjects(){
         var ret = [];
-         var rc = BaseTeach.counterManager.getCounter(0);
+        var rc = BaseTeach.counterManager.getCounter(0);
+        var details = detailInstance.getDetails();
+        var stack = stackInstance.getstackInstace();
         if(rc == null){
             rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
@@ -34,8 +38,8 @@ Item {
         var rotateOKCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
-        var aaaa = c.id;
+        c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        var aaaa = stackCount = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
         c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
@@ -43,7 +47,6 @@ Item {
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
 
-        var details = detailInstance.getDetails();
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
                                                 repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
@@ -53,8 +56,45 @@ Item {
                                                 details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                                                 details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
                                                 details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
-                                                aaaa,bbbb,editaction.configValue));
+                                                aaaa,bbbb,editaction.configValue,
+                                                stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
+                                                stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
+                                                stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
+                                                stack.zdirection,newStack()));
         return ret;
+    }
+
+    function newStack(){
+        var stack = stackInstance.getstackInstace();
+        var sid = LocalTeach.useableStack();
+        var si0 = new LocalTeach.StackItem(sPosM0.configValue || 0.000,
+                                      sPosM1.configValue || 0.000,
+                                      sPosM2.configValue || 0.000,
+                                      sPosM3.configValue || 0.000,
+                                      sPosM4.configValue || 0.000,
+                                      sPosM5.configValue || 0.000,
+                                      stack.xspace || 0.000,
+                                      stack.yspace || 0.000,
+                                      stack.zspace || 0.000,
+                                      stack.xcount || 0,
+                                      stack.ycount || 0,
+                                      stack.zcount || 0,
+                                      stack.turns,
+                                      stack.xdirection,
+                                      stack.ydirection,
+                                      stack.zdirection,
+                                      true,
+                                      stackCount,
+                                      stack.useDeviation,
+                                      stack.xdeviation,
+                                      stack.ydeviation,
+                                      stack.zdeviation,
+                                      "custompoint[" + sid + "]",
+                                      sid);
+        var stackInfo = new LocalTeach.StackInfo(si0, si0, 0, "stack1", "custompoint[" + sid + "]", sid, []);
+        sid = LocalTeach.appendStackInfo(stackInfo);
+        panelRobotController.saveStacks(LocalTeach.stacksToJSON());
+        return sid;
     }
 
     function updateActionObject(ao){

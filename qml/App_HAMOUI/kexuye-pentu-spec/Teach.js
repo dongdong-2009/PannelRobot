@@ -24,9 +24,10 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
                                    fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch,
-                                   slope, rotateOKCID, gunFollowEn,aaaa,bbbb,editaction,useEn){
-
-
+                                   slope, rotateOKCID, gunFollowEn,aaaa,bbbb,editaction,
+                                   useStack,useDeviation,turns,stackSpeed,xdeviation,ydeviation,
+                                   zdeviation,xspace,yspace,zspace,xcount,ycount,
+                                   zcount,xdirection,ydirection,zdirection,stack1){
     var f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag0 = f.flagID;
@@ -298,7 +299,26 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "aaaa":aaaa,
         "bbbb":bbbb,
         "editaction":editaction,
-        "useEn":useEn
+//        "useEn":useEn,
+
+//        stack:
+        "useStack":useStack,
+        "useDeviation":useDeviation,
+        "turns":turns,
+        "stackSpeed":stackSpeed,
+        "xdeviation":xdeviation,
+        "ydeviation":ydeviation,
+        "zdeviation":zdeviation,
+        "xspace":xspace,
+        "yspace":yspace,
+        "zspace":zspace,
+        "xcount":xcount,
+        "ycount":ycount,
+        "zcount":zcount,
+        "xdirection":xdirection,
+        "ydirection":ydirection,
+        "zdirection":zdirection,
+        "stack1":stack1
     };
 }
 

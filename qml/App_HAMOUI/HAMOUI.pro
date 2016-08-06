@@ -10,6 +10,9 @@ settingpages/* \
 kexuye-pentu-spec/*
 }
 
+DISTFILES += \
+    kexuye-pentu-spec/KXYStackAction.qml
+
 
 
 

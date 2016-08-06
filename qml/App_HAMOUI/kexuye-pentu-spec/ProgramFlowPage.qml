@@ -288,10 +288,12 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.zlength, actionObject.startSpeed2));
 
-        ret.push(LocalTeach.generateFlagAction(actionObject.flag1, qsTr("Dir Move")));
-
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("Stack Mark")));
         if(actionObject.useStack)
             ret.push(LocalTeach.generateStackAction(actionObject.stack1,actionObject.stackSpeed));
+
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag1, qsTr("Dir Move")));
+
 
 //        ret.push(LocalTeach.generateOutputAction(16, 0, 0, 16, 0));
         if(actionObject.fixture1Switch == 4){
@@ -916,7 +918,7 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
         if(actionObject.useStack){
             ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
-            ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag1, actionObject.aaaa, 0, 1));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag10, actionObject.aaaa, 0, 1));
         }
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag14));
 //        ret.push(LocalTeach.generateOutputAction(14,100,0,14,2));     //Y30 close
@@ -1043,13 +1045,21 @@ ProgramFlowPage {
         width: menuFrame().width - 90
         height: 200
     }
+    KXYStackAction{
+        id:kxyStackActionEdit
+        visible: false
+        width: menuFrame().width - 90
+        height: 200
+    }
 
     Component.onCompleted: {
         registerEditableAction(LocalTeach.actions.F_CMD_PENTU,
                                [{"editor":kexuyeActionEdit, "itemName":"kexuyeaction"},
-                                {"editor":kexuyeDetailEdit, "itemName":"kexuyedetail"}
+                                {"editor":kexuyeDetailEdit, "itemName":"kexuyedetail"},
+                                {"editor":kxyStackActionEdit, "itemName":"kxystackaction"}
+
                                ],
-                               [{"item":"kexuyeaction"}, {"item":"kexuyedetail"},{"item":"customName"}]);
+                               [{"item":"kexuyeaction"}, {"item":"kexuyedetail"}, {"item":"kxystackaction"},{"item":"customName"}]);
 
         actionModifyEditor().maxHeight = 240;
     }
@@ -1068,6 +1078,8 @@ ProgramFlowPage {
             panelRobotController.delCounterDef(actionObject.aaaa);
             BaseTeach.counterManager.delCounter(actionObject.bbbb);
             panelRobotController.delCounterDef(actionObject.bbbb);
+            BaseTeach.delStack(actionObject.stack1);
+            panelRobotController.saveStacks(BaseTeach.stacksToJSON());
         }
     }
 }

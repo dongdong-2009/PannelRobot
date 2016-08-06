@@ -151,19 +151,19 @@ Item {
                             id:xdirection
                             z: 3
                             configName: qsTr("X Direction")
-                            items: [qsTr("Positive"), qsTr("Negitive")]
+                            items: [qsTr("Negitive"), qsTr("Positive")]
                         }
                         ICComboBoxConfigEdit{
                             id:ydirection
                             z: 2
                             configName: qsTr("Y Direction")
-                            items: [qsTr("Positive"), qsTr("Negitive")]
+                            items: [qsTr("Negitive"), qsTr("Positive")]
                         }
                         ICComboBoxConfigEdit{
                             id:zdirection
                             z: 1
                             configName: qsTr("Z Direction")
-                            items: [qsTr("Positive"), qsTr("Negitive")]
+                            items: [qsTr("Negitive"), qsTr("Positive")]
                         }
                     }
                 }
@@ -206,8 +206,8 @@ Item {
         xcount.configValue = 0;
         ycount.configValue = 0;
         zcount.configValue = 0;
-        xdirection.configValue = 0;
-        ydirection.configValue = 0;
-        zdirection.configValue = 0;
+        xdirection.configValue = 1;
+        ydirection.configValue = 1;
+        zdirection.configValue = 1;
     }
 }

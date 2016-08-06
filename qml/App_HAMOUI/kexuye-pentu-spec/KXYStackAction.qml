@@ -8,25 +8,24 @@ Item {
     height: parent.height
     property variant actionObject: null
 
-//    function updateActionObject(ao){
-//        ao.startSpeed0 = m0Speed.configValue;
-//        ao.startSpeed1 = m1Speed.configValue;
-//        ao.startSpeed2 = m2Speed.configValue;
-//        ao.startSpeed3 = m3Speed.configValue;
-//        ao.startSpeed4 = m4Speed.configValue;
-//        ao.startSpeed5 = m5Speed.configValue;
-//        ao.fixtureDelay0 = delay0.configValue;
-//        ao.fixtureDelay1 = delay1.configValue;
-//        ao.fixtureDelay2 = delay2.configValue;
-//        ao.fixture1Switch = fixtureSwitch.configValue;
-//        ao.fixture2Delay0 = delay20.configValue;
-//        ao.fixture2Delay1 = delay21.configValue;
-//        ao.fixture2Delay2 = delay22.configValue;
-//        ao.fixture2Switch = fixture1Switch.configValue;
-//        ao.slope = slope.configValue;
-//        ao.chamferRadius = chamferRadius.configValue;
-//        ao.linglong = linelong.configValue
-//    }
+    function updateActionObject(ao){
+        ao.useStack = useStack.isChecked;
+        ao.useDeviation = useDeviation.isChecked;
+        ao.turns = turns.configValue;
+        ao.stackSpeed = stackSpeed.configValue;
+        ao.xdeviation = xdeviation.configValue;
+        ao.ydeviation = ydeviation.configValue;
+        ao.zdeviation = zdeviation.configValue;
+        ao.xspace = xspace.configValue;
+        ao.yspace = yspace.configValue;
+        ao.zspace = zspace.configValue;
+        ao.xcount = xcount.configValue;
+        ao.ycount = ycount.configValue;
+        ao.zcount = zcount.configValue;
+        ao.xdirection = xdirection.configValue;
+        ao.ydirection = ydirection.configValue;
+        ao.zdirection = zdirection.configValue;
+    }
 
     function getstackInstace(){
         return {
@@ -172,24 +171,23 @@ Item {
     }
 
     onActionObjectChanged: {
-//        if(actionObject == null) return;
-//        m0Speed.configValue = actionObject.startSpeed0;
-//        m1Speed.configValue = actionObject.startSpeed1;
-//        m2Speed.configValue = actionObject.startSpeed2;
-//        m3Speed.configValue = actionObject.startSpeed3;
-//        m4Speed.configValue = actionObject.startSpeed4;
-//        m5Speed.configValue = actionObject.startSpeed5;
-//        delay0.configValue = actionObject.fixtureDelay0;
-//        delay1.configValue = actionObject.fixtureDelay1;
-//        delay2.configValue = actionObject.fixtureDelay2;
-//        fixtureSwitch.configValue = actionObject.fixture1Switch;
-//        delay20.configValue = actionObject.fixture2Delay0;
-//        delay21.configValue = actionObject.fixture2Delay1;
-//        delay22.configValue = actionObject.fixture2Delay2;
-//        fixture1Switch.configValue = actionObject.fixture2Switch;
-//        slope.configValue = actionObject.slope;
-////        chamferRadius.configValue = actionObject.chamferRadius;
-////        linelong.configValue = actionObject.linelong
+        if(actionObject == null) return;
+        useStack.isChecked = actionObject.useStack;
+        useDeviation.isChecked = actionObject.useDeviation;
+        turns.configValue = actionObject.turns;
+        stackSpeed.configValue = actionObject.stackSpeed;
+        xdeviation.configValue = actionObject.xdeviation;
+        ydeviation.configValue = actionObject.ydeviation;
+        zdeviation.configValue = actionObject.zdeviation;
+        xspace.configValue = actionObject.xspace;
+        yspace.configValue = actionObject.yspace;
+        zspace.configValue = actionObject.zspace;
+        xcount.configValue = actionObject.xcount;
+        ycount.configValue = actionObject.ycount;
+        zcount.configValue = actionObject.zcount;
+        xdirection.configValue = actionObject.xdirection;
+        ydirection.configValue = actionObject.ydirection;
+        zdirection.configValue = actionObject.zdirection;
     }
 
     Component.onCompleted: {

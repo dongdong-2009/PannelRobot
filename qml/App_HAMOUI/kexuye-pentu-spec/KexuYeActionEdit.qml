@@ -149,9 +149,9 @@ Item {
         pos1Axis1.visible = mode == 8 ? false : true;
         pos1Axis2.visible = mode == 8 ? false : true;
         repeateSpeed.visible = mode == 8 ? false : true;
-        repeateCount.visible = mode == 8 ? false : true;
-        zlength.visible = mode == 8 ? false : true;
-        dirLength.visible = mode == 8 ? false : true;
+//        repeateCount.visible = mode == 8 ? false : true;
+//        zlength.visible = mode == 8 ? false : true;
+//        dirLength.visible = mode == 8 ? false : true;
         dirSpeed.visible = mode == 8 ? false : true;
     }
 
@@ -513,7 +513,7 @@ Item {
             ICConfigEdit{
                 id:zlength
 //                enabled: !useEn.isChecked
-                visible: mode > 3 ? true : false
+                visible: mode > 3 && mode != 8 ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("z length")
                 configAddr: "s_rw_0_32_3_1300"
@@ -527,7 +527,7 @@ Item {
             ICConfigEdit{
                 id:dirLength
 //                enabled: !useEn.isChecked
-                visible: mode == 2 ? false : true
+                visible: mode == 2 || mode == 8? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
                 configAddr: "s_rw_0_32_3_1300"
@@ -561,6 +561,7 @@ Item {
             ICConfigEdit{
                 id:rotateSpeed
                 width: repeateSpeed.width
+                visible: mode == 8 ? false : true
                 configName: qsTr("Rotate Speed")
                 configAddr: "s_rw_0_32_1_1200"
                 unit: qsTr("%")

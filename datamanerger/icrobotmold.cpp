@@ -1578,6 +1578,8 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
         stackInfo.stackData.si[0].dataSourceID = stackMap.value("dataSourceID").toInt();
 
+        bool isZWithYEn = stackMap.value("isZWithYEn", false).toBool();
+
 
         stackMap = tmp.value("si1").toMap();
         stackInfo.stackData.si[1].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
@@ -1596,7 +1598,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dir0 = stackMap.value("dir0").toInt();
         stackInfo.stackData.si[1].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[1].dir2 = stackMap.value("dir2").toInt();
-        stackInfo.stackData.si[1].type = stackInfo.stackData.si[0].type;
+        stackInfo.stackData.si[1].type = isZWithYEn ? 1 : 0;
         stackInfo.stackData.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.stackData.si[1].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();

@@ -4993,6 +4993,10 @@ please chose!</source>
         <source>Three Point Way</source>
         <translation>三点法设定</translation>
     </message>
+    <message>
+        <source>Offset Z with Y</source>
+        <translation>Y方向偏移Z</translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>

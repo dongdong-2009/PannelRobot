@@ -392,6 +392,12 @@ public:
     }
     QString Stacks() const { return stacks_;}
     bool SaveStacks(const QString& stacks);
+
+    bool HasStackInfo(int which) const
+    {
+        return stackInfos_.contains(which);
+    }
+
     StackInfo GetStackInfo(int which, bool& isOk) const
     {
         isOk = false;
@@ -402,6 +408,12 @@ public:
         }
         return StackInfo();
     }
+
+    QMap<int, StackInfo> GetStackInfos() const
+    {
+        return stackInfos_;
+    }
+
 
     QPair<int, QList<int> > RunningStepToProgramLine(int which, int step);
 

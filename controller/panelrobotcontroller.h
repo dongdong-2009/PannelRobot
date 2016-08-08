@@ -294,36 +294,7 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
-    Q_INVOKABLE bool loadRecord(const QString& name)
-    {
-        ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
-        bool ret =  mold->LoadMold(name);
-        if(ret)
-        {
-            ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
-            ret = sendMainProgramToHost();
-            if(ret)
-            {
-                for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
-                {
-                    ret = sendSubProgramToHost(i);
-                    if(!ret)
-                    {
-                        break;
-                    }
-                }
-            }
-
-#ifndef Q_WS_QWS
-            ret = true;
-#endif
-            ICAppSettings as;
-            as.SetCurrentMoldConfig(name);
-            emit moldChanged();
-        }
-
-        return ret;
-    }
+    Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)
     {
@@ -413,7 +384,9 @@ public:
     Q_INVOKABLE void setToRunningUIPath(const QString& dirname);
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
+    Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
     Q_INVOKABLE void startUpdate(const QString& updater);
+    Q_INVOKABLE QString backupUpdater(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
     Q_INVOKABLE void modifyConfigValue(const QString& addr, const QString &value);
@@ -543,7 +516,7 @@ public:
         return ICRobotMold::CurrentMold()->Functions();
     }
 
-    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON, bool syncMold = true)
+    Q_INVOKABLE QString saveFunctions(const QString& functionsJSON, bool syncMold = true, bool sendToHost = true)
     {
         QMap<int, QMap<int, int> > ret =  ICRobotMold::CurrentMold()->SaveFunctions(functionsJSON, syncMold);
         QString toJSON = "{";
@@ -559,10 +532,13 @@ public:
             toJSON.chop(1);
         }
         toJSON += "}";
-        sendMainProgramToHost();
-        for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+        if(sendToHost)
         {
-            sendSubProgramToHost(i);
+            sendMainProgramToHost();
+            for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+            {
+                sendSubProgramToHost(i);
+            }
         }
         return toJSON;
     }
@@ -762,12 +738,14 @@ public:
     Q_INVOKABLE int exportHMIBackup(const QString& backupName) const;
     Q_INVOKABLE int exportMachineBackup(const QString& backupName) const;
     Q_INVOKABLE int exportGhost(const QString& backupName) const;
+    Q_INVOKABLE int exportUpdater(const QString& updaterName) const;
     Q_INVOKABLE QString restoreHMIBackup(const QString& backupName, int mode);
     Q_INVOKABLE void restoreMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE QString restoreGhost(const QString& backupName, int mode);
     Q_INVOKABLE void deleteHIMBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteMRBackup(const QString& backupName, int mode);
     Q_INVOKABLE void deleteGhost(const QString& backupName, int mode);
+    Q_INVOKABLE void deleteUpdater(const QString& updater, int mode);
     Q_INVOKABLE void reboot() { ::system("reboot");}
 
     Q_INVOKABLE void processEvents()

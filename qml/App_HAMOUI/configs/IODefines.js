@@ -30,6 +30,10 @@ var IOItem = function(pointName, descr)
     this.descr = descr;
 }
 
+function ioItemName(ioItem){
+    return ioItem.pointName + ":" + ioItem.descr;
+}
+
 function ValveItem(id, descr, type, time,
                    y1Board, y1Point, x1Board, x1Point, x1Dir,
                    y2Board, y2Point, x2Board, x2Point, x2Dir

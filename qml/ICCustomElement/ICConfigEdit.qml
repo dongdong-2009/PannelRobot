@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Item {
+    id:instance
     property alias configName: configName.text
     property alias configAddr: edit.bindConfig
     property alias unit: edit.unit
@@ -12,6 +13,13 @@ Item {
     property alias min: edit.min
     property alias max: edit.max
     property alias decimal: edit.decimal
+
+
+    signal editFinished();
+
+    function getConfigValue(){
+        return parseFloat(configValue);
+    }
 
     height: 24
     width: container.width + container.spacing
@@ -29,6 +37,8 @@ Item {
         ICLineEdit{
             id: edit
             height: parent.height
+            onEditFinished: instance.editFinished()
         }
     }
+
 }

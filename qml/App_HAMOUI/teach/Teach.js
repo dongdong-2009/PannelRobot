@@ -15,6 +15,8 @@ var cmdStrs = [">",
                "!="
         ];
 
+var opStrs = ["=", "+=", "-=", "x=", "÷="];
+
 var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
@@ -314,7 +316,7 @@ var flagsDefine = {
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
                    sequence, dir0, dir1, dir2, doesBindingCounter, counterID ,
-                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID){
+                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn){
     this.m0pos = m0pos || 0;
     this.m1pos = m1pos || 0;
     this.m2pos = m2pos || 0;
@@ -334,6 +336,7 @@ function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
     this.doesBindingCounter = doesBindingCounter || 0;
     this.counterID = counterID || 0;
     this.isOffsetEn = isOffsetEn || false;
+    this.isZWithYEn = isZWithYEn || false;
     this.offsetX = offsetX || 0;
     this.offsetY = offsetY || 0;
     this.offsetZ = offsetZ || 0;
@@ -417,10 +420,13 @@ var useableStack = function(){
     return stackIDs[i - 1] + 1;
 }
 
+var lastStacks = "";
 function parseStacks(stacks){
+    if(stacks === lastStacks) return;
     if(stacks.length < 4) {
         stacks = "{}";
     }
+    lastStacks = stacks;
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;
@@ -865,6 +871,15 @@ function hasStackIDAction(action){
     return action.hasOwnProperty("stackID");
 }
 
+function hasPosAction(action){
+    if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return hasPosAction(action.commentAction);
+        }
+    }
+    return action.hasOwnProperty("pos");
+}
+
 function actionStackID(action){
     if(action.action == actions.ACT_COMMENT){
         return arguments.callee(action.commentAction);
@@ -893,7 +908,12 @@ var generateAxisServoAction = function(action,
                                        earlyEndPos,
                                        isEarlySpd,
                                        earlySpdPos,
-                                       earlySpd){
+                                       earlySpd,
+                                       signalStopEn,
+                                       signalStopPoint,
+                                       signalStopMode,
+                                       speedMode,
+                                       stop){
     return {
         "action":action,
         "axis":axis,
@@ -905,7 +925,12 @@ var generateAxisServoAction = function(action,
         "earlyEndPos":earlyEndPos||0,
         "isEarlySpd":isEarlySpd || false,
         "earlySpdPos":earlySpdPos || 0,
-        "earlySpd":earlySpd || 0
+        "earlySpd":earlySpd || 0,
+        "signalStopEn":signalStopEn || false,
+        "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
+        "signalStopMode":signalStopMode ? 1 : 0,
+        "speedMode":speedMode == undefined ? 0 : speedMode,
+        "stop":stop || false
     };
 }
 
@@ -947,12 +972,13 @@ var generateSpeedAction = function(startSpeed,endSpeed){
     }
 }
 
-var generateDataAction = function(addr, type, data){
+var generateDataAction = function(addr, type, data, op){
     return {
         "action":actions.F_CMD_MEM_CMD,
         "addr":addr,
         "type":type,
-        "data":data
+        "data":data,
+        "op":op == undefined ? 0 : op
     }
 }
 
@@ -1179,9 +1205,16 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
-    var ret =  axisInfos[actionObject.axis].name + ":" +  actionObject.pos + " " +
-            qsTranslate("Teach","Speed:") + actionObject.speed + " " +
-            qsTr("Delay:") + actionObject.delay;
+     var ret =  axisInfos[actionObject.axis].name + ":";
+    if(actionObject.speedMode){
+        ret += (actionObject.speedMode == 1 ? qsTr("Speed Control PP Start") :  qsTr("Speed Control RP Start") ) + " " + qsTranslate("Teach","Speed:") + actionObject.speed ;
+    }else if(actionObject.stop){
+        ret += qsTr("Stop");
+    }else{
+        ret +=  actionObject.pos + " " +
+                qsTranslate("Teach","Speed:") + actionObject.speed + " " +
+                qsTr("Delay:") + actionObject.delay;
+    }
     if(actionObject.isBadEn)
         ret += " " + qsTr("Bad En");
     if(actionObject.isEarlyEnd){
@@ -1192,6 +1225,11 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += "\n                            ";
         ret += " " + qsTr("Early End Spd pos:") + actionObject.earlySpdPos;
         ret += " " + qsTr("Early End Spd:") + actionObject.earlySpd;
+    }
+    if(actionObject.signalStopEn){
+        ret += "\n                            ";
+        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
+        ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
     }
 
     return ret;
@@ -1492,7 +1530,8 @@ var speedActionToStringHandler = function(actionObject){
 var dataActionToStringHandler = function(actionObject){
     var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
     var typeName = (actionObject.type == 0? qsTr("Const Data:") : qsTr("Addr Data:"));
-    return ac + qsTr("Target Addr:") + actionObject.addr + " " + typeName + actionObject.data;
+    var op = actionObject.hasOwnProperty("op") ? opStrs[actionObject.op] : "=";
+    return ac + qsTr("Target Addr:") + actionObject.addr + op + typeName + actionObject.data;
 }
 
 
@@ -1551,7 +1590,8 @@ var actionObjectToEditableITems = function(actionObject){
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"},
                 {"item":"earlyEnd"},
-                {"item":"earlyEndSpd"}];
+                {"item":"earlyEndSpd"},
+                {"item":"signalStop"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||

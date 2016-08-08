@@ -48,6 +48,33 @@ MouseArea{
         }
 
         Row{
+            id:modelOffset
+            anchors.bottom: boxRectContainer.top
+            anchors.bottomMargin: 4
+            anchors.left: pointViewContainer.left
+            spacing: 6
+            Text {
+                text: qsTr("Offset") + ":"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ICConfigEdit{
+                id:offsetX
+                configAddr: "s_rw_0_32_3_1300"
+                configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")";
+            }
+            ICConfigEdit{
+                id:offsetY
+                configAddr: "s_rw_0_32_3_1300"
+                configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")";
+            }
+            ICConfigEdit{
+                id:offsetW
+                configAddr: "s_rw_0_32_3_1300"
+                configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")";
+            }
+        }
+
+        Row{
             id:boxRectContainer
             anchors.bottom: pointViewContainer.top
             anchors.bottomMargin: 4
@@ -241,9 +268,9 @@ MouseArea{
 
         Rectangle  {
             id:pointViewContainer
-            width: 490; height: 300
+            width: 490; height: 300 - 30
             x:200
-            y:50
+            y:80
             ListModel {
                 id:pointModel
             }

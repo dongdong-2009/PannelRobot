@@ -10,7 +10,7 @@ ICSettingConfigsScope{
         Row{
             id:versionContainer
             Text {
-            text: qsTr("UI Version:") + "YXMACH-SP-1.1-Robot-1.0.6" + ";"
+            text: qsTr("UI Version:") + "YXMACH-SP-1.2-SP-1.1-Robot-1.0.6" + ";"
             }
             Text {
                 id:hostVersion

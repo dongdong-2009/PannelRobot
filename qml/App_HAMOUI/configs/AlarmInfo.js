@@ -200,6 +200,35 @@ var alarmInfo = {
 
 
     300:qsTr("ALARM_COUNTER_NOT_DEFINE"),
+
+    500:m0Name + qsTr("ALARM_OVER_CURRENT"),
+    501:m1Name + qsTr("ALARM_OVER_CURRENT"),
+    502:m2Name + qsTr("ALARM_OVER_CURRENT"),
+    503:m3Name + qsTr("ALARM_OVER_CURRENT"),
+    504:m4Name + qsTr("ALARM_OVER_CURRENT"),
+    505:m5Name + qsTr("ALARM_OVER_CURRENT"),
+
+    510:m0Name + qsTr("ALARM_ZPULSER_ERR"),
+    511:m1Name + qsTr("ALARM_ZPULSER_ERR"),
+    512:m2Name + qsTr("ALARM_ZPULSER_ERR"),
+    513:m3Name + qsTr("ALARM_ZPULSER_ERR"),
+    514:m4Name + qsTr("ALARM_ZPULSER_ERR"),
+    515:m5Name + qsTr("ALARM_ZPULSER_ERR"),
+
+    520:m0Name + qsTr("ALARM_NO_ZPULSER"),
+    521:m1Name + qsTr("ALARM_NO_ZPULSER"),
+    522:m2Name + qsTr("ALARM_NO_ZPULSER"),
+    523:m3Name + qsTr("ALARM_NO_ZPULSER"),
+    524:m4Name + qsTr("ALARM_NO_ZPULSER"),
+    525:m5Name + qsTr("ALARM_NO_ZPULSER"),
+
+    530:m0Name + qsTr("ALARM_ORIGIN_DEVIATION"),
+    531:m1Name + qsTr("ALARM_ORIGIN_DEVIATION"),
+    532:m2Name + qsTr("ALARM_ORIGIN_DEVIATION"),
+    533:m3Name + qsTr("ALARM_ORIGIN_DEVIATION"),
+    534:m4Name + qsTr("ALARM_ORIGIN_DEVIATION"),
+    535:m5Name + qsTr("ALARM_ORIGIN_DEVIATION"),
+
 }
 
 var alarmDetails = {

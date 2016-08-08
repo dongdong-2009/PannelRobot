@@ -45,7 +45,8 @@ Rectangle {
             var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
             originText = styledCN + " " + originText;
         }
-        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace("\n                            ", "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        var reg = new RegExp("\n                            ", 'g');
+        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
     function beforeSaveProgram(which){
@@ -300,12 +301,13 @@ Rectangle {
                                                          programListView.currentIndex,
                                                          JSON.stringify(actionObject))){
                 if(mID >=0){
-                    saveModules();
+                    saveModules(false);
                 }else if(editing.currentIndex === 0)
                     panelRobotController.saveMainProgram(modelToProgram(0));
                 else
-                    panelRobotController.saveSubProgram(modelToProgram(editing.currentIndex));
+                    panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
             }
+            return;
         }
         hasModify = true;
     }
@@ -317,10 +319,16 @@ Rectangle {
             line = lines[l];
             tmp = md.get(line);
             var actionObject = tmp.mI_ActionObject;
-            var originpPoints = actionObject.points;
+            var toFixAction;
+            if(actionObject.action === Teach.actions.ACT_COMMENT){
+                toFixAction = actionObject.commentAction;
+            }else
+                toFixAction = actionObject;
+
+            var originpPoints = toFixAction.points;
             for(var p = 0; p < originpPoints.length; ++p){
                 if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
-                    actionObject.points[p].pos = point.point;
+                    toFixAction.points[p].pos = point.point;
                 }
             }
             md.setProperty(line, "mI_ActionObject",actionObject);
@@ -394,12 +402,12 @@ Rectangle {
         return JSON.stringify(ret);
     }
 
-    function saveModuleByName(name, syncMold){
+    function saveModuleByName(name, syncMold, sendToHost){
         var fun = Teach.functionManager.getFunctionByName(name);
         if(fun == null) return;
         fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
         var fJSON = Teach.functionManager.toJSON();
-        var eIJSON = panelRobotController.saveFunctions(fJSON, syncMold);
+        var eIJSON = panelRobotController.saveFunctions(fJSON, syncMold, (sendToHost == undefined ? true : sendToHost));
         var errInfo = JSON.parse(eIJSON)[fun.id];
         return errInfo;
     }
@@ -419,8 +427,8 @@ Rectangle {
         return errInfo;
     }
 
-    function saveModules(){
-        return saveModuleByName(moduleSel.text(currentEditingModule), true);
+    function saveModules(sendToHost){
+        return saveModuleByName(moduleSel.text(currentEditingModule), true, (sendToHost == undefined ?  true : sendToHost));
     }
 
     function saveProgram(which){
@@ -546,6 +554,7 @@ Rectangle {
         isFollow.visible = isAuto;
 
         modifyEditor.isAutoMode = isAuto;
+        PData.clearAutoModifyPosActions();
         hideActionEditorPanel();
         speedDispalyContainer.visible = isAuto;
         if(hasModify)
@@ -750,6 +759,7 @@ Rectangle {
                         if(currentIndex < 0) return;
                         if(currentIndex == 0){
                             programListView.currentIndex = -1;
+                            Teach.currentParsingProgram = editing.currentIndex;
                             programListView.model = PData.programs[editing.currentIndex];
                             currentEditingProgram = editing.currentIndex;
                             currentEditingModule = 0;
@@ -921,6 +931,18 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
+//                        if(Teach.hasPosAction(actionObject)){
+//                            var index = programListView.currentIndex;
+//                            var pIndex = editing.currentIndex;
+//                            var mIndex = moduleSel.currentIndex;
+//                            var lineID = (mIndex > 0 ? (mIndex + 8) : pIndex) + ":" + index;
+//                            console.log(lineID);
+//                            if(PData.hasAutoModified(lineID)){
+//                                actionObject.pos = PData.autoModifyPosActions[lineID];
+//                            }
+//                            PData.autoModifyPosActions[lineID] = actionObject.pos;
+//                        }
+
                         modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
                         if(showY + modifyEditor.height >= container.height)
@@ -1613,17 +1635,19 @@ Rectangle {
         //        var program = JSON.parse(panelRobotController.mainProgram());
         var program;
         var i;
-        var sI;
-        var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
-        for(i = 0; i < Teach.stackInfos.length; ++i){
-            sI = Teach.stackInfos[i];
-            if(sI.dsHostID >= 0 && sI.posData.length > 0){
-                ESData.externalDataManager.registerDataSource(sI.dsName,
-                                                              ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
-                toSendStackData.dsID = sI.dsName;
-                toSendStackData.dsData = sI.posData;
-                var posData = ESData.externalDataManager.parseRaw(toSendStackData);
-                panelRobotController.sendExternalDatas(JSON.stringify(posData));
+        if(hasInit){
+            var sI;
+            var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
+            for(i = 0; i < Teach.stackInfos.length; ++i){
+                sI = Teach.stackInfos[i];
+                if(sI.dsHostID >= 0 && sI.posData.length > 0){
+                    ESData.externalDataManager.registerDataSource(sI.dsName,
+                                                                  ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
+                    toSendStackData.dsID = sI.dsName;
+                    toSendStackData.dsData = sI.posData;
+                    var posData = ESData.externalDataManager.parseRaw(toSendStackData);
+                    panelRobotController.sendExternalDatas(JSON.stringify(posData));
+                }
             }
         }
 

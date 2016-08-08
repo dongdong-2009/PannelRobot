@@ -557,21 +557,23 @@ Item {
                 columns: 1
                 spacing: 6
                 ICComboBoxConfigEdit{
-                    id:motorFactory
-                    configName: qsTr("Motor Factory")
-                    configNameWidth: pdata.configNameWidth
-                    inputWidth: pdata.inputWidth
-                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4")]
-                    z:10
-                }
-                ICComboBoxConfigEdit{
                     id:encoderType
                     configName: qsTr("Encoder Type")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3")]
-                    z:9
+                    z:10
                 }
+                ICComboBoxConfigEdit{
+                    id:motorFactory
+                    configName: qsTr("Motor Factory")
+                    configNameWidth: pdata.configNameWidth
+                    inputWidth: pdata.inputWidth
+                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4")]
+                    z:9
+                    visible: encoderType.configValue == 1
+                }
+
                 ICComboBoxConfigEdit{
                     id:encoderReadWay
                     configName: qsTr("Encoder Read Way")
@@ -599,14 +601,6 @@ Item {
                 }
 
                 ICConfigEdit{
-                    id:length
-                    configName: qsTr("Arm Length")
-                    configNameWidth: pdata.configNameWidth
-                    inputWidth: pdata.inputWidth
-                    unit: qsTr("mm")
-                    visible: false
-                }
-                ICConfigEdit{
                     id:pulseCountPerCircle
                     configName: qsTr("Pulse Count Per Circle")
                     configNameWidth: pdata.configNameWidth
@@ -614,10 +608,19 @@ Item {
                     unit: qsTr("a")
                 }
                 ICConfigEdit{
+                    id:length
+                    configName: qsTr("Arm Length")
+                    configNameWidth: pdata.configNameWidth
+                    inputWidth: pdata.inputWidth
+                    unit: qsTr("mm")
+                    visible: axisType.configValue == 1
+                }
+                ICConfigEdit{
                     id:reductionRatio
                     configName: qsTr("Reduction Ratio")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
+                    visible: axisType.configValue == 0
                 }
                 ICConfigEdit{
                     id:pLimit

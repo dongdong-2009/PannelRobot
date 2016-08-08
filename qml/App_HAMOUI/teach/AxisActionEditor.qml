@@ -3,6 +3,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
+import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
@@ -30,6 +31,9 @@ Item {
                 if(axisActionInfo == null)
                     continue;
                 if(axisActionInfo.hasOwnProperty("pos")){
+                    var speedMode = 0;
+                    if(speedPPStart.isChecked) speedMode = 1;
+                    if(speedRPStart.isChecked) speedMode = 2;
                     ret.push(Teach.generateAxisServoAction(editor.servoAction,
                                                            i,
                                                            axisActionInfo.pos,
@@ -40,7 +44,12 @@ Item {
                                                            earlyEnd.configValue,
                                                            earlyEndSpeedPos.isChecked,
                                                            earlyEndSpeedPos.configValue,
-                                                           earlyEndSpeed.configValue));
+                                                           earlyEndSpeed.configValue,
+                                                           signalStop.isChecked,
+                                                           signalStop.configValue,
+                                                           fastStop.isChecked,
+                                                           speedMode,
+                                                           stop.isChecked));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -140,6 +149,8 @@ Item {
                 configName: qsTr("Early End Pos")
                 configValue: "0"
                 inputWidth: 60
+                configNameWidth: 140
+                enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
             }
             Row{
                 spacing: 4
@@ -148,7 +159,8 @@ Item {
                     configName: qsTr("ESD Pos")
                     configValue: "0"
                     inputWidth: 60
-
+                    configNameWidth: earlyEnd.configNameWidth
+                    enabled: earlyEnd.enabled
                 }
 
                 ICConfigEdit{
@@ -163,18 +175,90 @@ Item {
                 }
             }
 
-//            AxisActionEditorAxisComponent{
-//                id:m6Axis
-//                axisName: AxisDefine.axisInfos[6].name
-//                psName: [qsTr("B ON"), qsTr("B OFF")]
-//                axisDefine: pData.axisDefine.s7Axis
-//            }
-//            AxisActionEditorAxisComponent{
-//                id:m7Axis
-//                axisName: AxisDefine.axisInfos[7].name
-//                psName: [qsTr("C ON"), qsTr("C OFF")]
-//                axisDefine: pData.axisDefine.s8Axis
-//            }
+            Row{
+                spacing: 6
+                ICCheckableComboboxEdit{
+                    id:signalStop
+                    configName: qsTr("Signal Stop")
+                    configValue: -1
+                    inputWidth: 100
+                    z:2
+                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                    configNameWidth: earlyEnd.configNameWidth
+//                    items: [  "X010",
+//                        "X011",
+//                        "X012",
+//                        "X013",
+//                        "X014",
+//                        "X015",
+//                        "X016",
+//                        "X017",
+//                        "X020",
+//                        "X021",
+//                        "X022",
+//                        "X023",
+//                        "X024",
+//                        "X025",
+//                        "X026",
+//                        "X027",
+//                        "X030",
+//                        "X031",
+//                        "X032",
+//                        "X033",
+//                        "X034",
+//                        "X035",
+//                        "X036",
+//                        "X037",
+//                        "X040",
+//                        "X041",
+//                        "X042",
+//                        "X043",
+//                        "X044",
+//                        "X045",
+//                        "X046",
+//                        "X047"]
+                    popupMode: 1
+                    popupHeight: 300
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
+                        }
+                        items = ioItems;
+                        configValue = 0;
+                    }
+                }
+                ICCheckBox{
+                    id:fastStop
+                    text: qsTr("Fast Stop")
+                }
+            }
+
+            ICButtonGroup{
+                id:speedControlGroup
+                spacing: 10
+
+                ICCheckBox{
+                    id:speedPPStart
+                    text: qsTr("Speed PP Start")
+                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked)
+                }
+                ICCheckBox{
+                    id:speedRPStart
+                    text: qsTr("Speed RP Start")
+                    enabled: speedPPStart.enabled
+                }
+
+                ICCheckBox{
+                    id:stop
+                    text:qsTr("Stop")
+                    enabled: speedPPStart.enabled
+                }
+            }
         }
     }
     onVisibleChanged: {

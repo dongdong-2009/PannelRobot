@@ -319,10 +319,16 @@ Rectangle {
             line = lines[l];
             tmp = md.get(line);
             var actionObject = tmp.mI_ActionObject;
-            var originpPoints = actionObject.points;
+            var toFixAction;
+            if(actionObject.action === Teach.actions.ACT_COMMENT){
+                toFixAction = actionObject.commentAction;
+            }else
+                toFixAction = actionObject;
+
+            var originpPoints = toFixAction.points;
             for(var p = 0; p < originpPoints.length; ++p){
                 if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
-                    actionObject.points[p].pos = point.point;
+                    toFixAction.points[p].pos = point.point;
                 }
             }
             md.setProperty(line, "mI_ActionObject",actionObject);

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QIcon>
 #include "iclog.h"
+#include <QFile>
 
 ICLog iclog("RobotPanel.debuglog", 1024 * 1024);
 
@@ -50,7 +51,40 @@ int main(int argc, char *argv[])
 
     qDebug()<<appDir.exists("startup_page.png");
     QPixmap splashPixmap(appDir.filePath("startup_page.png"));
-    ICSplashScreen *splash= new ICSplashScreen(splashPixmap, SW_VER);
+    QString sw = SW_VER;
+    appDir.cdUp();
+    if(appDir.exists("settingpages/maintainPage.qml"))
+    {
+        QFile f(appDir.absoluteFilePath("settingpages/maintainPage.qml"));
+        if(f.open(QFile::ReadOnly))
+        {
+            QString content  = f.readAll();
+            f.close();
+            QStringList lines = content.split("\n");
+            for(int i = 0; i < lines.size(); ++i)
+            {
+                if(lines.at(i).contains("UI Version:"))
+                {
+                    QString l = lines.at(i);
+                    int beginIndex = -1;
+                    for(int j = 0; j < l.size(); ++j)
+                    {
+                        if(l.at(j) == '+')
+                        {
+                            if(beginIndex >= 0)
+                            {
+                                QString ver = l.mid(beginIndex + 1, j - beginIndex - 1);
+                                sw = ver.replace("\"","").trimmed() + "_" + sw;
+                            }
+                            else
+                                beginIndex = j;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ICSplashScreen *splash= new ICSplashScreen(splashPixmap, sw);
     splash->SetRange(0, 7);
     splash->show();
     PanelRobotController robotController(splash, &iclog);

@@ -7,8 +7,8 @@
 
 ```javascript
 {
-    "dsID":"www.geforcevision.com.cam", //唯一标识,我要用来区别不同的数据源
-    "dsData":
+    "dsID":"www.geforcevision.com.cam", //唯一标识,我要用来区别不同的数据源
+    "dsData":
     [
         {
             "camID":"0",
@@ -30,7 +30,7 @@
                 {"ModelID":"3","X":"888.001","Y":"1345.001","Angel":"123.123","ExtValue_0":null,"ExtValue_1":null}
             ]
         },
-    ]
+    ]
 }
 ```
 
@@ -49,14 +49,14 @@ ExtValue_1:代表相似度
 ```javascript
 {
     "dsID":"www.geforcevision.com.cam",
-    "reqType":"standardize", //命令类型:标定
-    "camID":0,
-    "data":
+    "reqType":"standardize", //命令类型:标定
+    "camID":0,
+    "data":
     [
         { "X":0.000,"Y":0.000 }, //第1个点的机械手的世界坐标
         { "X":0.000,"Y":0.000 }, //第2个点的机械手的世界坐标
         { "X":0.000,"Y":0.000 }, //...
-    ]
+    ]
 }
 ```
 
@@ -89,14 +89,15 @@ ExtValue_1:代表相似度
 {
     "dsID":"www.geforcevision.com.cam",
     "reqType":"listModel", //命令类型:获取模板信息
+    "currentModel":{"name":"模板名称", "modelID":0}
     "data":
     [
         {
             "name":"模板名称",
             "models":
             [
-                {"id":0, "offsetX":1.000, "offsestY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-                {"id":1, "offsetX":1.000, "offsestY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+                {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+                {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
                 ...
             ]
         },
@@ -104,8 +105,8 @@ ExtValue_1:代表相似度
             "name":"模板名称",
             "models":
             [
-                {"id":0, "offsetX":1.000, "offsestY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-                {"id":1, "offsetX":1.000, "offsestY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+                {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+                {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
                 ...
             ]
         },

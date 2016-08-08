@@ -36,34 +36,64 @@ var CamDataSource = {
         var camDS = DataSource.createNew(name, hostID);
         camDS.parse = function(dsData){
             var ret = {"hostID":hostID};
-            var retData = [];
-            if(!(dsData instanceof Array)){
-                return ret;
-            }
-            var d;
-            var posDatas = [];
-            var pos;
-            for(var i = 0; i < dsData.length; ++i){
-                d = dsData[i];
-                if(d.hasOwnProperty("data")){
-                    posDatas = d.data;
-                    for(var j = 0; j < posDatas.length; ++j){
-                        pos = posDatas[j];
-                        var toAdd = new ExternalDataPosFormat();
-                        if(pos.hasOwnProperty("X"))
-                            toAdd.m0 = parseFloat(pos.X);
-                        if(pos.hasOwnProperty("Y"))
-                            toAdd.m1 = parseFloat(pos.Y);
-                        if(pos.hasOwnProperty("Angel"))
-                            toAdd.m5 = parseFloat(pos.Angel);
-                        if(pos.X != null && pos.Y != null && pos.Angel != null)
-                            retData.push(toAdd);
+            if(dsData.hasOwnProperty("reqType"))
+                ret.reqType = dsData.reqType;
+            else
+                ret.reqType = "query";
+            if(ret.reqType == "query"){
+                var retData = [];
+                if(!(dsData.dsData instanceof Array)){
+                    return ret;
+                }
+                var d;
+                var posDatas = [];
+                var pos;
+                for(var i = 0, len = dsData.dsData.length; i < len; ++i){
+                    d = dsData.dsData[i];
+                    if(d.hasOwnProperty("data")){
+                        posDatas = d.data;
+                        for(var j = 0; j < posDatas.length; ++j){
+                            pos = posDatas[j];
+                            var toAdd = new ExternalDataPosFormat();
+                            if(pos.hasOwnProperty("X"))
+                                toAdd.m0 = parseFloat(pos.X);
+                            if(pos.hasOwnProperty("Y"))
+                                toAdd.m1 = parseFloat(pos.Y);
+                            if(pos.hasOwnProperty("Angel"))
+                                toAdd.m5 = parseFloat(pos.Angel);
+                            if(pos.X != null && pos.Y != null && pos.Angel != null)
+                                retData.push(toAdd);
+                        }
                     }
                 }
+                ret.dsData = retData;
+            }else if(ret.reqType == "listModel"){
+                ret.data = dsData.data;
+                ret.currentModel = dsData.currentModel;
             }
-            ret.dsData = retData;
+
             return ret;
         };
+        camDS.getModelListCmd = function(){
+            var toSend = {
+                "dsID":"www.geforcevision.com.cam",
+                "reqType":"listModel"
+            };
+            return JSON.stringify(toSend);
+        }
+        camDS.getSetModelOffsetCmd = function(data){
+            var toSend = {
+                "dsID":"www.geforcevision.com.cam",
+                "reqType":"setModelOffset",
+                "name":data.name,
+                "model":data.model,
+                "offsetX": data.offsetX,
+                "offsetY": data.offsetY,
+                "offsetA": data.offsetA
+            }
+            return JSON.stringify(toSend);
+        }
+
         return camDS;
     }
 }
@@ -76,8 +106,9 @@ var CustomDataSource = {
             var ret = {"hostID":hostID};
             var retData = [];
             var tmp;
-            for(var i = 0; i < dsData.length; ++i){
-                tmp = dsData[i].pointPos;
+            var len = dsData.dsData.length;
+            for(var i = 0; i < len; ++i){
+                tmp = dsData.dsData[i].pointPos;
                 retData.push({"m0":parseFloat(tmp.m0),
                              "m1":parseFloat(tmp.m1),
                              "m2":parseFloat(tmp.m2),
@@ -87,7 +118,6 @@ var CustomDataSource = {
             }
             ret.dsData = retData;
             return ret;
-
         };
         return customDS;
     }
@@ -115,14 +145,31 @@ function ExternalDataManager(){
         if(!this.dataSourceExist(rawData.dsID)){
             return [];
         }
-        return this.dataSources[rawData.dsID].parse(rawData.dsData);
+//        return this.dataSources[rawData.dsID].parse(rawData.dsData);
+        return this.dataSources[rawData.dsID].parse(rawData);
+
     }
 
-    this.dataSourceNameList = function(){
+    this.getModelListCmd = function(dsID){
+        if(this.dataSourceExist(dsID)){
+            return this.dataSources[dsID].getModelListCmd();
+        }
+        return "";
+    }
+
+    this.getSetModelOffsetCmd = function(dsID, data){
+        if(this.dataSourceExist(dsID)){
+            return this.dataSources[dsID].getSetModelOffsetCmd(data);
+        }
+        return "";
+    }
+
+    this.dataSourceNameList = function(withHID){
         var ret = [];
+        var whd = (withHID == undefined ? true : withHID);
         for(var d in this.dataSources){
             if(this.dataSources[d].type != 1)
-                ret.push(d + "::" + this.dataSources[d].getName() + "::[HID:" + this.dataSources[d].getHostID() + "]");
+                ret.push(d + (whd ? "::" + this.dataSources[d].getName() +  "::[HID:" + this.dataSources[d].getHostID() + "]" : ""));
         }
         return ret;
 

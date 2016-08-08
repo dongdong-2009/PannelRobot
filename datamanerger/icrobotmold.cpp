@@ -5,6 +5,17 @@
 #include "parser.h"
 #include "serializer.h"
 #include "hccommparagenericdef.h"
+union SpeedControlActionData
+{
+    struct
+    {
+        quint32 id:5;
+        quint32 dir:1;
+        quint32 stop:1;
+        quint32 rev:25;
+    }b;
+    quint32 all;
+};
 
 ICRobotMoldPTR ICRobotMold::currentMold_;
 QMap<int, QStringList> CreatePathActionMotorNamesMap()
@@ -56,23 +67,46 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
     item.append(v->value("action").toInt());
-    item.append(v->value("axis", 0).toInt());
-    item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
-    item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
-    item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
     bool isEarlyEnd = v->value("isEarlyEnd", false).toBool();
     bool isEarlySpd = v->value("isEarlySpd", false).toBool();
-    if(isEarlyEnd || isEarlySpd)
+    bool isSignalStop = v->value("signalStopEn", false).toBool();
+    int speedMode = v->value("speedMode", 0).toInt();
+    bool isStop = v->value("stop", false).toBool();
+    if(speedMode != 0 || isStop)
     {
-        int op = 0;
-        op |= isEarlySpd ? 1 : 0;
-        op |= isEarlyEnd ? 2 : 0;
-        item.append(op);
-        item.append(v->value("earlySpdPos", 0).toInt());
-        item.append(v->value("earlyEndPos", 0).toInt());
-        item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
-        item[0] = F_CMD_SINGLE_ADD_FUNC;
+        SpeedControlActionData spData;
+        spData.b.id = v->value("axis", 0).toInt();
+        spData.b.dir = speedMode == 1 ? 1 : 0;
+        spData.b.stop = isStop ? 0 : 1;
+        spData.b.rev = 0;
+        item.append(spData.all);
+        item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
+        item[0] = F_CMD_SINGLE_SPEED;
     }
+    else
+    {
+        item.append(v->value("axis", 0).toInt());
+        item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
+        item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
+        item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
+        if(isEarlyEnd || isEarlySpd || isSignalStop)
+        {
+            int op = 0;
+            op |= isEarlySpd ? 1 : 0;
+            op |= isEarlyEnd ? 2 : 0;
+            item.append(op);
+            item.append(v->value("earlySpdPos", 0).toInt());
+            if(isSignalStop)
+                item.append(v->value("signalStopPoint", 0).toInt());
+            else
+                item.append(v->value("earlyEndPos", 0).toInt());
+            item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
+            item.append(isSignalStop ? 1 : 0);
+            item.append(v->value("signalStopMode", 0).toInt());
+            item[0] = F_CMD_SINGLE_ADD_FUNC;
+        }
+    }
+
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
     item.SetActualPos(v->value("pos", 0).toDouble() * 100);
@@ -181,9 +215,9 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
     if(moldItemAction == F_CMD_MOVE_POSE && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if((moldItemAction == F_CMD_LINE3D_MOVE_POSE ||
-//        moldItemAction == F_CMD_ARC3D_MOVE_POINT_POSE ||
-//        moldItemAction == F_CMD_ARC_RELATIVE_POSE ||
-//        moldItemAction == F_CMD_ARC3D_MOVE_POSE ||
+        //        moldItemAction == F_CMD_ARC3D_MOVE_POINT_POSE ||
+        //        moldItemAction == F_CMD_ARC_RELATIVE_POSE ||
+        //        moldItemAction == F_CMD_ARC3D_MOVE_POSE ||
         moldItemAction == F_CMD_LINE_RELATIVE_POSE) && points.size() != 1)
         return ICRobotMold::kCCErr_Wrong_Action_Format;
     if(moldItemAction == F_CMD_JOINT_MOVE_POINT && points.size() != 1)
@@ -365,63 +399,92 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
     StackInfo si = v->value("stackInfo").value<StackInfo>();
-    item.append(si.stackData.si[0].m0pos);
-    item.append(si.stackData.si[0].m1pos);
-    item.append(si.stackData.si[0].m2pos);
-    item.append(si.stackData.si[0].m3pos);
-    item.append(si.stackData.si[0].m4pos);
-    item.append(si.stackData.si[0].m5pos);
-    item.append(ICUtility::doubleToInt(v->value("speed0", 80).toDouble(), 1));
-    item.append(si.stackData.si[0].space0);
-    item.append(si.stackData.si[0].space1);
-    item.append(si.stackData.si[0].space2);
-    item.append(si.stackData.si[0].count0);
-    item.append(si.stackData.si[0].count1);
-    item.append(si.stackData.si[0].count2);
-    item.append(si.stackData.all[12]);
-//    if(si.stackData.si[0].sequence > 5)
-//    {
-//        item[0] = F_CMD_SINGLE_STACK;
-
-//    }
-    item.append(si.stackData.si[1].space0);
-    item.append(si.stackData.si[1].space1);
-    item.append(si.stackData.si[1].space2);
-    item.append(si.stackData.si[1].count0);
-    item.append(si.stackData.si[1].count1);
-    item.append(si.stackData.si[1].count2);
-    item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
-    //    item.append(si.si[1].doesBindingCounter);
-    //    item.append(si.si[1].counterID);
-    item.append(si.stackData.all[30]);
-    if(si.stackData.si[0].isOffsetEn)
+    if(si.stackData.si[0].sequence > 5)
     {
-        item.append(si.stackData.si[0].offsetX);
-        item.append(si.stackData.si[0].offsetY);
-        item.append(si.stackData.si[0].offsetZ);
+        item[0] = F_CMD_SINGLE_STACK;
+        if(si.stackData.si[0].sequence == 6)
+        {
+            item.append(si.stackData.si[0].m0pos);
+            item.append(si.stackData.si[0].space0);
+            item.append(si.stackData.si[0].count0);
+            si.stackData.si[0].sequence = 0;
+            si.stackData.si[0].dir0 = si.stackData.si[0].dir0;
+        }
+        else if(si.stackData.si[0].sequence == 7)
+        {
+            item.append(si.stackData.si[0].m1pos);
+            item.append(si.stackData.si[0].space1);
+            item.append(si.stackData.si[0].count1);
+            si.stackData.si[0].sequence = 1;
+            si.stackData.si[0].dir0 = si.stackData.si[0].dir1;
+        }
+        else if(si.stackData.si[0].sequence == 8)
+        {
+            item.append(si.stackData.si[0].m2pos);
+            item.append(si.stackData.si[0].space2);
+            item.append(si.stackData.si[0].count2);
+            si.stackData.si[0].sequence = 2;
+            si.stackData.si[0].dir0 = si.stackData.si[0].dir2;
+        }
+        item.append(ICUtility::doubleToInt(v->value("speed0", 80).toDouble(), 1));
+        item.append(si.stackData.all[12]);
+
     }
     else
     {
-        item.append(0);
-        item.append(0);
-        item.append(0);
-    }
+        item.append(si.stackData.si[0].m0pos);
+        item.append(si.stackData.si[0].m1pos);
+        item.append(si.stackData.si[0].m2pos);
+        item.append(si.stackData.si[0].m3pos);
+        item.append(si.stackData.si[0].m4pos);
+        item.append(si.stackData.si[0].m5pos);
+        item.append(ICUtility::doubleToInt(v->value("speed0", 80).toDouble(), 1));
+        item.append(si.stackData.si[0].space0);
+        item.append(si.stackData.si[0].space1);
+        item.append(si.stackData.si[0].space2);
+        item.append(si.stackData.si[0].count0);
+        item.append(si.stackData.si[0].count1);
+        item.append(si.stackData.si[0].count2);
+        item.append(si.stackData.all[12]);
+        item.append(si.stackData.si[1].space0);
+        item.append(si.stackData.si[1].space1);
+        item.append(si.stackData.si[1].space2);
+        item.append(si.stackData.si[1].count0);
+        item.append(si.stackData.si[1].count1);
+        item.append(si.stackData.si[1].count2);
+        item.append(ICUtility::doubleToInt(v->value("speed1", 80).toDouble(), 1));
+        //    item.append(si.si[1].doesBindingCounter);
+        //    item.append(si.si[1].counterID);
+        item.append(si.stackData.all[30]);
+        if(si.stackData.si[0].isOffsetEn)
+        {
+            item.append(si.stackData.si[0].offsetX);
+            item.append(si.stackData.si[0].offsetY);
+            item.append(si.stackData.si[0].offsetZ);
+        }
+        else
+        {
+            item.append(0);
+            item.append(0);
+            item.append(0);
+        }
 
-    if(si.stackData.si[1].isOffsetEn)
-    {
-        item.append(si.stackData.si[1].offsetX);
-        item.append(si.stackData.si[1].offsetY);
-        item.append(si.stackData.si[1].offsetZ);
-    }
-    else
-    {
-        item.append(0);
-        item.append(0);
-        item.append(0);
-    }
-    if(si.stackData.si[0].type >= 2)
-    {
-        item[1] = (si.dsHostID);
+        if(si.stackData.si[1].isOffsetEn)
+        {
+            item.append(si.stackData.si[1].offsetX);
+            item.append(si.stackData.si[1].offsetY);
+            item.append(si.stackData.si[1].offsetZ);
+        }
+        else
+        {
+            item.append(0);
+            item.append(0);
+            item.append(0);
+        }
+        if(si.stackData.si[0].type >= 2)
+        {
+            item[1] = (si.dsHostID);
+        }
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
@@ -863,17 +926,20 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 {
                     isSyncBegin = true;
                     ++fStep;
+                    ++programEndLine;
                     continue;
                 }
                 else if(item.at(0) == F_CMD_SYNC_END)
                 {
                     isSyncBegin = false;
                     //                    ++fStep;
+                    ++programEndLine;
                     continue;
                 }
                 if(!isSyncBegin)
                     ++fStep;
                 ret.MapModuleLineToModuleID(fStep, mID);
+                //                qDebug()<<fp.key()<<programEndLine<<fStep;
                 ret.MapStep(programEndLine , fStep);
                 ++programEndLine;
             }
@@ -1336,7 +1402,8 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     if(module >= 0)
     {
         int moduleEntry = programs_.at(which).ModuleEntry(module);
-        realStep += moduleEntry;
+
+        realStep += programs_.at(which).RealStepToUIStep(moduleEntry).first();
     }
     hostStep = programs_.at(which).UIStepToRealStep(realStep);
     //    hostStep = UIStepToRealStep(which, module, step);
@@ -1511,6 +1578,8 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
         stackInfo.stackData.si[0].dataSourceID = stackMap.value("dataSourceID").toInt();
 
+        bool isZWithYEn = stackMap.value("isZWithYEn", false).toBool();
+
 
         stackMap = tmp.value("si1").toMap();
         stackInfo.stackData.si[1].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
@@ -1529,7 +1598,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dir0 = stackMap.value("dir0").toInt();
         stackInfo.stackData.si[1].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[1].dir2 = stackMap.value("dir2").toInt();
-        stackInfo.stackData.si[1].type = stackInfo.stackData.si[0].type;
+        stackInfo.stackData.si[1].type = isZWithYEn ? 1 : 0;
         stackInfo.stackData.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.stackData.si[1].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();

@@ -114,3 +114,13 @@ var registerEditableActions = {
 function isRegisterEditableAction(action){
     return registerEditableActions.hasOwnProperty(action);
 }
+
+var autoModifyPosActions = {}
+
+function hasAutoModified(index){
+    return autoModifyPosActions.hasOwnProperty(index);
+}
+
+function clearAutoModifyPosActions(){
+    autoModifyPosActions = {}
+}

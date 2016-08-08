@@ -91,6 +91,18 @@
         <source>data</source>
         <translation>数据</translation>
     </message>
+    <message>
+        <source>Signal Stop</source>
+        <translation>输入通就停止</translation>
+    </message>
+    <message>
+        <source>Fast Stop</source>
+        <translation>立即停</translation>
+    </message>
+    <message>
+        <source>Pos(+/-):</source>
+        <translation>位置(+/-):</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -421,6 +433,22 @@
         <source>ALARM_PROGRAM_CHANGE_ERR</source>
         <translation>手控和主机教导程序不一致</translation>
     </message>
+    <message>
+        <source>ALARM_OVER_CURRENT</source>
+        <translation>过电流报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ZPULSER_ERR</source>
+        <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>ALARM_NO_ZPULSER</source>
+        <translation>无Z脉冲</translation>
+    </message>
+    <message>
+        <source>ALARM_ORIGIN_DEVIATION</source>
+        <translation>原点偏移</translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -745,6 +773,26 @@
         <source>%</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Signal Stop</source>
+        <translation>输入通就停止</translation>
+    </message>
+    <message>
+        <source>Fast Stop</source>
+        <translation>立即停</translation>
+    </message>
+    <message>
+        <source>Speed PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -765,7 +813,7 @@
     <name>AxisConfigs</name>
     <message>
         <source>Arm Length</source>
-        <translation>臂长</translation>
+        <translation>每转距离</translation>
     </message>
     <message>
         <source>mm</source>
@@ -897,7 +945,7 @@
     </message>
     <message>
         <source>Encode Type3</source>
-        <translation>无</translation>
+        <translation>步进</translation>
     </message>
     <message>
         <source>Encoder Read Way</source>
@@ -4607,6 +4655,38 @@ please chose!</source>
 </source>
         <translation>导入完成!</translation>
     </message>
+    <message>
+        <source>Robot</source>
+        <translation>机械手</translation>
+    </message>
+    <message>
+        <source>Vision</source>
+        <translation>视觉模板</translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Scan Model</source>
+        <translation>扫描模板</translation>
+    </message>
+    <message>
+        <source>Offset X</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset Y</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset A</source>
+        <translation>A偏移</translation>
+    </message>
+    <message>
+        <source>Mold has error!</source>
+        <translation>模号有错!</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -4921,6 +5001,14 @@ please chose!</source>
         <source>Only Z</source>
         <translation>只堆Z</translation>
     </message>
+    <message>
+        <source>Three Point Way</source>
+        <translation>三点法设定</translation>
+    </message>
+    <message>
+        <source>Offset Z with Y</source>
+        <translation>Y方向偏移Z</translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
@@ -4959,6 +5047,35 @@ please chose!</source>
     <message>
         <source>Sync Replace</source>
         <translation>同步替换</translation>
+    </message>
+</context>
+<context>
+    <name>StackThreePointWayEditor</name>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Start Point</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source> dir next Point</source>
+        <translation>方向下一点</translation>
+    </message>
+    <message>
+        <source>The system will caculate the offset and space when comfirm. 
+You just need to set the count configs after this setting.</source>
+        <translation>设定三点之后,系统会自动计算偏移和间距.你只需在外面设定
+各方向的计数即可.</translation>
     </message>
 </context>
 <context>
@@ -5662,6 +5779,34 @@ please chose!</source>
         <source>Target Addr:</source>
         <translation>目标地址:</translation>
     </message>
+    <message>
+        <source>When </source>
+        <translation>当</translation>
+    </message>
+    <message>
+        <source>is On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>slow stop</source>
+        <translation>就减速停</translation>
+    </message>
+    <message>
+        <source>fast stop</source>
+        <translation>就立即停</translation>
+    </message>
+    <message>
+        <source>Speed Control PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed Control RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6033,6 +6178,25 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>VisionModelItem</name>
+    <message>
+        <source>Offset X</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset Y</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Offset A</source>
+        <translation>A偏移</translation>
+    </message>
+    <message>
+        <source>Use this Model</source>
+        <translation>使用该模板</translation>
+    </message>
+</context>
+<context>
     <name>WaitActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -6151,6 +6315,18 @@ please chose!</source>
     <message>
         <source>Get it</source>
         <translation>知道了</translation>
+    </message>
+    <message>
+        <source>Origin is changed? Do you want to refind an origin?</source>
+        <translation>原点已经改变.需要重设原点位置吗?</translation>
+    </message>
+    <message>
+        <source>Refind</source>
+        <translation>重设原点</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
     </message>
 </context>
 <context>

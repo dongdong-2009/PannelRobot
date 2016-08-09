@@ -80,10 +80,14 @@ Rectangle {
             onButtonClicked: {
                 var editor;
                 var tip = "";
+                var details = "";
                 for(var cid in PData.editors){
                     editor = PData.editors[cid];
                     if(editor.isSel){
-                        if(ProgramList.counterLinesInfo.idUsed(editor.cID)){
+                        var usedInfo = ProgramList.counterLinesInfo.idUsed(editor.cID);
+                        if(usedInfo.used){
+//                            console.log(ProgramList.LinesInfo.usedLineInfoString(usedInfo));
+                            details += ProgramList.LinesInfo.usedLineInfoString(usedInfo) + "\n";
                             tip += Teach.counterManager.counterToString(editor.cID) + " " +  qsTr("is using!") + "\n";
                             continue;
                         }
@@ -97,7 +101,7 @@ Rectangle {
                     }
                 }
                 if(tip != ""){
-                    tipBox.warning(tip, qsTr("OK"));
+                    tipBox.warning(tip, qsTr("OK"), details);
                 }
             }
 

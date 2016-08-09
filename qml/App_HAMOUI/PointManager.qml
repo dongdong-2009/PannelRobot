@@ -60,17 +60,22 @@ MouseArea{
             ICConfigEdit{
                 id:offsetX
                 configAddr: "s_rw_0_32_3_1300"
-                configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")";
+                configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
+                configValue: "0.000"
             }
             ICConfigEdit{
                 id:offsetY
                 configAddr: "s_rw_0_32_3_1300"
-                configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")";
+                configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
+                configValue: "0.000"
+
             }
             ICConfigEdit{
                 id:offsetW
                 configAddr: "s_rw_0_32_3_1300"
-                configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")";
+                configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
+                configValue: "0.000"
+
             }
         }
 

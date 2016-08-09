@@ -352,6 +352,7 @@ Rectangle {
                 height: loadRecord.height
                 visible: false
                 onButtonClicked: {
+                    tipDialog.runningTip(qsTr("Exporting..."))
                     var exportMolds = [];
                     var record;
                     for(var i = 0; i < recordsModel.count; ++i){
@@ -377,6 +378,7 @@ Rectangle {
                 visible: false
                 onButtonClicked: {
                     if(recordsView.openBackupPackage == "") return;
+                    tipDialog.runningTip(qsTr("Importing..."))
                     var importMolds = [];
                     var record;
                     var i;

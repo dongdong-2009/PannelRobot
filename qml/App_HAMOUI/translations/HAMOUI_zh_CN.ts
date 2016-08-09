@@ -3717,15 +3717,15 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation>无开关</translation>
+        <translation>手动设定原点加开关</translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation>有开关</translation>
+        <translation>直接找Z脉冲</translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation>备用</translation>
+        <translation>自动设定原点加开关</translation>
     </message>
 </context>
 <context>
@@ -4706,6 +4706,14 @@ please chose!</source>
         <source>Mold has error!</source>
         <translation>模号有错!</translation>
     </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>导入中...</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -5640,15 +5648,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 1</source>
-        <translation type="unfinished"></translation>
+        <translation>手动设定原点加开关</translation>
     </message>
     <message>
         <source>Type 2</source>
-        <translation type="unfinished"></translation>
+        <translation>直接找Z脉冲</translation>
     </message>
     <message>
         <source>Type 3</source>
-        <translation type="unfinished"></translation>
+        <translation>自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>

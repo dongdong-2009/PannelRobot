@@ -30,6 +30,7 @@ Item {
     property bool  doesBindingCounter: false
 
     property alias isOffsetEn: offsetEn.isChecked
+    property alias isZWithYEn: zWithYEn.isChecked
     property alias offsetX: x_offset.configValue
     property alias offsetY: y_offset.configValue
     property alias offsetZ: z_offset.configValue
@@ -78,6 +79,31 @@ Item {
         counterSel.configValue = 0;
         return 0;
     }
+    StackThreePointWayEditor{
+        id:threePointWayEditor
+        width: 680
+        height: 180
+        z:100
+        y:-40
+        visible: false
+        onEditConfirm: {
+            motor0.configValue = data.sp.m0;
+            motor1.configValue = data.sp.m1;
+            motor2.configValue = data.sp.m2;
+            motor3.configValue = data.sp.m3;
+            motor4.configValue = data.sp.m4;
+            motor5.configValue = data.sp.m5;
+            offsetX = data.offset.m0;
+            offsetY = data.offset.m1;
+            space0.configValue = Math.abs(data.space.m0).toFixed(3);
+            space1.configValue = Math.abs(data.space.m1).toFixed(3);
+            dir0.configValue = data.space.m0 >= 0 ? 1 : 0;
+            dir1.configValue = data.space.m1 >= 0 ? 1 : 0;
+            if((offsetX != "0.000") || (offsetY != "0.000"))
+                offsetEn.isChecked = true;
+
+        }
+    }
 
     ICCheckBox{
         id:offsetEn
@@ -85,6 +111,38 @@ Item {
         x:200
         y:-32
         visible: mode != 2
+    }
+    ICCheckBox{
+        id:zWithYEn
+        anchors.left: offsetEn.right
+        anchors.leftMargin: 6
+        anchors.top: offsetEn.top
+        text: qsTr("Offset Z with Y")
+        visible: offsetEn.isChecked
+
+    }
+
+    ICButton{
+        id:threePointWayBtn
+        text:qsTr("Three Point Way")
+        anchors.left: zWithYEn.right
+        anchors.leftMargin: 32
+        anchors.top: zWithYEn.top
+
+        height: offsetEn.height
+        width: 150
+        visible: offsetEn.visible
+        onButtonClicked: {
+            threePointWayEditor.show({"sp":{"m0":motor0.configValue,
+                                             "m1":motor1.configValue,
+                                             "m2":motor2.configValue,
+                                             "m3":motor3.configValue,
+                                             "m4":motor4.configValue,
+                                             "m5":motor5.configValue},
+                                         "offset":{"m0":x_offset.getConfigValue(), "m1":y_offset.getConfigValue(), "m2":z_offset.getConfigValue()},
+                                         "space":{"m0":space0.getConfigValue(), "m1":space1.getConfigValue(), "m2":space2.getConfigValue()}
+                                     });
+        }
     }
 
     Column{
@@ -300,12 +358,12 @@ Item {
         counterSel.items = countersStrList;
     }
 
-//    onVisibleChanged: {
-//        if(visible)
-//            updateCounters();
-//        else
-//            counterSel.configValue = -1;
-//    }
+    //    onVisibleChanged: {
+    //        if(visible)
+    //            updateCounters();
+    //        else
+    //            counterSel.configValue = -1;
+    //    }
     onDataSourceChanged: {
         var items = dataSource;
         items.splice(0,0, qsTr("Custom Pos"));

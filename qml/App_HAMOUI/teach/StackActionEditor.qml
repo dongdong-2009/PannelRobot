@@ -24,6 +24,7 @@ Rectangle {
         }
         return ret;
     }
+
     function updateStacksSel(){
         Teach.parseStacks(panelRobotController.stacks());
         var hasStacks = Teach.stackInfosDescr();
@@ -138,6 +139,7 @@ Rectangle {
             page1.doesBindingCounter = stackInfo.si0.doesBindingCounter;
             page1.setCounterID(stackInfo.si0.counterID);
             page1.isOffsetEn = stackInfo.si0.isOffsetEn;
+            page1.isZWithYEn = stackInfo.si0.isZWithYEn || false;
             page1.offsetX = stackInfo.si0.offsetX;
             page1.offsetY = stackInfo.si0.offsetY;
             page1.offsetZ = stackInfo.si0.offsetZ;
@@ -163,6 +165,7 @@ Rectangle {
             page2.doesBindingCounter = stackInfo.si1.doesBindingCounter;
             page2.setCounterID(stackInfo.si1.counterID);
             page2.isOffsetEn = stackInfo.si1.isOffsetEn;
+            page2.isZWithYEn = stackInfo.si1.isZWithYEn || false;
             page2.offsetX = stackInfo.si1.offsetX;
             page2.offsetY = stackInfo.si1.offsetY;
             page2.offsetZ = stackInfo.si1.offsetZ;
@@ -220,7 +223,7 @@ Rectangle {
                                           page1.offsetZ,
                                           page1.dataSourceName,
                                           selectedDS,
-                                          dsID);
+                                          page1.isZWithYEn);
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -243,8 +246,9 @@ Rectangle {
                                           page2.offsetX,
                                           page2.offsetY,
                                           page2.offsetZ,
+                                          page2.dataSourceName,
                                           selectedDS,
-                                          dsID);
+                                          page2.isZWithYEn);
             var realST = stackType;
             if(realST >= 2){
                 realST = page1.isCustomDataSource ? 3 : 2;
@@ -397,8 +401,10 @@ Rectangle {
             anchors.leftMargin: 6
             onButtonClicked: {
                 var sid = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                if(ProgramList.stackLinesInfo.idUsed(sid)){
-                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + " " + qsTr("is using!"));
+                var usedInfo = ProgramList.stackLinesInfo.idUsed(sid);
+                if(usedInfo.used){
+                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + " " + qsTr("is using!"),
+                                  ProgramList.LinesInfo.usedLineInfoString(usedInfo));
                     return;
                 }
 

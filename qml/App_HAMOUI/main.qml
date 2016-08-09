@@ -380,7 +380,6 @@ Rectangle {
     ICMessageBox{
         id:originAlarm
         z:1001
-        anchors.centerIn: parent
         visible: false
         x:200
         y:200
@@ -580,7 +579,8 @@ Rectangle {
 //        };
 //        var toTest = {
 //            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"listModel", //命令类型:获取模板信息
+//            "reqType":"listModel",
+//            "currentModel":{"name":"模板名称","modelID":0},
 //            "data":
 //            [
 //                {

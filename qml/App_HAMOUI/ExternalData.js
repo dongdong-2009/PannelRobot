@@ -69,6 +69,7 @@ var CamDataSource = {
                 ret.dsData = retData;
             }else if(ret.reqType == "listModel"){
                 ret.data = dsData.data;
+                ret.currentModel = dsData.currentModel;
             }
 
             return ret;
@@ -78,6 +79,18 @@ var CamDataSource = {
                 "dsID":"www.geforcevision.com.cam",
                 "reqType":"listModel"
             };
+            return JSON.stringify(toSend);
+        }
+        camDS.getSetModelOffsetCmd = function(data){
+            var toSend = {
+                "dsID":"www.geforcevision.com.cam",
+                "reqType":"setModelOffset",
+                "name":data.name,
+                "model":data.model,
+                "offsetX": data.offsetX,
+                "offsetY": data.offsetY,
+                "offsetA": data.offsetA
+            }
             return JSON.stringify(toSend);
         }
 
@@ -105,7 +118,6 @@ var CustomDataSource = {
             }
             ret.dsData = retData;
             return ret;
-
         };
         return customDS;
     }
@@ -141,6 +153,13 @@ function ExternalDataManager(){
     this.getModelListCmd = function(dsID){
         if(this.dataSourceExist(dsID)){
             return this.dataSources[dsID].getModelListCmd();
+        }
+        return "";
+    }
+
+    this.getSetModelOffsetCmd = function(dsID, data){
+        if(this.dataSourceExist(dsID)){
+            return this.dataSources[dsID].getSetModelOffsetCmd(data);
         }
         return "";
     }

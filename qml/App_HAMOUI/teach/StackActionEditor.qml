@@ -401,8 +401,10 @@ Rectangle {
             anchors.leftMargin: 6
             onButtonClicked: {
                 var sid = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                if(ProgramList.stackLinesInfo.idUsed(sid)){
-                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + " " + qsTr("is using!"));
+                var usedInfo = ProgramList.stackLinesInfo.idUsed(sid);
+                if(usedInfo.used){
+                   tipBox.warning(qsTr("Stack") + "[" + sid + "] " + " " + qsTr("is using!"),
+                                  ProgramList.LinesInfo.usedLineInfoString(usedInfo));
                     return;
                 }
 

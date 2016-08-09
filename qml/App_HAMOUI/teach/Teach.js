@@ -890,7 +890,7 @@ function actionStackID(action){
 function actionCounterIDs(action){
     if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
-        return [si.si0.counterID, si.si1.counterID];
+        return [si.si0.counterID];
     }else if(action.action == actions.ACT_COMMENT){
         return arguments.callee(action.commentAction);
     }
@@ -1623,7 +1623,6 @@ var actionObjectToEditableITems = function(actionObject){
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
              actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
              actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){

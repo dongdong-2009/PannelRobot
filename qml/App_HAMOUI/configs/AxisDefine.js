@@ -52,3 +52,11 @@ function changeAxisNum(num){
     }
     informMonitors();
 }
+
+function usedAxisNum(){
+    var c = 0;
+    for(var i = 0, len = axisInfos.length; i < len; ++i){
+        if(axisInfos[i].visiable) ++c;
+    }
+    return c;
+}

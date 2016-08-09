@@ -13,15 +13,17 @@ MouseArea{
     function showForOrigin(){
         hinttext.text = qsTr("please press startup button to origin");
         if(!visible){
-            originMode.visible = true;
+            originMode.visible = false;
             visible = true;
+            reOrigin.isChecked = true;
+            panelRobotController.modifyConfigValue(28, 3);
         }
     }
 
     function showForOriginning(){
         hinttext.text = qsTr("Originning");
         if(!visible){
-            //            originMode.visible = true;
+            originMode.visible = false;
             visible = true;
         }
     }
@@ -96,6 +98,7 @@ MouseArea{
             y:stop.y
             anchors.left: stop.right
             anchors.leftMargin: 20
+            visible: false
             onButtonClicked: {
                 helpText.visible = !helpText.visible;
                 text = helpText.visible ? qsTr("Hide Help") : qsTr("Show Help");
@@ -140,6 +143,9 @@ MouseArea{
                     }
                     helpText.visible = false;
                     help.text = qsTr("Show Help");
+                }else{
+                    reOrigin.isChecked = true;
+                    panelRobotController.modifyConfigValue(28, 3);
                 }
             }
         }

@@ -303,6 +303,7 @@ Rectangle {
                 ICButtonGroup{
                     mustChecked: true
                     spacing: 20
+                    x:6
                     ICCheckBox{
                         id:alarmSel
                         text: qsTr("Alarm Log")

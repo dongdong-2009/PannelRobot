@@ -1568,6 +1568,13 @@
     </message>
 </context>
 <context>
+    <name>ICMessageBox</name>
+    <message>
+        <source>Details</source>
+        <translation>详情</translation>
+    </message>
+</context>
+<context>
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
@@ -4513,6 +4520,14 @@ please chose!</source>
     <message>
         <source>Program Compiling...</source>
         <translation>程序编译中...</translation>
+    </message>
+    <message>
+        <source>Sub-</source>
+        <translation>子程序-</translation>
+    </message>
+    <message>
+        <source>Lines:</source>
+        <translation>行:</translation>
     </message>
 </context>
 <context>

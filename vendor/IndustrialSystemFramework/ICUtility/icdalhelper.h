@@ -236,14 +236,29 @@ bool ICDALHelper::UpdateMoldFncValue(int addr, T value, const QString& moldName)
 //    }
     QSqlQuery query_;
     QString tb = MoldConfigNameWrapper(MoldFncTableName(moldName));
-    bool ok = query_.exec(QString("UPDATE %1 SET value = %2 WHERE addr = %3")
-                          .arg(tb)
-                          .arg(value)
-                          .arg(addr));
-
-    if(!ok)
+    bool ok = query_.exec(QString("SELECT addr FROM %1 WHERE addr = %2").arg(tb).arg(addr));
+    if(query_.next())
     {
-        qDebug()<<query_.lastError();
+        ok = query_.exec(QString("UPDATE %1 SET value = %2 WHERE addr = %3")
+                         .arg(tb)
+                         .arg(value)
+                         .arg(addr));
+
+        if(!ok)
+        {
+            qDebug()<<query_.lastError();
+        }
+    }
+    else
+    {
+        ok = query_.exec(QString("INSERT INTO %1 VALUES(%2, %3)")
+                         .arg(tb)
+                         .arg(addr)
+                         .arg(value));
+        if(!ok)
+        {
+            qDebug()<<query_.lastError();
+        }
     }
 #ifdef TEST_TIME_DEBUG
     /*TIME_TEST*/
@@ -265,14 +280,30 @@ bool ICDALHelper::UpdateMachineConfigValue(int addr, T value,const QString& mach
 #endif
     QSqlQuery query_;
     QString tb = SystemConfigNameWrapper(machineName);
-    bool ok = query_.exec(QString("UPDATE %1 SET value = %2 WHERE addr = %3")
-                          .arg(tb)
-                          .arg(value)
-                          .arg(addr));
 
-    if(!ok)
+    bool ok = query_.exec(QString("SELECT addr FROM %1 WHERE addr = %2").arg(tb).arg(addr));
+    if(query_.next())
     {
-        qDebug()<<query_.lastError();
+        ok = query_.exec(QString("UPDATE %1 SET value = %2 WHERE addr = %3")
+                         .arg(tb)
+                         .arg(value)
+                         .arg(addr));
+
+        if(!ok)
+        {
+            qDebug()<<query_.lastError();
+        }
+    }
+    else
+    {
+        ok = query_.exec(QString("INSERT INTO %1 VALUES(%2, %3)")
+                         .arg(tb)
+                         .arg(addr)
+                         .arg(value));
+        if(!ok)
+        {
+            qDebug()<<query_.lastError();
+        }
     }
 #ifdef TEST_TIME_DEBUG
     /*TIME_TEST*/

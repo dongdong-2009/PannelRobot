@@ -168,7 +168,6 @@ Item {
                     var ret;
                     if(ac <= 5) ret =  150;
                     else ret =  parent.height - (AxisDefine.axisInfos.length - 5) * (m1Axis.height + parent.spacing);
-                    console.log("axis", ret, ac)
                     return ret;
                 }
 

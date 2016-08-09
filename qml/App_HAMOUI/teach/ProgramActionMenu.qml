@@ -174,6 +174,7 @@ Rectangle {
             icon: "../images/action_item_vision.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
+            visible: false
             onButtonClicked: visionMenuTriggered()
         }
 
@@ -192,6 +193,7 @@ Rectangle {
             icon: "../images/write_ram.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
+            visible: false
             onButtonClicked: dataMenuTriggered()
         }
 

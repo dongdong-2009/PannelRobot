@@ -793,6 +793,22 @@
         <source>Stop</source>
         <translation>停止</translation>
     </message>
+    <message>
+        <source>B ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -1565,6 +1581,13 @@
     <message>
         <source>decimal</source>
         <translation>精度</translation>
+    </message>
+</context>
+<context>
+    <name>ICMessageBox</name>
+    <message>
+        <source>Details</source>
+        <translation>详情</translation>
     </message>
 </context>
 <context>
@@ -3694,15 +3717,15 @@
     <name>OriginActionEditor</name>
     <message>
         <source>Type1</source>
-        <translation>无开关</translation>
+        <translation>手动设定原点加开关</translation>
     </message>
     <message>
         <source>Type2</source>
-        <translation>有开关</translation>
+        <translation>直接找Z脉冲</translation>
     </message>
     <message>
         <source>Type3</source>
-        <translation>备用</translation>
+        <translation>自动设定原点加开关</translation>
     </message>
 </context>
 <context>
@@ -4514,6 +4537,14 @@ please chose!</source>
         <source>Program Compiling...</source>
         <translation>程序编译中...</translation>
     </message>
+    <message>
+        <source>Sub-</source>
+        <translation>子程序-</translation>
+    </message>
+    <message>
+        <source>Lines:</source>
+        <translation>行:</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4674,6 +4705,14 @@ please chose!</source>
     <message>
         <source>Mold has error!</source>
         <translation>模号有错!</translation>
+    </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>导入中...</translation>
     </message>
 </context>
 <context>
@@ -5609,15 +5648,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 1</source>
-        <translation type="unfinished"></translation>
+        <translation>手动设定原点加开关</translation>
     </message>
     <message>
         <source>Type 2</source>
-        <translation type="unfinished"></translation>
+        <translation>直接找Z脉冲</translation>
     </message>
     <message>
         <source>Type 3</source>
-        <translation type="unfinished"></translation>
+        <translation>自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>

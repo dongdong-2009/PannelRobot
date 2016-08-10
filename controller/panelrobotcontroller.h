@@ -281,7 +281,6 @@ public:
         return (item.size() == 6) ? item.at(4).toInt() : 0;
     }
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
-    Q_INVOKABLE void setConfigValue(int addr, quint32 v);
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();
     Q_INVOKABLE ICAxisDefine* axisDefine();
@@ -752,6 +751,15 @@ public:
     Q_INVOKABLE void processEvents()
     {
         qApp->processEvents();
+    }
+
+    Q_INVOKABLE QString createCustomAddr(int type, int perm , int startPos, int size,
+                                         int baseAddr, int decimal = 0, const QString &unit = QString())
+    {
+        ICAddrWrapperCPTR ca = new ICAddrWrapper(type, perm, startPos, size,
+                                                 baseAddr, decimal, unit);
+        return ca->ToString();
+
     }
 
     //    Q_INVOKABLE QString debug_LogContent() const

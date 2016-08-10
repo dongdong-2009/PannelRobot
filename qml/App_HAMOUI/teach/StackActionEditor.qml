@@ -17,7 +17,7 @@ Rectangle {
         var ret = [];
         if(useFlag.isChecked){
             var statckStr = stackSelector.configText();
-            if(statckStr.currentIndex < 0) return ret;
+            if(stackSelector.configValue < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
             ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue, speed1.configValue));

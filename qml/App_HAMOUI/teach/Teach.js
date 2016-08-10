@@ -762,9 +762,9 @@ var VALVE_CHECK_END = 9;
 actions.F_CMD_NULL = actHelper++;
 actions.F_CMD_SYNC_START = actHelper++;
 actions.F_CMD_SYNC_END = actHelper++;
-actions.F_CMD_SINGLE = actHelper++;
-actions.F_CMD_JOINTCOORDINATE = actHelper++;
-actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
+actions.F_CMD_SINGLE = actHelper++; //<单轴动作
+actions.F_CMD_JOINTCOORDINATE = actHelper++; //<关节坐标点运动
+actions.F_CMD_COORDINATE_DEVIATION = actHelper++; //< 直线坐标偏移位置
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINEXY_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52000;
 actions.F_CMD_LINEXZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52001;
@@ -1734,7 +1734,8 @@ var canActionTestRun = function(actionObject){
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
+            actionObject.action === actions.F_CMD_JOINT_RELATIVE ||
+            actionObject.action === actions.F_CMD_SINGLE;
 }
 
 

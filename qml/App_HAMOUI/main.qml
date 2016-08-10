@@ -676,10 +676,13 @@ Rectangle {
     function onETH0DataIn(data){
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
-        var offsetX = panelRobotController.getConfigValue(ICConfigDefines.visionOffsetXAddr);
-        var offsetY = panelRobotController.getConfigValue(ICConfigDefines.visionOffsetYAddr);
-        var offsetW = panelRobotController.getConfigValue(ICConfigDefines.visionOffsetWAddr);
+        var offsetX = panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetXAddr);
+        var offsetY = panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetYAddr);
+        var offsetW = panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetWAddr);
         for(var i = 0, len = posData.dsData.length; i < len; ++i){
+            posData.dsData[i].m0 = (parseFloat(posData.dsData[i].m0) + offsetX).toFixed(3);
+            posData.dsData[i].m1 = (parseFloat(posData.dsData[i].m1) + offsetY).toFixed(3);
+            posData.dsData[i].m5 = (parseFloat(posData.dsData[i].m5) + offsetW).toFixed(3);
 
         }
 

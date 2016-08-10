@@ -2,25 +2,25 @@
 Qt.include("../../utils/HashTable.js")
 
 var kTPHelper = 0;
-var kTP_LINE_START_POINT = kTPHelper++;
-var kTP_LINE_END_POINT   = kTPHelper++;
-var kTP_AUTO_START_POINT = kTPHelper++;
-var kTP_AUTO_END_POINT = kTPHelper++;
+var kTP_LINE_START_POINT = kTPHelper++;    //< 直线起点位置
+var kTP_LINE_END_POINT   = kTPHelper++;    //< 直线终点位置
+var kTP_AUTO_START_POINT = kTPHelper++;    //< 关节坐标起点位置
+var kTP_AUTO_END_POINT = kTPHelper++;      //< 关节坐标终点位置
 var kTP_RELATIVE_LINE_START_POINT = kTPHelper++;  //< 直线相对移动位置
 var kTP_RELATIVE_AUTO_END_POINT = kTPHelper++;     //< 关节坐标相对移动位置
-var kTP_TEACH_LINE_START_POINT = kTPHelper++;
-var kTP_TEACH_LINE_END_POINT = kTPHelper++;
-var kTP_TEACH_AUTO_START_POINT = kTPHelper++;
-var kTP_TEACH_AUTO_END_POINT = kTPHelper++;
+var kTP_TEACH_LINE_START_POINT = kTPHelper++;   //< 直线起点位置
+var kTP_TEACH_LINE_END_POINT = kTPHelper++;     //< 直线终点位置
+var kTP_TEACH_AUTO_START_POINT = kTPHelper++;   //< 关节坐标起点位置
+var kTP_TEACH_AUTO_END_POINT = kTPHelper++;     //< 关节坐标终点位置
 var kTP_TEACH_RELATIVE_LINE_START_POINT= kTPHelper++;   //< 直线相对移动位置
 var kTP_TEACH_RELATIVE_AUTO_END_POINT= kTPHelper++;     //< 关节坐标相对移动位置
 kTPHelper = 30;
-var kTP_ARC_START_POINT = kTPHelper++;
-var kTP_ARC_MID_POINT = kTPHelper++;
-var kTP_ARC_END_POINT = kTPHelper++;
-var kTP_TEACH_ARC_START_POINT = kTPHelper++;
-var kTP_TEACH_ARC_MID_POINT = kTPHelper++;
-var kTP_TEACH_ARC_END_POINT = kTPHelper++;
+var kTP_ARC_START_POINT = kTPHelper++;   //< 弧线起点位置
+var kTP_ARC_MID_POINT = kTPHelper++;     //< 弧线中间点位置
+var kTP_ARC_END_POINT = kTPHelper++;     //< 弧线终点位置
+var kTP_TEACH_ARC_START_POINT = kTPHelper++; //< 弧线起点位置
+var kTP_TEACH_ARC_MID_POINT = kTPHelper++;      //< 弧线中间点位置
+var kTP_TEACH_ARC_END_POINT = kTPHelper++;      //< 弧线终点位置
 
 
 var kAM_SINGLE_STEP_MODE = 1;

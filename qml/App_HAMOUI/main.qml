@@ -13,6 +13,7 @@ import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
+import "configs/ConfigDefines.js" as ICConfigDefines
 
 Rectangle {
     id:mainWindow
@@ -675,6 +676,13 @@ Rectangle {
     function onETH0DataIn(data){
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
+        var offsetX = panelRobotController.getConfigValue(ICConfigDefines.visionOffsetXAddr);
+        var offsetY = panelRobotController.getConfigValue(ICConfigDefines.visionOffsetYAddr);
+        var offsetW = panelRobotController.getConfigValue(ICConfigDefines.visionOffsetWAddr);
+        for(var i = 0, len = posData.dsData.length; i < len; ++i){
+
+        }
+
         console.log("cam data:", JSON.stringify(posData));
         var usid = JSON.parse(panelRobotController.usedSourceStacks());
         for(var sid in usid){
@@ -695,6 +703,9 @@ Rectangle {
 
     Component.onCompleted: {
         //        menuOperation.setChecked(true);
+        ICConfigDefines.visionOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 800, 3, "mm");
+        ICConfigDefines.visionOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 801, 3, "mm");
+        ICConfigDefines.visionOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 802, 3, "°");
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

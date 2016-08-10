@@ -7,6 +7,10 @@ var MIN_INT_16 = -32767;
 var MAX_INT_32 = 2147483647;
 var MIN_INT_32 = -2147483647;
 
+var visionOffsetXAddr = "";
+var visionOffsetYAddr = "";
+var visionOffsetWAddr = "";
+
 var configRanges = {
     "m_rw_0_16_0_0":[-100, 100],
     "m_rw_0_16_0_1":[2, 200],

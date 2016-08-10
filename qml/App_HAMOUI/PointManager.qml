@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../ICCustomElement"
 import "./teach/Teach.js" as Teach
 import "configs/AxisDefine.js" as AxisDefine
+import "configs/ConfigDefines.js" as ICConfigDefines
 
 MouseArea{
     id:instance
@@ -29,7 +30,6 @@ MouseArea{
     function onPointAdded(point){
         pointModel.append({"point":point});
     }
-
     Rectangle {
         id:container
         width: parent.width
@@ -47,35 +47,40 @@ MouseArea{
             pointModel.append({"point":point});
         }
 
-        Row{
-            id:modelOffset
+
+        ICSettingConfigsScope{
             anchors.bottom: boxRectContainer.top
             anchors.bottomMargin: 4
             anchors.left: pointViewContainer.left
-            spacing: 6
-            Text {
-                text: qsTr("Offset") + ":"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ICConfigEdit{
-                id:offsetX
-                configAddr: "s_rw_0_32_3_1300"
-                configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
-                configValue: "0.000"
-            }
-            ICConfigEdit{
-                id:offsetY
-                configAddr: "s_rw_0_32_3_1300"
-                configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
-                configValue: "0.000"
+            width: modelOffset.width
+            height: modelOffset.height
+            Row{
+                id:modelOffset
+                spacing: 6
+                Text {
+                    text: qsTr("Offset") + ":"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                ICConfigEdit{
+                    id:offsetX
+                    configAddr:"m_rw_0_32_3_800"
+                    configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
+                    configValue: "0.000"
+                }
+                ICConfigEdit{
+                    id:offsetY
+                    configAddr:"m_rw_0_32_3_801"
+                    configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
+                    configValue: "0.000"
 
-            }
-            ICConfigEdit{
-                id:offsetW
-                configAddr: "s_rw_0_32_3_1300"
-                configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
-                configValue: "0.000"
+                }
+                ICConfigEdit{
+                    id:offsetW
+                    configAddr:"m_rw_0_32_3_802"
+                    configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
+                    configValue: "0.000"
 
+                }
             }
         }
 
@@ -323,6 +328,7 @@ MouseArea{
             onAxisDefinesChanged();
         }
     }
+
 
     function onAxisDefinesChanged(){
         m0.visible = AxisDefine.axisInfos[0].visiable;

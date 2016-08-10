@@ -281,6 +281,7 @@ public:
         return (item.size() == 6) ? item.at(4).toInt() : 0;
     }
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
+    Q_INVOKABLE void setConfigValue(int addr, quint32 v);
     Q_INVOKABLE void syncConfigs();
     Q_INVOKABLE QString records();
     Q_INVOKABLE ICAxisDefine* axisDefine();

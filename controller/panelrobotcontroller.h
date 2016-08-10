@@ -753,6 +753,15 @@ public:
         qApp->processEvents();
     }
 
+    Q_INVOKABLE QString createCustomAddr(int type, int perm , int startPos, int size,
+                                         int baseAddr, int decimal = 0, const QString &unit = QString())
+    {
+        ICAddrWrapperCPTR ca = new ICAddrWrapper(type, perm, startPos, size,
+                                                 baseAddr, decimal, unit);
+        return ca->ToString();
+
+    }
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

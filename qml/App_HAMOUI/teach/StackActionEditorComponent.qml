@@ -261,7 +261,7 @@ Item {
                 ICConfigEdit{
                     id:space0
                     configName: qsTr("Space0")
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1301"
                     inputWidth: content.spaceWidth
                     configNameWidth: 90
                 }
@@ -274,7 +274,7 @@ Item {
                 ICConfigEdit{
                     id:space1
                     configName: qsTr("Space1")
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1301"
                     inputWidth: content.spaceWidth
                     configNameWidth: space0.configNameWidth
                 }
@@ -287,7 +287,7 @@ Item {
                 ICConfigEdit{
                     id:space2
                     configName: qsTr("Space2")
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1301"
                     inputWidth: content.spaceWidth
                     configNameWidth: space0.configNameWidth
 

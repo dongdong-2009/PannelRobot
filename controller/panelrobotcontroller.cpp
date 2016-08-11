@@ -600,10 +600,13 @@ QString PanelRobotController::scanUpdaters(const QString &filter, int mode) cons
     return scanUserDir("updaters", QString("%1*.bfe").arg(filter));
 }
 
-void PanelRobotController::startUpdate(const QString &updater)
+void PanelRobotController::startUpdate(const QString &updater, int mode)
 {
     ICUpdateSystem us;
-    us.SetPacksDir(ICAppSettings().UsbPath);
+    if(mode == 0)
+        us.SetPacksDir(ICAppSettings().UsbPath);
+    else
+        us.SetPacksDir(QString(ICAppSettings().UserPath) + "/updaters");
     host_->StopCommunicate();
     system("mkdir updatehost/");
     hostUpdateFinishedWatcher_.addPath("updatehost");

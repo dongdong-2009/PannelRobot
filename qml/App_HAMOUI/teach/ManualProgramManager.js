@@ -65,6 +65,7 @@ function ManualProgramManager(){
     this.addProgram = function(name, program){
         var id = this.findUsableID();
         var toRet = icStrformat(qsTr("M CMD[{0}]:{1}"), id, name);
+
         db.transaction(function(tx){
             var rs = tx.executeSql(icStrformat("INSERT INTO manualprogram VALUES({0}, '{1}', '{2}')",
                                      id , name, JSON.stringify(program)));

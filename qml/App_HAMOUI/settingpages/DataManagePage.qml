@@ -323,7 +323,7 @@ Item {
                         var name = backuViews.model.get(backuViews.currentIndex).name;
                         if(uDisk.isChecked)
                             panelRobotController.backupUpdater(name)
-                        panelRobotController.startUpdate(name);
+                        panelRobotController.startUpdate(name, uDisk.isChecked ? 0 : 1);
                     }
                 }
             }

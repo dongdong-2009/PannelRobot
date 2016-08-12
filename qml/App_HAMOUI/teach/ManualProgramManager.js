@@ -62,6 +62,17 @@ function ManualProgramManager(){
         return ret;
     }
 
+    this.programList = function(){
+        var ret = [];
+        var p;
+        for(var i = 0; i < programs.length; ++i){
+            p = programs[i];
+            if(p !== undefined)
+                ret.push(p);
+        }
+        return ret;
+    }
+
     this.addProgram = function(name, program){
         var id = this.findUsableID();
         var toRet = icStrformat(qsTr("M CMD[{0}]:{1}"), id, name);
@@ -119,6 +130,7 @@ function ManualProgramManager(){
                 m[event](program);
         }
     }
+
 
 
     if(this.getProgram(0) === undefined){

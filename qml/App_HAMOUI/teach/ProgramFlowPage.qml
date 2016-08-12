@@ -371,7 +371,7 @@ Rectangle {
             }
         }
 
-        var mPs = ManualProgramManager.manualProgramManager.programs;
+        var mPs = ManualProgramManager.manualProgramManager.programList();
         for(i = 0; i < mPs.length; ++i){
             updateProgramModel(manualProgramModel, mPs[i].program);
             collectSpecialLines(PData.kManualProgramIndex);
@@ -1699,7 +1699,7 @@ Rectangle {
         PData.programs.push(manualProgramModel);
 
         updateProgramModels();
-        var mPs = ManualProgramManager.manualProgramManager.programs;
+        var mPs = ManualProgramManager.manualProgramManager.programList();
         for(var i = 0; i < mPs.length; ++i){
             Teach.definedPoints.parseProgram(mPs[i].program);
         }

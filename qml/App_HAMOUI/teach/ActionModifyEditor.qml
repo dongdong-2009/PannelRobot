@@ -60,7 +60,7 @@ Item {
         height = 0;
         PData.editingActionObject = actionObject;
         PData.editingEditors = [];
-        for(i = 0; i < editableItems.length; ++i){
+        for(i = 0, len = editableItems.length; i < len; ++i){
             item = editableItems[i];
             editor = PData.itemToEditorMap.get(item.item);
             if(PData.isRegisterEditor(editor)){
@@ -83,8 +83,8 @@ Item {
             }else if(editor == pos){
                 if(isAutoMode){
                     pos.configAddr = "";
-                    pos.min = -5;
-                    pos.max = 5;
+                    pos.min = -20;
+                    pos.max = 20;
                     pos.decimal = 3;
                     pos.configValue = "0.000";
                     pos.configName = qsTr("Pos(+/-):");
@@ -117,6 +117,16 @@ Item {
                     speed1.visible = false;
                 }
             }
+        }
+        if(Teach.hasPosAction(actionObject)){
+            var isSpeedMode = false;
+            if(actionObject.stop)
+                isSpeedMode = true;
+            else if(actionObject.speedMode)
+                isSpeedMode = true;
+            earlyEndPos.visible = !isSpeedMode && !isAutoMode;
+            earlyEndSpdEditor.visible = !isSpeedMode && !isAutoMode;
+            signalStopEditor.visible = !isSpeedMode && !isAutoMode;
         }
         height += buttons.height + buttons.spacing + 6;
 //        height += 20
@@ -229,6 +239,7 @@ Item {
                 ICCheckableLineEdit{
                     id:earlyEndSpeedPos
                     configName: qsTr("ESD Pos")
+                    enabled: earlyEndPos.enabled
                 }
 
                 ICConfigEdit{
@@ -249,7 +260,7 @@ Item {
                     configValue: -1
                     inputWidth: 100
                     z:2
-                    enabled: !earlyEndPos.isChecked;
+                    enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked);
 //                    items: [  "X010",
 //                        "X011",
 //                        "X012",

@@ -318,7 +318,7 @@ var flagsDefine = {
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
                    sequence, dir0, dir1, dir2, doesBindingCounter, counterID ,
-                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID){
+                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn){
     this.m0pos = m0pos || 0;
     this.m1pos = m1pos || 0;
     this.m2pos = m2pos || 0;
@@ -338,6 +338,7 @@ function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
     this.doesBindingCounter = doesBindingCounter || 0;
     this.counterID = counterID || 0;
     this.isOffsetEn = isOffsetEn || false;
+    this.isZWithYEn = isZWithYEn || false;
     this.offsetX = offsetX || 0;
     this.offsetY = offsetY || 0;
     this.offsetZ = offsetZ || 0;
@@ -421,10 +422,13 @@ var useableStack = function(){
     return stackIDs[i - 1] + 1;
 }
 
+var lastStacks = "";
 function parseStacks(stacks){
+    if(stacks === lastStacks) return;
     if(stacks.length < 4) {
         stacks = "{}";
     }
+    lastStacks = stacks;
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;
@@ -760,9 +764,9 @@ var VALVE_CHECK_END = 9;
 actions.F_CMD_NULL = actHelper++;
 actions.F_CMD_SYNC_START = actHelper++;
 actions.F_CMD_SYNC_END = actHelper++;
-actions.F_CMD_SINGLE = actHelper++;
-actions.F_CMD_JOINTCOORDINATE = actHelper++;
-actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
+actions.F_CMD_SINGLE = actHelper++; //<单轴动作
+actions.F_CMD_JOINTCOORDINATE = actHelper++; //<关节坐标点运动
+actions.F_CMD_COORDINATE_DEVIATION = actHelper++; //< 直线坐标偏移位置
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINEXY_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52000;
 actions.F_CMD_LINEXZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52001;
@@ -888,7 +892,7 @@ function actionStackID(action){
 function actionCounterIDs(action){
     if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
-        return [si.si0.counterID, si.si1.counterID];
+        return [si.si0.counterID];
     }else if(action.action == actions.ACT_COMMENT){
         return arguments.callee(action.commentAction);
     }
@@ -1708,7 +1712,6 @@ var actionObjectToEditableITems = function(actionObject){
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
              actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
              actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
@@ -1821,6 +1824,7 @@ var canActionTestRun = function(actionObject){
             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
             actionObject.action === actions.F_CMD_JOINT_RELATIVE;
+//            actionObject.action === actions.F_CMD_SINGLE;
 }
 
 

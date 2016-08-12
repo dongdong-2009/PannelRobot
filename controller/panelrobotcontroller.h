@@ -294,36 +294,7 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
-    Q_INVOKABLE bool loadRecord(const QString& name)
-    {
-        ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
-        bool ret =  mold->LoadMold(name);
-        if(ret)
-        {
-            ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
-            ret = sendMainProgramToHost();
-            if(ret)
-            {
-                for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
-                {
-                    ret = sendSubProgramToHost(i);
-                    if(!ret)
-                    {
-                        break;
-                    }
-                }
-            }
-
-#ifndef Q_WS_QWS
-            ret = true;
-#endif
-            ICAppSettings as;
-            as.SetCurrentMoldConfig(name);
-            emit moldChanged();
-        }
-
-        return ret;
-    }
+    Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)
     {
@@ -414,7 +385,7 @@ public:
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
     Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
-    Q_INVOKABLE void startUpdate(const QString& updater);
+    Q_INVOKABLE void startUpdate(const QString& updater, int mode = 0);
     Q_INVOKABLE QString backupUpdater(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
@@ -780,6 +751,15 @@ public:
     Q_INVOKABLE void processEvents()
     {
         qApp->processEvents();
+    }
+
+    Q_INVOKABLE QString createCustomAddr(int type, int perm , int startPos, int size,
+                                         int baseAddr, int decimal = 0, const QString &unit = QString())
+    {
+        ICAddrWrapperCPTR ca = new ICAddrWrapper(type, perm, startPos, size,
+                                                 baseAddr, decimal, unit);
+        return ca->ToString();
+
     }
 
     //    Q_INVOKABLE QString debug_LogContent() const

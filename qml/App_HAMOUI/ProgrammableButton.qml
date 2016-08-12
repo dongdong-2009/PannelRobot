@@ -58,7 +58,7 @@ Item {
     }
 
     Component.onCompleted: {
-        var programs = ManualProgramManager.manualProgramManager.programs;
+        var programs = ManualProgramManager.manualProgramManager.programList();
 //        var ppProgram = {"id":0, "name":"公转盘正转", "program":[]};
 //        var rpProgram = {"id":1, "name":"公转盘反转", "program":[]};
 //        ppProgram.program.push(Teach.generateFlagAction(0, ""));

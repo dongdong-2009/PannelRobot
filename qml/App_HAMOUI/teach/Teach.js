@@ -1734,8 +1734,8 @@ var canActionTestRun = function(actionObject){
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE ||
             actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-            actionObject.action === actions.F_CMD_JOINT_RELATIVE ||
-            actionObject.action === actions.F_CMD_SINGLE;
+            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
+//            actionObject.action === actions.F_CMD_SINGLE;
 }
 
 

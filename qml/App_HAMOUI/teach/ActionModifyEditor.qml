@@ -83,8 +83,8 @@ Item {
             }else if(editor == pos){
                 if(isAutoMode){
                     pos.configAddr = "";
-                    pos.min = -5;
-                    pos.max = 5;
+                    pos.min = -20;
+                    pos.max = 20;
                     pos.decimal = 3;
                     pos.configValue = "0.000";
                     pos.configName = qsTr("Pos(+/-):");
@@ -124,9 +124,9 @@ Item {
                 isSpeedMode = true;
             else if(actionObject.speedMode)
                 isSpeedMode = true;
-            earlyEndPos.visible = !isSpeedMode;
-            earlyEndSpdEditor.visible = !isSpeedMode;
-            signalStopEditor.visible = !isSpeedMode;
+            earlyEndPos.visible = !isSpeedMode && !isAutoMode;
+            earlyEndSpdEditor.visible = !isSpeedMode && !isAutoMode;
+            signalStopEditor.visible = !isSpeedMode && !isAutoMode;
         }
         height += buttons.height + buttons.spacing + 6;
 //        height += 20

@@ -52,7 +52,7 @@ Item {
         "mValve14",
         "mValve15"
     ]
-    property variant singleYs: []
+    property variant singleYs: ["valve16", "valve17"]
     property variant holdDoubleYs: []
     property variant timeYs: [
         "tValve0",

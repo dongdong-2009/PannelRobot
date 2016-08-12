@@ -7,7 +7,7 @@ import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
-    property variant singleYs: []
+    property variant singleYs: ["valve16", "valve17"]
     property variant holdDoubleYs: []
 
     function createActionObjects(){
@@ -79,13 +79,16 @@ Item {
                     };
                 }
 
-                function createValveMoldItem(pointNum, pointDescr, hwPoint, board){
+                function createValveMoldItem(pointNum, valve, board){
+                    var pN = IODefines.getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
                     return {"isSel":false,
-                        "pointNum":pointNum,
-                        "pointDescr":pointDescr,
-                        "hwPoint":hwPoint,
-                        "board":board,
-                        "isOn": false
+                        "pointNum":pN,
+                        "pointDescr":valve.descr,
+                        "hwPoint":board == IODefines.VALVE_BOARD ? valve.id: valve.y1Point,
+                                                                   "board":board,
+                                                                   "isOn": false,
+                                                                   "valveID":valve.id,
+                                                                   "valve":valve
                     };
                 }
 
@@ -171,7 +174,7 @@ Item {
 
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
         }
 
         yDefines = holdDoubleYs;

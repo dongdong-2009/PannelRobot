@@ -1355,10 +1355,10 @@ var outputActionToStringHandler = function(actionObject){
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Start") + " "
+        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Check Start") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else if(actionObject.type === VALVE_CHECK_END){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("End") + " "
+        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Check End") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){

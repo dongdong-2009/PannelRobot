@@ -47,6 +47,9 @@ Item {
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
 
+        if(stack.useStack)
+            var newstack = newStack();
+        else newstack = 0;
         ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
                                                 details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
                                                 repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
@@ -60,7 +63,7 @@ Item {
                                                 stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
                                                 stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
                                                 stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
-                                                stack.zdirection,newStack()));
+                                                stack.zdirection,newstack));
         return ret;
     }
 
@@ -123,6 +126,11 @@ Item {
         BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.rotateCount);
         panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.rotateCount);
 //        counterUpdated(c.id);
+
+        c = BaseTeach.counterManager.getCounter(ao.repeateCounterID);
+        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.repeateCount);
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.repeateCount);
+//        counterUpdated(c.id);
     }
 
     function setModeName(name){
@@ -146,13 +154,28 @@ Item {
         dirAxisSel.visible = mode == 8 ? false : true;
         editaction.visible = mode == 8 ? true : false;
         button_setPos1.visible = mode == 8 ? false : true;
-        pos1Axis1.visible = mode == 8 ? false : true;
-        pos1Axis2.visible = mode == 8 ? false : true;
+        pos1Axis1.visible = mode != 8;
+        pos1Axis2.visible = mode != 8;
         repeateSpeed.visible = mode == 8 ? false : true;
 //        repeateCount.visible = mode == 8 ? false : true;
 //        zlength.visible = mode == 8 ? false : true;
 //        dirLength.visible = mode == 8 ? false : true;
         dirSpeed.visible = mode == 8 ? false : true;
+    }
+    function hidePoint(){
+        if(mode != 6)
+            if(dirAxisSel.configValue == 0){
+                pos1Axis1.visible = false;
+                pos1Axis2.visible = true;
+                pos2Axis1.visible = true;
+                pos2Axis2.visible = false;
+            }
+            else {
+                pos1Axis1.visible = true;
+                pos1Axis2.visible = false;
+                pos2Axis1.visible = false;
+                pos2Axis2.visible = true;
+            }
     }
 
     function onProgramAdded(program){
@@ -202,14 +225,14 @@ Item {
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
-                        dirAxisSel.items = ["X", "Y"]
+                        dirAxisSel.items = ["X", "Y"];
                     }else if(configValue == 1){
                         plane = [0, 2, 1];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-                        dirAxisSel.items = ["X", "Z"]
+                        dirAxisSel.items = ["X", "Z"];
                     }else if(configValue == 2){
                         plane = [1, 2, 0];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
@@ -218,6 +241,7 @@ Item {
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
                         dirAxisSel.items = ["Y", "Z"]
                     }
+                    hidePoint();
                 }
             }
 
@@ -227,10 +251,12 @@ Item {
 //                enabled: !useEn.isChecked
                 configName: qsTr("Dir Axis")
 //                items: ["X", "Y", "Z"]
-                onConfigValueChanged:
+                onConfigValueChanged:{
                     if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
                         gunFollowEn.visible = true;
                     else gunFollowEn.visible = false;
+                    hidePoint();
+                }
             }
             ICComboBoxConfigEdit{
                 id: editaction
@@ -347,7 +373,7 @@ Item {
             }
         }
         Row{
-            spacing: 124
+            spacing: 85
             Row{
                 id:pos2Container
                 spacing: 4
@@ -434,7 +460,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-                visible: false
+                visible: mode == 2
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -527,7 +553,7 @@ Item {
             ICConfigEdit{
                 id:dirLength
 //                enabled: !useEn.isChecked
-                visible: mode == 2 || mode == 8? false : true
+                visible: mode == 2 || mode == 6 || mode == 8? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
                 configAddr: "s_rw_0_32_3_1300"
@@ -543,6 +569,7 @@ Item {
             }
             ICConfigEdit{
                 id:dirCount
+                visible: mode != 2
                 width: repeateSpeed.width
                 configName: qsTr("Dir Count")
             }
@@ -561,7 +588,7 @@ Item {
             ICConfigEdit{
                 id:rotateSpeed
                 width: repeateSpeed.width
-                visible: mode == 8 ? false : true
+//                visible: mode == 8 ? false : true
                 configName: qsTr("Rotate Speed")
                 configAddr: "s_rw_0_32_1_1200"
                 unit: qsTr("%")
@@ -636,7 +663,7 @@ Item {
         zlength.configValue = -100;
         dirCount.configValue = 10;
         rotate.configValue = 90.000;
-        rotateSpeed.configValue = 5.0;
+        rotateSpeed.configValue = 1.0;
         rotateCount.configValue = 4;
 
         resetItems();

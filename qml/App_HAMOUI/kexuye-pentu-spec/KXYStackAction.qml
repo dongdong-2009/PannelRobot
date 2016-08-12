@@ -92,17 +92,17 @@ Item {
                         ICConfigEdit{
                             id:xdeviation
                             configName: qsTr("X Deviation")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                         ICConfigEdit{
                             id:ydeviation
                             configName: qsTr("Y Deviation")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                         ICConfigEdit{
                             id:zdeviation
                             configName: qsTr("Z Deviation")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                     }
                     Column{
@@ -111,17 +111,17 @@ Item {
                         ICConfigEdit{
                             id:xspace
                             configName: qsTr("X Space")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                         ICConfigEdit{
                             id:yspace
                             configName: qsTr("Y Space")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                         ICConfigEdit{
                             id:zspace
                             configName: qsTr("Z Space")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                     }
                     Column{
@@ -130,17 +130,17 @@ Item {
                         ICConfigEdit{
                             id:xcount
                             configName: qsTr("X Count")
-                            configAddr: "s_rw_0_32_1_1200"
+//                            configAddr: "s_rw_0_32_1_1200"
                         }
                         ICConfigEdit{
                             id:ycount
                             configName: qsTr("Y Count")
-                            configAddr: "s_rw_0_32_1_1200"
+//                            configAddr: "s_rw_0_32_1_1200"
                         }
                         ICConfigEdit{
                             id:zcount
                             configName: qsTr("Z Count")
-                            configAddr: "s_rw_0_32_1_1200"
+//                            configAddr: "s_rw_0_32_1_1200"
                         }
                     }
                     Column{

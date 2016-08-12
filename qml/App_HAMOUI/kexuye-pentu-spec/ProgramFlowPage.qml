@@ -236,6 +236,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
         ret.push(LocalTeach.generateDataAction(819206,0,1));
+        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
+        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
@@ -288,9 +290,10 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.zlength, actionObject.startSpeed2));
 
-        ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("Stack Mark")));
-        if(actionObject.useStack)
+        if(actionObject.useStack){
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("Stack Mark")));
             ret.push(LocalTeach.generateStackAction(actionObject.stack1,actionObject.stackSpeed));
+        }
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag1, qsTr("Dir Move")));
 
@@ -336,6 +339,8 @@ ProgramFlowPage {
         var tmp = {};
         var tmp1 = {};
         var dirpos = {};
+        var repeatEPos = actionObject.point1.pos;
+        var dirEPos = actionObject.point2.pos;
         pos["m" + 0] = actionObject.point1.pos.m0 - actionObject.startPos.pos.m0;
         pos["m" + 1] = actionObject.point1.pos.m1 - actionObject.startPos.pos.m1;
         pos["m" + 2] = actionObject.point1.pos.m2 - actionObject.startPos.pos.m2;
@@ -669,6 +674,8 @@ ProgramFlowPage {
                     if(actionObject.mode == 2){
                         pos["m" + 0] = (pos["m" + 0] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
                         pos1["m" + 2] = pos["m" + 2] = (pos["m" + 0] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+                        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, dirEPos.m0, actionObject.repeateSpeed,0,false,true,dirEPos.m0));
+                        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
                     }
                     pos1["m" + 0] = pos["m" + 0];
                     tmp1["m" + 0] = tmp["m" + 0];
@@ -920,10 +927,22 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateCounterAction(actionObject.aaaa));
             ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag10, actionObject.aaaa, 0, 1));
         }
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag14));
 //        ret.push(LocalTeach.generateOutputAction(14,100,0,14,2));     //Y30 close
 //        ret.push(LocalTeach.generateOutputAction(4,100,1,4,1));     //Y14 open
 //        ret.push(LocalTeach.generateOutputAction(4,0,0,4,3));     //Y14 close
+
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag6, actionObject.rotateCounterID, 0, 0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+//        generateAxisServoAction = function(action,axis,pos,speed,delay,isBadEn,isEarlyEnd,earlyEndPos,isEarlySpd,earlySpdPos,earlySpd,signalStopEn,signalStopPoint,signalStopMode,speedMode,stop)
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5,0,false,true,3600));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag7, actionObject.rotateCounterID, 1, 0));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("Return Zero")));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
@@ -932,10 +951,20 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":"0.000","m5":actionObject.rotate}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("Go On Rotating")));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag15));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag14, qsTr("Rotate1")));
 //        ret.push(LocalTeach.generateOutputAction(6,100,1,6,1));     //Y16 open
 //        ret.push(LocalTeach.generateOutputAction(6,0,0,6,3));     //Y16 close
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag8, actionObject.rotateCounterID, 0, 0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4,0,false,true,3600));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag9, actionObject.rotateCounterID, 1, 0));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag8, qsTr("Return Zero")));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
@@ -944,11 +973,11 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        ret.push(LocalTeach.generateFlagAction(actionObject.flag9, qsTr("Go On Rotating")));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag15, qsTr("Rotate2")));
 
 //        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
 
-        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
         ret.push(LocalTeach.generateCounterJumpAction(actionObject2.flag13, actionObject.rotateCounterID, 1, 0));
 
         return ret;

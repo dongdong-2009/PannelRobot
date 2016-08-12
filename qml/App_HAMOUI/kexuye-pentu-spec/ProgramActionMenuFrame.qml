@@ -154,6 +154,7 @@ ProgramActionMenuFrame{
             kxyObject.setPosName(pos1name, pos2name);
             kxyObject.gunFollowEnvisible();
             kxyObject.hideUselessEdit();
+            kxyObject.hidePoint();
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
             linkedBtn2Instance().visible = true;
@@ -171,7 +172,7 @@ ProgramActionMenuFrame{
             setModeEditorHelper(LocalTeach.pentuModes.LineZ2DRepeat, ptLine_Z_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptLine_Saw_2D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.LineSaw2DRepeat, ptLine_Saw_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.LineSaw2DRepeat, ptLine_Saw_2D.text, qsTr("Repeat EPos"), qsTr("Dir EPos"));
         });
         ptLine_Dir_2D.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.LineDir2DRepeat, ptLine_Dir_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));

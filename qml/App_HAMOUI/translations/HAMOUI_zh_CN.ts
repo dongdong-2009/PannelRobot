@@ -1663,19 +1663,19 @@
     </message>
     <message>
         <source>Y014</source>
-        <translation></translation>
+        <translation>垂直位置</translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation></translation>
+        <translation>水平位置</translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation></translation>
+        <translation>SP</translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation></translation>
+        <translation>循环启动车床</translation>
     </message>
     <message>
         <source>Y020</source>
@@ -1687,35 +1687,35 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation></translation>
+        <translation>吸2产品</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation></translation>
+        <translation>吸1料片</translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation>启动车床加工</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation>车床加套夹紧</translation>
+        <translation>旋转吸盘</translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation>车床夹套松开</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation>系统占用</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation>垂直阀</translation>
+        <translation>料顶气缸1</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation>水平阀</translation>
+        <translation>料顶气缸2</translation>
     </message>
     <message>
         <source>Y032</source>
@@ -1723,19 +1723,19 @@
     </message>
     <message>
         <source>Y033</source>
-        <translation></translation>
+        <translation>料架升</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation></translation>
+        <translation>料架落</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation></translation>
+        <translation>反吸3</translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation></translation>
+        <translation>吹气</translation>
     </message>
     <message>
         <source>Y037</source>
@@ -1743,27 +1743,27 @@
     </message>
     <message>
         <source>X010</source>
-        <translation>X轴原点</translation>
+        <translation>等待M24</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation>Y轴原点</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X012</source>
-        <translation>Z轴原点</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X013</source>
-        <translation>X轴正极限</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X014</source>
-        <translation>Y轴正极限</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X015</source>
-        <translation>Z轴正极限</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X016</source>
@@ -1775,43 +1775,43 @@
     </message>
     <message>
         <source>X020</source>
-        <translation>X020</translation>
+        <translation>检测水平到位</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation>X021</translation>
+        <translation>检测垂直到位</translation>
     </message>
     <message>
         <source>X022</source>
-        <translation>X022</translation>
+        <translation>吸产品检测</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation>X023</translation>
+        <translation>吸料片检测</translation>
     </message>
     <message>
         <source>X024</source>
-        <translation>车床加工完成</translation>
+        <translation>吸1位置料片</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation>车床加紧到位</translation>
+        <translation>吸2位置产品</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation>车床松开到位</translation>
+        <translation>SP</translation>
     </message>
     <message>
         <source>X027</source>
-        <translation>系统占用</translation>
+        <translation>ST</translation>
     </message>
     <message>
         <source>X030</source>
-        <translation>垂直限</translation>
+        <translation>顶料2退位</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation>水平限</translation>
+        <translation>顶料1退位</translation>
     </message>
     <message>
         <source>X032</source>
@@ -1819,23 +1819,23 @@
     </message>
     <message>
         <source>X033</source>
-        <translation>X033</translation>
+        <translation>U原点</translation>
     </message>
     <message>
         <source>X034</source>
-        <translation>X034</translation>
+        <translation>料仓2</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation>X035</translation>
+        <translation>料仓1</translation>
     </message>
     <message>
         <source>X036</source>
-        <translation>X036</translation>
+        <translation>顶料2到位</translation>
     </message>
     <message>
         <source>X037</source>
-        <translation>X037</translation>
+        <translation>顶料1到位</translation>
     </message>
     <message>
         <source>X040</source>
@@ -1843,15 +1843,15 @@
     </message>
     <message>
         <source>X041</source>
-        <translation>X041</translation>
+        <translation>Y原点</translation>
     </message>
     <message>
         <source>X042</source>
-        <translation>X042</translation>
+        <translation>Z原点</translation>
     </message>
     <message>
         <source>X043</source>
-        <translation>X043</translation>
+        <translation>X原点</translation>
     </message>
     <message>
         <source>X044</source>
@@ -1867,7 +1867,7 @@
     </message>
     <message>
         <source>X047</source>
-        <translation>机械手暂停</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X050</source>
@@ -2059,7 +2059,7 @@
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>普通输出Y014</translation>
+        <translation>姿势阀</translation>
     </message>
     <message>
         <source>Normal Y015</source>
@@ -2067,11 +2067,11 @@
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>普通输出Y016</translation>
+        <translation>SP</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation>普通输出Y017</translation>
+        <translation>循环启动车床</translation>
     </message>
     <message>
         <source>Normal Y020</source>
@@ -2083,11 +2083,11 @@
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>普通输出Y022</translation>
+        <translation>产品吸阀</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>普通输出Y023</translation>
+        <translation>料片吸阀</translation>
     </message>
     <message>
         <source>Normal Y024</source>
@@ -2095,7 +2095,7 @@
     </message>
     <message>
         <source>Normal Y025</source>
-        <translation>普通输出Y025</translation>
+        <translation>旋转气阀</translation>
     </message>
     <message>
         <source>Normal Y026</source>
@@ -2107,11 +2107,11 @@
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>垂直阀</translation>
+        <translation>料顶气缸1</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation>水平阀</translation>
+        <translation>料顶气缸2</translation>
     </message>
     <message>
         <source>Normal Y032</source>
@@ -2119,19 +2119,19 @@
     </message>
     <message>
         <source>Normal Y033</source>
-        <translation>普通输出Y033</translation>
+        <translation>架起</translation>
     </message>
     <message>
         <source>Normal Y034</source>
-        <translation>普通输出Y034</translation>
+        <translation>架落</translation>
     </message>
     <message>
         <source>Normal Y035</source>
-        <translation>普通输出Y035</translation>
+        <translation>反吸气阀</translation>
     </message>
     <message>
         <source>Normal Y036</source>
-        <translation>普通输出Y036</translation>
+        <translation>吹气</translation>
     </message>
     <message>
         <source>Normal Y037</source>

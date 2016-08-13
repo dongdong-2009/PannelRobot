@@ -13,17 +13,14 @@ Item {
         "valve2",
         "valve3",
         "valve4",
-        "valve5",
         "valve6",
         "valve7",
         "valve8",
         "valve9",
         "valve10",
         "valve11",
-        "valve12",
         "valve13",
         "valve14",
-        "valve15",
         "valve16",
         "valve17",
         "valve18",
@@ -31,7 +28,6 @@ Item {
         "valve20",
         "valve21",
         "valve22",
-        "valve23",
     ]
     property  variant euYs : []
     property variant mYs: [
@@ -52,8 +48,8 @@ Item {
         "mValve14",
         "mValve15"
     ]
-    property variant singleYs: ["valve16", "valve17"]
-    property variant holdDoubleYs: []
+    property variant singleYs: ["valve10", "valve11"]
+    property variant holdDoubleYs: ["valve4", "valve13", "valve16", "valve17"]
     property variant timeYs: [
         "tValve0",
         "tValve1",
@@ -305,11 +301,11 @@ Item {
         var ystmp = [];
         var timeystmp = [];
         for(i = 0; i < l; ++i){
-            ystmp.push("valve" + i);
+//            ystmp.push("valve" + i);
             timeystmp.push("tValve" + i);
         }
 
-        ys = ystmp;
+//        ys = ystmp;
         timeYs = timeystmp;
 
         var yDefines = ys;

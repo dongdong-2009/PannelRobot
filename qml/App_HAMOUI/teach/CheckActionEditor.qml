@@ -7,8 +7,8 @@ import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
-    property variant singleYs: ["valve16", "valve17"]
-    property variant holdDoubleYs: []
+    property variant singleYs: ["valve10", "valve11"]
+    property variant holdDoubleYs: ["valve4", "valve13", "valve16", "valve17"]
 
     function createActionObjects(){
         var ret = [];
@@ -180,7 +180,7 @@ Item {
         yDefines = holdDoubleYs;
         for(i = 0; i < yDefines.length; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
         }
 
     }

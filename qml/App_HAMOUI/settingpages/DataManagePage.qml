@@ -10,6 +10,7 @@ Item {
         y:50
         z:2
         onAccept: {
+            tip.runningTip(qsTr("Backup..."));
             var backupName = inputText;
             if(hmiConfigs.isChecked){
                 panelRobotController.backupHMIBackup(backupName, Storage.backup());
@@ -19,6 +20,7 @@ Item {
                 panelRobotController.makeGhost(backupName, Storage.backup());
             }
             refreshDataModel();
+            tip.hide();
         }
     }
 
@@ -26,7 +28,7 @@ Item {
         id:tip
         x:250
         y:50
-        z:2
+        z:3
     }
 
     ICMessageBox{
@@ -35,6 +37,7 @@ Item {
         y:50
         z:2
         onAccept: {
+            tip.runningTip(qsTr("Restoring..."));
             var backupName = backuViews.model.get(backuViews.currentIndex).name;
             var mode = local.isChecked ? 0 : 1;
             if(hmiConfigs.isChecked){
@@ -291,6 +294,7 @@ Item {
                     onButtonClicked: {
                         var ret = 0;
                         if(backuViews.currentIndex < 0) return;
+                        tip.runningTip(qsTr("Exporting..."))
                         var backupName = backuViews.model.get(backuViews.currentIndex).name;
                         if(hmiConfigs.isChecked){
                             ret = panelRobotController.exportHMIBackup(backupName);
@@ -301,6 +305,7 @@ Item {
                         }else if(updater.isChecked){
                             ret = panelRobotController.exportUpdater(backupName);
                         }
+                        tip.hide();
 
                         if(ret !== 0){
                             tip.warning(qsTr("Export fail! Err" + ret), qsTr("OK"));
@@ -318,7 +323,7 @@ Item {
                         var name = backuViews.model.get(backuViews.currentIndex).name;
                         if(uDisk.isChecked)
                             panelRobotController.backupUpdater(name)
-                        panelRobotController.startUpdate(name);
+                        panelRobotController.startUpdate(name, uDisk.isChecked ? 0 : 1);
                     }
                 }
             }

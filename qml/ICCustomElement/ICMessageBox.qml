@@ -24,7 +24,7 @@ MouseArea {
 
 
 
-    function show(tip, yesText, noText){
+    function show(tip, yesText, noText, details){
         text = tip || "";
         yesBtnText = yesText || ("Yes");
         noBtnText = noText || ("No");
@@ -34,6 +34,12 @@ MouseArea {
         noBtn.color = "yellow"
         yesBtn.visible = true;
         noBtn.visible = true;
+    }
+
+    function hide(){
+        detailContainer.visible = false;
+        detailText.text = "";
+        container.visible = false;
     }
 
     function runningTip(tip, yesText){
@@ -57,14 +63,15 @@ MouseArea {
         yesBtn.color = "lime"
     }
 
-    function warning(tip, Text){
+    function warning(tip, Text, details){
         text = tip || "";
         yesBtnText = Text || ("OK");
         noBtn.visible = false;
         yesBtn.visible = true;
         container.visible = true;
-        realFrame.color = "yellow"
-        yesBtn.color = "red"
+        realFrame.color = "yellow";
+        yesBtn.color = "red";
+        detailText.text = details || ""
     }
 
     function showInput(tip, configName, isNumberOnly, yesText, noText){
@@ -130,6 +137,37 @@ MouseArea {
                         input.visible = false;
                     }
                 }
+                ICButton{
+                    id:detailsBtn
+                    visible: detailText.text.length > 0
+                    text: qsTr("Details")
+                    onButtonClicked: {
+                        detailContainer.visible = !detailContainer.visible;
+                    }
+                }
+            }
+        }
+    }
+    Rectangle{
+        id:detailContainer
+        width: realFrame.width
+        height: 150
+        border.color: "black"
+        border.width: 1
+        color:"#A0A0F0";
+        anchors.left: realFrame.left
+        anchors.top: realFrame.bottom
+        visible: false
+        ICFlickable{
+            width: parent.width
+            height: parent.height
+            contentWidth: detailText.width
+            contentHeight: detailText.height
+            flickableDirection: Flickable.VerticalFlick
+            clip: true
+            Text{
+                id:detailText
+                width: parent.width
             }
         }
     }

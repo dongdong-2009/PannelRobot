@@ -601,10 +601,13 @@ QString PanelRobotController::scanUpdaters(const QString &filter, int mode) cons
     return scanUserDir("updaters", QString("%1*.bfe").arg(filter));
 }
 
-void PanelRobotController::startUpdate(const QString &updater)
+void PanelRobotController::startUpdate(const QString &updater, int mode)
 {
     ICUpdateSystem us;
-    us.SetPacksDir(ICAppSettings().UsbPath);
+    if(mode == 0)
+        us.SetPacksDir(ICAppSettings().UsbPath);
+    else
+        us.SetPacksDir(QString(ICAppSettings().UserPath) + "/updaters");
     host_->StopCommunicate();
     system("mkdir updatehost/");
     hostUpdateFinishedWatcher_.addPath("updatehost");
@@ -788,6 +791,7 @@ bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line,
 {
     QPair<int, int> stepInfo;
     ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
+    qDebug()<<"fixProgramOnAutoMode"<<item<<stepInfo;
     return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
 }
 
@@ -1580,6 +1584,52 @@ QString PanelRobotController::newRecord(const QString &name, const QString &init
     return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
 }
 
+bool PanelRobotController::loadRecord(const QString &name)
+{
+    ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
+    QMap<int, StackInfo> stacks = mold->GetStackInfos();
+    bool ret =  mold->LoadMold(name);
+    if(ret)
+    {
+        ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
+        ret = sendMainProgramToHost();
+        if(ret)
+        {
+            for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
+            {
+                ret = sendSubProgramToHost(i);
+                if(!ret)
+                {
+                    break;
+                }
+            }
+        }
+
+#ifndef Q_WS_QWS
+        ret = true;
+#endif
+        ICAppSettings as;
+        as.SetCurrentMoldConfig(name);
+
+        QMap<int, StackInfo>::const_iterator p = stacks.constBegin();
+        StackInfo si;
+        bool ok;
+        while(p != stacks.constEnd())
+        {
+            si = mold->GetStackInfo(p.key(), ok);
+            if(!ok || si.posData.isEmpty())
+            {
+                ICRobotVirtualhost::SendExternalDatas(host_, p.key(), si.posData);
+            }
+            ++p;
+        }
+
+        emit moldChanged();
+    }
+
+    return ret;
+}
+
 QString PanelRobotController::scanHMIBackups(int mode) const
 {
     if(mode == 1)
@@ -1611,7 +1661,9 @@ int exportBackupHelper(const QString& backupName, const QString& path)
 //    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
     if(QFile::copy(dir.absoluteFilePath(backupName.toUtf8()), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8())))
     {
+#ifdef  Q_WS_QWS
         ::sync();
+#endif
         return 0;
     }
     return -3;

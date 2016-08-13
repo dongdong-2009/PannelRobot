@@ -77,11 +77,29 @@ function LinesInfo(){
     }
 
     this.idUsed = function(id){
+        var ret = {"used":false, "details":[]};
         for(var i = 0, len = this.programsLines.length; i < len; ++i){
-            if(this.getLines(i, id).length > 0) return true;
+            var ls = this.getLines(i, id);
+            if(ls.length > 0) {
+                ret.used = true;
+                ret.details.push({"which":i, "lines":ls});
+            }
         }
-        return false;
+        return ret;
     }
+}
+
+
+LinesInfo.usedLineInfoString = function(usedLineInfo){
+    var details = usedLineInfo.details;
+    var ret = "";
+    for(var i = 0, len = details.length; i < len; ++i){
+        ret += details[i].which == 0 ? qsTr("Main Program") : (qsTr("Sub-") + details[i].which);
+        ret += ":";
+        ret += qsTr("Lines:") + JSON.stringify(details[i].lines);
+        ret += "\n";
+    }
+    return ret;
 }
 
 var counterLinesInfo = new LinesInfo();
@@ -113,4 +131,14 @@ var registerEditableActions = {
 
 function isRegisterEditableAction(action){
     return registerEditableActions.hasOwnProperty(action);
+}
+
+var autoModifyPosActions = {}
+
+function hasAutoModified(index){
+    return autoModifyPosActions.hasOwnProperty(index);
+}
+
+function clearAutoModifyPosActions(){
+    autoModifyPosActions = {}
 }

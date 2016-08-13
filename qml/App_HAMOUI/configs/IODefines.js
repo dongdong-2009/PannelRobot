@@ -34,6 +34,8 @@ function ioItemName(ioItem){
     return ioItem.pointName + ":" + ioItem.descr;
 }
 
+var valveTypeToItems = {"0":[], "1":[], "2":[], "3":[]};
+
 function ValveItem(id, descr, type, time,
                    y1Board, y1Point, x1Board, x1Point, x1Dir,
                    y2Board, y2Point, x2Board, x2Point, x2Dir
@@ -52,6 +54,7 @@ function ValveItem(id, descr, type, time,
     this.x1Dir = x1Dir || 0;
     this.x2Dir = x2Dir || 0;
     this.time = time || 0.5;
+    valveTypeToItems[type].push(this);
 }
 
 function yInit(){
@@ -406,6 +409,10 @@ ValveItem(id, descr, type, time,
                    )
 */
 var valveDefines = {
+    "getValves": function(type){
+        return valveTypeToItems[type];
+    },
+
     "valve0"   : new ValveItem(0,   qsTr("Normal Y010"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 0),
     "valve1"   : new ValveItem(1,   qsTr("Normal Y011"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 1),
     "valve2"   : new ValveItem(2,   qsTr("Normal Y012"), IO_TYPE_NORMAL_Y, 1, IO_BOARD_0, 2),
@@ -815,6 +822,15 @@ function generateIOBaseBoardCount(prefix, boardCount){
         if(v.length < 3)
             v = "0" + v;
         ret.push(prefix + v);
+    }
+    return ret;
+}
+
+function getYDefinePointNameFromValve(valve){
+    var ret = getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
+    if(valve.type === IO_TYPE_HOLD_DOUBLE_Y ||
+            valve.type === IO_TYPE_UNHOLD_DOUBLE_Y){
+        ret += "," + getYDefineFromHWPoint(valve.y2Point, valve.y2Board).yDefine.pointName;
     }
     return ret;
 }

@@ -8,30 +8,6 @@ import "../configs/IODefines.js" as IODefines
 Item {
     id:container
     property variant ys: [
-        "valve0",
-        "valve1",
-        "valve2",
-        "valve3",
-        "valve4",
-        "valve5",
-        "valve6",
-        "valve7",
-        "valve8",
-        "valve9",
-        "valve10",
-        "valve11",
-        "valve12",
-        "valve13",
-        "valve14",
-        "valve15",
-        "valve16",
-        "valve17",
-        "valve18",
-        "valve19",
-        "valve20",
-        "valve21",
-        "valve22",
-        "valve23",
     ]
     property  variant euYs : []
     property variant mYs: [
@@ -52,8 +28,8 @@ Item {
         "mValve14",
         "mValve15"
     ]
-    property variant singleYs: ["valve16", "valve17"]
-    property variant holdDoubleYs: []
+//    property variant singleYs: []
+//    property variant holdDoubleYs: []
     property variant timeYs: [
         "tValve0",
         "tValve1",
@@ -139,12 +115,10 @@ Item {
             ICCheckBox{
                 id:singleY
                 text: qsTr("Single Y")
-                visible: singleYs.length > 0
             }
             ICCheckBox{
                 id:holdDoubleY
                 text: qsTr("Hold Double Y")
-                visible: holdDoubleYs.length > 0
             }
             ICCheckBox{
                 id:timeY
@@ -316,6 +290,7 @@ Item {
         var yDefine;
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+//            yDefine = yDefines[i];
             yModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + parseInt(i / 32)));
         }
 
@@ -331,16 +306,20 @@ Item {
             mYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.M_BOARD_0));
         }
 
-        yDefines = singleYs;
+        yDefines = IODefines.valveDefines.getValves(IODefines.IO_TYPE_SINGLE_Y);
+        singleY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
+//            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            yDefine = yDefines[i];
+            singleYModel.append(yView.createValveMoldItem(yDefine.descr, yDefine, IODefines.VALVE_BOARD));
         }
 
-        yDefines = holdDoubleYs;
+        yDefines = IODefines.valveDefines.getValves(IODefines.IO_TYPE_HOLD_DOUBLE_Y);
+        holdDoubleY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
+//            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            yDefine = yDefines[i];
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefine.descr, yDefine, IODefines.VALVE_BOARD));
         }
 
         yDefines = timeYs;

@@ -33,7 +33,7 @@ Item {
         id:valveContainer
         anchors.top: saveBtn.bottom
         anchors.topMargin: 6
-//        model: valveModel
+        //        model: valveModel
         cellWidth: width / 2 -10
         cellHeight: 32
         width: parent.width
@@ -84,8 +84,10 @@ Item {
         var vd;
         for(var v in vds){
             vd = vds[v];
-            if(!IODefines.isNormalYType(vd))
-                valveModel.append(vd);
+            if(vd instanceof(IODefines.ValveItem)){
+                if(!IODefines.isNormalYType(vd))
+                    valveModel.append(vd);
+            }
         }
         valveContainer.model = valveModel;
     }

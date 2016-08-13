@@ -582,7 +582,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[2].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -598,7 +598,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[2].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -616,7 +616,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[3].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -635,7 +635,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[3].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -655,7 +655,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[1].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -674,7 +674,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[1].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -693,7 +693,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[4].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -711,7 +711,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[4].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -728,7 +728,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[0].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -747,7 +747,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[0].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -766,7 +766,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[5].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -784,7 +784,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[5].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -793,6 +793,72 @@ MouseArea{
                 }
 
 
+            }
+
+            ICButton {
+                id: ptext13
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[6].name + "-"
+                onTriggered: sendCommand(Keymap.CMD_JOG_NR, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+
+//                }
+
+
+            }
+
+            ICButton {
+                id: ptext14
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) +  AxisDefine.axisInfos[6].name + "+"
+                onTriggered: sendCommand(Keymap.CMD_JOG_PR, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+//                }
+            }
+
+            ICButton {
+                id: ptext15
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[7].name + "-"
+                onTriggered: sendCommand(Keymap.CMD_JOG_NT, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+
+//                }
+
+
+            }
+
+            ICButton {
+                id: ptext16
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) +  AxisDefine.axisInfos[7].name + "+"
+                onTriggered: sendCommand(Keymap.CMD_JOG_PT, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+//                }
             }
 
         }
@@ -1284,6 +1350,10 @@ MouseArea{
         ptext7.visible = AxisDefine.axisInfos[0].visiable;
         ptext11.visible = AxisDefine.axisInfos[5].visiable;
         ptext12.visible = AxisDefine.axisInfos[5].visiable;
+        ptext13.visible = AxisDefine.axisInfos[6].visiable;
+        ptext14.visible = AxisDefine.axisInfos[6].visiable;
+        ptext15.visible = AxisDefine.axisInfos[7].visiable;
+        ptext16.visible = AxisDefine.axisInfos[7].visiable;
 
         xSel.visible = AxisDefine.axisInfos[0].visiable;
         ySel.visible = AxisDefine.axisInfos[1].visiable;

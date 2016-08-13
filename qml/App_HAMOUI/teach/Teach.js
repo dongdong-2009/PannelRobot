@@ -1002,7 +1002,7 @@ var generateOutputAction = function(point, type, status, valveID, time){
         "type":type,
         "point":point,
         "pointStatus": status,
-        "valveID":valveID || -1
+        "valveID":valveID == undefined ? -1 : valveID
     };
     if(type >= TIMEY_BOARD_START){
         ret.acTime = time || 0;
@@ -1340,25 +1340,24 @@ var valveTypeToString = [
 
 function valveItemToString(valve){
     var ret = valveTypeToString[valve.type] + "-";
-    ret += getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
-    if(valve.type === IO_TYPE_HOLD_DOUBLE_Y ||
-            valve.type === IO_TYPE_UNHOLD_DOUBLE_Y){
-        ret += "," + getYDefineFromHWPoint(valve.y2Point, valve.y2Board).yDefine.pointName;
-    }
+    ret += getYDefinePointNameFromValve(valve);
     return ret +=":" + valve.descr;
 }
 
 var outputActionToStringHandler = function(actionObject){
+    var valve;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
-        var valve = getValveItemFromValveID(actionObject.valveID);
+        valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Check Start") + " "
+        valve = getValveItemFromValveID(actionObject.point);
+        return qsTr("Check:") + valveItemToString(valve) + " " + qsTr("Check Start") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else if(actionObject.type === VALVE_CHECK_END){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Check End") + " "
+        valve = getValveItemFromValveID(actionObject.point);
+        return qsTr("Check:") + valveItemToString(valve) +  " " + qsTr("Check End") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){

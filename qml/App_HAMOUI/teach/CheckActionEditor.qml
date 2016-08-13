@@ -7,8 +7,6 @@ import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
-    property variant singleYs: ["valve16", "valve17"]
-    property variant holdDoubleYs: []
 
     function createActionObjects(){
         var ret = [];
@@ -44,12 +42,10 @@ Item {
                 id:singleY
                 text: qsTr("Single Y")
                 isChecked: true
-                visible: singleYs.length > 0
             }
             ICCheckBox{
                 id:holdDoubleY
                 text: qsTr("Hold Double Y")
-                visible: holdDoubleYs.length > 0
             }
         }
         Rectangle{
@@ -79,16 +75,13 @@ Item {
                     };
                 }
 
-                function createValveMoldItem(pointNum, valve, board){
-                    var pN = IODefines.getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
+                function createValveMoldItem(valve, board){
                     return {"isSel":false,
-                        "pointNum":pN,
+                        "pointNum":IODefines.getYDefinePointNameFromValve(valve),
                         "pointDescr":valve.descr,
-                        "hwPoint":board == IODefines.VALVE_BOARD ? valve.id: valve.y1Point,
-                                                                   "board":board,
-                                                                   "isOn": false,
-                                                                   "valveID":valve.id,
-                                                                   "valve":valve
+                        "hwPoint":valve.id,
+                        "board":board,
+                        "isOn": false
                     };
                 }
 
@@ -168,19 +161,21 @@ Item {
 
     Component.onCompleted: {
 
-        var yDefines = singleYs;
+        var yDefines = IODefines.valveDefines.getValves(IODefines.IO_TYPE_SINGLE_Y);
         var yDefine;
         var i;
 
+        singleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            singleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
+            yDefine = yDefines[i];
+            singleYModel.append(yView.createValveMoldItem(yDefine, IODefines.VALVE_BOARD));
         }
 
-        yDefines = holdDoubleYs;
+        yDefines = IODefines.valveDefines.getValves(IODefines.IO_TYPE_HOLD_DOUBLE_Y);
+        holdDoubleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            holdDoubleYModel.append(yView.createValveMoldItem(yDefines[i], yDefine.descr, yDefine.id, IODefines.VALVE_BOARD));
+            yDefine = yDefines[i];
+            holdDoubleYModel.append(yView.createValveMoldItem(yDefine, IODefines.VALVE_BOARD));
         }
 
     }

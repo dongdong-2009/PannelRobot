@@ -55,7 +55,7 @@ Item {
     }
 
     Component.onCompleted: {
-        var programs = ManualProgramManager.manualProgramManager.programs;
+        var programs = ManualProgramManager.manualProgramManager.programList();
         for(var i = 0; i < programs.length; ++i){
             buttonModel.append({"po":programs[i]});
         }

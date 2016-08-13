@@ -1585,7 +1585,8 @@ Rectangle {
         var isSyncStart = false;
         var jumpLines = [];
         var insertedIndex = 0;
-        Teach.flagsDefine.clear(Teach.currentParsingProgram);
+        var currentParsingProgram = PData.programToParsingIndex(model);
+        Teach.flagsDefine.clear(currentParsingProgram);
         for(var p = 0; p < program.length; ++p){
             step = program[p];
             step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;
@@ -1597,7 +1598,7 @@ Rectangle {
             }
             if(step.action === Teach.actions.ACT_FLAG){
                 at = Teach.actionTypes.kAT_Flag;
-                Teach.flagsDefine.pushFlag(Teach.currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
+                Teach.flagsDefine.pushFlag(currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
             }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                 at = Teach.actionTypes.kAT_SyncStart;
                 isSyncStart = true;

@@ -1,10 +1,12 @@
 .pragma library
 
-function AxisInfo(id, name, unit){
+function AxisInfo(id, name, unit, wAddr, jAddr){
     this.id = id;
     this.name = name;
     this.unit = unit;
     this.visiable = true;
+    this.wAddr = wAddr;
+    this.jAddr = jAddr;
 }
 
 var kAP_X = 1;
@@ -21,14 +23,14 @@ var kAP_RV = 11;
 var kAP_RW = 12;
 
 
-var axisInfos = [new AxisInfo(0, qsTr("X"), qsTr("mm")),
-                 new AxisInfo(1, qsTr("Y"), qsTr("mm")),
-                 new AxisInfo(2, qsTr("Z"), qsTr("mm")),
-                 new AxisInfo(3, qsTr("U"), qsTr("°")),
-                 new AxisInfo(4, qsTr("V"), qsTr("°")),
-                 new AxisInfo(5, qsTr("W"), qsTr("°")),
-                 new AxisInfo(6, qsTr("M7"), qsTr("mm")),
-                 new AxisInfo(7, qsTr("M8"), qsTr("mm"))];
+var axisInfos = [new AxisInfo(0, qsTr("X"), qsTr("mm"), "c_ro_0_32_3_900", "c_ro_0_32_0_901"),
+                 new AxisInfo(1, qsTr("Y"), qsTr("mm"), "c_ro_0_32_3_904", "c_ro_0_32_0_905"),
+                 new AxisInfo(2, qsTr("Z"), qsTr("mm"), "c_ro_0_32_3_908", "c_ro_0_32_0_909"),
+                 new AxisInfo(3, qsTr("U"), qsTr("°"), "c_ro_0_32_3_912", "c_ro_0_32_0_913"),
+                 new AxisInfo(4, qsTr("V"), qsTr("°"), "c_ro_0_32_3_916", "c_ro_0_32_0_917"),
+                 new AxisInfo(5, qsTr("W"), qsTr("°"), "c_ro_0_32_3_920", "c_ro_0_32_0_921"),
+                 new AxisInfo(6, qsTr("M7"), qsTr("mm"), "c_ro_0_32_3_924", "c_ro_0_32_0_925"),
+                 new AxisInfo(7, qsTr("M8"), qsTr("mm"), "c_ro_0_32_3_928", "c_ro_0_32_0_929")];
 
 
 var axisDefineMonitors = [];

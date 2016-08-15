@@ -6276,6 +6276,14 @@ You just need to set the count configs after this setting.</source>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
+    <message>
+        <source>Check Start</source>
+        <translation>开始检测</translation>
+    </message>
+    <message>
+        <source>Check End</source>
+        <translation>结束检测</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>

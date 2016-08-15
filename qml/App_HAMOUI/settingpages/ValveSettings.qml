@@ -44,7 +44,7 @@ Item {
 
             Text {
                 text: descr
-                width: 100
+                width: 150
                 anchors.verticalCenter: parent.verticalCenter
             }
             ICComboBox{
@@ -71,6 +71,10 @@ Item {
                 onTextChanged: {
                     PData.changeTime(index, valveModel.get(index).id, text);
                 }
+            }
+            ICCheckBox{
+                text:qsTr("Auto Check")
+                isChecked: autoCheck
             }
         }
     }

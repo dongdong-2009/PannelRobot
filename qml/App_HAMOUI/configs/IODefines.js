@@ -38,8 +38,8 @@ var valveTypeToItems = {"0":[], "1":[], "2":[], "3":[]};
 
 function ValveItem(id, descr, type, time,
                    y1Board, y1Point, x1Board, x1Point, x1Dir,
-                   y2Board, y2Point, x2Board, x2Point, x2Dir
-                   ){
+                   y2Board, y2Point, x2Board, x2Point, x2Dir,
+                   autoCheck){
     this.id = id;
     this.descr = descr;
     this.type = type;
@@ -54,6 +54,7 @@ function ValveItem(id, descr, type, time,
     this.x1Dir = x1Dir || 0;
     this.x2Dir = x2Dir || 0;
     this.time = time || 0.5;
+    this.autoCheck = (autoCheck == undefined ? false : autoCheck);
     valveTypeToItems[type].push(this);
 }
 

@@ -1048,11 +1048,10 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     QStringList programs = ICDALHelper::MoldProgramContent(moldName);
     if(programs.size() != 9) return false;
     moldName_ = moldName;
-    programs_.clear();
     CompileInfo p;
     int err;
-    programsCode_.clear();
-    programs_.clear();
+//    programsCode_.clear();
+//    programs_.clear();
     bool ok = false;
     stacks_ = ICDALHelper::MoldStacksContent(moldName);
     stackInfos_ = ParseStacks(stacks_, ok);
@@ -1061,16 +1060,23 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     functions_ = ICDALHelper::MoldFunctionsContent(moldName);
     compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
     ok = true;
+    QList<CompileInfo> tmpPrograms;
+    QStringList tmpProgramsCode;
     for(int i = 0; i != programs.size(); ++i)
     {
-        programsCode_.append(programs.at(i));
+        tmpProgramsCode.append(programs.at(i));
         p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr())
         {
             ok = false;
             qDebug()<<"Load Mold Err:"<<p.ErrInfo();
         }
-        programs_.append(p);
+        tmpPrograms.append(p);
+    }
+    if(ok)
+    {
+        programsCode_ = tmpProgramsCode;
+        programs_ = tmpPrograms;
     }
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));

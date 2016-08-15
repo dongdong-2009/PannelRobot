@@ -144,6 +144,7 @@ Rectangle {
             page1.offsetY = stackInfo.si0.offsetY;
             page1.offsetZ = stackInfo.si0.offsetZ;
             page1.setDataSourceName(stackInfo.si0.dataSourceName)
+            page1.runSeq = stackInfo.si0.runSeq;
 
 
             page2.motor0 = stackInfo.si1.m0pos;
@@ -170,6 +171,7 @@ Rectangle {
             page2.offsetY = stackInfo.si1.offsetY;
             page2.offsetZ = stackInfo.si1.offsetZ;
             page2.setDataSourceName(stackInfo.si1.dataSourceName)
+            page2.runSeq = stackInfo.si1.runSeq;
 
             stackType = stackInfo.type;
 
@@ -223,7 +225,8 @@ Rectangle {
                                           page1.offsetZ,
                                           page1.dataSourceName,
                                           selectedDS,
-                                          page1.isZWithYEn);
+                                          page1.isZWithYEn,
+                                          page1.runSeq);
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -248,7 +251,8 @@ Rectangle {
                                           page2.offsetZ,
                                           page2.dataSourceName,
                                           selectedDS,
-                                          page2.isZWithYEn);
+                                          page2.isZWithYEn,
+                                          page2.runSeq);
             var realST = stackType;
             if(realST >= 2){
                 realST = page1.isCustomDataSource ? 3 : 2;

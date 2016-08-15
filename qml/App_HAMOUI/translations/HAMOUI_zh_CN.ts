@@ -103,6 +103,10 @@
         <source>Pos(+/-):</source>
         <translation>位置(+/-):</translation>
     </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -6167,6 +6171,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>PP</source>
         <translation>正相</translation>
+    </message>
+    <message>
+        <source>Auto Check</source>
+        <translation>自动检测</translation>
     </message>
 </context>
 <context>

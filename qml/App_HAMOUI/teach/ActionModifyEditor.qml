@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "ActionModifyEditor.js" as PData
 import "../configs/IODefines.js" as IODefines
+import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
     id:container
@@ -81,6 +82,7 @@ Item {
                 signalStop.configValue = actionObject.signalStopPoint || 0;
                 fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
             }else if(editor == pos){
+                pos.axisID = actionObject.axis;
                 if(isAutoMode){
                     pos.configAddr = "";
                     pos.min = -20;
@@ -161,13 +163,24 @@ Item {
 
             ICConfigEdit{
                 id:pos
+                property int axisID: 0
                 configNameWidth: PData.configNameWidth
                 inputWidth: PData.inputWidth
                 configName: qsTr("Pos:")
                 unit: qsTr("mm")
                 height: 32
-
+                ICButton{
+                    id:setInBtn
+                    text: qsTr("Set In")
+                    anchors.left: parent.right
+                    anchors.leftMargin: 6
+                    visible: !isAutoMode
+                    onButtonClicked: {
+                        pos.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[pos.axisID].wAddr);
+                    }
+                }
             }
+
             PointEdit{
                 id:points
                 isEditorMode: true
@@ -261,38 +274,6 @@ Item {
                     inputWidth: 100
                     z:2
                     enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked);
-//                    items: [  "X010",
-//                        "X011",
-//                        "X012",
-//                        "X013",
-//                        "X014",
-//                        "X015",
-//                        "X016",
-//                        "X017",
-//                        "X020",
-//                        "X021",
-//                        "X022",
-//                        "X023",
-//                        "X024",
-//                        "X025",
-//                        "X026",
-//                        "X027",
-//                        "X030",
-//                        "X031",
-//                        "X032",
-//                        "X033",
-//                        "X034",
-//                        "X035",
-//                        "X036",
-//                        "X037",
-//                        "X040",
-//                        "X041",
-//                        "X042",
-//                        "X043",
-//                        "X044",
-//                        "X045",
-//                        "X046",
-//                        "X047"]
                     popupMode: 1
                     popupHeight: 300
                     Component.onCompleted: {

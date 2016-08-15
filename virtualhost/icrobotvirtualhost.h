@@ -25,7 +25,8 @@ union ValveItem{
         quint32 status: 1;
         quint32 x1Dir:1;
         quint32 x2Dir:1;
-        quint32 time:14;
+        quint32 time:13;
+        quint32 autoCheck:1;
     };
     quint32 all[2];
     QVector<quint32> toDataBuf() const

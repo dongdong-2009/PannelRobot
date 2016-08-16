@@ -440,10 +440,10 @@ Rectangle {
             var updateID = ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
             if(updateID == 0)
                 panelRobotController.manualRunProgram(JSON.stringify(program),
-                                                      "","", "", "", 19);
+                                                      "","", "", "", 19, false);
             else if(updateID == 1)
                 panelRobotController.manualRunProgram(JSON.stringify(program),
-                                                      "","", "", "", 18);
+                                                      "","", "", "", 18, false);
         }
         return errInfo;
     }

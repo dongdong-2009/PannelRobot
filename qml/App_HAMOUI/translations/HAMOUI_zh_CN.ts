@@ -5040,6 +5040,26 @@ please chose!</source>
         <source>Offset Z with Y</source>
         <translation>Y方向偏移Z</translation>
     </message>
+    <message>
+        <source>Run Seq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run Together</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>

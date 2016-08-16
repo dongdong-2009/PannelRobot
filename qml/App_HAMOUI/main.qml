@@ -642,6 +642,7 @@ Rectangle {
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(isManual){
+            menuProgram.enabled = true;
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
             panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
             menuOperation.setChecked(true);
@@ -657,6 +658,7 @@ Rectangle {
             if(pData.lastKnob != knobStatus){
                 middleHeader.showStandbyPage();
             }
+            menuProgram.enabled = false;
         }
         pData.lastKnob = knobStatus;
     }

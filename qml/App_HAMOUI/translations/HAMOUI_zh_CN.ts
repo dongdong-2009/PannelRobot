@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -112,31 +112,31 @@
     <name>AlarmInfo</name>
     <message>
         <source>ALARM_NOT_INIT                 </source>
-        <translation type="obsolete">没初始化完</translation>
+        <translation type="unfinished">没初始化完</translation>
     </message>
     <message>
         <source>ALARM_AXIS_CFG_DIFF            </source>
-        <translation type="obsolete">主机结构配置和手控结构配置不同</translation>
+        <translation type="unfinished">主机结构配置和手控结构配置不同</translation>
     </message>
     <message>
         <source>ALARM_AXIS_CFG_ERR             </source>
-        <translation type="obsolete">主机结果配置参数错误</translation>
+        <translation type="unfinished">主机结果配置参数错误</translation>
     </message>
     <message>
         <source>ALARM_OUT_OF_MEMORY_ERR        </source>
-        <translation type="obsolete">主机内存不足</translation>
+        <translation type="unfinished">主机内存不足</translation>
     </message>
     <message>
         <source>ALARM_TEACH_DATA_ANALYTICAL_ERR</source>
-        <translation type="obsolete">教导数据解析错误</translation>
+        <translation type="unfinished">教导数据解析错误</translation>
     </message>
     <message>
         <source>ALARM_TEACH_DATA_EDIT_ERR      </source>
-        <translation type="obsolete">教导数据编辑错误</translation>
+        <translation type="unfinished">教导数据编辑错误</translation>
     </message>
     <message>
         <source>ALARM_EMERGENCY_STOP           </source>
-        <translation type="obsolete">紧急停止</translation>
+        <translation type="unfinished">紧急停止</translation>
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
@@ -164,263 +164,294 @@
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
-        <translation type="obsolete">运动失败</translation>
+        <translation type="unfinished">运动失败</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SPEED_SET_ERR </source>
-        <translation type="obsolete">速度设定错误</translation>
+        <translation type="unfinished">速度设定错误</translation>
     </message>
     <message>
         <source>ALARM_AXIS_OVER_SPEED_ERR </source>
-        <translation type="obsolete">运动过速</translation>
+        <translation type="unfinished">运动过速</translation>
     </message>
     <message>
         <source>Wait Input:</source>
-        <translation type="obsolete">等待输入:</translation>
+        <translation type="unfinished">等待输入:</translation>
     </message>
     <message>
         <source>ON over time</source>
-        <translation type="obsolete">通超时</translation>
+        <translation type="unfinished">通超时</translation>
     </message>
     <message>
         <source>OFF over time</source>
-        <translation type="obsolete">断超时</translation>
+        <translation type="unfinished">断超时</translation>
     </message>
     <message>
         <source>Wait Single Input:</source>
-        <translation type="obsolete">等待单头阀输入:</translation>
+        <translation type="unfinished">等待单头阀输入:</translation>
     </message>
     <message>
         <source>Wait Double Input:</source>
-        <translation type="obsolete">等待双头阀输入:</translation>
+        <translation type="unfinished">等待双头阀输入:</translation>
     </message>
     <message>
         <source>Connect host fail!</source>
-        <translation type="obsolete">连接主机失败!</translation>
+        <translation type="unfinished">连接主机失败!</translation>
     </message>
     <message>
         <source>ALARM_AUTO_JUMP_ERR</source>
-        <translation type="obsolete">自动运行跳转错误</translation>
+        <translation type="unfinished">自动运行跳转错误</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ACTION_FAIL</source>
-        <translation type="obsolete">轨迹运动失败</translation>
+        <translation type="unfinished">轨迹运动失败</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
-        <translation type="obsolete">手动直线轨迹运动坐标1未设定</translation>
+        <translation type="unfinished">手动直线轨迹运动坐标1未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
-        <translation type="obsolete">手动直线轨迹运动坐标2未设定</translation>
+        <translation type="unfinished">手动直线轨迹运动坐标2未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
-        <translation type="obsolete">手动弧线轨迹运动坐标1未设定</translation>
+        <translation type="unfinished">手动弧线轨迹运动坐标1未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
-        <translation type="obsolete">手动弧线轨迹运动坐标2未设定</translation>
+        <translation type="unfinished">手动弧线轨迹运动坐标2未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
-        <translation type="obsolete">手动弧线轨迹运动坐标3未设定</translation>
+        <translation type="unfinished">手动弧线轨迹运动坐标3未设定</translation>
     </message>
     <message>
         <source>ALARM_SETROUTESPEED_FAIL</source>
-        <translation type="obsolete">轨迹运动速度设定失败</translation>
+        <translation type="unfinished">轨迹运动速度设定失败</translation>
     </message>
     <message>
         <source>ALARM_Motor_ALARM_ERR</source>
-        <translation type="obsolete">电机报警</translation>
+        <translation type="unfinished">电机报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR</source>
-        <translation type="obsolete">运动失败</translation>
+        <translation type="unfinished">运动失败</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SPEED_SET_ERR</source>
-        <translation type="obsolete">速度设定错误</translation>
+        <translation type="unfinished">速度设定错误</translation>
     </message>
     <message>
         <source>ALARM_AXIS_OVER_SPEED_ERR</source>
-        <translation type="obsolete">运动过速</translation>
+        <translation type="unfinished">运动过速</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SOFT_LIMIT_P</source>
-        <translation type="obsolete">正极限报警</translation>
+        <translation type="unfinished">正极限报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SOFT_LIMIT_N</source>
-        <translation type="obsolete">负极限报警</translation>
+        <translation type="unfinished">负极限报警</translation>
     </message>
     <message>
         <source>ALARM_ERROR_SERVO_WARP</source>
-        <translation type="obsolete">偏差过大</translation>
+        <translation type="unfinished">偏差过大</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ACC_ERR</source>
-        <translation type="obsolete">轨迹规划失败</translation>
+        <translation type="unfinished">轨迹规划失败</translation>
     </message>
     <message>
         <source>ALARM_COUNTER_NOT_DEFINE</source>
-        <translation type="obsolete">计数器未定义</translation>
+        <translation type="unfinished">计数器未定义</translation>
     </message>
     <message>
         <source>Unknow Err</source>
-        <translation type="obsolete">未知错误</translation>
+        <translation type="unfinished">未知错误</translation>
     </message>
     <message>
         <source>ALARM_PROGRAM_ERR</source>
-        <translation type="obsolete">教导程序错误</translation>
+        <translation type="unfinished">教导程序错误</translation>
     </message>
     <message>
         <source>ALARM_CFG_STORAGE_ERR</source>
-        <translation type="obsolete">配置参数存储失败</translation>
+        <translation type="unfinished">配置参数存储失败</translation>
     </message>
     <message>
         <source>ALARM_MAHCINE_SET_ERR</source>
-        <translation type="obsolete">机型设定错误</translation>
+        <translation type="unfinished">机型设定错误</translation>
     </message>
     <message>
         <source>ALARM_ACC_LIMIT</source>
-        <translation type="obsolete">加速度报警</translation>
+        <translation type="unfinished">加速度报警</translation>
     </message>
     <message>
         <source>ALARM_POINT_LIMIT_P</source>
-        <translation type="obsolete">正极限信号报警</translation>
+        <translation type="unfinished">正极限信号报警</translation>
     </message>
     <message>
         <source>ALARM_POINT_LIMIT_N</source>
-        <translation type="obsolete">负极限信号报警</translation>
+        <translation type="unfinished">负极限信号报警</translation>
     </message>
     <message>
         <source>ALARM_NOT_SET_ORIGIN</source>
-        <translation type="obsolete">原点信号未设定</translation>
+        <translation type="unfinished">原点信号未设定</translation>
     </message>
     <message>
         <source>ALARM_JOINT_P1_NOTSET</source>
-        <translation type="obsolete">手动关节运动起始坐标未设定</translation>
+        <translation type="unfinished">手动关节运动起始坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_JOINT_P2_NOTSET</source>
-        <translation type="obsolete">手动关节运动终点坐标未设定</translation>
+        <translation type="unfinished">手动关节运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_RELATIVE_LP_NOTSET</source>
-        <translation type="obsolete">手动直线相对移动坐标未设定</translation>
+        <translation type="unfinished">手动直线相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_RELATIVE_JP_NOTSET</source>
-        <translation type="obsolete">手动关节相对移动坐标未设定</translation>
+        <translation type="unfinished">手动关节相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
-        <translation type="obsolete">教导直线轨迹运动起始坐标未设定</translation>
+        <translation type="unfinished">教导直线轨迹运动起始坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
-        <translation type="obsolete">教导直线轨迹运动终点坐标未设定</translation>
+        <translation type="unfinished">教导直线轨迹运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
-        <translation type="obsolete">教导关节运动起始坐标未设定</translation>
+        <translation type="unfinished">教导关节运动起始坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
-        <translation type="obsolete">教导直线相对移动坐标未设定</translation>
+        <translation type="unfinished">教导直线相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
-        <translation type="obsolete">教导关节相对移动坐标未设定</translation>
+        <translation type="unfinished">教导关节相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
-        <translation type="obsolete">教导弧线轨迹运动起点坐标未设定</translation>
+        <translation type="unfinished">教导弧线轨迹运动起点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
-        <translation type="obsolete">教导弧线轨迹运动中间坐标未设定</translation>
+        <translation type="unfinished">教导弧线轨迹运动中间坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
-        <translation type="obsolete">教导弧线轨迹运动终点坐标未设定</translation>
+        <translation type="unfinished">教导弧线轨迹运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
-        <translation type="obsolete">教导关节运动终点坐标未设定</translation>
+        <translation type="unfinished">教导关节运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_REPLAN_ERR</source>
-        <translation type="obsolete">轨迹重新规划失败</translation>
+        <translation type="unfinished">轨迹重新规划失败</translation>
     </message>
     <message>
         <source>ALARM_STACK_WAITE_ERR</source>
-        <translation type="obsolete">等待堆叠数据源超时</translation>
+        <translation type="unfinished">等待堆叠数据源超时</translation>
     </message>
     <message>
         <source>ALARM_STACK_SOURCE_ERR</source>
-        <translation type="obsolete">堆叠数据源错误</translation>
+        <translation type="unfinished">堆叠数据源错误</translation>
     </message>
     <message>
         <source>ALARM_SINGLE_DEBUG_ERR</source>
-        <translation type="obsolete">单步/单循环调试程序设定错误</translation>
+        <translation type="unfinished">单步/单循环调试程序设定错误</translation>
     </message>
     <message>
         <source>ALARM_STORAGE_READ_ERR</source>
-        <translation type="obsolete">从主机FLASH读取的数据有错</translation>
+        <translation type="unfinished">从主机FLASH读取的数据有错</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET_ERR</source>
-        <translation type="obsolete">与IO板通讯失败</translation>
+        <translation type="unfinished">与IO板通讯失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_READ_ERR</source>
-        <translation type="obsolete">伺服绝对值位置读取失败</translation>
+        <translation type="unfinished">伺服绝对值位置读取失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_CRC_ERR</source>
-        <translation type="obsolete">伺服绝对值位置读取校验失败</translation>
+        <translation type="unfinished">伺服绝对值位置读取校验失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_FUNC_ERR</source>
-        <translation type="obsolete">伺服绝对值位置读取功能码错误</translation>
+        <translation type="unfinished">伺服绝对值位置读取功能码错误</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
-        <translation type="obsolete">伺服绝对值位置读取超时</translation>
+        <translation type="unfinished">伺服绝对值位置读取超时</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET2_ERR</source>
-        <translation type="obsolete">与IO板2通讯失败</translation>
+        <translation type="unfinished">与IO板2通讯失败</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET3_ERR</source>
-        <translation type="obsolete">与IO板3通讯失败</translation>
+        <translation type="unfinished">与IO板3通讯失败</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET4_ERR</source>
-        <translation type="obsolete">与IO板4通讯失败</translation>
+        <translation type="unfinished">与IO板4通讯失败</translation>
     </message>
     <message>
         <source>ALARM_PROGRAM_CHANGE_ERR</source>
-        <translation type="obsolete">手控和主机教导程序不一致</translation>
+        <translation type="unfinished">手控和主机教导程序不一致</translation>
     </message>
     <message>
         <source>ALARM_OVER_CURRENT</source>
-        <translation type="obsolete">过电流报警</translation>
+        <translation type="unfinished">过电流报警</translation>
     </message>
     <message>
         <source>ALARM_ZPULSER_ERR</source>
-        <translation type="obsolete">Z脉冲错误</translation>
+        <translation type="unfinished">Z脉冲错误</translation>
     </message>
     <message>
         <source>ALARM_NO_ZPULSER</source>
-        <translation type="obsolete">无Z脉冲</translation>
+        <translation type="unfinished">无Z脉冲</translation>
     </message>
     <message>
         <source>ALARM_ORIGIN_DEVIATION</source>
-        <translation type="obsolete">原点偏移</translation>
+        <translation type="unfinished">原点偏移</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5000</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1.Connector loose
+2.Wire is off
+3.Pannel is broken
+4.Host is broken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1034,6 +1065,49 @@
     </message>
 </context>
 <context>
+    <name>AxisDefine</name>
+    <message>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M8</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BottomMenuItem</name>
     <message>
         <source>item</source>
@@ -1524,7 +1598,7 @@
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
-        <translation type="obsolete">{0} 从 {1} 改为 {2}</translation>
+        <translation type="unfinished">{0} 从 {1} 改为 {2}</translation>
     </message>
 </context>
 <context>
@@ -1577,179 +1651,179 @@
     <name>IODefines</name>
     <message>
         <source>Y010</source>
-        <translation type="obsolete">绿灯</translation>
+        <translation type="unfinished">绿灯</translation>
     </message>
     <message>
         <source>Y011</source>
-        <translation type="obsolete">黄灯</translation>
+        <translation type="unfinished">黄灯</translation>
     </message>
     <message>
         <source>Y012</source>
-        <translation type="obsolete">红灯</translation>
+        <translation type="unfinished">红灯</translation>
     </message>
     <message>
         <source>Y013</source>
-        <translation type="obsolete">报警声</translation>
+        <translation type="unfinished">报警声</translation>
     </message>
     <message>
         <source>X010</source>
-        <translation type="obsolete">X010</translation>
+        <translation type="unfinished">X010</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation type="obsolete">X011</translation>
+        <translation type="unfinished">X011</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation type="obsolete">X012</translation>
+        <translation type="unfinished">X012</translation>
     </message>
     <message>
         <source>X013</source>
-        <translation type="obsolete">X013</translation>
+        <translation type="unfinished">X013</translation>
     </message>
     <message>
         <source>X014</source>
-        <translation type="obsolete">X014</translation>
+        <translation type="unfinished">X014</translation>
     </message>
     <message>
         <source>X015</source>
-        <translation type="obsolete">X015</translation>
+        <translation type="unfinished">X015</translation>
     </message>
     <message>
         <source>X016</source>
-        <translation type="obsolete">X016</translation>
+        <translation type="unfinished">X016</translation>
     </message>
     <message>
         <source>X017</source>
-        <translation type="obsolete">X017</translation>
+        <translation type="unfinished">X017</translation>
     </message>
     <message>
         <source>X020</source>
-        <translation type="obsolete">X020</translation>
+        <translation type="unfinished">X020</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation type="obsolete">X021</translation>
+        <translation type="unfinished">X021</translation>
     </message>
     <message>
         <source>X022</source>
-        <translation type="obsolete">X022</translation>
+        <translation type="unfinished">X022</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation type="obsolete">X023</translation>
+        <translation type="unfinished">X023</translation>
     </message>
     <message>
         <source>X024</source>
-        <translation type="obsolete">X024</translation>
+        <translation type="unfinished">X024</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation type="obsolete">X025</translation>
+        <translation type="unfinished">X025</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation type="obsolete">X026</translation>
+        <translation type="unfinished">X026</translation>
     </message>
     <message>
         <source>X027</source>
-        <translation type="obsolete">X027</translation>
+        <translation type="unfinished">X027</translation>
     </message>
     <message>
         <source>X030</source>
-        <translation type="obsolete">X030</translation>
+        <translation type="unfinished">X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation type="obsolete">X031</translation>
+        <translation type="unfinished">X031</translation>
     </message>
     <message>
         <source>X032</source>
-        <translation type="obsolete">X032</translation>
+        <translation type="unfinished">X032</translation>
     </message>
     <message>
         <source>X033</source>
-        <translation type="obsolete">X033</translation>
+        <translation type="unfinished">X033</translation>
     </message>
     <message>
         <source>X034</source>
-        <translation type="obsolete">X034</translation>
+        <translation type="unfinished">X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation type="obsolete">X035</translation>
+        <translation type="unfinished">X035</translation>
     </message>
     <message>
         <source>X036</source>
-        <translation type="obsolete">X036</translation>
+        <translation type="unfinished">X036</translation>
     </message>
     <message>
         <source>X037</source>
-        <translation type="obsolete">X037</translation>
+        <translation type="unfinished">X037</translation>
     </message>
     <message>
         <source>X040</source>
-        <translation type="obsolete">X040</translation>
+        <translation type="unfinished">X040</translation>
     </message>
     <message>
         <source>X041</source>
-        <translation type="obsolete">X041</translation>
+        <translation type="unfinished">X041</translation>
     </message>
     <message>
         <source>X042</source>
-        <translation type="obsolete">X042</translation>
+        <translation type="unfinished">X042</translation>
     </message>
     <message>
         <source>X043</source>
-        <translation type="obsolete">X043</translation>
+        <translation type="unfinished">X043</translation>
     </message>
     <message>
         <source>X044</source>
-        <translation type="obsolete">X044</translation>
+        <translation type="unfinished">X044</translation>
     </message>
     <message>
         <source>X045</source>
-        <translation type="obsolete">X045</translation>
+        <translation type="unfinished">X045</translation>
     </message>
     <message>
         <source>X046</source>
-        <translation type="obsolete">X046</translation>
+        <translation type="unfinished">X046</translation>
     </message>
     <message>
         <source>X047</source>
-        <translation type="obsolete">X047</translation>
+        <translation type="unfinished">X047</translation>
     </message>
     <message>
         <source>X050</source>
-        <translation type="obsolete">X050</translation>
+        <translation type="unfinished">X050</translation>
     </message>
     <message>
         <source>X051</source>
-        <translation type="obsolete">X051</translation>
+        <translation type="unfinished">X051</translation>
     </message>
     <message>
         <source>X052</source>
-        <translation type="obsolete">X052</translation>
+        <translation type="unfinished">X052</translation>
     </message>
     <message>
         <source>X053</source>
-        <translation type="obsolete">X053</translation>
+        <translation type="unfinished">X053</translation>
     </message>
     <message>
         <source>X054</source>
-        <translation type="obsolete">X054</translation>
+        <translation type="unfinished">X054</translation>
     </message>
     <message>
         <source>X055</source>
-        <translation type="obsolete">X055</translation>
+        <translation type="unfinished">X055</translation>
     </message>
     <message>
         <source>X056</source>
-        <translation type="obsolete">X056</translation>
+        <translation type="unfinished">X056</translation>
     </message>
     <message>
         <source>X057</source>
-        <translation type="obsolete">X057</translation>
+        <translation type="unfinished">X057</translation>
     </message>
     <message>
         <source>Normal Y</source>
@@ -1765,995 +1839,1683 @@
     </message>
     <message>
         <source>Normal Y010</source>
-        <translation type="obsolete">绿灯</translation>
+        <translation type="unfinished">绿灯</translation>
     </message>
     <message>
         <source>Normal Y011</source>
-        <translation type="obsolete">黄灯</translation>
+        <translation type="unfinished">黄灯</translation>
     </message>
     <message>
         <source>Normal Y012</source>
-        <translation type="obsolete">红灯</translation>
+        <translation type="unfinished">红灯</translation>
     </message>
     <message>
         <source>Normal Y013</source>
-        <translation type="obsolete">报警声</translation>
+        <translation type="unfinished">报警声</translation>
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation type="obsolete">普通输出Y014</translation>
+        <translation type="unfinished">普通输出Y014</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation type="obsolete">普通输出Y015</translation>
+        <translation type="unfinished">普通输出Y015</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation type="obsolete">普通输出Y016</translation>
+        <translation type="unfinished">普通输出Y016</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation type="obsolete">普通输出Y017</translation>
+        <translation type="unfinished">普通输出Y017</translation>
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation type="obsolete">普通输出Y020</translation>
+        <translation type="unfinished">普通输出Y020</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation type="obsolete">普通输出Y021</translation>
+        <translation type="unfinished">普通输出Y021</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation type="obsolete">普通输出Y022</translation>
+        <translation type="unfinished">普通输出Y022</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation type="obsolete">普通输出Y023</translation>
+        <translation type="unfinished">普通输出Y023</translation>
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation type="obsolete">普通输出Y024</translation>
+        <translation type="unfinished">普通输出Y024</translation>
     </message>
     <message>
         <source>Normal Y025</source>
-        <translation type="obsolete">普通输出Y025</translation>
+        <translation type="unfinished">普通输出Y025</translation>
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation type="obsolete">普通输出Y026</translation>
+        <translation type="unfinished">普通输出Y026</translation>
     </message>
     <message>
         <source>Normal Y027</source>
-        <translation type="obsolete">普通输出Y027</translation>
+        <translation type="unfinished">普通输出Y027</translation>
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation type="obsolete">普通输出Y030</translation>
+        <translation type="unfinished">普通输出Y030</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation type="obsolete">普通输出Y031</translation>
+        <translation type="unfinished">普通输出Y031</translation>
     </message>
     <message>
         <source>Normal Y032</source>
-        <translation type="obsolete">普通输出Y032</translation>
+        <translation type="unfinished">普通输出Y032</translation>
     </message>
     <message>
         <source>Normal Y033</source>
-        <translation type="obsolete">普通输出Y033</translation>
+        <translation type="unfinished">普通输出Y033</translation>
     </message>
     <message>
         <source>Normal Y034</source>
-        <translation type="obsolete">普通输出Y034</translation>
+        <translation type="unfinished">普通输出Y034</translation>
     </message>
     <message>
         <source>Normal Y035</source>
-        <translation type="obsolete">普通输出Y035</translation>
+        <translation type="unfinished">普通输出Y035</translation>
     </message>
     <message>
         <source>Normal Y036</source>
-        <translation type="obsolete">普通输出Y036</translation>
+        <translation type="unfinished">普通输出Y036</translation>
     </message>
     <message>
         <source>Normal Y037</source>
-        <translation type="obsolete">普通输出Y037</translation>
+        <translation type="unfinished">普通输出Y037</translation>
     </message>
     <message>
         <source>Normal Y040</source>
-        <translation type="obsolete">普通输出Y040</translation>
+        <translation type="unfinished">普通输出Y040</translation>
     </message>
     <message>
         <source>Normal Y041</source>
-        <translation type="obsolete">普通输出Y041</translation>
+        <translation type="unfinished">普通输出Y041</translation>
     </message>
     <message>
         <source>Normal Y042</source>
-        <translation type="obsolete">普通输出Y042</translation>
+        <translation type="unfinished">普通输出Y042</translation>
     </message>
     <message>
         <source>Normal Y043</source>
-        <translation type="obsolete">普通输出Y043</translation>
+        <translation type="unfinished">普通输出Y043</translation>
     </message>
     <message>
         <source>Normal Y044</source>
-        <translation type="obsolete">普通输出Y044</translation>
+        <translation type="unfinished">普通输出Y044</translation>
     </message>
     <message>
         <source>Normal Y045</source>
-        <translation type="obsolete">普通输出Y045</translation>
+        <translation type="unfinished">普通输出Y045</translation>
     </message>
     <message>
         <source>Normal Y046</source>
-        <translation type="obsolete">普通输出Y046</translation>
+        <translation type="unfinished">普通输出Y046</translation>
     </message>
     <message>
         <source>Normal Y047</source>
-        <translation type="obsolete">普通输出Y047</translation>
+        <translation type="unfinished">普通输出Y047</translation>
     </message>
     <message>
         <source>Time Y010</source>
-        <translation type="obsolete">时间输出Y010</translation>
+        <translation type="unfinished">时间输出Y010</translation>
     </message>
     <message>
         <source>Time Y011</source>
-        <translation type="obsolete">时间输出Y011</translation>
+        <translation type="unfinished">时间输出Y011</translation>
     </message>
     <message>
         <source>Time Y012</source>
-        <translation type="obsolete">时间输出Y012</translation>
+        <translation type="unfinished">时间输出Y012</translation>
     </message>
     <message>
         <source>Time Y013</source>
-        <translation type="obsolete">时间输出Y013</translation>
+        <translation type="unfinished">时间输出Y013</translation>
     </message>
     <message>
         <source>Time Y014</source>
-        <translation type="obsolete">时间输出Y014</translation>
+        <translation type="unfinished">时间输出Y014</translation>
     </message>
     <message>
         <source>Time Y015</source>
-        <translation type="obsolete">时间输出Y015</translation>
+        <translation type="unfinished">时间输出Y015</translation>
     </message>
     <message>
         <source>Time Y016</source>
-        <translation type="obsolete">时间输出Y016</translation>
+        <translation type="unfinished">时间输出Y016</translation>
     </message>
     <message>
         <source>Time Y017</source>
-        <translation type="obsolete">时间输出Y017</translation>
+        <translation type="unfinished">时间输出Y017</translation>
     </message>
     <message>
         <source>Time Y020</source>
-        <translation type="obsolete">时间输出Y020</translation>
+        <translation type="unfinished">时间输出Y020</translation>
     </message>
     <message>
         <source>Time Y021</source>
-        <translation type="obsolete">时间输出Y021</translation>
+        <translation type="unfinished">时间输出Y021</translation>
     </message>
     <message>
         <source>Time Y022</source>
-        <translation type="obsolete">时间输出Y022</translation>
+        <translation type="unfinished">时间输出Y022</translation>
     </message>
     <message>
         <source>Time Y023</source>
-        <translation type="obsolete">时间输出Y023</translation>
+        <translation type="unfinished">时间输出Y023</translation>
     </message>
     <message>
         <source>Time Y024</source>
-        <translation type="obsolete">时间输出Y024</translation>
+        <translation type="unfinished">时间输出Y024</translation>
     </message>
     <message>
         <source>Time Y025</source>
-        <translation type="obsolete">时间输出Y025</translation>
+        <translation type="unfinished">时间输出Y025</translation>
     </message>
     <message>
         <source>Time Y026</source>
-        <translation type="obsolete">时间输出Y026</translation>
+        <translation type="unfinished">时间输出Y026</translation>
     </message>
     <message>
         <source>Time Y027</source>
-        <translation type="obsolete">时间输出Y027</translation>
+        <translation type="unfinished">时间输出Y027</translation>
     </message>
     <message>
         <source>Time Y030</source>
-        <translation type="obsolete">时间输出Y030</translation>
+        <translation type="unfinished">时间输出Y030</translation>
     </message>
     <message>
         <source>Time Y031</source>
-        <translation type="obsolete">时间输出Y031</translation>
+        <translation type="unfinished">时间输出Y031</translation>
     </message>
     <message>
         <source>Time Y032</source>
-        <translation type="obsolete">时间输出Y032</translation>
+        <translation type="unfinished">时间输出Y032</translation>
     </message>
     <message>
         <source>Time Y033</source>
-        <translation type="obsolete">时间输出Y033</translation>
+        <translation type="unfinished">时间输出Y033</translation>
     </message>
     <message>
         <source>Time Y034</source>
-        <translation type="obsolete">时间输出Y034</translation>
+        <translation type="unfinished">时间输出Y034</translation>
     </message>
     <message>
         <source>Time Y035</source>
-        <translation type="obsolete">时间输出Y035</translation>
+        <translation type="unfinished">时间输出Y035</translation>
     </message>
     <message>
         <source>Time Y036</source>
-        <translation type="obsolete">时间输出Y036</translation>
+        <translation type="unfinished">时间输出Y036</translation>
     </message>
     <message>
         <source>Time Y037</source>
-        <translation type="obsolete">时间输出Y037</translation>
+        <translation type="unfinished">时间输出Y037</translation>
     </message>
     <message>
         <source>Time Y040</source>
-        <translation type="obsolete">时间输出Y040</translation>
+        <translation type="unfinished">时间输出Y040</translation>
     </message>
     <message>
         <source>Time Y041</source>
-        <translation type="obsolete">时间输出Y041</translation>
+        <translation type="unfinished">时间输出Y041</translation>
     </message>
     <message>
         <source>Time Y042</source>
-        <translation type="obsolete">时间输出Y042</translation>
+        <translation type="unfinished">时间输出Y042</translation>
     </message>
     <message>
         <source>Time Y043</source>
-        <translation type="obsolete">时间输出Y043</translation>
+        <translation type="unfinished">时间输出Y043</translation>
     </message>
     <message>
         <source>Time Y044</source>
-        <translation type="obsolete">时间输出Y044</translation>
+        <translation type="unfinished">时间输出Y044</translation>
     </message>
     <message>
         <source>Time Y045</source>
-        <translation type="obsolete">时间输出Y045</translation>
+        <translation type="unfinished">时间输出Y045</translation>
     </message>
     <message>
         <source>Time Y046</source>
-        <translation type="obsolete">时间输出Y046</translation>
+        <translation type="unfinished">时间输出Y046</translation>
     </message>
     <message>
         <source>Time Y047</source>
-        <translation type="obsolete">时间输出Y047</translation>
+        <translation type="unfinished">时间输出Y047</translation>
     </message>
     <message>
         <source>X060</source>
-        <translation type="obsolete">X060</translation>
+        <translation type="unfinished">X060</translation>
     </message>
     <message>
         <source>X061</source>
-        <translation type="obsolete">X061</translation>
+        <translation type="unfinished">X061</translation>
     </message>
     <message>
         <source>X062</source>
-        <translation type="obsolete">X062</translation>
+        <translation type="unfinished">X062</translation>
     </message>
     <message>
         <source>X063</source>
-        <translation type="obsolete">X063</translation>
+        <translation type="unfinished">X063</translation>
     </message>
     <message>
         <source>X064</source>
-        <translation type="obsolete">X064</translation>
+        <translation type="unfinished">X064</translation>
     </message>
     <message>
         <source>X065</source>
-        <translation type="obsolete">X065</translation>
+        <translation type="unfinished">X065</translation>
     </message>
     <message>
         <source>X066</source>
-        <translation type="obsolete">X066</translation>
+        <translation type="unfinished">X066</translation>
     </message>
     <message>
         <source>X067</source>
-        <translation type="obsolete">X067</translation>
+        <translation type="unfinished">X067</translation>
     </message>
     <message>
         <source>X070</source>
-        <translation type="obsolete">X070</translation>
+        <translation type="unfinished">X070</translation>
     </message>
     <message>
         <source>X071</source>
-        <translation type="obsolete">X071</translation>
+        <translation type="unfinished">X071</translation>
     </message>
     <message>
         <source>X072</source>
-        <translation type="obsolete">X072</translation>
+        <translation type="unfinished">X072</translation>
     </message>
     <message>
         <source>X073</source>
-        <translation type="obsolete">X073</translation>
+        <translation type="unfinished">X073</translation>
     </message>
     <message>
         <source>X074</source>
-        <translation type="obsolete">X074</translation>
+        <translation type="unfinished">X074</translation>
     </message>
     <message>
         <source>X075</source>
-        <translation type="obsolete">X075</translation>
+        <translation type="unfinished">X075</translation>
     </message>
     <message>
         <source>X076</source>
-        <translation type="obsolete">X076</translation>
+        <translation type="unfinished">X076</translation>
     </message>
     <message>
         <source>X077</source>
-        <translation type="obsolete">X077</translation>
+        <translation type="unfinished">X077</translation>
     </message>
     <message>
         <source>X100</source>
-        <translation type="obsolete">X100</translation>
+        <translation type="unfinished">X100</translation>
     </message>
     <message>
         <source>X101</source>
-        <translation type="obsolete">X101</translation>
+        <translation type="unfinished">X101</translation>
     </message>
     <message>
         <source>X102</source>
-        <translation type="obsolete">X102</translation>
+        <translation type="unfinished">X102</translation>
     </message>
     <message>
         <source>X103</source>
-        <translation type="obsolete">X103</translation>
+        <translation type="unfinished">X103</translation>
     </message>
     <message>
         <source>X104</source>
-        <translation type="obsolete">X104</translation>
+        <translation type="unfinished">X104</translation>
     </message>
     <message>
         <source>X105</source>
-        <translation type="obsolete">X105</translation>
+        <translation type="unfinished">X105</translation>
     </message>
     <message>
         <source>X106</source>
-        <translation type="obsolete">X106</translation>
+        <translation type="unfinished">X106</translation>
     </message>
     <message>
         <source>X107</source>
-        <translation type="obsolete">X107</translation>
+        <translation type="unfinished">X107</translation>
     </message>
     <message>
         <source>X110</source>
-        <translation type="obsolete">X110</translation>
+        <translation type="unfinished">X110</translation>
     </message>
     <message>
         <source>X111</source>
-        <translation type="obsolete">X111</translation>
+        <translation type="unfinished">X111</translation>
     </message>
     <message>
         <source>X112</source>
-        <translation type="obsolete">X112</translation>
+        <translation type="unfinished">X112</translation>
     </message>
     <message>
         <source>X113</source>
-        <translation type="obsolete">X113</translation>
+        <translation type="unfinished">X113</translation>
     </message>
     <message>
         <source>X114</source>
-        <translation type="obsolete">X114</translation>
+        <translation type="unfinished">X114</translation>
     </message>
     <message>
         <source>X115</source>
-        <translation type="obsolete">X115</translation>
+        <translation type="unfinished">X115</translation>
     </message>
     <message>
         <source>X116</source>
-        <translation type="obsolete">X116</translation>
+        <translation type="unfinished">X116</translation>
     </message>
     <message>
         <source>X117</source>
-        <translation type="obsolete">X117</translation>
+        <translation type="unfinished">X117</translation>
     </message>
     <message>
         <source>X120</source>
-        <translation type="obsolete">X120</translation>
+        <translation type="unfinished">X120</translation>
     </message>
     <message>
         <source>X121</source>
-        <translation type="obsolete">X121</translation>
+        <translation type="unfinished">X121</translation>
     </message>
     <message>
         <source>X122</source>
-        <translation type="obsolete">X122</translation>
+        <translation type="unfinished">X122</translation>
     </message>
     <message>
         <source>X123</source>
-        <translation type="obsolete">X123</translation>
+        <translation type="unfinished">X123</translation>
     </message>
     <message>
         <source>X124</source>
-        <translation type="obsolete">X124</translation>
+        <translation type="unfinished">X124</translation>
     </message>
     <message>
         <source>X125</source>
-        <translation type="obsolete">X125</translation>
+        <translation type="unfinished">X125</translation>
     </message>
     <message>
         <source>X126</source>
-        <translation type="obsolete">X126</translation>
+        <translation type="unfinished">X126</translation>
     </message>
     <message>
         <source>X127</source>
-        <translation type="obsolete">X127</translation>
+        <translation type="unfinished">X127</translation>
     </message>
     <message>
         <source>X130</source>
-        <translation type="obsolete">X130</translation>
+        <translation type="unfinished">X130</translation>
     </message>
     <message>
         <source>X131</source>
-        <translation type="obsolete">X131</translation>
+        <translation type="unfinished">X131</translation>
     </message>
     <message>
         <source>X132</source>
-        <translation type="obsolete">X132</translation>
+        <translation type="unfinished">X132</translation>
     </message>
     <message>
         <source>X133</source>
-        <translation type="obsolete">X133</translation>
+        <translation type="unfinished">X133</translation>
     </message>
     <message>
         <source>X134</source>
-        <translation type="obsolete">X134</translation>
+        <translation type="unfinished">X134</translation>
     </message>
     <message>
         <source>X135</source>
-        <translation type="obsolete">X135</translation>
+        <translation type="unfinished">X135</translation>
     </message>
     <message>
         <source>X136</source>
-        <translation type="obsolete">X136</translation>
+        <translation type="unfinished">X136</translation>
     </message>
     <message>
         <source>X137</source>
-        <translation type="obsolete">X137</translation>
+        <translation type="unfinished">X137</translation>
     </message>
     <message>
         <source>X140</source>
-        <translation type="obsolete">X140</translation>
+        <translation type="unfinished">X140</translation>
     </message>
     <message>
         <source>X141</source>
-        <translation type="obsolete">X141</translation>
+        <translation type="unfinished">X141</translation>
     </message>
     <message>
         <source>X142</source>
-        <translation type="obsolete">X142</translation>
+        <translation type="unfinished">X142</translation>
     </message>
     <message>
         <source>X143</source>
-        <translation type="obsolete">X143</translation>
+        <translation type="unfinished">X143</translation>
     </message>
     <message>
         <source>X144</source>
-        <translation type="obsolete">X144</translation>
+        <translation type="unfinished">X144</translation>
     </message>
     <message>
         <source>X145</source>
-        <translation type="obsolete">X145</translation>
+        <translation type="unfinished">X145</translation>
     </message>
     <message>
         <source>X146</source>
-        <translation type="obsolete">X146</translation>
+        <translation type="unfinished">X146</translation>
     </message>
     <message>
         <source>X147</source>
-        <translation type="obsolete">X147</translation>
+        <translation type="unfinished">X147</translation>
     </message>
     <message>
         <source>X150</source>
-        <translation type="obsolete">X150</translation>
+        <translation type="unfinished">X150</translation>
     </message>
     <message>
         <source>X151</source>
-        <translation type="obsolete">X151</translation>
+        <translation type="unfinished">X151</translation>
     </message>
     <message>
         <source>X152</source>
-        <translation type="obsolete">X152</translation>
+        <translation type="unfinished">X152</translation>
     </message>
     <message>
         <source>X153</source>
-        <translation type="obsolete">X153</translation>
+        <translation type="unfinished">X153</translation>
     </message>
     <message>
         <source>X154</source>
-        <translation type="obsolete">X154</translation>
+        <translation type="unfinished">X154</translation>
     </message>
     <message>
         <source>X155</source>
-        <translation type="obsolete">X155</translation>
+        <translation type="unfinished">X155</translation>
     </message>
     <message>
         <source>X156</source>
-        <translation type="obsolete">X156</translation>
+        <translation type="unfinished">X156</translation>
     </message>
     <message>
         <source>X157</source>
-        <translation type="obsolete">X157</translation>
+        <translation type="unfinished">X157</translation>
     </message>
     <message>
         <source>X160</source>
-        <translation type="obsolete">X160</translation>
+        <translation type="unfinished">X160</translation>
     </message>
     <message>
         <source>X161</source>
-        <translation type="obsolete">X161</translation>
+        <translation type="unfinished">X161</translation>
     </message>
     <message>
         <source>X162</source>
-        <translation type="obsolete">X162</translation>
+        <translation type="unfinished">X162</translation>
     </message>
     <message>
         <source>X163</source>
-        <translation type="obsolete">X163</translation>
+        <translation type="unfinished">X163</translation>
     </message>
     <message>
         <source>X164</source>
-        <translation type="obsolete">X164</translation>
+        <translation type="unfinished">X164</translation>
     </message>
     <message>
         <source>X165</source>
-        <translation type="obsolete">X165</translation>
+        <translation type="unfinished">X165</translation>
     </message>
     <message>
         <source>X166</source>
-        <translation type="obsolete">X166</translation>
+        <translation type="unfinished">X166</translation>
     </message>
     <message>
         <source>X167</source>
-        <translation type="obsolete">X167</translation>
+        <translation type="unfinished">X167</translation>
     </message>
     <message>
         <source>X170</source>
-        <translation type="obsolete">X170</translation>
+        <translation type="unfinished">X170</translation>
     </message>
     <message>
         <source>X171</source>
-        <translation type="obsolete">X171</translation>
+        <translation type="unfinished">X171</translation>
     </message>
     <message>
         <source>X172</source>
-        <translation type="obsolete">X172</translation>
+        <translation type="unfinished">X172</translation>
     </message>
     <message>
         <source>X173</source>
-        <translation type="obsolete">X173</translation>
+        <translation type="unfinished">X173</translation>
     </message>
     <message>
         <source>X174</source>
-        <translation type="obsolete">X174</translation>
+        <translation type="unfinished">X174</translation>
     </message>
     <message>
         <source>X175</source>
-        <translation type="obsolete">X175</translation>
+        <translation type="unfinished">X175</translation>
     </message>
     <message>
         <source>X176</source>
-        <translation type="obsolete">X176</translation>
+        <translation type="unfinished">X176</translation>
     </message>
     <message>
         <source>X177</source>
-        <translation type="obsolete">X177</translation>
+        <translation type="unfinished">X177</translation>
     </message>
     <message>
         <source>X200</source>
-        <translation type="obsolete">X200</translation>
+        <translation type="unfinished">X200</translation>
     </message>
     <message>
         <source>X201</source>
-        <translation type="obsolete">X201</translation>
+        <translation type="unfinished">X201</translation>
     </message>
     <message>
         <source>X202</source>
-        <translation type="obsolete">X202</translation>
+        <translation type="unfinished">X202</translation>
     </message>
     <message>
         <source>X203</source>
-        <translation type="obsolete">X203</translation>
+        <translation type="unfinished">X203</translation>
     </message>
     <message>
         <source>X204</source>
-        <translation type="obsolete">X204</translation>
+        <translation type="unfinished">X204</translation>
     </message>
     <message>
         <source>X205</source>
-        <translation type="obsolete">X205</translation>
+        <translation type="unfinished">X205</translation>
     </message>
     <message>
         <source>X206</source>
-        <translation type="obsolete">X206</translation>
+        <translation type="unfinished">X206</translation>
     </message>
     <message>
         <source>X207</source>
-        <translation type="obsolete">X207</translation>
+        <translation type="unfinished">X207</translation>
     </message>
     <message>
         <source>Normal Y050</source>
-        <translation type="obsolete">普通输出Y050</translation>
+        <translation type="unfinished">普通输出Y050</translation>
     </message>
     <message>
         <source>Normal Y051</source>
-        <translation type="obsolete">普通输出Y051</translation>
+        <translation type="unfinished">普通输出Y051</translation>
     </message>
     <message>
         <source>Normal Y052</source>
-        <translation type="obsolete">普通输出Y052</translation>
+        <translation type="unfinished">普通输出Y052</translation>
     </message>
     <message>
         <source>Normal Y053</source>
-        <translation type="obsolete">普通输出Y053</translation>
+        <translation type="unfinished">普通输出Y053</translation>
     </message>
     <message>
         <source>Normal Y054</source>
-        <translation type="obsolete">普通输出Y054</translation>
+        <translation type="unfinished">普通输出Y054</translation>
     </message>
     <message>
         <source>Normal Y055</source>
-        <translation type="obsolete">普通输出Y055</translation>
+        <translation type="unfinished">普通输出Y055</translation>
     </message>
     <message>
         <source>Normal Y056</source>
-        <translation type="obsolete">普通输出Y056</translation>
+        <translation type="unfinished">普通输出Y056</translation>
     </message>
     <message>
         <source>Normal Y057</source>
-        <translation type="obsolete">普通输出Y057</translation>
+        <translation type="unfinished">普通输出Y057</translation>
     </message>
     <message>
         <source>Normal Y060</source>
-        <translation type="obsolete">普通输出Y060</translation>
+        <translation type="unfinished">普通输出Y060</translation>
     </message>
     <message>
         <source>Normal Y061</source>
-        <translation type="obsolete">普通输出Y061</translation>
+        <translation type="unfinished">普通输出Y061</translation>
     </message>
     <message>
         <source>Normal Y062</source>
-        <translation type="obsolete">普通输出Y062</translation>
+        <translation type="unfinished">普通输出Y062</translation>
     </message>
     <message>
         <source>Normal Y063</source>
-        <translation type="obsolete">普通输出Y063</translation>
+        <translation type="unfinished">普通输出Y063</translation>
     </message>
     <message>
         <source>Normal Y064</source>
-        <translation type="obsolete">普通输出Y064</translation>
+        <translation type="unfinished">普通输出Y064</translation>
     </message>
     <message>
         <source>Normal Y065</source>
-        <translation type="obsolete">普通输出Y065</translation>
+        <translation type="unfinished">普通输出Y065</translation>
     </message>
     <message>
         <source>Normal Y066</source>
-        <translation type="obsolete">普通输出Y066</translation>
+        <translation type="unfinished">普通输出Y066</translation>
     </message>
     <message>
         <source>Normal Y067</source>
-        <translation type="obsolete">普通输出Y067</translation>
+        <translation type="unfinished">普通输出Y067</translation>
     </message>
     <message>
         <source>Normal Y070</source>
-        <translation type="obsolete">普通输出Y070</translation>
+        <translation type="unfinished">普通输出Y070</translation>
     </message>
     <message>
         <source>Normal Y071</source>
-        <translation type="obsolete">普通输出Y071</translation>
+        <translation type="unfinished">普通输出Y071</translation>
     </message>
     <message>
         <source>Normal Y072</source>
-        <translation type="obsolete">普通输出Y072</translation>
+        <translation type="unfinished">普通输出Y072</translation>
     </message>
     <message>
         <source>Normal Y073</source>
-        <translation type="obsolete">普通输出Y073</translation>
+        <translation type="unfinished">普通输出Y073</translation>
     </message>
     <message>
         <source>Normal Y074</source>
-        <translation type="obsolete">普通输出Y074</translation>
+        <translation type="unfinished">普通输出Y074</translation>
     </message>
     <message>
         <source>Normal Y075</source>
-        <translation type="obsolete">普通输出Y075</translation>
+        <translation type="unfinished">普通输出Y075</translation>
     </message>
     <message>
         <source>Normal Y076</source>
-        <translation type="obsolete">普通输出Y076</translation>
+        <translation type="unfinished">普通输出Y076</translation>
     </message>
     <message>
         <source>Normal Y077</source>
-        <translation type="obsolete">普通输出Y077</translation>
+        <translation type="unfinished">普通输出Y077</translation>
     </message>
     <message>
         <source>Normal Y100</source>
-        <translation type="obsolete">普通输出Y100</translation>
+        <translation type="unfinished">普通输出Y100</translation>
     </message>
     <message>
         <source>Normal Y101</source>
-        <translation type="obsolete">普通输出Y101</translation>
+        <translation type="unfinished">普通输出Y101</translation>
     </message>
     <message>
         <source>Normal Y102</source>
-        <translation type="obsolete">普通输出Y102</translation>
+        <translation type="unfinished">普通输出Y102</translation>
     </message>
     <message>
         <source>Normal Y103</source>
-        <translation type="obsolete">普通输出Y103</translation>
+        <translation type="unfinished">普通输出Y103</translation>
     </message>
     <message>
         <source>Normal Y104</source>
-        <translation type="obsolete">普通输出Y104</translation>
+        <translation type="unfinished">普通输出Y104</translation>
     </message>
     <message>
         <source>Normal Y105</source>
-        <translation type="obsolete">普通输出Y105</translation>
+        <translation type="unfinished">普通输出Y105</translation>
     </message>
     <message>
         <source>Normal Y106</source>
-        <translation type="obsolete">普通输出Y106</translation>
+        <translation type="unfinished">普通输出Y106</translation>
     </message>
     <message>
         <source>Normal Y107</source>
-        <translation type="obsolete">普通输出Y107</translation>
+        <translation type="unfinished">普通输出Y107</translation>
     </message>
     <message>
         <source>Normal Y110</source>
-        <translation type="obsolete">普通输出Y110</translation>
+        <translation type="unfinished">普通输出Y110</translation>
     </message>
     <message>
         <source>Normal Y111</source>
-        <translation type="obsolete">普通输出Y111</translation>
+        <translation type="unfinished">普通输出Y111</translation>
     </message>
     <message>
         <source>Normal Y112</source>
-        <translation type="obsolete">普通输出Y112</translation>
+        <translation type="unfinished">普通输出Y112</translation>
     </message>
     <message>
         <source>Normal Y113</source>
-        <translation type="obsolete">普通输出Y113</translation>
+        <translation type="unfinished">普通输出Y113</translation>
     </message>
     <message>
         <source>Normal Y114</source>
-        <translation type="obsolete">普通输出Y114</translation>
+        <translation type="unfinished">普通输出Y114</translation>
     </message>
     <message>
         <source>Normal Y115</source>
-        <translation type="obsolete">普通输出Y115</translation>
+        <translation type="unfinished">普通输出Y115</translation>
     </message>
     <message>
         <source>Normal Y116</source>
-        <translation type="obsolete">普通输出Y116</translation>
+        <translation type="unfinished">普通输出Y116</translation>
     </message>
     <message>
         <source>Normal Y117</source>
-        <translation type="obsolete">普通输出Y117</translation>
+        <translation type="unfinished">普通输出Y117</translation>
     </message>
     <message>
         <source>Normal Y120</source>
-        <translation type="obsolete">普通输出Y120</translation>
+        <translation type="unfinished">普通输出Y120</translation>
     </message>
     <message>
         <source>Normal Y121</source>
-        <translation type="obsolete">普通输出Y121</translation>
+        <translation type="unfinished">普通输出Y121</translation>
     </message>
     <message>
         <source>Normal Y122</source>
-        <translation type="obsolete">普通输出Y122</translation>
+        <translation type="unfinished">普通输出Y122</translation>
     </message>
     <message>
         <source>Normal Y123</source>
-        <translation type="obsolete">普通输出Y123</translation>
+        <translation type="unfinished">普通输出Y123</translation>
     </message>
     <message>
         <source>Normal Y124</source>
-        <translation type="obsolete">普通输出Y124</translation>
+        <translation type="unfinished">普通输出Y124</translation>
     </message>
     <message>
         <source>Normal Y125</source>
-        <translation type="obsolete">普通输出Y125</translation>
+        <translation type="unfinished">普通输出Y125</translation>
     </message>
     <message>
         <source>Normal Y126</source>
-        <translation type="obsolete">普通输出Y126</translation>
+        <translation type="unfinished">普通输出Y126</translation>
     </message>
     <message>
         <source>Normal Y127</source>
-        <translation type="obsolete">普通输出Y127</translation>
+        <translation type="unfinished">普通输出Y127</translation>
     </message>
     <message>
         <source>Normal Y130</source>
-        <translation type="obsolete">普通输出Y130</translation>
+        <translation type="unfinished">普通输出Y130</translation>
     </message>
     <message>
         <source>Normal Y131</source>
-        <translation type="obsolete">普通输出Y131</translation>
+        <translation type="unfinished">普通输出Y131</translation>
     </message>
     <message>
         <source>Normal Y132</source>
-        <translation type="obsolete">普通输出Y132</translation>
+        <translation type="unfinished">普通输出Y132</translation>
     </message>
     <message>
         <source>Normal Y133</source>
-        <translation type="obsolete">普通输出Y133</translation>
+        <translation type="unfinished">普通输出Y133</translation>
     </message>
     <message>
         <source>Normal Y134</source>
-        <translation type="obsolete">普通输出Y134</translation>
+        <translation type="unfinished">普通输出Y134</translation>
     </message>
     <message>
         <source>Normal Y135</source>
-        <translation type="obsolete">普通输出Y135</translation>
+        <translation type="unfinished">普通输出Y135</translation>
     </message>
     <message>
         <source>Normal Y136</source>
-        <translation type="obsolete">普通输出Y136</translation>
+        <translation type="unfinished">普通输出Y136</translation>
     </message>
     <message>
         <source>Normal Y137</source>
-        <translation type="obsolete">普通输出Y137</translation>
+        <translation type="unfinished">普通输出Y137</translation>
     </message>
     <message>
         <source>Normal Y140</source>
-        <translation type="obsolete">普通输出Y140</translation>
+        <translation type="unfinished">普通输出Y140</translation>
     </message>
     <message>
         <source>Normal Y141</source>
-        <translation type="obsolete">普通输出Y141</translation>
+        <translation type="unfinished">普通输出Y141</translation>
     </message>
     <message>
         <source>Normal Y142</source>
-        <translation type="obsolete">普通输出Y142</translation>
+        <translation type="unfinished">普通输出Y142</translation>
     </message>
     <message>
         <source>Normal Y143</source>
-        <translation type="obsolete">普通输出Y143</translation>
+        <translation type="unfinished">普通输出Y143</translation>
     </message>
     <message>
         <source>Normal Y144</source>
-        <translation type="obsolete">普通输出Y144</translation>
+        <translation type="unfinished">普通输出Y144</translation>
     </message>
     <message>
         <source>Normal Y145</source>
-        <translation type="obsolete">普通输出Y145</translation>
+        <translation type="unfinished">普通输出Y145</translation>
     </message>
     <message>
         <source>Normal Y146</source>
-        <translation type="obsolete">普通输出Y146</translation>
+        <translation type="unfinished">普通输出Y146</translation>
     </message>
     <message>
         <source>Normal Y147</source>
-        <translation type="obsolete">普通输出Y147</translation>
+        <translation type="unfinished">普通输出Y147</translation>
     </message>
     <message>
         <source>Normal Y150</source>
-        <translation type="obsolete">普通输出Y150</translation>
+        <translation type="unfinished">普通输出Y150</translation>
     </message>
     <message>
         <source>Normal Y151</source>
-        <translation type="obsolete">普通输出Y151</translation>
+        <translation type="unfinished">普通输出Y151</translation>
     </message>
     <message>
         <source>Normal Y152</source>
-        <translation type="obsolete">普通输出Y152</translation>
+        <translation type="unfinished">普通输出Y152</translation>
     </message>
     <message>
         <source>Normal Y153</source>
-        <translation type="obsolete">普通输出Y153</translation>
+        <translation type="unfinished">普通输出Y153</translation>
     </message>
     <message>
         <source>Normal Y154</source>
-        <translation type="obsolete">普通输出Y154</translation>
+        <translation type="unfinished">普通输出Y154</translation>
     </message>
     <message>
         <source>Normal Y155</source>
-        <translation type="obsolete">普通输出Y155</translation>
+        <translation type="unfinished">普通输出Y155</translation>
     </message>
     <message>
         <source>Normal Y156</source>
-        <translation type="obsolete">普通输出Y156</translation>
+        <translation type="unfinished">普通输出Y156</translation>
     </message>
     <message>
         <source>Normal Y157</source>
-        <translation type="obsolete">普通输出Y157</translation>
+        <translation type="unfinished">普通输出Y157</translation>
     </message>
     <message>
         <source>Normal Y160</source>
-        <translation type="obsolete">普通输出Y160</translation>
+        <translation type="unfinished">普通输出Y160</translation>
     </message>
     <message>
         <source>Normal Y161</source>
-        <translation type="obsolete">普通输出Y161</translation>
+        <translation type="unfinished">普通输出Y161</translation>
     </message>
     <message>
         <source>Normal Y162</source>
-        <translation type="obsolete">普通输出Y162</translation>
+        <translation type="unfinished">普通输出Y162</translation>
     </message>
     <message>
         <source>Normal Y163</source>
-        <translation type="obsolete">普通输出Y163</translation>
+        <translation type="unfinished">普通输出Y163</translation>
     </message>
     <message>
         <source>Normal Y164</source>
-        <translation type="obsolete">普通输出Y164</translation>
+        <translation type="unfinished">普通输出Y164</translation>
     </message>
     <message>
         <source>Normal Y165</source>
-        <translation type="obsolete">普通输出Y165</translation>
+        <translation type="unfinished">普通输出Y165</translation>
     </message>
     <message>
         <source>Normal Y166</source>
-        <translation type="obsolete">普通输出Y166</translation>
+        <translation type="unfinished">普通输出Y166</translation>
     </message>
     <message>
         <source>Normal Y167</source>
-        <translation type="obsolete">普通输出Y167</translation>
+        <translation type="unfinished">普通输出Y167</translation>
     </message>
     <message>
         <source>Normal Y170</source>
-        <translation type="obsolete">普通输出Y170</translation>
+        <translation type="unfinished">普通输出Y170</translation>
     </message>
     <message>
         <source>Normal Y171</source>
-        <translation type="obsolete">普通输出Y171</translation>
+        <translation type="unfinished">普通输出Y171</translation>
     </message>
     <message>
         <source>Normal Y172</source>
-        <translation type="obsolete">普通输出Y172</translation>
+        <translation type="unfinished">普通输出Y172</translation>
     </message>
     <message>
         <source>Normal Y173</source>
-        <translation type="obsolete">普通输出Y173</translation>
+        <translation type="unfinished">普通输出Y173</translation>
     </message>
     <message>
         <source>Normal Y174</source>
-        <translation type="obsolete">普通输出Y174</translation>
+        <translation type="unfinished">普通输出Y174</translation>
     </message>
     <message>
         <source>Normal Y175</source>
-        <translation type="obsolete">普通输出Y175</translation>
+        <translation type="unfinished">普通输出Y175</translation>
     </message>
     <message>
         <source>Normal Y176</source>
-        <translation type="obsolete">普通输出Y176</translation>
+        <translation type="unfinished">普通输出Y176</translation>
     </message>
     <message>
         <source>Normal Y177</source>
-        <translation type="obsolete">普通输出Y177</translation>
+        <translation type="unfinished">普通输出Y177</translation>
     </message>
     <message>
         <source>Normal Y200</source>
-        <translation type="obsolete">普通输出Y200</translation>
+        <translation type="unfinished">普通输出Y200</translation>
     </message>
     <message>
         <source>Normal Y201</source>
-        <translation type="obsolete">普通输出Y201</translation>
+        <translation type="unfinished">普通输出Y201</translation>
     </message>
     <message>
         <source>Normal Y202</source>
-        <translation type="obsolete">普通输出Y202</translation>
+        <translation type="unfinished">普通输出Y202</translation>
     </message>
     <message>
         <source>Normal Y203</source>
-        <translation type="obsolete">普通输出Y203</translation>
+        <translation type="unfinished">普通输出Y203</translation>
     </message>
     <message>
         <source>Normal Y204</source>
-        <translation type="obsolete">普通输出Y204</translation>
+        <translation type="unfinished">普通输出Y204</translation>
     </message>
     <message>
         <source>Normal Y205</source>
-        <translation type="obsolete">普通输出Y205</translation>
+        <translation type="unfinished">普通输出Y205</translation>
     </message>
     <message>
         <source>Normal Y206</source>
-        <translation type="obsolete">普通输出Y206</translation>
+        <translation type="unfinished">普通输出Y206</translation>
     </message>
     <message>
         <source>Normal Y207</source>
-        <translation type="obsolete">普通输出Y207</translation>
+        <translation type="unfinished">普通输出Y207</translation>
+    </message>
+    <message>
+        <source>Y014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y021</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y022</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y023</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y025</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y026</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y027</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y030</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y031</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y032</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y033</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y034</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y035</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y036</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y037</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y040</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y041</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y042</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y043</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y044</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y045</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y046</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y047</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y050</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y051</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y052</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y053</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y054</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y055</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y056</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y057</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y060</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y061</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y062</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y063</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y064</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y065</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y066</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y067</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y070</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y071</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y072</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y073</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y074</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y075</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y076</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y077</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y100</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y101</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y102</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y103</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y104</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y105</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y106</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y107</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y110</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y111</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y112</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y113</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y114</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y115</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y116</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y117</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y121</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y122</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y123</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y124</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y125</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y126</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y127</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y130</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y131</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y132</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y133</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y134</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y135</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y136</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y137</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y140</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y141</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y142</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y143</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y144</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y145</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y146</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y147</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y150</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y151</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y152</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y153</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y154</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y155</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y156</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y157</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y160</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y161</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y162</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y163</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y164</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y165</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y166</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y167</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y170</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y171</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y172</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y173</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y174</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y175</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y176</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y177</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y200</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y201</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y202</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y203</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y204</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y205</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y206</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y207</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX021</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX022</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX023</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX025</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX026</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuX027</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY021</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY022</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY023</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY025</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY026</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EuY027</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M021</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M022</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M023</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M025</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M026</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M027</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2767,15 +3529,15 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-        <translation type="obsolete">运行中</translation>
+        <translation type="unfinished">运行中</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation type="obsolete">单步</translation>
+        <translation type="unfinished">单步</translation>
     </message>
     <message>
         <source>One Cycle</source>
-        <translation type="obsolete">单循环</translation>
+        <translation type="unfinished">单循环</translation>
     </message>
 </context>
 <context>
@@ -2890,15 +3652,15 @@
     <name>ManualProgramManager</name>
     <message>
         <source>M CMD[{0}]:{1}</source>
-        <translation type="obsolete">可编程按键[{0}]:{1}</translation>
+        <translation type="unfinished">可编程按键[{0}]:{1}</translation>
     </message>
     <message>
         <source>Custom Origin</source>
-        <translation type="obsolete">原点</translation>
+        <translation type="unfinished">原点</translation>
     </message>
     <message>
         <source>Custom Return</source>
-        <translation type="obsolete">复归</translation>
+        <translation type="unfinished">复归</translation>
     </message>
 </context>
 <context>
@@ -3781,11 +4543,11 @@ please chose!</source>
     </message>
     <message>
         <source>Sub-</source>
-        <translation type="obsolete">子程序-</translation>
+        <translation type="unfinished">子程序-</translation>
     </message>
     <message>
         <source>Lines:</source>
-        <translation type="obsolete">行:</translation>
+        <translation type="unfinished">行:</translation>
     </message>
 </context>
 <context>
@@ -4626,39 +5388,39 @@ You just need to set the count configs after this setting.</source>
     <name>Teach</name>
     <message>
         <source>Speed:</source>
-        <translation type="obsolete">速度:</translation>
+        <translation type="unfinished">速度:</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="obsolete">延时:</translation>
+        <translation type="unfinished">延时:</translation>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="obsolete">提前结束位置:</translation>
+        <translation type="unfinished">提前结束位置:</translation>
     </message>
     <message>
         <source>IF:</source>
-        <translation type="obsolete">如果:</translation>
+        <translation type="unfinished">如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="obsolete">通</translation>
+        <translation type="unfinished">通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="obsolete">断</translation>
+        <translation type="unfinished">断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="obsolete">限时:</translation>
+        <translation type="unfinished">限时:</translation>
     </message>
     <message>
         <source>Wait:</source>
-        <translation type="obsolete">等待:</translation>
+        <translation type="unfinished">等待:</translation>
     </message>
     <message>
         <source>Check:</source>
-        <translation type="obsolete">阀检测:</translation>
+        <translation type="unfinished">阀检测:</translation>
     </message>
     <message>
         <source>End</source>
@@ -4666,19 +5428,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="obsolete">标签</translation>
+        <translation type="unfinished">标签</translation>
     </message>
     <message>
         <source>Output:</source>
-        <translation type="obsolete">输出:</translation>
+        <translation type="unfinished">输出:</translation>
     </message>
     <message>
         <source>Sync Begin</source>
-        <translation type="obsolete">同步开始</translation>
+        <translation type="unfinished">同步开始</translation>
     </message>
     <message>
         <source>Sync End</source>
-        <translation type="obsolete">同步结束</translation>
+        <translation type="unfinished">同步结束</translation>
     </message>
     <message>
         <source>Line2D:</source>
@@ -4686,55 +5448,55 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Line3D:</source>
-        <translation type="obsolete">直线3D:</translation>
+        <translation type="unfinished">直线3D:</translation>
     </message>
     <message>
         <source>Arc3D:</source>
-        <translation type="obsolete">曲线3D:</translation>
+        <translation type="unfinished">曲线3D:</translation>
     </message>
     <message>
         <source>Next:</source>
-        <translation type="obsolete">下一位置:</translation>
+        <translation type="unfinished">下一位置:</translation>
     </message>
     <message>
         <source>End:</source>
-        <translation type="obsolete">结束位置:</translation>
+        <translation type="unfinished">结束位置:</translation>
     </message>
     <message>
         <source>Sub program is out of ranged</source>
-        <translation type="obsolete">子程序范围不对</translation>
+        <translation type="unfinished">子程序范围不对</translation>
     </message>
     <message>
         <source>Invalid program</source>
-        <translation type="obsolete">无效程序</translation>
+        <translation type="unfinished">无效程序</translation>
     </message>
     <message>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="obsolete">没有同步开始但有同步结束</translation>
+        <translation type="unfinished">没有同步开始但有同步结束</translation>
     </message>
     <message>
         <source>Sync action is nesting</source>
-        <translation type="obsolete">同步嵌套</translation>
+        <translation type="unfinished">同步嵌套</translation>
     </message>
     <message>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="obsolete">有同步开始没有同步结束</translation>
+        <translation type="unfinished">有同步开始没有同步结束</translation>
     </message>
     <message>
         <source>Last action is not End action</source>
-        <translation type="obsolete">没有模号结束</translation>
+        <translation type="unfinished">没有模号结束</translation>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation type="obsolete">未知错误</translation>
+        <translation type="unfinished">未知错误</translation>
     </message>
     <message>
         <source>Jump To </source>
-        <translation type="obsolete">跳转到</translation>
+        <translation type="unfinished">跳转到</translation>
     </message>
     <message>
         <source>Go to </source>
-        <translation type="obsolete">跳转到</translation>
+        <translation type="unfinished">跳转到</translation>
     </message>
     <message>
         <source>Start</source>
@@ -4742,95 +5504,95 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>not exist</source>
-        <translation type="obsolete">不存在</translation>
+        <translation type="unfinished">不存在</translation>
     </message>
     <message>
         <source>Stack</source>
-        <translation type="obsolete">堆叠</translation>
+        <translation type="unfinished">堆叠</translation>
     </message>
     <message>
         <source>Pose:</source>
-        <translation type="obsolete">姿势:</translation>
+        <translation type="unfinished">姿势:</translation>
     </message>
     <message>
         <source>Line3D-Pose:</source>
-        <translation type="obsolete">姿势直线:</translation>
+        <translation type="unfinished">姿势直线:</translation>
     </message>
     <message>
         <source>Invalid program index</source>
-        <translation type="obsolete">无效程序索引</translation>
+        <translation type="unfinished">无效程序索引</translation>
     </message>
     <message>
         <source>Wrong action format</source>
-        <translation type="obsolete">错误动作格式</translation>
+        <translation type="unfinished">错误动作格式</translation>
     </message>
     <message>
         <source>Invalid jump flag</source>
-        <translation type="obsolete">无效跳转标签</translation>
+        <translation type="unfinished">无效跳转标签</translation>
     </message>
     <message>
         <source>Time Output:</source>
-        <translation type="obsolete">时间输出:</translation>
+        <translation type="unfinished">时间输出:</translation>
     </message>
     <message>
         <source>Action Time:</source>
-        <translation type="obsolete">动作时间:</translation>
+        <translation type="unfinished">动作时间:</translation>
     </message>
     <message>
         <source>Invalid Counter</source>
-        <translation type="obsolete">非法的计数器</translation>
+        <translation type="unfinished">非法的计数器</translation>
     </message>
     <message>
         <source>Arrive</source>
-        <translation type="obsolete">到达</translation>
+        <translation type="unfinished">到达</translation>
     </message>
     <message>
         <source>No arrive</source>
-        <translation type="obsolete">没到达</translation>
+        <translation type="unfinished">没到达</translation>
     </message>
     <message>
         <source>Then clear counter</source>
-        <translation type="obsolete">然后清零计数器</translation>
+        <translation type="unfinished">然后清零计数器</translation>
     </message>
     <message>
         <source>Box</source>
-        <translation type="obsolete">装箱</translation>
+        <translation type="unfinished">装箱</translation>
     </message>
     <message>
         <source>Speed1:</source>
-        <translation type="obsolete">装箱速度:</translation>
+        <translation type="unfinished">装箱速度:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
-        <translation type="obsolete">计数器:自身</translation>
+        <translation type="unfinished">计数器:自身</translation>
     </message>
     <message>
         <source>Speed0:</source>
-        <translation type="obsolete">箱内堆速度:</translation>
+        <translation type="unfinished">箱内堆速度:</translation>
     </message>
     <message>
         <source>Clear </source>
-        <translation type="obsolete">清空</translation>
+        <translation type="unfinished">清空</translation>
     </message>
     <message>
         <source>Invalid stack</source>
-        <translation type="obsolete">非法的堆叠</translation>
+        <translation type="unfinished">非法的堆叠</translation>
     </message>
     <message>
         <source>Invalid counter</source>
-        <translation type="obsolete">非法的计数器</translation>
+        <translation type="unfinished">非法的计数器</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation type="obsolete">计数器</translation>
+        <translation type="unfinished">计数器</translation>
     </message>
     <message>
         <source>Plus 1</source>
-        <translation type="obsolete">累加</translation>
+        <translation type="unfinished">累加</translation>
     </message>
     <message>
         <source>Free Path:</source>
-        <translation type="obsolete">自由路径:</translation>
+        <translation type="unfinished">自由路径:</translation>
     </message>
     <message>
         <source>Offset Move:</source>
@@ -4838,75 +5600,75 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Alarm</source>
-        <translation type="obsolete">报警</translation>
+        <translation type="unfinished">报警</translation>
     </message>
     <message>
         <source>Fun</source>
-        <translation type="obsolete">模块</translation>
+        <translation type="unfinished">模块</translation>
     </message>
     <message>
         <source>Program End</source>
-        <translation type="obsolete">模组结束</translation>
+        <translation type="unfinished">模组结束</translation>
     </message>
     <message>
         <source>Module End</source>
-        <translation type="obsolete">模块结束</translation>
+        <translation type="unfinished">模块结束</translation>
     </message>
     <message>
         <source>next line</source>
-        <translation type="obsolete">下一行</translation>
+        <translation type="unfinished">下一行</translation>
     </message>
     <message>
         <source>Call</source>
-        <translation type="obsolete">调用</translation>
+        <translation type="unfinished">调用</translation>
     </message>
     <message>
         <source>And then return to </source>
-        <translation type="obsolete">然后返回到</translation>
+        <translation type="unfinished">然后返回到</translation>
     </message>
     <message>
         <source>Invalid Flag</source>
-        <translation type="obsolete">无效标签</translation>
+        <translation type="unfinished">无效标签</translation>
     </message>
     <message>
         <source>Normal Y</source>
-        <translation type="obsolete">普通输出</translation>
+        <translation type="unfinished">普通输出</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation type="obsolete">单头阀</translation>
+        <translation type="unfinished">单头阀</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation type="obsolete">保持型双头阀</translation>
+        <translation type="unfinished">保持型双头阀</translation>
     </message>
     <message>
         <source>Offset Line:</source>
-        <translation type="obsolete">相对直线:</translation>
+        <translation type="unfinished">相对直线:</translation>
     </message>
     <message>
         <source>Offset Jog:</source>
-        <translation type="obsolete">相对关节:</translation>
+        <translation type="unfinished">相对关节:</translation>
     </message>
     <message>
         <source>Type 1</source>
-        <translation type="obsolete">手动设定原点加开关</translation>
+        <translation type="unfinished">手动设定原点加开关</translation>
     </message>
     <message>
         <source>Type 2</source>
-        <translation type="obsolete">直接找Z脉冲</translation>
+        <translation type="unfinished">直接找Z脉冲</translation>
     </message>
     <message>
         <source>Type 3</source>
-        <translation type="obsolete">自动设定原点加开关</translation>
+        <translation type="unfinished">自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
-        <translation type="obsolete">原点指令</translation>
+        <translation type="unfinished">原点指令</translation>
     </message>
     <message>
         <source>Circle:</source>
-        <translation type="obsolete">整圆:</translation>
+        <translation type="unfinished">整圆:</translation>
     </message>
     <message>
         <source>Output</source>
@@ -4922,278 +5684,386 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Vistion Catch Start:</source>
-        <translation type="obsolete">相机开始拍照:</translation>
+        <translation type="unfinished">相机开始拍照:</translation>
     </message>
     <message>
         <source>Data Source:</source>
-        <translation type="obsolete">数据源:</translation>
+        <translation type="unfinished">数据源:</translation>
     </message>
     <message>
         <source>Catch Type:</source>
-        <translation type="obsolete">触发类型:</translation>
+        <translation type="unfinished">触发类型:</translation>
     </message>
     <message>
         <source>Communicate</source>
-        <translation type="obsolete">通信</translation>
+        <translation type="unfinished">通信</translation>
     </message>
     <message>
         <source>O Point</source>
-        <translation type="obsolete">输出点</translation>
+        <translation type="unfinished">输出点</translation>
     </message>
     <message>
         <source>Wait Vision Data</source>
-        <translation type="obsolete">等待视觉数据</translation>
+        <translation type="unfinished">等待视觉数据</translation>
     </message>
     <message>
         <source>ArcXY:</source>
-        <translation type="obsolete">曲线XY:</translation>
+        <translation type="unfinished">曲线XY:</translation>
     </message>
     <message>
         <source>ArcXZ:</source>
-        <translation type="obsolete">曲线XZ:</translation>
+        <translation type="unfinished">曲线XZ:</translation>
     </message>
     <message>
         <source>ArcYZ:</source>
-        <translation type="obsolete">曲线YZ:</translation>
+        <translation type="unfinished">曲线YZ:</translation>
     </message>
     <message>
         <source>Invaild Moldule</source>
-        <translation type="obsolete">无效模块</translation>
+        <translation type="unfinished">无效模块</translation>
     </message>
     <message>
         <source>LineXY:</source>
-        <translation type="obsolete">直线XY:</translation>
+        <translation type="unfinished">直线XY:</translation>
     </message>
     <message>
         <source>LineXZ:</source>
-        <translation type="obsolete">直线XZ:</translation>
+        <translation type="unfinished">直线XZ:</translation>
     </message>
     <message>
         <source>LineYZ:</source>
-        <translation type="obsolete">直线YZ:</translation>
+        <translation type="unfinished">直线YZ:</translation>
     </message>
     <message>
         <source>Offset Curve:</source>
-        <translation type="obsolete">相对曲线:</translation>
+        <translation type="unfinished">相对曲线:</translation>
     </message>
     <message>
         <source>Early End Spd pos:</source>
-        <translation type="obsolete">提前减速位置:</translation>
+        <translation type="unfinished">提前减速位置:</translation>
     </message>
     <message>
         <source>Early End Spd:</source>
-        <translation type="obsolete">提前减速速度:</translation>
+        <translation type="unfinished">提前减速速度:</translation>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation type="obsolete">路径速度平滑:</translation>
+        <translation type="unfinished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation type="obsolete">起始速度:</translation>
+        <translation type="unfinished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation type="obsolete">结束速度:</translation>
+        <translation type="unfinished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
-        <translation type="obsolete">姿势曲线:</translation>
+        <translation type="unfinished">姿势曲线:</translation>
     </message>
     <message>
         <source>PO Curve 3D:</source>
-        <translation type="obsolete">相对姿势曲线:</translation>
+        <translation type="unfinished">相对姿势曲线:</translation>
     </message>
     <message>
         <source>P Circle:</source>
-        <translation type="obsolete">姿势整圆:</translation>
+        <translation type="unfinished">姿势整圆:</translation>
     </message>
     <message>
         <source>PO Line 3D:</source>
-        <translation type="obsolete">相对姿势直线:</translation>
+        <translation type="unfinished">相对姿势直线:</translation>
     </message>
     <message>
         <source>Left Addr:</source>
-        <translation type="obsolete">左地址值:</translation>
+        <translation type="unfinished">左地址值:</translation>
     </message>
     <message>
         <source>Right Data:</source>
-        <translation type="obsolete">右数据值:</translation>
+        <translation type="unfinished">右数据值:</translation>
     </message>
     <message>
         <source>Right Addr:</source>
-        <translation type="obsolete">右地址值:</translation>
+        <translation type="unfinished">右地址值:</translation>
     </message>
     <message>
         <source>Go to</source>
-        <translation type="obsolete">跳转到</translation>
+        <translation type="unfinished">跳转到</translation>
     </message>
     <message>
         <source>Write Const Data To Addr:</source>
-        <translation type="obsolete">写立即数到地址:</translation>
+        <translation type="unfinished">写立即数到地址:</translation>
     </message>
     <message>
         <source>Write Addr Data To Addr:</source>
-        <translation type="obsolete">写地址值到地址:</translation>
+        <translation type="unfinished">写地址值到地址:</translation>
     </message>
     <message>
         <source>Const Data:</source>
-        <translation type="obsolete">立即数:</translation>
+        <translation type="unfinished">立即数:</translation>
     </message>
     <message>
         <source>Addr Data:</source>
-        <translation type="obsolete">地址数据:</translation>
+        <translation type="unfinished">地址数据:</translation>
     </message>
     <message>
         <source>Target Addr:</source>
-        <translation type="obsolete">目标地址:</translation>
+        <translation type="unfinished">目标地址:</translation>
     </message>
     <message>
         <source>When </source>
-        <translation type="obsolete">当</translation>
+        <translation type="unfinished">当</translation>
     </message>
     <message>
         <source>is On</source>
-        <translation type="obsolete">通</translation>
+        <translation type="unfinished">通</translation>
     </message>
     <message>
         <source>slow stop</source>
-        <translation type="obsolete">就减速停</translation>
+        <translation type="unfinished">就减速停</translation>
     </message>
     <message>
         <source>fast stop</source>
-        <translation type="obsolete">就立即停</translation>
+        <translation type="unfinished">就立即停</translation>
     </message>
     <message>
         <source>Speed Control PP Start</source>
-        <translation type="obsolete">速度正向启动</translation>
+        <translation type="unfinished">速度正向启动</translation>
     </message>
     <message>
         <source>Speed Control RP Start</source>
-        <translation type="obsolete">速度反向启动</translation>
+        <translation type="unfinished">速度反向启动</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="obsolete">停止</translation>
+        <translation type="unfinished">停止</translation>
     </message>
     <message>
         <source>Check Start</source>
-        <translation type="obsolete">开始检测</translation>
+        <translation type="unfinished">开始检测</translation>
     </message>
     <message>
         <source>Check End</source>
-        <translation type="obsolete">结束检测</translation>
+        <translation type="unfinished">结束检测</translation>
+    </message>
+    <message>
+        <source>Bad En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unhold Double Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has not Group-Begin action but has Group-End action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Group action is nesting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has Group-Begin action but has not Group-End action</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
     <message>
         <source>Speed:</source>
-        <translation type="obsolete">速度:</translation>
+        <translation type="unfinished">速度:</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="obsolete">延时:</translation>
+        <translation type="unfinished">延时:</translation>
     </message>
     <message>
         <source>X1</source>
-        <translation type="obsolete">X1</translation>
+        <translation type="unfinished">X1</translation>
     </message>
     <message>
         <source>X2</source>
-        <translation type="obsolete">X2</translation>
+        <translation type="unfinished">X2</translation>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="obsolete">提前结束位置:</translation>
+        <translation type="unfinished">提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="obsolete">报警声 {1?}</translation>
+        <translation type="unfinished">报警声 {1?}</translation>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="obsolete">报警声 {2?}</translation>
+        <translation type="unfinished">报警声 {2?}</translation>
     </message>
     <message>
         <source>A OFF</source>
-        <translation type="obsolete">常闭</translation>
+        <translation type="unfinished">常闭</translation>
     </message>
     <message>
         <source>A ON</source>
-        <translation type="obsolete">常开</translation>
+        <translation type="unfinished">常开</translation>
     </message>
     <message>
         <source>IF:</source>
-        <translation type="obsolete">如果:</translation>
+        <translation type="unfinished">如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="obsolete">通</translation>
+        <translation type="unfinished">通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="obsolete">断</translation>
+        <translation type="unfinished">断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="obsolete">限时:</translation>
+        <translation type="unfinished">限时:</translation>
     </message>
     <message>
         <source>Wait:</source>
-        <translation type="obsolete">等待:</translation>
+        <translation type="unfinished">等待:</translation>
     </message>
     <message>
         <source>Check:</source>
-        <translation type="obsolete">阀检测:</translation>
+        <translation type="unfinished">阀检测:</translation>
     </message>
     <message>
         <source>Comment:</source>
-        <translation type="obsolete">注释:</translation>
+        <translation type="unfinished">注释:</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="obsolete">标签</translation>
+        <translation type="unfinished">标签</translation>
     </message>
     <message>
         <source>Output:</source>
-        <translation type="obsolete">输出:</translation>
+        <translation type="unfinished">输出:</translation>
     </message>
     <message>
         <source>Sync Begin</source>
-        <translation type="obsolete">同步开始</translation>
+        <translation type="unfinished">同步开始</translation>
     </message>
     <message>
         <source>Sync End</source>
-        <translation type="obsolete">同步结束</translation>
+        <translation type="unfinished">同步结束</translation>
     </message>
     <message>
         <source>Sub program is out of ranged</source>
-        <translation type="obsolete">子程序范围不对</translation>
+        <translation type="unfinished">子程序范围不对</translation>
     </message>
     <message>
         <source>Invalid program</source>
-        <translation type="obsolete">无效程序</translation>
+        <translation type="unfinished">无效程序</translation>
     </message>
     <message>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="obsolete">没有同步开始但有同步结束</translation>
+        <translation type="unfinished">没有同步开始但有同步结束</translation>
     </message>
     <message>
         <source>Sync action is nesting</source>
-        <translation type="obsolete">同步嵌套</translation>
+        <translation type="unfinished">同步嵌套</translation>
     </message>
     <message>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="obsolete">有同步开始没有同步结束</translation>
+        <translation type="unfinished">有同步开始没有同步结束</translation>
     </message>
     <message>
         <source>Last action is not End action</source>
-        <translation type="obsolete">没有模号结束</translation>
+        <translation type="unfinished">没有模号结束</translation>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation type="obsolete">未知错误</translation>
+        <translation type="unfinished">未知错误</translation>
+    </message>
+    <message>
+        <source>Bad En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>X1 OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>X1 ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y1 OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y1 ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>X2 OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>X2 ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to flag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has not Group-Begin action but has Group-End action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Group action is nesting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has Group-Begin action but has not Group-End action</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -5042,23 +5042,23 @@ please chose!</source>
     </message>
     <message>
         <source>Run Seq</source>
-        <translation type="unfinished"></translation>
+        <translation>运行顺序</translation>
     </message>
     <message>
         <source>FinalX</source>
-        <translation type="unfinished"></translation>
+        <translation>最后X</translation>
     </message>
     <message>
         <source>FinalY</source>
-        <translation type="unfinished"></translation>
+        <translation>最后Y</translation>
     </message>
     <message>
         <source>FinalZ</source>
-        <translation type="unfinished"></translation>
+        <translation>最后Z</translation>
     </message>
     <message>
         <source>Run Together</source>
-        <translation type="unfinished"></translation>
+        <translation>一起运行</translation>
     </message>
 </context>
 <context>

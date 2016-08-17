@@ -19,23 +19,23 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
 
-//    function getRecordContent(which){
-//        if(which == 0){
-//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-//            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//            for(var i = 0;i < ret.length;i++){
-//                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
-//                    for(var j = 0;j < 16;j++){
-//                        var a = "flag" + j;
-//                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
-//                    }
-//                }
-//            }
-//            return ret;
-//        }
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+            for(var i = 0;i < ret.length;i++){
+                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
+                    for(var j = 0;j < 16;j++){
+                        var a = "flag" + j;
+                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
+                    }
+                }
+            }
+            return ret;
+        }
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
@@ -911,7 +911,6 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
-            console.log("1111111111111111111",repeataxis,-repeatlength,actionObject.repeateSpeed);
             if(actionObject.mode == 3)
                 ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
                          -repeatlength, actionObject.repeateSpeed,0,false,true,10,false,0,0,false,0,0,0,false,1));

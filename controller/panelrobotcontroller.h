@@ -762,6 +762,7 @@ public:
         return ca->ToString();
 
     }
+    Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

@@ -15,7 +15,7 @@ Item {
         componentObject.y = 2;
         componentObject.width = container.width - 2;
         componentObject.height = container.height - 2;
-        return pages.length;
+        return pages.length - 1;
     }
 
     function setCurrentIndex(index){
@@ -27,7 +27,7 @@ Item {
     }
 
     onCurrentIndexChanged: {
-        for(var i = 0; i < pages.length; ++i){
+        for(var i = 0, len = pages.length; i < len; ++i){
             pages[i].visible = false;
         }
         pages[currentIndex].visible = true;

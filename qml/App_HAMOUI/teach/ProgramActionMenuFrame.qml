@@ -129,7 +129,7 @@ Rectangle{
         width: parent.width - insertBtn.width - anchors.leftMargin - splitLine.width -splitLine.anchors.leftMargin
         height: parent.height - 1
         anchors.left: insertBtn.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: 6
 
         ProgramActionMenu{
             id:actionMenuObject
@@ -177,6 +177,9 @@ Rectangle{
 
         editor = Qt.createComponent('DataActionEditor.qml');
         var dataEditorObject = editor.createObject(actionEditorContainer);
+
+        var extentIndex = -1;
+
 
         actionEditorContainer.addPage(actionMenuObject);
         actionEditorContainer.addPage(axisEditorObject);
@@ -378,6 +381,17 @@ Rectangle{
         });
         actionMenuObject.dataMenuTriggered.connect(function(){
             actionEditorContainer.setCurrentIndex(17);
+            linkedBtn1.visible = false;
+            linkedBtn2.visible = false;
+            linkedBtn3.visible = false;
+        });
+        actionMenuObject.extentMenuTriggered.connect(function(){
+            if(extentIndex < 0){
+                editor = Qt.createComponent('ExtentActionEditor.qml');
+                var extentObject = editor.createObject(actionEditorContainer);
+                extentIndex = actionEditorContainer.addPage(extentObject);
+            }
+            actionEditorContainer.setCurrentIndex(extentIndex);
             linkedBtn1.visible = false;
             linkedBtn2.visible = false;
             linkedBtn3.visible = false;

@@ -10,6 +10,7 @@ import "../../utils/stringhelper.js" as ICString
 import "../ICOperationLog.js" as ICOperationLog
 import "ManualProgramManager.js" as ManualProgramManager
 import "../ExternalData.js" as ESData
+import "extents/ExtentActionDefine.js" as ExtentActionDefine
 
 
 Rectangle {
@@ -1195,18 +1196,20 @@ Rectangle {
                         width: 40
                         text: qsTr("Del")
                         bgColor: "red"
-                        visible: {
-                            var modelObject = currentModelData();
-                            if(modelObject === null) return true;
-                            if((programListView.currentIndex == programListView.count - 1) &&
-                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
-                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
-                                return true;
+                        visible: false
+//                        {
 
-                            }
+//                            var modelObject = currentModelData();
+//                            if(modelObject === null) return true;
+//                            if((programListView.currentIndex == programListView.count - 1) &&
+//                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
+//                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
+//                                return true;
 
-                            return programListView.currentIndex < programListView.count - 1;
-                        }
+//                            }
+
+//                            return programListView.currentIndex < programListView.count - 1;
+//                        }
 
                     }
                 }
@@ -1694,6 +1697,8 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
+        panelRobotController.registerCustomProgramAction(JSON.stringify(ExtentActionDefine.extentPENQIANGAction.parseDefine));
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);
@@ -1727,6 +1732,11 @@ Rectangle {
         setManualProgramEnabled(false);
 
         Teach.definedPoints.registerPointsMonitor(programFlowPageInstance);
+
+        for(var ac in Teach.customActions){
+            modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor.createObject(modifyEditor),
+                                              Teach.customActions[ac].editableItems.itemDef.item);
+        }
 
         hasInit = true;
     }

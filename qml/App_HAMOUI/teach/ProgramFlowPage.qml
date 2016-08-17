@@ -1079,27 +1079,6 @@ Rectangle {
                             if(currentItem === null) return false;
                             return Teach.canActionTestRun(currentItem.mI_ActionObject);
                         }
-//                        function actionPointToLogPoint(pos){
-//                            return  JSON.stringify([pos.m0 || 0.000,
-//                                                    pos.m1 || 0.000,
-//                                                    pos.m2 || 0.000,
-//                                                    pos.m3 || 0.000,
-//                                                    pos.m4 || 0.000,
-//                                                    pos.m5 || 0.000]);
-//                        }
-
-//                        function getCurrentPoint(){
-//                            return  ([panelRobotController.statusValueText("c_ro_0_32_3_900"),
-//                                      panelRobotController.statusValueText("c_ro_0_32_3_904"),
-//                                      panelRobotController.statusValueText("c_ro_0_32_3_908"),
-//                                      panelRobotController.statusValueText("c_ro_0_32_3_912"),
-//                                      panelRobotController.statusValueText("c_ro_0_32_3_916"),
-//                                      panelRobotController.statusValueText("c_ro_0_32_3_920")]);
-//                        }
-
-//                        function getCurrentPointToLogPoint(){
-//                            return  JSON.stringify(tryRunBtn.getCurrentPoint());
-//                        }
 
                         onBtnPressed: {
                             console.log("Run")

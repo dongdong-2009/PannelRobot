@@ -335,6 +335,26 @@ Rectangle {
         }
     }
 
+    function updateStacksHelper(md, lines, stackID, cpI){
+        var si = Teach.getStackInfoFromID(stackID);
+        if(si == null) return;
+        if(lines.length <= 0 ) return;
+        var line;
+        var tmp;
+        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
+        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
+        for(var l in lines){
+            line = lines[l];
+            tmp = md.get(line);
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
+            PData.counterLinesInfo.removeLine(cpI, line);
+            if(c1 >= 0)
+                PData.counterLinesInfo.add(cpI, c1, line);
+            if(c2 >= 0)
+                PData.counterLinesInfo.add(cpI, c2, line);
+        }
+    }
+
     function onPointChanged(point){
         //        var cpI = currentProgramIndex();
         var pointLines;
@@ -345,7 +365,7 @@ Rectangle {
         if(moduleSel.currentIndex > 0)
             saveModules();
         var funs = Teach.functionManager.functions;
-        for(i = 0; i < funs.length; ++i){
+        for(i = 0, len = funs.length; i < len; ++i){
             updateProgramModel(functionsModel, funs[i].program);
             collectSpecialLines(PData.kFunctionProgramIndex);
             pointLines = PData.pointLinesInfo.getLines(PData.kFunctionProgramIndex, point.index);
@@ -371,7 +391,7 @@ Rectangle {
             }
         }
 
-        var mPs = ManualProgramManager.manualProgramManager.programs;
+        var mPs = ManualProgramManager.manualProgramManager.programList();
         for(i = 0; i < mPs.length; ++i){
             updateProgramModel(manualProgramModel, mPs[i].program);
             collectSpecialLines(PData.kManualProgramIndex);
@@ -386,6 +406,7 @@ Rectangle {
             updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.currentText()).program);
             collectSpecialLines(PData.kManualProgramIndex);
         }
+        hasModify = true;
     }
 
     function modelToProgramHelper(which){
@@ -419,10 +440,10 @@ Rectangle {
             var updateID = ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
             if(updateID == 0)
                 panelRobotController.manualRunProgram(JSON.stringify(program),
-                                                      "","", "", "", 19);
+                                                      "","", "", "", 19, false);
             else if(updateID == 1)
                 panelRobotController.manualRunProgram(JSON.stringify(program),
-                                                      "","", "", "", 18);
+                                                      "","", "", "", 18, false);
         }
         return errInfo;
     }
@@ -562,25 +583,55 @@ Rectangle {
     }
 
     function onStackUpdated(stackID){
-        var cpI = currentProgramIndex();
-        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
-        var md = currentModel();
-        var tmp;
-        var line;
-        var si = Teach.getStackInfoFromID(stackID);
-        if(si == null) return;
-        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
-        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
-        for(var l in stackLines){
-            line = stackLines[l];
-            tmp = md.get(line);
-            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
-            PData.counterLinesInfo.removeLine(cpI, line);
-            if(c1 >= 0)
-                PData.counterLinesInfo.add(cpI, c1, line);
-            if(c2 >= 0)
-                PData.counterLinesInfo.add(cpI, c2, line);
+        if(moduleSel.currentIndex > 0)
+            saveModules();
+        var funs = Teach.functionManager.functions;
+        var i, len;
+        var stackLines;
+        var md;
+        for(i = 0, len = funs.length; i < len; ++i){
+            updateProgramModel(functionsModel, funs[i].program);
+            collectSpecialLines(PData.kFunctionProgramIndex);
+            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            md = functionsModel;
+            if(stackLines.length > 0 ){
+                updateStacksHelper(md, stackLines, stackID, PData.kFunctionProgramIndex);
+                saveModuleByName(funs[i].toString(), false);
+            }
         }
+        if(moduleSel.currentIndex > 0){
+            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+            collectSpecialLines(PData.kFunctionProgramIndex);
+        }
+
+        for(i = 0, len = PData.kFunctionProgramIndex; i < len; ++i){
+            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            md = PData.programs[i];
+            if(stackLines.length > 0){
+                updateStacksHelper(md, stackLines, stackID, i);
+                hasModify = true;
+                saveProgram(i);
+            }
+        }
+//        var cpI = currentProgramIndex();
+//        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
+//        var md = currentModel();
+//        var tmp;
+//        var line;
+//        var si = Teach.getStackInfoFromID(stackID);
+//        if(si == null) return;
+//        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
+//        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
+//        for(var l in stackLines){
+//            line = stackLines[l];
+//            tmp = md.get(line);
+//            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
+//            PData.counterLinesInfo.removeLine(cpI, line);
+//            if(c1 >= 0)
+//                PData.counterLinesInfo.add(cpI, c1, line);
+//            if(c2 >= 0)
+//                PData.counterLinesInfo.add(cpI, c2, line);
+//        }
         hasModify = true;
     }
 
@@ -1028,61 +1079,18 @@ Rectangle {
                             if(currentItem === null) return false;
                             return Teach.canActionTestRun(currentItem.mI_ActionObject);
                         }
-                        function actionPointToLogPoint(pos){
-                            return  JSON.stringify([pos.m0 || 0.000,
-                                                    pos.m1 || 0.000,
-                                                    pos.m2 || 0.000,
-                                                    pos.m3 || 0.000,
-                                                    pos.m4 || 0.000,
-                                                    pos.m5 || 0.000]);
-                        }
-
-                        function getCurrentPoint(){
-                            return  ([panelRobotController.statusValueText("c_ro_0_32_3_900"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_904"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_908"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_912"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_916"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_920")]);
-                        }
-
-                        function getCurrentPointToLogPoint(){
-                            return  JSON.stringify(tryRunBtn.getCurrentPoint());
-                        }
 
                         onBtnPressed: {
                             console.log("Run")
                             if(panelRobotController.isOrigined()){
-                                var ao = currentModelData().mI_ActionObject;
-                                if(ao.action === Teach.actions.F_CMD_LINE3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_LINT_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_ARC3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_START_POINT, tryRunBtn.getCurrentPointToLogPoint());
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_MID_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_ARC_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_JOINTCOORDINATE){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_AUTO_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_AUTO_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_COORDINATE_DEVIATION){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_LINT_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_JOINT_RELATIVE){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_AUTO_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_AUTO_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_SINGLE){
-                                    var cP = tryRunBtn.getCurrentPoint();
-                                    cP[ao.axis] = ao.pos;
-                                    panelRobotController.logTestPoint(Keymap.TEACH_RELATIVE_AUTO_END_POINT, JSON.stringify(cP));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_AUTO_TO_START_POINT);
-                                }
-
+                                var actionObject = currentModelData().mI_ActionObject;
+                                var p = [actionObject, Teach.generteEndAction()];
+                                panelRobotController.manualRunProgram(JSON.stringify(p), "", "","","");
                             }
                         }
                         onBtnReleased: {
                             if(panelRobotController.isOrigined())
-                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_ROUTE_STOP);
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_MANUAL_STOP);
                         }
 
                     }
@@ -1585,7 +1593,8 @@ Rectangle {
         var isSyncStart = false;
         var jumpLines = [];
         var insertedIndex = 0;
-        Teach.flagsDefine.clear(Teach.currentParsingProgram);
+        var currentParsingProgram = PData.programToParsingIndex(model);
+        Teach.flagsDefine.clear(currentParsingProgram);
         for(var p = 0; p < program.length; ++p){
             step = program[p];
             step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;
@@ -1597,7 +1606,7 @@ Rectangle {
             }
             if(step.action === Teach.actions.ACT_FLAG){
                 at = Teach.actionTypes.kAT_Flag;
-                Teach.flagsDefine.pushFlag(Teach.currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
+                Teach.flagsDefine.pushFlag(currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
             }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                 at = Teach.actionTypes.kAT_SyncStart;
                 isSyncStart = true;
@@ -1622,6 +1631,7 @@ Rectangle {
     }
 
     function updateProgramModels(){
+        hasModify = false;
         programListView.model = null;
         Teach.definedPoints.clear();
         editing.currentIndex = -1;
@@ -1699,7 +1709,7 @@ Rectangle {
         PData.programs.push(manualProgramModel);
 
         updateProgramModels();
-        var mPs = ManualProgramManager.manualProgramManager.programs;
+        var mPs = ManualProgramManager.manualProgramManager.programList();
         for(var i = 0; i < mPs.length; ++i){
             Teach.definedPoints.parseProgram(mPs[i].program);
         }

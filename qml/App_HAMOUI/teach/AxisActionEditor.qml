@@ -49,7 +49,8 @@ Item {
                                                            signalStop.configValue,
                                                            fastStop.isChecked,
                                                            speedMode,
-                                                           stop.isChecked));
+                                                           stop.isChecked,
+                                                           rel.isChecked));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -161,13 +162,44 @@ Item {
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1007"
             }
+            Row{
+                spacing: 6
+                ICCheckableComboboxEdit{
+                    id:signalStop
+                    configName: qsTr("Signal Stop")
+                    configValue: -1
+                    inputWidth: 100
+                    z:2
+                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                    configNameWidth: earlyEnd.configNameWidth
+
+                    popupMode: 1
+                    popupHeight: 300
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
+                        }
+                        items = ioItems;
+                        configValue = 0;
+                    }
+                }
+                ICCheckBox{
+                    id:fastStop
+                    text: qsTr("Fast Stop")
+                }
+            }
             ICFlickable{
                 width: speedControlGroup.width
                 height: {
                     var ac = panelRobotController.getConfigValue("s_rw_16_6_0_184");
                     var ret;
-                    if(ac <= 5) ret =  150;
-                    else ret =  parent.height - (AxisDefine.axisInfos.length - 5) * (m1Axis.height + parent.spacing);
+                    if(ac <= 5) ret =  120;
+                    else ret =  parent.height - (ac - 4) * (m1Axis.height + parent.spacing);
                     return ret;
                 }
 
@@ -207,68 +239,10 @@ Item {
 
                         }
                     }
-
-                    Row{
-                        spacing: 6
-                        ICCheckableComboboxEdit{
-                            id:signalStop
-                            configName: qsTr("Signal Stop")
-                            configValue: -1
-                            inputWidth: 100
-                            z:2
-                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                            configNameWidth: earlyEnd.configNameWidth
-                            //                    items: [  "X010",
-                            //                        "X011",
-                            //                        "X012",
-                            //                        "X013",
-                            //                        "X014",
-                            //                        "X015",
-                            //                        "X016",
-                            //                        "X017",
-                            //                        "X020",
-                            //                        "X021",
-                            //                        "X022",
-                            //                        "X023",
-                            //                        "X024",
-                            //                        "X025",
-                            //                        "X026",
-                            //                        "X027",
-                            //                        "X030",
-                            //                        "X031",
-                            //                        "X032",
-                            //                        "X033",
-                            //                        "X034",
-                            //                        "X035",
-                            //                        "X036",
-                            //                        "X037",
-                            //                        "X040",
-                            //                        "X041",
-                            //                        "X042",
-                            //                        "X043",
-                            //                        "X044",
-                            //                        "X045",
-                            //                        "X046",
-                            //                        "X047"]
-                            popupMode: 1
-                            popupHeight: 300
-                            Component.onCompleted: {
-                                var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                                if(ioBoardCount == 0)
-                                    ioBoardCount = 1;
-                                var len = ioBoardCount * 32;
-                                var ioItems = [];
-                                for(var i = 0; i < len; ++i){
-                                    ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
-                                }
-                                items = ioItems;
-                                configValue = 0;
-                            }
-                        }
-                        ICCheckBox{
-                            id:fastStop
-                            text: qsTr("Fast Stop")
-                        }
+                    ICCheckBox{
+                        id:rel
+                        text: qsTr("Rel")
+                        enabled: earlyEnd.enabled
                     }
 
                     ICButtonGroup{
@@ -278,7 +252,7 @@ Item {
                         ICCheckBox{
                             id:speedPPStart
                             text: qsTr("Speed PP Start")
-                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked)
+                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
                         }
                         ICCheckBox{
                             id:speedRPStart
@@ -323,8 +297,8 @@ Item {
         axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
         axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-        //        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
-        //        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();

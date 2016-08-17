@@ -29,7 +29,7 @@ public:
     const static int RefreshTime = 20;
     static int doubleToInt(double v, int decimal)
     {
-        double toAdd = 5 / qPow(10, decimal + 1);
+        double toAdd = (v / qAbs(v)) * 5  / qPow(10, decimal + 1);
         return (v + toAdd) * qPow(10, decimal);
     }
     static bool DeleteDirectory(const QString &path)

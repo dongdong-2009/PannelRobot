@@ -600,10 +600,13 @@ QString PanelRobotController::scanUpdaters(const QString &filter, int mode) cons
     return scanUserDir("updaters", QString("%1*.bfe").arg(filter));
 }
 
-void PanelRobotController::startUpdate(const QString &updater)
+void PanelRobotController::startUpdate(const QString &updater, int mode)
 {
     ICUpdateSystem us;
-    us.SetPacksDir(ICAppSettings().UsbPath);
+    if(mode == 0)
+        us.SetPacksDir(ICAppSettings().UsbPath);
+    else
+        us.SetPacksDir(QString(ICAppSettings().UserPath) + "/updaters");
     host_->StopCommunicate();
     system("mkdir updatehost/");
     hostUpdateFinishedWatcher_.addPath("updatehost");
@@ -1193,7 +1196,8 @@ void PanelRobotController::manualRunProgram(const QString& program,
                                             const QString& counters,
                                             const QString& variables,
                                             const QString& functions,
-                                            int channel)
+                                            int channel,
+                                            bool sendKeyNow)
 {
     bool isok;
     QMap<int, StackInfo> compliedStacks = ICRobotMold::ParseStacks(stacks, isok);
@@ -1218,7 +1222,8 @@ void PanelRobotController::manualRunProgram(const QString& program,
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
 //    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
-    ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
+    if(sendKeyNow)
+        ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
 
 }
 

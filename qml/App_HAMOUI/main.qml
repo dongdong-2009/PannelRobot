@@ -727,9 +727,9 @@ Rectangle {
         });
         panelRobotController.needToInitHost.connect(function(){
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
-                                                  "","", "", "", 19);
+                                                  "","", "", "", 19, false);
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
-                                                  "","", "", "", 18);
+                                                  "","", "", "", 18, false);
 
             var i;
             var sI;

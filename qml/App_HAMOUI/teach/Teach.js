@@ -318,7 +318,7 @@ var flagsDefine = {
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
                    sequence, dir0, dir1, dir2, doesBindingCounter, counterID ,
-                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn){
+                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn, runSeq){
     this.m0pos = m0pos || 0;
     this.m1pos = m1pos || 0;
     this.m2pos = m2pos || 0;
@@ -344,6 +344,7 @@ function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
     this.offsetZ = offsetZ || 0;
     this.dataSourceName = dataSourceName || "";
     this.dataSourceID = dataSourceID || -1;
+    this.runSeq = (runSeq == undefined ? 3 : runSeq)
 }
 
 function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
@@ -915,7 +916,8 @@ var generateAxisServoAction = function(action,
                                        signalStopPoint,
                                        signalStopMode,
                                        speedMode,
-                                       stop){
+                                       stop,
+                                       rel){
     return {
         "action":action,
         "axis":axis,
@@ -932,7 +934,8 @@ var generateAxisServoAction = function(action,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
         "signalStopMode":signalStopMode ? 1 : 0,
         "speedMode":speedMode == undefined ? 0 : speedMode,
-        "stop":stop || false
+        "stop":stop || false,
+        "rel": rel || false
     };
 }
 
@@ -1321,6 +1324,9 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
     }
 
+    if(actionObject.rel)
+        ret = qsTr("Rel") + " " + ret;
+
     return ret;
 }
 
@@ -1679,7 +1685,8 @@ var actionObjectToEditableITems = function(actionObject){
                 {"item":"delay", "range":"s_rw_0_32_2_1100"},
                 {"item":"earlyEnd"},
                 {"item":"earlyEndSpd"},
-                {"item":"signalStop"}];
+                {"item":"signalStop"},
+                {"item":"rel"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||

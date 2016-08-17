@@ -337,6 +337,26 @@ Rectangle {
         }
     }
 
+    function updateStacksHelper(md, lines, stackID, cpI){
+        var si = Teach.getStackInfoFromID(stackID);
+        if(si == null) return;
+        if(lines.length <= 0 ) return;
+        var line;
+        var tmp;
+        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
+        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
+        for(var l in lines){
+            line = lines[l];
+            tmp = md.get(line);
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
+            PData.counterLinesInfo.removeLine(cpI, line);
+            if(c1 >= 0)
+                PData.counterLinesInfo.add(cpI, c1, line);
+            if(c2 >= 0)
+                PData.counterLinesInfo.add(cpI, c2, line);
+        }
+    }
+
     function onPointChanged(point){
         //        var cpI = currentProgramIndex();
         var pointLines;
@@ -347,7 +367,7 @@ Rectangle {
         if(moduleSel.currentIndex > 0)
             saveModules();
         var funs = Teach.functionManager.functions;
-        for(i = 0; i < funs.length; ++i){
+        for(i = 0, len = funs.length; i < len; ++i){
             updateProgramModel(functionsModel, funs[i].program);
             collectSpecialLines(PData.kFunctionProgramIndex);
             pointLines = PData.pointLinesInfo.getLines(PData.kFunctionProgramIndex, point.index);
@@ -388,6 +408,7 @@ Rectangle {
             updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.currentText()).program);
             collectSpecialLines(PData.kManualProgramIndex);
         }
+        hasModify = true;
     }
 
     function modelToProgramHelper(which){
@@ -421,10 +442,10 @@ Rectangle {
             var updateID = ManualProgramManager.manualProgramManager.updateProgramByName(name, program);
             if(updateID == 0)
                 panelRobotController.manualRunProgram(JSON.stringify(program),
-                                                      "","", "", "", 19);
+                                                      "","", "", "", 19, false);
             else if(updateID == 1)
                 panelRobotController.manualRunProgram(JSON.stringify(program),
-                                                      "","", "", "", 18);
+                                                      "","", "", "", 18, false);
         }
         return errInfo;
     }
@@ -564,25 +585,55 @@ Rectangle {
     }
 
     function onStackUpdated(stackID){
-        var cpI = currentProgramIndex();
-        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
-        var md = currentModel();
-        var tmp;
-        var line;
-        var si = Teach.getStackInfoFromID(stackID);
-        if(si == null) return;
-        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
-        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
-        for(var l in stackLines){
-            line = stackLines[l];
-            tmp = md.get(line);
-            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
-            PData.counterLinesInfo.removeLine(cpI, line);
-            if(c1 >= 0)
-                PData.counterLinesInfo.add(cpI, c1, line);
-            if(c2 >= 0)
-                PData.counterLinesInfo.add(cpI, c2, line);
+        if(moduleSel.currentIndex > 0)
+            saveModules();
+        var funs = Teach.functionManager.functions;
+        var i, len;
+        var stackLines;
+        var md;
+        for(i = 0, len = funs.length; i < len; ++i){
+            updateProgramModel(functionsModel, funs[i].program);
+            collectSpecialLines(PData.kFunctionProgramIndex);
+            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            md = functionsModel;
+            if(stackLines.length > 0 ){
+                updateStacksHelper(md, stackLines, stackID, PData.kFunctionProgramIndex);
+                saveModuleByName(funs[i].toString(), false);
+            }
         }
+        if(moduleSel.currentIndex > 0){
+            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+            collectSpecialLines(PData.kFunctionProgramIndex);
+        }
+
+        for(i = 0, len = PData.kFunctionProgramIndex; i < len; ++i){
+            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            md = PData.programs[i];
+            if(stackLines.length > 0){
+                updateStacksHelper(md, stackLines, stackID, i);
+                hasModify = true;
+                saveProgram(i);
+            }
+        }
+//        var cpI = currentProgramIndex();
+//        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
+//        var md = currentModel();
+//        var tmp;
+//        var line;
+//        var si = Teach.getStackInfoFromID(stackID);
+//        if(si == null) return;
+//        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
+//        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
+//        for(var l in stackLines){
+//            line = stackLines[l];
+//            tmp = md.get(line);
+//            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
+//            PData.counterLinesInfo.removeLine(cpI, line);
+//            if(c1 >= 0)
+//                PData.counterLinesInfo.add(cpI, c1, line);
+//            if(c2 >= 0)
+//                PData.counterLinesInfo.add(cpI, c2, line);
+//        }
         hasModify = true;
     }
 
@@ -1635,6 +1686,7 @@ Rectangle {
     }
 
     function updateProgramModels(){
+        hasModify = false;
         programListView.model = null;
         Teach.definedPoints.clear();
         editing.currentIndex = -1;

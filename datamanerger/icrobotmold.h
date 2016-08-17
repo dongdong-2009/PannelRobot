@@ -41,7 +41,7 @@ struct SI{
 
 union StackInfoPrivate{
     SI si[2];
-    quint32 all[26];
+    quint32 all[36];
 };
 struct StackInfo{
     StackInfoPrivate stackData;

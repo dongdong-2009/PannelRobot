@@ -574,7 +574,8 @@ public:
                                       const QString& counters,
                                       const QString& variables,
                                       const QString &functions,
-                                      int channel = 10);
+                                      int channel = 10,
+                                      bool sendKeyNow = true);
 
 
     Q_INVOKABLE QString checkProgram(const QString& program,

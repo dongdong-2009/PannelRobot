@@ -49,7 +49,8 @@ Item {
                                                            signalStop.configValue,
                                                            fastStop.isChecked,
                                                            speedMode,
-                                                           stop.isChecked));
+                                                           stop.isChecked,
+                                                           rel.isChecked));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,

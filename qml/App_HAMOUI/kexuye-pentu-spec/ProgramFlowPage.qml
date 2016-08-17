@@ -19,23 +19,23 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
 
-//    function getRecordContent(which){
-//        if(which == 0){
-//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-//            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//            for(var i = 0;i < ret.length;i++){
-//                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
-//                    for(var j = 0;j < 16;j++){
-//                        var a = "flag" + j;
-//                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
-//                    }
-//                }
-//            }
-//            return ret;
-//        }
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+            for(var i = 0;i < ret.length;i++){
+                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
+                    for(var j = 0;j < 16;j++){
+                        var a = "flag" + j;
+                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
+                    }
+                }
+            }
+            return ret;
+        }
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
@@ -673,10 +673,9 @@ ProgramFlowPage {
             tmp1["m" + 0] = -tmp["m" + 0];
             tmp1["m" + 1] = -tmp["m" + 1];
             tmp1["m" + 2] = -tmp["m" + 2];
-            var ceycle,dir,dirlength;
+            var ceycle,dirlength;
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0){
-                    dir = 0;
                     dirlength = dirEPos.m0;
                     ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
                     pos1["m" + 0] = pos["m" + 0] = 0;
@@ -687,7 +686,6 @@ ProgramFlowPage {
 //                        pos["m" + 1] = (pos["m" + 1] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
 //                        pos1["m" + 2] = pos["m" + 2] = (pos["m" + 1] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
 //                    }
-                    dir = 1;
                     dirlength = dirEPos.m1;
                     ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
                     pos1["m" + 1] = pos["m" + 1] = 0;
@@ -701,9 +699,8 @@ ProgramFlowPage {
 //                        pos["m" + 0] = (pos["m" + 0] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
 //                        pos1["m" + 1] = pos["m" + 1] = (pos["m" + 0] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
 //                    }
-                    dir = 0;
                     dirlength = dirEPos.m0;
-                    ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
+                    ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m2 - actionObject.startPos.pos.m2) * actionObject.dirSpeed));
                     pos1["m" + 0] = pos["m" + 0] = 0;
                     tmp1["m" + 0] = tmp["m" + 0] = 0;
                 }
@@ -712,23 +709,22 @@ ProgramFlowPage {
 //                        pos["m" + 2] = (pos["m" + 2] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
 //                        pos1["m" + 1] = pos["m" + 1] = (pos["m" + 2] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
 //                    }
-                    dir = 2;
-                    dirlength = dirEPos.m1;
-                    ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
+                    dirlength = dirEPos.m2;
+                    ceycle = Math.ceil(((dirEPos.m2 - actionObject.startPos.pos.m2) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
                     pos1["m" + 2] = pos["m" + 2] = 0;
                     tmp1["m" + 2] = tmp["m" + 2] = 0;
                 }
                 tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
             }
             else if(actionObject.plane == 2){
-                if(actionObject.dirAxis == 0){
+                if(actionObject.dirAxis == 1){
+                    console.log("111111111111111111111111",actionObject.dirAxis);
 //                    if(actionObject.mode == 2){
 //                        pos["m" + 1] = (pos["m" + 1] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
 //                        pos1["m" + 0] = pos["m" + 0] = (pos["m" + 1] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
 //                    }
-                    dir = 1;
-                    dirlength = dirEPos.m0;
-                    ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
+                    dirlength = dirEPos.m1;
+                    ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m2 - actionObject.startPos.pos.m2) * actionObject.dirSpeed));
                     pos1["m" + 1] = pos["m" + 1] = 0;
                     tmp1["m" + 1] = tmp["m" + 1] = 0;
                 }
@@ -737,15 +733,14 @@ ProgramFlowPage {
 //                        pos["m" + 2] = (pos["m" + 2] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
 //                        pos1["m" + 0] = pos["m" + 0] = (pos["m" + 2] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
 //                    }
-                    dir = 2;
-                    dirlength = dirEPos.m1;
-                    ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
+                    dirlength = dirEPos.m2;
+                    ceycle = Math.ceil(((dirEPos.m2 - actionObject.startPos.pos.m2) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
                     pos1["m" + 2] = pos["m" + 2] = 0;
                     tmp1["m" + 2] = tmp["m" + 2] = 0;
                 }
                 tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
             }
-            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, dir, dirlength, actionObject.dirSpeed,0,false,true,10000000));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, dirlength, actionObject.dirSpeed,0,false,true,10000000));
 
             if(ceycle % 2 == 1)
                 var ceycletmp = (ceycle - 1)/2;

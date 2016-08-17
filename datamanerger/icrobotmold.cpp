@@ -72,6 +72,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     bool isSignalStop = v->value("signalStopEn", false).toBool();
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
+    bool isRel = v->value("rel", false).toBool();
     if(speedMode != 0 || isStop)
     {
         SpeedControlActionData spData;
@@ -89,7 +90,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
-        if(isEarlyEnd || isEarlySpd || isSignalStop)
+        if(isEarlyEnd || isEarlySpd || isSignalStop || isRel)
         {
             int op = 0;
             op |= isEarlySpd ? 1 : 0;
@@ -103,6 +104,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
             item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
             item.append(isSignalStop ? 1 : 0);
             item.append(v->value("signalStopMode", 0).toInt());
+            item.append(isRel ? 1: 0);
             item[0] = F_CMD_SINGLE_ADD_FUNC;
         }
     }

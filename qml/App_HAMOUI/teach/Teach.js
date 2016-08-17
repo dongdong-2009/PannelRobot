@@ -914,7 +914,8 @@ var generateAxisServoAction = function(action,
                                        signalStopPoint,
                                        signalStopMode,
                                        speedMode,
-                                       stop){
+                                       stop,
+                                       rel){
     return {
         "action":action,
         "axis":axis,
@@ -931,7 +932,8 @@ var generateAxisServoAction = function(action,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
         "signalStopMode":signalStopMode ? 1 : 0,
         "speedMode":speedMode == undefined ? 0 : speedMode,
-        "stop":stop || false
+        "stop":stop || false,
+        "rel": rel || false
     };
 }
 
@@ -1232,6 +1234,9 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
     }
+
+    if(actionObject.rel)
+        ret = qsTr("Rel") + " " + ret;
 
     return ret;
 }
@@ -1591,7 +1596,8 @@ var actionObjectToEditableITems = function(actionObject){
                 {"item":"delay", "range":"s_rw_0_32_2_1100"},
                 {"item":"earlyEnd"},
                 {"item":"earlyEndSpd"},
-                {"item":"signalStop"}];
+                {"item":"signalStop"},
+                {"item":"rel"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||

@@ -238,6 +238,11 @@ Item {
 
                         }
                     }
+                    ICCheckBox{
+                        id:rel
+                        text: qsTr("Rel")
+                        enabled: earlyEnd.enabled
+                    }
 
                     ICButtonGroup{
                         id:speedControlGroup
@@ -246,7 +251,7 @@ Item {
                         ICCheckBox{
                             id:speedPPStart
                             text: qsTr("Speed PP Start")
-                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked)
+                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
                         }
                         ICCheckBox{
                             id:speedRPStart
@@ -291,8 +296,8 @@ Item {
         axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
         axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-        //        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
-        //        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();

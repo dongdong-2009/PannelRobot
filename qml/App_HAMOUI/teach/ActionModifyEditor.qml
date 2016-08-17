@@ -51,6 +51,7 @@ Item {
         addr.visible = false;
         data.visible = false;
         signalStopEditor.visible = false;
+        rel.visible = false;
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
@@ -81,6 +82,8 @@ Item {
                 signalStop.isChecked = actionObject.signalStopEn || false;
                 signalStop.configValue = actionObject.signalStopPoint || 0;
                 fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
+            }else if(editor == rel){
+                rel.isChecked = actionObject.rel || false;
             }else if(editor == pos){
                 pos.axisID = actionObject.axis;
                 if(isAutoMode){
@@ -263,6 +266,11 @@ Item {
                     enabled: earlyEndSpeedPos.isChecked
                 }
             }
+            ICCheckBox{
+                id:rel
+                text: qsTr("Rel")
+                enabled: earlyEndPos.enabled
+            }
 
             Row{
                 id:signalStopEditor
@@ -273,7 +281,7 @@ Item {
                     configValue: -1
                     inputWidth: 100
                     z:2
-                    enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked);
+                    enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked || rel.isChecked);
                     popupMode: 1
                     popupHeight: 300
                     Component.onCompleted: {
@@ -342,6 +350,7 @@ Item {
                 PData.itemToEditorMap.put("addr",addr);
                 PData.itemToEditorMap.put("data",data);
                 PData.itemToEditorMap.put("signalStop", signalStopEditor);
+                PData.itemToEditorMap.put("rel", rel);
 
                 PData.editorToItemMap.put(pos, "pos");
                 PData.editorToItemMap.put(speed, "speed");
@@ -359,6 +368,7 @@ Item {
                 PData.editorToItemMap.put(addr, "addr");
                 PData.editorToItemMap.put(data, "data");
                 PData.editorToItemMap.put(signalStopEditor, "signalStop")
+                PData.editorToItemMap.put(rel, "rel");
 
             }
         }
@@ -400,6 +410,8 @@ Item {
                         editingObject.signalStopEn = signalStop.isChecked;
                         editingObject.signalStopPoint = signalStop.configValue;
                         editingObject.signalStopMode = (fastStop.isChecked ? 1 : 0);
+                    }else if(editor == rel){
+                        editingObject.rel = rel.isChecked;
                     }else if(editor == pos){
                         if(isAutoMode){
                             var o = parseFloat(editingObject.pos);

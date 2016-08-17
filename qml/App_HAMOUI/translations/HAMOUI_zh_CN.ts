@@ -1071,6 +1071,22 @@
         <source>Motor 4</source>
         <translation>Motor4</translation>
     </message>
+    <message>
+        <source>SACC1</source>
+        <translation>S加速1</translation>
+    </message>
+    <message>
+        <source>SACC2</source>
+        <translation>S加速2</translation>
+    </message>
+    <message>
+        <source>SDCC1</source>
+        <translation>S减速1</translation>
+    </message>
+    <message>
+        <source>SDCC2</source>
+        <translation>S减速2</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>

@@ -1757,10 +1757,29 @@ var canActionTestRun = function(actionObject){
 }
 
 
+function customActionGenerator(actionDefine){
+    actionDefine.generate = function(properties){
+        var ret = {"action":actionDefine.action};
+        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+            ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
+        }
+        return ret;
+    }
+    actionDefine.toRegisterString = function(){
+        var ret = {"actionID":actionDefine.action, "seq":[]};
+        ret.seq.push({"item":"action", "decimal":0});
+        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+            ret.seq.push(actionDefine.properties[i]);
+        }
+        return JSON.stringify(ret);
+    }
+    actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
+}
+
 var currentParsingProgram = 0;
 
-
 var registerCustomAction = function(actionDefine){
+    customActionGenerator(actionDefine);
     customActions[actionDefine.action] = actionDefine;
     actionToStringHandlerMap.put(actionDefine.action, actionDefine.toStringHandler);
 }

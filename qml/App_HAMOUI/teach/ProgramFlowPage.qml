@@ -1697,7 +1697,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        ExtentActionDefine.customActionGenerator(ExtentActionDefine.extentPENQIANGAction)
         Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
         panelRobotController.registerCustomProgramAction(ExtentActionDefine.extentPENQIANGAction.toRegisterString());
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());

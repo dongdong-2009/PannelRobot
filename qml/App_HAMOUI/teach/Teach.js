@@ -1823,14 +1823,10 @@ var canActionUsePoint = function(actionObject){
 }
 
 var canActionTestRun = function(actionObject){
-    return  actionObject.action === actions.F_CMD_CoordinatePoint ||
-            actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-            actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
-            actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
-//            actionObject.action === actions.F_CMD_SINGLE;
+    var ac = actionObject.action;
+    return  ((ac >=  actions.F_CMD_SINGLE) && (ac <= actions.F_CMD_LINE_RELATIVE_POSE)) ||
+            ((ac >=  actions.F_CMD_LINEXY_MOVE_POINT) && (ac <= actions.F_CMD_LINEYZ_MOVE_POINT)) ||
+            ((ac >=  actions.F_CMD_ARCXY_MOVE_POINT) && (ac <= actions.F_CMD_ARCYZ_MOVE_POINT));
 }
 
 

@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.0"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.1"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.0"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.1"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -107,7 +107,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_28 = 28,//< 原点位置选择：0：取消回原点；1：确认每个轴都已经达到原点附近；2：确认上一次关机前按下急停;3:重新找原点
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
-                                 //< 后面带6轴坐标值
+                                 //< 后面带6轴坐标值（已经废除）
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_41= 41,//<  // 自定义轴动作2 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_42= 42,//<  // 自定义轴动作3 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
@@ -608,33 +608,6 @@ typedef enum
     CMD_JOG_PR     = 0x0306,  // 直角坐标系姿势轴，R轴正向点动
     CMD_JOG_PT     = 0x0307,  // 直角坐标系姿势轴，T轴正向点动
 
-    /*手动*/
-    CMD_LINE_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
-    CMD_LINE_TO_END_POINT,  // 直线运动到终点坐标
-    CMD_JOINT_TO_START_POINT,          // 关节运动到起点坐标
-    CMD_JOINT_TO_END_POINT,            // 关节运动到终点坐标
-    CMD_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
-    CMD_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
-    CMD_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
-    CMD_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
-    /*教导*/
-    CMD_TEACH_LINE_TO_START_POINT,           // 直线运动到起点坐标
-    CMD_TEACH_LINE_TO_END_POINT,             // 直线运动到终点坐标
-    CMD_TEACH_JOINT_TO_START_POINT,          // 关节运动到起点坐标
-    CMD_TEACH_JOINT_TO_END_POINT,            // 关节运动到终点坐标
-    CMD_TEACH_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
-    CMD_TEACH_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
-    CMD_TEACH_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
-    CMD_TEACH_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
-    /*手动*/
-    CMD_ARC_TO_START_POINT= 0x0330,  // 弧线运动往终点坐标方向
-    CMD_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
-    /*教导*/
-    CMD_TEACH_ARC_TO_START_POINT,  // 弧线运动往终点坐标方向
-    CMD_TEACH_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
-    CMD_ROUTE_STOP = 0x033F,  // 轨迹运动停止
-    CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
-
     CMD_TEST_CLEAR      = 0x034F,  // 清除当前所有测试脉冲
     CMD_TEST_JOG_PX     = 0x0350,  // 测试X轴正向运动
     CMD_TEST_JOG_PY     = 0x0351,  // 测试Y轴正向运动
@@ -1094,7 +1067,7 @@ typedef enum
     ALARM_AXIS1_ZPULSER_ERR = 510,//<名字：轴1 z脉冲错误
     ALARM_AXIS2_ZPULSER_ERR ,//<名字：轴2 z脉冲错误
     ALARM_AXIS3_ZPULSER_ERR ,//<名字：轴3 z脉冲错误
-    NO_ZPULSER ,//<名字：轴4 z脉冲错误
+    ALARM_AXIS4_ZPULSER_ERR ,//<名字：轴4 z脉冲错误
     ALARM_AXIS5_ZPULSER_ERR ,//<名字：轴5 z脉冲错误
     ALARM_AXIS6_ZPULSER_ERR ,//<名字：轴6 z脉冲错误
     ALARM_AXIS7_ZPULSER_ERR ,//<名字：轴7 z脉冲错误
@@ -1109,14 +1082,16 @@ typedef enum
     ALARM_AXIS7_NO_ZPULSER ,//<名字：轴7无z脉冲
     ALARM_AXIS8_NO_ZPULSER ,//<名字：轴8无z脉冲
 
-	ALARM_AXIS1_ORIGIN_DEVIATION = 530,//<名字：轴1原点偏移
-	ALARM_AXIS2_ORIGIN_DEVIATION,//<名字：轴2原点偏移
-	ALARM_AXIS3_ORIGIN_DEVIATION,//<名字：轴3原点偏移
-	ALARM_AXIS4_ORIGIN_DEVIATION,//<名字：轴4原点偏移
-	ALARM_AXIS5_ORIGIN_DEVIATION,//<名字：轴5原点偏移
-	ALARM_AXIS6_ORIGIN_DEVIATION,//<名字：轴6原点偏移
-	ALARM_AXIS7_ORIGIN_DEVIATION,//<名字：轴7原点偏移
-	ALARM_AXIS8_ORIGIN_DEVIATION,//<名字：轴8原点偏移
+    ALARM_AXIS1_ORIGIN_DEVIATION = 530,//<名字：轴1原点偏移
+    ALARM_AXIS2_ORIGIN_DEVIATION,//<名字：轴2原点偏移
+    ALARM_AXIS3_ORIGIN_DEVIATION,//<名字：轴3原点偏移
+    ALARM_AXIS4_ORIGIN_DEVIATION,//<名字：轴4原点偏移
+    ALARM_AXIS5_ORIGIN_DEVIATION,//<名字：轴5原点偏移
+    ALARM_AXIS6_ORIGIN_DEVIATION,//<名字：轴6原点偏移
+    ALARM_AXIS7_ORIGIN_DEVIATION,//<名字：轴7原点偏移
+    ALARM_AXIS8_ORIGIN_DEVIATION,//<名字：轴8原点偏移
+
+
 
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
@@ -1201,7 +1176,9 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t read_type:4;      //<类型：系统；名字：绝对值读取方式；精度：0;单位：；
     uint32_t origin_speed:6;   //<类型：系统；名字：归原点速度设定；精度：0;单位：%；
     uint32_t dir:1;            //<类型：系统；名字：电机方向设定；精度：0;单位：%；
-    uint32_t res:13;           //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t sacc1:6;          //<类型：系统；名字：S加速1；精度：0;单位：；
+    uint32_t sacc2:6;          //<类型：系统；名字：S加速2；精度：0;单位：；
+    uint32_t res:1;            //<类型：系统；名字：预留；精度：0;单位：；
     uint32_t limit_p:8;        //<类型：系统；名字：正向极限输入；精度：0;单位：；
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
@@ -1210,10 +1187,12 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t limit_n_dir:1;    //<类型：系统；名字：负极限输入方向；精度：0;单位：；
     uint32_t origin_dir:1;     //<类型：系统；名字：原点方向选择；精度：0;单位：；
     uint32_t notuse:1;         //<类型：系统；名字：不使用伺服；精度：0;单位：；
-    uint16_t reserve2;         //<类型：系统；名字：预留；精度：0;单位：；
-    uint16_t max_speed;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
-    uint16_t min_acc_time;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；
-    uint16_t sratio;           //<类型：系统；名字：二次加速时间比例；精度：3;单位：；
+    uint32_t sdec1:6;          //<类型：系统；名字：S减速1；精度：0;单位：；
+    uint32_t sdec2:6;          //<类型：系统；名字：S减速2；精度：0;单位：；
+    uint32_t reserve2:4;       //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t max_speed:16;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
+    uint32_t min_acc_time:16;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；
+    uint32_t sratio:16;           //<类型：系统；名字：二次加速时间比例；精度：3;单位：；
 }Axis_Config0;
 
 typedef struct {

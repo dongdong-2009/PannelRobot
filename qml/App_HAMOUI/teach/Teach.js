@@ -9,6 +9,8 @@ Qt.include("../../utils/utils.js")
 Qt.include("../configs/Keymap.js")
 
 
+var customActions = {};
+
 var cmdStrs = [">",
                ">=",
                "&lt;",
@@ -803,6 +805,7 @@ actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
 actions.F_CMD_MEMCOMPARE_CMD = 602;
+
 actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
 
 
@@ -1167,6 +1170,7 @@ var generateWaitVisionDataAction = function(waitTime, dataSourceName, hostID){
         "hostID":hostID
     }
 }
+
 
 var generateInitProgram = function(axisDefine){
 
@@ -1677,9 +1681,13 @@ actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStri
 
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
+
     if(actionObject.action === actions.ACT_COMMENT)
         return ret;
-    if(actionObject.action === actions.F_CMD_SINGLE){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        ret.push(customActions[actionObject.action].editableItems.itemDef);
+    }
+    else if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"},
@@ -1795,6 +1803,10 @@ function ccErrnoToString(errno){
 
 
 var canActionUsePoint = function(actionObject){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        return customActions[actionObject.action].canActionUsePoint;
+    }
+
     if(actionObject.action === actions.ACT_COMMENT){
         if(actionObject.commentAction != null)
             return canActionUsePoint(actionObject.commentAction);
@@ -1824,6 +1836,10 @@ var canActionUsePoint = function(actionObject){
 
 var canActionTestRun = function(actionObject){
     var ac = actionObject.action;
+    if(customActions.hasOwnProperty(ac)){
+        return customActions[ac].canTestRun;
+    }
+
     return  ((ac >=  actions.F_CMD_SINGLE) && (ac <= actions.F_CMD_LINE_RELATIVE_POSE)) ||
             ((ac >=  actions.F_CMD_LINEXY_MOVE_POINT) && (ac <= actions.F_CMD_LINEYZ_MOVE_POINT)) ||
             ((ac >=  actions.F_CMD_ARCXY_MOVE_POINT) && (ac <= actions.F_CMD_ARCYZ_MOVE_POINT));
@@ -1831,3 +1847,9 @@ var canActionTestRun = function(actionObject){
 
 
 var currentParsingProgram = 0;
+
+
+var registerCustomAction = function(actionDefine){
+    customActions[actionDefine.action] = actionDefine;
+    actionToStringHandlerMap.put(actionDefine.action, actionDefine.toStringHandler);
+}

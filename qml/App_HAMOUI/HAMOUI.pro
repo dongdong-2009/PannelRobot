@@ -7,11 +7,15 @@ teach/*.qml \
 configs/* \
 settingpages/* \
 ../ICCustomElement/* \
+teach/extents/*.qml \
 kexuye-pentu-spec/*
+teach/extents/*.js
 }
 
 DISTFILES += \
     kexuye-pentu-spec/KXYStackAction.qml
+OTHER_FILES += \
+    teach/extents/ExtentActionDefine.js
 
 
 

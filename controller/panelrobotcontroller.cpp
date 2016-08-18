@@ -1693,3 +1693,23 @@ void PanelRobotController::deleteUpdater(const QString &updater, int mode)
 {
     deleteBackupHelper("updaters", updater, mode);
 }
+
+void PanelRobotController::registerCustomProgramAction(const QString &actionDefine)
+{
+    QJson::Parser parser;
+    bool ok;
+    qDebug()<<actionDefine;
+    QVariantMap ret = parser.parse(actionDefine.toLatin1(), &ok).toMap();
+    if(ok)
+    {
+        ICCustomActionParseDefine cpd;
+        QVariantList items = ret.value("seq").toList();
+        QVariantMap item;
+        for(int i = 0; i < items.size(); ++i)
+        {
+            item = items.at(i).toMap();
+            cpd.append(qMakePair(item.value("item").toString(), item.value("decimal").toInt()));
+        }
+        ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
+    }
+}

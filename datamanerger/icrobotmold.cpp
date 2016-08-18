@@ -18,6 +18,7 @@ union SpeedControlActionData
 };
 
 ICRobotMoldPTR ICRobotMold::currentMold_;
+QMap<int, ICCustomActionParseDefine> ICRobotMold::customActions_;
 QMap<int, QStringList> CreatePathActionMotorNamesMap()
 {
     QMap<int, QStringList> ret;
@@ -52,6 +53,25 @@ ICRobotMold::ICRobotMold()
 }
 
 typedef int (*ActionCompiler)(ICMoldItem &,const QVariantMap*);
+
+int CustomActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    int action = v->value("action").toInt();
+    ICCustomActionParseDefine cpd = ICRobotMold::GetCustomActionParseDefine(action);
+    QPair<QString, int> d;
+    for(int i = 0; i < cpd.size(); ++i)
+    {
+        d = cpd.at(i);
+        if(!v->contains(d.first))
+        {
+            return ICRobotMold::kCCErr_Wrong_Action_Define;
+        }
+        item.append(ICUtility::doubleToInt(v->value(d.first).toDouble(), d.second));
+    }
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+}
+
 
 int SimpleActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
@@ -609,13 +629,19 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
 
 QMap<int, ActionCompiler> actionToCompilerMap = CreateActionToCompilerMap();
 
+ActionCompiler GetActionCompiler(int action)
+{
+    if(actionToCompilerMap.contains(action)) return actionToCompilerMap.value(action);
+    else if(ICRobotMold::IsActionRegister(action)) return CustomActionCompiler;
+    return SimpleActionCompiler;
+}
 
 static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, int subNum = 255)
 {
     ICMoldItem item;
 #ifdef NEW_PLAT
     int action = v.value("action").toInt();
-    ActionCompiler cc = actionToCompilerMap.value(action, SimpleActionCompiler);
+    ActionCompiler cc = GetActionCompiler(action);
     err = cc(item, &v);
 #else
     item.SetAction(v.value("action").toInt());

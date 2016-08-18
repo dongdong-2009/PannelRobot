@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.1"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.2"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.1"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.2"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -879,6 +879,15 @@ typedef enum
      *
      */
     F_CMD_CONTRAIL_FITTING_CMD = 700,//< 轨迹拟合教导命令
+    /***************************************************************************/
+    /*
+     *  id: 轴ID
+     *  pos1:起始位置
+     *  pos2:终止位置
+     *  speed:速度
+     *  num:次数
+     */
+    F_CMD_PENQIANG_CMD = 1000,//< 喷涂摆枪命令
     /***************************************************************************/
 
     F_CMD_MEM_CMD = 53000,

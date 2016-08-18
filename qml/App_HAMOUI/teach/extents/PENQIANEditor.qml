@@ -11,6 +11,7 @@ Item {
     property alias pos2: axisFlyPos2.configValue
     property alias speed: axisFlySpeed.configValue
     property alias num: aixsFlyNum.configValue
+    property alias delay: delayEdit.configValue
     property variant actionObject: null
     onActionObjectChanged: {
         if(actionObject == null) return;
@@ -19,6 +20,7 @@ Item {
         pos2 = actionObject.pos2;
         speed = actionObject.speed;
         num = actionObject.num;
+        delay = actionObject.delay;
     }
 
     function updateActionObject(ao){
@@ -27,6 +29,7 @@ Item {
         ao.pos2 = pos2;
         ao.speed = speed;
         ao.num = num;
+        ao.delay = delay;
     }
 
     Column{
@@ -97,6 +100,7 @@ Item {
             id:axisFlySpeed
             configName: qsTr("AxisFly Speed")
             configNameWidth: axisFlyAxisSel.configNameWidth
+            configAddr: "s_rw_0_32_1_1200"
             configValue: "80.0"
             unit: qsTr("%")
         }
@@ -106,6 +110,14 @@ Item {
             configNameWidth: axisFlyAxisSel.configNameWidth
             configValue: "1"
             unit: qsTr("Times")
+        }
+        ICConfigEdit{
+            id:delayEdit
+            configName: qsTr("Delay")
+            configNameWidth: axisFlyAxisSel.configNameWidth
+            configValue: "0.00"
+            configAddr: "s_rw_0_32_2_1100"
+            unit: qsTr("s")
         }
     }
 }

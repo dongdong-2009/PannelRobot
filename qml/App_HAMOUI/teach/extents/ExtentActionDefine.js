@@ -14,24 +14,27 @@ var extentPENQIANGAction = { //< 喷涂摆枪命令
      *  pos2:终止位置
      *  speed:速度
      *  num:次数
+     *  delay:
      */
     "action":1000,
-    "generate":function(axisID, pos1, pos2, speed, num){
+    "generate":function(axisID, pos1, pos2, speed, num, delay){
         return {
             "action":this.action,
             "axis":axisID,
             "pos1":pos1,
             "pos2":pos2,
             "speed":speed,
-            "num":num
+            "num":num,
+            "delay":delay
         };
     },
     "toStringHandler":function(actionObject){
         return qsTr("PENQIANG") + "-" + axisInfos[actionObject.axis].name + ":" +
                 qsTr("Pos1:") + actionObject.pos1 + " " +
                 qsTr("Pos2:") + actionObject.pos2 + " " +
-                qsTr("Speed") + actionObject.speed + " " +
-                qsTr("Num") + actionObject.num;
+                qsTr("Speed:") + actionObject.speed + " " +
+                qsTr("Num:") + actionObject.num + " " +
+                qsTr("Delay:") + actionObject.delay;
 
     },
     "canTestRun":true,
@@ -44,6 +47,7 @@ var extentPENQIANGAction = { //< 喷涂摆枪命令
             new ActionDefineItem("pos1", 3),
             new ActionDefineItem("pos2", 3),
             new ActionDefineItem("speed", 1),
-            new ActionDefineItem("num", 0)
+            new ActionDefineItem("num", 0),
+            new ActionDefineItem("delay",2)
         ]},
 };

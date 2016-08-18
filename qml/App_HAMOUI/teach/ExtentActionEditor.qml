@@ -19,7 +19,8 @@ Item {
                                                   axisFlyConfigs.pos1,
                                                   axisFlyConfigs.pos2,
                                                   axisFlyConfigs.speed,
-                                                  axisFlyConfigs.num));
+                                                  axisFlyConfigs.num,
+                                                  axisFlyConfigs.delay));
         }
         return ret;
     }

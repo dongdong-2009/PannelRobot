@@ -1697,6 +1697,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        ExtentActionDefine.customActionGenerator(ExtentActionDefine.extentPENQIANGAction)
         Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
         panelRobotController.registerCustomProgramAction(ExtentActionDefine.extentPENQIANGAction.toRegisterString());
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
@@ -1734,7 +1735,7 @@ Rectangle {
         Teach.definedPoints.registerPointsMonitor(programFlowPageInstance);
 
         for(var ac in Teach.customActions){
-            modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor.createObject(modifyEditor),
+            modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor,
                                               Teach.customActions[ac].editableItems.itemDef.item);
         }
 

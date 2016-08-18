@@ -7,7 +7,7 @@ Item {
     id:axisFlyConfigs
     width: content.width + 20
     height: content.height
-    property alias axisID: axisFlyAxisSel.configValue
+    property alias axis: axisFlyAxisSel.configValue
     property alias pos1: axisFlyPos1.configValue
     property alias pos2: axisFlyPos2.configValue
     property alias speed: axisFlySpeed.configValue
@@ -17,13 +17,13 @@ Item {
 
     function getActionProperties(){
         return {"action":ExtentActionDefine.extentPENQIANGAction.action,
-        "axis":axisID, "pos1":pos1, "pos2":pos2,
+        "axis":axis, "pos1":pos1, "pos2":pos2,
         "speed":speed, "num":num, "delay":delay};
     }
 
     onActionObjectChanged: {
         if(actionObject == null) return;
-        axisID = actionObject.axis;
+        axis = actionObject.axis;
         pos1 = actionObject.pos1;
         pos2 = actionObject.pos2;
         speed = actionObject.speed;
@@ -32,7 +32,7 @@ Item {
     }
 
     function updateActionObject(ao){
-        ao.axis = axisID;
+        ao.axis = axis;
         ao.pos1 = pos1;
         ao.pos2 = pos2;
         ao.speed = speed;

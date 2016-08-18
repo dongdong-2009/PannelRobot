@@ -7,6 +7,15 @@ function ActionDefineItem(name, decimal){
     this.decimal = decimal;
 }
 
+//var extentPENGQIANGAction = {
+//    "action":1000,
+
+//};
+
+//function customActionGenerator(actionDefine){
+//    var ret = {};
+//}
+
 var extentPENQIANGAction = { //< 喷涂摆枪命令
     /*
      *  id: 轴ID
@@ -17,15 +26,15 @@ var extentPENQIANGAction = { //< 喷涂摆枪命令
      *  delay:
      */
     "action":1000,
-    "generate":function(axisID, pos1, pos2, speed, num, delay){
+    "generate":function(properties){
         return {
-            "action":this.action,
-            "axis":axisID,
-            "pos1":pos1,
-            "pos2":pos2,
-            "speed":speed,
-            "num":num,
-            "delay":delay
+            "action":properties.action,
+            "axis":properties.axis,
+            "pos1":properties.pos1,
+            "pos2":properties.pos2,
+            "speed":properties.speed,
+            "num":properties.num,
+            "delay":properties.delay
         };
     },
     "toStringHandler":function(actionObject){

@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../../ICCustomElement"
 import "../../configs/AxisDefine.js" as AxisDefine
+import "ExtentActionDefine.js" as ExtentActionDefine
 
 Item {
     id:axisFlyConfigs
@@ -13,6 +14,13 @@ Item {
     property alias num: aixsFlyNum.configValue
     property alias delay: delayEdit.configValue
     property variant actionObject: null
+
+    function getActionProperties(){
+        return {"action":ExtentActionDefine.extentPENQIANGAction.action,
+        "axis":axisID, "pos1":pos1, "pos2":pos2,
+        "speed":speed, "num":num, "delay":delay};
+    }
+
     onActionObjectChanged: {
         if(actionObject == null) return;
         axisID = actionObject.axis;

@@ -15,12 +15,7 @@ Item {
     function createActionObjects(){
         var ret = [];
         if(axisPly.isChecked){
-            ret.push(ExtentActionDefine.extentPENQIANGAction.generate(axisFlyConfigs.axisID,
-                                                  axisFlyConfigs.pos1,
-                                                  axisFlyConfigs.pos2,
-                                                  axisFlyConfigs.speed,
-                                                  axisFlyConfigs.num,
-                                                  axisFlyConfigs.delay));
+            ret.push(Teach.generateCustomAction(axisFlyConfigs.getActionProperties()));
         }
         return ret;
     }

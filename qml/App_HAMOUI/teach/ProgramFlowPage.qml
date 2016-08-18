@@ -1698,7 +1698,7 @@ Rectangle {
 
     Component.onCompleted: {
         Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
-        panelRobotController.registerCustomProgramAction(JSON.stringify(ExtentActionDefine.extentPENQIANGAction.parseDefine));
+        panelRobotController.registerCustomProgramAction(ExtentActionDefine.extentPENQIANGAction.toRegisterString());
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);

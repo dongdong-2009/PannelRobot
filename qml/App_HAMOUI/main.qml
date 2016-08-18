@@ -676,9 +676,13 @@ Rectangle {
     function onETH0DataIn(data){
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
-        var offsetX = panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetXAddr);
-        var offsetY = panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetYAddr);
-        var offsetW = panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetWAddr);
+        var offsetX = panelRobotController.getRealConfigValue(ICConfigDefines.relRealXAddr);
+        var offsetY = panelRobotController.getRealConfigValue(ICConfigDefines.relRealYAddr);
+        var offsetW = panelRobotController.getRealConfigValue(ICConfigDefines.relRealWAddr);
+        offsetX -= panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetXAddr);
+        offsetY -= panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetYAddr);
+        offsetW -= panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetWAddr);
+
         for(var i = 0, len = posData.dsData.length; i < len; ++i){
             posData.dsData[i].m0 = (parseFloat(posData.dsData[i].m0) + offsetX).toFixed(3);
             posData.dsData[i].m1 = (parseFloat(posData.dsData[i].m1) + offsetY).toFixed(3);
@@ -709,6 +713,9 @@ Rectangle {
         ICConfigDefines.visionOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 800, 3, "mm");
         ICConfigDefines.visionOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 801, 3, "mm");
         ICConfigDefines.visionOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 802, 3, "°");
+        ICConfigDefines.relRealXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 803, 3, "mm");
+        ICConfigDefines.relRealYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 804, 3, "mm");
+        ICConfigDefines.relRealWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 805, 3, "°");
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

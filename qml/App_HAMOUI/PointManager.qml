@@ -53,33 +53,86 @@ MouseArea{
             anchors.bottomMargin: 4
             anchors.left: pointViewContainer.left
             width: modelOffset.width
-            height: modelOffset.height
+            height: modelOffset.height + relRealPosContainer.height + 6
             Row{
                 id:modelOffset
                 spacing: 6
                 Text {
-                    text: qsTr("Offset") + ":"
+                    text: qsTr("vision pos") + ":"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 ICConfigEdit{
-                    id:offsetX
+                    id:vX
                     configAddr:"m_rw_0_32_3_800"
                     configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                 }
                 ICConfigEdit{
-                    id:offsetY
+                    id:vY
                     configAddr:"m_rw_0_32_3_801"
                     configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
 
                 }
                 ICConfigEdit{
-                    id:offsetW
+                    id:vW
                     configAddr:"m_rw_0_32_3_802"
                     configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
                     configValue: "0.000"
 
+                }
+                ICButton{
+                    id:setInV
+                    text: qsTr("Set In")
+                    width: calcCenter.width
+                    height: calcCenter.height
+                    onButtonClicked: {
+                        vX.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
+                        vY.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+                        vW.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+                    }
+                }
+            }
+
+            Row{
+                id:relRealPosContainer
+                spacing: 6
+                anchors.top: modelOffset.bottom
+                anchors.topMargin: 6
+                Text {
+                    text: qsTr("Real pos") + ":"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                ICConfigEdit{
+                    id:rX
+                    configAddr:"m_rw_0_32_3_803"
+                    configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
+                    configValue: "0.000"
+                }
+                ICConfigEdit{
+                    id:rY
+                    configAddr:"m_rw_0_32_3_804"
+                    configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
+                    configValue: "0.000"
+
+                }
+                ICConfigEdit{
+                    id:rW
+                    configAddr:"m_rw_0_32_3_805"
+                    configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
+                    configValue: "0.000"
+
+                }
+                ICButton{
+                    id:setInR
+                    text: qsTr("Set In")
+                    width: calcCenter.width
+                    height: calcCenter.height
+                    onButtonClicked: {
+                        rX.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
+                        rY.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+                        rW.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+                    }
                 }
             }
         }
@@ -93,24 +146,34 @@ MouseArea{
             ICConfigEdit{
                 id:boxLength
                 configName: qsTr("Length(mm)")
-                configValue: "0.00"
+                configValue: "0.000"
                 anchors.verticalCenter: parent.verticalCenter
-                decimal: 2
+                decimal: 3
             }
             ICConfigEdit{
                 id:boxWidth
                 configName: qsTr("Width(mm)")
-                configValue: "0.00"
+                configValue: "0.000"
                 anchors.verticalCenter: parent.verticalCenter
-                decimal: 2
+                decimal: 3
             }
+            ICConfigEdit{
+                id:boxHeight
+                configName: qsTr("Height(mm)")
+                configValue: "0.000"
+                anchors.verticalCenter: parent.verticalCenter
+                decimal: 3
+            }
+
             ICButton{
                 id:calcCenter
-                text: qsTr("Calc Center to current")
-                width: 157
+                text: qsTr("Calc")
+                width: 46
+                height: boxHeight.height
                 onButtonClicked: {
                     var l = parseFloat(boxLength.configValue);
                     var w = parseFloat(boxWidth.configValue);
+                    var h = parseFloat(boxHeight.configValue);
                     l = l / 2;
                     w = w / 2;
                     if(pointView.currentIndex < 1) return;
@@ -118,6 +181,7 @@ MouseArea{
                     var oPoint = pointModel.get(0).point;
                     iPoint.point.m0 = (parseFloat(oPoint.point.m0) + l).toFixed(3);
                     iPoint.point.m1 = (parseFloat(oPoint.point.m1) + w).toFixed(3);
+                    iPoint.point.m2 = (parseFloat(oPoint.point.m2) + h).toFixed(3);
                     pointModel.setProperty(pointView.currentIndex, "point", iPoint);
 
                 }
@@ -278,9 +342,9 @@ MouseArea{
 
         Rectangle  {
             id:pointViewContainer
-            width: 490; height: 300 - 30
+            width: 490; height: 300 - 30 - 30
             x:200
-            y:80
+            y:80 + 30
             ListModel {
                 id:pointModel
             }

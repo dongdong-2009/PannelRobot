@@ -4179,6 +4179,26 @@ please chose!</source>
         <source>Offset</source>
         <translation>视觉偏移</translation>
     </message>
+    <message>
+        <source>vision pos</source>
+        <translation>视觉位置</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>Real pos</source>
+        <translation>实际位置</translation>
+    </message>
+    <message>
+        <source>Height(mm)</source>
+        <translation>高(mm)</translation>
+    </message>
+    <message>
+        <source>Calc</source>
+        <translation>计算</translation>
+    </message>
 </context>
 <context>
     <name>ProductSettings</name>

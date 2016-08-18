@@ -1764,3 +1764,9 @@ var registerCustomAction = function(actionDefine){
     customActions[actionDefine.action] = actionDefine;
     actionToStringHandlerMap.put(actionDefine.action, actionDefine.toStringHandler);
 }
+
+var generateCustomAction = function(actionObject){
+    if(!actionObject.hasOwnProperty("action")) return null;
+    if(!customActions.hasOwnProperty(actionObject.action)) return null;
+    return customActions[actionObject.action].generate(actionObject);
+}

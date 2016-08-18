@@ -378,7 +378,7 @@ public:
     }
 
 
-    bool LoadMold(const QString& moldName);
+    bool LoadMold(const QString& moldName, bool reload = false);
     QMap<int, int> SaveMold(int which, const QString& program);
 
     quint32 MoldFnc(ICAddrWrapperCPTR addr)

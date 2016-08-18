@@ -1069,9 +1069,9 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
 }
 
-bool ICRobotMold::LoadMold(const QString &moldName)
+bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
 {
-    if(moldName == moldName_)
+    if(moldName == moldName_ && !reload)
         return false;
     QStringList programs = ICDALHelper::MoldProgramContent(moldName);
     if(programs.size() != 9) return false;
@@ -1125,7 +1125,7 @@ QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
     CompileInfo aP = Complie(program, stackInfos_, counters_, variables_, compiledFunctions_, err);
-    if(err == kCCErr_None)
+    if(aP.ErrInfo().isEmpty())
     {
         programsCode_[which] = program;
         programs_[which] = aP;

@@ -213,7 +213,13 @@ void PanelRobotController::Init()
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
-    emit LoadMessage("Ui inited.");
+
+    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
+
+    emit LoadMessage("Record reload.");
+
+//    InitUI();
+//    emit LoadMessage("Ui inited.");
     //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -1698,7 +1704,6 @@ void PanelRobotController::registerCustomProgramAction(const QString &actionDefi
 {
     QJson::Parser parser;
     bool ok;
-    qDebug()<<actionDefine;
     QVariantMap ret = parser.parse(actionDefine.toLatin1(), &ok).toMap();
     if(ok)
     {

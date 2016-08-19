@@ -552,7 +552,7 @@ Rectangle {
 
     function setManualProgramEnabled(en){
         newManualProgram.visible = en;
-        deleteManualProgram = en && (editing.currentIndex > 8);
+        deleteManualProgram.visible = en && (editing.currentIndex > 8);
     }
 
     function onUserChanged(user){
@@ -639,15 +639,6 @@ Rectangle {
     function onGlobalSpeedChanged(spd){
         speedDisplay.text = parseFloat(spd).toFixed(1);
     }
-
-//    states: [
-//        State {
-//            name: "readOnly"
-//            PropertyChanges {
-//                target: mo
-//            }
-//        }
-//    ]
 
     Column{
         id:container

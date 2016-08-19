@@ -73,7 +73,7 @@ MouseArea{
                     configAddr:"m_rw_0_30_3_800"
                     configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
-                    inputWidth: 70
+                    inputWidth: 75
                 }
                 ICConfigEdit{
                     id:vY

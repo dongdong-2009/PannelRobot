@@ -8,7 +8,7 @@ configs/* \
 settingpages/* \
 ../ICCustomElement/* \
 teach/extents/*.qml \
-kexuye-pentu-spec/*
+kexuye-pentu-spec/* \
 teach/extents/*.js
 }
 

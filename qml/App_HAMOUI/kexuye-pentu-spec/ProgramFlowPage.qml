@@ -19,23 +19,23 @@ ProgramFlowPage {
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
 
 
-//    function getRecordContent(which){
-//        if(which == 0){
-//            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
-//            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
-//            for(var i = 0;i < ret.length;i++){
-//                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
-//                    for(var j = 0;j < 16;j++){
-//                        var a = "flag" + j;
-//                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
-//                    }
-//                }
-//            }
-//            return ret;
-//        }
-//        else
-//            return JSON.parse(panelRobotController.programs(which));
-//    }
+    function getRecordContent(which){
+        if(which == 0){
+            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
+            for(var i = 0;i < ret.length;i++){
+                if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
+                    for(var j = 0;j < 16;j++){
+                        var a = "flag" + j;
+                        LocalTeach.flagsDefine.pushFlag(0,new LocalTeach.FlagItem(ret[i][a],""));
+                    }
+                }
+            }
+            return ret;
+        }
+        else
+            return JSON.parse(panelRobotController.programs(which));
+    }
     function mappedModelRunningActionInfo(baseRunningInfo){
         if(baseRunningInfo.programIndex != 0) return baseRunningInfo;
         var uiSteps = baseRunningInfo.steps;
@@ -192,11 +192,22 @@ ProgramFlowPage {
 //                break;
 //        }
     }
-
+    function getActionProperties(action,axisID,sPos,ePos,spd,ceycle,delay){
+        return {
+            "action":action,
+            "axis":axisID,
+            "pos1":sPos||0.000,
+            "pos2":ePos||0.000,
+            "speed":spd||80.0,
+            "num":ceycle||0,
+            "delay":delay||0.00};
+    }
     function pentuActionHead(actionObject1){
         var actionObject = Utils.cloneObject(actionObject1);
         axischange(actionObject);
         var ret = [];
+//        ret.push(BaseTeach.generateCustomAction(getActionProperties(1000,0,200,500,80,2)));       //喷枪摇摆
+
 //        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));     //Y30 close
 //        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
 //        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
@@ -745,8 +756,10 @@ ProgramFlowPage {
                 var ceycletmp = (ceycle - 1)/2;
             else ceycletmp = ceycle/2;
 //            for(var i = 0; i < ceycletmp; i++){
+            var add = [3280240649,3280502793,3280764937];
+            console.log("1111111111111",add[0],add[1],add[2],actionObject.dirAxis);
             ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Ceycle")));
-            ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,59080713,dirlength,1,0));
+            ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(dirlength-1)*1000,1,0));
             if(actionObject.mode == 2)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                                                        [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
@@ -771,7 +784,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
-            ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,59080713,dirlength,1,0));
+            ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(dirlength-1)*1000,1,0));
             if(actionObject.mode == 2)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                                                        [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));

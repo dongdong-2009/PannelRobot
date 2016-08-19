@@ -353,7 +353,11 @@ public:
     }
 
     static bool IsActionRegister(int action) { return customActions_.contains(action);}
-    static const ICCustomActionParseDefine& GetCustomActionParseDefine(int action) { return customActions_.value(action);}
+    static ICCustomActionParseDefine GetCustomActionParseDefine(int action)
+    {
+        if(!customActions_.contains(action)) return ICCustomActionParseDefine();
+        return customActions_.value(action);
+    }
     static void RegisterCustomAction(int action, const ICCustomActionParseDefine & define)
     {
         customActions_.insert(action, define);

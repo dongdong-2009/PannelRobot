@@ -107,20 +107,20 @@ ProgramActionMenuFrame{
     }
 
     Component.onCompleted: {
-        var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame) - 1;
+        var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame);
         actionEditorContainerInstance().setCurrentIndex(frameIndex );
         LocalPData.menuIndex = frameIndex;
         var editor = Qt.createComponent('KexuYeActionEdit.qml');
         var kxyObject = editor.createObject(actionEditorContainerInstance());
-        var kxyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;
+        var kxyObjectIndex = actionEditorContainerInstance().addPage(kxyObject);
         editor = Qt.createComponent('KexuYeAxisSpeed.qml');
         var kxyspeed = editor.createObject(actionEditorContainerInstance());
-        var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed) - 1;
+        var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed);
         kxyObject.detailInstance = kxyspeed;
 
         editor = Qt.createComponent('KXYStackAction.qml');
         var kxystack = editor.createObject(actionEditorContainerInstance());
-        var kxystackactionIndex = actionEditorContainerInstance().addPage(kxystack) - 1;
+        var kxystackactionIndex = actionEditorContainerInstance().addPage(kxystack);
         kxyObject.stackInstance = kxystack;
 
         var kxySpeedIndex = function(){

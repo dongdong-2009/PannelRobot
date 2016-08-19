@@ -546,8 +546,8 @@ Rectangle {
     }
 
     function setModuleEnabled(en){
-        newModuleBtn.visible = en;
-        delModuleBtn.visible = en && (moduleSel.currentIndex != 0);
+        newModuleBtn.visible = en && (editing.currentIndex < 9) && !PData.isReadOnly;
+        delModuleBtn.visible = en && (moduleSel.currentIndex != 0) && newModuleBtn.visible;
     }
 
     function setManualProgramEnabled(en){
@@ -619,25 +619,6 @@ Rectangle {
                 saveProgram(i);
             }
         }
-//        var cpI = currentProgramIndex();
-//        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
-//        var md = currentModel();
-//        var tmp;
-//        var line;
-//        var si = Teach.getStackInfoFromID(stackID);
-//        if(si == null) return;
-//        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
-//        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
-//        for(var l in stackLines){
-//            line = stackLines[l];
-//            tmp = md.get(line);
-//            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
-//            PData.counterLinesInfo.removeLine(cpI, line);
-//            if(c1 >= 0)
-//                PData.counterLinesInfo.add(cpI, c1, line);
-//            if(c2 >= 0)
-//                PData.counterLinesInfo.add(cpI, c2, line);
-//        }
         hasModify = true;
     }
 
@@ -658,6 +639,15 @@ Rectangle {
     function onGlobalSpeedChanged(spd){
         speedDisplay.text = parseFloat(spd).toFixed(1);
     }
+
+//    states: [
+//        State {
+//            name: "readOnly"
+//            PropertyChanges {
+//                target: mo
+//            }
+//        }
+//    ]
 
     Column{
         id:container
@@ -715,6 +705,7 @@ Rectangle {
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
                             deleteManualProgram.visible = newManualProgram.visible;
+                            newModuleBtn.visible = false;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
                             PData.programToInsertIndex[PData.kManualProgramIndex] = updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(currentIndex)).program);
                             programListView.model = manualProgramModel;
@@ -726,6 +717,7 @@ Rectangle {
 
                         }else{
                             actionEditorFrame.item.setMode("");
+                            setModuleEnabled(true);
                             if(panelRobotController.isAutoMode()){
                                 singleStep.setChecked(false);
                                 singleCycle.setChecked(false);
@@ -791,6 +783,7 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
                         if(moduleID < 0)

@@ -707,15 +707,18 @@ Rectangle {
 
     Component.onCompleted: {
         //        menuOperation.setChecked(true);
-        ICConfigDefines.visionOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 800, 3, "mm");
-        ICConfigDefines.visionOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 801, 3, "mm");
-        ICConfigDefines.visionOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 802, 3, "°");
-        ICConfigDefines.relRealXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 803, 3, "mm");
-        ICConfigDefines.relRealYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 804, 3, "mm");
-        ICConfigDefines.relRealWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 805, 3, "°");
-        ICConfigDefines.realOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 806, 3, "mm");
-        ICConfigDefines.realOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 807, 3, "mm");
-        ICConfigDefines.realOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 808, 3, "°");
+        ICConfigDefines.visionOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 800, 3, "mm");
+        ICConfigDefines.visionOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 801, 3, "mm");
+        ICConfigDefines.visionOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 802, 3, "°");
+        ICConfigDefines.relRealXAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 803, 3, "mm");
+        ICConfigDefines.relRealYAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 804, 3, "mm");
+        ICConfigDefines.relRealWAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 805, 3, "°");
+        ICConfigDefines.realOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 806, 3, "mm");
+        ICConfigDefines.realOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 807, 3, "mm");
+        ICConfigDefines.realOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 30, 808, 3, "°");
+        ICConfigDefines.boxLAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 809, 3, "mm");
+        ICConfigDefines.boxWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 810, 3, "mm");
+        ICConfigDefines.boxHAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 811, 3, "mm");
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

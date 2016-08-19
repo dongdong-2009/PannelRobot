@@ -49,11 +49,11 @@ MouseArea{
 
 
         ICSettingConfigsScope{
-            anchors.bottom: boxRectContainer.top
+            anchors.bottom: pointViewContainer.top
             anchors.bottomMargin: 4
             anchors.left: pointViewContainer.left
             width: modelOffset.width
-            height: modelOffset.height + relRealPosContainer.height + 6 + realOffsetContainer.height + 6
+            height: modelOffset.height + relRealPosContainer.height + 6 + realOffsetContainer.height + 6 + boxRectContainer.height + 6
             Row{
                 id:modelOffset
                 spacing: 4
@@ -70,14 +70,14 @@ MouseArea{
                 }
                 ICConfigEdit{
                     id:vX
-                    configAddr:"m_rw_0_32_3_800"
+                    configAddr:"m_rw_0_30_3_800"
                     configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                     inputWidth: 70
                 }
                 ICConfigEdit{
                     id:vY
-                    configAddr:"m_rw_0_32_3_801"
+                    configAddr:"m_rw_0_30_3_801"
                     configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
@@ -85,7 +85,7 @@ MouseArea{
                 }
                 ICConfigEdit{
                     id:vW
-                    configAddr:"m_rw_0_32_3_802"
+                    configAddr:"m_rw_0_30_3_802"
                     configName: AxisDefine.axisInfos[3].name + "(" + AxisDefine.axisInfos[3].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
@@ -111,14 +111,14 @@ MouseArea{
                 }
                 ICConfigEdit{
                     id:rX
-                    configAddr:"m_rw_0_32_3_803"
+                    configAddr:"m_rw_0_30_3_803"
                     configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
                 }
                 ICConfigEdit{
                     id:rY
-                    configAddr:"m_rw_0_32_3_804"
+                    configAddr:"m_rw_0_30_3_804"
                     configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
@@ -126,7 +126,7 @@ MouseArea{
                 }
                 ICConfigEdit{
                     id:rW
-                    configAddr:"m_rw_0_32_3_805"
+                    configAddr:"m_rw_0_30_3_805"
                     configName: AxisDefine.axisInfos[3].name + "(" + AxisDefine.axisInfos[3].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
@@ -152,14 +152,14 @@ MouseArea{
                 }
                 ICConfigEdit{
                     id:rOX
-                    configAddr:"m_rw_0_32_3_806"
+                    configAddr:"m_rw_0_30_3_806"
                     configName: AxisDefine.axisInfos[0].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
                 }
                 ICConfigEdit{
                     id:rOY
-                    configAddr:"m_rw_0_32_3_807"
+                    configAddr:"m_rw_0_30_3_807"
                     configName: AxisDefine.axisInfos[1].name + "(" + AxisDefine.axisInfos[1].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
@@ -167,67 +167,68 @@ MouseArea{
                 }
                 ICConfigEdit{
                     id:rOW
-                    configAddr:"m_rw_0_32_3_808"
+                    configAddr:"m_rw_0_30_3_808"
                     configName: AxisDefine.axisInfos[3].name + "(" + AxisDefine.axisInfos[3].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
 
                 }
             }
-        }
 
-        Row{
-            id:boxRectContainer
-            anchors.bottom: pointViewContainer.top
-            anchors.bottomMargin: 4
-            anchors.left: pointViewContainer.left
-            spacing: 4
-            ICButton{
-                id:calcCenter
-                text: qsTr("Calc Box")
-                width: 82
-                height: boxHeight.height
-                onButtonClicked: {
-                    var l = parseFloat(boxLength.configValue);
-                    var w = parseFloat(boxWidth.configValue);
-                    var h = parseFloat(boxHeight.configValue);
-                    l = l / 2;
-                    w = w / 2;
-                    if(pointView.currentIndex < 1) return;
-                    var iPoint = pointModel.get(pointView.currentIndex).point;
-                    var oPoint = pointModel.get(0).point;
-                    iPoint.point.m0 = (parseFloat(oPoint.point.m0) + l).toFixed(3);
-                    iPoint.point.m1 = (parseFloat(oPoint.point.m1) + w).toFixed(3);
-                    iPoint.point.m2 = (parseFloat(oPoint.point.m2) + h).toFixed(3);
-                    Teach.definedPoints.updatePoint(iPoint.index, iPoint);
-                    pointModel.setProperty(pointView.currentIndex, "point", iPoint);
+            Row{
+                id:boxRectContainer
+                anchors.top : realOffsetContainer.bottom
+                anchors.topMargin: 4
+                anchors.left: realOffsetContainer.left
+                spacing: 4
+                ICButton{
+                    id:calcCenter
+                    text: qsTr("Calc Box")
+                    width: 82
+                    height: boxHeight.height
+                    onButtonClicked: {
+                        var l = parseFloat(boxLength.configValue);
+                        var w = parseFloat(boxWidth.configValue);
+                        var h = parseFloat(boxHeight.configValue);
+                        l = l / 2;
+                        w = w / 2;
+                        if(pointView.currentIndex < 1) return;
+                        var iPoint = pointModel.get(pointView.currentIndex).point;
+                        var oPoint = pointModel.get(0).point;
+                        iPoint.point.m0 = (parseFloat(oPoint.point.m0) + l).toFixed(3);
+                        iPoint.point.m1 = (parseFloat(oPoint.point.m1) + w).toFixed(3);
+                        iPoint.point.m2 = (parseFloat(oPoint.point.m2) + h).toFixed(3);
+                        Teach.definedPoints.updatePoint(iPoint.index, iPoint);
+                        pointModel.setProperty(pointView.currentIndex, "point", iPoint);
 
+                    }
+                }
+                ICConfigEdit{
+                    id:boxLength
+                    configName: qsTr("Length(mm)")
+                    configValue: "0.000"
+                    anchors.verticalCenter: parent.verticalCenter
+                    configAddr:"m_rw_0_32_3_809"
+                    inputWidth: vX.inputWidth
+                }
+                ICConfigEdit{
+                    id:boxWidth
+                    configName: qsTr("Width(mm)")
+                    configValue: "0.000"
+                    anchors.verticalCenter: parent.verticalCenter
+                    configAddr:"m_rw_0_32_3_810"
+                    inputWidth: vX.inputWidth
+                }
+                ICConfigEdit{
+                    id:boxHeight
+                    configName: qsTr("Height(mm)")
+                    configValue: "0.000"
+                    anchors.verticalCenter: parent.verticalCenter
+                    configAddr:"m_rw_0_32_3_811"
+                    inputWidth: vX.inputWidth
                 }
             }
-            ICConfigEdit{
-                id:boxLength
-                configName: qsTr("Length(mm)")
-                configValue: "0.000"
-                anchors.verticalCenter: parent.verticalCenter
-                decimal: 3
-                inputWidth: vX.inputWidth
-            }
-            ICConfigEdit{
-                id:boxWidth
-                configName: qsTr("Width(mm)")
-                configValue: "0.000"
-                anchors.verticalCenter: parent.verticalCenter
-                decimal: 3
-                inputWidth: vX.inputWidth
-            }
-            ICConfigEdit{
-                id:boxHeight
-                configName: qsTr("Height(mm)")
-                configValue: "0.000"
-                anchors.verticalCenter: parent.verticalCenter
-                decimal: 3
-                inputWidth: vX.inputWidth
-            }
+
         }
 
         Row{

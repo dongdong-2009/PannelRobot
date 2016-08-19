@@ -676,12 +676,9 @@ Rectangle {
     function onETH0DataIn(data){
         console.log("raw data:", data);
         var posData = ESData.externalDataManager.parse(data);
-        var offsetX = panelRobotController.getRealConfigValue(ICConfigDefines.relRealXAddr);
-        var offsetY = panelRobotController.getRealConfigValue(ICConfigDefines.relRealYAddr);
-        var offsetW = panelRobotController.getRealConfigValue(ICConfigDefines.relRealWAddr);
-        offsetX -= panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetXAddr);
-        offsetY -= panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetYAddr);
-        offsetW -= panelRobotController.getRealConfigValue(ICConfigDefines.visionOffsetWAddr);
+        var offsetX = panelRobotController.getRealConfigValue(ICConfigDefines.realOffsetXAddr);
+        var offsetY = panelRobotController.getRealConfigValue(ICConfigDefines.realOffsetYAddr);
+        var offsetW = panelRobotController.getRealConfigValue(ICConfigDefines.realOffsetWAddr);
 
         for(var i = 0, len = posData.dsData.length; i < len; ++i){
             posData.dsData[i].m0 = (parseFloat(posData.dsData[i].m0) + offsetX).toFixed(3);
@@ -716,6 +713,9 @@ Rectangle {
         ICConfigDefines.relRealXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 803, 3, "mm");
         ICConfigDefines.relRealYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 804, 3, "mm");
         ICConfigDefines.relRealWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 805, 3, "°");
+        ICConfigDefines.realOffsetXAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 806, 3, "mm");
+        ICConfigDefines.realOffsetYAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 807, 3, "mm");
+        ICConfigDefines.realOffsetWAddr = panelRobotController.createCustomAddr(2, 3, 0, 32, 808, 3, "°");
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

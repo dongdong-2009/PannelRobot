@@ -4165,11 +4165,11 @@ please chose!</source>
     </message>
     <message>
         <source>Length(mm)</source>
-        <translation>长(mm)</translation>
+        <translation>L(mm)</translation>
     </message>
     <message>
         <source>Width(mm)</source>
-        <translation>宽(mm)</translation>
+        <translation>W(mm)</translation>
     </message>
     <message>
         <source>Calc Center to current</source>
@@ -4181,7 +4181,7 @@ please chose!</source>
     </message>
     <message>
         <source>vision pos</source>
-        <translation>视觉位置</translation>
+        <translation>视觉</translation>
     </message>
     <message>
         <source>Set In</source>
@@ -4189,15 +4189,39 @@ please chose!</source>
     </message>
     <message>
         <source>Real pos</source>
-        <translation>实际位置</translation>
+        <translation>实际</translation>
     </message>
     <message>
         <source>Height(mm)</source>
-        <translation>高(mm)</translation>
+        <translation>H(mm)</translation>
     </message>
     <message>
         <source>Calc</source>
         <translation>计算</translation>
+    </message>
+    <message>
+        <source>offset</source>
+        <translation>偏移</translation>
+    </message>
+    <message>
+        <source>Box Rect</source>
+        <translation>盒子</translation>
+    </message>
+    <message>
+        <source>Set Vision</source>
+        <translation>设入视觉</translation>
+    </message>
+    <message>
+        <source>Set Real</source>
+        <translation>设入实际</translation>
+    </message>
+    <message>
+        <source>Calc Offset</source>
+        <translation>计算偏移</translation>
+    </message>
+    <message>
+        <source>Calc Box</source>
+        <translation>计算盒子</translation>
     </message>
 </context>
 <context>

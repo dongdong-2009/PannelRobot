@@ -4662,6 +4662,20 @@ please chose!</source>
         <source>Lines:</source>
         <translation>行:</translation>
     </message>
+    <message>
+        <source>Modules</source>
+        <translation>模块</translation>
+    </message>
+    <message>
+        <source>Manual Program</source>
+        <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>Save {0} fail!.
+</source>
+        <translation>保存 {0} 失败!
+</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>

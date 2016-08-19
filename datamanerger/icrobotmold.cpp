@@ -1772,8 +1772,7 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
 
     if(!isOk)
         return ret;
-    functions_ = functions;
-    compiledFunctions_ = functionsMap;
+
     QMap<int, CompileInfo>::const_iterator p = functionsMap.constBegin();
     QMap<int, int> eI;
     while(p != functionsMap.constEnd())
@@ -1782,15 +1781,19 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
         if(!eI.isEmpty())
         {
             isOk = false;
-            break;
+//            break;
         }
         ret.insert(p.key(), eI);
         ++p;
     }
     if(isOk)
+    {
+        functions_ = functions;
+        compiledFunctions_ = functionsMap;
         ICDALHelper::SaveFunctions(moldName_, functions);
+    }
 
-    if(syncMold)
+    if(syncMold && isOk)
     {
         for(int i = 0 ; i < programs_.size(); ++i)
         {

@@ -459,16 +459,21 @@ Rectangle {
         beforeSaveProgram(which);
         var errInfo;
         tipBox.runningTip(qsTr("Program Compiling..."));
+        var pName;
         if(which == PData.kFunctionProgramIndex){
+            pName = qsTr("Modules");
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
+            pName = qsTr("Manual Program");
             errInfo = saveManualProgramByName(editing.text(PData.lastEditingIndex));
         }else if(which == 0){
+            pName = qsTr("Main Program")
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
                 panelRobotController.sendMainProgramToHost();
             }
         }else{
+            pName = qsTr("Sub-") + which;
             errInfo = JSON.parse(panelRobotController.saveSubProgram(which, modelToProgram(which)));
             if(errInfo.length === 0){
                 panelRobotController.sendSubProgramToHost(which);
@@ -479,7 +484,7 @@ Rectangle {
             for(var i = 0; i < errInfo.length; ++i){
                 toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
             }
-            tipBox.warning(toShow, qsTr("OK"));
+            tipBox.warning( ICString.icStrformat(qsTr("Save {0} fail!.\n"), pName), qsTr("OK"), toShow);
         }
         else
             tipBox.visible = false;

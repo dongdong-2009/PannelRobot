@@ -63,9 +63,9 @@ MouseArea{
                     width: calcCenter.width
                     height: calcCenter.height
                     onButtonClicked: {
-                        vX.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
-                        vY.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
-                        vW.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+                        vX.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                        vY.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                        vW.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
                     }
                 }
                 ICConfigEdit{
@@ -86,7 +86,7 @@ MouseArea{
                 ICConfigEdit{
                     id:vW
                     configAddr:"m_rw_0_32_3_802"
-                    configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
+                    configName: AxisDefine.axisInfos[3].name + "(" + AxisDefine.axisInfos[3].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
 
@@ -104,9 +104,9 @@ MouseArea{
                     width: calcCenter.width
                     height: calcCenter.height
                     onButtonClicked: {
-                        rX.configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
-                        rY.configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
-                        rW.configValue = (panelRobotController.statusValue("c_ro_0_32_0_921") / 1000).toFixed(3);
+                        rX.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                        rY.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                        rW.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
                     }
                 }
                 ICConfigEdit{
@@ -127,7 +127,7 @@ MouseArea{
                 ICConfigEdit{
                     id:rW
                     configAddr:"m_rw_0_32_3_805"
-                    configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
+                    configName: AxisDefine.axisInfos[3].name + "(" + AxisDefine.axisInfos[3].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
 
@@ -168,7 +168,7 @@ MouseArea{
                 ICConfigEdit{
                     id:rOW
                     configAddr:"m_rw_0_32_3_808"
-                    configName: AxisDefine.axisInfos[5].name + "(" + AxisDefine.axisInfos[5].unit + ")"
+                    configName: AxisDefine.axisInfos[3].name + "(" + AxisDefine.axisInfos[3].unit + ")"
                     configValue: "0.000"
                     inputWidth: vX.inputWidth
 

@@ -1276,6 +1276,8 @@ Rectangle {
                             var lastRunning = PData.lastRunning;
 
                             var programIndex = uiRunningSteps.programIndex;
+                            if((moduleSel.currentIndex > 0 && uiRunningSteps.model < 0) ||
+                                    (moduleSel.currentIndex == 0 && uiRunningSteps.model >= 0)) return
                             if(programIndex !== lastRunning.model ||
                                     uiRunningSteps.hostStep !== lastRunning.step)
                             {

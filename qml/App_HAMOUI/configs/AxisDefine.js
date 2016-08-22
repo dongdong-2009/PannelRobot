@@ -62,3 +62,11 @@ function usedAxisNum(){
     }
     return c;
 }
+
+function usedAxisNameList(){
+    var ret = [];
+    for(var i = 0, len = axisInfos.length; i < len; ++i){
+        if(axisInfos[i].visiable) ret.push(axisInfos[i].name);
+    }
+    return ret;
+}

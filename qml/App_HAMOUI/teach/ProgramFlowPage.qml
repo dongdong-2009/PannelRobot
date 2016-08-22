@@ -10,6 +10,7 @@ import "../../utils/stringhelper.js" as ICString
 import "../ICOperationLog.js" as ICOperationLog
 import "ManualProgramManager.js" as ManualProgramManager
 import "../ExternalData.js" as ESData
+import "extents/ExtentActionDefine.js" as ExtentActionDefine
 
 
 Rectangle {
@@ -458,16 +459,21 @@ Rectangle {
         beforeSaveProgram(which);
         var errInfo;
         tipBox.runningTip(qsTr("Program Compiling..."));
+        var pName;
         if(which == PData.kFunctionProgramIndex){
+            pName = qsTr("Modules");
             errInfo = saveModules();
         }else if(which == PData.kManualProgramIndex){
+            pName = qsTr("Manual Program");
             errInfo = saveManualProgramByName(editing.text(PData.lastEditingIndex));
         }else if(which == 0){
+            pName = qsTr("Main Program")
             errInfo = JSON.parse(panelRobotController.saveMainProgram(modelToProgram(0)));
             if(errInfo.length === 0){
                 panelRobotController.sendMainProgramToHost();
             }
         }else{
+            pName = qsTr("Sub-") + which;
             errInfo = JSON.parse(panelRobotController.saveSubProgram(which, modelToProgram(which)));
             if(errInfo.length === 0){
                 panelRobotController.sendSubProgramToHost(which);
@@ -478,7 +484,7 @@ Rectangle {
             for(var i = 0; i < errInfo.length; ++i){
                 toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
             }
-            tipBox.warning(toShow, qsTr("OK"));
+            tipBox.warning( ICString.icStrformat(qsTr("Save {0} fail!.\n"), pName), qsTr("OK"), toShow);
         }
         else
             tipBox.visible = false;
@@ -540,13 +546,13 @@ Rectangle {
     }
 
     function setModuleEnabled(en){
-        newModuleBtn.visible = en;
-        delModuleBtn.visible = en && (moduleSel.currentIndex != 0);
+        newModuleBtn.visible = en && (editing.currentIndex < 9) && !PData.isReadOnly;
+        delModuleBtn.visible = en && (moduleSel.currentIndex != 0) && newModuleBtn.visible;
     }
 
     function setManualProgramEnabled(en){
         newManualProgram.visible = en;
-        deleteManualProgram = en && (editing.currentIndex > 8);
+        deleteManualProgram.visible = en && (editing.currentIndex > 8);
     }
 
     function onUserChanged(user){
@@ -613,25 +619,6 @@ Rectangle {
                 saveProgram(i);
             }
         }
-//        var cpI = currentProgramIndex();
-//        var stackLines = PData.stackLinesInfo.getLines(cpI, stackID)
-//        var md = currentModel();
-//        var tmp;
-//        var line;
-//        var si = Teach.getStackInfoFromID(stackID);
-//        if(si == null) return;
-//        var c1 = si.si0.doesBindingCounter ? si.si0.counterID : -1;
-//        var c2 = ((si.si1.doesBindingCounter) && (si.type == Teach.stackTypes.kST_Box)) ? si.si1.counterID : -1;
-//        for(var l in stackLines){
-//            line = stackLines[l];
-//            tmp = md.get(line);
-//            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
-//            PData.counterLinesInfo.removeLine(cpI, line);
-//            if(c1 >= 0)
-//                PData.counterLinesInfo.add(cpI, c1, line);
-//            if(c2 >= 0)
-//                PData.counterLinesInfo.add(cpI, c2, line);
-//        }
         hasModify = true;
     }
 
@@ -709,6 +696,7 @@ Rectangle {
                         if(currentIndex > 8){
                             saveProgram(currentEditingProgram);
                             deleteManualProgram.visible = newManualProgram.visible;
+                            newModuleBtn.visible = false;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
                             PData.programToInsertIndex[PData.kManualProgramIndex] = updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(currentIndex)).program);
                             programListView.model = manualProgramModel;
@@ -720,6 +708,7 @@ Rectangle {
 
                         }else{
                             actionEditorFrame.item.setMode("");
+                            setModuleEnabled(true);
                             if(panelRobotController.isAutoMode()){
                                 singleStep.setChecked(false);
                                 singleCycle.setChecked(false);
@@ -785,6 +774,7 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
                         if(moduleID < 0)
@@ -1079,61 +1069,18 @@ Rectangle {
                             if(currentItem === null) return false;
                             return Teach.canActionTestRun(currentItem.mI_ActionObject);
                         }
-                        function actionPointToLogPoint(pos){
-                            return  JSON.stringify([pos.m0 || 0.000,
-                                                    pos.m1 || 0.000,
-                                                    pos.m2 || 0.000,
-                                                    pos.m3 || 0.000,
-                                                    pos.m4 || 0.000,
-                                                    pos.m5 || 0.000]);
-                        }
-
-                        function getCurrentPoint(){
-                            return  ([panelRobotController.statusValueText("c_ro_0_32_3_900"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_904"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_908"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_912"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_916"),
-                                      panelRobotController.statusValueText("c_ro_0_32_3_920")]);
-                        }
-
-                        function getCurrentPointToLogPoint(){
-                            return  JSON.stringify(tryRunBtn.getCurrentPoint());
-                        }
 
                         onBtnPressed: {
                             console.log("Run")
                             if(panelRobotController.isOrigined()){
-                                var ao = currentModelData().mI_ActionObject;
-                                if(ao.action === Teach.actions.F_CMD_LINE3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_LINT_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_ARC3D_MOVE_POINT){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_START_POINT, tryRunBtn.getCurrentPointToLogPoint());
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_MID_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_ARC_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[1].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_ARC_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_JOINTCOORDINATE){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_AUTO_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_JOINT_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_COORDINATE_DEVIATION){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_LINE_START_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_LINT_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_JOINT_RELATIVE){
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_RELATIVE_AUTO_END_POINT, tryRunBtn.actionPointToLogPoint(ao.points[0].pos));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_RELATIVE_AUTO_TO_START_POINT);
-                                }else if(ao.action === Teach.actions.F_CMD_SINGLE){
-                                    var cP = tryRunBtn.getCurrentPoint();
-                                    cP[ao.axis] = ao.pos;
-                                    panelRobotController.logTestPoint(Keymap.kTP_TEACH_AUTO_START_POINT, JSON.stringify(cP));
-                                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEACH_AUTO_TO_START_POINT);
-                                }
-
+                                var actionObject = currentModelData().mI_ActionObject;
+                                var p = [actionObject, Teach.generteEndAction()];
+                                panelRobotController.manualRunProgram(JSON.stringify(p), "", "","","");
                             }
                         }
                         onBtnReleased: {
                             if(panelRobotController.isOrigined())
-                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_ROUTE_STOP);
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_MANUAL_STOP);
                         }
 
                     }
@@ -1238,18 +1185,20 @@ Rectangle {
                         width: 40
                         text: qsTr("Del")
                         bgColor: "red"
-                        visible: {
-                            var modelObject = currentModelData();
-                            if(modelObject === null) return true;
-                            if((programListView.currentIndex == programListView.count - 1) &&
-                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
-                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
-                                return true;
+                        visible: false
+//                        {
 
-                            }
+//                            var modelObject = currentModelData();
+//                            if(modelObject === null) return true;
+//                            if((programListView.currentIndex == programListView.count - 1) &&
+//                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
+//                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
+//                                return true;
 
-                            return programListView.currentIndex < programListView.count - 1;
-                        }
+//                            }
+
+//                            return programListView.currentIndex < programListView.count - 1;
+//                        }
 
                     }
                 }
@@ -1737,6 +1686,8 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
+        panelRobotController.registerCustomProgramAction(ExtentActionDefine.extentPENQIANGAction.toRegisterString());
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);
@@ -1770,6 +1721,11 @@ Rectangle {
         setManualProgramEnabled(false);
 
         Teach.definedPoints.registerPointsMonitor(programFlowPageInstance);
+
+        for(var ac in Teach.customActions){
+            modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor,
+                                              Teach.customActions[ac].editableItems.itemDef.item);
+        }
 
         hasInit = true;
     }

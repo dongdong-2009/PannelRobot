@@ -24,6 +24,7 @@ Rectangle {
     signal visionMenuTriggered()
     signal speedMenuTriggered()
     signal dataMenuTriggered()
+    signal extentMenuTriggered()
 
     states: [
         State {
@@ -65,9 +66,9 @@ Rectangle {
     color: "#A0A0F0"
 
     Grid{
-        columns: 4
+        columns: 5
         spacing: 6
-        x:20
+        x:10
         y:20
         ICButton{
             id:axis
@@ -206,5 +207,15 @@ Rectangle {
             onButtonClicked: originMenuTriggered()
 //            visible: false
         }
+        ICButton{
+            id:extentAction
+            text:qsTr("Extent")
+            icon: "../images/action_item_more.png"
+            width: pData.menuItemSize.width
+            height: pData.menuItemSize.height
+            visible: false
+            onButtonClicked: extentMenuTriggered()
+        }
+
     }
 }

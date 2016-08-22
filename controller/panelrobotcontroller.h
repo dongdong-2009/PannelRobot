@@ -377,7 +377,7 @@ public:
 
         return subProgram(which);
     }
-    Q_INVOKABLE QString stacks() const { return ICRobotMold::CurrentMold()->Stacks();}
+    Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
     Q_INVOKABLE QString localUIDirs();
@@ -385,7 +385,7 @@ public:
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
     Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
-    Q_INVOKABLE void startUpdate(const QString& updater);
+    Q_INVOKABLE void startUpdate(const QString& updater, int mode = 0);
     Q_INVOKABLE QString backupUpdater(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
@@ -574,7 +574,8 @@ public:
                                       const QString& counters,
                                       const QString& variables,
                                       const QString &functions,
-                                      int channel = 10);
+                                      int channel = 10,
+                                      bool sendKeyNow = true);
 
 
     Q_INVOKABLE QString checkProgram(const QString& program,
@@ -752,6 +753,16 @@ public:
     {
         qApp->processEvents();
     }
+
+    Q_INVOKABLE QString createCustomAddr(int type, int perm , int startPos, int size,
+                                         int baseAddr, int decimal = 0, const QString &unit = QString())
+    {
+        ICAddrWrapperCPTR ca = new ICAddrWrapper(type, perm, startPos, size,
+                                                 baseAddr, decimal, unit);
+        return ca->ToString();
+
+    }
+    Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

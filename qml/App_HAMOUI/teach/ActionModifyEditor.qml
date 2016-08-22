@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "ActionModifyEditor.js" as PData
 import "../configs/IODefines.js" as IODefines
+import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
     id:container
@@ -50,6 +51,7 @@ Item {
         addr.visible = false;
         data.visible = false;
         signalStopEditor.visible = false;
+        rel.visible = false;
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
@@ -60,7 +62,7 @@ Item {
         height = 0;
         PData.editingActionObject = actionObject;
         PData.editingEditors = [];
-        for(i = 0; i < editableItems.length; ++i){
+        for(i = 0, len = editableItems.length; i < len; ++i){
             item = editableItems[i];
             editor = PData.itemToEditorMap.get(item.item);
             if(PData.isRegisterEditor(editor)){
@@ -80,11 +82,14 @@ Item {
                 signalStop.isChecked = actionObject.signalStopEn || false;
                 signalStop.configValue = actionObject.signalStopPoint || 0;
                 fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
+            }else if(editor == rel){
+                rel.isChecked = actionObject.rel || false;
             }else if(editor == pos){
+                pos.axisID = actionObject.axis;
                 if(isAutoMode){
                     pos.configAddr = "";
-                    pos.min = -5;
-                    pos.max = 5;
+                    pos.min = -20;
+                    pos.max = 20;
                     pos.decimal = 3;
                     pos.configValue = "0.000";
                     pos.configName = qsTr("Pos(+/-):");
@@ -117,6 +122,16 @@ Item {
                     speed1.visible = false;
                 }
             }
+        }
+        if(Teach.hasPosAction(actionObject)){
+            var isSpeedMode = false;
+            if(actionObject.stop)
+                isSpeedMode = true;
+            else if(actionObject.speedMode)
+                isSpeedMode = true;
+            earlyEndPos.visible = !isSpeedMode && !isAutoMode;
+            earlyEndSpdEditor.visible = !isSpeedMode && !isAutoMode;
+            signalStopEditor.visible = !isSpeedMode && !isAutoMode;
         }
         height += buttons.height + buttons.spacing + 6;
 //        height += 20
@@ -151,13 +166,24 @@ Item {
 
             ICConfigEdit{
                 id:pos
+                property int axisID: 0
                 configNameWidth: PData.configNameWidth
                 inputWidth: PData.inputWidth
                 configName: qsTr("Pos:")
                 unit: qsTr("mm")
                 height: 32
-
+                ICButton{
+                    id:setInBtn
+                    text: qsTr("Set In")
+                    anchors.left: parent.right
+                    anchors.leftMargin: 6
+                    visible: !isAutoMode
+                    onButtonClicked: {
+                        pos.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[pos.axisID].wAddr);
+                    }
+                }
             }
+
             PointEdit{
                 id:points
                 isEditorMode: true
@@ -229,6 +255,7 @@ Item {
                 ICCheckableLineEdit{
                     id:earlyEndSpeedPos
                     configName: qsTr("ESD Pos")
+                    enabled: earlyEndPos.enabled
                 }
 
                 ICConfigEdit{
@@ -238,6 +265,11 @@ Item {
                     configAddr: "s_rw_0_32_1_1200"
                     enabled: earlyEndSpeedPos.isChecked
                 }
+            }
+            ICCheckBox{
+                id:rel
+                text: qsTr("Rel")
+                enabled: earlyEndPos.enabled
             }
 
             Row{
@@ -249,39 +281,7 @@ Item {
                     configValue: -1
                     inputWidth: 100
                     z:2
-                    enabled: !earlyEndPos.isChecked;
-//                    items: [  "X010",
-//                        "X011",
-//                        "X012",
-//                        "X013",
-//                        "X014",
-//                        "X015",
-//                        "X016",
-//                        "X017",
-//                        "X020",
-//                        "X021",
-//                        "X022",
-//                        "X023",
-//                        "X024",
-//                        "X025",
-//                        "X026",
-//                        "X027",
-//                        "X030",
-//                        "X031",
-//                        "X032",
-//                        "X033",
-//                        "X034",
-//                        "X035",
-//                        "X036",
-//                        "X037",
-//                        "X040",
-//                        "X041",
-//                        "X042",
-//                        "X043",
-//                        "X044",
-//                        "X045",
-//                        "X046",
-//                        "X047"]
+                    enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked || rel.isChecked);
                     popupMode: 1
                     popupHeight: 300
                     Component.onCompleted: {
@@ -350,6 +350,7 @@ Item {
                 PData.itemToEditorMap.put("addr",addr);
                 PData.itemToEditorMap.put("data",data);
                 PData.itemToEditorMap.put("signalStop", signalStopEditor);
+                PData.itemToEditorMap.put("rel", rel);
 
                 PData.editorToItemMap.put(pos, "pos");
                 PData.editorToItemMap.put(speed, "speed");
@@ -367,6 +368,7 @@ Item {
                 PData.editorToItemMap.put(addr, "addr");
                 PData.editorToItemMap.put(data, "data");
                 PData.editorToItemMap.put(signalStopEditor, "signalStop")
+                PData.editorToItemMap.put(rel, "rel");
 
             }
         }
@@ -408,6 +410,8 @@ Item {
                         editingObject.signalStopEn = signalStop.isChecked;
                         editingObject.signalStopPoint = signalStop.configValue;
                         editingObject.signalStopMode = (fastStop.isChecked ? 1 : 0);
+                    }else if(editor == rel){
+                        editingObject.rel = rel.isChecked;
                     }else if(editor == pos){
                         if(isAutoMode){
                             var o = parseFloat(editingObject.pos);

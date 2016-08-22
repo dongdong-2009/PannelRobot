@@ -6,8 +6,13 @@ teach/*.js \
 teach/*.qml \
 configs/* \
 settingpages/* \
-../ICCustomElement/*
+../ICCustomElement/* \
+teach/extents/*.qml \
+teach/extents/*.js
 }
+
+OTHER_FILES += \
+    teach/extents/ExtentActionDefine.js
 
 
 

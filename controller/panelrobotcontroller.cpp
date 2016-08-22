@@ -213,7 +213,13 @@ void PanelRobotController::Init()
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
-    emit LoadMessage("Ui inited.");
+
+    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
+
+    emit LoadMessage("Record reload.");
+
+//    InitUI();
+//    emit LoadMessage("Ui inited.");
     //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -600,10 +606,13 @@ QString PanelRobotController::scanUpdaters(const QString &filter, int mode) cons
     return scanUserDir("updaters", QString("%1*.bfe").arg(filter));
 }
 
-void PanelRobotController::startUpdate(const QString &updater)
+void PanelRobotController::startUpdate(const QString &updater, int mode)
 {
     ICUpdateSystem us;
-    us.SetPacksDir(ICAppSettings().UsbPath);
+    if(mode == 0)
+        us.SetPacksDir(ICAppSettings().UsbPath);
+    else
+        us.SetPacksDir(QString(ICAppSettings().UserPath) + "/updaters");
     host_->StopCommunicate();
     system("mkdir updatehost/");
     hostUpdateFinishedWatcher_.addPath("updatehost");
@@ -1193,7 +1202,8 @@ void PanelRobotController::manualRunProgram(const QString& program,
                                             const QString& counters,
                                             const QString& variables,
                                             const QString& functions,
-                                            int channel)
+                                            int channel,
+                                            bool sendKeyNow)
 {
     bool isok;
     QMap<int, StackInfo> compliedStacks = ICRobotMold::ParseStacks(stacks, isok);
@@ -1218,7 +1228,8 @@ void PanelRobotController::manualRunProgram(const QString& program,
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
 //    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
-    ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
+    if(sendKeyNow)
+        ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
 
 }
 
@@ -1687,4 +1698,23 @@ void PanelRobotController::deleteGhost(const QString &backupName, int mode)
 void PanelRobotController::deleteUpdater(const QString &updater, int mode)
 {
     deleteBackupHelper("updaters", updater, mode);
+}
+
+void PanelRobotController::registerCustomProgramAction(const QString &actionDefine)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantMap ret = parser.parse(actionDefine.toLatin1(), &ok).toMap();
+    if(ok)
+    {
+        ICCustomActionParseDefine cpd;
+        QVariantList items = ret.value("seq").toList();
+        QVariantMap item;
+        for(int i = 0; i < items.size(); ++i)
+        {
+            item = items.at(i).toMap();
+            cpd.append(qMakePair(item.value("item").toString(), item.value("decimal").toInt()));
+        }
+        ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
+    }
 }

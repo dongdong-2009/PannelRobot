@@ -66,6 +66,7 @@ function initialize() {
 //                    tx.executeSql('CREATE TABLE IF NOT EXISTS globalstack(id PK INTEGER NOT NULL,stack TEXT NOT NULL)');
 //                    tx.executeSql('CREATE TABLE IF NOT EXISTS globalcounter(id PK INTEGER NOT NULL,)')
                     //                    tx.executeSql('DELETE FROM alarmlog;');
+//                    tx.executeSql("DELETE FROM users");
                     var rs = tx.executeSql('SELECT * FROM users');
                     if (rs.rows.length === 0) {
                         tx.executeSql('INSERT INTO users VALUES("操作员", "123", 0)');

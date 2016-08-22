@@ -595,6 +595,7 @@ Item {
             }
             ICConfigEdit{
                 id:rotateCount
+                visible: false
                 width: repeateSpeed.width
                 configName: qsTr("Rotate Count")
             }
@@ -657,13 +658,13 @@ Item {
         pos2Axis2.configValue = 0.000;
 
         repeateSpeed.configValue = 100.0;
-        dirSpeed.configValue = 100.0;
+        dirSpeed.configValue = 10.0;
         dirLength.configValue = 50.000;
         repeateCount.configValue = 2;
         zlength.configValue = -100;
         dirCount.configValue = 10;
         rotate.configValue = 90.000;
-        rotateSpeed.configValue = 1.0;
+        rotateSpeed.configValue = 10.0;
         rotateCount.configValue = 4;
 
         resetItems();

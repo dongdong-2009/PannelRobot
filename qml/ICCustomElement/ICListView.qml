@@ -11,6 +11,7 @@ Rectangle{
     property alias highlight : listView.highlight
     property alias highlightMoveDuration : listView.highlightMoveDuration
     property alias currentIndex : listView.currentIndex
+    property alias header: listView.header
 
     color: "transparent"
     ListView {

@@ -51,7 +51,7 @@ MouseArea{
                 color: "lime"
                 Text {
                     id: speed
-                    text: "10.0"
+                    text: "100.0"
                     anchors.centerIn: parent
 
                 }

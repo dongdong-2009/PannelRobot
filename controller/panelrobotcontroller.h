@@ -377,7 +377,7 @@ public:
 
         return subProgram(which);
     }
-    Q_INVOKABLE QString stacks() const { return ICRobotMold::CurrentMold()->Stacks();}
+    Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
     Q_INVOKABLE QString localUIDirs();
@@ -762,6 +762,7 @@ public:
         return ca->ToString();
 
     }
+    Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

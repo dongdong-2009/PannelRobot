@@ -213,7 +213,13 @@ void PanelRobotController::Init()
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
-    emit LoadMessage("Ui inited.");
+
+    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
+
+    emit LoadMessage("Record reload.");
+
+//    InitUI();
+//    emit LoadMessage("Ui inited.");
     //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -1692,4 +1698,23 @@ void PanelRobotController::deleteGhost(const QString &backupName, int mode)
 void PanelRobotController::deleteUpdater(const QString &updater, int mode)
 {
     deleteBackupHelper("updaters", updater, mode);
+}
+
+void PanelRobotController::registerCustomProgramAction(const QString &actionDefine)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantMap ret = parser.parse(actionDefine.toLatin1(), &ok).toMap();
+    if(ok)
+    {
+        ICCustomActionParseDefine cpd;
+        QVariantList items = ret.value("seq").toList();
+        QVariantMap item;
+        for(int i = 0; i < items.size(); ++i)
+        {
+            item = items.at(i).toMap();
+            cpd.append(qMakePair(item.value("item").toString(), item.value("decimal").toInt()));
+        }
+        ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
+    }
 }

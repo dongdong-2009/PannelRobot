@@ -1562,6 +1562,48 @@
     </message>
 </context>
 <context>
+    <name>ExtentActionDefine</name>
+    <message>
+        <source>PENQIANG</source>
+        <translation>往复</translation>
+    </message>
+    <message>
+        <source>Pos1:</source>
+        <translation>起始位置:</translation>
+    </message>
+    <message>
+        <source>Pos2:</source>
+        <translation>结束位置:</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="vanished">速度</translation>
+    </message>
+    <message>
+        <source>Num</source>
+        <translation type="vanished">次数</translation>
+    </message>
+    <message>
+        <source>Speed:</source>
+        <translation>速度:</translation>
+    </message>
+    <message>
+        <source>Num:</source>
+        <translation>次数</translation>
+    </message>
+    <message>
+        <source>Delay:</source>
+        <translation>延时:</translation>
+    </message>
+</context>
+<context>
+    <name>ExtentActionEditor</name>
+    <message>
+        <source>Axis Ply</source>
+        <translation>单轴往复</translation>
+    </message>
+</context>
+<context>
     <name>ICAlarmBar</name>
     <message>
         <source>i</source>
@@ -3877,6 +3919,49 @@
     </message>
 </context>
 <context>
+    <name>PENQIANEditor</name>
+    <message>
+        <source>Axis Sel</source>
+        <translation>轴选择</translation>
+    </message>
+    <message>
+        <source>AxisFly Pos1</source>
+        <translation>起始位置</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>AxisFly Pos2</source>
+        <translation>结束位置</translation>
+    </message>
+    <message>
+        <source>AxisFly Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>AxisFyl Num</source>
+        <translation>次数</translation>
+    </message>
+    <message>
+        <source>Times</source>
+        <translation>次</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>PanelSettings</name>
     <message>
         <source>Maintain</source>
@@ -4325,6 +4410,10 @@ please chose!</source>
         <source>Data Command</source>
         <translation>数据指令</translation>
     </message>
+    <message>
+        <source>Extent</source>
+        <translation>扩展</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenuFrame</name>
@@ -4572,6 +4661,20 @@ please chose!</source>
     <message>
         <source>Lines:</source>
         <translation>行:</translation>
+    </message>
+    <message>
+        <source>Modules</source>
+        <translation>模块</translation>
+    </message>
+    <message>
+        <source>Manual Program</source>
+        <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>Save {0} fail!.
+</source>
+        <translation>保存 {0} 失败!
+</translation>
     </message>
 </context>
 <context>

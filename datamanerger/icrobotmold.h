@@ -10,6 +10,8 @@
 #include "icparameterscache.h"
 #include "icdalhelper.h"
 
+
+
 class ICRobotMold;
 
 struct SI{
@@ -226,6 +228,8 @@ private:
 
 #ifdef NEW_PLAT
 
+typedef  QList<QPair<QString, int> > ICCustomActionParseDefine;
+
 class ICRobotMold{
 public:
     enum {
@@ -257,6 +261,8 @@ public:
         kCCErr_Invaild_StackID,
         kCCErr_Invaild_CounterID,
         kCCErr_Invaild_ModuleID,
+        kCCErr_Unknow_Action,
+        kCCErr_Wrong_Action_Define,
     };
 
     enum {
@@ -346,6 +352,13 @@ public:
         return ret;
     }
 
+    static bool IsActionRegister(int action) { return customActions_.contains(action);}
+    static const ICCustomActionParseDefine& GetCustomActionParseDefine(int action) { return customActions_.value(action);}
+    static void RegisterCustomAction(int action, const ICCustomActionParseDefine & define)
+    {
+        customActions_.insert(action, define);
+    }
+
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
     {
@@ -365,7 +378,7 @@ public:
     }
 
 
-    bool LoadMold(const QString& moldName);
+    bool LoadMold(const QString& moldName, bool reload = false);
     QMap<int, int> SaveMold(int which, const QString& program);
 
     quint32 MoldFnc(ICAddrWrapperCPTR addr)
@@ -474,6 +487,7 @@ private:
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;
+    static QMap<int, ICCustomActionParseDefine> customActions_;
 };
 
 #else

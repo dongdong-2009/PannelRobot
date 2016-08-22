@@ -159,10 +159,10 @@ Item {
                         text: qsTr("delete")
                         radius:5
                         onButtonClicked: {
-                            ShareData.UserInfo.deleteUser(userModel.get(userView.currentIndex)[ShareData.USERS_TB_INFO.user_name_col]);
+                            ShareData.UserInfo.deleteUser(userModel.get(userView.currentIndex).user[ShareData.USERS_TB_INFO.user_name_col]);
                             userModel.remove(userView.currentIndex);
                             if(userView.currentIndex >= 0)
-                                username.configValue = userModel.get(userView.currentIndex).name;
+                                username.configValue = userModel.get(userView.currentIndex).user.name;
                         }
                     }
                     ICButton{

@@ -147,19 +147,7 @@ UserInfo.addUser = function(username, password, perm){
     var db = getDatabase();
     db.transaction(
                 function(tx) {
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS users(name TEXT, password TEXT  NOT NULL, perm INTEGER NOT NULL)');
-                    var rs = tx.executeSql('SELECT * FROM users');
-                    var length = rs.rows.length
-                    tx.executeSql('INSERT INTO users VALUES("'+username+'", "'+password+'", "'+perm+'")',
-                                  [],
-                                  function (tx, result) { alert('addsuccess'); },
-                                  function (tx, error) { alert('unable to add: ' + error.message);
-                                  });
-                    rs = tx.executeSql('SELECT * FROM users');
-                    if(rs.rows.length > length)
-                        console.log('addsuccess');
-                    else
-                        console.log('unable to add');
+                    tx.executeSql('INSERT INTO users VALUES("'+username+'", "'+password+'", "'+perm+'")');
                 });
 }
 
@@ -175,18 +163,7 @@ UserInfo.deleteUser = function(username){
     var db = getDatabase();
     db.transaction(
                 function(tx) {
-                    var rs = tx.executeSql('SELECT * FROM users');
-                    var length = rs.rows.length;
-                    tx.executeSql('DELETE FROM users WHERE name = "'+username+'"',
-                                  [],
-                                  function (tx, result) { alert('already deleted'); },
-                                  function (tx, error) { alert('unable to delete: ' + error.message);
-                                  });
-                    rs = tx.executeSql('SELECT * FROM users');
-                    if(rs.rows.length < length)
-                        console.log('already deleted');
-                    else
-                        console.log('unable to delete');
+                    tx.executeSql('DELETE FROM users WHERE name = "'+username+'"');
                 });
 }
 

@@ -126,9 +126,7 @@ message($${INSTALLS})
 
 OTHER_FILES += \
     defines/configs.csv \
-    qml/ICCustomElement/ICLineEdit.qml \
-    Init/main.qml \
-    qml/ICCustomElement/ICProgressBar.qml
+    Init/main.qml
 
 UPDir = $${DESTDIR}/HCRobot-$${VERSION}
 updateCmd = '"tar xvf PanelRobot.tar -C / ; cp /opt/Qt/apps/RobotDatabase /mnt/udisk -f"'

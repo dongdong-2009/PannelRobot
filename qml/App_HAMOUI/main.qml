@@ -647,6 +647,12 @@ Rectangle {
             panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
             menuOperation.setChecked(true);
             middleHeader.onMenuItemTriggered(menuOperation);
+            var manualEn = parseInt(panelRobotController.getCustomSettings("IsTurnManualSpeedEn", 0));
+            if(manualEn > 0){
+                var mS = panelRobotController.getCustomSettings("TurnManualSpeed", 10.0);
+                ShareData.GlobalStatusCenter.setGlobalSpeed(mS);
+                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", mS);
+            }
         }else if(isAuto){
             var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
             if(gsEn > 0){

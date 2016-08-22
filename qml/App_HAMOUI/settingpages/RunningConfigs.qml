@@ -12,12 +12,22 @@ Item {
         anchors.fill: parent
         Grid{
             spacing: 20
+            columns: 2
             ICConfigEdit{
                 id:tolerance
                 configName: qsTr("Tolerance")
                 unit: qsTr("Pulse")
                 configAddr: "s_rw_0_32_0_210"
 
+            }
+            ICConfigEdit{
+                id:alarmTimes
+                configName: qsTr("Alarm Times")
+                min:0
+                max:200
+                decimal: 1
+                unit: qsTr("Times")
+                configAddr: "s_rw_0_8_0_176"
             }
             ICCheckableLineEdit{
                 id:turnAutoSpeedEdit
@@ -33,14 +43,19 @@ Item {
                     panelRobotController.setCustomSettings("TurnAutoSpeed", configValue);
                 }
             }
-            ICConfigEdit{
-                id:alarmTimes
-                configName: qsTr("Alarm Times")
-                min:0
-                max:200
+            ICCheckableLineEdit{
+                id:turnManualSpeedEdit
+                unit: qsTr("%")
+                configName: qsTr("Turn Manual Speed")
+                min: 0.0
+                max: 100.0
                 decimal: 1
-                unit: qsTr("Times")
-                configAddr: "s_rw_0_8_0_176"
+                onIsCheckedChanged: {
+                    panelRobotController.setCustomSettings("IsTurnManualSpeedEn", isChecked ? 1 : 0);
+                }
+                onConfigValueChanged: {
+                    panelRobotController.setCustomSettings("TurnManualSpeed", configValue);
+                }
             }
         }
         onConfigValueChanged: {
@@ -57,6 +72,10 @@ Item {
         var turnAutoSpeed = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
         turnAutoSpeedEdit.isChecked = isTurnAutoSpeedEn;
         turnAutoSpeedEdit.configValue = turnAutoSpeed;
+        var isTurnManalSpeedEn = panelRobotController.getCustomSettings("IsTurnManualSpeedEn", 0);
+        var turnManalSpeed = panelRobotController.getCustomSettings("TurnManualSpeed", 10.0);
+        turnManualSpeedEdit.isChecked = isTurnManalSpeedEn;
+        turnManualSpeedEdit.configValue = turnManalSpeed;
     }
 
 }

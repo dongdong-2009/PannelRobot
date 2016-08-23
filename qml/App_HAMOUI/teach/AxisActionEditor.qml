@@ -194,7 +194,7 @@ Item {
                 }
             }
             Rectangle{
-                width: speedControlGroup.width
+                width: 340
                 height: {
                     var ac = panelRobotController.getConfigValue("s_rw_16_6_0_184");
                     var ret;
@@ -251,7 +251,8 @@ Item {
 
                         ICButtonGroup{
                             id:speedControlGroup
-                            spacing: 10
+                            spacing: 4
+                            layoutMode: 1
 
                             ICCheckBox{
                                 id:speedPPStart

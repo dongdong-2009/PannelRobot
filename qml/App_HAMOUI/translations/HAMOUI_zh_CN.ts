@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -562,23 +562,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -586,11 +586,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -693,6 +693,26 @@
     <message>
         <source>Cycle</source>
         <translation>当前周期:</translation>
+    </message>
+    <message>
+        <source>Counter &gt;&gt;</source>
+        <translation>计数器&gt;&gt;</translation>
+    </message>
+    <message>
+        <source>Counter &lt;&lt;</source>
+        <translation>计数器&lt;&lt;</translation>
+    </message>
+    <message>
+        <source>Target:</source>
+        <translation>目标:</translation>
+    </message>
+    <message>
+        <source>Current:</source>
+        <translation>当前:</translation>
+    </message>
+    <message>
+        <source>counter</source>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>
@@ -1577,11 +1597,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -6272,6 +6292,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Settings</source>
         <translation>参数设定</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

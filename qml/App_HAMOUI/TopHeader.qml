@@ -82,7 +82,10 @@ Rectangle {
         Text {
             id: modeText
             text: qsTr("Manual")
-            anchors.centerIn: parent
+//            anchors.centerIn: parent
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -10
             color: "yellow"
             font.pixelSize: 24
         }

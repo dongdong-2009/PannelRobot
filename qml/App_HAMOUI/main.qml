@@ -654,6 +654,8 @@ Rectangle {
                 middleHeader.showStandbyPage();
             }
         }
+        ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(isManual);
+        mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
         pData.lastKnob = knobStatus;
     }
 
@@ -745,6 +747,7 @@ Rectangle {
 //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
 //                                              "","", "", "", 18);
 
+        mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
         console.log("main load finished!");
     }
 
@@ -843,6 +846,7 @@ Rectangle {
                         speed = spd.toFixed(1);
                         ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
                         panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
+                        mainHeader.speed = speed;
                     }
 
                 }else{

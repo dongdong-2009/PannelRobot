@@ -4899,6 +4899,14 @@ please chose!</source>
         <source>Times</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Independent Manual Speed</source>
+        <translation>独立控制手动轴速度</translation>
+    </message>
+    <message>
+        <source>Manual Speed</source>
+        <translation>手动速度</translation>
+    </message>
 </context>
 <context>
     <name>SearchActionEditor</name>

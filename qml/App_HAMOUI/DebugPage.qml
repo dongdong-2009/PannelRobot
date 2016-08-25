@@ -75,7 +75,7 @@ Item {
                 height: parent.height
                 configName: qsTr("Speed")
 //                configAddr: "s_rw_0_16_1_294"
-                configAddr: "s_rw_0_32_0_212"
+                configAddr: "s_rw_0_32_1_212"
                 alignMode:1
                 unit: qsTr("%")
             }

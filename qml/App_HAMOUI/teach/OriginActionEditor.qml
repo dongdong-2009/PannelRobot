@@ -79,7 +79,8 @@ Rectangle {
             psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
             axisDefine: pData.axisDefine.s4Axis
             rangeAddr: "s_rw_0_32_3_1003"
-            z: 2
+            z: 5
+            popupMode: 1
         }
         OriginActionEditorAxisComponent{
             id:m4Axis
@@ -87,7 +88,8 @@ Rectangle {
             psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
             axisDefine: pData.axisDefine.s5Axis
             rangeAddr: "s_rw_0_32_3_1004"
-            z: 1
+            z: 6
+            popupMode: 1
         }
         OriginActionEditorAxisComponent{
             id:m5Axis
@@ -95,18 +97,37 @@ Rectangle {
             psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
             axisDefine: pData.axisDefine.s6Axis
             rangeAddr: "s_rw_0_32_3_1005"
-            z: 5
+            z: 7
+        }
+        OriginActionEditorAxisComponent{
+            id:m6Axis
+            axisName: AxisDefine.axisInfos[6].name
+            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            axisDefine: pData.axisDefine.s6Axis
+            rangeAddr: "s_rw_0_32_3_1005"
+            z: 8
+        }
+        OriginActionEditorAxisComponent{
+            id:m7Axis
+            axisName: AxisDefine.axisInfos[7].name
+            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            axisDefine: pData.axisDefine.s6Axis
+            rangeAddr: "s_rw_0_32_3_1005"
+            z: 9
         }
     }
     Component.onCompleted: {
         var axis = [];
         var actions = Teach.actions;
-        axis.push({"axisItem":m0Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS1_1, "psOFF":actions.ACT_PS1_2});
-        axis.push({"axisItem":m1Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS2_1, "psOFF":actions.ACT_PS2_2});
-        axis.push({"axisItem":m2Axis,  "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS3_1, "psOFF":actions.ACT_PS3_2});
-        axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
-        axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
-        axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_FINE_ZERO, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
+        axis.push({"axisItem":m0Axis, "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m1Axis, "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m2Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
+        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
+
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(continer);
         onAxisDefinesChanged();
@@ -119,5 +140,7 @@ Rectangle {
         m3Axis.visible = AxisDefine.axisInfos[3].visiable;
         m4Axis.visible = AxisDefine.axisInfos[4].visiable;
         m5Axis.visible = AxisDefine.axisInfos[5].visiable;
+        m6Axis.visible = AxisDefine.axisInfos[6].visiable;
+        m7Axis.visible = AxisDefine.axisInfos[7].visiable;
     }
 }

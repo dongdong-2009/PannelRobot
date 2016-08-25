@@ -640,7 +640,7 @@ Rectangle {
         if(isManual){
             ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
 //            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
-            panelRobotController.modifyConfigValue("s_rw_0_32_0_212", 10.0);
+            panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
             menuOperation.setChecked(true);
             middleHeader.onMenuItemTriggered(menuOperation);
         }else if(isAuto){
@@ -649,7 +649,7 @@ Rectangle {
                 var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
                 ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
 //                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
-                panelRobotController.modifyConfigValue("s_rw_0_32_0_212", gS);
+                panelRobotController.modifyConfigValue("s_rw_0_32_1_212", gS);
             }
         }else if(isStop){
             if(pData.lastKnob != knobStatus){
@@ -710,7 +710,7 @@ Rectangle {
         panelRobotController.readCurrentKnobValue();
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
 //        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
-        panelRobotController.modifyConfigValue("s_rw_0_32_0_212", 10.0);
+        panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
         mainHeader.setRecordItemEnabled(false);
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
@@ -849,7 +849,7 @@ Rectangle {
                         speed = spd.toFixed(1);
                         ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
 //                        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
-                        panelRobotController.modifyConfigValue("s_rw_0_32_0_212", speed);
+                        panelRobotController.modifyConfigValue("s_rw_1_32_0_212", speed);
                         mainHeader.speed = speed;
                     }
 

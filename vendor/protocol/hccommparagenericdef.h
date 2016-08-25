@@ -1431,7 +1431,7 @@ typedef struct {
 
     uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
     uint32_t single_s; //<类型：系统；名字：手动单轴速度设定；精度：0;单位：；
-    uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：0;单位：；
+    uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：1;单位：；
   uint32_t Reserve2[25];   //<类型:系统;名字:当前定时时间; 单位:ms
   uint32_t Reserve3[20];   //<类型:系统;名字:目标定时时间; 单位:ms
   uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms

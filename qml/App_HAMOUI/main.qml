@@ -29,6 +29,7 @@ Rectangle {
     QtObject{
         id:pData
         property int lastKnob: -1
+        property int lastAxis: 0
     }
     ICMessageBox{
         id:tipBox
@@ -186,7 +187,7 @@ Rectangle {
         focus: true
         Loader{
             id:standbyPage
-//            source: "StandbyPage.qml"
+            //            source: "StandbyPage.qml"
             width: parent.width
             height: parent.height
         }
@@ -556,70 +557,70 @@ Rectangle {
     }
 
     function onKnobChanged(knobStatus){
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "dsData":[
-//                {
-//                    "camID":"0",
-//                    "data":[
-//                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
-//                    ]
-//                }
-//            ]
-//        };
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "dsData":[
-//                {
-//                    "camID":"0",
-//                    "data":[
-//                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-//                    ]
-//                }
-//            ]
-//        };
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"listModel",
-//            "currentModel":{"name":"模板名称","modelID":0},
-//            "data":
-//            [
-//                {
-//                    "name":"模板名称",
-//                    "models":
-//                    [
-//                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                    ]
-//                },
-//                {
-//                    "name":"模板名称",
-//                    "models":
-//                    [
-//                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                    ]
-//                },
-//            ]
-//        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "dsData":[
+        //                {
+        //                    "camID":"0",
+        //                    "data":[
+        //                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
+        //                    ]
+        //                }
+        //            ]
+        //        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "dsData":[
+        //                {
+        //                    "camID":"0",
+        //                    "data":[
+        //                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
+        //                    ]
+        //                }
+        //            ]
+        //        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "reqType":"listModel",
+        //            "currentModel":{"name":"模板名称","modelID":0},
+        //            "data":
+        //            [
+        //                {
+        //                    "name":"模板名称",
+        //                    "models":
+        //                    [
+        //                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                    ]
+        //                },
+        //                {
+        //                    "name":"模板名称",
+        //                    "models":
+        //                    [
+        //                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                    ]
+        //                },
+        //            ]
+        //        };
 
-//        onETH0DataIn(JSON.stringify(toTest));
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"standardize",
-//            "camID":0,
-//            "data":[
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 }
-//            ]
-//        };
+        //        onETH0DataIn(JSON.stringify(toTest));
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "reqType":"standardize",
+        //            "camID":0,
+        //            "data":[
+        //                { "X":0.000,"Y":0.000 },
+        //                { "X":0.000,"Y":0.000 },
+        //                { "X":0.000,"Y":0.000 }
+        //            ]
+        //        };
 
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"photo",
-//            "camID":0,
-//        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "reqType":"photo",
+        //            "camID":0,
+        //        };
 
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
@@ -638,9 +639,11 @@ Rectangle {
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(isManual){
-            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-//            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
-            panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
+            if(panelRobotController.getConfigValue("s_rw_0_32_0_211") == 0){
+                ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+                //            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+                panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
+            }
             menuOperation.setChecked(true);
             middleHeader.onMenuItemTriggered(menuOperation);
         }else if(isAuto){
@@ -648,7 +651,7 @@ Rectangle {
             if(gsEn > 0){
                 var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
                 ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
-//                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
+                //                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
                 panelRobotController.modifyConfigValue("s_rw_0_32_1_212", gS);
             }
         }else if(isStop){
@@ -659,6 +662,7 @@ Rectangle {
         ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(isManual);
         mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
         pData.lastKnob = knobStatus;
+        pData.lastAxis = 0;
     }
 
     function onUserChanged(user){
@@ -709,7 +713,7 @@ Rectangle {
         ShareData.UserInfo.registUserChangeEvent(mainWindow);
         panelRobotController.readCurrentKnobValue();
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-//        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+        //        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
         panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
         mainHeader.setRecordItemEnabled(false);
         panelRobotController.setETh0Filter("test\r\n");
@@ -719,7 +723,7 @@ Rectangle {
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){
-           tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
+            tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
         });
         panelRobotController.sentContinuousData.connect(function(t){
             tipBox.visible = false;
@@ -745,10 +749,10 @@ Rectangle {
                 }
             }
         });
-//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
-//                                              "","", "", "", 19);
-//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
-//                                              "","", "", "", 18);
+        //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+        //                                              "","", "", "", 19);
+        //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+        //                                              "","", "", "", 18);
 
         mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
         console.log("main load finished!");
@@ -783,7 +787,7 @@ Rectangle {
                     tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes[F4]"), qsTr("No[F5]"));
                 }
 
-//                    panelRobotController
+                //                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
             }
         }
@@ -834,12 +838,16 @@ Rectangle {
         interval: 50; running: true; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
+            var currentMode = panelRobotController.currentMode();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){
 
                     var tuneGlobalSpeedEn = ShareData.GlobalStatusCenter.getTuneGlobalSpeedEn();
                     if(tuneGlobalSpeedEn){
+                        if(ShareData.GlobalStatusCenter.getKnobStatus() == Keymap.KNOB_MANUAL &&
+                                panelRobotController.getConfigValue("s_rw_0_32_0_211") == 1)
+                            continue;
                         var spd;
                         var speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
                         spd = parseFloat(speed);
@@ -848,8 +856,8 @@ Rectangle {
                         spd = Keymap.endSpeedCalcByTime(spd, dir);
                         speed = spd.toFixed(1);
                         ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
-//                        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
-                        panelRobotController.modifyConfigValue("s_rw_1_32_0_212", speed);
+                        //                        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
+                        panelRobotController.modifyConfigValue("s_rw_0_32_1_212", speed);
                         mainHeader.speed = speed;
                     }
 
@@ -864,12 +872,12 @@ Rectangle {
                 tipBar.visible = false;
             }
 
-            if(panelRobotController.currentMode() == Keymap.CMD_STANDBY){
+            if(currentMode == Keymap.CMD_STANDBY){
                 panelRobotController.readCurrentKnobValue();
             }
-            if(panelRobotController.currentMode() == Keymap.CMD_ORIGIN){
+            if(currentMode == Keymap.CMD_ORIGIN){
                 originreturnmsgmsg.showForOrigin();
-            }else if(panelRobotController.currentMode() == Keymap.CMD_RETURN){
+            }else if(currentMode == Keymap.CMD_RETURN){
                 originreturnmsgmsg.showForReturn();
             }else if(panelRobotController.isOriginning()){
                 originreturnmsgmsg.showForOriginning();
@@ -894,6 +902,18 @@ Rectangle {
                     originAlarm.show(qsTr("Origin is changed? Do you want to refind an origin?"), qsTr("Refind"), qsTr("Stop"));
                 }else{
                     paraChose.visible = false;
+                }
+            }
+
+            if(ShareData.GlobalStatusCenter.getKnobStatus() == Keymap.KNOB_MANUAL &&
+                    panelRobotController.getConfigValue("s_rw_0_32_0_211") == 1){
+                var currentAxis = panelRobotController.getPullyAxis();
+                //                if(currentAxis < 0 || currentAxis > 7) return;
+                if(currentAxis <= 0) return;
+                if(currentAxis != pData.lastAxis ){
+                    pData.lastAxis = currentAxis;
+                    ShareData.GlobalStatusCenter.setGlobalSpeed((panelRobotController.getConfigValue(AxisDefine.axisInfos[currentAxis - 1].sAddr) / 10).toFixed(1));
+                    mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
                 }
             }
 

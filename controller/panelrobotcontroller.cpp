@@ -1567,6 +1567,12 @@ QString PanelRobotController::newRecord(const QString &name, const QString &init
     return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
 }
 
+QString PanelRobotController::readRecord(const QString &name) const
+{
+    QStringList content = ICRobotMold::ExportMold(name);
+    return QString("[%1]").arg(content.join(","));
+}
+
 bool PanelRobotController::loadRecord(const QString &name)
 {
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();

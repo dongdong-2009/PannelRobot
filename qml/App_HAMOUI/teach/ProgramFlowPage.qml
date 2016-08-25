@@ -58,6 +58,10 @@ Rectangle {
 
     }
 
+    function copyLine(){
+        return Utils.cloneObject(currentModelData().mI_ActionObject);
+    }
+
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
             actionEditorFrame.item.showMenu();
@@ -1110,16 +1114,14 @@ Rectangle {
                         width: 40
                         text: qsTr("CUW")
 
-                        ListModel{
-                            id:testMo
-                        }
 
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
 
                         onButtonClicked: {
-                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+//                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+                            var toInsert = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
                             insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)

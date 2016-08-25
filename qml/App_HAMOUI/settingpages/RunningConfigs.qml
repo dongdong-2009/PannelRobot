@@ -43,6 +43,12 @@ Item {
                 configAddr: "s_rw_0_8_0_176"
             }
         }
+        ICCheckBox{
+            id:independentManualSpeed
+            text: qsTr("Independent Manual Speed")
+
+        }
+
         onConfigValueChanged: {
             console.log(addr, newV, oldV);
             ICOperationLog.opLog.appendNumberConfigOperationLog(addr, newV, oldV);

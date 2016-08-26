@@ -9,12 +9,12 @@ Item {
     property variant actionObject: null
 
     function updateActionObject(ao){
-        ao.startSpeed0 = m0Speed.configValue;
-        ao.startSpeed1 = m1Speed.configValue;
-        ao.startSpeed2 = m2Speed.configValue;
-        ao.startSpeed3 = m3Speed.configValue;
-        ao.startSpeed4 = m4Speed.configValue;
-        ao.startSpeed5 = m5Speed.configValue;
+        ao.startPosSpeed0 = m0Speed.configValue;
+        ao.startPosSpeed1 = m1Speed.configValue;
+        ao.startPosSpeed2 = m2Speed.configValue;
+        ao.startPosSpeed3 = m3Speed.configValue;
+        ao.startPosSpeed4 = m4Speed.configValue;
+        ao.startPosSpeed5 = m5Speed.configValue;
         ao.fixtureDelay0 = delay0.configValue;
         ao.fixtureDelay1 = delay1.configValue;
         ao.fixtureDelay2 = delay2.configValue;
@@ -75,21 +75,21 @@ Item {
                     ICConfigEdit{
                         id:delay0
                         configName: qsTr("Atomization Delay")
-                        configAddr: "s_rw_0_32_1_1200"
+                        configAddr: "s_rw_0_32_2_1100"
                         unit: qsTr("s")
 
                     }
                     ICConfigEdit{
                         id:delay1
                         configName: qsTr("Amplitude Delay")
-                        configAddr: "s_rw_0_32_1_1200"
+                        configAddr: "s_rw_0_32_2_1100"
                         unit: qsTr("s")
 
                     }
                     ICConfigEdit{
                         id:delay2
                         configName: qsTr("Oil Delay")
-                        configAddr: "s_rw_0_32_1_1200"
+                        configAddr: "s_rw_0_32_2_1100"
                         unit: qsTr("s")
 
                     }
@@ -114,21 +114,21 @@ Item {
                     ICConfigEdit{
                         id:delay20
                         configName: qsTr("Atomization Delay")
-                        configAddr: "s_rw_0_32_1_1200"
+                        configAddr: "s_rw_0_32_2_1100"
                         unit: qsTr("s")
 
                     }
                     ICConfigEdit{
                         id:delay21
                         configName: qsTr("Amplitude Delay")
-                        configAddr: "s_rw_0_32_1_1200"
+                        configAddr: "s_rw_0_32_2_1100"
                         unit: qsTr("s")
 
                     }
                     ICConfigEdit{
                         id:delay22
                         configName: qsTr("Oil Delay")
-                        configAddr: "s_rw_0_32_1_1200"
+                        configAddr: "s_rw_0_32_2_1100"
                         unit: qsTr("s")
 
                     }
@@ -274,20 +274,20 @@ Item {
     }
 
     Component.onCompleted: {
-        delay0.configValue = 0.1;
+        delay0.configValue = 0;
         delay1.configValue = 0;
         delay2.configValue = 0;
         fixtureSwitch.configValue = 3;
-        delay20.configValue = 0.1;
+        delay20.configValue = 0;
         delay21.configValue = 0;
         delay22.configValue = 0;
         fixture1Switch.configValue = 3;
         m0Speed.configValue = 20;
         m1Speed.configValue = 20;
         m2Speed.configValue = 20;
-        m3Speed.configValue = 10;
-        m4Speed.configValue = 10;
-        m5Speed.configValue = 10;
+        m3Speed.configValue = 30;
+        m4Speed.configValue = 30;
+        m5Speed.configValue = 30;
         slope.configValue = 0;
         chamferRadius.configValue = 4;
         linelong.configValue = 100;

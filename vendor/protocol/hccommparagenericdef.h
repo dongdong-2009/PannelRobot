@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.2"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.3"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.2"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.3"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -108,6 +108,7 @@ typedef enum _ICAddr
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值（已经废除）
+    ICAddr_System_Retain_31 = 31,//< 单轴手动速度独立设定切换（0：默认使用全局速度;1:使用单轴固定手动速度）：手动模式有效
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_41= 41,//<  // 自定义轴动作2 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_42= 42,//<  // 自定义轴动作3 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
@@ -1119,6 +1120,7 @@ typedef enum
     Inovancwe,       //<名字：汇川伺服
     ASDA,            //<名字：台达伺服
     panasonic,       //<名字：松下伺服
+    hcqs4,           //<名字：华成伺服
 }SERVO_VENDER;
 typedef enum
 {
@@ -1427,8 +1429,10 @@ typedef struct {
   //    uint16_t timer_target[40];  //<类型:系统;目标定时时间 - 88-127 - 单位-10毫秒
   //    uint32_t counter_current[16];  //<类型:系统;当前计数值 - 128-159
 
-  uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
-  uint32_t Reserve2[27];   //<类型:系统;名字:当前定时时间; 单位:ms
+    uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
+    uint32_t single_s; //<类型：系统；名字：手动单轴速度设定；精度：0;单位：；
+    uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：1;单位：；
+  uint32_t Reserve2[25];   //<类型:系统;名字:当前定时时间; 单位:ms
   uint32_t Reserve3[20];   //<类型:系统;名字:目标定时时间; 单位:ms
   uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
   uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms

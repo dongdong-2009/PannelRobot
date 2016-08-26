@@ -17,10 +17,16 @@ Item {
     property variant stackInstance: null
     property variant stackCount: []
     function createActionObjects(){
+        return createActionObj(null);
+    }
+
+    function createActionObj(actObt){
         var ret = [];
+        if(actObt == null){
+            var details = detailInstance.getDetails();
+            var stack = stackInstance.getstackInstace();
+        }
         var rc = BaseTeach.counterManager.getCounter(0);
-        var details = detailInstance.getDetails();
-        var stack = stackInstance.getstackInstace();
         if(rc == null){
             rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
@@ -38,7 +44,10 @@ Item {
         var rotateOKCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        if(actObt == null)
+            c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        else
+            c = BaseTeach.counterManager.newCounter("", 0, actObt.xcount * actObt.ycount);
         var aaaa = stackCount = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
@@ -47,23 +56,45 @@ Item {
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
 
-        if(stack.useStack)
-            var newstack = newStack();
-        else newstack = 0;
-        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
-                                                details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
-                                                repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
-                                                dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
-                                                dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
-                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
-                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
-                                                details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                                                details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
-                                                aaaa,bbbb,editaction.configValue,
-                                                stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
-                                                stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
-                                                stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
-                                                stack.zdirection,newstack));
+
+        if(actObt == null){
+            if(stack.useStack)
+                var newstack = newStack();
+            else newstack = 0;
+        }
+        else{
+            if(actObt.useStack)
+                newstack = newStack();
+            else newstack = 0;
+        }
+        if(actObt == null)
+            ret.push(LocalTeach.generatePENTUAction(
+                        mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
+                        details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
+                        repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
+                        dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
+                        dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
+                        rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
+                        details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
+                        details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
+                        details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
+                        aaaa,bbbb,editaction.configValue,
+                        stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
+                        stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
+                        stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
+                        stack.zdirection,newstack,isGunBack.isChecked));
+        else
+            ret.push(LocalTeach.generatePENTUAction(
+                        actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
+                        actObt.startPosSpeed2, actObt.startPosSpeed3, actObt.startPosSpeed4, actObt.startPosSpeed5,
+                        actObt.repeatSpeed, actObt.repeateCount, actObt.zlength, actObt.dirAxis, actObt.dirLength, actObt.dirSpeed,
+                        actObt.dirCount, actObt.point1, actObt.point2, actObt.rotate, actObt.rotateSpeed, actObt.rotateCount,
+                        actObt.fixtureDelay0, actObt.fixtureDelay1, actObt.fixtureDelay2, rcID, dirCID, rotateCID,
+                        actObt.fixture2Delay0, actObt.fixture2Delay1, actObt.fixture2Delay2, actObt.fixture1Switch, actObt.fixture2Switch,
+                        actObt.slope, rotateOKCID, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
+                        actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
+                        actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
+                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack));
         return ret;
     }
 
@@ -116,6 +147,7 @@ Item {
         ao.rotate = rotate.configValue;
         ao.rotateSpeed = rotateSpeed.configValue;
         ao.rotateCount = rotateCount.configValue;
+        ao.isGunBack = isGunBack.isChecked;
 
         var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
         BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
@@ -141,21 +173,22 @@ Item {
         button_setPos2.text = name2;
     }
     function gunFollowEnvisible(){
-        if(mode < 4 || mode == 8)
-            gunFollowEn.visible  = false;
-        else{
-            if(planeSel.configValue == 0 && dirAxisSel.configValue == 0)
-                gunFollowEn.visible  = true;
-            else gunFollowEn.visible  = false;
-        }
+        gunFollowEn.visible  = false;       //do not use
+//        if(mode < 4 || mode == 8)
+//            gunFollowEn.visible  = false;
+//        else{
+//            if(planeSel.configValue == 0 && dirAxisSel.configValue == 0)
+//                gunFollowEn.visible  = true;
+//            else gunFollowEn.visible  = false;
+//        }
     }
     function hideUselessEdit(){
         planeSel.visible = mode == 8 ? false : true;
         dirAxisSel.visible = mode == 8 ? false : true;
         editaction.visible = mode == 8 ? true : false;
         button_setPos1.visible = mode == 8 ? false : true;
-        pos1Axis1.visible = mode != 8;
-        pos1Axis2.visible = mode != 8;
+//        pos1Axis1.visible = mode != 8;
+//        pos1Axis2.visible = mode != 8;
         repeateSpeed.visible = mode == 8 ? false : true;
 //        repeateCount.visible = mode == 8 ? false : true;
 //        zlength.visible = mode == 8 ? false : true;
@@ -163,7 +196,7 @@ Item {
         dirSpeed.visible = mode == 8 ? false : true;
     }
     function hidePoint(){
-        if(mode != 6)
+        if(mode != 6 || mode != 2)
             if(dirAxisSel.configValue == 0){
                 pos1Axis1.visible = false;
                 pos1Axis2.visible = true;
@@ -264,21 +297,21 @@ Item {
 //                enabled: useEn.isChecked
                 configName: qsTr("Actions")
             }
-//            ICCheckBox{
-//                id:useEn
-//                width: 60
-//                text: qsTr("UseEn")
-//                isChecked: false
-//                useCustomClickHandler: true
-//                MouseArea{
-//                    anchors.fill: parent
-//                    onClicked: {
-//                        if(!useEn.isChecked)
-//                            useEn.isChecked = true;
-//                        else useEn.isChecked = false;
-//                    }
-//                }
-//            }
+            ICCheckBox{
+                id:isGunBack
+                width: 60
+                text: qsTr("Is Gun Back")
+                isChecked: false
+                useCustomClickHandler: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(!isGunBack.isChecked)
+                            isGunBack.isChecked = true;
+                        else isGunBack.isChecked = false;
+                    }
+                }
+            }
         }
         Row{
             id:pos1Container
@@ -460,7 +493,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-                visible: mode == 2
+//                visible: mode == 2 || mode == 6
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -630,7 +663,19 @@ Item {
         rotate.configValue = actionObject.rotate;
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
-
+        isGunBack.isChecked = actionObject.isGunBack;
+//        if(actionObject.mode == 2 || actionObject.mode == 6){
+//            if(actionObject.dirAxis == 0){
+//                pos2Axis1.visible = ture;
+//                pos2Axis2.visible = false;
+//            }
+//            else {
+//                pos2Axis1.visible = false;
+//                pos2Axis2.visible = true;
+//            }
+//            button_setPos2.visible = true;
+//        }
+//        else button_setPos2.visible = false;
         if(actionObject.mode > 3){
             if(actionObject.plane == 0 && actionObject.dirAxis == 0)
                 gunFollowEn.visible = true;
@@ -638,6 +683,7 @@ Item {
         }
         if(actionObject.mode == 3 || actionObject.mode == 7)
             repeateCount.visible = true;
+        else repeateCount.visible = false;
     }
 
     Component.onCompleted: {
@@ -664,8 +710,9 @@ Item {
         zlength.configValue = -100;
         dirCount.configValue = 10;
         rotate.configValue = 90.000;
-        rotateSpeed.configValue = 10.0;
+        rotateSpeed.configValue = 30.0;
         rotateCount.configValue = 4;
+        isGunBack.isChecked = false;
 
         resetItems();
         ManualProgramManager.manualProgramManager.registerMonitor(container);

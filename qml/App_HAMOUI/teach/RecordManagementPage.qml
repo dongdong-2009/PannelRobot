@@ -372,6 +372,25 @@ Rectangle {
                 }
             }
             ICButton{
+                id:exportPrintableRecord
+                text: qsTr("Export Printable")
+                height: exportRecord.height
+//                visible: exportRecord.visible
+                visible: false
+                onButtonClicked: {
+                    var record;
+                    for(var i = 0; i < recordsModel.count; ++i){
+                        record = recordsModel.get(i);
+                        if(record.isSelected){
+//                            exportMolds.push(record.name);
+                            console.log(panelRobotController.readRecord(record.name));
+
+                        }
+                    }
+                }
+            }
+
+            ICButton{
                 id:importRecord
                 text: qsTr("Import")
                 height: loadRecord.height

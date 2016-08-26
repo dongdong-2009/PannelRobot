@@ -27,7 +27,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    slope, rotateOKCID, gunFollowEn,aaaa,bbbb,editaction,
                                    useStack,useDeviation,turns,stackSpeed,xdeviation,ydeviation,
                                    zdeviation,xspace,yspace,zspace,xcount,ycount,
-                                   zcount,xdirection,ydirection,zdirection,stack1){
+                                   zcount,xdirection,ydirection,zdirection,stack1,isGunBack){
     var f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag0 = f.flagID;
@@ -303,7 +303,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "aaaa":aaaa,
         "bbbb":bbbb,
         "editaction":editaction,
-//        "useEn":useEn,
+        "isGunBack":isGunBack,
 
 //        stack:
         "useStack":useStack,
@@ -329,27 +329,44 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
 var pentuActionToStringHandler = function(actionObject){
     var mode = actionObject.mode;
     var ret = "";
-    if(mode == pentuModes.Line2DRepeat)
-        ret += qsTr("Line2DRepeat");
-    else if(mode == pentuModes.Arc3DRepeat)
-        ret += qsTr("Arc3DRepeat");
-    ret += " ";
-    if(actionObject.plane == 0)
-        ret += "XY " + qsTr("Plane");
-    else if(actionObject.plane == 1)
-        ret += "XZ " + qsTr("Plane");
-    else if(actionObject.plane == 2)
-        ret += "YZ " + qsTr("Plane");
-    ret += " ";
+    if(mode == pentuModes.LineU2DRepeat)
+        ret += qsTr("LineU2DRepeat");
+    else if(mode == pentuModes.LineZ2DRepeat)
+        ret += qsTr("LineZ2DRepeat");
+    else if(mode == pentuModes.LineSaw2DRepeat)
+        ret += qsTr("LineSaw2DRepeat");
+    else if(mode == pentuModes.LineDir2DRepeat)
+        ret += qsTr("LineDir2DRepeat");
+    else if(mode == pentuModes.ArcU3DRepeat)
+        ret += qsTr("ArcU3DRepeat");
+    else if(mode == pentuModes.ArcZ3DRepeat)
+        ret += qsTr("ArcZ3DRepeat");
+    else if(mode == pentuModes.ArcSaw3DRepeat)
+        ret += qsTr("ArcSaw3DRepeat");
+    else if(mode == pentuModes.ArcDir3DRepeat)
+        ret += qsTr("ArcDir3DRepeat");
+    else if(mode == pentuModes.DIYAction)
+        ret += qsTr("DIYAction");
+//    ret += " ";
+//    if(mode !== pentuModes.DIYAction){
+//        if(actionObject.plane == 0)
+//            ret += "XY " + qsTr("Plane");
+//        else if(actionObject.plane == 1)
+//            ret += "XZ " + qsTr("Plane");
+//        else if(actionObject.plane == 2)
+//            ret += "YZ " + qsTr("Plane");
+//    }
+    ret += " :: ";
     ret += qsTr("Start Pos:") + pointToString(actionObject.startPos) + "\n                            ";
 
     ret += qsTr("Next Pos:") + pointToString(actionObject.point1) + " ";
-    if(mode == pentuModes.Arc3DRepeat)
-        ret += qsTr("End Pos:") + pointToString(actionObject.point2) + " ";
-    ret += qsTr("Repeate Speed:") + actionObject.repeateSpeed + " " +
-            qsTr("Repeate ") + actionObject.repeateCount + qsTr("Times") + "\n                            " +
-            axisInfos[actionObject.dirAxis].name + qsTr("Dir Length:") + actionObject.dirLength + " " +
-            qsTr("Dir Speed:") + actionObject.dirSpeed + " " +
-            qsTr("Dir") + actionObject.dirCount + qsTr("Times");
+//    if(mode == pentuModes.Arc3DRepeat)
+//        ret += qsTr("End Pos:") + pointToString(actionObject.point2) + " ";
+    ret += qsTr("Repeate Speed:") + actionObject.repeateSpeed;
+//    ret += qsTr("Repeate Speed:") + actionObject.repeateSpeed + " " +
+//            qsTr("Repeate ") + actionObject.repeateCount + qsTr("Times") + "\n                            " +
+//            axisInfos[actionObject.dirAxis].name + qsTr("Dir Length:") + actionObject.dirLength + " " +
+//            qsTr("Dir Speed:") + actionObject.dirSpeed + " " +
+//            qsTr("Dir") + actionObject.dirCount + qsTr("Times");
     return ret;
 }

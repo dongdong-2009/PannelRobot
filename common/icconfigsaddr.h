@@ -300,8 +300,8 @@ extern  const ICAddrWrapper  s_rw_16_16_0_208;  //< 13648411 逻辑输出端口�
 extern  const ICAddrWrapper  s_rw_0_16_0_209;  //< 13713435 逻辑输出端口输出点
 extern  const ICAddrWrapper  s_rw_16_16_0_209;  //< 13713947 逻辑输出端口输出点
 extern  const ICAddrWrapper  s_rw_0_32_0_210;    //< 13795355 容差设定容差设定
-extern  const ICAddrWrapper  s_rw_0_32_0_211;    //< 13860891 当前延时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_212;    //< 13926427 当前延时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_211;    //< 13860891 当前延时时间手动单轴速度设定
+extern  const ICAddrWrapper  s_rw_0_32_1_212;    //< 1087668251 当前延时时间全局速度设定
 extern  const ICAddrWrapper  s_rw_0_32_0_213;    //< 13991963 当前延时时间当前定时时间
 extern  const ICAddrWrapper  s_rw_0_32_0_214;    //< 14057499 目标延时时间当前定时时间
 extern  const ICAddrWrapper  s_rw_0_32_0_215;    //< 14123035 目标延时时间当前定时时间

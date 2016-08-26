@@ -62,6 +62,10 @@ Rectangle {
 
     }
 
+    function copyLine(){
+        return Utils.cloneObject(currentModelData().mI_ActionObject);
+    }
+
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
             actionEditorFrame.item.showMenu();
@@ -936,7 +940,8 @@ Rectangle {
                 }
                 onVisibleChanged: {
                     if(visible){
-                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
+//                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
+                        speedDisplay.text = ShareData.GlobalStatusCenter.getGlobalSpeed();
                     }
                 }
             }
@@ -1125,16 +1130,14 @@ Rectangle {
                         width: 40
                         text: qsTr("CUW")
 
-                        ListModel{
-                            id:testMo
-                        }
 
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
 
                         onButtonClicked: {
-                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+//                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+                            var toInsert = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
                             insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
@@ -1292,6 +1295,8 @@ Rectangle {
                             var lastRunning = PData.lastRunning;
 
                             var programIndex = uiRunningSteps.programIndex;
+                            if((moduleSel.currentIndex > 0 && uiRunningSteps.model < 0) ||
+                                    (moduleSel.currentIndex == 0 && uiRunningSteps.model >= 0)) return
                             if(programIndex !== lastRunning.model ||
                                     uiRunningSteps.hostStep !== lastRunning.step)
                             {

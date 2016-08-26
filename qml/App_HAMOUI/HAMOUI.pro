@@ -14,10 +14,6 @@ teach/extents/*.js
 
 DISTFILES += \
     kexuye-pentu-spec/KXYStackAction.qml
-OTHER_FILES += \
-    teach/extents/ExtentActionDefine.js
-
-
 
 
 

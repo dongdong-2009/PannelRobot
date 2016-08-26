@@ -103,6 +103,14 @@
         <source>Pos(+/-):</source>
         <translation>位置(+/-):</translation>
     </message>
+    <message>
+        <source>Set In</source>
+        <translation type="unfinished">设入</translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -594,7 +602,7 @@
     </message>
     <message>
         <source>U</source>
-        <translation>A</translation>
+        <translation type="unfinished">A轴</translation>
     </message>
     <message>
         <source>Line Z</source>
@@ -610,7 +618,7 @@
     </message>
     <message>
         <source>V</source>
-        <translation>B</translation>
+        <translation type="unfinished">B轴</translation>
     </message>
     <message>
         <source>Line Y</source>
@@ -626,7 +634,7 @@
     </message>
     <message>
         <source>W</source>
-        <translation>C</translation>
+        <translation type="unfinished">C轴</translation>
     </message>
     <message>
         <source>Line X</source>
@@ -685,6 +693,26 @@
     <message>
         <source>Cycle</source>
         <translation>当前周期:</translation>
+    </message>
+    <message>
+        <source>Counter &gt;&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Counter &lt;&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>counter</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -792,6 +820,26 @@
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>B ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1102,6 +1150,18 @@
         <source>C</source>
         <translation>C轴</translation>
     </message>
+    <message>
+        <source>U</source>
+        <translation>A轴</translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation>B轴</translation>
+    </message>
+    <message>
+        <source>W</source>
+        <translation>C轴</translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -1400,23 +1460,23 @@
     </message>
     <message>
         <source>U Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>U盘</translation>
     </message>
     <message>
         <source>Machine Running(Mold, Machine)</source>
-        <translation type="unfinished"></translation>
+        <translation>机器参数（模号，机器设定）</translation>
     </message>
     <message>
         <source>HMI Configs(Programable Button, Panel Settings)</source>
-        <translation type="unfinished"></translation>
+        <translation>手控参数（可编程按键，手控设定）</translation>
     </message>
     <message>
         <source>Backup Current</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">备份当前状态</translation>
     </message>
     <message>
         <source>Restore Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">还原选中备份</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -1456,7 +1516,7 @@
     </message>
     <message>
         <source>Updater</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">更新包</translation>
     </message>
     <message>
         <source>System will reboot after restore! Are you sure?</source>
@@ -1618,6 +1678,20 @@
     </message>
 </context>
 <context>
+    <name>ICLabel</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
+    </message>
+</context>
+<context>
+    <name>ICMessageBox</name>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
@@ -1714,11 +1788,11 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation></translation>
+        <translation type="unfinished">公转盘正传</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation></translation>
+        <translation type="unfinished">公转盘反转</translation>
     </message>
     <message>
         <source>Y024</source>
@@ -1738,27 +1812,27 @@
     </message>
     <message>
         <source>Y030</source>
-        <translation>模具1正传</translation>
+        <translation type="unfinished">油量2 {030?}</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation>模具1反转</translation>
+        <translation type="unfinished">油量2 {031?}</translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation>模具2正传</translation>
+        <translation type="unfinished">油量2 {032?}</translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation>模具2反转</translation>
+        <translation type="unfinished">油量2 {033?}</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation>公转盘正传</translation>
+        <translation type="unfinished">油量2 {034?}</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation>公转盘反转</translation>
+        <translation type="unfinished">油量2 {035?}</translation>
     </message>
     <message>
         <source>Y036</source>
@@ -1810,11 +1884,11 @@
     </message>
     <message>
         <source>X022</source>
-        <translation>X022</translation>
+        <translation>公转盘正转到位</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation>X023</translation>
+        <translation>公转盘反转到位</translation>
     </message>
     <message>
         <source>X024</source>
@@ -1834,11 +1908,11 @@
     </message>
     <message>
         <source>X030</source>
-        <translation>模具1转动到位</translation>
+        <translation type="unfinished">X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation>模具2转动到位</translation>
+        <translation type="unfinished">X031</translation>
     </message>
     <message>
         <source>X032</source>
@@ -1850,11 +1924,11 @@
     </message>
     <message>
         <source>X034</source>
-        <translation>公转盘正转到位</translation>
+        <translation type="unfinished">X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation>公转盘反转到位</translation>
+        <translation type="unfinished">X035</translation>
     </message>
     <message>
         <source>X036</source>
@@ -2102,19 +2176,19 @@
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>公转盘正转</translation>
+        <translation type="unfinished">普通输出Y020</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>公转盘反转</translation>
+        <translation type="unfinished">普通输出Y021</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>普通输出Y022</translation>
+        <translation type="unfinished">公转盘正转</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>普通输出Y023</translation>
+        <translation type="unfinished">公转盘反转</translation>
     </message>
     <message>
         <source>Normal Y024</source>
@@ -3552,15 +3626,15 @@
     <name>KXYStackAction</name>
     <message>
         <source>Use Stack</source>
-        <translation type="unfinished">使用堆叠</translation>
+        <translation>使用堆叠</translation>
     </message>
     <message>
         <source>Use Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>使用偏移</translation>
     </message>
     <message>
         <source>Turns</source>
-        <translation type="unfinished"></translation>
+        <translation>顺序</translation>
     </message>
     <message>
         <source>X-&gt;Y-&gt;Z</source>
@@ -3588,63 +3662,63 @@
     </message>
     <message>
         <source>Stack Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠速度</translation>
     </message>
     <message>
         <source>X Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>X偏移</translation>
     </message>
     <message>
         <source>Y Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>Y偏移</translation>
     </message>
     <message>
         <source>Z Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>Z偏移</translation>
     </message>
     <message>
         <source>X Space</source>
-        <translation type="unfinished"></translation>
+        <translation>X间距</translation>
     </message>
     <message>
         <source>Y Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Y间距</translation>
     </message>
     <message>
         <source>Z Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Z间距</translation>
     </message>
     <message>
         <source>X Count</source>
-        <translation type="unfinished"></translation>
+        <translation>X个数</translation>
     </message>
     <message>
         <source>Y Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Y个数</translation>
     </message>
     <message>
         <source>Z Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Z个数</translation>
     </message>
     <message>
         <source>X Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向</translation>
     </message>
     <message>
         <source>Negitive</source>
-        <translation type="unfinished"></translation>
+        <translation>反向</translation>
     </message>
     <message>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation>正向</translation>
     </message>
     <message>
         <source>Y Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向</translation>
     </message>
     <message>
         <source>Z Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向</translation>
     </message>
 </context>
 <context>
@@ -3736,6 +3810,10 @@
     <message>
         <source>Actions</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is Gun Back</source>
+        <translation>喷枪收回</translation>
     </message>
 </context>
 <context>
@@ -4750,7 +4828,7 @@ please chose!</source>
     </message>
     <message>
         <source>StackAction</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠</translation>
     </message>
     <message>
         <source>Repeat EPos</source>
@@ -5005,10 +5083,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UselessRotation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Rotate1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5025,14 +5099,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Return Zero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go On Rotating</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Modules</source>
         <translation>模块</translation>
     </message>
@@ -5045,6 +5111,46 @@ please chose!</source>
 </source>
         <translation>保存 {0} 失败!
 </translation>
+    </message>
+    <message>
+        <source>Negitv En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postv En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>gongzhuan Not OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>gongzhuan OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceycle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceycle Over</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>over elar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>over done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sub-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lines:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5195,6 +5301,18 @@ please chose!</source>
         <source>Mold has error!</source>
         <translation>模号有错!</translation>
     </message>
+    <message>
+        <source>Exporting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export Printable</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -5221,6 +5339,18 @@ please chose!</source>
     <message>
         <source>Times</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Turn Manual Speed</source>
+        <translation>转手动速度</translation>
+    </message>
+    <message>
+        <source>Independent Manual Speed</source>
+        <translation>独立手动速度设置</translation>
+    </message>
+    <message>
+        <source>Manual Speed</source>
+        <translation>手动速度</translation>
     </message>
 </context>
 <context>
@@ -5512,6 +5642,30 @@ please chose!</source>
     <message>
         <source>Three Point Way</source>
         <translation>三点法设定</translation>
+    </message>
+    <message>
+        <source>Offset Z with Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run Seq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run Together</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6301,7 +6455,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">正向</translation>
     </message>
     <message>
         <source>Negative</source>
@@ -6402,6 +6556,46 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Check End</source>
         <translation>结束检测</translation>
+    </message>
+    <message>
+        <source>LineU2DRepeat</source>
+        <translation>直线U形</translation>
+    </message>
+    <message>
+        <source>LineZ2DRepeat</source>
+        <translation>直线Z形</translation>
+    </message>
+    <message>
+        <source>LineSaw2DRepeat</source>
+        <translation>直线锯齿形</translation>
+    </message>
+    <message>
+        <source>LineDir2DRepeat</source>
+        <translation>直线寸动形</translation>
+    </message>
+    <message>
+        <source>ArcU3DRepeat</source>
+        <translation>曲线U形</translation>
+    </message>
+    <message>
+        <source>ArcZ3DRepeat</source>
+        <translation>曲线Z形</translation>
+    </message>
+    <message>
+        <source>ArcSaw3DRepeat</source>
+        <translation>曲线锯齿形</translation>
+    </message>
+    <message>
+        <source>ArcDir3DRepeat</source>
+        <translation>曲线寸动形</translation>
+    </message>
+    <message>
+        <source>DIYAction</source>
+        <translation>自定义</translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6672,6 +6866,10 @@ You just need to set the count configs after this setting.</source>
         <source>Settings</source>
         <translation>参数设定</translation>
     </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TopMenuItem</name>
@@ -6728,6 +6926,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>PP</source>
         <translation>正相</translation>
+    </message>
+    <message>
+        <source>Auto Check</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6945,11 +7147,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
     <message>
         <source>Backup/Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>

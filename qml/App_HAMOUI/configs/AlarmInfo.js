@@ -259,6 +259,8 @@ function isWaitONAlarmType(errNum){
 function getAlarmDescr(errNum){
     if(alarmInfo.hasOwnProperty(errNum.toString())){
         return alarmInfo[errNum.toString()];
+    }else if(customAlarmInfo.hasOwnProperty(errNum.toString())){
+        return customAlarmInfo[errNum.toString()];
     }else{
         var alarm = analysisAlarmNum(errNum);
         if(alarm.type === ALARM_IO_ON_SIGNAL_START){

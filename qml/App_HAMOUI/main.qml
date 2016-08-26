@@ -916,7 +916,6 @@ Rectangle {
                     mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
                 }
             }
-
         }
     }
 }

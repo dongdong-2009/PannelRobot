@@ -615,7 +615,7 @@ Rectangle {
         }
 
         for(i = 0, len = PData.kFunctionProgramIndex; i < len; ++i){
-            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            stackLines = PData.stackLinesInfo.getLines(i, stackID);
             md = PData.programs[i];
             if(stackLines.length > 0){
                 updateStacksHelper(md, stackLines, stackID, i);

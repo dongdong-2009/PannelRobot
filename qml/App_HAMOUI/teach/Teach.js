@@ -230,7 +230,11 @@ var actionTypes = {
 
 var stackTypes = {
     "kST_Normal":0,
-    "kST_Box":1
+    "kST_Box":1,
+    "kST_DataSource":2,
+    "kST_DataSourceIgnoreZ":3,
+    "kST_VisionCmp":4,
+    "kST_VisionPosAndCmp":5
 };
 
 
@@ -1401,8 +1405,13 @@ function stackTypeToString(type){
     switch(type){
     case stackTypes.kST_Box:
         return qsTr("Box");
+    case stackTypes.kST_DataSource:
+    case stackTypes.kST_DataSourceIgnoreZ:
+    case stackTypes.kST_VisionCmp:
+    case stackTypes.kST_VisionPosAndCmp:
+        return qsTr("Datasource");
     default:
-        return "";
+        return qsTr("Normal");
     }
 }
 

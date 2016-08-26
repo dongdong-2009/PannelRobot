@@ -193,13 +193,13 @@ ProgramFlowPage {
 //        }
     }
     function getready(ret,actionObject){
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2,0.1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
     }
 
@@ -223,8 +223,8 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
 //        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
 //        ret.push(LocalTeach.generateOutputAction(19,0,0,19,0));     //close
-        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //Y34 close
-        ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));     //close
+        ret.push(LocalTeach.generateOutputAction(10,0,0,10,0));     //Y34 close
+        ret.push(LocalTeach.generateOutputAction(11,0,0,11,0));     //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
         ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,1,0));     //m1 close
         ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
@@ -233,8 +233,8 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateOutputAction(13,100,1,13,1));     //Y25 close
 
         getready(ret,actionObject);
-        ret.push(LocalTeach.generateConditionAction(0, 20, 0, 1, 0,actionObject.flag8));
-        ret.push(LocalTeach.generateConditionAction(0, 21, 0, 1, 0,actionObject.flag9));
+        ret.push(LocalTeach.generateConditionAction(0, 10, 0, 1, 0,actionObject.flag8));
+        ret.push(LocalTeach.generateConditionAction(0, 11, 0, 1, 0,actionObject.flag9));
         ret.push(LocalTeach.generateJumpAction(actionObject.flag5));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag8, qsTr("Negitv En")));
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 open
@@ -243,9 +243,9 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
         ret.push(LocalTeach.generateJumpAction(actionObject.flag13));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag5, qsTr("gongzhuan Not OK")));
-        ret.push(LocalTeach.generateOutputAction(21,0,1,21,0));     //gongzhuanhuiyuan
-        ret.push(LocalTeach.generateWaitAction(21,0,1,10));
-        ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));
+        ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));     //gongzhuanhuiyuan
+        ret.push(LocalTeach.generateWaitAction(11,0,1,10));
+        ret.push(LocalTeach.generateOutputAction(11,0,0,11,0));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag13, qsTr("gongzhuan OK")));
 
 //        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //mujuhuiyuan
@@ -259,8 +259,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
         ret.push(LocalTeach.generateDataAction(819206,0,1));
-        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
-        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
+//        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
+//        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
@@ -281,36 +281,40 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
-
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateOutputAction(20,0,1,20,0));   //gongzhuangzhengzhuang open
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+        ret.push(LocalTeach.generateOutputAction(10,0,1,10,0));   //gongzhuangzhengzhuang open
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
 //        generateAxisServoAction = function(action,axis,pos,speed,delay,isBadEn,isEarlyEnd,earlyEndPos,isEarlySpd,earlySpdPos,earlySpd,signalStopEn,signalStopPoint,signalStopMode,speedMode,stop)
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5,0,false,true,3600));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5,0,false,true,3600));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
-        ret.push(LocalTeach.generateWaitAction(21,0,0,10));
-        ret.push(LocalTeach.generateWaitAction(20,0,1,100));
-        ret.push(LocalTeach.generateOutputAction(20,0,0,20,0));     //close
+        ret.push(LocalTeach.generateWaitAction(11,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(10,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(10,0,0,10,0));     //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 poen
+        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
+        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag11));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
-
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateOutputAction(21,0,1,21,0));   //gongzhuangfanzhuang open
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4,0,false,true,3600));
+        ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));   //gongzhuangfanzhuang open
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4,0,false,true,3600));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
-        ret.push(LocalTeach.generateWaitAction(20,0,0,10));
-        ret.push(LocalTeach.generateWaitAction(21,0,1,100));
-        ret.push(LocalTeach.generateOutputAction(21,0,0,21,0));                         //close
+        ret.push(LocalTeach.generateWaitAction(10,0,0,10));
+        ret.push(LocalTeach.generateWaitAction(11,0,1,100));
+        ret.push(LocalTeach.generateOutputAction(11,0,0,11,0));                         //close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
+        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
+        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
 //        ret.push(LocalTeach.generateFlagAction(actionObject.flag5, qsTr("positive")));
 
         return ret;
@@ -323,22 +327,22 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag14));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":"0.000","m5":actionObject.rotate}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag15));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag14, qsTr("Rotate1")));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag15, qsTr("Rotate2")));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startPosSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
 
 
         if(actionObject.useStack){
@@ -798,7 +802,10 @@ ProgramFlowPage {
 //            for(var i = 0; i < ceycletmp; i++){
             var add = [3280240649,3280502793,3280764937];
             ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Ceycle")));
-            ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(dirlength-1)*1000,1,0));
+            if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
+                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
+            else
+                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)+1)*1000,3,0));
             if(actionObject.mode == 2)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                                                        [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
@@ -823,7 +830,10 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
-            ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(dirlength-1)*1000,1,0));
+            if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
+                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
+            else
+                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)+1)*1000,3,0));
             if(actionObject.mode == 2)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                                                        [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
@@ -1059,10 +1069,13 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         var zDelay = 0.2
         if(actionObject.mode !== 2 && actionObject.mode !== 6){
-            zDelay = 0;
+//            zDelay = 0;
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
         }
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2,zDelay));
+        var gunBack = 0;
+        if(!actionObject.isGunBack)
+            gunBack = actionObject.startPos2
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, gunBack, actionObject.startPosSpeed2,zDelay));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
@@ -1143,7 +1156,7 @@ ProgramFlowPage {
                     var rs = pentuActionHead(model.get(i).mI_ActionObject);
                     count = i;
                     for(var j = 0, len = rs.length; j < len; ++j){
-                        LocalPData.stepToKeXuYeRowMap[ret.length] = 0;
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = count;
                         ret.splice(j, 0, rs[j]);
 //                        ret.push(rs[j]);
                     }
@@ -1157,7 +1170,7 @@ ProgramFlowPage {
                 if(model.get(i).mI_ActionObject.action == LocalTeach.actions.ACT_END && count != -1){
                     rs = pentuActionEnd(model.get(count).mI_ActionObject);
                     for(j = 0, len = rs.length; j < len; ++j){
-                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = count;
                         ret.push(rs[j]);
                     }
                 }
@@ -1235,7 +1248,6 @@ ProgramFlowPage {
                                [{"editor":kexuyeActionEdit, "itemName":"kexuyeaction"},
                                 {"editor":kexuyeDetailEdit, "itemName":"kexuyedetail"},
                                 {"editor":kxyStackActionEdit, "itemName":"kxystackaction"}
-
                                ],
                                [{"item":"kexuyeaction"}, {"item":"kexuyedetail"}, {"item":"kxystackaction"},{"item":"customName"}]);
 

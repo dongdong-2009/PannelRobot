@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -45,11 +45,11 @@
     </message>
     <message>
         <source>Speed0</source>
-        <translation>箱内堆速度</translation>
+        <translation type="vanished">箱内堆速度</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Speed1:</source>
@@ -103,6 +103,14 @@
         <source>Pos(+/-):</source>
         <translation>位置(+/-):</translation>
     </message>
+    <message>
+        <source>Set In</source>
+        <translation type="unfinished">设入</translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AlarmInfo</name>
@@ -148,27 +156,27 @@
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
-        <translation>电机1报警</translation>
+        <translation type="vanished">电机1报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS2_ALARM_ERR</source>
-        <translation>电机2报警</translation>
+        <translation type="vanished">电机2报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS3_ALARM_ERR</source>
-        <translation>电机3报警</translation>
+        <translation type="vanished">电机3报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS4_ALARM_ERR</source>
-        <translation>电机4报警</translation>
+        <translation type="vanished">电机4报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS5_ALARM_ERR</source>
-        <translation>电机5报警</translation>
+        <translation type="vanished">电机5报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS6_ALARM_ERR</source>
-        <translation>电机6报警</translation>
+        <translation type="vanished">电机6报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
@@ -554,35 +562,35 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -598,11 +606,11 @@
     </message>
     <message>
         <source>Line Z</source>
-        <translation>世界Z</translation>
+        <translation type="vanished">世界Z</translation>
     </message>
     <message>
         <source>Rotate U</source>
-        <translation>世界A</translation>
+        <translation type="vanished">世界A</translation>
     </message>
     <message>
         <source>Y</source>
@@ -614,11 +622,11 @@
     </message>
     <message>
         <source>Line Y</source>
-        <translation>世界Y</translation>
+        <translation type="vanished">世界Y</translation>
     </message>
     <message>
         <source>Rotate V</source>
-        <translation>世界B</translation>
+        <translation type="vanished">世界B</translation>
     </message>
     <message>
         <source>X</source>
@@ -630,11 +638,11 @@
     </message>
     <message>
         <source>Line X</source>
-        <translation>世界X</translation>
+        <translation type="vanished">世界X</translation>
     </message>
     <message>
         <source>Rotate W</source>
-        <translation>世界C</translation>
+        <translation type="vanished">世界C</translation>
     </message>
     <message>
         <source>Tune Speed:</source>
@@ -691,7 +699,7 @@
     <name>AxisActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回</translation>
+        <translation type="vanished">返回</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -792,6 +800,26 @@
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>B ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1092,15 +1120,27 @@
     </message>
     <message>
         <source>A</source>
-        <translation>A轴</translation>
+        <translation type="vanished">A轴</translation>
     </message>
     <message>
         <source>B</source>
-        <translation>B轴</translation>
+        <translation type="vanished">B轴</translation>
     </message>
     <message>
         <source>C</source>
-        <translation>C轴</translation>
+        <translation type="vanished">C轴</translation>
+    </message>
+    <message>
+        <source>U</source>
+        <translation type="unfinished">A</translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation type="unfinished">B</translation>
+    </message>
+    <message>
+        <source>W</source>
+        <translation type="unfinished">C</translation>
     </message>
 </context>
 <context>
@@ -1145,7 +1185,7 @@
     <name>CommentActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回主菜单</translation>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
         <source>Comment:</source>
@@ -1208,7 +1248,7 @@
     </message>
     <message>
         <source>MX</source>
-        <translation>中间变量X</translation>
+        <translation type="vanished">中间变量X</translation>
     </message>
     <message>
         <source>Jump</source>
@@ -1400,23 +1440,23 @@
     </message>
     <message>
         <source>U Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>U盘</translation>
     </message>
     <message>
         <source>Machine Running(Mold, Machine)</source>
-        <translation type="unfinished"></translation>
+        <translation>机器参数（模号，机器设定）</translation>
     </message>
     <message>
         <source>HMI Configs(Programable Button, Panel Settings)</source>
-        <translation type="unfinished"></translation>
+        <translation>手控参数（可编程按键，手控设定）</translation>
     </message>
     <message>
         <source>Backup Current</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">备份当前状态</translation>
     </message>
     <message>
         <source>Restore Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">还原选中备份</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -1456,7 +1496,7 @@
     </message>
     <message>
         <source>Updater</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">更新包</translation>
     </message>
     <message>
         <source>System will reboot after restore! Are you sure?</source>
@@ -1541,11 +1581,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1618,6 +1658,13 @@
     </message>
 </context>
 <context>
+    <name>ICMessageBox</name>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
@@ -1655,11 +1702,11 @@
     </message>
     <message>
         <source>EuInput</source>
-        <translation>EU输入</translation>
+        <translation type="vanished">EU输入</translation>
     </message>
     <message>
         <source>EuOutput</source>
-        <translation>EU输出</translation>
+        <translation type="vanished">EU输出</translation>
     </message>
     <message>
         <source>Next</source>
@@ -1714,11 +1761,11 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation></translation>
+        <translation type="unfinished">公转盘正传</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation></translation>
+        <translation type="unfinished">公转盘反转</translation>
     </message>
     <message>
         <source>Y024</source>
@@ -1738,27 +1785,27 @@
     </message>
     <message>
         <source>Y030</source>
-        <translation>模具1正传</translation>
+        <translation type="unfinished">油量2 {030?}</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation>模具1反转</translation>
+        <translation type="unfinished">油量2 {031?}</translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation>模具2正传</translation>
+        <translation type="unfinished">油量2 {032?}</translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation>模具2反转</translation>
+        <translation type="unfinished">油量2 {033?}</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation>公转盘正传</translation>
+        <translation type="unfinished">油量2 {034?}</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation>公转盘反转</translation>
+        <translation type="unfinished">油量2 {035?}</translation>
     </message>
     <message>
         <source>Y036</source>
@@ -1810,11 +1857,11 @@
     </message>
     <message>
         <source>X022</source>
-        <translation>X022</translation>
+        <translation>公转盘正转到位</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation>X023</translation>
+        <translation>公转盘反转到位</translation>
     </message>
     <message>
         <source>X024</source>
@@ -1834,11 +1881,11 @@
     </message>
     <message>
         <source>X030</source>
-        <translation>模具1转动到位</translation>
+        <translation type="unfinished">X030</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation>模具2转动到位</translation>
+        <translation type="unfinished">X031</translation>
     </message>
     <message>
         <source>X032</source>
@@ -1850,11 +1897,11 @@
     </message>
     <message>
         <source>X034</source>
-        <translation>公转盘正转到位</translation>
+        <translation type="unfinished">X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation>公转盘反转到位</translation>
+        <translation type="unfinished">X035</translation>
     </message>
     <message>
         <source>X036</source>
@@ -2058,15 +2105,15 @@
     </message>
     <message>
         <source>Normal Y</source>
-        <translation>普通输出</translation>
+        <translation type="vanished">普通输出</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation>单头阀Y</translation>
+        <translation type="vanished">单头阀Y</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation>保持型双头阀Y</translation>
+        <translation type="vanished">保持型双头阀Y</translation>
     </message>
     <message>
         <source>Normal Y010</source>
@@ -2102,19 +2149,19 @@
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>公转盘正转</translation>
+        <translation type="unfinished">普通输出Y020</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>公转盘反转</translation>
+        <translation type="unfinished">普通输出Y021</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>普通输出Y022</translation>
+        <translation type="unfinished">公转盘正转</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>普通输出Y023</translation>
+        <translation type="unfinished">公转盘反转</translation>
     </message>
     <message>
         <source>Normal Y024</source>
@@ -3552,15 +3599,15 @@
     <name>KXYStackAction</name>
     <message>
         <source>Use Stack</source>
-        <translation type="unfinished">使用堆叠</translation>
+        <translation>使用堆叠</translation>
     </message>
     <message>
         <source>Use Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>使用偏移</translation>
     </message>
     <message>
         <source>Turns</source>
-        <translation type="unfinished"></translation>
+        <translation>顺序</translation>
     </message>
     <message>
         <source>X-&gt;Y-&gt;Z</source>
@@ -3588,63 +3635,63 @@
     </message>
     <message>
         <source>Stack Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠速度</translation>
     </message>
     <message>
         <source>X Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>X偏移</translation>
     </message>
     <message>
         <source>Y Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>Y偏移</translation>
     </message>
     <message>
         <source>Z Deviation</source>
-        <translation type="unfinished"></translation>
+        <translation>Z偏移</translation>
     </message>
     <message>
         <source>X Space</source>
-        <translation type="unfinished"></translation>
+        <translation>X间距</translation>
     </message>
     <message>
         <source>Y Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Y间距</translation>
     </message>
     <message>
         <source>Z Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Z间距</translation>
     </message>
     <message>
         <source>X Count</source>
-        <translation type="unfinished"></translation>
+        <translation>X个数</translation>
     </message>
     <message>
         <source>Y Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Y个数</translation>
     </message>
     <message>
         <source>Z Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Z个数</translation>
     </message>
     <message>
         <source>X Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向</translation>
     </message>
     <message>
         <source>Negitive</source>
-        <translation type="unfinished"></translation>
+        <translation>反向</translation>
     </message>
     <message>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation>正向</translation>
     </message>
     <message>
         <source>Y Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向</translation>
     </message>
     <message>
         <source>Z Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向</translation>
     </message>
 </context>
 <context>
@@ -3659,15 +3706,15 @@
     </message>
     <message>
         <source>SPos:</source>
-        <translation>起点:</translation>
+        <translation type="vanished">起点:</translation>
     </message>
     <message>
         <source>Pos 1:</source>
-        <translation>目标位置1：</translation>
+        <translation type="vanished">目标位置1：</translation>
     </message>
     <message>
         <source>Pos 2:</source>
-        <translation>目标位置2：</translation>
+        <translation type="vanished">目标位置2：</translation>
     </message>
     <message>
         <source>Rpeate Speed</source>
@@ -3736,6 +3783,10 @@
     <message>
         <source>Actions</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is Gun Back</source>
+        <translation>喷枪收回</translation>
     </message>
 </context>
 <context>
@@ -3867,7 +3918,7 @@
     </message>
     <message>
         <source>Axis Configs</source>
-        <translation>电机参数</translation>
+        <translation type="vanished">电机参数</translation>
     </message>
     <message>
         <source>Motor Configs</source>
@@ -3921,7 +3972,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具校准</translation>
+        <translation type="vanished">工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4195,11 +4246,11 @@
     </message>
     <message>
         <source>Scan Updater</source>
-        <translation>扫描更新包</translation>
+        <translation type="vanished">扫描更新包</translation>
     </message>
     <message>
         <source>Start Update</source>
-        <translation>开始更新</translation>
+        <translation type="vanished">开始更新</translation>
     </message>
     <message>
         <source>Panel Settings</source>
@@ -4207,75 +4258,75 @@
     </message>
     <message>
         <source>UI Version:</source>
-        <translation>UI版本:</translation>
+        <translation type="vanished">UI版本:</translation>
     </message>
     <message>
         <source>Controller Version:</source>
-        <translation>中间件版本:</translation>
+        <translation type="vanished">中间件版本:</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation>语言</translation>
+        <translation type="vanished">语言</translation>
     </message>
     <message>
         <source>Key Tone</source>
-        <translation>按键音</translation>
+        <translation type="vanished">按键音</translation>
     </message>
     <message>
         <source>Key Tone Off</source>
-        <translation>关</translation>
+        <translation type="vanished">关</translation>
     </message>
     <message>
         <source>Key Tone On</source>
-        <translation>开</translation>
+        <translation type="vanished">开</translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation>屏幕亮度</translation>
+        <translation type="vanished">屏幕亮度</translation>
     </message>
     <message>
         <source>Screensaver Time</source>
-        <translation>屏幕保护时间</translation>
+        <translation type="vanished">屏幕保护时间</translation>
     </message>
     <message>
         <source>Date time</source>
-        <translation>日期时间</translation>
+        <translation type="vanished">日期时间</translation>
     </message>
     <message>
         <source>year</source>
-        <translation>年</translation>
+        <translation type="vanished">年</translation>
     </message>
     <message>
         <source>mon</source>
-        <translation>月</translation>
+        <translation type="vanished">月</translation>
     </message>
     <message>
         <source>day</source>
-        <translation>日</translation>
+        <translation type="vanished">日</translation>
     </message>
     <message>
         <source>hour</source>
-        <translation>时</translation>
+        <translation type="vanished">时</translation>
     </message>
     <message>
         <source>sec</source>
-        <translation>秒</translation>
+        <translation type="vanished">秒</translation>
     </message>
     <message>
         <source>Touch Calibrate</source>
-        <translation>触摸校正</translation>
+        <translation type="vanished">触摸校正</translation>
     </message>
     <message>
         <source>Recalibrate need to reboot. Continue?</source>
-        <translation>触摸校正需要重启.继续吗?</translation>
+        <translation type="vanished">触摸校正需要重启.继续吗?</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>是</translation>
+        <translation type="vanished">是</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>否</translation>
+        <translation type="vanished">否</translation>
     </message>
     <message>
         <source>Usermanegement</source>
@@ -4337,11 +4388,11 @@ please chose!</source>
     </message>
     <message>
         <source>Add</source>
-        <translation>添加点</translation>
+        <translation type="vanished">添加点</translation>
     </message>
     <message>
         <source>New Point:</source>
-        <translation>新点:</translation>
+        <translation type="vanished">新点:</translation>
     </message>
     <message>
         <source>Select Point:</source>
@@ -4365,15 +4416,15 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
         <source>Line 2D</source>
-        <translation>直线2D</translation>
+        <translation type="vanished">直线2D</translation>
     </message>
     <message>
         <source>Line 3D</source>
@@ -4389,7 +4440,7 @@ please chose!</source>
     </message>
     <message>
         <source>Pose 3D</source>
-        <translation>姿势直线</translation>
+        <translation type="vanished">姿势直线</translation>
     </message>
     <message>
         <source>Set to Middle Point</source>
@@ -4405,7 +4456,7 @@ please chose!</source>
     </message>
     <message>
         <source>Offset Move</source>
-        <translation>相对移动</translation>
+        <translation type="vanished">相对移动</translation>
     </message>
     <message>
         <source>Offset Line</source>
@@ -4586,7 +4637,7 @@ please chose!</source>
     </message>
     <message>
         <source>Other/Flag</source>
-        <translation>标签</translation>
+        <translation type="vanished">标签</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -4598,7 +4649,7 @@ please chose!</source>
     </message>
     <message>
         <source>Search</source>
-        <translation>搜索</translation>
+        <translation type="vanished">搜索</translation>
     </message>
     <message>
         <source>Path</source>
@@ -4678,7 +4729,7 @@ please chose!</source>
     </message>
     <message>
         <source>PT Line 2D</source>
-        <translation>喷涂直线2D</translation>
+        <translation type="vanished">喷涂直线2D</translation>
     </message>
     <message>
         <source>PT Arc 3D</source>
@@ -4698,11 +4749,11 @@ please chose!</source>
     </message>
     <message>
         <source>EPos</source>
-        <translation>终点:</translation>
+        <translation type="vanished">终点:</translation>
     </message>
     <message>
         <source>TPos</source>
-        <translation>经过:</translation>
+        <translation type="vanished">经过:</translation>
     </message>
     <message>
         <source>Set EPos</source>
@@ -4750,7 +4801,7 @@ please chose!</source>
     </message>
     <message>
         <source>StackAction</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠</translation>
     </message>
     <message>
         <source>Repeat EPos</source>
@@ -4825,11 +4876,11 @@ please chose!</source>
     </message>
     <message>
         <source>Insert</source>
-        <translation>插入</translation>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
         <source>Menu</source>
-        <translation>动作
+        <translation type="vanished">动作
 菜单</translation>
     </message>
     <message>
@@ -4862,27 +4913,27 @@ please chose!</source>
     </message>
     <message>
         <source>Output Action</source>
-        <translation>信号输出</translation>
+        <translation type="vanished">信号输出</translation>
     </message>
     <message>
         <source>Wait</source>
-        <translation>等待</translation>
+        <translation type="vanished">等待</translation>
     </message>
     <message>
         <source>Condition</source>
-        <translation>条件跳转</translation>
+        <translation type="vanished">条件跳转</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>路径</translation>
+        <translation type="vanished">路径</translation>
     </message>
     <message>
         <source>Check</source>
-        <translation>阀检测</translation>
+        <translation type="vanished">阀检测</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation>计数器</translation>
+        <translation type="vanished">计数器</translation>
     </message>
     <message>
         <source>Main Module</source>
@@ -4962,7 +5013,7 @@ please chose!</source>
     </message>
     <message>
         <source>Fixture Rotation</source>
-        <translation>模具旋转</translation>
+        <translation type="vanished">模具旋转</translation>
     </message>
     <message>
         <source>Dir Move</source>
@@ -4978,23 +5029,23 @@ please chose!</source>
     </message>
     <message>
         <source>positive</source>
-        <translation>公转正传</translation>
+        <translation type="vanished">公转正传</translation>
     </message>
     <message>
         <source>Rotate OK</source>
-        <translation>模具旋转到位</translation>
+        <translation type="vanished">模具旋转到位</translation>
     </message>
     <message>
         <source>Rotate1 OK</source>
-        <translation>模具1旋转到位</translation>
+        <translation type="vanished">模具1旋转到位</translation>
     </message>
     <message>
         <source>negative1</source>
-        <translation>模具2转动</translation>
+        <translation type="vanished">模具2转动</translation>
     </message>
     <message>
         <source>Rotate2 OK</source>
-        <translation>模具2旋转到位</translation>
+        <translation type="vanished">模具2旋转到位</translation>
     </message>
     <message>
         <source>gongzhuan Postv OK</source>
@@ -5002,10 +5053,6 @@ please chose!</source>
     </message>
     <message>
         <source>duoyu dir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UselessRotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5025,14 +5072,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Return Zero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go On Rotating</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Modules</source>
         <translation>模块</translation>
     </message>
@@ -5045,6 +5084,46 @@ please chose!</source>
 </source>
         <translation>保存 {0} 失败!
 </translation>
+    </message>
+    <message>
+        <source>Negitv En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postv En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>gongzhuan Not OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>gongzhuan OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceycle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceycle Over</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>over elar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>over done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sub-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lines:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5098,7 +5177,7 @@ please chose!</source>
     </message>
     <message>
         <source>Please Enter the new record name!</source>
-        <translation>请输入新模号名!</translation>
+        <translation type="vanished">请输入新模号名!</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -5142,11 +5221,11 @@ please chose!</source>
     </message>
     <message>
         <source>Import {0} fail!</source>
-        <translation>导入{0}失败!</translation>
+        <translation type="vanished">导入{0}失败!</translation>
     </message>
     <message>
         <source>Import Finished!</source>
-        <translation>导入完成!</translation>
+        <translation type="vanished">导入完成!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -5195,6 +5274,14 @@ please chose!</source>
         <source>Mold has error!</source>
         <translation>模号有错!</translation>
     </message>
+    <message>
+        <source>Exporting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -5221,6 +5308,10 @@ please chose!</source>
     <message>
         <source>Times</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Turn Manual Speed</source>
+        <translation>转手动速度</translation>
     </message>
 </context>
 <context>
@@ -5308,51 +5399,51 @@ please chose!</source>
     </message>
     <message>
         <source>Space0</source>
-        <translation>X方向间距</translation>
+        <translation type="vanished">X方向间距</translation>
     </message>
     <message>
         <source>Count0</source>
-        <translation>X方向计数</translation>
+        <translation type="vanished">X方向计数</translation>
     </message>
     <message>
         <source>Space1</source>
-        <translation>Y方向间距</translation>
+        <translation type="vanished">Y方向间距</translation>
     </message>
     <message>
         <source>Count1</source>
-        <translation>Y方向计数</translation>
+        <translation type="vanished">Y方向计数</translation>
     </message>
     <message>
         <source>Space2</source>
-        <translation>Z方向间距</translation>
+        <translation type="vanished">Z方向间距</translation>
     </message>
     <message>
         <source>Count2</source>
-        <translation>Z方向计数</translation>
+        <translation type="vanished">Z方向计数</translation>
     </message>
     <message>
         <source>Dir0</source>
-        <translation>X方向</translation>
+        <translation type="vanished">X方向</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation>反相</translation>
+        <translation type="vanished">反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation>正相</translation>
+        <translation type="vanished">正相</translation>
     </message>
     <message>
         <source>Dir1</source>
-        <translation>Y方向</translation>
+        <translation type="vanished">Y方向</translation>
     </message>
     <message>
         <source>Dir2</source>
-        <translation>Z方向</translation>
+        <translation type="vanished">Z方向</translation>
     </message>
     <message>
         <source>Sequence</source>
-        <translation>顺序</translation>
+        <translation type="vanished">顺序</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -5513,6 +5604,30 @@ please chose!</source>
         <source>Three Point Way</source>
         <translation>三点法设定</translation>
     </message>
+    <message>
+        <source>Offset Z with Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run Seq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FinalZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run Together</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
@@ -5586,7 +5701,7 @@ You just need to set the count configs after this setting.</source>
     <name>StructConfigs</name>
     <message>
         <source>Length</source>
-        <translation>每转距离</translation>
+        <translation type="vanished">每转距离</translation>
     </message>
     <message>
         <source>Machine Struct 1</source>
@@ -5602,7 +5717,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Machine Struct 3</source>
-        <translation>结构参数3</translation>
+        <translation type="vanished">结构参数3</translation>
     </message>
     <message>
         <source>Machine Struct 4</source>
@@ -5610,7 +5725,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Machine Struct 5</source>
-        <translation>结构参数5</translation>
+        <translation type="vanished">结构参数5</translation>
     </message>
     <message>
         <source>Machine Struct 6</source>
@@ -5618,15 +5733,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Machine Struct 7</source>
-        <translation>结构参数7</translation>
+        <translation type="vanished">结构参数7</translation>
     </message>
     <message>
         <source>Machine Struct 8</source>
-        <translation>结构参数8</translation>
+        <translation type="vanished">结构参数8</translation>
     </message>
     <message>
         <source>Machine Struct 9</source>
-        <translation>结构参数9</translation>
+        <translation type="vanished">结构参数9</translation>
     </message>
     <message>
         <source>SACC 1</source>
@@ -5729,7 +5844,7 @@ You just need to set the count configs after this setting.</source>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
-        <translation>返回主菜单</translation>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
         <source>Sync Begin</source>
@@ -5881,7 +5996,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>End</source>
-        <translation>模组结束</translation>
+        <translation type="vanished">模组结束</translation>
     </message>
     <message>
         <source>Flag</source>
@@ -5901,7 +6016,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Line2D:</source>
-        <translation>直线2D:</translation>
+        <translation type="vanished">直线2D:</translation>
     </message>
     <message>
         <source>Line3D:</source>
@@ -5969,7 +6084,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Start</source>
-        <translation>开始</translation>
+        <translation type="vanished">开始</translation>
     </message>
     <message>
         <source>not exist</source>
@@ -6065,7 +6180,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Offset Move:</source>
-        <translation>相对移动:</translation>
+        <translation type="vanished">相对移动:</translation>
     </message>
     <message>
         <source>Alarm</source>
@@ -6145,15 +6260,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="vanished">输出</translation>
     </message>
     <message>
         <source>On</source>
-        <translation>通</translation>
+        <translation type="vanished">通</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation>断</translation>
+        <translation type="vanished">断</translation>
     </message>
     <message>
         <source>Vistion Catch Start:</source>
@@ -6209,11 +6324,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>SingleAxisRepeat</source>
-        <translation>喷涂直线2D</translation>
+        <translation type="vanished">喷涂直线2D</translation>
     </message>
     <message>
         <source>Plane</source>
-        <translation>平面</translation>
+        <translation type="vanished">平面</translation>
     </message>
     <message>
         <source>Start Pos:</source>
@@ -6225,23 +6340,23 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Repeate </source>
-        <translation>重复</translation>
+        <translation type="vanished">重复</translation>
     </message>
     <message>
         <source>Dir Length:</source>
-        <translation>寸动长度:</translation>
+        <translation type="vanished">寸动长度:</translation>
     </message>
     <message>
         <source>Dir Speed:</source>
-        <translation>寸动速度:</translation>
+        <translation type="vanished">寸动速度:</translation>
     </message>
     <message>
         <source>Dir</source>
-        <translation>寸动</translation>
+        <translation type="vanished">寸动</translation>
     </message>
     <message>
         <source>Arc3DRepeat</source>
-        <translation>喷涂曲线3D</translation>
+        <translation type="vanished">喷涂曲线3D</translation>
     </message>
     <message>
         <source>Next Pos:</source>
@@ -6249,15 +6364,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>End Pos:</source>
-        <translation>终点位置:</translation>
+        <translation type="vanished">终点位置:</translation>
     </message>
     <message>
         <source>Times</source>
-        <translation>次</translation>
+        <translation type="vanished">次</translation>
     </message>
     <message>
         <source>Line2DRepeat</source>
-        <translation>喷涂直线2D</translation>
+        <translation type="vanished">喷涂直线2D</translation>
     </message>
     <message>
         <source>Offset Curve:</source>
@@ -6301,7 +6416,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">正向</translation>
     </message>
     <message>
         <source>Negative</source>
@@ -6402,6 +6517,46 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Check End</source>
         <translation>结束检测</translation>
+    </message>
+    <message>
+        <source>LineU2DRepeat</source>
+        <translation>直线U形</translation>
+    </message>
+    <message>
+        <source>LineZ2DRepeat</source>
+        <translation>直线Z形</translation>
+    </message>
+    <message>
+        <source>LineSaw2DRepeat</source>
+        <translation>直线锯齿形</translation>
+    </message>
+    <message>
+        <source>LineDir2DRepeat</source>
+        <translation>直线寸动形</translation>
+    </message>
+    <message>
+        <source>ArcU3DRepeat</source>
+        <translation>曲线U形</translation>
+    </message>
+    <message>
+        <source>ArcZ3DRepeat</source>
+        <translation>曲线Z形</translation>
+    </message>
+    <message>
+        <source>ArcSaw3DRepeat</source>
+        <translation>曲线锯齿形</translation>
+    </message>
+    <message>
+        <source>ArcDir3DRepeat</source>
+        <translation>曲线寸动形</translation>
+    </message>
+    <message>
+        <source>DIYAction</source>
+        <translation>自定义</translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6729,6 +6884,10 @@ You just need to set the count configs after this setting.</source>
         <source>PP</source>
         <translation>正相</translation>
     </message>
+    <message>
+        <source>Auto Check</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VisionActionEditor</name>
@@ -6886,11 +7045,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>please press startup button to origin</source>
-        <translation>请按启动键原点复归.</translation>
+        <translation type="vanished">请按启动键原点复归.</translation>
     </message>
     <message>
         <source>please press startup button to return</source>
-        <translation>请按启动键复归.</translation>
+        <translation type="vanished">请按启动键复归.</translation>
     </message>
     <message>
         <source>Recalibrate need to reboot. Continue?</source>
@@ -6945,11 +7104,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
     <message>
         <source>Backup/Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>

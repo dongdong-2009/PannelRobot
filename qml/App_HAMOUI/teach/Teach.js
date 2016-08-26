@@ -1211,14 +1211,14 @@ var cycle8 = function(){
     var flag9 = f.flagID;
     var ret = [];
 //      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
-    ret.push(generateConditionAction(0, 20, 1, 0, 0,flag1));
-    ret.push(generateConditionAction(0, 20, 0, 0, 0,flag1));
-    ret.push(generateOutputAction(20,0,0,20,0));     //close
+    ret.push(generateConditionAction(0, 10, 1, 0, 0,flag1));
+    ret.push(generateConditionAction(0, 10, 0, 0, 0,flag1));
+    ret.push(generateOutputAction(10,0,0,10,0));     //close
     ret.push(generateFlagAction(flag1, qsTr("Positive")));
 
-    ret.push(generateConditionAction(0, 21, 1, 0, 0,flag2));
-    ret.push(generateConditionAction(0, 21, 0, 0, 0,flag2));
-    ret.push(generateOutputAction(21,0,0,21,0));     //close
+    ret.push(generateConditionAction(0, 11, 1, 0, 0,flag2));
+    ret.push(generateConditionAction(0, 11, 0, 0, 0,flag2));
+    ret.push(generateOutputAction(11,0,0,11,0));     //close
     ret.push(generateFlagAction(flag2, qsTr("Negative")));
 
     ret.push(generateConditionAction(0, 22, 0, 0, 0,flag3));        //X36

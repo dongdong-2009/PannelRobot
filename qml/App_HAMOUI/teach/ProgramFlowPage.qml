@@ -50,6 +50,10 @@ Rectangle {
         return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
 
+    function calcSingleStepLine(currentLine){
+        return currentLine;
+    }
+
     function beforeSaveProgram(which){
 
     }
@@ -1435,8 +1439,9 @@ Rectangle {
                         text:qsTr("Start Line:[-1]")
 
                         onButtonClicked: {
-                            panelRobotController.setSingleRunStart(editing.currentIndex, - 1, programListView.currentIndex);
-                            text = ICString.icStrformat(qsTr("Start Line:[{0}]"),  programListView.currentIndex);
+                            var line = calcSingleStepLine(programListView.currentIndex);
+                            panelRobotController.setSingleRunStart(editing.currentIndex, -1, line);
+                            text = ICString.icStrformat(qsTr("Start Line:[{0}][{1}]"),  programListView.currentIndex, line);
                         }
                     }
                     ICButton{

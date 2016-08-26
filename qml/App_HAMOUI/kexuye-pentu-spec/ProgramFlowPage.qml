@@ -49,7 +49,8 @@ ProgramFlowPage {
 
     function copyLine(){
         var currentLine =  Utils.cloneObject(currentModelData().mI_ActionObject);
-        return  kexuyeActionEdit.createActionObj(currentLine);
+        var ret =   kexuyeActionEdit.createActionObj(currentLine)[0];
+        return ret;
     }
     function calcSingleStepLine(currentSel){
         return LocalPData.kexueyeRowToStepMap[currentSel];
@@ -1167,17 +1168,18 @@ ProgramFlowPage {
                 if(count == -1){
                     var rs = pentuActionHead(model.get(i).mI_ActionObject);
                     count = i;
+                    LocalPData.kexueyeRowToStepMap[i] = ret.length;
                     for(var j = 0, len = rs.length; j < len; ++j){
                         LocalPData.stepToKeXuYeRowMap[ret.length] = count;
-                        LocalPData.kexueyeRowToStepMap[count] = ret.length;
                         ret.splice(j, 0, rs[j]);
 //                        ret.push(rs[j]);
                     }
                 }
                 var ps = pentuActionToProgram(model.get(i).mI_ActionObject,model.get(count).mI_ActionObject);
+                if(count != i)
+                    LocalPData.kexueyeRowToStepMap[i] = ret.length;
                 for(j = 0, len = ps.length; j < len; ++j){
                     LocalPData.stepToKeXuYeRowMap[ret.length] = i;
-                    LocalPData.kexueyeRowToStepMap[i] = ret.length;
 
                     ret.push(ps[j]);
                 }
@@ -1186,7 +1188,7 @@ ProgramFlowPage {
                     rs = pentuActionEnd(model.get(count).mI_ActionObject);
                     for(j = 0, len = rs.length; j < len; ++j){
                         LocalPData.stepToKeXuYeRowMap[ret.length] = count;
-                        LocalPData.kexueyeRowToStepMap[count] = ret.length;
+//                        LocalPData.kexueyeRowToStepMap[count] = ret.length;
                         ret.push(rs[j]);
                     }
                 }

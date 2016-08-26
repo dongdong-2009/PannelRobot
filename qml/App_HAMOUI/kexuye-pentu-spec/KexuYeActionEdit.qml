@@ -17,9 +17,15 @@ Item {
     property variant stackInstance: null
     property variant stackCount: []
     function createActionObjects(){
+        return createActionObj(null);
+    }
+
+    function createActionObj(actObt){
         var ret = [];
-        var details = detailInstance.getDetails();
-        var stack = stackInstance.getstackInstace();
+        if(actObt == null){
+            var details = detailInstance.getDetails();
+            var stack = stackInstance.getstackInstace();
+        }
         var rc = BaseTeach.counterManager.getCounter(0);
         if(rc == null){
             rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
@@ -38,7 +44,10 @@ Item {
         var rotateOKCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        if(actObt == null)
+            c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        else
+            c = BaseTeach.counterManager.newCounter("", 0, actObt.xcount * actObt.ycount);
         var aaaa = stackCount = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
@@ -47,23 +56,45 @@ Item {
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
 
-        if(stack.useStack)
-            var newstack = newStack();
-        else newstack = 0;
-        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
-                                                details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
-                                                repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
-                                                dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
-                                                dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
-                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
-                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
-                                                details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                                                details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
-                                                aaaa,bbbb,editaction.configValue,
-                                                stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
-                                                stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
-                                                stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
-                                                stack.zdirection,newstack,isGunBack.isChecked));
+
+        if(actObt == null){
+            if(stack.useStack)
+                var newstack = newStack();
+            else newstack = 0;
+        }
+        else{
+            if(actObt.useStack)
+                newstack = newStack();
+            else newstack = 0;
+        }
+        if(actObt == null)
+            ret.push(LocalTeach.generatePENTUAction(
+                        mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
+                        details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
+                        repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
+                        dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
+                        dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
+                        rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
+                        details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
+                        details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
+                        details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
+                        aaaa,bbbb,editaction.configValue,
+                        stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
+                        stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
+                        stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
+                        stack.zdirection,newstack,isGunBack.isChecked));
+        else
+            ret.push(LocalTeach.generatePENTUAction(
+                        actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
+                        actObt.startPosSpeed2, actObt.startPosSpeed3, actObt.startPosSpeed4, actObt.startPosSpeed5,
+                        actObt.repeatSpeed, actObt.repeateCount, actObt.zlength, actObt.dirAxis, actObt.dirLength, actObt.dirSpeed,
+                        actObt.dirCount, actObt.point1, actObt.point2, actObt.rotate, actObt.rotateSpeed, actObt.rotateCount,
+                        actObt.fixtureDelay0, actObt.fixtureDelay1, actObt.fixtureDelay2, rcID, dirCID, rotateCID,
+                        actObt.fixture2Delay0, actObt.fixture2Delay1, actObt.fixture2Delay2, actObt.fixture1Switch, actObt.fixture2Switch,
+                        actObt.slope, rotateOKCID, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
+                        actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
+                        actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
+                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack));
         return ret;
     }
 

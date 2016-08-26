@@ -45,6 +45,11 @@ ProgramFlowPage {
         return baseRunningInfo;
     }
 
+    function copyLine(){
+        var currentLine =  Utils.cloneObject(currentModelData().mI_ActionObject);
+        return  kexuyeActionEdit.createActionObj(currentLine);
+    }
+
     function axischange(actionObject){
             switch(actionObject.plane){
                 case 0:

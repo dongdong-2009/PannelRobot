@@ -21,7 +21,9 @@ ProgramFlowPage {
 
     function getRecordContent(which){
         if(which == 0){
-            LocalPData.stepToKeXuYeRowMap = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            var lineInfo = JSON.parse(KXYRecord.keXuyePentuRecord.getLineInfo(panelRobotController.currentRecordName()));
+            LocalPData.stepToKeXuYeRowMap = lineInfo[0];
+            LocalPData.kexueyeRowToStepMap = lineInfo[1];
             var ret = JSON.parse(KXYRecord.keXuyePentuRecord.getRecordContent(panelRobotController.currentRecordName()));
             for(var i = 0;i < ret.length;i++){
                 if(ret[i].action == LocalTeach.actions.F_CMD_PENTU){
@@ -43,6 +45,10 @@ ProgramFlowPage {
             baseRunningInfo.steps[i] = LocalPData.stepToKeXuYeRowMap[uiSteps[i]];
         }
         return baseRunningInfo;
+    }
+
+    function calcSingleStepLine(currentSel){
+        return LocalPData.kexueyeRowToStepMap[currentSel];
     }
 
     function axischange(actionObject){
@@ -1136,6 +1142,7 @@ ProgramFlowPage {
         var model = BasePData.programs[which];
         var ret = [];
         LocalPData.stepToKeXuYeRowMap = {};
+        LocalPData.kexueyeRowToStepMap = {};
         var count = -1;
         for(var i = 0; i < model.count; ++i){
             if(model.get(i).mI_ActionObject.action == LocalTeach.actions.F_CMD_PENTU){
@@ -1143,7 +1150,8 @@ ProgramFlowPage {
                     var rs = pentuActionHead(model.get(i).mI_ActionObject);
                     count = i;
                     for(var j = 0, len = rs.length; j < len; ++j){
-                        LocalPData.stepToKeXuYeRowMap[ret.length] = 0;
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = count;
+                        LocalPData.kexueyeRowToStepMap[count] = ret.length;
                         ret.splice(j, 0, rs[j]);
 //                        ret.push(rs[j]);
                     }
@@ -1151,17 +1159,21 @@ ProgramFlowPage {
                 var ps = pentuActionToProgram(model.get(i).mI_ActionObject,model.get(count).mI_ActionObject);
                 for(j = 0, len = ps.length; j < len; ++j){
                     LocalPData.stepToKeXuYeRowMap[ret.length] = i;
+                    LocalPData.kexueyeRowToStepMap[i] = ret.length;
+
                     ret.push(ps[j]);
                 }
             }else{
                 if(model.get(i).mI_ActionObject.action == LocalTeach.actions.ACT_END && count != -1){
                     rs = pentuActionEnd(model.get(count).mI_ActionObject);
                     for(j = 0, len = rs.length; j < len; ++j){
-                        LocalPData.stepToKeXuYeRowMap[ret.length] = i;
+                        LocalPData.stepToKeXuYeRowMap[ret.length] = count;
+                        LocalPData.kexueyeRowToStepMap[count] = ret.length;
                         ret.push(rs[j]);
                     }
                 }
                 LocalPData.stepToKeXuYeRowMap[ret.length] = i;
+                LocalPData.kexueyeRowToStepMap[i] = ret.length;
                 ret.push(model.get(i).mI_ActionObject);
             }
         }
@@ -1172,7 +1184,7 @@ ProgramFlowPage {
         if(which == 0){
             var p = modelToProgramHelper(which);
             KXYRecord.keXuyePentuRecord.updateRecord(panelRobotController.currentRecordName(), JSON.stringify(p));
-            KXYRecord.keXuyePentuRecord.updateLineInfo(panelRobotController.currentRecordName(),JSON.stringify(LocalPData.stepToKeXuYeRowMap));
+            KXYRecord.keXuyePentuRecord.updateLineInfo(panelRobotController.currentRecordName(),JSON.stringify([LocalPData.stepToKeXuYeRowMap, LocalPData.kexueyeRowToStepMap]));
         }
     }
 

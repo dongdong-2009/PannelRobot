@@ -294,6 +294,9 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
+
+    Q_INVOKABLE QString readRecord(const QString& name) const;
+
     Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)

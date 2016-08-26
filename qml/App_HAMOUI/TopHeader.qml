@@ -12,6 +12,7 @@ Rectangle {
     property int menuItemHeight: height * Theme.defaultTheme.TopHeader.menuItemHeightProportion
     property alias modeText: modeText
     property alias loginUser: loginBtn.text
+    property alias speed: globalSpeed.text
     property int mode: 0
     property Item lastChecked: null
 
@@ -24,7 +25,7 @@ Rectangle {
     signal recordItemStatusChanged(bool isChecked)
     signal alarmLogItemStatusChanged(bool isChecked);
     signal loginBtnClicked()
-//    signal lan
+    //    signal lan
 
     function onRecordChanged(){
         record.itemText = qsTr("Records:") + panelRobotController.currentRecordName();
@@ -65,10 +66,12 @@ Rectangle {
     }
     Rectangle{
         id: modeTextContainer
-        width: parent.width *0.25
+        width: parent.width *0.27
+        height: modeBG.height
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: modeImg.right
         anchors.leftMargin: parent.width * 0.01
+        color: "transparent"
 
         Image {
             id: modeBG
@@ -79,9 +82,32 @@ Rectangle {
         Text {
             id: modeText
             text: qsTr("Manual")
-            anchors.centerIn: parent
+//            anchors.centerIn: parent
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -10
             color: "yellow"
             font.pixelSize: 24
+        }
+        Text {
+            id:globalSpeedLabel
+            text: qsTr("%")
+            font.pixelSize: 9
+            font.bold: true
+            color: globalSpeed.color
+            x:180
+
+            anchors.bottom: globalSpeed.top
+            anchors.bottomMargin: -2
+        }
+        Text {
+            id: globalSpeed
+            color: "purple"
+            font.pixelSize: 13
+            font.bold: true
+            anchors.horizontalCenter: globalSpeedLabel.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 6
         }
     }
 
@@ -155,13 +181,13 @@ Rectangle {
         id:buttonGroup
         layoutMode: 2
     }
-//    Timer{
-//        id:refreshTimer
-//        interval: 50; running: false; repeat: true;
-//        onTriggered: {
+    //    Timer{
+    //        id:refreshTimer
+    //        interval: 50; running: false; repeat: true;
+    //        onTriggered: {
 
-//        }
-//    }
+    //        }
+    //    }
 
     Timer{
         id:refreshTimer
@@ -172,7 +198,7 @@ Rectangle {
             var m = panelRobotController.currentMode();
             modeText.text = qsTr("Auto");
             if(Keymap.modeToText.hasOwnProperty(m))
-                  modeText.text += "/" +  Keymap.modeToText[m];
+                modeText.text += "/" +  Keymap.modeToText[m];
         }
     }
 

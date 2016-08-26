@@ -79,7 +79,7 @@ Item {
                 height: axisFlyPos1.height
                 onButtonClicked: {
                     if(axisFlyAxisSel.configValue >=0)
-                        axisFlyPos1.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[axisFlyAxisSel.configValue].wAddr);
+                        axisFlyPos1.configValue = (panelRobotController.statusValue(AxisDefine.axisInfos[axisFlyAxisSel.configValue].jAddr) / 1000).toFixed(3);
                 }
             }
         }
@@ -99,7 +99,7 @@ Item {
                 height: axisFlyPos2.height
                 onButtonClicked: {
                     if(axisFlyAxisSel.configValue >=0)
-                        axisFlyPos2.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[axisFlyAxisSel.configValue].wAddr);
+                        axisFlyPos2.configValue = (panelRobotController.statusValue(AxisDefine.axisInfos[axisFlyAxisSel.configValue].jAddr) / 1000).toFixed(3);
                 }
 
             }

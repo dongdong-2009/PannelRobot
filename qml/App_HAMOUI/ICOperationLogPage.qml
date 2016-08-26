@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "."
 import "ShareData.js" as ShareData
 import "ICOperationLog.js" as ICOperationLog
+import "../ICCustomElement"
 
 Rectangle {
     id:container
@@ -22,45 +23,35 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         y:6
         z:2
-        Rectangle{
+        ICLabel{
             id:hOpTime
             border.width: 1
             border.color: "gray"
             width: 150
             height: 32
-            Text {
-                text: qsTr("Operation Time")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-            }
+            text: qsTr("Operation Time")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
-        Rectangle{
+        ICLabel{
             id:hUser
             border.width: hOpTime.border.width
             border.color: hOpTime.border.color
             width: 80
             height: hOpTime.height
-            Text {
-                text: qsTr("User")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-
-            }
+            text: qsTr("User")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
-        Rectangle{
+        ICLabel{
             id:hDescr
             border.width: hOpTime.border.width
             border.color: hOpTime.border.color
             width: 550
             height: hOpTime.height
-            Text {
-                text: qsTr("Descr")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-            }
+            text: qsTr("Descr")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
     }
 

@@ -72,7 +72,7 @@ function initialize() {
                         tx.executeSql('INSERT INTO users VALUES("操作员", "123", 0)');
                         tx.executeSql('InSERT INTO users VALUES("管理员", "123", 1)');
                         tx.executeSql('InSERT INTO users VALUES("高级管理员", "123456", 3)');
-                        tx.executeSql('InSERT INTO users VALUES("超级管理员", "12345678", 7)');
+                        tx.executeSql('InSERT INTO users VALUES("超级管理员", "12345678", 15)');
                         tx.executeSql('InSERT INTO users VALUES("szhcroot", "szhcrobot", 15)');
                     }
                     else if(rs.rows.length > 0){

@@ -307,7 +307,7 @@ public:
         if(ret)
         {
             ICRobotVirtualhost::InitMachineConfig(host_,mold->BareMachineConfigs());
-            ICAppSettings as;
+            ICSuperSettings as;
             as.SetCurrentSystemConfig(name);
 
             emit moldChanged();
@@ -767,6 +767,22 @@ public:
     }
     Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
 
+    Q_INVOKABLE int registerUseTime(const QString& fc, const QString& mC, const QString& rcCode);
+    Q_INVOKABLE QString generateMachineCode() const;
+    Q_INVOKABLE int restUseTime() const;
+    Q_INVOKABLE void setRestUseTime(int hour);
+    Q_INVOKABLE bool isTryTimeOver() const;
+
+    Q_INVOKABLE QString factoryCode() const
+    {
+        return ICSuperSettings().FactoryCode();
+    }
+
+    Q_INVOKABLE void setFactoryCode(const QString& fc)
+    {
+        ICSuperSettings().SetFactoryCode(fc);
+    }
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)
@@ -799,6 +815,7 @@ signals:
     void sendingContinuousData();
     void sentContinuousData(int);
     void needToInitHost();
+    void tryTimeOver();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -562,23 +562,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -586,11 +586,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1597,11 +1597,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -4090,6 +4090,10 @@
         <source>Picture Settings</source>
         <translation>图片设定</translation>
     </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
 </context>
 <context>
     <name>ParaChose</name>
@@ -4871,6 +4875,69 @@ please chose!</source>
     <message>
         <source>Importing...</source>
         <translation>导入中...</translation>
+    </message>
+    <message>
+        <source>Export Printable</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegisterUseTimeSettings</name>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Forever</source>
+        <translation>永久</translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation type="vanished">小时</translation>
+    </message>
+    <message>
+        <source>Machine Code:</source>
+        <translation>机器码:</translation>
+    </message>
+    <message>
+        <source>Register Code:</source>
+        <translation>注册码:</translation>
+    </message>
+    <message>
+        <source>Generate Machine Code</source>
+        <translation>生成机器码</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <source>Wrong register code!</source>
+        <translation>错误的注册码!</translation>
+    </message>
+    <message>
+        <source>Register successfully!</source>
+        <translation>注册成功!</translation>
+    </message>
+    <message>
+        <source>Factory code(6bit):</source>
+        <translation>厂商代码(6位):</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="vanished">导出</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation type="vanished">导入</translation>
+    </message>
+    <message>
+        <source>Rest Time(0 Forever):</source>
+        <translation>剩余使用时间(0为永久):</translation>
+    </message>
+    <message>
+        <source>hour</source>
+        <translation>小时</translation>
     </message>
 </context>
 <context>
@@ -6032,6 +6099,14 @@ You just need to set the count configs after this setting.</source>
         <source>Rel</source>
         <translation>相对</translation>
     </message>
+    <message>
+        <source>Datasource</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6560,6 +6635,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Please Register!</source>
+        <translation>请注册!</translation>
     </message>
 </context>
 <context>

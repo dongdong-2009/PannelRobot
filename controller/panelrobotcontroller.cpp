@@ -9,6 +9,7 @@
 #include "parser.h"
 #include "icupdatesystem.h"
 #include "icutility.h"
+#include "icregister.h"
 
 #ifdef Q_WS_QWS
 #include <stdio.h>
@@ -152,6 +153,11 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     //    keyCheckTimer_.start(100);
     controllerInstance = this;
 
+    if(ICRegister::Instance()->IsTryTimeOver())
+    {
+        emit tryTimeOver();
+    }
+
 
 #ifdef Q_WS_QWS
     screenSaver_ = new ICDefaultScreenSaver();
@@ -249,7 +255,7 @@ void PanelRobotController::InitMold_()
 
 void PanelRobotController::InitMachineConfig_()
 {
-    ICAppSettings as;
+    ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
@@ -1723,4 +1729,32 @@ void PanelRobotController::registerCustomProgramAction(const QString &actionDefi
         }
         ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
     }
+}
+
+int PanelRobotController::registerUseTime(const QString &fc, const QString &mC, const QString &rcCode)
+{
+    int ret = ICRegister::Register(fc, mC, rcCode);
+    if(ret < 0) return ret;
+    ICRegister::Instance()->SetUseTime(ret);
+    return ret;
+}
+
+QString PanelRobotController::generateMachineCode() const
+{
+    return ICRegister::GenerateMachineCode();
+}
+
+int PanelRobotController::restUseTime() const
+{
+    return ICRegister::Instance()->LeftUseTime();
+}
+
+bool PanelRobotController::isTryTimeOver() const
+{
+    return ICRegister::Instance()->IsTryTimeOver();
+}
+
+void PanelRobotController::setRestUseTime(int hour)
+{
+    ICRegister::Instance()->SetUseTime(hour);
 }

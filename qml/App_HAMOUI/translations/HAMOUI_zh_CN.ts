@@ -704,7 +704,7 @@
     </message>
     <message>
         <source>Target:</source>
-        <translation type="unfinished"></translation>
+        <translation>目标产量</translation>
     </message>
     <message>
         <source>Current:</source>
@@ -713,6 +713,18 @@
     <message>
         <source>counter</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nmb</source>
+        <translation type="unfinished">个</translation>
+    </message>
+    <message>
+        <source>Total:</source>
+        <translation type="unfinished">当前产量</translation>
+    </message>
+    <message>
+        <source>cuont:</source>
+        <translation type="unfinished">每模个数</translation>
     </message>
 </context>
 <context>
@@ -3815,6 +3827,26 @@
         <source>Is Gun Back</source>
         <translation>喷枪收回</translation>
     </message>
+    <message>
+        <source>Gunfresh1</source>
+        <translation>洗枪/试枪1</translation>
+    </message>
+    <message>
+        <source>Gunfresh2</source>
+        <translation>洗枪/试枪2</translation>
+    </message>
+    <message>
+        <source>Repeat EPos</source>
+        <translation type="unfinished">设入终点</translation>
+    </message>
+    <message>
+        <source>Dir EPos</source>
+        <translation type="unfinished">设入终点</translation>
+    </message>
+    <message>
+        <source>Set TPos</source>
+        <translation type="unfinished">设入经过</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -3893,6 +3925,10 @@
     <message>
         <source>Line Long</source>
         <translation>线段长度</translation>
+    </message>
+    <message>
+        <source>Use</source>
+        <translation type="unfinished">使用</translation>
     </message>
 </context>
 <context>
@@ -4832,11 +4868,11 @@ please chose!</source>
     </message>
     <message>
         <source>Repeat EPos</source>
-        <translation>重复终点</translation>
+        <translation type="unfinished">设入终点</translation>
     </message>
     <message>
         <source>Dir EPos</source>
-        <translation>寸动终点</translation>
+        <translation type="unfinished">设入终点</translation>
     </message>
 </context>
 <context>
@@ -5150,6 +5186,14 @@ please chose!</source>
     </message>
     <message>
         <source>Lines:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Line:[{0}][{1}]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pase</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

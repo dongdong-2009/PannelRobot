@@ -205,13 +205,13 @@ ProgramFlowPage {
 //        }
     }
     function getready(ret,actionObject){
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2,0.1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2,0.1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
     }
 
@@ -270,15 +270,15 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
-        ret.push(LocalTeach.generateDataAction(819206,0,1));
+//        ret.push(LocalTeach.generateDataAction(819206,0,1));
 //        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
 //        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
-//        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
-//        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
-//        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
-//        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
-//        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
+        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
 
 //        ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
@@ -292,15 +292,16 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
 
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateOutputAction(10,0,1,10,0));   //gongzhuangzhengzhuang open
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
 //        generateAxisServoAction = function(action,axis,pos,speed,delay,isBadEn,isEarlyEnd,earlyEndPos,isEarlySpd,earlySpdPos,earlySpd,signalStopEn,signalStopPoint,signalStopMode,speedMode,stop)
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startSpeed5,0,false,true,3600));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5,0,false,true,3600));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         ret.push(LocalTeach.generateWaitAction(11,0,0,10));
@@ -312,13 +313,13 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag11));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));   //gongzhuangfanzhuang open
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4,0,false,true,3600));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4,0,false,true,3600));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         ret.push(LocalTeach.generateWaitAction(10,0,0,10));
@@ -339,22 +340,22 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag14));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":"0.000","m5":actionObject.rotate}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag15));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag14, qsTr("Rotate1")));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startSpeed1));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startSpeed3));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
         ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag15, qsTr("Rotate2")));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startPosSpeed2));
 
 
         if(actionObject.useStack){
@@ -1001,6 +1002,10 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
             }
             ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
+
+            var overlength = pos.m0;
+            if(overlength > actionObject.dirLength)
+                overlength = actionObject.dirLength;
             if(actionObject.mode == 3){
                 ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 0));
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
@@ -1008,7 +1013,7 @@ ProgramFlowPage {
                 ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.repeateCounterID, 0, 0));
                 ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("over elar")));
                 ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                         -repeatlength, actionObject.repeateSpeed,0,false,true,actionObject.dirLength*4,false,0,0,false,0,0,0,false,1));
+                         -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
                 ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("over done")));
 //                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
 //                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
@@ -1036,7 +1041,7 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
 
             ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
-                     actionObject.dirLength, actionObject.dirSpeed,0,false,true,actionObject.dirLength/2,false,0,0,false,0,0,0,false,1));
+                     actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
 //                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
@@ -1068,6 +1073,7 @@ ProgramFlowPage {
             }
             ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         }
+
 
 //        else if(actionObject.mode == 1){
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARCXY_MOVE_POINT + actionObject.plane,

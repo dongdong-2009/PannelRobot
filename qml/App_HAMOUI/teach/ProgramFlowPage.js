@@ -151,3 +151,4 @@ function programToParsingIndex(p){
     console.log("programToParsingIndex wrong p");
     return 0;
 }
+var insertboad = null;

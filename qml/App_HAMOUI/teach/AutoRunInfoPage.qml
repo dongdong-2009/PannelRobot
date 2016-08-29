@@ -14,6 +14,55 @@ MouseArea{
         border.width: 1
         border.color: "gray"
         color: "#A0A0F0"
+        Grid{
+    //        anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.right: container.right
+            columns: 1
+            spacing: 2
+//            ICButton{
+//                id:clearCount
+////                anchors.right: container.right
+//                width: 60
+//                height: 32
+//                text: qsTr("Clear Count")
+//                bgColor: "green"
+//                onButtonClicked: {
+//                    total.configValue = 0;
+//                    var cr = Teach.counterManager.getCounter(0);
+//                    Teach.counterManager.updateCounter(cr.id, cr.name, 0, cr.target);
+//                    panelRobotController.saveCounterDef(cr.id, cr.name, 0, cr.target);
+//                }
+//            }
+            ICConfigEdit{
+                id:total
+                width: 50
+                inputWidth:60
+                enabled: false
+                configNameWidth: 60
+                configName: qsTr("Total:")
+                unit: qsTr("nmb")
+                configAddr: "s_rw_0_16_0_944"
+            }
+            ICConfigEdit{
+                id:count
+                width: 50
+                inputWidth:60
+                configNameWidth: 60
+                configName: qsTr("cuont:")
+                unit: qsTr("nmb")
+                configAddr: "s_rw_0_32_0_1400"
+            }
+            ICConfigEdit{
+                id:target
+                width: 50
+                inputWidth:60
+                enabled: false
+                configNameWidth: 60
+                configName: qsTr("Target:")
+                unit: qsTr("nmb")
+                configAddr: "s_rw_0_16_0_944"
+            }
+        }
         Column{
             id:normalContainer
             spacing: 2
@@ -33,6 +82,7 @@ MouseArea{
                     id: cycle
                 }
             }
+
 
 //            ICComboBoxConfigEdit{
 //                id: counter
@@ -132,6 +182,11 @@ MouseArea{
         onTriggered: {
             lastCycle.text = (panelRobotController.getMultiplexingConfig(ConfigDefines.multiplexingConfigAddrs.ICAddr_Common_Para1) / 1000).toFixed(3);
             cycle.text =  (panelRobotController.getMultiplexingConfig(ConfigDefines.multiplexingConfigAddrs.ICAddr_Common_Para0) / 1000).toFixed(3);
+            var counter = Teach.counterManager.getCounter(0);
+            total.configValue = count.configValue*counter.current;
+            target.configValue = count.configValue*counter.target;
+//            total.configValue = counter.current*panelRobotController.getConfigValue("s_rw_0_16_0_943");
+//            target.configValue = panelRobotController.getConfigValue("s_rw_0_16_0_943")*panelRobotController.getConfigValue("s_rw_16_16_0_943");
             var c;
             var mc;
             for(var i = 0, len = counterModel.count; i < len; ++i){
@@ -139,6 +194,7 @@ MouseArea{
                 c = Teach.counterManager.getCounter(mc.id);
                 if(c.current != mc.current)
                     counterModel.setProperty(i, "current", c.current);
+                panelRobotController.getConfigValue("s_rw_30_1_0_153")
             }
         }
     }

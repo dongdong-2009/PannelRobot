@@ -1724,3 +1724,6 @@ void PanelRobotController::registerCustomProgramAction(const QString &actionDefi
         ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
     }
 }
+//extern  const ICAddrWrapper  s_rw_0_16_0_943(3,3,0,16,943,0,"");
+//extern  const ICAddrWrapper  s_rw_16_16_0_943(3,3,16,16,943,0,"");
+//extern  const ICAddrWrapper  s_rw_0_16_0_944(3,3,0,16,943,0,"");

@@ -4,7 +4,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
 import "../teach/ManualProgramManager.js" as ManualProgramManager
-
+import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
@@ -28,16 +28,16 @@ Item {
         }
         var rc = BaseTeach.counterManager.getCounter(0);
         if(rc == null){
-            rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+            rc= BaseTeach.counterManager.newCounter("", 0, 50000);
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
         }
+        var rotateCID = rc.id;
         var c = BaseTeach.counterManager.newCounter("", 0, repeateCount.configValue);
         var rcID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         c = BaseTeach.counterManager.newCounter("", 0, dirCount.configValue);
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        var rotateCID = rc.id;
         var rotateOKCount = rotate.configValue / 90;
         if(rotate.configValue < 0)rotateOKCount = -rotateOKCount;
         c = BaseTeach.counterManager.newCounter("", 0, rotateOKCount);
@@ -59,12 +59,12 @@ Item {
 
         if(actObt == null){
             if(stack.useStack)
-                var newstack = newStack();
+                var newstack = newStack(null);
             else newstack = 0;
         }
         else{
             if(actObt.useStack)
-                newstack = newStack();
+                newstack = newStack(actObt);
             else newstack = 0;
         }
         if(actObt == null)
@@ -98,33 +98,60 @@ Item {
         return ret;
     }
 
-    function newStack(){
-        var stack = stackInstance.getstackInstace();
+    function newStack(actObt){
         var sid = LocalTeach.useableStack();
-        var si0 = new LocalTeach.StackItem(sPosM0.configValue || 0.000,
-                                      sPosM1.configValue || 0.000,
-                                      sPosM2.configValue || 0.000,
-                                      sPosM3.configValue || 0.000,
-                                      sPosM4.configValue || 0.000,
-                                      sPosM5.configValue || 0.000,
-                                      stack.xspace || 0.000,
-                                      stack.yspace || 0.000,
-                                      stack.zspace || 0.000,
-                                      stack.xcount || 0,
-                                      stack.ycount || 0,
-                                      stack.zcount || 0,
-                                      stack.turns,
-                                      stack.xdirection,
-                                      stack.ydirection,
-                                      stack.zdirection,
-                                      true,
-                                      stackCount,
-                                      stack.useDeviation,
-                                      stack.xdeviation,
-                                      stack.ydeviation,
-                                      stack.zdeviation,
-                                      "custompoint[" + sid + "]",
-                                      sid);
+        if(actObt == null){
+            var stack = stackInstance.getstackInstace();
+            var si0 = new LocalTeach.StackItem(sPosM0.configValue || 0.000,
+                                          sPosM1.configValue || 0.000,
+                                          sPosM2.configValue || 0.000,
+                                          sPosM3.configValue || 0.000,
+                                          sPosM4.configValue || 0.000,
+                                          sPosM5.configValue || 0.000,
+                                          stack.xspace || 0.000,
+                                          stack.yspace || 0.000,
+                                          stack.zspace || 0.000,
+                                          stack.xcount || 0,
+                                          stack.ycount || 0,
+                                          stack.zcount || 0,
+                                          stack.turns,
+                                          stack.xdirection,
+                                          stack.ydirection,
+                                          stack.zdirection,
+                                          true,
+                                          stackCount,
+                                          stack.useDeviation,
+                                          stack.xdeviation,
+                                          stack.ydeviation,
+                                          stack.zdeviation,
+                                          "custompoint[" + sid + "]",
+                                          sid);
+        }
+        else
+            si0 = new LocalTeach.StackItem(actObt.startPos.sPosM0.configValue || 0.000,
+                                          actObt.startPos.sPosM1.configValue || 0.000,
+                                          actObt.startPos.sPosM2.configValue || 0.000,
+                                          actObt.startPos.sPosM3.configValue || 0.000,
+                                          actObt.startPos.sPosM4.configValue || 0.000,
+                                          actObt.startPos.sPosM5.configValue || 0.000,
+                                          actObt.xspace || 0.000,
+                                          actObt.yspace || 0.000,
+                                          actObt.zspace || 0.000,
+                                          actObt.xcount || 0,
+                                          actObt.ycount || 0,
+                                          actObt.zcount || 0,
+                                          actObt.turns,
+                                          actObt.xdirection,
+                                          actObt.ydirection,
+                                          actObt.zdirection,
+                                          true,
+                                          actObt.aaaa,
+                                          actObt.useDeviation,
+                                          actObt.xdeviation,
+                                          actObt.ydeviation,
+                                          actObt.zdeviation,
+                                          "custompoint[" + sid + "]",
+                                          sid);
         var stackInfo = new LocalTeach.StackInfo(si0, si0, 0, "stack1", "custompoint[" + sid + "]", sid, []);
         sid = LocalTeach.appendStackInfo(stackInfo);
         panelRobotController.saveStacks(LocalTeach.stacksToJSON());
@@ -187,8 +214,8 @@ Item {
         dirAxisSel.visible = mode == 8 ? false : true;
         editaction.visible = mode == 8 ? true : false;
         button_setPos1.visible = mode == 8 ? false : true;
-//        pos1Axis1.visible = mode != 8;
-//        pos1Axis2.visible = mode != 8;
+        pos1Axis1.visible = mode == 8 ? false : true;
+        pos1Axis2.visible = mode == 8 ? false : true;
         repeateSpeed.visible = mode == 8 ? false : true;
 //        repeateCount.visible = mode == 8 ? false : true;
 //        zlength.visible = mode == 8 ? false : true;
@@ -196,7 +223,13 @@ Item {
         dirSpeed.visible = mode == 8 ? false : true;
     }
     function hidePoint(){
-        if(mode != 6 || mode != 2)
+        if(mode == 8){
+            pos1Axis1.visible = false;
+            pos1Axis2.visible = false;
+            pos2Axis1.visible = false;
+            pos2Axis2.visible = false;
+        }
+        else if(mode != 8)
             if(dirAxisSel.configValue == 0){
                 pos1Axis1.visible = false;
                 pos1Axis2.visible = true;
@@ -209,6 +242,7 @@ Item {
                 pos2Axis1.visible = false;
                 pos2Axis2.visible = true;
             }
+
     }
 
     function onProgramAdded(program){
@@ -336,6 +370,7 @@ Item {
                 width: configContainer.posNameWidth + 10
                 height: sPosM0.height
                 anchors.verticalCenter: parent.verticalCenter
+                bgColor: "lime"
                 onButtonClicked: {
                     sPosM0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                     sPosM1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
@@ -372,6 +407,32 @@ Item {
                 unit: AxisDefine.axisInfos[2].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
+            ICButton{
+                id:gunfresh1
+                width: sPosM0.width
+                height: 32
+                text: qsTr("Gunfresh1")
+                anchors.leftMargin: 12
+                bgColor: "grey"
+                onBtnPressed: {
+                    gunfresh1.bgColor = "lime";
+                    var toSend = IODefines.valveItemJSON("valve4");
+                    panelRobotController.setYStatus(toSend, 1);
+                    toSend = IODefines.valveItemJSON("valve5");
+                    panelRobotController.setYStatus(toSend, 1);
+                    toSend = IODefines.valveItemJSON("valve6");
+                    panelRobotController.setYStatus(toSend, 1);
+                }
+                onBtnReleased: {
+                    gunfresh1.bgColor = "grey";
+                    var toSend = IODefines.valveItemJSON("valve4");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve5");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve6");
+                    panelRobotController.setYStatus(toSend, 0);
+                }
+            }
         }
         Row{
             id:linkpos1Container
@@ -404,6 +465,32 @@ Item {
                 unit: AxisDefine.axisInfos[5].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
+            ICButton{
+                id:gunfresh2
+                width: sPosM0.width
+                height: 32
+                text: qsTr("Gunfresh2")
+                anchors.leftMargin: 12
+                bgColor: "grey"
+                onBtnPressed: {
+                    gunfresh2.bgColor = "lime"
+                    var toSend = IODefines.valveItemJSON("valve7");
+                    panelRobotController.setYStatus(toSend, 1);
+                    toSend = IODefines.valveItemJSON("valve8");
+                    panelRobotController.setYStatus(toSend, 1);
+                    toSend = IODefines.valveItemJSON("valve9");
+                    panelRobotController.setYStatus(toSend, 1);
+                }
+                onBtnReleased: {
+                    gunfresh2.bgColor = "grey"
+                    var toSend = IODefines.valveItemJSON("valve7");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve8");
+                    panelRobotController.setYStatus(toSend, 0);
+                    toSend = IODefines.valveItemJSON("valve9");
+                    panelRobotController.setYStatus(toSend, 0);
+                }
+            }
         }
         Row{
             spacing: 85
@@ -429,6 +516,7 @@ Item {
                     width: configContainer.posNameWidth + 10
                     height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    bgColor: "lime"
                     onButtonClicked: {
                         switch(planeSel.configValue){
                         case 0:{
@@ -493,7 +581,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-//                visible: mode == 2 || mode == 6
+                visible: mode == 2 || mode == 6
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -511,6 +599,7 @@ Item {
                     width: configContainer.posNameWidth + 10
                     height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    bgColor: "lime"
                     onButtonClicked: {
                         switch(planeSel.configValue){
                         case 0:{
@@ -664,18 +753,14 @@ Item {
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
         isGunBack.isChecked = actionObject.isGunBack;
-//        if(actionObject.mode == 2 || actionObject.mode == 6){
-//            if(actionObject.dirAxis == 0){
-//                pos2Axis1.visible = ture;
-//                pos2Axis2.visible = false;
-//            }
-//            else {
-//                pos2Axis1.visible = false;
-//                pos2Axis2.visible = true;
-//            }
-//            button_setPos2.visible = true;
-//        }
-//        else button_setPos2.visible = false;
+        if(actionObject.mode == 2 || actionObject.mode == 6){
+            pos3Container.visible = true;
+            setPosName(qsTr("Repeat EPos"), qsTr("Dir EPos"));
+        }
+        else {
+            pos3Container.visible = false;
+            setPosName(qsTr("Set EPos"), qsTr("Set TPos"));
+        }
         if(actionObject.mode > 3){
             if(actionObject.plane == 0 && actionObject.dirAxis == 0)
                 gunFollowEn.visible = true;

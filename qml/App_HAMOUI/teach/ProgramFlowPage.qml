@@ -1137,10 +1137,23 @@ Rectangle {
 
                         onButtonClicked: {
 //                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-                            var toInsert = copyLine();
+                            PData.insertboad = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
-                            insertActionToList(toInsert);
-                            //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
+//                            insertActionToList(toInsert);
+//                            //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
+//                            repaintProgramItem(currentModel());
+                        }
+                    }
+                    ICButton{
+                        id:pase
+                        height: parent.height
+                        width: 40
+                        text: qsTr("Pase")
+                        visible: {
+                            return  (programListView.currentIndex < programListView.count - 1)
+                        }
+                        onButtonClicked: {
+                            insertActionToList(PData.insertboad);
                             repaintProgramItem(currentModel());
                         }
                     }

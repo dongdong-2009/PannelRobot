@@ -18,19 +18,19 @@ Item {
         spacing: 2
         Text {
             id: name_
-            width: 20
+            width: 40
             color: textColor
         }
         Text {
             id: pos_
-            width: 70
+            width: 90
             color: textColor
             text:(con.text*mode).toFixed(3)
             horizontalAlignment: Text.AlignRight
         }
         Text {
             id:unit_
-            width: 20
+            width: 40
             color: textColor
 
         }

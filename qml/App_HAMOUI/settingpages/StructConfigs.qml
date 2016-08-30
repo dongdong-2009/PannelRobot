@@ -272,6 +272,21 @@ Item {
 
         }
     }
+    ICComboBoxConfigEdit{
+        id:l6Type
+        configName: qsTr("IO Type")
+        items: [qsTr("L6-IO-1"), qsTr("L6-IO-2")]
+        anchors.right: parent.right
+        anchors.rightMargin: 20
+    }
+
+    function onIOTypeChanged(){
+        if(panelRobotController.getCustomSettings("Language", "CN") == "US") return;
+        var qm = l6Type.configValue == 0 ? "HAMOUI_zh_CN.qm" : "L6-2_zh_CN.qm";
+        panelRobotController.setCustomSettings("L6CNQM", qm);
+        panelRobotController.setCurrentTranslator(qm);
+    }
+
 //    function onAxisDefinesChanged(){
 //        axis1Length.visible = AxisDefine.axisInfos[0].visiable;
 //        axis2Length.visible = AxisDefine.axisInfos[1].visiable;
@@ -283,5 +298,7 @@ Item {
     Component.onCompleted: {
 //        AxisDefine.registerMonitors(container);
 //        onAxisDefinesChanged();
+        l6Type.configValue = (panelRobotController.getCustomSettings("L6CNQM", "HAMOUI_zh_CN.qm") == "HAMOUI_zh_CN.qm" ? 0 : 1)
+        l6Type.configValueChanged.connect(onIOTypeChanged);
     }
 }

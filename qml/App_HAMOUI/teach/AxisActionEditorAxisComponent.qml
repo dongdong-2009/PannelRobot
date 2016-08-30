@@ -12,6 +12,7 @@ Row{
     property int editorWidth: 80
     property alias rangeAddr: pos.bindConfig
     property alias angle: pos.text
+    property alias unit: pos.unit
 
     function getAxisActionInfo(){
         if(!box.isChecked) return null;

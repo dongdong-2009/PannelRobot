@@ -20,9 +20,9 @@ Item {
 
         Grid{
             id:worldPos
-            rows: 1
-            columns: 6
-            spacing: 25
+            rows: 2
+            columns: 3
+            spacing: 2
             AxisPosDisplayComponent{
                 id:m0
                 name: AxisDefine.axisInfos[0].name+" :"

@@ -111,6 +111,7 @@ Item {
                 psName: [qsTr("X1 ON"), qsTr("X1 OFF")]
                 axisDefine: pData.axisDefine.s1Axis
                 rangeAddr: "s_rw_0_32_3_1000"
+                unit: AxisDefine.axisInfos[0].unit
             }
 
             AxisActionEditorAxisComponent{
@@ -119,6 +120,8 @@ Item {
                 psName: [qsTr("Y1 ON"), qsTr("Y1 OFF")]
                 axisDefine: pData.axisDefine.s2Axis
                 rangeAddr: "s_rw_0_32_3_1001"
+                unit: AxisDefine.axisInfos[1].unit
+
             }
             AxisActionEditorAxisComponent{
                 id:m2Axis
@@ -126,6 +129,8 @@ Item {
                 psName: [qsTr("Z ON"), qsTr("Z OFF")]
                 axisDefine: pData.axisDefine.s3Axis
                 rangeAddr: "s_rw_0_32_3_1002"
+                unit: AxisDefine.axisInfos[2].unit
+
             }
             AxisActionEditorAxisComponent{
                 id:m3Axis
@@ -133,6 +138,8 @@ Item {
                 psName: [qsTr("X2 ON"), qsTr("X2 OFF")]
                 axisDefine: pData.axisDefine.s4Axis
                 rangeAddr: "s_rw_0_32_3_1003"
+                unit: AxisDefine.axisInfos[3].unit
+
             }
             AxisActionEditorAxisComponent{
                 id:m4Axis
@@ -140,6 +147,8 @@ Item {
                 psName: [qsTr("Y2 ON"), qsTr("Y2 OFF")]
                 axisDefine: pData.axisDefine.s5Axis
                 rangeAddr: "s_rw_0_32_3_1004"
+                unit: AxisDefine.axisInfos[4].unit
+
             }
             AxisActionEditorAxisComponent{
                 id:m5Axis
@@ -147,6 +156,8 @@ Item {
                 psName: [qsTr("A ON"), qsTr("A OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
+                unit: AxisDefine.axisInfos[5].unit
+
             }
             AxisActionEditorAxisComponent{
                 id:m6Axis
@@ -154,6 +165,8 @@ Item {
                 psName: [qsTr("B ON"), qsTr("B OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1006"
+                unit: AxisDefine.axisInfos[6].unit
+
             }
             AxisActionEditorAxisComponent{
                 id:m7Axis
@@ -161,6 +174,8 @@ Item {
                 psName: [qsTr("C ON"), qsTr("C OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1007"
+                unit: AxisDefine.axisInfos[7].unit
+
             }
             Row{
                 spacing: 6

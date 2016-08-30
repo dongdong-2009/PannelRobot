@@ -27,8 +27,8 @@ var kAP_RW = 12;
 var axisInfos = [new AxisInfo(0, qsTr("X"), qsTr("mm"), "c_ro_0_32_3_900", "c_ro_0_32_0_901", "s_rw_0_16_1_294"),
                  new AxisInfo(1, qsTr("Y"), qsTr("mm"), "c_ro_0_32_3_904", "c_ro_0_32_0_905", "s_rw_16_16_1_294"),
                  new AxisInfo(2, qsTr("Z"), qsTr("mm"), "c_ro_0_32_3_908", "c_ro_0_32_0_909", "s_rw_0_16_1_295"),
-                 new AxisInfo(3, qsTr("U"), qsTr("°"), "c_ro_0_32_3_912", "c_ro_0_32_0_913", "s_rw_16_16_1_295"),
-                 new AxisInfo(4, qsTr("V"), qsTr("°"), "c_ro_0_32_3_916", "c_ro_0_32_0_917", "s_rw_0_16_1_296"),
+                 new AxisInfo(3, qsTr("U"), qsTr("mm"), "c_ro_0_32_3_912", "c_ro_0_32_0_913", "s_rw_16_16_1_295"),
+                 new AxisInfo(4, qsTr("V"), qsTr("mm"), "c_ro_0_32_3_916", "c_ro_0_32_0_917", "s_rw_0_16_1_296"),
                  new AxisInfo(5, qsTr("W"), qsTr("°"), "c_ro_0_32_3_920", "c_ro_0_32_0_921", "s_rw_16_16_1_296"),
                  new AxisInfo(6, qsTr("M7"), qsTr("mm"), "c_ro_0_32_3_924", "c_ro_0_32_0_925", "s_rw_0_16_1_297"),
                  new AxisInfo(7, qsTr("M8"), qsTr("mm"), "c_ro_0_32_3_928", "c_ro_0_32_0_929", "s_rw_16_16_1_297")];

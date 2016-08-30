@@ -58,6 +58,10 @@ Rectangle {
 
     }
 
+    function copyLine(){
+        return Utils.cloneObject(currentModelData().mI_ActionObject);
+    }
+
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
             actionEditorFrame.item.showMenu();
@@ -611,7 +615,7 @@ Rectangle {
         }
 
         for(i = 0, len = PData.kFunctionProgramIndex; i < len; ++i){
-            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            stackLines = PData.stackLinesInfo.getLines(i, stackID);
             md = PData.programs[i];
             if(stackLines.length > 0){
                 updateStacksHelper(md, stackLines, stackID, i);
@@ -920,7 +924,8 @@ Rectangle {
                 }
                 onVisibleChanged: {
                     if(visible){
-                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
+//                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
+                        speedDisplay.text = ShareData.GlobalStatusCenter.getGlobalSpeed();
                     }
                 }
             }
@@ -1109,16 +1114,14 @@ Rectangle {
                         width: 40
                         text: qsTr("CUW")
 
-                        ListModel{
-                            id:testMo
-                        }
 
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
 
                         onButtonClicked: {
-                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+//                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+                            var toInsert = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
                             insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)

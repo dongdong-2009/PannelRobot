@@ -277,4 +277,7 @@ ContentPageBase {
     statusSection: posDisplayBar
 
 
+    Component.onCompleted: {
+        posDisplayBar.setJogPosVisible(false);
+    }
 }

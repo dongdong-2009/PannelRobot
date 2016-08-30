@@ -93,8 +93,7 @@ ContentPageBase{
     Component.onCompleted: {
         ShareData.UserInfo.registUserChangeEvent(programPageInstance);
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(programPageInstance);
-
+        posDisplayBar.setJogPosVisible(false);
     }
-
-
 }
+

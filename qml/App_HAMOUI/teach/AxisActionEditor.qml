@@ -98,8 +98,8 @@ Item {
 
         Flow{
             id:content
-//            columns: 2
-//            rows: 5
+            //            columns: 2
+            //            rows: 5
             height: 165
             width: 500
             spacing: 10
@@ -193,8 +193,8 @@ Item {
                     text: qsTr("Fast Stop")
                 }
             }
-            ICFlickable{
-                width: speedControlGroup.width
+            Rectangle{
+                width: 340
                 height: {
                     var ac = panelRobotController.getConfigValue("s_rw_16_6_0_184");
                     var ret;
@@ -202,72 +202,81 @@ Item {
                     else ret =  parent.height - (ac - 4) * (m1Axis.height + parent.spacing);
                     return ret;
                 }
-
-                contentWidth: width
-                contentHeight:advanceContent.height + 5
-                clip: true
-                Column{
-                    id:advanceContent
-                    spacing: 4
-                    ICCheckableLineEdit{
-                        id:earlyEnd
-                        configName: qsTr("Early End Pos")
-                        configValue: "0"
-                        inputWidth: 60
-                        configNameWidth: 140
-                        enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                    }
-                    Row{
+//                border.width: 1
+//                border.color: "black"
+                ICFlickable{
+                    width: parent.width
+                    height: parent.height
+                    contentWidth: width
+                    contentHeight:advanceContent.height + 5
+                    clip: true
+                    Column{
+                        id:advanceContent
                         spacing: 4
                         ICCheckableLineEdit{
-                            id:earlyEndSpeedPos
-                            configName: qsTr("ESD Pos")
+                            id:earlyEnd
+                            configName: qsTr("Early End Pos")
                             configValue: "0"
                             inputWidth: 60
-                            configNameWidth: earlyEnd.configNameWidth
+                            configNameWidth: 140
+                            enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                        }
+                        Row{
+                            spacing: 4
+                            ICCheckableLineEdit{
+                                id:earlyEndSpeedPos
+                                configName: qsTr("ESD Pos")
+                                configValue: "0"
+                                inputWidth: 60
+                                configNameWidth: earlyEnd.configNameWidth
+                                enabled: earlyEnd.enabled
+                            }
+
+                            ICConfigEdit{
+                                id:earlyEndSpeed
+                                configName: qsTr("ESD")
+                                unit: qsTr("%")
+                                configAddr: "s_rw_0_32_1_1200"
+                                enabled: earlyEndSpeedPos.isChecked
+                                configValue: "10.0"
+                                inputWidth: 60
+
+                            }
+                        }
+                        ICCheckBox{
+                            id:rel
+                            text: qsTr("Rel")
                             enabled: earlyEnd.enabled
                         }
 
-                        ICConfigEdit{
-                            id:earlyEndSpeed
-                            configName: qsTr("ESD")
-                            unit: qsTr("%")
-                            configAddr: "s_rw_0_32_1_1200"
-                            enabled: earlyEndSpeedPos.isChecked
-                            configValue: "10.0"
-                            inputWidth: 60
+                        ICButtonGroup{
+                            id:speedControlGroup
+                            spacing: 4
+                            layoutMode: 1
 
+                            ICCheckBox{
+                                id:speedPPStart
+                                text: qsTr("Speed PP Start")
+                                enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
+                            }
+                            ICCheckBox{
+                                id:speedRPStart
+                                text: qsTr("Speed RP Start")
+                                enabled: speedPPStart.enabled
+                            }
+
+                            ICCheckBox{
+                                id:stop
+                                text:qsTr("Stop")
+                                enabled: speedPPStart.enabled
+                            }
                         }
                     }
-                    ICCheckBox{
-                        id:rel
-                        text: qsTr("Rel")
-                        enabled: earlyEnd.enabled
+                    Component.onCompleted: {
+                        isshowhint = true;
                     }
 
-                    ICButtonGroup{
-                        id:speedControlGroup
-                        spacing: 10
-
-                        ICCheckBox{
-                            id:speedPPStart
-                            text: qsTr("Speed PP Start")
-                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
-                        }
-                        ICCheckBox{
-                            id:speedRPStart
-                            text: qsTr("Speed RP Start")
-                            enabled: speedPPStart.enabled
-                        }
-
-                        ICCheckBox{
-                            id:stop
-                            text:qsTr("Stop")
-                            enabled: speedPPStart.enabled
-                        }
-                    }
                 }
-
             }
         }
 

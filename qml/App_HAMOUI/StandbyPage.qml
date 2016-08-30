@@ -24,4 +24,8 @@ ContentPageBase
     content: standbyPageContainer
     statusSection: posDisplayBar
 
+    Component.onCompleted: {
+        posDisplayBar.setJogPosVisible(false);
+    }
+
 }

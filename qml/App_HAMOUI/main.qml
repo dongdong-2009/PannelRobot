@@ -742,7 +742,7 @@ Rectangle {
             tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
         });
         panelRobotController.sentContinuousData.connect(function(t){
-            tipBox.visible = false;
+            tipBox.hide();
         });
         panelRobotController.needToInitHost.connect(function(){
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),

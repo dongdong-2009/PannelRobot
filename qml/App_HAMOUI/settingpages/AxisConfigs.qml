@@ -234,6 +234,7 @@ Item {
 
         panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
         panelRobotController.syncConfigs();
+        AxisDefine.changeAxisUnit(pdata.currentGroup, axisType.configValue);
     }
 
     function onPLimitDirChanged(){

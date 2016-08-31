@@ -259,6 +259,5 @@ MouseArea{
         m3.visible = AxisDefine.axisInfos[3].visiable;
         m4.visible = AxisDefine.axisInfos[4].visiable;
         m5.visible = AxisDefine.axisInfos[5].visiable;
-
     }
 }

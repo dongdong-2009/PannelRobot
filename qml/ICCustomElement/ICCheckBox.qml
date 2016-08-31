@@ -2,6 +2,7 @@ import QtQuick 1.1
 
 Item {
     id:container
+    property alias configName: text.text
     property alias text: text.text
     property bool isChecked: false
     property bool useCustomClickHandler: false

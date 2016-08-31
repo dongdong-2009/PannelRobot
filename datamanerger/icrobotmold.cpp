@@ -544,7 +544,10 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     //    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
     if(moduleStep < 0)
+    {
         item.append(v->value("module").toUInt());
+        return ICRobotMold::kCCErr_Invaild_ModuleID;
+    }
     else
         item.append(moduleStep);
     item.append(step);

@@ -179,7 +179,7 @@ Item {
                     anchors.leftMargin: 6
                     visible: !isAutoMode
                     onButtonClicked: {
-                        pos.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[pos.axisID].wAddr);
+                        pos.configValue = (panelRobotController.statusValue(AxisDefine.axisInfos[pos.axisID].jAddr) / 1000).toFixed(3);
                     }
                 }
             }

@@ -230,7 +230,11 @@ var actionTypes = {
 
 var stackTypes = {
     "kST_Normal":0,
-    "kST_Box":1
+    "kST_Box":1,
+    "kST_DataSource":2,
+    "kST_DataSourceIgnoreZ":3,
+    "kST_VisionCmp":4,
+    "kST_VisionPosAndCmp":5
 };
 
 
@@ -559,6 +563,7 @@ function VariableManager(){
 
 function CounterManager(){
     this.counters = [];
+    this.observer = [];
     this.init = function(bareCounters){
         this.counters.length = 0;
         for(var c in bareCounters){
@@ -622,6 +627,10 @@ function CounterManager(){
         c.name = name;
         c.current = current;
         c.target = target;
+        for(var i = 0, len = this.observer.length; i < len; ++i){
+            if(this.observer[i].hasOwnProperty("onCounterUpdated"))
+                this.observer[i].onCounterUpdated(id);
+        }
     }
     this.delCounter = function(id){
         for(var c in this.counters){
@@ -630,6 +639,9 @@ function CounterManager(){
                 break;
             }
         }
+    }
+    this.registerObserver = function(obj){
+        this.observer.push(obj);
     }
 }
 
@@ -1393,8 +1405,13 @@ function stackTypeToString(type){
     switch(type){
     case stackTypes.kST_Box:
         return qsTr("Box");
+    case stackTypes.kST_DataSource:
+    case stackTypes.kST_DataSourceIgnoreZ:
+    case stackTypes.kST_VisionCmp:
+    case stackTypes.kST_VisionPosAndCmp:
+        return qsTr("Datasource");
     default:
-        return "";
+        return qsTr("Normal");
     }
 }
 

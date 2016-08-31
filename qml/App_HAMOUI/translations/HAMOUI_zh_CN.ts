@@ -694,6 +694,26 @@
         <source>Cycle</source>
         <translation>当前周期:</translation>
     </message>
+    <message>
+        <source>Counter &gt;&gt;</source>
+        <translation>计数器&gt;&gt;</translation>
+    </message>
+    <message>
+        <source>Counter &lt;&lt;</source>
+        <translation>计数器&lt;&lt;</translation>
+    </message>
+    <message>
+        <source>Target:</source>
+        <translation>目标:</translation>
+    </message>
+    <message>
+        <source>Current:</source>
+        <translation>当前:</translation>
+    </message>
+    <message>
+        <source>counter</source>
+        <translation>计数器</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
@@ -1651,6 +1671,13 @@
     <message>
         <source>decimal</source>
         <translation>精度</translation>
+    </message>
+</context>
+<context>
+    <name>ICLabel</name>
+    <message>
+        <source>text</source>
+        <translation type="unfinished">接收的内容</translation>
     </message>
 </context>
 <context>
@@ -4063,6 +4090,10 @@
         <source>Picture Settings</source>
         <translation>图片设定</translation>
     </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
 </context>
 <context>
     <name>ParaChose</name>
@@ -4845,6 +4876,69 @@ please chose!</source>
         <source>Importing...</source>
         <translation>导入中...</translation>
     </message>
+    <message>
+        <source>Export Printable</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegisterUseTimeSettings</name>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Forever</source>
+        <translation>永久</translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation type="vanished">小时</translation>
+    </message>
+    <message>
+        <source>Machine Code:</source>
+        <translation>机器码:</translation>
+    </message>
+    <message>
+        <source>Register Code:</source>
+        <translation>注册码:</translation>
+    </message>
+    <message>
+        <source>Generate Machine Code</source>
+        <translation>生成机器码</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <source>Wrong register code!</source>
+        <translation>错误的注册码!</translation>
+    </message>
+    <message>
+        <source>Register successfully!</source>
+        <translation>注册成功!</translation>
+    </message>
+    <message>
+        <source>Factory code(6bit):</source>
+        <translation>厂商代码(6位):</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="vanished">导出</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation type="vanished">导入</translation>
+    </message>
+    <message>
+        <source>Rest Time(0 Forever):</source>
+        <translation>剩余使用时间(0为永久):</translation>
+    </message>
+    <message>
+        <source>hour</source>
+        <translation>小时</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -4871,6 +4965,14 @@ please chose!</source>
     <message>
         <source>Times</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Independent Manual Speed</source>
+        <translation>独立控制手动轴速度</translation>
+    </message>
+    <message>
+        <source>Manual Speed</source>
+        <translation>手动速度</translation>
     </message>
 </context>
 <context>
@@ -5997,6 +6099,14 @@ You just need to set the count configs after this setting.</source>
         <source>Rel</source>
         <translation>相对</translation>
     </message>
+    <message>
+        <source>Datasource</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6266,6 +6376,10 @@ You just need to set the count configs after this setting.</source>
         <source>Settings</source>
         <translation>参数设定</translation>
     </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TopMenuItem</name>
@@ -6521,6 +6635,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Please Register!</source>
+        <translation>请注册!</translation>
     </message>
 </context>
 <context>

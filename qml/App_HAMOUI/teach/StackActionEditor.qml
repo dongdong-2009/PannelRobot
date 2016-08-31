@@ -586,7 +586,8 @@ Rectangle {
             id:speed0
             visible: useFlag.isChecked
             configName: qsTr("Speed")
-            configAddr: "s_rw_0_16_1_294"
+//            configAddr: "s_rw_0_16_1_294"
+            configAddr: "s_rw_0_32_1_212"
             unit: "%"
             configValue: "80.0"
         }
@@ -594,7 +595,8 @@ Rectangle {
             id:speed1
             visible: useFlag.isChecked
             configName: qsTr("Speed1")
-            configAddr: "s_rw_0_16_1_294"
+//            configAddr: "s_rw_0_16_1_294"
+            configAddr: "s_rw_0_32_1_212"
             unit: "%"
             configValue: "80.0"
         }

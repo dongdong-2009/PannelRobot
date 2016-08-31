@@ -8,6 +8,37 @@ import "../configs/IODefines.js" as IODefines
 Item {
     id:container
     property variant ys: [
+        "valve0",
+        "valve1",
+        "valve2",
+        "valve3",
+        "valve4",
+        "valve5",
+        "valve6",
+        "valve8",
+        "valve9",
+        "valve10",
+        "valve11",
+        "valve12",
+        "valve13",
+        "valve14",
+        "valve15",
+        "valve16",
+        "valve17",
+        "valve18",
+        "valve19",
+        "valve20",
+        "valve21",
+        "valve22",
+        "valve23",
+        "valve24",
+        "valve25",
+        "valve26",
+        "valve27",
+        "valve28",
+        "valve29",
+        "valve30",
+        "valve31",
     ]
     property  variant euYs : []
     property variant mYs: [
@@ -168,7 +199,7 @@ Item {
                 }
 
                 function createValveMoldItem(pointNum, valve, board){
-                    var pN = IODefines.getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
+                    var pN = IODefines.getYDefinePointNameFromValve(valve);
                     return {"isSel":false,
                         "pointNum":pN,
                         "pointDescr":valve.descr,
@@ -183,7 +214,7 @@ Item {
                 width: parent.width - 4
                 height: parent.height - 4
                 anchors.centerIn: parent
-                cellWidth: 226
+                cellWidth: 296
                 cellHeight: 32
                 clip: true
                 model: {
@@ -283,7 +314,7 @@ Item {
             timeystmp.push("tValve" + i);
         }
 
-        ys = ystmp;
+//        ys = ystmp;
         timeYs = timeystmp;
 
         var yDefines = ys;

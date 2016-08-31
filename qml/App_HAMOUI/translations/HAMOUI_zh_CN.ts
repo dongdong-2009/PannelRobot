@@ -2156,7 +2156,7 @@
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>普通输出Y016</translation>
+        <translation>姿势阀</translation>
     </message>
     <message>
         <source>Normal Y017</source>
@@ -2164,31 +2164,31 @@
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>普通输出Y020</translation>
+        <translation>车床1加工</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>普通输出Y021</translation>
+        <translation>车床1夹套夹紧</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>普通输出Y022</translation>
+        <translation>车床1夹套松开</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>普通输出Y023</translation>
+        <translation>车床1安全门开</translation>
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation>普通输出Y024</translation>
+        <translation>车床1安全门关</translation>
     </message>
     <message>
         <source>Normal Y025</source>
-        <translation>普通输出Y025</translation>
+        <translation>上料气爪夹紧</translation>
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>普通输出Y026</translation>
+        <translation>上料气爪松开</translation>
     </message>
     <message>
         <source>Normal Y027</source>
@@ -2196,31 +2196,31 @@
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>垂直阀</translation>
+        <translation>车床2加工</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation>水平阀</translation>
+        <translation>车床2夹套夹紧</translation>
     </message>
     <message>
         <source>Normal Y032</source>
-        <translation>普通输出Y032</translation>
+        <translation>车床2夹套松开</translation>
     </message>
     <message>
         <source>Normal Y033</source>
-        <translation>普通输出Y033</translation>
+        <translation>车床2安全门开</translation>
     </message>
     <message>
         <source>Normal Y034</source>
-        <translation>普通输出Y034</translation>
+        <translation>车床2安全门关</translation>
     </message>
     <message>
         <source>Normal Y035</source>
-        <translation>普通输出Y035</translation>
+        <translation>下料气爪夹紧</translation>
     </message>
     <message>
         <source>Normal Y036</source>
-        <translation>普通输出Y036</translation>
+        <translation>下料气爪松开</translation>
     </message>
     <message>
         <source>Normal Y037</source>

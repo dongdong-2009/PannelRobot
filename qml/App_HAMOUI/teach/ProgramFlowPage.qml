@@ -588,7 +588,7 @@ Rectangle {
         }else
             programListView.clearLastRunning(PData.lastRunning);
         editing.resetProgramItems(isAuto);
-        isFollow.visible = isAuto;
+//        isFollow.visible = isAuto;
 
         modifyEditor.isAutoMode = isAuto;
         PData.clearAutoModifyPosActions();
@@ -621,7 +621,7 @@ Rectangle {
         }
 
         for(i = 0, len = PData.kFunctionProgramIndex; i < len; ++i){
-            stackLines = PData.stackLinesInfo.getLines(PData.kFunctionProgramIndex, stackID);
+            stackLines = PData.stackLinesInfo.getLines(i, stackID);
             md = PData.programs[i];
             if(stackLines.length > 0){
                 updateStacksHelper(md, stackLines, stackID, i);
@@ -898,6 +898,7 @@ Rectangle {
                     id:isFollow
                     text: qsTr("Follow ?")
                     visible: false
+                    isChecked: true
                 }
             }
 
@@ -907,6 +908,16 @@ Rectangle {
                 visible: false
                 z:4
                 spacing: 6
+                ICCheckBox{
+                    id:gunlock
+                    width: 120
+                    text: qsTr("Gun Lock")
+                    onVisibleChanged: {
+                        isChecked = false;
+                    }
+                    onIsCheckedChanged: {
+                    }
+                }
                 ICCheckBox{
                     id:speedEn
                     text: qsTr("Speed En")
@@ -1112,7 +1123,8 @@ Rectangle {
                         width: 40
                         text: qsTr("UP")
                         visible: {
-                            return  (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
+                            false
+//                            return  (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
                         }
                     }
                     ICButton{
@@ -1120,8 +1132,8 @@ Rectangle {
                         height: parent.height
                         width: 40
                         text: qsTr("DW")
-                        visible: {
-                            return  (programListView.currentIndex < programListView.count - 2)
+                        visible: {false
+//                            return  (programListView.currentIndex < programListView.count - 2)
                         }
                     }
                     ICButton{

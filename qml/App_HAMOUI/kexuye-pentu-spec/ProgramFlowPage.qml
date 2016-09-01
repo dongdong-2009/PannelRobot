@@ -214,6 +214,118 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
     }
+    function guncloseAction(ret,actionObject){
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use2)
+            ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, 0));
+        if(actionObject.gun2use2)
+            ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, 0));
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+//        if(actionObject.gun1use1 && actionObject.gun2use1)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+//        if(actionObject.gun1use1)
+//            ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
+//        if(actionObject.gun2use1)
+//            ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//        if(actionObject.gun1use1 && actionObject.gun2use1)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+//        if(actionObject.gun1use0 && actionObject.gun2use0)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+//        if(actionObject.gun1use0)
+//            ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
+//        if(actionObject.gun2use0)
+//            ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//        if(actionObject.gun1use0 && actionObject.gun2use0)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+    }
+    function allcloseAction(ret,actionObject){
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use2)
+            ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
+        if(actionObject.gun2use2)
+            ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+        if(actionObject.gun1use1 && actionObject.gun2use1)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use1)
+            ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
+        if(actionObject.gun2use1)
+            ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+        if(actionObject.gun1use1 && actionObject.gun2use1)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+        if(actionObject.gun1use0 && actionObject.gun2use0)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use0)
+            ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
+        if(actionObject.gun2use0)
+            ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+        if(actionObject.gun1use0 && actionObject.gun2use0)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+    }
+    function gun1openAction(ret,actionObject){
+//        if(actionObject.gun1use0 && actionObject.gun2use0)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+//        if(actionObject.gun1use0)
+//            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+//        if(actionObject.gun2use0)
+//            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//        if(actionObject.gun1use0 && actionObject.gun2use0)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+//        if(actionObject.gun1use1 && actionObject.gun2use1)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+//        if(actionObject.gun1use1)
+//            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+//        if(actionObject.gun2use1)
+//            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//        if(actionObject.gun1use1 && actionObject.gun2use1)
+//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use2)
+            ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, 0.05));
+        if(actionObject.gun2use2)
+            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, 0.05));
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+    }
+    function gunopenAction(ret,actionObject){
+        if(actionObject.gun1use0 && actionObject.gun2use0)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use0)
+            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+        if(actionObject.gun2use0)
+            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+        if(actionObject.gun1use0 && actionObject.gun2use0)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+        if(actionObject.gun1use1 && actionObject.gun2use1)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use1)
+            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+        if(actionObject.gun2use1)
+            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+        if(actionObject.gun1use1 && actionObject.gun2use1)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use2)
+            ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+        if(actionObject.gun2use2)
+            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+        if(actionObject.gun1use2 && actionObject.gun2use2)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+    }
 
     function getActionProperties(action,axisID,sPos,ePos,spd,ceycle,delay){
         return {
@@ -270,15 +382,15 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
-//        ret.push(LocalTeach.generateDataAction(819206,0,1));
+        ret.push(LocalTeach.generateDataAction(819206,0,1));
 //        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
 //        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.repeateCounterID));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateCounterID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
-        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.rotateOKCID));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.aaaa));
+//        ret.push(LocalTeach.generateClearCounterAction(actionObject.bbbb));
 
 //        ret.push(LocalTeach.generateFlagAction(actionObject.flag0, qsTr("Fixture Rotation")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
@@ -343,7 +455,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
-        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":"0.000","m5":actionObject.rotate}}], actionObject.rotateSpeed, 0.0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.rotate, actionObject.rotateSpeed));
+//        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":"0.000","m5":actionObject.rotate}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag15));
@@ -352,12 +465,19 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
-        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.rotate, actionObject.rotateSpeed));
+//        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag15, qsTr("Rotate2")));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startPosSpeed2));
 
 
+        if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+            gunopenAction(ret,actionObject);
+        if(actionObject.fixture1Switch == 4)
+            gunopenAction(ret,actionObject);
+        else if(actionObject.fixture1Switch == 3)
+            allcloseAction(ret,actionObject);
         if(actionObject.useStack){
             ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("Stack Mark")));
             ret.push(LocalTeach.generateStackAction(actionObject.stack1,actionObject.stackSpeed));
@@ -367,39 +487,30 @@ ProgramFlowPage {
 
 
 //        ret.push(LocalTeach.generateOutputAction(16, 0, 0, 16, 0));
-        if(actionObject.fixture1Switch == 4){
-            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-            ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
-        }
-        else if(actionObject.fixture1Switch == 3){
-//            ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-//            ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-//            ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-        }
-        if(actionObject.fixture2Switch == 4){
-            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-        }
-        else if(actionObject.fixture2Switch == 3){
+//        if(actionObject.fixture1Switch == 4)
+//            gun1openAction(ret,actionObject);
+//        else if(actionObject.fixture1Switch == 3)
+//            guncloseAction(ret,actionObject);
+//        if(actionObject.fixture2Switch == 4){
+//            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+//        }
+//        else if(actionObject.fixture2Switch == 3){
 //            ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
 //            ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
 //            ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-        }
+//        }
         if(actionObject.mode == 3 || actionObject.mode == 7)
             ret.push(LocalTeach.generateFlagAction(actionObject.flag2, qsTr("Repeate")));
 
-        if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-            ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
-        }
-        if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-        }
+        if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+            gun1openAction(ret,actionObject);
+//        if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+//            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//            ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+//        }
 
 
         var pos = {};
@@ -489,73 +600,67 @@ ProgramFlowPage {
 //            }
 
             else if(actionObject.mode == 4){
-                ret.push(LocalTeach.generateSpeedAction(0,actionObject.repeateSpeed));
+//                ret.push(LocalTeach.generateSpeedAction(0,actionObject.repeateSpeed));
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp},
                           {"pointName":"", "pos":pos}],
                           actionObject.repeateSpeed, 0.0));
 
-                if(actionObject.plane == 1){
-                    if(actionObject.dirAxis == 0){
-                        ////////////////////add hu
-                        var temp111 = {},pos111 = {};
-                        temp111["m" + 0] = 0;
-                        temp111["m" + 1] = 3;
-                        temp111["m" + 2] = 1;
-                        temp111["m" + 3] = 0;
-                        temp111["m" + 4] = 0;
-                        temp111["m" + 5] = 0;
+//                if(actionObject.plane == 1){
+//                    if(actionObject.dirAxis == 0){
+//                        ////////////////////add hu
+//                        var temp111 = {},pos111 = {};
+//                        temp111["m" + 0] = 0;
+//                        temp111["m" + 1] = 3;
+//                        temp111["m" + 2] = 1;
+//                        temp111["m" + 3] = 0;
+//                        temp111["m" + 4] = 0;
+//                        temp111["m" + 5] = 0;
 
-                        pos111["m" + 0] = 0;
-                        pos111["m" + 1] = 4;
-                        pos111["m" + 2] = 4;
-                        pos111["m" + 3] = 0;
-                        pos111["m" + 4] = 0;
-                        pos111["m" + 5] = 0;
-                        ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,actionObject.repeateSpeed));
-                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
-                                 [{"pointName":"", "pos":temp111},
-                                  {"pointName":"", "pos":pos111}],
-                                  actionObject.repeateSpeed, 0.0));
-                        ////////////////////add hu
+//                        pos111["m" + 0] = 0;
+//                        pos111["m" + 1] = 4;
+//                        pos111["m" + 2] = 4;
+//                        pos111["m" + 3] = 0;
+//                        pos111["m" + 4] = 0;
+//                        pos111["m" + 5] = 0;
+//                        ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,actionObject.repeateSpeed));
+//                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+//                                 [{"pointName":"", "pos":temp111},
+//                                  {"pointName":"", "pos":pos111}],
+//                                  actionObject.repeateSpeed, 0.0));
+//                        ////////////////////add hu
 
-                        ////////////////////add line
+//                        ////////////////////add line
 
-                        var pos_line1 = {};
-                        pos_line1["m" + 0] = 0;
-                        pos_line1["m" + 1] = 0;
-                        pos_line1["m" + 2] = 100;
-                        ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,0));
-                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                                 [{"pointName":"", "pos":pos_line1}], actionObject.repeateSpeed, 0.0));
-                        ////////////////////add line
-                    }
-                }
+//                        var pos_line1 = {};
+//                        pos_line1["m" + 0] = 0;
+//                        pos_line1["m" + 1] = 0;
+//                        pos_line1["m" + 2] = 100;
+//                        ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,0));
+//                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+//                                 [{"pointName":"", "pos":pos_line1}], actionObject.repeateSpeed, 0.0));
+//                        ////////////////////add line
+//                    }
+//                }
             }
-            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-            }
+            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2)
+                guncloseAction(ret,actionObject);
+//            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//            }
 
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 
-           if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-            }
+           if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2)
+               gun1openAction(ret,actionObject);
+//            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+//            }
             if(actionObject.mode == 0)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                          [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
@@ -573,57 +678,54 @@ ProgramFlowPage {
 //                }
 //            }
             else if(actionObject.mode == 4){
-                if(actionObject.plane == 1){
-                    if(actionObject.dirAxis == 0){
-                        ////////////////////add line
-                        var pos_line2 = {};
-                        pos_line2["m" + 0] = 0;
-                        pos_line2["m" + 1] = 0;
-                        pos_line2["m" + 2] = -100;
-                        ret.push(LocalTeach.generateSpeedAction(0,actionObject.repeateSpeed));
-                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                                 [{"pointName":"", "pos":pos_line2}], actionObject.repeateSpeed, 0.0));
-                        ////////////////////add line
+//                if(actionObject.plane == 1){
+//                    if(actionObject.dirAxis == 0){
+//                        ////////////////////add line
+//                        var pos_line2 = {};
+//                        pos_line2["m" + 0] = 0;
+//                        pos_line2["m" + 1] = 0;
+//                        pos_line2["m" + 2] = -100;
+////                        ret.push(LocalTeach.generateSpeedAction(0,actionObject.repeateSpeed));
+////                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+////                                 [{"pointName":"", "pos":pos_line2}], actionObject.repeateSpeed, 0.0));
+//                        ////////////////////add line
 
-                        ////////////////////add hu
-                        var temp2222 = {},pos2222 = {};
-                        temp2222["m" + 0] = 0;
-                        temp2222["m" + 1] = -1;
-                        temp2222["m" + 2] = -3;
-                        temp2222["m" + 3] = 0;
-                        temp2222["m" + 4] = 0;
-                        temp2222["m" + 5] = 0;
+//                        ////////////////////add hu
+//                        var temp2222 = {},pos2222 = {};
+//                        temp2222["m" + 0] = 0;
+//                        temp2222["m" + 1] = -1;
+//                        temp2222["m" + 2] = -3;
+//                        temp2222["m" + 3] = 0;
+//                        temp2222["m" + 4] = 0;
+//                        temp2222["m" + 5] = 0;
 
-                        pos2222["m" + 0] = 0;
-                        pos2222["m" + 1] = -4;
-                        pos2222["m" + 2] = -4;
-                        pos2222["m" + 3] = 0;
-                        pos2222["m" + 4] = 0;
-                        pos2222["m" + 5] = 0;
-                        ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,actionObject.repeateSpeed));
-                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
-                                 [{"pointName":"", "pos":temp2222},
-                                  {"pointName":"", "pos":pos2222}],
-                                  actionObject.repeateSpeed, 0.0));
-                        ////////////////////add hu
-                    }
-                }
-                ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,0));
+//                        pos2222["m" + 0] = 0;
+//                        pos2222["m" + 1] = -4;
+//                        pos2222["m" + 2] = -4;
+//                        pos2222["m" + 3] = 0;
+//                        pos2222["m" + 4] = 0;
+//                        pos2222["m" + 5] = 0;
+//                        ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,actionObject.repeateSpeed));
+//                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+//                                 [{"pointName":"", "pos":temp2222},
+//                                  {"pointName":"", "pos":pos2222}],
+//                                  actionObject.repeateSpeed, 0.0));
+//                        ////////////////////add hu
+//                    }
+//                }
+//                ret.push(LocalTeach.generateSpeedAction(actionObject.repeateSpeed,0));
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                          [{"pointName":"", "pos":tmp1},
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeateSpeed, 0.0));
             }
-            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-            }
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+                guncloseAction(ret,actionObject);
+//            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//            }
 
             ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
@@ -631,7 +733,6 @@ ProgramFlowPage {
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
             ret.push(LocalTeach.generateFlagAction(actionObject.flag12, qsTr("duoyu dir")));
-
         }
 
         else if(actionObject.mode == 1 || actionObject.mode == 5){
@@ -695,21 +796,17 @@ ProgramFlowPage {
                           {"pointName":"", "pos":pos}],
                           actionObject.repeateSpeed, 0.0));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
-            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-            }
+//            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+//            }
             if(actionObject.mode == 1)
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
@@ -718,16 +815,13 @@ ProgramFlowPage {
                          [{"pointName":"", "pos":tmp1},
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeateSpeed, 0.0));
-            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-            }
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+                guncloseAction(ret,actionObject);
+//            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//            }
             ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         }
 
@@ -828,21 +922,17 @@ ProgramFlowPage {
                                                         {"pointName":"", "pos":pos}],
                                                        actionObject.repeateSpeed, 0.0));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
-            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-            }
+//            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+//            }
             if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
                 ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
             else
@@ -856,27 +946,22 @@ ProgramFlowPage {
                                                         {"pointName":"", "pos":pos1}],
                                                        actionObject.repeateSpeed, 0.0));
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
-            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-            }
+//            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//            }
             ret.push(LocalTeach.generateJumpAction(actionObject.flag3));
             ret.push(LocalTeach.generateFlagAction(actionObject.flag16, qsTr("Ceycle Over")));
-            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-            }
-            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-            }
+            guncloseAction(ret,actionObject);
+//            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//            }
 //            }
 //            if(ceycle % 2 == 1){
 //                if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
@@ -986,26 +1071,24 @@ ProgramFlowPage {
                           {"pointName":"", "pos":pos}],
                           actionObject.repeateSpeed, 0.0));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
-                ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 1, 0, actionObject.fixtureDelay2));
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
-            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-            }
+//            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+//            }
             ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
 
             var overlength = pos.m0;
             if(overlength > actionObject.dirLength)
                 overlength = actionObject.dirLength;
+            if(parseFloat(overlength) < 0)
+                overlength = -overlength;
             if(actionObject.mode == 3){
                 ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 0));
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
@@ -1026,22 +1109,27 @@ ProgramFlowPage {
                           {"pointName":"", "pos":pos1}],
                           actionObject.repeateSpeed, 0.0));
             if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(4, 0, 0, 0, actionObject.fixtureDelay0));
-                ret.push(LocalTeach.generateOutputAction(5, 0, 0, 0, actionObject.fixtureDelay1));
-                ret.push(LocalTeach.generateOutputAction(6, 0, 0, 0, actionObject.fixtureDelay2));
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
-            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-            }
+//            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+//            }
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+                guncloseAction(ret,actionObject);
 
             ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
 
-            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
-                     actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+            if(actionObject.mode == 3)
+                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+                         actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+            else
+                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+                         actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
 //                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 //            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
@@ -1090,6 +1178,8 @@ ProgramFlowPage {
 //            zDelay = 0;
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
         }
+        if(actionObject.fixture1Switch != 4)
+            allcloseAction(ret,actionObject);
         var gunBack = 0;
         if(!actionObject.isGunBack)
             gunBack = actionObject.startPos2

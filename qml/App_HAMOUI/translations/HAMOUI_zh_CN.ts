@@ -1800,11 +1800,11 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation type="unfinished">公转盘正传</translation>
+        <translation>公转盘正传</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation type="unfinished">公转盘反转</translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Y024</source>
@@ -1824,27 +1824,27 @@
     </message>
     <message>
         <source>Y030</source>
-        <translation type="unfinished">油量2 {030?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation type="unfinished">油量2 {031?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation type="unfinished">油量2 {032?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation type="unfinished">油量2 {033?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation type="unfinished">油量2 {034?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation type="unfinished">油量2 {035?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y036</source>
@@ -2172,35 +2172,35 @@
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>雾化</translation>
+        <translation>雾化1</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>油量</translation>
+        <translation>喷幅1</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>喷幅</translation>
+        <translation>油量1</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation>普通输出Y017</translation>
+        <translation>雾化2</translation>
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation type="unfinished">普通输出Y020</translation>
+        <translation>喷幅2</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation type="unfinished">普通输出Y021</translation>
+        <translation>油量2</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation type="unfinished">公转盘正转</translation>
+        <translation>公转盘正转</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation type="unfinished">公转盘反转</translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Normal Y024</source>
@@ -4403,6 +4403,10 @@
         <source>Picture Settings</source>
         <translation>图片设定</translation>
     </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
 </context>
 <context>
     <name>ParaChose</name>
@@ -5194,7 +5198,11 @@ please chose!</source>
     </message>
     <message>
         <source>Pase</source>
-        <translation type="unfinished"></translation>
+        <translation>粘贴</translation>
+    </message>
+    <message>
+        <source>Gun Lock</source>
+        <translation>锁枪</translation>
     </message>
 </context>
 <context>
@@ -5356,6 +5364,65 @@ please chose!</source>
     <message>
         <source>Export Printable</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegisterUseTimeSettings</name>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Forever</source>
+        <translation>永久</translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation>小时</translation>
+    </message>
+    <message>
+        <source>Machine Code:</source>
+        <translation>机器码:</translation>
+    </message>
+    <message>
+        <source>Register Code:</source>
+        <translation>注册码:</translation>
+    </message>
+    <message>
+        <source>Generate Machine Code</source>
+        <translation>生成机器码</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <source>Wrong register code!</source>
+        <translation>错误的注册码!</translation>
+    </message>
+    <message>
+        <source>Register successfully!</source>
+        <translation>注册成功!</translation>
+    </message>
+    <message>
+        <source>Factory code(6bit):</source>
+        <translation>厂商代码(6位):</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>导入</translation>
+    </message>
+    <message>
+        <source>Rest Time(0 Forever):</source>
+        <translation>剩余使用时间(0为永久):</translation>
+    </message>
+    <message>
+        <source>hour</source>
+        <translation>小时</translation>
     </message>
 </context>
 <context>
@@ -6641,6 +6708,14 @@ You just need to set the count configs after this setting.</source>
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Datasource</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -7085,6 +7160,17 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
+    <name>YDefinePage</name>
+    <message>
+        <source>Gunfresh1</source>
+        <translation>洗枪/试枪1</translation>
+    </message>
+    <message>
+        <source>Gunfresh2</source>
+        <translation>洗枪/试枪2</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <source>Operation</source>
@@ -7169,6 +7255,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Stop</source>
         <translation type="unfinished">停止</translation>
+    </message>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Please Register!</source>
+        <translation>请注册!</translation>
     </message>
 </context>
 <context>

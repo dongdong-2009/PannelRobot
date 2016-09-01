@@ -60,8 +60,8 @@ public:
     void SetTranslatorName(const QString& translatorName);
 
 
-    static QTime StartupTime(){ return startupTime_;}
-    static void SetStartupTime(const QTime& time) { startupTime_ = time;}
+//    static QTime StartupTime(){ return startupTime_;}
+//    static void SetStartupTime(const QTime& time) { startupTime_ = time;}
 //    static uint Used
     const static char* UsbPath;
     const static char* QMLPath;
@@ -73,6 +73,71 @@ private:
     const static char* LocaleGroup;
 
     static QTime startupTime_;
+};
+
+class ICSuperSettings: public QSettings
+{
+public:
+    static const char* SuperGroup;
+    ICSuperSettings():QSettings("superconfig/super.ini",QSettings::IniFormat){}
+    QString CurrentSystemConfig()
+    {
+        beginGroup(SuperGroup);
+        QString ret = value("CurrentSystemConfig", ICAppSettings().CurrentSystemConfig()).toString();
+        endGroup();
+        return ret;
+    }
+
+    void SetCurrentSystemConfig(const QString& systemconfig)
+    {
+        beginGroup(SuperGroup);
+        setValue("CurrentSystemConfig", systemconfig);
+        endGroup();
+    }
+
+    QString FactoryCode()
+    {
+        beginGroup(SuperGroup);
+        QString ret = value("FactoryCode", "888888").toString();
+        endGroup();
+        return ret;
+    }
+
+    void SetFactoryCode(const QString& code)
+    {
+        beginGroup(SuperGroup);
+        setValue("FactoryCode", code);
+        endGroup();
+        sync();
+    }
+
+//    QDateTime BootDatetime()
+//    {
+//        beginGroup(SuperGroup);
+//        QDateTime ret = QDateTime::fromString(value("BootDatetime", QDateTime::currentDateTime().toString()));
+//        endGroup();
+//        return ret;
+//    }
+//    void SetBootDatetime(QDateTime dt)
+//    {
+//        beginGroup(SuperGroup);
+//        setValue("BootDateTime", dt.toString());
+//        endGroup();
+//    }
+
+//    int RestTime(int defaultHour)
+//    {
+//        beginGroup(SuperGroup);
+//        int ret = value("RestTime", defaultHour);
+//        endGroup();
+//        return ret;
+//    }
+//    void SetRestTime(int  hour)
+//    {
+//        beginGroup(SuperGroup);
+//        setValue("RestTime", hour);
+//        endGroup();
+//    }
 };
 
 inline void ICAppSettings::SetCurrentMoldConfig(const QString &record)

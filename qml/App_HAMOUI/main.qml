@@ -38,6 +38,21 @@ Rectangle {
         visible: false
         z:1000
     }
+    Text {
+        id: restTip
+        color: "red"
+        y:timelable.y
+        anchors.right: timelable.left
+        anchors.rightMargin: 12
+        z:1000
+        function setRestTime(rt){
+            visible = (rt < 168) && rt != 0;
+            text = qsTr("Rest Time:") + rt;
+        }
+        Component.onCompleted: {
+            setRestTime(panelRobotController.restUseTime());
+        }
+    }
 
     TopHeader{
         id:mainHeader
@@ -554,6 +569,7 @@ Rectangle {
         y:armKeyboardContainer.y
 
         form: "yyyy-MM-dd  hh:mm:ss  DDD"
+        onHourGone: restTip.setRestTime(panelRobotController.restUseTime());
     }
 
     function onKnobChanged(knobStatus){
@@ -646,6 +662,7 @@ Rectangle {
             }
             menuOperation.setChecked(true);
             middleHeader.onMenuItemTriggered(menuOperation);
+            menuProgram.enabled = true;
         }else if(isAuto){
             var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
             if(gsEn > 0){
@@ -658,6 +675,7 @@ Rectangle {
             if(pData.lastKnob != knobStatus){
                 middleHeader.showStandbyPage();
             }
+            menuProgram.enabled = false;
         }
         ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(isManual);
         mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
@@ -811,7 +829,10 @@ Rectangle {
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
             //            console.log(Keymap.getKeyMappedAction(key));
-            panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
+            if(panelRobotController.isTryTimeOver() && key == Keymap.KNOB_AUTO){
+                tipBox.warning(qsTr("Please Register!"));
+            }else
+                panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);
         }
@@ -916,7 +937,6 @@ Rectangle {
                     mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
                 }
             }
-
         }
     }
 }

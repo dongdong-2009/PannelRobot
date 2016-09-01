@@ -82,7 +82,8 @@ Item {
                         stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
                         stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
                         stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
-                        stack.zdirection,newstack,isGunBack.isChecked));
+                        stack.zdirection,newstack,isGunBack.isChecked,
+                        details.use0,details.use1,details.use2,details.use3,details.use4,details.use5));
         else
             ret.push(LocalTeach.generatePENTUAction(
                         actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
@@ -94,7 +95,8 @@ Item {
                         actObt.slope, rotateOKCID, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
                         actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
                         actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
-                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack));
+                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
+                        actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2));
         return ret;
     }
 
@@ -268,6 +270,7 @@ Item {
         property int posNameWidth: 60
         spacing: 4
         Row{
+            id: row1
             spacing: 10
             z:10
             Text {
@@ -376,8 +379,10 @@ Item {
                     sPosM1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                     sPosM2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
                     sPosM3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                    sPosM4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                    sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+//                    sPosM4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+//                    sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                    sPosM4.configValue = 0.000;
+                    sPosM5.configValue = 0.000;
                 }
             }
             ICConfigEdit{
@@ -407,32 +412,6 @@ Item {
                 unit: AxisDefine.axisInfos[2].unit
                 configAddr: "s_rw_0_32_3_1300"
             }
-            ICButton{
-                id:gunfresh1
-                width: sPosM0.width
-                height: 32
-                text: qsTr("Gunfresh1")
-                anchors.leftMargin: 12
-                bgColor: "grey"
-                onBtnPressed: {
-                    gunfresh1.bgColor = "lime";
-                    var toSend = IODefines.valveItemJSON("valve4");
-                    panelRobotController.setYStatus(toSend, 1);
-                    toSend = IODefines.valveItemJSON("valve5");
-                    panelRobotController.setYStatus(toSend, 1);
-                    toSend = IODefines.valveItemJSON("valve6");
-                    panelRobotController.setYStatus(toSend, 1);
-                }
-                onBtnReleased: {
-                    gunfresh1.bgColor = "grey";
-                    var toSend = IODefines.valveItemJSON("valve4");
-                    panelRobotController.setYStatus(toSend, 0);
-                    toSend = IODefines.valveItemJSON("valve5");
-                    panelRobotController.setYStatus(toSend, 0);
-                    toSend = IODefines.valveItemJSON("valve6");
-                    panelRobotController.setYStatus(toSend, 0);
-                }
-            }
         }
         Row{
             id:linkpos1Container
@@ -450,6 +429,7 @@ Item {
             ICConfigEdit{
                 id:sPosM4
 //                enabled: !useEn.isChecked
+                visible: false
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
@@ -459,37 +439,12 @@ Item {
             ICConfigEdit{
                 id:sPosM5
 //                enabled: !useEn.isChecked
+                visible: false
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
                 unit: AxisDefine.axisInfos[5].unit
                 configAddr: "s_rw_0_32_3_1300"
-            }
-            ICButton{
-                id:gunfresh2
-                width: sPosM0.width
-                height: 32
-                text: qsTr("Gunfresh2")
-                anchors.leftMargin: 12
-                bgColor: "grey"
-                onBtnPressed: {
-                    gunfresh2.bgColor = "lime"
-                    var toSend = IODefines.valveItemJSON("valve7");
-                    panelRobotController.setYStatus(toSend, 1);
-                    toSend = IODefines.valveItemJSON("valve8");
-                    panelRobotController.setYStatus(toSend, 1);
-                    toSend = IODefines.valveItemJSON("valve9");
-                    panelRobotController.setYStatus(toSend, 1);
-                }
-                onBtnReleased: {
-                    gunfresh2.bgColor = "grey"
-                    var toSend = IODefines.valveItemJSON("valve7");
-                    panelRobotController.setYStatus(toSend, 0);
-                    toSend = IODefines.valveItemJSON("valve8");
-                    panelRobotController.setYStatus(toSend, 0);
-                    toSend = IODefines.valveItemJSON("valve9");
-                    panelRobotController.setYStatus(toSend, 0);
-                }
             }
         }
         Row{
@@ -723,6 +678,117 @@ Item {
             }
         }
     }
+    ICButton{
+        id:gunfresh1
+        height: 32
+        width: 80
+        anchors.right: container.right
+        y: row1.height + 5
+        text: qsTr("Gunfresh1")
+        anchors.leftMargin: 12
+        bgColor: "grey"
+        onButtonClicked: {
+            lookOver.running = false;
+            if(gunfresh1.bgColor == "grey"){
+                gunfresh1.bgColor = "lime";
+                var toSend = IODefines.valveItemJSON("valve4");
+                panelRobotController.setYStatus(toSend, 1);
+                toSend = IODefines.valveItemJSON("valve5");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+            else{
+                gunfresh1.bgColor = "grey";
+                toSend = IODefines.valveItemJSON("valve6");
+                panelRobotController.setYStatus(toSend, 0);
+
+            }
+            gunfresh1Timer.running = true;
+            lookOver.running = true;
+        }
+    }
+    ICButton{
+        id:gunfresh2
+        height: 32
+        width: 80
+        y: gunfresh1.y + gunfresh1.height + 5
+        text: qsTr("Gunfresh2")
+        anchors.leftMargin: 12
+        anchors.right: gunfresh1.right
+        bgColor: "grey"
+        onButtonClicked: {
+            lookOver.running = false;
+            if(gunfresh2.bgColor == "grey"){
+                gunfresh2.bgColor = "lime"
+                var toSend = IODefines.valveItemJSON("valve7");
+                panelRobotController.setYStatus(toSend, 1);
+                toSend = IODefines.valveItemJSON("valve8");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+            else{
+                gunfresh2.bgColor = "grey"
+                toSend = IODefines.valveItemJSON("valve9");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            gunfresh2Timer.running = true;
+            lookOver.running = true;
+        }
+    }
+    Timer {
+        id: gunfresh1Timer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            if(gunfresh1.bgColor == "grey"){
+                var toSend = IODefines.valveItemJSON("valve4");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve5");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            else{
+                toSend = IODefines.valveItemJSON("valve6");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+        }
+    }
+    Timer {
+        id: gunfresh2Timer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            if(gunfresh2.bgColor == "grey"){
+                var toSend = IODefines.valveItemJSON("valve7");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve8");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            else{
+                toSend = IODefines.valveItemJSON("valve9");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+        }
+    }
+    Timer {
+        id: lookOver
+        interval: 100
+        running: true
+        repeat: true
+        onTriggered: {
+            if(panelRobotController.isOutputOn(4, 0)&&panelRobotController.isOutputOn(5, 0)&&
+                    panelRobotController.isOutputOn(6, 0))
+                gunfresh1.bgColor = "lime";
+            else if(!(panelRobotController.isOutputOn(4, 0)||panelRobotController.isOutputOn(5, 0)||
+                    panelRobotController.isOutputOn(6, 0)))
+                gunfresh1.bgColor = "grey";
+            if(panelRobotController.isOutputOn(7, 0)&&panelRobotController.isOutputOn(8, 0)&&
+                    panelRobotController.isOutputOn(9, 0))
+                gunfresh2.bgColor = "lime";
+            else if(!(panelRobotController.isOutputOn(7, 0)||panelRobotController.isOutputOn(8, 0)||
+                    panelRobotController.isOutputOn(9, 0)))
+                gunfresh2.bgColor = "grey";
+        }
+    }
     onActionObjectChanged: {
         if(actionObject == null) return;
 
@@ -774,15 +840,15 @@ Item {
     Component.onCompleted: {
         planeSel.configValue = 0;
         dirAxisSel.configValue = 1;
-        sPosM0.configValue = 20.000;
-        sPosM1.configValue = 20.000;
+        sPosM0.configValue = 0.000;
+        sPosM1.configValue = 0.000;
         sPosM2.configValue = 0.000;
         sPosM3.configValue = 0.000;
         sPosM4.configValue = 0.000;
         sPosM5.configValue = 0.000;
 
-        pos1Axis1.configValue = 500.000;
-        pos1Axis2.configValue = 20.000;
+        pos1Axis1.configValue = 0.000;
+        pos1Axis2.configValue = 0.000;
         pos1Axis4.configValue = 0.000;
 
         pos2Axis1.configValue = 0.000;
@@ -790,13 +856,13 @@ Item {
 
         repeateSpeed.configValue = 100.0;
         dirSpeed.configValue = 10.0;
-        dirLength.configValue = 50.000;
-        repeateCount.configValue = 2;
-        zlength.configValue = -100;
-        dirCount.configValue = 10;
-        rotate.configValue = 90.000;
+        dirLength.configValue = 0.000;
+        repeateCount.configValue = 0;
+        zlength.configValue = 0.000;
+        dirCount.configValue = 0;
+        rotate.configValue = 0.000;
         rotateSpeed.configValue = 30.0;
-        rotateCount.configValue = 4;
+        rotateCount.configValue = 0;
         isGunBack.isChecked = false;
 
         resetItems();

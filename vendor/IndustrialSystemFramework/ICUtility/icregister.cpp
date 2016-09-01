@@ -9,6 +9,7 @@
 #define SETTINGS_LAST_LOG_TIME "LastLogTime"
 ICRegisterPtr ICRegister::instance_;
 ICRegister::ICRegister()
+    :settings_("superconfig/super.ini",QSettings::IniFormat)
 {
     int leftTime = LeftUseTime();
     isTimeOver_ = false;

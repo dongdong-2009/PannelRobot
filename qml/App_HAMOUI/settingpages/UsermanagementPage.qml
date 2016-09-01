@@ -7,17 +7,22 @@ Item {
     width: parent.width
     height: parent.height
     function perms(perm){
-        switch(parseInt(perm)){
-        case 0: op.setChecked(true);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
-        case 1: op.setChecked(false);mold.setChecked(true);system.setChecked(false);user.setChecked(false);break;
-        case 2: op.setChecked(false);mold.setChecked(false);system.setChecked(true);user.setChecked(false);break;
-        case 3: op.setChecked(false);mold.setChecked(true);system.setChecked(true);user.setChecked(false);break;
-        case 4: op.setChecked(false);mold.setChecked(false);system.setChecked(false);user.setChecked(true);break;
-        case 5: op.setChecked(false);mold.setChecked(true);system.setChecked(false);user.setChecked(true);break;
-        case 6: op.setChecked(false);mold.setChecked(false);system.setChecked(true);user.setChecked(true);break;
-        case 7: op.setChecked(false);mold.setChecked(true);system.setChecked(true);user.setChecked(true);break;
-        default: op.setChecked(false);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
-        }
+        op.setChecked(true);
+        mold.setChecked(perm & 1);
+        system.setChecked(perm & 2);
+        user.setChecked(perm & 4);
+        root.setChecked(perm & 8);
+//        switch(parseInt(perm)){
+//        case 0: op.setChecked(true);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
+//        case 1: op.setChecked(false);mold.setChecked(true);system.setChecked(false);user.setChecked(false);break;
+//        case 2: op.setChecked(false);mold.setChecked(false);system.setChecked(true);user.setChecked(false);break;
+//        case 3: op.setChecked(false);mold.setChecked(true);system.setChecked(true);user.setChecked(false);break;
+//        case 4: op.setChecked(false);mold.setChecked(false);system.setChecked(false);user.setChecked(true);break;
+//        case 5: op.setChecked(false);mold.setChecked(true);system.setChecked(false);user.setChecked(true);break;
+//        case 6: op.setChecked(false);mold.setChecked(false);system.setChecked(true);user.setChecked(true);break;
+//        case 7: op.setChecked(false);mold.setChecked(true);system.setChecked(true);user.setChecked(true);break;
+//        default: op.setChecked(false);mold.setChecked(false);system.setChecked(false);user.setChecked(false);break;
+//        }
     }
     Rectangle{
         id:container
@@ -100,6 +105,7 @@ Item {
                                     mold.isChecked = false;
                                     system.isChecked = false;
                                     user.isChecked = false;
+                                    root.isChecked = false;
                                     password.configValue = "";
                                 }
                             }
@@ -136,6 +142,12 @@ Item {
                             height: 20
                             id: user
                             text: "user"
+                        }
+                        ICCheckBox{
+                            width: 20
+                            height: 20
+                            id:root
+                            text: "root"
                         }
                     }
                 }
@@ -189,7 +201,8 @@ Item {
                             var perm2 = (mold.isChecked ? 1 : 0);
                             var perm3 = (system.isChecked ? 2 : 0);
                             var perm4 = (user.isChecked ? 4 : 0);
-                            newAddbuffer.perm = perm1 + perm2 + perm3 + perm4;
+                            var perm5 = (root.isChecked ? 8 : 0);
+                            newAddbuffer.perm = perm1 + perm2 + perm3 + perm4 + perm5;
                             if(!op.isChecked)
                                 if(newAddbuffer.perm == 0){
                                     msg.warning(qsTr("please set perm!!"));
@@ -215,6 +228,11 @@ Item {
             z:100
             x: 300
             y: 100
+        }
+
+        onVisibleChanged: {
+            root.visible = ShareData.UserInfo.current.perm >= 7;
+            system.visible = root.visible;
         }
 
         Component.onCompleted: {

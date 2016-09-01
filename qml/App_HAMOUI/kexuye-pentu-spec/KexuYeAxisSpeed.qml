@@ -25,7 +25,13 @@ Item {
         ao.fixture2Switch = fixture1Switch.configValue;
         ao.slope = slope.configValue;
         ao.chamferRadius = chamferRadius.configValue;
-        ao.linglong = linelong.configValue
+        ao.linglong = linelong.configValue;
+        ao.gun1use0 = use0.isChecked;
+        ao.gun1use1 = use1.isChecked;
+        ao.gun1use2 = use2.isChecked;
+        ao.gun2use0 = use3.isChecked;
+        ao.gun2use1 = use4.isChecked;
+        ao.gun2use2 = use5.isChecked;
     }
 
     function getDetails(){
@@ -46,7 +52,13 @@ Item {
             "fixture1Switch":fixture1Switch.configValue,
             "slope":slope.configValue,
             "chamferRadius":chamferRadius.configValue,
-            "linglong":linelong.configValue
+            "linglong":linelong.configValue,
+            "use0":use0.isChecked,
+            "use1":use1.isChecked,
+            "use2":use2.isChecked,
+            "use3":use3.isChecked,
+            "use4":use4.isChecked,
+            "use5":use5.isChecked
         };
     }
     function speedcontainer() {return configContainer;}
@@ -381,17 +393,23 @@ Item {
         slope.configValue = actionObject.slope;
 //        chamferRadius.configValue = actionObject.chamferRadius;
 //        linelong.configValue = actionObject.linelong
+        use0.isChecked = actionObject.gun1use0;
+        use1.isChecked = actionObject.gun1use1;
+        use2.isChecked = actionObject.gun1use2;
+        use3.isChecked = actionObject.gun2use0;
+        use4.isChecked = actionObject.gun2use1;
+        use5.isChecked = actionObject.gun2use2;
     }
 
     Component.onCompleted: {
         delay0.configValue = 0;
         delay1.configValue = 0;
-        delay2.configValue = 0;
-        fixtureSwitch.configValue = 3;
+        delay2.configValue = 0.03;
+        fixtureSwitch.configValue = 2;
         delay20.configValue = 0;
         delay21.configValue = 0;
-        delay22.configValue = 0;
-        fixture1Switch.configValue = 3;
+        delay22.configValue = 0.03;
+        fixture1Switch.configValue = 2;
         m0Speed.configValue = 20;
         m1Speed.configValue = 20;
         m2Speed.configValue = 20;
@@ -401,6 +419,12 @@ Item {
         slope.configValue = 0;
         chamferRadius.configValue = 4;
         linelong.configValue = 100;
+        use0.isChecked = true;
+        use1.isChecked = true;
+        use2.isChecked = true;
+        use3.isChecked = true;
+        use4.isChecked = true;
+        use5.isChecked = true;
 
 
     }

@@ -29,6 +29,116 @@ Item {
         }
 
     }
+    ICButton{
+        id:gunfresh1
+        x: valveView.width-gunfresh1.width
+        height: 32
+        width: 80
+        text: qsTr("Gunfresh1")
+        anchors.leftMargin: 12
+        bgColor: "grey"
+        onButtonClicked: {
+            lookOver.running = false;
+            if(gunfresh1.bgColor == "grey"){
+                gunfresh1.bgColor = "lime";
+                var toSend = IODefines.valveItemJSON("valve4");
+                panelRobotController.setYStatus(toSend, 1);
+                toSend = IODefines.valveItemJSON("valve5");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+            else{
+                gunfresh1.bgColor = "grey";
+                toSend = IODefines.valveItemJSON("valve6");
+                panelRobotController.setYStatus(toSend, 0);
+
+            }
+            gunfresh1Timer.running = true;
+            lookOver.running = true;
+        }
+    }
+    ICButton{
+        id:gunfresh2
+        x: valveView.width-gunfresh1.width
+        y: gunfresh1.height + 5
+        height: 32
+        width: 80
+        text: qsTr("Gunfresh2")
+        anchors.leftMargin: 12
+        bgColor: "grey"
+        onButtonClicked: {
+            lookOver.running = false;
+            if(gunfresh2.bgColor == "grey"){
+                gunfresh2.bgColor = "lime"
+                var toSend = IODefines.valveItemJSON("valve7");
+                panelRobotController.setYStatus(toSend, 1);
+                toSend = IODefines.valveItemJSON("valve8");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+            else{
+                gunfresh2.bgColor = "grey"
+                toSend = IODefines.valveItemJSON("valve9");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            gunfresh2Timer.running = true;
+            lookOver.running = true;
+        }
+    }
+    Timer {
+        id: gunfresh1Timer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            if(gunfresh1.bgColor == "grey"){
+                var toSend = IODefines.valveItemJSON("valve4");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve5");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            else{
+                toSend = IODefines.valveItemJSON("valve6");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+        }
+    }
+    Timer {
+        id: gunfresh2Timer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            if(gunfresh2.bgColor == "grey"){
+                var toSend = IODefines.valveItemJSON("valve7");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve8");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            else{
+                toSend = IODefines.valveItemJSON("valve9");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+        }
+    }
+    Timer {
+        id: lookOver
+        interval: 100
+        running: true
+        repeat: true
+        onTriggered: {
+            if(panelRobotController.isOutputOn(4, 0)&&panelRobotController.isOutputOn(5, 0)&&
+                    panelRobotController.isOutputOn(6, 0))
+                gunfresh1.bgColor = "lime";
+            else if(!(panelRobotController.isOutputOn(4, 0)||panelRobotController.isOutputOn(5, 0)||
+                    panelRobotController.isOutputOn(6, 0)))
+                gunfresh1.bgColor = "grey";
+            if(panelRobotController.isOutputOn(7, 0)&&panelRobotController.isOutputOn(8, 0)&&
+                    panelRobotController.isOutputOn(9, 0))
+                gunfresh2.bgColor = "lime";
+            else if(!(panelRobotController.isOutputOn(7, 0)||panelRobotController.isOutputOn(8, 0)||
+                    panelRobotController.isOutputOn(9, 0)))
+                gunfresh2.bgColor = "grey";
+        }
+    }
 
 
     onValvesChanged:  {

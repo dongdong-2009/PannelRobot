@@ -27,7 +27,6 @@ Item {
             valveStatus: mValveStatus
             valve: mValve
         }
-
     }
     ICButton{
         id:gunfresh1

@@ -63,6 +63,14 @@ function KeXuyePentuRecord(){
         });
     };
 
+    this.copyRecord = function(newName, originName){
+        if(this.exist(name)) return false;
+        var db = getDatabase();
+        db.transaction(function(tx){
+            tx.executeSql(icStrformat("CREATE TABLE {0} AS SELECT * FROM {1}", newName, originName));
+        });
+    }
+
     this.getRecordContent = function(name){
         var db = getDatabase();
         var ret  = '[{"action":60000,"insertedIndex":0}]';

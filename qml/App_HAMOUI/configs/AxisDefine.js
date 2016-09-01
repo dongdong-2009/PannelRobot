@@ -56,6 +56,14 @@ function changeAxisNum(num){
     informMonitors();
 }
 
+function changeAxisUnit(id, axisType){
+    var unit = (axisType == 1 ? qsTr("mm") : qsTr("°"));
+    if(axisInfos[id].unit != unit){
+        axisInfos[id].unit = unit;
+//        informMonitors();
+    }
+}
+
 function usedAxisNum(){
     var c = 0;
     for(var i = 0, len = axisInfos.length; i < len; ++i){

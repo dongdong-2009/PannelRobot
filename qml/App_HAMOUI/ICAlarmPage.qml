@@ -4,6 +4,7 @@ import "Theme.js" as Theme
 import "../utils/Storage.js" as Storage
 import "../utils/utils.js" as Utils
 import "configs/AlarmInfo.js" as AlarmInfo
+import "../ICCustomElement"
 
 
 Rectangle {
@@ -62,75 +63,56 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         y:6
         z:2
-        Rectangle{
+        ICLabel{
             id:hNum
             border.width: 1
             border.color: "gray"
             width: 50
             height: 32
-            Text {
-                text: qsTr("Alarm\n Num")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-
-            }
+            text: qsTr("Alarm\n Num")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
-        Rectangle{
+
+        ICLabel{
             id:hLevel
             border.width: hNum.border.width
             border.color: hNum.border.color
             width: 30
             height: hNum.height
-            Text {
-                text: qsTr("L")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-
-            }
+            text: qsTr("L")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
-        Rectangle{
+        ICLabel{
             id:hDescr
             border.width: hNum.border.width
             border.color: hNum.border.color
             width: 400
             height: hNum.height
-            Text {
-                text: qsTr("Descr")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-
-            }
+            text: qsTr("Descr")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
-        Rectangle{
+        ICLabel{
             id:hTriggeredTime
             border.width: hNum.border.width
             border.color: hNum.border.color
             width: 150
             height: hNum.height
-            Text {
-                text: qsTr("Triggered Time")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-
-            }
+            text: qsTr("Triggered Time")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
-        Rectangle{
+        ICLabel{
             id:hEndTime
             border.width: hNum.border.width
             border.color: hNum.border.color
             width: 150
             height: hNum.height
-            Text {
-                text: qsTr("End Time")
-                verticalAlignment: Text.AlignVCenter
-                height: parent.height
-                x:textOffset
-
-            }
+            text: qsTr("End Time")
+            horizontalAlignment: Text.AlignLeft
+            horizontalTextOffset: textOffset
         }
     }
 

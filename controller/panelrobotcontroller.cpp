@@ -9,6 +9,7 @@
 #include "parser.h"
 #include "icupdatesystem.h"
 #include "icutility.h"
+#include "icregister.h"
 
 #ifdef Q_WS_QWS
 #include <stdio.h>
@@ -152,6 +153,11 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     //    keyCheckTimer_.start(100);
     controllerInstance = this;
 
+    if(ICRegister::Instance()->IsTryTimeOver())
+    {
+        emit tryTimeOver();
+    }
+
 
 #ifdef Q_WS_QWS
     screenSaver_ = new ICDefaultScreenSaver();
@@ -213,7 +219,13 @@ void PanelRobotController::Init()
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
-    emit LoadMessage("Ui inited.");
+
+    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
+
+    emit LoadMessage("Record reload.");
+
+//    InitUI();
+//    emit LoadMessage("Ui inited.");
     //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -243,7 +255,7 @@ void PanelRobotController::InitMold_()
 
 void PanelRobotController::InitMachineConfig_()
 {
-    ICAppSettings as;
+    ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
@@ -600,10 +612,13 @@ QString PanelRobotController::scanUpdaters(const QString &filter, int mode) cons
     return scanUserDir("updaters", QString("%1*.bfe").arg(filter));
 }
 
-void PanelRobotController::startUpdate(const QString &updater)
+void PanelRobotController::startUpdate(const QString &updater, int mode)
 {
     ICUpdateSystem us;
-    us.SetPacksDir(ICAppSettings().UsbPath);
+    if(mode == 0)
+        us.SetPacksDir(ICAppSettings().UsbPath);
+    else
+        us.SetPacksDir(QString(ICAppSettings().UserPath) + "/updaters");
     host_->StopCommunicate();
     system("mkdir updatehost/");
     hostUpdateFinishedWatcher_.addPath("updatehost");
@@ -1193,7 +1208,8 @@ void PanelRobotController::manualRunProgram(const QString& program,
                                             const QString& counters,
                                             const QString& variables,
                                             const QString& functions,
-                                            int channel)
+                                            int channel,
+                                            bool sendKeyNow)
 {
     bool isok;
     QMap<int, StackInfo> compliedStacks = ICRobotMold::ParseStacks(stacks, isok);
@@ -1218,7 +1234,8 @@ void PanelRobotController::manualRunProgram(const QString& program,
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
 //    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
-    ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
+    if(sendKeyNow)
+        ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
 
 }
 
@@ -1556,6 +1573,58 @@ QString PanelRobotController::newRecord(const QString &name, const QString &init
     return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
 }
 
+QString PanelRobotController::readRecord(const QString &name) const
+{
+    QStringList content = ICRobotMold::ExportMold(name);
+    return QString("[%1]").arg(content.join(","));
+}
+
+bool PanelRobotController::loadRecord(const QString &name)
+{
+    ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
+    QMap<int, StackInfo> stacks = mold->GetStackInfos();
+    bool ret =  mold->LoadMold(name);
+    if(ret)
+    {
+        ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
+        ret = sendMainProgramToHost();
+        if(ret)
+        {
+            for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
+            {
+                ret = sendSubProgramToHost(i);
+                if(!ret)
+                {
+                    break;
+                }
+            }
+        }
+
+#ifndef Q_WS_QWS
+        ret = true;
+#endif
+        ICAppSettings as;
+        as.SetCurrentMoldConfig(name);
+
+        QMap<int, StackInfo>::const_iterator p = stacks.constBegin();
+        StackInfo si;
+        bool ok;
+        while(p != stacks.constEnd())
+        {
+            si = mold->GetStackInfo(p.key(), ok);
+            if(!ok || si.posData.isEmpty())
+            {
+                ICRobotVirtualhost::SendExternalDatas(host_, p.key(), si.posData);
+            }
+            ++p;
+        }
+
+        emit moldChanged();
+    }
+
+    return ret;
+}
+
 QString PanelRobotController::scanHMIBackups(int mode) const
 {
     if(mode == 1)
@@ -1642,3 +1711,53 @@ void PanelRobotController::deleteUpdater(const QString &updater, int mode)
 {
     deleteBackupHelper("updaters", updater, mode);
 }
+
+void PanelRobotController::registerCustomProgramAction(const QString &actionDefine)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantMap ret = parser.parse(actionDefine.toLatin1(), &ok).toMap();
+    if(ok)
+    {
+        ICCustomActionParseDefine cpd;
+        QVariantList items = ret.value("seq").toList();
+        QVariantMap item;
+        for(int i = 0; i < items.size(); ++i)
+        {
+            item = items.at(i).toMap();
+            cpd.append(qMakePair(item.value("item").toString(), item.value("decimal").toInt()));
+        }
+        ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
+    }
+}
+
+int PanelRobotController::registerUseTime(const QString &fc, const QString &mC, const QString &rcCode)
+{
+    int ret = ICRegister::Register(fc, mC, rcCode);
+    if(ret < 0) return ret;
+    ICRegister::Instance()->SetUseTime(ret);
+    return ret;
+}
+
+QString PanelRobotController::generateMachineCode() const
+{
+    return ICRegister::GenerateMachineCode();
+}
+
+int PanelRobotController::restUseTime() const
+{
+    return ICRegister::Instance()->LeftUseTime();
+}
+
+bool PanelRobotController::isTryTimeOver() const
+{
+    return ICRegister::Instance()->IsTryTimeOver();
+}
+
+void PanelRobotController::setRestUseTime(int hour)
+{
+    ICRegister::Instance()->SetUseTime(hour);
+}
+//extern  const ICAddrWrapper  s_rw_0_16_0_943(3,3,0,16,943,0,"");
+//extern  const ICAddrWrapper  s_rw_16_16_0_943(3,3,16,16,943,0,"");
+//extern  const ICAddrWrapper  s_rw_0_16_0_944(3,3,0,16,943,0,"");

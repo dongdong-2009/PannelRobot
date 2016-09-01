@@ -92,17 +92,17 @@ Item {
                         ICConfigEdit{
                             id:xdeviation
                             configName: qsTr("X Deviation")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                         ICConfigEdit{
                             id:ydeviation
                             configName: qsTr("Y Deviation")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                         ICConfigEdit{
                             id:zdeviation
                             configName: qsTr("Z Deviation")
-                            configAddr: "s_rw_0_32_1_1200"
+                            configAddr: "s_rw_0_32_3_1300"
                         }
                     }
                     Column{

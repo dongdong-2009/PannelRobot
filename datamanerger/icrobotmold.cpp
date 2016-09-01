@@ -18,6 +18,7 @@ union SpeedControlActionData
 };
 
 ICRobotMoldPTR ICRobotMold::currentMold_;
+QMap<int, ICCustomActionParseDefine> ICRobotMold::customActions_;
 QMap<int, QStringList> CreatePathActionMotorNamesMap()
 {
     QMap<int, QStringList> ret;
@@ -53,6 +54,25 @@ ICRobotMold::ICRobotMold()
 
 typedef int (*ActionCompiler)(ICMoldItem &,const QVariantMap*);
 
+int CustomActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    int action = v->value("action").toInt();
+    ICCustomActionParseDefine cpd = ICRobotMold::GetCustomActionParseDefine(action);
+    QPair<QString, int> d;
+    for(int i = 0; i < cpd.size(); ++i)
+    {
+        d = cpd.at(i);
+        if(!v->contains(d.first))
+        {
+            return ICRobotMold::kCCErr_Wrong_Action_Define;
+        }
+        item.append(ICUtility::doubleToInt(v->value(d.first).toDouble(), d.second));
+    }
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+}
+
+
 int SimpleActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
 #ifdef NEW_PLAT
@@ -72,6 +92,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     bool isSignalStop = v->value("signalStopEn", false).toBool();
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
+    bool isRel = v->value("rel", false).toBool();
     if(speedMode != 0 || isStop)
     {
         SpeedControlActionData spData;
@@ -89,7 +110,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
-        if(isEarlyEnd || isEarlySpd || isSignalStop)
+        if(isEarlyEnd || isEarlySpd || isSignalStop || isRel)
         {
             int op = 0;
             op |= isEarlySpd ? 1 : 0;
@@ -103,6 +124,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
             item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
             item.append(isSignalStop ? 1 : 0);
             item.append(v->value("signalStopMode", 0).toInt());
+            item.append(isRel ? 1: 0);
             item[0] = F_CMD_SINGLE_ADD_FUNC;
         }
     }
@@ -522,7 +544,10 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     //    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
     if(moduleStep < 0)
+    {
         item.append(v->value("module").toUInt());
+        return ICRobotMold::kCCErr_Invaild_ModuleID;
+    }
     else
         item.append(moduleStep);
     item.append(step);
@@ -607,13 +632,19 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
 
 QMap<int, ActionCompiler> actionToCompilerMap = CreateActionToCompilerMap();
 
+ActionCompiler GetActionCompiler(int action)
+{
+    if(actionToCompilerMap.contains(action)) return actionToCompilerMap.value(action);
+    else if(ICRobotMold::IsActionRegister(action)) return CustomActionCompiler;
+    return SimpleActionCompiler;
+}
 
 static inline ICMoldItem VariantToMoldItem(int step, QVariantMap v,  int &err, int subNum = 255)
 {
     ICMoldItem item;
 #ifdef NEW_PLAT
     int action = v.value("action").toInt();
-    ActionCompiler cc = actionToCompilerMap.value(action, SimpleActionCompiler);
+    ActionCompiler cc = GetActionCompiler(action);
     err = cc(item, &v);
 #else
     item.SetAction(v.value("action").toInt());
@@ -1041,18 +1072,17 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
 }
 
-bool ICRobotMold::LoadMold(const QString &moldName)
+bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
 {
-    if(moldName == moldName_)
+    if(moldName == moldName_ && !reload)
         return false;
     QStringList programs = ICDALHelper::MoldProgramContent(moldName);
     if(programs.size() != 9) return false;
     moldName_ = moldName;
-    programs_.clear();
     CompileInfo p;
     int err;
-    programsCode_.clear();
-    programs_.clear();
+//    programsCode_.clear();
+//    programs_.clear();
     bool ok = false;
     stacks_ = ICDALHelper::MoldStacksContent(moldName);
     stackInfos_ = ParseStacks(stacks_, ok);
@@ -1061,16 +1091,23 @@ bool ICRobotMold::LoadMold(const QString &moldName)
     functions_ = ICDALHelper::MoldFunctionsContent(moldName);
     compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
     ok = true;
+    QList<CompileInfo> tmpPrograms;
+    QStringList tmpProgramsCode;
     for(int i = 0; i != programs.size(); ++i)
     {
-        programsCode_.append(programs.at(i));
+        tmpProgramsCode.append(programs.at(i));
         p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr())
         {
             ok = false;
             qDebug()<<"Load Mold Err:"<<p.ErrInfo();
         }
-        programs_.append(p);
+        tmpPrograms.append(p);
+    }
+    if(ok)
+    {
+        programsCode_ = tmpProgramsCode;
+        programs_ = tmpPrograms;
     }
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));
@@ -1091,7 +1128,7 @@ QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
     CompileInfo aP = Complie(program, stackInfos_, counters_, variables_, compiledFunctions_, err);
-    if(err == kCCErr_None)
+    if(aP.ErrInfo().isEmpty())
     {
         programsCode_[which] = program;
         programs_[which] = aP;
@@ -1578,6 +1615,9 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[0].offsetZ = ICUtility::doubleToInt(stackMap.value("offsetZ").toDouble(), 3);
         stackInfo.stackData.si[0].dataSourceID = stackMap.value("dataSourceID").toInt();
 
+        bool isZWithYEn = stackMap.value("isZWithYEn", false).toBool();
+        int runSeq = stackMap.value("runSeq", 3).toInt();
+
 
         stackMap = tmp.value("si1").toMap();
         stackInfo.stackData.si[1].m0pos = ICUtility::doubleToInt(stackMap.value("m0pos").toDouble(), 3);
@@ -1596,8 +1636,8 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dir0 = stackMap.value("dir0").toInt();
         stackInfo.stackData.si[1].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[1].dir2 = stackMap.value("dir2").toInt();
-        stackInfo.stackData.si[1].type = stackInfo.stackData.si[0].type;
-        stackInfo.stackData.si[1].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
+        stackInfo.stackData.si[1].type = runSeq;
+        stackInfo.stackData.si[1].doesBindingCounter = isZWithYEn ? 1 : 0;
         stackInfo.stackData.si[1].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();
         stackInfo.stackData.si[1].offsetX = ICUtility::doubleToInt(stackMap.value("offsetX").toDouble(), 3);
@@ -1732,10 +1772,10 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
     QMap<int, QMap<int, int> > ret;
     bool isOk;
     QMap<int, CompileInfo> functionsMap = ParseFunctions(functions, isOk, stackInfos_, counters_, variables_);
+
     if(!isOk)
         return ret;
-    functions_ = functions;
-    compiledFunctions_ = functionsMap;
+
     QMap<int, CompileInfo>::const_iterator p = functionsMap.constBegin();
     QMap<int, int> eI;
     while(p != functionsMap.constEnd())
@@ -1744,15 +1784,19 @@ QMap<int, QMap<int, int> > ICRobotMold::SaveFunctions(const QString &functions, 
         if(!eI.isEmpty())
         {
             isOk = false;
-            break;
+//            break;
         }
         ret.insert(p.key(), eI);
         ++p;
     }
     if(isOk)
+    {
+        functions_ = functions;
+        compiledFunctions_ = functionsMap;
         ICDALHelper::SaveFunctions(moldName_, functions);
+    }
 
-    if(syncMold)
+    if(syncMold && isOk)
     {
         for(int i = 0 ; i < programs_.size(); ++i)
         {

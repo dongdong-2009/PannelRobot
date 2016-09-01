@@ -18,10 +18,6 @@ Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
     height: Theme.defaultTheme.MainWindow.height
-    property bool run_Ready: false
-    property bool stop_Ready: false
-    property bool return_Ready: false
-    property bool output_off: false
     function onScreenSave(){
         panelRobotController.closeBacklight();
         loginDialog.setTologout();
@@ -33,6 +29,7 @@ Rectangle {
     QtObject{
         id:pData
         property int lastKnob: -1
+        property int lastAxis: 0
     }
     ICMessageBox{
         id:tipBox
@@ -40,6 +37,21 @@ Rectangle {
         y:200
         visible: false
         z:1000
+    }
+    Text {
+        id: restTip
+        color: "red"
+        y:timelable.y
+        anchors.right: timelable.left
+        anchors.rightMargin: 12
+        z:1000
+        function setRestTime(rt){
+            visible = (rt < 168) && rt != 0;
+            text = qsTr("Rest Time:") + rt;
+        }
+        Component.onCompleted: {
+            setRestTime(panelRobotController.restUseTime());
+        }
     }
 
     TopHeader{
@@ -190,7 +202,7 @@ Rectangle {
         focus: true
         Loader{
             id:standbyPage
-//            source: "StandbyPage.qml"
+            //            source: "StandbyPage.qml"
             width: parent.width
             height: parent.height
         }
@@ -307,6 +319,7 @@ Rectangle {
                 ICButtonGroup{
                     mustChecked: true
                     spacing: 20
+                    x:6
                     ICCheckBox{
                         id:alarmSel
                         text: qsTr("Alarm Log")
@@ -556,73 +569,74 @@ Rectangle {
         y:armKeyboardContainer.y
 
         form: "yyyy-MM-dd  hh:mm:ss  DDD"
+        onHourGone: restTip.setRestTime(panelRobotController.restUseTime());
     }
 
     function onKnobChanged(knobStatus){
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "dsData":[
-//                {
-//                    "camID":"0",
-//                    "data":[
-//                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
-//                    ]
-//                }
-//            ]
-//        };
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "dsData":[
-//                {
-//                    "camID":"0",
-//                    "data":[
-//                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-//                    ]
-//                }
-//            ]
-//        };
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"listModel",
-//            "currentModel":{"name":"模板名称","modelID":0},
-//            "data":
-//            [
-//                {
-//                    "name":"模板名称",
-//                    "models":
-//                    [
-//                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                    ]
-//                },
-//                {
-//                    "name":"模板名称",
-//                    "models":
-//                    [
-//                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
-//                    ]
-//                },
-//            ]
-//        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "dsData":[
+        //                {
+        //                    "camID":"0",
+        //                    "data":[
+        //                        {"ModelID":"0","X":57.820,"Y":475.590,"Angel":0.002,"ExtValue_0":null,"ExtValue_1":null}
+        //                    ]
+        //                }
+        //            ]
+        //        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "dsData":[
+        //                {
+        //                    "camID":"0",
+        //                    "data":[
+        //                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
+        //                    ]
+        //                }
+        //            ]
+        //        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "reqType":"listModel",
+        //            "currentModel":{"name":"模板名称","modelID":0},
+        //            "data":
+        //            [
+        //                {
+        //                    "name":"模板名称",
+        //                    "models":
+        //                    [
+        //                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                    ]
+        //                },
+        //                {
+        //                    "name":"模板名称",
+        //                    "models":
+        //                    [
+        //                        {"id":0, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                        {"id":1, "offsetX":1.000, "offsetY":2.000, "offsetA":3.000, "modelImgPath":"http://图片在视觉服务器系统中的路径.png"},
+        //                    ]
+        //                },
+        //            ]
+        //        };
 
-//        onETH0DataIn(JSON.stringify(toTest));
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"standardize",
-//            "camID":0,
-//            "data":[
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 },
-//                { "X":0.000,"Y":0.000 }
-//            ]
-//        };
+        //        onETH0DataIn(JSON.stringify(toTest));
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "reqType":"standardize",
+        //            "camID":0,
+        //            "data":[
+        //                { "X":0.000,"Y":0.000 },
+        //                { "X":0.000,"Y":0.000 },
+        //                { "X":0.000,"Y":0.000 }
+        //            ]
+        //        };
 
-//        var toTest = {
-//            "dsID":"www.geforcevision.com.cam",
-//            "reqType":"photo",
-//            "camID":0,
-//        };
+        //        var toTest = {
+        //            "dsID":"www.geforcevision.com.cam",
+        //            "reqType":"photo",
+        //            "camID":0,
+        //        };
 
         var isAuto = (knobStatus === Keymap.KNOB_AUTO);
         var isManual = (knobStatus === Keymap.KNOB_MANUAL);
@@ -641,23 +655,32 @@ Rectangle {
         }
         if(!menuSettings.enabled && menuSettings.isChecked) menuProgram.setChecked(true);
         if(isManual){
-            ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+            if(panelRobotController.getConfigValue("s_rw_0_32_0_211") == 0){
+                ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
+                //            panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+                panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
+            }
             menuOperation.setChecked(true);
             middleHeader.onMenuItemTriggered(menuOperation);
+            menuProgram.enabled = true;
         }else if(isAuto){
             var gsEn = parseInt(panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0));
             if(gsEn > 0){
                 var gS = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
                 ShareData.GlobalStatusCenter.setGlobalSpeed(gS);
-                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
+                //                panelRobotController.modifyConfigValue("s_rw_0_16_1_294", gS);
+                panelRobotController.modifyConfigValue("s_rw_0_32_1_212", gS);
             }
         }else if(isStop){
             if(pData.lastKnob != knobStatus){
                 middleHeader.showStandbyPage();
             }
+            menuProgram.enabled = false;
         }
+        ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(isManual);
+        mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
         pData.lastKnob = knobStatus;
+        pData.lastAxis = 0;
     }
 
     function onUserChanged(user){
@@ -708,7 +731,8 @@ Rectangle {
         ShareData.UserInfo.registUserChangeEvent(mainWindow);
         panelRobotController.readCurrentKnobValue();
         ShareData.GlobalStatusCenter.setGlobalSpeed(10.0);
-        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+        //        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", 10.0);
+        panelRobotController.modifyConfigValue("s_rw_0_32_1_212", 10.0);
         mainHeader.setRecordItemEnabled(false);
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
@@ -717,16 +741,16 @@ Rectangle {
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){
-           tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
+            tipBox.runningTip(qsTr("Sending Data..."), qsTr("Get it"));
         });
         panelRobotController.sentContinuousData.connect(function(t){
             tipBox.visible = false;
         });
         panelRobotController.needToInitHost.connect(function(){
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
-                                                  "","", "", "", 19);
+                                                  "","", "", "", 19, false);
             panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
-                                                  "","", "", "", 18);
+                                                  "","", "", "", 18, false);
 
             var i;
             var sI;
@@ -743,11 +767,12 @@ Rectangle {
                 }
             }
         });
-//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
-//                                              "","", "", "", 19);
-//        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
-//                                              "","", "", "", 18);
+        //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+        //                                              "","", "", "", 19);
+        //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+        //                                              "","", "", "", 18);
 
+        mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
         console.log("main load finished!");
     }
 
@@ -780,7 +805,7 @@ Rectangle {
                     tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes[F4]"), qsTr("No[F5]"));
                 }
 
-//                    panelRobotController
+                //                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
             }
         }
@@ -803,56 +828,11 @@ Rectangle {
                 //                ShareData.knobStatus = key;
                 ShareData.GlobalStatusCenter.setKnobStatus(key);
             }
-//                        console.log("knob", key, Keymap.getKeyMappedAction(key));
-            panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
-//            if(panelRobotController.currentMode() == Keymap.CMD_ONE_CYCLE){
-//                if(key === Keymap.KEY_Stop){
-//                    var toSend = IODefines.valveItemJSON("valve16");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve17");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve18");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve19");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve20");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve21");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                }
-//            }
-
-//            if(panelRobotController.currentMode() === Keymap.CMD_MANUAL){
-//                if(key === Keymap.KEY_Stop){
-//                    toSend = IODefines.valveItemJSON("valve16");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve17");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve18");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve19");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve20");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve21");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                }
-//            }
-
-//            if((key === Keymap.KNOB_SETTINGS)){
-//                toSend = IODefines.valveItemJSON("valve16");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve17");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve18");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve19");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve20");
-//                panelRobotController.setYStatus(toSend, 0);
-//                toSend = IODefines.valveItemJSON("valve21");
-//                panelRobotController.setYStatus(toSend, 0);
-//            }
+            //            console.log(Keymap.getKeyMappedAction(key));
+            if(panelRobotController.isTryTimeOver() && key == Keymap.KNOB_AUTO){
+                tipBox.warning(qsTr("Please Register!"));
+            }else
+                panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);
         }
@@ -879,12 +859,16 @@ Rectangle {
         interval: 50; running: true; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
+            var currentMode = panelRobotController.currentMode();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){
 
                     var tuneGlobalSpeedEn = ShareData.GlobalStatusCenter.getTuneGlobalSpeedEn();
                     if(tuneGlobalSpeedEn){
+                        if(ShareData.GlobalStatusCenter.getKnobStatus() == Keymap.KNOB_MANUAL &&
+                                panelRobotController.getConfigValue("s_rw_0_32_0_211") == 1)
+                            continue;
                         var spd;
                         var speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
                         spd = parseFloat(speed);
@@ -893,12 +877,13 @@ Rectangle {
                         spd = Keymap.endSpeedCalcByTime(spd, dir);
                         speed = spd.toFixed(1);
                         ShareData.GlobalStatusCenter.setGlobalSpeed(speed);
-                        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
+                        //                        panelRobotController.modifyConfigValue("s_rw_0_16_1_294", speed);
+                        panelRobotController.modifyConfigValue("s_rw_0_32_1_212", speed);
+                        mainHeader.speed = speed;
                     }
 
                 }else{
                     panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
-
                 }
             }
             if(!panelRobotController.isOrigined()){
@@ -908,12 +893,12 @@ Rectangle {
                 tipBar.visible = false;
             }
 
-            if(panelRobotController.currentMode() == Keymap.CMD_STANDBY){
+            if(currentMode == Keymap.CMD_STANDBY){
                 panelRobotController.readCurrentKnobValue();
             }
-            if(panelRobotController.currentMode() == Keymap.CMD_ORIGIN){
+            if(currentMode == Keymap.CMD_ORIGIN){
                 originreturnmsgmsg.showForOrigin();
-            }else if(panelRobotController.currentMode() == Keymap.CMD_RETURN){
+            }else if(currentMode == Keymap.CMD_RETURN){
                 originreturnmsgmsg.showForReturn();
             }else if(panelRobotController.isOriginning()){
                 originreturnmsgmsg.showForOriginning();
@@ -924,21 +909,6 @@ Rectangle {
             var alarmNum = panelRobotController.currentErrNum();
             if(alarmNum !== alarmBar.errID){
                 alarmBar.errID = alarmNum;
-//                if(alarmNum != 0){
-//                    var toSend = IODefines.valveItemJSON("valve16");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve17");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve18");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve19");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve20");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                    toSend = IODefines.valveItemJSON("valve21");
-//                    panelRobotController.setYStatus(toSend, 0);
-//                }
-
                 if(alarmNum === 0){
                     alarmlogPage.resolvedAlarms();
                 }else if(alarmNum === 1){
@@ -955,25 +925,18 @@ Rectangle {
                     paraChose.visible = false;
                 }
             }
-//            var myiStatus = panelRobotController.iStatus(0);
-//            if(!(myiStatus & 0x400000))     //x36
-//                mainWindow.run_Ready = true;
-//            if(run_Ready && (myiStatus & 0x400000)){
-//                mainWindow.run_Ready = false;
-//                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Run));
-//            }
-//            if(!(myiStatus & 0x800000))
-//                mainWindow.stop_Ready = true;
-//            if(stop_Ready && (myiStatus & 0x800000)){
-//                mainWindow.stop_Ready = false;
-//                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Stop));
-//            }
-//            if(!(myiStatus & 0x1000000))
-//                mainWindow.return_Ready = true;
-//            if(return_Ready && (myiStatus & 0x1000000)){
-//                mainWindow.return_Ready = false;
-//                panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(Keymap.KEY_Return));
-//            }
+
+            if(ShareData.GlobalStatusCenter.getKnobStatus() == Keymap.KNOB_MANUAL &&
+                    panelRobotController.getConfigValue("s_rw_0_32_0_211") == 1){
+                var currentAxis = panelRobotController.getPullyAxis();
+                //                if(currentAxis < 0 || currentAxis > 7) return;
+                if(currentAxis <= 0) return;
+                if(currentAxis != pData.lastAxis ){
+                    pData.lastAxis = currentAxis;
+                    ShareData.GlobalStatusCenter.setGlobalSpeed((panelRobotController.getConfigValue(AxisDefine.axisInfos[currentAxis - 1].sAddr) / 10).toFixed(1));
+                    mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
+                }
+            }
         }
     }
 }

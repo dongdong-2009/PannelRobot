@@ -4,7 +4,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "Teach.js" as LocalTeach
 import "../teach/Teach.js" as BaseTeach
 import "../teach/ManualProgramManager.js" as ManualProgramManager
-
+import "../configs/IODefines.js" as IODefines
 
 Item {
     id:container
@@ -17,28 +17,37 @@ Item {
     property variant stackInstance: null
     property variant stackCount: []
     function createActionObjects(){
+        return createActionObj(null);
+    }
+
+    function createActionObj(actObt){
         var ret = [];
+        if(actObt == null){
+            var details = detailInstance.getDetails();
+            var stack = stackInstance.getstackInstace();
+        }
         var rc = BaseTeach.counterManager.getCounter(0);
-        var details = detailInstance.getDetails();
-        var stack = stackInstance.getstackInstace();
         if(rc == null){
-            rc= BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+            rc= BaseTeach.counterManager.newCounter("", 0, 50000);
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
         }
+        var rotateCID = rc.id;
         var c = BaseTeach.counterManager.newCounter("", 0, repeateCount.configValue);
         var rcID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         c = BaseTeach.counterManager.newCounter("", 0, dirCount.configValue);
         var dirCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        var rotateCID = rc.id;
         var rotateOKCount = rotate.configValue / 90;
         if(rotate.configValue < 0)rotateOKCount = -rotateOKCount;
         c = BaseTeach.counterManager.newCounter("", 0, rotateOKCount);
         var rotateOKCID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        if(actObt == null)
+            c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+        else
+            c = BaseTeach.counterManager.newCounter("", 0, actObt.xcount * actObt.ycount);
         var aaaa = stackCount = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
@@ -47,50 +56,104 @@ Item {
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
 
-        ret.push(LocalTeach.generatePENTUAction(mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
-                                                details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
-                                                repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
-                                                dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
-                                                dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
-                                                rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
-                                                details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
-                                                details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                                                details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
-                                                aaaa,bbbb,editaction.configValue,
-                                                stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
-                                                stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
-                                                stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
-                                                stack.zdirection,newStack()));
+
+        if(actObt == null){
+            if(stack.useStack)
+                var newstack = newStack(null);
+            else newstack = 0;
+        }
+        else{
+            if(actObt.useStack)
+                newstack = newStack(actObt);
+            else newstack = 0;
+        }
+        if(actObt == null)
+            ret.push(LocalTeach.generatePENTUAction(
+                        mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
+                        details.spd1, details.spd2, details.spd3, details.spd4, details.spd5,
+                        repeateSpeed.configValue, repeateCount.configValue, zlength.configValue,
+                        dirAxisSel.configValue, dirLength.configValue, dirSpeed.configValue,
+                        dirCount.configValue, pos2Container.getPoint(), pos3Container.getPoint(),
+                        rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
+                        details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
+                        details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
+                        details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
+                        aaaa,bbbb,editaction.configValue,
+                        stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
+                        stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
+                        stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
+                        stack.zdirection,newstack,isGunBack.isChecked,
+                        details.use0,details.use1,details.use2,details.use3,details.use4,details.use5));
+        else
+            ret.push(LocalTeach.generatePENTUAction(
+                        actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
+                        actObt.startPosSpeed2, actObt.startPosSpeed3, actObt.startPosSpeed4, actObt.startPosSpeed5,
+                        actObt.repeatSpeed, actObt.repeateCount, actObt.zlength, actObt.dirAxis, actObt.dirLength, actObt.dirSpeed,
+                        actObt.dirCount, actObt.point1, actObt.point2, actObt.rotate, actObt.rotateSpeed, actObt.rotateCount,
+                        actObt.fixtureDelay0, actObt.fixtureDelay1, actObt.fixtureDelay2, rcID, dirCID, rotateCID,
+                        actObt.fixture2Delay0, actObt.fixture2Delay1, actObt.fixture2Delay2, actObt.fixture1Switch, actObt.fixture2Switch,
+                        actObt.slope, rotateOKCID, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
+                        actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
+                        actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
+                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
+                        actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2));
         return ret;
     }
 
-    function newStack(){
-        var stack = stackInstance.getstackInstace();
+    function newStack(actObt){
         var sid = LocalTeach.useableStack();
-        var si0 = new LocalTeach.StackItem(sPosM0.configValue || 0.000,
-                                      sPosM1.configValue || 0.000,
-                                      sPosM2.configValue || 0.000,
-                                      sPosM3.configValue || 0.000,
-                                      sPosM4.configValue || 0.000,
-                                      sPosM5.configValue || 0.000,
-                                      stack.xspace || 0.000,
-                                      stack.yspace || 0.000,
-                                      stack.zspace || 0.000,
-                                      stack.xcount || 0,
-                                      stack.ycount || 0,
-                                      stack.zcount || 0,
-                                      stack.turns,
-                                      stack.xdirection,
-                                      stack.ydirection,
-                                      stack.zdirection,
-                                      true,
-                                      stackCount,
-                                      stack.useDeviation,
-                                      stack.xdeviation,
-                                      stack.ydeviation,
-                                      stack.zdeviation,
-                                      "custompoint[" + sid + "]",
-                                      sid);
+        if(actObt == null){
+            var stack = stackInstance.getstackInstace();
+            var si0 = new LocalTeach.StackItem(sPosM0.configValue || 0.000,
+                                          sPosM1.configValue || 0.000,
+                                          sPosM2.configValue || 0.000,
+                                          sPosM3.configValue || 0.000,
+                                          sPosM4.configValue || 0.000,
+                                          sPosM5.configValue || 0.000,
+                                          stack.xspace || 0.000,
+                                          stack.yspace || 0.000,
+                                          stack.zspace || 0.000,
+                                          stack.xcount || 0,
+                                          stack.ycount || 0,
+                                          stack.zcount || 0,
+                                          stack.turns,
+                                          stack.xdirection,
+                                          stack.ydirection,
+                                          stack.zdirection,
+                                          true,
+                                          stackCount,
+                                          stack.useDeviation,
+                                          stack.xdeviation,
+                                          stack.ydeviation,
+                                          stack.zdeviation,
+                                          "custompoint[" + sid + "]",
+                                          sid);
+        }
+        else
+            si0 = new LocalTeach.StackItem(actObt.startPos.sPosM0.configValue || 0.000,
+                                          actObt.startPos.sPosM1.configValue || 0.000,
+                                          actObt.startPos.sPosM2.configValue || 0.000,
+                                          actObt.startPos.sPosM3.configValue || 0.000,
+                                          actObt.startPos.sPosM4.configValue || 0.000,
+                                          actObt.startPos.sPosM5.configValue || 0.000,
+                                          actObt.xspace || 0.000,
+                                          actObt.yspace || 0.000,
+                                          actObt.zspace || 0.000,
+                                          actObt.xcount || 0,
+                                          actObt.ycount || 0,
+                                          actObt.zcount || 0,
+                                          actObt.turns,
+                                          actObt.xdirection,
+                                          actObt.ydirection,
+                                          actObt.zdirection,
+                                          true,
+                                          actObt.aaaa,
+                                          actObt.useDeviation,
+                                          actObt.xdeviation,
+                                          actObt.ydeviation,
+                                          actObt.zdeviation,
+                                          "custompoint[" + sid + "]",
+                                          sid);
         var stackInfo = new LocalTeach.StackInfo(si0, si0, 0, "stack1", "custompoint[" + sid + "]", sid, []);
         sid = LocalTeach.appendStackInfo(stackInfo);
         panelRobotController.saveStacks(LocalTeach.stacksToJSON());
@@ -113,6 +176,7 @@ Item {
         ao.rotate = rotate.configValue;
         ao.rotateSpeed = rotateSpeed.configValue;
         ao.rotateCount = rotateCount.configValue;
+        ao.isGunBack = isGunBack.isChecked;
 
         var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
         BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
@@ -122,6 +186,11 @@ Item {
         c = BaseTeach.counterManager.getCounter(ao.rotateCounterID);
         BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.rotateCount);
         panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.rotateCount);
+//        counterUpdated(c.id);
+
+        c = BaseTeach.counterManager.getCounter(ao.repeateCounterID);
+        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.repeateCount);
+        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.repeateCount);
 //        counterUpdated(c.id);
     }
 
@@ -133,13 +202,14 @@ Item {
         button_setPos2.text = name2;
     }
     function gunFollowEnvisible(){
-        if(mode < 4 || mode == 8)
-            gunFollowEn.visible  = false;
-        else{
-            if(planeSel.configValue == 0 && dirAxisSel.configValue == 0)
-                gunFollowEn.visible  = true;
-            else gunFollowEn.visible  = false;
-        }
+        gunFollowEn.visible  = false;       //do not use
+//        if(mode < 4 || mode == 8)
+//            gunFollowEn.visible  = false;
+//        else{
+//            if(planeSel.configValue == 0 && dirAxisSel.configValue == 0)
+//                gunFollowEn.visible  = true;
+//            else gunFollowEn.visible  = false;
+//        }
     }
     function hideUselessEdit(){
         planeSel.visible = mode == 8 ? false : true;
@@ -153,6 +223,28 @@ Item {
 //        zlength.visible = mode == 8 ? false : true;
 //        dirLength.visible = mode == 8 ? false : true;
         dirSpeed.visible = mode == 8 ? false : true;
+    }
+    function hidePoint(){
+        if(mode == 8){
+            pos1Axis1.visible = false;
+            pos1Axis2.visible = false;
+            pos2Axis1.visible = false;
+            pos2Axis2.visible = false;
+        }
+        else if(mode != 8)
+            if(dirAxisSel.configValue == 0){
+                pos1Axis1.visible = false;
+                pos1Axis2.visible = true;
+                pos2Axis1.visible = true;
+                pos2Axis2.visible = false;
+            }
+            else {
+                pos1Axis1.visible = true;
+                pos1Axis2.visible = false;
+                pos2Axis1.visible = false;
+                pos2Axis2.visible = true;
+            }
+
     }
 
     function onProgramAdded(program){
@@ -178,6 +270,7 @@ Item {
         property int posNameWidth: 60
         spacing: 4
         Row{
+            id: row1
             spacing: 10
             z:10
             Text {
@@ -202,14 +295,14 @@ Item {
                         pos1Axis2.configName = AxisDefine.axisInfos[1].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[1].name;
-                        dirAxisSel.items = ["X", "Y"]
+                        dirAxisSel.items = ["X", "Y"];
                     }else if(configValue == 1){
                         plane = [0, 2, 1];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos1Axis2.configName = AxisDefine.axisInfos[2].name;
                         pos2Axis1.configName = AxisDefine.axisInfos[0].name;
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
-                        dirAxisSel.items = ["X", "Z"]
+                        dirAxisSel.items = ["X", "Z"];
                     }else if(configValue == 2){
                         plane = [1, 2, 0];
                         pos1Axis1.configName = AxisDefine.axisInfos[1].name;
@@ -218,6 +311,7 @@ Item {
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
                         dirAxisSel.items = ["Y", "Z"]
                     }
+                    hidePoint();
                 }
             }
 
@@ -227,10 +321,12 @@ Item {
 //                enabled: !useEn.isChecked
                 configName: qsTr("Dir Axis")
 //                items: ["X", "Y", "Z"]
-                onConfigValueChanged:
+                onConfigValueChanged:{
                     if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
                         gunFollowEn.visible = true;
                     else gunFollowEn.visible = false;
+                    hidePoint();
+                }
             }
             ICComboBoxConfigEdit{
                 id: editaction
@@ -238,21 +334,21 @@ Item {
 //                enabled: useEn.isChecked
                 configName: qsTr("Actions")
             }
-//            ICCheckBox{
-//                id:useEn
-//                width: 60
-//                text: qsTr("UseEn")
-//                isChecked: false
-//                useCustomClickHandler: true
-//                MouseArea{
-//                    anchors.fill: parent
-//                    onClicked: {
-//                        if(!useEn.isChecked)
-//                            useEn.isChecked = true;
-//                        else useEn.isChecked = false;
-//                    }
-//                }
-//            }
+            ICCheckBox{
+                id:isGunBack
+                width: 60
+                text: qsTr("Is Gun Back")
+                isChecked: false
+                useCustomClickHandler: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(!isGunBack.isChecked)
+                            isGunBack.isChecked = true;
+                        else isGunBack.isChecked = false;
+                    }
+                }
+            }
         }
         Row{
             id:pos1Container
@@ -277,13 +373,16 @@ Item {
                 width: configContainer.posNameWidth + 10
                 height: sPosM0.height
                 anchors.verticalCenter: parent.verticalCenter
+                bgColor: "lime"
                 onButtonClicked: {
                     sPosM0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                     sPosM1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                     sPosM2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
                     sPosM3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                    sPosM4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                    sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+//                    sPosM4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+//                    sPosM5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                    sPosM4.configValue = 0.000;
+                    sPosM5.configValue = 0.000;
                 }
             }
             ICConfigEdit{
@@ -330,6 +429,7 @@ Item {
             ICConfigEdit{
                 id:sPosM4
 //                enabled: !useEn.isChecked
+                visible: false
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
@@ -339,6 +439,7 @@ Item {
             ICConfigEdit{
                 id:sPosM5
 //                enabled: !useEn.isChecked
+                visible: false
                 width: sPosM0.width
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
@@ -347,7 +448,7 @@ Item {
             }
         }
         Row{
-            spacing: 124
+            spacing: 85
             Row{
                 id:pos2Container
                 spacing: 4
@@ -370,6 +471,7 @@ Item {
                     width: configContainer.posNameWidth + 10
                     height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    bgColor: "lime"
                     onButtonClicked: {
                         switch(planeSel.configValue){
                         case 0:{
@@ -434,7 +536,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-                visible: false
+                visible: mode == 2 || mode == 6
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -452,6 +554,7 @@ Item {
                     width: configContainer.posNameWidth + 10
                     height: sPosM0.height
                     anchors.verticalCenter: parent.verticalCenter
+                    bgColor: "lime"
                     onButtonClicked: {
                         switch(planeSel.configValue){
                         case 0:{
@@ -527,7 +630,7 @@ Item {
             ICConfigEdit{
                 id:dirLength
 //                enabled: !useEn.isChecked
-                visible: mode == 2 || mode == 8? false : true
+                visible: mode == 2 || mode == 6 || mode == 8? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
                 configAddr: "s_rw_0_32_3_1300"
@@ -543,6 +646,7 @@ Item {
             }
             ICConfigEdit{
                 id:dirCount
+                visible: mode != 2
                 width: repeateSpeed.width
                 configName: qsTr("Dir Count")
             }
@@ -561,16 +665,128 @@ Item {
             ICConfigEdit{
                 id:rotateSpeed
                 width: repeateSpeed.width
-                visible: mode == 8 ? false : true
+//                visible: mode == 8 ? false : true
                 configName: qsTr("Rotate Speed")
                 configAddr: "s_rw_0_32_1_1200"
                 unit: qsTr("%")
             }
             ICConfigEdit{
                 id:rotateCount
+                visible: false
                 width: repeateSpeed.width
                 configName: qsTr("Rotate Count")
             }
+        }
+    }
+    ICButton{
+        id:gunfresh1
+        height: 32
+        width: 80
+        anchors.right: container.right
+        y: row1.height + 5
+        text: qsTr("Gunfresh1")
+        anchors.leftMargin: 12
+        bgColor: "grey"
+        onButtonClicked: {
+            lookOver.running = false;
+            if(gunfresh1.bgColor == "grey"){
+                gunfresh1.bgColor = "lime";
+                var toSend = IODefines.valveItemJSON("valve4");
+                panelRobotController.setYStatus(toSend, 1);
+                toSend = IODefines.valveItemJSON("valve5");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+            else{
+                gunfresh1.bgColor = "grey";
+                toSend = IODefines.valveItemJSON("valve6");
+                panelRobotController.setYStatus(toSend, 0);
+
+            }
+            gunfresh1Timer.running = true;
+            lookOver.running = true;
+        }
+    }
+    ICButton{
+        id:gunfresh2
+        height: 32
+        width: 80
+        y: gunfresh1.y + gunfresh1.height + 5
+        text: qsTr("Gunfresh2")
+        anchors.leftMargin: 12
+        anchors.right: gunfresh1.right
+        bgColor: "grey"
+        onButtonClicked: {
+            lookOver.running = false;
+            if(gunfresh2.bgColor == "grey"){
+                gunfresh2.bgColor = "lime"
+                var toSend = IODefines.valveItemJSON("valve7");
+                panelRobotController.setYStatus(toSend, 1);
+                toSend = IODefines.valveItemJSON("valve8");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+            else{
+                gunfresh2.bgColor = "grey"
+                toSend = IODefines.valveItemJSON("valve9");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            gunfresh2Timer.running = true;
+            lookOver.running = true;
+        }
+    }
+    Timer {
+        id: gunfresh1Timer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            if(gunfresh1.bgColor == "grey"){
+                var toSend = IODefines.valveItemJSON("valve4");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve5");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            else{
+                toSend = IODefines.valveItemJSON("valve6");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+        }
+    }
+    Timer {
+        id: gunfresh2Timer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            if(gunfresh2.bgColor == "grey"){
+                var toSend = IODefines.valveItemJSON("valve7");
+                panelRobotController.setYStatus(toSend, 0);
+                toSend = IODefines.valveItemJSON("valve8");
+                panelRobotController.setYStatus(toSend, 0);
+            }
+            else{
+                toSend = IODefines.valveItemJSON("valve9");
+                panelRobotController.setYStatus(toSend, 1);
+            }
+        }
+    }
+    Timer {
+        id: lookOver
+        interval: 100
+        running: true
+        repeat: true
+        onTriggered: {
+            if(panelRobotController.isOutputOn(4, 0)&&panelRobotController.isOutputOn(5, 0)&&
+                    panelRobotController.isOutputOn(6, 0))
+                gunfresh1.bgColor = "lime";
+            else if(!(panelRobotController.isOutputOn(4, 0)||panelRobotController.isOutputOn(5, 0)||
+                    panelRobotController.isOutputOn(6, 0)))
+                gunfresh1.bgColor = "grey";
+            if(panelRobotController.isOutputOn(7, 0)&&panelRobotController.isOutputOn(8, 0)&&
+                    panelRobotController.isOutputOn(9, 0))
+                gunfresh2.bgColor = "lime";
+            else if(!(panelRobotController.isOutputOn(7, 0)||panelRobotController.isOutputOn(8, 0)||
+                    panelRobotController.isOutputOn(9, 0)))
+                gunfresh2.bgColor = "grey";
         }
     }
     onActionObjectChanged: {
@@ -602,7 +818,15 @@ Item {
         rotate.configValue = actionObject.rotate;
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
-
+        isGunBack.isChecked = actionObject.isGunBack;
+        if(actionObject.mode == 2 || actionObject.mode == 6){
+            pos3Container.visible = true;
+            setPosName(qsTr("Repeat EPos"), qsTr("Dir EPos"));
+        }
+        else {
+            pos3Container.visible = false;
+            setPosName(qsTr("Set EPos"), qsTr("Set TPos"));
+        }
         if(actionObject.mode > 3){
             if(actionObject.plane == 0 && actionObject.dirAxis == 0)
                 gunFollowEn.visible = true;
@@ -610,34 +834,36 @@ Item {
         }
         if(actionObject.mode == 3 || actionObject.mode == 7)
             repeateCount.visible = true;
+        else repeateCount.visible = false;
     }
 
     Component.onCompleted: {
         planeSel.configValue = 0;
         dirAxisSel.configValue = 1;
-        sPosM0.configValue = 20.000;
-        sPosM1.configValue = 20.000;
+        sPosM0.configValue = 0.000;
+        sPosM1.configValue = 0.000;
         sPosM2.configValue = 0.000;
         sPosM3.configValue = 0.000;
         sPosM4.configValue = 0.000;
         sPosM5.configValue = 0.000;
 
-        pos1Axis1.configValue = 500.000;
-        pos1Axis2.configValue = 20.000;
+        pos1Axis1.configValue = 0.000;
+        pos1Axis2.configValue = 0.000;
         pos1Axis4.configValue = 0.000;
 
         pos2Axis1.configValue = 0.000;
         pos2Axis2.configValue = 0.000;
 
         repeateSpeed.configValue = 100.0;
-        dirSpeed.configValue = 100.0;
-        dirLength.configValue = 50.000;
-        repeateCount.configValue = 2;
-        zlength.configValue = -100;
-        dirCount.configValue = 10;
-        rotate.configValue = 90.000;
-        rotateSpeed.configValue = 5.0;
-        rotateCount.configValue = 4;
+        dirSpeed.configValue = 10.0;
+        dirLength.configValue = 0.000;
+        repeateCount.configValue = 0;
+        zlength.configValue = 0.000;
+        dirCount.configValue = 0;
+        rotate.configValue = 0.000;
+        rotateSpeed.configValue = 30.0;
+        rotateCount.configValue = 0;
+        isGunBack.isChecked = false;
 
         resetItems();
         ManualProgramManager.manualProgramManager.registerMonitor(container);

@@ -352,6 +352,7 @@ Rectangle {
                 height: loadRecord.height
                 visible: false
                 onButtonClicked: {
+                    tipDialog.runningTip(qsTr("Exporting..."))
                     var exportMolds = [];
                     var record;
                     for(var i = 0; i < recordsModel.count; ++i){
@@ -371,12 +372,32 @@ Rectangle {
                 }
             }
             ICButton{
+                id:exportPrintableRecord
+                text: qsTr("Export Printable")
+                height: exportRecord.height
+//                visible: exportRecord.visible
+                visible: false
+                onButtonClicked: {
+                    var record;
+                    for(var i = 0; i < recordsModel.count; ++i){
+                        record = recordsModel.get(i);
+                        if(record.isSelected){
+//                            exportMolds.push(record.name);
+                            console.log(panelRobotController.readRecord(record.name));
+
+                        }
+                    }
+                }
+            }
+
+            ICButton{
                 id:importRecord
                 text: qsTr("Import")
                 height: loadRecord.height
                 visible: false
                 onButtonClicked: {
                     if(recordsView.openBackupPackage == "") return;
+                    tipDialog.runningTip(qsTr("Importing..."))
                     var importMolds = [];
                     var record;
                     var i;

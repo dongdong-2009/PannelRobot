@@ -9,12 +9,12 @@ Item {
     property variant actionObject: null
 
     function updateActionObject(ao){
-        ao.startSpeed0 = m0Speed.configValue;
-        ao.startSpeed1 = m1Speed.configValue;
-        ao.startSpeed2 = m2Speed.configValue;
-        ao.startSpeed3 = m3Speed.configValue;
-        ao.startSpeed4 = m4Speed.configValue;
-        ao.startSpeed5 = m5Speed.configValue;
+        ao.startPosSpeed0 = m0Speed.configValue;
+        ao.startPosSpeed1 = m1Speed.configValue;
+        ao.startPosSpeed2 = m2Speed.configValue;
+        ao.startPosSpeed3 = m3Speed.configValue;
+        ao.startPosSpeed4 = m4Speed.configValue;
+        ao.startPosSpeed5 = m5Speed.configValue;
         ao.fixtureDelay0 = delay0.configValue;
         ao.fixtureDelay1 = delay1.configValue;
         ao.fixtureDelay2 = delay2.configValue;
@@ -25,7 +25,13 @@ Item {
         ao.fixture2Switch = fixture1Switch.configValue;
         ao.slope = slope.configValue;
         ao.chamferRadius = chamferRadius.configValue;
-        ao.linglong = linelong.configValue
+        ao.linglong = linelong.configValue;
+        ao.gun1use0 = use0.isChecked;
+        ao.gun1use1 = use1.isChecked;
+        ao.gun1use2 = use2.isChecked;
+        ao.gun2use0 = use3.isChecked;
+        ao.gun2use1 = use4.isChecked;
+        ao.gun2use2 = use5.isChecked;
     }
 
     function getDetails(){
@@ -46,7 +52,13 @@ Item {
             "fixture1Switch":fixture1Switch.configValue,
             "slope":slope.configValue,
             "chamferRadius":chamferRadius.configValue,
-            "linglong":linelong.configValue
+            "linglong":linelong.configValue,
+            "use0":use0.isChecked,
+            "use1":use1.isChecked,
+            "use2":use2.isChecked,
+            "use3":use3.isChecked,
+            "use4":use4.isChecked,
+            "use5":use5.isChecked
         };
     }
     function speedcontainer() {return configContainer;}
@@ -56,81 +68,190 @@ Item {
             id:configContainer
             property int posNameWidth: 60
             spacing: 10
-            Column{
-                spacing: 4
-                Row{
-                    id:delayrow
-                    spacing: 10
-                    Text {
-                        id: fixtureDelay
-                        text: qsTr("Fixture Delay")
-                        width: 200
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: "green"
+            Row{
+                Column{
+                    spacing: 4
+                    Row{
+                        id:delayrow
+                        spacing: 10
+                        Text {
+                            id: fixtureDelay
+                            text: qsTr("Fixture Delay")
+                            width: 200
+                            anchors.verticalCenter: parent.verticalCenter
+                            color: "green"
+                        }
+                    }
+                    Column{
+                        spacing: 10
+                        id:delaycontiner
+                        Row{
+                            spacing: 5
+                            ICConfigEdit{
+                                id:delay0
+                                configName: qsTr("Atomization Delay")
+                                configAddr: "s_rw_0_32_2_1100"
+                                unit: qsTr("s")
+
+                            }
+                            ICCheckBox{
+                                id:use0
+                                width: 60
+                                text: qsTr("Use")
+                                isChecked: false
+                                useCustomClickHandler: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!use0.isChecked)
+                                            use0.isChecked = true;
+                                        else use0.isChecked = false;
+                                    }
+                                }
+                            }
+                        }
+                        Row{
+                            spacing: 5
+                            ICConfigEdit{
+                                id:delay1
+                                configName: qsTr("Amplitude Delay")
+                                configAddr: "s_rw_0_32_2_1100"
+                                unit: qsTr("s")
+
+                            }
+                            ICCheckBox{
+                                id:use1
+                                width: 60
+                                text: qsTr("Use")
+                                isChecked: false
+                                useCustomClickHandler: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!use1.isChecked)
+                                            use1.isChecked = true;
+                                        else use1.isChecked = false;
+                                    }
+                                }
+                            }
+                        }
+                        Row{
+                            spacing: 5
+                            ICConfigEdit{
+                                id:delay2
+                                configName: qsTr("Oil Delay")
+                                configAddr: "s_rw_0_32_2_1100"
+                                unit: qsTr("s")
+
+                            }
+                            ICCheckBox{
+                                id:use2
+                                width: 60
+                                text: qsTr("Use")
+                                isChecked: false
+                                useCustomClickHandler: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!use2.isChecked)
+                                            use2.isChecked = true;
+                                        else use2.isChecked = false;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                Row{
-                    spacing: 10
-                    id:delaycontiner
-                    ICConfigEdit{
-                        id:delay0
-                        configName: qsTr("Atomization Delay")
-                        configAddr: "s_rw_0_32_1_1200"
-                        unit: qsTr("s")
-
+                Column{
+                    spacing: 4
+                    Row{
+                        spacing: 10
+                        Text {
+                            id: fixture1Delay
+                            text: qsTr("Fixture1 Delay")
+                            width: 200
+                            anchors.verticalCenter: parent.verticalCenter
+                            color: "green"
+                        }
                     }
-                    ICConfigEdit{
-                        id:delay1
-                        configName: qsTr("Amplitude Delay")
-                        configAddr: "s_rw_0_32_1_1200"
-                        unit: qsTr("s")
+                    Column{
+                        spacing: 10
+                        id:delaycontiner2
+                        Row{
+                            spacing: 5
+                            ICConfigEdit{
+                                id:delay20
+                                configName: qsTr("Atomization Delay")
+                                configAddr: "s_rw_0_32_2_1100"
+                                unit: qsTr("s")
 
-                    }
-                    ICConfigEdit{
-                        id:delay2
-                        configName: qsTr("Oil Delay")
-                        configAddr: "s_rw_0_32_1_1200"
-                        unit: qsTr("s")
+                            }
+                            ICCheckBox{
+                                id:use3
+                                width: 60
+                                text: qsTr("Use")
+                                isChecked: false
+                                useCustomClickHandler: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!use3.isChecked)
+                                            use3.isChecked = true;
+                                        else use3.isChecked = false;
+                                    }
+                                }
+                            }
+                        }
+                        Row{
+                            spacing: 5
+                            ICConfigEdit{
+                                id:delay21
+                                configName: qsTr("Amplitude Delay")
+                                configAddr: "s_rw_0_32_2_1100"
+                                unit: qsTr("s")
 
-                    }
+                            }
+                            ICCheckBox{
+                                id:use4
+                                width: 60
+                                text: qsTr("Use")
+                                isChecked: false
+                                useCustomClickHandler: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!use4.isChecked)
+                                            use4.isChecked = true;
+                                        else use4.isChecked = false;
+                                    }
+                                }
+                            }
+                        }
+                        Row{
+                            spacing: 5
+                            ICConfigEdit{
+                                id:delay22
+                                configName: qsTr("Oil Delay")
+                                configAddr: "s_rw_0_32_2_1100"
+                                unit: qsTr("s")
 
-                }
-            }
-            Column{
-                spacing: 4
-                Row{
-                    spacing: 10
-                    Text {
-                        id: fixture1Delay
-                        text: qsTr("Fixture1 Delay")
-                        width: 200
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: "green"
-                    }
-                }
-                Row{
-                    spacing: 10
-                    id:delaycontiner2
-                    ICConfigEdit{
-                        id:delay20
-                        configName: qsTr("Atomization Delay")
-                        configAddr: "s_rw_0_32_1_1200"
-                        unit: qsTr("s")
-
-                    }
-                    ICConfigEdit{
-                        id:delay21
-                        configName: qsTr("Amplitude Delay")
-                        configAddr: "s_rw_0_32_1_1200"
-                        unit: qsTr("s")
-
-                    }
-                    ICConfigEdit{
-                        id:delay22
-                        configName: qsTr("Oil Delay")
-                        configAddr: "s_rw_0_32_1_1200"
-                        unit: qsTr("s")
-
+                            }
+                            ICCheckBox{
+                                id:use5
+                                width: 60
+                                text: qsTr("Use")
+                                isChecked: false
+                                useCustomClickHandler: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!use5.isChecked)
+                                            use5.isChecked = true;
+                                        else use5.isChecked = false;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -229,6 +350,7 @@ Item {
             ICConfigEdit{
                 id:slope
                 z: 1
+                visible: false
                 configName: qsTr("slope")
                 configAddr: "s_rw_0_32_3_1300"
                 unit: qsTr("°")
@@ -254,12 +376,12 @@ Item {
 
     onActionObjectChanged: {
         if(actionObject == null) return;
-        m0Speed.configValue = actionObject.startSpeed0;
-        m1Speed.configValue = actionObject.startSpeed1;
-        m2Speed.configValue = actionObject.startSpeed2;
-        m3Speed.configValue = actionObject.startSpeed3;
-        m4Speed.configValue = actionObject.startSpeed4;
-        m5Speed.configValue = actionObject.startSpeed5;
+        m0Speed.configValue = actionObject.startPosSpeed0;
+        m1Speed.configValue = actionObject.startPosSpeed1;
+        m2Speed.configValue = actionObject.startPosSpeed2;
+        m3Speed.configValue = actionObject.startPosSpeed3;
+        m4Speed.configValue = actionObject.startPosSpeed4;
+        m5Speed.configValue = actionObject.startPosSpeed5;
         delay0.configValue = actionObject.fixtureDelay0;
         delay1.configValue = actionObject.fixtureDelay1;
         delay2.configValue = actionObject.fixtureDelay2;
@@ -271,26 +393,38 @@ Item {
         slope.configValue = actionObject.slope;
 //        chamferRadius.configValue = actionObject.chamferRadius;
 //        linelong.configValue = actionObject.linelong
+        use0.isChecked = actionObject.gun1use0;
+        use1.isChecked = actionObject.gun1use1;
+        use2.isChecked = actionObject.gun1use2;
+        use3.isChecked = actionObject.gun2use0;
+        use4.isChecked = actionObject.gun2use1;
+        use5.isChecked = actionObject.gun2use2;
     }
 
     Component.onCompleted: {
-        delay0.configValue = 0.1;
+        delay0.configValue = 0;
         delay1.configValue = 0;
-        delay2.configValue = 0;
-        fixtureSwitch.configValue = 3;
-        delay20.configValue = 0.1;
+        delay2.configValue = 0.03;
+        fixtureSwitch.configValue = 2;
+        delay20.configValue = 0;
         delay21.configValue = 0;
-        delay22.configValue = 0;
-        fixture1Switch.configValue = 3;
-        m0Speed.configValue = 30;
-        m1Speed.configValue = 30;
-        m2Speed.configValue = 30;
-        m3Speed.configValue = 5;
-        m4Speed.configValue = 5;
-        m5Speed.configValue = 5;
+        delay22.configValue = 0.03;
+        fixture1Switch.configValue = 2;
+        m0Speed.configValue = 20;
+        m1Speed.configValue = 20;
+        m2Speed.configValue = 20;
+        m3Speed.configValue = 30;
+        m4Speed.configValue = 30;
+        m5Speed.configValue = 30;
         slope.configValue = 0;
         chamferRadius.configValue = 4;
         linelong.configValue = 100;
+        use0.isChecked = true;
+        use1.isChecked = true;
+        use2.isChecked = true;
+        use3.isChecked = true;
+        use4.isChecked = true;
+        use5.isChecked = true;
 
 
     }

@@ -294,36 +294,10 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
-    Q_INVOKABLE bool loadRecord(const QString& name)
-    {
-        ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
-        bool ret =  mold->LoadMold(name);
-        if(ret)
-        {
-            ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
-            ret = sendMainProgramToHost();
-            if(ret)
-            {
-                for(int i = ICRobotMold::kSub1Prog; i <= ICRobotMold::kSub8Prog; ++i)
-                {
-                    ret = sendSubProgramToHost(i);
-                    if(!ret)
-                    {
-                        break;
-                    }
-                }
-            }
 
-#ifndef Q_WS_QWS
-            ret = true;
-#endif
-            ICAppSettings as;
-            as.SetCurrentMoldConfig(name);
-            emit moldChanged();
-        }
+    Q_INVOKABLE QString readRecord(const QString& name) const;
 
-        return ret;
-    }
+    Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)
     {
@@ -333,7 +307,7 @@ public:
         if(ret)
         {
             ICRobotVirtualhost::InitMachineConfig(host_,mold->BareMachineConfigs());
-            ICAppSettings as;
+            ICSuperSettings as;
             as.SetCurrentSystemConfig(name);
 
             emit moldChanged();
@@ -406,7 +380,7 @@ public:
 
         return subProgram(which);
     }
-    Q_INVOKABLE QString stacks() const { return ICRobotMold::CurrentMold()->Stacks();}
+    Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
     Q_INVOKABLE QString localUIDirs();
@@ -414,7 +388,7 @@ public:
     Q_INVOKABLE bool changeTranslator(const QString& translatorName);
     Q_INVOKABLE QString scanUSBUpdaters(const QString& filter) const;
     Q_INVOKABLE QString scanUpdaters(const QString& filter, int mode = 0) const;
-    Q_INVOKABLE void startUpdate(const QString& updater);
+    Q_INVOKABLE void startUpdate(const QString& updater, int mode = 0);
     Q_INVOKABLE QString backupUpdater(const QString& updater);
 
     Q_INVOKABLE void modifyConfigValue(int addr, int value);
@@ -603,7 +577,8 @@ public:
                                       const QString& counters,
                                       const QString& variables,
                                       const QString &functions,
-                                      int channel = 10);
+                                      int channel = 10,
+                                      bool sendKeyNow = true);
 
 
     Q_INVOKABLE QString checkProgram(const QString& program,
@@ -782,6 +757,32 @@ public:
         qApp->processEvents();
     }
 
+    Q_INVOKABLE QString createCustomAddr(int type, int perm , int startPos, int size,
+                                         int baseAddr, int decimal = 0, const QString &unit = QString())
+    {
+        ICAddrWrapperCPTR ca = new ICAddrWrapper(type, perm, startPos, size,
+                                                 baseAddr, decimal, unit);
+        return ca->ToString();
+
+    }
+    Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
+
+    Q_INVOKABLE int registerUseTime(const QString& fc, const QString& mC, const QString& rcCode);
+    Q_INVOKABLE QString generateMachineCode() const;
+    Q_INVOKABLE int restUseTime() const;
+    Q_INVOKABLE void setRestUseTime(int hour);
+    Q_INVOKABLE bool isTryTimeOver() const;
+
+    Q_INVOKABLE QString factoryCode() const
+    {
+        return ICSuperSettings().FactoryCode();
+    }
+
+    Q_INVOKABLE void setFactoryCode(const QString& fc)
+    {
+        ICSuperSettings().SetFactoryCode(fc);
+    }
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)
@@ -814,6 +815,7 @@ signals:
     void sendingContinuousData();
     void sentContinuousData(int);
     void needToInitHost();
+    void tryTimeOver();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);
@@ -873,3 +875,6 @@ private:
 };
 
 #endif // PANELROBOTCONTROLLER_H
+//extern  const ICAddrWrapper  s_rw_0_16_0_943;
+//extern  const ICAddrWrapper  s_rw_16_16_0_943;
+//extern  const ICAddrWrapper  s_rw_0_16_0_944;

@@ -3,6 +3,7 @@
 
 
 const char* ICAppSettings::SystemConfigGroup = "SystemConfig";
+const char* ICSuperSettings::SuperGroup = "SuperConfig";
 const char* ICAppSettings::SessionGroup = "Session";
 const char* ICAppSettings::LocaleGroup = "Locale";
 #ifndef Q_WS_QWS

@@ -9,6 +9,8 @@ Qt.include("../../utils/utils.js")
 Qt.include("../configs/Keymap.js")
 
 
+var customActions = {};
+
 var cmdStrs = [">",
                ">=",
                "&lt;",
@@ -230,7 +232,11 @@ var actionTypes = {
 
 var stackTypes = {
     "kST_Normal":0,
-    "kST_Box":1
+    "kST_Box":1,
+    "kST_DataSource":2,
+    "kST_DataSourceIgnoreZ":3,
+    "kST_VisionCmp":4,
+    "kST_VisionPosAndCmp":5
 };
 
 
@@ -318,7 +324,7 @@ var flagsDefine = {
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
                    sequence, dir0, dir1, dir2, doesBindingCounter, counterID ,
-                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID){
+                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn, runSeq){
     this.m0pos = m0pos || 0;
     this.m1pos = m1pos || 0;
     this.m2pos = m2pos || 0;
@@ -338,11 +344,13 @@ function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
     this.doesBindingCounter = doesBindingCounter || 0;
     this.counterID = counterID || 0;
     this.isOffsetEn = isOffsetEn || false;
+    this.isZWithYEn = isZWithYEn || false;
     this.offsetX = offsetX || 0;
     this.offsetY = offsetY || 0;
     this.offsetZ = offsetZ || 0;
     this.dataSourceName = dataSourceName || "";
     this.dataSourceID = dataSourceID || -1;
+    this.runSeq = (runSeq == undefined ? 3 : runSeq)
 }
 
 function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
@@ -421,10 +429,13 @@ var useableStack = function(){
     return stackIDs[i - 1] + 1;
 }
 
+var lastStacks = "";
 function parseStacks(stacks){
+    if(stacks === lastStacks) return;
     if(stacks.length < 4) {
         stacks = "{}";
     }
+    lastStacks = stacks;
     console.log("Teach.js.parseStacks", stacks);
     var statckInfos = JSON.parse(stacks);
     stackIDs.length = 0;
@@ -554,6 +565,7 @@ function VariableManager(){
 
 function CounterManager(){
     this.counters = [];
+    this.observer = [];
     this.init = function(bareCounters){
         this.counters.length = 0;
         for(var c in bareCounters){
@@ -617,6 +629,10 @@ function CounterManager(){
         c.name = name;
         c.current = current;
         c.target = target;
+        for(var i = 0, len = this.observer.length; i < len; ++i){
+            if(this.observer[i].hasOwnProperty("onCounterUpdated"))
+                this.observer[i].onCounterUpdated(id);
+        }
     }
     this.delCounter = function(id){
         for(var c in this.counters){
@@ -625,6 +641,9 @@ function CounterManager(){
                 break;
             }
         }
+    }
+    this.registerObserver = function(obj){
+        this.observer.push(obj);
     }
 }
 
@@ -760,9 +779,9 @@ var VALVE_CHECK_END = 9;
 actions.F_CMD_NULL = actHelper++;
 actions.F_CMD_SYNC_START = actHelper++;
 actions.F_CMD_SYNC_END = actHelper++;
-actions.F_CMD_SINGLE = actHelper++;
-actions.F_CMD_JOINTCOORDINATE = actHelper++;
-actions.F_CMD_COORDINATE_DEVIATION = actHelper++;
+actions.F_CMD_SINGLE = actHelper++; //<单轴动作
+actions.F_CMD_JOINTCOORDINATE = actHelper++; //<关节坐标点运动
+actions.F_CMD_COORDINATE_DEVIATION = actHelper++; //< 直线坐标偏移位置
 actions.F_CMD_LINE2D_MOVE_POINT = actHelper++;
 actions.F_CMD_LINEXY_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52000;
 actions.F_CMD_LINEXZ_MOVE_POINT = actions.F_CMD_LINE2D_MOVE_POINT + 52001;
@@ -798,6 +817,7 @@ actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
 actions.F_CMD_MEMCOMPARE_CMD = 602;
+
 actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
 
 
@@ -888,7 +908,7 @@ function actionStackID(action){
 function actionCounterIDs(action){
     if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
-        return [si.si0.counterID, si.si1.counterID];
+        return [si.si0.counterID];
     }else if(action.action == actions.ACT_COMMENT){
         return arguments.callee(action.commentAction);
     }
@@ -911,7 +931,8 @@ var generateAxisServoAction = function(action,
                                        signalStopPoint,
                                        signalStopMode,
                                        speedMode,
-                                       stop){
+                                       stop,
+                                       rel){
     return {
         "action":action,
         "axis":axis,
@@ -928,7 +949,8 @@ var generateAxisServoAction = function(action,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
         "signalStopMode":signalStopMode ? 1 : 0,
         "speedMode":speedMode == undefined ? 0 : speedMode,
-        "stop":stop || false
+        "stop":stop || false,
+        "rel": rel || false
     };
 }
 
@@ -1000,7 +1022,7 @@ var generateOutputAction = function(point, type, status, valveID, time){
         "type":type,
         "point":point,
         "pointStatus": status,
-        "valveID":valveID || -1
+        "valveID":valveID == undefined ? -1 : valveID
     };
     if(type >= TIMEY_BOARD_START){
         ret.acTime = time || 0;
@@ -1161,6 +1183,7 @@ var generateWaitVisionDataAction = function(waitTime, dataSourceName, hostID){
     }
 }
 
+
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
@@ -1200,14 +1223,14 @@ var cycle8 = function(){
     var flag9 = f.flagID;
     var ret = [];
 //      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
-    ret.push(generateConditionAction(0, 20, 1, 0, 0,flag1));
-    ret.push(generateConditionAction(0, 20, 0, 0, 0,flag1));
-    ret.push(generateOutputAction(20,0,0,20,0));     //close
+    ret.push(generateConditionAction(0, 10, 1, 0, 0,flag1));
+    ret.push(generateConditionAction(0, 10, 0, 0, 0,flag1));
+    ret.push(generateOutputAction(10,0,0,10,0));     //close
     ret.push(generateFlagAction(flag1, qsTr("Positive")));
 
-    ret.push(generateConditionAction(0, 21, 1, 0, 0,flag2));
-    ret.push(generateConditionAction(0, 21, 0, 0, 0,flag2));
-    ret.push(generateOutputAction(21,0,0,21,0));     //close
+    ret.push(generateConditionAction(0, 11, 1, 0, 0,flag2));
+    ret.push(generateConditionAction(0, 11, 0, 0, 0,flag2));
+    ret.push(generateOutputAction(11,0,0,11,0));     //close
     ret.push(generateFlagAction(flag2, qsTr("Negative")));
 
     ret.push(generateConditionAction(0, 22, 0, 0, 0,flag3));        //X36
@@ -1239,17 +1262,21 @@ var cycle8 = function(){
 
     ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,0));
     ret.push(generateFlagAction(flag7, qsTr("Close Out Put")));
+    ret.push(generateOutputAction(4,0,0,4,0));     //close
+    ret.push(generateOutputAction(5,0,0,5,0));     //close
+    ret.push(generateOutputAction(6,0,0,6,0));     //close
+    ret.push(generateOutputAction(7,0,0,7,0));     //close
     ret.push(generateOutputAction(8,0,0,8,0));     //close
     ret.push(generateOutputAction(9,0,0,9,0));     //close
     ret.push(generateOutputAction(10,0,0,10,0));     //close
     ret.push(generateOutputAction(11,0,0,11,0));     //close
-    ret.push(generateOutputAction(12,0,0,12,0));     //close
-    ret.push(generateOutputAction(16,0,0,16,0));     //close
-    ret.push(generateOutputAction(17,0,0,17,0));     //close
-    ret.push(generateOutputAction(18,0,0,18,0));     //close
-    ret.push(generateOutputAction(19,0,0,19,0));     //close
-    ret.push(generateOutputAction(20,0,0,20,0));     //close
-    ret.push(generateOutputAction(21,0,0,21,0));     //close
+//    ret.push(generateOutputAction(12,0,0,12,0));     //close
+//    ret.push(generateOutputAction(16,0,0,16,0));     //close
+//    ret.push(generateOutputAction(17,0,0,17,0));     //close
+//    ret.push(generateOutputAction(18,0,0,18,0));     //close
+//    ret.push(generateOutputAction(19,0,0,19,0));     //close
+//    ret.push(generateOutputAction(20,0,0,20,0));     //close
+//    ret.push(generateOutputAction(21,0,0,21,0));     //close
     ret.push(generateFlagAction(flag9, qsTr("CMD_CONFIG")));
 
 
@@ -1316,6 +1343,9 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
     }
+
+    if(actionObject.rel)
+        ret = qsTr("Rel") + " " + ret;
 
     return ret;
 }
@@ -1425,25 +1455,24 @@ var valveTypeToString = [
 
 function valveItemToString(valve){
     var ret = valveTypeToString[valve.type] + "-";
-    ret += getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
-    if(valve.type === IO_TYPE_HOLD_DOUBLE_Y ||
-            valve.type === IO_TYPE_UNHOLD_DOUBLE_Y){
-        ret += "," + getYDefineFromHWPoint(valve.y2Point, valve.y2Board).yDefine.pointName;
-    }
+    ret += getYDefinePointNameFromValve(valve);
     return ret +=":" + valve.descr;
 }
 
 var outputActionToStringHandler = function(actionObject){
+    var valve;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
-        var valve = getValveItemFromValveID(actionObject.valveID);
+        valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Start") + " "
+        valve = getValveItemFromValveID(actionObject.point);
+        return qsTr("Check:") + valveItemToString(valve) + " " + qsTr("Check Start") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else if(actionObject.type === VALVE_CHECK_END){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("End") + " "
+        valve = getValveItemFromValveID(actionObject.point);
+        return qsTr("Check:") + valveItemToString(valve) +  " " + qsTr("Check End") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
@@ -1469,8 +1498,13 @@ function stackTypeToString(type){
     switch(type){
     case stackTypes.kST_Box:
         return qsTr("Box");
+    case stackTypes.kST_DataSource:
+    case stackTypes.kST_DataSourceIgnoreZ:
+    case stackTypes.kST_VisionCmp:
+    case stackTypes.kST_VisionPosAndCmp:
+        return qsTr("Datasource");
     default:
-        return "";
+        return qsTr("Normal");
     }
 }
 
@@ -1668,15 +1702,20 @@ actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStri
 
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
+
     if(actionObject.action === actions.ACT_COMMENT)
         return ret;
-    if(actionObject.action === actions.F_CMD_SINGLE){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        ret.push(customActions[actionObject.action].editableItems.itemDef);
+    }
+    else if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
                 {"item":"speed", "range":"s_rw_0_32_1_1200"},
                 {"item":"delay", "range":"s_rw_0_32_2_1100"},
                 {"item":"earlyEnd"},
                 {"item":"earlyEndSpd"},
-                {"item":"signalStop"}];
+                {"item":"signalStop"},
+                {"item":"rel"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
@@ -1708,7 +1747,6 @@ var actionObjectToEditableITems = function(actionObject){
             ret = [{"item":"delay", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_IO_INPUT ||
              actionObject.action === actions.F_CMD_PROGRAM_JUMP1 ||
-             actionObject.action === actions.F_CMD_PROGRAM_JUMP2 ||
              actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
@@ -1786,6 +1824,10 @@ function ccErrnoToString(errno){
 
 
 var canActionUsePoint = function(actionObject){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        return customActions[actionObject.action].canActionUsePoint;
+    }
+
     if(actionObject.action === actions.ACT_COMMENT){
         if(actionObject.commentAction != null)
             return canActionUsePoint(actionObject.commentAction);
@@ -1814,14 +1856,46 @@ var canActionUsePoint = function(actionObject){
 }
 
 var canActionTestRun = function(actionObject){
-    return  actionObject.action === actions.F_CMD_CoordinatePoint ||
-            actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-            actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
-            actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
+    var ac = actionObject.action;
+    if(customActions.hasOwnProperty(ac)){
+        return customActions[ac].canTestRun;
+    }
+
+    return  ((ac >=  actions.F_CMD_SINGLE) && (ac <= actions.F_CMD_LINE_RELATIVE_POSE)) ||
+            ((ac >=  actions.F_CMD_LINEXY_MOVE_POINT) && (ac <= actions.F_CMD_LINEYZ_MOVE_POINT)) ||
+            ((ac >=  actions.F_CMD_ARCXY_MOVE_POINT) && (ac <= actions.F_CMD_ARCYZ_MOVE_POINT));
 }
 
 
+function customActionGenerator(actionDefine){
+    actionDefine.generate = function(properties){
+        var ret = {"action":actionDefine.action};
+        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+            ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
+        }
+        return ret;
+    }
+    actionDefine.toRegisterString = function(){
+        var ret = {"actionID":actionDefine.action, "seq":[]};
+        ret.seq.push({"item":"action", "decimal":0});
+        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+            ret.seq.push(actionDefine.properties[i]);
+        }
+        return JSON.stringify(ret);
+    }
+    actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
+}
+
 var currentParsingProgram = 0;
+
+var registerCustomAction = function(actionDefine){
+    customActionGenerator(actionDefine);
+    customActions[actionDefine.action] = actionDefine;
+    actionToStringHandlerMap.put(actionDefine.action, actionDefine.toStringHandler);
+}
+
+var generateCustomAction = function(actionObject){
+    if(!actionObject.hasOwnProperty("action")) return null;
+    if(!customActions.hasOwnProperty(actionObject.action)) return null;
+    return customActions[actionObject.action].generate(actionObject);
+}

@@ -30,10 +30,12 @@ Item {
     property bool  doesBindingCounter: false
 
     property alias isOffsetEn: offsetEn.isChecked
+    property alias isZWithYEn: zWithYEn.isChecked
     property alias offsetX: x_offset.configValue
     property alias offsetY: y_offset.configValue
     property alias offsetZ: z_offset.configValue
     property variant dataSource: []
+    property alias runSeq:runSeq.configValue
 
     property bool isCustomDataSource: dataSourceSel.configValue == 0
 
@@ -111,12 +113,22 @@ Item {
         y:-32
         visible: mode != 2
     }
+    ICCheckBox{
+        id:zWithYEn
+        anchors.left: offsetEn.right
+        anchors.leftMargin: 6
+        anchors.top: offsetEn.top
+        text: qsTr("Offset Z with Y")
+        visible: offsetEn.isChecked
+
+    }
+
     ICButton{
         id:threePointWayBtn
         text:qsTr("Three Point Way")
-        anchors.left: offsetEn.right
+        anchors.left: zWithYEn.right
         anchors.leftMargin: 32
-        anchors.top: offsetEn.top
+        anchors.top: zWithYEn.top
 
         height: offsetEn.height
         width: 150
@@ -250,7 +262,7 @@ Item {
                 ICConfigEdit{
                     id:space0
                     configName: qsTr("Space0")
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1301"
                     inputWidth: content.spaceWidth
                     configNameWidth: 90
                 }
@@ -263,7 +275,7 @@ Item {
                 ICConfigEdit{
                     id:space1
                     configName: qsTr("Space1")
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1301"
                     inputWidth: content.spaceWidth
                     configNameWidth: space0.configNameWidth
                 }
@@ -276,7 +288,7 @@ Item {
                 ICConfigEdit{
                     id:space2
                     configName: qsTr("Space2")
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1301"
                     inputWidth: content.spaceWidth
                     configNameWidth: space0.configNameWidth
 
@@ -329,14 +341,28 @@ Item {
             }
         }
 
-        ICComboBoxConfigEdit{
-            id:counterSel
-            popupMode: dataSourceSel.visible ? 0 : 1
-            configName: qsTr("Counter")
-            inputWidth: 300
-            popupHeight: dataSourceSel.visible ? 80 : 150
+        Row{
+            spacing: 6
             z:100
-            visible: mode != 1
+            ICComboBoxConfigEdit{
+                id:counterSel
+                popupMode: dataSourceSel.visible ? 0 : 1
+                configName: qsTr("Counter")
+                inputWidth: 300
+                popupHeight: dataSourceSel.visible ? 80 : 150
+                visible: mode != 1
+            }
+
+            ICComboBoxConfigEdit{
+                id:runSeq
+                popupMode: counterSel.popupMode
+                configName: qsTr("Run Seq")
+                inputWidth: 150
+                popupHeight: counterSel.popupHeight
+                visible: mode != 1
+                items:[qsTr("FinalX"), qsTr("FinalY"), qsTr("FinalZ"), qsTr("Run Together")]
+                configValue: 3
+            }
         }
     }
 

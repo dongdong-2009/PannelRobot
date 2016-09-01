@@ -582,7 +582,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[2].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NZ, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -598,7 +598,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Z+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[2].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PZ, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -616,7 +616,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[3].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NU, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -635,7 +635,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("U+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[3].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PU, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -655,7 +655,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[1].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NY, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -674,7 +674,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("Y+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[1].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PY, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -693,7 +693,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[4].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NV, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -711,7 +711,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("V+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[4].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PV, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -728,7 +728,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[0].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NX, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -747,7 +747,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("X+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[0].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PX, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -766,7 +766,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W-")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[5].name + "-"
                 onTriggered: sendCommand(Keymap.CMD_JOG_NW, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -784,7 +784,7 @@ MouseArea{
                 autoInterval: 10
                 width: keyboardSection.btnWidgth
                 height:keyboardSection.btnHeight
-                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + qsTr("W+")
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[5].name + "+"
                 onTriggered: sendCommand(Keymap.CMD_JOG_PW, Keymap.SINGLE_ARM_MOVE_TYPE)
                 bgColor:{
                     if(axisSelContiner.checkedItem == worldcodinate)
@@ -793,6 +793,72 @@ MouseArea{
                 }
 
 
+            }
+
+            ICButton {
+                id: ptext13
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[6].name + "-"
+                onTriggered: sendCommand(Keymap.CMD_JOG_NR, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+
+//                }
+
+
+            }
+
+            ICButton {
+                id: ptext14
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) +  AxisDefine.axisInfos[6].name + "+"
+                onTriggered: sendCommand(Keymap.CMD_JOG_PR, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+//                }
+            }
+
+            ICButton {
+                id: ptext15
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) + AxisDefine.axisInfos[7].name + "-"
+                onTriggered: sendCommand(Keymap.CMD_JOG_NT, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+
+//                }
+
+
+            }
+
+            ICButton {
+                id: ptext16
+                isAutoRepeat: true
+                autoInterval: 10
+                width: keyboardSection.btnWidgth
+                height:keyboardSection.btnHeight
+                text: (jointcodinate.isChecked ? qsTr("J") : qsTr("WD")) +  AxisDefine.axisInfos[7].name + "+"
+                onTriggered: sendCommand(Keymap.CMD_JOG_PT, Keymap.SINGLE_ARM_MOVE_TYPE)
+//                bgColor:{
+//                    if(axisSelContiner.checkedItem == worldcodinate)
+//                        return (pullyAxis == AxisDefine.kAP_RW ? "lime" : "white");
+//                    return (pullyAxis == AxisDefine.kAP_W ? "lime" : "white");
+//                }
             }
 
         }
@@ -1014,207 +1080,6 @@ MouseArea{
             anchors.topMargin: 6
             x:verSpliteLine.x
         }
-        Item{
-            id:pathTestSection
-            anchors.top:  horSpliteLine.bottom;
-            anchors.topMargin: 6
-            x:horSpliteLine.x + 6
-            ICButtonGroup{
-                id:functionSel
-                mustChecked: true
-                spacing: 6
-                checkedIndex: 0
-
-                ICCheckBox{
-                    id:lineFunction
-                    text: qsTr("Line Test")
-                    isChecked: true
-                }
-                ICCheckBox{
-                    id:curveFunction
-                    text: qsTr("Curve Test")
-                }
-            }
-            ICStackContainer{
-                anchors.top:functionSel.bottom
-                anchors.topMargin: 4
-                id:functionSection
-                function getCurrentPoint(){
-                    return [panelRobotController.statusValueText("c_ro_0_32_3_900"),
-                            panelRobotController.statusValueText("c_ro_0_32_3_904"),
-                            panelRobotController.statusValueText("c_ro_0_32_3_908"),
-                            panelRobotController.statusValueText("c_ro_0_32_3_912"),
-                            panelRobotController.statusValueText("c_ro_0_32_3_916"),
-                            panelRobotController.statusValueText("c_ro_0_32_3_920")];
-                }
-                function pointToText(point){
-                    var ret = "";
-                    var count = 0;
-                    for(var i = 0, len = AxisDefine.axisInfos.length; i < len; ++i){
-                        ++count;
-                        if(AxisDefine.axisInfos[i].visiable){
-                            ret += AxisDefine.axisInfos[i].name + ":" + point[i];
-                            if(count == 2)
-                                ret += "\n";
-                            else
-                                ret += ",";
-                        }
-                    }
-                    ret.length = ret.length - 1;
-                    return ret;
-                }
-                function runToPoint(cmd){
-                    if(panelRobotController.isOrigined()){
-                        panelRobotController.sendKeyCommandToHost(cmd);
-                    }
-                }
-                function stopToPoint(){
-                    runToPoint(Keymap.CMD_PATH_STOP);
-                }
-
-                //< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
-                //<              10：弧线中间点位置；11：弧线终点位置
-                function savePointHelper(type, toShow){
-                    if(panelRobotController.isOrigined()){
-                        var points = functionSection.getCurrentPoint();
-                        toShow.text = functionSection.pointToText(points);
-                        panelRobotController.logTestPoint(type, JSON.stringify(points));
-                    }
-                }
-
-                Item{
-                    id:lineTestContainer
-                    visible: lineFunction.isChecked
-                    Column{
-                        spacing: 12
-                        Column{
-                            Row{
-                                spacing: 10
-                                ICButton{
-                                    id:lineRun1
-                                    text: qsTr("Run to This")
-                                    onBtnPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_START_POINT);
-                                    onBtnReleased: functionSection.stopToPoint();
-                                }
-                                ICButton{
-                                    id:lineSave1
-                                    text:qsTr("Set to Point-1");
-                                    width: 180
-                                    onButtonClicked: functionSection.savePointHelper(Keymap.kTP_LINE_START_POINT, linePoint1);
-                                }
-                            }
-                            Text {
-                                id: linePoint1
-                                height: 32
-                            }
-                        }
-                        Column{
-                            Row{
-                                spacing: 10
-                                ICButton{
-                                    id:lineRun2
-                                    text: qsTr("Run to This")
-                                    onBtnPressed: functionSection.runToPoint(Keymap.CMD_LINT_TO_END_POINT);
-                                    onBtnReleased: functionSection.stopToPoint();
-
-                                }
-                                ICButton{
-                                    id:lineSave2
-                                    width: 180
-                                    text:qsTr("Set to Point-2");
-                                    onButtonClicked: functionSection.savePointHelper(Keymap.kTP_LINE_END_POINT, linePoint2);
-
-                                }
-                            }
-                            Text {
-                                id: linePoint2
-                                height: 32
-
-                            }
-                        }
-                    }
-                }
-                Item{
-                    id:curveTestContainer
-                    visible: curveFunction.isChecked
-                    Column{
-                        spacing: 12
-                        Column{
-                            Row{
-                                spacing: 10
-
-                                ICButton{
-                                    id:curveRun1
-                                    text: qsTr("Run to This")
-                                    onBtnPressed: functionSection.runToPoint(Keymap.CMD_ARC_TO_START_POINT);
-                                    onBtnReleased: functionSection.stopToPoint();
-
-                                }
-                                ICButton{
-                                    id:curveSave1
-                                    text:qsTr("Set to Point-1")
-                                    width: 180
-                                    onButtonClicked: functionSection.savePointHelper(Keymap.kTP_ARC_START_POINT, curvePoint1)
-
-                                }
-                            }
-                            Text {
-                                id: curvePoint1
-                                text: ""
-                            }
-                        }
-                        Column{
-                            Row{
-                                spacing: 10
-
-                                ICButton{
-                                    id:curveRun2
-                                    text: qsTr("Run to This")
-                                }
-                                ICButton{
-                                    id:curveSave2
-                                    text:qsTr("Set to CPoint-2")
-                                    width: 180
-                                    onButtonClicked: functionSection.savePointHelper(Keymap.kTP_ARC_MID_POINT, curvePoint2)
-
-                                }
-                            }
-                            Text {
-                                id: curvePoint2
-                                height: 32
-                                text: ""
-
-                            }
-                        }
-                        Column{
-                            Row{
-                                spacing: 10
-
-                                ICButton{
-                                    id:curveRun3
-                                    text: qsTr("Run to This")
-                                }
-                                ICButton{
-                                    id:curveSave3
-                                    text:qsTr("Set to CPoint-3")
-                                    width: 180
-
-                                    onButtonClicked: functionSection.savePointHelper(Keymap.kTP_ARC_END_POINT, curvePoint3)
-
-                                }
-                            }
-                            Text {
-                                id: curvePoint3
-                                height: 32
-                                text: ""
-
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
 
         onVisibleChanged: {
             ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(visible);
@@ -1284,6 +1149,10 @@ MouseArea{
         ptext7.visible = AxisDefine.axisInfos[0].visiable;
         ptext11.visible = AxisDefine.axisInfos[5].visiable;
         ptext12.visible = AxisDefine.axisInfos[5].visiable;
+        ptext13.visible = AxisDefine.axisInfos[6].visiable;
+        ptext14.visible = AxisDefine.axisInfos[6].visiable;
+        ptext15.visible = AxisDefine.axisInfos[7].visiable;
+        ptext16.visible = AxisDefine.axisInfos[7].visiable;
 
         xSel.visible = AxisDefine.axisInfos[0].visiable;
         ySel.visible = AxisDefine.axisInfos[1].visiable;

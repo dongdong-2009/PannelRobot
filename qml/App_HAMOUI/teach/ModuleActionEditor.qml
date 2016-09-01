@@ -20,6 +20,7 @@ Item {
 
     function createActionObjects(){
         var ret = [];
+        if(moduleSel.configValue < 0) return ret;
         var mID = (Utils.getValueFromBrackets(moduleSel.configText()));
         var fID = (callBackSel.configValue <= 0 ? -1 : Utils.getValueFromBrackets(callBackSel.configText()));
         ret.push(Teach.generateCallModuleAction(mID, fID));

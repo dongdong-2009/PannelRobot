@@ -10,6 +10,8 @@
 #include "icparameterscache.h"
 #include "icdalhelper.h"
 
+
+
 class ICRobotMold;
 
 struct SI{
@@ -41,7 +43,7 @@ struct SI{
 
 union StackInfoPrivate{
     SI si[2];
-    quint32 all[26];
+    quint32 all[36];
 };
 struct StackInfo{
     StackInfoPrivate stackData;
@@ -226,6 +228,8 @@ private:
 
 #ifdef NEW_PLAT
 
+typedef  QList<QPair<QString, int> > ICCustomActionParseDefine;
+
 class ICRobotMold{
 public:
     enum {
@@ -257,6 +261,8 @@ public:
         kCCErr_Invaild_StackID,
         kCCErr_Invaild_CounterID,
         kCCErr_Invaild_ModuleID,
+        kCCErr_Unknow_Action,
+        kCCErr_Wrong_Action_Define,
     };
 
     enum {
@@ -346,6 +352,17 @@ public:
         return ret;
     }
 
+    static bool IsActionRegister(int action) { return customActions_.contains(action);}
+    static ICCustomActionParseDefine GetCustomActionParseDefine(int action)
+    {
+        if(!customActions_.contains(action)) return ICCustomActionParseDefine();
+        return customActions_.value(action);
+    }
+    static void RegisterCustomAction(int action, const ICCustomActionParseDefine & define)
+    {
+        customActions_.insert(action, define);
+    }
+
 
     QVector<QVector<quint32> >ProgramToDataBuffer(int program) const
     {
@@ -365,7 +382,7 @@ public:
     }
 
 
-    bool LoadMold(const QString& moldName);
+    bool LoadMold(const QString& moldName, bool reload = false);
     QMap<int, int> SaveMold(int which, const QString& program);
 
     quint32 MoldFnc(ICAddrWrapperCPTR addr)
@@ -392,6 +409,12 @@ public:
     }
     QString Stacks() const { return stacks_;}
     bool SaveStacks(const QString& stacks);
+
+    bool HasStackInfo(int which) const
+    {
+        return stackInfos_.contains(which);
+    }
+
     StackInfo GetStackInfo(int which, bool& isOk) const
     {
         isOk = false;
@@ -402,6 +425,12 @@ public:
         }
         return StackInfo();
     }
+
+    QMap<int, StackInfo> GetStackInfos() const
+    {
+        return stackInfos_;
+    }
+
 
     QPair<int, QList<int> > RunningStepToProgramLine(int which, int step);
 
@@ -462,6 +491,7 @@ private:
     static ICRobotMoldPTR currentMold_;
     QString moldName_;
     ICParametersCache fncCache_;
+    static QMap<int, ICCustomActionParseDefine> customActions_;
 };
 
 #else

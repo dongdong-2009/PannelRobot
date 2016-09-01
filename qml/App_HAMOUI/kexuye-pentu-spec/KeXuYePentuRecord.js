@@ -90,7 +90,7 @@ function KeXuyePentuRecord(){
             if(rs.rows.length > 0){
                 ret = rs.rows.item(0).lineInfo;
                 if(ret == null || ret == "")
-                    ret = "{}";
+                    ret = "[{},{}]";
             }
         });
         return ret;

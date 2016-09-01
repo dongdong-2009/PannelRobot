@@ -107,20 +107,20 @@ ProgramActionMenuFrame{
     }
 
     Component.onCompleted: {
-        var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame) - 1;
+        var frameIndex = actionEditorContainerInstance().addPage(kexuyeActionsFrame);
         actionEditorContainerInstance().setCurrentIndex(frameIndex );
         LocalPData.menuIndex = frameIndex;
         var editor = Qt.createComponent('KexuYeActionEdit.qml');
         var kxyObject = editor.createObject(actionEditorContainerInstance());
-        var kxyObjectIndex = actionEditorContainerInstance().addPage(kxyObject) - 1;
+        var kxyObjectIndex = actionEditorContainerInstance().addPage(kxyObject);
         editor = Qt.createComponent('KexuYeAxisSpeed.qml');
         var kxyspeed = editor.createObject(actionEditorContainerInstance());
-        var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed) - 1;
+        var kxyAxisSpeedIndex = actionEditorContainerInstance().addPage(kxyspeed);
         kxyObject.detailInstance = kxyspeed;
 
         editor = Qt.createComponent('KXYStackAction.qml');
         var kxystack = editor.createObject(actionEditorContainerInstance());
-        var kxystackactionIndex = actionEditorContainerInstance().addPage(kxystack) - 1;
+        var kxystackactionIndex = actionEditorContainerInstance().addPage(kxystack);
         kxyObject.stackInstance = kxystack;
 
         var kxySpeedIndex = function(){
@@ -154,6 +154,7 @@ ProgramActionMenuFrame{
             kxyObject.setPosName(pos1name, pos2name);
             kxyObject.gunFollowEnvisible();
             kxyObject.hideUselessEdit();
+            kxyObject.hidePoint();
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
             linkedBtn2Instance().visible = true;
@@ -171,7 +172,7 @@ ProgramActionMenuFrame{
             setModeEditorHelper(LocalTeach.pentuModes.LineZ2DRepeat, ptLine_Z_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptLine_Saw_2D.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.LineSaw2DRepeat, ptLine_Saw_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.LineSaw2DRepeat, ptLine_Saw_2D.text, qsTr("Repeat EPos"), qsTr("Dir EPos"));
         });
         ptLine_Dir_2D.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.LineDir2DRepeat, ptLine_Dir_2D.text, qsTr("Set EPos"), qsTr("Set TPos"));
@@ -184,7 +185,7 @@ ProgramActionMenuFrame{
             setModeEditorHelper(LocalTeach.pentuModes.ArcZ3DRepeat, ptArc_Z.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
         ptArc_Saw.buttonClicked.connect(function(){
-            setModeEditorHelper(LocalTeach.pentuModes.ArcSaw3DRepeat, ptArc_Saw.text, qsTr("Set EPos"), qsTr("Set TPos"));
+            setModeEditorHelper(LocalTeach.pentuModes.ArcSaw3DRepeat, ptArc_Saw.text, qsTr("Repeat EPos"), qsTr("Dir EPos"));
         });
         ptArc_Dir.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.ArcDir3DRepeat, ptArc_Dir.text, qsTr("Set EPos"), qsTr("Set TPos"));

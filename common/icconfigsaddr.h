@@ -302,13 +302,13 @@ extern  const ICAddrWrapper  s_rw_16_16_0_209;  //< 13713947 逻辑输出端口�
 extern  const ICAddrWrapper  s_rw_0_32_0_210;    //< 13795355 容差设定容差设定
 extern  const ICAddrWrapper  s_rw_0_32_0_211;    //< 13860891 当前延时时间手动单轴速度设定
 extern  const ICAddrWrapper  s_rw_0_32_1_212;    //< 1087668251 当前延时时间全局速度设定
-extern  const ICAddrWrapper  s_rw_0_32_0_213;    //< 13991963 当前延时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_214;    //< 14057499 目标延时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_215;    //< 14123035 目标延时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_216;    //< 14188571 目标延时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_217;    //< 14254107 目标延时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_218;    //< 14319643 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_219;    //< 14385179 当前定时时间当前定时时间
+extern  const ICAddrWrapper  s_rw_0_32_0_213;    //< 13991963 当前延时时间模拟量模块使用
+extern  const ICAddrWrapper  m_rw_0_32_1_214;    //< 1087799322 目标延时时间模拟量设定
+extern  const ICAddrWrapper  m_rw_0_32_1_215;    //< 1087864858 目标延时时间模拟量设定
+extern  const ICAddrWrapper  m_rw_0_32_1_216;    //< 1087930394 目标延时时间模拟量设定
+extern  const ICAddrWrapper  m_rw_0_32_1_217;    //< 1087995930 目标延时时间模拟量设定
+extern  const ICAddrWrapper  m_rw_0_32_1_218;    //< 1088061466 当前定时时间模拟量设定
+extern  const ICAddrWrapper  m_rw_0_32_1_219;    //< 1088127002 当前定时时间模拟量设定
 extern  const ICAddrWrapper  s_rw_0_32_0_220;    //< 14450715 当前定时时间当前定时时间
 extern  const ICAddrWrapper  s_rw_0_32_0_221;    //< 14516251 当前定时时间当前定时时间
 extern  const ICAddrWrapper  s_rw_0_32_0_222;    //< 14581787 当前定时时间当前定时时间

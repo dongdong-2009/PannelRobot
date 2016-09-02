@@ -365,6 +365,7 @@ Rectangle {
         var pointLines;
         var md;
         var i;
+        var len;
 
         // module points execute
         if(moduleSel.currentIndex > 0)

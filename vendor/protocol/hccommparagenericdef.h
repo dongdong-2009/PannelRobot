@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.3"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.4"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.3"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.4"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -759,6 +759,12 @@ typedef enum
      * 输出延时  当类型为8～10时候不用
      */
     F_CMD_IO_OUTPUT = 200,
+    /**************************************************************************/
+    /* 模拟量输出模块控制（485通讯控制）
+     * id:通道范围：0～5（所采用的模块有6路输出）
+     * output:电压范围：0.0～10.0V；0到10V电压输出
+     */
+    F_CMD_ANALOG_CONTROL=250,
     /*************************************************************************
      *
      *stack：
@@ -890,6 +896,18 @@ typedef enum
      */
     F_CMD_PENQIANG_CMD = 1000,//< 喷涂摆枪命令
     /***************************************************************************/
+    /*
+     */
+    F_CMD_PENQIANG_1 = 2000,//< 喷涂指令1 直线U形
+    F_CMD_PENQIANG_2       ,//< 喷涂指令2 直线Z形
+    F_CMD_PENQIANG_3       ,//< 喷涂指令3 直线锯齿形
+    F_CMD_PENQIANG_4       ,//< 喷涂指令4 直线寸动形
+    F_CMD_PENQIANG_5       ,//< 喷涂指令5 曲线U形
+    F_CMD_PENQIANG_6       ,//< 喷涂指令6 曲线Z形
+    F_CMD_PENQIANG_7       ,//< 喷涂指令7 曲线锯齿形
+    F_CMD_PENQIANG_8       ,//< 喷涂指令8 曲线寸动形
+    F_CMD_PENQIANG_9       ,//< 喷涂指令9 DIY
+    /***************************************************************************/
 
     F_CMD_MEM_CMD = 53000,
 
@@ -943,7 +961,8 @@ typedef enum
     ALARM_IO_CONNET4_ERR, //<名字：与IO板4通讯失败
     ALARM_PROGRAM_CHANGE_ERR, //<名字：手控和主机教导程序不一致
     ALARM_FPGA_ERR,//<名字：FPGA报警，请断电重启！！！！
-
+    ALARM_ANALOG_CRC_ERR, //<名字：模拟量输出模块输出校验错误
+    ALARM_ANALOG_OVERTIME_ERR, //<名字：模拟量输出模块读超时
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -1432,7 +1451,9 @@ typedef struct {
     uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
     uint32_t single_s; //<类型：系统；名字：手动单轴速度设定；精度：0;单位：；
     uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：1;单位：；
-  uint32_t Reserve2[25];   //<类型:系统;名字:当前定时时间; 单位:ms
+    uint32_t  analog_use; //<类型：系统；名字：模拟量模块使用；精度：0;单位：；
+    uint32_t  analog_set[6]; //<类型：模号；名字：模拟量设定；精度：1;单位：；
+  uint32_t Reserve2[18];   //<类型:系统;名字:当前定时时间; 单位:ms
   uint32_t Reserve3[20];   //<类型:系统;名字:目标定时时间; 单位:ms
   uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
   uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms

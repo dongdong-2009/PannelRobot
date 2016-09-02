@@ -930,7 +930,8 @@ var generateAxisServoAction = function(action,
                                        signalStopMode,
                                        speedMode,
                                        stop,
-                                       rel){
+                                       rel,
+                                       points){
     return {
         "action":action,
         "axis":axis,
@@ -948,7 +949,8 @@ var generateAxisServoAction = function(action,
         "signalStopMode":signalStopMode ? 1 : 0,
         "speedMode":speedMode == undefined ? 0 : speedMode,
         "stop":stop || false,
-        "rel": rel || false
+        "rel": rel || false,
+        "points":points == undefined ?  [] : [points]
     };
 }
 
@@ -1230,7 +1232,14 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     }else if(actionObject.stop){
         ret += qsTr("Stop");
     }else{
-        ret +=  actionObject.pos + " " +
+        var pts = actionObject.points;
+        if(pts == undefined) pts = [];
+        if(pts.length != 0){
+            ret += pts[0].pointName + "(" +
+                    pts[0].pos["m" + actionObject.axis] + ")";
+        }else
+            ret +=  actionObject.pos;
+        ret +=  " " +
                 qsTranslate("Teach","Speed:") + actionObject.speed + " " +
                 qsTr("Delay:") + actionObject.delay;
     }

@@ -12,7 +12,10 @@ Row{
     property int editorWidth: 80
     property alias rangeAddr: pos.bindConfig
     property alias angle: pos.text
+    property alias mode: axis.state
     property alias unit: pos.unit
+    property alias relPoints: relPoint.items
+    property alias popupMode: relPoint.popupMode
 
     function getAxisActionInfo(){
         if(!box.isChecked) return null;
@@ -22,6 +25,12 @@ Row{
             ret.speed = speed.text
         }
         else if(ps.visible) ret.ps = ps.currentIndex;
+        else if(relPoint.visible) {
+            var pt = Teach.definedPoints.getPoint(relPoint.currentText());
+            ret.point = {"pointName":pt.name, "pos":pt.point};
+            ret.speed = speed.text;
+            ret.pos = 0;
+        }
         ret.delay = delay.text
         return ret;
     }
@@ -31,6 +40,21 @@ Row{
         return axisDefine != Teach.kAxisType_NoUse &&
                 axisDefine != Teach.kAxisType_Reserve
     }
+
+    states: [
+        State {
+            name: "psMode"
+            PropertyChanges {target: pos; visible:false;}
+            PropertyChanges {target: relPoint; visible:false;}
+            PropertyChanges {target: ps; visible:true;}
+        },
+        State {
+            name: "relPointMode"
+            PropertyChanges {target: pos; visible:false;}
+            PropertyChanges {target: ps; visible:false;}
+            PropertyChanges {target: relPoint; visible:true;}
+        }
+    ]
 
     ICCheckBox{
         id:box
@@ -50,6 +74,14 @@ Row{
         width: editorWidth
         visible: axisDefine == Teach.kAxisType_Pneumatic
     }
+    ICComboBox{
+        id:relPoint
+        width: pos.width
+        visible: false
+        popupHeight: 100
+        popupMode: 1
+    }
+
     ICLineEdit{
         id:speed
         inputWidth: editorWidth - 20
@@ -71,4 +103,5 @@ Row{
             box.setChecked(false);
         }
     }
+
 }

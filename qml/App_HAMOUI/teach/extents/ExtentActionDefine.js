@@ -25,6 +25,24 @@ var extentPENQIANGAction = {
                 qsTr("Speed:") + actionObject.speed + " " +
                 qsTr("Num:") + actionObject.num + " " +
                 qsTr("Delay:") + actionObject.delay;
-    }
+    },
+
 };
 
+var extentAnalogControlAction = {
+    "action":250,
+    "properties":[new ActionDefineItem("chanel", 0),
+        new ActionDefineItem("analog", 1),
+        new ActionDefineItem("delay", 1)
+    ],
+    "canTestRun":true,
+    "canActionUsePoint": false,
+    "editableItems":{"editor":Qt.createComponent("AnalogControlEditor.qml"), "itemDef":{"item":"AnalogControlEditor"}},
+    "toStringHandler":function(actionObject){
+        return qsTr("Analog Control") + "-" + actionObject.chanel + ":" +
+                qsTr("Analog:") + actionObject.analog + " " +
+                qsTr("Delay:") + actionObject.delay;
+    }
+}
+
+var extentActions = [extentPENQIANGAction, extentAnalogControlAction];

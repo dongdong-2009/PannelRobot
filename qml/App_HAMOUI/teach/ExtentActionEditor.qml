@@ -14,9 +14,12 @@ Item {
 
     function createActionObjects(){
         var ret = [];
-        if(axisPly.isChecked){
-            ret.push(Teach.generateCustomAction(axisFlyConfigs.getActionProperties()));
-        }
+//        if(axisPly.isChecked){
+//            ret.push(Teach.generateCustomAction(axisFlyConfigs.getActionProperties()));
+//        }else if(analogControl.isChecked)
+        var p = configsContainer.currentPage().getActionProperties();
+        if(p != null)
+            ret.push(Teach.generateCustomAction(p));
         return ret;
     }
 
@@ -32,10 +35,15 @@ Item {
         Flow{
             id:cmdContent
             width: 250
+            spacing: 12
             ICCheckBox{
                 id:axisPly
                 text: qsTr("Axis Ply")
                 isChecked: true
+            }
+            ICCheckBox{
+                id:analogControl
+                text: qsTr("Analog Control")
             }
         }
         onCheckedIndexChanged: {
@@ -57,10 +65,14 @@ Item {
         anchors.leftMargin: 4
         Component.onCompleted: {
             addPage(axisFlyConfigs);
+            addPage(analogControlEdit);
             currentIndex = 0;
         }
         PENQIANEditor{
             id:axisFlyConfigs
+        }
+        AnalogControlEditor{
+            id:analogControlEdit
         }
     }
 }

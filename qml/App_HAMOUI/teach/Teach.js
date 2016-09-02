@@ -23,7 +23,7 @@ var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
     kPT_Offset:"D",
-    createNew: function(){        
+    createNew: function(){
         var definePoints = {};
         definePoints.pointsMonitors = [];
         definePoints.definedPoints = [];
@@ -83,7 +83,7 @@ var DefinePoints = {
             var t = type || DefinePoints.kPT_Free
             name = t + "P" + pID + ":" + name;
             var iPoint = definePoints.createPointObject(pID, name, point);
-//            definePoints.definedPoints.splice(pID, 0, iPoint);
+            //            definePoints.definedPoints.splice(pID, 0, iPoint);
             definePoints.pushPoint(pID, iPoint);
             definePoints.informPointAdded(iPoint);
             return iPoint;
@@ -97,7 +97,7 @@ var DefinePoints = {
                     break;
                 }
             }
-//            return definePoints.definedPoints;
+            //            return definePoints.definedPoints;
         }
 
         definePoints.deletePoint = function(pointID){
@@ -108,7 +108,7 @@ var DefinePoints = {
                     definePoints.informPointDeleted(ps[i]);
                 }
             }
-//            return definePoints.definedPoints;
+            //            return definePoints.definedPoints;
         }
 
         //{"m0":123, "m1":}
@@ -478,7 +478,7 @@ function VariableInfo(id, name, unit, val, decimal){
     this.val = val || 0;
     this.decimal = decimal || 0;
     this.toString = function(){
-       return this.name;
+        return this.name;
 
     }
 }
@@ -946,11 +946,11 @@ var generateAxisServoAction = function(action,
         "earlySpd":earlySpd || 0,
         "signalStopEn":signalStopEn || false,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
-        "signalStopMode":signalStopMode ? 1 : 0,
-        "speedMode":speedMode == undefined ? 0 : speedMode,
-        "stop":stop || false,
-        "rel": rel || false,
-        "points":points == undefined ?  [] : [points]
+                                                         "signalStopMode":signalStopMode ? 1 : 0,
+                                                                                           "speedMode":speedMode == undefined ? 0 : speedMode,
+                                                                                                                                "stop":stop || false,
+                                                                                                                                "rel": rel || false,
+                                                                                                                                "points":points == undefined ?  [] : [points]
     };
 }
 
@@ -973,7 +973,7 @@ var generateOriginAction = function(action,
                                     type,
                                     speed,
                                     delay
-                                  ){
+                                    ){
 
     return {
         "action":action,
@@ -1226,7 +1226,7 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
-     var ret =  axisInfos[actionObject.axis].name + ":";
+    var ret =  axisInfos[actionObject.axis].name + ":";
     if(actionObject.speedMode){
         ret += (actionObject.speedMode == 1 ? qsTr("Speed Control PP Start") :  qsTr("Speed Control RP Start") ) + " " + qsTranslate("Teach","Speed:") + actionObject.speed ;
     }else if(actionObject.stop){
@@ -1353,7 +1353,7 @@ var callModuleActionToStringHandler = function(actionObject){
 
 var commentActionToStringHandler = function(actionObject){
     if(actionObject.commentAction != null){
-       actionObject.comment = actionToString(actionObject.commentAction);
+        actionObject.comment = actionToString(actionObject.commentAction);
     }
     return actionObject.comment;
 }
@@ -1364,10 +1364,10 @@ var flagActionToStringHandler = function(actionObject){
 }
 
 var valveTypeToString = [
-    qsTr("Normal Y"),
-    qsTr("Single Y"),
-    qsTr("Hold Double Y"),
-    qsTr("Unhold Double Y")];
+            qsTr("Normal Y"),
+            qsTr("Single Y"),
+            qsTr("Hold Double Y"),
+            qsTr("Unhold Double Y")];
 
 function valveItemToString(valve){
     var ret = valveTypeToString[valve.type] + "-";
@@ -1429,10 +1429,10 @@ var stackActionToStringHandler = function(actionObject){
     var descr = (si == null) ? qsTr("not exist") : si.descr;
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
-                                                          "";
+                             "";
     var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
     var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
-                                                             : "";
+                                : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
             (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
@@ -1555,7 +1555,7 @@ var visionCatchActionToStringHandler = function(actionObject){
 
 var waitVisionDataActionToStringHandler = function(actionObject){
     return qsTr("Wait Vision Data") + " " + qsTr("Data Source:") + actionObject.dataSource + "\n                            "
-    + qsTr("Limit:") + actionObject.limit;
+            + qsTr("Limit:") + actionObject.limit;
 }
 
 var speedActionToStringHandler = function(actionObject){
@@ -1626,12 +1626,12 @@ var actionObjectToEditableITems = function(actionObject){
     }
     else if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
-                {"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"},
-                {"item":"earlyEnd"},
-                {"item":"earlyEndSpd"},
-                {"item":"signalStop"},
-                {"item":"rel"}];
+               {"item":"speed", "range":"s_rw_0_32_1_1200"},
+               {"item":"delay", "range":"s_rw_0_32_2_1100"},
+               {"item":"earlyEnd"},
+               {"item":"earlyEndSpd"},
+               {"item":"signalStop"},
+               {"item":"rel"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
@@ -1667,10 +1667,10 @@ var actionObjectToEditableITems = function(actionObject){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
-                {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
+               {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
     }else if(actionObject.action === actions.F_CMD_FINE_ZERO){
         ret = [{"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
+               {"item":"delay", "range":"s_rw_0_32_2_1100"}];
     }else if(actionObject.action === actions.F_CMD_VISION_CATCH){
         ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_WATIT_VISION_DATA){
@@ -1790,7 +1790,7 @@ function customActionGenerator(actionDefine){
             ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
         }
         return ret;
-    }
+    };
     actionDefine.toRegisterString = function(){
         var ret = {"actionID":actionDefine.action, "seq":[]};
         ret.seq.push({"item":"action", "decimal":0});
@@ -1798,8 +1798,31 @@ function customActionGenerator(actionDefine){
             ret.seq.push(actionDefine.properties[i]);
         }
         return JSON.stringify(ret);
-    }
+    };
     actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
+    if(!actionDefine.hasOwnProperty("actionObjectChangedHelper")){
+        actionDefine.actionObjectChangedHelper = function(editor, actionObject){
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                editor[actionDefine.properties[i].item] = actionObject[actionDefine.properties[i].item];
+            }
+        };
+    }
+    if(!actionDefine.hasOwnProperty("updateActionObjectHelper")){
+        actionDefine.updateActionObjectHelper = function(editor, actionObject){
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                actionObject[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+            }
+        };
+    }
+    if(!actionDefine.hasOwnProperty("getActionPropertiesHelper")){
+        actionDefine.getActionPropertiesHelper = function(editor){
+            var ret = {"action":actionDefine.action};
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                ret[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+            }
+            return ret;
+        }
+    }
 }
 
 var currentParsingProgram = 0;
@@ -1814,4 +1837,11 @@ var generateCustomAction = function(actionObject){
     if(!actionObject.hasOwnProperty("action")) return null;
     if(!customActions.hasOwnProperty(actionObject.action)) return null;
     return customActions[actionObject.action].generate(actionObject);
+}
+
+var registerCustomActions = function(controller, exActions){
+    for(var i = 0, len = exActions.length; i < len; ++i){
+        registerCustomAction(exActions[i]);
+        controller.registerCustomProgramAction(exActions[i].toRegisterString());
+    }
 }

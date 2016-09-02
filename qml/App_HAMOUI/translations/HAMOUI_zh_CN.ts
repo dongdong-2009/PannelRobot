@@ -459,6 +459,21 @@
     </message>
 </context>
 <context>
+    <name>AnalogControlEditor</name>
+    <message>
+        <source>Chanel</source>
+        <translation>通道</translation>
+    </message>
+    <message>
+        <source>Analog Value</source>
+        <translation>模拟量</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+</context>
+<context>
     <name>ArmMovePage</name>
     <message>
         <source>Speed</source>
@@ -1619,12 +1634,24 @@
         <source>Delay:</source>
         <translation>延时:</translation>
     </message>
+    <message>
+        <source>Analog Control</source>
+        <translation>模拟控制</translation>
+    </message>
+    <message>
+        <source>Analog:</source>
+        <translation>模拟量:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
     <message>
         <source>Axis Ply</source>
         <translation>单轴往复</translation>
+    </message>
+    <message>
+        <source>Analog Control</source>
+        <translation>模拟控制</translation>
     </message>
 </context>
 <context>
@@ -5503,6 +5530,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>L24</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Analog En</source>
+        <translation>模拟量模块使能</translation>
     </message>
 </context>
 <context>

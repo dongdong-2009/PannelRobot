@@ -96,15 +96,15 @@ MouseArea{
                 delegate: Row{
                     Text {
                         text: name
-                        width: 150
+                        width: 180
                     }
                     Text {
                         text: qsTr("Target:") + " " + target
-                        width: 150
+                        width: 135
                     }
                     Text{
                         text:qsTr("Current:") + " " + current
-                        width: 150
+                        width: 135
                     }
                 }
 

@@ -365,6 +365,7 @@ Rectangle {
         var pointLines;
         var md;
         var i;
+        var len;
 
         // module points execute
         if(moduleSel.currentIndex > 0)
@@ -778,6 +779,7 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    popupHeight: 350
                     visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
@@ -865,6 +867,7 @@ Rectangle {
                     text: qsTr("Del Module")
                     height: editing.height
                     onButtonClicked: {
+                        hasModify = false;
                         var toDelID = Utils.getValueFromBrackets(moduleSel.currentText());
                         Teach.functionManager.delFunction(toDelID);
                         var ci = moduleSel.currentIndex;
@@ -1691,8 +1694,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
-        panelRobotController.registerCustomProgramAction(ExtentActionDefine.extentPENQIANGAction.toRegisterString());
+        Teach.registerCustomActions(panelRobotController, ExtentActionDefine.extentActions);
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);

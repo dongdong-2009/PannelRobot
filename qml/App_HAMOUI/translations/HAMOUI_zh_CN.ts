@@ -472,6 +472,10 @@
         <source>Delay</source>
         <translation>延时</translation>
     </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -3853,7 +3857,11 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>自动设定原点加开关(短原点)</translation>
+    </message>
+    <message>
+        <source>Type4</source>
+        <translation>自动设定原点加开关(长原点)</translation>
     </message>
 </context>
 <context>

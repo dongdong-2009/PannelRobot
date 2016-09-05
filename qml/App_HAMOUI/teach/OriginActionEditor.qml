@@ -52,23 +52,23 @@ Rectangle {
         OriginActionEditorAxisComponent{
             id:m0Axis
             axisName: AxisDefine.axisInfos[0].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3"), qsTr("Type4")]
             axisDefine: pData.axisDefine.s1Axis
             rangeAddr: "s_rw_0_32_3_1000"
-            z: 5
+            z: 1
         }
         OriginActionEditorAxisComponent{
             id:m1Axis
             axisName: AxisDefine.axisInfos[1].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            psName: m0Axis.psName
             axisDefine: pData.axisDefine.s2Axis
             rangeAddr: "s_rw_0_32_3_1001"
-            z: 4
+            z: 2
         }
         OriginActionEditorAxisComponent{
             id:m2Axis
             axisName: AxisDefine.axisInfos[2].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            psName: m0Axis.psName
             axisDefine: pData.axisDefine.s3Axis
             rangeAddr: "s_rw_0_32_3_1002"
             z: 3
@@ -76,44 +76,42 @@ Rectangle {
         OriginActionEditorAxisComponent{
             id:m3Axis
             axisName: AxisDefine.axisInfos[3].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            psName: m0Axis.psName
             axisDefine: pData.axisDefine.s4Axis
             rangeAddr: "s_rw_0_32_3_1003"
-            z: 5
-            popupMode: 1
+            z: 4
         }
         OriginActionEditorAxisComponent{
             id:m4Axis
             axisName: AxisDefine.axisInfos[4].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            psName: m0Axis.psName
             axisDefine: pData.axisDefine.s5Axis
             rangeAddr: "s_rw_0_32_3_1004"
-            z: 6
-            popupMode: 1
+            z: 5
         }
         OriginActionEditorAxisComponent{
             id:m5Axis
             axisName: AxisDefine.axisInfos[5].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            psName: m0Axis.psName
+            axisDefine: pData.axisDefine.s6Axis
+            rangeAddr: "s_rw_0_32_3_1005"
+            z: 6
+        }
+        OriginActionEditorAxisComponent{
+            id:m6Axis
+            axisName: AxisDefine.axisInfos[6].name
+            psName: m0Axis.psName
             axisDefine: pData.axisDefine.s6Axis
             rangeAddr: "s_rw_0_32_3_1005"
             z: 7
         }
         OriginActionEditorAxisComponent{
-            id:m6Axis
-            axisName: AxisDefine.axisInfos[6].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
+            id:m7Axis
+            axisName: AxisDefine.axisInfos[7].name
+            psName: m0Axis.psName
             axisDefine: pData.axisDefine.s6Axis
             rangeAddr: "s_rw_0_32_3_1005"
             z: 8
-        }
-        OriginActionEditorAxisComponent{
-            id:m7Axis
-            axisName: AxisDefine.axisInfos[7].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3")]
-            axisDefine: pData.axisDefine.s6Axis
-            rangeAddr: "s_rw_0_32_3_1005"
-            z: 9
         }
     }
     Component.onCompleted: {

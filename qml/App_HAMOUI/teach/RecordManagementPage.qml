@@ -9,7 +9,7 @@ import "../../utils/stringhelper.js" as ICString
 import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../ExternalData.js" as ESData
-
+import "../kexuye-pentu-spec/KeXuYePentuRecord.js" as KXYRecord
 
 Rectangle {
     function onGetVisionData(visionData){
@@ -327,6 +327,7 @@ Rectangle {
                     if(!ret.errno){
                         recordsModel.insert(0, recordsView.createRecordItem(ret.recordName, ret.createDatetime));
                         recordsView.positionViewAtBeginning();
+                        KXYRecord.keXuyePentuRecord.copyRecord(newName.text,recordsModel.get(recordsView.currentIndex).name);
                     }
 
                 }

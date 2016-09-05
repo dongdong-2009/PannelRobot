@@ -11,7 +11,7 @@ import "../ICOperationLog.js" as ICOperationLog
 import "ManualProgramManager.js" as ManualProgramManager
 import "../ExternalData.js" as ESData
 import "extents/ExtentActionDefine.js" as ExtentActionDefine
-
+import "../configs/IODefines.js" as IODefines
 
 Rectangle {
     id:programFlowPageInstance
@@ -909,13 +909,42 @@ Rectangle {
                 z:4
                 spacing: 6
                 ICCheckBox{
-                    id:gunlock
-                    width: 120
-                    text: qsTr("Gun Lock")
+                    id:gun1lock
+                    width: 80
+                    text: qsTr("Gun1 Lock")
+                    isChecked: false
                     onVisibleChanged: {
                         isChecked = false;
                     }
                     onIsCheckedChanged: {
+                        if(isChecked){
+                            var toSend = IODefines.valveItemJSON("mValve13");
+                            panelRobotController.setYStatus(toSend, 1);
+                        }
+                        else{
+                            toSend = IODefines.valveItemJSON("mValve13");
+                            panelRobotController.setYStatus(toSend, 0);
+                        }
+                    }
+                }
+                ICCheckBox{
+                    id:gun2lock
+                    width: 80
+                    text: qsTr("Gun2 Lock")
+                    visible: false
+                    isChecked: false
+                    onVisibleChanged: {
+                        isChecked = false;
+                    }
+                    onIsCheckedChanged: {
+                        if(isChecked){
+                            var toSend = IODefines.valveItemJSON("mValve14");
+                            panelRobotController.setYStatus(toSend, 1);
+                        }
+                        else{
+                            toSend = IODefines.valveItemJSON("mValve14");
+                            panelRobotController.setYStatus(toSend, 0);
+                        }
                     }
                 }
                 ICCheckBox{

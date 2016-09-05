@@ -205,10 +205,10 @@ ProgramFlowPage {
 //        }
     }
     function getready(ret,actionObject){
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2,0.1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2,0.1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5));
@@ -271,23 +271,23 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
     }
     function gun1openAction(ret,actionObject){
-//        if(actionObject.gun1use0 && actionObject.gun2use0)
-//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-//        if(actionObject.gun1use0)
-//            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
-//        if(actionObject.gun2use0)
-//            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-//        if(actionObject.gun1use0 && actionObject.gun2use0)
-//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        if(actionObject.gun1use0 && actionObject.gun2use0)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use0)
+            ret.push(LocalTeach.generateOutputAction(4, 0, 1, 0, actionObject.fixtureDelay0));
+        if(actionObject.gun2use0)
+            ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+        if(actionObject.gun1use0 && actionObject.gun2use0)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
-//        if(actionObject.gun1use1 && actionObject.gun2use1)
-//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-//        if(actionObject.gun1use1)
-//            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
-//        if(actionObject.gun2use1)
-//            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-//        if(actionObject.gun1use1 && actionObject.gun2use1)
-//            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        if(actionObject.gun1use1 && actionObject.gun2use1)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+        if(actionObject.gun1use1)
+            ret.push(LocalTeach.generateOutputAction(5, 0, 1, 0, actionObject.fixtureDelay1));
+        if(actionObject.gun2use1)
+            ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+        if(actionObject.gun1use1 && actionObject.gun2use1)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
 
         if(actionObject.gun1use2 && actionObject.gun2use2)
             ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
@@ -406,11 +406,11 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateOutputAction(10,0,1,10,0));   //gongzhuangzhengzhuang open
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
 //        generateAxisServoAction = function(action,axis,pos,speed,delay,isBadEn,isEarlyEnd,earlyEndPos,isEarlySpd,earlySpdPos,earlySpd,signalStopEn,signalStopPoint,signalStopMode,speedMode,stop)
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5,0,false,true,3600));
@@ -425,11 +425,11 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag11));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, 0, actionObject.startPosSpeed2));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));   //gongzhuangfanzhuang open
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed4,0,false,true,3600));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
@@ -651,6 +651,8 @@ ProgramFlowPage {
 //                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
 //            }
 
+            ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
             ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                      [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
 
@@ -838,84 +840,90 @@ ProgramFlowPage {
             var ceycle,dirlength;
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0){
-                    dirlength = dirEPos.m0;
-                    ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
-                    pos1["m" + 0] = pos["m" + 0] = 0;
-                    tmp1["m" + 0] = tmp["m" + 0] = 0;
+                    if(actionObject.mode == 2){
+                        dirlength = dirEPos.m0;
+                        ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
+                        pos1["m" + 0] = pos["m" + 0] = 0;
+                    }
+                    else{
+                        pos1.m0 = pos.m0;
+                        tmp1.m0 = tmp.m0;
+                    }
                 }
                 else {
-//                    if(actionObject.mode == 2){
-//                        pos["m" + 1] = (pos["m" + 1] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
-//                        pos1["m" + 2] = pos["m" + 2] = (pos["m" + 1] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
-//                    }
-                    dirlength = dirEPos.m1;
-                    ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
-                    pos1["m" + 1] = pos["m" + 1] = 0;
-                    tmp1["m" + 1] = tmp["m" + 1] = 0;
+                    if(actionObject.mode == 2){
+                        dirlength = dirEPos.m1;
+                        ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
+                        pos1["m" + 1] = pos["m" + 1] = 0;
+                    }
+                    else{
+                        pos1.m1 = pos.m1;
+                        tmp1.m1 = tmp.m1;
+                    }
                 }
                 tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
-//                    if(actionObject.mode == 2){
-//                        pos["m" + 0] = (pos["m" + 0] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
-//                        pos1["m" + 1] = pos["m" + 1] = (pos["m" + 0] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
-//                    }
-                    dirlength = dirEPos.m0;
-                    ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m2 - actionObject.startPos.pos.m2) * actionObject.dirSpeed));
-                    pos1["m" + 0] = pos["m" + 0] = 0;
-                    tmp1["m" + 0] = tmp["m" + 0] = 0;
+                    if(actionObject.mode == 2){
+                        dirlength = dirEPos.m0;
+                        ceycle = Math.ceil(((dirEPos.m0 - actionObject.startPos.pos.m0) * actionObject.repeateSpeed) / ((repeatEPos.m2 - actionObject.startPos.pos.m2) * actionObject.dirSpeed));
+                        pos1["m" + 0] = pos["m" + 0] = 0;
+                    }
+                    else{
+                        pos1.m0 = pos.m0;
+                        tmp1.m0 = tmp.m0;
+                    }
                 }
                 else {
-//                    if(actionObject.mode == 2){
-//                        pos["m" + 2] = (pos["m" + 2] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
-//                        pos1["m" + 1] = pos["m" + 1] = (pos["m" + 2] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
-//                    }
-                    dirlength = dirEPos.m2;
-                    ceycle = Math.ceil(((dirEPos.m2 - actionObject.startPos.pos.m2) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
-                    pos1["m" + 2] = pos["m" + 2] = 0;
-                    tmp1["m" + 2] = tmp["m" + 2] = 0;
+                    if(actionObject.mode == 2){
+                        dirlength = dirEPos.m2;
+                        ceycle = Math.ceil(((dirEPos.m2 - actionObject.startPos.pos.m2) * actionObject.repeateSpeed) / ((repeatEPos.m0 - actionObject.startPos.pos.m0) * actionObject.dirSpeed));
+                        pos1["m" + 2] = pos["m" + 2] = 0;
+                    }
+                    else{
+                        pos1.m2 = pos.m2;
+                        tmp1.m2 = tmp.m2;
+                    }
                 }
                 tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
-//                    if(actionObject.mode == 2){
-//                        pos["m" + 1] = (pos["m" + 1] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
-//                        pos1["m" + 0] = pos["m" + 0] = (pos["m" + 1] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
-//                    }
-                    dirlength = dirEPos.m1;
-                    ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m2 - actionObject.startPos.pos.m2) * actionObject.dirSpeed));
-                    pos1["m" + 1] = pos["m" + 1] = 0;
-                    tmp1["m" + 1] = tmp["m" + 1] = 0;
+                    if(actionObject.mode == 2){
+                        dirlength = dirEPos.m1;
+                        ceycle = Math.ceil(((dirEPos.m1 - actionObject.startPos.pos.m1) * actionObject.repeateSpeed) / ((repeatEPos.m2 - actionObject.startPos.pos.m2) * actionObject.dirSpeed));
+                        pos1["m" + 1] = pos["m" + 1] = 0;
+                    }
+                    else{
+                        pos1.m1 = pos.m1;
+                        tmp1.m1 = tmp.m1;
+                    }
                 }
                 else {
-//                    if(actionObject.mode == 2){
-//                        pos["m" + 2] = (pos["m" + 2] * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3)
-//                        pos1["m" + 0] = pos["m" + 0] = (pos["m" + 2] * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
-//                    }
-                    dirlength = dirEPos.m2;
-                    ceycle = Math.ceil(((dirEPos.m2 - actionObject.startPos.pos.m2) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
-                    pos1["m" + 2] = pos["m" + 2] = 0;
-                    tmp1["m" + 2] = tmp["m" + 2] = 0;
+                    if(actionObject.mode == 2){
+                        dirlength = dirEPos.m2;
+                        ceycle = Math.ceil(((dirEPos.m2 - actionObject.startPos.pos.m2) * actionObject.repeateSpeed) / ((repeatEPos.m1 - actionObject.startPos.pos.m1) * actionObject.dirSpeed));
+                        pos1["m" + 2] = pos["m" + 2] = 0;
+                    }
+                    else{
+                        pos1.m2 = pos.m2;
+                        tmp1.m2 = tmp.m2;
+                    }
                 }
                 tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
             }
-            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, dirlength, actionObject.dirSpeed,0,false,true,10000000));
-
-            if(ceycle % 2 == 1)
-                var ceycletmp = (ceycle - 1)/2;
-            else ceycletmp = ceycle/2;
-//            for(var i = 0; i < ceycletmp; i++){
-            var add = [3280240649,3280502793,3280764937];
-            ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Ceycle")));
-            if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
-                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
-            else
-                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)+1)*1000,3,0));
-            if(actionObject.mode == 2)
+            if(actionObject.mode == 2){
+                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, dirlength, actionObject.dirSpeed,0,false,true,10000000));
+                var add = [3280240649,3280502793,3280764937];
+                ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Ceycle")));
+                if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
+                    ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
+                else
+                    ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)+1)*1000,3,0));
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                                                       [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
+                                                           [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
+            }
             else if(actionObject.mode == 6)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                                                        [{"pointName":"", "pos":tmp},
@@ -933,13 +941,14 @@ ProgramFlowPage {
 //                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
 //                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
 //            }
-            if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
-                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
-            else
-                ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)+1)*1000,3,0));
-            if(actionObject.mode == 2)
+            if(actionObject.mode == 2){
+                if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1))
+                    ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)-1)*1000,1,0));
+                else
+                    ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],(parseFloat(dirlength)+1)*1000,3,0));
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                                                       [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+                                                           [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+            }
             else if(actionObject.mode == 6)
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                                                        [{"pointName":"", "pos":tmp1},
@@ -954,8 +963,10 @@ ProgramFlowPage {
 //                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
 //                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
 //            }
-            ret.push(LocalTeach.generateJumpAction(actionObject.flag3));
-            ret.push(LocalTeach.generateFlagAction(actionObject.flag16, qsTr("Ceycle Over")));
+            if(actionObject.mode == 2){
+                ret.push(LocalTeach.generateJumpAction(actionObject.flag3));
+                ret.push(LocalTeach.generateFlagAction(actionObject.flag16, qsTr("Ceycle Over")));
+            }
             guncloseAction(ret,actionObject);
 //            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
 //                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
@@ -994,7 +1005,8 @@ ProgramFlowPage {
 //                }
 //            }
 
-//            ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+            if(actionObject.mode == 6)
+                ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         }
 
         else if(actionObject.mode == 3 || actionObject.mode == 7){
@@ -1174,16 +1186,15 @@ ProgramFlowPage {
 
 //        ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
         var zDelay = 0.2
-        if(actionObject.mode !== 2 && actionObject.mode !== 6){
-//            zDelay = 0;
+        if(actionObject.mode !== 2){
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
         }
-        if(actionObject.fixture1Switch != 4)
-            allcloseAction(ret,actionObject);
+//        if(actionObject.fixture1Switch != 4)
+        allcloseAction(ret,actionObject);
         var gunBack = 0;
         if(!actionObject.isGunBack)
-            gunBack = actionObject.startPos2
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, gunBack, actionObject.startPosSpeed2,zDelay));
+            gunBack = actionObject.startPos.pos.m2
+        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, gunBack, actionObject.startPosSpeed2,zDelay));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.rpeateAxis, actionObject.startPos0, actionObject.startPosSpeed0));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis, actionObject.startPos1, actionObject.startPosSpeed1));

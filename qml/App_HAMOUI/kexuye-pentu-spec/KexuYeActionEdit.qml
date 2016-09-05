@@ -88,7 +88,7 @@ Item {
             ret.push(LocalTeach.generatePENTUAction(
                         actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
                         actObt.startPosSpeed2, actObt.startPosSpeed3, actObt.startPosSpeed4, actObt.startPosSpeed5,
-                        actObt.repeatSpeed, actObt.repeateCount, actObt.zlength, actObt.dirAxis, actObt.dirLength, actObt.dirSpeed,
+                        actObt.repeateSpeed, actObt.repeateCount, actObt.zlength, actObt.dirAxis, actObt.dirLength, actObt.dirSpeed,
                         actObt.dirCount, actObt.point1, actObt.point2, actObt.rotate, actObt.rotateSpeed, actObt.rotateCount,
                         actObt.fixtureDelay0, actObt.fixtureDelay1, actObt.fixtureDelay2, rcID, dirCID, rotateCID,
                         actObt.fixture2Delay0, actObt.fixture2Delay1, actObt.fixture2Delay2, actObt.fixture1Switch, actObt.fixture2Switch,
@@ -216,13 +216,13 @@ Item {
         dirAxisSel.visible = mode == 8 ? false : true;
         editaction.visible = mode == 8 ? true : false;
         button_setPos1.visible = mode == 8 ? false : true;
-        pos1Axis1.visible = mode == 8 ? false : true;
-        pos1Axis2.visible = mode == 8 ? false : true;
+//        pos1Axis1.visible = mode == 8 ? false : true;
+//        pos1Axis2.visible = mode == 8 ? false : true;
         repeateSpeed.visible = mode == 8 ? false : true;
 //        repeateCount.visible = mode == 8 ? false : true;
 //        zlength.visible = mode == 8 ? false : true;
 //        dirLength.visible = mode == 8 ? false : true;
-        dirSpeed.visible = mode == 8 ? false : true;
+        dirSpeed.visible = mode == 8 || mode == 6 ? false : true;
     }
     function hidePoint(){
         if(mode == 8){
@@ -231,7 +231,13 @@ Item {
             pos2Axis1.visible = false;
             pos2Axis2.visible = false;
         }
-        else if(mode != 8)
+        else if(mode == 6){
+            pos1Axis1.visible = true;
+            pos1Axis2.visible = true;
+            pos2Axis1.visible = false;
+            pos2Axis2.visible = false;
+        }
+        else{
             if(dirAxisSel.configValue == 0){
                 pos1Axis1.visible = false;
                 pos1Axis2.visible = true;
@@ -244,6 +250,7 @@ Item {
                 pos2Axis1.visible = false;
                 pos2Axis2.visible = true;
             }
+        }
 
     }
 
@@ -286,9 +293,9 @@ Item {
                 items: ["XY", "XZ", "YZ"]
                 //                configValue: 0
                 onConfigValueChanged: {
-                    if(mode > 3 && configValue == 0 && dirAxisSel.configValue == 0)
-                        gunFollowEn.visible = true;
-                    else gunFollowEn.visible = false;
+//                    if(mode > 3 && configValue == 0 && dirAxisSel.configValue == 0)
+//                        gunFollowEn.visible = true;
+//                    else gunFollowEn.visible = false;
                     if(configValue == 0){
                         container.plane = [0, 1, 2];
                         pos1Axis1.configName = AxisDefine.axisInfos[0].name;
@@ -322,9 +329,9 @@ Item {
                 configName: qsTr("Dir Axis")
 //                items: ["X", "Y", "Z"]
                 onConfigValueChanged:{
-                    if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
-                        gunFollowEn.visible = true;
-                    else gunFollowEn.visible = false;
+//                    if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
+//                        gunFollowEn.visible = true;
+//                    else gunFollowEn.visible = false;
                     hidePoint();
                 }
             }
@@ -525,6 +532,7 @@ Item {
                 }
                 ICCheckBox{
                     id:gunFollowEn
+                    visible: false
 //                    enabled: !useEn.isChecked
                     text: qsTr("Gun Follow En")
                     onVisibleChanged: {
@@ -536,7 +544,7 @@ Item {
             Row{
                 id:pos3Container
                 spacing: 4
-                visible: mode == 2 || mode == 6
+                visible: mode == 2
                 function getPoint(){
                     var ret = {};
                     var axis1 = "m" + plane[0];
@@ -819,22 +827,52 @@ Item {
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
         isGunBack.isChecked = actionObject.isGunBack;
-        if(actionObject.mode == 2 || actionObject.mode == 6){
+        if(actionObject.mode == 2){
             pos3Container.visible = true;
             setPosName(qsTr("Repeat EPos"), qsTr("Dir EPos"));
+            dirLength.visible = false;
+            dirCount.visible = false;
         }
         else {
+            dirLength.visible = true;
+            dirCount.visible = true;
             pos3Container.visible = false;
             setPosName(qsTr("Set EPos"), qsTr("Set TPos"));
         }
         if(actionObject.mode > 3){
-            if(actionObject.plane == 0 && actionObject.dirAxis == 0)
-                gunFollowEn.visible = true;
+//            if(actionObject.plane == 0 && actionObject.dirAxis == 0)
+//                gunFollowEn.visible = true;
             zlength.visible = true;
         }
+        else zlength.visible = false;
         if(actionObject.mode == 3 || actionObject.mode == 7)
             repeateCount.visible = true;
         else repeateCount.visible = false;
+        if(actionObject.mode == 6){
+            pos1Axis1.visible = true;
+            pos1Axis2.visible = true;
+            pos2Axis1.visible = false;
+            pos2Axis2.visible = false;
+            dirLength.visible = false;
+            dirSpeed.visible = false;
+        }
+        else{
+            if(dirAxisSel.configValue == 0){
+                pos1Axis1.visible = false;
+                pos1Axis2.visible = true;
+                pos2Axis1.visible = true;
+                pos2Axis2.visible = false;
+            }
+            else {
+                pos1Axis1.visible = true;
+                pos1Axis2.visible = false;
+                pos2Axis1.visible = false;
+                pos2Axis2.visible = true;
+            }
+            if(actionObject.mode != 2)
+                dirLength.visible = true;
+            dirSpeed.visible = true;
+        }
     }
 
     Component.onCompleted: {

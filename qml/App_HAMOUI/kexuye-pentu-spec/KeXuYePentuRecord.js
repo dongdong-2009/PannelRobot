@@ -64,10 +64,12 @@ function KeXuyePentuRecord(){
     };
 
     this.copyRecord = function(newName, originName){
-        if(this.exist(name)) return false;
         var db = getDatabase();
         db.transaction(function(tx){
-            tx.executeSql(icStrformat("CREATE TABLE {0} AS SELECT * FROM {1}", newName, originName));
+            var rs = tx.executeSql(icStrformat("SELECT * FROM kxyrecord WHERE name = '{0}'", originName));
+            if(rs.rows.length > 0){
+                tx.executeSql(icStrformat("INSERT INTO kxyrecord VALUES('{0}' , '{1}', '{2}')", newName, rs.rows.item(0).value, rs.rows.item(0).lineInfo));
+            }
         });
     }
 

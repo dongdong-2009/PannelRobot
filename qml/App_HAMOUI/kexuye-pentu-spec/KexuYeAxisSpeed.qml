@@ -69,6 +69,7 @@ Item {
             property int posNameWidth: 60
             spacing: 10
             Row{
+                spacing: 20
                 Column{
                     spacing: 4
                     Row{
@@ -164,6 +165,7 @@ Item {
                 }
                 Column{
                     spacing: 4
+                    visible: false
                     Row{
                         spacing: 10
                         Text {
@@ -338,14 +340,17 @@ Item {
             ICComboBoxConfigEdit{
                 id:fixtureSwitch
                 z: 3
-                configName: qsTr("FixSwitch")
+                configName: qsTr("FixSwitch1")
                 items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
             }
             ICComboBoxConfigEdit{
                 id:fixture1Switch
                 z: 2
-                configName: qsTr("FixSwitch")
+                visible: false
+                configName: qsTr("FixSwitch2")
+                popupHeight: 100
                 items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
+
             }
             ICConfigEdit{
                 id:slope
@@ -405,11 +410,11 @@ Item {
         delay0.configValue = 0;
         delay1.configValue = 0;
         delay2.configValue = 0.03;
-        fixtureSwitch.configValue = 2;
+        fixtureSwitch.configValue = 4;
         delay20.configValue = 0;
         delay21.configValue = 0;
         delay22.configValue = 0.03;
-        fixture1Switch.configValue = 2;
+        fixture1Switch.configValue = 3;
         m0Speed.configValue = 20;
         m1Speed.configValue = 20;
         m2Speed.configValue = 20;
@@ -422,9 +427,9 @@ Item {
         use0.isChecked = true;
         use1.isChecked = true;
         use2.isChecked = true;
-        use3.isChecked = true;
-        use4.isChecked = true;
-        use5.isChecked = true;
+        use3.isChecked = false;
+        use4.isChecked = false;
+        use5.isChecked = false;
 
 
     }

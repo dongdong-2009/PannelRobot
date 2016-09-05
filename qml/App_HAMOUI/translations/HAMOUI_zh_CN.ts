@@ -3930,6 +3930,14 @@
         <source>Use</source>
         <translation type="unfinished">使用</translation>
     </message>
+    <message>
+        <source>FixSwitch1</source>
+        <translation>喷枪1闭合</translation>
+    </message>
+    <message>
+        <source>FixSwitch2</source>
+        <translation>喷枪2闭合</translation>
+    </message>
 </context>
 <context>
     <name>Keymap</name>
@@ -5203,6 +5211,14 @@ please chose!</source>
     <message>
         <source>Gun Lock</source>
         <translation>锁枪</translation>
+    </message>
+    <message>
+        <source>Gun1 Lock</source>
+        <translation>锁枪1</translation>
+    </message>
+    <message>
+        <source>Gun2 Lock</source>
+        <translation>锁枪2</translation>
     </message>
 </context>
 <context>
@@ -6715,6 +6731,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Normal</source>
         <translation>一般</translation>
+    </message>
+    <message>
+        <source>Stop Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GoOn Output</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

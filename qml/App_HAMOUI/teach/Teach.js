@@ -1221,6 +1221,18 @@ var cycle8 = function(){
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag9 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag10 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag11 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag12 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag13 = f.flagID;
     var ret = [];
 //      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
     ret.push(generateConditionAction(0, 10, 1, 0, 0,flag1));
@@ -1250,6 +1262,28 @@ var cycle8 = function(){
     ret.push(generateDataAction(98304,0,2563));
     ret.push(generateFlagAction(flag5, qsTr("Return End")));
 
+
+//    ret.push(generateConditionAction(0, 23, 1, 1, 0,flag10));
+    ret.push(generateConditionAction(4, 13, 1, 1, 0,flag10));
+    ret.push(generateConditionAction(4, 13, 1, 0, 0,flag11));
+    ret.push(generateFlagAction(flag10, qsTr("Stop Output")));
+    ret.push(generateAxisServoAction(actions.F_CMD_SYNC_START));
+    ret.push(generateOutputAction(4,0,0,4,0));     //close
+    ret.push(generateOutputAction(5,0,0,5,0));     //close
+    ret.push(generateOutputAction(6,0,0,6,0));     //close
+    ret.push(generateAxisServoAction(actions.F_CMD_SYNC_END));
+    ret.push(generateFlagAction(flag11, qsTr("GoOn Output")));
+
+    ret.push(generateConditionAction(4, 14, 1, 1, 0,flag12));
+    ret.push(generateConditionAction(4, 14, 1, 0, 0,flag13));
+    ret.push(generateFlagAction(flag12, qsTr("Stop Output")));
+    ret.push(generateAxisServoAction(actions.F_CMD_SYNC_START));
+    ret.push(generateOutputAction(7,0,0,7,0));     //close
+    ret.push(generateOutputAction(8,0,0,8,0));     //close
+    ret.push(generateOutputAction(9,0,0,9,0));     //close
+    ret.push(generateAxisServoAction(actions.F_CMD_SYNC_END));
+    ret.push(generateFlagAction(flag13, qsTr("GoOn Output")));
+
     ret.push(generateConditionAction(4, 15, 1, 0, 0,flag6));
     ret.push(generateOutputAction(15,4,0,0,0));     //m0 close
     ret.push(generateJumpAction(flag7));
@@ -1262,6 +1296,7 @@ var cycle8 = function(){
 
     ret.push(generateMemCmpJumpAction(flag9,61476905,CMD_CONFIG,5,0));
     ret.push(generateFlagAction(flag7, qsTr("Close Out Put")));
+    ret.push(generateAxisServoAction(actions.F_CMD_SYNC_START));
     ret.push(generateOutputAction(4,0,0,4,0));     //close
     ret.push(generateOutputAction(5,0,0,5,0));     //close
     ret.push(generateOutputAction(6,0,0,6,0));     //close
@@ -1270,6 +1305,7 @@ var cycle8 = function(){
     ret.push(generateOutputAction(9,0,0,9,0));     //close
     ret.push(generateOutputAction(10,0,0,10,0));     //close
     ret.push(generateOutputAction(11,0,0,11,0));     //close
+    ret.push(generateAxisServoAction(actions.F_CMD_SYNC_END));
 //    ret.push(generateOutputAction(12,0,0,12,0));     //close
 //    ret.push(generateOutputAction(16,0,0,16,0));     //close
 //    ret.push(generateOutputAction(17,0,0,17,0));     //close

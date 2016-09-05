@@ -779,6 +779,7 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    popupHeight: 350
                     visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
@@ -866,6 +867,7 @@ Rectangle {
                     text: qsTr("Del Module")
                     height: editing.height
                     onButtonClicked: {
+                        hasModify = false;
                         var toDelID = Utils.getValueFromBrackets(moduleSel.currentText());
                         Teach.functionManager.delFunction(toDelID);
                         var ci = moduleSel.currentIndex;

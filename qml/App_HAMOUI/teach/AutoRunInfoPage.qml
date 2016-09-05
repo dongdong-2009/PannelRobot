@@ -125,6 +125,48 @@ MouseArea{
                 }
             }
         }
+
+        ICButton{
+            id:analogDetailsBtn
+            visible: false
+            text: qsTr("Analog >>")
+            x:parent.width - width
+            anchors.top:normalContainer.bottom
+            color: "green"
+            onButtonClicked: {
+                if(analogDetails.visible)
+                    toHideAnalogDetails.start();
+                else
+                    toShowAnalogDetails.start();
+            }
+
+            SequentialAnimation{
+                id:toShowAnalogDetails
+                PropertyAction{target: analogDetails; property: "visible"; value: true}
+                PropertyAnimation{target:analogDetailsBtn; property: "x"; to: analogDetailsBtn.x + analogDetails.width}
+                PropertyAction{target: analogDetailsBtn; property: "text"; value: qsTr("Counter <<")}
+                PropertyAction{target:analogDetailsBtn; property: "bgColor"; value: "#A0A0F0"}
+            }
+            SequentialAnimation{
+                id:toHideAnalogDetails
+                PropertyAnimation{target:analogDetailsBtn; property: "x"; to: analogDetailsBtn.x - analogDetails.width}
+                PropertyAction{target: analogDetails; property: "visible"; value: false}
+                PropertyAction{target: analogDetailsBtn; property: "text"; value: qsTr("Counter >>")}
+                PropertyAction{target:analogDetailsBtn; property: "bgColor"; value: "green"}
+            }
+
+            Rectangle{
+                id:analogDetails
+                anchors.right: analogDetailsBtn.left
+                border.color: "gray"
+                border.width: 1
+                width: 460
+                height: container.height
+                color: "#A0A0F0"
+                y:-analogDetailsBtn.y
+                visible: false
+            }
+        }
     }
     Timer{
         id:refreshTimer

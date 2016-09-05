@@ -36,7 +36,7 @@ Item {
                     if(speedRPStart.isChecked) speedMode = 2;
                     ret.push(Teach.generateAxisServoAction(editor.servoAction,
                                                            i,
-                                                           axisActionInfo.pos,
+                                                           relPoint.isChecked ? axisActionInfo.point.pos["m" + i] : axisActionInfo.pos,
                                                            axisActionInfo.speed,
                                                            axisActionInfo.delay,
                                                            false,
@@ -49,7 +49,9 @@ Item {
                                                            signalStop.configValue,
                                                            fastStop.isChecked,
                                                            speedMode,
-                                                           stop.isChecked));
+                                                           stop.isChecked,
+                                                           rel.isChecked,
+                                                           relPoint.isChecked ? axisActionInfo.point : null));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -93,12 +95,16 @@ Item {
                 id:isSyncBox
                 text: qsTr("Sync");
             }
+            ICCheckBox{
+                id:relPoint
+                text: qsTr("Rel Point")
+            }
         }
 
         Flow{
             id:content
-//            columns: 2
-//            rows: 5
+            //            columns: 2
+            //            rows: 5
             height: 165
             width: 500
             spacing: 10
@@ -110,6 +116,8 @@ Item {
                 psName: [qsTr("X1 ON"), qsTr("X1 OFF")]
                 axisDefine: pData.axisDefine.s1Axis
                 rangeAddr: "s_rw_0_32_3_1000"
+                mode: relPoint.isChecked ? "relPointMode" : ""
+                z:1
             }
 
             AxisActionEditorAxisComponent{
@@ -118,6 +126,9 @@ Item {
                 psName: [qsTr("Y1 ON"), qsTr("Y1 OFF")]
                 axisDefine: pData.axisDefine.s2Axis
                 rangeAddr: "s_rw_0_32_3_1001"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:2
             }
             AxisActionEditorAxisComponent{
                 id:m2Axis
@@ -125,6 +136,9 @@ Item {
                 psName: [qsTr("Z ON"), qsTr("Z OFF")]
                 axisDefine: pData.axisDefine.s3Axis
                 rangeAddr: "s_rw_0_32_3_1002"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:3
             }
             AxisActionEditorAxisComponent{
                 id:m3Axis
@@ -132,6 +146,9 @@ Item {
                 psName: [qsTr("X2 ON"), qsTr("X2 OFF")]
                 axisDefine: pData.axisDefine.s4Axis
                 rangeAddr: "s_rw_0_32_3_1003"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:4
             }
             AxisActionEditorAxisComponent{
                 id:m4Axis
@@ -139,6 +156,9 @@ Item {
                 psName: [qsTr("Y2 ON"), qsTr("Y2 OFF")]
                 axisDefine: pData.axisDefine.s5Axis
                 rangeAddr: "s_rw_0_32_3_1004"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:5
             }
             AxisActionEditorAxisComponent{
                 id:m5Axis
@@ -146,6 +166,9 @@ Item {
                 psName: [qsTr("A ON"), qsTr("A OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:6
             }
             AxisActionEditorAxisComponent{
                 id:m6Axis
@@ -153,6 +176,9 @@ Item {
                 psName: [qsTr("B ON"), qsTr("B OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1006"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:7
             }
             AxisActionEditorAxisComponent{
                 id:m7Axis
@@ -160,6 +186,9 @@ Item {
                 psName: [qsTr("C ON"), qsTr("C OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1007"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:8
             }
             Row{
                 spacing: 6
@@ -192,8 +221,8 @@ Item {
                     text: qsTr("Fast Stop")
                 }
             }
-            ICFlickable{
-                width: speedControlGroup.width
+            Rectangle{
+                width: 340
                 height: {
                     var ac = panelRobotController.getConfigValue("s_rw_16_6_0_184");
                     var ret;
@@ -201,67 +230,81 @@ Item {
                     else ret =  parent.height - (ac - 4) * (m1Axis.height + parent.spacing);
                     return ret;
                 }
-
-                contentWidth: width
-                contentHeight:advanceContent.height + 5
-                clip: true
-                Column{
-                    id:advanceContent
-                    spacing: 4
-                    ICCheckableLineEdit{
-                        id:earlyEnd
-                        configName: qsTr("Early End Pos")
-                        configValue: "0"
-                        inputWidth: 60
-                        configNameWidth: 140
-                        enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                    }
-                    Row{
+//                border.width: 1
+//                border.color: "black"
+                ICFlickable{
+                    width: parent.width
+                    height: parent.height
+                    contentWidth: width
+                    contentHeight:advanceContent.height + 5
+                    clip: true
+                    Column{
+                        id:advanceContent
                         spacing: 4
                         ICCheckableLineEdit{
-                            id:earlyEndSpeedPos
-                            configName: qsTr("ESD Pos")
+                            id:earlyEnd
+                            configName: qsTr("Early End Pos")
                             configValue: "0"
                             inputWidth: 60
-                            configNameWidth: earlyEnd.configNameWidth
+                            configNameWidth: 140
+                            enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                        }
+                        Row{
+                            spacing: 4
+                            ICCheckableLineEdit{
+                                id:earlyEndSpeedPos
+                                configName: qsTr("ESD Pos")
+                                configValue: "0"
+                                inputWidth: 60
+                                configNameWidth: earlyEnd.configNameWidth
+                                enabled: earlyEnd.enabled
+                            }
+
+                            ICConfigEdit{
+                                id:earlyEndSpeed
+                                configName: qsTr("ESD")
+                                unit: qsTr("%")
+                                configAddr: "s_rw_0_32_1_1200"
+                                enabled: earlyEndSpeedPos.isChecked
+                                configValue: "10.0"
+                                inputWidth: 60
+
+                            }
+                        }
+                        ICCheckBox{
+                            id:rel
+                            text: qsTr("Rel")
                             enabled: earlyEnd.enabled
                         }
 
-                        ICConfigEdit{
-                            id:earlyEndSpeed
-                            configName: qsTr("ESD")
-                            unit: qsTr("%")
-                            configAddr: "s_rw_0_32_1_1200"
-                            enabled: earlyEndSpeedPos.isChecked
-                            configValue: "10.0"
-                            inputWidth: 60
+                        ICButtonGroup{
+                            id:speedControlGroup
+                            spacing: 4
+                            layoutMode: 1
 
+                            ICCheckBox{
+                                id:speedPPStart
+                                text: qsTr("Speed PP Start")
+                                enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
+                            }
+                            ICCheckBox{
+                                id:speedRPStart
+                                text: qsTr("Speed RP Start")
+                                enabled: speedPPStart.enabled
+                            }
+
+                            ICCheckBox{
+                                id:stop
+                                text:qsTr("Stop")
+                                enabled: speedPPStart.enabled
+                            }
                         }
                     }
-
-                    ICButtonGroup{
-                        id:speedControlGroup
-                        spacing: 10
-
-                        ICCheckBox{
-                            id:speedPPStart
-                            text: qsTr("Speed PP Start")
-                            enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked)
-                        }
-                        ICCheckBox{
-                            id:speedRPStart
-                            text: qsTr("Speed RP Start")
-                            enabled: speedPPStart.enabled
-                        }
-
-                        ICCheckBox{
-                            id:stop
-                            text:qsTr("Stop")
-                            enabled: speedPPStart.enabled
-                        }
+                    Component.onCompleted: {
+                        isshowhint = true;
                     }
+
                 }
-
             }
         }
 
@@ -291,11 +334,13 @@ Item {
         axis.push({"axisItem":m3Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS4_1, "psOFF":actions.ACT_PS4_2});
         axis.push({"axisItem":m4Axis, "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS5_1, "psOFF":actions.ACT_PS5_2});
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS6_1, "psOFF":actions.ACT_PS6_2});
-        //        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
-        //        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
+        axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
+        axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+        Teach.definedPoints.registerPointsMonitor(container);
+        onPointAdded(null);
     }
     function onAxisDefinesChanged(){
         m0Axis.visible = AxisDefine.axisInfos[0].visiable;
@@ -306,5 +351,27 @@ Item {
         m5Axis.visible = AxisDefine.axisInfos[5].visiable;
         m6Axis.visible = AxisDefine.axisInfos[6].visiable;
         m7Axis.visible = AxisDefine.axisInfos[7].visiable;
+    }
+
+    function onPointAdded(point){
+        var pNL = Teach.definedPoints.pointNameList();
+        var type;
+        var fPNs = [];
+        for(var i = 0; i < pNL.length; ++i){
+            type = pNL[i][0];
+            if(type === Teach.DefinePoints.kPT_Free){
+                fPNs.push(pNL[i]);
+            }
+        }
+        m0Axis.relPoints = fPNs;
+
+    }
+
+    function onPointDeleted(point){
+        onPointAdded(point);
+    }
+
+    function onPointsCleared(){
+        onPointAdded(null);
     }
 }

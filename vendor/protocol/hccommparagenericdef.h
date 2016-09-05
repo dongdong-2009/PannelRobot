@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.0"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.4"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.0"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.4"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -107,7 +107,8 @@ typedef enum _ICAddr
     ICAddr_System_Retain_28 = 28,//< 原点位置选择：0：取消回原点；1：确认每个轴都已经达到原点附近；2：确认上一次关机前按下急停;3:重新找原点
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
-                                 //< 后面带6轴坐标值
+                                 //< 后面带6轴坐标值（已经废除）
+    ICAddr_System_Retain_31 = 31,//< 单轴手动速度独立设定切换（0：默认使用全局速度;1:使用单轴固定手动速度）：手动模式有效
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_41= 41,//<  // 自定义轴动作2 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_42= 42,//<  // 自定义轴动作3 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
@@ -608,33 +609,6 @@ typedef enum
     CMD_JOG_PR     = 0x0306,  // 直角坐标系姿势轴，R轴正向点动
     CMD_JOG_PT     = 0x0307,  // 直角坐标系姿势轴，T轴正向点动
 
-    /*手动*/
-    CMD_LINE_TO_START_POINT= 0x0310,  // 直线运动到起点坐标
-    CMD_LINE_TO_END_POINT,  // 直线运动到终点坐标
-    CMD_JOINT_TO_START_POINT,          // 关节运动到起点坐标
-    CMD_JOINT_TO_END_POINT,            // 关节运动到终点坐标
-    CMD_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
-    CMD_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
-    CMD_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
-    CMD_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
-    /*教导*/
-    CMD_TEACH_LINE_TO_START_POINT,           // 直线运动到起点坐标
-    CMD_TEACH_LINE_TO_END_POINT,             // 直线运动到终点坐标
-    CMD_TEACH_JOINT_TO_START_POINT,          // 关节运动到起点坐标
-    CMD_TEACH_JOINT_TO_END_POINT,            // 关节运动到终点坐标
-    CMD_TEACH_RELATIVE_LINE_TO_START_POINT,  // 相对直线运动正方向
-    CMD_TEACH_RELATIVE_LINE_TO_END_POINT,    // 相对直线运动反方向
-    CMD_TEACH_RELATIVE_JOINT_TO_START_POINT, // 相对关节运动正方向
-    CMD_TEACH_RELATIVE_JOINT_TO_END_POINT,   // 相对关节运动反方向
-    /*手动*/
-    CMD_ARC_TO_START_POINT= 0x0330,  // 弧线运动往终点坐标方向
-    CMD_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
-    /*教导*/
-    CMD_TEACH_ARC_TO_START_POINT,  // 弧线运动往终点坐标方向
-    CMD_TEACH_ARC_TO_END_POINT,  // 弧线运动往终点坐标反方向
-    CMD_ROUTE_STOP = 0x033F,  // 轨迹运动停止
-    CMD_GET_COORDINATE= 0x0340,  // 记录当前坐标
-
     CMD_TEST_CLEAR      = 0x034F,  // 清除当前所有测试脉冲
     CMD_TEST_JOG_PX     = 0x0350,  // 测试X轴正向运动
     CMD_TEST_JOG_PY     = 0x0351,  // 测试Y轴正向运动
@@ -785,6 +759,12 @@ typedef enum
      * 输出延时  当类型为8～10时候不用
      */
     F_CMD_IO_OUTPUT = 200,
+    /**************************************************************************/
+    /* 模拟量输出模块控制（485通讯控制）
+     * id:通道范围：0～5（所采用的模块有6路输出）
+     * output:电压范围：0.0～10.0V；0到10V电压输出
+     */
+    F_CMD_ANALOG_CONTROL=250,
     /*************************************************************************
      *
      *stack：
@@ -907,6 +887,27 @@ typedef enum
      */
     F_CMD_CONTRAIL_FITTING_CMD = 700,//< 轨迹拟合教导命令
     /***************************************************************************/
+    /*
+     *  id: 轴ID
+     *  pos1:起始位置
+     *  pos2:终止位置
+     *  speed:速度
+     *  num:次数
+     */
+    F_CMD_PENQIANG_CMD = 1000,//< 喷涂摆枪命令
+    /***************************************************************************/
+    /*
+     */
+    F_CMD_PENQIANG_1 = 2000,//< 喷涂指令1 直线U形
+    F_CMD_PENQIANG_2       ,//< 喷涂指令2 直线Z形
+    F_CMD_PENQIANG_3       ,//< 喷涂指令3 直线锯齿形
+    F_CMD_PENQIANG_4       ,//< 喷涂指令4 直线寸动形
+    F_CMD_PENQIANG_5       ,//< 喷涂指令5 曲线U形
+    F_CMD_PENQIANG_6       ,//< 喷涂指令6 曲线Z形
+    F_CMD_PENQIANG_7       ,//< 喷涂指令7 曲线锯齿形
+    F_CMD_PENQIANG_8       ,//< 喷涂指令8 曲线寸动形
+    F_CMD_PENQIANG_9       ,//< 喷涂指令9 DIY
+    /***************************************************************************/
 
     F_CMD_MEM_CMD = 53000,
 
@@ -960,7 +961,8 @@ typedef enum
     ALARM_IO_CONNET4_ERR, //<名字：与IO板4通讯失败
     ALARM_PROGRAM_CHANGE_ERR, //<名字：手控和主机教导程序不一致
     ALARM_FPGA_ERR,//<名字：FPGA报警，请断电重启！！！！
-
+    ALARM_ANALOG_CRC_ERR, //<名字：模拟量输出模块输出校验错误
+    ALARM_ANALOG_OVERTIME_ERR, //<名字：模拟量输出模块读超时
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -1094,7 +1096,7 @@ typedef enum
     ALARM_AXIS1_ZPULSER_ERR = 510,//<名字：轴1 z脉冲错误
     ALARM_AXIS2_ZPULSER_ERR ,//<名字：轴2 z脉冲错误
     ALARM_AXIS3_ZPULSER_ERR ,//<名字：轴3 z脉冲错误
-    NO_ZPULSER ,//<名字：轴4 z脉冲错误
+    ALARM_AXIS4_ZPULSER_ERR ,//<名字：轴4 z脉冲错误
     ALARM_AXIS5_ZPULSER_ERR ,//<名字：轴5 z脉冲错误
     ALARM_AXIS6_ZPULSER_ERR ,//<名字：轴6 z脉冲错误
     ALARM_AXIS7_ZPULSER_ERR ,//<名字：轴7 z脉冲错误
@@ -1109,14 +1111,16 @@ typedef enum
     ALARM_AXIS7_NO_ZPULSER ,//<名字：轴7无z脉冲
     ALARM_AXIS8_NO_ZPULSER ,//<名字：轴8无z脉冲
 
-	ALARM_AXIS1_ORIGIN_DEVIATION = 530,//<名字：轴1原点偏移
-	ALARM_AXIS2_ORIGIN_DEVIATION,//<名字：轴2原点偏移
-	ALARM_AXIS3_ORIGIN_DEVIATION,//<名字：轴3原点偏移
-	ALARM_AXIS4_ORIGIN_DEVIATION,//<名字：轴4原点偏移
-	ALARM_AXIS5_ORIGIN_DEVIATION,//<名字：轴5原点偏移
-	ALARM_AXIS6_ORIGIN_DEVIATION,//<名字：轴6原点偏移
-	ALARM_AXIS7_ORIGIN_DEVIATION,//<名字：轴7原点偏移
-	ALARM_AXIS8_ORIGIN_DEVIATION,//<名字：轴8原点偏移
+    ALARM_AXIS1_ORIGIN_DEVIATION = 530,//<名字：轴1原点偏移
+    ALARM_AXIS2_ORIGIN_DEVIATION,//<名字：轴2原点偏移
+    ALARM_AXIS3_ORIGIN_DEVIATION,//<名字：轴3原点偏移
+    ALARM_AXIS4_ORIGIN_DEVIATION,//<名字：轴4原点偏移
+    ALARM_AXIS5_ORIGIN_DEVIATION,//<名字：轴5原点偏移
+    ALARM_AXIS6_ORIGIN_DEVIATION,//<名字：轴6原点偏移
+    ALARM_AXIS7_ORIGIN_DEVIATION,//<名字：轴7原点偏移
+    ALARM_AXIS8_ORIGIN_DEVIATION,//<名字：轴8原点偏移
+
+
 
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583
@@ -1135,6 +1139,7 @@ typedef enum
     Inovancwe,       //<名字：汇川伺服
     ASDA,            //<名字：台达伺服
     panasonic,       //<名字：松下伺服
+    hcqs4,           //<名字：华成伺服
 }SERVO_VENDER;
 typedef enum
 {
@@ -1201,7 +1206,9 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t read_type:4;      //<类型：系统；名字：绝对值读取方式；精度：0;单位：；
     uint32_t origin_speed:6;   //<类型：系统；名字：归原点速度设定；精度：0;单位：%；
     uint32_t dir:1;            //<类型：系统；名字：电机方向设定；精度：0;单位：%；
-    uint32_t res:13;           //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t sacc1:6;          //<类型：系统；名字：S加速1；精度：0;单位：；
+    uint32_t sacc2:6;          //<类型：系统；名字：S加速2；精度：0;单位：；
+    uint32_t res:1;            //<类型：系统；名字：预留；精度：0;单位：；
     uint32_t limit_p:8;        //<类型：系统；名字：正向极限输入；精度：0;单位：；
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
@@ -1210,10 +1217,12 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t limit_n_dir:1;    //<类型：系统；名字：负极限输入方向；精度：0;单位：；
     uint32_t origin_dir:1;     //<类型：系统；名字：原点方向选择；精度：0;单位：；
     uint32_t notuse:1;         //<类型：系统；名字：不使用伺服；精度：0;单位：；
-    uint16_t reserve2;         //<类型：系统；名字：预留；精度：0;单位：；
-    uint16_t max_speed;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
-    uint16_t min_acc_time;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；
-    uint16_t sratio;           //<类型：系统；名字：二次加速时间比例；精度：3;单位：；
+    uint32_t sdec1:6;          //<类型：系统；名字：S减速1；精度：0;单位：；
+    uint32_t sdec2:6;          //<类型：系统；名字：S减速2；精度：0;单位：；
+    uint32_t reserve2:4;       //<类型：系统；名字：预留；精度：0;单位：；
+    uint32_t max_speed:16;        //<类型：系统；名字：最高转速RPM；精度：1;单位：rpm；
+    uint32_t min_acc_time:16;     //<类型：系统；名字：最小加速时间毫秒；精度：3;单位：s；
+    uint32_t sratio:16;           //<类型：系统；名字：二次加速时间比例；精度：3;单位：；
 }Axis_Config0;
 
 typedef struct {
@@ -1439,8 +1448,12 @@ typedef struct {
   //    uint16_t timer_target[40];  //<类型:系统;目标定时时间 - 88-127 - 单位-10毫秒
   //    uint32_t counter_current[16];  //<类型:系统;当前计数值 - 128-159
 
-  uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
-  uint32_t Reserve2[27];   //<类型:系统;名字:当前定时时间; 单位:ms
+    uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
+    uint32_t single_s; //<类型：系统；名字：手动单轴速度设定；精度：0;单位：；
+    uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：1;单位：；
+    uint32_t  analog_use; //<类型：系统；名字：模拟量模块使用；精度：0;单位：；
+    uint32_t  analog_set[6]; //<类型：模号；名字：模拟量设定；精度：1;单位：；
+  uint32_t Reserve2[18];   //<类型:系统;名字:当前定时时间; 单位:ms
   uint32_t Reserve3[20];   //<类型:系统;名字:目标定时时间; 单位:ms
   uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
   uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms

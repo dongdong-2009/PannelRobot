@@ -269,6 +269,11 @@ Item {
                 unit: qsTr("m/s")
                 configAddr: "s_rw_0_16_3_167"
             }
+            ICCheckBoxEdit{
+                id:isAnalogEn
+                configAddr: "s_rw_0_32_0_213"
+                configName: qsTr("Analog En")
+            }
 
         }
     }

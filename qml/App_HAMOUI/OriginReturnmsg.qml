@@ -13,8 +13,9 @@ MouseArea{
     function showForOrigin(){
         hinttext.text = qsTr("please press startup button to origin");
         if(!visible){
-            originMode.visible = true;
+            originMode.visible = false;
             visible = true;
+            panelRobotController.modifyConfigValue(28, 3);
         }
     }
 

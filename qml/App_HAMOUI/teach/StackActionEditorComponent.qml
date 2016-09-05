@@ -35,6 +35,7 @@ Item {
     property alias offsetY: y_offset.configValue
     property alias offsetZ: z_offset.configValue
     property variant dataSource: []
+    property alias runSeq:runSeq.configValue
 
     property bool isCustomDataSource: dataSourceSel.configValue == 0
 
@@ -341,14 +342,28 @@ Item {
             }
         }
 
-        ICComboBoxConfigEdit{
-            id:counterSel
-            popupMode: dataSourceSel.visible ? 0 : 1
-            configName: qsTr("Counter")
-            inputWidth: 300
-            popupHeight: dataSourceSel.visible ? 80 : 150
+        Row{
+            spacing: 6
             z:100
-            visible: mode != 1
+            ICComboBoxConfigEdit{
+                id:counterSel
+                popupMode: dataSourceSel.visible ? 0 : 1
+                configName: qsTr("Counter")
+                inputWidth: 300
+                popupHeight: dataSourceSel.visible ? 80 : 150
+                visible: mode != 1
+            }
+
+            ICComboBoxConfigEdit{
+                id:runSeq
+                popupMode: counterSel.popupMode
+                configName: qsTr("Run Seq")
+                inputWidth: 150
+                popupHeight: counterSel.popupHeight
+                visible: mode != 1
+                items:[qsTr("FinalX"), qsTr("FinalY"), qsTr("FinalZ"), qsTr("Run Together")]
+                configValue: 3
+            }
         }
     }
 

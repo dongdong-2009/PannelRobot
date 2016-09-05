@@ -11,6 +11,7 @@ Row{
     property int editorWidth: 80
     property alias rangeAddr: pos.bindConfig
     property alias angle: pos.text
+    property alias popupMode: ps.popupMode
 
     function getAxisActionInfo(){
         if(!box.isChecked) return null;
@@ -51,6 +52,7 @@ Row{
         width: editorWidth
         visible: true
         currentIndex: 0
+        popupMode: 1
     }
     ICLineEdit{
         id:speed

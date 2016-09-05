@@ -294,6 +294,9 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
+
+    Q_INVOKABLE QString readRecord(const QString& name) const;
+
     Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)
@@ -304,7 +307,7 @@ public:
         if(ret)
         {
             ICRobotVirtualhost::InitMachineConfig(host_,mold->BareMachineConfigs());
-            ICAppSettings as;
+            ICSuperSettings as;
             as.SetCurrentSystemConfig(name);
 
             emit moldChanged();
@@ -377,7 +380,7 @@ public:
 
         return subProgram(which);
     }
-    Q_INVOKABLE QString stacks() const { return ICRobotMold::CurrentMold()->Stacks();}
+    Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
     Q_INVOKABLE QString localUIDirs();
@@ -574,7 +577,8 @@ public:
                                       const QString& counters,
                                       const QString& variables,
                                       const QString &functions,
-                                      int channel = 10);
+                                      int channel = 10,
+                                      bool sendKeyNow = true);
 
 
     Q_INVOKABLE QString checkProgram(const QString& program,
@@ -763,6 +767,23 @@ public:
         return ca->ToString();
 
     }
+    Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
+
+    Q_INVOKABLE int registerUseTime(const QString& fc, const QString& mC, const QString& rcCode);
+    Q_INVOKABLE QString generateMachineCode() const;
+    Q_INVOKABLE int restUseTime() const;
+    Q_INVOKABLE void setRestUseTime(int hour);
+    Q_INVOKABLE bool isTryTimeOver() const;
+
+    Q_INVOKABLE QString factoryCode() const
+    {
+        return ICSuperSettings().FactoryCode();
+    }
+
+    Q_INVOKABLE void setFactoryCode(const QString& fc)
+    {
+        ICSuperSettings().SetFactoryCode(fc);
+    }
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
@@ -796,6 +817,7 @@ signals:
     void sendingContinuousData();
     void sentContinuousData(int);
     void needToInitHost();
+    void tryTimeOver();
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

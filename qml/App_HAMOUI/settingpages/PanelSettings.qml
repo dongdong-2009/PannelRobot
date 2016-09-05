@@ -49,6 +49,13 @@ Item {
             enabled: false
         }
         CatalogButton{
+            id:registerMenuBtn
+            text: qsTr("Register")
+            icon: "../images/settings_register.png"
+            enabled: true
+        }
+
+        CatalogButton{
             id:maintainMenuBtn
             text: qsTr("Maintain")
             icon: "../images/settings_maintain.png"
@@ -84,6 +91,7 @@ Item {
         configsContainer.addNav(picSettingMenuBtn, Qt.createComponent('PictureSettings.qml'));
         configsContainer.addNav(usermanegement, Qt.createComponent('UsermanagementPage.qml'));
         configsContainer.addNav(networkMenuBtn, Qt.createComponent('NetworkSettings.qml'));
+        configsContainer.addNav(registerMenuBtn, Qt.createComponent('RegisterUseTimeSettings.qml'));
         ShareData.UserInfo.registUserChangeEvent(myitem);
 
     }

@@ -7,6 +7,8 @@ Qt.include("../configs/IODefines.js")
 Qt.include("../configs/AlarmInfo.js")
 Qt.include("../../utils/utils.js")
 
+var customActions = {};
+
 var cmdStrs = [">",
                ">=",
                "&lt;",
@@ -21,7 +23,7 @@ var DefinePoints = {
     kPT_Locus: "L",
     kPT_Free:"F",
     kPT_Offset:"D",
-    createNew: function(){        
+    createNew: function(){
         var definePoints = {};
         definePoints.pointsMonitors = [];
         definePoints.definedPoints = [];
@@ -81,7 +83,7 @@ var DefinePoints = {
             var t = type || DefinePoints.kPT_Free
             name = t + "P" + pID + ":" + name;
             var iPoint = definePoints.createPointObject(pID, name, point);
-//            definePoints.definedPoints.splice(pID, 0, iPoint);
+            //            definePoints.definedPoints.splice(pID, 0, iPoint);
             definePoints.pushPoint(pID, iPoint);
             definePoints.informPointAdded(iPoint);
             return iPoint;
@@ -95,7 +97,7 @@ var DefinePoints = {
                     break;
                 }
             }
-//            return definePoints.definedPoints;
+            //            return definePoints.definedPoints;
         }
 
         definePoints.deletePoint = function(pointID){
@@ -106,7 +108,7 @@ var DefinePoints = {
                     definePoints.informPointDeleted(ps[i]);
                 }
             }
-//            return definePoints.definedPoints;
+            //            return definePoints.definedPoints;
         }
 
         //{"m0":123, "m1":}
@@ -228,7 +230,11 @@ var actionTypes = {
 
 var stackTypes = {
     "kST_Normal":0,
-    "kST_Box":1
+    "kST_Box":1,
+    "kST_DataSource":2,
+    "kST_DataSourceIgnoreZ":3,
+    "kST_VisionCmp":4,
+    "kST_VisionPosAndCmp":5
 };
 
 
@@ -316,7 +322,7 @@ var flagsDefine = {
 function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
                    space0, space1, space2, count0, count1, count2,
                    sequence, dir0, dir1, dir2, doesBindingCounter, counterID ,
-                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn){
+                   isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, dataSourceID, isZWithYEn, runSeq){
     this.m0pos = m0pos || 0;
     this.m1pos = m1pos || 0;
     this.m2pos = m2pos || 0;
@@ -342,6 +348,7 @@ function StackItem(m0pos, m1pos, m2pos, m3pos, m4pos, m5pos,
     this.offsetZ = offsetZ || 0;
     this.dataSourceName = dataSourceName || "";
     this.dataSourceID = dataSourceID || -1;
+    this.runSeq = (runSeq == undefined ? 3 : runSeq)
 }
 
 function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
@@ -471,7 +478,7 @@ function VariableInfo(id, name, unit, val, decimal){
     this.val = val || 0;
     this.decimal = decimal || 0;
     this.toString = function(){
-       return this.name;
+        return this.name;
 
     }
 }
@@ -556,6 +563,7 @@ function VariableManager(){
 
 function CounterManager(){
     this.counters = [];
+    this.observer = [];
     this.init = function(bareCounters){
         this.counters.length = 0;
         for(var c in bareCounters){
@@ -619,6 +627,10 @@ function CounterManager(){
         c.name = name;
         c.current = current;
         c.target = target;
+        for(var i = 0, len = this.observer.length; i < len; ++i){
+            if(this.observer[i].hasOwnProperty("onCounterUpdated"))
+                this.observer[i].onCounterUpdated(id);
+        }
     }
     this.delCounter = function(id){
         for(var c in this.counters){
@@ -627,6 +639,9 @@ function CounterManager(){
                 break;
             }
         }
+    }
+    this.registerObserver = function(obj){
+        this.observer.push(obj);
     }
 }
 
@@ -800,6 +815,7 @@ actions.F_CMD_TEACH_ALARM = 500;
 actions.F_CMD_VISION_CATCH = 501;
 
 actions.F_CMD_MEMCOMPARE_CMD = 602;
+
 actions.F_CMD_MEM_CMD = 53000;//< 写地址命令教导
 
 
@@ -913,7 +929,9 @@ var generateAxisServoAction = function(action,
                                        signalStopPoint,
                                        signalStopMode,
                                        speedMode,
-                                       stop){
+                                       stop,
+                                       rel,
+                                       points){
     return {
         "action":action,
         "axis":axis,
@@ -928,9 +946,11 @@ var generateAxisServoAction = function(action,
         "earlySpd":earlySpd || 0,
         "signalStopEn":signalStopEn || false,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
-        "signalStopMode":signalStopMode ? 1 : 0,
-        "speedMode":speedMode == undefined ? 0 : speedMode,
-        "stop":stop || false
+                                                         "signalStopMode":signalStopMode ? 1 : 0,
+                                                                                           "speedMode":speedMode == undefined ? 0 : speedMode,
+                                                                                                                                "stop":stop || false,
+                                                                                                                                "rel": rel || false,
+                                                                                                                                "points":points == undefined ?  [] : [points]
     };
 }
 
@@ -953,7 +973,7 @@ var generateOriginAction = function(action,
                                     type,
                                     speed,
                                     delay
-                                  ){
+                                    ){
 
     return {
         "action":action,
@@ -1002,7 +1022,7 @@ var generateOutputAction = function(point, type, status, valveID, time){
         "type":type,
         "point":point,
         "pointStatus": status,
-        "valveID":valveID || -1
+        "valveID":valveID == undefined ? -1 : valveID
     };
     if(type >= TIMEY_BOARD_START){
         ret.acTime = time || 0;
@@ -1163,6 +1183,7 @@ var generateWaitVisionDataAction = function(waitTime, dataSourceName, hostID){
     }
 }
 
+
 var generateInitProgram = function(axisDefine){
 
     var initStep = [];
@@ -1205,13 +1226,20 @@ var psActionToStringHelper = function(actionStr, actionObject){
 }
 
 var f_CMD_SINGLEToStringHandler = function(actionObject){
-     var ret =  axisInfos[actionObject.axis].name + ":";
+    var ret =  axisInfos[actionObject.axis].name + ":";
     if(actionObject.speedMode){
         ret += (actionObject.speedMode == 1 ? qsTr("Speed Control PP Start") :  qsTr("Speed Control RP Start") ) + " " + qsTranslate("Teach","Speed:") + actionObject.speed ;
     }else if(actionObject.stop){
         ret += qsTr("Stop");
     }else{
-        ret +=  actionObject.pos + " " +
+        var pts = actionObject.points;
+        if(pts == undefined) pts = [];
+        if(pts.length != 0){
+            ret += pts[0].pointName + "(" +
+                    pts[0].pos["m" + actionObject.axis] + ")";
+        }else
+            ret +=  actionObject.pos;
+        ret +=  " " +
                 qsTranslate("Teach","Speed:") + actionObject.speed + " " +
                 qsTr("Delay:") + actionObject.delay;
     }
@@ -1231,6 +1259,9 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
     }
+
+    if(actionObject.rel)
+        ret = qsTr("Rel") + " " + ret;
 
     return ret;
 }
@@ -1322,7 +1353,7 @@ var callModuleActionToStringHandler = function(actionObject){
 
 var commentActionToStringHandler = function(actionObject){
     if(actionObject.commentAction != null){
-       actionObject.comment = actionToString(actionObject.commentAction);
+        actionObject.comment = actionToString(actionObject.commentAction);
     }
     return actionObject.comment;
 }
@@ -1333,32 +1364,31 @@ var flagActionToStringHandler = function(actionObject){
 }
 
 var valveTypeToString = [
-    qsTr("Normal Y"),
-    qsTr("Single Y"),
-    qsTr("Hold Double Y"),
-    qsTr("Unhold Double Y")];
+            qsTr("Normal Y"),
+            qsTr("Single Y"),
+            qsTr("Hold Double Y"),
+            qsTr("Unhold Double Y")];
 
 function valveItemToString(valve){
     var ret = valveTypeToString[valve.type] + "-";
-    ret += getYDefineFromHWPoint(valve.y1Point, valve.y1Board).yDefine.pointName;
-    if(valve.type === IO_TYPE_HOLD_DOUBLE_Y ||
-            valve.type === IO_TYPE_UNHOLD_DOUBLE_Y){
-        ret += "," + getYDefineFromHWPoint(valve.y2Point, valve.y2Board).yDefine.pointName;
-    }
+    ret += getYDefinePointNameFromValve(valve);
     return ret +=":" + valve.descr;
 }
 
 var outputActionToStringHandler = function(actionObject){
+    var valve;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
-        var valve = getValveItemFromValveID(actionObject.valveID);
+        valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("Start") + " "
+        valve = getValveItemFromValveID(actionObject.point);
+        return qsTr("Check:") + valveItemToString(valve) + " " + qsTr("Check Start") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else if(actionObject.type === VALVE_CHECK_END){
-        return qsTr("Check:") + getValveItemFromValveID(actionObject.point).descr + qsTr("End") + " "
+        valve = getValveItemFromValveID(actionObject.point);
+        return qsTr("Check:") + valveItemToString(valve) +  " " + qsTr("Check End") + " "
                 + qsTr("Delay:") + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
@@ -1384,8 +1414,13 @@ function stackTypeToString(type){
     switch(type){
     case stackTypes.kST_Box:
         return qsTr("Box");
+    case stackTypes.kST_DataSource:
+    case stackTypes.kST_DataSourceIgnoreZ:
+    case stackTypes.kST_VisionCmp:
+    case stackTypes.kST_VisionPosAndCmp:
+        return qsTr("Datasource");
     default:
-        return "";
+        return qsTr("Normal");
     }
 }
 
@@ -1394,10 +1429,10 @@ var stackActionToStringHandler = function(actionObject){
     var descr = (si == null) ? qsTr("not exist") : si.descr;
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
-                                                          "";
+                             "";
     var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
     var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
-                                                             : "";
+                                : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
             (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
@@ -1520,7 +1555,7 @@ var visionCatchActionToStringHandler = function(actionObject){
 
 var waitVisionDataActionToStringHandler = function(actionObject){
     return qsTr("Wait Vision Data") + " " + qsTr("Data Source:") + actionObject.dataSource + "\n                            "
-    + qsTr("Limit:") + actionObject.limit;
+            + qsTr("Limit:") + actionObject.limit;
 }
 
 var speedActionToStringHandler = function(actionObject){
@@ -1583,15 +1618,20 @@ actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStri
 
 var actionObjectToEditableITems = function(actionObject){
     var ret = [];
+
     if(actionObject.action === actions.ACT_COMMENT)
         return ret;
-    if(actionObject.action === actions.F_CMD_SINGLE){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        ret.push(customActions[actionObject.action].editableItems.itemDef);
+    }
+    else if(actionObject.action === actions.F_CMD_SINGLE){
         ret = [{"item":"pos", "range":motorRangeAddr(actionObject.axis)},
-                {"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"},
-                {"item":"earlyEnd"},
-                {"item":"earlyEndSpd"},
-                {"item":"signalStop"}];
+               {"item":"speed", "range":"s_rw_0_32_1_1200"},
+               {"item":"delay", "range":"s_rw_0_32_2_1100"},
+               {"item":"earlyEnd"},
+               {"item":"earlyEndSpd"},
+               {"item":"signalStop"},
+               {"item":"rel"}];
     }else if(actionObject.action === actions.F_CMD_LINEXY_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEXZ_MOVE_POINT ||
              actionObject.action === actions.F_CMD_LINEYZ_MOVE_POINT ||
@@ -1627,10 +1667,10 @@ var actionObjectToEditableITems = function(actionObject){
         ret = [{"item":"limit", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_STACK0){
         ret = [{"item":"speed0", "range":"s_rw_0_32_1_1200"},
-                {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
+               {"item":"speed1", "range":"s_rw_0_32_1_1200"}];
     }else if(actionObject.action === actions.F_CMD_FINE_ZERO){
         ret = [{"item":"speed", "range":"s_rw_0_32_1_1200"},
-                {"item":"delay", "range":"s_rw_0_32_2_1100"}];
+               {"item":"delay", "range":"s_rw_0_32_2_1100"}];
     }else if(actionObject.action === actions.F_CMD_VISION_CATCH){
         ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
     }else if(actionObject.action === actions.F_CMD_WATIT_VISION_DATA){
@@ -1700,6 +1740,10 @@ function ccErrnoToString(errno){
 
 
 var canActionUsePoint = function(actionObject){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        return customActions[actionObject.action].canActionUsePoint;
+    }
+
     if(actionObject.action === actions.ACT_COMMENT){
         if(actionObject.commentAction != null)
             return canActionUsePoint(actionObject.commentAction);
@@ -1728,15 +1772,76 @@ var canActionUsePoint = function(actionObject){
 }
 
 var canActionTestRun = function(actionObject){
-    return  actionObject.action === actions.F_CMD_CoordinatePoint ||
-            actionObject.action === actions.F_CMD_COORDINATE_DEVIATION ||
-            actionObject.action === actions.F_CMD_LINE3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT ||
-            actionObject.action === actions.F_CMD_ARC3D_MOVE ||
-            actionObject.action === actions.F_CMD_JOINTCOORDINATE ||
-            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
-//            actionObject.action === actions.F_CMD_SINGLE;
+    var ac = actionObject.action;
+    if(customActions.hasOwnProperty(ac)){
+        return customActions[ac].canTestRun;
+    }
+
+    return  ((ac >=  actions.F_CMD_SINGLE) && (ac <= actions.F_CMD_LINE_RELATIVE_POSE)) ||
+            ((ac >=  actions.F_CMD_LINEXY_MOVE_POINT) && (ac <= actions.F_CMD_LINEYZ_MOVE_POINT)) ||
+            ((ac >=  actions.F_CMD_ARCXY_MOVE_POINT) && (ac <= actions.F_CMD_ARCYZ_MOVE_POINT));
 }
 
 
+function customActionGenerator(actionDefine){
+    actionDefine.generate = function(properties){
+        var ret = {"action":actionDefine.action};
+        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+            ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
+        }
+        return ret;
+    };
+    actionDefine.toRegisterString = function(){
+        var ret = {"actionID":actionDefine.action, "seq":[]};
+        ret.seq.push({"item":"action", "decimal":0});
+        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+            ret.seq.push(actionDefine.properties[i]);
+        }
+        return JSON.stringify(ret);
+    };
+    actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
+    if(!actionDefine.hasOwnProperty("actionObjectChangedHelper")){
+        actionDefine.actionObjectChangedHelper = function(editor, actionObject){
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                editor[actionDefine.properties[i].item] = actionObject[actionDefine.properties[i].item];
+            }
+        };
+    }
+    if(!actionDefine.hasOwnProperty("updateActionObjectHelper")){
+        actionDefine.updateActionObjectHelper = function(editor, actionObject){
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                actionObject[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+            }
+        };
+    }
+    if(!actionDefine.hasOwnProperty("getActionPropertiesHelper")){
+        actionDefine.getActionPropertiesHelper = function(editor){
+            var ret = {"action":actionDefine.action};
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                ret[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+            }
+            return ret;
+        }
+    }
+}
+
 var currentParsingProgram = 0;
+
+var registerCustomAction = function(actionDefine){
+    customActionGenerator(actionDefine);
+    customActions[actionDefine.action] = actionDefine;
+    actionToStringHandlerMap.put(actionDefine.action, actionDefine.toStringHandler);
+}
+
+var generateCustomAction = function(actionObject){
+    if(!actionObject.hasOwnProperty("action")) return null;
+    if(!customActions.hasOwnProperty(actionObject.action)) return null;
+    return customActions[actionObject.action].generate(actionObject);
+}
+
+var registerCustomActions = function(controller, exActions){
+    for(var i = 0, len = exActions.length; i < len; ++i){
+        registerCustomAction(exActions[i]);
+        controller.registerCustomProgramAction(exActions[i].toRegisterString());
+    }
+}

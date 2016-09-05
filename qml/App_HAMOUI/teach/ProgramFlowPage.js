@@ -142,3 +142,12 @@ function hasAutoModified(index){
 function clearAutoModifyPosActions(){
     autoModifyPosActions = {}
 }
+
+function programToParsingIndex(p){
+    for(var i = 0, len = programs.length; i < len; ++i){
+        if(p == programs[i])
+            return i;
+    }
+    console.log("programToParsingIndex wrong p");
+    return 0;
+}

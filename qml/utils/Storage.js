@@ -66,12 +66,13 @@ function initialize() {
 //                    tx.executeSql('CREATE TABLE IF NOT EXISTS globalstack(id PK INTEGER NOT NULL,stack TEXT NOT NULL)');
 //                    tx.executeSql('CREATE TABLE IF NOT EXISTS globalcounter(id PK INTEGER NOT NULL,)')
                     //                    tx.executeSql('DELETE FROM alarmlog;');
+//                    tx.executeSql("DELETE FROM users");
                     var rs = tx.executeSql('SELECT * FROM users');
                     if (rs.rows.length === 0) {
                         tx.executeSql('INSERT INTO users VALUES("操作员", "123", 0)');
                         tx.executeSql('InSERT INTO users VALUES("管理员", "123", 1)');
                         tx.executeSql('InSERT INTO users VALUES("高级管理员", "123456", 3)');
-                        tx.executeSql('InSERT INTO users VALUES("超级管理员", "12345678", 7)');
+                        tx.executeSql('InSERT INTO users VALUES("超级管理员", "12345678", 15)');
                         tx.executeSql('InSERT INTO users VALUES("szhcroot", "szhcrobot", 15)');
                     }
                     else if(rs.rows.length > 0){

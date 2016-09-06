@@ -1523,6 +1523,9 @@ Rectangle {
             width: parent.width
             height: parent.height
             visible: false
+            onVisibleChanged: {
+                isAnalogEn = panelRobotController.getConfigValue("s_rw_0_32_0_213");
+            }
         }
     }
     

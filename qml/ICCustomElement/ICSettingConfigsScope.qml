@@ -12,6 +12,10 @@ Item {
 
     signal configValueChanged(string addr, string newV, string oldV)
 
+    function sync(){
+        panelRobotController.syncConfigs();
+    }
+
     function onConfigValueEditFinished(index){
         var config = PData.configs[index];
         var oldV = panelRobotController.getConfigValueText(config.configAddr);
@@ -56,7 +60,7 @@ Item {
 
     onVisibleChanged: {
         if(!visible && isCache){
-            panelRobotController.syncConfigs();
+            sync();
         }
     }
     Component.onCompleted: {

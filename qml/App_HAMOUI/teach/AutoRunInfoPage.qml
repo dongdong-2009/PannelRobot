@@ -7,6 +7,8 @@ MouseArea{
     id:instance
     width: parent.width
     height: parent.height
+    property alias isAnalogEn: analogDetailsBtn.visible
+
     Rectangle {
         id:container
         width: parent.width
@@ -173,46 +175,42 @@ MouseArea{
                 color: "#A0A0F0"
                 y:-analogDetailsBtn.y
                 visible: false
-                Column{
-                    anchors.fill: parent
-                    spacing: 6
-                    Row{
-                        spacing: 4
-                        ICButton{
-                            id:sub0
-                            text: "-"
-                            width: 32
-                        }
-                        ICConfigEdit{
-                            id:chanel0
+                ICSettingConfigsScope{
+                    anchors.centerIn: parent
+                    isCache: true
+                    Column{
+                        anchors.centerIn: parent
+                        spacing: 12
+                        ICConfigControlEdit{
                             configName: qsTr("Chanel-0")
-                            anchors.verticalCenter: parent.verticalCenter
+                            configAddr: "m_rw_0_32_1_214"
+                            onEditFinished: parent.parent.sync();
                         }
-                        ICButton{
-                            id:add0
-                            text: "+"
-                            width: 32
+                        ICConfigControlEdit{
+                            configName: qsTr("Chanel-1")
+                            configAddr: "m_rw_0_32_1_215"
+                            onEditFinished: parent.parent.sync();
                         }
-                    }
-                    ICConfigEdit{
-                        id:chanel1
-                        configName: qsTr("Chanel-1")
-                    }
-                    ICConfigEdit{
-                        id:chanel2
-                        configName: qsTr("Chanel-2")
-                    }
-                    ICConfigEdit{
-                        id:chanel3
-                        configName: qsTr("Chanel-3")
-                    }
-                    ICConfigEdit{
-                        id:chanel4
-                        configName: qsTr("Chanel-4")
-                    }
-                    ICConfigEdit{
-                        id:chanel5
-                        configName: qsTr("Chanel-5")
+                        ICConfigControlEdit{
+                            configName: qsTr("Chanel-2")
+                            configAddr: "m_rw_0_32_1_216"
+                            onEditFinished: parent.parent.sync();
+                        }
+                        ICConfigControlEdit{
+                            configName: qsTr("Chanel-3")
+                            configAddr: "m_rw_0_32_1_217"
+                            onEditFinished: parent.parent.sync();
+                        }
+                        ICConfigControlEdit{
+                            configName: qsTr("Chanel-4")
+                            configAddr: "m_rw_0_32_1_218"
+                            onEditFinished: parent.parent.sync();
+                        }
+                        ICConfigControlEdit{
+                            configName: qsTr("Chanel-5")
+                            configAddr: "m_rw_0_32_1_219"
+                            onEditFinished: parent.parent.sync();
+                        }
                     }
                 }
             }

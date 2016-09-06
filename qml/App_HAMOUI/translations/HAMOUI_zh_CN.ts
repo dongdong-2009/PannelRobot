@@ -733,6 +733,38 @@
         <source>counter</source>
         <translation>计数器</translation>
     </message>
+    <message>
+        <source>Analog &gt;&gt;</source>
+        <translation>模拟量&gt;&gt;</translation>
+    </message>
+    <message>
+        <source>Analog &lt;&lt;</source>
+        <translation>模拟量&lt;&lt;</translation>
+    </message>
+    <message>
+        <source>Chanel-0</source>
+        <translation>通道0</translation>
+    </message>
+    <message>
+        <source>Chanel-1</source>
+        <translation>通道1</translation>
+    </message>
+    <message>
+        <source>Chanel-2</source>
+        <translation>通道2</translation>
+    </message>
+    <message>
+        <source>Chanel-3</source>
+        <translation>通道3</translation>
+    </message>
+    <message>
+        <source>Chanel-4</source>
+        <translation>通道4</translation>
+    </message>
+    <message>
+        <source>Chanel-5</source>
+        <translation>通道5</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>

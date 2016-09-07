@@ -50,8 +50,11 @@ ProgramFlowPage {
 
     function copyLine(){
         var currentLine =  Utils.cloneObject(currentModelData().mI_ActionObject);
-        var ret =   kexuyeActionEdit.createActionObj(currentLine)[0];
-        return ret;
+        if(currentLine.action == LocalTeach.actions.F_CMD_PENTU){
+            var ret =   kexuyeActionEdit.createActionObj(currentLine)[0];
+            return ret;
+        }
+        else return currentLine;
     }
     function calcSingleStepLine(currentSel){
         return LocalPData.kexueyeRowToStepMap[currentSel];
@@ -1566,7 +1569,6 @@ ProgramFlowPage {
             var ret = panelRobotController.currentRunningActionInfo(0);
             var info = JSON.parse(ret);
             info.steps = JSON.parse(info.steps);
-            console.log("11111111111111",LocalPData.stepToKeXuYeRowMap[info.steps],rows,JSON.stringify(info));
             if(LocalPData.stepToKeXuYeRowMap[info.steps] != rows){
                 running = false;
                 var model = BasePData.programs[0];

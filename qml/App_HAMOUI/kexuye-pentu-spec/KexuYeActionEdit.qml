@@ -419,7 +419,7 @@ Item {
                 configNameWidth: 28
                 configName: AxisDefine.axisInfos[0].name
                 unit: AxisDefine.axisInfos[0].unit
-                configAddr: "s_rw_0_32_3_1300"
+                configAddr: "s_rw_0_32_3_1000"
             }
             ICConfigEdit{
                 id:sPosM1
@@ -428,7 +428,7 @@ Item {
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[1].name
                 unit: AxisDefine.axisInfos[1].unit
-                configAddr: "s_rw_0_32_3_1300"
+                configAddr: "s_rw_0_32_3_1001"
             }
             ICConfigEdit{
                 id:sPosM2
@@ -437,7 +437,7 @@ Item {
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[2].name
                 unit: AxisDefine.axisInfos[2].unit
-                configAddr: "s_rw_0_32_3_1300"
+                configAddr: "s_rw_0_32_3_1002"
             }
         }
         Row{
@@ -451,7 +451,7 @@ Item {
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[3].name
                 unit: AxisDefine.axisInfos[3].unit
-                configAddr: "s_rw_0_32_3_1300"
+                configAddr: "s_rw_0_32_3_1003"
             }
             ICConfigEdit{
                 id:sPosM4
@@ -461,7 +461,7 @@ Item {
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[4].name
                 unit: AxisDefine.axisInfos[4].unit
-                configAddr: "s_rw_0_32_3_1300"
+                configAddr: "s_rw_0_32_3_1004"
             }
             ICConfigEdit{
                 id:sPosM5
@@ -471,7 +471,7 @@ Item {
                 configNameWidth: sPosM0.configNameWidth
                 configName: AxisDefine.axisInfos[5].name
                 unit: AxisDefine.axisInfos[5].unit
-                configAddr: "s_rw_0_32_3_1300"
+                configAddr: "s_rw_0_32_3_1005"
             }
         }
         Row{
@@ -528,7 +528,7 @@ Item {
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[0].name
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1000"
                     unit: AxisDefine.axisInfos[0].unit
                 }
                 ICConfigEdit{
@@ -537,7 +537,7 @@ Item {
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[1].name
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1001"
                     unit: AxisDefine.axisInfos[1].unit
                 }
                 ICConfigEdit{
@@ -547,7 +547,7 @@ Item {
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[3].name
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1003"
                     unit: AxisDefine.axisInfos[3].unit
                 }
                 ICCheckBox{
@@ -608,13 +608,13 @@ Item {
                 ICConfigEdit{
                     id:pos2Axis1
                     configName: AxisDefine.axisInfos[0].name
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1000"
                     unit: AxisDefine.axisInfos[0].unit
                 }
                 ICConfigEdit{
                     id:pos2Axis2
                     configName: AxisDefine.axisInfos[1].name
-                    configAddr: "s_rw_0_32_3_1300"
+                    configAddr: "s_rw_0_32_3_1001"
                     unit: AxisDefine.axisInfos[1].unit
                 }
             }

@@ -10,7 +10,8 @@ Rectangle {
     property int customTextX: 0
     property int customTextY: 0
     property bool isAutoRepeat: false
-    property alias autoInterval: autoTimer.interval
+    property int autoInterval: 50
+    property int delayOnAutoRepeat: 200
     property string bgColor: "white"
     property alias textColor: text.color
     property alias font: text.font
@@ -101,6 +102,7 @@ Rectangle {
             parent.color = "lightsteelblue";
             if(isAutoRepeat){
                 triggered()
+                autoTimer.interval = delayOnAutoRepeat;
                 autoTimer.start();
             }
             btnPressed();
@@ -114,22 +116,25 @@ Rectangle {
         }
         onExited: {
             parent.color = bgColor;
-            if(isAutoRepeat)
+            if(isAutoRepeat){
                 autoTimer.stop();
+            }
             btnReleased()
         }
 
         onClicked: {
-            buttonClicked()
-            clickedText(text.text)
-            triggered()
+            buttonClicked();
+            clickedText(text.text);
+            if(!isAutoRepeat)
+                triggered();
         }
     }
     Timer{
         id:autoTimer
-        interval: 50; running: false; repeat: true
+        interval: 50; running: false; repeat: true;
         onTriggered: {
-            parent.triggered()
+            autoTimer.interval = autoInterval;
+            parent.triggered();
         }
     }
 }

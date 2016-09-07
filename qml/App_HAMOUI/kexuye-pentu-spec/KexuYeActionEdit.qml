@@ -16,6 +16,26 @@ Item {
     property variant detailInstance: null
     property variant stackInstance: null
     property variant stackCount: []
+    property bool isauto: false
+    onIsautoChanged: {
+        if(isauto){
+            planeSel.visible = false;
+            dirAxisSel.visible = false;
+            repeateCount.visible = false;
+            dirCount.visible = false;
+            gunfresh1.visible = false;
+            gunfresh2.visible = false;
+        }
+        else {
+            planeSel.visible = true;
+            dirAxisSel.visible = true;
+            repeateCount.visible = true;
+            dirCount.visible = true;
+            gunfresh1.visible = true;
+            gunfresh2.visible = true;
+        }
+    }
+
     function createActionObjects(){
         return createActionObj(null);
     }
@@ -874,6 +894,7 @@ Item {
             dirSpeed.visible = true;
         }
     }
+
 
     Component.onCompleted: {
         planeSel.configValue = 0;

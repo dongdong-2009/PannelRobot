@@ -66,6 +66,21 @@ Rectangle {
         return Utils.cloneObject(currentModelData().mI_ActionObject);
     }
 
+    function autoEditFinish(row){
+        var mID = moduleSel.currentIndex == 0 ? -1: Utils.getValueFromBrackets(moduleSel.currentText());
+        if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
+                                                     mID,
+                                                     row,
+                                                     JSON.stringify(actionObject))){
+            if(mID >=0){
+                saveModules(false);
+            }else if(editing.currentIndex === 0)
+                panelRobotController.saveMainProgram(modelToProgram(0));
+            else
+                panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
+        }
+    }
+
     function showActionEditorPanel(){
         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
             actionEditorFrame.item.showMenu();
@@ -306,18 +321,7 @@ Rectangle {
         var cM = currentModel();
         cM.setProperty(programListView.currentIndex, "mI_ActionObject", actionObject);
         if(ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO){
-            var mID = moduleSel.currentIndex == 0 ? -1: Utils.getValueFromBrackets(moduleSel.currentText());
-            if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
-                                                         mID,
-                                                         programListView.currentIndex,
-                                                         JSON.stringify(actionObject))){
-                if(mID >=0){
-                    saveModules(false);
-                }else if(editing.currentIndex === 0)
-                    panelRobotController.saveMainProgram(modelToProgram(0));
-                else
-                    panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
-            }
+            autoEditFinish(programListView.currentIndex);
             return;
         }
         hasModify = true;
@@ -1079,7 +1083,7 @@ Rectangle {
                         var ret =  programListView.currentItem.y >= programListView.contentY;
                         var currentItem = currentModelData();
                         if(currentItem === null) return false;
-                        ret = ret && (Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length > 1);
+                        ret = ret && (Teach.actionObjectToEditableITems(currentItem.mI_ActionObject).length != 0);
                         return ret;
                     }
                 }

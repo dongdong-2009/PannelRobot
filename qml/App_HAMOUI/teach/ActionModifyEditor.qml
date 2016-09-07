@@ -67,6 +67,7 @@ Item {
             editor = PData.itemToEditorMap.get(item.item);
             if(PData.isRegisterEditor(editor)){
                 editor.actionObject = actionObject;
+                editor.isauto = isAutoMode;
             }
             else if(editor == points){
                 editor.action = actionObject.action;
@@ -105,7 +106,7 @@ Item {
                 editor.configValue = actionObject[item.item] ||"";
             }
 
-            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
+            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0 ) || PData.isRegisterEditor(editor)){
                 editor.visible = true;
                 height += editor.height + editorContainer.spacing;
                 if(height > maxHeight) height = maxHeight;

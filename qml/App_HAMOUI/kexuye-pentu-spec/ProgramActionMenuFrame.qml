@@ -28,6 +28,7 @@ ProgramActionMenuFrame{
                 spacing: 20
                 CatalogButton{
                     id:ptLine_U_2D
+                    visible: false
                     text:qsTr("PT U 2D")
                     icon: "../images/1-1.png"
                     iconwidth: 75
@@ -59,6 +60,7 @@ ProgramActionMenuFrame{
                 spacing: 20
                 CatalogButton{
                     id:ptArc_U
+                    visible: false
                     text:qsTr("PT Arc U")
                     icon: "../images/2-1.png"
                     iconwidth: ptLine_U_2D.iconwidth

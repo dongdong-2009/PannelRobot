@@ -7,6 +7,7 @@ Item {
     width: parent.width
     height: parent.height
     property variant actionObject: null
+    property bool isauto: false
 
     function updateActionObject(ao){
         ao.startPosSpeed0 = m0Speed.configValue;

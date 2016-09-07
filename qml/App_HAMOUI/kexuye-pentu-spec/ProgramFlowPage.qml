@@ -17,6 +17,7 @@ import "../teach/ManualProgramManager.js" as ManualProgramManager
 ProgramFlowPage {
     id:base
     actionMenuFrameSource: "ProgramActionMenuFrame.qml"
+    property int rows: 0
 
 
     function getRecordContent(which){
@@ -1069,68 +1070,48 @@ ProgramFlowPage {
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
 
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
-//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
-
-            if(actionObject.mode == 3)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                         [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE,
-//                         [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
-            else if(actionObject.mode == 7)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
-                         [{"pointName":"", "pos":tmp},
-                          {"pointName":"", "pos":pos}],
-                          actionObject.repeateSpeed, 0.0));
-            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                guncloseAction(ret,actionObject);
-                gun1openAction(ret,actionObject);
-            }
-//            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
-//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-//                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
-//                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
-//                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
-//            }
-            ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
-
             var overlength = pos.m0;
             if(overlength > actionObject.dirLength)
                 overlength = actionObject.dirLength;
             if(parseFloat(overlength) < 0)
                 overlength = -overlength;
-            if(actionObject.mode == 3){
-                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 0));
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
-                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.repeateCounterID, 0, 0));
-                ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("over elar")));
-                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                         -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
-                ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("over done")));
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-//                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
-//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE,
-//                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+            if(parseInt(actionObject.repeateCount) % 2 == 0)
+                var repeatC = parseInt(actionObject.repeateCount) / 2;
+            else
+                repeatC = (parseInt(actionObject.repeateCount) - 1) / 2;
+            for(var i = 0;i < repeatC;i++){
+                if(actionObject.mode == 3){
+                    ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                             [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
+                    if(parseInt(actionObject.repeateCount) % 2 == 0 && i == repeatC - 1)
+                        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+                                 -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                    else ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                             [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+                }
+                else if(actionObject.mode == 7){
+                    ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+                             [{"pointName":"", "pos":tmp},
+                              {"pointName":"", "pos":pos}],
+                              actionObject.repeateSpeed, 0.0));
+                    ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
+                    ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+                             [{"pointName":"", "pos":tmp1},
+                              {"pointName":"", "pos":pos1}],
+                              actionObject.repeateSpeed, 0.0));
+                }
             }
-            else if(actionObject.mode == 7)
-                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
-                         [{"pointName":"", "pos":tmp1},
-                          {"pointName":"", "pos":pos1}],
-                          actionObject.repeateSpeed, 0.0));
-            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                guncloseAction(ret,actionObject);
-                gun1openAction(ret,actionObject);
+            if(parseInt(actionObject.repeateCount) % 2 == 1){
+                if(actionObject.mode == 3)
+                    ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+                             repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                if(actionObject.mode == 7)
+                    ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+                             [{"pointName":"", "pos":tmp},
+                              {"pointName":"", "pos":pos}],
+                              actionObject.repeateSpeed, 0.0));
             }
-//            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
-//                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
-//                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
-//                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
-//            }
-            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
-            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
                 guncloseAction(ret,actionObject);
 
             ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
@@ -1142,14 +1123,238 @@ ProgramFlowPage {
             else
                 ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
                          actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
-//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
-//            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
-//                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+                gun1openAction(ret,actionObject);
+
+
+            if(parseInt(actionObject.repeateCount) % 2 == 1){
+                for(i = 0;i < repeatC;i++){
+                    if(actionObject.mode == 3){
+                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                                 [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+                                 [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
+                    }
+                    else if(actionObject.mode == 7){
+                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+                                 [{"pointName":"", "pos":tmp1},
+                                  {"pointName":"", "pos":pos1}],
+                                  actionObject.repeateSpeed, 0.0));
+                        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+                                 [{"pointName":"", "pos":tmp},
+                                  {"pointName":"", "pos":pos}],
+                                  actionObject.repeateSpeed, 0.0));
+                    }
+                }
+                if(actionObject.mode == 3)
+                    ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+                             -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                if(actionObject.mode == 7)
+                    ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+                             [{"pointName":"", "pos":tmp1},
+                              {"pointName":"", "pos":pos1}],
+                              actionObject.repeateSpeed, 0.0));
+                if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+                    guncloseAction(ret,actionObject);
+
+                ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
+
+                if(actionObject.mode == 3)
+                    ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+                             actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                else
+                    ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+                             actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+                if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+                    gun1openAction(ret,actionObject);
+            }
 
             ret.push(LocalTeach.generateFlagAction(actionObject.flag12, qsTr("duoyu dir")));
 
+
+//            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.repeateCounterID, 1, 0));
+
+//            ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
+//            if(actionObject.mode == 3){
+//                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 0));
+//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+//                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+//                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.repeateCounterID, 0, 0));
+//                ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("over elar")));
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+//                         -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+//            }
+//            else if(actionObject.mode == 7)
+//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+//                         [{"pointName":"", "pos":tmp1},
+//                          {"pointName":"", "pos":pos1}],
+//                          actionObject.repeateSpeed, 0.0));
+//            ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("over done")));
+//            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+//                guncloseAction(ret,actionObject);
+//                gun1openAction(ret,actionObject);
+//            }
+//            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
+//            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+//                guncloseAction(ret,actionObject);
+
+//            ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+//            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
+
+//            if(actionObject.mode == 3)
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+//                         actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+//            else
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+//                         actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+
+
+//            ret.push(LocalTeach.generateFlagAction(actionObject.flag12, qsTr("duoyu dir")));
+
         }
+
+//        else if(actionObject.mode == 3 || actionObject.mode == 7){
+//            tmp["m" + 0] = pos["m" + 0] / 2;
+//            tmp["m" + 1] = pos["m" + 1] / 2;
+//            tmp["m" + 2] = pos["m" + 2] / 2;
+//            tmp1["m" + 0] = -tmp["m" + 0];
+//            tmp1["m" + 1] = -tmp["m" + 1];
+//            tmp1["m" + 2] = -tmp["m" + 2];
+//            var repeatlength,repeataxis;
+//            if(actionObject.plane == 0){
+//                if(actionObject.dirAxis == 0){
+//                    repeataxis = 1;
+//                    repeatlength = pos.m1;
+//                    dirpos["m" + 1] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+//                    dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+//                }
+//                else{
+//                    repeataxis = 0;
+//                    repeatlength = pos.m0;
+//                    dirpos["m" + 0] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+//                    dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+//                }
+//                tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
+//                dirpos["m" + 2] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+//            }
+//            else if(actionObject.plane == 1){
+//                if(actionObject.dirAxis == 0){
+//                    repeataxis = 2;
+//                    repeatlength = pos.m2;
+//                    dirpos["m" + 2] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+//                    dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+//                }
+//                else{
+//                    repeataxis = 0;
+//                    repeatlength = pos.m0;
+//                    dirpos["m" + 0] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+//                    dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+//                }
+//                tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
+//                dirpos["m" + 1] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+//            }
+//            else if(actionObject.plane == 2){
+//                if(actionObject.dirAxis == 1){
+//                    repeataxis = 2;
+//                    repeatlength = pos.m2;
+//                    dirpos["m" + 2] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+//                    dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+//                }
+//                else{
+//                    repeataxis = 1;
+//                    repeatlength = pos.m1;
+//                    dirpos["m" + 1] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+//                    dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
+//                }
+//                tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
+//                dirpos["m" + 0] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
+//            }
+//            pos1["m" + 0] = -pos["m" + 0];
+//            pos1["m" + 1] = -pos["m" + 1];
+//            pos1["m" + 2] = -pos["m" + 2];
+
+////            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,       //Ydir
+////                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+
+//            if(actionObject.mode == 3)
+//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+//                         [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
+////                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE,
+////                         [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
+//            else if(actionObject.mode == 7)
+//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+//                         [{"pointName":"", "pos":tmp},
+//                          {"pointName":"", "pos":pos}],
+//                          actionObject.repeateSpeed, 0.0));
+//            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
+//                guncloseAction(ret,actionObject);
+//                gun1openAction(ret,actionObject);
+//            }
+////            if(actionObject.fixture2Switch == 0 || actionObject.fixture2Switch == 2){
+////                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+////                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+////                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+////                ret.push(LocalTeach.generateOutputAction(7, 0, 1, 0, actionObject.fixture2Delay0));
+////                ret.push(LocalTeach.generateOutputAction(8, 0, 1, 0, actionObject.fixture2Delay1));
+////                ret.push(LocalTeach.generateOutputAction(9, 0, 1, 0, actionObject.fixture2Delay2));
+////            }
+//            ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
+
+//            var overlength = pos.m0;
+//            if(overlength > actionObject.dirLength)
+//                overlength = actionObject.dirLength;
+//            if(parseFloat(overlength) < 0)
+//                overlength = -overlength;
+//            if(actionObject.mode == 3){
+//                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 0));
+//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+//                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+//                ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.repeateCounterID, 0, 0));
+//                ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("over elar")));
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+//                         -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+//                ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("over done")));
+////                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+////                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+////                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE,
+////                         [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
+//            }
+//            else if(actionObject.mode == 7)
+//                ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+//                         [{"pointName":"", "pos":tmp1},
+//                          {"pointName":"", "pos":pos1}],
+//                          actionObject.repeateSpeed, 0.0));
+//            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+//                guncloseAction(ret,actionObject);
+//                gun1openAction(ret,actionObject);
+//            }
+////            if(actionObject.fixture2Switch == 1 || actionObject.fixture2Switch == 2){
+////                ret.push(LocalTeach.generateOutputAction(7, 0, 0, 0, actionObject.fixture2Delay0));
+////                ret.push(LocalTeach.generateOutputAction(8, 0, 0, 0, actionObject.fixture2Delay1));
+////                ret.push(LocalTeach.generateOutputAction(9, 0, 0, 0, actionObject.fixture2Delay2));
+////            }
+//            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag2, actionObject.repeateCounterID, 0, 1));
+//            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+//                guncloseAction(ret,actionObject);
+
+//            ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
+//            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag12, actionObject.dirCounterID, 1, 0));
+
+//            if(actionObject.mode == 3)
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+//                         actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+//            else
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
+//                         actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+////            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
+////                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+////            ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
+////                     [{"pointName":"", "pos":dirpos}], actionObject.dirSpeed, 0.0));
+
+//            ret.push(LocalTeach.generateFlagAction(actionObject.flag12, qsTr("duoyu dir")));
+
+//        }
 
         else if(actionObject.mode == 8){        //DIY MOD
             var tmpMap = {};
@@ -1305,6 +1510,85 @@ ProgramFlowPage {
             }
         }
         return JSON.stringify(ret);
+    }
+
+//    function currentModelRunningActionInfo(){
+//        var ret = panelRobotController.currentRunningActionInfo(0);
+//        //                console.log(ret);
+//        var info = JSON.parse(ret);
+//        info.steps = JSON.parse(info.steps);
+//        //        if(info.moduleID >= 0)
+//        //            console.log(ret);
+//        return info;
+//    }
+
+    function autoEditFinish(row){
+//        var mID = moduleSel.currentIndex == 0 ? -1: Utils.getValueFromBrackets(moduleSel.currentText());
+//        if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
+//                                                     mID,
+//                                                     row,
+//                                                     JSON.stringify(actionObject))){
+//            if(mID >=0){
+//                saveModules(false);
+//            }else if(editing.currentIndex === 0)
+//                panelRobotController.saveMainProgram(pentuActionToProgram(model.get(row).mI_ActionObject,model.get(count).mI_ActionObject));
+//            else
+//                panelRobotController.saveSubProgram(editing.currentIndex, modelToProgram(editing.currentIndex));
+//        }
+        rows = row;
+        volewsChange.running = true;
+//        var model = BasePData.programs[0];
+//        var rs = pentuActionHead(model.get(row).mI_ActionObject);
+//        if(row == 0)
+//            var ps = rs.concat(pentuActionToProgram(model.get(row).mI_ActionObject,model.get(row).mI_ActionObject));
+//        else
+//            ps = pentuActionToProgram(model.get(row).mI_ActionObject,model.get(row).mI_ActionObject);
+//        for(var i = 0;i < ps.length;i++){
+//            if(ps[i].action !== LocalTeach.actions.ACT_FLAG &&
+//               ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP0 &&
+//               ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP1 &&
+//               ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP2 &&
+//               ps[i].action !== LocalTeach.actions.F_CMD_COUNTER&&
+//               ps[i].action !== LocalTeach.actions.F_CMD_SYNC_START&&
+//               ps[i].action !== LocalTeach.actions.F_CMD_SYNC_END)
+//                var ppp = panelRobotController.fixProgramOnAutoMode(0,-1,LocalPData.kexueyeRowToStepMap[row]+i,JSON.stringify(ps[i]));
+//        }
+//            afterSaveProgram(0);
+//        panelRobotController.saveMainProgram(modelToProgram(0));
+    }
+
+    Timer {
+        id: volewsChange
+        interval: 100
+        running: false
+        repeat: true
+        onTriggered: {
+            var ret = panelRobotController.currentRunningActionInfo(0);
+            var info = JSON.parse(ret);
+            info.steps = JSON.parse(info.steps);
+            console.log("11111111111111",LocalPData.stepToKeXuYeRowMap[info.steps],rows,JSON.stringify(info));
+            if(LocalPData.stepToKeXuYeRowMap[info.steps] != rows){
+                running = false;
+                var model = BasePData.programs[0];
+                var rs = pentuActionHead(model.get(rows).mI_ActionObject);
+                if(rows == 0)
+                    var ps = rs.concat(pentuActionToProgram(model.get(rows).mI_ActionObject,model.get(rows).mI_ActionObject));
+                else
+                    ps = pentuActionToProgram(model.get(rows).mI_ActionObject,model.get(rows).mI_ActionObject);
+                for(var i = 0;i < ps.length;i++){
+                    if(ps[i].action !== LocalTeach.actions.ACT_FLAG &&
+                       ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP0 &&
+                       ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP1 &&
+                       ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP2 &&
+                       ps[i].action !== LocalTeach.actions.F_CMD_COUNTER&&
+                       ps[i].action !== LocalTeach.actions.F_CMD_SYNC_START&&
+                       ps[i].action !== LocalTeach.actions.F_CMD_SYNC_END)
+                        var ppp = panelRobotController.fixProgramOnAutoMode(0,-1,LocalPData.kexueyeRowToStepMap[rows]+i,JSON.stringify(ps[i]));
+                }
+                    afterSaveProgram(0);
+                panelRobotController.saveMainProgram(modelToProgram(0));
+            }
+        }
     }
 
     function afterSaveProgram(which){

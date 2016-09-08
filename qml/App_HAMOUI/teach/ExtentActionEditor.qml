@@ -45,6 +45,10 @@ Item {
                 id:analogControl
                 text: qsTr("Analog Control")
             }
+            ICCheckBox{
+                id:deltaJumpControl
+                text: qsTr("Delta Jump Control")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -66,6 +70,7 @@ Item {
         Component.onCompleted: {
             addPage(axisFlyConfigs);
             addPage(analogControlEdit);
+            addPage(deltaJumpEditor);
             currentIndex = 0;
         }
         PENQIANEditor{
@@ -73,6 +78,9 @@ Item {
         }
         AnalogControlEditor{
             id:analogControlEdit
+        }
+        DeltaJumpEditor{
+            id:deltaJumpEditor
         }
     }
 }

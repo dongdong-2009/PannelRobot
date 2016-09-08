@@ -14,7 +14,8 @@ teach/extents/*.js
 OTHER_FILES += \
     teach/extents/AnalogControlEditor.qml \
     teach/extents/ExtentActionEditorBase.qml \
-    teach/extents/ExtentActionEditorBase.js
+    teach/extents/ExtentActionEditorBase.js \
+    configs/CustomDefines.js
 
 
 

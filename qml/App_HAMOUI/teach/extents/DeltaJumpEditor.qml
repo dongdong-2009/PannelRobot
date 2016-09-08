@@ -29,13 +29,15 @@ ExtentActionEditorBase {
     property alias delay: delayEdit.configValue
 
     ICFlickable{
-        height: 280
-        width: 500
+        id:content
+        height: 200
+        width: 430
+        isshowhint: true
         flickableDirection: Flickable.VerticalFlick
-        contentHeight: content.height
-        contentWidth: content.width
+        contentHeight: contentContainer.height + 10
+        contentWidth: contentContainer.width
         Column{
-            id:content
+            id:contentContainer
             spacing: 6
             Row{
                 spacing: lhEdit.width

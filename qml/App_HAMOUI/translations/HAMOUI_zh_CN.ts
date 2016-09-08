@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -581,23 +581,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -605,11 +605,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1637,6 +1637,53 @@
     </message>
 </context>
 <context>
+    <name>DeltaJumpEditor</name>
+    <message>
+        <source>LH Pos</source>
+        <translation>起点高</translation>
+    </message>
+    <message>
+        <source>MH Pos</source>
+        <translation>中点高</translation>
+    </message>
+    <message>
+        <source>RH Pos</source>
+        <translation>终点高</translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>End Pos</source>
+        <translation>终点</translation>
+    </message>
+    <message>
+        <source>speed Value</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
@@ -1652,11 +1699,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1678,6 +1725,34 @@
         <source>Analog:</source>
         <translation>模拟量:</translation>
     </message>
+    <message>
+        <source>Delta Jumpl</source>
+        <translation>Delta 路径</translation>
+    </message>
+    <message>
+        <source>start pos:</source>
+        <translation>起点:</translation>
+    </message>
+    <message>
+        <source>LH:</source>
+        <translation>起点高:</translation>
+    </message>
+    <message>
+        <source>MH:</source>
+        <translation>中点高:</translation>
+    </message>
+    <message>
+        <source>RH:</source>
+        <translation>终点高:</translation>
+    </message>
+    <message>
+        <source>end pos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>speed:</source>
+        <translation>速度:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1688,6 +1763,10 @@
     <message>
         <source>Analog Control</source>
         <translation>模拟控制</translation>
+    </message>
+    <message>
+        <source>Delta Jump Control</source>
+        <translation>Delta路径</translation>
     </message>
 </context>
 <context>
@@ -4980,7 +5059,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5012,11 +5091,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>

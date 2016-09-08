@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.4"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.5"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.4"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.5"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -747,7 +747,7 @@ typedef enum
 	F_CMD_ARC_RELATIVE_POSE,	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
     F_CMD_ARC3D_MOVE_POSE,         //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
-	F_CMD_LINE_RELATIVE_POSE,	   //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+    F_CMD_LINE_RELATIVE_POSE,      //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
@@ -763,6 +763,7 @@ typedef enum
     /* 模拟量输出模块控制（485通讯控制）
      * id:通道范围：0～5（所采用的模块有6路输出）
      * output:电压范围：0.0～10.0V；0到10V电压输出
+     * delay_time:延时动作
      */
     F_CMD_ANALOG_CONTROL=250,
     /*************************************************************************
@@ -865,6 +866,19 @@ typedef enum
     F_CMD_VISION_CATCH = 501,
     /***************************************************************************/
     /*
+     *safe：
+     * id1:4; 限制轴ID
+     * id2:4; 运动轴ID
+     * allow:1; 0：不允许；1：允许；
+     * res:7; 预留
+     *
+     * pos1:
+     * pos2:
+     * aid:自定义报警ID从5000开始到10000
+     */
+    F_CMD_SAFE_ALARM,//< 轴安全报警教导
+    /***************************************************************************/
+    /*
      * addr:写地址 value:设定值
      * addr.addrType:  0直接赋值；1、地址值加等于value；2、地址值减等于value；3、地址值乘等于value；4、地址值除等于value
      */
@@ -883,9 +897,14 @@ typedef enum
     F_CMD_MEMCOMPARE_CMD,//< 地址指针命令教导
     /***************************************************************************/
     /*
+     * pos1[6];起点坐标
+     * pos2[6];终点坐标
+     * lh;LH起点高度
+     * mh:MH中点高度
+     * rh:RH终点高度
      *
      */
-    F_CMD_CONTRAIL_FITTING_CMD = 700,//< 轨迹拟合教导命令
+    F_CMD_DELTA_JUMP=700,      //< 相对姿势直线运动 起点坐标（X，Y，Z，U，V，W）终点坐标（X，Y，Z，U，V，W） 速度  延时
     /***************************************************************************/
     /*
      *  id: 轴ID

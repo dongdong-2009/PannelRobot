@@ -211,13 +211,13 @@ ExtentActionEditorBase {
             }
 
             Row{
-                spacing: 12
+                spacing: 24
                 ICConfigEdit{
                     id:speedEdit
                     configName: qsTr("speed Value")
                     configAddr: "s_rw_0_32_1_1200"
                     configValue: "80.0"
-                    configNameWidth: 80
+                    configNameWidth: 40
                     unit: qsTr("%")
                 }
                 ICConfigEdit{
@@ -225,7 +225,7 @@ ExtentActionEditorBase {
                     configName: qsTr("Delay")
                     configAddr: "s_rw_0_32_1_1201"
                     configValue: "0.0"
-                    configNameWidth: 80
+                    configNameWidth: 40
                     unit: qsTr("s")
                 }
             }

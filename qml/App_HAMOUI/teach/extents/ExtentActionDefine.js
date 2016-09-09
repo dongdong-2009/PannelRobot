@@ -108,11 +108,10 @@ var extentSafeRangeAction = {
     "toStringHandler":function(actionObject){
         var id1 = actionObject.para1&0xf;
         var id2 = (actionObject.para1>>4)&0xf;
-        var allow = (actionObject.para1>>9)&1;
-        var type = (actionObject.para1>>10)&1;
-        var coor = (actionObject.para1>>11)&1;
-        console.log(id1)
-        return qsTr("Safe Control") + ":" + "if" + axisInfos[id1].name + qsTr("in pos fange:") +
+        var allow = (actionObject.para1>>8)&1;
+        var type = (actionObject.para1>>9)&1;
+        var coor = (actionObject.para1>>10)&1;
+        return qsTr("Safe Control") + ":" + qsTr("if") + " " + axisInfos[id1].name + (allow ? qsTr("out pos fange:") : qsTr("in pos fange:") ) +
                 "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n" +
                 axisInfos[id2].name+
                 qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")"+"\n" +

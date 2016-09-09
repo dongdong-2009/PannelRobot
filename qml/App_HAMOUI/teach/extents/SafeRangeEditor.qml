@@ -24,7 +24,7 @@ ExtentActionEditorBase {
         aid = actionObject.aid;
         var id1 = actionObject.para1&0xf;
         var id2 = (actionObject.para1>>4)&0xf;
-        var allow = (actionObject.para1>>9)&1;
+        var allow = (actionObject.para1>>8)&1;
         limitedAxisSel.configValue = id2;
         limitAxisSel.configValue = id1;
         checkOut.isChecked = allow
@@ -96,7 +96,7 @@ ExtentActionEditorBase {
             configValue: {
                 var ret= limitedAxisSel.configValue;
                 ret|= limitAxisSel.configValue<<4;
-                ret|= checkOut.isChecked?1<<9:0;
+                ret|= checkOut.isChecked?1<<8:0;
                 ret |= 3<<10;
                 return ret;
             }

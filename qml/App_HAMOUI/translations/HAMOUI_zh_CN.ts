@@ -1845,6 +1845,10 @@
         <source>will alarm:</source>
         <translation>就报警:</translation>
     </message>
+    <message>
+        <source>if</source>
+        <translation>如果</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>

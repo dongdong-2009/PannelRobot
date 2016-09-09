@@ -92,4 +92,30 @@ var extentDeltaJumpAction = {
     }
 }
 
-var extentActions = [extentPENQIANGAction, extentAnalogControlAction,extentDeltaJumpAction];
+var extentSafeRangeAction = {
+    "action":550,
+    "properties":[
+        new ActionDefineItem("para1", 0),
+        new ActionDefineItem("pos1", 0),
+        new ActionDefineItem("pos2", 0),
+        new ActionDefineItem("lpos1", 0),
+        new ActionDefineItem("lpos2", 0),
+        new ActionDefineItem("aid", 0)
+    ],
+    "canTestRun":false,
+    "canActionUsePoint": false,
+    "editableItems":{"editor":Qt.createComponent("SafeRangeEditor.qml"), "itemDef":{"item":"SafeRangeEditor"}},
+    "toStringHandler":function(actionObject){
+        var id1 = actionObject.para1&0xf;
+        var id2 = (actionObject.para1>>4)&0xf;
+        var allow = (actionObject.para1>>5)&1;
+        var type = (actionObject.para1>>6)&1;
+        var coor = (actionObject.para1>>7)&1;
+        return qsTr("Safe Control") + ":" + "if" + axisInfos[id1].name + qsTr("in pos fange:") +
+                "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n" +
+                axisInfos[id2].name+
+                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")"+"\n" +
+                qsTr("will alarm:") + actionObject.aid;
+    }
+}
+var extentActions = [extentPENQIANGAction, extentAnalogControlAction,extentDeltaJumpAction,extentSafeRangeAction];

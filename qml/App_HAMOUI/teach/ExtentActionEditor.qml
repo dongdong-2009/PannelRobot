@@ -49,6 +49,10 @@ Item {
                 id:deltaJumpControl
                 text: qsTr("Delta Jump Control")
             }
+            ICCheckBox{
+                id:safeRangeControl
+                text: qsTr("Safe Range Control")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -71,6 +75,7 @@ Item {
             addPage(axisFlyConfigs);
             addPage(analogControlEdit);
             addPage(deltaJumpEditor);
+            addPage(safeRangeEditor);
             currentIndex = 0;
         }
         PENQIANEditor{
@@ -81,6 +86,9 @@ Item {
         }
         DeltaJumpEditor{
             id:deltaJumpEditor
+        }
+        SafeRangeEditor{
+            id:safeRangeEditor
         }
     }
 }

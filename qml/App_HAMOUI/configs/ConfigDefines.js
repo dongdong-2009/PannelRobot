@@ -80,7 +80,7 @@ var getConfigRange = function(config){
     var r = configRanges[config];
     var items = config.split("_");
     if(r === undefined){
-        return {"min":0, "max":Math.pow(2, parseInt(items[3])), "decimal":parseInt(items[4])};
+        return {"min":0, "max":Math.pow(2, parseInt(items[3])) - 1, "decimal":parseInt(items[4])};
     }
     return {"min":r[0], "max":r[1], "decimal":parseInt(items[4])};
 };

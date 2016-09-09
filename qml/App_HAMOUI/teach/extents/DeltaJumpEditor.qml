@@ -27,6 +27,11 @@ ExtentActionEditorBase {
 
     property alias speed: speedEdit.configValue
     property alias delay: delayEdit.configValue
+    Image {
+        id: tipImage
+        source: "../../images/delta_jump.png"
+        y:-height
+    }
 
     ICFlickable{
         id:content

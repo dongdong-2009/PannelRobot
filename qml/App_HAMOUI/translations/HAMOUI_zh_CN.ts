@@ -457,6 +457,82 @@
         <source>None</source>
         <translation></translation>
     </message>
+    <message>
+        <source>5002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5003</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5004</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5005</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5006</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5007</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5008</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5009</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5018</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5019</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5020</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
@@ -1753,6 +1829,22 @@
         <source>speed:</source>
         <translation>速度:</translation>
     </message>
+    <message>
+        <source>Safe Control</source>
+        <translation>安全区</translation>
+    </message>
+    <message>
+        <source>in pos fange:</source>
+        <translation>在范围:</translation>
+    </message>
+    <message>
+        <source>out pos fange:</source>
+        <translation>不在范围:</translation>
+    </message>
+    <message>
+        <source>will alarm:</source>
+        <translation>就报警:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1767,6 +1859,10 @@
     <message>
         <source>Delta Jump Control</source>
         <translation>Delta路径</translation>
+    </message>
+    <message>
+        <source>Safe Range Control</source>
+        <translation>安全区</translation>
     </message>
 </context>
 <context>
@@ -5139,6 +5235,25 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeRangeEditor</name>
+    <message>
+        <source>Out Range</source>
+        <translation>不在范围(默认在范围)</translation>
+    </message>
+    <message>
+        <source>Limited Axis</source>
+        <translation>被限制轴</translation>
+    </message>
+    <message>
+        <source>Limit Axis</source>
+        <translation>限制轴</translation>
+    </message>
+    <message>
+        <source>Alarm Num</source>
+        <translation>报警号</translation>
     </message>
 </context>
 <context>

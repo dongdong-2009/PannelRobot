@@ -152,3 +152,8 @@ function programToParsingIndex(p){
     return 0;
 }
 var insertboad = null;
+
+var clipboard = [];
+function setClipboard(lines){
+    clipboard = lines;
+}

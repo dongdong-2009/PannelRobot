@@ -382,6 +382,7 @@ Rectangle {
         var pointLines;
         var md;
         var i;
+        var len;
 
         // module points execute
         if(moduleSel.currentIndex > 0)
@@ -805,6 +806,7 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    popupHeight: 350
                     visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
@@ -892,6 +894,7 @@ Rectangle {
                     text: qsTr("Del Module")
                     height: editing.height
                     onButtonClicked: {
+                        hasModify = false;
                         var toDelID = Utils.getValueFromBrackets(moduleSel.currentText());
                         Teach.functionManager.delFunction(toDelID);
                         var ci = moduleSel.currentIndex;
@@ -1182,12 +1185,73 @@ Rectangle {
                         width: 40
                         text: qsTr("CUW")
 
+                        Rectangle{
+                            id:copyAdvance
+                            border.width: 1
+                            border.color: "black"
+                            color: "#A0A0F0"
+                            MouseArea{
+                                anchors.fill: parent
+                            }
+                            width: 310
+                            height: 100
+                            x:parent.width - width
+                            y:{
+                                if(toolBar.y < height)
+                                    return parent.height;
+                                 return -height;
+                            }
+                            visible: false
+                            Column{
+                                anchors.centerIn: parent
+                                spacing: 6
+                                ICButton{
+                                    id:copyCurrentLineBtn
+                                    text: qsTr("Copy Current Line")
+                                    width: 210
+                                    onButtonClicked: {
+                                        PData.setClipboard([copyLine()]);
+                                        copyAdvance.visible = false;
+                                        pasteBtn.enabled = PData.clipboard.length != 0;
+                                    }
+                                }
+                                Row{
+                                    spacing: 6
+                                    ICConfigEdit{
+                                        id:seq
+                                        configName: qsTr("Seq")
+                                        inputWidth: 50
+                                        height: copyMultiLineBtn.height
+                                        configValue: "0"
+                                    }
+                                    ICButton{
+                                        id:copyMultiLineBtn
+                                        text:qsTr("Copy Between Seq and Current")
+                                        width: 210
+                                        onButtonClicked: {
+                                            var toCopy = [];
+                                            var begin = Math.min(parseInt(seq.configValue), programListView.currentIndex);
+                                            var end = Math.max(parseInt(seq.configValue), programListView.currentIndex);
+                                            for(var i = begin; i <= end; ++i){
+                                                toCopy.push(Utils.cloneObject(currentModel().get(i).mI_ActionObject));
+                                            }
+                                            PData.setClipboard(toCopy);
+                                            pasteBtn.enabled = PData.clipboard.length != 0;
+                                            copyAdvance.visible = false;
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
 
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
 
                         onButtonClicked: {
+                            copyAdvance.visible = true;
 //                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
                             PData.insertboad = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
@@ -1604,6 +1668,9 @@ Rectangle {
             width: parent.width
             height: parent.height
             visible: false
+            onVisibleChanged: {
+                isAnalogEn = panelRobotController.getConfigValue("s_rw_0_32_0_213");
+            }
         }
     }
     
@@ -1776,8 +1843,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        Teach.registerCustomAction(ExtentActionDefine.extentPENQIANGAction);
-        panelRobotController.registerCustomProgramAction(ExtentActionDefine.extentPENQIANGAction.toRegisterString());
+        Teach.registerCustomActions(panelRobotController, ExtentActionDefine.extentActions);
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
         PData.programs.push(mainProgramModel);

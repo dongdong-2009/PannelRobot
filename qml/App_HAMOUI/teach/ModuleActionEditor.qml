@@ -35,12 +35,15 @@ Item {
             z:2
             configNameWidth: 100
             inputWidth: 200
+            popupHeight: 100
+
         }
         ICComboBoxConfigEdit{
             id:callBackSel
             configName: qsTr("Return To Flag")
             configNameWidth: 100
             inputWidth: 200
+            popupHeight: 100
 
         }
     }

@@ -459,6 +459,25 @@
     </message>
 </context>
 <context>
+    <name>AnalogControlEditor</name>
+    <message>
+        <source>Chanel</source>
+        <translation>通道</translation>
+    </message>
+    <message>
+        <source>Analog Value</source>
+        <translation>模拟量</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ArmMovePage</name>
     <message>
         <source>Speed</source>
@@ -726,6 +745,38 @@
         <source>cuont:</source>
         <translation type="unfinished">每模个数</translation>
     </message>
+    <message>
+        <source>Analog &gt;&gt;</source>
+        <translation>模拟量&gt;&gt;</translation>
+    </message>
+    <message>
+        <source>Analog &lt;&lt;</source>
+        <translation>模拟量&lt;&lt;</translation>
+    </message>
+    <message>
+        <source>Chanel-0</source>
+        <translation>通道0</translation>
+    </message>
+    <message>
+        <source>Chanel-1</source>
+        <translation>通道1</translation>
+    </message>
+    <message>
+        <source>Chanel-2</source>
+        <translation>通道2</translation>
+    </message>
+    <message>
+        <source>Chanel-3</source>
+        <translation>通道3</translation>
+    </message>
+    <message>
+        <source>Chanel-4</source>
+        <translation>通道4</translation>
+    </message>
+    <message>
+        <source>Chanel-5</source>
+        <translation>通道5</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
@@ -852,6 +903,10 @@
     <message>
         <source>Rel</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel Point</source>
+        <translation>引用点</translation>
     </message>
 </context>
 <context>
@@ -1598,6 +1653,53 @@
     </message>
 </context>
 <context>
+    <name>DeltaJumpEditor</name>
+    <message>
+        <source>LH Pos</source>
+        <translation>起点高</translation>
+    </message>
+    <message>
+        <source>MH Pos</source>
+        <translation>中点高</translation>
+    </message>
+    <message>
+        <source>RH Pos</source>
+        <translation>终点高</translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>End Pos</source>
+        <translation>终点</translation>
+    </message>
+    <message>
+        <source>speed Value</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
@@ -1631,12 +1733,56 @@
         <source>Delay:</source>
         <translation>延时:</translation>
     </message>
+    <message>
+        <source>Analog Control</source>
+        <translation>模拟控制</translation>
+    </message>
+    <message>
+        <source>Analog:</source>
+        <translation>模拟量:</translation>
+    </message>
+    <message>
+        <source>Delta Jumpl</source>
+        <translation>Delta 路径</translation>
+    </message>
+    <message>
+        <source>start pos:</source>
+        <translation>起点:</translation>
+    </message>
+    <message>
+        <source>LH:</source>
+        <translation>起点高:</translation>
+    </message>
+    <message>
+        <source>MH:</source>
+        <translation>中点高:</translation>
+    </message>
+    <message>
+        <source>RH:</source>
+        <translation>终点高:</translation>
+    </message>
+    <message>
+        <source>end pos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>speed:</source>
+        <translation>速度:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
     <message>
         <source>Axis Ply</source>
         <translation>单轴往复</translation>
+    </message>
+    <message>
+        <source>Analog Control</source>
+        <translation>模拟控制</translation>
+    </message>
+    <message>
+        <source>Delta Jump Control</source>
+        <translation>Delta路径</translation>
     </message>
 </context>
 <context>
@@ -4143,7 +4289,15 @@
     </message>
     <message>
         <source>Type3</source>
+<<<<<<< HEAD
         <translation></translation>
+=======
+        <translation>自动设定原点加开关(短原点)</translation>
+    </message>
+    <message>
+        <source>Type4</source>
+        <translation>自动设定原点加开关(长原点)</translation>
+>>>>>>> master
     </message>
 </context>
 <context>
@@ -5165,6 +5319,7 @@ please chose!</source>
 </translation>
     </message>
     <message>
+<<<<<<< HEAD
         <source>Negitv En</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5216,6 +5371,23 @@ please chose!</source>
         <source>Gun2 Lock</source>
         <translation>锁枪2</translation>
     </message>
+=======
+        <source>Copy Current Line</source>
+        <translation>复制当前行</translation>
+    </message>
+    <message>
+        <source>Seq</source>
+        <translation>序号</translation>
+    </message>
+    <message>
+        <source>Copy Between Seq and Current</source>
+        <translation>复制序号到当前的行</translation>
+    </message>
+    <message>
+        <source>Paste</source>
+        <translation>粘贴</translation>
+    </message>
+>>>>>>> master
 </context>
 <context>
     <name>ProgramPage</name>
@@ -6000,6 +6172,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>L24</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Analog En</source>
+        <translation>模拟量模块使能</translation>
     </message>
 </context>
 <context>

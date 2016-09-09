@@ -52,6 +52,7 @@ Row{
         width: editorWidth
         visible: true
         currentIndex: 0
+        popupMode: 1
     }
     ICLineEdit{
         id:speed

@@ -70,6 +70,7 @@ ExtentActionEditorBase {
 
         ICConfigEdit{
             id:aidEdit
+            configName: qsTr("Alarm Num")
             configValue: "5000"
             configNameWidth: 40
         }

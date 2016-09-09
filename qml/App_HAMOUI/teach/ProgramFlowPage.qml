@@ -1261,10 +1261,10 @@ Rectangle {
                         }
                     }
                     ICButton{
-                        id:pase
+                        id:pasteBtn
                         height: parent.height
                         width: 40
-                        text: qsTr("Pase")
+                        text: qsTr("Paste")
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }

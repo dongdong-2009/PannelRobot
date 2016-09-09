@@ -455,6 +455,7 @@ public:
 
     bool CreateCounter(quint32 id, const QString& name, quint32 current, quint32 target);
     bool DeleteCounter(quint32 id);
+    bool DeleteAllCounter();
     int IndexOfCounter(quint32 id) const;
     QVariantList GetCounter(quint32 id) const
     {

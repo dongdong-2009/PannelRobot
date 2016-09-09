@@ -870,6 +870,14 @@ bool ICDALHelper::DelCounter(const QString &moldname, quint32 id)
     return query.exec(cmd);
 }
 
+bool ICDALHelper::DelAllCounter(const QString &moldname)
+{
+    QSqlQuery query;
+    QString cmd = QString("DELETE FROM %1").arg(MoldConfigNameWrapper(MoldCounterTableName(moldname)));
+    return query.exec(cmd);
+}
+
+
 bool ICDALHelper::UpdateVariable(const QString &moldname, const QVariantList& variable)
 {
     QSqlQuery query;

@@ -1114,6 +1114,11 @@ bool PanelRobotController::delCounterDef(quint32 id)
     return ICRobotMold::CurrentMold()->DeleteCounter(id);
 }
 
+bool PanelRobotController::delAllCounterDef()
+{
+    return ICRobotMold::CurrentMold()->DeleteAllCounter();
+}
+
 QString PanelRobotController::counterDefs() const
 {
     QVector<QVariantList> counters = ICRobotMold::CurrentMold()->Counters();

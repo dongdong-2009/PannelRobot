@@ -1703,6 +1703,11 @@ bool ICRobotMold::DeleteCounter(quint32 id)
     return false;
 }
 
+bool ICRobotMold::DeleteAllCounter()
+{
+    return ICDALHelper::DelAllCounter(moldName_);
+}
+
 bool ICRobotMold::CreateVariables(quint32 id, const QString &name, const QString &unit, quint32 v, quint32 decimal)
 {
     int indexOfVariable = IndexOfVariable(id);

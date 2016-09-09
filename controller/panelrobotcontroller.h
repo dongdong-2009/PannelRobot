@@ -508,6 +508,7 @@ public:
 
     Q_INVOKABLE bool saveCounterDef(quint32 id, const QString& name, quint32 current, quint32 target);
     Q_INVOKABLE bool delCounterDef(quint32 id);
+    Q_INVOKABLE bool delAllCounterDef();
     Q_INVOKABLE QString counterDefs() const;
 
     Q_INVOKABLE bool saveVariableDef(quint32 id, const QString& name, const QString& unit, quint32 val, quint32 decimal);

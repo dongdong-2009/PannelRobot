@@ -154,6 +154,7 @@ public:
     static bool UpdateCounter(const QString& moldname, const QVariantList &counter);
     static bool AddCounter(const QString& moldname, const QVariantList &counter);
     static bool DelCounter(const QString& moldname, quint32 id);
+    static bool DelAllCounter(const QString& moldname);
 
     static bool UpdateVariable(const QString& moldname, const QVariantList &variable);
     static bool AddVariable(const QString& moldname, const QVariantList &variable);

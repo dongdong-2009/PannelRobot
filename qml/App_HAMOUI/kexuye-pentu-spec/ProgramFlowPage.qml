@@ -1628,6 +1628,7 @@ ProgramFlowPage {
 
     function modelToProgram(which){
         BaseTeach.counterManager.delAllCounter();
+        panelRobotController.delAllCounterDef();
         var model = BasePData.programs[which];
         LocalPData.programtoStep = [];
         LocalPData.stepToKeXuYeRowMap = {};
@@ -1822,16 +1823,6 @@ ProgramFlowPage {
 
     onActionLineDeleted: {
         if(actionObject.action == LocalTeach.actions.F_CMD_PENTU){
-            BaseTeach.counterManager.delCounter(actionObject.repeateCounterID);
-            panelRobotController.delCounterDef(actionObject.repeateCounterID);
-            BaseTeach.counterManager.delCounter(actionObject.dirCounterID);
-            panelRobotController.delCounterDef(actionObject.dirCounterID);
-//            BaseTeach.counterManager.delCounter(actionObject.rotateCounterID);
-//            panelRobotController.delCounterDef(actionObject.rotateCounterID);
-            BaseTeach.counterManager.delCounter(actionObject.aaaa);
-            panelRobotController.delCounterDef(actionObject.aaaa);
-            BaseTeach.counterManager.delCounter(actionObject.bbbb);
-            panelRobotController.delCounterDef(actionObject.bbbb);
             BaseTeach.delStack(actionObject.stack1);
             panelRobotController.saveStacks(BaseTeach.stacksToJSON());
         }

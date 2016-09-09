@@ -15,7 +15,6 @@ Item {
     property variant actionObject: null
     property variant detailInstance: null
     property variant stackInstance: null
-    property variant stackCount: []
     property bool isauto: false
     onIsautoChanged: {
         if(isauto){
@@ -46,36 +45,35 @@ Item {
             var details = detailInstance.getDetails();
             var stack = stackInstance.getstackInstace();
         }
-        var rc = BaseTeach.counterManager.getCounter(0);
-        if(rc == null){
-            rc= BaseTeach.counterManager.newCounter("", 0, 50000);
-            panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
-        }
-        var rotateCID = rc.id;
-        var c = BaseTeach.counterManager.newCounter("", 0, repeateCount.configValue);
-        var rcID = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        c = BaseTeach.counterManager.newCounter("", 0, dirCount.configValue);
-        var dirCID = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
-        var rotateOKCount = rotate.configValue / 90;
-        if(rotate.configValue < 0)rotateOKCount = -rotateOKCount;
-        c = BaseTeach.counterManager.newCounter("", 0, rotateOKCount);
-        var rotateOKCID = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+//        var rc = BaseTeach.counterManager.getCounter(0);
+//        if(rc == null){
+//            rc= BaseTeach.counterManager.newCounter("", 0, 50000);
+//            panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
+//        }
+//        var rotateCID = rc.id;
+        var rotateCID = -1;
+//        var c = BaseTeach.counterManager.newCounter("", 0, repeateCount.configValue);
+//        var rcID = c.id;
+        var rcID = -1;
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        if(actObt == null)
-            c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
-        else
-            c = BaseTeach.counterManager.newCounter("", 0, actObt.xcount * actObt.ycount);
-        var aaaa = stackCount = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+//        c = BaseTeach.counterManager.newCounter("", 0, dirCount.configValue);
+//        var dirCID = c.id;
+        var dirCID = -1;
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
-        var bbbb = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+//        if(actObt == null)
+//            c = BaseTeach.counterManager.newCounter("", 0, stack.xcount * stack.ycount);
+//        else
+//            c = BaseTeach.counterManager.newCounter("", 0, actObt.xcount * actObt.ycount);
+//        var aaaa = stackCount = c.id;
+         var aaaa = -1;
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-
+//        c = BaseTeach.counterManager.newCounter("", 0, rotateCount.configValue);
+//        var bbbb = c.id;
+        var bbbb = -1;
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
         if(actObt == null){
             if(stack.useStack)
@@ -97,7 +95,7 @@ Item {
                         rotate.configValue, rotateSpeed.configValue, rotateCount.configValue,
                         details.delay0, details.delay1, details.delay2, rcID, dirCID, rotateCID,
                         details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
-                        details.fixture1Switch, details.slope, rotateOKCID, gunFollowEn.isChecked,
+                        details.fixture1Switch, details.slope, gunFollowEn.isChecked,
                         aaaa,bbbb,editaction.configValue,
                         stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
                         stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
@@ -112,7 +110,7 @@ Item {
                         actObt.dirCount, actObt.point1, actObt.point2, actObt.rotate, actObt.rotateSpeed, actObt.rotateCount,
                         actObt.fixtureDelay0, actObt.fixtureDelay1, actObt.fixtureDelay2, rcID, dirCID, rotateCID,
                         actObt.fixture2Delay0, actObt.fixture2Delay1, actObt.fixture2Delay2, actObt.fixture1Switch, actObt.fixture2Switch,
-                        actObt.slope, rotateOKCID, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
+                        actObt.slope, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
                         actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
                         actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
                         actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
@@ -141,7 +139,7 @@ Item {
                                           stack.ydirection,
                                           stack.zdirection,
                                           true,
-                                          stackCount,
+                                          aaaa,
                                           stack.useDeviation,
                                           stack.xdeviation,
                                           stack.ydeviation,
@@ -198,20 +196,20 @@ Item {
         ao.rotateCount = rotateCount.configValue;
         ao.isGunBack = isGunBack.isChecked;
 
-        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
-        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.dirCount);
-//        counterUpdated(c.id);
+//        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
+//        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.dirCount);
+////        counterUpdated(c.id);
 
-        c = BaseTeach.counterManager.getCounter(ao.rotateCounterID);
-        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.rotateCount);
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.rotateCount);
-//        counterUpdated(c.id);
+//        c = BaseTeach.counterManager.getCounter(ao.rotateCounterID);
+//        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.rotateCount);
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.rotateCount);
+////        counterUpdated(c.id);
 
-        c = BaseTeach.counterManager.getCounter(ao.repeateCounterID);
-        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.repeateCount);
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.repeateCount);
-//        counterUpdated(c.id);
+//        c = BaseTeach.counterManager.getCounter(ao.repeateCounterID);
+//        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.repeateCount);
+//        panelRobotController.saveCounterDef(c.id, c.name, c.current, ao.repeateCount);
+////        counterUpdated(c.id);
     }
 
     function setModeName(name){
@@ -242,7 +240,7 @@ Item {
 //        repeateCount.visible = mode == 8 ? false : true;
 //        zlength.visible = mode == 8 ? false : true;
 //        dirLength.visible = mode == 8 ? false : true;
-        dirSpeed.visible = mode == 8 || mode == 6 ? false : true;
+        dirSpeed.visible = mode == 8 || mode == 6 || mode == 9 ? false : true;
     }
     function hidePoint(){
         if(mode == 8){
@@ -637,14 +635,14 @@ Item {
             ICConfigEdit{
                 id:repeateCount
 //                enabled: !useEn.isChecked
-                visible: (mode == 3 || mode == 7) ? true : false
+                visible: (mode == 3 || mode == 7 || mode == 9) ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("Repeate Count")
             }
             ICConfigEdit{
                 id:zlength
 //                enabled: !useEn.isChecked
-                visible: mode > 3 && mode != 8 ? true : false
+                visible: mode > 3 && mode != 8 && mode != 9 ? true : false
                 width: repeateSpeed.width
                 configName: qsTr("z length")
                 configAddr: "s_rw_0_32_3_1300"
@@ -658,7 +656,7 @@ Item {
             ICConfigEdit{
                 id:dirLength
 //                enabled: !useEn.isChecked
-                visible: mode == 2 || mode == 6 || mode == 8? false : true
+                visible: mode == 2 || mode == 6 || mode == 8 || mode == 9 ? false : true
                 width: repeateSpeed.width
                 configName: qsTr("Dir Length")
                 configAddr: "s_rw_0_32_3_1300"
@@ -674,7 +672,7 @@ Item {
             }
             ICConfigEdit{
                 id:dirCount
-                visible: mode != 2
+                visible: mode != 2 && mode != 9
                 width: repeateSpeed.width
                 configName: qsTr("Dir Count")
             }

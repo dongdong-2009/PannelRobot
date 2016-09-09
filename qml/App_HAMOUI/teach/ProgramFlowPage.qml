@@ -66,6 +66,13 @@ Rectangle {
         return Utils.cloneObject(currentModelData().mI_ActionObject);
     }
 
+    function creatflags(actionObject){
+        return;
+    }
+//    function creatcounters(actionObject){
+//        return;
+//    }
+
     function autoEditFinish(row){
         var mID = moduleSel.currentIndex == 0 ? -1: Utils.getValueFromBrackets(moduleSel.currentText());
         if(panelRobotController.fixProgramOnAutoMode(editing.currentIndex,
@@ -146,7 +153,7 @@ Rectangle {
         }
         repaintProgramItem(currentModel());
         programListView.positionViewAtIndex(programListView.currentIndex, ListView.Visible);
-        onSaveTriggered();
+//        onSaveTriggered();
     }
 
     function onDeleteTriggered(){
@@ -183,7 +190,7 @@ Rectangle {
         PData.pointLinesInfo.syncLines(cPI, oCI, -1);
         hasModify = true;
         repaintProgramItem(model);
-        onSaveTriggered();
+//        onSaveTriggered();
     }
 
     function findSyncStart(endPos){
@@ -1198,6 +1205,8 @@ Rectangle {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
                         onButtonClicked: {
+                            creatflags(PData.insertboad);
+//                            creatcounters(PData.insertboad);
                             insertActionToList(PData.insertboad);
                             repaintProgramItem(currentModel());
                         }

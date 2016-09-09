@@ -4880,11 +4880,15 @@ please chose!</source>
     </message>
     <message>
         <source>Repeat EPos</source>
-        <translation type="unfinished">设入终点</translation>
+        <translation>设入终点</translation>
     </message>
     <message>
         <source>Dir EPos</source>
-        <translation type="unfinished">设入终点</translation>
+        <translation>设入终点</translation>
+    </message>
+    <message>
+        <source>PT Line ceycle</source>
+        <translation>直线往复</translation>
     </message>
 </context>
 <context>
@@ -5182,14 +5186,6 @@ please chose!</source>
     </message>
     <message>
         <source>Ceycle Over</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>over elar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>over done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6718,7 +6714,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>DIYAction</source>
-        <translation>自定义</translation>
+        <translation>自定义动作</translation>
     </message>
     <message>
         <source>Rel</source>
@@ -6739,6 +6735,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>GoOn Output</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LineCycle</source>
+        <translation>直线往复</translation>
     </message>
 </context>
 <context>

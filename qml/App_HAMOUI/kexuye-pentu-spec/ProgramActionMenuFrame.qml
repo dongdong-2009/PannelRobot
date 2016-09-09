@@ -55,6 +55,13 @@ ProgramActionMenuFrame{
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }
+                CatalogButton{
+                    id:ptLine_Cycle
+                    text:qsTr("PT Line ceycle")
+                    icon: "../images/1-4.png"
+                    iconwidth: ptLine_U_2D.iconwidth
+                    iconheight: ptLine_U_2D.iconheight
+                }
             }
             Row{
                 spacing: 20
@@ -194,6 +201,9 @@ ProgramActionMenuFrame{
         });
         dIY_Action.buttonClicked.connect(function(){
             setModeEditorHelper(LocalTeach.pentuModes.DIYAction, dIY_Action.text, qsTr("Set EPos"), qsTr("Set TPos"));
+        });
+        ptLine_Cycle.buttonClicked.connect(function(){
+            setModeEditorHelper(LocalTeach.pentuModes.LineCycle, ptLine_Cycle.text, qsTr("Set EPos"), qsTr("Set TPos"));
         });
     }
 }

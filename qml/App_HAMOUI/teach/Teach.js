@@ -642,6 +642,9 @@ function CounterManager(){
             }
         }
     }
+    this.delAllCounter = function(){
+        this.counters = [];
+    }
     this.registerObserver = function(obj){
         this.observer.push(obj);
     }

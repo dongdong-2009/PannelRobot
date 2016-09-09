@@ -17,6 +17,7 @@ pentuModes.ArcZ3DRepeat = 5;
 pentuModes.ArcSaw3DRepeat = 6;
 pentuModes.ArcDir3DRepeat = 7;
 pentuModes.DIYAction = 8;
+pentuModes.LineCycle = 9;
 
 var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startPosSpeed1,
                                    startPosSpeed2, startPosSpeed3, startPosSpeed4, startPosSpeed5,
@@ -24,68 +25,68 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    dirCount, point1, point2, rotate, rotateSpeed, rotateCount,
                                    fixtureDelay0, fixtureDelay1, fixtureDelay2, rcID, dirCID, rotateCID,
                                    fixture2Delay0, fixture2Delay1, fixture2Delay2, fixture1Switch, fixture2Switch,
-                                   slope, rotateOKCID, gunFollowEn,aaaa,bbbb,editaction,
+                                   slope, gunFollowEn,aaaa,bbbb,editaction,
                                    useStack,useDeviation,turns,stackSpeed,xdeviation,ydeviation,
                                    zdeviation,xspace,yspace,zspace,xcount,ycount,
                                    zcount,xdirection,ydirection,zdirection,stack1,isGunBack,
                                    gun1use0,gun1use1,gun1use2,gun2use0,gun2use1,gun2use2){
-    var f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag0 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag1 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag2 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag3 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag4 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag5 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag6 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag7 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag8 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag9 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag10 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag11 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag12 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag13 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag14 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag15 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag16 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag17 = f.flagID;
-    f = flagsDefine.createFlag(0, "");
-    flagsDefine.pushFlag(0, f);
-    var flag18 = f.flagID;
+//    var f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag0 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag1 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag2 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag3 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag4 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag5 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag6 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag7 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag8 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag9 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag10 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag11 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag12 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag13 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag14 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag15 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag16 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag17 = f.flagID;
+//    f = flagsDefine.createFlag(0, "");
+//    flagsDefine.pushFlag(0, f);
+//    var flag18 = f.flagID;
 //    if(mode == 0){
 
     var rpeateAxis = 0;
@@ -250,7 +251,6 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "repeateCount":repeateCount,
         "zlength":zlength,
         "repeateCounterID":rcID,
-        "rotateOKCID":rotateOKCID,
         "dirAxis":dirAxis,
         "dirLength":dirLength,
         "dirSpeed":dirSpeed,
@@ -264,25 +264,44 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "rotateSpeed":rotateSpeed,
         "rotateCount":rotateCount,
         "rotateCounterID":rotateCID,
-        "flag0":flag0,
-        "flag1":flag1,
-        "flag2":flag2,
-        "flag3":flag3,
-        "flag4":flag4,
-        "flag5":flag5,
-        "flag6":flag6,
-        "flag7":flag7,
-        "flag8":flag8,
-        "flag9":flag9,
-        "flag10":flag10,
-        "flag11":flag11,
-        "flag12":flag12,
-        "flag13":flag13,
-        "flag14":flag14,
-        "flag15":flag15,
-        "flag16":flag16,
-        "flag17":flag17,
-        "flag18":flag18,
+//        "flag0":flag0,
+//        "flag1":flag1,
+//        "flag2":flag2,
+//        "flag3":flag3,
+//        "flag4":flag4,
+//        "flag5":flag5,
+//        "flag6":flag6,
+//        "flag7":flag7,
+//        "flag8":flag8,
+//        "flag9":flag9,
+//        "flag10":flag10,
+//        "flag11":flag11,
+//        "flag12":flag12,
+//        "flag13":flag13,
+//        "flag14":flag14,
+//        "flag15":flag15,
+//        "flag16":flag16,
+//        "flag17":flag17,
+//        "flag18":flag18,
+        "flag0":0,
+        "flag1":0,
+        "flag2":0,
+        "flag3":0,
+        "flag4":0,
+        "flag5":0,
+        "flag6":0,
+        "flag7":0,
+        "flag8":0,
+        "flag9":0,
+        "flag10":0,
+        "flag11":0,
+        "flag12":0,
+        "flag13":0,
+        "flag14":0,
+        "flag15":0,
+        "flag16":0,
+        "flag17":0,
+        "flag18":0,
         "startPosSpeed0":startPosSpeed0,
         "startPosSpeed1":startPosSpeed1,
         "startPosSpeed2":startPosSpeed2,
@@ -362,6 +381,8 @@ var pentuActionToStringHandler = function(actionObject){
         ret += qsTr("ArcDir3DRepeat");
     else if(mode == pentuModes.DIYAction)
         ret += qsTr("DIYAction");
+    else if(mode == pentuModes.LineCycle)
+        ret += qsTr("LineCycle");
 //    ret += " ";
 //    if(mode !== pentuModes.DIYAction){
 //        if(actionObject.plane == 0)

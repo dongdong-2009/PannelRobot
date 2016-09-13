@@ -1082,8 +1082,10 @@ ProgramFlowPage {
             var overlength = pos.m0;
             if(overlength > actionObject.dirLength)
                 overlength = actionObject.dirLength;
-            if(parseFloat(overlength) < 0)
-                overlength = -overlength;
+            if(Math.abs(parseFloat(overlength)) > 80)
+                overlength = 80;
+//            if(parseFloat(overlength) < 0)
+//                overlength = -overlength;
             if(parseInt(actionObject.repeateCount) % 2 == 0)
                 var repeatC = parseInt(actionObject.repeateCount) / 2;
             else
@@ -1094,7 +1096,7 @@ ProgramFlowPage {
                              [{"pointName":"", "pos":pos}], actionObject.repeateSpeed, 0.0));
                     if(parseInt(actionObject.repeateCount) % 2 == 0 && i == repeatC - 1)
                         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                                 -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                                 -repeatlength, actionObject.repeateSpeed,0,false,true,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
                     else ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
                              [{"pointName":"", "pos":pos1}], actionObject.repeateSpeed, 0.0));
                 }
@@ -1113,7 +1115,7 @@ ProgramFlowPage {
             if(parseInt(actionObject.repeateCount) % 2 == 1){
                 if(actionObject.mode == 3)
                     ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                             repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                             repeatlength, actionObject.repeateSpeed,0,false,true,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
                 if(actionObject.mode == 7)
                     ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                              [{"pointName":"", "pos":tmp},
@@ -1128,10 +1130,10 @@ ProgramFlowPage {
 
             if(actionObject.mode == 3)
                 ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
-                         actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                         actionObject.dirLength, actionObject.dirSpeed,0,false,true,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
             else
                 ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
-                         actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+                         actionObject.dirLength, actionObject.dirSpeed,0,false,false,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
             if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
                 gun1openAction(ret,actionObject);
 
@@ -1157,7 +1159,7 @@ ProgramFlowPage {
                 }
                 if(actionObject.mode == 3)
                     ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                             -repeatlength, actionObject.repeateSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                             -repeatlength, actionObject.repeateSpeed,0,false,true,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
                 if(actionObject.mode == 7)
                     ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_ARC_RELATIVE_POSE,
                              [{"pointName":"", "pos":tmp1},
@@ -1171,10 +1173,10 @@ ProgramFlowPage {
 
                 if(actionObject.mode == 3)
                     ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
-                             actionObject.dirLength, actionObject.dirSpeed,0,false,true,overlength/2,false,0,0,false,0,0,0,false,1));
+                             actionObject.dirLength, actionObject.dirSpeed,0,false,true,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
                 else
                     ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.dirAxis,
-                             actionObject.dirLength, actionObject.dirSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+                             actionObject.dirLength, actionObject.dirSpeed,0,false,false,Math.abs(overlength)/2,false,0,0,false,0,0,0,false,1));
                 if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
                     gun1openAction(ret,actionObject);
             }
@@ -1605,14 +1607,14 @@ ProgramFlowPage {
     function creatcounters(actionObject){
         var rc = BaseTeach.counterManager.getCounter(0);
         if(rc == null){
-            rc= BaseTeach.counterManager.newCounter("111", 0, 50000);
+            rc= BaseTeach.counterManager.newCounter("111", 0, panelRobotController.getConfigValue("s_rw_16_16_0_943"));
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
             actionObject.rotateCounterID = rc.id;
         }
 
         var c = BaseTeach.counterManager.newCounter("222", 0, actionObject.repeateCount);
         actionObject.repeateCounterID = c.id;
-        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
+        var mm = panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
         c = BaseTeach.counterManager.newCounter("333", 0, actionObject.dirCount);
         actionObject.dirCounterID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);

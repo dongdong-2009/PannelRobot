@@ -721,6 +721,9 @@ Rectangle {
 
     Component.onCompleted: {
         //        menuOperation.setChecked(true);
+        panelRobotController.createCustomAddr(3,3,0,16,943,0,"");
+        panelRobotController.createCustomAddr(3,3,16,16,943,0,"");
+        panelRobotController.createCustomAddr(3,3,0,16,944,0,"");
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

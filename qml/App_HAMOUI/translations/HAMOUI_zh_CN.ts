@@ -462,15 +462,15 @@
     <name>AnalogControlEditor</name>
     <message>
         <source>Chanel</source>
-        <translation>通道</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Analog Value</source>
-        <translation>模拟量</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation>延时</translation>
+        <translation type="unfinished">延时</translation>
     </message>
     <message>
         <source>s</source>
@@ -723,7 +723,7 @@
     </message>
     <message>
         <source>Target:</source>
-        <translation>目标产量</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Current:</source>
@@ -743,39 +743,43 @@
     </message>
     <message>
         <source>cuont:</source>
-        <translation type="unfinished">每模个数</translation>
+        <translation type="obsolete">每模个数</translation>
     </message>
     <message>
         <source>Analog &gt;&gt;</source>
-        <translation>模拟量&gt;&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Analog &lt;&lt;</source>
-        <translation>模拟量&lt;&lt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chanel-0</source>
-        <translation>通道0</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chanel-1</source>
-        <translation>通道1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chanel-2</source>
-        <translation>通道2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chanel-3</source>
-        <translation>通道3</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chanel-4</source>
-        <translation>通道4</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chanel-5</source>
-        <translation>通道5</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Targetcount:</source>
+        <translation>目标产量</translation>
     </message>
 </context>
 <context>
@@ -906,7 +910,7 @@
     </message>
     <message>
         <source>Rel Point</source>
-        <translation>引用点</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1595,7 +1599,7 @@
     </message>
     <message>
         <source>Exporting...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导出中</translation>
     </message>
     <message>
         <source>Export successfully!</source>
@@ -1656,47 +1660,47 @@
     <name>DeltaJumpEditor</name>
     <message>
         <source>LH Pos</source>
-        <translation>起点高</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MH Pos</source>
-        <translation>中点高</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>RH Pos</source>
-        <translation>终点高</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>mm</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Start Pos</source>
-        <translation>起点</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation>设入</translation>
+        <translation type="unfinished">设入</translation>
     </message>
     <message>
         <source>End Pos</source>
-        <translation>终点</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>speed Value</source>
-        <translation>速度</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation>延时</translation>
+        <translation type="unfinished">延时</translation>
     </message>
     <message>
         <source>s</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1735,39 +1739,55 @@
     </message>
     <message>
         <source>Analog Control</source>
-        <translation>模拟控制</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Analog:</source>
-        <translation>模拟量:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delta Jumpl</source>
-        <translation>Delta 路径</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>start pos:</source>
-        <translation>起点:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>LH:</source>
-        <translation>起点高:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MH:</source>
-        <translation>中点高:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>RH:</source>
-        <translation>终点高:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>end pos:</source>
-        <translation>终点位置:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>speed:</source>
-        <translation>速度:</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Safe Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>in pos fange:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>out pos fange:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>will alarm:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1778,11 +1798,15 @@
     </message>
     <message>
         <source>Analog Control</source>
-        <translation>模拟控制</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delta Jump Control</source>
-        <translation>Delta路径</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Safe Range Control</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3993,6 +4017,10 @@
         <source>Set TPos</source>
         <translation type="unfinished">设入经过</translation>
     </message>
+    <message>
+        <source>Repeat Axis</source>
+        <translation>往复轴</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -4289,15 +4317,11 @@
     </message>
     <message>
         <source>Type3</source>
-<<<<<<< HEAD
         <translation></translation>
-=======
-        <translation>自动设定原点加开关(短原点)</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>自动设定原点加开关(长原点)</translation>
->>>>>>> master
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4841,6 +4865,22 @@ please chose!</source>
         <source>custom Variables</source>
         <translation>自定义变量</translation>
     </message>
+    <message>
+        <source>cuont:</source>
+        <translation>每模个数</translation>
+    </message>
+    <message>
+        <source>nmb</source>
+        <translation>个</translation>
+    </message>
+    <message>
+        <source>Target:</source>
+        <translation>模数</translation>
+    </message>
+    <message>
+        <source>Clear Count</source>
+        <translation>清空当前产量</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -5298,7 +5338,7 @@ please chose!</source>
     </message>
     <message>
         <source>Program Compiling...</source>
-        <translation type="unfinished"></translation>
+        <translation>程序编译中</translation>
     </message>
     <message>
         <source>Stack Mark</source>
@@ -5319,7 +5359,6 @@ please chose!</source>
 </translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Negitv En</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5371,23 +5410,22 @@ please chose!</source>
         <source>Gun2 Lock</source>
         <translation>锁枪2</translation>
     </message>
-=======
+    <message>
         <source>Copy Current Line</source>
         <translation>复制当前行</translation>
     </message>
     <message>
         <source>Seq</source>
-        <translation>序号</translation>
+        <translation>选中行</translation>
     </message>
     <message>
         <source>Copy Between Seq and Current</source>
-        <translation>复制序号到当前的行</translation>
+        <translation>复制选中行到当前行</translation>
     </message>
     <message>
         <source>Paste</source>
         <translation>粘贴</translation>
     </message>
->>>>>>> master
 </context>
 <context>
     <name>ProgramPage</name>
@@ -5515,7 +5553,7 @@ please chose!</source>
     <message>
         <source>Import Finished!
 </source>
-        <translation type="unfinished"></translation>
+        <translation>导入完成</translation>
     </message>
     <message>
         <source>Robot</source>
@@ -5539,11 +5577,11 @@ please chose!</source>
     </message>
     <message>
         <source>Exporting...</source>
-        <translation type="unfinished"></translation>
+        <translation>导出中</translation>
     </message>
     <message>
         <source>Importing...</source>
-        <translation type="unfinished"></translation>
+        <translation>导入中</translation>
     </message>
     <message>
         <source>Export Printable</source>
@@ -5646,6 +5684,21 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeRangeEditor</name>
+    <message>
+        <source>Out Range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limited Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit Axis</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6175,7 +6228,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Analog En</source>
-        <translation>模拟量模块使能</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7438,11 +7491,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Sending Data...</source>
-        <translation type="unfinished"></translation>
+        <translation>数据发送中</translation>
     </message>
     <message>
         <source>Get it</source>
-        <translation type="unfinished"></translation>
+        <translation>知道了</translation>
     </message>
     <message>
         <source>Origin is changed? Do you want to refind an origin?</source>

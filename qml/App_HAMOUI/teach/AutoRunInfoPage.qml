@@ -45,22 +45,22 @@ MouseArea{
                 unit: qsTr("nmb")
                 configAddr: "s_rw_0_16_0_944"
             }
-            ICConfigEdit{
-                id:count
-                width: 50
-                inputWidth:60
-                configNameWidth: 60
-                configName: qsTr("cuont:")
-                unit: qsTr("nmb")
-                configAddr: "s_rw_0_32_0_1400"
-            }
+//            ICConfigEdit{
+//                id:count
+//                width: 50
+//                inputWidth:60
+//                configNameWidth: 60
+//                configName: qsTr("cuont:")
+//                unit: qsTr("nmb")
+//                configAddr: "s_rw_0_32_0_1400"
+//            }
             ICConfigEdit{
                 id:target
                 width: 50
                 inputWidth:60
                 enabled: false
                 configNameWidth: 60
-                configName: qsTr("Target:")
+                configName: qsTr("Targetcount:")
                 unit: qsTr("nmb")
                 configAddr: "s_rw_0_16_0_944"
             }
@@ -273,10 +273,9 @@ MouseArea{
             lastCycle.text = (panelRobotController.getMultiplexingConfig(ConfigDefines.multiplexingConfigAddrs.ICAddr_Common_Para1) / 1000).toFixed(3);
             cycle.text =  (panelRobotController.getMultiplexingConfig(ConfigDefines.multiplexingConfigAddrs.ICAddr_Common_Para0) / 1000).toFixed(3);
             var counter = Teach.counterManager.getCounter(0);
-            total.configValue = count.configValue*counter.current;
-            target.configValue = count.configValue*counter.target;
-//            total.configValue = counter.current*panelRobotController.getConfigValue("s_rw_0_16_0_943");
-//            target.configValue = panelRobotController.getConfigValue("s_rw_0_16_0_943")*panelRobotController.getConfigValue("s_rw_16_16_0_943");
+            total.configValue = counter.current*panelRobotController.getConfigValue("s_rw_0_16_0_943");
+            target.configValue = panelRobotController.getConfigValue("s_rw_0_16_0_943")*panelRobotController.getConfigValue("s_rw_16_16_0_943");
+            console.log("111111111111",total.configValue,target.configValue);
             var c;
             var mc;
             for(var i = 0, len = counterModel.count; i < len; ++i){

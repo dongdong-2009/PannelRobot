@@ -344,7 +344,7 @@ Item {
                 id:dirAxisSel
                 width: 200
 //                enabled: !useEn.isChecked
-                configName: qsTr("Dir Axis")
+                configName: mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis")
 //                items: ["X", "Y", "Z"]
                 onConfigValueChanged:{
 //                    if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
@@ -487,7 +487,10 @@ Item {
                     ret.pos[axis1] = pos1Axis1.configValue;
                     ret.pos[axis2] = pos1Axis2.configValue;
                     ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
-                    ret.pos["m" + 3] = pos1Axis4.configValue;
+                    if(mode > 3 && mode != 9)
+                        ret.pos["m" + 3] = pos1Axis4.configValue;
+                    else
+                        ret.pos["m" + 3] = pos1Container.getPoint().pos.m3;
                     return ret;
                 }
                 ICButton{
@@ -541,7 +544,7 @@ Item {
                 ICConfigEdit{
                     id:pos1Axis4
 //                    enabled: !useEn.isChecked
-                    visible: false
+                    visible: mode > 3 && mode != 9
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[3].name
@@ -818,7 +821,7 @@ Item {
     onActionObjectChanged: {
         if(actionObject == null) return;
 
-        pos1Axis4.configValue = actionObject.point1.pos["m" + 3];
+        pos1Axis4.configValue = actionObject.point1.pos.m3;
 
         planeSel.configValue = actionObject.plane;
         dirAxisSel.configValue = actionObject.dirAxis;
@@ -845,8 +848,8 @@ Item {
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
         isGunBack.isChecked = actionObject.isGunBack;
-        if(actionObject.mode == 2){
-            pos3Container.visible = true;
+        if(actionObject.mode == 2 || actionObject.mode == 9){
+            pos3Container.visible = actionObject.mode == 2;
             setPosName(qsTr("Repeat EPos"), qsTr("Dir EPos"));
             dirLength.visible = false;
             dirCount.visible = false;
@@ -857,13 +860,13 @@ Item {
             pos3Container.visible = false;
             setPosName(qsTr("Set EPos"), qsTr("Set TPos"));
         }
-        if(actionObject.mode > 3){
+        if(actionObject.mode > 3 && actionObject.mode != 9){
 //            if(actionObject.plane == 0 && actionObject.dirAxis == 0)
 //                gunFollowEn.visible = true;
             zlength.visible = true;
         }
         else zlength.visible = false;
-        if(actionObject.mode == 3 || actionObject.mode == 7)
+        if(actionObject.mode == 3 || actionObject.mode == 7 || actionObject.mode == 9)
             repeateCount.visible = true;
         else repeateCount.visible = false;
         if(actionObject.mode == 6){
@@ -887,10 +890,12 @@ Item {
                 pos2Axis1.visible = false;
                 pos2Axis2.visible = true;
             }
-            if(actionObject.mode != 2)
+            if(actionObject.mode != 2 && actionObject.mode != 9)
                 dirLength.visible = true;
-            dirSpeed.visible = true;
+            dirSpeed.visible = actionObject.mode == 9 ? false : true;
         }
+        dirAxisSel.configName = actionObject.mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis");
+        pos1Axis4.visible = actionObject.mode > 3 && mode != 9
     }
 
 

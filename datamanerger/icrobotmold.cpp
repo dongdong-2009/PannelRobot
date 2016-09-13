@@ -1705,6 +1705,7 @@ bool ICRobotMold::DeleteCounter(quint32 id)
 
 bool ICRobotMold::DeleteAllCounter()
 {
+    counters_.clear();
     return ICDALHelper::DelAllCounter(moldName_);
 }
 

@@ -343,6 +343,7 @@ Rectangle {
                         return;
                     }
                     if(panelRobotController.deleteRecord(selectName.text)){
+                        KXYRecord.keXuyePentuRecord.delRecord(selectName.text);
                         recordsModel.remove(recordsView.currentIndex);
                     }
                 }

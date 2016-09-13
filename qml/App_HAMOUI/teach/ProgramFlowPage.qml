@@ -1207,8 +1207,9 @@ Rectangle {
                                 spacing: 6
                                 ICButton{
                                     id:copyCurrentLineBtn
+                                    x: copyMultiLineBtn.x
                                     text: qsTr("Copy Current Line")
-                                    width: 210
+                                    width: 180
                                     onButtonClicked: {
                                         PData.setClipboard([copyLine()]);
                                         copyAdvance.visible = false;
@@ -1227,7 +1228,7 @@ Rectangle {
                                     ICButton{
                                         id:copyMultiLineBtn
                                         text:qsTr("Copy Between Seq and Current")
-                                        width: 210
+                                        width: 180
                                         onButtonClicked: {
                                             var toCopy = [];
                                             var begin = Math.min(parseInt(seq.configValue), programListView.currentIndex);
@@ -1253,7 +1254,7 @@ Rectangle {
                         onButtonClicked: {
                             copyAdvance.visible = true;
 //                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-                            PData.insertboad = copyLine();
+//                            PData.insertboad = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
 //                            insertActionToList(toInsert);
 //                            //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
@@ -1264,15 +1265,16 @@ Rectangle {
                         id:pasteBtn
                         height: parent.height
                         width: 40
+                        enabled: false
                         text: qsTr("Paste")
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
                         onButtonClicked: {
-                            creatflags(PData.insertboad);
-//                            creatcounters(PData.insertboad);
-                            insertActionToList(PData.insertboad);
-                            repaintProgramItem(currentModel());
+                            for(var i = 0;i < PData.clipboard.length;i++){
+                                insertActionToList(PData.clipboard[0]);
+                                repaintProgramItem(currentModel());
+                            }
                         }
                     }
 

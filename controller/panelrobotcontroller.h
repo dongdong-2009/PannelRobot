@@ -876,6 +876,3 @@ private:
 };
 
 #endif // PANELROBOTCONTROLLER_H
-//extern  const ICAddrWrapper  s_rw_0_16_0_943;
-//extern  const ICAddrWrapper  s_rw_16_16_0_943;
-//extern  const ICAddrWrapper  s_rw_0_16_0_944;

@@ -12,11 +12,5 @@ kexuye-pentu-spec/* \
 teach/extents/*.js
 }
 
-OTHER_FILES += \
-    teach/extents/AnalogControlEditor.qml \
-    teach/extents/ExtentActionEditorBase.qml \
-    teach/extents/ExtentActionEditorBase.js \
-    teach/extents/SafeRangeEditor.qml
-
 
 

@@ -820,16 +820,13 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 //                return ret;
             }
             StackInfo si = stackInfos.value(stackID);
-            for(int j = 0; j < 2; ++j)
+            if(si.stackData.si[0].doesBindingCounter)
             {
-                if(si.stackData.si[j].doesBindingCounter)
+                if(IsCounterValid(counters, si.stackData.si[0].counterID) < 0)
                 {
-                    if(IsCounterValid(counters, si.stackData.si[j].counterID) < 0)
-                    {
-                        //                        ret.Clear();
-                        err = ICRobotMold::kCCErr_Invaild_CounterID;
-                        ret.AddErr(i, err);
-                    }
+                    //                        ret.Clear();
+                    err = ICRobotMold::kCCErr_Invaild_CounterID;
+                    ret.AddErr(i, err);
                 }
             }
             if(si.stackData.si[0].type >= 2)

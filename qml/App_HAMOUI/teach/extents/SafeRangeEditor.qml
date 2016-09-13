@@ -14,6 +14,22 @@ ExtentActionEditorBase {
     property alias lpos2: lpos2Edit.configValue
     property alias aid  : aidEdit.configValue
 
+    onActionObjectChanged: {
+        if(actionObject == null) return;
+        para1 = actionObject.para1;
+        pos1 = actionObject.pos1;
+        pos2 = actionObject.pos2;
+        lpos1 = actionObject.lpos1;
+        lpos2 = actionObject.lpos2;
+        aid = actionObject.aid;
+        var id1 = actionObject.para1&0xf;
+        var id2 = (actionObject.para1>>4)&0xf;
+        var allow = (actionObject.para1>>8)&1;
+        limitedAxisSel.configValue = id2;
+        limitAxisSel.configValue = id1;
+        checkOut.isChecked = allow
+    }
+
     Column{
         id:content
         spacing: 6
@@ -26,24 +42,28 @@ ExtentActionEditorBase {
             ICComboBoxConfigEdit{
                 id:limitedAxisSel
                 configName: qsTr("Limited Axis")
+                configNameWidth: 70
                 items: [
                     AxisDefine.axisInfos[0].name,
                     AxisDefine.axisInfos[1].name,
-                AxisDefine.axisInfos[2].name,
-                AxisDefine.axisInfos[3].name,
-                AxisDefine.axisInfos[4].name,
-                AxisDefine.axisInfos[5].name]
+                    AxisDefine.axisInfos[2].name,
+                    AxisDefine.axisInfos[3].name,
+                    AxisDefine.axisInfos[4].name,
+                    AxisDefine.axisInfos[5].name]
                 popupMode: 1
             }
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:pos1Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
             }
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:pos2Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
+
             }
         }
         Row{
@@ -52,24 +72,28 @@ ExtentActionEditorBase {
                 id:limitAxisSel
                 configName: qsTr("Limit Axis")
                 items: limitedAxisSel.items
+                configNameWidth: limitedAxisSel.configNameWidth
                 popupMode: 1
 
             }
 
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:lpos1Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
             }
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:lpos2Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
             }
         }
 
         ICConfigEdit{
             id:aidEdit
+            configName: qsTr("Alarm Num")
             configValue: "5000"
             configNameWidth: 40
         }
@@ -77,10 +101,11 @@ ExtentActionEditorBase {
             id:para1Edit
             visible: false
             configValue: {
-              var ret= limitedAxisSel.configValue
-                ret|= limitAxisSel.configValue<<4
-                ret|= checkOut.isChecked?1<<9:0
-               return ret |= 3<<10
+                var ret= limitedAxisSel.configValue;
+                ret|= limitAxisSel.configValue<<4;
+                ret|= checkOut.isChecked?1<<8:0;
+                ret |= 3<<10;
+                return ret;
             }
             configNameWidth: 40
         }

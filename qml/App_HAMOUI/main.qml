@@ -720,6 +720,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        console.log(panelRobotController.getConfigValue("m_rw_0_32_0_800"));
         //        menuOperation.setChecked(true);
         panelRobotController.createCustomAddr(3,3,0,16,943,0,"");
         panelRobotController.createCustomAddr(3,3,16,16,943,0,"");

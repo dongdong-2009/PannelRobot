@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -457,6 +457,82 @@
         <source>ALARM_ORIGIN_DEVIATION</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>5002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5003</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5004</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5005</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5006</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5007</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5008</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5009</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5018</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5019</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5020</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
@@ -581,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -605,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1719,11 +1795,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1789,6 +1865,26 @@
         <source>will alarm:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Safe Control</source>
+        <translation>安全区</translation>
+    </message>
+    <message>
+        <source>in pos fange:</source>
+        <translation>在范围:</translation>
+    </message>
+    <message>
+        <source>out pos fange:</source>
+        <translation>不在范围:</translation>
+    </message>
+    <message>
+        <source>will alarm:</source>
+        <translation>就报警:</translation>
+    </message>
+    <message>
+        <source>if</source>
+        <translation>如果</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1807,6 +1903,10 @@
     <message>
         <source>Safe Range Control</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Safe Range Control</source>
+        <translation>安全区</translation>
     </message>
 </context>
 <context>
@@ -5600,7 +5700,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5632,11 +5732,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5684,6 +5784,25 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeRangeEditor</name>
+    <message>
+        <source>Out Range</source>
+        <translation>不在范围(默认在范围)</translation>
+    </message>
+    <message>
+        <source>Limited Axis</source>
+        <translation>被限制轴</translation>
+    </message>
+    <message>
+        <source>Limit Axis</source>
+        <translation>限制轴</translation>
+    </message>
+    <message>
+        <source>Alarm Num</source>
+        <translation>报警号</translation>
     </message>
 </context>
 <context>

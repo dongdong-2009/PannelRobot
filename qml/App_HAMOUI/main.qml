@@ -718,7 +718,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        console.log(panelRobotController.getConfigValue("m_rw_0_32_0_800"));
         //        menuOperation.setChecked(true);
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);

@@ -42,6 +42,7 @@ ExtentActionEditorBase {
             ICComboBoxConfigEdit{
                 id:limitedAxisSel
                 configName: qsTr("Limited Axis")
+                configNameWidth: 70
                 items: [
                     AxisDefine.axisInfos[0].name,
                     AxisDefine.axisInfos[1].name,
@@ -51,15 +52,18 @@ ExtentActionEditorBase {
                     AxisDefine.axisInfos[5].name]
                 popupMode: 1
             }
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:pos1Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
             }
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:pos2Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
+
             }
         }
         Row{
@@ -68,19 +72,22 @@ ExtentActionEditorBase {
                 id:limitAxisSel
                 configName: qsTr("Limit Axis")
                 items: limitedAxisSel.items
+                configNameWidth: limitedAxisSel.configNameWidth
                 popupMode: 1
 
             }
 
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:lpos1Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
             }
-            ICConfigEdit{
+            ICHCAddrEdit{
                 id:lpos2Edit
-                configValue: "0"
+                configValue: 0
                 configNameWidth: 40
+                mode: 0
             }
         }
 

@@ -93,6 +93,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
     bool isRel = v->value("rel", false).toBool();
+    QVariantList pts = v->value("points").toList();
     if(speedMode != 0 || isStop)
     {
         SpeedControlActionData spData;
@@ -106,8 +107,15 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     }
     else
     {
-        item.append(v->value("axis", 0).toInt());
-        item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
+        int axis = v->value("axis", 0).toInt();
+        item.append(axis);
+        if(pts.size() != 0)
+        {
+            QVariantMap p = pts.at(0).toMap().value("pos").toMap();
+            item.append(ICUtility::doubleToInt(p.value(QString("m%1").arg(axis)).toDouble(), 3));
+        }
+        else
+            item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
         if(isEarlyEnd || isEarlySpd || isSignalStop || isRel)

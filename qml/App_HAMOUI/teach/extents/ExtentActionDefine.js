@@ -43,7 +43,7 @@ var extentAnalogControlAction = {
                 qsTr("Analog:") + actionObject.analog + " " +
                 qsTr("Delay:") + actionObject.delay;
     }
-}
+};
 
 var extentDeltaJumpAction = {
     "action":700,
@@ -90,7 +90,7 @@ var extentDeltaJumpAction = {
                 qsTr("speed:") + actionObject.speed + " " +
                 qsTr("Delay:") + actionObject.delay;
     }
-}
+};
 
 var extentSafeRangeAction = {
     "action":550,
@@ -119,5 +119,28 @@ var extentSafeRangeAction = {
     },
     "actionObjectChangedHelper":function(editor, actionObject){
     }
-}
+};
+
+var extentSingleStackAction = {
+    "action":301,
+    "properties":[new ActionDefineItem("startPos", 3),
+        new ActionDefineItem("space", 3),
+        new ActionDefineItem("count", 0),
+        new ActionDefineItem("speed", 1),
+        new ActionDefineItem("configs", 0)
+    ],
+    "canTestRun":true,
+    "canActionUsePoint": true,
+    "editableItems":{"editor":Qt.createComponent("SingleStackAction.qml"), "itemDef":{"item":"SingleStackAction"}},
+    "toStringHandler":function(actionObject){
+        var configs = actionObject.configs;
+        var axisID = configs & 0x1F;
+        var dir = configs >> 5 & 1;
+        var bindingCounter = (configs >> 16) & 1
+        return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) +
+                qsTr("Analog:") + actionObject.analog + " " +
+                qsTr("Delay:") + actionObject.delay;
+    }
+};
+
 var extentActions = [extentPENQIANGAction, extentAnalogControlAction,extentDeltaJumpAction,extentSafeRangeAction];

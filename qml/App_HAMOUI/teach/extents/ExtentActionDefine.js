@@ -1,6 +1,11 @@
 .pragma library
-
 Qt.include("../../configs/AxisDefine.js")
+
+var counterManager;
+
+function init(cManager){
+    counterManager = cManager;
+}
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -112,9 +117,9 @@ var extentSafeRangeAction = {
         var type = (actionObject.para1>>9)&1;
         var coor = (actionObject.para1>>10)&1;
         return qsTr("Safe Control") + ":" + qsTr("if") + " " + axisInfos[id1].name + (allow ? qsTr("out pos fange:") : qsTr("in pos fange:") ) +
-                "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n" +
+                "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n                            " +
                 axisInfos[id2].name+
-                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")"+"\n" +
+                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")"+"\n                            " +
                 qsTr("will alarm:") + actionObject.aid;
     },
     "actionObjectChangedHelper":function(editor, actionObject){
@@ -136,11 +141,17 @@ var extentSingleStackAction = {
         var configs = actionObject.configs;
         var axisID = configs & 0x1F;
         var dir = configs >> 5 & 1;
-        var bindingCounter = (configs >> 16) & 1
-        return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) +
-                qsTr("Analog:") + actionObject.analog + " " +
-                qsTr("Delay:") + actionObject.delay;
+        var bindingCounter = (configs >> 16) & 1;
+        var counterID = (configs >>17);
+        return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) + " " +
+                qsTr("space:") + actionObject.space + " " + qsTr("count:") + actionObject.count + "\n                            " +
+                (bindingCounter ? counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
+                qsTr("speed:") + actionObject.speed;
     }
 };
 
-var extentActions = [extentPENQIANGAction, extentAnalogControlAction,extentDeltaJumpAction,extentSafeRangeAction];
+var extentActions = [extentPENQIANGAction,
+                     extentAnalogControlAction,
+                     extentDeltaJumpAction,
+                     extentSafeRangeAction,
+        extentSingleStackAction];

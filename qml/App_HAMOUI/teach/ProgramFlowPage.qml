@@ -1773,6 +1773,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        ExtentActionDefine.init(Teach.counterManager);
         Teach.registerCustomActions(panelRobotController, ExtentActionDefine.extentActions);
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);

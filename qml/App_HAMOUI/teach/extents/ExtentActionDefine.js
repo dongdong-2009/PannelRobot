@@ -136,6 +136,11 @@ var extentSingleStackAction = {
     ],
     "canTestRun":true,
     "canActionUsePoint": true,
+    "hasCounter":true,
+    "getCountersID":function(actionObject){
+        return [actionObject.configs >> 17];
+    },
+
     "editableItems":{"editor":Qt.createComponent("SingleStackAction.qml"), "itemDef":{"item":"SingleStackAction"}},
     "toStringHandler":function(actionObject){
         var configs = actionObject.configs;

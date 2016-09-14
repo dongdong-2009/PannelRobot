@@ -1851,27 +1851,27 @@
     </message>
     <message>
         <source>Single Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>单轴堆叠</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation type="unfinished"></translation>
+        <translation>反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="unfinished"></translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>space:</source>
-        <translation type="unfinished"></translation>
+        <translation>间距:</translation>
     </message>
     <message>
         <source>count:</source>
-        <translation type="unfinished"></translation>
+        <translation>计数:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
-        <translation type="unfinished">计数器:自身</translation>
+        <translation>计数器:自身</translation>
     </message>
 </context>
 <context>
@@ -1894,7 +1894,7 @@
     </message>
     <message>
         <source>Single Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>单轴堆叠</translation>
     </message>
 </context>
 <context>
@@ -5176,7 +5176,7 @@ please chose!</source>
     </message>
     <message>
         <source>In current mold</source>
-        <translation type="unfinished"></translation>
+        <translation>已在当前模号</translation>
     </message>
 </context>
 <context>

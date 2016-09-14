@@ -864,7 +864,10 @@ function isJumpAction(act){
 }
 
 function hasCounterIDAction(action){
-    if(action.action == actions.F_CMD_STACK0){
+    if(customActions.hasOwnProperty(action.action)){
+        return customActions[action.action].hasCounter;
+    }
+    else if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         if(si != null)
             return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
@@ -904,7 +907,10 @@ function actionStackID(action){
 }
 
 function actionCounterIDs(action){
-    if(action.action == actions.F_CMD_STACK0){
+    if(customActions.hasOwnProperty(action.action)){
+        return customActions[action.action].getCountersID(action);
+    }
+    else if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         return [si.si0.counterID];
     }else if(action.action == actions.ACT_COMMENT){

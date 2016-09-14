@@ -196,6 +196,7 @@ ExtentActionEditorBase {
             ICCheckBox{
                 id:addrType
                 text: qsTr("Addr")
+                onIsCheckedChanged: syncConfig()
             }
 
             ICHCAddrEdit{

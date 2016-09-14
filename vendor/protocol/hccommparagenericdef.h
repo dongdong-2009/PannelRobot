@@ -70,9 +70,9 @@ typedef enum {
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.5"
+#define SOFTWARE_VERSION  "HCQS6-0.1-1.6"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.5"
+#define SOFTWARE_VERSION  "HC_S6-0.1-1.6"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -876,7 +876,7 @@ typedef enum
      * pos2:
      * aid:自定义报警ID从5000开始到10000
      */
-    F_CMD_SAFE_ALARM,//< 轴安全报警教导
+    F_CMD_SAFE_ALARM=550,//< 轴安全报警教导
     /***************************************************************************/
     /*
      * addr:写地址 value:设定值

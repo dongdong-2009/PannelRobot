@@ -67,6 +67,7 @@ ExtentActionEditorBase {
     function syncConfig(){
         configs = axisSel.configValue;
         configs |= dirEdit.isChecked ? 1 <<  5: 0;
+        configs |= addrType.isChecked ? 1 << 8 : 0;
         configs |= counterSel.configValue > 0 ? 1 << 16 : 0;
         configs |= counterSel.configValue <= 0 ? 0 : counterID() << 17;
     }
@@ -106,6 +107,8 @@ ExtentActionEditorBase {
         speed = actionObject.speed;
         var axisID = configs & 0x1F;
         var dir = configs >> 5 & 1;
+        var isAddr = configs >> 8 & 0xFF;
+        addrType.isChecked = isAddr;
         var bindingCounter = (configs >> 16) & 1;
         var cID = (configs >>17);
         axisSel.configValue = axisID;
@@ -188,13 +191,31 @@ ExtentActionEditorBase {
             }
         }
 
-        ICConfigEdit{
-            id:spaceEdit
-            configName: qsTr("Space")
-            configAddr: "s_rw_0_32_3_1300"
-            configValue: "0.000"
-            unit:startPosEdit.unit
-            configNameWidth: startPosEdit.configNameWidth
+        Row{
+            spacing: 6
+            ICCheckBox{
+                id:addrType
+                text: qsTr("Addr")
+            }
+
+            ICHCAddrEdit{
+                id:spaceAddr
+                mode: 0
+                configName: qsTr("Space")
+                configNameWidth: startPosEdit.configNameWidth
+                visible: addrType.isChecked
+                onConfigValueChanged: spaceEdit.configValue = (parseInt(configValue) / 1000.0).toFixed(3)
+            }
+
+            ICConfigEdit{
+                id:spaceEdit
+                configName: qsTr("Space")
+                configAddr: "s_rw_0_32_3_1300"
+                configValue: "0.000"
+                unit:startPosEdit.unit
+                configNameWidth: startPosEdit.configNameWidth
+                visible: !addrType.isChecked
+            }
         }
         ICConfigEdit{
             id:countEdit

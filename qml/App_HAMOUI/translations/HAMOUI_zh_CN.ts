@@ -1275,11 +1275,11 @@
     </message>
     <message>
         <source>M7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {7?}</translation>
     </message>
     <message>
         <source>M8</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {8?}</translation>
     </message>
 </context>
 <context>
@@ -1876,6 +1876,10 @@
     <message>
         <source>Start Pos:</source>
         <translation>起点:</translation>
+    </message>
+    <message>
+        <source>Addr:</source>
+        <translation>地址:</translation>
     </message>
 </context>
 <context>
@@ -5375,6 +5379,10 @@ please chose!</source>
     <message>
         <source>Rel Points</source>
         <translation>引用点</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation>地址</translation>
     </message>
 </context>
 <context>

@@ -98,6 +98,14 @@ ExtentActionEditorBase {
                             height: 30
                             width: 60
                             text: qsTr("Set In")
+                            onButtonClicked:{
+                                xpos1Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                                ypos1Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                                zpos1Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                                upos1Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                                vpos1Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                                wpos1Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                            }
                         }
                     }
                     ICConfigEdit{
@@ -161,6 +169,14 @@ ExtentActionEditorBase {
                             height: 30
                             width: 60
                             text: qsTr("Set In")
+                            onButtonClicked:{
+                                xpos2Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                                ypos2Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                                zpos2Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                                upos2Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                                vpos2Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                                wpos2Edit.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+                            }
                         }
                     }
 

@@ -112,6 +112,7 @@ ExtentActionEditorBase {
                     if(axisSel.configValue < 0) return;
                     startPos = (panelRobotController.statusValue(AxisDefine.axisInfos[axisSel.configValue].jAddr) / 1000).toFixed(3)
                 }
+                height: startPosEdit.height
             }
         }
 

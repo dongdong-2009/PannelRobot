@@ -336,6 +336,7 @@ Rectangle {
                     toFixAction.points[p].pos = point.point;
                 }
             }
+            Teach.updateCustomActions(actionObject);
             md.setProperty(line, "mI_ActionObject",actionObject);
         }
     }

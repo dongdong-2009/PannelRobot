@@ -72,7 +72,7 @@ var extentDeltaJumpAction = {
         new ActionDefineItem("delay", 1)
     ],
     "canTestRun":true,
-    "canActionUsePoint": true,
+    "canActionUsePoint": false,
     "editableItems":{"editor":Qt.createComponent("DeltaJumpEditor.qml"), "itemDef":{"item":"DeltaJumpEditor"}},
     "toStringHandler":function(actionObject){
         return qsTr("Delta Jumpl") + ":" + qsTr("start pos:")+
@@ -136,6 +136,12 @@ var extentSingleStackAction = {
     ],
     "canTestRun":true,
     "canActionUsePoint": true,
+    "pointsReplace":function(generatedAction){
+        var pts = generatedAction.points;
+        if(pts.length == 0) return;
+        generatedAction.startPos = pts[0].pos["m" + (generatedAction.configs & 0x1F)];
+    },
+
     "hasCounter":true,
     "getCountersID":function(actionObject){
         return [actionObject.configs >> 17];
@@ -148,7 +154,14 @@ var extentSingleStackAction = {
         var dir = configs >> 5 & 1;
         var bindingCounter = (configs >> 16) & 1;
         var counterID = (configs >>17);
+        var points = (actionObject.points == undefined ? [] : actionObject.points);
+        var startPos = actionObject.startPos;
+        if(points.length !== 0){
+            startPos = points[0].pointName + "(" + points[0].pos["m" + axisID] + ")";
+        }
+
         return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) + " " +
+                qsTr("Start Pos:") + startPos + " " +
                 qsTr("space:") + actionObject.space + " " + qsTr("count:") + actionObject.count + "\n                            " +
                 (bindingCounter ? counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
                 qsTr("speed:") + actionObject.speed;

@@ -7,6 +7,7 @@ import "../Teach.js" as Teach
 
 
 ExtentActionEditorBase {
+    id:instance
     width: content.width + 20
     height: content.height
     property alias startPos: startPosEdit.configValue
@@ -14,11 +15,25 @@ ExtentActionEditorBase {
     property alias count: countEdit.configValue
     property alias speed: speedEdit.configValue
     property int configs: 0
+    property variant points: []
+
     function counterID() {
         var counterStr = counterSel.configText();
         var begin = counterStr.indexOf('[') + 1;
         var end = counterStr.indexOf(']');
         return parseInt(counterStr.slice(begin,end));
+    }
+
+    function syncPoints(){
+
+        if(!relPoint.isChecked)
+            points =  [];
+        else if(pointsSel.configValue < 0)
+            points = [];
+        else{
+            var pt = Teach.definedPoints.getPoint(pointsSel.configText());
+            points =  [{"pointName":pt.name, "pos":pt.point}];
+        }
     }
 
     function refreshSel(){
@@ -56,6 +71,28 @@ ExtentActionEditorBase {
         configs |= counterSel.configValue <= 0 ? 0 : counterID() << 17;
     }
 
+    function onPointAdded(point){
+        var pNL = Teach.definedPoints.pointNameList();
+        var type;
+        var fPNs = [];
+        for(var i = 0; i < pNL.length; ++i){
+            type = pNL[i][0];
+            if(type === Teach.DefinePoints.kPT_Free){
+                fPNs.push(pNL[i]);
+            }
+        }
+        pointsSel.items = fPNs;
+
+    }
+
+    function onPointDeleted(point){
+        onPointAdded(point);
+    }
+
+    function onPointsCleared(){
+        onPointAdded(null);
+    }
+
     onActionObjectChanged: {
         if(actionObject == null) return;
         configs = actionObject.configs;
@@ -70,6 +107,18 @@ ExtentActionEditorBase {
         axisSel.configValue = axisID;
         dirEdit.isChecked = dir ? 1 : 0;
         setCounterID(cID, bindingCounter);
+        var pts = actionObject.points;
+        relPoint.isChecked = (pts.length !== 0);
+        if(relPoint.isChecked){
+            var ptName = pts[0].pointName;
+            for(var i = 0, len = pointsSel.items.length; i < len; ++i){
+                if(ptName == pointsSel.items[i]){
+                    pointsSel.configValue = i;
+                    break;
+                }
+            }
+
+        }
     }
 
     Column{
@@ -85,6 +134,14 @@ ExtentActionEditorBase {
 
         Row{
             spacing: 6
+            ICCheckBox{
+                id:relPoint
+                text: qsTr("Rel Points")
+                onIsCheckedChanged: {
+                    syncPoints();
+                }
+            }
+
             ICCheckBox{
                 id:dirEdit
                 text: qsTr("PP")
@@ -104,7 +161,18 @@ ExtentActionEditorBase {
                         return "";
                     return AxisDefine.axisInfos[cI].unit;
                 }
+                visible: !relPoint.isChecked
             }
+            ICComboBoxConfigEdit{
+                id:pointsSel
+                popupHeight: 100
+                configName: qsTr("Start Pos")
+                visible: relPoint.isChecked
+                onConfigValueChanged: {
+                    syncPoints();
+                }
+            }
+
             ICButton{
                 id:setIn
                 text: qsTr("Set In")
@@ -142,7 +210,7 @@ ExtentActionEditorBase {
         ICComboBoxConfigEdit{
             id:counterSel
             configName: qsTr("Counter")
-            inputWidth: 250
+            inputWidth: 350
             popupMode: 1
             popupHeight: 100
             onConfigValueChanged: syncConfig()
@@ -152,10 +220,13 @@ ExtentActionEditorBase {
     onVisibleChanged: {
         if(visible){
             refreshSel();
+            onPointAdded(null);
         }
     }
     Component.onCompleted: {
         bindActionDefine(ExtentActionDefine.extentSingleStackAction);
         refreshSel();
+        Teach.definedPoints.registerPointsMonitor(instance);
+        onPointAdded(null);
     }
 }

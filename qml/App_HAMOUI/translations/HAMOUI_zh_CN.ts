@@ -1873,6 +1873,10 @@
         <source>Counter:Self</source>
         <translation>计数器:自身</translation>
     </message>
+    <message>
+        <source>Start Pos:</source>
+        <translation>起点:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -3882,7 +3886,7 @@
     </message>
     <message>
         <source>M027</source>
-        <translation></translation>
+        <translation>报警状态</translation>
     </message>
 </context>
 <context>
@@ -5367,6 +5371,10 @@ please chose!</source>
     <message>
         <source>Counter</source>
         <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation>引用点</translation>
     </message>
 </context>
 <context>

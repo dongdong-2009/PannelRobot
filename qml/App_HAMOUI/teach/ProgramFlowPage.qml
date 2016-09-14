@@ -334,6 +334,7 @@ Rectangle {
             for(var p = 0; p < originpPoints.length; ++p){
                 if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
                     toFixAction.points[p].pos = point.point;
+                    toFixAction.points[p].pointName = point.name;
                 }
             }
             Teach.updateCustomActions(actionObject);

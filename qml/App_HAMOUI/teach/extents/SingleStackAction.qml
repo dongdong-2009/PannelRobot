@@ -93,6 +93,10 @@ ExtentActionEditorBase {
         onPointAdded(null);
     }
 
+    function onPointChanged(point){
+        onPointAdded(point);
+    }
+
     onActionObjectChanged: {
         if(actionObject == null) return;
         configs = actionObject.configs;

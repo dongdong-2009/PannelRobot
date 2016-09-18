@@ -16,20 +16,23 @@ Item {
     property variant detailInstance: null
     property variant stackInstance: null
     property bool isauto: false
+
     onIsautoChanged: {
         if(isauto){
             planeSel.visible = false;
             dirAxisSel.visible = false;
-            repeateCount.visible = false;
-            dirCount.visible = false;
+            editaction.visible = false;
+//            repeateCount.visible = false;
+//            dirCount.visible = false;
             gunfresh1.visible = false;
             gunfresh2.visible = false;
         }
         else {
             planeSel.visible = true;
             dirAxisSel.visible = true;
-            repeateCount.visible = true;
-            dirCount.visible = true;
+            editaction.visible = false;true
+//            repeateCount.visible = true;
+//            dirCount.visible = true;
             gunfresh1.visible = true;
             gunfresh2.visible = true;
         }
@@ -195,6 +198,7 @@ Item {
         ao.rotateSpeed = rotateSpeed.configValue;
         ao.rotateCount = rotateCount.configValue;
         ao.isGunBack = isGunBack.isChecked;
+        ao.editaction = editaction.configValue;
 
 //        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
 //        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
@@ -487,7 +491,7 @@ Item {
                     ret.pos[axis1] = pos1Axis1.configValue;
                     ret.pos[axis2] = pos1Axis2.configValue;
                     ret.pos[axis3] = pos1Container.getPoint().pos[axis3];
-                    if(mode > 3 && mode != 9)
+                    if(mode > 3 && mode != 8 && mode != 9)
                         ret.pos["m" + 3] = pos1Axis4.configValue;
                     else
                         ret.pos["m" + 3] = pos1Container.getPoint().pos.m3;
@@ -544,7 +548,7 @@ Item {
                 ICConfigEdit{
                     id:pos1Axis4
 //                    enabled: !useEn.isChecked
-                    visible: mode > 3 && mode != 9
+                    visible: mode > 3 && mode != 8 && mode != 9
                     width: sPosM0.width
                     configNameWidth: sPosM0.configNameWidth
                     configName: AxisDefine.axisInfos[3].name
@@ -848,6 +852,11 @@ Item {
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
         isGunBack.isChecked = actionObject.isGunBack;
+        editaction.configValue = actionObject.editaction;
+        planeSel.visible = actionObject.mode == 8 ? false : true;
+        dirAxisSel.visible = actionObject.mode == 8 ? false : true;
+        editaction.visible = actionObject.mode == 8 ? true : false;
+        pos2Container.visible = actionObject.mode == 8 ? false : true;
         if(actionObject.mode == 2 || actionObject.mode == 9){
             pos3Container.visible = actionObject.mode == 2;
             setPosName(qsTr("Repeat EPos"), qsTr("Dir EPos"));
@@ -860,7 +869,7 @@ Item {
             pos3Container.visible = false;
             setPosName(qsTr("Set EPos"), qsTr("Set TPos"));
         }
-        if(actionObject.mode > 3 && actionObject.mode != 9){
+        if(actionObject.mode > 3 && actionObject.mode != 8 && actionObject.mode != 9){
 //            if(actionObject.plane == 0 && actionObject.dirAxis == 0)
 //                gunFollowEn.visible = true;
             zlength.visible = true;
@@ -890,12 +899,13 @@ Item {
                 pos2Axis1.visible = false;
                 pos2Axis2.visible = true;
             }
-            if(actionObject.mode != 2 && actionObject.mode != 9)
-                dirLength.visible = true;
-            dirSpeed.visible = actionObject.mode == 9 ? false : true;
+//            if(actionObject.mode != 2 && actionObject.mode != 9)
+                dirLength.visible = actionObject.mode != 2 && actionObject.mode != 8 && actionObject.mode != 9;
+            dirSpeed.visible = actionObject.mode != 8 && actionObject.mode != 9;
         }
         dirAxisSel.configName = actionObject.mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis");
-        pos1Axis4.visible = actionObject.mode > 3 && mode != 9
+        pos1Axis4.visible = actionObject.mode > 3 && actionObject.mode != 8 && actionObject.mode != 9;
+        repeateSpeed.visible = actionObject.mode != 8;
     }
 
 

@@ -13,10 +13,12 @@ Item {
         {
             spacing: 6
             Text {
+                visible: false
                 text: qsTr("Rest Time:")
             }
             Text {
                 id: restTime
+                visible: false
                 Component.onCompleted: {
                     setRestTime(panelRobotController.restUseTime());
                 }

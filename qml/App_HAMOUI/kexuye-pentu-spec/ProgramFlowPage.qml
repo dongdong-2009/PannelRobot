@@ -386,7 +386,7 @@ ProgramFlowPage {
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag11, qsTr("gongzhuan Postv OK")));
 //        ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
-        ret.push(LocalTeach.generateDataAction(819206,0,1));
+//        ret.push(LocalTeach.generateDataAction(819206,0,1));          //clear up all counters
 //        ret.push(LocalTeach.generateWaitAction(4,0,1,10));
 //        ret.push(LocalTeach.generateWaitAction(5,0,1,10));
 //        ret.push(LocalTeach.generateClearCounterAction(actionObject.dirCounterID));
@@ -408,7 +408,7 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
 
-//        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));               //products count++
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
@@ -1371,6 +1371,7 @@ ProgramFlowPage {
             var tmpMap = {};
             var tmpret = ManualProgramManager.manualProgramManager.getProgram(actionObject.editaction).program;
             var actionLine;
+            var len;
             for(i = 0, len =  tmpret.length; i < len; ++i){
                 if(tmpret[i].action == LocalTeach.actions.ACT_END)
                     break;
@@ -1604,10 +1605,10 @@ ProgramFlowPage {
             actionObject.flag18 = f.flagID;
         }
     }
-    function creatcounters(actionObject){
+    function creatcounters(actionObject,counter_currt){
         var rc = BaseTeach.counterManager.getCounter(0);
         if(rc == null){
-            rc= BaseTeach.counterManager.newCounter("111", 0, panelRobotController.getConfigValue("s_rw_16_16_0_943"));
+            rc= BaseTeach.counterManager.newCounter("111", counter_currt, panelRobotController.getConfigValue("s_rw_16_16_0_849"));
             panelRobotController.saveCounterDef(rc.id, rc.name, rc.current, rc.target);
             actionObject.rotateCounterID = rc.id;
         }
@@ -1629,6 +1630,10 @@ ProgramFlowPage {
     }
 
     function modelToProgram(which){
+        var counter0 = BaseTeach.counterManager.getCounter(0);
+        if(counter0 == null)
+            var counter_currt = 0;
+        else counter_currt = counter0.current;
         BaseTeach.counterManager.delAllCounter();
         panelRobotController.delAllCounterDef();
         var model = BasePData.programs[which];
@@ -1641,7 +1646,7 @@ ProgramFlowPage {
             if(model.get(i).mI_ActionObject.action == LocalTeach.actions.F_CMD_PENTU){
                 var tmpActionObj = model.get(i).mI_ActionObject;
                 creatflags(tmpActionObj);
-                creatcounters(tmpActionObj);
+                creatcounters(tmpActionObj,counter_currt);
                 if(count == -1){
                     var rs = pentuActionHead(tmpActionObj);
                     count = i;

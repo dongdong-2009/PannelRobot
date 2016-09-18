@@ -47,7 +47,7 @@ Rectangle {
         z:1000
         function setRestTime(rt){
             visible = (rt < 168) && rt != 0;
-            text = qsTr("Rest Time:") + rt;
+//            text = qsTr("Rest Time:") + rt;
         }
         Component.onCompleted: {
             setRestTime(panelRobotController.restUseTime());
@@ -720,11 +720,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        console.log(panelRobotController.getConfigValue("m_rw_0_32_0_800"));
-        //        menuOperation.setChecked(true);
-        panelRobotController.createCustomAddr(3,3,0,16,943,0,"");
-        panelRobotController.createCustomAddr(3,3,16,16,943,0,"");
-        panelRobotController.createCustomAddr(3,3,0,16,944,0,"");
         panelRobotController.setScreenSaverTime(panelRobotController.getCustomSettings("ScreensaverTime", 5));
         panelRobotController.screenSave.connect(onScreenSave);
         panelRobotController.screenRestore.connect(onScreenRestore);

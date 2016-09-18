@@ -40,10 +40,10 @@ MouseArea{
                 width: 50
                 inputWidth:60
                 enabled: false
-                configNameWidth: 60
+                configNameWidth: 70
                 configName: qsTr("Total:")
                 unit: qsTr("nmb")
-                configAddr: "s_rw_0_16_0_944"
+                configAddr: "s_rw_0_16_0_850"
             }
 //            ICConfigEdit{
 //                id:count
@@ -59,10 +59,10 @@ MouseArea{
                 width: 50
                 inputWidth:60
                 enabled: false
-                configNameWidth: 60
+                configNameWidth: 70
                 configName: qsTr("Targetcount:")
                 unit: qsTr("nmb")
-                configAddr: "s_rw_0_16_0_944"
+                configAddr: "s_rw_0_16_0_850"
             }
         }
         Column{
@@ -273,9 +273,9 @@ MouseArea{
             lastCycle.text = (panelRobotController.getMultiplexingConfig(ConfigDefines.multiplexingConfigAddrs.ICAddr_Common_Para1) / 1000).toFixed(3);
             cycle.text =  (panelRobotController.getMultiplexingConfig(ConfigDefines.multiplexingConfigAddrs.ICAddr_Common_Para0) / 1000).toFixed(3);
             var counter = Teach.counterManager.getCounter(0);
-            total.configValue = counter.current*panelRobotController.getConfigValue("s_rw_0_16_0_943");
-            target.configValue = panelRobotController.getConfigValue("s_rw_0_16_0_943")*panelRobotController.getConfigValue("s_rw_16_16_0_943");
-            console.log("111111111111",total.configValue,target.configValue);
+            if(counter != null)
+                total.configValue = counter.current*panelRobotController.getConfigValue("s_rw_0_16_0_849");
+            target.configValue = panelRobotController.getConfigValue("s_rw_0_16_0_849")*panelRobotController.getConfigValue("s_rw_16_16_0_849");
             var c;
             var mc;
             for(var i = 0, len = counterModel.count; i < len; ++i){

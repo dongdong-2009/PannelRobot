@@ -174,29 +174,29 @@ Item {
                     id:count
                     width: 100
                     inputWidth:60
-                    configNameWidth: 60
+                    configNameWidth: 75
                     configName: qsTr("cuont:")
                     unit: qsTr("nmb")
-                    configAddr: "s_rw_0_16_0_943"
+                    configAddr: "s_rw_0_16_0_849"
                 }
                 ICConfigEdit{
                     id:target
                     width: 100
                     inputWidth:60
-                    configNameWidth: 60
+                    configNameWidth: 75
                     configName: qsTr("Target:")
                     unit: qsTr("nmb")
-                    configAddr: "s_rw_16_16_0_943"
+                    configAddr: "s_rw_16_16_0_849"
                 }
             }
             ICButton{
                 id:clearCount
-                width: 60
+                width: 110
                 height: 32
                 text: qsTr("Clear Count")
                 bgColor: "green"
                 onButtonClicked: {
-                    panelRobotController.setConfigValue("s_rw_0_16_0_944",0);
+                    panelRobotController.setConfigValue("s_rw_0_16_0_850",0);
                     var cr = Teach.counterManager.getCounter(0);
                     Teach.counterManager.updateCounter(cr.id, cr.name, 0, cr.target);
                     panelRobotController.saveCounterDef(cr.id, cr.name, 0, cr.target);

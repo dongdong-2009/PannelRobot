@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -538,15 +538,15 @@
     <name>AnalogControlEditor</name>
     <message>
         <source>Chanel</source>
-        <translation type="unfinished"></translation>
+        <translation>通道</translation>
     </message>
     <message>
         <source>Analog Value</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟量</translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation type="unfinished">延时</translation>
+        <translation>延时</translation>
     </message>
     <message>
         <source>s</source>
@@ -657,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -799,7 +799,7 @@
     </message>
     <message>
         <source>Target:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">模数</translation>
     </message>
     <message>
         <source>Current:</source>
@@ -823,23 +823,23 @@
     </message>
     <message>
         <source>Analog &gt;&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟量&gt;&gt;</translation>
     </message>
     <message>
         <source>Analog &lt;&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟量&lt;&lt;</translation>
     </message>
     <message>
         <source>Chanel-0</source>
-        <translation type="unfinished"></translation>
+        <translation>油量</translation>
     </message>
     <message>
         <source>Chanel-1</source>
-        <translation type="unfinished"></translation>
+        <translation>雾化</translation>
     </message>
     <message>
         <source>Chanel-2</source>
-        <translation type="unfinished"></translation>
+        <translation>喷副</translation>
     </message>
     <message>
         <source>Chanel-3</source>
@@ -1795,11 +1795,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1815,11 +1815,11 @@
     </message>
     <message>
         <source>Analog Control</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟量控制</translation>
     </message>
     <message>
         <source>Analog:</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟量</translation>
     </message>
     <message>
         <source>Delta Jumpl</source>
@@ -1851,35 +1851,19 @@
     </message>
     <message>
         <source>Safe Control</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">安全区</translation>
     </message>
     <message>
         <source>in pos fange:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">在范围:</translation>
     </message>
     <message>
         <source>out pos fange:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不在范围:</translation>
     </message>
     <message>
         <source>will alarm:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Safe Control</source>
-        <translation>安全区</translation>
-    </message>
-    <message>
-        <source>in pos fange:</source>
-        <translation>在范围:</translation>
-    </message>
-    <message>
-        <source>out pos fange:</source>
-        <translation>不在范围:</translation>
-    </message>
-    <message>
-        <source>will alarm:</source>
-        <translation>就报警:</translation>
+        <translation type="unfinished">就报警:</translation>
     </message>
     <message>
         <source>if</source>
@@ -1894,7 +1878,7 @@
     </message>
     <message>
         <source>Analog Control</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">模拟量控制</translation>
     </message>
     <message>
         <source>Delta Jump Control</source>
@@ -1902,11 +1886,7 @@
     </message>
     <message>
         <source>Safe Range Control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Safe Range Control</source>
-        <translation>安全区</translation>
+        <translation type="unfinished">安全区</translation>
     </message>
 </context>
 <context>
@@ -5687,6 +5667,10 @@ please chose!</source>
         <source>Export Printable</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>In current mold</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>
@@ -5700,7 +5684,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5732,11 +5716,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5803,21 +5787,6 @@ please chose!</source>
     <message>
         <source>Alarm Num</source>
         <translation>报警号</translation>
-    </message>
-</context>
-<context>
-    <name>SafeRangeEditor</name>
-    <message>
-        <source>Out Range</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Limited Axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Limit Axis</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6347,7 +6316,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Analog En</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟量使能</translation>
     </message>
 </context>
 <context>

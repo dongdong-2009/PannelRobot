@@ -1745,9 +1745,10 @@ ProgramFlowPage {
                             ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_CALL_BACK &&
                             ps[i].action !== LocalTeach.actions.F_CMD_COUNTER&&
                             ps[i].action !== LocalTeach.actions.F_CMD_SYNC_START&&
-                            ps[i].action !== LocalTeach.actions.F_CMD_SYNC_END)
+                            ps[i].action !== LocalTeach.actions.F_CMD_SYNC_END){
                         panelRobotController.fixProgramOnAutoMode(0,-1,LocalPData.kexueyeRowToStepMap[rows]+i,JSON.stringify(ps[i]));
-                    LocalPData.programtoStep[LocalPData.kexueyeRowToStepMap[rows]+i] = ps[i];
+                        LocalPData.programtoStep[LocalPData.kexueyeRowToStepMap[rows]+i] = ps[i];
+                    }
                 }
                 afterSaveProgram(0);
                 panelRobotController.saveMainProgram(JSON.stringify(LocalPData.programtoStep));

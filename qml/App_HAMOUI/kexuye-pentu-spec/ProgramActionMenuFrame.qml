@@ -58,7 +58,7 @@ ProgramActionMenuFrame{
                 CatalogButton{
                     id:ptLine_Cycle
                     text:qsTr("PT Line ceycle")
-                    icon: "../images/1-4.png"
+                    icon: "../images/1-5.png"
                     iconwidth: ptLine_U_2D.iconwidth
                     iconheight: ptLine_U_2D.iconheight
                 }

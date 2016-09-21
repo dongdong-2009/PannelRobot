@@ -1,2 +1,23 @@
 *.pro.user
 .svn/
+
+# Build and Release Folders
+bin_1.0.1_debug/
+bin_1.0.1_release/
+temp_1.0.1_debug/
+temp_1.0.1_release/
+
+#Other files and folders
+*.orig
+
+HCReinstallPanelRobot.tar
+Makefile
+PanelRobot.tar
+PanelRobot_en_US.ts
+PanelRobot_zh_CN.ts
+UPMaker
+common/icaddrlog.txt
+qml.zip
+qml/App_HAMOUI/Makefile
+qml/App_HAMOUI/translations/HAMOUI_en_US.qm
+qml/App_HAMOUI/translations/HAMOUI_en_US.ts

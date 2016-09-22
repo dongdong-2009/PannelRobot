@@ -1394,32 +1394,32 @@ ProgramFlowPage {
         else if(actionObject.mode == 9){
             if(actionObject.plane == 0){
                 if(actionObject.dirAxis == 0){
-                    repeataxis = 1;
-                    repeatlength = pos.m1;
-                }
-                else{
                     repeataxis = 0;
                     repeatlength = pos.m0;
+                }
+                else{
+                    repeataxis = 1;
+                    repeatlength = pos.m1;
                 }
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
-                    repeataxis = 2;
-                    repeatlength = pos.m2;
-                }
-                else{
                     repeataxis = 0;
                     repeatlength = pos.m0;
+                }
+                else{
+                    repeataxis = 2;
+                    repeatlength = pos.m2;
                 }
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
-                    repeataxis = 2;
-                    repeatlength = pos.m2;
-                }
-                else{
                     repeataxis = 1;
                     repeatlength = pos.m1;
+                }
+                else{
+                    repeataxis = 2;
+                    repeatlength = pos.m2;
                 }
             }
             pos1["m" + 0] = -pos["m" + 0];

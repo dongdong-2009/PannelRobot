@@ -246,7 +246,7 @@ Item {
 //        dirLength.visible = mode == 8 ? false : true;
         dirSpeed.visible = mode == 8 || mode == 6 || mode == 9 ? false : true;
     }
-    function hidePoint(){
+    function hidePoint(mode){
         if(mode == 8){
             pos1Axis1.visible = false;
             pos1Axis2.visible = false;
@@ -258,6 +258,20 @@ Item {
             pos1Axis2.visible = true;
             pos2Axis1.visible = false;
             pos2Axis2.visible = false;
+        }
+        else if(mode == 9){
+            if(dirAxisSel.configValue == 0){
+                pos1Axis1.visible = true;
+                pos1Axis2.visible = false;
+                pos2Axis1.visible = false;
+                pos2Axis2.visible = true;
+            }
+            else {
+                pos1Axis1.visible = false;
+                pos1Axis2.visible = true;
+                pos2Axis1.visible = true;
+                pos2Axis2.visible = false;
+            }
         }
         else{
             if(dirAxisSel.configValue == 0){
@@ -340,7 +354,9 @@ Item {
                         pos2Axis2.configName = AxisDefine.axisInfos[2].name;
                         dirAxisSel.items = ["Y", "Z"]
                     }
-                    hidePoint();
+                    if(actionObject == null)
+                        hidePoint(mode);
+                    else hidePoint(actionObject.mode);
                 }
             }
 
@@ -354,7 +370,9 @@ Item {
 //                    if(mode > 3 && configValue == 0 && planeSel.configValue == 0)
 //                        gunFollowEn.visible = true;
 //                    else gunFollowEn.visible = false;
-                    hidePoint();
+                    if(actionObject == null)
+                        hidePoint(mode);
+                    else hidePoint(actionObject.mode);
                 }
             }
             ICComboBoxConfigEdit{
@@ -885,6 +903,20 @@ Item {
             pos2Axis2.visible = false;
             dirLength.visible = false;
             dirSpeed.visible = false;
+        }
+        else if(actionObject.mode == 9){
+            if(dirAxisSel.configValue == 0){
+                pos1Axis1.visible = true;
+                pos1Axis2.visible = false;
+                pos2Axis1.visible = false;
+                pos2Axis2.visible = true;
+            }
+            else {
+                pos1Axis1.visible = false;
+                pos1Axis2.visible = true;
+                pos2Axis1.visible = true;
+                pos2Axis2.visible = false;
+            }
         }
         else{
             if(dirAxisSel.configValue == 0){

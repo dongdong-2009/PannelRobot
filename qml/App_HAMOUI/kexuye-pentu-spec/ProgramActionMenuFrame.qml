@@ -163,7 +163,7 @@ ProgramActionMenuFrame{
             kxyObject.setPosName(pos1name, pos2name);
             kxyObject.gunFollowEnvisible();
             kxyObject.hideUselessEdit();
-            kxyObject.hidePoint();
+            kxyObject.hidePoint(mode);
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
             linkedBtn2Instance().visible = true;

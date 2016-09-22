@@ -1443,6 +1443,10 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     int realStep = step;
     if(module >= 0)
     {
+        if(!programs_.at(which).HasCalledModule())
+        {
+            return ret;
+        }
         int moduleEntry = programs_.at(which).ModuleEntry(module);
 
         realStep += programs_.at(which).RealStepToUIStep(moduleEntry).first();

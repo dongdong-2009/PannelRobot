@@ -1027,6 +1027,7 @@ static ValveItem VariantToValveItem(const QVariantMap& v)
     ret.x1Dir = v.value("x1Dir").toUInt();
     ret.x2Dir = v.value("x2Dir").toUInt();
     ret.time = v.value("time").toDouble() * 10;
+    ret.autoCheck = v.value("autoCheck").toInt();
     return ret;
 }
 

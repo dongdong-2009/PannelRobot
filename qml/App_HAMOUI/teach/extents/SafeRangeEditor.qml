@@ -104,7 +104,7 @@ ExtentActionEditorBase {
                 var ret= limitedAxisSel.configValue;
                 ret|= limitAxisSel.configValue<<4;
                 ret|= checkOut.isChecked?1<<8:0;
-                ret |= 3<<10;
+                ret |= 3<<9;
                 return ret;
             }
             configNameWidth: 40

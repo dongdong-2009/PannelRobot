@@ -957,6 +957,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     item.pop_back();
                     item.append(ICRobotMold::MoldItemCheckSum(item));
                 }
+//                ret.AddICMoldItem(programEndLine, item)
                 ret.AddICMoldItem(programEndLine, item);
                 if(item.at(0) == F_CMD_SYNC_START)
                 {

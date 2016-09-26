@@ -996,7 +996,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 //        ret.MapStep(endUIStep, fStep + 1);
         ret.MapStep(baseStep, fStep + 1);
 
-        jumptoEnd.append(ret.UIStepToRealStep(endUIStep).first);
+        jumptoEnd.append(ret.UIStepToRealStep(baseStep).first);
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
         ret.UpdateICMoldItem(result.size() - 1, jumptoEnd);
         ICMoldItem toFixLineItem;

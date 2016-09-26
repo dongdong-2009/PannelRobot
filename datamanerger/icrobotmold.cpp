@@ -941,6 +941,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         int fStep = ret.RealStepCount();    //
         isSyncBegin = false;                //
 
+        int baseStep = programEndLine;
         while(fp != functions.end())
         {
             CompileInfo f = fp.value();
@@ -957,8 +958,10 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     item.pop_back();
                     item.append(ICRobotMold::MoldItemCheckSum(item));
                 }
-//                ret.AddICMoldItem(programEndLine, item)
-                ret.AddICMoldItem(programEndLine, item);
+//                ret.AddICMoldItem(programEndLine, item);
+                int uiStep = baseStep + f.UIStepFromCompiledLine(i);
+//                qDebug()<<"UIStep:"<<uiStep;
+                ret.AddICMoldItem(uiStep, item);
                 if(item.at(0) == F_CMD_SYNC_START)
                 {
                     isSyncBegin = true;
@@ -977,16 +980,21 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     ++fStep;
                 ret.MapModuleLineToModuleID(fStep, mID);
                 //                qDebug()<<fp.key()<<programEndLine<<fStep;
-                ret.MapStep(programEndLine , fStep);
+//                ret.MapStep(programEndLine , fStep);
+                ret.MapStep(uiStep, fStep);
                 ++programEndLine;
             }
+            baseStep += f.UIStepFromCompiledLine(cflc - 1) + 1;
             ++fp;
         }
         //UIStepToRealStep(ret.CompiledProgramLineCount() - 1) + 1
         //        jumptoEnd.append(ret.CompiledProgramLineCount());
-        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
+//        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
+//        qDebug()<<result.size()<<baseStep<<beginToFix;
+        ret.AddICMoldItem(baseStep, endProgramItem);
         int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
-        ret.MapStep(endUIStep, fStep + 1);
+//        ret.MapStep(endUIStep, fStep + 1);
+        ret.MapStep(baseStep, fStep + 1);
 
         jumptoEnd.append(ret.UIStepToRealStep(endUIStep).first);
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));

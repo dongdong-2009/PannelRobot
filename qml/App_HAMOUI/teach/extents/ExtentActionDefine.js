@@ -116,10 +116,11 @@ var extentSafeRangeAction = {
         var allow = (actionObject.para1>>8)&1;
         var type = (actionObject.para1>>9)&1;
         var coor = (actionObject.para1>>10)&1;
+        var whenChangeType = actionObject.para1 >> 11;
         return qsTr("Safe Control") + ":" + qsTr("if") + " " + axisInfos[id1].name + (allow ? qsTr("out pos fange:") : qsTr("in pos fange:") ) +
                 "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n                            " +
-                axisInfos[id2].name+
-                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")"+"\n                            " +
+                axisInfos[id2].name+ " " + (whenChangeType ? qsTr("When Changed") :
+                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")" ) +"\n                            " +
                 qsTr("will alarm:") + actionObject.aid;
     },
     "actionObjectChangedHelper":function(editor, actionObject){

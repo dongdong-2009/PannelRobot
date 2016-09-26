@@ -1678,7 +1678,7 @@
     </message>
     <message>
         <source>Addr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">地址</translation>
     </message>
     <message>
         <source>value</source>
@@ -1880,6 +1880,10 @@
     <message>
         <source>Addr:</source>
         <translation>地址:</translation>
+    </message>
+    <message>
+        <source>When Changed</source>
+        <translation>当改变</translation>
     </message>
 </context>
 <context>
@@ -5298,6 +5302,14 @@ please chose!</source>
     <message>
         <source>Alarm Num</source>
         <translation>报警号</translation>
+    </message>
+    <message>
+        <source>Changed</source>
+        <translation>改变</translation>
+    </message>
+    <message>
+        <source>Range</source>
+        <translation>范围</translation>
     </message>
 </context>
 <context>

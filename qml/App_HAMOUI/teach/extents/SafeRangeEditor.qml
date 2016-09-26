@@ -27,7 +27,8 @@ ExtentActionEditorBase {
         var allow = (actionObject.para1>>8)&1;
         limitedAxisSel.configValue = id2;
         limitAxisSel.configValue = id1;
-        checkOut.isChecked = allow
+        checkOut.isChecked = allow;
+        whenChange.isChecked = para1 >> 11;
     }
 
     Column{
@@ -57,37 +58,56 @@ ExtentActionEditorBase {
                 configValue: 0
                 configNameWidth: 40
                 mode: 0
+                configName: checkOut.isChecked ? "<" : ">"
             }
             ICHCAddrEdit{
                 id:pos2Edit
                 configValue: 0
                 configNameWidth: 40
                 mode: 0
-
+                configName: checkOut.isChecked ? ">" : "<"
             }
         }
+
+        ICComboBoxConfigEdit{
+            id:limitAxisSel
+            configName: qsTr("Limit Axis")
+            items: limitedAxisSel.items
+            configNameWidth: limitedAxisSel.configNameWidth
+            popupMode: 1
+
+        }
+        ICButtonGroup{
+            spacing: 6
+            mustChecked: true
+            checkedIndex: 0
+            ICCheckBox{
+                id:whenChange
+                text: qsTr("Changed")
+                isChecked: true
+            }
+            ICCheckBox{
+                id:range
+                text: qsTr("Range")
+            }
+        }
+
         Row{
             spacing: 6
-            ICComboBoxConfigEdit{
-                id:limitAxisSel
-                configName: qsTr("Limit Axis")
-                items: limitedAxisSel.items
-                configNameWidth: limitedAxisSel.configNameWidth
-                popupMode: 1
-
-            }
-
+            enabled: range.isChecked
             ICHCAddrEdit{
                 id:lpos1Edit
                 configValue: 0
                 configNameWidth: 40
                 mode: 0
+                configName: "<"
             }
             ICHCAddrEdit{
                 id:lpos2Edit
                 configValue: 0
                 configNameWidth: 40
                 mode: 0
+                configName: ">"
             }
         }
 
@@ -105,12 +125,11 @@ ExtentActionEditorBase {
                 ret|= limitAxisSel.configValue<<4;
                 ret|= checkOut.isChecked?1<<8:0;
                 ret |= 3<<9;
+                ret |= whenChange.isChecked ? 1 << 11 : 0;
                 return ret;
             }
             configNameWidth: 40
         }
-
-
     }
     Component.onCompleted: {
         bindActionDefine(ExtentActionDefine.extentSafeRangeAction);

@@ -843,15 +843,15 @@
     </message>
     <message>
         <source>Chanel-3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">喷副 {3?}</translation>
     </message>
     <message>
         <source>Chanel-4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">喷副 {4?}</translation>
     </message>
     <message>
         <source>Chanel-5</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">喷副 {5?}</translation>
     </message>
     <message>
         <source>Targetcount:</source>
@@ -1869,6 +1869,42 @@
         <source>if</source>
         <translation>如果</translation>
     </message>
+    <message>
+        <source>When Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Single Stack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Pos:</source>
+        <translation type="unfinished">起点:</translation>
+    </message>
+    <message>
+        <source>space:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Addr:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Counter:Self</source>
+        <translation type="unfinished">计数器:自身</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1887,6 +1923,10 @@
     <message>
         <source>Safe Range Control</source>
         <translation type="unfinished">安全区</translation>
+    </message>
+    <message>
+        <source>Single Stack</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4101,6 +4141,10 @@
         <source>Repeat Axis</source>
         <translation>往复轴</translation>
     </message>
+    <message>
+        <source>Forward</source>
+        <translation>前向弧</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>
@@ -5730,6 +5774,50 @@ please chose!</source>
         <source>hour</source>
         <translation>小时</translation>
     </message>
+    <message>
+        <source>Password:</source>
+        <translation>输入密码:</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Setpaswd:</source>
+        <translation>设置密码：</translation>
+    </message>
+    <message>
+        <source>FirTime:</source>
+        <translation>首次时间:</translation>
+    </message>
+    <message>
+        <source>year</source>
+        <translation>年</translation>
+    </message>
+    <message>
+        <source>mon</source>
+        <translation>月</translation>
+    </message>
+    <message>
+        <source>day</source>
+        <translation>日</translation>
+    </message>
+    <message>
+        <source>LockCode</source>
+        <translation>解锁密码</translation>
+    </message>
+    <message>
+        <source>MidTime:</source>
+        <translation>过度时间:</translation>
+    </message>
+    <message>
+        <source>FinTime:</source>
+        <translation>最终解锁:</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -5788,6 +5876,14 @@ please chose!</source>
         <source>Alarm Num</source>
         <translation>报警号</translation>
     </message>
+    <message>
+        <source>Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Range</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchActionEditor</name>
@@ -5821,6 +5917,57 @@ please chose!</source>
     <message>
         <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
         <translation>请进入具体的设定页面进行设置,点击右下方的返回按钮返回上一层菜单</translation>
+    </message>
+</context>
+<context>
+    <name>SingleStackAction</name>
+    <message>
+        <source>Self</source>
+        <translation type="unfinished">自身</translation>
+    </message>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation type="unfinished">设入</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished">速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation type="unfinished">计数器</translation>
     </message>
 </context>
 <context>

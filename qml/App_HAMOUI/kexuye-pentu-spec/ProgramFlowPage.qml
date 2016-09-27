@@ -1031,48 +1031,93 @@ ProgramFlowPage {
                 if(actionObject.dirAxis == 0){
                     repeataxis = 1;
                     repeatlength = pos.m1;
-                    dirpos["m" + 1] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                    if(actionObject.forward){
+                        tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
+                        tmp["m" + 2] = tmp1["m" + 2] = 0;
+                    }
+                    else{
+                        tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
+                        tmp["m" + 0] = tmp1["m" + 0] = 0;
+                    }
+                    dirpos["m" + 1] = pos["m" + 0] = 0;
                     dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else{
                     repeataxis = 0;
                     repeatlength = pos.m0;
-                    dirpos["m" + 0] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                    if(actionObject.forward){
+                        tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
+                        tmp["m" + 2] = tmp1["m" + 2] = 0;
+                    }
+                    else{
+                        tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
+                        tmp["m" + 1] = tmp1["m" + 1] = 0;
+                    }
+                    dirpos["m" + 0] = pos["m" + 1] = 0;
                     dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
-                tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
                 dirpos["m" + 2] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 1){
                 if(actionObject.dirAxis == 0){
                     repeataxis = 2;
                     repeatlength = pos.m2;
-                    dirpos["m" + 2] = tmp["m" + 0] = tmp1["m" + 0] = pos["m" + 0] = 0;
+                    if(actionObject.forward){
+                        tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
+                        tmp["m" + 1] = tmp1["m" + 1] = 0;
+                    }
+                    else{
+                        tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
+                        tmp["m" + 0] = tmp1["m" + 0] = 0;
+                    }
+                    dirpos["m" + 2] = pos["m" + 0] = 0;
                     dirpos["m" + 0] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else{
                     repeataxis = 0;
                     repeatlength = pos.m0;
-                    dirpos["m" + 0] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                    if(actionObject.forward){
+                        tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
+                        tmp["m" + 1] = tmp1["m" + 1] = 0;
+                    }
+                    else{
+                        tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
+                        tmp["m" + 2] = tmp1["m" + 2] = 0;
+                    }
+                    dirpos["m" + 0] = pos["m" + 2] = 0;
                     dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
-                tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
                 dirpos["m" + 1] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             else if(actionObject.plane == 2){
                 if(actionObject.dirAxis == 1){
                     repeataxis = 2;
                     repeatlength = pos.m2;
-                    dirpos["m" + 2] = tmp["m" + 1] = tmp1["m" + 1] = pos["m" + 1] = 0;
+                    if(actionObject.forward){
+                        tmp["m" + 1] = tmp1["m" + 1] = actionObject.zlength;
+                        tmp["m" + 0] = tmp1["m" + 0] = 0;
+                    }
+                    else{
+                        tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
+                        tmp["m" + 1] = tmp1["m" + 1] = 0;
+                    }
+                    dirpos["m" + 2] = pos["m" + 1] = 0;
                     dirpos["m" + 1] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
                 else{
                     repeataxis = 1;
                     repeatlength = pos.m1;
-                    dirpos["m" + 1] = tmp["m" + 2] = tmp1["m" + 2] = pos["m" + 2] = 0;
+                    if(actionObject.forward){
+                        tmp["m" + 2] = tmp1["m" + 2] = actionObject.zlength;
+                        tmp["m" + 0] = tmp1["m" + 0] = 0;
+                    }
+                    else{
+                        tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
+                        tmp["m" + 2] = tmp1["m" + 2] = 0;
+                    }
+                    dirpos["m" + 1] = pos["m" + 2] = 0;
                     dirpos["m" + 2] = (actionObject.dirLength * Math.cos(actionObject.slope * Math.PI / 180)).toFixed(3);
                 }
-                tmp["m" + 0] = tmp1["m" + 0] = actionObject.zlength;
                 dirpos["m" + 0] = (actionObject.dirLength * Math.sin(actionObject.slope * Math.PI / 180)).toFixed(3);
             }
             pos1["m" + 0] = -pos["m" + 0];
@@ -1739,10 +1784,10 @@ ProgramFlowPage {
                     ps = pentuActionToProgram(model.get(rows).mI_ActionObject,model.get(rows).mI_ActionObject);
                 for(var i = 0;i < ps.length;i++){
                     if(ps[i].action !== LocalTeach.actions.ACT_FLAG &&
-                            ps[i].action !== LocalTeach.actions.F_CMD_MEMCOMPARE_CMD &&
-//                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP0 &&
-//                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP1 &&
-//                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP2 &&
+//                            ps[i].action !== LocalTeach.actions.F_CMD_MEMCOMPARE_CMD &&
+                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP0 &&
+                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP1 &&
+                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP2 &&
                             ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_CALL0 &&
                             ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_CALL_BACK &&
                             ps[i].action !== LocalTeach.actions.F_CMD_COUNTER&&

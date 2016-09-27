@@ -104,7 +104,8 @@ Item {
                         stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
                         stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
                         stack.zdirection,newstack,isGunBack.isChecked,
-                        details.use0,details.use1,details.use2,details.use3,details.use4,details.use5));
+                        details.use0,details.use1,details.use2,details.use3,details.use4,details.use5,
+                        forward.isChecked));
         else
             ret.push(LocalTeach.generatePENTUAction(
                         actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
@@ -117,7 +118,8 @@ Item {
                         actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
                         actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
                         actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
-                        actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2));
+                        actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2,
+                        actObt.forward));
         return ret;
     }
 
@@ -198,6 +200,7 @@ Item {
         ao.rotateSpeed = rotateSpeed.configValue;
         ao.rotateCount = rotateCount.configValue;
         ao.isGunBack = isGunBack.isChecked;
+        ao.forward = forward.isChecked;
         ao.editaction = editaction.configValue;
 
 //        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
@@ -314,11 +317,11 @@ Item {
         spacing: 4
         Row{
             id: row1
-            spacing: 10
+            spacing: 20
             z:10
             Text {
                 id: actionName
-                width: 200
+                width: 100
                 anchors.verticalCenter: parent.verticalCenter
                 color: "green"
             }
@@ -362,7 +365,7 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:dirAxisSel
-                width: 200
+                width: 150
 //                enabled: !useEn.isChecked
                 configName: mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis")
 //                items: ["X", "Y", "Z"]
@@ -376,14 +379,30 @@ Item {
                 }
             }
             ICComboBoxConfigEdit{
-                id: editaction
+                id: editaction          //DIY
                 visible: false
 //                enabled: useEn.isChecked
                 configName: qsTr("Actions")
             }
             ICCheckBox{
+                id:forward
+                width: 100
+                text: qsTr("Forward")
+                isChecked: false
+                visible: mode == 7
+                useCustomClickHandler: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(!forward.isChecked)
+                            forward.isChecked = true;
+                        else forward.isChecked = false;
+                    }
+                }
+            }
+            ICCheckBox{
                 id:isGunBack
-                width: 60
+                width: 100
                 text: qsTr("Is Gun Back")
                 isChecked: false
                 useCustomClickHandler: true
@@ -870,6 +889,7 @@ Item {
         rotateSpeed.configValue = actionObject.rotateSpeed;
         rotateCount.configValue = actionObject.rotateCount;
         isGunBack.isChecked = actionObject.isGunBack;
+        forward.isChecked = actionObject.forward;
         editaction.configValue = actionObject.editaction;
         planeSel.visible = actionObject.mode == 8 ? false : true;
         dirAxisSel.visible = actionObject.mode == 8 ? false : true;
@@ -968,6 +988,7 @@ Item {
         rotateSpeed.configValue = 30.0;
         rotateCount.configValue = 0;
         isGunBack.isChecked = false;
+        forward.isChecked = false;
 
         resetItems();
         ManualProgramManager.manualProgramManager.registerMonitor(container);

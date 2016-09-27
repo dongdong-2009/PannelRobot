@@ -1247,11 +1247,11 @@
     </message>
     <message>
         <source>M7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {7?}</translation>
     </message>
     <message>
         <source>M8</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {8?}</translation>
     </message>
     <message>
         <source>X</source>
@@ -2546,63 +2546,63 @@
     </message>
     <message>
         <source>M010</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {010?}</translation>
     </message>
     <message>
         <source>M011</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {011?}</translation>
     </message>
     <message>
         <source>M012</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {012?}</translation>
     </message>
     <message>
         <source>M013</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {013?}</translation>
     </message>
     <message>
         <source>M014</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {014?}</translation>
     </message>
     <message>
         <source>M015</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {015?}</translation>
     </message>
     <message>
         <source>M016</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {016?}</translation>
     </message>
     <message>
         <source>M017</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {017?}</translation>
     </message>
     <message>
         <source>M020</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {020?}</translation>
     </message>
     <message>
         <source>M021</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {021?}</translation>
     </message>
     <message>
         <source>M022</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {022?}</translation>
     </message>
     <message>
         <source>M023</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {023?}</translation>
     </message>
     <message>
         <source>M024</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {024?}</translation>
     </message>
     <message>
         <source>M025</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {025?}</translation>
     </message>
     <message>
         <source>M026</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {026?}</translation>
     </message>
     <message>
         <source>M027</source>
@@ -4990,19 +4990,19 @@ please chose!</source>
     </message>
     <message>
         <source>Copy Current Line</source>
-        <translation type="unfinished"></translation>
+        <translation>复制当前行</translation>
     </message>
     <message>
         <source>Seq</source>
-        <translation type="unfinished"></translation>
+        <translation>序号</translation>
     </message>
     <message>
         <source>Copy Between Seq and Current</source>
-        <translation type="unfinished"></translation>
+        <translation>复制序号到当前行</translation>
     </message>
     <message>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>粘贴</translation>
     </message>
 </context>
 <context>
@@ -5268,27 +5268,27 @@ please chose!</source>
     <name>SafeRangeEditor</name>
     <message>
         <source>Out Range</source>
-        <translation type="unfinished"></translation>
+        <translation>不在范围(默认在范围)</translation>
     </message>
     <message>
         <source>Limited Axis</source>
-        <translation type="unfinished"></translation>
+        <translation>被限制轴</translation>
     </message>
     <message>
         <source>Limit Axis</source>
-        <translation type="unfinished"></translation>
+        <translation>限制轴</translation>
     </message>
     <message>
         <source>Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>改变</translation>
     </message>
     <message>
         <source>Range</source>
-        <translation type="unfinished"></translation>
+        <translation>范围</translation>
     </message>
     <message>
         <source>Alarm Num</source>
-        <translation type="unfinished"></translation>
+        <translation>报警号</translation>
     </message>
 </context>
 <context>
@@ -5329,7 +5329,7 @@ please chose!</source>
     <name>SingleStackAction</name>
     <message>
         <source>Self</source>
-        <translation type="unfinished">自身</translation>
+        <translation>自身</translation>
     </message>
     <message>
         <source>Axis</source>

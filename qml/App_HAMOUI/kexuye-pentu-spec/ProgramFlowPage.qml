@@ -1694,6 +1694,7 @@ ProgramFlowPage {
                 var tmpActionObj = model.get(i).mI_ActionObject;
                 creatflags(tmpActionObj);
                 creatcounters(tmpActionObj,counter_currt);
+                model.setProperty(i,"mI_ActionObject",tmpActionObj);
                 if(count == -1){
                     var rs = pentuActionHead(tmpActionObj);
                     count = i;
@@ -1793,6 +1794,8 @@ ProgramFlowPage {
                             ps[i].action !== LocalTeach.actions.F_CMD_COUNTER&&
                             ps[i].action !== LocalTeach.actions.F_CMD_SYNC_START&&
                             ps[i].action !== LocalTeach.actions.F_CMD_SYNC_END){
+                        if(ps[i].action == LocalTeach.actions.F_CMD_MEMCOMPARE_CMD)
+                            ps[i].flag = model.get(rows).mI_ActionObject.flag16;
                         panelRobotController.fixProgramOnAutoMode(0,-1,LocalPData.kexueyeRowToStepMap[rows]+i,JSON.stringify(ps[i]));
                         LocalPData.programtoStep[LocalPData.kexueyeRowToStepMap[rows]+i] = ps[i];
                     }

@@ -1474,6 +1474,10 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
         StackInfo si = stackInfos_.value(stackID);
         result.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
     }
+    if(IsJumpAction(result.value("action").toInt()))
+    {
+        result.insert("step", programs_.at(which).FlagStep(result.value("flag").toInt()));
+    }
 
     ret = VariantToMoldItem(realStep, result, err);
     return ret;

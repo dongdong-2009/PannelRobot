@@ -10,7 +10,7 @@ ICSettingConfigsScope{
         Row{
             id:versionContainer
             Text {
-            text: qsTr("UI Version:") + "PENTU-1.0-Robot-1.1.1" + ";"
+            text: qsTr("UI Version:") + "PENTU-1.0-Robot-1.1.2" + ";"
             }
             Text {
                 id:hostVersion

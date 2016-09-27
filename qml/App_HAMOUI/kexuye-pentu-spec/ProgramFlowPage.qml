@@ -924,11 +924,11 @@ ProgramFlowPage {
                 var add = [3280240649,3280502793,3280764937];
                 ret.push(LocalTeach.generateFlagAction(actionObject.flag3, qsTr("Ceycle")));
                 if(parseFloat(dirlength)>=parseFloat(actionObject.startPos1)){
-                    ret.push(LocalTeach.generateDataAction(52461568,0,(parseFloat(dirlength)-1)*1000));
+                    ret.push(LocalTeach.generateDataAction(52461568,0,(parseFloat(dirlength)-0.1)*1000));
                     ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],52461568,1,1));
                 }
                 else{
-                    ret.push(LocalTeach.generateDataAction(52461568,0,(parseFloat(dirlength)+1)*1000));
+                    ret.push(LocalTeach.generateDataAction(52461568,0,(parseFloat(dirlength)+0.1)*1000));
                     ret.push(LocalTeach.generateMemCmpJumpAction(actionObject.flag16,add[actionObject.dirAxis],52461568,3,1));
                 }
                 ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_COORDINATE_DEVIATION,
@@ -1470,9 +1470,11 @@ ProgramFlowPage {
         allcloseAction(ret,actionObject);
         var gunBack = 0;
         if(!actionObject.isGunBack){
-            gunBack = actionObject.startPos.pos.m2
-            if(actionObject.mode === 3)
-                zDelay = 0.5;
+            if(actionObject.mode == 9 && actionObject.dirAxis == 2)
+                gunBack = actionObject.point1.pos.m2;
+            else gunBack = actionObject.startPos.pos.m2;
+            if(actionObject.mode === 2 || actionObject.mode === 3)
+                zDelay = 0.2;
         }
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, gunBack, actionObject.startPosSpeed2,zDelay));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));

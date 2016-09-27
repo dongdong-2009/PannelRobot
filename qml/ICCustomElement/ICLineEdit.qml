@@ -10,6 +10,7 @@ FocusScope{
     property double min : 0
     property double max: 4000000000
     property int decimal: 0
+    property alias rectangle: rectangle
     x: rectangle.x
     y: rectangle.y
     width: rectangle.width + unit.width
@@ -59,13 +60,15 @@ FocusScope{
                     }else{
                         virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
                     }
-                    rectangle.color = "green";
+                    if(rectangle.color != "#000000")
+                        rectangle.color = "green";
                     virtualKeyboard.commit.disconnect(onCommit);
                     virtualKeyboard.reject.disconnect(onReject);
                     virtualKeyboard.commit.connect(onCommit);
                     virtualKeyboard.reject.connect(onReject);
                 }else{
-                    rectangle.color = "white";
+                    if(rectangle.color != "#000000")
+                        rectangle.color = "white";
                     virtualKeyboard.commit.disconnect(onCommit);
                     virtualKeyboard.reject.disconnect(onReject);
 

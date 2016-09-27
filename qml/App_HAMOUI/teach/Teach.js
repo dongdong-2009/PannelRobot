@@ -95,6 +95,7 @@ var DefinePoints = {
             for(var i = 0;i<ps.length;i++){
                 if(pointID === ps[i].index){
                     definePoints.definedPoints[i].point = point.point;
+                    definePoints.definedPoints[i].name = point.name;
                     definePoints.informPointDataChanged(definePoints.definedPoints[i]);
                     break;
                 }
@@ -869,7 +870,10 @@ function isJumpAction(act){
 }
 
 function hasCounterIDAction(action){
-    if(action.action == actions.F_CMD_STACK0){
+    if(customActions.hasOwnProperty(action.action)){
+        return customActions[action.action].hasCounter;
+    }
+    else if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         if(si != null)
             return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
@@ -909,7 +913,10 @@ function actionStackID(action){
 }
 
 function actionCounterIDs(action){
-    if(action.action == actions.F_CMD_STACK0){
+    if(customActions.hasOwnProperty(action.action)){
+        return customActions[action.action].getCountersID(action);
+    }
+    else if(action.action == actions.F_CMD_STACK0){
         var si = getStackInfoFromID(action.stackID);
         return [si.si0.counterID];
     }else if(action.action == actions.ACT_COMMENT){
@@ -1365,8 +1372,8 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += qsTr("Stop");
     }else{
         var pts = actionObject.points;
-        if(pts == undefined) pts = [];
-        if(pts.length != 0){
+        if(pts === undefined) pts = [];
+        if(pts.length !== 0){
             ret += pts[0].pointName + "(" +
                     pts[0].pos["m" + actionObject.axis] + ")";
         }else
@@ -1921,6 +1928,10 @@ function customActionGenerator(actionDefine){
         for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
             ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
         }
+        if(actionDefine.canActionUsePoint){
+            ret.points = properties.points == undefined ? [] : properties.points;
+            actionDefine.pointsReplace(ret);
+        }
         return ret;
     };
     actionDefine.toRegisterString = function(){
@@ -1931,6 +1942,7 @@ function customActionGenerator(actionDefine){
         }
         return JSON.stringify(ret);
     };
+//    console.log( actionDefine.editableItems.editor.errorString());
     actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
     if(!actionDefine.hasOwnProperty("actionObjectChangedHelper")){
         actionDefine.actionObjectChangedHelper = function(editor, actionObject){
@@ -1944,6 +1956,10 @@ function customActionGenerator(actionDefine){
             for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
                 actionObject[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
             }
+            if(actionDefine.canActionUsePoint){
+                actionObject.points = editor.points;
+                actionDefine.pointsReplace(actionObject);
+            }
         };
     }
     if(!actionDefine.hasOwnProperty("getActionPropertiesHelper")){
@@ -1951,6 +1967,9 @@ function customActionGenerator(actionDefine){
             var ret = {"action":actionDefine.action};
             for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
                 ret[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+            }
+            if(actionDefine.canActionUsePoint){
+                ret.points = editor.points;
             }
             return ret;
         }
@@ -1975,5 +1994,11 @@ var registerCustomActions = function(controller, exActions){
     for(var i = 0, len = exActions.length; i < len; ++i){
         registerCustomAction(exActions[i]);
         controller.registerCustomProgramAction(exActions[i].toRegisterString());
+    }
+}
+
+var updateCustomActions = function(actionObject){
+    if(customActions.hasOwnProperty(actionObject.action)){
+        customActions[actionObject.action].pointsReplace(actionObject);
     }
 }

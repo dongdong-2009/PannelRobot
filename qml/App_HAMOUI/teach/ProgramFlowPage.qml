@@ -351,8 +351,10 @@ Rectangle {
             for(var p = 0; p < originpPoints.length; ++p){
                 if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
                     toFixAction.points[p].pos = point.point;
+                    toFixAction.points[p].pointName = point.name;
                 }
             }
+            Teach.updateCustomActions(actionObject);
             md.setProperty(line, "mI_ActionObject",actionObject);
         }
     }
@@ -846,13 +848,13 @@ Rectangle {
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
                             programListView.currentIndex = -1;
+                            programListView.model = null;
                             programListView.model = functionsModel;
                             currentEditingProgram = PData.kFunctionProgramIndex
                             currentEditingModule = moduleSel.currentIndex;
                             delModuleBtn.visible = newModuleBtn.visible;
                             actionEditorFrame.item.setMode("moduleEditMode");
                             PData.currentEditingProgram = PData.kFunctionProgramIndex;
-
 
                         }
                     }
@@ -1265,16 +1267,24 @@ Rectangle {
                         id:pasteBtn
                         height: parent.height
                         width: 40
-                        enabled: false
                         text: qsTr("Paste")
+                        enabled: false
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
                         onButtonClicked: {
-                            for(var i = 0;i < PData.clipboard.length;i++){
-                                insertActionToList(PData.clipboard[0]);
-                                repaintProgramItem(currentModel());
+                            var ao;
+                            for(var i = 0, len = PData.clipboard.length; i < len; ++i){
+                                ao = PData.clipboard[i];
+                                if(ao.action == Teach.actions.ACT_FLAG){
+                                    if(Teach.flagsDefine.getFlag(PData.currentEditingProgram, ao.flagID) != null){
+                                        var f = Teach.flagsDefine.createFlag(PData.currentEditingProgram, ao.comment);
+                                        ao.flag = f.flagID;
+                                    }
+                                }
+                                insertActionToList(ao);
                             }
+                            repaintProgramItem(currentModel());
                         }
                     }
 
@@ -1845,6 +1855,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        ExtentActionDefine.init(Teach.counterManager);
         Teach.registerCustomActions(panelRobotController, ExtentActionDefine.extentActions);
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);

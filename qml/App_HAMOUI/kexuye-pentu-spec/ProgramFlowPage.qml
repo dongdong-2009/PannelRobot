@@ -1740,9 +1740,9 @@ ProgramFlowPage {
                 for(var i = 0;i < ps.length;i++){
                     if(ps[i].action !== LocalTeach.actions.ACT_FLAG &&
                             ps[i].action !== LocalTeach.actions.F_CMD_MEMCOMPARE_CMD &&
-                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP0 &&
-                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP1 &&
-                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP2 &&
+//                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP0 &&
+//                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP1 &&
+//                            ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_JUMP2 &&
                             ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_CALL0 &&
                             ps[i].action !== LocalTeach.actions.F_CMD_PROGRAM_CALL_BACK &&
                             ps[i].action !== LocalTeach.actions.F_CMD_COUNTER&&

@@ -53,6 +53,10 @@ Item {
                 id:safeRangeControl
                 text: qsTr("Safe Range Control")
             }
+            ICCheckBox{
+                id:singleStack
+                text: qsTr("Single Stack")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -76,6 +80,7 @@ Item {
             addPage(analogControlEdit);
             addPage(deltaJumpEditor);
             addPage(safeRangeEditor);
+            addPage(singleStackEditor);
             currentIndex = 0;
         }
         PENQIANEditor{
@@ -89,6 +94,9 @@ Item {
         }
         SafeRangeEditor{
             id:safeRangeEditor
+        }
+        SingleStackAction{
+            id:singleStackEditor
         }
     }
 }

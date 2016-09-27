@@ -1,6 +1,11 @@
 .pragma library
-
 Qt.include("../../configs/AxisDefine.js")
+
+var counterManager;
+
+function init(cManager){
+    counterManager = cManager;
+}
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -43,7 +48,7 @@ var extentAnalogControlAction = {
                 qsTr("Analog:") + actionObject.analog + " " +
                 qsTr("Delay:") + actionObject.delay;
     }
-}
+};
 
 var extentDeltaJumpAction = {
     "action":700,
@@ -67,7 +72,7 @@ var extentDeltaJumpAction = {
         new ActionDefineItem("delay", 1)
     ],
     "canTestRun":true,
-    "canActionUsePoint": true,
+    "canActionUsePoint": false,
     "editableItems":{"editor":Qt.createComponent("DeltaJumpEditor.qml"), "itemDef":{"item":"DeltaJumpEditor"}},
     "toStringHandler":function(actionObject){
         return qsTr("Delta Jumpl") + ":" + qsTr("start pos:")+
@@ -90,7 +95,7 @@ var extentDeltaJumpAction = {
                 qsTr("speed:") + actionObject.speed + " " +
                 qsTr("Delay:") + actionObject.delay;
     }
-}
+};
 
 var extentSafeRangeAction = {
     "action":550,
@@ -111,13 +116,62 @@ var extentSafeRangeAction = {
         var allow = (actionObject.para1>>8)&1;
         var type = (actionObject.para1>>9)&1;
         var coor = (actionObject.para1>>10)&1;
+        var whenChangeType = actionObject.para1 >> 11;
         return qsTr("Safe Control") + ":" + qsTr("if") + " " + axisInfos[id1].name + (allow ? qsTr("out pos fange:") : qsTr("in pos fange:") ) +
-                "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n" +
-                axisInfos[id2].name+
-                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")"+"\n" +
+                "("+actionObject.pos1+"," +actionObject.pos2+")"+"\n                            " +
+                axisInfos[id2].name+ " " + (whenChangeType ? qsTr("When Changed") :
+                qsTr("out pos fange:") +"("+actionObject.lpos1+"," +actionObject.lpos2+")" ) +"\n                            " +
                 qsTr("will alarm:") + actionObject.aid;
     },
     "actionObjectChangedHelper":function(editor, actionObject){
     }
-}
-var extentActions = [extentPENQIANGAction, extentAnalogControlAction,extentDeltaJumpAction,extentSafeRangeAction];
+};
+
+var extentSingleStackAction = {
+    "action":301,
+    "properties":[new ActionDefineItem("startPos", 3),
+        new ActionDefineItem("space", 3),
+        new ActionDefineItem("count", 0),
+        new ActionDefineItem("speed", 1),
+        new ActionDefineItem("configs", 0)
+    ],
+    "canTestRun":true,
+    "canActionUsePoint": true,
+    "pointsReplace":function(generatedAction){
+        var pts = generatedAction.points;
+        if(pts.length == 0) return;
+        generatedAction.startPos = pts[0].pos["m" + (generatedAction.configs & 0x1F)];
+    },
+
+    "hasCounter":true,
+    "getCountersID":function(actionObject){
+        return [actionObject.configs >> 17];
+    },
+
+    "editableItems":{"editor":Qt.createComponent("SingleStackAction.qml"), "itemDef":{"item":"SingleStackAction"}},
+    "toStringHandler":function(actionObject){
+        var configs = actionObject.configs;
+        var axisID = configs & 0x1F;
+        var dir = (configs >> 5) & 1;
+        var bindingCounter = (configs >> 16) & 1;
+        var counterID = (configs >>17);
+        var points = (actionObject.points == undefined ? [] : actionObject.points);
+        var startPos = actionObject.startPos;
+        var isAddr = (configs >> 8) & 0xFF;
+        if(points.length !== 0){
+            startPos = points[0].pointName + "(" + points[0].pos["m" + axisID] + ")";
+        }
+
+        return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) + " " +
+                qsTr("Start Pos:") + startPos + " " +
+                qsTr("space:") + (isAddr ? qsTr("Addr:") : "") + actionObject.space + " " + qsTr("count:") + actionObject.count + "\n                            " +
+                (bindingCounter ? counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
+                qsTr("speed:") + actionObject.speed;
+    }
+};
+
+var extentActions = [extentPENQIANGAction,
+                     extentAnalogControlAction,
+                     extentDeltaJumpAction,
+                     extentSafeRangeAction,
+        extentSingleStackAction];

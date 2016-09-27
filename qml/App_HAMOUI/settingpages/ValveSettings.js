@@ -22,3 +22,11 @@ function changeTime(uiIndex, id, time){
     changedData[uiIndex].time = parseFloat(time);
     changedData[uiIndex].id = id;
 }
+
+function changeAutoCheck(uiIndex, id, isCheck){
+    if(!(uiIndex in changedData)){
+        changedData[uiIndex] = {};
+    }
+    changedData[uiIndex].autoCheck = isCheck ? 1 : 0;
+    changedData[uiIndex].id = id;
+}

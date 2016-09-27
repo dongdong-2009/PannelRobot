@@ -291,6 +291,11 @@ Rectangle {
                 text: qsTr("Load")
                 height: 40
                 onButtonClicked: {
+                    if(selectName.text == panelRobotController.currentRecordName())
+                    {
+                        tipDialog.warning(qsTr("In current mold"));
+                        return;
+                    }
                     if(!panelRobotController.loadRecord(selectName.text))
                     {
                         tipDialog.warning(qsTr("Mold has error!"));

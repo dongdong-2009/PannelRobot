@@ -711,6 +711,7 @@ function combineValveDefines(customValves){
                 vd.x1Dir = customValves[i].x1Dir;
                 vd.x2Dir = customValves[i].x2Dir;
                 vd.time = customValves[i].time;
+                vd.autoCheck = customValves[i].autoCheck;
             }
         }
     }

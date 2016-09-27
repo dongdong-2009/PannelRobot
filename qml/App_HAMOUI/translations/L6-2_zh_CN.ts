@@ -457,6 +457,82 @@
         <source>ALARM_ORIGIN_DEVIATION</source>
         <translation>原点偏移</translation>
     </message>
+    <message>
+        <source>5002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5003</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5004</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5005</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5006</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5007</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5008</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5009</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5018</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5019</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5020</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
@@ -1637,6 +1713,53 @@
     </message>
 </context>
 <context>
+    <name>DeltaJumpEditor</name>
+    <message>
+        <source>LH Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MH Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RH Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation type="unfinished">设入</translation>
+    </message>
+    <message>
+        <source>End Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>speed Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation type="unfinished">延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
@@ -1670,6 +1793,90 @@
         <source>Analog:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delta Jumpl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>start pos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LH:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MH:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RH:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>end pos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Safe Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>if</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>out pos fange:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>in pos fange:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>will alarm:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Single Stack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Pos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>space:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Addr:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Counter:Self</source>
+        <translation type="unfinished">计数器:自身</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1679,6 +1886,18 @@
     </message>
     <message>
         <source>Analog Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delta Jump Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Safe Range Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Single Stack</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2387,7 +2606,7 @@
     </message>
     <message>
         <source>M027</source>
-        <translation type="unfinished"></translation>
+        <translation>报警状态</translation>
     </message>
     <message>
         <source>Time Y010</source>
@@ -4769,6 +4988,22 @@ please chose!</source>
 </source>
         <translation>保存{0}失败!</translation>
     </message>
+    <message>
+        <source>Copy Current Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy Between Seq and Current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paste</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4942,6 +5177,10 @@ please chose!</source>
         <source>Export Printable</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>In current mold</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>
@@ -5026,6 +5265,33 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>SafeRangeEditor</name>
+    <message>
+        <source>Out Range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limited Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Limit Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SearchActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -5057,6 +5323,57 @@ please chose!</source>
     <message>
         <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
         <translation>请进入具体的设定页面进行设置,点击右下方的返回按钮返回上一层菜单</translation>
+    </message>
+</context>
+<context>
+    <name>SingleStackAction</name>
+    <message>
+        <source>Self</source>
+        <translation type="unfinished">自身</translation>
+    </message>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation type="unfinished">设入</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished">速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation type="unfinished">计数器</translation>
     </message>
 </context>
 <context>

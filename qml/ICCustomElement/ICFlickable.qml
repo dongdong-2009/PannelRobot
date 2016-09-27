@@ -6,6 +6,7 @@ Flickable{
     property bool isshowhint: false
     property alias hintx: hint.x
     property alias hinty: hint.y
+    clip: true
     onMovementEnded: {
         hint.item.hintplay(flick);
     }

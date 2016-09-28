@@ -736,7 +736,7 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
         qkData.all = v.at(0);
         if(qkData.b.cmd == 0)
         {
-            ICRobotVirtualhost::AddReadConfigCommand(host_, ICAddr_System_Retain_51, 1);
+            ICRobotVirtualhost::AddReadConfigCommand(host_, 51, 1);
         }
         else
         {
@@ -1785,7 +1785,8 @@ void PanelRobotController::writeQKConfig(int axis, int addr, int data)
     qkData.b.id = axis;
     qkData.b.addr = addr;
     qkData.b.data = data;
-    modifyConfigValue(ICAddr_System_Retain_50, qkData.all);
+    modifyConfigValue(50, qkData.all);
+
 }
 
 
@@ -1795,8 +1796,8 @@ void PanelRobotController::readQKConfig(int axis, int addr)
     qkData.b.cmd = 2;
     qkData.b.id = axis;
     qkData.b.addr = addr;
-    modifyConfigValue(ICAddr_System_Retain_50, qkData.all);
-    ICRobotVirtualhost::AddReadConfigCommand(host_, ICAddr_System_Retain_51, 1);
+    modifyConfigValue(50, qkData.all);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, 51, 1);
     connect(host_.data(),
             SIGNAL(QueryFinished(int , const QVector<quint32>& )),
             this,

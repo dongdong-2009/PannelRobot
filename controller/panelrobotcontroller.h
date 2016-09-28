@@ -106,7 +106,7 @@ union QKCmdData{
         quint32 data:16; //< 数据
     }b;
     quint32 all;
-}
+};
 
 union AutoRunData{
     struct{

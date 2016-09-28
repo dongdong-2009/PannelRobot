@@ -2546,63 +2546,63 @@
     </message>
     <message>
         <source>M010</source>
-        <translation type="unfinished">报警状态 {010?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M011</source>
-        <translation type="unfinished">报警状态 {011?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M012</source>
-        <translation type="unfinished">报警状态 {012?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M013</source>
-        <translation type="unfinished">报警状态 {013?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M014</source>
-        <translation type="unfinished">报警状态 {014?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M015</source>
-        <translation type="unfinished">报警状态 {015?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M016</source>
-        <translation type="unfinished">报警状态 {016?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M017</source>
-        <translation type="unfinished">报警状态 {017?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M020</source>
-        <translation type="unfinished">报警状态 {020?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M021</source>
-        <translation type="unfinished">报警状态 {021?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M022</source>
-        <translation type="unfinished">报警状态 {022?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M023</source>
-        <translation type="unfinished">报警状态 {023?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M024</source>
-        <translation type="unfinished">报警状态 {024?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M025</source>
-        <translation type="unfinished">报警状态 {025?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M026</source>
-        <translation type="unfinished">报警状态 {026?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M027</source>

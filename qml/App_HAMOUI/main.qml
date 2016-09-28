@@ -45,6 +45,7 @@ Rectangle {
         anchors.right: timelable.left
         anchors.rightMargin: 12
         z:1000
+        font.pixelSize: 16
         function setRestTime(rt){
             visible = (rt < 168) && rt != 0;
             text = qsTr("Rest Time:") + rt;

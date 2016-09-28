@@ -37,6 +37,22 @@ Item {
                 panelRobotController.readQKConfig(axisEdit.configValue, addrEdit.configValue);
             }
         }
+        ICButton{
+            id:writeEPBtn
+            text: qsTr("Write EP")
+            onButtonClicked: {
+                panelRobotController.writeQKConfig(axisEdit.configValue, addrEdit.configValue, dataEdit.configValue, true);
+            }
+        }
+        ICButton{
+            id:readEPBtn
+            text: qsTr("Read EP")
+            onButtonClicked: {
+                panelRobotController.readQKConfig(axisEdit.configValue, addrEdit.configValue, true);
+
+            }
+        }
+
         anchors.top: qkConfigContainer.bottom
         anchors.topMargin: 6
     }

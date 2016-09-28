@@ -793,9 +793,9 @@ public:
         ICSuperSettings().SetFactoryCode(fc);
     }
 
-    Q_INVOKABLE void writeQKConfig(int axis, int addr, int data);
+    Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
-    Q_INVOKABLE void readQKConfig(int axis, int addr);
+    Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

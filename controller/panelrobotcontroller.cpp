@@ -1778,10 +1778,10 @@ void PanelRobotController::setRestUseTime(int hour)
     ICRegister::Instance()->SetUseTime(hour);
 }
 
-void PanelRobotController::writeQKConfig(int axis, int addr, int data)
+void PanelRobotController::writeQKConfig(int axis, int addr, int data, bool ep)
 {
     QKCmdData qkData;
-    qkData.b.cmd = 1;
+    qkData.b.cmd = ep ? 3 : 1;
     qkData.b.id = axis;
     qkData.b.addr = addr;
     qkData.b.data = data;
@@ -1790,10 +1790,10 @@ void PanelRobotController::writeQKConfig(int axis, int addr, int data)
 }
 
 
-void PanelRobotController::readQKConfig(int axis, int addr)
+void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
 {
     QKCmdData qkData;
-    qkData.b.cmd = 2;
+    qkData.b.cmd = ep ? 4 : 2;
     qkData.b.id = axis;
     qkData.b.addr = addr;
     modifyConfigValue(50, qkData.all);

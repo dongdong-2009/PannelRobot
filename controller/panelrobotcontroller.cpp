@@ -224,8 +224,8 @@ void PanelRobotController::Init()
 
     emit LoadMessage("Record reload.");
 
-//    InitUI();
-//    emit LoadMessage("Ui inited.");
+    //    InitUI();
+    //    emit LoadMessage("Ui inited.");
     //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -730,6 +730,24 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                    this,
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
     }
+    else if(addr == 51)
+    {
+        QKCmdData qkData;
+        qkData.all = v.at(0);
+        if(qkData.b.cmd == 0)
+        {
+            ICRobotVirtualhost::AddReadConfigCommand(host_, ICAddr_System_Retain_51, 1);
+        }
+        else
+        {
+            readedConfigValues_.insert(addr, v.at(0));
+            disconnect(host_.data(),
+                       SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+                       this,
+                       SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+            emit readQKConfigFinished(qkData.all);
+        }
+    }
     else if(addr < ICAddr_Read_Status0)
     {
         QList<QPair<int, quint32> > tmp;
@@ -1100,13 +1118,13 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
 {
     if(!isInAuto())
         ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
-//    else
-//    {
-//        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
-//        if(c.isEmpty()) return false;
-//        if(c.last() != target)
-//            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
-//    }
+    //    else
+    //    {
+    //        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
+    //        if(c.isEmpty()) return false;
+    //        if(c.last() != target)
+    //            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    //    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
@@ -1234,7 +1252,7 @@ void PanelRobotController::manualRunProgram(const QString& program,
     if(!compliedCounters.isEmpty())
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
-//    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
+    //    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
     if(sendKeyNow)
         ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
 
@@ -1654,7 +1672,7 @@ int exportBackupHelper(const QString& backupName, const QString& path)
     if(!dir.cd(path)) return -1;
     if(!dir.exists(backupName.toUtf8())) return -1;
     if(!ICUtility::IsUsbAttached()) return -2;
-//    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
+    //    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
     if(QFile::copy(dir.absoluteFilePath(backupName.toUtf8()), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8())))
     {
 #ifdef  Q_WS_QWS
@@ -1758,4 +1776,30 @@ bool PanelRobotController::isTryTimeOver() const
 void PanelRobotController::setRestUseTime(int hour)
 {
     ICRegister::Instance()->SetUseTime(hour);
+}
+
+void PanelRobotController::writeQKConfig(int axis, int addr, int data)
+{
+    QKCmdData qkData;
+    qkData.b.cmd = 1;
+    qkData.b.id = axis;
+    qkData.b.addr = addr;
+    qkData.b.data = data;
+    modifyConfigValue(ICAddr_System_Retain_50, qkData.all);
+}
+
+
+void PanelRobotController::readQKConfig(int axis, int addr)
+{
+    QKCmdData qkData;
+    qkData.b.cmd = 2;
+    qkData.b.id = axis;
+    qkData.b.addr = addr;
+    modifyConfigValue(ICAddr_System_Retain_50, qkData.all);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, ICAddr_System_Retain_51, 1);
+    connect(host_.data(),
+            SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+            this,
+            SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
+            Qt::UniqueConnection);
 }

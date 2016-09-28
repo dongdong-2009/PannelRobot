@@ -1207,7 +1207,7 @@ Rectangle {
                             for(var i = 0, len = PData.clipboard.length; i < len; ++i){
                                 ao = PData.clipboard[i];
                                 if(ao.action == Teach.actions.ACT_FLAG){
-                                    if(Teach.flagsDefine.getFlag(PData.currentEditingProgram, ao.flagID) != null){
+                                    if(Teach.flagsDefine.getFlag(PData.currentEditingProgram, ao.flag) != null){
                                         var f = Teach.flagsDefine.createFlag(PData.currentEditingProgram, ao.comment);
                                         ao.flag = f.flagID;
                                     }

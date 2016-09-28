@@ -200,11 +200,48 @@ Rectangle {
             id:backupPackageModel
         }
 
+        Row{
+            x:recordsView.x
+            id:searchContainer
+            spacing: 10
+            anchors.top: usbContainer.bottom
+            anchors.topMargin: 10
+            ICConfigEdit{
+                id:searchBox
+                isNumberOnly: false
+                inputWidth: 250
+            }
+            ICButton{
+                id:searchBtn
+                text: qsTr("Search")
+                height: searchBox.height
+                onButtonClicked: {
+                    var m = recordsView.model;
+                    for(var i = 0, len = m.count; i < len; ++i){
+                        m.setProperty(i, "visible", m.get(i).name.indexOf(searchBox.configValue) >= 0);
+                    }
+                }
+            }
+            ICButton{
+                id:clearSearchBtn
+                text: qsTr("Clear Search")
+                height: searchBox.height
+                onButtonClicked: {
+                    searchBox.configValue = "";
+                    var m = recordsView.model;
+                    for(var i = 0, len = m.count; i < len; ++i){
+                        m.setProperty(i, "visible", true);
+                    }
+                }
+            }
+        }
+
         ListView{
             function createRecordItem(name, time, isSelected){
                 return{"name":name,
                     "createDatetime":time,
-                    "isSelected":isSelected || false
+                    "isSelected":isSelected || false,
+                    "visible":true
                 };
             }
             property bool isSelectable: false
@@ -212,18 +249,19 @@ Rectangle {
 
             id:recordsView
             width: parent.width * 0.8
-            height: parent.height  - infoContainer.height - infoContainer.y - usbContainer.height - usbContainer.anchors.topMargin - anchors.topMargin
+            height: parent.height  - infoContainer.height - infoContainer.y - usbContainer.height - usbContainer.anchors.topMargin - anchors.topMargin - searchContainer.height - searchContainer.anchors.topMargin
             x:10
             clip: true
-            anchors.top: usbContainer.bottom
+            anchors.top: searchContainer.bottom
             anchors.topMargin: 10
             model: recordsModel
             delegate: Rectangle{
                 width: parent.width - border.width
-                height: 40
                 border.width: 1
                 border.color: "gray"
                 color: recordsView.currentIndex == index ? "lightsteelblue" : "white"
+                visible: model.visible
+                height: model.visible ? 40 : 0
                 Row{
                     width: parent.width
                     height: parent.height

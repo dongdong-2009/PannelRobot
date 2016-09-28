@@ -201,6 +201,7 @@ Rectangle {
         }
 
         Row{
+            x:recordsView.x
             id:searchContainer
             spacing: 10
             anchors.top: usbContainer.bottom
@@ -256,11 +257,11 @@ Rectangle {
             model: recordsModel
             delegate: Rectangle{
                 width: parent.width - border.width
-                height: 40
                 border.width: 1
                 border.color: "gray"
                 color: recordsView.currentIndex == index ? "lightsteelblue" : "white"
                 visible: model.visible
+                height: model.visible ? 40 : 0
                 Row{
                     width: parent.width
                     height: parent.height

@@ -3968,6 +3968,10 @@
         <source>System Configs</source>
         <translation>系统参数</translation>
     </message>
+    <message>
+        <source>QK Configs</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -5046,6 +5050,29 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>QKConfigs</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished">轴</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation type="unfinished">地址</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RecordManagementPage</name>
     <message>
         <source>Select Name:</source>
@@ -5189,6 +5216,14 @@ please chose!</source>
     <message>
         <source>In current mold</source>
         <translation>已在当前模号</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <source>Clear Search</source>
+        <translation>清除搜索</translation>
     </message>
 </context>
 <context>

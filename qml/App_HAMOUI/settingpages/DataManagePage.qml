@@ -84,6 +84,7 @@ Item {
                 backuViews.model = uDiskUpdaterModel;
             }
         }
+        backuViews.currentIndex = -1;
     }
 
     Column{

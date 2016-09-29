@@ -404,7 +404,7 @@ void PanelRobotController::syncConfigs()
 #endif
 }
 
-QString PanelRobotController::records()
+QString PanelRobotController::records() const
 {
     QString content;
     ICRecordInfos infos = ICRobotMold::RecordInfos();

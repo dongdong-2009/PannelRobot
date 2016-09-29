@@ -25,7 +25,7 @@ Item {
         ListView{
             id:alarmView
             width: parent.width
-            height: parent.width - 2
+            height: parent.height - 2
             y:2
             clip: true
             highlight: Rectangle {

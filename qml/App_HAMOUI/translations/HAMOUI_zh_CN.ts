@@ -1603,7 +1603,7 @@
     <name>DataManagePage</name>
     <message>
         <source>Local</source>
-        <translation type="unfinished">本机模号</translation>
+        <translation>本机模号</translation>
     </message>
     <message>
         <source>U Disk</source>
@@ -1619,71 +1619,71 @@
     </message>
     <message>
         <source>Backup Current</source>
-        <translation type="unfinished">备份当前状态</translation>
+        <translation>备份当前状态</translation>
     </message>
     <message>
         <source>Restore Selected</source>
-        <translation type="unfinished">还原选中备份</translation>
+        <translation>还原选中备份</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>ghost</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Please input the backup name</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入备份名称</translation>
     </message>
     <message>
         <source>Backup Name</source>
-        <translation type="unfinished"></translation>
+        <translation>备份名称</translation>
     </message>
     <message>
         <source>Ok</source>
-        <translation type="unfinished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Backup...</source>
-        <translation type="unfinished"></translation>
+        <translation>本分中</translation>
     </message>
     <message>
         <source>Restoring...</source>
-        <translation type="unfinished"></translation>
+        <translation>还原中</translation>
     </message>
     <message>
         <source>Updater</source>
-        <translation type="unfinished">更新包</translation>
+        <translation>更新包</translation>
     </message>
     <message>
         <source>System will reboot after restore! Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>还原后系统将会重启，确定吗？</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Exporting...</source>
-        <translation type="unfinished">导出中</translation>
+        <translation>导出中</translation>
     </message>
     <message>
         <source>Export successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>导出成功</translation>
     </message>
     <message>
         <source>Start Update</source>
-        <translation type="unfinished">开始更新</translation>
+        <translation>开始更新</translation>
     </message>
 </context>
 <context>

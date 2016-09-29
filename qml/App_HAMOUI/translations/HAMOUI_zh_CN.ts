@@ -5788,7 +5788,7 @@ please chose!</source>
     </message>
     <message>
         <source>Setpaswd:</source>
-        <translation>设置密码：</translation>
+        <translation>设置密码:</translation>
     </message>
     <message>
         <source>FirTime:</source>
@@ -5825,6 +5825,10 @@ please chose!</source>
     <message>
         <source>Lock Success,Please Restart to Take Effect</source>
         <translation>锁定成功，请点OK重启以生效</translation>
+    </message>
+    <message>
+        <source>Paswrd is Incorrect!</source>
+        <translation>密码错误</translation>
     </message>
 </context>
 <context>

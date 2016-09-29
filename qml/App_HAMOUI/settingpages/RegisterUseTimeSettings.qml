@@ -151,6 +151,7 @@ Item {
         visible: false
         Rectangle{
 //            id: container
+            radius: 15
             width: 360
             height: 140 + (setpassword.visible ? setpassword.height : 0) + (warning.visible ? warning.height : 0)
 //            visible: false
@@ -196,9 +197,19 @@ Item {
                                 container.visible = false;
                                 timelimit.visible = true;
                             }
-                            else warning.text = "Paswrd Wrong"
+                            else{
+                                warning.text = (qsTr("Paswrd is Incorrect!"));
+                                flicker.running = true;
+                            }
                         }
                     }
+                }
+                SequentialAnimation{
+                    id: flicker
+                    loops: 3
+                    running: false
+                    PropertyAnimation{ target: warning;properties: "color";to:"transparent";duration: 100}
+                    PropertyAnimation{ target: warning;properties: "color";to:"red";duration: 100}
                 }
                 Text {
                     id: warning
@@ -258,6 +269,7 @@ Item {
         Rectangle{
             height: 300
             width: 600
+            radius: 15
             anchors.centerIn: parent
             border.width: 1
             border.color: "black"

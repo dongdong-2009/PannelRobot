@@ -20,6 +20,7 @@ Item {
         panelMenuBtn.enabled = isClientEn;
         picSettingMenuBtn.enabled = isClientEn;
         networkMenuBtn.enabled = isClientEn;
+        registerMenuBtn.enabled = isClientEn;
     }
     property variant pages: []
     Grid{
@@ -52,7 +53,7 @@ Item {
             id:registerMenuBtn
             text: qsTr("Register")
             icon: "../images/settings_register.png"
-            enabled: true
+            enabled: false
         }
 
         CatalogButton{

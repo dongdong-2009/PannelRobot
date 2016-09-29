@@ -247,8 +247,11 @@ Item {
 //            isNumberOnly: false
             inputWidth: 100
             onTextChanged: {
-                if(text == 88888)
+                if(text == 88888){
                     panelRobotController.setCustomSettings("unablemerge",0);
+                    tipMessg.information(qsTr("Lock Enable,Please Restart to Take Effect"));
+                    timelimit.visible = false;
+                }
                 text = "";
             }
         }
@@ -407,11 +410,22 @@ Item {
                         var hours = (((year1.text - yy)*12 + (month1.text - mm))*30 + day1.text - dd)*24 - hh;
                         restTimeEdit.configValue = hours;
                         panelRobotController.setCustomSettings("unablemerge",1);
+                        tipMessg.information(qsTr("Lock Success,Please Restart to Take Effect"));
                         timelimit.visible = false;
                     }
                 }
             }
         }
+    }
+    ICMessageBox{
+        id:tipMessg
+        x:300
+        y:150
+        z:3
+        onAccept: panelRobotController.reboot()
+    }
+    function lockCodeSeted(isSeted){
+
     }
 
 
@@ -420,6 +434,7 @@ Item {
 //        restTimeEdit.visible = isSuper;
 //        factoryCode.visible = isSuper;
         setpassword.visible = isSuper;
+        enabledate.visible = isSuper;
     }
 
     function onFCChanged(){

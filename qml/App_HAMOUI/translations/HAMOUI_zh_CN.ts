@@ -5818,6 +5818,14 @@ please chose!</source>
         <source>FinTime:</source>
         <translation>最终解锁:</translation>
     </message>
+    <message>
+        <source>Lock Enable,Please Restart to Take Effect</source>
+        <translation>解锁成功，请点OK重启以生效</translation>
+    </message>
+    <message>
+        <source>Lock Success,Please Restart to Take Effect</source>
+        <translation>锁定成功，请点OK重启以生效</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>

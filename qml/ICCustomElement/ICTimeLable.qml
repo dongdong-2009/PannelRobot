@@ -2,14 +2,29 @@ import QtQuick 1.1
 
 Rectangle {
     property string form: ""
+    property int second: 0
+    signal hourGone()
+    signal minuteGone()
+    signal secondGone()
     Timer {
         interval: 1000; running: parent.visible; repeat: true
         triggeredOnStart: true
-        onTriggered: time.text = formatDate(form).toString()
+        onTriggered: {
+            time.text = formatDate(form).toString();
+            ++second;
+            secondGone();
+            if(second % 60 == 0)
+                minuteGone();
+            if(second % 3600 == 0){
+                hourGone();
+                second = 0;
+            }
+        }
     }
     width: time.width
     height: time.height
     color: "transparent"
+
     function formatDate(fmt)
     { //author: meizz
         var date = new Date();

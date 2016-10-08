@@ -12,7 +12,15 @@ var configRanges = {
     "m_rw_0_16_0_1":[2, 200],
     "m_rw_0_16_0_2":["m_rw_0_16_0_0", "m_rw_0_16_0_1"],
     "m_rw_0_16_0_16":[0, MAX_UINT_16],
-    "s_rw_0_16_1_294":[0, 100], //manual speed
+    "s_rw_0_16_1_294":[0, 100], //m0 manual speed
+    "s_rw_16_16_1_294":[0, 100], //m1 manual speed
+    "s_rw_0_16_1_295":[0, 100], //m2 manual speed
+    "s_rw_16_16_1_295":[0, 100], //m3 manual speed
+    "s_rw_0_16_1_296":[0, 100], //m4 manual speed
+    "s_rw_16_16_1_296":[0, 100], //m5 manual speed
+    "s_rw_0_16_1_297":[0, 100], //m6 manual speed
+    "s_rw_16_16_1_297":[0, 100], //m7 manual speed
+    "s_rw_0_32_1_212":[0, 100], //manual speed
 //    "s_rw_0_16_1_265":[0, 100], //auto speed
     "s_rw_0_16_0_102":[MIN_INT_16, MAX_INT_16],
     "s_rw_16_16_0_102":[MIN_INT_16, MAX_INT_16],
@@ -59,13 +67,20 @@ var configRanges = {
     "s_rw_12_6_0_138":[1, 30], // origin spd
     "s_rw_12_6_0_145":[1, 30], // origin spd
     "s_rw_12_6_0_152":[1, 30], // origin spd
+    "m_rw_0_32_1_214":[0, 10], // analog range
+    "m_rw_0_32_1_215":[0, 10], // analog range
+    "m_rw_0_32_1_216":[0, 10], // analog range
+    "m_rw_0_32_1_217":[0, 10], // analog range
+    "m_rw_0_32_1_218":[0, 10], // analog range
+    "m_rw_0_32_1_219":[0, 10], // analog range
+
 };
 
 var getConfigRange = function(config){
     var r = configRanges[config];
     var items = config.split("_");
     if(r === undefined){
-        return {"min":0, "max":Math.pow(2, parseInt(items[3])), "decimal":parseInt(items[4])};
+        return {"min":0, "max":Math.pow(2, parseInt(items[3])) - 1, "decimal":parseInt(items[4])};
     }
     return {"min":r[0], "max":r[1], "decimal":parseInt(items[4])};
 };

@@ -36,7 +36,7 @@ Item {
                     if(speedRPStart.isChecked) speedMode = 2;
                     ret.push(Teach.generateAxisServoAction(editor.servoAction,
                                                            i,
-                                                           axisActionInfo.pos,
+                                                           relPoint.isChecked ? axisActionInfo.point.pos["m" + i] : axisActionInfo.pos,
                                                            axisActionInfo.speed,
                                                            axisActionInfo.delay,
                                                            false,
@@ -50,7 +50,8 @@ Item {
                                                            fastStop.isChecked,
                                                            speedMode,
                                                            stop.isChecked,
-                                                           rel.isChecked));
+                                                           rel.isChecked,
+                                                           relPoint.isChecked ? axisActionInfo.point : null));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,
@@ -94,6 +95,10 @@ Item {
                 id:isSyncBox
                 text: qsTr("Sync");
             }
+            ICCheckBox{
+                id:relPoint
+                text: qsTr("Rel Point")
+            }
         }
 
         Flow{
@@ -111,6 +116,8 @@ Item {
                 psName: [qsTr("X1 ON"), qsTr("X1 OFF")]
                 axisDefine: pData.axisDefine.s1Axis
                 rangeAddr: "s_rw_0_32_3_1000"
+                mode: relPoint.isChecked ? "relPointMode" : ""
+                z:1
             }
 
             AxisActionEditorAxisComponent{
@@ -119,6 +126,9 @@ Item {
                 psName: [qsTr("Y1 ON"), qsTr("Y1 OFF")]
                 axisDefine: pData.axisDefine.s2Axis
                 rangeAddr: "s_rw_0_32_3_1001"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:2
             }
             AxisActionEditorAxisComponent{
                 id:m2Axis
@@ -126,6 +136,9 @@ Item {
                 psName: [qsTr("Z ON"), qsTr("Z OFF")]
                 axisDefine: pData.axisDefine.s3Axis
                 rangeAddr: "s_rw_0_32_3_1002"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:3
             }
             AxisActionEditorAxisComponent{
                 id:m3Axis
@@ -133,6 +146,9 @@ Item {
                 psName: [qsTr("X2 ON"), qsTr("X2 OFF")]
                 axisDefine: pData.axisDefine.s4Axis
                 rangeAddr: "s_rw_0_32_3_1003"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:4
             }
             AxisActionEditorAxisComponent{
                 id:m4Axis
@@ -140,6 +156,9 @@ Item {
                 psName: [qsTr("Y2 ON"), qsTr("Y2 OFF")]
                 axisDefine: pData.axisDefine.s5Axis
                 rangeAddr: "s_rw_0_32_3_1004"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:5
             }
             AxisActionEditorAxisComponent{
                 id:m5Axis
@@ -147,6 +166,9 @@ Item {
                 psName: [qsTr("A ON"), qsTr("A OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1005"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:6
             }
             AxisActionEditorAxisComponent{
                 id:m6Axis
@@ -154,6 +176,9 @@ Item {
                 psName: [qsTr("B ON"), qsTr("B OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1006"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:7
             }
             AxisActionEditorAxisComponent{
                 id:m7Axis
@@ -161,6 +186,9 @@ Item {
                 psName: [qsTr("C ON"), qsTr("C OFF")]
                 axisDefine: pData.axisDefine.s6Axis
                 rangeAddr: "s_rw_0_32_3_1007"
+                mode: m0Axis.mode
+                relPoints: m0Axis.relPoints
+                z:8
             }
             Row{
                 spacing: 6
@@ -194,7 +222,7 @@ Item {
                 }
             }
             Rectangle{
-                width: speedControlGroup.width
+                width: 340
                 height: {
                     var ac = panelRobotController.getConfigValue("s_rw_16_6_0_184");
                     var ret;
@@ -251,7 +279,8 @@ Item {
 
                         ICButtonGroup{
                             id:speedControlGroup
-                            spacing: 10
+                            spacing: 4
+                            layoutMode: 1
 
                             ICCheckBox{
                                 id:speedPPStart
@@ -310,6 +339,8 @@ Item {
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+        Teach.definedPoints.registerPointsMonitor(container);
+        onPointAdded(null);
     }
     function onAxisDefinesChanged(){
         m0Axis.visible = AxisDefine.axisInfos[0].visiable;
@@ -320,5 +351,31 @@ Item {
         m5Axis.visible = AxisDefine.axisInfos[5].visiable;
         m6Axis.visible = AxisDefine.axisInfos[6].visiable;
         m7Axis.visible = AxisDefine.axisInfos[7].visiable;
+    }
+
+    function onPointAdded(point){
+        var pNL = Teach.definedPoints.pointNameList();
+        var type;
+        var fPNs = [];
+        for(var i = 0; i < pNL.length; ++i){
+            type = pNL[i][0];
+            if(type === Teach.DefinePoints.kPT_Free){
+                fPNs.push(pNL[i]);
+            }
+        }
+        m0Axis.relPoints = fPNs;
+
+    }
+
+    function onPointChanged(point){
+        onPointAdded(point);
+    }
+
+    function onPointDeleted(point){
+        onPointAdded(point);
+    }
+
+    function onPointsCleared(){
+        onPointAdded(null);
     }
 }

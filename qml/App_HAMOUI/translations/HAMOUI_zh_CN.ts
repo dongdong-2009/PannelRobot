@@ -457,6 +457,101 @@
         <source>None</source>
         <translation></translation>
     </message>
+    <message>
+        <source>5002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5003</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5004</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5005</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5006</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5007</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5008</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5009</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5018</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5019</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5020</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AnalogControlEditor</name>
+    <message>
+        <source>Chanel</source>
+        <translation>通道</translation>
+    </message>
+    <message>
+        <source>Analog Value</source>
+        <translation>模拟量</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArmMovePage</name>
@@ -694,6 +789,58 @@
         <source>Cycle</source>
         <translation>当前周期:</translation>
     </message>
+    <message>
+        <source>Counter &gt;&gt;</source>
+        <translation>计数器&gt;&gt;</translation>
+    </message>
+    <message>
+        <source>Counter &lt;&lt;</source>
+        <translation>计数器&lt;&lt;</translation>
+    </message>
+    <message>
+        <source>Target:</source>
+        <translation>目标:</translation>
+    </message>
+    <message>
+        <source>Current:</source>
+        <translation>当前:</translation>
+    </message>
+    <message>
+        <source>counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Analog &gt;&gt;</source>
+        <translation>模拟量&gt;&gt;</translation>
+    </message>
+    <message>
+        <source>Analog &lt;&lt;</source>
+        <translation>模拟量&lt;&lt;</translation>
+    </message>
+    <message>
+        <source>Chanel-0</source>
+        <translation>通道0</translation>
+    </message>
+    <message>
+        <source>Chanel-1</source>
+        <translation>通道1</translation>
+    </message>
+    <message>
+        <source>Chanel-2</source>
+        <translation>通道2</translation>
+    </message>
+    <message>
+        <source>Chanel-3</source>
+        <translation>通道3</translation>
+    </message>
+    <message>
+        <source>Chanel-4</source>
+        <translation>通道4</translation>
+    </message>
+    <message>
+        <source>Chanel-5</source>
+        <translation>通道5</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
@@ -820,6 +967,10 @@
     <message>
         <source>Rel</source>
         <translation>相对</translation>
+    </message>
+    <message>
+        <source>Rel Point</source>
+        <translation>引用点</translation>
     </message>
 </context>
 <context>
@@ -1124,11 +1275,11 @@
     </message>
     <message>
         <source>M7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {7?}</translation>
     </message>
     <message>
         <source>M8</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {8?}</translation>
     </message>
 </context>
 <context>
@@ -1527,7 +1678,7 @@
     </message>
     <message>
         <source>Addr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">地址</translation>
     </message>
     <message>
         <source>value</source>
@@ -1559,6 +1710,53 @@
     <message>
         <source>gotobottom</source>
         <translation>去底部</translation>
+    </message>
+</context>
+<context>
+    <name>DeltaJumpEditor</name>
+    <message>
+        <source>LH Pos</source>
+        <translation>起点高</translation>
+    </message>
+    <message>
+        <source>MH Pos</source>
+        <translation>中点高</translation>
+    </message>
+    <message>
+        <source>RH Pos</source>
+        <translation>终点高</translation>
+    </message>
+    <message>
+        <source>mm</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>End Pos</source>
+        <translation>终点</translation>
+    </message>
+    <message>
+        <source>speed Value</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1595,12 +1793,120 @@
         <source>Delay:</source>
         <translation>延时:</translation>
     </message>
+    <message>
+        <source>Analog Control</source>
+        <translation>模拟控制</translation>
+    </message>
+    <message>
+        <source>Analog:</source>
+        <translation>模拟量:</translation>
+    </message>
+    <message>
+        <source>Delta Jumpl</source>
+        <translation>Delta 路径</translation>
+    </message>
+    <message>
+        <source>start pos:</source>
+        <translation>起点:</translation>
+    </message>
+    <message>
+        <source>LH:</source>
+        <translation>起点高:</translation>
+    </message>
+    <message>
+        <source>MH:</source>
+        <translation>中点高:</translation>
+    </message>
+    <message>
+        <source>RH:</source>
+        <translation>终点高:</translation>
+    </message>
+    <message>
+        <source>end pos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>speed:</source>
+        <translation>速度:</translation>
+    </message>
+    <message>
+        <source>Safe Control</source>
+        <translation>安全区</translation>
+    </message>
+    <message>
+        <source>in pos fange:</source>
+        <translation>在范围:</translation>
+    </message>
+    <message>
+        <source>out pos fange:</source>
+        <translation>不在范围:</translation>
+    </message>
+    <message>
+        <source>will alarm:</source>
+        <translation>就报警:</translation>
+    </message>
+    <message>
+        <source>if</source>
+        <translation>如果</translation>
+    </message>
+    <message>
+        <source>Single Stack</source>
+        <translation>单轴堆叠</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation>反相</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正相</translation>
+    </message>
+    <message>
+        <source>space:</source>
+        <translation>间距:</translation>
+    </message>
+    <message>
+        <source>count:</source>
+        <translation>计数:</translation>
+    </message>
+    <message>
+        <source>Counter:Self</source>
+        <translation>计数器:自身</translation>
+    </message>
+    <message>
+        <source>Start Pos:</source>
+        <translation>起点:</translation>
+    </message>
+    <message>
+        <source>Addr:</source>
+        <translation>地址:</translation>
+    </message>
+    <message>
+        <source>When Changed</source>
+        <translation>当改变</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
     <message>
         <source>Axis Ply</source>
         <translation>单轴往复</translation>
+    </message>
+    <message>
+        <source>Analog Control</source>
+        <translation>模拟控制</translation>
+    </message>
+    <message>
+        <source>Delta Jump Control</source>
+        <translation>Delta路径</translation>
+    </message>
+    <message>
+        <source>Safe Range Control</source>
+        <translation>安全区</translation>
+    </message>
+    <message>
+        <source>Single Stack</source>
+        <translation>单轴堆叠</translation>
     </message>
 </context>
 <context>
@@ -1671,7 +1977,7 @@
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
-        <translation type="unfinished">{0} 从 {1} 改为 {2}</translation>
+        <translation>{0} 从 {1} 改为 {2}</translation>
     </message>
 </context>
 <context>
@@ -3588,7 +3894,7 @@
     </message>
     <message>
         <source>M027</source>
-        <translation></translation>
+        <translation>报警状态</translation>
     </message>
 </context>
 <context>
@@ -3661,6 +3967,10 @@
     <message>
         <source>System Configs</source>
         <translation>系统参数</translation>
+    </message>
+    <message>
+        <source>QK Configs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3802,7 +4112,11 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>自动设定原点加开关(短原点)</translation>
+    </message>
+    <message>
+        <source>Type4</source>
+        <translation>自动设定原点加开关(长原点)</translation>
     </message>
 </context>
 <context>
@@ -4069,6 +4383,10 @@
     <message>
         <source>Picture Settings</source>
         <translation>图片设定</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
     </message>
 </context>
 <context>
@@ -4683,6 +5001,22 @@ please chose!</source>
         <translation>保存 {0} 失败!
 </translation>
     </message>
+    <message>
+        <source>Copy Current Line</source>
+        <translation>复制当前行</translation>
+    </message>
+    <message>
+        <source>Seq</source>
+        <translation>序号</translation>
+    </message>
+    <message>
+        <source>Copy Between Seq and Current</source>
+        <translation>复制序号到当前的行</translation>
+    </message>
+    <message>
+        <source>Paste</source>
+        <translation>粘贴</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -4713,6 +5047,37 @@ please chose!</source>
     <message>
         <source>Fix Index</source>
         <translation>整理编号</translation>
+    </message>
+</context>
+<context>
+    <name>QKConfigs</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished">轴</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation type="unfinished">地址</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write EP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read EP</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4852,6 +5217,81 @@ please chose!</source>
         <source>Importing...</source>
         <translation>导入中...</translation>
     </message>
+    <message>
+        <source>Export Printable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In current mold</source>
+        <translation>已在当前模号</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <source>Clear Search</source>
+        <translation>清除搜索</translation>
+    </message>
+</context>
+<context>
+    <name>RegisterUseTimeSettings</name>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Forever</source>
+        <translation>永久</translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation type="vanished">小时</translation>
+    </message>
+    <message>
+        <source>Machine Code:</source>
+        <translation>机器码:</translation>
+    </message>
+    <message>
+        <source>Register Code:</source>
+        <translation>注册码:</translation>
+    </message>
+    <message>
+        <source>Generate Machine Code</source>
+        <translation>生成机器码</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <source>Wrong register code!</source>
+        <translation>错误的注册码!</translation>
+    </message>
+    <message>
+        <source>Register successfully!</source>
+        <translation>注册成功!</translation>
+    </message>
+    <message>
+        <source>Factory code(6bit):</source>
+        <translation>厂商代码(6位):</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="vanished">导出</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation type="vanished">导入</translation>
+    </message>
+    <message>
+        <source>Rest Time(0 Forever):</source>
+        <translation>剩余使用时间(0为永久):</translation>
+    </message>
+    <message>
+        <source>hour</source>
+        <translation>小时</translation>
+    </message>
 </context>
 <context>
     <name>RunningConfigs</name>
@@ -4878,6 +5318,41 @@ please chose!</source>
     <message>
         <source>Times</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Independent Manual Speed</source>
+        <translation>独立控制手动轴速度</translation>
+    </message>
+    <message>
+        <source>Manual Speed</source>
+        <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeRangeEditor</name>
+    <message>
+        <source>Out Range</source>
+        <translation>不在范围(默认在范围)</translation>
+    </message>
+    <message>
+        <source>Limited Axis</source>
+        <translation>被限制轴</translation>
+    </message>
+    <message>
+        <source>Limit Axis</source>
+        <translation>限制轴</translation>
+    </message>
+    <message>
+        <source>Alarm Num</source>
+        <translation>报警号</translation>
+    </message>
+    <message>
+        <source>Changed</source>
+        <translation>改变</translation>
+    </message>
+    <message>
+        <source>Range</source>
+        <translation>范围</translation>
     </message>
 </context>
 <context>
@@ -4912,6 +5387,57 @@ please chose!</source>
     <message>
         <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
         <translation>请进入具体的设定页面进行设置,点击右下方的返回按钮返回上一层菜单</translation>
+    </message>
+</context>
+<context>
+    <name>SingleStackAction</name>
+    <message>
+        <source>Self</source>
+        <translation>自身</translation>
+    </message>
+    <message>
+        <source>Axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正相</translation>
+    </message>
+    <message>
+        <source>Start Pos</source>
+        <translation>起点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>Space</source>
+        <translation>间距</translation>
+    </message>
+    <message>
+        <source>Count</source>
+        <translation>计数</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation>引用点</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation>地址</translation>
     </message>
 </context>
 <context>
@@ -5404,6 +5930,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>L24</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Analog En</source>
+        <translation>模拟量模块使能</translation>
     </message>
 </context>
 <context>
@@ -6004,6 +6534,14 @@ You just need to set the count configs after this setting.</source>
         <source>Rel</source>
         <translation>相对</translation>
     </message>
+    <message>
+        <source>Datasource</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6273,6 +6811,10 @@ You just need to set the count configs after this setting.</source>
         <source>Settings</source>
         <translation>参数设定</translation>
     </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TopMenuItem</name>
@@ -6528,6 +7070,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Please Register!</source>
+        <translation>请注册!</translation>
     </message>
 </context>
 <context>

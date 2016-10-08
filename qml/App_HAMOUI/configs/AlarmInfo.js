@@ -259,6 +259,8 @@ function isWaitONAlarmType(errNum){
 function getAlarmDescr(errNum){
     if(alarmInfo.hasOwnProperty(errNum.toString())){
         return alarmInfo[errNum.toString()];
+    }else if(customAlarmInfo.hasOwnProperty(errNum.toString())){
+        return customAlarmInfo[errNum.toString()];
     }else{
         var alarm = analysisAlarmNum(errNum);
         if(alarm.type === ALARM_IO_ON_SIGNAL_START){
@@ -283,6 +285,25 @@ function getAlarmDescr(errNum){
 var customAlarmInfo = {
     "5000":qsTr("5000"),
     "5001":qsTr("5001"),
+    "5002":qsTr("5002"),
+    "5003":qsTr("5003"),
+    "5004":qsTr("5004"),
+    "5005":qsTr("5005"),
+    "5006":qsTr("5006"),
+    "5007":qsTr("5007"),
+    "5008":qsTr("5008"),
+    "5009":qsTr("5009"),
+    "5010":qsTr("5010"),
+    "5011":qsTr("5011"),
+    "5012":qsTr("5012"),
+    "5013":qsTr("5013"),
+    "5014":qsTr("5014"),
+    "5015":qsTr("5015"),
+    "5016":qsTr("5016"),
+    "5017":qsTr("5017"),
+    "5018":qsTr("5018"),
+    "5019":qsTr("5019"),
+    "5020":qsTr("5020"),
 }
 
 function getCustomAlarmDescr(errNum){

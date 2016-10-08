@@ -3,7 +3,7 @@ import "../../../ICCustomElement"
 import "../../configs/AxisDefine.js" as AxisDefine
 import "ExtentActionDefine.js" as ExtentActionDefine
 
-Item {
+ExtentActionEditorBase {
     id:axisFlyConfigs
     width: content.width + 20
     height: content.height
@@ -13,31 +13,9 @@ Item {
     property alias speed: axisFlySpeed.configValue
     property alias num: aixsFlyNum.configValue
     property alias delay: delayEdit.configValue
-    property variant actionObject: null
 
-    function getActionProperties(){
-        return {"action":ExtentActionDefine.extentPENQIANGAction.action,
-        "axis":axis, "pos1":pos1, "pos2":pos2,
-        "speed":speed, "num":num, "delay":delay};
-    }
-
-    onActionObjectChanged: {
-        if(actionObject == null) return;
-        axis = actionObject.axis;
-        pos1 = actionObject.pos1;
-        pos2 = actionObject.pos2;
-        speed = actionObject.speed;
-        num = actionObject.num;
-        delay = actionObject.delay;
-    }
-
-    function updateActionObject(ao){
-        ao.axis = axis;
-        ao.pos1 = pos1;
-        ao.pos2 = pos2;
-        ao.speed = speed;
-        ao.num = num;
-        ao.delay = delay;
+    function configsCheck(){
+        return axisFlyAxisSel.configValue >= 0;
     }
 
     Column{
@@ -79,7 +57,7 @@ Item {
                 height: axisFlyPos1.height
                 onButtonClicked: {
                     if(axisFlyAxisSel.configValue >=0)
-                        axisFlyPos1.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[axisFlyAxisSel.configValue].wAddr);
+                        axisFlyPos1.configValue = (panelRobotController.statusValue(AxisDefine.axisInfos[axisFlyAxisSel.configValue].jAddr) / 1000).toFixed(3);
                 }
             }
         }
@@ -99,7 +77,7 @@ Item {
                 height: axisFlyPos2.height
                 onButtonClicked: {
                     if(axisFlyAxisSel.configValue >=0)
-                        axisFlyPos2.configValue = panelRobotController.statusValueText(AxisDefine.axisInfos[axisFlyAxisSel.configValue].wAddr);
+                        axisFlyPos2.configValue = (panelRobotController.statusValue(AxisDefine.axisInfos[axisFlyAxisSel.configValue].jAddr) / 1000).toFixed(3);
                 }
 
             }
@@ -127,5 +105,8 @@ Item {
             configAddr: "s_rw_0_32_2_1100"
             unit: qsTr("s")
         }
+    }
+    Component.onCompleted: {
+        bindActionDefine(ExtentActionDefine.extentPENQIANGAction);
     }
 }

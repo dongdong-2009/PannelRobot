@@ -98,6 +98,16 @@ union PullyData{
     quint32 all;
 };
 
+union QKCmdData{
+    struct {
+        quint32 cmd:4;  //< 命令
+        quint32 id:4; //< 轴地址
+        quint32 addr:8; //< 地址
+        quint32 data:16; //< 数据
+    }b;
+    quint32 all;
+};
+
 union AutoRunData{
     struct{
         quint32 mode:16;
@@ -282,7 +292,7 @@ public:
     }
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
     Q_INVOKABLE void syncConfigs();
-    Q_INVOKABLE QString records();
+    Q_INVOKABLE QString records() const;
     Q_INVOKABLE ICAxisDefine* axisDefine();
     Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram, const QString& subPrograms = "[]");
     Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
@@ -294,6 +304,9 @@ public:
     {
         return ICRobotMold::DeleteRecord(name);
     }
+
+    Q_INVOKABLE QString readRecord(const QString& name) const;
+
     Q_INVOKABLE bool loadRecord(const QString& name);
 
     Q_INVOKABLE bool loadSysconfig(const QString& name)
@@ -304,7 +317,7 @@ public:
         if(ret)
         {
             ICRobotVirtualhost::InitMachineConfig(host_,mold->BareMachineConfigs());
-            ICAppSettings as;
+            ICSuperSettings as;
             as.SetCurrentSystemConfig(name);
 
             emit moldChanged();
@@ -663,7 +676,7 @@ public:
             if(eth0DataMonitor_.isNull())
             {
                 eth0DataMonitor_.reset( new TCPCommunicateMonitor());
-//                eth0DataMonitor_->SetFilter(QRegExp("test\r\n"));
+                //                eth0DataMonitor_->SetFilter(QRegExp("test\r\n"));
                 connect(eth0DataMonitor_.data(),
                         SIGNAL(dataComeIn(QByteArray)),
                         SIGNAL(eth0DataComeIn(QByteArray)));
@@ -764,6 +777,26 @@ public:
     }
     Q_INVOKABLE void registerCustomProgramAction(const QString& actionDefine);
 
+    Q_INVOKABLE int registerUseTime(const QString& fc, const QString& mC, const QString& rcCode);
+    Q_INVOKABLE QString generateMachineCode() const;
+    Q_INVOKABLE int restUseTime() const;
+    Q_INVOKABLE void setRestUseTime(int hour);
+    Q_INVOKABLE bool isTryTimeOver() const;
+
+    Q_INVOKABLE QString factoryCode() const
+    {
+        return ICSuperSettings().FactoryCode();
+    }
+
+    Q_INVOKABLE void setFactoryCode(const QString& fc)
+    {
+        ICSuperSettings().SetFactoryCode(fc);
+    }
+
+    Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
+
+    Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)
@@ -796,6 +829,8 @@ signals:
     void sendingContinuousData();
     void sentContinuousData(int);
     void needToInitHost();
+    void tryTimeOver();
+    void readQKConfigFinished(int data);
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

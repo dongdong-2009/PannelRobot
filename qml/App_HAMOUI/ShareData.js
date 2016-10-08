@@ -92,6 +92,7 @@ UserInfo.permType = {
     "mold":1,
     "system":2,
     "user":4,
+    "root":8
 };
 UserInfo.current = {
     "user":"",
@@ -108,6 +109,9 @@ UserInfo.currentHasSystemPerm = function(){
 }
 UserInfo.currentHasUserPerm = function(){
     return (UserInfo.current.perm & UserInfo.permType.user) > 0;
+}
+UserInfo.currentHasRootPerm = function(){
+    return (UserInfo.current.perm & UserInfo.permType.root) > 0;
 }
 UserInfo.currentSZHCPerm = function(){
     return UserInfo.current.user == "szhcroot";

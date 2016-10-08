@@ -9,6 +9,7 @@
 #include "parser.h"
 #include "icupdatesystem.h"
 #include "icutility.h"
+#include "icregister.h"
 
 #ifdef Q_WS_QWS
 #include <stdio.h>
@@ -152,6 +153,11 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     //    keyCheckTimer_.start(100);
     controllerInstance = this;
 
+    if(ICRegister::Instance()->IsTryTimeOver())
+    {
+        emit tryTimeOver();
+    }
+
 
 #ifdef Q_WS_QWS
     screenSaver_ = new ICDefaultScreenSaver();
@@ -218,8 +224,8 @@ void PanelRobotController::Init()
 
     emit LoadMessage("Record reload.");
 
-//    InitUI();
-//    emit LoadMessage("Ui inited.");
+    //    InitUI();
+    //    emit LoadMessage("Ui inited.");
     //        LoadTranslator_("HAMOUI_zh_CN.qm");
 }
 
@@ -249,7 +255,7 @@ void PanelRobotController::InitMold_()
 
 void PanelRobotController::InitMachineConfig_()
 {
-    ICAppSettings as;
+    ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
@@ -398,7 +404,7 @@ void PanelRobotController::syncConfigs()
 #endif
 }
 
-QString PanelRobotController::records()
+QString PanelRobotController::records() const
 {
     QString content;
     ICRecordInfos infos = ICRobotMold::RecordInfos();
@@ -724,6 +730,24 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                    this,
                    SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
     }
+    else if(addr == 51)
+    {
+        QKCmdData qkData;
+        qkData.all = v.at(0);
+        if(qkData.b.cmd == 0)
+        {
+            ICRobotVirtualhost::AddReadConfigCommand(host_, 51, 1);
+        }
+        else
+        {
+            readedConfigValues_.insert(addr, v.at(0));
+            disconnect(host_.data(),
+                       SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+                       this,
+                       SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+            emit readQKConfigFinished(qkData.all);
+        }
+    }
     else if(addr < ICAddr_Read_Status0)
     {
         QList<QPair<int, quint32> > tmp;
@@ -1021,6 +1045,7 @@ static ValveItem VariantToValveItem(const QVariantMap& v)
     ret.x1Dir = v.value("x1Dir").toUInt();
     ret.x2Dir = v.value("x2Dir").toUInt();
     ret.time = v.value("time").toDouble() * 10;
+    ret.autoCheck = v.value("autoCheck").toInt();
     return ret;
 }
 
@@ -1093,13 +1118,13 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
 {
     if(!isInAuto())
         ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
-//    else
-//    {
-//        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
-//        if(c.isEmpty()) return false;
-//        if(c.last() != target)
-//            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
-//    }
+    //    else
+    //    {
+    //        QVariantList c = ICRobotMold::CurrentMold()->GetCounter(id);
+    //        if(c.isEmpty()) return false;
+    //        if(c.last() != target)
+    //            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
+    //    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
@@ -1227,7 +1252,7 @@ void PanelRobotController::manualRunProgram(const QString& program,
     if(!compliedCounters.isEmpty())
         ICRobotVirtualhost::SendMoldCountersDef(host_,ICRobotMold::CountersToHost(compliedCounters));
     ICRobotVirtualhost::SendMoldSub(host_, channel, compliedProgram.ProgramToBareData());
-//    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
+    //    sendKeyCommandToHost(CMD_MANUAL_START1 + channel);
     if(sendKeyNow)
         ICRobotVirtualhost::SendKeyCommand(CMD_MANUAL_START1 + channel);
 
@@ -1567,6 +1592,12 @@ QString PanelRobotController::newRecord(const QString &name, const QString &init
     return ICRobotMold::NewRecord(name, initProgram, baseFncs_, subs).toJSON();
 }
 
+QString PanelRobotController::readRecord(const QString &name) const
+{
+    QStringList content = ICRobotMold::ExportMold(name);
+    return QString("[%1]").arg(content.join(","));
+}
+
 bool PanelRobotController::loadRecord(const QString &name)
 {
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
@@ -1641,7 +1672,7 @@ int exportBackupHelper(const QString& backupName, const QString& path)
     if(!dir.cd(path)) return -1;
     if(!dir.exists(backupName.toUtf8())) return -1;
     if(!ICUtility::IsUsbAttached()) return -2;
-//    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
+    //    qDebug()<<dir.absoluteFilePath(backupName.toUtf8())<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName)<<QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8());
     if(QFile::copy(dir.absoluteFilePath(backupName.toUtf8()), QDir(ICAppSettings::UsbPath).absoluteFilePath(backupName.toUtf8())))
     {
 #ifdef  Q_WS_QWS
@@ -1717,4 +1748,59 @@ void PanelRobotController::registerCustomProgramAction(const QString &actionDefi
         }
         ICRobotMold::RegisterCustomAction(ret.value("actionID").toInt(), cpd);
     }
+}
+
+int PanelRobotController::registerUseTime(const QString &fc, const QString &mC, const QString &rcCode)
+{
+    int ret = ICRegister::Register(fc, mC, rcCode);
+    if(ret < 0) return ret;
+    ICRegister::Instance()->SetUseTime(ret);
+    return ret;
+}
+
+QString PanelRobotController::generateMachineCode() const
+{
+    return ICRegister::GenerateMachineCode();
+}
+
+int PanelRobotController::restUseTime() const
+{
+    return ICRegister::Instance()->LeftUseTime();
+}
+
+bool PanelRobotController::isTryTimeOver() const
+{
+    return ICRegister::Instance()->IsTryTimeOver();
+}
+
+void PanelRobotController::setRestUseTime(int hour)
+{
+    ICRegister::Instance()->SetUseTime(hour);
+}
+
+void PanelRobotController::writeQKConfig(int axis, int addr, int data, bool ep)
+{
+    QKCmdData qkData;
+    qkData.b.cmd = ep ? 3 : 1;
+    qkData.b.id = axis;
+    qkData.b.addr = addr;
+    qkData.b.data = data;
+    modifyConfigValue(50, qkData.all);
+
+}
+
+
+void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
+{
+    QKCmdData qkData;
+    qkData.b.cmd = ep ? 4 : 2;
+    qkData.b.id = axis;
+    qkData.b.addr = addr;
+    modifyConfigValue(50, qkData.all);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, 51, 1);
+    connect(host_.data(),
+            SIGNAL(QueryFinished(int , const QVector<quint32>& )),
+            this,
+            SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
+            Qt::UniqueConnection);
 }

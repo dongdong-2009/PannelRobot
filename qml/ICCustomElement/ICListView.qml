@@ -12,6 +12,7 @@ Rectangle{
     property alias highlightMoveDuration : listView.highlightMoveDuration
     property alias currentIndex : listView.currentIndex
     property alias header: listView.header
+    property alias spacing: listView.spacing
 
     color: "transparent"
     ListView {
@@ -20,6 +21,7 @@ Rectangle{
         y:4
         width: parent.width - 8
         height: parent.height - 8
+        clip: true
         onMovementEnded: {
             hint.item.hintplay(listView);
         }

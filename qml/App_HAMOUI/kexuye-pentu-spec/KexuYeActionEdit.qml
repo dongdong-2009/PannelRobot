@@ -937,6 +937,7 @@ Item {
                 pos2Axis1.visible = true;
                 pos2Axis2.visible = false;
             }
+            dirSpeed.visible = false;
         }
         else{
             if(dirAxisSel.configValue == 0){
@@ -953,7 +954,7 @@ Item {
             }
 //            if(actionObject.mode != 2 && actionObject.mode != 9)
                 dirLength.visible = actionObject.mode != 2 && actionObject.mode != 8 && actionObject.mode != 9;
-            dirSpeed.visible = actionObject.mode != 8 && actionObject.mode != 9;
+            dirSpeed.visible = actionObject.mode != 8;
         }
         dirAxisSel.configName = actionObject.mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis");
         pos1Axis4.visible = actionObject.mode > 3 && actionObject.mode != 8 && actionObject.mode != 9;

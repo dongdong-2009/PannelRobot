@@ -126,7 +126,7 @@ public:
         flagsMap_.insert(flag, step);
     }
 
-    int FlagStep(int flag) { return flagsMap_.value(flag, -1);}
+    int FlagStep(int flag) const { return flagsMap_.value(flag, -1);}
 
     void Clear() { stepMap_.clear();}
     bool IsCompileErr() const { return !errList_.isEmpty();}

@@ -67,13 +67,20 @@ var configRanges = {
     "s_rw_12_6_0_138":[1, 30], // origin spd
     "s_rw_12_6_0_145":[1, 30], // origin spd
     "s_rw_12_6_0_152":[1, 30], // origin spd
+    "m_rw_0_32_1_214":[0, 10], // analog range
+    "m_rw_0_32_1_215":[0, 10], // analog range
+    "m_rw_0_32_1_216":[0, 10], // analog range
+    "m_rw_0_32_1_217":[0, 10], // analog range
+    "m_rw_0_32_1_218":[0, 10], // analog range
+    "m_rw_0_32_1_219":[0, 10], // analog range
+
 };
 
 var getConfigRange = function(config){
     var r = configRanges[config];
     var items = config.split("_");
     if(r === undefined){
-        return {"min":0, "max":Math.pow(2, parseInt(items[3])), "decimal":parseInt(items[4])};
+        return {"min":0, "max":Math.pow(2, parseInt(items[3])) - 1, "decimal":parseInt(items[4])};
     }
     return {"min":r[0], "max":r[1], "decimal":parseInt(items[4])};
 };

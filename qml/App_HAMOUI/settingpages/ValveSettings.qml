@@ -18,7 +18,8 @@ Item {
             var d;
             for(var s in PData.changedData){
                 d = PData.changedData[s];
-                valveModel.set(s, {"x1Dir":d.x1Dir, "x2Dir":d.x2Dir, "time":d.time});
+//                valveModel.set(s, {"x1Dir":d.x1Dir, "x2Dir":d.x2Dir, "time":d.time, "autoCheck":d.autoCheck });
+                valveModel.set(s, d);
             }
             var valveDefines = []
             for(var i = 0; i < valveModel.count; ++i){
@@ -26,6 +27,7 @@ Item {
             }
             Storage.setSetting(panelRobotController.currentRecordName() + "_valve", JSON.stringify(PData.changedData));
             panelRobotController.initValveDefines(JSON.stringify(valveDefines));
+            PData.changedData = [];
         }
     }
 
@@ -34,7 +36,7 @@ Item {
         anchors.top: saveBtn.bottom
         anchors.topMargin: 6
         //        model: valveModel
-        cellWidth: width / 2 -10
+        cellWidth: width  -10
         cellHeight: 32
         width: parent.width
         height: parent.height
@@ -75,6 +77,7 @@ Item {
             ICCheckBox{
                 text:qsTr("Auto Check")
                 isChecked: autoCheck
+                onIsCheckedChanged:     PData.changeAutoCheck(index, valveModel.get(index).id, isChecked  );
             }
         }
     }
@@ -89,8 +92,10 @@ Item {
         for(var v in vds){
             vd = vds[v];
             if(vd instanceof(IODefines.ValveItem)){
-                if(!IODefines.isNormalYType(vd))
+                if(!IODefines.isNormalYType(vd)){
+                    console.log(JSON.stringify(vd));
                     valveModel.append(vd);
+                }
             }
         }
         valveContainer.model = valveModel;

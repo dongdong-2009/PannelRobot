@@ -45,6 +45,18 @@ Item {
                 id:analogControl
                 text: qsTr("Analog Control")
             }
+            ICCheckBox{
+                id:deltaJumpControl
+                text: qsTr("Delta Jump Control")
+            }
+            ICCheckBox{
+                id:safeRangeControl
+                text: qsTr("Safe Range Control")
+            }
+            ICCheckBox{
+                id:singleStack
+                text: qsTr("Single Stack")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -66,6 +78,9 @@ Item {
         Component.onCompleted: {
             addPage(axisFlyConfigs);
             addPage(analogControlEdit);
+            addPage(deltaJumpEditor);
+            addPage(safeRangeEditor);
+            addPage(singleStackEditor);
             currentIndex = 0;
         }
         PENQIANEditor{
@@ -73,6 +88,15 @@ Item {
         }
         AnalogControlEditor{
             id:analogControlEdit
+        }
+        DeltaJumpEditor{
+            id:deltaJumpEditor
+        }
+        SafeRangeEditor{
+            id:safeRangeEditor
+        }
+        SingleStackAction{
+            id:singleStackEditor
         }
     }
 }

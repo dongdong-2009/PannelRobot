@@ -11,10 +11,6 @@ teach/extents/*.qml \
 teach/extents/*.js
 }
 
-OTHER_FILES += \
-    teach/extents/AnalogControlEditor.qml \
-    teach/extents/ExtentActionEditorBase.qml \
-    teach/extents/ExtentActionEditorBase.js
 
 
 

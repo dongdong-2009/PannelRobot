@@ -43,8 +43,9 @@ Rectangle {
         color: "red"
         y:timelable.y
         anchors.right: timelable.left
-        anchors.rightMargin: 12
+        anchors.rightMargin: 6
         z:1000
+        font.pixelSize: 14
         function setRestTime(rt){
             visible = (rt < 168) && rt != 0;
             text = qsTr("Rest Time:") + rt;
@@ -570,6 +571,7 @@ Rectangle {
 
         form: "yyyy-MM-dd  hh:mm:ss  DDD"
         onHourGone: restTip.setRestTime(panelRobotController.restUseTime());
+//        onSecondGone: restTip.setRestTime(panelRobotController.restUseTime());
     }
 
     function onKnobChanged(knobStatus){

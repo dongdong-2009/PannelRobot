@@ -93,6 +93,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
     bool isRel = v->value("rel", false).toBool();
+    QVariantList pts = v->value("points").toList();
     if(speedMode != 0 || isStop)
     {
         SpeedControlActionData spData;
@@ -106,8 +107,15 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     }
     else
     {
-        item.append(v->value("axis", 0).toInt());
-        item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
+        int axis = v->value("axis", 0).toInt();
+        item.append(axis);
+        if(pts.size() != 0)
+        {
+            QVariantMap p = pts.at(0).toMap().value("pos").toMap();
+            item.append(ICUtility::doubleToInt(p.value(QString("m%1").arg(axis)).toDouble(), 3));
+        }
+        else
+            item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
         if(isEarlyEnd || isEarlySpd || isSignalStop || isRel)
@@ -820,16 +828,13 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 //                return ret;
             }
             StackInfo si = stackInfos.value(stackID);
-            for(int j = 0; j < 2; ++j)
+            if(si.stackData.si[0].doesBindingCounter)
             {
-                if(si.stackData.si[j].doesBindingCounter)
+                if(IsCounterValid(counters, si.stackData.si[0].counterID) < 0)
                 {
-                    if(IsCounterValid(counters, si.stackData.si[j].counterID) < 0)
-                    {
-                        //                        ret.Clear();
-                        err = ICRobotMold::kCCErr_Invaild_CounterID;
-                        ret.AddErr(i, err);
-                    }
+                    //                        ret.Clear();
+                    err = ICRobotMold::kCCErr_Invaild_CounterID;
+                    ret.AddErr(i, err);
                 }
             }
             if(si.stackData.si[0].type >= 2)
@@ -936,6 +941,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
         int fStep = ret.RealStepCount();    //
         isSyncBegin = false;                //
 
+        int baseStep = programEndLine;
         while(fp != functions.end())
         {
             CompileInfo f = fp.value();
@@ -952,7 +958,10 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     item.pop_back();
                     item.append(ICRobotMold::MoldItemCheckSum(item));
                 }
-                ret.AddICMoldItem(programEndLine, item);
+//                ret.AddICMoldItem(programEndLine, item);
+                int uiStep = baseStep + f.UIStepFromCompiledLine(i);
+//                qDebug()<<"UIStep:"<<uiStep;
+                ret.AddICMoldItem(uiStep, item);
                 if(item.at(0) == F_CMD_SYNC_START)
                 {
                     isSyncBegin = true;
@@ -971,18 +980,23 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                     ++fStep;
                 ret.MapModuleLineToModuleID(fStep, mID);
                 //                qDebug()<<fp.key()<<programEndLine<<fStep;
-                ret.MapStep(programEndLine , fStep);
+//                ret.MapStep(programEndLine , fStep);
+                ret.MapStep(uiStep, fStep);
                 ++programEndLine;
             }
+            baseStep += f.UIStepFromCompiledLine(cflc - 1) + 1;
             ++fp;
         }
         //UIStepToRealStep(ret.CompiledProgramLineCount() - 1) + 1
         //        jumptoEnd.append(ret.CompiledProgramLineCount());
-        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
+//        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
+//        qDebug()<<result.size()<<baseStep<<beginToFix;
+        ret.AddICMoldItem(baseStep, endProgramItem);
         int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
-        ret.MapStep(endUIStep, fStep + 1);
+//        ret.MapStep(endUIStep, fStep + 1);
+        ret.MapStep(baseStep, fStep + 1);
 
-        jumptoEnd.append(ret.UIStepToRealStep(endUIStep).first);
+        jumptoEnd.append(ret.UIStepToRealStep(baseStep).first);
         jumptoEnd.append(ICRobotMold::MoldItemCheckSum(jumptoEnd));
         ret.UpdateICMoldItem(result.size() - 1, jumptoEnd);
         ICMoldItem toFixLineItem;
@@ -1438,6 +1452,10 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
     int realStep = step;
     if(module >= 0)
     {
+        if(!programs_.at(which).HasCalledModule())
+        {
+            return ret;
+        }
         int moduleEntry = programs_.at(which).ModuleEntry(module);
 
         realStep += programs_.at(which).RealStepToUIStep(moduleEntry).first();
@@ -1455,6 +1473,10 @@ ICMoldItem ICRobotMold::SingleLineCompile(int which, int module, int step, const
         int stackID = result.value("stackID", -1).toInt();
         StackInfo si = stackInfos_.value(stackID);
         result.insert("stackInfo", QVariant::fromValue<StackInfo>(si));
+    }
+    if(IsJumpAction(result.value("action").toInt()))
+    {
+        result.insert("step", programs_.at(which).FlagStep(result.value("flag").toInt()));
     }
 
     ret = VariantToMoldItem(realStep, result, err);

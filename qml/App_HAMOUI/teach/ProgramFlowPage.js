@@ -151,3 +151,9 @@ function programToParsingIndex(p){
     console.log("programToParsingIndex wrong p");
     return 0;
 }
+
+
+var clipboard = [];
+function setClipboard(lines){
+    clipboard = lines;
+}

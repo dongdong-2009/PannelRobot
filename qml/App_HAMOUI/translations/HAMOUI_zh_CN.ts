@@ -93,11 +93,11 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>信号停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>立即停</translation>
     </message>
     <message>
         <source>Pos(+/-):</source>
@@ -105,11 +105,11 @@
     </message>
     <message>
         <source>Set In</source>
-        <translation type="unfinished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>Rel</source>
-        <translation type="unfinished"></translation>
+        <translation>相对</translation>
     </message>
 </context>
 <context>
@@ -946,11 +946,11 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>信号停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>立即停</translation>
     </message>
     <message>
         <source>Speed PP Start</source>
@@ -982,11 +982,11 @@
     </message>
     <message>
         <source>Rel</source>
-        <translation type="unfinished"></translation>
+        <translation>相对</translation>
     </message>
     <message>
         <source>Rel Point</source>
-        <translation type="unfinished"></translation>
+        <translation>相对点</translation>
     </message>
 </context>
 <context>
@@ -1254,6 +1254,10 @@
         <source>SDCC2</source>
         <translation>S减速2</translation>
     </message>
+    <message>
+        <source>Rotate Clear</source>
+        <translation>旋转清零</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -1439,51 +1443,51 @@
     </message>
     <message>
         <source>Mem</source>
-        <translation type="unfinished"></translation>
+        <translation>值比较</translation>
     </message>
     <message>
         <source>Const Data</source>
-        <translation type="unfinished"></translation>
+        <translation>立即数</translation>
     </message>
     <message>
         <source>Addr Data</source>
-        <translation type="unfinished"></translation>
+        <translation>地址值</translation>
     </message>
     <message>
         <source>&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&gt;=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&lt;=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>==</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>!=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Left Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>左地址</translation>
     </message>
     <message>
         <source>Right Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>右地址</translation>
     </message>
     <message>
         <source>Right Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>右值</translation>
     </message>
 </context>
 <context>
@@ -1560,23 +1564,23 @@
     <name>DataActionEditor</name>
     <message>
         <source>Const Data</source>
-        <translation type="unfinished"></translation>
+        <translation>立即数</translation>
     </message>
     <message>
         <source>Addr Data</source>
-        <translation type="unfinished"></translation>
+        <translation>比较地址</translation>
     </message>
     <message>
         <source>Addr Target:</source>
-        <translation type="unfinished"></translation>
+        <translation>目标地址</translation>
     </message>
     <message>
         <source>Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>数据</translation>
     </message>
     <message>
         <source>Addr Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>比较地址</translation>
     </message>
     <message>
         <source>=</source>
@@ -1875,7 +1879,7 @@
     </message>
     <message>
         <source>Single Stack</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">单轴堆叠</translation>
     </message>
     <message>
         <source>RP</source>
@@ -1914,19 +1918,19 @@
     </message>
     <message>
         <source>Analog Control</source>
-        <translation type="unfinished">模拟量控制</translation>
+        <translation>模拟量控制</translation>
     </message>
     <message>
         <source>Delta Jump Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Delta 跳转控制</translation>
     </message>
     <message>
         <source>Safe Range Control</source>
-        <translation type="unfinished">安全区</translation>
+        <translation>安全区</translation>
     </message>
     <message>
         <source>Single Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>单轴堆叠</translation>
     </message>
 </context>
 <context>
@@ -1964,19 +1968,19 @@
     <name>ICHCAddrEdit</name>
     <message>
         <source>startPos</source>
-        <translation type="unfinished"></translation>
+        <translation>起始位</translation>
     </message>
     <message>
         <source>size</source>
-        <translation type="unfinished"></translation>
+        <translation>大小</translation>
     </message>
     <message>
         <source>baseAddr</source>
-        <translation type="unfinished"></translation>
+        <translation>基地址</translation>
     </message>
     <message>
         <source>decimal</source>
-        <translation type="unfinished"></translation>
+        <translation>小数位</translation>
     </message>
 </context>
 <context>
@@ -4111,7 +4115,7 @@
     </message>
     <message>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>动作</translation>
     </message>
     <message>
         <source>Is Gun Back</source>
@@ -4127,15 +4131,15 @@
     </message>
     <message>
         <source>Repeat EPos</source>
-        <translation type="unfinished">设入终点</translation>
+        <translation>设入终点</translation>
     </message>
     <message>
         <source>Dir EPos</source>
-        <translation type="unfinished">设入终点</translation>
+        <translation>设入终点</translation>
     </message>
     <message>
         <source>Set TPos</source>
-        <translation type="unfinished">设入经过</translation>
+        <translation>设入经过</translation>
     </message>
     <message>
         <source>Repeat Axis</source>
@@ -5078,7 +5082,7 @@ please chose!</source>
     </message>
     <message>
         <source>Data Command</source>
-        <translation type="unfinished"></translation>
+        <translation>数据命令</translation>
     </message>
     <message>
         <source>Extent</source>
@@ -5190,7 +5194,7 @@ please chose!</source>
     </message>
     <message>
         <source>DIY Action</source>
-        <translation type="unfinished"></translation>
+        <translation>自定义动作</translation>
     </message>
     <message>
         <source>StackAction</source>
@@ -5206,7 +5210,7 @@ please chose!</source>
     </message>
     <message>
         <source>PT Line ceycle</source>
-        <translation>直线往复</translation>
+        <translation>单轴往复</translation>
     </message>
 </context>
 <context>
@@ -7078,15 +7082,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Left Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">左地址</translation>
     </message>
     <message>
         <source>Right Data:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">右值</translation>
     </message>
     <message>
         <source>Right Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">右地址</translation>
     </message>
     <message>
         <source>Go to</source>
@@ -7094,31 +7098,31 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Write Const Data To Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>写立即数到地址</translation>
     </message>
     <message>
         <source>Write Addr Data To Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>写地址值到地址</translation>
     </message>
     <message>
         <source>Const Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>立即数</translation>
     </message>
     <message>
         <source>Addr Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>地址值</translation>
     </message>
     <message>
         <source>Target Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>目标地址</translation>
     </message>
     <message>
         <source>CMD_CONFIG</source>
-        <translation type="unfinished"></translation>
+        <translation>命令配置</translation>
     </message>
     <message>
         <source>Close Out Put</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭输出</translation>
     </message>
     <message>
         <source>When </source>
@@ -7130,11 +7134,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>slow stop</source>
-        <translation type="unfinished"></translation>
+        <translation>减速停</translation>
     </message>
     <message>
         <source>fast stop</source>
-        <translation type="unfinished"></translation>
+        <translation>快速停</translation>
     </message>
     <message>
         <source>Speed Control PP Start</source>
@@ -7194,7 +7198,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Rel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">相对</translation>
     </message>
     <message>
         <source>Datasource</source>

@@ -92,7 +92,7 @@ Rectangle {
         Text {
             id:globalSpeedLabel
             text: qsTr("%")
-            font.pixelSize: 9
+            font.pixelSize: 15
             font.bold: true
             color: globalSpeed.color
             x:180

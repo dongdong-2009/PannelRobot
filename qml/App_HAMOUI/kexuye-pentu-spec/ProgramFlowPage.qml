@@ -462,6 +462,9 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.rotate, actionObject.rotateSpeed));
 //        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":"0.000","m5":actionObject.rotate}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        if(actionObject.mode == 9 && actionObject.isRotateCycle)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, 0,
+                                actionObject.rotateSpeed,0,false,false,0,false,0,0,false,0,0,1,false,0));
 
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 0, 0,actionObject.flag15));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag14, qsTr("Rotate1")));
@@ -472,6 +475,9 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.rotate, actionObject.rotateSpeed));
 //        ret.push(LocalTeach.generatePathAction(LocalTeach.actions.F_CMD_JOINT_RELATIVE, [{"pointName":"", "pos":{"m0":"0.000","m1":"0.000","m2":"0.000","m3":"0.000","m4":actionObject.rotate,"m5":"0.000"}}], actionObject.rotateSpeed, 0.0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+        if(actionObject.mode == 9 && actionObject.isRotateCycle)
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, 0,
+                                actionObject.rotateSpeed,0,false,false,0,false,0,0,false,0,0,1,false,0));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag15, qsTr("Rotate2")));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, actionObject.deepAxis, actionObject.startPos2, actionObject.startPosSpeed2));
 
@@ -1494,6 +1500,12 @@ ProgramFlowPage {
                          repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
                 if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
                     guncloseAction(ret,actionObject);
+            }
+            if(actionObject.mode == 9 && actionObject.isRotateCycle){
+                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, 0,
+                                    actionObject.rotateSpeed,0,false,false,0,false,0,0,false,0,0,0,true,0));
+                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, 0,
+                                    actionObject.rotateSpeed,0,false,false,0,false,0,0,false,0,0,0,true,0));
             }
         }
 

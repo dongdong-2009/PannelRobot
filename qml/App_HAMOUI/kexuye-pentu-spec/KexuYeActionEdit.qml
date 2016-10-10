@@ -105,7 +105,7 @@ Item {
                         stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
                         stack.zdirection,newstack,isGunBack.isChecked,
                         details.use0,details.use1,details.use2,details.use3,details.use4,details.use5,
-                        forward.isChecked));
+                        forward.isChecked,isRotateCycle.isChecked));
         else
             ret.push(LocalTeach.generatePENTUAction(
                         actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
@@ -119,7 +119,7 @@ Item {
                         actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
                         actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
                         actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2,
-                        actObt.forward));
+                        actObt.forward,actObt.isRotateCycle));
         return ret;
     }
 
@@ -202,6 +202,7 @@ Item {
         ao.isGunBack = isGunBack.isChecked;
         ao.forward = forward.isChecked;
         ao.editaction = editaction.configValue;
+        ao.isRotateCycle = isRotateCycle.isChecked;
 
 //        var c = BaseTeach.counterManager.getCounter(ao.dirCounterID);
 //        BaseTeach.counterManager.updateCounter(c.id, c.name, c.current, ao.dirCount);
@@ -412,6 +413,22 @@ Item {
                         if(!isGunBack.isChecked)
                             isGunBack.isChecked = true;
                         else isGunBack.isChecked = false;
+                    }
+                }
+            }
+            ICCheckBox{
+                id:isRotateCycle
+                width: 100
+                text: qsTr("Is Rotate Cycle")
+                isChecked: false
+                visible: mode == 9
+                useCustomClickHandler: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(!isRotateCycle.isChecked)
+                            isRotateCycle.isChecked = true;
+                        else isRotateCycle.isChecked = false;
                     }
                 }
             }
@@ -890,6 +907,7 @@ Item {
         rotateCount.configValue = actionObject.rotateCount;
         isGunBack.isChecked = actionObject.isGunBack;
         forward.isChecked = actionObject.forward;
+        isRotateCycle.isChecked = actionObject.isRotateCycle;
         editaction.configValue = actionObject.editaction;
         planeSel.visible = actionObject.mode == 8 ? false : true;
         dirAxisSel.visible = actionObject.mode == 8 ? false : true;
@@ -959,6 +977,7 @@ Item {
         dirAxisSel.configName = actionObject.mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis");
         pos1Axis4.visible = actionObject.mode > 3 && actionObject.mode != 8 && actionObject.mode != 9;
         repeateSpeed.visible = actionObject.mode != 8;
+        isRotateCycle.visible = actionObject.mode == 9;
     }
 
 
@@ -990,6 +1009,7 @@ Item {
         rotateCount.configValue = 0;
         isGunBack.isChecked = false;
         forward.isChecked = false;
+        isRotateCycle.isChecked = false;
 
         resetItems();
         ManualProgramManager.manualProgramManager.registerMonitor(container);

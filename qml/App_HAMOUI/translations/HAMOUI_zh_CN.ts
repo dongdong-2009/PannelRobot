@@ -4149,6 +4149,10 @@
         <source>Forward</source>
         <translation>前向弧</translation>
     </message>
+    <message>
+        <source>Is Rotate Cycle</source>
+        <translation>旋转跟随</translation>
+    </message>
 </context>
 <context>
     <name>KexuYeAxisSpeed</name>

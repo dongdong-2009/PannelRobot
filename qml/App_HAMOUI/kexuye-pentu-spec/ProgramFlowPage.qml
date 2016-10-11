@@ -1420,7 +1420,9 @@ ProgramFlowPage {
 
         else if(actionObject.mode == 8){        //DIY MOD
             var tmpMap = {};
-            var tmpret = ManualProgramManager.manualProgramManager.getProgram(actionObject.editaction).program;
+            var tmpret = {};
+            if(actionObject.editaction != -1)
+                tmpret = ManualProgramManager.manualProgramManager.getProgram(actionObject.editaction).program;
             var actionLine;
             var len;
             for(i = 0, len =  tmpret.length; i < len; ++i){

@@ -421,7 +421,7 @@ Item {
                 width: 100
                 text: qsTr("Is Rotate Cycle")
                 isChecked: false
-                visible: mode == 9
+                visible: mode == 8 || mode == 9
                 useCustomClickHandler: true
                 MouseArea{
                     anchors.fill: parent
@@ -977,7 +977,8 @@ Item {
         dirAxisSel.configName = actionObject.mode == 9 ? qsTr("Repeat Axis") : qsTr("Dir Axis");
         pos1Axis4.visible = actionObject.mode > 3 && actionObject.mode != 8 && actionObject.mode != 9;
         repeateSpeed.visible = actionObject.mode != 8;
-        isRotateCycle.visible = actionObject.mode == 9;
+        forward.visible = actionObject.mode == 7;
+        isRotateCycle.visible = actionObject.mode == 8 || actionObject.mode == 9;
     }
 
 

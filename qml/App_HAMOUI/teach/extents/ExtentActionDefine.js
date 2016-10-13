@@ -34,6 +34,50 @@ var extentPENQIANGAction = {
 
 };
 
+var extentPTAction1 = {
+    "action":1001,
+    "properties":[
+        new ActionDefineItem("pos1_0", 3),
+        new ActionDefineItem("pos1_1", 3),
+        new ActionDefineItem("pos1_2", 3),
+        new ActionDefineItem("pos1_3", 3),
+        new ActionDefineItem("pos1_4", 3),
+        new ActionDefineItem("pos1_5", 3),
+        new ActionDefineItem("pos2_0", 3),
+        new ActionDefineItem("pos2_1", 3),
+        new ActionDefineItem("pos2_2", 3),
+        new ActionDefineItem("pos2_3", 3),
+        new ActionDefineItem("pos2_4", 3),
+        new ActionDefineItem("pos2_5", 3),
+        new ActionDefineItem("pos3_0", 3),
+        new ActionDefineItem("pos3_1", 3),
+        new ActionDefineItem("pos3_2", 3),
+        new ActionDefineItem("pos3_3", 3),
+        new ActionDefineItem("pos3_4", 3),
+        new ActionDefineItem("pos3_5", 3),
+        new ActionDefineItem("dirlength", 3),
+        new ActionDefineItem("rotatelength", 3),
+        new ActionDefineItem("zlength", 3),
+        new ActionDefineItem("repeateCount", 0),
+        new ActionDefineItem("dirCount", 0),
+
+
+        new ActionDefineItem("num", 0),
+        new ActionDefineItem("delay",2)],
+    "canTestRun":true,
+    "canActionUsePoint": false,
+    "editableItems":{"editor":Qt.createComponent("KexuYeActionEdit.qml"), "itemDef":{"item":"PTAction1"}},
+    "toStringHandler":function(actionObject){
+        return qsTr("PENQIANG") + "-" + axisInfos[actionObject.axis].name + ":" +
+                qsTr("Pos1:") + actionObject.pos1 + " " +
+                qsTr("Pos2:") + actionObject.pos2 + " " +
+                qsTr("Speed:") + actionObject.speed + " " +
+                qsTr("Num:") + actionObject.num + " " +
+                qsTr("Delay:") + actionObject.delay;
+    },
+
+};
+
 var extentAnalogControlAction = {
     "action":250,
     "properties":[new ActionDefineItem("chanel", 0),

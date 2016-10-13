@@ -67,7 +67,8 @@ Item {
             editor = PData.itemToEditorMap.get(item.item);
             if(PData.isRegisterEditor(editor)){
                 editor.actionObject = actionObject;
-                editor.isauto = isAutoMode;
+                if(editor.actionObject.action == 70000) //actions.F_CMD_PENTU = 70000;
+                    editor.isauto = isAutoMode;
             }
             else if(editor == points){
                 editor.action = actionObject.action;

@@ -43,14 +43,14 @@ Item {
             id:writeEPBtn
             text: qsTr("Write EP")
             onButtonClicked: {
-                panelRobotController.writeQKConfig(axisEdit.configValue, addrEdit.configValue, dataEdit.configValue, true);
+                panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16), true);
             }
         }
         ICButton{
             id:readEPBtn
             text: qsTr("Read EP")
             onButtonClicked: {
-                panelRobotController.readQKConfig(axisEdit.configValue, addrEdit.configValue, true);
+                panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), true);
 
             }
         }

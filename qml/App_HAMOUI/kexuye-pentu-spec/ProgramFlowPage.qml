@@ -343,33 +343,6 @@ ProgramFlowPage {
             "delay":delay||0.00};
     }
 
-    function pTAction1(sPos,ePos1,ePos2,dirlength,rotatelength,zlength,repeateCount,dirCount){
-        return{
-            "pos1_0":sPos.pos.m0,
-            "pos1_1":sPos.pos.m1,
-            "pos1_2":sPos.pos.m2,
-            "pos1_3":sPos.pos.m3,
-            "pos1_4":sPos.pos.m4,
-            "pos1_5":sPos.pos.m5,
-            "pos2_0":ePos1.pos.m0,
-            "pos2_1":ePos1.pos.m1,
-            "pos2_2":ePos1.pos.m2,
-            "pos2_3":ePos1.pos.m3,
-            "pos2_4":ePos1.pos.m4,
-            "pos2_5":ePos1.pos.m5,
-            "pos3_0":ePos2.pos.m0,
-            "pos3_1":ePos2.pos.m1,
-            "pos3_2":ePos2.pos.m2,
-            "pos3_3":ePos2.pos.m3,
-            "pos3_4":ePos2.pos.m4,
-            "pos3_5":ePos2.pos.m5,
-            "dirlength":dirlength,
-            "rotatelength":rotatelength,
-            "zlength":zlength,
-            "repeateCount":repeateCount,
-            "dirCount":dirCount
-        }
-    }
 
     function pentuActionHead(actionObject1){
         var actionObject = Utils.cloneObject(actionObject1);
@@ -1472,9 +1445,6 @@ ProgramFlowPage {
                 ret.push(actionLine);
             }
             ret.push(LocalTeach.generateCounterAction(actionObject.dirCounterID));
-//            ret.push(BaseTeach.generateCustomAction(pTAction1(actionObject.startPos,actionObject.point1,
-//                     actionObject.point2,actionObject.dirLength,actionObject.rotate,actionObject.zlength,
-//                     actionObject.repeateCount,actionObject.dirCount)));
         }
 
         else if(actionObject.mode == 9){

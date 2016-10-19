@@ -2094,7 +2094,7 @@
     </message>
     <message>
         <source>Y022</source>
-        <translation>公转盘正传</translation>
+        <translation>公转盘正转</translation>
     </message>
     <message>
         <source>Y023</source>
@@ -2102,15 +2102,15 @@
     </message>
     <message>
         <source>Y024</source>
-        <translation></translation>
+        <translation>B轴翻转正转</translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation></translation>
+        <translation>B轴翻转反转</translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation></translation>
+        <translation>C轴翻转正转</translation>
     </message>
     <message>
         <source>Y027</source>
@@ -2118,7 +2118,7 @@
     </message>
     <message>
         <source>Y030</source>
-        <translation></translation>
+        <translation>C轴翻转反转</translation>
     </message>
     <message>
         <source>Y031</source>
@@ -2198,15 +2198,15 @@
     </message>
     <message>
         <source>X024</source>
-        <translation>X024</translation>
+        <translation>B轴翻转正转到位</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation>X025</translation>
+        <translation>B轴翻转反转到位</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation>X026</translation>
+        <translation>C轴翻转正转到位</translation>
     </message>
     <message>
         <source>X027</source>
@@ -2214,11 +2214,11 @@
     </message>
     <message>
         <source>X030</source>
-        <translation type="unfinished">X030</translation>
+        <translation>C轴翻转反转到位</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation type="unfinished">X031</translation>
+        <translation>X031</translation>
     </message>
     <message>
         <source>X032</source>
@@ -2230,11 +2230,11 @@
     </message>
     <message>
         <source>X034</source>
-        <translation type="unfinished">X034</translation>
+        <translation>X034</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation type="unfinished">X035</translation>
+        <translation>X035</translation>
     </message>
     <message>
         <source>X036</source>
@@ -2498,15 +2498,15 @@
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation>普通输出Y024</translation>
+        <translation>B轴翻转正转</translation>
     </message>
     <message>
         <source>Normal Y025</source>
-        <translation>普通输出Y025</translation>
+        <translation>B轴翻转反转</translation>
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>普通输出Y026</translation>
+        <translation>C轴翻转正转</translation>
     </message>
     <message>
         <source>Normal Y027</source>
@@ -2514,7 +2514,7 @@
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>普通输出Y030</translation>
+        <translation>C轴翻转反转</translation>
     </message>
     <message>
         <source>Normal Y031</source>
@@ -5558,6 +5558,14 @@ please chose!</source>
         <source>Paste</source>
         <translation>粘贴</translation>
     </message>
+    <message>
+        <source>turn axisC over negative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>turn axisB over negative</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -6484,6 +6492,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量使能</translation>
+    </message>
+    <message>
+        <source>Turn Over En</source>
+        <translation>翻转使能</translation>
     </message>
 </context>
 <context>

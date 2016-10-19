@@ -354,8 +354,12 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateOutputAction(17,0,0,17,0));     //close
 //        ret.push(LocalTeach.generateOutputAction(18,0,0,18,0));     //close
 //        ret.push(LocalTeach.generateOutputAction(19,0,0,19,0));     //close
-        ret.push(LocalTeach.generateOutputAction(10,0,0,10,0));     //Y34 close
+        ret.push(LocalTeach.generateOutputAction(10,0,0,10,0));     //Y22 close
         ret.push(LocalTeach.generateOutputAction(11,0,0,11,0));     //close
+        ret.push(LocalTeach.generateOutputAction(12,0,0,12,0));     //close
+        ret.push(LocalTeach.generateOutputAction(13,0,0,13,0));     //close
+        ret.push(LocalTeach.generateOutputAction(14,0,0,14,0));     //close
+        ret.push(LocalTeach.generateOutputAction(16,0,0,16,0));     //Y30 close
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
         ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,1,0));     //m1 close
         ret.push(LocalTeach.generateOutputAction(2,IODefines.M_BOARD_0,0,1,0));     //m2 close
@@ -364,6 +368,10 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateOutputAction(13,100,1,13,1));     //Y25 close
 
         getready(ret,actionObject);
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848")){
+            ret.push(LocalTeach.generateOutputAction(13,0,1,13,0));     //B turnover back
+            ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //C turnover back
+        }
         ret.push(LocalTeach.generateConditionAction(0, 10, 0, 1, 0,actionObject.flag8));
         ret.push(LocalTeach.generateConditionAction(0, 11, 0, 1, 0,actionObject.flag9));
         ret.push(LocalTeach.generateJumpAction(actionObject.flag5));
@@ -378,6 +386,10 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateWaitAction(11,0,1,10));
         ret.push(LocalTeach.generateOutputAction(11,0,0,11,0));
         ret.push(LocalTeach.generateFlagAction(actionObject.flag13, qsTr("gongzhuan OK")));
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848")){
+            ret.push(LocalTeach.generateWaitAction(13,0,1,10));
+            ret.push(LocalTeach.generateWaitAction(16,0,1,10));
+        }
 
 //        ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //mujuhuiyuan
 //        ret.push(LocalTeach.generateWaitAction(18,0,1,100));
@@ -411,11 +423,31 @@ ProgramFlowPage {
 //        ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag0, actionObject.rotateCounterID, 0, 1));
 //        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startSpeed4));
 
-        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));               //products count++
-        ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2));
+
+        ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag4));
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848")){
+            ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag6));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+            ret.push(LocalTeach.generateOutputAction(14,0,1,14,0));     //turn axisC over positive
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 5, actionObject.startPos.pos.m5, actionObject.startPosSpeed5,0,false,true,3600));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+            ret.push(LocalTeach.generateWaitAction(5,0,1,10));
+            ret.push(LocalTeach.generateWaitAction(14,0,1,10));
+            ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,1,0,0));     //m1 poen
+            ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag11));
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("turn axisC over negative")));
+            ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,0,0));     //m1 close
+        }
+
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));               //products count++
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
-        ret.push(LocalTeach.generateOutputAction(10,0,1,10,0));   //gongzhuangzhengzhuang open
+        ret.push(LocalTeach.generateOutputAction(10,0,1,10,0));     //gongzhuangzhengzhuang open
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848"))
+            ret.push(LocalTeach.generateOutputAction(16,0,1,16,0));     //turn axisC over negative
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
@@ -429,12 +461,34 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,1,0,0));     //m0 poen
         ret.push(LocalTeach.generateWaitAction(4,0,1,10));
         ret.push(LocalTeach.generateWaitAction(5,0,1,10));
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848"))
+            ret.push(LocalTeach.generateWaitAction(16,0,1,10));
         ret.push(LocalTeach.generateConditionAction(4, 0, 1, 1, 0,actionObject.flag11));
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag4, qsTr("negative")));
-        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2));
+//        ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 2, 0, actionObject.startPosSpeed2));
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848")){
+            ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag7));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
+            ret.push(LocalTeach.generateOutputAction(12,0,1,12,0));     //turn axisB over positive
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, actionObject.startPos.pos.m4, actionObject.startPosSpeed5,0,false,true,3600));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_END));
+            ret.push(LocalTeach.generateWaitAction(4,0,1,10));
+            ret.push(LocalTeach.generateWaitAction(12,0,1,10));
+            ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,1,0,0));     //m1 poen
+            ret.push(LocalTeach.generateConditionAction(4, 1, 1, 1, 0,actionObject.flag11));
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("turn axisB over negative")));
+            ret.push(LocalTeach.generateOutputAction(1,IODefines.M_BOARD_0,0,0,0));     //m1 close
+        }
+
+        ret.push(LocalTeach.generateCounterAction(actionObject.rotateCounterID));               //products count++
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SYNC_START));
         ret.push(LocalTeach.generateOutputAction(11,0,1,11,0));   //gongzhuangfanzhuang open
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848"))
+            ret.push(LocalTeach.generateOutputAction(13,0,1,13,0));     //turn axisB over negative
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 0, actionObject.startPos.pos.m0, actionObject.startPosSpeed0));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 1, actionObject.startPos.pos.m1, actionObject.startPosSpeed1));
         ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 3, actionObject.startPos.pos.m3, actionObject.startPosSpeed3));
@@ -447,6 +501,8 @@ ProgramFlowPage {
         ret.push(LocalTeach.generateOutputAction(0,IODefines.M_BOARD_0,0,0,0));     //m0 close
         ret.push(LocalTeach.generateWaitAction(4,0,1,10));
         ret.push(LocalTeach.generateWaitAction(5,0,1,10));
+        if(panelRobotController.getConfigValue("s_rw_0_32_0_848"))
+            ret.push(LocalTeach.generateWaitAction(13,0,1,10));
 //        ret.push(LocalTeach.generateFlagAction(actionObject.flag5, qsTr("positive")));
 
         return ret;

@@ -274,7 +274,11 @@ Item {
                 configAddr: "s_rw_0_32_0_213"
                 configName: qsTr("Analog En")
             }
-
+            ICCheckBoxEdit{
+                id:isTurnOverEn
+                configAddr: "s_rw_0_32_0_848"
+                configName: qsTr("Turn Over En")
+            }
         }
     }
 //    function onAxisDefinesChanged(){

@@ -1245,6 +1245,18 @@ var cycle8 = function(){
     f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
     var flag13 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag14 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag15 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag16 = f.flagID;
+    f = flagsDefine.createFlag(0, "");
+    flagsDefine.pushFlag(0, f);
+    var flag17 = f.flagID;
     var ret = [];
 //      generateConditionAction = function(type, point, inout, status, limit, flag)      //type:0 XY, 4 zhongjianbianliang
     ret.push(generateConditionAction(0, 10, 1, 0, 0,flag1));
@@ -1256,6 +1268,26 @@ var cycle8 = function(){
     ret.push(generateConditionAction(0, 11, 0, 0, 0,flag2));
     ret.push(generateOutputAction(11,0,0,11,0));     //close
     ret.push(generateFlagAction(flag2, qsTr("Negative")));
+
+    ret.push(generateConditionAction(0, 12, 1, 0, 0,flag14));
+    ret.push(generateConditionAction(0, 12, 0, 0, 0,flag14));
+    ret.push(generateOutputAction(12,0,0,12,0));     //close
+    ret.push(generateFlagAction(flag14, qsTr("Positive")));
+
+    ret.push(generateConditionAction(0, 13, 1, 0, 0,flag15));
+    ret.push(generateConditionAction(0, 13, 0, 0, 0,flag15));
+    ret.push(generateOutputAction(13,0,0,13,0));     //close
+    ret.push(generateFlagAction(flag15, qsTr("Negative")));
+
+    ret.push(generateConditionAction(0, 14, 1, 0, 0,flag16));
+    ret.push(generateConditionAction(0, 14, 0, 0, 0,flag16));
+    ret.push(generateOutputAction(14,0,0,14,0));     //close
+    ret.push(generateFlagAction(flag16, qsTr("Positive")));
+
+    ret.push(generateConditionAction(0, 16, 1, 0, 0,flag17));
+    ret.push(generateConditionAction(0, 16, 0, 0, 0,flag17));
+    ret.push(generateOutputAction(16,0,0,16,0));     //close
+    ret.push(generateFlagAction(flag17, qsTr("Negative")));
 
     ret.push(generateConditionAction(0, 22, 0, 0, 0,flag3));        //X36
 //    generateWaitAction = function(which, type, status, limit)
@@ -1317,6 +1349,10 @@ var cycle8 = function(){
     ret.push(generateOutputAction(9,0,0,9,0));     //close
     ret.push(generateOutputAction(10,0,0,10,0));     //close
     ret.push(generateOutputAction(11,0,0,11,0));     //close
+    ret.push(generateOutputAction(12,0,0,12,0));     //close
+    ret.push(generateOutputAction(13,0,0,13,0));     //close
+    ret.push(generateOutputAction(14,0,0,10,0));     //close
+    ret.push(generateOutputAction(16,0,0,16,0));     //close
     ret.push(generateAxisServoAction(actions.F_CMD_SYNC_END));
 //    ret.push(generateOutputAction(12,0,0,12,0));     //close
 //    ret.push(generateOutputAction(16,0,0,16,0));     //close

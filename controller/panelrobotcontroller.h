@@ -292,7 +292,7 @@ public:
     }
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
     Q_INVOKABLE void syncConfigs();
-    Q_INVOKABLE QString records();
+    Q_INVOKABLE QString records() const;
     Q_INVOKABLE ICAxisDefine* axisDefine();
     Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram, const QString& subPrograms = "[]");
     Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
@@ -324,6 +324,7 @@ public:
         }
 
         return ret;
+
     }
 
 

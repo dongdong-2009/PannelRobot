@@ -404,7 +404,7 @@ void PanelRobotController::syncConfigs()
 #endif
 }
 
-QString PanelRobotController::records()
+QString PanelRobotController::records() const
 {
     QString content;
     ICRecordInfos infos = ICRobotMold::RecordInfos();
@@ -734,6 +734,7 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     {
         QKCmdData qkData;
         qkData.all = v.at(0);
+//        qDebug()<<"qkData"<<qkData.all;
         if(qkData.b.cmd == 0)
         {
             ICRobotVirtualhost::AddReadConfigCommand(host_, 51, 1);
@@ -745,6 +746,7 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
                        SIGNAL(QueryFinished(int , const QVector<quint32>& )),
                        this,
                        SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)));
+//            qDebug()<<"readQKConfigFinished"<<qkData.all;
             emit readQKConfigFinished(qkData.all);
         }
     }

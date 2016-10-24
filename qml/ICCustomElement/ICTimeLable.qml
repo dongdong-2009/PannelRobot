@@ -5,12 +5,14 @@ Rectangle {
     property int second: 0
     signal hourGone()
     signal minuteGone()
+    signal secondGone()
     Timer {
         interval: 1000; running: parent.visible; repeat: true
         triggeredOnStart: true
         onTriggered: {
             time.text = formatDate(form).toString();
             ++second;
+            secondGone();
             if(second % 60 == 0)
                 minuteGone();
             if(second % 3600 == 0){

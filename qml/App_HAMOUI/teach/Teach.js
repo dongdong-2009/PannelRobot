@@ -1205,6 +1205,14 @@ var generateInitProgram = function(axisDefine){
 
 }
 
+function getActionProperties(action,channel,analog,delay){
+    return {
+        "action":action,
+        "chanel":channel||0,
+        "analog":analog||0.0,
+        "delay":delay||0.0};
+}
+
 var cycle8 = function(){
     var f = flagsDefine.createFlag(0, "");
     flagsDefine.pushFlag(0, f);
@@ -1353,6 +1361,11 @@ var cycle8 = function(){
     ret.push(generateOutputAction(13,0,0,13,0));     //close
     ret.push(generateOutputAction(14,0,0,10,0));     //close
     ret.push(generateOutputAction(16,0,0,16,0));     //close
+//    if(panelRobotController.getConfigValue("s_rw_0_32_0_213")){
+//        ret.push(generateCustomAction(getActionProperties(250,0,0)));
+//        ret.push(generateCustomAction(getActionProperties(250,1,0)));
+//        ret.push(generateCustomAction(getActionProperties(250,2,0)));
+//    }
     ret.push(generateAxisServoAction(actions.F_CMD_SYNC_END));
 //    ret.push(generateOutputAction(12,0,0,12,0));     //close
 //    ret.push(generateOutputAction(16,0,0,16,0));     //close

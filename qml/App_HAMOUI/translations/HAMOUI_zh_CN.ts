@@ -4244,6 +4244,14 @@
         <source>FixSwitch2</source>
         <translation>喷枪2闭合</translation>
     </message>
+    <message>
+        <source>Turn Over</source>
+        <translation>翻转</translation>
+    </message>
+    <message>
+        <source>M</source>
+        <translation>中间</translation>
+    </message>
 </context>
 <context>
     <name>Keymap</name>
@@ -5559,11 +5567,11 @@ please chose!</source>
         <translation>粘贴</translation>
     </message>
     <message>
-        <source>turn axisC over negative</source>
+        <source>B turnover back OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>turn axisB over negative</source>
+        <source>C turnover back OK</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

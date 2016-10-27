@@ -105,7 +105,7 @@ Item {
                         stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
                         stack.zdirection,newstack,isGunBack.isChecked,
                         details.use0,details.use1,details.use2,details.use3,details.use4,details.use5,
-                        forward.isChecked,isRotateCycle.isChecked));
+                        forward.isChecked,isRotateCycle.isChecked,details.turnOver));
         else
             ret.push(LocalTeach.generatePENTUAction(
                         actObt.mode, actObt.plane, actObt.startPos, actObt.startPosSpeed0, actObt.startPosSpeed1,
@@ -119,7 +119,7 @@ Item {
                         actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
                         actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
                         actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2,
-                        actObt.forward,actObt.isRotateCycle));
+                        actObt.forward,actObt.isRotateCycle,actObt.turnOver));
         return ret;
     }
 

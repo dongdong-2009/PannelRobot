@@ -30,7 +30,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
                                    zdeviation,xspace,yspace,zspace,xcount,ycount,
                                    zcount,xdirection,ydirection,zdirection,stack1,isGunBack,
                                    gun1use0,gun1use1,gun1use2,gun2use0,gun2use1,gun2use2,forward,
-                                   isRotateCycle){
+                                   isRotateCycle,turnOver){
 //    var f = flagsDefine.createFlag(0, "");
 //    flagsDefine.pushFlag(0, f);
 //    var flag0 = f.flagID;
@@ -303,6 +303,13 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "flag16":0,
         "flag17":0,
         "flag18":0,
+        "flag19":0,
+        "flag20":0,
+        "flag21":0,
+        "flag22":0,
+        "flag23":0,
+        "flag24":0,
+        "flag25":0,
         "startPosSpeed0":startPosSpeed0,
         "startPosSpeed1":startPosSpeed1,
         "startPosSpeed2":startPosSpeed2,
@@ -327,6 +334,7 @@ var generatePENTUAction = function(mode, plane, startPos, startPosSpeed0, startP
         "fixture2Delay2":fixtureDelay2,
         "fixture1Switch":fixture1Switch,
         "fixture2Switch":fixture2Switch,
+        "turnOver":turnOver,
         "slope":slope,
         "gunFollowEn":gunFollowEn,
         "aaaa":aaaa,

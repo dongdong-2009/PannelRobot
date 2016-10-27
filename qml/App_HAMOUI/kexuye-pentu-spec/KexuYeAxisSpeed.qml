@@ -24,6 +24,7 @@ Item {
         ao.fixture2Delay1 = delay21.configValue;
         ao.fixture2Delay2 = delay22.configValue;
         ao.fixture2Switch = fixture1Switch.configValue;
+        ao.turnOver = turnOver.configValue;
         ao.slope = slope.configValue;
         ao.chamferRadius = chamferRadius.configValue;
         ao.linglong = linelong.configValue;
@@ -51,6 +52,7 @@ Item {
             "delay22":delay22.configValue,
             "fixtureSwitch":fixtureSwitch.configValue,
             "fixture1Switch":fixture1Switch.configValue,
+            "turnOver":turnOver.configValue,
             "slope":slope.configValue,
             "chamferRadius":chamferRadius.configValue,
             "linglong":linelong.configValue,
@@ -353,6 +355,14 @@ Item {
                 items: [qsTr("L"), qsTr("R"), qsTr("D"), qsTr("Close"), qsTr("Open")]
 
             }
+            ICComboBoxConfigEdit{
+                id:turnOver
+                z: 1
+                configName: qsTr("Turn Over")
+                popupHeight: 100
+                items: [qsTr("L"), qsTr("R"), qsTr("M")]
+
+            }
             ICConfigEdit{
                 id:slope
                 z: 1
@@ -396,6 +406,7 @@ Item {
         delay21.configValue = actionObject.fixture2Delay1;
         delay22.configValue = actionObject.fixture2Delay2;
         fixture1Switch.configValue = actionObject.fixture2Switch;
+        turnOver.configValue = actionObject.turnOver;
         slope.configValue = actionObject.slope;
 //        chamferRadius.configValue = actionObject.chamferRadius;
 //        linelong.configValue = actionObject.linelong
@@ -416,6 +427,7 @@ Item {
         delay21.configValue = 0;
         delay22.configValue = 0.03;
         fixture1Switch.configValue = 3;
+        turnOver.configValue = 2;
         m0Speed.configValue = 20;
         m1Speed.configValue = 20;
         m2Speed.configValue = 20;

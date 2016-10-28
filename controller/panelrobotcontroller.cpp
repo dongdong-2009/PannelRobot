@@ -1355,8 +1355,9 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
     QByteArray ret;
     if(f.open(isTextOnly ? (QFile::ReadOnly | QFile::Text) : QFile::ReadOnly))
     {
-        ret.resize(f.size());
-        f.read(ret.data(), f.size());
+//        ret.resize(f.size());
+//        f.read(ret.data(), f.size());
+        ret = f.readAll();
         f.close();
         if(isTextOnly)
         {

@@ -86,7 +86,7 @@ Rectangle{
         text: container.text
         textFormat: Text.RichText
         width: parent.width - num.width
-//        wrapMode: Text.WrapAnywhere
+        wrapMode: Text.WrapAnywhere
         anchors.left: num.right
         anchors.verticalCenter: parent.verticalCenter
     }

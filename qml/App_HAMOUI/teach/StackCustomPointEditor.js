@@ -341,6 +341,10 @@ var HCCYGCodeInterpreter = {
                 interpreter["G78"](args);
         }
 
+        interpreter.G70 = function(args){
+            moveDistance(currentPos, args);
+        }
+
         //        interpreter.G86 = function(args){
         //            if(!needToAppendToMacro("G86", args)){
         //                var wx = args.P / 2;

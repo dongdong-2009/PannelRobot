@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -462,15 +462,15 @@
     <name>AnalogControlEditor</name>
     <message>
         <source>Chanel</source>
-        <translation>通道</translation>
+        <translation type="vanished">通道</translation>
     </message>
     <message>
         <source>Analog Value</source>
-        <translation>模拟量</translation>
+        <translation type="vanished">模拟量</translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation>延时</translation>
+        <translation type="vanished">延时</translation>
     </message>
 </context>
 <context>
@@ -577,23 +577,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -601,11 +601,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1604,43 +1604,43 @@
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
-        <translation>往复</translation>
+        <translation type="vanished">往复</translation>
     </message>
     <message>
         <source>Pos1:</source>
-        <translation>起始位置:</translation>
+        <translation type="vanished">起始位置:</translation>
     </message>
     <message>
         <source>Pos2:</source>
-        <translation>结束位置:</translation>
+        <translation type="vanished">结束位置:</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
-        <translation>速度:</translation>
+        <translation type="vanished">速度:</translation>
     </message>
     <message>
         <source>Num:</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation type="vanished">延时:</translation>
     </message>
     <message>
         <source>Analog Control</source>
-        <translation>模拟控制</translation>
+        <translation type="vanished">模拟控制</translation>
     </message>
     <message>
         <source>Analog:</source>
-        <translation>模拟量:</translation>
+        <translation type="vanished">模拟量:</translation>
     </message>
 </context>
 <context>
@@ -1865,11 +1865,11 @@
     </message>
     <message>
         <source>X020</source>
-        <translation>X020</translation>
+        <translation>枪2输入信号</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation>X021</translation>
+        <translation>枪1输入信号</translation>
     </message>
     <message>
         <source>X022</source>
@@ -2021,39 +2021,39 @@
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>普通输出Y014</translation>
+        <translation>枪2轨道推拉</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>普通输出Y015</translation>
+        <translation>枪2吹钉</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>普通输出Y016</translation>
+        <translation>枪2送钉</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation>普通输出Y017</translation>
+        <translation>枪2电机</translation>
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>普通输出Y020</translation>
+        <translation>枪1顶杠</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>普通输出Y021</translation>
+        <translation>枪2顶杠</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>普通输出Y022</translation>
+        <translation>枪1轨道推拉</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>普通输出Y023</translation>
+        <translation>枪1吹钉</translation>
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation>普通输出Y024</translation>
+        <translation>枪1送钉</translation>
     </message>
     <message>
         <source>Normal Y025</source>
@@ -2061,19 +2061,19 @@
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>普通输出Y026</translation>
+        <translation>焊接</translation>
     </message>
     <message>
         <source>Normal Y027</source>
-        <translation>普通输出Y027</translation>
+        <translation>枪1电机</translation>
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>普通输出Y030</translation>
+        <translation>枪2底缸</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation>普通输出Y031</translation>
+        <translation>枪1底缸</translation>
     </message>
     <message>
         <source>Normal Y032</source>
@@ -2997,39 +2997,39 @@
     </message>
     <message>
         <source>Y014</source>
-        <translation></translation>
+        <translation>枪2轨道推拉</translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation></translation>
+        <translation>枪2吹钉</translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation></translation>
+        <translation>枪2拉钉送钉</translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation></translation>
+        <translation>枪2电机</translation>
     </message>
     <message>
         <source>Y020</source>
-        <translation></translation>
+        <translation>枪1顶杠</translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation></translation>
+        <translation>枪2顶杠</translation>
     </message>
     <message>
         <source>Y022</source>
-        <translation></translation>
+        <translation>枪1轨道推拉</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation></translation>
+        <translation>枪1吹钉</translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation></translation>
+        <translation>枪1拉钉送钉</translation>
     </message>
     <message>
         <source>Y025</source>
@@ -3037,19 +3037,19 @@
     </message>
     <message>
         <source>Y026</source>
-        <translation></translation>
+        <translation>焊接</translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation></translation>
+        <translation>枪1电机</translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation></translation>
+        <translation>枪2底缸</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation></translation>
+        <translation>枪1底缸</translation>
     </message>
     <message>
         <source>Y032</source>
@@ -4026,35 +4026,35 @@
     <name>PENQIANEditor</name>
     <message>
         <source>Axis Sel</source>
-        <translation>轴选择</translation>
+        <translation type="vanished">轴选择</translation>
     </message>
     <message>
         <source>AxisFly Pos1</source>
-        <translation>起始位置</translation>
+        <translation type="vanished">起始位置</translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation>设入</translation>
+        <translation type="vanished">设入</translation>
     </message>
     <message>
         <source>AxisFly Pos2</source>
-        <translation>结束位置</translation>
+        <translation type="vanished">结束位置</translation>
     </message>
     <message>
         <source>AxisFly Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>AxisFyl Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Times</source>
-        <translation>次</translation>
+        <translation type="vanished">次</translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation>延时</translation>
+        <translation type="vanished">延时</translation>
     </message>
 </context>
 <context>
@@ -4962,7 +4962,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -4994,11 +4994,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5324,15 +5324,15 @@ please chose!</source>
     </message>
     <message>
         <source>Only X</source>
-        <translation>只堆X</translation>
+        <translation type="vanished">只堆X</translation>
     </message>
     <message>
         <source>Only Y</source>
-        <translation>只堆Y</translation>
+        <translation type="vanished">只堆Y</translation>
     </message>
     <message>
         <source>Only Z</source>
-        <translation>只堆Z</translation>
+        <translation type="vanished">只堆Z</translation>
     </message>
     <message>
         <source>Three Point Way</source>

@@ -367,6 +367,10 @@ Item {
 
     }
 
+    function onPointChanged(point){
+        onPointAdded(point);
+    }
+
     function onPointDeleted(point){
         onPointAdded(point);
     }

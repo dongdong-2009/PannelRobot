@@ -32,6 +32,7 @@ ICRegister::ICRegister()
             SIGNAL(timeout()),
             SLOT(OnHourGo()));
     checkTimer_.start(3600000);
+//    checkTimer_.start(1000);
 }
 
 QString ICRegister::GenerateMachineCode()

@@ -334,8 +334,10 @@ Rectangle {
             for(var p = 0; p < originpPoints.length; ++p){
                 if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
                     toFixAction.points[p].pos = point.point;
+                    toFixAction.points[p].pointName = point.name;
                 }
             }
+            Teach.updateCustomActions(actionObject);
             md.setProperty(line, "mI_ActionObject",actionObject);
         }
     }
@@ -779,6 +781,7 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
+                    popupHeight: 350
                     visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
@@ -818,13 +821,13 @@ Rectangle {
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
                             programListView.currentIndex = -1;
+                            programListView.model = null;
                             programListView.model = functionsModel;
                             currentEditingProgram = PData.kFunctionProgramIndex
                             currentEditingModule = moduleSel.currentIndex;
                             delModuleBtn.visible = newModuleBtn.visible;
                             actionEditorFrame.item.setMode("moduleEditMode");
                             PData.currentEditingProgram = PData.kFunctionProgramIndex;
-
 
                         }
                     }
@@ -866,6 +869,7 @@ Rectangle {
                     text: qsTr("Del Module")
                     height: editing.height
                     onButtonClicked: {
+                        hasModify = false;
                         var toDelID = Utils.getValueFromBrackets(moduleSel.currentText());
                         Teach.functionManager.delFunction(toDelID);
                         var ci = moduleSel.currentIndex;
@@ -1115,17 +1119,102 @@ Rectangle {
                         width: 40
                         text: qsTr("CUW")
 
+                        Rectangle{
+                            id:copyAdvance
+                            border.width: 1
+                            border.color: "black"
+                            color: "#A0A0F0"
+                            MouseArea{
+                                anchors.fill: parent
+                            }
+                            width: 310
+                            height: 100
+                            x:parent.width - width
+                            y:{
+                                if(toolBar.y < height)
+                                    return parent.height;
+                                 return -height;
+                            }
+                            visible: false
+                            Column{
+                                anchors.centerIn: parent
+                                spacing: 6
+                                ICButton{
+                                    id:copyCurrentLineBtn
+                                    text: qsTr("Copy Current Line")
+                                    width: 210
+                                    onButtonClicked: {
+                                        PData.setClipboard([copyLine()]);
+                                        copyAdvance.visible = false;
+                                        pasteBtn.enabled = PData.clipboard.length != 0;
+                                    }
+                                }
+                                Row{
+                                    spacing: 6
+                                    ICConfigEdit{
+                                        id:seq
+                                        configName: qsTr("Seq")
+                                        inputWidth: 50
+                                        height: copyMultiLineBtn.height
+                                        configValue: "0"
+                                    }
+                                    ICButton{
+                                        id:copyMultiLineBtn
+                                        text:qsTr("Copy Between Seq and Current")
+                                        width: 210
+                                        onButtonClicked: {
+                                            var toCopy = [];
+                                            var begin = Math.min(parseInt(seq.configValue), programListView.currentIndex);
+                                            var end = Math.max(parseInt(seq.configValue), programListView.currentIndex);
+                                            for(var i = begin; i <= end; ++i){
+                                                toCopy.push(Utils.cloneObject(currentModel().get(i).mI_ActionObject));
+                                            }
+                                            PData.setClipboard(toCopy);
+                                            pasteBtn.enabled = PData.clipboard.length != 0;
+                                            copyAdvance.visible = false;
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
 
                         visible: {
                             return  (programListView.currentIndex < programListView.count - 1)
                         }
 
                         onButtonClicked: {
+                            copyAdvance.visible = true;
 //                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-                            var toInsert = copyLine();
+//                            var toInsert = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
-                            insertActionToList(toInsert);
+//                            insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
+//                            repaintProgramItem(currentModel());
+                        }
+                    }
+
+                    ICButton{
+                        id:pasteBtn
+                        height: parent.height
+                        width: 40
+                        text: qsTr("Paste")
+                        enabled: false
+
+                        onButtonClicked: {
+                            var ao;
+                            for(var i = 0, len = PData.clipboard.length; i < len; ++i){
+                                ao = PData.clipboard[i];
+                                if(ao.action == Teach.actions.ACT_FLAG){
+                                    if(Teach.flagsDefine.getFlag(PData.currentEditingProgram, ao.flag) != null){
+                                        var f = Teach.flagsDefine.createFlag(PData.currentEditingProgram, ao.comment);
+                                        ao.flag = f.flagID;
+                                    }
+                                }
+
+                                insertActionToList(ao);
+                            }
                             repaintProgramItem(currentModel());
                         }
                     }
@@ -1521,6 +1610,9 @@ Rectangle {
             width: parent.width
             height: parent.height
             visible: false
+            onVisibleChanged: {
+                isAnalogEn = panelRobotController.getConfigValue("s_rw_0_32_0_213");
+            }
         }
     }
     
@@ -1692,6 +1784,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        ExtentActionDefine.init(Teach.counterManager);
         Teach.registerCustomActions(panelRobotController, ExtentActionDefine.extentActions);
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);

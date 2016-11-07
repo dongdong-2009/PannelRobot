@@ -1641,6 +1641,8 @@ bool PanelRobotController::loadRecord(const QString &name)
         }
 
         emit moldChanged();
+        modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
+
     }
 
     return ret;

@@ -1669,6 +1669,7 @@ ProgramFlowPage {
             ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag1, actionObject.dirCounterID, 0, 1));
         }
 //        if(actionObject.fixture1Switch != 4)
+        guncloseAction(ret,actionObject);
         allcloseAction(ret,actionObject);
         var gunBack = 0;
         if(!actionObject.isGunBack){

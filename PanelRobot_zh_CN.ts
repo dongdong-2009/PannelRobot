@@ -120,18 +120,18 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="239"/>
-        <location filename="controller/panelrobotcontroller.cpp" line="244"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="240"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="245"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="239"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="240"/>
         <source>Database is error!!</source>
         <translation>数据库错误!!</translation>
     </message>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="244"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="245"/>
         <source>Open Database fail!!</source>
         <translation>打开数据库错误!!</translation>
     </message>

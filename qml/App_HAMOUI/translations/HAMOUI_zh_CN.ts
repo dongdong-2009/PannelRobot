@@ -767,6 +767,14 @@
         <source>WD</source>
         <translation>世界</translation>
     </message>
+    <message>
+        <source>Coord Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
@@ -1885,6 +1893,14 @@
         <source>When Changed</source>
         <translation>当改变</translation>
     </message>
+    <message>
+        <source>Switch Coord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CoordID</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1907,6 +1923,10 @@
     <message>
         <source>Single Stack</source>
         <translation>单轴堆叠</translation>
+    </message>
+    <message>
+        <source>switchCoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4012,7 +4032,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="obsolete">工具校准</translation>
+        <translation type="unfinished">工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4029,6 +4049,10 @@
     <message>
         <source>Custom Btn</source>
         <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>toolcoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5937,6 +5961,13 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
+    <name>SwitchCoordEditor</name>
+    <message>
+        <source>coordID</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SyncActionEditor</name>
     <message>
         <source>Back to Menu</source>
@@ -6739,6 +6770,44 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Has Group-Begin action but has not Group-End action</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolCoordManager</name>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolCoordPage</name>
+    <message>
+        <source>newBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP1Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP2Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP3Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>coordName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

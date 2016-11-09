@@ -99,6 +99,8 @@ typedef enum _ICAddr
     //< 高16位：单步或者单循环的程序ID
     ICAddr_System_Retain_17 = 17,
     ICAddr_System_Retain_18 = 18,//< 单步运行或者单循环开始运行行数
+    ICAddr_System_Retain_20 = 20,//< 定义工件坐标系 id;3 point;
+    ICAddr_System_Retain_21 = 21,//< 手动状态坐标系值
     ICAddr_System_Retain_23 = 23,//< 电机正反转测试脉冲数
     ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级

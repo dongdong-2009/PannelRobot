@@ -170,8 +170,20 @@ var extentSingleStackAction = {
     }
 };
 
+var extentSwitchCoordAction = {
+        "action":800,
+        "properties":[new ActionDefineItem("coordID", 0)],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("SwitchCoordEditor.qml"), "itemDef":{"item":"SwitchCoordEditor"}},
+        "toStringHandler":function(actionObject){
+            return qsTr("Switch Coord") + ":" + qsTr("CoordID") + actionObject.coordID;
+        }
+    };
+
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
                      extentDeltaJumpAction,
                      extentSafeRangeAction,
-        extentSingleStackAction];
+                     extentSingleStackAction,
+        extentSwitchCoordAction];

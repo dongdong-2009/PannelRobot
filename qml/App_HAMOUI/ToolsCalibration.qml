@@ -90,6 +90,7 @@ Item {
                     ];
             p6Show.text = pulseToText(pulses);
 
+            enBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
 
         }
 

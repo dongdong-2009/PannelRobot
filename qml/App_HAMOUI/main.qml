@@ -13,6 +13,7 @@ import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
+import "ToolCoordManager.js" as ToolCoordManager
 
 Rectangle {
     id:mainWindow
@@ -763,6 +764,11 @@ Rectangle {
                     var posData = ESData.externalDataManager.parseRaw(toSendStackData);
                     panelRobotController.sendExternalDatas(JSON.stringify(posData));
                 }
+            }
+
+            var toolCoords = ToolCoordManager.toolCoordManager.toolCoordList();
+            for(var i =0;i<toolCoords.length;++i){
+                panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
         });
         //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),

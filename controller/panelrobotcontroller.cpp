@@ -1110,6 +1110,20 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
+void PanelRobotController::sendToolCoord(int id,const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(id);
+    for(int i=0;i<result.size();i++)
+        tmp.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
+}
+
 bool PanelRobotController::delCounterDef(quint32 id)
 {
     return ICRobotMold::CurrentMold()->DeleteCounter(id);

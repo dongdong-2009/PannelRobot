@@ -421,7 +421,7 @@ Item {
     Component.onCompleted: {
         delay0.configValue = 0;
         delay1.configValue = 0;
-        delay2.configValue = 0.03;
+        delay2.configValue = 0.08;
         fixtureSwitch.configValue = 4;
         delay20.configValue = 0;
         delay21.configValue = 0;

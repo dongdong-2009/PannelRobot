@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -657,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1775,11 +1775,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -3968,6 +3968,10 @@
         <source>System Configs</source>
         <translation>系统参数</translation>
     </message>
+    <message>
+        <source>QK Configs</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -5046,6 +5050,37 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>QKConfigs</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished">轴</translation>
+    </message>
+    <message>
+        <source>Addr</source>
+        <translation type="unfinished">地址</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write EP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read EP</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RecordManagementPage</name>
     <message>
         <source>Select Name:</source>
@@ -5190,6 +5225,14 @@ please chose!</source>
         <source>In current mold</source>
         <translation>已在当前模号</translation>
     </message>
+    <message>
+        <source>Search</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <source>Clear Search</source>
+        <translation>清除搜索</translation>
+    </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>
@@ -5203,7 +5246,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5235,11 +5278,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>

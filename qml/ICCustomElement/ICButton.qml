@@ -68,6 +68,7 @@ Rectangle {
         y: (parent.height - height) >> 1
         x: (parent.width - width) >> 1
         horizontalAlignment: Text.AlignHCenter
+        wrapMode: Text.WrapAnywhere
     }
 
     Component.onCompleted: {

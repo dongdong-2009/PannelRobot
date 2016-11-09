@@ -17,6 +17,7 @@ Item {
         axisConfigBtn.enabled = isEn;
         structConfigBtn.enabled = isEn;
         systemConfigBtn.enabled = ShareData.UserInfo.currentSZHCPerm();
+        qkConfigBtn.enabled = isEn;
     }
 
     width: parent.width
@@ -51,6 +52,14 @@ Item {
             id:systemConfigBtn
             text: qsTr("System Configs")
             icon: "../images/settings_system_config.png"
+            enabled: false
+
+        }
+
+        CatalogButton{
+            id:qkConfigBtn
+            text: qsTr("QK Configs")
+            icon: "../images/settings_motor_config.png"
             enabled: false
 
         }
@@ -91,6 +100,7 @@ Item {
         configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
         configsContainer.addNav(structConfigBtn, Qt.createComponent('StructConfigs.qml'));
         configsContainer.addNav(systemConfigBtn, Qt.createComponent('SystemConfigs.qml'));
+        configsContainer.addNav(qkConfigBtn, Qt.createComponent('QKConfigs.qml'))
         ShareData.UserInfo.registUserChangeEvent(container);
     }
 

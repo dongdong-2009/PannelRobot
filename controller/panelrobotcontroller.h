@@ -98,6 +98,16 @@ union PullyData{
     quint32 all;
 };
 
+union QKCmdData{
+    struct {
+        quint32 cmd:4;  //< 命令
+        quint32 id:4; //< 轴地址
+        quint32 addr:8; //< 地址
+        quint32 data:16; //< 数据
+    }b;
+    quint32 all;
+};
+
 union AutoRunData{
     struct{
         quint32 mode:16;
@@ -282,7 +292,7 @@ public:
     }
     Q_INVOKABLE void setConfigValue(const QString& addr, const QString& v);
     Q_INVOKABLE void syncConfigs();
-    Q_INVOKABLE QString records();
+    Q_INVOKABLE QString records() const;
     Q_INVOKABLE ICAxisDefine* axisDefine();
     Q_INVOKABLE QString newRecord(const QString& name, const QString& initProgram, const QString& subPrograms = "[]");
     Q_INVOKABLE QString copyRecord(const QString& name, const QString& source)
@@ -314,6 +324,7 @@ public:
         }
 
         return ret;
+
     }
 
 
@@ -343,6 +354,8 @@ public:
         //        {
         //            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
         //        }
+        if(ret.isEmpty())
+            modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
         return ErrInfoToJSON(ret);
     }
 
@@ -356,6 +369,8 @@ public:
         //        {
         //            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
         //        }
+        if(ret.isEmpty())
+            modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
         return ErrInfoToJSON(ret);
     }
 
@@ -671,7 +686,7 @@ public:
             if(eth0DataMonitor_.isNull())
             {
                 eth0DataMonitor_.reset( new TCPCommunicateMonitor());
-//                eth0DataMonitor_->SetFilter(QRegExp("test\r\n"));
+                //                eth0DataMonitor_->SetFilter(QRegExp("test\r\n"));
                 connect(eth0DataMonitor_.data(),
                         SIGNAL(dataComeIn(QByteArray)),
                         SIGNAL(eth0DataComeIn(QByteArray)));
@@ -790,6 +805,10 @@ public:
 
     Q_INVOKABLE void sendToolCoord(int id,const QString& data);
 
+    Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
+
+    Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)
@@ -823,6 +842,7 @@ signals:
     void sentContinuousData(int);
     void needToInitHost();
     void tryTimeOver();
+    void readQKConfigFinished(int data);
 public slots:
     void OnNeedToInitHost();
     void OnConfigRebase(QString);

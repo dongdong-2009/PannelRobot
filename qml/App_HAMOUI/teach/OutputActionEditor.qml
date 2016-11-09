@@ -289,6 +289,7 @@ Item {
         var yDefines = ys;
         var yDefine;
         for(i = 0, l = yDefines.length; i < l; ++i){
+            if(yDefines[i] === "") continue;
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
 //            yDefine = yDefines[i];
             yModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + parseInt(i / 32)));
@@ -324,8 +325,9 @@ Item {
 
         yDefines = timeYs;
         for(i = 0, l = yDefines.length; i < l; ++i){
+            if(yDefines[i] === "") continue;
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            timeYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.TIMEY_BOARD_START));
+            timeYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.TIMEY_BOARD_START + parseInt(i / 32)));
         }
 
     }

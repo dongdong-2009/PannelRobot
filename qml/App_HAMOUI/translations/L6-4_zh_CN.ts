@@ -2038,199 +2038,199 @@
     </message>
     <message>
         <source>Y014</source>
-        <translation>吹气阀（1)</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y015</source>
-        <translation>吹气阀（2)</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y016</source>
-        <translation>垂直阀</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y017</source>
-        <translation>水平阀</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y020</source>
-        <translation>车床卡盘夹紧阀</translation>
+        <translation>Y1轴夹料气缸</translation>
     </message>
     <message>
         <source>Y021</source>
-        <translation>车床卡盘松开阀</translation>
+        <translation>Y1轴伸出气缸</translation>
     </message>
     <message>
         <source>Y022</source>
-        <translation>车床安全门阀</translation>
+        <translation>Y2轴夹料气缸</translation>
     </message>
     <message>
         <source>Y023</source>
-        <translation>主臂旋转阀</translation>
+        <translation>Y2轴伸出气缸</translation>
     </message>
     <message>
         <source>Y024</source>
-        <translation>上料气爪阀</translation>
+        <translation>Y3轴夹料气缸</translation>
     </message>
     <message>
         <source>Y025</source>
-        <translation>下料气爪阀</translation>
+        <translation>Y3轴伸出气缸</translation>
     </message>
     <message>
         <source>Y026</source>
-        <translation>顶料阀</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y027</source>
-        <translation>吹气阀（3）</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y030</source>
-        <translation>給车床卡盘松开信号</translation>
+        <translation>Y1轴放料完成</translation>
     </message>
     <message>
         <source>Y031</source>
-        <translation>给车床卡盘夹紧信号</translation>
+        <translation>Y1轴输出1</translation>
     </message>
     <message>
         <source>Y032</source>
-        <translation>给车床启动加工信号</translation>
+        <translation>Y1轴输出2</translation>
     </message>
     <message>
         <source>Y033</source>
-        <translation></translation>
+        <translation>Y2轴放料完成</translation>
     </message>
     <message>
         <source>Y034</source>
-        <translation></translation>
+        <translation>Y2轴输出2</translation>
     </message>
     <message>
         <source>Y035</source>
-        <translation></translation>
+        <translation>Y2轴输出3</translation>
     </message>
     <message>
         <source>Y036</source>
-        <translation></translation>
+        <translation>Y3轴放料完成</translation>
     </message>
     <message>
         <source>Y037</source>
-        <translation></translation>
+        <translation>Y3轴输出2</translation>
     </message>
     <message>
         <source>X010</source>
-        <translation>X轴原点</translation>
+        <translation>Z1轴原点</translation>
     </message>
     <message>
         <source>X011</source>
-        <translation>Y轴原点</translation>
+        <translation>Y1轴原点</translation>
     </message>
     <message>
         <source>X012</source>
-        <translation>Z轴原点</translation>
+        <translation>Z2轴原点</translation>
     </message>
     <message>
         <source>X013</source>
-        <translation>X2轴原点</translation>
-    </message>
-    <message>
-        <source>X014</source>
         <translation>Y2轴原点</translation>
     </message>
     <message>
+        <source>X014</source>
+        <translation>Z3轴原点</translation>
+    </message>
+    <message>
         <source>X015</source>
-        <translation>C轴原点</translation>
+        <translation>Y3轴原点</translation>
     </message>
     <message>
         <source>X016</source>
-        <translation>垂直限</translation>
+        <translation>Y1轴夹料气缸松开到位</translation>
     </message>
     <message>
         <source>X017</source>
-        <translation>水平限</translation>
+        <translation>Y1轴夹料气缸夹紧到位</translation>
     </message>
     <message>
         <source>X020</source>
-        <translation>主臂旋转回正</translation>
+        <translation>Y1轴伸出气缸后退到位</translation>
     </message>
     <message>
         <source>X021</source>
-        <translation>主臂旋转旋出</translation>
+        <translation>Y1轴伸出气缸前进到位</translation>
     </message>
     <message>
         <source>X022</source>
-        <translation>顶料顶出限</translation>
+        <translation>Y2轴夹料气缸松开到位</translation>
     </message>
     <message>
         <source>X023</source>
-        <translation>顶料顶回限</translation>
+        <translation>Y2轴夹料气缸夹紧到位</translation>
     </message>
     <message>
         <source>X024</source>
-        <translation>车床加工完成信号</translation>
+        <translation>Y2轴伸出气缸后退到位</translation>
     </message>
     <message>
         <source>X025</source>
-        <translation>车床卡盘松完成信号</translation>
+        <translation>Y2轴伸出气缸前进到位</translation>
     </message>
     <message>
         <source>X026</source>
-        <translation>车床卡盘紧完成信号</translation>
+        <translation>X026</translation>
     </message>
     <message>
         <source>X027</source>
-        <translation></translation>
+        <translation>X027</translation>
     </message>
     <message>
         <source>X030</source>
-        <translation>车床卡盘夹紧限</translation>
+        <translation>Y3轴夹料气缸松开到位</translation>
     </message>
     <message>
         <source>X031</source>
-        <translation>车床卡盘松开限</translation>
+        <translation>Y3轴夹料气缸夹紧到位</translation>
     </message>
     <message>
         <source>X032</source>
-        <translation>车床安全门开限</translation>
+        <translation>Y3轴伸出气缸后退到位</translation>
     </message>
     <message>
         <source>X033</source>
-        <translation>车床安全门关限</translation>
+        <translation>Y3轴伸出气缸前进到位</translation>
     </message>
     <message>
         <source>X034</source>
-        <translation>上料气爪开限</translation>
+        <translation>Y1轴启动信号</translation>
     </message>
     <message>
         <source>X035</source>
-        <translation>上料气爪紧限</translation>
+        <translation>Y2轴启动信号</translation>
     </message>
     <message>
         <source>X036</source>
-        <translation>下料气爪开限</translation>
+        <translation>Y3轴启动信号</translation>
     </message>
     <message>
         <source>X037</source>
-        <translation>下料气爪紧限</translation>
+        <translation>X037</translation>
     </message>
     <message>
         <source>X040</source>
-        <translation>X轴终点极限</translation>
+        <translation>X040</translation>
     </message>
     <message>
         <source>X041</source>
-        <translation>Y轴终点极限</translation>
+        <translation>X041</translation>
     </message>
     <message>
         <source>X042</source>
-        <translation>Z轴终点极限</translation>
+        <translation>X042</translation>
     </message>
     <message>
         <source>X043</source>
-        <translation>X2轴终点极限</translation>
+        <translation>X043</translation>
     </message>
     <message>
         <source>X044</source>
-        <translation>Y2轴终点极限</translation>
+        <translation>X044</translation>
     </message>
     <message>
         <source>X045</source>
@@ -2242,7 +2242,7 @@
     </message>
     <message>
         <source>X047</source>
-        <translation>机械手暂停</translation>
+        <translation>X047</translation>
     </message>
     <message>
         <source>X050</source>
@@ -2434,83 +2434,83 @@
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>吹气阀（1)</translation>
+        <translation>普通输出Y014</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>吹气阀（2)</translation>
+        <translation>普通输出Y015</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>垂直阀</translation>
+        <translation>普通输出Y015</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation>水平阀</translation>
+        <translation>普通输出Y017</translation>
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>车床卡盘夹紧阀</translation>
+        <translation>Y1轴夹料气缸</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>车床卡盘松开阀</translation>
+        <translation>Y1轴伸出气缸</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>车床安全门阀</translation>
+        <translation>Y2轴夹料气缸</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>主臂旋转阀</translation>
+        <translation>Y2轴伸出气缸</translation>
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation>上料气爪阀</translation>
+        <translation>Y3轴夹料气缸</translation>
     </message>
     <message>
         <source>Normal Y025</source>
-        <translation>下料气爪阀</translation>
+        <translation>Y3轴伸出气缸</translation>
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>顶料阀</translation>
+        <translation>普通输出Y026</translation>
     </message>
     <message>
         <source>Normal Y027</source>
-        <translation>吹气阀（3）</translation>
+        <translation>普通输出Y027</translation>
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>給车床卡盘松开信号</translation>
+        <translation>Y1轴放料完成</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation>给车床卡盘夹紧信号</translation>
+        <translation>Y1轴输出1</translation>
     </message>
     <message>
         <source>Normal Y032</source>
-        <translation>给车床启动加工信号</translation>
+        <translation>Y1轴输出2</translation>
     </message>
     <message>
         <source>Normal Y033</source>
-        <translation>普通输出Y033</translation>
+        <translation>Y2轴放料完成</translation>
     </message>
     <message>
         <source>Normal Y034</source>
-        <translation>普通输出Y034</translation>
+        <translation>Y2轴输出2</translation>
     </message>
     <message>
         <source>Normal Y035</source>
-        <translation>普通输出Y035</translation>
+        <translation>Y2轴输出3</translation>
     </message>
     <message>
         <source>Normal Y036</source>
-        <translation>普通输出Y036</translation>
+        <translation>Y3轴放料完成</translation>
     </message>
     <message>
         <source>Normal Y037</source>
-        <translation>普通输出Y037</translation>
+        <translation>Y3轴输出2</translation>
     </message>
     <message>
         <source>Normal Y040</source>

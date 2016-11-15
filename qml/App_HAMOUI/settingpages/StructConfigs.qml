@@ -280,7 +280,7 @@ Item {
     ICComboBoxConfigEdit{
         id:l6Type
         configName: qsTr("IO Type")
-        items: [qsTr("L6-IO-1"), qsTr("L6-IO-2"),qsTr("L6-IO-3")]
+        items: [qsTr("L6-IO-1"), qsTr("L6-IO-2"),qsTr("L6-IO-3"),qsTr("L6-IO-4")]
         anchors.right: parent.right
         anchors.rightMargin: 20
     }

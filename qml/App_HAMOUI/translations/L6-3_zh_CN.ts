@@ -4,751 +4,301 @@
 <context>
     <name>ActionModifyEditor</name>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="95"/>
-        <source>Pos(+/-):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="100"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="172"/>
         <source>Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation>位置:</translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="119"/>
-        <source>Speed0:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="121"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="196"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="205"/>
-        <source>Speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="162"/>
-        <source>Custom Name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="173"/>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="177"/>
-        <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <source>Speed:</source>
+        <translation>速度:</translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="197"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="206"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="215"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="264"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="310"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="318"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="214"/>
-        <source>Speed1:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="223"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>延时:</translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="224"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="233"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="242"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="232"/>
-        <source>Limit:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="241"/>
-        <source>Action Time:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="248"/>
-        <source>Early End Pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="257"/>
-        <source>ESD Pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="263"/>
-        <source>ESD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="271"/>
-        <source>Rel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="280"/>
-        <source>Signal Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="301"/>
-        <source>Fast Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="308"/>
-        <source>startSpeed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="316"/>
-        <source>endSpeed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="324"/>
-        <source>addr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="331"/>
-        <source>data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="386"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="432"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Limit:</source>
+        <translation>限时:</translation>
+    </message>
+    <message>
+        <source>Action Time:</source>
+        <translation>动作时间:</translation>
+    </message>
+    <message>
+        <source>Speed0</source>
+        <translation type="vanished">箱内堆速度</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="vanished">速度</translation>
+    </message>
+    <message>
+        <source>Speed1:</source>
+        <translation>装箱速度:</translation>
+    </message>
+    <message>
+        <source>Speed0:</source>
+        <translation>箱内堆速度:</translation>
+    </message>
+    <message>
+        <source>Custom Name:</source>
+        <translation>自定义名称:</translation>
+    </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>startSpeed</source>
+        <translation>起始速度</translation>
+    </message>
+    <message>
+        <source>endSpeed</source>
+        <translation>结束速度</translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation>地址</translation>
+    </message>
+    <message>
+        <source>data</source>
+        <translation>数据</translation>
+    </message>
+    <message>
+        <source>Signal Stop</source>
+        <translation>输入通就停止</translation>
+    </message>
+    <message>
+        <source>Fast Stop</source>
+        <translation>立即停</translation>
+    </message>
+    <message>
+        <source>Pos(+/-):</source>
+        <translation>位置(+/-):</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation>相对</translation>
     </message>
 </context>
 <context>
     <name>AlarmInfo</name>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="22"/>
         <source>ALARM_NOT_INIT                 </source>
-        <translation type="unfinished"></translation>
+        <translation>没初始化完</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="23"/>
         <source>ALARM_AXIS_CFG_DIFF            </source>
-        <translation type="unfinished"></translation>
+        <translation>主机结构配置和手控结构配置不同</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="24"/>
         <source>ALARM_AXIS_CFG_ERR             </source>
-        <translation type="unfinished"></translation>
+        <translation>主机结果配置参数错误</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="25"/>
         <source>ALARM_OUT_OF_MEMORY_ERR        </source>
-        <translation type="unfinished"></translation>
+        <translation>主机内存不足</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="26"/>
         <source>ALARM_TEACH_DATA_ANALYTICAL_ERR</source>
-        <translation type="unfinished"></translation>
+        <translation>教导数据解析错误</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="27"/>
         <source>ALARM_TEACH_DATA_EDIT_ERR      </source>
-        <translation type="unfinished"></translation>
+        <translation>教导数据编辑错误</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="28"/>
         <source>ALARM_EMERGENCY_STOP           </source>
-        <translation type="unfinished"></translation>
+        <translation>紧急停止</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="29"/>
-        <source>ALARM_AUTO_JUMP_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="30"/>
-        <source>Connect host fail!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="31"/>
-        <source>ALARM_PROGRAM_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="32"/>
-        <source>ALARM_CFG_STORAGE_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="33"/>
-        <source>ALARM_MAHCINE_SET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="34"/>
-        <source>ALARM_SINGLE_DEBUG_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="35"/>
-        <source>ALARM_STORAGE_READ_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="36"/>
-        <source>ALARM_IO_CONNET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="37"/>
-        <source>ALARM_SERVO_ABS_READ_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="38"/>
-        <source>ALARM_SERVO_ABS_CRC_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="39"/>
-        <source>ALARM_SERVO_ABS_FUNC_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="40"/>
-        <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="41"/>
-        <source>ALARM_IO_CONNET2_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="42"/>
-        <source>ALARM_IO_CONNET3_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="43"/>
-        <source>ALARM_IO_CONNET4_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="44"/>
-        <source>ALARM_PROGRAM_CHANGE_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="45"/>
-        <location filename="../configs/AlarmInfo.js" line="48"/>
-        <location filename="../configs/AlarmInfo.js" line="60"/>
-        <location filename="../configs/AlarmInfo.js" line="71"/>
-        <location filename="../configs/AlarmInfo.js" line="83"/>
-        <location filename="../configs/AlarmInfo.js" line="94"/>
-        <location filename="../configs/AlarmInfo.js" line="105"/>
-        <location filename="../configs/AlarmInfo.js" line="117"/>
-        <location filename="../configs/AlarmInfo.js" line="128"/>
-        <location filename="../configs/AlarmInfo.js" line="139"/>
-        <location filename="../configs/AlarmInfo.js" line="150"/>
-        <location filename="../configs/AlarmInfo.js" line="161"/>
-        <location filename="../configs/AlarmInfo.js" line="172"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="46"/>
-        <location filename="../configs/AlarmInfo.js" line="49"/>
-        <location filename="../configs/AlarmInfo.js" line="61"/>
-        <location filename="../configs/AlarmInfo.js" line="72"/>
-        <location filename="../configs/AlarmInfo.js" line="84"/>
-        <location filename="../configs/AlarmInfo.js" line="95"/>
-        <location filename="../configs/AlarmInfo.js" line="106"/>
-        <location filename="../configs/AlarmInfo.js" line="118"/>
-        <location filename="../configs/AlarmInfo.js" line="129"/>
-        <location filename="../configs/AlarmInfo.js" line="140"/>
-        <location filename="../configs/AlarmInfo.js" line="151"/>
-        <location filename="../configs/AlarmInfo.js" line="162"/>
-        <location filename="../configs/AlarmInfo.js" line="173"/>
         <source>2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="47"/>
-        <location filename="../configs/AlarmInfo.js" line="50"/>
-        <location filename="../configs/AlarmInfo.js" line="59"/>
-        <location filename="../configs/AlarmInfo.js" line="62"/>
-        <location filename="../configs/AlarmInfo.js" line="70"/>
-        <location filename="../configs/AlarmInfo.js" line="73"/>
-        <location filename="../configs/AlarmInfo.js" line="82"/>
-        <location filename="../configs/AlarmInfo.js" line="85"/>
-        <location filename="../configs/AlarmInfo.js" line="93"/>
-        <location filename="../configs/AlarmInfo.js" line="96"/>
-        <location filename="../configs/AlarmInfo.js" line="104"/>
-        <location filename="../configs/AlarmInfo.js" line="107"/>
-        <location filename="../configs/AlarmInfo.js" line="116"/>
-        <location filename="../configs/AlarmInfo.js" line="119"/>
-        <location filename="../configs/AlarmInfo.js" line="127"/>
-        <location filename="../configs/AlarmInfo.js" line="130"/>
-        <location filename="../configs/AlarmInfo.js" line="138"/>
-        <location filename="../configs/AlarmInfo.js" line="141"/>
-        <location filename="../configs/AlarmInfo.js" line="149"/>
-        <location filename="../configs/AlarmInfo.js" line="152"/>
-        <location filename="../configs/AlarmInfo.js" line="160"/>
-        <location filename="../configs/AlarmInfo.js" line="163"/>
-        <location filename="../configs/AlarmInfo.js" line="171"/>
-        <location filename="../configs/AlarmInfo.js" line="174"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="53"/>
-        <location filename="../configs/AlarmInfo.js" line="54"/>
-        <location filename="../configs/AlarmInfo.js" line="55"/>
-        <location filename="../configs/AlarmInfo.js" line="56"/>
-        <location filename="../configs/AlarmInfo.js" line="57"/>
-        <location filename="../configs/AlarmInfo.js" line="58"/>
-        <source>ALARM_Motor_ALARM_ERR</source>
+        <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="64"/>
+        <source>ALARM_AXIS1_ALARM_ERR</source>
+        <translation type="vanished">电机1报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS2_ALARM_ERR</source>
+        <translation type="vanished">电机2报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS3_ALARM_ERR</source>
+        <translation type="vanished">电机3报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS4_ALARM_ERR</source>
+        <translation type="vanished">电机4报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS5_ALARM_ERR</source>
+        <translation type="vanished">电机5报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS6_ALARM_ERR</source>
+        <translation type="vanished">电机6报警</translation>
+    </message>
+    <message>
         <source>ALARM_AXIS_RUN_ERR </source>
-        <translation type="unfinished"></translation>
+        <translation>运动失败</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="65"/>
-        <location filename="../configs/AlarmInfo.js" line="66"/>
-        <location filename="../configs/AlarmInfo.js" line="67"/>
-        <location filename="../configs/AlarmInfo.js" line="68"/>
-        <location filename="../configs/AlarmInfo.js" line="69"/>
-        <source>ALARM_AXIS_RUN_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="76"/>
         <source>ALARM_AXIS_SPEED_SET_ERR </source>
-        <translation type="unfinished"></translation>
+        <translation>速度设定错误</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="77"/>
-        <location filename="../configs/AlarmInfo.js" line="78"/>
-        <location filename="../configs/AlarmInfo.js" line="79"/>
-        <location filename="../configs/AlarmInfo.js" line="80"/>
-        <location filename="../configs/AlarmInfo.js" line="81"/>
-        <source>ALARM_AXIS_SPEED_SET_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="87"/>
         <source>ALARM_AXIS_OVER_SPEED_ERR </source>
-        <translation type="unfinished"></translation>
+        <translation>运动过速</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="88"/>
-        <location filename="../configs/AlarmInfo.js" line="89"/>
-        <location filename="../configs/AlarmInfo.js" line="90"/>
-        <location filename="../configs/AlarmInfo.js" line="91"/>
-        <location filename="../configs/AlarmInfo.js" line="92"/>
-        <source>ALARM_AXIS_OVER_SPEED_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="98"/>
-        <location filename="../configs/AlarmInfo.js" line="99"/>
-        <location filename="../configs/AlarmInfo.js" line="100"/>
-        <location filename="../configs/AlarmInfo.js" line="101"/>
-        <location filename="../configs/AlarmInfo.js" line="102"/>
-        <location filename="../configs/AlarmInfo.js" line="103"/>
-        <source>ALARM_AXIS_SOFT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="110"/>
-        <location filename="../configs/AlarmInfo.js" line="111"/>
-        <location filename="../configs/AlarmInfo.js" line="112"/>
-        <location filename="../configs/AlarmInfo.js" line="113"/>
-        <location filename="../configs/AlarmInfo.js" line="114"/>
-        <location filename="../configs/AlarmInfo.js" line="115"/>
-        <source>ALARM_AXIS_SOFT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="121"/>
-        <location filename="../configs/AlarmInfo.js" line="122"/>
-        <location filename="../configs/AlarmInfo.js" line="123"/>
-        <location filename="../configs/AlarmInfo.js" line="124"/>
-        <location filename="../configs/AlarmInfo.js" line="125"/>
-        <location filename="../configs/AlarmInfo.js" line="126"/>
-        <source>ALARM_ERROR_SERVO_WARP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="132"/>
-        <location filename="../configs/AlarmInfo.js" line="133"/>
-        <location filename="../configs/AlarmInfo.js" line="134"/>
-        <location filename="../configs/AlarmInfo.js" line="135"/>
-        <location filename="../configs/AlarmInfo.js" line="136"/>
-        <location filename="../configs/AlarmInfo.js" line="137"/>
-        <source>ALARM_ACC_LIMIT</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="143"/>
-        <location filename="../configs/AlarmInfo.js" line="144"/>
-        <location filename="../configs/AlarmInfo.js" line="145"/>
-        <location filename="../configs/AlarmInfo.js" line="146"/>
-        <location filename="../configs/AlarmInfo.js" line="147"/>
-        <location filename="../configs/AlarmInfo.js" line="148"/>
-        <source>ALARM_POINT_LIMIT_P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="154"/>
-        <location filename="../configs/AlarmInfo.js" line="155"/>
-        <location filename="../configs/AlarmInfo.js" line="156"/>
-        <location filename="../configs/AlarmInfo.js" line="157"/>
-        <location filename="../configs/AlarmInfo.js" line="158"/>
-        <location filename="../configs/AlarmInfo.js" line="159"/>
-        <source>ALARM_POINT_LIMIT_N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="165"/>
-        <location filename="../configs/AlarmInfo.js" line="166"/>
-        <location filename="../configs/AlarmInfo.js" line="167"/>
-        <location filename="../configs/AlarmInfo.js" line="168"/>
-        <location filename="../configs/AlarmInfo.js" line="169"/>
-        <location filename="../configs/AlarmInfo.js" line="170"/>
-        <source>ALARM_NOT_SET_ORIGIN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="176"/>
-        <source>ALARM_ROUTE_ACTION_FAIL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="177"/>
-        <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="178"/>
-        <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="179"/>
-        <source>ALARM_JOINT_P1_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="180"/>
-        <source>ALARM_JOINT_P2_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="181"/>
-        <source>ALARM_RELATIVE_LP_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="182"/>
-        <source>ALARM_RELATIVE_JP_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="183"/>
-        <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="184"/>
-        <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="185"/>
-        <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="186"/>
-        <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="187"/>
-        <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="188"/>
-        <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="189"/>
-        <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="190"/>
-        <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="191"/>
-        <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="192"/>
-        <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="193"/>
-        <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="194"/>
-        <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="195"/>
-        <source>ALARM_SETROUTESPEED_FAIL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="196"/>
-        <source>ALARM_ROUTE_ACC_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="197"/>
-        <source>ALARM_ROUTE_REPLAN_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="198"/>
-        <source>ALARM_STACK_WAITE_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="199"/>
-        <source>ALARM_STACK_SOURCE_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="202"/>
-        <source>ALARM_COUNTER_NOT_DEFINE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="204"/>
-        <location filename="../configs/AlarmInfo.js" line="205"/>
-        <location filename="../configs/AlarmInfo.js" line="206"/>
-        <location filename="../configs/AlarmInfo.js" line="207"/>
-        <location filename="../configs/AlarmInfo.js" line="208"/>
-        <location filename="../configs/AlarmInfo.js" line="209"/>
-        <source>ALARM_OVER_CURRENT</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="211"/>
-        <location filename="../configs/AlarmInfo.js" line="212"/>
-        <location filename="../configs/AlarmInfo.js" line="213"/>
-        <location filename="../configs/AlarmInfo.js" line="214"/>
-        <location filename="../configs/AlarmInfo.js" line="215"/>
-        <location filename="../configs/AlarmInfo.js" line="216"/>
-        <source>ALARM_ZPULSER_ERR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="218"/>
-        <location filename="../configs/AlarmInfo.js" line="219"/>
-        <location filename="../configs/AlarmInfo.js" line="220"/>
-        <location filename="../configs/AlarmInfo.js" line="221"/>
-        <location filename="../configs/AlarmInfo.js" line="222"/>
-        <location filename="../configs/AlarmInfo.js" line="223"/>
-        <source>ALARM_NO_ZPULSER</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="225"/>
-        <location filename="../configs/AlarmInfo.js" line="226"/>
-        <location filename="../configs/AlarmInfo.js" line="227"/>
-        <location filename="../configs/AlarmInfo.js" line="228"/>
-        <location filename="../configs/AlarmInfo.js" line="229"/>
-        <location filename="../configs/AlarmInfo.js" line="230"/>
-        <source>ALARM_ORIGIN_DEVIATION</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="267"/>
-        <location filename="../configs/AlarmInfo.js" line="269"/>
         <source>Wait Input:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待输入:</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="267"/>
-        <location filename="../configs/AlarmInfo.js" line="271"/>
-        <location filename="../configs/AlarmInfo.js" line="276"/>
         <source>ON over time</source>
-        <translation type="unfinished"></translation>
+        <translation>通超时</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="269"/>
-        <location filename="../configs/AlarmInfo.js" line="273"/>
-        <location filename="../configs/AlarmInfo.js" line="278"/>
         <source>OFF over time</source>
-        <translation type="unfinished"></translation>
+        <translation>断超时</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="271"/>
-        <location filename="../configs/AlarmInfo.js" line="273"/>
         <source>Wait Single Input:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待单头阀输入:</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="276"/>
-        <location filename="../configs/AlarmInfo.js" line="278"/>
         <source>Wait Double Input:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待双头阀输入:</translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="286"/>
+        <source>Connect host fail!</source>
+        <translation>连接主机失败!</translation>
+    </message>
+    <message>
+        <source>ALARM_AUTO_JUMP_ERR</source>
+        <translation>自动运行跳转错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACTION_FAIL</source>
+        <translation>轨迹运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
+        <translation>手动直线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
+        <translation>手动直线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标3未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_SETROUTESPEED_FAIL</source>
+        <translation>轨迹运动速度设定失败</translation>
+    </message>
+    <message>
+        <source>ALARM_Motor_ALARM_ERR</source>
+        <translation>电机报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_RUN_ERR</source>
+        <translation>运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SPEED_SET_ERR</source>
+        <translation>速度设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_OVER_SPEED_ERR</source>
+        <translation>运动过速</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_P</source>
+        <translation>正极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_N</source>
+        <translation>负极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ERROR_SERVO_WARP</source>
+        <translation>偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACC_ERR</source>
+        <translation>轨迹规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_COUNTER_NOT_DEFINE</source>
+        <translation>计数器未定义</translation>
+    </message>
+    <message>
         <source>5000</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="287"/>
         <source>5001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="288"/>
-        <source>5002</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="289"/>
-        <source>5003</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="290"/>
-        <source>5004</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="291"/>
-        <source>5005</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="292"/>
-        <source>5006</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="293"/>
-        <source>5007</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="294"/>
-        <source>5008</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="295"/>
-        <source>5009</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="296"/>
-        <source>5010</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="297"/>
-        <source>5011</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="298"/>
-        <source>5012</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="299"/>
-        <source>5013</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="300"/>
-        <source>5014</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="301"/>
-        <source>5015</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="302"/>
-        <source>5016</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="303"/>
-        <source>5017</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="304"/>
-        <source>5018</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="305"/>
-        <source>5019</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="306"/>
-        <source>5020</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AlarmInfo.js" line="313"/>
         <source>Unknow Err</source>
+        <translation>未知错误</translation>
+    </message>
+    <message>
+        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="318"/>
         <source>1.Connector loose
 2.Wire is off
 3.Pannel is broken
@@ -756,30 +306,249 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AlarmInfo.js" line="321"/>
-        <source>None</source>
+        <source>ALARM_PROGRAM_ERR</source>
+        <translation>教导程序错误</translation>
+    </message>
+    <message>
+        <source>ALARM_CFG_STORAGE_ERR</source>
+        <translation>配置参数存储失败</translation>
+    </message>
+    <message>
+        <source>ALARM_MAHCINE_SET_ERR</source>
+        <translation>机型设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ACC_LIMIT</source>
+        <translation>加速度报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_P</source>
+        <translation>正极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_N</source>
+        <translation>负极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_NOT_SET_ORIGIN</source>
+        <translation>原点信号未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P1_NOTSET</source>
+        <translation>手动关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P2_NOTSET</source>
+        <translation>手动关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_LP_NOTSET</source>
+        <translation>手动直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_JP_NOTSET</source>
+        <translation>手动关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
+        <translation>教导直线轨迹运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
+        <translation>教导直线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
+        <translation>教导关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
+        <translation>教导直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
+        <translation>教导关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
+        <translation>教导弧线轨迹运动起点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
+        <translation>教导弧线轨迹运动中间坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
+        <translation>教导弧线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
+        <translation>教导关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_REPLAN_ERR</source>
+        <translation>轨迹重新规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_WAITE_ERR</source>
+        <translation>等待堆叠数据源超时</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_SOURCE_ERR</source>
+        <translation>堆叠数据源错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SINGLE_DEBUG_ERR</source>
+        <translation>单步/单循环调试程序设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_STORAGE_READ_ERR</source>
+        <translation>从主机FLASH读取的数据有错</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET_ERR</source>
+        <translation>与IO板通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_READ_ERR</source>
+        <translation>伺服绝对值位置读取失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_CRC_ERR</source>
+        <translation>伺服绝对值位置读取校验失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_FUNC_ERR</source>
+        <translation>伺服绝对值位置读取功能码错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
+        <translation>伺服绝对值位置读取超时</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET2_ERR</source>
+        <translation>与IO板2通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET3_ERR</source>
+        <translation>与IO板3通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET4_ERR</source>
+        <translation>与IO板4通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_CHANGE_ERR</source>
+        <translation>手控和主机教导程序不一致</translation>
+    </message>
+    <message>
+        <source>ALARM_OVER_CURRENT</source>
+        <translation>过电流报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ZPULSER_ERR</source>
+        <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>ALARM_NO_ZPULSER</source>
+        <translation>无Z脉冲</translation>
+    </message>
+    <message>
+        <source>ALARM_ORIGIN_DEVIATION</source>
+        <translation>原点偏移</translation>
+    </message>
+    <message>
+        <source>5002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5003</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5004</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5005</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5006</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5007</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5008</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5009</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5012</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5013</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5015</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5016</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5017</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5018</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5019</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5020</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
     <message>
-        <location filename="../teach/extents/AnalogControlEditor.qml" line="18"/>
         <source>Chanel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/AnalogControlEditor.qml" line="27"/>
         <source>Analog Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/AnalogControlEditor.qml" line="36"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">延时</translation>
     </message>
     <message>
-        <location filename="../teach/extents/AnalogControlEditor.qml" line="40"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -787,918 +556,735 @@
 <context>
     <name>ArmMovePage</name>
     <message>
-        <location filename="../ArmMovePage.qml" line="43"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>速度</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="74"/>
-        <source>Tune Sel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="103"/>
-        <source>Tune Speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="166"/>
-        <source>fullkeybd</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="178"/>
-        <source>partkeybd</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="216"/>
-        <source>worldcodinate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="223"/>
-        <source>jointcodinate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="244"/>
-        <location filename="../ArmMovePage.qml" line="255"/>
-        <location filename="../ArmMovePage.qml" line="268"/>
-        <location filename="../ArmMovePage.qml" line="281"/>
-        <location filename="../ArmMovePage.qml" line="297"/>
-        <location filename="../ArmMovePage.qml" line="311"/>
-        <location filename="../ArmMovePage.qml" line="325"/>
-        <location filename="../ArmMovePage.qml" line="338"/>
-        <location filename="../ArmMovePage.qml" line="351"/>
-        <location filename="../ArmMovePage.qml" line="365"/>
-        <location filename="../ArmMovePage.qml" line="379"/>
-        <location filename="../ArmMovePage.qml" line="393"/>
-        <location filename="../ArmMovePage.qml" line="585"/>
-        <location filename="../ArmMovePage.qml" line="601"/>
-        <location filename="../ArmMovePage.qml" line="619"/>
-        <location filename="../ArmMovePage.qml" line="638"/>
-        <location filename="../ArmMovePage.qml" line="658"/>
-        <location filename="../ArmMovePage.qml" line="677"/>
-        <location filename="../ArmMovePage.qml" line="696"/>
-        <location filename="../ArmMovePage.qml" line="714"/>
-        <location filename="../ArmMovePage.qml" line="731"/>
-        <location filename="../ArmMovePage.qml" line="750"/>
-        <location filename="../ArmMovePage.qml" line="769"/>
-        <location filename="../ArmMovePage.qml" line="787"/>
-        <location filename="../ArmMovePage.qml" line="804"/>
-        <location filename="../ArmMovePage.qml" line="822"/>
-        <location filename="../ArmMovePage.qml" line="837"/>
-        <location filename="../ArmMovePage.qml" line="855"/>
-        <location filename="../ArmMovePage.qml" line="916"/>
-        <location filename="../ArmMovePage.qml" line="929"/>
-        <location filename="../ArmMovePage.qml" line="967"/>
-        <location filename="../ArmMovePage.qml" line="979"/>
-        <location filename="../ArmMovePage.qml" line="1016"/>
-        <location filename="../ArmMovePage.qml" line="1028"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ArmMovePage.qml" line="244"/>
         <source>Z-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="255"/>
         <source>Z+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="268"/>
         <source>U-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="281"/>
         <source>U+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="297"/>
         <source>Y-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="311"/>
         <source>Y+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="325"/>
         <source>V-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="338"/>
         <source>V+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="351"/>
         <source>X-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="365"/>
         <source>X+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="379"/>
         <source>W-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="393"/>
         <source>W+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="409"/>
         <source>Line Z-</source>
-        <translation type="unfinished"></translation>
+        <translation>世界Z-</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="423"/>
         <source>Line Z+</source>
-        <translation type="unfinished"></translation>
+        <translation>世界Z+</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="437"/>
         <source>Rotate U-</source>
-        <translation type="unfinished"></translation>
+        <translation>世界U-</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="451"/>
         <source>Rotate U+</source>
-        <translation type="unfinished"></translation>
+        <translation>世界U+</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="464"/>
         <source>Line Y-</source>
-        <translation type="unfinished"></translation>
+        <translation>世界Y-</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="478"/>
         <source>Line Y+</source>
-        <translation type="unfinished"></translation>
+        <translation>世界Y+</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="491"/>
         <source>Rotate V-</source>
-        <translation type="unfinished"></translation>
+        <translation>世界V-</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="505"/>
         <source>Rotate V+</source>
-        <translation type="unfinished"></translation>
+        <translation>世界V+</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="519"/>
         <source>Line X-</source>
-        <translation type="unfinished"></translation>
+        <translation>世界X-</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="532"/>
         <source>Line X+</source>
-        <translation type="unfinished"></translation>
+        <translation>世界X+</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="546"/>
         <source>Rotate W-</source>
-        <translation type="unfinished"></translation>
+        <translation>世界W-</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="560"/>
         <source>Rotate W+</source>
-        <translation type="unfinished"></translation>
+        <translation>世界W+</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="585"/>
-        <location filename="../ArmMovePage.qml" line="601"/>
-        <location filename="../ArmMovePage.qml" line="619"/>
-        <location filename="../ArmMovePage.qml" line="638"/>
-        <location filename="../ArmMovePage.qml" line="658"/>
-        <location filename="../ArmMovePage.qml" line="677"/>
-        <location filename="../ArmMovePage.qml" line="696"/>
-        <location filename="../ArmMovePage.qml" line="714"/>
-        <location filename="../ArmMovePage.qml" line="731"/>
-        <location filename="../ArmMovePage.qml" line="750"/>
-        <location filename="../ArmMovePage.qml" line="769"/>
-        <location filename="../ArmMovePage.qml" line="787"/>
-        <location filename="../ArmMovePage.qml" line="804"/>
-        <location filename="../ArmMovePage.qml" line="822"/>
-        <location filename="../ArmMovePage.qml" line="837"/>
-        <location filename="../ArmMovePage.qml" line="855"/>
-        <location filename="../ArmMovePage.qml" line="942"/>
-        <location filename="../ArmMovePage.qml" line="954"/>
-        <location filename="../ArmMovePage.qml" line="991"/>
-        <location filename="../ArmMovePage.qml" line="1003"/>
-        <location filename="../ArmMovePage.qml" line="1040"/>
-        <location filename="../ArmMovePage.qml" line="1052"/>
-        <source>WD</source>
-        <translation type="unfinished"></translation>
+        <source>Line Test</source>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="916"/>
-        <location filename="../ArmMovePage.qml" line="942"/>
+        <source>Curve Test</source>
+        <translation type="vanished">曲线测试</translation>
+    </message>
+    <message>
+        <source>Run to This</source>
+        <translation type="vanished">运行到这点</translation>
+    </message>
+    <message>
+        <source>Set to Point-1</source>
+        <translation type="vanished">设当前位置为起点</translation>
+    </message>
+    <message>
+        <source>Set to Point-2</source>
+        <translation type="vanished">设当前位置为终点</translation>
+    </message>
+    <message>
+        <source>Set to Point-3</source>
+        <translation type="vanished">设当前位置为终点</translation>
+    </message>
+    <message>
+        <source>Set to CPoint-2</source>
+        <translation type="vanished">设当前位置为中间点</translation>
+    </message>
+    <message>
+        <source>Set to CPoint-3</source>
+        <translation type="vanished">设当前位置为终点</translation>
+    </message>
+    <message>
+        <source>Tune Sel</source>
+        <translation>手轮选择</translation>
+    </message>
+    <message>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z轴</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="929"/>
-        <location filename="../ArmMovePage.qml" line="954"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">X2轴</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="967"/>
-        <location filename="../ArmMovePage.qml" line="991"/>
+        <source>Line Z</source>
+        <translation type="vanished">世界Z</translation>
+    </message>
+    <message>
+        <source>Rotate U</source>
+        <translation type="vanished">世界U</translation>
+    </message>
+    <message>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y1轴</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="979"/>
-        <location filename="../ArmMovePage.qml" line="1003"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y2轴</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="1016"/>
-        <location filename="../ArmMovePage.qml" line="1040"/>
+        <source>Line Y</source>
+        <translation type="vanished">世界Y</translation>
+    </message>
+    <message>
+        <source>Rotate V</source>
+        <translation type="vanished">世界V</translation>
+    </message>
+    <message>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">X1轴</translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="1028"/>
-        <location filename="../ArmMovePage.qml" line="1052"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C轴</translation>
+    </message>
+    <message>
+        <source>Line X</source>
+        <translation type="vanished">世界X</translation>
+    </message>
+    <message>
+        <source>Rotate W</source>
+        <translation type="vanished">世界W</translation>
+    </message>
+    <message>
+        <source>Tune Speed:</source>
+        <translation>手轮速度:</translation>
+    </message>
+    <message>
+        <source>fullkeybd</source>
+        <translation>全键盘</translation>
+    </message>
+    <message>
+        <source>partkeybd</source>
+        <translation>简键盘</translation>
+    </message>
+    <message>
+        <source>worldcodinate</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>jointcodinate</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>J</source>
+        <translation>关节</translation>
+    </message>
+    <message>
+        <source>WD</source>
+        <translation>世界</translation>
     </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
     <message>
-        <location filename="../AutoAlarmTipPage.qml" line="24"/>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>清报警继续</translation>
     </message>
     <message>
-        <location filename="../AutoAlarmTipPage.qml" line="34"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
     <name>AutoRunInfoPage</name>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="26"/>
         <source>Last Cycle:</source>
-        <translation type="unfinished"></translation>
+        <translation>上模周期:</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="32"/>
         <source>Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>当前周期:</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="60"/>
-        <location filename="../teach/AutoRunInfoPage.qml" line="83"/>
         <source>Counter &gt;&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器&gt;&gt;</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="76"/>
         <source>Counter &lt;&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器&lt;&lt;</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="107"/>
         <source>Target:</source>
-        <translation type="unfinished"></translation>
+        <translation>目标:</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="111"/>
         <source>Current:</source>
-        <translation type="unfinished"></translation>
+        <translation>当前:</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="127"/>
         <source>counter</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="137"/>
-        <location filename="../teach/AutoRunInfoPage.qml" line="161"/>
         <source>Analog &gt;&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟控制&gt;&gt;</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="154"/>
         <source>Analog &lt;&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation>模拟控制&lt;&lt;</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="185"/>
         <source>Chanel-0</source>
-        <translation type="unfinished"></translation>
+        <translation>通道0</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="190"/>
         <source>Chanel-1</source>
-        <translation type="unfinished"></translation>
+        <translation>通道1</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="195"/>
         <source>Chanel-2</source>
-        <translation type="unfinished"></translation>
+        <translation>通道2</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="200"/>
         <source>Chanel-3</source>
-        <translation type="unfinished"></translation>
+        <translation>通道3</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="205"/>
         <source>Chanel-4</source>
-        <translation type="unfinished"></translation>
+        <translation>通道4</translation>
     </message>
     <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="210"/>
         <source>Chanel-5</source>
-        <translation type="unfinished"></translation>
+        <translation>通道5</translation>
     </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="82"/>
-        <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <source>Back to Menu</source>
+        <translation type="vanished">返回</translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="96"/>
         <source>Sync</source>
-        <translation type="unfinished"></translation>
+        <translation>同步</translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="100"/>
-        <source>Rel Point</source>
-        <translation type="unfinished"></translation>
+        <source>X1</source>
+        <translation type="obsolete">X1</translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="116"/>
         <source>X1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="116"/>
         <source>X1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="127"/>
         <source>Y1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="127"/>
         <source>Y1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="139"/>
         <source>Z ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="139"/>
         <source>Z OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="151"/>
+        <source>X2</source>
+        <translation type="obsolete">X2</translation>
+    </message>
+    <message>
         <source>X2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="151"/>
         <source>X2 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="163"/>
         <source>Y2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="163"/>
         <source>Y2 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="175"/>
         <source>A ON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常开</translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="175"/>
         <source>A OFF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常闭</translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="187"/>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>Early End Pos</source>
+        <translation>提前结束位置</translation>
+    </message>
+    <message>
+        <source>ESD Pos</source>
+        <translation>提前减速位置</translation>
+    </message>
+    <message>
+        <source>ESD</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Signal Stop</source>
+        <translation>输入通就停止</translation>
+    </message>
+    <message>
+        <source>Fast Stop</source>
+        <translation>立即停</translation>
+    </message>
+    <message>
+        <source>Speed PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
         <source>B ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="187"/>
         <source>B OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="199"/>
         <source>C ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="199"/>
         <source>C OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="212"/>
-        <source>Signal Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="236"/>
-        <source>Fast Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="261"/>
-        <source>Early End Pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="271"/>
-        <source>ESD Pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="280"/>
-        <source>ESD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="281"/>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="291"/>
         <source>Rel</source>
-        <translation type="unfinished"></translation>
+        <translation>相对</translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="302"/>
-        <source>Speed PP Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="307"/>
-        <source>Speed RP Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="313"/>
-        <source>Stop</source>
+        <source>Rel Point</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
     <message>
-        <location filename="../teach/AxisActionEditorAxisComponent.qml" line="69"/>
-        <source>deg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditorAxisComponent.qml" line="89"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditorAxisComponent.qml" line="96"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>AxisConfigs</name>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="245"/>
-        <source>pLimit Dir Change to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="245"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="257"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="704"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="716"/>
-        <source>A ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="245"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="257"/>
-        <source>A OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="257"/>
-        <source>nLimit Dir Change to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="269"/>
-        <source>Origin move dir Change to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="269"/>
-        <source>N Dir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="269"/>
-        <source>P Dir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="282"/>
-        <source>Change to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="282"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="432"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="453"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="474"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="495"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="516"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="537"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="558"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="579"/>
-        <source>Un</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="282"/>
-        <source>En</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="616"/>
-        <source>Encoder Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="619"/>
-        <source>Encode Type1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="619"/>
-        <source>Encode Type2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="619"/>
-        <source>Encode Type3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="624"/>
-        <source>Motor Factory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="627"/>
-        <source>Motor 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="627"/>
-        <source>Motor 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="627"/>
-        <source>Motor 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="627"/>
-        <source>Motor 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="634"/>
-        <source>Encoder Read Way</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="637"/>
-        <source>Encode RW1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="637"/>
-        <source>Encode RW2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="637"/>
-        <source>Encode RW3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="643"/>
-        <source>Axis Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="646"/>
-        <source>Rotate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="646"/>
-        <source>Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="651"/>
-        <source>Motor Dir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="654"/>
-        <source>PP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="654"/>
-        <source>RP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="660"/>
-        <source>Pulse Count Per Circle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="663"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="824"/>
-        <source>a</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="667"/>
         <source>Arm Length</source>
-        <translation type="unfinished"></translation>
+        <translation>每转距离</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="670"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="685"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="692"/>
         <source>mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="675"/>
+        <source>Pulse Count Per Circle</source>
+        <translation>每圈脉冲数</translation>
+    </message>
+    <message>
+        <source>a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Reduction Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>减速比</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="682"/>
         <source>Positive Limit</source>
-        <translation type="unfinished"></translation>
+        <translation>正极限</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="689"/>
         <source>Negative Limit</source>
-        <translation type="unfinished"></translation>
+        <translation>负极限</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="697"/>
         <source>Positive Limit Point</source>
-        <translation type="unfinished"></translation>
+        <translation>正极限点</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="710"/>
         <source>Negative Limit Point</source>
-        <translation type="unfinished"></translation>
+        <translation>负极限点</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="722"/>
         <source>Origin Point</source>
-        <translation type="unfinished"></translation>
+        <translation>原点</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="729"/>
-        <source>INV Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="734"/>
-        <source>Origin SPD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="736"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="767"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="774"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="781"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="788"/>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="742"/>
         <source>ACC 1</source>
-        <translation type="unfinished"></translation>
+        <translation>加速时间</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="744"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="752"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="750"/>
         <source>ACC 2</source>
-        <translation type="unfinished"></translation>
+        <translation>减速时间</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="758"/>
         <source>Max RPM</source>
-        <translation type="unfinished"></translation>
+        <translation>最大速度</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="760"/>
         <source>RPM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="766"/>
-        <source>SACC1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="773"/>
-        <source>SACC2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="780"/>
-        <source>SDCC1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="787"/>
-        <source>SDCC2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="814"/>
-        <source>Motor Test</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="820"/>
-        <source>Test Pulse Number:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="832"/>
-        <source>Pulse Sent:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="838"/>
-        <source>Pulse received:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="844"/>
-        <source>Z Pulse:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="876"/>
-        <source>Motor+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="884"/>
-        <source>Motor-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="892"/>
-        <source>Test Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="921"/>
         <source>Set to Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>设为原点</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="929"/>
         <source>Save Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>保存原点</translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="937"/>
         <source>Set All Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>全部设为原点</translation>
+    </message>
+    <message>
+        <source>Motor Test</source>
+        <translation>电机测试</translation>
+    </message>
+    <message>
+        <source>Test Pulse Number:</source>
+        <translation>每次测试脉冲数:</translation>
+    </message>
+    <message>
+        <source>Pulse Sent:</source>
+        <translation>发送脉冲:</translation>
+    </message>
+    <message>
+        <source>Pulse received:</source>
+        <translation>接收脉冲:</translation>
+    </message>
+    <message>
+        <source>Z Pulse:</source>
+        <translation>Z脉冲:</translation>
+    </message>
+    <message>
+        <source>Motor+</source>
+        <translation>电机正转</translation>
+    </message>
+    <message>
+        <source>Motor-</source>
+        <translation>电机反转</translation>
+    </message>
+    <message>
+        <source>Test Clear</source>
+        <translation>清除测试</translation>
+    </message>
+    <message>
+        <source>Motor Factory</source>
+        <translation>电机厂家</translation>
+    </message>
+    <message>
+        <source>Motor 1</source>
+        <translation>汇川</translation>
+    </message>
+    <message>
+        <source>Motor 2</source>
+        <translation>安川</translation>
+    </message>
+    <message>
+        <source>Motor 3</source>
+        <translation>台达伺服</translation>
+    </message>
+    <message>
+        <source>Encoder Type</source>
+        <translation>编码器类型</translation>
+    </message>
+    <message>
+        <source>Encode Type1</source>
+        <translation>增量</translation>
+    </message>
+    <message>
+        <source>Encode Type2</source>
+        <translation>绝对值</translation>
+    </message>
+    <message>
+        <source>Encode Type3</source>
+        <translation>步进</translation>
+    </message>
+    <message>
+        <source>Encoder Read Way</source>
+        <translation>编码器读取方式</translation>
+    </message>
+    <message>
+        <source>Encode RW1</source>
+        <translation>脉冲</translation>
+    </message>
+    <message>
+        <source>Encode RW2</source>
+        <translation>Can</translation>
+    </message>
+    <message>
+        <source>Encode RW3</source>
+        <translation>RS485</translation>
+    </message>
+    <message>
+        <source>Axis Type</source>
+        <translation>轴类型</translation>
+    </message>
+    <message>
+        <source>Rotate</source>
+        <translation>旋转</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>直线</translation>
+    </message>
+    <message>
+        <source>pLimit Dir Change to</source>
+        <translation>正极限输入改为</translation>
+    </message>
+    <message>
+        <source>A ON</source>
+        <translation>常开</translation>
+    </message>
+    <message>
+        <source>A OFF</source>
+        <translation>常闭</translation>
+    </message>
+    <message>
+        <source>nLimit Dir Change to</source>
+        <translation>负极限输入改为</translation>
+    </message>
+    <message>
+        <source>Origin move dir Change to</source>
+        <translation>原点复归移动方向改为</translation>
+    </message>
+    <message>
+        <source>N Dir</source>
+        <translation>负方向</translation>
+    </message>
+    <message>
+        <source>P Dir</source>
+        <translation>正方向</translation>
+    </message>
+    <message>
+        <source>INV Move</source>
+        <translation>反向移动</translation>
+    </message>
+    <message>
+        <source>Change to</source>
+        <translation>改为</translation>
+    </message>
+    <message>
+        <source>Un</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>En</source>
+        <translation>使用</translation>
+    </message>
+    <message>
+        <source>Motor Dir</source>
+        <translation>电机方向</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>正转</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation>反转</translation>
+    </message>
+    <message>
+        <source>Origin SPD</source>
+        <translation>原点速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Motor 4</source>
+        <translation>Motor4</translation>
+    </message>
+    <message>
+        <source>SACC1</source>
+        <translation>S加速1</translation>
+    </message>
+    <message>
+        <source>SACC2</source>
+        <translation>S加速2</translation>
+    </message>
+    <message>
+        <source>SDCC1</source>
+        <translation>S减速1</translation>
+    </message>
+    <message>
+        <source>SDCC2</source>
+        <translation>S减速2</translation>
     </message>
 </context>
 <context>
     <name>AxisDefine</name>
     <message>
-        <location filename="../configs/AxisDefine.js" line="27"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="27"/>
-        <location filename="../configs/AxisDefine.js" line="28"/>
-        <location filename="../configs/AxisDefine.js" line="29"/>
-        <location filename="../configs/AxisDefine.js" line="30"/>
-        <location filename="../configs/AxisDefine.js" line="31"/>
-        <location filename="../configs/AxisDefine.js" line="33"/>
-        <location filename="../configs/AxisDefine.js" line="34"/>
-        <location filename="../configs/AxisDefine.js" line="60"/>
         <source>mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/AxisDefine.js" line="28"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="29"/>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="30"/>
-        <source>U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="31"/>
-        <source>V</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="32"/>
-        <source>W</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="32"/>
-        <location filename="../configs/AxisDefine.js" line="60"/>
-        <source>°</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/AxisDefine.js" line="33"/>
         <source>M7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {7?}</translation>
     </message>
     <message>
-        <location filename="../configs/AxisDefine.js" line="34"/>
         <source>M8</source>
+        <translation type="unfinished">报警状态 {8?}</translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation>X1轴</translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation>Y1轴</translation>
+    </message>
+    <message>
+        <source>Z</source>
+        <translation>Z轴</translation>
+    </message>
+    <message>
+        <source>U</source>
+        <translation>X2轴</translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation>Y2轴</translation>
+    </message>
+    <message>
+        <source>W</source>
+        <translation>C轴</translation>
+    </message>
+    <message>
+        <source>°</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
     <message>
-        <location filename="../BottomMenuItem.qml" line="10"/>
         <source>item</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1706,275 +1292,246 @@
 <context>
     <name>CheckActionEditor</name>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="43"/>
-        <source>Single Y</source>
-        <translation type="unfinished"></translation>
+        <source>Back to Menu</source>
+        <translation type="obsolete">返回</translation>
     </message>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="48"/>
-        <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="138"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="143"/>
-        <source>End</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="149"/>
-        <source>Delay:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="150"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Single Y</source>
+        <translation>单头阀Y</translation>
+    </message>
+    <message>
+        <source>Hold Double Y</source>
+        <translation>保持型双头阀Y</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>开始</translation>
+    </message>
+    <message>
+        <source>End</source>
+        <translation>结束</translation>
+    </message>
+    <message>
+        <source>Delay:</source>
+        <translation>延时:</translation>
     </message>
 </context>
 <context>
     <name>CommentActionEditor</name>
     <message>
-        <location filename="../teach/CommentActionEditor.qml" line="21"/>
+        <source>Back to Menu</source>
+        <translation type="vanished">返回主菜单</translation>
+    </message>
+    <message>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>注释:</translation>
     </message>
 </context>
 <context>
     <name>ConditionActionEditor</name>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="181"/>
+        <source>Back to Menu</source>
+        <translation type="obsolete">返回</translation>
+    </message>
+    <message>
         <source>Define Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>定义标签</translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="186"/>
         <source>Use Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>使用标签</translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="207"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="213"/>
-        <source>MY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="218"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="223"/>
-        <source>Counter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="228"/>
-        <source>Mem</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="233"/>
-        <source>Jump</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="237"/>
-        <source>EUX</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="242"/>
-        <source>EUY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="356"/>
-        <source>Const Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="361"/>
-        <source>Addr Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="369"/>
-        <source>Left Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="373"/>
-        <source>Right Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="378"/>
-        <source>Right Data:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="389"/>
-        <source>&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="394"/>
-        <source>&gt;=</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="398"/>
-        <source>&lt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="402"/>
-        <source>&lt;=</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="406"/>
-        <source>==</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="410"/>
-        <source>!=</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="428"/>
-        <source>&gt;=T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="428"/>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="434"/>
-        <source>&lt;T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="434"/>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="442"/>
-        <source>Auto Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="448"/>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>限时:</translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="449"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="460"/>
-        <location filename="../teach/ConditionActionEditor.qml" line="479"/>
         <source>Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>EUY</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>MY</source>
+        <translation>中间变量</translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>EUX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>MX</source>
+        <translation type="vanished">中间变量X</translation>
+    </message>
+    <message>
+        <source>Jump</source>
+        <translation>无条件跳转</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Auto Clear</source>
+        <translation>自动清计数器</translation>
+    </message>
+    <message>
+        <source>&gt;=T</source>
+        <translation>&gt;=目标</translation>
+    </message>
+    <message>
+        <source>&lt;T</source>
+        <translation>&lt;目标</translation>
+    </message>
+    <message>
+        <source>Mem</source>
+        <translation>数据比较</translation>
+    </message>
+    <message>
+        <source>Const Data</source>
+        <translation>立即数</translation>
+    </message>
+    <message>
+        <source>Addr Data</source>
+        <translation>地址数据</translation>
+    </message>
+    <message>
+        <source>Left Addr</source>
+        <translation type="vanished">左地址</translation>
+    </message>
+    <message>
+        <source>Right Value</source>
+        <translation type="vanished">右值</translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&gt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>==</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>!=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据:</translation>
     </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="35"/>
         <source>Set Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器+1</translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="39"/>
         <source>Clear Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器清零</translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="63"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>新建</translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="76"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="91"/>
-        <source>is using!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CounterActionEditor.qml" line="104"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CounterActionEditor.qml" line="127"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="133"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名称</translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="141"/>
         <source>Current</source>
-        <translation type="unfinished"></translation>
+        <translation>当前</translation>
     </message>
     <message>
-        <location filename="../teach/CounterActionEditor.qml" line="149"/>
         <source>Target</source>
-        <translation type="unfinished"></translation>
+        <translation>目标</translation>
+    </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
     </message>
 </context>
 <context>
     <name>CustomVariableConfigs</name>
     <message>
-        <location filename="../settingpages/CustomVariableConfigs.qml" line="23"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新建</translation>
     </message>
     <message>
-        <location filename="../settingpages/CustomVariableConfigs.qml" line="36"/>
         <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CustomVariableConfigs.qml" line="42"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名称</translation>
     </message>
     <message>
-        <location filename="../settingpages/CustomVariableConfigs.qml" line="49"/>
         <source>Val</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CustomVariableConfigs.qml" line="56"/>
         <source>Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/CustomVariableConfigs.qml" line="63"/>
         <source>Decimal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1982,280 +1539,222 @@
 <context>
     <name>DataActionEditor</name>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="26"/>
         <source>Const Data</source>
-        <translation type="unfinished"></translation>
+        <translation>立即数</translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="31"/>
         <source>Addr Data</source>
-        <translation type="unfinished"></translation>
+        <translation>地址数据</translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="37"/>
         <source>Addr Target:</source>
-        <translation type="unfinished"></translation>
+        <translation>目标地址:</translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="44"/>
         <source>Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>立即数数据:</translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="52"/>
         <source>Addr Data:</source>
-        <translation type="unfinished"></translation>
+        <translation>地址数据:</translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="62"/>
         <source>=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="67"/>
         <source>+=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="71"/>
         <source>-=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="75"/>
         <source>x=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/DataActionEditor.qml" line="79"/>
         <source>÷=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>DataManagePage</name>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="13"/>
-        <source>Backup...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/DataManagePage.qml" line="40"/>
-        <source>Restoring...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/DataManagePage.qml" line="99"/>
         <source>Local</source>
-        <translation type="unfinished"></translation>
+        <translation>本机</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="104"/>
         <source>U Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>U盘</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="117"/>
         <source>Machine Running(Mold, Machine)</source>
-        <translation type="unfinished"></translation>
+        <translation>机器参数(模号,机器设定)</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="122"/>
         <source>HMI Configs(Programable Button, Panel Settings)</source>
-        <translation type="unfinished"></translation>
+        <translation>手控参数(可编程按键,手控设定)</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="126"/>
         <source>ghost</source>
-        <translation type="unfinished"></translation>
+        <translation>ghost</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="130"/>
-        <source>Updater</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/DataManagePage.qml" line="250"/>
         <source>Backup Current</source>
-        <translation type="unfinished"></translation>
+        <translation>备份当前状态</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="253"/>
         <source>Please input the backup name</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入备份名字</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="254"/>
         <source>Backup Name</source>
-        <translation type="unfinished"></translation>
+        <translation>备份名字</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="256"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="256"/>
-        <location filename="../settingpages/DataManagePage.qml" line="266"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="262"/>
         <source>Restore Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>还原选中备份</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="266"/>
-        <source>System will reboot after restore! Are you sure?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/DataManagePage.qml" line="266"/>
-        <location filename="../settingpages/DataManagePage.qml" line="312"/>
-        <location filename="../settingpages/DataManagePage.qml" line="314"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/DataManagePage.qml" line="272"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="293"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>导出</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="298"/>
-        <source>Exporting...</source>
-        <translation type="unfinished"></translation>
+        <source>OK</source>
+        <translation>确定</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="314"/>
         <source>Export successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>导出成功!</translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="321"/>
+        <source>System will reboot after restore! Are you sure?</source>
+        <translation>系统在还原后会重启.确定吗?</translation>
+    </message>
+    <message>
+        <source>Updater</source>
+        <translation>更新包</translation>
+    </message>
+    <message>
         <source>Start Update</source>
-        <translation type="unfinished"></translation>
+        <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Backup...</source>
+        <translation>备份中...</translation>
+    </message>
+    <message>
+        <source>Restoring...</source>
+        <translation>还原中...</translation>
+    </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
     </message>
 </context>
 <context>
     <name>DebugPage</name>
     <message>
-        <location filename="../DebugPage.qml" line="15"/>
         <source>single axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DebugPage.qml" line="23"/>
         <source>jog axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DebugPage.qml" line="31"/>
-        <source>USB Net</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../DebugPage.qml" line="44"/>
         <source>Addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DebugPage.qml" line="51"/>
         <source>value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DebugPage.qml" line="56"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DebugPage.qml" line="76"/>
         <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DebugPage.qml" line="80"/>
-        <source>%</source>
+        <source>USB Net</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Debugprint</name>
     <message>
-        <location filename="../Debugprint.qml" line="18"/>
         <source>gototop</source>
-        <translation type="unfinished"></translation>
+        <translation>回顶部</translation>
     </message>
     <message>
-        <location filename="../Debugprint.qml" line="30"/>
         <source>gotobottom</source>
-        <translation type="unfinished"></translation>
+        <translation>去底部</translation>
     </message>
 </context>
 <context>
     <name>DeltaJumpEditor</name>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="50"/>
         <source>LH Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="53"/>
         <source>MH Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="56"/>
         <source>RH Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="67"/>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="75"/>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="83"/>
         <source>mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="94"/>
         <source>Start Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="100"/>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="171"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设入</translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="165"/>
         <source>End Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="238"/>
         <source>speed Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="242"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="246"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">延时</translation>
     </message>
     <message>
-        <location filename="../teach/extents/DeltaJumpEditor.qml" line="250"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2263,179 +1762,141 @@
 <context>
     <name>ExtentActionDefine</name>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="27"/>
         <source>PENQIANG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="28"/>
         <source>Pos1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="29"/>
         <source>Pos2:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="30"/>
         <source>Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">速度:</translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="31"/>
         <source>Num:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="32"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="49"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="96"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="47"/>
         <source>Analog Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="48"/>
         <source>Analog:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="78"/>
         <source>Delta Jumpl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="78"/>
         <source>start pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="85"/>
         <source>LH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="86"/>
         <source>MH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="87"/>
         <source>RH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="88"/>
         <source>end pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="95"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
         <source>speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
         <source>Safe Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
         <source>if</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="123"/>
         <source>out pos fange:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
         <source>in pos fange:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="122"/>
         <source>When Changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="124"/>
         <source>will alarm:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="165"/>
         <source>Single Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="165"/>
         <source>RP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="165"/>
         <source>PP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
         <source>Start Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
         <source>space:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
         <source>Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
         <source>count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
         <source>Counter:Self</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计数器:自身</translation>
     </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
     <message>
-        <location filename="../teach/ExtentActionEditor.qml" line="41"/>
         <source>Axis Ply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ExtentActionEditor.qml" line="46"/>
         <source>Analog Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ExtentActionEditor.qml" line="50"/>
         <source>Delta Jump Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ExtentActionEditor.qml" line="54"/>
         <source>Safe Range Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ExtentActionEditor.qml" line="58"/>
         <source>Single Stack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2443,7 +1904,6 @@
 <context>
     <name>ICAlarmBar</name>
     <message>
-        <location filename="../ICAlarmBar.qml" line="39"/>
         <source>i</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2451,2953 +1911,2365 @@
 <context>
     <name>ICAlarmPage</name>
     <message>
-        <location filename="../ICAlarmPage.qml" line="72"/>
         <source>Alarm
  Num</source>
-        <translation type="unfinished"></translation>
+        <translation>报警号</translation>
     </message>
     <message>
-        <location filename="../ICAlarmPage.qml" line="83"/>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation>级别</translation>
     </message>
     <message>
-        <location filename="../ICAlarmPage.qml" line="93"/>
         <source>Descr</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
-        <location filename="../ICAlarmPage.qml" line="103"/>
         <source>Triggered Time</source>
-        <translation type="unfinished"></translation>
+        <translation>触发时间</translation>
     </message>
     <message>
-        <location filename="../ICAlarmPage.qml" line="113"/>
         <source>End Time</source>
-        <translation type="unfinished"></translation>
+        <translation>结束时间</translation>
     </message>
 </context>
 <context>
     <name>ICHCAddrEdit</name>
     <message>
-        <location filename="../../ICCustomElement/ICHCAddrEdit.qml" line="38"/>
         <source>startPos</source>
-        <translation type="unfinished"></translation>
+        <translation>开始位</translation>
     </message>
     <message>
-        <location filename="../../ICCustomElement/ICHCAddrEdit.qml" line="56"/>
         <source>size</source>
-        <translation type="unfinished"></translation>
+        <translation>数据长度</translation>
     </message>
     <message>
-        <location filename="../../ICCustomElement/ICHCAddrEdit.qml" line="73"/>
         <source>baseAddr</source>
-        <translation type="unfinished"></translation>
+        <translation>基地址</translation>
     </message>
     <message>
-        <location filename="../../ICCustomElement/ICHCAddrEdit.qml" line="89"/>
         <source>decimal</source>
-        <translation type="unfinished"></translation>
+        <translation>精度</translation>
     </message>
 </context>
 <context>
     <name>ICLabel</name>
     <message>
-        <location filename="../../ICCustomElement/ICLabel.qml" line="12"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">接收的内容</translation>
     </message>
 </context>
 <context>
     <name>ICMessageBox</name>
     <message>
-        <location filename="../../ICCustomElement/ICMessageBox.qml" line="143"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>详情</translation>
     </message>
 </context>
 <context>
     <name>ICOperationLog</name>
     <message>
-        <location filename="../ICOperationLog.js" line="35"/>
         <source>{0} from {1} to {2}</source>
-        <translation type="unfinished"></translation>
+        <translation>{0} 从 {1} 改为 {2}</translation>
     </message>
 </context>
 <context>
     <name>ICOperationLogPage</name>
     <message>
-        <location filename="../ICOperationLogPage.qml" line="32"/>
         <source>Operation Time</source>
-        <translation type="unfinished"></translation>
+        <translation>操作时间</translation>
     </message>
     <message>
-        <location filename="../ICOperationLogPage.qml" line="42"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>用户</translation>
     </message>
     <message>
-        <location filename="../ICOperationLogPage.qml" line="52"/>
         <source>Descr</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
 </context>
 <context>
     <name>IOComponent</name>
     <message>
-        <location filename="../IOComponent.qml" line="21"/>
         <source>Prev</source>
-        <translation type="unfinished"></translation>
+        <translation>上一页</translation>
     </message>
     <message>
-        <location filename="../IOComponent.qml" line="37"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>输入</translation>
     </message>
     <message>
-        <location filename="../IOComponent.qml" line="37"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>输出</translation>
     </message>
     <message>
-        <location filename="../IOComponent.qml" line="37"/>
-        <source>M</source>
-        <translation type="unfinished"></translation>
+        <source>EuInput</source>
+        <translation type="vanished">EU输入</translation>
     </message>
     <message>
-        <location filename="../IOComponent.qml" line="47"/>
+        <source>EuOutput</source>
+        <translation type="vanished">EU输出</translation>
+    </message>
+    <message>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一页</translation>
+    </message>
+    <message>
+        <source>M</source>
+        <translation>中间变量</translation>
     </message>
 </context>
 <context>
     <name>IODefines</name>
     <message>
-        <location filename="../configs/IODefines.js" line="63"/>
         <source>Y010</source>
-        <translation type="unfinished"></translation>
+        <translation>绿灯</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="64"/>
         <source>Y011</source>
-        <translation type="unfinished"></translation>
+        <translation>黄灯</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="65"/>
         <source>Y012</source>
-        <translation type="unfinished"></translation>
+        <translation>红灯</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="66"/>
         <source>Y013</source>
-        <translation type="unfinished"></translation>
+        <translation>报警声</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="67"/>
         <source>Y014</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="68"/>
         <source>Y015</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="69"/>
         <source>Y016</source>
-        <translation type="unfinished"></translation>
+        <translation>垂直阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="70"/>
         <source>Y017</source>
-        <translation type="unfinished"></translation>
+        <translation>水平阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="71"/>
         <source>Y020</source>
-        <translation type="unfinished"></translation>
+        <translation>启动车床加工</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="72"/>
         <source>Y021</source>
-        <translation type="unfinished"></translation>
+        <translation>车床安全门开阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="73"/>
         <source>Y022</source>
-        <translation type="unfinished"></translation>
+        <translation>车床安全门关阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="74"/>
         <source>Y023</source>
-        <translation type="unfinished"></translation>
+        <translation>毛坯吸阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="75"/>
         <source>Y024</source>
-        <translation type="unfinished"></translation>
+        <translation>成品吸阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="76"/>
         <source>Y025</source>
-        <translation type="unfinished"></translation>
+        <translation>左旋阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="77"/>
         <source>Y026</source>
-        <translation type="unfinished"></translation>
+        <translation>右旋阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="78"/>
         <source>Y027</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="79"/>
         <source>Y030</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="80"/>
         <source>Y031</source>
-        <translation type="unfinished"></translation>
+        <translation>反吸阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="81"/>
         <source>Y032</source>
-        <translation type="unfinished"></translation>
+        <translation>车床吹气</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="82"/>
         <source>Y033</source>
-        <translation type="unfinished"></translation>
+        <translation>车床物料架起</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="83"/>
         <source>Y034</source>
-        <translation type="unfinished"></translation>
+        <translation>车床2安全门关阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="84"/>
         <source>Y035</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="85"/>
         <source>Y036</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="86"/>
         <source>Y037</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="87"/>
-        <source>Y040</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="88"/>
-        <source>Y041</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="89"/>
-        <source>Y042</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="90"/>
-        <source>Y043</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="91"/>
-        <source>Y044</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="92"/>
-        <source>Y045</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="93"/>
-        <source>Y046</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="94"/>
-        <source>Y047</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="96"/>
-        <source>Y050</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="97"/>
-        <source>Y051</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="98"/>
-        <source>Y052</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="99"/>
-        <source>Y053</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="100"/>
-        <source>Y054</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="101"/>
-        <source>Y055</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="102"/>
-        <source>Y056</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="103"/>
-        <source>Y057</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="104"/>
-        <source>Y060</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="105"/>
-        <source>Y061</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="106"/>
-        <source>Y062</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="107"/>
-        <source>Y063</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="108"/>
-        <source>Y064</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="109"/>
-        <source>Y065</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="110"/>
-        <source>Y066</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="111"/>
-        <source>Y067</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="112"/>
-        <source>Y070</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="113"/>
-        <source>Y071</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="114"/>
-        <source>Y072</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="115"/>
-        <source>Y073</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="116"/>
-        <source>Y074</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="117"/>
-        <source>Y075</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="118"/>
-        <source>Y076</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="119"/>
-        <source>Y077</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="120"/>
-        <source>Y100</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="121"/>
-        <source>Y101</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="122"/>
-        <source>Y102</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="123"/>
-        <source>Y103</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="124"/>
-        <source>Y104</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="125"/>
-        <source>Y105</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="126"/>
-        <source>Y106</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="127"/>
-        <source>Y107</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="129"/>
-        <source>Y110</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="130"/>
-        <source>Y111</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="131"/>
-        <source>Y112</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="132"/>
-        <source>Y113</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="133"/>
-        <source>Y114</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="134"/>
-        <source>Y115</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="135"/>
-        <source>Y116</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="136"/>
-        <source>Y117</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="137"/>
-        <source>Y120</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="138"/>
-        <source>Y121</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="139"/>
-        <source>Y122</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="140"/>
-        <source>Y123</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="141"/>
-        <source>Y124</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="142"/>
-        <source>Y125</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="143"/>
-        <source>Y126</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="144"/>
-        <source>Y127</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="145"/>
-        <source>Y130</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="146"/>
-        <source>Y131</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="147"/>
-        <source>Y132</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="148"/>
-        <source>Y133</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="149"/>
-        <source>Y134</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="150"/>
-        <source>Y135</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="151"/>
-        <source>Y136</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="152"/>
-        <source>Y137</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="153"/>
-        <source>Y140</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="154"/>
-        <source>Y141</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="155"/>
-        <source>Y142</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="156"/>
-        <source>Y143</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="157"/>
-        <source>Y144</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="158"/>
-        <source>Y145</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="159"/>
-        <source>Y146</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="160"/>
-        <source>Y147</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="162"/>
-        <source>Y150</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="163"/>
-        <source>Y151</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="164"/>
-        <source>Y152</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="165"/>
-        <source>Y153</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="166"/>
-        <source>Y154</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="167"/>
-        <source>Y155</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="168"/>
-        <source>Y156</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="169"/>
-        <source>Y157</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="170"/>
-        <source>Y160</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="171"/>
-        <source>Y161</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="172"/>
-        <source>Y162</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="173"/>
-        <source>Y163</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="174"/>
-        <source>Y164</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="175"/>
-        <source>Y165</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="176"/>
-        <source>Y166</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="177"/>
-        <source>Y167</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="178"/>
-        <source>Y170</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="179"/>
-        <source>Y171</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="180"/>
-        <source>Y172</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="181"/>
-        <source>Y173</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="182"/>
-        <source>Y174</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="183"/>
-        <source>Y175</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="184"/>
-        <source>Y176</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="185"/>
-        <source>Y177</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="186"/>
-        <source>Y200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="187"/>
-        <source>Y201</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="188"/>
-        <source>Y202</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="189"/>
-        <source>Y203</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="190"/>
-        <source>Y204</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="191"/>
-        <source>Y205</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="192"/>
-        <source>Y206</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="193"/>
-        <source>Y207</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="201"/>
         <source>X010</source>
-        <translation type="unfinished"></translation>
+        <translation>X轴原点</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="202"/>
         <source>X011</source>
-        <translation type="unfinished"></translation>
+        <translation>Y轴原点</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="203"/>
         <source>X012</source>
-        <translation type="unfinished"></translation>
+        <translation>Z轴原点</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="204"/>
         <source>X013</source>
-        <translation type="unfinished"></translation>
+        <translation>X2轴原点</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="205"/>
         <source>X014</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2轴原点</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="206"/>
         <source>X015</source>
-        <translation type="unfinished"></translation>
+        <translation>C轴原点</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="207"/>
         <source>X016</source>
-        <translation type="unfinished"></translation>
+        <translation>垂直限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="208"/>
         <source>X017</source>
-        <translation type="unfinished"></translation>
+        <translation>水平限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="209"/>
         <source>X020</source>
-        <translation type="unfinished"></translation>
+        <translation>车床加工完成</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="210"/>
         <source>X021</source>
-        <translation type="unfinished"></translation>
+        <translation>车床安全门开限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="211"/>
         <source>X022</source>
-        <translation type="unfinished"></translation>
+        <translation>车床安全门关限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="212"/>
         <source>X023</source>
-        <translation type="unfinished"></translation>
+        <translation>毛坯吸限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="213"/>
         <source>X024</source>
-        <translation type="unfinished"></translation>
+        <translation>成品吸限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="214"/>
         <source>X025</source>
-        <translation type="unfinished"></translation>
+        <translation>左旋到位限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="215"/>
         <source>X026</source>
-        <translation type="unfinished"></translation>
+        <translation>右旋到位限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="216"/>
         <source>X027</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="217"/>
         <source>X030</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="218"/>
         <source>X031</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="219"/>
         <source>X032</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="220"/>
         <source>X033</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="221"/>
         <source>X034</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="222"/>
         <source>X035</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="223"/>
         <source>X036</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="224"/>
         <source>X037</source>
-        <translation type="unfinished"></translation>
+        <translation>Y轴减速停</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="225"/>
         <source>X040</source>
-        <translation type="unfinished"></translation>
+        <translation>X1轴终点极限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="226"/>
         <source>X041</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1轴终点极限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="227"/>
         <source>X042</source>
-        <translation type="unfinished"></translation>
+        <translation>Z轴终点极限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="228"/>
         <source>X043</source>
-        <translation type="unfinished"></translation>
+        <translation>X2轴终点极限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="229"/>
         <source>X044</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2轴终点极限</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="230"/>
         <source>X045</source>
-        <translation type="unfinished"></translation>
+        <translation>X045</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="231"/>
         <source>X046</source>
-        <translation type="unfinished"></translation>
+        <translation>X046</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="232"/>
         <source>X047</source>
-        <translation type="unfinished"></translation>
+        <translation>机械手暂停</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="234"/>
         <source>X050</source>
-        <translation type="unfinished"></translation>
+        <translation>X050</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="235"/>
         <source>X051</source>
-        <translation type="unfinished"></translation>
+        <translation>X051</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="236"/>
         <source>X052</source>
-        <translation type="unfinished"></translation>
+        <translation>X052</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="237"/>
         <source>X053</source>
-        <translation type="unfinished"></translation>
+        <translation>X053</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="238"/>
         <source>X054</source>
-        <translation type="unfinished"></translation>
+        <translation>X054</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="239"/>
         <source>X055</source>
-        <translation type="unfinished"></translation>
+        <translation>X055</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="240"/>
         <source>X056</source>
-        <translation type="unfinished"></translation>
+        <translation>X056</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="241"/>
         <source>X057</source>
-        <translation type="unfinished"></translation>
+        <translation>X057</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="242"/>
-        <source>X060</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="243"/>
-        <source>X061</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="244"/>
-        <source>X062</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="245"/>
-        <source>X063</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="246"/>
-        <source>X064</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="247"/>
-        <source>X065</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="248"/>
-        <source>X066</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="249"/>
-        <source>X067</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="250"/>
-        <source>X070</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="251"/>
-        <source>X071</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="252"/>
-        <source>X072</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="253"/>
-        <source>X073</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="254"/>
-        <source>X074</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="255"/>
-        <source>X075</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="256"/>
-        <source>X076</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="257"/>
-        <source>X077</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="258"/>
-        <source>X100</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="259"/>
-        <source>X101</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="260"/>
-        <source>X102</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="261"/>
-        <source>X103</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="262"/>
-        <source>X104</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="263"/>
-        <source>X105</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="264"/>
-        <source>X106</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="265"/>
-        <source>X107</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="267"/>
-        <source>X110</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="268"/>
-        <source>X111</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="269"/>
-        <source>X112</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="270"/>
-        <source>X113</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="271"/>
-        <source>X114</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="272"/>
-        <source>X115</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="273"/>
-        <source>X116</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="274"/>
-        <source>X117</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="275"/>
-        <source>X120</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="276"/>
-        <source>X121</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="277"/>
-        <source>X122</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="278"/>
-        <source>X123</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="279"/>
-        <source>X124</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="280"/>
-        <source>X125</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="281"/>
-        <source>X126</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="282"/>
-        <source>X127</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="283"/>
-        <source>X130</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="284"/>
-        <source>X131</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="285"/>
-        <source>X132</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="286"/>
-        <source>X133</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="287"/>
-        <source>X134</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="288"/>
-        <source>X135</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="289"/>
-        <source>X136</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="290"/>
-        <source>X137</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="291"/>
-        <source>X140</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="292"/>
-        <source>X141</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="293"/>
-        <source>X142</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="294"/>
-        <source>X143</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="295"/>
-        <source>X144</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="296"/>
-        <source>X145</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="297"/>
-        <source>X146</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="298"/>
-        <source>X147</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="300"/>
-        <source>X150</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="301"/>
-        <source>X151</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="302"/>
-        <source>X152</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="303"/>
-        <source>X153</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="304"/>
-        <source>X154</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="305"/>
-        <source>X155</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="306"/>
-        <source>X156</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="307"/>
-        <source>X157</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="308"/>
-        <source>X160</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="309"/>
-        <source>X161</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="310"/>
-        <source>X162</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="311"/>
-        <source>X163</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="312"/>
-        <source>X164</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="313"/>
-        <source>X165</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="314"/>
-        <source>X166</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="315"/>
-        <source>X167</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="316"/>
-        <source>X170</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="317"/>
-        <source>X171</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="318"/>
-        <source>X172</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="319"/>
-        <source>X173</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="320"/>
-        <source>X174</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="321"/>
-        <source>X175</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="322"/>
-        <source>X176</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="323"/>
-        <source>X177</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="324"/>
-        <source>X200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="325"/>
-        <source>X201</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="326"/>
-        <source>X202</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="327"/>
-        <source>X203</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="328"/>
-        <source>X204</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="329"/>
-        <source>X205</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="330"/>
-        <source>X206</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="331"/>
-        <source>X207</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="339"/>
         <source>EuX010</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="340"/>
         <source>EuX011</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="341"/>
         <source>EuX012</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="342"/>
         <source>EuX013</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="343"/>
         <source>EuX014</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="344"/>
         <source>EuX015</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="345"/>
         <source>EuX016</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="346"/>
         <source>EuX017</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="347"/>
         <source>EuX020</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="348"/>
         <source>EuX021</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="349"/>
         <source>EuX022</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="350"/>
         <source>EuX023</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="351"/>
         <source>EuX024</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="352"/>
         <source>EuX025</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="353"/>
         <source>EuX026</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="354"/>
         <source>EuX027</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="363"/>
         <source>EuY010</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="364"/>
         <source>EuY011</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="365"/>
         <source>EuY012</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="366"/>
         <source>EuY013</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="367"/>
         <source>EuY014</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="368"/>
         <source>EuY015</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="369"/>
         <source>EuY016</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="370"/>
         <source>EuY017</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="371"/>
         <source>EuY020</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="372"/>
         <source>EuY021</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="373"/>
         <source>EuY022</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="374"/>
         <source>EuY023</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="375"/>
         <source>EuY024</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="376"/>
         <source>EuY025</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="377"/>
         <source>EuY026</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="378"/>
         <source>EuY027</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="386"/>
-        <location filename="../configs/IODefines.js" line="450"/>
-        <source>M010</source>
-        <translation type="unfinished"></translation>
+        <source>Normal Y</source>
+        <translation type="vanished">普通输出</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="387"/>
-        <location filename="../configs/IODefines.js" line="451"/>
-        <source>M011</source>
-        <translation type="unfinished"></translation>
+        <source>Single Y</source>
+        <translation type="vanished">单头阀Y</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="388"/>
-        <location filename="../configs/IODefines.js" line="452"/>
-        <source>M012</source>
-        <translation type="unfinished"></translation>
+        <source>Hold Double Y</source>
+        <translation type="vanished">保持型双头阀Y</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="389"/>
-        <location filename="../configs/IODefines.js" line="453"/>
-        <source>M013</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="390"/>
-        <location filename="../configs/IODefines.js" line="454"/>
-        <source>M014</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="391"/>
-        <location filename="../configs/IODefines.js" line="455"/>
-        <source>M015</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="392"/>
-        <location filename="../configs/IODefines.js" line="456"/>
-        <source>M016</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="393"/>
-        <location filename="../configs/IODefines.js" line="457"/>
-        <source>M017</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="394"/>
-        <location filename="../configs/IODefines.js" line="458"/>
-        <source>M020</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="395"/>
-        <location filename="../configs/IODefines.js" line="459"/>
-        <source>M021</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="396"/>
-        <location filename="../configs/IODefines.js" line="460"/>
-        <source>M022</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="397"/>
-        <location filename="../configs/IODefines.js" line="461"/>
-        <source>M023</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="398"/>
-        <location filename="../configs/IODefines.js" line="462"/>
-        <source>M024</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="399"/>
-        <location filename="../configs/IODefines.js" line="463"/>
-        <source>M025</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="400"/>
-        <location filename="../configs/IODefines.js" line="464"/>
-        <source>M026</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="401"/>
-        <location filename="../configs/IODefines.js" line="465"/>
-        <source>M027</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configs/IODefines.js" line="417"/>
         <source>Normal Y010</source>
-        <translation type="unfinished"></translation>
+        <translation>绿灯</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="418"/>
         <source>Normal Y011</source>
-        <translation type="unfinished"></translation>
+        <translation>黄灯</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="419"/>
         <source>Normal Y012</source>
-        <translation type="unfinished"></translation>
+        <translation>红灯</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="420"/>
         <source>Normal Y013</source>
-        <translation type="unfinished"></translation>
+        <translation>报警声</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="421"/>
         <source>Normal Y014</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y014</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="422"/>
         <source>Normal Y015</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y015</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="423"/>
         <source>Normal Y016</source>
-        <translation type="unfinished"></translation>
+        <translation>姿势阀</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="425"/>
+        <source>Normal Y017</source>
+        <translation type="vanished">普通输出Y017</translation>
+    </message>
+    <message>
         <source>Normal Y020</source>
-        <translation type="unfinished"></translation>
+        <translation>车床加工</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="426"/>
         <source>Normal Y021</source>
-        <translation type="unfinished"></translation>
+        <translation>车床安全门开</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="427"/>
         <source>Normal Y022</source>
-        <translation type="unfinished"></translation>
+        <translation>车床安全门关</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="428"/>
         <source>Normal Y023</source>
-        <translation type="unfinished"></translation>
+        <translation>毛坯吸</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="429"/>
         <source>Normal Y024</source>
-        <translation type="unfinished"></translation>
+        <translation>成品吸</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="430"/>
         <source>Normal Y025</source>
-        <translation type="unfinished"></translation>
+        <translation>左旋</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="431"/>
         <source>Normal Y026</source>
-        <translation type="unfinished"></translation>
+        <translation>右旋</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="432"/>
         <source>Normal Y027</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y027</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="433"/>
         <source>Normal Y030</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y030</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="434"/>
         <source>Normal Y031</source>
-        <translation type="unfinished"></translation>
+        <translation>反吸</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="435"/>
         <source>Normal Y032</source>
-        <translation type="unfinished"></translation>
+        <translation>车床吹气</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="436"/>
         <source>Normal Y033</source>
-        <translation type="unfinished"></translation>
+        <translation>车床物料架起</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="437"/>
         <source>Normal Y034</source>
-        <translation type="unfinished"></translation>
+        <translation>车床物料架落</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="438"/>
         <source>Normal Y035</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y035</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="439"/>
         <source>Normal Y036</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y036</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="440"/>
         <source>Normal Y037</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y037</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="441"/>
         <source>Normal Y040</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y040</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="442"/>
         <source>Normal Y041</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y041</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="443"/>
         <source>Normal Y042</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y042</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="444"/>
         <source>Normal Y043</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y043</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="445"/>
         <source>Normal Y044</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y044</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="446"/>
         <source>Normal Y045</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y045</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="447"/>
         <source>Normal Y046</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y046</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="448"/>
         <source>Normal Y047</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y047</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="467"/>
+        <source>M010</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M011</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M012</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M013</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M014</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M015</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M016</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M017</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M020</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M021</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M022</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M023</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M024</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M025</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M026</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M027</source>
+        <translation>报警状态</translation>
+    </message>
+    <message>
         <source>Time Y010</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y010</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="468"/>
         <source>Time Y011</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y011</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="469"/>
         <source>Time Y012</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y012</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="470"/>
         <source>Time Y013</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y013</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="471"/>
         <source>Time Y014</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y014</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="472"/>
         <source>Time Y015</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y015</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="473"/>
         <source>Time Y016</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y016</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="474"/>
         <source>Time Y017</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y017</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="475"/>
         <source>Time Y020</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y020</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="476"/>
         <source>Time Y021</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y021</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="477"/>
         <source>Time Y022</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y022</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="478"/>
         <source>Time Y023</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y023</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="479"/>
         <source>Time Y024</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y024</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="480"/>
         <source>Time Y025</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y025</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="481"/>
         <source>Time Y026</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y026</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="482"/>
         <source>Time Y027</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y027</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="483"/>
         <source>Time Y030</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y030</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="484"/>
         <source>Time Y031</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y031</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="485"/>
         <source>Time Y032</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y032</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="486"/>
         <source>Time Y033</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y033</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="487"/>
         <source>Time Y034</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y034</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="488"/>
         <source>Time Y035</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y035</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="489"/>
         <source>Time Y036</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y036</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="490"/>
         <source>Time Y037</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y037</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="491"/>
         <source>Time Y040</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y040</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="492"/>
         <source>Time Y041</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y041</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="493"/>
         <source>Time Y042</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y042</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="494"/>
         <source>Time Y043</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y043</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="495"/>
         <source>Time Y044</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y044</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="496"/>
         <source>Time Y045</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y045</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="497"/>
         <source>Time Y046</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y046</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="498"/>
         <source>Time Y047</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出Y047</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="500"/>
-        <location filename="../configs/IODefines.js" line="600"/>
+        <source>Y040</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y041</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y042</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y043</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y044</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y045</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y046</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y047</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y050</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y051</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y052</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y053</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y054</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y055</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y056</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y057</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y060</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y061</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y062</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y063</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y064</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y065</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y066</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y067</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y070</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y071</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y072</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y073</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y074</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y075</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y076</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y077</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y100</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y101</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y102</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y103</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y104</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y105</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y106</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y107</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y110</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y111</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y112</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y113</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y114</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y115</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y116</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y117</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y120</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y121</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y122</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y123</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y124</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y125</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y126</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y127</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y130</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y131</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y132</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y133</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y134</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y135</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y136</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y137</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y140</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y141</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y142</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y143</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y144</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y145</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y146</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y147</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y150</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y151</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y152</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y153</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y154</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y155</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y156</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y157</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y160</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y161</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y162</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y163</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y164</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y165</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y166</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y167</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y170</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y171</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y172</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y173</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y174</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y175</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y176</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y177</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y200</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y201</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y202</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y203</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y204</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y205</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y206</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y207</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>X060</source>
+        <translation>X060</translation>
+    </message>
+    <message>
+        <source>X061</source>
+        <translation>X061</translation>
+    </message>
+    <message>
+        <source>X062</source>
+        <translation>X062</translation>
+    </message>
+    <message>
+        <source>X063</source>
+        <translation>X063</translation>
+    </message>
+    <message>
+        <source>X064</source>
+        <translation>X064</translation>
+    </message>
+    <message>
+        <source>X065</source>
+        <translation>X065</translation>
+    </message>
+    <message>
+        <source>X066</source>
+        <translation>X066</translation>
+    </message>
+    <message>
+        <source>X067</source>
+        <translation>X067</translation>
+    </message>
+    <message>
+        <source>X070</source>
+        <translation>X070</translation>
+    </message>
+    <message>
+        <source>X071</source>
+        <translation>X071</translation>
+    </message>
+    <message>
+        <source>X072</source>
+        <translation>X072</translation>
+    </message>
+    <message>
+        <source>X073</source>
+        <translation>X073</translation>
+    </message>
+    <message>
+        <source>X074</source>
+        <translation>X074</translation>
+    </message>
+    <message>
+        <source>X075</source>
+        <translation>X075</translation>
+    </message>
+    <message>
+        <source>X076</source>
+        <translation>X076</translation>
+    </message>
+    <message>
+        <source>X077</source>
+        <translation>X077</translation>
+    </message>
+    <message>
+        <source>X100</source>
+        <translation>X100</translation>
+    </message>
+    <message>
+        <source>X101</source>
+        <translation>X101</translation>
+    </message>
+    <message>
+        <source>X102</source>
+        <translation>X102</translation>
+    </message>
+    <message>
+        <source>X103</source>
+        <translation>X103</translation>
+    </message>
+    <message>
+        <source>X104</source>
+        <translation>X104</translation>
+    </message>
+    <message>
+        <source>X105</source>
+        <translation>X105</translation>
+    </message>
+    <message>
+        <source>X106</source>
+        <translation>X106</translation>
+    </message>
+    <message>
+        <source>X107</source>
+        <translation>X107</translation>
+    </message>
+    <message>
+        <source>X110</source>
+        <translation>X110</translation>
+    </message>
+    <message>
+        <source>X111</source>
+        <translation>X111</translation>
+    </message>
+    <message>
+        <source>X112</source>
+        <translation>X112</translation>
+    </message>
+    <message>
+        <source>X113</source>
+        <translation>X113</translation>
+    </message>
+    <message>
+        <source>X114</source>
+        <translation>X114</translation>
+    </message>
+    <message>
+        <source>X115</source>
+        <translation>X115</translation>
+    </message>
+    <message>
+        <source>X116</source>
+        <translation>X116</translation>
+    </message>
+    <message>
+        <source>X117</source>
+        <translation>X117</translation>
+    </message>
+    <message>
+        <source>X120</source>
+        <translation>X120</translation>
+    </message>
+    <message>
+        <source>X121</source>
+        <translation>X121</translation>
+    </message>
+    <message>
+        <source>X122</source>
+        <translation>X122</translation>
+    </message>
+    <message>
+        <source>X123</source>
+        <translation>X123</translation>
+    </message>
+    <message>
+        <source>X124</source>
+        <translation>X124</translation>
+    </message>
+    <message>
+        <source>X125</source>
+        <translation>X125</translation>
+    </message>
+    <message>
+        <source>X126</source>
+        <translation>X126</translation>
+    </message>
+    <message>
+        <source>X127</source>
+        <translation>X127</translation>
+    </message>
+    <message>
+        <source>X130</source>
+        <translation>X130</translation>
+    </message>
+    <message>
+        <source>X131</source>
+        <translation>X131</translation>
+    </message>
+    <message>
+        <source>X132</source>
+        <translation>X132</translation>
+    </message>
+    <message>
+        <source>X133</source>
+        <translation>X133</translation>
+    </message>
+    <message>
+        <source>X134</source>
+        <translation>X134</translation>
+    </message>
+    <message>
+        <source>X135</source>
+        <translation>X135</translation>
+    </message>
+    <message>
+        <source>X136</source>
+        <translation>X136</translation>
+    </message>
+    <message>
+        <source>X137</source>
+        <translation>X137</translation>
+    </message>
+    <message>
+        <source>X140</source>
+        <translation>X140</translation>
+    </message>
+    <message>
+        <source>X141</source>
+        <translation>X141</translation>
+    </message>
+    <message>
+        <source>X142</source>
+        <translation>X142</translation>
+    </message>
+    <message>
+        <source>X143</source>
+        <translation>X143</translation>
+    </message>
+    <message>
+        <source>X144</source>
+        <translation>X144</translation>
+    </message>
+    <message>
+        <source>X145</source>
+        <translation>X145</translation>
+    </message>
+    <message>
+        <source>X146</source>
+        <translation>X146</translation>
+    </message>
+    <message>
+        <source>X147</source>
+        <translation>X147</translation>
+    </message>
+    <message>
+        <source>X150</source>
+        <translation>X150</translation>
+    </message>
+    <message>
+        <source>X151</source>
+        <translation>X151</translation>
+    </message>
+    <message>
+        <source>X152</source>
+        <translation>X152</translation>
+    </message>
+    <message>
+        <source>X153</source>
+        <translation>X153</translation>
+    </message>
+    <message>
+        <source>X154</source>
+        <translation>X154</translation>
+    </message>
+    <message>
+        <source>X155</source>
+        <translation>X155</translation>
+    </message>
+    <message>
+        <source>X156</source>
+        <translation>X156</translation>
+    </message>
+    <message>
+        <source>X157</source>
+        <translation>X157</translation>
+    </message>
+    <message>
+        <source>X160</source>
+        <translation>X160</translation>
+    </message>
+    <message>
+        <source>X161</source>
+        <translation>X161</translation>
+    </message>
+    <message>
+        <source>X162</source>
+        <translation>X162</translation>
+    </message>
+    <message>
+        <source>X163</source>
+        <translation>X163</translation>
+    </message>
+    <message>
+        <source>X164</source>
+        <translation>X164</translation>
+    </message>
+    <message>
+        <source>X165</source>
+        <translation>X165</translation>
+    </message>
+    <message>
+        <source>X166</source>
+        <translation>X166</translation>
+    </message>
+    <message>
+        <source>X167</source>
+        <translation>X167</translation>
+    </message>
+    <message>
+        <source>X170</source>
+        <translation>X170</translation>
+    </message>
+    <message>
+        <source>X171</source>
+        <translation>X171</translation>
+    </message>
+    <message>
+        <source>X172</source>
+        <translation>X172</translation>
+    </message>
+    <message>
+        <source>X173</source>
+        <translation>X173</translation>
+    </message>
+    <message>
+        <source>X174</source>
+        <translation>X174</translation>
+    </message>
+    <message>
+        <source>X175</source>
+        <translation>X175</translation>
+    </message>
+    <message>
+        <source>X176</source>
+        <translation>X176</translation>
+    </message>
+    <message>
+        <source>X177</source>
+        <translation>X177</translation>
+    </message>
+    <message>
+        <source>X200</source>
+        <translation>X200</translation>
+    </message>
+    <message>
+        <source>X201</source>
+        <translation>X201</translation>
+    </message>
+    <message>
+        <source>X202</source>
+        <translation>X202</translation>
+    </message>
+    <message>
+        <source>X203</source>
+        <translation>X203</translation>
+    </message>
+    <message>
+        <source>X204</source>
+        <translation>X204</translation>
+    </message>
+    <message>
+        <source>X205</source>
+        <translation>X205</translation>
+    </message>
+    <message>
+        <source>X206</source>
+        <translation>X206</translation>
+    </message>
+    <message>
+        <source>X207</source>
+        <translation>X207</translation>
+    </message>
+    <message>
         <source>Normal Y050</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y050</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="501"/>
-        <location filename="../configs/IODefines.js" line="601"/>
         <source>Normal Y051</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y051</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="502"/>
-        <location filename="../configs/IODefines.js" line="602"/>
         <source>Normal Y052</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y052</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="503"/>
-        <location filename="../configs/IODefines.js" line="603"/>
         <source>Normal Y053</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y053</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="504"/>
-        <location filename="../configs/IODefines.js" line="604"/>
         <source>Normal Y054</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y054</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="505"/>
-        <location filename="../configs/IODefines.js" line="605"/>
         <source>Normal Y055</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y055</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="506"/>
-        <location filename="../configs/IODefines.js" line="606"/>
         <source>Normal Y056</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y056</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="507"/>
-        <location filename="../configs/IODefines.js" line="607"/>
         <source>Normal Y057</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y057</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="508"/>
-        <location filename="../configs/IODefines.js" line="608"/>
         <source>Normal Y060</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y060</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="509"/>
-        <location filename="../configs/IODefines.js" line="609"/>
         <source>Normal Y061</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y061</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="510"/>
-        <location filename="../configs/IODefines.js" line="610"/>
         <source>Normal Y062</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y062</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="511"/>
-        <location filename="../configs/IODefines.js" line="611"/>
         <source>Normal Y063</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y063</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="512"/>
-        <location filename="../configs/IODefines.js" line="612"/>
         <source>Normal Y064</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y064</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="513"/>
-        <location filename="../configs/IODefines.js" line="613"/>
         <source>Normal Y065</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y065</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="514"/>
-        <location filename="../configs/IODefines.js" line="614"/>
         <source>Normal Y066</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y066</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="515"/>
-        <location filename="../configs/IODefines.js" line="615"/>
         <source>Normal Y067</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y067</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="516"/>
-        <location filename="../configs/IODefines.js" line="616"/>
         <source>Normal Y070</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y070</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="517"/>
-        <location filename="../configs/IODefines.js" line="617"/>
         <source>Normal Y071</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y071</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="518"/>
-        <location filename="../configs/IODefines.js" line="618"/>
         <source>Normal Y072</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y072</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="519"/>
-        <location filename="../configs/IODefines.js" line="619"/>
         <source>Normal Y073</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y073</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="520"/>
-        <location filename="../configs/IODefines.js" line="620"/>
         <source>Normal Y074</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y074</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="521"/>
-        <location filename="../configs/IODefines.js" line="621"/>
         <source>Normal Y075</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y075</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="522"/>
-        <location filename="../configs/IODefines.js" line="622"/>
         <source>Normal Y076</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y076</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="523"/>
-        <location filename="../configs/IODefines.js" line="623"/>
         <source>Normal Y077</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y077</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="524"/>
-        <location filename="../configs/IODefines.js" line="624"/>
         <source>Normal Y100</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y100</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="525"/>
-        <location filename="../configs/IODefines.js" line="625"/>
         <source>Normal Y101</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y101</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="526"/>
-        <location filename="../configs/IODefines.js" line="626"/>
         <source>Normal Y102</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y102</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="527"/>
-        <location filename="../configs/IODefines.js" line="627"/>
         <source>Normal Y103</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y103</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="528"/>
-        <location filename="../configs/IODefines.js" line="628"/>
         <source>Normal Y104</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y104</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="529"/>
-        <location filename="../configs/IODefines.js" line="629"/>
         <source>Normal Y105</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y105</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="530"/>
-        <location filename="../configs/IODefines.js" line="630"/>
         <source>Normal Y106</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y106</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="531"/>
-        <location filename="../configs/IODefines.js" line="631"/>
         <source>Normal Y107</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y107</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="533"/>
-        <location filename="../configs/IODefines.js" line="633"/>
         <source>Normal Y110</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y110</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="534"/>
-        <location filename="../configs/IODefines.js" line="634"/>
         <source>Normal Y111</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y111</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="535"/>
-        <location filename="../configs/IODefines.js" line="635"/>
         <source>Normal Y112</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y112</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="536"/>
-        <location filename="../configs/IODefines.js" line="636"/>
         <source>Normal Y113</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y113</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="537"/>
-        <location filename="../configs/IODefines.js" line="637"/>
         <source>Normal Y114</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y114</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="538"/>
-        <location filename="../configs/IODefines.js" line="638"/>
         <source>Normal Y115</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y115</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="539"/>
-        <location filename="../configs/IODefines.js" line="639"/>
         <source>Normal Y116</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y116</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="540"/>
-        <location filename="../configs/IODefines.js" line="640"/>
         <source>Normal Y117</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y117</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="541"/>
-        <location filename="../configs/IODefines.js" line="641"/>
         <source>Normal Y120</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y120</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="542"/>
-        <location filename="../configs/IODefines.js" line="642"/>
         <source>Normal Y121</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y121</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="543"/>
-        <location filename="../configs/IODefines.js" line="643"/>
         <source>Normal Y122</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y122</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="544"/>
-        <location filename="../configs/IODefines.js" line="644"/>
         <source>Normal Y123</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y123</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="545"/>
-        <location filename="../configs/IODefines.js" line="645"/>
         <source>Normal Y124</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y124</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="546"/>
-        <location filename="../configs/IODefines.js" line="646"/>
         <source>Normal Y125</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y125</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="547"/>
-        <location filename="../configs/IODefines.js" line="647"/>
         <source>Normal Y126</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y126</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="548"/>
-        <location filename="../configs/IODefines.js" line="648"/>
         <source>Normal Y127</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y127</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="549"/>
-        <location filename="../configs/IODefines.js" line="649"/>
         <source>Normal Y130</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y130</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="550"/>
-        <location filename="../configs/IODefines.js" line="650"/>
         <source>Normal Y131</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y131</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="551"/>
-        <location filename="../configs/IODefines.js" line="651"/>
         <source>Normal Y132</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y132</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="552"/>
-        <location filename="../configs/IODefines.js" line="652"/>
         <source>Normal Y133</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y133</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="553"/>
-        <location filename="../configs/IODefines.js" line="653"/>
         <source>Normal Y134</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y134</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="554"/>
-        <location filename="../configs/IODefines.js" line="654"/>
         <source>Normal Y135</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y135</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="555"/>
-        <location filename="../configs/IODefines.js" line="655"/>
         <source>Normal Y136</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y136</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="556"/>
-        <location filename="../configs/IODefines.js" line="656"/>
         <source>Normal Y137</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y137</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="557"/>
-        <location filename="../configs/IODefines.js" line="657"/>
         <source>Normal Y140</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y140</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="558"/>
-        <location filename="../configs/IODefines.js" line="658"/>
         <source>Normal Y141</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y141</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="559"/>
-        <location filename="../configs/IODefines.js" line="659"/>
         <source>Normal Y142</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y142</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="560"/>
-        <location filename="../configs/IODefines.js" line="660"/>
         <source>Normal Y143</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y143</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="561"/>
-        <location filename="../configs/IODefines.js" line="661"/>
         <source>Normal Y144</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y144</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="562"/>
-        <location filename="../configs/IODefines.js" line="662"/>
         <source>Normal Y145</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y145</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="563"/>
-        <location filename="../configs/IODefines.js" line="663"/>
         <source>Normal Y146</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y146</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="564"/>
-        <location filename="../configs/IODefines.js" line="664"/>
         <source>Normal Y147</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y147</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="566"/>
-        <location filename="../configs/IODefines.js" line="666"/>
         <source>Normal Y150</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y150</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="567"/>
-        <location filename="../configs/IODefines.js" line="667"/>
         <source>Normal Y151</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y151</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="568"/>
-        <location filename="../configs/IODefines.js" line="668"/>
         <source>Normal Y152</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y152</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="569"/>
-        <location filename="../configs/IODefines.js" line="669"/>
         <source>Normal Y153</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y153</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="570"/>
-        <location filename="../configs/IODefines.js" line="670"/>
         <source>Normal Y154</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y154</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="571"/>
-        <location filename="../configs/IODefines.js" line="671"/>
         <source>Normal Y155</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y155</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="572"/>
-        <location filename="../configs/IODefines.js" line="672"/>
         <source>Normal Y156</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y156</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="573"/>
-        <location filename="../configs/IODefines.js" line="673"/>
         <source>Normal Y157</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y157</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="574"/>
-        <location filename="../configs/IODefines.js" line="674"/>
         <source>Normal Y160</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y160</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="575"/>
-        <location filename="../configs/IODefines.js" line="675"/>
         <source>Normal Y161</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y161</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="576"/>
-        <location filename="../configs/IODefines.js" line="676"/>
         <source>Normal Y162</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y162</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="577"/>
-        <location filename="../configs/IODefines.js" line="677"/>
         <source>Normal Y163</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y163</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="578"/>
-        <location filename="../configs/IODefines.js" line="678"/>
         <source>Normal Y164</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y164</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="579"/>
-        <location filename="../configs/IODefines.js" line="679"/>
         <source>Normal Y165</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y165</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="580"/>
-        <location filename="../configs/IODefines.js" line="680"/>
         <source>Normal Y166</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y166</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="581"/>
-        <location filename="../configs/IODefines.js" line="681"/>
         <source>Normal Y167</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y167</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="582"/>
-        <location filename="../configs/IODefines.js" line="682"/>
         <source>Normal Y170</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y170</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="583"/>
-        <location filename="../configs/IODefines.js" line="683"/>
         <source>Normal Y171</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y171</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="584"/>
-        <location filename="../configs/IODefines.js" line="684"/>
         <source>Normal Y172</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y172</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="585"/>
-        <location filename="../configs/IODefines.js" line="685"/>
         <source>Normal Y173</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y173</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="586"/>
-        <location filename="../configs/IODefines.js" line="686"/>
         <source>Normal Y174</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y174</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="587"/>
-        <location filename="../configs/IODefines.js" line="687"/>
         <source>Normal Y175</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y175</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="588"/>
-        <location filename="../configs/IODefines.js" line="688"/>
         <source>Normal Y176</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y176</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="589"/>
-        <location filename="../configs/IODefines.js" line="689"/>
         <source>Normal Y177</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y177</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="590"/>
-        <location filename="../configs/IODefines.js" line="690"/>
         <source>Normal Y200</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y200</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="591"/>
-        <location filename="../configs/IODefines.js" line="691"/>
         <source>Normal Y201</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y201</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="592"/>
-        <location filename="../configs/IODefines.js" line="692"/>
         <source>Normal Y202</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y202</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="593"/>
-        <location filename="../configs/IODefines.js" line="693"/>
         <source>Normal Y203</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y203</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="594"/>
-        <location filename="../configs/IODefines.js" line="694"/>
         <source>Normal Y204</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y204</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="595"/>
-        <location filename="../configs/IODefines.js" line="695"/>
         <source>Normal Y205</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y205</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="596"/>
-        <location filename="../configs/IODefines.js" line="696"/>
         <source>Normal Y206</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y206</translation>
     </message>
     <message>
-        <location filename="../configs/IODefines.js" line="597"/>
-        <location filename="../configs/IODefines.js" line="697"/>
         <source>Normal Y207</source>
-        <translation type="unfinished"></translation>
+        <translation>普通输出Y207</translation>
+    </message>
+</context>
+<context>
+    <name>JogPage</name>
+    <message>
+        <source>Speed</source>
+        <translation type="obsolete">速度</translation>
     </message>
 </context>
 <context>
     <name>Keymap</name>
     <message>
-        <location filename="../configs/Keymap.js" line="56"/>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>运行中</translation>
     </message>
     <message>
-        <location filename="../configs/Keymap.js" line="57"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation>单步</translation>
     </message>
     <message>
-        <location filename="../configs/Keymap.js" line="58"/>
         <source>One Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>单循环</translation>
     </message>
 </context>
 <context>
     <name>LoginDialog</name>
     <message>
-        <location filename="../LoginDialog.qml" line="36"/>
         <source>User:</source>
-        <translation type="unfinished"></translation>
+        <translation>用户:</translation>
     </message>
     <message>
-        <location filename="../LoginDialog.qml" line="56"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>密码:</translation>
     </message>
     <message>
-        <location filename="../LoginDialog.qml" line="71"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
-        <location filename="../LoginDialog.qml" line="79"/>
         <source>Log out</source>
-        <translation type="unfinished"></translation>
+        <translation>登出</translation>
     </message>
     <message>
-        <location filename="../LoginDialog.qml" line="88"/>
         <source>Login in</source>
-        <translation type="unfinished"></translation>
+        <translation>登入</translation>
     </message>
     <message>
-        <location filename="../LoginDialog.qml" line="94"/>
         <source>password is incorrect!!</source>
-        <translation type="unfinished"></translation>
+        <translation>密码错误!</translation>
     </message>
 </context>
 <context>
     <name>MachineSettings</name>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="33"/>
         <source>Running Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>运行参数</translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="39"/>
+        <source>Axis Configs</source>
+        <translation type="vanished">电机参数</translation>
+    </message>
+    <message>
         <source>Motor Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>电机参数</translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="46"/>
         <source>Struct Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>结构参数</translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="53"/>
         <source>System Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>系统参数</translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="61"/>
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
+    <name>MainFrame</name>
+    <message>
+        <source>Operation</source>
+        <translation type="obsolete">手动操作</translation>
+    </message>
+    <message>
+        <source>Program</source>
+        <translation type="obsolete">编程</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="obsolete">参数设定</translation>
+    </message>
+    <message>
+        <source>Alarm Log</source>
+        <translation type="obsolete">报警记录</translation>
+    </message>
+    <message>
+        <source>Operation Log</source>
+        <translation type="obsolete">操作记录</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="obsolete">登录</translation>
+    </message>
+    <message>
+        <source>V Program</source>
+        <translation type="obsolete">程序</translation>
+    </message>
+    <message>
+        <source>Please press origin key and then press start key to find origin signal.</source>
+        <translation type="obsolete">请按原点键然后按启动键原点复归.</translation>
+    </message>
+</context>
+<context>
     <name>ManualPage</name>
     <message>
-        <location filename="../ManualPage.qml" line="45"/>
-        <source>Output Y</source>
-        <translation type="unfinished"></translation>
+        <source>Tools Calibration</source>
+        <translation type="vanished">工具校准</translation>
     </message>
     <message>
-        <location filename="../ManualPage.qml" line="64"/>
-        <source>Custom Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ManualPage.qml" line="74"/>
-        <source>Debugprint</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ManualPage.qml" line="84"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>调试</translation>
+    </message>
+    <message>
+        <source>Debugprint</source>
+        <translation>调试日志</translation>
+    </message>
+    <message>
+        <source>Output Y</source>
+        <translation>信号输出</translation>
+    </message>
+    <message>
+        <source>Custom Btn</source>
+        <translation>可编程按键</translation>
     </message>
 </context>
 <context>
     <name>ManualProgramManager</name>
     <message>
-        <location filename="../teach/ManualProgramManager.js" line="60"/>
-        <location filename="../teach/ManualProgramManager.js" line="78"/>
         <source>M CMD[{0}]:{1}</source>
-        <translation type="unfinished"></translation>
+        <translation>可编程按键[{0}]:{1}</translation>
     </message>
     <message>
-        <location filename="../teach/ManualProgramManager.js" line="137"/>
         <source>Custom Origin</source>
-        <translation type="unfinished"></translation>
+        <translation>原点</translation>
     </message>
     <message>
-        <location filename="../teach/ManualProgramManager.js" line="140"/>
         <source>Custom Return</source>
-        <translation type="unfinished"></translation>
+        <translation>复归</translation>
     </message>
 </context>
 <context>
     <name>ModuleActionEditor</name>
     <message>
-        <location filename="../teach/ModuleActionEditor.qml" line="16"/>
         <source>Next Line</source>
-        <translation type="unfinished"></translation>
+        <translation>下一行</translation>
     </message>
     <message>
-        <location filename="../teach/ModuleActionEditor.qml" line="34"/>
         <source>Call Module</source>
-        <translation type="unfinished"></translation>
+        <translation>调用模块</translation>
     </message>
     <message>
-        <location filename="../teach/ModuleActionEditor.qml" line="43"/>
         <source>Return To Flag</source>
-        <translation type="unfinished"></translation>
+        <translation>返回标签</translation>
     </message>
 </context>
 <context>
     <name>NetworkSettings</name>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="11"/>
         <source>Network En</source>
-        <translation type="unfinished"></translation>
+        <translation>网络使能</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="18"/>
         <source>Local Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>本机IP:</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="60"/>
         <source>Host Addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>外设目标IP:</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="106"/>
         <source>Serve</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="106"/>
         <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="107"/>
         <source>CommunicateMode</source>
-        <translation type="unfinished"></translation>
+        <translation>通信模式</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="112"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="136"/>
         <source>Send Test</source>
-        <translation type="unfinished"></translation>
+        <translation>发送测试数据</translation>
     </message>
     <message>
-        <location filename="../settingpages/NetworkSettings.qml" line="145"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation>接收的内容</translation>
     </message>
 </context>
 <context>
     <name>OriginActionEditor</name>
     <message>
-        <location filename="../teach/OriginActionEditor.qml" line="55"/>
         <source>Type1</source>
-        <translation type="unfinished"></translation>
+        <translation>手动设定原点加开关</translation>
     </message>
     <message>
-        <location filename="../teach/OriginActionEditor.qml" line="55"/>
         <source>Type2</source>
-        <translation type="unfinished"></translation>
+        <translation>直接找Z脉冲</translation>
     </message>
     <message>
-        <location filename="../teach/OriginActionEditor.qml" line="55"/>
         <source>Type3</source>
-        <translation type="unfinished"></translation>
+        <translation>自动设定原点加开关(短原点)</translation>
     </message>
     <message>
-        <location filename="../teach/OriginActionEditor.qml" line="55"/>
         <source>Type4</source>
-        <translation type="unfinished"></translation>
+        <translation>自动设定原点加开关(长原点)</translation>
     </message>
 </context>
 <context>
     <name>OriginActionEditorAxisComponent</name>
     <message>
-        <location filename="../teach/OriginActionEditorAxisComponent.qml" line="47"/>
         <source>deg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/OriginActionEditorAxisComponent.qml" line="61"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/OriginActionEditorAxisComponent.qml" line="68"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>OriginReturnmsg</name>
     <message>
-        <location filename="../OriginReturnmsg.qml" line="14"/>
         <source>please press startup button to origin</source>
-        <translation type="unfinished"></translation>
+        <translation>请确认原点模式后,再按启动键原点复归.</translation>
     </message>
     <message>
-        <location filename="../OriginReturnmsg.qml" line="24"/>
-        <source>Originning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OriginReturnmsg.qml" line="32"/>
         <source>please press startup button to return</source>
-        <translation type="unfinished"></translation>
+        <translation>请按启动键复归.</translation>
     </message>
     <message>
-        <location filename="../OriginReturnmsg.qml" line="40"/>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>Near Origin</source>
+        <translation>已在原点附近</translation>
+    </message>
+    <message>
+        <source>Emergence before shutdow</source>
+        <translation>关机前已急停</translation>
+    </message>
+    <message>
+        <source>ReOrigin</source>
+        <translation>重新原点</translation>
+    </message>
+    <message>
+        <source>Originning</source>
+        <translation>原点复归中...</translation>
+    </message>
+    <message>
         <source>Returning</source>
-        <translation type="unfinished"></translation>
+        <translation>复归中...</translation>
     </message>
     <message>
-        <location filename="../OriginReturnmsg.qml" line="82"/>
         <source>1.Mode 1
 2.Mode 2
 3.Mode 3</source>
-        <translation type="unfinished"></translation>
+        <translation>1.已在原点附近:位置大概在原点
+附近时使用
+2.关机前已急停:只有确定关机前
+已经拍下急停了才能使用
+3.重新归原点:已在原点附近没归
+到位的时候,再次归原点的时候使用</translation>
     </message>
     <message>
-        <location filename="../OriginReturnmsg.qml" line="87"/>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OriginReturnmsg.qml" line="97"/>
-        <location filename="../OriginReturnmsg.qml" line="104"/>
-        <location filename="../OriginReturnmsg.qml" line="145"/>
         <source>Show Help</source>
-        <translation type="unfinished"></translation>
+        <translation>显示帮助</translation>
     </message>
     <message>
-        <location filename="../OriginReturnmsg.qml" line="104"/>
         <source>Hide Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OriginReturnmsg.qml" line="119"/>
-        <source>Near Origin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OriginReturnmsg.qml" line="123"/>
-        <source>Emergence before shutdow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OriginReturnmsg.qml" line="127"/>
-        <source>ReOrigin</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏帮助</translation>
     </message>
 </context>
 <context>
     <name>OutputActionEditor</name>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="132"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
+        <source>Back to Menu</source>
+        <translation type="obsolete">返回</translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="138"/>
-        <source>EUY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="143"/>
-        <source>M</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="148"/>
-        <source>Single Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="152"/>
-        <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="156"/>
-        <source>Time Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="277"/>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="282"/>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="289"/>
-        <source>Act Time:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="289"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>延时:</translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="290"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>EUY</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M</source>
+        <translation>中间变量</translation>
+    </message>
+    <message>
+        <source>Single Y</source>
+        <translation>单头阀Y</translation>
+    </message>
+    <message>
+        <source>Hold Double Y</source>
+        <translation>保持型双头阀Y</translation>
+    </message>
+    <message>
+        <source>Time Y</source>
+        <translation>时间输出Y</translation>
+    </message>
+    <message>
+        <source>Act Time:</source>
+        <translation>动作时间:</translation>
     </message>
 </context>
 <context>
     <name>PENQIANEditor</name>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="27"/>
         <source>Axis Sel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="45"/>
         <source>AxisFly Pos1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="56"/>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="76"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设入</translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="68"/>
         <source>AxisFly Pos2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="87"/>
         <source>AxisFly Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="91"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="95"/>
         <source>AxisFyl Num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="98"/>
         <source>Times</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="102"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">延时</translation>
     </message>
     <message>
-        <location filename="../teach/extents/PENQIANEditor.qml" line="106"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5405,825 +4277,796 @@
 <context>
     <name>PanelSettings</name>
     <message>
-        <location filename="../settingpages/PanelSettings.qml" line="34"/>
-        <source>Panel Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/PanelSettings.qml" line="41"/>
-        <source>Network Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/PanelSettings.qml" line="47"/>
-        <source>Picture Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/PanelSettings.qml" line="53"/>
-        <source>Register</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/PanelSettings.qml" line="60"/>
         <source>Maintain</source>
-        <translation type="unfinished"></translation>
+        <translation>维护</translation>
     </message>
     <message>
-        <location filename="../settingpages/PanelSettings.qml" line="66"/>
+        <source>Scan Updater</source>
+        <translation type="vanished">扫描更新包</translation>
+    </message>
+    <message>
+        <source>Start Update</source>
+        <translation type="vanished">开始更新</translation>
+    </message>
+    <message>
+        <source>Panel Settings</source>
+        <translation>手控设定</translation>
+    </message>
+    <message>
+        <source>UI Version:</source>
+        <translation type="vanished">UI版本:</translation>
+    </message>
+    <message>
+        <source>Controller Version:</source>
+        <translation type="vanished">中间件版本:</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="vanished">语言</translation>
+    </message>
+    <message>
+        <source>Key Tone</source>
+        <translation type="vanished">按键音</translation>
+    </message>
+    <message>
+        <source>Key Tone Off</source>
+        <translation type="vanished">关</translation>
+    </message>
+    <message>
+        <source>Key Tone On</source>
+        <translation type="vanished">开</translation>
+    </message>
+    <message>
+        <source>Brightness</source>
+        <translation type="vanished">屏幕亮度</translation>
+    </message>
+    <message>
+        <source>Screensaver Time</source>
+        <translation type="vanished">屏幕保护时间</translation>
+    </message>
+    <message>
+        <source>Date time</source>
+        <translation type="vanished">日期时间</translation>
+    </message>
+    <message>
+        <source>year</source>
+        <translation type="vanished">年</translation>
+    </message>
+    <message>
+        <source>mon</source>
+        <translation type="vanished">月</translation>
+    </message>
+    <message>
+        <source>day</source>
+        <translation type="vanished">日</translation>
+    </message>
+    <message>
+        <source>hour</source>
+        <translation type="vanished">时</translation>
+    </message>
+    <message>
+        <source>sec</source>
+        <translation type="vanished">秒</translation>
+    </message>
+    <message>
+        <source>Touch Calibrate</source>
+        <translation type="vanished">触摸校正</translation>
+    </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation type="vanished">触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">是</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">否</translation>
+    </message>
+    <message>
         <source>Usermanegement</source>
-        <translation type="unfinished"></translation>
+        <translation>用户管理</translation>
+    </message>
+    <message>
+        <source>Network Settings</source>
+        <translation>网络配置</translation>
+    </message>
+    <message>
+        <source>Picture Settings</source>
+        <translation>图片设定</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>注册</translation>
     </message>
 </context>
 <context>
     <name>ParaChose</name>
     <message>
-        <location filename="../ParaChose.qml" line="25"/>
         <source>Host configs and panel configs is different,
 please chose!</source>
-        <translation type="unfinished"></translation>
+        <translation>主机参数和手控参数不一致,请选择!</translation>
     </message>
     <message>
-        <location filename="../ParaChose.qml" line="32"/>
         <source>chose manual</source>
-        <translation type="unfinished"></translation>
+        <translation>选择手控</translation>
     </message>
     <message>
-        <location filename="../ParaChose.qml" line="41"/>
         <source>chose host</source>
-        <translation type="unfinished"></translation>
+        <translation>选择主机</translation>
     </message>
     <message>
-        <location filename="../ParaChose.qml" line="51"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
     <name>PictureSettings</name>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="48"/>
         <source>Scan Pic</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描图片</translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="64"/>
         <source>Set As Start Up</source>
-        <translation type="unfinished"></translation>
+        <translation>设为启动图片</translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="72"/>
         <source>Set As Standby</source>
-        <translation type="unfinished"></translation>
+        <translation>设为待机图片</translation>
     </message>
 </context>
 <context>
     <name>PointEdit</name>
     <message>
-        <location filename="../teach/PointEdit.qml" line="187"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation>设入</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="213"/>
         <source>Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>置零</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="331"/>
+        <source>Add</source>
+        <translation type="vanished">添加点</translation>
+    </message>
+    <message>
+        <source>New Point:</source>
+        <translation type="vanished">新点:</translation>
+    </message>
+    <message>
         <source>Select Point:</source>
-        <translation type="unfinished"></translation>
+        <translation>引用点:</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="349"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>速度</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="351"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="359"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>延时</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="361"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="578"/>
-        <source>Line XY</source>
-        <translation type="unfinished"></translation>
+        <source>Insert</source>
+        <translation type="vanished">插入</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="583"/>
-        <source>Line XZ</source>
-        <translation type="unfinished"></translation>
+        <source>Del</source>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="589"/>
-        <source>Line YZ</source>
-        <translation type="unfinished"></translation>
+        <source>Line 2D</source>
+        <translation type="vanished">直线2D</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="595"/>
         <source>Line 3D</source>
-        <translation type="unfinished"></translation>
+        <translation>直线3D</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="601"/>
-        <source>Offset Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="607"/>
-        <source>Curve XY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="613"/>
-        <source>Curve XZ</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="619"/>
-        <source>Curve YZ</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="626"/>
         <source>Curve 3D</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线3D</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="632"/>
-        <source>Offset Curve</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="638"/>
-        <source>Circle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="644"/>
         <source>Pose</source>
-        <translation type="unfinished"></translation>
+        <translation>姿势</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="650"/>
-        <source>P Line 3D</source>
-        <translation type="unfinished"></translation>
+        <source>Pose 3D</source>
+        <translation type="vanished">姿势直线</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="656"/>
-        <source>P Curve 3D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="662"/>
-        <source>PCircle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="668"/>
-        <source>PO Line 3D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="673"/>
-        <source>PO Curve 3D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="679"/>
-        <source>Free Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="686"/>
-        <source>Offset Jog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/PointEdit.qml" line="780"/>
         <source>Set to Middle Point</source>
-        <translation type="unfinished"></translation>
+        <translation>设为中间点</translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="783"/>
         <source>Set to End</source>
-        <translation type="unfinished"></translation>
+        <translation>设为终点</translation>
+    </message>
+    <message>
+        <source>Free Path</source>
+        <translation>自由路径</translation>
+    </message>
+    <message>
+        <source>Offset Move</source>
+        <translation type="vanished">相对移动</translation>
+    </message>
+    <message>
+        <source>Offset Line</source>
+        <translation>相对直线</translation>
+    </message>
+    <message>
+        <source>Offset Jog</source>
+        <translation>相对关节</translation>
+    </message>
+    <message>
+        <source>Circle</source>
+        <translation>整圆</translation>
+    </message>
+    <message>
+        <source>Curve XY</source>
+        <translation>曲线XY</translation>
+    </message>
+    <message>
+        <source>Curve XZ</source>
+        <translation>曲线XZ</translation>
+    </message>
+    <message>
+        <source>Curve YZ</source>
+        <translation>曲线YZ</translation>
+    </message>
+    <message>
+        <source>Line XY</source>
+        <translation>直线XY</translation>
+    </message>
+    <message>
+        <source>Line XZ</source>
+        <translation>直线XZ</translation>
+    </message>
+    <message>
+        <source>Line YZ</source>
+        <translation>直线YZ</translation>
+    </message>
+    <message>
+        <source>Offset Curve</source>
+        <translation>相对曲线</translation>
+    </message>
+    <message>
+        <source>P Line 3D</source>
+        <translation>姿势直线</translation>
+    </message>
+    <message>
+        <source>P Curve 3D</source>
+        <translation>姿势曲线</translation>
+    </message>
+    <message>
+        <source>PO Line 3D</source>
+        <translation>相对姿势直线</translation>
+    </message>
+    <message>
+        <source>PO Curve 3D</source>
+        <translation>相对姿势曲线</translation>
+    </message>
+    <message>
+        <source>PCircle</source>
+        <translation>姿势整圆</translation>
     </message>
 </context>
 <context>
     <name>PointManager</name>
     <message>
-        <location filename="../PointManager.qml" line="58"/>
         <source>Point Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>点名称:</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="63"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="74"/>
         <source>Replace</source>
-        <translation type="unfinished"></translation>
+        <translation>替换位置</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="94"/>
         <source>Set In World Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>设入世界位置</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="107"/>
         <source>Set In Jog Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>设入关节位置</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="162"/>
         <source>New Free</source>
-        <translation type="unfinished"></translation>
+        <translation>新建关节点</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="179"/>
         <source>New Locus</source>
-        <translation type="unfinished"></translation>
+        <translation>新建路径点</translation>
     </message>
     <message>
-        <location filename="../PointManager.qml" line="191"/>
         <source>New Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>新建偏移点</translation>
     </message>
 </context>
 <context>
     <name>ProductSettings</name>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="16"/>
         <source>NoUse</source>
-        <translation type="unfinished"></translation>
+        <translation>不使用</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="16"/>
         <source>Use</source>
-        <translation type="unfinished"></translation>
+        <translation>使用</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="28"/>
         <source>Product</source>
-        <translation type="unfinished"></translation>
+        <translation>产品设定</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="39"/>
-        <source>Valve Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="48"/>
-        <source>custom Variables</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="75"/>
         <source>Program0</source>
-        <translation type="unfinished"></translation>
+        <translation>主程序</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="85"/>
         <source>Program1</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序1</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="96"/>
         <source>Program2</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序2</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="107"/>
         <source>Program3</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序3</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="118"/>
         <source>Program4</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序4</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="129"/>
         <source>Program5</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序5</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="140"/>
         <source>Program6</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序6</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="151"/>
         <source>Program7</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序7</translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="162"/>
         <source>Program8</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序8</translation>
+    </message>
+    <message>
+        <source>Valve Settings</source>
+        <translation>阀设定</translation>
+    </message>
+    <message>
+        <source>custom Variables</source>
+        <translation>自定义变量</translation>
     </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="75"/>
         <source>Axis Action</source>
-        <translation type="unfinished"></translation>
+        <translation>轴动作</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="83"/>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="92"/>
         <source>Output Action</source>
-        <translation type="unfinished"></translation>
+        <translation>信号输出</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="100"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>阀检测</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="108"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>条件跳转</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="116"/>
         <source>Wait</source>
-        <translation type="unfinished"></translation>
+        <translation>等待</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="124"/>
-        <source>Counter</source>
-        <translation type="unfinished"></translation>
+        <source>Other/Flag</source>
+        <translation type="vanished">标签</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="133"/>
         <source>Sync</source>
-        <translation type="unfinished"></translation>
+        <translation>同步</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="141"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>注释</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="149"/>
+        <source>Search</source>
+        <translation type="vanished">搜索</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>路径</translation>
+    </message>
+    <message>
         <source>Stack</source>
-        <translation type="unfinished"></translation>
+        <translation>堆叠</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="157"/>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
         <source>Custom Alarm</source>
-        <translation type="unfinished"></translation>
+        <translation>自定义报警</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="166"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>模块</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="174"/>
-        <source>Vision</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="184"/>
-        <source>Path Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="193"/>
-        <source>Data Command</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="203"/>
         <source>origin</source>
-        <translation type="unfinished"></translation>
+        <translation>原点指令</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="212"/>
+        <source>Vision</source>
+        <translation>视觉指令</translation>
+    </message>
+    <message>
+        <source>Path Speed</source>
+        <translation>路径速度</translation>
+    </message>
+    <message>
+        <source>Data Command</source>
+        <translation>数据指令</translation>
+    </message>
+    <message>
         <source>Extent</source>
-        <translation type="unfinished"></translation>
+        <translation>扩展</translation>
     </message>
 </context>
 <context>
     <name>ProgramActionMenuFrame</name>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="46"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>插入</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="111"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>动作
+菜单</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="214"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="249"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="268"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="279"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="308"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="324"/>
         <source>Output Action</source>
-        <translation type="unfinished"></translation>
+        <translation>信号输出</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="218"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="234"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="264"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="312"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="343"/>
         <source>Wait</source>
-        <translation type="unfinished"></translation>
+        <translation>等待</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="222"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="316"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="347"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>条件跳转</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="230"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="245"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="260"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="275"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="328"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="339"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>路径</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="238"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="253"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="283"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>阀检测</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="332"/>
         <source>Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>
     <name>ProgramFlowPage</name>
     <message>
-        <location filename="../teach/ProgramFlowPage.js" line="97"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="477"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="498"/>
-        <source>Main Program</source>
-        <translation type="unfinished"></translation>
+        <source>Editing</source>
+        <translation>编辑中</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.js" line="97"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="483"/>
-        <source>Sub-</source>
-        <translation type="unfinished"></translation>
+        <source>main</source>
+        <translation>主程序</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.js" line="99"/>
-        <source>Lines:</source>
-        <translation type="unfinished"></translation>
+        <source>Sub-1</source>
+        <translation>子程序-1</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="468"/>
-        <source>Program Compiling...</source>
-        <translation type="unfinished"></translation>
+        <source>Sub-2</source>
+        <translation>子程序-2</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="471"/>
-        <source>Modules</source>
-        <translation type="unfinished"></translation>
+        <source>Sub-3</source>
+        <translation>子程序-3</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="474"/>
-        <source>Manual Program</source>
-        <translation type="unfinished"></translation>
+        <source>Sub-4</source>
+        <translation>子程序-4</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="492"/>
+        <source>Sub-5</source>
+        <translation>子程序-5</translation>
+    </message>
+    <message>
+        <source>Sub-6</source>
+        <translation>子程序-6</translation>
+    </message>
+    <message>
+        <source>Sub-7</source>
+        <translation>子程序-7</translation>
+    </message>
+    <message>
+        <source>Sub-8</source>
+        <translation>子程序-8</translation>
+    </message>
+    <message>
+        <source>UP</source>
+        <translation>上移</translation>
+    </message>
+    <message>
+        <source>DW</source>
+        <translation>下移</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>修改</translation>
+    </message>
+    <message>
+        <source>C/UC</source>
+        <translation>屏蔽</translation>
+    </message>
+    <message>
+        <source>Del</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="vanished">插入</translation>
+    </message>
+    <message>
+        <source>Menu</source>
+        <translation type="vanished">动作
+菜单</translation>
+    </message>
+    <message>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>行</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="494"/>
+        <source>Follow ?</source>
+        <translation>跟随</translation>
+    </message>
+    <message>
+        <source>Speed:</source>
+        <translation>速度:</translation>
+    </message>
+    <message>
+        <source>Speed En</source>
+        <translation>调速使能</translation>
+    </message>
+    <message>
+        <source>Main Program</source>
+        <translation>主程序</translation>
+    </message>
+    <message>
+        <source>Sub-{0} Program</source>
+        <translation>子程序-{0}</translation>
+    </message>
+    <message>
+        <source>Save {0} of Record:{1}</source>
+        <translation>保存模号{1}的{0}</translation>
+    </message>
+    <message>
+        <source>Output Action</source>
+        <translation type="vanished">信号输出</translation>
+    </message>
+    <message>
+        <source>Wait</source>
+        <translation type="vanished">等待</translation>
+    </message>
+    <message>
+        <source>Condition</source>
+        <translation type="vanished">条件跳转</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="vanished">路径</translation>
+    </message>
+    <message>
+        <source>Check</source>
+        <translation type="vanished">阀检测</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation type="vanished">计数器</translation>
+    </message>
+    <message>
+        <source>Main Module</source>
+        <translation>主模块</translation>
+    </message>
+    <message>
+        <source>New Module</source>
+        <translation>新建模块</translation>
+    </message>
+    <message>
+        <source>Del Module</source>
+        <translation>删除模块</translation>
+    </message>
+    <message>
+        <source>Run</source>
+        <translation>试行</translation>
+    </message>
+    <message>
+        <source>New M CMD</source>
+        <translation>新建可编程按键</translation>
+    </message>
+    <message>
+        <source>Please Input the new program Name</source>
+        <translation>请输入新按键名称</translation>
+    </message>
+    <message>
+        <source>Program Name:</source>
+        <translation>按键名称:</translation>
+    </message>
+    <message>
+        <source>Del M CMD</source>
+        <translation>删除可编程按键</translation>
+    </message>
+    <message>
+        <source>Please Input the new module Name</source>
+        <translation>请输入新模块名称</translation>
+    </message>
+    <message>
+        <source>Module Name:</source>
+        <translation>模块名称:</translation>
+    </message>
+    <message>
+        <source>CUW</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Single Step</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>Start Line:[{0}]</source>
+        <translation>设当前行为单步起始:[{0}]</translation>
+    </message>
+    <message>
+        <source>Single Start</source>
+        <translation>单步开始</translation>
+    </message>
+    <message>
+        <source>Single Cycle</source>
+        <translation>单循环模式</translation>
+    </message>
+    <message>
+        <source>Cycle Start</source>
+        <translation>单循环开始</translation>
+    </message>
+    <message>
+        <source>Start Line:[-1]</source>
+        <translation>设当前行为单步起始:[-1]</translation>
+    </message>
+    <message>
+        <source>Program Compiling...</source>
+        <translation>程序编译中...</translation>
+    </message>
+    <message>
+        <source>Sub-</source>
+        <translation>子程序-</translation>
+    </message>
+    <message>
+        <source>Lines:</source>
+        <translation>行:</translation>
+    </message>
+    <message>
+        <source>Modules</source>
+        <translation>模块</translation>
+    </message>
+    <message>
+        <source>Manual Program</source>
+        <translation>可编程按键</translation>
+    </message>
+    <message>
         <source>Save {0} fail!.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>保存{0}失败!</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="494"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="758"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="861"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="498"/>
-        <source>Sub-{0} Program</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="499"/>
-        <source>Save {0} of Record:{1}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="669"/>
-        <source>Editing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="676"/>
-        <source>main</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="677"/>
-        <source>Sub-1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="678"/>
-        <source>Sub-2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="679"/>
-        <source>Sub-3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="680"/>
-        <source>Sub-4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="681"/>
-        <source>Sub-5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="682"/>
-        <source>Sub-6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="683"/>
-        <source>Sub-7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="684"/>
-        <source>Sub-8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="741"/>
-        <source>New M CMD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="755"/>
-        <source>Please Input the new program Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="756"/>
-        <source>Program Name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="759"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="862"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="767"/>
-        <source>Del M CMD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="782"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="1768"/>
-        <source>Main Module</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="838"/>
-        <source>New Module</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="858"/>
-        <source>Please Input the new module Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="859"/>
-        <source>Module Name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="869"/>
-        <source>Del Module</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="888"/>
-        <source>Follow ?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="901"/>
-        <source>Speed En</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="911"/>
-        <source>Speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1008"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="1226"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1076"/>
-        <source>Run</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1102"/>
-        <source>UP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1111"/>
-        <source>DW</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1120"/>
-        <source>CUW</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1144"/>
         <source>Copy Current Line</source>
-        <translation type="unfinished"></translation>
+        <translation>复制当前行</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1156"/>
         <source>Seq</source>
-        <translation type="unfinished"></translation>
+        <translation>序号</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1163"/>
         <source>Copy Between Seq and Current</source>
-        <translation type="unfinished"></translation>
+        <translation>复制序号到当前行</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1202"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1243"/>
-        <source>C/UC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1279"/>
-        <source>Del</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1499"/>
-        <source>Single Step</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1513"/>
-        <source>Start Line:[-1]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1517"/>
-        <source>Start Line:[{0}]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1522"/>
-        <source>Single Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1533"/>
-        <source>Single Cycle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1547"/>
-        <source>Cycle Start</source>
-        <translation type="unfinished"></translation>
+        <translation>粘贴</translation>
     </message>
 </context>
 <context>
     <name>ProgramPage</name>
     <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
         <source>Editor S/H</source>
-        <translation type="unfinished"></translation>
+        <translation>动作菜单</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>插入</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
         <source>Up</source>
-        <translation type="unfinished"></translation>
+        <translation>上移</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>下移</translation>
     </message>
     <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
-        <source>Fix Index</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramPage.qml" line="21"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <source>Fix Index</source>
+        <translation>整理编号</translation>
     </message>
 </context>
 <context>
     <name>QKConfigs</name>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="13"/>
         <source>Axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="17"/>
         <source>Addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="22"/>
         <source>Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="30"/>
         <source>Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="37"/>
         <source>Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="44"/>
         <source>Write EP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/QKConfigs.qml" line="51"/>
         <source>Read EP</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6231,1108 +5074,960 @@ please chose!</source>
 <context>
     <name>RecordManagementPage</name>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="55"/>
-        <source>Robot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="60"/>
-        <source>Vision</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="119"/>
         <source>Select Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>选中的模号:</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="133"/>
         <source>New Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>新模号名:</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="155"/>
-        <source>Local</source>
-        <translation type="unfinished"></translation>
+        <source>Load</source>
+        <translation>载入</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="167"/>
+        <source>New</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Please Enter the new record name!</source>
+        <translation type="vanished">请输入新模号名!</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>Del</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>导入</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
         <source>Export To USB</source>
-        <translation type="unfinished"></translation>
+        <translation>导出到U盘</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="177"/>
         <source>Import From USB</source>
-        <translation type="unfinished"></translation>
+        <translation>从U盘导入</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="216"/>
-        <source>Search</source>
-        <translation type="unfinished"></translation>
+        <source>Open</source>
+        <translation>打开</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="227"/>
-        <source>Clear Search</source>
-        <translation type="unfinished"></translation>
+        <source>This mold is using!</source>
+        <translation>模号使用中!</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="322"/>
+        <source>Load record </source>
+        <translation>载入模号</translation>
+    </message>
+    <message>
+        <source>Expoert Finished!</source>
+        <translation>导出完成!</translation>
+    </message>
+    <message>
+        <source>Import {0} fail!</source>
+        <translation type="vanished">导入{0}失败!</translation>
+    </message>
+    <message>
+        <source>Import Finished!</source>
+        <translation type="vanished">导入完成!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
         <source>name must be word number or underline
  and underline begin is not allowed</source>
-        <translation type="unfinished"></translation>
+        <translation>名称不符合要求</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="322"/>
-        <location filename="../teach/RecordManagementPage.qml" line="384"/>
-        <location filename="../teach/RecordManagementPage.qml" line="412"/>
-        <location filename="../teach/RecordManagementPage.qml" line="414"/>
-        <location filename="../teach/RecordManagementPage.qml" line="467"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
+        <source>Local</source>
+        <translation>本机模号</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="329"/>
-        <source>Load</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="334"/>
-        <source>In current mold</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="339"/>
-        <source>Mold has error!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="342"/>
-        <source>Load record </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="348"/>
-        <source>New</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="363"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="379"/>
-        <source>Del</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="384"/>
-        <source>This mold is using!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="394"/>
-        <source>Export</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="398"/>
-        <source>Exporting...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="412"/>
-        <source>Expoert Finished!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="414"/>
         <source>No USB Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有发现U盘!</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="419"/>
+        <source>Import {0} fail!
+</source>
+        <translation>导入{0}失败!</translation>
+    </message>
+    <message>
+        <source>Import Finished!
+</source>
+        <translation>导入完成!</translation>
+    </message>
+    <message>
+        <source>Robot</source>
+        <translation>机械手</translation>
+    </message>
+    <message>
+        <source>Vision</source>
+        <translation>视觉模板</translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Scan Model</source>
+        <translation>扫描模板</translation>
+    </message>
+    <message>
+        <source>Offset X</source>
+        <translation type="vanished">X偏移</translation>
+    </message>
+    <message>
+        <source>Offset Y</source>
+        <translation type="vanished">X偏移</translation>
+    </message>
+    <message>
+        <source>Offset A</source>
+        <translation type="vanished">A偏移</translation>
+    </message>
+    <message>
+        <source>Mold has error!</source>
+        <translation>模号有错!</translation>
+    </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>导入中...</translation>
+    </message>
+    <message>
         <source>Export Printable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="438"/>
-        <source>Import</source>
+        <source>In current mold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="443"/>
-        <source>Importing...</source>
-        <translation type="unfinished"></translation>
+        <source>Search</source>
+        <translation type="unfinished">搜索</translation>
     </message>
     <message>
-        <location filename="../teach/RecordManagementPage.qml" line="463"/>
-        <source>Import {0} fail!
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="467"/>
-        <source>Import Finished!
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="473"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="519"/>
-        <source>Data Source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/RecordManagementPage.qml" line="528"/>
-        <source>Scan Model</source>
+        <source>Clear Search</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="16"/>
         <source>Rest Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>剩余时间:</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="26"/>
         <source>Forever</source>
-        <translation type="unfinished"></translation>
+        <translation>永久</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="28"/>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="90"/>
         <source>hour</source>
-        <translation type="unfinished"></translation>
+        <translation>小时</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="36"/>
         <source>Machine Code:</source>
-        <translation type="unfinished"></translation>
+        <translation>机器码:</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="44"/>
         <source>Register Code:</source>
-        <translation type="unfinished"></translation>
+        <translation>注册码:</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="55"/>
         <source>Generate Machine Code</source>
-        <translation type="unfinished"></translation>
+        <translation>生成机器码</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="62"/>
         <source>Register</source>
-        <translation type="unfinished"></translation>
+        <translation>注册</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="68"/>
         <source>Wrong register code!</source>
-        <translation type="unfinished"></translation>
+        <translation>错误的注册码!</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="70"/>
         <source>Register successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>注册成功!</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="83"/>
         <source>Factory code(6bit):</source>
-        <translation type="unfinished"></translation>
+        <translation>厂商代码(6位):</translation>
     </message>
     <message>
-        <location filename="../settingpages/RegisterUseTimeSettings.qml" line="88"/>
         <source>Rest Time(0 Forever):</source>
-        <translation type="unfinished"></translation>
+        <translation>剩余时间(0为永久):</translation>
     </message>
 </context>
 <context>
     <name>RunningConfigs</name>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="20"/>
         <source>Tolerance</source>
-        <translation type="unfinished"></translation>
+        <translation>容差</translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="21"/>
         <source>Pulse</source>
-        <translation type="unfinished"></translation>
+        <translation>脉冲</translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="27"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="28"/>
         <source>Turn Auto Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>转自动后速度</translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="41"/>
         <source>Alarm Times</source>
-        <translation type="unfinished"></translation>
+        <translation>报警声音次数</translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="45"/>
         <source>Times</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="51"/>
         <source>Independent Manual Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>独立控制手动速度</translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="65"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="71"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="78"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="84"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="90"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="96"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="102"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="108"/>
         <source>Manual Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>手动速度</translation>
     </message>
 </context>
 <context>
     <name>SafeRangeEditor</name>
     <message>
-        <location filename="../teach/extents/SafeRangeEditor.qml" line="39"/>
         <source>Out Range</source>
-        <translation type="unfinished"></translation>
+        <translation>不在范围(默认在范围)</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SafeRangeEditor.qml" line="45"/>
         <source>Limited Axis</source>
-        <translation type="unfinished"></translation>
+        <translation>被限制轴</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SafeRangeEditor.qml" line="74"/>
         <source>Limit Axis</source>
-        <translation type="unfinished"></translation>
+        <translation>限制轴</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SafeRangeEditor.qml" line="86"/>
         <source>Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>改变</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SafeRangeEditor.qml" line="91"/>
         <source>Range</source>
-        <translation type="unfinished"></translation>
+        <translation>范围</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SafeRangeEditor.qml" line="116"/>
         <source>Alarm Num</source>
-        <translation type="unfinished"></translation>
+        <translation>报警号</translation>
     </message>
 </context>
 <context>
     <name>SearchActionEditor</name>
     <message>
-        <location filename="../teach/SearchActionEditor.qml" line="17"/>
         <source>Back to Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>返回主菜单</translation>
     </message>
     <message>
-        <location filename="../teach/SearchActionEditor.qml" line="22"/>
         <source>Start Search</source>
-        <translation type="unfinished"></translation>
+        <translation>开始搜索</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../settingpages/SettingsPage.qml" line="10"/>
         <source>Return</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
-        <location filename="../settingpages/SettingsPage.qml" line="34"/>
         <source>Product Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>产品设定</translation>
     </message>
     <message>
-        <location filename="../settingpages/SettingsPage.qml" line="48"/>
         <source>Machine Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>机器设定</translation>
     </message>
     <message>
-        <location filename="../settingpages/SettingsPage.qml" line="62"/>
         <source>Panel Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>手控设定</translation>
     </message>
     <message>
-        <location filename="../settingpages/SettingsPage.qml" line="122"/>
         <source>Please enter specific settings page settings, /nclick on the bottom right of the Back button to return to the previous menu</source>
-        <translation type="unfinished"></translation>
+        <translation>请进入具体的设定页面进行设置,点击右下方的返回按钮返回上一层菜单</translation>
     </message>
 </context>
 <context>
     <name>SingleStackAction</name>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="48"/>
         <source>Self</source>
-        <translation type="unfinished"></translation>
+        <translation>自身</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="137"/>
         <source>Axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="146"/>
         <source>Rel Points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="154"/>
         <source>PP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="161"/>
-        <location filename="../teach/extents/SingleStackAction.qml" line="176"/>
         <source>Start Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="185"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设入</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="198"/>
         <source>Addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="205"/>
-        <location filename="../teach/extents/SingleStackAction.qml" line="213"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="223"/>
         <source>Count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="230"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">速度</translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="233"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/SingleStackAction.qml" line="238"/>
         <source>Counter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计数器</translation>
     </message>
 </context>
 <context>
     <name>SpeedActionEditor</name>
     <message>
-        <location filename="../teach/SpeedActionEditor.qml" line="19"/>
         <source>Path Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>路径速度平滑:</translation>
     </message>
     <message>
-        <location filename="../teach/SpeedActionEditor.qml" line="23"/>
         <source>Start Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>起始速度</translation>
     </message>
     <message>
-        <location filename="../teach/SpeedActionEditor.qml" line="26"/>
-        <location filename="../teach/SpeedActionEditor.qml" line="33"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../teach/SpeedActionEditor.qml" line="30"/>
         <source>End Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>结束速度</translation>
     </message>
 </context>
 <context>
     <name>StackActionEditor</name>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="39"/>
-        <source>Speed0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="43"/>
-        <location filename="../teach/StackActionEditor.qml" line="588"/>
-        <source>Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="342"/>
-        <source>Use Stack</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="346"/>
-        <source>Define Stack</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="364"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>新建</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="371"/>
-        <location filename="../teach/StackActionEditor.qml" line="388"/>
-        <source>Please input the new stack name</source>
-        <translation type="unfinished"></translation>
+        <source>Define Stack</source>
+        <translation>定义堆叠</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="372"/>
-        <location filename="../teach/StackActionEditor.qml" line="389"/>
-        <source>Stack Name</source>
-        <translation type="unfinished"></translation>
+        <source>Use Stack</source>
+        <translation>使用堆叠</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="372"/>
-        <location filename="../teach/StackActionEditor.qml" line="389"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="372"/>
-        <location filename="../teach/StackActionEditor.qml" line="389"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="379"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="398"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="410"/>
-        <location filename="../teach/StackActionEditor.qml" line="575"/>
-        <source>Stack</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="410"/>
-        <source>is using!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="425"/>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="459"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="471"/>
-        <source>Box</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="485"/>
-        <source>Data Source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditor.qml" line="504"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation>设入</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="518"/>
-        <source>Edit Pos</source>
-        <translation type="unfinished"></translation>
+        <source>Stack</source>
+        <translation>堆叠</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="550"/>
-        <source>Pos And Cmp</source>
-        <translation type="unfinished"></translation>
+        <source>Save</source>
+        <translation>保存</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="554"/>
-        <source>Only Cmp</source>
-        <translation type="unfinished"></translation>
+        <source>Delete</source>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="597"/>
+        <source>Space0</source>
+        <translation type="vanished">X方向间距</translation>
+    </message>
+    <message>
+        <source>Count0</source>
+        <translation type="vanished">X方向计数</translation>
+    </message>
+    <message>
+        <source>Space1</source>
+        <translation type="vanished">Y方向间距</translation>
+    </message>
+    <message>
+        <source>Count1</source>
+        <translation type="vanished">Y方向计数</translation>
+    </message>
+    <message>
+        <source>Space2</source>
+        <translation type="vanished">Z方向间距</translation>
+    </message>
+    <message>
+        <source>Count2</source>
+        <translation type="vanished">Z方向计数</translation>
+    </message>
+    <message>
+        <source>Dir0</source>
+        <translation type="vanished">X方向</translation>
+    </message>
+    <message>
+        <source>RP</source>
+        <translation type="vanished">反相</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation type="vanished">正相</translation>
+    </message>
+    <message>
+        <source>Dir1</source>
+        <translation type="vanished">Y方向</translation>
+    </message>
+    <message>
+        <source>Dir2</source>
+        <translation type="vanished">Z方向</translation>
+    </message>
+    <message>
+        <source>Sequence</source>
+        <translation type="vanished">顺序</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
+    </message>
+    <message>
+        <source>Box</source>
+        <translation>装箱和箱内堆</translation>
+    </message>
+    <message>
+        <source>Speed0</source>
+        <translation>箱内堆速度:</translation>
+    </message>
+    <message>
         <source>Speed1</source>
-        <translation type="unfinished"></translation>
+        <translation>装箱速度</translation>
+    </message>
+    <message>
+        <source>Please input the new stack name</source>
+        <translation>请输入堆叠名称</translation>
+    </message>
+    <message>
+        <source>Stack Name</source>
+        <translation>堆叠名称</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Edit Pos</source>
+        <translation>编辑点位</translation>
+    </message>
+    <message>
+        <source>Pos And Cmp</source>
+        <translation>位置和相似度</translation>
+    </message>
+    <message>
+        <source>Only Cmp</source>
+        <translation>只有相似度</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>is using!</source>
+        <translation>使用中!</translation>
     </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="111"/>
-        <source>Offset En</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="121"/>
-        <source>Offset Z with Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="128"/>
-        <source>Three Point Way</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="163"/>
-        <source>Data Source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="235"/>
-        <source>X Offset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="243"/>
-        <source>Y Offset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="251"/>
-        <source>Z Offset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="264"/>
         <source>Space0</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向:间距</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="271"/>
         <source>Count0</source>
-        <translation type="unfinished"></translation>
+        <translation>,计数</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="277"/>
         <source>Space1</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向:间距</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="284"/>
         <source>Count1</source>
-        <translation type="unfinished"></translation>
+        <translation>,计数</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="290"/>
         <source>Space2</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向:间距</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="298"/>
         <source>Count2</source>
-        <translation type="unfinished"></translation>
+        <translation>,计数</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="312"/>
         <source>Dir0</source>
-        <translation type="unfinished"></translation>
+        <translation>X方向</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="313"/>
-        <location filename="../teach/StackActionEditorComponent.qml" line="321"/>
-        <location filename="../teach/StackActionEditorComponent.qml" line="328"/>
         <source>RP</source>
-        <translation type="unfinished"></translation>
+        <translation>反相</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="313"/>
-        <location filename="../teach/StackActionEditorComponent.qml" line="321"/>
-        <location filename="../teach/StackActionEditorComponent.qml" line="328"/>
         <source>PP</source>
-        <translation type="unfinished"></translation>
+        <translation>正相</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="320"/>
         <source>Dir1</source>
-        <translation type="unfinished"></translation>
+        <translation>Y方向</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="327"/>
         <source>Dir2</source>
-        <translation type="unfinished"></translation>
+        <translation>Z方向</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="336"/>
         <source>Sequence</source>
-        <translation type="unfinished"></translation>
+        <translation>顺序</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="337"/>
-        <source>Only X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="337"/>
-        <source>Only Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="337"/>
-        <source>Only Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="350"/>
         <source>Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="359"/>
-        <source>Run Seq</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="363"/>
-        <source>FinalX</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="363"/>
-        <source>FinalY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="363"/>
-        <source>FinalZ</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="363"/>
-        <source>Run Together</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="372"/>
         <source>Self</source>
-        <translation type="unfinished"></translation>
+        <translation>自身</translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditorComponent.qml" line="384"/>
+        <source>X Offset</source>
+        <translation>X偏移</translation>
+    </message>
+    <message>
+        <source>Y Offset</source>
+        <translation>Y偏移</translation>
+    </message>
+    <message>
+        <source>Z Offset</source>
+        <translation>Z偏移</translation>
+    </message>
+    <message>
+        <source>Offset En</source>
+        <translation>使用偏移</translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
         <source>Custom Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>不规则点位</translation>
+    </message>
+    <message>
+        <source>Only X</source>
+        <translation>只堆X</translation>
+    </message>
+    <message>
+        <source>Only Y</source>
+        <translation>只堆Y</translation>
+    </message>
+    <message>
+        <source>Only Z</source>
+        <translation>只堆Z</translation>
+    </message>
+    <message>
+        <source>Three Point Way</source>
+        <translation>三点法设定</translation>
+    </message>
+    <message>
+        <source>Offset Z with Y</source>
+        <translation>Y方向偏移Z</translation>
+    </message>
+    <message>
+        <source>Run Seq</source>
+        <translation>运行顺序</translation>
+    </message>
+    <message>
+        <source>FinalX</source>
+        <translation>最后X</translation>
+    </message>
+    <message>
+        <source>FinalY</source>
+        <translation>最后Y</translation>
+    </message>
+    <message>
+        <source>FinalZ</source>
+        <translation>最后Z</translation>
+    </message>
+    <message>
+        <source>Run Together</source>
+        <translation>一起运行</translation>
     </message>
 </context>
 <context>
     <name>StackCustomPointEditor</name>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="47"/>
-        <source>Total:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="54"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="63"/>
-        <source>Sync Replace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="101"/>
         <source>Point Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>点名称:</translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="107"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="115"/>
         <source>Replace</source>
-        <translation type="unfinished"></translation>
+        <translation>替换位置</translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="132"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation>设入</translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="188"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>新建</translation>
     </message>
     <message>
-        <location filename="../teach/StackCustomPointEditor.qml" line="200"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <source>Total:</source>
+        <translation>总共:</translation>
+    </message>
+    <message>
+        <source>Sync Replace</source>
+        <translation>同步替换</translation>
     </message>
 </context>
 <context>
     <name>StackThreePointWayEditor</name>
     <message>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="35"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="55"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="74"/>
         <source>Start Point</source>
-        <translation type="unfinished"></translation>
+        <translation>起点</translation>
     </message>
     <message>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="103"/>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="207"/>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="227"/>
         <source>Set In</source>
-        <translation type="unfinished"></translation>
+        <translation>设入</translation>
     </message>
     <message>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="147"/>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="169"/>
         <source> dir next Point</source>
-        <translation type="unfinished"></translation>
+        <translation>方向下一点</translation>
     </message>
     <message>
-        <location filename="../teach/StackThreePointWayEditor.qml" line="219"/>
         <source>The system will caculate the offset and space when comfirm. 
 You just need to set the count configs after this setting.</source>
-        <translation type="unfinished"></translation>
+        <translation>设定三点之后,系统会自动计算偏移和间距.你只需在外面设定
+各方向的计数即可.</translation>
     </message>
 </context>
 <context>
     <name>StructConfigs</name>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="88"/>
+        <source>Length</source>
+        <translation type="vanished">每转距离</translation>
+    </message>
+    <message>
         <source>Machine Struct 1</source>
-        <translation type="unfinished"></translation>
+        <translation>结构1</translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="89"/>
-        <location filename="../settingpages/StructConfigs.qml" line="97"/>
-        <location filename="../settingpages/StructConfigs.qml" line="105"/>
-        <location filename="../settingpages/StructConfigs.qml" line="113"/>
-        <location filename="../settingpages/StructConfigs.qml" line="121"/>
-        <location filename="../settingpages/StructConfigs.qml" line="129"/>
-        <location filename="../settingpages/StructConfigs.qml" line="137"/>
-        <location filename="../settingpages/StructConfigs.qml" line="145"/>
-        <location filename="../settingpages/StructConfigs.qml" line="153"/>
-        <location filename="../settingpages/StructConfigs.qml" line="160"/>
-        <location filename="../settingpages/StructConfigs.qml" line="167"/>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="96"/>
         <source>Machine Struct 2</source>
-        <translation type="unfinished"></translation>
+        <translation>结构2</translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="104"/>
+        <source>Machine Struct 3</source>
+        <translation type="vanished">结构参数3</translation>
+    </message>
+    <message>
+        <source>Machine Struct 4</source>
+        <translation>结构4</translation>
+    </message>
+    <message>
+        <source>Machine Struct 5</source>
+        <translation type="vanished">结构参数5</translation>
+    </message>
+    <message>
+        <source>Machine Struct 6</source>
+        <translation>结构6</translation>
+    </message>
+    <message>
+        <source>Machine Struct 7</source>
+        <translation type="vanished">结构参数7</translation>
+    </message>
+    <message>
+        <source>Machine Struct 8</source>
+        <translation type="vanished">结构参数8</translation>
+    </message>
+    <message>
+        <source>Machine Struct 9</source>
+        <translation type="vanished">结构参数9</translation>
+    </message>
+    <message>
+        <source>SACC 1</source>
+        <translation>S加速1</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>SACC 2</source>
+        <translation>S加速2</translation>
+    </message>
+    <message>
+        <source>SDEC 1</source>
+        <translation>S减速1</translation>
+    </message>
+    <message>
+        <source>SDEC 2</source>
+        <translation>S减速2</translation>
+    </message>
+    <message>
+        <source>SACC Time</source>
+        <translation>S加速度</translation>
+    </message>
+    <message>
+        <source>m/s²</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>SDec Time</source>
+        <translation>S减速度</translation>
+    </message>
+    <message>
+        <source>SACC Max</source>
+        <translation>S最大速度</translation>
+    </message>
+    <message>
+        <source>m/s</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Axis1 Diff</source>
+        <translation>偏角1</translation>
+    </message>
+    <message>
+        <source>°</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Axis2 Diff</source>
+        <translation>偏角2</translation>
+    </message>
+    <message>
+        <source>Axis3 Diff</source>
+        <translation>偏角3</translation>
+    </message>
+    <message>
+        <source>Axis4 Diff</source>
+        <translation>偏角4</translation>
+    </message>
+    <message>
+        <source>Axis5 Diff</source>
+        <translation>偏角5</translation>
+    </message>
+    <message>
+        <source>Axis6 Diff</source>
+        <translation>偏角6</translation>
+    </message>
+    <message>
         <source>L01</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="112"/>
-        <source>Machine Struct 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="120"/>
         <source>L23</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="128"/>
-        <source>Machine Struct 6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="136"/>
         <source>L34a</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="144"/>
         <source>L34b</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="152"/>
         <source>L4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="159"/>
         <source>L12</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="166"/>
         <source>L24</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="174"/>
-        <source>Axis1 Diff</source>
-        <translation type="unfinished"></translation>
+        <source>IO Type</source>
+        <translation>车床IO定义</translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="175"/>
-        <location filename="../settingpages/StructConfigs.qml" line="182"/>
-        <location filename="../settingpages/StructConfigs.qml" line="189"/>
-        <location filename="../settingpages/StructConfigs.qml" line="196"/>
-        <location filename="../settingpages/StructConfigs.qml" line="203"/>
-        <location filename="../settingpages/StructConfigs.qml" line="210"/>
-        <source>°</source>
-        <translation type="unfinished"></translation>
+        <source>L6-IO-1</source>
+        <translation>机型1</translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="181"/>
-        <source>Axis2 Diff</source>
-        <translation type="unfinished"></translation>
+        <source>L6-IO-2</source>
+        <translation>机型2</translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="188"/>
-        <source>Axis3 Diff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="195"/>
-        <source>Axis4 Diff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="202"/>
-        <source>Axis5 Diff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="209"/>
-        <source>Axis6 Diff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="223"/>
-        <source>SACC 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="224"/>
-        <location filename="../settingpages/StructConfigs.qml" line="232"/>
-        <location filename="../settingpages/StructConfigs.qml" line="240"/>
-        <location filename="../settingpages/StructConfigs.qml" line="248"/>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="231"/>
-        <source>SACC 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="239"/>
-        <source>SDEC 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="247"/>
-        <source>SDEC 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="254"/>
-        <source>SACC Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="255"/>
-        <location filename="../settingpages/StructConfigs.qml" line="262"/>
-        <source>m/s²</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="261"/>
-        <source>SDec Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="268"/>
-        <source>SACC Max</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="269"/>
-        <source>m/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="275"/>
         <source>Analog En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/StructConfigs.qml" line="282"/>
-        <source>IO Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="283"/>
-        <source>L6-IO-1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="283"/>
-        <source>L6-IO-2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/StructConfigs.qml" line="283"/>
         <source>L6-IO-3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">机型3 {6-?}</translation>
     </message>
 </context>
 <context>
     <name>SyncActionEditor</name>
     <message>
-        <location filename="../teach/SyncActionEditor.qml" line="24"/>
-        <source>Sync Begin</source>
-        <translation type="unfinished"></translation>
+        <source>Back to Menu</source>
+        <translation type="vanished">返回主菜单</translation>
     </message>
     <message>
-        <location filename="../teach/SyncActionEditor.qml" line="29"/>
+        <source>Sync Begin</source>
+        <translation>同步开始</translation>
+    </message>
+    <message>
         <source>Sync End</source>
-        <translation type="unfinished"></translation>
+        <translation>同步结束</translation>
     </message>
 </context>
 <context>
     <name>SystemConfigs</name>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="18"/>
         <source>Host Board</source>
-        <translation type="unfinished"></translation>
+        <translation>主板选择</translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="47"/>
         <source>Machine Type</source>
-        <translation type="unfinished"></translation>
+        <translation>机器类型</translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
         <source>kSttIndependent</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
         <source>kSttPP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
         <source>kSttRR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
         <source>kSttPPP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
         <source>kSttRTR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
         <source>kSttRRP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
         <source>kSttRRPR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="52"/>
         <source>kSttRTRT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="52"/>
         <source>kSttRTRTTT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="52"/>
         <source>kStt5P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="52"/>
         <source>kSttPPP_RRR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="53"/>
         <source>kSttRRPR_BRT</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="53"/>
         <source>kSttRTRTTT_EX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="53"/>
-        <source>kSttLathe_6p</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="58"/>
         <source>Axis Num</source>
-        <translation type="unfinished"></translation>
+        <translation>轴数</translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="63"/>
-        <source>IO Board Num</source>
-        <translation type="unfinished"></translation>
+        <source>kSttLathe_6p</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="69"/>
         <source>Clear Program Btn</source>
-        <translation type="unfinished"></translation>
+        <translation>清空可编程按键</translation>
+    </message>
+    <message>
+        <source>IO Board Num</source>
+        <translation>IO板数</translation>
     </message>
 </context>
 <context>
     <name>TabMenuItem</name>
     <message>
-        <location filename="../../ICCustomElement/TabMenuItem.qml" line="24"/>
         <source>TabItem</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7340,12 +6035,10 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>TabMenuItemWidget</name>
     <message>
-        <location filename="../../ICCustomElement/TabMenuItemWidget.qml" line="17"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">接收的内容</translation>
     </message>
     <message>
-        <location filename="../../ICCustomElement/TabMenuItemWidget.qml" line="27"/>
         <source>text1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7353,993 +6046,774 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>Teach</name>
     <message>
-        <location filename="../teach/Teach.js" line="307"/>
-        <source>Invalid Flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="308"/>
-        <location filename="../teach/Teach.js" line="317"/>
-        <location filename="../teach/Teach.js" line="1369"/>
-        <source>Flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="459"/>
-        <location filename="../teach/Teach.js" line="1443"/>
-        <source>Stack</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="471"/>
-        <source>Counter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="657"/>
-        <location filename="../teach/Teach.js" line="724"/>
-        <source>Fun</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1219"/>
-        <location filename="../teach/Teach.js" line="1238"/>
-        <location filename="../teach/Teach.js" line="1250"/>
-        <location filename="../teach/Teach.js" line="1280"/>
-        <location filename="../teach/Teach.js" line="1445"/>
-        <location filename="../teach/Teach.js" line="1546"/>
         <source>Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>速度:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1220"/>
-        <location filename="../teach/Teach.js" line="1231"/>
-        <location filename="../teach/Teach.js" line="1251"/>
-        <location filename="../teach/Teach.js" line="1281"/>
-        <location filename="../teach/Teach.js" line="1390"/>
-        <location filename="../teach/Teach.js" line="1395"/>
-        <location filename="../teach/Teach.js" line="1399"/>
-        <location filename="../teach/Teach.js" line="1407"/>
-        <location filename="../teach/Teach.js" line="1547"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>延时:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1222"/>
-        <location filename="../teach/Teach.js" line="1254"/>
-        <location filename="../teach/Teach.js" line="1283"/>
         <source>Bad En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1224"/>
-        <location filename="../teach/Teach.js" line="1257"/>
-        <location filename="../teach/Teach.js" line="1285"/>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation>提前结束位置:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1238"/>
-        <source>Speed Control PP Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1238"/>
-        <source>Speed Control RP Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1240"/>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1261"/>
-        <source>Early End Spd pos:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1262"/>
-        <source>Early End Spd:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1266"/>
-        <source>When </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1266"/>
-        <source>is On</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1267"/>
-        <source>slow stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1267"/>
-        <source>fast stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1271"/>
-        <source>Rel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1276"/>
-        <source>Type 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1276"/>
-        <source>Type 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1276"/>
-        <source>Type 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1279"/>
-        <source>origin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1296"/>
-        <source>Alarm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1301"/>
-        <source>Jump To </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1305"/>
-        <location filename="../teach/Teach.js" line="1308"/>
-        <location filename="../teach/Teach.js" line="1312"/>
-        <location filename="../teach/Teach.js" line="1325"/>
         <source>IF:</source>
-        <translation type="unfinished"></translation>
+        <translation>如果:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1305"/>
-        <source>Invalid Counter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1309"/>
-        <source>Arrive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1309"/>
-        <source>No arrive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1309"/>
-        <location filename="../teach/Teach.js" line="1328"/>
-        <source>Go to </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1310"/>
-        <source>Then clear counter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1312"/>
-        <source>Left Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1314"/>
-        <source>Right Data:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1314"/>
-        <source>Right Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1315"/>
-        <source>Go to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1326"/>
-        <location filename="../teach/Teach.js" line="1333"/>
-        <location filename="../teach/Teach.js" line="1339"/>
-        <location filename="../teach/Teach.js" line="1389"/>
-        <location filename="../teach/Teach.js" line="1402"/>
-        <location filename="../teach/Teach.js" line="1406"/>
-        <location filename="../teach/Teach.js" line="1555"/>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1326"/>
-        <location filename="../teach/Teach.js" line="1333"/>
-        <location filename="../teach/Teach.js" line="1339"/>
-        <location filename="../teach/Teach.js" line="1389"/>
-        <location filename="../teach/Teach.js" line="1402"/>
-        <location filename="../teach/Teach.js" line="1406"/>
-        <location filename="../teach/Teach.js" line="1555"/>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1327"/>
-        <location filename="../teach/Teach.js" line="1334"/>
-        <location filename="../teach/Teach.js" line="1340"/>
-        <location filename="../teach/Teach.js" line="1565"/>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>限时:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1332"/>
         <source>Wait:</source>
-        <translation type="unfinished"></translation>
+        <translation>等待:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
-        <location filename="../teach/Teach.js" line="1394"/>
-        <location filename="../teach/Teach.js" line="1398"/>
         <source>Check:</source>
-        <translation type="unfinished"></translation>
+        <translation>阀检测:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1348"/>
-        <source>Program End</source>
-        <translation type="unfinished"></translation>
+        <source>End</source>
+        <translation type="vanished">模组结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1352"/>
-        <source>Module End</source>
-        <translation type="unfinished"></translation>
+        <source>Flag</source>
+        <translation>标签</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1356"/>
-        <source>next line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1357"/>
-        <source>Call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1358"/>
-        <source>And then return to </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1374"/>
-        <source>Normal Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1375"/>
-        <source>Single Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1376"/>
-        <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1377"/>
-        <source>Unhold Double Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1394"/>
-        <source>Check Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1398"/>
-        <source>Check End</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1402"/>
-        <location filename="../teach/Teach.js" line="1555"/>
-        <source>Time Output:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1403"/>
-        <location filename="../teach/Teach.js" line="1556"/>
-        <source>Action Time:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1406"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>输出:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1413"/>
         <source>Sync Begin</source>
-        <translation type="unfinished"></translation>
+        <translation>同步开始</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1417"/>
         <source>Sync End</source>
-        <translation type="unfinished"></translation>
+        <translation>同步结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1423"/>
-        <source>Box</source>
-        <translation type="unfinished"></translation>
+        <source>Line2D:</source>
+        <translation type="vanished">直线2D:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1428"/>
-        <source>Datasource</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1430"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1436"/>
-        <source>not exist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1438"/>
-        <source>Speed1:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1440"/>
-        <location filename="../teach/Teach.js" line="1441"/>
-        <source>Counter:Self</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1445"/>
-        <source>Speed0:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1450"/>
-        <source>Clear </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1450"/>
-        <source>Plus 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1479"/>
-        <source>LineXY:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1482"/>
-        <source>LineXZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1485"/>
-        <source>LineYZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1488"/>
         <source>Line3D:</source>
-        <translation type="unfinished"></translation>
+        <translation>直线3D:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1491"/>
         <source>Arc3D:</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线3D:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1494"/>
-        <source>Pose:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1497"/>
-        <source>Line3D-Pose:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1500"/>
-        <source>Free Path:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1503"/>
-        <source>Offset Line:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1506"/>
-        <source>Offset Jog:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1509"/>
-        <source>Circle:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1512"/>
-        <source>ArcXY:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1515"/>
-        <source>ArcXZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1518"/>
-        <source>ArcYZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1521"/>
-        <source>Offset Curve:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1524"/>
-        <source>Curve3D-Pose:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1527"/>
-        <source>PO Curve 3D:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1530"/>
-        <source>P Circle:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1533"/>
-        <source>PO Line 3D:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1539"/>
         <source>Next:</source>
-        <translation type="unfinished"></translation>
+        <translation>下一位置:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1542"/>
         <source>End:</source>
-        <translation type="unfinished"></translation>
+        <translation>结束位置:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1559"/>
-        <source>Vistion Catch Start:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1559"/>
-        <location filename="../teach/Teach.js" line="1564"/>
-        <source>Data Source:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1560"/>
-        <source>Catch Type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1560"/>
-        <source>Communicate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1560"/>
-        <source>O Point</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1564"/>
-        <source>Wait Vision Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1569"/>
-        <source>Path Speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1569"/>
-        <source>Start Speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1569"/>
-        <source>End Speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1573"/>
-        <source>Write Const Data To Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1573"/>
-        <source>Write Addr Data To Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1574"/>
-        <source>Const Data:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1574"/>
-        <source>Addr Data:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1576"/>
-        <source>Target Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1715"/>
         <source>Sub program is out of ranged</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序范围不对</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1717"/>
         <source>Invalid program</source>
-        <translation type="unfinished"></translation>
+        <translation>无效程序</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1719"/>
         <source>Has not Group-Begin action but has Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1721"/>
         <source>Group action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1723"/>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1725"/>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation>没有同步开始但有同步结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1727"/>
         <source>Sync action is nesting</source>
-        <translation type="unfinished"></translation>
+        <translation>同步嵌套</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1729"/>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation>有同步开始没有同步结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1731"/>
         <source>Last action is not End action</source>
-        <translation type="unfinished"></translation>
+        <translation>没有模号结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1733"/>
-        <source>Invalid program index</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1735"/>
-        <source>Wrong action format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1737"/>
-        <source>Invalid jump flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1739"/>
-        <source>Invalid stack</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1741"/>
-        <source>Invalid counter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1743"/>
-        <source>Invaild Moldule</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1745"/>
         <source>Unknow Error</source>
+        <translation>未知错误</translation>
+    </message>
+    <message>
+        <source>Jump To </source>
+        <translation>跳转到</translation>
+    </message>
+    <message>
+        <source>Go to </source>
+        <translation>跳转到</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="vanished">开始</translation>
+    </message>
+    <message>
+        <source>not exist</source>
+        <translation>不存在</translation>
+    </message>
+    <message>
+        <source>Stack</source>
+        <translation>堆叠</translation>
+    </message>
+    <message>
+        <source>Pose:</source>
+        <translation>姿势:</translation>
+    </message>
+    <message>
+        <source>Line3D-Pose:</source>
+        <translation>姿势直线:</translation>
+    </message>
+    <message>
+        <source>Invalid program index</source>
+        <translation>无效程序索引</translation>
+    </message>
+    <message>
+        <source>Wrong action format</source>
+        <translation>错误动作格式</translation>
+    </message>
+    <message>
+        <source>Invalid jump flag</source>
+        <translation>无效跳转标签</translation>
+    </message>
+    <message>
+        <source>Time Output:</source>
+        <translation>时间输出:</translation>
+    </message>
+    <message>
+        <source>Action Time:</source>
+        <translation>动作时间:</translation>
+    </message>
+    <message>
+        <source>Invalid Counter</source>
+        <translation>非法的计数器</translation>
+    </message>
+    <message>
+        <source>Arrive</source>
+        <translation>到达</translation>
+    </message>
+    <message>
+        <source>No arrive</source>
+        <translation>没到达</translation>
+    </message>
+    <message>
+        <source>Then clear counter</source>
+        <translation>然后清零计数器</translation>
+    </message>
+    <message>
+        <source>Box</source>
+        <translation>装箱</translation>
+    </message>
+    <message>
+        <source>Speed1:</source>
+        <translation>装箱速度:</translation>
+    </message>
+    <message>
+        <source>Counter:Self</source>
+        <translation>计数器:自身</translation>
+    </message>
+    <message>
+        <source>Speed0:</source>
+        <translation>箱内堆速度:</translation>
+    </message>
+    <message>
+        <source>Clear </source>
+        <translation>清空</translation>
+    </message>
+    <message>
+        <source>Invalid stack</source>
+        <translation>非法的堆叠</translation>
+    </message>
+    <message>
+        <source>Invalid counter</source>
+        <translation>非法的计数器</translation>
+    </message>
+    <message>
+        <source>Counter</source>
+        <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Plus 1</source>
+        <translation>累加</translation>
+    </message>
+    <message>
+        <source>Free Path:</source>
+        <translation>自由路径:</translation>
+    </message>
+    <message>
+        <source>Offset Move:</source>
+        <translation type="vanished">相对移动:</translation>
+    </message>
+    <message>
+        <source>Alarm</source>
+        <translation>报警</translation>
+    </message>
+    <message>
+        <source>Fun</source>
+        <translation>模块</translation>
+    </message>
+    <message>
+        <source>Program End</source>
+        <translation>模组结束</translation>
+    </message>
+    <message>
+        <source>Module End</source>
+        <translation>模块结束</translation>
+    </message>
+    <message>
+        <source>next line</source>
+        <translation>下一行</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>调用</translation>
+    </message>
+    <message>
+        <source>And then return to </source>
+        <translation>然后返回到</translation>
+    </message>
+    <message>
+        <source>Invalid Flag</source>
+        <translation>无效标签</translation>
+    </message>
+    <message>
+        <source>Normal Y</source>
+        <translation>普通输出</translation>
+    </message>
+    <message>
+        <source>Single Y</source>
+        <translation>单头阀</translation>
+    </message>
+    <message>
+        <source>Hold Double Y</source>
+        <translation>保持型双头阀</translation>
+    </message>
+    <message>
+        <source>Unhold Double Y</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offset Line:</source>
+        <translation>相对直线:</translation>
+    </message>
+    <message>
+        <source>Offset Jog:</source>
+        <translation>相对关节:</translation>
+    </message>
+    <message>
+        <source>Type 1</source>
+        <translation>手动设定原点加开关</translation>
+    </message>
+    <message>
+        <source>Type 2</source>
+        <translation>直接找Z脉冲</translation>
+    </message>
+    <message>
+        <source>Type 3</source>
+        <translation>自动设定原点加开关</translation>
+    </message>
+    <message>
+        <source>origin</source>
+        <translation>原点指令</translation>
+    </message>
+    <message>
+        <source>Circle:</source>
+        <translation>整圆:</translation>
+    </message>
+    <message>
+        <source>Output</source>
+        <translation type="vanished">输出</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation type="vanished">通</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="vanished">断</translation>
+    </message>
+    <message>
+        <source>Vistion Catch Start:</source>
+        <translation>相机开始拍照:</translation>
+    </message>
+    <message>
+        <source>Data Source:</source>
+        <translation>数据源:</translation>
+    </message>
+    <message>
+        <source>Catch Type:</source>
+        <translation>触发类型:</translation>
+    </message>
+    <message>
+        <source>Communicate</source>
+        <translation>通信</translation>
+    </message>
+    <message>
+        <source>O Point</source>
+        <translation>输出点</translation>
+    </message>
+    <message>
+        <source>Wait Vision Data</source>
+        <translation>等待视觉数据</translation>
+    </message>
+    <message>
+        <source>ArcXY:</source>
+        <translation>曲线XY:</translation>
+    </message>
+    <message>
+        <source>ArcXZ:</source>
+        <translation>曲线XZ:</translation>
+    </message>
+    <message>
+        <source>ArcYZ:</source>
+        <translation>曲线YZ:</translation>
+    </message>
+    <message>
+        <source>Invaild Moldule</source>
+        <translation>无效模块</translation>
+    </message>
+    <message>
+        <source>LineXY:</source>
+        <translation>直线XY:</translation>
+    </message>
+    <message>
+        <source>LineXZ:</source>
+        <translation>直线XZ:</translation>
+    </message>
+    <message>
+        <source>LineYZ:</source>
+        <translation>直线YZ:</translation>
+    </message>
+    <message>
+        <source>Offset Curve:</source>
+        <translation>相对曲线:</translation>
+    </message>
+    <message>
+        <source>Early End Spd pos:</source>
+        <translation>提前减速位置:</translation>
+    </message>
+    <message>
+        <source>Early End Spd:</source>
+        <translation>提前减速速度:</translation>
+    </message>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed:</source>
+        <translation>起始速度:</translation>
+    </message>
+    <message>
+        <source>End Speed:</source>
+        <translation>结束速度:</translation>
+    </message>
+    <message>
+        <source>Curve3D-Pose:</source>
+        <translation>姿势曲线:</translation>
+    </message>
+    <message>
+        <source>PO Curve 3D:</source>
+        <translation>相对姿势曲线:</translation>
+    </message>
+    <message>
+        <source>P Circle:</source>
+        <translation>姿势整圆:</translation>
+    </message>
+    <message>
+        <source>PO Line 3D:</source>
+        <translation>相对姿势直线:</translation>
+    </message>
+    <message>
+        <source>Left Addr:</source>
+        <translation>左地址值:</translation>
+    </message>
+    <message>
+        <source>Right Data:</source>
+        <translation>右数据值:</translation>
+    </message>
+    <message>
+        <source>Right Addr:</source>
+        <translation>右地址值:</translation>
+    </message>
+    <message>
+        <source>Go to</source>
+        <translation>跳转到</translation>
+    </message>
+    <message>
+        <source>Write Const Data To Addr:</source>
+        <translation>写立即数到地址:</translation>
+    </message>
+    <message>
+        <source>Write Addr Data To Addr:</source>
+        <translation>写地址值到地址:</translation>
+    </message>
+    <message>
+        <source>Const Data:</source>
+        <translation>立即数:</translation>
+    </message>
+    <message>
+        <source>Addr Data:</source>
+        <translation>地址数据:</translation>
+    </message>
+    <message>
+        <source>Target Addr:</source>
+        <translation>目标地址:</translation>
+    </message>
+    <message>
+        <source>When </source>
+        <translation>当</translation>
+    </message>
+    <message>
+        <source>is On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>slow stop</source>
+        <translation>就减速停</translation>
+    </message>
+    <message>
+        <source>fast stop</source>
+        <translation>就立即停</translation>
+    </message>
+    <message>
+        <source>Speed Control PP Start</source>
+        <translation>速度正向启动</translation>
+    </message>
+    <message>
+        <source>Speed Control RP Start</source>
+        <translation>速度反向启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>Check Start</source>
+        <translation>开始检测</translation>
+    </message>
+    <message>
+        <source>Check End</source>
+        <translation>结束检测</translation>
+    </message>
+    <message>
+        <source>Rel</source>
+        <translation>相对</translation>
+    </message>
+    <message>
+        <source>Datasource</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>一般</translation>
     </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="186"/>
         <source>Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>速度:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="187"/>
-        <location filename="../teach/Teach_old_plat.js" line="198"/>
-        <location filename="../teach/Teach_old_plat.js" line="340"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>延时:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="189"/>
+        <source>X1</source>
+        <translation type="unfinished">X1</translation>
+    </message>
+    <message>
+        <source>X2</source>
+        <translation type="unfinished">X2</translation>
+    </message>
+    <message>
         <source>Bad En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="191"/>
         <source>Early End Pos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">提前结束位置:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="203"/>
-        <source>X1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach_old_plat.js" line="208"/>
         <source>Y1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {1?}</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="212"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z轴</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="216"/>
-        <source>X2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach_old_plat.js" line="221"/>
         <source>Y2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警声 {2?}</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="226"/>
         <source>A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="230"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="235"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="239"/>
         <source>X1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="242"/>
         <source>X1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="247"/>
         <source>Y1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="251"/>
         <source>Y1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="256"/>
         <source>Z OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="260"/>
         <source>Z ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="265"/>
         <source>X2 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="269"/>
         <source>X2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="274"/>
         <source>A OFF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常闭</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="278"/>
         <source>A ON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常开</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="283"/>
         <source>B OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="287"/>
         <source>B ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="291"/>
         <source>C OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="294"/>
         <source>C ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="303"/>
         <source>IF:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">如果:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="304"/>
-        <location filename="../teach/Teach_old_plat.js" line="311"/>
-        <location filename="../teach/Teach_old_plat.js" line="317"/>
-        <location filename="../teach/Teach_old_plat.js" line="339"/>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="304"/>
-        <location filename="../teach/Teach_old_plat.js" line="311"/>
-        <location filename="../teach/Teach_old_plat.js" line="317"/>
-        <location filename="../teach/Teach_old_plat.js" line="339"/>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">断</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="305"/>
-        <location filename="../teach/Teach_old_plat.js" line="312"/>
-        <location filename="../teach/Teach_old_plat.js" line="318"/>
         <source>Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">限时:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="306"/>
         <source>Go to flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="310"/>
         <source>Wait:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">等待:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="316"/>
         <source>Check:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">阀检测:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="326"/>
         <source>End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="330"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">注释:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="334"/>
         <source>Flag</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标签</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="339"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输出:</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="344"/>
         <source>Sync Begin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">同步开始</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="348"/>
         <source>Sync End</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">同步结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="404"/>
         <source>Sub program is out of ranged</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">子程序范围不对</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="406"/>
         <source>Invalid program</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无效程序</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="408"/>
         <source>Has not Group-Begin action but has Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="410"/>
         <source>Group action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="412"/>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="414"/>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有同步开始但有同步结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="416"/>
         <source>Sync action is nesting</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">同步嵌套</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="418"/>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">有同步开始没有同步结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="420"/>
         <source>Last action is not End action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有模号结束</translation>
     </message>
     <message>
-        <location filename="../teach/Teach_old_plat.js" line="422"/>
         <source>Unknow Error</source>
-        <translation type="unfinished"></translation>
+        <translation>未知错误</translation>
     </message>
 </context>
 <context>
     <name>ToolsCalibration</name>
     <message>
-        <location filename="../ToolsCalibration.qml" line="98"/>
         <source>Set to P1</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点1</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="114"/>
-        <location filename="../ToolsCalibration.qml" line="137"/>
-        <location filename="../ToolsCalibration.qml" line="160"/>
-        <location filename="../ToolsCalibration.qml" line="183"/>
-        <location filename="../ToolsCalibration.qml" line="205"/>
-        <location filename="../ToolsCalibration.qml" line="227"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">接收的内容</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="120"/>
         <source>Set to P2</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点2</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="144"/>
         <source>Set to P3</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点3</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="167"/>
         <source>Set to P4</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点4</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="189"/>
         <source>Set to P5</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点5</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="211"/>
         <source>Set to P6</source>
-        <translation type="unfinished"></translation>
+        <translation>设为点6</translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="233"/>
         <source>Use it?</source>
-        <translation type="unfinished"></translation>
+        <translation>使用</translation>
     </message>
 </context>
 <context>
     <name>TopHeader</name>
     <message>
-        <location filename="../TopHeader.qml" line="31"/>
-        <location filename="../TopHeader.qml" line="157"/>
         <source>Records:</source>
-        <translation type="unfinished"></translation>
+        <translation>模号:</translation>
     </message>
     <message>
-        <location filename="../TopHeader.qml" line="48"/>
-        <location filename="../TopHeader.qml" line="84"/>
-        <source>Manual</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../TopHeader.qml" line="54"/>
-        <location filename="../TopHeader.qml" line="198"/>
-        <source>Auto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../TopHeader.qml" line="60"/>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../TopHeader.qml" line="94"/>
-        <source>%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../TopHeader.qml" line="140"/>
         <source>Calculator</source>
-        <translation type="unfinished"></translation>
+        <translation>计算器</translation>
     </message>
     <message>
-        <location filename="../TopHeader.qml" line="147"/>
         <source>I/O</source>
-        <translation type="unfinished"></translation>
+        <translation>I/O监视</translation>
     </message>
     <message>
-        <location filename="../TopHeader.qml" line="166"/>
+        <source>Manual</source>
+        <translation>手动</translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation>自动</translation>
+    </message>
+    <message>
         <source>Alarm log</source>
-        <translation type="unfinished"></translation>
+        <translation>报警记录</translation>
     </message>
     <message>
-        <location filename="../TopHeader.qml" line="173"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>参数设定</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>TopMenuItem</name>
     <message>
-        <location filename="../TopMenuItem.qml" line="19"/>
         <source>item</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8347,444 +6821,368 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>UsermanagementPage</name>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="40"/>
         <source>namelist:</source>
-        <translation type="unfinished"></translation>
+        <translation>用户列表:</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="86"/>
         <source>username:</source>
-        <translation type="unfinished"></translation>
+        <translation>用户名:</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="116"/>
         <source>password:</source>
-        <translation type="unfinished"></translation>
+        <translation>密码:</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="158"/>
         <source>cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="171"/>
         <source>delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="182"/>
         <source>ok</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="187"/>
         <source>username or password can not be empty!!</source>
-        <translation type="unfinished"></translation>
+        <translation>用户名和密码不能为空!</translation>
     </message>
     <message>
-        <location filename="../settingpages/UsermanagementPage.qml" line="208"/>
         <source>please set perm!!</source>
-        <translation type="unfinished"></translation>
+        <translation>请设置权限!</translation>
     </message>
 </context>
 <context>
     <name>ValveSettings</name>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="16"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>确定修改</translation>
     </message>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="54"/>
-        <location filename="../settingpages/ValveSettings.qml" line="63"/>
         <source>RP</source>
-        <translation type="unfinished"></translation>
+        <translation>反相</translation>
     </message>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="54"/>
-        <location filename="../settingpages/ValveSettings.qml" line="63"/>
         <source>PP</source>
-        <translation type="unfinished"></translation>
+        <translation>正相</translation>
     </message>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="78"/>
         <source>Auto Check</source>
-        <translation type="unfinished"></translation>
+        <translation>自动检测</translation>
     </message>
 </context>
 <context>
     <name>VisionActionEditor</name>
     <message>
-        <location filename="../teach/VisionActionEditor.qml" line="44"/>
-        <source>Data Source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/VisionActionEditor.qml" line="53"/>
         <source>Catch</source>
-        <translation type="unfinished"></translation>
+        <translation>拍照</translation>
     </message>
     <message>
-        <location filename="../teach/VisionActionEditor.qml" line="57"/>
         <source>O Point</source>
-        <translation type="unfinished"></translation>
+        <translation>输出点</translation>
     </message>
     <message>
-        <location filename="../teach/VisionActionEditor.qml" line="57"/>
         <source>Communicate</source>
-        <translation type="unfinished"></translation>
+        <translation>通信</translation>
     </message>
     <message>
-        <location filename="../teach/VisionActionEditor.qml" line="70"/>
-        <source>On</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/VisionActionEditor.qml" line="75"/>
-        <source>Off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/VisionActionEditor.qml" line="81"/>
-        <source>Action Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/VisionActionEditor.qml" line="84"/>
-        <location filename="../teach/VisionActionEditor.qml" line="136"/>
-        <source>s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/VisionActionEditor.qml" line="129"/>
         <source>Wait Data</source>
-        <translation type="unfinished"></translation>
+        <translation>等待视觉数据</translation>
     </message>
     <message>
-        <location filename="../teach/VisionActionEditor.qml" line="133"/>
         <source>Wait Time</source>
-        <translation type="unfinished"></translation>
+        <translation>限制时间</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Data Source</source>
+        <translation>数据源</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Action Time</source>
+        <translation>动作时间</translation>
     </message>
 </context>
 <context>
     <name>VisionModelItem</name>
     <message>
-        <location filename="../teach/VisionModelItem.qml" line="55"/>
         <source>Offset X</source>
-        <translation type="unfinished"></translation>
+        <translation>X偏移</translation>
     </message>
     <message>
-        <location filename="../teach/VisionModelItem.qml" line="60"/>
         <source>Offset Y</source>
-        <translation type="unfinished"></translation>
+        <translation>X偏移</translation>
     </message>
     <message>
-        <location filename="../teach/VisionModelItem.qml" line="65"/>
         <source>Offset A</source>
-        <translation type="unfinished"></translation>
+        <translation>A偏移</translation>
     </message>
     <message>
-        <location filename="../teach/VisionModelItem.qml" line="71"/>
         <source>Use this Model</source>
-        <translation type="unfinished"></translation>
+        <translation>使用该模板</translation>
     </message>
 </context>
 <context>
     <name>WaitActionEditor</name>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="96"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
+        <source>Back to Menu</source>
+        <translation type="obsolete">返回</translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="102"/>
-        <source>EUX</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="107"/>
-        <source>M</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="188"/>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>通</translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="193"/>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>断</translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="199"/>
-        <source>Delay:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="200"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>EUX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M</source>
+        <translation>中间变量</translation>
+    </message>
+    <message>
+        <source>Delay:</source>
+        <translation>限时:</translation>
     </message>
 </context>
 <context>
     <name>YDefineItem</name>
     <message>
-        <location filename="../YDefineItem.qml" line="50"/>
-        <source>Off</source>
-        <translation type="unfinished"></translation>
+        <source>On</source>
+        <translation>通</translation>
     </message>
     <message>
-        <location filename="../YDefineItem.qml" line="50"/>
-        <source>On</source>
-        <translation type="unfinished"></translation>
+        <source>Off</source>
+        <translation>断</translation>
     </message>
 </context>
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="51"/>
-        <source>Rest Time:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="165"/>
         <source>Operation</source>
-        <translation type="unfinished"></translation>
+        <translation>手动操作</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="175"/>
-        <location filename="../main.qml" line="653"/>
         <source>Program</source>
-        <translation type="unfinished"></translation>
+        <translation>编程</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="184"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>参数设定</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="273"/>
-        <location filename="../main.qml" line="298"/>
-        <location filename="../main.qml" line="354"/>
-        <source>↑</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="326"/>
-        <source>Alarm Log</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="331"/>
-        <source>Operation Log</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="368"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>登录</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="369"/>
-        <source>Sign out</source>
-        <translation type="unfinished"></translation>
+        <source>Alarm Log</source>
+        <translation>报警记录</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="374"/>
-        <source>Sign in</source>
-        <translation type="unfinished"></translation>
+        <source>Operation Log</source>
+        <translation>操作记录</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="653"/>
-        <source>V Program</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="744"/>
-        <source>Sending Data...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="744"/>
-        <source>Get it</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="805"/>
-        <source>Recalibrate need to reboot. Continue?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="805"/>
-        <source>Yes[F4]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="805"/>
-        <source>No[F5]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="833"/>
-        <source>Please Register!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="890"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
-        <translation type="unfinished"></translation>
+        <translation>请按原点键然后按启动键原点复归.</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="923"/>
+        <source>V Program</source>
+        <translation>程序</translation>
+    </message>
+    <message>
+        <source>↑</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Sign out</source>
+        <translation>登出</translation>
+    </message>
+    <message>
+        <source>Sign in</source>
+        <translation>登入</translation>
+    </message>
+    <message>
+        <source>please press startup button to origin</source>
+        <translation type="vanished">请按启动键原点复归.</translation>
+    </message>
+    <message>
+        <source>please press startup button to return</source>
+        <translation type="vanished">请按启动键复归.</translation>
+    </message>
+    <message>
+        <source>Recalibrate need to reboot. Continue?</source>
+        <translation>触摸校正需要重启.继续吗?</translation>
+    </message>
+    <message>
+        <source>Yes[F4]</source>
+        <translation>确定[F4]</translation>
+    </message>
+    <message>
+        <source>No[F5]</source>
+        <translation>取消[F5]</translation>
+    </message>
+    <message>
+        <source>Sending Data...</source>
+        <translation>数据发送中...</translation>
+    </message>
+    <message>
+        <source>Get it</source>
+        <translation>知道了</translation>
+    </message>
+    <message>
         <source>Origin is changed? Do you want to refind an origin?</source>
-        <translation type="unfinished"></translation>
+        <translation>原点已经改变.需要重设原点位置吗?</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="923"/>
         <source>Refind</source>
-        <translation type="unfinished"></translation>
+        <translation>重设原点</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="923"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>Rest Time:</source>
+        <translation>剩余使用时间:</translation>
+    </message>
+    <message>
+        <source>Please Register!</source>
+        <translation>请注册!</translation>
     </message>
 </context>
 <context>
     <name>maintainPage</name>
     <message>
-        <location filename="../settingpages/maintainPage.qml" line="13"/>
         <source>UI Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>UI版本:</translation>
     </message>
     <message>
-        <location filename="../settingpages/maintainPage.qml" line="20"/>
         <source>Controller Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>中间件版本:</translation>
     </message>
     <message>
-        <location filename="../settingpages/maintainPage.qml" line="30"/>
-        <source>Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/maintainPage.qml" line="35"/>
-        <source>Backup/Restore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/maintainPage.qml" line="91"/>
         <source>Scan Updater</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描更新包</translation>
     </message>
     <message>
-        <location filename="../settingpages/maintainPage.qml" line="106"/>
         <source>Start Update</source>
-        <translation type="unfinished"></translation>
+        <translation>开始更新</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <source>Backup/Restore</source>
+        <translation>备份/还原</translation>
     </message>
 </context>
 <context>
     <name>panelSettingsPage</name>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="14"/>
         <source>Touch Calibrate</source>
-        <translation type="unfinished"></translation>
+        <translation>触摸校正</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="17"/>
         <source>Recalibrate need to reboot. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>触摸校正需要重启.继续吗?</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="17"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>是</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="17"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>否</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="37"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>语言</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="70"/>
         <source>Key Tone</source>
-        <translation type="unfinished"></translation>
+        <translation>按键音</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="78"/>
         <source>Key Tone Off</source>
-        <translation type="unfinished"></translation>
+        <translation>关</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="88"/>
         <source>Key Tone On</source>
-        <translation type="unfinished"></translation>
+        <translation>开</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="105"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>屏幕亮度</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="112"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="132"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="145"/>
         <source>Screensaver Time</source>
-        <translation type="unfinished"></translation>
+        <translation>屏幕保护时间</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="150"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="163"/>
         <source>Date time</source>
-        <translation type="unfinished"></translation>
+        <translation>日期时间</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="185"/>
         <source>year</source>
-        <translation type="unfinished"></translation>
+        <translation>年</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="191"/>
         <source>mon</source>
-        <translation type="unfinished"></translation>
+        <translation>月</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="197"/>
         <source>day</source>
-        <translation type="unfinished"></translation>
+        <translation>日</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="202"/>
         <source>hour</source>
-        <translation type="unfinished"></translation>
+        <translation>时</translation>
     </message>
     <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="207"/>
-        <source>minute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/panelSettingsPage.qml" line="212"/>
         <source>sec</source>
-        <translation type="unfinished"></translation>
+        <translation>秒</translation>
+    </message>
+    <message>
+        <source>minute</source>
+        <translation>分</translation>
     </message>
 </context>
 </TS>

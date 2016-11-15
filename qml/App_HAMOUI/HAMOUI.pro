@@ -11,7 +11,8 @@ teach/extents/*.qml \
 teach/extents/*.js
 }
 
-DISTFILES +=
+DISTFILES += \
+    settingpages/SafeAreaConfigs.qml
 
 
 

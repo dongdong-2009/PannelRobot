@@ -18,6 +18,7 @@ Item {
         structConfigBtn.enabled = isEn;
         systemConfigBtn.enabled = ShareData.UserInfo.currentSZHCPerm();
         qkConfigBtn.enabled = isEn;
+        safeAreaBtn.enabled = isEn;
     }
 
     width: parent.width
@@ -64,6 +65,14 @@ Item {
 
         }
 
+        CatalogButton{
+            id:safeAreaBtn
+            text: qsTr("SafeArea Configs")
+            icon: "../images/settings_motor_config.png"
+            enabled: false
+
+        }
+
 //        CatalogButton{
 //            id:configsManageBtn
 //            text: qsTr("Data Manage")
@@ -100,7 +109,8 @@ Item {
         configsContainer.addNav(runningConfigsBtn, Qt.createComponent('RunningConfigs.qml'));
         configsContainer.addNav(structConfigBtn, Qt.createComponent('StructConfigs.qml'));
         configsContainer.addNav(systemConfigBtn, Qt.createComponent('SystemConfigs.qml'));
-        configsContainer.addNav(qkConfigBtn, Qt.createComponent('QKConfigs.qml'))
+        configsContainer.addNav(qkConfigBtn, Qt.createComponent('QKConfigs.qml'));
+        configsContainer.addNav(safeAreaBtn, Qt.createComponent('SafeAreaConfigs.qml'));
         ShareData.UserInfo.registUserChangeEvent(container);
     }
 

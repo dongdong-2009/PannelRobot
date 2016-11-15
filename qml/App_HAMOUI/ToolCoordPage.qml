@@ -324,7 +324,7 @@ Item {
             id:coordName
             isNumberOnly: false
             configName: qsTr("coordName")
-            configNameWidth: 100
+            configNameWidth: 90
             inputWidth:120
         }
         ICButton{

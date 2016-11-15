@@ -292,6 +292,7 @@ Item {
         {
         case 1:qm="L6-2_zh_CN.qm";break;
         case 2:qm="L6-3_zh_CN.qm";break;
+        case 3:qm="L6-4_zh_CN.qm";break;
         default:qm ="HAMOUI_zh_CN.qm";break;
         }
 
@@ -314,6 +315,7 @@ Item {
         if(qm=="HAMOUI_zh_CN.qm")l6Type.configValue=0;
         else if(qm=="L6-2_zh_CN.qm")l6Type.configValue=1;
         else if(qm=="L6-3_zh_CN.qm")l6Type.configValue=2;
+        else if(qm=="L6-4_zh_CN.qm")l6Type.configValue=3;
         l6Type.configValueChanged.connect(onIOTypeChanged);
     }
 }

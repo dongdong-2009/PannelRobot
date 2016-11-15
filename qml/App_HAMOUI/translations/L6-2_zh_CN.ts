@@ -5926,6 +5926,10 @@ You just need to set the count configs after this setting.</source>
         <source>Analog En</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>L6-IO-3</source>
+        <translation type="unfinished">机型3 {6-?}</translation>
+    </message>
 </context>
 <context>
     <name>SyncActionEditor</name>

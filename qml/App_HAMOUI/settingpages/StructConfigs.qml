@@ -280,14 +280,21 @@ Item {
     ICComboBoxConfigEdit{
         id:l6Type
         configName: qsTr("IO Type")
-        items: [qsTr("L6-IO-1"), qsTr("L6-IO-2")]
+        items: [qsTr("L6-IO-1"), qsTr("L6-IO-2"),qsTr("L6-IO-3")]
         anchors.right: parent.right
         anchors.rightMargin: 20
     }
 
     function onIOTypeChanged(){
         if(panelRobotController.getCustomSettings("Language", "CN") == "US") return;
-        var qm = l6Type.configValue == 0 ? "HAMOUI_zh_CN.qm" : "L6-2_zh_CN.qm";
+        var qm ="HAMOUI_zh_CN.qm";
+        switch(l6Type.configValue)
+        {
+        case 1:qm="L6-2_zh_CN.qm";break;
+        case 2:qm="L6-3_zh_CN.qm";break;
+        default:qm ="HAMOUI_zh_CN.qm";break;
+        }
+
         panelRobotController.setCustomSettings("L6CNQM", qm);
         panelRobotController.setCurrentTranslator(qm);
     }
@@ -303,7 +310,10 @@ Item {
     Component.onCompleted: {
 //        AxisDefine.registerMonitors(container);
 //        onAxisDefinesChanged();
-        l6Type.configValue = (panelRobotController.getCustomSettings("L6CNQM", "HAMOUI_zh_CN.qm") == "HAMOUI_zh_CN.qm" ? 0 : 1)
+        var qm = panelRobotController.getCustomSettings("L6CNQM", "HAMOUI_zh_CN.qm");
+        if(qm=="HAMOUI_zh_CN.qm")l6Type.configValue=0;
+        else if(qm=="L6-2_zh_CN.qm")l6Type.configValue=1;
+        else if(qm=="L6-3_zh_CN.qm")l6Type.configValue=2;
         l6Type.configValueChanged.connect(onIOTypeChanged);
     }
 }

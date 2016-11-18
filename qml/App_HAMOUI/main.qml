@@ -13,6 +13,7 @@ import "../utils/stringhelper.js" as ICString
 import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
+import "opt/optconfigs.js" as OptConfigs
 
 Rectangle {
     id:mainWindow
@@ -107,7 +108,10 @@ Rectangle {
                 return settingPage;
             }
             else if(which == menuProgram){
-                return programPage
+                return programPage;
+            }
+            else if(which == menuSimpleProgram){
+                return simpleProgramPage;
             }
 
             else return null;
@@ -178,6 +182,17 @@ Rectangle {
                 textColor: getChecked() ? "yellow" : "black"
             }
             TabMenuItem{
+                id:menuSimpleProgram
+                width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
+                height: parent.height
+                itemText: qsTr("Simple Program")
+                color: getChecked() ? "green" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+                enabled: menuProgram.enabled
+                visible: OptConfigs.simpleProgram !== ""
+            }
+            TabMenuItem{
                 id:menuSettings
                 width: parent.width * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
                 height: parent.height
@@ -229,6 +244,13 @@ Rectangle {
             anchors.fill: parent
             visible: false
         }
+        Loader{
+            id:simpleProgramPage
+            source: OptConfigs.simpleProgram
+            anchors.fill: parent
+            visible: false
+        }
+
         Component.onCompleted: {
             console.log("main.container",container.width, container.height)
         }

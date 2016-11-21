@@ -70,7 +70,7 @@ ContentPageBase{
             }
             pageContainer.setCurrentIndex(0);
             if(OptConfigs.simpleProgram !== ""){
-                programFlowClass = Qt.createComponent(OptConfigs.simpleProgram);
+                programFlowClass = Qt.createComponent("../opt/" + OptConfigs.simpleProgram);
                 if (programFlowClass.status == Component.Ready){
                     page = programFlowClass.createObject(pageContainer)
                     pageContainer.addPage(page);

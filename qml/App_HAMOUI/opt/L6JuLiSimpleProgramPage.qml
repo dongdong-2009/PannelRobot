@@ -14,12 +14,13 @@ Rectangle {
 
     }
     Column{
-        spacing: 1
+        spacing: 4
+        y:4
         ICButtonGroup{
             id:funSel
             isAutoSize: true
             mustChecked: true
-            spacing: 20
+            spacing: 40
             checkedIndex: 0
             ICCheckBox{
                 id:actionInMold
@@ -42,7 +43,7 @@ Rectangle {
             width: instance.width
         }
         ICStackContainer{
-            height: instance.height - funSel.height - horSplitLine.height
+            height: instance.height - funSel.height - horSplitLine.height - 10
             width: instance.width
 
         }

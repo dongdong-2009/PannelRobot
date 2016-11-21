@@ -1120,7 +1120,7 @@ var generateSyncEndAction = function(){
 }
 
 
-var generateCommentAction = function(comment, commentdAction){
+var generateCommentAction = function(comment, commentdAction, reserve){
     var temp;
     if(commentdAction == undefined)temp = undefined;
     else temp = commentdAction.insertedIndex;
@@ -1128,7 +1128,8 @@ var generateCommentAction = function(comment, commentdAction){
         "action": actions.ACT_COMMENT,
         "comment":comment,
         "insertedIndex": temp,
-        "commentAction":commentdAction || null
+        "commentAction":commentdAction || null,
+        "reserve":reserve
     };
 }
 

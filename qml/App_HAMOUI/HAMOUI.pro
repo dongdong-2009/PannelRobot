@@ -12,7 +12,8 @@ teach/extents/*.js
 }
 
 OTHER_FILES += \
-    opt/optconfigs.js
+    opt/optconfigs.js \
+    opt/L6JuLiSimpleProgramPage.qml
 
 
 

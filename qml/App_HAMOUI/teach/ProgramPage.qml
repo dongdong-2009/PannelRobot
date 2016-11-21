@@ -61,6 +61,8 @@ ContentPageBase{
 
         ICStackContainer{
             id:pageContainer
+            width: parent.width
+            height: parent.height
         }
         Component.onCompleted: {
             var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');
@@ -76,7 +78,8 @@ ContentPageBase{
                     pageContainer.addPage(page);
                     swichBtn.visible = true;
                     pageContainer.setCurrentIndex(1);
-                }
+                }else
+                    console.log("opt/teach/page:", programFlowClass.errorString());
             }
         }
     }

@@ -1,3 +1,3 @@
 .pragma library
 
-var simpleProgram = "opt/L6JuLiSimpleProgramPage.qml"
+var simpleProgram = "L6JuLiSimpleProgramPage.qml"

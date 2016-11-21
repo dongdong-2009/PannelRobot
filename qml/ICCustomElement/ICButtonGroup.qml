@@ -36,7 +36,7 @@ Item {
         property variant buttons: []
         property double startPos: 0
         function deepFindCheckBox(item){
-            if(item.hasOwnProperty("isChecked") && item.visible){
+            if(item.hasOwnProperty("isChecked")){
                 addButton(item);
                 return;
             }

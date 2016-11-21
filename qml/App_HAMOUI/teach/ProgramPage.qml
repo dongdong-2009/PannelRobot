@@ -69,15 +69,16 @@ ContentPageBase{
                 pageContainer.addPage(page);
             }
             pageContainer.setCurrentIndex(0);
-//            if(OptConfigs.simpleProgram !== ""){
-//                programFlowClass = Qt.createComponent(OptConfigs.simpleProgram);
-//                if (programFlowClass.status == Component.Ready){
-//                    page = programFlowClass.createObject(pageContainer)
-//                    pageContainer.addPage(page);
-//                    swichBtn.visible = true;
-//                    pageContainer.setCurrentIndex(1);
-//                }
-//            }
+            if(OptConfigs.simpleProgram !== ""){
+                programFlowClass = Qt.createComponent("../opt/" + OptConfigs.simpleProgram);
+                if (programFlowClass.status == Component.Ready){
+                    page = programFlowClass.createObject(pageContainer)
+                    pageContainer.addPage(page);
+                    swichBtn.visible = true;
+                    pageContainer.setCurrentIndex(1);
+                }else
+                    console.log("opt/teach/page:",programFlowClass.errorString());
+            }
         }
     }
 

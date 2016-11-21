@@ -13,25 +13,41 @@ Rectangle {
     function onSaveTriggered(){
 
     }
-    Row{
+    Column{
+        spacing: 1
         ICButtonGroup{
             id:funSel
-            ICButton{
+            isAutoSize: true
+            mustChecked: true
+            spacing: 20
+            checkedIndex: 0
+            ICCheckBox{
                 id:actionInMold
                 text: qsTr("In Mold")
+                isChecked: true
             }
-            ICButton{
+            ICCheckBox{
                 id:getMaterial
                 text:qsTr("Get M")
             }
-            ICButton{
+            ICCheckBox{
                 id:releaseMaterial
                 text: qsTr("Rel M")
             }
         }
+        Rectangle{
+            id:horSplitLine
+            height: 1
+            color: "black"
+            width: instance.width
+        }
         ICStackContainer{
-            height: instance.height
-            width: instance.width - funSel.width
+            height: instance.height - funSel.height - horSplitLine.height
+            width: instance.width
+
         }
     }
+//    Component.onStatusChanged: {
+//        console.log(errorString())
+//    }
 }

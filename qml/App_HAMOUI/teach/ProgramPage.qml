@@ -61,6 +61,8 @@ ContentPageBase{
 
         ICStackContainer{
             id:pageContainer
+            width: parent.width
+            height: parent.height
         }
         Component.onCompleted: {
             var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');

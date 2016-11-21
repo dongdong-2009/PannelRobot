@@ -407,6 +407,7 @@ Item {
         updateConfigValue(sDCC2, pdata.configAddrs[which][27], onSDCC2Changed);
 
 
+
     }
 
     ICButtonGroup{
@@ -789,6 +790,13 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                 }
+                ICConfigEdit{
+                    id:originOffsetPulse
+                    configName: qsTr("originOffset")
+                    unit: qsTr("a")
+                    configNameWidth: pdata.configNameWidth
+                    inputWidth: pdata.inputWidth
+                }
 
             }
 
@@ -816,6 +824,7 @@ Item {
             }
             Grid{
                 columns: 2
+                spacing: 3
                 Text {
                     text: qsTr("Test Pulse Number:")
                 }
@@ -825,6 +834,16 @@ Item {
                     text: "10000"
                     onTextChanged: {
                         panelRobotController.setMotorTestPulseNum(text);
+                    }
+                }
+                Text {
+                    text: qsTr("Test Speed:")
+                }
+                ICLineEdit{
+                    id:testSpeed
+                    unit: qsTr("%")
+                    onTextChanged: {
+//                        panelRobotController.setMotorTestPulseNum(text);
                     }
                 }
 

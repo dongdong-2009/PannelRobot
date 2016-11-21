@@ -5039,6 +5039,14 @@ please chose!</source>
         <source>Fix Index</source>
         <translation>整理编号</translation>
     </message>
+    <message>
+        <source>Adv</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sp</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QKConfigs</name>

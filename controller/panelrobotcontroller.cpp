@@ -821,6 +821,18 @@ QString PanelRobotController::currentRunningActionInfo(int which) const
 bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line, const QString &lineContent)
 {
     QPair<int, int> stepInfo;
+    if(module >= 0)
+    {
+        for(int i = 0; i < ICRobotMold::kSubEnd; ++i)
+        {
+            ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(i, module, line, lineContent,stepInfo);
+            if(item.isEmpty()) continue;
+
+            qDebug()<<"fixProgramOnAutoMode:"<<i<<" "<<module<<ICRobotVirtualhost::FixProgram(host_, i, stepInfo.first, stepInfo.second, item);
+
+        }
+        return true;
+    }
     ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
     qDebug()<<"fixProgramOnAutoMode"<<item<<stepInfo;
     return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
@@ -1641,6 +1653,8 @@ bool PanelRobotController::loadRecord(const QString &name)
         }
 
         emit moldChanged();
+        modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
+
     }
 
     return ret;

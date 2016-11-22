@@ -358,6 +358,18 @@ Item {
         panelRobotController.syncConfigs();
     }
 
+    function onOriginOffsetChanged(){
+        var addr = originOffsetPulse.configAddrs[pdata.currentGroup];
+        panelRobotController.setConfigValue(addr, originOffsetPulse.configValue);
+        panelRobotController.syncConfigs();
+    }
+
+    function onTestSpeedChanged(){
+        var addr = testSpeed.configAddrs[pdata.currentGroup];
+        panelRobotController.setConfigValue(addr, testSpeed.configValue);
+        panelRobotController.syncConfigs();
+    }
+
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
@@ -405,9 +417,8 @@ Item {
         updateConfigValue(sACC2, pdata.configAddrs[which][25], onSACC2Changed);
         updateConfigValue(sDCC1, pdata.configAddrs[which][26], onSDCC1Changed);
         updateConfigValue(sDCC2, pdata.configAddrs[which][27], onSDCC2Changed);
-
-
-
+        updateConfigValue(originOffsetPulse,originOffsetPulse.configAddrs[which],onOriginOffsetChanged);
+        updateConfigValue(testSpeed,testSpeed.configAddrs[which],onTestSpeedChanged);
     }
 
     ICButtonGroup{
@@ -793,7 +804,10 @@ Item {
                 ICConfigEdit{
                     id:originOffsetPulse
                     configName: qsTr("originOffset")
+                    property variant configAddrs: ["s_rw_0_16_0_239","s_rw_16_16_0_239","s_rw_0_16_0_240",
+                        "s_rw_16_16_0_240","s_rw_0_16_0_241","s_rw_16_16_0_241","s_rw_0_16_0_242","s_rw_16_16_0_242"]
                     unit: qsTr("a")
+                    max:500
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                 }
@@ -839,12 +853,11 @@ Item {
                 Text {
                     text: qsTr("Test Speed:")
                 }
-                ICLineEdit{
+                ICConfigEdit{
                     id:testSpeed
                     unit: qsTr("%")
-                    onTextChanged: {
-//                        panelRobotController.setMotorTestPulseNum(text);
-                    }
+                    property variant configAddrs: ["s_rw_0_8_0_243","s_rw_8_8_0_243","s_rw_16_8_0_243",
+                        "s_rw_24_8_0_243","s_rw_0_8_0_244","s_rw_8_8_0_244","s_rw_16_8_0_244","s_rw_24_8_0_244"]
                 }
 
                 Text {

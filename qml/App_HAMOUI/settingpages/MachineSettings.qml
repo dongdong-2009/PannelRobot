@@ -68,7 +68,7 @@ Item {
         CatalogButton{
             id:safeAreaBtn
             text: qsTr("SafeArea Configs")
-            icon: "../images/settings_motor_config.png"
+            icon: "../images/logo.png"
             enabled: false
 
         }

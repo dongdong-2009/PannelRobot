@@ -366,6 +366,8 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
     {
         machineConfigModifyCache_.append(p);
     }
+    qDebug()<<"PanelRobotController::setConfigValue"<<p.first->ToString()<<p.second;
+
     //    qDebug()<<moldFncModifyCache_;
 }
 

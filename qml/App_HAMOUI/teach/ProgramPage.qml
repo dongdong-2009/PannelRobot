@@ -74,7 +74,7 @@ ContentPageBase{
             if(OptConfigs.simpleProgram !== ""){
                 programFlowClass = Qt.createComponent("../opt/" + OptConfigs.simpleProgram);
                 if (programFlowClass.status == Component.Ready){
-                    page = programFlowClass.createObject(pageContainer)
+                    page = programFlowClass.createObject(pageContainer, {width:programContainer.width, height:programContainer.height})
                     pageContainer.addPage(page);
                     swichBtn.visible = true;
                     pageContainer.setCurrentIndex(1);

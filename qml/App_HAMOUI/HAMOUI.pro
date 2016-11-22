@@ -13,7 +13,8 @@ teach/extents/*.js
 
 OTHER_FILES += \
     opt/optconfigs.js \
-    opt/L6JuLiSimpleProgramPage.qml
+    opt/L6JuLiSimpleProgramPage.qml \
+    opt/ICValveSelComponent.qml
 
 
 

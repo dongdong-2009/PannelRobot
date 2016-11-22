@@ -41,6 +41,8 @@ Item {
 
     property string dataSourceName: dataSourceSel.configText()
 
+    property alias isCounterEn: counterSel.visible
+
     function realDoesBindingCounter(){
 
         return counterSel.configValue != 0;

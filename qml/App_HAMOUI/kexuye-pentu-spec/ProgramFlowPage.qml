@@ -1954,12 +1954,22 @@ ProgramFlowPage {
             var ret = panelRobotController.currentRunningActionInfo(0);
             var info = JSON.parse(ret);
             info.steps = JSON.parse(info.steps);
-            if(LocalPData.stepToKeXuYeRowMap[info.steps] != rows){
+            var model = BasePData.programs[0];
+            if(model.get(rows).mI_ActionObject.action != LocalTeach.actions.F_CMD_PENTU){
                 running = false;
-                var model = BasePData.programs[0];
+                var ps = model.get(rows).mI_ActionObject
+                panelRobotController.fixProgramOnAutoMode(0,-1,rows,JSON.stringify(ps));
+                LocalPData.programtoStep[rows] = ps;
+                afterSaveProgram(0);
+                panelRobotController.saveMainProgram(JSON.stringify(LocalPData.programtoStep));
+            }
+            else if(model.get(rows).mI_ActionObject.action = LocalTeach.actions.F_CMD_PENTU&&
+                    LocalPData.stepToKeXuYeRowMap[info.steps] != rows){
+                running = false;
+                model = BasePData.programs[0];
                 var rs = pentuActionHead(model.get(rows).mI_ActionObject);
                 if(rows == 0)
-                    var ps = rs.concat(pentuActionToProgram(model.get(rows).mI_ActionObject,model.get(rows).mI_ActionObject));
+                    ps = rs.concat(pentuActionToProgram(model.get(rows).mI_ActionObject,model.get(rows).mI_ActionObject));
                 else
                     ps = pentuActionToProgram(model.get(rows).mI_ActionObject,model.get(rows).mI_ActionObject);
                 for(var i = 0;i < ps.length;i++){

@@ -94,7 +94,6 @@ Item {
                 }
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_4_0_221",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -108,9 +107,8 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_223",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
@@ -149,16 +147,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_224",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:maxPos1SetBtn
                 text:qsTr("maxPos1 Set")
                 height: maxPos1Set.height
-                onBtnPressed: {
+                onButtonClicked: {
                     switch(axis1Set.configValue)
                     {
                     case 1:
@@ -194,7 +191,6 @@ Item {
                 popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_4_4_0_221",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -208,16 +204,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_225",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:minPos2SetBtn
                 text:qsTr("minPos2 Set")
                 height: minPos2Set.height
-                onBtnPressed: {
+                onButtonClicked:  {
                     switch(axis2Set.configValue)
                     {
                     case 1:
@@ -249,16 +244,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_226",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:maxPos2SetBtn
                 text:qsTr("maxPos2 Set")
                 height: maxPos2Set.height
-                onBtnPressed: {
+                onButtonClicked:  {
                     switch(axis2Set.configValue)
                     {
                     case 1:
@@ -294,7 +288,6 @@ Item {
                 popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_8_4_0_221",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -308,34 +301,33 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_227",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:minPos3SetBtn
                 text:qsTr("minPos3 Set")
                 height: minPos3Set.height
-                onBtnPressed: {
+                onButtonClicked: {
                     switch(axis3Set.configValue)
                     {
-                    case 0:
+                    case 1:
                         minPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                         break;
-                    case 1:
+                    case 2:
                         minPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                         break;
-                    case 2:
+                    case 3:
                         minPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
                         break;
-                    case 3:
+                    case 4:
                         minPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
                         break;
-                    case 4:
+                    case 5:
                         minPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
                         break;
-                    case 5:
+                    case 6:
                         minPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
                         break;
                     default:break;
@@ -349,34 +341,33 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_228",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:maxPos3SetBtn
                 text:qsTr("maxPos3 Set")
                 height: maxPos3Set.height
-                onBtnPressed: {
+                onButtonClicked:  {
                     switch(axis3Set.configValue)
                     {
-                    case 0:
+                    case 1:
                         maxPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                         break;
-                    case 1:
+                    case 2:
                         maxPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                         break;
-                    case 2:
+                    case 3:
                         maxPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
                         break;
-                    case 3:
+                    case 4:
                         maxPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
                         break;
-                    case 4:
+                    case 5:
                         maxPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
                         break;
-                    case 5:
+                    case 6:
                         maxPos3Set.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
                         break;
                     default:break;
@@ -388,9 +379,8 @@ Item {
                 id:safeSignalSet
                 configName:qsTr("SafePo")
                 configNameWidth: maxPos3Set.configNameWidth
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_6_7_0_222",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -401,6 +391,19 @@ Item {
                 id:useIt
                 configName: qsTr("Use it?")
                 onClicked: {
+                    if(useIt.isChecked){
+                        axis1Set.onValueChanged();
+                        axis2Set.onValueChanged();
+                        axis3Set.onValueChanged();
+                        minPos1Set.onValueChanged();
+                        maxPos1Set.onValueChanged();
+                        minPos2Set.onValueChanged();
+                        maxPos2Set.onValueChanged();
+                        minPos3Set.onValueChanged();
+                        maxPos3Set.onValueChanged();
+                        safeSignalSet.onValueChanged();
+                        safe2UseIt.isChecked = 0;
+                    }
                     panelRobotController.setConfigValue("s_rw_0_1_0_222",useIt.isChecked ? 1 : 0);
                     panelRobotController.syncConfigs();
                 }
@@ -423,9 +426,6 @@ Item {
                 safeSignalSet.configValue= panelRobotController.getConfigValue("s_rw_6_7_0_222");
                 useIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_222");
             }
-            axis1Set.configValueChanged.connect(axis1Set.onValueChanged);
-            axis2Set.configValueChanged.connect(axis2Set.onValueChanged);
-            axis3Set.configValueChanged.connect(axis3Set.onValueChanged);
     }
 }
     Item {
@@ -467,9 +467,7 @@ Item {
                     AxisDefine.registerMonitors(safe2Axis1Set);
                 }
                 function onValueChanged(){
-                    console.log(configValue);
                     panelRobotController.setConfigValue("s_rw_0_4_0_221",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -483,16 +481,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_223",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:safe2MinPos1SetBtn
                 text:qsTr("minPos1 Set")
                 height: safe2MinPos1Set.height
-                onButtonClicked: {
+                onButtonClicked:{
                     switch(safe2Axis1Set.configValue)
                     {
                     case 1:
@@ -524,16 +521,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_224",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:safe2MaxPos1SetBtn
                 text:qsTr("maxPos1 Set")
                 height: safe2MaxPos1Set.height
-                onBtnPressed: {
+                onButtonClicked:{
                     switch(safe2Axis1Set.configValue)
                     {
                     case 1:
@@ -569,7 +565,6 @@ Item {
                 popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_4_4_0_221",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -583,16 +578,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_225",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:safe2minPos2SetBtn
                 text:qsTr("minPos2 Set")
                 height: safe2MinPos2Set.height
-                onBtnPressed: {
+                onButtonClicked:{
                     switch(safe2Axis2Set.configValue)
                     {
                     case 1:
@@ -624,16 +618,15 @@ Item {
                 min:-10000
                 max:10000
                 decimal: 3
-                onConfigValueChanged: {
+                function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_32_3_226",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             ICButton{
                 id:safe2MaxPos2SetBtn
                 text:qsTr("maxPos2 Set")
                 height: safe2MaxPos2Set.height
-                onBtnPressed: {
+                onButtonClicked:{
                     switch(safe2Axis2Set.configValue)
                     {
                     case 1:
@@ -667,7 +660,6 @@ Item {
                 popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_8_4_0_221",configValue);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {
@@ -677,6 +669,16 @@ Item {
                 id:safe2UseIt
                 configName: qsTr("Use it?")
                 onClicked: {
+                    if(safe2UseIt.isChecked){
+                        safe2Axis1Set.onValueChanged();
+                        safe2Axis2Set.onValueChanged();
+                        safe2Axis3Set.onValueChanged();
+                        safe2MinPos1Set.onValueChanged();
+                        safe2MaxPos1Set.onValueChanged();
+                        safe2MinPos2Set.onValueChanged();
+                        safe2MaxPos2Set.onValueChanged();
+                        useIt.isChecked = 0;
+                    }
                     panelRobotController.setConfigValue("s_rw_0_1_0_222",safe2UseIt.isChecked ? 1 : 0);
                     panelRobotController.syncConfigs();
                 }
@@ -696,10 +698,6 @@ Item {
                 safe2MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_226")/1000;
                 safe2UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_222");
             }
-            console.log(safe2Axis1Set.configValue);
-            safe2Axis1Set.configValueChanged.connect(safe2Axis1Set.onValueChanged);
-            safe2Axis2Set.configValueChanged.connect(safe2Axis2Set.onValueChanged);
-            safe2Axis3Set.configValueChanged.connect(safe2Axis3Set.onValueChanged);
         }
     }
 

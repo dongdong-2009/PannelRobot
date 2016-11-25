@@ -6063,7 +6063,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>L6-IO-4</source>
-        <translation type="unfinished">机型4 {6-?}</translation>
+        <translation>机型4</translation>
     </message>
 </context>
 <context>

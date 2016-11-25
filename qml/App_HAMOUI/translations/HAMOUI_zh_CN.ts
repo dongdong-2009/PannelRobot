@@ -1246,6 +1246,14 @@
         <source>SDCC2</source>
         <translation>S减速2</translation>
     </message>
+    <message>
+        <source>originOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test Speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -3992,6 +4000,10 @@
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SafeArea Configs</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -5350,6 +5362,93 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeAreaConfigs</name>
+    <message>
+        <source>Safe Area1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos1 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos2 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos2 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos3 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos3 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use it?</source>
+        <translation type="unfinished">使用</translation>
+    </message>
+    <message>
+        <source>Safe Area2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6835,11 +6934,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

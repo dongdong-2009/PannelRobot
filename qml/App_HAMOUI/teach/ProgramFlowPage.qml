@@ -1831,6 +1831,7 @@ Rectangle {
                                               Teach.customActions[ac].editableItems.itemDef.item);
         }
 
+        PData.instance = programFlowPageInstance;
         hasInit = true;
     }
 }

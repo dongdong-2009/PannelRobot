@@ -283,7 +283,7 @@ function getAlarmDescr(errNum){
 }
 
 var customAlarmInfo = {
-    "5000":qsTr("5000"),
+    "5000":qsTr("No Material"),
     "5001":qsTr("5001"),
     "5002":qsTr("5002"),
     "5003":qsTr("5003"),

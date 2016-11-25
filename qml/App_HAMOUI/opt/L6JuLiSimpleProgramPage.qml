@@ -3,6 +3,8 @@ import "../../ICCustomElement"
 import "../teach/Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../teach"
+import "../teach/ProgramFlowPage.js" as ProgramFlowPage
+import "../configs/IODefines.js" as IODefines
 Rectangle {
     id:instance
 
@@ -13,7 +15,38 @@ Rectangle {
     function onDownTriggered(){}
     function onFixIndexTriggered(){}
     function onSaveTriggered(){
-
+        var ret = [];
+        var checkMAFlag = 0;
+        var checkMBFlag = 1;
+        var checkMMaxFlag = 2;
+        var mForGetM = 0;
+        var yForGetM = 013;
+        var yForPosM = 015;
+        ret.push(Teach.generateCommentAction("Reserve Data", null, ""));
+        ret[0].insertedIndex = 0;
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
+        ret.push(Teach.generateOutputAction(yForPosM, IODefines.IO_BOARD_0, 1, 0.00));
+        ret.push(Teach.generateConditionAction(0, 16, 0, 1, 0, checkMAFlag)); // check x030
+        ret.push(Teach.generateConditionAction(0, 17, 0, 1, 0, checkMBFlag)); // check x031
+        ret.push(Teach.generateMemCmpJumpAction(checkMMaxFlag, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
+        ret.push(Teach.generateCustomAlarmAction(5000)); // no material alarm
+        ret.push(Teach.generateFlagAction(checkMAFlag, qsTr("get material-A start")));
+        ret.push(Teach.generateOutputAction(mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
+        ret.push(Teach.generateSyncBeginAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, gMAm0.configValue, gMAm0Spd.configValue, gMAm0Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gMAm2.configValue, gMAm2Spd.configValue, gMAm2Delay.configValue));
+        ret.push(Teach.generateSyncEndAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gMAm1.configValue, gMAm1Spd.configValue, gMAm1Delay.configValue));
+//        ret.push(Teach)
+        ret.push(Teach.generateFlagAction(checkMBFlag, qsTr("get material-B start")));
+        ret.push(Teach.generateOutputAction(yForGetM, IODefines.IO_BOARD_0, 1, yForGetM, gMAOnDelay.configValue));
+        ret.push(Teach.generateSyncBeginAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, bSPm0m0.configValue, bSPm0Spd.configValue, bSPm0Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, bSPm1.configValue, bSPm1Spd.configValue, bSPm1Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, bSPm2.configValue, bSPm2Spd.configValue, bSPm2Delay.configValue));
+        ret.push(Teach.generateSyncEndAction());
+        ret.push(Teach.generteEndAction());
+        ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[0], ret);
     }
     Column{
         spacing: 4
@@ -67,15 +100,13 @@ Rectangle {
                     spacing: 4
                     Grid{
                         spacing: 4
-                        columns: 8
+                        columns: 6
                         Text {id:firstWidth;text: " ";width: 80}
                         Text {text: " "}
                         Text {text: " "}
                         Text {text: AxisDefine.axisInfos[0].name}
                         Text {text: AxisDefine.axisInfos[1].name}
                         Text {text: AxisDefine.axisInfos[2].name}
-                        Text {text: AxisDefine.axisInfos[3].name}
-                        Text {text: AxisDefine.axisInfos[4].name}
 
                         Text {text: qsTr("Standby Pos")}
                         Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
@@ -96,14 +127,6 @@ Rectangle {
                             id:spm2
                             configAddr: AxisDefine.axisInfos[2].limitAddr
                         }
-                        ICConfigEdit{
-                            id:spm3
-                            configAddr: AxisDefine.axisInfos[3].limitAddr
-                        }
-                        ICConfigEdit{
-                            id:spm4
-                            configAddr: AxisDefine.axisInfos[4].limitAddr
-                        }
 
                         Text {text: qsTr("Speed")}
                         Text {text: qsTr("(%)")}
@@ -118,14 +141,6 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:spm2Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
-                        ICConfigEdit{
-                            id:spm3Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
-                        ICConfigEdit{
-                            id:spm4Spd
                             configAddr: "s_rw_0_32_1_1200"
                         }
 
@@ -144,16 +159,6 @@ Rectangle {
                             id:spm2Delay
                             configAddr: "s_rw_0_32_2_1100"
                         }
-                        ICConfigEdit{
-                            id:spm3Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
-                        ICConfigEdit{
-                            id:spm4Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
-
-
 
                         Text {text: qsTr("Get Pos")}
                         Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
@@ -174,14 +179,6 @@ Rectangle {
                             id:gpm2
                             configAddr: AxisDefine.axisInfos[2].limitAddr
                         }
-                        ICConfigEdit{
-                            id:gpm3
-                            configAddr: AxisDefine.axisInfos[3].limitAddr
-                        }
-                        ICConfigEdit{
-                            id:gpm4
-                            configAddr: AxisDefine.axisInfos[4].limitAddr
-                        }
 
                         Text {text: qsTr("Speed")}
                         Text {text: qsTr("(%)")}
@@ -196,14 +193,6 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:gpm2Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
-                        ICConfigEdit{
-                            id:gpm3Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
-                        ICConfigEdit{
-                            id:gpm4Spd
                             configAddr: "s_rw_0_32_1_1200"
                         }
 
@@ -222,14 +211,7 @@ Rectangle {
                             id:gpm2Delay
                             configAddr: "s_rw_0_32_2_1100"
                         }
-                        ICConfigEdit{
-                            id:gpm3Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
-                        ICConfigEdit{
-                            id:gpm4Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
+
                     }
                     Row{
                         Text {
@@ -242,10 +224,11 @@ Rectangle {
                             valvesToSel: ["valve1", "valve2", "valve3", "valve4"]
                             width: inMoldPageContainer.width - getProductVTitle.width - 10
                         }
+                        visible: false
                     }
                     Grid{
                         spacing: 4
-                        columns: 8
+                        columns: 6
 
                         Text {text: qsTr("Get F B"); width: firstWidth.width}
                         Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
@@ -254,47 +237,32 @@ Rectangle {
                             text: qsTr("Set In")
                             height: spm0.height
                         }
-                        ICConfigEdit{
-                            id:gFBm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
-                        }
                         Text {text: " "}
                         Text {text: " "}
                         ICConfigEdit{
-                            id:gFBm3
-                            configAddr: AxisDefine.axisInfos[3].limitAddr
+                            id:gFBm2
+                            configAddr: AxisDefine.axisInfos[2].limitAddr
                         }
-                        Text {text: " "}
 
                         Text {text: qsTr("Speed")}
                         Text {text: qsTr("(%)")}
                         Text {text: " "}
-                        ICConfigEdit{
-                            id:gFBm0Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
                         Text {text: " "}
                         Text {text: " "}
                         ICConfigEdit{
-                            id:gFBm3Spd
+                            id:gFBm2Spd
                             configAddr: "s_rw_0_32_1_1200"
                         }
-                        Text {text: " "}
 
                         Text {text: qsTr("Delay")}
                         Text {text: qsTr("(s)")}
                         Text {text: " "}
-                        ICConfigEdit{
-                            id:gFBm0Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
                         Text {text: " "}
                         Text {text: " "}
                         ICConfigEdit{
-                            id:gFBm3Delay
+                            id:gFBm2Delay
                             configAddr: "s_rw_0_32_2_1100"
                         }
-                        Text {text: " "}
 
                         Text {text: qsTr("Rel M Pos")}
                         Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
@@ -315,14 +283,6 @@ Rectangle {
                             id:rMPm2
                             configAddr: AxisDefine.axisInfos[2].limitAddr
                         }
-                        ICConfigEdit{
-                            id:rMPm3
-                            configAddr: AxisDefine.axisInfos[3].limitAddr
-                        }
-                        ICConfigEdit{
-                            id:rMPm4
-                            configAddr: AxisDefine.axisInfos[4].limitAddr
-                        }
 
                         Text {text: qsTr("Speed")}
                         Text {text: qsTr("(%)")}
@@ -337,14 +297,6 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:rMPm2Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
-                        ICConfigEdit{
-                            id:rMPm3Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
-                        ICConfigEdit{
-                            id:rMPm4Spd
                             configAddr: "s_rw_0_32_1_1200"
                         }
 
@@ -363,14 +315,6 @@ Rectangle {
                             id:rMPm2Delay
                             configAddr: "s_rw_0_32_2_1100"
                         }
-                        ICConfigEdit{
-                            id:rMPm3Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
-                        ICConfigEdit{
-                            id:rMPm4Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
 
                         Text {text: qsTr("Rel M F B")}
                         Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
@@ -379,47 +323,32 @@ Rectangle {
                             text: qsTr("Set In")
                             height: spm0.height
                         }
-                        ICConfigEdit{
-                            id:rMFBm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
-                        }
                         Text {text: " "}
                         Text {text: " "}
                         ICConfigEdit{
-                            id:rMFBm3
-                            configAddr: AxisDefine.axisInfos[3].limitAddr
+                            id:rMFBm2
+                            configAddr: AxisDefine.axisInfos[2].limitAddr
                         }
-                        Text {text: " "}
 
                         Text {text: qsTr("Speed")}
                         Text {text: qsTr("(%)")}
                         Text {text: " "}
-                        ICConfigEdit{
-                            id:rMFBm0Spd
-                            configAddr: "s_rw_0_32_1_1200"
-                        }
                         Text {text: " "}
                         Text {text: " "}
                         ICConfigEdit{
-                            id:rMFBm3Spd
+                            id:rMFBm2Spd
                             configAddr: "s_rw_0_32_1_1200"
                         }
-                        Text {text: " "}
 
                         Text {text: qsTr("Delay")}
                         Text {text: qsTr("(s)")}
                         Text {text: " "}
-                        ICConfigEdit{
-                            id:rMFBm0Delay
-                            configAddr: "s_rw_0_32_2_1100"
-                        }
                         Text {text: " "}
                         Text {text: " "}
                         ICConfigEdit{
-                            id:rMFBm3Delay
+                            id:rMFBm2Delay
                             configAddr: "s_rw_0_32_2_1100"
                         }
-                        Text {text: " "}
                     }
                 }
             }
@@ -451,15 +380,230 @@ Rectangle {
                 Column{
                     spacing: 6
                     id:getMaterialPageContent
-                    Item {
-                        width: 50
-                        height: 50
+
+                    Grid{
+                        spacing: 4
+                        columns: 7
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: AxisDefine.axisInfos[0].name}
+                        Text {text: AxisDefine.axisInfos[1].name}
+                        Text {text: AxisDefine.axisInfos[2].name}
+                        Text {text: AxisDefine.axisInfos[3].name}
+
+                        Text {text: qsTr("Get M A"); width: firstWidth.width}
+                        Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
+                        ICButton{
+                            id:gMASetIn
+                            text: qsTr("Set In")
+                            height: spm0.height
+                        }
+                        ICConfigEdit{
+                            id:gMAm0
+                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                        }
+                        ICConfigEdit{
+                            id:gMAm1
+                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                        }
+                        ICConfigEdit{
+                            id:gMAm2
+                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                        }
+                        Text {text: " "}
+
+                        Text {text: qsTr("Speed")}
+                        Text {text: qsTr("(%)")}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gMAm0Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        ICConfigEdit{
+                            id:gMAm1Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        ICConfigEdit{
+                            id:gMAm2Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("Delay")}
+                        Text {text: qsTr("(s)")}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gMAm0Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        ICConfigEdit{
+                            id:gMAm1Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        ICConfigEdit{
+                            id:gMAm2Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("Get M B"); width: firstWidth.width}
+                        Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
+                        ICButton{
+                            id:gMBSetIn
+                            text: qsTr("Set In")
+                            height: spm0.height
+                        }
+                        ICConfigEdit{
+                            id:gMBm0
+                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                        }
+                        ICConfigEdit{
+                            id:gMBm1
+                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                        }
+                        ICConfigEdit{
+                            id:gMBm2
+                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                        }
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("Speed")}
+                        Text {text: qsTr("(%)")}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gMBm0Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        ICConfigEdit{
+                            id:gMBm1Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        ICConfigEdit{
+                            id:gMBm2Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("Delay")}
+                        Text {text: qsTr("(s)")}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gMBm0Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        ICConfigEdit{
+                            id:gMBm1Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        ICConfigEdit{
+                            id:gMBm2Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+
+                        Text {text: qsTr("Get M V On Delay")}
+                        Text {text: qsTr("s")}
+                        ICConfigEdit{
+                            id:gMAOnDelay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("B S P"); width: firstWidth.width}
+                        Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
+                        ICButton{
+                            id:bSPSetIn
+                            text: qsTr("Set In")
+                            height: spm0.height
+                        }
+                        ICConfigEdit{
+                            id:bSPm0
+                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                        }
+                        ICConfigEdit{
+                            id:bSPm1
+                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                        }
+                        ICConfigEdit{
+                            id:bSPm2
+                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                        }
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("Speed")}
+                        Text {text: qsTr("(%)")}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:bSPm0Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        ICConfigEdit{
+                            id:bSPm1Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        ICConfigEdit{
+                            id:bSPm2Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+                        Text {text: " "}
+
+
+                        Text {text: qsTr("Delay")}
+                        Text {text: qsTr("(s)")}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:bSPm0Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        ICConfigEdit{
+                            id:bSPm1Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        ICConfigEdit{
+                            id:bSPm2Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+
+                        Text {text: qsTr("Up M Pos"); width: firstWidth.width}
+                        Text {text: "(" + AxisDefine.axisInfos[3].unit + ")"}
+                        ICButton{
+                            id:uMPSetIn
+                            text: qsTr("Set In")
+                            height: spm0.height
+                        }
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:uMPm3
+                            configAddr: AxisDefine.axisInfos[3].limitAddr
+                        }
+
+
+                        Text {text: qsTr("Speed")}
+                        Text {text: qsTr("(%)")}
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+                        ICConfigEdit{
+                            id:uMPm3Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
+
                     }
 
-                    StackActionEditorComponent{
-                        id:getMaterialStack
-                        isCounterEn: false
-                    }
 
                     Row{
                         Text {
@@ -472,6 +616,7 @@ Rectangle {
                             valvesToSel: ["valve1", "valve2", "valve3", "valve4"]
                             width: inMoldPageContainer.width - getMaterialVTitle.width - 10
                         }
+                        visible: false
                     }
                 }
             }

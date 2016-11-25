@@ -159,3 +159,4 @@ function setClipboard(lines){
 }
 
 var moldExtentData = "";
+var instance = null;

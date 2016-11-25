@@ -5959,43 +5959,43 @@ please chose!</source>
     <name>SingleStackAction</name>
     <message>
         <source>Self</source>
-        <translation type="unfinished">自身</translation>
+        <translation>自身</translation>
     </message>
     <message>
         <source>Axis</source>
-        <translation type="unfinished"></translation>
+        <translation>轴</translation>
     </message>
     <message>
         <source>Rel Points</source>
-        <translation type="unfinished"></translation>
+        <translation>相对点</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="unfinished"></translation>
+        <translation>正向</translation>
     </message>
     <message>
         <source>Start Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>起始点</translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation type="unfinished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>Addr</source>
-        <translation type="unfinished"></translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>间距</translation>
     </message>
     <message>
         <source>Count</source>
-        <translation type="unfinished"></translation>
+        <translation>个数</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="unfinished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>%</source>
@@ -6003,7 +6003,7 @@ please chose!</source>
     </message>
     <message>
         <source>Counter</source>
-        <translation type="unfinished">计数器</translation>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>

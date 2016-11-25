@@ -767,6 +767,14 @@
         <source>WD</source>
         <translation>世界</translation>
     </message>
+    <message>
+        <source>Coord Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
@@ -1237,6 +1245,14 @@
     <message>
         <source>SDCC2</source>
         <translation>S减速2</translation>
+    </message>
+    <message>
+        <source>originOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test Speed:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1877,6 +1893,14 @@
         <source>Counter:Self</source>
         <translation type="unfinished">计数器:自身</translation>
     </message>
+    <message>
+        <source>Switch Coord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CoordID</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1898,6 +1922,10 @@
     </message>
     <message>
         <source>Single Stack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>switchCoord</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3964,6 +3992,10 @@
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SafeArea Configs</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -4004,7 +4036,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="vanished">工具校准</translation>
+        <translation>工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4021,6 +4053,10 @@
     <message>
         <source>Custom Btn</source>
         <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>toolcoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5316,6 +5352,93 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>SafeAreaConfigs</name>
+    <message>
+        <source>Safe Area1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos1 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos2 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos2 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos3 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos3 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use it?</source>
+        <translation type="unfinished">使用</translation>
+    </message>
+    <message>
+        <source>Safe Area2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SafeRangeEditor</name>
     <message>
         <source>Out Range</source>
@@ -5941,6 +6064,13 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>L6-IO-4</source>
         <translation type="unfinished">机型4 {6-?}</translation>
+    </message>
+</context>
+<context>
+    <name>SwitchCoordEditor</name>
+    <message>
+        <source>coordID</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6750,6 +6880,44 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
+    <name>ToolCoordManager</name>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolCoordPage</name>
+    <message>
+        <source>newBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP1Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP2Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP3Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>coordName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
@@ -6773,11 +6941,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

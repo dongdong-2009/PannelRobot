@@ -48,20 +48,30 @@ ContentPageBase {
                 textColor: getChecked() ? "yellow" : "black"
             }
 
-//            TabMenuItem {
-//                id: toolsCalibrate
-//                width: 80
-//                height: pdata.menuItemHeight
-//                itemText: qsTr("Tools Calibration")
-//                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-//                textFont.pixelSize: getChecked() ? 18 : 16
-//                textColor: getChecked() ? "yellow" : "black"
-//            }
+            TabMenuItem {
+                id: toolsCalibrate
+                width: 80
+                height: pdata.menuItemHeight
+                itemText: qsTr("Tools Calibration")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+            }
             TabMenuItem{
                 id:programmableBtn
                 width: 100
                 height: pdata.menuItemHeight
                 itemText: qsTr("Custom Btn")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+
+            }
+            TabMenuItem{
+                id:toolsCoordBtn
+                width: 100
+                height: pdata.menuItemHeight
+                itemText: qsTr("toolcoord")
                 color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
                 textFont.pixelSize: getChecked() ? 18 : 16
                 textColor: getChecked() ? "yellow" : "black"
@@ -252,16 +262,20 @@ ContentPageBase {
                             });
                 pageContainer.addPage(page)
             }
-//            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
-//            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
+            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
+            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
 
             var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
             pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
 
+            var toolCoord = Qt.createComponent('ToolCoordPage.qml');
+            pageContainer.addPage(toolCoord.createObject(pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');
             pageContainer.addPage(debugprintClass.createObject(pageContainer));
             var jogClass = Qt.createComponent('DebugPage.qml');
             pageContainer.addPage(jogClass.createObject(pageContainer));
+
+
 
             ShareData.UserInfo.registUserChangeEvent(manualContainer);
             onUserChanged(ShareData.UserInfo.current);

@@ -366,6 +366,8 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
     {
         machineConfigModifyCache_.append(p);
     }
+    qDebug()<<"PanelRobotController::setConfigValue"<<p.first->ToString()<<p.second;
+
     //    qDebug()<<moldFncModifyCache_;
 }
 
@@ -1140,6 +1142,20 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
     //            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
     //    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
+}
+
+void PanelRobotController::sendToolCoord(int id,const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(id);
+    for(int i=0;i<result.size();i++)
+        tmp.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
 }
 
 bool PanelRobotController::delCounterDef(quint32 id)

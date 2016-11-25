@@ -392,6 +392,7 @@ Item {
                 configName: qsTr("Use it?")
                 onClicked: {
                     if(useIt.isChecked){
+                        safe2UseIt.isChecked = 0;
                         axis1Set.onValueChanged();
                         axis2Set.onValueChanged();
                         axis3Set.onValueChanged();
@@ -402,7 +403,6 @@ Item {
                         minPos3Set.onValueChanged();
                         maxPos3Set.onValueChanged();
                         safeSignalSet.onValueChanged();
-                        safe2UseIt.isChecked = 0;
                     }
                     panelRobotController.setConfigValue("s_rw_0_1_0_222",useIt.isChecked ? 1 : 0);
                     panelRobotController.syncConfigs();
@@ -670,6 +670,7 @@ Item {
                 configName: qsTr("Use it?")
                 onClicked: {
                     if(safe2UseIt.isChecked){
+                        useIt.isChecked = 0;
                         safe2Axis1Set.onValueChanged();
                         safe2Axis2Set.onValueChanged();
                         safe2Axis3Set.onValueChanged();
@@ -677,7 +678,6 @@ Item {
                         safe2MaxPos1Set.onValueChanged();
                         safe2MinPos2Set.onValueChanged();
                         safe2MaxPos2Set.onValueChanged();
-                        useIt.isChecked = 0;
                     }
                     panelRobotController.setConfigValue("s_rw_0_1_0_222",safe2UseIt.isChecked ? 1 : 0);
                     panelRobotController.syncConfigs();

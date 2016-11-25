@@ -68,8 +68,8 @@ ExtentActionEditorBase {
                 }
                 ICConfigEdit{
                     id:mhEdit
-                    min: -1000
-                    max: 1000
+                    min: -10000
+                    max: 10000
                     decimal: 3
                     configValue: "0.000"
                     unit: qsTr("mm")

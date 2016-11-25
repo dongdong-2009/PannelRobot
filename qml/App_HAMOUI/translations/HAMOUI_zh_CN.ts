@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -657,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1275,11 +1275,11 @@
     </message>
     <message>
         <source>M7</source>
-        <translation type="unfinished">报警状态 {7?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M8</source>
-        <translation type="unfinished">报警状态 {8?}</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1775,11 +1775,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -5048,6 +5048,14 @@ please chose!</source>
         <source>Fix Index</source>
         <translation>整理编号</translation>
     </message>
+    <message>
+        <source>Adv</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sp</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QKConfigs</name>
@@ -5246,7 +5254,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5278,11 +5286,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>

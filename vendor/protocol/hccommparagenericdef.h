@@ -1487,28 +1487,19 @@ typedef union {
         uint32_t part1_en:1;//<类型：系统；名字：安全区域1使能；精度：0;单位：；
         uint32_t part2_en:1;//<类型：系统；名字：安全区域2使能；精度：0;单位：；
         uint32_t part3_en:1;//<类型：系统；名字：安全区域3使能；精度：0;单位：；
-        uint32_t res:2; //<类型：系统；名字：预留；精度：0;单位：；
+        uint32_t part4_en:1;//<类型：系统；名字：安全区域4使能；精度：0;单位：；
+        uint32_t part5_en:1;//<类型：系统；名字：安全区域5使能；精度：0;单位：；
 
-        uint32_t min_pos1;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos1;//<类型：系统；名字：轴1最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos2;//<类型：系统；名字：轴2最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos2;//<类型：系统；名字：轴2最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos3;//<类型：系统；名字：轴3最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos3;//<类型：系统；名字：轴3最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos4;//<类型：系统；名字：轴4最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos4;//<类型：系统；名字：轴4最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos5;//<类型：系统；名字：轴5最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos5;//<类型：系统；名字：轴5最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos6;//<类型：系统；名字：轴6最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos6;//<类型：系统；名字：轴6最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos7;//<类型：系统；名字：轴7最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos7;//<类型：系统；名字：轴7最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos8;//<类型：系统；名字：轴8最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos8;//<类型：系统；名字：轴8最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos9;//<类型：系统；名字：扩展最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos9;//<类型：系统；名字：扩展最大安全位置；精度：3;单位：mm；
+        uint32_t part6_en:1;//<类型：系统；名字：安全区域6使能；精度：0;单位：；
+        uint32_t input_safe_signal4:7; //<类型：系统；名字：输入安全信号点4；精度：0;单位：；
+        uint32_t input_safe_signal5:7; //<类型：系统；名字：输入安全信号点5；精度：0;单位：；
+        uint32_t input_safe_signal6:7; //<类型：系统；名字：输入安全信号点6；精度：0;单位：；
+        uint32_t res:10;//<类型：系统；名字：预留；精度：0;单位：；
+
+        uint32_t min_pos[18];//<类型：系统；名字：轴最小安全位置；精度：3;单位：mm；
+        uint32_t max_pos[18];//<类型：系统；名字：轴最大安全位置；精度：3;单位：mm；
     };
-    uint32_t d[20];
+    uint32_t d[39];
 }SafeAreaStruct;
 
 typedef union {
@@ -1557,8 +1548,7 @@ typedef struct {
     OriginRelativeStruct origin_relative;
     MotorTestSpeedStruct test_speed;
     SafeAreaStruct safe_area;
-    uint32_t Reserve3[11];   //<类型:系统;名字:目标定时时间; 单位:ms
-    uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
+    uint32_t Reserve4[8];   //<类型:系统;名字:当前计数值;   单位:ms
     uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms
 }RESERVE0;
 

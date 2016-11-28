@@ -19,13 +19,18 @@ Rectangle {
         var checkMAFlag = 0;
         var checkMBFlag = 1;
         var checkMMaxFlag = 2;
+        var startGetMFlag = 3;
         var mForGetM = 0;
         var yForGetM = 013;
         var yForPosM = 015;
+        var yForPosP = 016;
+        var yForRemoveM = 021;
+        var yForVec = 006;
         ret.push(Teach.generateCommentAction("Reserve Data", null, ""));
         ret[0].insertedIndex = 0;
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
         ret.push(Teach.generateOutputAction(yForPosM, IODefines.IO_BOARD_0, 1, 0.00));
+        ret.push(Teach.generateFlagAction(checkMMaxFlag, qsTr("Wait for Material")));
         ret.push(Teach.generateConditionAction(0, 16, 0, 1, 0, checkMAFlag)); // check x030
         ret.push(Teach.generateConditionAction(0, 17, 0, 1, 0, checkMBFlag)); // check x031
         ret.push(Teach.generateMemCmpJumpAction(checkMMaxFlag, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
@@ -37,14 +42,27 @@ Rectangle {
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gMAm2.configValue, gMAm2Spd.configValue, gMAm2Delay.configValue));
         ret.push(Teach.generateSyncEndAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gMAm1.configValue, gMAm1Spd.configValue, gMAm1Delay.configValue));
-//        ret.push(Teach)
+        ret.push(Teach.generateJumpAction(startGetMFlag));
         ret.push(Teach.generateFlagAction(checkMBFlag, qsTr("get material-B start")));
-        ret.push(Teach.generateOutputAction(yForGetM, IODefines.IO_BOARD_0, 1, yForGetM, gMAOnDelay.configValue));
+        ret.push(Teach.generateOutputAction(mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
         ret.push(Teach.generateSyncBeginAction());
-        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, bSPm0m0.configValue, bSPm0Spd.configValue, bSPm0Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, gMBm0.configValue, gMBm0Spd.configValue, gMBm0Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gMBm2.configValue, gMBm2Spd.configValue, gMBm2Delay.configValue));
+        ret.push(Teach.generateSyncEndAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gMBm1.configValue, gMBm1Spd.configValue, gMBm1Delay.configValue));
+        ret.push(Teach.generateFlagAction(startGetMFlag, qsTr("Begin to get material")));
+        ret.push(Teach.generateOutputAction(yForGetM, IODefines.IO_BOARD_0, yForGetM, gMVOnDelay.configAddr));
+        ret.push(Teach.generateCommentAction(qsTr("to back suck pos")));
+        ret.push(Teach.generateSyncBeginAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, bSPm0.configValue, bSPm0Spd.configValue, bSPm0Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, bSPm1.configValue, bSPm1Spd.configValue, bSPm1Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, bSPm2.configValue, bSPm2Spd.configValue, bSPm2Delay.configValue));
         ret.push(Teach.generateSyncEndAction());
+        ret.push(Teach.generateOutputAction(yForRemoveM, IODefines.IO_BOARD_0, yForGetM, rMVOnDelay.configAddr));
+        ret.push(Teach.generateCommentAction(qsTr("Start to get product")));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
+        ret.push(Teach.generateOutputAction(mForGetM, IODefines.M_BOARD_0, 0, 32, 0)); // lock up material process
+        ret.push(Teach.generateOutputAction(yForPosP, IODefines.IO_BOARD_0, 1, 0.00));
         ret.push(Teach.generteEndAction());
         ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[0], ret);
     }
@@ -509,7 +527,7 @@ Rectangle {
                         Text {text: qsTr("Get M V On Delay")}
                         Text {text: qsTr("s")}
                         ICConfigEdit{
-                            id:gMAOnDelay
+                            id:gMVOnDelay
                             configAddr: "s_rw_0_32_2_1100"
                         }
                         Text {text: " "}
@@ -573,6 +591,17 @@ Rectangle {
                             id:bSPm2Delay
                             configAddr: "s_rw_0_32_2_1100"
                         }
+                        Text {text: " "}
+
+                        Text {text: qsTr("R M V On Delay")}
+                        Text {text: qsTr("s")}
+                        ICConfigEdit{
+                            id:rMVOnDelay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
                         Text {text: " "}
 
                         Text {text: qsTr("Up M Pos"); width: firstWidth.width}

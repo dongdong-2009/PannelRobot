@@ -1066,7 +1066,7 @@ var generateConditionAction = function(type, point, inout, status, limit, flag){
         "point":point,
         "pointStatus":status,
         "inout":inout || 0,
-        "limit":limit || 0.50,
+        "limit":limit == undefined ?  0.50 : limit,
         "flag": flag || 0,
     };
 }

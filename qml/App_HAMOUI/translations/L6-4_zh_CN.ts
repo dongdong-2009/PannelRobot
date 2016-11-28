@@ -4036,7 +4036,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具校准</translation>
+        <translation type="vanished">工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4053,10 +4053,6 @@
     <message>
         <source>Custom Btn</source>
         <translation>可编程按键</translation>
-    </message>
-    <message>
-        <source>toolcoord</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5358,10 +5354,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>axis1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>NO</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5386,10 +5378,6 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>axis2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>minPos2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5406,35 +5394,355 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>axis3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos3 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos3 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SafePo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Use it?</source>
         <translation type="unfinished">使用</translation>
     </message>
     <message>
         <source>Safe Area2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part2?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part3?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part4?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part5?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part6?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-F Set</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

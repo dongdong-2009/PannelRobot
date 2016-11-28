@@ -2658,47 +2658,47 @@
     </message>
     <message>
         <source>Time Y014</source>
-        <translation>雾化</translation>
+        <translation>雾化1</translation>
     </message>
     <message>
         <source>Time Y015</source>
-        <translation>油量</translation>
+        <translation>喷幅1</translation>
     </message>
     <message>
         <source>Time Y016</source>
-        <translation>喷幅</translation>
+        <translation>油量1</translation>
     </message>
     <message>
         <source>Time Y017</source>
-        <translation>时间输出Y017</translation>
+        <translation>雾化2</translation>
     </message>
     <message>
         <source>Time Y020</source>
-        <translation>公转盘正转</translation>
+        <translation>喷幅2</translation>
     </message>
     <message>
         <source>Time Y021</source>
-        <translation>公转盘反转</translation>
+        <translation>油量2</translation>
     </message>
     <message>
         <source>Time Y022</source>
-        <translation>时间输出Y022</translation>
+        <translation>公转盘正转</translation>
     </message>
     <message>
         <source>Time Y023</source>
-        <translation>时间输出Y023</translation>
+        <translation>公转盘反转</translation>
     </message>
     <message>
         <source>Time Y024</source>
-        <translation>时间输出Y024</translation>
+        <translation>B轴翻转正转</translation>
     </message>
     <message>
         <source>Time Y025</source>
-        <translation>时间输出Y025</translation>
+        <translation>B轴翻转反转</translation>
     </message>
     <message>
         <source>Time Y026</source>
-        <translation>时间输出Y026</translation>
+        <translation>C轴翻转正转</translation>
     </message>
     <message>
         <source>Time Y027</source>
@@ -2706,7 +2706,7 @@
     </message>
     <message>
         <source>Time Y030</source>
-        <translation>时间输出Y030</translation>
+        <translation>C轴翻转反转</translation>
     </message>
     <message>
         <source>Time Y031</source>

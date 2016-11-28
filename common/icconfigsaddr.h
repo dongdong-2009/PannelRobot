@@ -342,44 +342,49 @@ extern  const ICAddrWrapper  s_rw_20_7_0_228;  //< 14950043 当前定时时间�
 extern  const ICAddrWrapper  s_rw_27_1_0_228;  //< 14944123 当前定时时间安全区域1使能
 extern  const ICAddrWrapper  s_rw_28_1_0_228;  //< 14944155 当前定时时间安全区域2使能
 extern  const ICAddrWrapper  s_rw_29_1_0_228;  //< 14944187 当前定时时间安全区域3使能
-extern  const ICAddrWrapper  s_rw_30_2_0_228;  //< 14945243 当前定时时间预留
-extern  const ICAddrWrapper  s_rw_0_32_3_229;    //< 3236266011 当前定时时间轴1最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_230;    //< 3236331547 当前定时时间轴1最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_231;    //< 3236397083 当前定时时间轴2最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_232;    //< 3236462619 当前定时时间轴2最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_233;    //< 3236528155 当前定时时间轴3最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_234;    //< 3236593691 当前定时时间轴3最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_235;    //< 3236659227 当前定时时间轴4最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_236;    //< 3236724763 当前定时时间轴4最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_237;    //< 3236790299 当前定时时间轴5最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_238;    //< 3236855835 目标定时时间轴5最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_239;    //< 3236921371 目标定时时间轴6最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_240;    //< 3236986907 目标定时时间轴6最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_241;    //< 3237052443 目标定时时间轴7最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_242;    //< 3237117979 目标定时时间轴7最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_243;    //< 3237183515 目标定时时间轴8最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_244;    //< 3237249051 目标定时时间轴8最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_245;    //< 3237314587 目标定时时间扩展最小安全位置
-extern  const ICAddrWrapper  s_rw_0_32_3_246;    //< 3237380123 目标定时时间扩展最大安全位置
-extern  const ICAddrWrapper  s_rw_0_32_0_247;    //< 16220187 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_248;    //< 16285723 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_249;    //< 16351259 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_250;    //< 16416795 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_251;    //< 16482331 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_252;    //< 16547867 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_253;    //< 16613403 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_254;    //< 16678939 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_255;    //< 16744475 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_256;    //< 16810011 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_257;    //< 16875547 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_258;    //< 16941083 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_259;    //< 17006619 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_260;    //< 17072155 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_261;    //< 17137691 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_262;    //< 17203227 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_263;    //< 17268763 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_264;    //< 17334299 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_265;    //< 17399835 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_30_1_0_228;  //< 14944219 当前定时时间安全区域4使能
+extern  const ICAddrWrapper  s_rw_31_1_0_228;  //< 14944251 当前定时时间安全区域5使能
+extern  const ICAddrWrapper  s_rw_0_1_0_229;  //< 15008795 当前定时时间安全区域6使能
+extern  const ICAddrWrapper  s_rw_1_7_0_229;  //< 15014971 当前定时时间输入安全信号点4
+extern  const ICAddrWrapper  s_rw_8_7_0_229;  //< 15015195 当前定时时间输入安全信号点5
+extern  const ICAddrWrapper  s_rw_15_7_0_229;  //< 15015419 当前定时时间输入安全信号点6
+extern  const ICAddrWrapper  s_rw_22_10_0_229;  //< 15018715 当前定时时间预留
+extern  const ICAddrWrapper  s_rw_0_32_3_230;    //< 3236331547 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_231;    //< 3236397083 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_232;    //< 3236462619 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_233;    //< 3236528155 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_234;    //< 3236593691 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_235;    //< 3236659227 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_236;    //< 3236724763 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_237;    //< 3236790299 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_238;    //< 3236855835 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_239;    //< 3236921371 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_240;    //< 3236986907 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_241;    //< 3237052443 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_242;    //< 3237117979 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_243;    //< 3237183515 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_244;    //< 3237249051 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_245;    //< 3237314587 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_246;    //< 3237380123 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_247;    //< 3237445659 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_248;    //< 3237511195 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_249;    //< 3237576731 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_250;    //< 3237642267 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_251;    //< 3237707803 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_252;    //< 3237773339 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_253;    //< 3237838875 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_254;    //< 3237904411 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_255;    //< 3237969947 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_256;    //< 3238035483 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_257;    //< 3238101019 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_258;    //< 3238166555 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_259;    //< 3238232091 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_260;    //< 3238297627 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_261;    //< 3238363163 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_262;    //< 3238428699 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_263;    //< 3238494235 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_264;    //< 3238559771 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_265;    //< 3238625307 当前计数值轴最大安全位置
 extern  const ICAddrWrapper  s_rw_0_32_0_266;    //< 17465371 当前计数值当前计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_267;    //< 17530907 当前计数值当前计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_268;    //< 17596443 当前计数值当前计数值

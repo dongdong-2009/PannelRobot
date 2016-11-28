@@ -1481,8 +1481,13 @@ typedef union {
 
         uint32_t safeArea_en:1; //<类型：系统；名字：安全区使能；精度：0;单位：；
         uint32_t type:5; //<类型：系统；名字：安全区类型；精度：0;单位：；
-        uint32_t input_safe_signal:7; //<类型：系统；名字：输入安全信号点；精度：0;单位：；
-        uint32_t res:19; //<类型：系统；名字：预留；精度：0;单位：；
+        uint32_t input_safe_signal1:7; //<类型：系统；名字：输入安全信号点1；精度：0;单位：；
+        uint32_t input_safe_signal2:7; //<类型：系统；名字：输入安全信号点2；精度：0;单位：；
+        uint32_t input_safe_signal3:7; //<类型：系统；名字：输入安全信号点3；精度：0;单位：；
+        uint32_t part1_en:1;//<类型：系统；名字：安全区域1使能；精度：0;单位：；
+        uint32_t part2_en:1;//<类型：系统；名字：安全区域2使能；精度：0;单位：；
+        uint32_t part3_en:1;//<类型：系统；名字：安全区域3使能；精度：0;单位：；
+        uint32_t res:2; //<类型：系统；名字：预留；精度：0;单位：；
 
         uint32_t min_pos1;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
         uint32_t max_pos1;//<类型：系统；名字：轴1最大安全位置；精度：3;单位：mm；
@@ -1500,8 +1505,10 @@ typedef union {
         uint32_t max_pos7;//<类型：系统；名字：轴7最大安全位置；精度：3;单位：mm；
         uint32_t min_pos8;//<类型：系统；名字：轴8最小安全位置；精度：3;单位：mm；
         uint32_t max_pos8;//<类型：系统；名字：轴8最大安全位置；精度：3;单位：mm；
+        uint32_t min_pos9;//<类型：系统；名字：扩展最小安全位置；精度：3;单位：mm；
+        uint32_t max_pos9;//<类型：系统；名字：扩展最大安全位置；精度：3;单位：mm；
     };
-    uint32_t d[18];
+    uint32_t d[20];
 }SafeAreaStruct;
 
 typedef union {
@@ -1547,10 +1554,10 @@ typedef struct {
     uint32_t  analog_use; //<类型：系统；名字：模拟量模块使用；精度：0;单位：；
     uint32_t  analog_set[6]; //<类型：模号；名字：模拟量设定；精度：1;单位：；
     uint32_t  turn_over_use; //<类型：系统；名字：翻转使能；精度：0;单位：；
-    SafeAreaStruct safe_area;
     OriginRelativeStruct origin_relative;
     MotorTestSpeedStruct test_speed;
-    uint32_t Reserve3[13];   //<类型:系统;名字:目标定时时间; 单位:ms
+    SafeAreaStruct safe_area;
+    uint32_t Reserve3[11];   //<类型:系统;名字:目标定时时间; 单位:ms
     uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
     uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms
 }RESERVE0;

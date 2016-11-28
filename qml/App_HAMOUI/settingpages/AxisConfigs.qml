@@ -804,8 +804,8 @@ Item {
                 ICConfigEdit{
                     id:originOffsetPulse
                     configName: qsTr("originOffset")
-                    property variant configAddrs: ["s_rw_0_16_0_239","s_rw_16_16_0_239","s_rw_0_16_0_240",
-                        "s_rw_16_16_0_240","s_rw_0_16_0_241","s_rw_16_16_0_241","s_rw_0_16_0_242","s_rw_16_16_0_242"]
+                    property variant configAddrs: ["s_rw_0_16_0_221","s_rw_16_16_0_221","s_rw_0_16_0_222",
+                        "s_rw_16_16_0_222","s_rw_0_16_0_223","s_rw_16_16_0_223","s_rw_0_16_0_224","s_rw_16_16_0_224"]
                     unit: qsTr("a")
                     max:500
                     configNameWidth: pdata.configNameWidth
@@ -856,8 +856,8 @@ Item {
                 ICConfigEdit{
                     id:testSpeed
                     unit: qsTr("%")
-                    property variant configAddrs: ["s_rw_0_8_0_243","s_rw_8_8_0_243","s_rw_16_8_0_243",
-                        "s_rw_24_8_0_243","s_rw_0_8_0_244","s_rw_8_8_0_244","s_rw_16_8_0_244","s_rw_24_8_0_244"]
+                    property variant configAddrs: ["s_rw_0_8_0_225","s_rw_8_8_0_225","s_rw_16_8_0_225",
+                        "s_rw_24_8_0_225","s_rw_0_8_0_226","s_rw_8_8_0_226","s_rw_16_8_0_226","s_rw_24_8_0_226"]
                 }
 
                 Text {

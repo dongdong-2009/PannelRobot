@@ -3994,7 +3994,7 @@
     </message>
     <message>
         <source>SafeArea Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>安全区参数</translation>
     </message>
 </context>
 <context>

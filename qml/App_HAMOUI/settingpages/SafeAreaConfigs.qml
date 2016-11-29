@@ -79,6 +79,7 @@ Item {
 
                 ICConfigEdit{
                     id:safeSignalSet
+                    inputWidth:30
                     configName:qsTr("SafePo1")
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_6_7_0_228",configValue);
@@ -93,6 +94,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:safeSignal2Set
+                    inputWidth:30
                     configName:qsTr("SafePo2")
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_13_7_0_228",configValue);
@@ -108,6 +110,7 @@ Item {
 
                 ICConfigEdit{
                     id:safeSignal3Set
+                    inputWidth:30
                     configName:qsTr("SafePo3")
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_20_7_0_228",configValue);
@@ -122,6 +125,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:safeSignal4Set
+                    inputWidth:30
                     configName:qsTr("SafePo4")
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_1_7_0_229",configValue);
@@ -136,6 +140,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:safeSignal5Set
+                    inputWidth:30
                     configName:qsTr("SafePo5")
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_8_7_0_229",configValue);
@@ -150,6 +155,7 @@ Item {
                 }
                 ICConfigEdit{
                     id:safeSignal6Set
+                    inputWidth:30
                     configName:qsTr("SafePo6")
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_15_7_0_229",configValue);
@@ -247,7 +253,7 @@ Item {
                 ICButton{
                     id:part2MinPos1SetBtn
                     visible: usePart2.isChecked
-                    text:qsTr("P2-B Set")
+                    text:qsTr("P2-A Set")
                     height: part2MinPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)

@@ -37,7 +37,7 @@ Rectangle {
         if(stackType == 1){
             pageCount = 3
             speed0.configName = qsTr("Speed0");
-            speedY.configName = qsTr("SpeedXBox");
+            speedY.configName = qsTr("SpeedYBox");
             speedZ.configName = qsTr("SpeedZBox");
 
             speed1.visible = useFlag.isChecked;

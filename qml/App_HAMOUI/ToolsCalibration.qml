@@ -9,7 +9,11 @@ Item {
     Grid{
         spacing: 10
         columns: 2
-        anchors.fill: parent
+//        anchors.fill: parent
+        width: parent.width/2
+        height: parent.height
+        anchors.left: parent.left
+        anchors.top: parent.top
         anchors.leftMargin: 20
         anchors.topMargin: 20
         function readPulse(){

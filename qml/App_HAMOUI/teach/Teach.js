@@ -1133,11 +1133,13 @@ var generateCommentAction = function(comment, commentdAction, reserve){
     };
 }
 
-var generateStackAction = function(stackID, speed0, speed1){
+var generateStackAction = function(stackID, speed0,speedY,speedZ,speed1){
     return {
         "action":actions.F_CMD_STACK0,
         "stackID":stackID,
         "speed0":speed0 || 80,
+        "speedY":speedY || 80,
+        "speedZ":speedZ || 80,
         "speed1":speed1 || 80,
     };
 }
@@ -1443,7 +1445,9 @@ var stackActionToStringHandler = function(actionObject){
                                 : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + " " +
-            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
+            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " +
+            (isBoxStack ? qsTr("SpeedYBox:"): qsTr("SpeedY:")) + actionObject.speedY + " " +
+            (isBoxStack ? qsTr("SpeedZBox:"): qsTr("SpeedZ:")) + actionObject.speedZ + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){

@@ -1726,6 +1726,17 @@ Rectangle {
         return insertedIndex;
     }
 
+    function refreshFunctions(){
+        var modulsNames = Teach.functionManager.functionsStrList();
+        moduleSel.currentIndex = -1;
+        moduleSel.items = [];
+
+        modulsNames.splice(0, 0, qsTr("Main Module"));
+        moduleSel.items = modulsNames;
+        moduleSel.currentIndex = 0;
+        currentEditingModule = 0;
+    }
+
     function updateProgramModels(){
         hasModify = false;
         programListView.model = null;
@@ -1767,15 +1778,8 @@ Rectangle {
         }
         editing.currentIndex = 0;
 
-        var modulsNames = Teach.functionManager.functionsStrList();
-        moduleSel.currentIndex = -1;
-        moduleSel.items = [];
-
-        modulsNames.splice(0, 0, qsTr("Main Module"));
-        moduleSel.items = modulsNames;
-        moduleSel.currentIndex = 0;
+        refreshFunctions();
         currentEditingProgram = 0;
-        currentEditingModule = 0;
         programListView.model = mainProgramModel;
 
     }

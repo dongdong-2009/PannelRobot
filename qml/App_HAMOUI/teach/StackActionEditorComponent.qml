@@ -43,6 +43,15 @@ Item {
 
     property alias isCounterEn: counterSel.visible
 
+    function getStackItem(){
+        return new Teach.StackItem(motor0.configValue, motor1.configValue, motor2.configValue,
+                                   motor3.configValue, motor4.configValue, motor5.configValue,
+                                   space0.configValue, space1.configValue, space2.configValue,
+                                   count0.configValue, count1.configValue, count2.configValue,
+                                   seq, dir0.configValue, dir1.configValue, dir2.configValue, doesBindingCounter,
+                                   counterID(), isOffsetEn, offsetX, offsetY, offsetZ, dataSourceName, -1, isZWithYEn, runSeq);
+    }
+
     function realDoesBindingCounter(){
 
         return counterSel.configValue != 0;
@@ -340,6 +349,7 @@ Item {
                 popupMode: 1
                 z:13
                 configValue: 0
+                popupHeight: 100
             }
         }
 

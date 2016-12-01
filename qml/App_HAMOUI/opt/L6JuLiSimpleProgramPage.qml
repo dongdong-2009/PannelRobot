@@ -7,6 +7,36 @@ import "../teach/ProgramFlowPage.js" as ProgramFlowPage
 import "../configs/IODefines.js" as IODefines
 Rectangle {
     id:instance
+    property variant programInfo: {
+        "mainProgramID":0,
+                "getMaterialProgramID":1,
+        "releaseProductModuleID":0,
+                "releaseProductStackCounterID":0,
+                "checkMAFlag" : 0,
+                "checkMBFlag" : 1,
+                "checkMMaxFlag" : 2,
+                "startGetMFlag" : 3,
+                "mForGetM" : 0,
+                "yForGetM" : 013,
+                "yForGetP":014,
+                "yForPosM" : 015,
+                "yForPosP" : 016,
+                "yForRemoveM" : 021,
+                "yForVec" : 006,
+                "xForMF" : 010,
+                "xForMA" : 020,
+                "xForMB" : 021,
+    }
+
+    function valveIDFromPoint(point) {
+        return "valve" + point;
+    }
+
+    function syncActions(actions){
+        actions.splice(0, 0, Teach.generateSyncBeginAction());
+        actions.push(Teach.generateSyncEndAction());
+        return actions;
+    }
 
     function showActionEditorPanel(){}
     function onInsertTriggered(){}
@@ -14,57 +44,135 @@ Rectangle {
     function onUpTriggered(){}
     function onDownTriggered(){}
     function onFixIndexTriggered(){}
+    function generateReleaseProductModule(stackInfo){
+        stackInfo.doesBindingCounter = true;
+        stackInfo.counterID = programInfo.releaseProductStackCounterID;
+        var releaseProductCounter = Teach.counterManager.getCounter(programInfo.releaseProductStackCounterID);
+        if(releaseProductCounter === null){
+            releaseProductCounter = Teach.counterManager.newCounter(qsTr("Release Product Stack"), 0, stackInfo.count0 * stackInfo.count1 * stackInfo.count2);
+        }else
+            Teach.counterManager.updateCounter(programInfo.releaseProductStackCounterID, qsTr("Release Product Stack"), releaseProductCounter.current, stackInfo.count0 * stackInfo.count1 * stackInfo.count2);
+        var stack = Teach.getStackInfoFromID(programInfo.releaseProductModuleID);
+        if(stack === null){
+            stack = Teach.getStackInfoFromID(Teach.appendStackInfo(new Teach.StackInfo(stackInfo, stackInfo, 0, qsTr("Release Product"))));
+        }else{
+            stack.si0 = stackInfo;
+            Teach.updateStackInfo(programInfo.releaseProductModuleID, stack);
+        }
+
+        var p = [];
+        p = p.concat(syncActions([Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 0, programInfo.yForPosM, 0.00),
+                                  Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 0, programInfo.yForVec, 0.00),
+                                 ]))
+        p.push(Teach.generateStackAction(0, relPSpd.configValue));
+        p.push(Teach.generateOutputAction(programInfo.yForGetP, IODefines.VALVE_BOARD, 0, programInfo.yForGetP, gPVOFFDelay.configValue));
+        p.push(Teach.generteEndAction());
+
+        var releaseProductModule = Teach.functionManager.getFunction(programInfo.releaseProductModuleID);
+        if(releaseProductModule == null){
+            releaseProductModule = Teach.functionManager.newFunction(qsTr("Release Product"), p);
+        }else
+            Teach.functionManager.updateFunction(programInfo.releaseProductModuleID, qsTr("Release Product"), p);
+        return programInfo.releaseProductModuleID;
+    }
+
+    function generateUpMaterialProgram(){
+        var ret = [];
+        ret.push(Teach.generateFlagAction(0, qsTr("Wait for m0 off")));
+        ret.push(Teach.generateConditionAction(IODefines.M_BOARD_0, programInfo.mForGetM, 0, 0, 0, 0)); // check m0
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, uMPm3.configValue, uMPm3Spd.configValue, 0.00));
+        ret.push(Teach.generteEndAction());
+        ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[programInfo.getMaterialProgramID], ret);
+        ProgramFlowPage.instance.saveProgram(programInfo.getMaterialProgramID);
+
+        ret = [];
+        ret.push(Teach.generateFlagAction(0, qsTr("Start")));
+        ret.push(Teach.generateConditionAction(0, programInfo.xForMA, 0, 1, 0, 1)); // check x030
+        ret.push(Teach.generateConditionAction(0, programInfo.xForMB, 0, 1, 0, 1)); // check x030
+        ret.push(Teach.generateJumpAction(0));
+        ret.push(Teach.generateFlagAction(1, qsTr("Stop Up Material Axis")));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, 0, 0, 0, false, false, 0, false, 0, 0, false, 0, false, 0, true));
+        ret.push(Teach.generteEndAction());
+        ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[8], ret);
+        ProgramFlowPage.instance.saveProgram(8);
+
+        panelRobotController.setConfigValue("m_rw_1_1_0_357", 1);
+        panelRobotController.syncConfigs();
+    }
+
+
     function onSaveTriggered(){
         var ret = [];
-        var checkMAFlag = 0;
-        var checkMBFlag = 1;
-        var checkMMaxFlag = 2;
-        var startGetMFlag = 3;
-        var mForGetM = 0;
-        var yForGetM = 013;
-        var yForPosM = 015;
-        var yForPosP = 016;
-        var yForRemoveM = 021;
-        var yForVec = 006;
         ret.push(Teach.generateCommentAction("Reserve Data", null, ""));
         ret[0].insertedIndex = 0;
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
-        ret.push(Teach.generateOutputAction(yForPosM, IODefines.IO_BOARD_0, 1, 0.00));
-        ret.push(Teach.generateFlagAction(checkMMaxFlag, qsTr("Wait for Material")));
-        ret.push(Teach.generateConditionAction(0, 16, 0, 1, 0, checkMAFlag)); // check x030
-        ret.push(Teach.generateConditionAction(0, 17, 0, 1, 0, checkMBFlag)); // check x031
-        ret.push(Teach.generateMemCmpJumpAction(checkMMaxFlag, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
+        ret = ret.concat([Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 0, programInfo.yForVec, 0.00),
+                          Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00)]);
+        ret.push(Teach.generateFlagAction(programInfo.checkMMaxFlag, qsTr("Wait for Material")));
+        ret.push(Teach.generateConditionAction(0, programInfo.xForMA, 0, 1, 0, programInfo.checkMAFlag)); // check x030
+        ret.push(Teach.generateConditionAction(0, programInfo.xForMB, 0, 1, 0, programInfo.checkMBFlag)); // check x031
+        ret.push(Teach.generateMemCmpJumpAction(programInfo.checkMMaxFlag, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
         ret.push(Teach.generateCustomAlarmAction(5000)); // no material alarm
-        ret.push(Teach.generateFlagAction(checkMAFlag, qsTr("get material-A start")));
-        ret.push(Teach.generateOutputAction(mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
+        ret.push(Teach.generateFlagAction(programInfo.checkMAFlag, qsTr("get material-A start")));
+        ret.push(Teach.generateOutputAction(programInfo.mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
         ret.push(Teach.generateSyncBeginAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, gMAm0.configValue, gMAm0Spd.configValue, gMAm0Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gMAm2.configValue, gMAm2Spd.configValue, gMAm2Delay.configValue));
         ret.push(Teach.generateSyncEndAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gMAm1.configValue, gMAm1Spd.configValue, gMAm1Delay.configValue));
-        ret.push(Teach.generateJumpAction(startGetMFlag));
-        ret.push(Teach.generateFlagAction(checkMBFlag, qsTr("get material-B start")));
-        ret.push(Teach.generateOutputAction(mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
+        ret.push(Teach.generateJumpAction(programInfo.startGetMFlag));
+        ret.push(Teach.generateFlagAction(programInfo.checkMBFlag, qsTr("get material-B start")));
+        ret.push(Teach.generateOutputAction(programInfo.mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
         ret.push(Teach.generateSyncBeginAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, gMBm0.configValue, gMBm0Spd.configValue, gMBm0Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gMBm2.configValue, gMBm2Spd.configValue, gMBm2Delay.configValue));
         ret.push(Teach.generateSyncEndAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gMBm1.configValue, gMBm1Spd.configValue, gMBm1Delay.configValue));
-        ret.push(Teach.generateFlagAction(startGetMFlag, qsTr("Begin to get material")));
-        ret.push(Teach.generateOutputAction(yForGetM, IODefines.IO_BOARD_0, yForGetM, gMVOnDelay.configAddr));
+        ret.push(Teach.generateFlagAction(programInfo.startGetMFlag, qsTr("Begin to get material")));
+        ret.push(Teach.generateOutputAction(programInfo.yForGetM, IODefines.VALVE_BOARD, 1, programInfo.yForGetM, gMVOnDelay.configValue));
         ret.push(Teach.generateCommentAction(qsTr("to back suck pos")));
         ret.push(Teach.generateSyncBeginAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, bSPm0.configValue, bSPm0Spd.configValue, bSPm0Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, bSPm1.configValue, bSPm1Spd.configValue, bSPm1Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, bSPm2.configValue, bSPm2Spd.configValue, bSPm2Delay.configValue));
         ret.push(Teach.generateSyncEndAction());
-        ret.push(Teach.generateOutputAction(yForRemoveM, IODefines.IO_BOARD_0, yForGetM, rMVOnDelay.configAddr));
+        ret.push(Teach.generateOutputAction(programInfo.yForRemoveM, IODefines.IO_BOARD_0, programInfo.yForGetM, rMVOnDelay.configValue));
+        ret.push(Teach.generateCheckAction(programInfo.yForGetM, Teach.VALVE_CHECK_START, 0.00));
         ret.push(Teach.generateCommentAction(qsTr("Start to get product")));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
-        ret.push(Teach.generateOutputAction(mForGetM, IODefines.M_BOARD_0, 0, 32, 0)); // lock up material process
-        ret.push(Teach.generateOutputAction(yForPosP, IODefines.IO_BOARD_0, 1, 0.00));
+        ret = ret.concat(syncActions([Teach.generateOutputAction(programInfo.mForGetM, IODefines.M_BOARD_0, 0, 32, 0),// lock up material process
+                                Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 1, programInfo.yForVec, 0.00),
+                                Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 0, programInfo.yForPosM, 0.00),
+                                Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, gpm0.configValue, gpm0Spd.configValue, gpm0Delay.configValue),
+                                Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, spm2.configValue,spm2Spd.configValue, spm2Delay.configValue)
+                               ]));
+        ret.push(Teach.generateWaitAction(programInfo.xForMF, IODefines.IO_BOARD_0, 1, 30.00));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gpm1.configValue, gpm1Spd.configValue, gpm1Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gpm2.configValue, gpm2Spd.configValue, gpm2Delay.configValue));
+        ret.push(Teach.generateOutputAction(programInfo.yForGetP, IODefines.VALVE_BOARD, 1, programInfo.yForGetP, gPVONDelay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gFBm2.configValue, gFBm2Spd.configValue, gFBm2Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
+        ret.push(Teach.generateCheckAction(programInfo.yForGetP, Teach.VALVE_CHECK_START, 0.00));
+        ret.push(Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00));
+        ret.push(Teach.generateSyncBeginAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, rMPm0.configValue, rMPm0Spd.configValue, rMPm0Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, rMPm2.configValue, rMPm2Spd.configValue, rMPm2Delay.configValue));
+        ret.push(Teach.generateSyncEndAction());
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, rMPm1.configValue, rMPm1Spd.configValue, rMPm1Delay.configValue));
+        ret.push(Teach.generateOutputAction(programInfo.yForGetM, IODefines.VALVE_BOARD, 0, programInfo.yForGetM, rMOFFm0Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, rMFBm2.configValue, rMFBm2Spd.configValue, rMFBm2Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
+        ret.push(Teach.generateCheckAction(programInfo.yForGetM, Teach.VALVE_CHECK_END, 0.00));
+        ret.push(Teach.generateCommentAction(qsTr("Start to release product")));
+        ret.push(Teach.generateCallModuleAction(generateReleaseProductModule(releaseProductStack.getStackItem()), -1));
         ret.push(Teach.generteEndAction());
+
         ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[0], ret);
+        ProgramFlowPage.instance.onFixIndexTriggered();
+        ProgramFlowPage.instance.saveProgram(programInfo.mainProgramID);
+        generateUpMaterialProgram();
+        ProgramFlowPage.instance.refreshFunctions();
+
     }
     Column{
         spacing: 4
@@ -230,6 +338,15 @@ Rectangle {
                             configAddr: "s_rw_0_32_2_1100"
                         }
 
+                        Text {text: qsTr("Get PV On Delay")}
+                        Text {text: qsTr("(s)")}
+                        ICConfigEdit{
+                            id:gPVONDelay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
                     }
                     Row{
                         Text {
@@ -334,6 +451,16 @@ Rectangle {
                             configAddr: "s_rw_0_32_2_1100"
                         }
 
+                        Text {text: qsTr("Rel M OFF Delay")}
+                        Text {text: qsTr("(s)")}
+                        ICConfigEdit{
+                            id:rMOFFm0Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
+                        Text {text: " "}
+                        Text {text: " "}
+                        Text {text: " "}
+
                         Text {text: qsTr("Rel M F B")}
                         Text {text: "(" + AxisDefine.axisInfos[0].unit + ")"}
                         ICButton{
@@ -387,7 +514,44 @@ Rectangle {
                         id:releaseProductStack
                         isCounterEn: false
                     }
+                    Row{
+                        spacing: 6
+                        ICConfigEdit{
+                            id:relPSpdm0
+                            configName: qsTr("Rel P SPD") + AxisDefine.axisInfos[0].name
+                            configAddr: "s_rw_0_32_1_1200"
+                            unit: qsTr("%")
+                            visible: false
+                        }
+                        ICConfigEdit{
+                            id:relPSpdm1
+                            configName: qsTr("Rel P SPD ") + AxisDefine.axisInfos[1].name
+                            configAddr: "s_rw_0_32_1_1200"
+                            unit: qsTr("%")
+                            visible: false
 
+                        }
+                        ICConfigEdit{
+                            id:relPSpdm2
+                            configName: qsTr("Rel P SPD m2") + AxisDefine.axisInfos[2].name
+                            configAddr: "s_rw_0_32_1_1200"
+                            unit: qsTr("%")
+                            visible: false
+
+                        }
+                        ICConfigEdit{
+                            id:relPSpd
+                            configName: qsTr("Rel P SPD")
+                            configAddr: "s_rw_0_32_1_1200"
+                            unit: qsTr("%")
+                        }
+                    }
+                    ICConfigEdit{
+                        id:gPVOFFDelay
+                        configAddr: "s_rw_0_32_2_1100"
+                        configName: qsTr("Get PV Off Delay")
+                        unit: "s"
+                    }
                 }
             }
 
@@ -651,7 +815,118 @@ Rectangle {
             }
         }
     }
-    //    Component.onStatusChanged: {
-    //        console.log(errorString())
-    //    }
+
+    function initPosHelper(posName, data){
+        this[posName + "m0"].configValue = data.pos.m0;
+        this[posName + "m1"].configValue = data.pos.m1;
+        this[posName + "m2"].configValue = data.pos.m2;
+        this[posName + "m0Spd"].configValue = data.spd.m0;
+        this[posName + "m1Spd"].configValue = data.spd.m0;
+        this[posName + "m2Spd"].configValue = data.spd.m0;
+        this[posName + "m0Delay"].configValue = data.dly.m0;
+        this[posName + "m1Delay"].configValue = data.dly.m0;
+        this[posName + "m2Delay"].configValue = data.dly.m0;
+    }
+
+    onVisibleChanged:{
+        if(visible){
+            var moldExtentData = ProgramFlowPage.instance.moldExtentData;
+            var defaultSPD = 80.0;
+            var defaultPOS = 0.000;
+            var defaultAxisDly = 0.00;
+            var defaultValveDly = 0.50;
+            if(moldExtentData === undefined){
+                moldExtentData = {
+                    "standbyPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "getProductPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "getProductValveOnDly":defaultValveDly,
+                    "getProductBackPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "releaseMaterialPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "releaseMaterialValveOffDly":defaultValveDly,
+                    "releaseMaterialBackPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "releaseProductStackInfo":{
+                        "m0pos" : defaultPOS ,
+                        "m1pos" : defaultPOS ,
+                        "m2pos" : defaultPOS ,
+                        "m3pos" : defaultPOS ,
+                        "m4pos" : defaultPOS ,
+                        "m5pos" : defaultPOS ,
+                        "space0" : defaultPOS ,
+                        "space1" : defaultPOS ,
+                        "space2" : defaultPOS ,
+                        "count0" : 0 ,
+                        "count1" : 0 ,
+                        "count2" : 0 ,
+                        "sequence" : 0 ,
+                        "dir0" : 0 ,
+                        "dir1" : 0 ,
+                        "dir2" : 0 ,
+                        "doesBindingCounter" : true ,
+                        "counterID" : 0 ,
+                        "isOffsetEn" : false,
+                        "isZWithYEn" : false,
+                        "offsetX" : defaultPOS ,
+                        "offsetY" : defaultPOS ,
+                        "offsetZ" : defaultPOS ,
+                        "dataSourceName" : "",
+                        "dataSourceID" : -1,
+                        "runSeq" : 3
+                    },
+                    "releaseProductSPD":{"all":defaultSPD, "m0":defaultSPD, "m1":defaultSPD, "m2":defaultSPD},
+                    "getProductValveOffDelay":defaultValveDly,
+                    "getMaterialAPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "getMaterialBPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "getMaterialValveOnDly":defaultValveDly,
+                    "removeMaterialPos":{
+                        "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":defaultPOS},
+                        "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":defaultSPD},
+                        "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":defaultAxisDly},
+                    },
+                    "removeMaterialValveOnDly":defaultValveDly,
+                    "upMaterialPos":{
+                        "pos":{"m3":defaultPOS},
+                        "spd":{"m3":defaultSPD},
+                        "dly":{"m3":defaultAxisDly},
+                    },
+                }
+            }
+
+            initPosHelper("sp", moldExtentData.standbyPos);
+
+//            gpm0.configValue = moldExtentData.getProductPos.pos.m0;
+//            gpm1.configValue = moldExtentData.getProductPos.pos.m1;
+//            gpm2.configValue = moldExtentData.getProductPos.pos.m1;
+//            gpm2Spd.configValue = moldExtentData.getProductPos.spd.m2;
+//            gpm1Spd.configValue = moldExtentData.getProductPos.spd.m1;
+//            gpm2Spd.configValue = moldExtentData.getProductPos.spd.m2;
+        }
+    }
 }

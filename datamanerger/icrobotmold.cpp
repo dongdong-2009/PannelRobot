@@ -469,6 +469,8 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         item.append(si.stackData.si[0].m4pos);
         item.append(si.stackData.si[0].m5pos);
         item.append(ICUtility::doubleToInt(v->value("speed0", 80).toDouble(), 1));
+        item.append(ICUtility::doubleToInt(v->value("speedY", 80).toDouble(), 1));
+        item.append(ICUtility::doubleToInt(v->value("speedZ", 80).toDouble(), 1));
         item.append(si.stackData.si[0].space0);
         item.append(si.stackData.si[0].space1);
         item.append(si.stackData.si[0].space2);

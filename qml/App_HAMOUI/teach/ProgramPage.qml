@@ -61,6 +61,8 @@ ContentPageBase{
 
         ICStackContainer{
             id:pageContainer
+            width: parent.width
+            height: parent.height
         }
         Component.onCompleted: {
             var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');
@@ -70,13 +72,14 @@ ContentPageBase{
             }
             pageContainer.setCurrentIndex(0);
             if(OptConfigs.simpleProgram !== ""){
-                programFlowClass = Qt.createComponent(OptConfigs.simpleProgram);
+                programFlowClass = Qt.createComponent("../opt/" + OptConfigs.simpleProgram);
                 if (programFlowClass.status == Component.Ready){
                     page = programFlowClass.createObject(pageContainer)
                     pageContainer.addPage(page);
                     swichBtn.visible = true;
                     pageContainer.setCurrentIndex(1);
-                }
+                }else
+                    console.log("opt/teach/page:", programFlowClass.errorString());
             }
         }
     }

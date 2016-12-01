@@ -123,13 +123,13 @@ Item {
             if(Teach.hasStackIDAction(actionObject)){
                 var si = Teach.getStackInfoFromID(actionObject.stackID);
                 if(si.type == Teach.stackTypes.kST_Box){
-                    speedX.configName = qsTr("Speed0:");
-                    speedY.configName = qsTr("SpeedYBox:");
-                    speedZ.configName = qsTr("SpeedZBox:");
+                    speedX.configName = AxisDefine.axisInfos[0].name +qsTr("Speed0:");
+                    speedY.configName = AxisDefine.axisInfos[1].name +qsTr("Speed0:");
+                    speedZ.configName = AxisDefine.axisInfos[2].name +qsTr("Speed0:");
                 }else{
-                    speedX.configName = qsTr("Speed:");
-                    speedY.configName = qsTr("SpeedY:");
-                    speedZ.configName = qsTr("SpeedZ:");
+                    speedX.configName = AxisDefine.axisInfos[0].name + qsTr("Speed:");
+                    speedY.configName = AxisDefine.axisInfos[1].name + qsTr("Speed:");
+                    speedZ.configName = AxisDefine.axisInfos[2].name + qsTr("Speed:");
                     speed1.visible = false;
                 }
             }
@@ -216,7 +216,7 @@ Item {
                     id:speedX
                     configNameWidth: PData.configNameWidth
                     inputWidth: PData.inputWidth
-                    configName: qsTr("Speed:")
+                    configName: AxisDefine.axisInfos[0].name + qsTr("Speed:")
                     unit: qsTr("%")
                     height: 32
                 }
@@ -224,7 +224,7 @@ Item {
                     id:speedY
                     configNameWidth: PData.configNameWidth
                     inputWidth: PData.inputWidth
-                    configName: qsTr("SpeedY:")
+                    configName: AxisDefine.axisInfos[1].name+ qsTr("Speed:")
                     unit: qsTr("%")
                     height: 32
                 }
@@ -232,7 +232,7 @@ Item {
                     id:speedZ
                     configNameWidth: PData.configNameWidth
                     inputWidth: PData.inputWidth
-                    configName: qsTr("SpeedZ:")
+                    configName: AxisDefine.axisInfos[2].name + qsTr("Speed:")
                     unit: qsTr("%")
                     height: 32
                 }

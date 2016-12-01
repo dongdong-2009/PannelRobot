@@ -4105,6 +4105,26 @@
         <source>Up M Pos</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Swich to p pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Swich to rp pose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Swich to gm pose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Swich to m pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Swich to gp pose</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LoginDialog</name>

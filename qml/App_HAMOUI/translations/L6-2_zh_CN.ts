@@ -531,7 +531,7 @@
     </message>
     <message>
         <source>No Material</source>
-        <translation type="unfinished"></translation>
+        <translation>无料</translation>
     </message>
 </context>
 <context>
@@ -4104,6 +4104,26 @@
     <message>
         <source>Up M Pos</source>
         <translation>上料最大位</translation>
+    </message>
+    <message>
+        <source>Swich to p pos</source>
+        <translation>旋转为成品位</translation>
+    </message>
+    <message>
+        <source>Swich to rp pose</source>
+        <translation>放成品姿势</translation>
+    </message>
+    <message>
+        <source>Swich to gm pose</source>
+        <translation>取料姿势</translation>
+    </message>
+    <message>
+        <source>Swich to m pos</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Swich to gp pose</source>
+        <translation>取成品姿势</translation>
     </message>
 </context>
 <context>

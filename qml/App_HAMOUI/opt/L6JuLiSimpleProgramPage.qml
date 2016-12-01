@@ -328,6 +328,7 @@ Rectangle {
                             id:spSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: setInHelper("sp");
                         }
                         ICConfigEdit{
                             id:spm0
@@ -380,6 +381,7 @@ Rectangle {
                             id:gpSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: setInHelper("gp")
                         }
                         ICConfigEdit{
                             id:gpm0
@@ -459,6 +461,9 @@ Rectangle {
                             id:gFBSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: {
+                                gFBm2.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+                            }
                         }
                         Text {text: " "}
                         Text {text: " "}
@@ -493,6 +498,7 @@ Rectangle {
                             id:rMPSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: setInHelper("rMP")
                         }
                         ICConfigEdit{
                             id:rMPm0
@@ -555,6 +561,9 @@ Rectangle {
                             id:rMFBSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: {
+                                rMFBm2.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+                            }
                         }
                         Text {text: " "}
                         Text {text: " "}
@@ -669,6 +678,7 @@ Rectangle {
                             id:gMASetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: setInHelper("gmA")
                         }
                         ICConfigEdit{
                             id:gMAm0
@@ -726,6 +736,7 @@ Rectangle {
                             id:gMBSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: setInHelper("gMB")
                         }
                         ICConfigEdit{
                             id:gMBm0
@@ -795,6 +806,7 @@ Rectangle {
                             id:bSPSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: setInHelper("bSP")
                         }
                         ICConfigEdit{
                             id:bSPm0
@@ -863,6 +875,10 @@ Rectangle {
                             id:uMPSetIn
                             text: qsTr("Set In")
                             height: spm0.height
+                            onButtonClicked: {
+                                uMPm3.configValue = (panelRobotController.statusValue("c_ro_0_32_0_913") / 1000).toFixed(3);
+
+                            }
                         }
                         Text {text: " "}
                         Text {text: " "}
@@ -915,6 +931,12 @@ Rectangle {
         this[posName + "m0Delay"].configValue = data.dly.m0;
         this[posName + "m1Delay"].configValue = data.dly.m1;
         this[posName + "m2Delay"].configValue = data.dly.m2;
+    }
+
+    function setInHelper(posName){
+        this[posName + "m0"].configValue = (panelRobotController.statusValue("c_ro_0_32_0_901") / 1000).toFixed(3);
+        this[posName + "m1"].configValue = (panelRobotController.statusValue("c_ro_0_32_0_905") / 1000).toFixed(3);
+        this[posName + "m2"].configValue = (panelRobotController.statusValue("c_ro_0_32_0_909") / 1000).toFixed(3);
     }
 
     onVisibleChanged:{

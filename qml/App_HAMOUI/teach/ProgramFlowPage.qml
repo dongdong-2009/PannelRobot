@@ -1687,7 +1687,7 @@ Rectangle {
         Teach.flagsDefine.clear(currentParsingProgram);
         if(program[0].action === Teach.actions.ACT_COMMENT){
             if(program[0].reserve !== undefined){
-                PData.moldExtentData = program[0].reserve;
+                PData.moldExtentData = JSON.parse(program[0].reserve);
             }
         }
 

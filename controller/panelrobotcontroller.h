@@ -651,6 +651,11 @@ public:
         return pD.b.type;
     }
 
+    Q_INVOKABLE int getCoordAxis() const
+    {
+        return ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status34);
+    }
+
     Q_INVOKABLE void setAutoRunningMode(int which, int mode)
     {
         AutoRunData d;
@@ -797,6 +802,8 @@ public:
     {
         ICSuperSettings().SetFactoryCode(fc);
     }
+
+    Q_INVOKABLE void sendToolCoord(int id,const QString& data);
 
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 

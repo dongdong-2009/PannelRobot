@@ -8,8 +8,14 @@ configs/* \
 settingpages/* \
 ../ICCustomElement/* \
 teach/extents/*.qml \
-teach/extents/*.js
+teach/extents/*.js \
+opt/*.qml \
+opt/*.js
 }
+
+DISTFILES += \
+    settingpages/SafeAreaConfigs.qml
+
 
 
 

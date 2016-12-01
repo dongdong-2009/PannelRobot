@@ -70,26 +70,27 @@ Item {
                     ];
             p4Show.text = pulseToText(pulses);
 
-            pulses =[
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_382"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_383"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_384"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_385"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_386"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_387"),
-                    ];
-            p5Show.text = pulseToText(pulses);
+//            pulses =[
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_382"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_383"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_384"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_385"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_386"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_387"),
+//                    ];
+//            p5Show.text = pulseToText(pulses);
 
-            pulses =[
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_388"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_389"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_390"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_391"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_392"),
-                        panelRobotController.getConfigValueText("m_rw_0_32_0_393"),
-                    ];
-            p6Show.text = pulseToText(pulses);
+//            pulses =[
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_388"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_389"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_390"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_391"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_392"),
+//                        panelRobotController.getConfigValueText("m_rw_0_32_0_393"),
+//                    ];
+//            p6Show.text = pulseToText(pulses);
 
+            enBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
 
         }
 
@@ -184,50 +185,50 @@ Item {
             verticalAlignment: Text.AlignVCenter
             height: p4.height
         }
-        ICButton{
-            id:p5
-            text: qsTr("Set to P5")
-            onButtonClicked: {
-                var pulses = parent.readPulse();
-                panelRobotController.setConfigValue("m_rw_0_32_0_382", pulses[0]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_383", pulses[1]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_384", pulses[2]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_385", pulses[3]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_386", pulses[4]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_387", pulses[5]);
-                p5Show.text = parent.pulseToText(pulses);
-                panelRobotController.syncConfigs();
+//        ICButton{
+//            id:p5
+//            text: qsTr("Set to P5")
+//            onButtonClicked: {
+//                var pulses = parent.readPulse();
+//                panelRobotController.setConfigValue("m_rw_0_32_0_382", pulses[0]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_383", pulses[1]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_384", pulses[2]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_385", pulses[3]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_386", pulses[4]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_387", pulses[5]);
+//                p5Show.text = parent.pulseToText(pulses);
+//                panelRobotController.syncConfigs();
 
-            }
-        }
-        Text {
-            id: p5Show
-            text: qsTr("text")
-            verticalAlignment: Text.AlignVCenter
-            height: p5.height
-        }
-        ICButton{
-            id:p6
-            text: qsTr("Set to P6")
-            onButtonClicked: {
-                var pulses = parent.readPulse();
-                panelRobotController.setConfigValue("m_rw_0_32_0_388", pulses[0]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_389", pulses[1]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_390", pulses[2]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_391", pulses[3]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_392", pulses[4]);
-                panelRobotController.setConfigValue("m_rw_0_32_0_393", pulses[5]);
-                p6Show.text = parent.pulseToText(pulses);
-                panelRobotController.syncConfigs();
+//            }
+//        }
+//        Text {
+//            id: p5Show
+//            text: qsTr("text")
+//            verticalAlignment: Text.AlignVCenter
+//            height: p5.height
+//        }
+//        ICButton{
+//            id:p6
+//            text: qsTr("Set to P6")
+//            onButtonClicked: {
+//                var pulses = parent.readPulse();
+//                panelRobotController.setConfigValue("m_rw_0_32_0_388", pulses[0]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_389", pulses[1]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_390", pulses[2]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_391", pulses[3]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_392", pulses[4]);
+//                panelRobotController.setConfigValue("m_rw_0_32_0_393", pulses[5]);
+//                p6Show.text = parent.pulseToText(pulses);
+//                panelRobotController.syncConfigs();
 
-            }
-        }
-        Text {
-            id: p6Show
-            text: qsTr("text")
-            verticalAlignment: Text.AlignVCenter
-            height: p6.height
-        }
+//            }
+//        }
+//        Text {
+//            id: p6Show
+//            text: qsTr("text")
+//            verticalAlignment: Text.AlignVCenter
+//            height: p6.height
+//        }
         ICCheckBox {
             id:enBtn
             text: qsTr("Use it?")

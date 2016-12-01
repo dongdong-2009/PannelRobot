@@ -283,10 +283,6 @@
         <translation>计数器未定义</translation>
     </message>
     <message>
-        <source>5000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>5001</source>
         <translation type="unfinished"></translation>
     </message>
@@ -533,6 +529,10 @@
         <source>5020</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No Material</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
@@ -766,6 +766,14 @@
     <message>
         <source>WD</source>
         <translation>世界</translation>
+    </message>
+    <message>
+        <source>Coord Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1237,6 +1245,14 @@
     <message>
         <source>SDCC2</source>
         <translation>S减速2</translation>
+    </message>
+    <message>
+        <source>originOffset</source>
+        <translation>原点误差脉冲数</translation>
+    </message>
+    <message>
+        <source>Test Speed:</source>
+        <translation>测试速度</translation>
     </message>
 </context>
 <context>
@@ -1877,6 +1893,14 @@
         <source>Counter:Self</source>
         <translation type="unfinished">计数器:自身</translation>
     </message>
+    <message>
+        <source>Switch Coord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CoordID</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1898,6 +1922,10 @@
     </message>
     <message>
         <source>Single Stack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>switchCoord</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2474,7 +2502,7 @@
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>普通输出Y026</translation>
+        <translation type="vanished">普通输出Y026</translation>
     </message>
     <message>
         <source>Normal Y027</source>
@@ -3912,6 +3940,173 @@
     </message>
 </context>
 <context>
+    <name>L6JuLiSimpleProgramPage</name>
+    <message>
+        <source>Release Product Stack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Release Product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Counter</source>
+        <translation type="unfinished">计数器清零</translation>
+    </message>
+    <message>
+        <source>Wait for m0 off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">开始</translation>
+    </message>
+    <message>
+        <source>Stop Up Material Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wait for Material</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>get material-A start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>get material-B start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Begin to get material</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to back suck pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start to get product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start to release product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In Mold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standby Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation type="unfinished">设入</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished">速度</translation>
+    </message>
+    <message>
+        <source>(%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation type="unfinished">延时</translation>
+    </message>
+    <message>
+        <source>(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get PV On Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get Pro V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get F B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel M Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel M OFF Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel M F B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel P SPD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel P SPD </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rel P SPD m2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get PV Off Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get M A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get M B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get M V On Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B S P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>R M V On Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Up M Pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoginDialog</name>
     <message>
         <source>User:</source>
@@ -3963,6 +4158,10 @@
     <message>
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafeArea Configs</source>
+        <translation>安全区参数</translation>
     </message>
 </context>
 <context>
@@ -5316,6 +5515,409 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>SafeAreaConfigs</name>
+    <message>
+        <source>Safe Area1</source>
+        <translation>类型1</translation>
+    </message>
+    <message>
+        <source>NO</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1</source>
+        <translation>位置A</translation>
+    </message>
+    <message>
+        <source>minPos1 Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>maxPos1</source>
+        <translation>位置B</translation>
+    </message>
+    <message>
+        <source>maxPos1 Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>minPos2</source>
+        <translation>位置C</translation>
+    </message>
+    <message>
+        <source>minPos2 Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>maxPos2</source>
+        <translation>位置D</translation>
+    </message>
+    <message>
+        <source>maxPos2 Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>Use it?</source>
+        <translation>使用</translation>
+    </message>
+    <message>
+        <source>Safe Area2</source>
+        <translation>类型2</translation>
+    </message>
+    <message>
+        <source>SafePo1</source>
+        <translation>区域1安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part1?</source>
+        <translation>区域1使用</translation>
+    </message>
+    <message>
+        <source>SafePo2</source>
+        <translation>区域2安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part2?</source>
+        <translation>区域2使用</translation>
+    </message>
+    <message>
+        <source>SafePo3</source>
+        <translation>区域3安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part3?</source>
+        <translation>区域3使用</translation>
+    </message>
+    <message>
+        <source>SafePo4</source>
+        <translation>区域4安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part4?</source>
+        <translation>区域4使用</translation>
+    </message>
+    <message>
+        <source>SafePo5</source>
+        <translation>区域5安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part5?</source>
+        <translation>区域5使用</translation>
+    </message>
+    <message>
+        <source>SafePo6</source>
+        <translation>区域6安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part6?</source>
+        <translation>区域6使用</translation>
+    </message>
+    <message>
+        <source>Axis1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-A</source>
+        <translation>区域1A</translation>
+    </message>
+    <message>
+        <source>P1-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P1-B</source>
+        <translation>区域1B</translation>
+    </message>
+    <message>
+        <source>P1-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P2-A</source>
+        <translation>区域2A</translation>
+    </message>
+    <message>
+        <source>P2-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P2-B</source>
+        <translation>区域2B</translation>
+    </message>
+    <message>
+        <source>P3-A</source>
+        <translation>区域3A</translation>
+    </message>
+    <message>
+        <source>P3-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P3-B</source>
+        <translation>区域3B</translation>
+    </message>
+    <message>
+        <source>P3-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P4-A</source>
+        <translation>区域4A</translation>
+    </message>
+    <message>
+        <source>P4-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P4-B</source>
+        <translation>区域4B</translation>
+    </message>
+    <message>
+        <source>P4-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P5-A</source>
+        <translation>区域5A</translation>
+    </message>
+    <message>
+        <source>P5-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P5-B</source>
+        <translation>区域5B</translation>
+    </message>
+    <message>
+        <source>P5-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P6-A</source>
+        <translation>区域6A</translation>
+    </message>
+    <message>
+        <source>P6-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P6-B</source>
+        <translation>区域6B</translation>
+    </message>
+    <message>
+        <source>P6-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>Axis2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-C</source>
+        <translation>区域1C</translation>
+    </message>
+    <message>
+        <source>P1-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P1-D</source>
+        <translation>区域1D</translation>
+    </message>
+    <message>
+        <source>P1-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P2-C</source>
+        <translation>区域2C</translation>
+    </message>
+    <message>
+        <source>P2-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P2-D</source>
+        <translation>区域2D</translation>
+    </message>
+    <message>
+        <source>P2-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P3-C</source>
+        <translation>区域3C</translation>
+    </message>
+    <message>
+        <source>P3-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P3-D</source>
+        <translation>区域3D</translation>
+    </message>
+    <message>
+        <source>P3-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P4-C</source>
+        <translation>区域4C</translation>
+    </message>
+    <message>
+        <source>P4-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P4-D</source>
+        <translation>区域4D</translation>
+    </message>
+    <message>
+        <source>P4-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P5-C</source>
+        <translation>区域5C</translation>
+    </message>
+    <message>
+        <source>P5-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P5-D</source>
+        <translation>区域5D</translation>
+    </message>
+    <message>
+        <source>P5-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P6-C</source>
+        <translation>区域6C</translation>
+    </message>
+    <message>
+        <source>P6-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P6-D</source>
+        <translation>区域6D</translation>
+    </message>
+    <message>
+        <source>P6-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>Axis3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-E</source>
+        <translation>区域1E</translation>
+    </message>
+    <message>
+        <source>P1-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P1-F</source>
+        <translation>区域1F</translation>
+    </message>
+    <message>
+        <source>P1-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P2-E</source>
+        <translation>区域2E</translation>
+    </message>
+    <message>
+        <source>P2-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P2-F</source>
+        <translation>区域2F</translation>
+    </message>
+    <message>
+        <source>P2-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P3-E</source>
+        <translation>区域3E</translation>
+    </message>
+    <message>
+        <source>P3-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P3-F</source>
+        <translation>区域3F</translation>
+    </message>
+    <message>
+        <source>P3-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P4-E</source>
+        <translation>区域4E</translation>
+    </message>
+    <message>
+        <source>P4-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P4-F</source>
+        <translation>区域4F</translation>
+    </message>
+    <message>
+        <source>P4-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P5-E</source>
+        <translation>区域5E</translation>
+    </message>
+    <message>
+        <source>P5-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P5-F</source>
+        <translation>区域5F</translation>
+    </message>
+    <message>
+        <source>P5-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P6-E</source>
+        <translation>区域6E</translation>
+    </message>
+    <message>
+        <source>P6-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P6-F</source>
+        <translation>区域6F</translation>
+    </message>
+    <message>
+        <source>P6-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P2-A Set</source>
+        <translation>A设入</translation>
+    </message>
+</context>
+<context>
     <name>SafeRangeEditor</name>
     <message>
         <source>Out Range</source>
@@ -5940,7 +6542,14 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>L6-IO-4</source>
-        <translation type="unfinished">机型4 {6-?}</translation>
+        <translation>机型4</translation>
+    </message>
+</context>
+<context>
+    <name>SwitchCoordEditor</name>
+    <message>
+        <source>coordID</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6750,6 +7359,44 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
+    <name>ToolCoordManager</name>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolCoordPage</name>
+    <message>
+        <source>newBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP1Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP2Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP3Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>coordName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
@@ -6773,11 +7420,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

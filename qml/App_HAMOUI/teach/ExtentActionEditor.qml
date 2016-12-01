@@ -57,6 +57,10 @@ Item {
                 id:singleStack
                 text: qsTr("Single Stack")
             }
+            ICCheckBox{
+                id:switchCoord
+                text: qsTr("switchCoord")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -81,6 +85,7 @@ Item {
             addPage(deltaJumpEditor);
             addPage(safeRangeEditor);
             addPage(singleStackEditor);
+            addPage(switchCoordEditor);
             currentIndex = 0;
         }
         PENQIANEditor{
@@ -97,6 +102,9 @@ Item {
         }
         SingleStackAction{
             id:singleStackEditor
+        }
+        SwitchCoordEditor{
+            id:switchCoordEditor
         }
     }
 }

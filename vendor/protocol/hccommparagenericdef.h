@@ -99,6 +99,8 @@ typedef enum _ICAddr
     //< 高16位：单步或者单循环的程序ID
     ICAddr_System_Retain_17 = 17,
     ICAddr_System_Retain_18 = 18,//< 单步运行或者单循环开始运行行数
+    ICAddr_System_Retain_20 = 20,//< 定义工件坐标系 id;3 point;
+    ICAddr_System_Retain_21 = 21,//< 手动状态坐标系值
     ICAddr_System_Retain_23 = 23,//< 电机正反转测试脉冲数
     ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级
@@ -1479,39 +1481,37 @@ typedef union {
 
         uint32_t safeArea_en:1; //<类型：系统；名字：安全区使能；精度：0;单位：；
         uint32_t type:5; //<类型：系统；名字：安全区类型；精度：0;单位：；
-        uint32_t input_safe_signal:7; //<类型：系统；名字：输入安全信号点；精度：0;单位：；
-        uint32_t res:19; //<类型：系统；名字：预留；精度：0;单位：；
+        uint32_t input_safe_signal1:7; //<类型：系统；名字：输入安全信号点1；精度：0;单位：；
+        uint32_t input_safe_signal2:7; //<类型：系统；名字：输入安全信号点2；精度：0;单位：；
+        uint32_t input_safe_signal3:7; //<类型：系统；名字：输入安全信号点3；精度：0;单位：；
+        uint32_t part1_en:1;//<类型：系统；名字：安全区域1使能；精度：0;单位：；
+        uint32_t part2_en:1;//<类型：系统；名字：安全区域2使能；精度：0;单位：；
+        uint32_t part3_en:1;//<类型：系统；名字：安全区域3使能；精度：0;单位：；
+        uint32_t part4_en:1;//<类型：系统；名字：安全区域4使能；精度：0;单位：；
+        uint32_t part5_en:1;//<类型：系统；名字：安全区域5使能；精度：0;单位：；
 
-        uint32_t min_pos1;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos1;//<类型：系统；名字：轴1最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos2;//<类型：系统；名字：轴2最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos2;//<类型：系统；名字：轴2最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos3;//<类型：系统；名字：轴3最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos3;//<类型：系统；名字：轴3最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos4;//<类型：系统；名字：轴4最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos4;//<类型：系统；名字：轴4最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos5;//<类型：系统；名字：轴5最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos5;//<类型：系统；名字：轴5最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos6;//<类型：系统；名字：轴6最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos6;//<类型：系统；名字：轴6最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos7;//<类型：系统；名字：轴7最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos7;//<类型：系统；名字：轴7最大安全位置；精度：3;单位：mm；
-        uint32_t min_pos8;//<类型：系统；名字：轴8最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos8;//<类型：系统；名字：轴8最大安全位置；精度：3;单位：mm；
+        uint32_t part6_en:1;//<类型：系统；名字：安全区域6使能；精度：0;单位：；
+        uint32_t input_safe_signal4:7; //<类型：系统；名字：输入安全信号点4；精度：0;单位：；
+        uint32_t input_safe_signal5:7; //<类型：系统；名字：输入安全信号点5；精度：0;单位：；
+        uint32_t input_safe_signal6:7; //<类型：系统；名字：输入安全信号点6；精度：0;单位：；
+        uint32_t res:10;//<类型：系统；名字：预留；精度：0;单位：；
+
+        uint32_t min_pos[18];//<类型：系统；名字：轴最小安全位置；精度：3;单位：mm；
+        uint32_t max_pos[18];//<类型：系统；名字：轴最大安全位置；精度：3;单位：mm；
     };
-    uint32_t d[18];
+    uint32_t d[39];
 }SafeAreaStruct;
 
 typedef union {
     struct{
-        uint32_t origin_offset1:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset2:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset3:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset4:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset5:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset6:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset7:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t origin_offset8:16;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
+       uint32_t origin_offset1:16;//<类型：系统；名字：轴1原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset2:16;//<类型：系统；名字：轴2原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset3:16;//<类型：系统；名字：轴3原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset4:16;//<类型：系统；名字：轴4原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset5:16;//<类型：系统；名字：轴5原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset6:16;//<类型：系统；名字：轴6原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset7:16;//<类型：系统；名字：轴7原点偏置脉冲；精度：0;单位：；
+       uint32_t origin_offset8:16;//<类型：系统；名字：轴8原点偏置脉冲；精度：0;单位：；
     };
     uint16_t p[8];
     uint32_t d[4];
@@ -1519,17 +1519,18 @@ typedef union {
 
 typedef union {
     struct{
-        uint32_t test_speed1:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed2:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed3:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed4:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed5:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed6:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed7:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
-        uint32_t test_speed8:8;//<类型：系统；名字：轴1最小安全位置；精度：3;单位：mm；
+       uint32_t test_speed1:8;//<类型：系统；名字：轴1电机测试速度；精度：0;单位：；
+       uint32_t test_speed2:8;//<类型：系统；名字：轴2电机测试速度；精度：0;单位：；
+       uint32_t test_speed3:8;//<类型：系统；名字：轴3电机测试速度；精度：0;单位：；
+       uint32_t test_speed4:8;//<类型：系统；名字：轴4电机测试速度；精度：0;单位：；
+       uint32_t test_speed5:8;//<类型：系统；名字：轴5电机测试速度；精度：0;单位：；
+       uint32_t test_speed6:8;//<类型：系统；名字：轴6电机测试速度；精度：0;单位：；
+       uint32_t test_speed7:8;//<类型：系统；名字：轴7电机测试速度；精度：0;单位：；
+       uint32_t test_speed8:8;//<类型：系统；名字：轴8电机测试速度；精度：0;单位：；
     };
     uint32_t d[2];
 }MotorTestSpeedStruct;
+
 
 typedef struct {
   //    uint16_t delay_current[8];  //<类型:系统;当前延时时间 - 32-39 - 单位-10毫秒
@@ -1544,11 +1545,10 @@ typedef struct {
     uint32_t  analog_use; //<类型：系统；名字：模拟量模块使用；精度：0;单位：；
     uint32_t  analog_set[6]; //<类型：模号；名字：模拟量设定；精度：1;单位：；
     uint32_t  turn_over_use; //<类型：系统；名字：翻转使能；精度：0;单位：；
-    SafeAreaStruct safe_area;
     OriginRelativeStruct origin_relative;
     MotorTestSpeedStruct test_speed;
-    uint32_t Reserve3[13];   //<类型:系统;名字:目标定时时间; 单位:ms
-    uint32_t Reserve4[16];   //<类型:系统;名字:当前计数值;   单位:ms
+    SafeAreaStruct safe_area;
+    uint32_t Reserve4[8];   //<类型:系统;名字:当前计数值;   单位:ms
     uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms
 }RESERVE0;
 
@@ -1821,7 +1821,6 @@ typedef union _ALL_PARA_
 } ALL_PARA;
 
 extern ALL_PARA* all_para;
-
 #ifdef __cplusplus
 }
 #endif

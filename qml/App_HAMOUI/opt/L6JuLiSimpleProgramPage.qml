@@ -65,8 +65,10 @@ Rectangle {
         var p = [];
         p = p.concat(syncActions([Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 0, programInfo.yForPosM, 0.00),
                                   Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 0, programInfo.yForVec, 0.00),
-                                 ]))
-        p.push(Teach.generateStackAction(0, relPSpd.configValue));
+                                 ]));
+        p[p.length - 3].customName = qsTr("Swich to p pos");
+        p[p.length - 2].customName = qsTr("Swich to rp pose");
+        p.push(Teach.generateStackAction(0, relPSpdm0.configValue, relPSpdm1.configValue, relPSpdm2.configValue));
         p.push(Teach.generateOutputAction(programInfo.yForGetP, IODefines.VALVE_BOARD, 0, programInfo.yForGetP, gPVOFFDelay.configValue));
         p.push(Teach.generateCounterAction(programInfo.releaseProductStackCounterID));
         p.push(Teach.generateCounterJumpAction(0, programInfo.releaseProductStackCounterID, 1, 1));
@@ -100,9 +102,9 @@ Rectangle {
         ret.push(Teach.generateFlagAction(1, qsTr("Stop Up Material Axis")));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, 0, 0, 0, false, false, 0, false, 0, 0, false, 0, false, 0, true));
         ret.push(Teach.generteEndAction());
-        ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[8], ret);
+        ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[2], ret);
         ProgramFlowPage.instance.hasModify = true;
-        ProgramFlowPage.instance.saveProgram(8);
+        ProgramFlowPage.instance.saveProgram(2);
 
         panelRobotController.setConfigValue("m_rw_1_1_0_357", 1);
         panelRobotController.syncConfigs();
@@ -188,6 +190,8 @@ Rectangle {
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
         ret = ret.concat([Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 0, programInfo.yForVec, 0.00),
                           Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00)]);
+        ret[ret.length - 2].customName = qsTr("Swich to gm pose");
+        ret[ret.length - 1].customName = qsTr("Swich to m pos");
         ret.push(Teach.generateFlagAction(programInfo.checkMMaxFlag, qsTr("Wait for Material")));
         ret.push(Teach.generateConditionAction(0, programInfo.xForMA, 0, 1, 0, programInfo.checkMAFlag)); // check x030
         ret.push(Teach.generateConditionAction(0, programInfo.xForMB, 0, 1, 0, programInfo.checkMBFlag)); // check x031
@@ -226,6 +230,8 @@ Rectangle {
                                       Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, gpm0.configValue, gpm0Spd.configValue, gpm0Delay.configValue),
                                       Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, spm2.configValue,spm2Spd.configValue, spm2Delay.configValue)
                                      ]));
+        ret[ret.length - 5].customName = qsTr("Swich to gp pose");
+        ret[ret.length - 4].customName = qsTr("Swich to p pos");
         ret.push(Teach.generateWaitAction(programInfo.xForMF, IODefines.IO_BOARD_0, 1, 30.00));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gpm1.configValue, gpm1Spd.configValue, gpm1Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gpm2.configValue, gpm2Spd.configValue, gpm2Delay.configValue));
@@ -234,6 +240,7 @@ Rectangle {
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
         ret.push(Teach.generateCheckAction(programInfo.yForGetP, Teach.VALVE_CHECK_START, 0.00));
         ret.push(Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00));
+        ret[ret.length - 1].customName = qsTr("Swich to m pos");
         ret.push(Teach.generateSyncBeginAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, rMPm0.configValue, rMPm0Spd.configValue, rMPm0Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, rMPm2.configValue, rMPm2Spd.configValue, rMPm2Delay.configValue));
@@ -308,7 +315,7 @@ Rectangle {
                     Grid{
                         spacing: 4
                         columns: 6
-                        Text {id:firstWidth;text: " ";width: 80}
+                        Text {id:firstWidth;text: " ";width: 100}
                         Text {text: " "}
                         Text {text: " "}
                         Text {text: AxisDefine.axisInfos[0].name}
@@ -324,15 +331,15 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:spm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                            configAddr: AxisDefine.axisInfos[0].rangeAddr
                         }
                         ICConfigEdit{
                             id:spm1
-                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
                         }
                         ICConfigEdit{
                             id:spm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
 
                         Text {text: qsTr("Speed")}
@@ -376,15 +383,15 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:gpm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                            configAddr: AxisDefine.axisInfos[0].rangeAddr
                         }
                         ICConfigEdit{
                             id:gpm1
-                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
                         }
                         ICConfigEdit{
                             id:gpm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
 
                         Text {text: qsTr("Speed")}
@@ -457,7 +464,7 @@ Rectangle {
                         Text {text: " "}
                         ICConfigEdit{
                             id:gFBm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
 
                         Text {text: qsTr("Speed")}
@@ -489,15 +496,15 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:rMPm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                            configAddr: AxisDefine.axisInfos[0].rangeAddr
                         }
                         ICConfigEdit{
                             id:rMPm1
-                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
                         }
                         ICConfigEdit{
                             id:rMPm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
 
                         Text {text: qsTr("Speed")}
@@ -553,7 +560,7 @@ Rectangle {
                         Text {text: " "}
                         ICConfigEdit{
                             id:rMFBm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
 
                         Text {text: qsTr("Speed")}
@@ -602,14 +609,14 @@ Rectangle {
                             configName: qsTr("Rel P SPD") + AxisDefine.axisInfos[0].name
                             configAddr: "s_rw_0_32_1_1200"
                             unit: qsTr("%")
-                            visible: false
+//                            visible: false
                         }
                         ICConfigEdit{
                             id:relPSpdm1
                             configName: qsTr("Rel P SPD ") + AxisDefine.axisInfos[1].name
                             configAddr: "s_rw_0_32_1_1200"
                             unit: qsTr("%")
-                            visible: false
+//                            visible: false
 
                         }
                         ICConfigEdit{
@@ -617,7 +624,7 @@ Rectangle {
                             configName: qsTr("Rel P SPD m2") + AxisDefine.axisInfos[2].name
                             configAddr: "s_rw_0_32_1_1200"
                             unit: qsTr("%")
-                            visible: false
+//                            visible: false
 
                         }
                         ICConfigEdit{
@@ -625,6 +632,7 @@ Rectangle {
                             configName: qsTr("Rel P SPD")
                             configAddr: "s_rw_0_32_1_1200"
                             unit: qsTr("%")
+                            visible: false
                         }
                     }
                     ICConfigEdit{
@@ -664,15 +672,15 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:gMAm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                            configAddr: AxisDefine.axisInfos[0].rangeAddr
                         }
                         ICConfigEdit{
                             id:gMAm1
-                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
                         }
                         ICConfigEdit{
                             id:gMAm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
                         Text {text: " "}
 
@@ -721,15 +729,15 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:gMBm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                            configAddr: AxisDefine.axisInfos[0].rangeAddr
                         }
                         ICConfigEdit{
                             id:gMBm1
-                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
                         }
                         ICConfigEdit{
                             id:gMBm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
                         Text {text: " "}
 
@@ -790,15 +798,15 @@ Rectangle {
                         }
                         ICConfigEdit{
                             id:bSPm0
-                            configAddr: AxisDefine.axisInfos[0].limitAddr
+                            configAddr: AxisDefine.axisInfos[0].rangeAddr
                         }
                         ICConfigEdit{
                             id:bSPm1
-                            configAddr: AxisDefine.axisInfos[1].limitAddr
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
                         }
                         ICConfigEdit{
                             id:bSPm2
-                            configAddr: AxisDefine.axisInfos[2].limitAddr
+                            configAddr: AxisDefine.axisInfos[2].rangeAddr
                         }
                         Text {text: " "}
 
@@ -861,7 +869,7 @@ Rectangle {
                         Text {text: " "}
                         ICConfigEdit{
                             id:uMPm3
-                            configAddr: AxisDefine.axisInfos[3].limitAddr
+                            configAddr: AxisDefine.axisInfos[3].rangeAddr
                         }
 
 
@@ -1046,6 +1054,9 @@ Rectangle {
             //            releaseProductStack.dataSource = moldExtentData.releaseProductStackInfo.dataSourceID;
             releaseProductStack.runSeq = moldExtentData.releaseProductStackInfo.runSeq;
             relPSpd.configValue = moldExtentData.releaseProductSPD.all;
+            relPSpdm0.configValue = moldExtentData.releaseProductSPD.m0;
+            relPSpdm1.configValue = moldExtentData.releaseProductSPD.m1;
+            relPSpdm2.configValue = moldExtentData.releaseProductSPD.m2;
             gPVOFFDelay.configValue = moldExtentData.getProductValveOffDelay;
             initPosHelper("gMA", moldExtentData.getMaterialAPos);
             initPosHelper("gMB", moldExtentData.getMaterialBPos);

@@ -599,6 +599,7 @@ Rectangle {
             id:speedY
             visible: useFlag.isChecked
             configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
+            configNameWidth: speed0.configNameWidth
             configAddr: "s_rw_0_32_1_212"
             unit: "%"
             configValue: "80.0"
@@ -607,6 +608,7 @@ Rectangle {
             id:speedZ
             visible: useFlag.isChecked
             configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
+            configNameWidth: speed0.configNameWidth
             configAddr: "s_rw_0_32_1_212"
             unit: "%"
             configValue: "80.0"

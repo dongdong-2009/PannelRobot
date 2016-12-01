@@ -83,7 +83,14 @@ Item {
                 signalStop.configValue = actionObject.signalStopPoint || 0;
                 fastStop.isChecked = (actionObject.signalStopMode == 1 ? true : false);
             }else if(editor == rel){
-                rel.isChecked = actionObject.rel || false;
+                rel.isChecked = actionObject.rel || false;              
+            }else if(editor == speed0){
+                speedX.configAddr = item.range || "";
+                speedY.configAddr = item.range || "";
+                speedZ.configAddr = item.range || "";
+                speedX.configValue = actionObject.speed0 || 0.0;
+                speedY.configValue = (actionObject.speedY == undefined?80.0:actionObject.speedY);
+                speedZ.configValue = (actionObject.speedZ == undefined?80.0:actionObject.speedZ);
             }else if(editor == pos){
                 pos.axisID = actionObject.axis;
                 if(isAutoMode){
@@ -116,9 +123,13 @@ Item {
             if(Teach.hasStackIDAction(actionObject)){
                 var si = Teach.getStackInfoFromID(actionObject.stackID);
                 if(si.type == Teach.stackTypes.kST_Box){
-                    speed0.configName = qsTr("Speed0:");
+                    speedX.configName = qsTr("Speed0:");
+                    speedY.configName = qsTr("SpeedYBox:");
+                    speedZ.configName = qsTr("SpeedZBox:");
                 }else{
-                    speed0.configName = qsTr("Speed:");
+                    speedX.configName = qsTr("Speed:");
+                    speedY.configName = qsTr("SpeedY:");
+                    speedZ.configName = qsTr("SpeedZ:");
                     speed1.visible = false;
                 }
             }
@@ -198,14 +209,33 @@ Item {
                 height: 32
 
             }
-            ICConfigEdit{
+            Column{
                 id:speed0
-                configNameWidth: PData.configNameWidth
-                inputWidth: PData.inputWidth
-                configName: qsTr("Speed:")
-                unit: qsTr("%")
-                height: 32
-
+                spacing: 10
+                ICConfigEdit{
+                    id:speedX
+                    configNameWidth: PData.configNameWidth
+                    inputWidth: PData.inputWidth
+                    configName: qsTr("Speed:")
+                    unit: qsTr("%")
+                    height: 32
+                }
+                ICConfigEdit{
+                    id:speedY
+                    configNameWidth: PData.configNameWidth
+                    inputWidth: PData.inputWidth
+                    configName: qsTr("SpeedY:")
+                    unit: qsTr("%")
+                    height: 32
+                }
+                ICConfigEdit{
+                    id:speedZ
+                    configNameWidth: PData.configNameWidth
+                    inputWidth: PData.inputWidth
+                    configName: qsTr("SpeedZ:")
+                    unit: qsTr("%")
+                    height: 32
+                }
             }
             ICConfigEdit{
                 id:speed1
@@ -412,6 +442,10 @@ Item {
                         editingObject.signalStopMode = (fastStop.isChecked ? 1 : 0);
                     }else if(editor == rel){
                         editingObject.rel = rel.isChecked;
+                    }else if(editor == speed0){
+                        editingObject.speed0 = speedX.configValue;
+                        editingObject.speedY = speedY.configValue;
+                        editingObject.speedZ = speedZ.configValue;
                     }else if(editor == pos){
                         if(isAutoMode){
                             var o = parseFloat(editingObject.pos);

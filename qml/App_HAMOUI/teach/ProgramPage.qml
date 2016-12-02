@@ -31,7 +31,7 @@ ContentPageBase{
     }
 
     function onKnobChanged(knobStatus){
-        if(knobStatus == Keymap.KNOB_AUTO){
+        if(knobStatus == Keymap.KNOB_AUTO && pageContainer.pages.length > 1){
             swichBtn.toAdv();
         }
         onUserChanged();

@@ -324,6 +324,7 @@ public:
         }
 
         return ret;
+
     }
 
 
@@ -353,6 +354,8 @@ public:
         //        {
         //            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
         //        }
+        if(ret.isEmpty())
+            modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
         return ErrInfoToJSON(ret);
     }
 
@@ -366,6 +369,8 @@ public:
         //        {
         //            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
         //        }
+        if(ret.isEmpty())
+            modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
         return ErrInfoToJSON(ret);
     }
 
@@ -548,7 +553,7 @@ public:
         if(sendToHost)
         {
             sendMainProgramToHost();
-            for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+            for(int i = 0;  i<ICRobotMold::kSubEnd; ++i)
             {
                 sendSubProgramToHost(i);
             }

@@ -66,9 +66,16 @@ ExtentActionEditorBase {
     }
     function syncConfig(){
         configs = axisSel.configValue;
-        configs |= dirEdit.isChecked ? 1 <<  5: 0;
-        configs |= addrType.isChecked ? 1 << 8 : 0;
-        configs |= counterSel.configValue > 0 ? 1 << 16 : 0;
+        var tmp = (1 <<  5);
+        configs &= ~tmp;
+        configs |= dirEdit.isChecked ? tmp : 0;
+        tmp = (1 << 8);
+        configs &= ~tmp;
+        configs |= addrType.isChecked ? tmp : 0;
+        tmp = (1 << 16);
+        configs &= ~tmp;
+        configs |= counterSel.configValue > 0 ? tmp : 0;
+        configs &= 0x0003FFFF;
         configs |= counterSel.configValue <= 0 ? 0 : counterID() << 17;
     }
 
@@ -115,6 +122,7 @@ ExtentActionEditorBase {
         dirEdit.isChecked = dir ? 1 : 0;
         setCounterID(cID, bindingCounter);
         var pts = actionObject.points;
+        if(pts == undefined) pts = [];
         relPoint.isChecked = (pts.length !== 0);
         if(relPoint.isChecked){
             var ptName = pts[0].pointName;

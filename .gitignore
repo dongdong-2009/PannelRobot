@@ -1,2 +1,13 @@
+#ignore .metadata
+.svn
+temp_*/
+bin_*/
+.metadata
 *.pro.user
-.svn/
+*~
+Makefile
+*.bfe
+*.zip
+*.tar
+*.o
+

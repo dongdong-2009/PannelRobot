@@ -157,3 +157,5 @@ var clipboard = [];
 function setClipboard(lines){
     clipboard = lines;
 }
+
+var moldExtentData = "";

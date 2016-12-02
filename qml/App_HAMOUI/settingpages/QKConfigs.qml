@@ -15,10 +15,12 @@ Item {
         ICConfigEdit{
             id:addrEdit
             configName: qsTr("Addr")
+            isNumberOnly: false
         }
         ICConfigEdit{
             id:dataEdit
             configName: qsTr("Data")
+            isNumberOnly: false
         }
     }
     Row{
@@ -27,28 +29,28 @@ Item {
             id:writeBtn
             text: qsTr("Write")
             onButtonClicked: {
-                panelRobotController.writeQKConfig(axisEdit.configValue, addrEdit.configValue, dataEdit.configValue);
+                panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16));
             }
         }
         ICButton {
             id:readBtn
             text: qsTr("Read")
             onButtonClicked: {
-                panelRobotController.readQKConfig(axisEdit.configValue, addrEdit.configValue);
+                panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16));
             }
         }
         ICButton{
             id:writeEPBtn
             text: qsTr("Write EP")
             onButtonClicked: {
-                panelRobotController.writeQKConfig(axisEdit.configValue, addrEdit.configValue, dataEdit.configValue, true);
+                panelRobotController.writeQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), parseInt(dataEdit.configValue, 16), true);
             }
         }
         ICButton{
             id:readEPBtn
             text: qsTr("Read EP")
             onButtonClicked: {
-                panelRobotController.readQKConfig(axisEdit.configValue, addrEdit.configValue, true);
+                panelRobotController.readQKConfig(axisEdit.configValue, parseInt(addrEdit.configValue, 16), true);
 
             }
         }
@@ -57,10 +59,11 @@ Item {
         anchors.topMargin: 6
     }
     function onReadFinished(data){
-        dataEdit.configValue = data & 0xFFFF;
+        console.log("onReadFinished", data);
+        dataEdit.configValue = ((data>>16) & 0xFFFF).toString(16);
     }
 
     Component.onCompleted: {
-        panelRobotController.readQKConfigFinished.connect(onReadFinished(data));
+        panelRobotController.readQKConfigFinished.connect(onReadFinished);
     }
 }

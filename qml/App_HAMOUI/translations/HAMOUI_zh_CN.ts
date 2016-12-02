@@ -1275,11 +1275,18 @@
     </message>
     <message>
         <source>M7</source>
-        <translation type="unfinished">报警状态 {7?}</translation>
+        <translation></translation>
     </message>
     <message>
         <source>M8</source>
-        <translation type="unfinished">报警状态 {8?}</translation>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>AxisPosDisplayBar</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished">轴</translation>
     </message>
 </context>
 <context>
@@ -5047,6 +5054,18 @@ please chose!</source>
     <message>
         <source>Fix Index</source>
         <translation>整理编号</translation>
+    </message>
+    <message>
+        <source>Adv</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C Modify</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

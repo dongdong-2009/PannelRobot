@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -110,22 +110,6 @@
     <message>
         <source>Rel</source>
         <translation>相对</translation>
-    </message>
-    <message>
-        <source>SpeedYBox:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedZBox:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedY:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedZ:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -673,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -697,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1120,11 +1104,11 @@
     </message>
     <message>
         <source>Motor 2</source>
-        <translation>安川</translation>
+        <translation>台达A2</translation>
     </message>
     <message>
         <source>Motor 3</source>
-        <translation>台达伺服</translation>
+        <translation>松下</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -1236,7 +1220,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation>Motor4</translation>
+        <translation>华成</translation>
     </message>
     <message>
         <source>SACC1</source>
@@ -1253,6 +1237,14 @@
     <message>
         <source>SDCC2</source>
         <translation>S减速2</translation>
+    </message>
+    <message>
+        <source>Motor 5</source>
+        <translation type="unfinished">Motor5</translation>
+    </message>
+    <message>
+        <source>Motor 6</source>
+        <translation type="unfinished">Motor6</translation>
     </message>
 </context>
 <context>
@@ -1296,6 +1288,13 @@
     <message>
         <source>M8</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>AxisPosDisplayBar</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished">轴</translation>
     </message>
 </context>
 <context>
@@ -1791,11 +1790,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -3986,7 +3985,7 @@
     </message>
     <message>
         <source>QK Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>驱控参数</translation>
     </message>
 </context>
 <context>
@@ -5072,6 +5071,10 @@ please chose!</source>
         <source>Sp</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>C Modify</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QKConfigs</name>
@@ -5270,7 +5273,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5302,11 +5305,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5620,22 +5623,6 @@ please chose!</source>
     <message>
         <source>is using!</source>
         <translation>使用中!</translation>
-    </message>
-    <message>
-        <source>SpeedYBox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedZBox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedZ</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6581,22 +6568,6 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Normal</source>
         <translation>一般</translation>
-    </message>
-    <message>
-        <source>SpeedYBox:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedY:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedZBox:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SpeedZ:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

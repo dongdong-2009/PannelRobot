@@ -107,6 +107,7 @@ Rectangle {
         ProgramFlowPage.instance.saveProgram(2);
 
         panelRobotController.setConfigValue("m_rw_1_1_0_357", 1);
+        panelRobotController.setConfigValue("m_rw_2_1_0_357", 1);
         panelRobotController.syncConfigs();
     }
 
@@ -296,7 +297,7 @@ Rectangle {
         }
         ICStackContainer{
             id:pageContainer
-            height: instance.height - funSel.height - horSplitLine.height - 90
+            height: instance.height - funSel.height - horSplitLine.height - 130
             width: instance.width
             Component.onCompleted: {
                 setCurrentIndex(addPage(inMoldPageContainer));
@@ -315,7 +316,7 @@ Rectangle {
                     Grid{
                         spacing: 4
                         columns: 6
-                        Text {id:firstWidth;text: " ";width: 100}
+                        Text {id:firstWidth;text: " ";width: 130}
                         Text {text: " "}
                         Text {text: " "}
                         Text {text: AxisDefine.axisInfos[0].name}

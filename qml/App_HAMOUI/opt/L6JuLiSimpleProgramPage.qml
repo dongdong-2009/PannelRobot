@@ -93,7 +93,7 @@ Rectangle {
         ret.push(Teach.generateFlagAction(0, qsTr("Wait for m0 off")));
         ret.push(Teach.generateConditionAction(IODefines.M_BOARD_0, programInfo.mForGetM, 0, 1, 0, 0)); // check m0
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, uMPm3.configValue, uMPm3Spd.configValue, 0.00));
-        ret.push(Teach.generateMemCmpJumpAction(0, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
+        ret.push(Teach.generateMemCmpJumpAction(0, 3281027081, (parseFloat(uMPm3.configValue) * 1000).toFixed(0), 2, 0)); // check < x2 max
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, 0.000, uMPm3Spd.configValue, 0.00));
         ret.push(Teach.generateConditionAction(0, programInfo.xForLC1, 0, 1, 0, 1)); // check x35
         ret.push(Teach.generateOutputAction(programInfo.yForGetB1, IODefines.VALVE_BOARD, 1, programInfo.yForGetB1, 0.00));

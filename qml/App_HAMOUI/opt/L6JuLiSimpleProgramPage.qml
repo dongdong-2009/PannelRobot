@@ -28,6 +28,13 @@ Rectangle {
                 "xForMB" : 021,
     }
 
+    states: [
+        State {
+            name: "autoMode"
+            PropertyChanges {target: releaseProductStack;visible:false}
+        }
+    ]
+
     function valveIDFromPoint(point) {
         return "valve" + point;
     }

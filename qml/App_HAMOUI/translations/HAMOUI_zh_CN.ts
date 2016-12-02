@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -657,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1004,7 +1004,7 @@
     </message>
     <message>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Pulse Count Per Circle</source>
@@ -1012,7 +1012,7 @@
     </message>
     <message>
         <source>a</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Reduction Ratio</source>
@@ -1044,7 +1044,7 @@
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>ACC 2</source>
@@ -1056,7 +1056,7 @@
     </message>
     <message>
         <source>RPM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Set to Origin</source>
@@ -1108,15 +1108,15 @@
     </message>
     <message>
         <source>Motor 1</source>
-        <translation>汇川</translation>
+        <translation>汇川伺服</translation>
     </message>
     <message>
         <source>Motor 2</source>
-        <translation>安川</translation>
+        <translation>台达伺服</translation>
     </message>
     <message>
         <source>Motor 3</source>
-        <translation>台达伺服</translation>
+        <translation>松下伺服</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -1228,7 +1228,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation>Motor4</translation>
+        <translation>华成伺服</translation>
     </message>
     <message>
         <source>SACC1</source>
@@ -1248,11 +1248,19 @@
     </message>
     <message>
         <source>originOffset</source>
-        <translation type="unfinished"></translation>
+        <translation>原点脉冲偏差</translation>
     </message>
     <message>
         <source>Test Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>测试速度</translation>
+    </message>
+    <message>
+        <source>Motor 5</source>
+        <translation>三协伺服</translation>
+    </message>
+    <message>
+        <source>Motor 6</source>
+        <translation>安川伺服</translation>
     </message>
 </context>
 <context>
@@ -1791,11 +1799,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -5290,7 +5298,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5322,11 +5330,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -6942,11 +6950,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="vanished">设为点5</translation>
+        <translation>设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="vanished">设为点6</translation>
+        <translation>设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

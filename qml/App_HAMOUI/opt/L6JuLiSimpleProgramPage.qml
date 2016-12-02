@@ -5,6 +5,9 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../teach"
 import "../teach/ProgramFlowPage.js" as ProgramFlowPage
 import "../configs/IODefines.js" as IODefines
+import "../ShareData.js" as ShareData
+import "../configs/Keymap.js" as Keymap
+import "L6JuLiSimpleProgramPage.js" as PData
 Rectangle {
     id:instance
     property variant programInfo: {
@@ -27,7 +30,6 @@ Rectangle {
                 "xForMA" : 020,
                 "xForMB" : 021,
     }
-
     states: [
         State {
             name: "autoMode"
@@ -189,6 +191,13 @@ Rectangle {
         };
     }
 
+    function cmpActionProperty(a, b, propertyName){
+        if(a.hasOwnProperty(propertyName) && b.hasOwnProperty(propertyName)){
+            return a[propertyName] === b[propertyName];
+        }
+        return true;
+    }
+
     function onSaveTriggered(){
         var ret = [];
         ProgramFlowPage.moldExtentData = saveReserveData();
@@ -268,7 +277,26 @@ Rectangle {
         generateUpMaterialProgram();
         ProgramFlowPage.instance.refreshFunctions();
 
+        if(state == "autoMode"){
+            for(var i = 1, len = ret.length; i < len; ++i){
+                if(!cmpActionProperty(ret[i], PData.mainProgram[i], "delay")){
+                    console.log("change delay:", i);
+                }else if(!cmpActionProperty(ret[i], PData.mainProgram[i], "speed")){
+                    console.log("change speed:", i);
+                }else if(!cmpActionProperty(ret[i], PData.mainProgram[i], "pos")){
+                    console.log("change pos:", i);
+                }
+            }
+        }
+
+        PData.mainProgram = ret;
+
     }
+
+    function onAutoEditConfirm(){
+        onSaveTriggered();
+    }
+
     Column{
         spacing: 4
         y:4
@@ -1094,6 +1122,10 @@ Rectangle {
             rMVOnDelay.configValue = moldExtentData.removeMaterialValveOnDly;
             uMPm3.configValue = moldExtentData.upMaterialPos.pos.m3;
             uMPm3Spd.configValue = moldExtentData.upMaterialPos.spd.m3;
+
+            if(PData.mainProgram.length == 0){
+                PData.mainProgram = JSON.parse(panelRobotController.programs(0));
+            }
             //            gpm0.configValue = moldExtentData.getProductPos.pos.m0;
             //            gpm1.configValue = moldExtentData.getProductPos.pos.m1;
             //            gpm2.configValue = moldExtentData.getProductPos.pos.m1;
@@ -1101,5 +1133,16 @@ Rectangle {
             //            gpm1Spd.configValue = moldExtentData.getProductPos.spd.m1;
             //            gpm2Spd.configValue = moldExtentData.getProductPos.spd.m2;
         }
+    }
+
+    function onKnobChanged(knobStatus){
+        if(knobStatus == Keymap.KNOB_AUTO){
+            state = "autoMode";
+        }else
+            state = "";
+    }
+    Component.onCompleted:{
+        ShareData.GlobalStatusCenter.registeKnobChangedEvent(instance);
+
     }
 }

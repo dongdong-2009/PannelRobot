@@ -16,6 +16,9 @@ opt/*.js
 DISTFILES += \
     settingpages/SafeAreaConfigs.qml
 
+OTHER_FILES += \
+    opt/L6JuLiSimpleProgramPage.js
+
 
 
 

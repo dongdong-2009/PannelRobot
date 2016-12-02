@@ -624,7 +624,7 @@ Item {
                     configName: qsTr("Motor Factory")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4")]
+                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6")]
                     z:9
                     visible: encoderType.configValue == 1
                 }

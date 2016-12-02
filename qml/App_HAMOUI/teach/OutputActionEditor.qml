@@ -29,7 +29,7 @@ Item {
         "valve19",
         "valve20",
         "valve21",
-        "valve22",
+//        "valve22",
         "valve23",
         "valve24",
         "valve25",

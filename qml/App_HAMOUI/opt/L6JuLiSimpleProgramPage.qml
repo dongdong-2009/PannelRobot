@@ -38,7 +38,12 @@ Rectangle {
         State {
             name: "autoMode"
             PropertyChanges {target: releaseProductStack;visible:false}
+        },
+        State{
+            name: "teachMode"
+            PropertyChanges {target: releaseProductStack;visible:true}
         }
+
     ]
 
     function valveIDFromPoint(point) {
@@ -1169,7 +1174,7 @@ Rectangle {
         if(knobStatus == Keymap.KNOB_AUTO){
             state = "autoMode";
         }else
-            state = "";
+            state = "teachMode";
     }
     Component.onCompleted:{
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(instance);

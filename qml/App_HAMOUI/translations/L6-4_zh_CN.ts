@@ -767,14 +767,6 @@
         <source>WD</source>
         <translation>世界</translation>
     </message>
-    <message>
-        <source>Coord Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
@@ -2534,7 +2526,7 @@
     </message>
     <message>
         <source>Normal Y036</source>
-        <translation>Y3轴放料完成</translation>
+        <translation type="vanished">Y3轴放料完成</translation>
     </message>
     <message>
         <source>Normal Y037</source>
@@ -4125,6 +4117,10 @@
         <source>Swich to gp pose</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LoginDialog</name>
@@ -5264,6 +5260,10 @@ please chose!</source>
     </message>
     <message>
         <source>Sp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C Modify</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

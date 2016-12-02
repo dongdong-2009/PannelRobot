@@ -6,7 +6,15 @@ import "configs/AxisDefine.js" as AxisDefine
 Item {
     width: parent.width
     height: parent.height
-    Grid{
+
+    ICStackContainer{
+        id:pageContainer
+        width: parent.width
+        height: parent.height -50
+    }
+    Item {
+
+      Grid{
         spacing: 10
         columns: 2
 //        anchors.fill: parent
@@ -252,4 +260,5 @@ Item {
             onMoldChanged();
         }
     }
+   }
 }

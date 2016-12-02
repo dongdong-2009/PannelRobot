@@ -1291,6 +1291,13 @@
     </message>
 </context>
 <context>
+    <name>AxisPosDisplayBar</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BottomMenuItem</name>
     <message>
         <source>item</source>
@@ -4119,7 +4126,7 @@
     </message>
     <message>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

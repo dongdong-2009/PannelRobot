@@ -1444,7 +1444,7 @@ var stackActionToStringHandler = function(actionObject){
     var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                 : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
-            descr + " " +
+            descr + "\n                            " +
             axisInfos[0].name + (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " +
             axisInfos[1].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedY == undefined? 80.0:actionObject.speedY) + " " +
             axisInfos[2].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedZ == undefined? 80.0:actionObject.speedZ) + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;

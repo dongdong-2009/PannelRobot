@@ -1081,25 +1081,25 @@ MouseArea{
             anchors.topMargin: 6
             x:verSpliteLine.x
         }
-        ICComboBoxConfigEdit{
-            id:coordSel
-            anchors.top: horSpliteLine.bottom
-            anchors.topMargin: 4
-            anchors.left: verSpliteLine.right
-            anchors.leftMargin: 4
-            configName: qsTr("Coord Select")
-            onVisibleChanged: {
-                if(visible){
-                    var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
-                    coords.splice(0, 0, qsTr("0:BaseCoord"));
-                    items = coords;
-                    configValue = panelRobotController.getCoordAxis();
-                }
-            }
-            onConfigValueChanged: {
-                panelRobotController.modifyConfigValue(21,parseInt(items[configValue][0]));
-            }
-        }
+//        ICComboBoxConfigEdit{
+//            id:coordSel
+//            anchors.top: horSpliteLine.bottom
+//            anchors.topMargin: 4
+//            anchors.left: verSpliteLine.right
+//            anchors.leftMargin: 4
+//            configName: qsTr("Coord Select")
+//            onVisibleChanged: {
+//                if(visible){
+//                    var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
+//                    coords.splice(0, 0, qsTr("0:BaseCoord"));
+//                    items = coords;
+//                    configValue = panelRobotController.getCoordAxis();
+//                }
+//            }
+//            onConfigValueChanged: {
+//                panelRobotController.modifyConfigValue(21,parseInt(items[configValue][0]));
+//            }
+//        }
 
 //        onVisibleChanged: {
 ////            ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(visible);

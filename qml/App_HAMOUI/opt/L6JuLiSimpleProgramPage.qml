@@ -25,10 +25,14 @@ Rectangle {
                 "yForPosM" : 015,
                 "yForPosP" : 016,
                 "yForRemoveM" : 021,
+                "yForGetB1": 025,
+                "yForGetB2": 026,
                 "yForVec" : 006,
                 "xForMF" : 010,
                 "xForMA" : 020,
                 "xForMB" : 021,
+                "xForLC1": 025,
+                "xForLC2": 026,
     }
     states: [
         State {
@@ -96,8 +100,16 @@ Rectangle {
     function generateUpMaterialProgram(){
         var ret = [];
         ret.push(Teach.generateFlagAction(0, qsTr("Wait for m0 off")));
-        ret.push(Teach.generateConditionAction(IODefines.M_BOARD_0, programInfo.mForGetM, 0, 0, 0, 0)); // check m0
+        ret.push(Teach.generateConditionAction(IODefines.M_BOARD_0, programInfo.mForGetM, 0, 1, 0, 0)); // check m0
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, uMPm3.configValue, uMPm3Spd.configValue, 0.00));
+        ret.push(Teach.generateMemCmpJumpAction(0, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 3, 0.000, uMPm3Spd.configValue, 0.00));
+        ret.push(Teach.generateConditionAction(0, programInfo.xForLC1, 0, 1, 0, 1)); // check x35
+        ret.push(Teach.generateOutputAction(programInfo.yForGetB1, IODefines.VALVE_BOARD, 1, programInfo.yForGetB1, 0.00));
+        ret.push(Teach.generateWaitAction(programInfo.xForLC1, 0, 1, 3.0));
+        ret.push(Teach.generateFlagAction(1, qsTr("")));
+        ret.push(Teach.generateOutputAction(programInfo.yForGetB1, IODefines.VALVE_BOARD, 0, programInfo.yForGetB1, 0.00));
+        ret.push(Teach.generateWaitAction(programInfo.xForLC2, 0, 1, 3.0));
         ret.push(Teach.generteEndAction());
         ProgramFlowPage.instance.updateProgramModel(ProgramFlowPage.programs[programInfo.getMaterialProgramID], ret);
         ProgramFlowPage.instance.hasModify = true;
@@ -116,6 +128,7 @@ Rectangle {
         ProgramFlowPage.instance.saveProgram(2);
 
         panelRobotController.setConfigValue("m_rw_1_1_0_357", 1);
+        panelRobotController.setConfigValue("m_rw_2_1_0_357", 1);
         panelRobotController.syncConfigs();
     }
 
@@ -137,9 +150,9 @@ Rectangle {
             "getProductPos":setPosDataHelper("gp"),
             "getProductValveOnDly":gPVONDelay.configValue,
             "getProductBackPos":{
-                "pos":{"m0":defaultPOS,"m1":defaultPOS, "m2":gFBm2.configValue},
-                "spd":{"m0":defaultSPD,"m1":defaultSPD, "m2":gFBm2Spd.configValue},
-                "dly":{"m0":defaultAxisDly,"m1":defaultAxisDly, "m2":gFBm2Delay.configValue},
+                "pos":{"m0":defaultPOS,"m1":gFBm1.configValue, "m2":gFBm2.configValue},
+                "spd":{"m0":defaultSPD,"m1":gFBm1Spd.configValue, "m2":gFBm2Spd.configValue},
+                "dly":{"m0":defaultAxisDly,"m1":gFBm1Delay.configValue, "m2":gFBm2Delay.configValue},
             },
             "releaseMaterialPos":setPosDataHelper("rMP"),
             "releaseMaterialValveOffDly":rMVOFFDelay.configValue,
@@ -181,7 +194,7 @@ Rectangle {
             "getMaterialAPos":setPosDataHelper("gMA"),
             "getMaterialBPos":setPosDataHelper("gMB"),
             "getMaterialValveOnDly":gMVOnDelay.configValue,
-            "removeMaterialPos":setPosDataHelper("rMP"),
+            "removeMaterialPos":setPosDataHelper("bSP"),
             "removeMaterialValveOnDly":rMVOnDelay.configValue,
             "upMaterialPos":{
                 "pos":{"m3":uMPm3.configValue},
@@ -204,15 +217,16 @@ Rectangle {
         ret.push(Teach.generateCommentAction("Reserve Data", null, JSON.stringify(ProgramFlowPage.moldExtentData)));
         ret[0].insertedIndex = 0;
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
-        ret = ret.concat([Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 0, programInfo.yForVec, 0.00),
-                          Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00)]);
-        ret[ret.length - 2].customName = qsTr("Swich to gm pose");
-        ret[ret.length - 1].customName = qsTr("Swich to m pos");
+        ret = ret.concat(syncActions([Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 0, programInfo.yForVec, 0.00),
+                          Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00)]));
+        ret[ret.length - 3].customName = qsTr("Swich to gm pose");
+        ret[ret.length - 2].customName = qsTr("Swich to m pos");
         ret.push(Teach.generateFlagAction(programInfo.checkMMaxFlag, qsTr("Wait for Material")));
         ret.push(Teach.generateConditionAction(0, programInfo.xForMA, 0, 1, 0, programInfo.checkMAFlag)); // check x030
         ret.push(Teach.generateConditionAction(0, programInfo.xForMB, 0, 1, 0, programInfo.checkMBFlag)); // check x031
-        ret.push(Teach.generateMemCmpJumpAction(programInfo.checkMMaxFlag, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
-        ret.push(Teach.generateCustomAlarmAction(5000)); // no material alarm
+        ret.push(Teach.generateJumpAction(programInfo.checkMMaxFlag));
+//        ret.push(Teach.generateMemCmpJumpAction(programInfo.checkMMaxFlag, 3281027081, uMPm3.configValue, 2, 0)); // check < x2 max
+//        ret.push(Teach.generateCustomAlarmAction(5000)); // no material alarm
         ret.push(Teach.generateFlagAction(programInfo.checkMAFlag, qsTr("get material-A start")));
         ret.push(Teach.generateOutputAction(programInfo.mForGetM, IODefines.M_BOARD_0, 1, 32, 0)); // lock up material process
         ret.push(Teach.generateSyncBeginAction());
@@ -230,16 +244,20 @@ Rectangle {
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gMBm1.configValue, gMBm1Spd.configValue, gMBm1Delay.configValue));
         ret.push(Teach.generateFlagAction(programInfo.startGetMFlag, qsTr("Begin to get material")));
         ret.push(Teach.generateOutputAction(programInfo.yForGetM, IODefines.VALVE_BOARD, 1, programInfo.yForGetM, gMVOnDelay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
         ret.push(Teach.generateCommentAction(qsTr("to back suck pos")));
         ret.push(Teach.generateSyncBeginAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 0, bSPm0.configValue, bSPm0Spd.configValue, bSPm0Delay.configValue));
-        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, bSPm1.configValue, bSPm1Spd.configValue, bSPm1Delay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, bSPm2.configValue, bSPm2Spd.configValue, bSPm2Delay.configValue));
         ret.push(Teach.generateSyncEndAction());
-        ret.push(Teach.generateOutputAction(programInfo.yForRemoveM, IODefines.IO_BOARD_0, programInfo.yForGetM, rMVOnDelay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, bSPm1.configValue, bSPm1Spd.configValue, bSPm1Delay.configValue));
+        ret.push(Teach.generateOutputAction(programInfo.yForRemoveM, IODefines.IO_BOARD_0, 1, programInfo.yForGetM, rMVOnDelay.configValue));
         ret.push(Teach.generateCheckAction(programInfo.yForGetM, Teach.VALVE_CHECK_START, 0.00));
         ret.push(Teach.generateCommentAction(qsTr("Start to get product")));
+        ret.push(Teach.generateSyncBeginAction());
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
+        ret.push(Teach.generateOutputAction(programInfo.yForRemoveM, IODefines.IO_BOARD_0,0, programInfo.yForGetM, 0.5));
+        ret.push(Teach.generateSyncEndAction());
         ret = ret.concat(syncActions([Teach.generateOutputAction(programInfo.mForGetM, IODefines.M_BOARD_0, 0, 32, 0),// lock up material process
                                       Teach.generateOutputAction(programInfo.yForVec, IODefines.VALVE_BOARD, 1, programInfo.yForVec, 0.00),
                                       Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 0, programInfo.yForPosM, 0.00),
@@ -253,7 +271,7 @@ Rectangle {
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gpm2.configValue, gpm2Spd.configValue, gpm2Delay.configValue));
         ret.push(Teach.generateOutputAction(programInfo.yForGetP, IODefines.VALVE_BOARD, 1, programInfo.yForGetP, gPVONDelay.configValue));
         ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 2, gFBm2.configValue, gFBm2Spd.configValue, gFBm2Delay.configValue));
-        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, spm1.configValue, spm1Spd.configValue, spm1Delay.configValue));
+        ret.push(Teach.generateAxisServoAction(Teach.actions.F_CMD_SINGLE, 1, gFBm1.configValue, gFBm1Spd.configValue, gFBm1Delay.configValue));
         ret.push(Teach.generateCheckAction(programInfo.yForGetP, Teach.VALVE_CHECK_START, 0.00));
         ret.push(Teach.generateOutputAction(programInfo.yForPosM, IODefines.VALVE_BOARD, 1, programInfo.yForPosM, 0.00));
         ret[ret.length - 1].customName = qsTr("Swich to m pos");
@@ -331,7 +349,7 @@ Rectangle {
         }
         ICStackContainer{
             id:pageContainer
-            height: instance.height - funSel.height - horSplitLine.height - 90
+            height: instance.height - funSel.height - horSplitLine.height - 133
             width: instance.width
             Component.onCompleted: {
                 setCurrentIndex(addPage(inMoldPageContainer));
@@ -350,7 +368,7 @@ Rectangle {
                     Grid{
                         spacing: 4
                         columns: 6
-                        Text {id:firstWidth;text: " ";width: 100}
+                        Text {id:firstWidth;text: " ";width: 130}
                         Text {text: " "}
                         Text {text: " "}
                         Text {text: AxisDefine.axisInfos[0].name}
@@ -501,7 +519,10 @@ Rectangle {
                             }
                         }
                         Text {text: " "}
-                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gFBm1
+                            configAddr: AxisDefine.axisInfos[1].rangeAddr
+                        }
                         ICConfigEdit{
                             id:gFBm2
                             configAddr: AxisDefine.axisInfos[2].rangeAddr
@@ -511,7 +532,10 @@ Rectangle {
                         Text {text: qsTr("(%)")}
                         Text {text: " "}
                         Text {text: " "}
-                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gFBm1Spd
+                            configAddr: "s_rw_0_32_1_1200"
+                        }
                         ICConfigEdit{
                             id:gFBm2Spd
                             configAddr: "s_rw_0_32_1_1200"
@@ -521,7 +545,10 @@ Rectangle {
                         Text {text: qsTr("(s)")}
                         Text {text: " "}
                         Text {text: " "}
-                        Text {text: " "}
+                        ICConfigEdit{
+                            id:gFBm1Delay
+                            configAddr: "s_rw_0_32_2_1100"
+                        }
                         ICConfigEdit{
                             id:gFBm2Delay
                             configAddr: "s_rw_0_32_2_1100"
@@ -1074,6 +1101,9 @@ Rectangle {
             initPosHelper("sp", moldExtentData.standbyPos);
             initPosHelper("gp", moldExtentData.getProductPos);
             gPVONDelay.configValue = moldExtentData.getProductValveOnDly;
+            gFBm1.configValue = moldExtentData.getProductBackPos.pos.m1;
+            gFBm1Spd.configValue = moldExtentData.getProductBackPos.spd.m1;
+            gFBm1Delay.configValue = moldExtentData.getProductBackPos.dly.m1;
             gFBm2.configValue = moldExtentData.getProductBackPos.pos.m2;
             gFBm2Spd.configValue = moldExtentData.getProductBackPos.spd.m2;
             gFBm2Delay.configValue = moldExtentData.getProductBackPos.dly.m2;

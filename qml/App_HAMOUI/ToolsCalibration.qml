@@ -14,30 +14,25 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 20
         mustChecked: true
+        checkedIndex:0
         ICCheckBox{
              id:type1
              text:qsTr("Four Point")
-             onClicked: {
-                 if(isChecked){
-                     pageContainer.setCurrentIndex(0);
-                 }
-             }
+             isChecked: true
         }
         ICCheckBox{
              id:type2
              text:qsTr("Two Point")
-             onClicked: {
-                 if(isChecked){
-                     pageContainer.setCurrentIndex(1);
-                 }
-             }
+        }
+        onCheckedIndexChanged: {
+            pageContainer.setCurrentIndex(checkedIndex);
         }
     }
 
     ICStackContainer{
         id:pageContainer
         width: parent.width/2
-        height: parent.height - 150
+        height: parent.height - 160
         anchors.left: parent.left
         anchors.leftMargin: 20
         anchors.top: selType.bottom
@@ -291,111 +286,122 @@ Item {
         anchors.leftMargin: 20
         anchors.top: selType.bottom
         anchors.topMargin: 20
-        Grid{
-            spacing: 5
-            columns: 2
+        Row{
             width: parent.width
             height: parent.height
-            ICButton{
-                id:termianalSetBtn
-                text: qsTr("Termianal Set")
-                onButtonClicked: {
-                    p1M0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                    p1M1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                    p1M2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                    p1M3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                    p1M4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                    p1M5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
+            spacing: 5
+            Column{
+                spacing: 3
+                width: parent.width/2
+                height: parent.height
+                ICButton{
+                    id:termianalSetBtn
+                    text: qsTr("T Set")
+                    width: 50
+                    onButtonClicked: {
+                        p1M0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                        p1M1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                        p1M2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+                        p1M3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
+                        p1M4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
+                        p1M5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
 
+                    }
+                }
+                ICConfigEdit{
+                    id:p1M0
+                    configName: AxisDefine.axisInfos[0].name
+                    unit: AxisDefine.axisInfos[0].unit
+                    configAddr: AxisDefine.axisInfos[0].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p1M1
+                    configName: AxisDefine.axisInfos[1].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[1].unit
+                    configAddr: AxisDefine.axisInfos[1].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p1M2
+                    configName: AxisDefine.axisInfos[2].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[2].unit
+                    configAddr: AxisDefine.axisInfos[2].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p1M3
+                    configName: AxisDefine.axisInfos[3].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[3].unit
+                    configAddr: AxisDefine.axisInfos[3].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p1M4
+                    configName: AxisDefine.axisInfos[4].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[4].unit
+                    configAddr: AxisDefine.axisInfos[4].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p1M5
+                    configName: AxisDefine.axisInfos[5].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[5].unit
+                    configAddr: AxisDefine.axisInfos[5].rangeAddr
                 }
             }
-            Text {
-                id: toolDev
-                height: termianalSetBtn.height
-                text: qsTr("Tool Dev")
-            }
-            ICConfigEdit{
-                id:p1M0
-                configName: AxisDefine.axisInfos[0].name
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: AxisDefine.axisInfos[0].rangeAddr
-            }
-            ICConfigEdit{
-                id:p2M0
-                configName: AxisDefine.axisInfos[0].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[0].unit
-                configAddr: AxisDefine.axisInfos[0].rangeAddr
-            }
-            ICConfigEdit{
-                id:p1M1
-                configName: AxisDefine.axisInfos[1].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[1].unit
-                configAddr: AxisDefine.axisInfos[1].rangeAddr
-            }
-            ICConfigEdit{
-                id:p2M1
-                configName: AxisDefine.axisInfos[1].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[1].unit
-                configAddr: AxisDefine.axisInfos[1].rangeAddr
-            }
-            ICConfigEdit{
-                id:p1M2
-                configName: AxisDefine.axisInfos[2].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[2].unit
-                configAddr: AxisDefine.axisInfos[2].rangeAddr
-            }
-            ICConfigEdit{
-                id:p2M2
-                configName: AxisDefine.axisInfos[2].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[2].unit
-                configAddr: AxisDefine.axisInfos[2].rangeAddr
-            }
-            ICConfigEdit{
-                id:p1M3
-                configName: AxisDefine.axisInfos[3].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[3].unit
-                configAddr: AxisDefine.axisInfos[3].rangeAddr
-            }
-            ICConfigEdit{
-                id:p2M3
-                configName: AxisDefine.axisInfos[3].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[3].unit
-                configAddr: AxisDefine.axisInfos[3].rangeAddr
-            }
-            ICConfigEdit{
-                id:p1M4
-                configName: AxisDefine.axisInfos[4].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[4].unit
-                configAddr: AxisDefine.axisInfos[4].rangeAddr
-            }
-            ICConfigEdit{
-                id:p2M4
-                configName: AxisDefine.axisInfos[4].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[4].unit
-                configAddr: AxisDefine.axisInfos[4].rangeAddr
-            }
-            ICConfigEdit{
-                id:p1M5
-                configName: AxisDefine.axisInfos[5].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[5].unit
-                configAddr: AxisDefine.axisInfos[5].rangeAddr
-            }
-            ICConfigEdit{
-                id:p2M5
-                configName: AxisDefine.axisInfos[5].name
-                configNameWidth: p1M0.configNameWidth
-                unit: AxisDefine.axisInfos[5].unit
-                configAddr: AxisDefine.axisInfos[5].rangeAddr
+            Column{
+                spacing: 3
+                width: parent.width/2
+                height: parent.height
+                Text {
+                    id: toolDev
+                    height: termianalSetBtn.height
+                    text: qsTr("Tool Dev:")
+                }
+                ICConfigEdit{
+                    id:p2M0
+                    configName: AxisDefine.axisInfos[0].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[0].unit
+                    configAddr: AxisDefine.axisInfos[0].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p2M1
+                    configName: AxisDefine.axisInfos[1].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[1].unit
+                    configAddr: AxisDefine.axisInfos[1].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p2M2
+                    configName: AxisDefine.axisInfos[2].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[2].unit
+                    configAddr: AxisDefine.axisInfos[2].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p2M3
+                    configName: AxisDefine.axisInfos[3].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[3].unit
+                    configAddr: AxisDefine.axisInfos[3].rangeAddr
+                }
+                ICConfigEdit{
+                    id:p2M4
+                    configName: AxisDefine.axisInfos[4].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[4].unit
+                    configAddr: AxisDefine.axisInfos[4].rangeAddr
+                }
+
+                ICConfigEdit{
+                    id:p2M5
+                    configName: AxisDefine.axisInfos[5].name
+                    configNameWidth: p1M0.configNameWidth
+                    unit: AxisDefine.axisInfos[5].unit
+                    configAddr: AxisDefine.axisInfos[5].rangeAddr
+                }
             }
         }
     }
@@ -415,5 +421,7 @@ Item {
     Component.onCompleted: {
         pageContainer.addPage(fourPointType);
         pageContainer.addPage(twoPointType);
+
+        pageContainer.setCurrentIndex(0);
     }
 }

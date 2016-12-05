@@ -1622,30 +1622,52 @@ ProgramFlowPage {
             pos1["m" + 1] = -pos["m" + 1];
             pos1["m" + 2] = -pos["m" + 2];
 
-            if(parseInt(actionObject.repeateCount) % 2 == 0)
-                repeatC = parseInt(actionObject.repeateCount) / 2;
-            else
-                repeatC = (parseInt(actionObject.repeateCount) - 1) / 2;
-            for(i = 0;i < repeatC;i++){
-                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                         repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
-                if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
-                    guncloseAction(ret,actionObject);
-                    gun1openAction(ret,actionObject);
-                }
-                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                         -repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
-                if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
-                    guncloseAction(ret,actionObject);
-                    gun1openAction(ret,actionObject);
-                }
+//            if(parseInt(actionObject.repeateCount) % 2 == 0)
+//                repeatC = parseInt(actionObject.repeateCount) / 2;
+//            else
+//                repeatC = (parseInt(actionObject.repeateCount) - 1) / 2;
+//            for(i = 0;i < repeatC;i++){
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+//                         repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+//                if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
+//                    guncloseAction(ret,actionObject);
+//                    gun1openAction(ret,actionObject);
+//                }
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+//                         -repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+//                if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+//                    guncloseAction(ret,actionObject);
+//                    gun1openAction(ret,actionObject);
+//                }
+//            }
+//            if(parseInt(actionObject.repeateCount) % 2 == 1){
+//                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+//                         repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+//                if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
+//                    guncloseAction(ret,actionObject);
+//            }
+
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag7, qsTr("Go On")));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 1));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+                     repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+            if(actionObject.fixture1Switch == 0 || actionObject.fixture1Switch == 2){
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
-            if(parseInt(actionObject.repeateCount) % 2 == 1){
-                ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
-                         repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
-                if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2)
-                    guncloseAction(ret,actionObject);
+            ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag6, actionObject.repeateCounterID, 1, 1));
+            ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, repeataxis,
+                     -repeatlength, actionObject.repeateSpeed,0,false,false,overlength/2,false,0,0,false,0,0,0,false,1));
+            if(actionObject.fixture1Switch == 1 || actionObject.fixture1Switch == 2){
+                guncloseAction(ret,actionObject);
+                gun1openAction(ret,actionObject);
             }
+            ret.push(LocalTeach.generateCounterAction(actionObject.repeateCounterID));
+            ret.push(LocalTeach.generateCounterJumpAction(actionObject.flag7, actionObject.repeateCounterID, 0, 1));
+            ret.push(LocalTeach.generateFlagAction(actionObject.flag6, qsTr("Over")));
+
+
             if(actionObject.mode == 9 && actionObject.isRotateCycle){
                 ret.push(LocalTeach.generateAxisServoAction(LocalTeach.actions.F_CMD_SINGLE, 4, 0,
                                     actionObject.rotateSpeed,0,false,false,0,false,0,0,false,0,0,0,true,0));

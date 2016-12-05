@@ -1294,7 +1294,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation type="unfinished">轴</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -5065,15 +5065,15 @@ please chose!</source>
     </message>
     <message>
         <source>Adv</source>
-        <translation type="unfinished"></translation>
+        <translation>高级</translation>
     </message>
     <message>
         <source>Sp</source>
-        <translation type="unfinished"></translation>
+        <translation>简单</translation>
     </message>
     <message>
         <source>C Modify</source>
-        <translation type="unfinished"></translation>
+        <translation>修改</translation>
     </message>
 </context>
 <context>

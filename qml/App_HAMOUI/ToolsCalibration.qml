@@ -11,22 +11,44 @@ Item {
         id:selType
         width: parent.width/2
         height:50
+        spacing: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        mustChecked: true
+        ICCheckBox{
+             id:type1
+             text:qsTr("Four Point")
+             onClicked: {
+                 if(isChecked){
+                     pageContainer.setCurrentIndex(0);
+                 }
+             }
+        }
+        ICCheckBox{
+             id:type2
+             text:qsTr("Two Point")
+             onClicked: {
+                 if(isChecked){
+                     pageContainer.setCurrentIndex(1);
+                 }
+             }
+        }
     }
 
     ICStackContainer{
         id:pageContainer
         width: parent.width/2
-        height: parent.height -50
+        height: parent.height -100
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        anchors.top: selType.bottom
     }
 
     Item {
         id:fourPointType
         width: parent.width/2
-        height: parent.height -50
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.bottom: parent.bottom
-          Grid{
+        height: parent.height -100
+        Grid{
             spacing: 10
             columns: 2
             width: parent.width
@@ -248,16 +270,6 @@ Item {
     //            verticalAlignment: Text.AlignVCenter
     //            height: p6.height
     //        }
-            ICCheckBox {
-                id:enBtn
-                text: qsTr("Use it?")
-                onClicked: {
-
-                    panelRobotController.setConfigValue("m_rw_9_1_0_357", enBtn.isChecked ? 1 : 0);
-                    panelRobotController.syncConfigs();
-                }
-            }
-
             onVisibleChanged: {
                 panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
             }
@@ -268,8 +280,39 @@ Item {
             }
           }
     }
+
+    Item {
+        id: twoPointType
+        width: parent.width/2
+        height: parent.height -100
+        Grid{
+            spacing: 10
+            columns: 2
+            width: parent.width
+            height: parent.height
+            ICButton{
+                id:termianalSetBtn
+            }
+            Text {
+                id: toolDev
+                text: qsTr("Tool Dev")
+            }
+        }
+    }
+
+    ICCheckBox {
+        id:enBtn
+        text: qsTr("Use it?")
+        anchors.top:pageContainer.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        onClicked: {
+            panelRobotController.setConfigValue("m_rw_9_1_0_357", enBtn.isChecked ? 1 : 0);
+            panelRobotController.syncConfigs();
+        }
+    }
+
     Component.onCompleted: {
         pageContainer.addPage(fourPointType);
-        pageContainer.setCurrentIndex(0);
     }
 }

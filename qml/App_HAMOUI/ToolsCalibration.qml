@@ -7,6 +7,85 @@ Item {
     width: parent.width
     height: parent.height
 
+    function readPulse(){
+        return [panelRobotController.statusValue("c_ro_0_32_0_901"),
+                panelRobotController.statusValue("c_ro_0_32_0_905"),
+                panelRobotController.statusValue("c_ro_0_32_0_909"),
+                panelRobotController.statusValue("c_ro_0_32_0_913"),
+                panelRobotController.statusValue("c_ro_0_32_0_917"),
+                panelRobotController.statusValue("c_ro_0_32_0_921")];
+    }
+
+    function pulseToText(pulses){
+        return AxisDefine.axisInfos[0].name + ":" + pulses[0] + "," +
+                AxisDefine.axisInfos[1].name + ":" + pulses[1] + "," +
+                AxisDefine.axisInfos[2].name + ":" + pulses[2] + "," +
+                AxisDefine.axisInfos[3].name + ":" + pulses[3] + "," +
+                AxisDefine.axisInfos[4].name + ":" + pulses[4] + "," +
+                AxisDefine.axisInfos[5].name + ":" + pulses[5];
+    }
+
+    function onMoldChanged(){
+        var pulses =[
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_358"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_359"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_360"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_361"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_362"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_363"),
+                ];
+        p1Show.text = pulseToText(pulses);
+        pulses =[
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_364"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_365"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_366"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_367"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_368"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_369"),
+                ];
+        p2Show.text = pulseToText(pulses);
+
+        pulses =[
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_370"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_371"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_372"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_373"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_374"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_375"),
+                ];
+        p3Show.text = pulseToText(pulses);
+
+        pulses =[
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_376"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_377"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_378"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_379"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_380"),
+                    panelRobotController.getConfigValueText("m_rw_0_32_0_381"),
+                ];
+        p4Show.text = pulseToText(pulses);
+
+
+        p1M0.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_382");
+        p1M1.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_383");
+        p1M2.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_384");
+        p1M3.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_385");
+        p1M4.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_386");
+        p1M5.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_387");
+
+        p2M0.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_388");
+        p2M1.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_389");
+        p2M2.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_390");
+        p2M3.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_391");
+        p2M4.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_392");
+        p2M5.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_393");
+
+        enBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
+        selType.checkedIndex = panelRobotController.getConfigValue("m_rw_10_3_0_357");
+        type1.isChecked = panelRobotController.getConfigValue("m_rw_10_3_0_357")==0?true:false;
+        type2.isChecked = panelRobotController.getConfigValue("m_rw_10_3_0_357")==1?true:false;
+    }
+
     ICButtonGroup{
         id:selType
         width: parent.width/2
@@ -14,25 +93,27 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 20
         mustChecked: true
-        checkedIndex:0
         ICCheckBox{
              id:type1
              text:qsTr("Four Point")
-             isChecked: true
         }
         ICCheckBox{
              id:type2
              text:qsTr("Two Point")
         }
-        onCheckedIndexChanged: {
+        function onValueChanged(){
             pageContainer.setCurrentIndex(checkedIndex);
+            enBtn.isChecked = false;
+            panelRobotController.setConfigValue("m_rw_9_1_0_357",0);
+            panelRobotController.setConfigValue("m_rw_10_3_0_357",checkedIndex);
+            panelRobotController.syncConfigs();
         }
     }
 
     ICStackContainer{
         id:pageContainer
         width: parent.width/2
-        height: parent.height - 160
+        height: parent.height - 170
         anchors.left: parent.left
         anchors.leftMargin: 20
         anchors.top: selType.bottom
@@ -51,87 +132,6 @@ Item {
             columns: 2
             width: parent.width
             height: parent.height
-            function readPulse(){
-                return [panelRobotController.statusValue("c_ro_0_32_0_901"),
-                        panelRobotController.statusValue("c_ro_0_32_0_905"),
-                        panelRobotController.statusValue("c_ro_0_32_0_909"),
-                        panelRobotController.statusValue("c_ro_0_32_0_913"),
-                        panelRobotController.statusValue("c_ro_0_32_0_917"),
-                        panelRobotController.statusValue("c_ro_0_32_0_921")];
-            }
-
-            function pulseToText(pulses){
-                return AxisDefine.axisInfos[0].name + ":" + pulses[0] + "," +
-                        AxisDefine.axisInfos[1].name + ":" + pulses[1] + "," +
-                        AxisDefine.axisInfos[2].name + ":" + pulses[2] + "," +
-                        AxisDefine.axisInfos[3].name + ":" + pulses[3] + "," +
-                        AxisDefine.axisInfos[4].name + ":" + pulses[4] + "," +
-                        AxisDefine.axisInfos[5].name + ":" + pulses[5];
-            }
-
-            function onMoldChanged(){
-                var pulses =[
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_358"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_359"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_360"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_361"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_362"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_363"),
-                        ];
-                p1Show.text = pulseToText(pulses);
-                pulses =[
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_364"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_365"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_366"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_367"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_368"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_369"),
-                        ];
-                p2Show.text = pulseToText(pulses);
-
-                pulses =[
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_370"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_371"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_372"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_373"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_374"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_375"),
-                        ];
-                p3Show.text = pulseToText(pulses);
-
-                pulses =[
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_376"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_377"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_378"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_379"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_380"),
-                            panelRobotController.getConfigValueText("m_rw_0_32_0_381"),
-                        ];
-                p4Show.text = pulseToText(pulses);
-
-    //            pulses =[
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_382"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_383"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_384"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_385"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_386"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_387"),
-    //                    ];
-    //            p5Show.text = pulseToText(pulses);
-
-    //            pulses =[
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_388"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_389"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_390"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_391"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_392"),
-    //                        panelRobotController.getConfigValueText("m_rw_0_32_0_393"),
-    //                    ];
-    //            p6Show.text = pulseToText(pulses);
-
-                enBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
-
-            }
 
             ICButton{
                 id:p1
@@ -271,11 +271,6 @@ Item {
             onVisibleChanged: {
                 panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
             }
-
-            Component.onCompleted: {
-                panelRobotController.moldChanged.connect(onMoldChanged);
-                onMoldChanged();
-            }
           }
     }
 
@@ -289,15 +284,14 @@ Item {
         Row{
             width: parent.width
             height: parent.height
-            spacing: 5
+            spacing: 30
             Column{
                 spacing: 3
-                width: parent.width/2
-                height: parent.height
                 ICButton{
                     id:termianalSetBtn
                     text: qsTr("T Set")
-                    width: 50
+                    height: p1M0.height
+                    width: 80
                     onButtonClicked: {
                         p1M0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                         p1M1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
@@ -313,6 +307,10 @@ Item {
                     configName: AxisDefine.axisInfos[0].name
                     unit: AxisDefine.axisInfos[0].unit
                     configAddr: AxisDefine.axisInfos[0].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_382", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p1M1
@@ -320,6 +318,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[1].unit
                     configAddr: AxisDefine.axisInfos[1].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_383", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p1M2
@@ -327,6 +329,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[2].unit
                     configAddr: AxisDefine.axisInfos[2].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_384", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p1M3
@@ -334,6 +340,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[3].unit
                     configAddr: AxisDefine.axisInfos[3].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_385", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p1M4
@@ -341,6 +351,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[4].unit
                     configAddr: AxisDefine.axisInfos[4].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_386", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p1M5
@@ -348,12 +362,14 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[5].unit
                     configAddr: AxisDefine.axisInfos[5].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_387", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
             }
             Column{
                 spacing: 3
-                width: parent.width/2
-                height: parent.height
                 Text {
                     id: toolDev
                     height: termianalSetBtn.height
@@ -365,6 +381,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[0].unit
                     configAddr: AxisDefine.axisInfos[0].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_388", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p2M1
@@ -372,6 +392,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[1].unit
                     configAddr: AxisDefine.axisInfos[1].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_389", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p2M2
@@ -379,6 +403,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[2].unit
                     configAddr: AxisDefine.axisInfos[2].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_390", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p2M3
@@ -386,6 +414,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[3].unit
                     configAddr: AxisDefine.axisInfos[3].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_391", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
                 ICConfigEdit{
                     id:p2M4
@@ -393,6 +425,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[4].unit
                     configAddr: AxisDefine.axisInfos[4].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_392", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
 
                 ICConfigEdit{
@@ -401,6 +437,10 @@ Item {
                     configNameWidth: p1M0.configNameWidth
                     unit: AxisDefine.axisInfos[5].unit
                     configAddr: AxisDefine.axisInfos[5].rangeAddr
+                    function onValueChanged() {
+                        panelRobotController.setConfigValue("m_rw_0_32_3_393", configValue);
+                        panelRobotController.syncConfigs();
+                    }
                 }
             }
         }
@@ -421,7 +461,23 @@ Item {
     Component.onCompleted: {
         pageContainer.addPage(fourPointType);
         pageContainer.addPage(twoPointType);
+        var pageIndex = panelRobotController.getConfigValue("m_rw_10_3_0_357");
+        pageContainer.setCurrentIndex(pageIndex);
 
-        pageContainer.setCurrentIndex(0);
+        panelRobotController.moldChanged.connect(onMoldChanged);
+        onMoldChanged();
+        p1M0.configValueChanged.connect(p1M0.onValueChanged);
+        p1M1.configValueChanged.connect(p1M1.onValueChanged);
+        p1M2.configValueChanged.connect(p1M2.onValueChanged);
+        p1M3.configValueChanged.connect(p1M3.onValueChanged);
+        p1M4.configValueChanged.connect(p1M4.onValueChanged);
+        p1M5.configValueChanged.connect(p1M5.onValueChanged);
+        p2M0.configValueChanged.connect(p2M0.onValueChanged);
+        p2M1.configValueChanged.connect(p2M1.onValueChanged);
+        p2M2.configValueChanged.connect(p2M2.onValueChanged);
+        p2M3.configValueChanged.connect(p2M3.onValueChanged);
+        p2M4.configValueChanged.connect(p2M4.onValueChanged);
+        p2M5.configValueChanged.connect(p2M5.onValueChanged);
+        selType.checkedIndexChanged.connect(selType.onValueChanged);
     }
 }

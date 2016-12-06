@@ -553,7 +553,7 @@ public:
         if(sendToHost)
         {
             sendMainProgramToHost();
-            for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+            for(int i = 0;  i<ICRobotMold::kSubEnd; ++i)
             {
                 sendSubProgramToHost(i);
             }

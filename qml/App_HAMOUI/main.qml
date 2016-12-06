@@ -108,7 +108,7 @@ Rectangle {
                 return settingPage;
             }
             else if(which == menuProgram){
-                return programPage
+                return programPage;
             }
 
             else return null;
@@ -227,9 +227,11 @@ Rectangle {
         Loader{
             id:programPage
             source: "teach/ProgramPage.qml"
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
             visible: false
         }
+
         Component.onCompleted: {
             console.log("main.container",container.width, container.height)
         }

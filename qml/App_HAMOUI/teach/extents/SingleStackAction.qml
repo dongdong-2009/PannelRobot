@@ -122,6 +122,7 @@ ExtentActionEditorBase {
         dirEdit.isChecked = dir ? 1 : 0;
         setCounterID(cID, bindingCounter);
         var pts = actionObject.points;
+        if(pts == undefined) pts = [];
         relPoint.isChecked = (pts.length !== 0);
         if(relPoint.isChecked){
             var ptName = pts[0].pointName;

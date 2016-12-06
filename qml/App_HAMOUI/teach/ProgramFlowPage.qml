@@ -1685,6 +1685,12 @@ Rectangle {
         var insertedIndex = 0;
         var currentParsingProgram = PData.programToParsingIndex(model);
         Teach.flagsDefine.clear(currentParsingProgram);
+        if(program[0].action === Teach.actions.ACT_COMMENT){
+            if(program[0].reserve !== undefined){
+                PData.moldExtentData = program[0].reserve;
+            }
+        }
+
         for(var p = 0; p < program.length; ++p){
             step = program[p];
             step["insertedIndex"] = step.hasOwnProperty("insertedIndex") ? step.insertedIndex : insertedIndex++;

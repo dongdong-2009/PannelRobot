@@ -763,6 +763,13 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     }
     if(addr == 156)
     {
+        QList<QPair<int, quint32> > tmp;
+        for(int i = 0; i < v.size(); ++i)
+        {
+            tmp.append(qMakePair<int , quint32>(addr + i, v.at(i)));
+        }
+        ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
+        mc->SetBareMachineConfigs(tmp);
         qDebug()<<v;
         disconnect(host_.data(),
                    SIGNAL(QueryFinished(int , const QVector<quint32>& )),

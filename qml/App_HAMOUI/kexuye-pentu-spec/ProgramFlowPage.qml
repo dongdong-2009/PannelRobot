@@ -1870,6 +1870,8 @@ ProgramFlowPage {
 
         c = BaseTeach.counterManager.newCounter("444", 0, actionObject.xcount * actionObject.ycount);
         actionObject.aaaa = c.id;
+        BaseTeach.getStackInfoFromID(actionObject.stack1).si0.counterID = c.id;
+        panelRobotController.saveStacks(BaseTeach.stacksToJSON());
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
         c = BaseTeach.counterManager.newCounter("555", 0, actionObject.rotateCount);

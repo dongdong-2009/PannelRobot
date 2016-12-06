@@ -166,7 +166,7 @@ ProgramActionMenuFrame{
             kxyObject.hidePoint(mode);
             actionEditorContainerInstance().setCurrentIndex(kxyObjectIndex);
             linkedBtn1Instance().visible = true;
-            linkedBtn2Instance().visible = false;       //do not use stack function right now
+            linkedBtn2Instance().visible = true;       //do not use stack function right now
             linkedBtn1Instance().text = qsTr("DetailFace");
             linkedBtn2Instance().text = qsTr("StackAction");
             BasePData.linked1Function = kxySpeedIndex;

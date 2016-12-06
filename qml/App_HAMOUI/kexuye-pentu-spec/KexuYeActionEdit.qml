@@ -80,12 +80,12 @@ Item {
 
         if(actObt == null){
             if(stack.useStack)
-                var newstack = newStack(null);
+                var newstack = newStack(null,aaaa);
             else newstack = 0;
         }
         else{
             if(actObt.useStack)
-                newstack = newStack(actObt);
+                newstack = newStack(actObt,aaaa);
             else newstack = 0;
         }
         if(actObt == null)
@@ -123,7 +123,7 @@ Item {
         return ret;
     }
 
-    function newStack(actObt){
+    function newStack(actObt,count){
         var sid = LocalTeach.useableStack();
         if(actObt == null){
             var stack = stackInstance.getstackInstace();
@@ -144,7 +144,7 @@ Item {
                                           stack.ydirection,
                                           stack.zdirection,
                                           true,
-                                          aaaa,
+                                          count,
                                           stack.useDeviation,
                                           stack.xdeviation,
                                           stack.ydeviation,

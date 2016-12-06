@@ -862,12 +862,50 @@ Rectangle {
         event.accepted = true;
     }
 
+    function getExternalFuncBtn(){
+        var originBtnStatus = panelRobotController.isInputOn(022,IODefines.IO_BOARD_0);//x032
+        var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
+        var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
+        var automodeBtnStatus = panelRobotController.isInputOn(023,IODefines.IO_BOARD_0);//x033
+        if(originBtnStatus){
+            if(originBtnStatus != refreshTimer.originBtnOld){
+                refreshTimer.originBtnOld = originBtnStatus;
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+            }
+        }else refreshTimer.originBtnOld = 0;
+        if(startupBtnStatus){
+            if(startupBtnStatus != refreshTimer.startupBtnOld){
+                refreshTimer.startupBtnOld = startupBtnStatus;
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+            }
+        }else refreshTimer.startupBtnOld = 0;
+        if(stopBtnStatus){
+            if(stopBtnStatus != refreshTimer.stopBtnOld){
+                refreshTimer.stopBtnOld = stopBtnStatus;
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+            }
+        }else refreshTimer.stopBtnOld = 0;
+        if(automodeBtnStatus){
+            if(automodeBtnStatus != refreshTimer.automodeBtnOld){
+                refreshTimer.automodeBtnOld = automodeBtnStatus;
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+            }
+        }else refreshTimer.automodeBtnOld = 0;
+    }
+
     Timer{
         id:refreshTimer
+        property int originBtnOld: 0
+        property int startupBtnOld: 0
+        property int stopBtnOld: 0
+        property int automodeBtnOld: 0
         interval: 50; running: true; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
+            getExternalFuncBtn();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

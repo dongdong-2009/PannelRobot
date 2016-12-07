@@ -1133,11 +1133,13 @@ var generateCommentAction = function(comment, commentdAction, reserve){
     };
 }
 
-var generateStackAction = function(stackID, speed0, speed1){
+var generateStackAction = function(stackID, speed0,speedY,speedZ,speed1){
     return {
         "action":actions.F_CMD_STACK0,
         "stackID":stackID,
         "speed0":speed0 || 80,
+        "speedY":speedY || 80,
+        "speedZ":speedZ || 80,
         "speed1":speed1 || 80,
     };
 }
@@ -1442,8 +1444,10 @@ var stackActionToStringHandler = function(actionObject){
     var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                 : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
-            descr + " " +
-            (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
+            descr + "\n                            " +
+            axisInfos[0].name + (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " +
+            axisInfos[1].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedY == undefined? 80.0:actionObject.speedY) + " " +
+            axisInfos[2].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedZ == undefined? 80.0:actionObject.speedZ) + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
 }
 
 var counterActionToStringHandler = function(actionObject){

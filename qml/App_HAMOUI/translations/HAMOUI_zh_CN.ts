@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -657,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -766,14 +766,6 @@
     <message>
         <source>WD</source>
         <translation>世界</translation>
-    </message>
-    <message>
-        <source>Coord Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1004,7 +996,7 @@
     </message>
     <message>
         <source>mm</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pulse Count Per Circle</source>
@@ -1012,7 +1004,7 @@
     </message>
     <message>
         <source>a</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reduction Ratio</source>
@@ -1044,7 +1036,7 @@
     </message>
     <message>
         <source>s</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ACC 2</source>
@@ -1056,7 +1048,7 @@
     </message>
     <message>
         <source>RPM</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set to Origin</source>
@@ -1108,15 +1100,15 @@
     </message>
     <message>
         <source>Motor 1</source>
-        <translation>汇川伺服</translation>
+        <translation>汇川</translation>
     </message>
     <message>
         <source>Motor 2</source>
-        <translation>台达伺服</translation>
+        <translation>安川</translation>
     </message>
     <message>
         <source>Motor 3</source>
-        <translation>松下伺服</translation>
+        <translation>台达伺服</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -1228,7 +1220,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation>华成伺服</translation>
+        <translation>Motor4</translation>
     </message>
     <message>
         <source>SACC1</source>
@@ -1245,22 +1237,6 @@
     <message>
         <source>SDCC2</source>
         <translation>S减速2</translation>
-    </message>
-    <message>
-        <source>originOffset</source>
-        <translation>原点脉冲偏差</translation>
-    </message>
-    <message>
-        <source>Test Speed:</source>
-        <translation>测试速度</translation>
-    </message>
-    <message>
-        <source>Motor 5</source>
-        <translation>三协伺服</translation>
-    </message>
-    <message>
-        <source>Motor 6</source>
-        <translation>安川伺服</translation>
     </message>
 </context>
 <context>
@@ -1799,11 +1775,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1909,14 +1885,6 @@
         <source>When Changed</source>
         <translation>当改变</translation>
     </message>
-    <message>
-        <source>Switch Coord</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CoordID</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1939,10 +1907,6 @@
     <message>
         <source>Single Stack</source>
         <translation>单轴堆叠</translation>
-    </message>
-    <message>
-        <source>switchCoord</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4008,10 +3972,6 @@
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>SafeArea Configs</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -4052,7 +4012,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="unfinished">工具校准</translation>
+        <translation type="obsolete">工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4069,10 +4029,6 @@
     <message>
         <source>Custom Btn</source>
         <translation>可编程按键</translation>
-    </message>
-    <message>
-        <source>toolcoord</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5298,7 +5254,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5330,11 +5286,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5378,93 +5334,6 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
-    </message>
-</context>
-<context>
-    <name>SafeAreaConfigs</name>
-    <message>
-        <source>Safe Area1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>axis1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>NO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos1 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos1 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>axis2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos2 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos2 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>axis3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minPos3 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>maxPos3 Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>SafePo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use it?</source>
-        <translation type="unfinished">使用</translation>
-    </message>
-    <message>
-        <source>Safe Area2</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6073,13 +5942,6 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
-    </message>
-</context>
-<context>
-    <name>SwitchCoordEditor</name>
-    <message>
-        <source>coordID</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6889,44 +6751,6 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
-    <name>ToolCoordManager</name>
-    <message>
-        <source>{0}:{1}</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ToolCoordPage</name>
-    <message>
-        <source>newBtn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>deleteBtn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>setP1Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>setP2Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>setP3Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>coordName</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>confirmBtn</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
@@ -6950,31 +6774,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="vanished">设为点5</translation>
+        <translation>设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="vanished">设为点6</translation>
+        <translation>设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>
         <translation>使用</translation>
-    </message>
-    <message>
-        <source>Four Point</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Two Point</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>T Set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tool Dev:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

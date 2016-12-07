@@ -25,9 +25,15 @@ ContentPageBase{
     function onUserChanged(user){
         var isReadOnly = ( (ShareData.GlobalStatusCenter.getKnobStatus() === Keymap.KNOB_AUTO) || !ShareData.UserInfo.currentHasMoldPerm());
         setMenuItemTexts(isReadOnly);
+        if(ShareData.GlobalStatusCenter.getKnobStatus() == Keymap.KNOB_AUTO && pageContainer.pages.length > 1 && pageContainer.currentIndex > 0){
+            menuItemTexts = ["", "", "", "", "", "",qsTr("C Modify")];
+        }
     }
 
     function onKnobChanged(knobStatus){
+        if(knobStatus == Keymap.KNOB_AUTO && pageContainer.pages.length > 1){
+            swichBtn.toAdv();
+        }
         onUserChanged();
     }
 
@@ -40,8 +46,14 @@ ContentPageBase{
             id:swichBtn
             text: qsTr("Adv")
             width: 40
+            height: 26
             z:10
             visible: false
+            function toAdv(){
+                text = qsTr("Sp");
+                pageContainer.setCurrentIndex(0);
+            }
+
             onButtonClicked: {
                 var pi =  pageContainer.currentIndex + 1;
                 pi %= 2;
@@ -50,6 +62,7 @@ ContentPageBase{
                     text = qsTr("Sp");
                 else
                     text = qsTr("Adv");
+                onUserChanged();
             }
         }
 
@@ -105,7 +118,10 @@ ContentPageBase{
     }
 
     onMenuItem7Triggered: {
-        pageContainer.currentPage().onSaveTriggered();
+        if(ShareData.GlobalStatusCenter.getKnobStatus() == Keymap.KNOB_AUTO && pageContainer.currentIndex > 0){
+            pageContainer.currentPage().onAutoEditConfirm();
+        }else
+            pageContainer.currentPage().onSaveTriggered();
     }
 
     //    onMenuItem7Triggered: {
@@ -123,9 +139,10 @@ ContentPageBase{
         ShareData.UserInfo.registUserChangeEvent(programPageInstance);
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(programPageInstance);
         swichBtn.anchors.top = programContainer.top;
-        swichBtn.anchors.right = programContainer.right;
-        swichBtn.anchors.rightMargin = 50;
-
+//        swichBtn.anchors.right = programContainer.right;
+//        swichBtn.anchors.rightMargin = 50;
+        swichBtn.x = 140;
+        swichBtn.anchors.topMargin = -swichBtn.height - 2;
     }
 
 

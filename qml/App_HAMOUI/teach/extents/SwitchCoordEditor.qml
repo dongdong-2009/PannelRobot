@@ -14,7 +14,6 @@ ExtentActionEditorBase {
         min: 0
         decimal: 0
         configValue: "0"
-        configNameWidth: 80
     }
     Component.onCompleted: {
          bindActionDefine(ExtentActionDefine.extentSwitchCoordAction);

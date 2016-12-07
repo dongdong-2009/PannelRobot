@@ -4059,7 +4059,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="obsolete">工具校准</translation>
+        <translation type="unfinished">工具校准</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4076,6 +4076,10 @@
     <message>
         <source>Custom Btn</source>
         <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>toolcoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

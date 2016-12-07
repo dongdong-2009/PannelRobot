@@ -1310,7 +1310,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation type="unfinished">轴</translation>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -13,10 +13,16 @@ Flickable{
     Loader{
         id:hint
         parent: flick.parent
-        x: flick.width
-        y: flick.height - hint.item.height
+        x: flick.width + flick.x - hint.item.width
+        y: flick.height + flick.y - hint.item.height
         z: flick.z + 1
         visible: isshowhint && flick.contentHeight > flick.height
+//        onStatusChanged: {
+//            if(status == Loader.Ready){
+//                x = flick.width + flick.x - hint.item.width;
+//                y = flick.height + flick.y - hint.item.height;
+//            }
+//        }
     }
     Component.onCompleted: {
         hint.source = "ICHintComp.qml";

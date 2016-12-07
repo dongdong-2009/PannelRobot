@@ -7281,19 +7281,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Four Point</source>
-        <translation type="unfinished"></translation>
+        <translation>四点法</translation>
     </message>
     <message>
         <source>Two Point</source>
-        <translation type="unfinished"></translation>
+        <translation>两点法</translation>
     </message>
     <message>
         <source>T Set</source>
-        <translation type="unfinished"></translation>
+        <translation>末端设入</translation>
     </message>
     <message>
         <source>Tool Dev:</source>
-        <translation type="unfinished"></translation>
+        <translation>工具偏差：</translation>
     </message>
 </context>
 <context>

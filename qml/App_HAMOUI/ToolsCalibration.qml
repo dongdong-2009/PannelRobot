@@ -286,7 +286,7 @@ Item {
             height: parent.height
             spacing: 30
             Column{
-                spacing: 3
+                spacing: 5
                 ICButton{
                     id:termianalSetBtn
                     text: qsTr("T Set")
@@ -369,7 +369,7 @@ Item {
                 }
             }
             Column{
-                spacing: 3
+                spacing: 5
                 Text {
                     id: toolDev
                     height: termianalSetBtn.height

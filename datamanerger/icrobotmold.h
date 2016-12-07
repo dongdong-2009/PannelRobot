@@ -242,6 +242,7 @@ public:
         kSub6Prog,
         kSub7Prog,
         kSub8Prog,
+        kSubEnd,
 
     };
 

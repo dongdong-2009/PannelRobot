@@ -20,7 +20,7 @@ Rectangle {
             if(stackSelector.configValue < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
-            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue, speed1.configValue));
+            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue));
         }
         return ret;
     }
@@ -36,11 +36,15 @@ Rectangle {
     onStackTypeChanged: {
         if(stackType == 1){
             pageCount = 3
-            speed0.configName = qsTr("Speed0");
+            speed0.configName = AxisDefine.axisInfos[0].name + qsTr("Speed0");
+            speedY.configName = AxisDefine.axisInfos[1].name + qsTr("Speed0");
+            speedZ.configName = AxisDefine.axisInfos[2].name + qsTr("Speed0");
             speed1.visible = useFlag.isChecked;
         }else{
             pageCount =  2;
-            speed0.configName = qsTr("Speed");
+            speed0.configName = AxisDefine.axisInfos[0].name + qsTr("Speed");
+            speedY.configName = AxisDefine.axisInfos[1].name + qsTr("Speed");
+            speedZ.configName = AxisDefine.axisInfos[2].name + qsTr("Speed");
             speed1.visible = false;
         }
     }
@@ -597,8 +601,26 @@ Rectangle {
         ICConfigEdit{
             id:speed0
             visible: useFlag.isChecked
-            configName: qsTr("Speed")
+            configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
 //            configAddr: "s_rw_0_16_1_294"
+            configAddr: "s_rw_0_32_1_212"
+            unit: "%"
+            configValue: "80.0"
+        }
+        ICConfigEdit{
+            id:speedY
+            visible: useFlag.isChecked
+            configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
+            configNameWidth: speed0.configNameWidth
+            configAddr: "s_rw_0_32_1_212"
+            unit: "%"
+            configValue: "80.0"
+        }
+        ICConfigEdit{
+            id:speedZ
+            visible: useFlag.isChecked
+            configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
+            configNameWidth: speed0.configNameWidth
             configAddr: "s_rw_0_32_1_212"
             unit: "%"
             configValue: "80.0"

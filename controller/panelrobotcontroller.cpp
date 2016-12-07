@@ -367,6 +367,8 @@ void PanelRobotController::setConfigValue(const QString &addr, const QString &v)
     {
         machineConfigModifyCache_.append(p);
     }
+    qDebug()<<"PanelRobotController::setConfigValue"<<p.first->ToString()<<p.second;
+
     //    qDebug()<<moldFncModifyCache_;
 }
 
@@ -713,7 +715,7 @@ void PanelRobotController::loadHostMachineConfigs()
 {
     ICRobotVirtualhost::AddReadConfigCommand(host_, s_rw_0_32_3_100.BaseAddr(), 28);
     ICRobotVirtualhost::AddReadConfigCommand(host_, 128, 28);
-    ICRobotVirtualhost::AddReadConfigCommand(host_, 156, 29);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, 156, 30);
     connect(host_.data(),
             SIGNAL(QueryFinished(int , const QVector<quint32>& )),
             this,
@@ -764,7 +766,14 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     }
     if(addr == 156)
     {
-        qDebug()<<v;
+        QList<QPair<int, quint32> > tmp;
+        for(int i = 0; i < v.size(); ++i)
+        {
+            tmp.append(qMakePair<int , quint32>(addr + i, v.at(i)));
+        }
+        ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
+        mc->SetBareMachineConfigs(tmp);
+        qDebug()<<"addr156:"<<addr<<v;
         disconnect(host_.data(),
                    SIGNAL(QueryFinished(int , const QVector<quint32>& )),
                    this,
@@ -822,6 +831,18 @@ QString PanelRobotController::currentRunningActionInfo(int which) const
 bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line, const QString &lineContent)
 {
     QPair<int, int> stepInfo;
+    if(module >= 0)
+    {
+        for(int i = 0; i < ICRobotMold::kSubEnd; ++i)
+        {
+            ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(i, module, line, lineContent,stepInfo);
+            if(item.isEmpty()) continue;
+
+            qDebug()<<"fixProgramOnAutoMode:"<<i<<" "<<module<<ICRobotVirtualhost::FixProgram(host_, i, stepInfo.first, stepInfo.second, item);
+
+        }
+        return true;
+    }
     ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
     qDebug()<<"fixProgramOnAutoMode"<<item<<stepInfo;
     return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
@@ -1129,6 +1150,20 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
     //            ICRobotVirtualhost::SendMoldCounterDef(host_, QVector<quint32>()<<id<<target<<current);
     //    }
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
+}
+
+void PanelRobotController::sendToolCoord(int id,const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(id);
+    for(int i=0;i<result.size();i++)
+        tmp.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
 }
 
 bool PanelRobotController::delCounterDef(quint32 id)
@@ -1667,6 +1702,8 @@ bool PanelRobotController::loadRecord(const QString &name)
         }
 
         emit moldChanged();
+        modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
+
     }
 
     return ret;

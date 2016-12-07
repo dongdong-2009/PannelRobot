@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -657,23 +657,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -766,6 +766,14 @@
     <message>
         <source>WD</source>
         <translation>世界</translation>
+    </message>
+    <message>
+        <source>Coord Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1238,6 +1246,22 @@
         <source>SDCC2</source>
         <translation>S减速2</translation>
     </message>
+    <message>
+        <source>Motor 5</source>
+        <translation type="unfinished">Motor5</translation>
+    </message>
+    <message>
+        <source>Motor 6</source>
+        <translation type="unfinished">Motor6</translation>
+    </message>
+    <message>
+        <source>originOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test Speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -1280,6 +1304,13 @@
     <message>
         <source>M8</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>AxisPosDisplayBar</name>
+    <message>
+        <source>Axis</source>
+        <translation type="unfinished">轴</translation>
     </message>
 </context>
 <context>
@@ -1775,11 +1806,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1885,6 +1916,14 @@
         <source>When Changed</source>
         <translation>当改变</translation>
     </message>
+    <message>
+        <source>Switch Coord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CoordID</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1907,6 +1946,10 @@
     <message>
         <source>Single Stack</source>
         <translation>单轴堆叠</translation>
+    </message>
+    <message>
+        <source>switchCoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3972,6 +4015,10 @@
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SafeArea Configs</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -5056,6 +5103,10 @@ please chose!</source>
         <source>Sp</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>C Modify</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QKConfigs</name>
@@ -5254,7 +5305,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5286,11 +5337,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5334,6 +5385,405 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeAreaConfigs</name>
+    <message>
+        <source>Safe Area1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part2?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part3?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part4?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part5?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SafePo6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Part6?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-A Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-B Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-C Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-D Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Axis3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P2-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P3-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P4-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P5-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-E Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P6-F Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use it?</source>
+        <translation type="unfinished">使用</translation>
+    </message>
+    <message>
+        <source>Safe Area2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos1 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos1 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minPos2 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>maxPos2 Set</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5942,6 +6392,13 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
+    </message>
+</context>
+<context>
+    <name>SwitchCoordEditor</name>
+    <message>
+        <source>coordID</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6751,6 +7208,44 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
+    <name>ToolCoordManager</name>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolCoordPage</name>
+    <message>
+        <source>newBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP1Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP2Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setP3Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>coordName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
@@ -6774,15 +7269,31 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>
         <translation>使用</translation>
+    </message>
+    <message>
+        <source>Four Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Two Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>T Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tool Dev:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

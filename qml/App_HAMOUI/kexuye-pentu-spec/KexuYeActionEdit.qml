@@ -78,16 +78,16 @@ Item {
         var bbbb = -1;
 //        panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        if(actObt == null){
-            if(stack.useStack)
-                var newstack = newStack(null,aaaa);
-            else newstack = 0;
-        }
-        else{
-            if(actObt.useStack)
-                newstack = newStack(actObt,aaaa);
-            else newstack = 0;
-        }
+//        if(actObt == null){
+//            if(stack.useStack)
+//                var newstack = newStack(null,aaaa);
+//            else newstack = 0;
+//        }
+//        else{
+//            if(actObt.useStack)
+//                newstack = newStack(actObt,aaaa);
+//            else newstack = 0;
+//        }
         if(actObt == null)
             ret.push(LocalTeach.generatePENTUAction(
                         mode, planeSel.configValue, pos1Container.getPoint(), details.spd0,
@@ -100,10 +100,11 @@ Item {
                         details.delay20, details.delay21, details.delay22, details.fixtureSwitch,
                         details.fixture1Switch, details.slope, gunFollowEn.isChecked,
                         aaaa,bbbb,editaction.configValue,
-                        stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
-                        stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
-                        stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
-                        stack.zdirection,newstack,isGunBack.isChecked,
+//                        stack.useStack,stack.useDeviation,stack.turns,stack.stackSpeed,stack.xdeviation,
+//                        stack.ydeviation,stack.zdeviation,stack.xspace,stack.yspace,stack.zspace,
+//                        stack.xcount,stack.ycount,stack.zcount,stack.xdirection,stack.ydirection,
+//                        stack.zdirection,newstack,isGunBack.isChecked,
+                         stack.stackID,stack.useStack,stack.stackSpeed,isGunBack.isChecked,
                         details.use0,details.use1,details.use2,details.use3,details.use4,details.use5,
                         forward.isChecked,isRotateCycle.isChecked,details.turnOver));
         else
@@ -115,19 +116,20 @@ Item {
                         actObt.fixtureDelay0, actObt.fixtureDelay1, actObt.fixtureDelay2, rcID, dirCID, rotateCID,
                         actObt.fixture2Delay0, actObt.fixture2Delay1, actObt.fixture2Delay2, actObt.fixture1Switch, actObt.fixture2Switch,
                         actObt.slope, actObt.gunFollowEn,aaaa,bbbb,actObt.editaction,
-                        actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
-                        actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
-                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
+//                        actObt.useStack,actObt.useDeviation,actObt.turns,actObt.stackSpeed,actObt.xdeviation,actObt.ydeviation,
+//                        actObt.zdeviation,actObt.xspace,actObt.yspace,actObt.zspace,actObt.xcount,actObt.ycount,
+//                        actObt.zcount,actObt.xdirection,actObt.ydirection,actObt.zdirection,newstack,actObt.isGunBack,
+                        actObt.stackID,actObt.useStack,actObt.stackSpeed,actObt.isGunBack,
                         actObt.gun1use0,actObt.gun1use1,actObt.gun1use2,actObt.gun2use0,actObt.gun2use1,actObt.gun2use2,
                         actObt.forward,actObt.isRotateCycle,actObt.turnOver));
         return ret;
     }
 
     function newStack(actObt,count){
-        var sid = LocalTeach.useableStack();
+        var sid = BaseTeach.useableStack();
         if(actObt == null){
             var stack = stackInstance.getstackInstace();
-            var si0 = new LocalTeach.StackItem(sPosM0.configValue || 0.000,
+            var si0 = new BaseTeach.StackItem(sPosM0.configValue || 0.000,
                                           sPosM1.configValue || 0.000,
                                           sPosM2.configValue || 0.000,
                                           sPosM3.configValue || 0.000,
@@ -144,7 +146,7 @@ Item {
                                           stack.ydirection,
                                           stack.zdirection,
                                           true,
-                                          count,
+                                          3,
                                           stack.useDeviation,
                                           stack.xdeviation,
                                           stack.ydeviation,
@@ -153,7 +155,7 @@ Item {
                                           sid);
         }
         else
-            si0 = new LocalTeach.StackItem(actObt.startPos.sPosM0.configValue || 0.000,
+            si0 = new BaseTeach.StackItem(actObt.startPos.sPosM0.configValue || 0.000,
                                           actObt.startPos.sPosM1.configValue || 0.000,
                                           actObt.startPos.sPosM2.configValue || 0.000,
                                           actObt.startPos.sPosM3.configValue || 0.000,
@@ -177,9 +179,9 @@ Item {
                                           actObt.zdeviation,
                                           "custompoint[" + sid + "]",
                                           sid);
-        var stackInfo = new LocalTeach.StackInfo(si0, si0, 0, "stack1", "custompoint[" + sid + "]", sid, []);
-        sid = LocalTeach.appendStackInfo(stackInfo);
-        panelRobotController.saveStacks(LocalTeach.stacksToJSON());
+        var stackInfo = new BaseTeach.StackInfo(si0, si0, 0, "stack1", "custompoint[" + sid + "]", sid, []);
+        sid = BaseTeach.appendStackInfo(stackInfo);
+        panelRobotController.saveStacks(BaseTeach.stacksToJSON());
         return sid;
     }
 

@@ -633,7 +633,7 @@ ProgramFlowPage {
             allcloseAction(ret,actionObject);
         if(actionObject.useStack){
             ret.push(LocalTeach.generateFlagAction(actionObject.flag10, qsTr("Stack Mark")));
-            ret.push(LocalTeach.generateStackAction(actionObject.stack1,actionObject.stackSpeed));
+            ret.push(LocalTeach.generateStackAction(actionObject.stackID,actionObject.stackSpeed));
         }
 
         ret.push(LocalTeach.generateFlagAction(actionObject.flag1, qsTr("Dir Move")));
@@ -1868,9 +1868,19 @@ ProgramFlowPage {
         actionObject.dirCounterID = c.id;
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
-        c = BaseTeach.counterManager.newCounter("444", 0, actionObject.xcount * actionObject.ycount);
+        var xcount = BaseTeach.getStackInfoFromID(actionObject.stackID).si0.count0;
+        var ycount = BaseTeach.getStackInfoFromID(actionObject.stackID).si0.count1;
+        if(xcount == 0)
+            xcount = 1;
+        if(ycount == 0)
+            ycount = 1;
+        var stackCount = xcount * ycount;
+        if(BaseTeach.getStackInfoFromID(actionObject.stackID).type == 3)
+            stackCount = BaseTeach.getStackInfoFromID(actionObject.stackID).posData.length;
+        c = BaseTeach.counterManager.newCounter("444", 0, stackCount);
         actionObject.aaaa = c.id;
-        BaseTeach.getStackInfoFromID(actionObject.stack1).si0.counterID = c.id;
+        BaseTeach.getStackInfoFromID(actionObject.stackID).si0.doesBindingCounter = true;
+        BaseTeach.getStackInfoFromID(actionObject.stackID).si0.counterID = c.id;
         panelRobotController.saveStacks(BaseTeach.stacksToJSON());
         panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
 
@@ -2094,7 +2104,7 @@ ProgramFlowPage {
 
     onActionLineDeleted: {
         if(actionObject.action == LocalTeach.actions.F_CMD_PENTU){
-            BaseTeach.delStack(actionObject.stack1);
+            BaseTeach.delStack(actionObject.stackID);
             panelRobotController.saveStacks(BaseTeach.stacksToJSON());
         }
     }

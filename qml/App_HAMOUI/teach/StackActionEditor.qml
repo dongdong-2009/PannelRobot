@@ -10,6 +10,12 @@ Rectangle {
     property int stackType: 0
     property int currentPage: 0
     property int pageCount: 2
+    property alias stackSelector: stackSelector.visible
+    property alias useFlagVisible: useFlag.visible
+    property alias useFlagIsChecked: useFlag.isChecked
+    property alias speed: speed0.configValue
+    property alias defineStackIsChecked: defineStack.isChecked
+    property alias defineStackEN: defineStack.enabled
 
     signal stackUpdated(int id);
 

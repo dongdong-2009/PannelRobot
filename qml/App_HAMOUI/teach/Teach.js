@@ -362,6 +362,7 @@ function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
     this.dsName = dsName || "";
     this.dsHostID = dsHostID>=0?dsHostID:-1;
     this.posData = posData || [];
+    console.log("11111111",JSON.stringify(this));
 }
 
 

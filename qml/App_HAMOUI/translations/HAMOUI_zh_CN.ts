@@ -1310,7 +1310,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation></translation>
+        <translation> </translation>
     </message>
 </context>
 <context>

@@ -62,7 +62,7 @@ Item {
             text: qsTr("QK Configs")
             icon: "../images/settings_motor_config.png"
             enabled: false
-            visible: false
+//            visible: false
 
         }
 

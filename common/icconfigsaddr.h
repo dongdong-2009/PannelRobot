@@ -309,52 +309,82 @@ extern  const ICAddrWrapper  m_rw_0_32_1_216;    //< 1087930394 目标延时时�
 extern  const ICAddrWrapper  m_rw_0_32_1_217;    //< 1087995930 目标延时时间模拟量设定
 extern  const ICAddrWrapper  m_rw_0_32_1_218;    //< 1088061466 当前定时时间模拟量设定
 extern  const ICAddrWrapper  m_rw_0_32_1_219;    //< 1088127002 当前定时时间模拟量设定
-extern  const ICAddrWrapper  s_rw_0_32_0_220;    //< 14450715 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_221;    //< 14516251 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_222;    //< 14581787 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_223;    //< 14647323 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_224;    //< 14712859 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_225;    //< 14778395 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_226;    //< 14843931 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_227;    //< 14909467 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_228;    //< 14975003 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_229;    //< 15040539 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_230;    //< 15106075 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_231;    //< 15171611 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_232;    //< 15237147 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_233;    //< 15302683 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_234;    //< 15368219 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_235;    //< 15433755 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_236;    //< 15499291 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_237;    //< 15564827 当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_238;    //< 15630363 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_239;    //< 15695899 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_240;    //< 15761435 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_241;    //< 15826971 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_242;    //< 15892507 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_243;    //< 15958043 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_244;    //< 16023579 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_245;    //< 16089115 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_246;    //< 16154651 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_247;    //< 16220187 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_248;    //< 16285723 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_249;    //< 16351259 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_250;    //< 16416795 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_251;    //< 16482331 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_252;    //< 16547867 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_253;    //< 16613403 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_254;    //< 16678939 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_255;    //< 16744475 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_256;    //< 16810011 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_257;    //< 16875547 目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_258;    //< 16941083 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_259;    //< 17006619 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_260;    //< 17072155 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_261;    //< 17137691 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_262;    //< 17203227 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_263;    //< 17268763 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_264;    //< 17334299 当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_265;    //< 17399835 当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_220;    //< 14450715 当前定时时间翻转使能
+extern  const ICAddrWrapper  s_rw_0_16_0_221;  //< 14499867 当前定时时间轴1原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_221;  //< 14500379 当前定时时间轴2原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_16_0_222;  //< 14565403 当前定时时间轴3原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_222;  //< 14565915 当前定时时间轴4原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_16_0_223;  //< 14630939 当前定时时间轴5原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_223;  //< 14631451 当前定时时间轴6原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_16_0_224;  //< 14696475 当前定时时间轴7原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_224;  //< 14696987 当前定时时间轴8原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_8_0_225;  //< 14753819 当前定时时间轴1电机测试速度
+extern  const ICAddrWrapper  s_rw_8_8_0_225;  //< 14754075 当前定时时间轴2电机测试速度
+extern  const ICAddrWrapper  s_rw_16_8_0_225;  //< 14754331 当前定时时间轴3电机测试速度
+extern  const ICAddrWrapper  s_rw_24_8_0_225;  //< 14754587 当前定时时间轴4电机测试速度
+extern  const ICAddrWrapper  s_rw_0_8_0_226;  //< 14819355 当前定时时间轴5电机测试速度
+extern  const ICAddrWrapper  s_rw_8_8_0_226;  //< 14819611 当前定时时间轴6电机测试速度
+extern  const ICAddrWrapper  s_rw_16_8_0_226;  //< 14819867 当前定时时间轴7电机测试速度
+extern  const ICAddrWrapper  s_rw_24_8_0_226;  //< 14820123 当前定时时间轴8电机测试速度
+extern  const ICAddrWrapper  s_rw_0_4_0_227;  //< 14880795 当前定时时间轴1ID
+extern  const ICAddrWrapper  s_rw_4_4_0_227;  //< 14880923 当前定时时间轴2ID
+extern  const ICAddrWrapper  s_rw_8_4_0_227;  //< 14881051 当前定时时间轴3ID
+extern  const ICAddrWrapper  s_rw_12_4_0_227;  //< 14881179 当前定时时间轴4ID
+extern  const ICAddrWrapper  s_rw_16_4_0_227;  //< 14881307 当前定时时间轴5ID
+extern  const ICAddrWrapper  s_rw_20_4_0_227;  //< 14881435 当前定时时间轴6ID
+extern  const ICAddrWrapper  s_rw_24_4_0_227;  //< 14881563 当前定时时间轴7ID
+extern  const ICAddrWrapper  s_rw_28_4_0_227;  //< 14881691 当前定时时间轴8ID
+extern  const ICAddrWrapper  s_rw_0_1_0_228;  //< 14943259 当前定时时间安全区使能
+extern  const ICAddrWrapper  s_rw_1_5_0_228;  //< 14947387 当前定时时间安全区类型
+extern  const ICAddrWrapper  s_rw_6_7_0_228;  //< 14949595 当前定时时间输入安全信号点1
+extern  const ICAddrWrapper  s_rw_13_7_0_228;  //< 14949819 当前定时时间输入安全信号点2
+extern  const ICAddrWrapper  s_rw_20_7_0_228;  //< 14950043 当前定时时间输入安全信号点3
+extern  const ICAddrWrapper  s_rw_27_1_0_228;  //< 14944123 当前定时时间安全区域1使能
+extern  const ICAddrWrapper  s_rw_28_1_0_228;  //< 14944155 当前定时时间安全区域2使能
+extern  const ICAddrWrapper  s_rw_29_1_0_228;  //< 14944187 当前定时时间安全区域3使能
+extern  const ICAddrWrapper  s_rw_30_1_0_228;  //< 14944219 当前定时时间安全区域4使能
+extern  const ICAddrWrapper  s_rw_31_1_0_228;  //< 14944251 当前定时时间安全区域5使能
+extern  const ICAddrWrapper  s_rw_0_1_0_229;  //< 15008795 当前定时时间安全区域6使能
+extern  const ICAddrWrapper  s_rw_1_7_0_229;  //< 15014971 当前定时时间输入安全信号点4
+extern  const ICAddrWrapper  s_rw_8_7_0_229;  //< 15015195 当前定时时间输入安全信号点5
+extern  const ICAddrWrapper  s_rw_15_7_0_229;  //< 15015419 当前定时时间输入安全信号点6
+extern  const ICAddrWrapper  s_rw_22_10_0_229;  //< 15018715 当前定时时间预留
+extern  const ICAddrWrapper  s_rw_0_32_3_230;    //< 3236331547 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_231;    //< 3236397083 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_232;    //< 3236462619 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_233;    //< 3236528155 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_234;    //< 3236593691 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_235;    //< 3236659227 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_236;    //< 3236724763 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_237;    //< 3236790299 当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_238;    //< 3236855835 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_239;    //< 3236921371 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_240;    //< 3236986907 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_241;    //< 3237052443 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_242;    //< 3237117979 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_243;    //< 3237183515 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_244;    //< 3237249051 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_245;    //< 3237314587 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_246;    //< 3237380123 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_247;    //< 3237445659 目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_248;    //< 3237511195 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_249;    //< 3237576731 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_250;    //< 3237642267 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_251;    //< 3237707803 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_252;    //< 3237773339 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_253;    //< 3237838875 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_254;    //< 3237904411 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_255;    //< 3237969947 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_256;    //< 3238035483 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_257;    //< 3238101019 目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_258;    //< 3238166555 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_259;    //< 3238232091 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_260;    //< 3238297627 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_261;    //< 3238363163 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_262;    //< 3238428699 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_263;    //< 3238494235 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_264;    //< 3238559771 当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_265;    //< 3238625307 当前计数值轴最大安全位置
 extern  const ICAddrWrapper  s_rw_0_32_0_266;    //< 17465371 当前计数值当前计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_267;    //< 17530907 当前计数值当前计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_268;    //< 17596443 当前计数值当前计数值
@@ -413,7 +443,8 @@ extern  const ICAddrWrapper  m_rw_6_1_0_357;  //< 23397594 子程序6使用
 extern  const ICAddrWrapper  m_rw_7_1_0_357;  //< 23397626 子程序7使用
 extern  const ICAddrWrapper  m_rw_8_1_0_357;  //< 23397658 子程序8使用
 extern  const ICAddrWrapper  m_rw_9_1_0_357;  //< 23397690 安装工具坐标
-extern  const ICAddrWrapper  m_rw_10_22_0_357;  //< 23419226 备用
+extern  const ICAddrWrapper  m_rw_10_3_0_357;  //< 23399770 安装工具坐标类型
+extern  const ICAddrWrapper  m_rw_13_19_0_357;  //< 23416250 备用
 extern  const ICAddrWrapper  m_rw_0_32_0_358;    //< 23494682 X1脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_359;    //< 23560218 Y1脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_360;    //< 23625754 Z1脉冲
@@ -438,18 +469,18 @@ extern  const ICAddrWrapper  m_rw_0_32_0_378;    //< 24805402 Z4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_379;    //< 24870938 U4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_380;    //< 24936474 V4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_381;    //< 25002010 W4脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_382;    //< 25067546 X5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_383;    //< 25133082 Y5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_384;    //< 25198618 Z5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_385;    //< 25264154 U5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_386;    //< 25329690 V5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_387;    //< 25395226 W5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_388;    //< 25460762 X6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_389;    //< 25526298 Y6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_390;    //< 25591834 Z6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_391;    //< 25657370 U6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_392;    //< 25722906 V6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_393;    //< 25788442 W6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_382;    //< 3246293018 X5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_383;    //< 3246358554 Y5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_384;    //< 3246424090 Z5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_385;    //< 3246489626 U5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_386;    //< 3246555162 V5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_387;    //< 3246620698 W5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_388;    //< 3246686234 X6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_389;    //< 3246751770 Y6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_390;    //< 3246817306 Z6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_391;    //< 3246882842 U6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_392;    //< 3246948378 V6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_393;    //< 3247013914 W6脉冲
 extern  const ICAddrWrapper  c_ro_0_32_3_900;    //< 3280240649 轴1当前输出脉冲位置当前输出脉冲位置
 extern  const ICAddrWrapper  c_ro_0_32_0_901;    //< 59080713 轴1实际脉冲位置实际脉冲位置
 extern  const ICAddrWrapper  c_ro_0_16_0_902;  //< 59129865 轴1速度百分比_当前速度速度百分比

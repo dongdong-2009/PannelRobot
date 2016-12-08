@@ -767,6 +767,14 @@
         <source>WD</source>
         <translation>世界</translation>
     </message>
+    <message>
+        <source>Coord Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
@@ -1220,7 +1228,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation>Motor4</translation>
+        <translation>华成伺服</translation>
     </message>
     <message>
         <source>SACC1</source>
@@ -1237,6 +1245,22 @@
     <message>
         <source>SDCC2</source>
         <translation>S减速2</translation>
+    </message>
+    <message>
+        <source>Motor 5</source>
+        <translation>三协伺服</translation>
+    </message>
+    <message>
+        <source>Motor 6</source>
+        <translation>安川伺服</translation>
+    </message>
+    <message>
+        <source>originOffset</source>
+        <translation>原点误差脉冲数</translation>
+    </message>
+    <message>
+        <source>Test Speed:</source>
+        <translation>测试速度:</translation>
     </message>
 </context>
 <context>
@@ -1286,7 +1310,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation></translation>
+        <translation> </translation>
     </message>
 </context>
 <context>
@@ -1892,6 +1916,14 @@
         <source>When Changed</source>
         <translation>当改变</translation>
     </message>
+    <message>
+        <source>Switch Coord</source>
+        <translation>坐标系转换</translation>
+    </message>
+    <message>
+        <source>CoordID</source>
+        <translation>工作台坐标系ID</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1914,6 +1946,10 @@
     <message>
         <source>Single Stack</source>
         <translation>单轴堆叠</translation>
+    </message>
+    <message>
+        <source>switchCoord</source>
+        <translation type="unfinished">坐标系转换</translation>
     </message>
 </context>
 <context>
@@ -3977,7 +4013,11 @@
     </message>
     <message>
         <source>QK Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>驱控参数</translation>
+    </message>
+    <message>
+        <source>SafeArea Configs</source>
+        <translation>安全区参数</translation>
     </message>
 </context>
 <context>
@@ -4019,7 +4059,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="obsolete">工具校准</translation>
+        <translation>工具标定</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4036,6 +4076,10 @@
     <message>
         <source>Custom Btn</source>
         <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>toolcoord</source>
+        <translation>工作台标定</translation>
     </message>
 </context>
 <context>
@@ -5072,31 +5116,31 @@ please chose!</source>
     <name>QKConfigs</name>
     <message>
         <source>Axis</source>
-        <translation type="unfinished">轴</translation>
+        <translation>轴</translation>
     </message>
     <message>
         <source>Addr</source>
-        <translation type="unfinished">地址</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>数据</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>写入</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>读取</translation>
     </message>
     <message>
         <source>Write EP</source>
-        <translation type="unfinished"></translation>
+        <translation>写入EP</translation>
     </message>
     <message>
         <source>Read EP</source>
-        <translation type="unfinished"></translation>
+        <translation>读取EP</translation>
     </message>
 </context>
 <context>
@@ -5345,6 +5389,409 @@ please chose!</source>
     <message>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
+    </message>
+</context>
+<context>
+    <name>SafeAreaConfigs</name>
+    <message>
+        <source>Safe Area1</source>
+        <translation>类型1</translation>
+    </message>
+    <message>
+        <source>SafePo1</source>
+        <translation>区域1安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part1?</source>
+        <translation>区域1使用</translation>
+    </message>
+    <message>
+        <source>SafePo2</source>
+        <translation>区域2安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part2?</source>
+        <translation>区域2使用</translation>
+    </message>
+    <message>
+        <source>SafePo3</source>
+        <translation>区域3安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part3?</source>
+        <translation>区域3使用</translation>
+    </message>
+    <message>
+        <source>SafePo4</source>
+        <translation>区域4安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part4?</source>
+        <translation>区域4使用</translation>
+    </message>
+    <message>
+        <source>SafePo5</source>
+        <translation>区域5安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part5?</source>
+        <translation>区域5使用</translation>
+    </message>
+    <message>
+        <source>SafePo6</source>
+        <translation>区域6安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part6?</source>
+        <translation>区域6使用</translation>
+    </message>
+    <message>
+        <source>Axis1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NO</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-A</source>
+        <translation>区域1A</translation>
+    </message>
+    <message>
+        <source>P1-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P1-B</source>
+        <translation>区域1B</translation>
+    </message>
+    <message>
+        <source>P1-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P2-A</source>
+        <translation>区域2A</translation>
+    </message>
+    <message>
+        <source>P2-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P2-B</source>
+        <translation>区域2B</translation>
+    </message>
+    <message>
+        <source>P3-A</source>
+        <translation>区域3A</translation>
+    </message>
+    <message>
+        <source>P3-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P3-B</source>
+        <translation>区域3B</translation>
+    </message>
+    <message>
+        <source>P3-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P4-A</source>
+        <translation>区域4A</translation>
+    </message>
+    <message>
+        <source>P4-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P4-B</source>
+        <translation>区域4B</translation>
+    </message>
+    <message>
+        <source>P4-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P5-A</source>
+        <translation>区域5A</translation>
+    </message>
+    <message>
+        <source>P5-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P5-B</source>
+        <translation>区域5B</translation>
+    </message>
+    <message>
+        <source>P5-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>P6-A</source>
+        <translation>区域6A</translation>
+    </message>
+    <message>
+        <source>P6-A Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>P6-B</source>
+        <translation>区域6B</translation>
+    </message>
+    <message>
+        <source>P6-B Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>Axis2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-C</source>
+        <translation>区域1C</translation>
+    </message>
+    <message>
+        <source>P1-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P1-D</source>
+        <translation>区域1D</translation>
+    </message>
+    <message>
+        <source>P1-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P2-C</source>
+        <translation>区域2C</translation>
+    </message>
+    <message>
+        <source>P2-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P2-D</source>
+        <translation>区域2D</translation>
+    </message>
+    <message>
+        <source>P2-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P3-C</source>
+        <translation>区域3C</translation>
+    </message>
+    <message>
+        <source>P3-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P3-D</source>
+        <translation>区域3D</translation>
+    </message>
+    <message>
+        <source>P3-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P4-C</source>
+        <translation>区域4C</translation>
+    </message>
+    <message>
+        <source>P4-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P4-D</source>
+        <translation>区域4D</translation>
+    </message>
+    <message>
+        <source>P4-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P5-C</source>
+        <translation>区域5C</translation>
+    </message>
+    <message>
+        <source>P5-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P5-D</source>
+        <translation>区域5D</translation>
+    </message>
+    <message>
+        <source>P5-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P6-C</source>
+        <translation>区域6C</translation>
+    </message>
+    <message>
+        <source>P6-C Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>P6-D</source>
+        <translation>区域6D</translation>
+    </message>
+    <message>
+        <source>P6-D Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>Axis3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P1-E</source>
+        <translation>区域1E</translation>
+    </message>
+    <message>
+        <source>P1-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P1-F</source>
+        <translation>区域1F</translation>
+    </message>
+    <message>
+        <source>P1-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P2-E</source>
+        <translation>区域2E</translation>
+    </message>
+    <message>
+        <source>P2-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P2-F</source>
+        <translation>区域2F</translation>
+    </message>
+    <message>
+        <source>P2-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P3-E</source>
+        <translation>区域3E</translation>
+    </message>
+    <message>
+        <source>P3-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P3-F</source>
+        <translation>区域3F</translation>
+    </message>
+    <message>
+        <source>P3-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P4-E</source>
+        <translation>区域4E</translation>
+    </message>
+    <message>
+        <source>P4-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P4-F</source>
+        <translation>区域4F</translation>
+    </message>
+    <message>
+        <source>P4-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P5-E</source>
+        <translation>区域5E</translation>
+    </message>
+    <message>
+        <source>P5-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P5-F</source>
+        <translation>区域5F</translation>
+    </message>
+    <message>
+        <source>P5-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>P6-E</source>
+        <translation>区域6E</translation>
+    </message>
+    <message>
+        <source>P6-E Set</source>
+        <translation>E设入</translation>
+    </message>
+    <message>
+        <source>P6-F</source>
+        <translation>区域6F</translation>
+    </message>
+    <message>
+        <source>P6-F Set</source>
+        <translation>F设入</translation>
+    </message>
+    <message>
+        <source>Use it?</source>
+        <translation>使用</translation>
+    </message>
+    <message>
+        <source>Safe Area2</source>
+        <translation>类型2</translation>
+    </message>
+    <message>
+        <source>minPos1</source>
+        <translation>位置A</translation>
+    </message>
+    <message>
+        <source>minPos1 Set</source>
+        <translation>A设入</translation>
+    </message>
+    <message>
+        <source>maxPos1</source>
+        <translation>位置B</translation>
+    </message>
+    <message>
+        <source>maxPos1 Set</source>
+        <translation>B设入</translation>
+    </message>
+    <message>
+        <source>minPos2</source>
+        <translation>位置C</translation>
+    </message>
+    <message>
+        <source>minPos2 Set</source>
+        <translation>C设入</translation>
+    </message>
+    <message>
+        <source>maxPos2</source>
+        <translation>位置D</translation>
+    </message>
+    <message>
+        <source>maxPos2 Set</source>
+        <translation>D设入</translation>
+    </message>
+    <message>
+        <source>P2-A Set</source>
+        <translation>A设入</translation>
     </message>
 </context>
 <context>
@@ -5953,6 +6400,13 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
+    </message>
+</context>
+<context>
+    <name>SwitchCoordEditor</name>
+    <message>
+        <source>coordID</source>
+        <translation>工作台坐标系ID</translation>
     </message>
 </context>
 <context>
@@ -6762,6 +7216,44 @@ You just need to set the count configs after this setting.</source>
     </message>
 </context>
 <context>
+    <name>ToolCoordManager</name>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolCoordPage</name>
+    <message>
+        <source>newBtn</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>setP1Btn</source>
+        <translation>设定P1</translation>
+    </message>
+    <message>
+        <source>setP2Btn</source>
+        <translation>设定P2</translation>
+    </message>
+    <message>
+        <source>setP3Btn</source>
+        <translation>设定P3</translation>
+    </message>
+    <message>
+        <source>coordName</source>
+        <translation>坐标系命名</translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation>坐标系换算</translation>
+    </message>
+</context>
+<context>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
@@ -6794,6 +7286,22 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Use it?</source>
         <translation>使用</translation>
+    </message>
+    <message>
+        <source>Four Point</source>
+        <translation>四点法</translation>
+    </message>
+    <message>
+        <source>Two Point</source>
+        <translation>两点法</translation>
+    </message>
+    <message>
+        <source>T Set</source>
+        <translation>末端设入</translation>
+    </message>
+    <message>
+        <source>Tool Dev:</source>
+        <translation>工具偏差：</translation>
     </message>
 </context>
 <context>

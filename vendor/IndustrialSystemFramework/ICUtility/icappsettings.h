@@ -158,7 +158,7 @@ inline QString ICAppSettings::CurrentMoldConfig()
 inline QString ICAppSettings::CurrentSystemConfig()
 {
     beginGroup(SessionGroup);
-    QString ret = value("CurrentSystemConfig", "kSttRTRTTT").toString();
+    QString ret = value("CurrentSystemConfig", "kSttRRPR_BRT").toString();
     endGroup();
     return ret;
 }

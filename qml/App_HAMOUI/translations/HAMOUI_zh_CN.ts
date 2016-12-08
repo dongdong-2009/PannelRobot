@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -538,15 +538,15 @@
     <name>AnalogControlEditor</name>
     <message>
         <source>Chanel</source>
-        <translation type="vanished">通道</translation>
+        <translation>通道</translation>
     </message>
     <message>
         <source>Analog Value</source>
-        <translation type="vanished">模拟量</translation>
+        <translation>模拟量</translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation type="vanished">延时</translation>
+        <translation>延时</translation>
     </message>
 </context>
 <context>
@@ -653,23 +653,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -677,11 +677,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1306,7 +1306,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation></translation>
+        <translation> </translation>
     </message>
 </context>
 <context>
@@ -1743,170 +1743,170 @@
     <name>DeltaJumpEditor</name>
     <message>
         <source>LH Pos</source>
-        <translation type="vanished">起点高</translation>
+        <translation>起点高</translation>
     </message>
     <message>
         <source>MH Pos</source>
-        <translation type="vanished">中点高</translation>
+        <translation>中点高</translation>
     </message>
     <message>
         <source>RH Pos</source>
-        <translation type="vanished">终点高</translation>
+        <translation>终点高</translation>
     </message>
     <message>
         <source>Start Pos</source>
-        <translation type="vanished">起点</translation>
+        <translation>起点</translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation type="vanished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>End Pos</source>
-        <translation type="vanished">终点</translation>
+        <translation>终点</translation>
     </message>
     <message>
         <source>speed Value</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation type="vanished">延时</translation>
+        <translation>延时</translation>
     </message>
 </context>
 <context>
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
-        <translation type="vanished">往复</translation>
+        <translation>往复</translation>
     </message>
     <message>
         <source>Pos1:</source>
-        <translation type="vanished">起始位置:</translation>
+        <translation>起始位置:</translation>
     </message>
     <message>
         <source>Pos2:</source>
-        <translation type="vanished">结束位置:</translation>
+        <translation>结束位置:</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
-        <translation type="vanished">速度:</translation>
+        <translation>速度:</translation>
     </message>
     <message>
         <source>Num:</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="vanished">延时:</translation>
+        <translation>延时:</translation>
     </message>
     <message>
         <source>Analog Control</source>
-        <translation type="vanished">模拟控制</translation>
+        <translation>模拟控制</translation>
     </message>
     <message>
         <source>Analog:</source>
-        <translation type="vanished">模拟量:</translation>
+        <translation>模拟量:</translation>
     </message>
     <message>
         <source>Delta Jumpl</source>
-        <translation type="vanished">Delta 路径</translation>
+        <translation>Delta 路径</translation>
     </message>
     <message>
         <source>start pos:</source>
-        <translation type="vanished">起点:</translation>
+        <translation>起点:</translation>
     </message>
     <message>
         <source>LH:</source>
-        <translation type="vanished">起点高:</translation>
+        <translation>起点高:</translation>
     </message>
     <message>
         <source>MH:</source>
-        <translation type="vanished">中点高:</translation>
+        <translation>中点高:</translation>
     </message>
     <message>
         <source>RH:</source>
-        <translation type="vanished">终点高:</translation>
+        <translation>终点高:</translation>
     </message>
     <message>
         <source>end pos:</source>
-        <translation type="vanished">终点位置:</translation>
+        <translation>终点位置:</translation>
     </message>
     <message>
         <source>speed:</source>
-        <translation type="vanished">速度:</translation>
+        <translation>速度:</translation>
     </message>
     <message>
         <source>Safe Control</source>
-        <translation type="vanished">安全区</translation>
+        <translation>安全区</translation>
     </message>
     <message>
         <source>in pos fange:</source>
-        <translation type="vanished">在范围:</translation>
+        <translation>在范围:</translation>
     </message>
     <message>
         <source>out pos fange:</source>
-        <translation type="vanished">不在范围:</translation>
+        <translation>不在范围:</translation>
     </message>
     <message>
         <source>will alarm:</source>
-        <translation type="vanished">就报警:</translation>
+        <translation>就报警:</translation>
     </message>
     <message>
         <source>if</source>
-        <translation type="vanished">如果</translation>
+        <translation>如果</translation>
     </message>
     <message>
         <source>Single Stack</source>
-        <translation type="vanished">单轴堆叠</translation>
+        <translation>单轴堆叠</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation type="vanished">反相</translation>
+        <translation>反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="vanished">正相</translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>space:</source>
-        <translation type="vanished">间距:</translation>
+        <translation>间距:</translation>
     </message>
     <message>
         <source>count:</source>
-        <translation type="vanished">计数:</translation>
+        <translation>计数:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
-        <translation type="vanished">计数器:自身</translation>
+        <translation>计数器:自身</translation>
     </message>
     <message>
         <source>Start Pos:</source>
-        <translation type="vanished">起点:</translation>
+        <translation>起点:</translation>
     </message>
     <message>
         <source>Addr:</source>
-        <translation type="vanished">地址:</translation>
+        <translation>地址:</translation>
     </message>
     <message>
         <source>When Changed</source>
-        <translation type="vanished">当改变</translation>
+        <translation>当改变</translation>
     </message>
     <message>
         <source>Switch Coord</source>
-        <translation type="vanished">坐标系转换</translation>
+        <translation>坐标系转换</translation>
     </message>
     <message>
         <source>CoordID</source>
-        <translation type="vanished">工作台坐标系ID</translation>
+        <translation>工作台坐标系ID</translation>
     </message>
 </context>
 <context>
@@ -2147,11 +2147,11 @@
     </message>
     <message>
         <source>X020</source>
-        <translation>枪2输入信号</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X021</source>
-        <translation>枪1输入信号</translation>
+        <translation></translation>
     </message>
     <message>
         <source>X022</source>
@@ -2303,39 +2303,39 @@
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>枪2轨道推拉</translation>
+        <translation>普通输出Y014</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>枪2吹钉</translation>
+        <translation>普通输出Y015</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>枪2送钉</translation>
+        <translation>普通输出Y016</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation>枪2电机</translation>
+        <translation>普通输出Y017</translation>
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>枪1顶杠</translation>
+        <translation>普通输出Y020</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>枪2顶杠</translation>
+        <translation>普通输出Y021</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>枪1轨道推拉</translation>
+        <translation>普通输出Y022</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>枪1吹钉</translation>
+        <translation>普通输出Y023</translation>
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation>枪1送钉</translation>
+        <translation>普通输出Y024</translation>
     </message>
     <message>
         <source>Normal Y025</source>
@@ -2343,19 +2343,19 @@
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>焊接</translation>
+        <translation>普通输出Y026</translation>
     </message>
     <message>
         <source>Normal Y027</source>
-        <translation>枪1电机</translation>
+        <translation>普通输出Y027</translation>
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>枪2底缸</translation>
+        <translation>普通输出Y030</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation>枪1底缸</translation>
+        <translation>普通输出Y031</translation>
     </message>
     <message>
         <source>Normal Y032</source>
@@ -4320,35 +4320,35 @@
     <name>PENQIANEditor</name>
     <message>
         <source>Axis Sel</source>
-        <translation type="vanished">轴选择</translation>
+        <translation>轴选择</translation>
     </message>
     <message>
         <source>AxisFly Pos1</source>
-        <translation type="vanished">起始位置</translation>
+        <translation>起始位置</translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation type="vanished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>AxisFly Pos2</source>
-        <translation type="vanished">结束位置</translation>
+        <translation>结束位置</translation>
     </message>
     <message>
         <source>AxisFly Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>AxisFyl Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Times</source>
-        <translation type="vanished">次</translation>
+        <translation>次</translation>
     </message>
     <message>
         <source>Delay</source>
-        <translation type="vanished">延时</translation>
+        <translation>延时</translation>
     </message>
 </context>
 <context>
@@ -5327,7 +5327,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5359,11 +5359,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5816,27 +5816,27 @@ please chose!</source>
     <name>SafeRangeEditor</name>
     <message>
         <source>Out Range</source>
-        <translation type="vanished">不在范围(默认在范围)</translation>
+        <translation>不在范围(默认在范围)</translation>
     </message>
     <message>
         <source>Limited Axis</source>
-        <translation type="vanished">被限制轴</translation>
+        <translation>被限制轴</translation>
     </message>
     <message>
         <source>Limit Axis</source>
-        <translation type="vanished">限制轴</translation>
+        <translation>限制轴</translation>
     </message>
     <message>
         <source>Alarm Num</source>
-        <translation type="vanished">报警号</translation>
+        <translation>报警号</translation>
     </message>
     <message>
         <source>Changed</source>
-        <translation type="vanished">改变</translation>
+        <translation>改变</translation>
     </message>
     <message>
         <source>Range</source>
-        <translation type="vanished">范围</translation>
+        <translation>范围</translation>
     </message>
 </context>
 <context>
@@ -5877,47 +5877,47 @@ please chose!</source>
     <name>SingleStackAction</name>
     <message>
         <source>Self</source>
-        <translation type="vanished">自身</translation>
+        <translation>自身</translation>
     </message>
     <message>
         <source>Axis</source>
-        <translation type="vanished">轴</translation>
+        <translation>轴</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="vanished">正相</translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>Start Pos</source>
-        <translation type="vanished">起点</translation>
+        <translation>起点</translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation type="vanished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>Space</source>
-        <translation type="vanished">间距</translation>
+        <translation>间距</translation>
     </message>
     <message>
         <source>Count</source>
-        <translation type="vanished">计数</translation>
+        <translation>计数</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation type="vanished">计数器</translation>
+        <translation>计数器</translation>
     </message>
     <message>
         <source>Rel Points</source>
-        <translation type="vanished">引用点</translation>
+        <translation>引用点</translation>
     </message>
     <message>
         <source>Addr</source>
-        <translation type="vanished">地址</translation>
+        <translation>地址</translation>
     </message>
 </context>
 <context>
@@ -6166,15 +6166,15 @@ please chose!</source>
     </message>
     <message>
         <source>Only X</source>
-        <translation type="vanished">只堆X</translation>
+        <translation>只堆X</translation>
     </message>
     <message>
         <source>Only Y</source>
-        <translation type="vanished">只堆Y</translation>
+        <translation>只堆Y</translation>
     </message>
     <message>
         <source>Only Z</source>
-        <translation type="vanished">只堆Z</translation>
+        <translation>只堆Z</translation>
     </message>
     <message>
         <source>Three Point Way</source>
@@ -6433,7 +6433,7 @@ You just need to set the count configs after this setting.</source>
     <name>SwitchCoordEditor</name>
     <message>
         <source>coordID</source>
-        <translation type="vanished">工作台坐标系ID</translation>
+        <translation>工作台坐标系ID</translation>
     </message>
 </context>
 <context>
@@ -7304,11 +7304,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="vanished">设为点5</translation>
+        <translation>设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="vanished">设为点6</translation>
+        <translation>设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

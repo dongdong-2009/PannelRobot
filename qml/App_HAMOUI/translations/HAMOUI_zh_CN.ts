@@ -1263,27 +1263,27 @@
     </message>
     <message>
         <source>X</source>
-        <translation>X1轴</translation>
+        <translation>X1</translation>
     </message>
     <message>
         <source>Y</source>
-        <translation>Y1轴</translation>
+        <translation>Y1</translation>
     </message>
     <message>
         <source>Z</source>
-        <translation>Z轴</translation>
+        <translation>Z</translation>
     </message>
     <message>
         <source>U</source>
-        <translation>X2轴</translation>
+        <translation>X2</translation>
     </message>
     <message>
         <source>V</source>
-        <translation>Y2轴</translation>
+        <translation>Y2</translation>
     </message>
     <message>
         <source>W</source>
-        <translation>C轴</translation>
+        <translation>C</translation>
     </message>
     <message>
         <source>°</source>
@@ -1294,7 +1294,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation type="unfinished">轴</translation>
+        <translation>轴</translation>
     </message>
 </context>
 <context>

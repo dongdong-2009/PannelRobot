@@ -867,30 +867,44 @@ Rectangle {
         var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
         var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
         var automodeBtnStatus = panelRobotController.isInputOn(023,IODefines.IO_BOARD_0);//x033
+
+        var  originBtnEn = parseInt(panelRobotController.getCustomSettings("X32UseForOrigin", 0));
+        var automodeBtnEn = parseInt(panelRobotController.getCustomSettings("X33UseForAuto", 0));
+        var startupBtnEn = parseInt(panelRobotController.getCustomSettings("X46UseForStartup", 0));
+        var stopBtnEn = parseInt(panelRobotController.getCustomSettings("X47UseForStop", 0));
+
         if(originBtnStatus){
             if(originBtnStatus != refreshTimer.originBtnOld){
                 refreshTimer.originBtnOld = originBtnStatus;
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+                if(originBtnEn){
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+                }
             }
         }else refreshTimer.originBtnOld = 0;
         if(startupBtnStatus){
             if(startupBtnStatus != refreshTimer.startupBtnOld){
                 refreshTimer.startupBtnOld = startupBtnStatus;
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                if(startupBtnEn){
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                }
             }
         }else refreshTimer.startupBtnOld = 0;
         if(stopBtnStatus){
             if(stopBtnStatus != refreshTimer.stopBtnOld){
                 refreshTimer.stopBtnOld = stopBtnStatus;
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                if(stopBtnEn){
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                }
             }
         }else refreshTimer.stopBtnOld = 0;
         if(automodeBtnStatus){
             if(automodeBtnStatus != refreshTimer.automodeBtnOld){
                 refreshTimer.automodeBtnOld = automodeBtnStatus;
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+                if(automodeBtnEn){
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+                }
             }
         }else refreshTimer.automodeBtnOld = 0;
     }

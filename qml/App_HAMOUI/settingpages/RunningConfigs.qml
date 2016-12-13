@@ -115,7 +115,7 @@ Item {
             id:muxForInput
             anchors.top: independentManualSpeedGroup.bottom
             anchors.topMargin: 6
-            columns: 2
+            columns: 4
             spacing: 6
             ICCheckBox{
                 id:x32UseForOrigin

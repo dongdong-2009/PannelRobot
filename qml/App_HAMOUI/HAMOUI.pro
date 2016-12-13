@@ -11,12 +11,6 @@ teach/extents/*.qml \
 teach/extents/*.js
 }
 
-OTHER_FILES += \
-    opt/optconfigs.js
-
-DISTFILES += \
-    settingpages/SafeAreaConfigs.qml
-
 
 
 

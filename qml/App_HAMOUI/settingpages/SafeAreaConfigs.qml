@@ -17,15 +17,15 @@ Item {
     }
     ICListView{
         id:view
-        width: 100
+        width: 60
         height: parent.height
         model:buttonModel
         highlight: Rectangle { width: view.width; height: 20;color: "white"; }
         highlightMoveDuration: 1
         delegate: Text {
-            text: id +":"+typename
+            text: typename
             width: parent.width
-            height: 20
+            height: 30
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
@@ -46,37 +46,42 @@ Item {
     ICStackContainer{
         id:pageContainer
         anchors.left: spliteLine1.right
-        width: parent.width-100
+        width: parent.width-70
         height: parent.height
     }
 
-    Item {
+    Rectangle {
         id:safe1
-        width: parent.width-100
-        height: parent.height
+        width: pageContainer.width
+        height: pageContainer.height
+//        border.width: 1
+//        border.color: "black"
+        color: "transparent"
         anchors.left: spliteLine1.right
         property string typename: qsTr("Safe Area1")
         property int type_id: 0
         Image {
             id: safeAreaPic1
             source: "../images/safe_area1.png"
-            width: parent.width-300
+            width: parent.width-configContent.width
             height: parent.height
+            smooth: true
         }
         ICFlickable{
+            id:configContent
+
             anchors.left: safeAreaPic1.right
             anchors.leftMargin: 5
             height:parent.height
-            width:300
+            width:content.width + 25
             contentWidth: content.width
-            contentHeight: content.height
+            contentHeight: content.height+10
             flickableDirection: Flickable.VerticalFlick
+            isshowhint: true
             Grid{
                 id:content
                 columns: 2
                 spacing: 5
-                width: parent.width
-
                 ICConfigEdit{
                     id:safeSignalSet
                     inputWidth:30
@@ -1173,8 +1178,8 @@ Item {
 
     Item {
         id: safe2
-        width: parent.width-100
-        height: parent.height
+//        width: parent.width-100
+//        height: parent.height
         anchors.left: spliteLine1.right
         property string typename: qsTr("Safe Area2")
         property int type_id: 1
@@ -1363,6 +1368,7 @@ Item {
             }
         }
     }
+
 
     Component.onCompleted:{
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});

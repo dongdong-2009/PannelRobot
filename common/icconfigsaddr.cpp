@@ -443,7 +443,8 @@ extern  const ICAddrWrapper  m_rw_6_1_0_357(2,3,6,1,357,0,"");   //<子程序6�
 extern  const ICAddrWrapper  m_rw_7_1_0_357(2,3,7,1,357,0,"");   //<子程序7使用
 extern  const ICAddrWrapper  m_rw_8_1_0_357(2,3,8,1,357,0,"");   //<子程序8使用
 extern  const ICAddrWrapper  m_rw_9_1_0_357(2,3,9,1,357,0,"");   //<安装工具坐标
-extern  const ICAddrWrapper  m_rw_10_22_0_357(2,3,10,22,357,0,"");   //<备用
+extern  const ICAddrWrapper  m_rw_10_3_0_357(2,3,10,3,357,0,"");   //<安装工具坐标类型
+extern  const ICAddrWrapper  m_rw_13_19_0_357(2,3,13,19,357,0,"");   //<备用
 extern  const ICAddrWrapper  m_rw_0_32_0_358(2,3,0,32,358,0,"");    //<X1脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_359(2,3,0,32,359,0,"");    //<Y1脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_360(2,3,0,32,360,0,"");    //<Z1脉冲
@@ -468,18 +469,18 @@ extern  const ICAddrWrapper  m_rw_0_32_0_378(2,3,0,32,378,0,"");    //<Z4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_379(2,3,0,32,379,0,"");    //<U4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_380(2,3,0,32,380,0,"");    //<V4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_381(2,3,0,32,381,0,"");    //<W4脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_382(2,3,0,32,382,0,"");    //<X5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_383(2,3,0,32,383,0,"");    //<Y5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_384(2,3,0,32,384,0,"");    //<Z5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_385(2,3,0,32,385,0,"");    //<U5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_386(2,3,0,32,386,0,"");    //<V5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_387(2,3,0,32,387,0,"");    //<W5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_388(2,3,0,32,388,0,"");    //<X6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_389(2,3,0,32,389,0,"");    //<Y6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_390(2,3,0,32,390,0,"");    //<Z6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_391(2,3,0,32,391,0,"");    //<U6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_392(2,3,0,32,392,0,"");    //<V6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_393(2,3,0,32,393,0,"");    //<W6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_382(2,3,0,32,382,3,"");    //<X5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_383(2,3,0,32,383,3,"");    //<Y5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_384(2,3,0,32,384,3,"");    //<Z5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_385(2,3,0,32,385,3,"");    //<U5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_386(2,3,0,32,386,3,"");    //<V5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_387(2,3,0,32,387,3,"");    //<W5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_388(2,3,0,32,388,3,"");    //<X6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_389(2,3,0,32,389,3,"");    //<Y6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_390(2,3,0,32,390,3,"");    //<Z6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_391(2,3,0,32,391,3,"");    //<U6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_392(2,3,0,32,392,3,"");    //<V6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_393(2,3,0,32,393,3,"");    //<W6脉冲
 extern  const ICAddrWrapper  c_ro_0_32_3_900(1,1,0,32,900,3,"");    //<轴1当前输出脉冲位置当前输出脉冲位置
 extern  const ICAddrWrapper  c_ro_0_32_0_901(1,1,0,32,901,0,"");    //<轴1实际脉冲位置实际脉冲位置
 extern  const ICAddrWrapper  c_ro_0_16_0_902(1,1,0,16,902,0,"");   //<轴1速度百分比_当前速度速度百分比

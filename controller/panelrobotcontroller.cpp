@@ -714,7 +714,7 @@ void PanelRobotController::loadHostMachineConfigs()
 {
     ICRobotVirtualhost::AddReadConfigCommand(host_, s_rw_0_32_3_100.BaseAddr(), 28);
     ICRobotVirtualhost::AddReadConfigCommand(host_, 128, 28);
-    ICRobotVirtualhost::AddReadConfigCommand(host_, 156, 29);
+    ICRobotVirtualhost::AddReadConfigCommand(host_, 156, 30);
     connect(host_.data(),
             SIGNAL(QueryFinished(int , const QVector<quint32>& )),
             this,
@@ -765,7 +765,14 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
     }
     if(addr == 156)
     {
-        qDebug()<<v;
+        QList<QPair<int, quint32> > tmp;
+        for(int i = 0; i < v.size(); ++i)
+        {
+            tmp.append(qMakePair<int , quint32>(addr + i, v.at(i)));
+        }
+        ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
+        mc->SetBareMachineConfigs(tmp);
+        qDebug()<<"addr156:"<<addr<<v;
         disconnect(host_.data(),
                    SIGNAL(QueryFinished(int , const QVector<quint32>& )),
                    this,

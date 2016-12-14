@@ -809,6 +809,9 @@ public:
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
 
+    Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
+    Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)

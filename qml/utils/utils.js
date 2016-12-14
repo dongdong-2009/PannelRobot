@@ -42,3 +42,22 @@ function getValueFromBrackets(str){
     var end = str.indexOf(']');
     return str.slice(begin, end);
 }
+
+function parseCalibration(str){
+
+    var ret = [];
+    var m = str.match(/MoveAbsJ\s*\S*]/g);
+    if(m != null){
+        for(var i = 0, len = m.length; i < len; ++i){
+//            console.log(m[i]);
+            var d = (m[i].match(/[-]*\d+[.]+\d*/g));
+            ret.push({"m0":parseFloat(d[0]).toFixed(3),
+                      "m1":parseFloat(d[1]).toFixed(3),
+                      "m2":parseFloat(d[2]).toFixed(3),
+                      "m3":parseFloat(d[3]).toFixed(3),
+                      "m4":parseFloat(d[4]).toFixed(3),
+                      "m5":parseFloat(d[5]).toFixed(3)});
+        }
+    }
+    return ret;
+}

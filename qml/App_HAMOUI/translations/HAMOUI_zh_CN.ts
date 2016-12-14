@@ -1984,6 +1984,17 @@
     </message>
 </context>
 <context>
+    <name>ICFileSelector</name>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished">确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+</context>
+<context>
     <name>ICHCAddrEdit</name>
     <message>
         <source>startPos</source>
@@ -6224,6 +6235,14 @@ please chose!</source>
     <message>
         <source>Sync Replace</source>
         <translation>同步替换</translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load Calibration</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

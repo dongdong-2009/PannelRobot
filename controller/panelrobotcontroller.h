@@ -354,6 +354,8 @@ public:
         //        {
         //            ICRobotVirtualhost::SendMold(host_, ICRobotMold::CurrentMold()->ProgramToDataBuffer(0));
         //        }
+        if(ret.isEmpty())
+            modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
         return ErrInfoToJSON(ret);
     }
 
@@ -367,6 +369,8 @@ public:
         //        {
         //            ICRobotVirtualhost::SendMoldSub(host_, which, ICRobotMold::CurrentMold()->ProgramToDataBuffer(which));
         //        }
+        if(ret.isEmpty())
+            modifyConfigValue(ICAddr_System_Retain_11, ICRobotMold::CurrentMold()->CheckSum());
         return ErrInfoToJSON(ret);
     }
 
@@ -518,6 +522,7 @@ public:
     }
 
     Q_INVOKABLE bool saveCounterDef(quint32 id, const QString& name, quint32 current, quint32 target);
+    Q_INVOKABLE bool saveCounterCurrent(quint32 id, const QString& name, quint32 current, quint32 target);
     Q_INVOKABLE bool delCounterDef(quint32 id);
     Q_INVOKABLE QString counterDefs() const;
 
@@ -549,7 +554,7 @@ public:
         if(sendToHost)
         {
             sendMainProgramToHost();
-            for(int i = 0;  i<ICRobotMold::kSub8Prog; ++i)
+            for(int i = 0;  i<ICRobotMold::kSubEnd; ++i)
             {
                 sendSubProgramToHost(i);
             }
@@ -645,6 +650,11 @@ public:
         PullyData pD;
         pD.all = ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status33);
         return pD.b.type;
+    }
+
+    Q_INVOKABLE int getCoordAxis() const
+    {
+        return ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status34);
     }
 
     Q_INVOKABLE void setAutoRunningMode(int which, int mode)
@@ -794,9 +804,14 @@ public:
         ICSuperSettings().SetFactoryCode(fc);
     }
 
+    Q_INVOKABLE void sendToolCoord(int id,const QString& data);
+
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
+
+    Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
+    Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

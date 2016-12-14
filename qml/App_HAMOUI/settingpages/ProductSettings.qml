@@ -164,7 +164,7 @@ Item {
                     items: pData.useNoUseText
                     z:2
                     configNameWidth: program0.configNameWidth
-
+                    visible: false
                 }
 
             }

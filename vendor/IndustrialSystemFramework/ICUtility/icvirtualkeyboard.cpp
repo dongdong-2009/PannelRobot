@@ -168,9 +168,17 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
      {
          if(preeditString_.at(0) == '-')
              return;
-         preeditString_ = "-" + preeditString_;
-         ui->inputEdit->setText(preeditString_);
-         emit characterGenerated(preeditString_);
+         QString tmp = "-" + preeditString_;
+         int p = 0;
+         if(validator_.validate(tmp, p) == QValidator::Acceptable)
+         {
+             preeditString_ = "-" + preeditString_;
+             ui->inputEdit->setText(preeditString_);
+             emit characterGenerated(preeditString_);
+         }
+//         preeditString_ = "-" + preeditString_;
+//         ui->inputEdit->setText(preeditString_);
+//         emit characterGenerated(preeditString_);
          return;
      }
      int p = 0;

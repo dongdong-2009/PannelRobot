@@ -1151,6 +1151,11 @@ bool PanelRobotController::saveCounterDef(quint32 id, const QString &name, quint
     return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
 }
 
+bool PanelRobotController::saveCounterCurrent(quint32 id, const QString &name, quint32 current, quint32 target)
+{
+    return ICRobotMold::CurrentMold()->CreateCounter(id, name, current, target);
+}
+
 void PanelRobotController::sendToolCoord(int id,const QString& data)
 {
     QJson::Parser parser;

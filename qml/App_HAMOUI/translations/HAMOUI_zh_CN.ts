@@ -1949,7 +1949,7 @@
     </message>
     <message>
         <source>switchCoord</source>
-        <translation type="unfinished">坐标系转换</translation>
+        <translation>坐标系转换</translation>
     </message>
 </context>
 <context>
@@ -1987,11 +1987,11 @@
     <name>ICFileSelector</name>
     <message>
         <source>Ok</source>
-        <translation type="unfinished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -4024,7 +4024,7 @@
     </message>
     <message>
         <source>QK Configs</source>
-        <translation type="unfinished"></translation>
+        <translation>驱控参数</translation>
     </message>
     <message>
         <source>SafeArea Configs</source>
@@ -5112,46 +5112,46 @@ please chose!</source>
     </message>
     <message>
         <source>Adv</source>
-        <translation type="unfinished"></translation>
+        <translation>高级</translation>
     </message>
     <message>
         <source>Sp</source>
-        <translation type="unfinished"></translation>
+        <translation>简单</translation>
     </message>
     <message>
         <source>C Modify</source>
-        <translation type="unfinished"></translation>
+        <translation>修改确认</translation>
     </message>
 </context>
 <context>
     <name>QKConfigs</name>
     <message>
         <source>Axis</source>
-        <translation type="unfinished">轴</translation>
+        <translation>轴</translation>
     </message>
     <message>
         <source>Addr</source>
-        <translation type="unfinished">地址</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>数据</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation>写</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>读</translation>
     </message>
     <message>
         <source>Write EP</source>
-        <translation type="unfinished"></translation>
+        <translation>写EP</translation>
     </message>
     <message>
         <source>Read EP</source>
-        <translation type="unfinished"></translation>
+        <translation>读EP</translation>
     </message>
 </context>
 <context>
@@ -5458,7 +5458,7 @@ please chose!</source>
     </message>
     <message>
         <source>Axis1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>NO</source>
@@ -5562,7 +5562,7 @@ please chose!</source>
     </message>
     <message>
         <source>Axis2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>P1-C</source>
@@ -5662,7 +5662,7 @@ please chose!</source>
     </message>
     <message>
         <source>Axis3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>P1-E</source>
@@ -6238,11 +6238,11 @@ please chose!</source>
     </message>
     <message>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Load Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>载入标定点</translation>
     </message>
 </context>
 <context>

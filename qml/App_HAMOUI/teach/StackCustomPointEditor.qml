@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/stringhelper.js" as ICString
+import "../../utils/utils.js" as Utils
 
 MouseArea{
     id:instance
@@ -33,6 +34,7 @@ MouseArea{
     signal editConfirm(bool accept, variant points)
 
 
+
     Rectangle {
         id:container
         width: parent.width
@@ -41,6 +43,24 @@ MouseArea{
         border.width: 1
         border.color: "gray"
         color: "#A0A0F0"
+
+        ICFileSelector{
+            id:califileSelector
+            visible: false;
+            width: parent.width * 0.8
+            height: parent.height * 0.6
+            anchors.centerIn:  parent
+            z:10
+            onGotFileContent: {
+                pointModel.clear();
+                for(var i = 0, points = Utils.parseCalibration(content), len = points.length; i < len; ++i)
+                {
+                    pointModel.append({"pointName":qsTr("P") + i,
+                                      "pointPos":points[i]});
+                }
+
+            }
+        }
 
         Text{
             id:statistics
@@ -196,6 +216,19 @@ MouseArea{
         }
 
         ICButton{
+            id:loadCalibration
+            text: qsTr("Load Calibration")
+            width: button_setWorldPos.width
+            height: button_setWorldPos.height
+            anchors.bottom: saveBtn.top
+            anchors.bottomMargin: 20
+            anchors.left: leftContainer.left
+            onButtonClicked: {
+                califileSelector.visible = true;
+            }
+        }
+
+        ICButton{
             id:saveBtn
             text: qsTr("Save")
             width: button_setWorldPos.width
@@ -212,6 +245,8 @@ MouseArea{
                 editConfirm(true, points);
             }
         }
+
+
 
         Rectangle  {
             id:pointViewContainer

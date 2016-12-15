@@ -71,6 +71,7 @@ Item {
             text: qsTr("SafeArea Configs")
             icon: "../images/logo.png"
             enabled: false
+            visible: false
 
         }
 

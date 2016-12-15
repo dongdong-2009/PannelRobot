@@ -522,6 +522,7 @@ public:
     }
 
     Q_INVOKABLE bool saveCounterDef(quint32 id, const QString& name, quint32 current, quint32 target);
+    Q_INVOKABLE bool saveCounterCurrent(quint32 id, const QString& name, quint32 current, quint32 target);
     Q_INVOKABLE bool delCounterDef(quint32 id);
     Q_INVOKABLE QString counterDefs() const;
 
@@ -808,6 +809,9 @@ public:
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
+
+    Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
+    Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

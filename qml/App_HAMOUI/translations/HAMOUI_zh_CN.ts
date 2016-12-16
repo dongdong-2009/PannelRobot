@@ -972,6 +972,10 @@
         <source>Rel Point</source>
         <translation>引用点</translation>
     </message>
+    <message>
+        <source>Zero</source>
+        <translation type="unfinished">置零</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -1294,7 +1298,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation></translation>
+        <translation> </translation>
     </message>
 </context>
 <context>

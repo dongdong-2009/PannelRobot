@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../ICCustomElement"
 import "./teach/Teach.js" as Teach
 import "configs/AxisDefine.js" as AxisDefine
+import "../utils/utils.js" as Utils
 
 MouseArea{
     id:instance
@@ -38,6 +39,21 @@ MouseArea{
         border.width: 1
         border.color: "gray"
         color: "#A0A0F0"
+
+        ICFileSelector{
+            id:califileSelector
+            visible: false;
+            width: parent.width * 0.8
+            height: parent.height * 0.6
+            anchors.centerIn:  parent
+            z:10
+            onGotFileContent: {
+                for(var i = 0, points = Utils.parseCalibration(content), len = points.length; i < len; ++i)
+                {
+                    var point = Teach.definedPoints.addNewPoint("", points[i], Teach.DefinePoints.kPT_Free);
+                }
+            }
+        }
 
         function onPointsCleared(){
             pointModel.clear();
@@ -195,6 +211,16 @@ MouseArea{
                 //            y:button_newLocus.y + button_newLocus.height + 2
                 onButtonClicked: {
                     newPointHelper(Teach.DefinePoints.kPT_Offset);
+                }
+            }
+
+            ICButton{
+                id:loadCalibration
+                text: qsTr("Load Calibration")
+                width: button_setWorldPos.width
+                height: 25
+                onButtonClicked: {
+                    califileSelector.visible = true;
                 }
             }
         }

@@ -587,10 +587,10 @@ void PanelRobotController::InitMainView()
 
 }
 
-QString scanHelper(const QString& filter, const QString &path = ICAppSettings::UsbPath)
+QString scanHelper(const QString& filter, const QString &path = ICAppSettings::UsbPath, QDir::Filters filters = QDir::NoFilter)
 {
     QDir usb(path);
-    QStringList updaters = usb.entryList(QStringList()<<filter);
+    QStringList updaters = usb.entryList(QStringList()<<filter, filters);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
     {
@@ -1847,4 +1847,29 @@ void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
             this,
             SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
             Qt::UniqueConnection);
+}
+
+QString PanelRobotController::scanUSBFiles(const QString &filter) const
+{
+    return scanHelper(QString("%1").arg(filter), ICAppSettings::UsbPath, QDir::Files);
+}
+
+QString PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const
+{
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+    QFile f(filePath);
+    QByteArray ret;
+    if(f.open(isTextOnly ? (QFile::ReadOnly | QFile::Text) : QFile::ReadOnly))
+    {
+//        ret.resize(f.size());
+//        f.read(ret.data(), f.size());
+        ret = f.readAll();
+        f.close();
+        if(isTextOnly)
+        {
+            if(ret.contains(char(0)))
+                ret = "";
+        }
+    }
+    return QString(ret);
 }

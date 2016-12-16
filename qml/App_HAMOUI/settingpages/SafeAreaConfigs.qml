@@ -1116,69 +1116,6 @@ Item {
                 }
             }
         }
-        Component.onCompleted:{
-            if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 0){
-                axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
-                axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
-                axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
-
-                minPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
-                minPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;
-                minPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_232")/1000;
-                part2MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_233")/1000;
-                part2MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_234")/1000;
-                part2MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_235")/1000;
-                part3MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_236")/1000;
-                part3MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_237")/1000;
-                part3MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_238")/1000;
-                part4MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_239")/1000;
-                part4MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_240")/1000;
-                part4MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_241")/1000;
-                part5MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_242")/1000;
-                part5MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_243")/1000;
-                part5MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_244")/1000;
-                part6MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_245")/1000;
-                part6MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_246")/1000;
-                part6MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_247")/1000;
-
-                maxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_248")/1000;
-                maxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_249")/1000;
-                maxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_250")/1000;
-                part2MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_251")/1000;
-                part2MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_252")/1000;
-                part2MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_253")/1000;
-                part3MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_254")/1000;
-                part3MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_255")/1000;
-                part3MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_256")/1000;
-                part4MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_257")/1000;
-                part4MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_258")/1000;
-                part4MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_259")/1000;
-                part5MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_260")/1000;
-                part5MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_261")/1000;
-                part5MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_262")/1000;
-                part6MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_263")/1000;
-                part6MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_264")/1000;
-                part6MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_265")/1000;
-
-
-                safeSignalSet.configValue= panelRobotController.getConfigValue("s_rw_6_7_0_228");
-                safeSignal2Set.configValue= panelRobotController.getConfigValue("s_rw_13_7_0_228");
-                safeSignal3Set.configValue= panelRobotController.getConfigValue("s_rw_20_7_0_228");
-                safeSignal4Set.configValue= panelRobotController.getConfigValue("s_rw_1_7_0_229");
-                safeSignal5Set.configValue= panelRobotController.getConfigValue("s_rw_8_7_0_229");
-                safeSignal6Set.configValue= panelRobotController.getConfigValue("s_rw_15_7_0_229");
-
-                usePart1.isChecked = panelRobotController.getConfigValue("s_rw_27_1_0_228");
-                usePart2.isChecked = panelRobotController.getConfigValue("s_rw_28_1_0_228");
-                usePart3.isChecked = panelRobotController.getConfigValue("s_rw_29_1_0_228");
-                usePart4.isChecked = panelRobotController.getConfigValue("s_rw_30_1_0_228");
-                usePart5.isChecked = panelRobotController.getConfigValue("s_rw_31_1_0_228");
-                usePart6.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_229");
-
-
-                useIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
-            }
-        }
     }
 
     Item {
@@ -1370,22 +1307,80 @@ Item {
                 text: qsTr(" ")
             }
         }
-        Component.onCompleted:{
-            if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 1){
-                safe2Axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
-                safe2Axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
-                safe2Axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
-                safe2MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
-                safe2MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_248")/1000;
-                safe2MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;
-                safe2MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_249")/1000;
-                safe2UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
-            }
-        }
     }
 
 
     Component.onCompleted:{
+        axis1Set.onAxisDefinesChanged();
+        if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 0){
+            axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
+            axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
+            axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+
+            minPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
+            minPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;
+            minPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_232")/1000;
+            part2MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_233")/1000;
+            part2MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_234")/1000;
+            part2MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_235")/1000;
+            part3MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_236")/1000;
+            part3MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_237")/1000;
+            part3MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_238")/1000;
+            part4MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_239")/1000;
+            part4MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_240")/1000;
+            part4MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_241")/1000;
+            part5MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_242")/1000;
+            part5MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_243")/1000;
+            part5MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_244")/1000;
+            part6MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_245")/1000;
+            part6MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_246")/1000;
+            part6MinPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_247")/1000;
+
+            maxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_248")/1000;
+            maxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_249")/1000;
+            maxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_250")/1000;
+            part2MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_251")/1000;
+            part2MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_252")/1000;
+            part2MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_253")/1000;
+            part3MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_254")/1000;
+            part3MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_255")/1000;
+            part3MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_256")/1000;
+            part4MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_257")/1000;
+            part4MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_258")/1000;
+            part4MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_259")/1000;
+            part5MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_260")/1000;
+            part5MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_261")/1000;
+            part5MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_262")/1000;
+            part6MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_263")/1000;
+            part6MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_264")/1000;
+            part6MaxPos3Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_265")/1000;
+
+
+            safeSignalSet.configValue= panelRobotController.getConfigValue("s_rw_6_7_0_228");
+            safeSignal2Set.configValue= panelRobotController.getConfigValue("s_rw_13_7_0_228");
+            safeSignal3Set.configValue= panelRobotController.getConfigValue("s_rw_20_7_0_228");
+            safeSignal4Set.configValue= panelRobotController.getConfigValue("s_rw_1_7_0_229");
+            safeSignal5Set.configValue= panelRobotController.getConfigValue("s_rw_8_7_0_229");
+            safeSignal6Set.configValue= panelRobotController.getConfigValue("s_rw_15_7_0_229");
+
+            usePart1.isChecked = panelRobotController.getConfigValue("s_rw_27_1_0_228");
+            usePart2.isChecked = panelRobotController.getConfigValue("s_rw_28_1_0_228");
+            usePart3.isChecked = panelRobotController.getConfigValue("s_rw_29_1_0_228");
+            usePart4.isChecked = panelRobotController.getConfigValue("s_rw_30_1_0_228");
+            usePart5.isChecked = panelRobotController.getConfigValue("s_rw_31_1_0_228");
+            usePart6.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_229");
+            useIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
+        }
+        else if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 1){
+            safe2Axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
+            safe2Axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
+            safe2Axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+            safe2MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
+            safe2MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_248")/1000;
+            safe2MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;
+            safe2MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_249")/1000;
+            safe2UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
+        }
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});
         buttonModel.append({"typename":safe2.typename,"id":safe2.type_id});
         pageContainer.addPage(safe1);
@@ -1396,4 +1391,3 @@ Item {
         view.currentIndex = type;
     }
 }
-

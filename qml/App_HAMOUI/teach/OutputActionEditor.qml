@@ -14,7 +14,7 @@ Item {
         "valve3",
         "valve4",
         "valve5",
-        "valve6",
+//        "valve6",
         "valve8",
         "valve9",
         "valve10",

@@ -699,6 +699,7 @@ var valveDefines = {
 
 function combineValveDefines(customValves){
     var vd;
+    console.log("customValves",customValves);
     if(customValves.length === 0) return;
     customValves = JSON.parse(customValves);
     if(customValves.length === 0) return;

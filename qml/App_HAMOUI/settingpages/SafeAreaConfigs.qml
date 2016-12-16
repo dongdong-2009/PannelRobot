@@ -182,6 +182,7 @@ Item {
                     popupHeight: 120
                     function onAxisDefinesChanged(){
                         var axis = AxisDefine.usedAxisNameList();
+                        console.log("axis:",JSON.stringify(axis));
                         axis.unshift(qsTr("NO"));
                         axis1Set.items = axis;
                         axis2Set.items = axis;
@@ -1113,6 +1114,7 @@ Item {
         }
         Component.onCompleted:{
             if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 0){
+                console.log("axis1Set,axis1Set",panelRobotController.getConfigValue("s_rw_0_4_0_227"),JSON.stringify(axis1Set.items));
                 axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
                 axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
                 axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
@@ -1371,6 +1373,7 @@ Item {
 
 
     Component.onCompleted:{
+        axis1Set.onAxisDefinesChanged();
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});
         buttonModel.append({"typename":safe2.typename,"id":safe2.type_id});
         pageContainer.addPage(safe1);

@@ -707,6 +707,7 @@ function combineValveDefines(customValves){
         if(isNormalYType(vd))
             continue;
         for(var i = 0, len = customValves.length; i < len; ++i){
+            if(customValves[i] == null)continue;
             if(customValves[i].hasOwnProperty("id")){
                 if(vd.id == customValves[i].id){
                     vd.x1Dir = customValves[i].x1Dir || 0;

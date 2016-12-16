@@ -12,7 +12,8 @@ union SpeedControlActionData
         quint32 id:5;
         quint32 dir:1;
         quint32 stop:1;
-        quint32 rev:25;
+        quint32 zero:1;
+        quint32 rev:24;
     }b;
     quint32 all;
 };
@@ -92,14 +93,16 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     bool isSignalStop = v->value("signalStopEn", false).toBool();
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
+    bool isZero = v->value("zero", false).toBool();
     bool isRel = v->value("rel", false).toBool();
     QVariantList pts = v->value("points").toList();
-    if(speedMode != 0 || isStop)
+    if(speedMode != 0 || isStop||isZero)
     {
         SpeedControlActionData spData;
         spData.b.id = v->value("axis", 0).toInt();
         spData.b.dir = speedMode == 1 ? 1 : 0;
         spData.b.stop = isStop ? 0 : 1;
+        spData.b.zero = isZero ? 1 : 0;
         spData.b.rev = 0;
         item.append(spData.all);
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));

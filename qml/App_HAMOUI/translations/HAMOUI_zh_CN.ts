@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -535,91 +535,91 @@
     </message>
     <message>
         <source>ALARM_UNSAFEAREA_PART1</source>
-        <translation type="unfinished"></translation>
+        <translation>非安全区区域1报警</translation>
     </message>
     <message>
         <source>ALARM_UNSAFEAREA_PART2</source>
-        <translation type="unfinished"></translation>
+        <translation>非安全区区域2报警</translation>
     </message>
     <message>
         <source>ALARM_UNSAFEAREA_PART3</source>
-        <translation type="unfinished"></translation>
+        <translation>非安全区区域3报警</translation>
     </message>
     <message>
         <source>ALARM_UNSAFEAREA_PART4</source>
-        <translation type="unfinished"></translation>
+        <translation>非安全区区域4报警</translation>
     </message>
     <message>
         <source>ALARM_UNSAFEAREA_PART5</source>
-        <translation type="unfinished"></translation>
+        <translation>非安全区区域5报警</translation>
     </message>
     <message>
         <source>ALARM_UNSAFEAREA_PART6</source>
-        <translation type="unfinished"></translation>
+        <translation>非安全区区域6报警</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_INIT_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，上电初始化失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_EEPROM_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，EEPROM故障</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_ADC_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，A/D转换器故障</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_EXECTM_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，系统运算引擎超时</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT1</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，散热器过热</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OV_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，主电源过压</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_LV_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，主电源欠压</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_MAIN_POWER_OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，主电源关断</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_GATE_KILL_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，IGBT过流</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT2</source>
-        <translation type="unfinished"></translation>
+        <translation>故障，IGBT过热</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OVER_LD_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障：过载</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OVER_SPD_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障：超速</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OVER_FRQ_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障：位置脉频率过高</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_POS_ERROR_OVER_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障：位置偏差过大</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_MTR_ENC_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障：DSP同步故障</translation>
     </message>
     <message>
         <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
-        <translation type="unfinished"></translation>
+        <translation>故障：过流故障</translation>
     </message>
 </context>
 <context>
@@ -745,23 +745,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -769,11 +769,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1894,11 +1894,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -5412,7 +5412,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5444,11 +5444,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -7388,11 +7388,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="vanished">设为点5</translation>
+        <translation>设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="vanished">设为点6</translation>
+        <translation>设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

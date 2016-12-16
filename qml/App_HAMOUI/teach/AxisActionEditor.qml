@@ -50,6 +50,7 @@ Item {
                                                            fastStop.isChecked,
                                                            speedMode,
                                                            stop.isChecked,
+                                                           zero.isChecked,
                                                            rel.isChecked,
                                                            relPoint.isChecked ? axisActionInfo.point : null));
                 }
@@ -198,7 +199,12 @@ Item {
                     configValue: -1
                     inputWidth: 100
                     z:2
-                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                    enabled: !(earlyEnd.isChecked ||
+                               earlyEndSpeedPos.isChecked ||
+                               speedPPStart.isChecked ||
+                               speedRPStart.isChecked ||
+                               stop.isChecked||
+                               zero.isChecked)
                     configNameWidth: earlyEnd.configNameWidth
 
                     popupMode: 1
@@ -247,7 +253,7 @@ Item {
                             configValue: "0"
                             inputWidth: 60
                             configNameWidth: 140
-                            enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                            enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked||zero.isChecked)
                         }
                         Row{
                             spacing: 4
@@ -296,6 +302,11 @@ Item {
                             ICCheckBox{
                                 id:stop
                                 text:qsTr("Stop")
+                                enabled: speedPPStart.enabled
+                            }
+                            ICCheckBox{
+                                id:zero
+                                text:qsTr("Zero")
                                 enabled: speedPPStart.enabled
                             }
                         }

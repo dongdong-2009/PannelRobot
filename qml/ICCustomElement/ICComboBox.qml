@@ -19,6 +19,10 @@ Rectangle {
         return items[index];
     }
 
+    function setItemVisible(index, vi){
+        itemModel.setProperty(index, "vis", vi);
+    }
+
     width: 100
     height: 24
 
@@ -77,6 +81,7 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
                 x:4
                 font.pixelSize: contentFontPixelSize
+                visible: vis
                 MouseArea{
                     height: itemHeight
                     width: view.width
@@ -134,7 +139,7 @@ Rectangle {
     onItemsChanged: {
         itemModel.clear();
         for(var i = 0; i < items.length; ++i){
-            itemModel.append({"index": i, "name":items[i]})
+            itemModel.append({"index": i, "name":items[i], "vis":true})
         }
     }
     MouseArea{

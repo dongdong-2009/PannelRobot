@@ -807,7 +807,6 @@ Item {
                     property variant configAddrs: ["s_rw_0_16_0_221","s_rw_16_16_0_221","s_rw_0_16_0_222",
                         "s_rw_16_16_0_222","s_rw_0_16_0_223","s_rw_16_16_0_223","s_rw_0_16_0_224","s_rw_16_16_0_224"]
                     unit: qsTr("a")
-                    max:500
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                 }

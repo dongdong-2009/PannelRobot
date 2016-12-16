@@ -1312,10 +1312,13 @@ Item {
 
     Component.onCompleted:{
         axis1Set.onAxisDefinesChanged();
+//        console.log("axis1Set",JSON.stringify(axis1Set.items));
         if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 0){
             axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
             axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
             axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+//            console.log("axis1Set",JSON.stringify(axis1Set.items));
+
 
             minPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
             minPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;

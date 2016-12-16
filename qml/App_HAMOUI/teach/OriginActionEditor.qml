@@ -45,6 +45,7 @@ Rectangle {
     }
 
     Grid{
+        id:axisView
         columns: 2
         rows: 5
         spacing: 10
@@ -125,6 +126,12 @@ Rectangle {
         axis.push({"axisItem":m5Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
         axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
         axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
+
+
+        for(var i=0;i<7;++i){
+            axis[i].axisItem.setTypeVisible(0,false);
+            axis[i].axisItem.setTypeVisible(1,false);
+        }
 
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(continer);

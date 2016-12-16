@@ -216,6 +216,7 @@ MouseArea{
 
             ICButton{
                 id:loadCalibration
+                visible: false
                 text: qsTr("Load Calibration")
                 width: button_setWorldPos.width
                 height: 25

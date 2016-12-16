@@ -257,7 +257,7 @@ void PanelRobotController::InitMachineConfig_()
 {
     ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
-    machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
+    machineConfig->LoadMachineConfig("kSttLathe_6p");
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
     //    OnNeedToInitHost();
 }

@@ -55,7 +55,7 @@ Row{
         id:ps
         width: editorWidth
         visible: true
-        currentIndex: 0
+        currentIndex: 2
         popupMode: 1
     }
     ICLineEdit{

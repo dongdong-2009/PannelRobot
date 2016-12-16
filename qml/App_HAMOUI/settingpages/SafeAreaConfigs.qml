@@ -10,7 +10,6 @@ Item {
         "c_ro_0_32_3_912","c_ro_0_32_3_916","c_ro_0_32_3_920"]
     function showCurrentSafeArea(which){
         panelRobotController.setConfigValue("s_rw_1_5_0_228",which);
-        panelRobotController.syncConfigs();
     }
     ListModel{
         id:buttonModel
@@ -31,7 +30,6 @@ Item {
                 onClicked: {
                     view.currentIndex = index;
                     pageContainer.setCurrentIndex(index);
-                    showCurrentSafeArea(index);
                 }
             }
         }
@@ -67,6 +65,74 @@ Item {
             height: parent.height
             smooth: true
         }
+        ICButton{
+            id:confirmBtn1
+            text:qsTr("confirmBtn")
+            anchors.right: safeAreaPic1.right
+            anchors.top:safeAreaPic1.top
+            height: useIt.height
+            onButtonClicked: {
+                showCurrentSafeArea(0);
+                axis1Set.onValueChanged();
+                axis2Set.onValueChanged();
+                axis3Set.onValueChanged();
+
+                minPos1Set.onValueChanged();
+                minPos2Set.onValueChanged();
+                minPos3Set.onValueChanged();
+                part2MinPos1Set.onValueChanged();
+                part2MinPos2Set.onValueChanged();
+                part2MinPos3Set.onValueChanged();
+                part3MinPos1Set.onValueChanged();
+                part3MinPos2Set.onValueChanged();
+                part3MinPos3Set.onValueChanged();
+                part4MinPos1Set.onValueChanged();
+                part4MinPos2Set.onValueChanged();
+                part4MinPos3Set.onValueChanged();
+                part5MinPos1Set.onValueChanged();
+                part5MinPos2Set.onValueChanged();
+                part5MinPos3Set.onValueChanged();
+                part6MinPos1Set.onValueChanged();
+                part6MinPos2Set.onValueChanged();
+                part6MinPos3Set.onValueChanged();
+
+                maxPos1Set.onValueChanged();
+                maxPos2Set.onValueChanged();
+                maxPos3Set.onValueChanged();
+                part2MaxPos1Set.onValueChanged();
+                part2MaxPos2Set.onValueChanged();
+                part2MaxPos3Set.onValueChanged();
+                part3MaxPos1Set.onValueChanged();
+                part3MaxPos2Set.onValueChanged();
+                part3MaxPos3Set.onValueChanged();
+                part4MaxPos1Set.onValueChanged();
+                part4MaxPos2Set.onValueChanged();
+                part4MaxPos3Set.onValueChanged();
+                part5MaxPos1Set.onValueChanged();
+                part5MaxPos2Set.onValueChanged();
+                part5MaxPos3Set.onValueChanged();
+                part6MaxPos1Set.onValueChanged();
+                part6MaxPos2Set.onValueChanged();
+                part6MaxPos3Set.onValueChanged();
+
+                safeSignalSet.onValueChanged();
+                safeSignal2Set.onValueChanged();
+                safeSignal3Set.onValueChanged();
+                safeSignal4Set.onValueChanged();
+                safeSignal5Set.onValueChanged();
+                safeSignal6Set.onValueChanged();
+
+                usePart1.onValueChanged();
+                usePart2.onValueChanged();
+                usePart3.onValueChanged();
+                usePart4.onValueChanged();
+                usePart5.onValueChanged();
+                usePart6.onValueChanged();
+
+                useIt.onValueChanged();
+                panelRobotController.syncConfigs();
+            }
+        }
         ICFlickable{
             id:configContent
 
@@ -82,6 +148,16 @@ Item {
                 id:content
                 columns: 2
                 spacing: 5
+                ICCheckBox{
+                    id:useIt
+                    configName: qsTr("Use it?")
+                    function onValueChanged(){
+                        panelRobotController.setConfigValue("s_rw_0_1_0_228",useIt.isChecked ? 1 : 0);
+                    }
+                }
+                Text {
+                    text: qsTr(" ")
+                }
                 ICConfigEdit{
                     id:safeSignalSet
                     inputWidth:30
@@ -182,7 +258,6 @@ Item {
                     popupHeight: 120
                     function onAxisDefinesChanged(){
                         var axis = AxisDefine.usedAxisNameList();
-                        console.log("axis:",JSON.stringify(axis));
                         axis.unshift(qsTr("NO"));
                         axis1Set.items = axis;
                         axis2Set.items = axis;
@@ -1039,82 +1114,10 @@ Item {
                             part6MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
                     }
                 }
-
-                ICCheckBox{
-                    id:useIt
-                    configName: qsTr("Use it?")
-                    onClicked: {
-                        if(useIt.isChecked){
-                            safe2UseIt.isChecked = 0;
-                            axis1Set.onValueChanged();
-                            axis2Set.onValueChanged();
-                            axis3Set.onValueChanged();
-
-                            minPos1Set.onValueChanged();
-                            minPos2Set.onValueChanged();
-                            minPos3Set.onValueChanged();
-                            part2MinPos1Set.onValueChanged();
-                            part2MinPos2Set.onValueChanged();
-                            part2MinPos3Set.onValueChanged();
-                            part3MinPos1Set.onValueChanged();
-                            part3MinPos2Set.onValueChanged();
-                            part3MinPos3Set.onValueChanged();
-                            part4MinPos1Set.onValueChanged();
-                            part4MinPos2Set.onValueChanged();
-                            part4MinPos3Set.onValueChanged();
-                            part5MinPos1Set.onValueChanged();
-                            part5MinPos2Set.onValueChanged();
-                            part5MinPos3Set.onValueChanged();
-                            part6MinPos1Set.onValueChanged();
-                            part6MinPos2Set.onValueChanged();
-                            part6MinPos3Set.onValueChanged();
-
-                            maxPos1Set.onValueChanged();
-                            maxPos2Set.onValueChanged();           
-                            maxPos3Set.onValueChanged();
-                            part2MaxPos1Set.onValueChanged(); 
-                            part2MaxPos2Set.onValueChanged();
-                            part2MaxPos3Set.onValueChanged();
-                            part3MaxPos1Set.onValueChanged();
-                            part3MaxPos2Set.onValueChanged();
-                            part3MaxPos3Set.onValueChanged();
-                            part4MaxPos1Set.onValueChanged();
-                            part4MaxPos2Set.onValueChanged();
-                            part4MaxPos3Set.onValueChanged();
-                            part5MaxPos1Set.onValueChanged();
-                            part5MaxPos2Set.onValueChanged();
-                            part5MaxPos3Set.onValueChanged();
-                            part6MaxPos1Set.onValueChanged();
-                            part6MaxPos2Set.onValueChanged();
-                            part6MaxPos3Set.onValueChanged();
-
-                            safeSignalSet.onValueChanged();
-                            safeSignal2Set.onValueChanged();
-                            safeSignal3Set.onValueChanged();
-                            safeSignal4Set.onValueChanged();
-                            safeSignal5Set.onValueChanged();
-                            safeSignal6Set.onValueChanged();
-
-                            usePart1.onValueChanged();
-                            usePart2.onValueChanged();
-                            usePart3.onValueChanged();
-                            usePart4.onValueChanged();
-                            usePart5.onValueChanged();
-                            usePart6.onValueChanged();
-
-                        }
-                        panelRobotController.setConfigValue("s_rw_0_1_0_228",useIt.isChecked ? 1 : 0);
-                        panelRobotController.syncConfigs();
-                    }
-                }
-                Text {
-                    text: qsTr(" ")
-                }
             }
         }
         Component.onCompleted:{
             if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 0){
-                console.log("axis1Set,axis1Set",panelRobotController.getConfigValue("s_rw_0_4_0_227"),JSON.stringify(axis1Set.items));
                 axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
                 axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
                 axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
@@ -1190,6 +1193,26 @@ Item {
             source: "../images/safe_area2.png"
             width: parent.width-300
             height: parent.height
+            smooth: true
+        }
+        ICButton{
+            id:confirmBtn2
+            text:qsTr("confirmBtn")
+            anchors.right: safeAreaPic2.right
+            anchors.top:safeAreaPic2.top
+            height: safe2UseIt.height
+            onButtonClicked: {
+                showCurrentSafeArea(1);
+                safe2Axis1Set.onValueChanged();
+                safe2Axis2Set.onValueChanged();
+                safe2Axis3Set.onValueChanged();
+                safe2MinPos1Set.onValueChanged();
+                safe2MaxPos1Set.onValueChanged();
+                safe2MinPos2Set.onValueChanged();
+                safe2MaxPos2Set.onValueChanged();
+                safe2UseIt.onValueChanged();
+                panelRobotController.syncConfigs();
+            }
         }
         Grid{
             columns: 2
@@ -1198,6 +1221,17 @@ Item {
             anchors.leftMargin: 5
             width:300
             height:parent.height
+
+            ICCheckBox{
+                id:safe2UseIt
+                configName: qsTr("Use it?")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_0_1_0_228",safe2UseIt.isChecked ? 1 : 0);
+                }
+            }
+            Text {
+                text: qsTr(" ")
+            }
 
             ICComboBoxConfigEdit{
                 id:safe2Axis1Set
@@ -1330,27 +1364,6 @@ Item {
                 popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
-                }
-            }
-            Text {
-                text: qsTr(" ")
-            }
-            ICCheckBox{
-                id:safe2UseIt
-                configName: qsTr("Use it?")
-                onClicked: {
-                    if(safe2UseIt.isChecked){
-                        useIt.isChecked = 0;
-                        safe2Axis1Set.onValueChanged();
-                        safe2Axis2Set.onValueChanged();
-                        safe2Axis3Set.onValueChanged();
-                        safe2MinPos1Set.onValueChanged();
-                        safe2MaxPos1Set.onValueChanged();
-                        safe2MinPos2Set.onValueChanged();
-                        safe2MaxPos2Set.onValueChanged();
-                    }
-                    panelRobotController.setConfigValue("s_rw_0_1_0_228",safe2UseIt.isChecked ? 1 : 0);
-                    panelRobotController.syncConfigs();
                 }
             }
             Text {

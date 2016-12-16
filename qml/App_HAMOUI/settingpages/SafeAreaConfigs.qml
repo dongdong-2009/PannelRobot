@@ -1386,7 +1386,6 @@ Item {
 
 
     Component.onCompleted:{
-        axis1Set.onAxisDefinesChanged();
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});
         buttonModel.append({"typename":safe2.typename,"id":safe2.type_id});
         pageContainer.addPage(safe1);

@@ -706,12 +706,14 @@ function combineValveDefines(customValves){
         vd = valveDefines[v];
         if(isNormalYType(vd))
             continue;
-        for(var i = 0; i < customValves.length; ++i){
-            if(vd.id == customValves[i].id){
-                vd.x1Dir = customValves[i].x1Dir;
-                vd.x2Dir = customValves[i].x2Dir;
-                vd.time = customValves[i].time;
-                vd.autoCheck = customValves[i].autoCheck;
+        for(var i = 0, len = customValves.length; i < len; ++i){
+            if(customValves[i].hasOwnProperty("id")){
+                if(vd.id == customValves[i].id){
+                    vd.x1Dir = customValves[i].x1Dir || 0;
+                    vd.x2Dir = customValves[i].x2Dir || 0;
+                    vd.time = customValves[i].time || 0.00;
+                    vd.autoCheck = customValves[i].autoCheck || false;
+                }
             }
         }
     }

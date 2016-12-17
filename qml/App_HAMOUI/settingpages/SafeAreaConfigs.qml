@@ -251,11 +251,12 @@ Item {
                 }
                 ICComboBoxConfigEdit{
                     id:axis1Set
-                    z:3
+                    z:1
                     configName:qsTr("Axis1")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
                     popupHeight: 120
+                    popupMode: 1
                     function onAxisDefinesChanged(){
                         var axis = AxisDefine.usedAxisNameList();
                         axis.unshift(qsTr("NO"));
@@ -552,6 +553,7 @@ Item {
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
                     popupHeight: 120
+                    popupMode: 1
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
                     }
@@ -833,11 +835,12 @@ Item {
 
                 ICComboBoxConfigEdit{
                     id:axis3Set
-                    z:1
+                    z:3
                     configName:qsTr("Axis3")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
                     popupHeight: 120
+                    popupMode: 1
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
                     }

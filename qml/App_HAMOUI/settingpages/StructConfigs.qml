@@ -76,6 +76,7 @@ Item {
         Grid{
 //            columns: 2
             id:structContainer
+            visible: false
             anchors.top: structGuideImg.bottom
             anchors.topMargin: 12
             rows:4

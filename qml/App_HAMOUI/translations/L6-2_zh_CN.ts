@@ -6939,7 +6939,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation type="unfinished">短原点</translation>
     </message>
     <message>
         <source>origin</source>
@@ -7139,7 +7139,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation type="unfinished">自动设定原点加开关 {4?}</translation>
+        <translation>长原点</translation>
     </message>
 </context>
 <context>

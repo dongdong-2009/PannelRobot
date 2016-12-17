@@ -50,9 +50,9 @@ Item {
                                                            fastStop.isChecked,
                                                            speedMode,
                                                            stop.isChecked,
-                                                           zero.isChecked,
                                                            rel.isChecked,
-                                                           relPoint.isChecked ? axisActionInfo.point : null));
+                                                           relPoint.isChecked ? axisActionInfo.point : null,
+                                                           zero.isChecked));
                 }
                 else{
                     ret.push(Teach.generateAxisPneumaticAction(axisActionInfo.ps == 0 ? editor.psOFF : editor.psON,

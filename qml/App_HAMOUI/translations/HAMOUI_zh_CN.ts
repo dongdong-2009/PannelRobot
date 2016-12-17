@@ -5399,6 +5399,10 @@ please chose!</source>
         <source>Clear Search</source>
         <translation>清除搜索</translation>
     </message>
+    <message>
+        <source>Ret Up</source>
+        <translation>返回上层</translation>
+    </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>

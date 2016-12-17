@@ -83,6 +83,7 @@ Rectangle {
                 PropertyChanges { target: newRecord; enabled:false;}
                 PropertyChanges { target: loadRecord; enabled:false;}
                 PropertyChanges { target: copyRecord; enabled:false;}
+                PropertyChanges { target: delRecord; enabled:false;}
                 PropertyChanges { target: exportRecord; visible:true;}
                 PropertyChanges { target: recordsView; model:recordsModel;isSelectable:true;}
             },
@@ -92,6 +93,7 @@ Rectangle {
                 PropertyChanges { target: loadRecord; enabled:false;}
                 PropertyChanges { target: copyRecord; enabled:false;}
                 PropertyChanges { target: delRecord; enabled:false;}
+                PropertyChanges { target: returnUp; visible:false;}
                 PropertyChanges { target: recordsView; model:backupPackageModel;}
             },
             State {
@@ -101,6 +103,7 @@ Rectangle {
                 PropertyChanges { target: copyRecord; enabled:false;}
                 PropertyChanges { target: delRecord; enabled:false;}
                 PropertyChanges { target: importRecord; visible:true;}
+                PropertyChanges { target: returnUp; visible:true;}
                 PropertyChanges { target: viewBackupRecords; visible:false;}
                 PropertyChanges {
                     target: recordsView;
@@ -276,6 +279,7 @@ Rectangle {
                         onVisibleChanged: {
                             if(!visible){
                                 isChecked = false;
+                                recordsView.model.setProperty(index, "isSelected", false);
                             }
                         }
 
@@ -481,6 +485,15 @@ Rectangle {
                         usbModel.append(recordsView.createRecordItem(molds[i], undefined));
                     }
                     recordPage.state = "openMode";
+                }
+            }
+            ICButton{
+                id:returnUp
+                text: qsTr("Ret Up")
+                height: loadRecord.height
+                visible: importFromUsb.isChecked
+                onButtonClicked: {
+                    recordPage.state = "importMode";
                 }
             }
         }

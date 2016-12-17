@@ -533,6 +533,94 @@
         <source>5020</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_INIT_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_EEPROM_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ADC_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_EXECTM_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OV_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_LV_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_MAIN_POWER_OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_GATE_KILL_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_LD_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_SPD_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_FRQ_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_POS_ERROR_OVER_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_MTR_ENC_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
@@ -5290,6 +5378,10 @@ please chose!</source>
         <source>Clear Search</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Ret Up</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>
@@ -5790,6 +5882,10 @@ please chose!</source>
     <message>
         <source>P2-A Set</source>
         <translation>A设入</translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7040,6 +7136,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Normal</source>
         <translation>一般</translation>
+    </message>
+    <message>
+        <source>Type 4</source>
+        <translation type="unfinished">自动设定原点加开关 {4?}</translation>
     </message>
 </context>
 <context>

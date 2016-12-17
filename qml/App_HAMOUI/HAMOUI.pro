@@ -11,6 +11,9 @@ teach/extents/*.qml \
 teach/extents/*.js
 }
 
+OTHER_FILES += \
+    configs/IOConfigs.js
+
 
 
 

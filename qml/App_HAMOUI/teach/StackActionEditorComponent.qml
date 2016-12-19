@@ -335,9 +335,8 @@ Item {
             }
             ICComboBoxConfigEdit{
                 id:seq
-//                y: 112
-//                x:404
-                anchors.left: dir2.right
+                anchors.left: parent.left
+                anchors.leftMargin: dir0.width + 4 + dir1.width +4 + dir2.width +4
                 configName: qsTr("Sequence")
                 items: ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X", qsTr("Only X"), qsTr("Only Y"), qsTr("Only Z")]
                 popupMode: 1

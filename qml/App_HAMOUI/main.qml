@@ -740,7 +740,18 @@ Rectangle {
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
 
-        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_6_0_184"));
+        var axisNum = panelRobotController.getConfigValue("s_rw_16_6_0_184");
+        AxisDefine.changeAxisNum(axisNum);
+        var m = [];
+        m[0] = panelRobotController.getConfigValue("s_rw_31_1_0_104");
+        m[1] = panelRobotController.getConfigValue("s_rw_31_1_0_111");
+        m[2] = panelRobotController.getConfigValue("s_rw_31_1_0_118");
+        m[3] = panelRobotController.getConfigValue("s_rw_31_1_0_125");
+        m[4] = panelRobotController.getConfigValue("s_rw_31_1_0_132");
+        m[5] = panelRobotController.getConfigValue("s_rw_31_1_0_139");
+        m[6] = panelRobotController.getConfigValue("s_rw_31_1_0_146");
+        m[7] = panelRobotController.getConfigValue("s_rw_31_1_0_153");
+        AxisDefine.changeAxisVisble(m,axisNum);
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){

@@ -119,8 +119,12 @@ Item {
         anchors.leftMargin: 6
         anchors.top: offsetEn.top
         text: qsTr("Offset Z with Y")
-        visible: offsetEn.isChecked
-
+        visible: {
+            if(AxisDefine.axisInfos[1].visiable === false || AxisDefine.axisInfos[2].visiable === false)
+                return false;
+            else
+                return offsetEn.isChecked;
+        }
     }
 
     ICButton{
@@ -331,8 +335,9 @@ Item {
             }
             ICComboBoxConfigEdit{
                 id:seq
-                //            y: 112
-                //            x:404
+//                y: 112
+//                x:404
+                anchors.left: dir2.right
                 configName: qsTr("Sequence")
                 items: ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X", qsTr("Only X"), qsTr("Only Y"), qsTr("Only Z")]
                 popupMode: 1
@@ -399,5 +404,85 @@ Item {
         motor4.visible = AxisDefine.axisInfos[4].visiable;
         motor5.visible = AxisDefine.axisInfos[5].visiable;
 
+        x_offset.visible = AxisDefine.axisInfos[0].visiable;
+        y_offset.visible = AxisDefine.axisInfos[1].visiable;
+        z_offset.visible = AxisDefine.axisInfos[2].visiable;
+
+        space0.visible = AxisDefine.axisInfos[0].visiable;
+        space1.visible = AxisDefine.axisInfos[1].visiable;
+        space2.visible = AxisDefine.axisInfos[2].visiable;
+
+        count0.visible = AxisDefine.axisInfos[0].visiable;
+        count1.visible = AxisDefine.axisInfos[1].visiable;
+        count2.visible = AxisDefine.axisInfos[2].visiable;
+
+        dir0.visible = AxisDefine.axisInfos[0].visiable;
+        dir1.visible = AxisDefine.axisInfos[1].visiable;
+        dir2.visible = AxisDefine.axisInfos[2].visiable;
+
+        runSeq.setItemVisble(0,AxisDefine.axisInfos[0].visiable);
+        runSeq.setItemVisble(1,AxisDefine.axisInfos[1].visiable);
+        runSeq.setItemVisble(2,AxisDefine.axisInfos[2].visiable);
+
+        if(AxisDefine.axisInfos[0].visiable === false &&
+                AxisDefine.axisInfos[1].visiable=== false &&
+                    AxisDefine.axisInfos[2].visiable=== false){
+            seq.items = ["","","","","","","","",""];
+            for(var i=0;i<9;++i){
+               seq.setItemVisble(i,false);
+            }
+        }
+        else if(AxisDefine.axisInfos[0].visiable === false &&
+                AxisDefine.axisInfos[1].visiable=== false){
+            seq.items = ["","","","","","","","",qsTr("Only Z")];
+            for(var i=0;i<9;++i){
+                if(i === 8) continue;
+               seq.setItemVisble(i,false);
+            }
+        }
+        else if(AxisDefine.axisInfos[0].visiable === false &&
+                AxisDefine.axisInfos[2].visiable=== false){
+            seq.items = ["","","","","","","",qsTr("Only Y"),""];
+            for(var i=0;i<9;++i){
+                if(i === 7) continue;
+               seq.setItemVisble(i,false);
+            }
+        }
+        else if(AxisDefine.axisInfos[1].visiable ===false &&
+                AxisDefine.axisInfos[2].visiable=== false){
+            seq.items = ["","","","","","",qsTr("Only X"),"",""];
+            for(var i=0;i<9;++i){
+                if(i === 6) continue;
+               seq.setItemVisble(i,false);
+            }
+        }
+        else if(AxisDefine.axisInfos[0].visiable === false){
+            seq.items = ["","","","Y->Z","","Z->Y","",qsTr("Only Y"),qsTr("Only Z")];
+            seq.setItemVisble(0,false);
+            seq.setItemVisble(1,false);
+            seq.setItemVisble(2,false);
+            seq.setItemVisble(4,false);
+            seq.setItemVisble(6,false);
+        }
+        else if(AxisDefine.axisInfos[1].visiable === false){
+            seq.items = ["","X->Z","","","Z->X","",qsTr("Only X"),"",qsTr("Only Z")];
+            seq.setItemVisble(0,false);
+            seq.setItemVisble(2,false);
+            seq.setItemVisble(3,false);
+            seq.setItemVisble(5,false);
+            seq.setItemVisble(7,false);
+        }
+        else if(AxisDefine.axisInfos[2].visiable === false){
+            seq.items = ["X->Y","","Y->X","","","",qsTr("Only X"),qsTr("Only Y"),""];
+            seq.setItemVisble(1,false);
+            seq.setItemVisble(3,false);
+            seq.setItemVisble(4,false);
+            seq.setItemVisble(5,false);
+            seq.setItemVisble(8,false);
+        }
+        else{
+             seq.items = ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X", qsTr("Only X"), qsTr("Only Y"), qsTr("Only Z")];
+             seq.configValue = 0;
+        }
     }
 }

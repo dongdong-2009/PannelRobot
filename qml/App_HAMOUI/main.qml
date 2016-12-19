@@ -589,17 +589,30 @@ Rectangle {
         //                }
         //            ]
         //        };
-        //        var toTest = {
-        //            "dsID":"www.geforcevision.com.cam",
-        //            "dsData":[
-        //                {
-        //                    "camID":"0",
-        //                    "data":[
-        //                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-        //                    ]
-        //                }
-        //            ]
-        //        };
+//                var toTest = {
+//                    "dsID":"www.geforcevision.com.cam",
+//                    "dsData":[
+//                        {
+//                            "camID":"0",
+//                            "data":[
+//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
+//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
+//                            ]
+//                        }
+//                    ]
+//                };
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":"7.209","Y":"404.623","Angel":"1.185","ExtValue_0":"0.000","ExtValue_1":"0.000"},
+//                    ]
+//                }
+//            ]
+//        }
+
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",
         //            "reqType":"listModel",
@@ -625,7 +638,8 @@ Rectangle {
         //            ]
         //        };
 
-        //        onETH0DataIn(JSON.stringify(toTest));
+//                onETH0DataIn(JSON.stringify(toTest));
+//        onETH0DataIn('{"dsID":"www.geforcevision.com.cam","dsData":[{"camID":"0","data":[{"ModelID":"0","X":"7.209","Y":"404.623","Angel":"1.185","ExtValue_0":"0.000","ExtValue_1":"0.000"},]}]}')
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",
         //            "reqType":"standardize",

@@ -894,8 +894,12 @@ Rectangle {
             if(stopBtnStatus != refreshTimer.stopBtnOld){
                 refreshTimer.stopBtnOld = stopBtnStatus;
                 if(stopBtnEn){
-                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
-                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                    if(!(panelRobotController.currentErrNum() !== 0 &&
+                            (panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
+                                panelRobotController.currentMode() == Keymap.CMD_SINGLE))){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                    }
                 }
             }
         }else refreshTimer.stopBtnOld = 0;

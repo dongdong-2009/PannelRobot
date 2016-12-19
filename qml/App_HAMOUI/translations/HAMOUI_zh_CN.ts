@@ -1784,6 +1784,11 @@
         <source>Exporting...</source>
         <translation>导出中...</translation>
     </message>
+    <message>
+        <source>name must be word number or underline
+ and underline begin is not allowed</source>
+        <translation type="unfinished">名称不符合要求</translation>
+    </message>
 </context>
 <context>
     <name>DebugPage</name>
@@ -2166,6 +2171,329 @@
     <message>
         <source>M</source>
         <translation>中间变量</translation>
+    </message>
+</context>
+<context>
+    <name>IOConfigs</name>
+    <message>
+        <source>Normal Y010</source>
+        <translation>绿灯</translation>
+    </message>
+    <message>
+        <source>Normal Y011</source>
+        <translation>黄灯</translation>
+    </message>
+    <message>
+        <source>Normal Y012</source>
+        <translation>红灯</translation>
+    </message>
+    <message>
+        <source>Normal Y013</source>
+        <translation>报警声</translation>
+    </message>
+    <message>
+        <source>Normal Y014</source>
+        <translation>普通输出Y014</translation>
+    </message>
+    <message>
+        <source>Normal Y015</source>
+        <translation>普通输出Y015</translation>
+    </message>
+    <message>
+        <source>Normal Y016</source>
+        <translation>普通输出Y016</translation>
+    </message>
+    <message>
+        <source>Normal Y017</source>
+        <translation>普通输出Y017</translation>
+    </message>
+    <message>
+        <source>Normal Y020</source>
+        <translation>普通输出Y020</translation>
+    </message>
+    <message>
+        <source>Normal Y021</source>
+        <translation>普通输出Y021</translation>
+    </message>
+    <message>
+        <source>Normal Y022</source>
+        <translation>普通输出Y022</translation>
+    </message>
+    <message>
+        <source>Normal Y023</source>
+        <translation>普通输出Y023</translation>
+    </message>
+    <message>
+        <source>Normal Y024</source>
+        <translation>普通输出Y024</translation>
+    </message>
+    <message>
+        <source>Normal Y025</source>
+        <translation>普通输出Y025</translation>
+    </message>
+    <message>
+        <source>Normal Y026</source>
+        <translation>普通输出Y026</translation>
+    </message>
+    <message>
+        <source>Normal Y027</source>
+        <translation>普通输出Y027</translation>
+    </message>
+    <message>
+        <source>Normal Y030</source>
+        <translation>普通输出Y030</translation>
+    </message>
+    <message>
+        <source>Normal Y031</source>
+        <translation>普通输出Y031</translation>
+    </message>
+    <message>
+        <source>Normal Y032</source>
+        <translation>普通输出Y032</translation>
+    </message>
+    <message>
+        <source>Normal Y033</source>
+        <translation>普通输出Y033</translation>
+    </message>
+    <message>
+        <source>Normal Y034</source>
+        <translation>普通输出Y034</translation>
+    </message>
+    <message>
+        <source>Normal Y035</source>
+        <translation>普通输出Y035</translation>
+    </message>
+    <message>
+        <source>Normal Y036</source>
+        <translation>普通输出Y036</translation>
+    </message>
+    <message>
+        <source>Normal Y037</source>
+        <translation>普通输出Y037</translation>
+    </message>
+    <message>
+        <source>Normal Y040</source>
+        <translation>普通输出Y040</translation>
+    </message>
+    <message>
+        <source>Normal Y041</source>
+        <translation>普通输出Y041</translation>
+    </message>
+    <message>
+        <source>Normal Y042</source>
+        <translation>普通输出Y042</translation>
+    </message>
+    <message>
+        <source>Normal Y043</source>
+        <translation>普通输出Y043</translation>
+    </message>
+    <message>
+        <source>Normal Y044</source>
+        <translation>普通输出Y044</translation>
+    </message>
+    <message>
+        <source>Normal Y045</source>
+        <translation>普通输出Y045</translation>
+    </message>
+    <message>
+        <source>Normal Y046</source>
+        <translation>普通输出Y046</translation>
+    </message>
+    <message>
+        <source>Normal Y047</source>
+        <translation>普通输出Y047</translation>
+    </message>
+    <message>
+        <source>M010</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M011</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M012</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M013</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M014</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M015</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M016</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M017</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M020</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M021</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M022</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M023</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M024</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M025</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M026</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M027</source>
+        <translation>报警状态</translation>
+    </message>
+    <message>
+        <source>Time Y010</source>
+        <translation>时间输出Y010</translation>
+    </message>
+    <message>
+        <source>Time Y011</source>
+        <translation>时间输出Y011</translation>
+    </message>
+    <message>
+        <source>Time Y012</source>
+        <translation>时间输出Y012</translation>
+    </message>
+    <message>
+        <source>Time Y013</source>
+        <translation>时间输出Y013</translation>
+    </message>
+    <message>
+        <source>Time Y014</source>
+        <translation>时间输出Y014</translation>
+    </message>
+    <message>
+        <source>Time Y015</source>
+        <translation>时间输出Y015</translation>
+    </message>
+    <message>
+        <source>Time Y016</source>
+        <translation>时间输出Y016</translation>
+    </message>
+    <message>
+        <source>Time Y017</source>
+        <translation>时间输出Y017</translation>
+    </message>
+    <message>
+        <source>Time Y020</source>
+        <translation>时间输出Y020</translation>
+    </message>
+    <message>
+        <source>Time Y021</source>
+        <translation>时间输出Y021</translation>
+    </message>
+    <message>
+        <source>Time Y022</source>
+        <translation>时间输出Y022</translation>
+    </message>
+    <message>
+        <source>Time Y023</source>
+        <translation>时间输出Y023</translation>
+    </message>
+    <message>
+        <source>Time Y024</source>
+        <translation>时间输出Y024</translation>
+    </message>
+    <message>
+        <source>Time Y025</source>
+        <translation>时间输出Y025</translation>
+    </message>
+    <message>
+        <source>Time Y026</source>
+        <translation>时间输出Y026</translation>
+    </message>
+    <message>
+        <source>Time Y027</source>
+        <translation>时间输出Y027</translation>
+    </message>
+    <message>
+        <source>Time Y030</source>
+        <translation>时间输出Y030</translation>
+    </message>
+    <message>
+        <source>Time Y031</source>
+        <translation>时间输出Y031</translation>
+    </message>
+    <message>
+        <source>Time Y032</source>
+        <translation>时间输出Y032</translation>
+    </message>
+    <message>
+        <source>Time Y033</source>
+        <translation>时间输出Y033</translation>
+    </message>
+    <message>
+        <source>Time Y034</source>
+        <translation>时间输出Y034</translation>
+    </message>
+    <message>
+        <source>Time Y035</source>
+        <translation>时间输出Y035</translation>
+    </message>
+    <message>
+        <source>Time Y036</source>
+        <translation>时间输出Y036</translation>
+    </message>
+    <message>
+        <source>Time Y037</source>
+        <translation>时间输出Y037</translation>
+    </message>
+    <message>
+        <source>Time Y040</source>
+        <translation>时间输出Y040</translation>
+    </message>
+    <message>
+        <source>Time Y041</source>
+        <translation>时间输出Y041</translation>
+    </message>
+    <message>
+        <source>Time Y042</source>
+        <translation>时间输出Y042</translation>
+    </message>
+    <message>
+        <source>Time Y043</source>
+        <translation>时间输出Y043</translation>
+    </message>
+    <message>
+        <source>Time Y044</source>
+        <translation>时间输出Y044</translation>
+    </message>
+    <message>
+        <source>Time Y045</source>
+        <translation>时间输出Y045</translation>
+    </message>
+    <message>
+        <source>Time Y046</source>
+        <translation>时间输出Y046</translation>
+    </message>
+    <message>
+        <source>Time Y047</source>
+        <translation>时间输出Y047</translation>
     </message>
 </context>
 <context>
@@ -5385,7 +5713,7 @@ please chose!</source>
     </message>
     <message>
         <source>Export Printable</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>In current mold</source>
@@ -5562,7 +5890,7 @@ please chose!</source>
     </message>
     <message>
         <source> </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>P1-A</source>
@@ -7151,39 +7479,39 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished">提前结束位置:</translation>
+        <translation>提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="unfinished">报警声 {1?}</translation>
+        <translation>报警声 {1?}</translation>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="unfinished">报警声 {2?}</translation>
+        <translation>报警声 {2?}</translation>
     </message>
     <message>
         <source>A OFF</source>
-        <translation type="unfinished">常闭</translation>
+        <translation>常闭</translation>
     </message>
     <message>
         <source>A ON</source>
-        <translation type="unfinished">常开</translation>
+        <translation>常开</translation>
     </message>
     <message>
         <source>IF:</source>
-        <translation type="unfinished">如果:</translation>
+        <translation>如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished">通</translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished">断</translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="unfinished">限时:</translation>
+        <translation>限时:</translation>
     </message>
     <message>
         <source>Wait:</source>

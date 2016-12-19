@@ -33,10 +33,7 @@ Item {
 
     onValvesChanged:  {
         valveModel.clear();
-        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-        if(ioBoardCount == 0)
-            ioBoardCount = 1;
-        var l = Math.min(ioBoardCount * 32, valves.length);
+        var l = valves.length;
         for(var i = 0; i < l; ++i){
             valveModel.append({"mValveName":valves[i], "mValveStatus":{"y1":false, "x1":false, "y2":false, "x2":false}, "mValve":IODefines.getValveItemFromValveName(valves[i])});
         }

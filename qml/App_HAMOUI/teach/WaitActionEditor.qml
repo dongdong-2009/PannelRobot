@@ -3,6 +3,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
+import "../configs/IOConfigs.js" as IOConfigs
 
 
 Item {
@@ -41,25 +42,7 @@ Item {
         "X046",
         "X047",
     ]
-    property  variant euXs : []
-    property variant mXs: [
-    "M010",
-    "M011",
-    "M012",
-    "M013",
-    "M014",
-    "M015",
-    "M016",
-    "M017",
-    "M020",
-    "M021",
-    "M022",
-    "M023",
-    "M024",
-    "M025",
-    "M026",
-    "M027"
-    ]
+    property variant mXs: IOConfigs.teachMy
 
 
     function createActionObjects(){
@@ -100,7 +83,7 @@ Item {
             ICCheckBox{
                 id:euX
                 text: qsTr("EUX")
-                visible: euXs.length > 0
+                visible: false
             }
             ICCheckBox{
                 id:mX
@@ -225,15 +208,16 @@ Item {
             xModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
-        xDefines = euXs;
-        for(i = 0, l = xDefines.length; i < l; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            euXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
-        }
+//        xDefines = euXs;
+//        for(i = 0, l = xDefines.length; i < l; ++i){
+//            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+//            euXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+//        }
 
         xDefines = mXs;
         for(i = 0, l = xDefines.length; i < l; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+            xDefine = IODefines.getValveItemFromValveID(xDefines[i]);
+            xDefine = IODefines.getXDefineFromHWPoint(xDefine.y1Point, xDefine.y1Board);
             mXModel.append(xView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
     }

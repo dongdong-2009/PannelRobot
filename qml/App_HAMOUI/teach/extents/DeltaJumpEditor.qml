@@ -119,7 +119,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:ypos1Edit
                         configName: AxisDefine.axisInfos[1].name
-                        configAddr: "s_rw_0_32_3_1301"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[1].unit
@@ -127,7 +127,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:zpos1Edit
                         configName: AxisDefine.axisInfos[2].name
-                        configAddr: "s_rw_0_32_3_1302"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[2].unit
@@ -135,7 +135,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:upos1Edit
                         configName: AxisDefine.axisInfos[3].name
-                        configAddr: "s_rw_0_32_3_1303"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[3].unit
@@ -143,7 +143,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:vpos1Edit
                         configName: AxisDefine.axisInfos[4].name
-                        configAddr: "s_rw_0_32_3_1304"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[4].unit
@@ -151,7 +151,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:wpos1Edit
                         configName: AxisDefine.axisInfos[5].name
-                        configAddr: "s_rw_0_32_3_1305"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[5].unit
@@ -191,7 +191,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:ypos2Edit
                         configName: AxisDefine.axisInfos[1].name
-                        configAddr: "s_rw_0_32_3_1301"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[1].unit
@@ -199,7 +199,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:zpos2Edit
                         configName: AxisDefine.axisInfos[2].name
-                        configAddr: "s_rw_0_32_3_1302"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[2].unit
@@ -207,7 +207,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:upos2Edit
                         configName: AxisDefine.axisInfos[3].name
-                        configAddr: "s_rw_0_32_3_1303"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[3].unit
@@ -215,7 +215,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:vpos2Edit
                         configName: AxisDefine.axisInfos[4].name
-                        configAddr: "s_rw_0_32_3_1304"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[4].unit
@@ -223,7 +223,7 @@ ExtentActionEditorBase {
                     ICConfigEdit{
                         id:wpos2Edit
                         configName: AxisDefine.axisInfos[5].name
-                        configAddr: "s_rw_0_32_3_1305"
+                        configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
                         unit: AxisDefine.axisInfos[5].unit

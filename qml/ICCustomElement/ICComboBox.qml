@@ -19,6 +19,10 @@ Rectangle {
         return items[index];
     }
 
+    function setItemVisible(index, vi){
+        itemModel.setProperty(index, "vis", vi);
+    }
+
     width: 100
     height: 24
 
@@ -72,11 +76,12 @@ Rectangle {
             clip: true
             model: itemModel
             delegate: Text{
-                height: itemHeight
+                height:visible?itemHeight:0
                 text: name
                 verticalAlignment: Text.AlignVCenter
                 x:4
                 font.pixelSize: contentFontPixelSize
+                visible: vis
                 MouseArea{
                     height: itemHeight
                     width: view.width
@@ -96,7 +101,12 @@ Rectangle {
         anchors.top: currentText.bottom
         onVisibleChanged: {
             if(visible){
-                var realHeight = itemHeight * itemModel.count;
+                var realHeight = 0;
+                for(var i=0;i<itemModel.count;++i){
+                    if(itemModel.get(i).vis ==true){
+                         realHeight += itemHeight;
+                    }
+                }
                 height = popupHeight == 0 ? realHeight : Math.min(realHeight, popupHeight);
                 var maxWidth = container.width - 10;
                 var item;
@@ -134,7 +144,7 @@ Rectangle {
     onItemsChanged: {
         itemModel.clear();
         for(var i = 0; i < items.length; ++i){
-            itemModel.append({"index": i, "name":items[i]})
+            itemModel.append({"index": i, "name":items[i], "vis":true})
         }
     }
     MouseArea{

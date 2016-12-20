@@ -589,17 +589,30 @@ Rectangle {
         //                }
         //            ]
         //        };
-        //        var toTest = {
-        //            "dsID":"www.geforcevision.com.cam",
-        //            "dsData":[
-        //                {
-        //                    "camID":"0",
-        //                    "data":[
-        //                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null}
-        //                    ]
-        //                }
-        //            ]
-        //        };
+//                var toTest = {
+//                    "dsID":"www.geforcevision.com.cam",
+//                    "dsData":[
+//                        {
+//                            "camID":"0",
+//                            "data":[
+//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
+//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
+//                            ]
+//                        }
+//                    ]
+//                };
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":"7.209","Y":"404.623","Angel":"1.185","ExtValue_0":"0.000","ExtValue_1":"0.000"},
+//                    ]
+//                }
+//            ]
+//        }
+
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",
         //            "reqType":"listModel",
@@ -625,7 +638,8 @@ Rectangle {
         //            ]
         //        };
 
-        //        onETH0DataIn(JSON.stringify(toTest));
+//                onETH0DataIn(JSON.stringify(toTest));
+//        onETH0DataIn('{"dsID":"www.geforcevision.com.cam","dsData":[{"camID":"0","data":[{"ModelID":"0","X":"7.209","Y":"404.623","Angel":"1.185","ExtValue_0":"0.000","ExtValue_1":"0.000"},]}]}')
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",
         //            "reqType":"standardize",
@@ -740,7 +754,18 @@ Rectangle {
         panelRobotController.setETh0Filter("test\r\n");
         panelRobotController.eth0DataComeIn.connect(onETH0DataIn);
 
-        AxisDefine.changeAxisNum(panelRobotController.getConfigValue("s_rw_16_6_0_184"));
+        var axisNum = panelRobotController.getConfigValue("s_rw_16_6_0_184");
+        AxisDefine.changeAxisNum(axisNum);
+        var m = [];
+        m[0] = panelRobotController.getConfigValue("s_rw_31_1_0_104");
+        m[1] = panelRobotController.getConfigValue("s_rw_31_1_0_111");
+        m[2] = panelRobotController.getConfigValue("s_rw_31_1_0_118");
+        m[3] = panelRobotController.getConfigValue("s_rw_31_1_0_125");
+        m[4] = panelRobotController.getConfigValue("s_rw_31_1_0_132");
+        m[5] = panelRobotController.getConfigValue("s_rw_31_1_0_139");
+        m[6] = panelRobotController.getConfigValue("s_rw_31_1_0_146");
+        m[7] = panelRobotController.getConfigValue("s_rw_31_1_0_153");
+        AxisDefine.changeAxisVisble(m,axisNum);
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){

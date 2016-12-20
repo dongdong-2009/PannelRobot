@@ -141,6 +141,8 @@ function ExternalDataManager(){
         return true;
     };
     this.parse = function(jsonStr){
+        jsonStr = jsonStr.replace(",]", "]");
+//        console.log("parse",jsonStr);
         var o = JSON.parse(jsonStr);
         return this.parseRaw(o);
     };

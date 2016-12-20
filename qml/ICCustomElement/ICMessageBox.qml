@@ -150,7 +150,7 @@ MouseArea {
     }
     Rectangle{
         id:detailContainer
-        width: realFrame.width
+        width: detailContent.width
         height: 150
         border.color: "black"
         border.width: 1
@@ -159,7 +159,8 @@ MouseArea {
         anchors.top: realFrame.bottom
         visible: false
         ICFlickable{
-            width: parent.width
+            id:detailContent
+            width: detailText.width
             height: parent.height
             contentWidth: detailText.width
             contentHeight: detailText.height

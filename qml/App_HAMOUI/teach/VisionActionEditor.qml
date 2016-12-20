@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../ExternalData.js" as ESData
+import "../configs/IOConfigs.js" as IOConfigs
 
 Item {
     id:container
@@ -93,32 +94,7 @@ Item {
             width: 690
             height: 110
             visible: catchType.currentIndex == 0 && catchEn.isChecked
-            valves: [
-                "tValve0",
-                "tValve1",
-                "tValve2",
-                "tValve3",
-                "tValve4",
-                "tValve5",
-                "tValve6",
-                "tValve7",
-                "tValve8",
-                "tValve9",
-                "tValve10",
-                "tValve11",
-                "tValve12",
-                "tValve13",
-                "tValve14",
-                "tValve15",
-                "tValve16",
-                "tValve17",
-                "tValve18",
-                "tValve19",
-                "tValve20",
-                "tValve21",
-                "tValve22",
-                "tValve23",
-            ]
+            valves: IOConfigs.teachTy
         }
 
         Column{

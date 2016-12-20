@@ -192,6 +192,7 @@ Item {
             }
             Row{
                 spacing: 6
+                z:10
                 ICCheckableComboboxEdit{
                     id:signalStop
                     configName: qsTr("Signal Stop")

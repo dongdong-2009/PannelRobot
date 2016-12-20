@@ -78,7 +78,7 @@
     </message>
     <message>
         <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.ui" line="1032"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="370"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="378"/>
         <source>EN</source>
         <translation>英文</translation>
     </message>
@@ -102,13 +102,13 @@
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="307"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="375"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="315"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="383"/>
         <source>CH</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="441"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="449"/>
         <source>Min:%1
 Max:%2
 Prec:%3</source>

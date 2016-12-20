@@ -80,3 +80,10 @@ function usedAxisNameList(){
     }
     return ret;
 }
+
+function changeAxisVisble(m,num){
+    for(var i=0;i<num;++i){
+        axisInfos[i].visiable = m[i]===1?false:true;
+    }
+    informMonitors();
+}

@@ -23,6 +23,7 @@ Item {
     property alias count2: count2.configValue
 
     property alias seq: seq.configValue
+    property alias seqItems: seq.items
     property alias dir0: dir0.configValue
     property alias dir1: dir1.configValue
     property alias dir2: dir2.configValue
@@ -119,12 +120,7 @@ Item {
         anchors.leftMargin: 6
         anchors.top: offsetEn.top
         text: qsTr("Offset Z with Y")
-        visible: {
-            if(AxisDefine.axisInfos[1].visiable === false || AxisDefine.axisInfos[2].visiable === false)
-                return false;
-            else
-                return offsetEn.isChecked;
-        }
+        visible: motor1.visible && motor2.visible && offsetEn.isChecked
     }
 
     ICButton{
@@ -136,7 +132,7 @@ Item {
 
         height: offsetEn.height
         width: 150
-        visible: offsetEn.visible
+        visible:offsetEn.visible && motor0.visible && motor1.visible
         onButtonClicked: {
             threePointWayEditor.show({"sp":{"m0":motor0.configValue,
                                              "m1":motor1.configValue,
@@ -307,9 +303,10 @@ Item {
             }
         }
 
-        Row{
+        Item{
+            width:coutnerContainer.width
+            height:dir0.height
             z:10
-            spacing: 4
             visible: !dataSourceSel.visible
             ICComboBoxConfigEdit{
                 id:dir0
@@ -317,10 +314,11 @@ Item {
                 items: [qsTr("RP"), qsTr("PP")]
                 popupMode: 1
                 configValue: 0
-
             }
             ICComboBoxConfigEdit{
                 id:dir1
+                anchors.left: parent.left
+                anchors.leftMargin: dir0.visible?(dir0.width+4):0
                 configName: qsTr("Dir1")
                 items: [qsTr("RP"), qsTr("PP")]
                 popupMode: 1
@@ -328,6 +326,8 @@ Item {
             }
             ICComboBoxConfigEdit{
                 id:dir2
+                anchors.left: parent.left
+                anchors.leftMargin: (dir0.visible?(dir0.width+4):0) +(dir1.visible?(dir1.width+4):0)
                 configName: qsTr("Dir2")
                 items: [qsTr("RP"), qsTr("PP")]
                 popupMode: 1
@@ -335,8 +335,7 @@ Item {
             }
             ICComboBoxConfigEdit{
                 id:seq
-                anchors.left: parent.left
-                anchors.leftMargin: dir0.width + 4 + dir1.width +4 + dir2.width +4
+                anchors.right: parent.right
                 configName: qsTr("Sequence")
                 items: ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X", qsTr("Only X"), qsTr("Only Y"), qsTr("Only Z")]
                 popupMode: 1
@@ -348,6 +347,7 @@ Item {
         Row{
             spacing: 6
             z:100
+            id:coutnerContainer
             ICComboBoxConfigEdit{
                 id:counterSel
                 popupMode: dataSourceSel.visible ? 0 : 1
@@ -438,6 +438,7 @@ Item {
                 if(i === 8) continue;
                seq.setItemVisble(i,false);
             }
+            seq.configValue = 8;
         }
         else if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[2].visiable=== false){
@@ -446,6 +447,7 @@ Item {
                 if(i === 7) continue;
                seq.setItemVisble(i,false);
             }
+            seq.configValue = 7;
         }
         else if(AxisDefine.axisInfos[1].visiable ===false &&
                 AxisDefine.axisInfos[2].visiable=== false){
@@ -454,6 +456,7 @@ Item {
                 if(i === 6) continue;
                seq.setItemVisble(i,false);
             }
+            seq.configValue = 6;
         }
         else if(AxisDefine.axisInfos[0].visiable === false){
             seq.items = ["","","","Y->Z","","Z->Y","",qsTr("Only Y"),qsTr("Only Z")];
@@ -462,6 +465,7 @@ Item {
             seq.setItemVisble(2,false);
             seq.setItemVisble(4,false);
             seq.setItemVisble(6,false);
+            seq.configValue = 3;
         }
         else if(AxisDefine.axisInfos[1].visiable === false){
             seq.items = ["","X->Z","","","Z->X","",qsTr("Only X"),"",qsTr("Only Z")];
@@ -470,6 +474,7 @@ Item {
             seq.setItemVisble(3,false);
             seq.setItemVisble(5,false);
             seq.setItemVisble(7,false);
+            seq.configValue = 1;
         }
         else if(AxisDefine.axisInfos[2].visiable === false){
             seq.items = ["X->Y","","Y->X","","","",qsTr("Only X"),qsTr("Only Y"),""];
@@ -478,6 +483,7 @@ Item {
             seq.setItemVisble(4,false);
             seq.setItemVisble(5,false);
             seq.setItemVisble(8,false);
+            seq.configValue = 0;
         }
         else{
              seq.items = ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X", qsTr("Only X"), qsTr("Only Y"), qsTr("Only Z")];

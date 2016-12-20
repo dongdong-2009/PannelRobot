@@ -621,6 +621,10 @@
         <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
         <translation>故障：过流故障</translation>
     </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ENABLE_FORBID</source>
+        <translation>故障：伺服未使能</translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>

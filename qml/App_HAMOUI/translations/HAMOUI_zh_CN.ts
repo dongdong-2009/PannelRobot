@@ -1200,15 +1200,15 @@
     </message>
     <message>
         <source>Motor 1</source>
-        <translation>汇川</translation>
+        <translation>汇川伺服</translation>
     </message>
     <message>
         <source>Motor 2</source>
-        <translation>安川</translation>
+        <translation>台达伺服</translation>
     </message>
     <message>
         <source>Motor 3</source>
-        <translation>台达伺服</translation>
+        <translation>松下伺服</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -1353,6 +1353,10 @@
     <message>
         <source>Test Speed:</source>
         <translation>测试速度:</translation>
+    </message>
+    <message>
+        <source>Motor 7</source>
+        <translation>欧瑞伺服</translation>
     </message>
 </context>
 <context>
@@ -7465,6 +7469,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Normal</source>
         <translation>一般</translation>
+    </message>
+    <message>
+        <source>Type 4</source>
+        <translation type="unfinished">自动设定原点加开关 {4?}</translation>
     </message>
 </context>
 <context>

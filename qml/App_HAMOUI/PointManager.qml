@@ -90,8 +90,22 @@ MouseArea{
                 text: qsTr("Replace")
                 height: 25
                 onButtonClicked: {
-                    var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
-                        "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
+                    var pointPos = {};
+
+                    if(m0.visible)
+                        pointPos.m0 = m0.configValue;
+                    if(m1.visible)
+                        pointPos.m1 = m1.configValue;
+                    if(m2.visible)
+                        pointPos.m2 = m2.configValue;
+                    if(m3.visible)
+                        pointPos.m3 = m3.configValue;
+                    if(m4.visible)
+                        pointPos.m4 = m4.configValue;
+                    if(m5.visible)
+                        pointPos.m5 = m5.configValue;
+//                    var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
+//                        "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
                     var toUpdate  = pointModel.get(pointView.currentIndex).point;
                     toUpdate.name = toUpdate.name.substr(0,2) + toUpdate.index + ":" + text_name.configValue;
                     toUpdate.point = pointPos;

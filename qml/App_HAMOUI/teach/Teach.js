@@ -121,7 +121,6 @@ var DefinePoints = {
                     return definedPoints.definedPoints[i];
             }
             return null;
-
         }
 
         definePoints.extractPointIDFromPointName = function(name){

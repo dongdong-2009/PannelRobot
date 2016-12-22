@@ -833,7 +833,7 @@ Item {
         onAxisDefinesChanged();
     }
     function onAxisDefinesChanged(){
-        lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[0].visiable;
+        lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable;
         lineXZType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[2].visiable;
         lineYZType.visible = AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
         circlePathType.visible = offsetPathType.visible = line3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;

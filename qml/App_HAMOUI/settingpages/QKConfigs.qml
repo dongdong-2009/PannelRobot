@@ -55,9 +55,20 @@ Item {
             }
         }
 
+        ICCheckBox{
+            id:fpgaEn
+            text: qsTr("FPGA En")
+            onIsCheckedChanged: {
+                panelRobotController.modifyConfigValue(35, isChecked ? 1 : 0);
+            }
+        }
+
         anchors.top: qkConfigContainer.bottom
         anchors.topMargin: 6
     }
+
+
+
     function onReadFinished(data){
         console.log("onReadFinished", data);
         dataEdit.configValue = ((data>>16) & 0xFFFF).toString(16);

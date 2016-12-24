@@ -175,7 +175,7 @@ Item {
         yDefines = IOConfigs.teachHoldDoubleY
         holdDoubleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = yDefines[i];
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
             holdDoubleYModel.append(yView.createValveMoldItem(yDefine, IODefines.VALVE_BOARD));
         }
 

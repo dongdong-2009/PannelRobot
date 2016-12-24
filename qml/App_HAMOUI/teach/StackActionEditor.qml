@@ -136,7 +136,9 @@ Rectangle {
             page1.count0 = stackInfo.si0.count0;
             page1.count1 = stackInfo.si0.count1;
             page1.count2 = stackInfo.si0.count2;
-            page1.seq = stackInfo.si0.sequence;
+            if(page1.seqItems[stackInfo.si0.sequence] !== "" &&
+                    page1.seqItems[stackInfo.si0.sequence] !== undefined)
+                page1.seq = stackInfo.si0.sequence;
             page1.dir0 = stackInfo.si0.dir0;
             page1.dir1 = stackInfo.si0.dir1;
             page1.dir2 = stackInfo.si0.dir2;
@@ -163,7 +165,9 @@ Rectangle {
             page2.count0 = stackInfo.si1.count0;
             page2.count1 = stackInfo.si1.count1;
             page2.count2 = stackInfo.si1.count2;
-            page2.seq = stackInfo.si1.sequence;
+            if(page2.seqItems[stackInfo.si0.sequence] !== "" &&
+                    page2.seqItems[stackInfo.si0.sequence] !== undefined)
+                page2.seq = stackInfo.si1.sequence;
             page2.dir0 = stackInfo.si1.dir0;
             page2.dir1 = stackInfo.si1.dir1;
             page2.dir2 = stackInfo.si1.dir2;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -761,23 +761,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -785,11 +785,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1919,11 +1919,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -2708,259 +2708,259 @@
     </message>
     <message>
         <source>Normal Y010</source>
-        <translation>绿灯</translation>
+        <translation type="vanished">绿灯</translation>
     </message>
     <message>
         <source>Normal Y011</source>
-        <translation>黄灯</translation>
+        <translation type="vanished">黄灯</translation>
     </message>
     <message>
         <source>Normal Y012</source>
-        <translation>红灯</translation>
+        <translation type="vanished">红灯</translation>
     </message>
     <message>
         <source>Normal Y013</source>
-        <translation>报警声</translation>
+        <translation type="vanished">报警声</translation>
     </message>
     <message>
         <source>Normal Y014</source>
-        <translation>普通输出Y014</translation>
+        <translation type="vanished">普通输出Y014</translation>
     </message>
     <message>
         <source>Normal Y015</source>
-        <translation>普通输出Y015</translation>
+        <translation type="vanished">普通输出Y015</translation>
     </message>
     <message>
         <source>Normal Y016</source>
-        <translation>普通输出Y016</translation>
+        <translation type="vanished">普通输出Y016</translation>
     </message>
     <message>
         <source>Normal Y017</source>
-        <translation>普通输出Y017</translation>
+        <translation type="vanished">普通输出Y017</translation>
     </message>
     <message>
         <source>Normal Y020</source>
-        <translation>普通输出Y020</translation>
+        <translation type="vanished">普通输出Y020</translation>
     </message>
     <message>
         <source>Normal Y021</source>
-        <translation>普通输出Y021</translation>
+        <translation type="vanished">普通输出Y021</translation>
     </message>
     <message>
         <source>Normal Y022</source>
-        <translation>普通输出Y022</translation>
+        <translation type="vanished">普通输出Y022</translation>
     </message>
     <message>
         <source>Normal Y023</source>
-        <translation>普通输出Y023</translation>
+        <translation type="vanished">普通输出Y023</translation>
     </message>
     <message>
         <source>Normal Y024</source>
-        <translation>普通输出Y024</translation>
+        <translation type="vanished">普通输出Y024</translation>
     </message>
     <message>
         <source>Normal Y025</source>
-        <translation>普通输出Y025</translation>
+        <translation type="vanished">普通输出Y025</translation>
     </message>
     <message>
         <source>Normal Y026</source>
-        <translation>普通输出Y026</translation>
+        <translation type="vanished">普通输出Y026</translation>
     </message>
     <message>
         <source>Normal Y027</source>
-        <translation>普通输出Y027</translation>
+        <translation type="vanished">普通输出Y027</translation>
     </message>
     <message>
         <source>Normal Y030</source>
-        <translation>普通输出Y030</translation>
+        <translation type="vanished">普通输出Y030</translation>
     </message>
     <message>
         <source>Normal Y031</source>
-        <translation>普通输出Y031</translation>
+        <translation type="vanished">普通输出Y031</translation>
     </message>
     <message>
         <source>Normal Y032</source>
-        <translation>普通输出Y032</translation>
+        <translation type="vanished">普通输出Y032</translation>
     </message>
     <message>
         <source>Normal Y033</source>
-        <translation>普通输出Y033</translation>
+        <translation type="vanished">普通输出Y033</translation>
     </message>
     <message>
         <source>Normal Y034</source>
-        <translation>普通输出Y034</translation>
+        <translation type="vanished">普通输出Y034</translation>
     </message>
     <message>
         <source>Normal Y035</source>
-        <translation>普通输出Y035</translation>
+        <translation type="vanished">普通输出Y035</translation>
     </message>
     <message>
         <source>Normal Y036</source>
-        <translation>普通输出Y036</translation>
+        <translation type="vanished">普通输出Y036</translation>
     </message>
     <message>
         <source>Normal Y037</source>
-        <translation>普通输出Y037</translation>
+        <translation type="vanished">普通输出Y037</translation>
     </message>
     <message>
         <source>Normal Y040</source>
-        <translation>普通输出Y040</translation>
+        <translation type="vanished">普通输出Y040</translation>
     </message>
     <message>
         <source>Normal Y041</source>
-        <translation>普通输出Y041</translation>
+        <translation type="vanished">普通输出Y041</translation>
     </message>
     <message>
         <source>Normal Y042</source>
-        <translation>普通输出Y042</translation>
+        <translation type="vanished">普通输出Y042</translation>
     </message>
     <message>
         <source>Normal Y043</source>
-        <translation>普通输出Y043</translation>
+        <translation type="vanished">普通输出Y043</translation>
     </message>
     <message>
         <source>Normal Y044</source>
-        <translation>普通输出Y044</translation>
+        <translation type="vanished">普通输出Y044</translation>
     </message>
     <message>
         <source>Normal Y045</source>
-        <translation>普通输出Y045</translation>
+        <translation type="vanished">普通输出Y045</translation>
     </message>
     <message>
         <source>Normal Y046</source>
-        <translation>普通输出Y046</translation>
+        <translation type="vanished">普通输出Y046</translation>
     </message>
     <message>
         <source>Normal Y047</source>
-        <translation>普通输出Y047</translation>
+        <translation type="vanished">普通输出Y047</translation>
     </message>
     <message>
         <source>Time Y010</source>
-        <translation>时间输出Y010</translation>
+        <translation type="vanished">时间输出Y010</translation>
     </message>
     <message>
         <source>Time Y011</source>
-        <translation>时间输出Y011</translation>
+        <translation type="vanished">时间输出Y011</translation>
     </message>
     <message>
         <source>Time Y012</source>
-        <translation>时间输出Y012</translation>
+        <translation type="vanished">时间输出Y012</translation>
     </message>
     <message>
         <source>Time Y013</source>
-        <translation>时间输出Y013</translation>
+        <translation type="vanished">时间输出Y013</translation>
     </message>
     <message>
         <source>Time Y014</source>
-        <translation>时间输出Y014</translation>
+        <translation type="vanished">时间输出Y014</translation>
     </message>
     <message>
         <source>Time Y015</source>
-        <translation>时间输出Y015</translation>
+        <translation type="vanished">时间输出Y015</translation>
     </message>
     <message>
         <source>Time Y016</source>
-        <translation>时间输出Y016</translation>
+        <translation type="vanished">时间输出Y016</translation>
     </message>
     <message>
         <source>Time Y017</source>
-        <translation>时间输出Y017</translation>
+        <translation type="vanished">时间输出Y017</translation>
     </message>
     <message>
         <source>Time Y020</source>
-        <translation>时间输出Y020</translation>
+        <translation type="vanished">时间输出Y020</translation>
     </message>
     <message>
         <source>Time Y021</source>
-        <translation>时间输出Y021</translation>
+        <translation type="vanished">时间输出Y021</translation>
     </message>
     <message>
         <source>Time Y022</source>
-        <translation>时间输出Y022</translation>
+        <translation type="vanished">时间输出Y022</translation>
     </message>
     <message>
         <source>Time Y023</source>
-        <translation>时间输出Y023</translation>
+        <translation type="vanished">时间输出Y023</translation>
     </message>
     <message>
         <source>Time Y024</source>
-        <translation>时间输出Y024</translation>
+        <translation type="vanished">时间输出Y024</translation>
     </message>
     <message>
         <source>Time Y025</source>
-        <translation>时间输出Y025</translation>
+        <translation type="vanished">时间输出Y025</translation>
     </message>
     <message>
         <source>Time Y026</source>
-        <translation>时间输出Y026</translation>
+        <translation type="vanished">时间输出Y026</translation>
     </message>
     <message>
         <source>Time Y027</source>
-        <translation>时间输出Y027</translation>
+        <translation type="vanished">时间输出Y027</translation>
     </message>
     <message>
         <source>Time Y030</source>
-        <translation>时间输出Y030</translation>
+        <translation type="vanished">时间输出Y030</translation>
     </message>
     <message>
         <source>Time Y031</source>
-        <translation>时间输出Y031</translation>
+        <translation type="vanished">时间输出Y031</translation>
     </message>
     <message>
         <source>Time Y032</source>
-        <translation>时间输出Y032</translation>
+        <translation type="vanished">时间输出Y032</translation>
     </message>
     <message>
         <source>Time Y033</source>
-        <translation>时间输出Y033</translation>
+        <translation type="vanished">时间输出Y033</translation>
     </message>
     <message>
         <source>Time Y034</source>
-        <translation>时间输出Y034</translation>
+        <translation type="vanished">时间输出Y034</translation>
     </message>
     <message>
         <source>Time Y035</source>
-        <translation>时间输出Y035</translation>
+        <translation type="vanished">时间输出Y035</translation>
     </message>
     <message>
         <source>Time Y036</source>
-        <translation>时间输出Y036</translation>
+        <translation type="vanished">时间输出Y036</translation>
     </message>
     <message>
         <source>Time Y037</source>
-        <translation>时间输出Y037</translation>
+        <translation type="vanished">时间输出Y037</translation>
     </message>
     <message>
         <source>Time Y040</source>
-        <translation>时间输出Y040</translation>
+        <translation type="vanished">时间输出Y040</translation>
     </message>
     <message>
         <source>Time Y041</source>
-        <translation>时间输出Y041</translation>
+        <translation type="vanished">时间输出Y041</translation>
     </message>
     <message>
         <source>Time Y042</source>
-        <translation>时间输出Y042</translation>
+        <translation type="vanished">时间输出Y042</translation>
     </message>
     <message>
         <source>Time Y043</source>
-        <translation>时间输出Y043</translation>
+        <translation type="vanished">时间输出Y043</translation>
     </message>
     <message>
         <source>Time Y044</source>
-        <translation>时间输出Y044</translation>
+        <translation type="vanished">时间输出Y044</translation>
     </message>
     <message>
         <source>Time Y045</source>
-        <translation>时间输出Y045</translation>
+        <translation type="vanished">时间输出Y045</translation>
     </message>
     <message>
         <source>Time Y046</source>
-        <translation>时间输出Y046</translation>
+        <translation type="vanished">时间输出Y046</translation>
     </message>
     <message>
         <source>Time Y047</source>
-        <translation>时间输出Y047</translation>
+        <translation type="vanished">时间输出Y047</translation>
     </message>
     <message>
         <source>X060</source>
@@ -3316,387 +3316,387 @@
     </message>
     <message>
         <source>Normal Y050</source>
-        <translation>普通输出Y050</translation>
+        <translation type="vanished">普通输出Y050</translation>
     </message>
     <message>
         <source>Normal Y051</source>
-        <translation>普通输出Y051</translation>
+        <translation type="vanished">普通输出Y051</translation>
     </message>
     <message>
         <source>Normal Y052</source>
-        <translation>普通输出Y052</translation>
+        <translation type="vanished">普通输出Y052</translation>
     </message>
     <message>
         <source>Normal Y053</source>
-        <translation>普通输出Y053</translation>
+        <translation type="vanished">普通输出Y053</translation>
     </message>
     <message>
         <source>Normal Y054</source>
-        <translation>普通输出Y054</translation>
+        <translation type="vanished">普通输出Y054</translation>
     </message>
     <message>
         <source>Normal Y055</source>
-        <translation>普通输出Y055</translation>
+        <translation type="vanished">普通输出Y055</translation>
     </message>
     <message>
         <source>Normal Y056</source>
-        <translation>普通输出Y056</translation>
+        <translation type="vanished">普通输出Y056</translation>
     </message>
     <message>
         <source>Normal Y057</source>
-        <translation>普通输出Y057</translation>
+        <translation type="vanished">普通输出Y057</translation>
     </message>
     <message>
         <source>Normal Y060</source>
-        <translation>普通输出Y060</translation>
+        <translation type="vanished">普通输出Y060</translation>
     </message>
     <message>
         <source>Normal Y061</source>
-        <translation>普通输出Y061</translation>
+        <translation type="vanished">普通输出Y061</translation>
     </message>
     <message>
         <source>Normal Y062</source>
-        <translation>普通输出Y062</translation>
+        <translation type="vanished">普通输出Y062</translation>
     </message>
     <message>
         <source>Normal Y063</source>
-        <translation>普通输出Y063</translation>
+        <translation type="vanished">普通输出Y063</translation>
     </message>
     <message>
         <source>Normal Y064</source>
-        <translation>普通输出Y064</translation>
+        <translation type="vanished">普通输出Y064</translation>
     </message>
     <message>
         <source>Normal Y065</source>
-        <translation>普通输出Y065</translation>
+        <translation type="vanished">普通输出Y065</translation>
     </message>
     <message>
         <source>Normal Y066</source>
-        <translation>普通输出Y066</translation>
+        <translation type="vanished">普通输出Y066</translation>
     </message>
     <message>
         <source>Normal Y067</source>
-        <translation>普通输出Y067</translation>
+        <translation type="vanished">普通输出Y067</translation>
     </message>
     <message>
         <source>Normal Y070</source>
-        <translation>普通输出Y070</translation>
+        <translation type="vanished">普通输出Y070</translation>
     </message>
     <message>
         <source>Normal Y071</source>
-        <translation>普通输出Y071</translation>
+        <translation type="vanished">普通输出Y071</translation>
     </message>
     <message>
         <source>Normal Y072</source>
-        <translation>普通输出Y072</translation>
+        <translation type="vanished">普通输出Y072</translation>
     </message>
     <message>
         <source>Normal Y073</source>
-        <translation>普通输出Y073</translation>
+        <translation type="vanished">普通输出Y073</translation>
     </message>
     <message>
         <source>Normal Y074</source>
-        <translation>普通输出Y074</translation>
+        <translation type="vanished">普通输出Y074</translation>
     </message>
     <message>
         <source>Normal Y075</source>
-        <translation>普通输出Y075</translation>
+        <translation type="vanished">普通输出Y075</translation>
     </message>
     <message>
         <source>Normal Y076</source>
-        <translation>普通输出Y076</translation>
+        <translation type="vanished">普通输出Y076</translation>
     </message>
     <message>
         <source>Normal Y077</source>
-        <translation>普通输出Y077</translation>
+        <translation type="vanished">普通输出Y077</translation>
     </message>
     <message>
         <source>Normal Y100</source>
-        <translation>普通输出Y100</translation>
+        <translation type="vanished">普通输出Y100</translation>
     </message>
     <message>
         <source>Normal Y101</source>
-        <translation>普通输出Y101</translation>
+        <translation type="vanished">普通输出Y101</translation>
     </message>
     <message>
         <source>Normal Y102</source>
-        <translation>普通输出Y102</translation>
+        <translation type="vanished">普通输出Y102</translation>
     </message>
     <message>
         <source>Normal Y103</source>
-        <translation>普通输出Y103</translation>
+        <translation type="vanished">普通输出Y103</translation>
     </message>
     <message>
         <source>Normal Y104</source>
-        <translation>普通输出Y104</translation>
+        <translation type="vanished">普通输出Y104</translation>
     </message>
     <message>
         <source>Normal Y105</source>
-        <translation>普通输出Y105</translation>
+        <translation type="vanished">普通输出Y105</translation>
     </message>
     <message>
         <source>Normal Y106</source>
-        <translation>普通输出Y106</translation>
+        <translation type="vanished">普通输出Y106</translation>
     </message>
     <message>
         <source>Normal Y107</source>
-        <translation>普通输出Y107</translation>
+        <translation type="vanished">普通输出Y107</translation>
     </message>
     <message>
         <source>Normal Y110</source>
-        <translation>普通输出Y110</translation>
+        <translation type="vanished">普通输出Y110</translation>
     </message>
     <message>
         <source>Normal Y111</source>
-        <translation>普通输出Y111</translation>
+        <translation type="vanished">普通输出Y111</translation>
     </message>
     <message>
         <source>Normal Y112</source>
-        <translation>普通输出Y112</translation>
+        <translation type="vanished">普通输出Y112</translation>
     </message>
     <message>
         <source>Normal Y113</source>
-        <translation>普通输出Y113</translation>
+        <translation type="vanished">普通输出Y113</translation>
     </message>
     <message>
         <source>Normal Y114</source>
-        <translation>普通输出Y114</translation>
+        <translation type="vanished">普通输出Y114</translation>
     </message>
     <message>
         <source>Normal Y115</source>
-        <translation>普通输出Y115</translation>
+        <translation type="vanished">普通输出Y115</translation>
     </message>
     <message>
         <source>Normal Y116</source>
-        <translation>普通输出Y116</translation>
+        <translation type="vanished">普通输出Y116</translation>
     </message>
     <message>
         <source>Normal Y117</source>
-        <translation>普通输出Y117</translation>
+        <translation type="vanished">普通输出Y117</translation>
     </message>
     <message>
         <source>Normal Y120</source>
-        <translation>普通输出Y120</translation>
+        <translation type="vanished">普通输出Y120</translation>
     </message>
     <message>
         <source>Normal Y121</source>
-        <translation>普通输出Y121</translation>
+        <translation type="vanished">普通输出Y121</translation>
     </message>
     <message>
         <source>Normal Y122</source>
-        <translation>普通输出Y122</translation>
+        <translation type="vanished">普通输出Y122</translation>
     </message>
     <message>
         <source>Normal Y123</source>
-        <translation>普通输出Y123</translation>
+        <translation type="vanished">普通输出Y123</translation>
     </message>
     <message>
         <source>Normal Y124</source>
-        <translation>普通输出Y124</translation>
+        <translation type="vanished">普通输出Y124</translation>
     </message>
     <message>
         <source>Normal Y125</source>
-        <translation>普通输出Y125</translation>
+        <translation type="vanished">普通输出Y125</translation>
     </message>
     <message>
         <source>Normal Y126</source>
-        <translation>普通输出Y126</translation>
+        <translation type="vanished">普通输出Y126</translation>
     </message>
     <message>
         <source>Normal Y127</source>
-        <translation>普通输出Y127</translation>
+        <translation type="vanished">普通输出Y127</translation>
     </message>
     <message>
         <source>Normal Y130</source>
-        <translation>普通输出Y130</translation>
+        <translation type="vanished">普通输出Y130</translation>
     </message>
     <message>
         <source>Normal Y131</source>
-        <translation>普通输出Y131</translation>
+        <translation type="vanished">普通输出Y131</translation>
     </message>
     <message>
         <source>Normal Y132</source>
-        <translation>普通输出Y132</translation>
+        <translation type="vanished">普通输出Y132</translation>
     </message>
     <message>
         <source>Normal Y133</source>
-        <translation>普通输出Y133</translation>
+        <translation type="vanished">普通输出Y133</translation>
     </message>
     <message>
         <source>Normal Y134</source>
-        <translation>普通输出Y134</translation>
+        <translation type="vanished">普通输出Y134</translation>
     </message>
     <message>
         <source>Normal Y135</source>
-        <translation>普通输出Y135</translation>
+        <translation type="vanished">普通输出Y135</translation>
     </message>
     <message>
         <source>Normal Y136</source>
-        <translation>普通输出Y136</translation>
+        <translation type="vanished">普通输出Y136</translation>
     </message>
     <message>
         <source>Normal Y137</source>
-        <translation>普通输出Y137</translation>
+        <translation type="vanished">普通输出Y137</translation>
     </message>
     <message>
         <source>Normal Y140</source>
-        <translation>普通输出Y140</translation>
+        <translation type="vanished">普通输出Y140</translation>
     </message>
     <message>
         <source>Normal Y141</source>
-        <translation>普通输出Y141</translation>
+        <translation type="vanished">普通输出Y141</translation>
     </message>
     <message>
         <source>Normal Y142</source>
-        <translation>普通输出Y142</translation>
+        <translation type="vanished">普通输出Y142</translation>
     </message>
     <message>
         <source>Normal Y143</source>
-        <translation>普通输出Y143</translation>
+        <translation type="vanished">普通输出Y143</translation>
     </message>
     <message>
         <source>Normal Y144</source>
-        <translation>普通输出Y144</translation>
+        <translation type="vanished">普通输出Y144</translation>
     </message>
     <message>
         <source>Normal Y145</source>
-        <translation>普通输出Y145</translation>
+        <translation type="vanished">普通输出Y145</translation>
     </message>
     <message>
         <source>Normal Y146</source>
-        <translation>普通输出Y146</translation>
+        <translation type="vanished">普通输出Y146</translation>
     </message>
     <message>
         <source>Normal Y147</source>
-        <translation>普通输出Y147</translation>
+        <translation type="vanished">普通输出Y147</translation>
     </message>
     <message>
         <source>Normal Y150</source>
-        <translation>普通输出Y150</translation>
+        <translation type="vanished">普通输出Y150</translation>
     </message>
     <message>
         <source>Normal Y151</source>
-        <translation>普通输出Y151</translation>
+        <translation type="vanished">普通输出Y151</translation>
     </message>
     <message>
         <source>Normal Y152</source>
-        <translation>普通输出Y152</translation>
+        <translation type="vanished">普通输出Y152</translation>
     </message>
     <message>
         <source>Normal Y153</source>
-        <translation>普通输出Y153</translation>
+        <translation type="vanished">普通输出Y153</translation>
     </message>
     <message>
         <source>Normal Y154</source>
-        <translation>普通输出Y154</translation>
+        <translation type="vanished">普通输出Y154</translation>
     </message>
     <message>
         <source>Normal Y155</source>
-        <translation>普通输出Y155</translation>
+        <translation type="vanished">普通输出Y155</translation>
     </message>
     <message>
         <source>Normal Y156</source>
-        <translation>普通输出Y156</translation>
+        <translation type="vanished">普通输出Y156</translation>
     </message>
     <message>
         <source>Normal Y157</source>
-        <translation>普通输出Y157</translation>
+        <translation type="vanished">普通输出Y157</translation>
     </message>
     <message>
         <source>Normal Y160</source>
-        <translation>普通输出Y160</translation>
+        <translation type="vanished">普通输出Y160</translation>
     </message>
     <message>
         <source>Normal Y161</source>
-        <translation>普通输出Y161</translation>
+        <translation type="vanished">普通输出Y161</translation>
     </message>
     <message>
         <source>Normal Y162</source>
-        <translation>普通输出Y162</translation>
+        <translation type="vanished">普通输出Y162</translation>
     </message>
     <message>
         <source>Normal Y163</source>
-        <translation>普通输出Y163</translation>
+        <translation type="vanished">普通输出Y163</translation>
     </message>
     <message>
         <source>Normal Y164</source>
-        <translation>普通输出Y164</translation>
+        <translation type="vanished">普通输出Y164</translation>
     </message>
     <message>
         <source>Normal Y165</source>
-        <translation>普通输出Y165</translation>
+        <translation type="vanished">普通输出Y165</translation>
     </message>
     <message>
         <source>Normal Y166</source>
-        <translation>普通输出Y166</translation>
+        <translation type="vanished">普通输出Y166</translation>
     </message>
     <message>
         <source>Normal Y167</source>
-        <translation>普通输出Y167</translation>
+        <translation type="vanished">普通输出Y167</translation>
     </message>
     <message>
         <source>Normal Y170</source>
-        <translation>普通输出Y170</translation>
+        <translation type="vanished">普通输出Y170</translation>
     </message>
     <message>
         <source>Normal Y171</source>
-        <translation>普通输出Y171</translation>
+        <translation type="vanished">普通输出Y171</translation>
     </message>
     <message>
         <source>Normal Y172</source>
-        <translation>普通输出Y172</translation>
+        <translation type="vanished">普通输出Y172</translation>
     </message>
     <message>
         <source>Normal Y173</source>
-        <translation>普通输出Y173</translation>
+        <translation type="vanished">普通输出Y173</translation>
     </message>
     <message>
         <source>Normal Y174</source>
-        <translation>普通输出Y174</translation>
+        <translation type="vanished">普通输出Y174</translation>
     </message>
     <message>
         <source>Normal Y175</source>
-        <translation>普通输出Y175</translation>
+        <translation type="vanished">普通输出Y175</translation>
     </message>
     <message>
         <source>Normal Y176</source>
-        <translation>普通输出Y176</translation>
+        <translation type="vanished">普通输出Y176</translation>
     </message>
     <message>
         <source>Normal Y177</source>
-        <translation>普通输出Y177</translation>
+        <translation type="vanished">普通输出Y177</translation>
     </message>
     <message>
         <source>Normal Y200</source>
-        <translation>普通输出Y200</translation>
+        <translation type="vanished">普通输出Y200</translation>
     </message>
     <message>
         <source>Normal Y201</source>
-        <translation>普通输出Y201</translation>
+        <translation type="vanished">普通输出Y201</translation>
     </message>
     <message>
         <source>Normal Y202</source>
-        <translation>普通输出Y202</translation>
+        <translation type="vanished">普通输出Y202</translation>
     </message>
     <message>
         <source>Normal Y203</source>
-        <translation>普通输出Y203</translation>
+        <translation type="vanished">普通输出Y203</translation>
     </message>
     <message>
         <source>Normal Y204</source>
-        <translation>普通输出Y204</translation>
+        <translation type="vanished">普通输出Y204</translation>
     </message>
     <message>
         <source>Normal Y205</source>
-        <translation>普通输出Y205</translation>
+        <translation type="vanished">普通输出Y205</translation>
     </message>
     <message>
         <source>Normal Y206</source>
-        <translation>普通输出Y206</translation>
+        <translation type="vanished">普通输出Y206</translation>
     </message>
     <message>
         <source>Normal Y207</source>
-        <translation>普通输出Y207</translation>
+        <translation type="vanished">普通输出Y207</translation>
     </message>
     <message>
         <source>Y014</source>
@@ -4506,7 +4506,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具标定</translation>
+        <translation type="vanished">工具标定</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4526,7 +4526,7 @@
     </message>
     <message>
         <source>toolcoord</source>
-        <translation>工作台标定</translation>
+        <translation type="vanished">工作台标定</translation>
     </message>
 </context>
 <context>
@@ -5768,7 +5768,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -5800,11 +5800,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -7752,11 +7752,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

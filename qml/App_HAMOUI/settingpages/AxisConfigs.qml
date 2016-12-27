@@ -668,7 +668,7 @@ Item {
                     configName: qsTr("Axis Type")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items:[qsTr("Rotate"), qsTr("Line")]
+                    items:[qsTr("Rotate"), qsTr("Line"),qsTr("Rotate to Zero")]
                     z:7
                 }
                 ICComboBoxConfigEdit{

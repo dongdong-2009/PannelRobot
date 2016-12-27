@@ -186,7 +186,7 @@ ExtentActionEditorBase {
                         configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
-                        unit: AxisDefine.axisInfos[0].unit
+                        unit: "mm"
                     }
                     ICConfigEdit{
                         id:ypos2Edit
@@ -194,7 +194,7 @@ ExtentActionEditorBase {
                         configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
-                        unit: AxisDefine.axisInfos[1].unit
+                        unit: "mm"
                     }
                     ICConfigEdit{
                         id:zpos2Edit
@@ -202,7 +202,7 @@ ExtentActionEditorBase {
                         configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
-                        unit: AxisDefine.axisInfos[2].unit
+                        unit: "mm"
                     }
                     ICConfigEdit{
                         id:upos2Edit
@@ -210,7 +210,7 @@ ExtentActionEditorBase {
                         configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
-                        unit: AxisDefine.axisInfos[3].unit
+                        unit: "°"
                     }
                     ICConfigEdit{
                         id:vpos2Edit
@@ -218,7 +218,7 @@ ExtentActionEditorBase {
                         configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
-                        unit: AxisDefine.axisInfos[4].unit
+                        unit: "°"
                     }
                     ICConfigEdit{
                         id:wpos2Edit
@@ -226,7 +226,7 @@ ExtentActionEditorBase {
                         configAddr: "s_rw_0_32_3_1300"
                         configValue: "0.000"
                         configNameWidth: 40
-                        unit: AxisDefine.axisInfos[5].unit
+                        unit: "°"
                     }
                 }
             }

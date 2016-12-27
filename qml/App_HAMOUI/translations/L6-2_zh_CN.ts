@@ -621,6 +621,22 @@
         <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>ALARM_FPGA_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_ANALOG_CRC_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_ANALOG_OVERTIME_ERR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ENABLE_FORBID</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnalogControlEditor</name>
@@ -1192,11 +1208,11 @@
     </message>
     <message>
         <source>Motor 2</source>
-        <translation>安川</translation>
+        <translation>台达</translation>
     </message>
     <message>
         <source>Motor 3</source>
-        <translation>台达伺服</translation>
+        <translation>松下</translation>
     </message>
     <message>
         <source>Encoder Type</source>
@@ -1308,7 +1324,7 @@
     </message>
     <message>
         <source>Motor 4</source>
-        <translation>Motor4</translation>
+        <translation>华成</translation>
     </message>
     <message>
         <source>SACC1</source>
@@ -1336,11 +1352,19 @@
     </message>
     <message>
         <source>Motor 5</source>
-        <translation type="unfinished">Motor5</translation>
+        <translation>三协</translation>
     </message>
     <message>
         <source>Motor 6</source>
-        <translation type="unfinished">Motor6</translation>
+        <translation>安川</translation>
+    </message>
+    <message>
+        <source>Motor 7</source>
+        <translation>欧瑞</translation>
+    </message>
+    <message>
+        <source>Rotate to Zero</source>
+        <translation>旋转清零</translation>
     </message>
 </context>
 <context>
@@ -1776,6 +1800,11 @@
         <source>Exporting...</source>
         <translation>导出中...</translation>
     </message>
+    <message>
+        <source>name must be word number or underline
+ and underline begin is not allowed</source>
+        <translation type="unfinished">名称不符合要求</translation>
+    </message>
 </context>
 <context>
     <name>DebugPage</name>
@@ -2150,6 +2179,329 @@
     <message>
         <source>M</source>
         <translation>中间变量</translation>
+    </message>
+</context>
+<context>
+    <name>IOConfigs</name>
+    <message>
+        <source>Normal Y010</source>
+        <translation>绿灯</translation>
+    </message>
+    <message>
+        <source>Normal Y011</source>
+        <translation>黄灯</translation>
+    </message>
+    <message>
+        <source>Normal Y012</source>
+        <translation>红灯</translation>
+    </message>
+    <message>
+        <source>Normal Y013</source>
+        <translation>报警声</translation>
+    </message>
+    <message>
+        <source>Normal Y014</source>
+        <translation>普通输出Y014</translation>
+    </message>
+    <message>
+        <source>Normal Y015</source>
+        <translation>普通输出Y015</translation>
+    </message>
+    <message>
+        <source>Normal Y016</source>
+        <translation>姿势阀</translation>
+    </message>
+    <message>
+        <source>Normal Y017</source>
+        <translation>普通输出Y017</translation>
+    </message>
+    <message>
+        <source>Normal Y020</source>
+        <translation>车床加工</translation>
+    </message>
+    <message>
+        <source>Normal Y021</source>
+        <translation>车床安全门开</translation>
+    </message>
+    <message>
+        <source>Normal Y022</source>
+        <translation>车床安全门关</translation>
+    </message>
+    <message>
+        <source>Normal Y023</source>
+        <translation>毛坯吸</translation>
+    </message>
+    <message>
+        <source>Normal Y024</source>
+        <translation>成品吸</translation>
+    </message>
+    <message>
+        <source>Normal Y025</source>
+        <translation>左旋</translation>
+    </message>
+    <message>
+        <source>Normal Y026</source>
+        <translation>右旋</translation>
+    </message>
+    <message>
+        <source>Normal Y027</source>
+        <translation>普通输出Y027</translation>
+    </message>
+    <message>
+        <source>Normal Y030</source>
+        <translation>普通输出Y030</translation>
+    </message>
+    <message>
+        <source>Normal Y031</source>
+        <translation>反吸</translation>
+    </message>
+    <message>
+        <source>Normal Y032</source>
+        <translation>车床吹气</translation>
+    </message>
+    <message>
+        <source>Normal Y033</source>
+        <translation>车床物料架起</translation>
+    </message>
+    <message>
+        <source>Normal Y034</source>
+        <translation>车床物料架落</translation>
+    </message>
+    <message>
+        <source>Normal Y035</source>
+        <translation>普通输出Y035</translation>
+    </message>
+    <message>
+        <source>Normal Y036</source>
+        <translation>普通输出Y036</translation>
+    </message>
+    <message>
+        <source>Normal Y037</source>
+        <translation>普通输出Y037</translation>
+    </message>
+    <message>
+        <source>Normal Y040</source>
+        <translation>普通输出Y040</translation>
+    </message>
+    <message>
+        <source>Normal Y041</source>
+        <translation>普通输出Y041</translation>
+    </message>
+    <message>
+        <source>Normal Y042</source>
+        <translation>普通输出Y042</translation>
+    </message>
+    <message>
+        <source>Normal Y043</source>
+        <translation>普通输出Y043</translation>
+    </message>
+    <message>
+        <source>Normal Y044</source>
+        <translation>普通输出Y044</translation>
+    </message>
+    <message>
+        <source>Normal Y045</source>
+        <translation>普通输出Y045</translation>
+    </message>
+    <message>
+        <source>Normal Y046</source>
+        <translation>普通输出Y046</translation>
+    </message>
+    <message>
+        <source>Normal Y047</source>
+        <translation>普通输出Y047</translation>
+    </message>
+    <message>
+        <source>M010</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M011</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M012</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M013</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M014</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M015</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M016</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M017</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M020</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M021</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M022</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M023</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M024</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M025</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M026</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>M027</source>
+        <translation>报警状态</translation>
+    </message>
+    <message>
+        <source>Time Y010</source>
+        <translation>时间输出Y010</translation>
+    </message>
+    <message>
+        <source>Time Y011</source>
+        <translation>时间输出Y011</translation>
+    </message>
+    <message>
+        <source>Time Y012</source>
+        <translation>时间输出Y012</translation>
+    </message>
+    <message>
+        <source>Time Y013</source>
+        <translation>时间输出Y013</translation>
+    </message>
+    <message>
+        <source>Time Y014</source>
+        <translation>时间输出Y014</translation>
+    </message>
+    <message>
+        <source>Time Y015</source>
+        <translation>时间输出Y015</translation>
+    </message>
+    <message>
+        <source>Time Y016</source>
+        <translation>时间输出Y016</translation>
+    </message>
+    <message>
+        <source>Time Y017</source>
+        <translation>时间输出Y017</translation>
+    </message>
+    <message>
+        <source>Time Y020</source>
+        <translation>时间输出Y020</translation>
+    </message>
+    <message>
+        <source>Time Y021</source>
+        <translation>时间输出Y021</translation>
+    </message>
+    <message>
+        <source>Time Y022</source>
+        <translation>时间输出Y022</translation>
+    </message>
+    <message>
+        <source>Time Y023</source>
+        <translation>时间输出Y023</translation>
+    </message>
+    <message>
+        <source>Time Y024</source>
+        <translation>时间输出Y024</translation>
+    </message>
+    <message>
+        <source>Time Y025</source>
+        <translation>时间输出Y025</translation>
+    </message>
+    <message>
+        <source>Time Y026</source>
+        <translation>时间输出Y026</translation>
+    </message>
+    <message>
+        <source>Time Y027</source>
+        <translation>时间输出Y027</translation>
+    </message>
+    <message>
+        <source>Time Y030</source>
+        <translation>时间输出Y030</translation>
+    </message>
+    <message>
+        <source>Time Y031</source>
+        <translation>时间输出Y031</translation>
+    </message>
+    <message>
+        <source>Time Y032</source>
+        <translation>时间输出Y032</translation>
+    </message>
+    <message>
+        <source>Time Y033</source>
+        <translation>时间输出Y033</translation>
+    </message>
+    <message>
+        <source>Time Y034</source>
+        <translation>时间输出Y034</translation>
+    </message>
+    <message>
+        <source>Time Y035</source>
+        <translation>时间输出Y035</translation>
+    </message>
+    <message>
+        <source>Time Y036</source>
+        <translation>时间输出Y036</translation>
+    </message>
+    <message>
+        <source>Time Y037</source>
+        <translation>时间输出Y037</translation>
+    </message>
+    <message>
+        <source>Time Y040</source>
+        <translation>时间输出Y040</translation>
+    </message>
+    <message>
+        <source>Time Y041</source>
+        <translation>时间输出Y041</translation>
+    </message>
+    <message>
+        <source>Time Y042</source>
+        <translation>时间输出Y042</translation>
+    </message>
+    <message>
+        <source>Time Y043</source>
+        <translation>时间输出Y043</translation>
+    </message>
+    <message>
+        <source>Time Y044</source>
+        <translation>时间输出Y044</translation>
+    </message>
+    <message>
+        <source>Time Y045</source>
+        <translation>时间输出Y045</translation>
+    </message>
+    <message>
+        <source>Time Y046</source>
+        <translation>时间输出Y046</translation>
+    </message>
+    <message>
+        <source>Time Y047</source>
+        <translation>时间输出Y047</translation>
     </message>
 </context>
 <context>
@@ -5957,39 +6309,39 @@ please chose!</source>
     </message>
     <message>
         <source>Axis</source>
-        <translation type="unfinished">轴</translation>
+        <translation>轴</translation>
     </message>
     <message>
         <source>Rel Points</source>
-        <translation type="unfinished"></translation>
+        <translation>引用点</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="unfinished"></translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>Start Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>开始位</translation>
     </message>
     <message>
         <source>Set In</source>
-        <translation type="unfinished">设入</translation>
+        <translation>设入</translation>
     </message>
     <message>
         <source>Addr</source>
-        <translation type="unfinished"></translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>间距</translation>
     </message>
     <message>
         <source>Count</source>
-        <translation type="unfinished"></translation>
+        <translation>个数</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="unfinished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>%</source>
@@ -5997,7 +6349,7 @@ please chose!</source>
     </message>
     <message>
         <source>Counter</source>
-        <translation type="unfinished">计数器</translation>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>
@@ -7376,7 +7728,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>confirmBtn</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">确定修改</translation>
     </message>
 </context>
 <context>

@@ -138,7 +138,7 @@ ContentPageBase{
     Component.onCompleted: {
         ShareData.UserInfo.registUserChangeEvent(programPageInstance);
         ShareData.GlobalStatusCenter.registeKnobChangedEvent(programPageInstance);
-        posDisplayBar.setWorldPosVisible(false);
+        posDisplayBar.setJogPosVisible(false);
         swichBtn.anchors.top = programContainer.top;
 //        swichBtn.anchors.right = programContainer.right;
 //        swichBtn.anchors.rightMargin = 50;

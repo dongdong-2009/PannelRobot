@@ -194,7 +194,7 @@ Rectangle {
             icon: "../images/write_ram.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
-            visible: false
+//            visible: false
             onButtonClicked: dataMenuTriggered()
         }
 

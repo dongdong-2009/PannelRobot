@@ -700,7 +700,7 @@ Item {
                     configName: qsTr("Reduction Ratio")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    visible: axisType.configValue == 0
+                    visible: axisType.configValue == 0 || axisType.configValue == 2
                 }
                 ICConfigEdit{
                     id:pLimit

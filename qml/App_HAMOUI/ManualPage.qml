@@ -162,6 +162,6 @@ ContentPageBase {
 
 
     Component.onCompleted: {
-        posDisplayBar.setWorldPosVisible(false);
+        posDisplayBar.setJogPosVisible(false);
     }
 }

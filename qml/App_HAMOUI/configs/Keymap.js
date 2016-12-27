@@ -326,8 +326,8 @@ function endSpeedCaclByTimeStop(){
     speedInfo.changeCount = 0;
 }
 
-var hwtestSequence = [ KEY_F5, KEY_F1, KEY_F4, KEY_F1, KEY_F3, KEY_F1, KEY_F2, KEY_F5];
-var recalSequence = [ KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5]
+var hwtestSequence = [KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5];
+var recalSequence = [KEY_F5, KEY_F1, KEY_F4, KEY_F1, KEY_F3, KEY_F1, KEY_F2, KEY_F5];
 var currentKeySequence = [];
 
 function matchSequenceHelper(sequence){

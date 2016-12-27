@@ -205,10 +205,10 @@ void PanelRobotController::Init()
     ICAppSettings();
     InitDatabase_();
     emit LoadMessage("Database inited.");
-    InitMold_();
-    emit LoadMessage("Record inited.");
     InitMachineConfig_();
     emit LoadMessage("Machine configs inited.");
+    InitMold_();
+    emit LoadMessage("Record inited.");
 
     //    host_->SetCommunicateDebug(true);
 #ifdef COMM_DEBUG

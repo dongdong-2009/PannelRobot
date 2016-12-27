@@ -207,6 +207,7 @@ Item {
             }
             Row{
                 spacing: 6
+                z:10
                 ICCheckableComboboxEdit{
                     id:signalStop
                     configName: qsTr("Signal Stop")
@@ -366,6 +367,16 @@ Item {
         m5Axis.visible = AxisDefine.axisInfos[5].visiable;
         m6Axis.visible = AxisDefine.axisInfos[6].visiable;
         m7Axis.visible = AxisDefine.axisInfos[7].visiable;
+
+        m0Axis.unit = AxisDefine.axisInfos[0].unit;
+        m1Axis.unit = AxisDefine.axisInfos[1].unit;
+        m2Axis.unit = AxisDefine.axisInfos[2].unit;
+        m3Axis.unit = AxisDefine.axisInfos[3].unit;
+        m4Axis.unit = AxisDefine.axisInfos[4].unit;
+        m5Axis.unit = AxisDefine.axisInfos[5].unit;
+        m6Axis.unit = AxisDefine.axisInfos[6].unit;
+        m7Axis.unit = AxisDefine.axisInfos[7].unit;
+
     }
 
     function onPointAdded(point){

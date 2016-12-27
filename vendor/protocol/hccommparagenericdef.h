@@ -107,10 +107,14 @@ typedef enum _ICAddr
     ICAddr_System_Retain_26 = 26,//< 0:关节坐标显示；1：输出累计值；2：反馈累计值;3:轨迹速度;4:脉冲容差;5:脉冲测试显示
     ICAddr_System_Retain_27 = 27,//< 手轮定义参数
     ICAddr_System_Retain_28 = 28,//< 原点位置选择：0：取消回原点；1：确认每个轴都已经达到原点附近；2：确认上一次关机前按下急停;3:重新找原点
+    ICAddr_System_Retain_29 = 29,//< 拖动视教使能，0：关闭，1：打开
     ICAddr_System_Retain_30 = 30,//< 手动记录坐标类型 0：直线起点位置；1：直线终点位置
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值（已经废除）
     ICAddr_System_Retain_31 = 31,//< 单轴手动速度独立设定切换（0：默认使用全局速度;1:使用单轴固定手动速度）：手动模式有效
+
+	ICAddr_System_Retain_35 = 35,//< 驱控四轴，主机刷新参数使能，0：关闭，1：打开
+
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_41= 41,//<  // 自定义轴动作2 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_42= 42,//<  // 自定义轴动作3 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
@@ -1296,6 +1300,17 @@ typedef enum
     ALARM_SERVO_AXIS6_OVER_CUR_FLT,//<名字  ：伺服6故障：过流故障
     ALARM_SERVO_AXIS7_OVER_CUR_FLT,//<名字  ：伺服7故障：过流故障
     ALARM_SERVO_AXIS8_OVER_CUR_FLT,//<名字  ：伺服8故障：过流故障
+
+    ALARM_SERVO_AXIS1_ENABLE_FORBID = 1000,//<名字：伺服1故障：伺服未使能
+    ALARM_SERVO_AXIS2_ENABLE_FORBID,//<名字：伺服2故障：伺服未使能
+    ALARM_SERVO_AXIS3_ENABLE_FORBID,//<名字：伺服3故障：伺服未使能
+    ALARM_SERVO_AXIS4_ENABLE_FORBID,//<名字：伺服4故障：伺服未使能
+    ALARM_SERVO_AXIS5_ENABLE_FORBID,//<名字：伺服5故障：伺服未使能
+    ALARM_SERVO_AXIS6_ENABLE_FORBID,//<名字：伺服6故障：伺服未使能
+    ALARM_SERVO_AXIS7_ENABLE_FORBID,//<名字：伺服7故障：伺服未使能
+    ALARM_SERVO_AXIS8_ENABLE_FORBID,//<名字：伺服8故障：伺服未使能
+
+
 
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
     ALARM_IO_ERR_END = 4095,    //<名字：IO报警结束地址 目前最多只到3583

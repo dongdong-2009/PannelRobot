@@ -45,9 +45,9 @@ var alarmInfo = {
     21:qsTr("ALARM_IO_CONNET3_ERR"),
     22:qsTr("ALARM_IO_CONNET4_ERR"),
     23:qsTr("ALARM_PROGRAM_CHANGE_ERR"),
-    24:qsTr("1"),
-    25:qsTr("2"),
-    26:qsTr("3"),
+    24:qsTr("ALARM_FPGA_ERR"),
+    25:qsTr("ALARM_ANALOG_CRC_ERR"),
+    26:qsTr("ALARM_ANALOG_OVERTIME_ERR"),
     27:qsTr("1"),
     28:qsTr("2"),
     29:qsTr("3"),
@@ -382,6 +382,15 @@ var alarmInfo = {
     855:m5Name + qsTr("ALARM_SERVO_AXIS_OVER_CUR_FLT"),
     856:m6Name + qsTr("ALARM_SERVO_AXIS_OVER_CUR_FLT"),
     857:m7Name + qsTr("ALARM_SERVO_AXIS_OVER_CUR_FLT"),
+
+    1000:m0Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m1Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m2Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m3Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m4Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m5Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m6Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
+    1000:m7Name + qsTr("ALARM_SERVO_AXIS_ENABLE_FORBID"),
 
 }
 

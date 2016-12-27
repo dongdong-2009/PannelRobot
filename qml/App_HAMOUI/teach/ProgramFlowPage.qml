@@ -1513,7 +1513,13 @@ Rectangle {
                         text:qsTr("Start Line:[-1]")
 
                         onButtonClicked: {
-                            panelRobotController.setSingleRunStart(editing.currentIndex, - 1, programListView.currentIndex);
+                            var pI = programListView.currentIndex;
+                            var act = currentModelData().mI_ActionObject.action;
+                            if(act == Teach.F_CMD_SYNC_START)
+                                pI += 1;
+                            else if(act == Teach.F_CMD_SYNC_END)
+                                pI -= 1;
+                            panelRobotController.setSingleRunStart(editing.currentIndex, -1, pI);
                             text = ICString.icStrformat(qsTr("Start Line:[{0}]"),  programListView.currentIndex);
                         }
                     }

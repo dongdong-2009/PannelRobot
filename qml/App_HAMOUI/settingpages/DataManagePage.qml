@@ -12,6 +12,12 @@ Item {
         onAccept: {
             tip.runningTip(qsTr("Backup..."));
             var backupName = inputText;
+            var nC = /^[A-Za-z0-9\u4E00-\u9FA5]+[A-Za-z0-9-_\u4E00-\u9FA5]*$/;
+            if(!nC.test(backupName)){
+                tip.warning(qsTr("name must be word number or underline\n and underline begin is not allowed"), qsTr("OK"));
+                return;
+            }
+
             if(hmiConfigs.isChecked){
                 panelRobotController.backupHMIBackup(backupName, Storage.backup());
             }else if(machineRunningConfigs.isChecked){

@@ -181,7 +181,9 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
-        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked)
+        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked
+                  && !poseOffsetLine3DType.isChecked && !offsetJogType.isChecked &&
+                  !poseOffsetCurve3DType.isChecked)
         ICButton{
             id:setIn
             text: qsTr("Set In")
@@ -833,7 +835,7 @@ Item {
         onAxisDefinesChanged();
     }
     function onAxisDefinesChanged(){
-        lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[0].visiable;
+        lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable;
         lineXZType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[2].visiable;
         lineYZType.visible = AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
         circlePathType.visible = offsetPathType.visible = line3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;

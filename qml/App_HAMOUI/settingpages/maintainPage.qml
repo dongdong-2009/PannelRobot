@@ -10,7 +10,7 @@ ICSettingConfigsScope{
         Row{
             id:versionContainer
             Text {
-            text: qsTr("UI Version:") + "L6-1.9-Robot-1.1.0-coor" + ";"
+            text: qsTr("UI Version:") + "L6-2.0-Robot-1.1.0-coor" + ";"
             }
             Text {
                 id:hostVersion

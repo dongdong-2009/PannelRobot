@@ -1101,6 +1101,31 @@ MouseArea{
             }
         }
 
+
+        Row{
+            anchors.top: coordSel.bottom
+            anchors.left:coordSel.left
+            anchors.topMargin: 30
+            spacing: 20
+        ICButton {
+            id: on_torque
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("torque")
+            onButtonClicked: {
+                panelRobotController.modifyConfigValue(26,9);
+            }
+        }
+        ICButton {
+            id: on_pos
+            width: keyboardSection.btnWidgth
+            height:keyboardSection.btnHeight
+            text: qsTr("pos")
+            onButtonClicked: {
+                panelRobotController.modifyConfigValue(26,0);
+            }
+        }
+        }
 //        onVisibleChanged: {
 ////            ShareData.GlobalStatusCenter.setTuneGlobalSpeedEn(visible);
 //            //        if(visible){

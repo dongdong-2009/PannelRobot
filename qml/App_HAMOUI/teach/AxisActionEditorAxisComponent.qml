@@ -12,6 +12,7 @@ Row{
     property int editorWidth: 80
     property alias rangeAddr: pos.bindConfig
     property alias angle: pos.text
+    property alias unit: pos.unit
     property alias mode: axis.state
     property alias relPoints: relPoint.items
     property alias popupMode: relPoint.popupMode

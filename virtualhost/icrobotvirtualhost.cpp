@@ -127,7 +127,6 @@ bool ICRobotVirtualhost::SendMold(ICVirtualHostPtr hostPtr, const QVector<QVecto
 {
 #ifdef NEW_PLAT
     AddWriteConfigCommand(hostPtr, ICAddr_System_Retain_80, 0x80000000);
-    qDebug("dfdf");
     QVector<QVector<quint32> > formattedData = formatProgramFrame(data);
     for(int i = 0; i < formattedData.size(); ++i)
     {
@@ -596,7 +595,6 @@ void ICRobotVirtualhost::CommunicateImpl()
                     {
                         //                qDebug()<<"statusDataTmp_.at(i)";
                         //                    SetCommunicateInterval(INIT_INTERVAL);
-                        qDebug()<<"statusDataTmp_.at(i)";
                         emit NeedToInitHost();
                         ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
                                                                                                               ICAddr_System_Retain_2,

@@ -215,6 +215,110 @@ MouseArea{
                 }
             }
         }
+
+        /****************************************/
+        ICButton{
+            id:niujuBtn
+            visible: false
+            text: qsTr("niuju >>")
+            x:parent.width - width
+            anchors.top:analogDetailsBtn.bottom
+            anchors.topMargin: 6
+            color: "green"
+            onButtonClicked: {
+                if(niujuDetails.visible)
+                    toHideNiujuDetails.start();
+                else
+                    toShowNiujuDetails.start();
+            }
+
+            SequentialAnimation{
+                id:toShowNiujuDetails
+                PropertyAction{target:niujuBtn; property: "z"; value: 10}
+                PropertyAction{target: niujuDetails; property: "visible"; value: true}
+                PropertyAnimation{target:niujuBtn; property: "x"; to: niujuBtn.x + niujuDetails.width}
+                PropertyAction{target: niujuBtn; property: "text"; value: qsTr("niuju <<")}
+                PropertyAction{target:niujuBtn; property: "bgColor"; value: "#A0A0F0"}
+            }
+            SequentialAnimation{
+                id:toHideNiujuDetails
+                PropertyAnimation{target:niujuBtn; property: "x"; to: niujuBtn.x - niujuDetails.width}
+                PropertyAction{target: niujuDetails; property: "visible"; value: false}
+                PropertyAction{target: niujuBtn; property: "text"; value: qsTr("niuju >>")}
+                PropertyAction{target:niujuBtn; property: "bgColor"; value: "green"}
+                PropertyAction{target:niujuBtn; property: "z"; value: 1}
+
+            }
+
+            Rectangle{
+                MouseArea{anchors.fill: parent}
+                id:niujuDetails
+                anchors.right: niujuBtn.left
+                border.color: "gray"
+                border.width: 1
+                width: 460
+                height: container.height
+                color: "#A0A0F0"
+                y:-niujuBtn.y
+                visible: false
+                onVisibleChanged: {
+                    if(visible)panelRobotController.modifyConfigValue(26,8);
+                    else panelRobotController.modifyConfigValue(26,0);
+                }
+
+                ICStatusScope{
+                    anchors.centerIn: parent
+                    Column{
+                        Row{
+                            Text {
+                                text: qsTr("motor1:")
+                            }
+                        ICStatusWidget{
+                            bindStatus:"c_ro_0_16_0_902"
+                        }
+                        }
+
+                        Row{
+                            Text {
+                                text: qsTr("motor2:")
+                            }
+                        ICStatusWidget{
+
+                            bindStatus:"c_ro_0_16_0_906"
+                        }
+                        }
+
+                        Row{
+                            Text {
+                                text: qsTr("motor3:")
+                            }
+                        ICStatusWidget{
+
+                            bindStatus:"c_ro_0_16_0_910"
+                        }
+                        }
+
+                        Row{
+                            Text {
+                                text: qsTr("motor4:")
+                            }
+                        ICStatusWidget{
+
+                            bindStatus:"c_ro_0_16_0_914"
+                        }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        /****************************************/
+
+
+
+
+
     }
     Timer{
         id:refreshTimer

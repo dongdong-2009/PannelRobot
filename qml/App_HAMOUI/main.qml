@@ -812,6 +812,7 @@ Rectangle {
             for(var i =0;i<toolCoords.length;++i){
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
+            refreshTimer.start();
         });
         //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
         //                                              "","", "", "", 19);
@@ -902,7 +903,7 @@ Rectangle {
 
     Timer{
         id:refreshTimer
-        interval: 50; running: true; repeat: true
+        interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();

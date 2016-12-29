@@ -766,6 +766,19 @@ Rectangle {
         m[6] = panelRobotController.getConfigValue("s_rw_31_1_0_146");
         m[7] = panelRobotController.getConfigValue("s_rw_31_1_0_153");
         AxisDefine.changeAxisVisble(m,axisNum);
+
+        var axisUnit = [];
+        axisUnit[0] = panelRobotController.getConfigValue("s_rw_24_4_0_104");
+        axisUnit[1] = panelRobotController.getConfigValue("s_rw_24_4_0_111");
+        axisUnit[2] = panelRobotController.getConfigValue("s_rw_24_4_0_118");
+        axisUnit[3] = panelRobotController.getConfigValue("s_rw_24_4_0_125");
+        axisUnit[4] = panelRobotController.getConfigValue("s_rw_24_4_0_132");
+        axisUnit[5] = panelRobotController.getConfigValue("s_rw_24_4_0_139");
+        axisUnit[6] = panelRobotController.getConfigValue("s_rw_24_4_0_146");
+        axisUnit[7] = panelRobotController.getConfigValue("s_rw_24_4_0_153");
+        for(var i=0;i<8;++i)
+            AxisDefine.changeAxisUnit(i, axisUnit[i]);
+
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){

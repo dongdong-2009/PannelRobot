@@ -120,7 +120,7 @@ Item {
         ICConfigEdit{
             id:p1m0
             configName: AxisDefine.axisInfos[0].name
-            unit: AxisDefine.axisInfos[0].unit
+            unit: "mm"
             configNameWidth: 15
             decimal: 3
             min:-10000
@@ -128,7 +128,7 @@ Item {
         ICConfigEdit{
             id:p1m3
             configName: AxisDefine.axisInfos[3].name
-            unit: AxisDefine.axisInfos[3].unit
+            unit: "°"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
@@ -140,7 +140,7 @@ Item {
         ICConfigEdit{
             id:p1m1
             configName: AxisDefine.axisInfos[1].name
-            unit: AxisDefine.axisInfos[1].unit
+            unit: "mm"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
@@ -148,7 +148,7 @@ Item {
         ICConfigEdit{
             id:p1m4
             configName: AxisDefine.axisInfos[4].name
-            unit: AxisDefine.axisInfos[4].unit
+            unit: "°"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
@@ -160,7 +160,7 @@ Item {
         ICConfigEdit{
             id:p1m2
             configName: AxisDefine.axisInfos[2].name
-            unit: AxisDefine.axisInfos[2].unit
+            unit: "mm"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
@@ -168,7 +168,7 @@ Item {
         ICConfigEdit{
             id:p1m5
             configName: AxisDefine.axisInfos[5].name
-            unit: AxisDefine.axisInfos[5].unit
+            unit: "°"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
@@ -191,7 +191,7 @@ Item {
             ICConfigEdit{
                 id:p2m0
                 configName: AxisDefine.axisInfos[0].name
-                unit: AxisDefine.axisInfos[0].unit
+                unit: "mm"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -199,7 +199,7 @@ Item {
             ICConfigEdit{
                 id:p2m3
                 configName: AxisDefine.axisInfos[3].name
-                unit: AxisDefine.axisInfos[3].unit
+                unit: "°"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -211,7 +211,7 @@ Item {
             ICConfigEdit{
                 id:p2m1
                 configName: AxisDefine.axisInfos[1].name
-                unit: AxisDefine.axisInfos[1].unit
+                unit: "mm"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -219,7 +219,7 @@ Item {
             ICConfigEdit{
                 id:p2m4
                 configName: AxisDefine.axisInfos[4].name
-                unit: AxisDefine.axisInfos[4].unit
+                unit: "°"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -231,7 +231,7 @@ Item {
             ICConfigEdit{
                 id:p2m2
                 configName: AxisDefine.axisInfos[2].name
-                unit: AxisDefine.axisInfos[2].unit
+                unit: "mm"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -239,7 +239,7 @@ Item {
             ICConfigEdit{
                 id:p2m5
                 configName: AxisDefine.axisInfos[5].name
-                unit: AxisDefine.axisInfos[5].unit
+                unit: "°"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -261,7 +261,7 @@ Item {
             ICConfigEdit{
                 id:p3m0
                 configName: AxisDefine.axisInfos[0].name
-                unit: AxisDefine.axisInfos[0].unit
+                unit: "mm"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -269,7 +269,7 @@ Item {
             ICConfigEdit{
                 id:p3m3
                 configName: AxisDefine.axisInfos[3].name
-                unit: AxisDefine.axisInfos[3].unit
+                unit: "°"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -281,7 +281,7 @@ Item {
             ICConfigEdit{
                 id:p3m1
                 configName: AxisDefine.axisInfos[1].name
-                unit: AxisDefine.axisInfos[1].unit
+                unit: "mm"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -289,7 +289,7 @@ Item {
             ICConfigEdit{
                 id:p3m4
                 configName: AxisDefine.axisInfos[4].name
-                unit: AxisDefine.axisInfos[4].unit
+                unit: "°"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -301,7 +301,7 @@ Item {
             ICConfigEdit{
                 id:p3m2
                 configName: AxisDefine.axisInfos[2].name
-                unit: AxisDefine.axisInfos[2].unit
+                unit: "mm"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000
@@ -309,7 +309,7 @@ Item {
             ICConfigEdit{
                 id:p3m5
                 configName: AxisDefine.axisInfos[5].name
-                unit: AxisDefine.axisInfos[5].unit
+                unit: "°"
                 configNameWidth: p1m0.configNameWidth
                 decimal: 3
                 min:-10000

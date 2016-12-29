@@ -207,6 +207,8 @@ QVector<quint32> PointToPosList(int action, const QVariantMap& point)
     {
         if(point.contains(mNs.at(i)))
             ret.append(ICUtility::doubleToInt(point.value(mNs.at(i)).toDouble(), 3));
+        else
+            ret.append(0);
     }
     return ret;
 }

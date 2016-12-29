@@ -205,10 +205,10 @@ void PanelRobotController::Init()
     ICAppSettings();
     InitDatabase_();
     emit LoadMessage("Database inited.");
-    InitMold_();
-    emit LoadMessage("Record inited.");
     InitMachineConfig_();
     emit LoadMessage("Machine configs inited.");
+    InitMold_();
+    emit LoadMessage("Record inited.");
 
     //    host_->SetCommunicateDebug(true);
 #ifdef COMM_DEBUG
@@ -648,12 +648,17 @@ QString PanelRobotController::backupUpdater(const QString &updater)
     }
     dir.cd("updaters");
     QString bf = updater;
+    QString bfNew = bf;
+    bfNew = bfNew.insert(bfNew.size()-8,"_");
+    bfNew = bfNew.insert(bfNew.size()-8,QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+
+//    qDebug()<<bf;
     if(dir.exists(bf))
     {
         QFile::remove(dir.absoluteFilePath(bf));
     }
     QDir usbDir(ICAppSettings::UsbPath);
-    QFile::copy(usbDir.absoluteFilePath(bf), dir.absoluteFilePath(bf));
+    QFile::copy(usbDir.absoluteFilePath(bf), dir.absoluteFilePath(bfNew));
     return bf;
 }
 

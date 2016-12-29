@@ -901,12 +901,21 @@ Rectangle {
         event.accepted = true;
     }
 
+    function switchMoldByIOStatus(){
+        var moldbyIOData = panelRobotController.getCustomSettings("MoldByIOGroup","");
+        moldbyIOData = JSON.parse(moldbyIOData);
+        for(var i=0;i<moldbyIOData.length;++i){
+
+        }
+    }
+
     Timer{
         id:refreshTimer
         interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
+            switchMoldByIOStatus();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

@@ -3,6 +3,7 @@ import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
+import "../Theme.js" as Theme
 
 
 
@@ -110,6 +111,51 @@ Item {
                 configNameWidth: m0Speed.configNameWidth
             }
         }
+        Item{
+            id:selMoldWithIO
+            visible: false
+            width: parent.width*0.5
+            anchors.top:independentManualSpeedGroup.bottom
+            anchors.topMargin: 6
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 18
+            ListModel{
+                id:selItem
+            }
+            ICListView{
+                id:itemView
+                height:parent.height-100
+                width: parent.width
+                color: "white"
+                model: selItem
+                highlight: Rectangle { width: view.width; height: 20;color: "lightsteelblue"; }
+                highlightMoveDuration: 1
+                delegate: Text {
+                    width:parent.width
+                    height: 20
+                    text: IOName + ":" +MoldName
+                }
+            }
+            Grid{
+                id:funcArea
+                columns: 2
+                anchors.top:itemView.bottom
+                anchors.topMargin: 6
+                spacing: 6
+                ICComboBox{
+                    id:selIO
+                }
+                ICComboBox{
+                    id:selMold
+                }
+                ICButton{
+                    id:newItem
+                }
+                ICButton{
+                    id:delItem
+                }
+            }
+        }
+
 
         Grid{
             id:muxForInput

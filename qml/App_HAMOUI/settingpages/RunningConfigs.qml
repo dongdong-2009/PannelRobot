@@ -117,7 +117,7 @@ Item {
             width: parent.width*0.5
             anchors.top:muxForInput.bottom
             anchors.topMargin: 6
-            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 20-muxForInput.height
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 20 -muxForInput.height
             ListModel{
                 id:selItem
             }
@@ -232,6 +232,8 @@ Item {
 
         Grid{
             id:muxForInput
+//            anchors.left: selMoldWithIO.right
+//            anchors.leftMargin: 6
             anchors.top: independentManualSpeedGroup.bottom
             anchors.topMargin: 6
             columns: 4

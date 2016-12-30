@@ -635,6 +635,7 @@ Rectangle {
 
                     ICButton{
                         id:paintPos
+                        visible: false
                         text: qsTr("Paint Pos")
 //                        visible: page1.isCustomDataSource && page1.mode == 2
 //                        anchors.left: editPos.right

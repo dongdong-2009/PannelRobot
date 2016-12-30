@@ -226,7 +226,7 @@ Item {
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
 //            yDefine = yDefines[i];
-            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.VALVE_BOARD));
+            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + parseInt(yDefine.y1Point / 32)));
         }
 
         euY.visible = false;

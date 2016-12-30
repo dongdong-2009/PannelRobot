@@ -12,7 +12,8 @@ SOURCES += $$PWD/icutility.cpp \
     $$PWD/icappsettings.cpp \
     $$PWD/icdalhelper.cpp \
     $$PWD/icvirtualkeyboard.cpp \
-    $$PWD/icuiselector.cpp
+    $$PWD/icuiselector.cpp \
+    $$PWD/icpainter.cpp
 
 HEADERS += $$PWD/icutility.h\
         $$PWD/ICUtility_global.h \
@@ -31,7 +32,8 @@ HEADERS += $$PWD/icutility.h\
     $$PWD/icdalhelper.h \
     $$PWD/icvirtualkeyboard.h \
     $$PWD/icdatatype.h \
-    $$PWD/icuiselector.h
+    $$PWD/icuiselector.h \
+    $$PWD/icpainter.h
 
 FORMS += \
     $$PWD/icvirtualkeyboard.ui \

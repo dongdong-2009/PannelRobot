@@ -491,6 +491,7 @@ Rectangle {
             for(var i = 0; i < errInfo.length; ++i){
                 toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
             }
+            console.log("toShow",toShow);
             tipBox.warning( ICString.icStrformat(qsTr("Save {0} fail!.\n"), pName), qsTr("OK"), toShow);
         }
         else

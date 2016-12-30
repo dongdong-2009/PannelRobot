@@ -3,7 +3,7 @@ import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
-import "../Theme.js" as Theme
+import "../configs/IODefines.js" as IODefines
 
 
 
@@ -113,45 +113,118 @@ Item {
         }
         Item{
             id:selMoldWithIO
-            visible: false
+//            visible: false
             width: parent.width*0.5
-            anchors.top:independentManualSpeedGroup.bottom
+            anchors.top:muxForInput.bottom
             anchors.topMargin: 6
-            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 18
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 20-muxForInput.height
             ListModel{
                 id:selItem
             }
             ICListView{
                 id:itemView
-                height:parent.height-100
+                height:parent.height-80
                 width: parent.width
                 color: "white"
                 model: selItem
-                highlight: Rectangle { width: view.width; height: 20;color: "lightsteelblue"; }
+                highlight: Rectangle { width: itemView.width; height: 25;color: "lightsteelblue"; }
                 highlightMoveDuration: 1
                 delegate: Text {
                     width:parent.width
-                    height: 20
-                    text: IOName + ":" +MoldName
+                    height: 25
+                    text: ioName + " "+qsTr("select")+":"+ moldName
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            itemView.currentIndex = index;
+                        }
+                    }
                 }
             }
-            Grid{
-                id:funcArea
-                columns: 2
+            Row{
+                id:funcArea1
                 anchors.top:itemView.bottom
                 anchors.topMargin: 6
-                spacing: 6
-                ICComboBox{
+                spacing: 10
+                ICComboBoxConfigEdit{
                     id:selIO
+                    configName: qsTr("IO Select")
+                    popupMode: 1
+                    popupHeight: itemView.height
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.xDefines[i].pointName);
+                        }
+                        items = ioItems;
+                        configValue = 0;
+                    }
                 }
-                ICComboBox{
+                ICComboBoxConfigEdit{
                     id:selMold
+                    configName: qsTr("Mold Select")
+                    inputWidth:120
+                    popupMode: 1
+                    popupHeight: itemView.height
+                    function refreshMoldList(){
+                        var records = JSON.parse(panelRobotController.records());
+                        var recordsItems = [];
+                        for(var i = 0; i < records.length; ++i){
+                            recordsItems.push(records[i].recordName);
+                        }
+                        selMold.items = recordsItems;
+                    }
+                    Component.onCompleted: {
+                        refreshMoldList();
+                        configValue = 0;
+                    }
                 }
+            }
+            Row{
+                id:funcArea2
+                anchors.top:funcArea1.bottom
+                anchors.topMargin: 6
+                anchors.right: parent.right
+                spacing: 6
                 ICButton{
                     id:newItem
+                    text:qsTr("new")
+                    onButtonClicked: {
+                        for(var i=0;i<selItem.count;++i){
+                            if(selIO.configText() == selItem.get(i).ioName)
+                                return;
+                            if(selMold.configText() == selItem.get(i).moldName)
+                                return;
+                        }
+                        selItem.append({"ioID":selIO.configValue,"ioName":selIO.configText(),"moldName":selMold.configText()});
+                        panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
+//                        console.log(JSON.stringify(getDataFromListModel()));
+                    }
                 }
                 ICButton{
                     id:delItem
+                    text:qsTr("delete")
+                    onButtonClicked: {
+                        selItem.remove(itemView.currentIndex);
+                        panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
+                    }
+                }
+            }
+            Component.onCompleted: {
+                var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","");
+//                console.log(updateListData);
+                updateListData = JSON.parse(updateListData);
+                for(var i=0;i<updateListData.length;++i){
+                    selItem.append({"ioID":updateListData[i].ioID,"ioName":updateListData[i].ioName,"moldName":updateListData[i].mold});
+                }
+            }
+            onVisibleChanged: {
+                if(visible){
+                    selMold.refreshMoldList();
                 }
             }
         }
@@ -213,7 +286,6 @@ Item {
         x47UseForStop.isChecked = panelRobotController.getCustomSettings("X47UseForStop", 0);
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
-
     }
 
     function onAxisDefinesChanged(){
@@ -225,6 +297,14 @@ Item {
         m5Speed.visible = AxisDefine.axisInfos[5].visiable;
         m6Speed.visible = AxisDefine.axisInfos[6].visiable;
         m7Speed.visible = AxisDefine.axisInfos[7].visiable;
+    }
+
+    function getDataFromListModel(){
+        var moldByIOGroup = [];
+        for(var i=0;i<selItem.count;++i){
+            moldByIOGroup.push({"ioID":selItem.get(i).ioID,"ioName":selItem.get(i).ioName,"mold":selItem.get(i).moldName});
+        }
+        return moldByIOGroup;
     }
 
 }

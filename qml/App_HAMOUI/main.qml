@@ -951,9 +951,31 @@ Rectangle {
             }
         }else refreshTimer.automodeBtnOld = 0;
     }
+    
+    function switchMoldByIOStatus(){
+        var moldbyIOData = panelRobotController.getCustomSettings("MoldByIOGroup","");
+        moldbyIOData = JSON.parse(moldbyIOData);
+        var btnStatus = [];
+        var record;
+        var curMode = panelRobotController.currentMode();
+        for(var i=0;i<moldbyIOData.length;++i){
+            btnStatus[i] = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
+            record = moldbyIOData[i].mold;
+            if(btnStatus[i]){
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                if(btnStatus[i] != refreshTimer.btnStatusOld[i]){
+                    refreshTimer.btnStatusOld[i] = btnStatus[i];
+                    if(!panelRobotController.loadRecord(record))break;
+                    ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                }
+                panelRobotController.sendKeyCommandToHost(curMode);
+            }else refreshTimer.btnStatusOld[i] = 0;
+        }
+    }
 
     Timer{
         id:refreshTimer
+        property variant btnStatusOld: []
         property int originBtnOld: 0
         property int startupBtnOld: 0
         property int stopBtnOld: 0
@@ -963,6 +985,7 @@ Rectangle {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
             getExternalFuncBtn();
+            switchMoldByIOStatus();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

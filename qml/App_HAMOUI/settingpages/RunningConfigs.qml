@@ -182,9 +182,6 @@ Item {
                         refreshMoldList();
                         configValue = 0;
                     }
-                    onVisibleChanged: {
-                        refreshMoldList();
-                    }
                 }
             }
             Row{
@@ -224,8 +221,11 @@ Item {
                 for(var i=0;i<updateListData.length;++i){
                     selItem.append({"ioID":updateListData[i].ioID,"ioName":updateListData[i].ioName,"moldName":updateListData[i].mold});
                 }
-
-
+            }
+            onVisibleChanged: {
+                if(visible){
+                    selMold.refreshMoldList();
+                }
             }
         }
 

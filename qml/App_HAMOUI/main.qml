@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "settingpages/RunningConfigs.js" as Mdata;
 
 Rectangle {
     id:mainWindow
@@ -902,8 +903,7 @@ Rectangle {
     }
 
     function switchMoldByIOStatus(){
-        var moldbyIOData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
-        moldbyIOData = JSON.parse(moldbyIOData);
+        var moldbyIOData = Mdata.moldbyIOData;
         var btnStatus = [];
         var record;
         var curMode = panelRobotController.currentMode();

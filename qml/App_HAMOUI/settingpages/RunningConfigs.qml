@@ -215,7 +215,7 @@ Item {
                 }
             }
             Component.onCompleted: {
-                var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","");
+                var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
 //                console.log(updateListData);
                 updateListData = JSON.parse(updateListData);
                 for(var i=0;i<updateListData.length;++i){

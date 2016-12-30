@@ -902,7 +902,7 @@ Rectangle {
     }
 
     function switchMoldByIOStatus(){
-        var moldbyIOData = panelRobotController.getCustomSettings("MoldByIOGroup","");
+        var moldbyIOData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
         moldbyIOData = JSON.parse(moldbyIOData);
         var btnStatus = [];
         var record;

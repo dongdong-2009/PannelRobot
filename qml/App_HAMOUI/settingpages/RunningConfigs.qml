@@ -167,17 +167,23 @@ Item {
                 ICComboBoxConfigEdit{
                     id:selMold
                     configName: qsTr("Mold Select")
-                    inputWidth:140
+                    inputWidth:120
                     popupMode: 1
                     popupHeight: itemView.height
-                    Component.onCompleted: {
+                    function refreshMoldList(){
                         var records = JSON.parse(panelRobotController.records());
                         var recordsItems = [];
                         for(var i = 0; i < records.length; ++i){
                             recordsItems.push(records[i].recordName);
                         }
-                        items = recordsItems;
+                        selMold.items = recordsItems;
+                    }
+                    Component.onCompleted: {
+                        refreshMoldList();
                         configValue = 0;
+                    }
+                    onVisibleChanged: {
+                        refreshMoldList();
                     }
                 }
             }
@@ -199,7 +205,7 @@ Item {
                         }
                         selItem.append({"ioID":selIO.configValue,"ioName":selIO.configText(),"moldName":selMold.configText()});
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
-                        console.log(JSON.stringify(getDataFromListModel()));
+//                        console.log(JSON.stringify(getDataFromListModel()));
                     }
                 }
                 ICButton{
@@ -213,7 +219,7 @@ Item {
             }
             Component.onCompleted: {
                 var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","");
-                console.log(updateListData);
+//                console.log(updateListData);
                 updateListData = JSON.parse(updateListData);
                 for(var i=0;i<updateListData.length;++i){
                     selItem.append({"ioID":updateListData[i].ioID,"ioName":updateListData[i].ioName,"moldName":updateListData[i].mold});
@@ -240,7 +246,6 @@ Item {
         turnAutoSpeedEdit.configValue = turnAutoSpeed;
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
-
     }
 
     function onAxisDefinesChanged(){

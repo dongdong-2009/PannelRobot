@@ -11,6 +11,9 @@ teach/extents/*.qml \
 teach/extents/*.js
 }
 
+DISTFILES += \
+    settingpages/RunningConfigs.js
+
 
 
 

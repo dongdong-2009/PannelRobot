@@ -4,6 +4,7 @@ import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
 import "../configs/IODefines.js" as IODefines
+import "RunningConfigs.js" as Pdata
 
 
 
@@ -201,26 +202,31 @@ Item {
                                 return;
                         }
                         selItem.append({"ioID":selIO.configValue,"ioName":selIO.configText(),"moldName":selMold.configText()});
+                        Pdata.moldbyIOData.push({"ioID":selIO.configValue,"ioName":selIO.configText(),"mold":selMold.configText()});
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
-//                        console.log(JSON.stringify(getDataFromListModel()));
+                        console.log("nn",JSON.stringify(Pdata.moldbyIOData));
                     }
                 }
                 ICButton{
                     id:delItem
                     text:qsTr("delete")
                     onButtonClicked: {
-                        selItem.remove(itemView.currentIndex);
+                        var toDel = itemView.currentIndex;
+                        selItem.remove(toDel);
+                        Pdata.moldbyIOData.splice(toDel,1);
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
+                        console.log("dd",JSON.stringify(Pdata.moldbyIOData));
+
                     }
                 }
             }
             Component.onCompleted: {
                 var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
-//                console.log(updateListData);
-                updateListData = JSON.parse(updateListData);
-                for(var i=0;i<updateListData.length;++i){
-                    selItem.append({"ioID":updateListData[i].ioID,"ioName":updateListData[i].ioName,"moldName":updateListData[i].mold});
+                Pdata.moldbyIOData = JSON.parse(updateListData);
+                for(var i=0;i<Pdata.moldbyIOData.length;++i){
+                    selItem.append({"ioID":Pdata.moldbyIOData[i].ioID,"ioName":Pdata.moldbyIOData[i].ioName,"moldName":Pdata.moldbyIOData[i].mold});
                 }
+//                console.log("cc",JSON.stringify(Pdata.moldbyIOData));
             }
             onVisibleChanged: {
                 if(visible){

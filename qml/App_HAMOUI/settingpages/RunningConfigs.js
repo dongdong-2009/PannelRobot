@@ -1,2 +1,4 @@
+.pragma library
+
 var moldbyIOData = [];
 

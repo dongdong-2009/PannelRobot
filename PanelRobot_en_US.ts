@@ -120,6 +120,7 @@ Prec:%3</source>
     <message>
         <location filename="controller/panelrobotcontroller.cpp" line="239"/>
         <location filename="controller/panelrobotcontroller.cpp" line="244"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="255"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -131,6 +132,11 @@ Prec:%3</source>
     <message>
         <location filename="controller/panelrobotcontroller.cpp" line="244"/>
         <source>Open Database fail!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="controller/panelrobotcontroller.cpp" line="255"/>
+        <source>Mold Is Not Exist!!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

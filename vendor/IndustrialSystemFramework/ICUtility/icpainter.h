@@ -31,7 +31,13 @@ public:
     Q_INVOKABLE void clear();
     Q_INVOKABLE int pointSize() const { return path_.size();}
     Q_INVOKABLE void setPenEnable(bool en){pen_en = en;}
-    Q_INVOKABLE QString converterNow(void);
+    Q_INVOKABLE void setQuadEnable(bool en){quadTo_en = en;}
+    Q_INVOKABLE void setLineEnable(bool en){lineTo_en = en;}
+    Q_INVOKABLE void setQuadColorChangeEnable(bool en){quadTo_Color_Change = en;}
+    Q_INVOKABLE void setLineColorChangeEnable(bool en){lineTo_Color_Change = en;}
+    Q_INVOKABLE void setQuadColor(QColor c){quadTo_Color = c;}
+    Q_INVOKABLE void setLineColor(QColor c){lineTo_Color = c;}
+    Q_INVOKABLE QString converterNow(double high);
     void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0);
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
@@ -41,6 +47,7 @@ private:
     void drawTmpLine();
     void drawBgLine(const QPainterPath &path);
     void drawPenStyle(QPainter *painter);
+    bool Calculation(void);
 private:
     QImage m_bgImage;
     QImage m_tempImage;
@@ -49,10 +56,17 @@ private:
     QPointF m_nowPoint;
     QPointF m_lastPoint;
     QPainterPath *m_pDrawPath;
+    QPainterPath *m_pDrawPath_line;
     int m_penWidth;
     bool m_bFlag;
     bool m_bErasered;
     bool pen_en;
+    bool lineTo_en;
+    bool lineTo_Color_Change;
+    QColor lineTo_Color;
+    bool quadTo_en;
+    bool quadTo_Color_Change;
+    QColor quadTo_Color;
     QPointF logLastPoint;
     QList<QPointF> path_;
 

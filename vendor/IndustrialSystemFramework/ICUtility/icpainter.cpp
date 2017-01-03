@@ -9,6 +9,7 @@ ICPainter::ICPainter(QGraphicsWidget *parent) :
     m_bErasered(false),
     pen_en(false),
     m_pDrawPath(NULL),
+    m_pDrawPath_line(NULL),
     m_penWidth(10)
 {
     setAcceptedMouseButtons(Qt::LeftButton);
@@ -46,6 +47,10 @@ void ICPainter::clear()
     update();
 }
 
+bool ICPainter::Calculation(void)
+{
+    return true;
+}
 void ICPainter::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if(pen_en==false)return;
@@ -59,7 +64,12 @@ void ICPainter::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             m_pDrawPath = new QPainterPath();
         }
+        if(m_pDrawPath_line == NULL)
+        {
+            m_pDrawPath_line = new QPainterPath();
+        }
         m_pDrawPath->moveTo(event->pos());
+        m_pDrawPath_line->moveTo(event->pos());
         m_nowPoint = event->pos();
         logLastPoint = m_nowPoint;
         path_.append(logLastPoint);
@@ -75,14 +85,22 @@ void ICPainter::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     {
         return;
     }
+    if(m_pDrawPath_line == NULL)
+    {
+        return;
+    }
     if(m_nowPoint.x()<0||m_nowPoint.x()>this->size().width()||
             m_nowPoint.y()<0||m_nowPoint.y()>this->size().height())return;
     if(qAbs(tmpPoint.x()) > 0 || qAbs(tmpPoint.y()) >0)
     {
-        m_pDrawPath->quadTo(m_lastPoint.x() , m_lastPoint.y() ,(m_nowPoint.x() + m_lastPoint.x())/2,(m_nowPoint.y() + m_lastPoint.y())/2);
+        m_pDrawPath_line->lineTo(m_lastPoint.x() , m_lastPoint.y());
+        m_pDrawPath->quadTo(m_lastPoint.x() , m_lastPoint.y() ,(m_nowPoint.x() + m_lastPoint.x())*0.5,(m_nowPoint.y() + m_lastPoint.y())*0.5);
         m_bFlag = false;
         if(m_bErasered)
+        {
             drawBgLine(*m_pDrawPath);
+            drawBgLine(*m_pDrawPath_line);
+        }
         else
             drawTmpLine(); // 临时画
     }
@@ -99,14 +117,24 @@ void ICPainter::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         if(m_pDrawPath != NULL)
         {
             m_bFlag = true;
-            drawBgLine(*m_pDrawPath);
+            if(quadTo_en)
+            {
+                if(quadTo_Color_Change)
+                setPenColor(quadTo_Color);
+                drawBgLine(*m_pDrawPath);
+            }
+            if(lineTo_en)
+            {
+                if(lineTo_Color_Change)
+                setPenColor(lineTo_Color);
+                drawBgLine(*m_pDrawPath_line);
+            }
             qDebug()<<m_pDrawPath->toFillPolygon()<<m_pDrawPath->toFillPolygon().size();
             delete m_pDrawPath;
             m_pDrawPath = NULL;
+            delete m_pDrawPath_line;
+            m_pDrawPath_line = NULL;
             path_.append(QPointF(-1, -1));
-//            logLastPoint.setX(-1);
-//            logLastPoint.setY(-1);
-
         }
     }
 }
@@ -158,8 +186,24 @@ void ICPainter::drawPenStyle(QPainter *painter)
     painter->setBrush(Qt::NoBrush);
 }
 
-QString ICPainter::converterNow(void)
+QString ICPainter::converterNow(double high)
 {
-    return "0";
+    QString ret = "[";
+    for(int i=0;i<path_.size();i++)
+    {
+        if(path_.at(i).x()==-1)
+        {
+            ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i-1).x()).arg(path_.at(i-1).y()).arg(i).arg(high);
+            if((i+i)<path_.size())
+            {
+                ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i+1).x()).arg(path_.at(i+1).y()).arg(i).arg(high);
+            }
+        }
+        else
+        ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":0,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i).x()).arg(path_.at(i).y()).arg(i);
+    }
+    if(!path_.isEmpty())ret.chop(1);
+    ret += ']';
+    return ret;
 }
 

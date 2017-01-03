@@ -104,6 +104,13 @@ Rectangle {
                     else painter.setPenEnable(false);
                 }
             }
+            ICConfigEdit{
+                id:setHigh
+                configName: qsTr("High")
+                decimal: 3
+//                min: 20
+            }
+
             ICButton{
                 id:converter
                 bgColor:clear.color
@@ -111,7 +118,58 @@ Rectangle {
                 width: clear.width
                 height: clear.height
                 onButtonClicked:{
-                    painter.converterNow;
+                    if(stackViewSel.currentIndex < 0) return;
+//                    console.log(painter.converterNow());
+                    var p_data= JSON.parse(painter.converterNow(setHigh.configValue));
+                    var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                    var sI = Teach.getStackInfoFromID(id);
+                    sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, p_data));
+                    var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                    toSend = ESData.externalDataManager.parseRaw(toSend);
+//                    console.log(JSON.stringify(toSend));
+                    panelRobotController.sendExternalDatas(JSON.stringify(toSend));
+                }
+            }
+            ICCheckBox{
+                id:quadTo_en
+                text: qsTr("quadTo_en")
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setQuadEnable(true);
+                    else painter.setQuadEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:quadTo_Color_Change
+                text: qsTr("quadTo_Color_Change")
+                visible: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setQuadColorChangeEnable(true);
+                    else painter.setQuadColorChangeEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:lineTo_en
+                text: qsTr("lineTo_en")
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setLineEnable(true);
+                    else painter.setLineEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:lineTo_Color_Change
+                text: qsTr("lineTo_Color_Change")
+                visible: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setLineColorChangeEnable(true);
+                    else painter.setLineColorChangeEnable(false);
                 }
             }
             ICButton{
@@ -640,6 +698,7 @@ Rectangle {
 
                     onButtonClicked: {
                         photoMarkedRoot.visible = true;
+                        quadTo_en.setChecked(true);
                     }
                 }
 

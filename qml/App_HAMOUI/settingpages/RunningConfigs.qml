@@ -3,6 +3,8 @@ import "../../ICCustomElement"
 import "../ICOperationLog.js" as ICOperationLog
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
+import "../configs/IODefines.js" as IODefines
+import "RunningConfigs.js" as Pdata
 
 
 
@@ -110,6 +112,129 @@ Item {
                 configNameWidth: m0Speed.configNameWidth
             }
         }
+        Item{
+            id:selMoldWithIO
+//            visible: false
+            width: parent.width*0.5
+            anchors.top:independentManualSpeedGroup.bottom
+            anchors.topMargin: 6
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 18
+            ListModel{
+                id:selItem
+            }
+            ICListView{
+                id:itemView
+                height:parent.height-80
+                width: parent.width
+                color: "white"
+                model: selItem
+                highlight: Rectangle { width: itemView.width; height: 25;color: "lightsteelblue"; }
+                highlightMoveDuration: 1
+                delegate: Text {
+                    width:parent.width
+                    height: 25
+                    text: ioName + " "+qsTr("select")+":"+ moldName
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            itemView.currentIndex = index;
+                        }
+                    }
+                }
+            }
+            Row{
+                id:funcArea1
+                anchors.top:itemView.bottom
+                anchors.topMargin: 6
+                spacing: 10
+                ICComboBoxConfigEdit{
+                    id:selIO
+                    configName: qsTr("IO Select")
+                    popupMode: 1
+                    popupHeight: itemView.height
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.xDefines[i].pointName);
+                        }
+                        items = ioItems;
+                        configValue = 0;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:selMold
+                    configName: qsTr("Mold Select")
+                    inputWidth:120
+                    popupMode: 1
+                    popupHeight: itemView.height
+                    function refreshMoldList(){
+                        var records = JSON.parse(panelRobotController.records());
+                        var recordsItems = [];
+                        for(var i = 0; i < records.length; ++i){
+                            recordsItems.push(records[i].recordName);
+                        }
+                        selMold.items = recordsItems;
+                    }
+                    Component.onCompleted: {
+                        refreshMoldList();
+                        configValue = 0;
+                    }
+                }
+            }
+            Row{
+                id:funcArea2
+                anchors.top:funcArea1.bottom
+                anchors.topMargin: 6
+                anchors.right: parent.right
+                spacing: 6
+                ICButton{
+                    id:newItem
+                    text:qsTr("new")
+                    onButtonClicked: {
+                        for(var i=0;i<selItem.count;++i){
+                            if(selIO.configText() == selItem.get(i).ioName)
+                                return;
+                            if(selMold.configText() == selItem.get(i).moldName)
+                                return;
+                        }
+                        selItem.append({"ioID":selIO.configValue,"ioName":selIO.configText(),"moldName":selMold.configText()});
+                        Pdata.moldbyIOData.push({"ioID":selIO.configValue,"ioName":selIO.configText(),"mold":selMold.configText()});
+                        panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
+                        console.log("nn",JSON.stringify(Pdata.moldbyIOData));
+                    }
+                }
+                ICButton{
+                    id:delItem
+                    text:qsTr("delete")
+                    onButtonClicked: {
+                        var toDel = itemView.currentIndex;
+                        selItem.remove(toDel);
+                        Pdata.moldbyIOData.splice(toDel,1);
+                        panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
+                        console.log("dd",JSON.stringify(Pdata.moldbyIOData));
+
+                    }
+                }
+            }
+            Component.onCompleted: {
+                var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
+                Pdata.moldbyIOData = JSON.parse(updateListData);
+                for(var i=0;i<Pdata.moldbyIOData.length;++i){
+                    selItem.append({"ioID":Pdata.moldbyIOData[i].ioID,"ioName":Pdata.moldbyIOData[i].ioName,"moldName":Pdata.moldbyIOData[i].mold});
+                }
+//                console.log("cc",JSON.stringify(Pdata.moldbyIOData));
+            }
+            onVisibleChanged: {
+                if(visible){
+                    selMold.refreshMoldList();
+                }
+            }
+        }
+
 
         onConfigValueChanged: {
             console.log(addr, newV, oldV);
@@ -127,7 +252,6 @@ Item {
         turnAutoSpeedEdit.configValue = turnAutoSpeed;
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
-
     }
 
     function onAxisDefinesChanged(){
@@ -139,6 +263,14 @@ Item {
         m5Speed.visible = AxisDefine.axisInfos[5].visiable;
         m6Speed.visible = AxisDefine.axisInfos[6].visiable;
         m7Speed.visible = AxisDefine.axisInfos[7].visiable;
+    }
+
+    function getDataFromListModel(){
+        var moldByIOGroup = [];
+        for(var i=0;i<selItem.count;++i){
+            moldByIOGroup.push({"ioID":selItem.get(i).ioID,"ioName":selItem.get(i).ioName,"mold":selItem.get(i).moldName});
+        }
+        return moldByIOGroup;
     }
 
 }

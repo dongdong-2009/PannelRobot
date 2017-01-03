@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "settingpages/RunningConfigs.js" as Mdata;
 
 Rectangle {
     id:mainWindow
@@ -819,6 +820,7 @@ Rectangle {
         //                                              "","", "", "", 18);
 
         mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
+        refreshTimer.start();
         console.log("main load finished!");
     }
 
@@ -900,12 +902,34 @@ Rectangle {
         event.accepted = true;
     }
 
+    function switchMoldByIOStatus(){
+        var moldbyIOData = Mdata.moldbyIOData;
+        var btnStatus = [];
+        var record;
+        var curMode = panelRobotController.currentMode();
+        for(var i=0;i<moldbyIOData.length;++i){
+            btnStatus[i] = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
+            record = moldbyIOData[i].mold;
+            if(btnStatus[i]){
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                if(btnStatus[i] != refreshTimer.btnStatusOld[i]){
+                    refreshTimer.btnStatusOld[i] = btnStatus[i];
+                    if(!panelRobotController.loadRecord(record))break;
+                    ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                }
+                panelRobotController.sendKeyCommandToHost(curMode);
+            }else refreshTimer.btnStatusOld[i] = 0;
+        }
+    }
+
     Timer{
         id:refreshTimer
-        interval: 50; running: true; repeat: true
+        property variant btnStatusOld: []
+        interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
+            switchMoldByIOStatus();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

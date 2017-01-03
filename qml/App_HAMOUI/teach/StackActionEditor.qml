@@ -698,7 +698,6 @@ Rectangle {
 
                     onButtonClicked: {
                         photoMarkedRoot.visible = true;
-                        quadTo_en.setChecked(true);
                     }
                 }
 

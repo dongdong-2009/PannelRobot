@@ -953,6 +953,30 @@
         <source>Chanel-5</source>
         <translation>通道5</translation>
     </message>
+    <message>
+        <source>niuju &gt;&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>niuju &lt;&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>motor1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>motor2:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>motor3:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>motor4:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
@@ -1369,6 +1393,10 @@
     <message>
         <source>Motor 7</source>
         <translation>欧瑞伺服</translation>
+    </message>
+    <message>
+        <source>Rotate to Zero</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5845,6 +5873,26 @@ please chose!</source>
         <source>Manual Speed</source>
         <translation>手动速度</translation>
     </message>
+    <message>
+        <source>select</source>
+        <translation type="unfinished">通切换到模号</translation>
+    </message>
+    <message>
+        <source>IO Select</source>
+        <translation>输入点</translation>
+    </message>
+    <message>
+        <source>Mold Select</source>
+        <translation>模号</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>delete</source>
+        <translation>删除</translation>
+    </message>
 </context>
 <context>
     <name>SafeAreaConfigs</name>
@@ -6521,6 +6569,26 @@ please chose!</source>
     <message>
         <source>is using!</source>
         <translation>使用中!</translation>
+    </message>
+    <message>
+        <source>clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>setPen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>converter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paint Pos</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8076,6 +8144,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Please Register!</source>
         <translation>请注册!</translation>
+    </message>
+    <message>
+        <source>Load record </source>
+        <translation type="unfinished">载入模号</translation>
     </message>
 </context>
 <context>

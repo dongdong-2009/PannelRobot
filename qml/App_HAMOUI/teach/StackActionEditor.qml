@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import ICPainter 1.0
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
@@ -47,6 +48,157 @@ Rectangle {
             speedZ.configName = AxisDefine.axisInfos[2].name + qsTr("Speed");
             speed1.visible = false;
         }
+    }
+
+    Rectangle {
+        id:photoMarkedRoot
+        color: "#BFEFFF"
+        MouseArea{
+            anchors.fill: parent
+        }
+
+//        property alias painter: painter
+        visible: false
+        width: 800
+        height: 400
+        y:-150
+        x:-100
+        z: 100
+        Component.onCompleted: {
+            painter.penWidth = 5
+            painter.penColor = "black"
+            painter.init()
+        }
+
+        ICPainter {
+            id: painter;
+            width: photoMarkedRoot.width
+            y:30
+            height: photoMarkedRoot.height - 30
+            onWidthChanged: {
+                painter.init()
+            }
+            onHeightChanged: {
+                painter.init()
+            }
+        }
+        Row{
+//            anchors.bottom: parent.top
+            spacing: 12
+            ICButton{
+                id:clear
+                bgColor:"#00EE00"
+                text: qsTr("clear")
+                width: 60
+                height: 30
+                onButtonClicked:{
+                    painter.clear();
+                }
+            }
+            ICCheckBox{
+                id:setPen
+                text: qsTr("setPen")
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setPenEnable(true);
+                    else painter.setPenEnable(false);
+                }
+            }
+            ICConfigEdit{
+                id:setMaxX
+                configName: qsTr("X")
+                decimal: 3
+                configValue: '500'
+            }
+            ICConfigEdit{
+                id:setMaxY
+                configName: qsTr("Y")
+                decimal: 3
+                configValue: '200'
+            }
+            ICConfigEdit{
+                id:setHigh
+                configName: qsTr("High")
+                decimal: 3
+                configValue: '20'
+            }
+
+            ICButton{
+                id:converter
+                bgColor:clear.color
+                text: qsTr("converter")
+                width: clear.width
+                height: clear.height
+                onButtonClicked:{
+                    if(stackViewSel.currentIndex < 0) return;
+//                    console.log(painter.converterNow());
+                    var p_data= JSON.parse(painter.converterNow(setMaxX.configValue,setMaxY.configValue,setHigh.configValue));
+                    var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                    var sI = Teach.getStackInfoFromID(id);
+                    sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, p_data));
+                    var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                    toSend = ESData.externalDataManager.parseRaw(toSend);
+//                    console.log(JSON.stringify(toSend));
+                    panelRobotController.sendExternalDatas(JSON.stringify(toSend));
+                }
+            }
+            ICCheckBox{
+                id:quadTo_en
+                text: qsTr("quadTo_en")
+                width: clear.width
+                height: clear.height
+                isChecked: true
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setQuadEnable(true);
+                    else painter.setQuadEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:quadTo_Color_Change
+                text: qsTr("quadTo_Color_Change")
+                visible: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setQuadColorChangeEnable(true);
+                    else painter.setQuadColorChangeEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:lineTo_en
+                text: qsTr("lineTo_en")
+                isChecked: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setLineEnable(true);
+                    else painter.setLineEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:lineTo_Color_Change
+                text: qsTr("lineTo_Color_Change")
+                visible: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setLineColorChangeEnable(true);
+                    else painter.setLineColorChangeEnable(false);
+                }
+            }
+            ICButton{
+                id:close
+                bgColor:clear.color
+                text: qsTr("close")
+                width: clear.width
+                height: clear.height
+                onButtonClicked:{
+                    photoMarkedRoot.visible=false;
+                }
+            }
+        }
+
     }
 
     ICMessageBox{
@@ -521,33 +673,52 @@ Rectangle {
                     }
 
                 }
-                ICButton{
-                    id:editPos
-                    text: qsTr("Edit Pos")
+                Row{
                     visible: page1.isCustomDataSource && page1.mode == 2
-                    function onEditConfirm(accepted, points){
-                        if(accepted){
-                            if(stackViewSel.currentIndex < 0) return;
+                    height: editPos.height
+                    spacing: 12
+                    ICButton{
+                        id:editPos
+                        text: qsTr("Edit Pos")
+                        function onEditConfirm(accepted, points){
+                            if(accepted){
+                                if(stackViewSel.currentIndex < 0) return;
+                                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                                var sI = Teach.getStackInfoFromID(id);
+                                sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
+                                var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                                toSend = ESData.externalDataManager.parseRaw(toSend);
+                                panelRobotController.sendExternalDatas(JSON.stringify(toSend));
+                            }else
+                                customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
+                        }
+
+                        onButtonClicked: {
+    //                        customPointEditor.visible = true;
+    //                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                             var sI = Teach.getStackInfoFromID(id);
-                            sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
-                            var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
-                            toSend = ESData.externalDataManager.parseRaw(toSend);
-                            panelRobotController.sendExternalDatas(JSON.stringify(toSend));
-                        }else
-                            customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
+                            if(sI.posData === undefined)
+                                sI.podData = [];
+                            customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
+                        }
                     }
 
-                    onButtonClicked: {
-//                        customPointEditor.visible = true;
-//                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
-                        var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                        var sI = Teach.getStackInfoFromID(id);
-                        if(sI.posData === undefined)
-                            sI.podData = [];
-                        customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
+                    ICButton{
+                        id:paintPos
+                        text: qsTr("Paint Pos")
+    //                    anchors.left: editPos.right
+    //                    anchors.leftMargin: 12
+    //                    anchors.top: editPos.top
+                        width: editPos.width
+                        height: editPos.height
+
+                        onButtonClicked: {
+                            photoMarkedRoot.visible = true;
+                        }
                     }
                 }
+
 
                 ICButtonGroup{
                     spacing: 24

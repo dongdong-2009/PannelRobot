@@ -305,7 +305,7 @@ Item {
                 ICConfigEdit{
                     id:p1M0
                     configName: AxisDefine.axisInfos[0].name
-                    unit: AxisDefine.axisInfos[0].unit
+                    unit: "mm"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -318,7 +318,7 @@ Item {
                     id:p1M1
                     configName: AxisDefine.axisInfos[1].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[1].unit
+                    unit: "mm"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -331,7 +331,7 @@ Item {
                     id:p1M2
                     configName: AxisDefine.axisInfos[2].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[2].unit
+                    unit: "mm"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -344,7 +344,7 @@ Item {
                     id:p1M3
                     configName: AxisDefine.axisInfos[3].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[3].unit
+                    unit: "°"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -357,7 +357,7 @@ Item {
                     id:p1M4
                     configName: AxisDefine.axisInfos[4].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[4].unit
+                    unit: "°"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -370,7 +370,7 @@ Item {
                     id:p1M5
                     configName: AxisDefine.axisInfos[5].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[5].unit
+                    unit: "°"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -391,7 +391,7 @@ Item {
                     id:p2M0
                     configName: AxisDefine.axisInfos[0].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[0].unit
+                    unit: "mm"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -404,7 +404,7 @@ Item {
                     id:p2M1
                     configName: AxisDefine.axisInfos[1].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[1].unit
+                    unit: "mm"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -417,7 +417,7 @@ Item {
                     id:p2M2
                     configName: AxisDefine.axisInfos[2].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[2].unit
+                    unit: "mm"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -430,7 +430,7 @@ Item {
                     id:p2M3
                     configName: AxisDefine.axisInfos[3].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[3].unit
+                    unit: "°"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -443,7 +443,7 @@ Item {
                     id:p2M4
                     configName: AxisDefine.axisInfos[4].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[4].unit
+                    unit: "°"
                     min:-10000
                     max:10000
                     decimal: 3
@@ -457,7 +457,7 @@ Item {
                     id:p2M5
                     configName: AxisDefine.axisInfos[5].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[5].unit
+                    unit: "°"
                     min:-10000
                     max:10000
                     decimal: 3

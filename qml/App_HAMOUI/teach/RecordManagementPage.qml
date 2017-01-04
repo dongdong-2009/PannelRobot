@@ -113,6 +113,16 @@ Rectangle {
 
             }
         ]
+        onStateChanged: {
+            if(state == "exportMode"){
+                recordsView.model = null;
+                for(var i = 0, len = recordsModel.count; i < len; ++i){
+                    recordsModel.setProperty(i, "isSelected", false);
+                }
+                recordsView.model = recordsModel;
+            }
+        }
+
         Row{
             id:infoContainer
             x:10
@@ -250,6 +260,8 @@ Rectangle {
             property bool isSelectable: false
             property string openBackupPackage: ""
 
+
+
             id:recordsView
             width: parent.width * 0.8
             height: parent.height  - infoContainer.height - infoContainer.y - usbContainer.height - usbContainer.anchors.topMargin - anchors.topMargin - searchContainer.height - searchContainer.anchors.topMargin
@@ -276,13 +288,7 @@ Rectangle {
                         onIsCheckedChanged: {
                             recordsView.model.setProperty(index, "isSelected", isChecked);
                         }
-                        onVisibleChanged: {
-                            if(!visible){
-                                isChecked = false;
-                                recordsView.model.setProperty(index, "isSelected", false);
-                            }
-                        }
-
+                        isChecked: isSelected
                     }
 
                     Item{

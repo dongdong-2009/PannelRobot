@@ -72,6 +72,8 @@ MouseArea {
         realFrame.color = "yellow";
         yesBtn.color = "red";
         detailText.text = details || ""
+//        console.log("detailContent",detailContent.width,detailContent.height);
+//        console.log("detailText",detailText.width,detailText.height);
     }
 
     function showInput(tip, configName, isNumberOnly, yesText, noText){
@@ -168,7 +170,7 @@ MouseArea {
             clip: true
             Text{
                 id:detailText
-                width: parent.width
+//                width: parent.width
             }
         }
     }

@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "settingpages/RunningConfigs.js" as Mdata;
 
 Rectangle {
     id:mainWindow
@@ -766,6 +767,19 @@ Rectangle {
         m[6] = panelRobotController.getConfigValue("s_rw_31_1_0_146");
         m[7] = panelRobotController.getConfigValue("s_rw_31_1_0_153");
         AxisDefine.changeAxisVisble(m,axisNum);
+
+        var axisUnit = [];
+        axisUnit[0] = panelRobotController.getConfigValue("s_rw_24_4_0_104");
+        axisUnit[1] = panelRobotController.getConfigValue("s_rw_24_4_0_111");
+        axisUnit[2] = panelRobotController.getConfigValue("s_rw_24_4_0_118");
+        axisUnit[3] = panelRobotController.getConfigValue("s_rw_24_4_0_125");
+        axisUnit[4] = panelRobotController.getConfigValue("s_rw_24_4_0_132");
+        axisUnit[5] = panelRobotController.getConfigValue("s_rw_24_4_0_139");
+        axisUnit[6] = panelRobotController.getConfigValue("s_rw_24_4_0_146");
+        axisUnit[7] = panelRobotController.getConfigValue("s_rw_24_4_0_153");
+        for(var i=0;i<8;++i)
+            AxisDefine.changeAxisUnit(i, axisUnit[i]);
+
         onUserChanged(ShareData.UserInfo.currentUser());
         standbyPage.source = "StandbyPage.qml";
         panelRobotController.sendingContinuousData.connect(function(){
@@ -806,6 +820,7 @@ Rectangle {
         //                                              "","", "", "", 18);
 
         mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
+        refreshTimer.start();
         console.log("main load finished!");
     }
 
@@ -887,12 +902,90 @@ Rectangle {
         event.accepted = true;
     }
 
+        function getExternalFuncBtn(){
+            var originBtnStatus = panelRobotController.isInputOn(022,IODefines.IO_BOARD_0);//x032
+            var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
+            var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
+            var automodeBtnStatus = panelRobotController.isInputOn(023,IODefines.IO_BOARD_0);//x033
+
+            var  originBtnEn = parseInt(panelRobotController.getCustomSettings("X32UseForOrigin", 0));
+            var automodeBtnEn = parseInt(panelRobotController.getCustomSettings("X33UseForAuto", 0));
+            var startupBtnEn = parseInt(panelRobotController.getCustomSettings("X46UseForStartup", 0));
+            var stopBtnEn = parseInt(panelRobotController.getCustomSettings("X47UseForStop", 0));
+
+            if(originBtnStatus){
+                if(originBtnStatus != refreshTimer.originBtnOld){
+                    refreshTimer.originBtnOld = originBtnStatus;
+                    if(originBtnEn){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+                    }
+                }
+            }else refreshTimer.originBtnOld = 0;
+            if(startupBtnStatus){
+                if(startupBtnStatus != refreshTimer.startupBtnOld){
+                    refreshTimer.startupBtnOld = startupBtnStatus;
+                    if(startupBtnEn){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                    }
+                }
+            }else refreshTimer.startupBtnOld = 0;
+            if(stopBtnStatus){
+                if(stopBtnStatus != refreshTimer.stopBtnOld){
+                    refreshTimer.stopBtnOld = stopBtnStatus;
+                    if(stopBtnEn){
+                        if(!(panelRobotController.currentErrNum() !== 0 &&
+                                (panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
+                                    panelRobotController.currentMode() == Keymap.CMD_SINGLE))){
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                        }
+                    }
+                }
+            }else refreshTimer.stopBtnOld = 0;
+            if(automodeBtnStatus){
+                if(automodeBtnStatus != refreshTimer.automodeBtnOld){
+                    refreshTimer.automodeBtnOld = automodeBtnStatus;
+                    if(automodeBtnEn){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+                    }
+                }
+            }else refreshTimer.automodeBtnOld = 0;
+        }
+
+    function switchMoldByIOStatus(){
+        var moldbyIOData = Mdata.moldbyIOData;
+        var btnStatus = [];
+        var record;
+        var curMode = panelRobotController.currentMode();
+        for(var i=0;i<moldbyIOData.length;++i){
+            btnStatus[i] = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
+            record = moldbyIOData[i].mold;
+            if(btnStatus[i]){
+                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                if(btnStatus[i] != refreshTimer.btnStatusOld[i]){
+                    refreshTimer.btnStatusOld[i] = btnStatus[i];
+                    if(!panelRobotController.loadRecord(record))break;
+                    ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                }
+                panelRobotController.sendKeyCommandToHost(curMode);
+            }else refreshTimer.btnStatusOld[i] = 0;
+        }
+    }
+
     Timer{
         id:refreshTimer
-        interval: 50; running: true; repeat: true
+        property variant btnStatusOld: []
+        property int originBtnOld: 0
+        property int startupBtnOld: 0
+        property int stopBtnOld: 0
+        property int automodeBtnOld: 0
+        interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
+            getExternalFuncBtn();
+            switchMoldByIOStatus();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

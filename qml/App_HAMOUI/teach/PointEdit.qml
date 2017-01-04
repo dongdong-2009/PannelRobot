@@ -181,7 +181,9 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
-        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked)
+        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked
+                  && !poseOffsetLine3DType.isChecked && !offsetJogType.isChecked &&
+                  !poseOffsetCurve3DType.isChecked)
         ICButton{
             id:setIn
             text: qsTr("Set In")

@@ -197,6 +197,7 @@ QString ICPainter::converterNow(double x,double y,double high)
     double yProportion = y/this->size().height();
     for(int i=0;i<path_.size();i++)
     {
+        if(i==0)ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i).x()*xProportion).arg(path_.at(i).y()*yProportion).arg(i).arg(high);
         if(path_.at(i).x()==-1)
         {
             ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i-1).x()*xProportion).arg(path_.at(i-1).y()*yProportion).arg(i).arg(high);

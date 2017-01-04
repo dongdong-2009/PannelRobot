@@ -204,7 +204,7 @@ Item {
                         selItem.append({"ioID":selIO.configValue,"ioName":selIO.configText(),"moldName":selMold.configText()});
                         Pdata.moldbyIOData.push({"ioID":selIO.configValue,"ioName":selIO.configText(),"mold":selMold.configText()});
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
-                        console.log("nn",JSON.stringify(Pdata.moldbyIOData));
+//                        console.log("nn",JSON.stringify(Pdata.moldbyIOData));
                     }
                 }
                 ICButton{
@@ -212,14 +212,16 @@ Item {
                     text:qsTr("delete")
                     onButtonClicked: {
                         var toDel = itemView.currentIndex;
+                        if(toDel < 0)return;
                         selItem.remove(toDel);
                         Pdata.moldbyIOData.splice(toDel,1);
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
-                        console.log("dd",JSON.stringify(Pdata.moldbyIOData));
+//                        console.log("dd",JSON.stringify(Pdata.moldbyIOData));
 
                     }
                 }
             }
+
             Component.onCompleted: {
                 var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
                 Pdata.moldbyIOData = JSON.parse(updateListData);
@@ -235,44 +237,43 @@ Item {
             }
         }
 
-
         Grid{
-            id:muxForInput
+           id:muxForInput
 //            anchors.left: selMoldWithIO.right
 //            anchors.leftMargin: 6
-            anchors.top: independentManualSpeedGroup.bottom
-            anchors.topMargin: 6
-            columns: 4
-            spacing: 6
-            ICCheckBox{
-                id:x32UseForOrigin
-                text:qsTr("x32 Mux for Origin mode Btn");
-                onIsCheckedChanged: {
-                    panelRobotController.setCustomSettings("X32UseForOrigin", isChecked ? 1 : 0);
-                }
-            }
-            ICCheckBox{
-                id:x33UseForAuto
-                text:qsTr("x33 Mux for Auto mode Btn");
-                onIsCheckedChanged: {
-                    panelRobotController.setCustomSettings("X33UseForAuto", isChecked ? 1 : 0);
-                }
-            }
-            ICCheckBox{
-                id:x46UseForStartup
-                text:qsTr("x46 Mux for Startup Btn");
-                onIsCheckedChanged: {
-                    panelRobotController.setCustomSettings("X46UseForStartup", isChecked ? 1 : 0);
-                }
-            }
-            ICCheckBox{
-                id:x47UseForStop
-                text:qsTr("x47 Mux for Stop Btn");
-                onIsCheckedChanged: {
-                    panelRobotController.setCustomSettings("X47UseForStop", isChecked ? 1 : 0);
-                }
-            }
-        }
+           anchors.top: independentManualSpeedGroup.bottom
+           anchors.topMargin: 6
+           columns: 4
+           spacing: 6
+           ICCheckBox{
+               id:x32UseForOrigin
+               text:qsTr("x32 Mux for Origin mode Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X32UseForOrigin", isChecked ? 1 : 0);
+               }
+           }
+           ICCheckBox{
+               id:x33UseForAuto
+               text:qsTr("x33 Mux for Auto mode Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X33UseForAuto", isChecked ? 1 : 0);
+               }
+           }
+           ICCheckBox{
+               id:x46UseForStartup
+               text:qsTr("x46 Mux for Startup Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X46UseForStartup", isChecked ? 1 : 0);
+               }
+           }
+           ICCheckBox{
+               id:x47UseForStop
+               text:qsTr("x47 Mux for Stop Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X47UseForStop", isChecked ? 1 : 0);
+               }
+           }
+       }
 
         onConfigValueChanged: {
             console.log(addr, newV, oldV);

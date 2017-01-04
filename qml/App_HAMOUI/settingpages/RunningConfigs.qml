@@ -204,7 +204,7 @@ Item {
                         selItem.append({"ioID":selIO.configValue,"ioName":selIO.configText(),"moldName":selMold.configText()});
                         Pdata.moldbyIOData.push({"ioID":selIO.configValue,"ioName":selIO.configText(),"mold":selMold.configText()});
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
-                        console.log("nn",JSON.stringify(Pdata.moldbyIOData));
+//                        console.log("nn",JSON.stringify(Pdata.moldbyIOData));
                     }
                 }
                 ICButton{
@@ -212,14 +212,16 @@ Item {
                     text:qsTr("delete")
                     onButtonClicked: {
                         var toDel = itemView.currentIndex;
+                        if(toDel < 0)return;
                         selItem.remove(toDel);
                         Pdata.moldbyIOData.splice(toDel,1);
                         panelRobotController.setCustomSettings("MoldByIOGroup",JSON.stringify(getDataFromListModel()));
-                        console.log("dd",JSON.stringify(Pdata.moldbyIOData));
+//                        console.log("dd",JSON.stringify(Pdata.moldbyIOData));
 
                     }
                 }
             }
+
             Component.onCompleted: {
                 var updateListData = panelRobotController.getCustomSettings("MoldByIOGroup","[]");
                 Pdata.moldbyIOData = JSON.parse(updateListData);

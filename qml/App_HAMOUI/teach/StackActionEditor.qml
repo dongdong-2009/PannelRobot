@@ -52,16 +52,17 @@ Rectangle {
 
     Rectangle {
         id:photoMarkedRoot
-        color: "#F0F0F0"
+        color: "#BFEFFF"
         MouseArea{
             anchors.fill: parent
         }
 
 //        property alias painter: painter
         visible: false
-        width: 600
+        width: 800
         height: 400
         y:-150
+        x:-100
         z: 100
         Component.onCompleted: {
             painter.penWidth = 5
@@ -105,10 +106,22 @@ Rectangle {
                 }
             }
             ICConfigEdit{
+                id:setMaxX
+                configName: qsTr("X")
+                decimal: 3
+                configValue: '500'
+            }
+            ICConfigEdit{
+                id:setMaxY
+                configName: qsTr("Y")
+                decimal: 3
+                configValue: '200'
+            }
+            ICConfigEdit{
                 id:setHigh
                 configName: qsTr("High")
                 decimal: 3
-//                min: 20
+                configValue: '20'
             }
 
             ICButton{
@@ -120,7 +133,7 @@ Rectangle {
                 onButtonClicked:{
                     if(stackViewSel.currentIndex < 0) return;
 //                    console.log(painter.converterNow());
-                    var p_data= JSON.parse(painter.converterNow(setHigh.configValue));
+                    var p_data= JSON.parse(painter.converterNow(setMaxX.configValue,setMaxY.configValue,setHigh.configValue));
                     var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                     var sI = Teach.getStackInfoFromID(id);
                     sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, p_data));
@@ -135,6 +148,7 @@ Rectangle {
                 text: qsTr("quadTo_en")
                 width: clear.width
                 height: clear.height
+                isChecked: true
                 onIsCheckedChanged: {
                     if(isChecked)painter.setQuadEnable(true);
                     else painter.setQuadEnable(false);
@@ -154,6 +168,7 @@ Rectangle {
             ICCheckBox{
                 id:lineTo_en
                 text: qsTr("lineTo_en")
+                isChecked: false
                 width: clear.width
                 height: clear.height
                 onIsCheckedChanged: {

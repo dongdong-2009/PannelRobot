@@ -72,7 +72,9 @@ void ICPainter::mousePressEvent(QGraphicsSceneMouseEvent *event)
         m_pDrawPath_line->moveTo(event->pos());
         m_nowPoint = event->pos();
         logLastPoint = m_nowPoint;
-        path_.append(logLastPoint);
+        QPointF m=m_nowPoint;
+        m.setX(this->size().width()-m_nowPoint.x());
+        path_.append(m);
     }
 }
 
@@ -129,7 +131,7 @@ void ICPainter::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 setPenColor(lineTo_Color);
                 drawBgLine(*m_pDrawPath_line);
             }
-            qDebug()<<m_pDrawPath->toFillPolygon()<<m_pDrawPath->toFillPolygon().size();
+//            qDebug()<<m_pDrawPath->toFillPolygon()<<m_pDrawPath->toFillPolygon().size();
             delete m_pDrawPath;
             m_pDrawPath = NULL;
             delete m_pDrawPath_line;
@@ -144,7 +146,9 @@ void ICPainter::drawTmpLine()
     QPainter painter(&m_tempImage);
     drawPenStyle(&painter);
     painter.drawLine(m_lastPoint,m_nowPoint);
-    path_.append(m_nowPoint);
+    QPointF m=m_nowPoint;
+    m.setX(this->size().width()-m_nowPoint.x());
+    path_.append(m);
 //    if((m_nowPoint - logLastPoint).manhattanLength() > 5)
 //    {
 //        logLastPoint = m_nowPoint;
@@ -186,21 +190,25 @@ void ICPainter::drawPenStyle(QPainter *painter)
     painter->setBrush(Qt::NoBrush);
 }
 
-QString ICPainter::converterNow(double high)
+QString ICPainter::converterNow(double x,double y,double high)
 {
     QString ret = "[";
+    double xProportion = x/this->size().width();
+    double yProportion = y/this->size().height();
     for(int i=0;i<path_.size();i++)
     {
+        if(i==0)ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i).x()*xProportion).arg(path_.at(i).y()*yProportion).arg(i).arg(high);
         if(path_.at(i).x()==-1)
         {
-            ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i-1).x()).arg(path_.at(i-1).y()).arg(i).arg(high);
-            if((i+i)<path_.size())
+            ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i-1).x()*xProportion).arg(path_.at(i-1).y()*yProportion).arg(i).arg(high);
+            int next=i+1;
+            if(next<path_.size())
             {
-                ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i+1).x()).arg(path_.at(i+1).y()).arg(i).arg(high);
+                ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":%4,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(next).x()*xProportion).arg(path_.at(next).y()*yProportion).arg(i).arg(high);
             }
         }
         else
-        ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":0,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i).x()).arg(path_.at(i).y()).arg(i);
+        ret += QString("{\"pointName\":\"%3\", \"pointPos\":{\"m0\":%1,\"m1\":%2,\"m2\":0,\"m3\":0,\"m4\":0,\"m5\":0}},").arg(path_.at(i).x()*xProportion).arg(path_.at(i).y()*yProportion).arg(i);
     }
     if(!path_.isEmpty())ret.chop(1);
     ret += ']';

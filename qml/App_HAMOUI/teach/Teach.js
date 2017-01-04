@@ -178,6 +178,8 @@ var DefinePoints = {
         }
         definePoints.parseActionPointsHelper = function(actionObject){
             if(actionObject.action === actions.ACT_COMMENT){
+                if(actionObject.commentAction === undefined)
+                    return [];
                 return arguments.callee(actionObject.commentAction);
             }
 
@@ -208,7 +210,7 @@ var DefinePoints = {
         }
 
         definePoints.parseProgram = function(program){
-            for(var i = 0; i < program.length; ++i){
+            for(var i = 0, len = program.length; i < len; ++i){
                 definePoints.parseActionPoints(program[i]);
             }
         }

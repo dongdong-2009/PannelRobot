@@ -6572,42 +6572,50 @@ please chose!</source>
     </message>
     <message>
         <source>clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清除</translation>
     </message>
     <message>
         <source>setPen</source>
-        <translation type="unfinished"></translation>
+        <translation>画笔</translation>
     </message>
     <message>
         <source>converter</source>
-        <translation type="unfinished"></translation>
+        <translation>计算路径</translation>
     </message>
     <message>
         <source>close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <source>Paint Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>画板</translation>
     </message>
     <message>
         <source>High</source>
-        <translation type="unfinished"></translation>
+        <translation>抬笔高度</translation>
     </message>
     <message>
         <source>quadTo_en</source>
-        <translation type="unfinished"></translation>
+        <translation>圆滑</translation>
     </message>
     <message>
         <source>quadTo_Color_Change</source>
-        <translation type="unfinished"></translation>
+        <translation>圆滑颜色选择</translation>
     </message>
     <message>
         <source>lineTo_en</source>
-        <translation type="unfinished"></translation>
+        <translation>直线</translation>
     </message>
     <message>
         <source>lineTo_Color_Change</source>
+        <translation>直线颜色选择</translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

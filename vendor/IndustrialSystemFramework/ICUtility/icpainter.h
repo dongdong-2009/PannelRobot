@@ -37,7 +37,7 @@ public:
     Q_INVOKABLE void setLineColorChangeEnable(bool en){lineTo_Color_Change = en;}
     Q_INVOKABLE void setQuadColor(QColor c){quadTo_Color = c;}
     Q_INVOKABLE void setLineColor(QColor c){lineTo_Color = c;}
-    Q_INVOKABLE QString converterNow(double high);
+    Q_INVOKABLE QString converterNow(double x,double y,double high);
     void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0);
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);

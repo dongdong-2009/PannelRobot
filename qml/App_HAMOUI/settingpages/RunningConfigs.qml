@@ -116,9 +116,9 @@ Item {
             id:selMoldWithIO
 //            visible: false
             width: parent.width*0.5
-            anchors.top:independentManualSpeedGroup.bottom
+            anchors.top:muxForInput.bottom
             anchors.topMargin: 6
-            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 18
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 20 -muxForInput.height
             ListModel{
                 id:selItem
             }
@@ -237,6 +237,44 @@ Item {
             }
         }
 
+        Grid{
+           id:muxForInput
+//            anchors.left: selMoldWithIO.right
+//            anchors.leftMargin: 6
+           anchors.top: independentManualSpeedGroup.bottom
+           anchors.topMargin: 6
+           columns: 4
+           spacing: 6
+           ICCheckBox{
+               id:x32UseForOrigin
+               text:qsTr("x32 Mux for Origin mode Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X32UseForOrigin", isChecked ? 1 : 0);
+               }
+           }
+           ICCheckBox{
+               id:x33UseForAuto
+               text:qsTr("x33 Mux for Auto mode Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X33UseForAuto", isChecked ? 1 : 0);
+               }
+           }
+           ICCheckBox{
+               id:x46UseForStartup
+               text:qsTr("x46 Mux for Startup Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X46UseForStartup", isChecked ? 1 : 0);
+               }
+           }
+           ICCheckBox{
+               id:x47UseForStop
+               text:qsTr("x47 Mux for Stop Btn");
+               onIsCheckedChanged: {
+                   panelRobotController.setCustomSettings("X47UseForStop", isChecked ? 1 : 0);
+               }
+           }
+       }
+
 
         onConfigValueChanged: {
             console.log(addr, newV, oldV);
@@ -252,6 +290,10 @@ Item {
         var turnAutoSpeed = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
         turnAutoSpeedEdit.isChecked = isTurnAutoSpeedEn;
         turnAutoSpeedEdit.configValue = turnAutoSpeed;
+        x32UseForOrigin.isChecked = panelRobotController.getCustomSettings("X32UseForOrigin", 0);
+        x33UseForAuto.isChecked = panelRobotController.getCustomSettings("X33UseForAuto", 0);
+        x46UseForStartup.isChecked = panelRobotController.getCustomSettings("X46UseForStartup", 0);
+        x47UseForStop.isChecked = panelRobotController.getCustomSettings("X47UseForStop", 0);
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
     }

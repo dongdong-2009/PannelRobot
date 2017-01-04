@@ -178,6 +178,8 @@ var DefinePoints = {
         }
         definePoints.parseActionPointsHelper = function(actionObject){
             if(actionObject.action === actions.ACT_COMMENT){
+                if(actionObject.commentAction === undefined)
+                    return [];
                 return arguments.callee(actionObject.commentAction);
             }
 

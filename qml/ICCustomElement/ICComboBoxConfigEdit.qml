@@ -22,6 +22,10 @@ Item {
         return items[index];
     }
 
+    function setItemVisble(index,vi){
+        edit.setItemVisible(index, vi);
+    }
+
     height: 24
     width: container.width
     Row{

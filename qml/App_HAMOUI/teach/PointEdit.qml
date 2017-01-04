@@ -181,7 +181,9 @@ Item {
     Row{
         id:leftCommandContainer
         spacing: 6
-        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked)
+        enabled: (!offsetPathType.isChecked && !arcRelPathType.isChecked
+                  && !poseOffsetLine3DType.isChecked && !offsetJogType.isChecked &&
+                  !poseOffsetCurve3DType.isChecked)
         ICButton{
             id:setIn
             text: qsTr("Set In")
@@ -624,6 +626,7 @@ Item {
                 ICCheckBox{
                     id:curve3DType
                     text:qsTr("Curve 3D")
+
                     font.pointSize: PData.actionTypeFontPS
 
                 }
@@ -737,26 +740,38 @@ Item {
                 function createModelItem(){
                     var ret = {};
 
-                    if(motor0.isChecked)
+                    if(motor0.isChecked && motor0.visible)
                         ret.m0 = motor0.configValue;
-                    if(motor1.isChecked)
+                    if(motor1.isChecked && motor1.visible)
                         ret.m1 = motor1.configValue;
-                    if(motor2.isChecked)
+                    if(motor2.isChecked && motor2.visible)
                         ret.m2 = motor2.configValue;
-                    if(motor3.isChecked)
+                    if(motor3.isChecked && motor3.visible)
                         ret.m3 = motor3.configValue;
-                    if(motor4.isChecked)
+                    if(motor4.isChecked && motor4.visible)
                         ret.m4 = motor4.configValue;
-                    if(motor5.isChecked)
+                    if(motor5.isChecked && motor5.visible)
                         ret.m5 = motor5.configValue;
                     var pointName = "";
                     if(selReferenceName.isChecked){
                         if(selReferenceName.configValue >= 0){
-                            ret = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
+                            var tmp;
+                            tmp = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
+                            if(motor0.isChecked && motor0.visible)
+                                ret.m0 = tmp.m0;
+                            if(motor1.isChecked && motor1.visible)
+                                ret.m1 = tmp.m1;
+                            if(motor2.isChecked && motor2.visible)
+                                ret.m2 = tmp.m2;
+                            if(motor3.isChecked && motor3.visible)
+                                ret.m3 = tmp.m3;
+                            if(motor4.isChecked && motor4.visible)
+                                ret.m4 = tmp.m4;
+                            if(motor5.isChecked && motor5.visible)
+                                ret.m5 = tmp.m5;
                             pointName = selReferenceName.configText();
                         }
                     }
-
                     return createPoint(pointName, ret);
                 }
             }
@@ -798,7 +813,7 @@ Item {
                         anchors.fill: parent
                         onPressed: {
                             var point = pointViewModel.get(index).pos;
-                            motor0.configValue = point.m0 || 0.000;
+                            AxisDefine.axisInfos[0].configValue = point.m0 || 0.000;
                             motor1.configValue = point.m1 || 0.000;
                             motor2.configValue = point.m2 || 0.000;
                             motor3.configValue = point.m3 || 0.000;
@@ -815,7 +830,24 @@ Item {
     Component.onCompleted: {
         setZero.clicked();
         Teach.definedPoints.registerPointsMonitor(container);
-        onPointsCleared()
+        onPointsCleared();
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+    }
+    function onAxisDefinesChanged(){
+        lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable;
+        lineXZType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[2].visiable;
+        lineYZType.visible = AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
+        circlePathType.visible = offsetPathType.visible = line3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
+        cureveXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable;
+        cureveXZType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[2].visiable;
+        cureveYZType.visible = AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
+        arcRelPathType.visible = curve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
+        singlePoseType.visible = poseLine3DType.visible = poseCurve3DType.visible =
+        poseCirclePathType.visible = poseOffsetLine3DType.visible =
+        poseOffsetCurve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable &&
+                                       AxisDefine.axisInfos[3].visiable && AxisDefine.axisInfos[4].visiable && AxisDefine.axisInfos[5].visiable;
+
     }
 
 }

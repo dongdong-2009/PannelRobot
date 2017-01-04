@@ -28,6 +28,10 @@ Row{
         return ret;
     }
 
+    function setTypeVisible(index, isShow){
+        ps.setItemVisible(index, isShow);
+    }
+
     spacing: 10
     visible: {
         return axisDefine != Teach.kAxisType_NoUse &&

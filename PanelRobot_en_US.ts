@@ -78,7 +78,7 @@
     </message>
     <message>
         <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.ui" line="1032"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="370"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="378"/>
         <source>EN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -102,13 +102,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="307"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="375"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="315"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="383"/>
         <source>CH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="441"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="449"/>
         <source>Min:%1
 Max:%2
 Prec:%3</source>
@@ -120,6 +120,7 @@ Prec:%3</source>
     <message>
         <location filename="controller/panelrobotcontroller.cpp" line="239"/>
         <location filename="controller/panelrobotcontroller.cpp" line="244"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="255"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -131,6 +132,11 @@ Prec:%3</source>
     <message>
         <location filename="controller/panelrobotcontroller.cpp" line="244"/>
         <source>Open Database fail!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="controller/panelrobotcontroller.cpp" line="255"/>
+        <source>Mold Is Not Exist!!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

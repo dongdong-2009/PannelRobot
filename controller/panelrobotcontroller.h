@@ -1,6 +1,12 @@
 #ifndef PANELROBOTCONTROLLER_H
 #define PANELROBOTCONTROLLER_H
 
+
+
+
+
+
+
 #include <QObject>
 #include <QMap>
 #include <QSettings>
@@ -670,6 +676,7 @@ public:
         QPair<int, int> stepInfo = ICRobotMold::CurrentMold()->UIStepToRealStep(which, module, line);
         //        ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
         //        return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
+        qDebug()<<"setSingleRunStart:"<<stepInfo;
         modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 

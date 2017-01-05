@@ -893,6 +893,7 @@ private:
     QScriptValue configRangeGetter_;
     QTranslator translator;
     QTranslator panelRoboTranslator_;
+    QTranslator configsTranslator_;
     QTimer keyCheckTimer_;
     QSettings customSettings_;
     QString valveDefineJSON_;

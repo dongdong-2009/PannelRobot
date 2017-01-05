@@ -218,6 +218,7 @@ void PanelRobotController::Init()
     //    InitMainView();
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
+    qApp->installTranslator(&configsTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
 
     ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
@@ -543,10 +544,14 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
     }
     bool ret = translator.load(qml.filePath(name));
     QString language = getCustomSettings("Language", "CN");
-    if(language == "CN")
+    if(language == "CN"){
         panelRoboTranslator_.load(":/PanelRobot_zh_CN.qm");
-    else
+        configsTranslator_.load(qml.filePath("configs_zh_CN.qm"));
+    }
+    else{
         panelRoboTranslator_.load(":/PanelRobot_en_US.qm");
+        configsTranslator_.load(qml.filePath("configs_en_US.qm"));
+    }
     InitMainView();
     return ret;
 }

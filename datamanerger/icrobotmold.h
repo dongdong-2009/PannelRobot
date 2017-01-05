@@ -324,7 +324,7 @@ public:
                                const QVector<QVariantList>& counters,
                                const QVector<QVariantList>& variables,
                                const QMap<int, CompileInfo>& functions,
-                               int & err);
+                               int & err, bool isFunction = false);
 
 //    static QPair<QStringList, QString>  ExportMold(const QString& name);
     static QStringList ExportMold(const QString& name);

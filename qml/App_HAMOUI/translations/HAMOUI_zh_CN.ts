@@ -5875,7 +5875,7 @@ please chose!</source>
     </message>
     <message>
         <source>select</source>
-        <translation type="unfinished">通切换到模号</translation>
+        <translation>通切换到模号</translation>
     </message>
     <message>
         <source>IO Select</source>
@@ -5892,6 +5892,22 @@ please chose!</source>
     <message>
         <source>delete</source>
         <translation>删除</translation>
+    </message>
+    <message>
+        <source>x32 Mux for Origin mode Btn</source>
+        <translation>X32复用:进入原点模式</translation>
+    </message>
+    <message>
+        <source>x33 Mux for Auto mode Btn</source>
+        <translation>X33复用:进入自动模式</translation>
+    </message>
+    <message>
+        <source>x46 Mux for Startup Btn</source>
+        <translation>X46复用:启动</translation>
+    </message>
+    <message>
+        <source>x47 Mux for Stop Btn</source>
+        <translation>X47复用:暂停</translation>
     </message>
 </context>
 <context>

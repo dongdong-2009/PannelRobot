@@ -673,46 +673,49 @@ Rectangle {
                     }
 
                 }
-                ICButton{
-                    id:editPos
-                    text: qsTr("Edit Pos")
+                Row{
                     visible: page1.isCustomDataSource && page1.mode == 2
-                    function onEditConfirm(accepted, points){
-                        if(accepted){
-                            if(stackViewSel.currentIndex < 0) return;
+                    height: editPos.height
+                    spacing: 12
+                    ICButton{
+                        id:editPos
+                        text: qsTr("Edit Pos")
+                        function onEditConfirm(accepted, points){
+                            if(accepted){
+                                if(stackViewSel.currentIndex < 0) return;
+                                var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                                var sI = Teach.getStackInfoFromID(id);
+                                sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
+                                var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                                toSend = ESData.externalDataManager.parseRaw(toSend);
+                                panelRobotController.sendExternalDatas(JSON.stringify(toSend));
+                            }else
+                                customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
+                        }
+
+                        onButtonClicked: {
+    //                        customPointEditor.visible = true;
+    //                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
                             var sI = Teach.getStackInfoFromID(id);
-                            sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
-                            var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
-                            toSend = ESData.externalDataManager.parseRaw(toSend);
-                            panelRobotController.sendExternalDatas(JSON.stringify(toSend));
-                        }else
-                            customPointEditor.editConfirm.disconnect(editPos.onEditConfirm);
+                            if(sI.posData === undefined)
+                                sI.podData = [];
+                            customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
+                        }
                     }
 
-                    onButtonClicked: {
-//                        customPointEditor.visible = true;
-//                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
-                        var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                        var sI = Teach.getStackInfoFromID(id);
-                        if(sI.posData === undefined)
-                            sI.podData = [];
-                        customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
-                    }
-                }
+                    ICButton{
+                        id:paintPos
+                        text: qsTr("Paint Pos")
+    //                    anchors.left: editPos.right
+    //                    anchors.leftMargin: 12
+    //                    anchors.top: editPos.top
+                        width: editPos.width
+                        height: editPos.height
 
-                ICButton{
-                    id:paintPos
-                    text: qsTr("Paint Pos")
-                    visible: page1.isCustomDataSource && page1.mode == 2
-                    anchors.left: editPos.right
-                    anchors.leftMargin: 12
-                    anchors.top: editPos.top
-                    width: editPos.width
-                    height: editPos.height
-
-                    onButtonClicked: {
-                        photoMarkedRoot.visible = true;
+                        onButtonClicked: {
+                            photoMarkedRoot.visible = true;
+                        }
                     }
                 }
 

@@ -813,7 +813,7 @@ Item {
                         anchors.fill: parent
                         onPressed: {
                             var point = pointViewModel.get(index).pos;
-                            AxisDefine.axisInfos[0].configValue = point.m0 || 0.000;
+                            motor0.configValue = point.m0 || 0.000;
                             motor1.configValue = point.m1 || 0.000;
                             motor2.configValue = point.m2 || 0.000;
                             motor3.configValue = point.m3 || 0.000;

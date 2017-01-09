@@ -962,13 +962,13 @@ Rectangle {
             btnStatus[i] = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
             record = moldbyIOData[i].mold;
             if(btnStatus[i]){
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
                 if(btnStatus[i] != refreshTimer.btnStatusOld[i]){
                     refreshTimer.btnStatusOld[i] = btnStatus[i];
+                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
                     if(!panelRobotController.loadRecord(record))break;
                     ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                    panelRobotController.sendKeyCommandToHost(curMode);
                 }
-                panelRobotController.sendKeyCommandToHost(curMode);
             }else refreshTimer.btnStatusOld[i] = 0;
         }
     }

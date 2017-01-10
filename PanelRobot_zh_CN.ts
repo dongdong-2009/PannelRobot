@@ -120,7 +120,7 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="+239"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="+240"/>
         <location line="+5"/>
         <location line="+11"/>
         <source>Error</source>

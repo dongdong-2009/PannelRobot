@@ -6314,7 +6314,7 @@ please chose!</source>
     </message>
     <message>
         <source>confirmBtn</source>
-        <translation type="unfinished">坐标系换算</translation>
+        <translation>确定修改</translation>
     </message>
 </context>
 <context>

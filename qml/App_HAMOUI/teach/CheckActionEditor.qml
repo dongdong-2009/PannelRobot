@@ -168,7 +168,7 @@ Item {
 
         singleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = yDefines[i];
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
             singleYModel.append(yView.createValveMoldItem(yDefine, IODefines.VALVE_BOARD));
         }
 

@@ -428,16 +428,32 @@ Rectangle {
                 id:exportPrintableRecord
                 text: qsTr("Export Printable")
                 height: exportRecord.height
-//                visible: exportRecord.visible
-                visible: false
+                visible: exportRecord.visible
+//                visible: false
                 onButtonClicked: {
                     var record;
+                    var toTranslate;
+                    var recordPrograms = "";
+                    var tmpStr;
                     for(var i = 0; i < recordsModel.count; ++i){
                         record = recordsModel.get(i);
                         if(record.isSelected){
-//                            exportMolds.push(record.name);
-                            console.log(panelRobotController.readRecord(record.name));
-
+                            for(var j=0;j<9;++j){
+                                toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name,j,1));
+                                if(j === 0){
+                                    tmpStr = qsTr("mainProgram:") + Teach.programsToText(toTranslate);
+                                }else{
+                                    tmpStr = qsTr("subProgram")+j+":" + Teach.programsToText(toTranslate);
+                                }
+                                recordPrograms += tmpStr;
+                            }
+                            toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
+                            for(var k=0;k<toTranslate.length;++k){
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + Teach.programsToText(JSON.parse(toTranslate[i].program));
+                                recordPrograms += tmpStr;
+                            }
+                            console.log(recordPrograms);
+                            panelRobotController.writeUsbFile("123",recordPrograms);
                         }
                     }
                 }

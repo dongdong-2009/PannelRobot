@@ -410,6 +410,7 @@ public:
             toJSON += moldPrograms.at(i) +",";
         toJSON.remove(toJSON.remove(toJSON.length()-1,1));
         toJSON += "]";
+        return toJSON;
     }
 
     Q_INVOKABLE QString recordFunctions(const QString& name) const

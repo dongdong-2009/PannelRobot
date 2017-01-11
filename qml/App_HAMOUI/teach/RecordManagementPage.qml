@@ -438,15 +438,16 @@ Rectangle {
                     for(var i = 0; i < recordsModel.count; ++i){
                         record = recordsModel.get(i);
                         if(record.isSelected){
-                            for(var j=0;j<9;++j){
-                                toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name,j,1));
-                                if(j === 0){
-                                    tmpStr = qsTr("mainProgram:") + Teach.programsToText(toTranslate);
-                                }else{
-                                    tmpStr = qsTr("subProgram")+j+":" + Teach.programsToText(toTranslate);
-                                }
-                                recordPrograms += tmpStr;
+                            toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name));
+                            for(var j=0;j<toTranslate.length;j++)
+                            {
+                                if(j === 0)
+                                    tmpStr = qsTr("mainProgram:") + Teach.programsToText(toTranslate[j]);
+                                else
+                                    tmpStr = qsTr("subProgram")+j+":" + Teach.programsToText(toTranslate[j]);
                             }
+                            recordPrograms += tmpStr;
+
                             toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
                             for(var k=0;k<toTranslate.length;++k){
                                 tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + Teach.programsToText(JSON.parse(toTranslate[i].program));

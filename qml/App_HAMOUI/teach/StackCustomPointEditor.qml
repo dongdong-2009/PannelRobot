@@ -52,10 +52,21 @@ MouseArea{
             onGotFileContent: {
                 pointModel.clear();
                 PData.hcInterpreter.interprete(content);
+                var tMap = {};
+                var p;
                 for(var i = 0, points = PData.hcInterpreter.interpretedPoints, len = points.length; i < len; ++i)
                 {
-                    pointModel.append({"pointName":qsTr("P") + i,
-                                      "pointPos":points[i]});
+                    p = points[i];
+                    if(tMap.hasOwnProperty(p.m4)){
+                        pointModel.insert(tMap[p.m4], {"pointName":qsTr("P") + i,
+                                              "pointPos":p});
+                        tMap[p.m4] = tMap[p.m4] + 1;
+                    }else{
+                        pointModel.append({"pointName":qsTr("P") + i,
+                                              "pointPos":p});
+                        tMap[p.m4] = pointModel.count;
+                    }
+
                 }
 
             }

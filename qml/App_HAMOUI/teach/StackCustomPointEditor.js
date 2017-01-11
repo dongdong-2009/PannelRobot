@@ -150,7 +150,7 @@ var HCCYGCodeInterpreter = {
                 "m1":pos.Y.toFixed(3) || 0.000,
                 "m2":0.000,
                 "m3":0.000,
-                "m4":0.000,
+                "m4":pos.T.toFixed(3) || 0.000,
                 "m5":0.000
             };
 

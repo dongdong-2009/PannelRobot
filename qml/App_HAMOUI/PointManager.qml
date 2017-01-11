@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../ICCustomElement"
 import "./teach/Teach.js" as Teach
 import "configs/AxisDefine.js" as AxisDefine
+import "../utils/utils.js" as Utils
 
 MouseArea{
     id:instance
@@ -39,6 +40,21 @@ MouseArea{
         border.color: "gray"
         color: "#A0A0F0"
 
+        ICFileSelector{
+            id:califileSelector
+            visible: false;
+            width: parent.width * 0.8
+            height: parent.height * 0.6
+            anchors.centerIn:  parent
+            z:10
+            onGotFileContent: {
+                for(var i = 0, points = Utils.parseCalibration(content), len = points.length; i < len; ++i)
+                {
+                    var point = Teach.definedPoints.addNewPoint("", points[i], Teach.DefinePoints.kPT_Free);
+                }
+            }
+        }
+
         function onPointsCleared(){
             pointModel.clear();
         }
@@ -74,8 +90,22 @@ MouseArea{
                 text: qsTr("Replace")
                 height: 25
                 onButtonClicked: {
-                    var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
-                        "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
+                    var pointPos = {};
+
+                    if(m0.visible)
+                        pointPos.m0 = m0.configValue;
+                    if(m1.visible)
+                        pointPos.m1 = m1.configValue;
+                    if(m2.visible)
+                        pointPos.m2 = m2.configValue;
+                    if(m3.visible)
+                        pointPos.m3 = m3.configValue;
+                    if(m4.visible)
+                        pointPos.m4 = m4.configValue;
+                    if(m5.visible)
+                        pointPos.m5 = m5.configValue;
+//                    var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
+//                        "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
                     var toUpdate  = pointModel.get(pointView.currentIndex).point;
                     toUpdate.name = toUpdate.name.substr(0,2) + toUpdate.index + ":" + text_name.configValue;
                     toUpdate.point = pointPos;
@@ -195,6 +225,16 @@ MouseArea{
                 //            y:button_newLocus.y + button_newLocus.height + 2
                 onButtonClicked: {
                     newPointHelper(Teach.DefinePoints.kPT_Offset);
+                }
+            }
+
+            ICButton{
+                id:loadCalibration
+                text: qsTr("Load Calibration")
+                width: button_setWorldPos.width
+                height: 25
+                onButtonClicked: {
+                    califileSelector.visible = true;
                 }
             }
         }

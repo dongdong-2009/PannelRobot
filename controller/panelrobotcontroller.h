@@ -1,6 +1,12 @@
 #ifndef PANELROBOTCONTROLLER_H
 #define PANELROBOTCONTROLLER_H
 
+
+
+
+
+
+
 #include <QObject>
 #include <QMap>
 #include <QSettings>
@@ -522,6 +528,7 @@ public:
     }
 
     Q_INVOKABLE bool saveCounterDef(quint32 id, const QString& name, quint32 current, quint32 target);
+    Q_INVOKABLE bool saveCounterCurrent(quint32 id, const QString& name, quint32 current, quint32 target);
     Q_INVOKABLE bool delCounterDef(quint32 id);
     Q_INVOKABLE QString counterDefs() const;
 
@@ -669,6 +676,7 @@ public:
         QPair<int, int> stepInfo = ICRobotMold::CurrentMold()->UIStepToRealStep(which, module, line);
         //        ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
         //        return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
+        qDebug()<<"setSingleRunStart:"<<stepInfo;
         modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 
@@ -811,6 +819,8 @@ public:
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
 
+    Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
+
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
     //        if(logger_ == NULL)
@@ -884,6 +894,7 @@ private:
     QScriptValue configRangeGetter_;
     QTranslator translator;
     QTranslator panelRoboTranslator_;
+    QTranslator configsTranslator_;
     QTimer keyCheckTimer_;
     QSettings customSettings_;
     QString valveDefineJSON_;

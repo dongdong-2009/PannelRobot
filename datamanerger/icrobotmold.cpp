@@ -207,6 +207,8 @@ QVector<quint32> PointToPosList(int action, const QVariantMap& point)
     {
         if(point.contains(mNs.at(i)))
             ret.append(ICUtility::doubleToInt(point.value(mNs.at(i)).toDouble(), 3));
+        else
+            ret.append(0);
     }
     return ret;
 }
@@ -553,10 +555,11 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
     //    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
+    int err = ICRobotMold::kCCErr_None;
     if(moduleStep < 0)
     {
         item.append(v->value("module").toUInt());
-        return ICRobotMold::kCCErr_Invaild_ModuleID;
+        err = ICRobotMold::kCCErr_Invaild_ModuleID;
     }
     else
         item.append(moduleStep);
@@ -565,7 +568,7 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
 
-    return ICRobotMold::kCCErr_None;
+    return err;
 }
 
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
@@ -766,7 +769,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                                  const QVector<QVariantList>& counters,
                                  const QVector<QVariantList>& variables,
                                  const QMap<int, CompileInfo> &functions,
-                                 int &err)
+                                 int &err,
+                                 bool isFunction)
 {
     QJson::Parser parser;
     bool ok;
@@ -956,9 +960,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 item = f.GetICMoldItem(i);
                 if(IsJumpAction(item.at(0)))
                 {
-                    item[1] += ret.ModuleEntry(mID);
-                    item.pop_back();
-                    item.append(ICRobotMold::MoldItemCheckSum(item));
+                    if(item.at(0) != F_CMD_PROGRAM_CALL0)
+                    {
+                        item[1] += ret.ModuleEntry(mID);
+                        item.pop_back();
+                        item.append(ICRobotMold::MoldItemCheckSum(item));
+                    }
                 }
 //                ret.AddICMoldItem(programEndLine, item);
                 int uiStep = baseStep + f.UIStepFromCompiledLine(i);
@@ -1050,11 +1057,11 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             if(act == F_CMD_PROGRAM_CALL0)
             {
                 int moduleStep = ret.ModuleEntry(action.value("module", -1).toInt());
-                if(moduleStep < 0)
+                if(moduleStep < 0 && !isFunction)
                 {
                     ret.AddErr(p.key(), kCCErr_Invaild_ModuleID);
                 }
-                else if(moduleStep >= 0 &&
+                else if((moduleStep >= 0 || isFunction) &&
                         (p.value() == kCCErr_Invaild_ModuleID ||
                          p.value() == kCCErr_Invaild_Flag))
                 {
@@ -1064,7 +1071,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                         action.insert("step", toJumpStep);
                     action.insert("moduleStep", moduleStep);
                     ret.UpdateICMoldItem(p.key(), VariantToMoldItem(0, action, err));
-                    if(err == kCCErr_None)
+                    if(err == kCCErr_None || (isFunction && err == kCCErr_Invaild_ModuleID))
                     {
                         ret.RemoveErr(p.key());
                     }
@@ -1112,6 +1119,7 @@ bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
     for(int i = 0; i != programs.size(); ++i)
     {
         tmpProgramsCode.append(programs.at(i));
+        qDebug()<<"Load Record:"<<i;
         p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr())
         {
@@ -1143,6 +1151,7 @@ bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
 QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
+    qDebug()<<"SaveMold:"<<which<<" Begin";
     CompileInfo aP = Complie(program, stackInfos_, counters_, variables_, compiledFunctions_, err);
     if(aP.ErrInfo().isEmpty())
     {
@@ -1785,7 +1794,7 @@ QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions,
     {
         fun = result.at(i).toMap();
         funStr = fun.value("program").toString();
-        CompileInfo p = Complie(funStr,stackInfos, counters, variables, QMap<int, CompileInfo>(), err);
+        CompileInfo p = Complie(funStr,stackInfos, counters, variables, QMap<int, CompileInfo>(), err, true);
         ret.insert(fun.value("id").toInt(), p);
     }
     return ret;

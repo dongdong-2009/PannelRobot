@@ -72,6 +72,8 @@ MouseArea {
         realFrame.color = "yellow";
         yesBtn.color = "red";
         detailText.text = details || ""
+//        console.log("detailContent",detailContent.width,detailContent.height);
+//        console.log("detailText",detailText.width,detailText.height);
     }
 
     function showInput(tip, configName, isNumberOnly, yesText, noText){
@@ -150,7 +152,7 @@ MouseArea {
     }
     Rectangle{
         id:detailContainer
-        width: realFrame.width
+        width: detailContent.width
         height: 150
         border.color: "black"
         border.width: 1
@@ -159,7 +161,8 @@ MouseArea {
         anchors.top: realFrame.bottom
         visible: false
         ICFlickable{
-            width: parent.width
+            id:detailContent
+            width: detailText.width
             height: parent.height
             contentWidth: detailText.width
             contentHeight: detailText.height
@@ -167,7 +170,7 @@ MouseArea {
             clip: true
             Text{
                 id:detailText
-                width: parent.width
+//                width: parent.width
             }
         }
     }

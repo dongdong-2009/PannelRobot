@@ -587,15 +587,20 @@ void ICRobotVirtualhost::CommunicateImpl()
                 {
                     emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
                 }
-                if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
+                static int oldAlarm = -1;
+                if(oldAlarm != HostStatusValue(&c_ro_0_32_0_932))
                 {
-                    //                qDebug()<<"statusDataTmp_.at(i)";
-                    //                    SetCommunicateInterval(INIT_INTERVAL);
-                    emit NeedToInitHost();
-                    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
-                                                                                                          ICAddr_System_Retain_2,
-                                                                                                          64); // read host version
-                    AddCommunicationFrame(toSentFrame);
+                    oldAlarm = HostStatusValue(&c_ro_0_32_0_932);
+                    if(oldAlarm == ALARM_NOT_INIT)
+                    {
+                        //                qDebug()<<"statusDataTmp_.at(i)";
+                        //                    SetCommunicateInterval(INIT_INTERVAL);
+                        emit NeedToInitHost();
+                        ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
+                                                                                                              ICAddr_System_Retain_2,
+                                                                                                              64); // read host version
+                        AddCommunicationFrame(toSentFrame);
+                    }
                 }
                 //            currentStatusGroup_ = ICAddr_Read_Status0;
 

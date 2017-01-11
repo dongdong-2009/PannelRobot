@@ -83,6 +83,7 @@ Rectangle {
                 PropertyChanges { target: newRecord; enabled:false;}
                 PropertyChanges { target: loadRecord; enabled:false;}
                 PropertyChanges { target: copyRecord; enabled:false;}
+                PropertyChanges { target: delRecord; enabled:false;}
                 PropertyChanges { target: exportRecord; visible:true;}
                 PropertyChanges { target: recordsView; model:recordsModel;isSelectable:true;}
             },
@@ -92,6 +93,7 @@ Rectangle {
                 PropertyChanges { target: loadRecord; enabled:false;}
                 PropertyChanges { target: copyRecord; enabled:false;}
                 PropertyChanges { target: delRecord; enabled:false;}
+                PropertyChanges { target: returnUp; visible:false;}
                 PropertyChanges { target: recordsView; model:backupPackageModel;}
             },
             State {
@@ -101,6 +103,7 @@ Rectangle {
                 PropertyChanges { target: copyRecord; enabled:false;}
                 PropertyChanges { target: delRecord; enabled:false;}
                 PropertyChanges { target: importRecord; visible:true;}
+                PropertyChanges { target: returnUp; visible:true;}
                 PropertyChanges { target: viewBackupRecords; visible:false;}
                 PropertyChanges {
                     target: recordsView;
@@ -110,6 +113,16 @@ Rectangle {
 
             }
         ]
+        onStateChanged: {
+            if(state == "exportMode"){
+                recordsView.model = null;
+                for(var i = 0, len = recordsModel.count; i < len; ++i){
+                    recordsModel.setProperty(i, "isSelected", false);
+                }
+                recordsView.model = recordsModel;
+            }
+        }
+
         Row{
             id:infoContainer
             x:10
@@ -247,6 +260,8 @@ Rectangle {
             property bool isSelectable: false
             property string openBackupPackage: ""
 
+
+
             id:recordsView
             width: parent.width * 0.8
             height: parent.height  - infoContainer.height - infoContainer.y - usbContainer.height - usbContainer.anchors.topMargin - anchors.topMargin - searchContainer.height - searchContainer.anchors.topMargin
@@ -273,12 +288,7 @@ Rectangle {
                         onIsCheckedChanged: {
                             recordsView.model.setProperty(index, "isSelected", isChecked);
                         }
-                        onVisibleChanged: {
-                            if(!visible){
-                                isChecked = false;
-                            }
-                        }
-
+                        isChecked: isSelected
                     }
 
                     Item{
@@ -481,6 +491,15 @@ Rectangle {
                         usbModel.append(recordsView.createRecordItem(molds[i], undefined));
                     }
                     recordPage.state = "openMode";
+                }
+            }
+            ICButton{
+                id:returnUp
+                text: qsTr("Ret Up")
+                height: loadRecord.height
+                visible: importFromUsb.isChecked
+                onButtonClicked: {
+                    recordPage.state = "importMode";
                 }
             }
         }

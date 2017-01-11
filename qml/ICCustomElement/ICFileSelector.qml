@@ -87,7 +87,7 @@ MouseArea{
         onVisibleChanged:{
             if(visible){
                 fileModel.clear();
-                var files = JSON.parse(panelRobotController.scanUSBGCodeFiles("*"));
+                var files = JSON.parse(panelRobotController.scanUSBFiles("*"));
                 for(var i = 0; i < files.length; ++i){
                     fileModel.append({"name":files[i]});
                 }

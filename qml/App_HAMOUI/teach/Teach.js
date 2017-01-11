@@ -121,7 +121,6 @@ var DefinePoints = {
                     return definedPoints.definedPoints[i];
             }
             return null;
-
         }
 
         definePoints.extractPointIDFromPointName = function(name){
@@ -179,6 +178,8 @@ var DefinePoints = {
         }
         definePoints.parseActionPointsHelper = function(actionObject){
             if(actionObject.action === actions.ACT_COMMENT){
+                if(actionObject.commentAction === undefined)
+                    return [];
                 return arguments.callee(actionObject.commentAction);
             }
 
@@ -1276,7 +1277,7 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
-var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3")]
+var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4")]
 
 var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
     var ret =  qsTr("origin") + "-" + axisInfos[actionObject.axis].name + ":" + " " +  originType[actionObject.originType] + " " +

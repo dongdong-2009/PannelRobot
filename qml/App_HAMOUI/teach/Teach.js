@@ -1134,14 +1134,29 @@ var generateCommentAction = function(comment, commentdAction, reserve){
     };
 }
 
-var generateStackAction = function(stackID, speed0,speedY,speedZ,speed1){
+var generateStackAction = function(stackID, speed0,speedY,speedZ,speed1,
+                                   interval_en,interval_always_out,interval_out_choose,interval_out_id,interval_number,interval_out_time,
+                                   intervalbox_en,intervalbox_always_out,intervalbox_out_choose,intervalbox_out_id,intervalbox_number,intervalbox_out_time){
     return {
+
         "action":actions.F_CMD_STACK0,
         "stackID":stackID,
         "speed0":speed0 || 80,
         "speedY":speedY || 80,
         "speedZ":speedZ || 80,
         "speed1":speed1 || 80,
+        "interval_en":interval_en||0,
+        "interval_always_out":interval_always_out||0,
+        "interval_out_choose":interval_out_choose||0,
+        "interval_out_id":interval_out_id||0,
+        "interval_number":interval_number||10,
+        "interval_out_time":interval_out_time||1,
+        "intervalbox_en":intervalbox_en||0,
+        "intervalbox_always_out":intervalbox_always_out||0,
+        "intervalbox_out_choose":intervalbox_out_choose||0,
+        "intervalbox_out_id":intervalbox_out_id||0,
+        "intervalbox_number":intervalbox_number||10,
+        "intervalbox_out_time":intervalbox_out_time||1,
     };
 }
 
@@ -1877,3 +1892,26 @@ var updateCustomActions = function(actionObject){
         customActions[actionObject.action].pointsReplace(actionObject);
     }
 }
+
+var actionObjectToText = function(actionObject){
+    var originText = actionToStringNoCusomName(actionObject);
+    if(actionObject.customName){
+        var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+        originText = styledCN + " " + originText;
+    }
+    var reg = new RegExp("\n                            ", 'g');
+    return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+
+var programsToText = function(program){
+    var ret = "";
+    var tmp;
+    for(var i=0;i<program.length;++i){
+        if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
+        else if(i < 100) tmp = "&nbsp;"+i;
+        else tmp = i;
+        ret += tmp+":"+actionObjectToText(program[i])+ "<br>";
+    }
+    return ret;
+}
+

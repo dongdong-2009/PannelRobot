@@ -15,7 +15,7 @@ Item {
         id:view
         color:"white"
         width:parent.width/2
-        height: parent.height - 50
+        height: parent.height - 50 - 100
         model: toolCoordModel
         highlight: Rectangle { width: view.width; height: 20;color: "lightsteelblue"; }
         highlightMoveDuration: 1
@@ -54,8 +54,129 @@ Item {
             }
         }
     }
+
     Row{
+        id:bOffset
+        spacing: 6
         anchors.top: view.bottom
+        anchors.right: view.right
+        anchors.topMargin: 6
+        Text {
+            text: qsTr("B Offset Of A")
+        }
+        ICConfigEdit{
+            id:bX
+            configName: qsTr("X")
+            decimal: 3
+            configValue: panelRobotController.getCustomSettings("bx", 0, "BCOffset");
+        }
+        ICConfigEdit{
+            id:bY
+            configName: qsTr("Y")
+            decimal: 3
+            configValue: panelRobotController.getCustomSettings("by", 0, "BCOffset");
+        }
+    }
+
+    Row{
+        id:cOffset
+        spacing: 6
+        anchors.top: bOffset.bottom
+        anchors.left: bOffset.left
+        anchors.topMargin: 6
+        Text {
+            text: qsTr("C Offset Of A")
+        }
+        ICConfigEdit{
+            id:cX
+            configName: qsTr("X")
+            decimal: 3
+            configValue: panelRobotController.getCustomSettings("cx", 0, "BCOffset");
+
+        }
+        ICConfigEdit{
+            id:cY
+            decimal: 3
+            configName: qsTr("Y")
+            configValue: panelRobotController.getCustomSettings("cy", 0, "BCOffset");
+        }
+    }
+
+    Row{
+        anchors.top: cOffset.bottom
+        anchors.right: view.right
+        anchors.topMargin: 6
+        id:bcGroup
+        spacing: 6
+        ICButton{
+            id:saveOffset
+            text: qsTr("Save Offset")
+            onButtonClicked: {
+                panelRobotController.setCustomSettings("bx", bX.configValue, "BCOffset", false);
+                panelRobotController.setCustomSettings("by", bY.configValue, "BCOffset", false);
+                panelRobotController.setCustomSettings("cx", cX.configValue, "BCOffset", false);
+                panelRobotController.setCustomSettings("cy", cY.configValue, "BCOffset", true);
+            }
+        }
+
+        ICButton{
+            id:calcBCButton
+            text: qsTr("Calc B C Coord Base Sel")
+            width: 200
+            onButtonClicked: {
+                var coordPoint =[];
+                coordPoint[0] = p1m0.getConfigValue() + bX.getConfigValue();
+                coordPoint[1] = p1m1.getConfigValue() + bY.getConfigValue();
+                coordPoint[2] = p1m2.getConfigValue();
+                coordPoint[3] = p1m3.getConfigValue();
+                coordPoint[4] = p1m4.getConfigValue();
+                coordPoint[5] = p1m5.getConfigValue();
+                coordPoint[6] = p2m0.getConfigValue() + bX.getConfigValue();
+                coordPoint[7] = p2m1.getConfigValue() + bY.getConfigValue();
+                coordPoint[8] = p2m2.getConfigValue();
+                coordPoint[9] = p2m3.getConfigValue();
+                coordPoint[10] = p2m4.getConfigValue();
+                coordPoint[11] = p2m5.getConfigValue();
+                coordPoint[12] = p3m0.getConfigValue() + bX.getConfigValue();
+                coordPoint[13] = p3m1.getConfigValue() + bY.getConfigValue();
+                coordPoint[14] = p3m2.getConfigValue();
+                coordPoint[15] = p3m3.getConfigValue();
+                coordPoint[16] = p3m4.getConfigValue();
+                coordPoint[17] = p3m5.getConfigValue();
+                var toolCoordName = qsTr("B Head");
+                var ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
+                toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
+                panelRobotController.sendToolCoord(toolCoordID,JSON.stringify(coordPoint));
+
+
+                coordPoint[0] = p1m0.getConfigValue() + cX.getConfigValue();
+                coordPoint[1] = p1m1.getConfigValue() + cY.getConfigValue();
+                coordPoint[2] = p1m2.getConfigValue();
+                coordPoint[3] = p1m3.getConfigValue();
+                coordPoint[4] = p1m4.getConfigValue();
+                coordPoint[5] = p1m5.getConfigValue();
+                coordPoint[6] = p2m0.getConfigValue() + cX.getConfigValue();
+                coordPoint[7] = p2m1.getConfigValue() + cY.getConfigValue();
+                coordPoint[8] = p2m2.getConfigValue();
+                coordPoint[9] = p2m3.getConfigValue();
+                coordPoint[10] = p2m4.getConfigValue();
+                coordPoint[11] = p2m5.getConfigValue();
+                coordPoint[12] = p3m0.getConfigValue() + cX.getConfigValue();
+                coordPoint[13] = p3m1.getConfigValue() + cY.getConfigValue();
+                coordPoint[14] = p3m2.getConfigValue();
+                coordPoint[15] = p3m3.getConfigValue();
+                coordPoint[16] = p3m4.getConfigValue();
+                coordPoint[17] = p3m5.getConfigValue();
+                toolCoordName = qsTr("C Head");
+                ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
+                toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
+                panelRobotController.sendToolCoord(toolCoordID,JSON.stringify(coordPoint));
+            }
+        }
+    }
+
+    Row{
+        anchors.top: bcGroup.bottom
         anchors.right: view.right
         anchors.topMargin: 10
         spacing: 20

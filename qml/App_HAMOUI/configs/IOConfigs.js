@@ -15,8 +15,8 @@ var valveConfigs = [
             {"id":3, "name":qsTr("Normal Y013"), "type":kIO_TYPE.yOut, "time":0, "y1Point":3},
             {"id":4, "name":qsTr("Normal Y014"), "type":kIO_TYPE.yOut, "time":0, "y1Point":4},
             {"id":5, "name":qsTr("Normal Y015"), "type":kIO_TYPE.yOut, "time":0, "y1Point":5},
-            {"id":6, "name":qsTr("Normal Y016"), "type":kIO_TYPE.holdDoubleY, "time":3, "y1Point":6 ,"x1Point":6 ,"x1Dir":1, "y2Point":6 ,"x2Point":6 ,"x2Dir":1, "autoCheck":1},
-//            {"id":7, "name":qsTr("Normal Y017"), "type":kIO_TYPE.yOut, "time":0, "y1Point":7},
+            {"id":6, "name":qsTr("Normal Y016"), "type":kIO_TYPE.yOut, "time":0, "y1Point":6},
+            {"id":7, "name":qsTr("Normal Y017"), "type":kIO_TYPE.yOut, "time":0, "y1Point":7},
             {"id":8, "name":qsTr("Normal Y020"), "type":kIO_TYPE.yOut, "time":0, "y1Point":8},
             {"id":9, "name":qsTr("Normal Y021"), "type":kIO_TYPE.yOut, "time":0, "y1Point":9},
             {"id":10, "name":qsTr("Normal Y022"), "type":kIO_TYPE.yOut, "time":0, "y1Point":10},
@@ -91,10 +91,10 @@ var valveConfigs = [
             {"id":79, "name":qsTr("Time Y047"), "type":kIO_TYPE.tY, "time":0, "y1Point":31},
         ]
 
-var manualShowValves = [3, 4, 5, 6, 8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
-var teachYOut = [0, 1, 2, 3, 4, 5, 8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+var manualShowValves = [4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+var teachYOut = [4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
 var teachSingleY = [];
-var teachHoldDoubleY = [6];
+var teachHoldDoubleY = [];
 var teachUnholdDoubleY = [];
 var teachMy = [
             32,

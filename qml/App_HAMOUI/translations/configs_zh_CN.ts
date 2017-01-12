@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>AlarmInfo</name>
     <message>
@@ -896,365 +896,463 @@
 <context>
     <name>AxisDefine</name>
     <message>
-        <source>mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>M7</source>
-        <translation type="unfinished">报警状态 {7?}</translation>
-    </message>
-    <message>
-        <source>M8</source>
-        <translation type="unfinished">报警状态 {8?}</translation>
-    </message>
-    <message>
+        <location filename="../configs/AxisDefine.js" line="+28"/>
         <source>X</source>
         <translation>X1</translation>
     </message>
     <message>
+        <location line="+0"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+4"/>
+        <location line="+1"/>
+        <location line="+26"/>
+        <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-32"/>
         <source>Y</source>
         <translation>Y1</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>U</source>
         <translation>X2</translation>
     </message>
     <message>
+        <location line="+0"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+28"/>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-29"/>
         <source>V</source>
         <translation>Y2</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>W</source>
         <translation>C</translation>
     </message>
     <message>
-        <source>°</source>
-        <translation type="unfinished"></translation>
+        <location line="+1"/>
+        <source>M7</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>M8</source>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>IOConfigs</name>
     <message>
+        <location filename="../configs/IOConfigs.js" line="+12"/>
         <source>Normal Y010</source>
         <translation>绿灯</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y011</source>
         <translation>黄灯</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y012</source>
         <translation>红灯</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y013</source>
         <translation>报警声</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y014</source>
         <translation>普通输出Y014</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y015</source>
         <translation>普通输出Y015</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y016</source>
-        <translation>姿势阀</translation>
+        <translation>普通输出Y016</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y017</source>
         <translation>普通输出Y017</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y020</source>
-        <translation>车床1加工</translation>
+        <translation>普通输出Y020</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y021</source>
-        <translation>车床1夹套夹紧</translation>
+        <translation>普通输出Y021</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y022</source>
-        <translation>车床1夹套松开</translation>
+        <translation>普通输出Y022</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y023</source>
-        <translation>车床1安全门开</translation>
+        <translation>普通输出Y023</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y024</source>
-        <translation>车床1安全门关</translation>
+        <translation>普通输出Y024</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y025</source>
-        <translation>上料气爪夹紧</translation>
+        <translation>普通输出Y025</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y026</source>
-        <translation>上料气爪松开</translation>
+        <translation>普通输出Y026</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y027</source>
         <translation>普通输出Y027</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y030</source>
-        <translation>车床2加工</translation>
+        <translation>普通输出Y030</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y031</source>
-        <translation>车床2夹套夹紧</translation>
+        <translation>普通输出Y031</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y032</source>
-        <translation>车床2夹套松开</translation>
+        <translation>普通输出Y032</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y033</source>
-        <translation>车床2安全门开</translation>
+        <translation>普通输出Y033</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y034</source>
-        <translation>车床2安全门关</translation>
+        <translation>普通输出Y034</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y035</source>
-        <translation>下料气爪夹紧</translation>
+        <translation>普通输出Y035</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y036</source>
-        <translation>下料气爪松开</translation>
+        <translation>普通输出Y036</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y037</source>
         <translation>普通输出Y037</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y040</source>
         <translation>普通输出Y040</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y041</source>
         <translation>普通输出Y041</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y042</source>
         <translation>普通输出Y042</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y043</source>
         <translation>普通输出Y043</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y044</source>
         <translation>普通输出Y044</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y045</source>
         <translation>普通输出Y045</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y046</source>
         <translation>普通输出Y046</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Normal Y047</source>
         <translation>普通输出Y047</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M010</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M011</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M012</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M013</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M014</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M015</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M016</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M017</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M020</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M021</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M022</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M023</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M024</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M025</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M026</source>
         <translation></translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>M027</source>
         <translation>报警状态</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y010</source>
-        <translation>时间输出Y010</translation>
+        <translation>时间输出绿灯</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y011</source>
-        <translation>时间输出Y011</translation>
+        <translation>时间输出黄灯</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y012</source>
-        <translation>时间输出Y012</translation>
+        <translation>时间输出红灯</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y013</source>
-        <translation>时间输出Y013</translation>
+        <translation>时间输出报警声</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y014</source>
         <translation>时间输出Y014</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y015</source>
         <translation>时间输出Y015</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y016</source>
         <translation>时间输出Y016</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y017</source>
         <translation>时间输出Y017</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y020</source>
         <translation>时间输出Y020</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y021</source>
         <translation>时间输出Y021</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y022</source>
         <translation>时间输出Y022</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y023</source>
         <translation>时间输出Y023</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y024</source>
         <translation>时间输出Y024</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y025</source>
         <translation>时间输出Y025</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y026</source>
         <translation>时间输出Y026</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y027</source>
         <translation>时间输出Y027</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y030</source>
         <translation>时间输出Y030</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y031</source>
         <translation>时间输出Y031</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y032</source>
         <translation>时间输出Y032</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y033</source>
         <translation>时间输出Y033</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y034</source>
         <translation>时间输出Y034</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y035</source>
         <translation>时间输出Y035</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y036</source>
         <translation>时间输出Y036</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y037</source>
         <translation>时间输出Y037</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y040</source>
         <translation>时间输出Y040</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y041</source>
         <translation>时间输出Y041</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y042</source>
         <translation>时间输出Y042</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y043</source>
         <translation>时间输出Y043</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y044</source>
         <translation>时间输出Y044</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y045</source>
         <translation>时间输出Y045</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y046</source>
         <translation>时间输出Y046</translation>
     </message>
     <message>
+        <location line="+1"/>
         <source>Time Y047</source>
         <translation>时间输出Y047</translation>
     </message>
@@ -1904,32 +2002,32 @@
     <message>
         <location line="+8"/>
         <source>X010</source>
-        <translation>X010</translation>
+        <translation>X1轴原点</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X011</source>
-        <translation>X011</translation>
+        <translation>X2轴原点</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X012</source>
-        <translation>X012</translation>
+        <translation>Z轴原点</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X013</source>
-        <translation>X013</translation>
+        <translation>X2轴原点</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X014</source>
-        <translation>X014</translation>
+        <translation>Y2轴原点</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X015</source>
-        <translation>X015</translation>
+        <translation>C轴原点</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2024,27 +2122,27 @@
     <message>
         <location line="+1"/>
         <source>X040</source>
-        <translation>X040</translation>
+        <translation>X1轴终点极限</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X041</source>
-        <translation>X041</translation>
+        <translation>X2轴终点极限</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X042</source>
-        <translation>X042</translation>
+        <translation>Z轴终点极限</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X043</source>
-        <translation>X043</translation>
+        <translation>X1轴终点极限</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>X044</source>
-        <translation>X044</translation>
+        <translation>Y2轴终点极限</translation>
     </message>
     <message>
         <location line="+1"/>

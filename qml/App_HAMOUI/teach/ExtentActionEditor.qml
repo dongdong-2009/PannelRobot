@@ -80,31 +80,27 @@ Item {
         anchors.left: spliteLine.right
         anchors.leftMargin: 4
         Component.onCompleted: {
-            addPage(axisFlyConfigs);
-            addPage(analogControlEdit);
-            addPage(deltaJumpEditor);
-            addPage(safeRangeEditor);
-            addPage(singleStackEditor);
-            addPage(switchCoordEditor);
+            if(axisPly.visible){
+                addPage(ExtentActionDefine.extentPENQIANGAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(analogControl.visible){
+                addPage(ExtentActionDefine.extentAnalogControlAction.editableItems.comp.createObject(configsContainer));
+
+            }
+            if(deltaJumpControl.visible){
+                addPage(ExtentActionDefine.extentDeltaJumpAction.editableItems.comp.createObject(configsContainer));
+
+            }
+            if(safeRangeControl.visible){
+                addPage(ExtentActionDefine.extentSafeRangeAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(singleStack.visible){
+                addPage(ExtentActionDefine.extentSingleStackAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(switchCoord.visible){
+                addPage(ExtentActionDefine.extentSwitchCoordAction.editableItems.comp.createObject(configsContainer));
+            }
             currentIndex = 0;
-        }
-        PENQIANEditor{
-            id:axisFlyConfigs
-        }
-        AnalogControlEditor{
-            id:analogControlEdit
-        }
-        DeltaJumpEditor{
-            id:deltaJumpEditor
-        }
-        SafeRangeEditor{
-            id:safeRangeEditor
-        }
-        SingleStackAction{
-            id:singleStackEditor
-        }
-        SwitchCoordEditor{
-            id:switchCoordEditor
         }
     }
 }

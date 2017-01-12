@@ -1817,6 +1817,7 @@ function customActionGenerator(actionDefine){
         return JSON.stringify(ret);
     };
 //    console.log( actionDefine.editableItems.editor.errorString());
+    actionDefine.editableItems.comp = actionDefine.editableItems.editor;
     actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
     if(!actionDefine.hasOwnProperty("actionObjectChangedHelper")){
         actionDefine.actionObjectChangedHelper = function(editor, actionObject){

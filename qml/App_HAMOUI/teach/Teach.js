@@ -1889,8 +1889,12 @@ var actionObjectToText = function(actionObject){
 
 var programsToText = function(program){
     var ret = "";
+    var tmp;
     for(var i=0;i<program.length;++i){
-        ret += actionObjectToText(program[i]);
+        if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
+        else if(i < 100) tmp = "&nbsp;"+i;
+        else tmp = i;
+        ret += tmp+":"+actionObjectToText(program[i])+ "<br>";
     }
     return ret;
 }

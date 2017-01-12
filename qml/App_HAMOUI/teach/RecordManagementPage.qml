@@ -433,28 +433,30 @@ Rectangle {
                 onButtonClicked: {
                     var record;
                     var toTranslate;
-                    var recordPrograms = "";
                     var tmpStr;
                     for(var i = 0; i < recordsModel.count; ++i){
+                        var recordPrograms = "";
                         record = recordsModel.get(i);
                         if(record.isSelected){
                             toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name));
-                            for(var j=0;j<toTranslate.length;j++)
+                            for(var j=0;j<toTranslate.length;++j)
                             {
-                                if(j === 0)
-                                    tmpStr = qsTr("mainProgram:") + Teach.programsToText(toTranslate[j]);
-                                else
-                                    tmpStr = qsTr("subProgram")+j+":" + Teach.programsToText(toTranslate[j]);
+                                if(j === 0){
+                                    tmpStr = qsTr("mainProgram:<br>") + Teach.programsToText(toTranslate[j])+"<br>";
+                                }
+                                else{
+                                    tmpStr = qsTr("subProgram")+j+":<br>" + Teach.programsToText(toTranslate[j])+"<br>";
+                                }
+                                recordPrograms += tmpStr;
                             }
-                            recordPrograms += tmpStr;
+
 
                             toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
                             for(var k=0;k<toTranslate.length;++k){
-                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + Teach.programsToText(JSON.parse(toTranslate[i].program));
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + Teach.programsToText(JSON.parse(toTranslate[i].program))+"<br>";
                                 recordPrograms += tmpStr;
                             }
-                            console.log(recordPrograms);
-                            panelRobotController.writeUsbFile("123",recordPrograms);
+                            panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);
                         }
                     }
                 }

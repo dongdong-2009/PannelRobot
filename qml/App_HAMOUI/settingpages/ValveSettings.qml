@@ -25,8 +25,9 @@ Item {
             for(var i = 0; i < valveModel.count; ++i){
                 valveDefines.push(valveModel.get(i));
             }
-            Storage.setSetting(panelRobotController.currentRecordName() + "_valve", JSON.stringify(PData.changedData));
-            panelRobotController.initValveDefines(JSON.stringify(valveDefines));
+            valveDefines = JSON.stringify(valveDefines);
+            Storage.setSetting(panelRobotController.currentRecordName() + "_valve", valveDefines);
+            panelRobotController.initValveDefines(valveDefines);
             PData.changedData = [];
         }
     }

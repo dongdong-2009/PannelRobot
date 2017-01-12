@@ -408,7 +408,7 @@ public:
         QStringList moldPrograms = ICDALHelper::MoldProgramContent(name);
         for(int i=0;i<moldPrograms.length();i++)
             toJSON += moldPrograms.at(i) +",";
-        toJSON.remove(toJSON.remove(toJSON.length()-1,1));
+        toJSON.chop(1);
         toJSON += "]";
         return toJSON;
     }

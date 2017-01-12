@@ -40,15 +40,9 @@ Rectangle {
         return JSON.parse(panelRobotController.programs(which));
     }
 
-//    function actionObjectToText(actionObject){
-//        var originText = Teach.actionToStringNoCusomName(actionObject);
-//        if(actionObject.customName){
-//            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
-//            originText = styledCN + " " + originText;
-//        }
-//        var reg = new RegExp("\n                            ", 'g');
-//        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-//    }
+    function actionObjectToText(actionObject){
+        return Teach.actionObjectToText(actionObject);
+    }
 
     function beforeSaveProgram(which){
 
@@ -353,7 +347,7 @@ Rectangle {
         for(var l in lines){
             line = lines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":Teach.actionObjectToText(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
             PData.counterLinesInfo.removeLine(cpI, line);
             if(c1 >= 0)
                 PData.counterLinesInfo.add(cpI, c1, line);
@@ -639,7 +633,7 @@ Rectangle {
         for(var l in counterLines){
             line = counterLines[l];
             tmp = md.get(line);
-            md.set(line, {"actionText":Teach.actionObjectToText(tmp.mI_ActionObject)});
+            md.set(line, {"actionText":actionObjectToText(tmp.mI_ActionObject)});
 
         }
     }
@@ -1259,7 +1253,7 @@ Rectangle {
                                 cM.setProperty(programListView.currentIndex, "mI_ActionObject", modelObject.mI_ActionObject.commentAction);
                             }
                             else{
-                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(Teach.actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
+                                cM.setProperty(programListView.currentIndex, "mI_ActionObject", Teach.generateCommentAction(actionObjectToText(modelObject.mI_ActionObject), modelObject.mI_ActionObject));
                             }
                             hasModify = true;
 
@@ -1325,7 +1319,7 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index + ":" + mI_ActionObject.insertedIndex
-                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: Teach.actionObjectToText(mI_ActionObject));
+                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText:actionObjectToText(mI_ActionObject));
 
                         actionType: mI_ActionType
                         MouseArea{

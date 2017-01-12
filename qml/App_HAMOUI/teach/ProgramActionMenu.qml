@@ -216,7 +216,7 @@ Rectangle {
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
             onButtonClicked: extentMenuTriggered()
-            visible: false
+//            visible: false
         }
 
     }

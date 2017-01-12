@@ -4,6 +4,7 @@ import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
 import "../../utils/stringhelper.js" as ICString
+import "../../utils/Storage.js" as Storage
 //import com.szhc.axis 1.0
 
 import "../../ICCustomElement"
@@ -395,6 +396,7 @@ Rectangle {
                         return;
                     }
                     if(panelRobotController.deleteRecord(selectName.text)){
+                        Storage.setSetting(selectName.text + "_valve", "");
                         recordsModel.remove(recordsView.currentIndex);
                     }
                 }
@@ -428,16 +430,35 @@ Rectangle {
                 id:exportPrintableRecord
                 text: qsTr("Export Printable")
                 height: exportRecord.height
-//                visible: exportRecord.visible
-                visible: false
+                visible: exportRecord.visible
+//                visible: false
                 onButtonClicked: {
                     var record;
+                    var toTranslate;
+                    var tmpStr;
                     for(var i = 0; i < recordsModel.count; ++i){
+                        var recordPrograms = "";
                         record = recordsModel.get(i);
                         if(record.isSelected){
-//                            exportMolds.push(record.name);
-                            console.log(panelRobotController.readRecord(record.name));
+                            toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name));
+                            for(var j=0;j<toTranslate.length;++j)
+                            {
+                                if(j === 0){
+                                    tmpStr = qsTr("mainProgram:<br>") + Teach.programsToText(toTranslate[j])+"<br>";
+                                }
+                                else{
+                                    tmpStr = qsTr("subProgram")+j+":<br>" + Teach.programsToText(toTranslate[j])+"<br>";
+                                }
+                                recordPrograms += tmpStr;
+                            }
 
+
+                            toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
+                            for(var k=0;k<toTranslate.length;++k){
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + Teach.programsToText(JSON.parse(toTranslate[i].program))+"<br>";
+                                recordPrograms += tmpStr;
+                            }
+                            panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);
                         }
                     }
                 }

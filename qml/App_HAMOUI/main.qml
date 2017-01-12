@@ -953,15 +953,15 @@ Rectangle {
         }else refreshTimer.automodeBtnOld = 0;
     }
     
-    function switchMoldByIOStatus(){
-        var moldbyIOData = Mdata.moldbyIOData;
+        function switchMoldByIOStatus(){
+            var moldbyIOData = Mdata.moldbyIOData;
         var btnStatus;
         var btnStatusOldTmp = refreshTimer.btnStatusOld;
-        var record;
+            var record;
         var curMode;
-        for(var i=0;i<moldbyIOData.length;++i){
+            for(var i=0;i<moldbyIOData.length;++i){
             btnStatus = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
-            record = moldbyIOData[i].mold;
+                record = moldbyIOData[i].mold;
             curMode = panelRobotController.currentMode();
             if(btnStatus){
                 if(btnStatus != btnStatusOldTmp[i]){
@@ -982,10 +982,10 @@ Rectangle {
             else{
                 btnStatusOldTmp[i] = 0;
             }
-        }
+            }
         refreshTimer.btnStatusOld = btnStatusOldTmp;
 //        console.log(refreshTimer.btnStatusOld);
-    }
+        }
 
     Timer{
         id:refreshTimer

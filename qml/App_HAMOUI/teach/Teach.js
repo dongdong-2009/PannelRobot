@@ -1876,3 +1876,26 @@ var updateCustomActions = function(actionObject){
         customActions[actionObject.action].pointsReplace(actionObject);
     }
 }
+
+var actionObjectToText = function(actionObject){
+    var originText = actionToStringNoCusomName(actionObject);
+    if(actionObject.customName){
+        var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+        originText = styledCN + " " + originText;
+    }
+    var reg = new RegExp("\n                            ", 'g');
+    return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+
+var programsToText = function(program){
+    var ret = "";
+    var tmp;
+    for(var i=0;i<program.length;++i){
+        if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
+        else if(i < 100) tmp = "&nbsp;"+i;
+        else tmp = i;
+        ret += tmp+":"+actionObjectToText(program[i])+ "<br>";
+    }
+    return ret;
+}
+

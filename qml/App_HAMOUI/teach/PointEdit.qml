@@ -822,6 +822,9 @@ Item {
                             pointView.currentIndex = index;
                         }
                     }
+                    onVisibleChanged: {
+
+                    }
                 }
 
             }

@@ -4,6 +4,7 @@ import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
 import "../../utils/stringhelper.js" as ICString
+import "../../utils/Storage.js" as Storage
 //import com.szhc.axis 1.0
 
 import "../../ICCustomElement"
@@ -395,6 +396,7 @@ Rectangle {
                         return;
                     }
                     if(panelRobotController.deleteRecord(selectName.text)){
+                        Storage.setSetting(selectName.text + "_valve", "");
                         recordsModel.remove(recordsView.currentIndex);
                     }
                 }

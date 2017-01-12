@@ -27,6 +27,7 @@ Item {
             }
             valveDefines = JSON.stringify(valveDefines);
             Storage.setSetting(panelRobotController.currentRecordName() + "_valve", valveDefines);
+            IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
             panelRobotController.initValveDefines(valveDefines);
             PData.changedData = [];
         }
@@ -86,15 +87,19 @@ Item {
     function onMoldChanged(){
         valveContainer.model = null;
         valveModel.clear();
+        PData.changedData = [];
         IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
         panelRobotController.initValveDefines(IODefines.valveDefinesJSON());
+//        console.log("_valve",Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
+        Storage.setSetting(panelRobotController.currentRecordName() + "_valve",IODefines.valveDefinesJSON());
+//        console.log("IODefines",IODefines.valveDefinesJSON());
         var vds = IODefines.valveDefines;
         var vd;
         for(var v in vds){
             vd = vds[v];
             if(vd instanceof(IODefines.ValveItem)){
                 if(!IODefines.isNormalYType(vd)){
-                    console.log(JSON.stringify(vd));
+//                    console.log(JSON.stringify(vd));
                     valveModel.append(vd);
                 }
             }

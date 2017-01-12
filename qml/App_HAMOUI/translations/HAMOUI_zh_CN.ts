@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -235,23 +235,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation type="obsolete">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation type="obsolete">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation type="obsolete">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation type="obsolete">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation type="obsolete">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -259,11 +259,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation type="obsolete">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation type="obsolete">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1366,135 +1366,135 @@
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
-        <translation>往复</translation>
+        <translation type="obsolete">往复</translation>
     </message>
     <message>
         <source>Pos1:</source>
-        <translation>起始位置:</translation>
+        <translation type="obsolete">起始位置:</translation>
     </message>
     <message>
         <source>Pos2:</source>
-        <translation>结束位置:</translation>
+        <translation type="obsolete">结束位置:</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation type="obsolete">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation type="obsolete">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
-        <translation>速度:</translation>
+        <translation type="obsolete">速度:</translation>
     </message>
     <message>
         <source>Num:</source>
-        <translation>次数</translation>
+        <translation type="obsolete">次数</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation type="obsolete">延时:</translation>
     </message>
     <message>
         <source>Analog Control</source>
-        <translation>模拟控制</translation>
+        <translation type="obsolete">模拟控制</translation>
     </message>
     <message>
         <source>Analog:</source>
-        <translation>模拟量:</translation>
+        <translation type="obsolete">模拟量:</translation>
     </message>
     <message>
         <source>Delta Jumpl</source>
-        <translation>Delta 路径</translation>
+        <translation type="obsolete">Delta 路径</translation>
     </message>
     <message>
         <source>start pos:</source>
-        <translation>起点:</translation>
+        <translation type="obsolete">起点:</translation>
     </message>
     <message>
         <source>LH:</source>
-        <translation>起点高:</translation>
+        <translation type="obsolete">起点高:</translation>
     </message>
     <message>
         <source>MH:</source>
-        <translation>中点高:</translation>
+        <translation type="obsolete">中点高:</translation>
     </message>
     <message>
         <source>RH:</source>
-        <translation>终点高:</translation>
+        <translation type="obsolete">终点高:</translation>
     </message>
     <message>
         <source>end pos:</source>
-        <translation>终点位置:</translation>
+        <translation type="obsolete">终点位置:</translation>
     </message>
     <message>
         <source>speed:</source>
-        <translation>速度:</translation>
+        <translation type="obsolete">速度:</translation>
     </message>
     <message>
         <source>Safe Control</source>
-        <translation>安全区</translation>
+        <translation type="obsolete">安全区</translation>
     </message>
     <message>
         <source>in pos fange:</source>
-        <translation>在范围:</translation>
+        <translation type="obsolete">在范围:</translation>
     </message>
     <message>
         <source>out pos fange:</source>
-        <translation>不在范围:</translation>
+        <translation type="obsolete">不在范围:</translation>
     </message>
     <message>
         <source>will alarm:</source>
-        <translation>就报警:</translation>
+        <translation type="obsolete">就报警:</translation>
     </message>
     <message>
         <source>if</source>
-        <translation>如果</translation>
+        <translation type="obsolete">如果</translation>
     </message>
     <message>
         <source>Single Stack</source>
-        <translation>单轴堆叠</translation>
+        <translation type="obsolete">单轴堆叠</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation>反相</translation>
+        <translation type="obsolete">反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation>正相</translation>
+        <translation type="obsolete">正相</translation>
     </message>
     <message>
         <source>space:</source>
-        <translation>间距:</translation>
+        <translation type="obsolete">间距:</translation>
     </message>
     <message>
         <source>count:</source>
-        <translation>计数:</translation>
+        <translation type="obsolete">计数:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
-        <translation>计数器:自身</translation>
+        <translation type="obsolete">计数器:自身</translation>
     </message>
     <message>
         <source>Start Pos:</source>
-        <translation>起点:</translation>
+        <translation type="obsolete">起点:</translation>
     </message>
     <message>
         <source>Addr:</source>
-        <translation>地址:</translation>
+        <translation type="obsolete">地址:</translation>
     </message>
     <message>
         <source>When Changed</source>
-        <translation>当改变</translation>
+        <translation type="obsolete">当改变</translation>
     </message>
     <message>
         <source>Switch Coord</source>
-        <translation>坐标系转换</translation>
+        <translation type="obsolete">坐标系转换</translation>
     </message>
     <message>
         <source>CoordID</source>
-        <translation>工作台坐标系ID</translation>
+        <translation type="obsolete">工作台坐标系ID</translation>
     </message>
 </context>
 <context>
@@ -1603,7 +1603,7 @@
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
-        <translation>{0} 从 {1} 改为 {2}</translation>
+        <translation type="obsolete">{0} 从 {1} 改为 {2}</translation>
     </message>
 </context>
 <context>
@@ -1663,15 +1663,15 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-        <translation type="vanished">运行中</translation>
+        <translation type="obsolete">运行中</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation type="vanished">单步</translation>
+        <translation type="obsolete">单步</translation>
     </message>
     <message>
         <source>One Cycle</source>
-        <translation type="vanished">单循环</translation>
+        <translation type="obsolete">单循环</translation>
     </message>
 </context>
 <context>
@@ -1798,15 +1798,15 @@
     <name>ManualProgramManager</name>
     <message>
         <source>M CMD[{0}]:{1}</source>
-        <translation>可编程按键[{0}]:{1}</translation>
+        <translation type="obsolete">可编程按键[{0}]:{1}</translation>
     </message>
     <message>
         <source>Custom Origin</source>
-        <translation>原点</translation>
+        <translation type="obsolete">原点</translation>
     </message>
     <message>
         <source>Custom Return</source>
-        <translation>复归</translation>
+        <translation type="obsolete">复归</translation>
     </message>
 </context>
 <context>
@@ -2752,7 +2752,7 @@ please chose!</source>
     </message>
     <message>
         <source>Lines:</source>
-        <translation>行:</translation>
+        <translation type="obsolete">行:</translation>
     </message>
     <message>
         <source>Modules</source>
@@ -3029,7 +3029,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation type="obsolete">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -3061,11 +3061,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation type="obsolete">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation type="obsolete">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -4341,39 +4341,39 @@ You just need to set the count configs after this setting.</source>
     <name>Teach</name>
     <message>
         <source>Speed:</source>
-        <translation>速度:</translation>
+        <translation type="obsolete">速度:</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation type="obsolete">延时:</translation>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation>提前结束位置:</translation>
+        <translation type="obsolete">提前结束位置:</translation>
     </message>
     <message>
         <source>IF:</source>
-        <translation>如果:</translation>
+        <translation type="obsolete">如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>通</translation>
+        <translation type="obsolete">通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>断</translation>
+        <translation type="obsolete">断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation>限时:</translation>
+        <translation type="obsolete">限时:</translation>
     </message>
     <message>
         <source>Wait:</source>
-        <translation>等待:</translation>
+        <translation type="obsolete">等待:</translation>
     </message>
     <message>
         <source>Check:</source>
-        <translation>阀检测:</translation>
+        <translation type="obsolete">阀检测:</translation>
     </message>
     <message>
         <source>End</source>
@@ -4381,19 +4381,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Flag</source>
-        <translation>标签</translation>
+        <translation type="obsolete">标签</translation>
     </message>
     <message>
         <source>Output:</source>
-        <translation>输出:</translation>
+        <translation type="obsolete">输出:</translation>
     </message>
     <message>
         <source>Sync Begin</source>
-        <translation>同步开始</translation>
+        <translation type="obsolete">同步开始</translation>
     </message>
     <message>
         <source>Sync End</source>
-        <translation>同步结束</translation>
+        <translation type="obsolete">同步结束</translation>
     </message>
     <message>
         <source>Line2D:</source>
@@ -4401,55 +4401,55 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Line3D:</source>
-        <translation>直线3D:</translation>
+        <translation type="obsolete">直线3D:</translation>
     </message>
     <message>
         <source>Arc3D:</source>
-        <translation>曲线3D:</translation>
+        <translation type="obsolete">曲线3D:</translation>
     </message>
     <message>
         <source>Next:</source>
-        <translation>下一位置:</translation>
+        <translation type="obsolete">下一位置:</translation>
     </message>
     <message>
         <source>End:</source>
-        <translation>结束位置:</translation>
+        <translation type="obsolete">结束位置:</translation>
     </message>
     <message>
         <source>Sub program is out of ranged</source>
-        <translation>子程序范围不对</translation>
+        <translation type="obsolete">子程序范围不对</translation>
     </message>
     <message>
         <source>Invalid program</source>
-        <translation>无效程序</translation>
+        <translation type="obsolete">无效程序</translation>
     </message>
     <message>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation>没有同步开始但有同步结束</translation>
+        <translation type="obsolete">没有同步开始但有同步结束</translation>
     </message>
     <message>
         <source>Sync action is nesting</source>
-        <translation>同步嵌套</translation>
+        <translation type="obsolete">同步嵌套</translation>
     </message>
     <message>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation>有同步开始没有同步结束</translation>
+        <translation type="obsolete">有同步开始没有同步结束</translation>
     </message>
     <message>
         <source>Last action is not End action</source>
-        <translation>没有模号结束</translation>
+        <translation type="obsolete">没有模号结束</translation>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation>未知错误</translation>
+        <translation type="obsolete">未知错误</translation>
     </message>
     <message>
         <source>Jump To </source>
-        <translation>跳转到</translation>
+        <translation type="obsolete">跳转到</translation>
     </message>
     <message>
         <source>Go to </source>
-        <translation>跳转到</translation>
+        <translation type="obsolete">跳转到</translation>
     </message>
     <message>
         <source>Start</source>
@@ -4457,95 +4457,95 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>not exist</source>
-        <translation>不存在</translation>
+        <translation type="obsolete">不存在</translation>
     </message>
     <message>
         <source>Stack</source>
-        <translation>堆叠</translation>
+        <translation type="obsolete">堆叠</translation>
     </message>
     <message>
         <source>Pose:</source>
-        <translation>姿势:</translation>
+        <translation type="obsolete">姿势:</translation>
     </message>
     <message>
         <source>Line3D-Pose:</source>
-        <translation>姿势直线:</translation>
+        <translation type="obsolete">姿势直线:</translation>
     </message>
     <message>
         <source>Invalid program index</source>
-        <translation>无效程序索引</translation>
+        <translation type="obsolete">无效程序索引</translation>
     </message>
     <message>
         <source>Wrong action format</source>
-        <translation>错误动作格式</translation>
+        <translation type="obsolete">错误动作格式</translation>
     </message>
     <message>
         <source>Invalid jump flag</source>
-        <translation>无效跳转标签</translation>
+        <translation type="obsolete">无效跳转标签</translation>
     </message>
     <message>
         <source>Time Output:</source>
-        <translation>时间输出:</translation>
+        <translation type="obsolete">时间输出:</translation>
     </message>
     <message>
         <source>Action Time:</source>
-        <translation>动作时间:</translation>
+        <translation type="obsolete">动作时间:</translation>
     </message>
     <message>
         <source>Invalid Counter</source>
-        <translation>非法的计数器</translation>
+        <translation type="obsolete">非法的计数器</translation>
     </message>
     <message>
         <source>Arrive</source>
-        <translation>到达</translation>
+        <translation type="obsolete">到达</translation>
     </message>
     <message>
         <source>No arrive</source>
-        <translation>没到达</translation>
+        <translation type="obsolete">没到达</translation>
     </message>
     <message>
         <source>Then clear counter</source>
-        <translation>然后清零计数器</translation>
+        <translation type="obsolete">然后清零计数器</translation>
     </message>
     <message>
         <source>Box</source>
-        <translation>装箱</translation>
+        <translation type="obsolete">装箱</translation>
     </message>
     <message>
         <source>Speed1:</source>
-        <translation>装箱速度:</translation>
+        <translation type="obsolete">装箱速度:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
-        <translation>计数器:自身</translation>
+        <translation type="obsolete">计数器:自身</translation>
     </message>
     <message>
         <source>Speed0:</source>
-        <translation>箱内堆速度:</translation>
+        <translation type="obsolete">箱内堆速度:</translation>
     </message>
     <message>
         <source>Clear </source>
-        <translation>清空</translation>
+        <translation type="obsolete">清空</translation>
     </message>
     <message>
         <source>Invalid stack</source>
-        <translation>非法的堆叠</translation>
+        <translation type="obsolete">非法的堆叠</translation>
     </message>
     <message>
         <source>Invalid counter</source>
-        <translation>非法的计数器</translation>
+        <translation type="obsolete">非法的计数器</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation>计数器</translation>
+        <translation type="obsolete">计数器</translation>
     </message>
     <message>
         <source>Plus 1</source>
-        <translation>累加</translation>
+        <translation type="obsolete">累加</translation>
     </message>
     <message>
         <source>Free Path:</source>
-        <translation>自由路径:</translation>
+        <translation type="obsolete">自由路径:</translation>
     </message>
     <message>
         <source>Offset Move:</source>
@@ -4553,75 +4553,75 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Alarm</source>
-        <translation>报警</translation>
+        <translation type="obsolete">报警</translation>
     </message>
     <message>
         <source>Fun</source>
-        <translation>模块</translation>
+        <translation type="obsolete">模块</translation>
     </message>
     <message>
         <source>Program End</source>
-        <translation>模组结束</translation>
+        <translation type="obsolete">模组结束</translation>
     </message>
     <message>
         <source>Module End</source>
-        <translation>模块结束</translation>
+        <translation type="obsolete">模块结束</translation>
     </message>
     <message>
         <source>next line</source>
-        <translation>下一行</translation>
+        <translation type="obsolete">下一行</translation>
     </message>
     <message>
         <source>Call</source>
-        <translation>调用</translation>
+        <translation type="obsolete">调用</translation>
     </message>
     <message>
         <source>And then return to </source>
-        <translation>然后返回到</translation>
+        <translation type="obsolete">然后返回到</translation>
     </message>
     <message>
         <source>Invalid Flag</source>
-        <translation>无效标签</translation>
+        <translation type="obsolete">无效标签</translation>
     </message>
     <message>
         <source>Normal Y</source>
-        <translation>普通输出</translation>
+        <translation type="obsolete">普通输出</translation>
     </message>
     <message>
         <source>Single Y</source>
-        <translation>单头阀</translation>
+        <translation type="obsolete">单头阀</translation>
     </message>
     <message>
         <source>Hold Double Y</source>
-        <translation>保持型双头阀</translation>
+        <translation type="obsolete">保持型双头阀</translation>
     </message>
     <message>
         <source>Offset Line:</source>
-        <translation>相对直线:</translation>
+        <translation type="obsolete">相对直线:</translation>
     </message>
     <message>
         <source>Offset Jog:</source>
-        <translation>相对关节:</translation>
+        <translation type="obsolete">相对关节:</translation>
     </message>
     <message>
         <source>Type 1</source>
-        <translation>手动设定原点加开关</translation>
+        <translation type="obsolete">手动设定原点加开关</translation>
     </message>
     <message>
         <source>Type 2</source>
-        <translation>直接找Z脉冲</translation>
+        <translation type="obsolete">直接找Z脉冲</translation>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation type="obsolete">自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
-        <translation>原点指令</translation>
+        <translation type="obsolete">原点指令</translation>
     </message>
     <message>
         <source>Circle:</source>
-        <translation>整圆:</translation>
+        <translation type="obsolete">整圆:</translation>
     </message>
     <message>
         <source>Output</source>
@@ -4637,409 +4637,294 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Vistion Catch Start:</source>
-        <translation>相机开始拍照:</translation>
+        <translation type="obsolete">相机开始拍照:</translation>
     </message>
     <message>
         <source>Data Source:</source>
-        <translation>数据源:</translation>
+        <translation type="obsolete">数据源:</translation>
     </message>
     <message>
         <source>Catch Type:</source>
-        <translation>触发类型:</translation>
+        <translation type="obsolete">触发类型:</translation>
     </message>
     <message>
         <source>Communicate</source>
-        <translation>通信</translation>
+        <translation type="obsolete">通信</translation>
     </message>
     <message>
         <source>O Point</source>
-        <translation>输出点</translation>
+        <translation type="obsolete">输出点</translation>
     </message>
     <message>
         <source>Wait Vision Data</source>
-        <translation>等待视觉数据</translation>
+        <translation type="obsolete">等待视觉数据</translation>
     </message>
     <message>
         <source>ArcXY:</source>
-        <translation>曲线XY:</translation>
+        <translation type="obsolete">曲线XY:</translation>
     </message>
     <message>
         <source>ArcXZ:</source>
-        <translation>曲线XZ:</translation>
+        <translation type="obsolete">曲线XZ:</translation>
     </message>
     <message>
         <source>ArcYZ:</source>
-        <translation>曲线YZ:</translation>
+        <translation type="obsolete">曲线YZ:</translation>
     </message>
     <message>
         <source>Invaild Moldule</source>
-        <translation>无效模块</translation>
+        <translation type="obsolete">无效模块</translation>
     </message>
     <message>
         <source>LineXY:</source>
-        <translation>直线XY:</translation>
+        <translation type="obsolete">直线XY:</translation>
     </message>
     <message>
         <source>LineXZ:</source>
-        <translation>直线XZ:</translation>
+        <translation type="obsolete">直线XZ:</translation>
     </message>
     <message>
         <source>LineYZ:</source>
-        <translation>直线YZ:</translation>
+        <translation type="obsolete">直线YZ:</translation>
     </message>
     <message>
         <source>Offset Curve:</source>
-        <translation>相对曲线:</translation>
+        <translation type="obsolete">相对曲线:</translation>
     </message>
     <message>
         <source>Early End Spd pos:</source>
-        <translation>提前减速位置:</translation>
+        <translation type="obsolete">提前减速位置:</translation>
     </message>
     <message>
         <source>Early End Spd:</source>
-        <translation>提前减速速度:</translation>
+        <translation type="obsolete">提前减速速度:</translation>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="obsolete">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="obsolete">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="obsolete">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
-        <translation>姿势曲线:</translation>
+        <translation type="obsolete">姿势曲线:</translation>
     </message>
     <message>
         <source>PO Curve 3D:</source>
-        <translation>相对姿势曲线:</translation>
+        <translation type="obsolete">相对姿势曲线:</translation>
     </message>
     <message>
         <source>P Circle:</source>
-        <translation>姿势整圆:</translation>
+        <translation type="obsolete">姿势整圆:</translation>
     </message>
     <message>
         <source>PO Line 3D:</source>
-        <translation>相对姿势直线:</translation>
+        <translation type="obsolete">相对姿势直线:</translation>
     </message>
     <message>
         <source>Left Addr:</source>
-        <translation>左地址值:</translation>
+        <translation type="obsolete">左地址值:</translation>
     </message>
     <message>
         <source>Right Data:</source>
-        <translation>右数据值:</translation>
+        <translation type="obsolete">右数据值:</translation>
     </message>
     <message>
         <source>Right Addr:</source>
-        <translation>右地址值:</translation>
+        <translation type="obsolete">右地址值:</translation>
     </message>
     <message>
         <source>Go to</source>
-        <translation>跳转到</translation>
+        <translation type="obsolete">跳转到</translation>
     </message>
     <message>
         <source>Write Const Data To Addr:</source>
-        <translation>写立即数到地址:</translation>
+        <translation type="obsolete">写立即数到地址:</translation>
     </message>
     <message>
         <source>Write Addr Data To Addr:</source>
-        <translation>写地址值到地址:</translation>
+        <translation type="obsolete">写地址值到地址:</translation>
     </message>
     <message>
         <source>Const Data:</source>
-        <translation>立即数:</translation>
+        <translation type="obsolete">立即数:</translation>
     </message>
     <message>
         <source>Addr Data:</source>
-        <translation>地址数据:</translation>
+        <translation type="obsolete">地址数据:</translation>
     </message>
     <message>
         <source>Target Addr:</source>
-        <translation>目标地址:</translation>
+        <translation type="obsolete">目标地址:</translation>
     </message>
     <message>
         <source>When </source>
-        <translation>当</translation>
+        <translation type="obsolete">当</translation>
     </message>
     <message>
         <source>is On</source>
-        <translation>通</translation>
+        <translation type="obsolete">通</translation>
     </message>
     <message>
         <source>slow stop</source>
-        <translation>就减速停</translation>
+        <translation type="obsolete">就减速停</translation>
     </message>
     <message>
         <source>fast stop</source>
-        <translation>就立即停</translation>
+        <translation type="obsolete">就立即停</translation>
     </message>
     <message>
         <source>Speed Control PP Start</source>
-        <translation>速度正向启动</translation>
+        <translation type="obsolete">速度正向启动</translation>
     </message>
     <message>
         <source>Speed Control RP Start</source>
-        <translation>速度反向启动</translation>
+        <translation type="obsolete">速度反向启动</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>停止</translation>
+        <translation type="obsolete">停止</translation>
     </message>
     <message>
         <source>Check Start</source>
-        <translation>开始检测</translation>
+        <translation type="obsolete">开始检测</translation>
     </message>
     <message>
         <source>Check End</source>
-        <translation>结束检测</translation>
-    </message>
-    <message>
-        <source>Bad En</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Unhold Double Y</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Has not Group-Begin action but has Group-End action</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Group action is nesting</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Has Group-Begin action but has not Group-End action</source>
-        <translation></translation>
+        <translation type="obsolete">结束检测</translation>
     </message>
     <message>
         <source>Rel</source>
-        <translation>相对</translation>
+        <translation type="obsolete">相对</translation>
     </message>
     <message>
         <source>Datasource</source>
-        <translation>数据源</translation>
+        <translation type="obsolete">数据源</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation>一般</translation>
+        <translation type="obsolete">一般</translation>
     </message>
     <message>
         <source>Type 4</source>
-        <translation type="unfinished">自动设定原点加开关 {4?}</translation>
+        <translation type="obsolete">自动设定原点加开关 {4?}</translation>
     </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
     <message>
         <source>Speed:</source>
-        <translation>速度:</translation>
+        <translation type="obsolete">速度:</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation>延时:</translation>
+        <translation type="obsolete">延时:</translation>
     </message>
     <message>
         <source>X1</source>
-        <translation>X1</translation>
+        <translation type="obsolete">X1</translation>
     </message>
     <message>
         <source>X2</source>
-        <translation>X2</translation>
+        <translation type="obsolete">X2</translation>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation>提前结束位置:</translation>
+        <translation type="obsolete">提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>
-        <translation>报警声 {1?}</translation>
+        <translation type="obsolete">报警声 {1?}</translation>
     </message>
     <message>
         <source>Y2</source>
-        <translation>报警声 {2?}</translation>
+        <translation type="obsolete">报警声 {2?}</translation>
     </message>
     <message>
         <source>A OFF</source>
-        <translation>常闭</translation>
+        <translation type="obsolete">常闭</translation>
     </message>
     <message>
         <source>A ON</source>
-        <translation>常开</translation>
+        <translation type="obsolete">常开</translation>
     </message>
     <message>
         <source>IF:</source>
-        <translation>如果:</translation>
+        <translation type="obsolete">如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>通</translation>
+        <translation type="obsolete">通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>断</translation>
+        <translation type="obsolete">断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation>限时:</translation>
+        <translation type="obsolete">限时:</translation>
     </message>
     <message>
         <source>Wait:</source>
-        <translation type="unfinished">等待:</translation>
+        <translation type="obsolete">等待:</translation>
     </message>
     <message>
         <source>Check:</source>
-        <translation type="unfinished">阀检测:</translation>
+        <translation type="obsolete">阀检测:</translation>
     </message>
     <message>
         <source>Comment:</source>
-        <translation type="unfinished">注释:</translation>
+        <translation type="obsolete">注释:</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="unfinished">标签</translation>
+        <translation type="obsolete">标签</translation>
     </message>
     <message>
         <source>Output:</source>
-        <translation type="unfinished">输出:</translation>
+        <translation type="obsolete">输出:</translation>
     </message>
     <message>
         <source>Sync Begin</source>
-        <translation type="unfinished">同步开始</translation>
+        <translation type="obsolete">同步开始</translation>
     </message>
     <message>
         <source>Sync End</source>
-        <translation type="unfinished">同步结束</translation>
+        <translation type="obsolete">同步结束</translation>
     </message>
     <message>
         <source>Sub program is out of ranged</source>
-        <translation type="unfinished">子程序范围不对</translation>
+        <translation type="obsolete">子程序范围不对</translation>
     </message>
     <message>
         <source>Invalid program</source>
-        <translation type="unfinished">无效程序</translation>
+        <translation type="obsolete">无效程序</translation>
     </message>
     <message>
         <source>Has not Sync-Begin action but has Sync-End action</source>
-        <translation type="unfinished">没有同步开始但有同步结束</translation>
+        <translation type="obsolete">没有同步开始但有同步结束</translation>
     </message>
     <message>
         <source>Sync action is nesting</source>
-        <translation type="unfinished">同步嵌套</translation>
+        <translation type="obsolete">同步嵌套</translation>
     </message>
     <message>
         <source>Has Sync-Begin action but has not Sync-End action</source>
-        <translation type="unfinished">有同步开始没有同步结束</translation>
+        <translation type="obsolete">有同步开始没有同步结束</translation>
     </message>
     <message>
         <source>Last action is not End action</source>
-        <translation type="unfinished">没有模号结束</translation>
+        <translation type="obsolete">没有模号结束</translation>
     </message>
     <message>
         <source>Unknow Error</source>
-        <translation type="unfinished">未知错误</translation>
-    </message>
-    <message>
-        <source>Bad En</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X1 OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X1 ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y1 OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Y1 ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Z OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Z ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X2 OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>X2 ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go to flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>End</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Has not Group-Begin action but has Group-End action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Group action is nesting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Has Group-Begin action but has not Group-End action</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ToolCoordManager</name>
-    <message>
-        <source>{0}:{1}</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">未知错误</translation>
     </message>
 </context>
 <context>
@@ -5097,11 +4982,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="vanished">设为点5</translation>
+        <translation type="obsolete">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="vanished">设为点6</translation>
+        <translation type="obsolete">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

@@ -853,6 +853,7 @@ Rectangle {
                     configName: qsTr("Interval Number")
                     unit: "n"
                     configValue: "10"
+                    max: 8000
                 }
                 ICConfigEdit{
                     id:interval_out_time
@@ -860,6 +861,7 @@ Rectangle {
                     configName: qsTr("Out Time")
                     unit: "s"
                     configValue: "1"
+                    max: 1000
                 }
             }
             Column{
@@ -910,6 +912,7 @@ Rectangle {
                     configName: qsTr("Interval Number")
                     unit: "n"
                     configValue: "10"
+                    max: 8000
                 }
                 ICConfigEdit{
                     id:intervalbox_out_time
@@ -917,6 +920,7 @@ Rectangle {
                     configName: qsTr("Out Time")
                     unit: "s"
                     configValue: "1"
+                    max: 1000
                 }
 
             }

@@ -21,7 +21,9 @@ Rectangle {
             if(stackSelector.configValue < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
-            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue));
+            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue,
+                     interval_en.isChecked,interval_always_out.isChecked,interval_out_choose.configValue,interval_out_id.configValue,interval_number.configValue,interval_out_time.configValue,
+                     intervalbox_en.isChecked,intervalbox_always_out.isChecked,intervalbox_out_choose.configValue,intervalbox_out_id.configValue,intervalbox_number.configValue,intervalbox_out_time.configValue));
         }
         return ret;
     }
@@ -761,42 +763,130 @@ Rectangle {
                 stackType = stackInfo.type;
             }
         }
-        ICConfigEdit{
-            id:speed0
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
-//            configAddr: "s_rw_0_16_1_294"
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
+        Row{
+            spacing: 12
+            Column{
+                spacing: 3
+                ICConfigEdit{
+                    id:speed0
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
+        //            configAddr: "s_rw_0_16_1_294"
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speedY
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
+                    configNameWidth: speed0.configNameWidth
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speedZ
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
+                    configNameWidth: speed0.configNameWidth
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speed1
+                    visible: useFlag.isChecked
+                    configName: qsTr("Speed1")
+        //            configAddr: "s_rw_0_16_1_294"
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+            }
+            Column{
+                spacing: 3
+                visible: useFlag.isChecked
+                ICCheckBox{
+                    id:interval_en
+                    text: qsTr("Interval En")
+                }
+                ICCheckBox{
+                    id:interval_always_out
+                    visible: interval_en.isChecked
+                    text: qsTr("Always Out")
+                }
+                ICComboBoxConfigEdit{
+                    id:interval_out_choose
+                    visible: interval_en.isChecked
+                    z:10
+                    configName: qsTr("Choos Out")
+                    items: [qsTr("IO output"),qsTr("M output")]
+                }
+                ICConfigEdit{
+                    id:interval_out_id
+                    visible: interval_en.isChecked
+                    configName: qsTr("Out ID")
+                    configValue: "0"
+                }
+                ICConfigEdit{
+                    id:interval_number
+                    visible: interval_en.isChecked
+                    configName: qsTr("Interval Number")
+                    unit: "n"
+                    configValue: "10"
+                }
+                ICConfigEdit{
+                    id:interval_out_time
+                    visible: interval_en.isChecked
+                    configName: qsTr("Out Time")
+                    unit: "s"
+                    configValue: "1"
+                }
+            }
+            Column{
+                spacing: 3
+                visible: useFlag.isChecked
+                ICCheckBox{
+                    id:intervalbox_en
+                    text: qsTr("IntervalBox En")
+                }
+                ICCheckBox{
+                    id:intervalbox_always_out
+                    visible: intervalbox_en.isChecked
+                    text: qsTr("Always Out")
+                }
+                ICComboBoxConfigEdit{
+                    id:intervalbox_out_choose
+                    visible: intervalbox_en.isChecked
+                    z:10
+                    configName: qsTr("Choos Out")
+                    items: [qsTr("IO output"),qsTr("M output")]
+                }
+                ICConfigEdit{
+                    id:intervalbox_out_id
+                    visible: intervalbox_en.isChecked
+                    configName: qsTr("Out ID")
+                    configValue: "0"
+                }
+                ICConfigEdit{
+                    id:intervalbox_number
+                    visible: interval_en.isChecked
+                    configName: qsTr("Interval Number")
+                    unit: "n"
+                    configValue: "10"
+                }
+                ICConfigEdit{
+                    id:intervalbox_out_time
+                    visible: intervalbox_en.isChecked
+                    configName: qsTr("Out Time")
+                    unit: "s"
+                    configValue: "1"
+                }
+
+            }
         }
-        ICConfigEdit{
-            id:speedY
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
-            configNameWidth: speed0.configNameWidth
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
-        ICConfigEdit{
-            id:speedZ
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
-            configNameWidth: speed0.configNameWidth
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
-        ICConfigEdit{
-            id:speed1
-            visible: useFlag.isChecked
-            configName: qsTr("Speed1")
-//            configAddr: "s_rw_0_16_1_294"
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
+
     }
 
     onVisibleChanged:{

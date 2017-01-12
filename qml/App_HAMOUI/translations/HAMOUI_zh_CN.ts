@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -3877,47 +3877,47 @@ please chose!</source>
     </message>
     <message>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Interval En</source>
-        <translation type="unfinished"></translation>
+        <translation>间隔输出</translation>
     </message>
     <message>
         <source>Always Out</source>
-        <translation type="unfinished"></translation>
+        <translation>常输出</translation>
     </message>
     <message>
         <source>Choos Out</source>
-        <translation type="unfinished"></translation>
+        <translation>输出选择</translation>
     </message>
     <message>
         <source>IO output</source>
-        <translation type="unfinished"></translation>
+        <translation>IO输出</translation>
     </message>
     <message>
         <source>M output</source>
-        <translation type="unfinished"></translation>
+        <translation>M值输出</translation>
     </message>
     <message>
         <source>Out ID</source>
-        <translation type="unfinished"></translation>
+        <translation>输出点</translation>
     </message>
     <message>
         <source>Interval Number</source>
-        <translation type="unfinished"></translation>
+        <translation>间隔个数</translation>
     </message>
     <message>
         <source>Out Time</source>
-        <translation type="unfinished"></translation>
+        <translation>输出时间</translation>
     </message>
     <message>
         <source>IntervalBox En</source>
-        <translation type="unfinished"></translation>
+        <translation>装箱间隔输出</translation>
     </message>
 </context>
 <context>
@@ -4873,31 +4873,31 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>interval</source>
-        <translation type="unfinished"></translation>
+        <translation>间隔</translation>
     </message>
     <message>
         <source>number</source>
-        <translation type="unfinished"></translation>
+        <translation>个</translation>
     </message>
     <message>
         <source>always out</source>
-        <translation type="unfinished"></translation>
+        <translation>一直输出</translation>
     </message>
     <message>
         <source>time out</source>
-        <translation type="unfinished"></translation>
+        <translation>时间输出</translation>
     </message>
     <message>
         <source>M value</source>
-        <translation type="unfinished"></translation>
+        <translation>M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation type="unfinished"></translation>
+        <translation>IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
-        <translation type="unfinished"></translation>
+        <translation>装箱间隔</translation>
     </message>
     <message>
         <source>Has not Group-Begin action but has Group-End action</source>

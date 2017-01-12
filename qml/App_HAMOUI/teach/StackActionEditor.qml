@@ -6,6 +6,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 import "../ExternalData.js" as ESData
 import "ProgramFlowPage.js" as ProgramList
+import "../configs/IODefines.js" as IODefines
 
 Rectangle {
     property int stackType: 0
@@ -805,7 +806,7 @@ Rectangle {
                 }
             }
             Column{
-                spacing: 3
+                spacing: 1
                 visible: useFlag.isChecked
                 ICCheckBox{
                     id:interval_en
@@ -819,15 +820,32 @@ Rectangle {
                 ICComboBoxConfigEdit{
                     id:interval_out_choose
                     visible: interval_en.isChecked
+                    popupMode: 1
+                    popupHeight: 100
                     z:10
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
+                    onConfigValueChanged: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        len=configValue == 0?len:16;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                        }
+                        interval_out_id.items = ioItems;
+                    }
                 }
-                ICConfigEdit{
+                ICComboBoxConfigEdit{
                     id:interval_out_id
                     visible: interval_en.isChecked
                     configName: qsTr("Out ID")
-                    configValue: "0"
+                    configValue: 0
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
                 }
                 ICConfigEdit{
                     id:interval_number
@@ -845,8 +863,8 @@ Rectangle {
                 }
             }
             Column{
-                spacing: 3
-                visible: useFlag.isChecked
+                spacing: 1
+                visible: speed1.visible
                 ICCheckBox{
                     id:intervalbox_en
                     text: qsTr("IntervalBox En")
@@ -859,15 +877,32 @@ Rectangle {
                 ICComboBoxConfigEdit{
                     id:intervalbox_out_choose
                     visible: intervalbox_en.isChecked
+                    popupMode: 1
+                    popupHeight: 100
                     z:10
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
+                    onConfigValueChanged: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        len=configValue == 0?len:16;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                        }
+                        intervalbox_out_id.items = ioItems;
+                    }
                 }
-                ICConfigEdit{
+                ICComboBoxConfigEdit{
                     id:intervalbox_out_id
                     visible: intervalbox_en.isChecked
                     configName: qsTr("Out ID")
-                    configValue: "0"
+                    configValue: 0
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
                 }
                 ICConfigEdit{
                     id:intervalbox_number

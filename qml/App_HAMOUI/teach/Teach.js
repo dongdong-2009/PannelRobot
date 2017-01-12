@@ -1459,19 +1459,11 @@ var stackActionToStringHandler = function(actionObject){
         interval = qsTr("interval");
         interval += actionObject.interval_number;
         interval += qsTr("number");
-        if(actionObject.interval_out_choose)
-        {//< 输出M值
-            if(actionObject.interval_always_out)interval+=qsTr("always out");
-            else interval+=qsTr("time out");
-            interval+=qsTr("M value");
-        }
-        else
-        {//< 输出IO
-            if(actionObject.interval_always_out)interval+=qsTr("always out");
-            else interval+=qsTr("time out");
-            interval+=qsTr("IO value");
-        }
-        interval+=actionObject.interval_out_id;
+        interval +=","
+        if(actionObject.interval_always_out)interval+=qsTr("always out");
+        else interval+=qsTr("time out");
+        if(actionObject.interval_out_choose)interval+=ioItemName(mYDefines[actionObject.interval_out_id]);//< 输出M值
+        else interval+=ioItemName(yDefines[actionObject.interval_out_id]);//< 输出IO
     }
     var intervalbox="";
     if(actionObject.intervalbox_en)
@@ -1479,19 +1471,11 @@ var stackActionToStringHandler = function(actionObject){
         intervalbox = qsTr("intervalbox");
         intervalbox += actionObject.intervalbox_number;
         intervalbox += qsTr("number");
-        if(actionObject.intervalbox_out_choose)
-        {//< 输出M值
-            if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
-            else intervalbox+=qsTr("time out");
-            intervalbox+=qsTr("M value");
-        }
-        else
-        {//< 输出IO
-            if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
-            else intervalbox+=qsTr("time out");
-            intervalbox+=qsTr("IO value");
-        }
-        intervalbox+=actionObject.intervalbox_out_id;
+        intervalbox +=","
+        if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
+        else intervalbox+=qsTr("time out");
+        if(actionObject.intervalbox_out_choose)intervalbox+=ioItemName(mYDefines[actionObject.intervalbox_out_id]);//< 输出M值
+        else intervalbox+=ioItemName(yDefines[actionObject.intervalbox_out_id]);//< 输出IO
     }
 
     var isBoxStack = si.type == stackTypes.kST_Box;

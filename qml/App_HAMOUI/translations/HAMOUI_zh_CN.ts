@@ -3016,6 +3016,18 @@ please chose!</source>
         <source>Ret Up</source>
         <translation>返回上层</translation>
     </message>
+    <message>
+        <source>mainProgram:&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>subProgram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fuction</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegisterUseTimeSettings</name>
@@ -3869,6 +3881,42 @@ please chose!</source>
     </message>
     <message>
         <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interval En</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Always Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choos Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IO output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Out ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interval Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Out Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IntervalBox En</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

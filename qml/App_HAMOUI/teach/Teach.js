@@ -1453,6 +1453,47 @@ function stackTypeToString(type){
 var stackActionToStringHandler = function(actionObject){
     var si = getStackInfoFromID(actionObject.stackID);
     var descr = (si == null) ? qsTr("not exist") : si.descr;
+    var interval="";
+    if(actionObject.interval_en)
+    {
+        interval = qsTr("interval");
+        interval += actionObject.interval_number;
+        interval += qsTr("number");
+        if(actionObject.interval_out_choose)
+        {//< 输出M值
+            if(actionObject.interval_always_out)interval+=qsTr("always out");
+            else interval+=qsTr("time out");
+            interval+=qsTr("M value");
+        }
+        else
+        {//< 输出IO
+            if(actionObject.interval_always_out)interval+=qsTr("always out");
+            else interval+=qsTr("time out");
+            interval+=qsTr("IO value");
+        }
+        interval+=actionObject.interval_out_id;
+    }
+    var intervalbox="";
+    if(actionObject.intervalbox_en)
+    {
+        intervalbox = qsTr("intervalbox");
+        intervalbox += actionObject.intervalbox_number;
+        intervalbox += qsTr("number");
+        if(actionObject.intervalbox_out_choose)
+        {//< 输出M值
+            if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
+            else intervalbox+=qsTr("time out");
+            intervalbox+=qsTr("M value");
+        }
+        else
+        {//< 输出IO
+            if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
+            else intervalbox+=qsTr("time out");
+            intervalbox+=qsTr("IO value");
+        }
+        intervalbox+=actionObject.intervalbox_out_id;
+    }
+
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                              "";
@@ -1460,7 +1501,8 @@ var stackActionToStringHandler = function(actionObject){
     var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                 : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
-            descr + "\n                            " +
+            descr + interval+ "\n                            " +
+            (intervalbox!=""?(intervalbox+"\n                            "):"")+
             axisInfos[0].name + (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " +
             axisInfos[1].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedY == undefined? 80.0:actionObject.speedY) + " " +
             axisInfos[2].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedZ == undefined? 80.0:actionObject.speedZ) + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;

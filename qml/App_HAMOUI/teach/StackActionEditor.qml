@@ -756,7 +756,7 @@ Rectangle {
                 ICComboBoxConfigEdit{
                     id:holdSel
                     configName: qsTr("Hold")
-                    popupHeight: 30
+                    popupHeight: 60
                     visible: (page1.isCustomDataSource && page1.mode >= 2) || posAndCmp.visible
                     items: [qsTr("None"), AxisDefine.axisInfos[0].name,
                         AxisDefine.axisInfos[1].name,

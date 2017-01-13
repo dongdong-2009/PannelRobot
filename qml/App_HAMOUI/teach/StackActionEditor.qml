@@ -830,6 +830,7 @@ Rectangle {
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
                     onConfigValueChanged: {
+                        if(configValue<0||configValue>1)return;
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
                             ioBoardCount = 1;
@@ -846,7 +847,8 @@ Rectangle {
                     id:interval_out_id
                     visible: interval_en.isChecked
                     configName: qsTr("Out ID")
-                    configValue: 0
+//                    configValue: 0
+//                    items: [qsTr("NULL")]
                     popupMode: 1
                     popupHeight: 100
                     z:10
@@ -893,6 +895,7 @@ Rectangle {
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
                     onConfigValueChanged: {
+                        if(configValue<0||configValue>1)return;
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
                             ioBoardCount = 1;
@@ -909,7 +912,8 @@ Rectangle {
                     id:intervalbox_out_id
                     visible: intervalbox_en.isChecked
                     configName: qsTr("Out ID")
-                    configValue: 0
+//                    configValue: 0
+//                    items: [qsTr("NULL")]
                     popupMode: 1
                     popupHeight: 100
                     z:10

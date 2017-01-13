@@ -816,6 +816,10 @@ Rectangle {
                     id:interval_always_out
                     visible: interval_en.isChecked
                     text: qsTr("Always Out")
+                    onIsCheckedChanged: {
+                        if(isChecked)interval_out_time.visible=false;
+                        else interval_out_time.visible=interval_en.isChecked;
+                    }
                 }
                 ICComboBoxConfigEdit{
                     id:interval_out_choose
@@ -875,6 +879,10 @@ Rectangle {
                     id:intervalbox_always_out
                     visible: intervalbox_en.isChecked
                     text: qsTr("Always Out")
+                    onIsCheckedChanged: {
+                        if(isChecked)intervalbox_out_time.visible=false;
+                        else intervalbox_out_time.visible=intervalbox_en.isChecked;
+                    }
                 }
                 ICComboBoxConfigEdit{
                     id:intervalbox_out_choose

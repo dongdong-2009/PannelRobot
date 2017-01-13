@@ -1460,10 +1460,15 @@ var stackActionToStringHandler = function(actionObject){
         interval += actionObject.interval_number;
         interval += qsTr("number");
         interval +=","
-        if(actionObject.interval_always_out)interval+=qsTr("always out");
-        else interval+=qsTr("time out");
         if(actionObject.interval_out_choose)interval+=ioItemName(mYDefines[actionObject.interval_out_id]);//< 输出M值
         else interval+=ioItemName(yDefines[actionObject.interval_out_id]);//< 输出IO
+        if(actionObject.interval_always_out)interval+=qsTr("always out");
+        else
+        {
+            interval+=qsTr("time out");
+            interval+=actionObject.interval_out_time;
+            interval+="s";
+        }
     }
     var intervalbox="";
     if(actionObject.intervalbox_en)
@@ -1472,10 +1477,15 @@ var stackActionToStringHandler = function(actionObject){
         intervalbox += actionObject.intervalbox_number;
         intervalbox += qsTr("number");
         intervalbox +=","
-        if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
-        else intervalbox+=qsTr("time out");
         if(actionObject.intervalbox_out_choose)intervalbox+=ioItemName(mYDefines[actionObject.intervalbox_out_id]);//< 输出M值
         else intervalbox+=ioItemName(yDefines[actionObject.intervalbox_out_id]);//< 输出IO
+        if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
+        else
+        {
+            intervalbox+=qsTr("time out");
+            intervalbox+=actionObject.intervalbox_out_time;
+            intervalbox+="s";
+        }
     }
 
     var isBoxStack = si.type == stackTypes.kST_Box;

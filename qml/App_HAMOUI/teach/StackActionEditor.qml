@@ -6,6 +6,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 import "../ExternalData.js" as ESData
 import "ProgramFlowPage.js" as ProgramList
+import "../configs/IODefines.js" as IODefines
 
 Rectangle {
     property int stackType: 0
@@ -21,7 +22,9 @@ Rectangle {
             if(stackSelector.configValue < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
-            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue));
+            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue,
+                     interval_en.isChecked,interval_always_out.isChecked,interval_out_choose.configValue,interval_out_id.configValue,interval_number.configValue,interval_out_time.configValue,
+                     intervalbox_en.isChecked,intervalbox_always_out.isChecked,intervalbox_out_choose.configValue,intervalbox_out_id.configValue,intervalbox_number.configValue,intervalbox_out_time.configValue));
         }
         return ret;
     }
@@ -761,42 +764,176 @@ Rectangle {
                 stackType = stackInfo.type;
             }
         }
-        ICConfigEdit{
-            id:speed0
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
-//            configAddr: "s_rw_0_16_1_294"
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
+        Row{
+            spacing: 12
+            Column{
+                spacing: 3
+                ICConfigEdit{
+                    id:speed0
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
+        //            configAddr: "s_rw_0_16_1_294"
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speedY
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
+                    configNameWidth: speed0.configNameWidth
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speedZ
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
+                    configNameWidth: speed0.configNameWidth
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speed1
+                    visible: useFlag.isChecked
+                    configName: qsTr("Speed1")
+        //            configAddr: "s_rw_0_16_1_294"
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+            }
+            Column{
+                spacing: 1
+                visible: useFlag.isChecked
+                ICCheckBox{
+                    id:interval_en
+                    text: qsTr("Interval En")
+                }
+                ICCheckBox{
+                    id:interval_always_out
+                    visible: interval_en.isChecked
+                    text: qsTr("Always Out")
+                    onIsCheckedChanged: {
+                        if(isChecked)interval_out_time.visible=false;
+                        else interval_out_time.visible=interval_en.isChecked;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:interval_out_choose
+                    visible: interval_en.isChecked
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                    configName: qsTr("Choos Out")
+                    items: [qsTr("IO output"),qsTr("M output")]
+                    onConfigValueChanged: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        len=configValue == 0?len:16;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                        }
+                        interval_out_id.items = ioItems;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:interval_out_id
+                    visible: interval_en.isChecked
+                    configName: qsTr("Out ID")
+                    configValue: 0
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                }
+                ICConfigEdit{
+                    id:interval_number
+                    visible: interval_en.isChecked
+                    configName: qsTr("Interval Number")
+                    unit: "n"
+                    configValue: "10"
+                    max: 8000
+                }
+                ICConfigEdit{
+                    id:interval_out_time
+                    visible: interval_en.isChecked
+                    configName: qsTr("Out Time")
+                    unit: "s"
+                    configValue: "1"
+                    max: 1000
+                }
+            }
+            Column{
+                spacing: 1
+                visible: speed1.visible
+                ICCheckBox{
+                    id:intervalbox_en
+                    text: qsTr("IntervalBox En")
+                }
+                ICCheckBox{
+                    id:intervalbox_always_out
+                    visible: intervalbox_en.isChecked
+                    text: qsTr("Always Out")
+                    onIsCheckedChanged: {
+                        if(isChecked)intervalbox_out_time.visible=false;
+                        else intervalbox_out_time.visible=intervalbox_en.isChecked;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:intervalbox_out_choose
+                    visible: intervalbox_en.isChecked
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                    configName: qsTr("Choos Out")
+                    items: [qsTr("IO output"),qsTr("M output")]
+                    onConfigValueChanged: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        len=configValue == 0?len:16;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                        }
+                        intervalbox_out_id.items = ioItems;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:intervalbox_out_id
+                    visible: intervalbox_en.isChecked
+                    configName: qsTr("Out ID")
+                    configValue: 0
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                }
+                ICConfigEdit{
+                    id:intervalbox_number
+                    visible: interval_en.isChecked
+                    configName: qsTr("Interval Number")
+                    unit: "n"
+                    configValue: "10"
+                    max: 8000
+                }
+                ICConfigEdit{
+                    id:intervalbox_out_time
+                    visible: intervalbox_en.isChecked
+                    configName: qsTr("Out Time")
+                    unit: "s"
+                    configValue: "1"
+                    max: 1000
+                }
+
+            }
         }
-        ICConfigEdit{
-            id:speedY
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
-            configNameWidth: speed0.configNameWidth
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
-        ICConfigEdit{
-            id:speedZ
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
-            configNameWidth: speed0.configNameWidth
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
-        ICConfigEdit{
-            id:speed1
-            visible: useFlag.isChecked
-            configName: qsTr("Speed1")
-//            configAddr: "s_rw_0_16_1_294"
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
+
     }
 
     onVisibleChanged:{

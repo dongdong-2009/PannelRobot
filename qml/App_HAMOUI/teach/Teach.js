@@ -1134,14 +1134,29 @@ var generateCommentAction = function(comment, commentdAction, reserve){
     };
 }
 
-var generateStackAction = function(stackID, speed0,speedY,speedZ,speed1){
+var generateStackAction = function(stackID, speed0,speedY,speedZ,speed1,
+                                   interval_en,interval_always_out,interval_out_choose,interval_out_id,interval_number,interval_out_time,
+                                   intervalbox_en,intervalbox_always_out,intervalbox_out_choose,intervalbox_out_id,intervalbox_number,intervalbox_out_time){
     return {
+
         "action":actions.F_CMD_STACK0,
         "stackID":stackID,
         "speed0":speed0 || 80,
         "speedY":speedY || 80,
         "speedZ":speedZ || 80,
         "speed1":speed1 || 80,
+        "interval_en":interval_en||0,
+        "interval_always_out":interval_always_out||0,
+        "interval_out_choose":interval_out_choose||0,
+        "interval_out_id":interval_out_id||0,
+        "interval_number":interval_number||10,
+        "interval_out_time":interval_out_time||1,
+        "intervalbox_en":intervalbox_en||0,
+        "intervalbox_always_out":intervalbox_always_out||0,
+        "intervalbox_out_choose":intervalbox_out_choose||0,
+        "intervalbox_out_id":intervalbox_out_id||0,
+        "intervalbox_number":intervalbox_number||10,
+        "intervalbox_out_time":intervalbox_out_time||1,
     };
 }
 
@@ -1438,6 +1453,41 @@ function stackTypeToString(type){
 var stackActionToStringHandler = function(actionObject){
     var si = getStackInfoFromID(actionObject.stackID);
     var descr = (si == null) ? qsTr("not exist") : si.descr;
+    var interval="";
+    if(actionObject.interval_en)
+    {
+        interval = qsTr("interval");
+        interval += actionObject.interval_number;
+        interval += qsTr("number");
+        interval +=","
+        if(actionObject.interval_out_choose)interval+=ioItemName(mYDefines[actionObject.interval_out_id]);//< 输出M值
+        else interval+=ioItemName(yDefines[actionObject.interval_out_id]);//< 输出IO
+        if(actionObject.interval_always_out)interval+=qsTr("always out");
+        else
+        {
+            interval+=qsTr("time out");
+            interval+=actionObject.interval_out_time;
+            interval+="s";
+        }
+    }
+    var intervalbox="";
+    if(actionObject.intervalbox_en)
+    {
+        intervalbox = qsTr("intervalbox");
+        intervalbox += actionObject.intervalbox_number;
+        intervalbox += qsTr("number");
+        intervalbox +=","
+        if(actionObject.intervalbox_out_choose)intervalbox+=ioItemName(mYDefines[actionObject.intervalbox_out_id]);//< 输出M值
+        else intervalbox+=ioItemName(yDefines[actionObject.intervalbox_out_id]);//< 输出IO
+        if(actionObject.intervalbox_always_out)intervalbox+=qsTr("always out");
+        else
+        {
+            intervalbox+=qsTr("time out");
+            intervalbox+=actionObject.intervalbox_out_time;
+            intervalbox+="s";
+        }
+    }
+
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                              "";
@@ -1445,7 +1495,8 @@ var stackActionToStringHandler = function(actionObject){
     var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                 : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
-            descr + "\n                            " +
+            descr + interval+ "\n                            " +
+            (intervalbox!=""?(intervalbox+"\n                            "):"")+
             axisInfos[0].name + (isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + actionObject.speed0 + " " +
             axisInfos[1].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedY == undefined? 80.0:actionObject.speedY) + " " +
             axisInfos[2].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedZ == undefined? 80.0:actionObject.speedZ) + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
@@ -1817,6 +1868,7 @@ function customActionGenerator(actionDefine){
         return JSON.stringify(ret);
     };
 //    console.log( actionDefine.editableItems.editor.errorString());
+    actionDefine.editableItems.comp = actionDefine.editableItems.editor;
     actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
     if(!actionDefine.hasOwnProperty("actionObjectChangedHelper")){
         actionDefine.actionObjectChangedHelper = function(editor, actionObject){

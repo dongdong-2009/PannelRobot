@@ -4613,7 +4613,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation type="unfinished">(短原点)自动设定原点加开关</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>

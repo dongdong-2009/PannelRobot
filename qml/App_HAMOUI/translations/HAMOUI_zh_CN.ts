@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -235,23 +235,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -259,11 +259,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -1378,11 +1378,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1663,15 +1663,15 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-        <translation type="vanished">运行中</translation>
+        <translation>运行中</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation type="vanished">单步</translation>
+        <translation>单步</translation>
     </message>
     <message>
         <source>One Cycle</source>
-        <translation type="vanished">单循环</translation>
+        <translation>单循环</translation>
     </message>
 </context>
 <context>
@@ -1875,11 +1875,11 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关(短原点)</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>自动设定原点加开关(长原点)</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
 </context>
 <context>
@@ -3029,7 +3029,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="vanished">小时</translation>
+        <translation>小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -3061,11 +3061,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">导出</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">导入</translation>
+        <translation>导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -4613,7 +4613,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation type="unfinished">(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
@@ -4833,7 +4833,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation type="unfinished">自动设定原点加开关 {4?}</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
 </context>
 <context>
@@ -5097,11 +5097,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="vanished">设为点5</translation>
+        <translation>设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="vanished">设为点6</translation>
+        <translation>设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

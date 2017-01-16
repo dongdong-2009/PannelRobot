@@ -146,7 +146,7 @@ Item {
                 var toolCoordName = qsTr("B Head");
                 var ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
-                panelRobotController.sendToolCoord(toolCoordID,JSON.stringify(coordPoint));
+                panelRobotController.sendToolCoord(ret[0],JSON.stringify(coordPoint));
 
 
                 coordPoint[0] = p1m0.getConfigValue() + cX.getConfigValue();
@@ -170,7 +170,7 @@ Item {
                 toolCoordName = qsTr("C Head");
                 ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
-                panelRobotController.sendToolCoord(toolCoordID,JSON.stringify(coordPoint));
+                panelRobotController.sendToolCoord(ret[0],JSON.stringify(coordPoint));
             }
         }
     }

@@ -4,6 +4,7 @@ import "."
 import "../ICCustomElement/"
 import "configs/AxisDefine.js" as AxisDefine
 import "ToolCoordManager.js" as ToolCoordManager
+import "ShareData.js" as ShareData
 
 Item {
     id:container
@@ -16,20 +17,27 @@ Item {
         jogPos.visible = en;
     }
 
-    states: [
-    State {
-        name: "jogPos"
-        PropertyChanges { target: jogPos; visible: true}
-        PropertyChanges { target: worldPos; visible: false}
-        PropertyChanges { target:coordDisplay;visible: false}
-    },
-    State {
-        name: "worldPos"
-        PropertyChanges { target: worldPos; visible: true}
-        PropertyChanges { target: jogPos; visible: false}
-        PropertyChanges { target:coordDisplay;visible: true}
+    function setCurrentState(barState){
+        container.state = barState;
     }
-]
+
+
+    states: [
+        State {
+            name: "jogPos"
+            PropertyChanges { target: jogPos; visible: true}
+            PropertyChanges { target: worldPos; visible: false}
+            PropertyChanges { target:coordDisplay;visible: false}
+            PropertyChanges { target:switchBtn;text:qsTr("WorldPos")}
+        },
+        State {
+            name: "worldPos"
+            PropertyChanges { target: worldPos; visible: true}
+            PropertyChanges { target: jogPos; visible: false}
+            PropertyChanges { target:coordDisplay;visible: true}
+            PropertyChanges { target:switchBtn;text:qsTr("JogPos")}
+        }
+    ]
 
     ICStatusScope{
         Row{
@@ -142,9 +150,10 @@ Item {
 
             Item{
                 id:funcArea
-                width: 200;height:parent.height
+                width: 800-(3*(30+90+40+4)+4+4+20);height:parent.height
                 Column{
                     id:coordDisplay
+                    width:funcArea.width - switchBtn.width
                     spacing: 2
                     Text {
                         id: hint
@@ -160,22 +169,22 @@ Item {
                     }
                 }
                 ICButton{
+                    id:switchBtn
                     anchors.left: coordDisplay.right
-                    anchors.leftMargin: 30
+                    anchors.leftMargin: 10
+                    width:100
                     height: funcArea.height
-                    text:qsTr("worldPos")
+                    text: qsTr("worldPos")
                     onButtonClicked: {
                         if(container.state == "worldPos"){
                             container.state = "jogPos";
-                            text = qsTr("worldPos");
                         }
                         else{
                             container.state = "worldPos";
-                            text = qsTr("jogPos");
                         }
+                        ShareData.barStatus = container.state;
                     }
                 }
-
             }
         }
         onRefreshTimeOut:{

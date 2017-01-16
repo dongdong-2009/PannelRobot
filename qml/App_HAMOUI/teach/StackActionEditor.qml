@@ -266,14 +266,23 @@ Rectangle {
                                           0);
             var realST = stackType;
             if(realST >= 2){
-                if(realST == 2){
-                    if(posAndCmp.isChecked)
-                        realST = 4;
-                    else if(onlyCmp.isChecked)
-                        realST = 5;
-                }
-                else if(realST == 3 && autoChangeHead.isChecked)
+                console.log("fsfdws",realST)
+                if(posAndCmp.isChecked)
+                    realST = 4;
+                else if(onlyCmp.isChecked)
+                    realST = 5;
+                else if(autoChangeHead.isChecked)
                     realST = 6;
+                else
+                    realST = 3;
+//                if(realST == 2){
+//                    if(posAndCmp.isChecked)
+//                        realST = 4;
+//                    else if(onlyCmp.isChecked)
+//                        realST = 5;
+//                    else if(autoChangeHead.isChecked)
+//                        realST = 6;
+//                }
             }
 
 

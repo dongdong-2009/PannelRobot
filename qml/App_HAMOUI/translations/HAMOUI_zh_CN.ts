@@ -3922,6 +3922,10 @@ please chose!</source>
         <source>None</source>
         <translation>无</translation>
     </message>
+    <message>
+        <source>Auto Change Head</source>
+        <translation>自动换枪</translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>

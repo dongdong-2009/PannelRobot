@@ -147,11 +147,11 @@ MouseArea{
                         tmp = pointModel.get(i).pointPos;
                         console.log(JSON.stringify(tmp));
                         if(tmp.m4 == aHead.getConfigValue())
-                            tmp.m4 = 0.000;
-                        else if(tmp.m4 == bHead.getConfigValue())
                             tmp.m4 = 0.001;
-                        else if(tmp.m4 == cHead.getConfigValue())
+                        else if(tmp.m4 == bHead.getConfigValue())
                             tmp.m4 = 0.002;
+                        else if(tmp.m4 == cHead.getConfigValue())
+                            tmp.m4 = 0.003;
                         pointModel.setProperty(i, "pointPos", tmp);
                     }
                 }

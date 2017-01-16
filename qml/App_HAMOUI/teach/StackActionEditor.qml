@@ -5,6 +5,7 @@ import "../configs/AxisDefine.js" as AxisDefine
 import "../../utils/utils.js" as Utils
 import "../ExternalData.js" as ESData
 import "ProgramFlowPage.js" as ProgramList
+import "../configs/IODefines.js" as IODefines
 
 Rectangle {
     property int stackType: 0
@@ -20,7 +21,9 @@ Rectangle {
             if(stackSelector.configValue < 0) return ret;
             var begin = statckStr.indexOf('[') + 1;
             var end = statckStr.indexOf(']');
-            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue));
+            ret.push(Teach.generateStackAction(statckStr.slice(begin, end), speed0.configValue,speedY.configValue,speedZ.configValue,speed1.configValue,
+                     interval_en.isChecked,interval_always_out.isChecked,interval_out_choose.configValue,interval_out_id.configValue,interval_number.configValue,interval_out_time.configValue,
+                     intervalbox_en.isChecked,intervalbox_always_out.isChecked,intervalbox_out_choose.configValue,intervalbox_out_id.configValue,intervalbox_number.configValue,intervalbox_out_time.configValue));
         }
         return ret;
     }
@@ -178,7 +181,6 @@ Rectangle {
             page2.runSeq = stackInfo.si1.runSeq;
 
             stackType = stackInfo.type;
-            ignoreZ.setChecked(stackType == 2);
 
             if(stackType == 0 ||
                     stackType == 1){
@@ -187,6 +189,8 @@ Rectangle {
                 page1.mode = 2;
                 posAndCmp.setChecked(stackType == 4);
                 onlyCmp.setChecked(stackType == 5);
+                autoChangeHead.setChecked(stackType == 6);
+                holdSel.configValue = stackInfo.si0.holdSel;
             }
         }
     }
@@ -231,7 +235,8 @@ Rectangle {
                                           page1.dataSourceName,
                                           selectedDS,
                                           page1.isZWithYEn,
-                                          page1.runSeq);
+                                          page1.runSeq,
+                                          holdSel.configValue);
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -257,16 +262,18 @@ Rectangle {
                                           page2.dataSourceName,
                                           selectedDS,
                                           page2.isZWithYEn,
-                                          page2.runSeq);
+                                          page2.runSeq,
+                                          0);
             var realST = stackType;
             if(realST >= 2){
-                realST = ignoreZ.isChecked ? 2 : 3;
-                if(realST == 2 && !ignoreZ.isChecked){
+                if(realST == 2){
                     if(posAndCmp.isChecked)
                         realST = 4;
                     else if(onlyCmp.isChecked)
                         realST = 5;
                 }
+                else if(realST == 3 && autoChangeHead.isChecked)
+                    realST = 6;
             }
 
 
@@ -551,9 +558,8 @@ Rectangle {
                         }
                     }
                     ICCheckBox{
-                        id:ignoreZ
-                        text: qsTr("Ignore Z")
-                        visible: page1.mode >= 2
+                        id:autoChangeHead
+                        text:qsTr("Auto Change Head")
                     }
                 }
 
@@ -575,12 +581,23 @@ Rectangle {
                     x:setIn.x
                     id:page1
                     visible: currentPage == 1;
+                    z:2
                 }
                 StackActionEditorComponent{
                     x:setIn.x
                     id:page2
                     visible: currentPage == 2;
                     mode: 1
+                    z:2
+                }
+                ICComboBoxConfigEdit{
+                    id:holdSel
+                    configName: qsTr("Hold")
+                    popupHeight: 60
+                    visible: (page1.isCustomDataSource && page1.mode >= 2) || posAndCmp.visible
+                    items: [qsTr("None"), AxisDefine.axisInfos[0].name,
+                        AxisDefine.axisInfos[1].name,
+                        AxisDefine.axisInfos[2].name]
                 }
 
             }
@@ -598,42 +615,180 @@ Rectangle {
                 stackType = stackInfo.type;
             }
         }
-        ICConfigEdit{
-            id:speed0
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
-//            configAddr: "s_rw_0_16_1_294"
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
+        Row{
+            spacing: 12
+            Column{
+                spacing: 3
+                ICConfigEdit{
+                    id:speed0
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[0].name +qsTr("Speed")
+        //            configAddr: "s_rw_0_16_1_294"
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speedY
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
+                    configNameWidth: speed0.configNameWidth
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speedZ
+                    visible: useFlag.isChecked
+                    configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
+                    configNameWidth: speed0.configNameWidth
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+                ICConfigEdit{
+                    id:speed1
+                    visible: useFlag.isChecked
+                    configName: qsTr("Speed1")
+        //            configAddr: "s_rw_0_16_1_294"
+                    configAddr: "s_rw_0_32_1_212"
+                    unit: "%"
+                    configValue: "80.0"
+                }
+            }
+            Column{
+                spacing: 1
+                visible: useFlag.isChecked
+                ICCheckBox{
+                    id:interval_en
+                    text: qsTr("Interval En")
+                }
+                ICCheckBox{
+                    id:interval_always_out
+                    visible: interval_en.isChecked
+                    text: qsTr("Always Out")
+                    onIsCheckedChanged: {
+                        if(isChecked)interval_out_time.visible=false;
+                        else interval_out_time.visible=interval_en.isChecked;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:interval_out_choose
+                    visible: interval_en.isChecked
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                    configName: qsTr("Choos Out")
+                    items: [qsTr("IO output"),qsTr("M output")]
+                    onConfigValueChanged: {
+                        if(configValue<0||configValue>1)return;
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        len=configValue == 0?len:16;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                        }
+                        interval_out_id.items = ioItems;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:interval_out_id
+                    visible: interval_en.isChecked
+                    configName: qsTr("Out ID")
+//                    configValue: 0
+//                    items: [qsTr("NULL")]
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                }
+                ICConfigEdit{
+                    id:interval_number
+                    visible: interval_en.isChecked
+                    configName: qsTr("Interval Number")
+                    unit: "n"
+                    configValue: "10"
+                    max: 8000
+                }
+                ICConfigEdit{
+                    id:interval_out_time
+                    visible: interval_en.isChecked
+                    configName: qsTr("Out Time")
+                    unit: "s"
+                    configValue: "1"
+                    max: 1000
+                }
+            }
+            Column{
+                spacing: 1
+                visible: speed1.visible
+                ICCheckBox{
+                    id:intervalbox_en
+                    text: qsTr("IntervalBox En")
+                }
+                ICCheckBox{
+                    id:intervalbox_always_out
+                    visible: intervalbox_en.isChecked
+                    text: qsTr("Always Out")
+                    onIsCheckedChanged: {
+                        if(isChecked)intervalbox_out_time.visible=false;
+                        else intervalbox_out_time.visible=intervalbox_en.isChecked;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:intervalbox_out_choose
+                    visible: intervalbox_en.isChecked
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                    configName: qsTr("Choos Out")
+                    items: [qsTr("IO output"),qsTr("M output")]
+                    onConfigValueChanged: {
+                        if(configValue<0||configValue>1)return;
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        len=configValue == 0?len:16;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                        }
+                        intervalbox_out_id.items = ioItems;
+                    }
+                }
+                ICComboBoxConfigEdit{
+                    id:intervalbox_out_id
+                    visible: intervalbox_en.isChecked
+                    configName: qsTr("Out ID")
+//                    configValue: 0
+//                    items: [qsTr("NULL")]
+                    popupMode: 1
+                    popupHeight: 100
+                    z:10
+                }
+                ICConfigEdit{
+                    id:intervalbox_number
+                    visible: interval_en.isChecked
+                    configName: qsTr("Interval Number")
+                    unit: "n"
+                    configValue: "10"
+                    max: 8000
+                }
+                ICConfigEdit{
+                    id:intervalbox_out_time
+                    visible: intervalbox_en.isChecked
+                    configName: qsTr("Out Time")
+                    unit: "s"
+                    configValue: "1"
+                    max: 1000
+                }
+
+            }
         }
-        ICConfigEdit{
-            id:speedY
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[1].name +qsTr("Speed")
-            configNameWidth: speed0.configNameWidth
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
-        ICConfigEdit{
-            id:speedZ
-            visible: useFlag.isChecked
-            configName: AxisDefine.axisInfos[2].name +qsTr("Speed")
-            configNameWidth: speed0.configNameWidth
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
-        ICConfigEdit{
-            id:speed1
-            visible: useFlag.isChecked
-            configName: qsTr("Speed1")
-//            configAddr: "s_rw_0_16_1_294"
-            configAddr: "s_rw_0_32_1_212"
-            unit: "%"
-            configValue: "80.0"
-        }
+
     }
 
     onVisibleChanged:{

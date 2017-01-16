@@ -75,7 +75,7 @@ Rectangle{
 
     Text{
         id:num
-        width: 55
+        width: 65
         text: lineNum
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter

@@ -401,6 +401,23 @@ public:
 
         return subProgram(which);
     }
+
+    Q_INVOKABLE QString recordPrograms(const QString& name) const
+    {
+        QString toJSON = "[";
+        QStringList moldPrograms = ICDALHelper::MoldProgramContent(name);
+        for(int i=0;i<moldPrograms.length();i++)
+            toJSON += moldPrograms.at(i) +",";
+        toJSON.chop(1);
+        toJSON += "]";
+        return toJSON;
+    }
+
+    Q_INVOKABLE QString recordFunctions(const QString& name) const
+    {
+        return ICDALHelper::MoldFunctionsContent(name);
+    }
+
     Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
@@ -820,6 +837,7 @@ public:
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
 
     Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
+    Q_INVOKABLE bool writeUsbFile(const QString& fileName, const QString& content);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

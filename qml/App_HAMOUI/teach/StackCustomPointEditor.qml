@@ -18,14 +18,14 @@ MouseArea{
             "m4":m4.configValue || 0.000,
             "m5":m5.configValue || 0.000};
         var pointName = text_name.configValue;
-        pointModel.append({"pointName":pointName, "pointPos":pointPos});
+        pointModel.append({"pointName":pointName, "pointPos":pointPos, "fromgcode":false});
     }
 
     function show(posData, clearOld, confirmHandler){
         if(clearOld)
             pointModel.clear();
         for(var i = 0; i < posData.length; ++i){
-            pointModel.append({"pointName":posData[i].pointName, "pointPos":posData[i].pointPos});
+            pointModel.append({"pointName":posData[i].pointName, "pointPos":posData[i].pointPos, "fromgcode":posData[i] || false});
         }
         editConfirm.connect(confirmHandler);
         visible = true;
@@ -59,11 +59,11 @@ MouseArea{
                     p = points[i];
                     if(tMap.hasOwnProperty(p.m4)){
                         pointModel.insert(tMap[p.m4], {"pointName":qsTr("P") + i,
-                                              "pointPos":p});
+                                              "pointPos":p, "fromgcode":true});
                         tMap[p.m4] = tMap[p.m4] + 1;
                     }else{
                         pointModel.append({"pointName":qsTr("P") + i,
-                                              "pointPos":p});
+                                              "pointPos":p, "fromgcode":true});
                         tMap[p.m4] = pointModel.count;
                     }
 
@@ -116,6 +116,44 @@ MouseArea{
                     tmpPointPos.m4 = (parseFloat(tmpPointPos.m4) + diff.m4).toFixed(3);
                     tmpPointPos.m5 = (parseFloat(tmpPointPos.m5) + diff.m5).toFixed(3);
                     pointModel.setProperty(i, "pointPos", tmpPointPos);
+                }
+            }
+        }
+        Row{
+            anchors.left: syncReplace.right
+            anchors.top: syncReplace.top
+            spacing: 4
+            ICConfigEdit{
+                id:aHead
+                configName: qsTr("A Code")
+                inputWidth: 30
+            }
+            ICConfigEdit{
+                id:bHead
+                configName: qsTr("B Code")
+                inputWidth: aHead.inputWidth
+            }
+            ICConfigEdit{
+                id:cHead
+                configName: qsTr("C Code")
+                inputWidth: aHead.inputWidth
+            }
+            ICButton{
+                id:headConfirm
+                text: qsTr("Confirm")
+                onButtonClicked: {
+                    var tmp;
+                    for(var i = 0, len = pointModel.count; i < len; ++i){
+                        tmp = pointModel.get(i).pointPos;
+                        console.log(JSON.stringify(tmp));
+                        if(tmp.m4 == aHead.getConfigValue())
+                            tmp.m4 = 0.000;
+                        else if(tmp.m4 == bHead.getConfigValue())
+                            tmp.m4 = 0.001;
+                        else if(tmp.m4 == cHead.getConfigValue())
+                            tmp.m4 = 0.002;
+                        pointModel.setProperty(i, "pointPos", tmp);
+                    }
                 }
             }
         }
@@ -294,7 +332,10 @@ MouseArea{
                             ret += AxisDefine.axisInfos[2].name + ":" + pointPos.m2 + ","
                         if(AxisDefine.axisInfos[3].visiable)
                             ret += AxisDefine.axisInfos[3].name + ":" + pointPos.m3 + ","
-                        if(AxisDefine.axisInfos[4].visiable)
+                        if(fromgcode){
+                            ret += qsTr("Head Code") + ":" + pointPos.m4 + ","
+                        }
+                        else if(AxisDefine.axisInfos[4].visiable)
                             ret += AxisDefine.axisInfos[4].name + ":" + pointPos.m4 + ","
                         if(AxisDefine.axisInfos[5].visiable)
                             ret += AxisDefine.axisInfos[5].name + ":" + pointPos.m5 + ","

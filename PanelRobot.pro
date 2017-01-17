@@ -1,5 +1,5 @@
 
-QT       += script opengl
+QT       += script opengl sql
 #TEMPLATE = app
 VERSION = 1.0.1
 VERSTR = '\\"$${VERSION}\\"'

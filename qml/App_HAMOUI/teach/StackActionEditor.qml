@@ -345,6 +345,7 @@ Rectangle {
                 page1.mode = 2;
                 posAndCmp.setChecked(stackType == 4);
                 onlyCmp.setChecked(stackType == 5);
+                holdSel.configValue = stackInfo.si0.holdSel;
             }
         }
     }
@@ -389,7 +390,8 @@ Rectangle {
                                           page1.dataSourceName,
                                           selectedDS,
                                           page1.isZWithYEn,
-                                          page1.runSeq);
+                                          page1.runSeq,
+                                          holdSel.configValue);
             var si1 = new Teach.StackItem(page2.motor0 || 0.000,
                                           page2.motor1 || 0.000,
                                           page2.motor2 || 0.000,
@@ -415,7 +417,8 @@ Rectangle {
                                           page2.dataSourceName,
                                           selectedDS,
                                           page2.isZWithYEn,
-                                          page2.runSeq);
+                                          page2.runSeq,
+                                          0);
             var realST = stackType;
             if(realST >= 2){
                 realST = page1.isCustomDataSource ? 3 : 2;
@@ -741,12 +744,23 @@ Rectangle {
                     x:setIn.x
                     id:page1
                     visible: currentPage == 1;
+                    z:2
                 }
                 StackActionEditorComponent{
                     x:setIn.x
                     id:page2
                     visible: currentPage == 2;
                     mode: 1
+                    z:2
+                }
+                ICComboBoxConfigEdit{
+                    id:holdSel
+                    configName: qsTr("Hold")
+                    popupHeight: 30
+                    visible: (page1.isCustomDataSource && page1.mode >= 2) || posAndCmp.visible
+                    items: [qsTr("None"), AxisDefine.axisInfos[0].name,
+                        AxisDefine.axisInfos[1].name,
+                        AxisDefine.axisInfos[2].name]
                 }
 
             }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -4889,11 +4889,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation type="vanished">M值</translation>
+        <translation>M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation type="vanished">IO点</translation>
+        <translation>IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>

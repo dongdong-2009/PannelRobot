@@ -267,28 +267,28 @@ extern  const ICAddrWrapper  s_rw_16_16_3_191(3,3,16,16,191,3,"");   //<插补3�
 extern  const ICAddrWrapper  s_rw_0_32_3_192(3,3,0,32,192,3,"mm/s");    //<插补4最大线速度最大线速度
 extern  const ICAddrWrapper  s_rw_0_16_3_193(3,3,0,16,193,3,"ms");   //<插补4最小加速时间_二次加速时间比例最小加速时间
 extern  const ICAddrWrapper  s_rw_16_16_3_193(3,3,16,16,193,3,"");   //<插补4最小加速时间_二次加速时间比例二次加速时间比例
-extern  const ICAddrWrapper  s_rw_0_16_0_194(3,3,0,16,194,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_194(3,3,16,16,194,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_195(3,3,0,16,195,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_195(3,3,16,16,195,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_196(3,3,0,16,196,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_196(3,3,16,16,196,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_197(3,3,0,16,197,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_197(3,3,16,16,197,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_198(3,3,0,16,198,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_198(3,3,16,16,198,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_199(3,3,0,16,199,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_199(3,3,16,16,199,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_200(3,3,0,16,200,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_200(3,3,16,16,200,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_201(3,3,0,16,201,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_201(3,3,16,16,201,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_202(3,3,0,16,202,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_202(3,3,16,16,202,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_203(3,3,0,16,203,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_203(3,3,16,16,203,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_0_16_0_204(3,3,0,16,204,0,"");   //<逻辑输入端口输入点
-extern  const ICAddrWrapper  s_rw_16_16_0_204(3,3,16,16,204,0,"");   //<逻辑输入端口输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_194(3,3,0,16,194,0,"");   //<拖动视教参数轴1正向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_194(3,3,16,16,194,0,"");   //<拖动视教参数轴2正向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_195(3,3,0,16,195,0,"");   //<拖动视教参数轴3正向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_195(3,3,16,16,195,0,"");   //<拖动视教参数轴4正向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_196(3,3,0,16,196,0,"");   //<拖动视教参数轴5正向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_196(3,3,16,16,196,0,"");   //<拖动视教参数轴6正向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_197(3,3,0,16,197,0,"");   //<拖动视教参数轴7正向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_197(3,3,16,16,197,0,"");   //<拖动视教参数轴8正向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_198(3,3,0,16,198,0,"");   //<拖动视教参数轴1反向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_198(3,3,16,16,198,0,"");   //<拖动视教参数轴2反向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_199(3,3,0,16,199,0,"");   //<拖动视教参数轴3反向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_199(3,3,16,16,199,0,"");   //<拖动视教参数轴4反向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_200(3,3,0,16,200,0,"");   //<拖动视教参数轴5反向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_200(3,3,16,16,200,0,"");   //<拖动视教参数轴6反向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_201(3,3,0,16,201,0,"");   //<拖动视教参数轴7反向力矩设定
+extern  const ICAddrWrapper  s_rw_16_16_0_201(3,3,16,16,201,0,"");   //<拖动视教参数轴8反向力矩设定
+extern  const ICAddrWrapper  s_rw_0_16_0_202(3,3,0,16,202,0,"");   //<拖动视教参数输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_202(3,3,16,16,202,0,"");   //<拖动视教参数输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_203(3,3,0,16,203,0,"");   //<拖动视教参数输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_203(3,3,16,16,203,0,"");   //<拖动视教参数输入点
+extern  const ICAddrWrapper  s_rw_0_16_0_204(3,3,0,16,204,0,"");   //<拖动视教参数输入点
+extern  const ICAddrWrapper  s_rw_16_16_0_204(3,3,16,16,204,0,"");   //<拖动视教参数输入点
 extern  const ICAddrWrapper  s_rw_0_16_0_205(3,3,0,16,205,0,"");   //<逻辑输出端口输出点
 extern  const ICAddrWrapper  s_rw_16_16_0_205(3,3,16,16,205,0,"");   //<逻辑输出端口输出点
 extern  const ICAddrWrapper  s_rw_0_16_0_206(3,3,0,16,206,0,"");   //<逻辑输出端口输出点
@@ -309,52 +309,82 @@ extern  const ICAddrWrapper  m_rw_0_32_1_216(2,3,0,32,216,1,"");    //<目标延
 extern  const ICAddrWrapper  m_rw_0_32_1_217(2,3,0,32,217,1,"");    //<目标延时时间模拟量设定
 extern  const ICAddrWrapper  m_rw_0_32_1_218(2,3,0,32,218,1,"");    //<当前定时时间模拟量设定
 extern  const ICAddrWrapper  m_rw_0_32_1_219(2,3,0,32,219,1,"");    //<当前定时时间模拟量设定
-extern  const ICAddrWrapper  s_rw_0_32_0_220(3,3,0,32,220,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_221(3,3,0,32,221,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_222(3,3,0,32,222,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_223(3,3,0,32,223,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_224(3,3,0,32,224,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_225(3,3,0,32,225,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_226(3,3,0,32,226,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_227(3,3,0,32,227,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_228(3,3,0,32,228,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_229(3,3,0,32,229,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_230(3,3,0,32,230,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_231(3,3,0,32,231,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_232(3,3,0,32,232,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_233(3,3,0,32,233,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_234(3,3,0,32,234,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_235(3,3,0,32,235,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_236(3,3,0,32,236,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_237(3,3,0,32,237,0,"ms");    //<当前定时时间当前定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_238(3,3,0,32,238,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_239(3,3,0,32,239,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_240(3,3,0,32,240,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_241(3,3,0,32,241,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_242(3,3,0,32,242,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_243(3,3,0,32,243,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_244(3,3,0,32,244,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_245(3,3,0,32,245,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_246(3,3,0,32,246,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_247(3,3,0,32,247,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_248(3,3,0,32,248,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_249(3,3,0,32,249,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_250(3,3,0,32,250,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_251(3,3,0,32,251,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_252(3,3,0,32,252,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_253(3,3,0,32,253,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_254(3,3,0,32,254,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_255(3,3,0,32,255,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_256(3,3,0,32,256,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_257(3,3,0,32,257,0,"ms");    //<目标定时时间目标定时时间
-extern  const ICAddrWrapper  s_rw_0_32_0_258(3,3,0,32,258,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_259(3,3,0,32,259,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_260(3,3,0,32,260,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_261(3,3,0,32,261,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_262(3,3,0,32,262,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_263(3,3,0,32,263,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_264(3,3,0,32,264,0,"ms");    //<当前计数值当前计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_265(3,3,0,32,265,0,"ms");    //<当前计数值当前计数值
+extern  const ICAddrWrapper  s_rw_0_32_0_220(3,3,0,32,220,0,"");    //<当前定时时间翻转使能
+extern  const ICAddrWrapper  s_rw_0_16_0_221(3,3,0,16,221,0,"");   //<当前定时时间轴1原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_221(3,3,16,16,221,0,"");   //<当前定时时间轴2原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_16_0_222(3,3,0,16,222,0,"");   //<当前定时时间轴3原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_222(3,3,16,16,222,0,"");   //<当前定时时间轴4原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_16_0_223(3,3,0,16,223,0,"");   //<当前定时时间轴5原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_223(3,3,16,16,223,0,"");   //<当前定时时间轴6原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_16_0_224(3,3,0,16,224,0,"");   //<当前定时时间轴7原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_16_16_0_224(3,3,16,16,224,0,"");   //<当前定时时间轴8原点偏置脉冲
+extern  const ICAddrWrapper  s_rw_0_8_0_225(3,3,0,8,225,0,"");   //<当前定时时间轴1电机测试速度
+extern  const ICAddrWrapper  s_rw_8_8_0_225(3,3,8,8,225,0,"");   //<当前定时时间轴2电机测试速度
+extern  const ICAddrWrapper  s_rw_16_8_0_225(3,3,16,8,225,0,"");   //<当前定时时间轴3电机测试速度
+extern  const ICAddrWrapper  s_rw_24_8_0_225(3,3,24,8,225,0,"");   //<当前定时时间轴4电机测试速度
+extern  const ICAddrWrapper  s_rw_0_8_0_226(3,3,0,8,226,0,"");   //<当前定时时间轴5电机测试速度
+extern  const ICAddrWrapper  s_rw_8_8_0_226(3,3,8,8,226,0,"");   //<当前定时时间轴6电机测试速度
+extern  const ICAddrWrapper  s_rw_16_8_0_226(3,3,16,8,226,0,"");   //<当前定时时间轴7电机测试速度
+extern  const ICAddrWrapper  s_rw_24_8_0_226(3,3,24,8,226,0,"");   //<当前定时时间轴8电机测试速度
+extern  const ICAddrWrapper  s_rw_0_4_0_227(3,3,0,4,227,0,"");   //<当前定时时间轴1ID
+extern  const ICAddrWrapper  s_rw_4_4_0_227(3,3,4,4,227,0,"");   //<当前定时时间轴2ID
+extern  const ICAddrWrapper  s_rw_8_4_0_227(3,3,8,4,227,0,"");   //<当前定时时间轴3ID
+extern  const ICAddrWrapper  s_rw_12_4_0_227(3,3,12,4,227,0,"");   //<当前定时时间轴4ID
+extern  const ICAddrWrapper  s_rw_16_4_0_227(3,3,16,4,227,0,"");   //<当前定时时间轴5ID
+extern  const ICAddrWrapper  s_rw_20_4_0_227(3,3,20,4,227,0,"");   //<当前定时时间轴6ID
+extern  const ICAddrWrapper  s_rw_24_4_0_227(3,3,24,4,227,0,"");   //<当前定时时间轴7ID
+extern  const ICAddrWrapper  s_rw_28_4_0_227(3,3,28,4,227,0,"");   //<当前定时时间轴8ID
+extern  const ICAddrWrapper  s_rw_0_1_0_228(3,3,0,1,228,0,"");   //<当前定时时间安全区使能
+extern  const ICAddrWrapper  s_rw_1_5_0_228(3,3,1,5,228,0,"");   //<当前定时时间安全区类型
+extern  const ICAddrWrapper  s_rw_6_7_0_228(3,3,6,7,228,0,"");   //<当前定时时间输入安全信号点1
+extern  const ICAddrWrapper  s_rw_13_7_0_228(3,3,13,7,228,0,"");   //<当前定时时间输入安全信号点2
+extern  const ICAddrWrapper  s_rw_20_7_0_228(3,3,20,7,228,0,"");   //<当前定时时间输入安全信号点3
+extern  const ICAddrWrapper  s_rw_27_1_0_228(3,3,27,1,228,0,"");   //<当前定时时间安全区域1使能
+extern  const ICAddrWrapper  s_rw_28_1_0_228(3,3,28,1,228,0,"");   //<当前定时时间安全区域2使能
+extern  const ICAddrWrapper  s_rw_29_1_0_228(3,3,29,1,228,0,"");   //<当前定时时间安全区域3使能
+extern  const ICAddrWrapper  s_rw_30_1_0_228(3,3,30,1,228,0,"");   //<当前定时时间安全区域4使能
+extern  const ICAddrWrapper  s_rw_31_1_0_228(3,3,31,1,228,0,"");   //<当前定时时间安全区域5使能
+extern  const ICAddrWrapper  s_rw_0_1_0_229(3,3,0,1,229,0,"");   //<当前定时时间安全区域6使能
+extern  const ICAddrWrapper  s_rw_1_7_0_229(3,3,1,7,229,0,"");   //<当前定时时间输入安全信号点4
+extern  const ICAddrWrapper  s_rw_8_7_0_229(3,3,8,7,229,0,"");   //<当前定时时间输入安全信号点5
+extern  const ICAddrWrapper  s_rw_15_7_0_229(3,3,15,7,229,0,"");   //<当前定时时间输入安全信号点6
+extern  const ICAddrWrapper  s_rw_22_10_0_229(3,3,22,10,229,0,"");   //<当前定时时间预留
+extern  const ICAddrWrapper  s_rw_0_32_3_230(3,3,0,32,230,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_231(3,3,0,32,231,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_232(3,3,0,32,232,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_233(3,3,0,32,233,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_234(3,3,0,32,234,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_235(3,3,0,32,235,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_236(3,3,0,32,236,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_237(3,3,0,32,237,3,"mm");    //<当前定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_238(3,3,0,32,238,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_239(3,3,0,32,239,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_240(3,3,0,32,240,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_241(3,3,0,32,241,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_242(3,3,0,32,242,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_243(3,3,0,32,243,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_244(3,3,0,32,244,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_245(3,3,0,32,245,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_246(3,3,0,32,246,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_247(3,3,0,32,247,3,"mm");    //<目标定时时间轴最小安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_248(3,3,0,32,248,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_249(3,3,0,32,249,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_250(3,3,0,32,250,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_251(3,3,0,32,251,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_252(3,3,0,32,252,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_253(3,3,0,32,253,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_254(3,3,0,32,254,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_255(3,3,0,32,255,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_256(3,3,0,32,256,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_257(3,3,0,32,257,3,"mm");    //<目标定时时间轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_258(3,3,0,32,258,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_259(3,3,0,32,259,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_260(3,3,0,32,260,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_261(3,3,0,32,261,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_262(3,3,0,32,262,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_263(3,3,0,32,263,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_264(3,3,0,32,264,3,"mm");    //<当前计数值轴最大安全位置
+extern  const ICAddrWrapper  s_rw_0_32_3_265(3,3,0,32,265,3,"mm");    //<当前计数值轴最大安全位置
 extern  const ICAddrWrapper  s_rw_0_32_0_266(3,3,0,32,266,0,"ms");    //<当前计数值当前计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_267(3,3,0,32,267,0,"ms");    //<当前计数值当前计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_268(3,3,0,32,268,0,"ms");    //<当前计数值当前计数值
@@ -413,7 +443,8 @@ extern  const ICAddrWrapper  m_rw_6_1_0_357(2,3,6,1,357,0,"");   //<子程序6�
 extern  const ICAddrWrapper  m_rw_7_1_0_357(2,3,7,1,357,0,"");   //<子程序7使用
 extern  const ICAddrWrapper  m_rw_8_1_0_357(2,3,8,1,357,0,"");   //<子程序8使用
 extern  const ICAddrWrapper  m_rw_9_1_0_357(2,3,9,1,357,0,"");   //<安装工具坐标
-extern  const ICAddrWrapper  m_rw_10_22_0_357(2,3,10,22,357,0,"");   //<备用
+extern  const ICAddrWrapper  m_rw_10_3_0_357(2,3,10,3,357,0,"");   //<安装工具坐标类型
+extern  const ICAddrWrapper  m_rw_13_19_0_357(2,3,13,19,357,0,"");   //<备用
 extern  const ICAddrWrapper  m_rw_0_32_0_358(2,3,0,32,358,0,"");    //<X1脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_359(2,3,0,32,359,0,"");    //<Y1脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_360(2,3,0,32,360,0,"");    //<Z1脉冲
@@ -438,18 +469,18 @@ extern  const ICAddrWrapper  m_rw_0_32_0_378(2,3,0,32,378,0,"");    //<Z4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_379(2,3,0,32,379,0,"");    //<U4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_380(2,3,0,32,380,0,"");    //<V4脉冲
 extern  const ICAddrWrapper  m_rw_0_32_0_381(2,3,0,32,381,0,"");    //<W4脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_382(2,3,0,32,382,0,"");    //<X5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_383(2,3,0,32,383,0,"");    //<Y5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_384(2,3,0,32,384,0,"");    //<Z5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_385(2,3,0,32,385,0,"");    //<U5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_386(2,3,0,32,386,0,"");    //<V5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_387(2,3,0,32,387,0,"");    //<W5脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_388(2,3,0,32,388,0,"");    //<X6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_389(2,3,0,32,389,0,"");    //<Y6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_390(2,3,0,32,390,0,"");    //<Z6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_391(2,3,0,32,391,0,"");    //<U6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_392(2,3,0,32,392,0,"");    //<V6脉冲
-extern  const ICAddrWrapper  m_rw_0_32_0_393(2,3,0,32,393,0,"");    //<W6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_382(2,3,0,32,382,3,"");    //<X5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_383(2,3,0,32,383,3,"");    //<Y5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_384(2,3,0,32,384,3,"");    //<Z5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_385(2,3,0,32,385,3,"");    //<U5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_386(2,3,0,32,386,3,"");    //<V5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_387(2,3,0,32,387,3,"");    //<W5脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_388(2,3,0,32,388,3,"");    //<X6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_389(2,3,0,32,389,3,"");    //<Y6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_390(2,3,0,32,390,3,"");    //<Z6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_391(2,3,0,32,391,3,"");    //<U6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_392(2,3,0,32,392,3,"");    //<V6脉冲
+extern  const ICAddrWrapper  m_rw_0_32_3_393(2,3,0,32,393,3,"");    //<W6脉冲
 extern  const ICAddrWrapper  c_ro_0_32_3_900(1,1,0,32,900,3,"");    //<轴1当前输出脉冲位置当前输出脉冲位置
 extern  const ICAddrWrapper  c_ro_0_32_0_901(1,1,0,32,901,0,"");    //<轴1实际脉冲位置实际脉冲位置
 extern  const ICAddrWrapper  c_ro_0_16_0_902(1,1,0,16,902,0,"");   //<轴1速度百分比_当前速度速度百分比

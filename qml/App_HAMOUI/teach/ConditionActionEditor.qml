@@ -5,57 +5,11 @@ import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../../utils/stringhelper.js" as ICString
 import "ProgramFlowPage.js" as ProgramFlowPage
+import "../configs/IOConfigs.js" as IOConfigs
 
 
 Item {
     id:container
-
-    property variant ys: [
-        "Y010",
-        "Y011",
-        "Y012",
-        "Y013",
-        "Y014",
-        "Y015",
-        "Y016",
-        "Y017",
-        "Y020",
-        "Y021",
-        "Y022",
-        "Y023",
-        "Y024",
-        "Y025",
-        "Y026",
-        "Y027",
-        "Y030",
-        "Y031",
-        "Y032",
-        "Y033",
-        "Y034",
-        "Y035",
-        "Y036",
-        "Y037",
-    ]
-
-    property  variant euYs : []
-    property variant mYs: [
-        "M010",
-        "M011",
-        "M012",
-        "M013",
-        "M014",
-        "M015",
-        "M016",
-        "M017",
-        "M020",
-        "M021",
-        "M022",
-        "M023",
-        "M024",
-        "M025",
-        "M026",
-        "M027"
-    ]
 
     property variant xs: [
         "X010",
@@ -91,7 +45,6 @@ Item {
         "X046",
         "X047"
     ]
-    property  variant euXs : []
     property variant counters: []
 
     function createActionObjects(){
@@ -206,12 +159,10 @@ Item {
                         id:normalY
                         text: qsTr("Y")
                         isChecked: true
-                        visible:ys.length > 0
                     }
                     ICCheckBox{
                         id:mY
                         text: qsTr("MY")
-                        visible: mYs.length > 0
                     }
                     ICCheckBox{
                         id:normalX
@@ -235,12 +186,10 @@ Item {
                     ICCheckBox{
                         id:euX
                         text: qsTr("EUX")
-                        visible: euXs.length > 0
                     }
                     ICCheckBox{
                         id:euY
                         text: qsTr("EUY")
-                        visible: euYs.length > 0
                     }
                 }
             }
@@ -508,25 +457,29 @@ Item {
         if(ioBoardCount == 0)
             ioBoardCount = 1;
 
-        ys = IODefines.generateIOBaseBoardCount("Y", ioBoardCount);
         xs = IODefines.generateIOBaseBoardCount("X", ioBoardCount);
 
-        var yDefines = ys;
+        var yDefines = IOConfigs.teachYOut;
         var yDefine;
+        normalY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            yDefine = IODefines.getYDefineFromHWPoint(yDefine.y1Point, yDefine.y1Board);
             yModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
-        yDefines = euYs;
-        for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
-            euYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
-        }
+        euY.visible = false;
+//        yDefines = euYs;
+//        for(i = 0, l = yDefines.length; i < l; ++i){
+//            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+//            euYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+//        }
 
-        yDefines = mYs;
+        yDefines = IOConfigs.teachMy;
+        mY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getYDefineFromPointName(yDefines[i]);
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            yDefine = IODefines.getYDefineFromHWPoint(yDefine.y1Point, yDefine.y1Board);
             mYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
@@ -537,11 +490,12 @@ Item {
             xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
-        xDefines = euXs;
-        for(i = 0, l = xDefines.length; i < l; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            euXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
-        }
+        euX.visible = false;
+//        xDefines = euXs;
+//        for(i = 0, l = xDefines.length; i < l; ++i){
+//            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
+//            euXModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+//        }
 
     }
 

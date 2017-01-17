@@ -73,7 +73,22 @@ var configRanges = {
     "m_rw_0_32_1_217":[0, 10], // analog range
     "m_rw_0_32_1_218":[0, 10], // analog range
     "m_rw_0_32_1_219":[0, 10], // analog range
-
+    "s_rw_0_8_0_225" :[1, 50], // testspeed range
+    "s_rw_8_8_0_225" :[1, 50], // testspeed range
+    "s_rw_16_8_0_225":[1, 50], // testspeed range
+    "s_rw_24_8_0_225":[1, 50], // testspeed range
+    "s_rw_0_8_0_226" :[1, 50], // testspeed range
+    "s_rw_8_8_0_226" :[1, 50], // testspeed range
+    "s_rw_16_8_0_226":[1, 50], // testspeed range
+    "s_rw_24_8_0_226":[1, 50], // testspeed range
+    "s_rw_0_16_0_221":[1,500], // originoffset range
+    "s_rw_16_16_0_221":[1,500], // originoffset range
+    "s_rw_0_16_0_222":[1,500], // originoffset range
+    "s_rw_16_16_0_222":[1,500], // originoffset range
+    "s_rw_0_16_0_223":[1,500], // originoffset range
+    "s_rw_16_16_0_223":[1,500], // originoffset range
+    "s_rw_0_16_0_224":[1,500], // originoffset range
+    "s_rw_16_16_0_224":[1,500], // originoffset range
 };
 
 var getConfigRange = function(config){

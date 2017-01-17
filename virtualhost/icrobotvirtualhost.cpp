@@ -223,6 +223,18 @@ bool ICRobotVirtualhost::SendMoldCounterDef(ICVirtualHostPtr hostPtr, const QVec
     return true;
 }
 
+bool ICRobotVirtualhost::sendMoldToolCoordDef(ICVirtualHostPtr hostPtr,const QVector<quint32> & data)
+{
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetAddr(ICAddr_System_Retain_20);
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetData(data);
+    toSentFrame->SetLength(data.size());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+    return true;
+}
+
 bool ICRobotVirtualhost::SendMoldCountersDef(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> > &data)
 {
     for(int i = 0; i < data.size(); ++i)
@@ -559,6 +571,7 @@ void ICRobotVirtualhost::CommunicateImpl()
                 if(HostStatusValue(&c_ro_1_4_0_938) != CMD_AUTO)
                 {
                     multiplexingConfigs_.insert(ICAddr_Read_Status33, statusDataTmp_.at(ICAddr_Read_Status33 - recvFrame_->GetAddr()));
+                    multiplexingConfigs_.insert(ICAddr_Read_Status34, statusDataTmp_.at(ICAddr_Read_Status34 - recvFrame_->GetAddr()));
                 }
                 multiplexingConfigs_.insert(statusDataTmp_.at(ICAddr_Read_Status41 - recvFrame_->GetAddr()),
                                             statusDataTmp_.at(ICAddr_Read_Status42 - recvFrame_->GetAddr()));
@@ -574,15 +587,20 @@ void ICRobotVirtualhost::CommunicateImpl()
                 {
                     emit QueryFinished(recvFrame_->GetAddr(), statusDataTmp_);
                 }
-                if(HostStatusValue(&c_ro_0_32_0_932) == ALARM_NOT_INIT)
+                static int oldAlarm = -1;
+                if(oldAlarm != HostStatusValue(&c_ro_0_32_0_932))
                 {
-                    //                qDebug()<<"statusDataTmp_.at(i)";
-                    //                    SetCommunicateInterval(INIT_INTERVAL);
-                    emit NeedToInitHost();
-                    ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
-                                                                                                          ICAddr_System_Retain_2,
-                                                                                                          64); // read host version
-                    AddCommunicationFrame(toSentFrame);
+                    oldAlarm = HostStatusValue(&c_ro_0_32_0_932);
+                    if(oldAlarm == ALARM_NOT_INIT)
+                    {
+                        //                qDebug()<<"statusDataTmp_.at(i)";
+                        //                    SetCommunicateInterval(INIT_INTERVAL);
+                        emit NeedToInitHost();
+                        ICRobotTransceiverData * toSentFrame = ICRobotTransceiverData::FillQueryStatusCommand(kHostID,
+                                                                                                              ICAddr_System_Retain_2,
+                                                                                                              64); // read host version
+                        AddCommunicationFrame(toSentFrame);
+                    }
                 }
                 //            currentStatusGroup_ = ICAddr_Read_Status0;
 

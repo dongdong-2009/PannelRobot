@@ -358,6 +358,18 @@ Item {
         panelRobotController.syncConfigs();
     }
 
+    function onOriginOffsetChanged(){
+        var addr = originOffsetPulse.configAddrs[pdata.currentGroup];
+        panelRobotController.setConfigValue(addr, originOffsetPulse.configValue);
+        panelRobotController.syncConfigs();
+    }
+
+    function onTestSpeedChanged(){
+        var addr = testSpeed.configAddrs[pdata.currentGroup];
+        panelRobotController.setConfigValue(addr, testSpeed.configValue);
+        panelRobotController.syncConfigs();
+    }
+
     function updateConfigValue(editor, addr, handler){
         editor.configValueChanged.disconnect(handler);
         editor.configAddr = addr
@@ -405,8 +417,13 @@ Item {
         updateConfigValue(sACC2, pdata.configAddrs[which][25], onSACC2Changed);
         updateConfigValue(sDCC1, pdata.configAddrs[which][26], onSDCC1Changed);
         updateConfigValue(sDCC2, pdata.configAddrs[which][27], onSDCC2Changed);
+        updateConfigValue(originOffsetPulse,originOffsetPulse.configAddrs[which],onOriginOffsetChanged);
+        updateConfigValue(testSpeed,testSpeed.configAddrs[which],onTestSpeedChanged);
+    }
 
-
+    function setAxisVisiable(axis,vis){
+        AxisDefine.axisInfos[axis].visiable = vis;
+        AxisDefine.informMonitors();
     }
 
     ICButtonGroup{
@@ -434,7 +451,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(0, isChecked)
+                    onMotorEnChanged(0, isChecked);
+                    setAxisVisiable(0,isChecked?false:true);
                 }
             }
         }
@@ -455,7 +473,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(1, isChecked)
+                    onMotorEnChanged(1, isChecked);
+                    setAxisVisiable(1,isChecked?false:true);
                 }
             }
         }
@@ -476,7 +495,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(2, isChecked)
+                    onMotorEnChanged(2, isChecked);
+                    setAxisVisiable(2,isChecked?false:true);
                 }
             }
         }
@@ -488,7 +508,7 @@ Item {
             itemText: AxisDefine.axisInfos[3].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
-                showMotorConfigs(3)
+                showMotorConfigs(3);
             }
             ICCheckBox{
                 id:motor4En
@@ -497,7 +517,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(3, isChecked)
+                    onMotorEnChanged(3, isChecked);
+                    setAxisVisiable(3,isChecked?false:true);
                 }
             }
         }
@@ -509,7 +530,7 @@ Item {
             itemText: AxisDefine.axisInfos[4].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
-                showMotorConfigs(4)
+                showMotorConfigs(4);
             }
             ICCheckBox{
                 id:motor5En
@@ -518,7 +539,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(4, isChecked)
+                    onMotorEnChanged(4, isChecked);
+                    setAxisVisiable(4,isChecked?false:true);
                 }
             }
         }
@@ -539,7 +561,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(5, isChecked)
+                    onMotorEnChanged(5, isChecked);
+                    setAxisVisiable(5,isChecked?false:true);
                 }
             }
         }
@@ -560,7 +583,8 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(6, isChecked)
+                    onMotorEnChanged(6, isChecked);
+                    setAxisVisiable(6,isChecked?false:true);
                 }
             }
         }
@@ -582,6 +606,7 @@ Item {
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
                     onMotorEnChanged(7, isChecked)
+                    setAxisVisiable(7,isChecked?false:true);
                 }
             }
         }
@@ -624,7 +649,7 @@ Item {
                     configName: qsTr("Motor Factory")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4")]
+                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6"),qsTr("Motor 7")]
                     z:9
                     visible: encoderType.configValue == 1
                 }
@@ -643,7 +668,7 @@ Item {
                     configName: qsTr("Axis Type")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items:[qsTr("Rotate"), qsTr("Line")]
+                    items:[qsTr("Rotate"), qsTr("Line"),qsTr("Rotate to Zero")]
                     z:7
                 }
                 ICComboBoxConfigEdit{
@@ -675,7 +700,7 @@ Item {
                     configName: qsTr("Reduction Ratio")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    visible: axisType.configValue == 0
+                    visible: axisType.configValue == 0 || axisType.configValue == 2
                 }
                 ICConfigEdit{
                     id:pLimit
@@ -789,6 +814,15 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                 }
+                ICConfigEdit{
+                    id:originOffsetPulse
+                    configName: qsTr("originOffset")
+                    property variant configAddrs: ["s_rw_0_16_0_221","s_rw_16_16_0_221","s_rw_0_16_0_222",
+                        "s_rw_16_16_0_222","s_rw_0_16_0_223","s_rw_16_16_0_223","s_rw_0_16_0_224","s_rw_16_16_0_224"]
+                    unit: qsTr("a")
+                    configNameWidth: pdata.configNameWidth
+                    inputWidth: pdata.inputWidth
+                }
 
             }
 
@@ -816,6 +850,7 @@ Item {
             }
             Grid{
                 columns: 2
+                spacing: 3
                 Text {
                     text: qsTr("Test Pulse Number:")
                 }
@@ -826,6 +861,15 @@ Item {
                     onTextChanged: {
                         panelRobotController.setMotorTestPulseNum(text);
                     }
+                }
+                Text {
+                    text: qsTr("Test Speed:")
+                }
+                ICConfigEdit{
+                    id:testSpeed
+                    unit: qsTr("%")
+                    property variant configAddrs: ["s_rw_0_8_0_225","s_rw_8_8_0_225","s_rw_16_8_0_225",
+                        "s_rw_24_8_0_225","s_rw_0_8_0_226","s_rw_8_8_0_226","s_rw_16_8_0_226","s_rw_24_8_0_226"]
                 }
 
                 Text {
@@ -960,13 +1004,14 @@ Item {
         pdata.isInit = true;
     }
     function onAxisDefinesChanged(){
-        motor1.visible = AxisDefine.axisInfos[0].visiable;
-        motor2.visible = AxisDefine.axisInfos[1].visiable;
-        motor3.visible = AxisDefine.axisInfos[2].visiable;
-        motor4.visible = AxisDefine.axisInfos[3].visiable;
-        motor5.visible = AxisDefine.axisInfos[4].visiable;
-        motor6.visible = AxisDefine.axisInfos[5].visiable;
-        motor7.visible = AxisDefine.axisInfos[6].visiable;;
-        motor8.visible = AxisDefine.axisInfos[7].visiable;;
+        var num = panelRobotController.getConfigValue("s_rw_16_6_0_184");
+        motor1.visible = 0 < num?true:false;
+        motor2.visible = 1 < num?true:false;
+        motor3.visible = 2 < num?true:false;
+        motor4.visible = 3 < num?true:false;
+        motor5.visible = 4 < num?true:false;
+        motor6.visible = 5 < num?true:false;
+        motor7.visible = 6 < num?true:false;
+        motor8.visible = 7 < num?true:false;
     }
 }

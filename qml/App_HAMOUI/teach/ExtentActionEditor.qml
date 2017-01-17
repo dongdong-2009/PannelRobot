@@ -31,6 +31,7 @@ Item {
         width: cmdContent.width
         height: cmdContent.height
         checkedIndex: 0
+        ignoreHiddenItem: true
         y:6
         Flow{
             id:cmdContent
@@ -40,22 +41,31 @@ Item {
                 id:axisPly
                 text: qsTr("Axis Ply")
                 isChecked: true
+//                visible: false
             }
             ICCheckBox{
                 id:analogControl
                 text: qsTr("Analog Control")
+//                visible: false
             }
             ICCheckBox{
                 id:deltaJumpControl
                 text: qsTr("Delta Jump Control")
+//                visible: false
             }
             ICCheckBox{
                 id:safeRangeControl
                 text: qsTr("Safe Range Control")
+//                visible: false
             }
             ICCheckBox{
                 id:singleStack
                 text: qsTr("Single Stack")
+//                isChecked: true
+            }
+            ICCheckBox{
+                id:switchCoord
+                text: qsTr("switchCoord")
             }
         }
         onCheckedIndexChanged: {
@@ -76,27 +86,27 @@ Item {
         anchors.left: spliteLine.right
         anchors.leftMargin: 4
         Component.onCompleted: {
-            addPage(axisFlyConfigs);
-            addPage(analogControlEdit);
-            addPage(deltaJumpEditor);
-            addPage(safeRangeEditor);
-            addPage(singleStackEditor);
+            if(axisPly.visible){
+                addPage(ExtentActionDefine.extentPENQIANGAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(analogControl.visible){
+                addPage(ExtentActionDefine.extentAnalogControlAction.editableItems.comp.createObject(configsContainer));
+
+            }
+            if(deltaJumpControl.visible){
+                addPage(ExtentActionDefine.extentDeltaJumpAction.editableItems.comp.createObject(configsContainer));
+
+            }
+            if(safeRangeControl.visible){
+                addPage(ExtentActionDefine.extentSafeRangeAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(singleStack.visible){
+                addPage(ExtentActionDefine.extentSingleStackAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(switchCoord.visible){
+                addPage(ExtentActionDefine.extentSwitchCoordAction.editableItems.comp.createObject(configsContainer));
+            }
             currentIndex = 0;
-        }
-        PENQIANEditor{
-            id:axisFlyConfigs
-        }
-        AnalogControlEditor{
-            id:analogControlEdit
-        }
-        DeltaJumpEditor{
-            id:deltaJumpEditor
-        }
-        SafeRangeEditor{
-            id:safeRangeEditor
-        }
-        SingleStackAction{
-            id:singleStackEditor
         }
     }
 }

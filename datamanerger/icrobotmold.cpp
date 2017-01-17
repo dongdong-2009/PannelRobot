@@ -207,6 +207,8 @@ QVector<quint32> PointToPosList(int action, const QVariantMap& point)
     {
         if(point.contains(mNs.at(i)))
             ret.append(ICUtility::doubleToInt(point.value(mNs.at(i)).toDouble(), 3));
+        else
+            ret.append(0);
     }
     return ret;
 }
@@ -425,6 +427,17 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+typedef union{
+struct{
+  uint32_t en:1;//< 间隔输出使能
+  uint32_t always:1;//< 常输出
+  uint32_t m_en:1;//< M值常输出
+  uint32_t id:6;//< 输出点设定
+  uint32_t num:13;//< 间隔个数
+  uint32_t time:10;//< 输出时间
+}out;
+uint32_t s;
+}INTERVAL_OUT;
 int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
@@ -517,6 +530,30 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         {
             item[1] = (si.dsHostID);
         }
+
+        INTERVAL_OUT interval;
+        interval.out.en = v->value("interval_en", 0).toUInt();
+        if(interval.out.en)
+        {
+            interval.out.always = v->value("interval_always_out", 0).toUInt();
+            interval.out.m_en   = v->value("interval_out_choose", 0).toUInt();
+            interval.out.id     = v->value("interval_out_id", 0).toUInt();
+            interval.out.num    = v->value("interval_number", 0).toUInt();
+            interval.out.time   = v->value("interval_out_time", 0).toUInt();
+            item.append(interval.s);
+        }
+        else item.append(0);
+        interval.out.en = v->value("intervalbox_en", 0).toUInt();
+        if(interval.out.en)
+        {
+            interval.out.always = v->value("intervalbox_always_out", 0).toUInt();
+            interval.out.m_en   = v->value("intervalbox_out_choose", 0).toUInt();
+            interval.out.id     = v->value("intervalbox_out_id", 0).toUInt();
+            interval.out.num    = v->value("intervalbox_number", 0).toUInt();
+            interval.out.time   = v->value("intervalbox_out_time", 0).toUInt();
+            item.append(interval.s);
+        }
+        else item.append(0);
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
@@ -553,10 +590,11 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     if(step < 0 ) return ICRobotMold::kCCErr_Invaild_Flag;
     //    if(moduleStep < 0) return ICRobotMold::kCCErr_Invaild_ModuleID;
     item.append(act);
+    int err = ICRobotMold::kCCErr_None;
     if(moduleStep < 0)
     {
         item.append(v->value("module").toUInt());
-        return ICRobotMold::kCCErr_Invaild_ModuleID;
+        err = ICRobotMold::kCCErr_Invaild_ModuleID;
     }
     else
         item.append(moduleStep);
@@ -565,7 +603,7 @@ int CallModuleActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
 
-    return ICRobotMold::kCCErr_None;
+    return err;
 }
 
 QMap<int, ActionCompiler> CreateActionToCompilerMap()
@@ -766,7 +804,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                                  const QVector<QVariantList>& counters,
                                  const QVector<QVariantList>& variables,
                                  const QMap<int, CompileInfo> &functions,
-                                 int &err)
+                                 int &err,
+                                 bool isFunction)
 {
     QJson::Parser parser;
     bool ok;
@@ -956,9 +995,12 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 item = f.GetICMoldItem(i);
                 if(IsJumpAction(item.at(0)))
                 {
-                    item[1] += ret.ModuleEntry(mID);
-                    item.pop_back();
-                    item.append(ICRobotMold::MoldItemCheckSum(item));
+                    if(item.at(0) != F_CMD_PROGRAM_CALL0)
+                    {
+                        item[1] += ret.ModuleEntry(mID);
+                        item.pop_back();
+                        item.append(ICRobotMold::MoldItemCheckSum(item));
+                    }
                 }
 //                ret.AddICMoldItem(programEndLine, item);
                 int uiStep = baseStep + f.UIStepFromCompiledLine(i);
@@ -1050,11 +1092,11 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
             if(act == F_CMD_PROGRAM_CALL0)
             {
                 int moduleStep = ret.ModuleEntry(action.value("module", -1).toInt());
-                if(moduleStep < 0)
+                if(moduleStep < 0 && !isFunction)
                 {
                     ret.AddErr(p.key(), kCCErr_Invaild_ModuleID);
                 }
-                else if(moduleStep >= 0 &&
+                else if((moduleStep >= 0 || isFunction) &&
                         (p.value() == kCCErr_Invaild_ModuleID ||
                          p.value() == kCCErr_Invaild_Flag))
                 {
@@ -1064,7 +1106,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                         action.insert("step", toJumpStep);
                     action.insert("moduleStep", moduleStep);
                     ret.UpdateICMoldItem(p.key(), VariantToMoldItem(0, action, err));
-                    if(err == kCCErr_None)
+                    if(err == kCCErr_None || (isFunction && err == kCCErr_Invaild_ModuleID))
                     {
                         ret.RemoveErr(p.key());
                     }
@@ -1112,6 +1154,7 @@ bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
     for(int i = 0; i != programs.size(); ++i)
     {
         tmpProgramsCode.append(programs.at(i));
+        qDebug()<<"Load Record:"<<i;
         p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr())
         {
@@ -1143,6 +1186,7 @@ bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
 QMap<int, int> ICRobotMold::SaveMold(int which, const QString &program)
 {
     int err;
+    qDebug()<<"SaveMold:"<<which<<" Begin";
     CompileInfo aP = Complie(program, stackInfos_, counters_, variables_, compiledFunctions_, err);
     if(aP.ErrInfo().isEmpty())
     {
@@ -1631,6 +1675,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[0].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[0].dir2 = stackMap.value("dir2").toInt();
         stackInfo.stackData.si[0].type = p.value().toMap().value("type").toInt();
+        stackInfo.stackData.si[0].holdSel = stackMap.value("holdSel").toInt();
         stackInfo.stackData.si[0].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.stackData.si[0].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[0].isOffsetEn = stackMap.value("isOffsetEn").toBool();
@@ -1661,6 +1706,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[1].dir2 = stackMap.value("dir2").toInt();
         stackInfo.stackData.si[1].type = runSeq;
+        stackInfo.stackData.si[1].holdSel = 0;
         stackInfo.stackData.si[1].doesBindingCounter = isZWithYEn ? 1 : 0;
         stackInfo.stackData.si[1].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();
@@ -1785,7 +1831,7 @@ QMap<int, CompileInfo> ICRobotMold::ParseFunctions(const QString &functions,
     {
         fun = result.at(i).toMap();
         funStr = fun.value("program").toString();
-        CompileInfo p = Complie(funStr,stackInfos, counters, variables, QMap<int, CompileInfo>(), err);
+        CompileInfo p = Complie(funStr,stackInfos, counters, variables, QMap<int, CompileInfo>(), err, true);
         ret.insert(fun.value("id").toInt(), p);
     }
     return ret;

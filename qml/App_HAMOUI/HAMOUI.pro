@@ -4,15 +4,12 @@ SOURCES = *.qml \
           *.js \
 teach/*.js \
 teach/*.qml \
-configs/* \
 settingpages/* \
 ../ICCustomElement/* \
 teach/extents/*.qml \
 teach/extents/*.js
 }
 
-OTHER_FILES += \
-    opt/optconfigs.js
 
 
 

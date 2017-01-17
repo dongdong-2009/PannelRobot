@@ -3,6 +3,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
+import "../configs/IOConfigs.js" as IOConfigs
 
 
 Item {
@@ -161,20 +162,20 @@ Item {
 
     Component.onCompleted: {
 
-        var yDefines = IODefines.valveDefines.getValves(IODefines.IO_TYPE_SINGLE_Y);
+        var yDefines = IOConfigs.teachSingleY
         var yDefine;
         var i;
 
         singleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = yDefines[i];
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
             singleYModel.append(yView.createValveMoldItem(yDefine, IODefines.VALVE_BOARD));
         }
 
-        yDefines = IODefines.valveDefines.getValves(IODefines.IO_TYPE_HOLD_DOUBLE_Y);
+        yDefines = IOConfigs.teachHoldDoubleY
         holdDoubleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){
-            yDefine = yDefines[i];
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
             holdDoubleYModel.append(yView.createValveMoldItem(yDefine, IODefines.VALVE_BOARD));
         }
 

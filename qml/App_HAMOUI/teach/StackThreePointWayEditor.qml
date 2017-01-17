@@ -263,7 +263,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        AxisDefine.registerMonitors(container);
+        AxisDefine.registerMonitors(instance);
         onAxisDefinesChanged();
     }
     function onAxisDefinesChanged(){

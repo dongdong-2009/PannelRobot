@@ -7,6 +7,7 @@ Item {
     property int checkedIndex: -1
     property bool isAutoSize: true
     property bool mustChecked: false
+    property bool ignoreHiddenItem: false
     id:container
 
     function autoResize(){
@@ -37,7 +38,8 @@ Item {
         property double startPos: 0
         function deepFindCheckBox(item){
             if(item.hasOwnProperty("isChecked")){
-                addButton(item);
+                if(!ignoreHiddenItem || item.visible)
+                    addButton(item);
                 return;
             }
             var itemChildren = item.children;

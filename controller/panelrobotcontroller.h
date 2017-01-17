@@ -1,6 +1,12 @@
 #ifndef PANELROBOTCONTROLLER_H
 #define PANELROBOTCONTROLLER_H
 
+
+
+
+
+
+
 #include <QObject>
 #include <QMap>
 #include <QSettings>
@@ -395,6 +401,23 @@ public:
 
         return subProgram(which);
     }
+
+    Q_INVOKABLE QString recordPrograms(const QString& name) const
+    {
+        QString toJSON = "[";
+        QStringList moldPrograms = ICDALHelper::MoldProgramContent(name);
+        for(int i=0;i<moldPrograms.length();i++)
+            toJSON += moldPrograms.at(i) +",";
+        toJSON.chop(1);
+        toJSON += "]";
+        return toJSON;
+    }
+
+    Q_INVOKABLE QString recordFunctions(const QString& name) const
+    {
+        return ICDALHelper::MoldFunctionsContent(name);
+    }
+
     Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
@@ -522,6 +545,7 @@ public:
     }
 
     Q_INVOKABLE bool saveCounterDef(quint32 id, const QString& name, quint32 current, quint32 target);
+    Q_INVOKABLE bool saveCounterCurrent(quint32 id, const QString& name, quint32 current, quint32 target);
     Q_INVOKABLE bool delCounterDef(quint32 id);
     Q_INVOKABLE QString counterDefs() const;
 
@@ -651,6 +675,11 @@ public:
         return pD.b.type;
     }
 
+    Q_INVOKABLE int getCoordAxis() const
+    {
+        return ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status34);
+    }
+
     Q_INVOKABLE void setAutoRunningMode(int which, int mode)
     {
         AutoRunData d;
@@ -664,6 +693,7 @@ public:
         QPair<int, int> stepInfo = ICRobotMold::CurrentMold()->UIStepToRealStep(which, module, line);
         //        ICMoldItem item = ICRobotMold::CurrentMold()->SingleLineCompile(which, module, line, lineContent,stepInfo);
         //        return ICRobotVirtualhost::FixProgram(host_, which, stepInfo.first, stepInfo.second, item);
+        qDebug()<<"setSingleRunStart:"<<stepInfo;
         modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 
@@ -798,9 +828,15 @@ public:
         ICSuperSettings().SetFactoryCode(fc);
     }
 
+    Q_INVOKABLE void sendToolCoord(int id,const QString& data);
+
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
+
+    Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
+    Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
+    Q_INVOKABLE bool writeUsbFile(const QString& fileName, const QString& content);
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {
@@ -875,6 +911,7 @@ private:
     QScriptValue configRangeGetter_;
     QTranslator translator;
     QTranslator panelRoboTranslator_;
+    QTranslator configsTranslator_;
     QTimer keyCheckTimer_;
     QSettings customSettings_;
     QString valveDefineJSON_;

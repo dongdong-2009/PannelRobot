@@ -28,14 +28,14 @@ Item {
             PropertyChanges { target: jogPos; visible: true}
             PropertyChanges { target: worldPos; visible: false}
             PropertyChanges { target:coordDisplay;visible: false}
-            PropertyChanges { target:switchBtn;text:qsTr("WorldPos")}
+            PropertyChanges { target:switchBtn;text:qsTr("JogPos")}
         },
         State {
             name: "worldPos"
             PropertyChanges { target: worldPos; visible: true}
             PropertyChanges { target: jogPos; visible: false}
             PropertyChanges { target:coordDisplay;visible: true}
-            PropertyChanges { target:switchBtn;text:qsTr("JogPos")}
+            PropertyChanges { target:switchBtn;text:qsTr("WorldPos")}
         }
     ]
 
@@ -173,8 +173,9 @@ Item {
                     anchors.left: coordDisplay.right
                     anchors.leftMargin: 10
                     width:100
-                    height: funcArea.height
-                    text: qsTr("worldPos")
+                    height: funcArea.height-2
+                    radius: 2
+//                    text: qsTr("JogPos")
                     onButtonClicked: {
                         if(container.state == "worldPos"){
                             container.state = "jogPos";

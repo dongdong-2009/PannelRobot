@@ -3,6 +3,8 @@ import "../../ICCustomElement"
 import "../configs/ConfigDefines.js" as ConfigDefines
 import "../configs/AxisDefine.js" as AxisDefine
 import "../ICOperationLog.js" as ICOperationLog
+import "../teach/ManualProgramManager.js" as ManualProgramManager
+import "../teach/Teach.js" as Teach
 
 
 Item {
@@ -10,6 +12,11 @@ Item {
     id:container
     width: parent.width
     height: parent.height
+    property variant originMode: [a0mode,a1mode,a2mode,a3mode,a4mode,a5mode,a6mode,a7mode];
+    property variant originOrder: [a0order,a1order,a2order,a3order,a4order,a5order,a6order,a7order];
+    property variant originSpeed: [a0speed,a1speed,a2speed,a3speed,a4speed,a5speed,a6speed,a7speed];
+    property variant returnOrder: [a0returnorder,a1returnorder,a2returnorder,a3returnorder,a4returnorder,a5returnorder,a6returnorder,a7returnorder];
+    property variant returnSpeed: [a0returnspeed,a1returnspeed,a2returnspeed,a3returnspeed,a4returnspeed,a5returnspeed,a6returnspeed,a7returnspeed];
     QtObject{
         id:pdata
         property int configNameWidth: 45
@@ -102,10 +109,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a0returnorder",0,"returnOrder");
             }
             ICLineEdit{
-                id:a0reutrnspeed
+                id:a0returnspeed
                 visible: a0text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a0reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a0returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -148,10 +155,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a1returnorder",1,"returnOrder");
             }
             ICLineEdit{
-                id:a1reutrnspeed
+                id:a1returnspeed
                 visible: a1text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a1reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a1returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -194,10 +201,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a2returnorder",2,"returnOrder");
             }
             ICLineEdit{
-                id:a2reutrnspeed
+                id:a2returnspeed
                 visible: a2text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a2reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a2returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -240,10 +247,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a3returnorder",3,"returnOrder");
             }
             ICLineEdit{
-                id:a3reutrnspeed
+                id:a3returnspeed
                 visible: a3text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a3reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a3returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -286,10 +293,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a4returnorder",4,"returnOrder");
             }
             ICLineEdit{
-                id:a4reutrnspeed
+                id:a4returnspeed
                 visible: a4text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a4reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a4returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -333,10 +340,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a5returnorder",5,"returnOrder");
             }
             ICLineEdit{
-                id:a5reutrnspeed
+                id:a5returnspeed
                 visible: a5text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a5reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a5returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -380,10 +387,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a6returnorder",6,"returnOrder");
             }
             ICLineEdit{
-                id:a6reutrnspeed
+                id:a6returnspeed
                 visible: a6text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a6reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a6returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -425,10 +432,10 @@ Item {
                 text: panelRobotController.getCustomSettings("a7returnorder",7,"returnOrder");
             }
             ICLineEdit{
-                id:a7reutrnspeed
+                id:a7returnspeed
                 visible: a7text.visible
                 max:100
-                text: panelRobotController.getCustomSettings("a7reutrnspeed",10,"returnSpeed");
+                text: panelRobotController.getCustomSettings("a7returnspeed",10,"returnSpeed");
             }
             Text{
                 text:"%";
@@ -442,31 +449,118 @@ Item {
             text:qsTr("Safe")
             onButtonClicked: {
                 var origin_Setting;
+                var originList=[[],[],[],[],[],[],[],[],[],[]];
+                var returnList=[[],[],[],[],[],[],[],[],[],[]];
+                var m;
                 for(var i=0;i<AxisDefine.usedAxisNum();i++)
                 {
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="mode";
-                    console.log(origin_Setting);
-                    console.log(JSON.stringify(structContainer));
-                    panelRobotController.setCustomSettings(origin_Setting, structContainer[origin_Setting].text, "originMode", true);
+                    panelRobotController.setCustomSettings(origin_Setting, originMode[i].text, "originMode", false);
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="order";
-                    panelRobotController.setCustomSettings(origin_Setting, structContainer[origin_Setting].text, "originOrder", true);
+                    m = parseInt(originOrder[i].text);
+                    if(m>=0&&m<=10)originList[m].push(i);
+                    panelRobotController.setCustomSettings(origin_Setting, originOrder[i].text, "originOrder", false);
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="speed";
-                    panelRobotController.setCustomSettings(origin_Setting, structContainer[origin_Setting].text, "originSpeed", true);
+                    panelRobotController.setCustomSettings(origin_Setting, originSpeed[i].text, "originSpeed", false);
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="returnorder";
-                    panelRobotController.setCustomSettings(origin_Setting, structContainer[origin_Setting].text, "returnOrder", true);
+                    m = parseInt(returnOrder[i].text);
+                    if(m>=0&&m<=10)returnList[m].push(i);
+                    panelRobotController.setCustomSettings(origin_Setting, returnOrder[i].text, "returnOrder", false);
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="returnspeed";
-                    panelRobotController.setCustomSettings(origin_Setting, structContainer[origin_Setting].text, "returnSpeed", true);
+                    panelRobotController.setCustomSettings(origin_Setting, returnSpeed[i].text, "returnSpeed", true);
                 }
+
+                //console.log(JSON.stringify(originList));
+                //console.log(JSON.stringify(returnList));
+                var originOp = ManualProgramManager.manualProgramManager.getProgram(0);
+                var returnOp = ManualProgramManager.manualProgramManager.getProgram(1);
+                var temp;
+                originOp.program=[];
+                returnOp.program=[];
+                for(var i=0;i<10;i++)
+                {
+                    switch(originList[i].length)
+                    {
+                    case 0:break;
+                    case 1:
+                        temp = originList[i][0];
+                        originOp.program.push(Teach.generateOriginAction(
+                                                  Teach.actions.F_CMD_FINE_ZERO,
+                                                  temp,
+                                                  originMode[temp].configValue+2,
+                                                  originSpeed[temp].text,
+                                                  0
+                                               ));
+                        break;
+                    default:
+                        originOp.program.push(Teach.generateSyncBeginAction());
+                        for(var n=0;n<originList[i].length;n++)
+                        {
+                            temp = originList[i][n];
+                            originOp.program.push(Teach.generateOriginAction(
+                                                      Teach.actions.F_CMD_FINE_ZERO,
+                                                      temp,
+                                                      originMode[temp].configValue+2,
+                                                      originSpeed[temp].text,
+                                                      0
+                                                   ));
+                        }
+                        originOp.program.push(Teach.generateSyncEndAction());
+                        break;
+                    }
+
+                    switch(returnList[i].length)
+                    {
+                    case 0:continue;
+                    case 1:
+                        temp = returnList[i][0];
+                        returnOp.program.push(Teach.generateAxisServoAction(
+                                                  Teach.actions.F_CMD_SINGLE,
+                                                  temp,
+                                                  0,
+                                                  returnSpeed[temp].text,
+                                                  0
+                                               ));
+                        break;
+                    default:
+                        returnOp.program.push(Teach.generateSyncBeginAction());
+                        for(var n=0;n<returnList[i].length;n++)
+                        {
+                            temp = returnList[i][n];
+                            returnOp.program.push(Teach.generateAxisServoAction(
+                                                      Teach.actions.F_CMD_SINGLE,
+                                                      temp,
+                                                      0,
+                                                      returnSpeed[temp].text,
+                                                      0
+                                                   ));
+                        }
+                        returnOp.program.push(Teach.generateSyncEndAction());
+                        break;
+                    }
+                }
+                originOp.program.push(Teach.generteEndAction());
+                returnOp.program.push(Teach.generteEndAction());
+                console.log(JSON.stringify(originOp.program));
+                console.log(JSON.stringify(returnOp.program));
+                ManualProgramManager.manualProgramManager.updateProgram(originOp.id, originOp.name, originOp.program);
+                ManualProgramManager.manualProgramManager.updateProgram(returnOp.id, returnOp.name, returnOp.program);
+                panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
+                                                      "","", "", "", 19, false);
+                panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(1).program),
+                                                      "","", "", "", 18, false);
+
+
 
             }
         }
@@ -476,7 +570,6 @@ Item {
         onAxisDefinesChanged();
     }
     function onAxisDefinesChanged(){
-
         a0text.visible = AxisDefine.axisInfos[0].visiable;
         a1text.visible = AxisDefine.axisInfos[1].visiable;
         a2text.visible = AxisDefine.axisInfos[2].visiable;
@@ -485,8 +578,6 @@ Item {
         a5text.visible = AxisDefine.axisInfos[5].visiable;
         a6text.visible = AxisDefine.axisInfos[6].visiable;
         a7text.visible = AxisDefine.axisInfos[7].visiable;
-
-
     }
 }
 

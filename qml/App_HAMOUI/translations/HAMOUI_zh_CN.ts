@@ -879,6 +879,22 @@
         <source>Axis</source>
         <translation> </translation>
     </message>
+    <message>
+        <source>JogPos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WorldPos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current TableCoord:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -1731,6 +1747,10 @@
         <source>SafeArea Configs</source>
         <translation>安全区参数</translation>
     </message>
+    <message>
+        <source>Origin Setting</source>
+        <translation>原点设定</translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -1881,6 +1901,10 @@
         <source>Type4</source>
         <translation>自动设定原点加开关(长原点)</translation>
     </message>
+    <message>
+        <source>Type5</source>
+        <translation>中间原点</translation>
+    </message>
 </context>
 <context>
     <name>OriginActionEditorAxisComponent</name>
@@ -1949,6 +1973,49 @@
     <message>
         <source>Hide Help</source>
         <translation>隐藏帮助</translation>
+    </message>
+</context>
+<context>
+    <name>OriginSetting</name>
+    <message>
+        <source>Origin Order:0 == first,1==second</source>
+        <translation>原点顺序设定方式，0为最先回原点，1为第二回原点，以此类推。同设为一个值为同时归原点。</translation>
+    </message>
+    <message>
+        <source>Return Order:0 == first,1==second</source>
+        <translation>复归顺序设定方式，0为最先复归，1为第二复归，以此类推。同设为一个值为同时复归。</translation>
+    </message>
+    <message>
+        <source>Origin Mode</source>
+        <translation>原点模式</translation>
+    </message>
+    <message>
+        <source>Origin Order</source>
+        <translation>原点顺序</translation>
+    </message>
+    <message>
+        <source>Origin Speed</source>
+        <translation>原点速度</translation>
+    </message>
+    <message>
+        <source>Return Order</source>
+        <translation>复归顺序</translation>
+    </message>
+    <message>
+        <source>Return Speed</source>
+        <translation>复归速度</translation>
+    </message>
+    <message>
+        <source>short</source>
+        <translation>短原点</translation>
+    </message>
+    <message>
+        <source>long</source>
+        <translation>长原点</translation>
+    </message>
+    <message>
+        <source>Safe</source>
+        <translation>保存</translation>
     </message>
 </context>
 <context>
@@ -3919,6 +3986,14 @@ please chose!</source>
         <source>IntervalBox En</source>
         <translation>装箱间隔输出</translation>
     </message>
+    <message>
+        <source>Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -4264,6 +4339,26 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
+    </message>
+    <message>
+        <source>IO Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4661,7 +4756,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>短原点</translation>
     </message>
     <message>
         <source>origin</source>
@@ -4861,7 +4956,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation>自动设定原点加开关 {4?}</translation>
+        <translation>长原点</translation>
     </message>
     <message>
         <source>Bad En</source>
@@ -4910,6 +5005,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 5</source>
+        <translation>中间原点</translation>
     </message>
 </context>
 <context>

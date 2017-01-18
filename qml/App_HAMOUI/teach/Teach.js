@@ -1293,7 +1293,7 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
-var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4")]
+var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4"),qsTr("Type 5")]
 
 var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
     var ret =  qsTr("origin") + "-" + axisInfos[actionObject.axis].name + ":" + " " +  originType[actionObject.originType] + " " +
@@ -1933,7 +1933,7 @@ var updateCustomActions = function(actionObject){
 var actionObjectToText = function(actionObject){
     var originText = actionToStringNoCusomName(actionObject);
     if(actionObject.customName){
-        var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+        var styledCN = icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
         originText = styledCN + " " + originText;
     }
     var reg = new RegExp("\n                            ", 'g');

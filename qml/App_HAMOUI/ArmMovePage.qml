@@ -1083,6 +1083,8 @@ MouseArea{
         }
         ICComboBoxConfigEdit{
             id:coordSel
+            z:1
+            visible: false
             anchors.top: horSpliteLine.bottom
             anchors.topMargin: 4
             anchors.left: verSpliteLine.right

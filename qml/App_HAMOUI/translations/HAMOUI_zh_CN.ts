@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -235,23 +235,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="vanished">直线测试</translation>
+        <translation>直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="vanished">曲线测试</translation>
+        <translation>曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="vanished">运行到这点</translation>
+        <translation>运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="vanished">设当前位置为起点</translation>
+        <translation>设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -259,11 +259,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="vanished">设当前位置为中间点</translation>
+        <translation>设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="vanished">设当前位置为终点</translation>
+        <translation>设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -347,11 +347,19 @@
     </message>
     <message>
         <source>Coord Select</source>
-        <translation type="unfinished"></translation>
+        <translation>坐标系选择</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
+        <translation>0:世界坐标系</translation>
+    </message>
+    <message>
+        <source>torque</source>
+        <translation>转矩</translation>
+    </message>
+    <message>
+        <source>pos</source>
+        <translation>位置</translation>
     </message>
 </context>
 <context>
@@ -879,6 +887,46 @@
         <source>Axis</source>
         <translation> </translation>
     </message>
+    <message>
+        <source>JogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>WorldPos</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>Current TableCoord:</source>
+        <translation>当前坐标系</translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>Jog Pos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>World/Jog</source>
+        <translation>世界/关节</translation>
+    </message>
+    <message>
+        <source>JogCoord</source>
+        <translation>关节坐标系</translation>
+    </message>
+    <message>
+        <source>jogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>worldCoord</source>
+        <translation>世界坐标系</translation>
+    </message>
+    <message>
+        <source></source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -1378,11 +1426,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="vanished">速度</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="vanished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1771,7 +1819,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation type="vanished">工具标定</translation>
+        <translation>工具标定</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -1791,7 +1839,7 @@
     </message>
     <message>
         <source>toolcoord</source>
-        <translation type="vanished">工作台标定</translation>
+        <translation>工作台标定</translation>
     </message>
 </context>
 <context>
@@ -1880,6 +1928,10 @@
     <message>
         <source>Type4</source>
         <translation>自动设定原点加开关(长原点)</translation>
+    </message>
+    <message>
+        <source>Type5</source>
+        <translation type="unfinished">自动设定原点加开关(长原点) {5?}</translation>
     </message>
 </context>
 <context>
@@ -3923,6 +3975,14 @@ please chose!</source>
         <source>IntervalBox En</source>
         <translation>装箱间隔输出</translation>
     </message>
+    <message>
+        <source>Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -4915,6 +4975,10 @@ You just need to set the count configs after this setting.</source>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Type 5</source>
+        <translation type="unfinished">自动设定原点加开关 {5?}</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -5150,7 +5214,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>confirmBtn</source>
-        <translation>坐标系换算</translation>
+        <translation>确定修改</translation>
     </message>
 </context>
 <context>

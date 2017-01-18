@@ -1911,15 +1911,15 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关(短原点)</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>自动设定原点加开关(长原点)</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Type5</source>
-        <translation type="unfinished">自动设定原点加开关(长原点) {5?}</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -4709,7 +4709,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
@@ -4909,7 +4909,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation>自动设定原点加开关 {4?}</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Bad En</source>
@@ -4961,7 +4961,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 5</source>
-        <translation type="unfinished">自动设定原点加开关 {5?}</translation>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
-<<<<<<< HEAD
-=======
 <context>
     <name>AlarmConfigs</name>
     <message>
@@ -90,7 +88,6 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
->>>>>>> coordTable
 <context>
     <name>AlarmInfo</name>
     <message>
@@ -537,7 +534,7 @@
     <name>AxisDefine</name>
     <message>
         <source>X</source>
-        <translation>X1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>mm</source>
@@ -545,15 +542,15 @@
     </message>
     <message>
         <source>Y</source>
-        <translation>Y1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Z</source>
-        <translation>Z</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>U</source>
-        <translation>X2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>°</source>
@@ -561,11 +558,11 @@
     </message>
     <message>
         <source>V</source>
-        <translation>Y2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>W</source>
-        <translation>C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>M7</source>
@@ -1342,36 +1339,6 @@
         <translation>X161</translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location line="+8"/>
-        <source>X010</source>
-        <translation>X1轴原点</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X011</source>
-        <translation>X2轴原点</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X012</source>
-        <translation>Z轴原点</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X013</source>
-        <translation>X2轴原点</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X014</source>
-        <translation>Y2轴原点</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X015</source>
-        <translation>C轴原点</translation>
-=======
         <source>X162</source>
         <translation>X162</translation>
     </message>
@@ -1394,7 +1361,6 @@
     <message>
         <source>X167</source>
         <translation>X167</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>X170</source>
@@ -1545,31 +1511,6 @@
         <translation></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location line="+1"/>
-        <source>X040</source>
-        <translation>X1轴终点极限</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X041</source>
-        <translation>X2轴终点极限</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X042</source>
-        <translation>Z轴终点极限</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X043</source>
-        <translation>X1轴终点极限</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>X044</source>
-        <translation>Y2轴终点极限</translation>
-=======
         <source>Y040</source>
         <translation></translation>
     </message>
@@ -1588,7 +1529,6 @@
     <message>
         <source>Y044</source>
         <translation></translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Y045</source>

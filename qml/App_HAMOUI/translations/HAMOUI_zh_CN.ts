@@ -235,25 +235,6 @@
     </message>
     <message>
         <source>Line Test</source>
-<<<<<<< HEAD
-        <translation>直线测试</translation>
-    </message>
-    <message>
-        <source>Curve Test</source>
-        <translation>曲线测试</translation>
-    </message>
-    <message>
-        <source>Run to This</source>
-        <translation>运行到这点</translation>
-    </message>
-    <message>
-        <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
-    </message>
-    <message>
-        <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
-=======
         <translation type="obsolete">直线测试</translation>
     </message>
     <message>
@@ -271,7 +252,6 @@
     <message>
         <source>Set to Point-2</source>
         <translation type="obsolete">设当前位置为终点</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -279,19 +259,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-<<<<<<< HEAD
-        <translation>设当前位置为中间点</translation>
-    </message>
-    <message>
-        <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
-=======
         <translation type="obsolete">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
         <translation type="obsolete">设当前位置为终点</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Tune Sel</source>
@@ -905,7 +877,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation>轴</translation>
+        <translation> </translation>
     </message>
 </context>
 <context>
@@ -1406,19 +1378,11 @@
     </message>
     <message>
         <source>Speed</source>
-<<<<<<< HEAD
-        <translation>速度</translation>
-    </message>
-    <message>
-        <source>Num</source>
-        <translation>次数</translation>
-=======
         <translation type="obsolete">速度</translation>
     </message>
     <message>
         <source>Num</source>
         <translation type="obsolete">次数</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Speed:</source>
@@ -1699,17 +1663,6 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-<<<<<<< HEAD
-        <translation>运行中</translation>
-    </message>
-    <message>
-        <source>Single</source>
-        <translation>单步</translation>
-    </message>
-    <message>
-        <source>One Cycle</source>
-        <translation>单循环</translation>
-=======
         <translation type="obsolete">运行中</translation>
     </message>
     <message>
@@ -1719,7 +1672,6 @@
     <message>
         <source>One Cycle</source>
         <translation type="obsolete">单循环</translation>
->>>>>>> coordTable
     </message>
 </context>
 <context>
@@ -1923,11 +1875,11 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>(短原点)自动设定原点加开关</translation>
+        <translation>自动设定原点加开关(短原点)</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>(长原点)自动设定原点加开关</translation>
+        <translation>自动设定原点加开关(长原点)</translation>
     </message>
 </context>
 <context>
@@ -3089,11 +3041,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-<<<<<<< HEAD
-        <translation>小时</translation>
-=======
         <translation type="obsolete">小时</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Machine Code:</source>
@@ -3125,19 +3073,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-<<<<<<< HEAD
-        <translation>导出</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation>导入</translation>
-=======
         <translation type="obsolete">导出</translation>
     </message>
     <message>
         <source>Import</source>
         <translation type="obsolete">导入</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5233,19 +5173,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-<<<<<<< HEAD
-        <translation>设为点5</translation>
-    </message>
-    <message>
-        <source>Set to P6</source>
-        <translation>设为点6</translation>
-=======
         <translation type="obsolete">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
         <translation type="obsolete">设为点6</translation>
->>>>>>> coordTable
     </message>
     <message>
         <source>Use it?</source>

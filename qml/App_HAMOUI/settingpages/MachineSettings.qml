@@ -19,6 +19,7 @@ Item {
         systemConfigBtn.enabled = ShareData.UserInfo.currentSZHCPerm();
         qkConfigBtn.enabled = isEn;
         safeAreaBtn.enabled = isEn;
+        originSettingBtn.enabled = isEn;
     }
 
     width: parent.width
@@ -74,12 +75,12 @@ Item {
 
         }
 
-//        CatalogButton{
-//            id:configsManageBtn
-//            text: qsTr("Data Manage")
-//            icon: "../images/data_manage.png"
+        CatalogButton{
+            id:originSettingBtn
+            text: qsTr("Origin Setting")
+            icon: "../images/origin1.png"
 
-//        }
+        }
 
 //        CatalogButton{
 //            id:otherConfigBtn
@@ -112,6 +113,7 @@ Item {
         configsContainer.addNav(systemConfigBtn, Qt.createComponent('SystemConfigs.qml'));
         configsContainer.addNav(qkConfigBtn, Qt.createComponent('QKConfigs.qml'));
         configsContainer.addNav(safeAreaBtn, Qt.createComponent('SafeAreaConfigs.qml'));
+        configsContainer.addNav(originSettingBtn, Qt.createComponent('OriginSetting.qml'));
         ShareData.UserInfo.registUserChangeEvent(container);
     }
 

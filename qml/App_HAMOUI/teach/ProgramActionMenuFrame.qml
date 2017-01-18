@@ -268,7 +268,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Output Action")
             linkedBtn3.visible = true;
-            PData.linked3Function = actionMenuObject.checkMenuTriggered;
+            PData.linked3Function = actionMenuObject.outputMenuTriggered;
         });
         actionMenuObject.conditionMenuTriggered.connect(function(){
             linkedBtnEn(true);

@@ -41,13 +41,7 @@ Rectangle {
     }
 
     function actionObjectToText(actionObject){
-        var originText = Teach.actionToStringNoCusomName(actionObject);
-        if(actionObject.customName){
-            var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
-            originText = styledCN + " " + originText;
-        }
-        var reg = new RegExp("\n                            ", 'g');
-        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        return Teach.actionObjectToText(actionObject);
     }
 
     function beforeSaveProgram(which){
@@ -491,6 +485,7 @@ Rectangle {
             for(var i = 0; i < errInfo.length; ++i){
                 toShow += qsTr("Line") + errInfo[i].line + ":" + Teach.ccErrnoToString(errInfo[i].errno) + "\n";
             }
+            console.log("toShow",toShow);
             tipBox.warning( ICString.icStrformat(qsTr("Save {0} fail!.\n"), pName), qsTr("OK"), toShow);
         }
         else
@@ -1324,7 +1319,7 @@ Rectangle {
                         isComment: mI_ActionObject.action === Teach.actions.ACT_COMMENT
                         isRunning: mI_IsActionRunning
                         lineNum: index + ":" + mI_ActionObject.insertedIndex
-                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText: actionObjectToText(mI_ActionObject));
+                        text: ((Teach.hasCounterIDAction(mI_ActionObject) || Teach.hasStackIDAction(mI_ActionObject)) && actionText.length !=0 ? actionText:actionObjectToText(mI_ActionObject));
 
                         actionType: mI_ActionType
                         MouseArea{

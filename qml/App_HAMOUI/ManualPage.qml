@@ -155,6 +155,10 @@ ContentPageBase {
 
     AxisPosDisplayBar{
         id:posDisplayBar
+        onVisibleChanged: {
+            if(visible)
+                setCurrentState(ShareData.barStatus);
+        }
     }
 
     content: manualContainer

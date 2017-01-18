@@ -1093,7 +1093,7 @@ MouseArea{
                     var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
                     coords.splice(0, 0, qsTr("0:BaseCoord"));
                     items = coords;
-                    configValue = panelRobotController.getCoordAxis();
+                    configValue = panelRobotController.iStatus(4);
                 }
             }
             onConfigValueChanged: {

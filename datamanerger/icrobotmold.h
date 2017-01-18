@@ -31,7 +31,8 @@ struct SI{
     quint32 dir0: 1;
     quint32 dir1: 1;
     quint32 dir2: 1;
-    quint32 type:8;
+    quint32 type:5;
+    quint32 holdSel:3;
     quint32 doesBindingCounter:1;
     quint32 counterID:15;
     bool isOffsetEn;
@@ -324,7 +325,7 @@ public:
                                const QVector<QVariantList>& counters,
                                const QVector<QVariantList>& variables,
                                const QMap<int, CompileInfo>& functions,
-                               int & err);
+                               int & err, bool isFunction = false);
 
 //    static QPair<QStringList, QString>  ExportMold(const QString& name);
     static QStringList ExportMold(const QString& name);
@@ -354,7 +355,7 @@ public:
     }
 
     static bool IsActionRegister(int action) { return customActions_.contains(action);}
-    static const ICCustomActionParseDefine& GetCustomActionParseDefine(int action) { return customActions_.value(action);}
+    static ICCustomActionParseDefine GetCustomActionParseDefine(int action) { return customActions_.value(action);}
     static void RegisterCustomAction(int action, const ICCustomActionParseDefine & define)
     {
         customActions_.insert(action, define);

@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "settingpages/RunningConfigs.js" as Mdata;
 
 Rectangle {
     id:mainWindow
@@ -819,6 +820,7 @@ Rectangle {
         //                                              "","", "", "", 18);
 
         mainHeader.speed = ShareData.GlobalStatusCenter.getGlobalSpeed();
+        refreshTimer.start();
         console.log("main load finished!");
     }
 
@@ -900,12 +902,104 @@ Rectangle {
         event.accepted = true;
     }
 
+        function getExternalFuncBtn(){
+            var originBtnStatus = panelRobotController.isInputOn(022,IODefines.IO_BOARD_0);//x032
+            var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
+            var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
+            var automodeBtnStatus = panelRobotController.isInputOn(023,IODefines.IO_BOARD_0);//x033
+
+            var  originBtnEn = parseInt(panelRobotController.getCustomSettings("X32UseForOrigin", 0));
+            var automodeBtnEn = parseInt(panelRobotController.getCustomSettings("X33UseForAuto", 0));
+            var startupBtnEn = parseInt(panelRobotController.getCustomSettings("X46UseForStartup", 0));
+            var stopBtnEn = parseInt(panelRobotController.getCustomSettings("X47UseForStop", 0));
+
+            if(originBtnStatus){
+                if(originBtnStatus != refreshTimer.originBtnOld){
+                    refreshTimer.originBtnOld = originBtnStatus;
+                    if(originBtnEn){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+                    }
+                }
+            }else refreshTimer.originBtnOld = 0;
+            if(startupBtnStatus){
+                if(startupBtnStatus != refreshTimer.startupBtnOld){
+                    refreshTimer.startupBtnOld = startupBtnStatus;
+                    if(startupBtnEn){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                    }
+                }
+            }else refreshTimer.startupBtnOld = 0;
+            if(stopBtnStatus){
+                if(stopBtnStatus != refreshTimer.stopBtnOld){
+                    refreshTimer.stopBtnOld = stopBtnStatus;
+                    if(stopBtnEn){
+                        if(!(panelRobotController.currentErrNum() !== 0 &&
+                                (panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
+                                    panelRobotController.currentMode() == Keymap.CMD_SINGLE))){
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                        }
+                    }
+                }
+            }else refreshTimer.stopBtnOld = 0;
+            if(automodeBtnStatus){
+                if(automodeBtnStatus != refreshTimer.automodeBtnOld){
+                    refreshTimer.automodeBtnOld = automodeBtnStatus;
+                    if(automodeBtnEn){
+                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+                    }
+                }
+            }else refreshTimer.automodeBtnOld = 0;
+        }
+
+        function switchMoldByIOStatus(){
+            var moldbyIOData = Mdata.moldbyIOData;
+            var btnStatus;
+            var btnStatusOldTmp = refreshTimer.btnStatusOld;
+            var record;
+            var curMode;
+            for(var i=0;i<moldbyIOData.length;++i){
+                btnStatus = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
+                record = moldbyIOData[i].mold;
+                curMode = panelRobotController.currentMode();
+                if(btnStatus){
+                    if(btnStatus != btnStatusOldTmp[i]){
+                        btnStatusOldTmp[i] = btnStatus;
+                        if(curMode === Keymap.CMD_ORIGIN || curMode === Keymap.CMD_RETURN ||
+                                curMode === Keymap.CMD_ORIGIN_ING || curMode === Keymap.CMD_RETURN_ING)
+                            continue;
+                        panelRobotController.modifyConfigValue(1,Keymap.CMD_CONFIG);
+                        if(panelRobotController.loadRecord(record)){
+                            ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                        }
+                        if(curMode === Keymap.CMD_RUNNING || curMode === Keymap.CMD_SINGLE ||
+                                curMode === Keymap.CMD_ONE_CYCLE)
+                           curMode = Keymap.CMD_AUTO;
+                        panelRobotController.modifyConfigValue(1,curMode);
+                    }
+                }
+                else{
+                    btnStatusOldTmp[i] = 0;
+                }
+            }
+            refreshTimer.btnStatusOld = btnStatusOldTmp;
+    //        console.log(refreshTimer.btnStatusOld);
+        }
+
     Timer{
         id:refreshTimer
-        interval: 50; running: true; repeat: true
+        property variant btnStatusOld: []
+        property int originBtnOld: 0
+        property int startupBtnOld: 0
+        property int stopBtnOld: 0
+        property int automodeBtnOld: 0
+        interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
+            getExternalFuncBtn();
+            switchMoldByIOStatus();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

@@ -3,6 +3,8 @@ import QtQuick 1.1
 import "."
 import "../ICCustomElement/"
 import "configs/AxisDefine.js" as AxisDefine
+import "ToolCoordManager.js" as ToolCoordManager
+import "ShareData.js" as ShareData
 
 Item {
     id:container
@@ -15,114 +17,181 @@ Item {
         jogPos.visible = en;
     }
 
+    function setCurrentState(barState){
+        container.state = barState;
+    }
+
+
+    states: [
+        State {
+            name: "jogPos"
+            PropertyChanges { target: jogPos; visible: true}
+            PropertyChanges { target: worldPos; visible: false}
+            PropertyChanges { target:coordDisplay;visible: false}
+            PropertyChanges { target:switchBtn;text:qsTr("JogPos")}
+        },
+        State {
+            name: "worldPos"
+            PropertyChanges { target: worldPos; visible: true}
+            PropertyChanges { target: jogPos; visible: false}
+            PropertyChanges { target:coordDisplay;visible: true}
+            PropertyChanges { target:switchBtn;text:qsTr("WorldPos")}
+        }
+    ]
+
     ICStatusScope{
-        Column{
+        Row{
+            spacing: 20
+            Grid{
+                id:worldPos
+                rows: 2
+                columns: 3
+                spacing: 2
+                AxisPosDisplayComponent{
+                    id:m0
+                    name: AxisDefine.axisInfos[0].name+qsTr("Axis")+":"
+    //                unit: AxisDefine.axisInfos[0].unit
+                    unit:"mm"
+                    bindStatus: "c_ro_0_32_3_900"
+                }
+                AxisPosDisplayComponent{
+                    id:m1
+                    name: AxisDefine.axisInfos[1].name+qsTr("Axis")+":"
+    //                unit: AxisDefine.axisInfos[1].unit
+                    unit:"mm"
+                    bindStatus: "c_ro_0_32_3_904"
 
-        Grid{
-            id:worldPos
-            rows: 1
-            columns: 6
-            spacing: 25
-            AxisPosDisplayComponent{
-                id:m0
-                name: AxisDefine.axisInfos[0].name+qsTr("Axis")+":"
-//                unit: AxisDefine.axisInfos[0].unit
-                unit:"mm"
-                bindStatus: "c_ro_0_32_3_900"
+                }
+                AxisPosDisplayComponent{
+                    id:m2
+                    name: AxisDefine.axisInfos[2].name+qsTr("Axis")+":"
+    //                unit: AxisDefine.axisInfos[2].unit
+                    unit:"mm"
+                    bindStatus: "c_ro_0_32_3_908"
+
+                }
+                AxisPosDisplayComponent{
+                    id:m3
+                    name: AxisDefine.axisInfos[3].name+qsTr("Axis")+":"
+    //                unit: AxisDefine.axisInfos[3].unit
+                    unit:"°"
+                    bindStatus: "c_ro_0_32_3_912"
+
+                }
+                AxisPosDisplayComponent{
+                    id:m4
+                    name: AxisDefine.axisInfos[4].name+qsTr("Axis")+":"
+    //                unit: AxisDefine.axisInfos[4].unit
+                    unit:"°"
+                    bindStatus: "c_ro_0_32_3_916"
+
+                }
+                AxisPosDisplayComponent{
+                    id:m5
+                    name: AxisDefine.axisInfos[5].name+qsTr("Axis")+":"
+    //                unit: AxisDefine.axisInfos[5].unit
+                    unit:"°"
+                    bindStatus: "c_ro_0_32_3_920"
+
+                }
             }
-            AxisPosDisplayComponent{
-                id:m1
-                name: AxisDefine.axisInfos[1].name+qsTr("Axis")+":"
-//                unit: AxisDefine.axisInfos[1].unit
-                unit:"mm"
-                bindStatus: "c_ro_0_32_3_904"
+            Grid{
+                id:jogPos
+                rows: 2
+                columns: 3
+                spacing: 2
+                AxisPosDisplayComponent{
+                    id:a0
+                    name: AxisDefine.axisInfos[0].name+qsTr("Axis")+":"
+    //                unit: "°"
+                    bindStatus: "c_ro_0_32_0_901"
+                    mode:0.001
+                }
+                AxisPosDisplayComponent{
+                    id:a1
+                    name: AxisDefine.axisInfos[1].name+qsTr("Axis")+":"
+    //                unit: "°"
+                    bindStatus: "c_ro_0_32_0_905"
+                    mode:0.001
 
+                }
+                AxisPosDisplayComponent{
+                    id:a2
+                    name: AxisDefine.axisInfos[2].name+qsTr("Axis")+":"
+    //                unit: "°"
+                    bindStatus: "c_ro_0_32_0_909"
+                    mode:0.001
+
+                }
+                AxisPosDisplayComponent{
+                    id:a3
+                    name: AxisDefine.axisInfos[3].name+qsTr("Axis")+":"
+    //                unit: "°"
+                    bindStatus: "c_ro_0_32_0_913"
+                    mode:0.001
+
+                }
+                AxisPosDisplayComponent{
+                    id:a4
+                    name: AxisDefine.axisInfos[4].name+qsTr("Axis")+":"
+    //                unit: "°"
+                    bindStatus: "c_ro_0_32_0_917"
+                    mode:0.001
+
+                }
+                AxisPosDisplayComponent{
+                    id:a5
+                    name: AxisDefine.axisInfos[5].name+qsTr("Axis")+":"
+    //                unit: "°"
+                    bindStatus: "c_ro_0_32_0_921"
+                    mode:0.001
+                }
             }
-            AxisPosDisplayComponent{
-                id:m2
-                name: AxisDefine.axisInfos[2].name+qsTr("Axis")+":"
-//                unit: AxisDefine.axisInfos[2].unit
-                unit:"mm"
-                bindStatus: "c_ro_0_32_3_908"
 
-            }
-            AxisPosDisplayComponent{
-                id:m3
-                name: AxisDefine.axisInfos[3].name+qsTr("Axis")+":"
-//                unit: AxisDefine.axisInfos[3].unit
-                unit:"°"
-                bindStatus: "c_ro_0_32_3_912"
-
-            }
-            AxisPosDisplayComponent{
-                id:m4
-                name: AxisDefine.axisInfos[4].name+qsTr("Axis")+":"
-//                unit: AxisDefine.axisInfos[4].unit
-                unit:"°"
-                bindStatus: "c_ro_0_32_3_916"
-
-            }
-            AxisPosDisplayComponent{
-                id:m5
-                name: AxisDefine.axisInfos[5].name+qsTr("Axis")+":"
-//                unit: AxisDefine.axisInfos[5].unit
-                unit:"°"
-                bindStatus: "c_ro_0_32_3_920"
-
+            Item{
+                id:funcArea
+                width: 800-(3*(30+90+40+4)+4+4+20);height:parent.height
+                Column{
+                    id:coordDisplay
+                    width:funcArea.width - switchBtn.width
+                    spacing: 2
+                    Text {
+                        id: hint
+                        height: 20
+                        text: qsTr("Current TableCoord:")
+                        color: m0.textColor
+                    }
+                    Text {
+                        id: coordName
+                        height: 20
+                        text: qsTr("0:BaseCoord")
+                        color: m0.textColor
+                    }
+                }
+                ICButton{
+                    id:switchBtn
+                    anchors.left: coordDisplay.right
+                    anchors.leftMargin: 10
+                    width:100
+                    height: funcArea.height-2
+                    radius: 2
+//                    text: qsTr("JogPos")
+                    onButtonClicked: {
+                        if(container.state == "worldPos"){
+                            container.state = "jogPos";
+                        }
+                        else{
+                            container.state = "worldPos";
+                        }
+                        ShareData.barStatus = container.state;
+                    }
+                }
             }
         }
-        Grid{
-            id:jogPos
-            rows: 1
-            columns: 6
-            spacing: 25
-            AxisPosDisplayComponent{
-                id:a0
-                name: AxisDefine.axisInfos[0].name+qsTr("Axis")+":"
-//                unit: "°"
-                bindStatus: "c_ro_0_32_0_901"
-                mode:0.001
-            }
-            AxisPosDisplayComponent{
-                id:a1
-                name: AxisDefine.axisInfos[1].name+qsTr("Axis")+":"
-//                unit: "°"
-                bindStatus: "c_ro_0_32_0_905"
-                mode:0.001
-
-            }
-            AxisPosDisplayComponent{
-                id:a2
-                name: AxisDefine.axisInfos[2].name+qsTr("Axis")+":"
-//                unit: "°"
-                bindStatus: "c_ro_0_32_0_909"
-                mode:0.001
-
-            }
-            AxisPosDisplayComponent{
-                id:a3
-                name: AxisDefine.axisInfos[3].name+qsTr("Axis")+":"
-//                unit: "°"
-                bindStatus: "c_ro_0_32_0_913"
-                mode:0.001
-
-            }
-            AxisPosDisplayComponent{
-                id:a4
-                name: AxisDefine.axisInfos[4].name+qsTr("Axis")+":"
-//                unit: "°"
-                bindStatus: "c_ro_0_32_0_917"
-                mode:0.001
-
-            }
-            AxisPosDisplayComponent{
-                id:a5
-                name: AxisDefine.axisInfos[5].name+qsTr("Axis")+":"
-//                unit: "°"
-                bindStatus: "c_ro_0_32_0_921"
-                mode:0.001
-            }
-        }
+        onRefreshTimeOut:{
+            var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
+            coords.splice(0, 0, qsTr("0:BaseCoord"));
+            coordName.text = coords[panelRobotController.iStatus(4)];
         }
     }
 
@@ -151,6 +220,7 @@ Item {
     }
 
     Component.onCompleted: {
+        container.state = "worldPos";
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
     }

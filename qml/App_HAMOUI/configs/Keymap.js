@@ -52,12 +52,6 @@ var CMD_RETURN_ING = 11; // 原点复归中
 
 var CMD_STANDBY = 15; // 待机模式
 
-var modeToText = {
-    7:qsTr("Running"),
-    8:qsTr("Single"),
-    9:qsTr("One Cycle")
-}
-
 cmdHelper = 0x0050;
 var CMD_MANUAL_STOP = cmdHelper++;  // 手动运行停止
 var CMD_MANUAL_START1        = cmdHelper++;  // 手动运行主程序

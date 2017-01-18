@@ -9,6 +9,7 @@ Item {
     }
 
     id:container
+    signal refreshTimeOut()
 
     Component.onCompleted: {
         PData.deepFindStatus(container)
@@ -27,6 +28,7 @@ Item {
                 if( t !== w.text)
                     w.text = t;
             }
+            refreshTimeOut();
         }
     }
 }

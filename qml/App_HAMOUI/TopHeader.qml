@@ -15,6 +15,11 @@ Rectangle {
     property alias speed: globalSpeed.text
     property int mode: 0
     property Item lastChecked: null
+    property variant modeToText : {
+        7:qsTr("Running"),
+        8:qsTr("Single"),
+        9:qsTr("One Cycle")
+    }
 
     function setRecordItemEnabled(en){
         record.enabled = en;
@@ -196,8 +201,8 @@ Rectangle {
         onTriggered: {
             var m = panelRobotController.currentMode();
             modeText.text = qsTr("Auto");
-            if(Keymap.modeToText.hasOwnProperty(m))
-                modeText.text += "/" +  Keymap.modeToText[m];
+            if(modeToText.hasOwnProperty(m))
+                modeText.text += "/" +  modeToText[m];
         }
     }
 

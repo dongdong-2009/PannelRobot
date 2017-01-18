@@ -958,6 +958,7 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     packageDirName.chop(4);
     if(!temp.exists(packageDirName))
     {
+        qDebug()<<QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8();
         ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
     }
     temp.cd(packageDirName);

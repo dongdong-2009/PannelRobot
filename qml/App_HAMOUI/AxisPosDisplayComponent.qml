@@ -18,7 +18,7 @@ Item {
         spacing: 2
         Text {
             id: name_
-            width: 40
+            width: 30
             color: textColor
         }
         Text {

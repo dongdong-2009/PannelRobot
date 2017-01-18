@@ -427,6 +427,17 @@ int CommentActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+typedef union{
+struct{
+  uint32_t en:1;//< 间隔输出使能
+  uint32_t always:1;//< 常输出
+  uint32_t m_en:1;//< M值常输出
+  uint32_t id:6;//< 输出点设定
+  uint32_t num:13;//< 间隔个数
+  uint32_t time:10;//< 输出时间
+}out;
+uint32_t s;
+}INTERVAL_OUT;
 int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(v->value("action").toInt());
@@ -519,6 +530,30 @@ int StackActionCompiler(ICMoldItem & item, const QVariantMap* v)
         {
             item[1] = (si.dsHostID);
         }
+
+        INTERVAL_OUT interval;
+        interval.out.en = v->value("interval_en", 0).toUInt();
+        if(interval.out.en)
+        {
+            interval.out.always = v->value("interval_always_out", 0).toUInt();
+            interval.out.m_en   = v->value("interval_out_choose", 0).toUInt();
+            interval.out.id     = v->value("interval_out_id", 0).toUInt();
+            interval.out.num    = v->value("interval_number", 0).toUInt();
+            interval.out.time   = v->value("interval_out_time", 0).toUInt();
+            item.append(interval.s);
+        }
+        else item.append(0);
+        interval.out.en = v->value("intervalbox_en", 0).toUInt();
+        if(interval.out.en)
+        {
+            interval.out.always = v->value("intervalbox_always_out", 0).toUInt();
+            interval.out.m_en   = v->value("intervalbox_out_choose", 0).toUInt();
+            interval.out.id     = v->value("intervalbox_out_id", 0).toUInt();
+            interval.out.num    = v->value("intervalbox_number", 0).toUInt();
+            interval.out.time   = v->value("intervalbox_out_time", 0).toUInt();
+            item.append(interval.s);
+        }
+        else item.append(0);
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));
 
@@ -1640,6 +1675,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[0].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[0].dir2 = stackMap.value("dir2").toInt();
         stackInfo.stackData.si[0].type = p.value().toMap().value("type").toInt();
+        stackInfo.stackData.si[0].holdSel = stackMap.value("holdSel").toInt();
         stackInfo.stackData.si[0].doesBindingCounter = stackMap.value("doesBindingCounter").toInt();
         stackInfo.stackData.si[0].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[0].isOffsetEn = stackMap.value("isOffsetEn").toBool();
@@ -1670,6 +1706,7 @@ QMap<int, StackInfo> ICRobotMold::ParseStacks(const QString &stacks, bool &isOk)
         stackInfo.stackData.si[1].dir1 = stackMap.value("dir1").toInt();
         stackInfo.stackData.si[1].dir2 = stackMap.value("dir2").toInt();
         stackInfo.stackData.si[1].type = runSeq;
+        stackInfo.stackData.si[1].holdSel = 0;
         stackInfo.stackData.si[1].doesBindingCounter = isZWithYEn ? 1 : 0;
         stackInfo.stackData.si[1].counterID = stackMap.value("counterID").toInt();
         stackInfo.stackData.si[1].isOffsetEn = stackMap.value("isOffsetEn").toBool();

@@ -43,7 +43,7 @@ Rectangle {
 
     Text {
         id: currentText
-        text:currentIndex < 0 ?  "" : items[currentIndex]
+        text: currentIndex < 0 ?  "" : items[currentIndex]
         anchors.verticalCenter : parent.verticalCenter
         x:4
         width: parent.width - dropDownBox.width

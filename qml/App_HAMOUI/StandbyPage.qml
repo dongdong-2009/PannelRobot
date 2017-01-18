@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../ICCustomElement"
 import "./Theme.js" as Theme
+import "ShareData.js" as ShareData
 
 ContentPageBase
 {
@@ -20,6 +21,10 @@ ContentPageBase
     }
     AxisPosDisplayBar{
         id:posDisplayBar
+        onVisibleChanged: {
+            if(visible)
+                setCurrentState(ShareData.barStatus);
+        }
     }
     content: standbyPageContainer
     statusSection: posDisplayBar

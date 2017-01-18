@@ -5,6 +5,8 @@ Qt.include("../utils/Storage.js")
 Qt.include("../utils/stringhelper.js")
 Qt.include("../utils/utils.js")
 
+var barStatus = "worldPos";
+
 var eventType = {
     "userChanged":"userChanged",
     "knobChanged":"knobChanged",

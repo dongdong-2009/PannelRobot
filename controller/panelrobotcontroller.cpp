@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QVariant>
+#include <QTextDocument>
 #include "icappsettings.h"
 //#include "icdalhelper.h"
 #include "icconfigsaddr.h"
@@ -957,6 +958,7 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     packageDirName.chop(4);
     if(!temp.exists(packageDirName))
     {
+        qDebug()<<QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8();
         ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
     }
     temp.cd(packageDirName);
@@ -1887,3 +1889,21 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
     }
     return QString(ret);
 }
+
+bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
+{
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+    QFile f(filePath);
+
+    if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
+        return 0;
+
+    QTextStream txtOutput(&f);
+    QTextDocument contentText;
+    contentText.setHtml(content);
+    txtOutput << contentText.toPlainText() << endl;
+    f.close();
+    return 1;
+}
+
+

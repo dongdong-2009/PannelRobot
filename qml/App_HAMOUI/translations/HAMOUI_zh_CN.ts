@@ -345,14 +345,6 @@
         <source>WD</source>
         <translation>世界</translation>
     </message>
-    <message>
-        <source>Coord Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
@@ -2998,7 +2990,7 @@ please chose!</source>
     </message>
     <message>
         <source>Export Printable</source>
-        <translation></translation>
+        <translation type="unfinished">导出文本</translation>
     </message>
     <message>
         <source>In current mold</source>
@@ -3015,6 +3007,18 @@ please chose!</source>
     <message>
         <source>Ret Up</source>
         <translation>返回上层</translation>
+    </message>
+    <message>
+        <source>mainProgram:&lt;br&gt;</source>
+        <translation>主程序:&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>subProgram</source>
+        <translation>子程序</translation>
+    </message>
+    <message>
+        <source>fuction</source>
+        <translation>模块</translation>
     </message>
 </context>
 <context>
@@ -4216,6 +4220,26 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
+    </message>
+    <message>
+        <source>IO Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

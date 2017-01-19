@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>ICFileSelector</name>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">取消</translation>
+    </message>
+</context>
+<context>
     <name>ICSplashScreen</name>
     <message>
         <location filename="icsplashscreen.cpp" line="14"/>

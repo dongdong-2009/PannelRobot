@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -116,31 +116,31 @@
     <name>AlarmInfo</name>
     <message>
         <source>ALARM_NOT_INIT                 </source>
-        <translation>没初始化完</translation>
+        <translation type="vanished">没初始化完</translation>
     </message>
     <message>
         <source>ALARM_AXIS_CFG_DIFF            </source>
-        <translation>主机结构配置和手控结构配置不同</translation>
+        <translation type="vanished">主机结构配置和手控结构配置不同</translation>
     </message>
     <message>
         <source>ALARM_AXIS_CFG_ERR             </source>
-        <translation>主机结果配置参数错误</translation>
+        <translation type="vanished">主机结果配置参数错误</translation>
     </message>
     <message>
         <source>ALARM_OUT_OF_MEMORY_ERR        </source>
-        <translation>主机内存不足</translation>
+        <translation type="vanished">主机内存不足</translation>
     </message>
     <message>
         <source>ALARM_TEACH_DATA_ANALYTICAL_ERR</source>
-        <translation>教导数据解析错误</translation>
+        <translation type="vanished">教导数据解析错误</translation>
     </message>
     <message>
         <source>ALARM_TEACH_DATA_EDIT_ERR      </source>
-        <translation>教导数据编辑错误</translation>
+        <translation type="vanished">教导数据编辑错误</translation>
     </message>
     <message>
         <source>ALARM_EMERGENCY_STOP           </source>
-        <translation>紧急停止</translation>
+        <translation type="vanished">紧急停止</translation>
     </message>
     <message>
         <source>ALARM_AXIS1_ALARM_ERR</source>
@@ -168,263 +168,263 @@
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR </source>
-        <translation>运动失败</translation>
+        <translation type="vanished">运动失败</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SPEED_SET_ERR </source>
-        <translation>速度设定错误</translation>
+        <translation type="vanished">速度设定错误</translation>
     </message>
     <message>
         <source>ALARM_AXIS_OVER_SPEED_ERR </source>
-        <translation>运动过速</translation>
+        <translation type="vanished">运动过速</translation>
     </message>
     <message>
         <source>Wait Input:</source>
-        <translation>等待输入:</translation>
+        <translation type="vanished">等待输入:</translation>
     </message>
     <message>
         <source>ON over time</source>
-        <translation>通超时</translation>
+        <translation type="vanished">通超时</translation>
     </message>
     <message>
         <source>OFF over time</source>
-        <translation>断超时</translation>
+        <translation type="vanished">断超时</translation>
     </message>
     <message>
         <source>Wait Single Input:</source>
-        <translation>等待单头阀输入:</translation>
+        <translation type="vanished">等待单头阀输入:</translation>
     </message>
     <message>
         <source>Wait Double Input:</source>
-        <translation>等待双头阀输入:</translation>
+        <translation type="vanished">等待双头阀输入:</translation>
     </message>
     <message>
         <source>Connect host fail!</source>
-        <translation>连接主机失败!</translation>
+        <translation type="vanished">连接主机失败!</translation>
     </message>
     <message>
         <source>ALARM_AUTO_JUMP_ERR</source>
-        <translation>自动运行跳转错误</translation>
+        <translation type="vanished">自动运行跳转错误</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ACTION_FAIL</source>
-        <translation>轨迹运动失败</translation>
+        <translation type="vanished">轨迹运动失败</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
-        <translation>手动直线轨迹运动坐标1未设定</translation>
+        <translation type="vanished">手动直线轨迹运动坐标1未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
-        <translation>手动直线轨迹运动坐标2未设定</translation>
+        <translation type="vanished">手动直线轨迹运动坐标2未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
-        <translation>手动弧线轨迹运动坐标1未设定</translation>
+        <translation type="vanished">手动弧线轨迹运动坐标1未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
-        <translation>手动弧线轨迹运动坐标2未设定</translation>
+        <translation type="vanished">手动弧线轨迹运动坐标2未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
-        <translation>手动弧线轨迹运动坐标3未设定</translation>
+        <translation type="vanished">手动弧线轨迹运动坐标3未设定</translation>
     </message>
     <message>
         <source>ALARM_SETROUTESPEED_FAIL</source>
-        <translation>轨迹运动速度设定失败</translation>
+        <translation type="vanished">轨迹运动速度设定失败</translation>
     </message>
     <message>
         <source>ALARM_Motor_ALARM_ERR</source>
-        <translation>电机报警</translation>
+        <translation type="vanished">电机报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_RUN_ERR</source>
-        <translation>运动失败</translation>
+        <translation type="vanished">运动失败</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SPEED_SET_ERR</source>
-        <translation>速度设定错误</translation>
+        <translation type="vanished">速度设定错误</translation>
     </message>
     <message>
         <source>ALARM_AXIS_OVER_SPEED_ERR</source>
-        <translation>运动过速</translation>
+        <translation type="vanished">运动过速</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SOFT_LIMIT_P</source>
-        <translation>正极限报警</translation>
+        <translation type="vanished">正极限报警</translation>
     </message>
     <message>
         <source>ALARM_AXIS_SOFT_LIMIT_N</source>
-        <translation>负极限报警</translation>
+        <translation type="vanished">负极限报警</translation>
     </message>
     <message>
         <source>ALARM_ERROR_SERVO_WARP</source>
-        <translation>偏差过大</translation>
+        <translation type="vanished">偏差过大</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_ACC_ERR</source>
-        <translation>轨迹规划失败</translation>
+        <translation type="vanished">轨迹规划失败</translation>
     </message>
     <message>
         <source>ALARM_COUNTER_NOT_DEFINE</source>
-        <translation>计数器未定义</translation>
+        <translation type="vanished">计数器未定义</translation>
     </message>
     <message>
         <source>Unknow Err</source>
-        <translation>未知错误</translation>
+        <translation type="vanished">未知错误</translation>
     </message>
     <message>
         <source>ALARM_PROGRAM_ERR</source>
-        <translation>教导程序错误</translation>
+        <translation type="vanished">教导程序错误</translation>
     </message>
     <message>
         <source>ALARM_CFG_STORAGE_ERR</source>
-        <translation>配置参数存储失败</translation>
+        <translation type="vanished">配置参数存储失败</translation>
     </message>
     <message>
         <source>ALARM_MAHCINE_SET_ERR</source>
-        <translation>机型设定错误</translation>
+        <translation type="vanished">机型设定错误</translation>
     </message>
     <message>
         <source>ALARM_ACC_LIMIT</source>
-        <translation>加速度报警</translation>
+        <translation type="vanished">加速度报警</translation>
     </message>
     <message>
         <source>ALARM_POINT_LIMIT_P</source>
-        <translation>正极限信号报警</translation>
+        <translation type="vanished">正极限信号报警</translation>
     </message>
     <message>
         <source>ALARM_POINT_LIMIT_N</source>
-        <translation>负极限信号报警</translation>
+        <translation type="vanished">负极限信号报警</translation>
     </message>
     <message>
         <source>ALARM_NOT_SET_ORIGIN</source>
-        <translation>原点信号未设定</translation>
+        <translation type="vanished">原点信号未设定</translation>
     </message>
     <message>
         <source>ALARM_JOINT_P1_NOTSET</source>
-        <translation>手动关节运动起始坐标未设定</translation>
+        <translation type="vanished">手动关节运动起始坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_JOINT_P2_NOTSET</source>
-        <translation>手动关节运动终点坐标未设定</translation>
+        <translation type="vanished">手动关节运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_RELATIVE_LP_NOTSET</source>
-        <translation>手动直线相对移动坐标未设定</translation>
+        <translation type="vanished">手动直线相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_RELATIVE_JP_NOTSET</source>
-        <translation>手动关节相对移动坐标未设定</translation>
+        <translation type="vanished">手动关节相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
-        <translation>教导直线轨迹运动起始坐标未设定</translation>
+        <translation type="vanished">教导直线轨迹运动起始坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
-        <translation>教导直线轨迹运动终点坐标未设定</translation>
+        <translation type="vanished">教导直线轨迹运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
-        <translation>教导关节运动起始坐标未设定</translation>
+        <translation type="vanished">教导关节运动起始坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
-        <translation>教导直线相对移动坐标未设定</translation>
+        <translation type="vanished">教导直线相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
-        <translation>教导关节相对移动坐标未设定</translation>
+        <translation type="vanished">教导关节相对移动坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
-        <translation>教导弧线轨迹运动起点坐标未设定</translation>
+        <translation type="vanished">教导弧线轨迹运动起点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
-        <translation>教导弧线轨迹运动中间坐标未设定</translation>
+        <translation type="vanished">教导弧线轨迹运动中间坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
-        <translation>教导弧线轨迹运动终点坐标未设定</translation>
+        <translation type="vanished">教导弧线轨迹运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
-        <translation>教导关节运动终点坐标未设定</translation>
+        <translation type="vanished">教导关节运动终点坐标未设定</translation>
     </message>
     <message>
         <source>ALARM_ROUTE_REPLAN_ERR</source>
-        <translation>轨迹重新规划失败</translation>
+        <translation type="vanished">轨迹重新规划失败</translation>
     </message>
     <message>
         <source>ALARM_STACK_WAITE_ERR</source>
-        <translation>等待堆叠数据源超时</translation>
+        <translation type="vanished">等待堆叠数据源超时</translation>
     </message>
     <message>
         <source>ALARM_STACK_SOURCE_ERR</source>
-        <translation>堆叠数据源错误</translation>
+        <translation type="vanished">堆叠数据源错误</translation>
     </message>
     <message>
         <source>ALARM_SINGLE_DEBUG_ERR</source>
-        <translation>单步/单循环调试程序设定错误</translation>
+        <translation type="vanished">单步/单循环调试程序设定错误</translation>
     </message>
     <message>
         <source>ALARM_STORAGE_READ_ERR</source>
-        <translation>从主机FLASH读取的数据有错</translation>
+        <translation type="vanished">从主机FLASH读取的数据有错</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET_ERR</source>
-        <translation>与IO板通讯失败</translation>
+        <translation type="vanished">与IO板通讯失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_READ_ERR</source>
-        <translation>伺服绝对值位置读取失败</translation>
+        <translation type="vanished">伺服绝对值位置读取失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_CRC_ERR</source>
-        <translation>伺服绝对值位置读取校验失败</translation>
+        <translation type="vanished">伺服绝对值位置读取校验失败</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_FUNC_ERR</source>
-        <translation>伺服绝对值位置读取功能码错误</translation>
+        <translation type="vanished">伺服绝对值位置读取功能码错误</translation>
     </message>
     <message>
         <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
-        <translation>伺服绝对值位置读取超时</translation>
+        <translation type="vanished">伺服绝对值位置读取超时</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET2_ERR</source>
-        <translation>与IO板2通讯失败</translation>
+        <translation type="vanished">与IO板2通讯失败</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET3_ERR</source>
-        <translation>与IO板3通讯失败</translation>
+        <translation type="vanished">与IO板3通讯失败</translation>
     </message>
     <message>
         <source>ALARM_IO_CONNET4_ERR</source>
-        <translation>与IO板4通讯失败</translation>
+        <translation type="vanished">与IO板4通讯失败</translation>
     </message>
     <message>
         <source>ALARM_PROGRAM_CHANGE_ERR</source>
-        <translation>手控和主机教导程序不一致</translation>
+        <translation type="vanished">手控和主机教导程序不一致</translation>
     </message>
     <message>
         <source>ALARM_OVER_CURRENT</source>
-        <translation>过电流报警</translation>
+        <translation type="vanished">过电流报警</translation>
     </message>
     <message>
         <source>ALARM_ZPULSER_ERR</source>
-        <translation>Z脉冲错误</translation>
+        <translation type="vanished">Z脉冲错误</translation>
     </message>
     <message>
         <source>ALARM_NO_ZPULSER</source>
-        <translation>无Z脉冲</translation>
+        <translation type="vanished">无Z脉冲</translation>
     </message>
     <message>
         <source>ALARM_ORIGIN_DEVIATION</source>
-        <translation>原点偏移</translation>
+        <translation type="vanished">原点偏移</translation>
     </message>
 </context>
 <context>
@@ -662,11 +662,11 @@
     </message>
     <message>
         <source>Coord Select</source>
-        <translation type="unfinished"></translation>
+        <translation>坐标系选择</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
+        <translation>0:世界坐标系</translation>
     </message>
 </context>
 <context>
@@ -1193,6 +1193,50 @@
     <message>
         <source>Axis</source>
         <translation> </translation>
+    </message>
+    <message>
+        <source>JogPos</source>
+        <translation type="vanished">关节坐标</translation>
+    </message>
+    <message>
+        <source>WorldPos</source>
+        <translation type="vanished">世界坐标</translation>
+    </message>
+    <message>
+        <source>Current TableCoord:</source>
+        <translation type="vanished">当前坐标系</translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="vanished">世界坐标</translation>
+    </message>
+    <message>
+        <source>Jog Pos</source>
+        <translation type="vanished">关节坐标</translation>
+    </message>
+    <message>
+        <source>World/Jog</source>
+        <translation>世界/关节</translation>
+    </message>
+    <message>
+        <source>JogCoord</source>
+        <translation>关节坐标系</translation>
+    </message>
+    <message>
+        <source>jogPos</source>
+        <translation type="vanished">关节坐标</translation>
+    </message>
+    <message>
+        <source>worldCoord</source>
+        <translation>世界坐标系</translation>
+    </message>
+    <message>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source></source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2190,11 +2234,15 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关(短原点)</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>自动设定原点加开关(长原点)</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
+    </message>
+    <message>
+        <source>Type5</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -4984,7 +5032,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
@@ -5184,7 +5232,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation>自动设定原点加开关 {4?}</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Bad En</source>
@@ -5212,11 +5260,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -5233,6 +5281,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 5</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -5469,7 +5521,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>confirmBtn</source>
-        <translation>坐标系换算</translation>
+        <translation>确定修改</translation>
     </message>
 </context>
 <context>

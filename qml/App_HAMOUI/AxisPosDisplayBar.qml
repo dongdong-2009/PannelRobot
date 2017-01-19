@@ -27,21 +27,25 @@ Item {
             name: "jogPos"
             PropertyChanges { target: jogPos; visible: true}
             PropertyChanges { target: worldPos; visible: false}
-            PropertyChanges { target:coordDisplay;visible: false}
-            PropertyChanges { target:switchBtn;text:qsTr("JogPos")}
+            PropertyChanges { target: hint; text:qsTr("JogCoord")}
+            PropertyChanges { target: coordName; text: qsTr("")}
+            PropertyChanges { target: w; color: qsTr("gray")}
+            PropertyChanges { target: j; color: qsTr("black")}
         },
         State {
             name: "worldPos"
             PropertyChanges { target: worldPos; visible: true}
             PropertyChanges { target: jogPos; visible: false}
-            PropertyChanges { target:coordDisplay;visible: true}
-            PropertyChanges { target:switchBtn;text:qsTr("WorldPos")}
+            PropertyChanges { target: hint; text:qsTr("worldCoord")}
+            PropertyChanges { target: w; color: qsTr("black")}
+            PropertyChanges { target: j; color: qsTr("gray")}
         }
     ]
 
     ICStatusScope{
-        Row{
-            spacing: 20
+        width: 793
+        height: worldPos.height
+//        Row{
             Grid{
                 id:worldPos
                 rows: 2
@@ -50,14 +54,12 @@ Item {
                 AxisPosDisplayComponent{
                     id:m0
                     name: AxisDefine.axisInfos[0].name+qsTr("Axis")+":"
-    //                unit: AxisDefine.axisInfos[0].unit
                     unit:"mm"
                     bindStatus: "c_ro_0_32_3_900"
                 }
                 AxisPosDisplayComponent{
                     id:m1
                     name: AxisDefine.axisInfos[1].name+qsTr("Axis")+":"
-    //                unit: AxisDefine.axisInfos[1].unit
                     unit:"mm"
                     bindStatus: "c_ro_0_32_3_904"
 
@@ -65,7 +67,6 @@ Item {
                 AxisPosDisplayComponent{
                     id:m2
                     name: AxisDefine.axisInfos[2].name+qsTr("Axis")+":"
-    //                unit: AxisDefine.axisInfos[2].unit
                     unit:"mm"
                     bindStatus: "c_ro_0_32_3_908"
 
@@ -73,7 +74,6 @@ Item {
                 AxisPosDisplayComponent{
                     id:m3
                     name: AxisDefine.axisInfos[3].name+qsTr("Axis")+":"
-    //                unit: AxisDefine.axisInfos[3].unit
                     unit:"°"
                     bindStatus: "c_ro_0_32_3_912"
 
@@ -81,7 +81,6 @@ Item {
                 AxisPosDisplayComponent{
                     id:m4
                     name: AxisDefine.axisInfos[4].name+qsTr("Axis")+":"
-    //                unit: AxisDefine.axisInfos[4].unit
                     unit:"°"
                     bindStatus: "c_ro_0_32_3_916"
 
@@ -89,7 +88,6 @@ Item {
                 AxisPosDisplayComponent{
                     id:m5
                     name: AxisDefine.axisInfos[5].name+qsTr("Axis")+":"
-    //                unit: AxisDefine.axisInfos[5].unit
                     unit:"°"
                     bindStatus: "c_ro_0_32_3_920"
 
@@ -147,36 +145,22 @@ Item {
                     mode:0.001
                 }
             }
+//        }
 
-            Item{
-                id:funcArea
-                width: 800-(3*(30+90+40+4)+4+4+20);height:parent.height
-                Column{
-                    id:coordDisplay
-                    width:funcArea.width - switchBtn.width
-                    spacing: 2
-                    Text {
-                        id: hint
-                        height: 20
-                        text: qsTr("Current TableCoord:")
-                        color: m0.textColor
-                    }
-                    Text {
-                        id: coordName
-                        height: 20
-                        text: qsTr("0:BaseCoord")
-                        color: m0.textColor
-                    }
-                }
-                ICButton{
-                    id:switchBtn
-                    anchors.left: coordDisplay.right
-                    anchors.leftMargin: 10
-                    width:100
-                    height: funcArea.height-2
-                    radius: 2
-//                    text: qsTr("JogPos")
-                    onButtonClicked: {
+        Item{
+            id:funcArea
+            height:parent.height
+            anchors.right:parent.right
+            Rectangle{
+                id:switchBtn
+                y:1
+                height: parent.height-3 //39
+                width: 60
+                anchors.right: parent.right
+                anchors.rightMargin: 1
+                MouseArea{
+                    anchors.fill:parent
+                    onClicked: {
                         if(container.state == "worldPos"){
                             container.state = "jogPos";
                         }
@@ -186,12 +170,74 @@ Item {
                         ShareData.barStatus = container.state;
                     }
                 }
+                Rectangle{
+                    id:splitJW
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    height: 2
+                    width: Math.sqrt((parent.height*parent.height+ parent.width*parent.width))
+                    transformOrigin:Item.Left
+                    rotation: -Math.atan2(parent.height,parent.width)*180/Math.PI
+                    color: "green"
+                    smooth: true
+                }
+                Text {
+                    id: w
+                    anchors.left: parent.left
+                    anchors.leftMargin: 3
+                    anchors.top: parent.top
+                    anchors.topMargin: 3
+                    font.pixelSize: 20
+                    font.weight:Font.bold
+                    text: qsTr("W")
+                }
+                Text {
+                    id: j
+                    anchors.right: parent.right
+                    anchors.rightMargin: 12
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 3
+                    font.pixelSize: 20
+                    font.weight:Font.bold
+                    text: qsTr("J")
+                }
+
+            }
+            Rectangle{
+                id:splitLine
+                anchors.right: switchBtn.left
+                height: parent.height
+                width: 3
+                color: "green"
+            }
+            Column{
+                id:coordDisplay
+                property int coordIDOld: 0
+                anchors.right: splitLine.left
+                anchors.rightMargin: 20
+                spacing: 2
+                Text {
+                    id: hint
+                    height: 20
+                    color: m0.textColor
+                }
+                Text {
+                    id: coordName
+                    height: 20
+                    color: m0.textColor
+                }
             }
         }
         onRefreshTimeOut:{
-            var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
-            coords.splice(0, 0, qsTr("0:BaseCoord"));
-            coordName.text = coords[panelRobotController.iStatus(4)];
+            if(container.state == "worldPos"){
+                var coordID = panelRobotController.iStatus(4);
+                if(coordDisplay.coordIDOld !== coordID){
+                    coordDisplay.coordIDOld = coordID;
+                    var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
+                    coords.splice(0, 0, qsTr(""));
+                    coordName.text = coords[coordDisplay.coordIDOld];
+                }
+            }
         }
     }
 

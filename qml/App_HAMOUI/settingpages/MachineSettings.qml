@@ -79,6 +79,7 @@ Item {
             id:originSettingBtn
             text: qsTr("Origin Setting")
             icon: "../images/origin1.png"
+            enabled: safeAreaBtn.enabled
 
         }
 

@@ -41,7 +41,7 @@ Item {
     ICStatusScope{
         width: 793
         height: worldPos.height
-        Row{
+//        Row{
             Grid{
                 id:worldPos
                 rows: 2
@@ -141,7 +141,7 @@ Item {
                     mode:0.001
                 }
             }
-        }
+//        }
 
         Item{
             id:funcArea
@@ -174,6 +174,7 @@ Item {
             }
             Column{
                 id:coordDisplay
+                property int coordIDOld: 0
                 anchors.right: splitLine.left
                 anchors.rightMargin: 20
                 spacing: 2
@@ -191,9 +192,13 @@ Item {
         }
         onRefreshTimeOut:{
             if(container.state == "worldPos"){
-                var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
-                coords.splice(0, 0, qsTr(""));
-                coordName.text = coords[panelRobotController.iStatus(4)];
+                var coordID = panelRobotController.iStatus(4);
+                if(coordDisplay.coordIDOld !== coordID){
+                    coordDisplay.coordIDOld = coordID;
+                    var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
+                    coords.splice(0, 0, qsTr(""));
+                    coordName.text = coords[coordDisplay.coordIDOld];
+                }
             }
         }
     }

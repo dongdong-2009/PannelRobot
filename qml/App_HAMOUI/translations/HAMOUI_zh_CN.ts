@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -870,7 +870,11 @@
     </message>
     <message>
         <source>Rotate to Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转清零</translation>
+    </message>
+    <message>
+        <source>Motor 8</source>
+        <translation>禾川伺服</translation>
     </message>
 </context>
 <context>
@@ -878,6 +882,22 @@
     <message>
         <source>Axis</source>
         <translation> </translation>
+    </message>
+    <message>
+        <source>JogPos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WorldPos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current TableCoord:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1880,6 +1900,10 @@
     <message>
         <source>Type4</source>
         <translation>自动设定原点加开关(长原点)</translation>
+    </message>
+    <message>
+        <source>Type5</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3919,6 +3943,14 @@ please chose!</source>
         <source>IntervalBox En</source>
         <translation>装箱间隔输出</translation>
     </message>
+    <message>
+        <source>Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -4889,11 +4921,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -4909,6 +4941,10 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Has Group-Begin action but has not Group-End action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 5</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

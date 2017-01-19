@@ -29,16 +29,16 @@ Item {
             PropertyChanges { target: worldPos; visible: false}
             PropertyChanges { target: hint; text:qsTr("JogCoord")}
             PropertyChanges { target: coordName; text: qsTr("")}
-            PropertyChanges { target: w; color: qsTr("gray")}
-            PropertyChanges { target: j; color: qsTr("black")}
+            PropertyChanges { target: w; color: "gray"}
+            PropertyChanges { target: j; color: "black"}
         },
         State {
             name: "worldPos"
             PropertyChanges { target: worldPos; visible: true}
             PropertyChanges { target: jogPos; visible: false}
             PropertyChanges { target: hint; text:qsTr("worldCoord")}
-            PropertyChanges { target: w; color: qsTr("black")}
-            PropertyChanges { target: j; color: qsTr("gray")}
+            PropertyChanges { target: w; color: "black"}
+            PropertyChanges { target: j; color: "gray"}
         }
     ]
 
@@ -189,7 +189,7 @@ Item {
                     anchors.topMargin: 3
                     font.pixelSize: 20
                     font.weight:Font.Bold
-                    text: qsTr("W")
+                    text: "W"
                 }
                 Text {
                     id: j
@@ -199,7 +199,7 @@ Item {
                     anchors.bottomMargin: 3
                     font.pixelSize: 20
                     font.weight:Font.Bold
-                    text: qsTr("J")
+                    text: "J"
                 }
 
             }

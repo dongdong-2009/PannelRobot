@@ -29,12 +29,16 @@ Item {
             PropertyChanges { target: worldPos; visible: false}
             PropertyChanges { target: hint; text:qsTr("JogCoord")}
             PropertyChanges { target: coordName; text: qsTr("")}
+            PropertyChanges { target: w; color: qsTr("gray")}
+            PropertyChanges { target: j; color: qsTr("black")}
         },
         State {
             name: "worldPos"
             PropertyChanges { target: worldPos; visible: true}
             PropertyChanges { target: jogPos; visible: false}
             PropertyChanges { target: hint; text:qsTr("worldCoord")}
+            PropertyChanges { target: w; color: qsTr("black")}
+            PropertyChanges { target: j; color: qsTr("gray")}
         }
     ]
 
@@ -147,23 +151,57 @@ Item {
             id:funcArea
             height:parent.height
             anchors.right:parent.right
-            ICButton{
-                y:1
+            Rectangle{
                 id:switchBtn
+                y:1
                 height: parent.height-3 //39
+                width: 60
                 anchors.right: parent.right
                 anchors.rightMargin: 1
-                radius: 2
-                text:qsTr("World/Jog")
-                onButtonClicked: {
-                    if(container.state == "worldPos"){
-                        container.state = "jogPos";
+                MouseArea{
+                    anchors.fill:parent
+                    onClicked: {
+                        if(container.state == "worldPos"){
+                            container.state = "jogPos";
+                        }
+                        else{
+                            container.state = "worldPos";
+                        }
+                        ShareData.barStatus = container.state;
                     }
-                    else{
-                        container.state = "worldPos";
-                    }
-                    ShareData.barStatus = container.state;
                 }
+                Rectangle{
+                    id:splitJW
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    height: 2
+                    width: Math.sqrt((parent.height*parent.height+ parent.width*parent.width))
+                    transformOrigin:Item.Left
+                    rotation: -Math.atan2(parent.height,parent.width)*180/Math.PI
+                    color: "green"
+                    smooth: true
+                }
+                Text {
+                    id: w
+                    anchors.left: parent.left
+                    anchors.leftMargin: 3
+                    anchors.top: parent.top
+                    anchors.topMargin: 3
+                    font.pixelSize: 20
+                    font.weight:Font.bold
+                    text: qsTr("W")
+                }
+                Text {
+                    id: j
+                    anchors.right: parent.right
+                    anchors.rightMargin: 12
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 3
+                    font.pixelSize: 20
+                    font.weight:Font.bold
+                    text: qsTr("J")
+                }
+
             }
             Rectangle{
                 id:splitLine

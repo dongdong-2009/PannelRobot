@@ -1749,7 +1749,7 @@
     </message>
     <message>
         <source>Origin Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>原点设定</translation>
     </message>
 </context>
 <context>

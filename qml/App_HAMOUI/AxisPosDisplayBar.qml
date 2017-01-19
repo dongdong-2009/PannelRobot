@@ -188,7 +188,7 @@ Item {
                     anchors.top: parent.top
                     anchors.topMargin: 3
                     font.pixelSize: 20
-                    font.weight:Font.bold
+                    font.weight:Font.Bold
                     text: qsTr("W")
                 }
                 Text {
@@ -198,7 +198,7 @@ Item {
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 3
                     font.pixelSize: 20
-                    font.weight:Font.bold
+                    font.weight:Font.Bold
                     text: qsTr("J")
                 }
 

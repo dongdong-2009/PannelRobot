@@ -944,16 +944,16 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         return ret;
     }
 #ifdef WIN32
-    QString cmd = QString("cd %1 && ..\\tar -cf %2.tar %2 && move /y %2.tar %3 && del /q %2").arg("temp")
+    QString cmd = QString("cd %1 && ..\\tar -cf %2.tar %2 && move /y %2.tar %3 && del /q %2 && rd /q %2").arg("temp")
             .arg(name)
-            .arg(QDir("temp").relativeFilePath(QString("../").arg(ICAppSettings::UsbPath)));
+            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
     QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
             .arg(name)
             .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
 #endif
     qDebug()<<cmd;
-    QMessageBox::information(NULL, "tip", cmd.toUtf8());
+//    QMessageBox::information(NULL, "tip", cmd.toUtf8());
     ::system(cmd.toUtf8());
 
 #ifndef Q_WS_WIN32

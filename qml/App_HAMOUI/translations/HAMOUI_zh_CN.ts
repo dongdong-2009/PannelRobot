@@ -347,11 +347,11 @@
     </message>
     <message>
         <source>Coord Select</source>
-        <translation type="unfinished"></translation>
+        <translation>坐标系选择</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
+        <translation>0:世界坐标系</translation>
     </message>
 </context>
 <context>
@@ -878,6 +878,42 @@
     <message>
         <source>Axis</source>
         <translation> </translation>
+    </message>
+    <message>
+        <source>JogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>WorldPos</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>Current TableCoord:</source>
+        <translation>当前坐标系</translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>Jog Pos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>World/Jog</source>
+        <translation>世界/关节</translation>
+    </message>
+    <message>
+        <source>JogCoord</source>
+        <translation>关节坐标系</translation>
+    </message>
+    <message>
+        <source>jogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>worldCoord</source>
+        <translation>世界坐标系</translation>
     </message>
 </context>
 <context>
@@ -1875,11 +1911,15 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关(短原点)</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>自动设定原点加开关(长原点)</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
+    </message>
+    <message>
+        <source>Type5</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3919,6 +3959,14 @@ please chose!</source>
         <source>IntervalBox En</source>
         <translation>装箱间隔输出</translation>
     </message>
+    <message>
+        <source>Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StackActionEditorComponent</name>
@@ -4661,7 +4709,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
@@ -4861,7 +4909,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation>自动设定原点加开关 {4?}</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Bad En</source>
@@ -4910,6 +4958,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 5</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -5146,7 +5198,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>confirmBtn</source>
-        <translation>坐标系换算</translation>
+        <translation>确定修改</translation>
     </message>
 </context>
 <context>

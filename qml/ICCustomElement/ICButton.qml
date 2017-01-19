@@ -120,7 +120,7 @@ Rectangle {
             if(isAutoRepeat){
                 autoTimer.stop();
             }
-            btnReleased()
+            btnReleased();
         }
 
         onClicked: {
@@ -129,7 +129,17 @@ Rectangle {
             if(!isAutoRepeat)
                 triggered();
         }
+        onVisibleChanged: {
+            if(!visible){
+                parent.color = bgColor;
+                if(isAutoRepeat){
+                    autoTimer.stop();
+                }
+                btnReleased();
+            }
+        }
     }
+
     Timer{
         id:autoTimer
         interval: 50; running: false; repeat: true;

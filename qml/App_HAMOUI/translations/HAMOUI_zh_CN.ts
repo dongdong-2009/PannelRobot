@@ -5182,35 +5182,35 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>B Offset Of A</source>
-        <translation type="unfinished"></translation>
+        <translation>B枪相对A枪偏移</translation>
     </message>
     <message>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>C Offset Of A</source>
-        <translation type="unfinished"></translation>
+        <translation>C枪相对A枪偏移</translation>
     </message>
     <message>
         <source>Save Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>保存偏移</translation>
     </message>
     <message>
         <source>Calc B C Coord Base Sel</source>
-        <translation type="unfinished"></translation>
+        <translation>计算B枪C枪坐标系</translation>
     </message>
     <message>
         <source>B Head</source>
-        <translation type="unfinished"></translation>
+        <translation>B枪</translation>
     </message>
     <message>
         <source>C Head</source>
-        <translation type="unfinished"></translation>
+        <translation>C枪</translation>
     </message>
 </context>
 <context>

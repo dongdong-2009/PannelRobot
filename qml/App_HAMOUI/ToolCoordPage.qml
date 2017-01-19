@@ -68,12 +68,16 @@ Item {
             id:bX
             configName: qsTr("X")
             decimal: 3
+            min: cX.min
+            max: cX.max
             configValue: panelRobotController.getCustomSettings("bx", 0, "BCOffset");
         }
         ICConfigEdit{
             id:bY
             configName: qsTr("Y")
             decimal: 3
+            min: cX.min
+            max: cX.max
             configValue: panelRobotController.getCustomSettings("by", 0, "BCOffset");
         }
     }
@@ -91,6 +95,8 @@ Item {
             id:cX
             configName: qsTr("X")
             decimal: 3
+            min: -60000000.000
+            max: 60000000.000
             configValue: panelRobotController.getCustomSettings("cx", 0, "BCOffset");
 
         }
@@ -98,6 +104,8 @@ Item {
             id:cY
             decimal: 3
             configName: qsTr("Y")
+            min: cX.min
+            max: cX.max
             configValue: panelRobotController.getCustomSettings("cy", 0, "BCOffset");
         }
     }

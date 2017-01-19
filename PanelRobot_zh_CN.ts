@@ -78,7 +78,7 @@
     </message>
     <message>
         <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.ui" line="1032"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="370"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="378"/>
         <source>EN</source>
         <translation>英文</translation>
     </message>
@@ -102,13 +102,13 @@
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="307"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="375"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="315"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="383"/>
         <source>CH</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="441"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="449"/>
         <source>Min:%1
 Max:%2
 Prec:%3</source>
@@ -120,20 +120,26 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="240"/>
-        <location filename="controller/panelrobotcontroller.cpp" line="245"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="242"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="247"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="258"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="240"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="242"/>
         <source>Database is error!!</source>
         <translation>数据库错误!!</translation>
     </message>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="245"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="247"/>
         <source>Open Database fail!!</source>
         <translation>打开数据库错误!!</translation>
+    </message>
+    <message>
+        <location filename="controller/panelrobotcontroller.cpp" line="258"/>
+        <source>Mold Is Not Exist!!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -130,7 +130,7 @@ Rectangle {
                 triggered();
         }
         onVisibleChanged: {
-            if(!visible){
+            if(!visible && pressed){
                 parent.color = bgColor;
                 if(isAutoRepeat){
                     autoTimer.stop();

@@ -1108,7 +1108,7 @@
     <message>
         <location filename="../AxisPosDisplayBar.qml" line="31"/>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../AxisPosDisplayBar.qml" line="32"/>
@@ -1151,11 +1151,6 @@
     <message>
         <location filename="../AxisPosDisplayBar.qml" line="202"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../AxisPosDisplayBar.qml" line="237"/>
-        <source></source>
         <translation type="unfinished"></translation>
     </message>
 </context>

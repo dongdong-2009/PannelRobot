@@ -60,9 +60,8 @@ Item {
         CatalogButton{
             id:qkConfigBtn
             text: qsTr("QK Configs")
-            icon: "../images/settings_motor_config.png"
+            icon: "../images/settings_qk.png"
             enabled: false
-            visible: false
 
         }
 
@@ -71,6 +70,7 @@ Item {
             text: qsTr("SafeArea Configs")
             icon: "../images/logo.png"
             enabled: false
+            visible: false
 
         }
 

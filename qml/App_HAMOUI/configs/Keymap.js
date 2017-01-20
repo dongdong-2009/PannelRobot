@@ -52,12 +52,6 @@ var CMD_RETURN_ING = 11; // 原点复归中
 
 var CMD_STANDBY = 15; // 待机模式
 
-var modeToText = {
-    7:qsTr("Running"),
-    8:qsTr("Single"),
-    9:qsTr("One Cycle")
-}
-
 cmdHelper = 0x0050;
 var CMD_MANUAL_STOP = cmdHelper++;  // 手动运行停止
 var CMD_MANUAL_START1        = cmdHelper++;  // 手动运行主程序
@@ -326,8 +320,8 @@ function endSpeedCaclByTimeStop(){
     speedInfo.changeCount = 0;
 }
 
-var hwtestSequence = [ KEY_F5, KEY_F1, KEY_F4, KEY_F1, KEY_F3, KEY_F1, KEY_F2, KEY_F5];
-var recalSequence = [ KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5]
+var hwtestSequence = [KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5];
+var recalSequence = [KEY_F5, KEY_F1, KEY_F4, KEY_F1, KEY_F3, KEY_F1, KEY_F2, KEY_F5];
 var currentKeySequence = [];
 
 function matchSequenceHelper(sequence){

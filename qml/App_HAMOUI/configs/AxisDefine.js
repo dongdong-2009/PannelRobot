@@ -61,7 +61,7 @@ function changeAxisUnit(id, axisType){
     var unit = (axisType == 1 ? qsTr("mm") : qsTr("°"));
     if(axisInfos[id].unit != unit){
         axisInfos[id].unit = unit;
-//        informMonitors();
+        informMonitors();
     }
 }
 
@@ -79,4 +79,11 @@ function usedAxisNameList(){
         if(axisInfos[i].visiable) ret.push(axisInfos[i].name);
     }
     return ret;
+}
+
+function changeAxisVisble(m,num){
+    for(var i=0;i<num;++i){
+        axisInfos[i].visiable = m[i]===1?false:true;
+    }
+    informMonitors();
 }

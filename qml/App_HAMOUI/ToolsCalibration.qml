@@ -305,8 +305,10 @@ Item {
                 ICConfigEdit{
                     id:p1M0
                     configName: AxisDefine.axisInfos[0].name
-                    unit: AxisDefine.axisInfos[0].unit
-                    configAddr: AxisDefine.axisInfos[0].rangeAddr
+                    unit: "mm"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_382", configValue);
                         panelRobotController.syncConfigs();
@@ -316,8 +318,10 @@ Item {
                     id:p1M1
                     configName: AxisDefine.axisInfos[1].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[1].unit
-                    configAddr: AxisDefine.axisInfos[1].rangeAddr
+                    unit: "mm"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_383", configValue);
                         panelRobotController.syncConfigs();
@@ -327,8 +331,10 @@ Item {
                     id:p1M2
                     configName: AxisDefine.axisInfos[2].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[2].unit
-                    configAddr: AxisDefine.axisInfos[2].rangeAddr
+                    unit: "mm"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_384", configValue);
                         panelRobotController.syncConfigs();
@@ -338,8 +344,10 @@ Item {
                     id:p1M3
                     configName: AxisDefine.axisInfos[3].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[3].unit
-                    configAddr: AxisDefine.axisInfos[3].rangeAddr
+                    unit: "°"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_385", configValue);
                         panelRobotController.syncConfigs();
@@ -349,8 +357,10 @@ Item {
                     id:p1M4
                     configName: AxisDefine.axisInfos[4].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[4].unit
-                    configAddr: AxisDefine.axisInfos[4].rangeAddr
+                    unit: "°"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_386", configValue);
                         panelRobotController.syncConfigs();
@@ -360,8 +370,10 @@ Item {
                     id:p1M5
                     configName: AxisDefine.axisInfos[5].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[5].unit
-                    configAddr: AxisDefine.axisInfos[5].rangeAddr
+                    unit: "°"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_387", configValue);
                         panelRobotController.syncConfigs();
@@ -379,8 +391,10 @@ Item {
                     id:p2M0
                     configName: AxisDefine.axisInfos[0].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[0].unit
-                    configAddr: AxisDefine.axisInfos[0].rangeAddr
+                    unit: "mm"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_388", configValue);
                         panelRobotController.syncConfigs();
@@ -390,8 +404,10 @@ Item {
                     id:p2M1
                     configName: AxisDefine.axisInfos[1].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[1].unit
-                    configAddr: AxisDefine.axisInfos[1].rangeAddr
+                    unit: "mm"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_389", configValue);
                         panelRobotController.syncConfigs();
@@ -401,8 +417,10 @@ Item {
                     id:p2M2
                     configName: AxisDefine.axisInfos[2].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[2].unit
-                    configAddr: AxisDefine.axisInfos[2].rangeAddr
+                    unit: "mm"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_390", configValue);
                         panelRobotController.syncConfigs();
@@ -412,8 +430,10 @@ Item {
                     id:p2M3
                     configName: AxisDefine.axisInfos[3].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[3].unit
-                    configAddr: AxisDefine.axisInfos[3].rangeAddr
+                    unit: "°"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_391", configValue);
                         panelRobotController.syncConfigs();
@@ -423,8 +443,10 @@ Item {
                     id:p2M4
                     configName: AxisDefine.axisInfos[4].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[4].unit
-                    configAddr: AxisDefine.axisInfos[4].rangeAddr
+                    unit: "°"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_392", configValue);
                         panelRobotController.syncConfigs();
@@ -435,8 +457,10 @@ Item {
                     id:p2M5
                     configName: AxisDefine.axisInfos[5].name
                     configNameWidth: p1M0.configNameWidth
-                    unit: AxisDefine.axisInfos[5].unit
-                    configAddr: AxisDefine.axisInfos[5].rangeAddr
+                    unit: "°"
+                    min:-10000
+                    max:10000
+                    decimal: 3
                     function onValueChanged() {
                         panelRobotController.setConfigValue("m_rw_0_32_3_393", configValue);
                         panelRobotController.syncConfigs();

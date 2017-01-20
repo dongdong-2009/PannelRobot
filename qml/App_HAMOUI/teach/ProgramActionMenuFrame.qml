@@ -155,6 +155,7 @@ Rectangle{
         editor = Qt.createComponent('PathActionEditor.qml');
         var pathEditorObject = editor.createObject(actionEditorContainer);
         editor = Qt.createComponent('StackActionEditor.qml');
+        console.log(editor.errorString());
         var stackEditorObject = editor.createObject(actionEditorContainer);
         stackEditorObject.stackUpdated.connect(onStackUpdated);
         editor = Qt.createComponent('CounterActionEditor.qml');
@@ -267,7 +268,7 @@ Rectangle{
 
             linkedBtn3.text = qsTr("Output Action")
             linkedBtn3.visible = true;
-            PData.linked3Function = actionMenuObject.checkMenuTriggered;
+            PData.linked3Function = actionMenuObject.outputMenuTriggered;
         });
         actionMenuObject.conditionMenuTriggered.connect(function(){
             linkedBtnEn(true);

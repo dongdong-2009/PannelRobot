@@ -4,6 +4,7 @@ import "../Theme.js" as Theme
 import "Teach.js" as Teach
 import "../../utils/utils.js" as Utils
 import "../../utils/stringhelper.js" as ICString
+import "../../utils/Storage.js" as Storage
 //import com.szhc.axis 1.0
 
 import "../../ICCustomElement"
@@ -83,6 +84,7 @@ Rectangle {
                 PropertyChanges { target: newRecord; enabled:false;}
                 PropertyChanges { target: loadRecord; enabled:false;}
                 PropertyChanges { target: copyRecord; enabled:false;}
+                PropertyChanges { target: delRecord; enabled:false;}
                 PropertyChanges { target: exportRecord; visible:true;}
                 PropertyChanges { target: recordsView; model:recordsModel;isSelectable:true;}
             },
@@ -92,6 +94,7 @@ Rectangle {
                 PropertyChanges { target: loadRecord; enabled:false;}
                 PropertyChanges { target: copyRecord; enabled:false;}
                 PropertyChanges { target: delRecord; enabled:false;}
+                PropertyChanges { target: returnUp; visible:false;}
                 PropertyChanges { target: recordsView; model:backupPackageModel;}
             },
             State {
@@ -101,6 +104,7 @@ Rectangle {
                 PropertyChanges { target: copyRecord; enabled:false;}
                 PropertyChanges { target: delRecord; enabled:false;}
                 PropertyChanges { target: importRecord; visible:true;}
+                PropertyChanges { target: returnUp; visible:true;}
                 PropertyChanges { target: viewBackupRecords; visible:false;}
                 PropertyChanges {
                     target: recordsView;
@@ -110,6 +114,16 @@ Rectangle {
 
             }
         ]
+        onStateChanged: {
+            if(state == "exportMode"){
+                recordsView.model = null;
+                for(var i = 0, len = recordsModel.count; i < len; ++i){
+                    recordsModel.setProperty(i, "isSelected", false);
+                }
+                recordsView.model = recordsModel;
+            }
+        }
+
         Row{
             id:infoContainer
             x:10
@@ -247,6 +261,8 @@ Rectangle {
             property bool isSelectable: false
             property string openBackupPackage: ""
 
+
+
             id:recordsView
             width: parent.width * 0.8
             height: parent.height  - infoContainer.height - infoContainer.y - usbContainer.height - usbContainer.anchors.topMargin - anchors.topMargin - searchContainer.height - searchContainer.anchors.topMargin
@@ -273,12 +289,7 @@ Rectangle {
                         onIsCheckedChanged: {
                             recordsView.model.setProperty(index, "isSelected", isChecked);
                         }
-                        onVisibleChanged: {
-                            if(!visible){
-                                isChecked = false;
-                            }
-                        }
-
+                        isChecked: isSelected
                     }
 
                     Item{
@@ -385,6 +396,7 @@ Rectangle {
                         return;
                     }
                     if(panelRobotController.deleteRecord(selectName.text)){
+                        Storage.setSetting(selectName.text + "_valve", "");
                         recordsModel.remove(recordsView.currentIndex);
                     }
                 }
@@ -418,16 +430,35 @@ Rectangle {
                 id:exportPrintableRecord
                 text: qsTr("Export Printable")
                 height: exportRecord.height
-//                visible: exportRecord.visible
-                visible: false
+                visible: exportRecord.visible
+//                visible: false
                 onButtonClicked: {
                     var record;
+                    var toTranslate;
+                    var tmpStr;
                     for(var i = 0; i < recordsModel.count; ++i){
+                        var recordPrograms = "";
                         record = recordsModel.get(i);
                         if(record.isSelected){
-//                            exportMolds.push(record.name);
-                            console.log(panelRobotController.readRecord(record.name));
+                            toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name));
+                            for(var j=0;j<toTranslate.length;++j)
+                            {
+                                if(j === 0){
+                                    tmpStr = qsTr("mainProgram:<br>") + Teach.programsToText(toTranslate[j])+"<br>";
+                                }
+                                else{
+                                    tmpStr = qsTr("subProgram")+j+":<br>" + Teach.programsToText(toTranslate[j])+"<br>";
+                                }
+                                recordPrograms += tmpStr;
+                            }
 
+
+                            toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
+                            for(var k=0;k<toTranslate.length;++k){
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + Teach.programsToText(JSON.parse(toTranslate[i].program))+"<br>";
+                                recordPrograms += tmpStr;
+                            }
+                            panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);
                         }
                     }
                 }
@@ -481,6 +512,15 @@ Rectangle {
                         usbModel.append(recordsView.createRecordItem(molds[i], undefined));
                     }
                     recordPage.state = "openMode";
+                }
+            }
+            ICButton{
+                id:returnUp
+                text: qsTr("Ret Up")
+                height: loadRecord.height
+                visible: importFromUsb.isChecked
+                onButtonClicked: {
+                    recordPage.state = "importMode";
                 }
             }
         }

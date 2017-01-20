@@ -4,7 +4,6 @@ SOURCES = *.qml \
           *.js \
 teach/*.js \
 teach/*.qml \
-configs/* \
 settingpages/* \
 ../ICCustomElement/* \
 teach/extents/*.qml \

@@ -304,7 +304,7 @@ Item {
         }
 
         Item{
-            width:coutnerContainer.width
+            width:600
             height:dir0.height
             z:10
             visible: !dataSourceSel.visible

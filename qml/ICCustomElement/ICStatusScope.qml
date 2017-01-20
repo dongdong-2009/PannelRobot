@@ -4,7 +4,12 @@ import './ICStatusScope.js' as PData
 
 Item {
     property alias refreshInterval: refreshTimer.interval
+    function dataStyle(ori){
+        return ori
+    }
+
     id:container
+    signal refreshTimeOut()
 
     Component.onCompleted: {
         PData.deepFindStatus(container)
@@ -19,10 +24,11 @@ Item {
             var t;
             for(var i = 0; i < count; ++i){
                 w = PData.status[i];
-                t = panelRobotController.statusValueText(w.bindStatus);
+                t = dataStyle(panelRobotController.statusValueText(w.bindStatus));
                 if( t !== w.text)
                     w.text = t;
             }
+            refreshTimeOut();
         }
     }
 }

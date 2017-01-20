@@ -219,7 +219,7 @@ MouseArea{
         /****************************************/
         ICButton{
             id:niujuBtn
-            visible: false
+            visible: true
             text: qsTr("niuju >>")
             x:parent.width - width
             anchors.top:analogDetailsBtn.bottom
@@ -268,6 +268,12 @@ MouseArea{
 
                 ICStatusScope{
                     anchors.centerIn: parent
+                    function dataStyle(ori){
+                        var v = parseInt(ori);
+                        if(v>32767)v-=65535;
+                        return v;
+                    }
+
                     Column{
                         Row{
                             Text {

@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QVariant>
+#include <QTextDocument>
 #include "icappsettings.h"
 //#include "icdalhelper.h"
 #include "icconfigsaddr.h"
@@ -218,6 +219,7 @@ void PanelRobotController::Init()
     //    InitMainView();
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
+    qApp->installTranslator(&configsTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
 
     ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
@@ -543,10 +545,14 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
     }
     bool ret = translator.load(qml.filePath(name));
     QString language = getCustomSettings("Language", "CN");
-    if(language == "CN")
+    if(language == "CN"){
         panelRoboTranslator_.load(":/PanelRobot_zh_CN.qm");
-    else
+        configsTranslator_.load(qml.filePath("configs_zh_CN.qm"));
+    }
+    else{
         panelRoboTranslator_.load(":/PanelRobot_en_US.qm");
+        configsTranslator_.load(qml.filePath("configs_en_US.qm"));
+    }
     InitMainView();
     return ret;
 }
@@ -952,6 +958,7 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     packageDirName.chop(4);
     if(!temp.exists(packageDirName))
     {
+        qDebug()<<QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8();
         ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
     }
     temp.cd(packageDirName);
@@ -1882,3 +1889,21 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
     }
     return QString(ret);
 }
+
+bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
+{
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+    QFile f(filePath);
+
+    if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
+        return 0;
+
+    QTextStream txtOutput(&f);
+    QTextDocument contentText;
+    contentText.setHtml(content);
+    txtOutput << contentText.toPlainText() << endl;
+    f.close();
+    return 1;
+}
+
+

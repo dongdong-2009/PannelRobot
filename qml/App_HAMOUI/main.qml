@@ -953,25 +953,39 @@ Rectangle {
             }else refreshTimer.automodeBtnOld = 0;
         }
 
-    function switchMoldByIOStatus(){
-        var moldbyIOData = Mdata.moldbyIOData;
-        var btnStatus = [];
-        var record;
-        var curMode = panelRobotController.currentMode();
-        for(var i=0;i<moldbyIOData.length;++i){
-            btnStatus[i] = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
-            record = moldbyIOData[i].mold;
-            if(btnStatus[i]){
-                panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
-                if(btnStatus[i] != refreshTimer.btnStatusOld[i]){
-                    refreshTimer.btnStatusOld[i] = btnStatus[i];
-                    if(!panelRobotController.loadRecord(record))break;
-                    ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+        function switchMoldByIOStatus(){
+            var moldbyIOData = Mdata.moldbyIOData;
+            var btnStatus;
+            var btnStatusOldTmp = refreshTimer.btnStatusOld;
+            var record;
+            var curMode;
+            for(var i=0;i<moldbyIOData.length;++i){
+                btnStatus = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
+                record = moldbyIOData[i].mold;
+                curMode = panelRobotController.currentMode();
+                if(btnStatus){
+                    if(btnStatus != btnStatusOldTmp[i]){
+                        btnStatusOldTmp[i] = btnStatus;
+                        if(curMode === Keymap.CMD_ORIGIN || curMode === Keymap.CMD_RETURN ||
+                                curMode === Keymap.CMD_ORIGIN_ING || curMode === Keymap.CMD_RETURN_ING)
+                            continue;
+                        panelRobotController.modifyConfigValue(1,Keymap.CMD_CONFIG);
+                        if(panelRobotController.loadRecord(record)){
+                            ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                        }
+                        if(curMode === Keymap.CMD_RUNNING || curMode === Keymap.CMD_SINGLE ||
+                                curMode === Keymap.CMD_ONE_CYCLE)
+                           curMode = Keymap.CMD_AUTO;
+                        panelRobotController.modifyConfigValue(1,curMode);
+                    }
                 }
-                panelRobotController.sendKeyCommandToHost(curMode);
-            }else refreshTimer.btnStatusOld[i] = 0;
+                else{
+                    btnStatusOldTmp[i] = 0;
+                }
+            }
+            refreshTimer.btnStatusOld = btnStatusOldTmp;
+    //        console.log(refreshTimer.btnStatusOld);
         }
-    }
 
     Timer{
         id:refreshTimer

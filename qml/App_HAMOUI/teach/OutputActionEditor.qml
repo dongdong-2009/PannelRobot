@@ -4,6 +4,7 @@ import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../configs/IOConfigs.js" as IOConfigs
+import "../../utils/utils.js" as Utils
 
 
 Item {
@@ -13,31 +14,45 @@ Item {
         var ret = [];
         var mD;
         var data;
-        if(normalY.isChecked){
-            mD = yModel;
-
-        }else if(euY.isChecked){
-            mD = euYModel;
-        }
-        else if(mY.isChecked)
-            mD = mYModel;
-        else if(singleY.isChecked)
-            mD = singleYModel;
-        else if(holdDoubleY.isChecked)
-            mD = holdDoubleYModel;
-        else
-            mD = timeYModel;
+        if(normalY.isChecked) mD = yModel;
+        else if(euY.isChecked) mD = euYModel;
+        else if(mY.isChecked) mD = mYModel;
+        else if(singleY.isChecked) mD = singleYModel;
+        else if(holdDoubleY.isChecked) mD = holdDoubleYModel;
+        else if(timeY.isChecked) mD = timeYModel;
+        else if(intervalY.isChecked) mD = intervalYModel;
+        else mD = intervalMModel
         for(var i = 0; i < mD.count; ++i)
         {
             data = mD.get(i);
             if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delay.configValue));
+                if(mD==intervalYModel||mD==intervalMModel)
+                ret.push(Teach.generateIntervalOutputAction(always.isChecked,
+                                                            count.configValue == 0?false:true,
+                                                            isOn,
+                                                            data.hwPoint,
+                                                            data.board,
+                                                            count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText()),
+                                                            interval.configValue,
+                                                            delay.configValue));
+                else ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delay.configValue));
                 break;
             }
         }
         return ret;
     }
+    function updateCounters(){
+        count.configValue = -1;
+        var countersStrList = Teach.counterManager.countersStrList();
+        countersStrList.splice(0, 0, qsTr("Self"));
+        count.items = countersStrList;
+    }
+    onVisibleChanged: {
+        if(visible)
+            updateCounters();
+    }
+
     width: parent.width
     height: parent.height
 
@@ -45,7 +60,7 @@ Item {
         spacing: 4
         ICButtonGroup{
             id:typeGroup
-            spacing: 20
+            spacing: 2
             mustChecked: true
             checkedIndex: 0
             ICCheckBox{
@@ -54,12 +69,22 @@ Item {
                 isChecked: true
             }
             ICCheckBox{
-                id:euY
-                text: qsTr("EUY")
-            }
-            ICCheckBox{
                 id:mY
                 text: qsTr("M")
+            }
+            ICCheckBox{
+                id:timeY
+                text: qsTr("Time Y")
+                visible: timeYs.length > 0
+            }
+            ICCheckBox{
+                id:intervalY
+                text: qsTr("Interval Y")
+                visible: timeYs.length > 0
+            }
+            ICCheckBox{
+                id:intervalM
+                text: qsTr("Interval M")
             }
             ICCheckBox{
                 id:singleY
@@ -70,9 +95,8 @@ Item {
                 text: qsTr("Hold Double Y")
             }
             ICCheckBox{
-                id:timeY
-                text: qsTr("Time Y")
-                visible: timeYs.length > 0
+                id:euY
+                text: qsTr("EUY")
             }
         }
         Rectangle{
@@ -100,6 +124,12 @@ Item {
             }
             ListModel{
                 id:timeYModel
+            }
+            ListModel{
+                id:intervalYModel
+            }
+            ListModel{
+                id:intervalMModel
             }
 
             GridView{
@@ -142,6 +172,8 @@ Item {
                     if(singleY.isChecked) return singleYModel;
                     if(holdDoubleY.isChecked) return holdDoubleYModel;
                     if(timeY.isChecked) return timeYModel;
+                    if(intervalY.isChecked) return intervalYModel;
+                    if(intervalM.isChecked) return intervalMModel;
                     return null;
                 }
 
@@ -182,14 +214,14 @@ Item {
         }
 
         Row{
-            spacing: 20
+            spacing: 5
             ICButtonGroup{
                 id:statusGroup
                 checkedItem: onBox
                 layoutMode: 0
                 isAutoSize: true
                 mustChecked: true
-                spacing: 20
+                spacing: 3
                 ICCheckBox{
                     id:onBox
                     text: qsTr("ON")
@@ -199,19 +231,42 @@ Item {
                     id:offBox
                     text: qsTr("OFF")
                 }
-
+            }
+            ICCheckBox{
+                id:always
+                text: qsTr("always out")
+                visible: intervalY.isChecked||intervalM.isChecked
             }
 
             ICConfigEdit{
                 id:delay
-                configName: timeY.isChecked ? qsTr("Act Time:"): qsTr("Delay:")
+                configName: (timeY.isChecked||
+                             intervalY.isChecked||
+                             intervalM.isChecked) ? qsTr("Act Time:"): qsTr("Delay:")
                 unit: qsTr("s")
-                width: 100
+                inputWidth: 50
                 height: 24
                 visible: true
                 z:1
                 configAddr: "s_rw_0_32_1_1201"
                 configValue: "0.0"
+            }
+            ICConfigEdit{
+                id:interval
+                configName: qsTr("interval number:")
+                inputWidth: 50
+                height: 24
+                visible: intervalY.isChecked||intervalM.isChecked
+                z:1
+                configValue: "10"
+            }
+            ICComboBoxConfigEdit{
+                id:count
+                visible: intervalY.isChecked||intervalM.isChecked
+                configName: qsTr("Count Binding")
+                popupMode: 1
+                popupHeight: 50
+                z:1
             }
         }
     }
@@ -263,6 +318,20 @@ Item {
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
             timeYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.TIMEY_BOARD_START));
+        }
+
+        yDefines = IOConfigs.teachTy;
+        intervalY.visible = yDefines.length > 0;
+        for(i = 0, l = yDefines.length; i < l; ++i){
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            intervalYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + parseInt(yDefine.y1Point / 32)));
+        }
+
+        yDefines = IOConfigs.teachMy;
+        intervalM.visible = yDefines.length > 0;
+        for(i = 0, l = yDefines.length; i < l; ++i){
+            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
+            intervalMModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.M_BOARD_0));
         }
 
     }

@@ -41,27 +41,27 @@ Item {
                 id:axisPly
                 text: qsTr("Axis Ply")
                 isChecked: true
-//                visible: false
+                visible: false
             }
             ICCheckBox{
                 id:analogControl
                 text: qsTr("Analog Control")
-//                visible: false
+                visible: false
             }
             ICCheckBox{
                 id:deltaJumpControl
                 text: qsTr("Delta Jump Control")
-//                visible: false
+                visible: false
             }
             ICCheckBox{
                 id:safeRangeControl
                 text: qsTr("Safe Range Control")
-//                visible: false
+                visible: false
             }
             ICCheckBox{
                 id:singleStack
                 text: qsTr("Single Stack")
-//                isChecked: true
+                isChecked: true
             }
             ICCheckBox{
                 id:switchCoord

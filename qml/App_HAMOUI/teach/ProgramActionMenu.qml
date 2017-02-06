@@ -213,7 +213,7 @@ Rectangle {
             icon: "../images/action_item_more.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
-            visible: false
+//            visible: false
             onButtonClicked: extentMenuTriggered()
         }
 

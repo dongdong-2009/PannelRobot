@@ -111,7 +111,7 @@ Item {
             id:p1m0
             configName: AxisDefine.axisInfos[0].name
             unit: "mm"
-            configNameWidth: 15
+            configNameWidth: 18
             decimal: 3
             min:-10000
         }

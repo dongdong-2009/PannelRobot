@@ -29,19 +29,23 @@ Item {
             PropertyChanges { target: worldPos; visible: false}
             PropertyChanges { target: hint; text:qsTr("JogCoord")}
             PropertyChanges { target: coordName; text: qsTr("")}
+            PropertyChanges { target: w; color: "gray"}
+            PropertyChanges { target: j; color: "black"}
         },
         State {
             name: "worldPos"
             PropertyChanges { target: worldPos; visible: true}
             PropertyChanges { target: jogPos; visible: false}
             PropertyChanges { target: hint; text:qsTr("worldCoord")}
+            PropertyChanges { target: w; color: "black"}
+            PropertyChanges { target: j; color: "gray"}
         }
     ]
 
     ICStatusScope{
         width: 793
-        height: worldPos.height
-        Row{
+        height: 42
+//        Row{
             Grid{
                 id:worldPos
                 rows: 2
@@ -141,29 +145,63 @@ Item {
                     mode:0.001
                 }
             }
-        }
+//        }
 
         Item{
             id:funcArea
             height:parent.height
             anchors.right:parent.right
-            ICButton{
-                y:1
+            Rectangle{
                 id:switchBtn
+                y:1
                 height: parent.height-3 //39
+                width: 60
                 anchors.right: parent.right
                 anchors.rightMargin: 1
-                radius: 2
-                text:qsTr("World/Jog")
-                onButtonClicked: {
-                    if(container.state == "worldPos"){
-                        container.state = "jogPos";
+                MouseArea{
+                    anchors.fill:parent
+                    onClicked: {
+                        if(container.state == "worldPos"){
+                            container.state = "jogPos";
+                        }
+                        else{
+                            container.state = "worldPos";
+                        }
+                        ShareData.barStatus = container.state;
                     }
-                    else{
-                        container.state = "worldPos";
-                    }
-                    ShareData.barStatus = container.state;
                 }
+                Rectangle{
+                    id:splitJW
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    height: 2
+                    width: Math.sqrt((parent.height*parent.height+ parent.width*parent.width))
+                    transformOrigin:Item.Left
+                    rotation: -Math.atan2(parent.height,parent.width)*180/Math.PI
+                    color: "green"
+                    smooth: true
+                }
+                Text {
+                    id: w
+                    anchors.left: parent.left
+                    anchors.leftMargin: 3
+                    anchors.top: parent.top
+                    anchors.topMargin: 3
+                    font.pixelSize: 20
+                    font.weight:Font.Bold
+                    text: "W"
+                }
+                Text {
+                    id: j
+                    anchors.right: parent.right
+                    anchors.rightMargin: 12
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 3
+                    font.pixelSize: 20
+                    font.weight:Font.Bold
+                    text: "J"
+                }
+
             }
             Rectangle{
                 id:splitLine
@@ -174,6 +212,7 @@ Item {
             }
             Column{
                 id:coordDisplay
+                property int coordIDOld: 0
                 anchors.right: splitLine.left
                 anchors.rightMargin: 20
                 spacing: 2
@@ -191,9 +230,13 @@ Item {
         }
         onRefreshTimeOut:{
             if(container.state == "worldPos"){
-                var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
-                coords.splice(0, 0, qsTr(""));
-                coordName.text = coords[panelRobotController.iStatus(4)];
+                var coordID = panelRobotController.iStatus(4);
+                if(coordDisplay.coordIDOld !== coordID){
+                    coordDisplay.coordIDOld = coordID;
+                    var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
+                    coords.splice(0, 0, qsTr(""));
+                    coordName.text = coords[coordDisplay.coordIDOld];
+                }
             }
         }
     }

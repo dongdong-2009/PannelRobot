@@ -811,6 +811,7 @@ actions.F_CMD_LINE_RELATIVE_POSE = actHelper++; 	   //< 相对姿势直线运动
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
+actions.F_CMD_IO_INTERVAL_OUTPUT = 201;   //< IO点间隔输出
 actions.F_CMD_STACK0 = 300;
 actions.F_CMD_COUNTER = 400; //< 计数器
 actions.F_CMD_COUNTER_CLEAR = 401;
@@ -1041,6 +1042,21 @@ var generateOutputAction = function(point, type, status, valveID, time){
     return ret;
 }
 
+var generateIntervalOutputAction = function(type,isBindingCount, status,id,board,counterID, cnt, acTime){
+    var ret =
+            {
+        "action":actions.F_CMD_IO_INTERVAL_OUTPUT,
+        "type":type,
+        "isBindingCount":isBindingCount,
+        "status": status,
+        "id":id,
+        "board":board,
+        "counterID":counterID,
+        "cnt":cnt,
+        "acTime":acTime,
+    };
+    return ret;
+}
 
 var generateWaitAction = function(which, type, status, limit){
     return {
@@ -1429,6 +1445,17 @@ var outputActionToStringHandler = function(actionObject){
     }
 }
 
+var intervalOutputActionToStringHandler = function(actionObject){
+
+    var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+    return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
+            getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
+            + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
+            actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
+            +counterID1;
+}
+
+
 var syncBeginActionToStringHandler = function(actionObject){
     return qsTr("Sync Begin");
 }
@@ -1669,6 +1696,7 @@ actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL_BACK, moduleCallBackActi
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL0, callModuleActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_IO_INTERVAL_OUTPUT, intervalOutputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);

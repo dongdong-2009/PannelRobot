@@ -915,6 +915,10 @@
         <source>worldCoord</source>
         <translation>世界坐标系</translation>
     </message>
+    <message>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -2040,6 +2044,30 @@
     <message>
         <source>Act Time:</source>
         <translation>动作时间:</translation>
+    </message>
+    <message>
+        <source>Self</source>
+        <translation>自身</translation>
+    </message>
+    <message>
+        <source>Interval Y</source>
+        <translation>间隔输出Y</translation>
+    </message>
+    <message>
+        <source>Interval M</source>
+        <translation>间隔输出M</translation>
+    </message>
+    <message>
+        <source>always out</source>
+        <translation>一直输出</translation>
+    </message>
+    <message>
+        <source>interval number:</source>
+        <translation>间隔个数</translation>
+    </message>
+    <message>
+        <source>Count Binding</source>
+        <translation>计数器</translation>
     </message>
 </context>
 <context>
@@ -4962,6 +4990,26 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Type 5</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>IntervalOutput:</source>
+        <translation>间隔输出:</translation>
+    </message>
+    <message>
+        <source>Interval</source>
+        <translation>间隔</translation>
+    </message>
+    <message>
+        <source>,</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Always out</source>
+        <translation>一直输出</translation>
+    </message>
+    <message>
+        <source>Time out</source>
+        <translation>时间输出</translation>
     </message>
 </context>
 <context>

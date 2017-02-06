@@ -1418,7 +1418,7 @@ Item {
                 id:safe3SafeSignal2Dir
                 configName: qsTr("Reverse")
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_28_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                    panelRobotController.setConfigValue("s_rw_28_1_0_228",safe3SafeSignal2Dir.isChecked?1:0);
                 }
             }
 
@@ -1449,7 +1449,7 @@ Item {
                 id:safe3SafeSignal3Dir
                 configName: qsTr("Reverse")
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_29_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                    panelRobotController.setConfigValue("s_rw_29_1_0_228",safe3SafeSignal3Dir.isChecked?1:0);
                 }
             }
 
@@ -1482,7 +1482,7 @@ Item {
                 id:safe3SafeSignal4Dir
                 configName: qsTr("Reverse")
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_30_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                    panelRobotController.setConfigValue("s_rw_30_1_0_228",safe3SafeSignal4Dir.isChecked?1:0);
                 }
             }
 
@@ -1513,7 +1513,7 @@ Item {
                 id:safe3SafeSignal5Dir
                 configName: qsTr("Reverse")
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_31_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                    panelRobotController.setConfigValue("s_rw_31_1_0_228",safe3SafeSignal5Dir.isChecked?1:0);
                 }
             }
 
@@ -1544,7 +1544,7 @@ Item {
                 id:safe3SafeSignal6Dir
                 configName: qsTr("Reverse")
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_0_1_0_229",safe3SafeSignalDir.isChecked?1:0);
+                    panelRobotController.setConfigValue("s_rw_0_1_0_229",safe3SafeSignal6Dir.isChecked?1:0);
                 }
             }
 
@@ -1655,8 +1655,8 @@ Item {
             safe3SafeSignal5Set.configValue = panelRobotController.getConfigValue("s_rw_8_7_0_229");
             safe3Axis6Set.configValue = panelRobotController.getConfigValue("s_rw_20_4_0_227");
             safe3SafeSignal6Dir.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_229");
-            safe3SafeSignal6Set.configValue = panelRobotController.getConfigValue("s_rw_13_7_0_228");
-            safe3UseIt.isChecked = panelRobotController.getConfigValue("s_rw_15_7_0_229");
+            safe3SafeSignal6Set.configValue = panelRobotController.getConfigValue("s_rw_15_7_0_229");
+            safe3UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
         }
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});
         buttonModel.append({"typename":safe2.typename,"id":safe2.type_id});

@@ -68,16 +68,16 @@ ContentPageBase {
                 textColor: getChecked() ? "yellow" : "black"
 
             }
-//            TabMenuItem{
-//                id:toolsCoordBtn
-//                width: 100
-//                height: pdata.menuItemHeight
-//                itemText: qsTr("toolcoord")
-//                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-//                textFont.pixelSize: getChecked() ? 18 : 16
-//                textColor: getChecked() ? "yellow" : "black"
+            TabMenuItem{
+                id:toolsCoordBtn
+                width: 100
+                height: pdata.menuItemHeight
+                itemText: qsTr("toolcoord")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
 
-//            }
+            }
             TabMenuItem {
                 id: debugprint
                 width: 80
@@ -138,8 +138,8 @@ ContentPageBase {
             var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
             pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
 
-//            var toolCoord = Qt.createComponent('ToolCoordPage.qml');
-//            pageContainer.addPage(toolCoord.createObject(pageContainer));
+            var toolCoord = Qt.createComponent('ToolCoordPage.qml');
+            pageContainer.addPage(toolCoord.createObject(pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');
             pageContainer.addPage(debugprintClass.createObject(pageContainer));
             var jogClass = Qt.createComponent('DebugPage.qml');
@@ -165,7 +165,7 @@ ContentPageBase {
     statusSection: posDisplayBar
 
 
-    Component.onCompleted: {
-        posDisplayBar.setJogPosVisible(false);
-    }
+//    Component.onCompleted: {
+//        posDisplayBar.setJogPosVisible(false);
+//    }
 }

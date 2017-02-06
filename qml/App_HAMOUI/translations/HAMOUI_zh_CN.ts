@@ -915,6 +915,10 @@
         <source>worldCoord</source>
         <translation>世界坐标系</translation>
     </message>
+    <message>
+        <source></source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -3604,6 +3608,54 @@ please chose!</source>
     <message>
         <source>confirmBtn</source>
         <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>Safe Area3</source>
+        <translation>类型3</translation>
+    </message>
+    <message>
+        <source>SafePo</source>
+        <translation>安全信号1</translation>
+    </message>
+    <message>
+        <source>Reverse</source>
+        <translation>反向</translation>
+    </message>
+    <message>
+        <source>SafeSig1</source>
+        <translation>安全信号1</translation>
+    </message>
+    <message>
+        <source>SafeSig2</source>
+        <translation>安全信号2</translation>
+    </message>
+    <message>
+        <source>SafeSig3</source>
+        <translation>安全信号3</translation>
+    </message>
+    <message>
+        <source>SafeSig4</source>
+        <translation>安全信号4</translation>
+    </message>
+    <message>
+        <source>Axis4</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>SafeSig5</source>
+        <translation>安全信号5</translation>
+    </message>
+    <message>
+        <source>Axis5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>SafeSig6</source>
+        <translation>安全信号6</translation>
+    </message>
+    <message>
+        <source>Axis6</source>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -44,7 +44,7 @@ Item {
 
     ICStatusScope{
         width: 793
-        height: worldPos.height
+        height: 42
 //        Row{
             Grid{
                 id:worldPos

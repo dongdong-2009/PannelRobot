@@ -69,6 +69,7 @@ Item {
             id:confirmBtn1
             text:qsTr("confirmBtn")
             anchors.right: safeAreaPic1.right
+            anchors.rightMargin: 10
             anchors.top:safeAreaPic1.top
             height: useIt.height
             onButtonClicked: {
@@ -262,6 +263,15 @@ Item {
                         axis1Set.items = axis;
                         axis2Set.items = axis;
                         axis3Set.items = axis;
+                        safe2Axis1Set.items = axis;
+                        safe2Axis2Set.items = axis;
+                        safe2Axis3Set.items = axis;
+                        safe3Axis1Set.items = axis;
+                        safe3Axis2Set.items = axis;
+                        safe3Axis3Set.items = axis;
+                        safe3Axis4Set.items = axis;
+                        safe3Axis5Set.items = axis;
+                        safe3Axis6Set.items = axis;
                     }
                     Component.onCompleted: {
                         AxisDefine.registerMonitors(axis1Set);
@@ -1136,6 +1146,7 @@ Item {
             id:confirmBtn2
             text:qsTr("confirmBtn")
             anchors.right: safeAreaPic2.right
+            anchors.rightMargin: 10
             anchors.top:safeAreaPic2.top
             height: safe2UseIt.height
             onButtonClicked: {
@@ -1177,16 +1188,6 @@ Item {
                 configValue: -1
                 configNameWidth: safe2MaxPos1Set.configNameWidth
                 popupHeight: 120
-                function onAxisDefinesChanged(){
-                    var axis = AxisDefine.usedAxisNameList();
-                    axis.unshift(qsTr("NO"));
-                    safe2Axis1Set.items = axis;
-                    safe2Axis2Set.items = axis;
-                    safe2Axis3Set.items = axis;
-                }
-                Component.onCompleted: {
-                    AxisDefine.registerMonitors(safe2Axis1Set);
-                }
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
                 }
@@ -1309,6 +1310,261 @@ Item {
         }
     }
 
+    Item {
+        id: safe3
+        property string typename: qsTr("Safe Area3")
+        property int type_id: 2
+        Image {
+            id: safeAreaPic3
+//            source: "../images/safe_area2.png"
+            width: parent.width-300
+            height: parent.height
+            smooth: true
+        }
+        ICButton{
+            id:confirmBtn3
+            text:qsTr("confirmBtn")
+            anchors.right: safeAreaPic3.right
+            anchors.rightMargin: 10
+            anchors.top:safeAreaPic3.top
+            height: safe3UseIt.height
+            onButtonClicked: {
+                showCurrentSafeArea(2);
+                safe3Axis1Set.onValueChanged();
+                safe3SafeSignalDir.onValueChanged();
+                safe3SafeSignalSet.onValueChanged();
+                safe3Axis2Set.onValueChanged();
+                safe3SafeSignal2Dir.onValueChanged();
+                safe3SafeSignal2Set.onValueChanged();
+                safe3Axis3Set.onValueChanged();
+                safe3SafeSignal3Dir.onValueChanged();
+                safe3SafeSignal3Set.onValueChanged();
+                safe3Axis4Set.onValueChanged();
+                safe3SafeSignal4Dir.onValueChanged();
+                safe3SafeSignal4Set.onValueChanged();
+                safe3Axis5Set.onValueChanged();
+                safe3SafeSignal5Dir.onValueChanged();
+                safe3SafeSignal5Set.onValueChanged();
+                safe3Axis6Set.onValueChanged();
+                safe3SafeSignal6Dir.onValueChanged();
+                safe3SafeSignal6Set.onValueChanged();
+                safe3UseIt.onValueChanged();
+                panelRobotController.syncConfigs();
+            }
+        }
+        Grid{
+            columns: 3
+            spacing: 10
+            anchors.left: safeAreaPic3.right
+            anchors.leftMargin: 5
+            width:300
+            height:parent.height
+
+            ICCheckBox{
+                id:safe3UseIt
+                configName: qsTr("Use it?")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_0_1_0_228",safe3UseIt.isChecked ? 1 : 0);
+                }
+            }
+            Text {
+                text: qsTr(" ")
+            }
+
+            Text {
+                text: qsTr(" ")
+            }
+
+            ICConfigEdit{
+                id:safe3SafeSignalSet
+                inputWidth:40
+                configName:qsTr("SafeSig1")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_6_7_0_228",configValue);
+                }
+            }
+            ICCheckBox{
+                id:safe3SafeSignalDir
+                configName: qsTr("Reverse")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_27_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                }
+            }
+
+            ICComboBoxConfigEdit{
+                id:safe3Axis1Set
+                z:8
+                inputWidth:60
+                configName:qsTr("Axis1")
+                configValue: -1
+                popupHeight: 120
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
+                }
+            }
+//            Text {
+//                text: qsTr(" ")
+//            }
+
+            ICConfigEdit{
+                id:safe3SafeSignal2Set
+                inputWidth:40
+                configName:qsTr("SafeSig2")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_13_7_0_228",configValue);
+                }
+            }
+            ICCheckBox{
+                id:safe3SafeSignal2Dir
+                configName: qsTr("Reverse")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_28_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                }
+            }
+
+            ICComboBoxConfigEdit{
+                id:safe3Axis2Set
+                z:7
+                inputWidth:60
+                configName:qsTr("Axis2")
+                configValue: -1
+                popupHeight: 120
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
+                }
+            }
+//            Text {
+//                text: qsTr(" ")
+//            }
+
+            ICConfigEdit{
+                id:safe3SafeSignal3Set
+                inputWidth:40
+                configName:qsTr("SafeSig3")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_20_7_0_228",configValue);
+                }
+            }
+            ICCheckBox{
+                id:safe3SafeSignal3Dir
+                configName: qsTr("Reverse")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_29_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                }
+            }
+
+            ICComboBoxConfigEdit{
+                id:safe3Axis3Set
+                z:6
+                inputWidth:60
+                configName:qsTr("Axis3")
+                configValue: -1
+                popupHeight: 120
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
+                }
+            }
+//            Text {
+//                text: qsTr(" ")
+//            }
+
+
+
+            ICConfigEdit{
+                id:safe3SafeSignal4Set
+                inputWidth:40
+                configName:qsTr("SafeSig4")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_1_7_0_229",configValue);
+                }
+            }
+            ICCheckBox{
+                id:safe3SafeSignal4Dir
+                configName: qsTr("Reverse")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_30_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                }
+            }
+
+            ICComboBoxConfigEdit{
+                id:safe3Axis4Set
+                z:5
+                inputWidth:60
+                configName:qsTr("Axis4")
+                configValue: -1
+                popupHeight: 120
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_12_4_0_227",configValue);
+                }
+            }
+//            Text {
+//                text: qsTr(" ")
+//            }
+
+            ICConfigEdit{
+                id:safe3SafeSignal5Set
+                inputWidth:40
+                configName:qsTr("SafeSig5")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_8_7_0_229",configValue);
+                }
+            }
+            ICCheckBox{
+                id:safe3SafeSignal5Dir
+                configName: qsTr("Reverse")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_31_1_0_228",safe3SafeSignalDir.isChecked?1:0);
+                }
+            }
+
+            ICComboBoxConfigEdit{
+                id:safe3Axis5Set
+                z:4
+                inputWidth:60
+                configName:qsTr("Axis5")
+                configValue: -1
+                popupHeight: 120
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_16_4_0_227",configValue);
+                }
+            }
+//            Text {
+//                text: qsTr(" ")
+//            }
+
+            ICConfigEdit{
+                id:safe3SafeSignal6Set
+                inputWidth:40
+                configName:qsTr("SafeSig6")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_15_7_0_229",configValue);
+                }
+            }
+            ICCheckBox{
+                id:safe3SafeSignal6Dir
+                configName: qsTr("Reverse")
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_0_1_0_229",safe3SafeSignalDir.isChecked?1:0);
+                }
+            }
+
+            ICComboBoxConfigEdit{
+                id:safe3Axis6Set
+                z:3
+                inputWidth:60
+                configName:qsTr("Axis6")
+                configValue: -1
+                popupHeight: 120
+                function onValueChanged(){
+                    panelRobotController.setConfigValue("s_rw_20_4_0_227",configValue);
+                }
+            }
+//            Text {
+//                text: qsTr(" ")
+//            }
+        }
+    }
+
 
     Component.onCompleted:{
         axis1Set.onAxisDefinesChanged();
@@ -1381,10 +1637,33 @@ Item {
             safe2MaxPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_249")/1000;
             safe2UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
         }
+        else if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 2){
+            safe3Axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
+            safe3SafeSignalDir.isChecked = panelRobotController.getConfigValue("s_rw_27_1_0_228");
+            safe3SafeSignalSet.configValue = panelRobotController.getConfigValue("s_rw_6_7_0_228");
+            safe3Axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
+            safe3SafeSignal2Dir.isChecked = panelRobotController.getConfigValue("s_rw_28_1_0_228");
+            safe3SafeSignal2Set.configValue = panelRobotController.getConfigValue("s_rw_13_7_0_228");
+            safe3Axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+            safe3SafeSignal3Dir.isChecked = panelRobotController.getConfigValue("s_rw_29_1_0_228");
+            safe3SafeSignal3Set.configValue = panelRobotController.getConfigValue("s_rw_20_7_0_228");
+            safe3Axis4Set.configValue = panelRobotController.getConfigValue("s_rw_12_4_0_227");
+            safe3SafeSignal4Dir.isChecked = panelRobotController.getConfigValue("s_rw_30_1_0_228");
+            safe3SafeSignal4Set.configValue = panelRobotController.getConfigValue("s_rw_1_7_0_229");
+            safe3Axis5Set.configValue = panelRobotController.getConfigValue("s_rw_16_4_0_227");
+            safe3SafeSignal5Dir.isChecked = panelRobotController.getConfigValue("s_rw_31_1_0_228");
+            safe3SafeSignal5Set.configValue = panelRobotController.getConfigValue("s_rw_8_7_0_229");
+            safe3Axis6Set.configValue = panelRobotController.getConfigValue("s_rw_20_4_0_227");
+            safe3SafeSignal6Dir.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_229");
+            safe3SafeSignal6Set.configValue = panelRobotController.getConfigValue("s_rw_13_7_0_228");
+            safe3UseIt.isChecked = panelRobotController.getConfigValue("s_rw_15_7_0_229");
+        }
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});
         buttonModel.append({"typename":safe2.typename,"id":safe2.type_id});
+        buttonModel.append({"typename":safe3.typename,"id":safe3.type_id});
         pageContainer.addPage(safe1);
         pageContainer.addPage(safe2);
+        pageContainer.addPage(safe3);
 
         var type = panelRobotController.getConfigValue("s_rw_1_5_0_228");
         pageContainer.setCurrentIndex(type);

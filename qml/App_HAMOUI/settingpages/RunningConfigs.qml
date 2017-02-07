@@ -28,7 +28,7 @@ Item {
                 id:turnAutoSpeedEdit
                 unit: qsTr("%")
                 configName: qsTr("Turn Auto Speed")
-                min: 0.0
+                min: 0.1
                 max: 100.0
                 decimal: 1
                 onIsCheckedChanged: {

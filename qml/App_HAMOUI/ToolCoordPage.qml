@@ -17,32 +17,35 @@ Item {
         width:parent.width*2/3-20
         height: parent.height - 50
         model: toolCoordModel
-        highlight: Rectangle { width: view.width; height: 20;color: "lightsteelblue"; }
+        highlight: Rectangle { width: view.width; height: 30;color: "lightsteelblue"; }
         highlightMoveDuration: 1
         delegate: Text {
             width:parent.width
-            height: 20
+            height: 30
             text: id+':'+name
             MouseArea{
+                id:selItem
                 anchors.fill: parent
                 onClicked: {
                     view.currentIndex = index;
-                    var coordPoint = [];
-                    coordPoint  = toolCoordModel.get(index).info.data;
-                    coordName.configValue = toolCoordModel.get(index).name;
-                    p1m0.configValue = coordPoint[0]? coordPoint[0].toFixed(3):"0.000";
-                    p1m1.configValue = coordPoint[1]? coordPoint[1].toFixed(3):"0.000";
-                    p1m2.configValue = coordPoint[2]? coordPoint[2].toFixed(3):"0.000";
-
-                    p2m0.configValue = coordPoint[3]? coordPoint[3].toFixed(3):"0.000";
-                    p2m1.configValue = coordPoint[4]? coordPoint[4].toFixed(3):"0.000";
-                    p2m2.configValue = coordPoint[5]? coordPoint[5].toFixed(3):"0.000";
-
-                    p3m0.configValue = coordPoint[6]? coordPoint[6].toFixed(3):"0.000";
-                    p3m1.configValue = coordPoint[7]? coordPoint[7].toFixed(3):"0.000";
-                    p3m2.configValue = coordPoint[8]? coordPoint[8].toFixed(3):"0.000";
                 }
             }
+        }
+        onCurrentItemChanged:{
+            var coordPoint = [];
+            coordPoint  = toolCoordModel.get(currentIndex).info.data;
+            coordName.configValue = toolCoordModel.get(currentIndex).name;
+            p1m0.configValue = coordPoint[0]? coordPoint[0].toFixed(3):"0.000";
+            p1m1.configValue = coordPoint[1]? coordPoint[1].toFixed(3):"0.000";
+            p1m2.configValue = coordPoint[2]? coordPoint[2].toFixed(3):"0.000";
+
+            p2m0.configValue = coordPoint[3]? coordPoint[3].toFixed(3):"0.000";
+            p2m1.configValue = coordPoint[4]? coordPoint[4].toFixed(3):"0.000";
+            p2m2.configValue = coordPoint[5]? coordPoint[5].toFixed(3):"0.000";
+
+            p3m0.configValue = coordPoint[6]? coordPoint[6].toFixed(3):"0.000";
+            p3m1.configValue = coordPoint[7]? coordPoint[7].toFixed(3):"0.000";
+            p3m2.configValue = coordPoint[8]? coordPoint[8].toFixed(3):"0.000";
         }
     }
     Row{

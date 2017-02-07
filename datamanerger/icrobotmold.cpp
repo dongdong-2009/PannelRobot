@@ -343,6 +343,42 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 }
 
+int IntervalOutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    typedef union{
+        struct{
+          int16_t type:1;//< 0为时间输出；1为常输出
+          int16_t binding_counter:1;//< 0:自身计数，1：绑定计数器
+          int16_t status:1;//< 0为间隔关闭；1为间隔输出
+          int16_t res:13;//< 预留
+        }func;
+        struct{
+          int16_t id:10;
+          int16_t board:6;
+        }b;
+        int16_t s;
+    }IntervalOutput;
+    IntervalOutput base;
+    IntervalOutput out;
+    base.s=0;
+    out.s=0;
+    base.func.type = v->value("type", 0).toInt();
+    base.func.binding_counter = v->value("isBindingCount", 0).toInt();
+    base.func.status = v->value("status", 0).toInt();
+    out.b.id= v->value("id", 0).toInt();
+    out.b.board = v->value("board", 0).toInt();
+
+    item.append(v->value("action").toInt());
+    item.append(base.s);
+    item.append(out.s);
+    item.append(v->value("counterID", 0).toInt());
+    item.append(v->value("cnt", 0).toInt());
+    item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+
+}
+
 int VisionCatchActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
     item.append(F_CMD_IO_OUTPUT);
@@ -638,6 +674,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);
     ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
+    ret.insert(F_CMD_IO_INTERVAL_OUTPUT, IntervalOutputActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP2, ConditionActionCompiler);

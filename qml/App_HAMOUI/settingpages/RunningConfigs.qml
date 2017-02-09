@@ -300,7 +300,7 @@ Item {
         }
     }
     Component.onCompleted: {
-        firstMoudleSpeedEdit.configValue = panelRobotController.getConfigValue("s_rw_0_32_1_289");
+        firstMoudleSpeedEdit.configValue = panelRobotController.getConfigValueText("s_rw_0_32_1_289");
         var isTurnAutoSpeedEn = panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0);
         var turnAutoSpeed = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
         turnAutoSpeedEdit.isChecked = isTurnAutoSpeedEn;

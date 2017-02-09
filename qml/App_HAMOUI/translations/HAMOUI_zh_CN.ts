@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -363,6 +363,49 @@
     <message>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>AutoDebugMachine</name>
+    <message>
+        <source>StartTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>motor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>singleY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>onTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>offTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HoldDoubleY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>StopTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ReTest</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -872,6 +915,10 @@
         <source>Rotate to Zero</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Motor 8</source>
+        <translation type="unfinished">欧瑞伺服 {8?}</translation>
+    </message>
 </context>
 <context>
     <name>AxisPosDisplayBar</name>
@@ -897,11 +944,11 @@
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -909,7 +956,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -3273,6 +3320,10 @@ please chose!</source>
         <source>x47 Mux for Stop Btn</source>
         <translation>X47复用:暂停</translation>
     </message>
+    <message>
+        <source>First Moudle Speed</source>
+        <translation>首模速度</translation>
+    </message>
 </context>
 <context>
     <name>SafeAreaConfigs</name>
@@ -3686,7 +3737,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5096,7 +5147,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalbox</source>
-        <translation>装箱间隔输出</translation>
+        <translation>装箱间隔</translation>
     </message>
     <message>
         <source>IntervalOutput:</source>

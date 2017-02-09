@@ -1718,7 +1718,8 @@ typedef struct {
     MotorTestSpeedStruct test_speed;
     SafeAreaStruct safe_area;
     uint32_t Reserve4[8];   //<类型:系统;名字:当前计数值;   单位:ms
-    uint32_t Reserve5[16];   //<类型:系统;名字:目标计数值;   单位:ms
+    uint32_t Reserve5[15];   //<类型:系统;名字:目标计数值;   单位:ms
+    uint32_t first_module_speed; //<类型：系统；名字：首模速度设定；精度：1;单位：；
 }RESERVE0;
 
 typedef struct{

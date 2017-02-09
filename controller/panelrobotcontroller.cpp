@@ -237,13 +237,13 @@ void PanelRobotController::InitDatabase_()
     db.setDatabaseName("RobotDatabase");
     if(!db.isValid())
     {
-        qCritical("Open Database fail!!");
-        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Database is error!!"));
+        qCritical()<<"Open Database fail!!"<<db.lastError();
+        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Database is error!!" + db.lastError().text()));
     }
     if(!db.open())
     {
         qCritical("Open Database fail!!");
-        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Open Database fail!!"));
+        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Open Database fail!!" + db.lastError().text()));
     }
 }
 
@@ -891,7 +891,12 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
             return ret;
         }
     }
+#ifdef WIN32
+    QDir::current().mkdir("temp");
+    QDir dir = QDir("temp");
+#else
     QDir dir = QDir::temp();
+#endif
     dir.mkdir(name);
     dir.cd(name);
     QFile file;
@@ -938,10 +943,17 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         ret = MoldMaintainRet::kME_USBNotFound;
         return ret;
     }
+#ifdef WIN32
+    QString cmd = QString("cd %1 && ..\\tar -cf %2.tar %2 && move /y %2.tar %3 && del /q %2 && rd /q %2").arg("temp")
+            .arg(name)
+            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
+#else
     QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
             .arg(name)
             .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
+#endif
     qDebug()<<cmd;
+//    QMessageBox::information(NULL, "tip", cmd.toUtf8());
     ::system(cmd.toUtf8());
 
 #ifndef Q_WS_WIN32
@@ -952,13 +964,18 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
 
 QString PanelRobotController::viewBackupPackageDetails(const QString &package) const
 {
+#ifdef WIN32
+    QDir::current().mkdir("temp");
+    QString tarPath = QDir::current().relativeFilePath(QString("%1/%2").arg(ICAppSettings::UsbPath).arg(package));
+    QDir temp = QDir("temp");
+#else
     QString tarPath = QDir(ICAppSettings::UsbPath).absoluteFilePath(package);
     QDir temp = QDir::temp();
+#endif
     QString packageDirName = package;
     packageDirName.chop(4);
     if(!temp.exists(packageDirName))
     {
-        qDebug()<<QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8();
         ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
     }
     temp.cd(packageDirName);
@@ -995,7 +1012,11 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
     {
         return ret;
     }
+#ifdef WIN32
+    QDir temp = QDir("temp");
+#else
     QDir temp = QDir::temp();
+#endif
     QString backupDirName = backupPackage;
     backupDirName.chop(4);
     temp.cd(backupDirName);
@@ -1011,6 +1032,7 @@ QString PanelRobotController::importRobotMold(const QString &molds, const QStrin
 #ifdef Q_WS_QWS
         moldName = moldName.toUtf8();
 #endif
+//        QMessageBox::information(NULL, "tip", moldName, temp.absoluteFilePath(moldName + ".act"));
         file.setFileName(temp.absoluteFilePath(moldName + ".act"));
         if(file.open(QFile::ReadOnly))
         {

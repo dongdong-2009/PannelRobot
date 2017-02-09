@@ -20,6 +20,7 @@ Item {
         qkConfigBtn.enabled = isEn;
         safeAreaBtn.enabled = isEn;
         originSettingBtn.enabled = isEn;
+//        autoDebugBtn.enabled = isEn;
     }
 
     width: parent.width
@@ -72,7 +73,6 @@ Item {
             text: qsTr("SafeArea Configs")
             icon: "../images/logo.png"
             enabled: false
-
         }
 
         CatalogButton{
@@ -80,8 +80,15 @@ Item {
             text: qsTr("Origin Setting")
             icon: "../images/origin1.png"
             enabled: safeAreaBtn.enabled
-
         }
+        
+//        CatalogButton{
+//            id:autoDebugBtn
+//            text: qsTr("Auto Debug")
+//            icon: "../images/modeAuto.png"
+//            enabled: false
+//        }
+
 
 //        CatalogButton{
 //            id:otherConfigBtn
@@ -115,6 +122,7 @@ Item {
         configsContainer.addNav(qkConfigBtn, Qt.createComponent('QKConfigs.qml'));
         configsContainer.addNav(safeAreaBtn, Qt.createComponent('SafeAreaConfigs.qml'));
         configsContainer.addNav(originSettingBtn, Qt.createComponent('OriginSetting.qml'));
+//        configsContainer.addNav(autoDebugBtn, Qt.createComponent('AutoDebugMachine.qml'));
         ShareData.UserInfo.registUserChangeEvent(container);
     }
 

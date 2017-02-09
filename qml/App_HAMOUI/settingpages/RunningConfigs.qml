@@ -28,7 +28,7 @@ Item {
                 id:turnAutoSpeedEdit
                 unit: qsTr("%")
                 configName: qsTr("Turn Auto Speed")
-                min: 0.0
+                min: 0.1
                 max: 100.0
                 decimal: 1
                 onIsCheckedChanged: {
@@ -48,10 +48,24 @@ Item {
                 configAddr: "s_rw_0_8_0_176"
             }
         }
+        ICConfigEdit{
+            id:firstMoudleSpeedEdit
+            anchors.top: configSec1.bottom
+            anchors.topMargin: 6
+            unit: qsTr("%")
+            configName: qsTr("First Moudle Speed")
+            min: 0.1
+            max: 100.0
+            decimal: 1
+            onConfigValueChanged: {
+                panelRobotController.setConfigValue("s_rw_0_32_1_289",configValue);
+                panelRobotController.syncConfigs();
+            }
+        }
         ICCheckBoxEdit{
             id:independentManualSpeed
             text: qsTr("Independent Manual Speed")
-            anchors.top: configSec1.bottom
+            anchors.top: firstMoudleSpeedEdit.bottom
             anchors.topMargin: 6
             configAddr: "s_rw_0_32_0_211"
         }
@@ -118,7 +132,7 @@ Item {
             width: parent.width*0.5
             anchors.top:muxForInput.bottom
             anchors.topMargin: 6
-            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 20 -muxForInput.height
+            height: parent.height - configSec1.height -independentManualSpeed.height - independentManualSpeedGroup.height - 26 -muxForInput.height -firstMoudleSpeedEdit.height
             ListModel{
                 id:selItem
             }
@@ -285,6 +299,7 @@ Item {
         }
     }
     Component.onCompleted: {
+        firstMoudleSpeedEdit.configValue = panelRobotController.getConfigValueText("s_rw_0_32_1_289");
         var isTurnAutoSpeedEn = panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0);
         var turnAutoSpeed = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
         turnAutoSpeedEdit.isChecked = isTurnAutoSpeedEn;

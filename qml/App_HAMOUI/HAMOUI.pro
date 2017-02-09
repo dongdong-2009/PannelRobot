@@ -11,7 +11,7 @@ teach/extents/*.js
 }
 
 DISTFILES += \
-    settingpages/OriginSetting.qml
+    settingpages/AutoDebugMachine.qml
 
 
 

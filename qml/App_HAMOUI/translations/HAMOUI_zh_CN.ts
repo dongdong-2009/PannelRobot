@@ -366,6 +366,49 @@
     </message>
 </context>
 <context>
+    <name>AutoDebugMachine</name>
+    <message>
+        <source>StartTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>motor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>singleY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>onTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>offTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HoldDoubleY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>StopTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ReTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AutoRunInfoPage</name>
     <message>
         <source>Last Cycle:</source>
@@ -874,7 +917,7 @@
     </message>
     <message>
         <source>Motor 8</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">欧瑞伺服 {8?}</translation>
     </message>
 </context>
 <context>
@@ -921,22 +964,6 @@
     </message>
     <message>
         <source></source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>black</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>W</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>J</source>
         <translation></translation>
     </message>
 </context>
@@ -3246,6 +3273,10 @@ please chose!</source>
         <source>x47 Mux for Stop Btn</source>
         <translation>X47复用:暂停</translation>
     </message>
+    <message>
+        <source>First Moudle Speed</source>
+        <translation>首模速度</translation>
+    </message>
 </context>
 <context>
     <name>SafeAreaConfigs</name>
@@ -3659,7 +3690,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>

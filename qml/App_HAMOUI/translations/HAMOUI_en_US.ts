@@ -452,6 +452,65 @@
     </message>
 </context>
 <context>
+    <name>AutoDebugMachine</name>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="45"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="76"/>
+        <source>StartTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="54"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="55"/>
+        <source>motor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="54"/>
+        <source>+test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="55"/>
+        <source>-test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="60"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="61"/>
+        <source>singleY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="60"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="65"/>
+        <source>onTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="61"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="66"/>
+        <source>offTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="65"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="66"/>
+        <source>HoldDoubleY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="69"/>
+        <source>StopTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="148"/>
+        <source>ReTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AutoRunInfoPage</name>
     <message>
         <location filename="../teach/AutoRunInfoPage.qml" line="26"/>
@@ -738,8 +797,8 @@
     <message>
         <location filename="../settingpages/AxisConfigs.qml" line="245"/>
         <location filename="../settingpages/AxisConfigs.qml" line="257"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="729"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="741"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="730"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="742"/>
         <source>A ON</source>
         <translation type="unfinished"></translation>
     </message>
@@ -798,22 +857,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 4</source>
         <translation type="unfinished"></translation>
     </message>
@@ -838,257 +897,262 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="652"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="659"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="660"/>
         <source>Encoder Read Way</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="662"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="663"/>
         <source>Encode RW1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="662"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="663"/>
         <source>Encode RW2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="662"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="663"/>
         <source>Encode RW3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="668"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="669"/>
         <source>Axis Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="671"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="672"/>
         <source>Rotate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="671"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="672"/>
         <source>Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="671"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="672"/>
         <source>Rotate to Zero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="676"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="677"/>
         <source>Motor Dir</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="679"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="680"/>
         <source>PP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="679"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="680"/>
         <source>RP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="692"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="693"/>
         <source>Arm Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="695"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="710"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="717"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="696"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="711"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="718"/>
         <source>mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="685"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="686"/>
         <source>Pulse Count Per Circle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="688"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="822"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="859"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
+        <source>Motor 8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="689"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="823"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="860"/>
         <source>a</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="700"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="701"/>
         <source>Reduction Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="707"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="708"/>
         <source>Positive Limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="714"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="715"/>
         <source>Negative Limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="722"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="723"/>
         <source>Positive Limit Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="735"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="736"/>
         <source>Negative Limit Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="747"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="748"/>
         <source>Origin Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="754"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="755"/>
         <source>INV Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="759"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="760"/>
         <source>Origin SPD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="761"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="792"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="799"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="806"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="813"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="870"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="762"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="793"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="800"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="807"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="814"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="871"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="767"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="768"/>
         <source>ACC 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="769"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="777"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="770"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="778"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="775"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="776"/>
         <source>ACC 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="783"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="784"/>
         <source>Max RPM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="785"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="786"/>
         <source>RPM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="791"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="792"/>
         <source>SACC1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="798"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="799"/>
         <source>SACC2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="805"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="806"/>
         <source>SDCC1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="812"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="813"/>
         <source>SDCC2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="819"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="820"/>
         <source>originOffset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="848"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="849"/>
         <source>Motor Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="855"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="856"/>
         <source>Test Pulse Number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="866"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="867"/>
         <source>Test Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="876"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="877"/>
         <source>Pulse Sent:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="882"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="883"/>
         <source>Pulse received:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="888"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="889"/>
         <source>Z Pulse:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="920"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="921"/>
         <source>Motor+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="928"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="929"/>
         <source>Motor-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="936"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="937"/>
         <source>Test Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="965"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="966"/>
         <source>Set to Origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="973"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="974"/>
         <source>Save Origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="981"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="982"/>
         <source>Set All Origin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1103,7 +1167,7 @@
     <message>
         <location filename="../AxisPosDisplayBar.qml" line="31"/>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../AxisPosDisplayBar.qml" line="39"/>
@@ -1124,11 +1188,6 @@
         <location filename="../AxisPosDisplayBar.qml" line="134"/>
         <location filename="../AxisPosDisplayBar.qml" line="142"/>
         <source>Axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../AxisPosDisplayBar.qml" line="237"/>
-        <source></source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2078,32 +2137,32 @@
 <context>
     <name>MachineSettings</name>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="34"/>
+        <location filename="../settingpages/MachineSettings.qml" line="35"/>
         <source>Running Configs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="40"/>
+        <location filename="../settingpages/MachineSettings.qml" line="41"/>
         <source>Motor Configs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="47"/>
+        <location filename="../settingpages/MachineSettings.qml" line="48"/>
         <source>Struct Configs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="54"/>
+        <location filename="../settingpages/MachineSettings.qml" line="55"/>
         <source>System Configs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="62"/>
+        <location filename="../settingpages/MachineSettings.qml" line="63"/>
         <source>QK Configs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/MachineSettings.qml" line="70"/>
+        <location filename="../settingpages/MachineSettings.qml" line="71"/>
         <source>SafeArea Configs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2347,37 +2406,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="73"/>
+        <location filename="../teach/OutputActionEditor.qml" line="99"/>
         <source>EUY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="77"/>
+        <location filename="../teach/OutputActionEditor.qml" line="73"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="81"/>
+        <location filename="../teach/OutputActionEditor.qml" line="91"/>
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="85"/>
+        <location filename="../teach/OutputActionEditor.qml" line="95"/>
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="89"/>
+        <location filename="../teach/OutputActionEditor.qml" line="77"/>
         <source>Time Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="94"/>
+        <location filename="../teach/OutputActionEditor.qml" line="82"/>
         <source>Interval Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="99"/>
+        <location filename="../teach/OutputActionEditor.qml" line="87"/>
         <source>Interval M</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2392,32 +2451,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="236"/>
+        <location filename="../teach/OutputActionEditor.qml" line="237"/>
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="246"/>
+        <location filename="../teach/OutputActionEditor.qml" line="245"/>
         <source>Act Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="246"/>
+        <location filename="../teach/OutputActionEditor.qml" line="245"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="247"/>
+        <location filename="../teach/OutputActionEditor.qml" line="246"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="257"/>
+        <location filename="../teach/OutputActionEditor.qml" line="256"/>
         <source>interval number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="267"/>
+        <location filename="../teach/OutputActionEditor.qml" line="266"/>
         <source>Count Binding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3582,6 +3641,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/RunningConfigs.qml" line="29"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="55"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3591,64 +3651,69 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="53"/>
-        <source>Independent Manual Speed</source>
+        <location filename="../settingpages/RunningConfigs.qml" line="56"/>
+        <source>First Moudle Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingpages/RunningConfigs.qml" line="67"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="73"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="80"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="86"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="92"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="98"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="104"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="110"/>
+        <source>Independent Manual Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="81"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="87"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="94"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="100"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="106"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="112"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="118"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="124"/>
         <source>Manual Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="136"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="150"/>
         <source>select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="152"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="166"/>
         <source>IO Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="170"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="184"/>
         <source>Mold Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="196"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="210"/>
         <source>new</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="212"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="226"/>
         <source>delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="250"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="264"/>
         <source>x32 Mux for Origin mode Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="257"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="271"/>
         <source>x33 Mux for Auto mode Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="264"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="278"/>
         <source>x46 Mux for Startup Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="271"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="285"/>
         <source>x47 Mux for Stop Btn</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3672,515 +3737,581 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/SafeAreaConfigs.qml" line="70"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1137"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1147"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1326"/>
         <source>confirmBtn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="153"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1164"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="154"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1175"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1365"/>
         <source>Use it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="159"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="274"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="560"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="846"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1170"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1195"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1252"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1307"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="160"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="284"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="570"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="856"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1181"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1196"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1253"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1308"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1371"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1375"/>
         <source> </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="164"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="165"/>
         <source>SafePo1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="171"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="172"/>
         <source>Use Part1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="179"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="180"/>
         <source>SafePo2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="186"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="187"/>
         <source>Use Part2?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="195"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="196"/>
         <source>SafePo3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="202"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="203"/>
         <source>Use Part3?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="210"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="211"/>
         <source>SafePo4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="217"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="218"/>
         <source>Use Part4?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="225"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="226"/>
         <source>SafePo5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="232"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="233"/>
         <source>Use Part5?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="240"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="241"/>
         <source>SafePo6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="247"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="248"/>
         <source>Use Part6?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="255"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1176"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="256"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1187"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1398"/>
         <source>Axis1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="261"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1182"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="262"/>
         <source>NO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="280"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="290"/>
         <source>P1-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="292"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="302"/>
         <source>P1-A Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="303"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="313"/>
         <source>P1-B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="314"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="324"/>
         <source>P1-B Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="325"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="335"/>
         <source>P2-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="337"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="347"/>
         <source>P2-A Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="348"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="358"/>
         <source>P2-B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="359"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="369"/>
         <source>P2-B Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="370"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="380"/>
         <source>P3-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="382"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="392"/>
         <source>P3-A Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="393"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="403"/>
         <source>P3-B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="404"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="414"/>
         <source>P3-B Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="414"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="424"/>
         <source>P4-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="426"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="436"/>
         <source>P4-A Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="437"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="447"/>
         <source>P4-B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="448"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="458"/>
         <source>P4-B Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="459"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="469"/>
         <source>P5-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="471"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="481"/>
         <source>P5-A Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="482"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="492"/>
         <source>P5-B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="493"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="503"/>
         <source>P5-B Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="504"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="514"/>
         <source>P6-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="516"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="526"/>
         <source>P6-A Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="527"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="537"/>
         <source>P6-B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="538"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="548"/>
         <source>P6-B Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="551"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1243"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="561"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1244"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1429"/>
         <source>Axis2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="566"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="576"/>
         <source>P1-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="578"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="588"/>
         <source>P1-C Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="589"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="599"/>
         <source>P1-D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="600"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="610"/>
         <source>P1-D Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="611"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="621"/>
         <source>P2-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="623"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="633"/>
         <source>P2-C Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="634"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="644"/>
         <source>P2-D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="645"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="655"/>
         <source>P2-D Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="656"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="666"/>
         <source>P3-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="668"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="678"/>
         <source>P3-C Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="679"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="689"/>
         <source>P3-D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="690"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="700"/>
         <source>P3-D Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="700"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="710"/>
         <source>P4-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="712"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="722"/>
         <source>P4-C Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="723"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="733"/>
         <source>P4-D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="734"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="744"/>
         <source>P4-D Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="745"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="755"/>
         <source>P5-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="757"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="767"/>
         <source>P5-C Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="768"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="778"/>
         <source>P5-D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="779"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="789"/>
         <source>P5-D Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="790"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="800"/>
         <source>P6-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="802"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="812"/>
         <source>P6-C Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="813"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="823"/>
         <source>P6-D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="824"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="834"/>
         <source>P6-D Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="837"/>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1298"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="847"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1299"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1460"/>
         <source>Axis3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="852"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="862"/>
         <source>P1-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="864"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="874"/>
         <source>P1-E Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="875"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="885"/>
         <source>P1-F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="886"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="896"/>
         <source>P1-F Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="897"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="907"/>
         <source>P2-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="909"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="919"/>
         <source>P2-E Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="920"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="930"/>
         <source>P2-F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="931"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="941"/>
         <source>P2-F Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="942"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="952"/>
         <source>P3-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="954"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="964"/>
         <source>P3-E Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="965"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="975"/>
         <source>P3-F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="976"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="986"/>
         <source>P3-F Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="986"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="996"/>
         <source>P4-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="998"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1008"/>
         <source>P4-E Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1009"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1019"/>
         <source>P4-F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1020"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1030"/>
         <source>P4-F Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1031"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1041"/>
         <source>P5-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1043"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1053"/>
         <source>P5-E Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1054"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1064"/>
         <source>P5-F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1065"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1075"/>
         <source>P5-F Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1076"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1086"/>
         <source>P6-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1088"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1098"/>
         <source>P6-E Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1099"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1109"/>
         <source>P6-F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1110"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1120"/>
         <source>P6-F Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1126"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1136"/>
         <source>Safe Area2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1200"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1201"/>
         <source>minPos1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1211"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1212"/>
         <source>minPos1 Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1221"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1222"/>
         <source>maxPos1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1231"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1232"/>
         <source>maxPos1 Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1257"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1258"/>
         <source>minPos2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1268"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1269"/>
         <source>minPos2 Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1278"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1279"/>
         <source>maxPos2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SafeAreaConfigs.qml" line="1288"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1289"/>
         <source>maxPos2 Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1315"/>
+        <source>Safe Area3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1381"/>
+        <source>SafeSig1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1388"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1419"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1450"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1483"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1514"/>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1545"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1412"/>
+        <source>SafeSig2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1443"/>
+        <source>SafeSig3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1476"/>
+        <source>SafeSig4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1493"/>
+        <source>Axis4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1507"/>
+        <source>SafeSig5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1524"/>
+        <source>Axis5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1538"/>
+        <source>SafeSig6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/SafeAreaConfigs.qml" line="1555"/>
+        <source>Axis6</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6138,37 +6269,37 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>ToolCoordPage</name>
     <message>
-        <location filename="../ToolCoordPage.qml" line="62"/>
+        <location filename="../ToolCoordPage.qml" line="65"/>
         <source>newBtn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolCoordPage.qml" line="85"/>
+        <location filename="../ToolCoordPage.qml" line="88"/>
         <source>deleteBtn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolCoordPage.qml" line="102"/>
+        <location filename="../ToolCoordPage.qml" line="105"/>
         <source>setP1Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolCoordPage.qml" line="145"/>
+        <location filename="../ToolCoordPage.qml" line="148"/>
         <source>setP2Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolCoordPage.qml" line="188"/>
+        <location filename="../ToolCoordPage.qml" line="191"/>
         <source>setP3Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolCoordPage.qml" line="56"/>
+        <location filename="../ToolCoordPage.qml" line="59"/>
         <source>coordName</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolCoordPage.qml" line="234"/>
+        <location filename="../ToolCoordPage.qml" line="237"/>
         <source>confirmBtn</source>
         <translation type="unfinished"></translation>
     </message>

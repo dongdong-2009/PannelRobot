@@ -454,59 +454,79 @@
 <context>
     <name>AutoDebugMachine</name>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="45"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="76"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="47"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="78"/>
         <source>StartTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="54"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="55"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="56"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="57"/>
         <source>motor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="54"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="56"/>
         <source>+test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="55"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="57"/>
         <source>-test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="60"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="61"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="62"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="63"/>
         <source>singleY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="60"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="65"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="62"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="67"/>
         <source>onTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="61"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="66"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="63"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="68"/>
         <source>offTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="65"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="66"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="67"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="68"/>
         <source>HoldDoubleY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="69"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="71"/>
         <source>StopTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="148"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="165"/>
         <source>ReTest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="241"/>
+        <source>receivedErr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="251"/>
+        <source>sendErr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="296"/>
+        <source>inputErr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="306"/>
+        <source>outputErr</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2166,6 +2186,11 @@
         <source>SafeArea Configs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../settingpages/MachineSettings.qml" line="78"/>
+        <source>Auto Debug</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManualPage</name>
@@ -2648,107 +2673,107 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="580"/>
+        <location filename="../teach/PointEdit.qml" line="579"/>
         <source>Line XY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="585"/>
+        <location filename="../teach/PointEdit.qml" line="584"/>
         <source>Line XZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="591"/>
+        <location filename="../teach/PointEdit.qml" line="590"/>
         <source>Line YZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="597"/>
+        <location filename="../teach/PointEdit.qml" line="596"/>
         <source>Line 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="603"/>
+        <location filename="../teach/PointEdit.qml" line="602"/>
         <source>Offset Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="609"/>
+        <location filename="../teach/PointEdit.qml" line="608"/>
         <source>Curve XY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="615"/>
+        <location filename="../teach/PointEdit.qml" line="614"/>
         <source>Curve XZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="621"/>
+        <location filename="../teach/PointEdit.qml" line="620"/>
         <source>Curve YZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="628"/>
+        <location filename="../teach/PointEdit.qml" line="627"/>
         <source>Curve 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="635"/>
+        <location filename="../teach/PointEdit.qml" line="634"/>
         <source>Offset Curve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="641"/>
+        <location filename="../teach/PointEdit.qml" line="640"/>
         <source>Circle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="647"/>
+        <location filename="../teach/PointEdit.qml" line="646"/>
         <source>Pose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="653"/>
+        <location filename="../teach/PointEdit.qml" line="652"/>
         <source>P Line 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="659"/>
+        <location filename="../teach/PointEdit.qml" line="658"/>
         <source>P Curve 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="665"/>
+        <location filename="../teach/PointEdit.qml" line="664"/>
         <source>PCircle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="671"/>
+        <location filename="../teach/PointEdit.qml" line="670"/>
         <source>PO Line 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="676"/>
+        <location filename="../teach/PointEdit.qml" line="675"/>
         <source>PO Curve 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="682"/>
+        <location filename="../teach/PointEdit.qml" line="681"/>
         <source>Free Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="689"/>
+        <location filename="../teach/PointEdit.qml" line="688"/>
         <source>Offset Jog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="795"/>
+        <location filename="../teach/PointEdit.qml" line="793"/>
         <source>Set to Middle Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/PointEdit.qml" line="798"/>
+        <location filename="../teach/PointEdit.qml" line="796"/>
         <source>Set to End</source>
         <translation type="unfinished"></translation>
     </message>

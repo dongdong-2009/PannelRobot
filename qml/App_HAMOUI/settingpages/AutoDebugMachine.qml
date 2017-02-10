@@ -23,7 +23,9 @@ Item {
         debugItems.setProperty(index,"status",st);
     }
     function testStop(){
-        debugItems.setProperty(currentTest,"status",-2);
+        if(currentTest >=0){
+            debugItems.setProperty(currentTest,"status",-2);
+        }
     }
     function setErrTip(index,tip){
         debugItems.setProperty(index,"errTip",tip);
@@ -69,7 +71,7 @@ Item {
                     text = qsTr("StopTest")
                     bgColor = "red"
                     refreshTimer.singleMode =0;
-                    startTest(currentTest<0? 0:currentTest);
+                    startTest(0);
                 }
                 else if(testBegin.bgColor == "red"){
                     testStop();
@@ -98,6 +100,12 @@ Item {
             width: debugView.width
             height: itemDescr.height + 12
             color: ListView.isCurrentItem? "lightsteelblue":"white"
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    debugView.currentIndex = index;
+                }
+            }
             Text {
                 id: itemDescr
                 anchors.verticalCenter: parent.verticalCenter
@@ -111,7 +119,7 @@ Item {
                 height: parent.height
                 Text{
                     id:tip
-                    visible: itemStatusSignal.debugStatus === 0
+                    visible: status === 0
                     anchors.verticalCenter: parent.verticalCenter
                     color: "red"
                     text:errTip
@@ -119,43 +127,48 @@ Item {
                 Text {
                     id: itemStatusSignal
                     anchors.verticalCenter: parent.verticalCenter
-                    property int debugStatus: status
                     font.pixelSize:16
-                    onDebugStatusChanged: {
-                        if(debugStatus === -1){
-                            text = "○";
-                            color = "black";
+                    text:{
+                        if(status === -1){
+                            return "○";
                         }
-                        else if(debugStatus === 0){
-                            text = "x";
-                            color = "red";
+                        else if(status === 0){
+                            return "x";
                         }
-                        else if(debugStatus === 1){
-                            text = "√";
-                            color = "green";
+                        else if(status === 1){
+                            return "√";
                         }
                         else{
-                            console.log("dis");
-                            text = "";
+                            return "";
+                        }
+                    }
+                    color: {
+                        if(status === -1){
+                            return "black";
+                        }
+                        else if(status === 0){
+                            return "red";
+                        }
+                        else if(status === 1){
+                            return "green";
+                        }
+                        else{
+                           return "black";
                         }
                     }
                 }
                 ICButton{
                     id:redebug
-                    visible: itemStatusSignal.debugStatus === 0
+                    visible: status === 0
                     height: parent.height-2
                     width: (height << 1) + 10
                     text: qsTr("ReTest")
-                    onButtonClicked: {
+                    enabled: testBegin.bgColor == "green"
+                    onButtonClicked:{
                         refreshTimer.singleMode = 1;
+                        testStop();
                         startTest(index);
                     }
-                }
-            }
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    debugView.currentIndex = index;
                 }
             }
         }
@@ -166,7 +179,6 @@ Item {
         if(debugItems.get(currentTest).status === -1){
             var type = debugItems.get(currentTest).type;
             var id = debugItems.get(currentTest).id;
-            var toSend;
             switch(type){
             case "axisATest":{
                 panelRobotController.setMotorTestPulseNum(10000);
@@ -176,21 +188,18 @@ Item {
                 panelRobotController.setMotorTestPulseNum(10000);
                 panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_JOG_NX + id);
             }break;
-            case "singleYOnTest":{
-                toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                panelRobotController.setYStatus(toSend, 1);
-            }break;
-            case "singleYOffTest":{
-                toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                panelRobotController.setYStatus(toSend, 0);
-            }break;
-            case "HoldDoubleYOnTest":{
-                toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                panelRobotController.setYStatus(toSend, 1);
-            }break;
+            case "singleYOnTest":
+            case "singleYOffTest":
+            case "HoldDoubleYOnTest":
             case "HoldDoubleYOffTest":{
-                toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                panelRobotController.setYStatus(toSend, 0);
+                var toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
+                var st;
+                if(type === "singleYOnTest" || type === "HoldDoubleYOnTest"){
+                    st = 1;
+                }else{
+                    st = 0;
+                }
+                panelRobotController.setYStatus(toSend, st);
             }break;
             default:break;
             }
@@ -226,10 +235,10 @@ Item {
                                 break;
                             }
                             else{
-                                if(sDelay ===20){
+                                if(sDelay ===40){
                                     sDelay = 0;
                                     testResult(currentTest,0);
-                                    setErrTip(currentTest,"receivedErr");
+                                    setErrTip(currentTest,qsTr("receivedErr"));
                                     break;
                                 }
                                 sDelay++;
@@ -239,27 +248,71 @@ Item {
                             if(rDelay ===20){
                                 rDelay=0;
                                 testResult(currentTest,0);
-                                setErrTip(currentTest,"sendErr");
+                                setErrTip(currentTest,qsTr("sendErr"));
                                 break;
                             }
                             rDelay++;
                         }
                     }break;
-                    case "singleYOnTest":{
-                        toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                        panelRobotController.setYStatus(toSend, 1);
-                    }break;
-                    case "singleYOffTest":{
-                        toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                        panelRobotController.setYStatus(toSend, 0);
-                    }break;
-                    case "HoldDoubleYOnTest":{
-                        toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                        panelRobotController.setYStatus(toSend, 1);
-                    }break;
+                    case "singleYOnTest":
+                    case "singleYOffTest":
+                    case "HoldDoubleYOnTest":
                     case "HoldDoubleYOffTest":{
-                        toSend = JSON.stringify(IODefines.getValveItemFromValveName(id));
-                        panelRobotController.setYStatus(toSend, 0);
+                        var valve = IODefines.getValveItemFromValveName(id);
+                        var y1status = panelRobotController.isOutputOn(valve.y1Point, valve.y1Board);
+                        var y2status = 0;
+                        if(type === "HoldDoubleYOnTest" || type === "HoldDoubleYOffTest"){
+                            y2status = panelRobotController.isOutputOn(valve.y2Point, valve.y2Board);
+                        }
+                        if(type === "singleYOffTest" || type === "HoldDoubleYOffTest"){
+                            y1status = !y1status;
+                            if(type === "HoldDoubleYOffTest"){
+                                y2status = !y2status;
+                            }
+                        }
+                        if(y1status && !y2status){
+                            rDelay = 0;
+                            var x1Status = panelRobotController.isInputOn(valve.x1Point, valve.x1Board);
+                            var x2Status = 0;
+                            var x2DirStatus = 1;
+                            if(type === "HoldDoubleYOnTest" || type === "HoldDoubleYOffTest"){
+                                x2Status = panelRobotController.isInputOn(valve.x2Point, valve.x2Board);
+                                x2DirStatus = valve.x2Dir;
+                            }
+                            if(type === "singleYOffTest" ||type === "HoldDoubleYOffTest"){
+                                x1Status = !x1Status;
+                                if(type === "HoldDoubleYOffTest"){
+                                    x2Status = !x2Status;
+                                }
+                            }
+                            if((valve.x1Dir?x1Status:(!x1Status)) && (x2DirStatus?(!x2Status):x2Status)){
+                                   sDelay =0;
+                                   testResult(currentTest,1);
+                            }
+                            else{
+                                if(sDelay ===20){
+                                    sDelay = 0;
+                                    testResult(currentTest,0);
+                                    setErrTip(currentTest,qsTr("inputErr"));
+                                    break;
+                                }
+                                sDelay++;
+                            }
+                        }
+                        else{
+                            if(rDelay === 10){
+                                rDelay=0;
+                                testResult(currentTest,0);
+                                setErrTip(currentTest,qsTr("outputErr"));
+                                break;
+                            }
+                            rDelay++;
+                        }
+
+//                        valveStatus.y1 = panelRobotController.isOutputOn(valve.y1Point, valve.y1Board);
+//                        valveStatus.x1 = panelRobotController.isInputOn(valve.x1Point, valve.x1Board);
+//                        valveStatus.y2 = panelRobotController.isOutputOn(valve.y2Point, valve.y2Board);
+//                        valveStatus.x2 = panelRobotController.isInputOn(valve.x2Point, valve.x2Board);
                     }break;
                     default:break;
                     }
@@ -269,12 +322,15 @@ Item {
                     if(singleMode ===0){
                         if(currentTest == debugItems.count -1){
                             currentTest = -1;
-                            testBegin.text = "StartTest";
+                            testBegin.text = qsTr("StartTest");
                             testBegin.bgColor = "green";
                         }
                         else{
                             startTest(currentTest+1);
                         }
+                    }
+                    else{
+                        currentTest = -1;
                     }
                 }
             }

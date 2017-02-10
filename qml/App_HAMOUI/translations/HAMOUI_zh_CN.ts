@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -369,43 +369,59 @@
     <name>AutoDebugMachine</name>
     <message>
         <source>StartTest</source>
-        <translation type="unfinished"></translation>
+        <translation>开始测试</translation>
     </message>
     <message>
         <source>motor</source>
-        <translation type="unfinished"></translation>
+        <translation>电机</translation>
     </message>
     <message>
         <source>+test</source>
-        <translation type="unfinished"></translation>
+        <translation>正转测试</translation>
     </message>
     <message>
         <source>-test</source>
-        <translation type="unfinished"></translation>
+        <translation>反转测试</translation>
     </message>
     <message>
         <source>singleY</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">单头阀-</translation>
     </message>
     <message>
         <source>onTest</source>
-        <translation type="unfinished"></translation>
+        <translation>通测试</translation>
     </message>
     <message>
         <source>offTest</source>
-        <translation type="unfinished"></translation>
+        <translation>断测试</translation>
     </message>
     <message>
         <source>HoldDoubleY</source>
-        <translation type="unfinished"></translation>
+        <translation>双头阀-</translation>
     </message>
     <message>
         <source>StopTest</source>
-        <translation type="unfinished"></translation>
+        <translation>停止测试</translation>
     </message>
     <message>
         <source>ReTest</source>
-        <translation type="unfinished"></translation>
+        <translation>重新测试</translation>
+    </message>
+    <message>
+        <source>receivedErr</source>
+        <translation>接收脉冲错误</translation>
+    </message>
+    <message>
+        <source>sendErr</source>
+        <translation>发送脉冲错误</translation>
+    </message>
+    <message>
+        <source>inputErr</source>
+        <translation>阀检测错误</translation>
+    </message>
+    <message>
+        <source>outputErr</source>
+        <translation>阀输出错误</translation>
     </message>
 </context>
 <context>
@@ -928,27 +944,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation type="vanished">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation type="vanished">当前坐标系</translation>
+        <translation>当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="vanished">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation type="vanished">世界/关节</translation>
+        <translation>世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -956,7 +972,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -1817,6 +1833,10 @@
     <message>
         <source>SafeArea Configs</source>
         <translation>安全区参数</translation>
+    </message>
+    <message>
+        <source>Auto Debug</source>
+        <translation>自动调机</translation>
     </message>
 </context>
 <context>
@@ -3690,7 +3710,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation type="vanished">安全信号1</translation>
+        <translation>安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5064,11 +5084,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation type="vanished">M值</translation>
+        <translation>M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation type="vanished">IO点</translation>
+        <translation>IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>

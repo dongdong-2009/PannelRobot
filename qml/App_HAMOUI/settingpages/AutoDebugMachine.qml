@@ -18,9 +18,11 @@ ICStackContainer{
     ICButton{
         id:exit
         visible: pageContainer.currentIndex
+        height:32;width:64
         anchors.right: parent.right
+        anchors.rightMargin: 5
         anchors.top:parent.top
-        text: qsTr("Exit")
+        text: qsTr("Exit")+">"
         onButtonClicked: {
             pageContainer.setCurrentIndex(0);
         }
@@ -224,12 +226,12 @@ ICStackContainer{
                 var id = debugItems.get(currentTest).id;
                 switch(type){
                 case "axisATest":{
-                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
+//                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
                     panelRobotController.setMotorTestPulseNum(10000);
                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_JOG_PX + id);
                 }break;
                 case "axisDTest":{
-                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
+//                    panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
                     panelRobotController.setMotorTestPulseNum(10000);
                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_JOG_NX + id);
                 }break;

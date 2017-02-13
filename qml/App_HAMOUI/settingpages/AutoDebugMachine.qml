@@ -24,6 +24,7 @@ Item {
     }
     function testStop(){
         if(currentTest >=0){
+            refreshTimer.testDelay = 0;
             debugItems.setProperty(currentTest,"status",-2);
         }
     }
@@ -208,6 +209,7 @@ Item {
 
     Timer{
         id:refreshTimer
+        property int testDelay: 0
         property int sDelay: 0
         property int rDelay: 0
         property int singleMode: 0
@@ -326,7 +328,11 @@ Item {
                             testBegin.bgColor = "green";
                         }
                         else{
-                            startTest(currentTest+1);
+                            testDelay++;
+                            if(testDelay === 10){
+                                testDelay = 0;
+                                startTest(currentTest+1);
+                            }
                         }
                     }
                     else{

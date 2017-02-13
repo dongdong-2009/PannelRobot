@@ -385,7 +385,7 @@
     </message>
     <message>
         <source>singleY</source>
-        <translation type="unfinished">单头阀-</translation>
+        <translation>单头阀-</translation>
     </message>
     <message>
         <source>onTest</source>
@@ -405,7 +405,7 @@
     </message>
     <message>
         <source>ReTest</source>
-        <translation>重新测试</translation>
+        <translation>重测</translation>
     </message>
     <message>
         <source>receivedErr</source>
@@ -422,6 +422,14 @@
     <message>
         <source>outputErr</source>
         <translation>阀输出错误</translation>
+    </message>
+    <message>
+        <source>Set</source>
+        <translation>去设置</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>返回</translation>
     </message>
 </context>
 <context>
@@ -5736,6 +5744,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Load record </source>
         <translation>载入模号</translation>
+    </message>
+    <message>
+        <source>Please confirm your stop signal off</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

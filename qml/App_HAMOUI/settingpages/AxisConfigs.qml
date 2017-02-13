@@ -596,7 +596,7 @@ Item {
             itemText: AxisDefine.axisInfos[7].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
-                showMotorConfigs(7)
+                showMotorConfigs(7);
             }
             ICCheckBox{
                 id:motor8En
@@ -605,7 +605,7 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(7, isChecked)
+                    onMotorEnChanged(7, isChecked);
                     setAxisVisiable(7,isChecked?false:true);
                 }
             }
@@ -906,6 +906,8 @@ Item {
                 onVisibleChanged: {
                     if(visible){
                         console.log("IN Config");
+
+                        showMotorConfigs(pdata.currentGroup);
                         testClear.clicked();
                         panelRobotController.setMotorTestPulseNum(testPulseNum.text);
                     }

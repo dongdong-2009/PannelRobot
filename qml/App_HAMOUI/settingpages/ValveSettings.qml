@@ -111,4 +111,9 @@ Item {
         panelRobotController.moldChanged.connect(onMoldChanged);
         onMoldChanged();
     }
+    onVisibleChanged: {
+        if(visible){
+            onMoldChanged();
+        }
+    }
 }

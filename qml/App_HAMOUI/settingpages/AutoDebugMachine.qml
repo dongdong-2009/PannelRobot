@@ -60,6 +60,10 @@ ICStackContainer{
            debugItems.setProperty(index,"errType",type);
         }
 
+        function setMoveData(index,data){
+            debugItems.setProperty(index,"moveData",data);
+        }
+
         Item {
             id: reserve
             width: parent.width-5
@@ -81,19 +85,19 @@ ICStackContainer{
                         var axisNum = panelRobotController.getConfigValue("s_rw_16_6_0_184");
                         for(var i=0;i<axisNum;++i){
                             if(AxisDefine.axisInfos[i].visiable === true){
-                                debugItems.append({"type":"axisATest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("+test"),"status":-2,"errTip":"","errType":0});
-                                debugItems.append({"type":"axisDTest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("-test"),"status":-2,"errTip":"","errType":0});
+                                debugItems.append({"type":"axisATest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("+test"),"moveData":"","status":-2,"errTip":"","errType":0});
+                                debugItems.append({"type":"axisDTest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("-test"),"moveData":"","status":-2,"errTip":"","errType":0});
                             }
                         }
                         var yDefines = IOConfigs.teachSingleY;
                         for(var j=0;j<yDefines.length;++j){
-                            debugItems.append({"type":"singleYOnTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("onTest"),"status":-2,"errTip":"","errType":0});
-                            debugItems.append({"type":"singleYOffTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("offTest"),"status":-2,"errTip":"","errType":0});
+                            debugItems.append({"type":"singleYOnTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("onTest"),"moveData":"","status":-2,"errTip":"","errType":0});
+                            debugItems.append({"type":"singleYOffTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("offTest"),"moveData":"","status":-2,"errTip":"","errType":0});
                         }
                         yDefines = IOConfigs.teachHoldDoubleY;
                         for(var k=0;k<yDefines.length;++k){
-                            debugItems.append({"type":"HoldDoubleYOnTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("onTest"),"status":-2,"errTip":"","errType":0});
-                            debugItems.append({"type":"HoldDoubleYOffTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("offTest"),"status":-2,"errTip":"","errType":0});
+                            debugItems.append({"type":"HoldDoubleYOnTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("onTest"),"moveData":"","status":-2,"errTip":"","errType":0});
+                            debugItems.append({"type":"HoldDoubleYOffTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("offTest"),"moveData":"","status":-2,"errTip":"","errType":0});
                         }
                         if(debugItems.count === 0)return;
                         text = qsTr("StopTest")
@@ -138,7 +142,7 @@ ICStackContainer{
                 Text {
                     id: itemDescr
                     anchors.verticalCenter: parent.verticalCenter
-                    text: descr
+                    text: descr+":"+moveData
                 }
                 Row{
                     id: itemStatus
@@ -273,6 +277,7 @@ ICStackContainer{
                             pulseSent = panelRobotController.statusValue(sentPulseAddrs[id]);
                             pulseReceived = panelRobotController.statusValue(receivedPulseAddrs[id]);
                             debugArea.text ="id:"+id+" R:"+pulseReceived+" S:"+pulseSent;
+                            root.setMoveData(root.currentTest,qsTr(" R:")+pulseReceived+qsTr(" S:")+pulseSent);
                             if(type==="axisDTest") tmp =-10000;
                             else tmp =10000;
                             if(Math.abs(pulseSent-tmp)<10){

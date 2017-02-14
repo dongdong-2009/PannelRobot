@@ -61,13 +61,13 @@
     </message>
     <message>
         <location line="+479"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+109"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+110"/>
         <source>Ent</source>
         <translation>输入</translation>
     </message>
     <message>
         <location line="-58"/>
-        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+19"/>
+        <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+29"/>
         <source>CE</source>
         <translation>清空</translation>
     </message>

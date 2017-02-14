@@ -431,6 +431,14 @@
         <source>Exit</source>
         <translation>返回</translation>
     </message>
+    <message>
+        <source> R:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> S:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AutoRunInfoPage</name>
@@ -5138,6 +5146,26 @@ You just need to set the count configs after this setting.</source>
         <source>Time out</source>
         <translation>时间输出</translation>
     </message>
+    <message>
+        <source>actCnt</source>
+        <translation>输出次数</translation>
+    </message>
+    <message>
+        <source>intervalTime:</source>
+        <translation>间隔时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec:</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>intervalTime</source>
+        <translation>间隔时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec</source>
+        <translation>直到拍照成功</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -5580,6 +5608,22 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Action Time</source>
         <translation>动作时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>Action Cnt</source>
+        <translation>输出次数</translation>
+    </message>
+    <message>
+        <source>t</source>
+        <translation>次</translation>
+    </message>
+    <message>
+        <source>Interval Time</source>
+        <translation>间隔时间</translation>
     </message>
 </context>
 <context>

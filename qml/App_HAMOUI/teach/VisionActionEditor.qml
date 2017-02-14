@@ -13,15 +13,15 @@ Item {
         if(dataSource.configValue < 0) return ret;
         if(catchEn.isChecked){
             if(catchType.currentIndex == 1){
-                ret.push(Teach.generateVisionCatchAction(-1, -1, false, 0, dataSource.configText()));
+                ret.push(Teach.generateVisionCatchAction(-1,-1,-1,false,0,0,0,dataSource.configText()));
             }else{
                 var valveInfo = oPointSel.getValveInfo();
                 if(valveInfo == null)
                     return ret;
-                ret.push(Teach.generateVisionCatchAction(valveInfo.hwPoint, valveInfo.type,
-                                                         (onOffGroup.checkedIndex == 0 ? true:false),
-                                                         actionTime.configValue,
-                                                         dataSource.configText()));
+                ret.push(Teach.generateVisionCatchAction(valveInfo.type,ESData.externalDataManager.getDataSourceHostIDByDisplayName(dataSource.configText()),
+                                                         valveInfo.hwPoint,(onOffGroup.checkedIndex == 0 ? true:false),
+                                                         actionTime.configValue,intervalTime.configValue,
+                                                         actionCnt.configValue,dataSource.configText()));
             }
         }else if(waitDataEn.isChecked){
             ret.push(Teach.generateWaitVisionDataAction(waitTime.configValue,
@@ -58,7 +58,7 @@ Item {
                 items: [qsTr("O Point"), qsTr("Communicate")]
                 currentIndex: 0
                 visible: catchEn.isChecked
-                width: 180
+                width: 80
             }
             ICButtonGroup{
                 id:onOffGroup
@@ -84,15 +84,37 @@ Item {
                 configValue: "0.0"
                 unit: qsTr("s")
                 visible: catchEn.isChecked && catchType.currentIndex == 0
-
             }
-
             z:11
+        }
+        Row{
+            visible: catchEn.isChecked && catchType.currentIndex == 0
+            spacing: 10
+            Text {
+                id: ifPhotoFail
+                anchors.verticalCenter: parent.verticalCenter
+                text: qsTr("Until Photo Vec") + ":"
+            }
+            ICConfigEdit{
+                id:actionCnt
+                configName: qsTr("Action Cnt")
+                configAddr: "s_rw_12_6_0_103"
+                configValue: "1"
+                unit: qsTr("t")
+            }
+            ICConfigEdit{
+                id:intervalTime
+                configName: qsTr("Interval Time")
+                configAddr: "s_rw_0_32_1_1201"
+                configValue: "0.0"
+                unit: qsTr("s")
+            }
         }
         ICValveSelectView{
             id:oPointSel
+            clip: true
             width: 690
-            height: 110
+            height: 80
             visible: catchType.currentIndex == 0 && catchEn.isChecked
             valves: IOConfigs.teachTy
         }

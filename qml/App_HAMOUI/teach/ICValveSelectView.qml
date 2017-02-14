@@ -90,10 +90,15 @@ ICGridView {
             var currentModel = viewModel;
             var modelItem;
             var i;
-            var valveDefine;
+            var valveDefine = {};
             for(i = 0; i < currentModel.count; ++i){
                 modelItem =  currentModel.get(i);
-                valveDefine = IODefines.getValveItemFromValveID(modelItem.hwPoint);
+                if(boardType == IODefines.VALVE_BOARD)
+                    valveDefine = IODefines.getValveItemFromValveID(modelItem.hwPoint);
+                else{
+                    valveDefine.y1Point = modelItem.hwPoint;
+                    valveDefine.y1Board = boardType;
+                }
                 currentModel.setProperty(i, "isOn", panelRobotController.isOutputOn(valveDefine.y1Point, valveDefine.y1Board));
             }
         }

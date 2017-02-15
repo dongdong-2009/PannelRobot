@@ -181,9 +181,22 @@ var extentSwitchCoordAction = {
         }
     };
 
+var speedAction = {
+        "action":16,
+        "properties":[new ActionDefineItem("startSpeed", 1),
+                    new ActionDefineItem("endSpeed", 1)],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("../SpeedActionEditor.qml"), "itemDef":{"item":"SpeedActionEditor"}},
+        "toStringHandler":function(actionObject){
+            return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+        }
+    };
+
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
                      extentDeltaJumpAction,
                      extentSafeRangeAction,
                      extentSingleStackAction,
-        extentSwitchCoordAction];
+                     extentSwitchCoordAction,
+                     speedAction];

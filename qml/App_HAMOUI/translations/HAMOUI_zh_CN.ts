@@ -433,11 +433,71 @@
     </message>
     <message>
         <source> R:</source>
-        <translation type="unfinished"></translation>
+        <translation>接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation type="unfinished"></translation>
+        <translation>发送脉冲:</translation>
+    </message>
+    <message>
+        <source>Output1:</source>
+        <translation>输出1:</translation>
+    </message>
+    <message>
+        <source>on</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Output2:</source>
+        <translation>输出2:</translation>
+    </message>
+    <message>
+        <source>Input1:</source>
+        <translation>输入1:</translation>
+    </message>
+    <message>
+        <source>Input2:</source>
+        <translation>输入2:</translation>
+    </message>
+    <message>
+        <source> R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source> S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>Output1</source>
+        <translation>输出1</translation>
+    </message>
+    <message>
+        <source>Output2</source>
+        <translation>输出2</translation>
+    </message>
+    <message>
+        <source>Input1</source>
+        <translation>输入1</translation>
+    </message>
+    <message>
+        <source>Input2</source>
+        <translation>输入2</translation>
+    </message>
+    <message>
+        <source>R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>zPulse Err</source>
+        <translation>Z脉冲错误</translation>
     </message>
 </context>
 <context>

@@ -22,6 +22,7 @@ Item {
         delegate: Text {
             width:parent.width
             height: 30
+            verticalAlignment:Text.AlignVCenter
             text: id+':'+name
             MouseArea{
                 id:selItem

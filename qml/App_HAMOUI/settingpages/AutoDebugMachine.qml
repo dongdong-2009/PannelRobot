@@ -17,7 +17,8 @@ ICStackContainer{
         "c_ro_0_16_0_910", "c_ro_0_16_0_914", "c_ro_0_16_0_918", "c_ro_0_16_0_922", "c_ro_0_16_0_926", "c_ro_0_16_0_930"]
     property variant pulsePerRevolutionAddrs: ["s_rw_0_16_0_101","s_rw_0_16_0_108",
         "s_rw_0_16_0_115","s_rw_0_16_0_122","s_rw_0_16_0_129","s_rw_0_16_0_136","s_rw_0_16_0_143","s_rw_0_16_0_150"]
-
+    property variant testSpeedAddrs: ["s_rw_0_8_0_225","s_rw_8_8_0_225","s_rw_16_8_0_225",
+        "s_rw_24_8_0_225","s_rw_0_8_0_226","s_rw_8_8_0_226","s_rw_16_8_0_226","s_rw_24_8_0_226"]
     ICButton{
         id:exit
         visible: pageContainer.currentIndex
@@ -71,6 +72,11 @@ ICStackContainer{
             id: reserve
             width: parent.width-5
             height: 100
+            ICConfigEdit{
+                id:testSpeed
+                unit: qsTr("%")
+
+            }
             ICButton{
                 id:testBegin
                 anchors.verticalCenter: parent.verticalCenter

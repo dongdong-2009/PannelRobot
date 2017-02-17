@@ -32,6 +32,7 @@ Item {
             }
         }
         onCurrentItemChanged:{
+            if(currentIndex<0)return;
             var coordPoint = [];
             coordPoint  = toolCoordModel.get(currentIndex).info.data;
             coordName.configValue = toolCoordModel.get(currentIndex).name;

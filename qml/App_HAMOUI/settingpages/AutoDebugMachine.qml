@@ -72,11 +72,10 @@ ICStackContainer{
             id: reserve
             width: parent.width-5
             height: 100
-            ICConfigEdit{
-                id:testSpeed
-                unit: qsTr("%")
-
-            }
+//            ICConfigEdit{
+//                id:testSpeed
+//                unit: qsTr("%")
+//            }
             ICButton{
                 id:testBegin
                 anchors.verticalCenter: parent.verticalCenter

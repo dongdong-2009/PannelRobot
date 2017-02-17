@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -369,43 +369,135 @@
     <name>AutoDebugMachine</name>
     <message>
         <source>StartTest</source>
-        <translation type="unfinished"></translation>
+        <translation>开始测试</translation>
     </message>
     <message>
         <source>motor</source>
-        <translation type="unfinished"></translation>
+        <translation>电机</translation>
     </message>
     <message>
         <source>+test</source>
-        <translation type="unfinished"></translation>
+        <translation>正转测试</translation>
     </message>
     <message>
         <source>-test</source>
-        <translation type="unfinished"></translation>
+        <translation>反转测试</translation>
     </message>
     <message>
         <source>singleY</source>
-        <translation type="unfinished"></translation>
+        <translation>单头阀-</translation>
     </message>
     <message>
         <source>onTest</source>
-        <translation type="unfinished"></translation>
+        <translation>通测试</translation>
     </message>
     <message>
         <source>offTest</source>
-        <translation type="unfinished"></translation>
+        <translation>断测试</translation>
     </message>
     <message>
         <source>HoldDoubleY</source>
-        <translation type="unfinished"></translation>
+        <translation>双头阀-</translation>
     </message>
     <message>
         <source>StopTest</source>
-        <translation type="unfinished"></translation>
+        <translation>停止测试</translation>
     </message>
     <message>
         <source>ReTest</source>
-        <translation type="unfinished"></translation>
+        <translation>重测</translation>
+    </message>
+    <message>
+        <source>receivedErr</source>
+        <translation>接收脉冲错误</translation>
+    </message>
+    <message>
+        <source>sendErr</source>
+        <translation>发送脉冲错误</translation>
+    </message>
+    <message>
+        <source>inputErr</source>
+        <translation>阀检测错误</translation>
+    </message>
+    <message>
+        <source>outputErr</source>
+        <translation>阀输出错误</translation>
+    </message>
+    <message>
+        <source>Set</source>
+        <translation>去设置</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>返回</translation>
+    </message>
+    <message>
+        <source> R:</source>
+        <translation>接收脉冲:</translation>
+    </message>
+    <message>
+        <source> S:</source>
+        <translation>发送脉冲:</translation>
+    </message>
+    <message>
+        <source>Output1:</source>
+        <translation>输出1:</translation>
+    </message>
+    <message>
+        <source>on</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Output2:</source>
+        <translation>输出2:</translation>
+    </message>
+    <message>
+        <source>Input1:</source>
+        <translation>输入1:</translation>
+    </message>
+    <message>
+        <source>Input2:</source>
+        <translation>输入2:</translation>
+    </message>
+    <message>
+        <source> R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source> S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>Output1</source>
+        <translation>输出1</translation>
+    </message>
+    <message>
+        <source>Output2</source>
+        <translation>输出2</translation>
+    </message>
+    <message>
+        <source>Input1</source>
+        <translation>输入1</translation>
+    </message>
+    <message>
+        <source>Input2</source>
+        <translation>输入2</translation>
+    </message>
+    <message>
+        <source>R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>zPulse Err</source>
+        <translation>Z脉冲错误</translation>
     </message>
 </context>
 <context>
@@ -928,27 +1020,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation type="obsolete">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation type="obsolete">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation type="obsolete">当前坐标系</translation>
+        <translation>当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="obsolete">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation type="vanished">世界/关节</translation>
+        <translation>世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -956,7 +1048,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -1821,6 +1913,10 @@
     <message>
         <source>Origin Setting</source>
         <translation>原点设定</translation>
+    </message>
+    <message>
+        <source>Auto Debug</source>
+        <translation>自动调机</translation>
     </message>
 </context>
 <context>
@@ -3737,7 +3833,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation type="vanished">安全信号1</translation>
+        <translation>安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5169,6 +5265,26 @@ You just need to set the count configs after this setting.</source>
         <source>Time out</source>
         <translation>时间输出</translation>
     </message>
+    <message>
+        <source>actCnt</source>
+        <translation>输出次数</translation>
+    </message>
+    <message>
+        <source>intervalTime:</source>
+        <translation>间隔时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec:</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>intervalTime</source>
+        <translation>间隔时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec</source>
+        <translation>直到拍照成功</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -5612,6 +5728,22 @@ You just need to set the count configs after this setting.</source>
         <source>Action Time</source>
         <translation>动作时间</translation>
     </message>
+    <message>
+        <source>Until Photo Vec</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>Action Cnt</source>
+        <translation>输出次数</translation>
+    </message>
+    <message>
+        <source>t</source>
+        <translation>次</translation>
+    </message>
+    <message>
+        <source>Interval Time</source>
+        <translation>间隔时间</translation>
+    </message>
 </context>
 <context>
     <name>VisionModelItem</name>
@@ -5775,6 +5907,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Load record </source>
         <translation type="unfinished">载入模号</translation>
+    </message>
+    <message>
+        <source>Please confirm your stop signal off</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

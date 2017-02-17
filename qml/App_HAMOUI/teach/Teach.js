@@ -812,11 +812,11 @@ actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
 actions.F_CMD_IO_INTERVAL_OUTPUT = 201;   //< IO点间隔输出
+actions.F_CMD_VISION_CATCH = 202;
 actions.F_CMD_STACK0 = 300;
 actions.F_CMD_COUNTER = 400; //< 计数器
 actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
-actions.F_CMD_VISION_CATCH = 501;
 
 actions.F_CMD_MEMCOMPARE_CMD = 602;
 
@@ -994,13 +994,13 @@ var generateOriginAction = function(action,
     };
 }
 
-var generateSpeedAction = function(startSpeed,endSpeed){
-    return {
-        "action":actions.F_CMD_SPEED_SMOOTH,
-        "startSpeed":startSpeed,
-        "endSpeed":endSpeed
-    }
-}
+//var generateSpeedAction = function(startSpeed,endSpeed){
+//    return {
+//        "action":actions.F_CMD_SPEED_SMOOTH,
+//        "startSpeed":startSpeed,
+//        "endSpeed":endSpeed
+//    }
+//}
 
 var generateDataAction = function(addr, type, data, op){
     return {
@@ -1206,13 +1206,16 @@ var generateCallModuleAction = function(module, flag){
     };
 }
 
-var generateVisionCatchAction = function(point, type, status, acTime, dataSourceName){
+var generateVisionCatchAction = function(type, hostID, point,  status,  acTime, intervalTime, cnt,dataSourceName){
     return {
         "action": actions.F_CMD_VISION_CATCH,
-        "point":point,
         "type":type,
+        "hostID": hostID,
+        "point":point,
         "pointStatus": status,
         "acTime": acTime,
+        "intervalTime":intervalTime,
+        "cnt":cnt,
         "dataSource":dataSourceName
     }
 }
@@ -1638,7 +1641,8 @@ var visionCatchActionToStringHandler = function(actionObject){
     var detailStr = "";
     if(!isCommunicate){
         detailStr += qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                + qsTr("Action Time:") + actionObject.acTime;
+                + qsTr("Action Time:") + actionObject.acTime+"\n                            "
+        +qsTr("actCnt")+ actionObject.cnt+" "+qsTr("intervalTime")+actionObject.intervalTime+" "+qsTr("Until Photo Vec");
     }
 
     return qsTr("Vistion Catch Start:") + qsTr("Data Source:") + actionObject.dataSource + "\n                            "
@@ -1650,9 +1654,9 @@ var waitVisionDataActionToStringHandler = function(actionObject){
             + qsTr("Limit:") + actionObject.limit;
 }
 
-var speedActionToStringHandler = function(actionObject){
-    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
-}
+//var speedActionToStringHandler = function(actionObject){
+//    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+//}
 
 var dataActionToStringHandler = function(actionObject){
     var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
@@ -1705,7 +1709,7 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
+//actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStringHandler);
 

@@ -567,7 +567,6 @@ Item {
                 motor4.visible = motor4.isChecked && AxisDefine.axisInfos[4].visiable;
                 motor5.visible = motor5.isChecked && AxisDefine.axisInfos[5].visiable;
                 refreshSelectablePoisnts();
-
             }
 
             Flow{
@@ -739,18 +738,17 @@ Item {
 
                 function createModelItem(){
                     var ret = {};
-
-                    if(motor0.isChecked && motor0.visible)
+                    if(motor0.isChecked && AxisDefine.axisInfos[0].visiable)
                         ret.m0 = motor0.configValue;
-                    if(motor1.isChecked && motor1.visible)
+                    if(motor1.isChecked && AxisDefine.axisInfos[1].visiable)
                         ret.m1 = motor1.configValue;
-                    if(motor2.isChecked && motor2.visible)
+                    if(motor2.isChecked && AxisDefine.axisInfos[2].visiable)
                         ret.m2 = motor2.configValue;
-                    if(motor3.isChecked && motor3.visible)
+                    if(motor3.isChecked && AxisDefine.axisInfos[3].visiable)
                         ret.m3 = motor3.configValue;
-                    if(motor4.isChecked && motor4.visible)
+                    if(motor4.isChecked && AxisDefine.axisInfos[4].visiable)
                         ret.m4 = motor4.configValue;
-                    if(motor5.isChecked && motor5.visible)
+                    if(motor5.isChecked && AxisDefine.axisInfos[5].visiable)
                         ret.m5 = motor5.configValue;
                     var pointName = "";
                     if(selReferenceName.isChecked){

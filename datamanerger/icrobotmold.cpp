@@ -381,11 +381,13 @@ int IntervalOutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 int VisionCatchActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
-    item.append(F_CMD_IO_OUTPUT);
-    item.append(v->value("type", 0).toInt());
+    item.append(F_CMD_VISION_CATCH);
+    item.append(v->value("hostID", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
     item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("intervalTime", 0).toDouble(), 1));
+    item.append(v->value("cnt", 0).toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 

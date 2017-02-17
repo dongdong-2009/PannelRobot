@@ -1828,6 +1828,7 @@ Rectangle {
         Teach.definedPoints.registerPointsMonitor(programFlowPageInstance);
 
         for(var ac in Teach.customActions){
+//            console.log("ac",ac,Teach.customActions[ac].editableItems.editor,Teach.customActions[ac].editableItems.itemDef.item);
             modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor,
                                               Teach.customActions[ac].editableItems.itemDef.item);
         }

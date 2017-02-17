@@ -390,8 +390,15 @@ Rectangle {
         z:101
         visible: false
         anchors.centerIn: parent
-
     }
+
+    ICMessageBox{
+        id: tipForstartup
+        x:300
+        y:200
+        z: 101
+        visible: false
+     }
 
     ParaChose{
         id:paraChose
@@ -866,6 +873,16 @@ Rectangle {
             }
         }
 
+        var stopBtnEn = parseInt(panelRobotController.getCustomSettings("X47UseForStop", 0));
+        var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
+        if(key === Keymap.KEY_Run && stopBtnStatus == 1 && stopBtnEn == 1){
+            tipForstartup.information(qsTr("Please confirm your stop signal off"),qsTr("Get it"));
+            return;
+        }
+        tipForstartup.visible = false;
+
+
+
         if(Keymap.isAxisKeyType(key)){
             Keymap.setKeyPressed(key, true);
         }else if(Keymap.isCommandKeyType(key)){
@@ -926,7 +943,9 @@ Rectangle {
             if(startupBtnStatus != refreshTimer.startupBtnOld){
                 refreshTimer.startupBtnOld = startupBtnStatus;
                 if(startupBtnEn){
+                        if(!(stopBtnStatus == 1 && stopBtnEn == 1)){
                     panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                        }
                 }
             }
         }else refreshTimer.startupBtnOld = 0;

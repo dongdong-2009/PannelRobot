@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -235,23 +235,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -259,11 +259,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -433,15 +433,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -453,23 +453,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -1005,11 +1005,11 @@
     </message>
     <message>
         <source>Rotate to Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转清零</translation>
     </message>
     <message>
         <source>Motor 8</source>
-        <translation type="unfinished">欧瑞伺服 {8?}</translation>
+        <translation>禾川伺服</translation>
     </message>
 </context>
 <context>
@@ -1020,27 +1020,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1048,7 +1048,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -1557,11 +1557,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -1674,6 +1674,18 @@
     <message>
         <source>CoordID</source>
         <translation>工作台坐标系ID</translation>
+    </message>
+    <message>
+        <source>Path Speed:</source>
+        <translation type="unfinished">路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed:</source>
+        <translation type="unfinished">起始速度:</translation>
+    </message>
+    <message>
+        <source>End Speed:</source>
+        <translation type="unfinished">结束速度:</translation>
     </message>
 </context>
 <context>
@@ -1842,15 +1854,15 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-        <translation>运行中</translation>
+        <translation type="vanished">运行中</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation>单步</translation>
+        <translation type="vanished">单步</translation>
     </message>
     <message>
         <source>One Cycle</source>
-        <translation>单循环</translation>
+        <translation type="vanished">单循环</translation>
     </message>
 </context>
 <context>
@@ -1958,7 +1970,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具标定</translation>
+        <translation type="vanished">工具标定</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -3299,7 +3311,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -3331,11 +3343,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -3833,7 +3845,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5087,15 +5099,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -5271,11 +5283,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>
@@ -5547,11 +5559,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>

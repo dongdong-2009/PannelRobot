@@ -4,6 +4,7 @@ import "configs/AxisDefine.js" as AxisDefine
 
 
 Item {
+    id:root
     width: parent.width
     height: parent.height
 
@@ -137,14 +138,14 @@ Item {
                 id:p1
                 text: qsTr("Set to P1")
                 onButtonClicked: {
-                    var pulses = parent.readPulse();
+                    var pulses = root.readPulse();
                     panelRobotController.setConfigValue("m_rw_0_32_0_358", pulses[0]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_359", pulses[1]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_360", pulses[2]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_361", pulses[3]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_362", pulses[4]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_363", pulses[5]);
-                    p1Show.text = parent.pulseToText(pulses);
+                    p1Show.text = root.pulseToText(pulses);
                     panelRobotController.syncConfigs();
 
                 }
@@ -159,14 +160,14 @@ Item {
                 id:p2
                 text: qsTr("Set to P2")
                 onButtonClicked: {
-                    var pulses = parent.readPulse();
+                    var pulses = root.readPulse();
                     panelRobotController.setConfigValue("m_rw_0_32_0_364", pulses[0]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_365", pulses[1]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_366", pulses[2]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_367", pulses[3]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_368", pulses[4]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_369", pulses[5]);
-                    p2Show.text = parent.pulseToText(pulses);
+                    p2Show.text = root.pulseToText(pulses);
                     panelRobotController.syncConfigs();
 
 
@@ -183,14 +184,14 @@ Item {
                 id:p3
                 text: qsTr("Set to P3")
                 onButtonClicked: {
-                    var pulses = parent.readPulse();
+                    var pulses = root.readPulse();
                     panelRobotController.setConfigValue("m_rw_0_32_0_370", pulses[0]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_371", pulses[1]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_372", pulses[2]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_373", pulses[3]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_374", pulses[4]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_375", pulses[5]);
-                    p3Show.text = parent.pulseToText(pulses);
+                    p3Show.text = root.pulseToText(pulses);
                     panelRobotController.syncConfigs();
 
                 }
@@ -206,14 +207,14 @@ Item {
                 id:p4
                 text: qsTr("Set to P4")
                 onButtonClicked: {
-                    var pulses = parent.readPulse();
+                    var pulses = root.readPulse();
                     panelRobotController.setConfigValue("m_rw_0_32_0_376", pulses[0]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_377", pulses[1]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_378", pulses[2]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_379", pulses[3]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_380", pulses[4]);
                     panelRobotController.setConfigValue("m_rw_0_32_0_381", pulses[5]);
-                    p4Show.text = parent.pulseToText(pulses);
+                    p4Show.text = root.pulseToText(pulses);
                     panelRobotController.syncConfigs();
 
                 }

@@ -83,6 +83,7 @@ Item {
                 var ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
                 panelRobotController.sendToolCoord(ret[0],JSON.stringify(coordPoint));
+                view.currentIndex = toolCoordModel.count - 1;
             }
         }
         ICButton{

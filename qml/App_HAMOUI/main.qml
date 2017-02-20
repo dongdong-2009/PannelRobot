@@ -725,7 +725,7 @@ Rectangle {
 
     function onETH0DataIn(data){
         console.log("raw data:", data);
-        var posData = ESData.externalDataManager.parse(data);
+        var posData = ESData.externalDataManager.parse(String(data));
         console.log("cam data:", JSON.stringify(posData));
         var usid = JSON.parse(panelRobotController.usedSourceStacks());
         for(var sid in usid){
@@ -1008,7 +1008,7 @@ Rectangle {
                             delayCntTmp[i] = 0;
                         }
                         delayCntTmp[i]++;
-                        if(delayCntTmp[i] >= 5){
+                        if(delayCntTmp[i] >= 10){
                             delayCntTmp[i] = 0;
                             btnStatusOldTmp[i] = btnStatus;
                             if(curMode === Keymap.CMD_ORIGIN || curMode === Keymap.CMD_RETURN ||

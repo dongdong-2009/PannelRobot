@@ -147,6 +147,7 @@ Item {
                 delegate: Text {
                     width:parent.width
                     height: 25
+                    verticalAlignment:Text.AlignVCenter
                     text: ioName + " "+qsTr("select")+":"+ moldName
                     MouseArea{
                         anchors.fill: parent

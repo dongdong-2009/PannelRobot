@@ -994,13 +994,13 @@ var generateOriginAction = function(action,
     };
 }
 
-var generateSpeedAction = function(startSpeed,endSpeed){
-    return {
-        "action":actions.F_CMD_SPEED_SMOOTH,
-        "startSpeed":startSpeed,
-        "endSpeed":endSpeed
-    }
-}
+//var generateSpeedAction = function(startSpeed,endSpeed){
+//    return {
+//        "action":actions.F_CMD_SPEED_SMOOTH,
+//        "startSpeed":startSpeed,
+//        "endSpeed":endSpeed
+//    }
+//}
 
 var generateDataAction = function(addr, type, data, op){
     return {
@@ -1654,9 +1654,9 @@ var waitVisionDataActionToStringHandler = function(actionObject){
             + qsTr("Limit:") + actionObject.limit;
 }
 
-var speedActionToStringHandler = function(actionObject){
-    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
-}
+//var speedActionToStringHandler = function(actionObject){
+//    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+//}
 
 var dataActionToStringHandler = function(actionObject){
     var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
@@ -1709,7 +1709,7 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
+//actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStringHandler);
 

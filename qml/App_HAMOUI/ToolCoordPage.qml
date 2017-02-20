@@ -22,6 +22,7 @@ Item {
         delegate: Text {
             width:parent.width
             height: 30
+            verticalAlignment:Text.AlignVCenter
             text: id+':'+name
             MouseArea{
                 id:selItem
@@ -32,6 +33,7 @@ Item {
             }
         }
         onCurrentItemChanged:{
+            if(currentIndex<0)return;
             var coordPoint = [];
             coordPoint  = toolCoordModel.get(currentIndex).info.data;
             coordName.configValue = toolCoordModel.get(currentIndex).name;
@@ -81,6 +83,7 @@ Item {
                 var ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
                 panelRobotController.sendToolCoord(ret[0],JSON.stringify(coordPoint));
+                view.currentIndex = toolCoordModel.count - 1;
             }
         }
         ICButton{

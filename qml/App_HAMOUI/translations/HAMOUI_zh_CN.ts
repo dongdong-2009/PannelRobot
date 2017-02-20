@@ -433,11 +433,71 @@
     </message>
     <message>
         <source> R:</source>
-        <translation type="unfinished"></translation>
+        <translation>接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation type="unfinished"></translation>
+        <translation>发送脉冲:</translation>
+    </message>
+    <message>
+        <source>Output1:</source>
+        <translation>输出1:</translation>
+    </message>
+    <message>
+        <source>on</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Output2:</source>
+        <translation>输出2:</translation>
+    </message>
+    <message>
+        <source>Input1:</source>
+        <translation>输入1:</translation>
+    </message>
+    <message>
+        <source>Input2:</source>
+        <translation>输入2:</translation>
+    </message>
+    <message>
+        <source> R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source> S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>Output1</source>
+        <translation>输出1</translation>
+    </message>
+    <message>
+        <source>Output2</source>
+        <translation>输出2</translation>
+    </message>
+    <message>
+        <source>Input1</source>
+        <translation>输入1</translation>
+    </message>
+    <message>
+        <source>Input2</source>
+        <translation>输入2</translation>
+    </message>
+    <message>
+        <source>R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>zPulse Err</source>
+        <translation>Z脉冲错误</translation>
     </message>
 </context>
 <context>
@@ -1485,15 +1545,15 @@
     <name>ExtentActionDefine</name>
     <message>
         <source>PENQIANG</source>
-        <translation type="unfinished">往复</translation>
+        <translation>往复</translation>
     </message>
     <message>
         <source>Pos1:</source>
-        <translation type="unfinished">起始位置:</translation>
+        <translation>起始位置:</translation>
     </message>
     <message>
         <source>Pos2:</source>
-        <translation type="unfinished">结束位置:</translation>
+        <translation>结束位置:</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -1505,115 +1565,127 @@
     </message>
     <message>
         <source>Speed:</source>
-        <translation type="unfinished">速度:</translation>
+        <translation>速度:</translation>
     </message>
     <message>
         <source>Num:</source>
-        <translation type="unfinished">次数</translation>
+        <translation>次数</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="unfinished">延时:</translation>
+        <translation>延时:</translation>
     </message>
     <message>
         <source>Analog Control</source>
-        <translation type="unfinished">模拟控制</translation>
+        <translation>模拟控制</translation>
     </message>
     <message>
         <source>Analog:</source>
-        <translation type="unfinished">模拟量:</translation>
+        <translation>模拟量:</translation>
     </message>
     <message>
         <source>Delta Jumpl</source>
-        <translation type="unfinished">Delta 路径</translation>
+        <translation>Delta 路径</translation>
     </message>
     <message>
         <source>start pos:</source>
-        <translation type="unfinished">起点:</translation>
+        <translation>起点:</translation>
     </message>
     <message>
         <source>LH:</source>
-        <translation type="unfinished">起点高:</translation>
+        <translation>起点高:</translation>
     </message>
     <message>
         <source>MH:</source>
-        <translation type="unfinished">中点高:</translation>
+        <translation>中点高:</translation>
     </message>
     <message>
         <source>RH:</source>
-        <translation type="unfinished">终点高:</translation>
+        <translation>终点高:</translation>
     </message>
     <message>
         <source>end pos:</source>
-        <translation type="unfinished">终点位置:</translation>
+        <translation>终点位置:</translation>
     </message>
     <message>
         <source>speed:</source>
-        <translation type="unfinished">速度:</translation>
+        <translation>速度:</translation>
     </message>
     <message>
         <source>Safe Control</source>
-        <translation type="unfinished">安全区</translation>
+        <translation>安全区</translation>
     </message>
     <message>
         <source>in pos fange:</source>
-        <translation type="unfinished">在范围:</translation>
+        <translation>在范围:</translation>
     </message>
     <message>
         <source>out pos fange:</source>
-        <translation type="unfinished">不在范围:</translation>
+        <translation>不在范围:</translation>
     </message>
     <message>
         <source>will alarm:</source>
-        <translation type="unfinished">就报警:</translation>
+        <translation>就报警:</translation>
     </message>
     <message>
         <source>if</source>
-        <translation type="unfinished">如果</translation>
+        <translation>如果</translation>
     </message>
     <message>
         <source>Single Stack</source>
-        <translation type="unfinished">单轴堆叠</translation>
+        <translation>单轴堆叠</translation>
     </message>
     <message>
         <source>RP</source>
-        <translation type="unfinished">反相</translation>
+        <translation>反相</translation>
     </message>
     <message>
         <source>PP</source>
-        <translation type="unfinished">正相</translation>
+        <translation>正相</translation>
     </message>
     <message>
         <source>space:</source>
-        <translation type="unfinished">间距:</translation>
+        <translation>间距:</translation>
     </message>
     <message>
         <source>count:</source>
-        <translation type="unfinished">计数:</translation>
+        <translation>计数:</translation>
     </message>
     <message>
         <source>Counter:Self</source>
-        <translation type="unfinished">计数器:自身</translation>
+        <translation>计数器:自身</translation>
     </message>
     <message>
         <source>Start Pos:</source>
-        <translation type="unfinished">起点:</translation>
+        <translation>起点:</translation>
     </message>
     <message>
         <source>Addr:</source>
-        <translation type="unfinished">地址:</translation>
+        <translation>地址:</translation>
     </message>
     <message>
         <source>When Changed</source>
-        <translation type="unfinished">当改变</translation>
+        <translation>当改变</translation>
     </message>
     <message>
         <source>Switch Coord</source>
-        <translation type="unfinished">坐标系转换</translation>
+        <translation>坐标系转换</translation>
     </message>
     <message>
         <source>CoordID</source>
-        <translation type="unfinished">工作台坐标系ID</translation>
+        <translation>工作台坐标系ID</translation>
+    </message>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed:</source>
+        <translation>起始速度:</translation>
+    </message>
+    <message>
+        <source>End Speed:</source>
+        <translation>结束速度:</translation>
     </message>
 </context>
 <context>

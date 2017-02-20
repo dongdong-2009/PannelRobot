@@ -932,43 +932,62 @@ Rectangle {
 
             if(originBtnStatus){
                 if(originBtnStatus != refreshTimer.originBtnOld){
-                    refreshTimer.originBtnOld = originBtnStatus;
-                    if(originBtnEn){
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+                    refreshTimer.originBtnDelay++;
+                    if(refreshTimer.originBtnDelay >=5){
+                        refreshTimer.originBtnDelay =0;
+                        refreshTimer.originBtnOld = originBtnStatus;
+                        if(originBtnEn){
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_CONFIG);
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_ORIGIN);
+                        }
                     }
-                }
+                }else refreshTimer.originBtnDelay =0;
             }else refreshTimer.originBtnOld = 0;
+
             if(startupBtnStatus){
                 if(startupBtnStatus != refreshTimer.startupBtnOld){
-                    refreshTimer.startupBtnOld = startupBtnStatus;
-                    if(startupBtnEn){
-                        if(!(stopBtnStatus == 1 && stopBtnEn == 1)){
-                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                    refreshTimer.startupBtnDelay++;
+                    if(refreshTimer.startupBtnDelay >=5){
+                        refreshTimer.startupBtnDelay =0;
+                        refreshTimer.startupBtnOld = startupBtnStatus;
+                        if(startupBtnEn){
+                            if(!(stopBtnStatus == 1 && stopBtnEn == 1)){
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_RUN);
+                            }
                         }
                     }
-                }
-            }else refreshTimer.startupBtnOld = 0;
+                }refreshTimer.startupBtnOld =0;
+            }else refreshTimer.startupBtnDelay = 0;
+
             if(stopBtnStatus){
                 if(stopBtnStatus != refreshTimer.stopBtnOld){
-                    refreshTimer.stopBtnOld = stopBtnStatus;
-                    if(stopBtnEn){
-                        if(!(panelRobotController.currentErrNum() !== 0 &&
-                                (panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
-                                    panelRobotController.currentMode() == Keymap.CMD_SINGLE))){
-                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
-                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                    refreshTimer.stopBtnDelay++;
+                    if(refreshTimer.stopBtnDelay >=5){
+                        refreshTimer.stopBtnDelay =0;
+                        refreshTimer.stopBtnOld = stopBtnStatus;
+                        if(stopBtnEn){
+                            if(!(panelRobotController.currentErrNum() !== 0 &&
+                                    (panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
+                                        panelRobotController.currentMode() == Keymap.CMD_SINGLE))){
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                                panelRobotController.sendKeyCommandToHost(Keymap.CMD_KEY_STOP);
+                            }
                         }
                     }
-                }
+                }else refreshTimer.stopBtnDelay =0;
             }else refreshTimer.stopBtnOld = 0;
+
             if(automodeBtnStatus){
                 if(automodeBtnStatus != refreshTimer.automodeBtnOld){
-                    refreshTimer.automodeBtnOld = automodeBtnStatus;
-                    if(automodeBtnEn){
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+                    refreshTimer.automodeBtnDelay++;
+                    if(refreshTimer.automodeBtnDelay >=5){
+                        refreshTimer.automodeBtnDelay =0;
+                        refreshTimer.automodeBtnOld = automodeBtnStatus;
+                        if(automodeBtnEn){
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_AUTO);
+                        }
                     }
-                }
+                }else refreshTimer.automodeBtnDelay =0;
             }else refreshTimer.automodeBtnOld = 0;
         }
 
@@ -976,6 +995,7 @@ Rectangle {
             var moldbyIOData = Mdata.moldbyIOData;
             var btnStatus;
             var btnStatusOldTmp = refreshTimer.btnStatusOld;
+            var delayCntTmp = refreshTimer.delayCnt;
             var record;
             var curMode;
             for(var i=0;i<moldbyIOData.length;++i){
@@ -984,19 +1004,30 @@ Rectangle {
                 curMode = panelRobotController.currentMode();
                 if(btnStatus){
                     if(btnStatus != btnStatusOldTmp[i]){
-                        btnStatusOldTmp[i] = btnStatus;
-                        if(curMode === Keymap.CMD_ORIGIN || curMode === Keymap.CMD_RETURN ||
-                                curMode === Keymap.CMD_ORIGIN_ING || curMode === Keymap.CMD_RETURN_ING)
-                            continue;
-                        panelRobotController.modifyConfigValue(1,Keymap.CMD_CONFIG);
-                        if(panelRobotController.loadRecord(record)){
-                            ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                        if(delayCntTmp[i] == undefined){
+                            delayCntTmp[i] = 0;
                         }
-                        if(curMode === Keymap.CMD_RUNNING || curMode === Keymap.CMD_SINGLE ||
-                                curMode === Keymap.CMD_ONE_CYCLE)
-                           curMode = Keymap.CMD_AUTO;
-                        panelRobotController.modifyConfigValue(1,curMode);
+                        delayCntTmp[i]++;
+                        if(delayCntTmp[i] >= 5){
+                            delayCntTmp[i] = 0;
+                            btnStatusOldTmp[i] = btnStatus;
+                            if(curMode === Keymap.CMD_ORIGIN || curMode === Keymap.CMD_RETURN ||
+                                    curMode === Keymap.CMD_ORIGIN_ING || curMode === Keymap.CMD_RETURN_ING)
+                                continue;
+                            panelRobotController.modifyConfigValue(1,Keymap.CMD_CONFIG);
+                            if(panelRobotController.loadRecord(record)){
+                                ICOperationLog.appendOperationLog(qsTr("Load record ") + record);
+                            }
+                            if(curMode === Keymap.CMD_RUNNING || curMode === Keymap.CMD_SINGLE ||
+                                    curMode === Keymap.CMD_ONE_CYCLE)
+                               curMode = Keymap.CMD_AUTO;
+                            panelRobotController.modifyConfigValue(1,curMode);
+                        }
                     }
+                    else{
+                        delayCntTmp[i] = 0;
+                    }
+                    refreshTimer.delayCnt = delayCntTmp;
                 }
                 else{
                     btnStatusOldTmp[i] = 0;
@@ -1009,10 +1040,15 @@ Rectangle {
     Timer{
         id:refreshTimer
         property variant btnStatusOld: []
+        property variant delayCnt:[]
         property int originBtnOld: 0
+        property int originBtnDelay: 0
         property int startupBtnOld: 0
+        property int startupBtnDelay: 0
         property int stopBtnOld: 0
+        property int stopBtnDelay: 0
         property int automodeBtnOld: 0
+        property int automodeBtnDelay: 0
         interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();

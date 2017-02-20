@@ -712,7 +712,7 @@ Rectangle {
 
                     ICButton{
                         id:paintPos
-                    visible: false
+//                    visible: false
                         text: qsTr("Paint Pos")
     //                    anchors.left: editPos.right
     //                    anchors.leftMargin: 12

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -960,27 +960,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -988,7 +988,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -3726,7 +3726,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5100,11 +5100,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -5152,11 +5152,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>

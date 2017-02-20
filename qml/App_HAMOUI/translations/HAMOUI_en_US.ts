@@ -6854,27 +6854,27 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1013"/>
+        <location filename="../main.qml" line="1039"/>
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1069"/>
+        <location filename="../main.qml" line="1105"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1102"/>
+        <location filename="../main.qml" line="1138"/>
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1102"/>
+        <location filename="../main.qml" line="1138"/>
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1102"/>
+        <location filename="../main.qml" line="1138"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

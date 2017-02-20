@@ -433,15 +433,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -453,23 +453,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -5032,15 +5032,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>

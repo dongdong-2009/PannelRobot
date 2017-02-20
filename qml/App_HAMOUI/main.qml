@@ -956,7 +956,7 @@ Rectangle {
                             }
                         }
                     }
-                }else refreshTimer.startupBtnDelaystartupBtnOld =0;
+                }else refreshTimer.startupBtnDelay =0;
             }else refreshTimer.startupBtnOld = 0;
 
             if(stopBtnStatus){

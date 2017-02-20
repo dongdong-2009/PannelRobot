@@ -5865,6 +5865,15 @@ You just need to set the count configs after this setting.</source>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
+    </message>
+    <message>
+        <source>Need to ghost and export to U Disk?
+The name of ghost is </source>
+        <translation>需要ghost并导出到U盘吗？ghost名字是</translation>
+    </message>
 </context>
 <context>
     <name>maintainPage</name>

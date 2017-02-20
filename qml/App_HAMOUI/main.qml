@@ -871,13 +871,15 @@ Rectangle {
                     tipGO.rejectKey = Keymap.KEY_F5;
                     var name = Utils.formatDate(new Date, "yyyyMMddhhmmss");
                     tipGO.accept.connect(function(){
+                        tipGO.useKeyboard = false;
+                        tipGO.runningTip(qsTr("Exporting..."));
                         panelRobotController.makeGhost(name, Storage.backup());
                         panelRobotController.exportGhost(name + ".ghost.hcdb");
-
+                        tipGO.hide();
                     });
-
-                    tipGO.show(qsTr("Need to ghost and export to U Disk?\nThe name of ghost is " + name),
+                    tipGO.show(qsTr("Need to ghost and export to U Disk?\nThe name of ghost is ") + name,
                                qsTr("Yes[F4]"), qsTr("No[F5]"));
+
                 }
 
                 //                    panelRobotController

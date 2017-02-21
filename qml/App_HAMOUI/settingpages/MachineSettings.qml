@@ -87,7 +87,7 @@ Item {
             text: qsTr("Auto Debug")
             icon: "../images/modeAuto.png"
             enabled: false
-            visible: false
+//            visible: false
         }
 
 

@@ -72,10 +72,19 @@ ICStackContainer{
             id: reserve
             width: parent.width-5
             height: 100
-//            ICConfigEdit{
-//                id:testSpeed
-//                unit: qsTr("%")
-//            }
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                id: textItem
+                text: qsTr("Test Item:Motor +- Test,valve on-off Test")
+            }
+            Text {
+                id: testCondition1
+                text: qsTr("Test Condition:Please left 2r for the motor test")
+            }
+            Text {
+                id: testCondition2
+                text: qsTr("Test Condition:Please make sure the valve can be on or off")
+            }
             ICButton{
                 id:testBegin
                 anchors.verticalCenter: parent.verticalCenter

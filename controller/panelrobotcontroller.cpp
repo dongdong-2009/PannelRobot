@@ -545,8 +545,9 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
     }
     QString nameStr = name.left(6);
     bool ret;
-    if(nameStr != "HAMOUI")
+    if(nameStr != "HAMOUI"){
         ret = translator.load(qml.filePath("HAMOUI_zh_CN.qm" ));
+    }
     else
         ret = translator.load(qml.filePath(name));
     QString language = getCustomSettings("Language", "CN");

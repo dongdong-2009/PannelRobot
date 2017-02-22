@@ -459,137 +459,152 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="84"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="116"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="400"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="78"/>
+        <source>Test Item:Motor +- Test,valve on-off Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="86"/>
+        <source>Test Condition:Please left 2r for the motor test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="90"/>
+        <source>Please make sure the valve can be on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="98"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="130"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="414"/>
         <source>StartTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="93"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="94"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="107"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="108"/>
         <source>motor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="93"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="107"/>
         <source>+test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="94"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="108"/>
         <source>-test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="99"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="100"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="113"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="114"/>
         <source>singleY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="99"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="104"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="113"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="118"/>
         <source>onTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="100"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="105"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="114"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="119"/>
         <source>offTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="104"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="105"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="118"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="119"/>
         <source>HoldDoubleY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="109"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="123"/>
         <source>StopTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="204"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="218"/>
         <source>ReTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="217"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="231"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="335"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="338"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="349"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
         <source>Output1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="335"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="349"/>
         <source>Output2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="354"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="357"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="368"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
         <source>Input1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="354"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="368"/>
         <source>Input2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="305"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="319"/>
         <source>receivedErr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="281"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="295"/>
         <source>R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="281"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="295"/>
         <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="293"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="307"/>
         <source>zPulse Err</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="316"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="330"/>
         <source>sendErr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="335"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="338"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="354"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="357"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="349"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="368"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="335"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="338"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="354"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="357"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="349"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="368"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="373"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="387"/>
         <source>inputErr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="385"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="399"/>
         <source>outputErr</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6758,121 +6773,121 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="53"/>
+        <location filename="../main.qml" line="54"/>
         <source>Rest Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="167"/>
+        <location filename="../main.qml" line="168"/>
         <source>Operation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="177"/>
-        <location filename="../main.qml" line="678"/>
+        <location filename="../main.qml" line="178"/>
+        <location filename="../main.qml" line="679"/>
         <source>Program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="186"/>
+        <location filename="../main.qml" line="187"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="277"/>
-        <location filename="../main.qml" line="302"/>
-        <location filename="../main.qml" line="358"/>
+        <location filename="../main.qml" line="278"/>
+        <location filename="../main.qml" line="303"/>
+        <location filename="../main.qml" line="359"/>
         <source>↑</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="330"/>
+        <location filename="../main.qml" line="331"/>
         <source>Alarm Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="335"/>
+        <location filename="../main.qml" line="336"/>
         <source>Operation Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="372"/>
+        <location filename="../main.qml" line="373"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="373"/>
+        <location filename="../main.qml" line="374"/>
         <source>Sign out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="378"/>
+        <location filename="../main.qml" line="379"/>
         <source>Sign in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="678"/>
+        <location filename="../main.qml" line="679"/>
         <source>V Program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="793"/>
+        <location filename="../main.qml" line="794"/>
         <source>Sending Data...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="793"/>
-        <location filename="../main.qml" line="879"/>
+        <location filename="../main.qml" line="794"/>
+        <location filename="../main.qml" line="881"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="860"/>
+        <location filename="../main.qml" line="862"/>
         <source>Recalibrate need to reboot. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="860"/>
+        <location filename="../main.qml" line="862"/>
         <source>Yes[F4]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="860"/>
+        <location filename="../main.qml" line="862"/>
         <source>No[F5]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="879"/>
+        <location filename="../main.qml" line="881"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="898"/>
+        <location filename="../main.qml" line="900"/>
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="993"/>
+        <location filename="../main.qml" line="1021"/>
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1049"/>
+        <location filename="../main.qml" line="1089"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1082"/>
+        <location filename="../main.qml" line="1122"/>
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1082"/>
+        <location filename="../main.qml" line="1122"/>
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1082"/>
+        <location filename="../main.qml" line="1122"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

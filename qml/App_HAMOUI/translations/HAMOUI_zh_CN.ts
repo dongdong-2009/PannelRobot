@@ -499,6 +499,18 @@
         <source>zPulse Err</source>
         <translation>Z脉冲错误</translation>
     </message>
+    <message>
+        <source>Test Item:Motor +- Test,valve on-off Test</source>
+        <translation>测试项目:电机正反转测试、阀通断测试</translation>
+    </message>
+    <message>
+        <source>Test Condition:Please left 2r for the motor test</source>
+        <translation type="unfinished">测试条件:1.请给电机正反转测试预留两圈的空间</translation>
+    </message>
+    <message>
+        <source>Please make sure the valve can be on or off</source>
+        <translation>2.请确认在当前条件下能通断阀</translation>
+    </message>
 </context>
 <context>
     <name>AutoRunInfoPage</name>

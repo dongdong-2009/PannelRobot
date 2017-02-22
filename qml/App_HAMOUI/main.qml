@@ -20,6 +20,7 @@ Rectangle {
     id:mainWindow
     width: Theme.defaultTheme.MainWindow.width
     height: Theme.defaultTheme.MainWindow.height
+    property bool isInit: false
     function onScreenSave(){
         panelRobotController.closeBacklight();
         loginDialog.setTologout();
@@ -820,6 +821,7 @@ Rectangle {
             for(var i =0;i<toolCoords.length;++i){
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
+            isInit = true;
         });
         //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
         //                                              "","", "", "", 19);
@@ -1053,8 +1055,10 @@ Rectangle {
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
             var currentMode = panelRobotController.currentMode();
-            getExternalFuncBtn();
-            switchMoldByIOStatus();
+            if(isInit){
+                getExternalFuncBtn();
+                switchMoldByIOStatus();
+            }
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

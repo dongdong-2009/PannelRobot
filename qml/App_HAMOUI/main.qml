@@ -14,7 +14,8 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
-import "settingpages/RunningConfigs.js" as Mdata;
+import "settingpages/RunningConfigs.js" as Mdata
+import "../utils/utils.js" as Utils
 
 Rectangle {
     id:mainWindow
@@ -836,7 +837,8 @@ Rectangle {
     focus: true
     Keys.onPressed: {
         var key = event.key;
-        //        console.log("Main key press exec", key);
+        if(key == 16777248) return;
+//        console.log("Main key press exec", key);
         if(key === Keymap.KNOB_MANUAL ||
                 key === Keymap.KNOB_SETTINGS ||
                 key === Keymap.KNOB_AUTO){
@@ -860,6 +862,26 @@ Rectangle {
                         panelRobotController.recal();
                     });
                     tip.show(qsTr("Recalibrate need to reboot. Continue?"), qsTr("Yes[F4]"), qsTr("No[F5]"));
+                }else if(Keymap.matchGhostSequence()){
+                    var tipG = Qt.createComponent("../ICCustomElement/ICMessageBox.qml");
+                    var tipGO = tipG.createObject(mainWindow);
+                    tipGO.z = 100;
+                    tipGO.x = 300;
+                    tipGO.y = 100;
+                    tipGO.useKeyboard = true;
+                    tipGO.acceptKey = Keymap.KEY_F4;
+                    tipGO.rejectKey = Keymap.KEY_F5;
+                    var name = Utils.formatDate(new Date, "yyyyMMddhhmmss");
+                    tipGO.accept.connect(function(){
+                        tipGO.useKeyboard = false;
+                        tipGO.runningTip(qsTr("Exporting..."));
+                        panelRobotController.makeGhost(name, Storage.backup());
+                        panelRobotController.exportGhost(name + ".ghost.hcdb");
+                        tipGO.hide();
+                    });
+                    tipGO.show(qsTr("Need to ghost and export to U Disk?\nThe name of ghost is ") + name,
+                               qsTr("Yes[F4]"), qsTr("No[F5]"));
+
                 }
 
                 //                    panelRobotController

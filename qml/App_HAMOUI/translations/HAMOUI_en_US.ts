@@ -6878,6 +6878,17 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="881"/>
+        <source>Exporting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="880"/>
+        <source>Need to ghost and export to U Disk?
+The name of ghost is </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="901"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>

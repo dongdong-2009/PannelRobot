@@ -505,7 +505,7 @@
     </message>
     <message>
         <source>Test Condition:Please left 2r for the motor test</source>
-        <translation type="unfinished">测试条件:1.请给电机正反转测试预留两圈的空间</translation>
+        <translation>测试条件:1.请给电机正反转测试预留两圈的空间</translation>
     </message>
     <message>
         <source>Please make sure the valve can be on or off</source>
@@ -1253,6 +1253,14 @@
     <message>
         <source>Right Data:</source>
         <translation>右数据:</translation>
+    </message>
+    <message>
+        <source>Rising Edge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>Falling Edge</source>
+        <translation>下降沿</translation>
     </message>
 </context>
 <context>
@@ -5249,6 +5257,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Until Photo Vec</source>
         <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>RisingEdge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>FallingEdge</source>
+        <translation>下降沿</translation>
     </message>
 </context>
 <context>

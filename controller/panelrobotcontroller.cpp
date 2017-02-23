@@ -543,7 +543,13 @@ bool PanelRobotController::LoadTranslator_(const QString &name)
         InitMainView();
         return false;
     }
-    bool ret = translator.load(qml.filePath(name));
+    QString nameStr = name.left(6);
+    bool ret;
+    if(nameStr != "HAMOUI"){
+        ret = translator.load(qml.filePath("HAMOUI_zh_CN.qm" ));
+    }
+    else
+        ret = translator.load(qml.filePath(name));
     QString language = getCustomSettings("Language", "CN");
     if(language == "CN"){
         panelRoboTranslator_.load(":/PanelRobot_zh_CN.qm");

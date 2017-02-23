@@ -107,12 +107,20 @@ Item {
         for(var i = 0; i < mD.count; ++i){
             data = mD.get(i);
             if(data.isSel){
-                var isOn = statusGroup.checkedItem == onBox ? true : false;
+                var pStatus;
+                if(statusBGroup.checkedItem == onBox)
+                    pStatus = 1;
+                else if(statusBGroup.checkedItem == offBox)
+                    pStatus = 0;
+                else if(statusBGroup.checkedItem == risingEdgeBox)
+                    pStatus = 2;
+                else if(statusBGroup.checkedItem == fallingEdgeBox)
+                    pStatus = 3;
                 ret.push(Teach.generateConditionAction(
                              data.board,
                              data.hwPoint,
                              inout,
-                             isOn,
+                             pStatus,
                              limit.configValue,
                              parseInt(flagStr.slice(begin,end))));
                 break;
@@ -362,29 +370,51 @@ Item {
                 }
             }
 
+
+
             Row{
                 spacing: 20
-                ICButtonGroup{
+                Row{
                     id:statusGroup
-                    checkedItem: onBox
-                    mustChecked: true
-                    layoutMode: 0
-                    isAutoSize: true
-                    spacing: 20
+                    spacing: 10
                     visible: !memData.isChecked
                     ICCheckBox{
                         id:onBox
                         text: counter.isChecked ? qsTr(">=T") : qsTr("ON")
+                        width:counter.isChecked ? 80:44
                         isChecked: true
-                        width: 80
                     }
                     ICCheckBox{
                         id:offBox
                         text: counter.isChecked ? qsTr("<T") :qsTr("OFF")
-                        width: 80
+                        width:counter.isChecked ? 80:44
+                    }
+                    ICCheckBox{
+                        id:risingEdgeBox
+                        visible: normalX.isChecked
+                        text: qsTr("Rising Edge")
+                    }
+                    ICCheckBox{
+                        id:fallingEdgeBox
+                        visible: normalX.isChecked
+                        text: qsTr("Falling Edge")
+                    }
+
+                    Component.onCompleted: {
+                        statusBGroup.addButton(onBox);
+                        statusBGroup.addButton(offBox);
+                        statusBGroup.addButton(risingEdgeBox);
+                        statusBGroup.addButton(fallingEdgeBox);
                     }
                 }
 
+                ICButtonGroup{
+                    id:statusBGroup
+                    checkedItem: onBox
+                    mustChecked: true
+                    layoutMode: 2
+//                    visible: statusGroup.visible
+                }
 
                 ICCheckBox{
                     id:autoClear
@@ -396,7 +426,7 @@ Item {
                     id:limit
                     configName: qsTr("Limit:")
                     unit: qsTr("s")
-                    inputWidth: 100
+                    inputWidth: 80
                     height: 24
                     visible: !counter.isChecked
                     z:1
@@ -408,7 +438,7 @@ Item {
                     id: flag
                     configName: qsTr("Flag")
                     popupMode: 1
-                    inputWidth:  250
+                    inputWidth:  180
                     popupHeight: 200
 
                     onVisibleChanged: {
@@ -448,7 +478,6 @@ Item {
     }
 
     Component.onCompleted: {
-
         panelRobotController.moldChanged.connect(onMoldChanged);
         onMoldChanged();
         var i;

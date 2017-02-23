@@ -5,13 +5,11 @@ SOURCES = *.qml \
 teach/*.js \
 teach/*.qml \
 settingpages/* \
-../ICCustomElement/* \
+../ICCustomElement/*.qml \
+../ICCustomElement/*.js \
 teach/extents/*.qml \
 teach/extents/*.js
 }
-
-DISTFILES += \
-    settingpages/AutoDebugMachine.qml
 
 
 

@@ -1704,6 +1704,10 @@ bool PanelRobotController::loadRecord(const QString &name)
                 }
             }
         }
+        if(ret)
+        {
+            ret =ICRobotVirtualhost::InitMoldFnc(host_,mold->BareMachineConfigs());
+        }
 
 #ifndef Q_WS_QWS
         ret = true;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -433,15 +433,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -453,23 +453,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -498,6 +498,18 @@
     <message>
         <source>zPulse Err</source>
         <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>Test Item:Motor +- Test,valve on-off Test</source>
+        <translation>测试项目:电机正反转测试、阀通断测试</translation>
+    </message>
+    <message>
+        <source>Test Condition:Please left 2r for the motor test</source>
+        <translation>测试条件:1.请给电机正反转测试预留两圈的空间</translation>
+    </message>
+    <message>
+        <source>Please make sure the valve can be on or off</source>
+        <translation>2.请确认在当前条件下能通断阀</translation>
     </message>
 </context>
 <context>
@@ -1020,27 +1032,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1048,7 +1060,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -1241,6 +1253,14 @@
     <message>
         <source>Right Data:</source>
         <translation>右数据:</translation>
+    </message>
+    <message>
+        <source>Rising Edge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>Falling Edge</source>
+        <translation>下降沿</translation>
     </message>
 </context>
 <context>
@@ -3845,7 +3865,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5099,15 +5119,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -5254,6 +5274,14 @@ You just need to set the count configs after this setting.</source>
         <translation>时间输出</translation>
     </message>
     <message>
+        <source>M value</source>
+        <translation type="vanished">M值</translation>
+    </message>
+    <message>
+        <source>IO value</source>
+        <translation type="vanished">IO点</translation>
+    </message>
+    <message>
         <source>intervalbox</source>
         <translation>装箱间隔</translation>
     </message>
@@ -5283,11 +5311,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>
@@ -5296,6 +5324,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Until Photo Vec</source>
         <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>RisingEdge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>FallingEdge</source>
+        <translation>下降沿</translation>
     </message>
 </context>
 <context>
@@ -5923,6 +5959,15 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
+    </message>
+    <message>
+        <source>Need to ghost and export to U Disk?
+The name of ghost is </source>
+        <translation>需要ghost并导出到U盘吗？ghost名字是</translation>
     </message>
 </context>
 <context>

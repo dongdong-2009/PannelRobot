@@ -72,14 +72,11 @@ ICStackContainer{
             id: reserve
             width: parent.width-5
             height: 100
-//            ICConfigEdit{
-//                id:testSpeed
-//                unit: qsTr("%")
-//            }
             ICButton{
                 id:testBegin
-                anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 10
                 radius: height >> 1
                 text:qsTr("StartTest")
                 bgColor:"green"
@@ -117,6 +114,26 @@ ICStackContainer{
                         bgColor = "green"
                         root.currentTest = -1;
                     }
+                }
+            }
+            Text {
+                id: textItem
+                anchors.top: testBegin.bottom
+                anchors.topMargin: 10
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Test Item:Motor +- Test,valve on-off Test")
+            }
+            Row{
+                anchors.top: textItem.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 5
+                Text {
+                    id: testCondition1
+                    text: qsTr("Test Condition:Please left 2r for the motor test")
+                }
+                Text {
+                    id: testCondition2
+                    text: qsTr("Please make sure the valve can be on or off")
                 }
             }
         }

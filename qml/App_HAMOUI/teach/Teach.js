@@ -1360,9 +1360,18 @@ var conditionActionToStringHandler = function(actionObject){
     }else
         pointDescr = getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr
 
+    var pStatusStr;
+    if(actionObject.pointStatus == 1)
+        pStatusStr = qsTr("ON");
+    else if(actionObject.pointStatus == 0)
+        pStatusStr = qsTr("OFF");
+    else if(actionObject.pointStatus == 2)
+        pStatusStr = qsTr("RisingEdge");
+    else if(actionObject.pointStatus == 3)
+        pStatusStr = qsTr("FallingEdge");
 
     return qsTr("IF:") + pointDescr +
-            (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " "
+            pStatusStr + " "
             + qsTr("Limit:") + actionObject.limit + " " +
             qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag);
 }

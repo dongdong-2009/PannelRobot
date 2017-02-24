@@ -1932,10 +1932,15 @@ quint32 CompileInfo::CheckSum() const
 
 quint32 ICRobotMold::CheckSum() const
 {
-    quint32 sum = 0;
+    quint64 sum = 0;
     for(int i = 0; i < 9; ++i)
     {
         sum += programs_.at(i).CheckSum();
+    }
+    for(int i = 0; i < ICAddrWrapper::MoldAddrs().count();++i)
+    {
+//        sum += MoldFnc(ICAddrWrapper::MoldAddrs().at(i));
+        sum +=fncCache_.ConfigValue(ICAddrWrapper::MoldAddrs().at(i));
     }
     return (-sum) & 0xFFFF;
 }

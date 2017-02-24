@@ -124,11 +124,16 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
             op |= isEarlySpd ? 1 : 0;
             op |= isEarlyEnd ? 2 : 0;
             item.append(op);
-            item.append(v->value("earlySpdPos", 0).toInt());
             if(isSignalStop)
+            {
+                item.append(v->value("signalIsOff", 0).toInt());
                 item.append(v->value("signalStopPoint", 0).toInt());
+            }
             else
+            {
+                item.append(v->value("earlySpdPos", 0).toInt());
                 item.append(v->value("earlyEndPos", 0).toInt());
+            }
             item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
             item.append(isSignalStop ? 1 : 0);
             item.append(v->value("signalStopMode", 0).toInt());
@@ -1937,10 +1942,11 @@ quint32 ICRobotMold::CheckSum() const
     {
         sum += programs_.at(i).CheckSum();
     }
-    for(int i = 0; i < ICAddrWrapper::MoldAddrs().count();++i)
+    QList<const ICAddrWrapper*> moldAddr = ICAddrWrapper::MoldAddrs();
+    for(int i = 0,size = moldAddr.count(); i < size;++i)
     {
-//        sum += MoldFnc(ICAddrWrapper::MoldAddrs().at(i));
-        sum +=fncCache_.ConfigValue(ICAddrWrapper::MoldAddrs().at(i));
+//        sum += MoldFnc(moldAddr.at(i));
+        sum += fncCache_.ConfigValue(moldAddr.at(i));
     }
     return (-sum) & 0xFFFF;
 }

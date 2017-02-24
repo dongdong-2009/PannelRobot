@@ -47,6 +47,7 @@ Item {
                                                            earlyEndSpeed.configValue,
                                                            signalStop.isChecked,
                                                            signalStop.configValue,
+                                                           signalOnOff.currentIndex,
                                                            fastStop.isChecked,
                                                            speedMode,
                                                            stop.isChecked,
@@ -195,12 +196,12 @@ Item {
                 z:10
                 ICCheckableComboboxEdit{
                     id:signalStop
-                    configName: qsTr("Signal Stop")
+                    configName: qsTr("Input")
                     configValue: -1
-                    inputWidth: 100
+                    inputWidth: 60
                     z:2
                     enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                    configNameWidth: earlyEnd.configNameWidth
+//                    configNameWidth: earlyEnd.configNameWidth
 
                     popupMode: 1
                     popupHeight: 300
@@ -211,11 +212,27 @@ Item {
                         var len = ioBoardCount * 32;
                         var ioItems = [];
                         for(var i = 0; i < len; ++i){
-                            ioItems.push(IODefines.ioItemName(IODefines.xDefines[i]));
+                            ioItems.push(IODefines.xDefines[i].pointName);
                         }
                         items = ioItems;
                         configValue = 0;
                     }
+                }
+                ICComboBox{
+                    id:signalOnOff
+                    enabled:signalStop.isChecked
+                    width: 40
+                    popupMode: 1
+                    items:[qsTr("on"),qsTr("off")]
+                    Component.onCompleted: {
+                        currentIndex = 0;
+                    }
+                }
+                Text {
+                    id: sTip
+                    height: signalOnOff.height
+                    verticalAlignment: Text.AlignVCenter
+                    text: qsTr("TStop")
                 }
                 ICCheckBox{
                     id:fastStop

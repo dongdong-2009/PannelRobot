@@ -937,6 +937,7 @@ var generateAxisServoAction = function(action,
                                        earlySpd,
                                        signalStopEn,
                                        signalStopPoint,
+                                       signalOnOff,
                                        signalStopMode,
                                        speedMode,
                                        stop,
@@ -956,6 +957,7 @@ var generateAxisServoAction = function(action,
         "earlySpd":earlySpd || 0,
         "signalStopEn":signalStopEn || false,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
+                                                         "signalIsOff":signalOnOff || 0,
                                                          "signalStopMode":signalStopMode ? 1 : 0,
                                                                                            "speedMode":speedMode == undefined ? 0 : speedMode,
                                                                                                                                 "stop":stop || false,
@@ -1302,7 +1304,7 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     }
     if(actionObject.signalStopEn){
         ret += "\n                            ";
-        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
+        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + (actionObject.signalIsOff ==1? qsTr("is Off"):qsTr("is On"));
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
     }
 

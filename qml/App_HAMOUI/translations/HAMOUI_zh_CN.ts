@@ -2778,6 +2778,110 @@ please chose!</source>
         <source>custom Variables</source>
         <translation>自定义变量</translation>
     </message>
+    <message>
+        <source>IO Running Setting</source>
+        <translation>IO设定</translation>
+    </message>
+    <message>
+        <source>When the mode change to</source>
+        <translation>当模式切换为</translation>
+    </message>
+    <message>
+        <source>CMD_MANUAL_TO_STOP</source>
+        <translation>手动转停止</translation>
+    </message>
+    <message>
+        <source>CMD_STOP_TO_MANUAL</source>
+        <translation>停止转手动</translation>
+    </message>
+    <message>
+        <source>CMD_STOP_TO_AUTO</source>
+        <translation>停止转自动</translation>
+    </message>
+    <message>
+        <source>CMD_AUTO_TO_STOP</source>
+        <translation>自动转停止</translation>
+    </message>
+    <message>
+        <source>CMD_MANUAL</source>
+        <translation>手动</translation>
+    </message>
+    <message>
+        <source>CMD_AUTO</source>
+        <translation>自动</translation>
+    </message>
+    <message>
+        <source>CMD_CONFIG</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>CMD_ORIGIN</source>
+        <translation>原点</translation>
+    </message>
+    <message>
+        <source>CMD_RETURN</source>
+        <translation>复归</translation>
+    </message>
+    <message>
+        <source>CMD_RUNNING</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>CMD_SINGLE</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>CMD_ONE_CYCLE</source>
+        <translation>单循环</translation>
+    </message>
+    <message>
+        <source>CMD_ORIGIN_ING</source>
+        <translation>回原点中</translation>
+    </message>
+    <message>
+        <source>CMD_RETURN_ING</source>
+        <translation>复归中</translation>
+    </message>
+    <message>
+        <source>Choos Out</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>IO output</source>
+        <translation>IO输出</translation>
+    </message>
+    <message>
+        <source>M output</source>
+        <translation>M值输出</translation>
+    </message>
+    <message>
+        <source>output point</source>
+        <translation>输出点</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>Preservation</source>
+        <translation>保存</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>

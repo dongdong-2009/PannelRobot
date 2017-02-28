@@ -13,6 +13,15 @@ Item {
     property alias popupHeight: edit.popupHeight
     property variant indexMappedValue: []
 
+    function getConfigValue(){
+        if(configValue<indexMappedValue.length)
+        {
+            return indexMappedValue[configValue];
+        }
+        return configValue;
+
+    }
+
 
     function configText(){
         return edit.currentText();

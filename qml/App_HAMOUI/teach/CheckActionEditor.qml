@@ -15,16 +15,18 @@ Item {
         var data;
         var ui;
 
-        if(singleY.isChecked)
+        if(normalX.isChecked)
+            mD = normalXModel;
+        else if(singleY.isChecked)
             mD = singleYModel;
-        else
+        else if(holdDoubleY.isChecked)
             mD = holdDoubleYModel;
         for(var i = 0; i < mD.count; ++i)
         {
             data = mD.get(i);
             if(data.isSel){
                 var isOn = statusGroup.checkedItem == onBox ? true : false;
-                ret.push(Teach.generateCheckAction(data.hwPoint, onBox.isChecked ? Teach.VALVE_CHECK_START : Teach.VALVE_CHECK_END, delay.configValue));
+                ret.push(Teach.generateCheckAction(data.hwPoint, onBox.isChecked ? Teach.VALVE_CHECK_START : Teach.VALVE_CHECK_END, delay.configValue,xDir.configValue,normalX.isChecked));
                 break;
             }
         }
@@ -40,9 +42,13 @@ Item {
             spacing: 20
             //            checkedItem: singleY
             ICCheckBox{
+                id:normalX
+                text: qsTr("Normal X")
+                isChecked: true
+            }
+            ICCheckBox{
                 id:singleY
                 text: qsTr("Single Y")
-                isChecked: true
             }
             ICCheckBox{
                 id:holdDoubleY
@@ -57,6 +63,9 @@ Item {
             border.width: 1
             border.color: "black"
             //            visible: normalY.isChecked
+            ListModel{
+                id:normalXModel
+            }
             ListModel{
                 id:singleYModel
             }
@@ -93,7 +102,7 @@ Item {
                 cellHeight: 32
                 clip: true
                 model: {
-
+                    if(normalX.isChecked) return normalXModel;
                     if(singleY.isChecked) return singleYModel;
                     if(holdDoubleY.isChecked) return holdDoubleYModel;
                     return null;
@@ -144,6 +153,17 @@ Item {
                     text: qsTr("End")
                 }
             }
+            ICComboBoxConfigEdit{
+                id:xDir
+                visible: (normalX.isChecked && onBox.isChecked)
+                popupMode: 1
+                configName: qsTr("Check Dir")
+                inputWidth:40
+                items: [qsTr("Forward"),qsTr("Reverse")]
+                Component.onCompleted: {
+                    configValue =0;
+                }
+            }
 
             ICConfigEdit{
                 id:delay
@@ -161,10 +181,19 @@ Item {
 
 
     Component.onCompleted: {
-
-        var yDefines = IOConfigs.teachSingleY
-        var yDefine;
         var i;
+
+        var xDefines = IODefines.xDefines;
+        var xDefine;
+        var ioBoard = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+        normalX.visible = ioBoard>0;
+        for(i=0;i<(ioBoard*32);++i){
+            xDefine= IODefines.getXDefineFromPointName(xDefines[i].pointName);
+            normalXModel.append(yView.createMoldItem(xDefine.xDefine,xDefine.hwPoint,xDefine.type));
+        }
+
+        var yDefines = IOConfigs.teachSingleY;
+        var yDefine;
 
         singleY.visible = yDefines.length > 0;
         for(i = 0; i < yDefines.length; ++i){

@@ -14,13 +14,15 @@ Item {
         property int editorWidth: 80
         property variant axisDefine: panelRobotController.axisDefine()
         property variant axisEditors: []
+        property variant axisVisible: [m0Axis.visible,m1Axis.visible,m2Axis.visible,m3Axis.visible,
+                                    m3Axis.visible,m5Axis.visible,m6Axis.visible,m7Axis.visible,]
     }
 
     function createActionObjects(){
         var ret = [];
         var axis = pData.axisEditors;
         var axisActionInfo;
-        var editor
+        var editor;
         if(isSyncBox.getChecked()){
             ret.push(Teach.generateSyncBeginAction());
         }
@@ -49,6 +51,10 @@ Item {
                                                            signalStop.configValue,
                                                            signalOnOff.currentIndex,
                                                            fastStop.isChecked,
+                                                            onPosOutput.isChecked,
+                                                            onPosOutput.configValue,
+                                                            ySignalOnOff.currentIndex,
+                                                            posOut.configValue,
                                                            speedMode,
                                                            stop.isChecked,
                                                            rel.isChecked,
@@ -192,19 +198,19 @@ Item {
                 z:8
             }
             Row{
-                spacing: 6
                 z:10
+                spacing: 6
                 ICCheckableComboboxEdit{
                     id:signalStop
                     configName: qsTr("Input")
                     configValue: -1
                     inputWidth: 60
                     z:2
-                    enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                    enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
 //                    configNameWidth: earlyEnd.configNameWidth
 
                     popupMode: 1
-                    popupHeight: 300
+                    popupHeight: 200
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
@@ -239,18 +245,68 @@ Item {
                     text: qsTr("Fast Stop")
                 }
             }
+            Row{
+                z:10
+                spacing: 6
+                ICCheckableComboboxEdit{
+                    id:onPosOutput
+                    configName: qsTr("Output")
+                    configValue: -1
+                    inputWidth: 60
+                    z:2
+                    enabled: !(signalStop.isChecked || earlyEnd.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                    popupMode: 1
+                    popupHeight: 200
+                    Component.onCompleted: {
+                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        var len = ioBoardCount * 32;
+                        var ioItems = [];
+                        for(var i = 0; i < len; ++i){
+                            ioItems.push(IODefines.yDefines[i].pointName);
+                        }
+                        items = ioItems;
+                        configValue = 0;
+                    }
+                }
+                ICComboBox{
+                    id:ySignalOnOff
+                    enabled:onPosOutput.isChecked
+                    width: 40
+                    popupMode: 1
+                    items:[qsTr("on"),qsTr("off")]
+                    Component.onCompleted: {
+                        currentIndex = 0;
+                    }
+                }
+                ICConfigEdit{
+                    id:posOut
+                    enabled:onPosOutput.isChecked
+                    configName: qsTr("On pos")
+                    configValue: "0"
+                }
+            }
+
             Rectangle{
                 width: 340
                 height: {
-                    var ac = panelRobotController.getConfigValue("s_rw_16_6_0_184");
+                    var ac = 0;
+                    for(var i=0;i<8;++i){
+                        if(pData.axisVisible[i]){
+                            ac++;
+                        }
+                    }
                     var ret;
-                    if(ac <= 5) ret =  120;
-                    else ret =  parent.height - (ac - 4) * (m1Axis.height + parent.spacing);
+                    if(ac <= 3) ret =  parent.height -parent.spacing;
+                    else ret =  parent.height - (ac - 3) * (m1Axis.height + parent.spacing);
                     return ret;
                 }
 //                border.width: 1
 //                border.color: "black"
                 ICFlickable{
+                    z:10
+                    boundsBehavior:Flickable.DragOverBounds
                     width: parent.width
                     height: parent.height
                     contentWidth: width
@@ -265,7 +321,7 @@ Item {
                             configValue: "0"
                             inputWidth: 60
                             configNameWidth: 140
-                            enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                            enabled: !(onPosOutput.isChecked || signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
                         }
                         Row{
                             spacing: 4
@@ -275,7 +331,7 @@ Item {
                                 configValue: "0"
                                 inputWidth: 60
                                 configNameWidth: earlyEnd.configNameWidth
-                                enabled: earlyEnd.enabled
+                                enabled: !(signalStop.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
                             }
 
                             ICConfigEdit{
@@ -286,7 +342,6 @@ Item {
                                 enabled: earlyEndSpeedPos.isChecked
                                 configValue: "10.0"
                                 inputWidth: 60
-
                             }
                         }
                         ICCheckBox{
@@ -303,7 +358,7 @@ Item {
                             ICCheckBox{
                                 id:speedPPStart
                                 text: qsTr("Speed PP Start")
-                                enabled: !(earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
+                                enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || signalStop.isChecked || rel.isChecked)
                             }
                             ICCheckBox{
                                 id:speedRPStart

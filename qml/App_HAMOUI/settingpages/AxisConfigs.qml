@@ -694,14 +694,14 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     unit: qsTr("mm")
-                    visible: axisType.configValue == 1
+                    visible: (axisType.configValue == 1)
                 }
                 ICConfigEdit{
                     id:reductionRatio
                     configName: qsTr("Reduction Ratio")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    visible: (axisType.configValue == 0) || (axisType.configValue == 2)
+                    visible: ((axisType.configValue == 0) || (axisType.configValue == 2))
                 }
                 ICConfigEdit{
                     id:pLimit

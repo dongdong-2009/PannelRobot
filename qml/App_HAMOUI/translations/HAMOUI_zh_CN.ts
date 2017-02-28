@@ -745,6 +745,14 @@
         <source>TStop</source>
         <translation>就停止</translation>
     </message>
+    <message>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>On pos</source>
+        <translation>提前位置</translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditorAxisComponent</name>
@@ -1124,6 +1132,22 @@
         <source>Delay:</source>
         <translation>延时:</translation>
     </message>
+    <message>
+        <source>Normal X</source>
+        <translation>普通输入</translation>
+    </message>
+    <message>
+        <source>Check Dir</source>
+        <translation>检测方向</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>Reverse</source>
+        <translation>断</translation>
+    </message>
 </context>
 <context>
     <name>CommentActionEditor</name>
@@ -1277,6 +1301,74 @@
     <message>
         <source>Falling Edge</source>
         <translation>下降沿</translation>
+    </message>
+    <message>
+        <source>Mode Data</source>
+        <translation>模式</translation>
+    </message>
+    <message>
+        <source>Coord Data</source>
+        <translation>坐标</translation>
+    </message>
+    <message>
+        <source>Alarm Data</source>
+        <translation>报警号</translation>
+    </message>
+    <message>
+        <source>when current mode is:</source>
+        <translation>如果当前模式是:</translation>
+    </message>
+    <message>
+        <source>ManualMode</source>
+        <translation>手动模式</translation>
+    </message>
+    <message>
+        <source>StopMode</source>
+        <translation>停止模式</translation>
+    </message>
+    <message>
+        <source>AutoMode</source>
+        <translation>自动模式</translation>
+    </message>
+    <message>
+        <source>Axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>worldPos</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>JogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>posValue</source>
+        <translation>坐标值</translation>
+    </message>
+    <message>
+        <source>when current alarm num</source>
+        <translation>如果当前报警号</translation>
+    </message>
+    <message>
+        <source>alarmNum</source>
+        <translation>报警号</translation>
+    </message>
+    <message>
+        <source>runningMode</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>SingleMode</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>OneCycleMode</source>
+        <translation>单循环模式</translation>
+    </message>
+    <message>
+        <source>RunningMode</source>
+        <translation>自动运行中</translation>
     </message>
 </context>
 <context>
@@ -2699,7 +2791,7 @@ please chose!</source>
     </message>
     <message>
         <source>Check</source>
-        <translation>阀检测</translation>
+        <translation>信号检测</translation>
     </message>
     <message>
         <source>Condition</source>
@@ -2795,7 +2887,7 @@ please chose!</source>
     </message>
     <message>
         <source>Check</source>
-        <translation>阀检测</translation>
+        <translation>信号检测</translation>
     </message>
     <message>
         <source>Counter</source>
@@ -4740,7 +4832,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Check:</source>
-        <translation>阀检测:</translation>
+        <translation type="unfinished">信号检测:</translation>
     </message>
     <message>
         <source>End</source>
@@ -4992,7 +5084,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Output</source>
-        <translation type="obsolete">输出</translation>
+        <translation type="unfinished">输出</translation>
     </message>
     <message>
         <source>On</source>
@@ -5285,6 +5377,62 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>is Off</source>
         <translation>断</translation>
+    </message>
+    <message>
+        <source>When on the pos </source>
+        <translation>当离结束位置</translation>
+    </message>
+    <message>
+        <source>manualMode</source>
+        <translation>手动模式</translation>
+    </message>
+    <message>
+        <source>stopMode</source>
+        <translation>停止模式</translation>
+    </message>
+    <message>
+        <source>autoMode</source>
+        <translation>自动模式</translation>
+    </message>
+    <message>
+        <source>Current Mode</source>
+        <translation>当前模式</translation>
+    </message>
+    <message>
+        <source>Current Jog pos</source>
+        <translation>当前关节坐标</translation>
+    </message>
+    <message>
+        <source>Current World pos</source>
+        <translation>当前世界坐标</translation>
+    </message>
+    <message>
+        <source>Current alarm num</source>
+        <translation>当前报警号</translation>
+    </message>
+    <message>
+        <source>NormalX-</source>
+        <translation>普通输入-</translation>
+    </message>
+    <message>
+        <source>Reverse </source>
+        <translation>断检测</translation>
+    </message>
+    <message>
+        <source>Forward </source>
+        <translation>通检测</translation>
+    </message>
+    <message>
+        <source>RunningMode</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>SingleMode</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>OneCycleMode</source>
+        <translation>单循环模式</translation>
     </message>
 </context>
 <context>

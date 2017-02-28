@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -433,15 +433,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation type="vanished">接收脉冲:</translation>
+        <translation>接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation type="vanished">发送脉冲:</translation>
+        <translation>发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation type="vanished">输出1:</translation>
+        <translation>输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -453,23 +453,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation type="vanished">输出2:</translation>
+        <translation>输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation type="vanished">输入1:</translation>
+        <translation>输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation type="vanished">输入2:</translation>
+        <translation>输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation type="vanished">接收脉冲</translation>
+        <translation>接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation type="vanished">发送脉冲</translation>
+        <translation>发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -1032,27 +1032,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation type="vanished">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation type="vanished">当前坐标系</translation>
+        <translation>当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="vanished">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation type="vanished">世界/关节</translation>
+        <translation>世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1060,7 +1060,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -2670,6 +2670,110 @@ please chose!</source>
         <source>custom Variables</source>
         <translation>自定义变量</translation>
     </message>
+    <message>
+        <source>IO Running Setting</source>
+        <translation>IO设定</translation>
+    </message>
+    <message>
+        <source>When the mode change to</source>
+        <translation>当模式切换为</translation>
+    </message>
+    <message>
+        <source>CMD_MANUAL_TO_STOP</source>
+        <translation>手动转停止</translation>
+    </message>
+    <message>
+        <source>CMD_STOP_TO_MANUAL</source>
+        <translation>停止转手动</translation>
+    </message>
+    <message>
+        <source>CMD_STOP_TO_AUTO</source>
+        <translation>停止转自动</translation>
+    </message>
+    <message>
+        <source>CMD_AUTO_TO_STOP</source>
+        <translation>自动转停止</translation>
+    </message>
+    <message>
+        <source>CMD_MANUAL</source>
+        <translation>手动</translation>
+    </message>
+    <message>
+        <source>CMD_AUTO</source>
+        <translation>自动</translation>
+    </message>
+    <message>
+        <source>CMD_CONFIG</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>CMD_ORIGIN</source>
+        <translation>原点</translation>
+    </message>
+    <message>
+        <source>CMD_RETURN</source>
+        <translation>复归</translation>
+    </message>
+    <message>
+        <source>CMD_RUNNING</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>CMD_SINGLE</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>CMD_ONE_CYCLE</source>
+        <translation>单循环</translation>
+    </message>
+    <message>
+        <source>CMD_ORIGIN_ING</source>
+        <translation>回原点中</translation>
+    </message>
+    <message>
+        <source>CMD_RETURN_ING</source>
+        <translation>复归中</translation>
+    </message>
+    <message>
+        <source>Choos Out</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>IO output</source>
+        <translation>IO输出</translation>
+    </message>
+    <message>
+        <source>M output</source>
+        <translation>M值输出</translation>
+    </message>
+    <message>
+        <source>output point</source>
+        <translation>输出点</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>Preservation</source>
+        <translation>保存</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -3818,7 +3922,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation type="vanished">安全信号1</translation>
+        <translation>安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5052,15 +5156,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation type="vanished">路径速度平滑:</translation>
+        <translation>路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation type="vanished">起始速度:</translation>
+        <translation>起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation type="vanished">结束速度:</translation>
+        <translation>结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -5192,11 +5296,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation type="vanished">M值</translation>
+        <translation>M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation type="vanished">IO点</translation>
+        <translation>IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -5244,11 +5348,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation type="vanished">间隔时间</translation>
+        <translation>间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation type="vanished">直到拍照成功</translation>
+        <translation>直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>

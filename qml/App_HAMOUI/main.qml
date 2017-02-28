@@ -805,6 +805,7 @@ Rectangle {
 
             var i;
             var sI;
+            var len;
             var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
             for(i = 0; i < Teach.stackInfos.length; ++i){
                 sI = Teach.stackInfos[i];
@@ -819,9 +820,37 @@ Rectangle {
             }
 
             var toolCoords = ToolCoordManager.toolCoordManager.toolCoordList();
-            for(var i =0;i<toolCoords.length;++i){
+            for(i =0;i<toolCoords.length;++i){
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
+
+            var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                var v = iosettings[i];
+                if(v.check == true){
+                    console.log("send:");
+                    /*
+typedef union {
+struct{
+uint16_t on:1;//< 输出 普通IO或则M值 0为断，1为通
+uint16_t id:7;//< 输出点ID 普通IO或则M值
+uint16_t out_type:1;//< 输出类型 0为普通输出，1为M值输出
+uint16_t type:5;//< 类型
+uint16_t res:2;//< 预留
+}bit;
+uint16_t io_all;
+}IORunningSetting;//< IO运行设定
+*/
+                    var value = 0;
+                    value=v.outstatus_init?1:0;
+                    value|=v.outid_init<<1;
+                    value|=v.outType_init<<8;
+                    value|=v.sendMode<<9;
+                    console.log(value);
+                    panelRobotController.modifyConfigValue(13,value);
+                }
+            }
+
             isInit = true;
         });
         //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),

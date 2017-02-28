@@ -937,7 +937,12 @@ var generateAxisServoAction = function(action,
                                        earlySpd,
                                        signalStopEn,
                                        signalStopPoint,
+                                       signalOnOff,
                                        signalStopMode,
+                                       outputEn,
+                                       outputPoint,
+                                       outputStatus,
+                                       outputPos,
                                        speedMode,
                                        stop,
                                        rel,
@@ -956,12 +961,17 @@ var generateAxisServoAction = function(action,
         "earlySpd":earlySpd || 0,
         "signalStopEn":signalStopEn || false,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
-                                                         "signalStopMode":signalStopMode ? 1 : 0,
-                                                                                           "speedMode":speedMode == undefined ? 0 : speedMode,
-                                                                                                                                "stop":stop || false,
-                                                                                                                                "rel": rel || false,
-                                                                                                                                "points":points == undefined ?  [] : [points]
-    };
+        "signalIsOff":signalOnOff || 0,
+        "signalStopMode":signalStopMode ? 1 : 0,
+        "outputEn":outputEn || false,
+        "outputPoint":outputPoint == undefined?0:outputPoint,
+        "outputStatus":outputStatus||0,
+        "outputPos":outputPos||0,
+        "speedMode":speedMode == undefined ? 0 : speedMode,
+        "stop":stop || false,
+        "rel": rel || false,
+        "points":points == undefined ?  [] : [points]
+        };
 }
 
 var generatePathAction = function(action,
@@ -1068,12 +1078,14 @@ var generateWaitAction = function(which, type, status, limit){
     };
 }
 
-var generateCheckAction = function(point, type, delay){
+var generateCheckAction = function(point, type, delay,xDir,isNormalX){
     return {
         "action":actions.F_CMD_IO_OUTPUT,
         "type":type,
         "point":point,
-        "delay":delay
+        "delay":delay,
+        "xDir": xDir,
+        "isNormalX":isNormalX
     };
 }
 
@@ -1106,14 +1118,20 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
     };
 }
 
-var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type,disType,selMode,selPos,selAlarm,axisID,selCoord){
     return {
         "action":actions.F_CMD_MEMCOMPARE_CMD,
         "flag": flag || 0,
         "leftAddr":leftAddr,
         "rightAddr":rightAddr,
         "cmd": cmd,
-        "type": type || 0
+        "type": type || 0,
+        "disType":disType,
+        "selMode":selMode,
+        "selAlarm":selAlarm,
+        "selPos":selPos,
+        "axisID":axisID,
+        "selCoord":selCoord
     };
 }
 
@@ -1302,8 +1320,13 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     }
     if(actionObject.signalStopEn){
         ret += "\n                            ";
-        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
+        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + (actionObject.signalIsOff ==1? qsTr("is Off"):qsTr("is On"));
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
+    }
+    if(actionObject.outputEn){
+        ret += "\n                            ";
+        ret += " " + qsTr("When on the pos ") + actionObject.outputPos;
+        ret += " " + qsTr("Output") + ioItemName(yDefines[actionObject.outputPoint]) + " " + (actionObject.outputStatus ==1? qsTr("is Off"):qsTr("is On"));
     }
 
     if(actionObject.rel)
@@ -1348,9 +1371,33 @@ var conditionActionToStringHandler = function(actionObject){
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
-        return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
+        var leftStr,rightStr;
+        if(actionObject.disType == 0){
+            var modestr;
+            if(actionObject.selMode == 0)modestr =qsTr("manualMode");
+            else if(actionObject.selMode == 1)modestr =qsTr("stopMode");
+            else if(actionObject.selMode == 2)modestr =qsTr("autoMode");
+            else if(actionObject.selMode == 3)modestr =qsTr("RunningMode");
+            else if(actionObject.selMode == 4)modestr =qsTr("SingleMode");
+            else if(actionObject.selMode == 5)modestr =qsTr("OneCycleMode");
+            leftStr = qsTr("Current Mode");
+            rightStr = modestr;
+        }
+        else if(actionObject.disType == 1){
+            leftStr = axisInfos[actionObject.axisID].name + (actionObject.selCoord ?qsTr("Current Jog pos"):qsTr("Current World pos"));
+            rightStr = actionObject.selPos;
+        }
+        else if(actionObject.disType == 2){
+            leftStr = qsTr("Current alarm num");
+            rightStr = actionObject.selAlarm;
+        }
+        else if(actionObject.disType == 3 || actionObject.disType == 4){
+            leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
+            rightStr = (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr;
+        }
+        return qsTr("IF:") + leftStr + " " +
                 cmdStrs[actionObject.cmd] + " " +
-                (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
+                rightStr + " "
                 + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 
@@ -1431,20 +1478,26 @@ function valveItemToString(valve){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    var valve;
+    var valve,valveStr;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
         valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
-        valve = getValveItemFromValveID(actionObject.point);
-        return qsTr("Check:") + valveItemToString(valve) + " " + qsTr("Check Start") + " "
-                + qsTr("Delay:") + actionObject.delay;
+        if(actionObject.isNormalX )
+            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+        else
+            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+        return qsTr("Check:") + valveStr + " " + qsTr("Check Start") + " "
+                + (actionObject.isNormalX ?(actionObject.xDir?qsTr("Reverse "):qsTr("Forward ")):"")+" "+qsTr("Delay:") + actionObject.delay;
     }else if(actionObject.type === VALVE_CHECK_END){
-        valve = getValveItemFromValveID(actionObject.point);
-        return qsTr("Check:") + valveItemToString(valve) +  " " + qsTr("Check End") + " "
-                + qsTr("Delay:") + actionObject.delay;
+        if(actionObject.isNormalX )
+            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+        else
+            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+        return qsTr("Check:") + valveStr +  " " + qsTr("Check End") + " "
+                +qsTr("Delay:")+"" + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
             return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "

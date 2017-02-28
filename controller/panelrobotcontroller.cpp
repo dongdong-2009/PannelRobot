@@ -254,7 +254,7 @@ void PanelRobotController::InitMold_()
     if(!mold->LoadMold(as.CurrentMoldConfig()))
     {
         qCritical("Mold Is Not Exist!!");
-        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Mold Is Not Exist!!"));
+        QMessageBox::critical(mainView_, QT_TR_NOOP("Error"), QT_TR_NOOP("Mold Is Not Exist!!"));
     }
     ICRobotMold::SetCurrentMold(mold);
 }

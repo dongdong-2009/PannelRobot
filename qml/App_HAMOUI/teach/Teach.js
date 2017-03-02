@@ -1933,7 +1933,7 @@ var updateCustomActions = function(actionObject){
 var actionObjectToText = function(actionObject){
     var originText = actionToStringNoCusomName(actionObject);
     if(actionObject.customName){
-        var styledCN = ICString.icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+        var styledCN = icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
         originText = styledCN + " " + originText;
     }
     var reg = new RegExp("\n                            ", 'g');

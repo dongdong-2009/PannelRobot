@@ -6,6 +6,7 @@ import "../configs/IODefines.js" as IODefines
 import "../../utils/stringhelper.js" as ICString
 import "ProgramFlowPage.js" as ProgramFlowPage
 import "../configs/IOConfigs.js" as IOConfigs
+import "../configs/AxisDefine.js" as AxisDefine
 
 
 Item {
@@ -46,7 +47,9 @@ Item {
         "X047"
     ]
     property variant counters: []
-
+    function toHcAddr(addr){
+        return (parseInt(0)<<5) | (parseInt(32)<<10) | (parseInt(addr)<<16) | (parseInt(0)<<30) ;
+    }
     function createActionObjects(){
         var ret = [];
         if(defineFlag.isChecked){
@@ -89,15 +92,44 @@ Item {
                                                              data.id,
                                                              onBox.isChecked ? 1 : 0,
                                                                                autoClear.isChecked ? 1 : 0));
-                    break
+                    break;
                 }
             }
             return ret;
 
         }else if(memData.isChecked){
+            var leftAddr,immValue;
+            if(constData.isChecked){
+                leftAddr = lAddr.addr();
+                immValue = rData.configValue;
+            }
+            else if(addrData.isChecked){
+                leftAddr = lAddr.addr();
+                immValue = rAddr.addr() ;
+            }
+            else if(modeData.isChecked){
+                leftAddr = toHcAddr(modeArea.modeAddr);
+                immValue = whichMode.checkedItem.cmd;
+            }
+            else if(coordData.isChecked){
+                leftAddr = toHcAddr(posArea.posAddr);
+                immValue = comparePos.configValue*1000;
+            }
+            else if(alarmData.isChecked){
+                leftAddr = toHcAddr(alarmArea.alarmAddr);
+                immValue = alarmNum.configValue;
+            }
             ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
-                                                    lAddr.addr(), addrData.isChecked ? rAddr.addr() : rData.configValue, memCmpGroup.checkedIndex,
-                                                    constData.isChecked ? 0 : 1));
+                                                    leftAddr,
+                                                    immValue,
+                                                    modeData.isChecked ? 4 : memCmpGroup.checkedIndex,
+                                                    addrData.isChecked ? 1 : 0,
+                                                    whichData.checkedIndex,
+                                                    whichMode.checkedIndex,
+                                                    comparePos.configValue,
+                                                    alarmNum.configValue,
+                                                    axis.configValue,
+                                                    selcoord.checkedIndex));
             return ret;
         }else{
             ret.push(Teach.generateJumpAction(parseInt(flagStr.slice(begin,end))));
@@ -107,12 +139,20 @@ Item {
         for(var i = 0; i < mD.count; ++i){
             data = mD.get(i);
             if(data.isSel){
-                var isOn = statusGroup.checkedItem == onBox ? true : false;
+                var pStatus;
+                if(statusBGroup.checkedItem == onBox)
+                    pStatus = 1;
+                else if(statusBGroup.checkedItem == offBox)
+                    pStatus = 0;
+                else if(statusBGroup.checkedItem == risingEdgeBox)
+                    pStatus = 2;
+                else if(statusBGroup.checkedItem == fallingEdgeBox)
+                    pStatus = 3;
                 ret.push(Teach.generateConditionAction(
                              data.board,
                              data.hwPoint,
                              inout,
-                             isOn,
+                             pStatus,
                              limit.configValue,
                              parseInt(flagStr.slice(begin,end))));
                 break;
@@ -297,13 +337,26 @@ Item {
                     x:6
                     y:4
                     ICButtonGroup{
+                        id:whichData
                         spacing: 24
                         mustChecked: true
                         checkedIndex: 0
                         ICCheckBox{
+                            id:modeData
+                            text:qsTr("Mode Data")
+                            isChecked: true
+                        }
+                        ICCheckBox{
+                            id:coordData
+                            text:qsTr("Coord Data")
+                        }
+                        ICCheckBox{
+                            id:alarmData
+                            text:qsTr("Alarm Data")
+                        }
+                        ICCheckBox{
                             id:constData
                             text:qsTr("Const Data")
-                            isChecked: true
                         }
                         ICCheckBox{
                             id:addrData
@@ -312,6 +365,120 @@ Item {
                     }
 
                     Column{
+                        id:modeArea
+                        property int modeAddr: 1
+                        visible: modeData.isChecked
+                        spacing: 4
+                        Text{
+                            text: qsTr("when current mode is:")
+                        }
+                        ICButtonGroup{
+                            id: whichMode
+                            spacing: 12
+                            mustChecked: true
+                            checkedIndex: 0
+                            checkedItem: manualMode
+                            ICCheckBox{
+                                id:manualMode
+                                property int cmd: 1
+                                text: qsTr("ManualMode")
+                                isChecked: true
+                            }
+                            ICCheckBox{
+                                id:stopMode
+                                property int cmd: 3
+                                text: qsTr("StopMode")
+                            }
+                            ICCheckBox{
+                                id:autoMode
+                                property int cmd: 2
+                                text: qsTr("AutoMode")
+                            }
+                            ICCheckBox{
+                                id:runningMode
+                                property int cmd: 7
+                                text: qsTr("RunningMode")
+                            }
+                            ICCheckBox{
+                                id:singleMode
+                                property int cmd: 8
+                                text: qsTr("SingleMode")
+                            }
+                            ICCheckBox{
+                                id:oneCycleMode
+                                property int cmd: 9
+                                text: qsTr("OneCycleMode")
+                            }
+                        }
+                    }
+
+                    Column{
+                        id:posArea
+                        property int posAddr : 900+(axis.configValue*4)+(jogPos.isChecked?1:0)
+                        visible: coordData.isChecked
+                        spacing: 4
+                        Row{
+                            spacing: 12
+                            ICComboBoxConfigEdit{
+                                id:axis
+                                z:2
+                                configName: qsTr("Axis")
+                                configValue: -1
+                                popupMode: 1
+                                popupHeight: 90
+                                function onAxisDefinesChanged(){
+                                    var axis = AxisDefine.usedAxisNameList();
+                                    items = axis;
+                                    if(items.length>0)configValue = 0;
+                                }
+                                Component.onCompleted: {
+                                    AxisDefine.registerMonitors(axis);
+                                }
+                            }
+                            ICButtonGroup{
+                                id:selcoord
+                                spacing: 12
+                                mustChecked: true
+                                checkedIndex: 0
+                                ICCheckBox{
+                                    id:worldPos
+                                    text: qsTr("worldPos")
+                                    isChecked: true
+                                }
+                                ICCheckBox{
+                                    id:jogPos
+                                    text: qsTr("JogPos")
+                                }
+                            }
+                        }
+                        ICConfigEdit{
+                            id:comparePos
+                            configName: qsTr("posValue")
+                            configValue:"0.000"
+                            decimal: 3
+                            min:-10000
+                            max:10000
+                        }
+                    }
+                    Column{
+                        id:alarmArea
+                        property int alarmAddr: 932
+                        visible: alarmData.isChecked
+                        spacing: 4
+                        Text{
+                            text: qsTr("when current alarm num")
+                        }
+                        ICConfigEdit{
+                            id:alarmNum
+                            visible: alarmData.isChecked
+                            configName: qsTr("alarmNum")
+                            configValue: "0"
+                        }
+                    }
+
+                    Column{
+                        id:hcAddr
+                        visible: ((constData.isChecked) ||(addrData.isChecked))
                         spacing: 4
                         ICHCAddrEdit{
                             id:lAddr
@@ -330,6 +497,7 @@ Item {
                     }
                     ICButtonGroup{
                         spacing: 24
+                        visible: (!modeData.isChecked)
                         id:memCmpGroup
                         mustChecked: true
                         checkedIndex: 0
@@ -362,29 +530,51 @@ Item {
                 }
             }
 
+
+
             Row{
                 spacing: 20
-                ICButtonGroup{
+                Row{
                     id:statusGroup
-                    checkedItem: onBox
-                    mustChecked: true
-                    layoutMode: 0
-                    isAutoSize: true
-                    spacing: 20
+                    spacing: 10
                     visible: !memData.isChecked
                     ICCheckBox{
                         id:onBox
                         text: counter.isChecked ? qsTr(">=T") : qsTr("ON")
+                        width:counter.isChecked ? 80:44
                         isChecked: true
-                        width: 80
                     }
                     ICCheckBox{
                         id:offBox
                         text: counter.isChecked ? qsTr("<T") :qsTr("OFF")
-                        width: 80
+                        width:counter.isChecked ? 80:44
+                    }
+                    ICCheckBox{
+                        id:risingEdgeBox
+                        visible: normalX.isChecked
+                        text: qsTr("Rising Edge")
+                    }
+                    ICCheckBox{
+                        id:fallingEdgeBox
+                        visible: normalX.isChecked
+                        text: qsTr("Falling Edge")
+                    }
+
+                    Component.onCompleted: {
+                        statusBGroup.addButton(onBox);
+                        statusBGroup.addButton(offBox);
+                        statusBGroup.addButton(risingEdgeBox);
+                        statusBGroup.addButton(fallingEdgeBox);
                     }
                 }
 
+                ICButtonGroup{
+                    id:statusBGroup
+                    checkedItem: onBox
+                    mustChecked: true
+                    layoutMode: 2
+//                    visible: statusGroup.visible
+                }
 
                 ICCheckBox{
                     id:autoClear
@@ -396,7 +586,7 @@ Item {
                     id:limit
                     configName: qsTr("Limit:")
                     unit: qsTr("s")
-                    inputWidth: 100
+                    inputWidth: 80
                     height: 24
                     visible: !counter.isChecked
                     z:1
@@ -408,7 +598,7 @@ Item {
                     id: flag
                     configName: qsTr("Flag")
                     popupMode: 1
-                    inputWidth:  250
+                    inputWidth:  180
                     popupHeight: 200
 
                     onVisibleChanged: {
@@ -448,7 +638,6 @@ Item {
     }
 
     Component.onCompleted: {
-
         panelRobotController.moldChanged.connect(onMoldChanged);
         onMoldChanged();
         var i;
@@ -498,6 +687,4 @@ Item {
 //        }
 
     }
-
-
 }

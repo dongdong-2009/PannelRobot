@@ -408,7 +408,7 @@ extern  const ICAddrWrapper  s_rw_0_32_0_285;    //< 18710555 目标计数值目
 extern  const ICAddrWrapper  s_rw_0_32_0_286;    //< 18776091 目标计数值目标计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_287;    //< 18841627 目标计数值目标计数值
 extern  const ICAddrWrapper  s_rw_0_32_0_288;    //< 18907163 目标计数值目标计数值
-extern  const ICAddrWrapper  s_rw_0_32_0_289;    //< 18972699 目标计数值目标计数值
+extern  const ICAddrWrapper  s_rw_0_32_1_289;    //< 1092714523 目标计数值首模速度设定
 extern  const ICAddrWrapper  s_rw_0_16_0_290;  //< 19021851 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
 extern  const ICAddrWrapper  s_rw_16_16_0_290;  //< 19022363 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口
 extern  const ICAddrWrapper  s_rw_0_16_0_291;  //< 19087387 逻辑电机对应的脉冲端口逻辑电机对应的脉冲端口

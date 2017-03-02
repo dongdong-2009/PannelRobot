@@ -675,11 +675,6 @@ public:
         return pD.b.type;
     }
 
-    Q_INVOKABLE int getCoordAxis() const
-    {
-        return ICRobotVirtualhost::MultiplexingConfig(ICAddr_Read_Status34);
-    }
-
     Q_INVOKABLE void setAutoRunningMode(int which, int mode)
     {
         AutoRunData d;

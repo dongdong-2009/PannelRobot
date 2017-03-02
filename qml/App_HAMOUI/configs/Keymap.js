@@ -152,9 +152,9 @@ var CMD_INVALID = 0x7FFF;
 
 var KEY_F1 = parseInt(Qt.Key_C);
 var KEY_F2 = parseInt(Qt.Key_W);
-var KEY_F3 = parseInt(0x52);
+var KEY_F3 = parseInt(0x52); //< R
 var KEY_F4 = parseInt(Qt.Key_M);
-var KEY_F5 = parseInt(0x48);
+var KEY_F5 = parseInt(0x48); //< H
 
 
 var KEY_X1Sub = parseInt(Qt.Key_F9);
@@ -319,9 +319,9 @@ function endSpeedCalcByTime(current, dir){
 function endSpeedCaclByTimeStop(){
     speedInfo.changeCount = 0;
 }
-
 var hwtestSequence = [KEY_F5, KEY_F3, KEY_F4, KEY_F3, KEY_F2, KEY_F3, KEY_F1, KEY_F5];
 var recalSequence = [KEY_F5, KEY_F1, KEY_F4, KEY_F1, KEY_F3, KEY_F1, KEY_F2, KEY_F5];
+var ghostSequence = [KEY_F5, KEY_F2, KEY_F4, KEY_F2, KEY_F3, KEY_F2, KEY_F1, KEY_F5];
 var currentKeySequence = [];
 
 function matchSequenceHelper(sequence){
@@ -342,4 +342,8 @@ function matchHWTestSequence(){
 
 function matchRecalSequence(){
     return matchSequenceHelper(recalSequence);
+}
+
+function matchGhostSequence(){
+    return matchSequenceHelper(ghostSequence);
 }

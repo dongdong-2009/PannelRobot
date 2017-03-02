@@ -90,6 +90,7 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     bool isEarlyEnd = v->value("isEarlyEnd", false).toBool();
     bool isEarlySpd = v->value("isEarlySpd", false).toBool();
     bool isSignalStop = v->value("signalStopEn", false).toBool();
+    bool isOutput = v->value("outputEn", false).toBool();
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
     bool isRel = v->value("rel", false).toBool();
@@ -118,20 +119,33 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
             item.append(ICUtility::doubleToInt(v->value("pos", 0).toDouble(), 3));
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 2));
-        if(isEarlyEnd || isEarlySpd || isSignalStop || isRel)
+        if(isEarlyEnd || isEarlySpd || isSignalStop || isRel || isOutput)
         {
             int op = 0;
             op |= isEarlySpd ? 1 : 0;
             op |= isEarlyEnd ? 2 : 0;
             item.append(op);
-            item.append(v->value("earlySpdPos", 0).toInt());
             if(isSignalStop)
+            {
+                item.append(v->value("signalIsOff", 0).toInt());
                 item.append(v->value("signalStopPoint", 0).toInt());
+            }
             else
-                item.append(v->value("earlyEndPos", 0).toInt());
+            {
+                item.append(v->value("earlySpdPos", 0).toInt());
+                if(isOutput)
+                    item.append(v->value("outputPos", 0).toInt());
+                else
+                    item.append(v->value("earlyEndPos", 0).toInt());
+            }
             item.append(ICUtility::doubleToInt(v->value("earlySpd", 0.0).toDouble(), 1));
             item.append(isSignalStop ? 1 : 0);
-            item.append(v->value("signalStopMode", 0).toInt());
+            if(isOutput)
+                item.append(v->value("outputStatus", 0).toInt());
+            else
+                item.append(v->value("signalStopMode", 0).toInt());
+            item.append(isOutput ? 1: 0);
+            item.append(v->value("outputPoint", 0).toInt());
             item.append(isRel ? 1: 0);
             item[0] = F_CMD_SINGLE_ADD_FUNC;
         }
@@ -337,7 +351,54 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
     if(item.at(1) >= 100 )
         item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
     else
+    {
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
+        if(item.at(1) == 9 || item.at(1) == 10)
+        {
+            bool isNormalX = v->value("isNormalX", 0).toBool();
+            if(isNormalX){
+                item[0] = F_CMD_IO_CHECK;
+                item[1] = item[1]-9;
+                item[3] = !v->value("xDir", 0).toBool();
+            }
+        }
+    }
+    item.append(ICRobotMold::MoldItemCheckSum(item));
+    return ICRobotMold::kCCErr_None;
+
+}
+
+int IntervalOutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
+{
+    typedef union{
+        struct{
+          int16_t type:1;//< 0为时间输出；1为常输出
+          int16_t binding_counter:1;//< 0:自身计数，1：绑定计数器
+          int16_t status:1;//< 0为间隔关闭；1为间隔输出
+          int16_t res:13;//< 预留
+        }func;
+        struct{
+          int16_t id:10;
+          int16_t board:6;
+        }b;
+        int16_t s;
+    }IntervalOutput;
+    IntervalOutput base;
+    IntervalOutput out;
+    base.s=0;
+    out.s=0;
+    base.func.type = v->value("type", 0).toInt();
+    base.func.binding_counter = v->value("isBindingCount", 0).toInt();
+    base.func.status = v->value("status", 0).toInt();
+    out.b.id= v->value("id", 0).toInt();
+    out.b.board = v->value("board", 0).toInt();
+
+    item.append(v->value("action").toInt());
+    item.append(base.s);
+    item.append(out.s);
+    item.append(v->value("counterID", 0).toInt());
+    item.append(v->value("cnt", 0).toInt());
+    item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
@@ -345,11 +406,13 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 int VisionCatchActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
-    item.append(F_CMD_IO_OUTPUT);
-    item.append(v->value("type", 0).toInt());
+    item.append(F_CMD_VISION_CATCH);
+    item.append(v->value("hostID", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
     item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
+    item.append(ICUtility::doubleToInt(v->value("intervalTime", 0).toDouble(), 1));
+    item.append(v->value("cnt", 0).toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 
@@ -638,6 +701,7 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);
     ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
+    ret.insert(F_CMD_IO_INTERVAL_OUTPUT, IntervalOutputActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP2, ConditionActionCompiler);
@@ -1893,10 +1957,16 @@ quint32 CompileInfo::CheckSum() const
 
 quint32 ICRobotMold::CheckSum() const
 {
-    quint32 sum = 0;
+    quint64 sum = 0;
     for(int i = 0; i < 9; ++i)
     {
         sum += programs_.at(i).CheckSum();
+    }
+    QList<const ICAddrWrapper*> moldAddr = ICAddrWrapper::MoldAddrs();
+    for(int i = 0,size = moldAddr.count(); i < size;++i)
+    {
+//        sum += MoldFnc(moldAddr.at(i));
+        sum += fncCache_.ConfigValue(moldAddr.at(i));
     }
     return (-sum) & 0xFFFF;
 }

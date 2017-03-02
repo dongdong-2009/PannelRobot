@@ -59,6 +59,7 @@ ICVirtualKeyboard::ICVirtualKeyboard(AddrRangeGetter rangeGetter, QWidget *paren
                 SIGNAL(clicked()),
                 SLOT(OnCnButtonClicked()));
     }
+    validator_.setNotation(QDoubleValidator::StandardNotation);
 }
 
 ICVirtualKeyboard::~ICVirtualKeyboard()
@@ -107,12 +108,22 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
      QToolButton* b = qobject_cast<QToolButton*>(w);
      QString curText = b->text();
      if(curText == tr("Ent")){
-         QString toCommit = QString("%1").arg(preeditString_.toDouble(),
-                                              0,
-                                              'f',
-                                              validator_.decimals(),
-                                              QLatin1Char('0'));
-         emit commit(toCommit);
+         int p = 0;
+
+         if(validator_.validate(preeditString_, p) == QValidator::Acceptable)
+         {
+             QString toCommit = QString("%1").arg(preeditString_.toDouble(),
+                                                  0,
+                                                  'f',
+                                                  validator_.decimals(),
+                                                  QLatin1Char('0'));
+
+             emit commit(toCommit);
+         }
+         else
+         {
+             emit reject();
+         }
          preeditString_.clear();
          this->hide();
          return;

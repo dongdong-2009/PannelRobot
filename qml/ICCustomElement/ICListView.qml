@@ -13,6 +13,7 @@ Rectangle{
     property alias currentIndex : listView.currentIndex
     property alias header: listView.header
     property alias spacing: listView.spacing
+    property alias currentItem: listView.currentItem
 
     color: "transparent"
     ListView {

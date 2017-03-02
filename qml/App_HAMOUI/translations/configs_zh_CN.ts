@@ -529,6 +529,10 @@
         <source>None</source>
         <translation></translation>
     </message>
+    <message>
+        <source>ALARM_POS_STABLE_ING</source>
+        <translation>位置稳定中</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>
@@ -566,11 +570,11 @@
     </message>
     <message>
         <source>M7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {7?}</translation>
     </message>
     <message>
         <source>M8</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">报警状态 {8?}</translation>
     </message>
 </context>
 <context>

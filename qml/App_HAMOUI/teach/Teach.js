@@ -811,11 +811,12 @@ actions.F_CMD_LINE_RELATIVE_POSE = actHelper++; 	   //< 相对姿势直线运动
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
+actions.F_CMD_IO_INTERVAL_OUTPUT = 201;   //< IO点间隔输出
+actions.F_CMD_VISION_CATCH = 202;
 actions.F_CMD_STACK0 = 300;
 actions.F_CMD_COUNTER = 400; //< 计数器
 actions.F_CMD_COUNTER_CLEAR = 401;
 actions.F_CMD_TEACH_ALARM = 500;
-actions.F_CMD_VISION_CATCH = 501;
 
 actions.F_CMD_MEMCOMPARE_CMD = 602;
 
@@ -936,7 +937,12 @@ var generateAxisServoAction = function(action,
                                        earlySpd,
                                        signalStopEn,
                                        signalStopPoint,
+                                       signalOnOff,
                                        signalStopMode,
+                                       outputEn,
+                                       outputPoint,
+                                       outputStatus,
+                                       outputPos,
                                        speedMode,
                                        stop,
                                        rel,
@@ -955,12 +961,17 @@ var generateAxisServoAction = function(action,
         "earlySpd":earlySpd || 0,
         "signalStopEn":signalStopEn || false,
         "signalStopPoint":signalStopPoint == undefined ? 0 : signalStopPoint,
-                                                         "signalStopMode":signalStopMode ? 1 : 0,
-                                                                                           "speedMode":speedMode == undefined ? 0 : speedMode,
-                                                                                                                                "stop":stop || false,
-                                                                                                                                "rel": rel || false,
-                                                                                                                                "points":points == undefined ?  [] : [points]
-    };
+        "signalIsOff":signalOnOff || 0,
+        "signalStopMode":signalStopMode ? 1 : 0,
+        "outputEn":outputEn || false,
+        "outputPoint":outputPoint == undefined?0:outputPoint,
+        "outputStatus":outputStatus||0,
+        "outputPos":outputPos||0,
+        "speedMode":speedMode == undefined ? 0 : speedMode,
+        "stop":stop || false,
+        "rel": rel || false,
+        "points":points == undefined ?  [] : [points]
+        };
 }
 
 var generatePathAction = function(action,
@@ -993,13 +1004,13 @@ var generateOriginAction = function(action,
     };
 }
 
-var generateSpeedAction = function(startSpeed,endSpeed){
-    return {
-        "action":actions.F_CMD_SPEED_SMOOTH,
-        "startSpeed":startSpeed,
-        "endSpeed":endSpeed
-    }
-}
+//var generateSpeedAction = function(startSpeed,endSpeed){
+//    return {
+//        "action":actions.F_CMD_SPEED_SMOOTH,
+//        "startSpeed":startSpeed,
+//        "endSpeed":endSpeed
+//    }
+//}
 
 var generateDataAction = function(addr, type, data, op){
     return {
@@ -1041,6 +1052,21 @@ var generateOutputAction = function(point, type, status, valveID, time){
     return ret;
 }
 
+var generateIntervalOutputAction = function(type,isBindingCount, status,id,board,counterID, cnt, acTime){
+    var ret =
+            {
+        "action":actions.F_CMD_IO_INTERVAL_OUTPUT,
+        "type":type,
+        "isBindingCount":isBindingCount,
+        "status": status,
+        "id":id,
+        "board":board,
+        "counterID":counterID,
+        "cnt":cnt,
+        "acTime":acTime,
+    };
+    return ret;
+}
 
 var generateWaitAction = function(which, type, status, limit){
     return {
@@ -1052,12 +1078,14 @@ var generateWaitAction = function(which, type, status, limit){
     };
 }
 
-var generateCheckAction = function(point, type, delay){
+var generateCheckAction = function(point, type, delay,xDir,isNormalX){
     return {
         "action":actions.F_CMD_IO_OUTPUT,
         "type":type,
         "point":point,
-        "delay":delay
+        "delay":delay,
+        "xDir": xDir,
+        "isNormalX":isNormalX
     };
 }
 
@@ -1090,14 +1118,20 @@ var generateCounterJumpAction = function(flag, counterID, status, autoClear){
     };
 }
 
-var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type){
+var generateMemCmpJumpAction = function(flag, leftAddr, rightAddr, cmd, type,disType,selMode,selPos,selAlarm,axisID,selCoord){
     return {
         "action":actions.F_CMD_MEMCOMPARE_CMD,
         "flag": flag || 0,
         "leftAddr":leftAddr,
         "rightAddr":rightAddr,
         "cmd": cmd,
-        "type": type || 0
+        "type": type || 0,
+        "disType":disType,
+        "selMode":selMode,
+        "selAlarm":selAlarm,
+        "selPos":selPos,
+        "axisID":axisID,
+        "selCoord":selCoord
     };
 }
 
@@ -1190,13 +1224,16 @@ var generateCallModuleAction = function(module, flag){
     };
 }
 
-var generateVisionCatchAction = function(point, type, status, acTime, dataSourceName){
+var generateVisionCatchAction = function(type, hostID, point,  status,  acTime, intervalTime, cnt,dataSourceName){
     return {
         "action": actions.F_CMD_VISION_CATCH,
-        "point":point,
         "type":type,
+        "hostID": hostID,
+        "point":point,
         "pointStatus": status,
         "acTime": acTime,
+        "intervalTime":intervalTime,
+        "cnt":cnt,
         "dataSource":dataSourceName
     }
 }
@@ -1283,8 +1320,13 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     }
     if(actionObject.signalStopEn){
         ret += "\n                            ";
-        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + qsTr("is On");
+        ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.signalStopPoint]) + " " + (actionObject.signalIsOff ==1? qsTr("is Off"):qsTr("is On"));
         ret += " " + (actionObject.signalStopMode == 0 ? qsTr("slow stop") : qsTr("fast stop"));
+    }
+    if(actionObject.outputEn){
+        ret += "\n                            ";
+        ret += " " + qsTr("When on the pos ") + actionObject.outputPos;
+        ret += " " + qsTr("Output") + ioItemName(yDefines[actionObject.outputPoint]) + " " + (actionObject.outputStatus ==1? qsTr("is Off"):qsTr("is On"));
     }
 
     if(actionObject.rel)
@@ -1293,7 +1335,7 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
     return ret;
 }
 
-var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4")]
+var originType = [qsTr("Type 1"), qsTr("Type 2"), qsTr("Type 3"),qsTr("Type 4"),qsTr("Type 5")]
 
 var f_CMD_FINE_ZEROToStringHandler = function(actionObject){
     var ret =  qsTr("origin") + "-" + axisInfos[actionObject.axis].name + ":" + " " +  originType[actionObject.originType] + " " +
@@ -1329,9 +1371,33 @@ var conditionActionToStringHandler = function(actionObject){
                 (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
-        return qsTr("IF:") + qsTr("Left Addr:") + actionObject.leftAddr + " " +
+        var leftStr,rightStr;
+        if(actionObject.disType == 0){
+            var modestr;
+            if(actionObject.selMode == 0)modestr =qsTr("manualMode");
+            else if(actionObject.selMode == 1)modestr =qsTr("stopMode");
+            else if(actionObject.selMode == 2)modestr =qsTr("autoMode");
+            else if(actionObject.selMode == 3)modestr =qsTr("RunningMode");
+            else if(actionObject.selMode == 4)modestr =qsTr("SingleMode");
+            else if(actionObject.selMode == 5)modestr =qsTr("OneCycleMode");
+            leftStr = qsTr("Current Mode");
+            rightStr = modestr;
+        }
+        else if(actionObject.disType == 1){
+            leftStr = axisInfos[actionObject.axisID].name + (actionObject.selCoord ?qsTr("Current Jog pos"):qsTr("Current World pos"));
+            rightStr = actionObject.selPos;
+        }
+        else if(actionObject.disType == 2){
+            leftStr = qsTr("Current alarm num");
+            rightStr = actionObject.selAlarm;
+        }
+        else{
+            leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
+            rightStr = (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr;
+        }
+        return qsTr("IF:") + leftStr + " " +
                 cmdStrs[actionObject.cmd] + " " +
-                (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr + " "
+                rightStr + " "
                 + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 
@@ -1341,9 +1407,18 @@ var conditionActionToStringHandler = function(actionObject){
     }else
         pointDescr = getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr
 
+    var pStatusStr;
+    if(actionObject.pointStatus == 1)
+        pStatusStr = qsTr("ON");
+    else if(actionObject.pointStatus == 0)
+        pStatusStr = qsTr("OFF");
+    else if(actionObject.pointStatus == 2)
+        pStatusStr = qsTr("RisingEdge");
+    else if(actionObject.pointStatus == 3)
+        pStatusStr = qsTr("FallingEdge");
 
     return qsTr("IF:") + pointDescr +
-            (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " "
+            pStatusStr + " "
             + qsTr("Limit:") + actionObject.limit + " " +
             qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag);
 }
@@ -1403,20 +1478,26 @@ function valveItemToString(valve){
 }
 
 var outputActionToStringHandler = function(actionObject){
-    var valve;
+    var valve,valveStr;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
         valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                 + qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
-        valve = getValveItemFromValveID(actionObject.point);
-        return qsTr("Check:") + valveItemToString(valve) + " " + qsTr("Check Start") + " "
-                + qsTr("Delay:") + actionObject.delay;
+        if(actionObject.isNormalX )
+            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+        else
+            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+        return qsTr("Check:") + valveStr + " " + qsTr("Check Start") + " "
+                + (actionObject.isNormalX ?(actionObject.xDir?qsTr("Reverse "):qsTr("Forward ")):"")+" "+qsTr("Delay:") + actionObject.delay;
     }else if(actionObject.type === VALVE_CHECK_END){
-        valve = getValveItemFromValveID(actionObject.point);
-        return qsTr("Check:") + valveItemToString(valve) +  " " + qsTr("Check End") + " "
-                + qsTr("Delay:") + actionObject.delay;
+        if(actionObject.isNormalX )
+            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+        else
+            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+        return qsTr("Check:") + valveStr +  " " + qsTr("Check End") + " "
+                +qsTr("Delay:")+"" + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
             return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
@@ -1428,6 +1509,17 @@ var outputActionToStringHandler = function(actionObject){
         }
     }
 }
+
+var intervalOutputActionToStringHandler = function(actionObject){
+
+    var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+    return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
+            getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
+            + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
+            actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
+            +counterID1;
+}
+
 
 var syncBeginActionToStringHandler = function(actionObject){
     return qsTr("Sync Begin");
@@ -1611,7 +1703,8 @@ var visionCatchActionToStringHandler = function(actionObject){
     var detailStr = "";
     if(!isCommunicate){
         detailStr += qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                + qsTr("Action Time:") + actionObject.acTime;
+                + qsTr("Action Time:") + actionObject.acTime+"\n                            "
+        +qsTr("actCnt")+ actionObject.cnt+" "+qsTr("intervalTime")+actionObject.intervalTime+" "+qsTr("Until Photo Vec");
     }
 
     return qsTr("Vistion Catch Start:") + qsTr("Data Source:") + actionObject.dataSource + "\n                            "
@@ -1623,9 +1716,9 @@ var waitVisionDataActionToStringHandler = function(actionObject){
             + qsTr("Limit:") + actionObject.limit;
 }
 
-var speedActionToStringHandler = function(actionObject){
-    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
-}
+//var speedActionToStringHandler = function(actionObject){
+//    return qsTr("Path Speed:") + " " + qsTr("Start Speed:") + actionObject.startSpeed + " " + qsTr("End Speed:") + actionObject.endSpeed;
+//}
 
 var dataActionToStringHandler = function(actionObject){
     var ac = (actionObject.type == 0 ? qsTr("Write Const Data To Addr:") : qsTr("Write Addr Data To Addr:"));
@@ -1669,6 +1762,7 @@ actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL_BACK, moduleCallBackActi
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL0, callModuleActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_IO_INTERVAL_OUTPUT, intervalOutputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
@@ -1677,7 +1771,7 @@ actionToStringHandlerMap.put(actions.F_CMD_COUNTER, counterActionToStringHandler
 actionToStringHandlerMap.put(actions.F_CMD_COUNTER_CLEAR, counterActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_VISION_CATCH, visionCatchActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_WATIT_VISION_DATA, waitVisionDataActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
+//actionToStringHandlerMap.put(actions.F_CMD_SPEED_SMOOTH, speedActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEM_CMD, dataActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_MEMCOMPARE_CMD, conditionActionToStringHandler);
 

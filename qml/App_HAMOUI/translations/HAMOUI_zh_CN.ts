@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -125,6 +125,10 @@
     <message>
         <source>Delay</source>
         <translation type="vanished">延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -343,11 +347,11 @@
     </message>
     <message>
         <source>Coord Select</source>
-        <translation type="unfinished"></translation>
+        <translation>坐标系选择</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="unfinished"></translation>
+        <translation>0:世界坐标系</translation>
     </message>
 </context>
 <context>
@@ -359,6 +363,153 @@
     <message>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>AutoDebugMachine</name>
+    <message>
+        <source>StartTest</source>
+        <translation>开始测试</translation>
+    </message>
+    <message>
+        <source>motor</source>
+        <translation>电机</translation>
+    </message>
+    <message>
+        <source>+test</source>
+        <translation>正转测试</translation>
+    </message>
+    <message>
+        <source>-test</source>
+        <translation>反转测试</translation>
+    </message>
+    <message>
+        <source>singleY</source>
+        <translation>单头阀-</translation>
+    </message>
+    <message>
+        <source>onTest</source>
+        <translation>通测试</translation>
+    </message>
+    <message>
+        <source>offTest</source>
+        <translation>断测试</translation>
+    </message>
+    <message>
+        <source>HoldDoubleY</source>
+        <translation>双头阀-</translation>
+    </message>
+    <message>
+        <source>StopTest</source>
+        <translation>停止测试</translation>
+    </message>
+    <message>
+        <source>ReTest</source>
+        <translation>重测</translation>
+    </message>
+    <message>
+        <source>receivedErr</source>
+        <translation>接收脉冲错误</translation>
+    </message>
+    <message>
+        <source>sendErr</source>
+        <translation>发送脉冲错误</translation>
+    </message>
+    <message>
+        <source>inputErr</source>
+        <translation>阀检测错误</translation>
+    </message>
+    <message>
+        <source>outputErr</source>
+        <translation>阀输出错误</translation>
+    </message>
+    <message>
+        <source>Set</source>
+        <translation>去设置</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>返回</translation>
+    </message>
+    <message>
+        <source> R:</source>
+        <translation>接收脉冲:</translation>
+    </message>
+    <message>
+        <source> S:</source>
+        <translation>发送脉冲:</translation>
+    </message>
+    <message>
+        <source>Output1:</source>
+        <translation>输出1:</translation>
+    </message>
+    <message>
+        <source>on</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Output2:</source>
+        <translation>输出2:</translation>
+    </message>
+    <message>
+        <source>Input1:</source>
+        <translation>输入1:</translation>
+    </message>
+    <message>
+        <source>Input2:</source>
+        <translation>输入2:</translation>
+    </message>
+    <message>
+        <source> R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source> S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>Output1</source>
+        <translation>输出1</translation>
+    </message>
+    <message>
+        <source>Output2</source>
+        <translation>输出2</translation>
+    </message>
+    <message>
+        <source>Input1</source>
+        <translation>输入1</translation>
+    </message>
+    <message>
+        <source>Input2</source>
+        <translation>输入2</translation>
+    </message>
+    <message>
+        <source>R</source>
+        <translation>接收脉冲</translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation>发送脉冲</translation>
+    </message>
+    <message>
+        <source>zPulse Err</source>
+        <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>Test Item:Motor +- Test,valve on-off Test</source>
+        <translation>测试项目:电机正反转测试、阀通断测试</translation>
+    </message>
+    <message>
+        <source>Test Condition:Please left 2r for the motor test</source>
+        <translation>测试条件:1.请给电机正反转测试预留两圈的空间</translation>
+    </message>
+    <message>
+        <source>Please make sure the valve can be on or off</source>
+        <translation>2.请确认在当前条件下能通断阀</translation>
     </message>
 </context>
 <context>
@@ -577,6 +728,30 @@
     <message>
         <source>Rel Point</source>
         <translation>引用点</translation>
+    </message>
+    <message>
+        <source>Input</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <source>on</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>TStop</source>
+        <translation>就停止</translation>
+    </message>
+    <message>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>On pos</source>
+        <translation>提前位置</translation>
     </message>
 </context>
 <context>
@@ -868,12 +1043,56 @@
         <source>Rotate to Zero</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Motor 8</source>
+        <translation type="unfinished">欧瑞伺服 {8?}</translation>
+    </message>
 </context>
 <context>
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
         <translation> </translation>
+    </message>
+    <message>
+        <source>JogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>WorldPos</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>Current TableCoord:</source>
+        <translation>当前坐标系</translation>
+    </message>
+    <message>
+        <source>0:BaseCoord</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>Jog Pos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>World/Jog</source>
+        <translation>世界/关节</translation>
+    </message>
+    <message>
+        <source>JogCoord</source>
+        <translation>关节坐标系</translation>
+    </message>
+    <message>
+        <source>jogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>worldCoord</source>
+        <translation>世界坐标系</translation>
+    </message>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -912,6 +1131,22 @@
     <message>
         <source>Delay:</source>
         <translation>延时:</translation>
+    </message>
+    <message>
+        <source>Normal X</source>
+        <translation>普通输入</translation>
+    </message>
+    <message>
+        <source>Check Dir</source>
+        <translation>检测方向</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>Reverse</source>
+        <translation>断</translation>
     </message>
 </context>
 <context>
@@ -1058,6 +1293,82 @@
     <message>
         <source>Right Data:</source>
         <translation>右数据:</translation>
+    </message>
+    <message>
+        <source>Rising Edge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>Falling Edge</source>
+        <translation>下降沿</translation>
+    </message>
+    <message>
+        <source>Mode Data</source>
+        <translation>模式</translation>
+    </message>
+    <message>
+        <source>Coord Data</source>
+        <translation>坐标</translation>
+    </message>
+    <message>
+        <source>Alarm Data</source>
+        <translation>报警号</translation>
+    </message>
+    <message>
+        <source>when current mode is:</source>
+        <translation>如果当前模式是:</translation>
+    </message>
+    <message>
+        <source>ManualMode</source>
+        <translation>手动模式</translation>
+    </message>
+    <message>
+        <source>StopMode</source>
+        <translation>停止模式</translation>
+    </message>
+    <message>
+        <source>AutoMode</source>
+        <translation>自动模式</translation>
+    </message>
+    <message>
+        <source>Axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>worldPos</source>
+        <translation>世界坐标</translation>
+    </message>
+    <message>
+        <source>JogPos</source>
+        <translation>关节坐标</translation>
+    </message>
+    <message>
+        <source>posValue</source>
+        <translation>坐标值</translation>
+    </message>
+    <message>
+        <source>when current alarm num</source>
+        <translation>如果当前报警号</translation>
+    </message>
+    <message>
+        <source>alarmNum</source>
+        <translation>报警号</translation>
+    </message>
+    <message>
+        <source>runningMode</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>SingleMode</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>OneCycleMode</source>
+        <translation>单循环模式</translation>
+    </message>
+    <message>
+        <source>RunningMode</source>
+        <translation>自动运行中</translation>
     </message>
 </context>
 <context>
@@ -1326,6 +1637,10 @@
         <translation type="vanished">终点高</translation>
     </message>
     <message>
+        <source>mm</source>
+        <translation></translation>
+    </message>
+    <message>
         <source>Start Pos</source>
         <translation type="vanished">起点</translation>
     </message>
@@ -1342,8 +1657,16 @@
         <translation type="vanished">速度</translation>
     </message>
     <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
         <source>Delay</source>
         <translation type="vanished">延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1479,6 +1802,18 @@
     <message>
         <source>CoordID</source>
         <translation type="obsolete">工作台坐标系ID</translation>
+    </message>
+    <message>
+        <source>Path Speed:</source>
+        <translation>路径速度平滑:</translation>
+    </message>
+    <message>
+        <source>Start Speed:</source>
+        <translation>起始速度:</translation>
+    </message>
+    <message>
+        <source>End Speed:</source>
+        <translation>结束速度:</translation>
     </message>
 </context>
 <context>
@@ -1746,6 +2081,10 @@
         <source>SafeArea Configs</source>
         <translation>安全区参数</translation>
     </message>
+    <message>
+        <source>Auto Debug</source>
+        <translation>自动调机</translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -1890,11 +2229,15 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>自动设定原点加开关(短原点)</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>自动设定原点加开关(长原点)</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
+    </message>
+    <message>
+        <source>Type5</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2016,6 +2359,30 @@
         <source>Act Time:</source>
         <translation>动作时间:</translation>
     </message>
+    <message>
+        <source>Self</source>
+        <translation>自身</translation>
+    </message>
+    <message>
+        <source>Interval Y</source>
+        <translation>间隔输出Y</translation>
+    </message>
+    <message>
+        <source>Interval M</source>
+        <translation>间隔输出M</translation>
+    </message>
+    <message>
+        <source>always out</source>
+        <translation>一直输出</translation>
+    </message>
+    <message>
+        <source>interval number:</source>
+        <translation>间隔个数</translation>
+    </message>
+    <message>
+        <source>Count Binding</source>
+        <translation>计数器</translation>
+    </message>
 </context>
 <context>
     <name>PENQIANEditor</name>
@@ -2040,6 +2407,10 @@
         <translation type="vanished">速度</translation>
     </message>
     <message>
+        <source>%</source>
+        <translation></translation>
+    </message>
+    <message>
         <source>AxisFyl Num</source>
         <translation type="vanished">次数</translation>
     </message>
@@ -2050,6 +2421,10 @@
     <message>
         <source>Delay</source>
         <translation type="vanished">延时</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2434,6 +2809,110 @@ please chose!</source>
         <source>custom Variables</source>
         <translation>自定义变量</translation>
     </message>
+    <message>
+        <source>IO Running Setting</source>
+        <translation>IO设定</translation>
+    </message>
+    <message>
+        <source>When the mode change to</source>
+        <translation>当模式切换为</translation>
+    </message>
+    <message>
+        <source>CMD_MANUAL_TO_STOP</source>
+        <translation>手动转停止</translation>
+    </message>
+    <message>
+        <source>CMD_STOP_TO_MANUAL</source>
+        <translation>停止转手动</translation>
+    </message>
+    <message>
+        <source>CMD_STOP_TO_AUTO</source>
+        <translation>停止转自动</translation>
+    </message>
+    <message>
+        <source>CMD_AUTO_TO_STOP</source>
+        <translation>自动转停止</translation>
+    </message>
+    <message>
+        <source>CMD_MANUAL</source>
+        <translation>手动</translation>
+    </message>
+    <message>
+        <source>CMD_AUTO</source>
+        <translation>自动</translation>
+    </message>
+    <message>
+        <source>CMD_CONFIG</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>CMD_ORIGIN</source>
+        <translation>原点</translation>
+    </message>
+    <message>
+        <source>CMD_RETURN</source>
+        <translation>复归</translation>
+    </message>
+    <message>
+        <source>CMD_RUNNING</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>CMD_SINGLE</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>CMD_ONE_CYCLE</source>
+        <translation>单循环</translation>
+    </message>
+    <message>
+        <source>CMD_ORIGIN_ING</source>
+        <translation>回原点中</translation>
+    </message>
+    <message>
+        <source>CMD_RETURN_ING</source>
+        <translation>复归中</translation>
+    </message>
+    <message>
+        <source>Choos Out</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>IO output</source>
+        <translation>IO输出</translation>
+    </message>
+    <message>
+        <source>M output</source>
+        <translation>M值输出</translation>
+    </message>
+    <message>
+        <source>output point</source>
+        <translation>输出点</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>Preservation</source>
+        <translation>保存</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -2447,7 +2926,7 @@ please chose!</source>
     </message>
     <message>
         <source>Check</source>
-        <translation>阀检测</translation>
+        <translation>信号检测</translation>
     </message>
     <message>
         <source>Condition</source>
@@ -2543,7 +3022,7 @@ please chose!</source>
     </message>
     <message>
         <source>Check</source>
-        <translation>阀检测</translation>
+        <translation>信号检测</translation>
     </message>
     <message>
         <source>Counter</source>
@@ -3165,6 +3644,10 @@ please chose!</source>
         <source>x47 Mux for Stop Btn</source>
         <translation>X47复用:暂停</translation>
     </message>
+    <message>
+        <source>First Moudle Speed</source>
+        <translation>首模速度</translation>
+    </message>
 </context>
 <context>
     <name>SafeAreaConfigs</name>
@@ -3572,6 +4055,54 @@ please chose!</source>
         <source>confirmBtn</source>
         <translation>确定修改</translation>
     </message>
+    <message>
+        <source>Safe Area3</source>
+        <translation>类型3</translation>
+    </message>
+    <message>
+        <source>SafePo</source>
+        <translation>安全信号1</translation>
+    </message>
+    <message>
+        <source>Reverse</source>
+        <translation>反向</translation>
+    </message>
+    <message>
+        <source>SafeSig1</source>
+        <translation>安全信号1</translation>
+    </message>
+    <message>
+        <source>SafeSig2</source>
+        <translation>安全信号2</translation>
+    </message>
+    <message>
+        <source>SafeSig3</source>
+        <translation>安全信号3</translation>
+    </message>
+    <message>
+        <source>SafeSig4</source>
+        <translation>安全信号4</translation>
+    </message>
+    <message>
+        <source>Axis4</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>SafeSig5</source>
+        <translation>安全信号5</translation>
+    </message>
+    <message>
+        <source>Axis5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>SafeSig6</source>
+        <translation>安全信号6</translation>
+    </message>
+    <message>
+        <source>Axis6</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>SafeRangeEditor</name>
@@ -3667,6 +4198,10 @@ please chose!</source>
     <message>
         <source>Speed</source>
         <translation type="vanished">速度</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <translation></translation>
     </message>
     <message>
         <source>Counter</source>
@@ -3877,6 +4412,14 @@ please chose!</source>
     <message>
         <source>lineTo_Color_Change</source>
         <translation type="vanished">直线颜色选择</translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation></translation>
     </message>
     <message>
         <source>Interval En</source>
@@ -4453,7 +4996,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Check:</source>
-        <translation>阀检测:</translation>
+        <translation type="unfinished">信号检测:</translation>
     </message>
     <message>
         <source>End</source>
@@ -4693,7 +5236,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>自动设定原点加开关</translation>
+        <translation>(短原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>origin</source>
@@ -4705,7 +5248,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Output</source>
-        <translation type="obsolete">输出</translation>
+        <translation type="unfinished">输出</translation>
     </message>
     <message>
         <source>On</source>
@@ -4893,7 +5436,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation>自动设定原点加开关 {4?}</translation>
+        <translation>(长原点)自动设定原点加开关</translation>
     </message>
     <message>
         <source>Bad En</source>
@@ -4921,11 +5464,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation type="vanished">M值</translation>
+        <translation>M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation type="vanished">IO点</translation>
+        <translation>IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -4942,6 +5485,118 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type 5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>IntervalOutput:</source>
+        <translation>间隔输出:</translation>
+    </message>
+    <message>
+        <source>Interval</source>
+        <translation>间隔</translation>
+    </message>
+    <message>
+        <source>,</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Always out</source>
+        <translation>一直输出</translation>
+    </message>
+    <message>
+        <source>Time out</source>
+        <translation>时间输出</translation>
+    </message>
+    <message>
+        <source>actCnt</source>
+        <translation>输出次数</translation>
+    </message>
+    <message>
+        <source>intervalTime:</source>
+        <translation>间隔时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec:</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>intervalTime</source>
+        <translation>间隔时间</translation>
+    </message>
+    <message>
+        <source>Until Photo Vec</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>RisingEdge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>FallingEdge</source>
+        <translation>下降沿</translation>
+    </message>
+    <message>
+        <source>is Off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>When on the pos </source>
+        <translation>当离结束位置</translation>
+    </message>
+    <message>
+        <source>manualMode</source>
+        <translation>手动模式</translation>
+    </message>
+    <message>
+        <source>stopMode</source>
+        <translation>停止模式</translation>
+    </message>
+    <message>
+        <source>autoMode</source>
+        <translation>自动模式</translation>
+    </message>
+    <message>
+        <source>Current Mode</source>
+        <translation>当前模式</translation>
+    </message>
+    <message>
+        <source>Current Jog pos</source>
+        <translation>当前关节坐标</translation>
+    </message>
+    <message>
+        <source>Current World pos</source>
+        <translation>当前世界坐标</translation>
+    </message>
+    <message>
+        <source>Current alarm num</source>
+        <translation>当前报警号</translation>
+    </message>
+    <message>
+        <source>NormalX-</source>
+        <translation>普通输入-</translation>
+    </message>
+    <message>
+        <source>Reverse </source>
+        <translation>断检测</translation>
+    </message>
+    <message>
+        <source>Forward </source>
+        <translation>通检测</translation>
+    </message>
+    <message>
+        <source>RunningMode</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>SingleMode</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>OneCycleMode</source>
+        <translation>单循环模式</translation>
     </message>
 </context>
 <context>
@@ -5178,7 +5833,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>confirmBtn</source>
-        <translation>坐标系换算</translation>
+        <translation>确定修改</translation>
     </message>
     <message>
         <source>B Offset Of A</source>
@@ -5418,6 +6073,22 @@ You just need to set the count configs after this setting.</source>
         <source>Action Time</source>
         <translation>动作时间</translation>
     </message>
+    <message>
+        <source>Until Photo Vec</source>
+        <translation>直到拍照成功</translation>
+    </message>
+    <message>
+        <source>Action Cnt</source>
+        <translation>输出次数</translation>
+    </message>
+    <message>
+        <source>t</source>
+        <translation>次</translation>
+    </message>
+    <message>
+        <source>Interval Time</source>
+        <translation>间隔时间</translation>
+    </message>
 </context>
 <context>
     <name>VisionModelItem</name>
@@ -5581,6 +6252,19 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Load record </source>
         <translation>载入模号</translation>
+    </message>
+    <message>
+        <source>Please confirm your stop signal off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exporting...</source>
+        <translation>导出中...</translation>
+    </message>
+    <message>
+        <source>Need to ghost and export to U Disk?
+The name of ghost is </source>
+        <translation>需要ghost并导出到U盘吗？ghost名字是</translation>
     </message>
 </context>
 <context>

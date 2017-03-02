@@ -14,44 +14,40 @@ Item {
     ICListView{
         id:view
         color:"white"
-        width:parent.width/2
+        width:parent.width*2/3-20
         height: parent.height - 50 - 100
         model: toolCoordModel
-        highlight: Rectangle { width: view.width; height: 20;color: "lightsteelblue"; }
+        highlight: Rectangle { width: view.width; height: 30;color: "lightsteelblue"; }
         highlightMoveDuration: 1
         delegate: Text {
             width:parent.width
-            height: 20
+            height: 30
+            verticalAlignment:Text.AlignVCenter
             text: id+':'+name
             MouseArea{
+                id:selItem
                 anchors.fill: parent
                 onClicked: {
                     view.currentIndex = index;
-                    var coordPoint = [];
-                    coordPoint  = toolCoordModel.get(index).info.data;
-                    coordName.configValue = toolCoordModel.get(index).name;
-                    p1m0.configValue = coordPoint[0] || 0.000;
-                    p1m1.configValue = coordPoint[1] || 0.000;
-                    p1m2.configValue = coordPoint[2] || 0.000;
-                    p1m3.configValue = coordPoint[3] || 0.000;
-                    p1m4.configValue = coordPoint[4] || 0.000;
-                    p1m5.configValue = coordPoint[5] || 0.000;
-
-                    p2m0.configValue = coordPoint[6] || 0.000;
-                    p2m1.configValue = coordPoint[7] || 0.000;
-                    p2m2.configValue = coordPoint[8] || 0.000;
-                    p2m3.configValue = coordPoint[9] || 0.000;
-                    p2m4.configValue = coordPoint[10] || 0.000;
-                    p2m5.configValue = coordPoint[11] || 0.000;
-
-                    p3m0.configValue = coordPoint[12] || 0.000;
-                    p3m1.configValue = coordPoint[13] || 0.000;
-                    p3m2.configValue = coordPoint[14] || 0.000;
-                    p3m3.configValue = coordPoint[15] || 0.000;
-                    p3m4.configValue = coordPoint[16] || 0.000;
-                    p3m5.configValue = coordPoint[17] || 0.000;
                 }
             }
+        }
+        onCurrentItemChanged:{
+            if(currentIndex<0)return;
+            var coordPoint = [];
+            coordPoint  = toolCoordModel.get(currentIndex).info.data;
+            coordName.configValue = toolCoordModel.get(currentIndex).name;
+            p1m0.configValue = coordPoint[0]? coordPoint[0].toFixed(3):"0.000";
+            p1m1.configValue = coordPoint[1]? coordPoint[1].toFixed(3):"0.000";
+            p1m2.configValue = coordPoint[2]? coordPoint[2].toFixed(3):"0.000";
+
+            p2m0.configValue = coordPoint[3]? coordPoint[3].toFixed(3):"0.000";
+            p2m1.configValue = coordPoint[4]? coordPoint[4].toFixed(3):"0.000";
+            p2m2.configValue = coordPoint[5]? coordPoint[5].toFixed(3):"0.000";
+
+            p3m0.configValue = coordPoint[6]? coordPoint[6].toFixed(3):"0.000";
+            p3m1.configValue = coordPoint[7]? coordPoint[7].toFixed(3):"0.000";
+            p3m2.configValue = coordPoint[8]? coordPoint[8].toFixed(3):"0.000";
         }
     }
 
@@ -136,21 +132,15 @@ Item {
                 coordPoint[0] = p1m0.getConfigValue() + bX.getConfigValue();
                 coordPoint[1] = p1m1.getConfigValue() + bY.getConfigValue();
                 coordPoint[2] = p1m2.getConfigValue();
-                coordPoint[3] = p1m3.getConfigValue();
-                coordPoint[4] = p1m4.getConfigValue();
-                coordPoint[5] = p1m5.getConfigValue();
-                coordPoint[6] = p2m0.getConfigValue() + bX.getConfigValue();
-                coordPoint[7] = p2m1.getConfigValue() + bY.getConfigValue();
-                coordPoint[8] = p2m2.getConfigValue();
-                coordPoint[9] = p2m3.getConfigValue();
-                coordPoint[10] = p2m4.getConfigValue();
-                coordPoint[11] = p2m5.getConfigValue();
-                coordPoint[12] = p3m0.getConfigValue() + bX.getConfigValue();
-                coordPoint[13] = p3m1.getConfigValue() + bY.getConfigValue();
-                coordPoint[14] = p3m2.getConfigValue();
-                coordPoint[15] = p3m3.getConfigValue();
-                coordPoint[16] = p3m4.getConfigValue();
-                coordPoint[17] = p3m5.getConfigValue();
+
+                coordPoint[3] = p2m0.getConfigValue() + bX.getConfigValue();
+                coordPoint[4] = p2m1.getConfigValue() + bY.getConfigValue();
+                coordPoint[5] = p2m2.getConfigValue();
+
+                coordPoint[6] = p3m0.getConfigValue() + bX.getConfigValue();
+                coordPoint[7] = p3m1.getConfigValue() + bY.getConfigValue();
+                coordPoint[8] = p3m2.getConfigValue();
+
                 var toolCoordName = qsTr("B Head");
                 var ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
@@ -160,21 +150,15 @@ Item {
                 coordPoint[0] = p1m0.getConfigValue() + cX.getConfigValue();
                 coordPoint[1] = p1m1.getConfigValue() + cY.getConfigValue();
                 coordPoint[2] = p1m2.getConfigValue();
-                coordPoint[3] = p1m3.getConfigValue();
-                coordPoint[4] = p1m4.getConfigValue();
-                coordPoint[5] = p1m5.getConfigValue();
-                coordPoint[6] = p2m0.getConfigValue() + cX.getConfigValue();
-                coordPoint[7] = p2m1.getConfigValue() + cY.getConfigValue();
-                coordPoint[8] = p2m2.getConfigValue();
-                coordPoint[9] = p2m3.getConfigValue();
-                coordPoint[10] = p2m4.getConfigValue();
-                coordPoint[11] = p2m5.getConfigValue();
-                coordPoint[12] = p3m0.getConfigValue() + cX.getConfigValue();
-                coordPoint[13] = p3m1.getConfigValue() + cY.getConfigValue();
-                coordPoint[14] = p3m2.getConfigValue();
-                coordPoint[15] = p3m3.getConfigValue();
-                coordPoint[16] = p3m4.getConfigValue();
-                coordPoint[17] = p3m5.getConfigValue();
+
+                coordPoint[3] = p2m0.getConfigValue() + cX.getConfigValue();
+                coordPoint[4] = p2m1.getConfigValue() + cY.getConfigValue();
+                coordPoint[5] = p2m2.getConfigValue();
+
+                coordPoint[6] = p3m0.getConfigValue() + cX.getConfigValue();
+                coordPoint[7] = p3m1.getConfigValue() + cY.getConfigValue();
+                coordPoint[8] = p3m2.getConfigValue();
+
                 toolCoordName = qsTr("C Head");
                 ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
@@ -188,6 +172,13 @@ Item {
         anchors.right: view.right
         anchors.topMargin: 10
         spacing: 20
+        ICConfigEdit{
+            id:coordName
+            isNumberOnly: false
+            configName: qsTr("coordName")
+            configNameWidth: 90
+            inputWidth:120
+        }
         ICButton{
             id:newBtn
             text:qsTr("newBtn")
@@ -196,24 +187,20 @@ Item {
                 coordPoint[0] = p1m0.getConfigValue();
                 coordPoint[1] = p1m1.getConfigValue();
                 coordPoint[2] = p1m2.getConfigValue();
-                coordPoint[3] = p1m3.getConfigValue();
-                coordPoint[4] = p1m4.getConfigValue();
-                coordPoint[5] = p1m5.getConfigValue();
-                coordPoint[6] = p2m0.getConfigValue();
-                coordPoint[7] = p2m1.getConfigValue();
-                coordPoint[8] = p2m2.getConfigValue();
-                coordPoint[9] = p2m3.getConfigValue();
-                coordPoint[10] = p2m4.getConfigValue();
-                coordPoint[11] = p2m5.getConfigValue();
-                coordPoint[12] = p3m0.getConfigValue();
-                coordPoint[13] = p3m1.getConfigValue();
-                coordPoint[14] = p3m2.getConfigValue();
-                coordPoint[15] = p3m3.getConfigValue();
-                coordPoint[16] = p3m4.getConfigValue();
-                coordPoint[17] = p3m5.getConfigValue();
+
+                coordPoint[3] = p2m0.getConfigValue();
+                coordPoint[4] = p2m1.getConfigValue();
+                coordPoint[5] = p2m2.getConfigValue();
+
+                coordPoint[6] = p3m0.getConfigValue();
+                coordPoint[7] = p3m1.getConfigValue();
+                coordPoint[8] = p3m2.getConfigValue();
+
                 var toolCoordName = coordName.configValue;
                 var ret =ToolCoordManager.toolCoordManager.addToolCoord(toolCoordName,coordPoint);
                 toolCoordModel.append({"name":ret[1], "id":ret[0],"info":{"data":coordPoint}});
+                panelRobotController.sendToolCoord(ret[0],JSON.stringify(coordPoint));
+                view.currentIndex = toolCoordModel.count - 1;
             }
         }
         ICButton{
@@ -231,7 +218,7 @@ Item {
         id: posGrid
         anchors.leftMargin:  10
         anchors.left: view.right
-        columns: 3
+        columns: 2
         spacing: 15
         ICButton{
             id:setP1Btn
@@ -241,24 +228,13 @@ Item {
                 p1m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
                 p1m1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
                 p1m2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                p1m3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                p1m4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                p1m5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
             }
         }
         ICConfigEdit{
             id:p1m0
             configName: AxisDefine.axisInfos[0].name
             unit: "mm"
-            configNameWidth: 15
-            decimal: 3
-            min:-10000
-        }
-        ICConfigEdit{
-            id:p1m3
-            configName: AxisDefine.axisInfos[3].name
-            unit: "°"
-            configNameWidth: p1m0.configNameWidth
+            configNameWidth: 18
             decimal: 3
             min:-10000
         }
@@ -270,14 +246,6 @@ Item {
             id:p1m1
             configName: AxisDefine.axisInfos[1].name
             unit: "mm"
-            configNameWidth: p1m0.configNameWidth
-            decimal: 3
-            min:-10000
-        }
-        ICConfigEdit{
-            id:p1m4
-            configName: AxisDefine.axisInfos[4].name
-            unit: "°"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
@@ -294,197 +262,119 @@ Item {
             decimal: 3
             min:-10000
         }
+
+        ICButton{
+            id:setP2Btn
+            text:qsTr("setP2Btn")
+            height: p2m0.height
+            onButtonClicked: {
+                p2m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                p2m1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                p2m2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
+            }
+        }
         ICConfigEdit{
-            id:p1m5
-            configName: AxisDefine.axisInfos[5].name
-            unit: "°"
+            id:p2m0
+            configName: AxisDefine.axisInfos[0].name
+            unit: "mm"
             configNameWidth: p1m0.configNameWidth
             decimal: 3
             min:-10000
         }
 
-
-            ICButton{
-                id:setP2Btn
-                text:qsTr("setP2Btn")
-                height: p2m0.height
-                onButtonClicked: {
-                    p2m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                    p2m1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                    p2m2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                    p2m3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                    p2m4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                    p2m5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
-                }
-            }
-            ICConfigEdit{
-                id:p2m0
-                configName: AxisDefine.axisInfos[0].name
-                unit: "mm"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-            ICConfigEdit{
-                id:p2m3
-                configName: AxisDefine.axisInfos[3].name
-                unit: "°"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-
-            Text {
-                text: (" ")
-            }
-            ICConfigEdit{
-                id:p2m1
-                configName: AxisDefine.axisInfos[1].name
-                unit: "mm"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-            ICConfigEdit{
-                id:p2m4
-                configName: AxisDefine.axisInfos[4].name
-                unit: "°"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-
-            Text{
-                text:(" ")
-            }
-            ICConfigEdit{
-                id:p2m2
-                configName: AxisDefine.axisInfos[2].name
-                unit: "mm"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-            ICConfigEdit{
-                id:p2m5
-                configName: AxisDefine.axisInfos[5].name
-                unit: "°"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
+        Text {
+            text: (" ")
+        }
+        ICConfigEdit{
+            id:p2m1
+            configName: AxisDefine.axisInfos[1].name
+            unit: "mm"
+            configNameWidth: p1m0.configNameWidth
+            decimal: 3
+            min:-10000
         }
 
-            ICButton{
-                id:setP3Btn
-                text:qsTr("setP3Btn")
-                height: p3m0.height
-                onButtonClicked: {
-                    p3m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                    p3m1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                    p3m2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                    p3m3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                    p3m4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                    p3m5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
-                }
-            }
-            ICConfigEdit{
-                id:p3m0
-                configName: AxisDefine.axisInfos[0].name
-                unit: "mm"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-            ICConfigEdit{
-                id:p3m3
-                configName: AxisDefine.axisInfos[3].name
-                unit: "°"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
+        Text{
+            text:(" ")
+        }
+        ICConfigEdit{
+            id:p2m2
+            configName: AxisDefine.axisInfos[2].name
+            unit: "mm"
+            configNameWidth: p1m0.configNameWidth
+            decimal: 3
+            min:-10000
+        }
 
-            Text {
-                text: (" ")
+        ICButton{
+            id:setP3Btn
+            text:qsTr("setP3Btn")
+            height: p3m0.height
+            onButtonClicked: {
+                p3m0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
+                p3m1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
+                p3m2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
             }
-            ICConfigEdit{
-                id:p3m1
-                configName: AxisDefine.axisInfos[1].name
-                unit: "mm"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-            ICConfigEdit{
-                id:p3m4
-                configName: AxisDefine.axisInfos[4].name
-                unit: "°"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
+        }
+        ICConfigEdit{
+            id:p3m0
+            configName: AxisDefine.axisInfos[0].name
+            unit: "mm"
+            configNameWidth: p1m0.configNameWidth
+            decimal: 3
+            min:-10000
+        }
 
-            Text{
-                text:(" ")
-            }
-            ICConfigEdit{
-                id:p3m2
-                configName: AxisDefine.axisInfos[2].name
-                unit: "mm"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
-            }
-            ICConfigEdit{
-                id:p3m5
-                configName: AxisDefine.axisInfos[5].name
-                unit: "°"
-                configNameWidth: p1m0.configNameWidth
-                decimal: 3
-                min:-10000
+        Text {
+            text: (" ")
+        }
+        ICConfigEdit{
+            id:p3m1
+            configName: AxisDefine.axisInfos[1].name
+            unit: "mm"
+            configNameWidth: p1m0.configNameWidth
+            decimal: 3
+            min:-10000
+        }
+
+        Text{
+            text:(" ")
+        }
+        ICConfigEdit{
+            id:p3m2
+            configName: AxisDefine.axisInfos[2].name
+            unit: "mm"
+            configNameWidth: p1m0.configNameWidth
+            decimal: 3
+            min:-10000
         }
     }
-    Row{
-        spacing:40
+    ICButton{
+        id:confirmBtn
         anchors.top: posGrid.bottom
         anchors.right: posGrid.right
         anchors.topMargin: 15
-        ICConfigEdit{
-            id:coordName
-            isNumberOnly: false
-            configName: qsTr("coordName")
-            configNameWidth: 90
-            inputWidth:120
-        }
-        ICButton{
-            id:confirmBtn
-            text:qsTr("confirmBtn")
-            onButtonClicked: {
-                var coordPoint =[];
-                coordPoint[0] = p1m0.getConfigValue();
-                coordPoint[1] = p1m1.getConfigValue();
-                coordPoint[2] = p1m2.getConfigValue();
-                coordPoint[3] = p1m3.getConfigValue();
-                coordPoint[4] = p1m4.getConfigValue();
-                coordPoint[5] = p1m5.getConfigValue();
-                coordPoint[6] = p2m0.getConfigValue();
-                coordPoint[7] = p2m1.getConfigValue();
-                coordPoint[8] = p2m2.getConfigValue();
-                coordPoint[9] = p2m3.getConfigValue();
-                coordPoint[10] = p2m4.getConfigValue();
-                coordPoint[11] = p2m5.getConfigValue();
-                coordPoint[12] = p3m0.getConfigValue();
-                coordPoint[13] = p3m1.getConfigValue();
-                coordPoint[14] = p3m2.getConfigValue();
-                coordPoint[15] = p3m3.getConfigValue();
-                coordPoint[16] = p3m4.getConfigValue();
-                coordPoint[17] = p3m5.getConfigValue();
-                var toolCoordName = coordName.configValue;
-                var toolCoordID = toolCoordModel.get(view.currentIndex).id
-                ToolCoordManager.toolCoordManager.updateToolCoord(toolCoordID,toolCoordName,coordPoint);
-                toolCoordModel.set(view.currentIndex,{"name":toolCoordName, "id":toolCoordID, "info":{"data":coordPoint}});
-                panelRobotController.sendToolCoord(toolCoordID,JSON.stringify(coordPoint));
-            }
+        text:qsTr("confirmBtn")
+        onButtonClicked: {
+            if(view.currentIndex < 0) return;
+            var coordPoint =[];
+            coordPoint[0] = p1m0.getConfigValue();
+            coordPoint[1] = p1m1.getConfigValue();
+            coordPoint[2] = p1m2.getConfigValue();
+
+            coordPoint[3] = p2m0.getConfigValue();
+            coordPoint[4] = p2m1.getConfigValue();
+            coordPoint[5] = p2m2.getConfigValue();
+
+            coordPoint[6] = p3m0.getConfigValue();
+            coordPoint[7] = p3m1.getConfigValue();
+            coordPoint[8] = p3m2.getConfigValue();
+
+            var toolCoordName = coordName.configValue;
+            var toolCoordID = toolCoordModel.get(view.currentIndex).id
+            ToolCoordManager.toolCoordManager.updateToolCoord(toolCoordID,toolCoordName,coordPoint);
+            toolCoordModel.set(view.currentIndex,{"name":toolCoordName, "id":toolCoordID, "info":{"data":coordPoint}});
+            panelRobotController.sendToolCoord(toolCoordID,JSON.stringify(coordPoint));
         }
     }
 
@@ -492,8 +382,6 @@ Item {
         var toolCoords = ToolCoordManager.toolCoordManager.toolCoordList();
         for(var i =0;i<toolCoords.length;++i){
             toolCoordModel.append({"name":toolCoords[i].name, "id":toolCoords[i].id, "info":{"data":toolCoords[i].info}});
-
         }
     }
-
 }

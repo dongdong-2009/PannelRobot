@@ -596,7 +596,7 @@ Item {
             itemText: AxisDefine.axisInfos[7].name
             color: getChecked() ? Theme.defaultTheme.TabMenuItem.checkedColor :  Theme.defaultTheme.TabMenuItem.unCheckedColor
             onItemTriggered: {
-                showMotorConfigs(7)
+                showMotorConfigs(7);
             }
             ICCheckBox{
                 id:motor8En
@@ -605,7 +605,7 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 6
                 onIsCheckedChanged: {
-                    onMotorEnChanged(7, isChecked)
+                    onMotorEnChanged(7, isChecked);
                     setAxisVisiable(7,isChecked?false:true);
                 }
             }
@@ -649,7 +649,8 @@ Item {
                     configName: qsTr("Motor Factory")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6"),qsTr("Motor 7")]
+                    popupHeight: 200
+                    items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6"),qsTr("Motor 7"),qsTr("Motor 8")]
                     z:9
                     visible: encoderType.configValue == 1
                 }
@@ -693,14 +694,14 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     unit: qsTr("mm")
-                    visible: axisType.configValue == 1
+                    visible: (axisType.configValue == 1)
                 }
                 ICConfigEdit{
                     id:reductionRatio
                     configName: qsTr("Reduction Ratio")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    visible: axisType.configValue == 0 || axisType.configValue == 2
+                    visible: ((axisType.configValue == 0) || (axisType.configValue == 2))
                 }
                 ICConfigEdit{
                     id:pLimit
@@ -905,6 +906,8 @@ Item {
                 onVisibleChanged: {
                     if(visible){
                         console.log("IN Config");
+
+                        showMotorConfigs(pdata.currentGroup);
                         testClear.clicked();
                         panelRobotController.setMotorTestPulseNum(testPulseNum.text);
                     }

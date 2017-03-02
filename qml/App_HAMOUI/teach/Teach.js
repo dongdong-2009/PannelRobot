@@ -1391,7 +1391,7 @@ var conditionActionToStringHandler = function(actionObject){
             leftStr = qsTr("Current alarm num");
             rightStr = actionObject.selAlarm;
         }
-        else if(actionObject.disType == 3 || actionObject.disType == 4){
+        else{
             leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
             rightStr = (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr;
         }

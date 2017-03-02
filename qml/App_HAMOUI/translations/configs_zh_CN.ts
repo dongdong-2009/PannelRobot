@@ -529,6 +529,10 @@
         <source>None</source>
         <translation></translation>
     </message>
+    <message>
+        <source>ALARM_POS_STABLE_ING</source>
+        <translation>位置稳定中</translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>

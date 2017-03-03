@@ -3000,73 +3000,198 @@ please chose!</source>
 <context>
     <name>ProductSettings</name>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="16"/>
+        <location filename="../settingpages/ProductSettings.qml" line="17"/>
         <source>NoUse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="16"/>
+        <location filename="../settingpages/ProductSettings.qml" line="17"/>
         <source>Use</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="28"/>
+        <location filename="../settingpages/ProductSettings.qml" line="29"/>
         <source>Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="39"/>
+        <location filename="../settingpages/ProductSettings.qml" line="40"/>
         <source>Valve Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="48"/>
+        <location filename="../settingpages/ProductSettings.qml" line="49"/>
         <source>custom Variables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="75"/>
+        <location filename="../settingpages/ProductSettings.qml" line="62"/>
+        <source>IO Running Setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="87"/>
         <source>Program0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="85"/>
+        <location filename="../settingpages/ProductSettings.qml" line="97"/>
         <source>Program1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="96"/>
+        <location filename="../settingpages/ProductSettings.qml" line="108"/>
         <source>Program2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="107"/>
+        <location filename="../settingpages/ProductSettings.qml" line="119"/>
         <source>Program3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="118"/>
+        <location filename="../settingpages/ProductSettings.qml" line="130"/>
         <source>Program4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="129"/>
+        <location filename="../settingpages/ProductSettings.qml" line="141"/>
         <source>Program5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="140"/>
+        <location filename="../settingpages/ProductSettings.qml" line="152"/>
         <source>Program6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="151"/>
+        <location filename="../settingpages/ProductSettings.qml" line="163"/>
         <source>Program7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="162"/>
+        <location filename="../settingpages/ProductSettings.qml" line="174"/>
         <source>Program8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="216"/>
+        <source>new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="223"/>
+        <source>Preservation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="273"/>
+        <source>When the mode change to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="306"/>
+        <source>CMD_MANUAL_TO_STOP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="307"/>
+        <source>CMD_STOP_TO_MANUAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="308"/>
+        <source>CMD_STOP_TO_AUTO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="309"/>
+        <source>CMD_AUTO_TO_STOP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="311"/>
+        <source>CMD_MANUAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="312"/>
+        <source>CMD_AUTO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="313"/>
+        <source>CMD_CONFIG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="315"/>
+        <source>CMD_ORIGIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="316"/>
+        <source>CMD_RETURN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="317"/>
+        <source>CMD_RUNNING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="318"/>
+        <source>CMD_SINGLE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="319"/>
+        <source>CMD_ONE_CYCLE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="320"/>
+        <source>CMD_ORIGIN_ING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="321"/>
+        <source>CMD_RETURN_ING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="339"/>
+        <source>Choos Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="340"/>
+        <source>IO output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="340"/>
+        <source>M output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="358"/>
+        <source>output point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="373"/>
+        <source>OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="373"/>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="384"/>
+        <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3360,7 +3485,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../teach/ProgramFlowPage.qml" line="777"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="1775"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1907"/>
         <source>Main Module</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3456,32 +3581,52 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1494"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1498"/>
+        <source>SearchRange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1506"/>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1515"/>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1519"/>
+        <source>Clear Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1626"/>
         <source>Single Step</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1508"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1640"/>
         <source>Start Line:[-1]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1518"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1650"/>
         <source>Start Line:[{0}]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1523"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1655"/>
         <source>Single Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1534"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1666"/>
         <source>Single Cycle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1548"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1680"/>
         <source>Cycle Start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5762,11 +5907,13 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1369"/>
+        <location filename="../teach/Teach.js" line="1433"/>
         <source>RisingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1371"/>
+        <location filename="../teach/Teach.js" line="1435"/>
         <source>FallingEdge</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6834,37 +6981,47 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>WaitActionEditor</name>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="79"/>
+        <location filename="../teach/WaitActionEditor.qml" line="83"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="85"/>
+        <location filename="../teach/WaitActionEditor.qml" line="89"/>
         <source>EUX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="90"/>
+        <location filename="../teach/WaitActionEditor.qml" line="94"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="171"/>
+        <location filename="../teach/WaitActionEditor.qml" line="175"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="176"/>
+        <location filename="../teach/WaitActionEditor.qml" line="180"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="182"/>
+        <location filename="../teach/WaitActionEditor.qml" line="184"/>
+        <source>Rising Edge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/WaitActionEditor.qml" line="188"/>
+        <source>Falling Edge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/WaitActionEditor.qml" line="194"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="183"/>
+        <location filename="../teach/WaitActionEditor.qml" line="195"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>

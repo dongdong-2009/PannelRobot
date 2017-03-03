@@ -3286,6 +3286,22 @@ please chose!</source>
         <source>Paste</source>
         <translation>粘贴</translation>
     </message>
+    <message>
+        <source>SearchRange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">搜索</translation>
+    </message>
+    <message>
+        <source>Clear Search</source>
+        <translation type="unfinished">清除搜索</translation>
+    </message>
 </context>
 <context>
     <name>ProgramPage</name>
@@ -6117,6 +6133,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Delay:</source>
         <translation>限时:</translation>
+    </message>
+    <message>
+        <source>Rising Edge</source>
+        <translation>上升沿</translation>
+    </message>
+    <message>
+        <source>Falling Edge</source>
+        <translation>下降沿</translation>
     </message>
 </context>
 <context>

@@ -455,7 +455,7 @@ Rectangle {
 
                             toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
                             for(var k=0;k<toTranslate.length;++k){
-                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + Teach.programsToText(JSON.parse(toTranslate[i].program))+"<br>";
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + Teach.programsToText(JSON.parse(toTranslate[k].program))+"<br>";
                                 recordPrograms += tmpStr;
                             }
                             panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);

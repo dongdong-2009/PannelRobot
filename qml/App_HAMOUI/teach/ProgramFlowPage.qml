@@ -1298,6 +1298,7 @@ Rectangle {
                     width: parent.width
                     height: parent.height - 2
                     spacing:2
+                    highlightMoveDuration:10
                     clip: true
 
 
@@ -1428,7 +1429,7 @@ Rectangle {
 
     MouseArea{
         id: programSearch
-        visible: false
+//        visible: false
         width: 600
         height:280
         y:programListContainer.y
@@ -1463,7 +1464,7 @@ Rectangle {
             height: 64
             bgColor: "green"
             anchors.right: parent.left
-            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             onButtonClicked: {
                 if(!programSearchContent.visible){
                     programSearchContent.visible = true;
@@ -1483,6 +1484,7 @@ Rectangle {
             border.color: "gray"  
             Row{
                 id:searchCondition
+                z:2
                 x:8
                 y:8
                 spacing: 8
@@ -1494,7 +1496,6 @@ Rectangle {
                 }
                 ICComboBoxConfigEdit{
                     id:searchRange
-                    z:10
                     configName: qsTr("SearchRange")
                     inputWidth: 120
                     popupHeight: 200
@@ -1514,10 +1515,14 @@ Rectangle {
                     id:toSeach
                     text: qsTr("Search")
                     height:searchRange.height
+                    onButtonClicked: {
+                        searchResultModel.append({"whichProgram":1,"whichFunction":1,"whichRow":0,"desc":qsTr("0")});
+                    }
                 }
                 ICButton{
                     text: qsTr("Clear Search")
                     height:searchRange.height
+
                 }
             }
             ListModel{
@@ -1542,19 +1547,50 @@ Rectangle {
                         id:selItem
                         anchors.fill: parent
                         onClicked: {
-                            searchResultView.currentIndex =index;
+                            searchResultView.currentIndex = index;
+                        }
+                        onDoubleClicked: {
+                            editing.currentIndex = whichProgram;
+                            moduleSel.currentIndex = whichFunction;
+                            programListView.currentIndex = whichRow;
                         }
                     }
                     Text {
                         id: itemText
                         anchors.verticalCenter: parent.verticalCenter
-                        text: id
+                        text: desc
                     }
                 }
             }
-        }
-        Component.onCompleted: {
-            searchResultModel.append({"id":111});
+            Row{
+                id:jumpCondition
+                x:8
+                spacing: 8
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin: 3
+                Text {
+                    id: inCurrentPage
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Current Page")
+                }
+                ICConfigEdit{
+                    id:programIndex
+                    configName: qsTr("programIndex")
+                    configValue: "0"
+                    min:0
+                    max:10000
+                }
+                ICButton{
+                    id:gotoProgram
+                    text: qsTr("GO")
+                    height: programIndex.height
+                    onButtonClicked: {
+                        if(programIndex.configValue<programListView.count)
+                            programListView.currentIndex = programIndex.configValue;
+                        else programListView.currentIndex = programListView.count-1;
+                    }
+                }
+            }
         }
     }
 

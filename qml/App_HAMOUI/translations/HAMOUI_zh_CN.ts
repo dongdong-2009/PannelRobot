@@ -1138,7 +1138,7 @@
     </message>
     <message>
         <source>Check Dir</source>
-        <translation>检测方向</translation>
+        <translation>检测到就报警</translation>
     </message>
     <message>
         <source>Forward</source>
@@ -5536,11 +5536,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Reverse </source>
-        <translation>断检测</translation>
+        <translation>检测到信号断就报警</translation>
     </message>
     <message>
         <source>Forward </source>
-        <translation>通检测</translation>
+        <translation>检测到信号通就报警</translation>
     </message>
     <message>
         <source>RunningMode</source>

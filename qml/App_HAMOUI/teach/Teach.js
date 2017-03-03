@@ -1424,8 +1424,17 @@ var conditionActionToStringHandler = function(actionObject){
 }
 
 var waitActionToStringHandler = function(actionObject){
+    var statusStr;
+    if(actionObject.pointStatus == 1)
+        statusStr = qsTr("ON");
+    else if(actionObject.pointStatus == 0)
+        statusStr = qsTr("OFF");
+    else if(actionObject.pointStatus == 2)
+        statusStr = qsTr("RisingEdge");
+    else if(actionObject.pointStatus == 3)
+        statusStr = qsTr("FallingEdge");
     return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
-            (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " " +
+            statusStr + " " +
             qsTr("Limit:") + actionObject.limit;
 }
 

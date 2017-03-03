@@ -1427,6 +1427,138 @@ Rectangle {
     }
 
     MouseArea{
+        id: programSearch
+        visible: false
+        width: 600
+        height:280
+        y:programListContainer.y
+        x:800
+        z:10
+        PropertyAnimation{
+            id:programSearchOut
+            target: programSearch
+            property: "x"
+            to: 800 - programSearch.width
+            duration: 100
+        }
+        SequentialAnimation{
+            id:programSearchIn
+            PropertyAnimation{
+                target: programSearch
+                property: "x"
+                to: 800
+                duration: 100
+            }
+            PropertyAction{
+                target: programSearchContent
+                property: "visible"
+                value:false
+            }
+        }
+        ICButton{
+            id:programSearchBtn
+            text: ""
+            icon: "../images/tools_autokeyboard.png"
+            width: 64
+            height: 64
+            bgColor: "green"
+            anchors.right: parent.left
+            anchors.top: parent.top
+            onButtonClicked: {
+                if(!programSearchContent.visible){
+                    programSearchContent.visible = true;
+                    programSearchOut.start();
+                }else{
+                    programSearchIn.start();
+                }
+            }
+        }
+        Rectangle {
+            id:programSearchContent
+            visible: false
+            width: parent.width
+            height: parent.height
+            color: "#A0A0F0"
+            border.width: 1
+            border.color: "gray"  
+            Row{
+                id:searchCondition
+                x:8
+                y:8
+                spacing: 8
+                ICLineEdit{
+                    id:keyWords
+                    height:searchRange.height
+                    inputWidth: 120
+                    isNumberOnly:false
+                }
+                ICComboBoxConfigEdit{
+                    id:searchRange
+                    z:10
+                    configName: qsTr("SearchRange")
+                    inputWidth: 120
+                    popupHeight: 200
+                    height: searchRange.height
+                    items: {
+                        var tmpItems = moduleSel.items;
+                        tmpItems.shift();
+                        tmpItems = editing.defaultPrograms.concat(tmpItems);
+                        tmpItems.splice(0,0,qsTr("All"));
+                        return tmpItems;
+                    }
+                    Component.onCompleted: {
+                        if(items.length >0)configValue =0;
+                    }
+                }
+                ICButton{
+                    id:toSeach
+                    text: qsTr("Search")
+                    height:searchRange.height
+                }
+                ICButton{
+                    text: qsTr("Clear Search")
+                    height:searchRange.height
+                }
+            }
+            ListModel{
+                id:searchResultModel
+            }
+            ICListView{
+                id:searchResultView
+                x:8
+                spacing: 2
+                anchors.top:searchCondition.bottom
+                anchors.topMargin: 6
+                height: parent.height - searchCondition.height -50
+                width: parent.width - 15
+                border.color: "black"
+                border.width: 1
+                model: searchResultModel
+                clip: true
+                delegate:Rectangle{
+                    height:30
+                    width: parent.width
+                    MouseArea{
+                        id:selItem
+                        anchors.fill: parent
+                        onClicked: {
+                            searchResultView.currentIndex =index;
+                        }
+                    }
+                    Text {
+                        id: itemText
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: id
+                    }
+                }
+            }
+        }
+        Component.onCompleted: {
+            searchResultModel.append({"id":111});
+        }
+    }
+
+    MouseArea{
         id: autoKeyboard
         width: 600
         height:80

@@ -978,7 +978,7 @@ uint16_t io_all;
         var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         if(handControSetting.length==10)
         {
-            console.log("load");
+//            console.log("load");
             for(var i = 0; i < 5; ++i)
             {
                 var board=0,s=0;
@@ -991,14 +991,17 @@ uint16_t io_all;
                     case 0:
                         board=IODefines.IO_BOARD_0+id/32;
                         s=panelRobotController.isInputOn(id,board);
+//                        console.log("bangding input:"+id+"status:"+s);
                         break;
                     case 1:
                         board=IODefines.IO_BOARD_0+id/32;
                         s=panelRobotController.isOutputOn(id,board);
+//                        console.log("bangding output"+id+"status:"+s);
                         break;
                     case 2:
                         board=IODefines.M_BOARD_0+id/32;
                         s=panelRobotController.isOutputOn(id,board);
+//                        console.log("bangding M value"+id+"status:"+s);
                         break;
                     }
                 }
@@ -1161,8 +1164,8 @@ uint16_t io_all;
             if(isInit){
                 getExternalFuncBtn();
                 switchMoldByIOStatus();
-                handControlLEDBandingOperation();
             }
+            handControlLEDBandingOperation();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

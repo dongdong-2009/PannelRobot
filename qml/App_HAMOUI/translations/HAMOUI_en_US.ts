@@ -3545,7 +3545,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../teach/ProgramFlowPage.qml" line="777"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="1907"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1989"/>
         <source>Main Module</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3641,52 +3641,72 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1498"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1499"/>
         <source>SearchRange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1506"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1507"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1515"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1516"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1519"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1562"/>
+        <source>End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1566"/>
         <source>Clear Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1626"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1620"/>
+        <source>Current Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1624"/>
+        <source>programIndex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1631"/>
+        <source>GO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.qml" line="1708"/>
         <source>Single Step</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1640"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1722"/>
         <source>Start Line:[-1]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1650"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1732"/>
         <source>Start Line:[{0}]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1655"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1737"/>
         <source>Single Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1666"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1748"/>
         <source>Single Cycle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1680"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1762"/>
         <source>Cycle Start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7114,32 +7134,32 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="175"/>
+        <location filename="../teach/WaitActionEditor.qml" line="169"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="180"/>
+        <location filename="../teach/WaitActionEditor.qml" line="174"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="184"/>
+        <location filename="../teach/WaitActionEditor.qml" line="179"/>
         <source>Rising Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="188"/>
+        <location filename="../teach/WaitActionEditor.qml" line="184"/>
         <source>Falling Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="194"/>
+        <location filename="../teach/WaitActionEditor.qml" line="188"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="195"/>
+        <location filename="../teach/WaitActionEditor.qml" line="189"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>

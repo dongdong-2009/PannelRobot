@@ -1516,13 +1516,65 @@ Rectangle {
                     text: qsTr("Search")
                     height:searchRange.height
                     onButtonClicked: {
-                        searchResultModel.append({"whichProgram":1,"whichFunction":1,"whichRow":0,"desc":qsTr("0")});
+                        searchResultModel.clear();
+                        var tmpstr = "";
+                        var i ,j,tmpLen;
+                        var tmpPrograms,tmpFunctions,tmpFunction;
+                        if(searchRange.configValue == 0){
+                            for(i=0;i<9;++i){
+                                tmpPrograms = JSON.parse(panelRobotController.programs(i));
+                                searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":editing.defaultPrograms[i]});
+                                tmpLen = searchResultModel.count;
+                                for(j=0;j<tmpPrograms.length;++j){
+                                    tmpstr = actionObjectToText(tmpPrograms[j]);
+                                    if(tmpstr.indexOf(keyWords.text) >= 0)
+                                        searchResultModel.append({"whichProgram":i,"whichFunction":0,"whichRow":j,"desc":tmpstr});
+                                }
+                                if(searchResultModel.count === tmpLen)
+                                  searchResultModel.remove(tmpLen - 1);
+                            }
+                            tmpFunctions = JSON.parse(panelRobotController.functions());
+                            for(i=0;i<tmpFunctions.length;++i){
+                                tmpFunction = JSON.parse(tmpFunctions[i].program);
+                                searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":moduleSel.items[i+1]});
+                                tmpLen = searchResultModel.count;
+                                for(j=0;j<tmpFunction.length;++j){
+                                    tmpstr = actionObjectToText(tmpFunction[j]);
+                                    if(tmpstr.indexOf(keyWords.text) >= 0)
+                                        searchResultModel.append({"whichProgram":0,"whichFunction":i+1,"whichRow":j,"desc":tmpstr});
+                                }
+                                if(searchResultModel.count === tmpLen)
+                                  searchResultModel.remove(tmpLen - 1);
+                            }
+                        }
+
+                        if(searchRange.configValue>0 && searchRange.configValue<10){
+                            var searchPrograms = JSON.parse(panelRobotController.programs(searchRange.configValue-1));
+                            for(i=0;i<searchPrograms.length;++i){
+                                tmpstr = actionObjectToText(searchPrograms[i]);
+                                if(tmpstr.indexOf(keyWords.text) >= 0)
+                                    searchResultModel.append({"whichProgram":searchRange.configValue-1,"whichFunction":0,"whichRow":i,"desc":tmpstr});
+                            }
+                        }
+                        else if(searchRange.configValue>9){
+                           var searchFunctions = JSON.parse(panelRobotController.functions());
+                           var searchFunction = JSON.parse(searchFunctions[searchRange.configValue-10].program);
+                           for(i=0;i<searchFunction.length;++i){
+                               tmpstr = actionObjectToText(searchFunction[i]);
+                               if(tmpstr.indexOf(keyWords.text) >= 0)
+                                   searchResultModel.append({"whichProgram":0,"whichFunction":searchRange.configValue-9,"whichRow":i,"desc":tmpstr});
+                           }
+                       }
+                        searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":qsTr("End")});
                     }
                 }
                 ICButton{
                     text: qsTr("Clear Search")
                     height:searchRange.height
-
+                    onButtonClicked: {
+                        keyWords.text = "";
+                        searchResultModel.clear();
+                    }
                 }
             }
             ListModel{
@@ -1541,8 +1593,9 @@ Rectangle {
                 model: searchResultModel
                 clip: true
                 delegate:Rectangle{
-                    height:30
+                    height:itemText.height +12
                     width: parent.width
+                    color: ListView.isCurrentItem?"lightsteelblue":"white"
                     MouseArea{
                         id:selItem
                         anchors.fill: parent
@@ -1550,15 +1603,19 @@ Rectangle {
                             searchResultView.currentIndex = index;
                         }
                         onDoubleClicked: {
+                            if(whichProgram<0 || whichFunction<0 || whichRow<0)return;
                             editing.currentIndex = whichProgram;
                             moduleSel.currentIndex = whichFunction;
                             programListView.currentIndex = whichRow;
+                            programSearchBtn.clicked();
                         }
                     }
                     Text {
                         id: itemText
+                        color: whichRow<0?"red":"black"
+                        textFormat: Text.RichText
                         anchors.verticalCenter: parent.verticalCenter
-                        text: desc
+                        text: (whichRow<0?"":whichRow+ " :") + desc
                     }
                 }
             }
@@ -1588,6 +1645,7 @@ Rectangle {
                         if(programIndex.configValue<programListView.count)
                             programListView.currentIndex = programIndex.configValue;
                         else programListView.currentIndex = programListView.count-1;
+                        programSearchBtn.clicked();
                     }
                 }
             }

@@ -3241,19 +3241,35 @@ please chose!</source>
     </message>
     <message>
         <source>SearchRange</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索范围</translation>
     </message>
     <message>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>全部</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished">搜索</translation>
+        <translation>搜索</translation>
     </message>
     <message>
         <source>Clear Search</source>
-        <translation type="unfinished">清除搜索</translation>
+        <translation>清除搜索</translation>
+    </message>
+    <message>
+        <source>End</source>
+        <translation>结束</translation>
+    </message>
+    <message>
+        <source>Current Page</source>
+        <translation>在当前页面</translation>
+    </message>
+    <message>
+        <source>programIndex</source>
+        <translation>程序步号</translation>
+    </message>
+    <message>
+        <source>GO</source>
+        <translation>跳转</translation>
     </message>
 </context>
 <context>

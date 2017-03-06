@@ -1710,6 +1710,13 @@ typedef union {
     uint32_t d[2];
 }MotorTestSpeedStruct;
 
+typedef union {
+    struct{
+       uint32_t en:1;//<类型：系统；名字：首模速度使能；精度：0;单位：；
+       uint32_t speed:31;//<类型：系统；名字：首模速度设定；精度：1;单位：；
+    };
+    uint32_t d;
+}FirstModuleSpeed;
 
 typedef struct {
   //    uint16_t delay_current[8];  //<类型:系统;当前延时时间 - 32-39 - 单位-10毫秒
@@ -1729,7 +1736,7 @@ typedef struct {
     SafeAreaStruct safe_area;
     uint32_t Reserve4[8];   //<类型:系统;名字:当前计数值;   单位:ms
     uint32_t Reserve5[15];   //<类型:系统;名字:目标计数值;   单位:ms
-    uint32_t first_module_speed; //<类型：系统；名字：首模速度设定；精度：1;单位：；
+    FirstModuleSpeed  first_module_speed;
 }RESERVE0;
 
 typedef struct{

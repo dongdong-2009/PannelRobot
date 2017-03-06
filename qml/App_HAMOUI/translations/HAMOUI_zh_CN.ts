@@ -1138,7 +1138,7 @@
     </message>
     <message>
         <source>Check Dir</source>
-        <translation>检测方向</translation>
+        <translation>检测到就报警</translation>
     </message>
     <message>
         <source>Forward</source>
@@ -3288,19 +3288,35 @@ please chose!</source>
     </message>
     <message>
         <source>SearchRange</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索范围</translation>
     </message>
     <message>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>全部</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished">搜索</translation>
+        <translation>搜索</translation>
     </message>
     <message>
         <source>Clear Search</source>
-        <translation type="unfinished">清除搜索</translation>
+        <translation>清除搜索</translation>
+    </message>
+    <message>
+        <source>End</source>
+        <translation>结束</translation>
+    </message>
+    <message>
+        <source>Current Page</source>
+        <translation>在当前页面</translation>
+    </message>
+    <message>
+        <source>programIndex</source>
+        <translation>程序步号</translation>
+    </message>
+    <message>
+        <source>GO</source>
+        <translation>跳转</translation>
     </message>
 </context>
 <context>
@@ -5603,11 +5619,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Reverse </source>
-        <translation>断检测</translation>
+        <translation>检测到信号断就报警</translation>
     </message>
     <message>
         <source>Forward </source>
-        <translation>通检测</translation>
+        <translation>检测到信号通就报警</translation>
     </message>
     <message>
         <source>RunningMode</source>

@@ -2882,6 +2882,54 @@ please chose!</source>
         <source>Preservation</source>
         <translation>保存</translation>
     </message>
+    <message>
+        <source>Led And Key Setting</source>
+        <translation>按键和指示灯</translation>
+    </message>
+    <message>
+        <source>Input</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <source>M value</source>
+        <translation>M值</translation>
+    </message>
+    <message>
+        <source>Led </source>
+        <translation>Led</translation>
+    </message>
+    <message>
+        <source> status binding</source>
+        <translation>状态绑定</translation>
+    </message>
+    <message>
+        <source>Key F</source>
+        <translation>按键F</translation>
+    </message>
+    <message>
+        <source> function binding</source>
+        <translation>功能绑定</translation>
+    </message>
+    <message>
+        <source>Led</source>
+        <translation>LED</translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>status binding</source>
+        <translation>状态绑定</translation>
+    </message>
+    <message>
+        <source>function binding</source>
+        <translation>功能绑定</translation>
+    </message>
+    <message>
+        <source>  </source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>

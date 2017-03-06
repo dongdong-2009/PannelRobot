@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import '..'
 import "../configs/IODefines.js" as IODefines
+import "../teach/ManualProgramManager.js" as ManualProgramManager
 
 Item {
     function showMenu(){
@@ -15,6 +16,8 @@ Item {
     QtObject{
         id:pData
         property variant useNoUseText: [qsTr("NoUse"), qsTr("Use")]
+        property variant ledItem: [qsTr("Input"),qsTr("IO output"),qsTr("M value")]
+        property variant keyItem: [qsTr("IO output"),qsTr("M value"),qsTr("Program Button")]
     }
 
     Grid{
@@ -65,6 +68,17 @@ Item {
             x:10
             onButtonClicked: {
                 ioRunningSettingPage.visible = true;
+                menu.visible = false;
+            }
+        }
+        CatalogButton{
+            id:ledAndKeySettingMenuBtn
+            text: qsTr("Led And Key Setting")
+            icon: "../images/LedAndKeySetting.png"
+            y:10
+            x:10
+            onButtonClicked: {
+                ledAndKeySettingPage.visible = true;
                 menu.visible = false;
             }
         }
@@ -209,7 +223,6 @@ Item {
         }
         Row{
             id:newAndPreservation
-//            anchors.top: valveContainer.bottom
             spacing: 20
                 ICButton{
                     id:newBtn
@@ -260,7 +273,6 @@ typedef union {
         ICListView{
             id:valveContainer
             anchors.top: newAndPreservation.bottom
-//            anchors.topMargin: 6
             width: parent.width
             height: parent.height
             model:valveModel
@@ -271,7 +283,6 @@ typedef union {
 
                 ICCheckBox {
                     text: index+":"+qsTr("When the mode change to")
-//                    width: 150
                     anchors.verticalCenter: parent.verticalCenter
                     isChecked: check
                     onIsCheckedChanged: {
@@ -334,8 +345,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     id:outType
                     popupMode: 0
                     popupHeight: 100
-//                    width: 50
-//                    z:10
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
                     onConfigValueChanged: {
@@ -356,7 +365,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 }
                 Text {
                     text: qsTr("output point")
-//                    width: 150
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 ICComboBox{
@@ -390,6 +398,121 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         }
     }
 
+    Item {
+        id:ledAndKeySettingPage
+        width:  parent.width
+        height: parent.height
+        ListModel{
+            id:keyModel
+        }
+        ICButton{
+            id:saveKeyBtn
+            text: qsTr("Preservation")
+            onButtonClicked: {
+                var toSave = [];
+                var v;
+                for(var i=0;i<keyModel.count;i++)
+                {
+                    v = keyModel.get(i);
+                    toSave.push(v);
+                }
+                panelRobotController.setCustomSettings("LedAndKeySetting", JSON.stringify(toSave), "LedAndKeySetting");
+                console.log(JSON.stringify(toSave));
+            }
+        }
+        ICListView{
+            id:modelContainer
+            anchors.top: saveKeyBtn.bottom
+            width: parent.width
+            height: parent.height
+            spacing: 10
+            z:10
+            delegate:
+            Row{
+            id:settingRow
+            spacing: 20
+            z: 1000-index;
+            ICCheckBox {
+                text: index<5?qsTr("Led")+qsTr(" ")+(index+1)+qsTr("  ")+qsTr("status binding"):
+                               qsTr("Key F")+(index-4)+qsTr("function binding")
+                isChecked: functionCheck
+                anchors.verticalCenter: parent.verticalCenter
+                onIsCheckedChanged: keyModel.setProperty(index,"functionCheck", isChecked);
+            }
+            ICComboBox{
+                id: bindingTypeChoose
+                items: index<5?pData.ledItem:pData.keyItem
+                popupHeight:100
+                currentIndex: index<5?ledBindingType:keyBindingType
+                onCurrentIndexChanged: {
+                    if(currentIndex<0)return;
+//                    console.log(index);
+                    keyModel.setProperty(index,index<5?"ledBindingType":"keyBindingType",currentIndex);
+                    var ioItems = [];
+                    var defines;
+                    var len;
+                    var ioBoardCount
+                    var i;
+                    if(index<5)
+                    {
+                        ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        len = ioBoardCount * 32;
+                        len=currentIndex == 2?16:len;
+                        switch(currentIndex)
+                        {
+                        default:
+                        case 0:defines = "xDefines";break;
+                        case 1:defines = "yDefines";break;
+                        case 2:defines = "mYDefines";break;
+                        }
+                        for(i = 0; i < len; ++i){
+                            ioItems.push(IODefines.ioItemName(IODefines[defines][i]));
+                        }
+                    }
+                    else
+                    {
+                        ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                        if(ioBoardCount == 0)
+                            ioBoardCount = 1;
+                        len = ioBoardCount * 32;
+                        len=currentIndex == 1?16:len;
+                        switch(currentIndex)
+                        {
+                        default:
+                        case 0:
+                            defines = "yDefines";
+                            for(i = 0; i < len; ++i)ioItems.push(IODefines.ioItemName(IODefines[defines][i]));
+                            break;
+                        case 1:
+                            defines = "mYDefines";
+                            for(i = 0; i < len; ++i)ioItems.push(IODefines.ioItemName(IODefines[defines][i]));
+                            break;
+                        case 2:
+                            var ioItems_ =ManualProgramManager.manualProgramManager.programsNameList();
+                            for(i=2;i<ioItems_.length;i++)ioItems.push(ioItems_[i]);
+                            break;
+                        }
+                    }
+                    bindingIdChoose.items = ioItems;
+                }
+            }
+            ICComboBox{
+                id: bindingIdChoose
+                width:  200
+                popupHeight:100
+                currentIndex: index<5?ledBindingId:keyBindingId
+                onCurrentIndexChanged: {
+//                    console.log(index);
+                    keyModel.setProperty(index,index<5?"ledBindingId":"keyBindingId",currentIndex);
+                }
+            }
+            }
+        }
+    }
+
+
     onVisibleChanged: {
         if(visible)
             showMenu();
@@ -401,11 +524,38 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         ps.push(valveSettings)
         ps.push(customVariableConfigs)
         ps.push(ioRunningSettingPage)
+        ps.push(ledAndKeySettingPage)
         pages = ps;
+        var i,len;
         var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
-        for(var i = 0, len = iosettings.length; i < len; ++i){
+        for(i = 0, len = iosettings.length; i < len; ++i){
             valveModel.append(iosettings[i]);
         }
+//        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
+        iosettings = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
+        if(iosettings.length==10)
+        {
+            console.log("load");
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                console.log(JSON.stringify(iosettings[i]));
+                keyModel.append(iosettings[i]);
+            }
+        }
+        else
+        {
+            console.log("new");
+//            panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
+            for(i = 0; i < 5; ++i){
+                keyModel.append({"functionCheck":1,"led":0,"ledBindingType":0,"ledBindingId":0});
+            }
+            for(i = 0; i < 5; ++i){
+                keyModel.append({"functionCheck":1,"key":1,"keyBindingType":0,"keyBindingId":0});
+            }
+            console.log(JSON.stringify(keyModel.count));
+            for(i = 0; i < keyModel.count; ++i){
+                console.log(JSON.stringify(keyModel.get(i)));
+            }
+        }
+        modelContainer.model = keyModel;
     }
-
 }

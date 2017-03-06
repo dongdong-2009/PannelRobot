@@ -972,6 +972,58 @@ uint16_t io_all;
         event.accepted = true;
     }
 
+
+    function handControlLEDBandingOperation()
+    {
+        var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
+        if(handControSetting.length==10)
+        {
+            console.log("load");
+            for(var i = 0; i < 5; ++i)
+            {
+                var board=0,s=0;
+                if(handControSetting[i].functionCheck)
+                {
+                    var id = handControSetting[i].ledBindingId;
+                    switch(handControSetting[i].ledBindingType)
+                    {
+                    default:
+                    case 0:
+                        board=IODefines.IO_BOARD_0+id/32;
+                        s=panelRobotController.isInputOn(id,board);
+                        break;
+                    case 1:
+                        board=IODefines.IO_BOARD_0+id/32;
+                        s=panelRobotController.isOutputOn(id,board);
+                        break;
+                    case 2:
+                        board=IODefines.M_BOARD_0+id/32;
+                        s=panelRobotController.isOutputOn(id,board);
+                        break;
+                    }
+                }
+                panelRobotController.setLEDStatus(i,s);
+            }
+        }
+    }
+
+    function handControlButtonBandingOperation()
+    {
+        var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
+        if(handControSetting.length==10)
+        {
+            console.log("load");
+            for(i = 0, len = handControSetting.length; i < len; ++i)
+            {
+                if(handControSetting[i].functionCheck)
+                {
+
+                }
+
+            }
+        }
+    }
+
         function getExternalFuncBtn(){
             var originBtnStatus = panelRobotController.isInputOn(022,IODefines.IO_BOARD_0);//x032
             var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
@@ -1109,6 +1161,7 @@ uint16_t io_all;
             if(isInit){
                 getExternalFuncBtn();
                 switchMoldByIOStatus();
+                handControlLEDBandingOperation();
             }
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler

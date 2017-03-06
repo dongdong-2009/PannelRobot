@@ -93,6 +93,8 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
             SLOT(showMessage(QString)));
     emit LoadMessage("Start");
     host_ = ICRobotVirtualhost::RobotVirtualHost();
+    led_io.led=0;
+    setLEDStatus(0,0);
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
             SLOT(OnNeedToInitHost()));

@@ -505,6 +505,10 @@
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>ALARM_POS_STABLE_ING</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisDefine</name>

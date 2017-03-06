@@ -1391,7 +1391,7 @@ var conditionActionToStringHandler = function(actionObject){
             leftStr = qsTr("Current alarm num");
             rightStr = actionObject.selAlarm;
         }
-        else if(actionObject.disType == 3 || actionObject.disType == 4){
+        else{
             leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
             rightStr = (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr;
         }
@@ -1424,8 +1424,17 @@ var conditionActionToStringHandler = function(actionObject){
 }
 
 var waitActionToStringHandler = function(actionObject){
+    var statusStr;
+    if(actionObject.pointStatus == 1)
+        statusStr = qsTr("ON");
+    else if(actionObject.pointStatus == 0)
+        statusStr = qsTr("OFF");
+    else if(actionObject.pointStatus == 2)
+        statusStr = qsTr("RisingEdge");
+    else if(actionObject.pointStatus == 3)
+        statusStr = qsTr("FallingEdge");
     return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
-            (actionObject.pointStatus ? qsTr("ON") : qsTr("OFF")) + " " +
+            statusStr + " " +
             qsTr("Limit:") + actionObject.limit;
 }
 

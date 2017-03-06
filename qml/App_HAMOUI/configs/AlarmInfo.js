@@ -51,7 +51,7 @@ var alarmInfo = {
     26:qsTr("ALARM_ANALOG_OVERTIME_ERR"),
     27:qsTr("1"),
     28:qsTr("2"),
-    29:qsTr("3"),
+    29:qsTr("ALARM_POS_STABLE_ING"),
 
 
     90:m0Name + qsTr("ALARM_Motor_ALARM_ERR"),

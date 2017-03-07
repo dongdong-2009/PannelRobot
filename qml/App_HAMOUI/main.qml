@@ -873,9 +873,11 @@ uint16_t io_all;
                 key === Keymap.KNOB_AUTO){
             Keymap.currentKeySequence.length = 0;
         }
-        else{
+        else
+        {
             Keymap.currentKeySequence.push(key);
-            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length){
+            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length)
+            {
                 if(Keymap.matchHWTestSequence())
                     panelRobotController.runHardwareTest();
                 else if(Keymap.matchRecalSequence()){
@@ -915,6 +917,15 @@ uint16_t io_all;
 
                 //                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
+            }
+            switch(key)
+            {
+            case Keymap.KEY_F1:handControlButtonBandingOperation(5);break;
+            case Keymap.KEY_F2:handControlButtonBandingOperation(6);break;
+            case Keymap.KEY_F3:handControlButtonBandingOperation(7);break;
+            case Keymap.KEY_F4:handControlButtonBandingOperation(8);break;
+            case Keymap.KEY_F5:handControlButtonBandingOperation(9);break;
+            default:break;
             }
         }
 
@@ -961,13 +972,26 @@ uint16_t io_all;
     Keys.onReleased: {
         //        console.log("Main key release exec");
         var key = event.key;
-        if(Keymap.isAxisKeyType(key)){
+        if(Keymap.isAxisKeyType(key))
+        {
             Keymap.setKeyPressed(key, false);
-        }else if(Keymap.isContinuousType(key)){
+        }else if(Keymap.isContinuousType(key))
+        {
             Keymap.setKeyPressed(key, false);
             if(key === Keymap.KEY_Up || key === Keymap.KEY_Down)
                 Keymap.endSpeedCaclByTimeStop();
         }
+//        switch(key)
+//        {
+//        case Keymap.KEY_F1:
+//        case Keymap.KEY_F2:
+//        case Keymap.KEY_F3:
+//        case Keymap.KEY_F4:
+//        case Keymap.KEY_F5:
+//            handControlButtonBandingOperation();
+//            break;
+//        default:break;
+//        }
 
         event.accepted = true;
     }
@@ -1010,19 +1034,32 @@ uint16_t io_all;
         }
     }
 
-    function handControlButtonBandingOperation()
+    function handControlButtonBandingOperation(key)
     {
         var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         if(handControSetting.length==10)
         {
-            console.log("load");
-            for(i = 0, len = handControSetting.length; i < len; ++i)
+            var set = handControSetting[key];
+            if(set.functionCheck)
             {
-                if(handControSetting[i].functionCheck)
+                var board=0;
+                var id = set.ledBindingId;
+                switch(set.keyBindingType)
                 {
-
+                case 0://< y
+                    board=IODefines.IO_BOARD_0+id/32;
+                    panelRobotController.setYStatus(id,1);
+                    break;
+                case 1://< m
+//                    board=IODefines.M_BOARD_0+id/32;
+//                    panelRobotController.setYStatus()(id,1);
+//                    var toSend = IODefines.valveItemJSON(valveName);
+//                    panelRobotController.setYStatus(toSend, !valveStatus.y1);
+                    break;
+                case 2://< p
+                    break;
+                default:break;
                 }
-
             }
         }
     }

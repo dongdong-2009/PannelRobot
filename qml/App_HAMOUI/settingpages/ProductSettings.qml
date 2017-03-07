@@ -508,6 +508,32 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     keyModel.setProperty(index,index<5?"ledBindingId":"keyBindingId",currentIndex);
                 }
             }
+
+
+            ICComboBox{
+                id: bindingIdStatusModeChoose
+                width:  200
+                popupHeight:100
+                items: [qsTr("Move"),qsTr("Flip"),qsTr("ON"),qsTr("OFF")]
+                visible: index<5?false:true;
+                currentIndex: keyBindingIdStatusMode
+                onCurrentIndexChanged: {
+                    keyModel.setProperty(index,"keyBindingIdStatusMode",currentIndex);
+                }
+            }
+            ICComboBox{
+                id: bindingIdStatusChoose
+                width:  200
+                popupHeight:100
+                items: [qsTr("OFF"),qsTr("ON")]
+                visible: index<5?false:true;
+                currentIndex: keyBindingIdStatus
+                onCurrentIndexChanged: {
+                    keyModel.setProperty(index,"keyBindingIdStatus",currentIndex);
+                }
+            }
+
+
             }
         }
     }

@@ -93,6 +93,10 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
             SLOT(showMessage(QString)));
     emit LoadMessage("Start");
     host_ = ICRobotVirtualhost::RobotVirtualHost();
+    led_io.led=0;
+    led_io_old.led=-1;
+    fd=open("/dev/szhc_leds", O_WRONLY);
+    setLEDStatus(0,0);
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
             SLOT(OnNeedToInitHost()));

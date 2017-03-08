@@ -181,7 +181,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
              return;
          QString tmp = "-" + preeditString_;
          int p = 0;
-         if(validator_.validate(tmp, p) == QValidator::Acceptable)
+         if(validator_.validate(tmp, p) > 0)
          {
              preeditString_ = "-" + preeditString_;
              ui->inputEdit->setText(preeditString_);
@@ -194,7 +194,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
      }
      int p = 0;
      QString tmp = preeditString_ + curText;
-     if(validator_.validate(tmp, p) == QValidator::Acceptable)
+     if(validator_.validate(tmp, p) > 0)
      {
          preeditString_ += curText;
          ui->inputEdit->setText(preeditString_);

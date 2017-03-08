@@ -1431,10 +1431,10 @@ Rectangle {
         id: programSearch
 //        visible: false
         width: 600
-        height:280
+        height:container.height - programSelecterContainer.height - container.spacing
         y:programListContainer.y
         x:800
-        z:10
+        z:12
         PropertyAnimation{
             id:programSearchOut
             target: programSearch
@@ -1459,12 +1459,13 @@ Rectangle {
         ICButton{
             id:programSearchBtn
             text: ""
-            icon: "../images/tools_autokeyboard.png"
+            icon: "../images/search.png"
             width: 64
             height: 64
             bgColor: "green"
             anchors.right: parent.left
             anchors.bottom: parent.bottom
+            anchors.bottomMargin: actionEditorFrame.height
             onButtonClicked: {
                 if(!programSearchContent.visible){
                     programSearchContent.visible = true;
@@ -1602,13 +1603,10 @@ Rectangle {
                         onClicked: {
                             searchResultView.currentIndex = index;
                         }
-                        onDoubleClicked: {
-                            if(whichProgram<0 || whichFunction<0 || whichRow<0)return;
-                            editing.currentIndex = whichProgram;
-                            moduleSel.currentIndex = whichFunction;
-                            programListView.currentIndex = whichRow;
-                            programSearchBtn.clicked();
-                        }
+//                        onDoubleClicked: {
+//                            if(whichProgram<0 || whichFunction<0 || whichRow<0)return;
+
+//                        }
                     }
                     Text {
                         id: itemText
@@ -1616,6 +1614,20 @@ Rectangle {
                         textFormat: Text.RichText
                         anchors.verticalCenter: parent.verticalCenter
                         text: (whichRow<0?"":whichRow+ " :") + desc
+                    }
+                    ICButton{
+                        visible:currentIndex ===index && whichRow>-1? true:false
+                        text: qsTr("GO")
+                        height: parent.height
+                        width: 64
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        onButtonClicked: {
+                            editing.currentIndex = whichProgram;
+                            moduleSel.currentIndex = whichFunction;
+                            programListView.currentIndex = whichRow;
+                            programSearchBtn.clicked();
+                        }
                     }
                 }
             }

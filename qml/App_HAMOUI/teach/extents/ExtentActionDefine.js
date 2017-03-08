@@ -1,5 +1,6 @@
 .pragma library
 Qt.include("../../configs/AxisDefine.js")
+Qt.include("../../configs/IODefines.js")
 
 var counterManager;
 
@@ -193,10 +194,48 @@ var speedAction = {
         }
     };
 
+var extentSingleMemposAction = {
+        "action":24,
+        "properties":[new ActionDefineItem("id", 0),
+        new ActionDefineItem("tpos", 3),
+        new ActionDefineItem("speed", 1),
+        new ActionDefineItem("delay", 2),
+        new ActionDefineItem("stopEn", 0),
+        new ActionDefineItem("point", 0),
+        new ActionDefineItem("pStatus", 0),
+        new ActionDefineItem("immStop", 0),
+        new ActionDefineItem("devPos", 0),
+        new ActionDefineItem("devLen", 3),
+        new ActionDefineItem("decSpeed", 1),
+        new ActionDefineItem("memAddr", 0),],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("AxisMemposEditor.qml"), "itemDef":{"item":"AxisMemposEditor"}},
+        "toStringHandler":function(actionObject){
+            var ret =  axisInfos[actionObject.id].name + ":";
+            ret +=  (actionObject.tpos == ""?0:actionObject.tpos);
+            ret +=  " " + qsTr("Speed:") + actionObject.speed + " " +
+                    qsTr("Delay:") + actionObject.delay;
+            ret += "\n                            ";
+            ret += " " + qsTr("Early dec dev len:") + actionObject.devLen;
+            ret += " " + qsTr("dev pos:") + actionObject.devPos;
+            ret += " " + qsTr("Early dec Spd:") + actionObject.decSpeed;
+            ret += " " + qsTr("mem addr:") + actionObject.memAddr;
+            if(actionObject.stopEn){
+                ret += "\n                            ";
+                ret += " " + qsTr("When ") + ioItemName(xDefines[actionObject.point]) + " " + (actionObject.pStatus == 1? qsTr("is Off"):qsTr("is On"));
+                ret += " " + (actionObject.immStop == 0 ? qsTr("slow stop") : qsTr("fast stop"));
+            }
+            return ret;
+        }
+    };
+
+
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
                      extentDeltaJumpAction,
                      extentSafeRangeAction,
                      extentSingleStackAction,
                      extentSwitchCoordAction,
-                     speedAction];
+                     speedAction,
+                     extentSingleMemposAction];

@@ -1049,6 +1049,61 @@
     </message>
 </context>
 <context>
+    <name>AxisMemposEditor</name>
+    <message>
+        <source>Axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>Pos</source>
+        <translation>位置</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>devLen</source>
+        <translation>提前减速偏移</translation>
+    </message>
+    <message>
+        <source>DecSpeed</source>
+        <translation>提前减速速度</translation>
+    </message>
+    <message>
+        <source>Input</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <source>on</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Imm stop</source>
+        <translation>立即停</translation>
+    </message>
+    <message>
+        <source>devPos</source>
+        <translation>位置偏置</translation>
+    </message>
+    <message>
+        <source>MemPosAddr</source>
+        <translation>存储地址</translation>
+    </message>
+    <message>
+        <source>To stop</source>
+        <translation>就停止</translation>
+    </message>
+</context>
+<context>
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
@@ -1815,6 +1870,42 @@
         <source>End Speed:</source>
         <translation>结束速度:</translation>
     </message>
+    <message>
+        <source>Early dec dev len:</source>
+        <translation>提前减速偏移:</translation>
+    </message>
+    <message>
+        <source>Early dec Spd:</source>
+        <translation>提前减速速度:</translation>
+    </message>
+    <message>
+        <source>mem addr:</source>
+        <translation>存储地址:</translation>
+    </message>
+    <message>
+        <source>When </source>
+        <translation>当</translation>
+    </message>
+    <message>
+        <source>is Off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>is On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>slow stop</source>
+        <translation>就减速停</translation>
+    </message>
+    <message>
+        <source>fast stop</source>
+        <translation>就立即停</translation>
+    </message>
+    <message>
+        <source>dev pos:</source>
+        <translation>偏置:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -1841,6 +1932,10 @@
     <message>
         <source>switchCoord</source>
         <translation>坐标系转换</translation>
+    </message>
+    <message>
+        <source>AxisMemPos</source>
+        <translation>记录位置轴动作</translation>
     </message>
 </context>
 <context>

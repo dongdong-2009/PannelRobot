@@ -54,6 +54,11 @@ Item {
 
         }else if(euX.isChecked)
             mD = euXModel
+        else if(simpleDelay.isChecked)
+        {
+            ret.push(Teach.generateWaitAction(0, 100, 0, delay.configValue));
+            return ret;
+        }
         else
             mD = mXModel
         for(var i = 0; i < mD.count; ++i){
@@ -93,6 +98,11 @@ Item {
                 id:mX
                 text: qsTr("M")
                 visible: mXs.length > 0
+            }
+            ICCheckBox{
+                id:simpleDelay
+                text: qsTr("Simple Delay")
+                visible: true
             }
         }
         Rectangle{
@@ -168,10 +178,12 @@ Item {
                 id:onBox
                 text: qsTr("ON")
                 isChecked: true
+                visible: !simpleDelay.isChecked
             }
             ICCheckBox{
                 id:offBox
                 text: qsTr("OFF")
+                visible: !simpleDelay.isChecked
             }
             ICCheckBox{
                 id:risingEdgeBox
@@ -185,7 +197,7 @@ Item {
             }
             ICConfigEdit{
                 id:delay
-                configName: qsTr("Delay:")
+                configName: simpleDelay.isChecked?qsTr("Simple Delay:"):qsTr("Delay:")
                 unit: qsTr("s")
                 width: 100
                 height: 24

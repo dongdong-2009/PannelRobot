@@ -3385,11 +3385,15 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/ProductSettings.qml" line="381"/>
+        <location filename="../settingpages/ProductSettings.qml" line="517"/>
+        <location filename="../settingpages/ProductSettings.qml" line="528"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingpages/ProductSettings.qml" line="381"/>
+        <location filename="../settingpages/ProductSettings.qml" line="517"/>
+        <location filename="../settingpages/ProductSettings.qml" line="528"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3426,6 +3430,16 @@ please chose!</source>
     <message>
         <location filename="../settingpages/ProductSettings.qml" line="437"/>
         <source>function binding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="517"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="517"/>
+        <source>Flip</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7293,47 +7307,57 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>WaitActionEditor</name>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="83"/>
+        <location filename="../teach/WaitActionEditor.qml" line="88"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="89"/>
+        <location filename="../teach/WaitActionEditor.qml" line="94"/>
         <source>EUX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="94"/>
+        <location filename="../teach/WaitActionEditor.qml" line="99"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="169"/>
-        <source>ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="174"/>
-        <source>OFF</source>
+        <location filename="../teach/WaitActionEditor.qml" line="104"/>
+        <source>Simple Delay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/WaitActionEditor.qml" line="179"/>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/WaitActionEditor.qml" line="185"/>
+        <source>OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/WaitActionEditor.qml" line="191"/>
         <source>Rising Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="184"/>
+        <location filename="../teach/WaitActionEditor.qml" line="196"/>
         <source>Falling Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="188"/>
+        <location filename="../teach/WaitActionEditor.qml" line="200"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="189"/>
+        <location filename="../teach/WaitActionEditor.qml" line="200"/>
+        <source>Simple Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/WaitActionEditor.qml" line="201"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7418,70 +7442,90 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="795"/>
-        <location filename="../main.qml" line="932"/>
+        <location filename="../main.qml" line="943"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="893"/>
+        <location filename="../main.qml" line="895"/>
         <source>Recalibrate need to reboot. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="893"/>
-        <location filename="../main.qml" line="912"/>
+        <location filename="../main.qml" line="895"/>
+        <location filename="../main.qml" line="914"/>
         <source>Yes[F4]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="893"/>
-        <location filename="../main.qml" line="912"/>
+        <location filename="../main.qml" line="895"/>
+        <location filename="../main.qml" line="914"/>
         <source>No[F5]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="906"/>
+        <location filename="../main.qml" line="908"/>
         <source>Exporting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="911"/>
+        <location filename="../main.qml" line="913"/>
         <source>Need to ghost and export to U Disk?
 The name of ghost is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="932"/>
+        <location filename="../main.qml" line="943"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="951"/>
+        <location filename="../main.qml" line="962"/>
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+<<<<<<< HEAD
+        <location filename="../main.qml" line="1164"/>
+=======
         <location filename="../main.qml" line="1127"/>
+>>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+<<<<<<< HEAD
+        <location filename="../main.qml" line="1233"/>
+=======
         <location filename="../main.qml" line="1196"/>
+>>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+<<<<<<< HEAD
+        <location filename="../main.qml" line="1266"/>
+=======
         <location filename="../main.qml" line="1229"/>
+>>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+<<<<<<< HEAD
+        <location filename="../main.qml" line="1266"/>
+=======
         <location filename="../main.qml" line="1229"/>
+>>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+<<<<<<< HEAD
+        <location filename="../main.qml" line="1266"/>
+=======
         <location filename="../main.qml" line="1229"/>
+>>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

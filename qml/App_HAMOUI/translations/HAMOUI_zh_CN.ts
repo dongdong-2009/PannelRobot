@@ -3029,6 +3029,14 @@ please chose!</source>
         <source>Program Button</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -6237,6 +6245,14 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Falling Edge</source>
         <translation>下降沿</translation>
+    </message>
+    <message>
+        <source>Simple Delay</source>
+        <translation>单纯延时</translation>
+    </message>
+    <message>
+        <source>Simple Delay:</source>
+        <translation>延时</translation>
     </message>
 </context>
 <context>

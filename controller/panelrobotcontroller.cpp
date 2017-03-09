@@ -93,6 +93,10 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
             SLOT(showMessage(QString)));
     emit LoadMessage("Start");
     host_ = ICRobotVirtualhost::RobotVirtualHost();
+    led_io.led=0;
+    led_io_old.led=-1;
+    fd=open("/dev/szhc_leds", O_WRONLY);
+    setLEDStatus(0,0);
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
             SLOT(OnNeedToInitHost()));
@@ -254,7 +258,7 @@ void PanelRobotController::InitMold_()
     if(!mold->LoadMold(as.CurrentMoldConfig()))
     {
         qCritical("Mold Is Not Exist!!");
-        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Mold Is Not Exist!!"));
+        QMessageBox::critical(mainView_, QT_TR_NOOP("Error"), QT_TR_NOOP("Mold Is Not Exist!!"));
     }
     ICRobotMold::SetCurrentMold(mold);
 }

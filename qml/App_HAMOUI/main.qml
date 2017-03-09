@@ -805,6 +805,7 @@ Rectangle {
 
             var i;
             var sI;
+            var len;
             var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
             for(i = 0; i < Teach.stackInfos.length; ++i){
                 sI = Teach.stackInfos[i];
@@ -819,9 +820,37 @@ Rectangle {
             }
 
             var toolCoords = ToolCoordManager.toolCoordManager.toolCoordList();
-            for(var i =0;i<toolCoords.length;++i){
+            for(i =0;i<toolCoords.length;++i){
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
+
+            var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                var v = iosettings[i];
+                if(v.check == true){
+                    console.log("send:");
+                    /*
+typedef union {
+struct{
+uint16_t on:1;//< 输出 普通IO或则M值 0为断，1为通
+uint16_t id:7;//< 输出点ID 普通IO或则M值
+uint16_t out_type:1;//< 输出类型 0为普通输出，1为M值输出
+uint16_t type:5;//< 类型
+uint16_t res:2;//< 预留
+}bit;
+uint16_t io_all;
+}IORunningSetting;//< IO运行设定
+*/
+                    var value = 0;
+                    value=v.outstatus_init?1:0;
+                    value|=v.outid_init<<1;
+                    value|=v.outType_init<<8;
+                    value|=v.sendMode<<9;
+                    console.log(value);
+                    panelRobotController.modifyConfigValue(13,value);
+                }
+            }
+
             isInit = true;
         });
         //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),
@@ -844,9 +873,11 @@ Rectangle {
                 key === Keymap.KNOB_AUTO){
             Keymap.currentKeySequence.length = 0;
         }
-        else{
+        else
+        {
             Keymap.currentKeySequence.push(key);
-            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length){
+            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length)
+            {
                 if(Keymap.matchHWTestSequence())
                     panelRobotController.runHardwareTest();
                 else if(Keymap.matchRecalSequence()){
@@ -886,6 +917,15 @@ Rectangle {
 
                 //                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
+            }
+            switch(key)
+            {
+            case Keymap.KEY_F1:handControlButtonBandingOperation(5);break;
+            case Keymap.KEY_F2:handControlButtonBandingOperation(6);break;
+            case Keymap.KEY_F3:handControlButtonBandingOperation(7);break;
+            case Keymap.KEY_F4:handControlButtonBandingOperation(8);break;
+            case Keymap.KEY_F5:handControlButtonBandingOperation(9);break;
+            default:break;
             }
         }
 
@@ -932,15 +972,96 @@ Rectangle {
     Keys.onReleased: {
         //        console.log("Main key release exec");
         var key = event.key;
-        if(Keymap.isAxisKeyType(key)){
+        if(Keymap.isAxisKeyType(key))
+        {
             Keymap.setKeyPressed(key, false);
-        }else if(Keymap.isContinuousType(key)){
+        }else if(Keymap.isContinuousType(key))
+        {
             Keymap.setKeyPressed(key, false);
             if(key === Keymap.KEY_Up || key === Keymap.KEY_Down)
                 Keymap.endSpeedCaclByTimeStop();
         }
+//        switch(key)
+//        {
+//        case Keymap.KEY_F1:
+//        case Keymap.KEY_F2:
+//        case Keymap.KEY_F3:
+//        case Keymap.KEY_F4:
+//        case Keymap.KEY_F5:
+//            handControlButtonBandingOperation();
+//            break;
+//        default:break;
+//        }
 
         event.accepted = true;
+    }
+
+
+    function handControlLEDBandingOperation()
+    {
+        var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
+        if(handControSetting.length==10)
+        {
+//            console.log("load");
+            for(var i = 0; i < 5; ++i)
+            {
+                var board=0,s=0;
+                if(handControSetting[i].functionCheck)
+                {
+                    var id = handControSetting[i].ledBindingId;
+                    switch(handControSetting[i].ledBindingType)
+                    {
+                    default:
+                    case 0:
+                        board=IODefines.IO_BOARD_0+id/32;
+                        s=panelRobotController.isInputOn(id,board);
+//                        console.log("bangding input:"+id+"status:"+s);
+                        break;
+                    case 1:
+                        board=IODefines.IO_BOARD_0+id/32;
+                        s=panelRobotController.isOutputOn(id,board);
+//                        console.log("bangding output"+id+"status:"+s);
+                        break;
+                    case 2:
+                        board=IODefines.M_BOARD_0+id/32;
+                        s=panelRobotController.isOutputOn(id,board);
+//                        console.log("bangding M value"+id+"status:"+s);
+                        break;
+                    }
+                }
+                panelRobotController.setLEDStatus(i,s);
+            }
+        }
+    }
+
+    function handControlButtonBandingOperation(key)
+    {
+        var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
+        if(handControSetting.length==10)
+        {
+            var set = handControSetting[key];
+            if(set.functionCheck)
+            {
+                var board=0;
+                var id = set.ledBindingId;
+                switch(set.keyBindingType)
+                {
+                case 0://< y
+                    board=IODefines.IO_BOARD_0+id/32;
+                    panelRobotController.setYStatus(id,1);
+                    break;
+                case 1://< m
+//                    board=IODefines.M_BOARD_0+id/32;
+//                    panelRobotController.setYStatus()(id,1);
+//                    var toSend = IODefines.valveItemJSON(valveName);
+//                    panelRobotController.setYStatus(toSend, !valveStatus.y1);
+                    break;
+                case 2://< p
+                    break;
+                default:break;
+                }
+            }
+        }
     }
 
         function getExternalFuncBtn(){
@@ -1081,6 +1202,7 @@ Rectangle {
                 getExternalFuncBtn();
                 switchMoldByIOStatus();
             }
+            handControlLEDBandingOperation();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){

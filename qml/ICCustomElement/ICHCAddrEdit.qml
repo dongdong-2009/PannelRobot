@@ -10,6 +10,9 @@ Item {
     property alias baseAddr_configValue: edit_baseAddr_.text
     property alias decimal_configValue: edit_decimal_.text
 
+    property alias baseAddrMin: edit_baseAddr_.min
+    property alias baseAddrMax: edit_baseAddr_.max
+
     property int configValue: 0
     property int mode: 1
 

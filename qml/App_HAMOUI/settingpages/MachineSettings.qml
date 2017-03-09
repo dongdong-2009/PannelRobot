@@ -76,7 +76,7 @@ Item {
         CatalogButton{
             id:autoDebugBtn
             text: qsTr("Auto Debug")
-            icon: "../images/modeAuto.png"
+            icon: "../images/auto_debug.png"
             enabled: false
 //            visible: false
         }

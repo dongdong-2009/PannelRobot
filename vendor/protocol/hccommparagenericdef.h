@@ -755,8 +755,11 @@ typedef enum
 
     F_CMD_LINE_RELATIVE_POSE,      //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
+    //< 单轴动作带输入检测和提前减速 电机ID 位置 速度 延时 输入点停止使能 输入点 输入点通断 立即停使能 减速位置偏移 每次偏移 提前减速速度 存储地址
+    F_CMD_SINGLE_ADD_MEMPOS_FUNC =24,
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
+    F_CMD_IO_CHECK, //输入检测 输入点 检测方向 开始停止检测 延时
     /**************************************************************************/
     /* IO点输出
      * 类型（EUIO，0~3:IO板，4～6：M值，7：EUIO；8：单头阀或者双头阀；9：停止检测；10：开始检测;1000:等待数据源完成信号）
@@ -1709,6 +1712,13 @@ typedef union {
     uint32_t d[2];
 }MotorTestSpeedStruct;
 
+typedef union {
+    struct{
+       uint32_t en:1;//<类型：系统；名字：首模速度使能；精度：0;单位：；
+       uint32_t speed:31;//<类型：系统；名字：首模速度设定；精度：1;单位：；
+    };
+    uint32_t d;
+}FirstModuleSpeed;
 
 typedef struct {
   //    uint16_t delay_current[8];  //<类型:系统;当前延时时间 - 32-39 - 单位-10毫秒
@@ -1728,7 +1738,7 @@ typedef struct {
     SafeAreaStruct safe_area;
     uint32_t Reserve4[8];   //<类型:系统;名字:当前计数值;   单位:ms
     uint32_t Reserve5[15];   //<类型:系统;名字:目标计数值;   单位:ms
-    uint32_t first_module_speed; //<类型：系统；名字：首模速度设定；精度：1;单位：；
+    FirstModuleSpeed  first_module_speed;
 }RESERVE0;
 
 typedef struct{

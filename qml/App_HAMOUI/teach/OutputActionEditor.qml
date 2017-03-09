@@ -205,6 +205,7 @@ Item {
                         bgColor: isOn ? "lime" : "white"
                         onButtonClicked: {
                             if(valve != null)
+                                console.log("valve",JSON.stringify(valve));
                                 panelRobotController.setYStatus(JSON.stringify(valve), !isOn);
                             //                            panelRobotController.setYStatus(board, hwPoint, !isOn);
                         }

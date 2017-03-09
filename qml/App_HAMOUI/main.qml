@@ -953,6 +953,8 @@ uint16_t io_all;
                 panelRobotController.sendKnobCommandToHost(Keymap.getKeyMappedAction(key));
         }else if(Keymap.isContinuousType(key)){
             Keymap.setKeyPressed(key, true);
+        }else if(Keymap.isMenuType(key)){
+            Keymap.setKeyPressed(key, true);
         }
 
         event.accepted = true;
@@ -967,6 +969,8 @@ uint16_t io_all;
             Keymap.setKeyPressed(key, false);
             if(key === Keymap.KEY_Up || key === Keymap.KEY_Down)
                 Keymap.endSpeedCaclByTimeStop();
+        }else if(Keymap.isMenuType(key)){
+            Keymap.setKeyPressed(key, false);
         }
 
         event.accepted = true;
@@ -1010,19 +1014,29 @@ uint16_t io_all;
         }
     }
 
-    function handControlButtonBandingOperation()
+    function handControlButtonBandingOperation(keyStatus)
     {
         var handControSetting = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         if(handControSetting.length==10)
         {
             console.log("load");
-            for(i = 0, len = handControSetting.length; i < len; ++i)
+            for(var i = 5;i < 10; ++i)
             {
-                if(handControSetting[i].functionCheck)
+                if(handControSetting[i].functionCheck && keyStatus[i-5])
                 {
-
+                    var id = handControSetting[i].thingID;
+                    switch(handControSetting[i].keyBindingType)
+                    {
+                    case 0://yOut
+                    case 1://mOut
+                        var valveTmp = IODefines.getValveItemFromValveID(id);
+                        var outStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
+                        panelRobotController.setYStatus(valveTmp.valveDefinesJSON, !outStatus);
+                        break;
+                    case 2://可编程按键
+                        break;
+                    }
                 }
-
             }
         }
     }
@@ -1188,7 +1202,13 @@ uint16_t io_all;
                         mainHeader.speed = speed;
                     }
 
-                }else{
+                }else if(pressedKeys[i] === Keymap.KEY_F1 || pressedKeys[i] === Keymap.KEY_F2 || pressedKeys[i] === Keymap.KEY_F3 ||
+                         pressedKeys[i] === Keymap.KEY_F4 || pressedKeys[i] === Keymap.KEY_F5){
+                    var keyStatus = [pressedKeys[i] === Keymap.KEY_F1,pressedKeys[i] === Keymap.KEY_F2,pressedKeys[i] === Keymap.KEY_F3,
+                                     pressedKeys[i] === Keymap.KEY_F4,pressedKeys[i] === Keymap.KEY_F5];
+                    handControlButtonBandingOperation(keyStatus);
+                }
+                else{
                     panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
                 }
             }

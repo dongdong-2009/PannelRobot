@@ -46,7 +46,7 @@ Item {
             ICButton{
                 id:scanPic
                 text: qsTr("Scan Pic")
-                width: 200
+                width: 150
                 onButtonClicked: {
                     var pics = JSON.parse(panelRobotController.getPictures());
                     picModel.clear();
@@ -62,7 +62,7 @@ Item {
             ICButton{
                 id:setAsStartUp
                 text: qsTr("Set As Start Up")
-                width: 200
+                width: scanPic.width
                 onButtonClicked: {
                     panelRobotController.copyPicture(picModel.get(picView.currentIndex).picname, "startup_page.png");
                 }
@@ -70,11 +70,21 @@ Item {
             ICButton{
                 id:setAsStandby
                 text: qsTr("Set As Standby")
-                width: 200
+                width: scanPic.width
                 onButtonClicked: {
                     var name = picModel.get(picView.currentIndex).picname;
                     panelRobotController.copyPicture(name, name);
                     panelRobotController.setCustomSettings("StandbyPicName", name);
+                }
+            }
+            ICButton{
+                id:setAsMachineImg
+                text: qsTr("Set As MachineImg")
+                width: scanPic.width
+                onButtonClicked: {
+                    var name = picModel.get(picView.currentIndex).picname;
+                    panelRobotController.copyPicture(name, name);
+                    panelRobotController.setCustomSettings("MachineImgPicName", name);
                 }
             }
         }

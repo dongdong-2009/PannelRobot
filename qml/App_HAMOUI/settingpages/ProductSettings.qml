@@ -430,28 +430,35 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 spacing: 20
                 z: 1000-index;
                 function refreshPropertyThingID(){
-                    if(bindingIdChoose.currentIndex>=0){
+                    if(bindingNum >=0){
                         if(type==0){
-                            if(bindingTypeChoose.currentIndex == 1){
-                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingIdChoose.currentIndex].id);
+                            if(bindingType == 0){
+                                keyModel.setProperty(index,"thingID",bindingNum);
                             }
-                            else if(bindingTypeChoose.currentIndex == 2){
-                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingIdChoose.currentIndex].id);
+                            else if(bindingType == 1){
+                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                            }
+                            else if(bindingType == 2){
+                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
                             }
                         }
                         else{
-                            if(bindingTypeChoose.currentIndex == 0){
-                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingIdChoose.currentIndex].id);
+                            if(bindingType == 0){
+                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
                             }
-                            else if(bindingTypeChoose.currentIndex == 1){
-                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingIdChoose.currentIndex].id);
+                            else if(bindingType == 1){
+                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
                             }
-                            else if(bindingTypeChoose.currentIndex == 2){
-                                keyModel.setProperty(index,"thingID",MData.programIDList[bindingIdChoose.currentIndex]);
+                            else if(bindingType == 2){
+                                keyModel.setProperty(index,"thingID",MData.programIDList[bindingNum]);
                             }
                         }
                     }
+                    else{
+                        keyModel.setProperty(index,"thingID",-1);
+                    }
                 }
+
 
                 ICCheckBox {
                     text: type==0?qsTr("Led")+qsTr(" ")+(index+1)+qsTr("  ")+qsTr("status binding"):
@@ -493,14 +500,24 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                                 break;
                             }
                         }
-//                        console.log("ioItems",ioItems);
-                        keyModel.setProperty(index,"bindingNum",-1);
-                        bindingIdChoose.currentIndex = -1;
-                        bindingIdChoose.items = ioItems; 
-                        if(ioItems.length >0){
-                            keyModel.setProperty(index,"bindingNum",0);
-                            bindingIdChoose.currentIndex = 0;
+                        if(ioItems.length <= bindingNum){
+                            if(ioItems.length == 0 ){
+                                bindingIdChoose.currentIndex = -1;
+                            }
+                            else{
+                                console.log("1");
+                                bindingIdChoose.currentIndex = 0;
+                            }
+                            bindingIdChoose.items = ioItems;
                         }
+                        else{
+                            bindingIdChoose.items = ioItems;
+                            if(bindingNum == -1 && ioItems.length>0){
+                                console.log("2");
+                                bindingIdChoose.currentIndex = 0;
+                            }
+                        }
+
                         settingRow.refreshPropertyThingID();
                     }
                 }
@@ -526,6 +543,7 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     }
                 }
             }
+
         }
     }
 
@@ -581,9 +599,9 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
             console.log("new");
             for(i = 0; i < 10; ++i){
                 keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0});
-                refreshLedKeyData();
             }
         }
+        refreshLedKeyData();
         modelContainer.model = keyModel;
     }
 

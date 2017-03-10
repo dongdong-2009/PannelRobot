@@ -1029,6 +1029,7 @@ uint16_t io_all;
                 if(setTmp.functionCheck && keyStatus[i-5])
                 {
                     var id = setTmp.thingID;
+                    if(id<0) continue;
                     var keyType = setTmp.keyFuncType;
                     switch(setTmp.bindingType)
                     {
@@ -1067,6 +1068,7 @@ uint16_t io_all;
                 if(setTmp.functionCheck && keyStatus[i-5])
                 {
                     var id = setTmp.thingID;
+                    if(id<0) continue;
                     var keyType = setTmp.keyFuncType;
                     switch(setTmp.bindingType)
                     {

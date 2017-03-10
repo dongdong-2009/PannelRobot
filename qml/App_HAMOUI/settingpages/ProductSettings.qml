@@ -585,7 +585,7 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         }
         onProgramAdded();
         ManualProgramManager.manualProgramManager.registerMonitor(root);
-
+//        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         len = MData.ledKesSetData.length;
         if(len === 10){
@@ -593,7 +593,8 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 keyModel.append(MData.ledKesSetData[i]);
             }
         }
-        else{
+        else
+        {
             console.log("new");
             for(i = 0; i < 10; ++i){
                 keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0});

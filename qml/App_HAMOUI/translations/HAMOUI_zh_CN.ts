@@ -3069,6 +3069,10 @@ please chose!</source>
         <source>Off</source>
         <translation>断</translation>
     </message>
+    <message>
+        <source>Clear Database</source>
+        <translation>清空数据</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>

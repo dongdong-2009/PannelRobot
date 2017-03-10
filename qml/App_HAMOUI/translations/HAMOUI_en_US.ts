@@ -1537,158 +1537,158 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="384"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="381"/>
         <source>ManualMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="390"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="387"/>
         <source>StopMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="395"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="392"/>
         <source>AutoMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="400"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="397"/>
         <source>RunningMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="405"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="402"/>
         <source>SingleMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="410"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="407"/>
         <source>OneCycleMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="425"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="437"/>
         <source>Axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="445"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="457"/>
         <source>worldPos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="450"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="462"/>
         <source>JogPos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="456"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="468"/>
         <source>posValue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="469"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="481"/>
         <source>when current alarm num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="474"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="486"/>
         <source>alarmNum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="485"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="497"/>
         <source>Left Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="489"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="501"/>
         <source>Right Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="494"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="506"/>
         <source>Right Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="506"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="518"/>
         <source>&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="511"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="523"/>
         <source>&gt;=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="515"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="527"/>
         <source>&lt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="519"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="531"/>
         <source>&lt;=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="523"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="535"/>
         <source>==</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="527"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="539"/>
         <source>!=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="543"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="555"/>
         <source>&gt;=T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="543"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="555"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="549"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="561"/>
         <source>&lt;T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="549"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="561"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="555"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="567"/>
         <source>Rising Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="560"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="572"/>
         <source>Falling Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="581"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="593"/>
         <source>Auto Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="587"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="599"/>
         <source>Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="588"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="600"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="599"/>
-        <location filename="../teach/ConditionActionEditor.qml" line="618"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="611"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="630"/>
         <source>Flag</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2590,17 +2590,17 @@
     <name>ManualProgramManager</name>
     <message>
         <location filename="../teach/ManualProgramManager.js" line="60"/>
-        <location filename="../teach/ManualProgramManager.js" line="78"/>
+        <location filename="../teach/ManualProgramManager.js" line="89"/>
         <source>M CMD[{0}]:{1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ManualProgramManager.js" line="137"/>
+        <location filename="../teach/ManualProgramManager.js" line="148"/>
         <source>Custom Origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ManualProgramManager.js" line="140"/>
+        <location filename="../teach/ManualProgramManager.js" line="151"/>
         <source>Custom Return</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2827,42 +2827,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="227"/>
+        <location filename="../teach/OutputActionEditor.qml" line="228"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="232"/>
+        <location filename="../teach/OutputActionEditor.qml" line="233"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="237"/>
+        <location filename="../teach/OutputActionEditor.qml" line="238"/>
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="245"/>
+        <location filename="../teach/OutputActionEditor.qml" line="246"/>
         <source>Act Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="245"/>
+        <location filename="../teach/OutputActionEditor.qml" line="246"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="246"/>
+        <location filename="../teach/OutputActionEditor.qml" line="247"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="256"/>
+        <location filename="../teach/OutputActionEditor.qml" line="257"/>
         <source>interval number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="266"/>
+        <location filename="../teach/OutputActionEditor.qml" line="267"/>
         <source>Count Binding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3210,266 +3210,277 @@ please chose!</source>
 <context>
     <name>ProductSettings</name>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="18"/>
+        <location filename="../settingpages/ProductSettings.qml" line="21"/>
         <source>NoUse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="18"/>
+        <location filename="../settingpages/ProductSettings.qml" line="21"/>
         <source>Use</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="19"/>
+        <location filename="../settingpages/ProductSettings.qml" line="22"/>
         <source>Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="19"/>
-        <location filename="../settingpages/ProductSettings.qml" line="20"/>
-        <location filename="../settingpages/ProductSettings.qml" line="349"/>
+        <location filename="../settingpages/ProductSettings.qml" line="22"/>
+        <location filename="../settingpages/ProductSettings.qml" line="23"/>
+        <location filename="../settingpages/ProductSettings.qml" line="353"/>
         <source>IO output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="19"/>
-        <location filename="../settingpages/ProductSettings.qml" line="20"/>
+        <location filename="../settingpages/ProductSettings.qml" line="22"/>
+        <location filename="../settingpages/ProductSettings.qml" line="23"/>
         <source>M value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="20"/>
+        <location filename="../settingpages/ProductSettings.qml" line="23"/>
         <source>Program Button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="32"/>
+        <location filename="../settingpages/ProductSettings.qml" line="24"/>
+        <source>status turn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="24"/>
+        <source>keepPress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="24"/>
+        <source>On</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="24"/>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="36"/>
         <source>Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="43"/>
+        <location filename="../settingpages/ProductSettings.qml" line="47"/>
         <source>Valve Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="52"/>
+        <location filename="../settingpages/ProductSettings.qml" line="56"/>
         <source>custom Variables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="65"/>
+        <location filename="../settingpages/ProductSettings.qml" line="69"/>
         <source>IO Running Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="76"/>
+        <location filename="../settingpages/ProductSettings.qml" line="80"/>
         <source>Led And Key Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="101"/>
+        <location filename="../settingpages/ProductSettings.qml" line="105"/>
         <source>Program0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="111"/>
+        <location filename="../settingpages/ProductSettings.qml" line="115"/>
         <source>Program1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="122"/>
+        <location filename="../settingpages/ProductSettings.qml" line="126"/>
         <source>Program2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="133"/>
+        <location filename="../settingpages/ProductSettings.qml" line="137"/>
         <source>Program3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="144"/>
+        <location filename="../settingpages/ProductSettings.qml" line="148"/>
         <source>Program4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="155"/>
+        <location filename="../settingpages/ProductSettings.qml" line="159"/>
         <source>Program5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="166"/>
+        <location filename="../settingpages/ProductSettings.qml" line="170"/>
         <source>Program6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="177"/>
+        <location filename="../settingpages/ProductSettings.qml" line="181"/>
         <source>Program7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="188"/>
+        <location filename="../settingpages/ProductSettings.qml" line="192"/>
         <source>Program8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="229"/>
+        <location filename="../settingpages/ProductSettings.qml" line="233"/>
         <source>new</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="236"/>
-        <location filename="../settingpages/ProductSettings.qml" line="410"/>
+        <location filename="../settingpages/ProductSettings.qml" line="240"/>
+        <location filename="../settingpages/ProductSettings.qml" line="418"/>
         <source>Preservation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="285"/>
+        <location filename="../settingpages/ProductSettings.qml" line="289"/>
         <source>When the mode change to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="317"/>
+        <location filename="../settingpages/ProductSettings.qml" line="321"/>
         <source>CMD_MANUAL_TO_STOP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="318"/>
+        <location filename="../settingpages/ProductSettings.qml" line="322"/>
         <source>CMD_STOP_TO_MANUAL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="319"/>
+        <location filename="../settingpages/ProductSettings.qml" line="323"/>
         <source>CMD_STOP_TO_AUTO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="320"/>
+        <location filename="../settingpages/ProductSettings.qml" line="324"/>
         <source>CMD_AUTO_TO_STOP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="322"/>
+        <location filename="../settingpages/ProductSettings.qml" line="326"/>
         <source>CMD_MANUAL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="323"/>
+        <location filename="../settingpages/ProductSettings.qml" line="327"/>
         <source>CMD_AUTO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="324"/>
+        <location filename="../settingpages/ProductSettings.qml" line="328"/>
         <source>CMD_CONFIG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="326"/>
+        <location filename="../settingpages/ProductSettings.qml" line="330"/>
         <source>CMD_ORIGIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="327"/>
+        <location filename="../settingpages/ProductSettings.qml" line="331"/>
         <source>CMD_RETURN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="328"/>
+        <location filename="../settingpages/ProductSettings.qml" line="332"/>
         <source>CMD_RUNNING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="329"/>
+        <location filename="../settingpages/ProductSettings.qml" line="333"/>
         <source>CMD_SINGLE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="330"/>
+        <location filename="../settingpages/ProductSettings.qml" line="334"/>
         <source>CMD_ONE_CYCLE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="331"/>
+        <location filename="../settingpages/ProductSettings.qml" line="335"/>
         <source>CMD_ORIGIN_ING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="332"/>
+        <location filename="../settingpages/ProductSettings.qml" line="336"/>
         <source>CMD_RETURN_ING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="348"/>
+        <location filename="../settingpages/ProductSettings.qml" line="352"/>
         <source>Choos Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="349"/>
+        <location filename="../settingpages/ProductSettings.qml" line="353"/>
         <source>M output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="367"/>
+        <location filename="../settingpages/ProductSettings.qml" line="371"/>
         <source>output point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="381"/>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <location filename="../settingpages/ProductSettings.qml" line="528"/>
+        <location filename="../settingpages/ProductSettings.qml" line="385"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="381"/>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <location filename="../settingpages/ProductSettings.qml" line="528"/>
+        <location filename="../settingpages/ProductSettings.qml" line="385"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="392"/>
+        <location filename="../settingpages/ProductSettings.qml" line="396"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
+        <location filename="../settingpages/ProductSettings.qml" line="428"/>
+        <source>Clear Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="484"/>
         <source>Led</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
+        <location filename="../settingpages/ProductSettings.qml" line="484"/>
         <source> </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
+        <location filename="../settingpages/ProductSettings.qml" line="484"/>
         <source>  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
+        <location filename="../settingpages/ProductSettings.qml" line="484"/>
         <source>status binding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="437"/>
+        <location filename="../settingpages/ProductSettings.qml" line="485"/>
         <source>Key F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="437"/>
+        <location filename="../settingpages/ProductSettings.qml" line="485"/>
         <source>function binding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <source>Flip</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7221,19 +7232,19 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="56"/>
-        <location filename="../settingpages/ValveSettings.qml" line="65"/>
+        <location filename="../settingpages/ValveSettings.qml" line="57"/>
+        <location filename="../settingpages/ValveSettings.qml" line="66"/>
         <source>RP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="56"/>
-        <location filename="../settingpages/ValveSettings.qml" line="65"/>
+        <location filename="../settingpages/ValveSettings.qml" line="57"/>
+        <location filename="../settingpages/ValveSettings.qml" line="66"/>
         <source>PP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ValveSettings.qml" line="80"/>
+        <location filename="../settingpages/ValveSettings.qml" line="81"/>
         <source>Auto Check</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7474,7 +7485,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="795"/>
-        <location filename="../main.qml" line="943"/>
+        <location filename="../main.qml" line="936"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7507,37 +7518,37 @@ The name of ghost is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="943"/>
+        <location filename="../main.qml" line="936"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="962"/>
+        <location filename="../main.qml" line="955"/>
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1164"/>
+        <location filename="../main.qml" line="1193"/>
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1233"/>
+        <location filename="../main.qml" line="1264"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1266"/>
+        <location filename="../main.qml" line="1297"/>
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1266"/>
+        <location filename="../main.qml" line="1297"/>
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1266"/>
+        <location filename="../main.qml" line="1297"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

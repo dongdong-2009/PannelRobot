@@ -161,7 +161,9 @@ ContentPageBase {
             var debugprintClass = Qt.createComponent('Debugprint.qml');
             pageContainer.addPage(debugprintClass.createObject(pageContainer));
 
+            console.log("err");
             var operationInstructions = Qt.createComponent('OperationInstructions.qml');
+            console.log("operationInstructions",operationInstructions.errorString());
             pageContainer.addPage(operationInstructions.createObject(pageContainer));
             var machineIntroduce = Qt.createComponent('MachineIntroduce.qml');
             pageContainer.addPage(machineIntroduce.createObject(pageContainer));

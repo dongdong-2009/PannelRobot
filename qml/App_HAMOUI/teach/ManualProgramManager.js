@@ -62,6 +62,17 @@ function ManualProgramManager(){
         return ret;
     }
 
+    this.programsIDList = function(){
+        var ret = [];
+        var p;
+        for(var i = 0; i < programs.length; ++i){
+            p = programs[i];
+            if(p !== undefined)
+                ret.push(p.id);
+        }
+        return ret;
+    }
+
     this.programList = function(){
         var ret = [];
         var p;

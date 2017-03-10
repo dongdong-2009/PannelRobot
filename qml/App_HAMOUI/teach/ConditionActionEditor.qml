@@ -372,12 +372,9 @@ Item {
                         Text{
                             text: qsTr("when current mode is:")
                         }
-                        ICButtonGroup{
-                            id: whichMode
-                            spacing: 12
-                            mustChecked: true
-                            checkedIndex: 0
-                            checkedItem: manualMode
+                        Flow{
+                            width: memDataConfigsContainer.width-10
+                            spacing: 8
                             ICCheckBox{
                                 id:manualMode
                                 property int cmd: 1
@@ -409,6 +406,21 @@ Item {
                                 property int cmd: 9
                                 text: qsTr("OneCycleMode")
                             }
+                            Component.onCompleted: {
+                                whichMode.addButton(manualMode);
+                                whichMode.addButton(stopMode);
+                                whichMode.addButton(autoMode);
+                                whichMode.addButton(runningMode);
+                                whichMode.addButton(singleMode);
+                                whichMode.addButton(oneCycleMode);
+                            }
+                        }
+                        ICButtonGroup{
+                            id: whichMode
+                            mustChecked: true
+                            checkedIndex: 0
+                            checkedItem: manualMode
+                            layoutMode: 2
                         }
                     }
 

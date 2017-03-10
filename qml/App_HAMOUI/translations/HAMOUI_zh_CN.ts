@@ -2211,6 +2211,10 @@
         <source>toolcoord</source>
         <translation>工作台标定</translation>
     </message>
+    <message>
+        <source>Machine Introduce</source>
+        <translation>机器简介</translation>
+    </message>
 </context>
 <context>
     <name>ManualProgramManager</name>
@@ -2631,6 +2635,10 @@ please chose!</source>
     <message>
         <source>Set As Standby</source>
         <translation>设为待机图片</translation>
+    </message>
+    <message>
+        <source>Set As MachineImg</source>
+        <translation>设为机器简介图</translation>
     </message>
 </context>
 <context>
@@ -6374,7 +6382,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Please confirm your stop signal off</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请确认是否在暂停状态下</translation>
     </message>
     <message>
         <source>Exporting...</source>

@@ -4,17 +4,6 @@
 <context>
     <name>ActionModifyEditor</name>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="103"/>
-        <source>Pos(+/-):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="108"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="184"/>
-        <source>Pos:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../teach/ActionModifyEditor.qml" line="127"/>
         <location filename="../teach/ActionModifyEditor.qml" line="128"/>
         <location filename="../teach/ActionModifyEditor.qml" line="129"/>
@@ -35,6 +24,17 @@
     <message>
         <location filename="../teach/ActionModifyEditor.qml" line="174"/>
         <source>Custom Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ActionModifyEditor.qml" line="108"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="184"/>
+        <source>Pos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ActionModifyEditor.qml" line="103"/>
+        <source>Pos(+/-):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -459,6 +459,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="124"/>
+        <source>Test Item:Motor +- Test,valve on-off Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="132"/>
+        <source>Test Condition:Please left 2r for the motor test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="136"/>
+        <source>Please make sure the valve can be on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/AutoDebugMachine.qml" line="81"/>
         <location filename="../settingpages/AutoDebugMachine.qml" line="113"/>
         <location filename="../settingpages/AutoDebugMachine.qml" line="417"/>
@@ -511,21 +526,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="124"/>
-        <source>Test Item:Motor +- Test,valve on-off Test</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="132"/>
-        <source>Test Condition:Please left 2r for the motor test</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="136"/>
-        <source>Please make sure the valve can be on or off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AutoDebugMachine.qml" line="221"/>
         <source>ReTest</source>
         <translation type="unfinished"></translation>
@@ -533,6 +533,33 @@
     <message>
         <location filename="../settingpages/AutoDebugMachine.qml" line="234"/>
         <source>Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="355"/>
+        <source>Output1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
+        <source>Output2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="374"/>
+        <source>Input1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
+        <source>Input2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AutoDebugMachine.qml" line="322"/>
+        <source>receivedErr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -551,19 +578,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="322"/>
-        <source>receivedErr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AutoDebugMachine.qml" line="333"/>
         <source>sendErr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="355"/>
-        <source>Output1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -580,22 +596,6 @@
         <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
         <location filename="../settingpages/AutoDebugMachine.qml" line="374"/>
         <source>off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="352"/>
-        <source>Output2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="374"/>
-        <source>Input1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AutoDebugMachine.qml" line="371"/>
-        <source>Input2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -630,21 +630,6 @@
     <message>
         <location filename="../teach/AutoRunInfoPage.qml" line="76"/>
         <source>Counter &lt;&lt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="107"/>
-        <source>Target:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="111"/>
-        <source>Current:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AutoRunInfoPage.qml" line="127"/>
-        <source>counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -719,178 +704,166 @@
         <source>motor4:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../teach/AutoRunInfoPage.qml" line="107"/>
+        <source>Target:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/AutoRunInfoPage.qml" line="111"/>
+        <source>Current:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/AutoRunInfoPage.qml" line="127"/>
+        <source>counter</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxisActionEditor</name>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="89"/>
+        <location filename="../teach/AxisActionEditor.qml" line="82"/>
         <source>Set In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="103"/>
+        <location filename="../teach/AxisActionEditor.qml" line="96"/>
         <source>Sync</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="107"/>
+        <location filename="../teach/AxisActionEditor.qml" line="100"/>
         <source>Rel Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="123"/>
+        <location filename="../teach/AxisActionEditor.qml" line="116"/>
         <source>X1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="123"/>
+        <location filename="../teach/AxisActionEditor.qml" line="116"/>
         <source>X1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="133"/>
+        <location filename="../teach/AxisActionEditor.qml" line="126"/>
         <source>Y1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="133"/>
+        <location filename="../teach/AxisActionEditor.qml" line="126"/>
         <source>Y1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="143"/>
+        <location filename="../teach/AxisActionEditor.qml" line="136"/>
         <source>Z ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="143"/>
+        <location filename="../teach/AxisActionEditor.qml" line="136"/>
         <source>Z OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="153"/>
+        <location filename="../teach/AxisActionEditor.qml" line="146"/>
         <source>X2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="153"/>
+        <location filename="../teach/AxisActionEditor.qml" line="146"/>
         <source>X2 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="163"/>
+        <location filename="../teach/AxisActionEditor.qml" line="156"/>
         <source>Y2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="163"/>
+        <location filename="../teach/AxisActionEditor.qml" line="156"/>
         <source>Y2 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="173"/>
+        <location filename="../teach/AxisActionEditor.qml" line="166"/>
         <source>A ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="173"/>
+        <location filename="../teach/AxisActionEditor.qml" line="166"/>
         <source>A OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="183"/>
+        <location filename="../teach/AxisActionEditor.qml" line="176"/>
         <source>B ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="183"/>
+        <location filename="../teach/AxisActionEditor.qml" line="176"/>
         <source>B OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="193"/>
+        <location filename="../teach/AxisActionEditor.qml" line="186"/>
         <source>C ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="193"/>
+        <location filename="../teach/AxisActionEditor.qml" line="186"/>
         <source>C OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="205"/>
-        <source>Input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="232"/>
-        <location filename="../teach/AxisActionEditor.qml" line="278"/>
-        <source>on</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="232"/>
-        <location filename="../teach/AxisActionEditor.qml" line="278"/>
-        <source>off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="241"/>
-        <source>TStop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="245"/>
-        <source>Fast Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="253"/>
-        <source>Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="286"/>
-        <source>On pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="320"/>
+        <location filename="../teach/AxisActionEditor.qml" line="247"/>
         <source>Early End Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="330"/>
+        <location filename="../teach/AxisActionEditor.qml" line="257"/>
         <source>ESD Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="339"/>
+        <location filename="../teach/AxisActionEditor.qml" line="266"/>
         <source>ESD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="340"/>
+        <location filename="../teach/AxisActionEditor.qml" line="267"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="349"/>
+        <location filename="../teach/AxisActionEditor.qml" line="198"/>
+        <source>Signal Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/AxisActionEditor.qml" line="222"/>
+        <source>Fast Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/AxisActionEditor.qml" line="277"/>
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="360"/>
+        <location filename="../teach/AxisActionEditor.qml" line="288"/>
         <source>Speed PP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="365"/>
+        <location filename="../teach/AxisActionEditor.qml" line="293"/>
         <source>Speed RP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/AxisActionEditor.qml" line="371"/>
+        <location filename="../teach/AxisActionEditor.qml" line="299"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
@@ -978,26 +951,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="641"/>
-        <source>Encoder Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="644"/>
-        <source>Encode Type1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="644"/>
-        <source>Encode Type2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="644"/>
-        <source>Encode Type3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="649"/>
         <source>Motor Factory</source>
         <translation type="unfinished"></translation>
@@ -1023,6 +976,26 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="641"/>
+        <source>Encoder Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="644"/>
+        <source>Encode Type1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="644"/>
+        <source>Encode Type2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="644"/>
+        <source>Encode Type3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 5</source>
         <translation type="unfinished"></translation>
@@ -1035,11 +1008,6 @@
     <message>
         <location filename="../settingpages/AxisConfigs.qml" line="653"/>
         <source>Motor 7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
-        <source>Motor 8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1098,18 +1066,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="686"/>
-        <source>Pulse Count Per Circle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/AxisConfigs.qml" line="689"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="823"/>
-        <location filename="../settingpages/AxisConfigs.qml" line="860"/>
-        <source>a</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="693"/>
         <source>Arm Length</source>
         <translation type="unfinished"></translation>
@@ -1119,6 +1075,23 @@
         <location filename="../settingpages/AxisConfigs.qml" line="711"/>
         <location filename="../settingpages/AxisConfigs.qml" line="718"/>
         <source>mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="686"/>
+        <source>Pulse Count Per Circle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="653"/>
+        <source>Motor 8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="689"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="823"/>
+        <location filename="../settingpages/AxisConfigs.qml" line="860"/>
+        <source>a</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1284,74 +1257,6 @@
     </message>
 </context>
 <context>
-    <name>AxisMemposEditor</name>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="32"/>
-        <source>Axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="49"/>
-        <source>Pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="58"/>
-        <source>Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="67"/>
-        <source>Delay</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="76"/>
-        <source>devLen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="86"/>
-        <source>DecSpeed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="100"/>
-        <source>Input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="121"/>
-        <source>on</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="121"/>
-        <source>off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="131"/>
-        <source>To stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="136"/>
-        <source>Imm stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="142"/>
-        <source>devPos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/AxisMemposEditor.qml" line="150"/>
-        <source>MemPosAddr</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AxisPosDisplayBar</name>
     <message>
         <location filename="../AxisPosDisplayBar.qml" line="30"/>
@@ -1396,52 +1301,32 @@
 <context>
     <name>CheckActionEditor</name>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="46"/>
-        <source>Normal X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="51"/>
+        <location filename="../teach/CheckActionEditor.qml" line="44"/>
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="55"/>
+        <location filename="../teach/CheckActionEditor.qml" line="49"/>
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="148"/>
+        <location filename="../teach/CheckActionEditor.qml" line="139"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="153"/>
+        <location filename="../teach/CheckActionEditor.qml" line="144"/>
         <source>End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="160"/>
-        <source>Check Dir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="162"/>
-        <source>Forward</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="162"/>
-        <source>Reverse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/CheckActionEditor.qml" line="170"/>
+        <location filename="../teach/CheckActionEditor.qml" line="150"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/CheckActionEditor.qml" line="171"/>
+        <location filename="../teach/CheckActionEditor.qml" line="151"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1457,238 +1342,158 @@
 <context>
     <name>ConditionActionEditor</name>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="174"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="142"/>
         <source>Define Flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="179"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="147"/>
         <source>Use Flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="200"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="168"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="205"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="173"/>
         <source>MY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="209"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="177"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="214"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="182"/>
         <source>Counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="219"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="187"/>
         <source>Mem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="224"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="192"/>
         <source>Jump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="228"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="196"/>
         <source>EUX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="232"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="200"/>
         <source>EUY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="346"/>
-        <source>Mode Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="351"/>
-        <source>Coord Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="355"/>
-        <source>Alarm Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="359"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="313"/>
         <source>Const Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="363"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="318"/>
         <source>Addr Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="373"/>
-        <source>when current mode is:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="384"/>
-        <source>ManualMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="390"/>
-        <source>StopMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="395"/>
-        <source>AutoMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="400"/>
-        <source>RunningMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="405"/>
-        <source>SingleMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="410"/>
-        <source>OneCycleMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="425"/>
-        <source>Axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="445"/>
-        <source>worldPos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="450"/>
-        <source>JogPos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="456"/>
-        <source>posValue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="469"/>
-        <source>when current alarm num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="474"/>
-        <source>alarmNum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="485"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="326"/>
         <source>Left Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="489"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="330"/>
         <source>Right Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="494"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="335"/>
         <source>Right Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="506"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="346"/>
         <source>&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="511"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="351"/>
         <source>&gt;=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="515"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="355"/>
         <source>&lt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="519"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="359"/>
         <source>&lt;=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="523"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="363"/>
         <source>==</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="527"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="367"/>
         <source>!=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="543"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="383"/>
         <source>&gt;=T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="543"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="383"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="549"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="389"/>
         <source>&lt;T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="549"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="389"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="555"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="395"/>
         <source>Rising Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="560"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="400"/>
         <source>Falling Edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="581"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="421"/>
         <source>Auto Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="587"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="427"/>
         <source>Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="588"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="428"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ConditionActionEditor.qml" line="599"/>
-        <location filename="../teach/ConditionActionEditor.qml" line="618"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="439"/>
+        <location filename="../teach/ConditionActionEditor.qml" line="458"/>
         <source>Flag</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1846,14 +1651,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/DataManagePage.qml" line="17"/>
-        <location filename="../settingpages/DataManagePage.qml" line="272"/>
-        <location filename="../settingpages/DataManagePage.qml" line="318"/>
-        <location filename="../settingpages/DataManagePage.qml" line="320"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingpages/DataManagePage.qml" line="46"/>
         <source>Restoring...</source>
         <translation type="unfinished"></translation>
@@ -1922,6 +1719,14 @@
     <message>
         <location filename="../settingpages/DataManagePage.qml" line="272"/>
         <source>System will reboot after restore! Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/DataManagePage.qml" line="17"/>
+        <location filename="../settingpages/DataManagePage.qml" line="272"/>
+        <location filename="../settingpages/DataManagePage.qml" line="318"/>
+        <location filename="../settingpages/DataManagePage.qml" line="320"/>
+        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2070,224 +1875,177 @@
 <context>
     <name>ExtentActionDefine</name>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="28"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="27"/>
         <source>PENQIANG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="29"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="28"/>
         <source>Pos1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="30"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="29"/>
         <source>Pos2:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="31"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="217"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="30"/>
         <source>Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="32"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="31"/>
         <source>Num:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="33"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="50"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="97"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="218"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="32"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="49"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="96"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="48"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="47"/>
         <source>Analog Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="49"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="48"/>
         <source>Analog:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="79"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="78"/>
         <source>Delta Jumpl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="79"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="78"/>
         <source>start pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="86"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="85"/>
         <source>LH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="87"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="86"/>
         <source>MH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="88"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="87"/>
         <source>RH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="89"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="88"/>
         <source>end pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="96"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="170"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="95"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
         <source>speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
         <source>Safe Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
         <source>if</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="124"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="123"/>
         <source>out pos fange:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="120"/>
         <source>in pos fange:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="123"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="122"/>
         <source>When Changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="125"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="124"/>
         <source>will alarm:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="165"/>
         <source>Single Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="165"/>
         <source>RP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="165"/>
         <source>PP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
-        <source>Start Pos:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
-        <source>space:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
-        <source>Addr:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
-        <source>count:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
-        <source>Counter:Self</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="181"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="180"/>
         <source>Switch Coord</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="181"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="180"/>
         <source>CoordID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="193"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="192"/>
         <source>Path Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="193"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="192"/>
         <source>Start Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="193"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="192"/>
         <source>End Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="220"/>
-        <source>Early dec dev len:</source>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <source>Start Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="221"/>
-        <source>dev pos:</source>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
+        <source>space:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="222"/>
-        <source>Early dec Spd:</source>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
+        <source>Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="223"/>
-        <source>mem addr:</source>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
+        <source>count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="226"/>
-        <source>When </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="226"/>
-        <source>is Off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="226"/>
-        <source>is On</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
-        <source>slow stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
-        <source>fast stop</source>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
+        <source>Counter:Self</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2321,11 +2079,6 @@
     <message>
         <location filename="../teach/ExtentActionEditor.qml" line="68"/>
         <source>switchCoord</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ExtentActionEditor.qml" line="72"/>
-        <source>AxisMemPos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2556,8 +2309,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ManualPage.qml" line="65"/>
-        <source>Custom Btn</source>
+        <location filename="../ManualPage.qml" line="85"/>
+        <source>Debugprint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2566,8 +2319,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ManualPage.qml" line="85"/>
-        <source>Debugprint</source>
+        <location filename="../ManualPage.qml" line="65"/>
+        <source>Custom Btn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2782,8 +2535,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../teach/OutputActionEditor.qml" line="99"/>
+        <source>EUY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../teach/OutputActionEditor.qml" line="73"/>
         <source>M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/OutputActionEditor.qml" line="91"/>
+        <source>Single Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/OutputActionEditor.qml" line="95"/>
+        <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2799,21 +2567,6 @@
     <message>
         <location filename="../teach/OutputActionEditor.qml" line="87"/>
         <source>Interval M</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="91"/>
-        <source>Single Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="95"/>
-        <source>Hold Double Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/OutputActionEditor.qml" line="99"/>
-        <source>EUY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3180,266 +2933,73 @@ please chose!</source>
 <context>
     <name>ProductSettings</name>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="18"/>
+        <location filename="../settingpages/ProductSettings.qml" line="16"/>
         <source>NoUse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="18"/>
+        <location filename="../settingpages/ProductSettings.qml" line="16"/>
         <source>Use</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="19"/>
-        <source>Input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="19"/>
-        <location filename="../settingpages/ProductSettings.qml" line="20"/>
-        <location filename="../settingpages/ProductSettings.qml" line="349"/>
-        <source>IO output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="19"/>
-        <location filename="../settingpages/ProductSettings.qml" line="20"/>
-        <source>M value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="20"/>
-        <source>Program Button</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="32"/>
+        <location filename="../settingpages/ProductSettings.qml" line="28"/>
         <source>Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="43"/>
+        <location filename="../settingpages/ProductSettings.qml" line="39"/>
         <source>Valve Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="52"/>
+        <location filename="../settingpages/ProductSettings.qml" line="48"/>
         <source>custom Variables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="65"/>
-        <source>IO Running Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="76"/>
-        <source>Led And Key Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="101"/>
+        <location filename="../settingpages/ProductSettings.qml" line="75"/>
         <source>Program0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="111"/>
+        <location filename="../settingpages/ProductSettings.qml" line="85"/>
         <source>Program1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="122"/>
+        <location filename="../settingpages/ProductSettings.qml" line="96"/>
         <source>Program2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="133"/>
+        <location filename="../settingpages/ProductSettings.qml" line="107"/>
         <source>Program3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="144"/>
+        <location filename="../settingpages/ProductSettings.qml" line="118"/>
         <source>Program4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="155"/>
+        <location filename="../settingpages/ProductSettings.qml" line="129"/>
         <source>Program5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="166"/>
+        <location filename="../settingpages/ProductSettings.qml" line="140"/>
         <source>Program6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="177"/>
+        <location filename="../settingpages/ProductSettings.qml" line="151"/>
         <source>Program7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="188"/>
+        <location filename="../settingpages/ProductSettings.qml" line="162"/>
         <source>Program8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="229"/>
-        <source>new</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="236"/>
-        <location filename="../settingpages/ProductSettings.qml" line="410"/>
-        <source>Preservation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="285"/>
-        <source>When the mode change to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="317"/>
-        <source>CMD_MANUAL_TO_STOP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="318"/>
-        <source>CMD_STOP_TO_MANUAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="319"/>
-        <source>CMD_STOP_TO_AUTO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="320"/>
-        <source>CMD_AUTO_TO_STOP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="322"/>
-        <source>CMD_MANUAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="323"/>
-        <source>CMD_AUTO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="324"/>
-        <source>CMD_CONFIG</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="326"/>
-        <source>CMD_ORIGIN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="327"/>
-        <source>CMD_RETURN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="328"/>
-        <source>CMD_RUNNING</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="329"/>
-        <source>CMD_SINGLE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="330"/>
-        <source>CMD_ONE_CYCLE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="331"/>
-        <source>CMD_ORIGIN_ING</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="332"/>
-        <source>CMD_RETURN_ING</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="348"/>
-        <source>Choos Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="349"/>
-        <source>M output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="367"/>
-        <source>output point</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="381"/>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <location filename="../settingpages/ProductSettings.qml" line="528"/>
-        <source>OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="381"/>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <location filename="../settingpages/ProductSettings.qml" line="528"/>
-        <source>ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="392"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
-        <source>Led</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
-        <source> </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
-        <source>  </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="436"/>
-        <source>status binding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="437"/>
-        <source>Key F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="437"/>
-        <source>function binding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/ProductSettings.qml" line="517"/>
-        <source>Flip</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3595,24 +3155,6 @@ please chose!</source>
 <context>
     <name>ProgramFlowPage</name>
     <message>
-        <location filename="../teach/ProgramFlowPage.js" line="97"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="471"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="493"/>
-        <source>Main Program</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.js" line="97"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="477"/>
-        <source>Sub-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.js" line="99"/>
-        <source>Lines:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../teach/ProgramFlowPage.qml" line="462"/>
         <source>Program Compiling...</source>
         <translation type="unfinished"></translation>
@@ -3634,15 +3176,33 @@ please chose!</source>
     </message>
     <message>
         <location filename="../teach/ProgramFlowPage.qml" line="489"/>
-        <source>Save {0} fail!.
-</source>
+        <location filename="../teach/ProgramFlowPage.qml" line="753"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="856"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.js" line="97"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="471"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="493"/>
+        <source>Main Program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.js" line="97"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="477"/>
+        <source>Sub-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/ProgramFlowPage.js" line="99"/>
+        <source>Lines:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/ProgramFlowPage.qml" line="489"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="753"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="856"/>
-        <source>OK</source>
+        <source>Save {0} fail!.
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3733,7 +3293,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../teach/ProgramFlowPage.qml" line="777"/>
-        <location filename="../teach/ProgramFlowPage.qml" line="2001"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1775"/>
         <source>Main Module</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3829,72 +3389,32 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1499"/>
-        <source>SearchRange</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1507"/>
-        <source>All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1516"/>
-        <source>Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1568"/>
-        <source>End</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1572"/>
-        <source>Clear Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1631"/>
-        <source>Current Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1635"/>
-        <source>programIndex</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1642"/>
-        <source>GO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1720"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1494"/>
         <source>Single Step</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1734"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1508"/>
         <source>Start Line:[-1]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1744"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1518"/>
         <source>Start Line:[{0}]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1749"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1523"/>
         <source>Single Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1760"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1534"/>
         <source>Single Cycle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramFlowPage.qml" line="1774"/>
+        <location filename="../teach/ProgramFlowPage.qml" line="1548"/>
         <source>Cycle Start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4260,6 +3780,73 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="56"/>
+        <source>First Moudle Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="67"/>
+        <source>Independent Manual Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="81"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="87"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="94"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="100"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="106"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="112"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="118"/>
+        <location filename="../settingpages/RunningConfigs.qml" line="124"/>
+        <source>Manual Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="151"/>
+        <source>select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="167"/>
+        <source>IO Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="185"/>
+        <source>Mold Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="211"/>
+        <source>new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="227"/>
+        <source>delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="265"/>
+        <source>x32 Mux for Origin mode Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="272"/>
+        <source>x33 Mux for Auto mode Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="279"/>
+        <source>x46 Mux for Startup Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/RunningConfigs.qml" line="286"/>
+        <source>x47 Mux for Stop Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/RunningConfigs.qml" line="43"/>
         <source>Alarm Times</source>
         <translation type="unfinished"></translation>
@@ -4267,73 +3854,6 @@ please chose!</source>
     <message>
         <location filename="../settingpages/RunningConfigs.qml" line="47"/>
         <source>Times</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="56"/>
-        <source>First Moudle Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="71"/>
-        <source>Independent Manual Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="85"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="91"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="98"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="104"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="110"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="116"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="122"/>
-        <location filename="../settingpages/RunningConfigs.qml" line="128"/>
-        <source>Manual Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="155"/>
-        <source>select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="171"/>
-        <source>IO Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="189"/>
-        <source>Mold Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="215"/>
-        <source>new</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="231"/>
-        <source>delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="269"/>
-        <source>x32 Mux for Origin mode Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="276"/>
-        <source>x33 Mux for Auto mode Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="283"/>
-        <source>x46 Mux for Startup Btn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/RunningConfigs.qml" line="290"/>
-        <source>x47 Mux for Stop Btn</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5920,13 +5440,13 @@ You just need to set the count configs after this setting.</source>
     <message>
         <location filename="../teach/Teach.js" line="309"/>
         <location filename="../teach/Teach.js" line="318"/>
-        <location filename="../teach/Teach.js" line="1473"/>
+        <location filename="../teach/Teach.js" line="1417"/>
         <source>Flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="461"/>
-        <location filename="../teach/Teach.js" line="1599"/>
+        <location filename="../teach/Teach.js" line="1537"/>
         <source>Stack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5942,764 +5462,679 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1276"/>
-        <location filename="../teach/Teach.js" line="1295"/>
-        <location filename="../teach/Teach.js" line="1307"/>
-        <location filename="../teach/Teach.js" line="1342"/>
-        <location filename="../teach/Teach.js" line="1602"/>
-        <location filename="../teach/Teach.js" line="1603"/>
-        <location filename="../teach/Teach.js" line="1604"/>
-        <location filename="../teach/Teach.js" line="1705"/>
+        <location filename="../teach/Teach.js" line="1258"/>
+        <location filename="../teach/Teach.js" line="1277"/>
+        <location filename="../teach/Teach.js" line="1289"/>
+        <location filename="../teach/Teach.js" line="1319"/>
+        <location filename="../teach/Teach.js" line="1540"/>
+        <location filename="../teach/Teach.js" line="1541"/>
+        <location filename="../teach/Teach.js" line="1542"/>
+        <location filename="../teach/Teach.js" line="1643"/>
         <source>Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1277"/>
-        <location filename="../teach/Teach.js" line="1288"/>
-        <location filename="../teach/Teach.js" line="1308"/>
-        <location filename="../teach/Teach.js" line="1343"/>
-        <location filename="../teach/Teach.js" line="1494"/>
-        <location filename="../teach/Teach.js" line="1502"/>
-        <location filename="../teach/Teach.js" line="1509"/>
-        <location filename="../teach/Teach.js" line="1517"/>
-        <location filename="../teach/Teach.js" line="1706"/>
+        <location filename="../teach/Teach.js" line="1259"/>
+        <location filename="../teach/Teach.js" line="1270"/>
+        <location filename="../teach/Teach.js" line="1290"/>
+        <location filename="../teach/Teach.js" line="1320"/>
+        <location filename="../teach/Teach.js" line="1438"/>
+        <location filename="../teach/Teach.js" line="1443"/>
+        <location filename="../teach/Teach.js" line="1447"/>
+        <location filename="../teach/Teach.js" line="1455"/>
+        <location filename="../teach/Teach.js" line="1644"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1279"/>
-        <location filename="../teach/Teach.js" line="1311"/>
-        <location filename="../teach/Teach.js" line="1345"/>
+        <location filename="../teach/Teach.js" line="1261"/>
+        <location filename="../teach/Teach.js" line="1293"/>
+        <location filename="../teach/Teach.js" line="1322"/>
         <source>Bad En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1281"/>
-        <location filename="../teach/Teach.js" line="1314"/>
-        <location filename="../teach/Teach.js" line="1347"/>
+        <location filename="../teach/Teach.js" line="1263"/>
+        <location filename="../teach/Teach.js" line="1296"/>
+        <location filename="../teach/Teach.js" line="1324"/>
         <source>Early End Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1295"/>
+        <location filename="../teach/Teach.js" line="1277"/>
         <source>Speed Control PP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1295"/>
+        <location filename="../teach/Teach.js" line="1277"/>
         <source>Speed Control RP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1297"/>
+        <location filename="../teach/Teach.js" line="1279"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1318"/>
+        <location filename="../teach/Teach.js" line="1300"/>
         <source>Early End Spd pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1319"/>
+        <location filename="../teach/Teach.js" line="1301"/>
         <source>Early End Spd:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1323"/>
+        <location filename="../teach/Teach.js" line="1305"/>
         <source>When </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1323"/>
-        <location filename="../teach/Teach.js" line="1329"/>
-        <source>is Off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1323"/>
-        <location filename="../teach/Teach.js" line="1329"/>
+        <location filename="../teach/Teach.js" line="1305"/>
         <source>is On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1324"/>
+        <location filename="../teach/Teach.js" line="1306"/>
         <source>slow stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1324"/>
+        <location filename="../teach/Teach.js" line="1306"/>
         <source>fast stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1328"/>
-        <source>When on the pos </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1329"/>
-        <source>Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1333"/>
+        <location filename="../teach/Teach.js" line="1310"/>
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1315"/>
         <source>Type 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1315"/>
         <source>Type 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1315"/>
         <source>Type 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1315"/>
         <source>Type 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1315"/>
         <source>Type 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1341"/>
+        <location filename="../teach/Teach.js" line="1318"/>
         <source>origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1358"/>
+        <location filename="../teach/Teach.js" line="1335"/>
         <source>Alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1363"/>
+        <location filename="../teach/Teach.js" line="1340"/>
         <source>Jump To </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1367"/>
-        <location filename="../teach/Teach.js" line="1370"/>
-        <location filename="../teach/Teach.js" line="1398"/>
-        <location filename="../teach/Teach.js" line="1420"/>
+        <location filename="../teach/Teach.js" line="1344"/>
+        <location filename="../teach/Teach.js" line="1347"/>
+        <location filename="../teach/Teach.js" line="1351"/>
+        <location filename="../teach/Teach.js" line="1373"/>
         <source>IF:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1367"/>
+        <location filename="../teach/Teach.js" line="1344"/>
         <source>Invalid Counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1371"/>
+        <location filename="../teach/Teach.js" line="1348"/>
         <source>Arrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1371"/>
+        <location filename="../teach/Teach.js" line="1348"/>
         <source>No arrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1371"/>
-        <location filename="../teach/Teach.js" line="1423"/>
+        <location filename="../teach/Teach.js" line="1348"/>
+        <location filename="../teach/Teach.js" line="1376"/>
         <source>Go to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1372"/>
+        <location filename="../teach/Teach.js" line="1349"/>
         <source>Then clear counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1377"/>
-        <source>manualMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1378"/>
-        <source>stopMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1379"/>
-        <source>autoMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1380"/>
-        <source>RunningMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1381"/>
-        <source>SingleMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1382"/>
-        <source>OneCycleMode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1383"/>
-        <source>Current Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1387"/>
-        <source>Current Jog pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1387"/>
-        <source>Current World pos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1391"/>
-        <source>Current alarm num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1395"/>
+        <location filename="../teach/Teach.js" line="1351"/>
         <source>Left Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1396"/>
+        <location filename="../teach/Teach.js" line="1353"/>
         <source>Right Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1396"/>
+        <location filename="../teach/Teach.js" line="1353"/>
         <source>Right Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1401"/>
+        <location filename="../teach/Teach.js" line="1354"/>
         <source>Go to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1412"/>
-        <location filename="../teach/Teach.js" line="1429"/>
-        <location filename="../teach/Teach.js" line="1443"/>
-        <location filename="../teach/Teach.js" line="1493"/>
-        <location filename="../teach/Teach.js" line="1512"/>
-        <location filename="../teach/Teach.js" line="1516"/>
-        <location filename="../teach/Teach.js" line="1528"/>
-        <location filename="../teach/Teach.js" line="1714"/>
+        <location filename="../teach/Teach.js" line="1365"/>
+        <location filename="../teach/Teach.js" line="1381"/>
+        <location filename="../teach/Teach.js" line="1387"/>
+        <location filename="../teach/Teach.js" line="1437"/>
+        <location filename="../teach/Teach.js" line="1450"/>
+        <location filename="../teach/Teach.js" line="1454"/>
+        <location filename="../teach/Teach.js" line="1466"/>
+        <location filename="../teach/Teach.js" line="1652"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1414"/>
-        <location filename="../teach/Teach.js" line="1431"/>
-        <location filename="../teach/Teach.js" line="1443"/>
-        <location filename="../teach/Teach.js" line="1493"/>
-        <location filename="../teach/Teach.js" line="1512"/>
-        <location filename="../teach/Teach.js" line="1516"/>
-        <location filename="../teach/Teach.js" line="1528"/>
-        <location filename="../teach/Teach.js" line="1714"/>
+        <location filename="../teach/Teach.js" line="1367"/>
+        <location filename="../teach/Teach.js" line="1381"/>
+        <location filename="../teach/Teach.js" line="1387"/>
+        <location filename="../teach/Teach.js" line="1437"/>
+        <location filename="../teach/Teach.js" line="1450"/>
+        <location filename="../teach/Teach.js" line="1454"/>
+        <location filename="../teach/Teach.js" line="1466"/>
+        <location filename="../teach/Teach.js" line="1652"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1416"/>
-        <location filename="../teach/Teach.js" line="1433"/>
+        <location filename="../teach/Teach.js" line="1369"/>
         <source>RisingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1418"/>
-        <location filename="../teach/Teach.js" line="1435"/>
+        <location filename="../teach/Teach.js" line="1371"/>
         <source>FallingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1422"/>
-        <location filename="../teach/Teach.js" line="1438"/>
-        <location filename="../teach/Teach.js" line="1444"/>
-        <location filename="../teach/Teach.js" line="1725"/>
+        <location filename="../teach/Teach.js" line="1375"/>
+        <location filename="../teach/Teach.js" line="1382"/>
+        <location filename="../teach/Teach.js" line="1388"/>
+        <location filename="../teach/Teach.js" line="1663"/>
         <source>Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1436"/>
+        <location filename="../teach/Teach.js" line="1380"/>
         <source>Wait:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../teach/Teach.js" line="1386"/>
         <location filename="../teach/Teach.js" line="1442"/>
-        <location filename="../teach/Teach.js" line="1501"/>
-        <location filename="../teach/Teach.js" line="1508"/>
+        <location filename="../teach/Teach.js" line="1446"/>
         <source>Check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1452"/>
+        <location filename="../teach/Teach.js" line="1396"/>
         <source>Program End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1456"/>
+        <location filename="../teach/Teach.js" line="1400"/>
         <source>Module End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1460"/>
+        <location filename="../teach/Teach.js" line="1404"/>
         <source>next line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1461"/>
+        <location filename="../teach/Teach.js" line="1405"/>
         <source>Call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1462"/>
+        <location filename="../teach/Teach.js" line="1406"/>
         <source>And then return to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1478"/>
+        <location filename="../teach/Teach.js" line="1422"/>
         <source>Normal Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1479"/>
+        <location filename="../teach/Teach.js" line="1423"/>
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1480"/>
+        <location filename="../teach/Teach.js" line="1424"/>
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1481"/>
+        <location filename="../teach/Teach.js" line="1425"/>
         <source>Unhold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1498"/>
-        <location filename="../teach/Teach.js" line="1505"/>
-        <source>NormalX-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1501"/>
+        <location filename="../teach/Teach.js" line="1442"/>
         <source>Check Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1502"/>
-        <source>Reverse </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1502"/>
-        <source>Forward </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1508"/>
+        <location filename="../teach/Teach.js" line="1446"/>
         <source>Check End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1512"/>
-        <location filename="../teach/Teach.js" line="1714"/>
+        <location filename="../teach/Teach.js" line="1450"/>
+        <location filename="../teach/Teach.js" line="1652"/>
         <source>Time Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1513"/>
-        <location filename="../teach/Teach.js" line="1715"/>
+        <location filename="../teach/Teach.js" line="1451"/>
+        <location filename="../teach/Teach.js" line="1653"/>
         <source>Action Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1516"/>
+        <location filename="../teach/Teach.js" line="1454"/>
         <source>Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1524"/>
-        <location filename="../teach/Teach.js" line="1596"/>
-        <location filename="../teach/Teach.js" line="1597"/>
-        <source>Counter:Self</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1525"/>
+        <location filename="../teach/Teach.js" line="1463"/>
         <source>IntervalOutput:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1525"/>
+        <location filename="../teach/Teach.js" line="1463"/>
         <source>Interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1525"/>
+        <location filename="../teach/Teach.js" line="1463"/>
         <source>,</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1527"/>
+        <location filename="../teach/Teach.js" line="1465"/>
         <source>Always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1527"/>
+        <location filename="../teach/Teach.js" line="1465"/>
         <source>Time out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1534"/>
+        <location filename="../teach/Teach.js" line="1472"/>
         <source>Sync Begin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1538"/>
+        <location filename="../teach/Teach.js" line="1476"/>
         <source>Sync End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1544"/>
+        <location filename="../teach/Teach.js" line="1482"/>
         <source>Box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1549"/>
+        <location filename="../teach/Teach.js" line="1487"/>
         <source>Datasource</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1551"/>
+        <location filename="../teach/Teach.js" line="1489"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1557"/>
+        <location filename="../teach/Teach.js" line="1495"/>
         <source>not exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1561"/>
+        <location filename="../teach/Teach.js" line="1499"/>
         <source>interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1563"/>
-        <location filename="../teach/Teach.js" line="1580"/>
+        <location filename="../teach/Teach.js" line="1501"/>
+        <location filename="../teach/Teach.js" line="1518"/>
         <source>number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1567"/>
-        <location filename="../teach/Teach.js" line="1584"/>
+        <location filename="../teach/Teach.js" line="1505"/>
+        <location filename="../teach/Teach.js" line="1522"/>
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1570"/>
-        <location filename="../teach/Teach.js" line="1587"/>
+        <location filename="../teach/Teach.js" line="1508"/>
+        <location filename="../teach/Teach.js" line="1525"/>
         <source>time out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1578"/>
+        <location filename="../teach/Teach.js" line="1516"/>
         <source>intervalbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1594"/>
+        <location filename="../teach/Teach.js" line="1532"/>
         <source>Speed1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1602"/>
-        <location filename="../teach/Teach.js" line="1603"/>
-        <location filename="../teach/Teach.js" line="1604"/>
-        <source>Speed0:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1609"/>
-        <source>Clear </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1609"/>
-        <source>Plus 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1638"/>
-        <source>LineXY:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1641"/>
-        <source>LineXZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1644"/>
-        <source>LineYZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1647"/>
-        <source>Line3D:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1650"/>
-        <source>Arc3D:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1653"/>
-        <source>Pose:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1656"/>
-        <source>Line3D-Pose:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1659"/>
-        <source>Free Path:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1662"/>
-        <source>Offset Line:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1665"/>
-        <source>Offset Jog:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1668"/>
-        <source>Circle:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1671"/>
-        <source>ArcXY:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1674"/>
-        <source>ArcXZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1677"/>
-        <source>ArcYZ:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1680"/>
-        <source>Offset Curve:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1683"/>
-        <source>Curve3D-Pose:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1686"/>
-        <source>PO Curve 3D:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1689"/>
-        <source>P Circle:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1692"/>
-        <source>PO Line 3D:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1698"/>
-        <source>Next:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1701"/>
-        <source>End:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1716"/>
-        <source>actCnt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1716"/>
+        <location filename="../teach/Teach.js" line="1654"/>
         <source>intervalTime</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1716"/>
+        <location filename="../teach/Teach.js" line="1654"/>
         <source>Until Photo Vec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1719"/>
+        <location filename="../teach/Teach.js" line="1462"/>
+        <location filename="../teach/Teach.js" line="1534"/>
+        <location filename="../teach/Teach.js" line="1535"/>
+        <source>Counter:Self</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1540"/>
+        <location filename="../teach/Teach.js" line="1541"/>
+        <location filename="../teach/Teach.js" line="1542"/>
+        <source>Speed0:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1547"/>
+        <source>Clear </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1547"/>
+        <source>Plus 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1576"/>
+        <source>LineXY:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1579"/>
+        <source>LineXZ:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1582"/>
+        <source>LineYZ:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1585"/>
+        <source>Line3D:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1588"/>
+        <source>Arc3D:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1591"/>
+        <source>Pose:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1594"/>
+        <source>Line3D-Pose:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1597"/>
+        <source>Free Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1600"/>
+        <source>Offset Line:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1603"/>
+        <source>Offset Jog:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1606"/>
+        <source>Circle:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1609"/>
+        <source>ArcXY:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1612"/>
+        <source>ArcXZ:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1615"/>
+        <source>ArcYZ:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1618"/>
+        <source>Offset Curve:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1621"/>
+        <source>Curve3D-Pose:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1624"/>
+        <source>PO Curve 3D:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1627"/>
+        <source>P Circle:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1630"/>
+        <source>PO Line 3D:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1636"/>
+        <source>Next:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1639"/>
+        <source>End:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1654"/>
+        <source>actCnt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1657"/>
         <source>Vistion Catch Start:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1719"/>
-        <location filename="../teach/Teach.js" line="1724"/>
+        <location filename="../teach/Teach.js" line="1657"/>
+        <location filename="../teach/Teach.js" line="1662"/>
         <source>Data Source:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1720"/>
+        <location filename="../teach/Teach.js" line="1658"/>
         <source>Catch Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1720"/>
+        <location filename="../teach/Teach.js" line="1658"/>
         <source>Communicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1720"/>
+        <location filename="../teach/Teach.js" line="1658"/>
         <source>O Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1724"/>
+        <location filename="../teach/Teach.js" line="1662"/>
         <source>Wait Vision Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1733"/>
+        <location filename="../teach/Teach.js" line="1671"/>
         <source>Write Const Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1733"/>
+        <location filename="../teach/Teach.js" line="1671"/>
         <source>Write Addr Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1734"/>
+        <location filename="../teach/Teach.js" line="1672"/>
         <source>Const Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1734"/>
+        <location filename="../teach/Teach.js" line="1672"/>
         <source>Addr Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1736"/>
+        <location filename="../teach/Teach.js" line="1674"/>
         <source>Target Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1876"/>
+        <location filename="../teach/Teach.js" line="1814"/>
         <source>Sub program is out of ranged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1878"/>
+        <location filename="../teach/Teach.js" line="1816"/>
         <source>Invalid program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1880"/>
+        <location filename="../teach/Teach.js" line="1818"/>
         <source>Has not Group-Begin action but has Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1882"/>
+        <location filename="../teach/Teach.js" line="1820"/>
         <source>Group action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1884"/>
+        <location filename="../teach/Teach.js" line="1822"/>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1886"/>
+        <location filename="../teach/Teach.js" line="1824"/>
         <source>Has not Sync-Begin action but has Sync-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1888"/>
+        <location filename="../teach/Teach.js" line="1826"/>
         <source>Sync action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1890"/>
+        <location filename="../teach/Teach.js" line="1828"/>
         <source>Has Sync-Begin action but has not Sync-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1892"/>
+        <location filename="../teach/Teach.js" line="1830"/>
         <source>Last action is not End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1894"/>
+        <location filename="../teach/Teach.js" line="1832"/>
         <source>Invalid program index</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1896"/>
+        <location filename="../teach/Teach.js" line="1834"/>
         <source>Wrong action format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1898"/>
+        <location filename="../teach/Teach.js" line="1836"/>
         <source>Invalid jump flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1900"/>
+        <location filename="../teach/Teach.js" line="1838"/>
         <source>Invalid stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1902"/>
+        <location filename="../teach/Teach.js" line="1840"/>
         <source>Invalid counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1904"/>
+        <location filename="../teach/Teach.js" line="1842"/>
         <source>Invaild Moldule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1906"/>
+        <location filename="../teach/Teach.js" line="1844"/>
         <source>Unknow Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6973,11 +6408,6 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>ToolCoordPage</name>
     <message>
-        <location filename="../ToolCoordPage.qml" line="61"/>
-        <source>coordName</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../ToolCoordPage.qml" line="67"/>
         <source>newBtn</source>
         <translation type="unfinished"></translation>
@@ -7000,6 +6430,11 @@ You just need to set the count configs after this setting.</source>
     <message>
         <location filename="../ToolCoordPage.qml" line="194"/>
         <source>setP3Btn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ToolCoordPage.qml" line="61"/>
+        <source>coordName</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7307,57 +6742,37 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>WaitActionEditor</name>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="88"/>
+        <location filename="../teach/WaitActionEditor.qml" line="79"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="94"/>
+        <location filename="../teach/WaitActionEditor.qml" line="85"/>
         <source>EUX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="99"/>
+        <location filename="../teach/WaitActionEditor.qml" line="90"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="104"/>
-        <source>Simple Delay</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="179"/>
+        <location filename="../teach/WaitActionEditor.qml" line="171"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="185"/>
+        <location filename="../teach/WaitActionEditor.qml" line="176"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="191"/>
-        <source>Rising Edge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="196"/>
-        <source>Falling Edge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="200"/>
+        <location filename="../teach/WaitActionEditor.qml" line="182"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/WaitActionEditor.qml" line="200"/>
-        <source>Simple Delay:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/WaitActionEditor.qml" line="201"/>
+        <location filename="../teach/WaitActionEditor.qml" line="183"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7442,90 +6857,70 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="795"/>
-        <location filename="../main.qml" line="943"/>
+        <location filename="../main.qml" line="903"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="895"/>
+        <location filename="../main.qml" line="864"/>
         <source>Recalibrate need to reboot. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="895"/>
-        <location filename="../main.qml" line="914"/>
+        <location filename="../main.qml" line="864"/>
+        <location filename="../main.qml" line="883"/>
         <source>Yes[F4]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="895"/>
-        <location filename="../main.qml" line="914"/>
+        <location filename="../main.qml" line="864"/>
+        <location filename="../main.qml" line="883"/>
         <source>No[F5]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="908"/>
+        <location filename="../main.qml" line="877"/>
         <source>Exporting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="913"/>
+        <location filename="../main.qml" line="882"/>
         <source>Need to ghost and export to U Disk?
 The name of ghost is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="943"/>
+        <location filename="../main.qml" line="903"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="962"/>
+        <location filename="../main.qml" line="922"/>
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../main.qml" line="1164"/>
-=======
-        <location filename="../main.qml" line="1127"/>
->>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
+        <location filename="../main.qml" line="1043"/>
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../main.qml" line="1233"/>
-=======
-        <location filename="../main.qml" line="1196"/>
->>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
+        <location filename="../main.qml" line="1111"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../main.qml" line="1266"/>
-=======
-        <location filename="../main.qml" line="1229"/>
->>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
+        <location filename="../main.qml" line="1144"/>
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../main.qml" line="1266"/>
-=======
-        <location filename="../main.qml" line="1229"/>
->>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
+        <location filename="../main.qml" line="1144"/>
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../main.qml" line="1266"/>
-=======
-        <location filename="../main.qml" line="1229"/>
->>>>>>> 5d11dac7531c6dde7fd8ebf05d784c60d31b89db
+        <location filename="../main.qml" line="1144"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "ProgramActionMenuFrame.js" as PData
+import "../../utils/utils.js" as Utils
 
 Rectangle{
     id:actionEditorFrame
@@ -137,47 +138,46 @@ Rectangle{
     }
     Component.onCompleted: {
         var editor = Qt.createComponent('AxisActionEditor.qml');
-        var axisEditorObject = editor.createObject(actionEditorContainer);
+        var axisEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('OutputActionEditor.qml');
-        var outputEditorObject = editor.createObject(actionEditorContainer);
+        var outputEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('WaitActionEditor.qml');
-        var waitEditorObject = editor.createObject(actionEditorContainer);
+        var waitEditorObject =Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('CheckActionEditor.qml');
-        var checkEditorObject = editor.createObject(actionEditorContainer);
+        var checkEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('ConditionActionEditor.qml');
-        var conditionEditorObject = editor.createObject(actionEditorContainer);
+        var conditionEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('SyncActionEditor.qml')
-        var syncEditorObject = editor.createObject(actionEditorContainer);
+        var syncEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('CommentActionEditor.qml');
-        var commentEditorObject = editor.createObject(actionEditorContainer);
+        var commentEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('SearchActionEditor.qml');
-        var searchEditorObject = editor.createObject(actionEditorContainer);
+        var searchEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('PathActionEditor.qml');
-        var pathEditorObject = editor.createObject(actionEditorContainer);
+        var pathEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('StackActionEditor.qml');
-        console.log(editor.errorString());
-        var stackEditorObject = editor.createObject(actionEditorContainer);
+        var stackEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         stackEditorObject.stackUpdated.connect(onStackUpdated);
         editor = Qt.createComponent('CounterActionEditor.qml');
-        var counterEditorObject = editor.createObject(actionEditorContainer);
+        var counterEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         counterEditorObject.counterUpdated.connect(onCounterUpdated);
         editor = Qt.createComponent('CustomAlarmActionEditor.qml');
-        var customAlarmEditorObject = editor.createObject(actionEditorContainer);
+        var customAlarmEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
         editor = Qt.createComponent('ModuleActionEditor.qml');
-        var moduleEditorObject = editor.createObject(actionEditorContainer);
+        var moduleEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
 //        PData.moduleActionEditor = moduleEditorObject;
 
         editor = Qt.createComponent('OriginActionEditor.qml');
-        var originEditorObject = editor.createObject(actionEditorContainer);
+        var originEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
 
         editor = Qt.createComponent('VisionActionEditor.qml');
-        var visionEditorObject = editor.createObject(actionEditorContainer);
+        var visionEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
 
         editor = Qt.createComponent('SpeedActionEditor.qml');
-        var speedEditorObject = editor.createObject(actionEditorContainer);
+        var speedEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
 
         editor = Qt.createComponent('DataActionEditor.qml');
-        var dataEditorObject = editor.createObject(actionEditorContainer);
+        var dataEditorObject = Utils.icCreateObject(editor,actionEditorContainer);
 
         var extentIndex = -1;
 

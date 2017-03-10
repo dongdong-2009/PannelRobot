@@ -51,7 +51,8 @@ QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    icsplashscreen.cpp
+    icsplashscreen.cpp \
+    iccomboboxitemdelegate.cpp
 
 # Installation path
 # target.path =
@@ -61,6 +62,7 @@ include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 include(vendor/IndustrialSystemFramework/ICCore/ICCore.pri)
 include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
 include(vendor/IndustrialSystemFramework/QJson/QJson.pri)
+include(extentui/extentui.pri)
 #include(vendor/qwt/qwt.pri)
 
 include(virtualhost/virtualhost.pri)
@@ -135,7 +137,8 @@ unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}'> UPMaker && c
 #unix:QMAKE_PRE_LINK += ""
 
 HEADERS += \
-    icsplashscreen.h
+    icsplashscreen.h \
+    iccomboboxitemdelegate.h
 
 TRANSLATIONS += PanelRobot_zh_CN.ts PanelRobot_en_US.ts
 

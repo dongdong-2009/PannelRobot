@@ -587,6 +587,7 @@ Rectangle {
 //        onSecondGone: restTip.setRestTime(panelRobotController.restUseTime());
     }
 
+
     function onKnobChanged(knobStatus){
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",

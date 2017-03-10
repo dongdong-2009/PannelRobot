@@ -26,7 +26,6 @@ ExtentActionEditorBase {
             z:2
             configName: qsTr("Axis Sel")
             configNameWidth: 100
-            popupHeight: 150
             items: AxisDefine.usedAxisNameList();
             function onAxisDefinesChanged(){
                 configValue = -1;

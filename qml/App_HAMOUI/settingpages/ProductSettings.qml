@@ -102,7 +102,7 @@ Item {
                     configAddr: "m_rw_0_1_0_357"
                     items: pData.useNoUseText
                     configNameWidth: 80
-                    z:10
+//                    z:10
                 }
                 ICComboBoxConfigEdit{
                     id:program1
@@ -111,7 +111,7 @@ Item {
                     configName: qsTr("Program1")
                     configAddr: "m_rw_1_1_0_357"
                     items: pData.useNoUseText
-                    z:9
+//                    z:9
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -122,7 +122,7 @@ Item {
                     configName: qsTr("Program2")
                     configAddr: "m_rw_2_1_0_357"
                     items: pData.useNoUseText
-                    z:8
+//                    z:8
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -133,7 +133,7 @@ Item {
                     configName: qsTr("Program3")
                     configAddr: "m_rw_3_1_0_357"
                     items: pData.useNoUseText
-                    z:7
+//                    z:7
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -144,7 +144,7 @@ Item {
                     configName: qsTr("Program4")
                     configAddr: "m_rw_4_1_0_357"
                     items: pData.useNoUseText
-                    z:6
+//                    z:6
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -155,7 +155,7 @@ Item {
                     configName: qsTr("Program5")
                     configAddr: "m_rw_5_1_0_357"
                     items: pData.useNoUseText
-                    z:5
+//                    z:5
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -166,7 +166,7 @@ Item {
                     configName: qsTr("Program6")
                     configAddr: "m_rw_6_1_0_357"
                     items: pData.useNoUseText
-                    z:4
+//                    z:4
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -177,7 +177,7 @@ Item {
                     configName: qsTr("Program7")
                     configAddr: "m_rw_7_1_0_357"
                     items: pData.useNoUseText
-                    z:3
+//                    z:3
                     configNameWidth: program0.configNameWidth
 
                 }
@@ -188,7 +188,7 @@ Item {
                     configName: qsTr("Program8")
                     configAddr: "m_rw_8_1_0_357"
                     items: pData.useNoUseText
-                    z:2
+//                    z:2
                     configNameWidth: program0.configNameWidth
                     visible: false
                 }
@@ -290,7 +290,6 @@ typedef union {
                     }
                 }
                 ICComboBoxConfigEdit{
-                    popupHeight:100
                     indexMappedValue: [
                         16,17,18,19,1,2,3,5,6,7,8,9,10,11
                     ]
@@ -343,8 +342,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 }
                 ICComboBoxConfigEdit{
                     id:outType
-                    popupMode: 0
-                    popupHeight: 100
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
                     onConfigValueChanged: {
@@ -370,7 +367,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 ICComboBox{
                     id: outid
                     width: 180
-                    popupHeight:100
                     currentIndex: outid_init
                     onCurrentIndexChanged: {
                         valveModel.setProperty(index,"outid_init",currentIndex);
@@ -380,7 +376,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     id: outstatus
                     items: [qsTr("OFF"), qsTr("ON")]
                     width: 40
-                    popupHeight:100
                     currentIndex: outstatus_init
                     onCurrentIndexChanged: {
                         valveModel.setProperty(index,"outstatus_init",currentIndex);
@@ -442,7 +437,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
             ICComboBox{
                 id: bindingTypeChoose
                 items: index<5?pData.ledItem:pData.keyItem
-                popupHeight:100
                 currentIndex: index<5?ledBindingType:keyBindingType
                 onCurrentIndexChanged: {
                     if(currentIndex<0)return;
@@ -501,7 +495,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
             ICComboBox{
                 id: bindingIdChoose
                 width:  200
-                popupHeight:100
                 currentIndex: index<5?ledBindingId:keyBindingId
                 onCurrentIndexChanged: {
 //                    console.log(index);
@@ -513,7 +506,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
             ICComboBox{
                 id: bindingIdStatusModeChoose
                 width:  200
-                popupHeight:100
                 items: [qsTr("Move"),qsTr("Flip"),qsTr("ON"),qsTr("OFF")]
                 visible: index<5?false:true;
                 currentIndex: keyBindingIdStatusMode
@@ -524,7 +516,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
             ICComboBox{
                 id: bindingIdStatusChoose
                 width:  200
-                popupHeight:100
                 items: [qsTr("OFF"),qsTr("ON")]
                 visible: index<5?false:true;
                 currentIndex: keyBindingIdStatus

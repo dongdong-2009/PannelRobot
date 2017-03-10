@@ -32,7 +32,6 @@ ExtentActionEditorBase {
                 configName: qsTr("Axis")
                 configNameWidth: decSpeedEdit.configNameWidth
                 inputWidth: decSpeedEdit.inputWidth
-                popupHeight: 120
                 z:2
                 configValue: -1
                 function onAxisDefinesChanged(){
@@ -100,7 +99,6 @@ ExtentActionEditorBase {
                     configName: qsTr("Input")
                     configValue: -1
                     inputWidth: 60
-                    popupHeight: 120
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)

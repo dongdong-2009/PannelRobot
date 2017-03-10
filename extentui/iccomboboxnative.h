@@ -45,7 +45,7 @@ signals:
     void itemsChanged(const QStringList& items);
 
 private slots:
-
+    void onWidthChanged();
 
 private:
     QStaticText downPic_;

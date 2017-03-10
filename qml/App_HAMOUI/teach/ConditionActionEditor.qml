@@ -424,8 +424,6 @@ Item {
                                 z:2
                                 configName: qsTr("Axis")
                                 configValue: -1
-                                popupMode: 1
-                                popupHeight: 90
                                 function onAxisDefinesChanged(){
                                     var axis = AxisDefine.usedAxisNameList();
                                     items = axis;
@@ -597,9 +595,7 @@ Item {
                 ICComboBoxConfigEdit{
                     id: flag
                     configName: qsTr("Flag")
-                    popupMode: 1
                     inputWidth:  180
-                    popupHeight: 200
 
                     onVisibleChanged: {
                         if(visible){

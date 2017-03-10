@@ -4,6 +4,7 @@ import "../ICCustomElement"
 import "./Theme.js" as Theme
 import "ShareData.js" as ShareData
 import "configs/IOConfigs.js" as IOConfis
+import "../utils/utils.js" as Utils
 
 ContentPageBase {
     Rectangle {
@@ -132,19 +133,20 @@ ContentPageBase {
                                 "valves": IOConfis.manualShowValves
                             });
                 pageContainer.addPage(page)
-            }
+            }else
+                console.log(yDefinePage1Class.errorString());
             var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
-            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(toolsCalibrationClass, pageContainer));
 
             var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
-            pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(programmableButtonClass, pageContainer));
 
             var toolCoord = Qt.createComponent('ToolCoordPage.qml');
-            pageContainer.addPage(toolCoord.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(toolCoord, pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');
-            pageContainer.addPage(debugprintClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(debugprintClass, pageContainer));
             var jogClass = Qt.createComponent('DebugPage.qml');
-            pageContainer.addPage(jogClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(jogClass, pageContainer));
 
 
 

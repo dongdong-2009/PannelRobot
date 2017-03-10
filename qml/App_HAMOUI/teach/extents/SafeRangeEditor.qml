@@ -51,7 +51,6 @@ ExtentActionEditorBase {
                     AxisDefine.axisInfos[3].name,
                     AxisDefine.axisInfos[4].name,
                     AxisDefine.axisInfos[5].name]
-                popupMode: 1
             }
             ICHCAddrEdit{
                 id:pos1Edit
@@ -74,7 +73,6 @@ ExtentActionEditorBase {
             configName: qsTr("Limit Axis")
             items: limitedAxisSel.items
             configNameWidth: limitedAxisSel.configNameWidth
-            popupMode: 1
 
         }
         ICButtonGroup{

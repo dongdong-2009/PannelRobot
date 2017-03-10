@@ -2215,6 +2215,10 @@
         <source>Machine Introduce</source>
         <translation>机器简介</translation>
     </message>
+    <message>
+        <source>Operation Instructions</source>
+        <translation>操作说明书</translation>
+    </message>
 </context>
 <context>
     <name>ManualProgramManager</name>
@@ -2639,6 +2643,18 @@ please chose!</source>
     <message>
         <source>Set As MachineImg</source>
         <translation>设为机器简介图</translation>
+    </message>
+    <message>
+        <source>Use MachineImg</source>
+        <translation>使用机器简介图</translation>
+    </message>
+    <message>
+        <source>Scan Instructions</source>
+        <translation>扫描说明书</translation>
+    </message>
+    <message>
+        <source>Set Instructions</source>
+        <translation>安装说明书</translation>
     </message>
 </context>
 <context>

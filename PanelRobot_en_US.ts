@@ -2,6 +2,22 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="en_US">
 <context>
+    <name>ICComboBoxView</name>
+    <message>
+        <location filename="extentui/iccomboboxview.ui" line="+14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ICInstructionsView</name>
+    <message>
+        <location filename="extentui/icinstructionsview.ui" line="+20"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ICSplashScreen</name>
     <message>
         <location filename="icsplashscreen.cpp" line="+14"/>
@@ -118,7 +134,7 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="+241"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="+245"/>
         <location line="+5"/>
         <location line="+11"/>
         <source>Error</source>

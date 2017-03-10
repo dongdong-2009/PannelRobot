@@ -1469,7 +1469,11 @@ void PanelRobotController::setWatchDogEnabled(bool en)
 #endif
 
 }
-
+QStringList PanelRobotController::getInstructions()const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    return usb.entryList(QStringList()<<"Instructions*", QDir::Dirs);
+}
 QString PanelRobotController::getPictures() const
 {
     QDir usb(ICAppSettings::UsbPath);
@@ -1494,7 +1498,16 @@ QString PanelRobotController::getPicturesPath(const QString& picName) const
     usb.cd("HCUpdate_pic");
     return usb.absoluteFilePath(picName);
 }
-
+void PanelRobotController:: copyInstructions(const QString &picName) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists(picName)) return;
+    ::system(QString("rm -r Instructions").toLatin1());
+//    usb.cd(picName);
+    qDebug()<<QString("cp %1 Instructions -rf").arg(usb.absoluteFilePath(picName)).toLatin1();
+    ::system(QString("cp %1 Instructions -rf").arg(usb.absoluteFilePath(picName)).toLatin1());
+    ::system("sync");
+}
 void PanelRobotController::copyPicture(const QString &picName, const QString& to) const
 {
     QDir usb(ICAppSettings::UsbPath);

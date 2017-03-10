@@ -573,7 +573,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         len = MData.ledKesSetData.length;
         if(len === 10){
-            console.log("save");
             for(i = 0; i < len; ++i){
                 keyModel.append(MData.ledKesSetData[i]);
             }

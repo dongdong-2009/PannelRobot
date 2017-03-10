@@ -505,7 +505,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                                 bindingIdChoose.currentIndex = -1;
                             }
                             else{
-                                console.log("1");
                                 bindingIdChoose.currentIndex = 0;
                             }
                             bindingIdChoose.items = ioItems;
@@ -513,7 +512,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                         else{
                             bindingIdChoose.items = ioItems;
                             if(bindingNum == -1 && ioItems.length>0){
-                                console.log("2");
                                 bindingIdChoose.currentIndex = 0;
                             }
                         }

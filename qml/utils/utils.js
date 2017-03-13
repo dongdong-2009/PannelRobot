@@ -63,9 +63,9 @@ function parseCalibration(str){
 }
 
 function icCreateObject(comp, parentObj,properties){
-    console.log("icCreateObject",comp.errorString(), comp.status, JSON.stringify(properties));
     if(comp.status === 1){
         return comp.createObject(parentObj, properties || {});
     }
+    console.log("createObject:", comp.errorString());
     return null;
 }

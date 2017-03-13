@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     qInstallMsgHandler(appMessageOutput);
 #endif
     qmlRegisterType<ICPainter>("ICPainter", 1, 0, "ICPainter");
-    qmlRegisterType<ICComboBoxNative>("Extentuis", 1, 0, "ICComboBoxNative");
+    qmlRegisterType<ICComboBoxQML>("Extentuis", 1, 0, "ICComboBoxQML");
 
     QApplication app(argc, argv);
     app.setOrganizationName("SZHC");

@@ -17,8 +17,10 @@ class ICComboBoxView : public QDialog
 public:
     explicit ICComboBoxView(QWidget *parent = 0);
     ~ICComboBoxView();
+    QStringList items() const;
     void setItems(const QStringList &items);
     QString currentText() const;
+    QString text(int index) const;
     int currentIndex() const;
     void setCurrentIndex(int index);
     void setEditorWidth(double ewidth)
@@ -35,9 +37,13 @@ protected:
 private slots:
     void on_listView_clicked(const QModelIndex &index);
 
+signals:
+    void currentIndexChanged(int index);
+
 private:
     QStringListModel model_;
     Ui::ICComboBoxView *ui;
+    int currentIndex_;
     double editorWidth_;
     ICComboboxItemDelegate* itemDelegate_;
 };

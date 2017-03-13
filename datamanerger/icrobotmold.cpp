@@ -401,7 +401,6 @@ int IntervalOutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
-
 }
 
 int VisionCatchActionCompiler(ICMoldItem & item, const QVariantMap* v)

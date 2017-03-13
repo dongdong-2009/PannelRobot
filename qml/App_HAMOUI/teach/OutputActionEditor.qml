@@ -5,43 +5,65 @@ import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../configs/IOConfigs.js" as IOConfigs
 import "../../utils/utils.js" as Utils
+import "extents/ExtentActionDefine.js" as ExtentActionDefine
+import "extents"
 
 
-Item {
+ExtentActionEditorBase {
     id:container
+    width: 700
+    height: 209
+    property int type:pdata === undefined? -1:pdata.board
+    property int point: pdata === undefined? -1:pdata.hwPoint
+    property int valveID:pdata === undefined? -1:pdata.valveID
+    property bool pointStatus: statusGroup.checkedItem == onBox ? true : false
+    property alias delay: delayEdit.configValue
+
+    property alias intervalType: always.isChecked
+    property bool isBindingCount: count.configValue == 0?false:true
+    property string counterID: count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText())
+    property alias cnt: interval.configValue
+
+    property variant pdata
 
     function createActionObjects(){
         var ret = [];
-        var mD;
-        var data;
-        if(normalY.isChecked) mD = yModel;
-        else if(euY.isChecked) mD = euYModel;
-        else if(mY.isChecked) mD = mYModel;
-        else if(singleY.isChecked) mD = singleYModel;
-        else if(holdDoubleY.isChecked) mD = holdDoubleYModel;
-        else if(timeY.isChecked) mD = timeYModel;
-        else if(intervalY.isChecked) mD = intervalYModel;
-        else mD = intervalMModel
-        for(var i = 0; i < mD.count; ++i)
-        {
-            data = mD.get(i);
-            if(data.isSel){
-                var isOn = statusGroup.checkedItem == onBox ? true : false;
-                if(mD==intervalYModel||mD==intervalMModel)
-                ret.push(Teach.generateIntervalOutputAction(always.isChecked,
-                                                            count.configValue == 0?false:true,
-                                                            isOn,
-                                                            data.hwPoint,
-                                                            data.board,
-                                                            count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText()),
-                                                            interval.configValue,
-                                                            delay.configValue));
-                else ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delay.configValue));
-                break;
-            }
-        }
+        ret.push(Teach.generateCustomAction(container.getActionProperties()));
         return ret;
     }
+
+//    function createActionObjects(){
+//        var ret = [];
+//        var mD;
+//        var data;
+//        if(normalY.isChecked) mD = yModel;
+//        else if(euY.isChecked) mD = euYModel;
+//        else if(mY.isChecked) mD = mYModel;
+//        else if(singleY.isChecked) mD = singleYModel;
+//        else if(holdDoubleY.isChecked) mD = holdDoubleYModel;
+//        else if(timeY.isChecked) mD = timeYModel;
+//        else if(intervalY.isChecked) mD = intervalYModel;
+//        else mD = intervalMModel
+//        for(var i = 0; i < mD.count; ++i)
+//        {
+//            data = mD.get(i);
+//            if(data.isSel){
+//                var isOn = statusGroup.checkedItem == onBox ? true : false;
+//                if(mD==intervalYModel||mD==intervalMModel)
+//                ret.push(Teach.generateIntervalOutputAction(always.isChecked,
+//                                                            count.configValue == 0?false:true,
+//                                                            isOn,
+//                                                            data.hwPoint,
+//                                                            data.board,
+//                                                            count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText()),
+//                                                            interval.configValue,
+//                                                            delayEdit.configValue));
+//                else ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delayEdit.configValue));
+//                break;
+//            }
+//        }
+//        return ret;
+//    }
     function updateCounters(){
         count.configValue = -1;
         var countersStrList = Teach.counterManager.countersStrList();
@@ -52,9 +74,6 @@ Item {
         if(visible)
             updateCounters();
     }
-
-    width: parent.width
-    height: parent.height
 
     Column{
         spacing: 4
@@ -97,6 +116,14 @@ Item {
             ICCheckBox{
                 id:euY
                 text: qsTr("EUY")
+            }
+            function listModelChanged(){
+                console.log("ExtentActionDefine");
+                if(typeGroup.checkedItem ===intervalY || typeGroup.checkedItem ===intervalM){
+                    bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
+                }else{
+                    bindActionDefine(ExtentActionDefine.extentOutputAction);
+                }
             }
         }
         Rectangle{
@@ -193,6 +220,7 @@ Item {
                                 for(var i = 0; i < m.count; ++i){
                                     if( i !== index){
                                         m.setProperty(i, "isSel", false);
+                                        pdata = m.get(i);
                                     }
                                 }
                             }
@@ -240,7 +268,7 @@ Item {
             }
 
             ICConfigEdit{
-                id:delay
+                id:delayEdit
                 configName: (timeY.isChecked||
                              intervalY.isChecked||
                              intervalM.isChecked) ? qsTr("Act Time:"): qsTr("Delay:")
@@ -274,7 +302,8 @@ Item {
 
 
     Component.onCompleted: {
-
+        bindActionDefine(ExtentActionDefine.extentOutputAction);
+        typeGroup.checkedItemChanged.connect(typeGroup.listModelChanged);
         var yDefines = IOConfigs.teachYOut;
         var yDefine;
         var i, l;

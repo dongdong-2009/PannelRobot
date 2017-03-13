@@ -1035,38 +1035,38 @@ var generteEndAction = function(){
     };
 }
 
-var generateOutputAction = function(point, type, status, valveID, time){
-    var ret =
-            {
-        "action":actions.F_CMD_IO_OUTPUT,
-        "type":type,
-        "point":point,
-        "pointStatus": status,
-        "valveID":valveID == undefined ? -1 : valveID
-    };
-    if(type >= TIMEY_BOARD_START){
-        ret.acTime = time || 0;
-    }else{
-        ret.delay = time || 0;
-    }
-    return ret;
-}
+//var generateOutputAction = function(point, type, status, valveID, time){
+//    var ret =
+//            {
+//        "action":actions.F_CMD_IO_OUTPUT,
+//        "type":type,
+//        "point":point,
+//        "pointStatus": status,
+//        "valveID":valveID == undefined ? -1 : valveID
+//    };
+//    if(type >= TIMEY_BOARD_START){
+//        ret.acTime = time || 0;
+//    }else{
+//        ret.delay = time || 0;
+//    }
+//    return ret;
+//}
 
-var generateIntervalOutputAction = function(type,isBindingCount, status,id,board,counterID, cnt, acTime){
-    var ret =
-            {
-        "action":actions.F_CMD_IO_INTERVAL_OUTPUT,
-        "type":type,
-        "isBindingCount":isBindingCount,
-        "status": status,
-        "id":id,
-        "board":board,
-        "counterID":counterID,
-        "cnt":cnt,
-        "acTime":acTime,
-    };
-    return ret;
-}
+//var generateIntervalOutputAction = function(type,isBindingCount, status,id,board,counterID, cnt, acTime){
+//    var ret =
+//            {
+//        "action":actions.F_CMD_IO_INTERVAL_OUTPUT,
+//        "type":type,
+//        "isBindingCount":isBindingCount,
+//        "status": status,
+//        "id":id,
+//        "board":board,
+//        "counterID":counterID,
+//        "cnt":cnt,
+//        "acTime":acTime,
+//    };
+//    return ret;
+//}
 
 var generateWaitAction = function(which, type, status, limit){
     return {
@@ -1487,48 +1487,48 @@ function valveItemToString(valve){
     return ret +=":" + valve.descr;
 }
 
-var outputActionToStringHandler = function(actionObject){
-    var valve,valveStr;
-    if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
-        valve = getValveItemFromValveID(actionObject.valveID);
-        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                + qsTr("Delay:") + actionObject.delay;
+//var outputActionToStringHandler = function(actionObject){
+//    var valve,valveStr;
+//    if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
+//        valve = getValveItemFromValveID(actionObject.valveID);
+//        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+//                + qsTr("Delay:") + actionObject.delay;
 
-    }else if(actionObject.type === VALVE_CHECK_START){
-        if(actionObject.isNormalX )
-            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
-        else
-            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
-        return qsTr("Check:") + valveStr + " " + qsTr("Check Start") + " "
-                + (actionObject.isNormalX ?(actionObject.xDir?qsTr("Reverse "):qsTr("Forward ")):"")+" "+qsTr("Delay:") + actionObject.delay;
-    }else if(actionObject.type === VALVE_CHECK_END){
-        if(actionObject.isNormalX )
-            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
-        else
-            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
-        return qsTr("Check:") + valveStr +  " " + qsTr("Check End") + " "
-                +qsTr("Delay:")+"" + actionObject.delay;
-    }else{
-        if(actionObject.type >= TIMEY_BOARD_START){
-            return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                    + qsTr("Action Time:") + actionObject.acTime;
-        }else{
+//    }else if(actionObject.type === VALVE_CHECK_START){
+//        if(actionObject.isNormalX )
+//            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+//        else
+//            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+//        return qsTr("Check:") + valveStr + " " + qsTr("Check Start") + " "
+//                + (actionObject.isNormalX ?(actionObject.xDir?qsTr("Reverse "):qsTr("Forward ")):"")+" "+qsTr("Delay:") + actionObject.delay;
+//    }else if(actionObject.type === VALVE_CHECK_END){
+//        if(actionObject.isNormalX )
+//            valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+//        else
+//            valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+//        return qsTr("Check:") + valveStr +  " " + qsTr("Check End") + " "
+//                +qsTr("Delay:")+"" + actionObject.delay;
+//    }else{
+//        if(actionObject.type >= TIMEY_BOARD_START){
+//            return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+//                    + qsTr("Action Time:") + actionObject.acTime;
+//        }else{
 
-            return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                    + qsTr("Delay:") + actionObject.delay;
-        }
-    }
-}
+//            return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+//                    + qsTr("Delay:") + actionObject.delay;
+//        }
+//    }
+//}
 
-var intervalOutputActionToStringHandler = function(actionObject){
+//var intervalOutputActionToStringHandler = function(actionObject){
 
-    var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
-    return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
-            getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
-            + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
-            actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
-            +counterID1;
-}
+//    var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+//    return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
+//            getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
+//            + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
+//            actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
+//            +counterID1;
+//}
 
 
 var syncBeginActionToStringHandler = function(actionObject){
@@ -1771,8 +1771,8 @@ actionToStringHandlerMap.put(actions.ACT_END, endActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL_BACK, moduleCallBackActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL0, callModuleActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
-actionToStringHandlerMap.put(actions.F_CMD_IO_INTERVAL_OUTPUT, intervalOutputActionToStringHandler);
+//actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
+//actionToStringHandlerMap.put(actions.F_CMD_IO_INTERVAL_OUTPUT, intervalOutputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_FLAG, flagActionToStringHandler);
@@ -1953,17 +1953,19 @@ var canActionTestRun = function(actionObject){
 
 
 function customActionGenerator(actionDefine){
-    actionDefine.generate = function(properties){
-        var ret = {"action":actionDefine.action};
-        for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
-            ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
-        }
-        if(actionDefine.canActionUsePoint){
-            ret.points = properties.points == undefined ? [] : properties.points;
-            actionDefine.pointsReplace(ret);
-        }
-        return ret;
-    };
+    if(!actionDefine.hasOwnProperty("generate")){
+        actionDefine.generate = function(properties){
+            var ret = {"action":actionDefine.action};
+            for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
+                ret[actionDefine.properties[i].item] = properties[actionDefine.properties[i].item];
+            }
+            if(actionDefine.canActionUsePoint){
+                ret.points = properties.points == undefined ? [] : properties.points;
+                actionDefine.pointsReplace(ret);
+            }
+            return ret;
+        };
+    }
     actionDefine.toRegisterString = function(){
         var ret = {"actionID":actionDefine.action, "seq":[]};
         ret.seq.push({"item":"action", "decimal":0});

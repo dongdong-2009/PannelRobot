@@ -139,6 +139,7 @@ Rectangle{
         var editor = Qt.createComponent('AxisActionEditor.qml');
         var axisEditorObject = editor.createObject(actionEditorContainer);
         editor = Qt.createComponent('OutputActionEditor.qml');
+        console.log(editor.errorString());
         var outputEditorObject = editor.createObject(actionEditorContainer);
         editor = Qt.createComponent('WaitActionEditor.qml');
         var waitEditorObject = editor.createObject(actionEditorContainer);

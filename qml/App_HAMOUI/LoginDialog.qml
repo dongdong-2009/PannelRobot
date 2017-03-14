@@ -42,7 +42,7 @@ MouseArea{
                 id:userName
                 width: 200
                 height: 32
-                font.pixelSize: 18
+                contentFontPixelSize: 18
                 onVisibleChanged: {
                     if(visible){
                         items = ShareData.UserInfo.users();

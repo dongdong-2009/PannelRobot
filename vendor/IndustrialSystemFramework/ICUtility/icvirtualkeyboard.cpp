@@ -15,7 +15,7 @@ QList<QPushButton*> cnButtons;
 
 ICVirtualKeyboard::ICVirtualKeyboard(AddrRangeGetter rangeGetter, QWidget *parent) :
     rangeGetter_(rangeGetter),
-    QWidget(parent),
+    QFrame(parent),
     ui(new Ui::ICVirtualKeyboard)
 {
     ui->setupUi(this);
@@ -69,7 +69,7 @@ ICVirtualKeyboard::~ICVirtualKeyboard()
 
 void ICVirtualKeyboard::changeEvent(QEvent *e)
 {
-    QWidget::changeEvent(e);
+    QFrame::changeEvent(e);
     switch (e->type()) {
     case QEvent::LanguageChange:
         ui->retranslateUi(this);
@@ -86,7 +86,7 @@ void ICVirtualKeyboard::showEvent(QShowEvent *e)
     QMouseEvent *me = new QMouseEvent(QEvent::MouseButtonPress, QPoint(10, 10),
                                       Qt::LeftButton,Qt::LeftButton,Qt::NoModifier);
     qApp->postEvent(ui->inputEdit, me);
-    QWidget::showEvent(e);
+    QFrame::showEvent(e);
 }
 
 void ICVirtualKeyboard::closeEvent(QCloseEvent *event)

@@ -579,8 +579,13 @@ void PanelRobotController::InitMainView()
     emit LoadMessage("Initing ui...");
     qDebug("Init MainView");
     mainView_ = new QtQuick1ApplicationViewer;
+//    virtualKeyboard.setParent(mainView_);
+    comboBoxView_.setParent(mainView_);
+//    virtualKeyboard.hide();
+    comboBoxView_.hide();
     mainView_->rootContext()->setContextProperty("panelRobotController", this);
     mainView_->rootContext()->setContextProperty("virtualKeyboard", &virtualKeyboard);
+    mainView_->rootContext()->setContextProperty("comboBoxView", &comboBoxView_);
     mainView_->addImportPath(QLatin1String("modules"));
     mainView_->setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
 #ifdef Q_WS_QWS

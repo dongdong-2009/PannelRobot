@@ -10,7 +10,7 @@ public:
     ICComboboxItemDelegate( QObject * parent = 0);
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
     {
-        return QSize(100, 24);
+        return QSize(100, 32);
     }
 };
 

@@ -26,6 +26,7 @@
 #include "icparameterscache.h"
 #include "qtquick1applicationviewer.h"
 #include "icvirtualkeyboard.h"
+#include "iccomboboxview.h"
 #include "iclog.h"
 #include "ictcptransceiver.h"
 
@@ -940,6 +941,7 @@ private:
     QString valveDefineJSON_;
     QtQuick1ApplicationViewer *mainView_;
     ICVirtualKeyboard virtualKeyboard;
+    ICComboBoxView comboBoxView_;
     QFileSystemWatcher hostUpdateFinishedWatcher_;
     QMap<int, quint32> readedConfigValues_;
     ICLog* logger_;

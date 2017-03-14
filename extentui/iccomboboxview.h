@@ -19,10 +19,12 @@ public:
     ~ICComboBoxView();
     QStringList items() const;
     void setItems(const QStringList &items);
-    QString currentText() const;
-    QString text(int index) const;
-    int currentIndex() const;
-    void setCurrentIndex(int index);
+    Q_INVOKABLE QString currentText() const;
+    Q_INVOKABLE QString text(int index) const;
+    Q_INVOKABLE int currentIndex() const;
+    Q_INVOKABLE void setCurrentIndex(int index);
+    Q_INVOKABLE int openView(int editorX, int editorY, int editorW, int editorH,
+                              const QStringList& items, int currentIndex);
     void setEditorWidth(double ewidth)
     {
         editorWidth_ = ewidth;
@@ -32,7 +34,6 @@ public:
 
 
 protected:
-    bool eventFilter(QObject *o, QEvent *e);
 
 private slots:
     void on_listView_clicked(const QModelIndex &index);
@@ -45,6 +46,8 @@ private:
     Ui::ICComboBoxView *ui;
     int currentIndex_;
     double editorWidth_;
+    int screenWidth_;
+    int screenHeight_;
     ICComboboxItemDelegate* itemDelegate_;
 };
 

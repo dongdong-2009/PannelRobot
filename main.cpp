@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <QIcon>
 #include <QFile>
-#include "iccomboboxnative.h"
 #include "iclog.h"
 #include "icpainter.h"
 
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
     qInstallMsgHandler(appMessageOutput);
 #endif
     qmlRegisterType<ICPainter>("ICPainter", 1, 0, "ICPainter");
-    qmlRegisterType<ICComboBoxQML>("Extentuis", 1, 0, "ICComboBoxQML");
+//    qmlRegisterType<ICComboBoxQML>("Extentuis", 1, 0, "ICComboBoxQML");
 
     QApplication app(argc, argv);
     app.setOrganizationName("SZHC");

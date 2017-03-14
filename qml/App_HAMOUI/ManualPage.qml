@@ -32,15 +32,6 @@ ContentPageBase {
             y: pdata.menuItemY
             z: 1
             TabMenuItem {
-                id: introduce
-                width: 80
-                height: pdata.menuItemHeight
-                itemText: qsTr("Machine Introduce")
-                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                textFont.pixelSize: getChecked() ? 18 : 16
-                textColor: getChecked() ? "yellow" : "black"
-            }
-            TabMenuItem {
                 id: group1
                 width: 80
                 height: pdata.menuItemHeight
@@ -90,6 +81,25 @@ ContentPageBase {
                 
             }
             TabMenuItem {
+                id: instructions
+                width: 100
+                height: pdata.menuItemHeight
+                itemText: qsTr("Operation Instructions")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+            }
+            TabMenuItem {
+                id: introduce
+                width: 80
+                height: pdata.menuItemHeight
+                visible: panelRobotController.getCustomSettings("MachineImgPicUse", 0);
+                itemText: qsTr("Machine Introduce")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+            }
+            TabMenuItem {
                 id: jog
                 width: 50
                 height: pdata.menuItemHeight
@@ -102,7 +112,15 @@ ContentPageBase {
                 pageContainer.setCurrentIndex(index)
             }
             Component.onCompleted: {
-                introduce.setChecked(true)
+                if(panelRobotController.getCustomSettings("MachineImgPicUse", 0))
+                    introduce.setChecked(true)
+                else group1.setChecked(true)
+            }
+            onVisibleChanged: {
+                if(visible)
+                {
+                    introduce.visible= panelRobotController.getCustomSettings("MachineImgPicUse", 0);
+                }
             }
         }
 
@@ -121,8 +139,7 @@ ContentPageBase {
             height: manualContainer.parent.contentContainerHeight - menuContainer.height - spliteLine.height
         }
         Component.onCompleted: {
-            var machineIntroduce = Qt.createComponent('MachineIntroduce.qml');
-            pageContainer.addPage(machineIntroduce.createObject(pageContainer));
+
 
             var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
             if (yDefinePage1Class.status === Component.Ready) {
@@ -145,6 +162,13 @@ ContentPageBase {
             pageContainer.addPage(Utils.icCreateObject(toolCoord, pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');
             pageContainer.addPage(Utils.icCreateObject(debugprintClass, pageContainer));
+
+            var operationInstructions = Qt.createComponent('OperationInstructions.qml');
+            console.log("operationInstructions",operationInstructions.errorString());
+            pageContainer.addPage(operationInstructions.createObject(pageContainer));
+            var machineIntroduce = Qt.createComponent('MachineIntroduce.qml');
+            pageContainer.addPage(machineIntroduce.createObject(pageContainer));
+
             var jogClass = Qt.createComponent('DebugPage.qml');
             pageContainer.addPage(Utils.icCreateObject(jogClass, pageContainer));
 

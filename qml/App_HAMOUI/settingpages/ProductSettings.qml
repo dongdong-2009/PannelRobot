@@ -5,6 +5,7 @@ import "../configs/IODefines.js" as IODefines
 import "../configs/IOConfigs.js" as IOConfigs
 import "../teach/ManualProgramManager.js" as ManualProgramManager
 import "RunningConfigs.js" as MData
+import "../ShareData.js" as ShareData
 
 Item {
     id:root
@@ -403,18 +404,37 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         ListModel{
             id:keyModel
         }
-        ICButton{
-            id:saveKeyBtn
-            text: qsTr("Preservation")
-            onButtonClicked: {
-                refreshLedKeyData();
-                console.log(JSON.stringify(MData.ledKesSetData));
-                panelRobotController.setCustomSettings("LedAndKeySetting", JSON.stringify(MData.ledKesSetData), "LedAndKeySetting");
+        Row{
+            x:4
+            id:clickArea
+            spacing: 20
+            ICButton{
+                id:saveKeyBtn
+                text: qsTr("Preservation")
+                onButtonClicked: {
+                    refreshLedKeyData();
+                    console.log(JSON.stringify(MData.ledKesSetData));
+                    panelRobotController.setCustomSettings("LedAndKeySetting", JSON.stringify(MData.ledKesSetData), "LedAndKeySetting");
+                }
+            }
+            ICButton{
+                id:clearDatabase
+                visible: false
+                text: qsTr("Clear Database")
+                function onUserChanged(user){
+                    clearDatabase.visible = ShareData.UserInfo.currentSZHCPerm();
+                }
+                onButtonClicked: {
+                    panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
+                }
+                Component.onCompleted: {
+                    ShareData.UserInfo.registUserChangeEvent(clearDatabase);
+                }
             }
         }
         ICListView{
             id:modelContainer
-            anchors.top: saveKeyBtn.bottom
+            anchors.top: clickArea.bottom
             width: parent.width
             height: parent.height
             spacing: 10
@@ -499,7 +519,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                                 bindingIdChoose.currentIndex = -1;
                             }
                             else{
-                                console.log("1");
                                 bindingIdChoose.currentIndex = 0;
                             }
                             bindingIdChoose.items = ioItems;
@@ -507,7 +526,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                         else{
                             bindingIdChoose.items = ioItems;
                             if(bindingNum == -1 && ioItems.length>0){
-                                console.log("2");
                                 bindingIdChoose.currentIndex = 0;
                             }
                         }
@@ -579,7 +597,7 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         }
         onProgramAdded();
         ManualProgramManager.manualProgramManager.registerMonitor(root);
-
+//        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         len = MData.ledKesSetData.length;
         if(len === 10){

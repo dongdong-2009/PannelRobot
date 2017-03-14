@@ -21,7 +21,7 @@ Item {
 //                valveModel.set(s, {"x1Dir":d.x1Dir, "x2Dir":d.x2Dir, "time":d.time, "autoCheck":d.autoCheck });
                 valveModel.set(s, d);
             }
-            var valveDefines = []
+            var valveDefines = [];
             for(var i = 0; i < valveModel.count; ++i){
                 valveDefines.push(valveModel.get(i));
             }
@@ -41,7 +41,8 @@ Item {
         cellWidth: width  -10
         cellHeight: 32
         width: parent.width
-        height: parent.height
+        height: parent.height-saveBtn.height-35
+        clip: true
         delegate: Row{
             spacing: 4
             z: valveModel.count - index;

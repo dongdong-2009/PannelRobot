@@ -658,7 +658,7 @@ Item {
                     configName: qsTr("Encoder Read Way")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items: [qsTr("Encode RW1"), qsTr("Encode RW2"), qsTr("Encode RW3")]
+                    items: [qsTr("Encode RW1"), qsTr("Encode RW2"), qsTr("Encode RW3"),qsTr("Encode RW4")]
                     z:8
                 }
 

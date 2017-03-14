@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "./Theme.js" as Theme
 import "ShareData.js" as ShareData
+import "../ICCustomElement"
 
 Item {
 
@@ -14,8 +15,7 @@ Item {
             source: "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "machineImg.png");
         }
         onVisibleChanged: {
-            if(visible)
-                machineImg.source = "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "machineImg.png");
+            if(visible)machineImg.source = "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "machineImg.png");
         }
     }
 }

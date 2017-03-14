@@ -55,7 +55,7 @@ QStringList ICComboBoxView::items() const
 
 void ICComboBoxView::setItems(const QStringList &items)
 {
-    int mW= 0, mH = 0;
+    int mW= 0;
     QFontMetrics fm = fontMetrics();
     QRect rec;
     for(int i = 0; i < items.size(); ++i)

@@ -777,7 +777,7 @@
     </message>
     <message>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Pulse Count Per Circle</source>
@@ -785,7 +785,7 @@
     </message>
     <message>
         <source>a</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Reduction Ratio</source>
@@ -817,7 +817,7 @@
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>ACC 2</source>
@@ -829,7 +829,7 @@
     </message>
     <message>
         <source>RPM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Set to Origin</source>
@@ -1041,11 +1041,15 @@
     </message>
     <message>
         <source>Rotate to Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>旋转清零</translation>
     </message>
     <message>
         <source>Motor 8</source>
-        <translation type="unfinished">欧瑞伺服 {8?}</translation>
+        <translation>禾川伺服</translation>
+    </message>
+    <message>
+        <source>Encode RW4</source>
+        <translation>CAN总线控制</translation>
     </message>
 </context>
 <context>
@@ -2215,6 +2219,10 @@
         <source>Machine Introduce</source>
         <translation>机器简介</translation>
     </message>
+    <message>
+        <source>Operation Instructions</source>
+        <translation>操作说明书</translation>
+    </message>
 </context>
 <context>
     <name>ManualProgramManager</name>
@@ -2640,6 +2648,18 @@ please chose!</source>
         <source>Set As MachineImg</source>
         <translation>设为机器简介图</translation>
     </message>
+    <message>
+        <source>Use MachineImg</source>
+        <translation>使用机器简介图</translation>
+    </message>
+    <message>
+        <source>Scan Instructions</source>
+        <translation>扫描说明书</translation>
+    </message>
+    <message>
+        <source>Set Instructions</source>
+        <translation>安装说明书</translation>
+    </message>
 </context>
 <context>
     <name>PointEdit</name>
@@ -3052,6 +3072,10 @@ please chose!</source>
     <message>
         <source>Off</source>
         <translation>断</translation>
+    </message>
+    <message>
+        <source>Clear Database</source>
+        <translation>清空数据</translation>
     </message>
 </context>
 <context>
@@ -4631,11 +4655,11 @@ please chose!</source>
     </message>
     <message>
         <source>Hold</source>
-        <translation type="unfinished"></translation>
+        <translation>保持</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
 </context>
 <context>
@@ -6382,7 +6406,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Please confirm your stop signal off</source>
-        <translation type="unfinished">请确认是否在暂停状态下</translation>
+        <translation>请确认是否在暂停状态下</translation>
     </message>
     <message>
         <source>Exporting...</source>

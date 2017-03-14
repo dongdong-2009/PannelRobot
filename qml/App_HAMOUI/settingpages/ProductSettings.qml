@@ -2,14 +2,17 @@ import QtQuick 1.1
 import "../../ICCustomElement"
 import '..'
 import "../configs/IODefines.js" as IODefines
+import "../configs/IOConfigs.js" as IOConfigs
 import "../teach/ManualProgramManager.js" as ManualProgramManager
+import "RunningConfigs.js" as MData
+import "../ShareData.js" as ShareData
 
 Item {
+    id:root
     function showMenu(){
         for(var i = 0; i < pages.length; ++i){
             pages[i].visible = false;
         }
-
         menu.visible = true;
     }
     property variant pages: []
@@ -18,6 +21,7 @@ Item {
         property variant useNoUseText: [qsTr("NoUse"), qsTr("Use")]
         property variant ledItem: [qsTr("Input"),qsTr("IO output"),qsTr("M value")]
         property variant keyItem: [qsTr("IO output"),qsTr("M value"),qsTr("Program Button")]
+        property variant funcItem:[qsTr("status turn"),qsTr("keepPress"),qsTr("On"),qsTr("Off")]
     }
 
     Grid{
@@ -406,110 +410,159 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         ListModel{
             id:keyModel
         }
-        ICButton{
-            id:saveKeyBtn
-            text: qsTr("Preservation")
-            onButtonClicked: {
-                var toSave = [];
-                var v;
-                for(var i=0;i<keyModel.count;i++)
-                {
-                    v = keyModel.get(i);
-                    toSave.push(v);
+        Row{
+            x:4
+            id:clickArea
+            spacing: 20
+            ICButton{
+                id:saveKeyBtn
+                text: qsTr("Preservation")
+                onButtonClicked: {
+                    refreshLedKeyData();
+                    console.log(JSON.stringify(MData.ledKesSetData));
+                    panelRobotController.setCustomSettings("LedAndKeySetting", JSON.stringify(MData.ledKesSetData), "LedAndKeySetting");
                 }
-                panelRobotController.setCustomSettings("LedAndKeySetting", JSON.stringify(toSave), "LedAndKeySetting");
-                console.log(JSON.stringify(toSave));
+            }
+            ICButton{
+                id:clearDatabase
+                visible: false
+                text: qsTr("Clear Database")
+                function onUserChanged(user){
+                    clearDatabase.visible = ShareData.UserInfo.currentSZHCPerm();
+                }
+                onButtonClicked: {
+                    panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
+                }
+                Component.onCompleted: {
+                    ShareData.UserInfo.registUserChangeEvent(clearDatabase);
+                }
             }
         }
         ICListView{
             id:modelContainer
-            anchors.top: saveKeyBtn.bottom
+            anchors.top: clickArea.bottom
             width: parent.width
             height: parent.height
             spacing: 10
             z:10
             delegate:
             Row{
-            id:settingRow
-            spacing: 20
-            z: 1000-index;
-            ICCheckBox {
-                text: index<5?qsTr("Led")+qsTr(" ")+(index+1)+qsTr("  ")+qsTr("status binding"):
-                               qsTr("Key F")+(index-4)+qsTr("function binding")
-                isChecked: functionCheck
-                anchors.verticalCenter: parent.verticalCenter
-                onIsCheckedChanged: keyModel.setProperty(index,"functionCheck", isChecked);
-            }
-            ICComboBox{
-                id: bindingTypeChoose
-                items: index<5?pData.ledItem:pData.keyItem
-                popupHeight:100
-                currentIndex: index<5?ledBindingType:keyBindingType
-                onCurrentIndexChanged: {
-                    if(currentIndex<0)return;
-//                    console.log(index);
-                    keyModel.setProperty(index,index<5?"ledBindingType":"keyBindingType",currentIndex);
-                    var ioItems = [];
-                    var defines;
-                    var len;
-                    var ioBoardCount
-                    var i;
-                    if(index<5)
-                    {
-                        ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        len = ioBoardCount * 32;
-                        len=currentIndex == 2?16:len;
-                        switch(currentIndex)
-                        {
-                        default:
-                        case 0:defines = "xDefines";break;
-                        case 1:defines = "yDefines";break;
-                        case 2:defines = "mYDefines";break;
+                id:settingRow
+                spacing: 20
+                z: 1000-index;
+                function refreshPropertyThingID(){
+                    if(bindingNum >=0){
+                        if(type==0){
+                            if(bindingType == 0){
+                                keyModel.setProperty(index,"thingID",bindingNum);
+                            }
+                            else if(bindingType == 1){
+                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                            }
+                            else if(bindingType == 2){
+                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
+                            }
                         }
-                        for(i = 0; i < len; ++i){
-                            ioItems.push(IODefines.ioItemName(IODefines[defines][i]));
+                        else{
+                            if(bindingType == 0){
+                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                            }
+                            else if(bindingType == 1){
+                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
+                            }
+                            else if(bindingType == 2){
+                                keyModel.setProperty(index,"thingID",MData.programIDList[bindingNum]);
+                            }
                         }
                     }
-                    else
-                    {
-                        ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        len = ioBoardCount * 32;
-                        len=currentIndex == 1?16:len;
-                        switch(currentIndex)
-                        {
-                        default:
-                        case 0:
-                            defines = "yDefines";
-                            for(i = 0; i < len; ++i)ioItems.push(IODefines.ioItemName(IODefines[defines][i]));
-                            break;
-                        case 1:
-                            defines = "mYDefines";
-                            for(i = 0; i < len; ++i)ioItems.push(IODefines.ioItemName(IODefines[defines][i]));
-                            break;
-                        case 2:
-                            var ioItems_ =ManualProgramManager.manualProgramManager.programsNameList();
-                            for(i=2;i<ioItems_.length;i++)ioItems.push(ioItems_[i]);
-                            break;
-                        }
+                    else{
+                        keyModel.setProperty(index,"thingID",-1);
                     }
-                    bindingIdChoose.items = ioItems;
+                }
+
+
+                ICCheckBox {
+                    text: type==0?qsTr("Led")+qsTr(" ")+(index+1)+qsTr("  ")+qsTr("status binding"):
+                                   qsTr("Key F")+(index-4)+qsTr("function binding")
+                    anchors.verticalCenter: parent.verticalCenter
+                    isChecked: functionCheck
+                    onIsCheckedChanged: keyModel.setProperty(index,"functionCheck", isChecked);
+                }
+
+                ICComboBox{
+                    id: bindingTypeChoose
+                    items: type==0?pData.ledItem:pData.keyItem
+                    popupHeight:100
+                    currentIndex: bindingType
+                    onCurrentIndexChanged: {
+                        keyModel.setProperty(index,"bindingType",currentIndex);
+                        var ioItems = [];
+                        var len,i;
+                        if(type==0){
+                            switch(currentIndex)
+                            {
+                            default:
+                            case 0:ioItems = MData.xDefinesList;
+                                break;
+                            case 1:ioItems = MData.yDefinesList;
+                                break;
+                            case 2:ioItems = MData.mDefinesList;
+                            }
+                        }
+                        else{
+                            switch(currentIndex)
+                            {
+                            default:
+                            case 0:ioItems = MData.yDefinesList;
+                                break;
+                            case 1:ioItems = MData.mDefinesList;
+                                break;
+                            case 2:ioItems = MData.programList;
+                                break;
+                            }
+                        }
+                        if(ioItems.length <= bindingNum){
+                            if(ioItems.length == 0 ){
+                                bindingIdChoose.currentIndex = -1;
+                            }
+                            else{
+                                bindingIdChoose.currentIndex = 0;
+                            }
+                            bindingIdChoose.items = ioItems;
+                        }
+                        else{
+                            bindingIdChoose.items = ioItems;
+                            if(bindingNum == -1 && ioItems.length>0){
+                                bindingIdChoose.currentIndex = 0;
+                            }
+                        }
+
+                        settingRow.refreshPropertyThingID();
+                    }
+                }
+                ICComboBox{
+                    id:keyFunctionType
+                    visible: (type && bindingType<2)
+                    width: 100
+                    popupHeight:100
+                    items: pData.funcItem
+                    currentIndex: keyFuncType
+                    onCurrentIndexChanged: {
+                        keyModel.setProperty(index,"keyFuncType",currentIndex);
+                    }
+                }
+                ICComboBox{
+                    id: bindingIdChoose
+                    width:  100
+                    popupHeight:100
+                    currentIndex: bindingNum
+                    onCurrentIndexChanged: {
+                        keyModel.setProperty(index,"bindingNum",currentIndex);
+                        settingRow.refreshPropertyThingID();
+                    }
                 }
             }
-            ICComboBox{
-                id: bindingIdChoose
-                width:  200
-                popupHeight:100
-                currentIndex: index<5?ledBindingId:keyBindingId
-                onCurrentIndexChanged: {
-//                    console.log(index);
-                    keyModel.setProperty(index,index<5?"ledBindingId":"keyBindingId",currentIndex);
-                }
-            }
-            }
+
         }
     }
 
@@ -522,41 +575,105 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
     Component.onCompleted: {
         var ps = [];
         ps.push(productPage);
-        ps.push(valveSettings)
-        ps.push(customVariableConfigs)
-        ps.push(ioRunningSettingPage)
-        ps.push(ledAndKeySettingPage)
+        ps.push(valveSettings);
+        ps.push(customVariableConfigs);
+        ps.push(ioRunningSettingPage);
+        ps.push(ledAndKeySettingPage);
         pages = ps;
         var i,len;
         var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
         for(i = 0, len = iosettings.length; i < len; ++i){
             valveModel.append(iosettings[i]);
         }
+
+        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+        if(ioBoardCount == 0)
+            ioBoardCount = 1;
+        len = ioBoardCount * 32;
+        for(i = 0; i < len; ++i){
+            MData.xDefinesList.push(IODefines.ioItemName(IODefines.xDefines[i]));
+        }
+        var valveTmp;
+        MData.yOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.yOut);
+        for(i = 0,len =MData.yOutList.length; i < len; ++i){
+            valveTmp = MData.yOutList[i];
+            MData.yDefinesList.push(IODefines.getYDefineFromHWPoint(valveTmp.y1Point, valveTmp.y1Board).yDefine.pointName+":"+valveTmp.descr);
+        }
+        MData.mOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.mY);
+        for(i = 0,len = MData.mOutList.length; i < len; ++i){
+            valveTmp = MData.mOutList[i];
+            MData.mDefinesList.push(IODefines.getYDefineFromHWPoint(valveTmp.y1Point, IODefines.M_BOARD_0).yDefine.pointName+":"+valveTmp.descr);
+        }
+        onProgramAdded();
+        ManualProgramManager.manualProgramManager.registerMonitor(root);
 //        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
-        iosettings = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
-        if(iosettings.length==10)
-        {
-            console.log("load");
-            for(i = 0, len = iosettings.length; i < len; ++i){
-                console.log(JSON.stringify(iosettings[i]));
-                keyModel.append(iosettings[i]);
+        MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
+        len = MData.ledKesSetData.length;
+        if(len === 10){
+            for(i = 0; i < len; ++i){
+                keyModel.append(MData.ledKesSetData[i]);
             }
         }
-        else
-        {
+        else{
             console.log("new");
-//            panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
-            for(i = 0; i < 5; ++i){
-                keyModel.append({"functionCheck":1,"led":0,"ledBindingType":0,"ledBindingId":0});
-            }
-            for(i = 0; i < 5; ++i){
-                keyModel.append({"functionCheck":1,"key":1,"keyBindingType":0,"keyBindingId":0});
-            }
-            console.log(JSON.stringify(keyModel.count));
-            for(i = 0; i < keyModel.count; ++i){
-                console.log(JSON.stringify(keyModel.get(i)));
+            for(i = 0; i < 10; ++i){
+                keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0});
             }
         }
+        refreshLedKeyData();
         modelContainer.model = keyModel;
+    }
+
+
+
+    function refreshLedKeyData(){
+        MData.ledKesSetData =[];
+        for(var i=0;i<keyModel.count;i++){
+            MData.ledKesSetData.push(keyModel.get(i));
+        }
+    }
+
+    function onProgramAdded(){
+        MData.programList = ManualProgramManager.manualProgramManager.programsNameList();
+        MData.programIDList = ManualProgramManager.manualProgramManager.programsIDList();
+        var tmpIDList = MData.programIDList;
+        var i,len,tmpID;
+        for( i=0,len=tmpIDList.length;i<len;++i){
+            tmpID = tmpIDList[i];
+            if(tmpID ==0){
+                MData.programList.splice(i,1);
+                MData.programIDList.splice(i,1);
+            }
+        }
+        tmpIDList = MData.programIDList;
+        for( i=0,len=tmpIDList.length;i<len;++i){
+            tmpID = tmpIDList[i];
+            if(tmpID ==1){
+                MData.programList.splice(i,1);
+                MData.programIDList.splice(i,1);
+            }
+        }
+
+    }
+    function onProgramRemoved(){
+        MData.programList = ManualProgramManager.manualProgramManager.programsNameList();
+        MData.programIDList = ManualProgramManager.manualProgramManager.programsIDList();
+        var tmpIDList = MData.programIDList;
+        var i,len,tmpID;
+        for( i=0,len=tmpIDList.length;i<len;++i){
+            tmpID = tmpIDList[i];
+            if(tmpID ==0){
+                MData.programList.splice(i,1);
+                MData.programIDList.splice(i,1);
+            }
+        }
+        tmpIDList = MData.programIDList;
+        for( i=0,len=tmpIDList.length;i<len;++i){
+            tmpID = tmpIDList[i];
+            if(tmpID ==1){
+                MData.programList.splice(i,1);
+                MData.programIDList.splice(i,1);
+            }
+        }
     }
 }

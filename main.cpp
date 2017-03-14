@@ -7,6 +7,7 @@
 #include "iclog.h"
 #include <QFile>
 #include "icpainter.h"
+#include "icinstructionsviewqml.h"
 
 ICLog iclog("RobotPanel.debuglog", 1024 * 1024);
 
@@ -32,6 +33,8 @@ int main(int argc, char *argv[])
     qInstallMsgHandler(appMessageOutput);
 #endif
     qmlRegisterType<ICPainter>("ICPainter", 1, 0, "ICPainter");
+    qmlRegisterType<ICInstructionsViewQML>("Extentui", 1, 0, "ICInstructionsView");
+
     QApplication app(argc, argv);
     app.setOrganizationName("SZHC");
     app.setApplicationName("RobotPanel");

@@ -1,5 +1,5 @@
 
-QT       += script opengl
+QT       += script opengl webkit
 #TEMPLATE = app
 VERSION = 1.0.1
 VERSTR = '\\"$${VERSION}\\"'
@@ -67,6 +67,7 @@ include(virtualhost/virtualhost.pri)
 include(datamanerger/datamanerger.pri)
 include(controller/controller.pri)
 include(common/common.pri)
+include(extentui/extentui.pri)
 
 
 qtcAddDeployment()
@@ -115,11 +116,13 @@ configs.path = /opt/Qt/apps/sysconfig
 configs.files += $${reinstallDir}/configs/PanelRobot.ini
 testapp.path = /opt/Qt/apps
 testapp.files += $${reinstallDir}/3a8HardwareTest*
+styles.path = /opt/Qt/apps
+styles.files += webkit.css
 
 qmls.path = $${target.path}/qml
 qmls.files += qml/App_*
 
-INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls testapp
+INSTALLS += qmap usr_bin_scripts usr_sbin_scripts qmls testapp styles
 
 #INSTALLS += target
 message($${INSTALLS})
@@ -129,8 +132,8 @@ OTHER_FILES += \
     Init/main.qml
 
 UPDir = $${DESTDIR}/HCRobot-$${VERSION}
-updateCmd = '"tar xvf PanelRobot.tar -C / ; cp /opt/Qt/apps/RobotDatabase /mnt/udisk -f"'
-UPMakerStr = "mkdir $${UPDir} && cp PanelRobot.tar $${UPDir} && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar  &&  cd ../ && tools/versionUpdater.sh $${DESTDIR} $${UPDir}.tar.bfe"
+updateCmd = '"tar xJvf PanelRobot.tar.xz -C / ; cp /opt/Qt/apps/RobotDatabase /mnt/udisk -f"'
+UPMakerStr = "mkdir $${UPDir} && mkdir PanelRobot && tar xvf PanelRobot.tar -C PanelRobot && cd  PanelRobot && tar -cJvf PanelRobot.tar.xz * && cd ../ && cp PanelRobot/PanelRobot.tar.xz $${UPDir} && rm -r PanelRobot && cp $${updateDir}/* $${UPDir} && echo $${updateCmd} > $${UPDir}/update_cmd && cd $${DESTDIR} && tar -cf HCRobot-$${VERSION}.tar HCRobot-$${VERSION} && HCbcrypt.sh HCRobot-$${VERSION}.tar  &&  cd ../ && tools/versionUpdater.sh $${DESTDIR} $${UPDir}.tar.bfe"
 unix:QMAKE_POST_LINK += "rm -rf $${UPDir} && echo '$${UPMakerStr}'> UPMaker && chmod +x UPMaker && chmod +x tools/versionUpdater.sh"
 #unix:QMAKE_PRE_LINK += ""
 

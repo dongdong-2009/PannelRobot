@@ -2215,6 +2215,14 @@
         <source>toolcoord</source>
         <translation>工作台标定</translation>
     </message>
+    <message>
+        <source>Machine Introduce</source>
+        <translation>机器简介</translation>
+    </message>
+    <message>
+        <source>Operation Instructions</source>
+        <translation>操作说明书</translation>
+    </message>
 </context>
 <context>
     <name>ManualProgramManager</name>
@@ -2679,6 +2687,22 @@ please chose!</source>
         <source>Set As Standby</source>
         <translation>设为待机图片</translation>
     </message>
+    <message>
+        <source>Set As MachineImg</source>
+        <translation>设为机器简介图</translation>
+    </message>
+    <message>
+        <source>Use MachineImg</source>
+        <translation>使用机器简介图</translation>
+    </message>
+    <message>
+        <source>Scan Instructions</source>
+        <translation>扫描说明书</translation>
+    </message>
+    <message>
+        <source>Set Instructions</source>
+        <translation>安装说明书</translation>
+    </message>
 </context>
 <context>
     <name>PointEdit</name>
@@ -3074,7 +3098,27 @@ please chose!</source>
     </message>
     <message>
         <source>Program Button</source>
-        <translation type="unfinished"></translation>
+        <translation>可编程按键</translation>
+    </message>
+    <message>
+        <source>status turn</source>
+        <translation>状态翻转</translation>
+    </message>
+    <message>
+        <source>keepPress</source>
+        <translation>脉冲</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>Clear Database</source>
+        <translation>清空数据</translation>
     </message>
 </context>
 <context>
@@ -6305,6 +6349,14 @@ You just need to set the count configs after this setting.</source>
         <source>Falling Edge</source>
         <translation>下降沿</translation>
     </message>
+    <message>
+        <source>Simple Delay</source>
+        <translation>单纯延时</translation>
+    </message>
+    <message>
+        <source>Simple Delay:</source>
+        <translation>延时</translation>
+    </message>
 </context>
 <context>
     <name>YDefineItem</name>
@@ -6417,7 +6469,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Please confirm your stop signal off</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请确认是否在暂停状态下</translation>
     </message>
     <message>
         <source>Exporting...</source>

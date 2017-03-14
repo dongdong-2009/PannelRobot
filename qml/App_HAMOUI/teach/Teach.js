@@ -1433,7 +1433,8 @@ var waitActionToStringHandler = function(actionObject){
         statusStr = qsTr("RisingEdge");
     else if(actionObject.pointStatus == 3)
         statusStr = qsTr("FallingEdge");
-    return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
+    if(actionObject.type==100)return qsTr("Delay:") + actionObject.limit+"s";
+    else return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
             statusStr + " " +
             qsTr("Limit:") + actionObject.limit;
 }

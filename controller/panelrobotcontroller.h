@@ -781,8 +781,12 @@ public:
     Q_INVOKABLE void setWatchDogEnabled(bool en);
 
     Q_INVOKABLE QString getPictures() const;
+    Q_INVOKABLE QStringList getInstructions() const;
+
+
     Q_INVOKABLE QString getPicturesPath(const QString& picName) const;
     Q_INVOKABLE void copyPicture(const QString &picName, const QString& to) const;
+    Q_INVOKABLE void copyInstructions(const QString &picName) const;
 
     Q_INVOKABLE QString usedSourceStacks() const
     {

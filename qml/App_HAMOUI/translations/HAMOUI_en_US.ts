@@ -4,145 +4,145 @@
 <context>
     <name>ActionModifyEditor</name>
     <message>
+        <location filename="../teach/ActionModifyEditor.qml" line="126"/>
         <location filename="../teach/ActionModifyEditor.qml" line="127"/>
         <location filename="../teach/ActionModifyEditor.qml" line="128"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="129"/>
         <source>Speed0:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../teach/ActionModifyEditor.qml" line="130"/>
         <location filename="../teach/ActionModifyEditor.qml" line="131"/>
         <location filename="../teach/ActionModifyEditor.qml" line="132"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="133"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="208"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="220"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="228"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="236"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="207"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="219"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="227"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="235"/>
         <source>Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="174"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="173"/>
         <source>Custom Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="108"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="184"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="107"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="183"/>
         <source>Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="103"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="102"/>
         <source>Pos(+/-):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="185"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="184"/>
         <source>mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="189"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="188"/>
         <source>Set In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="209"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="221"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="229"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="237"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="246"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="295"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="341"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="349"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="208"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="220"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="228"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="236"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="245"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="294"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="340"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="348"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="245"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="244"/>
         <source>Speed1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="254"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="253"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="255"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="264"/>
-        <location filename="../teach/ActionModifyEditor.qml" line="273"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="254"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="263"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="272"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="263"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="262"/>
         <source>Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="272"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="271"/>
         <source>Action Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="279"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="278"/>
         <source>Early End Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="288"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="287"/>
         <source>ESD Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="294"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="293"/>
         <source>ESD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="302"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="301"/>
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="311"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="310"/>
         <source>Signal Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="332"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="331"/>
         <source>Fast Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="339"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="338"/>
         <source>startSpeed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="347"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="346"/>
         <source>endSpeed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="355"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="354"/>
         <source>addr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="362"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="361"/>
         <source>data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="417"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="416"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ActionModifyEditor.qml" line="467"/>
+        <location filename="../teach/ActionModifyEditor.qml" line="466"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2070,223 +2070,316 @@
 <context>
     <name>ExtentActionDefine</name>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="28"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="29"/>
         <source>PENQIANG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="29"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="30"/>
         <source>Pos1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="30"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="31"/>
         <source>Pos2:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="31"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="217"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="32"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="218"/>
         <source>Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="32"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="33"/>
         <source>Num:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="33"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="50"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="97"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="218"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="34"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="51"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="98"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="219"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="257"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="265"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="272"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="279"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="48"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="49"/>
         <source>Analog Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="49"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="50"/>
         <source>Analog:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="79"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="80"/>
         <source>Delta Jumpl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="79"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="80"/>
         <source>start pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="86"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="87"/>
         <source>LH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="87"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="88"/>
         <source>MH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="88"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="89"/>
         <source>RH:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="89"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="90"/>
         <source>end pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="96"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="170"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="97"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="171"/>
         <source>speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="122"/>
         <source>Safe Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="122"/>
         <source>if</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="124"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="122"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="125"/>
         <source>out pos fange:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="121"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="122"/>
         <source>in pos fange:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="123"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="124"/>
         <source>When Changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="125"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="126"/>
         <source>will alarm:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
         <source>Single Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
         <source>RP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="166"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
         <source>PP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="181"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="182"/>
         <source>Switch Coord</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="181"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="182"/>
         <source>CoordID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="193"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="194"/>
         <source>Path Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="193"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="194"/>
         <source>Start Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="193"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="194"/>
         <source>End Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="220"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="221"/>
         <source>Early dec dev len:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="221"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="222"/>
         <source>dev pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="222"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="223"/>
         <source>Early dec Spd:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="223"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="224"/>
         <source>mem addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="226"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
         <source>When </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="226"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
         <source>is Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="226"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
         <source>is On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="228"/>
         <source>slow stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="227"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="228"/>
         <source>fast stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="167"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="256"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="275"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="278"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="335"/>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="256"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="275"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="278"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="335"/>
+        <source>OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="261"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="268"/>
+        <source>NormalX-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="264"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="271"/>
+        <source>Check:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="264"/>
+        <source>Check Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="265"/>
+        <source>Reverse </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="265"/>
+        <source>Forward </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="271"/>
+        <source>Check End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="275"/>
+        <source>Time Output:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="276"/>
+        <source>Action Time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="278"/>
+        <source>Output:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="332"/>
+        <source>IntervalOutput:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="332"/>
+        <source>Interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="332"/>
+        <source>,</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="334"/>
+        <source>Always out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="334"/>
+        <source>Time out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
         <source>Start Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
         <source>space:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
         <source>Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="168"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
         <source>count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/extents/ExtentActionDefine.js" line="169"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="170"/>
+        <location filename="../teach/extents/ExtentActionDefine.js" line="331"/>
         <source>Counter:Self</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2782,87 +2875,87 @@
 <context>
     <name>OutputActionEditor</name>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="48"/>
+        <location filename="../teach/OutputActionEditor.qml" line="98"/>
         <source>Self</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="68"/>
+        <location filename="../teach/OutputActionEditor.qml" line="115"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="99"/>
+        <location filename="../teach/OutputActionEditor.qml" line="146"/>
         <source>EUY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="73"/>
+        <location filename="../teach/OutputActionEditor.qml" line="120"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="91"/>
+        <location filename="../teach/OutputActionEditor.qml" line="138"/>
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="95"/>
+        <location filename="../teach/OutputActionEditor.qml" line="142"/>
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="77"/>
+        <location filename="../teach/OutputActionEditor.qml" line="124"/>
         <source>Time Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="82"/>
+        <location filename="../teach/OutputActionEditor.qml" line="129"/>
         <source>Interval Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="87"/>
+        <location filename="../teach/OutputActionEditor.qml" line="134"/>
         <source>Interval M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="228"/>
+        <location filename="../teach/OutputActionEditor.qml" line="284"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="233"/>
+        <location filename="../teach/OutputActionEditor.qml" line="289"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="238"/>
+        <location filename="../teach/OutputActionEditor.qml" line="294"/>
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="246"/>
+        <location filename="../teach/OutputActionEditor.qml" line="302"/>
         <source>Act Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="246"/>
+        <location filename="../teach/OutputActionEditor.qml" line="302"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="247"/>
+        <location filename="../teach/OutputActionEditor.qml" line="303"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="257"/>
+        <location filename="../teach/OutputActionEditor.qml" line="313"/>
         <source>interval number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="267"/>
+        <location filename="../teach/OutputActionEditor.qml" line="323"/>
         <source>Count Binding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3585,50 +3678,50 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="215"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="250"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="269"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="280"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="309"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="325"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="216"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="251"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="270"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="281"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="310"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="326"/>
         <source>Output Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="219"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="235"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="265"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="313"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="344"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="220"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="236"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="266"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="314"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="345"/>
         <source>Wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="223"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="317"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="348"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="224"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="318"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="349"/>
         <source>Condition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="231"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="246"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="261"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="276"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="329"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="340"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="232"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="247"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="262"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="277"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="330"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="341"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="239"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="254"/>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="284"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="240"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="255"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="285"/>
         <source>Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenuFrame.qml" line="333"/>
+        <location filename="../teach/ProgramActionMenuFrame.qml" line="334"/>
         <source>Counter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5962,13 +6055,13 @@ You just need to set the count configs after this setting.</source>
     <message>
         <location filename="../teach/Teach.js" line="309"/>
         <location filename="../teach/Teach.js" line="318"/>
-        <location filename="../teach/Teach.js" line="1474"/>
+        <location filename="../teach/Teach.js" line="1470"/>
         <source>Flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="461"/>
-        <location filename="../teach/Teach.js" line="1600"/>
+        <location filename="../teach/Teach.js" line="1596"/>
         <source>Stack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5984,765 +6077,765 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1276"/>
-        <location filename="../teach/Teach.js" line="1295"/>
-        <location filename="../teach/Teach.js" line="1307"/>
-        <location filename="../teach/Teach.js" line="1342"/>
-        <location filename="../teach/Teach.js" line="1603"/>
-        <location filename="../teach/Teach.js" line="1604"/>
-        <location filename="../teach/Teach.js" line="1605"/>
-        <location filename="../teach/Teach.js" line="1706"/>
+        <location filename="../teach/Teach.js" line="1272"/>
+        <location filename="../teach/Teach.js" line="1291"/>
+        <location filename="../teach/Teach.js" line="1303"/>
+        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1599"/>
+        <location filename="../teach/Teach.js" line="1600"/>
+        <location filename="../teach/Teach.js" line="1601"/>
+        <location filename="../teach/Teach.js" line="1702"/>
         <source>Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1277"/>
-        <location filename="../teach/Teach.js" line="1288"/>
-        <location filename="../teach/Teach.js" line="1308"/>
-        <location filename="../teach/Teach.js" line="1343"/>
-        <location filename="../teach/Teach.js" line="1436"/>
-        <location filename="../teach/Teach.js" line="1495"/>
-        <location filename="../teach/Teach.js" line="1503"/>
-        <location filename="../teach/Teach.js" line="1510"/>
-        <location filename="../teach/Teach.js" line="1518"/>
-        <location filename="../teach/Teach.js" line="1707"/>
+        <location filename="../teach/Teach.js" line="1273"/>
+        <location filename="../teach/Teach.js" line="1284"/>
+        <location filename="../teach/Teach.js" line="1304"/>
+        <location filename="../teach/Teach.js" line="1339"/>
+        <location filename="../teach/Teach.js" line="1432"/>
+        <location filename="../teach/Teach.js" line="1491"/>
+        <location filename="../teach/Teach.js" line="1499"/>
+        <location filename="../teach/Teach.js" line="1506"/>
+        <location filename="../teach/Teach.js" line="1514"/>
+        <location filename="../teach/Teach.js" line="1703"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1279"/>
-        <location filename="../teach/Teach.js" line="1311"/>
-        <location filename="../teach/Teach.js" line="1345"/>
+        <location filename="../teach/Teach.js" line="1275"/>
+        <location filename="../teach/Teach.js" line="1307"/>
+        <location filename="../teach/Teach.js" line="1341"/>
         <source>Bad En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1281"/>
-        <location filename="../teach/Teach.js" line="1314"/>
-        <location filename="../teach/Teach.js" line="1347"/>
+        <location filename="../teach/Teach.js" line="1277"/>
+        <location filename="../teach/Teach.js" line="1310"/>
+        <location filename="../teach/Teach.js" line="1343"/>
         <source>Early End Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1295"/>
+        <location filename="../teach/Teach.js" line="1291"/>
         <source>Speed Control PP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1295"/>
+        <location filename="../teach/Teach.js" line="1291"/>
         <source>Speed Control RP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1297"/>
+        <location filename="../teach/Teach.js" line="1293"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1318"/>
+        <location filename="../teach/Teach.js" line="1314"/>
         <source>Early End Spd pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1319"/>
+        <location filename="../teach/Teach.js" line="1315"/>
         <source>Early End Spd:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1323"/>
+        <location filename="../teach/Teach.js" line="1319"/>
         <source>When </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1323"/>
-        <location filename="../teach/Teach.js" line="1329"/>
+        <location filename="../teach/Teach.js" line="1319"/>
+        <location filename="../teach/Teach.js" line="1325"/>
         <source>is On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1323"/>
-        <location filename="../teach/Teach.js" line="1329"/>
+        <location filename="../teach/Teach.js" line="1319"/>
+        <location filename="../teach/Teach.js" line="1325"/>
         <source>is Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1324"/>
+        <location filename="../teach/Teach.js" line="1320"/>
         <source>slow stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1324"/>
+        <location filename="../teach/Teach.js" line="1320"/>
         <source>fast stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1328"/>
+        <location filename="../teach/Teach.js" line="1324"/>
         <source>When on the pos </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1329"/>
+        <location filename="../teach/Teach.js" line="1325"/>
         <source>Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1333"/>
+        <location filename="../teach/Teach.js" line="1329"/>
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1334"/>
         <source>Type 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1334"/>
         <source>Type 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1334"/>
         <source>Type 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1334"/>
         <source>Type 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1338"/>
+        <location filename="../teach/Teach.js" line="1334"/>
         <source>Type 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1341"/>
+        <location filename="../teach/Teach.js" line="1337"/>
         <source>origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1358"/>
+        <location filename="../teach/Teach.js" line="1354"/>
         <source>Alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1363"/>
+        <location filename="../teach/Teach.js" line="1359"/>
         <source>Jump To </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1367"/>
-        <location filename="../teach/Teach.js" line="1370"/>
-        <location filename="../teach/Teach.js" line="1398"/>
-        <location filename="../teach/Teach.js" line="1420"/>
+        <location filename="../teach/Teach.js" line="1363"/>
+        <location filename="../teach/Teach.js" line="1366"/>
+        <location filename="../teach/Teach.js" line="1394"/>
+        <location filename="../teach/Teach.js" line="1416"/>
         <source>IF:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1367"/>
+        <location filename="../teach/Teach.js" line="1363"/>
         <source>Invalid Counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1371"/>
+        <location filename="../teach/Teach.js" line="1367"/>
         <source>Arrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1371"/>
+        <location filename="../teach/Teach.js" line="1367"/>
         <source>No arrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1371"/>
-        <location filename="../teach/Teach.js" line="1423"/>
+        <location filename="../teach/Teach.js" line="1367"/>
+        <location filename="../teach/Teach.js" line="1419"/>
         <source>Go to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1372"/>
+        <location filename="../teach/Teach.js" line="1368"/>
         <source>Then clear counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1377"/>
+        <location filename="../teach/Teach.js" line="1373"/>
         <source>manualMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1378"/>
+        <location filename="../teach/Teach.js" line="1374"/>
         <source>stopMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1379"/>
+        <location filename="../teach/Teach.js" line="1375"/>
         <source>autoMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1380"/>
+        <location filename="../teach/Teach.js" line="1376"/>
         <source>RunningMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1381"/>
+        <location filename="../teach/Teach.js" line="1377"/>
         <source>SingleMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1382"/>
+        <location filename="../teach/Teach.js" line="1378"/>
         <source>OneCycleMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1383"/>
+        <location filename="../teach/Teach.js" line="1379"/>
         <source>Current Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1387"/>
+        <location filename="../teach/Teach.js" line="1383"/>
         <source>Current Jog pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1387"/>
+        <location filename="../teach/Teach.js" line="1383"/>
         <source>Current World pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1391"/>
+        <location filename="../teach/Teach.js" line="1387"/>
         <source>Current alarm num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1395"/>
+        <location filename="../teach/Teach.js" line="1391"/>
         <source>Left Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1396"/>
+        <location filename="../teach/Teach.js" line="1392"/>
         <source>Right Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1396"/>
+        <location filename="../teach/Teach.js" line="1392"/>
         <source>Right Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1401"/>
+        <location filename="../teach/Teach.js" line="1397"/>
         <source>Go to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1408"/>
+        <location filename="../teach/Teach.js" line="1425"/>
+        <location filename="../teach/Teach.js" line="1440"/>
+        <location filename="../teach/Teach.js" line="1490"/>
+        <location filename="../teach/Teach.js" line="1509"/>
+        <location filename="../teach/Teach.js" line="1513"/>
+        <location filename="../teach/Teach.js" line="1525"/>
+        <location filename="../teach/Teach.js" line="1711"/>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1410"/>
+        <location filename="../teach/Teach.js" line="1427"/>
+        <location filename="../teach/Teach.js" line="1440"/>
+        <location filename="../teach/Teach.js" line="1490"/>
+        <location filename="../teach/Teach.js" line="1509"/>
+        <location filename="../teach/Teach.js" line="1513"/>
+        <location filename="../teach/Teach.js" line="1525"/>
+        <location filename="../teach/Teach.js" line="1711"/>
+        <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1412"/>
         <location filename="../teach/Teach.js" line="1429"/>
-        <location filename="../teach/Teach.js" line="1444"/>
-        <location filename="../teach/Teach.js" line="1494"/>
-        <location filename="../teach/Teach.js" line="1513"/>
-        <location filename="../teach/Teach.js" line="1517"/>
-        <location filename="../teach/Teach.js" line="1529"/>
-        <location filename="../teach/Teach.js" line="1715"/>
-        <source>ON</source>
+        <source>RisingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1414"/>
         <location filename="../teach/Teach.js" line="1431"/>
-        <location filename="../teach/Teach.js" line="1444"/>
-        <location filename="../teach/Teach.js" line="1494"/>
-        <location filename="../teach/Teach.js" line="1513"/>
-        <location filename="../teach/Teach.js" line="1517"/>
-        <location filename="../teach/Teach.js" line="1529"/>
-        <location filename="../teach/Teach.js" line="1715"/>
-        <source>OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1416"/>
-        <location filename="../teach/Teach.js" line="1433"/>
-        <source>RisingEdge</source>
+        <source>FallingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1418"/>
         <location filename="../teach/Teach.js" line="1435"/>
-        <source>FallingEdge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1422"/>
-        <location filename="../teach/Teach.js" line="1439"/>
-        <location filename="../teach/Teach.js" line="1445"/>
-        <location filename="../teach/Teach.js" line="1726"/>
+        <location filename="../teach/Teach.js" line="1441"/>
+        <location filename="../teach/Teach.js" line="1722"/>
         <source>Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1437"/>
+        <location filename="../teach/Teach.js" line="1433"/>
         <source>Wait:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1443"/>
-        <location filename="../teach/Teach.js" line="1502"/>
-        <location filename="../teach/Teach.js" line="1509"/>
+        <location filename="../teach/Teach.js" line="1439"/>
+        <location filename="../teach/Teach.js" line="1498"/>
+        <location filename="../teach/Teach.js" line="1505"/>
         <source>Check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1453"/>
+        <location filename="../teach/Teach.js" line="1449"/>
         <source>Program End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1457"/>
+        <location filename="../teach/Teach.js" line="1453"/>
         <source>Module End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1461"/>
+        <location filename="../teach/Teach.js" line="1457"/>
         <source>next line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1462"/>
+        <location filename="../teach/Teach.js" line="1458"/>
         <source>Call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1463"/>
+        <location filename="../teach/Teach.js" line="1459"/>
         <source>And then return to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1479"/>
+        <location filename="../teach/Teach.js" line="1475"/>
         <source>Normal Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1480"/>
+        <location filename="../teach/Teach.js" line="1476"/>
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1481"/>
+        <location filename="../teach/Teach.js" line="1477"/>
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1482"/>
+        <location filename="../teach/Teach.js" line="1478"/>
         <source>Unhold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1499"/>
-        <location filename="../teach/Teach.js" line="1506"/>
+        <location filename="../teach/Teach.js" line="1495"/>
+        <location filename="../teach/Teach.js" line="1502"/>
         <source>NormalX-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1502"/>
+        <location filename="../teach/Teach.js" line="1498"/>
         <source>Check Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1503"/>
+        <location filename="../teach/Teach.js" line="1499"/>
         <source>Reverse </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1503"/>
+        <location filename="../teach/Teach.js" line="1499"/>
         <source>Forward </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1509"/>
+        <location filename="../teach/Teach.js" line="1505"/>
         <source>Check End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1513"/>
-        <location filename="../teach/Teach.js" line="1715"/>
+        <location filename="../teach/Teach.js" line="1509"/>
+        <location filename="../teach/Teach.js" line="1711"/>
         <source>Time Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1514"/>
-        <location filename="../teach/Teach.js" line="1716"/>
+        <location filename="../teach/Teach.js" line="1510"/>
+        <location filename="../teach/Teach.js" line="1712"/>
         <source>Action Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1517"/>
+        <location filename="../teach/Teach.js" line="1513"/>
         <source>Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1526"/>
+        <location filename="../teach/Teach.js" line="1522"/>
         <source>IntervalOutput:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1526"/>
+        <location filename="../teach/Teach.js" line="1522"/>
         <source>Interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1526"/>
+        <location filename="../teach/Teach.js" line="1522"/>
         <source>,</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1528"/>
+        <location filename="../teach/Teach.js" line="1524"/>
         <source>Always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1528"/>
+        <location filename="../teach/Teach.js" line="1524"/>
         <source>Time out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1535"/>
+        <location filename="../teach/Teach.js" line="1531"/>
         <source>Sync Begin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1539"/>
+        <location filename="../teach/Teach.js" line="1535"/>
         <source>Sync End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1545"/>
+        <location filename="../teach/Teach.js" line="1541"/>
         <source>Box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1550"/>
+        <location filename="../teach/Teach.js" line="1546"/>
         <source>Datasource</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1552"/>
+        <location filename="../teach/Teach.js" line="1548"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1558"/>
+        <location filename="../teach/Teach.js" line="1554"/>
         <source>not exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1562"/>
+        <location filename="../teach/Teach.js" line="1558"/>
         <source>interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/Teach.js" line="1560"/>
+        <location filename="../teach/Teach.js" line="1577"/>
+        <source>number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1564"/>
         <location filename="../teach/Teach.js" line="1581"/>
-        <source>number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1568"/>
-        <location filename="../teach/Teach.js" line="1585"/>
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1571"/>
-        <location filename="../teach/Teach.js" line="1588"/>
+        <location filename="../teach/Teach.js" line="1567"/>
+        <location filename="../teach/Teach.js" line="1584"/>
         <source>time out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1579"/>
+        <location filename="../teach/Teach.js" line="1575"/>
         <source>intervalbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1595"/>
+        <location filename="../teach/Teach.js" line="1591"/>
         <source>Speed1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1717"/>
+        <location filename="../teach/Teach.js" line="1713"/>
         <source>intervalTime</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1717"/>
+        <location filename="../teach/Teach.js" line="1713"/>
         <source>Until Photo Vec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1525"/>
-        <location filename="../teach/Teach.js" line="1597"/>
-        <location filename="../teach/Teach.js" line="1598"/>
+        <location filename="../teach/Teach.js" line="1521"/>
+        <location filename="../teach/Teach.js" line="1593"/>
+        <location filename="../teach/Teach.js" line="1594"/>
         <source>Counter:Self</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1603"/>
-        <location filename="../teach/Teach.js" line="1604"/>
-        <location filename="../teach/Teach.js" line="1605"/>
+        <location filename="../teach/Teach.js" line="1599"/>
+        <location filename="../teach/Teach.js" line="1600"/>
+        <location filename="../teach/Teach.js" line="1601"/>
         <source>Speed0:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1610"/>
+        <location filename="../teach/Teach.js" line="1606"/>
         <source>Clear </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1610"/>
+        <location filename="../teach/Teach.js" line="1606"/>
         <source>Plus 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1639"/>
+        <location filename="../teach/Teach.js" line="1635"/>
         <source>LineXY:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1642"/>
+        <location filename="../teach/Teach.js" line="1638"/>
         <source>LineXZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1645"/>
+        <location filename="../teach/Teach.js" line="1641"/>
         <source>LineYZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1648"/>
+        <location filename="../teach/Teach.js" line="1644"/>
         <source>Line3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1651"/>
+        <location filename="../teach/Teach.js" line="1647"/>
         <source>Arc3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1654"/>
+        <location filename="../teach/Teach.js" line="1650"/>
         <source>Pose:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1657"/>
+        <location filename="../teach/Teach.js" line="1653"/>
         <source>Line3D-Pose:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1660"/>
+        <location filename="../teach/Teach.js" line="1656"/>
         <source>Free Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1663"/>
+        <location filename="../teach/Teach.js" line="1659"/>
         <source>Offset Line:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1666"/>
+        <location filename="../teach/Teach.js" line="1662"/>
         <source>Offset Jog:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1669"/>
+        <location filename="../teach/Teach.js" line="1665"/>
         <source>Circle:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1672"/>
+        <location filename="../teach/Teach.js" line="1668"/>
         <source>ArcXY:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1675"/>
+        <location filename="../teach/Teach.js" line="1671"/>
         <source>ArcXZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1678"/>
+        <location filename="../teach/Teach.js" line="1674"/>
         <source>ArcYZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1681"/>
+        <location filename="../teach/Teach.js" line="1677"/>
         <source>Offset Curve:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1684"/>
+        <location filename="../teach/Teach.js" line="1680"/>
         <source>Curve3D-Pose:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1687"/>
+        <location filename="../teach/Teach.js" line="1683"/>
         <source>PO Curve 3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1690"/>
+        <location filename="../teach/Teach.js" line="1686"/>
         <source>P Circle:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1693"/>
+        <location filename="../teach/Teach.js" line="1689"/>
         <source>PO Line 3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1699"/>
+        <location filename="../teach/Teach.js" line="1695"/>
         <source>Next:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1702"/>
+        <location filename="../teach/Teach.js" line="1698"/>
         <source>End:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1717"/>
+        <location filename="../teach/Teach.js" line="1713"/>
         <source>actCnt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1720"/>
+        <location filename="../teach/Teach.js" line="1716"/>
         <source>Vistion Catch Start:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1720"/>
-        <location filename="../teach/Teach.js" line="1725"/>
+        <location filename="../teach/Teach.js" line="1716"/>
+        <location filename="../teach/Teach.js" line="1721"/>
         <source>Data Source:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1721"/>
+        <location filename="../teach/Teach.js" line="1717"/>
         <source>Catch Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1721"/>
+        <location filename="../teach/Teach.js" line="1717"/>
         <source>Communicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1721"/>
+        <location filename="../teach/Teach.js" line="1717"/>
         <source>O Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1725"/>
+        <location filename="../teach/Teach.js" line="1721"/>
         <source>Wait Vision Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1734"/>
+        <location filename="../teach/Teach.js" line="1730"/>
         <source>Write Const Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1734"/>
+        <location filename="../teach/Teach.js" line="1730"/>
         <source>Write Addr Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1735"/>
+        <location filename="../teach/Teach.js" line="1731"/>
         <source>Const Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1735"/>
+        <location filename="../teach/Teach.js" line="1731"/>
         <source>Addr Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1737"/>
+        <location filename="../teach/Teach.js" line="1733"/>
         <source>Target Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1877"/>
+        <location filename="../teach/Teach.js" line="1873"/>
         <source>Sub program is out of ranged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1879"/>
+        <location filename="../teach/Teach.js" line="1875"/>
         <source>Invalid program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1881"/>
+        <location filename="../teach/Teach.js" line="1877"/>
         <source>Has not Group-Begin action but has Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1883"/>
+        <location filename="../teach/Teach.js" line="1879"/>
         <source>Group action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1885"/>
+        <location filename="../teach/Teach.js" line="1881"/>
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1887"/>
+        <location filename="../teach/Teach.js" line="1883"/>
         <source>Has not Sync-Begin action but has Sync-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1889"/>
+        <location filename="../teach/Teach.js" line="1885"/>
         <source>Sync action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1891"/>
+        <location filename="../teach/Teach.js" line="1887"/>
         <source>Has Sync-Begin action but has not Sync-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1893"/>
+        <location filename="../teach/Teach.js" line="1889"/>
         <source>Last action is not End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1895"/>
+        <location filename="../teach/Teach.js" line="1891"/>
         <source>Invalid program index</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1897"/>
+        <location filename="../teach/Teach.js" line="1893"/>
         <source>Wrong action format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1899"/>
+        <location filename="../teach/Teach.js" line="1895"/>
         <source>Invalid jump flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1901"/>
+        <location filename="../teach/Teach.js" line="1897"/>
         <source>Invalid stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1903"/>
+        <location filename="../teach/Teach.js" line="1899"/>
         <source>Invalid counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1905"/>
+        <location filename="../teach/Teach.js" line="1901"/>
         <source>Invaild Moldule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1907"/>
+        <location filename="../teach/Teach.js" line="1903"/>
         <source>Unknow Error</source>
         <translation type="unfinished"></translation>
     </message>

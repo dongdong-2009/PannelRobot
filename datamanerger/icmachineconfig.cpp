@@ -35,7 +35,7 @@ QList<QPair<int, quint32> > ICMachineConfig::SetMachineConfigs(const ICAddrWrapp
 
 QList<QPair<int, quint32> > ICMachineConfig::BareMachineConfigs() const
 {
-    return configCache_.ToPairList();
+    return configCache_.ToPairList(ICAddrWrapper::SystemComboAddrs());
 }
 
 void ICMachineConfig::SetBareMachineConfigs(const QList<QPair<int, quint32> > &configValPairs)

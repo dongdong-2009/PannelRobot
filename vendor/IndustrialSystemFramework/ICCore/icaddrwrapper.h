@@ -103,6 +103,22 @@ public:
         return moldAddrs_;
 #endif
     }
+    static QList<int> MoldComboAddrs()
+    {
+#ifdef Q_OS_WIN
+        return *moldComboAddrs_;
+#else
+        return moldComboAddrs_;
+#endif
+    }
+    static QList<int> SystemComboAddrs()
+    {
+#ifdef Q_OS_WIN
+        return *systemComboAddrs_;
+#else
+        return systemComboAddrs_;
+#endif
+    }
 private:
     typedef union{
     struct  {
@@ -135,6 +151,8 @@ private:
     static QStringList permissionStringList_;
     static QMap<QString, const ICAddrWrapper*> addrStringToAddrMap_;
     static QList<const ICAddrWrapper*> moldAddrs_;
+    static QList<int> moldComboAddrs_;
+    static QList<int> systemComboAddrs_;
     static QList<const ICAddrWrapper*> systemAddrs_;
     static QList<const ICAddrWrapper*> statusAddrs_;
 #endif

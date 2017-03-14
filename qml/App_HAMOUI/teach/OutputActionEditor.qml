@@ -6,6 +6,7 @@ import "../configs/IODefines.js" as IODefines
 import "../configs/IOConfigs.js" as IOConfigs
 import "../../utils/utils.js" as Utils
 import "extents/ExtentActionDefine.js" as ExtentActionDefine
+import "extents/ExtentActionEditorBase.js" as PData
 import "extents"
 
 
@@ -13,9 +14,9 @@ ExtentActionEditorBase {
     id:container
     width: 700
     height: 209
-    property int type:pdata === undefined? -1:pdata.board
-    property int point: pdata === undefined? -1:pdata.hwPoint
-    property int valveID:pdata === undefined? -1:pdata.valveID
+    property int type:pdata == undefined? -1:pdata.board
+    property int point: pdata == undefined? -1:pdata.hwPoint
+    property int valveID:pdata == undefined? -1:pdata.valveID
     property bool pointStatus: statusGroup.checkedItem == onBox ? true : false
     property alias delay: delayEdit.configValue
 
@@ -25,10 +26,53 @@ ExtentActionEditorBase {
     property alias cnt: interval.configValue
 
     property variant pdata
+    property bool countIndexChanged: false
+
+    onActionObjectChanged: {
+        if(actionObject == null) return;
+        console.log(JSON.stringify(actionObject));
+        var action = actionObject.action;
+        var isOn = actionObject.pointStatus;
+        if(isOn)
+            statusGroup.checkedIndex = 0;
+        else statusGroup.checkedIndex = 1;
+        delayEdit.configValue = actionObject.delay;
+        if(action === 200){
+            if(actionObject.type == 0)normalY.isChecked =true;
+            else if(actionObject.type == 4)mY.isChecked =true;
+            else if(actionObject.type == 8)mY.isChecked =true;
+            else if(actionObject.type == 100)timeY.isChecked =true;
+        }
+        else if(action === 201){
+            if(actionObject.type == 0)intervalY.isChecked =true;
+            else if(actionObject.type == 4)intervalM.isChecked =true;
+            interval.configValue = actionObject.cnt;
+            always.isChecked = actionObject.intervalType;
+            updateCounters();
+            console.log(actionObject.isBindingCount);
+            if(actionObject.isBindingCount){
+                for(var i=1,len=count.items.length;i<len;++i){
+                    if(actionObject.counterID == Utils.getValueFromBrackets(count.items[i])){
+                        count.configValue = i;
+                    }
+                }
+            }
+            else {
+                count.configValue =0;
+            }
+            countIndexChanged = true;
+        }
+    }
 
     function createActionObjects(){
         var ret = [];
-        ret.push(Teach.generateCustomAction(container.getActionProperties()));
+        var m = yView.model;
+        for(var i=0;i<m.count;++i){
+            if(m.get(i).isSel){
+                pdata = m.get(i);
+                ret.push(Teach.generateCustomAction(container.getActionProperties()));
+            }
+        }
         return ret;
     }
 
@@ -65,10 +109,11 @@ ExtentActionEditorBase {
 //        return ret;
 //    }
     function updateCounters(){
-        count.configValue = -1;
+        if(!countIndexChanged)count.configValue = -1;
         var countersStrList = Teach.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         count.items = countersStrList;
+        countIndexChanged = false;
     }
     onVisibleChanged: {
         if(visible)
@@ -118,7 +163,7 @@ ExtentActionEditorBase {
                 text: qsTr("EUY")
             }
             function listModelChanged(){
-                console.log("ExtentActionDefine");
+//                console.log("ExtentActionDefine");
                 if(typeGroup.checkedItem ===intervalY || typeGroup.checkedItem ===intervalM){
                     bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
                 }else{
@@ -217,10 +262,10 @@ ExtentActionEditorBase {
                                 var m = yView.model;
                                 var toSetSel = !isSel;
                                 m.setProperty(index, "isSel", toSetSel);
+                                pdata = m.get(index);
                                 for(var i = 0; i < m.count; ++i){
                                     if( i !== index){
                                         m.setProperty(i, "isSel", false);
-                                        pdata = m.get(i);
                                     }
                                 }
                             }
@@ -293,6 +338,7 @@ ExtentActionEditorBase {
                 id:count
                 visible: intervalY.isChecked||intervalM.isChecked
                 configName: qsTr("Count Binding")
+                configValue: -1
                 popupMode: 1
                 popupHeight: 50
                 z:1
@@ -395,5 +441,4 @@ ExtentActionEditorBase {
             }
         }
     }
-
 }

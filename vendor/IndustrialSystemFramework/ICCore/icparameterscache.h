@@ -37,13 +37,14 @@ public:
 
     QVector<quint32> SequenceDataList() const;
 
-    QList<QPair<int, quint32> > ToPairList() const
+    QList<QPair<int, quint32> > ToPairList(const QList<int>& addrs) const
     {
         QHash<uint, quint32>::const_iterator p = configsCache_.begin();
         QList<QPair<int, quint32> > ret;
         while(p != configsCache_.end())
         {
-            ret.append(qMakePair(static_cast<int>(p.key()), p.value()));
+            if(addrs.contains(p.key()))
+                ret.append(qMakePair(static_cast<int>(p.key()), p.value()));
             ++p;
         }
         return ret;

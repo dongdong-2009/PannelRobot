@@ -246,11 +246,7 @@ var extentOutputAction = {
             ret.point = properties.point;
             ret.pointStatus = properties.pointStatus;
             ret.valveID = properties.valveID;
-            if(ret.type >= TIMEY_BOARD_START){
-                ret.acTime = properties.delay || 0;
-            }else{
-                ret.delay = properties.delay || 0;
-            }
+            ret.delay = properties.delay || 0;
             return ret;
         },
         "toStringHandler":function(actionObject){
@@ -277,13 +273,31 @@ var extentOutputAction = {
             }else{
                 if(actionObject.type >= TIMEY_BOARD_START){
                     return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                            + qsTr("Action Time:") + actionObject.acTime;
+                            + qsTr("Action Time:") + actionObject.delay;
                 }else{
-
                     return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                             + qsTr("Delay:") + actionObject.delay;
                 }
             }
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 200;
+            actionObject.type = editor.type;
+            actionObject.point = editor.point;
+            actionObject.pointStatus = editor.pointStatus;
+            actionObject.valveID = editor.valveID;
+            actionObject.delay = editor.delay;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":200};
+            ret.type = editor.type;
+            ret.point = editor.point;
+            ret.pointStatus = editor.pointStatus;
+            ret.valveID = editor.valveID;
+            ret.delay = editor.delay;
+            return ret;
         }
     };
 
@@ -291,12 +305,12 @@ var extentIntervalOutputAction = {
         "action":201,
         "properties":[new ActionDefineItem("intervalType", 0),
                      new ActionDefineItem("isBindingCount", 0),
-                     new ActionDefineItem("status", 0),
+                     new ActionDefineItem("pointStatus", 0),
                      new ActionDefineItem("point", 0),
-                     new ActionDefineItem("board", 0),
+                     new ActionDefineItem("type", 0),
                      new ActionDefineItem("counterID", 0),
                      new ActionDefineItem("cnt", 0),
-                     new ActionDefineItem("acTime", 0),],
+                     new ActionDefineItem("delay", 1)],
 
         "canTestRun":false,
         "canActionUsePoint": false,
@@ -305,22 +319,35 @@ var extentIntervalOutputAction = {
             var ret = {"action":201};
             ret.intervalType = properties.intervalType;
             ret.isBindingCount = properties.isBindingCount;
-            ret.status = properties.pointStatus;
+            ret.pointStatus = properties.pointStatus;
             ret.point = properties.point;
-            ret.board = properties.type;
+            ret.type = properties.type;
             ret.counterID = properties.counterID;
             ret.cnt = properties.cnt;
-            ret.acTime = properties.cnt;
+            ret.delay = properties.delay;
             return ret;
         },
         "toStringHandler":function(actionObject){
             var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
             return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
-                    getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
-                    + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
-                    actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
+                    getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + ""
+                    + (actionObject.intervalType?qsTr("Always out"):qsTr("Time out")) +
+                    actionObject.delay+"s" + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF"))+"\n                            "
                     +counterID1;
-        }
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 201;
+            actionObject.intervalType = editor.intervalType;
+            actionObject.isBindingCount = editor.isBindingCount;
+            actionObject.pointStatus = editor.pointStatus;
+            actionObject.point = editor.point;
+            actionObject.type = editor.type;
+            actionObject.counterID = editor.counterID;
+            actionObject.cnt = editor.cnt;
+            actionObject.delay = editor.delay;
+        },
     };
 
 

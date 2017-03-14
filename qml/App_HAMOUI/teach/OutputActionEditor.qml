@@ -26,11 +26,9 @@ ExtentActionEditorBase {
     property alias cnt: interval.configValue
 
     property variant pdata
-    property bool countIndexChanged: false
 
     onActionObjectChanged: {
         if(actionObject == null) return;
-        console.log(JSON.stringify(actionObject));
         var action = actionObject.action;
         var isOn = actionObject.pointStatus;
         var m,i,len;
@@ -39,31 +37,71 @@ ExtentActionEditorBase {
         else statusGroup.checkedIndex = 1;
         delayEdit.configValue = actionObject.delay;
         if(action === 200){
-            if(actionObject.type == 0)normalY.isChecked =true;
-            else if(actionObject.type == 4)mY.isChecked =true;
-            else if(actionObject.type == 8){
-                if(for )
-                singleY.isChecked =true;
-            }
-            else if(actionObject.type == 100)timeY.isChecked =true;
-        }
-        else if(action === 201){
-            if(actionObject.type == 0)intervalY.isChecked =true;
-            else if(actionObject.type == 4)intervalM.isChecked =true;
-            interval.configValue = actionObject.cnt;
-            always.isChecked = actionObject.intervalType;
-            updateCounters();
-            if(actionObject.isBindingCount){
-                for(i=1,len=count.items.length;i<len;++i){
-                    if(actionObject.counterID == Utils.getValueFromBrackets(count.items[i])){
-                        count.configValue = i;
+            if(actionObject.type == 0){
+                normalY.isChecked =true;
+                for(i=0,len=yModel.count;i<len;++i){
+                    if(actionObject.point == yModel.get(i).hwPoint){
+                        yModel.setProperty(i,"isSel",true);
+                        pdata = yModel.get(i);
                     }
                 }
             }
-            else {
-                count.configValue =0;
+            else if(actionObject.type == 4){
+                mY.isChecked =true;
+                for(i=0,len=mYModel.count;i<len;++i){
+                    if(actionObject.point == mYModel.get(i).hwPoint){
+                        mYModel.setProperty(i,"isSel",true);
+                        pdata = mYModel.get(i);
+                    }
+                }
             }
-            countIndexChanged = true;
+            else if(actionObject.type == 8){
+                for(i=0,len=singleYModel.count;i<len;++i){
+                    if(actionObject.point == singleYModel.get(i).hwPoint){
+                        singleY.isChecked =true;
+                        singleYModel.setProperty(i,"isSel",true);
+                        pdata = singleYModel.get(i);
+                    }
+                }
+                for(i=0,len=holdDoubleYModel.count;i<len;++i){
+                    if(actionObject.point == holdDoubleYModel.get(i).hwPoint){
+                        holdDoubleY.isChecked =true;
+                        holdDoubleYModel.setProperty(i,"isSel",true);
+                        pdata = holdDoubleYModel.get(i);
+                    }
+                }
+            }
+            else if(actionObject.type == 100){
+                timeY.isChecked =true;
+                for(i=0,len=timeYModel.count;i<len;++i){
+                    if(actionObject.point == timeYModel.get(i).hwPoint){
+                        timeYModel.setProperty(i,"isSel",true);
+                        pdata = timeYModel.get(i);
+                    }
+                }
+            }
+        }
+        else if(action === 201){
+            if(actionObject.type == 0){
+                intervalY.isChecked =true;
+                for(i=0,len=intervalYModel.count;i<len;++i){
+                    if(actionObject.point == intervalYModel.get(i).hwPoint){
+                        intervalYModel.setProperty(i,"isSel",true);
+                        pdata = intervalYModel.get(i);
+                    }
+                }
+            }
+            else if(actionObject.type == 4){
+                intervalM.isChecked =true;
+                for(i=0,len=intervalMModel.count;i<len;++i){
+                    if(actionObject.point == intervalMModel.get(i).hwPoint){
+                        intervalMModel.setProperty(i,"isSel",true);
+                        pdata = intervalMModel.get(i);
+                    }
+                }
+            }
+            interval.configValue = actionObject.cnt;
+            always.isChecked = actionObject.intervalType;
         }
     }
 
@@ -112,11 +150,21 @@ ExtentActionEditorBase {
 //        return ret;
 //    }
     function updateCounters(){
-        if(!countIndexChanged)count.configValue = -1;
+        count.configValue = -1;
         var countersStrList = Teach.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         count.items = countersStrList;
-        countIndexChanged = false;
+        if(actionObject != null){
+            if(actionObject.action = 201)
+                if(actionObject.isBindingCount){
+                    for(var i=1,len=count.items.length;i<len;++i){
+                        if(actionObject.counterID == Utils.getValueFromBrackets(count.items[i])){
+                            count.configValue = i;
+                    }
+                }
+            }
+            else count.configValue =0;
+        }
     }
     onVisibleChanged: {
         if(visible)
@@ -166,7 +214,6 @@ ExtentActionEditorBase {
                 text: qsTr("EUY")
             }
             function listModelChanged(){
-//                console.log("ExtentActionDefine");
                 if(typeGroup.checkedItem ===intervalY || typeGroup.checkedItem ===intervalM){
                     bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
                 }else{

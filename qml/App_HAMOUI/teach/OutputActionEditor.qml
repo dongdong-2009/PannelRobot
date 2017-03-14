@@ -33,6 +33,7 @@ ExtentActionEditorBase {
         console.log(JSON.stringify(actionObject));
         var action = actionObject.action;
         var isOn = actionObject.pointStatus;
+        var m,i,len;
         if(isOn)
             statusGroup.checkedIndex = 0;
         else statusGroup.checkedIndex = 1;
@@ -40,7 +41,10 @@ ExtentActionEditorBase {
         if(action === 200){
             if(actionObject.type == 0)normalY.isChecked =true;
             else if(actionObject.type == 4)mY.isChecked =true;
-            else if(actionObject.type == 8)mY.isChecked =true;
+            else if(actionObject.type == 8){
+                if(for )
+                singleY.isChecked =true;
+            }
             else if(actionObject.type == 100)timeY.isChecked =true;
         }
         else if(action === 201){
@@ -49,9 +53,8 @@ ExtentActionEditorBase {
             interval.configValue = actionObject.cnt;
             always.isChecked = actionObject.intervalType;
             updateCounters();
-            console.log(actionObject.isBindingCount);
             if(actionObject.isBindingCount){
-                for(var i=1,len=count.items.length;i<len;++i){
+                for(i=1,len=count.items.length;i<len;++i){
                     if(actionObject.counterID == Utils.getValueFromBrackets(count.items[i])){
                         count.configValue = i;
                     }

@@ -3,6 +3,7 @@ import QtQuick 1.1
 Rectangle {
     id:container
     property variant items: []
+    property variant hideIndexs: []
     property int currentIndex: -1
 //    property int itemHeight: 32
     property int contentFontPixelSize: currentText.font.pixelSize
@@ -17,6 +18,19 @@ Rectangle {
     }
 
     function setItemVisible(index, vi){
+        var tmp = hideIndexs;
+        if(!vi)
+            tmp.push(index.toString());
+        else{
+            for(var i = 0, len = tmp.length; i < len; ++i){
+                if(tmp[i] == index){
+                    tmp.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        hideIndexs = tmp;
+
 //        itemModel.setProperty(index, "vis", vi);
     }
 
@@ -57,7 +71,7 @@ Rectangle {
         onClicked: {
             if(items.length > 0){
                 var p = parent.mapToItem(null, x, y)
-                currentIndex = comboBoxView.openView(p.x, p.y, width, height, items, currentIndex);
+                currentIndex = comboBoxView.openView(p.x, p.y, width, height, items, currentIndex, hideIndexs);
             }
         }
     }

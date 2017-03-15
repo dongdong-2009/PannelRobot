@@ -2,13 +2,22 @@
 #define ICCOMBOBOXVIEW_H
 
 #include <QDialog>
-#include <QStringListModel>
+#include <QListWidgetItem>
 class QListWidgetItem;
-class ICComboboxItemDelegate;
 
 namespace Ui {
 class ICComboBoxView;
 }
+
+class ICComboViewItem: public QListWidgetItem{
+public:
+    explicit ICComboViewItem(const QString & text, QListWidget * parent = 0, int type = Type)
+        :QListWidgetItem(text, parent, type)
+    {
+        setSizeHint(QSize(100, 32));
+    }
+//    QSize sizeHint() const { return QSize(100,32);}
+};
 
 class ICComboBoxView : public QDialog
 {
@@ -18,13 +27,13 @@ public:
     explicit ICComboBoxView(QWidget *parent = 0);
     ~ICComboBoxView();
     QStringList items() const;
-    void setItems(const QStringList &items);
+    void setItems(const QStringList &items, const QStringList &hideIndexs);
     Q_INVOKABLE QString currentText() const;
     Q_INVOKABLE QString text(int index) const;
     Q_INVOKABLE int currentIndex() const;
     Q_INVOKABLE void setCurrentIndex(int index);
     Q_INVOKABLE int openView(int editorX, int editorY, int editorW, int editorH,
-                              const QStringList& items, int currentIndex);
+                              const QStringList& items, int currentIndex, const QStringList &hideIndexs);
     void setEditorWidth(double ewidth)
     {
         editorWidth_ = ewidth;
@@ -36,19 +45,18 @@ public:
 protected:
 
 private slots:
-    void on_listView_clicked(const QModelIndex &index);
+    bool eventFilter(QObject *o, QEvent *e);
+
+    void on_listView_itemClicked(QListWidgetItem *item);
 
 signals:
     void currentIndexChanged(int index);
 
 private:
-    QStringListModel model_;
     Ui::ICComboBoxView *ui;
-    int currentIndex_;
     double editorWidth_;
     int screenWidth_;
     int screenHeight_;
-    ICComboboxItemDelegate* itemDelegate_;
 };
 
 #endif // ICCOMBOBOXVIEW_H

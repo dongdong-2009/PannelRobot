@@ -1,6 +1,5 @@
 #include "iccomboboxview.h"
 #include "ui_iccomboboxview.h"
-#include "iccomboboxitemdelegate.h"
 #ifdef Q_WS_QWS
 #include <QScreen>
 #endif
@@ -20,95 +19,92 @@ ICComboBoxView::ICComboBoxView(QWidget *parent) :
     screenWidth_ = 800;
     screenHeight_ = 600;
 #endif
-    currentIndex_ = -1;
-    itemDelegate_ = new ICComboboxItemDelegate();
-    ui->listView->setItemDelegate(itemDelegate_);
-
-//    ui->listView->setUniformItemSizes(true);
-    ui->listView->setModel(&model_);
 
     setWindowFlags(Qt::FramelessWindowHint);
-//    ui->listView->setStyleSheet("QAbstractItemView::item{\
-//                                selection-background-color:#E96436;\
-//                            }");
 
 //    ui->listView->grabGesture(Qt::SwipeGesture);
-//    ui->listWidget->installEventFilter(this);
+//    ui->listView->installEventFilter(this);
 }
 
 ICComboBoxView::~ICComboBoxView()
 {
-    delete itemDelegate_;
     delete ui;
+}
+
+bool ICComboBoxView::eventFilter(QObject *o, QEvent *e)
+{
+    if(o == ui->listView)
+    {
+        e->accept();
+        return true;
+    }
+    return QDialog::eventFilter(o, e);
 }
 
 QStringList ICComboBoxView::items() const
 {
     QStringList ret;
-    const int rc = model_.rowCount();
-    for(int i = 0; i < rc; ++i)
+    for(int i = 0; i < ui->listView->count(); ++i)
     {
-        ret.append(text(i));
+        ret.append(ui->listView->item(i)->text());
     }
     return ret;
 }
 
-void ICComboBoxView::setItems(const QStringList &items)
+void ICComboBoxView::setItems(const QStringList &items, const QStringList& hideIndexs)
 {
     int mW= 0;
     QFontMetrics fm = fontMetrics();
     QRect rec;
+    ui->listView->clear();
     for(int i = 0; i < items.size(); ++i)
     {
         rec = fm.boundingRect(items.at(i));
         mW = qMax(mW, rec.width());
+        ui->listView->addItem(new ICComboViewItem(items.at(i)));
+        if(hideIndexs.contains(QString::number(i)))
+        {
+            ui->listView->setRowHidden(i, true);
+        }
     }
 
-    resize(qMax(mW * 1.2, editorWidth_) + 1,  qMin(screenHeight_ - 20,  items.size() * (ui->listView->spacing() + 32) + 5));
-    model_.setStringList(items);
+    resize(qMax(mW * 1.2, editorWidth_) + 1,  qMin(screenHeight_ - 20,  (items.size() - hideIndexs.size()) * (ui->listView->spacing() + 32) + 5));
+
 //    ui->listWidget->clear();
 //    ui->listWidget->addItems(items);
 }
 
 int ICComboBoxView::currentIndex() const
 {
-    return currentIndex_;
+    return ui->listView->currentRow();
 }
 
 QString ICComboBoxView::currentText() const
 {
-    return text(currentIndex());
+    return ui->listView->currentItem()->text();
 }
 
 QString ICComboBoxView::text(int index) const
 {
-    const QModelIndex i = model_.index(index, 0);
-    if(i.isValid())
-        return model_.data(i, Qt::DisplayRole).toString();
-    return "";
+    QListWidgetItem* item = ui->listView->item(index);
+    return item == NULL ? "" : item->text();
 }
 
 void ICComboBoxView::setCurrentIndex(int index)
 {
-    if(currentIndex_ != index)
+    if(ui->listView->currentRow() != index)
     {
-        ui->listView->setCurrentIndex(model_.index(index, 0));
-        currentIndex_ = index;
+        ui->listView->setCurrentRow(index, QItemSelectionModel::SelectCurrent);
         emit currentIndexChanged(index);
     }
 }
 
 
-void ICComboBoxView::on_listView_clicked(const QModelIndex &index)
-{
-    setCurrentIndex(index.row());
-    accept();
-}
 
-int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH, const QStringList &items, int currentIndex)
+int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH, const QStringList &items, int currentIndex, const QStringList& hideIndexs)
 {
     setEditorWidth(editorW);
-    setItems(items);
+    setItems(items, hideIndexs);
     setCurrentIndex(currentIndex);
 //    QPoint topLeft(editorX, editorY);
     QPoint toMove;
@@ -136,7 +132,7 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     }
     else
     {
-        toMove.setY(0);
+        toMove.setY(10);
     }
 //    QWidget* root = qApp->desktop()->screen();
 //    qDebug()<<root->mapToGlobal(root->pos());
@@ -144,5 +140,10 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     this->setCurrentIndex(currentIndex);
 //    ui->listView->selectionModel()->select(ui->listView->currentIndex(), QItemSelectionModel::Select | QItemSelectionModel::Current);
     this->exec();
-    return currentIndex_;
+    return this->currentIndex();
+}
+
+void ICComboBoxView::on_listView_itemClicked(QListWidgetItem *item)
+{
+    this->accept();
 }

@@ -1506,6 +1506,9 @@ var outputActionToStringHandler = function(actionObject){
                 +qsTr("Delay:")+"" + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
+            if(actionObject.delay == undefined && actionObject.actime !=undefined){
+                actionObject.delay = actionObject.actime;
+            }
             return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                     + qsTr("Action Time:") + actionObject.delay;
         }else{
@@ -1516,15 +1519,15 @@ var outputActionToStringHandler = function(actionObject){
     }
 }
 
-var intervalOutputActionToStringHandler = function(actionObject){
+//var intervalOutputActionToStringHandler = function(actionObject){
 
-    var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
-    return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
-            getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
-            + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
-            actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
-            +counterID1;
-}
+//    var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+//    return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
+//            getYDefineFromHWPoint(actionObject.id, actionObject.board).yDefine.descr + ""
+//            + (actionObject.type?qsTr("Always out"):qsTr("Time out")) +
+//            actionObject.acTime+"s" + (actionObject.status ? qsTr("ON") :qsTr("OFF"))+"\n                            "
+//            +counterID1;
+//}
 
 
 var syncBeginActionToStringHandler = function(actionObject){

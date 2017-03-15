@@ -213,13 +213,6 @@ ExtentActionEditorBase {
                 id:euY
                 text: qsTr("EUY")
             }
-            function listModelChanged(){
-                if(typeGroup.checkedItem ===intervalY || typeGroup.checkedItem ===intervalM){
-                    bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
-                }else{
-                    bindActionDefine(ExtentActionDefine.extentOutputAction);
-                }
-            }
         }
         Rectangle{
             id:yContainer
@@ -256,6 +249,7 @@ ExtentActionEditorBase {
 
             GridView{
                 id:yView
+
                 function createMoldItem(ioDefine, hwPoint, board){
                     return {"isSel":false,
                         "pointNum":ioDefine.pointName,
@@ -297,6 +291,19 @@ ExtentActionEditorBase {
                     if(intervalY.isChecked) return intervalYModel;
                     if(intervalM.isChecked) return intervalMModel;
                     return null;
+                }
+                onModelChanged: {
+                    var m = yView.model;
+                    for(var i=0;i<m.count;++i){
+                        if(m.get(i).isSel){
+                            pdata = m.get(i);
+                        }
+                    }
+                    if(typeGroup.checkedItem ===intervalY || typeGroup.checkedItem ===intervalM){
+                        bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
+                    }else{
+                        bindActionDefine(ExtentActionDefine.extentOutputAction);
+                    }
                 }
 
                 delegate: Row{
@@ -399,7 +406,6 @@ ExtentActionEditorBase {
 
     Component.onCompleted: {
         bindActionDefine(ExtentActionDefine.extentOutputAction);
-        typeGroup.checkedItemChanged.connect(typeGroup.listModelChanged);
         var yDefines = IOConfigs.teachYOut;
         var yDefine;
         var i, l;

@@ -47,7 +47,7 @@ Item{
                     onClicked: {
                         if(isChecked){
                             panelRobotController.setCustomSettings("Language", "CN");
-                            panelRobotController.setCurrentTranslator(panelRobotController.getCustomSettings("L6CNQM", "HAMOUI_zh_CN.qm"));
+                            panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
                         }
                     }
                 }
@@ -252,7 +252,7 @@ Item{
         console.log("lang", lang == "");
         if(lang == ""){
             panelRobotController.setCustomSettings("Language", "CN");
-            panelRobotController.setCurrentTranslator(panelRobotController.getCustomSettings("L6CNQM", "HAMOUI_zh_CN.qm"));
+            panelRobotController.setCurrentTranslator("HAMOUI_zh_CN.qm");
             lang = "CN";
             console.log("language", panelRobotController.getCustomSettings("Language", ""));
         }

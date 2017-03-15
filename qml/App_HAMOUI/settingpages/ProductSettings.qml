@@ -77,7 +77,7 @@ Item {
         }
         CatalogButton{
             id:ledAndKeySettingMenuBtn
-            visible: false
+//            visible: false
             text: qsTr("Led And Key Setting")
             icon: "../images/LedAndKeySetting.png"
             y:10

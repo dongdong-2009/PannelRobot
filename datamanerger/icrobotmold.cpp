@@ -1958,7 +1958,7 @@ quint32 CompileInfo::CheckSum() const
 quint32 ICRobotMold::CheckSum() const
 {
     quint64 sum = 0;
-    for(int i = 0; i < 9; ++i)
+    for(int i = 0; i < programs_.size(); ++i)
     {
         sum += programs_.at(i).CheckSum();
     }

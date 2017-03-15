@@ -589,12 +589,18 @@ function generateIOBaseBoardCount(prefix, boardCount){
     var l = boardCount * 32;
     var ret = [];
     var v;
-    for(var i = 0; i < l; ++i){
-        v = (i + 8).toString(8);
-        if(v.length < 3)
-            v = "0" + v;
-        ret.push(prefix + v);
+    for(var j = 0;j<boardCount;++j){
+        for(var i = 0; i < 32; ++i){
+            v =j+(i + 8).toString(8);
+            ret.push(prefix + v);
+        }
     }
+//    for(var i = 0; i < l; ++i){
+//        v = (i + 8).toString(8);
+//        if(v.length < 3)
+//            v = "0" + v;
+//        ret.push(prefix + v);
+//    }
     return ret;
 }
 

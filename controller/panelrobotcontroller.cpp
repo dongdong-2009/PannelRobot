@@ -148,7 +148,7 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
         pc.UpdateConfigValue(cptr, static_cast<quint32>(p.value().toDouble() * qPow(10, cptr->Decimal())));
         ++p;
     }
-    baseFncs_ = pc.ToPairList();
+    baseFncs_ = pc.ToPairList(ICAddrWrapper::MoldComboAddrs());
 
 
 
@@ -221,6 +221,7 @@ void PanelRobotController::Init()
     //    OnNeedToInitHost();
 #endif
     //    InitMainView();
+
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     qApp->installTranslator(&configsTranslator_);
@@ -267,6 +268,7 @@ void PanelRobotController::InitMachineConfig_()
 {
     ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
+    qDebug()<<"machine name:"<<as.CurrentSystemConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
     //    OnNeedToInitHost();

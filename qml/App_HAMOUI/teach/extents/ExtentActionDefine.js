@@ -1,6 +1,7 @@
 .pragma library
 Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
+Qt.include("../Teach.js")
 
 var counterManager;
 
@@ -230,6 +231,128 @@ var extentSingleMemposAction = {
         }
     };
 
+var extentOutputAction = {
+        "action":200,
+        "properties":[new ActionDefineItem("type", 0),
+                    new ActionDefineItem("point", 0),
+                    new ActionDefineItem("pointStatus", 0),
+                    new ActionDefineItem("delay", 1)],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("../OutputActionEditor.qml"), "itemDef":{"item":"OutputActionEditor"}},
+        "generate":function(properties){
+            var ret = {"action":200};
+            ret.type = properties.type;
+            ret.point = properties.point;
+            ret.pointStatus = properties.pointStatus;
+            ret.valveID = properties.valveID;
+            ret.delay = properties.delay || 0;
+            return ret;
+        },
+        "toStringHandler":function(actionObject){
+            var valve,valveStr;
+            if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
+                valve = getValveItemFromValveID(actionObject.valveID);
+                return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                        + qsTr("Delay:") + actionObject.delay;
+
+            }else if(actionObject.type === VALVE_CHECK_START){
+                if(actionObject.isNormalX )
+                    valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+                else
+                    valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+                return qsTr("Check:") + valveStr + " " + qsTr("Check Start") + " "
+                        + (actionObject.isNormalX ?(actionObject.xDir?qsTr("Reverse "):qsTr("Forward ")):"")+" "+qsTr("Delay:") + actionObject.delay;
+            }else if(actionObject.type === VALVE_CHECK_END){
+                if(actionObject.isNormalX )
+                    valveStr = qsTr("NormalX-")+xDefines[actionObject.point].pointName+":"+xDefines[actionObject.point].descr;
+                else
+                    valveStr = valveItemToString(getValveItemFromValveID(actionObject.point));
+                return qsTr("Check:") + valveStr +  " " + qsTr("Check End") + " "
+                        +qsTr("Delay:")+"" + actionObject.delay;
+            }else{
+                if(actionObject.type >= TIMEY_BOARD_START){
+                    return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                            + qsTr("Action Time:") + actionObject.delay;
+                }else{
+                    return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
+                            + qsTr("Delay:") + actionObject.delay;
+                }
+            }
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 200;
+            actionObject.type = editor.type;
+            actionObject.point = editor.point;
+            actionObject.pointStatus = editor.pointStatus;
+            actionObject.valveID = editor.valveID;
+            actionObject.delay = editor.delay;
+            if(actionObject.hasOwnProperty("acTime")){
+                delete actionObject.acTime;
+            }
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":200};
+            ret.type = editor.type;
+            ret.point = editor.point;
+            ret.pointStatus = editor.pointStatus;
+            ret.valveID = editor.valveID;
+            ret.delay = editor.delay;
+            return ret;
+        }
+    };
+
+var extentIntervalOutputAction = {
+        "action":201,
+        "properties":[new ActionDefineItem("intervalType", 0),
+                     new ActionDefineItem("isBindingCount", 0),
+                     new ActionDefineItem("pointStatus", 0),
+                     new ActionDefineItem("point", 0),
+                     new ActionDefineItem("type", 0),
+                     new ActionDefineItem("counterID", 0),
+                     new ActionDefineItem("cnt", 0),
+                     new ActionDefineItem("delay", 1)],
+
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("../OutputActionEditor.qml"), "itemDef":{"item":"OutputActionEditor"}},
+        "generate":function(properties){
+            var ret = {"action":201};
+            ret.intervalType = properties.intervalType;
+            ret.isBindingCount = properties.isBindingCount;
+            ret.pointStatus = properties.pointStatus;
+            ret.point = properties.point;
+            ret.type = properties.type;
+            ret.counterID = properties.counterID;
+            ret.cnt = properties.cnt;
+            ret.delay = properties.delay;
+            return ret;
+        },
+        "toStringHandler":function(actionObject){
+            var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+            return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
+                    getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + ""
+                    + (actionObject.intervalType?qsTr("Always out"):qsTr("Time out")) +
+                    actionObject.delay+"s" + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF"))+"\n                            "
+                    +counterID1;
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 201;
+            actionObject.intervalType = editor.intervalType;
+            actionObject.isBindingCount = editor.isBindingCount;
+            actionObject.pointStatus = editor.pointStatus;
+            actionObject.point = editor.point;
+            actionObject.type = editor.type;
+            actionObject.counterID = editor.counterID;
+            actionObject.cnt = editor.cnt;
+            actionObject.delay = editor.delay;
+        },
+    };
+
 
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
@@ -238,4 +361,6 @@ var extentActions = [extentPENQIANGAction,
                      extentSingleStackAction,
                      extentSwitchCoordAction,
                      speedAction,
-                     extentSingleMemposAction];
+                     extentSingleMemposAction,
+                     extentOutputAction,
+                     extentIntervalOutputAction];

@@ -299,11 +299,12 @@ ExtentActionEditorBase {
                             pdata = m.get(i);
                         }
                     }
-                    if(typeGroup.checkedItem ===intervalY || typeGroup.checkedItem ===intervalM){
+                    if(yView.model ===intervalYModel || yView.model ===intervalMModel){
                         bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
                     }else{
                         bindActionDefine(ExtentActionDefine.extentOutputAction);
                     }
+
                 }
 
                 delegate: Row{

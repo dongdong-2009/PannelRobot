@@ -331,6 +331,7 @@ var extentIntervalOutputAction = {
             return ret;
         },
         "toStringHandler":function(actionObject){
+            if(actionObject.pointStatus == undefined) return "";
             var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
             return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
                     getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + ""

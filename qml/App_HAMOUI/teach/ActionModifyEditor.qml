@@ -64,7 +64,6 @@ Item {
         PData.editingEditors = [];
         for(i = 0, len = editableItems.length; i < len; ++i){
             item = editableItems[i];
-            console.log("item",JSON.stringify(item));
             editor = PData.itemToEditorMap.get(item.item);
             if(PData.isRegisterEditor(editor)){
                 editor.actionObject = actionObject;

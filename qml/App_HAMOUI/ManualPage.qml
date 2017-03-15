@@ -111,7 +111,7 @@ ContentPageBase {
                 pageContainer.setCurrentIndex(index)
             }
             Component.onCompleted: {
-                if(panelRobotController.getCustomSettings("MachineImgPicUse", 0))
+                if(panelRobotController.getCustomSettings("MachineImgPicUse", 0) == 1)
                     introduce.setChecked(true)
                 else group1.setChecked(true)
             }

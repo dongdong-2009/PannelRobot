@@ -126,7 +126,6 @@ Rectangle {
                     panelRobotController.iStatus(2),
                     panelRobotController.iStatus(3)];
 //            var yStatus = panelRobotController.oStatus(0).toString(2).split("").reverse().join("");
-//            console.log(xStatus);
             var yStatus = [panelRobotController.oStatus(0),
                     panelRobotController.oStatus(1),
                     panelRobotController.oStatus(2),

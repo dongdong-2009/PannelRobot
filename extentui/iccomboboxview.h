@@ -11,7 +11,7 @@ class ICComboBoxView;
 
 class ICComboViewItem: public QListWidgetItem{
 public:
-    explicit ICComboViewItem(const QString & text, QListWidget * parent = 0, int type = Type)
+    explicit ICComboViewItem(const QString & text, QListWidget * parent = 0, int type = UserType)
         :QListWidgetItem(text, parent, type)
     {
         setSizeHint(QSize(100, 32));

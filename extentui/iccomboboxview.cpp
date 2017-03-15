@@ -22,8 +22,8 @@ ICComboBoxView::ICComboBoxView(QWidget *parent) :
 
     setWindowFlags(Qt::FramelessWindowHint);
 
-//    ui->listView->grabGesture(Qt::SwipeGesture);
-//    ui->listView->installEventFilter(this);
+    ui->listView->grabGesture(Qt::SwipeGesture);
+    ui->listView->installEventFilter(this);
 }
 
 ICComboBoxView::~ICComboBoxView()
@@ -35,8 +35,19 @@ bool ICComboBoxView::eventFilter(QObject *o, QEvent *e)
 {
     if(o == ui->listView)
     {
-        e->accept();
-        return true;
+        qDebug("111111111111");
+        if(e->type() == QEvent::Gesture)
+        {
+            qDebug("fsfsfsdf");
+            e->accept();
+            return true;
+        }
+        else if(e->type() == QEvent::MouseButtonPress)
+        {
+            qDebug("2222");
+            e->accept();
+            return true;
+        }
     }
     return QDialog::eventFilter(o, e);
 }

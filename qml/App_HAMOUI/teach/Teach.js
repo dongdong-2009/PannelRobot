@@ -1036,6 +1036,7 @@ var generteEndAction = function(){
 }
 
 var generateOutputAction = function(point, type, status, valveID, time){
+    console.log("IN");
     var ret ={
         "action":actions.F_CMD_IO_OUTPUT,
         "type":type,
@@ -1509,6 +1510,7 @@ var outputActionToStringHandler = function(actionObject){
             if(actionObject.delay == undefined && actionObject.actime !=undefined){
                 actionObject.delay = actionObject.actime;
             }
+            console.log("@IN")
             return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                     + qsTr("Action Time:") + actionObject.delay;
         }else{

@@ -14,6 +14,7 @@ ExtentActionEditorBase {
     id:container
     width: 700
     height: 209
+    property bool isAutoMode: false
     property int type:pdata == undefined? -1:pdata.board
     property int point: pdata == undefined? -1:pdata.hwPoint
     property int valveID:pdata == undefined? -1:pdata.valveID
@@ -26,6 +27,16 @@ ExtentActionEditorBase {
     property alias cnt: interval.configValue
 
     property variant pdata
+
+    onIsAutoModeChanged: {
+        var notAutoMode = !isAutoMode;
+        typeGroup.enabled = notAutoMode;
+        yContainer.enabled = notAutoMode;
+        statusGroup.enabled = notAutoMode;
+        always.enabled = notAutoMode;
+        interval.enabled = notAutoMode;
+        count.enabled = notAutoMode;
+    }
 
     onActionObjectChanged: {
         if(actionObject == null) return;

@@ -1507,10 +1507,9 @@ var outputActionToStringHandler = function(actionObject){
                 +qsTr("Delay:")+"" + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
-            if(actionObject.delay == undefined && actionObject.actime !=undefined){
-                actionObject.delay = actionObject.actime;
+            if(actionObject.delay == undefined && actionObject.acTime !=undefined){
+                actionObject.delay = actionObject.acTime;
             }
-            console.log("@IN")
             return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
                     + qsTr("Action Time:") + actionObject.delay;
         }else{

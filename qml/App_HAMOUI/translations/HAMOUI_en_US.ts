@@ -1115,6 +1115,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingpages/AxisConfigs.qml" line="663"/>
+        <source>Encode RW4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingpages/AxisConfigs.qml" line="689"/>
         <location filename="../settingpages/AxisConfigs.qml" line="823"/>
         <location filename="../settingpages/AxisConfigs.qml" line="860"/>

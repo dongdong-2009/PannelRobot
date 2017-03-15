@@ -35,7 +35,7 @@ ExtentActionEditorBase {
         if(isOn)
             statusGroup.checkedIndex = 0;
         else statusGroup.checkedIndex = 1;
-        delayEdit.configValue = actionObject.delay;
+        delayEdit.configValue = actionObject.acTime!=undefined?actionObject.acTime:actionObject.delay;
         if(action === 200){
             if(actionObject.type == 0){
                 normalY.isChecked =true;

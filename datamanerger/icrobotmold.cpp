@@ -348,7 +348,14 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(v->value("type", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
-    item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
+    if(v->contains("acTime"))
+    {
+        item.append(ICUtility::doubleToInt(v->value("acTime", 0).toDouble(), 1));
+    }
+    else
+    {
+        item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
+    }
     if(item.at(1) == 9 || item.at(1) == 10)
     {
         bool isNormalX = v->value("isNormalX", 0).toBool();

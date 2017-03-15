@@ -1507,11 +1507,8 @@ var outputActionToStringHandler = function(actionObject){
                 +qsTr("Delay:")+"" + actionObject.delay;
     }else{
         if(actionObject.type >= TIMEY_BOARD_START){
-            if(actionObject.delay == undefined && actionObject.acTime !=undefined){
-                actionObject.delay = actionObject.acTime;
-            }
             return qsTr("Time Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type - TIMEY_BOARD_START).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                    + qsTr("Action Time:") + actionObject.delay;
+                    + qsTr("Action Time:") + (actionObject.acTime !=undefined?actionObject.acTime:actionObject.delay);
         }else{
 
             return qsTr("Output:") + getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "

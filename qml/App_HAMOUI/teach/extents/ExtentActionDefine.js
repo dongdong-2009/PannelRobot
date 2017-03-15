@@ -289,6 +289,9 @@ var extentOutputAction = {
             actionObject.pointStatus = editor.pointStatus;
             actionObject.valveID = editor.valveID;
             actionObject.delay = editor.delay;
+            if(actionObject.hasOwnProperty("acTime")){
+                delete actionObject.acTime;
+            }
         },
         "getActionPropertiesHelper":function(editor){
             var ret = {"action":200};

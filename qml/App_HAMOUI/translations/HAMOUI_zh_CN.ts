@@ -1910,6 +1910,70 @@
         <source>dev pos:</source>
         <translation>偏置:</translation>
     </message>
+    <message>
+        <source>ON</source>
+        <translation>通</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>断</translation>
+    </message>
+    <message>
+        <source>NormalX-</source>
+        <translation>普通输入-</translation>
+    </message>
+    <message>
+        <source>Check:</source>
+        <translation>信号检测:</translation>
+    </message>
+    <message>
+        <source>Check Start</source>
+        <translation>开始检测</translation>
+    </message>
+    <message>
+        <source>Reverse </source>
+        <translation>检测到信号断就报警</translation>
+    </message>
+    <message>
+        <source>Forward </source>
+        <translation>检测到信号通就报警</translation>
+    </message>
+    <message>
+        <source>Check End</source>
+        <translation>结束检测</translation>
+    </message>
+    <message>
+        <source>Time Output:</source>
+        <translation>时间输出:</translation>
+    </message>
+    <message>
+        <source>Action Time:</source>
+        <translation>动作时间:</translation>
+    </message>
+    <message>
+        <source>Output:</source>
+        <translation>输出:</translation>
+    </message>
+    <message>
+        <source>IntervalOutput:</source>
+        <translation>间隔输出:</translation>
+    </message>
+    <message>
+        <source>Interval</source>
+        <translation>间隔</translation>
+    </message>
+    <message>
+        <source>,</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Always out</source>
+        <translation>一直输出</translation>
+    </message>
+    <message>
+        <source>Time out</source>
+        <translation>时间输出</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>

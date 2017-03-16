@@ -122,8 +122,17 @@ Rectangle {
     Timer{
         interval: 50; running: visible; repeat: true;
         onTriggered: {
-            var xStatus = panelRobotController.iStatus(0).toString(2).split("").reverse().join("");
-            var yStatus = panelRobotController.oStatus(0).toString(2).split("").reverse().join("");
+//            var xStatus = panelRobotController.iStatus(0).toString(2).split("").reverse().join("");
+            var xStatus = [panelRobotController.iStatus(0),
+                            panelRobotController.iStatus(1),
+                    panelRobotController.iStatus(2),
+                    panelRobotController.iStatus(3)];
+//            var yStatus = panelRobotController.oStatus(0).toString(2).split("").reverse().join("");
+//            console.log(xStatus);
+            var yStatus = [panelRobotController.oStatus(0),
+                    panelRobotController.oStatus(1),
+                    panelRobotController.oStatus(2),
+                    panelRobotController.oStatus(3)];
             var i;
             for(i = 0; i < PData.xPages.length; ++i){
                 PData.xPages[i].status = xStatus;
@@ -135,7 +144,6 @@ Rectangle {
             for(i = 0; i < PData.mPages.length; ++i){
                 PData.mPages[i].status = yStatus;
             }
-
         }
     }
 }

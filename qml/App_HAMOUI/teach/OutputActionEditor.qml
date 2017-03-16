@@ -5,56 +5,171 @@ import "Teach.js" as Teach
 import "../configs/IODefines.js" as IODefines
 import "../configs/IOConfigs.js" as IOConfigs
 import "../../utils/utils.js" as Utils
+import "extents/ExtentActionDefine.js" as ExtentActionDefine
+import "extents/ExtentActionEditorBase.js" as PData
+import "extents"
 
 
-Item {
+ExtentActionEditorBase {
     id:container
+    width: 700
+    height: 209
+    property int type:pdata == undefined? -1:pdata.board
+    property int point: pdata == undefined? -1:pdata.hwPoint
+    property int valveID:pdata == undefined? -1:pdata.valveID
+    property bool pointStatus: statusGroup.checkedItem == onBox ? true : false
+    property alias delay: delayEdit.configValue
+
+    property alias intervalType: always.isChecked
+    property bool isBindingCount: count.configValue == 0?false:true
+    property string counterID: count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText())
+    property alias cnt: interval.configValue
+
+    property variant pdata
+
+    onActionObjectChanged: {
+        if(actionObject == null) return;
+        var action = actionObject.action;
+        var isOn = actionObject.pointStatus;
+        var m,i,len;
+        if(isOn)
+            statusGroup.checkedIndex = 0;
+        else statusGroup.checkedIndex = 1;
+        delayEdit.configValue = actionObject.acTime!=undefined?actionObject.acTime:actionObject.delay;
+        if(action === 200){
+            if(actionObject.type == 0){
+                normalY.isChecked =true;
+                for(i=0,len=yModel.count;i<len;++i){
+                    if(actionObject.point == yModel.get(i).hwPoint){
+                        yModel.setProperty(i,"isSel",true);
+                        pdata = yModel.get(i);
+                    }
+                }
+            }
+            else if(actionObject.type == 4){
+                mY.isChecked =true;
+                for(i=0,len=mYModel.count;i<len;++i){
+                    if(actionObject.point == mYModel.get(i).hwPoint){
+                        mYModel.setProperty(i,"isSel",true);
+                        pdata = mYModel.get(i);
+                    }
+                }
+            }
+            else if(actionObject.type == 8){
+                for(i=0,len=singleYModel.count;i<len;++i){
+                    if(actionObject.point == singleYModel.get(i).hwPoint){
+                        singleY.isChecked =true;
+                        singleYModel.setProperty(i,"isSel",true);
+                        pdata = singleYModel.get(i);
+                    }
+                }
+                for(i=0,len=holdDoubleYModel.count;i<len;++i){
+                    if(actionObject.point == holdDoubleYModel.get(i).hwPoint){
+                        holdDoubleY.isChecked =true;
+                        holdDoubleYModel.setProperty(i,"isSel",true);
+                        pdata = holdDoubleYModel.get(i);
+                    }
+                }
+            }
+            else if(actionObject.type == 100){
+                timeY.isChecked =true;
+                for(i=0,len=timeYModel.count;i<len;++i){
+                    if(actionObject.point == timeYModel.get(i).hwPoint){
+                        timeYModel.setProperty(i,"isSel",true);
+                        pdata = timeYModel.get(i);
+                    }
+                }
+            }
+        }
+        else if(action === 201){
+            if(actionObject.type == 0){
+                intervalY.isChecked =true;
+                for(i=0,len=intervalYModel.count;i<len;++i){
+                    if(actionObject.point == intervalYModel.get(i).hwPoint){
+                        intervalYModel.setProperty(i,"isSel",true);
+                        pdata = intervalYModel.get(i);
+                    }
+                }
+            }
+            else if(actionObject.type == 4){
+                intervalM.isChecked =true;
+                for(i=0,len=intervalMModel.count;i<len;++i){
+                    if(actionObject.point == intervalMModel.get(i).hwPoint){
+                        intervalMModel.setProperty(i,"isSel",true);
+                        pdata = intervalMModel.get(i);
+                    }
+                }
+            }
+            interval.configValue = actionObject.cnt;
+            always.isChecked = actionObject.intervalType;
+        }
+    }
 
     function createActionObjects(){
         var ret = [];
-        var mD;
-        var data;
-        if(normalY.isChecked) mD = yModel;
-        else if(euY.isChecked) mD = euYModel;
-        else if(mY.isChecked) mD = mYModel;
-        else if(singleY.isChecked) mD = singleYModel;
-        else if(holdDoubleY.isChecked) mD = holdDoubleYModel;
-        else if(timeY.isChecked) mD = timeYModel;
-        else if(intervalY.isChecked) mD = intervalYModel;
-        else mD = intervalMModel
-        for(var i = 0; i < mD.count; ++i)
-        {
-            data = mD.get(i);
-            if(data.isSel){
-                var isOn = statusGroup.checkedItem == onBox ? true : false;
-                if(mD==intervalYModel||mD==intervalMModel)
-                ret.push(Teach.generateIntervalOutputAction(always.isChecked,
-                                                            count.configValue == 0?false:true,
-                                                            isOn,
-                                                            data.hwPoint,
-                                                            data.board,
-                                                            count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText()),
-                                                            interval.configValue,
-                                                            delay.configValue));
-                else ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delay.configValue));
-                break;
+        var m = yView.model;
+        for(var i=0;i<m.count;++i){
+            if(m.get(i).isSel){
+                pdata = m.get(i);
+                ret.push(Teach.generateCustomAction(container.getActionProperties()));
             }
         }
         return ret;
     }
+
+//    function createActionObjects(){
+//        var ret = [];
+//        var mD;
+//        var data;
+//        if(normalY.isChecked) mD = yModel;
+//        else if(euY.isChecked) mD = euYModel;
+//        else if(mY.isChecked) mD = mYModel;
+//        else if(singleY.isChecked) mD = singleYModel;
+//        else if(holdDoubleY.isChecked) mD = holdDoubleYModel;
+//        else if(timeY.isChecked) mD = timeYModel;
+//        else if(intervalY.isChecked) mD = intervalYModel;
+//        else mD = intervalMModel
+//        for(var i = 0; i < mD.count; ++i)
+//        {
+//            data = mD.get(i);
+//            if(data.isSel){
+//                var isOn = statusGroup.checkedItem == onBox ? true : false;
+//                if(mD==intervalYModel||mD==intervalMModel)
+//                ret.push(Teach.generateIntervalOutputAction(always.isChecked,
+//                                                            count.configValue == 0?false:true,
+//                                                            isOn,
+//                                                            data.hwPoint,
+//                                                            data.board,
+//                                                            count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText()),
+//                                                            interval.configValue,
+//                                                            delayEdit.configValue));
+//                else ret.push(Teach.generateOutputAction(data.hwPoint, data.board, isOn, data.valveID, delayEdit.configValue));
+//                break;
+//            }
+//        }
+//        return ret;
+//    }
     function updateCounters(){
         count.configValue = -1;
         var countersStrList = Teach.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         count.items = countersStrList;
+        if(actionObject != null){
+            if(actionObject.action = 201)
+                if(actionObject.isBindingCount){
+                    for(var i=1,len=count.items.length;i<len;++i){
+                        if(actionObject.counterID == Utils.getValueFromBrackets(count.items[i])){
+                            count.configValue = i;
+                    }
+                }
+            }
+            else count.configValue =0;
+        }
     }
     onVisibleChanged: {
         if(visible)
             updateCounters();
     }
-
-    width: parent.width
-    height: parent.height
 
     Column{
         spacing: 4
@@ -134,6 +249,7 @@ Item {
 
             GridView{
                 id:yView
+
                 function createMoldItem(ioDefine, hwPoint, board){
                     return {"isSel":false,
                         "pointNum":ioDefine.pointName,
@@ -176,6 +292,20 @@ Item {
                     if(intervalM.isChecked) return intervalMModel;
                     return null;
                 }
+                onModelChanged: {
+                    var m = yView.model;
+                    for(var i=0;i<m.count;++i){
+                        if(m.get(i).isSel){
+                            pdata = m.get(i);
+                        }
+                    }
+                    if(yView.model ===intervalYModel || yView.model ===intervalMModel){
+                        bindActionDefine(ExtentActionDefine.extentIntervalOutputAction);
+                    }else{
+                        bindActionDefine(ExtentActionDefine.extentOutputAction);
+                    }
+
+                }
 
                 delegate: Row{
                     spacing: 2
@@ -190,6 +320,7 @@ Item {
                                 var m = yView.model;
                                 var toSetSel = !isSel;
                                 m.setProperty(index, "isSel", toSetSel);
+                                pdata = m.get(index);
                                 for(var i = 0; i < m.count; ++i){
                                     if( i !== index){
                                         m.setProperty(i, "isSel", false);
@@ -240,7 +371,7 @@ Item {
             }
 
             ICConfigEdit{
-                id:delay
+                id:delayEdit
                 configName: (timeY.isChecked||
                              intervalY.isChecked||
                              intervalM.isChecked) ? qsTr("Act Time:"): qsTr("Delay:")
@@ -265,6 +396,7 @@ Item {
                 id:count
                 visible: intervalY.isChecked||intervalM.isChecked
                 configName: qsTr("Count Binding")
+                configValue: -1
                 z:1
             }
         }
@@ -272,7 +404,7 @@ Item {
 
 
     Component.onCompleted: {
-
+        bindActionDefine(ExtentActionDefine.extentOutputAction);
         var yDefines = IOConfigs.teachYOut;
         var yDefine;
         var i, l;
@@ -364,5 +496,4 @@ Item {
             }
         }
     }
-
 }

@@ -318,8 +318,6 @@ Item {
                     inputWidth: 100
                     z:2
                     enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked || rel.isChecked);
-                    popupMode: 1
-                    popupHeight: 300
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)

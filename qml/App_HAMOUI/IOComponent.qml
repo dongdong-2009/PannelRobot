@@ -3,6 +3,7 @@ import "configs/IODefines.js" as IODefines
 //import "AppSettings.js" as UISettings
 import "../ICCustomElement"
 import "IOComponent.js" as PData
+import "../utils/utils.js" as Utils
 Rectangle {
 //    QtObject{
 //        id:PData
@@ -87,7 +88,8 @@ Rectangle {
                     ret[i] = ioView.createObject(ioContaner,
                                                  {"ioDefines":ioDefinesToViewDefines(defs.slice(i * 8, (i + 1) * 8), i * 8), "type":type})
                 }
-            }
+            }else
+                console.log(ioView.errorString());
             return ret;
         }
 

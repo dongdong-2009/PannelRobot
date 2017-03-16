@@ -4,8 +4,8 @@
 #include "icsplashscreen.h"
 #include <QDebug>
 #include <QIcon>
-#include "iclog.h"
 #include <QFile>
+#include "iclog.h"
 #include "icpainter.h"
 #include "icinstructionsviewqml.h"
 
@@ -39,7 +39,6 @@ int main(int argc, char *argv[])
     app.setOrganizationName("SZHC");
     app.setApplicationName("RobotPanel");
     app.setWindowIcon(QPixmap(":/resources/logo_icon.png"));
-
     ICAppSettings settings;
     QString uiMain = settings.UIMainName();
     QDir appDir = QDir::current();

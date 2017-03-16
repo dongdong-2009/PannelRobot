@@ -7,6 +7,11 @@ function finishCreation(){
     var yConfigs = YDefines.yDefines;
     var pageCount = Math.ceil(yConfigs.length / perPageCountofY);
     var ret = [];
+    if(yDefinePageClass.status === 3){
+        console.log(yDefinePageClass.errorString());
+        return;
+    }
+
     for(var i = 0; i < pageCount; ++i){
         var page = yDefinePageClass.createObject(manualContainer,
                                                  {"yDefines":yConfigs.slice(i * perPageCountofY, (i + 1) * perPageCountofY),

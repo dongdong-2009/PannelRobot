@@ -11,6 +11,11 @@ Item {
 
     signal pageSwiched(variant triggerItem, variant page)
     function addNav(triggerItem, pageComponent){
+        if(pageComponent.status == 3){
+            console.log(pageComponent.errorString());
+            return;
+        }
+
         var pageObject = pageComponent.createObject(pagesContainer);
         pageObject.width = container.width;
         pageObject.height = container.height;

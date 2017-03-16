@@ -156,7 +156,6 @@ Item {
             ICComboBoxConfigEdit{
                 id:xDir
                 visible: (normalX.isChecked && onBox.isChecked)
-                popupMode: 1
                 configName: qsTr("Check Dir")
                 inputWidth:40
                 items: [qsTr("Forward"),qsTr("Reverse")]

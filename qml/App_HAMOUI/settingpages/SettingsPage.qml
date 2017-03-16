@@ -2,6 +2,7 @@ import QtQuick 1.1
 import ".."
 import "../../ICCustomElement"
 import "../Theme.js" as Theme
+import "../../utils/utils.js" as Utils
 
 
 
@@ -123,11 +124,11 @@ ContentPageBase{
     }
     Component.onCompleted: {
         var settingClass = Qt.createComponent("ProductSettings.qml");
-        var psObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
+        var psObject = Utils.icCreateObject(settingClass, pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
         settingClass = Qt.createComponent("MachineSettings.qml");
-        var msObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
+        var msObject = Utils.icCreateObject(settingClass, pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
         settingClass = Qt.createComponent("PanelSettings.qml");
-        var panelSettingsObject = settingClass.createObject(pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
+        var panelSettingsObject = Utils.icCreateObject(settingClass, pageContainer,{"width":pageContainer.width,"height": pageContainer.height});
         pageContainer.addPage(psObject);
         pageContainer.addPage(msObject);
         pageContainer.addPage(panelSettingsObject);

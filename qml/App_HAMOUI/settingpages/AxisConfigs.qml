@@ -649,9 +649,7 @@ Item {
                     configName: qsTr("Motor Factory")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    popupHeight: 200
                     items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6"),qsTr("Motor 7"),qsTr("Motor 8")]
-                    z:9
                     visible: encoderType.configValue == 1
                 }
 

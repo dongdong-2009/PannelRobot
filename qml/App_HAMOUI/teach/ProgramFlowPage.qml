@@ -667,7 +667,6 @@ Rectangle {
                 ICComboBox{
                     id:editing
                     z:100
-                    popupHeight: 350
                     property variant defaultPrograms: [qsTr("main"),
                         qsTr("Sub-1"),
                         qsTr("Sub-2"),
@@ -690,7 +689,7 @@ Rectangle {
                     items:defaultPrograms
                     currentIndex: 0
                     onCurrentIndexChanged: {
-                        //                        console.log("onCurrentIndexChanged", currentIndex);
+//                        console.log("onCurrentIndexChanged", currentIndex);
                         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
                             actionEditorFrame.item.showMenu();
                         }
@@ -776,7 +775,6 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
-                    popupHeight: 350
                     visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
@@ -1499,7 +1497,6 @@ Rectangle {
                     id:searchRange
                     configName: qsTr("SearchRange")
                     inputWidth: 120
-                    popupHeight: 200
                     height: searchRange.height
                     items: {
                         var tmpItems = moduleSel.items;

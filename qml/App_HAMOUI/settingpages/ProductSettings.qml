@@ -263,7 +263,6 @@ Item {
                     }
                 }
                 ICComboBoxConfigEdit{
-                    popupHeight:100
                     indexMappedValue: [
                         16,17,18,19,1,2,3,5,6,7,8,9,10,11
                     ]
@@ -316,8 +315,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 }
                 ICComboBoxConfigEdit{
                     id:outType
-                    popupMode: 0
-                    popupHeight: 100
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
                     onConfigValueChanged: {
@@ -343,7 +340,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 ICComboBox{
                     id: outid
                     width: 180
-                    popupHeight:100
                     currentIndex: outid_init
                     onCurrentIndexChanged: {
                         valveModel.setProperty(index,"outid_init",currentIndex);
@@ -353,7 +349,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     id: outstatus
                     items: [qsTr("OFF"), qsTr("ON")]
                     width: 40
-                    popupHeight:100
                     currentIndex: outstatus_init
                     onCurrentIndexChanged: {
                         valveModel.setProperty(index,"outstatus_init",currentIndex);
@@ -520,7 +515,6 @@ uint16_t io_all;
                 ICComboBox{
                     id: bindingTypeChoose
                     items: type==0?pData.ledItem:pData.keyItem
-                    popupHeight:100
                     currentIndex: bindingType
                     onCurrentIndexChanged: {
                         keyModel.setProperty(index,"bindingType",currentIndex);
@@ -572,7 +566,6 @@ uint16_t io_all;
                     id:keyFunctionType
                     visible: (type && bindingType<2)
                     width: 100
-                    popupHeight:100
                     items: pData.funcItem
                     currentIndex: keyFuncType
                     onCurrentIndexChanged: {
@@ -582,7 +575,6 @@ uint16_t io_all;
                 ICComboBox{
                     id: bindingIdChoose
                     width:  100
-                    popupHeight:100
                     currentIndex: bindingNum
                     onCurrentIndexChanged: {
                         keyModel.setProperty(index,"bindingNum",currentIndex);

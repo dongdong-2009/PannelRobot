@@ -2,14 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="en_US">
 <context>
-    <name>ICComboBoxView</name>
-    <message>
-        <location filename="extentui/iccomboboxview.ui" line="+14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ICInstructionsView</name>
     <message>
         <location filename="extentui/icinstructionsview.ui" line="+20"/>
@@ -76,7 +68,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+479"/>
+        <location line="+482"/>
         <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+110"/>
         <source>Ent</source>
         <translation type="unfinished"></translation>

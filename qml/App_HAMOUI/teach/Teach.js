@@ -1973,6 +1973,7 @@ function customActionGenerator(actionDefine){
     };
 //    console.log( actionDefine.editableItems.editor.errorString());
     actionDefine.editableItems.comp = actionDefine.editableItems.editor;
+    if(actionDefine.editableItems.comp.status === 3) console.log(actionDefine.editableItems.comp.errorString());
     actionDefine.editableItems.editor = actionDefine.editableItems.editor.createObject(null);
     if(!actionDefine.hasOwnProperty("actionObjectChangedHelper")){
         actionDefine.actionObjectChangedHelper = function(editor, actionObject){

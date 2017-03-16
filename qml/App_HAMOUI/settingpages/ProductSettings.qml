@@ -217,68 +217,37 @@ Item {
         x:10
     }
 
-
     Item {
         id:ioRunningSettingPage
         width:  parent.width
         height: parent.height
+        ICButtonGroup{
+            id:typeSel
+            checkedItem: modeStatus
+            mustChecked: true
+            spacing: 5
+            x:5
+            y:5
+            ICCheckBox{
+                id:modeStatus
+                text: qsTr("Mode")
+                isChecked: true
+            }
+            ICCheckBox{
+                id:ioStatus
+                text: qsTr("IO")
+            }
+        }
         ListModel{
             id:valveModel
         }
-        Row{
-            id:newAndPreservation
-            spacing: 20
-                ICButton{
-                    id:newBtn
-                    text: qsTr("new")
-                    onButtonClicked: {
-                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":4,"outstatus_init":0})
-                    }
-                }
-                ICButton{
-                    id:saveBtn
-                    text: qsTr("Preservation")
-                    onButtonClicked: {
-                        var toSave = [];
-                        var v;
-                        panelRobotController.modifyConfigValue(14,0);
-                        for(var i=0;i<valveModel.count;i++)
-                        {
-                            v = valveModel.get(i);
-                            toSave.push(v);
-                            if(v.check == true){
-                                console.log("send:");
-                                /*
-typedef union {
-    struct{
-        uint16_t on:1;//< 输出 普通IO或则M值 0为断，1为通
-        uint16_t id:7;//< 输出点ID 普通IO或则M值
-        uint16_t out_type:1;//< 输出类型 0为普通输出，1为M值输出
-        uint16_t type:5;//< 类型
-        uint16_t res:2;//< 预留
-    }bit;
-    uint16_t io_all;
-}IORunningSetting;//< IO运行设定
-*/
-                                var value = 0;
-                                value=v.outstatus_init?1:0;
-                                value|=v.outid_init<<1;
-                                value|=v.outType_init<<8;
-                                value|=v.sendMode<<9;
-                                console.log(value);
-                                panelRobotController.modifyConfigValue(13,value);
-                            }
-                        }
-                        panelRobotController.setCustomSettings("IOSettings", JSON.stringify(toSave), "IOSettings");
-                        console.log(JSON.stringify(toSave));
-                    }
-                }
-        }
         ICListView{
             id:valveContainer
-            anchors.top: newAndPreservation.bottom
-            width: parent.width
-            height: parent.height
+            width: parent.width-3
+            anchors.top:typeSel.bottom
+            height: parent.height -newBtn.height -10 -modeStatus.height -5
+            border.color: "black"
+            border.width: 1
             model:valveModel
             spacing: 10
             delegate: Row{
@@ -397,6 +366,66 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     onButtonClicked: {
                         valveModel.remove(index);
                     }
+                }
+            }
+        }
+        Row{
+            id:newAndPreservation
+            anchors.top: valveContainer.bottom
+            anchors.topMargin: 5
+            spacing: 20
+            ICButton{
+                id:newBtn
+                text: qsTr("new")
+                onButtonClicked: {
+                    valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":4,"outstatus_init":0})
+                }
+            }
+            ICButton{
+                id:saveBtn
+                text: qsTr("Preservation")
+                onButtonClicked: {
+                    var toSave = [];
+                    var v;
+                    panelRobotController.modifyConfigValue(14,0);
+                    for(var i=0;i<valveModel.count;i++)
+                    {
+                        v = valveModel.get(i);
+                        toSave.push(v);
+                        if(v.check == true){
+                            console.log("send:");
+                            /*
+typedef union {
+struct{
+    uint16_t on:1;//< 输出 普通IO或则M值 0为断，1为通
+    uint16_t id:7;//< 输出点ID 普通IO或则M值
+    uint16_t out_type:1;//< 输出类型 0为普通输出，1为M值输出
+    uint16_t type:5;//< 类型
+    uint16_t res:2;//< 预留
+}bit;
+uint16_t io_all;
+//    struct{
+//        uint32_t check_on:1;//< 检测点状态 0为断，1为通
+//        uint32_t check_id:7;//< 检测点ID 普通IO或则M值
+//        uint32_t check_type:2;//<检测点类型 0为普通输出，1为M值输出
+//        uint32_t out_on:1;//< 输出点状态 0为断，1为通
+//        uint32_t out_id:7;//< 输出点ID 普通IO或则M值
+//        uint32_t out_type:1;//<输出点类型 0为普通输出，1为M值输出
+//    };
+}IORunningSetting;//< IO运行设定
+
+*/
+                            var value = 0;
+                            value=v.outstatus_init?1:0;
+                            value|=v.outid_init<<1;
+                            value|=v.outType_init<<8;
+                            value|=v.sendMode<<9;
+                            console.log(value);
+                            panelRobotController.modifyConfigValue(13,value);
+                        }
+                    }
+                    panelRobotController.setCustomSettings("IOSettings", JSON.stringify(toSave), "IOSettings");
+                    console.log(JSON.stringify(toSave));
                 }
             }
         }

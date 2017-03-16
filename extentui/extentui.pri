@@ -12,7 +12,6 @@ SOURCES += \
     $$PWD/icinstructionsviewqml.cpp
 
 FORMS += \
-    $$PWD/iccomboboxview.ui \
     $$PWD/icinstructionsview.ui
 
 

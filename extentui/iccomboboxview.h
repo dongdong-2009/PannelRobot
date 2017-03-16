@@ -3,11 +3,40 @@
 
 #include <QDialog>
 #include <QListWidgetItem>
+#include <QVBoxLayout>
 class QListWidgetItem;
 
 namespace Ui {
 class ICComboBoxView;
 }
+
+class ICComboBoxListView: public QListWidget
+{
+    Q_OBJECT
+public:
+    ICComboBoxListView(QWidget * parent = 0):
+        QListWidget(parent)
+    {
+        isMoveEn_ = false;
+//        grabGesture(Qt::SwipeGesture);
+
+//       grabGesture(Qt::TapGesture);
+//       grabGesture(Qt::TapAndHoldGesture);
+//       grabGesture(Qt::PanGesture);
+//       grabGesture(Qt::PinchGesture);
+//       grabGesture(Qt::SwipeGesture);
+
+    }
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+
+private:
+    QPoint lastPoint_;
+    bool isMoveEn_;
+
+};
 
 class ICComboViewItem: public QListWidgetItem{
 public:
@@ -34,6 +63,7 @@ public:
     Q_INVOKABLE void setCurrentIndex(int index);
     Q_INVOKABLE int openView(int editorX, int editorY, int editorW, int editorH,
                               const QStringList& items, int currentIndex, const QStringList &hideIndexs);
+
     void setEditorWidth(double ewidth)
     {
         editorWidth_ = ewidth;
@@ -45,15 +75,14 @@ public:
 protected:
 
 private slots:
-    bool eventFilter(QObject *o, QEvent *e);
-
     void on_listView_itemClicked(QListWidgetItem *item);
 
 signals:
     void currentIndexChanged(int index);
 
 private:
-    Ui::ICComboBoxView *ui;
+    QVBoxLayout *verticalLayout_;
+    ICComboBoxListView* listView_;
     double editorWidth_;
     int screenWidth_;
     int screenHeight_;

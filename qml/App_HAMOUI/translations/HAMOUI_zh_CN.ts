@@ -3153,6 +3153,22 @@ please chose!</source>
         <source>Clear Database</source>
         <translation>清空数据</translation>
     </message>
+    <message>
+        <source>Mode</source>
+        <translation>模式状态</translation>
+    </message>
+    <message>
+        <source>IO</source>
+        <translation>IO状态</translation>
+    </message>
+    <message>
+        <source>When</source>
+        <translation>当</translation>
+    </message>
+    <message>
+        <source>status to</source>
+        <translation>状态变为</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>

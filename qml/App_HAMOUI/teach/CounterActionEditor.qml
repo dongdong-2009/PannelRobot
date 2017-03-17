@@ -180,7 +180,7 @@ Rectangle {
 
                     function addCounter(cid, name, cc, ct){
                         var editorClass = Qt.createComponent("CounterActionEditorComponent.qml");
-                        var editor = editorClass.createObject(counterContainer, {"cID":cid, "cName":name, "cc":cc, "ct":ct,
+                        var editor = Utils.icCreateObject(editorClass,counterContainer, {"cID":cid, "cName":name, "cc":cc, "ct":ct,
                                                                   "cIDWidth":headerID.width, "nameWidth":headerName.width,
                                                                   "currentWidth":headerCurrent.width, "targetWidth":headerTarget.width});
                         editor.counterEditFinished.connect(counterContainer.onCounterEditFinished);

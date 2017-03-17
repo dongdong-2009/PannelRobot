@@ -218,30 +218,300 @@ Item {
         x:10
     }
 
-
     Item {
         id:ioRunningSettingPage
         width:  parent.width
         height: parent.height
+        ICButtonGroup{
+            id:typeSel
+            checkedItem: modeStatus
+            checkedIndex: 0
+            mustChecked: true
+            spacing: 10
+            x:5
+            y:3
+            ICCheckBox{
+                id:modeStatus
+                text: qsTr("Mode")
+                isChecked: true
+            }
+            ICCheckBox{
+                id:ioStatus
+                text: qsTr("IO")
+            }
+            onCheckedIndexChanged: {
+                pageContainer.setCurrentIndex(checkedIndex);
+            }
+        }
         ListModel{
             id:valveModel
         }
-        Row{
-            id:newAndPreservation
-            spacing: 20
-                ICButton{
-                    id:newBtn
-                    text: qsTr("new")
-                    onButtonClicked: {
-                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":4,"outstatus_init":0})
+        ListModel{
+            id:ioModel
+        }
+
+        ICStackContainer{
+            id:pageContainer
+            width: parent.width-3
+            height: parent.height -newBtn.height -10 -modeStatus.height -6
+            anchors.top:typeSel.bottom
+            anchors.topMargin: 5
+            ICListView{
+                id:valveContainer
+                model:valveModel
+                spacing: 10
+                border.color: "gray"
+                border.width: 1
+                delegate: Row{
+                    spacing: 8
+                    z: 1000-index
+                    ICCheckBox {
+                        text: index+":"+qsTr("When the mode change to")
+                        anchors.verticalCenter: parent.verticalCenter
+                        isChecked: check
+                        onIsCheckedChanged: {
+                            valveModel.setProperty(index,"check",isChecked);
+                        }
+                    }
+                    ICComboBoxConfigEdit{
+                        indexMappedValue: [
+                            16,17,18,19,1,2,3,5,6,7,8,9,10,11
+                        ]
+                        /*
+    var CMD_NULL = 0; //< 无命令
+    var CMD_MANUAL = 1; //< 手动命令
+    var CMD_AUTO = 2; //< 自动命令
+    var CMD_CONFIG = 3; //< 配置命令
+    var CMD_IO = 4; // IO命令
+    var CMD_ORIGIN = 5; // 原点模式
+    var CMD_RETURN = 6; // 复归模式
+    var CMD_RUNNING = 7 // 自动运行中
+    var CMD_SINGLE = 8//< 单步模式
+    var CMD_ONE_CYCLE = 9//< 单循环模式
+    var CMD_ORIGIN_ING = 10; // 正在寻找原点中
+    var CMD_RETURN_ING = 11; // 原点复归中
+    var CMD_STANDBY = 15; // 待机模式
+    CMD_MANUAL_TO_STOP=16 手动--->停止
+    CMD_STOP_TO_MANUAL=17 停止--->手动
+    CMD_STOP_TO_AUTO  =18 停止--->自动
+    CMD_AUTO_TO_STOP  =19 自动--->停止
+    */
+                        items: [
+                            qsTr("CMD_MANUAL_TO_STOP"),
+                            qsTr("CMD_STOP_TO_MANUAL"),
+                            qsTr("CMD_STOP_TO_AUTO"),
+                            qsTr("CMD_AUTO_TO_STOP"),
+    //                        qsTr("CMD_NULL"),
+                        qsTr("CMD_MANUAL"),
+                        qsTr("CMD_AUTO"),
+                        qsTr("CMD_CONFIG"),
+    //                    qsTr("CMD_IO"),
+                        qsTr("CMD_ORIGIN"),
+                        qsTr("CMD_RETURN"),
+                        qsTr("CMD_RUNNING"),
+                        qsTr("CMD_SINGLE"),
+                        qsTr("CMD_ONE_CYCLE"),
+                        qsTr("CMD_ORIGIN_ING"),
+                        qsTr("CMD_RETURN_ING")]//,
+    //                    qsTr("CMD_NULL"),
+    //                    qsTr("CMD_NULL"),
+    //                    qsTr("CMD_NULL"),
+    //                    qsTr("CMD_STANDBY"),]
+    //                    width: 70
+                        configValue: mode
+                        onConfigValueChanged: {
+                            valveModel.setProperty(index,"mode",configValue);
+                            valveModel.setProperty(index,"sendMode",getConfigValue());
+                        }
+                    }
+                    ICComboBoxConfigEdit{
+                        id:outType
+                        configName: qsTr("Choos Out")
+                        items: [qsTr("IO output"),qsTr("M output")]
+                        onConfigValueChanged: {
+                            if(configValue<0||configValue>1)return;
+                            valveModel.setProperty(index,"outType_init",configValue);
+                            var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                            if(ioBoardCount == 0)
+                                ioBoardCount = 1;
+                            var len = ioBoardCount * 32;
+                            len=configValue == 0?len:16;
+                            var ioItems = [];
+                            for(var i = 0; i < len; ++i){
+                                ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                            }
+                            outid.items = ioItems;
+                        }
+                        configValue: outType_init
+                    }
+                    Text {
+                        text: qsTr("output point")
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    ICComboBox{
+                        id: outid
+                        width: 120
+                        currentIndex: outid_init
+                        onCurrentIndexChanged: {
+                            valveModel.setProperty(index,"outid_init",currentIndex);
+                        }
+                    }
+                    ICComboBox{
+                        id: outstatus
+                        items: [qsTr("OFF"), qsTr("ON")]
+                        width: 40
+                        currentIndex: outstatus_init
+                        onCurrentIndexChanged: {
+                            valveModel.setProperty(index,"outstatus_init",currentIndex);
+                        }
+                    }
+                    ICButton{
+                        id:deleteCurrent
+                        height:outstatus.height
+                        text: qsTr("Delete")
+                        onButtonClicked: {
+                            valveModel.remove(index);
+                        }
                     }
                 }
-                ICButton{
-                    id:saveBtn
-                    text: qsTr("Preservation")
-                    onButtonClicked: {
-                        var toSave = [];
-                        var v;
+            }
+            ICListView{
+                id:ioContainer
+                model:ioModel
+                spacing: 10
+                border.color: "gray"
+                border.width: 1
+                delegate: Item {
+                    height: inputRow.height + outputRow.height
+                    width: parent.width
+                    Row{
+                        id:inputRow
+                        spacing: 8
+                        z: 1000-index;
+                        ICCheckBox {
+                            text: index+":    "+qsTr("When")
+                            anchors.verticalCenter: parent.verticalCenter
+                            isChecked: check
+                            onIsCheckedChanged: {
+                                ioModel.setProperty(index,"check",isChecked);
+                            }
+                        }
+                        ICComboBox{
+                            items: pData.ledItem
+                            currentIndex: checkType
+                            onCurrentIndexChanged: {
+                                ioModel.setProperty(index,"checkType",currentIndex);
+                                if(currentIndex == 0){
+                                    selCheckId.items = MData.xDefinesList;
+                                }
+                                else if(currentIndex == 1){
+                                    selCheckId.items = MData.yDefinesList;
+                                }
+                                else if(currentIndex == 2){
+                                    selCheckId.items = MData.mDefinesList;
+                                }
+                            }
+                        }
+                        ICComboBox{
+                            id:selCheckId
+                            currentIndex: checkId
+                            onCurrentIndexChanged: {
+                               ioModel.setProperty(index,"checkId",currentIndex);
+                            }
+                        }
+                        ICComboBoxConfigEdit{
+                            configName: qsTr("status to")
+                            width: 40
+                            items: [qsTr("OFF"), qsTr("ON")]
+                            configValue: checkStatus
+                            onConfigValueChanged: {
+                                ioModel.setProperty(index,"checkStatus",configValue);
+                            }
+                        }
+                    }
+                    Row{
+                        id:outputRow
+                        spacing: 8
+                        anchors.top:inputRow.bottom
+                        anchors.topMargin: 5
+                        x: 180
+                        z: 1000-index
+                        ICComboBoxConfigEdit{
+                            configName: qsTr("Choos Out")
+                            configValue: outType
+                            items: [qsTr("IO output"),qsTr("M output")]
+                            onConfigValueChanged: {
+                                if(configValue<0||configValue>1)return;
+                                ioModel.setProperty(index,"outType",configValue);
+                                if(configValue == 0){
+                                    selOutId.items = MData.yDefinesList;
+                                }
+                                else if(configValue == 1){
+                                    selOutId.items = MData.mDefinesList;
+                                }
+                            }
+                        }
+                        ICComboBoxConfigEdit {
+                            id: selOutId
+                            configName: qsTr("output point")
+                            configValue: outId
+                            onConfigValueChanged: {
+                                ioModel.setProperty(index,"outId",configValue);
+                            }
+                        }
+                        ICComboBox{
+                            items: [qsTr("OFF"), qsTr("ON")]
+                            width: 40
+                            currentIndex: outStatus
+                            onCurrentIndexChanged: {
+                                ioModel.setProperty(index,"outStatus",currentIndex);
+                            }
+                        }
+                        ICButton{
+                            id:deleteitem
+                            height:selCheckId.height
+                            text: qsTr("Delete")
+                            onButtonClicked: {
+                                ioModel.remove(index);
+                            }
+                        }
+                    }
+                }
+            }
+
+            Component.onCompleted: {
+                pageContainer.addPage(valveContainer);
+                pageContainer.addPage(ioContainer);
+                pageContainer.setCurrentIndex(typeSel.checkedIndex);
+            }
+        }
+
+        Row{
+            id:newAndPreservation
+            anchors.top: pageContainer.bottom
+            anchors.topMargin: 3
+            spacing: 20
+            x:5
+            ICButton{
+                id:newBtn
+                text: qsTr("new")
+                onButtonClicked: {
+                    if(typeSel.checkedItem == modeStatus){
+                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":4,"outstatus_init":0});
+                    }
+                    else if(typeSel.checkedItem == ioStatus){
+                        ioModel.append({"check":true,"checkType":0,"checkId":0,"checkStatus":0,"outType":0,"outId":4,"outStatus":0});
+                    }
+                }
+            }
+            ICButton{
+                id:saveBtn
+                text: qsTr("Preservation")
+                onButtonClicked: {
+                    var toSave = [];
+                    var v;
+                    var value = 0;
+                    if(typeSel.checkedItem == modeStatus){
                         panelRobotController.modifyConfigValue(14,0);
                         for(var i=0;i<valveModel.count;i++)
                         {
@@ -249,19 +519,6 @@ Item {
                             toSave.push(v);
                             if(v.check == true){
                                 console.log("send:");
-                                /*
-typedef union {
-    struct{
-        uint16_t on:1;//< 输出 普通IO或则M值 0为断，1为通
-        uint16_t id:7;//< 输出点ID 普通IO或则M值
-        uint16_t out_type:1;//< 输出类型 0为普通输出，1为M值输出
-        uint16_t type:5;//< 类型
-        uint16_t res:2;//< 预留
-    }bit;
-    uint16_t io_all;
-}IORunningSetting;//< IO运行设定
-*/
-                                var value = 0;
                                 value=v.outstatus_init?1:0;
                                 value|=v.outid_init<<1;
                                 value|=v.outType_init<<8;
@@ -273,130 +530,26 @@ typedef union {
                         panelRobotController.setCustomSettings("IOSettings", JSON.stringify(toSave), "IOSettings");
                         console.log(JSON.stringify(toSave));
                     }
-                }
-        }
-        ICListView{
-            id:valveContainer
-            anchors.top: newAndPreservation.bottom
-            width: parent.width
-            height: parent.height
-            model:valveModel
-            spacing: 10
-            delegate: Row{
-                spacing: 8
-                z: 1000-index;
-
-                ICCheckBox {
-                    text: index+":"+qsTr("When the mode change to")
-                    anchors.verticalCenter: parent.verticalCenter
-                    isChecked: check
-                    onIsCheckedChanged: {
-                        valveModel.setProperty(index,"check",isChecked);
-                    }
-                }
-                ICComboBoxConfigEdit{
-                    popupHeight:100
-                    indexMappedValue: [
-                        16,17,18,19,1,2,3,5,6,7,8,9,10,11
-                    ]
-                    /*
-var CMD_NULL = 0; //< 无命令
-var CMD_MANUAL = 1; //< 手动命令
-var CMD_AUTO = 2; //< 自动命令
-var CMD_CONFIG = 3; //< 配置命令
-var CMD_IO = 4; // IO命令
-var CMD_ORIGIN = 5; // 原点模式
-var CMD_RETURN = 6; // 复归模式
-var CMD_RUNNING = 7 // 自动运行中
-var CMD_SINGLE = 8//< 单步模式
-var CMD_ONE_CYCLE = 9//< 单循环模式
-var CMD_ORIGIN_ING = 10; // 正在寻找原点中
-var CMD_RETURN_ING = 11; // 原点复归中
-var CMD_STANDBY = 15; // 待机模式
-CMD_MANUAL_TO_STOP=16 手动--->停止
-CMD_STOP_TO_MANUAL=17 停止--->手动
-CMD_STOP_TO_AUTO  =18 停止--->自动
-CMD_AUTO_TO_STOP  =19 自动--->停止
-*/
-                    items: [
-                        qsTr("CMD_MANUAL_TO_STOP"),
-                        qsTr("CMD_STOP_TO_MANUAL"),
-                        qsTr("CMD_STOP_TO_AUTO"),
-                        qsTr("CMD_AUTO_TO_STOP"),
-//                        qsTr("CMD_NULL"),
-                    qsTr("CMD_MANUAL"),
-                    qsTr("CMD_AUTO"),
-                    qsTr("CMD_CONFIG"),
-//                    qsTr("CMD_IO"),
-                    qsTr("CMD_ORIGIN"),
-                    qsTr("CMD_RETURN"),
-                    qsTr("CMD_RUNNING"),
-                    qsTr("CMD_SINGLE"),
-                    qsTr("CMD_ONE_CYCLE"),
-                    qsTr("CMD_ORIGIN_ING"),
-                    qsTr("CMD_RETURN_ING")]//,
-//                    qsTr("CMD_NULL"),
-//                    qsTr("CMD_NULL"),
-//                    qsTr("CMD_NULL"),
-//                    qsTr("CMD_STANDBY"),]
-//                    width: 70
-                    configValue: mode
-                    onConfigValueChanged: {
-                        valveModel.setProperty(index,"mode",configValue);
-                        valveModel.setProperty(index,"sendMode",getConfigValue());
-                    }
-                }
-                ICComboBoxConfigEdit{
-                    id:outType
-                    popupMode: 0
-                    popupHeight: 100
-                    configName: qsTr("Choos Out")
-                    items: [qsTr("IO output"),qsTr("M output")]
-                    onConfigValueChanged: {
-                        if(configValue<0||configValue>1)return;
-                        valveModel.setProperty(index,"outType_init",configValue);
-                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        var len = ioBoardCount * 32;
-                        len=configValue == 0?len:16;
-                        var ioItems = [];
-                        for(var i = 0; i < len; ++i){
-                            ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                    else if(typeSel.checkedItem == ioStatus){
+                        panelRobotController.modifyConfigValue(33,0);
+                        for(var i=0;i<ioModel.count;i++)
+                        {
+                            v = ioModel.get(i);
+                            toSave.push(v);
+                            if(v.check == true){
+                                console.log("send:");
+                                value =v.checkStatus?1:0;
+                                value|=v.checkId<<1;
+                                value|=v.checkType<<8;
+                                value|=v.outStatus<<10;
+                                value|=v.outId<<11;
+                                value|=v.outType<<18;
+                                console.log(value);
+                                panelRobotController.modifyConfigValue(32,value);
+                            }
                         }
-                        outid.items = ioItems;
-                    }
-                    configValue: outType_init
-                }
-                Text {
-                    text: qsTr("output point")
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                ICComboBox{
-                    id: outid
-                    width: 180
-                    popupHeight:100
-                    currentIndex: outid_init
-                    onCurrentIndexChanged: {
-                        valveModel.setProperty(index,"outid_init",currentIndex);
-                    }
-                }
-                ICComboBox{
-                    id: outstatus
-                    items: [qsTr("OFF"), qsTr("ON")]
-                    width: 40
-                    popupHeight:100
-                    currentIndex: outstatus_init
-                    onCurrentIndexChanged: {
-                        valveModel.setProperty(index,"outstatus_init",currentIndex);
-                    }
-                }
-                ICButton{
-                    id:deleteCurrent
-                    height:outstatus.height
-                    text: qsTr("Delete")
-                    onButtonClicked: {
-                        valveModel.remove(index);
+                        panelRobotController.setCustomSettings("IOCheckSet", JSON.stringify(toSave), "IOCheckSet");
+                        console.log(JSON.stringify(toSave));
                     }
                 }
             }
@@ -492,7 +645,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 ICComboBox{
                     id: bindingTypeChoose
                     items: type==0?pData.ledItem:pData.keyItem
-                    popupHeight:100
                     currentIndex: bindingType
                     onCurrentIndexChanged: {
                         keyModel.setProperty(index,"bindingType",currentIndex);
@@ -544,7 +696,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                     id:keyFunctionType
                     visible: (type && bindingType<2)
                     width: 100
-                    popupHeight:100
                     items: pData.funcItem
                     currentIndex: keyFuncType
                     onCurrentIndexChanged: {
@@ -554,7 +705,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
                 ICComboBox{
                     id: bindingIdChoose
                     width:  100
-                    popupHeight:100
                     currentIndex: bindingNum
                     onCurrentIndexChanged: {
                         keyModel.setProperty(index,"bindingNum",currentIndex);
@@ -581,10 +731,6 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         ps.push(ledAndKeySettingPage);
         pages = ps;
         var i,len;
-        var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
-        for(i = 0, len = iosettings.length; i < len; ++i){
-            valveModel.append(iosettings[i]);
-        }
 
         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
         if(ioBoardCount == 0)
@@ -606,6 +752,14 @@ CMD_AUTO_TO_STOP  =19 自动--->停止
         }
         onProgramAdded();
         ManualProgramManager.manualProgramManager.registerMonitor(root);
+        var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
+        for(i = 0, len = iosettings.length; i < len; ++i){
+            valveModel.append(iosettings[i]);
+        }
+        iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckSet", "[]", "IOCheckSet"));
+        for(i = 0, len = iosettings.length; i < len; ++i){
+            ioModel.append(iosettings[i]);
+        }
 //        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         len = MData.ledKesSetData.length;

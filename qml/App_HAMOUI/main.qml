@@ -587,6 +587,7 @@ Rectangle {
 //        onSecondGone: restTip.setRestTime(panelRobotController.restUseTime());
     }
 
+
     function onKnobChanged(knobStatus){
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",
@@ -824,9 +825,10 @@ Rectangle {
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
 
+            var v;
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){
-                var v = iosettings[i];
+                v = iosettings[i];
                 if(v.check == true){
                     console.log("send:");
                     /*
@@ -850,6 +852,23 @@ uint16_t io_all;
                     panelRobotController.modifyConfigValue(13,value);
                 }
             }
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckSet", "[]", "IOCheckSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    console.log("send:");
+                    value =v.checkStatus?1:0;
+                    value|=v.checkId<<1;
+                    value|=v.checkType<<8;
+                    value|=v.outStatus<<10;
+                    value|=v.outId<<11;
+                    value|=v.outType<<18;
+                    console.log(value);
+                    panelRobotController.modifyConfigValue(32,value);
+                }
+            }
+            panelRobotController.setCustomSettings("IOCheckSet", JSON.stringify(toSave), "IOCheckSet");
+            console.log(JSON.stringify(toSave));
 
             isInit = true;
         });

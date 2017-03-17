@@ -269,9 +269,6 @@ Rectangle {
         y:topContainer.y
         x:220
         visible: defineStack.isChecked
-        popupWidth: 170
-        popupHeight: 150
-        width: popupWidth
         onCurrentIndexChanged: {
             if(currentIndex < 0 ) return;
             var stackInfo;
@@ -757,7 +754,6 @@ Rectangle {
                 ICComboBoxConfigEdit{
                     id:holdSel
                     configName: qsTr("Hold")
-                    popupHeight: 60
                     visible: (page1.isCustomDataSource && page1.mode >= 2) || posAndCmp.visible
                     items: [qsTr("None"), AxisDefine.axisInfos[0].name,
                         AxisDefine.axisInfos[1].name,
@@ -771,7 +767,6 @@ Rectangle {
             visible: useFlag.isChecked
             configName: qsTr("Stack")
             inputWidth: 200
-            popupHeight: 150
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;
@@ -839,8 +834,6 @@ Rectangle {
                 ICComboBoxConfigEdit{
                     id:interval_out_choose
                     visible: interval_en.isChecked
-                    popupMode: 1
-                    popupHeight: 100
                     z:10
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
@@ -862,10 +855,6 @@ Rectangle {
                     id:interval_out_id
                     visible: interval_en.isChecked
                     configName: qsTr("Out ID")
-//                    configValue: 0
-//                    items: [qsTr("NULL")]
-                    popupMode: 1
-                    popupHeight: 100
                     z:10
                 }
                 ICConfigEdit{
@@ -904,8 +893,6 @@ Rectangle {
                 ICComboBoxConfigEdit{
                     id:intervalbox_out_choose
                     visible: intervalbox_en.isChecked
-                    popupMode: 1
-                    popupHeight: 100
                     z:10
                     configName: qsTr("Choos Out")
                     items: [qsTr("IO output"),qsTr("M output")]
@@ -927,10 +914,6 @@ Rectangle {
                     id:intervalbox_out_id
                     visible: intervalbox_en.isChecked
                     configName: qsTr("Out ID")
-//                    configValue: 0
-//                    items: [qsTr("NULL")]
-                    popupMode: 1
-                    popupHeight: 100
                     z:10
                 }
                 ICConfigEdit{

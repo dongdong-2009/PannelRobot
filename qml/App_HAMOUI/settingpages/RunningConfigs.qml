@@ -169,8 +169,6 @@ Item {
                 ICComboBoxConfigEdit{
                     id:selIO
                     configName: qsTr("IO Select")
-                    popupMode: 1
-                    popupHeight: itemView.height
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
@@ -188,8 +186,6 @@ Item {
                     id:selMold
                     configName: qsTr("Mold Select")
                     inputWidth:120
-                    popupMode: 1
-                    popupHeight: itemView.height
                     function refreshMoldList(){
                         var records = JSON.parse(panelRobotController.records());
                         var recordsItems = [];

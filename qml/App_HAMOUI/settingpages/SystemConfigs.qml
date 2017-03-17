@@ -17,7 +17,6 @@ Item {
                 id:hostBoard
                 configName: qsTr("Host Board")
                 configAddr: "s_rw_0_16_0_184"
-                popupHeight: 200
                 items: ["S2V30",
                     "S2V31",
                     "S3V2x",
@@ -46,7 +45,6 @@ Item {
                 id:machineType
                 configName: qsTr("Machine Type")
                 configAddr: "s_rw_24_8_0_184"
-                popupHeight: 200
                 items: [qsTr("kSttIndependent"), qsTr("kSttPP"), qsTr("kSttRR"),
                 qsTr("kSttPPP"), qsTr("kSttRTR"), qsTr("kSttRRP"), qsTr("kSttRRPR"),
                 qsTr("kSttRTRT"), qsTr("kSttRTRTTT"), qsTr("kStt5P"), qsTr("kSttPPP_RRR"),

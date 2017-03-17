@@ -4,9 +4,8 @@
 <context>
     <name>ICComboBoxView</name>
     <message>
-        <location filename="extentui/iccomboboxview.ui" line="+14"/>
         <source>Dialog</source>
-        <translation type="unfinished">UI选择器</translation>
+        <translation type="obsolete">UI选择器</translation>
     </message>
 </context>
 <context>
@@ -76,7 +75,7 @@
         <translation>键盘</translation>
     </message>
     <message>
-        <location line="+479"/>
+        <location line="+482"/>
         <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+110"/>
         <source>Ent</source>
         <translation>输入</translation>
@@ -136,7 +135,7 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="+245"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="+246"/>
         <location line="+5"/>
         <location line="+11"/>
         <source>Error</source>

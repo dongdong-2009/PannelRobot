@@ -334,8 +334,6 @@ Item {
             configNameWidth: 100
             height: 32
             inputWidth: 160
-            popupHeight: 250
-            popupMode: 1
             z: 2
         }
     }

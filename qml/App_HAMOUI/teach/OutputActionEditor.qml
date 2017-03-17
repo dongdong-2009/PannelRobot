@@ -408,8 +408,6 @@ ExtentActionEditorBase {
                 visible: intervalY.isChecked||intervalM.isChecked
                 configName: qsTr("Count Binding")
                 configValue: -1
-                popupMode: 1
-                popupHeight: 50
                 z:1
             }
         }

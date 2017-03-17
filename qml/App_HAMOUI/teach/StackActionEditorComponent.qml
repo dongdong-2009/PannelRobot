@@ -312,7 +312,6 @@ Item {
                 id:dir0
                 configName: qsTr("Dir0")
                 items: [qsTr("RP"), qsTr("PP")]
-                popupMode: 1
                 configValue: 0
             }
             ICComboBoxConfigEdit{
@@ -321,7 +320,6 @@ Item {
                 anchors.leftMargin: dir0.visible?(dir0.width+4):0
                 configName: qsTr("Dir1")
                 items: [qsTr("RP"), qsTr("PP")]
-                popupMode: 1
                 configValue: 0
             }
             ICComboBoxConfigEdit{
@@ -330,7 +328,6 @@ Item {
                 anchors.leftMargin: (dir0.visible?(dir0.width+4):0) +(dir1.visible?(dir1.width+4):0)
                 configName: qsTr("Dir2")
                 items: [qsTr("RP"), qsTr("PP")]
-                popupMode: 1
                 configValue: 0
             }
             ICComboBoxConfigEdit{
@@ -338,7 +335,6 @@ Item {
                 anchors.right: parent.right
                 configName: qsTr("Sequence")
                 items: ["X->Y->Z","X->Z->Y", "Y->X->Z","Y->Z->X", "Z->X->Y", "Z->Y->X", qsTr("Only X"), qsTr("Only Y"), qsTr("Only Z")]
-                popupMode: 1
                 z:13
                 configValue: 0
             }
@@ -350,19 +346,15 @@ Item {
             id:coutnerContainer
             ICComboBoxConfigEdit{
                 id:counterSel
-                popupMode: dataSourceSel.visible ? 0 : 1
                 configName: qsTr("Counter")
                 inputWidth: 300
-                popupHeight: dataSourceSel.visible ? 80 : 150
                 visible: mode != 1
             }
 
             ICComboBoxConfigEdit{
                 id:runSeq
-                popupMode: counterSel.popupMode
                 configName: qsTr("Run Seq")
                 inputWidth: 150
-                popupHeight: counterSel.popupHeight
                 visible: mode != 1
                 items:[qsTr("FinalX"), qsTr("FinalY"), qsTr("FinalZ"), qsTr("Run Together")]
                 configValue: 3

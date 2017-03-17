@@ -61,3 +61,11 @@ function parseCalibration(str){
     }
     return ret;
 }
+
+function icCreateObject(comp, parentObj,properties){
+    if(comp.status === 1){
+        return comp.createObject(parentObj, properties || {});
+    }
+    console.log("createObject:", comp.errorString());
+    return null;
+}

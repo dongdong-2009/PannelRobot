@@ -259,7 +259,7 @@ Item {
                 id:valveContainer
                 model:valveModel
                 spacing: 10
-                border.color: "black"
+                border.color: "gray"
                 border.width: 1
                 delegate: Row{
                     spacing: 8
@@ -378,7 +378,7 @@ Item {
                 id:ioContainer
                 model:ioModel
                 spacing: 10
-                border.color: "black"
+                border.color: "gray"
                 border.width: 1
                 delegate: Item {
                     height: inputRow.height + outputRow.height
@@ -490,9 +490,9 @@ Item {
             anchors.top: pageContainer.bottom
             anchors.topMargin: 3
             spacing: 20
+            x:5
             ICButton{
                 id:newBtn
-                x:5
                 text: qsTr("new")
                 onButtonClicked: {
                     if(typeSel.checkedItem == modeStatus){

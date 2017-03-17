@@ -650,7 +650,7 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6"),qsTr("Motor 7"),qsTr("Motor 8")]
-                    visible: encoderType.configValue == 1
+                    visible: (encoderType.configValue == 1)||(encoderReadWay.configValue==3)
                 }
 
                 ICComboBoxConfigEdit{

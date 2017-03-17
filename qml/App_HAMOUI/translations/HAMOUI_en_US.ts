@@ -2895,87 +2895,87 @@
 <context>
     <name>OutputActionEditor</name>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="166"/>
+        <location filename="../teach/OutputActionEditor.qml" line="189"/>
         <source>Self</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="194"/>
+        <location filename="../teach/OutputActionEditor.qml" line="217"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="225"/>
+        <location filename="../teach/OutputActionEditor.qml" line="248"/>
         <source>EUY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="199"/>
+        <location filename="../teach/OutputActionEditor.qml" line="222"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="217"/>
+        <location filename="../teach/OutputActionEditor.qml" line="240"/>
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="221"/>
+        <location filename="../teach/OutputActionEditor.qml" line="244"/>
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="203"/>
+        <location filename="../teach/OutputActionEditor.qml" line="226"/>
         <source>Time Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="208"/>
+        <location filename="../teach/OutputActionEditor.qml" line="231"/>
         <source>Interval Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="213"/>
+        <location filename="../teach/OutputActionEditor.qml" line="236"/>
         <source>Interval M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="370"/>
+        <location filename="../teach/OutputActionEditor.qml" line="393"/>
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="375"/>
+        <location filename="../teach/OutputActionEditor.qml" line="398"/>
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="380"/>
+        <location filename="../teach/OutputActionEditor.qml" line="403"/>
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="388"/>
+        <location filename="../teach/OutputActionEditor.qml" line="411"/>
         <source>Act Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="388"/>
+        <location filename="../teach/OutputActionEditor.qml" line="411"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="389"/>
+        <location filename="../teach/OutputActionEditor.qml" line="412"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="399"/>
+        <location filename="../teach/OutputActionEditor.qml" line="422"/>
         <source>interval number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/OutputActionEditor.qml" line="409"/>
+        <location filename="../teach/OutputActionEditor.qml" line="432"/>
         <source>Count Binding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3453,7 +3453,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/ProductSettings.qml" line="508"/>
-        <location filename="../settingpages/ProductSettings.qml" line="571"/>
+        <location filename="../settingpages/ProductSettings.qml" line="576"/>
         <source>Preservation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3591,37 +3591,42 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="581"/>
+        <location filename="../settingpages/ProductSettings.qml" line="558"/>
+        <source>Tips:New or modified, click Save to take effect!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/ProductSettings.qml" line="586"/>
         <source>Clear Database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="637"/>
+        <location filename="../settingpages/ProductSettings.qml" line="642"/>
         <source>Led</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="637"/>
+        <location filename="../settingpages/ProductSettings.qml" line="642"/>
         <source> </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="637"/>
+        <location filename="../settingpages/ProductSettings.qml" line="642"/>
         <source>  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="637"/>
+        <location filename="../settingpages/ProductSettings.qml" line="642"/>
         <source>status binding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="638"/>
+        <location filename="../settingpages/ProductSettings.qml" line="643"/>
         <source>Key F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="638"/>
+        <location filename="../settingpages/ProductSettings.qml" line="643"/>
         <source>function binding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7599,7 +7604,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="796"/>
-        <location filename="../main.qml" line="955"/>
+        <location filename="../main.qml" line="960"/>
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7610,13 +7615,13 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="914"/>
-        <location filename="../main.qml" line="933"/>
+        <location filename="../main.qml" line="938"/>
         <source>Yes[F4]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.qml" line="914"/>
-        <location filename="../main.qml" line="933"/>
+        <location filename="../main.qml" line="938"/>
         <source>No[F5]</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7626,43 +7631,43 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="932"/>
+        <location filename="../main.qml" line="937"/>
         <source>Need to ghost and export to U Disk?
 The name of ghost is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="955"/>
+        <location filename="../main.qml" line="960"/>
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="974"/>
+        <location filename="../main.qml" line="979"/>
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1212"/>
+        <location filename="../main.qml" line="1217"/>
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1283"/>
+        <location filename="../main.qml" line="1288"/>
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1316"/>
+        <location filename="../main.qml" line="1321"/>
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1316"/>
+        <location filename="../main.qml" line="1321"/>
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1316"/>
+        <location filename="../main.qml" line="1321"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

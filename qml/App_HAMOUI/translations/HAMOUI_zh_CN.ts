@@ -3169,6 +3169,10 @@ please chose!</source>
         <source>status to</source>
         <translation>状态变为</translation>
     </message>
+    <message>
+        <source>Tips:New or modified, click Save to take effect!</source>
+        <translation>注意：新建或者修改完成后，点击保存才生效！</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>

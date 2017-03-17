@@ -40,12 +40,13 @@ ExtentActionEditorBase {
 
     onActionObjectChanged: {
         if(actionObject == null) return;
+        console.log("actionObject",JSON.stringify(actionObject));
         var action = actionObject.action;
         var isOn = actionObject.pointStatus;
         var m,i,len;
         if(isOn)
-            statusGroup.checkedIndex = 0;
-        else statusGroup.checkedIndex = 1;
+            onBox.isChecked = true;
+        else offBox.isChecked = true;
         delayEdit.configValue = actionObject.acTime!=undefined?actionObject.acTime:actionObject.delay;
         if(action === 200){
             if(actionObject.type == 0){
@@ -54,6 +55,9 @@ ExtentActionEditorBase {
                     if(actionObject.point == yModel.get(i).hwPoint){
                         yModel.setProperty(i,"isSel",true);
                         pdata = yModel.get(i);
+                    }
+                    else{
+                        yModel.setProperty(i,"isSel",false);
                     }
                 }
             }
@@ -64,6 +68,9 @@ ExtentActionEditorBase {
                         mYModel.setProperty(i,"isSel",true);
                         pdata = mYModel.get(i);
                     }
+                    else{
+                        mYModel.setProperty(i,"isSel",false);
+                    }
                 }
             }
             else if(actionObject.type == 8){
@@ -73,12 +80,19 @@ ExtentActionEditorBase {
                         singleYModel.setProperty(i,"isSel",true);
                         pdata = singleYModel.get(i);
                     }
+                    else{
+                        singleYModel.setProperty(i,"isSel",false);
+                    }
+
                 }
                 for(i=0,len=holdDoubleYModel.count;i<len;++i){
                     if(actionObject.point == holdDoubleYModel.get(i).hwPoint){
                         holdDoubleY.isChecked =true;
                         holdDoubleYModel.setProperty(i,"isSel",true);
                         pdata = holdDoubleYModel.get(i);
+                    }
+                    else{
+                        holdDoubleYModel.setProperty(i,"isSel",false);
                     }
                 }
             }
@@ -88,6 +102,9 @@ ExtentActionEditorBase {
                     if(actionObject.point == timeYModel.get(i).hwPoint){
                         timeYModel.setProperty(i,"isSel",true);
                         pdata = timeYModel.get(i);
+                    }
+                    else{
+                        timeYModel.setProperty(i,"isSel",false);
                     }
                 }
             }
@@ -100,6 +117,9 @@ ExtentActionEditorBase {
                         intervalYModel.setProperty(i,"isSel",true);
                         pdata = intervalYModel.get(i);
                     }
+                    else{
+                        intervalYModel.setProperty(i,"isSel",false);
+                    }
                 }
             }
             else if(actionObject.type == 4){
@@ -108,6 +128,9 @@ ExtentActionEditorBase {
                     if(actionObject.point == intervalMModel.get(i).hwPoint){
                         intervalMModel.setProperty(i,"isSel",true);
                         pdata = intervalMModel.get(i);
+                    }
+                    else{
+                        intervalMModel.setProperty(i,"isSel",false);
                     }
                 }
             }

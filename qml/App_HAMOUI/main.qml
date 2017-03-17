@@ -928,6 +928,11 @@ uint16_t io_all;
                         panelRobotController.makeGhost(name, Storage.backup());
                         panelRobotController.exportGhost(name + ".ghost.hcdb");
                         tipGO.hide();
+                        mainWindow.focus = true;
+                    });
+                    tipGO.reject.connect(function(){
+                        tipGO.hide();
+                        mainWindow.focus = true;
                     });
                     tipGO.show(qsTr("Need to ghost and export to U Disk?\nThe name of ghost is ") + name,
                                qsTr("Yes[F4]"), qsTr("No[F5]"));

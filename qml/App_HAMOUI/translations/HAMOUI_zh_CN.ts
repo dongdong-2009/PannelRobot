@@ -2736,6 +2736,10 @@ please chose!</source>
         <source>Set Instructions</source>
         <translation>安装说明书</translation>
     </message>
+    <message>
+        <source>In installation!</source>
+        <translation>正在安装中，请等待安装完成!</translation>
+    </message>
 </context>
 <context>
     <name>PointEdit</name>

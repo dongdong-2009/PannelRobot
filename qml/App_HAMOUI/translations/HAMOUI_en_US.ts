@@ -3094,37 +3094,43 @@ please chose!</source>
 <context>
     <name>PictureSettings</name>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="49"/>
+        <location filename="../settingpages/PictureSettings.qml" line="11"/>
+        <location filename="../settingpages/PictureSettings.qml" line="137"/>
+        <source>In installation!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingpages/PictureSettings.qml" line="57"/>
         <source>Scan Pic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="66"/>
+        <location filename="../settingpages/PictureSettings.qml" line="74"/>
         <source>Set As Start Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="74"/>
+        <location filename="../settingpages/PictureSettings.qml" line="82"/>
         <source>Set As Standby</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="84"/>
+        <location filename="../settingpages/PictureSettings.qml" line="92"/>
         <source>Use MachineImg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="95"/>
+        <location filename="../settingpages/PictureSettings.qml" line="103"/>
         <source>Set As MachineImg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="108"/>
+        <location filename="../settingpages/PictureSettings.qml" line="116"/>
         <source>Scan Instructions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/PictureSettings.qml" line="126"/>
+        <location filename="../settingpages/PictureSettings.qml" line="134"/>
         <source>Set Instructions</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3453,7 +3459,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../settingpages/ProductSettings.qml" line="508"/>
-        <location filename="../settingpages/ProductSettings.qml" line="576"/>
+        <location filename="../settingpages/ProductSettings.qml" line="580"/>
         <source>Preservation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3591,42 +3597,42 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="558"/>
+        <location filename="../settingpages/ProductSettings.qml" line="562"/>
         <source>Tips:New or modified, click Save to take effect!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="586"/>
+        <location filename="../settingpages/ProductSettings.qml" line="590"/>
         <source>Clear Database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="642"/>
+        <location filename="../settingpages/ProductSettings.qml" line="646"/>
         <source>Led</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="642"/>
+        <location filename="../settingpages/ProductSettings.qml" line="646"/>
         <source> </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="642"/>
+        <location filename="../settingpages/ProductSettings.qml" line="646"/>
         <source>  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="642"/>
+        <location filename="../settingpages/ProductSettings.qml" line="646"/>
         <source>status binding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="643"/>
+        <location filename="../settingpages/ProductSettings.qml" line="647"/>
         <source>Key F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/ProductSettings.qml" line="643"/>
+        <location filename="../settingpages/ProductSettings.qml" line="647"/>
         <source>function binding</source>
         <translation type="unfinished"></translation>
     </message>

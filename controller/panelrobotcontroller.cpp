@@ -1509,6 +1509,7 @@ void PanelRobotController:: copyInstructions(const QString &picName) const
 {
     QDir usb(ICAppSettings::UsbPath);
     if(!usb.exists(picName)) return;
+//    QMessageBox
     ::system(QString("rm -r Instructions").toLatin1());
 //    usb.cd(picName);
     qDebug()<<QString("cp %1 Instructions -rf").arg(usb.absoluteFilePath(picName)).toLatin1();

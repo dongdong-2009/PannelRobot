@@ -190,6 +190,9 @@ ContentPageBase {
 
     content: manualContainer
     statusSection: posDisplayBar
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 978460c... 修复一些显示的BUG
 }

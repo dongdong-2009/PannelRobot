@@ -344,7 +344,7 @@ int AxisPneumaticActionCompiler(ICMoldItem & item, const QVariantMap* v)
 
 int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
 {
-    item.append(v->value("action").toInt());
+    item.append(F_CMD_IO_OUTPUT);
     item.append(v->value("type", 0).toInt());
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
@@ -701,6 +701,8 @@ QMap<int, ActionCompiler> CreateActionToCompilerMap()
     ret.insert(F_CMD_SYNC_START, SimpleActionCompiler);
     ret.insert(F_CMD_IO_INPUT, WaitActionCompiler);
     ret.insert(F_CMD_IO_OUTPUT, OutputActionCompiler);
+    ret.insert(F_CMD_IO_CHECK, OutputActionCompiler);
+
 //    ret.insert(F_CMD_IO_INTERVAL_OUTPUT, IntervalOutputActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP1, ConditionActionCompiler);
     ret.insert(F_CMD_PROGRAM_JUMP0, ConditionActionCompiler);

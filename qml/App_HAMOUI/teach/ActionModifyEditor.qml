@@ -55,7 +55,6 @@ Item {
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
-
         var item;
         var editor;
         var maxWidth = 0;
@@ -113,7 +112,6 @@ Item {
                 editor.configAddr = item.range || "";
                 editor.configValue = actionObject[item.item] ||"";
             }
-
             if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0) || isCustomEditor){
                 editor.visible = true;
                 if(isCustomEditor){

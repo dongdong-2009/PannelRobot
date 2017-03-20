@@ -810,6 +810,7 @@ actions.F_CMD_LINE_RELATIVE_POSE = actHelper++; 	   //< 相对姿势直线运动
 
 actions.F_CMD_IO_INPUT = 100;   //< IO点输入等待 IO点 等待 等待时间
 actions.F_CMD_WATIT_VISION_DATA = 101;
+actions.F_CMD_IO_CHECK = 102;
 actions.F_CMD_IO_OUTPUT = 200;   //< IO点输出 IO点 输出状态 输出延时
 actions.F_CMD_IO_INTERVAL_OUTPUT = 201;   //< IO点间隔输出
 actions.F_CMD_VISION_CATCH = 202;
@@ -1077,7 +1078,7 @@ var generateWaitAction = function(which, type, status, limit){
 
 var generateCheckAction = function(point, type, delay,xDir,isNormalX){
     return {
-        "action":actions.F_CMD_IO_OUTPUT,
+        "action":actions.F_CMD_IO_CHECK,
         "type":type,
         "point":point,
         "delay":delay,
@@ -1769,6 +1770,7 @@ actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL_BACK, moduleCallBackActi
 actionToStringHandlerMap.put(actions.F_CMD_PROGRAM_CALL0, callModuleActionToStringHandler);
 actionToStringHandlerMap.put(actions.ACT_COMMENT, commentActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_IO_OUTPUT, outputActionToStringHandler);
+actionToStringHandlerMap.put(actions.F_CMD_IO_CHECK, outputActionToStringHandler);
 //actionToStringHandlerMap.put(actions.F_CMD_IO_INTERVAL_OUTPUT, intervalOutputActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_START, syncBeginActionToStringHandler);
 actionToStringHandlerMap.put(actions.F_CMD_SYNC_END, syncEndActionToStringHandler);
@@ -1822,7 +1824,7 @@ var actionObjectToEditableITems = function(actionObject){
                     {"item":"speed", "range":"s_rw_0_32_1_1200"},
                     {"item":"delay", "range":"s_rw_0_32_2_1100"}
                 ];
-    }else if(actionObject.action === actions.F_CMD_IO_OUTPUT){
+    }else if(actionObject.action === actions.F_CMD_IO_CHECK){
         if(actionObject.type >= TIMEY_BOARD_START)
             ret =  [{"item":"acTime", "range":"s_rw_0_32_1_1201"}];
         else

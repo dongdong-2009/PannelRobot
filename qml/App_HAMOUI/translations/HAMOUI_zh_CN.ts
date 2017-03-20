@@ -3216,6 +3216,38 @@ please chose!</source>
         <source>status to</source>
         <translation>状态变为</translation>
     </message>
+    <message>
+        <source>ManualMode</source>
+        <translation>手动模式</translation>
+    </message>
+    <message>
+        <source>StopMode</source>
+        <translation>停止模式</translation>
+    </message>
+    <message>
+        <source>AutoMode</source>
+        <translation>自动模式</translation>
+    </message>
+    <message>
+        <source>RunningMode</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>SingleMode</source>
+        <translation>单步模式</translation>
+    </message>
+    <message>
+        <source>OneCycleMode</source>
+        <translation>单循环模式</translation>
+    </message>
+    <message>
+        <source>Mode Sel</source>
+        <translation>模式选择</translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation>确定</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>

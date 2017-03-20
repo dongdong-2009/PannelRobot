@@ -40,7 +40,7 @@ ExtentActionEditorBase {
 
     onActionObjectChanged: {
         if(actionObject == null) return;
-        console.log("actionObject",JSON.stringify(actionObject));
+//        console.log("actionObject",JSON.stringify(actionObject));
         var action = actionObject.action;
         var isOn = actionObject.pointStatus;
         var m,i,len;

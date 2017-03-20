@@ -942,9 +942,11 @@ uint16_t io_all;
                 Keymap.currentKeySequence.length = 0;
             }
         }
-        var keyStatus = [key === Keymap.KEY_F1,key === Keymap.KEY_F2,key === Keymap.KEY_F3,
-                key === Keymap.KEY_F4,key === Keymap.KEY_F5];
-        handControlButtonBandingOperationPressed(keyStatus);
+        if(panelRobotController.currentErrNum() !== 7){
+            var keyStatus = [key === Keymap.KEY_F1,key === Keymap.KEY_F2,key === Keymap.KEY_F3,
+                    key === Keymap.KEY_F4,key === Keymap.KEY_F5];
+            handControlButtonBandingOperationPressed(keyStatus);
+        }
 
         if((key === Keymap.KEY_Stop) && (panelRobotController.currentErrNum() !== 0)){
             if(panelRobotController.currentMode() == Keymap.CMD_RUNNING ||
@@ -998,9 +1000,11 @@ uint16_t io_all;
             if(key === Keymap.KEY_Up || key === Keymap.KEY_Down)
                 Keymap.endSpeedCaclByTimeStop();
         }
-        var keyStatus = [key === Keymap.KEY_F1,key === Keymap.KEY_F2,key === Keymap.KEY_F3,
-                key === Keymap.KEY_F4,key === Keymap.KEY_F5];
-        handControlButtonBandingOperationReleased(keyStatus);
+        if(panelRobotController.currentErrNum() !== 7){
+            var keyStatus = [key === Keymap.KEY_F1,key === Keymap.KEY_F2,key === Keymap.KEY_F3,
+                    key === Keymap.KEY_F4,key === Keymap.KEY_F5];
+            handControlButtonBandingOperationReleased(keyStatus);
+        }
         event.accepted = true;
     }
 
@@ -1047,6 +1051,7 @@ uint16_t io_all;
         if(handControSetting.length==10)
         {
             var setTmp ={};
+            var j,len;
             for(var i = 5;i < 10; ++i)
             {
                 setTmp = handControSetting[i];
@@ -1054,27 +1059,44 @@ uint16_t io_all;
                 {
                     var id = setTmp.thingID;
                     if(id<0) continue;
-                    var keyType = setTmp.keyFuncType;
-                    switch(setTmp.bindingType)
-                    {
-                    case 0://yOut
-                    case 1://mOut
-                        var valveTmp = IODefines.getValveItemFromValveID(id);
-                        var toSend = JSON.stringify(valveTmp);
-                        if(keyType == 1){
-                            refreshTimer.outPutStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
-                            panelRobotController.setYStatus(toSend, !refreshTimer.outPutStatus);
+                    var usefulMode = setTmp.usefulMode;
+                    var modeList = [Keymap.CMD_MANUAL,Keymap.CMD_CONFIG,Keymap.CMD_AUTO,Keymap.CMD_RUNNING,Keymap.CMD_SINGLE,Keymap.CMD_ONE_CYCLE];
+                    var modes =[];
+                    for(j=0;j<6;++j){
+                        if((usefulMode&(1<<j)) != 0){
+                            modes.push(modeList[j]);
                         }
-                        else if(keyType == 2 || keyType == 3){
-                            panelRobotController.setYStatus(toSend, keyType==2? true:false);
+                    }
+                    var keyEn = false;
+                    var currMode = panelRobotController.currentMode();
+                    for(j=0,len =modes.length;j<len;++j){
+                        if(currMode == modes[j]){
+                            keyEn = true;
                         }
-                        break;
-                    case 2://可编程按键
-                        var p = ManualProgramManager.manualProgramManager.getProgram(id).program;
-                        console.log("p",JSON.stringify(p));
-                        panelRobotController.manualRunProgram(JSON.stringify(p),
-                                                              "","", "", "");
-                        break;
+                    }
+                    if(keyEn){
+                        var keyType = setTmp.keyFuncType;
+                        switch(setTmp.bindingType)
+                        {
+                        case 0://yOut
+                        case 1://mOut
+                            var valveTmp = IODefines.getValveItemFromValveID(id);
+                            var toSend = JSON.stringify(valveTmp);
+                            if(keyType == 1){
+                                refreshTimer.outPutStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
+                                panelRobotController.setYStatus(toSend, !refreshTimer.outPutStatus);
+                            }
+                            else if(keyType == 2 || keyType == 3){
+                                panelRobotController.setYStatus(toSend, keyType==2? true:false);
+                            }
+                            break;
+                        case 2://可编程按键
+                            var p = ManualProgramManager.manualProgramManager.getProgram(id).program;
+                            console.log("p",JSON.stringify(p));
+                            panelRobotController.manualRunProgram(JSON.stringify(p),
+                                                                  "","", "", "");
+                            break;
+                        }
                     }
                 }
             }
@@ -1086,6 +1108,7 @@ uint16_t io_all;
         if(handControSetting.length==10)
         {
             var setTmp ={};
+            var j,len;
             for(var i = 5;i < 10; ++i)
             {
                 setTmp = handControSetting[i];
@@ -1093,24 +1116,41 @@ uint16_t io_all;
                 {
                     var id = setTmp.thingID;
                     if(id<0) continue;
-                    var keyType = setTmp.keyFuncType;
-                    switch(setTmp.bindingType)
-                    {
-                    case 0://yOut
-                    case 1://mOut
-                        var valveTmp = IODefines.getValveItemFromValveID(id);
-                        var toSend = JSON.stringify(valveTmp);
-                        if(keyType == 1 || keyType == 0){
-                            var outStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
-                            if(keyType == 0)
-                                panelRobotController.setYStatus(toSend, !outStatus);
-                            else
-                                panelRobotController.setYStatus(toSend, refreshTimer.outPutStatus);
+                    var usefulMode = setTmp.usefulMode;
+                    var modeList = [Keymap.CMD_MANUAL,Keymap.CMD_CONFIG,Keymap.CMD_AUTO,Keymap.CMD_RUNNING,Keymap.CMD_SINGLE,Keymap.CMD_ONE_CYCLE];
+                    var modes =[];
+                    for(j=0;j<6;j++){
+                        if((usefulMode&(1<<j)) !== 0){
+                            modes.push(modeList[j]);
                         }
-                        break;
-                    case 2://可编程按键
-                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_MANUAL_STOP);
-                        break;
+                    }
+                    var keyEn = false;
+                    var currMode = panelRobotController.currentMode();
+                    for(j=0,len =modes.length;j<len;++j){
+                        if(currMode == modes[j]){
+                            keyEn = true;
+                        }
+                    }
+                    if(keyEn){
+                        var keyType = setTmp.keyFuncType;
+                        switch(setTmp.bindingType)
+                        {
+                        case 0://yOut
+                        case 1://mOut
+                            var valveTmp = IODefines.getValveItemFromValveID(id);
+                            var toSend = JSON.stringify(valveTmp);
+                            if(keyType == 1 || keyType == 0){
+                                var outStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
+                                if(keyType == 0)
+                                    panelRobotController.setYStatus(toSend, !outStatus);
+                                else
+                                    panelRobotController.setYStatus(toSend, refreshTimer.outPutStatus);
+                            }
+                            break;
+                        case 2://可编程按键
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_MANUAL_STOP);
+                            break;
+                        }
                     }
                 }
             }

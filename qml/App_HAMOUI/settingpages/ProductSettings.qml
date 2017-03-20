@@ -599,120 +599,205 @@ Item {
             spacing: 10
             z:10
             delegate:
-            Row{
-                id:settingRow
-                spacing: 20
-                z: 1000-index;
-                function refreshPropertyThingID(){
-                    if(bindingNum >=0){
-                        if(type==0){
-                            if(bindingType == 0){
-                                keyModel.setProperty(index,"thingID",bindingNum);
-                            }
-                            else if(bindingType == 1){
-                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
-                            }
-                            else if(bindingType == 2){
-                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
-                            }
+                Item {
+                width: parent.width
+                height: settingRow.height
+
+                Rectangle{
+                    id:modelSelItem
+                    visible: false
+                    width: 300
+                    height: 150
+                    border.color: "black"
+                    border.width: 1
+                    color: "#A0A0F0"
+                    x:400
+                    y:0-((settingRow.height+10)*index)
+                    Flow{
+                        x:10
+                        y:10
+                        id:modeFlow
+                        width: parent.width
+                        height: parent.height - buttonArea.height
+                        property variant isModeSel: [manualMode.isChecked,stopMode.isChecked,autoMode.isChecked,
+                        runningMode.isChecked,singleMode.isChecked,oneCycleMode.isChecked]
+                        spacing: 4
+                        ICCheckBox{
+                            id:manualMode
+                            text: qsTr("ManualMode")
+                            isChecked: (usefulMode&(1<<0)) ==0?false:true
                         }
-                        else{
-                            if(bindingType == 0){
-                                keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
-                            }
-                            else if(bindingType == 1){
-                                keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
-                            }
-                            else if(bindingType == 2){
-                                keyModel.setProperty(index,"thingID",MData.programIDList[bindingNum]);
-                            }
+                        ICCheckBox{
+                            id:stopMode
+                            text: qsTr("StopMode")
+                            isChecked: (usefulMode&(1<<1)) ==0?false:true
+                        }
+                        ICCheckBox{
+                            id:autoMode
+                            text: qsTr("AutoMode")
+                            isChecked: (usefulMode&(1<<2)) ==0?false:true
+                        }
+                        ICCheckBox{
+                            id:runningMode
+                            text: qsTr("RunningMode")
+                            isChecked: (usefulMode&(1<<3)) ==0?false:true
+                        }
+                        ICCheckBox{
+                            id:singleMode
+                            text: qsTr("SingleMode")
+                            isChecked: (usefulMode&(1<<4)) ==0? false:true
+                        }
+                        ICCheckBox{
+                            id:oneCycleMode
+                            text: qsTr("OneCycleMode")
+                            isChecked:(usefulMode&(1<<5)) ==0?false:true
                         }
                     }
-                    else{
-                        keyModel.setProperty(index,"thingID",-1);
+
+                    ICButton{
+                        id:buttonArea
+                        bgColor: "lime"
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        text:qsTr("Ok")
+                        onButtonClicked: {
+                            var thisMode = 0;
+                            for(var i=0,len= modeFlow.isModeSel.length;i<len;++i){
+                                if(modeFlow.isModeSel[i]){
+                                    thisMode |= 1<<i;
+                                }
+                            }
+                            keyModel.setProperty(index,"usefulMode",thisMode);
+                            modelSelItem.visible =false;
+                            modeSel.enabled =true;
+                        }
                     }
                 }
-
-
-                ICCheckBox {
-                    text: type==0?qsTr("Led")+qsTr(" ")+(index+1)+qsTr("  ")+qsTr("status binding"):
-                                   qsTr("Key F")+(index-4)+qsTr("function binding")
-                    anchors.verticalCenter: parent.verticalCenter
-                    isChecked: functionCheck
-                    onIsCheckedChanged: keyModel.setProperty(index,"functionCheck", isChecked);
-                }
-
-                ICComboBox{
-                    id: bindingTypeChoose
-                    items: type==0?pData.ledItem:pData.keyItem
-                    currentIndex: bindingType
-                    onCurrentIndexChanged: {
-                        keyModel.setProperty(index,"bindingType",currentIndex);
-                        var ioItems = [];
-                        var len,i;
-                        if(type==0){
-                            switch(currentIndex)
-                            {
-                            default:
-                            case 0:ioItems = MData.xDefinesList;
-                                break;
-                            case 1:ioItems = MData.yDefinesList;
-                                break;
-                            case 2:ioItems = MData.mDefinesList;
-                            }
-                        }
-                        else{
-                            switch(currentIndex)
-                            {
-                            default:
-                            case 0:ioItems = MData.yDefinesList;
-                                break;
-                            case 1:ioItems = MData.mDefinesList;
-                                break;
-                            case 2:ioItems = MData.programList;
-                                break;
-                            }
-                        }
-                        if(ioItems.length <= bindingNum){
-                            if(ioItems.length == 0 ){
-                                bindingIdChoose.currentIndex = -1;
+                Row{
+                    id:settingRow
+                    spacing: 20
+                    function refreshPropertyThingID(){
+                        if(bindingNum >=0){
+                            if(type==0){
+                                if(bindingType == 0){
+                                    keyModel.setProperty(index,"thingID",bindingNum);
+                                }
+                                else if(bindingType == 1){
+                                    keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                                }
+                                else if(bindingType == 2){
+                                    keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
+                                }
                             }
                             else{
-                                bindingIdChoose.currentIndex = 0;
+                                if(bindingType == 0){
+                                    keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                                }
+                                else if(bindingType == 1){
+                                    keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
+                                }
+                                else if(bindingType == 2){
+                                    keyModel.setProperty(index,"thingID",MData.programIDList[bindingNum]);
+                                }
                             }
-                            bindingIdChoose.items = ioItems;
                         }
                         else{
-                            bindingIdChoose.items = ioItems;
-                            if(bindingNum == -1 && ioItems.length>0){
-                                bindingIdChoose.currentIndex = 0;
-                            }
+                            keyModel.setProperty(index,"thingID",-1);
                         }
+                    }
 
-                        settingRow.refreshPropertyThingID();
+
+                    ICCheckBox {
+                        text: type==0?qsTr("Led")+qsTr(" ")+(index+1)+qsTr("  ")+qsTr("status binding"):
+                                       qsTr("Key F")+(index-4)+qsTr("function binding")
+                        anchors.verticalCenter: parent.verticalCenter
+                        isChecked: functionCheck
+                        onIsCheckedChanged: keyModel.setProperty(index,"functionCheck", isChecked);
                     }
-                }
-                ICComboBox{
-                    id:keyFunctionType
-                    visible: (type && bindingType<2)
-                    width: 100
-                    items: pData.funcItem
-                    currentIndex: keyFuncType
-                    onCurrentIndexChanged: {
-                        keyModel.setProperty(index,"keyFuncType",currentIndex);
+
+                    ICButton{
+                        id:modeSel
+                        visible:type===1?true:false
+                        height: bindingTypeChoose.height
+                        text: qsTr("Mode Sel")
+                        onButtonClicked: {
+                            enabled = false;
+                            modelSelItem.visible =true;
+                        }
                     }
-                }
-                ICComboBox{
-                    id: bindingIdChoose
-                    width:  100
-                    currentIndex: bindingNum
-                    onCurrentIndexChanged: {
-                        keyModel.setProperty(index,"bindingNum",currentIndex);
-                        settingRow.refreshPropertyThingID();
+
+                    ICComboBox{
+                        id: bindingTypeChoose
+                        items: type==0?pData.ledItem:pData.keyItem
+                        currentIndex: bindingType
+                        onCurrentIndexChanged: {
+                            keyModel.setProperty(index,"bindingType",currentIndex);
+                            var ioItems = [];
+                            var len,i;
+                            if(type==0){
+                                switch(currentIndex)
+                                {
+                                default:
+                                case 0:ioItems = MData.xDefinesList;
+                                    break;
+                                case 1:ioItems = MData.yDefinesList;
+                                    break;
+                                case 2:ioItems = MData.mDefinesList;
+                                }
+                            }
+                            else{
+                                switch(currentIndex)
+                                {
+                                default:
+                                case 0:ioItems = MData.yDefinesList;
+                                    break;
+                                case 1:ioItems = MData.mDefinesList;
+                                    break;
+                                case 2:ioItems = MData.programList;
+                                    break;
+                                }
+                            }
+                            if(ioItems.length <= bindingNum){
+                                if(ioItems.length == 0 ){
+                                    bindingIdChoose.currentIndex = -1;
+                                }
+                                else{
+                                    bindingIdChoose.currentIndex = 0;
+                                }
+                                bindingIdChoose.items = ioItems;
+                            }
+                            else{
+                                bindingIdChoose.items = ioItems;
+                                if(bindingNum == -1 && ioItems.length>0){
+                                    bindingIdChoose.currentIndex = 0;
+                                }
+                            }
+
+                            settingRow.refreshPropertyThingID();
+                        }
+                    }
+
+                    ICComboBox{
+                        id:keyFunctionType
+                        visible: (type && bindingType<2)
+                        width: 100
+                        items: pData.funcItem
+                        currentIndex: keyFuncType
+                        onCurrentIndexChanged: {
+                            keyModel.setProperty(index,"keyFuncType",currentIndex);
+                        }
+                    }
+                    ICComboBox{
+                        id: bindingIdChoose
+                        width:  100
+                        currentIndex: bindingNum
+                        onCurrentIndexChanged: {
+                            keyModel.setProperty(index,"bindingNum",currentIndex);
+                            settingRow.refreshPropertyThingID();
+                        }
                     }
                 }
             }
-
         }
     }
 
@@ -763,7 +848,14 @@ Item {
 //        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
         len = MData.ledKesSetData.length;
-        if(len === 10){
+        var isRem = false;
+        if(len>0){
+            if(MData.ledKesSetData[0].hasOwnProperty("usefulMode")){
+                isRem = true;
+            }
+        }
+        if(len === 10 && isRem){
+            console.log("load");
             for(i = 0; i < len; ++i){
                 keyModel.append(MData.ledKesSetData[i]);
             }
@@ -771,7 +863,7 @@ Item {
         else{
             console.log("new");
             for(i = 0; i < 10; ++i){
-                keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0});
+                keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0,"usefulMode":3});
             }
         }
         refreshLedKeyData();

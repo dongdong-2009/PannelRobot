@@ -15,7 +15,7 @@ Item {
             source: "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "transparent.png");
         }
         onVisibleChanged: {
-            if(visible)machineImg.source = "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "machineImg.png");
+            if(visible)machineImg.source = "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "transparent.png");
         }
     }
 }

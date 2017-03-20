@@ -224,12 +224,10 @@ ExtentActionEditorBase {
             ICCheckBox{
                 id:timeY
                 text: qsTr("Time Y")
-                visible: timeYs.length > 0
             }
             ICCheckBox{
                 id:intervalY
                 text: qsTr("Interval Y")
-                visible: timeYs.length > 0
             }
             ICCheckBox{
                 id:intervalM

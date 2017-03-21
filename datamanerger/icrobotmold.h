@@ -376,7 +376,7 @@ public:
 
     QList<QPair<int, quint32> > BareMachineConfigs() const
     {
-        return fncCache_.ToPairList();
+        return fncCache_.ToPairList(ICAddrWrapper::MoldComboAddrs());
     }
 
 

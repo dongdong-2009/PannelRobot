@@ -55,7 +55,6 @@ Item {
         for(var i = 0, len = PData.registerEditors.length; i < len; ++i){
             PData.registerEditors[i].visible = false;
         }
-
         var item;
         var editor;
         var maxWidth = 0;
@@ -64,10 +63,11 @@ Item {
         PData.editingEditors = [];
         for(i = 0, len = editableItems.length; i < len; ++i){
             item = editableItems[i];
-            console.log("item",JSON.stringify(item));
             editor = PData.itemToEditorMap.get(item.item);
+            var isCustomEditor = false;
             if(PData.isRegisterEditor(editor)){
                 editor.actionObject = actionObject;
+                isCustomEditor = true;
             }
             else if(editor == points){
                 editor.action = actionObject.action;
@@ -112,9 +112,12 @@ Item {
                 editor.configAddr = item.range || "";
                 editor.configValue = actionObject[item.item] ||"";
             }
-
-            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
+            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0) || isCustomEditor){
                 editor.visible = true;
+                if(isCustomEditor){
+                    if(editor.hasOwnProperty("isAutoMode"))
+                        editor.isAutoMode = isAutoMode;
+                }
                 height += editor.height + editorContainer.spacing;
                 if(height > maxHeight) height = maxHeight;
                 if(editor.width > maxWidth)
@@ -313,8 +316,6 @@ Item {
                     inputWidth: 100
                     z:2
                     enabled: !(earlyEndPos.isChecked || earlyEndSpeedPos.isChecked || rel.isChecked);
-                    popupMode: 1
-                    popupHeight: 300
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)

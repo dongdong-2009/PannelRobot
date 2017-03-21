@@ -3,7 +3,7 @@ import QtQuick 1.1
 Rectangle {
     property variant ioDefines: []
     property int type: 0
-    property string status:""
+    property variant status:[0,0,0,0]
 
     ListModel{
         id:model
@@ -60,9 +60,12 @@ Rectangle {
 //        if(!visible) return;
         var pNum;
         for(var i = 0; i < model.count; ++i){
-            pNum = model.get(i).index;
-            if(pNum >= status.length) model.setProperty(i, "isOn", false);
-            model.setProperty(i, "isOn", parseInt(status[pNum]) > 0);
+            pNum = parseInt(model.get(i).index);
+            var board = parseInt(pNum / 32);
+            var pID = pNum % 32;
+            model.setProperty(i, "isOn", (((status[board] >> pID) & 1) == 1) ? true : false)
+//            if(pNum >= status.length) model.setProperty(i, "isOn", false);
+//            model.setProperty(i, "isOn", parseInt(status[pNum]) > 0);
         }
     }
 }

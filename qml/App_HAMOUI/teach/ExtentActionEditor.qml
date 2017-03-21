@@ -67,6 +67,10 @@ Item {
                 id:switchCoord
                 text: qsTr("switchCoord")
             }
+            ICCheckBox{
+                id:axisMemPos
+                text: qsTr("AxisMemPos")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -105,6 +109,9 @@ Item {
             }
             if(switchCoord.visible){
                 addPage(ExtentActionDefine.extentSwitchCoordAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(axisMemPos.visible){
+                addPage(ExtentActionDefine.extentSingleMemposAction.editableItems.comp.createObject(configsContainer));
             }
             currentIndex = 0;
         }

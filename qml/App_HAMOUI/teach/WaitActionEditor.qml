@@ -54,12 +54,21 @@ Item {
 
         }else if(euX.isChecked)
             mD = euXModel
+        else if(simpleDelay.isChecked)
+        {
+            ret.push(Teach.generateWaitAction(0, 100, 0, delay.configValue));
+            return ret;
+        }
         else
             mD = mXModel
         for(var i = 0; i < mD.count; ++i){
             data = mD.get(i);
             if(data.isSel){
-                var isOn = statusGroup.checkedItem == onBox ? true : false;
+                var isOn;
+                if(statusGroup.checkedItem == onBox)isOn = 1;
+                else if(statusGroup.checkedItem == offBox)isOn = 0;
+                else if(statusGroup.checkedItem == risingEdgeBox)isOn = 2;
+                else if(statusGroup.checkedItem == fallingEdgeBox)isOn = 3;
                 ret.push(Teach.generateWaitAction(data.hwPoint, data.board, isOn, delay.configValue));
                 break;
             }
@@ -90,11 +99,16 @@ Item {
                 text: qsTr("M")
                 visible: mXs.length > 0
             }
+            ICCheckBox{
+                id:simpleDelay
+                text: qsTr("Simple Delay")
+                visible: true
+            }
         }
         Rectangle{
             id:xContainer
             width: 690
-            height: container.height - typeGroup.height - statusGroup.height - parent.spacing * 4
+            height: container.height - typeGroup.height - statusBGroup.height - parent.spacing * 4
             color: "#A0A0F0"
             border.width: 1
             border.color: "black"
@@ -158,28 +172,32 @@ Item {
         }
 
         Row{
+            id:statusBGroup
             spacing: 20
-            ICButtonGroup{
-                id:statusGroup
-                checkedItem: onBox
-                mustChecked: true
-                isAutoSize: true
-                layoutMode: 0
-                spacing: 20
-                ICCheckBox{
-                    id:onBox
-                    text: qsTr("ON")
-                    isChecked: true
-                }
-                ICCheckBox{
-                    id:offBox
-                    text: qsTr("OFF")
-                }
+            ICCheckBox{
+                id:onBox
+                text: qsTr("ON")
+                isChecked: true
+                visible: !simpleDelay.isChecked
             }
-
+            ICCheckBox{
+                id:offBox
+                text: qsTr("OFF")
+                visible: !simpleDelay.isChecked
+            }
+            ICCheckBox{
+                id:risingEdgeBox
+                visible: normalX.isChecked
+                text: qsTr("Rising Edge")
+            }
+            ICCheckBox{
+                id:fallingEdgeBox
+                visible: normalX.isChecked
+                text: qsTr("Falling Edge")
+            }
             ICConfigEdit{
                 id:delay
-                configName: qsTr("Delay:")
+                configName: simpleDelay.isChecked?qsTr("Simple Delay:"):qsTr("Delay:")
                 unit: qsTr("s")
                 width: 100
                 height: 24
@@ -188,9 +206,20 @@ Item {
                 configAddr: "s_rw_0_32_1_1201"
                 configValue: "0.0"
             }
+            Component.onCompleted: {
+                statusGroup.addButton(onBox);
+                statusGroup.addButton(offBox);
+                statusGroup.addButton(risingEdgeBox);
+                statusGroup.addButton(fallingEdgeBox);
+            }
+        }
+        ICButtonGroup{
+            id:statusGroup
+            checkedItem: onBox
+            mustChecked: true
+            layoutMode: 2
         }
     }
-
 
     Component.onCompleted: {
 

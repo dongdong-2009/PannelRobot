@@ -667,7 +667,6 @@ Rectangle {
                 ICComboBox{
                     id:editing
                     z:100
-                    popupHeight: 350
                     property variant defaultPrograms: [qsTr("main"),
                         qsTr("Sub-1"),
                         qsTr("Sub-2"),
@@ -690,7 +689,7 @@ Rectangle {
                     items:defaultPrograms
                     currentIndex: 0
                     onCurrentIndexChanged: {
-                        //                        console.log("onCurrentIndexChanged", currentIndex);
+//                        console.log("onCurrentIndexChanged", currentIndex);
                         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
                             actionEditorFrame.item.showMenu();
                         }
@@ -776,7 +775,6 @@ Rectangle {
                     width: 140
                     items: [qsTr("Main Module")]
                     currentIndex: 0
-                    popupHeight: 350
                     visible: editing.currentIndex < 9
 
                     function setCurrentModule(moduleID){
@@ -1298,6 +1296,7 @@ Rectangle {
                     width: parent.width
                     height: parent.height - 2
                     spacing:2
+                    highlightMoveDuration:10
                     clip: true
 
 
@@ -1424,6 +1423,242 @@ Rectangle {
         z:3
         x: 10
 
+    }
+
+    MouseArea{
+        id: programSearch
+//        visible: false
+        width: 600
+        height:container.height - programSelecterContainer.height - container.spacing
+        y:programListContainer.y
+        x:800
+        z:12
+        PropertyAnimation{
+            id:programSearchOut
+            target: programSearch
+            property: "x"
+            to: 800 - programSearch.width
+            duration: 100
+        }
+        SequentialAnimation{
+            id:programSearchIn
+            PropertyAnimation{
+                target: programSearch
+                property: "x"
+                to: 800
+                duration: 100
+            }
+            PropertyAction{
+                target: programSearchContent
+                property: "visible"
+                value:false
+            }
+        }
+        ICButton{
+            id:programSearchBtn
+            text: ""
+            icon: "../images/search.png"
+            width: 64
+            height: 64
+            bgColor: "green"
+            anchors.right: parent.left
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: actionEditorFrame.height
+            onButtonClicked: {
+                if(!programSearchContent.visible){
+                    programSearchContent.visible = true;
+                    programSearchOut.start();
+                }else{
+                    programSearchIn.start();
+                }
+            }
+        }
+        Rectangle {
+            id:programSearchContent
+            visible: false
+            width: parent.width
+            height: parent.height
+            color: "#A0A0F0"
+            border.width: 1
+            border.color: "gray"  
+            Row{
+                id:searchCondition
+                z:2
+                x:8
+                y:8
+                spacing: 8
+                ICLineEdit{
+                    id:keyWords
+                    height:searchRange.height
+                    inputWidth: 120
+                    isNumberOnly:false
+                }
+                ICComboBoxConfigEdit{
+                    id:searchRange
+                    configName: qsTr("SearchRange")
+                    inputWidth: 120
+                    height: searchRange.height
+                    items: {
+                        var tmpItems = moduleSel.items;
+                        tmpItems.shift();
+                        tmpItems = editing.defaultPrograms.concat(tmpItems);
+                        tmpItems.splice(0,0,qsTr("All"));
+                        return tmpItems;
+                    }
+                    Component.onCompleted: {
+                        if(items.length >0)configValue =0;
+                    }
+                }
+                ICButton{
+                    id:toSeach
+                    text: qsTr("Search")
+                    height:searchRange.height
+                    onButtonClicked: {
+                        searchResultModel.clear();
+                        var tmpstr = "";
+                        var i ,j,tmpLen;
+                        var tmpPrograms,tmpFunctions,tmpFunction;
+                        if(searchRange.configValue == 0){
+                            for(i=0;i<9;++i){
+                                tmpPrograms = JSON.parse(panelRobotController.programs(i));
+                                searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":editing.defaultPrograms[i]});
+                                tmpLen = searchResultModel.count;
+                                for(j=0;j<tmpPrograms.length;++j){
+                                    tmpstr = actionObjectToText(tmpPrograms[j]);
+                                    if(tmpstr.indexOf(keyWords.text) >= 0)
+                                        searchResultModel.append({"whichProgram":i,"whichFunction":0,"whichRow":j,"desc":tmpstr});
+                                }
+                                if(searchResultModel.count === tmpLen)
+                                  searchResultModel.remove(tmpLen - 1);
+                            }
+                            tmpFunctions = JSON.parse(panelRobotController.functions());
+                            for(i=0;i<tmpFunctions.length;++i){
+                                tmpFunction = JSON.parse(tmpFunctions[i].program);
+                                searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":moduleSel.items[i+1]});
+                                tmpLen = searchResultModel.count;
+                                for(j=0;j<tmpFunction.length;++j){
+                                    tmpstr = actionObjectToText(tmpFunction[j]);
+                                    if(tmpstr.indexOf(keyWords.text) >= 0)
+                                        searchResultModel.append({"whichProgram":0,"whichFunction":i+1,"whichRow":j,"desc":tmpstr});
+                                }
+                                if(searchResultModel.count === tmpLen)
+                                  searchResultModel.remove(tmpLen - 1);
+                            }
+                        }
+
+                        if(searchRange.configValue>0 && searchRange.configValue<10){
+                            var searchPrograms = JSON.parse(panelRobotController.programs(searchRange.configValue-1));
+                            for(i=0;i<searchPrograms.length;++i){
+                                tmpstr = actionObjectToText(searchPrograms[i]);
+                                if(tmpstr.indexOf(keyWords.text) >= 0)
+                                    searchResultModel.append({"whichProgram":searchRange.configValue-1,"whichFunction":0,"whichRow":i,"desc":tmpstr});
+                            }
+                        }
+                        else if(searchRange.configValue>9){
+                           var searchFunctions = JSON.parse(panelRobotController.functions());
+                           var searchFunction = JSON.parse(searchFunctions[searchRange.configValue-10].program);
+                           for(i=0;i<searchFunction.length;++i){
+                               tmpstr = actionObjectToText(searchFunction[i]);
+                               if(tmpstr.indexOf(keyWords.text) >= 0)
+                                   searchResultModel.append({"whichProgram":0,"whichFunction":searchRange.configValue-9,"whichRow":i,"desc":tmpstr});
+                           }
+                       }
+                        searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":qsTr("End")});
+                    }
+                }
+                ICButton{
+                    text: qsTr("Clear Search")
+                    height:searchRange.height
+                    onButtonClicked: {
+                        keyWords.text = "";
+                        searchResultModel.clear();
+                    }
+                }
+            }
+            ListModel{
+                id:searchResultModel
+            }
+            ICListView{
+                id:searchResultView
+                x:8
+                spacing: 2
+                anchors.top:searchCondition.bottom
+                anchors.topMargin: 6
+                height: parent.height - searchCondition.height -50
+                width: parent.width - 15
+                border.color: "black"
+                border.width: 1
+                model: searchResultModel
+                clip: true
+                delegate:Rectangle{
+                    height:itemText.height +12
+                    width: parent.width
+                    color: ListView.isCurrentItem?"lightsteelblue":"white"
+                    MouseArea{
+                        id:selItem
+                        anchors.fill: parent
+                        onClicked: {
+                            searchResultView.currentIndex = index;
+                        }
+//                        onDoubleClicked: {
+//                            if(whichProgram<0 || whichFunction<0 || whichRow<0)return;
+
+//                        }
+                    }
+                    Text {
+                        id: itemText
+                        color: whichRow<0?"red":"black"
+                        textFormat: Text.RichText
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: (whichRow<0?"":whichRow+ " :") + desc
+                    }
+                    ICButton{
+                        visible:currentIndex ===index && whichRow>-1? true:false
+                        text: qsTr("GO")
+                        height: parent.height
+                        width: 64
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        onButtonClicked: {
+                            editing.currentIndex = whichProgram;
+                            moduleSel.currentIndex = whichFunction;
+                            programListView.currentIndex = whichRow;
+                            programSearchBtn.clicked();
+                        }
+                    }
+                }
+            }
+            Row{
+                id:jumpCondition
+                x:8
+                spacing: 8
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin: 3
+                Text {
+                    id: inCurrentPage
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Current Page")
+                }
+                ICConfigEdit{
+                    id:programIndex
+                    configName: qsTr("programIndex")
+                    configValue: "0"
+                    min:0
+                    max:10000
+                }
+                ICButton{
+                    id:gotoProgram
+                    text: qsTr("GO")
+                    height: programIndex.height
+                    onButtonClicked: {
+                        if(programIndex.configValue<programListView.count)
+                            programListView.currentIndex = programIndex.configValue;
+                        else programListView.currentIndex = programListView.count-1;
+                        programSearchBtn.clicked();
+                    }
+                }
+            }
+        }
     }
 
     MouseArea{

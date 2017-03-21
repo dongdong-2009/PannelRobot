@@ -264,6 +264,10 @@ function isContinuousType(key){
     return getKeyType(key) === Continuous_Type;
 }
 
+function isMenuType(key){
+    return getKeyType(key) === Menu_Type;
+}
+
 function isKeyPressed(key){
     return keyStructs.get(key).isPressed;
 }

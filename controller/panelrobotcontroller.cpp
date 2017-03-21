@@ -94,6 +94,10 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
             SLOT(showMessage(QString)));
     emit LoadMessage("Start");
     host_ = ICRobotVirtualhost::RobotVirtualHost();
+    led_io.led=0;
+    led_io_old.led=-1;
+    fd=open("/dev/szhc_leds", O_WRONLY);
+    setLEDStatus(0,0);
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
             SLOT(OnNeedToInitHost()));
@@ -145,7 +149,7 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
         pc.UpdateConfigValue(cptr, static_cast<quint32>(p.value().toDouble() * qPow(10, cptr->Decimal())));
         ++p;
     }
-    baseFncs_ = pc.ToPairList();
+    baseFncs_ = pc.ToPairList(ICAddrWrapper::MoldComboAddrs());
 
 
 
@@ -218,6 +222,7 @@ void PanelRobotController::Init()
     //    OnNeedToInitHost();
 #endif
     //    InitMainView();
+
     qApp->installTranslator(&translator);
     qApp->installTranslator(&panelRoboTranslator_);
     qApp->installTranslator(&configsTranslator_);
@@ -264,6 +269,7 @@ void PanelRobotController::InitMachineConfig_()
 {
     ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
+    qDebug()<<"machine name:"<<as.CurrentSystemConfig();
     machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
     //    OnNeedToInitHost();
@@ -576,8 +582,13 @@ void PanelRobotController::InitMainView()
     emit LoadMessage("Initing ui...");
     qDebug("Init MainView");
     mainView_ = new QtQuick1ApplicationViewer;
+//    virtualKeyboard.setParent(mainView_);
+    comboBoxView_.setParent(mainView_);
+//    virtualKeyboard.hide();
+    comboBoxView_.hide();
     mainView_->rootContext()->setContextProperty("panelRobotController", this);
     mainView_->rootContext()->setContextProperty("virtualKeyboard", &virtualKeyboard);
+    mainView_->rootContext()->setContextProperty("comboBoxView", &comboBoxView_);
     mainView_->addImportPath(QLatin1String("modules"));
     mainView_->setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
 #ifdef Q_WS_QWS
@@ -1471,7 +1482,11 @@ void PanelRobotController::setWatchDogEnabled(bool en)
 #endif
 
 }
-
+QStringList PanelRobotController::getInstructions()const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    return usb.entryList(QStringList()<<"Instructions*", QDir::Dirs);
+}
 QString PanelRobotController::getPictures() const
 {
     QDir usb(ICAppSettings::UsbPath);
@@ -1496,7 +1511,17 @@ QString PanelRobotController::getPicturesPath(const QString& picName) const
     usb.cd("HCUpdate_pic");
     return usb.absoluteFilePath(picName);
 }
-
+void PanelRobotController:: copyInstructions(const QString &picName) const
+{
+    QDir usb(ICAppSettings::UsbPath);
+    if(!usb.exists(picName)) return;
+//    QMessageBox
+    ::system(QString("rm -r Instructions").toLatin1());
+//    usb.cd(picName);
+    qDebug()<<QString("cp %1 Instructions -rf").arg(usb.absoluteFilePath(picName)).toLatin1();
+    ::system(QString("cp %1 Instructions -rf").arg(usb.absoluteFilePath(picName)).toLatin1());
+    ::system("sync");
+}
 void PanelRobotController::copyPicture(const QString &picName, const QString& to) const
 {
     QDir usb(ICAppSettings::UsbPath);

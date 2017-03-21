@@ -15,7 +15,6 @@ Row{
     property alias unit: pos.unit
     property alias mode: axis.state
     property alias relPoints: relPoint.items
-    property alias popupMode: relPoint.popupMode
 
     function getAxisActionInfo(){
         if(!box.isChecked) return null;
@@ -79,8 +78,6 @@ Row{
         id:relPoint
         width: pos.width
         visible: false
-        popupHeight: 100
-        popupMode: 1
     }
 
     ICLineEdit{

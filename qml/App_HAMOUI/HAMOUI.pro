@@ -6,10 +6,11 @@ teach/*.js \
 teach/*.qml \
 settingpages/* \
 ../ICCustomElement/* \
-../tests/GcodeTests.qml
+../tests/GcodeTests.qml \
 teach/extents/*.qml \
 teach/extents/*.js
 }
+
 
 
 

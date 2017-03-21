@@ -208,9 +208,6 @@ Item {
                     z:2
                     enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
 //                    configNameWidth: earlyEnd.configNameWidth
-
-                    popupMode: 1
-                    popupHeight: 200
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
@@ -228,7 +225,6 @@ Item {
                     id:signalOnOff
                     enabled:signalStop.isChecked
                     width: 40
-                    popupMode: 1
                     items:[qsTr("on"),qsTr("off")]
                     Component.onCompleted: {
                         currentIndex = 0;
@@ -255,8 +251,6 @@ Item {
                     inputWidth: 60
                     z:2
                     enabled: !(signalStop.isChecked || earlyEnd.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                    popupMode: 1
-                    popupHeight: 200
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
@@ -274,7 +268,6 @@ Item {
                     id:ySignalOnOff
                     enabled:onPosOutput.isChecked
                     width: 40
-                    popupMode: 1
                     items:[qsTr("on"),qsTr("off")]
                     Component.onCompleted: {
                         currentIndex = 0;

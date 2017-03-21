@@ -588,6 +588,7 @@ Rectangle {
 //        onSecondGone: restTip.setRestTime(panelRobotController.restUseTime());
     }
 
+
     function onKnobChanged(knobStatus){
         //        var toTest = {
         //            "dsID":"www.geforcevision.com.cam",
@@ -825,9 +826,10 @@ Rectangle {
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
 
+            var v;
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){
-                var v = iosettings[i];
+                v = iosettings[i];
                 if(v.check == true){
                     console.log("send:");
                     /*
@@ -849,6 +851,21 @@ uint16_t io_all;
                     value|=v.sendMode<<9;
                     console.log(value);
                     panelRobotController.modifyConfigValue(13,value);
+                }
+            }
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckSet", "[]", "IOCheckSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    console.log("send:");
+                    value =v.checkStatus?1:0;
+                    value|=v.checkId<<1;
+                    value|=v.checkType<<8;
+                    value|=v.outStatus<<10;
+                    value|=v.outId<<11;
+                    value|=v.outType<<18;
+                    console.log(value);
+                    panelRobotController.modifyConfigValue(32,value);
                 }
             }
 
@@ -874,9 +891,11 @@ uint16_t io_all;
                 key === Keymap.KNOB_AUTO){
             Keymap.currentKeySequence.length = 0;
         }
-        else{
+        else
+        {
             Keymap.currentKeySequence.push(key);
-            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length){
+            if(Keymap.currentKeySequence.length === Keymap.hwtestSequence.length)
+            {
                 if(Keymap.matchHWTestSequence())
                     panelRobotController.runHardwareTest();
                 else if(Keymap.matchRecalSequence()){
@@ -908,15 +927,24 @@ uint16_t io_all;
                         panelRobotController.makeGhost(name, Storage.backup());
                         panelRobotController.exportGhost(name + ".ghost.hcdb");
                         tipGO.hide();
+                        mainWindow.focus = true;
+                    });
+                    tipGO.reject.connect(function(){
+                        tipGO.hide();
+                        mainWindow.focus = true;
                     });
                     tipGO.show(qsTr("Need to ghost and export to U Disk?\nThe name of ghost is ") + name,
                                qsTr("Yes[F4]"), qsTr("No[F5]"));
 
                 }
-
                 //                    panelRobotController
                 Keymap.currentKeySequence.length = 0;
             }
+        }
+        if(panelRobotController.currentErrNum() !== 7){
+            var keyStatus = [key === Keymap.KEY_F1,key === Keymap.KEY_F2,key === Keymap.KEY_F3,
+                    key === Keymap.KEY_F4,key === Keymap.KEY_F5];
+            handControlButtonBandingOperationPressed(keyStatus);
         }
 
         if((key === Keymap.KEY_Stop) && (panelRobotController.currentErrNum() !== 0)){
@@ -962,15 +990,170 @@ uint16_t io_all;
     Keys.onReleased: {
         //        console.log("Main key release exec");
         var key = event.key;
-        if(Keymap.isAxisKeyType(key)){
+        if(Keymap.isAxisKeyType(key))
+        {
             Keymap.setKeyPressed(key, false);
-        }else if(Keymap.isContinuousType(key)){
+        }else if(Keymap.isContinuousType(key))
+        {
             Keymap.setKeyPressed(key, false);
             if(key === Keymap.KEY_Up || key === Keymap.KEY_Down)
                 Keymap.endSpeedCaclByTimeStop();
         }
-
+        if(panelRobotController.currentErrNum() !== 7){
+            var keyStatus = [key === Keymap.KEY_F1,key === Keymap.KEY_F2,key === Keymap.KEY_F3,
+                    key === Keymap.KEY_F4,key === Keymap.KEY_F5];
+            handControlButtonBandingOperationReleased(keyStatus);
+        }
         event.accepted = true;
+    }
+
+
+    function handControlLEDBandingOperation()
+    {
+        var handControSetting = Mdata.ledKesSetData;
+        if(handControSetting.length==10)
+        {
+            for(var i = 0; i < 5; ++i)
+            {
+                var board=0,s=0;
+                if(handControSetting[i].functionCheck)
+                {
+                    var id = handControSetting[i].bindingNum;
+                    switch(handControSetting[i].bindingType)
+                    {
+                    default:
+                    case 0:
+                        board=IODefines.IO_BOARD_0+id/32;
+                        s=panelRobotController.isInputOn(id,board);
+//                        console.log("bangding input:"+id+"status:"+s);
+                        break;
+                    case 1:
+                        board=IODefines.IO_BOARD_0+id/32;
+                        s=panelRobotController.isOutputOn(id,board);
+//                        console.log("bangding output"+id+"status:"+s);
+                        break;
+                    case 2:
+                        board=IODefines.M_BOARD_0+id/32;
+                        s=panelRobotController.isOutputOn(id,board);
+//                        console.log("bangding M value"+id+"status:"+s);
+                        break;
+                    }
+                }
+                panelRobotController.setLEDStatus(i,s);
+            }
+        }
+    }
+
+    function handControlButtonBandingOperationPressed(keyStatus)
+    {
+        var handControSetting = Mdata.ledKesSetData;
+        if(handControSetting.length==10)
+        {
+            var setTmp ={};
+            var j,len;
+            for(var i = 5;i < 10; ++i)
+            {
+                setTmp = handControSetting[i];
+                if(setTmp.functionCheck && keyStatus[i-5])
+                {
+                    var id = setTmp.thingID;
+                    if(id<0) continue;
+                    var usefulMode = setTmp.usefulMode;
+                    var modeList = [Keymap.CMD_MANUAL,Keymap.CMD_CONFIG,Keymap.CMD_AUTO,Keymap.CMD_RUNNING,Keymap.CMD_SINGLE,Keymap.CMD_ONE_CYCLE];
+                    var modes =[];
+                    for(j=0;j<6;++j){
+                        if((usefulMode&(1<<j)) != 0){
+                            modes.push(modeList[j]);
+                        }
+                    }
+                    var keyEn = false;
+                    var currMode = panelRobotController.currentMode();
+                    for(j=0,len =modes.length;j<len;++j){
+                        if(currMode == modes[j]){
+                            keyEn = true;
+                        }
+                    }
+                    if(keyEn){
+                        var keyType = setTmp.keyFuncType;
+                        switch(setTmp.bindingType)
+                        {
+                        case 0://yOut
+                        case 1://mOut
+                            var valveTmp = IODefines.getValveItemFromValveID(id);
+                            var toSend = JSON.stringify(valveTmp);
+                            if(keyType == 1){
+                                refreshTimer.outPutStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
+                                panelRobotController.setYStatus(toSend, !refreshTimer.outPutStatus);
+                            }
+                            else if(keyType == 2 || keyType == 3){
+                                panelRobotController.setYStatus(toSend, keyType==2? true:false);
+                            }
+                            break;
+                        case 2://可编程按键
+                            var p = ManualProgramManager.manualProgramManager.getProgram(id).program;
+                            console.log("p",JSON.stringify(p));
+                            panelRobotController.manualRunProgram(JSON.stringify(p),
+                                                                  "","", "", "");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    function handControlButtonBandingOperationReleased(keyStatus)
+    {
+        var handControSetting = Mdata.ledKesSetData;
+        if(handControSetting.length==10)
+        {
+            var setTmp ={};
+            var j,len;
+            for(var i = 5;i < 10; ++i)
+            {
+                setTmp = handControSetting[i];
+                if(setTmp.functionCheck && keyStatus[i-5])
+                {
+                    var id = setTmp.thingID;
+                    if(id<0) continue;
+                    var usefulMode = setTmp.usefulMode;
+                    var modeList = [Keymap.CMD_MANUAL,Keymap.CMD_CONFIG,Keymap.CMD_AUTO,Keymap.CMD_RUNNING,Keymap.CMD_SINGLE,Keymap.CMD_ONE_CYCLE];
+                    var modes =[];
+                    for(j=0;j<6;j++){
+                        if((usefulMode&(1<<j)) !== 0){
+                            modes.push(modeList[j]);
+                        }
+                    }
+                    var keyEn = false;
+                    var currMode = panelRobotController.currentMode();
+                    for(j=0,len =modes.length;j<len;++j){
+                        if(currMode == modes[j]){
+                            keyEn = true;
+                        }
+                    }
+                    if(keyEn){
+                        var keyType = setTmp.keyFuncType;
+                        switch(setTmp.bindingType)
+                        {
+                        case 0://yOut
+                        case 1://mOut
+                            var valveTmp = IODefines.getValveItemFromValveID(id);
+                            var toSend = JSON.stringify(valveTmp);
+                            if(keyType == 1 || keyType == 0){
+                                var outStatus = panelRobotController.isOutputOn(valveTmp.y1Point,valveTmp.y1Board);
+                                if(keyType == 0)
+                                    panelRobotController.setYStatus(toSend, !outStatus);
+                                else
+                                    panelRobotController.setYStatus(toSend, refreshTimer.outPutStatus);
+                            }
+                            break;
+                        case 2://可编程按键
+                            panelRobotController.sendKeyCommandToHost(Keymap.CMD_MANUAL_STOP);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
         function getExternalFuncBtn(){
@@ -1103,6 +1286,7 @@ uint16_t io_all;
         property int stopBtnDelay: 0
         property int automodeBtnOld: 0
         property int automodeBtnDelay: 0
+        property int outPutStatus: 0
         interval: 50; running: false; repeat: true
         onTriggered: {
             var pressedKeys = Keymap.pressedKeys();
@@ -1111,6 +1295,7 @@ uint16_t io_all;
                 getExternalFuncBtn();
                 switchMoldByIOStatus();
             }
+            handControlLEDBandingOperation();
             for(var i = 0 ; i < pressedKeys.length; ++i){
                 // speed handler
                 if(pressedKeys[i] === Keymap.KEY_Up || pressedKeys[i] === Keymap.KEY_Down){
@@ -1133,7 +1318,8 @@ uint16_t io_all;
                         mainHeader.speed = speed;
                     }
 
-                }else{
+                }
+                else{
                     panelRobotController.sendKeyCommandToHost(Keymap.getKeyMappedAction(pressedKeys[i]));
                 }
             }

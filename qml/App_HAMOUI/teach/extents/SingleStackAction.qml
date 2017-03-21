@@ -180,7 +180,6 @@ ExtentActionEditorBase {
             }
             ICComboBoxConfigEdit{
                 id:pointsSel
-                popupHeight: 100
                 configName: qsTr("Start Pos")
                 visible: relPoint.isChecked
                 onConfigValueChanged: {
@@ -245,8 +244,6 @@ ExtentActionEditorBase {
             id:counterSel
             configName: qsTr("Counter")
             inputWidth: 350
-            popupMode: 1
-            popupHeight: 100
             onConfigValueChanged: syncConfig()
 
         }

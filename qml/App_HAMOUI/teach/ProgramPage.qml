@@ -6,6 +6,7 @@ import "../Theme.js" as Theme
 import "../configs/Keymap.js" as Keymap
 import "../ShareData.js" as ShareData
 import "../opt/optconfigs.js" as OptConfigs
+import "../../utils/utils.js" as Utils
 
 
 ContentPageBase{
@@ -79,20 +80,15 @@ ContentPageBase{
         }
         Component.onCompleted: {
             var programFlowClass = Qt.createComponent('ProgramFlowPage.qml');
-            if (programFlowClass.status == Component.Ready){
-                var page = programFlowClass.createObject(pageContainer)
-                pageContainer.addPage(page);
-            }
+            var page = programFlowClass.createObject(pageContainer);
+            pageContainer.addPage(page);
             pageContainer.setCurrentIndex(0);
             if(OptConfigs.simpleProgram !== ""){
                 programFlowClass = Qt.createComponent("../opt/" + OptConfigs.simpleProgram);
-                if (programFlowClass.status == Component.Ready){
-                    page = programFlowClass.createObject(pageContainer)
-                    pageContainer.addPage(page);
-                    swichBtn.visible = true;
-                    pageContainer.setCurrentIndex(1);
-                }else
-                    console.log("opt/teach/page:", programFlowClass.errorString());
+                page =  programFlowClass.createObject(pageContainer);
+                pageContainer.addPage(page);
+                swichBtn.visible = true;
+                pageContainer.setCurrentIndex(1);
             }
         }
     }

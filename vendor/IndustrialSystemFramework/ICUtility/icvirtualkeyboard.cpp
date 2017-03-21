@@ -15,7 +15,7 @@ QList<QPushButton*> cnButtons;
 
 ICVirtualKeyboard::ICVirtualKeyboard(AddrRangeGetter rangeGetter, QWidget *parent) :
     rangeGetter_(rangeGetter),
-    QWidget(parent),
+    QFrame(parent),
     ui(new Ui::ICVirtualKeyboard)
 {
     ui->setupUi(this);
@@ -69,7 +69,7 @@ ICVirtualKeyboard::~ICVirtualKeyboard()
 
 void ICVirtualKeyboard::changeEvent(QEvent *e)
 {
-    QWidget::changeEvent(e);
+    QFrame::changeEvent(e);
     switch (e->type()) {
     case QEvent::LanguageChange:
         ui->retranslateUi(this);
@@ -86,7 +86,7 @@ void ICVirtualKeyboard::showEvent(QShowEvent *e)
     QMouseEvent *me = new QMouseEvent(QEvent::MouseButtonPress, QPoint(10, 10),
                                       Qt::LeftButton,Qt::LeftButton,Qt::NoModifier);
     qApp->postEvent(ui->inputEdit, me);
-    QWidget::showEvent(e);
+    QFrame::showEvent(e);
 }
 
 void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
@@ -181,7 +181,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
              return;
          QString tmp = "-" + preeditString_;
          int p = 0;
-         if(validator_.validate(tmp, p) == QValidator::Acceptable)
+         if(validator_.validate(tmp, p) > 0)
          {
              preeditString_ = "-" + preeditString_;
              ui->inputEdit->setText(preeditString_);
@@ -194,7 +194,7 @@ void ICVirtualKeyboard::closeEvent(QCloseEvent *event)
      }
      int p = 0;
      QString tmp = preeditString_ + curText;
-     if(validator_.validate(tmp, p) == QValidator::Acceptable)
+     if(validator_.validate(tmp, p) > 0)
      {
          preeditString_ += curText;
          ui->inputEdit->setText(preeditString_);

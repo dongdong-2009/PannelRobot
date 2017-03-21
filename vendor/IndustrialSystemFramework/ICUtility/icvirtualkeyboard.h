@@ -1,7 +1,7 @@
 #ifndef ICVIRTUALKEYBOARD_H
 #define ICVIRTUALKEYBOARD_H
 
-#include <QWidget>
+#include <QFrame>
 #include <QSignalMapper>
 #include <QDoubleValidator>
 #include "icdatatype.h"
@@ -18,7 +18,7 @@ static inline ICRange DefaultRangeGetter(const QString& addrName)
     return ICRange();
 }
 
-class ICVirtualKeyboard : public QWidget
+class ICVirtualKeyboard : public QFrame
 {
     Q_OBJECT
 

@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="en_US">
 <context>
+    <name>ICInstructionsView</name>
+    <message>
+        <location filename="extentui/icinstructionsview.ui" line="+20"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ICSplashScreen</name>
     <message>
         <location filename="icsplashscreen.cpp" line="+14"/>
@@ -60,7 +68,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+479"/>
+        <location line="+482"/>
         <location filename="vendor/IndustrialSystemFramework/ICUtility/icvirtualkeyboard.cpp" line="+110"/>
         <source>Ent</source>
         <translation type="unfinished"></translation>
@@ -118,7 +126,7 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="+242"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="+247"/>
         <location line="+5"/>
         <location line="+11"/>
         <source>Error</source>

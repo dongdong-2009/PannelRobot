@@ -372,12 +372,9 @@ Item {
                         Text{
                             text: qsTr("when current mode is:")
                         }
-                        ICButtonGroup{
-                            id: whichMode
-                            spacing: 12
-                            mustChecked: true
-                            checkedIndex: 0
-                            checkedItem: manualMode
+                        Flow{
+                            width: memDataConfigsContainer.width-10
+                            spacing: 8
                             ICCheckBox{
                                 id:manualMode
                                 property int cmd: 1
@@ -409,6 +406,21 @@ Item {
                                 property int cmd: 9
                                 text: qsTr("OneCycleMode")
                             }
+                            Component.onCompleted: {
+                                whichMode.addButton(manualMode);
+                                whichMode.addButton(stopMode);
+                                whichMode.addButton(autoMode);
+                                whichMode.addButton(runningMode);
+                                whichMode.addButton(singleMode);
+                                whichMode.addButton(oneCycleMode);
+                            }
+                        }
+                        ICButtonGroup{
+                            id: whichMode
+                            mustChecked: true
+                            checkedIndex: 0
+                            checkedItem: manualMode
+                            layoutMode: 2
                         }
                     }
 
@@ -424,8 +436,6 @@ Item {
                                 z:2
                                 configName: qsTr("Axis")
                                 configValue: -1
-                                popupMode: 1
-                                popupHeight: 90
                                 function onAxisDefinesChanged(){
                                     var axis = AxisDefine.usedAxisNameList();
                                     items = axis;
@@ -597,9 +607,7 @@ Item {
                 ICComboBoxConfigEdit{
                     id: flag
                     configName: qsTr("Flag")
-                    popupMode: 1
                     inputWidth:  180
-                    popupHeight: 200
 
                     onVisibleChanged: {
                         if(visible){

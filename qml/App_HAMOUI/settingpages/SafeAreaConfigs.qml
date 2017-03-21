@@ -257,7 +257,6 @@ Item {
                     configName:qsTr("Axis1")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
-                    popupHeight: 120
                     function onAxisDefinesChanged(){
                         var axis = AxisDefine.usedAxisNameList();
                         axis.unshift(qsTr("NO"));
@@ -562,7 +561,6 @@ Item {
                     configName:qsTr("Axis2")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
-                    popupHeight: 120
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
                     }
@@ -848,7 +846,6 @@ Item {
                     configName:qsTr("Axis3")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
-                    popupHeight: 120
                     function onValueChanged(){
                         panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
                     }
@@ -1188,7 +1185,6 @@ Item {
                 configName:qsTr("Axis1")
                 configValue: -1
                 configNameWidth: safe2MaxPos1Set.configNameWidth
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
                 }
@@ -1245,7 +1241,6 @@ Item {
                 configName:qsTr("Axis2")
                 configValue: -1
                 configNameWidth: safe2MaxPos2Set.configNameWidth
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
                 }
@@ -1300,7 +1295,6 @@ Item {
                 configName:qsTr("Axis3")
                 configNameWidth: safe2MaxPos2Set.configNameWidth
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
                 }
@@ -1398,7 +1392,6 @@ Item {
                 inputWidth:60
                 configName:qsTr("Axis1")
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
                 }
@@ -1429,7 +1422,6 @@ Item {
                 inputWidth:60
                 configName:qsTr("Axis2")
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
                 }
@@ -1460,7 +1452,6 @@ Item {
                 inputWidth:60
                 configName:qsTr("Axis3")
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
                 }
@@ -1493,7 +1484,6 @@ Item {
                 inputWidth:60
                 configName:qsTr("Axis4")
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_12_4_0_227",configValue);
                 }
@@ -1524,7 +1514,6 @@ Item {
                 inputWidth:60
                 configName:qsTr("Axis5")
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_16_4_0_227",configValue);
                 }
@@ -1555,7 +1544,6 @@ Item {
                 inputWidth:60
                 configName:qsTr("Axis6")
                 configValue: -1
-                popupHeight: 120
                 function onValueChanged(){
                     panelRobotController.setConfigValue("s_rw_20_4_0_227",configValue);
                 }

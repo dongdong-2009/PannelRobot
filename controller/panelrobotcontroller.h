@@ -1,12 +1,6 @@
 #ifndef PANELROBOTCONTROLLER_H
 #define PANELROBOTCONTROLLER_H
 
-
-
-
-
-
-
 #include <QObject>
 #include <QMap>
 #include <QSettings>
@@ -26,6 +20,7 @@
 #include "icparameterscache.h"
 #include "qtquick1applicationviewer.h"
 #include "icvirtualkeyboard.h"
+#include "iccomboboxview.h"
 #include "iclog.h"
 #include "ictcptransceiver.h"
 
@@ -122,6 +117,16 @@ union AutoRunData{
     quint32 all;
 };
 
+union LED_IO{
+    struct{
+        uint32_t led4:1;
+        uint32_t led3:1;
+        uint32_t led2:1;
+        uint32_t led1:1;
+        uint32_t led5:1;
+    };
+    uint32_t led;
+};
 
 static QString ErrInfoToJSON(const QMap<int, int>& errInfo)
 {
@@ -446,6 +451,24 @@ public:
     Q_INVOKABLE QString importRobotMold(const QString& molds, const QString &backupPackage);
 
     Q_INVOKABLE bool setCurrentTranslator(const QString& name);
+    Q_INVOKABLE void setLEDStatus(int id,bool s)
+    {
+        // LED1:8  LED2:4  LED3:2  LED4:1  LED5:16
+        switch(id)
+        {
+        case 0:led_io.led1=s;break;
+        case 1:led_io.led2=s;break;
+        case 2:led_io.led3=s;break;
+        case 3:led_io.led4=s;break;
+        case 4:led_io.led5=s;break;
+        default:break;
+        }
+        if(led_io_old.led!=led_io.led)
+        {
+            led_io_old.led=led_io.led;
+            ioctl(fd,0,led_io.led);
+        }
+    }
 
     Q_INVOKABLE QString getCustomSettings(const QString& key, const QVariant& defval, const QString& group = QString::fromLatin1("custom"))
     {
@@ -753,8 +776,12 @@ public:
     Q_INVOKABLE void setWatchDogEnabled(bool en);
 
     Q_INVOKABLE QString getPictures() const;
+    Q_INVOKABLE QStringList getInstructions() const;
+
+
     Q_INVOKABLE QString getPicturesPath(const QString& picName) const;
     Q_INVOKABLE void copyPicture(const QString &picName, const QString& to) const;
+    Q_INVOKABLE void copyInstructions(const QString &picName) const;
 
     Q_INVOKABLE QString scanUSBGCodeFiles(const QString& filter) const;
     Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
@@ -913,9 +940,13 @@ private:
     QString valveDefineJSON_;
     QtQuick1ApplicationViewer *mainView_;
     ICVirtualKeyboard virtualKeyboard;
+    ICComboBoxView comboBoxView_;
     QFileSystemWatcher hostUpdateFinishedWatcher_;
     QMap<int, quint32> readedConfigValues_;
     ICLog* logger_;
+    LED_IO led_io;
+    LED_IO led_io_old;
+    int fd;
     QTimer watchDogTimer_;
 
     QScopedPointer<ICTcpTransceiver> eth0Transceiver_;

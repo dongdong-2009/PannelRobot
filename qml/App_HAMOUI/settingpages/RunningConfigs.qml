@@ -48,7 +48,7 @@ Item {
                 configAddr: "s_rw_0_8_0_176"
             }
         }
-        ICConfigEdit{
+        ICCheckableLineEdit{
             id:firstMoudleSpeedEdit
             anchors.top: configSec1.bottom
             anchors.topMargin: 6
@@ -58,7 +58,11 @@ Item {
             max: 100.0
             decimal: 1
             onConfigValueChanged: {
-                panelRobotController.setConfigValue("s_rw_0_32_1_289",configValue);
+                panelRobotController.setConfigValue("s_rw_1_31_1_289",configValue);
+                panelRobotController.syncConfigs();
+            }
+            onIsCheckedChanged: {
+                panelRobotController.setConfigValue("s_rw_0_1_0_289",isChecked ? 1 : 0);
                 panelRobotController.syncConfigs();
             }
         }
@@ -165,8 +169,6 @@ Item {
                 ICComboBoxConfigEdit{
                     id:selIO
                     configName: qsTr("IO Select")
-                    popupMode: 1
-                    popupHeight: itemView.height
                     Component.onCompleted: {
                         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
                         if(ioBoardCount == 0)
@@ -184,8 +186,6 @@ Item {
                     id:selMold
                     configName: qsTr("Mold Select")
                     inputWidth:120
-                    popupMode: 1
-                    popupHeight: itemView.height
                     function refreshMoldList(){
                         var records = JSON.parse(panelRobotController.records());
                         var recordsItems = [];
@@ -301,7 +301,8 @@ Item {
         }
     }
     Component.onCompleted: {
-        firstMoudleSpeedEdit.configValue = panelRobotController.getConfigValueText("s_rw_0_32_1_289");
+        firstMoudleSpeedEdit.configValue = panelRobotController.getConfigValueText("s_rw_1_31_1_289");
+        firstMoudleSpeedEdit.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_289");
         var isTurnAutoSpeedEn = panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0);
         var turnAutoSpeed = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
         turnAutoSpeedEdit.isChecked = isTurnAutoSpeedEn;

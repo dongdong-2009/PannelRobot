@@ -68,6 +68,40 @@ ICStackContainer{
             debugItems.setProperty(index,"moveData",data);
         }
 
+        ICMessageBox{
+            id: tipForTest
+            x:280
+            y:100
+            z: 10
+            visible: false
+            onAccept: {
+                debugItems.clear();
+                var axisNum = panelRobotController.getConfigValue("s_rw_16_6_0_184");
+                for(var i=0;i<axisNum;++i){
+                    if(AxisDefine.axisInfos[i].visiable === true){
+                        debugItems.append({"type":"axisATest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("+test"),"moveData":"","status":-2,"errTip":"","errType":0});
+                        debugItems.append({"type":"axisDTest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("-test"),"moveData":"","status":-2,"errTip":"","errType":0});
+                    }
+                }
+                var yDefines = IOConfigs.teachSingleY;
+                for(var j=0;j<yDefines.length;++j){
+                    debugItems.append({"type":"singleYOnTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("onTest"),"moveData":"","status":-2,"errTip":"","errType":0});
+                    debugItems.append({"type":"singleYOffTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("offTest"),"moveData":"","status":-2,"errTip":"","errType":0});
+                }
+                yDefines = IOConfigs.teachHoldDoubleY;
+                for(var k=0;k<yDefines.length;++k){
+                    debugItems.append({"type":"HoldDoubleYOnTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("onTest"),"moveData":"","status":-2,"errTip":"","errType":0});
+                    debugItems.append({"type":"HoldDoubleYOffTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("offTest"),"moveData":"","status":-2,"errTip":"","errType":0});
+                }
+                if(debugItems.count === 0)return;
+//                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
+                testBegin.text = qsTr("StopTest")
+                testBegin.bgColor = "red"
+                refreshTimer.singleMode =0;
+                root.startTest(0);
+            }
+         }
+
         Item {
             id: reserve
             width: parent.width-5
@@ -83,30 +117,7 @@ ICStackContainer{
                 textColor: "white"
                 onButtonClicked: {
                     if(testBegin.bgColor == "green"){
-                        debugItems.clear();
-                        var axisNum = panelRobotController.getConfigValue("s_rw_16_6_0_184");
-                        for(var i=0;i<axisNum;++i){
-                            if(AxisDefine.axisInfos[i].visiable === true){
-                                debugItems.append({"type":"axisATest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("+test"),"moveData":"","status":-2,"errTip":"","errType":0});
-                                debugItems.append({"type":"axisDTest","id":i,"descr":qsTr("motor")+AxisDefine.axisInfos[i].name +qsTr("-test"),"moveData":"","status":-2,"errTip":"","errType":0});
-                            }
-                        }
-                        var yDefines = IOConfigs.teachSingleY;
-                        for(var j=0;j<yDefines.length;++j){
-                            debugItems.append({"type":"singleYOnTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("onTest"),"moveData":"","status":-2,"errTip":"","errType":0});
-                            debugItems.append({"type":"singleYOffTest","id":yDefines[j],"descr":qsTr("singleY")+ IODefines.getValveItemFromValveName(yDefines[j]).descr+qsTr("offTest"),"moveData":"","status":-2,"errTip":"","errType":0});
-                        }
-                        yDefines = IOConfigs.teachHoldDoubleY;
-                        for(var k=0;k<yDefines.length;++k){
-                            debugItems.append({"type":"HoldDoubleYOnTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("onTest"),"moveData":"","status":-2,"errTip":"","errType":0});
-                            debugItems.append({"type":"HoldDoubleYOffTest","id":yDefines[k],"descr":qsTr("HoldDoubleY")+ IODefines.getValveItemFromValveName(yDefines[k]).descr+qsTr("offTest"),"moveData":"","status":-2,"errTip":"","errType":0});
-                        }
-                        if(debugItems.count === 0)return;
-//                        panelRobotController.sendKeyCommandToHost(Keymap.CMD_TEST_CLEAR);
-                        text = qsTr("StopTest")
-                        bgColor = "red"
-                        refreshTimer.singleMode =0;
-                        root.startTest(0);
+                        tipForTest.show(qsTr("please confirm the test condition again!"),qsTr("Start"),qsTr("cancel"));
                     }
                     else if(testBegin.bgColor == "red"){
                         root.testStop();

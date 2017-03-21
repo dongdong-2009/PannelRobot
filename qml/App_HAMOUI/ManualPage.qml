@@ -4,6 +4,7 @@ import "../ICCustomElement"
 import "./Theme.js" as Theme
 import "ShareData.js" as ShareData
 import "configs/IOConfigs.js" as IOConfis
+import "../utils/utils.js" as Utils
 
 ContentPageBase {
     Rectangle {
@@ -30,15 +31,6 @@ ContentPageBase {
             isAutoSize: false
             y: pdata.menuItemY
             z: 1
-//            TabMenuItem {
-//                id: armMove
-//                width: parent.width
-//                       * Theme.defaultTheme.MainWindow.middleHeaderMenuItemWidthProportion
-//                height: pdata.menuItemHeight
-//                itemText: qsTr("Arm Move")
-//                color: getChecked(
-//                           ) ? Theme.defaultTheme.TabMenuItem.checkedColor : Theme.defaultTheme.TabMenuItem.unCheckedColor
-//            }
             TabMenuItem {
                 id: group1
                 width: 80
@@ -89,6 +81,25 @@ ContentPageBase {
                 
             }
             TabMenuItem {
+                id: instructions
+                width: 100
+                height: pdata.menuItemHeight
+                itemText: qsTr("Operation Instructions")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+            }
+            TabMenuItem {
+                id: introduce
+                width: 80
+                height: pdata.menuItemHeight
+                visible: panelRobotController.getCustomSettings("MachineImgPicUse", 0);
+                itemText: qsTr("Machine Introduce")
+                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+                textFont.pixelSize: getChecked() ? 18 : 16
+                textColor: getChecked() ? "yellow" : "black"
+            }
+            TabMenuItem {
                 id: jog
                 width: 50
                 height: pdata.menuItemHeight
@@ -101,7 +112,15 @@ ContentPageBase {
                 pageContainer.setCurrentIndex(index)
             }
             Component.onCompleted: {
-                group1.setChecked(true)
+                if(panelRobotController.getCustomSettings("MachineImgPicUse", 0) == 1)
+                    introduce.setChecked(true)
+                else group1.setChecked(true)
+            }
+            onVisibleChanged: {
+                if(visible)
+                {
+                    introduce.visible= panelRobotController.getCustomSettings("MachineImgPicUse", 0);
+                }
             }
         }
 
@@ -120,8 +139,8 @@ ContentPageBase {
             height: manualContainer.parent.contentContainerHeight - menuContainer.height - spliteLine.height
         }
         Component.onCompleted: {
-//            var armMoveClass = Qt.createComponent('ArmMovePage.qml');
-//            pageContainer.addPage(armMoveClass.createObject(pageContainer));
+
+
             var yDefinePage1Class = Qt.createComponent('YDefinePage.qml')
             if (yDefinePage1Class.status === Component.Ready) {
                 var page =
@@ -131,19 +150,27 @@ ContentPageBase {
                                 "valves": IOConfis.manualShowValves
                             });
                 pageContainer.addPage(page)
-            }
+            }else
+                console.log(yDefinePage1Class.errorString());
             var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
-            pageContainer.addPage(toolsCalibrationClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(toolsCalibrationClass, pageContainer));
 
             var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
-            pageContainer.addPage(programmableButtonClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(programmableButtonClass, pageContainer));
 
             var toolCoord = Qt.createComponent('ToolCoordPage.qml');
-            pageContainer.addPage(toolCoord.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(toolCoord, pageContainer));
             var debugprintClass = Qt.createComponent('Debugprint.qml');
-            pageContainer.addPage(debugprintClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(debugprintClass, pageContainer));
+
+            var operationInstructions = Qt.createComponent('OperationInstructions.qml');
+            console.log("operationInstructions",operationInstructions.errorString());
+            pageContainer.addPage(operationInstructions.createObject(pageContainer));
+            var machineIntroduce = Qt.createComponent('MachineIntroduce.qml');
+            pageContainer.addPage(machineIntroduce.createObject(pageContainer));
+
             var jogClass = Qt.createComponent('DebugPage.qml');
-            pageContainer.addPage(jogClass.createObject(pageContainer));
+            pageContainer.addPage(Utils.icCreateObject(jogClass, pageContainer));
 
 
 
@@ -163,6 +190,4 @@ ContentPageBase {
 
     content: manualContainer
     statusSection: posDisplayBar
-
-
 }

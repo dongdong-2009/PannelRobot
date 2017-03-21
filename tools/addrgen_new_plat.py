@@ -1,6 +1,7 @@
 import re
 import sys
 import copy
+import json
 
 spaceStr = ' '
 commonStr = '//<'
@@ -65,10 +66,10 @@ class parseCmd:
             self.__defualtRead = open(defaultName,'r', encoding='utf-8')
         line = self.__defualtRead.readline()
         while line:
-#            print(line)
+            #print("line:",json.dumps(line))
             line = line.strip('\n')
             _list = line.split(',')
-#            print(_list)
+            #print("_list:", json.dumps(_list))
             addr = int(_list[0].split('_')[-1])
             offset = int(_list[0].split('_')[2])
             size = int(_list[0].split('_')[3])
@@ -532,7 +533,7 @@ DROP TABLE  {5};\n".format(tb_addr_wrapper, tb_modify_record, tb_system_mould, t
         pos = 0
         #print("test:", rs, index)
         rsIndex = self.getIndex(rs, index)
-
+        #print("writeData[rsIndex]", len(rs[rsIndex]))
         permission, spermission =  self.getPermission( addr)
         if  rsIndex == None:
             print(ICAddr[1][0], ' out of range')
@@ -545,7 +546,7 @@ DROP TABLE  {5};\n".format(tb_addr_wrapper, tb_modify_record, tb_system_mould, t
             _decimal = ''
             _unit = ''
             if size:
-                #print(len(rs), rsIndex, rs[rsIndex])
+                #print(len(rs),json.dumps(rs[rsIndex]))
                 if rs[rsIndex][1].get('名字') :
                     _common = common +  rs[rsIndex][1].get('名字') 
                 if rs[rsIndex][1].get('精度') :
@@ -579,6 +580,7 @@ DROP TABLE  {5};\n".format(tb_addr_wrapper, tb_modify_record, tb_system_mould, t
                     break;
             else:
                 #print(len(rs), rsIndex, rs[rsIndex])
+                #print(json.dumps(common))
                 if rs[rsIndex][1].get('名字') :
                     _common = common +  rs[rsIndex][1].get('名字') 
                 if rs[rsIndex][1].get('精度') :
@@ -613,7 +615,7 @@ DROP TABLE  {5};\n".format(tb_addr_wrapper, tb_modify_record, tb_system_mould, t
         if defaultList[2] != secondList[2]:
             secondList[2]= defaultList[2]
         if len(defaultList)>3 and  defaultList[3] != secondList[3]:
-            print(defaultList[1])
+            #print(defaultList[1])
             secondList[3]= defaultList[3]
         if len(defaultList)>4 and  defaultList[4] != secondList[4]:
             secondList[4]= defaultList[4]
@@ -692,8 +694,8 @@ DROP TABLE  {5};\n".format(tb_addr_wrapper, tb_modify_record, tb_system_mould, t
                 if struct:
                     rs = self.getChildrenContent(struct)
                     index =  self.__Dict[struct].index(addr)
-                    #print("test:", addr, rs, index, struct)
-
+                    #print("test:", json.dumps(addr), json.dumps(rs), json.dumps(index), json.dumps(struct))
+                    #print("writeData:", json.dumps(addr));
                     self.writeData(rs, index, addr, common)
 #                    for l in rs:
 #                        print(l[0].get('size'))

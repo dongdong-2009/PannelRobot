@@ -1,12 +1,6 @@
 #ifndef PANELROBOTCONTROLLER_H
 #define PANELROBOTCONTROLLER_H
 
-
-
-
-
-
-
 #include <QObject>
 #include <QMap>
 #include <QSettings>

@@ -763,56 +763,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="133"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="134"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Y1 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="133"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="134"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Y1 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="143"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="146"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Z ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="143"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="146"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Z OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="153"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="158"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>X2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="153"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="158"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>X2 OFF</source>
         <translation type="unfinished"></translation>
     </message>
@@ -827,196 +803,109 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="173"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="182"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>A ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="173"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="182"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>A OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="183"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="194"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>B ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="183"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="194"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>B OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="193"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="206"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>C ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="193"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="206"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>C OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="205"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="220"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="228"/>
         <location filename="../teach/AxisActionEditor.qml" line="271"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="243"/>
-        <location filename="../teach/AxisActionEditor.qml" line="286"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="228"/>
         <location filename="../teach/AxisActionEditor.qml" line="271"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="243"/>
-        <location filename="../teach/AxisActionEditor.qml" line="286"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="237"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="252"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>TStop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="249"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="256"/>
-        <source>Fast Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/AxisActionEditor.qml" line="264"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="279"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="294"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>On pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="313"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="328"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Early End Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="323"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="338"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>ESD Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="332"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="347"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>ESD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="333"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="348"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="241"/>
         <source>Fast Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/AxisActionEditor.qml" line="342"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="357"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="353"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="368"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed PP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="358"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="373"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed RP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/AxisActionEditor.qml" line="364"/>
-=======
-        <location filename="../teach/AxisActionEditor.qml" line="379"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5435,15 +5324,9 @@ please chose!</source>
         <location filename="../teach/StackActionEditor.qml" line="49"/>
         <location filename="../teach/StackActionEditor.qml" line="50"/>
         <location filename="../teach/StackActionEditor.qml" line="51"/>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="783"/>
         <location filename="../teach/StackActionEditor.qml" line="792"/>
         <location filename="../teach/StackActionEditor.qml" line="801"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="784"/>
-        <location filename="../teach/StackActionEditor.qml" line="793"/>
-        <location filename="../teach/StackActionEditor.qml" line="802"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5553,11 +5436,7 @@ please chose!</source>
     </message>
     <message>
         <location filename="../teach/StackActionEditor.qml" line="573"/>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="767"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="768"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Stack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5597,151 +5476,84 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="712"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="713"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Paint Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="732"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="733"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Pos And Cmp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="736"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="737"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Only Cmp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="755"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="756"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Hold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="757"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="758"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="810"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="811"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="822"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="823"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Interval En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="827"/>
         <location filename="../teach/StackActionEditor.qml" line="886"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="828"/>
-        <location filename="../teach/StackActionEditor.qml" line="887"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Always Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="837"/>
         <location filename="../teach/StackActionEditor.qml" line="896"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="838"/>
-        <location filename="../teach/StackActionEditor.qml" line="897"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Choos Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="838"/>
         <location filename="../teach/StackActionEditor.qml" line="897"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="839"/>
-        <location filename="../teach/StackActionEditor.qml" line="898"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>IO output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="838"/>
         <location filename="../teach/StackActionEditor.qml" line="897"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="839"/>
-        <location filename="../teach/StackActionEditor.qml" line="898"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>M output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="856"/>
         <location filename="../teach/StackActionEditor.qml" line="915"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="857"/>
-        <location filename="../teach/StackActionEditor.qml" line="916"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Out ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="862"/>
         <location filename="../teach/StackActionEditor.qml" line="921"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="863"/>
-        <location filename="../teach/StackActionEditor.qml" line="922"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Interval Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="870"/>
         <location filename="../teach/StackActionEditor.qml" line="929"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="871"/>
-        <location filename="../teach/StackActionEditor.qml" line="930"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Out Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/StackActionEditor.qml" line="881"/>
-=======
-        <location filename="../teach/StackActionEditor.qml" line="882"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>IntervalBox En</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6332,21 +6144,13 @@ You just need to set the count configs after this setting.</source>
     <message>
         <location filename="../teach/Teach.js" line="309"/>
         <location filename="../teach/Teach.js" line="318"/>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1471"/>
-=======
-        <location filename="../teach/Teach.js" line="1472"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="461"/>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1597"/>
-=======
-        <location filename="../teach/Teach.js" line="1598"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Stack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6362,7 +6166,6 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1273"/>
         <location filename="../teach/Teach.js" line="1292"/>
         <location filename="../teach/Teach.js" line="1304"/>
@@ -6371,21 +6174,10 @@ You just need to set the count configs after this setting.</source>
         <location filename="../teach/Teach.js" line="1601"/>
         <location filename="../teach/Teach.js" line="1602"/>
         <location filename="../teach/Teach.js" line="1703"/>
-=======
-        <location filename="../teach/Teach.js" line="1274"/>
-        <location filename="../teach/Teach.js" line="1293"/>
-        <location filename="../teach/Teach.js" line="1305"/>
-        <location filename="../teach/Teach.js" line="1340"/>
-        <location filename="../teach/Teach.js" line="1601"/>
-        <location filename="../teach/Teach.js" line="1602"/>
-        <location filename="../teach/Teach.js" line="1603"/>
-        <location filename="../teach/Teach.js" line="1704"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1274"/>
         <location filename="../teach/Teach.js" line="1285"/>
         <location filename="../teach/Teach.js" line="1305"/>
@@ -6396,430 +6188,235 @@ You just need to set the count configs after this setting.</source>
         <location filename="../teach/Teach.js" line="1507"/>
         <location filename="../teach/Teach.js" line="1515"/>
         <location filename="../teach/Teach.js" line="1704"/>
-=======
-        <location filename="../teach/Teach.js" line="1275"/>
-        <location filename="../teach/Teach.js" line="1286"/>
-        <location filename="../teach/Teach.js" line="1306"/>
-        <location filename="../teach/Teach.js" line="1341"/>
-        <location filename="../teach/Teach.js" line="1434"/>
-        <location filename="../teach/Teach.js" line="1493"/>
-        <location filename="../teach/Teach.js" line="1501"/>
-        <location filename="../teach/Teach.js" line="1508"/>
-        <location filename="../teach/Teach.js" line="1516"/>
-        <location filename="../teach/Teach.js" line="1705"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1276"/>
         <location filename="../teach/Teach.js" line="1308"/>
         <location filename="../teach/Teach.js" line="1342"/>
-=======
-        <location filename="../teach/Teach.js" line="1277"/>
-        <location filename="../teach/Teach.js" line="1309"/>
-        <location filename="../teach/Teach.js" line="1343"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Bad En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1278"/>
         <location filename="../teach/Teach.js" line="1311"/>
         <location filename="../teach/Teach.js" line="1344"/>
-=======
-        <location filename="../teach/Teach.js" line="1279"/>
-        <location filename="../teach/Teach.js" line="1312"/>
-        <location filename="../teach/Teach.js" line="1345"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Early End Pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1292"/>
-=======
-        <location filename="../teach/Teach.js" line="1293"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed Control PP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1292"/>
-=======
-        <location filename="../teach/Teach.js" line="1293"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed Control RP Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1294"/>
-=======
-        <location filename="../teach/Teach.js" line="1295"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1315"/>
-=======
-        <location filename="../teach/Teach.js" line="1316"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Early End Spd pos:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1316"/>
-=======
-        <location filename="../teach/Teach.js" line="1317"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Early End Spd:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1320"/>
-=======
-        <location filename="../teach/Teach.js" line="1321"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>When </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1320"/>
         <location filename="../teach/Teach.js" line="1326"/>
-=======
-        <location filename="../teach/Teach.js" line="1321"/>
-        <location filename="../teach/Teach.js" line="1327"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>is On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1320"/>
         <location filename="../teach/Teach.js" line="1326"/>
-=======
-        <location filename="../teach/Teach.js" line="1321"/>
-        <location filename="../teach/Teach.js" line="1327"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>is Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1321"/>
-=======
-        <location filename="../teach/Teach.js" line="1322"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>slow stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1321"/>
-=======
-        <location filename="../teach/Teach.js" line="1322"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>fast stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1325"/>
-=======
-        <location filename="../teach/Teach.js" line="1326"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>When on the pos </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1326"/>
-=======
-        <location filename="../teach/Teach.js" line="1327"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1330"/>
-=======
-        <location filename="../teach/Teach.js" line="1331"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Rel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1335"/>
-=======
-        <location filename="../teach/Teach.js" line="1336"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Type 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1335"/>
-=======
-        <location filename="../teach/Teach.js" line="1336"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Type 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1335"/>
-=======
-        <location filename="../teach/Teach.js" line="1336"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Type 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1335"/>
-=======
-        <location filename="../teach/Teach.js" line="1336"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Type 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1335"/>
-=======
-        <location filename="../teach/Teach.js" line="1336"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Type 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1338"/>
-=======
-        <location filename="../teach/Teach.js" line="1339"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1355"/>
-=======
-        <location filename="../teach/Teach.js" line="1356"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1360"/>
-=======
-        <location filename="../teach/Teach.js" line="1361"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Jump To </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1364"/>
         <location filename="../teach/Teach.js" line="1367"/>
         <location filename="../teach/Teach.js" line="1395"/>
         <location filename="../teach/Teach.js" line="1417"/>
-=======
-        <location filename="../teach/Teach.js" line="1365"/>
-        <location filename="../teach/Teach.js" line="1368"/>
-        <location filename="../teach/Teach.js" line="1396"/>
-        <location filename="../teach/Teach.js" line="1418"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>IF:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1364"/>
-=======
-        <location filename="../teach/Teach.js" line="1365"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invalid Counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1368"/>
-=======
-        <location filename="../teach/Teach.js" line="1369"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Arrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1368"/>
-=======
-        <location filename="../teach/Teach.js" line="1369"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>No arrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1368"/>
         <location filename="../teach/Teach.js" line="1420"/>
-=======
-        <location filename="../teach/Teach.js" line="1369"/>
-        <location filename="../teach/Teach.js" line="1421"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Go to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1369"/>
-=======
-        <location filename="../teach/Teach.js" line="1370"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Then clear counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1374"/>
-=======
-        <location filename="../teach/Teach.js" line="1375"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>manualMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1375"/>
-=======
-        <location filename="../teach/Teach.js" line="1376"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>stopMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1376"/>
-=======
-        <location filename="../teach/Teach.js" line="1377"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>autoMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1377"/>
-=======
-        <location filename="../teach/Teach.js" line="1378"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>RunningMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1378"/>
-=======
-        <location filename="../teach/Teach.js" line="1379"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>SingleMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1379"/>
-=======
-        <location filename="../teach/Teach.js" line="1380"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>OneCycleMode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1380"/>
-=======
-        <location filename="../teach/Teach.js" line="1381"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Current Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1384"/>
-=======
-        <location filename="../teach/Teach.js" line="1385"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Current Jog pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1384"/>
-=======
-        <location filename="../teach/Teach.js" line="1385"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Current World pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1388"/>
-=======
-        <location filename="../teach/Teach.js" line="1389"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Current alarm num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1392"/>
-=======
-        <location filename="../teach/Teach.js" line="1393"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Left Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1393"/>
-=======
-        <location filename="../teach/Teach.js" line="1394"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Right Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1393"/>
-=======
-        <location filename="../teach/Teach.js" line="1394"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Right Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1398"/>
-=======
-        <location filename="../teach/Teach.js" line="1399"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Go to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1409"/>
         <location filename="../teach/Teach.js" line="1426"/>
         <location filename="../teach/Teach.js" line="1441"/>
@@ -6827,20 +6424,10 @@ You just need to set the count configs after this setting.</source>
         <location filename="../teach/Teach.js" line="1510"/>
         <location filename="../teach/Teach.js" line="1514"/>
         <location filename="../teach/Teach.js" line="1712"/>
-=======
-        <location filename="../teach/Teach.js" line="1410"/>
-        <location filename="../teach/Teach.js" line="1427"/>
-        <location filename="../teach/Teach.js" line="1442"/>
-        <location filename="../teach/Teach.js" line="1492"/>
-        <location filename="../teach/Teach.js" line="1511"/>
-        <location filename="../teach/Teach.js" line="1515"/>
-        <location filename="../teach/Teach.js" line="1713"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1411"/>
         <location filename="../teach/Teach.js" line="1428"/>
         <location filename="../teach/Teach.js" line="1441"/>
@@ -6848,352 +6435,193 @@ You just need to set the count configs after this setting.</source>
         <location filename="../teach/Teach.js" line="1510"/>
         <location filename="../teach/Teach.js" line="1514"/>
         <location filename="../teach/Teach.js" line="1712"/>
-=======
-        <location filename="../teach/Teach.js" line="1412"/>
-        <location filename="../teach/Teach.js" line="1429"/>
-        <location filename="../teach/Teach.js" line="1442"/>
-        <location filename="../teach/Teach.js" line="1492"/>
-        <location filename="../teach/Teach.js" line="1511"/>
-        <location filename="../teach/Teach.js" line="1515"/>
-        <location filename="../teach/Teach.js" line="1713"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1413"/>
         <location filename="../teach/Teach.js" line="1430"/>
-=======
-        <location filename="../teach/Teach.js" line="1414"/>
-        <location filename="../teach/Teach.js" line="1431"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>RisingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1415"/>
         <location filename="../teach/Teach.js" line="1432"/>
-=======
-        <location filename="../teach/Teach.js" line="1416"/>
-        <location filename="../teach/Teach.js" line="1433"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>FallingEdge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1419"/>
         <location filename="../teach/Teach.js" line="1436"/>
         <location filename="../teach/Teach.js" line="1442"/>
         <location filename="../teach/Teach.js" line="1723"/>
-=======
-        <location filename="../teach/Teach.js" line="1420"/>
-        <location filename="../teach/Teach.js" line="1437"/>
-        <location filename="../teach/Teach.js" line="1443"/>
-        <location filename="../teach/Teach.js" line="1724"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1434"/>
-=======
-        <location filename="../teach/Teach.js" line="1435"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Wait:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1440"/>
         <location filename="../teach/Teach.js" line="1499"/>
         <location filename="../teach/Teach.js" line="1506"/>
-=======
-        <location filename="../teach/Teach.js" line="1441"/>
-        <location filename="../teach/Teach.js" line="1500"/>
-        <location filename="../teach/Teach.js" line="1507"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1450"/>
-=======
-        <location filename="../teach/Teach.js" line="1451"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Program End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1454"/>
-=======
-        <location filename="../teach/Teach.js" line="1455"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Module End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1458"/>
-=======
-        <location filename="../teach/Teach.js" line="1459"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>next line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1459"/>
-=======
-        <location filename="../teach/Teach.js" line="1460"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1460"/>
-=======
-        <location filename="../teach/Teach.js" line="1461"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>And then return to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1476"/>
-=======
-        <location filename="../teach/Teach.js" line="1477"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Normal Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1477"/>
-=======
-        <location filename="../teach/Teach.js" line="1478"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Single Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1478"/>
-=======
-        <location filename="../teach/Teach.js" line="1479"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Hold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1479"/>
-=======
-        <location filename="../teach/Teach.js" line="1480"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Unhold Double Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1496"/>
         <location filename="../teach/Teach.js" line="1503"/>
-=======
-        <location filename="../teach/Teach.js" line="1497"/>
-        <location filename="../teach/Teach.js" line="1504"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>NormalX-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1499"/>
-=======
-        <location filename="../teach/Teach.js" line="1500"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Check Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1500"/>
-=======
-        <location filename="../teach/Teach.js" line="1501"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Reverse </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1500"/>
-=======
-        <location filename="../teach/Teach.js" line="1501"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Forward </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1506"/>
-=======
-        <location filename="../teach/Teach.js" line="1507"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Check End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1510"/>
         <location filename="../teach/Teach.js" line="1712"/>
-=======
-        <location filename="../teach/Teach.js" line="1511"/>
-        <location filename="../teach/Teach.js" line="1713"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Time Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1511"/>
         <location filename="../teach/Teach.js" line="1713"/>
-=======
-        <location filename="../teach/Teach.js" line="1512"/>
-        <location filename="../teach/Teach.js" line="1714"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Action Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1514"/>
-=======
-        <location filename="../teach/Teach.js" line="1515"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1532"/>
-=======
-        <location filename="../teach/Teach.js" line="1533"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Sync Begin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1536"/>
-=======
-        <location filename="../teach/Teach.js" line="1537"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Sync End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1542"/>
-=======
-        <location filename="../teach/Teach.js" line="1543"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1547"/>
-=======
-        <location filename="../teach/Teach.js" line="1548"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Datasource</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1549"/>
-=======
-        <location filename="../teach/Teach.js" line="1550"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1555"/>
-=======
-        <location filename="../teach/Teach.js" line="1556"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>not exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1559"/>
-=======
-        <location filename="../teach/Teach.js" line="1560"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1561"/>
         <location filename="../teach/Teach.js" line="1578"/>
-=======
-        <location filename="../teach/Teach.js" line="1562"/>
-        <location filename="../teach/Teach.js" line="1579"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1565"/>
         <location filename="../teach/Teach.js" line="1582"/>
-=======
-        <location filename="../teach/Teach.js" line="1566"/>
-        <location filename="../teach/Teach.js" line="1583"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>always out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1568"/>
         <location filename="../teach/Teach.js" line="1585"/>
-=======
-        <location filename="../teach/Teach.js" line="1569"/>
-        <location filename="../teach/Teach.js" line="1586"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>time out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1576"/>
-=======
-        <location filename="../teach/Teach.js" line="1577"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>intervalbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1592"/>
-=======
-        <location filename="../teach/Teach.js" line="1593"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Speed1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1714"/>
         <source>intervalTime</source>
         <translation type="unfinished"></translation>
@@ -7202,18 +6630,6 @@ You just need to set the count configs after this setting.</source>
         <location filename="../teach/Teach.js" line="1714"/>
         <source>Until Photo Vec</source>
         <translation type="unfinished"></translation>
-=======
-        <location filename="../teach/Teach.js" line="1655"/>
-        <location filename="../teach/Teach.js" line="1655"/>
-        <location filename="../teach/Teach.js" line="1463"/>
-        <location filename="../teach/Teach.js" line="1535"/>
-        <location filename="../teach/Teach.js" line="1536"/>
-        <location filename="../teach/Teach.js" line="1541"/>
-        <location filename="../teach/Teach.js" line="1542"/>
-        <location filename="../teach/Teach.js" line="1543"/>
-        <source></source>
-        <translation></translation>
->>>>>>> 978460c... 修复一些显示的BUG
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1595"/>
@@ -7230,473 +6646,257 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1607"/>
-=======
-        <location filename="../teach/Teach.js" line="1608"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Clear </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1607"/>
-=======
-        <location filename="../teach/Teach.js" line="1608"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Plus 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1636"/>
-=======
-        <location filename="../teach/Teach.js" line="1637"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>LineXY:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1639"/>
-=======
-        <location filename="../teach/Teach.js" line="1640"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>LineXZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1642"/>
-=======
-        <location filename="../teach/Teach.js" line="1643"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>LineYZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1645"/>
-=======
-        <location filename="../teach/Teach.js" line="1646"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Line3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1648"/>
-=======
-        <location filename="../teach/Teach.js" line="1649"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Arc3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1651"/>
-=======
-        <location filename="../teach/Teach.js" line="1652"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Pose:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1654"/>
-=======
-        <location filename="../teach/Teach.js" line="1655"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Line3D-Pose:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1657"/>
-=======
-        <location filename="../teach/Teach.js" line="1658"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Free Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1660"/>
-=======
-        <location filename="../teach/Teach.js" line="1661"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Offset Line:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1663"/>
-=======
-        <location filename="../teach/Teach.js" line="1664"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Offset Jog:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1666"/>
-=======
-        <location filename="../teach/Teach.js" line="1667"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Circle:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1669"/>
-=======
-        <location filename="../teach/Teach.js" line="1670"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>ArcXY:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1672"/>
-=======
-        <location filename="../teach/Teach.js" line="1673"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>ArcXZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1675"/>
-=======
-        <location filename="../teach/Teach.js" line="1676"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>ArcYZ:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1678"/>
-=======
-        <location filename="../teach/Teach.js" line="1679"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Offset Curve:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1681"/>
-=======
-        <location filename="../teach/Teach.js" line="1682"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Curve3D-Pose:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1684"/>
-=======
-        <location filename="../teach/Teach.js" line="1685"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>PO Curve 3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1687"/>
-=======
-        <location filename="../teach/Teach.js" line="1688"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>P Circle:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1690"/>
-=======
-        <location filename="../teach/Teach.js" line="1691"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>PO Line 3D:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1696"/>
-=======
-        <location filename="../teach/Teach.js" line="1697"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Next:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1699"/>
-=======
-        <location filename="../teach/Teach.js" line="1700"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>End:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1714"/>
-=======
-        <location filename="../teach/Teach.js" line="1715"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>actCnt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1717"/>
-=======
-        <location filename="../teach/Teach.js" line="1715"/>
-        <source>intervalTime</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1715"/>
-        <source>Until Photo Vec</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../teach/Teach.js" line="1718"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Vistion Catch Start:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1717"/>
         <location filename="../teach/Teach.js" line="1722"/>
-=======
-        <location filename="../teach/Teach.js" line="1718"/>
-        <location filename="../teach/Teach.js" line="1723"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Data Source:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1718"/>
-=======
-        <location filename="../teach/Teach.js" line="1719"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Catch Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1718"/>
-=======
-        <location filename="../teach/Teach.js" line="1719"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Communicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1718"/>
-=======
-        <location filename="../teach/Teach.js" line="1719"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>O Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1722"/>
-=======
-        <location filename="../teach/Teach.js" line="1723"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Wait Vision Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1731"/>
-=======
-        <location filename="../teach/Teach.js" line="1732"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Write Const Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1731"/>
-=======
-        <location filename="../teach/Teach.js" line="1732"/>
->>>>>>> 978460c... 修复一些显示的BUG
-        <source>Write Addr Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1732"/>
-=======
-        <location filename="../teach/Teach.js" line="1733"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Const Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1732"/>
-=======
-        <location filename="../teach/Teach.js" line="1733"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Addr Data:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1734"/>
-=======
-        <location filename="../teach/Teach.js" line="1735"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Target Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1874"/>
-=======
-        <location filename="../teach/Teach.js" line="1876"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Sub program is out of ranged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1876"/>
-=======
-        <location filename="../teach/Teach.js" line="1878"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invalid program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1878"/>
-=======
-        <location filename="../teach/Teach.js" line="1880"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Has not Group-Begin action but has Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1880"/>
-=======
-        <location filename="../teach/Teach.js" line="1882"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Group action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1882"/>
-=======
-        <location filename="../teach/Teach.js" line="1884"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Has Group-Begin action but has not Group-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1884"/>
-=======
-        <location filename="../teach/Teach.js" line="1886"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Has not Sync-Begin action but has Sync-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1886"/>
-=======
-        <location filename="../teach/Teach.js" line="1888"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Sync action is nesting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1888"/>
-=======
-        <location filename="../teach/Teach.js" line="1890"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Has Sync-Begin action but has not Sync-End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1890"/>
-=======
-        <location filename="../teach/Teach.js" line="1892"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Last action is not End action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1892"/>
-=======
-        <location filename="../teach/Teach.js" line="1894"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invalid program index</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1894"/>
-=======
-        <location filename="../teach/Teach.js" line="1896"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Wrong action format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1896"/>
-=======
-        <location filename="../teach/Teach.js" line="1898"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invalid jump flag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1898"/>
-=======
-        <location filename="../teach/Teach.js" line="1900"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invalid stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1900"/>
-=======
-        <location filename="../teach/Teach.js" line="1902"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invalid counter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1902"/>
-=======
-        <location filename="../teach/Teach.js" line="1904"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Invaild Moldule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../teach/Teach.js" line="1904"/>
-=======
-        <location filename="../teach/Teach.js" line="1906"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Unknow Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8439,11 +7639,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="796"/>
-<<<<<<< HEAD
         <location filename="../main.qml" line="955"/>
-=======
-        <location filename="../main.qml" line="962"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Get it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8454,21 +7650,13 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../main.qml" line="914"/>
-<<<<<<< HEAD
         <location filename="../main.qml" line="933"/>
-=======
-        <location filename="../main.qml" line="938"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Yes[F4]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.qml" line="914"/>
-<<<<<<< HEAD
         <location filename="../main.qml" line="933"/>
-=======
-        <location filename="../main.qml" line="938"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>No[F5]</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8478,75 +7666,43 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="932"/>
-=======
-        <location filename="../main.qml" line="937"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Need to ghost and export to U Disk?
 The name of ghost is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="955"/>
-=======
-        <location filename="../main.qml" line="962"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Please confirm your stop signal off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="974"/>
-=======
-        <location filename="../main.qml" line="981"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Please Register!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="1212"/>
-=======
-        <location filename="../main.qml" line="1257"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Load record </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="1283"/>
-=======
-        <location filename="../main.qml" line="1328"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Please press origin key and then press start key to find origin signal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="1316"/>
-=======
-        <location filename="../main.qml" line="1361"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Origin is changed? Do you want to refind an origin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="1316"/>
-=======
-        <location filename="../main.qml" line="1361"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Refind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../main.qml" line="1316"/>
-=======
-        <location filename="../main.qml" line="1361"/>
->>>>>>> 978460c... 修复一些显示的BUG
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>

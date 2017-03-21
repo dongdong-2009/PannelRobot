@@ -621,12 +621,19 @@ Item {
                     color: "#A0A0F0"
                     x:400
                     y:0-((settingRow.height+10)*index)
+                    Text {
+                        x:5
+                        y:5
+                        id: keyTip
+                        text: qsTr("key Func in this mode");
+                    }
                     Flow{
-                        x:10
-                        y:10
                         id:modeFlow
+                        x:5
                         width: parent.width
                         height: parent.height - buttonArea.height
+                        anchors.top: keyTip.bottom
+                        anchors.topMargin: 5
                         property variant isModeSel: [manualMode.isChecked,stopMode.isChecked,autoMode.isChecked,
                         runningMode.isChecked,singleMode.isChecked,oneCycleMode.isChecked]
                         spacing: 4

@@ -1294,10 +1294,6 @@
         <translation>数据位</translation>
     </message>
     <message>
-        <source>0</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>3</source>
         <translation></translation>
     </message>
@@ -3363,6 +3359,10 @@ please chose!</source>
     <message>
         <source>Ok</source>
         <translation>确定</translation>
+    </message>
+    <message>
+        <source>key Func in this mode</source>
+        <translation>按键在勾选模式下有效</translation>
     </message>
 </context>
 <context>

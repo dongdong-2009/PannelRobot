@@ -867,8 +867,6 @@ uint16_t io_all;
                     panelRobotController.modifyConfigValue(32,value);
                 }
             }
-            panelRobotController.setCustomSettings("IOCheckSet", JSON.stringify(toSave), "IOCheckSet");
-            console.log(JSON.stringify(toSave));
 
             isInit = true;
         });

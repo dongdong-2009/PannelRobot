@@ -641,7 +641,7 @@ Item {
                     configName: qsTr("Encoder Type")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3")]
+                    items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3"), qsTr("Encode Type4"), qsTr("Encode Type5")]
                     z:10
                 }
                 ICComboBoxConfigEdit{

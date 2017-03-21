@@ -122,5 +122,4 @@ Item {
         configsContainer.addNav(autoDebugBtn, Qt.createComponent('AutoDebugMachine.qml'));
         ShareData.UserInfo.registUserChangeEvent(container);
     }
-
 }

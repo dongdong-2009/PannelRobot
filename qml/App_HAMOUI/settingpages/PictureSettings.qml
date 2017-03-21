@@ -3,6 +3,14 @@ import "../../ICCustomElement"
 
 Item {
     property int scanType: 0
+    ICMessageBox{
+        id: tipForInstallation
+        x:280
+        y:100
+        z: 100
+        text:qsTr("In installation!")
+        visible: false
+    }
     Column{
         spacing: 6
         Row{
@@ -126,8 +134,9 @@ Item {
                 text: qsTr("Set Instructions")
                 width: scanInstructions.width
                 onButtonClicked: {
+                    tipForInstallation.runningTip(qsTr("In installation!"))
                     panelRobotController.copyInstructions(picModel.get(picView.currentIndex).picname);
-
+                    tipForInstallation.hide();
                 }
             }
         }

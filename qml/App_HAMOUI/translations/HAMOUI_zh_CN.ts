@@ -1063,6 +1063,14 @@
         <source>Encode RW4</source>
         <translation>CAN总线控制</translation>
     </message>
+    <message>
+        <source>Encode Type4</source>
+        <translation>光栅尺</translation>
+    </message>
+    <message>
+        <source>Encode Type5</source>
+        <translation>旋转编码器</translation>
+    </message>
 </context>
 <context>
     <name>AxisMemposEditor</name>
@@ -1229,6 +1237,149 @@
     <message>
         <source>Comment:</source>
         <translation>注释:</translation>
+    </message>
+</context>
+<context>
+    <name>CommunicationConfig</name>
+    <message>
+        <source>Serial485</source>
+        <translation>485端口</translation>
+    </message>
+    <message>
+        <source>CAN</source>
+        <translation>CANB端口</translation>
+    </message>
+    <message>
+        <source>serial 485 config</source>
+        <translation>主机485端口设置</translation>
+    </message>
+    <message>
+        <source>Parity Setting</source>
+        <translation>奇偶校验</translation>
+    </message>
+    <message>
+        <source>NULL</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>ODD</source>
+        <translation>奇校验</translation>
+    </message>
+    <message>
+        <source>EVEN</source>
+        <translation>偶校验</translation>
+    </message>
+    <message>
+        <source>INVALID</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <source>Stopbits Setting</source>
+        <translation>停止位</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>1.5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Databits Setting</source>
+        <translation>数据位</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Loopback Setting</source>
+        <translation>回环测试</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>不回环</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>回环</translation>
+    </message>
+    <message>
+        <source>Baud Setting</source>
+        <translation>波特率</translation>
+    </message>
+    <message>
+        <source>2400</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>4800</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>9600</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>19200</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>38400</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>57600</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>115200</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Tips:After modified, must be restart to take effect!</source>
+        <translation>注意：修改完后，必须断电重启才生效！</translation>
+    </message>
+    <message>
+        <source>SDO</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>PDO</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Host CAN b</source>
+        <translation>主机CANB端口设置</translation>
     </message>
 </context>
 <context>
@@ -2229,6 +2380,10 @@
         <source>Auto Debug</source>
         <translation>自动调机</translation>
     </message>
+    <message>
+        <source>Communication Configs</source>
+        <translation>通讯配置</translation>
+    </message>
 </context>
 <context>
     <name>MainFrame</name>
@@ -2736,6 +2891,10 @@ please chose!</source>
         <source>Set Instructions</source>
         <translation>安装说明书</translation>
     </message>
+    <message>
+        <source>In installation!</source>
+        <translation>正在安装中，请等待安装完成!</translation>
+    </message>
 </context>
 <context>
     <name>PointEdit</name>
@@ -3168,6 +3327,10 @@ please chose!</source>
     <message>
         <source>status to</source>
         <translation>状态变为</translation>
+    </message>
+    <message>
+        <source>Tips:New or modified, click Save to take effect!</source>
+        <translation>注意：新建或者修改完成后，点击保存才生效！</translation>
     </message>
     <message>
         <source>ManualMode</source>

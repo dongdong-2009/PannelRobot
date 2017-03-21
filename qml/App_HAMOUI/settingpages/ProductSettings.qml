@@ -552,6 +552,15 @@ Item {
                     }
                 }
             }
+            Text {
+                id: tips
+                color: "red"
+//                horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                y:saveBtn.y-5
+                anchors.verticalCenter: parent.verticalCenter
+                text: qsTr("Tips:New or modified, click Save to take effect!")
+            }
         }
     }
 

@@ -7,7 +7,7 @@ ICSettingConfigsScope {
     height: parent.height
     ICButtonGroup{
         id:typeSel
-        checkedItem: modeStatus
+        checkedItem: serialSetting
         checkedIndex: 0
         mustChecked: true
         spacing: 10

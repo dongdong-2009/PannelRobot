@@ -457,7 +457,7 @@ Item {
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="mode";
-                    panelRobotController.setCustomSettings(origin_Setting, originMode[i].text, "originMode", false);
+                    panelRobotController.setCustomSettings(origin_Setting, originMode[i].configValue, "originMode", false);
                     origin_Setting="a";
                     origin_Setting += i;
                     origin_Setting+="order";

@@ -24,55 +24,60 @@ extern "C"
 // T - 旋转平面与前一连杆的旋转平面垂直的旋转关节
 /// ----------------------------------------------------------------------------------
 typedef enum {
-	kSttIndependent,	// 独立关节
-	kSttPP,		// 平面互相垂直的两平移关节
-	kSttRR,		// 平面串联的两旋转关节
-	kSttPPP,	// 平面互相垂直的三平移关节
-	kSttRTR,	// PUMA560 前三关节
-	kSttRRP,	// SCARA 前三关节
-	kSttDELTA,	// *DELTA 并联3R机器人，动平台+静平台，三轴平均分配（120°）
-	kSttRTRT,	// PUMA560 前四关节
-	kSttRTRTTT,	//* PUMA560 六关节
-	kStt5P,		//
-	kSttPPP_RRR,//* 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
-	kSttRRPR_BRT,	//* 伯朗特 SCARA 四关节
-	kSttRTRTTT_EX,	// PUMA560 六关节
-	kSttLathe_6p,	//* 车床机型 6轴
+    kSttIndependent,    // 独立关节
+    kSttPP,        // 平面互相垂直的两平移关节
+    kSttRR,        // 平面串联的两旋转关节
+    kSttPPP,    // 平面互相垂直的三平移关节
+    kSttRTR,    // PUMA560 前三关节
+    kSttPRPR1,    // *两直线两旋转    上位机选kSttRRP
+    kSttDELTA,    // *DELTA 并联3R机器人，动平台+静平台，三轴平均分配（120°）
+    kSttRTRT,    //* 百禾3关节加3直线机型
+    kSttRTRTTT,    //* PUMA560 六关节
+    kStt5P,        //
+    kSttPPP_RRR,//* 平面互相垂直的三平移关节加三个独立旋转关节：喷涂往复机
+    kSttRRPR_BRT,    //* 伯朗特 SCARA 四关节
+    kSttRTRTTT_EX,    // PUMA560 六关节
+    kSttLathe_6p,    //* 车床机型 6轴
+    kSttRRP,    // SCARA 前三关节
 } MechanismType;
 
 /// ----------------------------------------------------------------------------------
 typedef enum {
-	S2V30	= 0x0000,
-	S2V31,
+    S2V30    = 0x0000,
+    S2V31,
 
-	S3V2x	= 0x0010,
-	S3V30,
-	S3V31,
-	S3V32,
-	S3V33,
-	S3V34,
+    S3V2x    = 0x0010,
+    S3V30,
+    S3V31,
+    S3V32,
+    S3V33,
+    S3V34,
 
-	S5V2x	= 0x0020,
-	S5V30,
-	S5V31,
-	S5V32,
-	S5V33,
+    S5V2x    = 0x0020,
+    S5V30,
+    S5V31,
+    S5V32,
+    S5V33,
 
-//	ServerV10	= 0x0030,
-//	ServerV11,
+//    ServerV10    = 0x0030,
+//    ServerV11,
 
-	C6V10	= 0x0040,
-	C6V11,
-	C6V12,
-	C6V13,
+    C6V10    = 0x0040,
+    C6V11,
+    C6V12,
+    C6V13,
 
+    QK4V10    = 0x0050,
+    QK4V11,
+
+    S8V10    = 0x0060
 } BoardId;
 
 // ！！！ 递增版本号时请将两者都进行递增！！！
 #ifdef _F2837x
-#define SOFTWARE_VERSION  "HCQS6-0.1-1.6"
+#define SOFTWARE_VERSION  "HCQS6-0.1-3.1"
 #else
-#define SOFTWARE_VERSION  "HC_S6-0.1-1.6"
+#define SOFTWARE_VERSION  "HC_S6-0.1-3.1"
 #endif
 /*! \brief 参数地址枚举 */
 typedef enum _ICAddr
@@ -93,14 +98,17 @@ typedef enum _ICAddr
     ICAddr_System_Retain_10,//< 0：正常发机程序；1：绝对值电机读数测试
     ICAddr_System_Retain_11,//< 所有教导程序校验和
     ICAddr_System_Retain_12,//< 1：计数器一键清零，所有计数器清零
+    ICAddr_System_Retain_13,//< 定义IO运行状态操作
+    ICAddr_System_Retain_14,//< 清除定义IO运行状态操作
     ICAddr_System_Retain_15 = 15,//< 自动运行自定义启动程序
     ICAddr_System_Retain_16 = 16,//< 自动运行自定义启动步号
     //< 低16位：1：自动进入单步运行模式，单步运行停止；2：单步运行启动；3：单循环模式；4：单循环启动
     //< 高16位：单步或者单循环的程序ID
     ICAddr_System_Retain_17 = 17,
     ICAddr_System_Retain_18 = 18,//< 单步运行或者单循环开始运行行数
-    ICAddr_System_Retain_20 = 20,//< 定义工件坐标系 id;3 point;
-    ICAddr_System_Retain_21 = 21,//< 手动状态坐标系值
+    ICAddr_System_Retain_19 = 19,
+    ICAddr_System_Retain_20 = 20,//< 定义工件坐标系;//坐标系ID 3point
+    ICAddr_System_Retain_21 = 21,//< 手动页面切换坐标系
     ICAddr_System_Retain_23 = 23,//< 电机正反转测试脉冲数
     ICAddr_System_Retain_24 = 24,//< 手动关节运动和直线运动切换 0：关节；30：直线
     ICAddr_System_Retain_25 = 25,//< 2:升级
@@ -112,9 +120,10 @@ typedef enum _ICAddr
                                  //< 10：弧线起点位置；11：弧线中间点位置；12：弧线终点位置
                                  //< 后面带6轴坐标值（已经废除）
     ICAddr_System_Retain_31 = 31,//< 单轴手动速度独立设定切换（0：默认使用全局速度;1:使用单轴固定手动速度）：手动模式有效
-
-	ICAddr_System_Retain_35 = 35,//< 驱控四轴，主机刷新参数使能，0：关闭，1：打开
-
+    ICAddr_System_Retain_32 = 32,//<定义IOCheckToOut运行状态操作
+    ICAddr_System_Retain_33 = 33,//<清除定义IOCheckToOut运行状态操作
+    ICAddr_System_Retain_35 = 35,//< 驱控四轴，主机刷新参数使能，0：关闭，1：打开
+    ICAddr_System_Retain_36 = 36,
     ICAddr_System_Retain_40 = 40,//< // 自定义轴动作1 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_41= 41,//<  // 自定义轴动作2 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_42= 42,//<  // 自定义轴动作3 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
@@ -125,6 +134,8 @@ typedef enum _ICAddr
     ICAddr_System_Retain_47= 47,//<  // 自定义轴动作8 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_48= 48,//<  // 自定义轴动作9 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
     ICAddr_System_Retain_49= 49,//<  // 自定义轴动作10 低16位为电机选择位：1为选中；高16位为选中电机正反转设定位：0为反转，1为正转；
+    ICAddr_System_Retain_50 = 50,//< 驱控伺服参数命令写入
+    ICAddr_System_Retain_51 = 51,//< 驱控伺服参数命令读取
     ICAddr_System_Retain_80 = 80,//< 教导参数数据长度 31：清除；30～24位：程序ID；低24位：程序长度
     ICAddr_System_Retain_81 = 81,//< 教导参数数据初始化
     ICAddr_System_Retain_82 = 82,//< 堆叠点参数数据长度 最高位：清除；高15位：程序ID；低16位：程序长度
@@ -251,7 +262,7 @@ typedef enum _ICAddr
     ICAddr_Adapter_Para117, //<类型:系统;名字:目标延时时间;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para118, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para119, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
-    ICAddr_Adapter_Para120, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
+    ICAddr_Adapter_Para120, //<类型;系统;名字：翻转使能；结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para121, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para122, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
     ICAddr_Adapter_Para123, //<类型:系统;名字:当前定时时间;结构:RESERVE;地址:system_reserve_addr;
@@ -606,28 +617,32 @@ typedef enum
     CMD_WHEEL_JOG_P0     = 0x0200,  // 手轮正转
     CMD_WHEEL_JOG_N0             ,  // 手轮反转
 
-    CMD_JOG_PX     = 0x0300,  // 直角坐标系位置轴，X轴正向点动
-    CMD_JOG_PY     = 0x0301,  // 直角坐标系位置轴，Y轴正向点动
-    CMD_JOG_PZ     = 0x0302,  // 直角坐标系位置轴，Z轴正向点动
-    CMD_JOG_PU     = 0x0303,  // 直角坐标系姿势轴，U轴正向点动
-    CMD_JOG_PV     = 0x0304,  // 直角坐标系姿势轴，V轴正向点动
-    CMD_JOG_PW     = 0x0305,  // 直角坐标系姿势轴，W轴正向点动
-    CMD_JOG_PR     = 0x0306,  // 直角坐标系姿势轴，R轴正向点动
-    CMD_JOG_PT     = 0x0307,  // 直角坐标系姿势轴，T轴正向点动
+    CMD_JOG_PX     = 0x0300,  // 直角坐标系位置轴，X轴反向点动
+    CMD_JOG_PY     = 0x0301,  // 直角坐标系位置轴，Y轴反向点动
+    CMD_JOG_PZ     = 0x0302,  // 直角坐标系位置轴，Z轴反向点动
+    CMD_JOG_PU     = 0x0303,  // 直角坐标系姿势轴，U轴反向点动
+    CMD_JOG_PV     = 0x0304,  // 直角坐标系姿势轴，V轴反向点动
+    CMD_JOG_PW     = 0x0305,  // 直角坐标系姿势轴，W轴反向点动
+    CMD_JOG_PR     = 0x0306,  // 直角坐标系姿势轴，R轴反向点动
+    CMD_JOG_PT     = 0x0307,  // 直角坐标系姿势轴，T轴反向点动
 
     CMD_TEST_CLEAR      = 0x034F,  // 清除当前所有测试脉冲
-    CMD_TEST_JOG_PX     = 0x0350,  // 测试X轴正向运动
-    CMD_TEST_JOG_PY     = 0x0351,  // 测试Y轴正向运动
-    CMD_TEST_JOG_PZ     = 0x0352,  // 测试Z轴正向运动
-    CMD_TEST_JOG_PU     = 0x0353,  // 测试U轴正向运动
-    CMD_TEST_JOG_PV     = 0x0354,  // 测试V轴正向运动
-    CMD_TEST_JOG_PW     = 0x0355,  // 测试W轴正向运动
+    CMD_TEST_JOG_PX     = 0x0350,  // 测试X轴反向运动
+    CMD_TEST_JOG_PY     = 0x0351,  // 测试Y轴反向运动
+    CMD_TEST_JOG_PZ     = 0x0352,  // 测试Z轴反向运动
+    CMD_TEST_JOG_PU     = 0x0353,  // 测试U轴反向运动
+    CMD_TEST_JOG_PV     = 0x0354,  // 测试V轴反向运动
+    CMD_TEST_JOG_PW     = 0x0355,  // 测试W轴反向运动
+    CMD_TEST_JOG_PR     = 0x0356,  // 测试W轴反向运动
+    CMD_TEST_JOG_PT     = 0x0357,  // 测试W轴反向运动
     CMD_TEST_JOG_NX     = 0x0360,  // 测试X轴反向运动
     CMD_TEST_JOG_NY     = 0x0361,  // 测试Y轴反向运动
     CMD_TEST_JOG_NZ     = 0x0362,  // 测试Z轴反向运动
     CMD_TEST_JOG_NU     = 0x0363,  // 测试U轴反向运动
     CMD_TEST_JOG_NV     = 0x0364,  // 测试V轴反向运动
     CMD_TEST_JOG_NW     = 0x0365,  // 测试W轴反向运动
+    CMD_TEST_JOG_NR     = 0x0366,  // 测试W轴反向运动
+    CMD_TEST_JOG_NT     = 0x0367,  // 测试W轴反向运动
 
     CMD_CUSTOM_JOG1     = 0x0370,  // 自定义轴动作1
     CMD_CUSTOM_JOG2             ,  // 自定义轴动作2
@@ -646,8 +661,8 @@ typedef enum
     CMD_JOG_NU     = 0x0383,  // 直角坐标系姿势轴，U轴反向点动
     CMD_JOG_NV     = 0x0384,  // 直角坐标系姿势轴，V轴反向点动
     CMD_JOG_NW     = 0x0385,  // 直角坐标系姿势轴，W轴反向点动
-    CMD_JOG_NR     = 0x0386,  // 直角坐标系姿势轴，R轴正向点动
-    CMD_JOG_NT     = 0x0387,  // 直角坐标系姿势轴，T轴正向点动
+    CMD_JOG_NR     = 0x0386,  // 直角坐标系姿势轴，R轴反向点动
+    CMD_JOG_NT     = 0x0387,  // 直角坐标系姿势轴，T轴反向点动
 
 //    CMD_JOG_NR     = 0x0386,  // 极坐标系，靠近原点点动
 
@@ -662,7 +677,18 @@ typedef enum
     CMD_SET_ZERO   = 0x0416,  // 全部轴原点设定
     CMD_REM_POS    = 0x0417,  // 保存每个轴当前位置
     CMD_READ_ABS_AGAIN= 0x0418,  // 重新读取绝对值
+    CMD_SET_ZERO6,  // r轴原点设定
+    CMD_SET_ZERO7,  // t轴原点设定
     CMD_FIND_ZERO  = 0x047F,  // 所有逻辑轴，同时找零
+
+    CMD_SET_ZERO0_WITH_NOWRITE = 0x0450,// x轴原点设定，不写Flash
+    CMD_SET_ZERO1_WITH_NOWRITE = 0x0451,// y轴原点设定，不写Flash
+    CMD_SET_ZERO2_WITH_NOWRITE = 0x0452,// z轴原点设定，不写Flash
+    CMD_SET_ZERO3_WITH_NOWRITE = 0x0453,// u轴原点设定，不写Flash
+    CMD_SET_ZERO4_WITH_NOWRITE = 0x0454,// v轴原点设定，不写Flash
+    CMD_SET_ZERO5_WITH_NOWRITE = 0x0455,// w轴原点设定，不写Flash
+    CMD_SET_ZERO_WITH_NOWRITE  = 0x0456,// 全部轴原点设定,不写Flash
+
 
     CMD_GO_HOME0   = 0x0500,  // 第一个逻辑轴，回零点
     CMD_GO_HOME    = 0x057F,  // 所有逻辑轴，同时回零点
@@ -672,7 +698,7 @@ typedef enum
     CMD_SLOW_STOP0 = 0x0680,  // 减速停止第一个逻辑轴相关的运动- 回零、找零等
     CMD_SLOW_STOP  = 0x06FF,  // 减速停止所有逻辑轴的运动- 回零、找零等
 
-    CMD_RUN_LENGTH_P0 = 0x0700, // 第一个逻辑轴-运行正向测试脉冲，带一个参数- 正脉冲数
+    CMD_RUN_LENGTH_P0 = 0x0700, // 第一个逻辑轴-运行反向测试脉冲，带一个参数- 正脉冲数
     CMD_RUN_LENGTH_N0 = 0x0780, // 第一个逻辑轴-运行反向测试脉冲，带一个参数- 正脉冲数
 
     CMD_IO_OUT_P0  = 0x0800,  // 第一个IO端口输出高
@@ -724,45 +750,51 @@ typedef enum
 /*! \brief 教导动作功能码枚举*/
 typedef enum
 {
-	F_CMD_NULL,
-	F_CMD_SYNC_START,     //< 同步功能开始
-	F_CMD_SYNC_END,       //< 同步功能结束
+    F_CMD_NULL,
+    F_CMD_SYNC_START,     //< 同步功能开始
+    F_CMD_SYNC_END,       //< 同步功能结束
     F_CMD_SINGLE,         //< 单轴动作 电机ID 位置 速度  延时
     //< 关节坐标点运动 第电机ID使能（按位使能第0位：X使能；第1位：Y使能；～第5位：W使能）
     //< 坐标（X，Y，Z,U,V,W） 速度 延时
-	F_CMD_JOINT_MOVE_POINT,
-	//< 直线坐标偏移位置（X，Y，Z） 速度  延时
-	F_CMD_LINE_RELATIVE,
-	F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 坐标（X，Y） 速度  延时
-	F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
+    F_CMD_JOINT_MOVE_POINT,
+    //< 直线坐标偏移位置（X，Y，Z） 速度  延时
+    F_CMD_LINE_RELATIVE,
+    F_CMD_LINE2D_MOVE_POINT,   //< 2轴按点位直线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 坐标（X，Y） 速度  延时
+    F_CMD_LINE3D_MOVE_POINT,   //< 3轴按点位直线运动 坐标（X，Y，Z） 速度  延时
     F_CMD_ARC3D_MOVE_POINT,   //< 按点位弧线运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
     F_CMD_MOVE_POSE,   //< 运动目标姿势 姿势（X，Y，Z） 速度  延时
-    F_CMD_LINE3D_MOVE_POSE,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时
+    F_CMD_LINE3D_MOVE_POSE = 10,   //< 3轴按点位直线运动带目标姿势 坐标（X，Y，Z）姿势（X，Y，Z） 速度  延时 10
     //< 关节坐标偏移位置（X，Y，Z,U,V,W） 速度  延时
     F_CMD_JOINT_RELATIVE,
     F_CMD_ARC3D_MOVE,   //< 整圆运动 目标坐标（X，Y，Z）经过点（X，Y，Z） 速度  延时
     F_CMD_ARC2D_MOVE_POINT,   //< 按点位2D弧线运动 平面选择：0 xy平面 1 xz平面 2 yx平面 目标坐标（轴1，轴2）经过点（轴1，轴2） 速度  延时
-	//< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
-	//< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
+    //< 单轴动作 电机ID 位置 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+    //< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定
     F_CMD_SINGLE_ADD_FUNC,
-	F_CMD_ARC_RELATIVE,			//< 相对曲线运动 目标坐标（X，Y,Z）经过点（X,Y,Z） 速度  延时
-	F_CMD_SPEED_SMOOTH,			//< 轨迹速度平滑设定 起始速度，终止速度
+    F_CMD_ARC_RELATIVE,            //< 相对曲线运动 目标坐标（X，Y,Z）经过点（X,Y,Z） 速度  延时
+    F_CMD_SPEED_SMOOTH,            //< 轨迹速度平滑设定 起始速度，终止速度
 
 
     F_CMD_ARC3D_MOVE_POINT_POSE,   //< 按点位姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
-	F_CMD_ARC_RELATIVE_POSE,	   //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
+    F_CMD_ARC_RELATIVE_POSE,       //< 相对姿势曲线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
     F_CMD_ARC3D_MOVE_POSE,         //< 姿势整圆运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
 
-    F_CMD_LINE_RELATIVE_POSE,      //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时
-
+    F_CMD_LINE_RELATIVE_POSE=20,      //< 相对姿势直线运动 目标坐标（X，Y，Z，U，V，W）经过点（X，Y，Z，U，V，W） 速度  延时 20
+    //<单轴动作带输出 电机ID 位置 速度 延时 是否提前结束 提前结束位置 是否走相对值 是否输出 输出点1 输出点2
+    F_CMD_SINGLE_ADD_OUTPUT_FUNC,
+    //< 单轴动作 电机ID 位置（地址） 速度  延时 功能码（1提前减速，2提前结束,3提前减速+提前结束）
+    //< 提前减速位置设定（无小数位）提前结束位置设定（无小数位）提前减速速度设定 信号停止使能 立即停使能 相对使能
+    F_CMD_SINGLE_ADDR_FUNC,
+    //< 单轴扭矩控制 电机ID 位置 扭矩设定 速度 功能码（0大于，1小于）
+    F_CMD_SINGLE_TORQUE_FUNC,
     //< 单轴动作带输入检测和提前减速 电机ID 位置 速度 延时 输入点停止使能 输入点 输入点通断 立即停使能 减速位置偏移 每次偏移 提前减速速度 存储地址
-    F_CMD_SINGLE_ADD_MEMPOS_FUNC =24,
-    F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M） IO点 等待 等待时间
+    F_CMD_SINGLE_ADD_MEMPOS_FUNC,
+    F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M，1000:等待数据源完成信号） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
     F_CMD_IO_CHECK, //输入检测 输入点 检测方向 开始停止检测 延时
     /**************************************************************************/
     /* IO点输出
-     * 类型（EUIO，0~3:IO板，4～6：M值，7：EUIO；8：单头阀或者双头阀；9：停止检测；10：开始检测;1000:等待数据源完成信号）
+     * 类型（EUIO，0~3:IO板，4～6：M值，7：EUIO；8：单头阀或者双头阀；9：停止检测；10：开始检测;）
      * IO点 当类型为8～10时候为阀ID
      * 输出状态  当类型为8～10时候不用
      * 输出延时  当类型为8～10时候不用
@@ -939,6 +971,11 @@ typedef enum
     F_CMD_CHOOSE_COORDINATE = 800,//< 坐标系切换命令
     /***************************************************************************/
     /*
+     *  id: 轴，0：为世界坐标系
+     */
+    F_CMD_ANALOG_POS = 900,//< 模拟量位置控制
+    /***************************************************************************/
+    /*
      *  id: 轴ID
      *  pos1:起始位置
      *  pos2:终止位置
@@ -946,18 +983,21 @@ typedef enum
      *  num:次数
      */
     F_CMD_PENQIANG_CMD = 1000,//< 喷涂摆枪命令
+    F_CMD_PTRange_CMD         ,//< PT Range 命令
+    F_CMD_SingleAddr_CMD     ,//< 单轴地址输出
     /***************************************************************************/
     /*
      */
-    F_CMD_PENQIANG_1 = 2000,//< 喷涂指令1 直线U形
-    F_CMD_PENQIANG_2       ,//< 喷涂指令2 直线Z形
-    F_CMD_PENQIANG_3       ,//< 喷涂指令3 直线锯齿形
-    F_CMD_PENQIANG_4       ,//< 喷涂指令4 直线寸动形
-    F_CMD_PENQIANG_5       ,//< 喷涂指令5 曲线U形
-    F_CMD_PENQIANG_6       ,//< 喷涂指令6 曲线Z形
-    F_CMD_PENQIANG_7       ,//< 喷涂指令7 曲线锯齿形
-    F_CMD_PENQIANG_8       ,//< 喷涂指令8 曲线寸动形
-    F_CMD_PENQIANG_9       ,//< 喷涂指令9 DIY
+    F_CMD_PENTU_ACTION = 2000 ,//< 喷涂指令
+    F_CMD_PENTU_HEAD_END          ,//< 喷涂头尾指令
+//    F_CMD_PENTU_ACTION3       ,//< 喷涂指令3 直线锯齿形
+//    F_CMD_PENTU_ACTION4       ,//< 喷涂指令4 直线寸动形
+//    F_CMD_PENTU_ACTION5       ,//< 喷涂指令5 曲线U形
+//    F_CMD_PENTU_ACTION6       ,//< 喷涂指令6 曲线Z形
+//    F_CMD_PENTU_ACTION7       ,//< 喷涂指令7 曲线锯齿形
+//    F_CMD_PENTU_ACTION8       ,//< 喷涂指令8 曲线寸动形
+//    F_CMD_PENTU_ACTION9       ,//< 喷涂指令9 DIY
+//    F_CMD_PENTU_ACTION10      ,//< 喷涂指令10 单轴往复
     /***************************************************************************/
 
     F_CMD_MEM_CMD = 53000,
@@ -981,7 +1021,7 @@ typedef enum
     F_CMD_LINEXZ_MOVE_POINT = 52007,
     F_CMD_LINEYZ_MOVE_POINT = 52008,
     F_CMD_FLAG = 59999,    //<跳转标志
-	F_CMD_END=60000//< 动作结束
+    F_CMD_END=60000//< 动作结束
 
 }FunctionCmd;
 
@@ -1001,7 +1041,7 @@ typedef enum
     ALARM_CFG_STORAGE_ERR, //<名字：配置参数存储失败
     ALARM_MAHCINE_SET_ERR, //<名字：机型设定错误
     ALARM_SINGLE_DEBUG_ERR, //<名字：单步/单循环调试程序设定错误
-	ALARM_STORAGE_READ_ERR, //<名字：从主机FLASH读取的数据有错
+    ALARM_STORAGE_READ_ERR, //<名字：从主机FLASH读取的数据有错
     ALARM_IO_CONNET_ERR, //<名字：与IO板通讯失败
     ALARM_SERVO_ABS_READ_ERR, //<名字：伺服绝对值位置读取失败
     ALARM_SERVO_ABS_CRC_ERR, //<名字：伺服绝对值位置读取校验失败
@@ -1014,6 +1054,18 @@ typedef enum
     ALARM_FPGA_ERR,//<名字：FPGA报警，请断电重启！！！！
     ALARM_ANALOG_CRC_ERR, //<名字：模拟量输出模块输出校验错误
     ALARM_ANALOG_OVERTIME_ERR, //<名字：模拟量输出模块读超时
+    ALARM_USER_COORD_ERR,   //<名字：当前工具坐标系错误，切换失败
+    ALARM_INTERVAL_ERR,   //<名字：堆叠间隔输出失败
+    ALARM_POS_STABLE_ING,  //<名字:位置稳定中
+
+    ALARM_AXIS1_ACC_ALARM_ERR = 80,//<名字：电机1加速度报警
+    ALARM_AXIS2_ACC_ALARM_ERR,//<名字：电机2加速度报警
+    ALARM_AXIS3_ACC_ALARM_ERR,//<名字：电机3加速度报警
+    ALARM_AXIS4_ACC_ALARM_ERR,//<名字：电机4加速度报警
+    ALARM_AXIS5_ACC_ALARM_ERR,//<名字：电机5加速度报警
+    ALARM_AXIS6_ACC_ALARM_ERR, //<名字：电机6加速度报警
+    ALARM_AXIS7_ACC_ALARM_ERR, //<名字：电机7加速度报警
+    ALARM_AXIS8_ACC_ALARM_ERR, //<名字：电机8加速度报警
 
     ALARM_AXIS1_ALARM_ERR = 90,//<名字：电机1报警
     ALARM_AXIS2_ALARM_ERR,//<名字：电机2报警
@@ -1178,7 +1230,7 @@ typedef enum
     ALARM_UNSAFEAREA_PART5,     //<名字：非安全区区域5报警
     ALARM_UNSAFEAREA_PART6,     //<名字：非安全区区域6报警
 
-    ALARM_SERVO_AXIS1_INIT_FLT = 700,//<名字：伺服1故障，上电初始化失败
+    ALARM_SERVO_AXIS1_INIT_FLT= 700,//<名字：伺服1故障，上电初始化失败
     ALARM_SERVO_AXIS2_INIT_FLT,        //<名字：伺服2故障，上电初始化失败
     ALARM_SERVO_AXIS3_INIT_FLT,        //<名字：伺服3故障，上电初始化失败
     ALARM_SERVO_AXIS4_INIT_FLT,        //<名字：伺服4故障，上电初始化失败
@@ -1187,150 +1239,176 @@ typedef enum
     ALARM_SERVO_AXIS7_INIT_FLT,        //<名字：伺服7故障，上电初始化失败
     ALARM_SERVO_AXIS8_INIT_FLT,        //<名字：伺服8故障，上电初始化失败
 
-    ALARM_SERVO_AXIS1_EEPROM_FLT = 710,//<名字  ：伺服1故障，EEPROM故障
-    ALARM_SERVO_AXIS2_EEPROM_FLT,        //<名字  ：伺服2故障，EEPROM故障
-    ALARM_SERVO_AXIS3_EEPROM_FLT,        //<名字  ：伺服3故障，EEPROM故障
-    ALARM_SERVO_AXIS4_EEPROM_FLT,        //<名字  ：伺服4故障，EEPROM故障
-    ALARM_SERVO_AXIS5_EEPROM_FLT,        //<名字  ：伺服5故障，EEPROM故障
-    ALARM_SERVO_AXIS6_EEPROM_FLT,        //<名字  ：伺服6故障，EEPROM故障
-    ALARM_SERVO_AXIS7_EEPROM_FLT,        //<名字  ：伺服7故障，EEPROM故障
-    ALARM_SERVO_AXIS8_EEPROM_FLT,        //<名字  ：伺服8故障，EEPROM故障
+    ALARM_SERVO_AXIS1_EEPROM_FLT = 710, //<名字：伺服1故障，EEPROM故障
+    ALARM_SERVO_AXIS2_EEPROM_FLT,        //<名字：伺服2故障，EEPROM故障
+    ALARM_SERVO_AXIS3_EEPROM_FLT,        //<名字：伺服3故障，EEPROM故障
+    ALARM_SERVO_AXIS4_EEPROM_FLT,        //<名字：伺服4故障，EEPROM故障
+    ALARM_SERVO_AXIS5_EEPROM_FLT,        //<名字：伺服5故障，EEPROM故障
+    ALARM_SERVO_AXIS6_EEPROM_FLT,        //<名字：伺服6故障，EEPROM故障
+    ALARM_SERVO_AXIS7_EEPROM_FLT,        //<名字：伺服7故障，EEPROM故障
+    ALARM_SERVO_AXIS8_EEPROM_FLT,        //<名字：伺服8故障，EEPROM故障
 
-    ALARM_SERVO_AXIS1_ADC_FLT = 720,//<名字  ：伺服1故障，A/D转换器故障
-    ALARM_SERVO_AXIS2_ADC_FLT,//<名字  ：伺服2故障，A/D转换器故障
-    ALARM_SERVO_AXIS3_ADC_FLT,//<名字  ：伺服3故障，A/D转换器故障
-    ALARM_SERVO_AXIS4_ADC_FLT,//<名字  ：伺服4故障，A/D转换器故障
-    ALARM_SERVO_AXIS5_ADC_FLT,//<名字  ：伺服5故障，A/D转换器故障
-    ALARM_SERVO_AXIS6_ADC_FLT,//<名字  ：伺服6故障，A/D转换器故障
-    ALARM_SERVO_AXIS7_ADC_FLT,//<名字  ：伺服7故障，A/D转换器故障
-    ALARM_SERVO_AXIS8_ADC_FLT,//<名字  ：伺服8故障，A/D转换器故障
+    ALARM_SERVO_AXIS1_ADC_FLT = 720,//<名字：伺服1故障，A/D转换器故障
+    ALARM_SERVO_AXIS2_ADC_FLT,      //<名字：伺服2故障，A/D转换器故障
+    ALARM_SERVO_AXIS3_ADC_FLT,      //<名字：伺服3故障，A/D转换器故障
+    ALARM_SERVO_AXIS4_ADC_FLT,      //<名字：伺服4故障，A/D转换器故障
+    ALARM_SERVO_AXIS5_ADC_FLT,      //<名字：伺服5故障，A/D转换器故障
+    ALARM_SERVO_AXIS6_ADC_FLT,      //<名字：伺服6故障，A/D转换器故障
+    ALARM_SERVO_AXIS7_ADC_FLT,      //<名字：伺服7故障，A/D转换器故障
+    ALARM_SERVO_AXIS8_ADC_FLT,      //<名字：伺服8故障，A/D转换器故障
 
-    ALARM_SERVO_AXIS1_EXECTM_FLT = 730,//<名字  ：伺服1故障，系统运算引擎超时
-    ALARM_SERVO_AXIS2_EXECTM_FLT,//<名字  ：伺服2故障，系统运算引擎超时
-    ALARM_SERVO_AXIS3_EXECTM_FLT,//<名字  ：伺服3故障，系统运算引擎超时
-    ALARM_SERVO_AXIS4_EXECTM_FLT,//<名字  ：伺服4故障，系统运算引擎超时
-    ALARM_SERVO_AXIS5_EXECTM_FLT,//<名字  ：伺服5故障，系统运算引擎超时
-    ALARM_SERVO_AXIS6_EXECTM_FLT,//<名字  ：伺服6故障，系统运算引擎超时
-    ALARM_SERVO_AXIS7_EXECTM_FLT,//<名字  ：伺服7故障，系统运算引擎超时
-    ALARM_SERVO_AXIS8_EXECTM_FLT,//<名字  ：伺服8故障，系统运算引擎超时
+    ALARM_SERVO_AXIS1_EXECTM_FLT = 730,//<名字：伺服1故障，系统运算引擎超时
+    ALARM_SERVO_AXIS2_EXECTM_FLT,      //<名字：伺服2故障，系统运算引擎超时
+    ALARM_SERVO_AXIS3_EXECTM_FLT,      //<名字：伺服3故障，系统运算引擎超时
+    ALARM_SERVO_AXIS4_EXECTM_FLT,      //<名字：伺服4故障，系统运算引擎超时
+    ALARM_SERVO_AXIS5_EXECTM_FLT,      //<名字：伺服5故障，系统运算引擎超时
+    ALARM_SERVO_AXIS6_EXECTM_FLT,      //<名字：伺服6故障，系统运算引擎超时
+    ALARM_SERVO_AXIS7_EXECTM_FLT,      //<名字：伺服7故障，系统运算引擎超时
+    ALARM_SERVO_AXIS8_EXECTM_FLT,      //<名字：伺服8故障，系统运算引擎超时
 
-    ALARM_SERVO_AXIS1_OVER_TEMP_FLT1 = 740,//<名字  ：伺服1故障，散热器过热
-    ALARM_SERVO_AXIS2_OVER_TEMP_FLT1,//<名字  ：伺服2故障，散热器过热
-    ALARM_SERVO_AXIS3_OVER_TEMP_FLT1,//<名字  ：伺服3故障，散热器过热
-    ALARM_SERVO_AXIS4_OVER_TEMP_FLT1,//<名字  ：伺服4故障，散热器过热
-    ALARM_SERVO_AXIS5_OVER_TEMP_FLT1,//<名字  ：伺服5故障，散热器过热
-    ALARM_SERVO_AXIS6_OVER_TEMP_FLT1,//<名字  ：伺服6故障，散热器过热
-    ALARM_SERVO_AXIS7_OVER_TEMP_FLT1,//<名字  ：伺服7故障，散热器过热
-    ALARM_SERVO_AXIS8_OVER_TEMP_FLT1,//<名字  ：伺服8故障，散热器过热
+    ALARM_SERVO_AXIS1_OVER_TEMP_FLT1 = 740,//<名字：伺服1故障，散热器过热
+    ALARM_SERVO_AXIS2_OVER_TEMP_FLT1,      //<名字：伺服2故障，散热器过热
+    ALARM_SERVO_AXIS3_OVER_TEMP_FLT1,      //<名字：伺服3故障，散热器过热
+    ALARM_SERVO_AXIS4_OVER_TEMP_FLT1,      //<名字：伺服4故障，散热器过热
+    ALARM_SERVO_AXIS5_OVER_TEMP_FLT1,      //<名字：伺服5故障，散热器过热
+    ALARM_SERVO_AXIS6_OVER_TEMP_FLT1,      //<名字：伺服6故障，散热器过热
+    ALARM_SERVO_AXIS7_OVER_TEMP_FLT1,      //<名字：伺服7故障，散热器过热
+    ALARM_SERVO_AXIS8_OVER_TEMP_FLT1,      //<名字：伺服8故障，散热器过热
 
-    ALARM_SERVO_AXIS1_OV_FLT = 750,//<名字  ：伺服1故障，主电源过压
-    ALARM_SERVO_AXIS2_OV_FLT,//<名字  ：伺服2故障，主电源过压
-    ALARM_SERVO_AXIS3_OV_FLT,//<名字  ：伺服3故障，主电源过压
-    ALARM_SERVO_AXIS4_OV_FLT,//<名字  ：伺服4故障，主电源过压
-    ALARM_SERVO_AXIS5_OV_FLT,//<名字  ：伺服5故障，主电源过压
-    ALARM_SERVO_AXIS6_OV_FLT,//<名字  ：伺服6故障，主电源过压
-    ALARM_SERVO_AXIS7_OV_FLT,//<名字  ：伺服7故障，主电源过压
-    ALARM_SERVO_AXIS8_OV_FLT,//<名字  ：伺服8故障，主电源过压
+    ALARM_SERVO_AXIS1_OV_FLT = 750,//<名字：伺服1故障，主电源过压
+    ALARM_SERVO_AXIS2_OV_FLT,      //<名字：伺服2故障，主电源过压
+    ALARM_SERVO_AXIS3_OV_FLT,      //<名字：伺服3故障，主电源过压
+    ALARM_SERVO_AXIS4_OV_FLT,      //<名字：伺服4故障，主电源过压
+    ALARM_SERVO_AXIS5_OV_FLT,      //<名字：伺服5故障，主电源过压
+    ALARM_SERVO_AXIS6_OV_FLT,      //<名字：伺服6故障，主电源过压
+    ALARM_SERVO_AXIS7_OV_FLT,      //<名字：伺服7故障，主电源过压
+    ALARM_SERVO_AXIS8_OV_FLT,      //<名字：伺服8故障，主电源过压
 
-    ALARM_SERVO_AXIS1_LV_FLT = 760,//<名字  ：伺服1故障，主电源欠压
-    ALARM_SERVO_AXIS2_LV_FLT,//<名字  ：伺服2故障，主电源欠压
-    ALARM_SERVO_AXIS3_LV_FLT,//<名字  ：伺服3故障，主电源欠压
-    ALARM_SERVO_AXIS4_LV_FLT,//<名字  ：伺服4故障，主电源欠压
-    ALARM_SERVO_AXIS5_LV_FLT,//<名字  ：伺服5故障，主电源欠压
-    ALARM_SERVO_AXIS6_LV_FLT,//<名字  ：伺服6故障，主电源欠压
-    ALARM_SERVO_AXIS7_LV_FLT,//<名字  ：伺服7故障，主电源欠压
-    ALARM_SERVO_AXIS8_LV_FLT,//<名字  ：伺服8故障，主电源欠压
+    ALARM_SERVO_AXIS1_LV_FLT = 760,//<名字：伺服1故障，主电源欠压
+    ALARM_SERVO_AXIS2_LV_FLT,      //<名字：伺服2故障，主电源欠压
+    ALARM_SERVO_AXIS3_LV_FLT,      //<名字：伺服3故障，主电源欠压
+    ALARM_SERVO_AXIS4_LV_FLT,      //<名字：伺服4故障，主电源欠压
+    ALARM_SERVO_AXIS5_LV_FLT,      //<名字：伺服5故障，主电源欠压
+    ALARM_SERVO_AXIS6_LV_FLT,      //<名字：伺服6故障，主电源欠压
+    ALARM_SERVO_AXIS7_LV_FLT,      //<名字：伺服7故障，主电源欠压
+    ALARM_SERVO_AXIS8_LV_FLT,      //<名字：伺服8故障，主电源欠压
 
-    ALARM_SERVO_AXIS1_MAIN_POWER_OFF = 770,//<名字  ：伺服1故障，主电源关断
-    ALARM_SERVO_AXIS2_MAIN_POWER_OFF,//<名字  ：伺服2故障，主电源关断
-    ALARM_SERVO_AXIS3_MAIN_POWER_OFF,//<名字  ：伺服3故障，主电源关断
-    ALARM_SERVO_AXIS4_MAIN_POWER_OFF,//<名字  ：伺服4故障，主电源关断
-    ALARM_SERVO_AXIS5_MAIN_POWER_OFF,//<名字  ：伺服5故障，主电源关断
-    ALARM_SERVO_AXIS6_MAIN_POWER_OFF,//<名字  ：伺服6故障，主电源关断
-    ALARM_SERVO_AXIS7_MAIN_POWER_OFF,//<名字  ：伺服7故障，主电源关断
-    ALARM_SERVO_AXIS8_MAIN_POWER_OFF,//<名字  ：伺服8故障，主电源关断
+    ALARM_SERVO_AXIS1_MAIN_POWER_OFF = 770,//<名字：伺服1故障，主电源关断
+    ALARM_SERVO_AXIS2_MAIN_POWER_OFF,      //<名字：伺服2故障，主电源关断
+    ALARM_SERVO_AXIS3_MAIN_POWER_OFF,      //<名字：伺服3故障，主电源关断
+    ALARM_SERVO_AXIS4_MAIN_POWER_OFF,      //<名字：伺服4故障，主电源关断
+    ALARM_SERVO_AXIS5_MAIN_POWER_OFF,      //<名字：伺服5故障，主电源关断
+    ALARM_SERVO_AXIS6_MAIN_POWER_OFF,      //<名字：伺服6故障，主电源关断
+    ALARM_SERVO_AXIS7_MAIN_POWER_OFF,      //<名字：伺服7故障，主电源关断
+    ALARM_SERVO_AXIS8_MAIN_POWER_OFF,      //<名字：伺服8故障，主电源关断
 
-    ALARM_SERVO_AXIS1_GATE_KILL_FLT = 780,//<名字  ：伺服1故障，IGBT过流
-    ALARM_SERVO_AXIS2_GATE_KILL_FLT,//<名字  ：伺服2故障，IGBT过流
-    ALARM_SERVO_AXIS3_GATE_KILL_FLT,//<名字  ：伺服3故障，IGBT过流
-    ALARM_SERVO_AXIS4_GATE_KILL_FLT,//<名字  ：伺服4故障，IGBT过流
-    ALARM_SERVO_AXIS5_GATE_KILL_FLT,//<名字  ：伺服5故障，IGBT过流
-    ALARM_SERVO_AXIS6_GATE_KILL_FLT,//<名字  ：伺服6故障，IGBT过流
-    ALARM_SERVO_AXIS7_GATE_KILL_FLT,//<名字  ：伺服7故障，IGBT过流
-    ALARM_SERVO_AXIS8_GATE_KILL_FLT,//<名字  ：伺服8故障，IGBT过流
+    ALARM_SERVO_AXIS1_GATE_KILL_FLT = 780,//<名字：伺服1故障，IGBT过流
+    ALARM_SERVO_AXIS2_GATE_KILL_FLT,      //<名字：伺服2故障，IGBT过流
+    ALARM_SERVO_AXIS3_GATE_KILL_FLT,      //<名字：伺服3故障，IGBT过流
+    ALARM_SERVO_AXIS4_GATE_KILL_FLT,      //<名字：伺服4故障，IGBT过流
+    ALARM_SERVO_AXIS5_GATE_KILL_FLT,      //<名字：伺服5故障，IGBT过流
+    ALARM_SERVO_AXIS6_GATE_KILL_FLT,      //<名字：伺服6故障，IGBT过流
+    ALARM_SERVO_AXIS7_GATE_KILL_FLT,      //<名字：伺服7故障，IGBT过流
+    ALARM_SERVO_AXIS8_GATE_KILL_FLT,      //<名字：伺服8故障，IGBT过流
 
-    ALARM_SERVO_AXIS1_OVER_TEMP_FLT2 = 790,//<名字  ：伺服1故障，IGBT过热
-    ALARM_SERVO_AXIS2_OVER_TEMP_FLT2,//<名字  ：伺服2故障，IGBT过热
-    ALARM_SERVO_AXIS3_OVER_TEMP_FLT2,//<名字  ：伺服3故障，IGBT过热
-    ALARM_SERVO_AXIS4_OVER_TEMP_FLT2,//<名字  ：伺服4故障，IGBT过热
-    ALARM_SERVO_AXIS5_OVER_TEMP_FLT2,//<名字  ：伺服5故障，IGBT过热
-    ALARM_SERVO_AXIS6_OVER_TEMP_FLT2,//<名字  ：伺服6故障，IGBT过热
-    ALARM_SERVO_AXIS7_OVER_TEMP_FLT2,//<名字  ：伺服7故障，IGBT过热
-    ALARM_SERVO_AXIS8_OVER_TEMP_FLT2,//<名字  ：伺服8故障，IGBT过热
+    ALARM_SERVO_AXIS1_OVER_TEMP_FLT2 = 790,//<名字：伺服1故障，IGBT过热
+    ALARM_SERVO_AXIS2_OVER_TEMP_FLT2,      //<名字：伺服2故障，IGBT过热
+    ALARM_SERVO_AXIS3_OVER_TEMP_FLT2,      //<名字：伺服3故障，IGBT过热
+    ALARM_SERVO_AXIS4_OVER_TEMP_FLT2,      //<名字：伺服4故障，IGBT过热
+    ALARM_SERVO_AXIS5_OVER_TEMP_FLT2,      //<名字：伺服5故障，IGBT过热
+    ALARM_SERVO_AXIS6_OVER_TEMP_FLT2,      //<名字：伺服6故障，IGBT过热
+    ALARM_SERVO_AXIS7_OVER_TEMP_FLT2,      //<名字：伺服7故障，IGBT过热
+    ALARM_SERVO_AXIS8_OVER_TEMP_FLT2,      //<名字：伺服8故障，IGBT过热
 
-    ALARM_SERVO_AXIS1_OVER_LD_FLT = 800,//<名字  ：伺服1故障：过载
-    ALARM_SERVO_AXIS2_OVER_LD_FLT,//<名字  ：伺服2故障：过载
-    ALARM_SERVO_AXIS3_OVER_LD_FLT,//<名字  ：伺服3故障：过载
-    ALARM_SERVO_AXIS4_OVER_LD_FLT,//<名字  ：伺服4故障：过载
-    ALARM_SERVO_AXIS5_OVER_LD_FLT,//<名字  ：伺服5故障：过载
-    ALARM_SERVO_AXIS6_OVER_LD_FLT,//<名字  ：伺服6故障：过载
-    ALARM_SERVO_AXIS7_OVER_LD_FLT,//<名字  ：伺服7故障：过载
-    ALARM_SERVO_AXIS8_OVER_LD_FLT,//<名字  ：伺服8故障：过载
+    ALARM_SERVO_AXIS1_OVER_LD_FLT = 800,//<名字：伺服1故障，过载
+    ALARM_SERVO_AXIS2_OVER_LD_FLT,      //<名字：伺服2故障，过载
+    ALARM_SERVO_AXIS3_OVER_LD_FLT,      //<名字：伺服3故障，过载
+    ALARM_SERVO_AXIS4_OVER_LD_FLT,      //<名字：伺服4故障，过载
+    ALARM_SERVO_AXIS5_OVER_LD_FLT,      //<名字：伺服5故障，过载
+    ALARM_SERVO_AXIS6_OVER_LD_FLT,      //<名字：伺服6故障，过载
+    ALARM_SERVO_AXIS7_OVER_LD_FLT,      //<名字：伺服7故障，过载
+    ALARM_SERVO_AXIS8_OVER_LD_FLT,      //<名字：伺服8故障，过载
 
-    ALARM_SERVO_AXIS1_OVER_SPD_FLT = 810,//<名字  ：伺服1故障：超速
-    ALARM_SERVO_AXIS2_OVER_SPD_FLT,//<名字  ：伺服2故障：超速
-    ALARM_SERVO_AXIS3_OVER_SPD_FLT,//<名字  ：伺服3故障：超速
-    ALARM_SERVO_AXIS4_OVER_SPD_FLT,//<名字  ：伺服4故障：超速
-    ALARM_SERVO_AXIS5_OVER_SPD_FLT,//<名字  ：伺服5故障：超速
-    ALARM_SERVO_AXIS6_OVER_SPD_FLT,//<名字  ：伺服6故障：超速
-    ALARM_SERVO_AXIS7_OVER_SPD_FLT,//<名字  ：伺服7故障：超速
-    ALARM_SERVO_AXIS8_OVER_SPD_FLT,//<名字  ：伺服8故障：超速
+    ALARM_SERVO_AXIS1_OVER_SPD_FLT = 810,//<名字：伺服1故障，超速
+    ALARM_SERVO_AXIS2_OVER_SPD_FLT,      //<名字：伺服2故障，超速
+    ALARM_SERVO_AXIS3_OVER_SPD_FLT,      //<名字：伺服3故障，超速
+    ALARM_SERVO_AXIS4_OVER_SPD_FLT,      //<名字：伺服4故障，超速
+    ALARM_SERVO_AXIS5_OVER_SPD_FLT,      //<名字：伺服5故障，超速
+    ALARM_SERVO_AXIS6_OVER_SPD_FLT,      //<名字：伺服6故障，超速
+    ALARM_SERVO_AXIS7_OVER_SPD_FLT,      //<名字：伺服7故障，超速
+    ALARM_SERVO_AXIS8_OVER_SPD_FLT,      //<名字：伺服8故障，超速
 
-    ALARM_SERVO_AXIS1_OVER_FRQ_FLT = 820,//<名字  ：伺服1故障：位置脉频率过高
-    ALARM_SERVO_AXIS2_OVER_FRQ_FLT,//<名字  ：伺服2故障：位置脉频率过高
-    ALARM_SERVO_AXIS3_OVER_FRQ_FLT,//<名字  ：伺服3故障：位置脉频率过高
-    ALARM_SERVO_AXIS4_OVER_FRQ_FLT,//<名字  ：伺服4故障：位置脉频率过高
-    ALARM_SERVO_AXIS5_OVER_FRQ_FLT,//<名字  ：伺服5故障：位置脉频率过高
-    ALARM_SERVO_AXIS6_OVER_FRQ_FLT,//<名字  ：伺服6故障：位置脉频率过高
-    ALARM_SERVO_AXIS7_OVER_FRQ_FLT,//<名字  ：伺服7故障：位置脉频率过高
-    ALARM_SERVO_AXIS8_OVER_FRQ_FLT,//<名字  ：伺服8故障：位置脉频率过高
+    ALARM_SERVO_AXIS1_OVER_FRQ_FLT = 820,//<名字：伺服1故障，位置脉频率过高
+    ALARM_SERVO_AXIS2_OVER_FRQ_FLT,      //<名字：伺服2故障，位置脉频率过高
+    ALARM_SERVO_AXIS3_OVER_FRQ_FLT,      //<名字：伺服3故障，位置脉频率过高
+    ALARM_SERVO_AXIS4_OVER_FRQ_FLT,      //<名字：伺服4故障，位置脉频率过高
+    ALARM_SERVO_AXIS5_OVER_FRQ_FLT,      //<名字：伺服5故障，位置脉频率过高
+    ALARM_SERVO_AXIS6_OVER_FRQ_FLT,      //<名字：伺服6故障，位置脉频率过高
+    ALARM_SERVO_AXIS7_OVER_FRQ_FLT,      //<名字：伺服7故障，位置脉频率过高
+    ALARM_SERVO_AXIS8_OVER_FRQ_FLT,      //<名字：伺服8故障，位置脉频率过高
 
-    ALARM_SERVO_AXIS1_POS_ERROR_OVER_FLT = 830,//<名字  ：伺服1故障：位置偏差过大
-    ALARM_SERVO_AXIS2_POS_ERROR_OVER_FLT,//<名字  ：伺服2故障：位置偏差过大
-    ALARM_SERVO_AXIS3_POS_ERROR_OVER_FLT,//<名字  ：伺服3故障：位置偏差过大
-    ALARM_SERVO_AXIS4_POS_ERROR_OVER_FLT,//<名字  ：伺服4故障：位置偏差过大
-    ALARM_SERVO_AXIS5_POS_ERROR_OVER_FLT,//<名字  ：伺服5故障：位置偏差过大
-    ALARM_SERVO_AXIS6_POS_ERROR_OVER_FLT,//<名字  ：伺服6故障：位置偏差过大
-    ALARM_SERVO_AXIS7_POS_ERROR_OVER_FLT,//<名字  ：伺服7故障：位置偏差过大
-    ALARM_SERVO_AXIS8_POS_ERROR_OVER_FLT,//<名字  ：伺服8故障：位置偏差过大
+    ALARM_SERVO_AXIS1_POS_ERROR_OVER_FLT = 830,//<名字：伺服1故障，位置偏差过大
+    ALARM_SERVO_AXIS2_POS_ERROR_OVER_FLT,      //<名字：伺服2故障，位置偏差过大
+    ALARM_SERVO_AXIS3_POS_ERROR_OVER_FLT,      //<名字：伺服3故障，位置偏差过大
+    ALARM_SERVO_AXIS4_POS_ERROR_OVER_FLT,      //<名字：伺服4故障，位置偏差过大
+    ALARM_SERVO_AXIS5_POS_ERROR_OVER_FLT,      //<名字：伺服5故障，位置偏差过大
+    ALARM_SERVO_AXIS6_POS_ERROR_OVER_FLT,      //<名字：伺服6故障，位置偏差过大
+    ALARM_SERVO_AXIS7_POS_ERROR_OVER_FLT,      //<名字：伺服7故障，位置偏差过大
+    ALARM_SERVO_AXIS8_POS_ERROR_OVER_FLT,      //<名字：伺服8故障，位置偏差过大
 
-    ALARM_SERVO_AXIS1_MTR_ENC_FLT = 840,//<名字  ：伺服1故障：DSP同步故障
-    ALARM_SERVO_AXIS2_MTR_ENC_FLT,//<名字  ：伺服2故障：DSP同步故障
-    ALARM_SERVO_AXIS3_MTR_ENC_FLT,//<名字  ：伺服3故障：DSP同步故障
-    ALARM_SERVO_AXIS4_MTR_ENC_FLT,//<名字  ：伺服4故障：DSP同步故障
-    ALARM_SERVO_AXIS5_MTR_ENC_FLT,//<名字  ：伺服5故障：DSP同步故障
-    ALARM_SERVO_AXIS6_MTR_ENC_FLT,//<名字  ：伺服6故障：DSP同步故障
-    ALARM_SERVO_AXIS7_MTR_ENC_FLT,//<名字  ：伺服7故障：DSP同步故障
-    ALARM_SERVO_AXIS8_MTR_ENC_FLT,//<名字  ：伺服8故障：DSP同步故障
+    ALARM_SERVO_AXIS1_MTR_ENC_FLT = 840,//<名字：伺服1故障，DSP同步故障
+    ALARM_SERVO_AXIS2_MTR_ENC_FLT,      //<名字：伺服2故障，DSP同步故障
+    ALARM_SERVO_AXIS3_MTR_ENC_FLT,      //<名字：伺服3故障，DSP同步故障
+    ALARM_SERVO_AXIS4_MTR_ENC_FLT,      //<名字：伺服4故障，DSP同步故障
+    ALARM_SERVO_AXIS5_MTR_ENC_FLT,      //<名字：伺服5故障，DSP同步故障
+    ALARM_SERVO_AXIS6_MTR_ENC_FLT,      //<名字：伺服6故障，DSP同步故障
+    ALARM_SERVO_AXIS7_MTR_ENC_FLT,      //<名字：伺服7故障，DSP同步故障
+    ALARM_SERVO_AXIS8_MTR_ENC_FLT,      //<名字：伺服8故障，DSP同步故障
 
-    ALARM_SERVO_AXIS1_OVER_CUR_FLT = 850,//<名字  ：伺服1故障：过流故障
-    ALARM_SERVO_AXIS2_OVER_CUR_FLT,//<名字  ：伺服2故障：过流故障
-    ALARM_SERVO_AXIS3_OVER_CUR_FLT,//<名字  ：伺服3故障：过流故障
-    ALARM_SERVO_AXIS4_OVER_CUR_FLT,//<名字  ：伺服4故障：过流故障
-    ALARM_SERVO_AXIS5_OVER_CUR_FLT,//<名字  ：伺服5故障：过流故障
-    ALARM_SERVO_AXIS6_OVER_CUR_FLT,//<名字  ：伺服6故障：过流故障
-    ALARM_SERVO_AXIS7_OVER_CUR_FLT,//<名字  ：伺服7故障：过流故障
-    ALARM_SERVO_AXIS8_OVER_CUR_FLT,//<名字  ：伺服8故障：过流故障
+    ALARM_SERVO_AXIS1_OVER_CUR_FLT = 850,//<名字：伺服1故障，过流故障
+    ALARM_SERVO_AXIS2_OVER_CUR_FLT,      //<名字：伺服2故障，过流故障
+    ALARM_SERVO_AXIS3_OVER_CUR_FLT,      //<名字：伺服3故障，过流故障
+    ALARM_SERVO_AXIS4_OVER_CUR_FLT,      //<名字：伺服4故障，过流故障
+    ALARM_SERVO_AXIS5_OVER_CUR_FLT,      //<名字：伺服5故障，过流故障
+    ALARM_SERVO_AXIS6_OVER_CUR_FLT,      //<名字：伺服6故障，过流故障
+    ALARM_SERVO_AXIS7_OVER_CUR_FLT,      //<名字：伺服7故障，过流故障
+    ALARM_SERVO_AXIS8_OVER_CUR_FLT,      //<名字：伺服8故障，过流故障
 
-    ALARM_SERVO_AXIS1_ENABLE_FORBID = 1000,//<名字：伺服1故障：伺服未使能
-    ALARM_SERVO_AXIS2_ENABLE_FORBID,//<名字：伺服2故障：伺服未使能
-    ALARM_SERVO_AXIS3_ENABLE_FORBID,//<名字：伺服3故障：伺服未使能
-    ALARM_SERVO_AXIS4_ENABLE_FORBID,//<名字：伺服4故障：伺服未使能
-    ALARM_SERVO_AXIS5_ENABLE_FORBID,//<名字：伺服5故障：伺服未使能
-    ALARM_SERVO_AXIS6_ENABLE_FORBID,//<名字：伺服6故障：伺服未使能
-    ALARM_SERVO_AXIS7_ENABLE_FORBID,//<名字：伺服7故障：伺服未使能
-    ALARM_SERVO_AXIS8_ENABLE_FORBID,//<名字：伺服8故障：伺服未使能
+    ALARM_SERVO_AXIS1_ENABLE_FORBID = 1000,//<名字：伺服1故障，伺服未使能
+    ALARM_SERVO_AXIS2_ENABLE_FORBID,       //<名字：伺服2故障，伺服未使能
+    ALARM_SERVO_AXIS3_ENABLE_FORBID,       //<名字：伺服3故障，伺服未使能
+    ALARM_SERVO_AXIS4_ENABLE_FORBID,       //<名字：伺服4故障，伺服未使能
+    ALARM_SERVO_AXIS5_ENABLE_FORBID,       //<名字：伺服5故障，伺服未使能
+    ALARM_SERVO_AXIS6_ENABLE_FORBID,       //<名字：伺服6故障，伺服未使能
+    ALARM_SERVO_AXIS7_ENABLE_FORBID,       //<名字：伺服7故障，伺服未使能
+    ALARM_SERVO_AXIS8_ENABLE_FORBID,       //<名字：伺服8故障，伺服未使能
 
+    ALARM_ECAN_TIMEOUT_AXIS1 = 1500,//<名字：轴1CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS2,       //<名字：轴2CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS3,       //<名字：轴3CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS4,       //<名字：轴4CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS5,       //<名字：轴5CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS6,       //<名字：轴6CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS7,       //<名字：轴7CAN通信超时
+    ALARM_ECAN_TIMEOUT_AXIS8,       //<名字：轴8CAN通信超时
+
+    ALARM_ECAN_READING_AXIS1,//<名字：轴1CAN读数据出错
+    ALARM_ECAN_READING_AXIS2,//<名字：轴2CAN读数据出错
+    ALARM_ECAN_READING_AXIS3,//<名字：轴3CAN读数据出错
+    ALARM_ECAN_READING_AXIS4,//<名字：轴4CAN读数据出错
+    ALARM_ECAN_READING_AXIS5,//<名字：轴5CAN读数据出错
+    ALARM_ECAN_READING_AXIS6,//<名字：轴6CAN读数据出错
+    ALARM_ECAN_READING_AXIS7,//<名字：轴7CAN读数据出错
+    ALARM_ECAN_READING_AXIS8,//<名字：轴8CAN读数据出错
+
+    ALARM_ECAN_WRITING_AXIS1,//<名字：轴1CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS2,//<名字：轴2CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS3,//<名字：轴3CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS4,//<名字：轴4CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS5,//<名字：轴5CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS6,//<名字：轴6CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS7,//<名字：轴7CAN写数据出错
+    ALARM_ECAN_WRITING_AXIS8,//<名字：轴8CAN写数据出错
 
 
     ALARM_IO_ERR_START = 2048,    //<名字：IO报警起始地址
@@ -1342,21 +1420,29 @@ typedef enum
 
 typedef enum
 {
-    INCREMENTAL_ENCODER,       //<名字：增量型编码器
-    ABSOLUTE_VALUE_ENCODER,    //<名字：绝对值编码器
+    INCREMENTAL_ENCODER,       //<名字：增量型
+    ABSOLUTE_VALUE_ENCODER,    //<名字：绝对值
+    STEPPER_MOTOR,             //<名字：步进电机
+    GRATING_RULER,             //<名字：光栅尺
+    ROTARY_ENCODER,            //<名字：旋转编码器
 }ENCODER_TYPE;
 typedef enum
 {
-    Inovancwe,       //<名字：汇川伺服
-    ASDA,            //<名字：台达伺服
-    panasonic,       //<名字：松下伺服
-    hcqs4,           //<名字：华成伺服
+    Inovance,        //<名字：汇川伺服
+    ASDA,             //<名字：台达伺服
+    panasonic,      //<名字：松下伺服
+    hcqs4,          //<名字：华成伺服
+    SANKYO,          //<名字：三协伺服
+    YASKAWA,         //<名字：安川伺服
+    EURA,            //<名字：欧瑞伺服
+    HCFA,            //<名字：禾川伺服，禾川伺服和三协伺服一模一样
 }SERVO_VENDER;
 typedef enum
 {
     READ_TYPE_PULSER,       //<名字：绝对值脉冲读取方式
-    READ_TYPE_SERIAL,       //<名字：绝对值串口读取方式
-    READ_TYPE_CAN,       //<名字：绝对值CAN口读取方式
+    READ_TYPE_CAN,          //<名字：绝对值CAN口读取方式
+    READ_TYPE_485SERIAL,    //<名字：绝对值485串口读取方式
+    CANBUS_CONCTRL,         //<名字：CAN总线控制
 }ENCODER_READ_TYPE;
 
 
@@ -1410,7 +1496,7 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t length;           //<类型：系统；名字：臂长/半径；精度：3;单位：mm；
     uint32_t ppc:16;           //<类型：系统；名字：每转脉冲数；精度：0;单位：num；
     uint32_t gratio:16;        //<类型：系统；名字：减速比；精度：2;单位：num；
-    uint32_t soft_limit_p:16;  //<类型：系统；名字：正向软极限；精度：0;单位：度；
+    uint32_t soft_limit_p:16;  //<类型：系统；名字：反向软极限；精度：0;单位：度；
     uint32_t soft_limit_n:16;  //<类型：系统；名字：负向软极限；精度：0;单位：度；
     uint32_t type:4;           //<类型：系统；名字：编码器类型；精度：0;单位：；
     uint32_t vender:4;         //<类型：系统；名字：厂家；精度：0;单位：；
@@ -1420,7 +1506,7 @@ typedef struct {  //<192 + 14X8 = 304
     uint32_t sacc1:6;          //<类型：系统；名字：S加速1；精度：0;单位：；
     uint32_t sacc2:6;          //<类型：系统；名字：S加速2；精度：0;单位：；
     uint32_t res:1;            //<类型：系统；名字：预留；精度：0;单位：；
-    uint32_t limit_p:8;        //<类型：系统；名字：正向极限输入；精度：0;单位：；
+    uint32_t limit_p:8;        //<类型：系统；名字：反向极限输入；精度：0;单位：；
     uint32_t limit_n:8;        //<类型：系统；名字：负向极限输入；精度：0;单位：；
     uint32_t origin:8;         //<类型：系统；名字：原点输入；精度：0;单位：；
     uint32_t atype:4;          //<类型：系统；名字：轴类型；精度：0;单位：；
@@ -1483,6 +1569,7 @@ typedef struct {
 
 typedef union {
     Axis_Config1 para;
+//    uint16_t all_16[STRUCE_SIZE(ICAddr_Adapter_Para0, ICAddr_Adapter_Para85)*2];
     uint32_t all[STRUCE_SIZE(ICAddr_Adapter_Para0, ICAddr_Adapter_Para85)];
 }Axis_Config;
 
@@ -1532,8 +1619,8 @@ typedef union {  //<336 + 8X8 = 400
         uint32_t step9:16;//<类型：状态；名字：预留；精度：0;单位：；
     }s;
     struct{
-        uint32_t wheel;//<类型：手轮状态；名字：手动1；精度：1;单位：；
-        uint32_t m1:16;//<类型：状态；名字：手动2；精度：1;单位：；
+        uint32_t wheel;//<类型：手轮状态；名字：手动1；精度：1；单位：；
+        uint32_t m1:16;//<类型：工作台状态；名字：手动2；精度：1；单位：；
         uint32_t m2:16;//<类型：状态；名字：手动3；精度：1;单位：；
         uint32_t m3:16;//<类型：状态；名字：手动4；精度：1;单位：；
         uint32_t m4:16;//<类型：状态；名字：手动5；精度：1;单位：；
@@ -1565,28 +1652,64 @@ typedef union {
 } Interpolation;
 
 
-static const uint32_t input_addr[] = {
+static const uint32_t darg_addr[] = {
     ICAddr_Adapter_Para94, //<类型：模号；名字：电机1臂长/半径；结构：Axis_Config0；地址：axis_cfg_addr；
     ICAddr_Adapter_Para104, //<类型：系统；名字：；结构：Axis_Config0；地址：axis_cfg_addr；
 };
+
 typedef struct{
-    uint16_t pos1;   //<类型：系统；名字：轴1正向力矩设定；精度：0;单位：；
+//  uint16_t pos1_max:8,   //<类型：系统；名字：轴1正向力矩设定；精度：0;单位：；
+//               pos1_min:8;
+//  uint16_t pos2_max:8,   //<类型：系统；名字：轴2正向力矩设定；精度：0;单位：；
+//               pos2_min:8;
+//  uint16_t pos3_max:8,   //<类型：系统；名字：轴3正向力矩设定；精度：0;单位：；
+//               pos3_min:8
+//  uint16_t pos4_max:8,   //<类型：系统；名字：轴4正向力矩设定；精度：0;单位：；
+//               pos4_min:8;
+//  uint16_t pos5_max:8,   //<类型：系统；名字：轴5正向力矩设定；精度：0;单位：；
+//               pos5_min:8;
+//  uint16_t pos6_max:8,   //<类型：系统；名字：轴6正向力矩设定；精度：0;单位：；
+//               pos6_min:8;
+//  uint16_t pos7_max:8,   //<类型：系统；名字：轴7正向力矩设定；精度：0;单位：；
+//               pos7_min:8;
+//  uint16_t pos8_max:8,   //<类型：系统；名字：轴8正向力矩设定；精度：0;单位：；
+//               pos8_min:8;
+//  uint16_t rev1_max:8,   //<类型：系统；名字：轴1反向力矩设定；精度：0;单位：；
+//               rev1_min:8;
+//  uint16_t rev2_max:8,   //<类型：系统；名字：轴2反向力矩设定；精度：0;单位：；
+//               rev2_min:8;
+//  uint16_t rev3_max:8,   //<类型：系统；名字：轴3反向力矩设定；精度：0;单位：；
+//               rev3_min:8;
+//  uint16_t rev4_max:8,   //<类型：系统；名字：轴4反向力矩设定；精度：0;单位：；
+//               rev4_min:8;
+//  uint16_t rev5_max:8,   //<类型：系统；名字：轴5反向力矩设定；精度：0;单位：；
+//               rev5_min:8;
+//  uint16_t rev6_max:8,   //<类型：系统；名字：轴6反向力矩设定；精度：0;单位：；
+//               rev6_min:8;
+//  uint16_t rev7_max:8,   //<类型：系统；名字：轴7反向力矩设定；精度：0;单位：；
+//               rev7_min:8;
+//  uint16_t rev8_max:8,   //<类型：系统；名字：轴8反向力矩设定；精度：0;单位：；
+//               rev8_min:8;
+    uint16_t pos1;   //<类型：系统；名字：轴1正向力矩设定；精度：0;单位：；    194
     uint16_t pos2;   //<类型：系统；名字：轴2正向力矩设定；精度：0;单位：；
-    uint16_t pos3;   //<类型：系统；名字：轴3正向力矩设定；精度：0;单位：；
+    uint16_t pos3;   //<类型：系统；名字：轴3正向力矩设定；精度：0;单位：；    195
     uint16_t pos4;   //<类型：系统；名字：轴4正向力矩设定；精度：0;单位：；
-    uint16_t pos5;   //<类型：系统；名字：轴5正向力矩设定；精度：0;单位：；
+    uint16_t pos5;   //<类型：系统；名字：轴5正向力矩设定；精度：0;单位：；    196
     uint16_t pos6;   //<类型：系统；名字：轴6正向力矩设定；精度：0;单位：；
-    uint16_t pos7;   //<类型：系统；名字：轴7正向力矩设定；精度：0;单位：；
+    uint16_t pos7;   //<类型：系统；名字：轴7正向力矩设定；精度：0;单位：；    197
     uint16_t pos8;   //<类型：系统；名字：轴8正向力矩设定；精度：0;单位：；
-    uint16_t rev1;   //<类型：系统；名字：轴1反向力矩设定；精度：0;单位：；
+    uint16_t rev1;   //<类型：系统；名字：轴1反向力矩设定；精度：0;单位：；    198
     uint16_t rev2;   //<类型：系统；名字：轴2反向力矩设定；精度：0;单位：；
-    uint16_t rev3;   //<类型：系统；名字：轴3反向力矩设定；精度：0;单位：；
+    uint16_t rev3;   //<类型：系统；名字：轴3反向力矩设定；精度：0;单位：；    199
     uint16_t rev4;   //<类型：系统；名字：轴4反向力矩设定；精度：0;单位：；
-    uint16_t rev5;   //<类型：系统；名字：轴5反向力矩设定；精度：0;单位：；
+    uint16_t rev5;   //<类型：系统；名字：轴5反向力矩设定；精度：0;单位：；    200
     uint16_t rev6;   //<类型：系统；名字：轴6反向力矩设定；精度：0;单位：；
-    uint16_t rev7;   //<类型：系统；名字：轴7反向力矩设定；精度：0;单位：；
+    uint16_t rev7;   //<类型：系统；名字：轴7反向力矩设定；精度：0;单位：；    201
     uint16_t rev8;   //<类型：系统；名字：轴8反向力矩设定；精度：0;单位：；
-    uint16_t in16;   //<类型：系统；名字：输入点；精度：0;单位：；
+    uint16_t selectuse:1;//<类型：系统；名字：选择开关；输入点；精度：0;单位：；
+    uint16_t vender:4; //<类型：系统；名字：厂家；输入点；精度：0;单位：；
+    uint16_t read_type:2;//<类型：系统；名字：读取方式；0:无效，1:CAN，2:485；精度：0;单位：；
+    uint16_t res0:9;
     uint16_t in17;   //<类型：系统；名字：输入点；精度：0;单位：；
     uint16_t in18;   //<类型：系统；名字：输入点；精度：0;单位：；
     uint16_t in19;   //<类型：系统；名字：输入点；精度：0;单位：；
@@ -1677,8 +1800,8 @@ typedef union {
         uint32_t input_safe_signal6:7; //<类型：系统；名字：输入安全信号点6；精度：0;单位：；
         uint32_t res:10;//<类型：系统；名字：预留；精度：0;单位：；
 
-        uint32_t min_pos[18];//<类型：系统；名字：轴最小安全位置；精度：3;单位：mm；
-        uint32_t max_pos[18];//<类型：系统；名字：轴最大安全位置；精度：3;单位：mm；
+        uint32_t min_pos[18];//<类型：系统；名字：轴最小安全位置；精度：3；单位：mm；
+        uint32_t max_pos[18];//<类型：系统；名字：轴最大安全位置；精度：3；单位：mm；
     };
     uint32_t d[39];
 }SafeAreaStruct;
@@ -1701,13 +1824,13 @@ typedef union {
 typedef union {
     struct{
        uint32_t test_speed1:8;//<类型：系统；名字：轴1电机测试速度；精度：0;单位：；
-       uint32_t test_speed2:8;//<类型：系统；名字：轴2电机测试速度；精度：0;单位：；
-       uint32_t test_speed3:8;//<类型：系统；名字：轴3电机测试速度；精度：0;单位：；
-       uint32_t test_speed4:8;//<类型：系统；名字：轴4电机测试速度；精度：0;单位：；
-       uint32_t test_speed5:8;//<类型：系统；名字：轴5电机测试速度；精度：0;单位：；
-       uint32_t test_speed6:8;//<类型：系统；名字：轴6电机测试速度；精度：0;单位：；
-       uint32_t test_speed7:8;//<类型：系统；名字：轴7电机测试速度；精度：0;单位：；
-       uint32_t test_speed8:8;//<类型：系统；名字：轴8电机测试速度；精度：0;单位：；
+        uint32_t test_speed2:8;//<类型：系统；名字：轴2电机测试速度；精度：0;单位：；
+        uint32_t test_speed3:8;//<类型：系统；名字：轴3电机测试速度；精度：0;单位：；
+        uint32_t test_speed4:8;//<类型：系统；名字：轴4电机测试速度；精度：0;单位：；
+        uint32_t test_speed5:8;//<类型：系统；名字：轴5电机测试速度；精度：0;单位：；
+        uint32_t test_speed6:8;//<类型：系统；名字：轴6电机测试速度；精度：0;单位：；
+        uint32_t test_speed7:8;//<类型：系统；名字：轴7电机测试速度；精度：0;单位：；
+        uint32_t test_speed8:8;//<类型：系统；名字：轴8电机测试速度；精度：0;单位：；
     };
     uint32_t d[2];
 }MotorTestSpeedStruct;
@@ -1720,24 +1843,35 @@ typedef union {
     uint32_t d;
 }FirstModuleSpeed;
 
-typedef struct {
-  //    uint16_t delay_current[8];  //<类型:系统;当前延时时间 - 32-39 - 单位-10毫秒
-  //    uint16_t delay_target[8];   //<类型:系统;目标延时时间 - 40-47 - 单位-10毫秒
-  //    uint16_t timer_current[40];  //<类型:系统;当前定时时间 - 48-87 - 单位-10毫秒
-  //    uint16_t timer_target[40];  //<类型:系统;目标定时时间 - 88-127 - 单位-10毫秒
-  //    uint32_t counter_current[16];  //<类型:系统;当前计数值 - 128-159
+typedef union {
+    struct{
+       uint32_t parity    : 2;//< 类型：系统；名字：校验方式 - 0 - 无， 1 - 奇校验， 2 - 偶校验, 3 - 错误；精度：0;单位：；
+       uint32_t stopbits  : 2;//< 类型：系统；名字：停止位   - 0 - 1 ， 1 - 1.5     2 - 2 ， 3 - 错误；精度：0；单位：；
+       uint32_t databits  : 3;//< 类型：系统；名字：数据位   - 0-7 表示 1 - 8，即实际数据位-1；精度：0;单位：；
+       uint32_t loopback  : 1;//< 类型：系统；名字：回环测试 - 0 - 不回环， 1 - 回环；精度：0;单位：；
+       uint32_t baud      : 8;//< 类型：系统；名字：波特率      - 0-2400，1-4800，2-9600，3-19200，4-38400，5-57600，6-115200；精度：0；单位：；
+       uint32_t res       : 16;//< 类型：系统；名字：预留；精度：0；单位：；
+    };
+    uint32_t d;
+}SERIAL485Setting;
+typedef union {
 
+}CANSetting;
+
+
+typedef struct {
     uint32_t elapse_tol; //<类型：系统；名字：容差设定；精度：0;单位：；
-    uint32_t single_s; //<类型：系统；名字：手动单轴速度设定；精度：0;单位：；
-    uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：1;单位：；
-    uint32_t  analog_use; //<类型：系统；名字：模拟量模块使用；精度：0;单位：；
-    uint32_t  analog_set[6]; //<类型：模号；名字：模拟量设定；精度：1;单位：；
-    uint32_t  turn_over_use; //<类型：系统；名字：翻转使能；精度：0;单位：；
-    OriginRelativeStruct origin_relative;
-    MotorTestSpeedStruct test_speed;
-    SafeAreaStruct safe_area;
-    uint32_t Reserve4[8];   //<类型:系统;名字:当前计数值;   单位:ms
-    uint32_t Reserve5[15];   //<类型:系统;名字:目标计数值;   单位:ms
+    uint32_t single_s; //<类型：系统；名字：手动单轴速度设定；精度：0；单位：；
+    uint32_t  whole_speed; //<类型：系统；名字：全局速度设定；精度：1；单位：；
+    uint32_t  analog_use; //<类型：系统；名字：模拟量模块使用；精度：0；单位：；
+    uint32_t  analog_set[6]; //<类型：模号；名字：模拟量设定；精度：1；单位：；
+    uint32_t  turn_over_use; //<类型：系统；名字：翻转使能；精度：0；单位：；
+    OriginRelativeStruct origin_relative;//<类型：系统；名字：原点偏置脉冲结构；单位：；
+    MotorTestSpeedStruct test_speed; //<类型：系统；名字：测试速度结构；单位：；
+    SafeAreaStruct safe_area; //<类型：系统；名字：安全区设定； 单位：；
+    uint32_t Reserve4[8];   //<类型：系统；名字：当前计数值；单位：ms；
+    uint32_t Reserve5[14];   //<类型：系统；名字：目标计数值；单位：ms；
+    SERIAL485Setting serial;//<类型：系统；名字：485串口设置；单位：；
     FirstModuleSpeed  first_module_speed;
 }RESERVE0;
 
@@ -1831,7 +1965,7 @@ typedef union{
         uint32_t sub8:1;//<类型：模号；名字：子程序8使用；精度：0;单位：；
         uint32_t install:1;//<类型：模号；名字：安装工具坐标；精度：0;单位：；
         uint32_t type:3;//<类型：模号；名字：安装工具坐标类型；精度：0;单位：；
-        uint32_t re:19;//<类型：模号；名字：备用；精度：0;单位：；
+        uint32_t res:19;//<类型：模号；名字：备用；精度：0;单位：；
     }bit;
     uint32_t a;
 }MOLD_PRO_USE;
@@ -2011,6 +2145,11 @@ typedef union _ALL_PARA_
 } ALL_PARA;
 
 extern ALL_PARA* all_para;
+
+
+//ICAddr_System_Retain_50 = 50,//< 驱控伺服参数命令写入
+//ICAddr_System_Retain_51 = 51,//< 驱控伺服参数命令读取
+
 #ifdef __cplusplus
 }
 #endif

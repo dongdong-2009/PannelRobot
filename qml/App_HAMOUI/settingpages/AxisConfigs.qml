@@ -641,7 +641,7 @@ Item {
                     configName: qsTr("Encoder Type")
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
-                    items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3")]
+                    items: [qsTr("Encode Type1"), qsTr("Encode Type2"), qsTr("Encode Type3"), qsTr("Encode Type4"), qsTr("Encode Type5")]
                     z:10
                 }
                 ICComboBoxConfigEdit{
@@ -650,7 +650,7 @@ Item {
                     configNameWidth: pdata.configNameWidth
                     inputWidth: pdata.inputWidth
                     items: [qsTr("Motor 1"), qsTr("Motor 2"), qsTr("Motor 3"), qsTr("Motor 4"), qsTr("Motor 5"), qsTr("Motor 6"),qsTr("Motor 7"),qsTr("Motor 8")]
-                    visible: encoderType.configValue == 1
+                    visible: (encoderType.configValue == 1)||(encoderReadWay.configValue==3)
                 }
 
                 ICComboBoxConfigEdit{

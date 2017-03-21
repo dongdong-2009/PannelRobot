@@ -6906,7 +6906,6 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <location filename="../teach/Teach.js" line="1732"/>
-        <source>Write Addr Data To Addr:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

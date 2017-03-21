@@ -140,7 +140,7 @@ Rectangle {
             for(i = 0; i < PData.yPages.length; ++i){
                 PData.yPages[i].status = yStatus;
             }
-            yStatus = panelRobotController.oStatus(4).toString(2).split("").reverse().join("");
+            yStatus = [panelRobotController.oStatus(4)];
             for(i = 0; i < PData.mPages.length; ++i){
                 PData.mPages[i].status = yStatus;
             }

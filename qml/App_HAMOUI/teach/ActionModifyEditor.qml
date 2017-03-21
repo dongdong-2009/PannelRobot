@@ -65,8 +65,10 @@ Item {
         for(i = 0, len = editableItems.length; i < len; ++i){
             item = editableItems[i];
             editor = PData.itemToEditorMap.get(item.item);
+            var isCustomEditor = false;
             if(PData.isRegisterEditor(editor)){
                 editor.actionObject = actionObject;
+                isCustomEditor = true;
             }
             else if(editor == points){
                 editor.action = actionObject.action;
@@ -112,8 +114,12 @@ Item {
                 editor.configValue = actionObject[item.item] ||"";
             }
 
-            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0)){
+            if((!isAutoMode) || (autoEditableItems.indexOf(item.item) >= 0) || isCustomEditor){
                 editor.visible = true;
+                if(isCustomEditor){
+                    if(editor.hasOwnProperty("isAutoMode"))
+                        editor.isAutoMode = isAutoMode;
+                }
                 height += editor.height + editorContainer.spacing;
                 if(height > maxHeight) height = maxHeight;
                 if(editor.width > maxWidth)

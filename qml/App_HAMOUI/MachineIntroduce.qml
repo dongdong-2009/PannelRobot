@@ -12,7 +12,7 @@ Item {
         height: parent.height
         Image {
             id: machineImg
-            source: "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "machineImg.png");
+            source: "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "transparent.png");
         }
         onVisibleChanged: {
             if(visible)machineImg.source = "images/" + panelRobotController.getCustomSettings("MachineImgPicName", "machineImg.png");

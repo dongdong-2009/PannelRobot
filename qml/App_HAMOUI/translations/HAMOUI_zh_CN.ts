@@ -511,6 +511,18 @@
         <source>Please make sure the valve can be on or off</source>
         <translation>2.请确认在当前条件下能通断阀</translation>
     </message>
+    <message>
+        <source>please confirm the test condition again!</source>
+        <translation>请再次确认测试条件!</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>开始</translation>
+    </message>
+    <message>
+        <source>cancel</source>
+        <translation>取消</translation>
+    </message>
 </context>
 <context>
     <name>AutoRunInfoPage</name>
@@ -2724,6 +2736,10 @@ please chose!</source>
         <source>Set Instructions</source>
         <translation>安装说明书</translation>
     </message>
+    <message>
+        <source>In installation!</source>
+        <translation>正在安装中，请等待安装完成!</translation>
+    </message>
 </context>
 <context>
     <name>PointEdit</name>
@@ -3140,6 +3156,26 @@ please chose!</source>
     <message>
         <source>Clear Database</source>
         <translation>清空数据</translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation>模式状态</translation>
+    </message>
+    <message>
+        <source>IO</source>
+        <translation>IO状态</translation>
+    </message>
+    <message>
+        <source>When</source>
+        <translation>当</translation>
+    </message>
+    <message>
+        <source>status to</source>
+        <translation>状态变为</translation>
+    </message>
+    <message>
+        <source>Tips:New or modified, click Save to take effect!</source>
+        <translation>注意：新建或者修改完成后，点击保存才生效！</translation>
     </message>
 </context>
 <context>
@@ -5728,10 +5764,6 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Interval</source>
         <translation>间隔</translation>
-    </message>
-    <message>
-        <source>,</source>
-        <translation></translation>
     </message>
     <message>
         <source>Always out</source>

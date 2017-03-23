@@ -1969,6 +1969,7 @@ quint32 ICRobotMold::CheckSum() const
     {
 //        sum += MoldFnc(moldAddr.at(i));
         sum += fncCache_.ConfigValue(moldAddr.at(i));
+        qDebug()<< fncCache_.ConfigValue(moldAddr.at(i))<< moldAddr.at(i)->ToString() ;
     }
     return (-sum) & 0xFFFF;
 }

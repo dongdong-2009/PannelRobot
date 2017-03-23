@@ -110,7 +110,6 @@ var fncDefaultValues = {
     "m_rw_6_1_0_357": 1,
     "m_rw_7_1_0_357": 1,
     "m_rw_8_1_0_357": 1,
-    "m_rw_9_23_0_357": 0
 };
 
 var configStr = {};

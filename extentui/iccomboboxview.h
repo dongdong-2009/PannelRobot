@@ -63,7 +63,7 @@ public:
     Q_INVOKABLE void setCurrentIndex(int index);
     Q_INVOKABLE int openView(int editorX, int editorY, int editorW, int editorH,
                               const QStringList& items, int currentIndex, const QStringList &hideIndexs);
-
+    Q_INVOKABLE bool closeView(){return this->close();}
     void setEditorWidth(double ewidth)
     {
         editorWidth_ = ewidth;

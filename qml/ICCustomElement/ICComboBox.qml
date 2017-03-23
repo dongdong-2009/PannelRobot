@@ -75,4 +75,9 @@ Rectangle {
             }
         }
     }
+    onVisibleChanged: {
+        if(!visible){
+            comboBoxView.closeView();
+        }
+    }
 }

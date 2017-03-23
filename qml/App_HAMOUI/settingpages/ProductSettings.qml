@@ -879,7 +879,7 @@ Item {
         else{
             console.log("new");
             for(i = 0; i < 10; ++i){
-                keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0,"usefulMode":3});
+                keyModel.append({"functionCheck":0,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0,"usefulMode":3});
             }
         }
         refreshLedKeyData();

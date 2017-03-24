@@ -3081,6 +3081,10 @@ please chose!</source>
         <source>PCircle</source>
         <translation>姿势整圆</translation>
     </message>
+    <message>
+        <source>Angle</source>
+        <translation type="unfinished">角度</translation>
+    </message>
 </context>
 <context>
     <name>PointManager</name>

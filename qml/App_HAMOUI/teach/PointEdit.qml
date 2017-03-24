@@ -846,7 +846,6 @@ Item {
         poseCirclePathType.visible = poseOffsetLine3DType.visible =
         poseOffsetCurve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable &&
                                        AxisDefine.axisInfos[3].visiable && AxisDefine.axisInfos[4].visiable && AxisDefine.axisInfos[5].visiable;
-
     }
 
 }

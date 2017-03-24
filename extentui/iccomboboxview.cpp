@@ -154,6 +154,11 @@ void ICComboBoxView::setCurrentIndex(int index)
 
 int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH, const QStringList &items, int currentIndex, const QStringList& hideIndexs)
 {
+    if(this->isVisible())
+    {
+        this->accept();
+        return currentIndex;
+    }
     setEditorWidth(editorW);
     setItems(items, hideIndexs);
     setCurrentIndex(currentIndex);

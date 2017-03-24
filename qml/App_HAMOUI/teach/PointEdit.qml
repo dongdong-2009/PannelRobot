@@ -851,10 +851,14 @@ Item {
         cureveXZType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[2].visiable;
         cureveYZType.visible = AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
         arcRelPathType.visible = curve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
+        var poseVisible = false;
+        if(AxisDefine.axisInfos[3].visiable || AxisDefine.axisInfos[4].visiable || AxisDefine.axisInfos[5].visiable){
+            poseVisible = true;
+        }
         singlePoseType.visible = poseLine3DType.visible = poseCurve3DType.visible =
         poseCirclePathType.visible = poseOffsetLine3DType.visible =
-        poseOffsetCurve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable &&
-                                       AxisDefine.axisInfos[3].visiable && AxisDefine.axisInfos[4].visiable && AxisDefine.axisInfos[5].visiable;
+        poseOffsetCurve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable && poseVisible/*&&
+                                       AxisDefine.axisInfos[3].visiable && AxisDefine.axisInfos[4].visiable && AxisDefine.axisInfos[5].visiable*/;
     }
 
 }

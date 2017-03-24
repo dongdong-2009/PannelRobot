@@ -466,7 +466,9 @@ public:
         if(led_io_old.led!=led_io.led)
         {
             led_io_old.led=led_io.led;
+#ifdef Q_WS_QWS
             ioctl(fd,0,led_io.led);
+#endif
         }
     }
 

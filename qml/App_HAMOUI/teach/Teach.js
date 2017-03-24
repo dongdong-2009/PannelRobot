@@ -978,14 +978,15 @@ var generateAxisServoAction = function(action,
 var generatePathAction = function(action,
                                   points,
                                   speed,
-                                  delay
-                                  ){
+                                  delay,
+                                  angle){
 
     return {
         "action":action,
         "points":points,
         "speed":speed||80.0,
         "delay":delay||0.00,
+        "angle":angle||360
     };
 }
 
@@ -1664,7 +1665,7 @@ var pathActionToStringHandler = function(actionObject){
         ret += qsTr("Offset Jog:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE){
-        ret += qsTr("Circle:");
+        ret += (actionObject.angle == undefined?360:actionObject.angle) + "°"+ qsTr("Circle:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_ARCXY_MOVE_POINT){
         ret += qsTr("ArcXY:");
@@ -1685,7 +1686,7 @@ var pathActionToStringHandler = function(actionObject){
         ret += qsTr("PO Curve 3D:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE){
-        ret += qsTr("P Circle:");
+        ret += (actionObject.angle == undefined?360:actionObject.angle) + "°"+ qsTr("P Circle:");
         needNewLine = true;
     }else if(actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE){
         ret += qsTr("PO Line 3D:");

@@ -15,6 +15,7 @@ Item {
     property variant fPointNames: []
     property variant oPointNames: []
     property bool pointLogged: false
+    property int angle: angleEdit.configValue
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -223,6 +224,14 @@ Item {
                 motor4.configValue = 0;
                 motor5.configValue = 0;
             }
+        }
+        ICConfigEdit{
+            id:angleEdit
+            visible: (poseCirclePathType.isChecked || circlePathType.isChecked)
+            configName: qsTr("Angle")
+            configValue: "360"
+            unit: "°"
+            min:360
         }
     }
     Rectangle{

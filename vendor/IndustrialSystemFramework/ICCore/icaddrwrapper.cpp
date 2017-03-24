@@ -5,6 +5,8 @@ QMap<QString, const ICAddrWrapper*>* ICAddrWrapper::addrStringToAddrMap_;
 QList<const ICAddrWrapper*>* ICAddrWrapper::moldAddrs_;
 QList<const ICAddrWrapper*>* ICAddrWrapper::systemAddrs_;
 QList<const ICAddrWrapper*>* ICAddrWrapper::statusAddrs_;
+QList<int>* ICAddrWrapper::moldComboAddrs_;
+QList<int>* ICAddrWrapper::systemComboAddrs_;
 #else
 QStringList ICAddrWrapper::typeStringList_(QStringList()<<"n"<<"c"<<"m"<<"s"<<"b");
 QStringList ICAddrWrapper::permissionStringList_(QStringList()<<"n"<<"ro"<<"wo"<<"rw");
@@ -58,9 +60,23 @@ ICAddrWrapper::ICAddrWrapper(int type, int perm, int startPos, int size, int bas
 #ifdef Q_OS_WIN
     addrStringToAddrMap_->insert(this->ToString(), this);
     if(type == kICAddrTypeMold)
+    {
         moldAddrs_->append(this);
+        if(moldComboAddrs_ == NULL)
+            moldComboAddrs_ = new QList<int>();
+        if(!moldComboAddrs_->contains(baseAddr))
+            moldComboAddrs_->append(baseAddr);
+    }
     else if(type == kICAddrTypeSystem)
+    {
         systemAddrs_->append(this);
+        if(systemComboAddrs_ == NULL)
+        {
+            systemComboAddrs_ = new QList<int>();
+        }
+        if(!systemComboAddrs_->contains(baseAddr))
+            systemComboAddrs_->append(baseAddr);
+    }
     else if(type == kICAddrTypeCrafts)
         statusAddrs_->append(this);
 #else

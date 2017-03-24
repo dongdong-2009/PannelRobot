@@ -145,6 +145,8 @@ private:
     static QMap<QString, const ICAddrWrapper*> *addrStringToAddrMap_;
     static QList<const ICAddrWrapper*> *moldAddrs_;
     static QList<const ICAddrWrapper*> *systemAddrs_;
+    static QList<int> *moldComboAddrs_;
+    static QList<int> *systemComboAddrs_;
     static QList<const ICAddrWrapper*> *statusAddrs_;
 #else
     static QStringList typeStringList_;

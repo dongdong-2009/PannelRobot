@@ -71,6 +71,7 @@ Item {
             }
             else if(editor == points){
                 editor.action = actionObject.action;
+                editor.angle = (actionObject.angle==undefined?360:actionObject.angle);
                 editor.points = actionObject[item.item];
             }else if(editor == earlyEndPos){
                 editor.configValue = actionObject.earlyEndPos || 0.0;
@@ -430,7 +431,7 @@ Item {
                     }
                     else if(editor == points){
                         editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
-
+                        editingObject.angle = editor.angle;
                     }else if(editor == earlyEndPos){
                         editingObject.isEarlyEnd = earlyEndPos.isChecked;
                         editingObject.earlyEndPos = earlyEndPos.configValue;

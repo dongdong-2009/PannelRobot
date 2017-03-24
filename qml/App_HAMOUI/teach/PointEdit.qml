@@ -15,7 +15,7 @@ Item {
     property variant fPointNames: []
     property variant oPointNames: []
     property bool pointLogged: false
-    property int angle: angleEdit.configValue
+    property alias angle: angleEdit.configValue
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -162,7 +162,7 @@ Item {
             poseCurve3DType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_ARC_RELATIVE_POSE){
             poseOffsetCurve3DType.setChecked(true);
-        }else if(action == Teach.F_CMD_ARC3D_MOVE_POSE){
+        }else if(action == Teach.actions.F_CMD_ARC3D_MOVE_POSE){
             poseCirclePathType.setChecked(true);
         }else if(action == Teach.F_CMD_LINE_RELATIVE_POSE){
             poseOffsetLine3DType.setChecked(true)

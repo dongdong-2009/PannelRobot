@@ -1402,9 +1402,10 @@ var conditionActionToStringHandler = function(actionObject){
 
     var pointDescr;
     if(actionObject.inout === 1){
-        pointDescr = getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr
-    }else
-        pointDescr = getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr
+        pointDescr = getYDefineFromHWPoint(actionObject.point,actionObject.type).yDefine.descr
+    }else{
+        pointDescr = getXDefineFromHWPoint(actionObject.point,actionObject.type).xDefine.descr
+    }
 
     var pStatusStr;
     if(actionObject.pointStatus == 1)

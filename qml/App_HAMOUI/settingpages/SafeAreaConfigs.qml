@@ -253,6 +253,7 @@ Item {
                 }
                 ICComboBoxConfigEdit{
                     id:axis1Set
+                    property int axisID: -1
                     z:3
                     configName:qsTr("Axis1")
                     configValue: -1
@@ -276,8 +277,11 @@ Item {
                     Component.onCompleted: {
                         AxisDefine.registerMonitors(axis1Set);
                     }
+                    onConfigValueChanged: {
+                        getIDFromConfigValue(axis1Set);
+                    }
                     function onValueChanged(){
-                        panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
+                        panelRobotController.setConfigValue("s_rw_0_4_0_227",axisID+1);
                     }
                 }
                 Text {
@@ -303,7 +307,7 @@ Item {
                     height: minPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            minPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            minPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -325,7 +329,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            maxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            maxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -348,7 +352,7 @@ Item {
                     height: part2MinPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part2MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part2MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -370,7 +374,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part2MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part2MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -393,7 +397,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part3MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part3MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -415,7 +419,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part3MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part3MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
                 ICConfigEdit{
@@ -437,7 +441,7 @@ Item {
                     height: minPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part4MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part4MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -459,7 +463,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part4MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part4MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -482,7 +486,7 @@ Item {
                     height: part5MinPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part5MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part5MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -504,7 +508,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part5MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part5MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -527,7 +531,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part6MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part6MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -549,7 +553,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis1Set.configValue >0)
-                            part6MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.configValue-1]);
+                            part6MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis1Set.axisID]);
                     }
                 }
 
@@ -557,12 +561,16 @@ Item {
 
                 ICComboBoxConfigEdit{
                     id:axis2Set
+                    property int axisID: -1
                     z:2
                     configName:qsTr("Axis2")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
+                    onConfigValueChanged: {
+                        getIDFromConfigValue(axis2Set);
+                    }
                     function onValueChanged(){
-                        panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
+                        panelRobotController.setConfigValue("s_rw_4_4_0_227",axisID+1);
                     }
                 }
                 Text {
@@ -588,7 +596,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked:  {
                         if(axis2Set.configValue >0)
-                            minPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            minPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -610,7 +618,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked:  {
                         if(axis2Set.configValue >0)
-                            maxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            maxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -633,7 +641,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part2MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part2MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -655,7 +663,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part2MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part2MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -678,7 +686,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part3MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part3MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -700,7 +708,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part3MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part3MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
                 ICConfigEdit{
@@ -722,7 +730,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked:  {
                         if(axis2Set.configValue >0)
-                            part4MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part4MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -744,7 +752,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked:  {
                         if(axis2Set.configValue >0)
-                            part4MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part4MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -767,7 +775,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part5MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part5MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -789,7 +797,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part5MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part5MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -812,7 +820,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part6MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part6MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -834,7 +842,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis2Set.configValue >0)
-                            part6MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.configValue-1]);
+                            part6MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis2Set.axisID]);
                     }
                 }
 
@@ -842,12 +850,16 @@ Item {
 
                 ICComboBoxConfigEdit{
                     id:axis3Set
+                    property int axisID: -1
                     z:1
                     configName:qsTr("Axis3")
                     configValue: -1
                     configNameWidth: maxPos1Set.configNameWidth
+                    onConfigValueChanged: {
+                        getIDFromConfigValue(axis3Set);
+                    }
                     function onValueChanged(){
-                        panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
+                        panelRobotController.setConfigValue("s_rw_8_4_0_227",axisID+1);
                     }
                 }
                 Text {
@@ -873,7 +885,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            minPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            minPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -895,7 +907,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked:  {
                         if(axis3Set.configValue >0)
-                            maxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            maxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -918,7 +930,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part2MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part2MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -940,7 +952,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part2MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part2MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -963,7 +975,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part3MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part3MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -985,7 +997,7 @@ Item {
                     height: part3MaxPos3Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part3MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part3MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
                 ICConfigEdit{
@@ -1007,7 +1019,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part4MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part4MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -1029,7 +1041,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked:  {
                         if(axis3Set.configValue >0)
-                            part4MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part4MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -1052,7 +1064,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part5MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part5MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -1074,7 +1086,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part5MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part5MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -1097,7 +1109,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part6MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part6MinPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
 
@@ -1119,7 +1131,7 @@ Item {
                     height: maxPos1Set.height
                     onButtonClicked: {
                         if(axis3Set.configValue >0)
-                            part6MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.configValue-1]);
+                            part6MaxPos3Set.configValue = panelRobotController.statusValueText(root.configAddrs[axis3Set.axisID]);
                     }
                 }
             }
@@ -1181,12 +1193,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe2Axis1Set
+                property int axisID: -1
                 z:3
                 configName:qsTr("Axis1")
                 configValue: -1
                 configNameWidth: safe2MaxPos1Set.configNameWidth
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe2Axis1Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_0_4_0_227",axisID+1);
                 }
             }
             Text {
@@ -1210,7 +1226,7 @@ Item {
                 height: safe2MinPos1Set.height
                 onButtonClicked:{
                     if(safe2Axis1Set.configValue >0)
-                        safe2MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis1Set.configValue-1]);
+                        safe2MinPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis1Set.axisID]);
                 }
             }
 
@@ -1230,19 +1246,23 @@ Item {
                 height: safe2MaxPos1Set.height
                 onButtonClicked:{
                     if(safe2Axis1Set.configValue >0)
-                        safe2MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis1Set.configValue-1]);
+                        safe2MaxPos1Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis1Set.axisID]);
                 }
             }
 
 
             ICComboBoxConfigEdit{
                 id:safe2Axis2Set
+                property int axisID: -1
                 z:2
                 configName:qsTr("Axis2")
                 configValue: -1
                 configNameWidth: safe2MaxPos2Set.configNameWidth
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe2Axis2Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_4_4_0_227",axisID+1);
                 }
             }
             Text {
@@ -1266,7 +1286,7 @@ Item {
                 height: safe2MinPos2Set.height
                 onButtonClicked:{
                     if(safe2Axis2Set.configValue >0)
-                        safe2MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis2Set.configValue-1]);
+                        safe2MinPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis2Set.axisID]);
                 }
             }
 
@@ -1286,17 +1306,21 @@ Item {
                 height: safe2MaxPos2Set.height
                 onButtonClicked:{
                     if(safe2Axis2Set.configValue >0)
-                        safe2MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis2Set.configValue-1]);
+                        safe2MaxPos2Set.configValue = panelRobotController.statusValueText(root.configAddrs[safe2Axis2Set.axisID]);
                 }
             }
             ICComboBoxConfigEdit{
                 id:safe2Axis3Set
+                property int axisID: -1
                 z:1
                 configName:qsTr("Axis3")
                 configNameWidth: safe2MaxPos2Set.configNameWidth
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe2Axis3Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_8_4_0_227",axisID+1);
                 }
             }
             Text {
@@ -1388,12 +1412,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe3Axis1Set
+                property int axisID: -1
                 z:8
                 inputWidth:60
                 configName:qsTr("Axis1")
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe3Axis1Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_0_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_0_4_0_227",axisID+1);
                 }
             }
 //            Text {
@@ -1418,12 +1446,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe3Axis2Set
+                property int axisID: -1
                 z:7
                 inputWidth:60
                 configName:qsTr("Axis2")
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe3Axis2Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_4_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_4_4_0_227",axisID+1);
                 }
             }
 //            Text {
@@ -1448,12 +1480,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe3Axis3Set
+                property int axisID: -1
                 z:6
                 inputWidth:60
                 configName:qsTr("Axis3")
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe3Axis3Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_8_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_8_4_0_227",axisID+1);
                 }
             }
 //            Text {
@@ -1480,12 +1516,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe3Axis4Set
+                property int axisID: -1
                 z:5
                 inputWidth:60
                 configName:qsTr("Axis4")
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe3Axis4Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_12_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_12_4_0_227",axisID+1);
                 }
             }
 //            Text {
@@ -1510,12 +1550,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe3Axis5Set
+                property int axisID: -1
                 z:4
                 inputWidth:60
                 configName:qsTr("Axis5")
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe3Axis5Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_16_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_16_4_0_227",axisID+1);
                 }
             }
 //            Text {
@@ -1540,12 +1584,16 @@ Item {
 
             ICComboBoxConfigEdit{
                 id:safe3Axis6Set
+                property int axisID: -1
                 z:3
                 inputWidth:60
                 configName:qsTr("Axis6")
                 configValue: -1
+                onConfigValueChanged: {
+                    getIDFromConfigValue(safe3Axis6Set);
+                }
                 function onValueChanged(){
-                    panelRobotController.setConfigValue("s_rw_20_4_0_227",configValue);
+                    panelRobotController.setConfigValue("s_rw_20_4_0_227",axisID+1);
                 }
             }
 //            Text {
@@ -1558,9 +1606,12 @@ Item {
     Component.onCompleted:{
         axis1Set.onAxisDefinesChanged();
         if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 0){
-            axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
-            axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
-            axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+            axis1Set.axisID = panelRobotController.getConfigValue("s_rw_0_4_0_227")-1;
+            getConfigValueFromID(axis1Set.axisID,axis1Set);
+            axis2Set.axisID = panelRobotController.getConfigValue("s_rw_4_4_0_227")-1;
+            getConfigValueFromID(axis2Set.axisID,axis2Set);
+            axis3Set.axisID = panelRobotController.getConfigValue("s_rw_8_4_0_227")-1;
+            getConfigValueFromID(axis3Set.axisID,axis3Set);
 
             minPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
             minPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;
@@ -1617,9 +1668,12 @@ Item {
             useIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
         }
         else if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 1){
-            safe2Axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
-            safe2Axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
-            safe2Axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+            safe2Axis1Set.axisID = panelRobotController.getConfigValue("s_rw_0_4_0_227")-1;
+            getConfigValueFromID(safe2Axis1Set.axisID,safe2Axis1Set);
+            safe2Axis2Set.axisID = panelRobotController.getConfigValue("s_rw_4_4_0_227")-1;
+            getConfigValueFromID(safe2Axis2Set.axisID,safe2Axis2Set);
+            safe2Axis3Set.axisID = panelRobotController.getConfigValue("s_rw_8_4_0_227")-1;
+            getConfigValueFromID(safe2Axis3Set.axisID,safe2Axis3Set);
             safe2MinPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_230")/1000;
             safe2MaxPos1Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_248")/1000;
             safe2MinPos2Set.configValue = panelRobotController.getConfigValue("s_rw_0_32_3_231")/1000;
@@ -1627,22 +1681,28 @@ Item {
             safe2UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
         }
         else if(panelRobotController.getConfigValue("s_rw_1_5_0_228") == 2){
-            safe3Axis1Set.configValue = panelRobotController.getConfigValue("s_rw_0_4_0_227");
+            safe3Axis1Set.axisID = panelRobotController.getConfigValue("s_rw_0_4_0_227")-1;
+            getConfigValueFromID(safe3Axis1Set.axisID,safe3Axis1Set);
             safe3SafeSignalDir.isChecked = panelRobotController.getConfigValue("s_rw_27_1_0_228");
             safe3SafeSignalSet.configValue = panelRobotController.getConfigValue("s_rw_6_7_0_228");
-            safe3Axis2Set.configValue = panelRobotController.getConfigValue("s_rw_4_4_0_227");
+            safe3Axis2Set.axisID = panelRobotController.getConfigValue("s_rw_4_4_0_227")-1;
+            getConfigValueFromID(safe3Axis2Set.axisID,safe3Axis2Set);
             safe3SafeSignal2Dir.isChecked = panelRobotController.getConfigValue("s_rw_28_1_0_228");
             safe3SafeSignal2Set.configValue = panelRobotController.getConfigValue("s_rw_13_7_0_228");
-            safe3Axis3Set.configValue = panelRobotController.getConfigValue("s_rw_8_4_0_227");
+            safe3Axis3Set.axisID = panelRobotController.getConfigValue("s_rw_8_4_0_227")-1;
+            getConfigValueFromID(safe3Axis3Set.axisID,safe3Axis3Set);
             safe3SafeSignal3Dir.isChecked = panelRobotController.getConfigValue("s_rw_29_1_0_228");
             safe3SafeSignal3Set.configValue = panelRobotController.getConfigValue("s_rw_20_7_0_228");
-            safe3Axis4Set.configValue = panelRobotController.getConfigValue("s_rw_12_4_0_227");
+            safe3Axis4Set.axisID = panelRobotController.getConfigValue("s_rw_12_4_0_227")-1;
+            getConfigValueFromID(safe3Axis4Set.axisID,safe3Axis4Set);
             safe3SafeSignal4Dir.isChecked = panelRobotController.getConfigValue("s_rw_30_1_0_228");
             safe3SafeSignal4Set.configValue = panelRobotController.getConfigValue("s_rw_1_7_0_229");
-            safe3Axis5Set.configValue = panelRobotController.getConfigValue("s_rw_16_4_0_227");
+            safe3Axis5Set.axisID = panelRobotController.getConfigValue("s_rw_16_4_0_227")-1;
+            getConfigValueFromID(safe3Axis5Set.axisID,safe3Axis5Set);
             safe3SafeSignal5Dir.isChecked = panelRobotController.getConfigValue("s_rw_31_1_0_228");
             safe3SafeSignal5Set.configValue = panelRobotController.getConfigValue("s_rw_8_7_0_229");
-            safe3Axis6Set.configValue = panelRobotController.getConfigValue("s_rw_20_4_0_227");
+            safe3Axis6Set.axisID = panelRobotController.getConfigValue("s_rw_20_4_0_227")-1;
+            getConfigValueFromID(safe3Axis6Set.axisID,safe3Axis6Set);
             safe3SafeSignal6Dir.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_229");
             safe3SafeSignal6Set.configValue = panelRobotController.getConfigValue("s_rw_15_7_0_229");
             safe3UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
@@ -1658,4 +1718,28 @@ Item {
         pageContainer.setCurrentIndex(type);
         view.currentIndex = type;
     }
+
+    function getConfigValueFromID(id,editor){
+        if(id == -1){
+            editor.configValue = 0;
+            return;
+        }
+        for(var i=0,len=editor.items.length;i<len;++i){
+            if(editor.items[i] == AxisDefine.axisInfos[id].name){
+                editor.configValue = i;
+            }
+        }
+    }
+
+    function getIDFromConfigValue(editor){
+        var axisName = editor.items[editor.configValue];
+        for(var i=0,len=AxisDefine.axisInfos.length;i<len;++i){
+            if(axisName == AxisDefine.axisInfos[i].name){
+                editor.axisID = i;
+                return;
+            }
+        }
+        editor.axisID = -1;
+    }
+
 }

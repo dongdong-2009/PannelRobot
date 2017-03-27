@@ -33,7 +33,8 @@ Item {
         ret.push(Teach.generatePathAction(action,
                                           points,
                                           pointEdit.getSpeed(),
-                                          pointEdit.getDelay()));
+                                          pointEdit.getDelay(),
+                                          pointEdit.angle));
 //        pointEdit.clearPoints();
         return ret;
     }

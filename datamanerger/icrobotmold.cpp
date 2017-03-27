@@ -325,6 +325,9 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
 
     if(action == F_CMD_LINE2D_MOVE_POINT)
         item.append(type);
+    if(action == F_CMD_ARC3D_MOVE_POINT || action ==F_CMD_ARC3D_MOVE ||
+            action ==F_CMD_ARC3D_MOVE_POINT_POSE ||action ==F_CMD_ARC3D_MOVE_POSE)
+        item.append(v->value("angle", 360).toInt());
     item[0] = action;
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;

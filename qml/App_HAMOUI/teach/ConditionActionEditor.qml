@@ -684,7 +684,7 @@ Item {
         var xDefine;
         for(i = 0, l = xDefines.length; i < l; ++i){
             xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            xModel.append(ioView.createMoldItem(xDefine.xDefine, parseInt(xDefine.hwPoint%32), xDefine.type));
+            xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
         }
 
         euX.visible = false;

@@ -577,7 +577,7 @@ var getYDefineFromHWPoint = function(point, type){
 
 var getXDefineFromHWPoint = function(point, type){
     if(type >= IO_BOARD_0 && type <= IO_BOARD_3){
-        return {"xDefine":xDefines[point], "hwPoint":point, "type":type};
+        return {"xDefine":xDefines[parseInt(point%32)+type*32], "hwPoint":point, "type":type};
     }else if(type >= M_BOARD_0 && type <= M_BOARD_2){
         return {"xDefine":mYDefines[point], "hwPoint": point, "type":type};
     }

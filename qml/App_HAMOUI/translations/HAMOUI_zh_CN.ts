@@ -6340,6 +6340,10 @@ You just need to set the count configs after this setting.</source>
         <source>Tool Dev:</source>
         <translation>工具偏差：</translation>
     </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
 </context>
 <context>
     <name>TopHeader</name>

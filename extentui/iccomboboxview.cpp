@@ -52,9 +52,11 @@ ICComboBoxView::ICComboBoxView(QWidget *parent) :
   //    ui(new Ui::ICComboBoxView)
 {
     //    ui->setupUi(this);
-    verticalLayout_ = new QVBoxLayout(this);
+    this->resize(screenWidth_, screenHeight_);
+    realFrame_ = new QWidget(this);
+    verticalLayout_ = new QVBoxLayout(realFrame_);
     verticalLayout_->setContentsMargins(0, 0, 0, 0);
-    listView_ = new ICComboBoxListView(this);
+    listView_ = new ICComboBoxListView(realFrame_);
     listView_->setFocusPolicy(Qt::NoFocus);
     listView_->setFrameShape(QFrame::Box);
     listView_->setFrameShadow(QFrame::Plain);
@@ -119,7 +121,7 @@ void ICComboBoxView::setItems(const QStringList &items, const QStringList& hideI
         }
     }
 
-    resize(qMax(mW * 1.2, editorWidth_) + 1,  qMin(screenHeight_ - 20,  (items.size() - hideIndexs.size()) * (listView_->spacing() + 32) + 5));
+    realFrame_->resize(qMax(mW * 1.2, editorWidth_) + 1,  qMin(screenHeight_ - 20,  (items.size() - hideIndexs.size()) * (listView_->spacing() + 32) + 5));
 
     //    ui->listWidget->clear();
     //    ui->listWidget->addItems(items);
@@ -164,11 +166,11 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     setCurrentIndex(currentIndex);
     //    QPoint topLeft(editorX, editorY);
     QPoint toMove;
-    if(editorX + this->width() <= screenWidth_)
+    if(editorX + realFrame_->width() <= screenWidth_)
     {
         toMove.setX(editorX);
     }
-    else if(int newX = (editorX - (this->width() - editorW)) >= 0)
+    else if(int newX = (editorX - (realFrame_->width() - editorW)) >= 0)
     {
         toMove.setX(newX);
     }
@@ -178,11 +180,11 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     }
 
     int newY =  editorY + editorH;
-    if(newY + this->height() <= screenHeight_)
+    if(newY + realFrame_->height() <= screenHeight_)
     {
         toMove.setY(newY);
     }
-    else if((newY = editorY - this->height()) >= 0)
+    else if((newY = editorY - realFrame_->height()) >= 0)
     {
         toMove.setY(newY);
     }
@@ -192,7 +194,7 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     }
     //    QWidget* root = qApp->desktop()->screen();
     //    qDebug()<<root->mapToGlobal(root->pos());
-    this->move(toMove);
+    realFrame_->move(toMove);
     this->setCurrentIndex(currentIndex);
     //    listView_->selectionModel()->select(listView_->currentIndex(), QItemSelectionModel::Select | QItemSelectionModel::Current);
     this->exec();

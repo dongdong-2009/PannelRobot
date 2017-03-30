@@ -123,7 +123,7 @@ Item {
 
     Component.onCompleted: {
         panelRobotController.moldChanged.connect(onMoldChanged);
-        onMoldChanged();
+//        onMoldChanged();
     }
     onVisibleChanged: {
         if(visible){

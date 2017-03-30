@@ -3,12 +3,6 @@ Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
 Qt.include("../Teach.js")
 
-var counterManager;
-
-function init(cManager){
-    counterManager = cManager;
-}
-
 function ActionDefineItem(name, decimal){
     this.item = name;
     this.decimal = decimal;
@@ -167,7 +161,7 @@ var extentSingleStackAction = {
         return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) + " " +
                 qsTr("Start Pos:") + startPos + " " +
                 qsTr("space:") + (isAddr ? qsTr("Addr:") : "") + actionObject.space + " " + qsTr("count:") + actionObject.count + "\n                            " +
-                (bindingCounter ? counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
+                (bindingCounter ? currentRecord.counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
                 qsTr("speed:") + actionObject.speed;
     }
 };
@@ -332,7 +326,7 @@ var extentIntervalOutputAction = {
         },
         "toStringHandler":function(actionObject){
             if(actionObject.pointStatus == undefined) return "";
-            var counterID1 = (actionObject.isBindingCount ? counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+            var counterID1 = (actionObject.isBindingCount ? currentRecord.counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
             return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
                     getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + ""
                     + (actionObject.intervalType?qsTr("Always out"):qsTr("Time out")) +

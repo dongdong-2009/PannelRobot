@@ -490,7 +490,7 @@ Item {
         pageContainer.setCurrentIndex(pageIndex);
 
         panelRobotController.moldChanged.connect(onMoldChanged);
-        onMoldChanged();
+//        onMoldChanged();
         p1M0.configValueChanged.connect(p1M0.onValueChanged);
         p1M1.configValueChanged.connect(p1M1.onValueChanged);
         p1M2.configValueChanged.connect(p1M2.onValueChanged);

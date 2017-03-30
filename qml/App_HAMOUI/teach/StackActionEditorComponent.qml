@@ -364,7 +364,7 @@ Item {
 
     function updateCounters(){
         counterSel.configValue = -1;
-        var countersStrList = Teach.counterManager.countersStrList();
+        var countersStrList = Teach.currentRecord.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         counterSel.items = countersStrList;
     }
@@ -382,10 +382,17 @@ Item {
         dataSourceSel.configValue = 0;
     }
 
-    Component.onCompleted: {
+    function onTeachInited(){
         updateCounters();
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+    }
+
+    Component.onCompleted: {
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(container)
+        else
+            onTeachInited();
     }
     function onAxisDefinesChanged(){
         motor0.visible = AxisDefine.axisInfos[0].visiable;

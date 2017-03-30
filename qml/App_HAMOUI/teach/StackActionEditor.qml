@@ -30,8 +30,8 @@ Rectangle {
     }
 
     function updateStacksSel(){
-        Teach.parseStacks(panelRobotController.stacks());
-        var hasStacks = Teach.stackInfosDescr();
+        Teach.currentRecord.stackManager.parseStacks(panelRobotController.stacks());
+        var hasStacks = Teach.currentRecord.stackManager.stackInfosDescr();
         stackSelector.configValue = -1;
         stackViewSel.currentIndex = -1;
         stackSelector.items =  hasStacks;
@@ -138,8 +138,8 @@ Rectangle {
 //                    console.log(painter.converterNow());
                     var p_data= JSON.parse(painter.converterNow(setMaxX.configValue,setMaxY.configValue,setHigh.configValue));
                     var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                    var sI = Teach.getStackInfoFromID(id);
-                    sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, p_data));
+                    var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
+                    sI = Teach.currentRecord.stackManager.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, p_data));
                     var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
                     toSend = ESData.externalDataManager.parseRaw(toSend);
 //                    console.log(JSON.stringify(toSend));
@@ -274,7 +274,7 @@ Rectangle {
             var stackInfo;
 
             var stackID = parseInt(Utils.getValueFromBrackets(items[currentIndex]));
-            stackInfo = Teach.getStackInfoFromID(stackID);
+            stackInfo = Teach.currentRecord.stackManager.getStackInfoFromID(stackID);
             ESData.externalDataManager.registerDataSource(stackInfo.dsName, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
@@ -431,32 +431,32 @@ Rectangle {
             var stackInfo = new Teach.StackInfo(si0, si1, realST, name, "custompoint[" + id + "]", id, posData);
             var sid;
             if(!exist){
-                sid = Teach.appendStackInfo(stackInfo);
+                sid = Teach.currentRecord.stackManager.appendStackInfo(stackInfo);
                 stackInfo.dsName = "custompoint[" + sid + "]";
                 stackInfo.dsHostID = sid;
-                panelRobotController.saveStacks(Teach.stacksToJSON());
+                panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
                 updateStacksSel();
             }
             else{
                 stackInfo.dsName = selectedDS;
                 stackInfo.dsHostID = dsID;
-                sid = Teach.updateStackInfo(id, stackInfo);
-                panelRobotController.saveStacks(Teach.stacksToJSON());
+                sid = Teach.currentRecord.stackManager.updateStackInfo(id, stackInfo);
+                panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
             }
             stackUpdated(sid);
             return sid;
         }
 
         function copyStack(toCopySID, name){
-            var sI = Teach.getStackInfoFromID(toCopySID);
+            var sI = Teach.currentRecord.stackManager.getStackInfoFromID(toCopySID);
             var cpSI = Utils.cloneObject(sI);
             cpSI.descr = name;
-            var sid = Teach.appendStackInfo(cpSI);
+            var sid = Teach.currentRecord.stackManager.appendStackInfo(cpSI);
             if(cpSI.dsHostID == toCopySID){
                 cpSI.dsName = "custompoint[" + sid + "]";
                 cpSI.dsHostID = sid;
             }
-            panelRobotController.saveStacks(Teach.stacksToJSON());
+            panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
             updateStacksSel();
             stackUpdated(sid);
             return sid;
@@ -575,8 +575,8 @@ Rectangle {
                     return;
                 }
 
-                Teach.delStack(sid);
-                panelRobotController.saveStacks(Teach.stacksToJSON());
+                Teach.currentRecord.stackManager.delStack(sid);
+                panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
                 updateStacksSel();
                 stackUpdated(sid);
             }
@@ -595,7 +595,7 @@ Rectangle {
             onButtonClicked: {
                 if(stackViewSel.currentIndex < 0) return;
                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                var sI = Teach.getStackInfoFromID(id);
+                var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
                 topContainer.saveStack(id,sI.descr, true, sI.posData);
             }
 
@@ -687,8 +687,8 @@ Rectangle {
                             if(accepted){
                                 if(stackViewSel.currentIndex < 0) return;
                                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                                var sI = Teach.getStackInfoFromID(id);
-                                sI = Teach.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
+                                var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
+                                sI = Teach.currentRecord.stackManager.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
                                 var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
                                 toSend = ESData.externalDataManager.parseRaw(toSend);
                                 panelRobotController.sendExternalDatas(JSON.stringify(toSend));
@@ -700,7 +700,7 @@ Rectangle {
     //                        customPointEditor.visible = true;
     //                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                            var sI = Teach.getStackInfoFromID(id);
+                            var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
                             if(sI.posData === undefined)
                                 sI.podData = [];
                             customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
@@ -769,7 +769,7 @@ Rectangle {
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;
-                var stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[configValue])));
+                var stackInfo = Teach.currentRecord.stackManager.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[configValue])));
                 stackType = stackInfo.type;
             }
         }
@@ -953,7 +953,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        updateStacksSel();
+//        updateStacksSel();
         panelRobotController.moldChanged.connect(updateStacksSel);
         page1.dataSource = ESData.externalDataManager.dataSourceNameList();
         page2.dataSource = page1.dataSource;

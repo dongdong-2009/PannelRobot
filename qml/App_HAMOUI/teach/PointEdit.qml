@@ -93,9 +93,9 @@ Item {
     }
 
     function onPointAdded(point){
-//        console.log(Teach.definedPoints.pointDescr(point));
-//        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
-        var pNL = Teach.definedPoints.pointNameList();
+//        console.log(Teach.currentRecord.definedPoints.pointDescr(point));
+//        refreshSelectablePoisnts(Teach.currentRecord.definedPoints.pointNameList());
+        var pNL = Teach.currentRecord.definedPoints.pointNameList();
         var type;
         var fPNs = [];
         var lPNs = [];
@@ -761,7 +761,7 @@ Item {
                     if(selReferenceName.isChecked){
                         if(selReferenceName.configValue >= 0){
                             var tmp;
-                            tmp = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
+                            tmp = Teach.currentRecord.definedPoints.getPoint(selReferenceName.configText()).point;
                             if(motor0.isChecked && motor0.visible)
                                 ret.m0 = tmp.m0;
                             if(motor1.isChecked && motor1.visible)
@@ -835,12 +835,20 @@ Item {
             }
         }
     }
-    Component.onCompleted: {
+
+    function onTeachInited(){
         setZero.clicked();
-        Teach.definedPoints.registerPointsMonitor(container);
+        Teach.currentRecord.definedPoints.registerPointsMonitor(container);
         onPointsCleared();
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+    }
+
+    Component.onCompleted: {
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(container)
+        else
+            onTeachInited();
     }
     function onAxisDefinesChanged(){
         lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable;

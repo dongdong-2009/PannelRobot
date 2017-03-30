@@ -229,8 +229,9 @@ void PanelRobotController::Init()
     qApp->installTranslator(&configsTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
 
-    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
+//    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
 
+    emit moldChanged();
     emit LoadMessage("Record reload.");
 
     //    InitUI();
@@ -1232,9 +1233,8 @@ bool PanelRobotController::delCounterDef(quint32 id)
     return ICRobotMold::CurrentMold()->DeleteCounter(id);
 }
 
-QString PanelRobotController::counterDefs() const
+QString counterDefsToString(const QVector<QVariantList>& counters)
 {
-    QVector<QVariantList> counters = ICRobotMold::CurrentMold()->Counters();
     QString ret = "[";
     for(int i = 0; i < counters.size(); ++i)
     {
@@ -1251,6 +1251,17 @@ QString PanelRobotController::counterDefs() const
     return ret;
 }
 
+QString PanelRobotController::counterDefs() const
+{
+    QVector<QVariantList> counters = ICRobotMold::CurrentMold()->Counters();
+    return counterDefsToString(counters);
+}
+
+QString PanelRobotController::recordCounterDefs(const QString &name) const
+{
+    return counterDefsToString(ICDALHelper::GetMoldCounterDef(name));
+}
+
 bool PanelRobotController::saveVariableDef(quint32 id, const QString& name, const QString& unit, quint32 val, quint32 decimal)
 {
     return ICRobotMold::CurrentMold()->CreateVariables(id, name, unit, val, decimal);
@@ -1261,9 +1272,8 @@ bool PanelRobotController::delVariableDef(quint32 id)
     return ICRobotMold::CurrentMold()->DeleteVariable(id);
 }
 
-QString PanelRobotController::variableDefs() const
+QString variableDefsToString(const QVector<QVariantList> & varialbes)
 {
-    QVector<QVariantList> varialbes = ICRobotMold::CurrentMold()->Variables();
     QString ret = "[";
     for(int i = 0; i < varialbes.size(); ++i)
     {
@@ -1279,6 +1289,17 @@ QString PanelRobotController::variableDefs() const
     }
     ret += "]";
     return ret;
+}
+
+QString PanelRobotController::variableDefs() const
+{
+    QVector<QVariantList> varialbes = ICRobotMold::CurrentMold()->Variables();
+    return variableDefsToString(varialbes);
+}
+
+QString PanelRobotController::recordVariableDefs(const QString &name) const
+{
+    return variableDefsToString(ICDALHelper::GetMoldVariableDef(name));
 }
 
 QVector<QVariantList> PanelRobotController::ParseCounters(const QString &counters)

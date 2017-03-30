@@ -126,7 +126,7 @@ Item {
                 PData.editingEditors.push(editor);
             }
             if(Teach.hasStackIDAction(actionObject)){
-                var si = Teach.getStackInfoFromID(actionObject.stackID);
+                var si = Teach.currentRecord.stackManager.getStackInfoFromID(actionObject.stackID);
                 if(si.type == Teach.stackTypes.kST_Box){
                     speedX.configName = AxisDefine.axisInfos[0].name +qsTr("Speed0:");
                     speedY.configName = AxisDefine.axisInfos[1].name +qsTr("Speed0:");

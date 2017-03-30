@@ -433,32 +433,41 @@ Rectangle {
                 visible: exportRecord.visible
 //                visible: false
                 onButtonClicked: {
+                    tipDialog.runningTip(qsTr("Exporting..."))
                     var record;
                     var toTranslate;
                     var tmpStr;
+                    var recordTmp = new Teach.Record();
                     for(var i = 0; i < recordsModel.count; ++i){
                         var recordPrograms = "";
                         record = recordsModel.get(i);
                         if(record.isSelected){
                             toTranslate = JSON.parse(panelRobotController.recordPrograms(record.name));
+//                            console.log(record.name, panelRobotController.recordStacks(record.name));
+                            recordTmp.init(record.name,
+                                           JSON.parse(panelRobotController.recordCounterDefs(record.name)),
+                                           panelRobotController.recordStacks(record.name),
+                                           JSON.parse(panelRobotController.recordVariableDefs(record.name)),
+                                           panelRobotController.recordFunctions(record.name));
                             for(var j=0;j<toTranslate.length;++j)
                             {
                                 if(j === 0){
-                                    tmpStr = qsTr("mainProgram:<br>") + Teach.programsToText(toTranslate[j])+"<br>";
+                                    tmpStr = qsTr("mainProgram:<br>") + recordTmp.programsToText(toTranslate[j])+"<br>";
                                 }
                                 else{
-                                    tmpStr = qsTr("subProgram")+j+":<br>" + Teach.programsToText(toTranslate[j])+"<br>";
+                                    tmpStr = qsTr("subProgram")+j+":<br>" + recordTmp.programsToText(toTranslate[j])+"<br>";
                                 }
                                 recordPrograms += tmpStr;
                             }
 
 
-                            toTranslate = JSON.parse(panelRobotController.recordFunctions(record.name));
+                            toTranslate = recordTmp.functionManager.functions;
                             for(var k=0;k<toTranslate.length;++k){
-                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + Teach.programsToText(JSON.parse(toTranslate[k].program))+"<br>";
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + recordTmp.programsToText(JSON.parse(toTranslate[k].program))+"<br>";
                                 recordPrograms += tmpStr;
                             }
                             panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);
+                            tipDialog.hide();
                         }
                     }
                 }

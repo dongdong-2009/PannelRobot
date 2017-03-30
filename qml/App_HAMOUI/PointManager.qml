@@ -19,7 +19,7 @@ MouseArea{
             "m4":m4.configValue || 0.000,
             "m5":m5.configValue || 0.000};
         var pointName = text_name.configValue;
-        var point = Teach.definedPoints.addNewPoint(pointName, pointPos, type);
+        var point = Teach.currentRecord.definedPoints.addNewPoint(pointName, pointPos, type);
         //        pointModel.append({"point":point});
     }
 
@@ -50,7 +50,7 @@ MouseArea{
             onGotFileContent: {
                 for(var i = 0, points = Utils.parseCalibration(content), len = points.length; i < len; ++i)
                 {
-                    var point = Teach.definedPoints.addNewPoint("", points[i], Teach.DefinePoints.kPT_Free);
+                    var point = Teach.currentRecord.definedPoints.addNewPoint("", points[i], Teach.DefinePoints.kPT_Free);
                 }
             }
         }
@@ -79,9 +79,9 @@ MouseArea{
                 text: qsTr("Delete")
                 height: 25
                 onButtonClicked: {
-                    var pl = Teach.definedPoints.pointNameList();
+                    var pl = Teach.currentRecord.definedPoints.pointNameList();
                     var toDelete = pointModel.get(pointView.currentIndex).point;
-                    Teach.definedPoints.deletePoint(toDelete.index);
+                    Teach.currentRecord.definedPoints.deletePoint(toDelete.index);
                     pointModel.remove(pointView.currentIndex);
                 }
             }
@@ -109,7 +109,7 @@ MouseArea{
                     var toUpdate  = pointModel.get(pointView.currentIndex).point;
                     toUpdate.name = toUpdate.name.substr(0,2) + toUpdate.index + ":" + text_name.configValue;
                     toUpdate.point = pointPos;
-                    Teach.definedPoints.updatePoint(toUpdate.index, toUpdate);
+                    Teach.currentRecord.definedPoints.updatePoint(toUpdate.index, toUpdate);
                     pointModel.set(pointView.currentIndex, {"point":toUpdate});
                 }
             }
@@ -198,7 +198,7 @@ MouseArea{
                     //                var pointPos = {"m0":m0.configValue,"m1":m1.configValue,"m2":m2.configValue,
                     //                    "m3":m3.configValue,"m4":m4.configValue,"m5":m5.configValue};
                     //                var pointName = text_name.configValue;
-                    //                var point = Teach.definedPoints.addNewPoint(pointName, pointPos);
+                    //                var point = Teach.currentRecord.definedPoints.addNewPoint(pointName, pointPos);
                     //                pointModel.append({"point":point});
                     newPointHelper(Teach.DefinePoints.kPT_Free);
                 }
@@ -259,14 +259,14 @@ MouseArea{
                     width: 490;
                     height: 32
                     Text {
-                        text: Teach.definedPoints.pointDescr(point, AxisDefine.axisInfos)
+                        text: Teach.currentRecord.definedPoints.pointDescr(point, AxisDefine.axisInfos)
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
                             var iPoint = pointModel.get(index).point;
-                            text_name.configValue  = Teach.definedPoints.getPointName(iPoint);
+                            text_name.configValue  = Teach.currentRecord.definedPoints.getPointName(iPoint);
                             m0.configValue = iPoint.point.m0 || 0.000;
                             m1.configValue = iPoint.point.m1 || 0.000;
                             m2.configValue = iPoint.point.m2 || 0.000;
@@ -281,14 +281,21 @@ MouseArea{
             }
         }
 
-        Component.onCompleted: {
-            var ps = Teach.definedPoints.pointNameList();
+        function onTeachInited(){
+            var ps = Teach.currentRecord.definedPoints.pointNameList();
             for(var i = 0 ;i < ps.length;i++){
-                pointModel.append({"point":Teach.definedPoints.getPoint(ps[i])});
+                pointModel.append({"point":Teach.currentRecord.definedPoints.getPoint(ps[i])});
             }
-            Teach.definedPoints.registerPointsMonitor(container);
+            Teach.currentRecord.definedPoints.registerPointsMonitor(container);
             AxisDefine.registerMonitors(instance);
             onAxisDefinesChanged();
+        }
+
+        Component.onCompleted: {
+            if(Teach.currentRecord == null)
+                Teach.registerWatiTeachInitedObj(container)
+            else
+                onTeachInited();
         }
     }
 

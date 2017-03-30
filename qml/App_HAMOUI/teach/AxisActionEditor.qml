@@ -391,6 +391,13 @@ Item {
         }
     }
 
+    function onTeachInited(){
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+        Teach.currentRecord.definedPoints.registerPointsMonitor(container);
+        onPointAdded(null);
+    }
+
     Component.onCompleted: {
         var axis = [];
         var actions = Teach.actions;
@@ -403,10 +410,11 @@ Item {
         axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
         axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
-        AxisDefine.registerMonitors(container);
-        onAxisDefinesChanged();
-        Teach.definedPoints.registerPointsMonitor(container);
-        onPointAdded(null);
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(container);
+        else
+            onTeachInited();
+
     }
     function onAxisDefinesChanged(){
         m0Axis.visible = AxisDefine.axisInfos[0].visiable;
@@ -430,7 +438,7 @@ Item {
     }
 
     function onPointAdded(point){
-        var pNL = Teach.definedPoints.pointNameList();
+        var pNL = Teach.currentRecord.definedPoints.pointNameList();
         var type;
         var fPNs = [];
         for(var i = 0; i < pNL.length; ++i){

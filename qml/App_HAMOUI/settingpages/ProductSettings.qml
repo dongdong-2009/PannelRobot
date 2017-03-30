@@ -455,13 +455,13 @@ Item {
                                 ioModel.setProperty(index,"outType",configValue);
                                 if(configValue == 0){
                                     if(outId>=MData.yDefinesList.length){
-                                        selOutId.currentIndex =0;
+                                        selOutId.configValue =0;
                                     }
                                     selOutId.items = MData.yDefinesList;
                                 }
                                 else if(configValue == 1){
                                     if(outId>=MData.mDefinesList.length){
-                                        selOutId.currentIndex =0;
+                                        selOutId.configValue =0;
                                     }
                                     selOutId.items = MData.mDefinesList;
                                 }

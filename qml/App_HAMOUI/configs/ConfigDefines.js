@@ -22,6 +22,7 @@ var configRanges = {
     "s_rw_16_16_1_297":[0, 100], //m7 manual speed
     "s_rw_0_32_1_212":[0, 100], //manual speed
 //    "s_rw_0_16_1_265":[0, 100], //auto speed
+    "s_rw_1_31_1_289":[0.1,100],//first mold speed
     "s_rw_0_16_0_102":[MIN_INT_16, MAX_INT_16],
     "s_rw_16_16_0_102":[MIN_INT_16, MAX_INT_16],
     "s_rw_0_16_0_109":[MIN_INT_16, MAX_INT_16],

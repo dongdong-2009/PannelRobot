@@ -825,7 +825,7 @@ Rectangle {
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
 
-            var v;
+            var v,isNormal=true,ret=[];
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){
                 v = iosettings[i];
@@ -845,10 +845,19 @@ uint16_t io_all;
 */
                     var value = 0;
                     value=v.outstatus_init?1:0;
-                    value|=v.outid_init<<1;
+                    if(v.outType_init==0){
+                        ret = Mdata.getOutIDFromConfig(v.outid_init);
+                        value|=ret[1]<<1;
+                        isNormal = ret[0];
+                    }
+                    else{
+                        value|=v.outid_init<<1;
+                    }
+//                    value|=v.outid_init<<1;
                     value|=v.outType_init<<8;
                     value|=v.sendMode<<9;
-                    console.log(value);
+                    value|=isNormal<<14;
+                    console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(13,value);
                 }
             }
@@ -861,9 +870,16 @@ uint16_t io_all;
                     value|=v.checkId<<1;
                     value|=v.checkType<<8;
                     value|=v.outStatus<<10;
-                    value|=v.outId<<11;
+                    if(v.outType==0){
+                        ret = Mdata.getOutIDFromConfig(v.outId);
+                        value|=ret[1]<<11;
+                        isNormal = ret[0];
+                    }else{
+                        value|=v.outId<<11;
+                    }
                     value|=v.outType<<18;
-                    console.log(value);
+                    value|=isNormal<<19;
+                    console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(32,value);
                 }
             }

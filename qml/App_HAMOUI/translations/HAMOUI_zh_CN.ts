@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -433,15 +433,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -453,23 +453,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -699,7 +699,7 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation>输入通就停止</translation>
+        <translation type="vanished">输入通就停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
@@ -1135,27 +1135,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1163,7 +1163,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -1574,7 +1574,7 @@
     </message>
     <message>
         <source>runningMode</source>
-        <translation>自动运行中</translation>
+        <translation type="vanished">自动运行中</translation>
     </message>
     <message>
         <source>SingleMode</source>
@@ -3234,7 +3234,7 @@ please chose!</source>
     </message>
     <message>
         <source>Confirm</source>
-        <translation>确定修改</translation>
+        <translation type="vanished">确定修改</translation>
     </message>
     <message>
         <source>Preservation</source>
@@ -3254,11 +3254,11 @@ please chose!</source>
     </message>
     <message>
         <source>Led </source>
-        <translation>Led</translation>
+        <translation type="vanished">Led</translation>
     </message>
     <message>
         <source> status binding</source>
-        <translation>状态绑定</translation>
+        <translation type="vanished">状态绑定</translation>
     </message>
     <message>
         <source>Key F</source>
@@ -3266,7 +3266,7 @@ please chose!</source>
     </message>
     <message>
         <source> function binding</source>
-        <translation>功能绑定</translation>
+        <translation type="vanished">功能绑定</translation>
     </message>
     <message>
         <source>Led</source>
@@ -3971,7 +3971,7 @@ please chose!</source>
     </message>
     <message>
         <source>Export Printable</source>
-        <translation></translation>
+        <translation>打印</translation>
     </message>
     <message>
         <source>In current mold</source>
@@ -3991,15 +3991,15 @@ please chose!</source>
     </message>
     <message>
         <source>mainProgram:&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>主程序:&lt;br&gt;</translation>
     </message>
     <message>
         <source>subProgram</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序</translation>
     </message>
     <message>
         <source>fuction</source>
-        <translation type="unfinished"></translation>
+        <translation>模块</translation>
     </message>
 </context>
 <context>
@@ -4548,7 +4548,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5782,15 +5782,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -5922,11 +5922,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -5950,19 +5950,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>IntervalOutput:</source>
-        <translation>间隔输出:</translation>
+        <translation type="vanished">间隔输出:</translation>
     </message>
     <message>
         <source>Interval</source>
-        <translation>间隔</translation>
+        <translation type="vanished">间隔</translation>
     </message>
     <message>
         <source>Always out</source>
-        <translation>一直输出</translation>
+        <translation type="vanished">一直输出</translation>
     </message>
     <message>
         <source>Time out</source>
-        <translation>时间输出</translation>
+        <translation type="vanished">时间输出</translation>
     </message>
     <message>
         <source>actCnt</source>
@@ -5970,11 +5970,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>
@@ -6339,6 +6339,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Tool Dev:</source>
         <translation>工具偏差：</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
     </message>
 </context>
 <context>

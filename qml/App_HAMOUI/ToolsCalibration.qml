@@ -81,16 +81,23 @@ Item {
         p2M4.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_392");
         p2M5.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_393");
 
-        enBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
         selType.checkedIndex = panelRobotController.getConfigValue("m_rw_10_3_0_357");
-        type1.isChecked = panelRobotController.getConfigValue("m_rw_10_3_0_357")==0?true:false;
-        type2.isChecked = panelRobotController.getConfigValue("m_rw_10_3_0_357")==1?true:false;
+        if(selType.checkedIndex == 0){
+            type1.isChecked =true;
+            fourPointTypeEnBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
+        }
+        else if(selType.checkedIndex == 1){
+            type2.isChecked =true;
+            twoPointTypeEnBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
+        }
     }
 
     ICButtonGroup{
         id:selType
         width: parent.width/2
         spacing: 5
+        anchors.top: parent.top
+        anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 20
         mustChecked: true
@@ -102,12 +109,8 @@ Item {
              id:type2
              text:qsTr("Two Point")
         }
-        function onValueChanged(){
+        onCheckedIndexChanged: {
             pageContainer.setCurrentIndex(checkedIndex);
-            enBtn.isChecked = false;
-            panelRobotController.setConfigValue("m_rw_9_1_0_357",0);
-            panelRobotController.setConfigValue("m_rw_10_3_0_357",checkedIndex);
-            panelRobotController.syncConfigs();
         }
     }
 
@@ -129,10 +132,11 @@ Item {
         anchors.top: selType.bottom
         anchors.topMargin: 20
         Grid{
+            id:pointGrid
             spacing: 10
             columns: 2
-            width: parent.width
-            height: parent.height
+//            width: parent.width
+//            height: parent.height
 
             ICButton{
                 id:p1
@@ -225,54 +229,29 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 height: p4.height
             }
-    //        ICButton{
-    //            id:p5
-    //            text: qsTr("Set to P5")
-    //            onButtonClicked: {
-    //                var pulses = parent.readPulse();
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_382", pulses[0]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_383", pulses[1]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_384", pulses[2]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_385", pulses[3]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_386", pulses[4]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_387", pulses[5]);
-    //                p5Show.text = parent.pulseToText(pulses);
-    //                panelRobotController.syncConfigs();
-
-    //            }
-    //        }
-    //        Text {
-    //            id: p5Show
-    //            text: qsTr("text")
-    //            verticalAlignment: Text.AlignVCenter
-    //            height: p5.height
-    //        }
-    //        ICButton{
-    //            id:p6
-    //            text: qsTr("Set to P6")
-    //            onButtonClicked: {
-    //                var pulses = parent.readPulse();
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_388", pulses[0]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_389", pulses[1]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_390", pulses[2]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_391", pulses[3]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_392", pulses[4]);
-    //                panelRobotController.setConfigValue("m_rw_0_32_0_393", pulses[5]);
-    //                p6Show.text = parent.pulseToText(pulses);
-    //                panelRobotController.syncConfigs();
-
-    //            }
-    //        }
-    //        Text {
-    //            id: p6Show
-    //            text: qsTr("text")
-    //            verticalAlignment: Text.AlignVCenter
-    //            height: p6.height
-    //        }
-            onVisibleChanged: {
-                panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
+        }
+        Row{
+            anchors.top:pointGrid.bottom
+            anchors.topMargin: 20
+            spacing: 20
+            ICCheckBox {
+                id:fourPointTypeEnBtn
+                height: fourOkBtn.height
+                text: qsTr("Use it?")
             }
-          }
+            ICButton{
+                id:fourOkBtn
+                text: qsTr("OK")
+                onButtonClicked: {
+                    panelRobotController.setConfigValue("m_rw_10_3_0_357",0);
+                    panelRobotController.setConfigValue("m_rw_9_1_0_357", fourPointTypeEnBtn.isChecked ? 1 : 0);
+                    panelRobotController.syncConfigs();
+                }
+            }
+        }
+        onVisibleChanged: {
+            panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
+        }
     }
 
     Item {
@@ -283,8 +262,7 @@ Item {
         anchors.top: selType.bottom
         anchors.topMargin: 20
         Row{
-            width: parent.width
-            height: parent.height
+            id:setRow
             spacing: 30
             Column{
                 spacing: 5
@@ -310,10 +288,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_382", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p1M1
@@ -323,10 +297,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_383", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p1M2
@@ -336,10 +306,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_384", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p1M3
@@ -349,10 +315,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_385", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p1M4
@@ -362,10 +324,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_386", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p1M5
@@ -375,10 +333,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_387", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
             }
             Column{
@@ -396,10 +350,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_388", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p2M1
@@ -409,10 +359,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_389", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p2M2
@@ -422,10 +368,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_390", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p2M3
@@ -435,10 +377,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_391", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
                 ICConfigEdit{
                     id:p2M4
@@ -448,10 +386,6 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_392", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
 
                 ICConfigEdit{
@@ -462,47 +396,47 @@ Item {
                     min:-10000
                     max:10000
                     decimal: 3
-                    function onValueChanged() {
-                        panelRobotController.setConfigValue("m_rw_0_32_3_393", configValue);
-                        panelRobotController.syncConfigs();
-                    }
                 }
             }
         }
-    }
-
-    ICCheckBox {
-        id:enBtn
-        text: qsTr("Use it?")
-        anchors.top:pageContainer.bottom
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        onClicked: {
-            panelRobotController.setConfigValue("m_rw_9_1_0_357", enBtn.isChecked ? 1 : 0);
-            panelRobotController.syncConfigs();
+        Row{
+            anchors.top: setRow.bottom
+            anchors.topMargin: 20
+            spacing: 20
+            ICCheckBox {
+                id:twoPointTypeEnBtn
+                height: twoOkBtn.height
+                text: qsTr("Use it?")
+            }
+            ICButton{
+                id:twoOkBtn
+                text: qsTr("OK")
+                onButtonClicked: {
+                    panelRobotController.setConfigValue("m_rw_10_3_0_357",1);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_382", p1M0.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_383", p1M1.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_384", p1M2.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_385", p1M3.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_386", p1M4.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_387", p1M5.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_388", p2M0.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_389", p2M1.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_390", p2M2.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_391", p2M3.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_392", p2M4.configValue);
+                    panelRobotController.setConfigValue("m_rw_0_32_3_393", p2M5.configValue);
+                    panelRobotController.setConfigValue("m_rw_9_1_0_357", twoPointTypeEnBtn.isChecked ? 1 : 0);
+                    panelRobotController.syncConfigs();
+                }
+            }
         }
     }
 
     Component.onCompleted: {
         pageContainer.addPage(fourPointType);
         pageContainer.addPage(twoPointType);
-        var pageIndex = panelRobotController.getConfigValue("m_rw_10_3_0_357");
-        pageContainer.setCurrentIndex(pageIndex);
 
         panelRobotController.moldChanged.connect(onMoldChanged);
 //        onMoldChanged();
-        p1M0.configValueChanged.connect(p1M0.onValueChanged);
-        p1M1.configValueChanged.connect(p1M1.onValueChanged);
-        p1M2.configValueChanged.connect(p1M2.onValueChanged);
-        p1M3.configValueChanged.connect(p1M3.onValueChanged);
-        p1M4.configValueChanged.connect(p1M4.onValueChanged);
-        p1M5.configValueChanged.connect(p1M5.onValueChanged);
-        p2M0.configValueChanged.connect(p2M0.onValueChanged);
-        p2M1.configValueChanged.connect(p2M1.onValueChanged);
-        p2M2.configValueChanged.connect(p2M2.onValueChanged);
-        p2M3.configValueChanged.connect(p2M3.onValueChanged);
-        p2M4.configValueChanged.connect(p2M4.onValueChanged);
-        p2M5.configValueChanged.connect(p2M5.onValueChanged);
-        selType.checkedIndexChanged.connect(selType.onValueChanged);
     }
 }

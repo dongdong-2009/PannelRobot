@@ -444,7 +444,7 @@ ExtentActionEditorBase {
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
 //            yDefine = yDefines[i];
-            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + parseInt(yDefine.y1Point / 32)));
+            yModel.append(yView.createValveMoldItem(yDefines[i], yDefine,yDefine.y1Board));
         }
 
         euY.visible = false;
@@ -458,7 +458,7 @@ ExtentActionEditorBase {
         mY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            mYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.M_BOARD_0));
+            mYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, yDefine.y1Board));
         }
 
         yDefines = IOConfigs.teachSingleY
@@ -480,21 +480,21 @@ ExtentActionEditorBase {
         timeY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            timeYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.TIMEY_BOARD_START));
+            timeYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.TIMEY_BOARD_START + yDefine.y1Board));
         }
 
         yDefines = IOConfigs.teachTy;
         intervalY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            intervalYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + parseInt(yDefine.y1Point / 32)));
+            intervalYModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.IO_BOARD_0 + yDefine.y1Board));
         }
 
         yDefines = IOConfigs.teachMy;
         intervalM.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
             yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            intervalMModel.append(yView.createValveMoldItem(yDefines[i], yDefine, IODefines.M_BOARD_0));
+            intervalMModel.append(yView.createValveMoldItem(yDefines[i], yDefine, yDefine.y1Board));
         }
 
     }

@@ -330,16 +330,18 @@ Item {
                         onConfigValueChanged: {
                             if(configValue<0||configValue>1)return;
                             valveModel.setProperty(index,"outType_init",configValue);
-                            var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                            if(ioBoardCount == 0)
-                                ioBoardCount = 1;
-                            var len = ioBoardCount * 32;
-                            len=configValue == 0?len:16;
-                            var ioItems = [];
-                            for(var i = 0; i < len; ++i){
-                                ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                            if(configValue ==0){
+                                if(outid_init >= MData.yDefinesList.length){
+                                    outid.currentIndex = 0;
+                                }
+                                outid.items = MData.yDefinesList;
                             }
-                            outid.items = ioItems;
+                            else if(configValue ==1){
+                                if(outid_init >= MData.mDefinesList.length){
+                                    outid.currentIndex = 0;
+                                }
+                                outid.items = MData.mDefinesList;
+                            }
                         }
                         configValue: outType_init
                     }
@@ -401,12 +403,21 @@ Item {
                             onCurrentIndexChanged: {
                                 ioModel.setProperty(index,"checkType",currentIndex);
                                 if(currentIndex == 0){
+                                    if(checkId>=MData.xDefinesList.length){
+                                        selCheckId.currentIndex =0;
+                                    }
                                     selCheckId.items = MData.xDefinesList;
                                 }
                                 else if(currentIndex == 1){
-                                    selCheckId.items = MData.yDefinesList;
+                                    if(checkId>=MData.yList.length){
+                                        selCheckId.currentIndex =0;
+                                    }
+                                    selCheckId.items = MData.yList;
                                 }
                                 else if(currentIndex == 2){
+                                    if(checkId>=MData.mDefinesList.length){
+                                        selCheckId.currentIndex =0;
+                                    }
                                     selCheckId.items = MData.mDefinesList;
                                 }
                             }
@@ -443,9 +454,15 @@ Item {
                                 if(configValue<0||configValue>1)return;
                                 ioModel.setProperty(index,"outType",configValue);
                                 if(configValue == 0){
+                                    if(outId>=MData.yDefinesList.length){
+                                        selOutId.currentIndex =0;
+                                    }
                                     selOutId.items = MData.yDefinesList;
                                 }
                                 else if(configValue == 1){
+                                    if(outId>=MData.mDefinesList.length){
+                                        selOutId.currentIndex =0;
+                                    }
                                     selOutId.items = MData.mDefinesList;
                                 }
                             }
@@ -496,10 +513,10 @@ Item {
                 text: qsTr("new")
                 onButtonClicked: {
                     if(typeSel.checkedItem == modeStatus){
-                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":4,"outstatus_init":0});
+                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
                     }
                     else if(typeSel.checkedItem == ioStatus){
-                        ioModel.append({"check":true,"checkType":0,"checkId":0,"checkStatus":0,"outType":0,"outId":4,"outStatus":0});
+                        ioModel.append({"check":true,"checkType":0,"checkId":0,"checkStatus":0,"outType":0,"outId":0,"outStatus":0});
                     }
                 }
             }
@@ -508,8 +525,8 @@ Item {
                 text: qsTr("Preservation")
                 onButtonClicked: {
                     var toSave = [];
-                    var v;
-                    var value = 0;
+                    var v,isNormal=true;
+                    var value = 0,ret =[];
                     if(typeSel.checkedItem == modeStatus){
                         panelRobotController.modifyConfigValue(14,0);
                         for(var i=0;i<valveModel.count;i++)
@@ -519,10 +536,19 @@ Item {
                             if(v.check == true){
                                 console.log("send:");
                                 value=v.outstatus_init?1:0;
-                                value|=v.outid_init<<1;
+                                if(v.outType_init==0){
+                                    ret = MData.getOutIDFromConfig(v.outid_init);
+                                    value|=ret[1]<<1;
+                                    isNormal = ret[0];
+                                }
+                                else{
+                                    value|=v.outid_init<<1;
+                                }
+//                                value|=v.outid_init<<1;
                                 value|=v.outType_init<<8;
                                 value|=v.sendMode<<9;
-                                console.log(value);
+                                value|=isNormal<<14;
+                                console.log(isNormal,ret[1],value);
                                 panelRobotController.modifyConfigValue(13,value);
                             }
                         }
@@ -541,9 +567,17 @@ Item {
                                 value|=v.checkId<<1;
                                 value|=v.checkType<<8;
                                 value|=v.outStatus<<10;
-                                value|=v.outId<<11;
+                                if(v.outType==0){
+                                    ret = MData.getOutIDFromConfig(v.outId);
+                                    value|=ret[1]<<11;
+                                    isNormal = ret[0];
+                                }
+                                else{
+                                    value|=v.outId<<11;
+                                }
                                 value|=v.outType<<18;
-                                console.log(value);
+                                value|=isNormal<<19;
+                                console.log(isNormal,ret[1],value);
                                 panelRobotController.modifyConfigValue(32,value);
                             }
                         }
@@ -698,7 +732,7 @@ Item {
                                     keyModel.setProperty(index,"thingID",bindingNum);
                                 }
                                 else if(bindingType == 1){
-                                    keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                                    keyModel.setProperty(index,"thingID",bindingNum);
                                 }
                                 else if(bindingType == 2){
                                     keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
@@ -755,7 +789,7 @@ Item {
                                 default:
                                 case 0:ioItems = MData.xDefinesList;
                                     break;
-                                case 1:ioItems = MData.yDefinesList;
+                                case 1:ioItems = MData.yList;
                                     break;
                                 case 2:ioItems = MData.mDefinesList;
                                 }
@@ -838,13 +872,22 @@ Item {
         len = ioBoardCount * 32;
         for(i = 0; i < len; ++i){
             MData.xDefinesList.push(IODefines.ioItemName(IODefines.xDefines[i]));
+            MData.yList.push(IODefines.yDefines[i].pointName);
         }
         var valveTmp;
-        MData.yOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.yOut);
-        for(i = 0,len =MData.yOutList.length; i < len; ++i){
-            valveTmp = MData.yOutList[i];
+
+        var yDefines = IOConfigs.manualShowValves;
+        for(i = 0, len = yDefines.length; i < len; ++i){
+            valveTmp = IODefines.getValveItemFromValveName(yDefines[i]);
+            MData.yOutList.push(valveTmp);
             MData.yDefinesList.push(IODefines.getYDefineFromHWPoint(valveTmp.y1Point, valveTmp.y1Board).yDefine.pointName+":"+valveTmp.descr);
         }
+
+//        MData.yOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.yOut);
+//        for(i = 0,len =MData.yOutList.length; i < len; ++i){
+//            valveTmp = MData.yOutList[i];
+//            MData.yDefinesList.push(IODefines.getYDefineFromHWPoint(valveTmp.y1Point, valveTmp.y1Board).yDefine.pointName+":"+valveTmp.descr);
+//        }
         MData.mOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.mY);
         for(i = 0,len = MData.mOutList.length; i < len; ++i){
             valveTmp = MData.mOutList[i];

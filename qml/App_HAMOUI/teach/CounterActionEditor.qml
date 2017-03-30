@@ -64,7 +64,7 @@ Rectangle {
             width: 80
             bgColor: "lime"
             onButtonClicked: {
-                var toAdd = Teach.counterManager.newCounter(newCounterName.text, 0, 0);
+                var toAdd = Teach.currentRecord.counterManager.newCounter(newCounterName.text, 0, 0);
                 if(panelRobotController.saveCounterDef(toAdd.id, toAdd.name, toAdd.current, toAdd.target))
                     counterContainer.addCounter(toAdd.id, toAdd.name, toAdd.current, toAdd.target);
                 counterUpdated(toAdd.id);
@@ -88,11 +88,11 @@ Rectangle {
                         if(usedInfo.used){
 //                            console.log(ProgramList.LinesInfo.usedLineInfoString(usedInfo));
                             details += ProgramList.LinesInfo.usedLineInfoString(usedInfo) + "\n";
-                            tip += Teach.counterManager.counterToString(editor.cID) + " " +  qsTr("is using!") + "\n";
+                            tip += Teach.currentRecord.counterManager.counterToString(editor.cID) + " " +  qsTr("is using!") + "\n";
                             continue;
                         }
 
-                        Teach.counterManager.delCounter(editor.cID);
+                        Teach.currentRecord.counterManager.delCounter(editor.cID);
                         panelRobotController.delCounterDef(editor.cID);
                         counterUpdated(editor.cID);
                          PData.editors[editor.cID].destroy();
@@ -173,7 +173,7 @@ Rectangle {
                     id:counterContainer
                     spacing: 4
                     function onCounterEditFinished(cid, name, current, target){
-                        Teach.counterManager.updateCounter(cid, name, current, target);
+                        Teach.currentRecord.counterManager.updateCounter(cid, name, current, target);
                         panelRobotController.saveCounterDef(cid, name, current, target);
                         counterUpdated(cid);
                     }
@@ -192,9 +192,9 @@ Rectangle {
     }
     function onMoldChanged(){
         var counters = JSON.parse(panelRobotController.counterDefs());
-        Teach.counterManager.init(counters);
-        Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
-        var cs = Teach.counterManager.counters;
+        Teach.currentRecord.counterManager.init(counters);
+        Teach.currentRecord.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
+        var cs = Teach.currentRecord.counterManager.counters;
         var cc;
         var editor;
         for(var cid in PData.editors){
@@ -213,13 +213,13 @@ Rectangle {
             var editor;
             for(var p in PData.editors){
                 editor = PData.editors[p];
-                editor.cc = Teach.counterManager.getCounter(editor.cID).current;
+                editor.cc = Teach.currentRecord.counterManager.getCounter(editor.cID).current;
             }
         }
     }
 
     Component.onCompleted: {
         panelRobotController.moldChanged.connect(onMoldChanged);
-        onMoldChanged();
+//        onMoldChanged();
     }
 }

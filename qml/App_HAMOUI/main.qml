@@ -733,10 +733,10 @@ Rectangle {
         var usid = JSON.parse(panelRobotController.usedSourceStacks());
         for(var sid in usid){
             if(usid[sid] == posData.hostID){
-                var stackInfo = Teach.getStackInfoFromID(sid);
+                var stackInfo = Teach.currentRecord.stackManager.getStackInfoFromID(sid);
                 if(stackInfo.si0.doesBindingCounter){
-                    var c = Teach.counterManager.getCounter(stackInfo.si0.counterID);
-                    Teach.counterManager.updateCounter(c.id, c.name, c.current, c.target);
+                    var c = Teach.currentRecord.counterManager.getCounter(stackInfo.si0.counterID);
+                    Teach.currentRecord.counterManager.updateCounter(c.id, c.name, c.current, c.target);
                     panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
                     counterUpdated(c.id);
                 }

@@ -423,6 +423,15 @@ public:
         return ICDALHelper::MoldFunctionsContent(name);
     }
 
+    Q_INVOKABLE QString recordStacks(const QString& name) const
+    {
+        return ICDALHelper::MoldStacksContent(name);
+    }
+
+    Q_INVOKABLE QString recordVariableDefs(const QString& name) const;
+
+    Q_INVOKABLE QString recordCounterDefs(const QString& name) const;
+
     Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();

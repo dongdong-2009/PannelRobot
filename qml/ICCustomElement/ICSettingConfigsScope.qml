@@ -67,7 +67,7 @@ Item {
         PData.deepFindFitItem(container)
         PData.isLoaded = true;
         panelRobotController.moldChanged.connect(needToUpdateConfigs)
-        needToUpdateConfigs();
+//        needToUpdateConfigs();
     }
 
 }

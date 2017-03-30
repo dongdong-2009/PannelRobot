@@ -185,7 +185,7 @@ ExtentActionEditorBase {
 //    }
     function updateCounters(){
         count.configValue = -1;
-        var countersStrList = Teach.counterManager.countersStrList();
+        var countersStrList = Teach.currentRecord.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         count.items = countersStrList;
         if(actionObject != null){

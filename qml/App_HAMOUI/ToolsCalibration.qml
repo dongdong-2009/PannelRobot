@@ -236,10 +236,11 @@ Item {
             spacing: 20
             ICCheckBox {
                 id:fourPointTypeEnBtn
+                height: fourOkBtn.height
                 text: qsTr("Use it?")
             }
             ICButton{
-                height: fourPointTypeEnBtn.height
+                id:fourOkBtn
                 text: qsTr("OK")
                 onButtonClicked: {
                     panelRobotController.setConfigValue("m_rw_10_3_0_357",0);
@@ -404,10 +405,11 @@ Item {
             spacing: 20
             ICCheckBox {
                 id:twoPointTypeEnBtn
+                height: twoOkBtn.height
                 text: qsTr("Use it?")
             }
             ICButton{
-                height: twoPointTypeEnBtn.height
+                id:twoOkBtn
                 text: qsTr("OK")
                 onButtonClicked: {
                     panelRobotController.setConfigValue("m_rw_10_3_0_357",1);
@@ -435,6 +437,6 @@ Item {
         pageContainer.addPage(twoPointType);
 
         panelRobotController.moldChanged.connect(onMoldChanged);
-        onMoldChanged();
+//        onMoldChanged();
     }
 }

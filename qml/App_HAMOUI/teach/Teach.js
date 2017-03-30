@@ -115,10 +115,10 @@ var DefinePoints = {
         //{"m0":123, "m1":}
         definePoints.getPoint = function(name){
             var pID = definePoints.extractPointIDFromPointName(name);
-            var ps = definedPoints.definedPoints;
+            var ps = definePoints.definedPoints;
             for(var i = 0; i < ps.length; ++i){
                 if(ps[i].index == pID)
-                    return definedPoints.definedPoints[i];
+                    return definePoints.definedPoints[i];
             }
             return null;
         }
@@ -220,7 +220,7 @@ var DefinePoints = {
 
 };
 
-var definedPoints = DefinePoints.createNew();
+//var definedPoints = DefinePoints.createNew();
 
 var actionTypes = {
     "kAT_Normal":0,
@@ -245,13 +245,14 @@ function FlagItem(flagID, descr){
     this.descr = descr || "";
 }
 
-var flagsDefine = {
-    "flags":[[],[],[],[],[],[],[],[],[],[],[]],
-    "clear":function(programIndex){
-        this.flags[programIndex].length = 0;
-    },
 
-    "createFlag":function(programIndex, flagName){
+function FlagsDefine(){
+    this.flags = [[],[],[],[],[],[],[],[],[],[],[]];
+    this.clear = function(programIndex){
+        this.flags[programIndex].length = 0;
+    };
+
+    this.createFlag = function(programIndex, flagName){
         if(programIndex >= this.flags.length)
             return null;
         var pFlags = this.flags[programIndex];
@@ -265,9 +266,9 @@ var flagsDefine = {
         if(fID < 0)
             fID = pFlags.length;
         return new FlagItem(fID, flagName);
-    },
+    };
 
-    "getFlag" :function(programIndex, flagID){
+    this.getFlag = function(programIndex, flagID){
         if(programIndex >= this.flags.length)
             return null;
         var pFlags = this.flags[programIndex];
@@ -276,9 +277,9 @@ var flagsDefine = {
                 return pFlags[i];
         }
         return null;
-    },
+    };
 
-    "pushFlag" :function(programIndex, flag){
+    this.pushFlag = function(programIndex, flag){
         if(programIndex >= this.flags.length)
             return;
         var pFlags = this.flags[programIndex];
@@ -289,9 +290,9 @@ var flagsDefine = {
             }
         }
         this.flags[programIndex].push(flag);
-    },
+    };
 
-    "delFlag" : function(programIndex, flagID){
+    this.delFlag = function(programIndex, flagID){
         if(programIndex >= this.flags.length)
             return;
         var pFlags = this.flags[programIndex];
@@ -301,15 +302,15 @@ var flagsDefine = {
                 break;
             }
         }
-    },
+    };
 
-    "flagName" : function(programIndex, flagID){
+    this.flagName = function(programIndex, flagID){
         var flag = this.getFlag(programIndex, flagID);
         if(flag == null) return qsTr("Invalid Flag");
         return qsTr("Flag") + "[" + flag.flagID + "]" + ":" + flag.descr;
-    },
+    };
 
-    "flagNameList": function(programIndex){
+    this.flagNameList = function(programIndex){
         if(programIndex >= this.flags.length)
             return [];
         var ret = [];
@@ -364,103 +365,102 @@ function StackInfo(si0, si1, type, descr, dsName, dsHostID, posData){
     this.posData = posData || [];
 }
 
+function StackManager(){
+    this.stackIDs = [];
+    this.stackInfos = [];
+    this.useableStack = function(){
+        if(this.stackIDs.length === 0) return 0;
+        //    if(stackIDs.length < 3)
+        //        return stackIDs[stackIDs.length - 1] + 1;
+        if(this.stackIDs[0] !== 0) return 0;
+        for(var i = 1; i < this.stackIDs.length; ++i){
+            if(this.stackIDs[i] - this.stackIDs[i - 1] > 1){
+                return this.stackIDs[i - 1] + 1;
+            }
+        }
+        return this.stackIDs[i - 1] + 1;
+    };
 
-var stackIDs = [];
-var stackInfos = [];
+    this.pushStack = function(stack, info){
+        for(var i = 0; i < this.stackIDs.length; ++i){
+            if(stack < this.stackIDs[i]){
+                this.stackIDs.splice(i, 0, stack);
+                this.stackInfos.splice(i, 0, info);
+                return;
+            }
+        }
+        this.stackIDs.push(stack);
+        this.stackInfos.push(info);
+        return;
+    };
 
-function appendStackInfo(stackInfo){
-    var id = useableStack();
-    pushStack(id, stackInfo);
-    return id;
-}
+    this.appendStackInfo = function(stackInfo){
+        var id = this.useableStack();
+        this.pushStack(id, stackInfo);
+        return id;
+    };
 
-function updateStackInfo(which, stackInfo){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stackIDs[i] == which){
-            stackInfos[i] = stackInfo;
-            break;
+    this.updateStackInfo = function(which, stackInfo){
+        for(var i = 0; i < this.stackIDs.length; ++i){
+            if(this.stackIDs[i] == which){
+                this.stackInfos[i] = stackInfo;
+                break;
+            }
+        }
+        return which;
+    }
+
+    this.getStackInfoFromID = function(stackID){
+        for(var i = 0; i < this.stackIDs.length; ++i){
+            if(this.stackIDs[i] == stackID){
+                return this.stackInfos[i];
+            }
+        }
+        return null;
+    }
+
+    this.delStack = function(stack){
+        for(var i = 0; i < this.stackIDs.length; ++i){
+            if(stack === this.stackIDs[i]){
+                this.stackIDs.splice(i, 1);
+                this.stackInfos.splice(i, 1);
+                break;
+            }
+        }
+        return stack;
+    }
+
+    this.lastStacks = "";
+    this.parseStacks = function(stacks){
+        if(stacks === this.lastStacks) return;
+        if(stacks.length < 4) {
+            stacks = "{}";
+        }
+        this.lastStacks = stacks;
+        var statckInfos = JSON.parse(stacks);
+        this.stackIDs.length = 0;
+        this.stackInfos.length = 0;
+        for(var s in statckInfos){
+            this.pushStack(parseInt(s), statckInfos[s]);
         }
     }
-    return which;
-}
 
-function getStackInfoFromID(stackID){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stackIDs[i] == stackID){
-            return stackInfos[i];
+
+    this.stacksToJSON = function(){
+        var ret = {};
+        for(var i = 0; i < this.stackIDs.length; ++i){
+            ret[this.stackIDs[i].toString()] = this.stackInfos[i];
         }
+        return JSON.stringify(ret);
     }
-    return null;
-}
 
-var pushStack = function(stack, info){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stack < stackIDs[i]){
-            stackIDs.splice(i, 0, stack);
-            stackInfos.splice(i, 0, info);
-            return;
+    this.stackInfosDescr = function(){
+        var ret = [];
+        for(var i = 0; i < this.stackIDs.length; ++i){
+            ret.push(qsTr("Stack") + "[" + this.stackIDs[i] + "]:" + this.stackInfos[i].descr);
         }
+        return ret;
     }
-    stackIDs.push(stack);
-    stackInfos.push(info);
-    return;
-}
-
-var delStack = function(stack){
-    for(var i = 0; i < stackIDs.length; ++i){
-        if(stack === stackIDs[i]){
-            stackIDs.splice(i, 1);
-            stackInfos.splice(i, 1);
-            break;
-        }
-    }
-    return stack;
-}
-
-var useableStack = function(){
-    if(stackIDs.length === 0) return 0;
-    //    if(stackIDs.length < 3)
-    //        return stackIDs[stackIDs.length - 1] + 1;
-    if(stackIDs[0] !== 0) return 0;
-    for(var i = 1; i < stackIDs.length; ++i){
-        if(stackIDs[i] - stackIDs[i - 1] > 1){
-            return stackIDs[i - 1] + 1;
-        }
-    }
-    return stackIDs[i - 1] + 1;
-}
-
-var lastStacks = "";
-function parseStacks(stacks){
-    if(stacks === lastStacks) return;
-    if(stacks.length < 4) {
-        stacks = "{}";
-    }
-    lastStacks = stacks;
-    console.log("Teach.js.parseStacks", stacks);
-    var statckInfos = JSON.parse(stacks);
-    stackIDs.length = 0;
-    stackInfos.length = 0;
-    for(var s in statckInfos){
-        pushStack(parseInt(s), statckInfos[s]);
-    }
-}
-
-
-function stacksToJSON(){
-    var ret = {};
-    for(var i = 0; i < stackIDs.length; ++i){
-        ret[stackIDs[i].toString()] = stackInfos[i];
-    }
-    return JSON.stringify(ret);
-}
-
-function stackInfosDescr(){
-    var ret = [];
-    for(var i = 0; i < stackIDs.length; ++i){
-        ret.push(qsTr("Stack") + "[" + stackIDs[i] + "]:" + stackInfos[i].descr);
-    }
-    return ret;
 }
 
 function CounterInfo(id, name, current, target){
@@ -648,7 +648,7 @@ function CounterManager(){
     }
 }
 
-function FunctionInfo(id, name, program){
+function FunctionInfo(id, name, program, definedPoints){
     this.id = id;
     this.name = name || ("Fun" + id);
     this.program = program || [{"action":actions.F_CMD_PROGRAM_CALL_BACK}];
@@ -662,15 +662,17 @@ function FunctionInfo(id, name, program){
 
 function FunctionManager(){
     this.functions = [];
-    this.init = function(functionsJSON){
+    this.definedPoints = null;
+    this.init = function(functionsJSON, definedPoints){
         this.functions.length = 0;
+        this.definedPoints = definedPoints;
         if(functionsJSON.length == 0){
             return;
         }
         var functinos = JSON.parse(functionsJSON);
         var i;
         for(i = 0; i < functinos.length; ++i){
-            this.push(new FunctionInfo(functinos[i].id, functinos[i].name, JSON.parse(functinos[i].program)));
+            this.push(new FunctionInfo(functinos[i].id, functinos[i].name, JSON.parse(functinos[i].program), definedPoints));
         }
 
     }
@@ -736,7 +738,7 @@ function FunctionManager(){
 
     this.newFunction = function(name, program){
         var newID = this.usableID();
-        var toAdd = new FunctionInfo(newID, name, program)
+        var toAdd = new FunctionInfo(newID, name, program, this.definedPoints);
         this.push(toAdd);
         return toAdd;
     }
@@ -754,12 +756,6 @@ function FunctionManager(){
         }
     }
 }
-
-var counterManager = new CounterManager();
-
-var variableManager = new VariableManager();
-
-var functionManager = new FunctionManager();
 
 var isSyncAction = function(actionObject){
     return actionObject.action === actionTypes.kAT_SyncStart ||
@@ -868,22 +864,7 @@ function isJumpAction(act){
 
 }
 
-function hasCounterIDAction(action){
-    if(customActions.hasOwnProperty(action.action)){
-        return customActions[action.action].hasCounter;
-    }
-    else if(action.action == actions.F_CMD_STACK0){
-        var si = getStackInfoFromID(action.stackID);
-        if(si != null)
-            return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
-    }else if(action.action === actions.ACT_COMMENT){
-        if(action.commentAction != null){
-            return arguments.callee(action.commentAction);
-        }
-    }
 
-    return action.hasOwnProperty("counterID");
-}
 
 function hasStackIDAction(action){
     if(action.action === actions.ACT_COMMENT){
@@ -911,19 +892,7 @@ function actionStackID(action){
     return action.stackID;
 }
 
-function actionCounterIDs(action){
-    if(customActions.hasOwnProperty(action.action)){
-        return customActions[action.action].getCountersID(action);
-    }
-    else if(action.action == actions.F_CMD_STACK0){
-        var si = getStackInfoFromID(action.stackID);
-        return [si.si0.counterID];
-    }else if(action.action == actions.ACT_COMMENT){
-        return arguments.callee(action.commentAction);
-    }
 
-    return [action.counterID];
-}
 
 var generateAxisServoAction = function(action,
                                        axis,
@@ -1357,17 +1326,17 @@ var customAlarmActiontoStringHandler = function(actionObject){
     return qsTr("Alarm") + ":" + actionObject.alarmNum + ":" + getCustomAlarmDescr(actionObject.alarmNum);
 }
 
-var conditionActionToStringHandler = function(actionObject){
+var conditionActionToStringHandler = function(actionObject, record){
     if(actionObject.action === actions.F_CMD_PROGRAM_JUMP0){
-        return qsTr("Jump To ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag);
+        return qsTr("Jump To ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag);
     }else if(actionObject.action === actions.F_CMD_PROGRAM_JUMP2){
-        var c = counterManager.getCounter(actionObject.counterID);
+        var c = record.counterManager.getCounter(actionObject.counterID);
         if(c == null){
             return qsTr("IF:") + qsTr("Invalid Counter");
         }
 
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         var leftStr,rightStr;
@@ -1397,7 +1366,7 @@ var conditionActionToStringHandler = function(actionObject){
         return qsTr("IF:") + leftStr + " " +
                 cmdStrs[actionObject.cmd] + " " +
                 rightStr + " "
-                + qsTr("Go to") + flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
+                + qsTr("Go to") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + ".";
     }
 
     var pointDescr;
@@ -1420,7 +1389,7 @@ var conditionActionToStringHandler = function(actionObject){
     return qsTr("IF:") + pointDescr +
             pStatusStr + " "
             + qsTr("Limit:") + actionObject.limit + " " +
-            qsTr("Go to ") + flagsDefine.flagName(currentParsingProgram, actionObject.flag);
+            qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag);
 }
 
 var waitActionToStringHandler = function(actionObject){
@@ -1457,15 +1426,15 @@ var moduleCallBackActionToStringHandler = function(actionObject){
     return qsTr("Module End");
 }
 
-var callModuleActionToStringHandler = function(actionObject){
-    var returnTo = (actionObject.flag == - 1 ? qsTr("next line") : flagsDefine.flagName(currentParsingProgram, actionObject.flag));
-    return qsTr("Call") + " " + functionManager.functionToString(actionObject.module) + " " +
+var callModuleActionToStringHandler = function(actionObject, record){
+    var returnTo = (actionObject.flag == - 1 ? qsTr("next line") : record.flagsDefine.flagName(currentParsingProgram, actionObject.flag));
+    return qsTr("Call") + " " + record.functionManager.functionToString(actionObject.module) + " " +
             qsTr("And then return to ") + returnTo;
 }
 
-var commentActionToStringHandler = function(actionObject){
+var commentActionToStringHandler = function(actionObject, record){
     if(actionObject.commentAction != null){
-        actionObject.comment = actionToString(actionObject.commentAction);
+        actionObject.comment = record.actionToString(actionObject.commentAction);
     }
     return actionObject.comment;
 }
@@ -1553,8 +1522,8 @@ function stackTypeToString(type){
     }
 }
 
-var stackActionToStringHandler = function(actionObject){
-    var si = getStackInfoFromID(actionObject.stackID);
+var stackActionToStringHandler = function(actionObject, record){
+    var si = record.stackManager.getStackInfoFromID(actionObject.stackID);
     var descr = (si == null) ? qsTr("not exist") : si.descr;
     var interval="";
     if(actionObject.interval_en)
@@ -1594,8 +1563,8 @@ var stackActionToStringHandler = function(actionObject){
     var isBoxStack = si.type == stackTypes.kST_Box;
     var spee1 = isBoxStack ? (qsTr("Speed1:") + actionObject.speed1):
                              "";
-    var counterID1 = si.si0.doesBindingCounter ? counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
-    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
+    var counterID1 = si.si0.doesBindingCounter ? record.counterManager.counterToString(si.si0.counterID, true) : qsTr("Counter:Self");
+    var counterID2 = isBoxStack ? (si.si1.doesBindingCounter ? record.counterManager.counterToString(si.si1.counterID, true) : qsTr("Counter:Self"))
                                 : "";
     return stackTypeToString(si.type) + qsTr("Stack") + "[" + actionObject.stackID + "]:" +
             descr + interval+ "\n                            " +
@@ -1605,8 +1574,8 @@ var stackActionToStringHandler = function(actionObject){
             axisInfos[2].name +(isBoxStack ? qsTr("Speed0:"): qsTr("Speed:")) + (actionObject.speedZ == undefined? 80.0:actionObject.speedZ) + " " + spee1 + "\n                            " + counterID1 + " " + counterID2;
 }
 
-var counterActionToStringHandler = function(actionObject){
-    var c = counterManager.getCounter(actionObject.counterID);
+var counterActionToStringHandler = function(actionObject, record){
+    var c = record.counterManager.getCounter(actionObject.counterID);
     var clearStr = actionObject.action == actions.F_CMD_COUNTER_CLEAR ? qsTr("Clear ") : qsTr("Plus 1");
     return clearStr + c.toString() + ":" + c.name;
 }
@@ -1854,16 +1823,6 @@ var actionObjectToEditableITems = function(actionObject){
     return ret;
 }
 
-var actionToStringNoCusomName= function(actionObject){
-    var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
-    if(toStrHandler === undefined) {console.log(actionObject.action)}
-    return toStrHandler(actionObject);
-}
-
-var actionToString = function(actionObject){
-    var customName = actionObject.customName || "";
-    return customName + " " + actionToStringNoCusomName(actionObject);
-}
 
 function ProgramModelItem(actionObject, at){
     this.mI_ActionObject = actionObject;
@@ -1938,7 +1897,8 @@ var canActionUsePoint = function(actionObject){
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POINT_POSE ||
             actionObject.action === actions.F_CMD_ARC_RELATIVE_POSE ||
             actionObject.action === actions.F_CMD_ARC3D_MOVE_POSE ||
-            actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE;
+            actionObject.action === actions.F_CMD_LINE_RELATIVE_POSE ||
+            actionObject.action === actions.F_CMD_JOINT_RELATIVE;
 }
 
 var canActionTestRun = function(actionObject){
@@ -2038,25 +1998,145 @@ var updateCustomActions = function(actionObject){
     }
 }
 
-var actionObjectToText = function(actionObject){
-    var originText = actionToStringNoCusomName(actionObject);
-    if(actionObject.customName){
-        var styledCN = icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
-        originText = styledCN + " " + originText;
+//var actionToStringNoCusomName= function(actionObject){
+//    var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
+//    if(toStrHandler === undefined) {console.log(actionObject.action)}
+//    return toStrHandler(actionObject);
+//}
+
+//var actionToString = function(actionObject){
+//    var customName = actionObject.customName || "";
+//    return customName + " " + actionToStringNoCusomName(actionObject);
+//}
+
+//var actionObjectToText = function(actionObject){
+//    var originText = actionToStringNoCusomName(actionObject);
+//    if(actionObject.customName){
+//        var styledCN = icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+//        originText = styledCN + " " + originText;
+//    }
+//    var reg = new RegExp("\n                            ", 'g');
+//    return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+//}
+
+//var programsToText = function(program){
+//    var ret = "";
+//    var tmp;
+//    for(var i=0;i<program.length;++i){
+//        if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
+//        else if(i < 100) tmp = "&nbsp;"+i;
+//        else tmp = i;
+//        ret += tmp+":"+actionObjectToText(program[i])+ "<br>";
+//    }
+//    return ret;
+//}
+
+function Record(name, counters, stacks, variableDefs, functions){
+    this.init = function(name, counters, stacks, variableDefs, functions){
+        if(this.name === name) return;
+        this.definedPoints.clear();
+        if(counters !== undefined)
+            this.counterManager.init(counters);
+        if(variableDefs !== undefined)
+            this.variableManager.init(variableDefs);
+        if(stacks !== undefined)
+            this.stackManager.parseStacks(stacks);
+        if(functions !== undefined)
+            this.functionManager.init(functions, this.definedPoints);
+        this.name = name;
     }
-    var reg = new RegExp("\n                            ", 'g');
-    return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+
+    this.name = "";
+    this.counterManager = new CounterManager();
+    this.variableManager = new VariableManager();
+    this.stackManager = new StackManager();
+    this.definedPoints = DefinePoints.createNew();
+    this.functionManager = new FunctionManager();
+    this.flagsDefine = new FlagsDefine();
+    this.init(name, counters, stacks, variableDefs, functions);
+    this.actionToStringNoCusomName= function(actionObject){
+        var  toStrHandler = actionToStringHandlerMap.get(actionObject.action);
+        if(toStrHandler === undefined) {console.log(actionObject.action)}
+        return toStrHandler(actionObject, this);
+    };
+    this.actionToString = function(actionObject){
+        var customName = actionObject.customName || "";
+        return customName + " " + this.actionToStringNoCusomName(actionObject);
+    };
+
+    this.actionObjectToText = function(actionObject){
+        var originText = this.actionToStringNoCusomName(actionObject);
+        if(actionObject.customName){
+            var styledCN = icStrformat('<font size="4" color="#0000FF">{0}</font>', actionObject.customName);
+            originText = styledCN + " " + originText;
+        }
+        var reg = new RegExp("\n                            ", 'g');
+        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + originText.replace(reg, "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+    };
+    this.programsToText = function(program){
+        var ret = "";
+        var tmp;
+        for(var i=0;i<program.length;++i){
+            if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
+            else if(i < 100) tmp = "&nbsp;"+i;
+            else tmp = i;
+            ret += tmp+":"+this.actionObjectToText(program[i])+ "<br>";
+        }
+        return ret;
+    };
+//    this.parseProgram
 }
 
-var programsToText = function(program){
-    var ret = "";
-    var tmp;
-    for(var i=0;i<program.length;++i){
-        if(i < 10)  tmp = "&nbsp;&nbsp;"+i;
-        else if(i < 100) tmp = "&nbsp;"+i;
-        else tmp = i;
-        ret += tmp+":"+actionObjectToText(program[i])+ "<br>";
-    }
-    return ret;
+var waitTeachInitedObjs = [];
+
+function registerWatiTeachInitedObj(obj){
+    waitTeachInitedObjs.push(obj);
 }
 
+var currentRecord = null;
+
+function loadRecord(recordName, counters, stacks, variableDefs, functions){
+    console.log("Teach loadRecord", recordName);
+    currentRecord =  new Record(recordName,counters, stacks,variableDefs, functions);
+    for(var i = 0, len = waitTeachInitedObjs.length; i < len; ++i){
+        if(waitTeachInitedObjs[i].hasOwnProperty("onTeachInited")){
+            waitTeachInitedObjs[i].onTeachInited();
+        }
+    }
+    waitTeachInitedObjs.length = 0;
+}
+
+function actionCounterIDs(action, record){
+    if(record === undefined)
+        record = currentRecord;
+    if(customActions.hasOwnProperty(action.action)){
+        return customActions[action.action].getCountersID(action);
+    }
+    else if(action.action == actions.F_CMD_STACK0){
+        var si = record.stackManager.getStackInfoFromID(action.stackID);
+        return [si.si0.counterID];
+    }else if(action.action == actions.ACT_COMMENT){
+        return arguments.callee(action.commentAction);
+    }
+
+    return [action.counterID];
+}
+
+function hasCounterIDAction(action, record){
+    if(record === undefined)
+        record = currentRecord;
+    if(customActions.hasOwnProperty(action.action)){
+        return customActions[action.action].hasCounter;
+    }
+    else if(action.action == actions.F_CMD_STACK0){
+        var si = record.stackManager.getStackInfoFromID(action.stackID);
+        if(si != null)
+            return si.si0.doesBindingCounter || si.si1.doesBindingCounter;
+    }else if(action.action === actions.ACT_COMMENT){
+        if(action.commentAction != null){
+            return arguments.callee(action.commentAction);
+        }
+    }
+
+    return action.hasOwnProperty("counterID");
+}

@@ -808,8 +808,8 @@ Rectangle {
             var sI;
             var len;
             var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
-            for(i = 0; i < Teach.stackInfos.length; ++i){
-                sI = Teach.stackInfos[i];
+            for(i = 0; i < Teach.currentRecord.stackManager.stackInfos.length; ++i){
+                sI = Teach.currentRecord.stackManager.stackInfos[i];
                 if(sI.dsHostID >= 0 && sI.posData.length > 0){
                     ESData.externalDataManager.registerDataSource(sI.dsName,
                                                                   ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));

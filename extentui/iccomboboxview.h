@@ -73,7 +73,7 @@ public:
 
 
 protected:
-
+    void mouseReleaseEvent(QMouseEvent *) { this->accept();}
 private slots:
     void on_listView_itemClicked(QListWidgetItem *item);
 
@@ -83,6 +83,7 @@ signals:
 private:
     QVBoxLayout *verticalLayout_;
     ICComboBoxListView* listView_;
+    QWidget* realFrame_;
     double editorWidth_;
     int screenWidth_;
     int screenHeight_;

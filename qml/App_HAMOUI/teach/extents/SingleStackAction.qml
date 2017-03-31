@@ -31,7 +31,7 @@ ExtentActionEditorBase {
         else if(pointsSel.configValue < 0)
             points = [];
         else{
-            var pt = Teach.definedPoints.getPoint(pointsSel.configText());
+            var pt = Teach.currentRecord.definedPoints.getPoint(pointsSel.configText());
             points =  [{"pointName":pt.name, "pos":pt.point}];
         }
     }
@@ -44,7 +44,7 @@ ExtentActionEditorBase {
 
         oaS = counterSel.configValue;
         counterSel.configValue = -1;
-        var countersStrList = Teach.counterManager.countersStrList();
+        var countersStrList = Teach.currentRecord.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         counterSel.items = countersStrList;
         counterSel.configValue = oaS >= counterSel.items.length ? - 1 : oaS;
@@ -80,7 +80,7 @@ ExtentActionEditorBase {
     }
 
     function onPointAdded(point){
-        var pNL = Teach.definedPoints.pointNameList();
+        var pNL = Teach.currentRecord.definedPoints.pointNameList();
         var type;
         var fPNs = [];
         for(var i = 0; i < pNL.length; ++i){
@@ -254,10 +254,18 @@ ExtentActionEditorBase {
             onPointAdded(null);
         }
     }
+    function onTeachInited(){
+        Teach.currentRecord.definedPoints.registerPointsMonitor(instance);
+        onPointAdded(null);
+        refreshSel();
+
+    }
+
     Component.onCompleted: {
         bindActionDefine(ExtentActionDefine.extentSingleStackAction);
-        refreshSel();
-        Teach.definedPoints.registerPointsMonitor(instance);
-        onPointAdded(null);
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(instance);
+        else
+            onTeachInited();
     }
 }

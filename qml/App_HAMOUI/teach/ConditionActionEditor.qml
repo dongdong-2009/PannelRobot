@@ -53,8 +53,8 @@ Item {
     function createActionObjects(){
         var ret = [];
         if(defineFlag.isChecked){
-            var dflag = Teach.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
-            //            Teach.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
+            var dflag = Teach.currentRecord.flagsDefine.createFlag(ProgramFlowPage.currentEditingProgram, flagDescr.configValue);
+            //            Teach.currentRecord.flagsDefine.pushFlag(ProgramFlowPage.currentEditingProgram, flag);
             ret.push(Teach.generateFlagAction(dflag.flagID, dflag.descr));
             return ret;
         }
@@ -612,7 +612,7 @@ Item {
                     onVisibleChanged: {
                         if(visible){
                             configValue = -1;
-                            items = Teach.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram);
+                            items = Teach.currentRecord.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram);
                         }
                     }
                 }
@@ -630,11 +630,11 @@ Item {
     }
 
     function onMoldChanged(){
-        counters = Teach.counterManager.counters;
+        counters = Teach.currentRecord.counterManager.counters;
         var cs = counters;
         counterModel.clear();
         for(var i = 0; i < cs.length; ++i){
-            counterModel.append(ioView.createValveMoldItem(Teach.counterManager.counterToString(cs[i].id) + ":", cs[i].name, 0, 0));
+            counterModel.append(ioView.createValveMoldItem(Teach.currentRecord.counterManager.counterToString(cs[i].id) + ":", cs[i].name, 0, 0));
         }
 
     }
@@ -647,7 +647,7 @@ Item {
 
     Component.onCompleted: {
         panelRobotController.moldChanged.connect(onMoldChanged);
-        onMoldChanged();
+//        onMoldChanged();
         var i;
         var l;
         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");

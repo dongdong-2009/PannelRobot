@@ -617,10 +617,10 @@ void PanelRobotController::InitMainView()
 
 }
 
-QString scanHelper(const QString& filter, const QString &path = ICAppSettings::UsbPath, QDir::Filters filters = QDir::NoFilter)
+QString scanHelper(const QStringList& filter, const QString &path = ICAppSettings::UsbPath, QDir::Filters filters = QDir::NoFilter)
 {
     QDir usb(path);
-    QStringList updaters = usb.entryList(QStringList()<<filter, filters);
+    QStringList updaters = usb.entryList(filter, filters);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
     {
@@ -634,7 +634,7 @@ QString scanHelper(const QString& filter, const QString &path = ICAppSettings::U
 
 QString PanelRobotController::scanUSBUpdaters(const QString &filter) const
 {
-    return scanHelper(QString("%1*.bfe").arg(filter));
+    return scanHelper(QStringList()<<QString("%1*.bfe").arg(filter));
 }
 
 QString PanelRobotController::scanUpdaters(const QString &filter, int mode) const
@@ -884,7 +884,7 @@ bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line,
 
 QString PanelRobotController::scanUSBBackupPackages(const QString& filter) const
 {
-    return scanHelper(QString("%1*.tar").arg(filter));
+    return scanHelper(QStringList()<<QString("%1*.tar").arg(filter)<<QString("%1*.zip").arg(filter));
 }
 
 int PanelRobotController::exportRobotMold(const QString &molds, const QString& name) const
@@ -968,7 +968,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
             .arg(name)
             .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
-    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
+    QString cmd = QString("cd %1 && zip -r %2.zip %2 && mv %2.zip %3 && rm -r %2").arg(QDir::tempPath())
             .arg(name)
             .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
 #endif
@@ -996,7 +996,12 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     packageDirName.chop(4);
     if(!temp.exists(packageDirName))
     {
-        ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+        if(package.endsWith(".tar"))
+            ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+        else
+        {
+            ::system(QString("cp %1 %2 -f && cd %2 && unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+        }
     }
     temp.cd(packageDirName);
     QStringList molds = temp.entryList(QStringList()<<"*.act");
@@ -1787,14 +1792,14 @@ bool PanelRobotController::loadRecord(const QString &name)
 QString PanelRobotController::scanHMIBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.hmi.hcdb");
+        return scanHelper(QStringList()<<"*.hmi.hcdb");
     return scanUserDir("hmibps", "*.hmi.hcdb");
 }
 
 QString PanelRobotController::scanMachineBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.mr.hcdb");
+        return scanHelper(QStringList()<<"*.mr.hcdb");
     return scanUserDir("mrbps", "*.mr.hcdb");
 
 }
@@ -1802,7 +1807,7 @@ QString PanelRobotController::scanMachineBackups(int mode) const
 QString PanelRobotController::scanGhostBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.ghost.hcdb");
+        return scanHelper(QStringList()<<"*.ghost.hcdb");
     return scanUserDir("ghosts", "*.ghost.hcdb");
 }
 
@@ -1947,7 +1952,7 @@ void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const
 {
-    return scanHelper(QString("%1").arg(filter), ICAppSettings::UsbPath, QDir::Files);
+    return scanHelper(QStringList()<<QString("%1").arg(filter), ICAppSettings::UsbPath, QDir::Files);
 }
 
 QString PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const

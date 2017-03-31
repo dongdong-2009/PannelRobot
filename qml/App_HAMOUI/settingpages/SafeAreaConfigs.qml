@@ -261,17 +261,53 @@ Item {
                     function onAxisDefinesChanged(){
                         var axis = AxisDefine.usedAxisNameList();
                         axis.unshift(qsTr("NO"));
+                        if(axis1Set.configValue >=axis.length){
+                            axis1Set.configValue = 0;
+                        }
                         axis1Set.items = axis;
+                        if(axis2Set.configValue >=axis.length){
+                            axis2Set.configValue = 0;
+                        }
                         axis2Set.items = axis;
+                        if(axis3Set.configValue >=axis.length){
+                            axis3Set.configValue = 0;
+                        }
                         axis3Set.items = axis;
+                        if(safe2Axis1Set.configValue >=axis.length){
+                            safe2Axis1Set.configValue = 0;
+                        }
                         safe2Axis1Set.items = axis;
+                        if(safe2Axis2Set.configValue >=axis.length){
+                            safe2Axis2Set.configValue = 0;
+                        }
                         safe2Axis2Set.items = axis;
+                        if(safe2Axis3Set.configValue >=axis.length){
+                            safe2Axis3Set.configValue = 0;
+                        }
                         safe2Axis3Set.items = axis;
+                        if(safe3Axis1Set.configValue >=axis.length){
+                            safe3Axis1Set.configValue = 0;
+                        }
                         safe3Axis1Set.items = axis;
+                        if(safe3Axis2Set.configValue >=axis.length){
+                            safe3Axis2Set.configValue = 0;
+                        }
                         safe3Axis2Set.items = axis;
+                        if(safe3Axis3Set.configValue >=axis.length){
+                            safe3Axis3Set.configValue = 0;
+                        }
                         safe3Axis3Set.items = axis;
+                        if(safe3Axis4Set.configValue >=axis.length){
+                            safe3Axis4Set.configValue = 0;
+                        }
                         safe3Axis4Set.items = axis;
+                        if(safe3Axis5Set.configValue >=axis.length){
+                            safe3Axis5Set.configValue = 0;
+                        }
                         safe3Axis5Set.items = axis;
+                        if(safe3Axis6Set.configValue >=axis.length){
+                            safe3Axis6Set.configValue = 0;
+                        }
                         safe3Axis6Set.items = axis;
                     }
                     Component.onCompleted: {
@@ -1728,8 +1764,10 @@ Item {
         for(var i=0,len=editor.items.length;i<len;++i){
             if(editor.items[i] == AxisDefine.axisInfos[id].name){
                 editor.configValue = i;
+                return;
             }
         }
+        editor.configValue = 0;
     }
 
     function getIDFromConfigValue(editor){
@@ -1742,5 +1780,4 @@ Item {
         }
         editor.axisID = -1;
     }
-
 }

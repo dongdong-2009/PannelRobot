@@ -463,13 +463,13 @@ Rectangle {
 
                             toTranslate = recordTmp.functionManager.functions;
                             for(var k=0;k<toTranslate.length;++k){
-                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + recordTmp.programsToText(JSON.parse(toTranslate[k].program))+"<br>";
+                                tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + recordTmp.programsToText(toTranslate[k].program)+"<br>";
                                 recordPrograms += tmpStr;
                             }
                             panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);
-                            tipDialog.hide();
                         }
                     }
+                    tipDialog.hide();
                 }
             }
 

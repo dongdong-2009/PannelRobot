@@ -52,6 +52,7 @@ ICComboBoxView::ICComboBoxView(QWidget *parent) :
   //    ui(new Ui::ICComboBoxView)
 {
     //    ui->setupUi(this);
+//    this->setStyleSheet("background:white");
     realFrame_ = new QWidget(this);
     verticalLayout_ = new QVBoxLayout(realFrame_);
     verticalLayout_->setContentsMargins(0, 0, 0, 0);
@@ -78,6 +79,7 @@ ICComboBoxView::ICComboBoxView(QWidget *parent) :
     this->resize(screenWidth_, screenHeight_);
 
     setWindowFlags(Qt::FramelessWindowHint);
+    this->move(0, 0);
 
     //    listView_->grabGesture(Qt::TapGesture);
     //    listView_->grabGesture(Qt::TapAndHoldGesture);

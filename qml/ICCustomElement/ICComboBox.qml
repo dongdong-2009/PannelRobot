@@ -70,7 +70,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if(items.length > 0){
-                var p = parent.mapToItem(null, x, y)
+                var p = parent.mapToItem(null, x, y);
                 currentIndex = comboBoxView.openView(p.x, p.y, width, height, items, currentIndex, hideIndexs);
             }
         }

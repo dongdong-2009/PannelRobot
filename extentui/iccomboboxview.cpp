@@ -168,13 +168,14 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     setCurrentIndex(currentIndex);
     //    QPoint topLeft(editorX, editorY);
     QPoint toMove;
+    int newX = (editorX - (realFrame_->width() - editorW));
     if(editorX + realFrame_->width() <= screenWidth_)
     {
         toMove.setX(editorX);
     }
-    else if(int newX = (editorX - (realFrame_->width() - editorW)) >= 0)
+    else if(newX >= 0)
     {
-        toMove.setX(newX);
+        toMove.setX(newX + 1);
     }
     else
     {

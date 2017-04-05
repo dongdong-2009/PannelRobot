@@ -997,10 +997,10 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     tarPath = QDir::toNativeSeparators(tarPath);
     if(!temp.exists(packageDirName))
     {
-        QFile testlog("testlog");
-        testlog.open(QFile::WriteOnly);
-        testlog.write(QString("copy %1 %2  && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
-        testlog.close();
+//        QFile testlog("testlog");
+//        testlog.open(QFile::WriteOnly);
+//        testlog.write(QString("copy %1 %2  && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+//        testlog.close();
 #ifdef Q_WS_WIN
         if(package.endsWith(".tar"))
             ::system(QString("..\\tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());

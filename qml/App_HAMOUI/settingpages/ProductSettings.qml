@@ -239,6 +239,10 @@ Item {
                 id:ioStatus
                 text: qsTr("IO")
             }
+            ICCheckBox{
+                id:alarmStatus
+                text: qsTr("Alarm")
+            }
             onCheckedIndexChanged: {
                 pageContainer.setCurrentIndex(checkedIndex);
             }
@@ -248,6 +252,9 @@ Item {
         }
         ListModel{
             id:ioModel
+        }
+        ListModel{
+            id:alarmModel
         }
 
         ICStackContainer{
@@ -495,10 +502,94 @@ Item {
                     }
                 }
             }
+            ICListView{
+                id:alarmContainer
+                model:alarmModel
+                spacing: 10
+                border.color: "gray"
+                border.width: 1
+                delegate: Row {
+                    spacing: 8
+                    z: 1000-index
+                    ICCheckBox {
+                        text: index+":"+qsTr("When the alarm number")
+                        anchors.verticalCenter: parent.verticalCenter
+                        isChecked: check
+                        onIsCheckedChanged: {
+                            alarmModel.setProperty(index,"check",isChecked);
+                        }
+                    }
+                    ICComboBoxConfigEdit{
+                        id:alarmcheckType
+                        inputWidth: 35
+                        items: [qsTr(">"),qsTr(">="),qsTr("<"),qsTr("<="),qsTr("=="),qsTr("!=")]
+                        onConfigValueChanged: {
+                            alarmModel.setProperty(index,"checkType",configValue);
+                        }
+                        configValue: checkType
+                    }
+                    ICLineEdit{
+                        id:alarmNumberSet
+                        inputWidth: 60
+                        onTextChanged: {
+                            alarmModel.setProperty(index,"alarmNum",text);
+                        }
+                        text: alarmNum
+                    }
+                    ICComboBoxConfigEdit{
+                        id:isKeepStatusSetting
+                        inputWidth: 100
+                        items: [qsTr("one"),qsTr("keep")]
+                        onConfigValueChanged: {
+                            alarmModel.setProperty(index,"isKeepStatus",configValue);
+                        }
+                        configValue: isKeepStatus
+                    }
+                    ICComboBoxConfigEdit{
+                        configName: qsTr("Output")
+                        configValue: outType_init
+                        items: [qsTr("IO output"),qsTr("M output")]
+                        onConfigValueChanged: {
+                            if(configValue<0||configValue>1)return;
+                            alarmModel.setProperty(index,"outType_init",configValue);
+                            if(configValue == 0){
+                                if(outid_init>=MData.yDefinesList.length){
+                                    alarmOutid.configValue =0;
+                                }
+                                alarmOutid.items = MData.yDefinesList;
+                            }
+                            else if(configValue == 1){
+                                if(outid_init>=MData.mDefinesList.length){
+                                    alarmOutid.configValue =0;
+                                }
+                                alarmOutid.items = MData.mDefinesList;
+                            }
+                        }
+                    }
+                    ICComboBox{
+                        id: alarmOutid
+                        width: 200
+                        currentIndex: outid_init
+                        onCurrentIndexChanged: {
+                            alarmModel.setProperty(index,"outid_init",currentIndex);
+                        }
+                    }
+                    ICComboBox{
+                        id: alarmoutstatus
+                        items: [qsTr("OFF"), qsTr("ON")]
+                        width: 50
+                        currentIndex: outStatus
+                        onCurrentIndexChanged: {
+                            alarmModel.setProperty(index,"outStatus",currentIndex);
+                        }
+                    }
+                }
+            }
 
             Component.onCompleted: {
                 pageContainer.addPage(valveContainer);
                 pageContainer.addPage(ioContainer);
+                pageContainer.addPage(alarmContainer);
                 pageContainer.setCurrentIndex(typeSel.checkedIndex);
             }
         }
@@ -519,6 +610,9 @@ Item {
                     else if(typeSel.checkedItem == ioStatus){
                         ioModel.append({"check":true,"checkType":0,"checkId":0,"checkStatus":0,"outType":0,"outId":0,"outStatus":0});
                     }
+                    else if(typeSel.checkedItem == alarmStatus){
+                        alarmModel.append({"check":true,"checkType":4,"alarmNum":7,"outType_init":0,"outid_init":0,"isKeepStatus":0,"outStatus":0});
+                    }
                 }
             }
             ICButton{
@@ -535,7 +629,7 @@ Item {
                             v = valveModel.get(i);
                             toSave.push(v);
                             if(v.check == true){
-                                console.log("send:");
+                                console.log("mode_send:");
                                 value=v.outstatus_init?1:0;
                                 if(v.outType_init==0){
                                     ret = MData.getOutIDFromConfig(v.outid_init);
@@ -563,7 +657,7 @@ Item {
                             v = ioModel.get(i);
                             toSave.push(v);
                             if(v.check == true){
-                                console.log("send:");
+                                console.log("io_send:");
                                 value =v.checkStatus?1:0;
                                 value|=v.checkId<<1;
                                 value|=v.checkType<<8;
@@ -585,14 +679,47 @@ Item {
                         panelRobotController.setCustomSettings("IOCheckSet", JSON.stringify(toSave), "IOCheckSet");
                         console.log(JSON.stringify(toSave));
                     }
+                    else if(typeSel.checkedItem==alarmStatus)
+                    {
+                        panelRobotController.modifyConfigValue(38,0);
+                        for(var i=0;i<alarmModel.count;i++)
+                        {
+                            v = alarmModel.get(i);
+                            toSave.push(v);
+                            if(v.check == true){
+                                console.log("alarm_send:");
+                                value =v.alarmNum;
+                                value|=v.checkType<<16;
+                                console.log(v.checkType);
+                                value|=(v.isKeepStatus?1:0)<<19;
+                                value|=(v.outType_init?1:0)<<21;
+                                if(v.outType_init==0){
+                                    ret = MData.getOutIDFromConfig(v.outid_init);
+                                    isNormal = ret[0];
+                                    value|=isNormal<<22;
+                                    value|=ret[1]<<23;
+                                    console.log("isNormal:");
+                                    console.log(isNormal);
+                                    console.log("ID:");
+                                    console.log(ret[1]);
+                                }
+                                else{
+                                    value|=isNormal<<22;
+                                    value|=v.outid_init<<23;
+                                }
+                                value|=v.outStatus<<30;
+                                console.log(isNormal,ret[1],value);
+                                panelRobotController.modifyConfigValue(37,value);
+                            }
+                        }
+                        panelRobotController.setCustomSettings("IOCheckAlarmSet", JSON.stringify(toSave), "IOCheckAlarmSet");
+                        console.log(JSON.stringify(toSave));
+                    }
                 }
             }
             Text {
                 id: tips
                 color: "red"
-//                horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                y:saveBtn.y-5
                 anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("Tips:New or modified, click Save to take effect!")
             }
@@ -903,6 +1030,10 @@ Item {
         iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckSet", "[]", "IOCheckSet"));
         for(i = 0, len = iosettings.length; i < len; ++i){
             ioModel.append(iosettings[i]);
+        }
+        iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckAlarmSet", "[]", "IOCheckAlarmSet"));
+        for(i = 0, len = iosettings.length; i < len; ++i){
+            alarmModel.append(iosettings[i]);
         }
 //        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));

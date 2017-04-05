@@ -964,7 +964,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         return ret;
     }
 #ifdef WIN32
-    QString cmd = QString("cd %1 && ..\\tar -cf %2.tar %2 && move /y %2.tar %3 && del /q %2 && rd /q %2").arg("temp")
+    QString cmd = QString("cd %1 && ..\\zip -r %2.zip %2 && move /y %2.zip %3 && del /q %2 && rd /q %2").arg("temp")
             .arg(name)
             .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
@@ -994,6 +994,7 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
 #endif
     QString packageDirName = package;
     packageDirName.chop(4);
+    tarPath = QDir::toNativeSeparators(tarPath);
     if(!temp.exists(packageDirName))
     {
         if(package.endsWith(".tar"))

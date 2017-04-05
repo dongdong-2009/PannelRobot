@@ -964,7 +964,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         return ret;
     }
 #ifdef WIN32
-    QString cmd = QString("cd %1 && ..\\tar -cf %2.tar %2 && move /y %2.tar %3 && del /q %2 && rd /q %2").arg("temp")
+    QString cmd = QString("cd %1 && ..\\zip -r %2.zip %2 && move /y %2.zip %3 && del /q %2 && rd /q %2").arg("temp")
             .arg(name)
             .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
@@ -1000,7 +1000,16 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
             ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
         else
         {
+#ifdef Q_WS_WIN
+            QFile testlog("testlog");
+            testlog.open(QFile::WriteOnly);
+            QString cmd = QString("copy %1 %2 && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path());
+            testlog.write(cmd.toUtf8());
+            testlog.close();
+            ::system(QString("copy %1 %2 && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+#else
             ::system(QString("cp %1 %2 -f && cd %2 && unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+#endif
         }
     }
     temp.cd(packageDirName);

@@ -568,7 +568,7 @@ Item {
                     }
                     ICComboBox{
                         id: alarmOutid
-                        width: 200
+                        width: 180
                         currentIndex: outid_init
                         onCurrentIndexChanged: {
                             alarmModel.setProperty(index,"outid_init",currentIndex);
@@ -577,10 +577,19 @@ Item {
                     ICComboBox{
                         id: alarmoutstatus
                         items: [qsTr("OFF"), qsTr("ON")]
-                        width: 50
+                        width: 40
                         currentIndex: outStatus
                         onCurrentIndexChanged: {
                             alarmModel.setProperty(index,"outStatus",currentIndex);
+                        }
+                    }
+                    ICButton{
+                        id:deleteAlarm
+                        height:alarmoutstatus.height
+                        width: 50
+                        text: qsTr("Delete")
+                        onButtonClicked: {
+                            alarmModel.remove(index);
                         }
                     }
                 }

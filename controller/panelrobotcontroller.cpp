@@ -997,12 +997,25 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     tarPath = QDir::toNativeSeparators(tarPath);
     if(!temp.exists(packageDirName))
     {
+//        QFile testlog("testlog");
+//        testlog.open(QFile::WriteOnly);
+//        testlog.write(QString("copy %1 %2  && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+//        testlog.close();
+#ifdef Q_WS_WIN
+        if(package.endsWith(".tar"))
+            ::system(QString("..\\tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+        else
+        {
+            ::system(QString("copy %1 %2 /y && cd %2 && ..\\unzip %3").arg(tarPath).arg(temp.path()).arg(packageDirName).toUtf8());
+        }
+#else
         if(package.endsWith(".tar"))
             ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
         else
         {
-            ::system(QString("cp %1 %2 -f && cd %2 && unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+            ::system(QString("cp %1 %2 -f && cd %2 && unzip %3").arg(tarPath).arg(temp.path()).arg(packageDirName).toUtf8());
         }
+#endif
     }
     temp.cd(packageDirName);
     QStringList molds = temp.entryList(QStringList()<<"*.act");

@@ -1038,17 +1038,17 @@ uint16_t io_all;
                     {
                     default:
                     case 0:
-                        board=IODefines.IO_BOARD_0+id/32;
+                        board=IODefines.IO_BOARD_0+parseInt(id/32);
                         s=panelRobotController.isInputOn(id,board);
 //                        console.log("bangding input:"+id+"status:"+s);
                         break;
                     case 1:
-                        board=IODefines.IO_BOARD_0+id/32;
+                        board=IODefines.IO_BOARD_0+parseInt(id/32);
                         s=panelRobotController.isOutputOn(id,board);
 //                        console.log("bangding output"+id+"status:"+s);
                         break;
                     case 2:
-                        board=IODefines.M_BOARD_0+id/32;
+                        board=IODefines.M_BOARD_0+parseInt(id/32);
                         s=panelRobotController.isOutputOn(id,board);
 //                        console.log("bangding M value"+id+"status:"+s);
                         break;

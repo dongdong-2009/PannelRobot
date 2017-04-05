@@ -9,7 +9,7 @@ DEFINES += NEW_PLAT
 
 SK_SIZE = 8
 
-QMAKE_CXX = ccache $${QMAKE_CXX}
+unix:QMAKE_CXX = ccache $${QMAKE_CXX}
 
 #DEFINES += COMM_DEBUG
 suffix = $${VERSION}
@@ -85,7 +85,7 @@ QMAKE_EXTRA_TARGETS += buildDB
 configAddrTarget.commands = python tools/addrgen.py defines/configs.csv common
 }
 QMAKE_EXTRA_TARGETS += configAddrTarget
-PRE_TARGETDEPS += .genAddr
+unix:PRE_TARGETDEPS += .genAddr
 
 reinstallDir = tools/Reinstall/
 updateDir = tools/Update

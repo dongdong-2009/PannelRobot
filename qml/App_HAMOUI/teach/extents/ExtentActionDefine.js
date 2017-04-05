@@ -145,7 +145,7 @@ var extentSingleStackAction = {
     },
 
     "editableItems":{"editor":Qt.createComponent("SingleStackAction.qml"), "itemDef":{"item":"SingleStackAction"}},
-    "toStringHandler":function(actionObject){
+    "toStringHandler":function(actionObject, record){
         var configs = actionObject.configs;
         var axisID = configs & 0x1F;
         var dir = (configs >> 5) & 1;
@@ -161,7 +161,7 @@ var extentSingleStackAction = {
         return qsTr("Single Stack") + "-" +  axisInfos[axisID].name + ":" + (dir == 0 ? qsTr("RP") : qsTr("PP")) + " " +
                 qsTr("Start Pos:") + startPos + " " +
                 qsTr("space:") + (isAddr ? qsTr("Addr:") : "") + actionObject.space + " " + qsTr("count:") + actionObject.count + "\n                            " +
-                (bindingCounter ? currentRecord.counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
+                (bindingCounter ? record.counterManager.counterToString(counterID, true) :  qsTr("Counter:Self")) + " " +
                 qsTr("speed:") + actionObject.speed;
     }
 };
@@ -324,9 +324,9 @@ var extentIntervalOutputAction = {
             ret.delay = properties.delay;
             return ret;
         },
-        "toStringHandler":function(actionObject){
+        "toStringHandler":function(actionObject, record){
             if(actionObject.pointStatus == undefined) return "";
-            var counterID1 = (actionObject.isBindingCount ? currentRecord.counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
+            var counterID1 = (actionObject.isBindingCount ? record.counterManager.counterToString(actionObject.counterID, true) : qsTr("Counter:Self"));
             return qsTr("IntervalOutput:") + qsTr("Interval")+actionObject.cnt+qsTr(",")+
                     getYDefineFromHWPoint(actionObject.point, actionObject.type).yDefine.descr + ""
                     + (actionObject.intervalType?qsTr("Always out"):qsTr("Time out")) +

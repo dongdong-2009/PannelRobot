@@ -916,7 +916,8 @@ var generateAxisServoAction = function(action,
                                        speedMode,
                                        stop,
                                        rel,
-                                       points){
+                                       points,
+                                       zero){
     return {
         "action":action,
         "axis":axis,
@@ -940,6 +941,8 @@ var generateAxisServoAction = function(action,
         "speedMode":speedMode == undefined ? 0 : speedMode,
         "stop":stop || false,
         "rel": rel || false,
+                                                                                                                                "zero":zero || false,
+
         "points":points == undefined ?  [] : [points]
         };
 }
@@ -1263,7 +1266,12 @@ var f_CMD_SINGLEToStringHandler = function(actionObject){
         ret += (actionObject.speedMode == 1 ? qsTr("Speed Control PP Start") :  qsTr("Speed Control RP Start") ) + " " + qsTranslate("Teach","Speed:") + actionObject.speed ;
     }else if(actionObject.stop){
         ret += qsTr("Stop");
-    }else{
+    }else if(actionObject.zero)
+    {
+        ret += qsTr("Zero");
+    }
+    else
+    {
         var pts = actionObject.points;
         if(pts === undefined) pts = [];
         if(pts.length !== 0){

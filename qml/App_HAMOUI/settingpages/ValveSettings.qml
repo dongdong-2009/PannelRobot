@@ -16,11 +16,11 @@ Item {
         text: qsTr("Confirm")
         onButtonClicked: {
             var d;
-            for(var s in PData.changedData){
-                d = PData.changedData[s];
-//                valveModel.set(s, {"x1Dir":d.x1Dir, "x2Dir":d.x2Dir, "time":d.time, "autoCheck":d.autoCheck });
-                valveModel.set(s, d);
-            }
+//            for(var s in PData.changedData){
+//                d = PData.changedData[s];
+////                valveModel.set(s, {"x1Dir":d.x1Dir, "x2Dir":d.x2Dir, "time":d.time, "autoCheck":d.autoCheck });
+//                valveModel.set(s, d);
+//            }
             var valveDefines = [];
             for(var i = 0; i < valveModel.count; ++i){
                 valveDefines.push(valveModel.get(i));
@@ -29,7 +29,7 @@ Item {
             Storage.setSetting(panelRobotController.currentRecordName() + "_valve", valveDefines);
             IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
             panelRobotController.initValveDefines(valveDefines);
-            PData.changedData = [];
+//            PData.changedData = [];
         }
     }
 
@@ -57,7 +57,8 @@ Item {
                 items: [qsTr("RP"), qsTr("PP")]
                 width: 70
                 onCurrentIndexChanged: {
-                    PData.changeX1Dir(index, valveModel.get(index).id, currentIndex);
+//                    PData.changeX1Dir(index, valveModel.get(index).id, currentIndex);
+                    valveModel.setProperty(index,"x1Dir",currentIndex);
                 }
             }
             ICComboBox{
@@ -66,7 +67,8 @@ Item {
                 items: [qsTr("RP"), qsTr("PP")]
                 width: 70
                 onCurrentIndexChanged: {
-                    PData.changeX2Dir(index, valveModel.get(index).id, currentIndex);
+//                    PData.changeX2Dir(index, valveModel.get(index).id, currentIndex);
+                    valveModel.setProperty(index,"x2Dir",currentIndex);
                 }
             }
             ICLineEdit{
@@ -74,13 +76,17 @@ Item {
                 unit: "s"
                 bindConfig: "s_rw_0_32_1_1201"
                 onTextChanged: {
-                    PData.changeTime(index, valveModel.get(index).id, text);
+//                    PData.changeTime(index, valveModel.get(index).id, text);
+                    valveModel.setProperty(index,"time",text);
                 }
             }
             ICCheckBox{
                 text:qsTr("Auto Check")
                 isChecked: autoCheck
-                onIsCheckedChanged:     PData.changeAutoCheck(index, valveModel.get(index).id, isChecked  );
+                onIsCheckedChanged:{
+//                    PData.changeAutoCheck(index, valveModel.get(index).id, isChecked  );
+                    valveModel.setProperty(index,"autoCheck",isChecked?ture:false);
+                }
             }
         }
     }
@@ -88,7 +94,7 @@ Item {
     function onMoldChanged(){
         valveContainer.model = null;
         valveModel.clear();
-        PData.changedData = [];
+//        PData.changedData = [];
         IODefines.combineValveDefines(Storage.getSetting(panelRobotController.currentRecordName() + "_valve"));
         panelRobotController.initValveDefines(IODefines.valveDefinesJSON());
         Storage.setSetting(panelRobotController.currentRecordName() + "_valve",IODefines.valveDefinesJSON());

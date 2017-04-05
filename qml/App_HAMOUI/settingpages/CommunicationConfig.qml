@@ -20,6 +20,7 @@ ICSettingConfigsScope {
         }
         ICCheckBox{
             id:canSetting
+            enabled: false
             text: qsTr("CAN")
         }
         onCheckedIndexChanged: {

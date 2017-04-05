@@ -26,7 +26,7 @@ function getOutIDFromConfig(cV){
     }
     ret.push(isNormal);
     if(isNormal){
-        id = valve.y1Point;
+        id = valve.y1Point+valve.y1Board*32;
     }
     else{
         id = valve.id;

@@ -209,3 +209,10 @@ void ICComboBoxView::on_listView_itemClicked(QListWidgetItem *item)
 {
     this->accept();
 }
+
+void ICComboBoxView::mouseReleaseEvent(QMouseEvent *e)
+{
+    if(!realFrame_->rect().contains(e->pos()))
+        this->accept();
+    QDialog::mouseReleaseEvent(e);
+}

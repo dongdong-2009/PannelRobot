@@ -466,10 +466,11 @@ Rectangle {
                                 tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + recordTmp.programsToText(toTranslate[k].program)+"<br>";
                                 recordPrograms += tmpStr;
                             }
-                            panelRobotController.writeUsbFile(record.name+".txt",recordPrograms);
+                            panelRobotController.writeUsbFile(record.name+".html",'<html><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><body>' + recordPrograms + "</body></html>");
                         }
                     }
-                    tipDialog.hide();
+                    tipDialog.information(qsTr("Print Finished!"), qsTr("OK"));
+
                 }
             }
 

@@ -1991,17 +1991,19 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
 
 bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
 {
+#ifdef Q_WS_QWS
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName.toUtf8());
+#else
     QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+#endif
     QFile f(filePath);
 
     if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
         return 0;
 
-    QTextStream txtOutput(&f);
-    QTextDocument contentText;
-    contentText.setHtml(content);
-    txtOutput << contentText.toPlainText() << endl;
+    f.write(content.toUtf8());
     f.close();
+    ::system("sync");
     return 1;
 }
 

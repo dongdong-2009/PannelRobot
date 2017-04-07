@@ -419,7 +419,7 @@ Rectangle {
                     var now = new Date();
                     var ret = panelRobotController.exportRobotMold(JSON.stringify(exportMolds),
                                                                    "HCBackupRobot_" + Utils.formatDate(now, "yyyyMMddhhmmss"));
-                    console.log(ret);
+//                    console.log(ret);
                     if(ret === 0)
                         tipDialog.information(qsTr("Expoert Finished!"), qsTr("OK"));
                     else

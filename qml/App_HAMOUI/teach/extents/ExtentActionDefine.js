@@ -388,18 +388,18 @@ var extentParabolaAction = {
             sec = "Y:";
         }
         if(actionObject.endType == 0){
-            end = "On";
+            end = qsTr("On");
         }
         else if(actionObject.endType == 1){
-            end = "Before";
+            end = qsTr("Before");
         }
-        else if(actionObject.endType == 0){
-            end = "After";
+        else if(actionObject.endType == 2){
+            end = qsTr("After");
         }
 
-        return qsTr("Parabola Move")+su+end + " "+"endPos:"+(pts.length >0?(pts[0].pointName+"("):"")+fir+actionObject.ePos0 +" " +sec+fir+actionObject.ePos1+(pts.length >0?")":"")+"\n                            "+
-                "period len:"+actionObject.pL+ " A"+ actionObject.pL +"\n                            "+
-                "speed:"+actionObject.speed + " " + "delay:"+actionObject.delay;
+        return qsTr("Parabola Move")+su+end +qsTr("endPos:")+(pts.length >0?(pts[0].pointName+"("):"")+fir+actionObject.ePos0 +" " +sec+actionObject.ePos1+(pts.length >0?")":"")+"\n                            "+
+                qsTr("period len:")+actionObject.pL+" "+ qsTr(" A")+ actionObject.a +"\n                            "+
+                qsTr("speed:")+actionObject.speed + " " + qsTr("delay:")+actionObject.delay;
     }
 };
 

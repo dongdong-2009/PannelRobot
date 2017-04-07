@@ -20,8 +20,24 @@ ExtentActionEditorBase {
 
     property variant points: []
 
-    onActionObjectChanged{
+    onActionObjectChanged:{
         if(actionObject == null) return;
+        if(actionObject.points.length >0)
+            relPoint.isChecked = true;
+        else{
+            relPoint.isChecked = false;
+            pointsSel.currentIndex = -1;
+            return;
+        }
+        var pt = Teach.currentRecord.definedPoints.pointNameList();
+        for(var i=0,len = pt.length;i<len;++i){
+            if(actionObject.points[0].pointName == pt[i]){
+                pointsSel.currentIndex = i;
+                return;
+            }
+        }
+        pointsSel.currentIndex = -1;
+
 
     }
 
@@ -89,12 +105,14 @@ ExtentActionEditorBase {
         }
 
         Row{
+            width: 398
             spacing: 6
             ICCheckBox{
                 id:relPoint
                 text: qsTr("Rel Points")
                 onIsCheckedChanged: {
                     syncPoints();
+//                    console.log(pointSet.width);
                 }
             }
 

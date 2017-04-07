@@ -228,6 +228,7 @@ void PanelRobotController::Init()
     qApp->installTranslator(&panelRoboTranslator_);
     qApp->installTranslator(&configsTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
+    ICRobotMold::CurrentMold()->CompileMold();
 
 //    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
 
@@ -1758,6 +1759,7 @@ bool PanelRobotController::loadRecord(const QString &name)
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
     QMap<int, StackInfo> stacks = mold->GetStackInfos();
     bool ret =  mold->LoadMold(name);
+    ret = mold->CompileMold();
     if(ret)
     {
         ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());

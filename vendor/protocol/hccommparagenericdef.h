@@ -789,6 +789,8 @@ typedef enum
     F_CMD_SINGLE_TORQUE_FUNC,
     //< 单轴动作带输入检测和提前减速 电机ID 位置 速度 延时 输入点停止使能 输入点 输入点通断 立即停使能 减速位置偏移 每次偏移 提前减速速度 存储地址
     F_CMD_SINGLE_ADD_MEMPOS_FUNC,
+    //< 抛物线运动
+    F_CMD_PARABOLA2DMOVE,
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M，1000:等待数据源完成信号） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
     F_CMD_IO_CHECK, //输入检测 输入点 检测方向 开始停止检测 延时

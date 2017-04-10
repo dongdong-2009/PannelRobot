@@ -11,6 +11,8 @@
 #include "icupdatesystem.h"
 #include "icutility.h"
 #include "icregister.h"
+#include "quazip.h"
+#include "JlCompress.h"
 
 #ifdef Q_WS_QWS
 #include <stdio.h>
@@ -884,7 +886,7 @@ bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line,
 
 QString PanelRobotController::scanUSBBackupPackages(const QString& filter) const
 {
-    return scanHelper(QStringList()<<QString("%1*.tar").arg(filter)<<QString("%1*.7z").arg(filter));
+    return scanHelper(QStringList()<<QString("%1*.tar").arg(filter)<<QString("%1*.zip").arg(filter));
 }
 
 int PanelRobotController::exportRobotMold(const QString &molds, const QString& name) const
@@ -964,18 +966,22 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         ret = MoldMaintainRet::kME_USBNotFound;
         return ret;
     }
+    QString zipDirName = ICAppSettings::tmpDir().absoluteFilePath(name);
 #ifdef WIN32
-    QString cmd = QString("cd %1 && ..\\7z a %2.7z %2 && move /y %2.7z %3 && del /q %2 && rd /q %2").arg("temp")
-            .arg(name)
-            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
+    QString cmd = QString("del /q %1 && rd /q %1").arg(zipDirName);
+//    QString cmd = QString("cd %1 && ..\\7z a %2.7z %2 && move /y %2.7z %3 && del /q %2 && rd /q %2").arg("temp")
+//            .arg(name)
+//            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
-    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
-            .arg(name)
-            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
+    QString cmd = QString("rm -r %1").arg(zipDirName);
+//    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
+//            .arg(name)
+//            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
 #endif
+    ret = !zipDir(zipDirName, QDir(ICAppSettings::UsbPath).absoluteFilePath(name + ".zip"));
     qDebug()<<cmd;
 //    QMessageBox::information(NULL, "tip", cmd.toUtf8());
-    ::system(cmd.toUtf8());
+//    ::system(cmd.toUtf8());
 
 #ifndef Q_WS_WIN32
     ::sync();
@@ -1007,14 +1013,16 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
             ::system(QString("..\\tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
         else
         {
-            ::system(QString(".\\7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+//            ::system(QString(".\\7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+            unzipDir(ICAppSettings::tmpDir().absoluteFilePath(packageDirName), tarPath);
         }
 #else
         if(package.endsWith(".tar"))
             ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
         else
         {
-            ::system(QString("7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+//            ::system(QString("7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+            unzipDir(ICAppSettings::tmpDir().absoluteFilePath(packageDirName), tarPath);
         }
 #endif
     }
@@ -2011,4 +2019,14 @@ bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& 
     return 1;
 }
 
+bool PanelRobotController::zipDir(const QString &path, const QString &name) const
+{
+    qDebug()<<"zip:"<<name<<path;
+    return JlCompress::compressDir(name, path);
+}
 
+QStringList PanelRobotController::unzipDir(const QString &path, const QString &name) const
+{
+    qDebug()<<"unzip:"<<name<<path;
+    return JlCompress::extractDir(name, path);
+}

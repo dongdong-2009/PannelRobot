@@ -60,6 +60,7 @@ include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 include(vendor/IndustrialSystemFramework/ICCore/ICCore.pri)
 include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
 include(vendor/IndustrialSystemFramework/QJson/QJson.pri)
+include(vendor/quazip/quazip.pri)
 #include(vendor/qwt/qwt.pri)
 
 include(virtualhost/virtualhost.pri)
@@ -143,3 +144,4 @@ TRANSLATIONS += PanelRobot_zh_CN.ts PanelRobot_en_US.ts
 
 RESOURCES += \
     resource.qrc
+LIBS += -lz

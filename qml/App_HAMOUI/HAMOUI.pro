@@ -12,7 +12,8 @@ teach/extents/*.js
 }
 
 DISTFILES += \
-    settingpages/CommunicationConfig.qml
+    settingpages/CommunicationConfig.qml \
+    teach/extents/ParabolaActionEditor.qml
 
 
 

@@ -1202,32 +1202,19 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
 }
 
-bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
+bool ICRobotMold::CompileMold()
 {
-    if(moldName == moldName_ && !reload)
-        return false;
-    QStringList programs = ICDALHelper::MoldProgramContent(moldName);
-    if(programs.size() != 9) return false;
-    moldName_ = moldName;
+    bool ok;
     CompileInfo p;
     int err;
-//    programsCode_.clear();
-//    programs_.clear();
-    bool ok = false;
-    stacks_ = ICDALHelper::MoldStacksContent(moldName);
-    stackInfos_ = ParseStacks(stacks_, ok);
-    counters_ = ICDALHelper::GetMoldCounterDef(moldName);
-    variables_ = ICDALHelper::GetMoldVariableDef(moldName);
-    functions_ = ICDALHelper::MoldFunctionsContent(moldName);
+    QList<CompileInfo> tmpPrograms;
     compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
     ok = true;
-    QList<CompileInfo> tmpPrograms;
-    QStringList tmpProgramsCode;
-    for(int i = 0; i != programs.size(); ++i)
+
+    for(int i = 0; i != programsCode_.size(); ++i)
     {
-        tmpProgramsCode.append(programs.at(i));
         qDebug()<<"Load Record:"<<i;
-        p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
+        p = Complie(programsCode_.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr())
         {
             ok = false;
@@ -1237,9 +1224,51 @@ bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
     }
     if(ok)
     {
-        programsCode_ = tmpProgramsCode;
+//        programsCode_ = tmpProgramsCode;
         programs_ = tmpPrograms;
     }
+    return ok;
+}
+
+bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
+{
+    if(moldName == moldName_ && !reload)
+        return false;
+    QStringList programs = ICDALHelper::MoldProgramContent(moldName);
+    if(programs.size() != 9) return false;
+    moldName_ = moldName;
+
+//    programsCode_.clear();
+//    programs_.clear();
+    bool ok = false;
+    stacks_ = ICDALHelper::MoldStacksContent(moldName);
+    stackInfos_ = ParseStacks(stacks_, ok);
+    counters_ = ICDALHelper::GetMoldCounterDef(moldName);
+    variables_ = ICDALHelper::GetMoldVariableDef(moldName);
+    functions_ = ICDALHelper::MoldFunctionsContent(moldName);
+//    compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
+    ok = true;
+    programsCode_ = programs;
+
+//    QList<CompileInfo> tmpPrograms;
+//    QStringList tmpProgramsCode;
+//    for(int i = 0; i != programs.size(); ++i)
+//    {
+//        tmpProgramsCode.append(programs.at(i));
+//        qDebug()<<"Load Record:"<<i;
+//        p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
+//        if(p.IsCompileErr())
+//        {
+//            ok = false;
+//            qDebug()<<"Load Mold Err:"<<p.ErrInfo();
+//        }
+//        tmpPrograms.append(p);
+//    }
+//    if(ok)
+//    {
+//        programsCode_ = tmpProgramsCode;
+//        programs_ = tmpPrograms;
+//    }
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));
     for(int i = 0; i != fncs.size(); ++i)

@@ -924,11 +924,12 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     QFile file;
     QStringList toWrite;
     QString moldName;
+
     for(int i = 0; i < result.size(); ++i)
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-#ifdef Q_WS_QWS
+#ifndef Q_WS_X11
         moldName = moldName.toUtf8();
 #endif
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));

@@ -147,7 +147,7 @@ class QuaZipPrivate {
       static QTextCodec *defaultFileNameCodec;
 };
 
-QTextCodec *QuaZipPrivate::defaultFileNameCodec = NULL;
+QTextCodec *QuaZipPrivate::defaultFileNameCodec = QTextCodec::codecForName("UTF-8");
 
 void QuaZipPrivate::clearDirectoryMap()
 {

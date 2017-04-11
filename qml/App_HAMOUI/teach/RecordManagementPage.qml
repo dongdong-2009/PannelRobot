@@ -505,7 +505,7 @@ Rectangle {
                             //                        tipDialog.warning(ICString.icStrformat(qsTr("Import {0} fail!"), ret[i].recordName), qsTr("OK"));
                         }
                     }
-                    tipDialog.information(qsTr("Import Finished!\n") + errLog, qsTr("OK"));
+                    tipDialog.warning(qsTr("Import Finished!\n"),qsTr("OK"),errLog);
                 }
 
             }

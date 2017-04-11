@@ -380,12 +380,12 @@ var extentParabolaAction = {
         else if(actionObject.surfaceType == 1){
             su = "XZ:";
             fir = "X:";
-            sec = "Y:"
+            sec = "Z:"
         }
         else if(actionObject.surfaceType == 2){
             su = "YZ:";
-            fir = "X:";
-            sec = "Y:";
+            fir = "Y:";
+            sec = "Z:";
         }
         if(actionObject.endType == 0){
             end = qsTr("On");

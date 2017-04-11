@@ -4057,7 +4057,8 @@ please chose!</source>
     <message>
         <source>Import {0} fail!
 </source>
-        <translation>导入{0}失败!</translation>
+        <translation>导入{0}失败!
+</translation>
     </message>
     <message>
         <source>Import Finished!
@@ -4138,7 +4139,7 @@ please chose!</source>
     </message>
     <message>
         <source>Print Finished!</source>
-        <translation type="unfinished"></translation>
+        <translation>打印完成!</translation>
     </message>
 </context>
 <context>

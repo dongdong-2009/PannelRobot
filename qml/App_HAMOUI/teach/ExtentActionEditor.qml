@@ -74,6 +74,7 @@ Item {
             ICCheckBox{
                 id:parabolaMove
                 text: qsTr("parabolaMove")
+                visible: false
             }
         }
         onCheckedIndexChanged: {

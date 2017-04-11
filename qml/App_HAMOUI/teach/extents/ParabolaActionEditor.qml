@@ -17,6 +17,7 @@ ExtentActionEditorBase {
     property alias a: aEdit.configValue
     property alias speed: speedEdit.configValue
     property alias delay: delayEdit.configValue
+    property bool isAutoMode: false
 
     property variant points: []
 
@@ -37,8 +38,16 @@ ExtentActionEditorBase {
             }
         }
         pointsSel.currentIndex = -1;
+    }
 
-
+    onIsAutoModeChanged: {
+        var notAutoMode = !isAutoMode;
+        whichSurface.enabled = notAutoMode;
+        poSet.enabled = notAutoMode;
+        whichEnd.enabled = notAutoMode;
+        elEdit.enabled = notAutoMode;
+//        interval.enabled = notAutoMode;
+//        count.enabled = notAutoMode;
     }
 
     function syncPoints(){
@@ -105,6 +114,7 @@ ExtentActionEditorBase {
         }
 
         Row{
+            id:poSet
             width: 398
             spacing: 6
             ICCheckBox{
@@ -121,12 +131,18 @@ ExtentActionEditorBase {
                 configName: whichSurface.checkedIndex == 2?"Y":"X"
                 configValue: "0.000"
                 visible: !relPoint.isChecked
+                decimal: 3
+                max:10000
+                min:-10000
             }
             ICConfigEdit{
                 id:secAxis
                 configName: whichSurface.checkedIndex == 0?"Y":"Z"
                 configValue: "0.000"
                 visible: !relPoint.isChecked
+                decimal: 3
+                max:10000
+                min:-10000
             }
 
             ICComboBox{
@@ -176,6 +192,7 @@ ExtentActionEditorBase {
             }
         }
         Row{
+            id:elEdit
             spacing: 10
             ICConfigEdit{
                 id:pLEdit

@@ -52,7 +52,6 @@ ICComboBoxView::ICComboBoxView(QWidget *parent) :
   //    ui(new Ui::ICComboBoxView)
 {
     //    ui->setupUi(this);
-//    this->setStyleSheet("background:white");
     realFrame_ = new QWidget(this);
     verticalLayout_ = new QVBoxLayout(realFrame_);
     verticalLayout_->setContentsMargins(0, 0, 0, 0);
@@ -197,7 +196,6 @@ int ICComboBoxView::openView(int editorX, int editorY, int editorW, int editorH,
     }
     //    QWidget* root = qApp->desktop()->screen();
     //    qDebug()<<root->mapToGlobal(root->pos());
-//    qDebug()<<this->geometry();
     realFrame_->move(toMove);
     this->setCurrentIndex(currentIndex);
     //    listView_->selectionModel()->select(listView_->currentIndex(), QItemSelectionModel::Select | QItemSelectionModel::Current);

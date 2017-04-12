@@ -11,6 +11,8 @@
 #include "icupdatesystem.h"
 #include "icutility.h"
 #include "icregister.h"
+#include "quazip.h"
+#include "JlCompress.h"
 
 #ifdef Q_WS_QWS
 #include <stdio.h>
@@ -228,6 +230,7 @@ void PanelRobotController::Init()
     qApp->installTranslator(&panelRoboTranslator_);
     qApp->installTranslator(&configsTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
+    ICRobotMold::CurrentMold()->CompileMold();
 
 //    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
 
@@ -922,14 +925,16 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     QFile file;
     QStringList toWrite;
     QString moldName;
+
     for(int i = 0; i < result.size(); ++i)
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-#ifdef Q_WS_QWS
+#ifndef Q_WS_X11
         moldName = moldName.toUtf8();
 #endif
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
+        qDebug()<<file.fileName();
         if(file.open(QFile::WriteOnly))
         {
             QStringList acts = toWrite.mid(0, 11);
@@ -963,18 +968,22 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         ret = MoldMaintainRet::kME_USBNotFound;
         return ret;
     }
+    QString zipDirName = ICAppSettings::tmpDir().absoluteFilePath(name);
 #ifdef WIN32
-    QString cmd = QString("cd %1 && ..\\zip -r %2.zip %2 && move /y %2.zip %3 && del /q %2 && rd /q %2").arg("temp")
-            .arg(name)
-            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
+    QString cmd = QString("del /q %1 && rd /q %1").arg(zipDirName);
+//    QString cmd = QString("cd %1 && ..\\7z a %2.7z %2 && move /y %2.7z %3 && del /q %2 && rd /q %2").arg("temp")
+//            .arg(name)
+//            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
-    QString cmd = QString("cd %1 && zip -r %2.zip %2 && mv %2.zip %3 && rm -r %2").arg(QDir::tempPath())
-            .arg(name)
-            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
+    QString cmd = QString("rm -r %1").arg(zipDirName);
+//    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
+//            .arg(name)
+//            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
 #endif
+    ret = !zipDir(zipDirName, QDir(ICAppSettings::UsbPath).absoluteFilePath(name + ".zip"));
     qDebug()<<cmd;
 //    QMessageBox::information(NULL, "tip", cmd.toUtf8());
-    ::system(cmd.toUtf8());
+//    ::system(cmd.toUtf8());
 
 #ifndef Q_WS_WIN32
     ::sync();
@@ -993,19 +1002,35 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     QDir temp = QDir::temp();
 #endif
     QString packageDirName = package;
-    packageDirName.chop(4);
+    packageDirName.chop(packageDirName.mid(packageDirName.indexOf(".")).length());
     tarPath = QDir::toNativeSeparators(tarPath);
     if(!temp.exists(packageDirName))
     {
+//        QFile testlog("testlog");
+//        testlog.open(QFile::WriteOnly);
+//        testlog.write(QString("copy %1 %2  && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+//        testlog.close();
+#ifdef Q_WS_WIN
+        if(package.endsWith(".tar"))
+            ::system(QString("..\\tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+        else
+        {
+//            ::system(QString(".\\7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+            unzipDir(ICAppSettings::tmpDir().absoluteFilePath(packageDirName), tarPath);
+        }
+#else
         if(package.endsWith(".tar"))
             ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
         else
         {
-            ::system(QString("cp %1 %2 -f && cd %2 && unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+//            ::system(QString("7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+            unzipDir(ICAppSettings::tmpDir().absoluteFilePath(packageDirName), tarPath);
         }
+#endif
     }
     temp.cd(packageDirName);
     QStringList molds = temp.entryList(QStringList()<<"*.act");
+    qDebug()<<molds;
 #ifdef Q_WS_QWS
     QByteArray ret = "[";
 #else
@@ -1743,6 +1768,7 @@ bool PanelRobotController::loadRecord(const QString &name)
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
     QMap<int, StackInfo> stacks = mold->GetStackInfos();
     bool ret =  mold->LoadMold(name);
+    ret = mold->CompileMold();
     if(ret)
     {
         ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
@@ -1978,18 +2004,32 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
 
 bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
 {
+#ifdef Q_WS_QWS
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName.toUtf8());
+#else
     QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+#endif
     QFile f(filePath);
 
     if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
         return 0;
 
-    QTextStream txtOutput(&f);
-    QTextDocument contentText;
-    contentText.setHtml(content);
-    txtOutput << contentText.toPlainText() << endl;
+    f.write(content.toUtf8());
     f.close();
+#ifndef Q_WS_WIN32
+    ::sync();
+#endif
     return 1;
 }
 
+bool PanelRobotController::zipDir(const QString &path, const QString &name) const
+{
+    qDebug()<<"zip:"<<name<<path;
+    return JlCompress::compressDir(name, path);
+}
 
+QStringList PanelRobotController::unzipDir(const QString &path, const QString &name) const
+{
+    qDebug()<<"unzip:"<<name<<path;
+    return JlCompress::extractDir(name, path);
+}

@@ -2133,6 +2133,38 @@
         <source>Time out</source>
         <translation>时间输出</translation>
     </message>
+    <message>
+        <source>Parabola Move</source>
+        <translation>正弦</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>平行</translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation>提前</translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation>延后</translation>
+    </message>
+    <message>
+        <source>endPos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>period len:</source>
+        <translation>周期长度:</translation>
+    </message>
+    <message>
+        <source> A</source>
+        <translation>振幅</translation>
+    </message>
+    <message>
+        <source>delay:</source>
+        <translation>延时:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2163,6 +2195,10 @@
     <message>
         <source>AxisMemPos</source>
         <translation>记录位置轴动作</translation>
+    </message>
+    <message>
+        <source>parabolaMove</source>
+        <translation>正弦运动</translation>
     </message>
 </context>
 <context>
@@ -2855,6 +2891,61 @@ please chose!</source>
     <message>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+</context>
+<context>
+    <name>ParabolaActionEditor</name>
+    <message>
+        <source>XY</source>
+        <translation>XY平面</translation>
+    </message>
+    <message>
+        <source>XZ</source>
+        <translation>XZ平面</translation>
+    </message>
+    <message>
+        <source>YZ</source>
+        <translation>YZ平面</translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation>引用点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>End type</source>
+        <translation>结束方式</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>平行</translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation>提前</translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation>延后</translation>
+    </message>
+    <message>
+        <source>period len</source>
+        <translation>周期长度</translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation>振幅</translation>
+    </message>
+    <message>
+        <source>speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>delay</source>
+        <translation>延时</translation>
     </message>
 </context>
 <context>
@@ -3966,7 +4057,8 @@ please chose!</source>
     <message>
         <source>Import {0} fail!
 </source>
-        <translation>导入{0}失败!</translation>
+        <translation>导入{0}失败!
+</translation>
     </message>
     <message>
         <source>Import Finished!
@@ -4044,6 +4136,10 @@ please chose!</source>
     <message>
         <source>fuction</source>
         <translation>模块</translation>
+    </message>
+    <message>
+        <source>Print Finished!</source>
+        <translation>打印完成!</translation>
     </message>
 </context>
 <context>
@@ -6096,6 +6192,10 @@ You just need to set the count configs after this setting.</source>
         <source>OneCycleMode</source>
         <translation>单循环模式</translation>
     </message>
+    <message>
+        <source>Zero</source>
+        <translation type="unfinished">置零</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -6217,7 +6317,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">振幅</translation>
     </message>
     <message>
         <source>B</source>

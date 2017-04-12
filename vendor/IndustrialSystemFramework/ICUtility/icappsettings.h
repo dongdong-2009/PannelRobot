@@ -4,6 +4,7 @@
 #include <QSettings>
 #include <QLocale>
 #include <QTime>
+#include <QDir>
 #ifndef Q_WS_WIN32
 #include <unistd.h>
 #include <fcntl.h>
@@ -58,6 +59,15 @@ public:
 
     QString TranslatorName();
     void SetTranslatorName(const QString& translatorName);
+
+    static QDir tmpDir()
+    {
+#ifndef Q_WS_WIN
+        return QDir::temp();
+#else
+        return QDir("temp");
+#endif
+    }
 
 
 //    static QTime StartupTime(){ return startupTime_;}

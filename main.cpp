@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QIcon>
 #include <QFile>
+#include <QProcess>
+#include <QTextCodec>
 #include "iclog.h"
 #include "icpainter.h"
 #include "icinstructionsviewqml.h"
@@ -27,6 +29,13 @@ int main(int argc, char *argv[])
 {
 //    iclog.SetMaxSpace(10*1024);
     iclog.Log("App Run");
+//    qDebug()<<QTextCodec::codecForLocale()->name();
+//    QProcess p;
+//    QStringList env = p.systemEnvironment();
+//    env.append("LC_ALL=en_HK.UTF-8");
+//    p.setEnvironment(env);
+//    p.execute("7z");
+//    qDebug()<<p.readAllStandardOutput();
 #ifdef QT5
     qInstallMessageHandler(appMessageOutput);
 #else

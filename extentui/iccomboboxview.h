@@ -73,7 +73,7 @@ public:
 
 
 protected:
-    void mouseReleaseEvent(QMouseEvent *) { this->accept();}
+    void mouseReleaseEvent(QMouseEvent *);
 private slots:
     void on_listView_itemClicked(QListWidgetItem *item);
 

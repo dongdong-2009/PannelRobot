@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -3966,7 +3966,7 @@ please chose!</source>
     <message>
         <source>Import {0} fail!
 </source>
-        <translation>导入{0}失败!</translation>
+        <translation type="unfinished">导入{0}失败!</translation>
     </message>
     <message>
         <source>Import Finished!

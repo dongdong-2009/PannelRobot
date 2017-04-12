@@ -664,6 +664,7 @@ void PanelRobotController::startUpdate(const QString &updater, int mode)
     flags = WDIOS_DISABLECARD;
     ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
 #endif
+    system("mount -t tmpfs -o size=128m tmpfs /tmp");
     us.StartUpdate(updater);
 #ifdef Q_WS_QWS
     flags = WDIOS_ENABLECARD;

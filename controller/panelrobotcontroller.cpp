@@ -2003,8 +2003,14 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
     return QString(ret);
 }
 
-bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
+int PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
 {
+    int ret = 0;
+    if(!ICUtility::IsUsbAttached())
+    {
+        ret = MoldMaintainRet::kME_USBNotFound;
+        return ret;
+    }
 #ifdef Q_WS_QWS
     QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName.toUtf8());
 #else
@@ -2013,14 +2019,14 @@ bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& 
     QFile f(filePath);
 
     if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
-        return 0;
+        return 1;
 
     f.write(content.toUtf8());
     f.close();
 #ifndef Q_WS_WIN32
     ::sync();
 #endif
-    return 1;
+    return 0;
 }
 
 bool PanelRobotController::zipDir(const QString &path, const QString &name) const

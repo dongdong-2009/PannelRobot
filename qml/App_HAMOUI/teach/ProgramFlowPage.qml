@@ -1459,20 +1459,45 @@ Rectangle {
         }
         ICButton{
             id:programSearchBtn
+            property real btnInitY : 0
+            property bool posIsInit:false
+            property bool isFunc: true
             text: ""
             icon: "../images/search.png"
             width: 64
             height: 64
             bgColor: "green"
-            anchors.right: parent.left
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: actionEditorFrame.height
+            x:-64
+            y:120
             onButtonClicked: {
-                if(!programSearchContent.visible){
+                if((!programSearchContent.visible) && isFunc){
                     programSearchContent.visible = true;
                     programSearchOut.start();
                 }else{
                     programSearchIn.start();
+                }
+            }
+            onBtnPressed: {
+                isFunc = true;
+                if(!posIsInit){
+                    btnInitY = mousePosY;
+                    posIsInit = true;
+                }
+            }
+            onBtnReleased: {
+                posIsInit = false;
+            }
+            onMousePosYChanged: {
+                if(programSearchContent.visible)return;
+                var dy = mousePosY -btnInitY;
+                if(posIsInit && (Math.abs(dy) > 5)){
+                    var tmpY;
+                    tmpY = programSearchBtn.y;
+                    tmpY += dy;
+                    if(tmpY<0)tmpY=0;
+                    else if(tmpY>230)tmpY=230;
+                    if(Math.abs(tmpY-btnInitY)>10) isFunc = false;
+                    programSearchBtn.y = tmpY;
                 }
             }
         }
@@ -2064,7 +2089,7 @@ Rectangle {
 
 
         for(var ac in Teach.customActions){
-            //            console.log("ac",ac,Teach.customActions[ac].editableItems.editor,Teach.customActions[ac].editableItems.itemDef.item);
+//            console.log(JSON.stringify(Teach.customActions[ac].editableItems));
             modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor,
                                               Teach.customActions[ac].editableItems.itemDef.item);
         }

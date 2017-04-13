@@ -466,11 +466,15 @@ Rectangle {
                                 tmpStr = qsTr("fuction")+"["+ toTranslate[k].id +"]:"+toTranslate[k].name + "<br>" + recordTmp.programsToText(toTranslate[k].program)+"<br>";
                                 recordPrograms += tmpStr;
                             }
-                            panelRobotController.writeUsbFile(record.name+".html",'<html><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><body>' + recordPrograms + "</body></html>");
+                            var ret = panelRobotController.writeUsbFile(record.name+".html",'<html><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><body>' + recordPrograms + "</body></html>");
                         }
                     }
-                    tipDialog.information(qsTr("Print Finished!"), qsTr("OK"));
-
+                    if(ret === 0){
+                        tipDialog.information(qsTr("Print Finished!"), qsTr("OK"));
+                    }
+                    else{
+                        tipDialog.warning(qsTr("No USB Found!"), qsTr("OK"));
+                    }
                 }
             }
 

@@ -33,6 +33,7 @@ Item {
     signal editConfirm(variant actionObject)
 
     function openEditor(actionObject,editableItems){
+
         pos.visible = false;
 
         speed.visible = false;

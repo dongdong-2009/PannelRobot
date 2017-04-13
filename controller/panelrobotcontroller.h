@@ -869,7 +869,7 @@ public:
 
     Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
     Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
-    Q_INVOKABLE bool writeUsbFile(const QString& fileName, const QString& content);
+    Q_INVOKABLE int writeUsbFile(const QString& fileName, const QString& content);
     Q_INVOKABLE bool zipDir(const QString& path, const QString& name) const;
     Q_INVOKABLE QStringList unzipDir(const QString &path, const QString& name) const;
 

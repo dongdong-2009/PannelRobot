@@ -1496,7 +1496,7 @@ Rectangle {
                     tmpY += dy;
                     if(tmpY<0)tmpY=0;
                     else if(tmpY>230)tmpY=230;
-                    if(Math.abs(tmpY-btnInitY)>10) isFunc = false;
+                    isFunc = false;
                     programSearchBtn.y = tmpY;
                 }
             }

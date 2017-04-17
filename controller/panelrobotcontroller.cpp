@@ -663,6 +663,7 @@ void PanelRobotController::startUpdate(const QString &updater, int mode)
     flags = WDIOS_DISABLECARD;
     ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
 #endif
+    system("mount -t tmpfs -o size=128m tmpfs /tmp");
     us.StartUpdate(updater);
 #ifdef Q_WS_QWS
     flags = WDIOS_ENABLECARD;
@@ -929,9 +930,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-#ifndef Q_WS_X11
         moldName = moldName.toUtf8();
-#endif
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
         qDebug()<<file.fileName();
         if(file.open(QFile::WriteOnly))
@@ -982,7 +981,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     ret = !zipDir(zipDirName, QDir(ICAppSettings::UsbPath).absoluteFilePath(name + ".zip"));
     qDebug()<<cmd;
 //    QMessageBox::information(NULL, "tip", cmd.toUtf8());
-//    ::system(cmd.toUtf8());
+    ::system(cmd.toUtf8());
 
 #ifndef Q_WS_WIN32
     ::sync();

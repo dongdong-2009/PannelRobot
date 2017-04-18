@@ -31,7 +31,6 @@ ExtentActionEditorBase {
     onIsAutoModeChanged: {
         var notAutoMode = !isAutoMode;
         typeGroup.enabled = notAutoMode;
-        yContainer.enabled = notAutoMode;
         statusGroup.enabled = notAutoMode;
         always.enabled = notAutoMode;
         interval.enabled = notAutoMode;
@@ -346,6 +345,7 @@ ExtentActionEditorBase {
                 }
 
                 delegate: Row{
+                    enabled:!isAutoMode
                     spacing: 2
                     height: 26
                     ICCheckBox{

@@ -1386,6 +1386,7 @@ Rectangle {
                                 }
                                 var cModel = currentModel();
                                 var uiSteps = uiRunningSteps.steps;
+//                                console.log(JSON.stringify(cRunning), JSON.stringify(uiRunningSteps));
                                 for(i = 0; i < uiSteps.length; ++i){
                                     cModel.setProperty(uiSteps[i], "mI_IsActionRunning", true);
                                 }

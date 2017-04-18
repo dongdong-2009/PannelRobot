@@ -1044,6 +1044,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
     if(!functions.isEmpty() && ret.HasCalledModule())
     {
+        int endUIStep = result.size() - 1;
+
         QMap<int, CompileInfo>::const_iterator fp = functions.constBegin();
         int programEndLine = result.size();
         ICMoldItem endProgramItem = ret.GetICMoldItem(ret.CompiledProgramLineCount() -1);
@@ -1108,7 +1110,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 //        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
 //        qDebug()<<result.size()<<baseStep<<beginToFix;
         ret.AddICMoldItem(baseStep, endProgramItem);
-        int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
+//        int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
 //        ret.MapStep(endUIStep, fStep + 1);
         ret.MapStep(baseStep, fStep + 1);
 
@@ -1131,6 +1133,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 ret.UpdateICMoldItem(toFixUIStep, toFixLineItem);
             }
         }
+        ret.RemapStep(endUIStep, fStep + 1);
+
     }
 
 

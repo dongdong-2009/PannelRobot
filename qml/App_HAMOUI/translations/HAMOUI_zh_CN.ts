@@ -4711,24 +4711,12 @@ please chose!</source>
         <translation>安全信号4</translation>
     </message>
     <message>
-        <source>Axis4</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>SafeSig5</source>
         <translation>安全信号5</translation>
     </message>
     <message>
-        <source>Axis5</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>SafeSig6</source>
         <translation>安全信号6</translation>
-    </message>
-    <message>
-        <source>Axis6</source>
-        <translation></translation>
     </message>
     <message>
         <source>Area</source>
@@ -4821,6 +4809,10 @@ please chose!</source>
     <message>
         <source>Part</source>
         <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSig</source>
+        <translation>安全信号</translation>
     </message>
 </context>
 <context>

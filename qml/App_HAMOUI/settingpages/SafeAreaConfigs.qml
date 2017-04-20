@@ -909,51 +909,75 @@ Item {
         axis.unshift(qsTr("NO"));
         var i,j,sel;
         for(i=0;i<3;++i){
-           sel = axisAndPosSet.itemAt(i).axisSel;
-           if(sel >=axis.length || sel == -1){
-              axisAndPosSet.itemAt(i).axisSel = 0;
+           if(axisAndPosSet.itemAt(i).axisSel >=axis.length){
+              axisAndPosSet.itemAt(i).axisSel = -1;
            }
            axisAndPosSet.itemAt(i).axisItems = axis;
+           if(axisAndPosSet.itemAt(i).axisSel  == -1){
+               axisAndPosSet.itemAt(i).axisSel  = 0;
+           }
         }
 
-        if(safe2Axis1Set.configValue >=axis.length || safe2Axis1Set.configValue == -1){
-            safe2Axis1Set.configValue = 0;
+        if(safe2Axis1Set.configValue >=axis.length){
+            safe2Axis1Set.configValue = -1;
         }
         safe2Axis1Set.items = axis;
-        if(safe2Axis2Set.configValue >=axis.length || safe2Axis2Set.configValue == -1){
-            safe2Axis2Set.configValue = 0;
+        if(safe2Axis1Set.configValue == -1){
+            safe2Axis1Set.configValue = 0;
+        }
+
+        if(safe2Axis2Set.configValue >=axis.length){
+            safe2Axis2Set.configValue = -1;
         }
         safe2Axis2Set.items = axis;
-        if(safe2Axis3Set.configValue >=axis.length || safe2Axis3Set.configValue == -1){
-            safe2Axis3Set.configValue = 0;
+        if(safe2Axis2Set.configValue == -1){
+            safe2Axis2Set.configValue = 0;
+        }
+
+        if(safe2Axis3Set.configValue >=axis.length){
+            safe2Axis3Set.configValue = -1;
         }
         safe2Axis3Set.items = axis;
+        if(safe2Axis3Set.configValue == -1){
+            safe2Axis3Set.configValue = 0;
+        }
 
         for(i=0;i<6;++i){
-            sel = safe3ParaConfig.itemAt(i).axisSel;
-            if(sel >=axis.length || sel == -1){
-               safe3ParaConfig.itemAt(i).axisSel = 0;
+            if(safe3ParaConfig.itemAt(i).axisSel >=axis.length){
+               safe3ParaConfig.itemAt(i).axisSel = -1;
             }
             safe3ParaConfig.itemAt(i).safe3Axis.items = axis;
+            if(safe3ParaConfig.itemAt(i).axisSel == -1){
+                safe3ParaConfig.itemAt(i).axisSel = 0;
+            }
         }
 
         for(j=0;j<4;++j){
             for(i=0;i<3;++i){
-               sel = safe4AxisAndPosSet.itemAt(j).itemAt(i).axisSel;
-               if(sel >=axis.length || sel == -1){
-                  safe4AxisAndPosSet.itemAt(j).itemAt(i).axisSel = 0;
+               if(safe4AxisAndPosSet.itemAt(j).itemAt(i).axisSel >=axis.length){
+                  safe4AxisAndPosSet.itemAt(j).itemAt(i).axisSel = -1;
                }
                safe4AxisAndPosSet.itemAt(j).itemAt(i).axisItems = axis;
+               if(safe4AxisAndPosSet.itemAt(j).itemAt(i).axisSel == -1){
+                   safe4AxisAndPosSet.itemAt(j).itemAt(i).axisSel = 0;
+               }
             }
         }
 
-        if(relativeAxis1Set.configValue >=axis.length || relativeAxis1Set.configValue ==-1){
-            relativeAxis1Set.configValue = 0;
+        if(relativeAxis1Set.configValue >=axis.length){
+            relativeAxis1Set.configValue = -1;
         }
         relativeAxis1Set.items = axis;
-        if(relativeAxis2Set.configValue >=axis.length || relativeAxis2Set.configValue ==-1){
-            relativeAxis2Set.configValue = 0;
+        if(relativeAxis1Set.configValue ==-1){
+            relativeAxis1Set.configValue = 0;
+        }
+
+        if(relativeAxis2Set.configValue >=axis.length){
+            relativeAxis2Set.configValue = -1;
         }
         relativeAxis2Set.items = axis;
+        if(relativeAxis2Set.configValue == -1){
+           relativeAxis2Set.configValue = 0;
+        }
     }
 }

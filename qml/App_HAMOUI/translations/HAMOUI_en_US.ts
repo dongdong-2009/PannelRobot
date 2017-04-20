@@ -6135,92 +6135,92 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="46"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="55"/>
         <source>Machine Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="48"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="57"/>
         <source>kSttIndependent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="48"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="57"/>
         <source>kSttPP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="48"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="57"/>
         <source>kSttRR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="49"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="58"/>
         <source>kSttPPP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="49"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="58"/>
         <source>kSttRTR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="49"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="58"/>
         <source>kSttRRP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="49"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="58"/>
         <source>kSttRRPR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="59"/>
         <source>kSttRTRT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="59"/>
         <source>kSttRTRTTT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="59"/>
         <source>kStt5P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="50"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="59"/>
         <source>kSttPPP_RRR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="60"/>
         <source>kSttRRPR_BRT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="60"/>
         <source>kSttRTRTTT_EX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="51"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="60"/>
         <source>kSttLathe_6p</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="56"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="65"/>
         <source>Axis Num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="61"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="70"/>
         <source>IO Board Num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="67"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="76"/>
         <source>Clear Program Btn</source>
         <translation type="unfinished"></translation>
     </message>

@@ -4758,24 +4758,12 @@ please chose!</source>
         <translation>安全信号4</translation>
     </message>
     <message>
-        <source>Axis4</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>SafeSig5</source>
         <translation>安全信号5</translation>
     </message>
     <message>
-        <source>Axis5</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>SafeSig6</source>
         <translation>安全信号6</translation>
-    </message>
-    <message>
-        <source>Axis6</source>
-        <translation></translation>
     </message>
     <message>
         <source>Area</source>
@@ -4868,6 +4856,10 @@ please chose!</source>
     <message>
         <source>Part</source>
         <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSig</source>
+        <translation>安全信号</translation>
     </message>
 </context>
 <context>
@@ -5422,13 +5414,13 @@ please chose!</source>
     </message>
     <message>
         <source> dir next Point</source>
-        <translation>方向下一点</translation>
+        <translation>方向下n点</translation>
     </message>
     <message>
         <source>The system will caculate the offset and space when comfirm. 
 You just need to set the count configs after this setting.</source>
-        <translation>设定三点之后,系统会自动计算偏移和间距.你只需在外面设定
-各方向的计数即可.</translation>
+        <translation>设定三点之后,系统会自动计算偏移和间
+距.你只需在外面设定各方向的计数即可.</translation>
     </message>
 </context>
 <context>

@@ -433,15 +433,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -453,23 +453,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -699,7 +699,7 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation>输入通就停止</translation>
+        <translation type="vanished">输入通就停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
@@ -1135,27 +1135,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1163,7 +1163,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -1574,7 +1574,7 @@
     </message>
     <message>
         <source>runningMode</source>
-        <translation>自动运行中</translation>
+        <translation type="vanished">自动运行中</translation>
     </message>
     <message>
         <source>SingleMode</source>
@@ -2133,6 +2133,38 @@
         <source>Time out</source>
         <translation>时间输出</translation>
     </message>
+    <message>
+        <source>Parabola Move</source>
+        <translation>正弦</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>平行</translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation>提前</translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation>延后</translation>
+    </message>
+    <message>
+        <source>endPos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>period len:</source>
+        <translation>周期长度:</translation>
+    </message>
+    <message>
+        <source> A</source>
+        <translation>振幅</translation>
+    </message>
+    <message>
+        <source>delay:</source>
+        <translation>延时:</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2163,6 +2195,10 @@
     <message>
         <source>AxisMemPos</source>
         <translation>记录位置轴动作</translation>
+    </message>
+    <message>
+        <source>parabolaMove</source>
+        <translation>正弦运动</translation>
     </message>
 </context>
 <context>
@@ -2858,6 +2894,61 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>ParabolaActionEditor</name>
+    <message>
+        <source>XY</source>
+        <translation>XY平面</translation>
+    </message>
+    <message>
+        <source>XZ</source>
+        <translation>XZ平面</translation>
+    </message>
+    <message>
+        <source>YZ</source>
+        <translation>YZ平面</translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation>引用点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>End type</source>
+        <translation>结束方式</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>平行</translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation>提前</translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation>延后</translation>
+    </message>
+    <message>
+        <source>period len</source>
+        <translation>周期长度</translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation>振幅</translation>
+    </message>
+    <message>
+        <source>speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>delay</source>
+        <translation>延时</translation>
+    </message>
+</context>
+<context>
     <name>PictureSettings</name>
     <message>
         <source>Scan Pic</source>
@@ -3234,7 +3325,7 @@ please chose!</source>
     </message>
     <message>
         <source>Confirm</source>
-        <translation>确定修改</translation>
+        <translation type="vanished">确定修改</translation>
     </message>
     <message>
         <source>Preservation</source>
@@ -3254,11 +3345,11 @@ please chose!</source>
     </message>
     <message>
         <source>Led </source>
-        <translation>Led</translation>
+        <translation type="vanished">Led</translation>
     </message>
     <message>
         <source> status binding</source>
-        <translation>状态绑定</translation>
+        <translation type="vanished">状态绑定</translation>
     </message>
     <message>
         <source>Key F</source>
@@ -3266,7 +3357,7 @@ please chose!</source>
     </message>
     <message>
         <source> function binding</source>
-        <translation>功能绑定</translation>
+        <translation type="vanished">功能绑定</translation>
     </message>
     <message>
         <source>Led</source>
@@ -3966,7 +4057,8 @@ please chose!</source>
     <message>
         <source>Import {0} fail!
 </source>
-        <translation type="unfinished">导入{0}失败!</translation>
+        <translation>导入{0}失败!
+</translation>
     </message>
     <message>
         <source>Import Finished!
@@ -4044,6 +4136,10 @@ please chose!</source>
     <message>
         <source>fuction</source>
         <translation>模块</translation>
+    </message>
+    <message>
+        <source>Print Finished!</source>
+        <translation>打印完成!</translation>
     </message>
 </context>
 <context>
@@ -4592,7 +4688,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -4615,24 +4711,108 @@ please chose!</source>
         <translation>安全信号4</translation>
     </message>
     <message>
-        <source>Axis4</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>SafeSig5</source>
         <translation>安全信号5</translation>
-    </message>
-    <message>
-        <source>Axis5</source>
-        <translation></translation>
     </message>
     <message>
         <source>SafeSig6</source>
         <translation>安全信号6</translation>
     </message>
     <message>
-        <source>Axis6</source>
+        <source>Area</source>
+        <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSignal</source>
+        <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part</source>
+        <translation>使用区域</translation>
+    </message>
+    <message>
+        <source>Part Config</source>
+        <translation>区域参数</translation>
+    </message>
+    <message>
+        <source>Axis</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation>A</translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation>C</translation>
+    </message>
+    <message>
+        <source>E</source>
+        <translation>E</translation>
+    </message>
+    <message>
+        <source>Set</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation>B</translation>
+    </message>
+    <message>
+        <source>D</source>
+        <translation>D</translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation>F</translation>
+    </message>
+    <message>
+        <source>Safe Area4</source>
+        <translation>类型4</translation>
+    </message>
+    <message>
+        <source>Relative Move Config</source>
+        <translation>相对运动参数</translation>
+    </message>
+    <message>
+        <source>Relative Axis</source>
+        <translation>相对轴</translation>
+    </message>
+    <message>
+        <source>Total L</source>
+        <translation>零点间隔</translation>
+    </message>
+    <message>
+        <source>Len Check En</source>
+        <translation>距离检测使能</translation>
+    </message>
+    <message>
+        <source>Safe L</source>
+        <translation>安全距离</translation>
+    </message>
+    <message>
+        <source>Point Check En</source>
+        <translation>信号检测使能</translation>
+    </message>
+    <message>
+        <source>Safe P</source>
+        <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>Check Dir</source>
+        <translation>反向</translation>
+    </message>
+    <message>
+        <source>Safe Area Config</source>
+        <translation>安全区域参数</translation>
+    </message>
+    <message>
+        <source>Part</source>
+        <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSig</source>
+        <translation>安全信号</translation>
     </message>
 </context>
 <context>
@@ -5826,15 +6006,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -5966,11 +6146,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -5994,19 +6174,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>IntervalOutput:</source>
-        <translation>间隔输出:</translation>
+        <translation type="vanished">间隔输出:</translation>
     </message>
     <message>
         <source>Interval</source>
-        <translation>间隔</translation>
+        <translation type="vanished">间隔</translation>
     </message>
     <message>
         <source>Always out</source>
-        <translation>一直输出</translation>
+        <translation type="vanished">一直输出</translation>
     </message>
     <message>
         <source>Time out</source>
-        <translation>时间输出</translation>
+        <translation type="vanished">时间输出</translation>
     </message>
     <message>
         <source>actCnt</source>
@@ -6014,11 +6194,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>
@@ -6095,6 +6275,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>OneCycleMode</source>
         <translation>单循环模式</translation>
+    </message>
+    <message>
+        <source>Zero</source>
+        <translation type="unfinished">置零</translation>
     </message>
 </context>
 <context>
@@ -6217,15 +6401,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">振幅</translation>
     </message>
     <message>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位置B</translation>
     </message>
     <message>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位置C</translation>
     </message>
     <message>
         <source>X1 OFF</source>

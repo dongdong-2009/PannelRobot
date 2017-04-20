@@ -22,7 +22,7 @@ ExtentActionEditorBase {
     property alias delay: delayEdit.configValue
 
     property alias intervalType: always.isChecked
-    property bool isBindingCount: count.configValue == 0?false:true
+    property bool isBindingCount: count.configValue <= 0?false:true
     property string counterID: count.configValue==0 ? 0 : Utils.getValueFromBrackets(count.configText())
     property alias cnt: interval.configValue
 
@@ -31,7 +31,6 @@ ExtentActionEditorBase {
     onIsAutoModeChanged: {
         var notAutoMode = !isAutoMode;
         typeGroup.enabled = notAutoMode;
-        yContainer.enabled = notAutoMode;
         statusGroup.enabled = notAutoMode;
         always.enabled = notAutoMode;
         interval.enabled = notAutoMode;
@@ -49,12 +48,14 @@ ExtentActionEditorBase {
         else offBox.isChecked = true;
         delayEdit.configValue = actionObject.acTime!=undefined?actionObject.acTime:actionObject.delay;
         if(action === 200){
-            if(actionObject.type == 0){
+            if(actionObject.type >= 0 && actionObject.type <= 3){
                 normalY.isChecked =true;
                 for(i=0,len=yModel.count;i<len;++i){
                     if(actionObject.point == yModel.get(i).hwPoint){
-                        yModel.setProperty(i,"isSel",true);
-                        pdata = yModel.get(i);
+                        if(actionObject.type == yModel.get(i).board){
+                            yModel.setProperty(i,"isSel",true);
+                            pdata = yModel.get(i);
+                        }
                     }
                     else{
                         yModel.setProperty(i,"isSel",false);
@@ -96,12 +97,14 @@ ExtentActionEditorBase {
                     }
                 }
             }
-            else if(actionObject.type == 100){
+            else if(actionObject.type >= 100 && actionObject.type<=103){
                 timeY.isChecked =true;
                 for(i=0,len=timeYModel.count;i<len;++i){
                     if(actionObject.point == timeYModel.get(i).hwPoint){
-                        timeYModel.setProperty(i,"isSel",true);
-                        pdata = timeYModel.get(i);
+                        if(actionObject.type == timeYModel.get(i).board){
+                            timeYModel.setProperty(i,"isSel",true);
+                            pdata = timeYModel.get(i);
+                        }
                     }
                     else{
                         timeYModel.setProperty(i,"isSel",false);
@@ -110,12 +113,14 @@ ExtentActionEditorBase {
             }
         }
         else if(action === 201){
-            if(actionObject.type == 0){
+            if(actionObject.type >= 0 && actionObject.type <= 3){
                 intervalY.isChecked =true;
                 for(i=0,len=intervalYModel.count;i<len;++i){
                     if(actionObject.point == intervalYModel.get(i).hwPoint){
-                        intervalYModel.setProperty(i,"isSel",true);
-                        pdata = intervalYModel.get(i);
+                        if(actionObject.type == intervalYModel.get(i).board){
+                            intervalYModel.setProperty(i,"isSel",true);
+                            pdata = intervalYModel.get(i);
+                        }
                     }
                     else{
                         intervalYModel.setProperty(i,"isSel",false);
@@ -340,6 +345,7 @@ ExtentActionEditorBase {
                 }
 
                 delegate: Row{
+                    enabled:!isAutoMode
                     spacing: 2
                     height: 26
                     ICCheckBox{

@@ -789,6 +789,8 @@ typedef enum
     F_CMD_SINGLE_TORQUE_FUNC,
     //< 单轴动作带输入检测和提前减速 电机ID 位置 速度 延时 输入点停止使能 输入点 输入点通断 立即停使能 减速位置偏移 每次偏移 提前减速速度 存储地址
     F_CMD_SINGLE_ADD_MEMPOS_FUNC,
+    //< 抛物线运动
+    F_CMD_PARABOLA2DMOVE,
     F_CMD_IO_INPUT = 100,   //< IO点输入等待 类型（EUIO，IO，M，1000:等待数据源完成信号） IO点 等待 等待时间
     F_CMD_WATIT_VISION_DATA = 101,
     F_CMD_IO_CHECK, //输入检测 输入点 检测方向 开始停止检测 延时
@@ -1798,7 +1800,10 @@ typedef union {
         uint32_t input_safe_signal4:7; //<类型：系统；名字：输入安全信号点4；精度：0;单位：；
         uint32_t input_safe_signal5:7; //<类型：系统；名字：输入安全信号点5；精度：0;单位：；
         uint32_t input_safe_signal6:7; //<类型：系统；名字：输入安全信号点6；精度：0;单位：；
-        uint32_t res:10;//<类型：系统；名字：预留；精度：0;单位：；
+        uint32_t axis_id9:4;//<类型：系统；名字：轴ID；精度：0;单位：；
+        uint32_t axis_id10:4;//<类型：系统；名字：轴ID；精度：0;单位：；
+        uint32_t length_check_en:1;//<类型：系统；名字：距离检测使能；精度：0;单位：；
+        uint32_t point_check_en:1;//<类型：系统；名字：输入点检测使能；精度：0;单位：；
 
         uint32_t min_pos[18];//<类型：系统；名字：轴最小安全位置；精度：3；单位：mm；
         uint32_t max_pos[18];//<类型：系统；名字：轴最大安全位置；精度：3；单位：mm；

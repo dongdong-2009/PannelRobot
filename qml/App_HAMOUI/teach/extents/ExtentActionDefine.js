@@ -348,6 +348,61 @@ var extentIntervalOutputAction = {
         },
     };
 
+var extentParabolaAction = {
+    "action":25,
+    "properties":[new ActionDefineItem("ePos0", 3),
+        new ActionDefineItem("ePos1", 3),
+        new ActionDefineItem("endType", 0),
+        new ActionDefineItem("surfaceType", 0),
+        new ActionDefineItem("pL", 3),
+        new ActionDefineItem("a", 3),
+        new ActionDefineItem("speed", 1),
+        new ActionDefineItem("delay", 2),
+    ],
+    "canTestRun":true,
+    "canActionUsePoint": true,
+    "pointsReplace":function(generatedAction){
+        var pts = generatedAction.points;
+        if(pts.length == 0) return;
+        generatedAction.ePos0 = pts[0].pos["m"+(generatedAction.surfaceType == 2?1:0)];
+        generatedAction.ePos1 = pts[0].pos["m"+(generatedAction.surfaceType == 0?1:2)];
+    },
+
+    "editableItems":{"editor":Qt.createComponent("ParabolaActionEditor.qml"), "itemDef":{"item":"ParabolaActionEditor"}},
+    "toStringHandler":function(actionObject, record){
+        var su,fir,sec,end;
+        var pts = actionObject.points;
+        if(actionObject.surfaceType == 0){
+            su = "XY:";
+            fir = "X:";
+            sec = "Y:";
+        }
+        else if(actionObject.surfaceType == 1){
+            su = "XZ:";
+            fir = "X:";
+            sec = "Z:"
+        }
+        else if(actionObject.surfaceType == 2){
+            su = "YZ:";
+            fir = "Y:";
+            sec = "Z:";
+        }
+        if(actionObject.endType == 0){
+            end = qsTr("On");
+        }
+        else if(actionObject.endType == 1){
+            end = qsTr("Before");
+        }
+        else if(actionObject.endType == 2){
+            end = qsTr("After");
+        }
+
+        return qsTr("Parabola Move")+su+end +qsTr("endPos:")+(pts.length >0?(pts[0].pointName+"("):"")+fir+actionObject.ePos0 +" " +sec+actionObject.ePos1+(pts.length >0?")":"")+"\n                            "+
+                qsTr("period len:")+actionObject.pL+" "+ qsTr(" A")+ actionObject.a +"\n                            "+
+                qsTr("speed:")+actionObject.speed + " " + qsTr("delay:")+actionObject.delay;
+    }
+};
+
 
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
@@ -358,4 +413,5 @@ var extentActions = [extentPENQIANGAction,
                      speedAction,
                      extentSingleMemposAction,
                      extentOutputAction,
-                     extentIntervalOutputAction];
+                     extentIntervalOutputAction,
+                     extentParabolaAction];

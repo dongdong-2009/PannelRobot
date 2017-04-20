@@ -77,7 +77,7 @@ Item {
                 bindConfig: "s_rw_0_32_1_1201"
                 onTextChanged: {
 //                    PData.changeTime(index, valveModel.get(index).id, text);
-                    valveModel.setProperty(index,"time",text);
+                    valveModel.setProperty(index,"time",Number(text));
                 }
             }
             ICCheckBox{
@@ -85,7 +85,7 @@ Item {
                 isChecked: autoCheck
                 onIsCheckedChanged:{
 //                    PData.changeAutoCheck(index, valveModel.get(index).id, isChecked  );
-                    valveModel.setProperty(index,"autoCheck",isChecked?ture:false);
+                    valveModel.setProperty(index,"autoCheck",isChecked?true:false);
                 }
             }
         }

@@ -135,7 +135,7 @@ Prec:%3</source>
 <context>
     <name>PanelRobotController</name>
     <message>
-        <location filename="controller/panelrobotcontroller.cpp" line="+249"/>
+        <location filename="controller/panelrobotcontroller.cpp" line="+252"/>
         <location line="+5"/>
         <location line="+11"/>
         <source>Error</source>
@@ -163,6 +163,50 @@ Prec:%3</source>
         <location filename="vendor/IndustrialSystemFramework/QJson/parserrunnable.cpp" line="+64"/>
         <source>An error occurred while parsing json: %1</source>
         <translation>解析数据时有错误:%1</translation>
+    </message>
+</context>
+<context>
+    <name>QuaGzipFile</name>
+    <message>
+        <location filename="vendor/quazip/quagzipfile.cpp" line="+60"/>
+        <source>QIODevice::Append is not supported for GZIP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Opening gzip for both reading and writing is not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>You can open a gzip either for reading or for writing. Which is it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not gzopen() file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QuaZIODevice</name>
+    <message>
+        <location filename="vendor/quazip/quaziodevice.cpp" line="+147"/>
+        <source>QIODevice::Append is not supported for QuaZIODevice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>QIODevice::ReadWrite is not supported for QuaZIODevice</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QuaZipFile</name>
+    <message>
+        <location filename="vendor/quazip/quazipfile.cpp" line="+247"/>
+        <source>ZIP/UNZIP API error %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

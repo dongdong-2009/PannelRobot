@@ -347,7 +347,10 @@ extern  const ICAddrWrapper  s_rw_0_1_0_229;  //< 15008795 当前定时时间安
 extern  const ICAddrWrapper  s_rw_1_7_0_229;  //< 15014971 当前定时时间输入安全信号点4安全区设定
 extern  const ICAddrWrapper  s_rw_8_7_0_229;  //< 15015195 当前定时时间输入安全信号点5安全区设定
 extern  const ICAddrWrapper  s_rw_15_7_0_229;  //< 15015419 当前定时时间输入安全信号点6安全区设定
-extern  const ICAddrWrapper  s_rw_22_10_0_229;  //< 15018715 当前定时时间预留安全区设定
+extern  const ICAddrWrapper  s_rw_22_4_0_229;  //< 15012571 当前定时时间轴ID安全区设定
+extern  const ICAddrWrapper  s_rw_26_4_0_229;  //< 15012699 当前定时时间轴ID安全区设定
+extern  const ICAddrWrapper  s_rw_30_1_0_229;  //< 15009755 当前定时时间距离检测使能安全区设定
+extern  const ICAddrWrapper  s_rw_31_1_0_229;  //< 15009787 当前定时时间输入点检测使能安全区设定
 extern  const ICAddrWrapper  s_rw_0_32_3_230;    //< 3236331547 当前定时时间轴最小安全位置安全区设定
 extern  const ICAddrWrapper  s_rw_0_32_3_231;    //< 3236397083 当前定时时间轴最小安全位置安全区设定
 extern  const ICAddrWrapper  s_rw_0_32_3_232;    //< 3236462619 当前定时时间轴最小安全位置安全区设定

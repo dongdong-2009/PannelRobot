@@ -1800,7 +1800,10 @@ typedef union {
         uint32_t input_safe_signal4:7; //<类型：系统；名字：输入安全信号点4；精度：0;单位：；
         uint32_t input_safe_signal5:7; //<类型：系统；名字：输入安全信号点5；精度：0;单位：；
         uint32_t input_safe_signal6:7; //<类型：系统；名字：输入安全信号点6；精度：0;单位：；
-        uint32_t res:10;//<类型：系统；名字：预留；精度：0;单位：；
+        uint32_t axis_id9:4;//<类型：系统；名字：轴ID；精度：0;单位：；
+        uint32_t axis_id10:4;//<类型：系统；名字：轴ID；精度：0;单位：；
+        uint32_t length_check_en:1;//<类型：系统；名字：距离检测使能；精度：0;单位：；
+        uint32_t point_check_en:1;//<类型：系统；名字：输入点检测使能；精度：0;单位：；
 
         uint32_t min_pos[18];//<类型：系统；名字：轴最小安全位置；精度：3；单位：mm；
         uint32_t max_pos[18];//<类型：系统；名字：轴最大安全位置；精度：3；单位：mm；

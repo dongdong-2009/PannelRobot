@@ -4777,6 +4777,98 @@ please chose!</source>
         <source>Axis6</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Area</source>
+        <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSignal</source>
+        <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part</source>
+        <translation>使用区域</translation>
+    </message>
+    <message>
+        <source>Part Config</source>
+        <translation>区域参数</translation>
+    </message>
+    <message>
+        <source>Axis</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation>A</translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation>C</translation>
+    </message>
+    <message>
+        <source>E</source>
+        <translation>E</translation>
+    </message>
+    <message>
+        <source>Set</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation>B</translation>
+    </message>
+    <message>
+        <source>D</source>
+        <translation>D</translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation>F</translation>
+    </message>
+    <message>
+        <source>Safe Area4</source>
+        <translation>类型4</translation>
+    </message>
+    <message>
+        <source>Relative Move Config</source>
+        <translation>相对运动参数</translation>
+    </message>
+    <message>
+        <source>Relative Axis</source>
+        <translation>相对轴</translation>
+    </message>
+    <message>
+        <source>Total L</source>
+        <translation>零点间隔</translation>
+    </message>
+    <message>
+        <source>Len Check En</source>
+        <translation>距离检测使能</translation>
+    </message>
+    <message>
+        <source>Safe L</source>
+        <translation>安全距离</translation>
+    </message>
+    <message>
+        <source>Point Check En</source>
+        <translation>信号检测使能</translation>
+    </message>
+    <message>
+        <source>Safe P</source>
+        <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>Check Dir</source>
+        <translation>反向</translation>
+    </message>
+    <message>
+        <source>Safe Area Config</source>
+        <translation>安全区域参数</translation>
+    </message>
+    <message>
+        <source>Part</source>
+        <translation>区域</translation>
+    </message>
 </context>
 <context>
     <name>SafeRangeEditor</name>
@@ -6388,11 +6480,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位置B</translation>
     </message>
     <message>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位置C</translation>
     </message>
     <message>
         <source>X1 OFF</source>

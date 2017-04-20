@@ -347,7 +347,10 @@ extern  const ICAddrWrapper  s_rw_0_1_0_229(3,3,0,1,229,0,"");   //<当前定时
 extern  const ICAddrWrapper  s_rw_1_7_0_229(3,3,1,7,229,0,"");   //<当前定时时间输入安全信号点4安全区设定
 extern  const ICAddrWrapper  s_rw_8_7_0_229(3,3,8,7,229,0,"");   //<当前定时时间输入安全信号点5安全区设定
 extern  const ICAddrWrapper  s_rw_15_7_0_229(3,3,15,7,229,0,"");   //<当前定时时间输入安全信号点6安全区设定
-extern  const ICAddrWrapper  s_rw_22_10_0_229(3,3,22,10,229,0,"");   //<当前定时时间预留安全区设定
+extern  const ICAddrWrapper  s_rw_22_4_0_229(3,3,22,4,229,0,"");   //<当前定时时间轴ID安全区设定
+extern  const ICAddrWrapper  s_rw_26_4_0_229(3,3,26,4,229,0,"");   //<当前定时时间轴ID安全区设定
+extern  const ICAddrWrapper  s_rw_30_1_0_229(3,3,30,1,229,0,"");   //<当前定时时间距离检测使能安全区设定
+extern  const ICAddrWrapper  s_rw_31_1_0_229(3,3,31,1,229,0,"");   //<当前定时时间输入点检测使能安全区设定
 extern  const ICAddrWrapper  s_rw_0_32_3_230(3,3,0,32,230,3,"mm");    //<当前定时时间轴最小安全位置安全区设定
 extern  const ICAddrWrapper  s_rw_0_32_3_231(3,3,0,32,231,3,"mm");    //<当前定时时间轴最小安全位置安全区设定
 extern  const ICAddrWrapper  s_rw_0_32_3_232(3,3,0,32,232,3,"mm");    //<当前定时时间轴最小安全位置安全区设定

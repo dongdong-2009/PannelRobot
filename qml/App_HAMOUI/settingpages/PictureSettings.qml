@@ -62,7 +62,7 @@ Item {
                     picModel.clear();
                     picView.model = null;
                     for(var i = 0, len = pics.length; i < len; ++i){
-                        console.log(pics[i]);
+//                        console.log(pics[i]);
                         picModel.append({"picname": pics[i]});
                     }
                     picView.model = picModel;
@@ -119,10 +119,10 @@ Item {
                     scanType=1;
                     var pics = panelRobotController.getInstructions();
                     picModel.clear();
-                    console.log(JSON.stringify(pics));
+//                    console.log(JSON.stringify(pics));
                     picView.model = null;
                     for(var i = 0, len = pics.length; i < len; ++i){
-                        console.log(pics[i]);
+//                        console.log(pics[i]);
                         picModel.append({"picname": pics[i]});
                     }
                     picView.model = picModel;

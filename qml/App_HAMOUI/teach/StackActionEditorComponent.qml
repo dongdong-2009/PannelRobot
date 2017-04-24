@@ -140,7 +140,7 @@ Item {
                                              "m3":motor3.configValue,
                                              "m4":motor4.configValue,
                                              "m5":motor5.configValue},
-                                         "offset":{"m0":x_offset.getConfigValue(), "m1":y_offset.getConfigValue(), "m2":z_offset.getConfigValue()},
+                                         "offset":{"m0":offsetEn.isChecked?x_offset.getConfigValue():0, "m1":offsetEn.isChecked?y_offset.getConfigValue():0, "m2":offsetEn.isChecked?z_offset.getConfigValue():0},
                                          "space":{"m0":space0.getConfigValue(), "m1":space1.getConfigValue(), "m2":space2.getConfigValue()}
                                      });
         }

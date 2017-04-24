@@ -134,6 +134,7 @@ Item {
                 text: qsTr("Set Instructions")
                 width: scanInstructions.width
                 onButtonClicked: {
+                    if(picView.currentIndex < 0)return;
                     tipForInstallation.runningTip(qsTr("In installation!"))
                     panelRobotController.copyInstructions(picModel.get(picView.currentIndex).picname);
                     tipForInstallation.hide();

@@ -931,9 +931,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-#ifndef Q_WS_X11
         moldName = moldName.toUtf8();
-#endif
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
         qDebug()<<file.fileName();
         if(file.open(QFile::WriteOnly))
@@ -984,7 +982,7 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     ret = !zipDir(zipDirName, QDir(ICAppSettings::UsbPath).absoluteFilePath(name + ".zip"));
     qDebug()<<cmd;
 //    QMessageBox::information(NULL, "tip", cmd.toUtf8());
-//    ::system(cmd.toUtf8());
+    ::system(cmd.toUtf8());
 
 #ifndef Q_WS_WIN32
     ::sync();

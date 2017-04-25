@@ -422,18 +422,22 @@ Item {
         runSeq.setItemVisble(1,AxisDefine.axisInfos[1].visiable);
         runSeq.setItemVisble(2,AxisDefine.axisInfos[2].visiable);
 
+        var i;
+        for(i=0;i<9;++i){
+           seq.setItemVisble(i,true);
+        }
         if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[1].visiable=== false &&
                     AxisDefine.axisInfos[2].visiable=== false){
             seq.items = ["","","","","","","","",""];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                seq.setItemVisble(i,false);
             }
         }
         else if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[1].visiable=== false){
             seq.items = ["","","","","","","","",qsTr("Only Z")];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                 if(i === 8) continue;
                seq.setItemVisble(i,false);
             }
@@ -442,7 +446,7 @@ Item {
         else if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[2].visiable=== false){
             seq.items = ["","","","","","","",qsTr("Only Y"),""];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                 if(i === 7) continue;
                seq.setItemVisble(i,false);
             }
@@ -451,7 +455,7 @@ Item {
         else if(AxisDefine.axisInfos[1].visiable ===false &&
                 AxisDefine.axisInfos[2].visiable=== false){
             seq.items = ["","","","","","",qsTr("Only X"),"",""];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                 if(i === 6) continue;
                seq.setItemVisble(i,false);
             }

@@ -19,10 +19,18 @@ Rectangle {
 
     function setItemVisible(index, vi){
         var tmp = hideIndexs;
-        if(!vi)
-            tmp.push(index.toString());
+        var i,len,exist = false;
+        if(!vi){
+            for(i = 0, len = tmp.length; i < len; ++i){
+                if(tmp[i] == index){
+                    exist = true;
+                }
+            }
+            if(!exist)
+                tmp.push(index.toString());
+        }
         else{
-            for(var i = 0, len = tmp.length; i < len; ++i){
+            for(i = 0, len = tmp.length; i < len; ++i){
                 if(tmp[i] == index){
                     tmp.splice(i, 1);
                     break;

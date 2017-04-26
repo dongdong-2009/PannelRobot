@@ -2,7 +2,7 @@ import QtQuick 1.1
 
 import "../../ICCustomElement"
 import "Teach.js" as Teach
-import "../configs/AlarmInfo.js" as AlarmInfo
+import "../AlarmInfo.js" as AlarmInfo
 
 Item {
     width: parent.width

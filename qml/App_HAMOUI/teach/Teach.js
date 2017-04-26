@@ -4,7 +4,7 @@ Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
 Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
-Qt.include("../configs/AlarmInfo.js")
+Qt.include("../AlarmInfo.js")
 Qt.include("../../utils/utils.js")
 
 var customActions = {};

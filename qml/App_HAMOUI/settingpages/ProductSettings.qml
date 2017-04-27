@@ -706,17 +706,17 @@ Item {
                                     isNormal = ret[0];
                                     value|=isNormal<<22;
                                     value|=ret[1]<<23;
-                                    console.log("isNormal:");
-                                    console.log(isNormal);
-                                    console.log("ID:");
-                                    console.log(ret[1]);
+//                                    console.log("isNormal:");
+//                                    console.log(isNormal);
+//                                    console.log("ID:");
+//                                    console.log(ret[1]);
                                 }
                                 else{
                                     value|=isNormal<<22;
                                     value|=v.outid_init<<23;
                                 }
                                 value|=v.outStatus<<30;
-                                console.log(isNormal,ret[1],value);
+//                                console.log(isNormal,ret[1],value);
                                 panelRobotController.modifyConfigValue(37,value);
                             }
                         }

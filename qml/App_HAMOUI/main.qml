@@ -884,6 +884,36 @@ uint16_t io_all;
                 }
             }
 
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckAlarmSet", "[]", "IOCheckAlarmSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    console.log("alarm_send:");
+                    value =v.alarmNum;
+                    value|=v.checkType<<16;
+                    console.log(v.checkType);
+                    value|=(v.isKeepStatus?1:0)<<19;
+                    value|=(v.outType_init?1:0)<<21;
+                    if(v.outType_init==0){
+                        ret = Mdata.getOutIDFromConfig(v.outid_init);
+                        isNormal = ret[0];
+                        value|=isNormal<<22;
+                        value|=ret[1]<<23;
+//                        console.log("isNormal:");
+//                        console.log(isNormal);
+//                        console.log("ID:");
+//                        console.log(ret[1]);
+                    }
+                    else{
+                        value|=isNormal<<22;
+                        value|=v.outid_init<<23;
+                    }
+                    value|=v.outStatus<<30;
+//                    console.log(isNormal,ret[1],value);
+                    panelRobotController.modifyConfigValue(37,value);
+                }
+            }
+
             isInit = true;
         });
         //        panelRobotController.manualRunProgram(JSON.stringify(ManualProgramManager.manualProgramManager.getProgram(0).program),

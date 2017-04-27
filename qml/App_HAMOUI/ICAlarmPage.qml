@@ -3,7 +3,7 @@ import "."
 import "Theme.js" as Theme
 import "../utils/Storage.js" as Storage
 import "../utils/utils.js" as Utils
-import "configs/AlarmInfo.js" as AlarmInfo
+import "AlarmInfo.js" as AlarmInfo
 import "../ICCustomElement"
 
 

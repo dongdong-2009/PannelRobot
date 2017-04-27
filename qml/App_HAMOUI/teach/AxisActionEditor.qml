@@ -212,89 +212,6 @@ Item {
 
                 z:8
             }
-            Row{
-                z:10
-                spacing: 6
-                ICCheckableComboboxEdit{
-                    id:signalStop
-                    configName: qsTr("Input")
-                    configValue: -1
-                    inputWidth: 60
-                    z:2
-                    enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-//                    configNameWidth: earlyEnd.configNameWidth
-                    Component.onCompleted: {
-                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        var len = ioBoardCount * 32;
-                        var ioItems = [];
-                        for(var i = 0; i < len; ++i){
-                            ioItems.push(IODefines.xDefines[i].pointName);
-                        }
-                        items = ioItems;
-                        configValue = 0;
-                    }
-                }
-                ICComboBox{
-                    id:signalOnOff
-                    enabled:signalStop.isChecked
-                    width: 40
-                    items:[qsTr("on"),qsTr("off")]
-                    Component.onCompleted: {
-                        currentIndex = 0;
-                    }
-                }
-                Text {
-                    id: sTip
-                    height: signalOnOff.height
-                    verticalAlignment: Text.AlignVCenter
-                    text: qsTr("TStop")
-                }
-                ICCheckBox{
-                    id:fastStop
-                    text: qsTr("Fast Stop")
-                }
-            }
-            Row{
-                z:10
-                spacing: 6
-                ICCheckableComboboxEdit{
-                    id:onPosOutput
-                    configName: qsTr("Output")
-                    configValue: -1
-                    inputWidth: 60
-                    z:2
-                    enabled: !(signalStop.isChecked || earlyEnd.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                    Component.onCompleted: {
-                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        var len = ioBoardCount * 32;
-                        var ioItems = [];
-                        for(var i = 0; i < len; ++i){
-                            ioItems.push(IODefines.yDefines[i].pointName);
-                        }
-                        items = ioItems;
-                        configValue = 0;
-                    }
-                }
-                ICComboBox{
-                    id:ySignalOnOff
-                    enabled:onPosOutput.isChecked
-                    width: 40
-                    items:[qsTr("on"),qsTr("off")]
-                    Component.onCompleted: {
-                        currentIndex = 0;
-                    }
-                }
-                ICConfigEdit{
-                    id:posOut
-                    enabled:onPosOutput.isChecked
-                    configName: qsTr("On pos")
-                    configValue: "0"
-                }
-            }
 
             Rectangle{
                 width: 340
@@ -306,8 +223,8 @@ Item {
                         }
                     }
                     var ret;
-                    if(ac <= 3) ret =  parent.height -parent.spacing;
-                    else ret =  parent.height - (ac - 3) * (m1Axis.height + parent.spacing);
+                    if(ac <= 5) ret =  parent.height -parent.spacing;
+                    else ret =  parent.height - (ac - 5) * (m1Axis.height + parent.spacing);
                     return ret;
                 }
 //                border.width: 1
@@ -323,6 +240,90 @@ Item {
                     Column{
                         id:advanceContent
                         spacing: 4
+                        Row{
+                            z:10
+                            spacing: 6
+                            ICCheckableComboboxEdit{
+                                id:signalStop
+                                configName: qsTr("Input")
+                                configValue: -1
+                                inputWidth: 60
+                                z:2
+                                enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+            //                    configNameWidth: earlyEnd.configNameWidth
+                                Component.onCompleted: {
+                                    var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                                    if(ioBoardCount == 0)
+                                        ioBoardCount = 1;
+                                    var len = ioBoardCount * 32;
+                                    var ioItems = [];
+                                    for(var i = 0; i < len; ++i){
+                                        ioItems.push(IODefines.xDefines[i].pointName);
+                                    }
+                                    items = ioItems;
+                                    configValue = 0;
+                                }
+                            }
+                            ICComboBox{
+                                id:signalOnOff
+                                enabled:signalStop.isChecked
+                                width: 40
+                                items:[qsTr("on"),qsTr("off")]
+                                Component.onCompleted: {
+                                    currentIndex = 0;
+                                }
+                            }
+                            Text {
+                                id: sTip
+                                height: signalOnOff.height
+                                verticalAlignment: Text.AlignVCenter
+                                text: qsTr("TStop")
+                            }
+                            ICCheckBox{
+                                id:fastStop
+                                text: qsTr("Fast Stop")
+                            }
+                        }
+                        Row{
+                            z:10
+                            spacing: 6
+                            ICCheckableComboboxEdit{
+                                id:onPosOutput
+                                configName: qsTr("Output")
+                                configValue: -1
+                                inputWidth: 60
+                                z:2
+                                enabled: !(signalStop.isChecked || earlyEnd.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                                Component.onCompleted: {
+                                    var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                                    if(ioBoardCount == 0)
+                                        ioBoardCount = 1;
+                                    var len = ioBoardCount * 32;
+                                    var ioItems = [];
+                                    for(var i = 0; i < len; ++i){
+                                        ioItems.push(IODefines.yDefines[i].pointName);
+                                    }
+                                    items = ioItems;
+                                    configValue = 0;
+                                }
+                            }
+                            ICComboBox{
+                                id:ySignalOnOff
+                                enabled:onPosOutput.isChecked
+                                width: 40
+                                items:[qsTr("on"),qsTr("off")]
+                                Component.onCompleted: {
+                                    currentIndex = 0;
+                                }
+                            }
+                            ICConfigEdit{
+                                id:posOut
+                                enabled:onPosOutput.isChecked
+                                configName: qsTr("On pos")
+                                configValue: "0"
+                            }
+                        }
+
                         ICCheckableLineEdit{
                             id:earlyEnd
                             configName: qsTr("Early End Pos")

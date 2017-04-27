@@ -35,6 +35,11 @@ var configRanges = {
     "s_rw_16_16_0_130":[MIN_INT_16, MAX_INT_16],
     "s_rw_0_16_0_137":[MIN_INT_16, MAX_INT_16],
     "s_rw_16_16_0_137":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_144":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_144":[MIN_INT_16, MAX_INT_16],
+    "s_rw_0_16_0_151":[MIN_INT_16, MAX_INT_16],
+    "s_rw_16_16_0_151":[MIN_INT_16, MAX_INT_16],
+
     "s_rw_0_16_0_107":[MIN_INT_16, MAX_INT_16],
     "s_rw_16_16_0_107":[MIN_INT_16, MAX_INT_16],
     "s_rw_0_16_0_114":[MIN_INT_16, MAX_INT_16],

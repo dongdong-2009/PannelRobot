@@ -122,7 +122,7 @@ ICStackContainer{
                     else if(testBegin.bgColor == "red"){
                         root.testStop();
                         text = qsTr("StartTest")
-                        bgColor = "green"
+                        testBegin.bgColor = "green"
                         root.currentTest = -1;
                     }
                 }
@@ -260,6 +260,13 @@ ICStackContainer{
         onCurrentTestChanged: {
             if(currentTest === -1) return;
             if(debugItems.get(currentTest).status === -1){
+                if(panelRobotController.currentErrNum()!=0){
+                    root.testStop();
+                    testBegin.text = qsTr("StartTest");
+                    testBegin.bgColor = "green";
+                    root.currentTest = -1;
+                    return;
+                }
                 var type = debugItems.get(currentTest).type;
                 var id = debugItems.get(currentTest).id;
                 switch(type){
@@ -313,7 +320,7 @@ ICStackContainer{
                             if(type==="axisDTest") tmp =-pNum*1.5;
                             else tmp =pNum*1.5;
                             if(Math.abs(pulseSent-tmp)<10){
-                                rDelay = 0;
+//                                rDelay = 0;
                                 if(Math.abs(pulseSent-pulseReceived)<10){
                                     sDelay =0;
                                     if(zPulse>pNum && zPulse< (65536-pNum)){
@@ -337,16 +344,16 @@ ICStackContainer{
                                     sDelay++;
                                 }
                             }
-                            else{
-                                if(rDelay ===20){
-                                    rDelay=0;
-                                    root.testResult(root.currentTest,0);
-                                    root.setErrTip(root.currentTest,qsTr("sendErr"));
-                                    root.setErrType(root.currentTest,0);
-                                    break;
-                                }
-                                rDelay++;
-                            }
+//                            else{
+//                                if(rDelay ===20){
+//                                    rDelay=0;
+//                                    root.testResult(root.currentTest,0);
+//                                    root.setErrTip(root.currentTest,qsTr("sendErr"));
+//                                    root.setErrType(root.currentTest,0);
+//                                    break;
+//                                }
+//                                rDelay++;
+//                            }
                         }
                     }break;
                     case "singleYOnTest":

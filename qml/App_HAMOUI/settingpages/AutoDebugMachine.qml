@@ -260,13 +260,6 @@ ICStackContainer{
         onCurrentTestChanged: {
             if(currentTest === -1) return;
             if(debugItems.get(currentTest).status === -1){
-                if(panelRobotController.currentErrNum()!=0){
-                    root.testStop();
-                    testBegin.text = qsTr("StartTest");
-                    testBegin.bgColor = "green";
-                    root.currentTest = -1;
-                    return;
-                }
                 var type = debugItems.get(currentTest).type;
                 var id = debugItems.get(currentTest).id;
                 switch(type){
@@ -316,6 +309,13 @@ ICStackContainer{
                         root.setMoveData(root.currentTest,qsTr("R")+pulseReceived+" "+qsTr("S")+pulseSent+" "+"Z"+zPulse);
 
                         if(debugItems.get(root.currentTest).status === -1){
+                            if(panelRobotController.currentErrNum()!=0){
+                                root.testStop();
+                                testBegin.text = qsTr("StartTest");
+                                testBegin.bgColor = "green";
+                                root.currentTest = -1;
+                                return;
+                            }
                             var pNum =panelRobotController.getConfigValue(pulsePerRevolutionAddrs[id]);
                             if(type==="axisDTest") tmp =-pNum*1.5;
                             else tmp =pNum*1.5;
@@ -361,6 +361,13 @@ ICStackContainer{
                     case "HoldDoubleYOnTest":
                     case "HoldDoubleYOffTest":{
                         if(debugItems.get(root.currentTest).status === -1){
+                            if(panelRobotController.currentErrNum()!=0){
+                                root.testStop();
+                                testBegin.text = qsTr("StartTest");
+                                testBegin.bgColor = "green";
+                                root.currentTest = -1;
+                                return;
+                            }
                             var valve = IODefines.getValveItemFromValveName(id);
                             var y1status = panelRobotController.isOutputOn(valve.y1Point, valve.y1Board);
                             var y2status = 0;

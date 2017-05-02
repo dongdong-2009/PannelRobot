@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -971,7 +971,7 @@
     </message>
     <message>
         <source>sendErr</source>
-        <translation>发送脉冲错误</translation>
+        <translation type="vanished">发送脉冲错误</translation>
     </message>
     <message>
         <source>inputErr</source>
@@ -991,15 +991,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -1011,23 +1011,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -1257,7 +1257,7 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation>输入通就停止</translation>
+        <translation type="vanished">输入通就停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
@@ -1693,27 +1693,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1721,7 +1721,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -2132,7 +2132,7 @@
     </message>
     <message>
         <source>runningMode</source>
-        <translation>自动运行中</translation>
+        <translation type="vanished">自动运行中</translation>
     </message>
     <message>
         <source>SingleMode</source>
@@ -3883,7 +3883,7 @@ please chose!</source>
     </message>
     <message>
         <source>Confirm</source>
-        <translation>确定修改</translation>
+        <translation type="vanished">确定修改</translation>
     </message>
     <message>
         <source>Preservation</source>
@@ -3903,11 +3903,11 @@ please chose!</source>
     </message>
     <message>
         <source>Led </source>
-        <translation>Led</translation>
+        <translation type="vanished">Led</translation>
     </message>
     <message>
         <source> status binding</source>
-        <translation>状态绑定</translation>
+        <translation type="vanished">状态绑定</translation>
     </message>
     <message>
         <source>Key F</source>
@@ -3915,7 +3915,7 @@ please chose!</source>
     </message>
     <message>
         <source> function binding</source>
-        <translation>功能绑定</translation>
+        <translation type="vanished">功能绑定</translation>
     </message>
     <message>
         <source>Led</source>
@@ -4842,51 +4842,51 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo1</source>
-        <translation>区域1安全信号</translation>
+        <translation type="vanished">区域1安全信号</translation>
     </message>
     <message>
         <source>Use Part1?</source>
-        <translation>区域1使用</translation>
+        <translation type="vanished">区域1使用</translation>
     </message>
     <message>
         <source>SafePo2</source>
-        <translation>区域2安全信号</translation>
+        <translation type="vanished">区域2安全信号</translation>
     </message>
     <message>
         <source>Use Part2?</source>
-        <translation>区域2使用</translation>
+        <translation type="vanished">区域2使用</translation>
     </message>
     <message>
         <source>SafePo3</source>
-        <translation>区域3安全信号</translation>
+        <translation type="vanished">区域3安全信号</translation>
     </message>
     <message>
         <source>Use Part3?</source>
-        <translation>区域3使用</translation>
+        <translation type="vanished">区域3使用</translation>
     </message>
     <message>
         <source>SafePo4</source>
-        <translation>区域4安全信号</translation>
+        <translation type="vanished">区域4安全信号</translation>
     </message>
     <message>
         <source>Use Part4?</source>
-        <translation>区域4使用</translation>
+        <translation type="vanished">区域4使用</translation>
     </message>
     <message>
         <source>SafePo5</source>
-        <translation>区域5安全信号</translation>
+        <translation type="vanished">区域5安全信号</translation>
     </message>
     <message>
         <source>Use Part5?</source>
-        <translation>区域5使用</translation>
+        <translation type="vanished">区域5使用</translation>
     </message>
     <message>
         <source>SafePo6</source>
-        <translation>区域6安全信号</translation>
+        <translation type="vanished">区域6安全信号</translation>
     </message>
     <message>
         <source>Use Part6?</source>
-        <translation>区域6使用</translation>
+        <translation type="vanished">区域6使用</translation>
     </message>
     <message>
         <source>Axis1</source>
@@ -4902,95 +4902,95 @@ please chose!</source>
     </message>
     <message>
         <source>P1-A</source>
-        <translation>区域1A</translation>
+        <translation type="vanished">区域1A</translation>
     </message>
     <message>
         <source>P1-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P1-B</source>
-        <translation>区域1B</translation>
+        <translation type="vanished">区域1B</translation>
     </message>
     <message>
         <source>P1-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P2-A</source>
-        <translation>区域2A</translation>
+        <translation type="vanished">区域2A</translation>
     </message>
     <message>
         <source>P2-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P2-B</source>
-        <translation>区域2B</translation>
+        <translation type="vanished">区域2B</translation>
     </message>
     <message>
         <source>P3-A</source>
-        <translation>区域3A</translation>
+        <translation type="vanished">区域3A</translation>
     </message>
     <message>
         <source>P3-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P3-B</source>
-        <translation>区域3B</translation>
+        <translation type="vanished">区域3B</translation>
     </message>
     <message>
         <source>P3-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P4-A</source>
-        <translation>区域4A</translation>
+        <translation type="vanished">区域4A</translation>
     </message>
     <message>
         <source>P4-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P4-B</source>
-        <translation>区域4B</translation>
+        <translation type="vanished">区域4B</translation>
     </message>
     <message>
         <source>P4-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P5-A</source>
-        <translation>区域5A</translation>
+        <translation type="vanished">区域5A</translation>
     </message>
     <message>
         <source>P5-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P5-B</source>
-        <translation>区域5B</translation>
+        <translation type="vanished">区域5B</translation>
     </message>
     <message>
         <source>P5-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P6-A</source>
-        <translation>区域6A</translation>
+        <translation type="vanished">区域6A</translation>
     </message>
     <message>
         <source>P6-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P6-B</source>
-        <translation>区域6B</translation>
+        <translation type="vanished">区域6B</translation>
     </message>
     <message>
         <source>P6-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>Axis2</source>
@@ -4998,99 +4998,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-C</source>
-        <translation>区域1C</translation>
+        <translation type="vanished">区域1C</translation>
     </message>
     <message>
         <source>P1-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P1-D</source>
-        <translation>区域1D</translation>
+        <translation type="vanished">区域1D</translation>
     </message>
     <message>
         <source>P1-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P2-C</source>
-        <translation>区域2C</translation>
+        <translation type="vanished">区域2C</translation>
     </message>
     <message>
         <source>P2-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P2-D</source>
-        <translation>区域2D</translation>
+        <translation type="vanished">区域2D</translation>
     </message>
     <message>
         <source>P2-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P3-C</source>
-        <translation>区域3C</translation>
+        <translation type="vanished">区域3C</translation>
     </message>
     <message>
         <source>P3-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P3-D</source>
-        <translation>区域3D</translation>
+        <translation type="vanished">区域3D</translation>
     </message>
     <message>
         <source>P3-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P4-C</source>
-        <translation>区域4C</translation>
+        <translation type="vanished">区域4C</translation>
     </message>
     <message>
         <source>P4-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P4-D</source>
-        <translation>区域4D</translation>
+        <translation type="vanished">区域4D</translation>
     </message>
     <message>
         <source>P4-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P5-C</source>
-        <translation>区域5C</translation>
+        <translation type="vanished">区域5C</translation>
     </message>
     <message>
         <source>P5-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P5-D</source>
-        <translation>区域5D</translation>
+        <translation type="vanished">区域5D</translation>
     </message>
     <message>
         <source>P5-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P6-C</source>
-        <translation>区域6C</translation>
+        <translation type="vanished">区域6C</translation>
     </message>
     <message>
         <source>P6-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P6-D</source>
-        <translation>区域6D</translation>
+        <translation type="vanished">区域6D</translation>
     </message>
     <message>
         <source>P6-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>Axis3</source>
@@ -5098,99 +5098,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-E</source>
-        <translation>区域1E</translation>
+        <translation type="vanished">区域1E</translation>
     </message>
     <message>
         <source>P1-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P1-F</source>
-        <translation>区域1F</translation>
+        <translation type="vanished">区域1F</translation>
     </message>
     <message>
         <source>P1-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P2-E</source>
-        <translation>区域2E</translation>
+        <translation type="vanished">区域2E</translation>
     </message>
     <message>
         <source>P2-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P2-F</source>
-        <translation>区域2F</translation>
+        <translation type="vanished">区域2F</translation>
     </message>
     <message>
         <source>P2-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P3-E</source>
-        <translation>区域3E</translation>
+        <translation type="vanished">区域3E</translation>
     </message>
     <message>
         <source>P3-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P3-F</source>
-        <translation>区域3F</translation>
+        <translation type="vanished">区域3F</translation>
     </message>
     <message>
         <source>P3-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P4-E</source>
-        <translation>区域4E</translation>
+        <translation type="vanished">区域4E</translation>
     </message>
     <message>
         <source>P4-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P4-F</source>
-        <translation>区域4F</translation>
+        <translation type="vanished">区域4F</translation>
     </message>
     <message>
         <source>P4-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P5-E</source>
-        <translation>区域5E</translation>
+        <translation type="vanished">区域5E</translation>
     </message>
     <message>
         <source>P5-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P5-F</source>
-        <translation>区域5F</translation>
+        <translation type="vanished">区域5F</translation>
     </message>
     <message>
         <source>P5-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P6-E</source>
-        <translation>区域6E</translation>
+        <translation type="vanished">区域6E</translation>
     </message>
     <message>
         <source>P6-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P6-F</source>
-        <translation>区域6F</translation>
+        <translation type="vanished">区域6F</translation>
     </message>
     <message>
         <source>P6-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>Use it?</source>
@@ -5234,7 +5234,7 @@ please chose!</source>
     </message>
     <message>
         <source>P2-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>confirmBtn</source>
@@ -5246,7 +5246,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5254,27 +5254,27 @@ please chose!</source>
     </message>
     <message>
         <source>SafeSig1</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>SafeSig2</source>
-        <translation>安全信号2</translation>
+        <translation type="vanished">安全信号2</translation>
     </message>
     <message>
         <source>SafeSig3</source>
-        <translation>安全信号3</translation>
+        <translation type="vanished">安全信号3</translation>
     </message>
     <message>
         <source>SafeSig4</source>
-        <translation>安全信号4</translation>
+        <translation type="vanished">安全信号4</translation>
     </message>
     <message>
         <source>SafeSig5</source>
-        <translation>安全信号5</translation>
+        <translation type="vanished">安全信号5</translation>
     </message>
     <message>
         <source>SafeSig6</source>
-        <translation>安全信号6</translation>
+        <translation type="vanished">安全信号6</translation>
     </message>
     <message>
         <source>Area</source>
@@ -6564,15 +6564,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -6704,11 +6704,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -6732,19 +6732,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>IntervalOutput:</source>
-        <translation>间隔输出:</translation>
+        <translation type="vanished">间隔输出:</translation>
     </message>
     <message>
         <source>Interval</source>
-        <translation>间隔</translation>
+        <translation type="vanished">间隔</translation>
     </message>
     <message>
         <source>Always out</source>
-        <translation>一直输出</translation>
+        <translation type="vanished">一直输出</translation>
     </message>
     <message>
         <source>Time out</source>
-        <translation>时间输出</translation>
+        <translation type="vanished">时间输出</translation>
     </message>
     <message>
         <source>actCnt</source>
@@ -6752,11 +6752,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>

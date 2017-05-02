@@ -2884,10 +2884,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../settingpages/MachineSettings.qml" line="80"/>
-        <source>SafeArea Configs</source>
-=======
         <location filename="../settingpages/MachineSettings.qml" line="82"/>
         <source>SafeArea Configs</source>
         <translation type="unfinished"></translation>
@@ -2895,7 +2891,6 @@
     <message>
         <location filename="../settingpages/MachineSettings.qml" line="89"/>
         <source>Origin Setting</source>
->>>>>>> 3660ce9... 增加安全区类型4
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6744,11 +6739,6 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/Teach.js" line="1694"/>
-        <source>Until Photo Vec</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../teach/Teach.js" line="1711"/>
         <source>Write Addr Data To Addr:</source>
         <translation type="unfinished"></translation>
@@ -6887,19 +6877,11 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-=======
-        <location filename="../teach/Teach.js" line="1694"/>
-        <source>intervalTime</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../teach/Teach.js" line="1694"/>
         <source>Until Photo Vec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
->>>>>>> 3660ce9... 增加安全区类型4
         <location filename="../teach/Teach.js" line="1697"/>
         <source>Vistion Catch Start:</source>
         <translation type="unfinished"></translation>
@@ -6936,14 +6918,6 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../teach/Teach.js" line="1731"/>
-        <source></source>
-        <translation></translation>
-    </message>
-    <message>
-=======
->>>>>>> 3660ce9... 增加安全区类型4
         <location filename="../teach/Teach.js" line="1712"/>
         <source>Const Data:</source>
         <translation type="unfinished"></translation>

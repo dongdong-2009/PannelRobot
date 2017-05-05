@@ -14,7 +14,8 @@ teach/extents/*.js
 DISTFILES += \
     settingpages/CommunicationConfig.qml \
     teach/extents/ParabolaActionEditor.qml \
-    AlarmInfo.js
+    AlarmInfo.js \
+    teach/extents/BarnLogicEditor.qml
 
 
 

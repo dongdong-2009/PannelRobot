@@ -100,12 +100,28 @@ Item {
                 inputWidth: 80
             }
         }
-
-        ICComboBoxConfigEdit{
-            id:communicateMode
-            items: [qsTr("Serve"), qsTr("Client")]
-            configName: qsTr("CommunicateMode")
-            z:10
+        Row{
+            spacing: 8
+            ICComboBoxConfigEdit{
+                id:communicateMode
+                items: [qsTr("Serve"), qsTr("Client")]
+                configName: qsTr("CommunicateMode")
+                z:10
+            }
+            ICCheckBox{
+                id:autoConnect
+                configName: qsTr("auto connect")
+                isChecked: false
+                visible: communicateMode.configValue === 1
+            }
+            ICConfigEdit{
+                id:acTime
+                configName: qsTr("time")
+                configValue: "5"
+                min:1
+                unit: "s"
+                visible: communicateMode.configValue === 1
+            }
         }
         ICButton{
             id:saveBtn
@@ -127,7 +143,16 @@ Item {
                 panelRobotController.setCustomSettings("LocalAddr", localAddr);
                 panelRobotController.setCustomSettings("HostAddr", hostAddr + ":" + port.text);
                 panelRobotController.setCustomSettings("CommunicateMode", cMode);
+                panelRobotController.setCustomSettings("AutoConnectEn",autoConnect.isChecked);
+                panelRobotController.setCustomSettings("Actime",acTime.configValue);
                 panelRobotController.setEth0Enable(isEn, cMode, localAddr, hostAddr, port.text);
+                if(autoConnect.isChecked==true && isEn == true && cMode==1){
+                    autoConnectTimer.interval = acTime.configValue*1000;
+                    autoConnectTimer.running = true;
+                }
+                else{
+                    autoConnectTimer.running = false;
+                }
             }
         }
 
@@ -154,6 +179,11 @@ Item {
         var isNetworkEn = panelRobotController.getCustomSettings("NetworkEn", false);
         networkEn.setChecked(isNetworkEn);
 
+        var isAutoConnectEn = panelRobotController.getCustomSettings("AutoConnectEn", false);
+        autoConnect.setChecked(isAutoConnectEn);
+
+        acTime.configValue = panelRobotController.getCustomSettings("Actime", 5);
+
         var localAddr = panelRobotController.getCustomSettings("LocalAddr", "192.168.10.201");
         var localAddrs = localAddr.split(".");
         localAddr0.text = localAddrs[0];
@@ -174,5 +204,38 @@ Item {
         panelRobotController.setEth0Enable(isNetworkEn, cMode, localAddr, hostAddrs[0], hostAddrs[1]);
 
         panelRobotController.eth0DataComeIn.connect(onETH0DataComeIn);
+
+        if(isNetworkEn == "true" && isAutoConnectEn == "true" && cMode == 1){
+            autoConnectTimer.interval = acTime.configValue*1000;
+            autoConnectTimer.running = true;
+        }
+        else{
+            autoConnectTimer.running = false;
+        }
+    }
+
+    Timer{
+        id:autoConnectTimer
+        running: false
+        repeat: true
+        onTriggered: {
+//            console.log("in");
+            if(!panelRobotController.isEth0Connected()){
+//                console.log("Rein")
+                var isEn = networkEn.isChecked;
+                var localAddr = ICString.icStrformat("{0}.{1}.{2}.{3}",
+                                                     localAddr0.text,
+                                                     localAddr1.text,
+                                                     localAddr2.text,
+                                                     localAddr3.text);
+                var hostAddr =  ICString.icStrformat("{0}.{1}.{2}.{3}",
+                                                     hostAddr0.text,
+                                                     hostAddr1.text,
+                                                     hostAddr2.text,
+                                                     hostAddr3.text);
+                var cMode = communicateMode.configValue;
+                panelRobotController.setEth0Enable(isEn, cMode, localAddr, hostAddr, port.text);
+            }
+        }
     }
 }

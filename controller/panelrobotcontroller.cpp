@@ -1258,6 +1258,19 @@ void PanelRobotController::sendToolCoord(int id,const QString& data)
     ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
 }
 
+void PanelRobotController::sendIOBarnLogic(const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    for(int i=0;i<result.size();i++)
+        tmp.append(result.at(i).toInt());
+    ICRobotVirtualhost::sendIOBarnLogicDef(host_,tmp);
+}
+
 bool PanelRobotController::delCounterDef(quint32 id)
 {
     return ICRobotMold::CurrentMold()->DeleteCounter(id);

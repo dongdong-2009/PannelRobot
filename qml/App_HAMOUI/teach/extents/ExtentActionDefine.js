@@ -403,6 +403,18 @@ var extentParabolaAction = {
     }
 };
 
+var extentBarnLogicAction = {
+        "action":203,
+        "properties":[new ActionDefineItem("barnID", 0),
+    new ActionDefineItem("start", 0)],
+        "canTestRun":true,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("BarnLogicEditor.qml"), "itemDef":{"item":"BarnLogicEditor"}},
+        "toStringHandler":function(actionObject){
+            return qsTr("Barn")+qsTr("Ctrl") + ":" + qsTr("Barn")+actionObject.barnID + (actionObject.start ==1?qsTr("Start"):qsTr("Stop"))
+        }
+    };
+
 
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
@@ -414,4 +426,5 @@ var extentActions = [extentPENQIANGAction,
                      extentSingleMemposAction,
                      extentOutputAction,
                      extentIntervalOutputAction,
-                     extentParabolaAction];
+                     extentParabolaAction,
+                     extentBarnLogicAction];

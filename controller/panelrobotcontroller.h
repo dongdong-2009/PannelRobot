@@ -726,6 +726,14 @@ public:
         modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 
+    Q_INVOKABLE bool isEth0Connected() const
+    {
+        if(eth0Transceiver_.isNull())
+        {
+            return false;
+        }
+        return eth0Transceiver_->IsConnected();
+    }
     Q_INVOKABLE void setEth0Enable(bool en, int mode, const QString& localAddr, const QString& hostAddr, int hostPort)
     {
         if(en)
@@ -862,6 +870,8 @@ public:
     }
 
     Q_INVOKABLE void sendToolCoord(int id,const QString& data);
+
+    Q_INVOKABLE void sendIOBarnLogic(const QString& data);
 
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 

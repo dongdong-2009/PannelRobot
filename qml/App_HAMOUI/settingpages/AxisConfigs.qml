@@ -1002,6 +1002,29 @@ Item {
         motor6En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[5][21]));
         motor7En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[6][21]));
         motor8En.setChecked(panelRobotController.getConfigValue(pdata.configAddrs[7][21]));
+        var changeAddrValue = function(addr, v){
+            if(panelRobotController.getConfigValue(addr) != v)
+            {
+                panelRobotController.setConfigValue(addr, v);
+                panelRobotController.syncConfigs();
+                panelRobotController.setConfigValue(currentGroupAddr(pdata.checkSumPos), panelRobotController.configsCheckSum(checkSumAddrs()));
+                panelRobotController.syncConfigs();
+
+            }
+        }
+//        changeAddrValue(pdata.configAddrs[0][5], 4);
+//        changeAddrValue(pdata.configAddrs[1][5], 5);
+//        changeAddrValue(pdata.configAddrs[2][5], 6);
+
+//        changeAddrValue(pdata.configAddrs[0][7], 1);
+//        changeAddrValue(pdata.configAddrs[1][7], 2);
+//        changeAddrValue(pdata.configAddrs[2][7], 3);
+
+//        pLimitPoint.enabled = false;
+////        pLimitPointDir.enabled = false;
+//        originPoint.enabled = false;
+
+
         pdata.isInit = true;
     }
     function onAxisDefinesChanged(){

@@ -25,7 +25,7 @@ Row{
         }
         else if(ps.visible) ret.ps = ps.currentIndex;
         else if(relPoint.visible) {
-            var pt = Teach.definedPoints.getPoint(relPoint.currentText());
+            var pt = Teach.currentRecord.definedPoints.getPoint(relPoint.currentText());
             ret.point = {"pointName":pt.name, "pos":pt.point};
             ret.speed = speed.text;
             ret.pos = 0;

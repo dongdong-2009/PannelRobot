@@ -41,7 +41,7 @@ MouseArea{
             //                configName: qsTr("Counter")
             //                onVisibleChanged: {
             //                    if(visible){
-            //                        var cs = Teach.counterManager.counters;
+            //                        var cs = Teach.currentRecord.counterManager.counters;
             //                        var csNames = [];
             //                        for(var i = 0, len = cs.length; i < len; ++i){
             //                            csNames.push("[" + cs[i].id + "]:" + cs[i].name);
@@ -122,7 +122,7 @@ MouseArea{
             onVisibleChanged: {
                 if(visible){
                     counterModel.clear();
-                    var cs = Teach.counterManager.counters;
+                    var cs = Teach.currentRecord.counterManager.counters;
                     for(var i = 0, len = cs.length; i < len; ++i){
                         counterModel.append({"name":qsTr("counter") + "[" + cs[i].id + "]:" + cs[i].name,
                                                 "target":cs[i].target, "current":cs[i].current, "id":cs[i].id});
@@ -330,7 +330,7 @@ MouseArea{
             var mc;
             for(var i = 0, len = counterModel.count; i < len; ++i){
                 mc = counterModel.get(i);
-                c = Teach.counterManager.getCounter(mc.id);
+                c = Teach.currentRecord.counterManager.getCounter(mc.id);
                 if(c.current != mc.current)
                     counterModel.setProperty(i, "current", c.current);
             }

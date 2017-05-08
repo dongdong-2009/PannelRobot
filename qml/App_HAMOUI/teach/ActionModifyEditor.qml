@@ -33,6 +33,7 @@ Item {
     signal editConfirm(variant actionObject)
 
     function openEditor(actionObject,editableItems){
+
         pos.visible = false;
 
         speed.visible = false;
@@ -71,6 +72,7 @@ Item {
             }
             else if(editor == points){
                 editor.action = actionObject.action;
+                editor.angle = (actionObject.angle==undefined?360:actionObject.angle);
                 editor.points = actionObject[item.item];
             }else if(editor == earlyEndPos){
                 editor.configValue = actionObject.earlyEndPos || 0.0;
@@ -125,7 +127,7 @@ Item {
                 PData.editingEditors.push(editor);
             }
             if(Teach.hasStackIDAction(actionObject)){
-                var si = Teach.getStackInfoFromID(actionObject.stackID);
+                var si = Teach.currentRecord.stackManager.getStackInfoFromID(actionObject.stackID);
                 if(si.type == Teach.stackTypes.kST_Box){
                     speedX.configName = AxisDefine.axisInfos[0].name +qsTr("Speed0:");
                     speedY.configName = AxisDefine.axisInfos[1].name +qsTr("Speed0:");
@@ -430,7 +432,7 @@ Item {
                     }
                     else if(editor == points){
                         editingObject[PData.editorToItemMap.get(editor)] = editor.getPoints();
-
+                        editingObject.angle = editor.angle;
                     }else if(editor == earlyEndPos){
                         editingObject.isEarlyEnd = earlyEndPos.isChecked;
                         editingObject.earlyEndPos = earlyEndPos.configValue;

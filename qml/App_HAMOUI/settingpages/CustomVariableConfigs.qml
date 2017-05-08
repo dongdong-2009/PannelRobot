@@ -9,7 +9,7 @@ Item {
     function init(){
         variableView.model = null;
         variableModel.clear();
-        var vs = Teach.variableManager.variables;
+        var vs = Teach.currentRecord.variableManager.variables;
         for(var i = 0 ; i < vs.length; ++i){
             variableModel.append(vs[i]);
         }
@@ -22,7 +22,7 @@ Item {
             id:newBtn
             text: qsTr("New")
             onButtonClicked: {
-                var v = Teach.variableManager.newVariable("CV", "", 0, 0);
+                var v = Teach.currentRecord.variableManager.newVariable("CV", "", 0, 0);
                 panelRobotController.saveVariableDef(v.id, v.name, v.unit, v.val, v.decimal);
                 variableModel.insert(0, v);
             }

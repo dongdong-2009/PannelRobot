@@ -47,8 +47,8 @@ Item {
     }
     onVisibleChanged: {
         if(visible){
-            setFlagSelections(Teach.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram));
-            setModuleSelections(Teach.functionManager.functionsStrList());
+            setFlagSelections(Teach.currentRecord.flagsDefine.flagNameList(ProgramFlowPage.currentEditingProgram));
+            setModuleSelections(Teach.currentRecord.functionManager.functionsStrList());
         }
     }
 }

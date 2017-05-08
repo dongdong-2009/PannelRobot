@@ -144,3 +144,16 @@ void _ConnectionHelper::OnReadyRead()
     }
     //    emit dataComeIn(toRead);
 }
+
+bool _ConnectionHelper::IsConnected() const
+{
+    if(mode_ == ICTcpTransceiver::kCOMM_Server)
+    {
+        return true;
+    }
+    if(tcpSocket_ == NULL)
+    {
+        return false;
+    }
+    return (tcpSocket_->state() == QTcpSocket::ConnectedState);
+}

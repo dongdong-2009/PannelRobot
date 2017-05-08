@@ -63,7 +63,7 @@ public:
     Q_INVOKABLE void setCurrentIndex(int index);
     Q_INVOKABLE int openView(int editorX, int editorY, int editorW, int editorH,
                               const QStringList& items, int currentIndex, const QStringList &hideIndexs);
-
+    Q_INVOKABLE bool closeView(){return this->close();}
     void setEditorWidth(double ewidth)
     {
         editorWidth_ = ewidth;
@@ -73,7 +73,7 @@ public:
 
 
 protected:
-
+    void mouseReleaseEvent(QMouseEvent *);
 private slots:
     void on_listView_itemClicked(QListWidgetItem *item);
 
@@ -83,6 +83,7 @@ signals:
 private:
     QVBoxLayout *verticalLayout_;
     ICComboBoxListView* listView_;
+    QWidget* realFrame_;
     double editorWidth_;
     int screenWidth_;
     int screenHeight_;

@@ -41,7 +41,7 @@ Rectangle {
     }
 
     function actionObjectToText(actionObject){
-        return Teach.actionObjectToText(actionObject);
+        return Teach.currentRecord.actionObjectToText(actionObject);
     }
 
     function beforeSaveProgram(which){
@@ -89,7 +89,7 @@ Rectangle {
         PData.pointLinesInfo.syncLines(cPI, oCI, 1);
         if(actionObject.action === Teach.actions.ACT_FLAG){
             //                Teach.pushFlag(actionObjects[i].flag, actionObjects[i].comment);
-            Teach.flagsDefine.pushFlag(cPI, new Teach.FlagItem(actionObject.flag, actionObject.comment));
+            Teach.currentRecord.flagsDefine.pushFlag(cPI, new Teach.FlagItem(actionObject.flag, actionObject.comment));
         }
         if(Teach.hasCounterIDAction(actionObject)){
             var cs = Teach.actionCounterIDs(actionObject);
@@ -101,7 +101,7 @@ Rectangle {
             PData.stackLinesInfo.add(cPI, Teach.actionStackID(actionObject), cI);
         }
         if(Teach.canActionUsePoint(actionObject)){
-            var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
+            var points = Teach.currentRecord.definedPoints.parseActionPointsHelper(actionObject);
             for(var p = 0; p < points.length; ++p){
                 PData.pointLinesInfo.add(cPI, points[p].index, cI);
             }
@@ -132,7 +132,7 @@ Rectangle {
         var cPI = currentProgramIndex();
         var actionObject = model.get(cI).mI_ActionObject;
         if(actionObject.action === Teach.actions.ACT_FLAG){
-            Teach.flagsDefine.delFlag(editing.currentIndex, actionObject.flag);
+            Teach.currentRecord.flagsDefine.delFlag(editing.currentIndex, actionObject.flag);
         }
         if(Teach.hasCounterIDAction(actionObject)){
             var cs = Teach.actionCounterIDs(actionObject);
@@ -144,7 +144,7 @@ Rectangle {
             PData.stackLinesInfo.removeIDLine(cPI, Teach.actionStackID(actionObject), cI);
         }
         if(Teach.canActionUsePoint(actionObject)){
-            var points = Teach.definedPoints.parseActionPointsHelper(actionObject);
+            var points = Teach.currentRecord.definedPoints.parseActionPointsHelper(actionObject);
             for(var p = 0; p < points.length; ++p){
                 PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI);
             }
@@ -197,7 +197,7 @@ Rectangle {
         var points;
         var p;
         if(Teach.canActionUsePoint(cIAction)){
-            points = Teach.definedPoints.parseActionPointsHelper(cIAction);
+            points = Teach.currentRecord.definedPoints.parseActionPointsHelper(cIAction);
             for(p = 0; p < points.length; ++p){
                 PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI);
                 PData.pointLinesInfo.add(cPI, points[p].index, cI - 1);
@@ -217,7 +217,7 @@ Rectangle {
             PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cIPAction)){
-            points = Teach.definedPoints.parseActionPointsHelper(cIPAction);
+            points = Teach.currentRecord.definedPoints.parseActionPointsHelper(cIPAction);
             for(p = 0; p < points.length; ++p){
                 PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI - 1);
                 PData.pointLinesInfo.add(cPI, points[p].index, cI);
@@ -256,7 +256,7 @@ Rectangle {
         var points;
         var p;
         if(Teach.canActionUsePoint(cIAction)){
-            points = Teach.definedPoints.parseActionPointsHelper(cIAction);
+            points = Teach.currentRecord.definedPoints.parseActionPointsHelper(cIAction);
             for(p = 0; p < points.length; ++p){
                 PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI);
                 PData.pointLinesInfo.add(cPI, points[p].index, cI + 1);
@@ -276,7 +276,7 @@ Rectangle {
             PData.stackLinesInfo.add(cPI, sid, cI);
         }
         if(Teach.canActionUsePoint(cINAction)){
-            points = Teach.definedPoints.parseActionPointsHelper(cINAction);
+            points = Teach.currentRecord.definedPoints.parseActionPointsHelper(cINAction);
             for(p = 0; p < points.length; ++p){
                 PData.pointLinesInfo.removeIDLine(cPI, points[p].index, cI + 1);
                 PData.pointLinesInfo.add(cPI, points[p].index, cI);
@@ -326,7 +326,7 @@ Rectangle {
 
             var originpPoints = toFixAction.points;
             for(var p = 0; p < originpPoints.length; ++p){
-                if(point.index == Teach.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
+                if(point.index == Teach.currentRecord.definedPoints.extractPointIDFromPointName(originpPoints[p].pointName)){
                     toFixAction.points[p].pos = point.point;
                     toFixAction.points[p].pointName = point.name;
                 }
@@ -337,7 +337,7 @@ Rectangle {
     }
 
     function updateStacksHelper(md, lines, stackID, cpI){
-        var si = Teach.getStackInfoFromID(stackID);
+        var si = Teach.currentRecord.stackManager.getStackInfoFromID(stackID);
         if(si == null) return;
         if(lines.length <= 0 ) return;
         var line;
@@ -366,7 +366,7 @@ Rectangle {
         // module points execute
         if(moduleSel.currentIndex > 0)
             saveModules();
-        var funs = Teach.functionManager.functions;
+        var funs = Teach.currentRecord.functionManager.functions;
         for(i = 0, len = funs.length; i < len; ++i){
             updateProgramModel(functionsModel, funs[i].program);
             collectSpecialLines(PData.kFunctionProgramIndex);
@@ -378,7 +378,7 @@ Rectangle {
             }
         }
         if(moduleSel.currentIndex > 0){
-            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+            updateProgramModel(functionsModel, Teach.currentRecord.functionManager.getFunctionByName(moduleSel.currentText()).program);
             collectSpecialLines(PData.kFunctionProgramIndex);
         }
 
@@ -426,10 +426,10 @@ Rectangle {
     }
 
     function saveModuleByName(name, syncMold, sendToHost){
-        var fun = Teach.functionManager.getFunctionByName(name);
+        var fun = Teach.currentRecord.functionManager.getFunctionByName(name);
         if(fun == null) return;
         fun.program = modelToProgramHelper(PData.kFunctionProgramIndex);
-        var fJSON = Teach.functionManager.toJSON();
+        var fJSON = Teach.currentRecord.functionManager.toJSON();
         var eIJSON = panelRobotController.saveFunctions(fJSON, syncMold, (sendToHost == undefined ? true : sendToHost));
         var errInfo = JSON.parse(eIJSON)[fun.id];
         return errInfo;
@@ -593,7 +593,7 @@ Rectangle {
     function onStackUpdated(stackID){
         if(moduleSel.currentIndex > 0)
             saveModules();
-        var funs = Teach.functionManager.functions;
+        var funs = Teach.currentRecord.functionManager.functions;
         var i, len;
         var stackLines;
         var md;
@@ -608,7 +608,7 @@ Rectangle {
             }
         }
         if(moduleSel.currentIndex > 0){
-            updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+            updateProgramModel(functionsModel, Teach.currentRecord.functionManager.getFunctionByName(moduleSel.currentText()).program);
             collectSpecialLines(PData.kFunctionProgramIndex);
         }
 
@@ -686,25 +686,23 @@ Rectangle {
                             items = defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
                     }
 
-                    items:defaultPrograms
-                    currentIndex: 0
-                    onCurrentIndexChanged: {
-//                        console.log("onCurrentIndexChanged", currentIndex);
+                    function refreshProgram(p){
+                        programListView.model = null;
                         if(actionEditorFrame.visible && !actionEditorFrame.item.isMenuVisiable()){
                             actionEditorFrame.item.showMenu();
                         }
                         deleteManualProgram.visible = false;
-                        if(currentIndex > 8){
+                        if(p > 8){
                             saveProgram(currentEditingProgram);
                             deleteManualProgram.visible = newManualProgram.visible;
                             newModuleBtn.visible = false;
                             Teach.currentParsingProgram = PData.kManualProgramIndex;
-                            PData.programToInsertIndex[PData.kManualProgramIndex] = updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(currentIndex)).program);
+                            PData.programToInsertIndex[PData.kManualProgramIndex] = updateProgramModel(manualProgramModel, ManualProgramManager.manualProgramManager.getProgramByName(editing.text(p)).program);
                             programListView.model = manualProgramModel;
                             programListView.currentIndex = -1;
                             currentEditingProgram = PData.kManualProgramIndex;
                             PData.currentEditingProgram = PData.kManualProgramIndex;
-                            PData.lastEditingIndex = currentIndex;
+                            PData.lastEditingIndex = p;
                             actionEditorFrame.item.setMode("manualProgramEditMode");
 
                         }else{
@@ -715,19 +713,24 @@ Rectangle {
                                 singleCycle.setChecked(false);
                             }
 
-                            PData.currentEditingProgram = currentIndex;
-                            Teach.currentParsingProgram = currentIndex;
-                            if(currentIndex < 0) return;
+                            PData.currentEditingProgram = p;
+                            Teach.currentParsingProgram = p;
+                            if(p < 0) return;
                             if(moduleSel.currentIndex != 0){
                                 moduleSel.currentIndex = 0;
                             }else{
                                 saveProgram(currentEditingProgram);
-                                programListView.model = PData.programs[currentIndex];
+                                programListView.model = PData.programs[p];
                                 programListView.currentIndex = -1;
-                                currentEditingProgram = currentIndex;
+                                currentEditingProgram = p;
                             }
-                            PData.lastEditingIndex = currentIndex;
+                            PData.lastEditingIndex = p;
                         }
+                    }
+
+                    items:defaultPrograms
+                    onCurrentIndexChanged: {
+                        refreshProgram(currentIndex);
                     }
                 }
                 ICButton{
@@ -811,7 +814,7 @@ Rectangle {
                             PData.currentEditingProgram = editing.currentIndex;
                         }else{
                             Teach.currentParsingProgram = PData.kFunctionProgramIndex;
-                            PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.functionManager.getFunctionByName(moduleSel.currentText()).program);
+                            PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, Teach.currentRecord.functionManager.getFunctionByName(moduleSel.currentText()).program);
                             collectSpecialLines(PData.kFunctionProgramIndex);
                             programListView.currentIndex = -1;
                             programListView.model = null;
@@ -833,7 +836,7 @@ Rectangle {
                     function newModule(status){
                         tipBox.finished.disconnect(newModuleBtn.newModule);
                         if(status){
-                            var newP = Teach.functionManager.newFunction(tipBox.inputText);
+                            var newP = Teach.currentRecord.functionManager.newFunction(tipBox.inputText);
                             var modulesNames = moduleSel.items;
                             modulesNames.splice(1,0, newP.toString());
                             PData.programToInsertIndex[PData.kFunctionProgramIndex] = updateProgramModel(functionsModel, newP.program);
@@ -843,7 +846,7 @@ Rectangle {
                             programListView.currentIndex = -1;
                             programListView.model = functionsModel;
                             saveModules();
-//                            hasModify = true;
+                            //                            hasModify = true;
                         }
                     }
 
@@ -864,13 +867,13 @@ Rectangle {
                     onButtonClicked: {
                         hasModify = false;
                         var toDelID = Utils.getValueFromBrackets(moduleSel.currentText());
-                        Teach.functionManager.delFunction(toDelID);
+                        Teach.currentRecord.functionManager.delFunction(toDelID);
                         var ci = moduleSel.currentIndex;
                         var funs = moduleSel.items;
                         moduleSel.currentIndex = 0;
                         funs.splice(ci, 1);
                         moduleSel.items = funs;
-                        panelRobotController.saveFunctions(Teach.functionManager.toJSON());
+                        panelRobotController.saveFunctions(Teach.currentRecord.functionManager.toJSON());
                     }
                 }
 
@@ -922,7 +925,7 @@ Rectangle {
                 }
                 onVisibleChanged: {
                     if(visible){
-//                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
+                        //                        speedDisplay.text = panelRobotController.getConfigValueText("s_rw_0_16_1_294");
                         speedDisplay.text = ShareData.GlobalStatusCenter.getGlobalSpeed();
                     }
                 }
@@ -975,17 +978,17 @@ Rectangle {
                     id:autoEditBtn
                     function showModify(){
                         var actionObject = currentModelData().mI_ActionObject;
-//                        if(Teach.hasPosAction(actionObject)){
-//                            var index = programListView.currentIndex;
-//                            var pIndex = editing.currentIndex;
-//                            var mIndex = moduleSel.currentIndex;
-//                            var lineID = (mIndex > 0 ? (mIndex + 8) : pIndex) + ":" + index;
-//                            console.log(lineID);
-//                            if(PData.hasAutoModified(lineID)){
-//                                actionObject.pos = PData.autoModifyPosActions[lineID];
-//                            }
-//                            PData.autoModifyPosActions[lineID] = actionObject.pos;
-//                        }
+                        //                        if(Teach.hasPosAction(actionObject)){
+                        //                            var index = programListView.currentIndex;
+                        //                            var pIndex = editing.currentIndex;
+                        //                            var mIndex = moduleSel.currentIndex;
+                        //                            var lineID = (mIndex > 0 ? (mIndex + 8) : pIndex) + ":" + index;
+                        //                            console.log(lineID);
+                        //                            if(PData.hasAutoModified(lineID)){
+                        //                                actionObject.pos = PData.autoModifyPosActions[lineID];
+                        //                            }
+                        //                            PData.autoModifyPosActions[lineID] = actionObject.pos;
+                        //                        }
 
                         modifyEditor.openEditor(actionObject, PData.isRegisterEditableAction(actionObject.action) ? PData.registerEditableActions[actionObject.action]:Teach.actionObjectToEditableITems(actionObject));
                         var showY = autoEditBtn.y + autoEditBtn.height + 30;
@@ -1126,7 +1129,7 @@ Rectangle {
                             y:{
                                 if(toolBar.y < height)
                                     return parent.height;
-                                 return -height;
+                                return -height;
                             }
                             visible: false
                             Column{
@@ -1179,12 +1182,12 @@ Rectangle {
 
                         onButtonClicked: {
                             copyAdvance.visible = true;
-//                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
-//                            var toInsert = copyLine();
+                            //                            var toInsert = Utils.cloneObject(currentModelData().mI_ActionObject);
+                            //                            var toInsert = copyLine();
                             //                            var toInsert = currentModelData().mI_ActionObject;
-//                            insertActionToList(toInsert);
+                            //                            insertActionToList(toInsert);
                             //                            if(toInsert.action === Teach.actions.F_CMD_SYNC_START)
-//                            repaintProgramItem(currentModel());
+                            //                            repaintProgramItem(currentModel());
                         }
                     }
 
@@ -1200,8 +1203,8 @@ Rectangle {
                             for(var i = 0, len = PData.clipboard.length; i < len; ++i){
                                 ao = PData.clipboard[i];
                                 if(ao.action == Teach.actions.ACT_FLAG){
-                                    if(Teach.flagsDefine.getFlag(PData.currentEditingProgram, ao.flag) != null){
-                                        var f = Teach.flagsDefine.createFlag(PData.currentEditingProgram, ao.comment);
+                                    if(Teach.currentRecord.flagsDefine.getFlag(PData.currentEditingProgram, ao.flag) != null){
+                                        var f = Teach.currentRecord.flagsDefine.createFlag(PData.currentEditingProgram, ao.comment);
                                         ao.flag = f.flagID;
                                     }
                                 }
@@ -1272,19 +1275,19 @@ Rectangle {
                         text: qsTr("Del")
                         bgColor: "red"
                         visible: false
-//                        {
+                        //                        {
 
-//                            var modelObject = currentModelData();
-//                            if(modelObject === null) return true;
-//                            if((programListView.currentIndex == programListView.count - 1) &&
-//                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
-//                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
-//                                return true;
+                        //                            var modelObject = currentModelData();
+                        //                            if(modelObject === null) return true;
+                        //                            if((programListView.currentIndex == programListView.count - 1) &&
+                        //                                    (modelObject.mI_ActionObject.action != Teach.actions.ACT_END &&
+                        //                                     modelObject.mI_ActionObject.action != Teach.actions.F_CMD_PROGRAM_CALL_BACK)){
+                        //                                return true;
 
-//                            }
+                        //                            }
 
-//                            return programListView.currentIndex < programListView.count - 1;
-//                        }
+                        //                            return programListView.currentIndex < programListView.count - 1;
+                        //                        }
 
                     }
                 }
@@ -1344,7 +1347,7 @@ Rectangle {
                             // update counters show
                             var currentCounterID = panelRobotController.statusValue("c_ro_8_5_0_938");
                             var currentCounterCurrent = panelRobotController.statusValue("c_ro_13_19_0_938");
-                            var counter = Teach.counterManager.getCounter(currentCounterID);
+                            var counter = Teach.currentRecord.counterManager.getCounter(currentCounterID);
                             if(counter != null){
                                 if(counter.current != currentCounterCurrent){
                                     counter.current = currentCounterCurrent;
@@ -1370,11 +1373,11 @@ Rectangle {
                             {
                                 var i;
                                 programListView.clearLastRunning(lastRunning);
-//                                var lastModel = PData.programs[lastRunning.model];
+                                //                                var lastModel = PData.programs[lastRunning.model];
 
-//                                for(i = 0; i < lastRunning.items.length; ++i){
-//                                    lastModel.setProperty(lastRunning.items[i], "mI_IsActionRunning", false);
-//                                }
+                                //                                for(i = 0; i < lastRunning.items.length; ++i){
+                                //                                    lastModel.setProperty(lastRunning.items[i], "mI_IsActionRunning", false);
+                                //                                }
 
                                 var cRunning = {"model":programIndex,"step":uiRunningSteps.hostStep, "moduleID":uiRunningSteps.moduleID};
 
@@ -1383,6 +1386,7 @@ Rectangle {
                                 }
                                 var cModel = currentModel();
                                 var uiSteps = uiRunningSteps.steps;
+//                                console.log(JSON.stringify(cRunning), JSON.stringify(uiRunningSteps));
                                 for(i = 0; i < uiSteps.length; ++i){
                                     cModel.setProperty(uiSteps[i], "mI_IsActionRunning", true);
                                 }
@@ -1427,7 +1431,7 @@ Rectangle {
 
     MouseArea{
         id: programSearch
-//        visible: false
+        //        visible: false
         width: 600
         height:container.height - programSelecterContainer.height - container.spacing
         y:programListContainer.y
@@ -1456,20 +1460,45 @@ Rectangle {
         }
         ICButton{
             id:programSearchBtn
+            property real btnInitY : 0
+            property bool posIsInit:false
+            property bool isFunc: true
             text: ""
             icon: "../images/search.png"
             width: 64
             height: 64
             bgColor: "green"
-            anchors.right: parent.left
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: actionEditorFrame.height
+            x:-64
+            y:120
             onButtonClicked: {
-                if(!programSearchContent.visible){
+                if((!programSearchContent.visible) && isFunc){
                     programSearchContent.visible = true;
                     programSearchOut.start();
                 }else{
                     programSearchIn.start();
+                }
+            }
+            onBtnPressed: {
+                isFunc = true;
+                if(!posIsInit){
+                    btnInitY = mousePosY;
+                    posIsInit = true;
+                }
+            }
+            onBtnReleased: {
+                posIsInit = false;
+            }
+            onMousePosYChanged: {
+                if(programSearchContent.visible)return;
+                var dy = mousePosY -btnInitY;
+                if(posIsInit && (Math.abs(dy) > 5)){
+                    var tmpY;
+                    tmpY = programSearchBtn.y;
+                    tmpY += dy;
+                    if(tmpY<0)tmpY=0;
+                    else if(tmpY>230)tmpY=230;
+                    isFunc = false;
+                    programSearchBtn.y = tmpY;
                 }
             }
         }
@@ -1480,7 +1509,7 @@ Rectangle {
             height: parent.height
             color: "#A0A0F0"
             border.width: 1
-            border.color: "gray"  
+            border.color: "gray"
             Row{
                 id:searchCondition
                 z:2
@@ -1529,7 +1558,7 @@ Rectangle {
                                         searchResultModel.append({"whichProgram":i,"whichFunction":0,"whichRow":j,"desc":tmpstr});
                                 }
                                 if(searchResultModel.count === tmpLen)
-                                  searchResultModel.remove(tmpLen - 1);
+                                    searchResultModel.remove(tmpLen - 1);
                             }
                             tmpFunctions = JSON.parse(panelRobotController.functions());
                             for(i=0;i<tmpFunctions.length;++i){
@@ -1542,7 +1571,7 @@ Rectangle {
                                         searchResultModel.append({"whichProgram":0,"whichFunction":i+1,"whichRow":j,"desc":tmpstr});
                                 }
                                 if(searchResultModel.count === tmpLen)
-                                  searchResultModel.remove(tmpLen - 1);
+                                    searchResultModel.remove(tmpLen - 1);
                             }
                         }
 
@@ -1555,14 +1584,14 @@ Rectangle {
                             }
                         }
                         else if(searchRange.configValue>9){
-                           var searchFunctions = JSON.parse(panelRobotController.functions());
-                           var searchFunction = JSON.parse(searchFunctions[searchRange.configValue-10].program);
-                           for(i=0;i<searchFunction.length;++i){
-                               tmpstr = actionObjectToText(searchFunction[i]);
-                               if(tmpstr.indexOf(keyWords.text) >= 0)
-                                   searchResultModel.append({"whichProgram":0,"whichFunction":searchRange.configValue-9,"whichRow":i,"desc":tmpstr});
-                           }
-                       }
+                            var searchFunctions = JSON.parse(panelRobotController.functions());
+                            var searchFunction = JSON.parse(searchFunctions[searchRange.configValue-10].program);
+                            for(i=0;i<searchFunction.length;++i){
+                                tmpstr = actionObjectToText(searchFunction[i]);
+                                if(tmpstr.indexOf(keyWords.text) >= 0)
+                                    searchResultModel.append({"whichProgram":0,"whichFunction":searchRange.configValue-9,"whichRow":i,"desc":tmpstr});
+                            }
+                        }
                         searchResultModel.append({"whichProgram":-1,"whichFunction":-1,"whichRow":-1,"desc":qsTr("End")});
                     }
                 }
@@ -1600,10 +1629,10 @@ Rectangle {
                         onClicked: {
                             searchResultView.currentIndex = index;
                         }
-//                        onDoubleClicked: {
-//                            if(whichProgram<0 || whichFunction<0 || whichRow<0)return;
+                        //                        onDoubleClicked: {
+                        //                            if(whichProgram<0 || whichFunction<0 || whichRow<0)return;
 
-//                        }
+                        //                        }
                     }
                     Text {
                         id: itemText
@@ -1904,7 +1933,7 @@ Rectangle {
                 PData.stackLinesInfo.add(which, Teach.actionStackID(step.mI_ActionObject), i);
             }
             if(Teach.canActionUsePoint(step.mI_ActionObject)){
-                var points = Teach.definedPoints.parseActionPointsHelper(step.mI_ActionObject);
+                var points = Teach.currentRecord.definedPoints.parseActionPointsHelper(step.mI_ActionObject);
                 for(var p = 0; p < points.length; ++p){
                     PData.pointLinesInfo.add(which, points[p].index, i);
                 }
@@ -1920,7 +1949,7 @@ Rectangle {
         var jumpLines = [];
         var insertedIndex = 0;
         var currentParsingProgram = PData.programToParsingIndex(model);
-        Teach.flagsDefine.clear(currentParsingProgram);
+        Teach.currentRecord.flagsDefine.clear(currentParsingProgram);
         if(program[0].action === Teach.actions.ACT_COMMENT){
             if(program[0].reserve !== undefined){
                 PData.moldExtentData = program[0].reserve;
@@ -1934,11 +1963,11 @@ Rectangle {
             if(step.insertedIndex >= insertedIndex)
                 insertedIndex = step.insertedIndex + 1;
             if(Teach.canActionUsePoint(step)){
-                Teach.definedPoints.parseActionPoints(step);
+                Teach.currentRecord.definedPoints.parseActionPoints(step);
             }
             if(step.action === Teach.actions.ACT_FLAG){
                 at = Teach.actionTypes.kAT_Flag;
-                Teach.flagsDefine.pushFlag(currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
+                Teach.currentRecord.flagsDefine.pushFlag(currentParsingProgram, new Teach.FlagItem(step.flag, step.comment));
             }else if(step.action === Teach.actions.F_CMD_SYNC_START){
                 at = Teach.actionTypes.kAT_SyncStart;
                 isSyncStart = true;
@@ -1964,24 +1993,22 @@ Rectangle {
 
     function updateProgramModels(){
         hasModify = false;
-        programListView.model = null;
-        Teach.definedPoints.clear();
-        editing.currentIndex = -1;
         var counters = JSON.parse(panelRobotController.counterDefs());
-        Teach.counterManager.init(counters);
-        Teach.variableManager.init(JSON.parse(panelRobotController.variableDefs()));
-        Teach.parseStacks(panelRobotController.stacks());
-        Teach.functionManager.init(panelRobotController.functions());
 
+        Teach.currentRecord.init(panelRobotController.currentRecordName(),
+                                 counters,
+                                 panelRobotController.stacks(),
+                                 JSON.parse(panelRobotController.variableDefs()),
+                                 panelRobotController.functions());
+        Teach.currentRecord.definedPoints.registerPointsMonitor(programFlowPageInstance);
 
-        //        var program = JSON.parse(panelRobotController.mainProgram());
         var program;
-        var i;
+        var i , len;
         if(hasInit){
             var sI;
             var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
-            for(i = 0; i < Teach.stackInfos.length; ++i){
-                sI = Teach.stackInfos[i];
+            for(i = 0, len = Teach.currentRecord.stackManager.stackInfos.length; i < len; ++i){
+                sI = Teach.currentRecord.stackManager.stackInfos[i];
                 if(sI.dsHostID >= 0 && sI.posData.length > 0){
                     ESData.externalDataManager.registerDataSource(sI.dsName,
                                                                   ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
@@ -1994,16 +2021,16 @@ Rectangle {
         }
 
         for(i = 0; i < 9; ++i){
-//            program = JSON.parse(panelRobotController.programs(i));
+            //            program = JSON.parse(panelRobotController.programs(i));
             Teach.currentParsingProgram = i;
-            Teach.flagsDefine.clear(i);
+            Teach.currentRecord.flagsDefine.clear(i);
             program = getRecordContent(i);
             PData.programToInsertIndex[i] = updateProgramModel(PData.programs[i], program);
             collectSpecialLines(i);
         }
-        editing.currentIndex = 0;
+        //        editing.currentIndex = 0;
 
-        var modulsNames = Teach.functionManager.functionsStrList();
+        var modulsNames = Teach.currentRecord.functionManager.functionsStrList();
         moduleSel.currentIndex = -1;
         moduleSel.items = [];
 
@@ -2012,7 +2039,10 @@ Rectangle {
         moduleSel.currentIndex = 0;
         currentEditingProgram = 0;
         currentEditingModule = 0;
-        programListView.model = mainProgramModel;
+        //        programListView.model = mainProgramModel;
+        editing.currentIndex = 0;
+        editing.refreshProgram(editing.currentIndex);
+
 
     }
 
@@ -2025,8 +2055,14 @@ Rectangle {
         }
     }
 
+
     Component.onCompleted: {
-        ExtentActionDefine.init(Teach.counterManager);
+        var counters = JSON.parse(panelRobotController.counterDefs());
+        Teach.loadRecord(panelRobotController.currentRecordName(),
+                         counters,
+                         panelRobotController.stacks(),
+                         JSON.parse(panelRobotController.variableDefs()),
+                         panelRobotController.functions());
         Teach.registerCustomActions(panelRobotController, ExtentActionDefine.extentActions);
         editing.items = editing.defaultPrograms.concat(ManualProgramManager.manualProgramManager.programsNameList());
         ShareData.GlobalStatusCenter.registeGlobalSpeedChangedEvent(programFlowPageInstance);
@@ -2041,14 +2077,6 @@ Rectangle {
         PData.programs.push(sub8ProgramModel);
         PData.programs.push(functionsModel);
         PData.programs.push(manualProgramModel);
-
-        updateProgramModels();
-        var mPs = ManualProgramManager.manualProgramManager.programList();
-        for(var i = 0; i < mPs.length; ++i){
-            Teach.definedPoints.parseProgram(mPs[i].program);
-        }
-
-        panelRobotController.moldChanged.connect(updateProgramModels);
         modifyEditor.editConfirm.connect(onEditConfirm);
         delBtn.buttonClicked.connect(onDeleteTriggered);
         moveUpBtn.buttonClicked.connect(onUpTriggered);
@@ -2060,14 +2088,15 @@ Rectangle {
         setModuleEnabled(false);
         setManualProgramEnabled(false);
 
-        Teach.definedPoints.registerPointsMonitor(programFlowPageInstance);
 
         for(var ac in Teach.customActions){
-//            console.log("ac",ac,Teach.customActions[ac].editableItems.editor,Teach.customActions[ac].editableItems.itemDef.item);
+//            console.log(JSON.stringify(Teach.customActions[ac].editableItems));
             modifyEditor.registerEditableItem(Teach.customActions[ac].editableItems.editor,
                                               Teach.customActions[ac].editableItems.itemDef.item);
         }
 
         hasInit = true;
+        panelRobotController.moldChanged.connect(updateProgramModels);
+
     }
 }

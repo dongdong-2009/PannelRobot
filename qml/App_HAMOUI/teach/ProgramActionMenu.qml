@@ -176,8 +176,8 @@ Rectangle {
             icon: "../images/action_item_vision.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
-            onButtonClicked: visionMenuTriggered()
             visible: false
+            onButtonClicked: visionMenuTriggered()
         }
 
         ICButton{
@@ -196,6 +196,7 @@ Rectangle {
             icon: "../images/write_ram.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
+//            visible: false
             onButtonClicked: dataMenuTriggered()
             visible: false
         }
@@ -215,6 +216,7 @@ Rectangle {
             icon: "../images/action_item_more.png"
             width: pData.menuItemSize.width
             height: pData.menuItemSize.height
+//            visible: false
             onButtonClicked: extentMenuTriggered()
 //            visible: false
         }

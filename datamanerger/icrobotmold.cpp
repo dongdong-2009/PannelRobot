@@ -12,7 +12,8 @@ union SpeedControlActionData
         quint32 id:5;
         quint32 dir:1;
         quint32 stop:1;
-        quint32 rev:25;
+        quint32 zero:1;
+        quint32 rev:24;
     }b;
     quint32 all;
 };
@@ -93,14 +94,16 @@ int AxisServoActionCompiler(ICMoldItem & item, const QVariantMap* v)
     bool isOutput = v->value("outputEn", false).toBool();
     int speedMode = v->value("speedMode", 0).toInt();
     bool isStop = v->value("stop", false).toBool();
+    bool isZero = v->value("zero", false).toBool();
     bool isRel = v->value("rel", false).toBool();
     QVariantList pts = v->value("points").toList();
-    if(speedMode != 0 || isStop)
+    if(speedMode != 0 || isStop||isZero)
     {
         SpeedControlActionData spData;
         spData.b.id = v->value("axis", 0).toInt();
         spData.b.dir = speedMode == 1 ? 1 : 0;
         spData.b.stop = isStop ? 0 : 1;
+        spData.b.zero = isZero ? 1 : 0;
         spData.b.rev = 0;
         item.append(spData.all);
         item.append(ICUtility::doubleToInt(v->value("speed", 0).toDouble(), 1));
@@ -325,6 +328,9 @@ int PathActionCompiler(ICMoldItem & item, const QVariantMap*v)
 
     if(action == F_CMD_LINE2D_MOVE_POINT)
         item.append(type);
+    if(action == F_CMD_ARC3D_MOVE_POINT || action ==F_CMD_ARC3D_MOVE ||
+            action ==F_CMD_ARC3D_MOVE_POINT_POSE ||action ==F_CMD_ARC3D_MOVE_POSE)
+        item.append(v->value("angle", 360).toInt());
     item[0] = action;
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
@@ -1038,6 +1044,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
     if(!functions.isEmpty() && ret.HasCalledModule())
     {
+        int endUIStep = result.size() - 1;
+
         QMap<int, CompileInfo>::const_iterator fp = functions.constBegin();
         int programEndLine = result.size();
         ICMoldItem endProgramItem = ret.GetICMoldItem(ret.CompiledProgramLineCount() -1);
@@ -1102,7 +1110,7 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 //        ret.AddICMoldItem(result.size() + ret.CompiledProgramLineCount() + 1 - beginToFix, endProgramItem);
 //        qDebug()<<result.size()<<baseStep<<beginToFix;
         ret.AddICMoldItem(baseStep, endProgramItem);
-        int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
+//        int endUIStep = result.size() + ret.CompiledProgramLineCount() - beginToFix;
 //        ret.MapStep(endUIStep, fStep + 1);
         ret.MapStep(baseStep, fStep + 1);
 
@@ -1125,6 +1133,8 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
                 ret.UpdateICMoldItem(toFixUIStep, toFixLineItem);
             }
         }
+        ret.RemapStep(endUIStep, fStep + 1);
+
     }
 
 
@@ -1196,32 +1206,19 @@ CompileInfo ICRobotMold::Complie(const QString &programText,
 
 }
 
-bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
+bool ICRobotMold::CompileMold()
 {
-    if(moldName == moldName_ && !reload)
-        return false;
-    QStringList programs = ICDALHelper::MoldProgramContent(moldName);
-    if(programs.size() != 9) return false;
-    moldName_ = moldName;
+    bool ok;
     CompileInfo p;
     int err;
-//    programsCode_.clear();
-//    programs_.clear();
-    bool ok = false;
-    stacks_ = ICDALHelper::MoldStacksContent(moldName);
-    stackInfos_ = ParseStacks(stacks_, ok);
-    counters_ = ICDALHelper::GetMoldCounterDef(moldName);
-    variables_ = ICDALHelper::GetMoldVariableDef(moldName);
-    functions_ = ICDALHelper::MoldFunctionsContent(moldName);
+    QList<CompileInfo> tmpPrograms;
     compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
     ok = true;
-    QList<CompileInfo> tmpPrograms;
-    QStringList tmpProgramsCode;
-    for(int i = 0; i != programs.size(); ++i)
+
+    for(int i = 0; i != programsCode_.size(); ++i)
     {
-        tmpProgramsCode.append(programs.at(i));
         qDebug()<<"Load Record:"<<i;
-        p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
+        p = Complie(programsCode_.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
         if(p.IsCompileErr())
         {
             ok = false;
@@ -1231,9 +1228,51 @@ bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
     }
     if(ok)
     {
-        programsCode_ = tmpProgramsCode;
+//        programsCode_ = tmpProgramsCode;
         programs_ = tmpPrograms;
     }
+    return ok;
+}
+
+bool ICRobotMold::LoadMold(const QString &moldName, bool reload)
+{
+    if(moldName == moldName_ && !reload)
+        return false;
+    QStringList programs = ICDALHelper::MoldProgramContent(moldName);
+    if(programs.size() != 9) return false;
+    moldName_ = moldName;
+
+//    programsCode_.clear();
+//    programs_.clear();
+    bool ok = false;
+    stacks_ = ICDALHelper::MoldStacksContent(moldName);
+    stackInfos_ = ParseStacks(stacks_, ok);
+    counters_ = ICDALHelper::GetMoldCounterDef(moldName);
+    variables_ = ICDALHelper::GetMoldVariableDef(moldName);
+    functions_ = ICDALHelper::MoldFunctionsContent(moldName);
+//    compiledFunctions_ = ParseFunctions(functions_,ok, stackInfos_, counters_, variables_);
+    ok = true;
+    programsCode_ = programs;
+
+//    QList<CompileInfo> tmpPrograms;
+//    QStringList tmpProgramsCode;
+//    for(int i = 0; i != programs.size(); ++i)
+//    {
+//        tmpProgramsCode.append(programs.at(i));
+//        qDebug()<<"Load Record:"<<i;
+//        p = Complie(programs.at(i), stackInfos_, counters_, variables_, compiledFunctions_, err);
+//        if(p.IsCompileErr())
+//        {
+//            ok = false;
+//            qDebug()<<"Load Mold Err:"<<p.ErrInfo();
+//        }
+//        tmpPrograms.append(p);
+//    }
+//    if(ok)
+//    {
+//        programsCode_ = tmpProgramsCode;
+//        programs_ = tmpPrograms;
+//    }
 
     QVector<QPair<quint32, quint32> > fncs = ICDALHelper::GetAllMoldConfig(ICDALHelper::MoldFncTableName(moldName));
     for(int i = 0; i != fncs.size(); ++i)
@@ -1969,6 +2008,7 @@ quint32 ICRobotMold::CheckSum() const
     {
 //        sum += MoldFnc(moldAddr.at(i));
         sum += fncCache_.ConfigValue(moldAddr.at(i));
+//        qDebug()<< fncCache_.ConfigValue(moldAddr.at(i))<< moldAddr.at(i)->ToString() ;
     }
     return (-sum) & 0xFFFF;
 }

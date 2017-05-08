@@ -41,15 +41,15 @@ ContentPageBase {
                 textColor: getChecked() ? "yellow" : "black"
             }
 
-            TabMenuItem {
-                id: toolsCalibrate
-                width: 80
-                height: pdata.menuItemHeight
-                itemText: qsTr("Tools Calibration")
-                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
-                textFont.pixelSize: getChecked() ? 18 : 16
-                textColor: getChecked() ? "yellow" : "black"
-            }
+//            TabMenuItem {
+//                id: toolsCalibrate
+//                width: 80
+//                height: pdata.menuItemHeight
+//                itemText: qsTr("Tools Calibration")
+//                color: getChecked() ? "blue" :  Theme.defaultTheme.TabMenuItem.unCheckedColor
+//                textFont.pixelSize: getChecked() ? 18 : 16
+//                textColor: getChecked() ? "yellow" : "black"
+//            }
             TabMenuItem{
                 id:programmableBtn
                 width: 100
@@ -152,8 +152,8 @@ ContentPageBase {
                 pageContainer.addPage(page)
             }else
                 console.log(yDefinePage1Class.errorString());
-            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
-            pageContainer.addPage(Utils.icCreateObject(toolsCalibrationClass, pageContainer));
+//            var toolsCalibrationClass = Qt.createComponent('ToolsCalibration.qml');
+//            pageContainer.addPage(Utils.icCreateObject(toolsCalibrationClass, pageContainer));
 
             var programmableButtonClass = Qt.createComponent('ProgrammableButton.qml');
             pageContainer.addPage(Utils.icCreateObject(programmableButtonClass, pageContainer));

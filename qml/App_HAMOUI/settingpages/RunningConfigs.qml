@@ -48,22 +48,34 @@ Item {
                 configAddr: "s_rw_0_8_0_176"
             }
         }
-        ICCheckableLineEdit{
+//        ICCheckableLineEdit{
+//            id:firstMoudleSpeedEdit
+//            anchors.top: configSec1.bottom
+//            anchors.topMargin: 6
+//            unit: qsTr("%")
+//            configAddr: "s_rw_1_31_1_289"
+//            configName: qsTr("First Moudle Speed")
+//            onIsCheckedChanged: {
+//                panelRobotController.setConfigValue("s_rw_0_1_0_289",isChecked ? 1 : 0);
+//                panelRobotController.syncConfigs();
+//            }
+//        }
+        Row{
             id:firstMoudleSpeedEdit
             anchors.top: configSec1.bottom
             anchors.topMargin: 6
-            unit: qsTr("%")
-            configName: qsTr("First Moudle Speed")
-            min: 0.1
-            max: 100.0
-            decimal: 1
-            onConfigValueChanged: {
-                panelRobotController.setConfigValue("s_rw_1_31_1_289",configValue);
-                panelRobotController.syncConfigs();
+            spacing: 4
+            ICCheckBoxEdit {
+                id:firstSpeedEdit
+                configAddr: "s_rw_0_1_0_289"
+                configName: qsTr("First Moudle Speed")
+                anchors.verticalCenter: parent.verticalCenter
             }
-            onIsCheckedChanged: {
-                panelRobotController.setConfigValue("s_rw_0_1_0_289",isChecked ? 1 : 0);
-                panelRobotController.syncConfigs();
+            ICConfigEdit{
+                configAddr: "s_rw_1_31_1_289"
+                enabled: firstSpeedEdit.isChecked
+                unit: qsTr("%")
+
             }
         }
         ICCheckBoxEdit{
@@ -290,7 +302,6 @@ Item {
            }
        }
 
-
         onConfigValueChanged: {
             console.log(addr, newV, oldV);
             ICOperationLog.opLog.appendNumberConfigOperationLog(addr, newV, oldV);
@@ -301,8 +312,6 @@ Item {
         }
     }
     Component.onCompleted: {
-        firstMoudleSpeedEdit.configValue = panelRobotController.getConfigValueText("s_rw_1_31_1_289");
-        firstMoudleSpeedEdit.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_289");
         var isTurnAutoSpeedEn = panelRobotController.getCustomSettings("IsTurnAutoSpeedEn", 0);
         var turnAutoSpeed = panelRobotController.getCustomSettings("TurnAutoSpeed", 10.0);
         turnAutoSpeedEdit.isChecked = isTurnAutoSpeedEn;

@@ -23,7 +23,7 @@ Item {
         }
         Text {
             id: pos_
-            width: 90
+            width: 85
             color: textColor
             text:(con.text*mode).toFixed(3)
             horizontalAlignment: Text.AlignRight

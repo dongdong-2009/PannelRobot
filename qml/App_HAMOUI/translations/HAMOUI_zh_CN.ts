@@ -113,6 +113,564 @@
     </message>
 </context>
 <context>
+    <name>AlarmInfo</name>
+    <message>
+        <source>ALARM_NOT_INIT                 </source>
+        <translation>没初始化完</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_CFG_DIFF            </source>
+        <translation>主机结构配置和手控结构配置不同</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_CFG_ERR             </source>
+        <translation>主机结果配置参数错误</translation>
+    </message>
+    <message>
+        <source>ALARM_OUT_OF_MEMORY_ERR        </source>
+        <translation>主机内存不足</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_DATA_ANALYTICAL_ERR</source>
+        <translation>教导数据解析错误</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_DATA_EDIT_ERR      </source>
+        <translation>教导数据编辑错误</translation>
+    </message>
+    <message>
+        <source>ALARM_EMERGENCY_STOP           </source>
+        <translation>紧急停止</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS1_ALARM_ERR</source>
+        <translation type="obsolete">电机1报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS2_ALARM_ERR</source>
+        <translation type="obsolete">电机2报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS3_ALARM_ERR</source>
+        <translation type="obsolete">电机3报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS4_ALARM_ERR</source>
+        <translation type="obsolete">电机4报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS5_ALARM_ERR</source>
+        <translation type="obsolete">电机5报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS6_ALARM_ERR</source>
+        <translation type="obsolete">电机6报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_RUN_ERR </source>
+        <translation>运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SPEED_SET_ERR </source>
+        <translation>速度设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_OVER_SPEED_ERR </source>
+        <translation>运动过速</translation>
+    </message>
+    <message>
+        <source>Wait Input:</source>
+        <translation>等待输入:</translation>
+    </message>
+    <message>
+        <source>ON over time</source>
+        <translation>通超时</translation>
+    </message>
+    <message>
+        <source>OFF over time</source>
+        <translation>断超时</translation>
+    </message>
+    <message>
+        <source>Wait Single Input:</source>
+        <translation>等待单头阀输入:</translation>
+    </message>
+    <message>
+        <source>Wait Double Input:</source>
+        <translation>等待双头阀输入:</translation>
+    </message>
+    <message>
+        <source>Connect host fail!</source>
+        <translation>连接主机失败!</translation>
+    </message>
+    <message>
+        <source>ALARM_AUTO_JUMP_ERR</source>
+        <translation>自动运行跳转错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACTION_FAIL</source>
+        <translation>轨迹运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
+        <translation>手动直线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
+        <translation>手动直线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标3未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_SETROUTESPEED_FAIL</source>
+        <translation>轨迹运动速度设定失败</translation>
+    </message>
+    <message>
+        <source>ALARM_Motor_ALARM_ERR</source>
+        <translation>电机报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_RUN_ERR</source>
+        <translation>运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SPEED_SET_ERR</source>
+        <translation>速度设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_OVER_SPEED_ERR</source>
+        <translation>运动过速</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_P</source>
+        <translation>正极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_N</source>
+        <translation>负极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ERROR_SERVO_WARP</source>
+        <translation>偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACC_ERR</source>
+        <translation>轨迹规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_COUNTER_NOT_DEFINE</source>
+        <translation>计数器未定义</translation>
+    </message>
+    <message>
+        <source>Unknow Err</source>
+        <translation>未知错误</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_ERR</source>
+        <translation>教导程序错误</translation>
+    </message>
+    <message>
+        <source>ALARM_CFG_STORAGE_ERR</source>
+        <translation>配置参数存储失败</translation>
+    </message>
+    <message>
+        <source>ALARM_MAHCINE_SET_ERR</source>
+        <translation>机型设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ACC_LIMIT</source>
+        <translation>加速度报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_P</source>
+        <translation>正极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_N</source>
+        <translation>负极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_NOT_SET_ORIGIN</source>
+        <translation>原点信号未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P1_NOTSET</source>
+        <translation>手动关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P2_NOTSET</source>
+        <translation>手动关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_LP_NOTSET</source>
+        <translation>手动直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_JP_NOTSET</source>
+        <translation>手动关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
+        <translation>教导直线轨迹运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
+        <translation>教导直线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
+        <translation>教导关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
+        <translation>教导直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
+        <translation>教导关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
+        <translation>教导弧线轨迹运动起点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
+        <translation>教导弧线轨迹运动中间坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
+        <translation>教导弧线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
+        <translation>教导关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_REPLAN_ERR</source>
+        <translation>轨迹重新规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_WAITE_ERR</source>
+        <translation>等待堆叠数据源超时</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_SOURCE_ERR</source>
+        <translation>堆叠数据源错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SINGLE_DEBUG_ERR</source>
+        <translation>单步/单循环调试程序设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_STORAGE_READ_ERR</source>
+        <translation>从主机FLASH读取的数据有错</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET_ERR</source>
+        <translation>与IO板通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_READ_ERR</source>
+        <translation>伺服绝对值位置读取失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_CRC_ERR</source>
+        <translation>伺服绝对值位置读取校验失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_FUNC_ERR</source>
+        <translation>伺服绝对值位置读取功能码错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
+        <translation>伺服绝对值位置读取超时</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET2_ERR</source>
+        <translation>与IO板2通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET3_ERR</source>
+        <translation>与IO板3通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET4_ERR</source>
+        <translation>与IO板4通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_CHANGE_ERR</source>
+        <translation>手控和主机教导程序不一致</translation>
+    </message>
+    <message>
+        <source>ALARM_OVER_CURRENT</source>
+        <translation>过电流报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ZPULSER_ERR</source>
+        <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>ALARM_NO_ZPULSER</source>
+        <translation>无Z脉冲</translation>
+    </message>
+    <message>
+        <source>ALARM_ORIGIN_DEVIATION</source>
+        <translation>原点偏移</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART1</source>
+        <translation>非安全区区域1报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART2</source>
+        <translation>非安全区区域2报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART3</source>
+        <translation>非安全区区域3报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART4</source>
+        <translation>非安全区区域4报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART5</source>
+        <translation>非安全区区域5报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART6</source>
+        <translation>非安全区区域6报警</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_INIT_FLT</source>
+        <translation>故障，上电初始化失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_EEPROM_FLT</source>
+        <translation>故障，EEPROM故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ADC_FLT</source>
+        <translation>故障，A/D转换器故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_EXECTM_FLT</source>
+        <translation>故障，系统运算引擎超时</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT1</source>
+        <translation>故障，散热器过热</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OV_FLT</source>
+        <translation>故障，主电源过压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_LV_FLT</source>
+        <translation>故障，主电源欠压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_MAIN_POWER_OFF</source>
+        <translation>故障，主电源关断</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_GATE_KILL_FLT</source>
+        <translation>故障，IGBT过流</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT2</source>
+        <translation>故障，IGBT过热</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_LD_FLT</source>
+        <translation>故障：过载</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_SPD_FLT</source>
+        <translation>故障：超速</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_FRQ_FLT</source>
+        <translation>故障：位置脉频率过高</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_POS_ERROR_OVER_FLT</source>
+        <translation>故障：位置偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_MTR_ENC_FLT</source>
+        <translation>故障：DSP同步故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
+        <translation>故障：过流故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ENABLE_FORBID</source>
+        <translation>故障：伺服未使能</translation>
+    </message>
+    <message>
+        <source>ALARM_FPGA_ERR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>ALARM_ANALOG_CRC_ERR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>ALARM_ANALOG_OVERTIME_ERR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>1.Connector loose
+2.Wire is off
+3.Pannel is broken
+4.Host is broken</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>ALARM_POS_STABLE_ING</source>
+        <translation>位置稳定中</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_BATTERY_FLT</source>
+        <translation>编码器电池故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ENCODER_FLT</source>
+        <translation>编码器通断故障</translation>
+    </message>
+    <message>
+        <source>ALARM_ECAN_TIMEOUT</source>
+        <translation>CAN通信超时</translation>
+    </message>
+    <message>
+        <source>ALARM_ECAN_READING</source>
+        <translation>CAN读数据出错</translation>
+    </message>
+    <message>
+        <source>ALARM_ECAN_WRITING</source>
+        <translation>CAN写数据出错</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_OVERCURRENT</source>
+        <translation>伺服过电流</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_OVERVOLTAGE</source>
+        <translation>主回路电过压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_LOWVOLTAGE</source>
+        <translation>主回路电欠压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_OUTPU_SHORTCIRCUIT</source>
+        <translation>伺服输出对地短路</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_POWER_ERROR</source>
+        <translation>电源线缺相警告</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_RESISTANCE_OVERLOAD</source>
+        <translation>制动电阻过载</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_OVERLOAD</source>
+        <translation>驱动器过载警告</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_OVERHEAT</source>
+        <translation>驱动器散热器过热</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_ACCESS</source>
+        <translation>驱动器参数存储故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_ACCESSABNORMA</source>
+        <translation>驱动器设置参数异常</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_LOCKED_ROTOR</source>
+        <translation>电机堵转</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_SERVO_ENCODER</source>
+        <translation>编码器内部故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_MOTOR_OVERSPEED</source>
+        <translation>电机超速</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_SERVO_POSERROR</source>
+        <translation>驱动器位置偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_PULSE</source>
+        <translation>驱动器脉冲异常</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_HEARTBEAT</source>
+        <translation>CANopen节点保护或心跳超时</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_PDO_LENGTH</source>
+        <translation>CANopen PDO传输长度错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_RE_LIMIT</source>
+        <translation>伺服报警，到达反向开关</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_FAULT</source>
+        <translation>伺服报警</translation>
+    </message>
+    <message>
+        <source>ALARM_VENDER_UNLIKE</source>
+        <translation>厂家选择不一样</translation>
+    </message>
+    <message>
+        <source>ALARM_CTRLTYPE_UNLIKE</source>
+        <translation>控制方式选择不一样</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_CTRL_LOWVOLTAGE</source>
+        <translation>伺服控制电欠压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_MOTOR_POWEROFF</source>
+        <translation>电机动力线断线</translation>
+    </message>
+</context>
+<context>
     <name>AnalogControlEditor</name>
     <message>
         <source>Chanel</source>
@@ -235,23 +793,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation type="obsolete">直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation type="obsolete">曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation type="obsolete">运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation type="obsolete">设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation type="obsolete">设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -259,11 +817,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation type="obsolete">设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation type="obsolete">设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -413,7 +971,7 @@
     </message>
     <message>
         <source>sendErr</source>
-        <translation>发送脉冲错误</translation>
+        <translation type="vanished">发送脉冲错误</translation>
     </message>
     <message>
         <source>inputErr</source>
@@ -1131,7 +1689,7 @@
     <name>AxisPosDisplayBar</name>
     <message>
         <source>Axis</source>
-        <translation> </translation>
+        <translation>轴</translation>
     </message>
     <message>
         <source>JogPos</source>
@@ -1172,6 +1730,25 @@
     <message>
         <source></source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>BarnLogicEditor</name>
+    <message>
+        <source>barnID</source>
+        <translation>料仓号</translation>
+    </message>
+    <message>
+        <source>Barn status</source>
+        <translation>料仓状态</translation>
+    </message>
+    <message>
+        <source>stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>start</source>
+        <translation>启动</translation>
     </message>
 </context>
 <context>
@@ -1903,11 +2480,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation type="obsolete">速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation type="obsolete">次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -2133,6 +2710,58 @@
         <source>Time out</source>
         <translation>时间输出</translation>
     </message>
+    <message>
+        <source>Parabola Move</source>
+        <translation>正弦</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>平行</translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation>提前</translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation>延后</translation>
+    </message>
+    <message>
+        <source>endPos:</source>
+        <translation>终点位置:</translation>
+    </message>
+    <message>
+        <source>period len:</source>
+        <translation>周期长度:</translation>
+    </message>
+    <message>
+        <source> A</source>
+        <translation>振幅</translation>
+    </message>
+    <message>
+        <source>delay:</source>
+        <translation>延时:</translation>
+    </message>
+    <message>
+        <source>Barn</source>
+        <translation>料仓</translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation>控制</translation>
+    </message>
+    <message>
+        <source>barnID</source>
+        <translation type="vanished">料仓号</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2163,6 +2792,14 @@
     <message>
         <source>AxisMemPos</source>
         <translation>记录位置轴动作</translation>
+    </message>
+    <message>
+        <source>parabolaMove</source>
+        <translation>正弦运动</translation>
+    </message>
+    <message>
+        <source>barnCtrl</source>
+        <translation>料仓控制</translation>
     </message>
 </context>
 <context>
@@ -2244,7 +2881,7 @@
     <name>ICOperationLog</name>
     <message>
         <source>{0} from {1} to {2}</source>
-        <translation type="unfinished">{0} 从 {1} 改为 {2}</translation>
+        <translation>{0} 从 {1} 改为 {2}</translation>
     </message>
 </context>
 <context>
@@ -2335,15 +2972,15 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-        <translation type="obsolete">运行中</translation>
+        <translation type="vanished">运行中</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation type="obsolete">单步</translation>
+        <translation type="vanished">单步</translation>
     </message>
     <message>
         <source>One Cycle</source>
-        <translation type="obsolete">单循环</translation>
+        <translation type="vanished">单循环</translation>
     </message>
 </context>
 <context>
@@ -2404,6 +3041,10 @@
         <translation>安全区参数</translation>
     </message>
     <message>
+        <source>Origin Setting</source>
+        <translation>原点设定</translation>
+    </message>
+    <message>
         <source>Auto Debug</source>
         <translation>自动调机</translation>
     </message>
@@ -2451,7 +3092,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具标定</translation>
+        <translation type="vanished">工具标定</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -2550,6 +3191,14 @@
         <source>text</source>
         <translation>接收的内容</translation>
     </message>
+    <message>
+        <source>auto connect</source>
+        <translation>自动重连</translation>
+    </message>
+    <message>
+        <source>time</source>
+        <translation>间隔时间</translation>
+    </message>
 </context>
 <context>
     <name>OriginActionEditor</name>
@@ -2563,15 +3212,15 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>(短原点)自动设定原点加开关</translation>
+        <translation>短原点</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>(长原点)自动设定原点加开关</translation>
+        <translation>长原点</translation>
     </message>
     <message>
         <source>Type5</source>
-        <translation></translation>
+        <translation>中间原点</translation>
     </message>
 </context>
 <context>
@@ -2641,6 +3290,49 @@
     <message>
         <source>Hide Help</source>
         <translation>隐藏帮助</translation>
+    </message>
+</context>
+<context>
+    <name>OriginSetting</name>
+    <message>
+        <source>Origin Order:0 == first,1==second</source>
+        <translation>原点顺序设定说明：0为最先回原点，1为第二回原点，以此类推，设为同一个数值为同时回原点。</translation>
+    </message>
+    <message>
+        <source>Return Order:0 == first,1==second</source>
+        <translation>复归顺序设定说明：0为最先复归，1为第二回复归，以此类推，设为同一个数值为同时复归。</translation>
+    </message>
+    <message>
+        <source>Origin Mode</source>
+        <translation>原点模式</translation>
+    </message>
+    <message>
+        <source>Origin Order</source>
+        <translation>原点顺序</translation>
+    </message>
+    <message>
+        <source>Origin Speed</source>
+        <translation>原点速度</translation>
+    </message>
+    <message>
+        <source>Return Order</source>
+        <translation>复归顺序</translation>
+    </message>
+    <message>
+        <source>Return Speed</source>
+        <translation>复归速度</translation>
+    </message>
+    <message>
+        <source>short</source>
+        <translation>短原点</translation>
+    </message>
+    <message>
+        <source>long</source>
+        <translation>长原点</translation>
+    </message>
+    <message>
+        <source>Safe</source>
+        <translation>保存</translation>
     </message>
 </context>
 <context>
@@ -2889,6 +3581,61 @@ please chose!</source>
     </message>
 </context>
 <context>
+    <name>ParabolaActionEditor</name>
+    <message>
+        <source>XY</source>
+        <translation>XY平面</translation>
+    </message>
+    <message>
+        <source>XZ</source>
+        <translation>XZ平面</translation>
+    </message>
+    <message>
+        <source>YZ</source>
+        <translation>YZ平面</translation>
+    </message>
+    <message>
+        <source>Rel Points</source>
+        <translation>引用点</translation>
+    </message>
+    <message>
+        <source>Set In</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>End type</source>
+        <translation>结束方式</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>平行</translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation>提前</translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation>延后</translation>
+    </message>
+    <message>
+        <source>period len</source>
+        <translation>周期长度</translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation>振幅</translation>
+    </message>
+    <message>
+        <source>speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>delay</source>
+        <translation>延时</translation>
+    </message>
+</context>
+<context>
     <name>PictureSettings</name>
     <message>
         <source>Scan Pic</source>
@@ -3064,6 +3811,10 @@ please chose!</source>
     <message>
         <source>PCircle</source>
         <translation>姿势整圆</translation>
+    </message>
+    <message>
+        <source>Angle</source>
+        <translation type="unfinished">角度</translation>
     </message>
 </context>
 <context>
@@ -3395,6 +4146,110 @@ please chose!</source>
         <source>key Func in this mode</source>
         <translation>按键在勾选模式下有效</translation>
     </message>
+    <message>
+        <source>Alarm</source>
+        <translation>报警操作</translation>
+    </message>
+    <message>
+        <source>When the alarm number</source>
+        <translation>当报警号</translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&gt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>==</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>!=</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>one</source>
+        <translation>单次输出</translation>
+    </message>
+    <message>
+        <source>keep</source>
+        <translation>一直输出</translation>
+    </message>
+    <message>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <source>Barn</source>
+        <translation type="unfinished">料仓</translation>
+    </message>
+    <message>
+        <source>Up</source>
+        <translation>上极限</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下极限</translation>
+    </message>
+    <message>
+        <source>motorUp</source>
+        <translation>电机上升</translation>
+    </message>
+    <message>
+        <source>motorDown</source>
+        <translation>电机下降</translation>
+    </message>
+    <message>
+        <source>sensor</source>
+        <translation>物料感应</translation>
+    </message>
+    <message>
+        <source>sensor Dir</source>
+        <translation>反向感应</translation>
+    </message>
+    <message>
+        <source>is wait</source>
+        <translation>等待</translation>
+    </message>
+    <message>
+        <source>wait signal</source>
+        <translation>等待信号</translation>
+    </message>
+    <message>
+        <source>wait Dir</source>
+        <translation>等待反向</translation>
+    </message>
+    <message>
+        <source>Logic</source>
+        <translation type="vanished">逻辑</translation>
+    </message>
+    <message>
+        <source>Define</source>
+        <translation>定义</translation>
+    </message>
+    <message>
+        <source>Barn Type</source>
+        <translation>料仓类型</translation>
+    </message>
+    <message>
+        <source>UpBarn</source>
+        <translation>上行料仓</translation>
+    </message>
+    <message>
+        <source>DownBarn</source>
+        <translation>下行料仓</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -3720,7 +4575,7 @@ please chose!</source>
     </message>
     <message>
         <source>Lines:</source>
-        <translation type="unfinished">行:</translation>
+        <translation>行:</translation>
     </message>
     <message>
         <source>Modules</source>
@@ -3949,7 +4804,8 @@ please chose!</source>
     <message>
         <source>Import {0} fail!
 </source>
-        <translation>导入{0}失败!</translation>
+        <translation>导入{0}失败!
+</translation>
     </message>
     <message>
         <source>Import Finished!
@@ -3998,7 +4854,7 @@ please chose!</source>
     </message>
     <message>
         <source>Export Printable</source>
-        <translation></translation>
+        <translation>打印</translation>
     </message>
     <message>
         <source>In current mold</source>
@@ -4018,15 +4874,19 @@ please chose!</source>
     </message>
     <message>
         <source>mainProgram:&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>主程序:&lt;br&gt;</translation>
     </message>
     <message>
         <source>subProgram</source>
-        <translation type="unfinished"></translation>
+        <translation>子程序</translation>
     </message>
     <message>
         <source>fuction</source>
-        <translation type="unfinished"></translation>
+        <translation>模块</translation>
+    </message>
+    <message>
+        <source>Print Finished!</source>
+        <translation>打印完成!</translation>
     </message>
 </context>
 <context>
@@ -4041,7 +4901,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="obsolete">小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -4073,11 +4933,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation type="obsolete">导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="obsolete">导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -4171,51 +5031,51 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo1</source>
-        <translation>区域1安全信号</translation>
+        <translation type="vanished">区域1安全信号</translation>
     </message>
     <message>
         <source>Use Part1?</source>
-        <translation>区域1使用</translation>
+        <translation type="vanished">区域1使用</translation>
     </message>
     <message>
         <source>SafePo2</source>
-        <translation>区域2安全信号</translation>
+        <translation type="vanished">区域2安全信号</translation>
     </message>
     <message>
         <source>Use Part2?</source>
-        <translation>区域2使用</translation>
+        <translation type="vanished">区域2使用</translation>
     </message>
     <message>
         <source>SafePo3</source>
-        <translation>区域3安全信号</translation>
+        <translation type="vanished">区域3安全信号</translation>
     </message>
     <message>
         <source>Use Part3?</source>
-        <translation>区域3使用</translation>
+        <translation type="vanished">区域3使用</translation>
     </message>
     <message>
         <source>SafePo4</source>
-        <translation>区域4安全信号</translation>
+        <translation type="vanished">区域4安全信号</translation>
     </message>
     <message>
         <source>Use Part4?</source>
-        <translation>区域4使用</translation>
+        <translation type="vanished">区域4使用</translation>
     </message>
     <message>
         <source>SafePo5</source>
-        <translation>区域5安全信号</translation>
+        <translation type="vanished">区域5安全信号</translation>
     </message>
     <message>
         <source>Use Part5?</source>
-        <translation>区域5使用</translation>
+        <translation type="vanished">区域5使用</translation>
     </message>
     <message>
         <source>SafePo6</source>
-        <translation>区域6安全信号</translation>
+        <translation type="vanished">区域6安全信号</translation>
     </message>
     <message>
         <source>Use Part6?</source>
-        <translation>区域6使用</translation>
+        <translation type="vanished">区域6使用</translation>
     </message>
     <message>
         <source>Axis1</source>
@@ -4231,95 +5091,95 @@ please chose!</source>
     </message>
     <message>
         <source>P1-A</source>
-        <translation>区域1A</translation>
+        <translation type="vanished">区域1A</translation>
     </message>
     <message>
         <source>P1-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P1-B</source>
-        <translation>区域1B</translation>
+        <translation type="vanished">区域1B</translation>
     </message>
     <message>
         <source>P1-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P2-A</source>
-        <translation>区域2A</translation>
+        <translation type="vanished">区域2A</translation>
     </message>
     <message>
         <source>P2-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P2-B</source>
-        <translation>区域2B</translation>
+        <translation type="vanished">区域2B</translation>
     </message>
     <message>
         <source>P3-A</source>
-        <translation>区域3A</translation>
+        <translation type="vanished">区域3A</translation>
     </message>
     <message>
         <source>P3-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P3-B</source>
-        <translation>区域3B</translation>
+        <translation type="vanished">区域3B</translation>
     </message>
     <message>
         <source>P3-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P4-A</source>
-        <translation>区域4A</translation>
+        <translation type="vanished">区域4A</translation>
     </message>
     <message>
         <source>P4-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P4-B</source>
-        <translation>区域4B</translation>
+        <translation type="vanished">区域4B</translation>
     </message>
     <message>
         <source>P4-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P5-A</source>
-        <translation>区域5A</translation>
+        <translation type="vanished">区域5A</translation>
     </message>
     <message>
         <source>P5-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P5-B</source>
-        <translation>区域5B</translation>
+        <translation type="vanished">区域5B</translation>
     </message>
     <message>
         <source>P5-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P6-A</source>
-        <translation>区域6A</translation>
+        <translation type="vanished">区域6A</translation>
     </message>
     <message>
         <source>P6-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P6-B</source>
-        <translation>区域6B</translation>
+        <translation type="vanished">区域6B</translation>
     </message>
     <message>
         <source>P6-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>Axis2</source>
@@ -4327,99 +5187,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-C</source>
-        <translation>区域1C</translation>
+        <translation type="vanished">区域1C</translation>
     </message>
     <message>
         <source>P1-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P1-D</source>
-        <translation>区域1D</translation>
+        <translation type="vanished">区域1D</translation>
     </message>
     <message>
         <source>P1-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P2-C</source>
-        <translation>区域2C</translation>
+        <translation type="vanished">区域2C</translation>
     </message>
     <message>
         <source>P2-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P2-D</source>
-        <translation>区域2D</translation>
+        <translation type="vanished">区域2D</translation>
     </message>
     <message>
         <source>P2-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P3-C</source>
-        <translation>区域3C</translation>
+        <translation type="vanished">区域3C</translation>
     </message>
     <message>
         <source>P3-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P3-D</source>
-        <translation>区域3D</translation>
+        <translation type="vanished">区域3D</translation>
     </message>
     <message>
         <source>P3-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P4-C</source>
-        <translation>区域4C</translation>
+        <translation type="vanished">区域4C</translation>
     </message>
     <message>
         <source>P4-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P4-D</source>
-        <translation>区域4D</translation>
+        <translation type="vanished">区域4D</translation>
     </message>
     <message>
         <source>P4-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P5-C</source>
-        <translation>区域5C</translation>
+        <translation type="vanished">区域5C</translation>
     </message>
     <message>
         <source>P5-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P5-D</source>
-        <translation>区域5D</translation>
+        <translation type="vanished">区域5D</translation>
     </message>
     <message>
         <source>P5-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P6-C</source>
-        <translation>区域6C</translation>
+        <translation type="vanished">区域6C</translation>
     </message>
     <message>
         <source>P6-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P6-D</source>
-        <translation>区域6D</translation>
+        <translation type="vanished">区域6D</translation>
     </message>
     <message>
         <source>P6-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>Axis3</source>
@@ -4427,99 +5287,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-E</source>
-        <translation>区域1E</translation>
+        <translation type="vanished">区域1E</translation>
     </message>
     <message>
         <source>P1-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P1-F</source>
-        <translation>区域1F</translation>
+        <translation type="vanished">区域1F</translation>
     </message>
     <message>
         <source>P1-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P2-E</source>
-        <translation>区域2E</translation>
+        <translation type="vanished">区域2E</translation>
     </message>
     <message>
         <source>P2-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P2-F</source>
-        <translation>区域2F</translation>
+        <translation type="vanished">区域2F</translation>
     </message>
     <message>
         <source>P2-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P3-E</source>
-        <translation>区域3E</translation>
+        <translation type="vanished">区域3E</translation>
     </message>
     <message>
         <source>P3-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P3-F</source>
-        <translation>区域3F</translation>
+        <translation type="vanished">区域3F</translation>
     </message>
     <message>
         <source>P3-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P4-E</source>
-        <translation>区域4E</translation>
+        <translation type="vanished">区域4E</translation>
     </message>
     <message>
         <source>P4-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P4-F</source>
-        <translation>区域4F</translation>
+        <translation type="vanished">区域4F</translation>
     </message>
     <message>
         <source>P4-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P5-E</source>
-        <translation>区域5E</translation>
+        <translation type="vanished">区域5E</translation>
     </message>
     <message>
         <source>P5-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P5-F</source>
-        <translation>区域5F</translation>
+        <translation type="vanished">区域5F</translation>
     </message>
     <message>
         <source>P5-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P6-E</source>
-        <translation>区域6E</translation>
+        <translation type="vanished">区域6E</translation>
     </message>
     <message>
         <source>P6-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P6-F</source>
-        <translation>区域6F</translation>
+        <translation type="vanished">区域6F</translation>
     </message>
     <message>
         <source>P6-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>Use it?</source>
@@ -4563,7 +5423,7 @@ please chose!</source>
     </message>
     <message>
         <source>P2-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>confirmBtn</source>
@@ -4583,39 +5443,123 @@ please chose!</source>
     </message>
     <message>
         <source>SafeSig1</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>SafeSig2</source>
-        <translation>安全信号2</translation>
+        <translation type="vanished">安全信号2</translation>
     </message>
     <message>
         <source>SafeSig3</source>
-        <translation>安全信号3</translation>
+        <translation type="vanished">安全信号3</translation>
     </message>
     <message>
         <source>SafeSig4</source>
-        <translation>安全信号4</translation>
-    </message>
-    <message>
-        <source>Axis4</source>
-        <translation></translation>
+        <translation type="vanished">安全信号4</translation>
     </message>
     <message>
         <source>SafeSig5</source>
-        <translation>安全信号5</translation>
-    </message>
-    <message>
-        <source>Axis5</source>
-        <translation></translation>
+        <translation type="vanished">安全信号5</translation>
     </message>
     <message>
         <source>SafeSig6</source>
-        <translation>安全信号6</translation>
+        <translation type="vanished">安全信号6</translation>
     </message>
     <message>
-        <source>Axis6</source>
+        <source>Area</source>
+        <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSignal</source>
+        <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>Use Part</source>
+        <translation>使用区域</translation>
+    </message>
+    <message>
+        <source>Part Config</source>
+        <translation>区域参数</translation>
+    </message>
+    <message>
+        <source>Axis</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation>A</translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation>C</translation>
+    </message>
+    <message>
+        <source>E</source>
+        <translation>E</translation>
+    </message>
+    <message>
+        <source>Set</source>
+        <translation>设入</translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation>B</translation>
+    </message>
+    <message>
+        <source>D</source>
+        <translation>D</translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation>F</translation>
+    </message>
+    <message>
+        <source>Safe Area4</source>
+        <translation>类型4</translation>
+    </message>
+    <message>
+        <source>Relative Move Config</source>
+        <translation>相对运动参数</translation>
+    </message>
+    <message>
+        <source>Relative Axis</source>
+        <translation>相对轴</translation>
+    </message>
+    <message>
+        <source>Total L</source>
+        <translation>零点间隔</translation>
+    </message>
+    <message>
+        <source>Len Check En</source>
+        <translation>距离检测使能</translation>
+    </message>
+    <message>
+        <source>Safe L</source>
+        <translation>安全距离</translation>
+    </message>
+    <message>
+        <source>Point Check En</source>
+        <translation>信号检测使能</translation>
+    </message>
+    <message>
+        <source>Safe P</source>
+        <translation>安全信号</translation>
+    </message>
+    <message>
+        <source>Check Dir</source>
+        <translation>反向</translation>
+    </message>
+    <message>
+        <source>Safe Area Config</source>
+        <translation>安全区域参数</translation>
+    </message>
+    <message>
+        <source>Part</source>
+        <translation>区域</translation>
+    </message>
+    <message>
+        <source>SafeSig</source>
+        <translation>安全信号</translation>
     </message>
 </context>
 <context>
@@ -4889,47 +5833,55 @@ please chose!</source>
     </message>
     <message>
         <source>clear</source>
-        <translation type="vanished">清除</translation>
+        <translation>清除</translation>
     </message>
     <message>
         <source>setPen</source>
-        <translation type="vanished">画笔</translation>
+        <translation>画笔</translation>
     </message>
     <message>
         <source>converter</source>
-        <translation type="vanished">计算路径</translation>
+        <translation>计算路径</translation>
     </message>
     <message>
         <source>close</source>
-        <translation type="vanished">关闭</translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <source>Paint Pos</source>
-        <translation type="vanished">画板</translation>
+        <translation>画板</translation>
     </message>
     <message>
         <source>High</source>
-        <translation type="vanished">抬笔高度</translation>
+        <translation>抬笔高度</translation>
     </message>
     <message>
         <source>quadTo_en</source>
-        <translation type="vanished">圆滑</translation>
+        <translation>圆滑</translation>
     </message>
     <message>
         <source>quadTo_Color_Change</source>
-        <translation type="vanished">圆滑颜色选择</translation>
+        <translation>圆滑颜色选择</translation>
     </message>
     <message>
         <source>lineTo_en</source>
-        <translation type="vanished">直线</translation>
+        <translation>直线</translation>
     </message>
     <message>
         <source>lineTo_Color_Change</source>
-        <translation type="vanished">直线颜色选择</translation>
+        <translation>直线颜色选择</translation>
+    </message>
+    <message>
+        <source>Hold</source>
+        <translation>保持</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
     </message>
     <message>
         <source>Interval En</source>
-        <translation>间隔输出</translation>
+        <translation>间隔输出使能</translation>
     </message>
     <message>
         <source>Always Out</source>
@@ -4949,7 +5901,7 @@ please chose!</source>
     </message>
     <message>
         <source>Out ID</source>
-        <translation>输出点</translation>
+        <translation>输出设定</translation>
     </message>
     <message>
         <source>Interval Number</source>
@@ -4961,19 +5913,19 @@ please chose!</source>
     </message>
     <message>
         <source>IntervalBox En</source>
-        <translation>装箱间隔输出</translation>
-    </message>
-    <message>
-        <source>Hold</source>
-        <translation>保持</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation>无</translation>
+        <translation>装箱间隔输出使能</translation>
     </message>
     <message>
         <source>Auto Change Head</source>
-        <translation>自动换枪</translation>
+        <translation type="vanished">自动换枪</translation>
+    </message>
+    <message>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5191,13 +6143,13 @@ CY GCode</source>
     </message>
     <message>
         <source> dir next Point</source>
-        <translation>方向下一点</translation>
+        <translation>方向下n点</translation>
     </message>
     <message>
         <source>The system will caculate the offset and space when comfirm. 
 You just need to set the count configs after this setting.</source>
-        <translation>设定三点之后,系统会自动计算偏移和间距.你只需在外面设定
-各方向的计数即可.</translation>
+        <translation>设定三点之后,系统会自动计算偏移和间
+距.你只需在外面设定各方向的计数即可.</translation>
     </message>
 </context>
 <context>
@@ -5345,6 +6297,26 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
+    </message>
+    <message>
+        <source>IO Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L6-IO-4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5742,7 +6714,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 3</source>
-        <translation>(短原点)自动设定原点加开关</translation>
+        <translation>短原点</translation>
     </message>
     <message>
         <source>origin</source>
@@ -5929,6 +6901,26 @@ You just need to set the count configs after this setting.</source>
         <translation>结束检测</translation>
     </message>
     <message>
+        <source>Bad En</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Unhold Double Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Has not Group-Begin action but has Group-End action</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Group action is nesting</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Has Group-Begin action but has not Group-End action</source>
+        <translation></translation>
+    </message>
+    <message>
         <source>Rel</source>
         <translation>相对</translation>
     </message>
@@ -5942,27 +6934,23 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 4</source>
-        <translation>(长原点)自动设定原点加开关</translation>
+        <translation>长原点</translation>
     </message>
     <message>
-        <source>Bad En</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Unhold Double Y</source>
-        <translation type="unfinished"></translation>
+        <source>Type 5</source>
+        <translation>中间原点</translation>
     </message>
     <message>
         <source>interval</source>
-        <translation>间隔</translation>
+        <translation>间隔输出</translation>
     </message>
     <message>
         <source>number</source>
-        <translation>个</translation>
+        <translation>个数</translation>
     </message>
     <message>
         <source>always out</source>
-        <translation>一直输出</translation>
+        <translation>常输出</translation>
     </message>
     <message>
         <source>time out</source>
@@ -5979,22 +6967,6 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>intervalbox</source>
         <translation>装箱间隔</translation>
-    </message>
-    <message>
-        <source>Has not Group-Begin action but has Group-End action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Group action is nesting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Has Group-Begin action but has not Group-End action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Type 5</source>
-        <translation></translation>
     </message>
     <message>
         <source>IntervalOutput:</source>
@@ -6100,60 +7072,64 @@ You just need to set the count configs after this setting.</source>
         <source>OneCycleMode</source>
         <translation>单循环模式</translation>
     </message>
+    <message>
+        <source>Zero</source>
+        <translation type="unfinished">置零</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
     <message>
         <source>Speed:</source>
-        <translation type="unfinished">速度:</translation>
+        <translation>速度:</translation>
     </message>
     <message>
         <source>Delay:</source>
-        <translation type="unfinished">延时:</translation>
+        <translation>延时:</translation>
     </message>
     <message>
         <source>X1</source>
-        <translation type="unfinished">X1</translation>
+        <translation>X1</translation>
     </message>
     <message>
         <source>X2</source>
-        <translation type="unfinished">X2</translation>
+        <translation>X2</translation>
     </message>
     <message>
         <source>Early End Pos:</source>
-        <translation type="unfinished">提前结束位置:</translation>
+        <translation>提前结束位置:</translation>
     </message>
     <message>
         <source>Y1</source>
-        <translation type="unfinished">报警声 {1?}</translation>
+        <translation>报警声 {1?}</translation>
     </message>
     <message>
         <source>Y2</source>
-        <translation type="unfinished">报警声 {2?}</translation>
+        <translation>报警声 {2?}</translation>
     </message>
     <message>
         <source>A OFF</source>
-        <translation type="unfinished">常闭</translation>
+        <translation>常闭</translation>
     </message>
     <message>
         <source>A ON</source>
-        <translation type="unfinished">常开</translation>
+        <translation>常开</translation>
     </message>
     <message>
         <source>IF:</source>
-        <translation type="unfinished">如果:</translation>
+        <translation>如果:</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished">通</translation>
+        <translation>通</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished">断</translation>
+        <translation>断</translation>
     </message>
     <message>
         <source>Limit:</source>
-        <translation type="unfinished">限时:</translation>
+        <translation>限时:</translation>
     </message>
     <message>
         <source>Wait:</source>
@@ -6221,15 +7197,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">振幅</translation>
     </message>
     <message>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位置B</translation>
     </message>
     <message>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位置C</translation>
     </message>
     <message>
         <source>X1 OFF</source>
@@ -6394,11 +7370,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation type="obsolete">设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation type="obsolete">设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>
@@ -6419,6 +7395,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Tool Dev:</source>
         <translation>工具偏差：</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
     </message>
 </context>
 <context>
@@ -6769,7 +7749,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Load record </source>
-        <translation>载入模号</translation>
+        <translation type="unfinished">载入模号</translation>
     </message>
     <message>
         <source>Please confirm your stop signal off</source>

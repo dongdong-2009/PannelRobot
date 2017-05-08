@@ -15,6 +15,7 @@ Item {
     property variant fPointNames: []
     property variant oPointNames: []
     property bool pointLogged: false
+    property alias angle: angleEdit.configValue
     function createPoint(name, point){
         return {"pos":point, "pointName":name};
     }
@@ -92,9 +93,9 @@ Item {
     }
 
     function onPointAdded(point){
-//        console.log(Teach.definedPoints.pointDescr(point));
-//        refreshSelectablePoisnts(Teach.definedPoints.pointNameList());
-        var pNL = Teach.definedPoints.pointNameList();
+//        console.log(Teach.currentRecord.definedPoints.pointDescr(point));
+//        refreshSelectablePoisnts(Teach.currentRecord.definedPoints.pointNameList());
+        var pNL = Teach.currentRecord.definedPoints.pointNameList();
         var type;
         var fPNs = [];
         var lPNs = [];
@@ -161,7 +162,7 @@ Item {
             poseCurve3DType.setChecked(true);
         }else if(action == Teach.actions.F_CMD_ARC_RELATIVE_POSE){
             poseOffsetCurve3DType.setChecked(true);
-        }else if(action == Teach.F_CMD_ARC3D_MOVE_POSE){
+        }else if(action == Teach.actions.F_CMD_ARC3D_MOVE_POSE){
             poseCirclePathType.setChecked(true);
         }else if(action == Teach.F_CMD_LINE_RELATIVE_POSE){
             poseOffsetLine3DType.setChecked(true)
@@ -223,6 +224,14 @@ Item {
                 motor4.configValue = 0;
                 motor5.configValue = 0;
             }
+        }
+        ICConfigEdit{
+            id:angleEdit
+            visible: (poseCirclePathType.isChecked || circlePathType.isChecked)
+            configName: qsTr("Angle")
+            configValue: "360"
+            unit: "°"
+            min:360
         }
     }
     Rectangle{
@@ -752,7 +761,7 @@ Item {
                     if(selReferenceName.isChecked){
                         if(selReferenceName.configValue >= 0){
                             var tmp;
-                            tmp = Teach.definedPoints.getPoint(selReferenceName.configText()).point;
+                            tmp = Teach.currentRecord.definedPoints.getPoint(selReferenceName.configText()).point;
                             if(motor0.isChecked && motor0.visible)
                                 ret.m0 = tmp.m0;
                             if(motor1.isChecked && motor1.visible)
@@ -826,12 +835,20 @@ Item {
             }
         }
     }
-    Component.onCompleted: {
+
+    function onTeachInited(){
         setZero.clicked();
-        Teach.definedPoints.registerPointsMonitor(container);
+        Teach.currentRecord.definedPoints.registerPointsMonitor(container);
         onPointsCleared();
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+    }
+
+    Component.onCompleted: {
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(container)
+        else
+            onTeachInited();
     }
     function onAxisDefinesChanged(){
         lineXYType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable;
@@ -842,11 +859,14 @@ Item {
         cureveXZType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[2].visiable;
         cureveYZType.visible = AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
         arcRelPathType.visible = curve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable;
+        var poseVisible = false;
+        if(AxisDefine.axisInfos[3].visiable || AxisDefine.axisInfos[4].visiable || AxisDefine.axisInfos[5].visiable){
+            poseVisible = true;
+        }
         singlePoseType.visible = poseLine3DType.visible = poseCurve3DType.visible =
         poseCirclePathType.visible = poseOffsetLine3DType.visible =
-        poseOffsetCurve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable &&
-                                       AxisDefine.axisInfos[3].visiable && AxisDefine.axisInfos[4].visiable && AxisDefine.axisInfos[5].visiable;
-
+        poseOffsetCurve3DType.visible = AxisDefine.axisInfos[0].visiable && AxisDefine.axisInfos[1].visiable && AxisDefine.axisInfos[2].visiable && poseVisible/*&&
+                                       AxisDefine.axisInfos[3].visiable && AxisDefine.axisInfos[4].visiable && AxisDefine.axisInfos[5].visiable*/;
     }
 
 }

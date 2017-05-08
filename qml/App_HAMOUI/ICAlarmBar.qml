@@ -1,6 +1,6 @@
 import QtQuick 1.1
 import "../ICCustomElement"
-import "configs/AlarmInfo.js" as AlarmInfo
+import "AlarmInfo.js" as AlarmInfo
 import "../utils/Storage.js" as Storage
 
 Rectangle {

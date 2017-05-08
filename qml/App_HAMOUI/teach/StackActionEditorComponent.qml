@@ -141,7 +141,7 @@ Item {
                                              "m3":motor3.configValue,
                                              "m4":motor4.configValue,
                                              "m5":motor5.configValue},
-                                         "offset":{"m0":x_offset.getConfigValue(), "m1":y_offset.getConfigValue(), "m2":z_offset.getConfigValue()},
+                                         "offset":{"m0":offsetEn.isChecked?x_offset.getConfigValue():0, "m1":offsetEn.isChecked?y_offset.getConfigValue():0, "m2":offsetEn.isChecked?z_offset.getConfigValue():0},
                                          "space":{"m0":space0.getConfigValue(), "m1":space1.getConfigValue(), "m2":space2.getConfigValue()}
                                      });
         }
@@ -365,7 +365,7 @@ Item {
 
     function updateCounters(){
         counterSel.configValue = -1;
-        var countersStrList = Teach.counterManager.countersStrList();
+        var countersStrList = Teach.currentRecord.counterManager.countersStrList();
         countersStrList.splice(0, 0, qsTr("Self"));
         counterSel.items = countersStrList;
     }
@@ -383,10 +383,17 @@ Item {
         dataSourceSel.configValue = 0;
     }
 
-    Component.onCompleted: {
+    function onTeachInited(){
         updateCounters();
         AxisDefine.registerMonitors(container);
         onAxisDefinesChanged();
+    }
+
+    Component.onCompleted: {
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(container)
+        else
+            onTeachInited();
     }
     function onAxisDefinesChanged(){
         motor0.visible = AxisDefine.axisInfos[0].visiable;
@@ -416,18 +423,22 @@ Item {
         runSeq.setItemVisble(1,AxisDefine.axisInfos[1].visiable);
         runSeq.setItemVisble(2,AxisDefine.axisInfos[2].visiable);
 
+        var i;
+        for(i=0;i<9;++i){
+           seq.setItemVisble(i,true);
+        }
         if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[1].visiable=== false &&
                     AxisDefine.axisInfos[2].visiable=== false){
             seq.items = ["","","","","","","","",""];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                seq.setItemVisble(i,false);
             }
         }
         else if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[1].visiable=== false){
             seq.items = ["","","","","","","","",qsTr("Only Z")];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                 if(i === 8) continue;
                seq.setItemVisble(i,false);
             }
@@ -436,7 +447,7 @@ Item {
         else if(AxisDefine.axisInfos[0].visiable === false &&
                 AxisDefine.axisInfos[2].visiable=== false){
             seq.items = ["","","","","","","",qsTr("Only Y"),""];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                 if(i === 7) continue;
                seq.setItemVisble(i,false);
             }
@@ -445,7 +456,7 @@ Item {
         else if(AxisDefine.axisInfos[1].visiable ===false &&
                 AxisDefine.axisInfos[2].visiable=== false){
             seq.items = ["","","","","","",qsTr("Only X"),"",""];
-            for(var i=0;i<9;++i){
+            for(i=0;i<9;++i){
                 if(i === 6) continue;
                seq.setItemVisble(i,false);
             }

@@ -423,6 +423,15 @@ public:
         return ICDALHelper::MoldFunctionsContent(name);
     }
 
+    Q_INVOKABLE QString recordStacks(const QString& name) const
+    {
+        return ICDALHelper::MoldStacksContent(name);
+    }
+
+    Q_INVOKABLE QString recordVariableDefs(const QString& name) const;
+
+    Q_INVOKABLE QString recordCounterDefs(const QString& name) const;
+
     Q_INVOKABLE QString stacks() const {return ICRobotMold::CurrentMold()->Stacks();}
     Q_INVOKABLE bool saveStacks(const QString& stacks){ return ICRobotMold::CurrentMold()->SaveStacks(stacks);}
     Q_INVOKABLE QString usbDirs();
@@ -466,7 +475,9 @@ public:
         if(led_io_old.led!=led_io.led)
         {
             led_io_old.led=led_io.led;
+#ifdef Q_WS_QWS
             ioctl(fd,0,led_io.led);
+#endif
         }
     }
 
@@ -715,6 +726,14 @@ public:
         modifyConfigValue(ICAddr_System_Retain_18, stepInfo.first);
     }
 
+    Q_INVOKABLE bool isEth0Connected() const
+    {
+        if(eth0Transceiver_.isNull())
+        {
+            return false;
+        }
+        return eth0Transceiver_->IsConnected();
+    }
     Q_INVOKABLE void setEth0Enable(bool en, int mode, const QString& localAddr, const QString& hostAddr, int hostPort)
     {
         if(en)
@@ -854,12 +873,16 @@ public:
 
     Q_INVOKABLE void sendToolCoord(int id,const QString& data);
 
+    Q_INVOKABLE void sendIOBarnLogic(const QString& data);
+
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
 
     Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
-    Q_INVOKABLE bool writeUsbFile(const QString& fileName, const QString& content);
+    Q_INVOKABLE int writeUsbFile(const QString& fileName, const QString& content);
+    Q_INVOKABLE bool zipDir(const QString& path, const QString& name) const;
+    Q_INVOKABLE QStringList unzipDir(const QString &path, const QString& name) const;
 
     //    Q_INVOKABLE QString debug_LogContent() const
     //    {

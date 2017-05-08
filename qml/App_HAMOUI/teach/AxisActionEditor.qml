@@ -124,6 +124,7 @@ Item {
                 axisDefine: pData.axisDefine.s1Axis
                 rangeAddr: "s_rw_0_32_3_1000"
                 mode: relPoint.isChecked ? "relPointMode" : ""
+                unit: AxisDefine.axisInfos[0].unit
                 z:1
             }
 
@@ -135,6 +136,8 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1001"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[1].unit
+
                 z:2
             }
             AxisActionEditorAxisComponent{
@@ -145,6 +148,8 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1002"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[2].unit
+
                 z:3
             }
             AxisActionEditorAxisComponent{
@@ -155,6 +160,8 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1003"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[3].unit
+
                 z:4
             }
             AxisActionEditorAxisComponent{
@@ -165,6 +172,8 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1004"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[4].unit
+
                 z:5
             }
             AxisActionEditorAxisComponent{
@@ -175,6 +184,8 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1005"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[5].unit
+
                 z:6
             }
             AxisActionEditorAxisComponent{
@@ -185,6 +196,8 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1006"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[6].unit
+
                 z:7
             }
             AxisActionEditorAxisComponent{
@@ -195,90 +208,9 @@ Item {
                 rangeAddr: "s_rw_0_32_3_1007"
                 mode: m0Axis.mode
                 relPoints: m0Axis.relPoints
+                unit: AxisDefine.axisInfos[7].unit
+
                 z:8
-            }
-            Row{
-                z:10
-                spacing: 6
-                ICCheckableComboboxEdit{
-                    id:signalStop
-                    configName: qsTr("Input")
-                    configValue: -1
-                    inputWidth: 60
-                    z:2
-                    enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-//                    configNameWidth: earlyEnd.configNameWidth
-                    Component.onCompleted: {
-                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        var len = ioBoardCount * 32;
-                        var ioItems = [];
-                        for(var i = 0; i < len; ++i){
-                            ioItems.push(IODefines.xDefines[i].pointName);
-                        }
-                        items = ioItems;
-                        configValue = 0;
-                    }
-                }
-                ICComboBox{
-                    id:signalOnOff
-                    enabled:signalStop.isChecked
-                    width: 40
-                    items:[qsTr("on"),qsTr("off")]
-                    Component.onCompleted: {
-                        currentIndex = 0;
-                    }
-                }
-                Text {
-                    id: sTip
-                    height: signalOnOff.height
-                    verticalAlignment: Text.AlignVCenter
-                    text: qsTr("TStop")
-                }
-                ICCheckBox{
-                    id:fastStop
-                    text: qsTr("Fast Stop")
-                }
-            }
-            Row{
-                z:10
-                spacing: 6
-                ICCheckableComboboxEdit{
-                    id:onPosOutput
-                    configName: qsTr("Output")
-                    configValue: -1
-                    inputWidth: 60
-                    z:2
-                    enabled: !(signalStop.isChecked || earlyEnd.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
-                    Component.onCompleted: {
-                        var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                        if(ioBoardCount == 0)
-                            ioBoardCount = 1;
-                        var len = ioBoardCount * 32;
-                        var ioItems = [];
-                        for(var i = 0; i < len; ++i){
-                            ioItems.push(IODefines.yDefines[i].pointName);
-                        }
-                        items = ioItems;
-                        configValue = 0;
-                    }
-                }
-                ICComboBox{
-                    id:ySignalOnOff
-                    enabled:onPosOutput.isChecked
-                    width: 40
-                    items:[qsTr("on"),qsTr("off")]
-                    Component.onCompleted: {
-                        currentIndex = 0;
-                    }
-                }
-                ICConfigEdit{
-                    id:posOut
-                    enabled:onPosOutput.isChecked
-                    configName: qsTr("On pos")
-                    configValue: "0"
-                }
             }
 
             Rectangle{
@@ -291,8 +223,8 @@ Item {
                         }
                     }
                     var ret;
-                    if(ac <= 3) ret =  parent.height -parent.spacing;
-                    else ret =  parent.height - (ac - 3) * (m1Axis.height + parent.spacing);
+                    if(ac <= 5) ret =  parent.height -parent.spacing;
+                    else ret =  parent.height - (ac - 5) * (m1Axis.height + parent.spacing);
                     return ret;
                 }
 //                border.width: 1
@@ -308,6 +240,90 @@ Item {
                     Column{
                         id:advanceContent
                         spacing: 4
+                        Row{
+                            z:10
+                            spacing: 6
+                            ICCheckableComboboxEdit{
+                                id:signalStop
+                                configName: qsTr("Input")
+                                configValue: -1
+                                inputWidth: 60
+                                z:2
+                                enabled: !(onPosOutput.isChecked || earlyEnd.isChecked || earlyEndSpeedPos.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+            //                    configNameWidth: earlyEnd.configNameWidth
+                                Component.onCompleted: {
+                                    var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                                    if(ioBoardCount == 0)
+                                        ioBoardCount = 1;
+                                    var len = ioBoardCount * 32;
+                                    var ioItems = [];
+                                    for(var i = 0; i < len; ++i){
+                                        ioItems.push(IODefines.xDefines[i].pointName);
+                                    }
+                                    items = ioItems;
+                                    configValue = 0;
+                                }
+                            }
+                            ICComboBox{
+                                id:signalOnOff
+                                enabled:signalStop.isChecked
+                                width: 40
+                                items:[qsTr("on"),qsTr("off")]
+                                Component.onCompleted: {
+                                    currentIndex = 0;
+                                }
+                            }
+                            Text {
+                                id: sTip
+                                height: signalOnOff.height
+                                verticalAlignment: Text.AlignVCenter
+                                text: qsTr("TStop")
+                            }
+                            ICCheckBox{
+                                id:fastStop
+                                text: qsTr("Fast Stop")
+                            }
+                        }
+                        Row{
+                            z:10
+                            spacing: 6
+                            ICCheckableComboboxEdit{
+                                id:onPosOutput
+                                configName: qsTr("Output")
+                                configValue: -1
+                                inputWidth: 60
+                                z:2
+                                enabled: !(signalStop.isChecked || earlyEnd.isChecked || speedPPStart.isChecked || speedRPStart.isChecked || stop.isChecked)
+                                Component.onCompleted: {
+                                    var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
+                                    if(ioBoardCount == 0)
+                                        ioBoardCount = 1;
+                                    var len = ioBoardCount * 32;
+                                    var ioItems = [];
+                                    for(var i = 0; i < len; ++i){
+                                        ioItems.push(IODefines.yDefines[i].pointName);
+                                    }
+                                    items = ioItems;
+                                    configValue = 0;
+                                }
+                            }
+                            ICComboBox{
+                                id:ySignalOnOff
+                                enabled:onPosOutput.isChecked
+                                width: 40
+                                items:[qsTr("on"),qsTr("off")]
+                                Component.onCompleted: {
+                                    currentIndex = 0;
+                                }
+                            }
+                            ICConfigEdit{
+                                id:posOut
+                                enabled:onPosOutput.isChecked
+                                configName: qsTr("On pos")
+                                configValue: "0"
+                            }
+                        }
+
                         ICCheckableLineEdit{
                             id:earlyEnd
                             configName: qsTr("Early End Pos")
@@ -391,6 +407,13 @@ Item {
         }
     }
 
+    function onTeachInited(){
+        AxisDefine.registerMonitors(container);
+        onAxisDefinesChanged();
+        Teach.currentRecord.definedPoints.registerPointsMonitor(container);
+        onPointAdded(null);
+    }
+
     Component.onCompleted: {
         var axis = [];
         var actions = Teach.actions;
@@ -403,10 +426,11 @@ Item {
         axis.push({"axisItem":m6Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":null, "psOFF":null});
         axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_SINGLE, "psON":actions.ACT_PS8_1, "psOFF":actions.ACT_PS8_2});
         pData.axisEditors = axis;
-        AxisDefine.registerMonitors(container);
-        onAxisDefinesChanged();
-        Teach.definedPoints.registerPointsMonitor(container);
-        onPointAdded(null);
+        if(Teach.currentRecord == null)
+            Teach.registerWatiTeachInitedObj(container);
+        else
+            onTeachInited();
+
     }
     function onAxisDefinesChanged(){
         m0Axis.visible = AxisDefine.axisInfos[0].visiable;
@@ -430,7 +454,7 @@ Item {
     }
 
     function onPointAdded(point){
-        var pNL = Teach.definedPoints.pointNameList();
+        var pNL = Teach.currentRecord.definedPoints.pointNameList();
         var type;
         var fPNs = [];
         for(var i = 0; i < pNL.length; ++i){

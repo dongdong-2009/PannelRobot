@@ -54,7 +54,7 @@ Row{
         id:ps
         width: editorWidth
         visible: true
-        currentIndex: 0
+        currentIndex: 2
     }
     ICLineEdit{
         id:speed

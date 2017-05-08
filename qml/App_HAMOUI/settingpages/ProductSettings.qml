@@ -68,8 +68,6 @@ Item {
             id:ioRunningSettingMenuBtn
             text: qsTr("IO Running Setting")
             icon: "../images/IOsetting.png"
-            y:10
-            x:10
             onButtonClicked: {
                 ioRunningSettingPage.visible = true;
                 menu.visible = false;
@@ -77,10 +75,9 @@ Item {
         }
         CatalogButton{
             id:ledAndKeySettingMenuBtn
+//            visible: false
             text: qsTr("Led And Key Setting")
             icon: "../images/LedAndKeySetting.png"
-            y:10
-            x:10
             onButtonClicked: {
                 ledAndKeySettingPage.visible = true;
                 menu.visible = false;
@@ -238,6 +235,14 @@ Item {
                 id:ioStatus
                 text: qsTr("IO")
             }
+            ICCheckBox{
+                id:alarmStatus
+                text: qsTr("Alarm")
+            }
+            ICCheckBox{
+                id:barnLogic
+                text: qsTr("Barn")+qsTr("Define")
+            }
             onCheckedIndexChanged: {
                 pageContainer.setCurrentIndex(checkedIndex);
             }
@@ -247,6 +252,12 @@ Item {
         }
         ListModel{
             id:ioModel
+        }
+        ListModel{
+            id:alarmModel
+        }
+        ListModel{
+            id:barnModel
         }
 
         ICStackContainer{
@@ -330,16 +341,18 @@ Item {
                         onConfigValueChanged: {
                             if(configValue<0||configValue>1)return;
                             valveModel.setProperty(index,"outType_init",configValue);
-                            var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
-                            if(ioBoardCount == 0)
-                                ioBoardCount = 1;
-                            var len = ioBoardCount * 32;
-                            len=configValue == 0?len:16;
-                            var ioItems = [];
-                            for(var i = 0; i < len; ++i){
-                                ioItems.push(IODefines.ioItemName(IODefines[configValue == 0 ? "yDefines":"mYDefines"][i]));
+                            if(configValue ==0){
+                                if(outid_init >= MData.yDefinesList.length){
+                                    outid.currentIndex = 0;
+                                }
+                                outid.items = MData.yDefinesList;
                             }
-                            outid.items = ioItems;
+                            else if(configValue ==1){
+                                if(outid_init >= MData.mDefinesList.length){
+                                    outid.currentIndex = 0;
+                                }
+                                outid.items = MData.mDefinesList;
+                            }
                         }
                         configValue: outType_init
                     }
@@ -380,98 +393,324 @@ Item {
                 spacing: 10
                 border.color: "gray"
                 border.width: 1
-                delegate: Item {
-                    height: inputRow.height + outputRow.height
+                delegate: Row {
+                    spacing: 8
+                    z: 1000-index;
+                    ICCheckBox {
+                        text: index+":"+qsTr("When")
+                        anchors.verticalCenter: parent.verticalCenter
+                        isChecked: check
+                        onIsCheckedChanged: {
+                            ioModel.setProperty(index,"check",isChecked);
+                        }
+                    }
+                    ICComboBox{
+                        width: 70
+                        items: pData.ledItem
+                        currentIndex: checkType
+                        onCurrentIndexChanged: {
+                            ioModel.setProperty(index,"checkType",currentIndex);
+                            if(currentIndex == 0){
+                                if(checkId>=MData.xDefinesList.length){
+                                    selCheckId.currentIndex =0;
+                                }
+                                selCheckId.items = MData.xDefinesList;
+                            }
+                            else if(currentIndex == 1){
+                                if(checkId>=MData.yList.length){
+                                    selCheckId.currentIndex =0;
+                                }
+                                selCheckId.items = MData.yList;
+                            }
+                            else if(currentIndex == 2){
+                                if(checkId>=MData.mDefinesList.length){
+                                    selCheckId.currentIndex =0;
+                                }
+                                selCheckId.items = MData.mDefinesList;
+                            }
+                        }
+                    }
+                    ICComboBox{
+                        id:selCheckId
+                        currentIndex: checkId
+                        onCurrentIndexChanged: {
+                           ioModel.setProperty(index,"checkId",currentIndex);
+                        }
+                    }
+                    ICComboBoxConfigEdit{
+                        configName: qsTr("status to")
+                        inputWidth: 50
+                        items: [qsTr("OFF"), qsTr("ON")]
+                        configValue: checkStatus
+                        onConfigValueChanged: {
+                            ioModel.setProperty(index,"checkStatus",configValue);
+                        }
+                    }
+                    ICComboBox{
+                        width: 70
+                        currentIndex: outType
+                        items: [qsTr("IO output"),qsTr("M output")]
+                        onCurrentIndexChanged:{
+                            if(currentIndex<0||currentIndex>1)return;
+                            ioModel.setProperty(index,"outType",currentIndex);
+                            if(currentIndex == 0){
+                                if(outId>=MData.yDefinesList.length){
+                                    selOutId.currentIndex =0;
+                                }
+                                selOutId.items = MData.yDefinesList;
+                            }
+                            else if(currentIndex == 1){
+                                if(outId>=MData.mDefinesList.length){
+                                    selOutId.currentIndex =0;
+                                }
+                                selOutId.items = MData.mDefinesList;
+                            }
+                        }
+                    }
+                    ICComboBox {
+                        id: selOutId
+                        currentIndex:  outId
+                        onCurrentIndexChanged:  {
+                            ioModel.setProperty(index,"outId",currentIndex);
+                        }
+                    }
+                    ICComboBox{
+                        items: [qsTr("OFF"), qsTr("ON")]
+                        width: 50
+                        currentIndex: outStatus
+                        onCurrentIndexChanged: {
+                            ioModel.setProperty(index,"outStatus",currentIndex);
+                        }
+                    }
+                    ICButton{
+                        id:deleteitem
+                        height:selCheckId.height
+                        text: qsTr("Delete")
+                        onButtonClicked: {
+                            ioModel.remove(index);
+                        }
+                    }
+                }
+            }
+            ICListView{
+                id:alarmContainer
+                model:alarmModel
+                spacing: 10
+                border.color: "gray"
+                border.width: 1
+                delegate: Row {
+                    spacing: 8
+                    z: 1000-index
+                    ICCheckBox {
+                        text: index+":"+qsTr("When the alarm number")
+                        anchors.verticalCenter: parent.verticalCenter
+                        isChecked: check
+                        onIsCheckedChanged: {
+                            alarmModel.setProperty(index,"check",isChecked);
+                        }
+                    }
+                    ICComboBoxConfigEdit{
+                        id:alarmcheckType
+                        inputWidth: 35
+                        items: [qsTr(">"),qsTr(">="),qsTr("<"),qsTr("<="),qsTr("=="),qsTr("!=")]
+                        onConfigValueChanged: {
+                            alarmModel.setProperty(index,"checkType",configValue);
+                        }
+                        configValue: checkType
+                    }
+                    ICLineEdit{
+                        id:alarmNumberSet
+                        inputWidth: 60
+                        onTextChanged: {
+                            alarmModel.setProperty(index,"alarmNum",text);
+                        }
+                        text: alarmNum
+                    }
+                    ICComboBoxConfigEdit{
+                        id:isKeepStatusSetting
+                        inputWidth: 100
+                        items: [qsTr("one"),qsTr("keep")]
+                        onConfigValueChanged: {
+                            alarmModel.setProperty(index,"isKeepStatus",configValue);
+                        }
+                        configValue: isKeepStatus
+                    }
+                    ICComboBoxConfigEdit{
+                        configName: qsTr("Output")
+                        configValue: outType_init
+                        items: [qsTr("IO output"),qsTr("M output")]
+                        onConfigValueChanged: {
+                            if(configValue<0||configValue>1)return;
+                            alarmModel.setProperty(index,"outType_init",configValue);
+                            if(configValue == 0){
+                                if(outid_init>=MData.yDefinesList.length){
+                                    alarmOutid.configValue =0;
+                                }
+                                alarmOutid.items = MData.yDefinesList;
+                            }
+                            else if(configValue == 1){
+                                if(outid_init>=MData.mDefinesList.length){
+                                    alarmOutid.configValue =0;
+                                }
+                                alarmOutid.items = MData.mDefinesList;
+                            }
+                        }
+                    }
+                    ICComboBox{
+                        id: alarmOutid
+                        width: 180
+                        currentIndex: outid_init
+                        onCurrentIndexChanged: {
+                            alarmModel.setProperty(index,"outid_init",currentIndex);
+                        }
+                    }
+                    ICComboBox{
+                        id: alarmoutstatus
+                        items: [qsTr("OFF"), qsTr("ON")]
+                        width: 40
+                        currentIndex: outStatus
+                        onCurrentIndexChanged: {
+                            alarmModel.setProperty(index,"outStatus",currentIndex);
+                        }
+                    }
+                    ICButton{
+                        id:deleteAlarm
+                        height:alarmoutstatus.height
+                        width: 50
+                        text: qsTr("Delete")
+                        onButtonClicked: {
+                            alarmModel.remove(index);
+                        }
+                    }
+                }
+            }
+            ICListView{
+                id:barnLogicContainer
+                model:barnModel
+                spacing: 10
+                border.color: "gray"
+                border.width: 1
+                delegate:Rectangle{
+                    height:baseSet.height+extentSet.height+9+barnTypeEdit.height+5
                     width: parent.width
+                    border.color: "black"
+                    border.width: 1
                     Row{
-                        id:inputRow
+                        id:barnTypeEdit
                         spacing: 8
-                        z: 1000-index;
+                        x:2
+                        y:2
                         ICCheckBox {
-                            text: index+":    "+qsTr("When")
+                            id:barnEn
+                            text: qsTr("Barn")+(index+1)+": "
                             anchors.verticalCenter: parent.verticalCenter
                             isChecked: check
                             onIsCheckedChanged: {
-                                ioModel.setProperty(index,"check",isChecked);
-                            }
-                        }
-                        ICComboBox{
-                            items: pData.ledItem
-                            currentIndex: checkType
-                            onCurrentIndexChanged: {
-                                ioModel.setProperty(index,"checkType",currentIndex);
-                                if(currentIndex == 0){
-                                    selCheckId.items = MData.xDefinesList;
-                                }
-                                else if(currentIndex == 1){
-                                    selCheckId.items = MData.yDefinesList;
-                                }
-                                else if(currentIndex == 2){
-                                    selCheckId.items = MData.mDefinesList;
-                                }
-                            }
-                        }
-                        ICComboBox{
-                            id:selCheckId
-                            currentIndex: checkId
-                            onCurrentIndexChanged: {
-                               ioModel.setProperty(index,"checkId",currentIndex);
+                                barnModel.setProperty(index,"check",isChecked);
                             }
                         }
                         ICComboBoxConfigEdit{
-                            configName: qsTr("status to")
-                            width: 40
-                            items: [qsTr("OFF"), qsTr("ON")]
-                            configValue: checkStatus
+                            configName: qsTr("Barn Type")
+                            items: [qsTr("UpBarn"),qsTr("DownBarn")]
+                            configValue: bType
                             onConfigValueChanged: {
-                                ioModel.setProperty(index,"checkStatus",configValue);
+                                barnModel.setProperty(index,"bType",configValue);
+                            }
+                        }
+                        ICButton{
+                            height: sensorEdit.height
+                            text: qsTr("Delete")
+                            onButtonClicked: {
+                                barnModel.remove(index);
                             }
                         }
                     }
                     Row{
-                        id:outputRow
-                        spacing: 8
-                        anchors.top:inputRow.bottom
+                        id:baseSet
+                        anchors.left: parent.left
+                        anchors.leftMargin:barnEn.width+5
+                        anchors.top: barnTypeEdit.bottom
                         anchors.topMargin: 5
-                        x: 180
-                        z: 1000-index
+                        spacing: 8
                         ICComboBoxConfigEdit{
-                            configName: qsTr("Choos Out")
-                            configValue: outType
-                            items: [qsTr("IO output"),qsTr("M output")]
+                            configName: qsTr("Up")
+                            items:MData.xDefinesList
+                            configValue: upLimit
                             onConfigValueChanged: {
-                                if(configValue<0||configValue>1)return;
-                                ioModel.setProperty(index,"outType",configValue);
-                                if(configValue == 0){
-                                    selOutId.items = MData.yDefinesList;
-                                }
-                                else if(configValue == 1){
-                                    selOutId.items = MData.mDefinesList;
-                                }
+                                barnModel.setProperty(index,"upLimit",configValue);
                             }
                         }
-                        ICComboBoxConfigEdit {
-                            id: selOutId
-                            configName: qsTr("output point")
-                            configValue: outId
+                        ICComboBoxConfigEdit{
+                            configName: qsTr("Down")
+                            items:MData.xDefinesList
+                            configValue: downLimit
                             onConfigValueChanged: {
-                                ioModel.setProperty(index,"outId",configValue);
+                                barnModel.setProperty(index,"downLimit",configValue);
                             }
                         }
-                        ICComboBox{
-                            items: [qsTr("OFF"), qsTr("ON")]
-                            width: 40
-                            currentIndex: outStatus
-                            onCurrentIndexChanged: {
-                                ioModel.setProperty(index,"outStatus",currentIndex);
+                        ICComboBoxConfigEdit{
+                            configName: qsTr("motorUp")
+                            items:MData.yDefinesList
+                            configValue: motorUp
+                            onConfigValueChanged: {
+                                barnModel.setProperty(index,"motorUp",configValue);
                             }
                         }
-                        ICButton{
-                            id:deleteitem
-                            height:selCheckId.height
-                            text: qsTr("Delete")
-                            onButtonClicked: {
-                                ioModel.remove(index);
+                        ICComboBoxConfigEdit{
+                            configName: qsTr("motorDown")
+                            items:MData.yDefinesList
+                            configValue: motorDown
+                            onConfigValueChanged: {
+                                barnModel.setProperty(index,"motorDown",configValue);
+                            }
+                        }
+                    }
+                    Row{
+                        id:extentSet
+                        anchors.left: parent.left
+                        anchors.leftMargin:barnEn.width+5
+                        anchors.top:baseSet.bottom
+                        anchors.topMargin: 5
+                        spacing: 8
+                        ICComboBoxConfigEdit{
+                            id:sensorEdit
+                            configName: qsTr("sensor")
+                            items:MData.xDefinesList
+                            configValue: sensor
+                            onConfigValueChanged: {
+                                barnModel.setProperty(index,"sensor",configValue);
+                            }
+                        }
+                        ICCheckBox{
+                            text: qsTr("sensor Dir")
+                            anchors.verticalCenter: parent.verticalCenter
+                            isChecked: sensorDir
+                            onIsCheckedChanged: {
+                                barnModel.setProperty(index,"sensorDir",isChecked);
+                            }
+                        }
+                        ICCheckBox{
+                            text: qsTr("is wait")
+                            anchors.verticalCenter: parent.verticalCenter
+                            isChecked: isWait
+                            onIsCheckedChanged: {
+                                barnModel.setProperty(index,"isWait",isChecked);
+                            }
+                        }
+                        ICComboBoxConfigEdit{
+                            configName: qsTr("wait signal")
+                            items:MData.xDefinesList
+                            configValue: waitSignal
+                            onConfigValueChanged: {
+                                barnModel.setProperty(index,"waitSignal",configValue);
+                            }
+                        }
+                        ICCheckBox{
+                            text: qsTr("wait Dir")
+                            anchors.verticalCenter: parent.verticalCenter
+                            isChecked: waitDir
+                            onIsCheckedChanged: {
+                                barnModel.setProperty(index,"waitDir",isChecked);
                             }
                         }
                     }
@@ -481,6 +720,8 @@ Item {
             Component.onCompleted: {
                 pageContainer.addPage(valveContainer);
                 pageContainer.addPage(ioContainer);
+                pageContainer.addPage(alarmContainer);
+                pageContainer.addPage(barnLogicContainer);
                 pageContainer.setCurrentIndex(typeSel.checkedIndex);
             }
         }
@@ -496,10 +737,17 @@ Item {
                 text: qsTr("new")
                 onButtonClicked: {
                     if(typeSel.checkedItem == modeStatus){
-                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":4,"outstatus_init":0});
+                        valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
                     }
                     else if(typeSel.checkedItem == ioStatus){
-                        ioModel.append({"check":true,"checkType":0,"checkId":0,"checkStatus":0,"outType":0,"outId":4,"outStatus":0});
+                        ioModel.append({"check":true,"checkType":0,"checkId":0,"checkStatus":0,"outType":0,"outId":0,"outStatus":0});
+                    }
+                    else if(typeSel.checkedItem == alarmStatus){
+                        alarmModel.append({"check":true,"checkType":4,"alarmNum":7,"outType_init":0,"outid_init":0,"isKeepStatus":0,"outStatus":0});
+                    }
+                    else if(typeSel.checkedItem == barnLogic){
+                        if(barnModel.count >=15) return;
+                        barnModel.append({"bType":0,"check":false,"upLimit":0,"downLimit":0,"motorUp":0,"motorDown":0,"sensor":0,"sensorDir":0,"isWait":0,"waitSignal":0,"waitDir":0});
                     }
                 }
             }
@@ -508,21 +756,31 @@ Item {
                 text: qsTr("Preservation")
                 onButtonClicked: {
                     var toSave = [];
-                    var v;
-                    var value = 0;
+                    var v,isNormal=true;
+                    var value = 0,ret =[];
+                    var i,len;
                     if(typeSel.checkedItem == modeStatus){
                         panelRobotController.modifyConfigValue(14,0);
-                        for(var i=0;i<valveModel.count;i++)
+                        for(i=0,len=valveModel.count;i<len;i++)
                         {
                             v = valveModel.get(i);
                             toSave.push(v);
                             if(v.check == true){
-                                console.log("send:");
+                                console.log("mode_send:");
                                 value=v.outstatus_init?1:0;
-                                value|=v.outid_init<<1;
+                                if(v.outType_init==0){
+                                    ret = MData.getOutIDFromConfig(v.outid_init);
+                                    value|=ret[1]<<1;
+                                    isNormal = ret[0];
+                                }
+                                else{
+                                    value|=v.outid_init<<1;
+                                }
+//                                value|=v.outid_init<<1;
                                 value|=v.outType_init<<8;
                                 value|=v.sendMode<<9;
-                                console.log(value);
+                                value|=isNormal<<14;
+//                                console.log(isNormal,ret[1],value);
                                 panelRobotController.modifyConfigValue(13,value);
                             }
                         }
@@ -531,33 +789,103 @@ Item {
                     }
                     else if(typeSel.checkedItem == ioStatus){
                         panelRobotController.modifyConfigValue(33,0);
-                        for(var i=0;i<ioModel.count;i++)
+                        for(i=0,len=ioModel.count;i<len;i++)
                         {
                             v = ioModel.get(i);
                             toSave.push(v);
                             if(v.check == true){
-                                console.log("send:");
+                                console.log("io_send:");
                                 value =v.checkStatus?1:0;
                                 value|=v.checkId<<1;
                                 value|=v.checkType<<8;
                                 value|=v.outStatus<<10;
-                                value|=v.outId<<11;
+                                if(v.outType==0){
+                                    ret = MData.getOutIDFromConfig(v.outId);
+                                    value|=ret[1]<<11;
+                                    isNormal = ret[0];
+                                }
+                                else{
+                                    value|=v.outId<<11;
+                                }
                                 value|=v.outType<<18;
-                                console.log(value);
+                                value|=isNormal<<19;
+//                                console.log(isNormal,ret[1],value);
                                 panelRobotController.modifyConfigValue(32,value);
                             }
                         }
                         panelRobotController.setCustomSettings("IOCheckSet", JSON.stringify(toSave), "IOCheckSet");
-                        console.log(JSON.stringify(toSave));
+//                        console.log(JSON.stringify(toSave));
+                    }
+                    else if(typeSel.checkedItem==alarmStatus)
+                    {
+                        panelRobotController.modifyConfigValue(38,0);
+                        for(i=0,len=alarmModel.count;i<len;i++)
+                        {
+                            v = alarmModel.get(i);
+                            toSave.push(v);
+                            if(v.check == true){
+                                console.log("alarm_send:");
+                                value =v.alarmNum;
+                                value|=v.checkType<<16;
+//                                console.log(v.checkType);
+                                value|=(v.isKeepStatus?1:0)<<19;
+                                value|=(v.outType_init?1:0)<<21;
+                                if(v.outType_init==0){
+                                    ret = MData.getOutIDFromConfig(v.outid_init);
+                                    isNormal = ret[0];
+                                    value|=isNormal<<22;
+                                    value|=ret[1]<<23;
+                                }
+                                else{
+                                    value|=isNormal<<22;
+                                    value|=v.outid_init<<23;
+                                }
+                                value|=v.outStatus<<30;
+//                                console.log(isNormal,ret[1],value);
+                                panelRobotController.modifyConfigValue(37,value);
+                            }
+                        }
+                        panelRobotController.setCustomSettings("IOCheckAlarmSet", JSON.stringify(toSave), "IOCheckAlarmSet");
+//                        console.log(JSON.stringify(toSave));
+                    }
+                    else if (typeSel.checkedItem == barnLogic){
+                        panelRobotController.modifyConfigValue(61,0);
+                        var logic = [];
+                        for(i=0,len=barnModel.count;i<len;i++)
+                        {
+                            v = barnModel.get(i);
+                            toSave.push(v);
+                            if(v.check == true){
+                                console.log("barn_send:");
+                                logic[0] = v.upLimit;
+                                logic[0]|= v.downLimit<<7;
+                                ret = MData.getOutIDFromConfig(v.motorUp);
+                                isNormal = ret[0];
+                                logic[0]|= ret[1]<<14;
+                                ret = MData.getOutIDFromConfig(v.motorDown);
+                                logic[0]|= ret[1]<<21;
+                                logic[0]|= isNormal<<28;
+                                logic[0]|= ret[0]<<29;
+                                logic[0]|= v.bType<<30;
+
+                                logic[1] = v.sensor;
+                                logic[1] |= v.sensorDir<<7;
+                                logic[1] |= v.isWait<<8;
+                                logic[1] |= v.waitSignal<<9;
+                                logic[1] |= v.waitDir<<16;
+                                logic[1] |= (i+1)<< 17;
+//                                console.log(JSON.stringify(logic));
+                                panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
+                            }
+                        }
+                        panelRobotController.setCustomSettings("IOBarnLogicSet", JSON.stringify(toSave), "IOBarnLogicSet");
+//                        console.log(JSON.stringify(toSave));
                     }
                 }
             }
             Text {
                 id: tips
                 color: "red"
-//                horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                y:saveBtn.y-5
                 anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("Tips:New or modified, click Save to take effect!")
             }
@@ -698,7 +1026,7 @@ Item {
                                     keyModel.setProperty(index,"thingID",bindingNum);
                                 }
                                 else if(bindingType == 1){
-                                    keyModel.setProperty(index,"thingID",MData.yOutList[bindingNum].id);
+                                    keyModel.setProperty(index,"thingID",bindingNum);
                                 }
                                 else if(bindingType == 2){
                                     keyModel.setProperty(index,"thingID",MData.mOutList[bindingNum].id);
@@ -755,7 +1083,7 @@ Item {
                                 default:
                                 case 0:ioItems = MData.xDefinesList;
                                     break;
-                                case 1:ioItems = MData.yDefinesList;
+                                case 1:ioItems = MData.yList;
                                     break;
                                 case 2:ioItems = MData.mDefinesList;
                                 }
@@ -816,7 +1144,6 @@ Item {
         }
     }
 
-
     onVisibleChanged: {
         if(visible)
             showMenu();
@@ -838,13 +1165,22 @@ Item {
         len = ioBoardCount * 32;
         for(i = 0; i < len; ++i){
             MData.xDefinesList.push(IODefines.ioItemName(IODefines.xDefines[i]));
+            MData.yList.push(IODefines.yDefines[i].pointName);
         }
         var valveTmp;
-        MData.yOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.yOut);
-        for(i = 0,len =MData.yOutList.length; i < len; ++i){
-            valveTmp = MData.yOutList[i];
+
+        var yDefines = IOConfigs.manualShowValves;
+        for(i = 0, len = yDefines.length; i < len; ++i){
+            valveTmp = IODefines.getValveItemFromValveName(yDefines[i]);
+            MData.yOutList.push(valveTmp);
             MData.yDefinesList.push(IODefines.getYDefineFromHWPoint(valveTmp.y1Point, valveTmp.y1Board).yDefine.pointName+":"+valveTmp.descr);
         }
+
+//        MData.yOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.yOut);
+//        for(i = 0,len =MData.yOutList.length; i < len; ++i){
+//            valveTmp = MData.yOutList[i];
+//            MData.yDefinesList.push(IODefines.getYDefineFromHWPoint(valveTmp.y1Point, valveTmp.y1Board).yDefine.pointName+":"+valveTmp.descr);
+//        }
         MData.mOutList = IODefines.valveDefines.getValves(IOConfigs.kIO_TYPE.mY);
         for(i = 0,len = MData.mOutList.length; i < len; ++i){
             valveTmp = MData.mOutList[i];
@@ -859,6 +1195,14 @@ Item {
         iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckSet", "[]", "IOCheckSet"));
         for(i = 0, len = iosettings.length; i < len; ++i){
             ioModel.append(iosettings[i]);
+        }
+        iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckAlarmSet", "[]", "IOCheckAlarmSet"));
+        for(i = 0, len = iosettings.length; i < len; ++i){
+            alarmModel.append(iosettings[i]);
+        }
+        iosettings = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet", "[]", "IOBarnLogicSet"));
+        for(i = 0, len = iosettings.length; i < len; ++i){
+            barnModel.append(iosettings[i]);
         }
 //        panelRobotController.setCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting");
         MData.ledKesSetData = JSON.parse(panelRobotController.getCustomSettings("LedAndKeySetting", "[]", "LedAndKeySetting"));
@@ -878,7 +1222,7 @@ Item {
         else{
             console.log("new");
             for(i = 0; i < 10; ++i){
-                keyModel.append({"functionCheck":1,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0,"usefulMode":3});
+                keyModel.append({"functionCheck":0,"type":(i<5?0:1),"bindingType":0,"keyFuncType":0,"bindingNum":0,"thingID":0,"usefulMode":3});
             }
         }
         refreshLedKeyData();

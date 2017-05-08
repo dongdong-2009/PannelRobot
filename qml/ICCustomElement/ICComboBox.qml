@@ -19,10 +19,18 @@ Rectangle {
 
     function setItemVisible(index, vi){
         var tmp = hideIndexs;
-        if(!vi)
-            tmp.push(index.toString());
+        var i,len,exist = false;
+        if(!vi){
+            for(i = 0, len = tmp.length; i < len; ++i){
+                if(tmp[i] == index){
+                    exist = true;
+                }
+            }
+            if(!exist)
+                tmp.push(index.toString());
+        }
         else{
-            for(var i = 0, len = tmp.length; i < len; ++i){
+            for(i = 0, len = tmp.length; i < len; ++i){
                 if(tmp[i] == index){
                     tmp.splice(i, 1);
                     break;
@@ -53,7 +61,14 @@ Rectangle {
 
     Text {
         id: currentText
-        text: currentIndex < 0 ?  "" : items[currentIndex]
+        text:{
+            if(currentIndex < 0)
+                return "";
+            else{
+//                console.log(currentIndex,container.items)
+                return items[currentIndex];
+            }
+        }
         anchors.verticalCenter : parent.verticalCenter
         x:4
         width: parent.width - dropDownBox.width
@@ -70,9 +85,14 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if(items.length > 0){
-                var p = parent.mapToItem(null, x, y)
+                var p = parent.mapToItem(null, x, y);
                 currentIndex = comboBoxView.openView(p.x, p.y, width, height, items, currentIndex, hideIndexs);
             }
+        }
+    }
+    onVisibleChanged: {
+        if(!visible){
+            comboBoxView.closeView();
         }
     }
 }

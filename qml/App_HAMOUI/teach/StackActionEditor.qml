@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import ICPainter 1.0
 import "../../ICCustomElement"
 import "Teach.js" as Teach
 import "../configs/AxisDefine.js" as AxisDefine
@@ -29,8 +30,8 @@ Rectangle {
     }
 
     function updateStacksSel(){
-        Teach.parseStacks(panelRobotController.stacks());
-        var hasStacks = Teach.stackInfosDescr();
+        Teach.currentRecord.stackManager.parseStacks(panelRobotController.stacks());
+        var hasStacks = Teach.currentRecord.stackManager.stackInfosDescr();
         stackSelector.configValue = -1;
         stackViewSel.currentIndex = -1;
         stackSelector.items =  hasStacks;
@@ -50,6 +51,158 @@ Rectangle {
             speedZ.configName = AxisDefine.axisInfos[2].name + qsTr("Speed");
             speed1.visible = false;
         }
+    }
+
+
+    Rectangle {
+        id:photoMarkedRoot
+        color: "#BFEFFF"
+        MouseArea{
+            anchors.fill: parent
+        }
+
+//        property alias painter: painter
+        visible: false
+        width: 800
+        height: 400
+        y:-150
+        x:-100
+        z: 100
+        Component.onCompleted: {
+            painter.penWidth = 5
+            painter.penColor = "black"
+            painter.init()
+        }
+
+        ICPainter {
+            id: painter;
+            width: photoMarkedRoot.width
+            y:30
+            height: photoMarkedRoot.height - 30
+            onWidthChanged: {
+                painter.init()
+            }
+            onHeightChanged: {
+                painter.init()
+            }
+        }
+        Row{
+//            anchors.bottom: parent.top
+            spacing: 12
+            ICButton{
+                id:clear
+                bgColor:"#00EE00"
+                text: qsTr("clear")
+                width: 60
+                height: 30
+                onButtonClicked:{
+                    painter.clear();
+                }
+            }
+            ICCheckBox{
+                id:setPen
+                text: qsTr("setPen")
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setPenEnable(true);
+                    else painter.setPenEnable(false);
+                }
+            }
+            ICConfigEdit{
+                id:setMaxX
+                configName: qsTr("X")
+                decimal: 3
+                configValue: '500'
+            }
+            ICConfigEdit{
+                id:setMaxY
+                configName: qsTr("Y")
+                decimal: 3
+                configValue: '200'
+            }
+            ICConfigEdit{
+                id:setHigh
+                configName: qsTr("High")
+                decimal: 3
+                configValue: '20'
+            }
+
+            ICButton{
+                id:converter
+                bgColor:clear.color
+                text: qsTr("converter")
+                width: clear.width
+                height: clear.height
+                onButtonClicked:{
+                    if(stackViewSel.currentIndex < 0) return;
+//                    console.log(painter.converterNow());
+                    var p_data= JSON.parse(painter.converterNow(setMaxX.configValue,setMaxY.configValue,setHigh.configValue));
+                    var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
+                    var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
+                    sI = Teach.currentRecord.stackManager.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, p_data));
+                    var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
+                    toSend = ESData.externalDataManager.parseRaw(toSend);
+//                    console.log(JSON.stringify(toSend));
+                    panelRobotController.sendExternalDatas(JSON.stringify(toSend));
+                }
+            }
+            ICCheckBox{
+                id:quadTo_en
+                text: qsTr("quadTo_en")
+                width: clear.width
+                height: clear.height
+                isChecked: true
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setQuadEnable(true);
+                    else painter.setQuadEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:quadTo_Color_Change
+                text: qsTr("quadTo_Color_Change")
+                visible: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setQuadColorChangeEnable(true);
+                    else painter.setQuadColorChangeEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:lineTo_en
+                text: qsTr("lineTo_en")
+                isChecked: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setLineEnable(true);
+                    else painter.setLineEnable(false);
+                }
+            }
+            ICCheckBox{
+                id:lineTo_Color_Change
+                text: qsTr("lineTo_Color_Change")
+                visible: false
+                width: clear.width
+                height: clear.height
+                onIsCheckedChanged: {
+                    if(isChecked)painter.setLineColorChangeEnable(true);
+                    else painter.setLineColorChangeEnable(false);
+                }
+            }
+            ICButton{
+                id:close
+                bgColor:clear.color
+                text: qsTr("close")
+                width: clear.width
+                height: clear.height
+                onButtonClicked:{
+                    photoMarkedRoot.visible=false;
+                }
+            }
+        }
+
     }
 
     ICMessageBox{
@@ -122,7 +275,7 @@ Rectangle {
             var stackInfo;
 
             var stackID = parseInt(Utils.getValueFromBrackets(items[currentIndex]));
-            stackInfo = Teach.getStackInfoFromID(stackID);
+            stackInfo = Teach.currentRecord.stackManager.getStackInfoFromID(stackID);
             ESData.externalDataManager.registerDataSource(stackInfo.dsName, ESData.CustomDataSource.createNew("custompoint[" + stackID +"]", stackID));
             page1.motor0 = stackInfo.si0.m0pos;
             page1.motor1 = stackInfo.si0.m1pos;
@@ -136,7 +289,9 @@ Rectangle {
             page1.count0 = stackInfo.si0.count0;
             page1.count1 = stackInfo.si0.count1;
             page1.count2 = stackInfo.si0.count2;
-            page1.seq = stackInfo.si0.sequence;
+            if(page1.seqItems[stackInfo.si0.sequence] !== "" &&
+                    page1.seqItems[stackInfo.si0.sequence] !== undefined)
+                page1.seq = stackInfo.si0.sequence;
             page1.dir0 = stackInfo.si0.dir0;
             page1.dir1 = stackInfo.si0.dir1;
             page1.dir2 = stackInfo.si0.dir2;
@@ -163,7 +318,9 @@ Rectangle {
             page2.count0 = stackInfo.si1.count0;
             page2.count1 = stackInfo.si1.count1;
             page2.count2 = stackInfo.si1.count2;
-            page2.seq = stackInfo.si1.sequence;
+            if(page2.seqItems[stackInfo.si0.sequence] !== "" &&
+                    page2.seqItems[stackInfo.si0.sequence] !== undefined)
+                page2.seq = stackInfo.si1.sequence;
             page2.dir0 = stackInfo.si1.dir0;
             page2.dir1 = stackInfo.si1.dir1;
             page2.dir2 = stackInfo.si1.dir2;
@@ -186,7 +343,6 @@ Rectangle {
                 page1.mode = 2;
                 posAndCmp.setChecked(stackType == 4);
                 onlyCmp.setChecked(stackType == 5);
-                autoChangeHead.setChecked(stackType == 6);
                 holdSel.configValue = stackInfo.si0.holdSel;
             }
         }
@@ -263,55 +419,45 @@ Rectangle {
                                           0);
             var realST = stackType;
             if(realST >= 2){
-                console.log("fsfdws",realST)
-                if(posAndCmp.isChecked)
-                    realST = 4;
-                else if(onlyCmp.isChecked)
-                    realST = 5;
-                else if(autoChangeHead.isChecked)
-                    realST = 6;
-                else
-                    realST = 3;
-//                if(realST == 2){
-//                    if(posAndCmp.isChecked)
-//                        realST = 4;
-//                    else if(onlyCmp.isChecked)
-//                        realST = 5;
-//                    else if(autoChangeHead.isChecked)
-//                        realST = 6;
-//                }
+                realST = page1.isCustomDataSource ? 3 : 2;
+                if(realST == 2){
+                    if(posAndCmp.isChecked)
+                        realST = 4;
+                    else if(onlyCmp.isChecked)
+                        realST = 5;
+                }
             }
 
 
             var stackInfo = new Teach.StackInfo(si0, si1, realST, name, "custompoint[" + id + "]", id, posData);
             var sid;
             if(!exist){
-                sid = Teach.appendStackInfo(stackInfo);
+                sid = Teach.currentRecord.stackManager.appendStackInfo(stackInfo);
                 stackInfo.dsName = "custompoint[" + sid + "]";
                 stackInfo.dsHostID = sid;
-                panelRobotController.saveStacks(Teach.stacksToJSON());
+                panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
                 updateStacksSel();
             }
             else{
                 stackInfo.dsName = selectedDS;
                 stackInfo.dsHostID = dsID;
-                sid = Teach.updateStackInfo(id, stackInfo);
-                panelRobotController.saveStacks(Teach.stacksToJSON());
+                sid = Teach.currentRecord.stackManager.updateStackInfo(id, stackInfo);
+                panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
             }
             stackUpdated(sid);
             return sid;
         }
 
         function copyStack(toCopySID, name){
-            var sI = Teach.getStackInfoFromID(toCopySID);
+            var sI = Teach.currentRecord.stackManager.getStackInfoFromID(toCopySID);
             var cpSI = Utils.cloneObject(sI);
             cpSI.descr = name;
-            var sid = Teach.appendStackInfo(cpSI);
+            var sid = Teach.currentRecord.stackManager.appendStackInfo(cpSI);
             if(cpSI.dsHostID == toCopySID){
                 cpSI.dsName = "custompoint[" + sid + "]";
                 cpSI.dsHostID = sid;
             }
-            panelRobotController.saveStacks(Teach.stacksToJSON());
+            panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
             updateStacksSel();
             stackUpdated(sid);
             return sid;
@@ -430,8 +576,8 @@ Rectangle {
                     return;
                 }
 
-                Teach.delStack(sid);
-                panelRobotController.saveStacks(Teach.stacksToJSON());
+                Teach.currentRecord.stackManager.delStack(sid);
+                panelRobotController.saveStacks(Teach.currentRecord.stackManager.stacksToJSON());
                 updateStacksSel();
                 stackUpdated(sid);
             }
@@ -450,7 +596,7 @@ Rectangle {
             onButtonClicked: {
                 if(stackViewSel.currentIndex < 0) return;
                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                var sI = Teach.getStackInfoFromID(id);
+                var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
                 topContainer.saveStack(id,sI.descr, true, sI.posData);
             }
 
@@ -532,21 +678,19 @@ Rectangle {
 
                 }
                 Row{
-                    spacing: 30
-                    visible:  page1.mode >= 2
+                    visible: page1.isCustomDataSource && page1.mode == 2
+                    height: editPos.height
+                    spacing: 12
                     ICButton{
                         id:editPos
                         text: qsTr("Edit Pos")
-                        visible: page1.isCustomDataSource && page1.mode == 2
-                        function onEditConfirm(accepted, points, onlySend){
+                        function onEditConfirm(accepted, points){
                             if(accepted){
                                 if(stackViewSel.currentIndex < 0) return;
                                 var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                                var sI = Teach.getStackInfoFromID(id);
-                                if(!onlySend)
-                                    topContainer.saveStack(id,sI.descr, true, points)
-                                sI = Teach.getStackInfoFromID(id);
-                                var toSend = new ESData.RawExternalDataFormat(sI.dsName, points);
+                                var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
+                                sI = Teach.currentRecord.stackManager.getStackInfoFromID(topContainer.saveStack(id,sI.descr, true, points));
+                                var toSend = new ESData.RawExternalDataFormat(sI.dsName, sI.posData);
                                 toSend = ESData.externalDataManager.parseRaw(toSend);
                                 panelRobotController.sendExternalDatas(JSON.stringify(toSend));
                             }else
@@ -554,20 +698,32 @@ Rectangle {
                         }
 
                         onButtonClicked: {
-                            //                        customPointEditor.visible = true;
-                            //                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
+    //                        customPointEditor.visible = true;
+    //                        customPointEditor.editConfirm.connect(editPos.onEditConfirm);
                             var id = parseInt(Utils.getValueFromBrackets(stackViewSel.currentText()));
-                            var sI = Teach.getStackInfoFromID(id);
+                            var sI = Teach.currentRecord.stackManager.getStackInfoFromID(id);
                             if(sI.posData === undefined)
                                 sI.podData = [];
                             customPointEditor.show(sI.posData, true, editPos.onEditConfirm);
                         }
                     }
-                    ICCheckBox{
-                        id:autoChangeHead
-                        text:qsTr("Auto Change Head")
+
+                    ICButton{
+                        id:paintPos
+//                    visible: false
+                        text: qsTr("Paint Pos")
+    //                    anchors.left: editPos.right
+    //                    anchors.leftMargin: 12
+    //                    anchors.top: editPos.top
+                        width: editPos.width
+                        height: editPos.height
+
+                        onButtonClicked: {
+                            photoMarkedRoot.visible = true;
+                        }
                     }
                 }
+
 
                 ICButtonGroup{
                     spacing: 24
@@ -615,7 +771,7 @@ Rectangle {
             z:10
             onConfigValueChanged: {
                 if(configValue < 0) return;
-                var stackInfo = Teach.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[configValue])));
+                var stackInfo = Teach.currentRecord.stackManager.getStackInfoFromID(parseInt(Utils.getValueFromBrackets(items[configValue])));
                 stackType = stackInfo.type;
             }
         }
@@ -799,7 +955,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        updateStacksSel();
+//        updateStacksSel();
         panelRobotController.moldChanged.connect(updateStacksSel);
         page1.dataSource = ESData.externalDataManager.dataSourceNameList();
         page2.dataSource = page1.dataSource;

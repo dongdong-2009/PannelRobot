@@ -12,6 +12,8 @@
 #include "icupdatesystem.h"
 #include "icutility.h"
 #include "icregister.h"
+#include "quazip.h"
+#include "JlCompress.h"
 
 #ifdef Q_WS_QWS
 #include <stdio.h>
@@ -96,7 +98,9 @@ PanelRobotController::PanelRobotController(QSplashScreen *splash, ICLog* logger,
     host_ = ICRobotVirtualhost::RobotVirtualHost();
     led_io.led=0;
     led_io_old.led=-1;
+#ifdef Q_WS_QWS
     fd=open("/dev/szhc_leds", O_WRONLY);
+#endif
     setLEDStatus(0,0);
     connect(host_.data(),
             SIGNAL(NeedToInitHost()),
@@ -227,9 +231,11 @@ void PanelRobotController::Init()
     qApp->installTranslator(&panelRoboTranslator_);
     qApp->installTranslator(&configsTranslator_);
     LoadTranslator_(ICAppSettings().TranslatorName());
+    ICRobotMold::CurrentMold()->CompileMold();
 
-    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
+//    ICRobotMold::CurrentMold()->LoadMold(ICAppSettings().CurrentMoldConfig(), true);
 
+    emit moldChanged();
     emit LoadMessage("Record reload.");
 
     //    InitUI();
@@ -260,7 +266,7 @@ void PanelRobotController::InitMold_()
     if(!mold->LoadMold(as.CurrentMoldConfig()))
     {
         qCritical("Mold Is Not Exist!!");
-        QMessageBox::critical(mainView_, QT_TR_NOOP("Error"), QT_TR_NOOP("Mold Is Not Exist!!"));
+        QMessageBox::critical(NULL, QT_TR_NOOP("Error"), QT_TR_NOOP("Mold Is Not Exist!!"));
     }
     ICRobotMold::SetCurrentMold(mold);
 }
@@ -269,8 +275,8 @@ void PanelRobotController::InitMachineConfig_()
 {
     ICSuperSettings as;
     ICMachineConfig* machineConfig = new ICMachineConfig();
+    machineConfig->LoadMachineConfig("kSttLathe_6p");
     qDebug()<<"machine name:"<<as.CurrentSystemConfig();
-    machineConfig->LoadMachineConfig(as.CurrentSystemConfig());
     ICMachineConfig::setCurrentMachineConfig(machineConfig);
     //    OnNeedToInitHost();
 }
@@ -615,10 +621,10 @@ void PanelRobotController::InitMainView()
 
 }
 
-QString scanHelper(const QString& filter, QDir::Filters filters = QDir::NoFilter, const QString &path = ICAppSettings::UsbPath)
+QString scanHelper(const QStringList& filter, const QString &path = ICAppSettings::UsbPath, QDir::Filters filters = QDir::NoFilter)
 {
     QDir usb(path);
-    QStringList updaters = usb.entryList(QStringList()<<filter, filters);
+    QStringList updaters = usb.entryList(filter, filters);
     QString ret = "[";
     for(int i = 0; i != updaters.size(); ++i)
     {
@@ -632,7 +638,7 @@ QString scanHelper(const QString& filter, QDir::Filters filters = QDir::NoFilter
 
 QString PanelRobotController::scanUSBUpdaters(const QString &filter) const
 {
-    return scanHelper(QString("%1*.bfe").arg(filter));
+    return scanHelper(QStringList()<<QString("%1*.bfe").arg(filter));
 }
 
 QString PanelRobotController::scanUpdaters(const QString &filter, int mode) const
@@ -659,6 +665,7 @@ void PanelRobotController::startUpdate(const QString &updater, int mode)
     flags = WDIOS_DISABLECARD;
     ioctl(wdFD, WDIOC_SETOPTIONS, &flags);
 #endif
+    system("mount -t tmpfs -o size=128m tmpfs /tmp");
     us.StartUpdate(updater);
 #ifdef Q_WS_QWS
     flags = WDIOS_ENABLECARD;
@@ -882,7 +889,7 @@ bool PanelRobotController::fixProgramOnAutoMode(int which, int module, int line,
 
 QString PanelRobotController::scanUSBBackupPackages(const QString& filter) const
 {
-    return scanHelper(QString("%1*.tar").arg(filter));
+    return scanHelper(QStringList()<<QString("%1*.tar").arg(filter)<<QString("%1*.zip").arg(filter));
 }
 
 int PanelRobotController::exportRobotMold(const QString &molds, const QString& name) const
@@ -920,14 +927,14 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
     QFile file;
     QStringList toWrite;
     QString moldName;
+
     for(int i = 0; i < result.size(); ++i)
     {
         moldName = result.at(i).toString();
         toWrite = ICRobotMold::ExportMold(moldName);
-#ifdef Q_WS_QWS
         moldName = moldName.toUtf8();
-#endif
         file.setFileName(dir.absoluteFilePath(moldName + ".act"));
+        qDebug()<<file.fileName();
         if(file.open(QFile::WriteOnly))
         {
             QStringList acts = toWrite.mid(0, 11);
@@ -961,15 +968,19 @@ int PanelRobotController::exportRobotMold(const QString &molds, const QString& n
         ret = MoldMaintainRet::kME_USBNotFound;
         return ret;
     }
+    QString zipDirName = ICAppSettings::tmpDir().absoluteFilePath(name);
 #ifdef WIN32
-    QString cmd = QString("cd %1 && ..\\tar -cf %2.tar %2 && move /y %2.tar %3 && del /q %2 && rd /q %2").arg("temp")
-            .arg(name)
-            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
+    QString cmd = QString("del /q %1 && rd /q %1").arg(zipDirName);
+//    QString cmd = QString("cd %1 && ..\\7z a %2.7z %2 && move /y %2.7z %3 && del /q %2 && rd /q %2").arg("temp")
+//            .arg(name)
+//            .arg(QDir("temp").relativeFilePath(QString("../%1").arg(ICAppSettings::UsbPath)));
 #else
-    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
-            .arg(name)
-            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
+    QString cmd = QString("rm -r %1").arg(zipDirName);
+//    QString cmd = QString("cd %1 && tar -cf %2.tar %2 && mv %2.tar %3 && rm -r %2").arg(QDir::tempPath())
+//            .arg(name)
+//            .arg(QDir::current().absoluteFilePath(ICAppSettings::UsbPath));
 #endif
+    ret = !zipDir(zipDirName, QDir(ICAppSettings::UsbPath).absoluteFilePath(name + ".zip"));
     qDebug()<<cmd;
 //    QMessageBox::information(NULL, "tip", cmd.toUtf8());
     ::system(cmd.toUtf8());
@@ -991,13 +1002,35 @@ QString PanelRobotController::viewBackupPackageDetails(const QString &package) c
     QDir temp = QDir::temp();
 #endif
     QString packageDirName = package;
-    packageDirName.chop(4);
+    packageDirName.chop(packageDirName.mid(packageDirName.indexOf(".")).length());
+    tarPath = QDir::toNativeSeparators(tarPath);
     if(!temp.exists(packageDirName))
     {
-        ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+//        QFile testlog("testlog");
+//        testlog.open(QFile::WriteOnly);
+//        testlog.write(QString("copy %1 %2  && cd %2 && ..\\unzip %1").arg(tarPath).arg(temp.path()).toUtf8());
+//        testlog.close();
+#ifdef Q_WS_WIN
+        if(package.endsWith(".tar"))
+            ::system(QString("..\\tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+        else
+        {
+//            ::system(QString(".\\7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+            unzipDir(ICAppSettings::tmpDir().absoluteFilePath(packageDirName), tarPath);
+        }
+#else
+        if(package.endsWith(".tar"))
+            ::system(QString("tar -xf %1 -C %2").arg(tarPath).arg(temp.path()).toUtf8());
+        else
+        {
+//            ::system(QString("7z x %1 -o%2").arg(tarPath).arg(temp.path()).toUtf8());
+            unzipDir(ICAppSettings::tmpDir().absoluteFilePath(packageDirName), tarPath);
+        }
+#endif
     }
     temp.cd(packageDirName);
     QStringList molds = temp.entryList(QStringList()<<"*.act");
+    qDebug()<<molds;
 #ifdef Q_WS_QWS
     QByteArray ret = "[";
 #else
@@ -1226,14 +1259,26 @@ void PanelRobotController::sendToolCoord(int id,const QString& data)
     ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
 }
 
+void PanelRobotController::sendIOBarnLogic(const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    for(int i=0;i<result.size();i++)
+        tmp.append(result.at(i).toInt());
+    ICRobotVirtualhost::sendIOBarnLogicDef(host_,tmp);
+}
+
 bool PanelRobotController::delCounterDef(quint32 id)
 {
     return ICRobotMold::CurrentMold()->DeleteCounter(id);
 }
 
-QString PanelRobotController::counterDefs() const
+QString counterDefsToString(const QVector<QVariantList>& counters)
 {
-    QVector<QVariantList> counters = ICRobotMold::CurrentMold()->Counters();
     QString ret = "[";
     for(int i = 0; i < counters.size(); ++i)
     {
@@ -1250,6 +1295,17 @@ QString PanelRobotController::counterDefs() const
     return ret;
 }
 
+QString PanelRobotController::counterDefs() const
+{
+    QVector<QVariantList> counters = ICRobotMold::CurrentMold()->Counters();
+    return counterDefsToString(counters);
+}
+
+QString PanelRobotController::recordCounterDefs(const QString &name) const
+{
+    return counterDefsToString(ICDALHelper::GetMoldCounterDef(name));
+}
+
 bool PanelRobotController::saveVariableDef(quint32 id, const QString& name, const QString& unit, quint32 val, quint32 decimal)
 {
     return ICRobotMold::CurrentMold()->CreateVariables(id, name, unit, val, decimal);
@@ -1260,9 +1316,8 @@ bool PanelRobotController::delVariableDef(quint32 id)
     return ICRobotMold::CurrentMold()->DeleteVariable(id);
 }
 
-QString PanelRobotController::variableDefs() const
+QString variableDefsToString(const QVector<QVariantList> & varialbes)
 {
-    QVector<QVariantList> varialbes = ICRobotMold::CurrentMold()->Variables();
     QString ret = "[";
     for(int i = 0; i < varialbes.size(); ++i)
     {
@@ -1278,6 +1333,17 @@ QString PanelRobotController::variableDefs() const
     }
     ret += "]";
     return ret;
+}
+
+QString PanelRobotController::variableDefs() const
+{
+    QVector<QVariantList> varialbes = ICRobotMold::CurrentMold()->Variables();
+    return variableDefsToString(varialbes);
+}
+
+QString PanelRobotController::recordVariableDefs(const QString &name) const
+{
+    return variableDefsToString(ICDALHelper::GetMoldVariableDef(name));
 }
 
 QVector<QVariantList> PanelRobotController::ParseCounters(const QString &counters)
@@ -1461,7 +1527,7 @@ void PanelRobotController::sendExternalDatas(const QString& dsData)
 
 QString PanelRobotController::scanUSBGCodeFiles(const QString &filter) const
 {
-    return scanHelper(QString("%1").arg(filter), QDir::Files);
+    return scanHelper(QStringList()<<QString("%1").arg(filter), ICAppSettings::UsbPath, QDir::Files);
 }
 
 void PanelRobotController::setWatchDogEnabled(bool en)
@@ -1720,6 +1786,7 @@ bool PanelRobotController::loadRecord(const QString &name)
     ICRobotMoldPTR mold = ICRobotMold::CurrentMold();
     QMap<int, StackInfo> stacks = mold->GetStackInfos();
     bool ret =  mold->LoadMold(name);
+    ret = mold->CompileMold();
     if(ret)
     {
         ret = ICRobotVirtualhost::SendMoldCountersDef(host_, mold->CountersToHost());
@@ -1770,14 +1837,14 @@ bool PanelRobotController::loadRecord(const QString &name)
 QString PanelRobotController::scanHMIBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.hmi.hcdb");
+        return scanHelper(QStringList()<<"*.hmi.hcdb");
     return scanUserDir("hmibps", "*.hmi.hcdb");
 }
 
 QString PanelRobotController::scanMachineBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.mr.hcdb");
+        return scanHelper(QStringList()<<"*.mr.hcdb");
     return scanUserDir("mrbps", "*.mr.hcdb");
 
 }
@@ -1785,7 +1852,7 @@ QString PanelRobotController::scanMachineBackups(int mode) const
 QString PanelRobotController::scanGhostBackups(int mode) const
 {
     if(mode == 1)
-        return scanHelper("*.ghost.hcdb");
+        return scanHelper(QStringList()<<"*.ghost.hcdb");
     return scanUserDir("ghosts", "*.ghost.hcdb");
 }
 
@@ -1930,7 +1997,7 @@ void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const
 {
-    return scanHelper(QString("%1").arg(filter), QDir::Files, ICAppSettings::UsbPath);
+    return scanHelper(QStringList()<<QString("%1").arg(filter), ICAppSettings::UsbPath, QDir::Files);
 }
 
 QString PanelRobotController::usbFileContent(const QString &fileName, bool isTextOnly) const
@@ -1953,20 +2020,40 @@ QString PanelRobotController::usbFileContent(const QString &fileName, bool isTex
     return QString(ret);
 }
 
-bool PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
+int PanelRobotController::writeUsbFile(const QString& fileName, const QString& content)
 {
+    int ret = 0;
+    if(!ICUtility::IsUsbAttached())
+    {
+        ret = MoldMaintainRet::kME_USBNotFound;
+        return ret;
+    }
+#ifdef Q_WS_QWS
+    QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName.toUtf8());
+#else
     QString filePath = QDir(ICAppSettings::UsbPath).absoluteFilePath(fileName);
+#endif
     QFile f(filePath);
 
     if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
-        return 0;
+        return 1;
 
-    QTextStream txtOutput(&f);
-    QTextDocument contentText;
-    contentText.setHtml(content);
-    txtOutput << contentText.toPlainText() << endl;
+    f.write(content.toUtf8());
     f.close();
-    return 1;
+#ifndef Q_WS_WIN32
+    ::sync();
+#endif
+    return 0;
 }
 
+bool PanelRobotController::zipDir(const QString &path, const QString &name) const
+{
+    qDebug()<<"zip:"<<name<<path;
+    return JlCompress::compressDir(name, path);
+}
 
+QStringList PanelRobotController::unzipDir(const QString &path, const QString &name) const
+{
+    qDebug()<<"unzip:"<<name<<path;
+    return JlCompress::extractDir(name, path);
+}

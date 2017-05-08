@@ -734,10 +734,10 @@ Rectangle {
         var usid = JSON.parse(panelRobotController.usedSourceStacks());
         for(var sid in usid){
             if(usid[sid] == posData.hostID){
-                var stackInfo = Teach.getStackInfoFromID(sid);
+                var stackInfo = Teach.currentRecord.stackManager.getStackInfoFromID(sid);
                 if(stackInfo.si0.doesBindingCounter){
-                    var c = Teach.counterManager.getCounter(stackInfo.si0.counterID);
-                    Teach.counterManager.updateCounter(c.id, c.name, c.current, c.target);
+                    var c = Teach.currentRecord.counterManager.getCounter(stackInfo.si0.counterID);
+                    Teach.currentRecord.counterManager.updateCounter(c.id, c.name, c.current, c.target);
                     panelRobotController.saveCounterDef(c.id, c.name, c.current, c.target);
                     counterUpdated(c.id);
                 }
@@ -809,8 +809,8 @@ Rectangle {
             var sI;
             var len;
             var toSendStackData = new ESData.RawExternalDataFormat(-1, []);
-            for(i = 0; i < Teach.stackInfos.length; ++i){
-                sI = Teach.stackInfos[i];
+            for(i = 0; i < Teach.currentRecord.stackManager.stackInfos.length; ++i){
+                sI = Teach.currentRecord.stackManager.stackInfos[i];
                 if(sI.dsHostID >= 0 && sI.posData.length > 0){
                     ESData.externalDataManager.registerDataSource(sI.dsName,
                                                                   ESData.CustomDataSource.createNew(sI.dsName, sI.dsHostID));
@@ -826,7 +826,7 @@ Rectangle {
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
 
-            var v;
+            var v,isNormal=true,ret=[];
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){
                 v = iosettings[i];
@@ -846,10 +846,19 @@ uint16_t io_all;
 */
                     var value = 0;
                     value=v.outstatus_init?1:0;
-                    value|=v.outid_init<<1;
+                    if(v.outType_init==0){
+                        ret = Mdata.getOutIDFromConfig(v.outid_init);
+                        value|=ret[1]<<1;
+                        isNormal = ret[0];
+                    }
+                    else{
+                        value|=v.outid_init<<1;
+                    }
+//                    value|=v.outid_init<<1;
                     value|=v.outType_init<<8;
                     value|=v.sendMode<<9;
-                    console.log(value);
+                    value|=isNormal<<14;
+                    console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(13,value);
                 }
             }
@@ -862,10 +871,70 @@ uint16_t io_all;
                     value|=v.checkId<<1;
                     value|=v.checkType<<8;
                     value|=v.outStatus<<10;
-                    value|=v.outId<<11;
+                    if(v.outType==0){
+                        ret = Mdata.getOutIDFromConfig(v.outId);
+                        value|=ret[1]<<11;
+                        isNormal = ret[0];
+                    }else{
+                        value|=v.outId<<11;
+                    }
                     value|=v.outType<<18;
-                    console.log(value);
+                    value|=isNormal<<19;
+                    console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(32,value);
+                }
+            }
+
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckAlarmSet", "[]", "IOCheckAlarmSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    console.log("alarm_send:");
+                    value =v.alarmNum;
+                    value|=v.checkType<<16;
+                    console.log(v.checkType);
+                    value|=(v.isKeepStatus?1:0)<<19;
+                    value|=(v.outType_init?1:0)<<21;
+                    if(v.outType_init==0){
+                        ret = Mdata.getOutIDFromConfig(v.outid_init);
+                        isNormal = ret[0];
+                        value|=isNormal<<22;
+                        value|=ret[1]<<23;
+                    }
+                    else{
+                        value|=isNormal<<22;
+                        value|=v.outid_init<<23;
+                    }
+                    value|=v.outStatus<<30;
+//                    console.log(isNormal,ret[1],value);
+                    panelRobotController.modifyConfigValue(37,value);
+                }
+            }
+
+            var logic = [];
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet", "[]", "IOBarnLogicSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    logic[0] = v.upLimit;
+                    logic[0]|= v.downLimit<<7;
+                    ret = Mdata.getOutIDFromConfig(v.motorUp);
+                    isNormal = ret[0];
+                    logic[0]|= ret[1]<<14;
+                    ret = Mdata.getOutIDFromConfig(v.motorDown);
+                    logic[0]|= ret[1]<<21;
+                    logic[0]|= isNormal<<28;
+                    logic[0]|= ret[0]<<29;
+                    logic[0]|= v.bType<<30;
+
+                    logic[1] = v.sensor;
+                    logic[1] |= v.sensorDir<<7;
+                    logic[1] |= v.isWait<<8;
+                    logic[1] |= v.waitSignal<<9;
+                    logic[1] |= v.waitDir<<16;
+                    logic[1] |= (i+1)<< 17;
+//                                console.log(JSON.stringify(logic));
+                    panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                 }
             }
 
@@ -1023,17 +1092,20 @@ uint16_t io_all;
                     {
                     default:
                     case 0:
-                        board=IODefines.IO_BOARD_0+id/32;
+                        board=IODefines.IO_BOARD_0+parseInt(id/32);
+                        id = id%32;
                         s=panelRobotController.isInputOn(id,board);
 //                        console.log("bangding input:"+id+"status:"+s);
                         break;
                     case 1:
-                        board=IODefines.IO_BOARD_0+id/32;
+                        board=IODefines.IO_BOARD_0+parseInt(id/32);
+                        id = id%32;
                         s=panelRobotController.isOutputOn(id,board);
 //                        console.log("bangding output"+id+"status:"+s);
                         break;
                     case 2:
-                        board=IODefines.M_BOARD_0+id/32;
+                        board=IODefines.M_BOARD_0+parseInt(id/32);
+                        id = id%32;
                         s=panelRobotController.isOutputOn(id,board);
 //                        console.log("bangding M value"+id+"status:"+s);
                         break;
@@ -1156,19 +1228,19 @@ uint16_t io_all;
         }
     }
 
-        function getExternalFuncBtn(){
-            var originBtnStatus = panelRobotController.isInputOn(022,IODefines.IO_BOARD_0);//x032
-            var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
-            var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
-            var automodeBtnStatus = panelRobotController.isInputOn(023,IODefines.IO_BOARD_0);//x033
+    function getExternalFuncBtn(){
+        var originBtnStatus = panelRobotController.isInputOn(022,IODefines.IO_BOARD_0);//x032
+        var startupBtnStatus = panelRobotController.isInputOn(036,IODefines.IO_BOARD_0);//x046
+        var stopBtnStatus = panelRobotController.isInputOn(037,IODefines.IO_BOARD_0);//x047
+        var automodeBtnStatus = panelRobotController.isInputOn(023,IODefines.IO_BOARD_0);//x033
 
-            var  originBtnEn = parseInt(panelRobotController.getCustomSettings("X32UseForOrigin", 0));
-            var automodeBtnEn = parseInt(panelRobotController.getCustomSettings("X33UseForAuto", 0));
-            var startupBtnEn = parseInt(panelRobotController.getCustomSettings("X46UseForStartup", 0));
-            var stopBtnEn = parseInt(panelRobotController.getCustomSettings("X47UseForStop", 0));
+        var  originBtnEn = parseInt(panelRobotController.getCustomSettings("X32UseForOrigin", 0));
+        var automodeBtnEn = parseInt(panelRobotController.getCustomSettings("X33UseForAuto", 0));
+        var startupBtnEn = parseInt(panelRobotController.getCustomSettings("X46UseForStartup", 0));
+        var stopBtnEn = parseInt(panelRobotController.getCustomSettings("X47UseForStop", 0));
 
-            if(originBtnStatus){
-                if(originBtnStatus != refreshTimer.originBtnOld){
+        if(originBtnStatus){
+            if(originBtnStatus != refreshTimer.originBtnOld){
                     refreshTimer.originBtnDelay++;
                     if(refreshTimer.originBtnDelay >=5){
                         refreshTimer.originBtnDelay =0;
@@ -1179,10 +1251,10 @@ uint16_t io_all;
                         }
                     }
                 }else refreshTimer.originBtnDelay =0;
-            }else refreshTimer.originBtnOld = 0;
+        }else refreshTimer.originBtnOld = 0;
 
-            if(startupBtnStatus){
-                if(startupBtnStatus != refreshTimer.startupBtnOld){
+        if(startupBtnStatus){
+            if(startupBtnStatus != refreshTimer.startupBtnOld){
                     refreshTimer.startupBtnDelay++;
                     if(refreshTimer.startupBtnDelay >=5){
                         refreshTimer.startupBtnDelay =0;
@@ -1196,8 +1268,8 @@ uint16_t io_all;
                 }else refreshTimer.startupBtnDelay =0;
             }else refreshTimer.startupBtnOld = 0;
 
-            if(stopBtnStatus){
-                if(stopBtnStatus != refreshTimer.stopBtnOld){
+        if(stopBtnStatus){
+            if(stopBtnStatus != refreshTimer.stopBtnOld){
                     refreshTimer.stopBtnDelay++;
                     if(refreshTimer.stopBtnDelay >=5){
                         refreshTimer.stopBtnDelay =0;
@@ -1212,10 +1284,10 @@ uint16_t io_all;
                         }
                     }
                 }else refreshTimer.stopBtnDelay =0;
-            }else refreshTimer.stopBtnOld = 0;
+        }else refreshTimer.stopBtnOld = 0;
 
-            if(automodeBtnStatus){
-                if(automodeBtnStatus != refreshTimer.automodeBtnOld){
+        if(automodeBtnStatus){
+            if(automodeBtnStatus != refreshTimer.automodeBtnOld){
                     refreshTimer.automodeBtnDelay++;
                     if(refreshTimer.automodeBtnDelay >=5){
                         refreshTimer.automodeBtnDelay =0;
@@ -1230,17 +1302,17 @@ uint16_t io_all;
 
         function switchMoldByIOStatus(){
             var moldbyIOData = Mdata.moldbyIOData;
-            var btnStatus;
-            var btnStatusOldTmp = refreshTimer.btnStatusOld;
+        var btnStatus;
+        var btnStatusOldTmp = refreshTimer.btnStatusOld;
             var delayCntTmp = refreshTimer.delayCnt;
             var record;
-            var curMode;
+        var curMode;
             for(var i=0;i<moldbyIOData.length;++i){
-                btnStatus = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
+            btnStatus = panelRobotController.isInputOn(moldbyIOData[i].ioID,IODefines.IO_BOARD_0 + parseInt(moldbyIOData[i].ioID) /32);
                 record = moldbyIOData[i].mold;
-                curMode = panelRobotController.currentMode();
-                if(btnStatus){
-                    if(btnStatus != btnStatusOldTmp[i]){
+            curMode = panelRobotController.currentMode();
+            if(btnStatus){
+                if(btnStatus != btnStatusOldTmp[i]){
                         if(delayCntTmp[i] == undefined){
                             delayCntTmp[i] = 0;
                         }
@@ -1270,8 +1342,8 @@ uint16_t io_all;
                     btnStatusOldTmp[i] = 0;
                 }
             }
-            refreshTimer.btnStatusOld = btnStatusOldTmp;
-    //        console.log(refreshTimer.btnStatusOld);
+        refreshTimer.btnStatusOld = btnStatusOldTmp;
+//        console.log(refreshTimer.btnStatusOld);
         }
 
     Timer{

@@ -9,7 +9,7 @@ DEFINES += NEW_PLAT
 
 SK_SIZE = 8
 
-QMAKE_CXX = ccache $${QMAKE_CXX}
+unix:QMAKE_CXX = ccache $${QMAKE_CXX}
 
 #DEFINES += COMM_DEBUG
 suffix = $${VERSION}
@@ -60,6 +60,7 @@ include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 include(vendor/IndustrialSystemFramework/ICCore/ICCore.pri)
 include(vendor/IndustrialSystemFramework/ICUtility/ICUtility.pri)
 include(vendor/IndustrialSystemFramework/QJson/QJson.pri)
+include(vendor/quazip/quazip.pri)
 #include(vendor/qwt/qwt.pri)
 
 include(virtualhost/virtualhost.pri)
@@ -85,7 +86,7 @@ QMAKE_EXTRA_TARGETS += buildDB
 configAddrTarget.commands = python tools/addrgen.py defines/configs.csv common
 }
 QMAKE_EXTRA_TARGETS += configAddrTarget
-PRE_TARGETDEPS += .genAddr
+unix:PRE_TARGETDEPS += .genAddr
 
 reinstallDir = tools/Reinstall/
 updateDir = tools/Update
@@ -143,3 +144,4 @@ TRANSLATIONS += PanelRobot_zh_CN.ts PanelRobot_en_US.ts
 
 RESOURCES += \
     resource.qrc
+LIBS += -lz

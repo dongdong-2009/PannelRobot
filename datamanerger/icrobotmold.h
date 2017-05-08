@@ -99,6 +99,20 @@ public:
         else
             realStepToUIStepMap_.insert(realStep, QList<int>()<<uiStep);
     }
+
+    void RemapStep(int uiStep, int realStep)
+    {
+        stepMap_.insert(uiStep, realStep);
+        if(realStepToUIStepMap_.contains(realStep))
+        {
+            QList<int> v;
+            v.append(uiStep);
+            realStepToUIStepMap_.insert(realStep, v);
+        }
+        else
+            realStepToUIStepMap_.insert(realStep, QList<int>()<<uiStep);
+    }
+
     void MapModuleIDToEntry(int id, int step)
     {
         modulesMap_.insert(id, step);
@@ -165,6 +179,7 @@ public:
     }
     QList<int> RealStepToUIStep(int step) const
     {
+//        qDebug()<<realStepToUIStepMap_<<step;
         return realStepToUIStepMap_.value(step);
     }
 
@@ -175,7 +190,7 @@ public:
             return ret;
         ret.first = stepMap_.value(step);
         QList<int> row = RealStepToUIStep(ret.first);
-        for(int i = 0; row.size(); ++i)
+        for(int i = 0; i < row.size(); ++i)
         {
             if(row.at(i) == step)
             {
@@ -381,6 +396,7 @@ public:
 
 
     bool LoadMold(const QString& moldName, bool reload = false);
+    bool CompileMold();
     QMap<int, int> SaveMold(int which, const QString& program);
 
     quint32 MoldFnc(ICAddrWrapperCPTR addr) const

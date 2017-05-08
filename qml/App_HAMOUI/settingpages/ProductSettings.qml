@@ -616,6 +616,14 @@ Item {
                                 barnModel.setProperty(index,"bType",configValue);
                             }
                         }
+                        ICCheckBox{
+                            id:isAutoBarnEdit
+                            configName: qsTr("is auto barn")
+                            isChecked:isAutoBarn
+                            onIsCheckedChanged: {
+                                barnModel.setProperty(index,"isAutoBarn",isChecked);
+                            }
+                        }
                         ICButton{
                             height: sensorEdit.height
                             text: qsTr("Delete")
@@ -746,7 +754,7 @@ Item {
                     }
                     else if(typeSel.checkedItem == barnLogic){
                         if(barnModel.count >=15) return;
-                        barnModel.append({"bType":0,"check":false,"upLimit":0,"downLimit":0,"motorUp":0,"motorDown":0,"sensor":0,"sensorDir":0,"isWait":0,"waitSignal":0,"waitDir":0});
+                        barnModel.append({"bType":0,"check":false,"upLimit":0,"downLimit":0,"motorUp":0,"motorDown":0,"sensor":0,"sensorDir":0,"isWait":0,"waitSignal":0,"waitDir":0,"isAutoBarn":0});
                     }
                 }
             }

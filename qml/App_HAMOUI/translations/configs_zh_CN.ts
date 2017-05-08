@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AlarmConfigs</name>
     <message>
@@ -602,131 +602,131 @@
     </message>
     <message>
         <source>X050</source>
-        <translation>X050</translation>
+        <translation type="vanished">X050</translation>
     </message>
     <message>
         <source>X051</source>
-        <translation>X051</translation>
+        <translation type="vanished">X051</translation>
     </message>
     <message>
         <source>X052</source>
-        <translation>X052</translation>
+        <translation type="vanished">X052</translation>
     </message>
     <message>
         <source>X053</source>
-        <translation>X053</translation>
+        <translation type="vanished">X053</translation>
     </message>
     <message>
         <source>X054</source>
-        <translation>X054</translation>
+        <translation type="vanished">X054</translation>
     </message>
     <message>
         <source>X055</source>
-        <translation>X055</translation>
+        <translation type="vanished">X055</translation>
     </message>
     <message>
         <source>X056</source>
-        <translation>X056</translation>
+        <translation type="vanished">X056</translation>
     </message>
     <message>
         <source>X057</source>
-        <translation>X057</translation>
+        <translation type="vanished">X057</translation>
     </message>
     <message>
         <source>X060</source>
-        <translation>X060</translation>
+        <translation type="vanished">X060</translation>
     </message>
     <message>
         <source>X061</source>
-        <translation>X061</translation>
+        <translation type="vanished">X061</translation>
     </message>
     <message>
         <source>X062</source>
-        <translation>X062</translation>
+        <translation type="vanished">X062</translation>
     </message>
     <message>
         <source>X063</source>
-        <translation>X063</translation>
+        <translation type="vanished">X063</translation>
     </message>
     <message>
         <source>X064</source>
-        <translation>X064</translation>
+        <translation type="vanished">X064</translation>
     </message>
     <message>
         <source>X065</source>
-        <translation>X065</translation>
+        <translation type="vanished">X065</translation>
     </message>
     <message>
         <source>X066</source>
-        <translation>X066</translation>
+        <translation type="vanished">X066</translation>
     </message>
     <message>
         <source>X067</source>
-        <translation>X067</translation>
+        <translation type="vanished">X067</translation>
     </message>
     <message>
         <source>X070</source>
-        <translation>X070</translation>
+        <translation type="vanished">X070</translation>
     </message>
     <message>
         <source>X071</source>
-        <translation>X071</translation>
+        <translation type="vanished">X071</translation>
     </message>
     <message>
         <source>X072</source>
-        <translation>X072</translation>
+        <translation type="vanished">X072</translation>
     </message>
     <message>
         <source>X073</source>
-        <translation>X073</translation>
+        <translation type="vanished">X073</translation>
     </message>
     <message>
         <source>X074</source>
-        <translation>X074</translation>
+        <translation type="vanished">X074</translation>
     </message>
     <message>
         <source>X075</source>
-        <translation>X075</translation>
+        <translation type="vanished">X075</translation>
     </message>
     <message>
         <source>X076</source>
-        <translation>X076</translation>
+        <translation type="vanished">X076</translation>
     </message>
     <message>
         <source>X077</source>
-        <translation>X077</translation>
+        <translation type="vanished">X077</translation>
     </message>
     <message>
         <source>X100</source>
-        <translation>X100</translation>
+        <translation type="vanished">X100</translation>
     </message>
     <message>
         <source>X101</source>
-        <translation>X101</translation>
+        <translation type="vanished">X101</translation>
     </message>
     <message>
         <source>X102</source>
-        <translation>X102</translation>
+        <translation type="vanished">X102</translation>
     </message>
     <message>
         <source>X103</source>
-        <translation>X103</translation>
+        <translation type="vanished">X103</translation>
     </message>
     <message>
         <source>X104</source>
-        <translation>X104</translation>
+        <translation type="vanished">X104</translation>
     </message>
     <message>
         <source>X105</source>
-        <translation>X105</translation>
+        <translation type="vanished">X105</translation>
     </message>
     <message>
         <source>X106</source>
-        <translation>X106</translation>
+        <translation type="vanished">X106</translation>
     </message>
     <message>
         <source>X107</source>
-        <translation>X107</translation>
+        <translation type="vanished">X107</translation>
     </message>
     <message>
         <source>X110</source>
@@ -858,131 +858,131 @@
     </message>
     <message>
         <source>X150</source>
-        <translation>X150</translation>
+        <translation type="vanished">X150</translation>
     </message>
     <message>
         <source>X151</source>
-        <translation>X151</translation>
+        <translation type="vanished">X151</translation>
     </message>
     <message>
         <source>X152</source>
-        <translation>X152</translation>
+        <translation type="vanished">X152</translation>
     </message>
     <message>
         <source>X153</source>
-        <translation>X153</translation>
+        <translation type="vanished">X153</translation>
     </message>
     <message>
         <source>X154</source>
-        <translation>X154</translation>
+        <translation type="vanished">X154</translation>
     </message>
     <message>
         <source>X155</source>
-        <translation>X155</translation>
+        <translation type="vanished">X155</translation>
     </message>
     <message>
         <source>X156</source>
-        <translation>X156</translation>
+        <translation type="vanished">X156</translation>
     </message>
     <message>
         <source>X157</source>
-        <translation>X157</translation>
+        <translation type="vanished">X157</translation>
     </message>
     <message>
         <source>X160</source>
-        <translation>X160</translation>
+        <translation type="vanished">X160</translation>
     </message>
     <message>
         <source>X161</source>
-        <translation>X161</translation>
+        <translation type="vanished">X161</translation>
     </message>
     <message>
         <source>X162</source>
-        <translation>X162</translation>
+        <translation type="vanished">X162</translation>
     </message>
     <message>
         <source>X163</source>
-        <translation>X163</translation>
+        <translation type="vanished">X163</translation>
     </message>
     <message>
         <source>X164</source>
-        <translation>X164</translation>
+        <translation type="vanished">X164</translation>
     </message>
     <message>
         <source>X165</source>
-        <translation>X165</translation>
+        <translation type="vanished">X165</translation>
     </message>
     <message>
         <source>X166</source>
-        <translation>X166</translation>
+        <translation type="vanished">X166</translation>
     </message>
     <message>
         <source>X167</source>
-        <translation>X167</translation>
+        <translation type="vanished">X167</translation>
     </message>
     <message>
         <source>X170</source>
-        <translation>X170</translation>
+        <translation type="vanished">X170</translation>
     </message>
     <message>
         <source>X171</source>
-        <translation>X171</translation>
+        <translation type="vanished">X171</translation>
     </message>
     <message>
         <source>X172</source>
-        <translation>X172</translation>
+        <translation type="vanished">X172</translation>
     </message>
     <message>
         <source>X173</source>
-        <translation>X173</translation>
+        <translation type="vanished">X173</translation>
     </message>
     <message>
         <source>X174</source>
-        <translation>X174</translation>
+        <translation type="vanished">X174</translation>
     </message>
     <message>
         <source>X175</source>
-        <translation>X175</translation>
+        <translation type="vanished">X175</translation>
     </message>
     <message>
         <source>X176</source>
-        <translation>X176</translation>
+        <translation type="vanished">X176</translation>
     </message>
     <message>
         <source>X177</source>
-        <translation>X177</translation>
+        <translation type="vanished">X177</translation>
     </message>
     <message>
         <source>X200</source>
-        <translation>X200</translation>
+        <translation type="vanished">X200</translation>
     </message>
     <message>
         <source>X201</source>
-        <translation>X201</translation>
+        <translation type="vanished">X201</translation>
     </message>
     <message>
         <source>X202</source>
-        <translation>X202</translation>
+        <translation type="vanished">X202</translation>
     </message>
     <message>
         <source>X203</source>
-        <translation>X203</translation>
+        <translation type="vanished">X203</translation>
     </message>
     <message>
         <source>X204</source>
-        <translation>X204</translation>
+        <translation type="vanished">X204</translation>
     </message>
     <message>
         <source>X205</source>
-        <translation>X205</translation>
+        <translation type="vanished">X205</translation>
     </message>
     <message>
         <source>X206</source>
-        <translation>X206</translation>
+        <translation type="vanished">X206</translation>
     </message>
     <message>
         <source>X207</source>
-        <translation>X207</translation>
+        <translation type="vanished">X207</translation>
     </message>
     <message>
         <source>M027</source>

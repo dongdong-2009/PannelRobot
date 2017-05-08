@@ -38,12 +38,15 @@ public:
     void StartCommunicate();
     void StopCommunicate();
 
+    bool IsConnected() const;
+
     int Read(uint8_t *dest, size_t size);
     int Write(const uint8_t *buffer, size_t size);
 
     void RegisterMonitor(TCPCommunicateMonitor* monitor)
     {
 //        connect(this, SIGNAL(dataComeIn(QByteArray)), monitor, SIGNAL(dataComeIn(QByteArray)));
+        if(monitors_.contains(monitor)) return;
         monitors_.append(monitor);
     }
 
@@ -90,6 +93,8 @@ public:
     void RegisterCommMonitor(TCPCommunicateMonitor* monitor) { connHelper_->RegisterMonitor(monitor);}
 
     int WriteRawData(const QByteArray& data) { return WriteImpl((uint8_t*)(data.data()), data.size());}
+
+    bool IsConnected() const { return connHelper_->IsConnected();}
 
 protected:
 

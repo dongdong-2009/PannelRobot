@@ -76,6 +76,10 @@ Item {
                 text: qsTr("parabolaMove")
                 visible: false
             }
+            ICCheckBox{
+                id:barnCtrl
+                text: qsTr("barnCtrl")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -120,6 +124,9 @@ Item {
             }
             if(parabolaMove.visible){
                 addPage(ExtentActionDefine.extentParabolaAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(barnCtrl.visible){
+                addPage(ExtentActionDefine.extentBarnLogicAction.editableItems.comp.createObject(configsContainer));
             }
             currentIndex = 0;
         }

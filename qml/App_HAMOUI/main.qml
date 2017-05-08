@@ -899,10 +899,6 @@ uint16_t io_all;
                         isNormal = ret[0];
                         value|=isNormal<<22;
                         value|=ret[1]<<23;
-//                        console.log("isNormal:");
-//                        console.log(isNormal);
-//                        console.log("ID:");
-//                        console.log(ret[1]);
                     }
                     else{
                         value|=isNormal<<22;
@@ -911,6 +907,33 @@ uint16_t io_all;
                     value|=v.outStatus<<30;
 //                    console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(37,value);
+                }
+            }
+
+            var logic = [];
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet", "[]", "IOBarnLogicSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    logic[0] = v.upLimit;
+                    logic[0]|= v.downLimit<<7;
+                    ret = Mdata.getOutIDFromConfig(v.motorUp);
+                    isNormal = ret[0];
+                    logic[0]|= ret[1]<<14;
+                    ret = Mdata.getOutIDFromConfig(v.motorDown);
+                    logic[0]|= ret[1]<<21;
+                    logic[0]|= isNormal<<28;
+                    logic[0]|= ret[0]<<29;
+                    logic[0]|= v.bType<<30;
+
+                    logic[1] = v.sensor;
+                    logic[1] |= v.sensorDir<<7;
+                    logic[1] |= v.isWait<<8;
+                    logic[1] |= v.waitSignal<<9;
+                    logic[1] |= v.waitDir<<16;
+                    logic[1] |= (i+1)<< 17;
+//                                console.log(JSON.stringify(logic));
+                    panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                 }
             }
 

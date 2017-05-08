@@ -1733,6 +1733,25 @@
     </message>
 </context>
 <context>
+    <name>BarnLogicEditor</name>
+    <message>
+        <source>barnID</source>
+        <translation>料仓号</translation>
+    </message>
+    <message>
+        <source>Barn status</source>
+        <translation>料仓状态</translation>
+    </message>
+    <message>
+        <source>stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>start</source>
+        <translation>启动</translation>
+    </message>
+</context>
+<context>
     <name>BottomMenuItem</name>
     <message>
         <source>item</source>
@@ -2723,6 +2742,26 @@
         <source>delay:</source>
         <translation>延时:</translation>
     </message>
+    <message>
+        <source>Barn</source>
+        <translation>料仓</translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation>控制</translation>
+    </message>
+    <message>
+        <source>barnID</source>
+        <translation>料仓号</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2757,6 +2796,10 @@
     <message>
         <source>parabolaMove</source>
         <translation>正弦运动</translation>
+    </message>
+    <message>
+        <source>barnCtrl</source>
+        <translation>料仓控制</translation>
     </message>
 </context>
 <context>
@@ -3116,6 +3159,14 @@
     <message>
         <source>text</source>
         <translation>接收的内容</translation>
+    </message>
+    <message>
+        <source>auto connect</source>
+        <translation>自动重连</translation>
+    </message>
+    <message>
+        <source>time</source>
+        <translation>间隔时间</translation>
     </message>
 </context>
 <context>
@@ -4107,6 +4158,66 @@ please chose!</source>
     <message>
         <source>Output</source>
         <translation>输出</translation>
+    </message>
+    <message>
+        <source>Barn</source>
+        <translation type="unfinished">料仓</translation>
+    </message>
+    <message>
+        <source>Up</source>
+        <translation>上极限</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下极限</translation>
+    </message>
+    <message>
+        <source>motorUp</source>
+        <translation>电机上升</translation>
+    </message>
+    <message>
+        <source>motorDown</source>
+        <translation>电机下降</translation>
+    </message>
+    <message>
+        <source>sensor</source>
+        <translation>物料感应</translation>
+    </message>
+    <message>
+        <source>sensor Dir</source>
+        <translation>反向感应</translation>
+    </message>
+    <message>
+        <source>is wait</source>
+        <translation>等待</translation>
+    </message>
+    <message>
+        <source>wait signal</source>
+        <translation>等待信号</translation>
+    </message>
+    <message>
+        <source>wait Dir</source>
+        <translation>等待反向</translation>
+    </message>
+    <message>
+        <source>Logic</source>
+        <translation>逻辑</translation>
+    </message>
+    <message>
+        <source>Define</source>
+        <translation>定义</translation>
+    </message>
+    <message>
+        <source>Barn Type</source>
+        <translation>料仓类型</translation>
+    </message>
+    <message>
+        <source>UpBarn</source>
+        <translation>上行料仓</translation>
+    </message>
+    <message>
+        <source>DownBarn</source>
+        <translation>下行料仓</translation>
     </message>
 </context>
 <context>

@@ -154,6 +154,16 @@ int ICRegister::LeftUseTime() const
 
 void ICRegister::SetUseTime(int hour)
 {
+    if(hour == 0){
+        if(checkTimer_.isActive())
+        {
+            checkTimer_.stop();
+        }
+    }
+    else if(!checkTimer_.isActive())
+    {
+        checkTimer_.start();
+    }
     settings_.beginGroup(SETTINGS_GROUP);
     settings_.setValue(SETTINGS_LEFT_USE_TIME, hour);
     settings_.endGroup();

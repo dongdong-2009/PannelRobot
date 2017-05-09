@@ -1750,6 +1750,18 @@
         <source>start</source>
         <translation>启动</translation>
     </message>
+    <message>
+        <source>Up</source>
+        <translation>上升</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下降</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
+    </message>
 </context>
 <context>
     <name>BottomMenuItem</name>
@@ -2761,6 +2773,18 @@
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>Up</source>
+        <translation>上升</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下降</translation>
+    </message>
+    <message>
+        <source>delay</source>
+        <translation>延时</translation>
     </message>
 </context>
 <context>
@@ -4171,6 +4195,26 @@ please chose!</source>
     <message>
         <source>DownBarn</source>
         <translation>下行料仓</translation>
+    </message>
+    <message>
+        <source>is auto barn</source>
+        <translation>自动料仓逻辑</translation>
+    </message>
+    <message>
+        <source>Please input the new barn name</source>
+        <translation>请输入料仓名称</translation>
+    </message>
+    <message>
+        <source>Barn Name</source>
+        <translation>料仓名称</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
 </context>
 <context>

@@ -932,6 +932,7 @@ uint16_t io_all;
                     logic[1] |= v.waitSignal<<9;
                     logic[1] |= v.waitDir<<16;
                     logic[1] |= (i+1)<< 17;
+                    logic[1] |= v.isAutoBarn << 21;
 //                                console.log(JSON.stringify(logic));
                     panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                 }

@@ -406,12 +406,18 @@ var extentParabolaAction = {
 var extentBarnLogicAction = {
         "action":203,
         "properties":[new ActionDefineItem("barnID", 0),
-    new ActionDefineItem("start", 0)],
+    new ActionDefineItem("start", 0),
+    new ActionDefineItem("delay",1)],
         "canTestRun":true,
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("BarnLogicEditor.qml"), "itemDef":{"item":"BarnLogicEditor"}},
         "toStringHandler":function(actionObject){
-            return qsTr("Barn")+qsTr("Ctrl") + ":" + qsTr("Barn")+actionObject.barnID + (actionObject.start ==1?qsTr("Start"):qsTr("Stop"))
+            var tmpStr = "";
+            if(actionObject.start ==0)tmpStr = qsTr("Stop");
+            else if(actionObject.start ==1)tmpStr = qsTr("Start");
+            else if(actionObject.start ==2)tmpStr = qsTr("Up");
+            else if(actionObject.start ==3)tmpStr = qsTr("Down");
+            return qsTr("Barn")+qsTr("Ctrl") + ":" + qsTr("Barn")+actionObject.barnID + tmpStr+" "+qsTr("delay")+":"+actionObject.delay;
         }
     };
 

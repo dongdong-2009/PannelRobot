@@ -406,12 +406,43 @@ var extentParabolaAction = {
 var extentBarnLogicAction = {
         "action":203,
         "properties":[new ActionDefineItem("barnID", 0),
-    new ActionDefineItem("start", 0)],
+    new ActionDefineItem("start", 0),
+    new ActionDefineItem("delay",1)],
         "canTestRun":true,
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("BarnLogicEditor.qml"), "itemDef":{"item":"BarnLogicEditor"}},
+        "generate":function(properties){
+            var ret = {"action":203};
+            ret.barnID = properties.barnID;
+            ret.start = properties.start;
+            ret.delay = properties.delay;
+            ret.barnName = properties.barnName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":203};
+            ret.barnID = editor.barnID;
+            ret.start = editor.start;
+            ret.delay = editor.delay;
+            ret.barnName = editor.barnName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 203;
+            actionObject.barnID = editor.barnID;
+            actionObject.start = editor.start;
+            actionObject.delay = editor.delay;
+            actionObject.barnName = editor.barnName;
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
         "toStringHandler":function(actionObject){
-            return qsTr("Barn")+qsTr("Ctrl") + ":" + qsTr("Barn")+actionObject.barnID + (actionObject.start ==1?qsTr("Start"):qsTr("Stop"))
+            var tmpStr = "";
+            if(actionObject.start ==0)tmpStr = qsTr("Stop");
+            else if(actionObject.start ==1)tmpStr = qsTr("Start");
+            else if(actionObject.start ==2)tmpStr = qsTr("Up");
+            else if(actionObject.start ==3)tmpStr = qsTr("Down");
+            return qsTr("Barn")+qsTr("Ctrl") + ":" + actionObject.barnName + tmpStr+" "+qsTr("delay")+":"+actionObject.delay;
         }
     };
 

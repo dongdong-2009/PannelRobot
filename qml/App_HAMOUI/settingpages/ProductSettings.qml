@@ -218,6 +218,13 @@ Item {
         id:ioRunningSettingPage
         width:  parent.width
         height: parent.height
+        ICMessageBox{
+            id:tip
+            visible: false
+            x:200
+            y:100
+            z:10
+        }
         ICButtonGroup{
             id:typeSel
             checkedItem: modeStatus
@@ -602,7 +609,7 @@ Item {
                         y:2
                         ICCheckBox {
                             id:barnEn
-                            text: qsTr("Barn")+(index+1)+": "
+                            text: barnName+": "
                             anchors.verticalCenter: parent.verticalCenter
                             isChecked: check
                             onIsCheckedChanged: {
@@ -615,6 +622,14 @@ Item {
                             configValue: bType
                             onConfigValueChanged: {
                                 barnModel.setProperty(index,"bType",configValue);
+                            }
+                        }
+                        ICCheckBox{
+                            id:isAutoBarnEdit
+                            configName: qsTr("is auto barn")
+                            isChecked:isAutoBarn
+                            onIsCheckedChanged: {
+                                barnModel.setProperty(index,"isAutoBarn",isChecked);
                             }
                         }
                         ICButton{
@@ -691,6 +706,7 @@ Item {
                         }
                         ICCheckBox{
                             text: qsTr("is wait")
+                            enabled: isAutoBarnEdit.isChecked
                             anchors.verticalCenter: parent.verticalCenter
                             isChecked: isWait
                             onIsCheckedChanged: {
@@ -698,6 +714,7 @@ Item {
                             }
                         }
                         ICComboBoxConfigEdit{
+                            enabled: isAutoBarnEdit.isChecked
                             configName: qsTr("wait signal")
                             items:MData.xDefinesList
                             configValue: waitSignal
@@ -706,6 +723,7 @@ Item {
                             }
                         }
                         ICCheckBox{
+                            enabled: isAutoBarnEdit.isChecked
                             text: qsTr("wait Dir")
                             anchors.verticalCenter: parent.verticalCenter
                             isChecked: waitDir
@@ -735,6 +753,37 @@ Item {
             ICButton{
                 id:newBtn
                 text: qsTr("new")
+                function sortNumber(a,b)
+                {
+                    return a-b;
+                }
+                function onNewBarn(status)
+                {
+                    tip.finished.disconnect(onNewBarn);
+                    if(status){
+                        var toGetName = tip.inputText;
+                        var barnIDs = [];
+                        var toGetID = 0,isGetID = false;
+                        for(var i=0,len=barnModel.count;i<len;++i){
+                            barnIDs.push(barnModel.get(i).barnID);
+                        }
+                        barnIDs.sort(sortNumber);
+                        for(i=0,len=barnIDs.length;i<len;++i){
+                            if(i != barnIDs[i]){
+                                toGetID = i;
+                                isGetID = true;
+                                break;
+                            }
+                        }
+                        if(!isGetID){
+                            toGetID = barnIDs.length;
+                        }
+                        if(toGetName == ""){
+                            toGetName = qsTr("Barn")+toGetID;
+                        }
+                        barnModel.append({"barnID":toGetID,"barnName":toGetName,"bType":0,"check":false,"upLimit":0,"downLimit":0,"motorUp":0,"motorDown":0,"sensor":0,"sensorDir":0,"isWait":0,"waitSignal":0,"waitDir":0,"isAutoBarn":0});
+                    }
+                }
                 onButtonClicked: {
                     if(typeSel.checkedItem == modeStatus){
                         valveModel.append({"check":true,"mode":6,"sendMode":3,"outType_init":0,"outid_init":0,"outstatus_init":0});
@@ -747,7 +796,9 @@ Item {
                     }
                     else if(typeSel.checkedItem == barnLogic){
                         if(barnModel.count >=15) return;
-                        barnModel.append({"bType":0,"check":false,"upLimit":0,"downLimit":0,"motorUp":0,"motorDown":0,"sensor":0,"sensorDir":0,"isWait":0,"waitSignal":0,"waitDir":0});
+                        tip.showInput(qsTr("Please input the new barn name"),
+                                      qsTr("Barn Name"), false, qsTr("OK"), qsTr("Cancel"))
+                        tip.finished.connect(onNewBarn);
                     }
                 }
             }
@@ -785,7 +836,7 @@ Item {
                             }
                         }
                         panelRobotController.setCustomSettings("IOSettings", JSON.stringify(toSave), "IOSettings");
-                        console.log(JSON.stringify(toSave));
+//                        console.log(JSON.stringify(toSave));
                     }
                     else if(typeSel.checkedItem == ioStatus){
                         panelRobotController.modifyConfigValue(33,0);
@@ -873,11 +924,13 @@ Item {
                                 logic[1] |= v.isWait<<8;
                                 logic[1] |= v.waitSignal<<9;
                                 logic[1] |= v.waitDir<<16;
-                                logic[1] |= (i+1)<< 17;
+                                logic[1] |= v.barnID<< 17;
+                                logic[1] |= v.isAutoBarn << 21;
 //                                console.log(JSON.stringify(logic));
                                 panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                             }
                         }
+                        MData.barnLogicList = toSave;
                         panelRobotController.setCustomSettings("IOBarnLogicSet", JSON.stringify(toSave), "IOBarnLogicSet");
 //                        console.log(JSON.stringify(toSave));
                     }
@@ -1201,6 +1254,7 @@ Item {
             alarmModel.append(iosettings[i]);
         }
         iosettings = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet", "[]", "IOBarnLogicSet"));
+        MData.barnLogicList = iosettings;
         for(i = 0, len = iosettings.length; i < len; ++i){
             barnModel.append(iosettings[i]);
         }

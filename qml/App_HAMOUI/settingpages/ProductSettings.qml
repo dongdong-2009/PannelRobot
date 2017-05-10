@@ -923,12 +923,13 @@ Item {
                                 logic[1] |= v.isWait<<8;
                                 logic[1] |= v.waitSignal<<9;
                                 logic[1] |= v.waitDir<<16;
-                                logic[1] |= (i+1)<< 17;
+                                logic[1] |= v.barnID<< 17;
                                 logic[1] |= v.isAutoBarn << 21;
 //                                console.log(JSON.stringify(logic));
                                 panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                             }
                         }
+                        MData.barnLogicList = toSave;
                         panelRobotController.setCustomSettings("IOBarnLogicSet", JSON.stringify(toSave), "IOBarnLogicSet");
 //                        console.log(JSON.stringify(toSave));
                     }
@@ -1252,6 +1253,7 @@ Item {
             alarmModel.append(iosettings[i]);
         }
         iosettings = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet", "[]", "IOBarnLogicSet"));
+        MData.barnLogicList = iosettings;
         for(i = 0, len = iosettings.length; i < len; ++i){
             barnModel.append(iosettings[i]);
         }

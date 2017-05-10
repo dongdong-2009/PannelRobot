@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../../ICCustomElement"
 import "ExtentActionDefine.js" as ExtentActionDefine
+import "../../settingpages/RunningConfigs.js" as RData
 
 ExtentActionEditorBase {
     width: editArea.width + 20
@@ -8,6 +9,28 @@ ExtentActionEditorBase {
     property int barnID: barnIDEdit.getConfigValue()
     property alias start:startEdit.configValue
     property alias delay: delayEdit.configValue
+    property string barnName: barnIDEdit.configText()
+    property bool isAutoMode: false
+
+    onIsAutoModeChanged: {
+        var notAutoMode = !isAutoMode;
+        barnIDEdit.enabled = notAutoMode;
+        startEdit.enabled = notAutoMode;
+    }
+    onActionObjectChanged: {
+        if(actionObject == null) return;
+        updateList();
+        startEdit.configValue = actionObject.start;
+        delayEdit.configValue = actionObject.delay;
+        for(var i=0,len=barnIDEdit.items.length;i<len;++i){
+            if(actionObject.barnID == barnIDEdit.indexMappedValue[i]){
+                barnIDEdit.configValue = i;
+                return;
+            }
+        }
+
+        barnIDEdit.configValue = -1;
+    }
     Column{
         id:editArea
         spacing: 10
@@ -49,18 +72,22 @@ ExtentActionEditorBase {
     Component.onCompleted: {
          bindActionDefine(ExtentActionDefine.extentBarnLogicAction);
     }
+
+    function updateList(){
+        var barnData = RData.barnLogicList;
+        var nameList = [],idList = [],typeList = [];
+        for(var i=0,len =barnData.length;i<len;++i){
+            nameList.push(barnData[i].barnName);
+            idList.push(barnData[i].barnID);
+            typeList.push(barnData[i].isAutoBarn);
+        }
+        barnIDEdit.items = nameList;
+        barnIDEdit.indexMappedValue = idList;
+        barnIDEdit.barnType = typeList;
+    }
     onVisibleChanged: {
         if(visible){
-            var barnData = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet","[]","IOBarnLogicSet"));
-            var nameList = [],idList = [],typeList = [];
-            for(var i=0,len =barnData.length;i<len;++i){
-                nameList.push(barnData[i].barnName);
-                idList.push(barnData[i].barnID);
-                typeList.push(barnData[i].isAutoBarn);
-            }
-            barnIDEdit.items = nameList;
-            barnIDEdit.indexMappedValue = idList;
-            barnIDEdit.barnType = typeList;
+            updateList();
         }
     }
 }

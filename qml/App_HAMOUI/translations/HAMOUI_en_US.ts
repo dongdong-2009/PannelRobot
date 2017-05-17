@@ -5467,22 +5467,22 @@ please chose!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="186"/>
+        <location filename="../teach/ProgramActionMenu.qml" line="185"/>
         <source>Path Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="196"/>
+        <location filename="../teach/ProgramActionMenu.qml" line="195"/>
         <source>Data Command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="207"/>
+        <location filename="../teach/ProgramActionMenu.qml" line="206"/>
         <source>origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/ProgramActionMenu.qml" line="216"/>
+        <location filename="../teach/ProgramActionMenu.qml" line="215"/>
         <source>Extent</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6723,236 +6723,241 @@ please chose!</source>
         <location filename="../teach/StackActionEditor.qml" line="49"/>
         <location filename="../teach/StackActionEditor.qml" line="50"/>
         <location filename="../teach/StackActionEditor.qml" line="51"/>
-        <location filename="../teach/StackActionEditor.qml" line="784"/>
-        <location filename="../teach/StackActionEditor.qml" line="793"/>
-        <location filename="../teach/StackActionEditor.qml" line="802"/>
+        <location filename="../teach/StackActionEditor.qml" line="796"/>
+        <location filename="../teach/StackActionEditor.qml" line="805"/>
+        <location filename="../teach/StackActionEditor.qml" line="814"/>
         <source>Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="94"/>
+        <location filename="../teach/StackActionEditor.qml" line="95"/>
         <source>clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="103"/>
+        <location filename="../teach/StackActionEditor.qml" line="104"/>
         <source>setPen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="113"/>
+        <location filename="../teach/StackActionEditor.qml" line="114"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="119"/>
+        <location filename="../teach/StackActionEditor.qml" line="120"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="125"/>
+        <location filename="../teach/StackActionEditor.qml" line="126"/>
         <source>High</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="133"/>
+        <location filename="../teach/StackActionEditor.qml" line="134"/>
         <source>converter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="151"/>
+        <location filename="../teach/StackActionEditor.qml" line="152"/>
         <source>quadTo_en</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="162"/>
+        <location filename="../teach/StackActionEditor.qml" line="163"/>
         <source>quadTo_Color_Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="173"/>
+        <location filename="../teach/StackActionEditor.qml" line="174"/>
         <source>lineTo_en</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="184"/>
+        <location filename="../teach/StackActionEditor.qml" line="185"/>
         <source>lineTo_Color_Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="196"/>
+        <location filename="../teach/StackActionEditor.qml" line="197"/>
         <source>close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="505"/>
+        <location filename="../teach/StackActionEditor.qml" line="511"/>
         <source>Use Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="509"/>
+        <location filename="../teach/StackActionEditor.qml" line="515"/>
         <source>Define Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="527"/>
+        <location filename="../teach/StackActionEditor.qml" line="533"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="534"/>
-        <location filename="../teach/StackActionEditor.qml" line="551"/>
+        <location filename="../teach/StackActionEditor.qml" line="540"/>
+        <location filename="../teach/StackActionEditor.qml" line="557"/>
         <source>Please input the new stack name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="535"/>
-        <location filename="../teach/StackActionEditor.qml" line="552"/>
+        <location filename="../teach/StackActionEditor.qml" line="541"/>
+        <location filename="../teach/StackActionEditor.qml" line="558"/>
         <source>Stack Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="535"/>
-        <location filename="../teach/StackActionEditor.qml" line="552"/>
+        <location filename="../teach/StackActionEditor.qml" line="541"/>
+        <location filename="../teach/StackActionEditor.qml" line="558"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="535"/>
-        <location filename="../teach/StackActionEditor.qml" line="552"/>
+        <location filename="../teach/StackActionEditor.qml" line="541"/>
+        <location filename="../teach/StackActionEditor.qml" line="558"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="542"/>
+        <location filename="../teach/StackActionEditor.qml" line="548"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="561"/>
+        <location filename="../teach/StackActionEditor.qml" line="567"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="573"/>
-        <location filename="../teach/StackActionEditor.qml" line="768"/>
+        <location filename="../teach/StackActionEditor.qml" line="579"/>
+        <location filename="../teach/StackActionEditor.qml" line="780"/>
         <source>Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="573"/>
+        <location filename="../teach/StackActionEditor.qml" line="579"/>
         <source>is using!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="588"/>
+        <location filename="../teach/StackActionEditor.qml" line="594"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="622"/>
+        <location filename="../teach/StackActionEditor.qml" line="628"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="634"/>
+        <location filename="../teach/StackActionEditor.qml" line="640"/>
         <source>Box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="648"/>
+        <location filename="../teach/StackActionEditor.qml" line="654"/>
         <source>Data Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="667"/>
+        <location filename="../teach/StackActionEditor.qml" line="673"/>
         <source>Set In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="685"/>
+        <location filename="../teach/StackActionEditor.qml" line="691"/>
         <source>Edit Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="713"/>
+        <location filename="../teach/StackActionEditor.qml" line="718"/>
+        <source>Auto Change Head</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/StackActionEditor.qml" line="725"/>
         <source>Paint Pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="733"/>
+        <location filename="../teach/StackActionEditor.qml" line="745"/>
         <source>Pos And Cmp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="737"/>
+        <location filename="../teach/StackActionEditor.qml" line="749"/>
         <source>Only Cmp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="756"/>
+        <location filename="../teach/StackActionEditor.qml" line="768"/>
         <source>Hold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="758"/>
+        <location filename="../teach/StackActionEditor.qml" line="770"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="811"/>
+        <location filename="../teach/StackActionEditor.qml" line="823"/>
         <source>Speed1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="823"/>
+        <location filename="../teach/StackActionEditor.qml" line="835"/>
         <source>Interval En</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="828"/>
-        <location filename="../teach/StackActionEditor.qml" line="887"/>
+        <location filename="../teach/StackActionEditor.qml" line="840"/>
+        <location filename="../teach/StackActionEditor.qml" line="899"/>
         <source>Always Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="838"/>
-        <location filename="../teach/StackActionEditor.qml" line="897"/>
+        <location filename="../teach/StackActionEditor.qml" line="850"/>
+        <location filename="../teach/StackActionEditor.qml" line="909"/>
         <source>Choos Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="839"/>
-        <location filename="../teach/StackActionEditor.qml" line="898"/>
+        <location filename="../teach/StackActionEditor.qml" line="851"/>
+        <location filename="../teach/StackActionEditor.qml" line="910"/>
         <source>IO output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="839"/>
-        <location filename="../teach/StackActionEditor.qml" line="898"/>
+        <location filename="../teach/StackActionEditor.qml" line="851"/>
+        <location filename="../teach/StackActionEditor.qml" line="910"/>
         <source>M output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="857"/>
-        <location filename="../teach/StackActionEditor.qml" line="916"/>
+        <location filename="../teach/StackActionEditor.qml" line="869"/>
+        <location filename="../teach/StackActionEditor.qml" line="928"/>
         <source>Out ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="863"/>
-        <location filename="../teach/StackActionEditor.qml" line="922"/>
+        <location filename="../teach/StackActionEditor.qml" line="875"/>
+        <location filename="../teach/StackActionEditor.qml" line="934"/>
         <source>Interval Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="871"/>
-        <location filename="../teach/StackActionEditor.qml" line="930"/>
+        <location filename="../teach/StackActionEditor.qml" line="883"/>
+        <location filename="../teach/StackActionEditor.qml" line="942"/>
         <source>Out Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../teach/StackActionEditor.qml" line="882"/>
+        <location filename="../teach/StackActionEditor.qml" line="894"/>
         <source>IntervalBox En</source>
         <translation type="unfinished"></translation>
     </message>

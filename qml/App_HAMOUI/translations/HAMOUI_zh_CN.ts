@@ -5917,7 +5917,7 @@ please chose!</source>
     </message>
     <message>
         <source>Auto Change Head</source>
-        <translation type="vanished">自动换枪</translation>
+        <translation>自动换枪</translation>
     </message>
     <message>
         <source>X</source>

@@ -343,6 +343,7 @@ Rectangle {
                 page1.mode = 2;
                 posAndCmp.setChecked(stackType == 4);
                 onlyCmp.setChecked(stackType == 5);
+                autoChangeHead.setChecked(stackType == 6);
                 holdSel.configValue = stackInfo.si0.holdSel;
             }
         }
@@ -425,6 +426,10 @@ Rectangle {
                         realST = 4;
                     else if(onlyCmp.isChecked)
                         realST = 5;
+                }
+                else{
+                    if(autoChangeHead.isChecked)
+                        realST = 6;
                 }
             }
 
@@ -708,9 +713,15 @@ Rectangle {
                         }
                     }
 
+                    ICCheckBox{
+                        id:autoChangeHead
+                        text:qsTr("Auto Change Head")
+                    }
+
+
                     ICButton{
                         id:paintPos
-//                    visible: false
+                        visible: false
                         text: qsTr("Paint Pos")
     //                    anchors.left: editPos.right
     //                    anchors.leftMargin: 12

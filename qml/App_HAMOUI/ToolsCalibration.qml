@@ -1,442 +1,273 @@
 import QtQuick 1.1
 import "../ICCustomElement"
 import "configs/AxisDefine.js" as AxisDefine
-
+import "ToolsCalibration.js" as ToolsCalibrationManager
 
 Item {
     id:root
     width: parent.width
     height: parent.height
+    property variant pulseAddr:["c_ro_0_32_0_901","c_ro_0_32_0_905","c_ro_0_32_0_909",
+        "c_ro_0_32_0_913","c_ro_0_32_0_917","c_ro_0_32_0_921"]
+    property variant worldAddr:["c_ro_0_32_3_900","c_ro_0_32_0_904","c_ro_0_32_0_908",
+        "c_ro_0_32_0_912","c_ro_0_32_0_916","c_ro_0_32_0_920"]
 
     function readPulse(){
-        return [panelRobotController.statusValue("c_ro_0_32_0_901"),
-                panelRobotController.statusValue("c_ro_0_32_0_905"),
-                panelRobotController.statusValue("c_ro_0_32_0_909"),
-                panelRobotController.statusValue("c_ro_0_32_0_913"),
-                panelRobotController.statusValue("c_ro_0_32_0_917"),
-                panelRobotController.statusValue("c_ro_0_32_0_921")];
+        return [panelRobotController.statusValue(pulseAddr[0])/1000,
+                panelRobotController.statusValue(pulseAddr[1])/1000,
+                panelRobotController.statusValue(pulseAddr[2])/1000,
+                panelRobotController.statusValue(pulseAddr[3])/1000,
+                panelRobotController.statusValue(pulseAddr[4])/1000,
+                panelRobotController.statusValue(pulseAddr[5])/1000];
     }
 
     function pulseToText(pulses){
-        return AxisDefine.axisInfos[0].name + ":" + pulses[0] + "," +
-                AxisDefine.axisInfos[1].name + ":" + pulses[1] + "," +
-                AxisDefine.axisInfos[2].name + ":" + pulses[2] + "," +
-                AxisDefine.axisInfos[3].name + ":" + pulses[3] + "," +
-                AxisDefine.axisInfos[4].name + ":" + pulses[4] + "," +
-                AxisDefine.axisInfos[5].name + ":" + pulses[5];
+        return AxisDefine.axisInfos[0].name + ":" +  parseInt(pulses[0]*1000) + "," +
+                AxisDefine.axisInfos[1].name + ":" + parseInt(pulses[1]*1000) + "," +
+                AxisDefine.axisInfos[2].name + ":" + parseInt(pulses[2]*1000) + "," +"\n"+
+                AxisDefine.axisInfos[3].name + ":" + parseInt(pulses[3]*1000) + "," +
+                AxisDefine.axisInfos[4].name + ":" + parseInt(pulses[4]*1000) + "," +
+                AxisDefine.axisInfos[5].name + ":" + parseInt(pulses[5])*1000;
     }
 
-    function onMoldChanged(){
-        var pulses =[
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_358"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_359"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_360"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_361"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_362"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_363"),
-                ];
-        p1Show.text = pulseToText(pulses);
-        pulses =[
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_364"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_365"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_366"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_367"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_368"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_369"),
-                ];
-        p2Show.text = pulseToText(pulses);
-
-        pulses =[
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_370"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_371"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_372"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_373"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_374"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_375"),
-                ];
-        p3Show.text = pulseToText(pulses);
-
-        pulses =[
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_376"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_377"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_378"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_379"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_380"),
-                    panelRobotController.getConfigValueText("m_rw_0_32_0_381"),
-                ];
-        p4Show.text = pulseToText(pulses);
-
-
-        p1M0.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_382");
-        p1M1.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_383");
-        p1M2.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_384");
-        p1M3.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_385");
-        p1M4.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_386");
-        p1M5.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_387");
-
-        p2M0.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_388");
-        p2M1.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_389");
-        p2M2.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_390");
-        p2M3.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_391");
-        p2M4.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_392");
-        p2M5.configValue = panelRobotController.getConfigValueText("m_rw_0_32_3_393");
-
-        selType.checkedIndex = panelRobotController.getConfigValue("m_rw_10_3_0_357");
-        if(selType.checkedIndex == 0){
-            type1.isChecked =true;
-            fourPointTypeEnBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
+    ListModel{
+        id:toolsModel
+    }
+    ICListView{
+        id:toolsView
+        color: "white"
+        width: parent.width*0.5
+        height: parent.height -50
+        model: toolsModel
+        highlight: Rectangle { width: toolsView.width; height: 30;color: "lightsteelblue"; }
+        highlightMoveDuration: 1
+        delegate: Text{
+            width: parent.width
+            height: 30
+            text: id+": "+name+"["+(type==0?qsTr("Four Point"):qsTr("Two Point"))+"]"
+            MouseArea{
+                id:toolsItem
+                anchors.fill: parent
+                onClicked: {
+                    toolsView.currentIndex = index;
+                }
+            }
         }
-        else if(selType.checkedIndex == 1){
-            type2.isChecked =true;
-            twoPointTypeEnBtn.isChecked = panelRobotController.getConfigValue("m_rw_9_1_0_357");
+        onCurrentItemChanged:{
+            if(currentIndex<0)return;
+            var i,j;
+            var tmpToolPoint = [];
+            var tmpVar;
+            tmpToolPoint  = toolsModel.get(currentIndex).info.data;
+            toolName.configValue = toolsModel.get(currentIndex).name;
+            typeSel.configValue = toolsModel.get(currentIndex).type;
+            if(typeSel.configValue == 0){
+                for(i=0;i<4;++i){
+                    tmpVar = tmpToolPoint.slice(i*6,((i+1)*6));
+                    pulseArea.itemAt(i).pulseDatas = tmpVar;
+                }
+            }
+            else if(typeSel.configValue == 1){
+                for(i=0;i<6;i++){
+                    terPos.itemAt(i).configValue = tmpToolPoint[i];
+                }
+                for(i=0;i<6;i++){
+                    devPos.itemAt(i).configValue = tmpToolPoint[i+6];
+                }
+            }
         }
     }
 
-    ICButtonGroup{
-        id:selType
-        width: parent.width/2
-        spacing: 5
-        anchors.top: parent.top
+    Row{
+        anchors.top: toolsView.bottom
+        anchors.right: toolsView.right
         anchors.topMargin: 10
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        mustChecked: true
-        ICCheckBox{
-             id:type1
-             text:qsTr("Four Point")
-        }
-        ICCheckBox{
-             id:type2
-             text:qsTr("Two Point")
-        }
-        onCheckedIndexChanged: {
-            pageContainer.setCurrentIndex(checkedIndex);
-        }
-    }
-
-    ICStackContainer{
-        id:pageContainer
-        width: parent.width/2
-        height: parent.height - 170
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: selType.bottom
-        anchors.topMargin: 20
-    }
-
-    Item {
-        id:fourPointType
-        width: parent.width/2
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: selType.bottom
-        anchors.topMargin: 20
-        Grid{
-            id:pointGrid
-            spacing: 10
-            columns: 2
-//            width: parent.width
-//            height: parent.height
-
-            ICButton{
-                id:p1
-                text: qsTr("Set to P1")
-                onButtonClicked: {
-                    var pulses = root.readPulse();
-                    panelRobotController.setConfigValue("m_rw_0_32_0_358", pulses[0]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_359", pulses[1]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_360", pulses[2]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_361", pulses[3]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_362", pulses[4]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_363", pulses[5]);
-                    p1Show.text = root.pulseToText(pulses);
-                    panelRobotController.syncConfigs();
+        spacing: 20
+        ICButton{
+            id:newBtn
+            text:qsTr("newBtn")
+            onButtonClicked: {
+                var tmpToolPoint =[];
+                var i,j,tmpToolType =0;
+                if(fourPoint.visible){
+                    tmpToolType = 0;
+                    for(i=0;i<4;++i){
+                        tmpToolPoint = pulseArea.itemAt(i).pulseDatas;
+                    }
 
                 }
-            }
-            Text {
-                id: p1Show
-                text: qsTr("text")
-                verticalAlignment: Text.AlignVCenter
-                height: p1.height
-            }
-            ICButton{
-                id:p2
-                text: qsTr("Set to P2")
-                onButtonClicked: {
-                    var pulses = root.readPulse();
-                    panelRobotController.setConfigValue("m_rw_0_32_0_364", pulses[0]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_365", pulses[1]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_366", pulses[2]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_367", pulses[3]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_368", pulses[4]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_369", pulses[5]);
-                    p2Show.text = root.pulseToText(pulses);
-                    panelRobotController.syncConfigs();
-
-
-                }
-            }
-            Text {
-                id: p2Show
-                text: qsTr("text")
-                verticalAlignment: Text.AlignVCenter
-                height: p2.height
-
-            }
-            ICButton{
-                id:p3
-                text: qsTr("Set to P3")
-                onButtonClicked: {
-                    var pulses = root.readPulse();
-                    panelRobotController.setConfigValue("m_rw_0_32_0_370", pulses[0]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_371", pulses[1]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_372", pulses[2]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_373", pulses[3]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_374", pulses[4]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_375", pulses[5]);
-                    p3Show.text = root.pulseToText(pulses);
-                    panelRobotController.syncConfigs();
-
-                }
-            }
-            Text {
-                id: p3Show
-                text: qsTr("text")
-                verticalAlignment: Text.AlignVCenter
-                height: p3.height
-
-            }
-            ICButton{
-                id:p4
-                text: qsTr("Set to P4")
-                onButtonClicked: {
-                    var pulses = root.readPulse();
-                    panelRobotController.setConfigValue("m_rw_0_32_0_376", pulses[0]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_377", pulses[1]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_378", pulses[2]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_379", pulses[3]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_380", pulses[4]);
-                    panelRobotController.setConfigValue("m_rw_0_32_0_381", pulses[5]);
-                    p4Show.text = root.pulseToText(pulses);
-                    panelRobotController.syncConfigs();
-
-                }
-            }
-            Text {
-                id: p4Show
-                text: qsTr("text")
-                verticalAlignment: Text.AlignVCenter
-                height: p4.height
-            }
-        }
-        Row{
-            anchors.top:pointGrid.bottom
-            anchors.topMargin: 20
-            spacing: 20
-            ICCheckBox {
-                id:fourPointTypeEnBtn
-                height: fourOkBtn.height
-                text: qsTr("Use it?")
-            }
-            ICButton{
-                id:fourOkBtn
-                text: qsTr("OK")
-                onButtonClicked: {
-                    panelRobotController.setConfigValue("m_rw_10_3_0_357",0);
-                    panelRobotController.setConfigValue("m_rw_9_1_0_357", fourPointTypeEnBtn.isChecked ? 1 : 0);
-                    panelRobotController.syncConfigs();
-                }
-            }
-        }
-        onVisibleChanged: {
-            panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
-        }
-    }
-
-    Item {
-        id: twoPointType
-        width: parent.width/2
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: selType.bottom
-        anchors.topMargin: 20
-        Row{
-            id:setRow
-            spacing: 30
-            Column{
-                spacing: 5
-                ICButton{
-                    id:termianalSetBtn
-                    text: qsTr("T Set")
-                    height: p1M0.height
-                    width: 80
-                    onButtonClicked: {
-                        p1M0.configValue = panelRobotController.statusValueText("c_ro_0_32_3_900");
-                        p1M1.configValue = panelRobotController.statusValueText("c_ro_0_32_3_904");
-                        p1M2.configValue = panelRobotController.statusValueText("c_ro_0_32_3_908");
-                        p1M3.configValue = panelRobotController.statusValueText("c_ro_0_32_3_912");
-                        p1M4.configValue = panelRobotController.statusValueText("c_ro_0_32_3_916");
-                        p1M5.configValue = panelRobotController.statusValueText("c_ro_0_32_3_920");
-
+                else if(twoPoint.visible){
+                    tmpToolType = 1;
+                    for(i=0;i<6;i++){
+                        tmpToolPoint[i] = terPos.itemAt(i).configValue;
+                    }
+                    for(i=0;i<6;i++){
+                        tmpToolPoint[i+6] = devPos.itemAt(i).configValue;
                     }
                 }
-                ICConfigEdit{
-                    id:p1M0
-                    configName: AxisDefine.axisInfos[0].name
-                    unit: "mm"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p1M1
-                    configName: AxisDefine.axisInfos[1].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "mm"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p1M2
-                    configName: AxisDefine.axisInfos[2].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "mm"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p1M3
-                    configName: AxisDefine.axisInfos[3].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "°"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p1M4
-                    configName: AxisDefine.axisInfos[4].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "°"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p1M5
-                    configName: AxisDefine.axisInfos[5].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "°"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-            }
-            Column{
-                spacing: 5
-                Text {
-                    id: toolDev
-                    height: termianalSetBtn.height
-                    text: qsTr("Tool Dev:")
-                }
-                ICConfigEdit{
-                    id:p2M0
-                    configName: AxisDefine.axisInfos[0].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "mm"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p2M1
-                    configName: AxisDefine.axisInfos[1].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "mm"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p2M2
-                    configName: AxisDefine.axisInfos[2].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "mm"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p2M3
-                    configName: AxisDefine.axisInfos[3].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "°"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
-                ICConfigEdit{
-                    id:p2M4
-                    configName: AxisDefine.axisInfos[4].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "°"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
 
-                ICConfigEdit{
-                    id:p2M5
-                    configName: AxisDefine.axisInfos[5].name
-                    configNameWidth: p1M0.configNameWidth
-                    unit: "°"
-                    min:-10000
-                    max:10000
-                    decimal: 3
-                }
+                var tmpToolName = toolName.configValue;
+                var tmpToolID =ToolsCalibrationManager.toolCalibrationManager.addToolCalibration(tmpToolType,tmpToolName,tmpToolPoint);
+                toolsModel.append({"type":tmpToolType,"name":tmpToolName, "id":tmpToolID,"info":{"data":tmpToolPoint}});
+                panelRobotController.sendToolCalibration((tmpToolID|(tmpToolType<<16)),JSON.stringify(tmpToolPoint));
+                toolsView.currentIndex = toolsModel.count - 1;
             }
         }
-        Row{
-            anchors.top: setRow.bottom
-            anchors.topMargin: 20
-            spacing: 20
-            ICCheckBox {
-                id:twoPointTypeEnBtn
-                height: twoOkBtn.height
-                text: qsTr("Use it?")
-            }
-            ICButton{
-                id:twoOkBtn
-                text: qsTr("OK")
-                onButtonClicked: {
-                    panelRobotController.setConfigValue("m_rw_10_3_0_357",1);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_382", p1M0.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_383", p1M1.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_384", p1M2.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_385", p1M3.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_386", p1M4.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_387", p1M5.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_388", p2M0.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_389", p2M1.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_390", p2M2.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_391", p2M3.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_392", p2M4.configValue);
-                    panelRobotController.setConfigValue("m_rw_0_32_3_393", p2M5.configValue);
-                    panelRobotController.setConfigValue("m_rw_9_1_0_357", twoPointTypeEnBtn.isChecked ? 1 : 0);
-                    panelRobotController.syncConfigs();
-                }
+        ICButton{
+            id:deleteBtn
+            text:qsTr("deleteBtn")
+            onButtonClicked:{
+                if(toolsView.currentIndex < 0)return;
+                var toDelID = toolsModel.get(toolsView.currentIndex).id;
+                ToolsCalibrationManager.toolCalibrationManager.removeToolCalibration(toDelID);
+                toolsModel.remove(toolsView.currentIndex);
             }
         }
     }
 
-    Component.onCompleted: {
-        pageContainer.addPage(fourPointType);
-        pageContainer.addPage(twoPointType);
+    Column{
+        id:content
+        spacing: 10
+        anchors.left: toolsView.right
+        anchors.leftMargin: 10
+        ICConfigEdit{
+            id:toolName
+            isNumberOnly: false
+            configName: qsTr("toolName")
+            configNameWidth: 90
+            inputWidth:120
+        }
+        ICComboBoxConfigEdit{
+            id:typeSel
+            configName: qsTr("Tool Type Sel")
+            items: [qsTr("Four Point"),qsTr("Two Point")]
+            configValue: 0
+        }
 
-        panelRobotController.moldChanged.connect(onMoldChanged);
-//        onMoldChanged();
+        Column{
+            id:fourPoint
+            visible: typeSel.configValue === 0
+            spacing: 10
+            Repeater{
+                id:pulseArea
+                model: 4
+                Row{
+                    spacing: 10
+                    property variant pulseDatas:[0,0,0,0,0,0]
+                    ICButton{
+                        id:p
+                        width: 80
+                        height: typeSel.height
+                        text: qsTr("Set to P")+(index+1)
+                        onButtonClicked: {
+                            pulseDatas = root.readPulse();
+                        }
+                    }
+                    Text {
+                        id: pShow
+                        text: pulseToText(pulseDatas)
+                        height: p.height*2
+                    }
+                }
+            }
+
+            onVisibleChanged: {
+                panelRobotController.swichPulseAngleDisplay(visible ? 1 : 0);
+            }
+        }
+
+        Row{
+           id:twoPoint
+           visible: typeSel.configValue === 1
+           spacing: 30
+           Column{
+               spacing: 10
+               ICButton{
+                   id:termianalSetBtn
+                   text: qsTr("T Set")
+                   height: typeSel.height
+                   width: 80
+                   onButtonClicked: {
+                       for(var i=0;i<6;++i){
+                           terPos.itemAt(i).configValue = panelRobotController.statusValueText(root.worldAddr[i]);
+                       }
+                   }
+               }
+               Repeater{
+                   id:terPos
+                   model: 6
+                   ICConfigEdit{
+                       configName: AxisDefine.axisInfos[index].name
+                       configNameWidth:20
+                       unit: index<3?"mm":"°"
+                       min:-10000
+                       max:10000
+                       decimal: 3
+                       configValue: "0.000"
+                   }
+               }
+           }
+           Column{
+               spacing: 10
+               Text {
+                   id: toolDev
+                   height: termianalSetBtn.height
+                   text: qsTr("Tool Dev:")
+               }
+               Repeater{
+                   id:devPos
+                   model: 6
+                   ICConfigEdit{
+                       configName: AxisDefine.axisInfos[index].name
+                       configNameWidth:20
+                       unit: index<3?"mm":"°"
+                       min:-10000
+                       max:10000
+                       decimal: 3
+                       configValue: "0.000"
+                   }
+               }
+           }
+       }
+    }
+
+    ICButton{
+        id:confirmBtn
+        anchors.top: content.bottom
+        anchors.right: content.right
+        anchors.topMargin: 15
+        text:qsTr("confirmBtn")
+        onButtonClicked: {
+            if(toolsView.currentIndex < 0) return;
+            var tmpToolPoint =[];
+            var i,j,tmpToolType =0;
+            if(fourPoint.visible){
+                tmpToolType = 0;
+                for(i=0;i<4;++i){
+                    tmpToolPoint = tmpToolPoint.concat(pulseArea.itemAt(i).pulseDatas);
+                }
+            }
+            else if(twoPoint.visible){
+                tmpToolType = 1;
+                for(i=0;i<6;i++){
+                    tmpToolPoint[i] = terPos.itemAt(i).configValue;
+                }
+                for(i=0;i<6;i++){
+                    tmpToolPoint[i+6] = devPos.itemAt(i).configValue;
+                }
+            }
+
+            var tmpToolName = toolName.configValue;
+            var tmpToolID = toolsModel.get(toolsView.currentIndex).id
+            ToolsCalibrationManager.toolCalibrationManager.updateToolCalibration(tmpToolID,tmpToolType,tmpToolName,tmpToolPoint);
+            toolsModel.set(toolsView.currentIndex,{"type":tmpToolType,"name":tmpToolName, "id":tmpToolID, "info":{"data":tmpToolPoint}});
+            panelRobotController.sendToolCalibration((tmpToolID|(tmpToolType<<16)),JSON.stringify(tmpToolPoint));
+        }
+    }
+    Component.onCompleted: {
+        var tmptools = ToolsCalibrationManager.toolCalibrationManager.toolCalibrationList();
+        for(var i =0;i<tmptools.length;++i){
+            toolsModel.append({"type":tmptools[i].type,"name":tmptools[i].name, "id":tmptools[i].id, "info":{"data":tmptools[i].info}});
+        }
     }
 }

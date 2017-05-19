@@ -871,6 +871,8 @@ public:
 
     Q_INVOKABLE void sendToolCoord(int id,const QString& data);
 
+    Q_INVOKABLE void sendToolCalibration(int id,const QString& data);
+
     Q_INVOKABLE void sendIOBarnLogic(const QString& data);
 
     Q_INVOKABLE void writeQKConfig(int axis, int addr, int data, bool ep = false);

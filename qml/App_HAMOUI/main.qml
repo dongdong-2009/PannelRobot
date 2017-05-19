@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "ToolsCalibration.js" as ToolCalibrationManager
 import "settingpages/RunningConfigs.js" as Mdata
 import "../utils/utils.js" as Utils
 
@@ -823,6 +824,11 @@ Rectangle {
             var toolCoords = ToolCoordManager.toolCoordManager.toolCoordList();
             for(i =0;i<toolCoords.length;++i){
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
+            }
+
+            var temTools = ToolCalibrationManager.toolCalibrationManager.toolCalibrationList();
+            for(i =0;i<temTools.length;++i){
+                panelRobotController.sendToolCalibration((temTools[i].id|(temTools[i].type<<16)),JSON.stringify(temTools[i].info));
             }
 
             var v,isNormal=true,ret=[];

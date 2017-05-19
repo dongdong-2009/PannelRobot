@@ -79,6 +79,10 @@ Item {
                 id:barnCtrl
                 text: qsTr("barnCtrl")
             }
+            ICCheckBox{
+                id:switchTool
+                text: qsTr("switchTool")
+            }
         }
         onCheckedIndexChanged: {
             configsContainer.setCurrentIndex(checkedIndex);
@@ -126,6 +130,9 @@ Item {
             }
             if(barnCtrl.visible){
                 addPage(ExtentActionDefine.extentBarnLogicAction.editableItems.comp.createObject(configsContainer));
+            }
+            if(switchTool.visible){
+                addPage(ExtentActionDefine.extentSwitchToolAction.editableItems.comp.createObject(configsContainer));
             }
             currentIndex = 0;
         }

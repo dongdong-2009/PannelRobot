@@ -17,7 +17,6 @@ Item {
             return indexMappedValue[configValue];
         }
         return configValue;
-
     }
 
 

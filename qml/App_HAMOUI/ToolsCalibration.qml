@@ -44,6 +44,7 @@ Item {
         delegate: Text{
             width: parent.width
             height: 30
+            verticalAlignment:Text.AlignVCenter
             text: id+": "+name+"["+(type==0?qsTr("Four Point"):qsTr("Two Point"))+"]"
             MouseArea{
                 id:toolsItem

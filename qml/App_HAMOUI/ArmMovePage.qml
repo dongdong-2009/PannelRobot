@@ -1094,7 +1094,7 @@ MouseArea{
                     var coords =ToolCoordManager.toolCoordManager.toolCoordNameList();
                     coords.splice(0, 0, qsTr("0:BaseCoord"));
                     items = coords;
-                    configValue = panelRobotController.iStatus(4);
+                    configValue = panelRobotController.iStatus(4)&0xff;
                 }
             }
             onConfigValueChanged: {
@@ -1114,7 +1114,7 @@ MouseArea{
                     var tmpTools =ToolsCalibrationManager.toolCalibrationManager.toolCalibrationNameList();
                     tmpTools.splice(0, 0, ("0:"+qsTr("None")));
                     items = tmpTools;
-//                    configValue = panelRobotController.statusValue();
+                    configValue = panelRobotController.iStatus(4)>>16;
                 }
             }
             onConfigValueChanged: {

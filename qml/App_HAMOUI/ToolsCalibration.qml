@@ -92,7 +92,7 @@ Item {
                 if(fourPoint.visible){
                     tmpToolType = 0;
                     for(i=0;i<4;++i){
-                        tmpToolPoint = pulseArea.itemAt(i).pulseDatas;
+                        tmpToolPoint = tmpToolPoint.concat(pulseArea.itemAt(i).pulseDatas);
                     }
 
                 }

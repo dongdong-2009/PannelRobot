@@ -1551,12 +1551,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="1110"/>
+        <location filename="../ArmMovePage.qml" line="1111"/>
         <source>Tool Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ArmMovePage.qml" line="1114"/>
+        <location filename="../ArmMovePage.qml" line="1115"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4282,6 +4282,11 @@
     <message>
         <location filename="../teach/OriginActionEditor.qml" line="55"/>
         <source>Type5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../teach/OriginActionEditor.qml" line="55"/>
+        <source>Type6</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7706,6 +7711,11 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../teach/Teach.js" line="1314"/>
+        <source>Type 6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../teach/Teach.js" line="1317"/>
         <source>origin</source>
         <translation type="unfinished"></translation>
@@ -8616,7 +8626,7 @@ You just need to set the count configs after this setting.</source>
 <context>
     <name>ToolsCalibration</name>
     <message>
-        <location filename="../ToolsCalibration.qml" line="88"/>
+        <location filename="../ToolsCalibration.qml" line="89"/>
         <source>newBtn</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8636,13 +8646,13 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="47"/>
+        <location filename="../ToolsCalibration.qml" line="48"/>
         <location filename="../ToolsCalibration.qml" line="144"/>
         <source>Four Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToolsCalibration.qml" line="47"/>
+        <location filename="../ToolsCalibration.qml" line="48"/>
         <location filename="../ToolsCalibration.qml" line="144"/>
         <source>Two Point</source>
         <translation type="unfinished"></translation>

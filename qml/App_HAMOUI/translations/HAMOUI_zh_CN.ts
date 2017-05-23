@@ -3229,15 +3229,19 @@
     </message>
     <message>
         <source>Type3</source>
-        <translation>(短原点)自动设定原点加开关</translation>
+        <translation>短原点</translation>
     </message>
     <message>
         <source>Type4</source>
-        <translation>(长原点)自动设定原点加开关</translation>
+        <translation>长原点</translation>
     </message>
     <message>
         <source>Type5</source>
-        <translation></translation>
+        <translation>中间原点</translation>
+    </message>
+    <message>
+        <source>Type6</source>
+        <translation>近似原点</translation>
     </message>
 </context>
 <context>
@@ -7035,6 +7039,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Zero</source>
         <translation type="unfinished">置零</translation>
+    </message>
+    <message>
+        <source>Type 6</source>
+        <translation type="unfinished">近似原点</translation>
     </message>
 </context>
 <context>

@@ -911,6 +911,14 @@
         <source>0:BaseCoord</source>
         <translation>0:世界坐标系</translation>
     </message>
+    <message>
+        <source>Tool Select</source>
+        <translation>工具选择</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
 </context>
 <context>
     <name>AutoAlarmTipPage</name>
@@ -2786,6 +2794,22 @@
         <source>delay</source>
         <translation>延时</translation>
     </message>
+    <message>
+        <source>world coord</source>
+        <translation>世界坐标系</translation>
+    </message>
+    <message>
+        <source>Switch Tool</source>
+        <translation>切换工具</translation>
+    </message>
+    <message>
+        <source>toolID</source>
+        <translation>工具</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2824,6 +2848,10 @@
     <message>
         <source>barnCtrl</source>
         <translation>料仓控制</translation>
+    </message>
+    <message>
+        <source>switchTool</source>
+        <translation>切换工具</translation>
     </message>
 </context>
 <context>
@@ -3214,6 +3242,10 @@
     <message>
         <source>Type5</source>
         <translation>中间原点</translation>
+    </message>
+    <message>
+        <source>Type6</source>
+        <translation>近似原点</translation>
     </message>
 </context>
 <context>
@@ -6307,7 +6339,22 @@ You just need to set the count configs after this setting.</source>
     <name>SwitchCoordEditor</name>
     <message>
         <source>coordID</source>
-        <translation>工作台坐标系ID</translation>
+        <translation type="unfinished">工作台坐标系</translation>
+    </message>
+    <message>
+        <source>world coord</source>
+        <translation>世界坐标系</translation>
+    </message>
+</context>
+<context>
+    <name>SwitchToolEditor</name>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>toolID</source>
+        <translation>工具</translation>
     </message>
 </context>
 <context>
@@ -7060,6 +7107,10 @@ You just need to set the count configs after this setting.</source>
         <source>Zero</source>
         <translation type="unfinished">置零</translation>
     </message>
+    <message>
+        <source>Type 6</source>
+        <translation type="unfinished">近似原点</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -7306,7 +7357,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>text</source>
-        <translation type="unfinished">接收的内容</translation>
+        <translation type="obsolete">接收的内容</translation>
     </message>
     <message>
         <source>Set to P2</source>
@@ -7351,6 +7402,34 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>OK</source>
         <translation>确定</translation>
+    </message>
+    <message>
+        <source>newBtn</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>toolName</source>
+        <translation>工具名称</translation>
+    </message>
+    <message>
+        <source>Tool Type Sel</source>
+        <translation>标定类型选择</translation>
+    </message>
+    <message>
+        <source>Set to P</source>
+        <translation>设为点</translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

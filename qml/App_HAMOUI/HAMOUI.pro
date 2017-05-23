@@ -15,7 +15,9 @@ DISTFILES += \
     settingpages/CommunicationConfig.qml \
     teach/extents/ParabolaActionEditor.qml \
     AlarmInfo.js \
-    teach/extents/BarnLogicEditor.qml
+    teach/extents/BarnLogicEditor.qml \
+    ToolsCalibration.js \
+    teach/extents/SwitchToolEditor.qml
 
 
 

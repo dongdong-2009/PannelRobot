@@ -1258,6 +1258,20 @@ void PanelRobotController::sendToolCoord(int id,const QString& data)
     ICRobotVirtualhost::sendMoldToolCoordDef(host_,tmp);
 }
 
+void PanelRobotController::sendToolCalibration(int id,const QString& data)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(data.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(id);
+    for(int i=0;i<result.size();i++)
+        tmp.append(ICUtility::doubleToInt(result.at(i).toDouble(), 3));
+    ICRobotVirtualhost::sendMoldToolCalibrationDef(host_,tmp);
+}
+
 void PanelRobotController::sendIOBarnLogic(const QString& data)
 {
     QJson::Parser parser;
@@ -1499,11 +1513,12 @@ QString PanelRobotController::disableImage(const QString &enabledImage)
     return ret;
 }
 
-void PanelRobotController::sendExternalDatas(const QString& dsData)
+void PanelRobotController::sendExternalDatas(const QString& dsData, const QString& decmals)
 {
     QJson::Parser parser;
     bool ok;
     qDebug()<<"sendExternalDatas"<<dsData;
+    QVariantMap decimasMap = parser.parse(decmals.toLatin1(), &ok).toMap();
     QVariantMap result = parser.parse (dsData.toLatin1(), &ok).toMap();
     if(!ok) return;
     int hostID = result.value("hostID").toInt();
@@ -1513,12 +1528,12 @@ void PanelRobotController::sendExternalDatas(const QString& dsData)
     for(int i = 0; i < ds.size(); ++i)
     {
         posData = ds.at(i).toMap();
-        toSendData<<ICUtility::doubleToInt(posData.value("m0").toDouble(),3)
-                 <<ICUtility::doubleToInt(posData.value("m1").toDouble(),3)
-                <<ICUtility::doubleToInt(posData.value("m2").toDouble(),3)
-               <<ICUtility::doubleToInt(posData.value("m3").toDouble(),3)
-              <<ICUtility::doubleToInt(posData.value("m4").toDouble(),3)
-             <<ICUtility::doubleToInt(posData.value("m5").toDouble(),3);
+        toSendData<<ICUtility::doubleToInt(posData.value("m0").toDouble(),decimasMap.value("m0").toInt())
+                 <<ICUtility::doubleToInt(posData.value("m1").toDouble(),decimasMap.value("m1").toInt())
+                <<ICUtility::doubleToInt(posData.value("m2").toDouble(),decimasMap.value("m2").toInt())
+               <<ICUtility::doubleToInt(posData.value("m3").toDouble(),decimasMap.value("m3").toInt())
+              <<ICUtility::doubleToInt(posData.value("m4").toDouble(),decimasMap.value("m4").toInt())
+             <<ICUtility::doubleToInt(posData.value("m5").toDouble(),decimasMap.value("m5").toInt());
     }
     if(ds.size() != 0)
         ICRobotVirtualhost::SendExternalDatas(host_, hostID, toSendData);

@@ -59,14 +59,16 @@ var CamDataSource = {
                                 toAdd.m0 = parseFloat(pos.X);
                             if(pos.hasOwnProperty("Y"))
                                 toAdd.m1 = parseFloat(pos.Y);
+                            if(pos.hasOwnProperty("ExtValue_1"))
+                                toAdd.m3 = parseFloat(pos.ExtValue_1) * 100;
                             if(pos.hasOwnProperty("ExtValue_0"))
-                                toAdd.m3 = parseFloat(pos.ExtValue_0);
-                            if(pos.hasOwnProperty("ExtValue_2"))
-                                toAdd.m4 = parseFloat(pos.ExtValue_2);
+                                toAdd.m3 |= parseInt(pos.ExtValue_0)<<16;
                             if(pos.hasOwnProperty("Angel"))
                                 toAdd.m5 = parseFloat(pos.Angel);
                             if(pos.X != null && pos.Y != null && pos.Angel != null)
                                 retData.push(toAdd);
+                            if(pos.hasOwnProperty("ModelID"))
+                                toAdd.m3 |= (parseInt(pos.ModelID) << 8);
                         }
                     }
                 }

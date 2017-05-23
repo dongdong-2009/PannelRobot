@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "ToolsCalibration.js" as ToolCalibrationManager
 import "settingpages/RunningConfigs.js" as Mdata
 import "../utils/utils.js" as Utils
 
@@ -600,18 +601,18 @@ Rectangle {
         //                }
         //            ]
         //        };
-//                var toTest = {
-//                    "dsID":"www.geforcevision.com.cam",
-//                    "dsData":[
-//                        {
-//                            "camID":"0",
-//                            "data":[
-//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
-//                                {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":null,"ExtValue_1":null},
-//                            ]
-//                        }
+//        var toTest = {
+//            "dsID":"www.geforcevision.com.cam",
+//            "dsData":[
+//                {
+//                    "camID":"0",
+//                    "data":[
+//                        {"ModelID":"0","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":1,"ExtValue_1":0.89},
+//                        {"ModelID":"1","X":"197.171","Y":"491.124","Angel": "-85.684","ExtValue_0":2,"ExtValue_1":0.70},
 //                    ]
-//                };
+//                }
+//            ]
+//        };
 //        var toTest = {
 //            "dsID":"www.geforcevision.com.cam",
 //            "dsData":[
@@ -743,7 +744,7 @@ Rectangle {
             }
         }
         if(posData.reqType == "query")
-            panelRobotController.sendExternalDatas(JSON.stringify(posData));
+            panelRobotController.sendExternalDatas(JSON.stringify(posData), '{"m0":3, "m1":3, "m2":3, "m3":0, "m4":0, "m5":3}');
         recordManagementPageInstance.onGetVisionData(posData);
     }
 
@@ -823,6 +824,11 @@ Rectangle {
             var toolCoords = ToolCoordManager.toolCoordManager.toolCoordList();
             for(i =0;i<toolCoords.length;++i){
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
+            }
+
+            var temTools = ToolCalibrationManager.toolCalibrationManager.toolCalibrationList();
+            for(i =0;i<temTools.length;++i){
+                panelRobotController.sendToolCalibration((temTools[i].id|(temTools[i].type<<16)),JSON.stringify(temTools[i].info));
             }
 
             var v,isNormal=true,ret=[];

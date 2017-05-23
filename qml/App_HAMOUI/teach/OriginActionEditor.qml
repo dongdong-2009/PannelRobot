@@ -53,7 +53,7 @@ Rectangle {
         OriginActionEditorAxisComponent{
             id:m0Axis
             axisName: AxisDefine.axisInfos[0].name
-            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3"), qsTr("Type4"),qsTr("Type5")]
+            psName: [qsTr("Type1"), qsTr("Type2"), qsTr("Type3"), qsTr("Type4"),qsTr("Type5"),qsTr("Type6")]
             axisDefine: pData.axisDefine.s1Axis
             rangeAddr: "s_rw_0_32_3_1000"
             z: 1

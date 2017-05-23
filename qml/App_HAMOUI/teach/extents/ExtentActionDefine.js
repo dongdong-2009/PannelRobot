@@ -2,6 +2,8 @@
 Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
 Qt.include("../Teach.js")
+Qt.include("../../ToolsCalibration.js")
+Qt.include("../../ToolCoordManager.js")
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -173,7 +175,9 @@ var extentSwitchCoordAction = {
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("SwitchCoordEditor.qml"), "itemDef":{"item":"SwitchCoordEditor"}},
         "toStringHandler":function(actionObject){
-            return qsTr("Switch Coord") + ":" + qsTr("CoordID") + actionObject.coordID;
+            return qsTr("Switch Coord") + ":" +"["+ qsTr("CoordID")+actionObject.coordID+"]"+ (actionObject.coordID==0?qsTr("world coord"):toolCoordManager.getToolCoord(actionObject.coordID).name);
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
         }
     };
 
@@ -445,6 +449,18 @@ var extentBarnLogicAction = {
             return qsTr("Barn")+qsTr("Ctrl") + ":" + actionObject.barnName + tmpStr+" "+qsTr("delay")+":"+actionObject.delay;
         }
     };
+var extentSwitchToolAction = {
+        "action":801,
+        "properties":[new ActionDefineItem("toolID", 0)],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("SwitchToolEditor.qml"), "itemDef":{"item":"SwitchToolEditor"}},
+        "toStringHandler":function(actionObject){
+            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ (actionObject.toolID==0?qsTr("None"):toolCalibrationManager.getToolCalibration(actionObject.toolID).name);
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        }
+    };
 
 
 var extentActions = [extentPENQIANGAction,
@@ -458,4 +474,5 @@ var extentActions = [extentPENQIANGAction,
                      extentOutputAction,
                      extentIntervalOutputAction,
                      extentParabolaAction,
-                     extentBarnLogicAction];
+                     extentBarnLogicAction,
+                     extentSwitchToolAction];

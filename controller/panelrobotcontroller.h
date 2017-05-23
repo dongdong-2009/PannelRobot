@@ -777,7 +777,7 @@ public:
         eth0DataMonitor_->SetFilter(QRegExp(re));
     }
 
-    Q_INVOKABLE void sendExternalDatas(const QString& dsData);
+    Q_INVOKABLE void sendExternalDatas(const QString& dsData, const QString &decmals = "{\"m0\":3, \"m1\":3, \"m2\":3, \"m3\":3, \"m4\":3, \"m5\":3}");
 
     Q_INVOKABLE quint32 getMultiplexingConfig(int addr)
     {
@@ -870,6 +870,8 @@ public:
     }
 
     Q_INVOKABLE void sendToolCoord(int id,const QString& data);
+
+    Q_INVOKABLE void sendToolCalibration(int id,const QString& data);
 
     Q_INVOKABLE void sendIOBarnLogic(const QString& data);
 

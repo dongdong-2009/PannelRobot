@@ -13,6 +13,7 @@ var yOutList=[];
 var mOutList=[];
 var programList=[];
 var programIDList=[];
+var barnLogicList=[];
 
 function getOutIDFromConfig(cV){
     var ret = [];

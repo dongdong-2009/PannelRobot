@@ -4,7 +4,7 @@ Qt.include("../../utils/HashTable.js")
 Qt.include("../../utils/stringhelper.js")
 Qt.include("../configs/AxisDefine.js")
 Qt.include("../configs/IODefines.js")
-Qt.include("../configs/AlarmInfo.js")
+Qt.include("../AlarmInfo.js")
 Qt.include("../../utils/utils.js")
 
 var customActions = {};
@@ -1958,6 +1958,7 @@ function customActionGenerator(actionDefine){
         actionDefine.updateActionObjectHelper = function(editor, actionObject){
             for(var i = 0, len = actionDefine.properties.length; i< len; ++i){
                 actionObject[actionDefine.properties[i].item] = editor[actionDefine.properties[i].item];
+                console.log(actionDefine.properties[i].item,editor[actionDefine.properties[i].item]);
             }
             if(actionDefine.canActionUsePoint){
                 actionObject.points = editor.points;

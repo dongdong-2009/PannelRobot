@@ -199,6 +199,9 @@ public:
     static bool SendMoldCountersDef(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> > & data);
     static bool SendMoldCounterDef(ICVirtualHostPtr hostPtr, const QVector<quint32> & data);
     static bool sendMoldToolCoordDef(ICVirtualHostPtr hostPtr,const QVector<quint32> & data);
+    static bool sendMoldToolCalibrationDef(ICVirtualHostPtr hostPtr,const QVector<quint32> & data);
+
+    static bool sendIOBarnLogicDef(ICVirtualHostPtr hostPtr,const QVector<quint32> & data);
     static bool SendExternalDatas(ICVirtualHostPtr hostPtr, int externalID, const QVector<quint32> &data);
     static bool FixProgram(ICVirtualHostPtr hostPtr, int which, int row, int step, const QVector<quint32>& data);
     static void AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int config, int value);

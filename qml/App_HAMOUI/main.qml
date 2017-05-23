@@ -14,6 +14,7 @@ import "configs/AxisDefine.js" as AxisDefine
 import "teach/Teach.js" as Teach
 import "teach/ManualProgramManager.js" as ManualProgramManager
 import "ToolCoordManager.js" as ToolCoordManager
+import "ToolsCalibration.js" as ToolCalibrationManager
 import "settingpages/RunningConfigs.js" as Mdata
 import "../utils/utils.js" as Utils
 
@@ -825,6 +826,11 @@ Rectangle {
                 panelRobotController.sendToolCoord(toolCoords[i].id,JSON.stringify(toolCoords[i].info));
             }
 
+            var temTools = ToolCalibrationManager.toolCalibrationManager.toolCalibrationList();
+            for(i =0;i<temTools.length;++i){
+                panelRobotController.sendToolCalibration((temTools[i].id|(temTools[i].type<<16)),JSON.stringify(temTools[i].info));
+            }
+
             var v,isNormal=true,ret=[];
             var iosettings = JSON.parse(panelRobotController.getCustomSettings("IOSettings", "[]", "IOSettings"));
             for(i = 0, len = iosettings.length; i < len; ++i){
@@ -881,6 +887,60 @@ uint16_t io_all;
                     value|=isNormal<<19;
                     console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(32,value);
+                }
+            }
+
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOCheckAlarmSet", "[]", "IOCheckAlarmSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    console.log("alarm_send:");
+                    value =v.alarmNum;
+                    value|=v.checkType<<16;
+                    console.log(v.checkType);
+                    value|=(v.isKeepStatus?1:0)<<19;
+                    value|=(v.outType_init?1:0)<<21;
+                    if(v.outType_init==0){
+                        ret = Mdata.getOutIDFromConfig(v.outid_init);
+                        isNormal = ret[0];
+                        value|=isNormal<<22;
+                        value|=ret[1]<<23;
+                    }
+                    else{
+                        value|=isNormal<<22;
+                        value|=v.outid_init<<23;
+                    }
+                    value|=v.outStatus<<30;
+//                    console.log(isNormal,ret[1],value);
+                    panelRobotController.modifyConfigValue(37,value);
+                }
+            }
+
+            var logic = [];
+            iosettings = JSON.parse(panelRobotController.getCustomSettings("IOBarnLogicSet", "[]", "IOBarnLogicSet"));
+            for(i = 0, len = iosettings.length; i < len; ++i){
+                v = iosettings[i];
+                if(v.check == true){
+                    logic[0] = v.upLimit;
+                    logic[0]|= v.downLimit<<7;
+                    ret = Mdata.getOutIDFromConfig(v.motorUp);
+                    isNormal = ret[0];
+                    logic[0]|= ret[1]<<14;
+                    ret = Mdata.getOutIDFromConfig(v.motorDown);
+                    logic[0]|= ret[1]<<21;
+                    logic[0]|= isNormal<<28;
+                    logic[0]|= ret[0]<<29;
+                    logic[0]|= v.bType<<30;
+
+                    logic[1] = v.sensor;
+                    logic[1] |= v.sensorDir<<7;
+                    logic[1] |= v.isWait<<8;
+                    logic[1] |= v.waitSignal<<9;
+                    logic[1] |= v.waitDir<<16;
+                    logic[1] |= v.barnID<< 17;
+                    logic[1] |= v.isAutoBarn << 21;
+//                                console.log(JSON.stringify(logic));
+                    panelRobotController.sendIOBarnLogic(JSON.stringify(logic));
                 }
             }
 

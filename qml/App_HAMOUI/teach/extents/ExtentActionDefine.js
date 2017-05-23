@@ -2,6 +2,8 @@
 Qt.include("../../configs/AxisDefine.js")
 Qt.include("../../configs/IODefines.js")
 Qt.include("../Teach.js")
+Qt.include("../../ToolsCalibration.js")
+Qt.include("../../ToolCoordManager.js")
 
 function ActionDefineItem(name, decimal){
     this.item = name;
@@ -173,7 +175,9 @@ var extentSwitchCoordAction = {
         "canActionUsePoint": false,
         "editableItems":{"editor":Qt.createComponent("SwitchCoordEditor.qml"), "itemDef":{"item":"SwitchCoordEditor"}},
         "toStringHandler":function(actionObject){
-            return qsTr("Switch Coord") + ":" + qsTr("CoordID") + actionObject.coordID;
+            return qsTr("Switch Coord") + ":" +"["+ qsTr("CoordID")+actionObject.coordID+"]"+ (actionObject.coordID==0?qsTr("world coord"):toolCoordManager.getToolCoord(actionObject.coordID).name);
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
         }
     };
 
@@ -403,6 +407,61 @@ var extentParabolaAction = {
     }
 };
 
+var extentBarnLogicAction = {
+        "action":203,
+        "properties":[new ActionDefineItem("barnID", 0),
+    new ActionDefineItem("start", 0),
+    new ActionDefineItem("delay",1)],
+        "canTestRun":true,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("BarnLogicEditor.qml"), "itemDef":{"item":"BarnLogicEditor"}},
+        "generate":function(properties){
+            var ret = {"action":203};
+            ret.barnID = properties.barnID;
+            ret.start = properties.start;
+            ret.delay = properties.delay;
+            ret.barnName = properties.barnName;
+            return ret;
+        },
+        "getActionPropertiesHelper":function(editor){
+            var ret = {"action":203};
+            ret.barnID = editor.barnID;
+            ret.start = editor.start;
+            ret.delay = editor.delay;
+            ret.barnName = editor.barnName;
+            return ret;
+        },
+        "updateActionObjectHelper":function(editor,actionObject){
+            actionObject.action = 203;
+            actionObject.barnID = editor.barnID;
+            actionObject.start = editor.start;
+            actionObject.delay = editor.delay;
+            actionObject.barnName = editor.barnName;
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        },
+        "toStringHandler":function(actionObject){
+            var tmpStr = "";
+            if(actionObject.start ==0)tmpStr = qsTr("Stop");
+            else if(actionObject.start ==1)tmpStr = qsTr("Start");
+            else if(actionObject.start ==2)tmpStr = qsTr("Up");
+            else if(actionObject.start ==3)tmpStr = qsTr("Down");
+            return qsTr("Barn")+qsTr("Ctrl") + ":" + actionObject.barnName + tmpStr+" "+qsTr("delay")+":"+actionObject.delay;
+        }
+    };
+var extentSwitchToolAction = {
+        "action":801,
+        "properties":[new ActionDefineItem("toolID", 0)],
+        "canTestRun":false,
+        "canActionUsePoint": false,
+        "editableItems":{"editor":Qt.createComponent("SwitchToolEditor.qml"), "itemDef":{"item":"SwitchToolEditor"}},
+        "toStringHandler":function(actionObject){
+            return qsTr("Switch Tool") + ":" +"["+ qsTr("toolID")+actionObject.toolID+"]"+ (actionObject.toolID==0?qsTr("None"):toolCalibrationManager.getToolCalibration(actionObject.toolID).name);
+        },
+        "actionObjectChangedHelper":function(editor, actionObject){
+        }
+    };
+
 
 var extentActions = [extentPENQIANGAction,
                      extentAnalogControlAction,
@@ -414,4 +473,6 @@ var extentActions = [extentPENQIANGAction,
                      extentSingleMemposAction,
                      extentOutputAction,
                      extentIntervalOutputAction,
-                     extentParabolaAction];
+                     extentParabolaAction,
+                     extentBarnLogicAction,
+                     extentSwitchToolAction];

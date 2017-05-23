@@ -113,6 +113,564 @@
     </message>
 </context>
 <context>
+    <name>AlarmInfo</name>
+    <message>
+        <source>ALARM_NOT_INIT                 </source>
+        <translation>没初始化完</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_CFG_DIFF            </source>
+        <translation>主机结构配置和手控结构配置不同</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_CFG_ERR             </source>
+        <translation>主机结果配置参数错误</translation>
+    </message>
+    <message>
+        <source>ALARM_OUT_OF_MEMORY_ERR        </source>
+        <translation>主机内存不足</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_DATA_ANALYTICAL_ERR</source>
+        <translation>教导数据解析错误</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_DATA_EDIT_ERR      </source>
+        <translation>教导数据编辑错误</translation>
+    </message>
+    <message>
+        <source>ALARM_EMERGENCY_STOP           </source>
+        <translation>紧急停止</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS1_ALARM_ERR</source>
+        <translation type="obsolete">电机1报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS2_ALARM_ERR</source>
+        <translation type="obsolete">电机2报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS3_ALARM_ERR</source>
+        <translation type="obsolete">电机3报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS4_ALARM_ERR</source>
+        <translation type="obsolete">电机4报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS5_ALARM_ERR</source>
+        <translation type="obsolete">电机5报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS6_ALARM_ERR</source>
+        <translation type="obsolete">电机6报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_RUN_ERR </source>
+        <translation>运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SPEED_SET_ERR </source>
+        <translation>速度设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_OVER_SPEED_ERR </source>
+        <translation>运动过速</translation>
+    </message>
+    <message>
+        <source>Wait Input:</source>
+        <translation>等待输入:</translation>
+    </message>
+    <message>
+        <source>ON over time</source>
+        <translation>通超时</translation>
+    </message>
+    <message>
+        <source>OFF over time</source>
+        <translation>断超时</translation>
+    </message>
+    <message>
+        <source>Wait Single Input:</source>
+        <translation>等待单头阀输入:</translation>
+    </message>
+    <message>
+        <source>Wait Double Input:</source>
+        <translation>等待双头阀输入:</translation>
+    </message>
+    <message>
+        <source>Connect host fail!</source>
+        <translation>连接主机失败!</translation>
+    </message>
+    <message>
+        <source>ALARM_AUTO_JUMP_ERR</source>
+        <translation>自动运行跳转错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACTION_FAIL</source>
+        <translation>轨迹运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P1_NOTSET</source>
+        <translation>手动直线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_LINE_P2_NOTSET</source>
+        <translation>手动直线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P1_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标1未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P2_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标2未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ARC_P3_NOTSET</source>
+        <translation>手动弧线轨迹运动坐标3未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_SETROUTESPEED_FAIL</source>
+        <translation>轨迹运动速度设定失败</translation>
+    </message>
+    <message>
+        <source>ALARM_Motor_ALARM_ERR</source>
+        <translation>电机报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_RUN_ERR</source>
+        <translation>运动失败</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SPEED_SET_ERR</source>
+        <translation>速度设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_OVER_SPEED_ERR</source>
+        <translation>运动过速</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_P</source>
+        <translation>正极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_AXIS_SOFT_LIMIT_N</source>
+        <translation>负极限报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ERROR_SERVO_WARP</source>
+        <translation>偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_ACC_ERR</source>
+        <translation>轨迹规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_COUNTER_NOT_DEFINE</source>
+        <translation>计数器未定义</translation>
+    </message>
+    <message>
+        <source>Unknow Err</source>
+        <translation>未知错误</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_ERR</source>
+        <translation>教导程序错误</translation>
+    </message>
+    <message>
+        <source>ALARM_CFG_STORAGE_ERR</source>
+        <translation>配置参数存储失败</translation>
+    </message>
+    <message>
+        <source>ALARM_MAHCINE_SET_ERR</source>
+        <translation>机型设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_ACC_LIMIT</source>
+        <translation>加速度报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_P</source>
+        <translation>正极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_POINT_LIMIT_N</source>
+        <translation>负极限信号报警</translation>
+    </message>
+    <message>
+        <source>ALARM_NOT_SET_ORIGIN</source>
+        <translation>原点信号未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P1_NOTSET</source>
+        <translation>手动关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_JOINT_P2_NOTSET</source>
+        <translation>手动关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_LP_NOTSET</source>
+        <translation>手动直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_RELATIVE_JP_NOTSET</source>
+        <translation>手动关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P1_NOTSET</source>
+        <translation>教导直线轨迹运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_LINE_P2_NOTSET</source>
+        <translation>教导直线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P1_NOTSET</source>
+        <translation>教导关节运动起始坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_LP_NOTSET</source>
+        <translation>教导直线相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_RELATIVE_JP_NOTSET</source>
+        <translation>教导关节相对移动坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P1_NOTSET</source>
+        <translation>教导弧线轨迹运动起点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P2_NOTSET</source>
+        <translation>教导弧线轨迹运动中间坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_ROUTE_ARC_P3_NOTSET</source>
+        <translation>教导弧线轨迹运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_TEACH_JOINT_P2_NOTSET</source>
+        <translation>教导关节运动终点坐标未设定</translation>
+    </message>
+    <message>
+        <source>ALARM_ROUTE_REPLAN_ERR</source>
+        <translation>轨迹重新规划失败</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_WAITE_ERR</source>
+        <translation>等待堆叠数据源超时</translation>
+    </message>
+    <message>
+        <source>ALARM_STACK_SOURCE_ERR</source>
+        <translation>堆叠数据源错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SINGLE_DEBUG_ERR</source>
+        <translation>单步/单循环调试程序设定错误</translation>
+    </message>
+    <message>
+        <source>ALARM_STORAGE_READ_ERR</source>
+        <translation>从主机FLASH读取的数据有错</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET_ERR</source>
+        <translation>与IO板通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_READ_ERR</source>
+        <translation>伺服绝对值位置读取失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_CRC_ERR</source>
+        <translation>伺服绝对值位置读取校验失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_FUNC_ERR</source>
+        <translation>伺服绝对值位置读取功能码错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ABS_OVERTIME_ERR</source>
+        <translation>伺服绝对值位置读取超时</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET2_ERR</source>
+        <translation>与IO板2通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET3_ERR</source>
+        <translation>与IO板3通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_IO_CONNET4_ERR</source>
+        <translation>与IO板4通讯失败</translation>
+    </message>
+    <message>
+        <source>ALARM_PROGRAM_CHANGE_ERR</source>
+        <translation>手控和主机教导程序不一致</translation>
+    </message>
+    <message>
+        <source>ALARM_OVER_CURRENT</source>
+        <translation>过电流报警</translation>
+    </message>
+    <message>
+        <source>ALARM_ZPULSER_ERR</source>
+        <translation>Z脉冲错误</translation>
+    </message>
+    <message>
+        <source>ALARM_NO_ZPULSER</source>
+        <translation>无Z脉冲</translation>
+    </message>
+    <message>
+        <source>ALARM_ORIGIN_DEVIATION</source>
+        <translation>原点偏移</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART1</source>
+        <translation>非安全区区域1报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART2</source>
+        <translation>非安全区区域2报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART3</source>
+        <translation>非安全区区域3报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART4</source>
+        <translation>非安全区区域4报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART5</source>
+        <translation>非安全区区域5报警</translation>
+    </message>
+    <message>
+        <source>ALARM_UNSAFEAREA_PART6</source>
+        <translation>非安全区区域6报警</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_INIT_FLT</source>
+        <translation>故障，上电初始化失败</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_EEPROM_FLT</source>
+        <translation>故障，EEPROM故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ADC_FLT</source>
+        <translation>故障，A/D转换器故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_EXECTM_FLT</source>
+        <translation>故障，系统运算引擎超时</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT1</source>
+        <translation>故障，散热器过热</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OV_FLT</source>
+        <translation>故障，主电源过压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_LV_FLT</source>
+        <translation>故障，主电源欠压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_MAIN_POWER_OFF</source>
+        <translation>故障，主电源关断</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_GATE_KILL_FLT</source>
+        <translation>故障，IGBT过流</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_TEMP_FLT2</source>
+        <translation>故障，IGBT过热</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_LD_FLT</source>
+        <translation>故障：过载</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_SPD_FLT</source>
+        <translation>故障：超速</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_FRQ_FLT</source>
+        <translation>故障：位置脉频率过高</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_POS_ERROR_OVER_FLT</source>
+        <translation>故障：位置偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_MTR_ENC_FLT</source>
+        <translation>故障：DSP同步故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_OVER_CUR_FLT</source>
+        <translation>故障：过流故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_AXIS_ENABLE_FORBID</source>
+        <translation>故障：伺服未使能</translation>
+    </message>
+    <message>
+        <source>ALARM_FPGA_ERR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>ALARM_ANALOG_CRC_ERR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>ALARM_ANALOG_OVERTIME_ERR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>1.Connector loose
+2.Wire is off
+3.Pannel is broken
+4.Host is broken</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>ALARM_POS_STABLE_ING</source>
+        <translation>位置稳定中</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_BATTERY_FLT</source>
+        <translation>编码器电池故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_ENCODER_FLT</source>
+        <translation>编码器通断故障</translation>
+    </message>
+    <message>
+        <source>ALARM_ECAN_TIMEOUT</source>
+        <translation>CAN通信超时</translation>
+    </message>
+    <message>
+        <source>ALARM_ECAN_READING</source>
+        <translation>CAN读数据出错</translation>
+    </message>
+    <message>
+        <source>ALARM_ECAN_WRITING</source>
+        <translation>CAN写数据出错</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_OVERCURRENT</source>
+        <translation>伺服过电流</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_OVERVOLTAGE</source>
+        <translation>主回路电过压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_LOWVOLTAGE</source>
+        <translation>主回路电欠压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_OUTPU_SHORTCIRCUIT</source>
+        <translation>伺服输出对地短路</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_POWER_ERROR</source>
+        <translation>电源线缺相警告</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_RESISTANCE_OVERLOAD</source>
+        <translation>制动电阻过载</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_OVERLOAD</source>
+        <translation>驱动器过载警告</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_OVERHEAT</source>
+        <translation>驱动器散热器过热</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_ACCESS</source>
+        <translation>驱动器参数存储故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_ACCESSABNORMA</source>
+        <translation>驱动器设置参数异常</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_LOCKED_ROTOR</source>
+        <translation>电机堵转</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_SERVO_ENCODER</source>
+        <translation>编码器内部故障</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_MOTOR_OVERSPEED</source>
+        <translation>电机超速</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_SERVO_POSERROR</source>
+        <translation>驱动器位置偏差过大</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_DRIVE_PULSE</source>
+        <translation>驱动器脉冲异常</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_HEARTBEAT</source>
+        <translation>CANopen节点保护或心跳超时</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_PDO_LENGTH</source>
+        <translation>CANopen PDO传输长度错误</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_RE_LIMIT</source>
+        <translation>伺服报警，到达反向开关</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_FAULT</source>
+        <translation>伺服报警</translation>
+    </message>
+    <message>
+        <source>ALARM_VENDER_UNLIKE</source>
+        <translation>厂家选择不一样</translation>
+    </message>
+    <message>
+        <source>ALARM_CTRLTYPE_UNLIKE</source>
+        <translation>控制方式选择不一样</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_CTRL_LOWVOLTAGE</source>
+        <translation>伺服控制电欠压</translation>
+    </message>
+    <message>
+        <source>ALARM_SERVO_MOTOR_POWEROFF</source>
+        <translation>电机动力线断线</translation>
+    </message>
+</context>
+<context>
     <name>AnalogControlEditor</name>
     <message>
         <source>Chanel</source>
@@ -352,6 +910,14 @@
     <message>
         <source>0:BaseCoord</source>
         <translation>0:世界坐标系</translation>
+    </message>
+    <message>
+        <source>Tool Select</source>
+        <translation>工具选择</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
     </message>
 </context>
 <context>
@@ -1172,6 +1738,37 @@
     <message>
         <source></source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>BarnLogicEditor</name>
+    <message>
+        <source>barnID</source>
+        <translation>料仓号</translation>
+    </message>
+    <message>
+        <source>Barn status</source>
+        <translation>料仓状态</translation>
+    </message>
+    <message>
+        <source>stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>start</source>
+        <translation>启动</translation>
+    </message>
+    <message>
+        <source>Up</source>
+        <translation>上升</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下降</translation>
+    </message>
+    <message>
+        <source>Delay</source>
+        <translation>延时</translation>
     </message>
 </context>
 <context>
@@ -2165,6 +2762,54 @@
         <source>delay:</source>
         <translation>延时:</translation>
     </message>
+    <message>
+        <source>Barn</source>
+        <translation>料仓</translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation>控制</translation>
+    </message>
+    <message>
+        <source>barnID</source>
+        <translation>料仓号</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>Up</source>
+        <translation>上升</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下降</translation>
+    </message>
+    <message>
+        <source>delay</source>
+        <translation>延时</translation>
+    </message>
+    <message>
+        <source>world coord</source>
+        <translation>世界坐标系</translation>
+    </message>
+    <message>
+        <source>Switch Tool</source>
+        <translation>切换工具</translation>
+    </message>
+    <message>
+        <source>toolID</source>
+        <translation>工具</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -2199,6 +2844,14 @@
     <message>
         <source>parabolaMove</source>
         <translation>正弦运动</translation>
+    </message>
+    <message>
+        <source>barnCtrl</source>
+        <translation>料仓控制</translation>
+    </message>
+    <message>
+        <source>switchTool</source>
+        <translation>切换工具</translation>
     </message>
 </context>
 <context>
@@ -2554,6 +3207,14 @@
     <message>
         <source>text</source>
         <translation>接收的内容</translation>
+    </message>
+    <message>
+        <source>auto connect</source>
+        <translation>自动重连</translation>
+    </message>
+    <message>
+        <source>time</source>
+        <translation>间隔时间</translation>
     </message>
 </context>
 <context>
@@ -3502,6 +4163,86 @@ please chose!</source>
     <message>
         <source>Output</source>
         <translation>输出</translation>
+    </message>
+    <message>
+        <source>Barn</source>
+        <translation type="unfinished">料仓</translation>
+    </message>
+    <message>
+        <source>Up</source>
+        <translation>上极限</translation>
+    </message>
+    <message>
+        <source>Down</source>
+        <translation>下极限</translation>
+    </message>
+    <message>
+        <source>motorUp</source>
+        <translation>电机上升</translation>
+    </message>
+    <message>
+        <source>motorDown</source>
+        <translation>电机下降</translation>
+    </message>
+    <message>
+        <source>sensor</source>
+        <translation>物料感应</translation>
+    </message>
+    <message>
+        <source>sensor Dir</source>
+        <translation>反向感应</translation>
+    </message>
+    <message>
+        <source>is wait</source>
+        <translation>等待</translation>
+    </message>
+    <message>
+        <source>wait signal</source>
+        <translation>等待信号</translation>
+    </message>
+    <message>
+        <source>wait Dir</source>
+        <translation>等待反向</translation>
+    </message>
+    <message>
+        <source>Logic</source>
+        <translation>逻辑</translation>
+    </message>
+    <message>
+        <source>Define</source>
+        <translation>定义</translation>
+    </message>
+    <message>
+        <source>Barn Type</source>
+        <translation>料仓类型</translation>
+    </message>
+    <message>
+        <source>UpBarn</source>
+        <translation>上行料仓</translation>
+    </message>
+    <message>
+        <source>DownBarn</source>
+        <translation>下行料仓</translation>
+    </message>
+    <message>
+        <source>is auto barn</source>
+        <translation>自动料仓逻辑</translation>
+    </message>
+    <message>
+        <source>Please input the new barn name</source>
+        <translation>请输入料仓名称</translation>
+    </message>
+    <message>
+        <source>Barn Name</source>
+        <translation>料仓名称</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -5527,7 +6268,22 @@ You just need to set the count configs after this setting.</source>
     <name>SwitchCoordEditor</name>
     <message>
         <source>coordID</source>
-        <translation>工作台坐标系ID</translation>
+        <translation type="unfinished">工作台坐标系</translation>
+    </message>
+    <message>
+        <source>world coord</source>
+        <translation>世界坐标系</translation>
+    </message>
+</context>
+<context>
+    <name>SwitchToolEditor</name>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>toolID</source>
+        <translation>工具</translation>
     </message>
 </context>
 <context>
@@ -6526,7 +7282,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>text</source>
-        <translation type="unfinished">接收的内容</translation>
+        <translation type="obsolete">接收的内容</translation>
     </message>
     <message>
         <source>Set to P2</source>
@@ -6571,6 +7327,34 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>OK</source>
         <translation>确定</translation>
+    </message>
+    <message>
+        <source>newBtn</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>deleteBtn</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>toolName</source>
+        <translation>工具名称</translation>
+    </message>
+    <message>
+        <source>Tool Type Sel</source>
+        <translation>标定类型选择</translation>
+    </message>
+    <message>
+        <source>Set to P</source>
+        <translation>设为点</translation>
+    </message>
+    <message>
+        <source>confirmBtn</source>
+        <translation>确定修改</translation>
+    </message>
+    <message>
+        <source>{0}:{1}</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

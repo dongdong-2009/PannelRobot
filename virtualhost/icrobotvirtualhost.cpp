@@ -235,6 +235,30 @@ bool ICRobotVirtualhost::sendMoldToolCoordDef(ICVirtualHostPtr hostPtr,const QVe
     return true;
 }
 
+bool ICRobotVirtualhost::sendMoldToolCalibrationDef(ICVirtualHostPtr hostPtr,const QVector<quint32> & data)
+{
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetAddr(ICAddr_System_Retain_62);
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetData(data);
+    toSentFrame->SetLength(data.size());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+    return true;
+}
+
+bool ICRobotVirtualhost::sendIOBarnLogicDef(ICVirtualHostPtr hostPtr,const QVector<quint32> & data)
+{
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetAddr(ICAddr_System_Retain_60);
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_WriteAddr);
+    toSentFrame->SetData(data);
+    toSentFrame->SetLength(data.size());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+    return true;
+}
+
 bool ICRobotVirtualhost::SendMoldCountersDef(ICVirtualHostPtr hostPtr, const QVector<QVector<quint32> > &data)
 {
     for(int i = 0; i < data.size(); ++i)

@@ -128,15 +128,15 @@ Rectangle {
         axis.push({"axisItem":m7Axis,  "servoAction":actions.F_CMD_FINE_ZERO});
 
 
-        for(var i=0;i<7;++i){
+        for(var i=0;i<8;++i){
             axis[i].axisItem.setTypeVisible(0,false);
             axis[i].axisItem.setTypeVisible(1,false);
+            axis[i].axisItem.setTypeVisible(4,false);
         }
 
         pData.axisEditors = axis;
         AxisDefine.registerMonitors(continer);
         onAxisDefinesChanged();
-
     }
     function onAxisDefinesChanged(){
         m0Axis.visible = AxisDefine.axisInfos[0].visiable;

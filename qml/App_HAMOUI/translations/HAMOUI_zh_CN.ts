@@ -3359,6 +3359,14 @@
         <source>Safe</source>
         <translation>保存</translation>
     </message>
+    <message>
+        <source>type5</source>
+        <translation>中间原点</translation>
+    </message>
+    <message>
+        <source>type6</source>
+        <translation>近似原点</translation>
+    </message>
 </context>
 <context>
     <name>OutputActionEditor</name>

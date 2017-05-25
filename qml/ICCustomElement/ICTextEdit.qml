@@ -2,10 +2,17 @@ import QtQuick 1.1
 
 FocusScope{
     property alias text: input.text
+    property bool isNumberOnly: false
+    property bool isNeedBorder: true
+    property bool isTransparent : false
+    property alias inputHorizontalAlignment: input.horizontalAlignment
+    property alias inputVerticalAlignment: input.verticalAlignment
     x: rectangle.x
     y: rectangle.y
     width: 80
     height: 24
+
+    signal inputClicked()
 
     function isEmpty(){
         return text.length == 0;
@@ -13,8 +20,9 @@ FocusScope{
 
     Rectangle {
         id:rectangle
+        color: isTransparent?"transparent":"white"
         border.color: "gray"
-        border.width: 1
+        border.width: isNeedBorder?1:0
         width: parent.width
         height: parent.height
         TextEdit{
@@ -25,13 +33,13 @@ FocusScope{
                 if(isActive){
                     var p = parent.mapToItem(null, input.x, input.y);
 
-                    virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,false);
+                    virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
 
                     rectangle.color = "green";
                     virtualKeyboard.commit.connect(onCommit);
                     virtualKeyboard.reject.connect(onReject);
                 }else{
-                    rectangle.color = "white";
+                    rectangle.color = isTransparent?"transparent":"white";
                     virtualKeyboard.commit.disconnect(onCommit);
                     virtualKeyboard.reject.disconnect(onReject);
 
@@ -63,6 +71,7 @@ FocusScope{
             anchors.fill: parent
             onClicked: {
                 input.focus = true;
+                inputClicked();
             }
         }
     }

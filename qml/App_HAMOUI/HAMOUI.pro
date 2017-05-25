@@ -17,7 +17,8 @@ DISTFILES += \
     AlarmInfo.js \
     teach/extents/BarnLogicEditor.qml \
     ToolsCalibration.js \
-    teach/extents/SwitchToolEditor.qml
+    teach/extents/SwitchToolEditor.qml \
+    settingpages/QKInfo.js
 
 
 

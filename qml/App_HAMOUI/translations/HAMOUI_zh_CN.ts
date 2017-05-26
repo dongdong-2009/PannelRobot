@@ -2185,6 +2185,26 @@
         <source>RunningMode</source>
         <translation>自动运行中</translation>
     </message>
+    <message>
+        <source>Vision Data</source>
+        <translation>视觉</translation>
+    </message>
+    <message>
+        <source>templet number</source>
+        <translation>模板号</translation>
+    </message>
+    <message>
+        <source>color number</source>
+        <translation>颜色编号</translation>
+    </message>
+    <message>
+        <source>simi value</source>
+        <translation>相似度</translation>
+    </message>
+    <message>
+        <source>vision Value</source>
+        <translation>值</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -4248,6 +4268,14 @@ please chose!</source>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
+    <message>
+        <source>func use in this mode</source>
+        <translation>功能在勾选模式下有效</translation>
+    </message>
+    <message>
+        <source>InMode</source>
+        <translation>在模式中</translation>
+    </message>
 </context>
 <context>
     <name>ProgramActionMenu</name>
@@ -4710,6 +4738,117 @@ please chose!</source>
     <message>
         <source>Read EP</source>
         <translation>读EP</translation>
+    </message>
+    <message>
+        <source>para page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>status page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>para config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>read e2prom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>write e2prom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>common ctrl para</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>para name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation type="unfinished">地址</translation>
+    </message>
+    <message>
+        <source>write val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>read val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PwmPeriod</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>describe1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DriverCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PWM period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>refresh en</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>clear alarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>alarm name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>alarm val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>alarmName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>inStop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>inRunning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>inAlarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QKInfo</name>
+    <message>
+        <source>PwmPeriod</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SampleStartDelay</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7042,7 +7181,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 6</source>
-        <translation type="unfinished">近似原点</translation>
+        <translation>近似原点</translation>
+    </message>
+    <message>
+        <source>templetID</source>
+        <translation>模板号</translation>
+    </message>
+    <message>
+        <source>colorID</source>
+        <translation>颜色编号</translation>
+    </message>
+    <message>
+        <source>simiValue</source>
+        <translation>相似度</translation>
     </message>
 </context>
 <context>

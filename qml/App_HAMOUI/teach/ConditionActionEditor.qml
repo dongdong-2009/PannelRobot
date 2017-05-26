@@ -119,6 +119,10 @@ Item {
                 leftAddr = toHcAddr(alarmArea.alarmAddr);
                 immValue = alarmNum.configValue;
             }
+            else if(visionData.isChecked){
+                leftAddr = toHcAddr(whichVision.checkedIndex + 896);
+                immValue = visionValue.configValue;
+            }
             ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
                                                     leftAddr,
                                                     immValue,
@@ -355,6 +359,10 @@ Item {
                             text:qsTr("Alarm Data")
                         }
                         ICCheckBox{
+                            id:visionData
+                            text:qsTr("Vision Data")
+                        }
+                        ICCheckBox{
                             id:constData
                             text:qsTr("Const Data")
                         }
@@ -483,6 +491,36 @@ Item {
                             visible: alarmData.isChecked
                             configName: qsTr("alarmNum")
                             configValue: "0"
+                        }
+                    }
+
+                    Column{
+                        id:visionArea
+                        visible: visionData.isChecked
+                        spacing: 4
+                        ICButtonGroup{
+                            id:whichVision
+                            spacing: 12
+                            mustChecked: true
+                            checkedIndex: 0
+                            ICCheckBox{
+                                id:templetNumber
+                                text: qsTr("templet number")
+                                isChecked: true
+                            }
+                            ICCheckBox{
+                                id:colorNumber
+                                text: qsTr("color number")
+                            }
+                            ICCheckBox{
+                                id:simiValue
+                                text:qsTr("simi value")
+                            }
+                        }
+                        ICConfigEdit{
+                            id:visionValue
+                            configName: qsTr("vision Value")
+                            configValue:"0"
                         }
                     }
 

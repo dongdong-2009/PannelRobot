@@ -46,8 +46,8 @@ var qkParaInfo =
     {"name":qsTr("Kiid"),"addr":62,"wVal":1500,"decs":qsTr("default value:1500,instruction:16 decimal places")},
     {"name":qsTr("Kpiq"),"addr":63,"wVal":2000,"decs":qsTr("default value:2000,instruction:11 decimal places")},
     {"name":qsTr("Kiiq"),"addr":64,"wVal":1500,"decs":qsTr("default value:1500,instruction:16 decimal places")},
-    {"name":qsTr("Ked"),"addr":65,"wVal":0,"decs":qsTr("default value:0,instruction:For PMSM, Ked=8192 * * * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value")},
-    {"name":qsTr("Keq"),"addr":66,"wVal":0,"decs":qsTr("default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI")},
+    {"name":qsTr("Ked"),"addr":65,"wVal":0,"decs":qsTr("default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value")},
+    {"name":qsTr("Keq"),"addr":66,"wVal":0,"decs":qsTr("default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM  * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI")},
     {"name":qsTr("Ktg"),"addr":67,"wVal":0,"decs":qsTr("default value:0,instruction:Ktg=2^14×(0~400%)")},
     {"name":qsTr("Krt"),"addr":68,"wVal":0,"decs":qsTr("default value:0,instruction:Krt=2^22/(tr*fs)，Among them, FS is the current loop sampling frequency (Hz), and TR is the rotor time constant (s) of induction motors")},
     {"name":qsTr("RatedFreq"),"addr":69,"wVal":0,"decs":qsTr("default value:0,instruction:RatedFreq=2^15*RatedRPM/MaxRPM")},
@@ -94,6 +94,6 @@ var qkParaInfo =
 var qkStatusInfo =
 [
     {"name":qsTr("SystemStatus"),"addr":0,"decs":qsTr("describe")},
-    {"name":qsTr("FaultStatus"),"addr":1,"decs":qsTr("(0- no fault, 1- fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D fault converter, operation engine bit3: system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage bit7 bit6: main power supply, the main power supply is off, bit8:IGBT flow, bit9: IGBT bit10: bit11: overheating, overload, overspeed, bit12: position command pulse frequency is too high, the bit13: position error is too large, bit14:DSP bit15: synchronous fault overcurrent fault.")},
-    {"name":qsTr("WorkingStatus"),"addr":2,"decs":qsTr("Bit3: servo control enable status: 0- invalid state, 1- valid state")},
+    {"name":qsTr("FaultStatus"),"addr":1,"decs":qsTr("(0 - no fault, 1 - fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D converter fault, bit3:operation engine system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage  bit6: main power supply, bit7:the main power supply is off, bit8:IGBT overcurrent, bit9: IGBT overheating, bit10:overload, bit11:overspeed, bit12: position command pulse frequency is too high, bit13: the position error is too large, bit14:DSP synchronous fault,bit15:  overcurrent fault.")},
+    {"name":qsTr("WorkingStatus"),"addr":2,"decs":qsTr("Bit3: servo control enable status(0 - servo off, 1 - servo on)")},
 ];

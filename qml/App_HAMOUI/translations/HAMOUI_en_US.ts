@@ -8546,6 +8546,11 @@ You just need to set the count configs after this setting.</source>
         <source>Analog En</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../settingpages/StructConfigs.qml" line="280"/>
+        <source>IO Board Num</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SwitchCoordEditor</name>
@@ -8676,12 +8681,7 @@ You just need to set the count configs after this setting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="70"/>
-        <source>IO Board Num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingpages/SystemConfigs.qml" line="76"/>
+        <location filename="../settingpages/SystemConfigs.qml" line="71"/>
         <source>Clear Program Btn</source>
         <translation type="unfinished"></translation>
     </message>

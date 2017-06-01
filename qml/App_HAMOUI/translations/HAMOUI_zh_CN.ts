@@ -7122,6 +7122,10 @@ You just need to set the count configs after this setting.</source>
         <source>Analog En</source>
         <translation>模拟量模块使能</translation>
     </message>
+    <message>
+        <source>IO Board Num</source>
+        <translation>IO板数</translation>
+    </message>
 </context>
 <context>
     <name>SwitchCoordEditor</name>

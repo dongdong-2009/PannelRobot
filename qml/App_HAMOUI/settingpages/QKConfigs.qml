@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "../../ICCustomElement"
 import "../configs/AxisDefine.js" as AxisDefine
+import "QKInfo.js" as QKInfo
 
 Item {
     id: root
@@ -110,29 +111,29 @@ Item {
                     Component.onCompleted: {
                         mainItems.append({"mainItemName":qsTr("common ctrl para")});
 
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[0].name + qsTr("axis")+qsTr("distributed para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[0].name + qsTr("axis")+qsTr("current loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[0].name + qsTr("axis")+qsTr("speed loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[0].name + qsTr("axis")+qsTr("position ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[0].name + qsTr("axis")+qsTr("Initial angle para")});
 
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[1].name + qsTr("axis")+qsTr("distributed para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[1].name + qsTr("axis")+qsTr("current loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[1].name + qsTr("axis")+qsTr("speed loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[1].name + qsTr("axis")+qsTr("position ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[1].name + qsTr("axis")+qsTr("Initial angle para")});
 
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[2].name + qsTr("axis")+qsTr("distributed para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[2].name + qsTr("axis")+qsTr("current loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[2].name + qsTr("axis")+qsTr("speed loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[2].name + qsTr("axis")+qsTr("position ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[2].name + qsTr("axis")+qsTr("Initial angle para")});
 
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        mainItems.append({"mainItemName":qsTr("common ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[3].name + qsTr("axis")+qsTr("distributed para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[3].name + qsTr("axis")+qsTr("current loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[3].name + qsTr("axis")+qsTr("speed loop para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[3].name + qsTr("axis")+qsTr("position ctrl para")});
+                        mainItems.append({"mainItemName":AxisDefine.axisInfos[3].name + qsTr("axis")+qsTr("Initial angle para")});
                     }
                 }
                 ICListView{
@@ -212,7 +213,7 @@ Item {
                 Text {
                     id:descTextTitle
                     height: parent.height
-                    width: parent.width - paraSubView.tableMargin[0] -paraSubView.tableMargin[1] -paraSubView.tableMargin[2] -paraSubView.tableMargin[3]
+                    width: parent.width - paraSubView.tableMargin[0] -paraSubView.tableMargin[1] -paraSubView.tableMargin[2] -paraSubView.tableMargin[3] -8
                     horizontalAlignment:Text.AlignHCenter
                     verticalAlignment:Text.AlignVCenter
                     text: qsTr("describe")
@@ -230,6 +231,7 @@ Item {
             }
             Text{
                 id:descText
+                wrapMode: Text.WordWrap
                 anchors.top:titleLine.bottom
                 anchors.topMargin: 2
                 anchors.left: paraSubView.right
@@ -240,127 +242,169 @@ Item {
             ListModel{
                 id:subItems0
                 Component.onCompleted: {
-                    subItems0.append({"paraName":qsTr("PwmPeriod"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe1")});
+                    for(var i=0;i<9;++i){
+                        subItems0.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems1
                 Component.onCompleted: {
-                    subItems1.append({"paraName":qsTr("DriverCtrl"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=9;i<25;++i){
+                        subItems1.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems2
                 Component.onCompleted: {
-                    subItems2.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=25;i<50;i++){
+                        subItems2.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems3
                 Component.onCompleted: {
-                    subItems3.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=50;i<66;i++){
+                        subItems3.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems4
                 Component.onCompleted: {
-                    subItems4.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=66;i<76;i++){
+                       subItems4.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems5
                 Component.onCompleted: {
-                    subItems5.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=76;i<82;i++){
+                        subItems5.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems6
                 Component.onCompleted: {
-                    subItems6.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=9;i<25;++i){
+                        subItems6.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+1,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems7
                 Component.onCompleted: {
-                    subItems7.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=25;i<50;i++){
+                        subItems7.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+1,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems8
                 Component.onCompleted: {
-                    subItems8.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=50;i<66;i++){
+                        subItems8.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+1,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems9
                 Component.onCompleted: {
-                    subItems9.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=66;i<76;i++){
+                       subItems9.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+1,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems10
                 Component.onCompleted: {
-                    subItems10.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=76;i<82;i++){
+                        subItems10.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+1,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems11
                 Component.onCompleted: {
-                    subItems11.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=9;i<25;++i){
+                        subItems11.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+2,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems12
                 Component.onCompleted: {
-                    subItems12.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=25;i<50;i++){
+                        subItems12.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+2,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems13
                 Component.onCompleted: {
-                    subItems13.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=50;i<66;i++){
+                        subItems13.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+2,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems14
                 Component.onCompleted: {
-                    subItems14.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=66;i<76;i++){
+                       subItems14.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+2,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems15
                 Component.onCompleted: {
-                    subItems15.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=76;i<82;i++){
+                        subItems15.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+2,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems16
                 Component.onCompleted: {
-                    subItems16.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=9;i<25;++i){
+                        subItems16.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+3,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems17
                 Component.onCompleted: {
-                    subItems17.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=25;i<50;i++){
+                        subItems17.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+3,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems18
                 Component.onCompleted: {
-                    subItems18.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=50;i<66;i++){
+                        subItems18.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+3,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems19
                 Component.onCompleted: {
-                    subItems19.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=66;i<76;i++){
+                       subItems19.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+3,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ListModel{
                 id:subItems20
                 Component.onCompleted: {
-                    subItems20.append({"paraName":qsTr("PWM period"),"addr":0,"wVal":0,"rVal":0,"desc":qsTr("describe")});
+                    for(var i=76;i<82;i++){
+                        subItems20.append({"paraName":QKInfo.qkParaInfo[i].name,"addr":QKInfo.qkParaInfo[i].addr+3,"wVal":QKInfo.qkParaInfo[i].wVal,"rVal":0,"desc":QKInfo.qkParaInfo[i].decs});
+                    }
                 }
             }
             ICListView{
@@ -458,6 +502,11 @@ Item {
                         onInputClicked: {
                             paraSubView.currentIndex = index;
                         }
+                        onEditFinished: {
+                            paraSubView.model.setProperty(index,"wVal",parseInt(text));
+                            console.log(addr,wVal,text);
+                            panelRobotController.writeMultipleQkPara(addr,1,JSON.stringify(wVal));
+                        }
                     }
                     Text {
                         id:rValText
@@ -475,6 +524,9 @@ Item {
                         wide: 1
                         linelong: parent.width
                         direction:"horizontal"
+                    }
+                    Component.onCompleted: {
+//                        wValText.textChanged.connect(wValText.onConfigChanged);
                     }
                 }
                 onCurrentItemChanged: {
@@ -522,10 +574,10 @@ Item {
                 ListModel{
                     id:statusMainItems
                     Component.onCompleted: {
-                        statusMainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        statusMainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        statusMainItems.append({"mainItemName":qsTr("common ctrl para")});
-                        statusMainItems.append({"mainItemName":qsTr("common ctrl para")});
+                        statusMainItems.append({"mainItemName":AxisDefine.axisInfos[0].name + qsTr("axis")+qsTr("alarm para")});
+                        statusMainItems.append({"mainItemName":AxisDefine.axisInfos[1].name + qsTr("axis")+qsTr("alarm para")});
+                        statusMainItems.append({"mainItemName":AxisDefine.axisInfos[2].name + qsTr("axis")+qsTr("alarm para")});
+                        statusMainItems.append({"mainItemName":AxisDefine.axisInfos[3].name + qsTr("axis")+qsTr("alarm para")});
                     }
                 }
                 ICListView{
@@ -598,8 +650,9 @@ Item {
                 }
                 Text {
                     id:alarmdescTextTitle
+                    wrapMode: Text.WordWrap
                     height: parent.height
-                    width: parent.width - statusSubView.tableMargin[0] -statusSubView.tableMargin[1]
+                    width: parent.width - statusSubView.tableMargin[0] -statusSubView.tableMargin[1]- 8
                     horizontalAlignment:Text.AlignHCenter
                     verticalAlignment:Text.AlignVCenter
                     text: qsTr("describe")
@@ -623,29 +676,90 @@ Item {
                 anchors.leftMargin: 2
                 height: statusSubView.height
                 width:descTextTitle.width
+                text: qsTr("0- no fault, 1- fault")
             }
             ListModel{
                 id:spSubItems0
                 Component.onCompleted: {
-                    spSubItems0.append({"alarmName":qsTr("alarmName"),"addr":0,"alarmVal":0,"desc":qsTr("describe1")});
+                    spSubItems0.append({"alarmName":qsTr("InitFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("EepromFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("AdcFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("ExecTmFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OverTempFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OvFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("LvFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("MainPowerOff"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("GateKillFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OvrTempFlt2"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OvrLdFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OvrSpdFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OvrFrqFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("PosErrOvrFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("MtrEncFlt"),"alarmVal":0});
+                    spSubItems0.append({"alarmName":qsTr("OvrCrntFlt"),"alarmVal":0});
                 }
             }
             ListModel{
                 id:spSubItems1
                 Component.onCompleted: {
-                    spSubItems1.append({"alarmName":qsTr("alarmName"),"addr":0,"alarmVal":0,"desc":qsTr("describe")});
+                    spSubItems1.append({"alarmName":qsTr("InitFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("EepromFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("AdcFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("ExecTmFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OverTempFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OvFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("LvFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("MainPowerOff"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("GateKillFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OvrTempFlt2"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OvrLdFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OvrSpdFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OvrFrqFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("PosErrOvrFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("MtrEncFlt"),"alarmVal":0});
+                    spSubItems1.append({"alarmName":qsTr("OvrCrntFlt"),"alarmVal":0});
                 }
             }
             ListModel{
                 id:spSubItems2
                 Component.onCompleted: {
-                    spSubItems2.append({"alarmName":qsTr("alarmName"),"addr":0,"alarmVal":0,"desc":qsTr("describe")});
+                    spSubItems2.append({"alarmName":qsTr("InitFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("EepromFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("AdcFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("ExecTmFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OverTempFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OvFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("LvFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("MainPowerOff"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("GateKillFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OvrTempFlt2"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OvrLdFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OvrSpdFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OvrFrqFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("PosErrOvrFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("MtrEncFlt"),"alarmVal":0});
+                    spSubItems2.append({"alarmName":qsTr("OvrCrntFlt"),"alarmVal":0});
                 }
             }
             ListModel{
                 id:spSubItems3
                 Component.onCompleted: {
-                    spSubItems3.append({"alarmName":qsTr("alarmName"),"addr":0,"alarmVal":0,"desc":qsTr("describe")});
+                    spSubItems3.append({"alarmName":qsTr("InitFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("EepromFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("AdcFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("ExecTmFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OverTempFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OvFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("LvFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("MainPowerOff"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("GateKillFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OvrTempFlt2"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OvrLdFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OvrSpdFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OvrFrqFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("PosErrOvrFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("MtrEncFlt"),"alarmVal":0});
+                    spSubItems3.append({"alarmName":qsTr("OvrCrntFlt"),"alarmVal":0});
                 }
             }
             ICListView{
@@ -715,9 +829,9 @@ Item {
                         direction:"horizontal"
                     }
                 }
-                onCurrentItemChanged: {
-                    alarmDescText.text = model.get(currentIndex).desc;
-                }
+//                onCurrentItemChanged: {
+//                    alarmDescText.text = model.get(currentIndex).desc;
+//                }
             }
             Rectangle{
                 id:axisStatusRow

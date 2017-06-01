@@ -13,6 +13,7 @@ FocusScope{
     height: 24
 
     signal inputClicked()
+    signal editFinished();
 
     function isEmpty(){
         return text.length == 0;
@@ -36,13 +37,14 @@ FocusScope{
                     virtualKeyboard.openSoftPanel(p.x, p.y, input.width, input.height,isNumberOnly);
 
                     rectangle.color = "green";
+                    virtualKeyboard.commit.disconnect(onCommit);
+                    virtualKeyboard.reject.disconnect(onReject);
                     virtualKeyboard.commit.connect(onCommit);
                     virtualKeyboard.reject.connect(onReject);
                 }else{
                     rectangle.color = isTransparent?"transparent":"white";
                     virtualKeyboard.commit.disconnect(onCommit);
                     virtualKeyboard.reject.disconnect(onReject);
-
                 }
 
             }
@@ -51,7 +53,7 @@ FocusScope{
 //                console.log(text)
                 input.text = text;
                 input.focus = false;
-
+                editFinished();
             }
 
             function onReject(){

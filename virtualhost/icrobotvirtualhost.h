@@ -233,6 +233,8 @@ public:
     static QString HostVersion() { return hostVersion_;}
     static void LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<quint32> axisData);
     static quint32 MultiplexingConfig(int addr) { return multiplexingConfigs_.value(addr);}
+    static void WriteQkPara(ICVirtualHostPtr hostPtr, int addr, QVector<quint32> qkData);
+    static void WriteQkEeprom(ICVirtualHostPtr hostPtr, int addr, QVector<quint32> qkData);
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();

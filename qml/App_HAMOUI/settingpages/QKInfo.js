@@ -97,3 +97,4 @@ var qkStatusInfo =
     {"name":qsTr("FaultStatus"),"addr":1,"decs":qsTr("(0- no fault, 1- fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D fault converter, operation engine bit3: system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage bit7 bit6: main power supply, the main power supply is off, bit8:IGBT flow, bit9: IGBT bit10: bit11: overheating, overload, overspeed, bit12: position command pulse frequency is too high, the bit13: position error is too large, bit14:DSP bit15: synchronous fault overcurrent fault.")},
     {"name":qsTr("WorkingStatus"),"addr":2,"decs":qsTr("Bit3: servo control enable status: 0- invalid state, 1- valid state")},
 ];
+

@@ -4741,99 +4741,175 @@ please chose!</source>
     </message>
     <message>
         <source>para page</source>
-        <translation type="unfinished"></translation>
+        <translation>参数访问</translation>
     </message>
     <message>
         <source>status page</source>
-        <translation type="unfinished"></translation>
+        <translation>系统状态</translation>
     </message>
     <message>
         <source>para config</source>
-        <translation type="unfinished"></translation>
+        <translation>参数配置</translation>
     </message>
     <message>
         <source>read e2prom</source>
-        <translation type="unfinished"></translation>
+        <translation>EEPROM读</translation>
     </message>
     <message>
         <source>write e2prom</source>
-        <translation type="unfinished"></translation>
+        <translation>EEPROM写</translation>
     </message>
     <message>
         <source>common ctrl para</source>
-        <translation type="unfinished"></translation>
+        <translation>通用控制参数</translation>
     </message>
     <message>
         <source>para name</source>
-        <translation type="unfinished"></translation>
+        <translation>参数名称</translation>
     </message>
     <message>
         <source>addr</source>
-        <translation type="unfinished">地址</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>write val</source>
-        <translation type="unfinished"></translation>
+        <translation>写入值</translation>
     </message>
     <message>
         <source>read val</source>
-        <translation type="unfinished"></translation>
+        <translation>读出值</translation>
     </message>
     <message>
         <source>describe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>PwmPeriod</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>describe1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>DriverCtrl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>PWM period</source>
-        <translation type="unfinished"></translation>
+        <translation>说明</translation>
     </message>
     <message>
         <source>refresh en</source>
-        <translation type="unfinished"></translation>
+        <translation>刷新使能</translation>
     </message>
     <message>
         <source>clear alarm</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除报警</translation>
     </message>
     <message>
         <source>alarm name</source>
-        <translation type="unfinished"></translation>
+        <translation>故障名称</translation>
     </message>
     <message>
         <source>alarm val</source>
-        <translation type="unfinished"></translation>
+        <translation>故障值</translation>
     </message>
     <message>
         <source>alarmName</source>
-        <translation type="unfinished"></translation>
+        <translation>故障名称</translation>
     </message>
     <message>
         <source>inStop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>inRunning</source>
-        <translation type="unfinished"></translation>
+        <translation>运行</translation>
     </message>
     <message>
         <source>inAlarm</source>
-        <translation type="unfinished"></translation>
+        <translation>故障</translation>
     </message>
     <message>
         <source>axis</source>
-        <translation type="unfinished"></translation>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>distributed para</source>
+        <translation>分布式</translation>
+    </message>
+    <message>
+        <source>current loop para</source>
+        <translation>电流环</translation>
+    </message>
+    <message>
+        <source>speed loop para</source>
+        <translation>速度环</translation>
+    </message>
+    <message>
+        <source>position ctrl para</source>
+        <translation>位置环</translation>
+    </message>
+    <message>
+        <source>Initial angle para</source>
+        <translation>转子初始角</translation>
+    </message>
+    <message>
+        <source>alarm para</source>
+        <translation>故障</translation>
+    </message>
+    <message>
+        <source>0- no fault, 1- fault</source>
+        <translation>0-无故障，1-发生故障</translation>
+    </message>
+    <message>
+        <source>InitFlt</source>
+        <translation>上电初始化失败</translation>
+    </message>
+    <message>
+        <source>EepromFlt</source>
+        <translation>EEPROM故障</translation>
+    </message>
+    <message>
+        <source>AdcFlt</source>
+        <translation>A/D转换器故障</translation>
+    </message>
+    <message>
+        <source>ExecTmFlt</source>
+        <translation>系统运算引擎故障</translation>
+    </message>
+    <message>
+        <source>OverTempFlt</source>
+        <translation>散热器过热</translation>
+    </message>
+    <message>
+        <source>OvFlt</source>
+        <translation>主电源过压</translation>
+    </message>
+    <message>
+        <source>LvFlt</source>
+        <translation>主电源欠压</translation>
+    </message>
+    <message>
+        <source>MainPowerOff</source>
+        <translation>主电源关断</translation>
+    </message>
+    <message>
+        <source>GateKillFlt</source>
+        <translation>IGBT过流</translation>
+    </message>
+    <message>
+        <source>OvrTempFlt2</source>
+        <translation>IGBT过热</translation>
+    </message>
+    <message>
+        <source>OvrLdFlt</source>
+        <translation>过载</translation>
+    </message>
+    <message>
+        <source>OvrSpdFlt</source>
+        <translation>超速</translation>
+    </message>
+    <message>
+        <source>OvrFrqFlt</source>
+        <translation>位置命令脉冲频率过高</translation>
+    </message>
+    <message>
+        <source>PosErrOvrFlt</source>
+        <translation>位置偏差过大</translation>
+    </message>
+    <message>
+        <source>MtrEncFlt</source>
+        <translation>DSP同步故障</translation>
+    </message>
+    <message>
+        <source>OvrCrntFlt</source>
+        <translation>过流故障</translation>
     </message>
 </context>
 <context>
@@ -4844,10 +4920,642 @@ please chose!</source>
     </message>
     <message>
         <source>describe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">说明</translation>
     </message>
     <message>
         <source>SampleStartDelay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1990,instruction:IGBT switching frequency (Hz) clock frequency =0.5* system (PwmPeriod / 1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:10,instruction:A/D sampling delay time (NS) = system master clock cycle *SampleStartDela</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdPosLpRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:516,instruction:Speed loop sampling frequency (Hz) = current loop sampling frequency /SpdLpRate. position loop sampling frequency (Hz) = speed loop sampling frequency /PosLpRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ModScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:3000,instruction:ModScl=3×(PwmPeriod+1)/2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PwmDeadTm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:119,instruction:IGBT Dead Time(ns)=System master clock cycle(ns)×(PwmDeadTm+1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SystemConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:24,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LvAlmMonEnbl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:0-Prohibit undervoltage alarm function，1-Allow undervoltage alarm function</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DcBusOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:4864,instruction:DcBusOffset=The DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BusConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DriverCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:7,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DBCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2916,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BrkCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:25700,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InPortCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2194,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OutPortConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:512,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SystemCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ModelControl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CmdControl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VCmdOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RotEnControl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:33,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RotEncMaxCnt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:16383,instruction:RotEnc_MaxCnt=4 * PPR-1, where PPR is the number of pulses per turn per encoder for the encoder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RotEncZCnt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1250,instruction:An electrical angle of an Z pulse opposite the negative potential of U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LnrEncCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EncDivCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:9,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EncDivNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:EncDiv_Num/EncDiv_Den≥1；Otherwise, the output pulse is uncertain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EncDivDen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IfbU_Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:IfbU_Offset=U phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IfbW_Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:IfbW_Offset=W phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IdScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:5148,instruction:for PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Iqscl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:5148,instruction:for PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ElecAngScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:4096,instruction:ElecAngScl=P x 4096 x 2^12/ (4 * PPR), where P is the polar logarithm, and PPR is the number of pulses per phase per turn of the encoder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SlipGain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:For IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>K1Notch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:65535,instruction:K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs,Where FS is the current loop sampling frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>K2Notch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs,Where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ktf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Ktf=2^16 * (1-tan (omega c/2)) / (1 Tan (omega c/2)), Omega c=2 pi * fc/fs, where FS is the current loop sampling frequency, and FC is the -3dB clipping frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OvrLdLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:21845,instruction:OvrLdLim=32768/coeff，Coeff for overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TrqLimp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:12288,instruction:TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TrqLimN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:-12288,instruction:TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IErrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1024,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kpid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2000,instruction:11 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kiid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1500,instruction:16 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kpiq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kiiq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * * * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ktg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Ktg=2^14×(0~400%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Krt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Krt=2^22/(tr*fs)，Among them, FS is the current loop sampling frequency (Hz), and TR is the rotor time constant (s) of induction motors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RatedFreq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:RatedFreq=2^15*RatedRPM/MaxRPM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VdLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * D axis /1.64676</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VqLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * Q axis /1.64676</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BrkZeroSpd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:16384,instruction:Maximum current setting, motor rated =4096</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:3200,instruction:SpdScl=2^15 x 60 x fclk/ (4 * PPR * MaxRPM * 256), wherein fclk is the system master clock frequency, PPR is the encoder line number, and MaxRPM is the highest speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NilMtrSpdDly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:30,instruction:NilMtrSpdDly= speed ring sampling frequency * 60/ (4 * PPR * MinRPM), in which PPR is the encoder line, and MinRPM is the minimum speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NilCmdSpdDly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:30,instruction:NilCmdSpdDly=NilMtrSpdDly×(Electronic gear ratio)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdCmp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:300,instruction:SpdCmp=2^15 * 60 * speed ring sampling frequency / (PPR * MaxRPM), in which PPR is the encoder line, and MaxRPM is the highest speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ZeroSpeed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, the speed is considered to be zero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdAccRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:256,instruction:8 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdDecRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kfg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Kfg=2^14×(0~400%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs,Among them, FS is the speed ring sampling frequency, and FC is -3dB clipping frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdLimP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:25000,instruction:SpdLimP=2^15×(0~100%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdLimN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:-25000,instruction:SpdLimN=-2^15×(0~100%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdErrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1990,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KpV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:100,instruction:5 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KiV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:200,instruction:13 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KfV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:65535,instruction:KfV=2^16×(0~100%)，Among them: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:100,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PulsSclNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PulsSclDen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PosErrOvrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:256,instruction:The actual limit is PosErrOvrLim * 256 pulse equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CoinLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:10,instruction:When the actual position deviation is less than CoinLim pulse equivalent, the position is considered to be complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>POvrTrvLimL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:65535,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>POvrTrvLimH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:32767,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOvrTrvLimL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOvrTrvLimH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:32768,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ksf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:-32768,instruction:Ksf=2^16×T/(T+1),The T= /Ts, which is the filter time constant Ts for the position loop sampling period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KpP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:10,instruction:5 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1.24,instruction:The motor encoders U, V, and W correspond to 001 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:208,instruction:The motor encoders U, V, and W correspond to 010 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1625,instruction:The motor encoders U, V, and W correspond to 011 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng100</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1875,instruction:The motor encoders U, V, and W correspond to 100 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng101</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1458,instruction:The motor encoders U, V, and W correspond to 101 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng110</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2292,instruction:The motor encoders U, V, and W correspond to 110 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SystemStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FaultStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(0- no fault, 1- fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D fault converter, operation engine bit3: system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage bit7 bit6: main power supply, the main power supply is off, bit8:IGBT flow, bit9: IGBT bit10: bit11: overheating, overload, overspeed, bit12: position command pulse frequency is too high, the bit13: position error is too large, bit14:DSP bit15: synchronous fault overcurrent fault.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WorkingStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bit3: servo control enable status: 0- invalid state, 1- valid state</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

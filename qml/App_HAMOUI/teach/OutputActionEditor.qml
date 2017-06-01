@@ -20,6 +20,7 @@ ExtentActionEditorBase {
     property int valveID:pdata == undefined? -1:pdata.valveID
     property bool pointStatus: statusGroup.checkedItem == onBox ? true : false
     property alias delay: delayEdit.configValue
+    property alias isWaitInput: isWaitInputCheck.isChecked
 
     property alias intervalType: always.isChecked
     property bool isBindingCount: count.configValue <= 0?false:true
@@ -111,6 +112,7 @@ ExtentActionEditorBase {
                     }
                 }
             }
+            isWaitInputCheck.isChecked = actionObject.isWaitInput;
         }
         else if(action === 201){
             if(actionObject.type >= 0 && actionObject.type <= 3){
@@ -401,6 +403,11 @@ ExtentActionEditorBase {
                     id:offBox
                     text: qsTr("OFF")
                 }
+            }
+            ICCheckBox{
+                id:isWaitInputCheck
+                text: qsTr("Wait Input")
+                visible: singleY.isChecked||holdDoubleY.isChecked
             }
             ICCheckBox{
                 id:always

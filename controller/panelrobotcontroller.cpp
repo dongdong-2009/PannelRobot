@@ -800,7 +800,7 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
         }
         ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
         mc->SetBareMachineConfigs(tmp);
-        qDebug()<<v;
+        qDebug()<<"v"<<v;
     }
     if(addr == 156)
     {

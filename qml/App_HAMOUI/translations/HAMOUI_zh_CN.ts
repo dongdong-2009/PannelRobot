@@ -2830,6 +2830,10 @@
         <source>None</source>
         <translation>无</translation>
     </message>
+    <message>
+        <source>wait input</source>
+        <translation>等待输入</translation>
+    </message>
 </context>
 <context>
     <name>ExtentActionEditor</name>
@@ -3406,6 +3410,10 @@
     <message>
         <source>Count Binding</source>
         <translation>计数器</translation>
+    </message>
+    <message>
+        <source>Wait Input</source>
+        <translation>等待输入</translation>
     </message>
 </context>
 <context>
@@ -7902,6 +7910,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>simiValue</source>
         <translation>相似度</translation>
+    </message>
+    <message>
+        <source>wait input</source>
+        <translation>等待输入</translation>
     </message>
 </context>
 <context>

@@ -852,7 +852,7 @@ void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem
     toSentFrame->SetAddr(ICAddr_System_Retain_7);
     toSentFrame->SetLength(2);
 
-    qDebug()<<item.toDataBuf();
+    qDebug()<<"valveItem"<<item.toDataBuf();
     toSentFrame->SetData(item.toDataBuf());
     hostPtr->AddCommunicationFrame(toSentFrame);
 }

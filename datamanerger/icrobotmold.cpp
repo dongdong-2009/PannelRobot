@@ -362,6 +362,7 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
     {
         item.append(ICUtility::doubleToInt(v->value("delay", 0).toDouble(), 1));
     }
+    item.append(v->value("isWaitInput", 0).toInt());
     if(item.at(1) == 9 || item.at(1) == 10)
     {
         bool isNormalX = v->value("isNormalX", 0).toBool();
@@ -369,6 +370,7 @@ int OutputActionCompiler(ICMoldItem & item, const QVariantMap* v)
             item[0] = F_CMD_IO_CHECK;
             item[1] = item[1]-9;
             item[3] = !v->value("xDir", 0).toBool();
+            item.pop_back();
         }
     }
     item.append(ICRobotMold::MoldItemCheckSum(item));

@@ -1103,6 +1103,7 @@ MouseArea{
         }
         ICComboBoxConfigEdit{
             id:toolSel
+            visible: false
             configNameWidth: coordSel.configNameWidth
             anchors.top: coordSel.bottom
             anchors.topMargin: 4

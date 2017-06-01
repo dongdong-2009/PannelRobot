@@ -74,7 +74,6 @@ Item {
             ICCheckBox{
                 id:parabolaMove
                 text: qsTr("parabolaMove")
-                visible: false
             }
             ICCheckBox{
                 id:barnCtrl
@@ -83,6 +82,7 @@ Item {
             ICCheckBox{
                 id:switchTool
                 text: qsTr("switchTool")
+                visible: false
             }
         }
         onCheckedIndexChanged: {

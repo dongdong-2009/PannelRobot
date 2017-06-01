@@ -74,7 +74,6 @@ Item {
             icon: "../images/settings_qk.png"
             enabled: false
             visible: false
-
         }
 
         CatalogButton{

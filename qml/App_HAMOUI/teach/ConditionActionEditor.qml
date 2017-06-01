@@ -119,6 +119,10 @@ Item {
                 leftAddr = toHcAddr(alarmArea.alarmAddr);
                 immValue = alarmNum.configValue;
             }
+            else if(visionData.isChecked){
+                leftAddr = toHcAddr(whichVision.checkedIndex + 896);
+                immValue = visionValue.configValue;
+            }
             ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
                                                     leftAddr,
                                                     immValue,
@@ -355,6 +359,10 @@ Item {
                             text:qsTr("Alarm Data")
                         }
                         ICCheckBox{
+                            id:visionData
+                            text:qsTr("Vision Data")
+                        }
+                        ICCheckBox{
                             id:constData
                             text:qsTr("Const Data")
                         }
@@ -483,6 +491,36 @@ Item {
                             visible: alarmData.isChecked
                             configName: qsTr("alarmNum")
                             configValue: "0"
+                        }
+                    }
+
+                    Column{
+                        id:visionArea
+                        visible: visionData.isChecked
+                        spacing: 4
+                        ICButtonGroup{
+                            id:whichVision
+                            spacing: 12
+                            mustChecked: true
+                            checkedIndex: 0
+                            ICCheckBox{
+                                id:templetNumber
+                                text: qsTr("templet number")
+                                isChecked: true
+                            }
+                            ICCheckBox{
+                                id:colorNumber
+                                text: qsTr("color number")
+                            }
+                            ICCheckBox{
+                                id:simiValue
+                                text:qsTr("simi value")
+                            }
+                        }
+                        ICConfigEdit{
+                            id:visionValue
+                            configName: qsTr("vision Value")
+                            configValue:"0"
                         }
                     }
 
@@ -650,19 +688,20 @@ Item {
 //        onMoldChanged();
         var i;
         var l;
+        var yDefines=[],xDefines=[];
         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
         if(ioBoardCount == 0)
             ioBoardCount = 1;
+        l = ioBoardCount * 32;
+        for(i = 0; i < l; ++i){
+            xDefines.push(IODefines.xDefines[i]);
+            yDefines.push(IODefines.yDefines[i]);
+        }
 
-        xs = IODefines.generateIOBaseBoardCount("X", ioBoardCount);
-
-        var yDefines = IOConfigs.teachYOut;
         var yDefine;
         normalY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            yDefine = IODefines.getYDefineFromHWPoint(yDefine.y1Point, yDefine.y1Board);
-            yModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+            yModel.append(ioView.createMoldItem(yDefines[i], i%32 , parseInt(i/32)));
         }
 
         euY.visible = false;
@@ -680,11 +719,9 @@ Item {
             mYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
-        var xDefines = xs;
         var xDefine;
         for(i = 0, l = xDefines.length; i < l; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+            xModel.append(ioView.createMoldItem(xDefines[i], i%32, parseInt(i/32)));
         }
 
         euX.visible = false;

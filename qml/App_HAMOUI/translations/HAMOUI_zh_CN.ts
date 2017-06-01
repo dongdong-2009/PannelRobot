@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -793,23 +793,23 @@
     </message>
     <message>
         <source>Line Test</source>
-        <translation>直线测试</translation>
+        <translation type="vanished">直线测试</translation>
     </message>
     <message>
         <source>Curve Test</source>
-        <translation>曲线测试</translation>
+        <translation type="vanished">曲线测试</translation>
     </message>
     <message>
         <source>Run to This</source>
-        <translation>运行到这点</translation>
+        <translation type="vanished">运行到这点</translation>
     </message>
     <message>
         <source>Set to Point-1</source>
-        <translation>设当前位置为起点</translation>
+        <translation type="vanished">设当前位置为起点</translation>
     </message>
     <message>
         <source>Set to Point-2</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Set to Point-3</source>
@@ -817,11 +817,11 @@
     </message>
     <message>
         <source>Set to CPoint-2</source>
-        <translation>设当前位置为中间点</translation>
+        <translation type="vanished">设当前位置为中间点</translation>
     </message>
     <message>
         <source>Set to CPoint-3</source>
-        <translation>设当前位置为终点</translation>
+        <translation type="vanished">设当前位置为终点</translation>
     </message>
     <message>
         <source>Tune Sel</source>
@@ -979,7 +979,7 @@
     </message>
     <message>
         <source>sendErr</source>
-        <translation>发送脉冲错误</translation>
+        <translation type="vanished">发送脉冲错误</translation>
     </message>
     <message>
         <source>inputErr</source>
@@ -999,15 +999,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation>接收脉冲:</translation>
+        <translation type="vanished">接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation>发送脉冲:</translation>
+        <translation type="vanished">发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation>输出1:</translation>
+        <translation type="vanished">输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -1019,23 +1019,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation>输出2:</translation>
+        <translation type="vanished">输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation>输入1:</translation>
+        <translation type="vanished">输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation>输入2:</translation>
+        <translation type="vanished">输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation>接收脉冲</translation>
+        <translation type="vanished">接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation>发送脉冲</translation>
+        <translation type="vanished">发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -1265,7 +1265,7 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation>输入通就停止</translation>
+        <translation type="vanished">输入通就停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
@@ -1701,27 +1701,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation>当前坐标系</translation>
+        <translation type="vanished">当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation>世界坐标</translation>
+        <translation type="vanished">世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation>世界/关节</translation>
+        <translation type="vanished">世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1729,7 +1729,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation>关节坐标</translation>
+        <translation type="vanished">关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -2171,7 +2171,7 @@
     </message>
     <message>
         <source>runningMode</source>
-        <translation>自动运行中</translation>
+        <translation type="vanished">自动运行中</translation>
     </message>
     <message>
         <source>SingleMode</source>
@@ -2184,6 +2184,26 @@
     <message>
         <source>RunningMode</source>
         <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>Vision Data</source>
+        <translation>视觉</translation>
+    </message>
+    <message>
+        <source>templet number</source>
+        <translation>模板号</translation>
+    </message>
+    <message>
+        <source>color number</source>
+        <translation>颜色编号</translation>
+    </message>
+    <message>
+        <source>simi value</source>
+        <translation>相似度</translation>
+    </message>
+    <message>
+        <source>vision Value</source>
+        <translation>值</translation>
     </message>
 </context>
 <context>
@@ -2500,11 +2520,11 @@
     </message>
     <message>
         <source>Speed</source>
-        <translation>速度</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Num</source>
-        <translation>次数</translation>
+        <translation type="vanished">次数</translation>
     </message>
     <message>
         <source>Speed:</source>
@@ -2772,7 +2792,7 @@
     </message>
     <message>
         <source>barnID</source>
-        <translation>料仓号</translation>
+        <translation type="vanished">料仓号</translation>
     </message>
     <message>
         <source>Start</source>
@@ -2993,15 +3013,15 @@
     <name>Keymap</name>
     <message>
         <source>Running</source>
-        <translation>运行中</translation>
+        <translation type="vanished">运行中</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation>单步</translation>
+        <translation type="vanished">单步</translation>
     </message>
     <message>
         <source>One Cycle</source>
-        <translation>单循环</translation>
+        <translation type="vanished">单循环</translation>
     </message>
 </context>
 <context>
@@ -3113,7 +3133,7 @@
     <name>ManualPage</name>
     <message>
         <source>Tools Calibration</source>
-        <translation>工具标定</translation>
+        <translation type="vanished">工具标定</translation>
     </message>
     <message>
         <source>Debug</source>
@@ -4045,7 +4065,7 @@ please chose!</source>
     </message>
     <message>
         <source>Confirm</source>
-        <translation>确定修改</translation>
+        <translation type="vanished">确定修改</translation>
     </message>
     <message>
         <source>Preservation</source>
@@ -4065,11 +4085,11 @@ please chose!</source>
     </message>
     <message>
         <source>Led </source>
-        <translation>Led</translation>
+        <translation type="vanished">Led</translation>
     </message>
     <message>
         <source> status binding</source>
-        <translation>状态绑定</translation>
+        <translation type="vanished">状态绑定</translation>
     </message>
     <message>
         <source>Key F</source>
@@ -4077,7 +4097,7 @@ please chose!</source>
     </message>
     <message>
         <source> function binding</source>
-        <translation>功能绑定</translation>
+        <translation type="vanished">功能绑定</translation>
     </message>
     <message>
         <source>Led</source>
@@ -4265,7 +4285,7 @@ please chose!</source>
     </message>
     <message>
         <source>Logic</source>
-        <translation>逻辑</translation>
+        <translation type="vanished">逻辑</translation>
     </message>
     <message>
         <source>Define</source>
@@ -4302,6 +4322,14 @@ please chose!</source>
     <message>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+    <message>
+        <source>func use in this mode</source>
+        <translation type="vanished">功能在勾选模式下有效</translation>
+    </message>
+    <message>
+        <source>InMode</source>
+        <translation>在模式中</translation>
     </message>
 </context>
 <context>
@@ -4766,6 +4794,825 @@ please chose!</source>
         <source>Read EP</source>
         <translation>读EP</translation>
     </message>
+    <message>
+        <source>para page</source>
+        <translation>参数访问</translation>
+    </message>
+    <message>
+        <source>status page</source>
+        <translation>系统状态</translation>
+    </message>
+    <message>
+        <source>para config</source>
+        <translation>参数配置</translation>
+    </message>
+    <message>
+        <source>read e2prom</source>
+        <translation>EEPROM读</translation>
+    </message>
+    <message>
+        <source>write e2prom</source>
+        <translation>EEPROM写</translation>
+    </message>
+    <message>
+        <source>common ctrl para</source>
+        <translation>通用控制参数</translation>
+    </message>
+    <message>
+        <source>para name</source>
+        <translation>参数名称</translation>
+    </message>
+    <message>
+        <source>addr</source>
+        <translation>地址</translation>
+    </message>
+    <message>
+        <source>write val</source>
+        <translation>写入值</translation>
+    </message>
+    <message>
+        <source>read val</source>
+        <translation>读出值</translation>
+    </message>
+    <message>
+        <source>describe</source>
+        <translation>说明</translation>
+    </message>
+    <message>
+        <source>refresh en</source>
+        <translation>刷新使能</translation>
+    </message>
+    <message>
+        <source>clear alarm</source>
+        <translation type="unfinished">清除报警</translation>
+    </message>
+    <message>
+        <source>alarm name</source>
+        <translation>故障名称</translation>
+    </message>
+    <message>
+        <source>alarm val</source>
+        <translation>故障值</translation>
+    </message>
+    <message>
+        <source>alarmName</source>
+        <translation type="vanished">故障名称</translation>
+    </message>
+    <message>
+        <source>inStop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>inRunning</source>
+        <translation>运行</translation>
+    </message>
+    <message>
+        <source>inAlarm</source>
+        <translation>故障</translation>
+    </message>
+    <message>
+        <source>axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <source>distributed para</source>
+        <translation>分布式</translation>
+    </message>
+    <message>
+        <source>current loop para</source>
+        <translation>电流环</translation>
+    </message>
+    <message>
+        <source>speed loop para</source>
+        <translation>速度环</translation>
+    </message>
+    <message>
+        <source>position ctrl para</source>
+        <translation>位置环</translation>
+    </message>
+    <message>
+        <source>Initial angle para</source>
+        <translation>转子初始角</translation>
+    </message>
+    <message>
+        <source>alarm para</source>
+        <translation>故障</translation>
+    </message>
+    <message>
+        <source>0- no fault, 1- fault</source>
+        <translation>0-无故障，1-发生故障</translation>
+    </message>
+    <message>
+        <source>InitFlt</source>
+        <translation>上电初始化失败</translation>
+    </message>
+    <message>
+        <source>EepromFlt</source>
+        <translation>EEPROM故障</translation>
+    </message>
+    <message>
+        <source>AdcFlt</source>
+        <translation>A/D转换器故障</translation>
+    </message>
+    <message>
+        <source>ExecTmFlt</source>
+        <translation>系统运算引擎故障</translation>
+    </message>
+    <message>
+        <source>OverTempFlt</source>
+        <translation>散热器过热</translation>
+    </message>
+    <message>
+        <source>OvFlt</source>
+        <translation>主电源过压</translation>
+    </message>
+    <message>
+        <source>LvFlt</source>
+        <translation>主电源欠压</translation>
+    </message>
+    <message>
+        <source>MainPowerOff</source>
+        <translation>主电源关断</translation>
+    </message>
+    <message>
+        <source>GateKillFlt</source>
+        <translation>IGBT过流</translation>
+    </message>
+    <message>
+        <source>OvrTempFlt2</source>
+        <translation>IGBT过热</translation>
+    </message>
+    <message>
+        <source>OvrLdFlt</source>
+        <translation>过载</translation>
+    </message>
+    <message>
+        <source>OvrSpdFlt</source>
+        <translation>超速</translation>
+    </message>
+    <message>
+        <source>OvrFrqFlt</source>
+        <translation>位置命令脉冲频率过高</translation>
+    </message>
+    <message>
+        <source>PosErrOvrFlt</source>
+        <translation>位置偏差过大</translation>
+    </message>
+    <message>
+        <source>MtrEncFlt</source>
+        <translation>DSP同步故障</translation>
+    </message>
+    <message>
+        <source>OvrCrntFlt</source>
+        <translation>过流故障</translation>
+    </message>
+</context>
+<context>
+    <name>QKInfo</name>
+    <message>
+        <source>PwmPeriod</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>describe</source>
+        <translation type="unfinished">说明</translation>
+    </message>
+    <message>
+        <source>SampleStartDelay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1990,instruction:IGBT switching frequency (Hz) clock frequency =0.5* system (PwmPeriod / 1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:10,instruction:A/D sampling delay time (NS) = system master clock cycle *SampleStartDela</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdPosLpRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:516,instruction:Speed loop sampling frequency (Hz) = current loop sampling frequency /SpdLpRate. position loop sampling frequency (Hz) = speed loop sampling frequency /PosLpRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ModScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:3000,instruction:ModScl=3×(PwmPeriod+1)/2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PwmDeadTm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:119,instruction:IGBT Dead Time(ns)=System master clock cycle(ns)×(PwmDeadTm+1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SystemConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:24,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LvAlmMonEnbl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:0-Prohibit undervoltage alarm function，1-Allow undervoltage alarm function</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DcBusOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:4864,instruction:DcBusOffset=The DC bus voltage is equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BusConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DriverCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:7,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DBCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2916,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BrkCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:25700,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InPortCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2194,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OutPortConfig</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:512,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SystemCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ModelControl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CmdControl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VCmdOffset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RotEnControl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:33,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RotEncMaxCnt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:16383,instruction:RotEnc_MaxCnt=4 * PPR-1, where PPR is the number of pulses per turn per encoder for the encoder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RotEncZCnt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1250,instruction:An electrical angle of an Z pulse opposite the negative potential of U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LnrEncCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EncDivCtrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:9,instruction:describe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EncDivNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:EncDiv_Num/EncDiv_Den≥1；Otherwise, the output pulse is uncertain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EncDivDen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IfbU_Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:IfbU_Offset=U phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IfbW_Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:IfbW_Offset=W phase current equals zero, corresponding to the A/D conversion data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IdScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:5148,instruction:for PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Iqscl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:5148,instruction:for PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，Among them, MHC is the maximum ideal range of current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ElecAngScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:4096,instruction:ElecAngScl=P x 4096 x 2^12/ (4 * PPR), where P is the polar logarithm, and PPR is the number of pulses per phase per turn of the encoder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SlipGain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:For IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>K1Notch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:65535,instruction:K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs,Where FS is the current loop sampling frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>K2Notch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs,Where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ktf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Ktf=2^16 * (1-tan (omega c/2)) / (1 Tan (omega c/2)), Omega c=2 pi * fc/fs, where FS is the current loop sampling frequency, and FC is the -3dB clipping frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OvrLdLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:21845,instruction:OvrLdLim=32768/coeff，Coeff for overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TrqLimp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:12288,instruction:TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TrqLimN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:-12288,instruction:TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of the current sensor, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IErrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1024,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kpid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2000,instruction:11 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kiid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1500,instruction:16 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kpiq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kiiq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * * * P * MaxRPM * Ls * SQRT (2) * Irated/ (15 * 1.64676 * 310), in which P is the extreme logarithm, MaxRPM is the highest speed, Ls is motor winding inductance, and Irated is the rated current effective value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:For PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed of permanent magnet motor rotor flux for PSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ktg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Ktg=2^14×(0~400%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Krt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Krt=2^22/(tr*fs)，Among them, FS is the current loop sampling frequency (Hz), and TR is the rotor time constant (s) of induction motors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RatedFreq</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:RatedFreq=2^15*RatedRPM/MaxRPM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VdLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * D axis /1.64676</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VqLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:6632,instruction:Maximum voltage regulation of VqLim=2^14 * Q axis /1.64676</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BrkZeroSpd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:16384,instruction:Maximum current setting, motor rated =4096</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdScl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:3200,instruction:SpdScl=2^15 x 60 x fclk/ (4 * PPR * MaxRPM * 256), wherein fclk is the system master clock frequency, PPR is the encoder line number, and MaxRPM is the highest speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NilMtrSpdDly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:30,instruction:NilMtrSpdDly= speed ring sampling frequency * 60/ (4 * PPR * MinRPM), in which PPR is the encoder line, and MinRPM is the minimum speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NilCmdSpdDly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:30,instruction:NilCmdSpdDly=NilMtrSpdDly×(Electronic gear ratio)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdCmp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:300,instruction:SpdCmp=2^15 * 60 * speed ring sampling frequency / (PPR * MaxRPM), in which PPR is the encoder line, and MaxRPM is the highest speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ZeroSpeed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, the speed is considered to be zero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdAccRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:256,instruction:8 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdDecRate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kfg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Kfg=2^14×(0~400%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:0,instruction:Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs,Among them, FS is the speed ring sampling frequency, and FC is -3dB clipping frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdLimP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:25000,instruction:SpdLimP=2^15×(0~100%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdLimN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:-25000,instruction:SpdLimN=-2^15×(0~100%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SpdErrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1990,instruction:It is used to achieve large deviation, small gain, small deviation and large gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KpV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:100,instruction:5 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KiV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:200,instruction:13 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KfV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:65535,instruction:KfV=2^16×(0~100%)，Among them: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:100,instruction:When the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PulsSclNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PulsSclDen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PosErrOvrLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:256,instruction:The actual limit is PosErrOvrLim * 256 pulse equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CoinLim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:10,instruction:When the actual position deviation is less than CoinLim pulse equivalent, the position is considered to be complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>POvrTrvLimL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:65535,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>POvrTrvLimH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:32767,instruction:A positive overshoot occurs when the actual position exceeds [POvrTrvLimH and POvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOvrTrvLimL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOvrTrvLimH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:32768,instruction:A reverse overshoot occurs when the actual position exceeds [NOvrTrvLimH and NOvrTrvLimL] pulses are equivalent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ksf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:-32768,instruction:Ksf=2^16×T/(T+1),The T= /Ts, which is the filter time constant Ts for the position loop sampling period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KpP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:10,instruction:5 decimal places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1.24,instruction:The motor encoders U, V, and W correspond to 001 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng010</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:208,instruction:The motor encoders U, V, and W correspond to 010 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng011</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1625,instruction:The motor encoders U, V, and W correspond to 011 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng100</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1875,instruction:The motor encoders U, V, and W correspond to 100 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng101</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:1458,instruction:The motor encoders U, V, and W correspond to 101 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>InitElecAng110</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default value:2292,instruction:The motor encoders U, V, and W correspond to 110 rotor positions; are stored only in EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SystemStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FaultStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(0- no fault, 1- fault) bit0: power on initialization failure, bit1:EEPROM fault, bit2:A/D fault converter, operation engine bit3: system timeout, bit4: radiator overheated, bit5: main power supply overvoltage, undervoltage bit7 bit6: main power supply, the main power supply is off, bit8:IGBT flow, bit9: IGBT bit10: bit11: overheating, overload, overspeed, bit12: position command pulse frequency is too high, the bit13: position error is too large, bit14:DSP bit15: synchronous fault overcurrent fault.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WorkingStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bit3: servo control enable status: 0- invalid state, 1- valid state</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecordManagementPage</name>
@@ -4954,7 +5801,7 @@ please chose!</source>
     </message>
     <message>
         <source>Hour</source>
-        <translation>小时</translation>
+        <translation type="vanished">小时</translation>
     </message>
     <message>
         <source>Machine Code:</source>
@@ -4986,11 +5833,11 @@ please chose!</source>
     </message>
     <message>
         <source>Export</source>
-        <translation>导出</translation>
+        <translation type="vanished">导出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>导入</translation>
+        <translation type="vanished">导入</translation>
     </message>
     <message>
         <source>Rest Time(0 Forever):</source>
@@ -5084,51 +5931,51 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo1</source>
-        <translation>区域1安全信号</translation>
+        <translation type="vanished">区域1安全信号</translation>
     </message>
     <message>
         <source>Use Part1?</source>
-        <translation>区域1使用</translation>
+        <translation type="vanished">区域1使用</translation>
     </message>
     <message>
         <source>SafePo2</source>
-        <translation>区域2安全信号</translation>
+        <translation type="vanished">区域2安全信号</translation>
     </message>
     <message>
         <source>Use Part2?</source>
-        <translation>区域2使用</translation>
+        <translation type="vanished">区域2使用</translation>
     </message>
     <message>
         <source>SafePo3</source>
-        <translation>区域3安全信号</translation>
+        <translation type="vanished">区域3安全信号</translation>
     </message>
     <message>
         <source>Use Part3?</source>
-        <translation>区域3使用</translation>
+        <translation type="vanished">区域3使用</translation>
     </message>
     <message>
         <source>SafePo4</source>
-        <translation>区域4安全信号</translation>
+        <translation type="vanished">区域4安全信号</translation>
     </message>
     <message>
         <source>Use Part4?</source>
-        <translation>区域4使用</translation>
+        <translation type="vanished">区域4使用</translation>
     </message>
     <message>
         <source>SafePo5</source>
-        <translation>区域5安全信号</translation>
+        <translation type="vanished">区域5安全信号</translation>
     </message>
     <message>
         <source>Use Part5?</source>
-        <translation>区域5使用</translation>
+        <translation type="vanished">区域5使用</translation>
     </message>
     <message>
         <source>SafePo6</source>
-        <translation>区域6安全信号</translation>
+        <translation type="vanished">区域6安全信号</translation>
     </message>
     <message>
         <source>Use Part6?</source>
-        <translation>区域6使用</translation>
+        <translation type="vanished">区域6使用</translation>
     </message>
     <message>
         <source>Axis1</source>
@@ -5144,95 +5991,95 @@ please chose!</source>
     </message>
     <message>
         <source>P1-A</source>
-        <translation>区域1A</translation>
+        <translation type="vanished">区域1A</translation>
     </message>
     <message>
         <source>P1-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P1-B</source>
-        <translation>区域1B</translation>
+        <translation type="vanished">区域1B</translation>
     </message>
     <message>
         <source>P1-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P2-A</source>
-        <translation>区域2A</translation>
+        <translation type="vanished">区域2A</translation>
     </message>
     <message>
         <source>P2-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P2-B</source>
-        <translation>区域2B</translation>
+        <translation type="vanished">区域2B</translation>
     </message>
     <message>
         <source>P3-A</source>
-        <translation>区域3A</translation>
+        <translation type="vanished">区域3A</translation>
     </message>
     <message>
         <source>P3-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P3-B</source>
-        <translation>区域3B</translation>
+        <translation type="vanished">区域3B</translation>
     </message>
     <message>
         <source>P3-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P4-A</source>
-        <translation>区域4A</translation>
+        <translation type="vanished">区域4A</translation>
     </message>
     <message>
         <source>P4-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P4-B</source>
-        <translation>区域4B</translation>
+        <translation type="vanished">区域4B</translation>
     </message>
     <message>
         <source>P4-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P5-A</source>
-        <translation>区域5A</translation>
+        <translation type="vanished">区域5A</translation>
     </message>
     <message>
         <source>P5-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P5-B</source>
-        <translation>区域5B</translation>
+        <translation type="vanished">区域5B</translation>
     </message>
     <message>
         <source>P5-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>P6-A</source>
-        <translation>区域6A</translation>
+        <translation type="vanished">区域6A</translation>
     </message>
     <message>
         <source>P6-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>P6-B</source>
-        <translation>区域6B</translation>
+        <translation type="vanished">区域6B</translation>
     </message>
     <message>
         <source>P6-B Set</source>
-        <translation>B设入</translation>
+        <translation type="vanished">B设入</translation>
     </message>
     <message>
         <source>Axis2</source>
@@ -5240,99 +6087,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-C</source>
-        <translation>区域1C</translation>
+        <translation type="vanished">区域1C</translation>
     </message>
     <message>
         <source>P1-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P1-D</source>
-        <translation>区域1D</translation>
+        <translation type="vanished">区域1D</translation>
     </message>
     <message>
         <source>P1-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P2-C</source>
-        <translation>区域2C</translation>
+        <translation type="vanished">区域2C</translation>
     </message>
     <message>
         <source>P2-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P2-D</source>
-        <translation>区域2D</translation>
+        <translation type="vanished">区域2D</translation>
     </message>
     <message>
         <source>P2-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P3-C</source>
-        <translation>区域3C</translation>
+        <translation type="vanished">区域3C</translation>
     </message>
     <message>
         <source>P3-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P3-D</source>
-        <translation>区域3D</translation>
+        <translation type="vanished">区域3D</translation>
     </message>
     <message>
         <source>P3-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P4-C</source>
-        <translation>区域4C</translation>
+        <translation type="vanished">区域4C</translation>
     </message>
     <message>
         <source>P4-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P4-D</source>
-        <translation>区域4D</translation>
+        <translation type="vanished">区域4D</translation>
     </message>
     <message>
         <source>P4-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P5-C</source>
-        <translation>区域5C</translation>
+        <translation type="vanished">区域5C</translation>
     </message>
     <message>
         <source>P5-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P5-D</source>
-        <translation>区域5D</translation>
+        <translation type="vanished">区域5D</translation>
     </message>
     <message>
         <source>P5-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>P6-C</source>
-        <translation>区域6C</translation>
+        <translation type="vanished">区域6C</translation>
     </message>
     <message>
         <source>P6-C Set</source>
-        <translation>C设入</translation>
+        <translation type="vanished">C设入</translation>
     </message>
     <message>
         <source>P6-D</source>
-        <translation>区域6D</translation>
+        <translation type="vanished">区域6D</translation>
     </message>
     <message>
         <source>P6-D Set</source>
-        <translation>D设入</translation>
+        <translation type="vanished">D设入</translation>
     </message>
     <message>
         <source>Axis3</source>
@@ -5340,99 +6187,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-E</source>
-        <translation>区域1E</translation>
+        <translation type="vanished">区域1E</translation>
     </message>
     <message>
         <source>P1-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P1-F</source>
-        <translation>区域1F</translation>
+        <translation type="vanished">区域1F</translation>
     </message>
     <message>
         <source>P1-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P2-E</source>
-        <translation>区域2E</translation>
+        <translation type="vanished">区域2E</translation>
     </message>
     <message>
         <source>P2-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P2-F</source>
-        <translation>区域2F</translation>
+        <translation type="vanished">区域2F</translation>
     </message>
     <message>
         <source>P2-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P3-E</source>
-        <translation>区域3E</translation>
+        <translation type="vanished">区域3E</translation>
     </message>
     <message>
         <source>P3-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P3-F</source>
-        <translation>区域3F</translation>
+        <translation type="vanished">区域3F</translation>
     </message>
     <message>
         <source>P3-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P4-E</source>
-        <translation>区域4E</translation>
+        <translation type="vanished">区域4E</translation>
     </message>
     <message>
         <source>P4-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P4-F</source>
-        <translation>区域4F</translation>
+        <translation type="vanished">区域4F</translation>
     </message>
     <message>
         <source>P4-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P5-E</source>
-        <translation>区域5E</translation>
+        <translation type="vanished">区域5E</translation>
     </message>
     <message>
         <source>P5-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P5-F</source>
-        <translation>区域5F</translation>
+        <translation type="vanished">区域5F</translation>
     </message>
     <message>
         <source>P5-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>P6-E</source>
-        <translation>区域6E</translation>
+        <translation type="vanished">区域6E</translation>
     </message>
     <message>
         <source>P6-E Set</source>
-        <translation>E设入</translation>
+        <translation type="vanished">E设入</translation>
     </message>
     <message>
         <source>P6-F</source>
-        <translation>区域6F</translation>
+        <translation type="vanished">区域6F</translation>
     </message>
     <message>
         <source>P6-F Set</source>
-        <translation>F设入</translation>
+        <translation type="vanished">F设入</translation>
     </message>
     <message>
         <source>Use it?</source>
@@ -5476,7 +6323,7 @@ please chose!</source>
     </message>
     <message>
         <source>P2-A Set</source>
-        <translation>A设入</translation>
+        <translation type="vanished">A设入</translation>
     </message>
     <message>
         <source>confirmBtn</source>
@@ -5488,7 +6335,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -5496,27 +6343,27 @@ please chose!</source>
     </message>
     <message>
         <source>SafeSig1</source>
-        <translation>安全信号1</translation>
+        <translation type="vanished">安全信号1</translation>
     </message>
     <message>
         <source>SafeSig2</source>
-        <translation>安全信号2</translation>
+        <translation type="vanished">安全信号2</translation>
     </message>
     <message>
         <source>SafeSig3</source>
-        <translation>安全信号3</translation>
+        <translation type="vanished">安全信号3</translation>
     </message>
     <message>
         <source>SafeSig4</source>
-        <translation>安全信号4</translation>
+        <translation type="vanished">安全信号4</translation>
     </message>
     <message>
         <source>SafeSig5</source>
-        <translation>安全信号5</translation>
+        <translation type="vanished">安全信号5</translation>
     </message>
     <message>
         <source>SafeSig6</source>
-        <translation>安全信号6</translation>
+        <translation type="vanished">安全信号6</translation>
     </message>
     <message>
         <source>Area</source>
@@ -6841,15 +7688,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation>路径速度平滑:</translation>
+        <translation type="vanished">路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation>起始速度:</translation>
+        <translation type="vanished">起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation>结束速度:</translation>
+        <translation type="vanished">结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -6997,11 +7844,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation>M值</translation>
+        <translation type="vanished">M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation>IO点</translation>
+        <translation type="vanished">IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -7009,19 +7856,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>IntervalOutput:</source>
-        <translation>间隔输出:</translation>
+        <translation type="vanished">间隔输出:</translation>
     </message>
     <message>
         <source>Interval</source>
-        <translation>间隔</translation>
+        <translation type="vanished">间隔</translation>
     </message>
     <message>
         <source>Always out</source>
-        <translation>一直输出</translation>
+        <translation type="vanished">一直输出</translation>
     </message>
     <message>
         <source>Time out</source>
-        <translation>时间输出</translation>
+        <translation type="vanished">时间输出</translation>
     </message>
     <message>
         <source>actCnt</source>
@@ -7029,11 +7876,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation>间隔时间</translation>
+        <translation type="vanished">间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation>直到拍照成功</translation>
+        <translation type="vanished">直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>
@@ -7117,7 +7964,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Type 6</source>
-        <translation type="unfinished">近似原点</translation>
+        <translation>近似原点</translation>
+    </message>
+    <message>
+        <source>templetID</source>
+        <translation>模板号</translation>
+    </message>
+    <message>
+        <source>colorID</source>
+        <translation>颜色编号</translation>
+    </message>
+    <message>
+        <source>simiValue</source>
+        <translation>相似度</translation>
     </message>
 </context>
 <context>
@@ -7361,7 +8220,7 @@ You just need to set the count configs after this setting.</source>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
-        <translation>设为点1</translation>
+        <translation type="vanished">设为点1</translation>
     </message>
     <message>
         <source>text</source>
@@ -7369,27 +8228,27 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P2</source>
-        <translation>设为点2</translation>
+        <translation type="vanished">设为点2</translation>
     </message>
     <message>
         <source>Set to P3</source>
-        <translation>设为点3</translation>
+        <translation type="vanished">设为点3</translation>
     </message>
     <message>
         <source>Set to P4</source>
-        <translation>设为点4</translation>
+        <translation type="vanished">设为点4</translation>
     </message>
     <message>
         <source>Set to P5</source>
-        <translation>设为点5</translation>
+        <translation type="vanished">设为点5</translation>
     </message>
     <message>
         <source>Set to P6</source>
-        <translation>设为点6</translation>
+        <translation type="vanished">设为点6</translation>
     </message>
     <message>
         <source>Use it?</source>
-        <translation>使用</translation>
+        <translation type="vanished">使用</translation>
     </message>
     <message>
         <source>Four Point</source>
@@ -7409,7 +8268,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="vanished">确定</translation>
     </message>
     <message>
         <source>newBtn</source>

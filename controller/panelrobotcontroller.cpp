@@ -2004,6 +2004,34 @@ void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
             Qt::UniqueConnection);
 }
 
+void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& qkData)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(len);
+    for(int i=0;i<result.size();i++)
+        tmp.append(result.at(i).toInt());
+    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp);
+}
+
+void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QString& qkData)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(len);
+    for(int i=0;i<result.size();i++)
+        tmp.append(result.at(i).toInt());
+    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp);
+}
+
 QString PanelRobotController::scanUSBFiles(const QString &filter) const
 {
     return scanHelper(QStringList()<<QString("%1").arg(filter), ICAppSettings::UsbPath, QDir::Files);

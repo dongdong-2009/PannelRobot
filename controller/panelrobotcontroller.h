@@ -879,6 +879,10 @@ public:
 
     Q_INVOKABLE void readQKConfig(int axis, int addr, bool ep = false);
 
+    Q_INVOKABLE void writeMultipleQkPara(int addr, int len, const QString& qkData);
+
+    Q_INVOKABLE void writeMultipleQkEeprom(int addr, int len, const QString& qkData);
+
     Q_INVOKABLE QString scanUSBFiles(const QString& filter) const;
     Q_INVOKABLE QString usbFileContent(const QString& fileName, bool isTextOnly = true) const;
     Q_INVOKABLE int writeUsbFile(const QString& fileName, const QString& content);

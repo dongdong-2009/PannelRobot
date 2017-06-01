@@ -1367,6 +1367,12 @@ var conditionActionToStringHandler = function(actionObject, record){
             leftStr = qsTr("Current alarm num");
             rightStr = actionObject.selAlarm;
         }
+        else if(actionObject.disType == 3){
+            if(actionObject.leftAddr == 58753024)leftStr = qsTr("templetID");
+            else if(actionObject.leftAddr == 58818560)leftStr = qsTr("colorID");
+            else if(actionObject.leftAddr == 58884096)leftStr = qsTr("simiValue");
+            rightStr = actionObject.rightAddr;
+        }
         else{
             leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
             rightStr = (actionObject.type == 0 ? qsTr("Right Data:"): qsTr("Right Addr:")) + actionObject.rightAddr;

@@ -7315,7 +7315,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>IO Board Num</source>
-        <translation>IO板数</translation>
+        <translation type="vanished">IO板数</translation>
     </message>
 </context>
 <context>

@@ -73,7 +73,7 @@ Item {
             text: qsTr("QK Configs")
             icon: "../images/settings_qk.png"
             enabled: false
-//            visible: false
+            visible: false
         }
 
         CatalogButton{

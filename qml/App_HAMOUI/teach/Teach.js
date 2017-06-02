@@ -1079,12 +1079,13 @@ var generateJumpAction = function(flag){
     };
 }
 
-var generateCounterJumpAction = function(flag, counterID, status, autoClear){
+var generateCounterJumpAction = function(flag, counterID, compareID,compareTarget,autoClear){
     return {
         "action":actions.F_CMD_PROGRAM_JUMP2,
         "flag": flag || 0,
         "counterID":counterID,
-        "pointStatus":status,
+        "compareID":compareID||0,
+        "compareTarget":compareTarget ||0,
         "autoClear": autoClear || false
     };
 }
@@ -1342,9 +1343,8 @@ var conditionActionToStringHandler = function(actionObject, record){
         if(c == null){
             return qsTr("IF:") + qsTr("Invalid Counter");
         }
-
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+               cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         var leftStr,rightStr;

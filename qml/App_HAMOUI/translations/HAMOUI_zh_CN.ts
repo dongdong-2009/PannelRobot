@@ -2205,6 +2205,10 @@
         <source>vision Value</source>
         <translation>值</translation>
     </message>
+    <message>
+        <source>value</source>
+        <translation>值</translation>
+    </message>
 </context>
 <context>
     <name>CounterActionEditor</name>
@@ -4283,6 +4287,18 @@ please chose!</source>
     <message>
         <source>InMode</source>
         <translation>在模式中</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>Single</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>OneCycle</source>
+        <translation>单循环</translation>
     </message>
 </context>
 <context>

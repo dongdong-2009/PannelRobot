@@ -436,22 +436,23 @@ Item {
                             }
                             ICCheckBox{
                                 id:ioRunningMode
-                                text: qsTr("RunningMode")
+                                text: qsTr("Running")
                                 isChecked: (usefulMode&(1<<3)) ==0?false:true
                             }
                             ICCheckBox{
                                 id:ioSingleMode
-                                text: qsTr("SingleMode")
+                                text: qsTr("Single")
                                 isChecked: (usefulMode&(1<<4)) ==0? false:true
                             }
                             ICCheckBox{
                                 id:ioOneCycleMode
-                                text: qsTr("OneCycleMode")
+                                text: qsTr("OneCycle")
                                 isChecked:(usefulMode&(1<<5)) ==0?false:true
                             }
                         }
                         ICButton{
                             id:ioModeOKBtn
+                            width: 80
                             height: parent.height
                             bgColor: "lime"
                             anchors.right: parent.right
@@ -520,6 +521,7 @@ Item {
                         }
                         ICComboBox{
                             id:selCheckId
+                            width: 95
                             currentIndex: checkId
                             onCurrentIndexChanged: {
                                ioModel.setProperty(index,"checkId",currentIndex);
@@ -557,6 +559,7 @@ Item {
                         }
                         ICComboBox {
                             id: selOutId
+                            width: 95
                             currentIndex:  outId
                             onCurrentIndexChanged:  {
                                 ioModel.setProperty(index,"outId",currentIndex);
@@ -572,7 +575,7 @@ Item {
                         }
                         ICButton{
                             id:deleteitem
-                            width: 80
+                            width: 70
                             height:selCheckId.height
                             text: qsTr("Delete")
                             onButtonClicked: {

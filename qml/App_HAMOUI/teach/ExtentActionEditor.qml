@@ -29,7 +29,7 @@ Item {
         isAutoSize: false
         mustChecked: true
         width: cmdContent.width
-        height: 195
+        height: 200
         checkedIndex: 0
         ignoreHiddenItem: true
         y:6

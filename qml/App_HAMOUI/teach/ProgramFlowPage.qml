@@ -1096,18 +1096,20 @@ Rectangle {
                         height: parent.height
                         width: 40
                         text: qsTr("UP")
-                        visible: {
-                            return  (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
-                        }
+//                        visible: {
+//                            return  (programListView.currentIndex > 0) && (programListView.currentIndex < programListView.count - 1)
+//                        }
+                        visible: false
                     }
                     ICButton{
                         id:moveDWBtn
                         height: parent.height
                         width: 40
                         text: qsTr("DW")
-                        visible: {
-                            return  (programListView.currentIndex < programListView.count - 2)
-                        }
+//                        visible: {
+//                            return  (programListView.currentIndex < programListView.count - 2)
+//                        }
+                        visible: false
                     }
                     ICButton{
                         id:copyUp

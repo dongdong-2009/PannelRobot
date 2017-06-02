@@ -1475,7 +1475,7 @@ var outputActionToStringHandler = function(actionObject){
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
         valve = getValveItemFromValveID(actionObject.valveID);
         return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "+
-                (actionObject.isWaitInput == 1?qsTr("wait input"):" ")+ qsTr("Delay:") + actionObject.delay;
+                (actionObject.isWaitInput == 1?qsTr("wait input"):"")+" "+ qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
         if(actionObject.isNormalX )

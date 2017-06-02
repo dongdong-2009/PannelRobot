@@ -219,38 +219,47 @@ ExtentActionEditorBase {
             spacing: 2
             mustChecked: true
             checkedIndex: 0
-            ICCheckBox{
-                id:normalY
-                text: qsTr("Y")
-                isChecked: true
-            }
-            ICCheckBox{
-                id:mY
-                text: qsTr("M")
-            }
-            ICCheckBox{
-                id:timeY
-                text: qsTr("Time Y")
-            }
-            ICCheckBox{
-                id:intervalY
-                text: qsTr("Interval Y")
-            }
-            ICCheckBox{
-                id:intervalM
-                text: qsTr("Interval M")
-            }
-            ICCheckBox{
-                id:singleY
-                text: qsTr("Single Y")
-            }
-            ICCheckBox{
-                id:holdDoubleY
-                text: qsTr("Hold Double Y")
-            }
-            ICCheckBox{
-                id:euY
-                text: qsTr("EUY")
+            ICFlickable{
+                width: 650
+                height: parent.height + 10
+                contentWidth: parent.width
+                contentHeight: parent.height
+                flickDeceleration: Flickable.HorizontalFlick
+                boundsBehavior: Flickable.StopAtBounds
+                clip: true
+                ICCheckBox{
+                    id:normalY
+                    text: qsTr("Y")
+                    isChecked: true
+                }
+                ICCheckBox{
+                    id:mY
+                    text: qsTr("M")
+                }
+                ICCheckBox{
+                    id:timeY
+                    text: qsTr("Time Y")
+                }
+                ICCheckBox{
+                    id:intervalY
+                    text: qsTr("Interval Y")
+                }
+                ICCheckBox{
+                    id:intervalM
+                    text: qsTr("Interval M")
+                }
+                ICCheckBox{
+                    id:singleY
+                    text: qsTr("Single Y")
+                }
+                ICCheckBox{
+                    id:holdDoubleY
+                    text: qsTr("Hold Double Y")
+                }
+                ICCheckBox{
+                    id:euY
+                    text: qsTr("EUY")
+                }
             }
         }
         Rectangle{

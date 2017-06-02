@@ -11,41 +11,6 @@ import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
     id:container
-
-    property variant xs: [
-        "X010",
-        "X011",
-        "X012",
-        "X013",
-        "X014",
-        "X015",
-        "X016",
-        "X017",
-        "X020",
-        "X021",
-        "X022",
-        "X023",
-        "X024",
-        "X025",
-        "X026",
-        "X027",
-        "X030",
-        "X031",
-        "X032",
-        "X033",
-        "X034",
-        "X035",
-        "X036",
-        "X037",
-        "X040",
-        "X041",
-        "X042",
-        "X043",
-        "X044",
-        "X045",
-        "X046",
-        "X047"
-    ]
     property variant counters: []
     function toHcAddr(addr){
         return (parseInt(0)<<5) | (parseInt(32)<<10) | (parseInt(addr)<<16) | (parseInt(0)<<30) ;
@@ -84,14 +49,15 @@ Item {
             mD = euXModel;
         }else if(counter.isChecked){
             mD = counterModel;
-            for(var c = 0; mD.count; ++c){
+            for(var c = 0; c < mD.count; ++c){
                 data = mD.get(c);
                 if(data.isSel){
                     data = counters[c];
                     ret.push(Teach.generateCounterJumpAction(parseInt(flagStr.slice(begin,end)),
                                                              data.id,
-                                                             onBox.isChecked ? 1 : 0,
-                                                                               autoClear.isChecked ? 1 : 0));
+                                                             compareID.currentIndex,
+                                                             compareTarget.configValue,
+                                                             autoClear.isChecked ? 1 : 0));
                     break;
                 }
             }
@@ -211,7 +177,6 @@ Item {
                     ICCheckBox{
                         id:normalX
                         text: qsTr("X")
-                        visible: xs.length > 0
                     }
                     ICCheckBox{
                         id:counter
@@ -326,7 +291,6 @@ Item {
                         }
                     }
                 }
-
             }
             Rectangle{
                 id:memDataConfigsContainer
@@ -588,14 +552,16 @@ Item {
                     visible: !memData.isChecked
                     ICCheckBox{
                         id:onBox
-                        text: counter.isChecked ? qsTr(">=T") : qsTr("ON")
-                        width:counter.isChecked ? 80:44
+                        visible: !counter.isChecked
+                        text:  qsTr("ON")
+                        width: 44
                         isChecked: true
                     }
                     ICCheckBox{
                         id:offBox
-                        text: counter.isChecked ? qsTr("<T") :qsTr("OFF")
-                        width:counter.isChecked ? 80:44
+                        visible: !counter.isChecked
+                        text: qsTr("OFF")
+                        width:44
                     }
                     ICCheckBox{
                         id:risingEdgeBox
@@ -606,6 +572,19 @@ Item {
                         id:fallingEdgeBox
                         visible: normalX.isChecked
                         text: qsTr("Falling Edge")
+                    }
+                    ICComboBox{
+                        id:compareID
+                        width: 50
+                        items:[">",">=","<","<=","==","!="]
+                        currentIndex: 0
+                        visible: counter.isChecked
+                    }
+                    ICConfigEdit{
+                        id:compareTarget
+                        configName: qsTr("value")
+                        configValue: "0"
+                        visible: counter.isChecked
                     }
 
                     Component.onCompleted: {

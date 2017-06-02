@@ -2047,11 +2047,11 @@
     </message>
     <message>
         <source>&gt;=T</source>
-        <translation>&gt;=目标</translation>
+        <translation type="vanished">&gt;=目标</translation>
     </message>
     <message>
         <source>&lt;T</source>
-        <translation>&lt;目标</translation>
+        <translation type="vanished">&lt;目标</translation>
     </message>
     <message>
         <source>Mem</source>
@@ -2203,6 +2203,10 @@
     </message>
     <message>
         <source>vision Value</source>
+        <translation>值</translation>
+    </message>
+    <message>
+        <source>value</source>
         <translation>值</translation>
     </message>
 </context>
@@ -2427,7 +2431,7 @@
     </message>
     <message>
         <source>value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">值</translation>
     </message>
     <message>
         <source>Send</source>
@@ -4338,6 +4342,18 @@ please chose!</source>
     <message>
         <source>InMode</source>
         <translation>在模式中</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>自动运行中</translation>
+    </message>
+    <message>
+        <source>Single</source>
+        <translation>单步</translation>
+    </message>
+    <message>
+        <source>OneCycle</source>
+        <translation>单循环</translation>
     </message>
 </context>
 <context>
@@ -7496,11 +7512,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Arrive</source>
-        <translation>到达</translation>
+        <translation type="vanished">到达</translation>
     </message>
     <message>
         <source>No arrive</source>
-        <translation>没到达</translation>
+        <translation type="vanished">没到达</translation>
     </message>
     <message>
         <source>Then clear counter</source>

@@ -464,7 +464,8 @@ int ConditionActionCompiler(ICMoldItem & item, const QVariantMap* v)
     {
         item.append(v->value("counterID").toUInt());
         item.append(v->value("autoClear").toInt());
-        item.append(v->value("pointStatus").toInt());
+        item.append(v->value("compareID").toInt());
+        item.append(v->value("compareTarget").toInt());
     }
     else if(act == F_CMD_MEMCOMPARE_CMD)
     {

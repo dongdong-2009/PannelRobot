@@ -19,9 +19,14 @@ ICSettingConfigsScope {
             isChecked: true
         }
         ICCheckBox{
-            id:canSetting
-            enabled: false
-            text: qsTr("CAN")
+            id:canASetting
+//            enabled: false
+            text: qsTr("CANA")
+        }
+        ICCheckBox{
+            id:canBSetting
+//            enabled: false
+            text: qsTr("CANB")
         }
         onCheckedIndexChanged: {
             pageContainer.setCurrentIndex(checkedIndex);
@@ -90,17 +95,33 @@ ICSettingConfigsScope {
             }
         }
         Column{
-            id:canContainer
+            id:canAContainer
             spacing: 8
             ICComboBoxConfigEdit{
-                id: canMode
+                id: canAMode
                 items: [qsTr("SDO"), qsTr("PDO")]
                 configNameWidth: 100
                 configName:  qsTr("Host CAN b")
 //                configAddr: "s_rw_8_8_0_288"
             }
             Text {
-                id: cantips
+                id: canAtips
+                color: "red"
+                text: qsTr("Tips:After modified, must be restart to take effect!")
+            }
+        }
+        Column{
+            id:canBContainer
+            spacing: 8
+            ICComboBoxConfigEdit{
+                id: canBMode
+                items: [qsTr("SDO"), qsTr("PDO")]
+                configNameWidth: 100
+                configName:  qsTr("Host CAN b")
+//                configAddr: "s_rw_8_8_0_288"
+            }
+            Text {
+                id: canBtips
                 color: "red"
                 text: qsTr("Tips:After modified, must be restart to take effect!")
             }
@@ -108,7 +129,8 @@ ICSettingConfigsScope {
     }
     Component.onCompleted: {
         pageContainer.addPage(serialContainer);
-        pageContainer.addPage(canContainer);
+        pageContainer.addPage(canAContainer);
+        pageContainer.addPage(canBContainer);
         pageContainer.setCurrentIndex(typeSel.checkedIndex);
     }
 }

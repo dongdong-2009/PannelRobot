@@ -209,6 +209,7 @@ int WaitActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(v->value("point", 0).toInt());
     item.append(v->value("pointStatus", 0).toInt());
     item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
+    item.append(v->value("isUnlimit", 0).toInt());
     item.append(ICRobotMold::MoldItemCheckSum(item));
 #else
 #endif
@@ -433,6 +434,7 @@ int WaitVisionDataActionCompiler(ICMoldItem & item, const QVariantMap* v)
     item.append(v->value("hostID", 0).toInt());
     item.append(0);
     item.append(ICUtility::doubleToInt(v->value("limit", 50).toDouble(),1));
+    item.append(0);
     item.append(ICRobotMold::MoldItemCheckSum(item));
     return ICRobotMold::kCCErr_None;
 

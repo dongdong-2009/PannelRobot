@@ -1039,13 +1039,14 @@ var generateOutputAction = function(point, type, status, valveID, time){
 //    return ret;
 //}
 
-var generateWaitAction = function(which, type, status, limit){
+var generateWaitAction = function(which, type, status, limit, isUnlimit){
     return {
         "action":actions.F_CMD_IO_INPUT,
         "type": type,
         "point":which,
         "pointStatus":status,
-        "limit":limit || 0.50
+        "limit":limit || 0.50,
+        "isUnlimit":isUnlimit || false,
     };
 }
 
@@ -1418,8 +1419,7 @@ var waitActionToStringHandler = function(actionObject){
         statusStr = qsTr("FallingEdge");
     if(actionObject.type==100)return qsTr("Delay:") + actionObject.limit+"s";
     else return qsTr("Wait:") + getXDefineFromHWPoint(actionObject.point, actionObject.type).xDefine.descr +
-            statusStr + " " +
-            qsTr("Limit:") + actionObject.limit;
+            statusStr + " " + (actionObject.isUnlimit == true?qsTr("unlimit"):qsTr("Limit:") + actionObject.limit);
 }
 
 var checkActionToStringHandler = function(actionObject){

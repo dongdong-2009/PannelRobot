@@ -281,6 +281,10 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionCodeValid(int fc) const
             (fc == FunctionCode_EditTeach) ||
             (fc == FunctionCode_WriteStack) ||
             (fc == FunctionCode_EditStack) ||
+            (fc == FunctionCode_QKServoParaWriteMemory) ||
+            (fc == FunctionCode_QKServoParaReadEeprom) ||
+            (fc == FunctionCode_QKServoParaWriteEeprom) ||
+            (fc == FunctionCode_QKServoParaReadMemory) ||
             (fc == FunctionCode_Err);
 #else
     return (fc == FC_HC_QUERY_STATUS) ||
@@ -305,6 +309,11 @@ inline bool ICRobotFrameTransceiverDataMapper::IsFunctionAddrValid(int addr, int
         return true;
     case FunctionCode_Err:
         return addr == ICAddr_ErrAddr;
+    case FunctionCode_QKServoParaWriteMemory:
+    case FunctionCode_QKServoParaReadEeprom:
+    case FunctionCode_QKServoParaWriteEeprom:
+    case FunctionCode_QKServoParaReadMemory:
+        return (addr >=0) && (addr <1024);
     default:
         return false;
     }

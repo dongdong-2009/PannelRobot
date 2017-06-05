@@ -219,7 +219,7 @@ Item {
             anchors.leftMargin: 12
             ICConfigEdit{
                 id:sAcc1
-                configNameWidth: pdata.configNameWidth + 25
+                configNameWidth: pdata.configNameWidth + 35
                 configName: qsTr("SACC 1");
                 unit: qsTr("%")
                 configAddr: "s_rw_0_8_0_165"

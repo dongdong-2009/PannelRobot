@@ -2431,7 +2431,7 @@
     </message>
     <message>
         <source>value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">值</translation>
     </message>
     <message>
         <source>Send</source>
@@ -7935,6 +7935,10 @@ You just need to set the count configs after this setting.</source>
         <source>wait input</source>
         <translation>等待输入</translation>
     </message>
+    <message>
+        <source>unlimit</source>
+        <translation>不限时</translation>
+    </message>
 </context>
 <context>
     <name>Teach_old_plat</name>
@@ -8495,6 +8499,10 @@ You just need to set the count configs after this setting.</source>
     <message>
         <source>Simple Delay:</source>
         <translation>延时</translation>
+    </message>
+    <message>
+        <source>is unlimit</source>
+        <translation>不限时</translation>
     </message>
 </context>
 <context>

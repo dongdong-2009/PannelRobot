@@ -2011,11 +2011,26 @@ void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& 
     QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
     if(!ok)
         return;
-    QVector<quint32> tmp;
+    QVector<quint32> tmp,tmp16;
     tmp.append(len);
-    for(int i=0;i<result.size();i++)
+    int i,l,tmpH,tmpL;
+    for(i=0,l=result.size();i<l;i++)
+    {
         tmp.append(result.at(i).toInt());
-    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp);
+    }
+    for(i=0,l=tmp.count();i<l;i++)
+    {
+        tmpL = tmp[i];
+        if(i+1 < l)
+        {
+            tmpH = tmp[i++];
+        }
+        else{
+            tmpH = 0;
+        }
+        tmp16.append(tmpL&0xff | tmpH<<16);
+    }
+    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp16);
 }
 
 void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QString& qkData)
@@ -2027,9 +2042,22 @@ void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QStrin
         return;
     QVector<quint32> tmp;
     tmp.append(len);
-    for(int i=0;i<result.size();i++)
+    int i,l,tmpH,tmpL;
+    for(i=0,l=result.size();i<l;i++)
         tmp.append(result.at(i).toInt());
-    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp);
+    for(i=0,l=tmp.count();i<l;i++)
+    {
+        tmpL = tmp[i];
+        if(i+1 < l)
+        {
+            tmpH = tmp[i++];
+        }
+        else{
+            tmpH = 0;
+        }
+        tmp16.append(tmpL&0xff | tmpH<<16);
+    }
+    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp16);
 }
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const

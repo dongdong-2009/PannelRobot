@@ -6485,6 +6485,10 @@ please chose!</source>
         <source>SafeSig</source>
         <translation>安全信号</translation>
     </message>
+    <message>
+        <source>reverse</source>
+        <translation>反向</translation>
+    </message>
 </context>
 <context>
     <name>SafeRangeEditor</name>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ActionModifyEditor</name>
     <message>
@@ -979,7 +979,7 @@
     </message>
     <message>
         <source>sendErr</source>
-        <translation type="vanished">发送脉冲错误</translation>
+        <translation>发送脉冲错误</translation>
     </message>
     <message>
         <source>inputErr</source>
@@ -999,15 +999,15 @@
     </message>
     <message>
         <source> R:</source>
-        <translation type="vanished">接收脉冲:</translation>
+        <translation>接收脉冲:</translation>
     </message>
     <message>
         <source> S:</source>
-        <translation type="vanished">发送脉冲:</translation>
+        <translation>发送脉冲:</translation>
     </message>
     <message>
         <source>Output1:</source>
-        <translation type="vanished">输出1:</translation>
+        <translation>输出1:</translation>
     </message>
     <message>
         <source>on</source>
@@ -1019,23 +1019,23 @@
     </message>
     <message>
         <source>Output2:</source>
-        <translation type="vanished">输出2:</translation>
+        <translation>输出2:</translation>
     </message>
     <message>
         <source>Input1:</source>
-        <translation type="vanished">输入1:</translation>
+        <translation>输入1:</translation>
     </message>
     <message>
         <source>Input2:</source>
-        <translation type="vanished">输入2:</translation>
+        <translation>输入2:</translation>
     </message>
     <message>
         <source> R</source>
-        <translation type="vanished">接收脉冲</translation>
+        <translation>接收脉冲</translation>
     </message>
     <message>
         <source> S</source>
-        <translation type="vanished">发送脉冲</translation>
+        <translation>发送脉冲</translation>
     </message>
     <message>
         <source>Output1</source>
@@ -1265,7 +1265,7 @@
     </message>
     <message>
         <source>Signal Stop</source>
-        <translation type="vanished">输入通就停止</translation>
+        <translation>输入通就停止</translation>
     </message>
     <message>
         <source>Fast Stop</source>
@@ -1701,27 +1701,27 @@
     </message>
     <message>
         <source>JogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>WorldPos</source>
-        <translation type="vanished">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Current TableCoord:</source>
-        <translation type="vanished">当前坐标系</translation>
+        <translation>当前坐标系</translation>
     </message>
     <message>
         <source>0:BaseCoord</source>
-        <translation type="vanished">世界坐标</translation>
+        <translation>世界坐标</translation>
     </message>
     <message>
         <source>Jog Pos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>World/Jog</source>
-        <translation type="vanished">世界/关节</translation>
+        <translation>世界/关节</translation>
     </message>
     <message>
         <source>JogCoord</source>
@@ -1729,7 +1729,7 @@
     </message>
     <message>
         <source>jogPos</source>
-        <translation type="vanished">关节坐标</translation>
+        <translation>关节坐标</translation>
     </message>
     <message>
         <source>worldCoord</source>
@@ -2171,7 +2171,7 @@
     </message>
     <message>
         <source>runningMode</source>
-        <translation type="vanished">自动运行中</translation>
+        <translation>自动运行中</translation>
     </message>
     <message>
         <source>SingleMode</source>
@@ -2772,7 +2772,7 @@
     </message>
     <message>
         <source>barnID</source>
-        <translation type="vanished">料仓号</translation>
+        <translation>料仓号</translation>
     </message>
     <message>
         <source>Start</source>
@@ -3990,7 +3990,7 @@ please chose!</source>
     </message>
     <message>
         <source>Confirm</source>
-        <translation type="vanished">确定修改</translation>
+        <translation>确定修改</translation>
     </message>
     <message>
         <source>Preservation</source>
@@ -4010,11 +4010,11 @@ please chose!</source>
     </message>
     <message>
         <source>Led </source>
-        <translation type="vanished">Led</translation>
+        <translation>Led</translation>
     </message>
     <message>
         <source> status binding</source>
-        <translation type="vanished">状态绑定</translation>
+        <translation>状态绑定</translation>
     </message>
     <message>
         <source>Key F</source>
@@ -4022,7 +4022,7 @@ please chose!</source>
     </message>
     <message>
         <source> function binding</source>
-        <translation type="vanished">功能绑定</translation>
+        <translation>功能绑定</translation>
     </message>
     <message>
         <source>Led</source>
@@ -4210,7 +4210,7 @@ please chose!</source>
     </message>
     <message>
         <source>Logic</source>
-        <translation type="vanished">逻辑</translation>
+        <translation>逻辑</translation>
     </message>
     <message>
         <source>Define</source>
@@ -4713,47 +4713,47 @@ please chose!</source>
     </message>
     <message>
         <source>para page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">参数读写</translation>
     </message>
     <message>
         <source>status page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">系统状态</translation>
     </message>
     <message>
         <source>para config</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">参数配置</translation>
     </message>
     <message>
         <source>read e2prom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">读EEPROM</translation>
     </message>
     <message>
         <source>write e2prom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">写EEPROM</translation>
     </message>
     <message>
         <source>common ctrl para</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通用控制参数</translation>
     </message>
     <message>
         <source>para name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">参数名</translation>
     </message>
     <message>
         <source>addr</source>
-        <translation type="unfinished">地址</translation>
+        <translation type="unfinished">参数地址</translation>
     </message>
     <message>
         <source>write val</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">写入值</translation>
     </message>
     <message>
         <source>read val</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">读出值</translation>
     </message>
     <message>
         <source>describe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述</translation>
     </message>
     <message>
         <source>PwmPeriod</source>
@@ -4809,7 +4809,7 @@ please chose!</source>
     </message>
     <message>
         <source>PWM period</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PWM周期</translation>
     </message>
 </context>
 <context>
@@ -4820,7 +4820,7 @@ please chose!</source>
     </message>
     <message>
         <source>default value:1990,instruction:IGBT switching frequency (Hz) clock frequency =0.5* system (PwmPeriod / 1). When PwmMode=0, the non symmetric mode, current loop sampling frequency =2* switching frequency: when pwmMode=1, symmetric mode, current loop sampling frequency = switching frequency.</source>
-        <translation type="vanished">IGBT开关频率（Hz）=0.5*系统主时钟频率/（PwmPeriod+1）。当PwmMode=0，即非对称模式下，电流环采样频率=2*开关频率：当pwmMode=1，即对称模式下，电流环采样频率=开关频率.</translation>
+        <translation>IGBT开关频率（Hz）=0.5*系统主时钟频率/（PwmPeriod+1）。当PwmMode=0，即非对称模式下，电流环采样频率=2*开关频率：当pwmMode=1，即对称模式下，电流环采样频率=开关频率.</translation>
     </message>
     <message>
         <source>SampleStartDelay</source>
@@ -4828,7 +4828,7 @@ please chose!</source>
     </message>
     <message>
         <source>default value:10,instruction:A/D sampling delay time (NS) = system master clock cycle *SampleStartDela</source>
-        <translation type="vanished">A/D采样延迟时间（ns）=系统主时钟周期*SampleStartDelay.</translation>
+        <translation>A/D采样延迟时间（ns）=系统主时钟周期*SampleStartDelay.</translation>
     </message>
     <message>
         <source>SpdPosLpRate</source>
@@ -4836,7 +4836,7 @@ please chose!</source>
     </message>
     <message>
         <source>default value:516,instruction:Speed loop sampling frequency (Hz) = current loop sampling frequency /SpdLpRate. position loop sampling frequency (Hz) = speed loop sampling frequency /PosLpRate</source>
-        <translation type="vanished">速度环采样频率(Hz)=电流环采样频率/SpdLpRate.位置环采样频率(Hz)=速度环采样频率/PosLpRate</translation>
+        <translation>速度环采样频率(Hz)=电流环采样频率/SpdLpRate.位置环采样频率(Hz)=速度环采样频率/PosLpRate</translation>
     </message>
     <message>
         <source>ModScl</source>
@@ -4844,7 +4844,7 @@ please chose!</source>
     </message>
     <message>
         <source>default value:3000,instruction:ModScl=3×(PwmPeriod+1)/2</source>
-        <translation type="vanished">ModScl=3×(PwmPeriod+1)/2</translation>
+        <translation>ModScl=3×(PwmPeriod+1)/2</translation>
     </message>
     <message>
         <source>PwmDeadTm</source>
@@ -4852,7 +4852,7 @@ please chose!</source>
     </message>
     <message>
         <source>default value:119,instruction:IGBT Dead Time(ns)=System master clock cycle(ns)×(PwmDeadTm+1)</source>
-        <translation type="vanished">IGBT死区时间(ns)=系统主时钟周期(ns)×(PwmDeadTm+1)</translation>
+        <translation>IGBT死区时间(ns)=系统主时钟周期(ns)×(PwmDeadTm+1)</translation>
     </message>
     <message>
         <source>SystemConfig</source>
@@ -4864,7 +4864,7 @@ please chose!</source>
     </message>
     <message>
         <source>default value:0,instruction:0-Prohibit undervoltage alarm function，1-Allow undervoltage alarm function</source>
-        <translation type="vanished">0-禁止欠压报警功能，1-允许欠压报警功能</translation>
+        <translation>0-禁止欠压报警功能，1-允许欠压报警功能</translation>
     </message>
     <message>
         <source>DcBusOffset</source>
@@ -5716,291 +5716,291 @@ please chose!</source>
     </message>
     <message>
         <source>1.parameter initial value: 25700,whether to modify: No.2.[7:0] the brake open delay, range: 0~255; [15:8] brake delay, range: 0~255.3. Description: brake open delay brake delay =SOffToBOnDelayx1ms. =BrkRlyDelayx1ms;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：25700，是否需要修改：否。2.[7:0]抱闸打开延时，取值范围：0~255；[15:8]抱闸动作延时，取值范围：0~255。3.说明：抱闸打开延时=BrkRlyDelayx1ms；抱闸动作延时=SOffToBOnDelayx1ms。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 2194,whether to modify: No.2.[0] the servo ON effective level, range: 0~1; [1] alarm clearing level range: 0~1; [3:2] alarm clear reuse range: 0~3; [4] ultra positive effective level, range: 0~1; [6:5] positive super port reuse range: [7], 0~3; reverse overtravel effective level, range: 0~1; [9:8] reverse overtravel port multiplexing, range: 0~3; range of [10] travel direction: 0~1; the [11] command cleared effective level range: 0~1; [13:12] command cleared port multiplexing, range: 0~3; [15:14] is not defined that range: any value. Note: Sns:0- active low 1-, high effective; TrvIDir:0- motor counter clockwise when the stroke is the right direction, 1- motor rotates clockwise travel to a positive direction; AlmRstFunc:0- alarm Clear, 1~2- is not defined, 3- pulse position commands are prohibited; POTFunc:0- is super, 1~2 is not defined, 3- pulse position commands are prohibited; reverse NOTFunc:0- over range, 1~2 is not defined, 3- pulse position command prohibition; CmdRstFunc:0- position deviation counter reset, 1- zero speed clamp, 2- is not defined, 3- pulse the position command is prohibited.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：2194，是否需要修改：否。2.[0]伺服ON有效电平，取值范围：0~1；[1]报警清除有效电平，取值范围：0~1；[3:2]报警清除端复用，取值范围：0~3；[4]正向超程有效电平，取值范围：0~1；[6:5]正向超程端口复用，取值范围：0~3；[7]反向超程有效电平，取值范围：0~1；[9:8]反向超程端口复用，取值范围：0~3；[10]行程方向，取值范围：0~1；[11]命令清零有效电平，取值范围：0~1；[13:12]命令清零端口复用，取值范围：0~3；[15:14]未定义，取值范围：任意值。说明：Sns：0-低电平有效，1-高电平有效；TrvIDir:0-电机逆时针旋转时行程为正方向，1-电机顺时针旋转时行程为正方向；AlmRstFunc:0-报警清除，1~2-未定义，3-脉冲式位置命令禁止；POTFunc：0-正向超程，1~2未定义，3-脉冲式位置命令禁止；NOTFunc：0-反向超程，1~2未定义，3-脉冲式位置命令禁止；CmdRstFunc：0-位置偏差计数器清零，1-零速度钳位，2-未定义，3-脉冲式位置命令禁止。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 521,whether to modify: No.2.[0] the servo ready effective level, range: 0~1; [2:1] servo ready port multiplexing, range: 0~3; [3] brake open effective level, range: 0~1; [5:4] brake open port multiplexing, range: 0~3; [6] alarm output level range: [8:7], 0~1; alarm output port multiplexing, range: 0~3; [9] complete the effective level, range: 0~1; [11:10] completion port reuse, range: 0~3; [15:12] is not defined, the range of any value; note: Sns:0- low level; RdyFunc:0- servo ready, 1- torque limit in 2-, the speed limit in 3- software; HldBrkFunc:0- brake open, 1~3- is not defined; AlmFunc:0- alarm output, 1~3- is not defined; the CoinFunc:0- definition, 1- zero speed, 2~3- Definition.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：521，是否需要修改：否。2.[0]伺服准备好有效电平，取值范围：0~1；[2:1]伺服准备好端口复用，取值范围：0~3；[3]抱闸打开有效电平，取值范围：0~1；[5:4]抱闸打开端口复用，取值范围：0~3；[6]报警输出有效电平，取值范围：0~1；[8:7]报警输出端口复用，取值范围：0~3；[9]定位完成有效电平，取值范围：0~1；[11:10]定位完成端口复用，取值范围：0~3；[15:12]未定义，取值范围：任意值；说明：Sns：0-低电平有效；RdyFunc：0-伺服准备好，1-转矩限制中，2-转速限制中，3-软件超程；HldBrkFunc：0-抱闸打开，1~3-未定义；AlmFunc：0-报警输出，1~3-未定义；CoinFunc：0-定义完成，1-零速度，2~3-未定义。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 7,whether to modify: No.2.[0] the ON servo control source, range: 0~1; [1] encoder enable control range: 0~1; [2] axis enable control range: 0~1; [3] type motor, range: 0~1; [15:4] is not defined, the range of arbitrary values:.3. Description: ExtCtrl:0- ON RS422 1- by servo control, servo control by PLC ON; EncEnbl:0- 1- encoder encoder is prohibited, normal work; AxisEnbl:0- axis current is prohibited, the current 1- axis normal work; MtrType:0-PMSM, 1-IM.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：7，是否需要修改：否。2.[0]伺服ON控制源，取值范围：0~1；[1]编码器使能控制，取值范围：0~1；[2]轴使能控制，取值范围：0~1；[3]电动机类型，取值范围：0~1；[15:4]未定义，取值范围：任意值。3.说明：ExtCtrl：0-伺服ON由RS422控制，1-伺服ON由PLC控制；EncEnbl:0-编码器被禁止，1-编码器正常工作；AxisEnbl:0-当前轴被禁止，1-当前轴正常工作；MtrType:0-PMSM,1-IM。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[1:0] the torque command source, range: 0~3; [3:2] speed command source, range: 0~3; [4] speed ramp command source, range: 0~1; [5] position command source, range: 0~1; [6] position feedback source, the value range: 0~1; [15:7] is not defined, the range of values: any.3. Description: IqRefSel:0- speed loop output, 1- digital given, 2- analog voltage, 3-0; SpdRefSel:0- position loop output, 1- slope is given, 2- digital given, 3- analog voltage; RampRefSel:0- digital given, 1- analog voltage; PosRefSel:0- pulse is given, 1- digital given PosFbkSel:0- rotation; 1- linear encoder, grating.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[1:0]转矩命令源，取值范围：0~3；[3:2]速度命令源，取值范围：0~3；[4]速度斜坡命令源，取值范围：0~1；[5]位置命令源，取值范围：0~1；[6]位置反馈源，取值范围：0~1；[15:7]未定义，取值范围：任意值。3.说明：IqRefSel:0-速度环输出，1-数字式给定，2-模拟电压，3-0；SpdRefSel:0-位置环输出，1-斜坡式给定，2-数字式给定，3-模拟电压；RampRefSel:0-数字式给定，1-模拟电压；PosRefSel:0-脉冲式给定，1-数字式给定；PosFbkSel:0-旋转编码器，1-线性光栅。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 7,whether to modify: No.2.[1] the position command enable, range: 0~1; [1] command pulse mode, range: 0~1; [2] command pulse edge selection, range: 0~1; [3] command pulse logic inversion, range: 0~1; [4] simulation command polarity inversion, range: 0~1; [15:5] is not defined, range:.3. Description: PosCmdEnbl:0- arbitrary value position command pulse is invalid, 1- position command pulse; PosCmdMode:0-Quadrature mode, and pulse is X4,1-Pulse/sign mode and pulse is X1; PosCmdEdge: the falling edge effectively, the rising edge of 1-; PosCmdInv:0- position command pulse not inverted, 1- position take the command pulse; AnlgRefInv:0- not inverted, 1- inverted</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：7，是否需要修改：否。2.[1]位置命令使能，取值范围：0~1；[1]命令脉冲模式，取值范围：0~1；[2]命令脉冲边沿选择，取值范围：0~1；[3]命令脉冲逻辑取反，取值范围：0~1；[4]模拟命令极性取反，取值范围：0~1；[15:5]未定义，取值范围：任意值。3.说明：PosCmdEnbl:0-位置指令脉冲无效，1-位置指令脉冲有效；PosCmdMode:0-Quadrature mode,and pulse is X4,1-Pulse/sign mode and pulse is X1；PosCmdEdge:下降沿有效，1-上升沿有效；PosCmdInv:0-位置指令脉冲不取反，1-位置指令脉冲取反；AnlgRefInv:0-不取反，1-取。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] simulation command offset, value range: -32767~32767.3.: VCmd_Offset= analog command voltage equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]模拟命令偏移量，取值范围：-32767~32767。3.说明：VCmd_Offset=模拟命令电压等于零时对应的A/D转换数据。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 33, whether to modify: No.2.[0] Z encoder pulse enable, range: 0~1; [1] velocity pulse selection, range: 0~1; [3:2] velocity pulse edge selection, range: 0~1; [4] reverse rotation, range: 0~3; polarity, Z pulse [5] rotary encoding device range: 0~1; [6] line type incremental encoder, range: 0~1; [15:7] is not defined, the range of.3. value: any description: ZPulsEnbl:0- ban, 1- allows the EncPhsMux:0-A phase, 1-B phase;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：33，是否需要修改：否。2.[0]编码器Z脉冲使能，取值范围：0~1；[1]测速脉冲选择，取值范围：0~1；[3:2]测速脉冲边沿选择，取值范围：0~1；[4]旋转反向，取值范围：0~3；[5]旋转编码器Z脉冲的极性，取值范围：0~1；[6]省线式增量型编码器，取值范围：0~1；[15:7]未定义，取值范围：任意值。3.说明：ZPulsEnbl:0-禁止，1-允许；EncPhsMux：0-A相，1-B相；EncEdgeMux:0-正转或反转时下降沿有效，1-正转时上升沿有效或反转时下降沿有效，2-正转时下降沿有效或反转时上升沿有效，3-正转或反转时上升沿有效；RotEncInv:0-A相超前于B相，1-A相滞后于B相；RotEncZPol:0-负极性，1-正极性；WireSaving:0-非省线式，1-省线式。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 16383, whether to modify: No.2.[15:0] incremental encoder line number, value range: 0~65535.3.: RotEnc_MaxCnt=4 * PPR-1, where PPR is the encoder, each phase of each turn of the pulse</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：16383，是否需要修改：否。2.[15:0]增量式编码器线数，取值范围：0~65535。3.说明：RotEnc_MaxCnt=4×PPR-1，其中PPR为编码器每相每转发出的脉冲数。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1250, whether to modify: No,.2.[15:0] incremental encoder line number, value range: 0~65535.3.: Z pulse relative to U opposite potential, negative to zero point of electric angle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1250，是否需要修改：否。2.[15:0]增量式编码器线数，取值范围：0~65535。3.说明：Z脉冲相对于U相反电势负向过零点的电角度。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 2, whether to modify: No.2.[0] the linear encoder RP, range: 0~1; polarity, Z pulse [1] linear encoder range: 0~1; [15:2] is not defined, range:.3. Description: LnrEncInv:0- is not an arbitrary value counter, 1- counter; LnrEncZPol:0- negative, 1- positive.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：2，是否需要修改：否。2.[0]线性编码器反相，取值范围：0~1；[1]线性编码器Z脉冲的极性，取值范围：0~1；[15:2]未定义，取值范围：任意值。3.说明：LnrEncInv:0-不取反，1-取反；LnrEncZPol:0-负极性，1-正极性。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 9, whether to modify: No.2.[0] encoder output enable frequency, range: 0~1; [1] output pulse source, range: 0~1; [2] output pulse inversion, range: 0~1; polarity [3] Z pulse output range: 0~1; [15:4] is not defined, the range: 0~1.3. Description: EncDivEnbl:0- ban, 1- allows EncDivSrc:0-; rotary encoder, 1- linear grating; EncDivInv:0-A phase advance in the B phase, 1-A phase lag in B phase; EncDivZPol:0- negative, 1- positive.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：9，是否需要修改：否。2.[0]编码器分频输出使能，取值范围：0~1；[1]输出脉冲来源，取值范围：0~1；[2]输出脉冲反相，取值范围：0~1；[3]输出Z脉冲的极性，取值范围：0~1；[15:4]未定义，取值范围：0~1。3.说明：EncDivEnbl:0-禁止，1-允许；EncDivSrc:0-旋转编码器，1-直线光栅尺；EncDivInv:0-A相超前于B相，1-A相滞后于B相；EncDivZPol:0-负极性，1-正极性。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] encoder output pulse frequency than the range of molecules: 1~65535.3. Description: EncDiv_Num/EncDiv_Den = 1; otherwise, the output pulse is uncertain.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]编码器输出脉冲分频比之分子，取值范围：1~65535。3.说明：EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] encoder output pulse frequency than the denominator, range: 1~65535.3. EncDiv_Num/EncDiv_Den = 1; otherwise, the output pulse is uncertain.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]编码器输出脉冲分频比之分母，取值范围：1~65535。3.说明：EncDiv_Num/EncDiv_Den≥1；否则输出脉冲不确定。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] U phase current offset, value range: -2047~2047.3.: IfbU_Offset=U phase current equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]U相电流偏移量,取值范围：-2047~2047。3.说明：IfbU_Offset=U相电流等于零时对应的A/D转换数据。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] W phase current offset, value range: -2047~2047.3.: IfbW_Offset=W phase current equal to zero, corresponding to the A/D conversion data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]W相电流偏移量,取值范围：-2047~2047。3.说明：IfbW_Offset=W相电流等于零时对应的A/D转换数据。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 5148, whether to modify: Yes, suggestion: calculated according to the description of the formula, where MHC is the maximum range of the current sensor, a circle, MHC=24, the two time round, MHC=12, the three time round, MHC=8.2.[15:0]D axis current calibration factor, range: 0~65535.3. Description: for PMSM, IdScl=MHC (2048 * 4096 * 2^10/ * SQRT * Irated * 1.64676 (2)), where MHC is the maximum range of ideal current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：5148，是否需要修改：是，修改建议：根据描述的公式计算，其中MHC为电流传感器的最大量程，绕一圈时，MHC=24,绕两圈时，MHC=12,绕三圈时，MHC=8。2.[15:0]D轴电流定标因子,取值范围：0~65535。3.说明：对于PMSM，IdScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，Irated为额定电流有效值。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 5148, whether to modify: Yes, suggestion: calculated according to the description of the formula, where MHC is the maximum range of the current sensor, a circle, MHC=24, the two time round, MHC=12, the three time round, MHC=8.2.[15:0]Q axis current calibration factor, range: 0~65535.3. Description: for PMSM, IqScl=MHC (2048 * 4096 * 2^10/ * SQRT * Irated * 1.64676 (2)), where MHC is the maximum range of ideal current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：5148，是否需要修改：是，修改建议：根据描述的公式计算，其中MHC为电流传感器的最大量程，绕一圈时，MHC=24,绕两圈时，MHC=12,绕三圈时，MHC=8。2.[15:0]Q轴电流定标因子,取值范围：0~65535。3.说明：对于PMSM，IqScl=MHC×4096×2^10/(2048×SQRT(2)×Irated×1.64676)，其中MHC为电流传感器的最大理想量程，Irated为额定电流有效值。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 4096, whether to modify: Yes, suggestion: PPR=4096.2.[15:0] electric angle calibration factor, range: 0~65535.3. Description: ElecAngScl=P * 4096 * 2^12/ (4 * PPR), where P is the pole number, PPR for each phase of each turn from the encoder pulse number.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：4096，是否需要修改：是，修改建议：其中PPR=4096。2.[15:0]电角度定标因子,取值范围：0~65535。3.说明：ElecAngScl=P×4096×2^12/(4×PPR)，其中P为极对数，PPR为编码器每相每转发出的脉冲数。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the motor slip gain range: 0~65535.3. Description: for IM, SlipGain=RatedSlipSpeed/RatedIqRef=2^24 * RatedSlipFreq (Hz) /CurrentLoopUpdateRate.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]感应电动机转差率增益,取值范围：0~65535。3.说明：对于IM，SlipGain=RatedSlipSpeed/RatedIqRef=2^24×RatedSlipFreq(Hz)/CurrentLoopUpdateRate。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 65535,whether to modify: No.2.[15:0] the torque command notch filter constant 1, range: 32768~65535.3. Description: K1_Notch=k1 * 2^15, k1=1+a, a= (1-tan (Bw/2) (1+tan) / (Bw/2) Bw=2), pi * fb/fs, where FS is the current loop frequency, FB -3dB notch width; 1 = k1&lt;2, K1, and when the 2 notch filter has no effect.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：65535，是否需要修改：否。2.[15:0]转矩命令陷波滤波常数1,取值范围：32768~65535。3.说明：K1_Notch=k1×2^15，k1=1+a，a=(1-tan(Bw/2))/(1+tan(Bw/2))，Bw=2π×fb/fs，其中fs为电流环采样频率，fb为-3dB陷波宽度；1≤k1&lt;2，且当k1→2时陷波滤波器不起作用。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the torque command notch filter constant 2, range: 0~65535.3. Description: K2_Notch=k2 * 2^15, k2=b * (1+a), a= (1-tan (Bw/2) (1+tan) / (Bw/2) b=cos), Omega 0, Omega PI Bw=2 * fb/fs, 0=2 pi * f0/fs, where FS is the current loop sampling frequency, F0 notch center frequency, FB -3dB notch width; 0 = k2&lt;2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]转矩命令陷波滤波常数2,取值范围：0~65535。3.说明：K2_Notch=k2×2^15，k2=b×(1+a)，a=(1-tan(Bw/2))/(1+tan(Bw/2))，b=cosω0，Bw=2π×fb/fs，ω0=2π×f0/fs，其中fs为电流环采样频率，f0为陷波中心频率，fb为-3dB陷波宽度；0≤k2&lt;2。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the torque command low-pass filter constant, range: 0~65535.3. Description: Ktf=2^16 * (1-tan (c/2) (1+tan) / (omega Omega PI, c/2)) c=2 * fc/fs, where FS is the current loop sampling frequency, FC -3dB shear frequency.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]转矩命令低通滤波器常数,取值范围：0~65535。3.说明：Ktf=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为电流环采样频率，fc为-3dB剪切频率。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 21845, whether to modify: No.2.[15:0] overload protection threshold, value range: 0~65535.3.: OvrLdLim=32768/coeff, coeff is overload factor, e.g. is set to 1.5 times the rated value, OvrLdLim=21845.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：21845，是否需要修改：否。2.[15:0]过载保护门限,取值范围：0~65535。3.说明：OvrLdLim=32768/coeff，coeff为过载系数，e.g.设为额定值1.5倍时，OvrLdLim=21845。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 12288, whether to modify: No.2.[15:0] positive torque limit, range: 0~32767.3. Description: TrqLimP=4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：12288，是否需要修改：否。2.[15:0]正向转矩限幅值,取值范围：0~32767。3.说明：TrqLimP=4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值。</translation>
     </message>
     <message>
         <source>1.parameter initial value: -12288, whether to modify: No.2.[15:0] reverse torque limit, range: -32767~-1.3. Description: TrqLimN=-4096 * MLC/ (SQRT (2) * Irated), where MLC is the maximum linear range of current sensor, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：-12288，是否需要修改：否。2.[15:0]反向转矩限幅值,取值范围：-32767~-1。3.说明：TrqLimN=-4096×MLC/(SQRT(2)×Irated)，其中MLC为电流传感器的最大线性范围，Irated为额定电流有效值。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1024, whether to modify: No.2.[15:0] current loop controller, integral error limit, value range: 0~16383.3.: big deviation, small gain, small deviation, big gain</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1024，是否需要修改：否。2.[15:0]电流环控制器积分误差限幅值,取值范围：0~16383。3.说明：大偏差小增益、小偏差大增益。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 2000, whether to modify: Yes, suggestion: according to the experience, the range of Kpid 100~1000, suggested the use of the initial value of.2.[15:0]D axis current loop controller proportional gain range: 0~65535.3. Description: 11 decimal places.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：2000，是否需要修改：是，修改建议：根据经验，Kpid的取值范围为100~1000,建议使用初始值。2.[15:0]D轴电流环控制器比例增益,取值范围：0~65535。3.说明：11个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1500, whether to modify: Yes, suggestion: according to the experience, the range of Kiid 100~1000, suggested the use of the initial value of integral gain,.2.[15:0]D axis current loop controller range: 0~65535.3. Description: 16 decimal places.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1500，是否需要修改：是，修改建议：根据经验，Kiid的取值范围为100~1000,建议使用初始值。2.[15:0]D轴电流环控制器积分增益,取值范围：0~65535。3.说明：16个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 2000, whether to modify: Yes, suggestion: according to the experience, the range of Kpiq to 100~1000, and numerical Kpid, recommend the use of the initial value of.2.[15:0]Q axis current loop controller proportional gain range: 0~65535.3. Description: 11 decimal digits.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：2000，是否需要修改：是，修改建议：根据经验，Kpiq的取值范围为100~1000,数值需与Kpid一样，建议使用初始值。2.[15:0]Q轴电流环控制器比例增益,取值范围：0~65535。3.说明：11个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1500, whether to modify: Yes, suggestion: according to the experience, the range of Kpiq to 100~1000, and numerical Kiid, recommend the use of the initial value of integral gain,.2.[15:0]Q axis current loop controller range: 0~65535.3. Description: 16 decimal digits.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1500，是否需要修改：是，修改建议：根据经验，Kpiq的取值范围为100~1000,数值需与Kiid一样，建议使用初始值。2.[15:0]Q轴电流环控制器积分增益,取值范围：0~65535。3.说明：16个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] D axis: whether the back EMF constant, range: 0~65535.3. Description: for PMSM, Ked=8192 * P * MaxRPM * pi * Ls * SQRT (2) * Irated/ (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed, Ls the motor winding inductance, Irated rated current value.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]D轴反电动势常数,取值范围：0~65535。3.说明：对于PMSM，Ked=8192×π×P×MaxRPM×Ls×SQRT(2)×Irated/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，Ls为电机绕组电感，Irated为额定电流有效值。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] Q axis: whether the back EMF constant, range: 0~65535.3. Description: for PMSM, Ked=8192 * P * MaxRPM * * pi / psi (15 x 1.64676 x 310), where P is the pole number, MaxRPM is the highest speed, psi for permanent magnet motor rotor chain.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]Q轴反电动势常数,取值范围：0~65535。3.说明：对于PMSM，Ked=8192×π×P×MaxRPM×ψ/(15×1.64676×310)，其中P为极对数，MaxRPM为最高转速，ψ为电机永磁转子磁链。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] torque simulation command weighting factor, value range: 0~65535.3. Description: Ktg=2^14 * (0~400%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0] 转矩模拟命令加权因子,取值范围：0~65535。3.说明：Ktg=2^14×(0~400%)。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0,whether to modify: No.2.[15:0] the induction motor rotor constant, range: 0~65535.3. Description: Krt=2^22/ (tr*fs), where FS is the current loop sampling frequency (Hz), TR for induction motor rotor time constant.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]感应电动机转子常数,取值范围：0~65535。3.说明：Krt=2^22/(tr*fs)，其中fs为电流环采样频率(Hz)，tr为感应电机转子时间常数。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] induction motor rated frequency, value range: 0~65535.3.: RatedFreq=2^15*RatedRPM/MaxRPM.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]感应电动机额定频率,取值范围：0~65535。3.说明：RatedFreq=2^15*RatedRPM/MaxRPM。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 6632, whether to modify: No.2.[15:0] D axis, voltage modulation, system limits, value range: 0~6632.3.: VdLim=2^14 * D axis, maximum voltage regulation system /1.64676</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：6632，是否需要修改：否。2.[15:0]D轴电压调制度限幅值,取值范围：0~6632。3.说明：VdLim=2^14×D轴最大电压调制度/1.64676</translation>
     </message>
     <message>
         <source>1.parameter initial value: 6632, whether to modify: No.2.[15:0] Q axis, voltage modulation, system limits, value range: 0~6632.3.: VqLim=2^14 * Q axis, maximum voltage regulation system /1.64676</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：6632，是否需要修改：否。2.[15:0]Q轴电压调制度限幅值,取值范围：0~6632。3.说明：VqLim=2^14×Q轴最大电压调制度/1.64676</translation>
     </message>
     <message>
         <source>1.parameter initial value: 16384, whether to modify: No.2.[15:0] over-current protection threshold, value range: 0~65535.3. Description: maximum current setting, motor rated =4096.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：16384，是否需要修改：否。2.[15:0]过流保护阀值,取值范围：0~65535。3.说明：最大电流设定，电机额定=4096。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 3200,whether to modify: No.2.[15:0] the speed of the scaling factor, range: 0~65535.3. Description: SpdScl=2^15 (4 x 60 x fclk/ x PPR x MaxRPM x 256), where fclk is the main system clock frequency, PPR encoder line number, MaxRPM is the highest speed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：3200，是否需要修改：否。2.[15:0]速度定标因子,取值范围：0~65535。3.说明：SpdScl=2^15×60×fclk/(4×PPR×MaxRPM×256)，其中fclk为系统主时钟频率，PPR为编码器线数，MaxRPM为最高转速。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 30,whether to modify: No.2.[15:0] the motor zero velocity detection delay, range: 0~65535.3. Description: NilMtrSpdDly= speed loop sampling frequency (4 * 60/ * PPR * MinRPM), where PPR is the number of MinRPM encoder line, the minimum speed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：30，是否需要修改：否。2.[15:0]电机零速检测延时,取值范围：0~65535。3.说明：NilMtrSpdDly=速度环采样频率×60/(4×PPR×MinRPM)，其中PPR为编码器线数，MinRPM为最低转速。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 30, whether to modify: No.2.[15:0] DC pulse zero speed detection delay, value range: 0~65535.3.: NilCmdSpdDly=NilMtrSpdDly * electronic gear ratio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：30，是否需要修改：否。2.[15:0]直流脉冲零速检测延时,取值范围：0~65535。3.说明：NilCmdSpdDly=NilMtrSpdDly×电子齿轮比。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 300, whether to modify: No.2.[15:0] speed measurement comparison of internal and the switching threshold value range: 0~32767.3. Description: SpdCmp=2^15 x 60 x speed loop sampling frequency / (PPR * MaxRPM), where PPR is the number of MaxRPM is the highest line encoder, speed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：300，是否需要修改：否。2.[15:0]内部转速测量比较及切换门限,取值范围：0~32767。3.说明：SpdCmp=2^15×60×速度环采样频率/(PPR×MaxRPM)，其中PPR为编码器线数，MaxRPM为最高转速。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] zero speed approval range, value range: 0~65535.3. Description: when the actual speed is less than MaxRPM * ZeroSpeed/2^15, considered at the speed of zero state</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]零转速认可范围,取值范围：0~65535。3.说明：当实际转速小于MaxRPM×ZeroSpeed/2^15时，认为处于转速为零的状态。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] acceleration, value range: 0~65535.3. Description: 8 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：256，是否需要修改：否。2.[15:0]加速度,取值范围：0~65535。3.说明：8个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] deceleration, value range: 0~65535.3. Description: 8 decimal places</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：256，是否需要修改：否。2.[15:0]减速度,取值范围：0~65535。3.说明：8个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] speed feed-forward / analog command weighting factor, value range: 0~65535.3.: Kfg=2^14 * (0~400%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]速度前馈/模拟命令加权因子,取值范围：0~65535。3.说明：Kfg=2^14×(0~400%)。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 0, whether to modify: No.2.[15:0] the speed feedforward / analog low-pass filter command constant, range: 0~65535.3. Description: Kff=2^16 * (1-tan (c/2) (1+tan) / (omega Omega PI, c/2)) c=2 * fc/fs, where FS is the speed loop sampling frequency, FC -3dB shear frequency.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：0，是否需要修改：否。2.[15:0]速度前馈/模拟命令低通滤波器常数,取值范围：0~65535。3.说明：Kff=2^16×(1-tan(ωc/2))/(1+tan(ωc/2))，ωc=2π×fc/fs，其中fs为速度环采样频率，fc为-3dB剪切频率。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 25000, whether to modify: No.2.[15:0] forward rev limit amplitude, value range: 0~32767.3.: SpdLimP=2^15 * (0~100%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：25000，是否需要修改：否。2.[15:0]正向转速限幅值,取值范围：0~32767。3.说明：SpdLimP=2^15×(0~100%)。</translation>
     </message>
     <message>
         <source>1.parameter initial value: -25000, whether to modify: No.2.[15:0] reverse rev limit amplitude, value range: -32767~-1.3.: SpdLimN=-2^15 * (0~100%)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：-25000，是否需要修改：否。2.[15:0]反向转速限幅值,取值范围：-32767~-1。3.说明：SpdLimN=-2^15×(0~100%)。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 25000, whether to modify: No.2.[15:0] speed loop controller, integral error limit, value range: 0~32767.3.: big deviation, small gain, small deviation, big gain</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：25000，是否需要修改：否。2.[15:0]速度环控制器积分误差限幅值,取值范围：0~32767。3.说明：大偏差小增益、小偏差大增益。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 100, whether to modify: Yes, suggestion: according to the experience, 10 &lt; KpV &lt; = 1000, the need to modify the.2.[15:0] speed loop controller proportional gain range according to the actual situation: 0~65535.3. Description: 5 decimal places.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：100，是否需要修改：是,修改建议：根据经验，10 &lt;= KpV &lt;= 1000,需根据实际情况修改。2.[15:0]速度环控制器比例增益,取值范围：0~65535。3.说明：5个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 200, whether to modify: Yes, suggestion: according to the experience, 10 &lt; KiV &lt; = 1000, the need to modify the.2.[15:0] speed loop integral gain controller, according to the actual situation of the range: 0~65535.3. Description: 13 decimal places.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：200，是否需要修改：是,修改建议：根据经验，10 &lt;= KiV &lt;= 1000,需根据实际情况修改。2.[15:0]速度环控制器积分增益,取值范围：0~65535。3.说明：13个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 65535, whether to modify: No.2.[15:0] speed loop controller, PDFF gain, value range: 0~65535.3.KfV=2^16 * (0~100%), which: 0-IP control, 100%-PI control, 0~100%-PDFF control</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：65535，是否需要修改：否。2.[15:0]速度环控制器PDFF增益,取值范围：0~65535。3.说明：KfV=2^16×(0~100%)，其中：0-IP控制，100%-PI控制，0~100%-PDFF控制。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 100,whether to modify: No.2.[15:0] the brake zero speed range: 0~65535.3. Description: when the actual speed is less than MaxRPM * ZeroSpeed/2^15, turn off the brake signal.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：100，是否需要修改：否。2.[15:0]抱闸零速,取值范围：0~65535。3.说明：当实际转速小于MaxRPM×ZeroSpeed/2^15时，关断抱闸信号。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] electronic gear of the molecule: 0~65535.3.: 1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]电子齿轮之分子：0~65535。3.说明：1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] electronic gear of the denominator: 0~65535.3.: 1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]电子齿轮之分母：0~65535。3.说明：1/32768&lt;PulsScl_Num/PulsScl_Den&lt;1024。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 256, whether to modify: No.2.[15:0] position deviation is too large: 0~65535.3.: PosErrOvrLim limit of 256 * pulse equivalent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：256，是否需要修改：否。2.[15:0]位置偏差过大设置：0~65535。3.说明：实际限值为PosErrOvrLim×256个脉冲当量。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 10, whether to modify: No.2.[15:0] positioning completion range: 0~65535.3. Description: when the actual position deviation is less than CoinLim pulse equivalent, that position is completed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：10，是否需要修改：否。2.[15:0]定位完成范围：0~65535。3.说明：当实际位置偏差小于CoinLim个脉冲当量时，认为定位完成。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 65535, whether to modifyy: No.2.[15:0] forward stroke limit (high 16 bits):0~65535.3. Description: when the actual position exceeds [POvrTrvLimH, POvrTrvLimL] pulse equivalent, the positive forward process will occur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：65535，是否需要修改：否。2.[15:0]正向行程限制（高16位）：0~65535。3.说明：当实际位置超过[POvrTrvLimH,POvrTrvLimL]个脉冲当量时，会发生正向超程。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 32767, whether to modify: No.2.[15:0] forward stroke limit (low 16 bits):0~32767.3. Description: when the actual position exceeds [POvrTrvLimH, POvrTrvLimL] pulse equivalent, the positive forward process will occur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：32767，是否需要修改：否。2.[15:0]正向行程限制（低16位）：0~32767。3.说明：当实际位置超过[POvrTrvLimH,POvrTrvLimL]个脉冲当量时，会发生正向超程。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1, whether to modify: No.2.[15:0] reverse travel limit (high 16 bits):0~65535.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1，是否需要修改：否。2.[15:0]反向行程限制（高16位）：0~65535。3.说明：当实际位置超过[NOvrTrvLimH,NOvrTrvLimL]个脉冲当量时，会发生反向超程。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 32768, whether to modify: No.2.[15:0] reverse travel limit (low 16 bits):-32768~0.3. Description: when the actual position exceeds [NOvrTrvLimH, NOvrTrvLimL] pulse equivalent, reverse reverse process will occur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：32768，是否需要修改：否。2.[15:0]反向行程限制（低16位）：-32768~0。3.说明：当实际位置超过[NOvrTrvLimH,NOvrTrvLimL]个脉冲当量时，会发生反向超程。</translation>
     </message>
     <message>
         <source>1.parameter initial value: -32768,whether to modify: No.2.[15:0] the filter constants: 0~65535.3. Description: Ksf=2^16 * T/ (T+1), including T= /Ts, which is the filter time constant Ts for the position loop sampling period.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：-32768，是否需要修改：否。2.[15:0]平滑滤波器常数：0~65535。3.说明：Ksf=2^16×T/(T+1)，其中T=τ/Ts，τ为滤波时间常数，Ts为位置环采样周期。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 10, whether to modify: Yes, suggestion: according to the experience, 2 &lt; KpP &lt; = 100, can be adjusted according to the actual situation in general, recommend the use of the initial value of.2.[15:0] controller of position loop proportional gain: 0~65535.3. Description: 5 decimal places.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：10，是否需要修改：是，修改建议：根据经验，2 &lt;= KpP &lt;= 100,可根据实际情况调整，一般情况，建议使用初始值。2.[15:0]位置环控制器比例增益：0~65535。3.说明：5个小数位。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1024, whether to modify: No.2.[15:0] rotor initial angle 1:0~65535.3.indicating: motor encoder U, V, W equal to 001 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1024，是否需要修改：否。2.[15:0]转子初始角1：0~65535。3.说明：电机编码器U、V、W等于001时对应的转子位置；仅保存于EEPROM中。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 208, whether to modify: No.2.[15:0] rotor initial angle 2:0~65535.3.indicating: motor encoder U, V, W equal to 010 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：208，是否需要修改：否。2.[15:0]转子初始角2：0~65535。3.说明：电机编码器U、V、W等于010时对应的转子位置；仅保存于EEPROM中。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 625, whether to modify: No.2.[15:0] rotor initial angle 3:0~65535.3.indicating: motor encoder U, V, W equal to 011 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：625，是否需要修改：否。2.[15:0]转子初始角3：0~65535。3.说明：电机编码器U、V、W等于011时对应的转子位置；仅保存于EEPROM中。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1875, whether to modify: No.2.[15:0] rotor initial angle 4:0~65535.3.indicating: motor encoder U, V, W equal to 100 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1875，是否需要修改：否。2.[15:0]转子初始角4：0~65535。3.说明：电机编码器U、V、W等于100时对应的转子位置；仅保存于EEPROM中。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 1458, whether to modify: No.2.[15:0] rotor initial angle 5:0~65535.3.indicating: motor encoder U, V, W equal to 101 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：1458，是否需要修改：否。2.[15:0]转子初始角5：0~65535。3.说明：电机编码器U、V、W等于101时对应的转子位置；仅保存于EEPROM中。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 2292, whether to modify: No.2.[15:0] rotor initial angle 6:0~65535.3.indicating: motor encoder U, V, W equal to 110 when the corresponding rotor position; only stored in the EEPROM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：2292，是否需要修改：否。2.[15:0]转子初始角6：0~65535。3.说明：电机编码器U、V、W等于110时对应的转子位置；仅保存于EEPROM中。</translation>
     </message>
     <message>
         <source>1.parameter initial value: 2916,whether to modify: No.2.[7:0]: the dynamic brake delay range: 0~255; no dynamic brake, [8] main power shutdown range: 0~1; no dynamic brake, [9] servo OFF range: 0~1; [10] fault alarm when the prohibition of dynamic brake, range: 0~1; no dynamic brake, [11] process range: 0~1; [15:12] is not defined, any value value range:.3. Description: dynamic brake delay -DBRlyDelayx1ms, Inh:0- allows DB action, 1- banned DB action.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.参数初始值：2916，是否需要修改：否。2.[7:0]动态制动器延时，取值范围：0~255；[8]主电源关断时禁止动态制动器，取值范围：0~1；[9]伺服OFF时禁止动态制动器，取值范围：0~1；[10]故障报警时禁止动态制动器，取值范围：0~1；[11]超程时禁止动态制动器，取值范围：0~1；[15:12]未定义，取值范围：任意值。3.说明：动态制动器延时-DBRlyDelayx1ms,Inh:0-允许DB动作，1-禁止DB动作。</translation>
     </message>
 </context>
 <context>
@@ -6320,51 +6320,51 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo1</source>
-        <translation type="vanished">区域1安全信号</translation>
+        <translation>区域1安全信号</translation>
     </message>
     <message>
         <source>Use Part1?</source>
-        <translation type="vanished">区域1使用</translation>
+        <translation>区域1使用</translation>
     </message>
     <message>
         <source>SafePo2</source>
-        <translation type="vanished">区域2安全信号</translation>
+        <translation>区域2安全信号</translation>
     </message>
     <message>
         <source>Use Part2?</source>
-        <translation type="vanished">区域2使用</translation>
+        <translation>区域2使用</translation>
     </message>
     <message>
         <source>SafePo3</source>
-        <translation type="vanished">区域3安全信号</translation>
+        <translation>区域3安全信号</translation>
     </message>
     <message>
         <source>Use Part3?</source>
-        <translation type="vanished">区域3使用</translation>
+        <translation>区域3使用</translation>
     </message>
     <message>
         <source>SafePo4</source>
-        <translation type="vanished">区域4安全信号</translation>
+        <translation>区域4安全信号</translation>
     </message>
     <message>
         <source>Use Part4?</source>
-        <translation type="vanished">区域4使用</translation>
+        <translation>区域4使用</translation>
     </message>
     <message>
         <source>SafePo5</source>
-        <translation type="vanished">区域5安全信号</translation>
+        <translation>区域5安全信号</translation>
     </message>
     <message>
         <source>Use Part5?</source>
-        <translation type="vanished">区域5使用</translation>
+        <translation>区域5使用</translation>
     </message>
     <message>
         <source>SafePo6</source>
-        <translation type="vanished">区域6安全信号</translation>
+        <translation>区域6安全信号</translation>
     </message>
     <message>
         <source>Use Part6?</source>
-        <translation type="vanished">区域6使用</translation>
+        <translation>区域6使用</translation>
     </message>
     <message>
         <source>Axis1</source>
@@ -6380,95 +6380,95 @@ please chose!</source>
     </message>
     <message>
         <source>P1-A</source>
-        <translation type="vanished">区域1A</translation>
+        <translation>区域1A</translation>
     </message>
     <message>
         <source>P1-A Set</source>
-        <translation type="vanished">A设入</translation>
+        <translation>A设入</translation>
     </message>
     <message>
         <source>P1-B</source>
-        <translation type="vanished">区域1B</translation>
+        <translation>区域1B</translation>
     </message>
     <message>
         <source>P1-B Set</source>
-        <translation type="vanished">B设入</translation>
+        <translation>B设入</translation>
     </message>
     <message>
         <source>P2-A</source>
-        <translation type="vanished">区域2A</translation>
+        <translation>区域2A</translation>
     </message>
     <message>
         <source>P2-B Set</source>
-        <translation type="vanished">B设入</translation>
+        <translation>B设入</translation>
     </message>
     <message>
         <source>P2-B</source>
-        <translation type="vanished">区域2B</translation>
+        <translation>区域2B</translation>
     </message>
     <message>
         <source>P3-A</source>
-        <translation type="vanished">区域3A</translation>
+        <translation>区域3A</translation>
     </message>
     <message>
         <source>P3-A Set</source>
-        <translation type="vanished">A设入</translation>
+        <translation>A设入</translation>
     </message>
     <message>
         <source>P3-B</source>
-        <translation type="vanished">区域3B</translation>
+        <translation>区域3B</translation>
     </message>
     <message>
         <source>P3-B Set</source>
-        <translation type="vanished">B设入</translation>
+        <translation>B设入</translation>
     </message>
     <message>
         <source>P4-A</source>
-        <translation type="vanished">区域4A</translation>
+        <translation>区域4A</translation>
     </message>
     <message>
         <source>P4-A Set</source>
-        <translation type="vanished">A设入</translation>
+        <translation>A设入</translation>
     </message>
     <message>
         <source>P4-B</source>
-        <translation type="vanished">区域4B</translation>
+        <translation>区域4B</translation>
     </message>
     <message>
         <source>P4-B Set</source>
-        <translation type="vanished">B设入</translation>
+        <translation>B设入</translation>
     </message>
     <message>
         <source>P5-A</source>
-        <translation type="vanished">区域5A</translation>
+        <translation>区域5A</translation>
     </message>
     <message>
         <source>P5-A Set</source>
-        <translation type="vanished">A设入</translation>
+        <translation>A设入</translation>
     </message>
     <message>
         <source>P5-B</source>
-        <translation type="vanished">区域5B</translation>
+        <translation>区域5B</translation>
     </message>
     <message>
         <source>P5-B Set</source>
-        <translation type="vanished">B设入</translation>
+        <translation>B设入</translation>
     </message>
     <message>
         <source>P6-A</source>
-        <translation type="vanished">区域6A</translation>
+        <translation>区域6A</translation>
     </message>
     <message>
         <source>P6-A Set</source>
-        <translation type="vanished">A设入</translation>
+        <translation>A设入</translation>
     </message>
     <message>
         <source>P6-B</source>
-        <translation type="vanished">区域6B</translation>
+        <translation>区域6B</translation>
     </message>
     <message>
         <source>P6-B Set</source>
-        <translation type="vanished">B设入</translation>
+        <translation>B设入</translation>
     </message>
     <message>
         <source>Axis2</source>
@@ -6476,99 +6476,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-C</source>
-        <translation type="vanished">区域1C</translation>
+        <translation>区域1C</translation>
     </message>
     <message>
         <source>P1-C Set</source>
-        <translation type="vanished">C设入</translation>
+        <translation>C设入</translation>
     </message>
     <message>
         <source>P1-D</source>
-        <translation type="vanished">区域1D</translation>
+        <translation>区域1D</translation>
     </message>
     <message>
         <source>P1-D Set</source>
-        <translation type="vanished">D设入</translation>
+        <translation>D设入</translation>
     </message>
     <message>
         <source>P2-C</source>
-        <translation type="vanished">区域2C</translation>
+        <translation>区域2C</translation>
     </message>
     <message>
         <source>P2-C Set</source>
-        <translation type="vanished">C设入</translation>
+        <translation>C设入</translation>
     </message>
     <message>
         <source>P2-D</source>
-        <translation type="vanished">区域2D</translation>
+        <translation>区域2D</translation>
     </message>
     <message>
         <source>P2-D Set</source>
-        <translation type="vanished">D设入</translation>
+        <translation>D设入</translation>
     </message>
     <message>
         <source>P3-C</source>
-        <translation type="vanished">区域3C</translation>
+        <translation>区域3C</translation>
     </message>
     <message>
         <source>P3-C Set</source>
-        <translation type="vanished">C设入</translation>
+        <translation>C设入</translation>
     </message>
     <message>
         <source>P3-D</source>
-        <translation type="vanished">区域3D</translation>
+        <translation>区域3D</translation>
     </message>
     <message>
         <source>P3-D Set</source>
-        <translation type="vanished">D设入</translation>
+        <translation>D设入</translation>
     </message>
     <message>
         <source>P4-C</source>
-        <translation type="vanished">区域4C</translation>
+        <translation>区域4C</translation>
     </message>
     <message>
         <source>P4-C Set</source>
-        <translation type="vanished">C设入</translation>
+        <translation>C设入</translation>
     </message>
     <message>
         <source>P4-D</source>
-        <translation type="vanished">区域4D</translation>
+        <translation>区域4D</translation>
     </message>
     <message>
         <source>P4-D Set</source>
-        <translation type="vanished">D设入</translation>
+        <translation>D设入</translation>
     </message>
     <message>
         <source>P5-C</source>
-        <translation type="vanished">区域5C</translation>
+        <translation>区域5C</translation>
     </message>
     <message>
         <source>P5-C Set</source>
-        <translation type="vanished">C设入</translation>
+        <translation>C设入</translation>
     </message>
     <message>
         <source>P5-D</source>
-        <translation type="vanished">区域5D</translation>
+        <translation>区域5D</translation>
     </message>
     <message>
         <source>P5-D Set</source>
-        <translation type="vanished">D设入</translation>
+        <translation>D设入</translation>
     </message>
     <message>
         <source>P6-C</source>
-        <translation type="vanished">区域6C</translation>
+        <translation>区域6C</translation>
     </message>
     <message>
         <source>P6-C Set</source>
-        <translation type="vanished">C设入</translation>
+        <translation>C设入</translation>
     </message>
     <message>
         <source>P6-D</source>
-        <translation type="vanished">区域6D</translation>
+        <translation>区域6D</translation>
     </message>
     <message>
         <source>P6-D Set</source>
-        <translation type="vanished">D设入</translation>
+        <translation>D设入</translation>
     </message>
     <message>
         <source>Axis3</source>
@@ -6576,99 +6576,99 @@ please chose!</source>
     </message>
     <message>
         <source>P1-E</source>
-        <translation type="vanished">区域1E</translation>
+        <translation>区域1E</translation>
     </message>
     <message>
         <source>P1-E Set</source>
-        <translation type="vanished">E设入</translation>
+        <translation>E设入</translation>
     </message>
     <message>
         <source>P1-F</source>
-        <translation type="vanished">区域1F</translation>
+        <translation>区域1F</translation>
     </message>
     <message>
         <source>P1-F Set</source>
-        <translation type="vanished">F设入</translation>
+        <translation>F设入</translation>
     </message>
     <message>
         <source>P2-E</source>
-        <translation type="vanished">区域2E</translation>
+        <translation>区域2E</translation>
     </message>
     <message>
         <source>P2-E Set</source>
-        <translation type="vanished">E设入</translation>
+        <translation>E设入</translation>
     </message>
     <message>
         <source>P2-F</source>
-        <translation type="vanished">区域2F</translation>
+        <translation>区域2F</translation>
     </message>
     <message>
         <source>P2-F Set</source>
-        <translation type="vanished">F设入</translation>
+        <translation>F设入</translation>
     </message>
     <message>
         <source>P3-E</source>
-        <translation type="vanished">区域3E</translation>
+        <translation>区域3E</translation>
     </message>
     <message>
         <source>P3-E Set</source>
-        <translation type="vanished">E设入</translation>
+        <translation>E设入</translation>
     </message>
     <message>
         <source>P3-F</source>
-        <translation type="vanished">区域3F</translation>
+        <translation>区域3F</translation>
     </message>
     <message>
         <source>P3-F Set</source>
-        <translation type="vanished">F设入</translation>
+        <translation>F设入</translation>
     </message>
     <message>
         <source>P4-E</source>
-        <translation type="vanished">区域4E</translation>
+        <translation>区域4E</translation>
     </message>
     <message>
         <source>P4-E Set</source>
-        <translation type="vanished">E设入</translation>
+        <translation>E设入</translation>
     </message>
     <message>
         <source>P4-F</source>
-        <translation type="vanished">区域4F</translation>
+        <translation>区域4F</translation>
     </message>
     <message>
         <source>P4-F Set</source>
-        <translation type="vanished">F设入</translation>
+        <translation>F设入</translation>
     </message>
     <message>
         <source>P5-E</source>
-        <translation type="vanished">区域5E</translation>
+        <translation>区域5E</translation>
     </message>
     <message>
         <source>P5-E Set</source>
-        <translation type="vanished">E设入</translation>
+        <translation>E设入</translation>
     </message>
     <message>
         <source>P5-F</source>
-        <translation type="vanished">区域5F</translation>
+        <translation>区域5F</translation>
     </message>
     <message>
         <source>P5-F Set</source>
-        <translation type="vanished">F设入</translation>
+        <translation>F设入</translation>
     </message>
     <message>
         <source>P6-E</source>
-        <translation type="vanished">区域6E</translation>
+        <translation>区域6E</translation>
     </message>
     <message>
         <source>P6-E Set</source>
-        <translation type="vanished">E设入</translation>
+        <translation>E设入</translation>
     </message>
     <message>
         <source>P6-F</source>
-        <translation type="vanished">区域6F</translation>
+        <translation>区域6F</translation>
     </message>
     <message>
         <source>P6-F Set</source>
-        <translation type="vanished">F设入</translation>
+        <translation>F设入</translation>
     </message>
     <message>
         <source>Use it?</source>
@@ -6712,7 +6712,7 @@ please chose!</source>
     </message>
     <message>
         <source>P2-A Set</source>
-        <translation type="vanished">A设入</translation>
+        <translation>A设入</translation>
     </message>
     <message>
         <source>confirmBtn</source>
@@ -6724,7 +6724,7 @@ please chose!</source>
     </message>
     <message>
         <source>SafePo</source>
-        <translation type="vanished">安全信号1</translation>
+        <translation>安全信号1</translation>
     </message>
     <message>
         <source>Reverse</source>
@@ -6732,27 +6732,27 @@ please chose!</source>
     </message>
     <message>
         <source>SafeSig1</source>
-        <translation type="vanished">安全信号1</translation>
+        <translation>安全信号1</translation>
     </message>
     <message>
         <source>SafeSig2</source>
-        <translation type="vanished">安全信号2</translation>
+        <translation>安全信号2</translation>
     </message>
     <message>
         <source>SafeSig3</source>
-        <translation type="vanished">安全信号3</translation>
+        <translation>安全信号3</translation>
     </message>
     <message>
         <source>SafeSig4</source>
-        <translation type="vanished">安全信号4</translation>
+        <translation>安全信号4</translation>
     </message>
     <message>
         <source>SafeSig5</source>
-        <translation type="vanished">安全信号5</translation>
+        <translation>安全信号5</translation>
     </message>
     <message>
         <source>SafeSig6</source>
-        <translation type="vanished">安全信号6</translation>
+        <translation>安全信号6</translation>
     </message>
     <message>
         <source>Area</source>
@@ -8057,15 +8057,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Path Speed:</source>
-        <translation type="vanished">路径速度平滑:</translation>
+        <translation>路径速度平滑:</translation>
     </message>
     <message>
         <source>Start Speed:</source>
-        <translation type="vanished">起始速度:</translation>
+        <translation>起始速度:</translation>
     </message>
     <message>
         <source>End Speed:</source>
-        <translation type="vanished">结束速度:</translation>
+        <translation>结束速度:</translation>
     </message>
     <message>
         <source>Curve3D-Pose:</source>
@@ -8197,11 +8197,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>M value</source>
-        <translation type="vanished">M值</translation>
+        <translation>M值</translation>
     </message>
     <message>
         <source>IO value</source>
-        <translation type="vanished">IO点</translation>
+        <translation>IO点</translation>
     </message>
     <message>
         <source>intervalbox</source>
@@ -8225,19 +8225,19 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>IntervalOutput:</source>
-        <translation type="vanished">间隔输出:</translation>
+        <translation>间隔输出:</translation>
     </message>
     <message>
         <source>Interval</source>
-        <translation type="vanished">间隔</translation>
+        <translation>间隔</translation>
     </message>
     <message>
         <source>Always out</source>
-        <translation type="vanished">一直输出</translation>
+        <translation>一直输出</translation>
     </message>
     <message>
         <source>Time out</source>
-        <translation type="vanished">时间输出</translation>
+        <translation>时间输出</translation>
     </message>
     <message>
         <source>actCnt</source>
@@ -8245,11 +8245,11 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>intervalTime:</source>
-        <translation type="vanished">间隔时间</translation>
+        <translation>间隔时间</translation>
     </message>
     <message>
         <source>Until Photo Vec:</source>
-        <translation type="vanished">直到拍照成功</translation>
+        <translation>直到拍照成功</translation>
     </message>
     <message>
         <source>intervalTime</source>
@@ -8577,7 +8577,7 @@ You just need to set the count configs after this setting.</source>
     <name>ToolsCalibration</name>
     <message>
         <source>Set to P1</source>
-        <translation type="vanished">设为点1</translation>
+        <translation>设为点1</translation>
     </message>
     <message>
         <source>text</source>
@@ -8585,15 +8585,15 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Set to P2</source>
-        <translation type="vanished">设为点2</translation>
+        <translation>设为点2</translation>
     </message>
     <message>
         <source>Set to P3</source>
-        <translation type="vanished">设为点3</translation>
+        <translation>设为点3</translation>
     </message>
     <message>
         <source>Set to P4</source>
-        <translation type="vanished">设为点4</translation>
+        <translation>设为点4</translation>
     </message>
     <message>
         <source>Set to P5</source>
@@ -8605,7 +8605,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>Use it?</source>
-        <translation type="vanished">使用</translation>
+        <translation>使用</translation>
     </message>
     <message>
         <source>Four Point</source>
@@ -8625,7 +8625,7 @@ You just need to set the count configs after this setting.</source>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>newBtn</source>

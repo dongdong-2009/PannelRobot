@@ -24,18 +24,22 @@ extern "C"
 typedef enum _FunctionCode
 {
     FunctionCode_BeginSection   = 0x49,     //<功能码开始位
-	FunctionCode_ReadAddr       = 0x50,     //<读地址值
-	FunctionCode_WriteAddr      = 0x51,     //<写地址值
+    FunctionCode_ReadAddr       = 0x50,     //<读地址值
+    FunctionCode_WriteAddr      = 0x51,     //<写地址值
     FunctionCode_DebugReadAddr  = 0x52,     //<读内部变量，测试时使用
     FunctionCode_DebugWriteAddr = 0x53,     //<写内部变量，测试时使用
-    FunctionCode_ReadDiffAddr       = 0x54,     //<读多段地址值
-    FunctionCode_WriteDiffAddr      = 0x55,     //<写多段地址值
-	FunctionCode_WriteTeach      = 0x56,     //<写教导程序
+    FunctionCode_ReadDiffAddr   = 0x54,     //<读多段地址值
+    FunctionCode_WriteDiffAddr  = 0x55,     //<写多段地址值
+    FunctionCode_WriteTeach     = 0x56,     //<写教导程序
     FunctionCode_EditTeach      = 0x57,     //<编辑教导程序
-    FunctionCode_WriteStack      = 0x58,     //<写不规则堆叠信息
+    FunctionCode_WriteStack     = 0x58,     //<写不规则堆叠信息
     FunctionCode_EditStack      = 0x59,     //<编辑不规则堆叠信息
-	FunctionCode_Err            = 0x60,     //<通信错误
-    FunctionCode_NIL                        //<功能码结束位
+    FunctionCode_QKServoParaWriteMemory,    //<驱控参数，写内存（系统参数）
+    FunctionCode_QKServoParaReadEeprom,    //<驱控参数，读eeprom（系统参数）
+    FunctionCode_QKServoParaWriteEeprom,    //<驱控参数，写eeprom（系统参数）
+    FunctionCode_QKServoParaReadMemory,    //<驱控参数，读内存（读系统状态）
+    FunctionCode_Err,     					//<通信错误
+    FunctionCode_NIL,                     	//<功能码结束位
 } FunctionCode;
 
 typedef enum _ICComErr

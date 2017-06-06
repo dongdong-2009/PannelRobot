@@ -852,7 +852,7 @@ void ICRobotVirtualhost::SendValveItemToHost(ICVirtualHostPtr hostPtr, ValveItem
     toSentFrame->SetAddr(ICAddr_System_Retain_7);
     toSentFrame->SetLength(2);
 
-    qDebug()<<item.toDataBuf();
+    qDebug()<<"valveItem"<<item.toDataBuf();
     toSentFrame->SetData(item.toDataBuf());
     hostPtr->AddCommunicationFrame(toSentFrame);
 }
@@ -870,5 +870,29 @@ void ICRobotVirtualhost::LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<
     db<<type<<axisData.at(0)<<axisData.at(1)<<axisData.at(2)<<axisData.at(3)<<axisData.at(4)
      <<axisData.at(5);
     toSentFrame->SetData(db);
+    hostPtr->AddCommunicationFrame(toSentFrame);
+}
+
+void ICRobotVirtualhost::WriteQkPara(ICVirtualHostPtr hostPtr, int addr, QVector<quint32> qkData)
+{
+    if(qkData.size()>32) return;
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetAddr(addr);
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_QKServoParaWriteMemory);
+    toSentFrame->SetData(qkData);
+    toSentFrame->SetLength(qkData.size());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+}
+
+void ICRobotVirtualhost::WriteQkEeprom(ICVirtualHostPtr hostPtr, int addr, QVector<quint32> qkData)
+{
+    if(qkData.size()>32) return;
+    ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();
+    toSentFrame->SetAddr(addr);
+    toSentFrame->SetHostID(kHostID);
+    toSentFrame->SetFunctionCode(FunctionCode_QKServoParaWriteEeprom);
+    toSentFrame->SetData(qkData);
+    toSentFrame->SetLength(qkData.size());
     hostPtr->AddCommunicationFrame(toSentFrame);
 }

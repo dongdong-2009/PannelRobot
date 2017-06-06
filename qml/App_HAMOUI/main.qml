@@ -885,6 +885,7 @@ uint16_t io_all;
                     }
                     value|=v.outType<<18;
                     value|=isNormal<<19;
+                    value|=v.usefulMode<<20;
                     console.log(isNormal,ret[1],value);
                     panelRobotController.modifyConfigValue(32,value);
                 }

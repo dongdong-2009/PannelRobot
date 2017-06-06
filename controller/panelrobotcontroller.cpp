@@ -800,7 +800,7 @@ void PanelRobotController::OnQueryStatusFinished(int addr, const QVector<quint32
         }
         ICMachineConfigPTR mc = ICMachineConfig::CurrentMachineConfig();
         mc->SetBareMachineConfigs(tmp);
-        qDebug()<<v;
+        qDebug()<<"v"<<v;
     }
     if(addr == 156)
     {
@@ -2002,6 +2002,34 @@ void PanelRobotController::readQKConfig(int axis, int addr, bool ep)
             this,
             SLOT(OnQueryStatusFinished(int, const QVector<quint32>&)),
             Qt::UniqueConnection);
+}
+
+void PanelRobotController::writeMultipleQkPara(int addr,int len, const QString& qkData)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(len);
+    for(int i=0;i<result.size();i++)
+        tmp.append(result.at(i).toInt());
+    ICRobotVirtualhost::WriteQkPara(host_,addr,tmp);
+}
+
+void PanelRobotController::writeMultipleQkEeprom(int addr, int len, const QString& qkData)
+{
+    QJson::Parser parser;
+    bool ok;
+    QVariantList result = parser.parse(qkData.toUtf8(), &ok).toList();
+    if(!ok)
+        return;
+    QVector<quint32> tmp;
+    tmp.append(len);
+    for(int i=0;i<result.size();i++)
+        tmp.append(result.at(i).toInt());
+    ICRobotVirtualhost::WriteQkEeprom(host_,addr,tmp);
 }
 
 QString PanelRobotController::scanUSBFiles(const QString &filter) const

@@ -11,41 +11,6 @@ import "../configs/AxisDefine.js" as AxisDefine
 
 Item {
     id:container
-
-    property variant xs: [
-        "X010",
-        "X011",
-        "X012",
-        "X013",
-        "X014",
-        "X015",
-        "X016",
-        "X017",
-        "X020",
-        "X021",
-        "X022",
-        "X023",
-        "X024",
-        "X025",
-        "X026",
-        "X027",
-        "X030",
-        "X031",
-        "X032",
-        "X033",
-        "X034",
-        "X035",
-        "X036",
-        "X037",
-        "X040",
-        "X041",
-        "X042",
-        "X043",
-        "X044",
-        "X045",
-        "X046",
-        "X047"
-    ]
     property variant counters: []
     function toHcAddr(addr){
         return (parseInt(0)<<5) | (parseInt(32)<<10) | (parseInt(addr)<<16) | (parseInt(0)<<30) ;
@@ -84,14 +49,15 @@ Item {
             mD = euXModel;
         }else if(counter.isChecked){
             mD = counterModel;
-            for(var c = 0; mD.count; ++c){
+            for(var c = 0; c < mD.count; ++c){
                 data = mD.get(c);
                 if(data.isSel){
                     data = counters[c];
                     ret.push(Teach.generateCounterJumpAction(parseInt(flagStr.slice(begin,end)),
                                                              data.id,
-                                                             onBox.isChecked ? 1 : 0,
-                                                                               autoClear.isChecked ? 1 : 0));
+                                                             compareID.currentIndex,
+                                                             compareTarget.configValue,
+                                                             autoClear.isChecked ? 1 : 0));
                     break;
                 }
             }
@@ -118,6 +84,10 @@ Item {
             else if(alarmData.isChecked){
                 leftAddr = toHcAddr(alarmArea.alarmAddr);
                 immValue = alarmNum.configValue;
+            }
+            else if(visionData.isChecked){
+                leftAddr = toHcAddr(whichVision.checkedIndex + 896);
+                immValue = visionValue.configValue;
             }
             ret.push(Teach.generateMemCmpJumpAction(parseInt(flagStr.slice(begin,end)),
                                                     leftAddr,
@@ -207,7 +177,6 @@ Item {
                     ICCheckBox{
                         id:normalX
                         text: qsTr("X")
-                        visible: xs.length > 0
                     }
                     ICCheckBox{
                         id:counter
@@ -322,7 +291,6 @@ Item {
                         }
                     }
                 }
-
             }
             Rectangle{
                 id:memDataConfigsContainer
@@ -353,6 +321,10 @@ Item {
                         ICCheckBox{
                             id:alarmData
                             text:qsTr("Alarm Data")
+                        }
+                        ICCheckBox{
+                            id:visionData
+                            text:qsTr("Vision Data")
                         }
                         ICCheckBox{
                             id:constData
@@ -487,6 +459,36 @@ Item {
                     }
 
                     Column{
+                        id:visionArea
+                        visible: visionData.isChecked
+                        spacing: 4
+                        ICButtonGroup{
+                            id:whichVision
+                            spacing: 12
+                            mustChecked: true
+                            checkedIndex: 0
+                            ICCheckBox{
+                                id:templetNumber
+                                text: qsTr("templet number")
+                                isChecked: true
+                            }
+                            ICCheckBox{
+                                id:colorNumber
+                                text: qsTr("color number")
+                            }
+                            ICCheckBox{
+                                id:simiValue
+                                text:qsTr("simi value")
+                            }
+                        }
+                        ICConfigEdit{
+                            id:visionValue
+                            configName: qsTr("vision Value")
+                            configValue:"0"
+                        }
+                    }
+
+                    Column{
                         id:hcAddr
                         visible: ((constData.isChecked) ||(addrData.isChecked))
                         spacing: 4
@@ -550,14 +552,16 @@ Item {
                     visible: !memData.isChecked
                     ICCheckBox{
                         id:onBox
-                        text: counter.isChecked ? qsTr(">=T") : qsTr("ON")
-                        width:counter.isChecked ? 80:44
+                        visible: !counter.isChecked
+                        text:  qsTr("ON")
+                        width: 44
                         isChecked: true
                     }
                     ICCheckBox{
                         id:offBox
-                        text: counter.isChecked ? qsTr("<T") :qsTr("OFF")
-                        width:counter.isChecked ? 80:44
+                        visible: !counter.isChecked
+                        text: qsTr("OFF")
+                        width:44
                     }
                     ICCheckBox{
                         id:risingEdgeBox
@@ -568,6 +572,19 @@ Item {
                         id:fallingEdgeBox
                         visible: normalX.isChecked
                         text: qsTr("Falling Edge")
+                    }
+                    ICComboBox{
+                        id:compareID
+                        width: 50
+                        items:[">",">=","<","<=","==","!="]
+                        currentIndex: 0
+                        visible: counter.isChecked
+                    }
+                    ICConfigEdit{
+                        id:compareTarget
+                        configName: qsTr("value")
+                        configValue: "0"
+                        visible: counter.isChecked
                     }
 
                     Component.onCompleted: {
@@ -650,19 +667,20 @@ Item {
 //        onMoldChanged();
         var i;
         var l;
+        var yDefines=[],xDefines=[];
         var ioBoardCount = panelRobotController.getConfigValue("s_rw_22_2_0_184");
         if(ioBoardCount == 0)
             ioBoardCount = 1;
+        l = ioBoardCount * 32;
+        for(i = 0; i < l; ++i){
+            xDefines.push(IODefines.xDefines[i]);
+            yDefines.push(IODefines.yDefines[i]);
+        }
 
-        xs = IODefines.generateIOBaseBoardCount("X", ioBoardCount);
-
-        var yDefines = IOConfigs.teachYOut;
         var yDefine;
         normalY.visible = yDefines.length > 0;
         for(i = 0, l = yDefines.length; i < l; ++i){
-            yDefine = IODefines.getValveItemFromValveName(yDefines[i]);
-            yDefine = IODefines.getYDefineFromHWPoint(yDefine.y1Point, yDefine.y1Board);
-            yModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
+            yModel.append(ioView.createMoldItem(yDefines[i], i%32 , parseInt(i/32)));
         }
 
         euY.visible = false;
@@ -680,11 +698,9 @@ Item {
             mYModel.append(ioView.createMoldItem(yDefine.yDefine, yDefine.hwPoint, yDefine.type));
         }
 
-        var xDefines = xs;
         var xDefine;
         for(i = 0, l = xDefines.length; i < l; ++i){
-            xDefine = IODefines.getXDefineFromPointName(xDefines[i]);
-            xModel.append(ioView.createMoldItem(xDefine.xDefine, xDefine.hwPoint, xDefine.type));
+            xModel.append(ioView.createMoldItem(xDefines[i], i%32, parseInt(i/32)));
         }
 
         euX.visible = false;

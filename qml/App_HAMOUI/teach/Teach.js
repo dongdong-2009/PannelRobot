@@ -1079,12 +1079,13 @@ var generateJumpAction = function(flag){
     };
 }
 
-var generateCounterJumpAction = function(flag, counterID, status, autoClear){
+var generateCounterJumpAction = function(flag, counterID, compareID,compareTarget,autoClear){
     return {
         "action":actions.F_CMD_PROGRAM_JUMP2,
         "flag": flag || 0,
         "counterID":counterID,
-        "pointStatus":status,
+        "compareID":compareID||0,
+        "compareTarget":compareTarget ||0,
         "autoClear": autoClear || false
     };
 }
@@ -1342,9 +1343,8 @@ var conditionActionToStringHandler = function(actionObject, record){
         if(c == null){
             return qsTr("IF:") + qsTr("Invalid Counter");
         }
-
         return qsTr("IF:") + c.toString() + ":"  + c.name + " " +
-                (actionObject.pointStatus == 1 ? qsTr("Arrive") : qsTr("No arrive")) + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
+               cmdStrs[actionObject.compareID] + actionObject.compareTarget + " " + qsTr("Go to ") + record.flagsDefine.flagName(currentParsingProgram, actionObject.flag) + "."
                 + (actionObject.autoClear ? qsTr("Then clear counter") : "");
     }else if(actionObject.action === actions.F_CMD_MEMCOMPARE_CMD){
         var leftStr,rightStr;
@@ -1366,6 +1366,12 @@ var conditionActionToStringHandler = function(actionObject, record){
         else if(actionObject.disType == 2){
             leftStr = qsTr("Current alarm num");
             rightStr = actionObject.selAlarm;
+        }
+        else if(actionObject.disType == 3){
+            if(actionObject.leftAddr == 58753024)leftStr = qsTr("templetID");
+            else if(actionObject.leftAddr == 58818560)leftStr = qsTr("colorID");
+            else if(actionObject.leftAddr == 58884096)leftStr = qsTr("simiValue");
+            rightStr = actionObject.rightAddr;
         }
         else{
             leftStr = qsTr("Left Addr:") + actionObject.leftAddr;
@@ -1468,8 +1474,8 @@ var outputActionToStringHandler = function(actionObject){
     var valve,valveStr;
     if((actionObject.valveID >= 0) && (actionObject.type == VALVE_BOARD)){
         valve = getValveItemFromValveID(actionObject.valveID);
-        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "
-                + qsTr("Delay:") + actionObject.delay;
+        return valveItemToString(valve)+ (actionObject.pointStatus ? qsTr("ON") :qsTr("OFF")) + " "+
+                (actionObject.isWaitInput == 1?qsTr("wait input"):" ")+ qsTr("Delay:") + actionObject.delay;
 
     }else if(actionObject.type === VALVE_CHECK_START){
         if(actionObject.isNormalX )

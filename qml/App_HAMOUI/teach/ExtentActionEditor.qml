@@ -29,59 +29,66 @@ Item {
         isAutoSize: false
         mustChecked: true
         width: cmdContent.width
-        height: cmdContent.height
+        height: 200
         checkedIndex: 0
         ignoreHiddenItem: true
         y:6
-        Flow{
-            id:cmdContent
-            width: 250
-            spacing: 12
-            ICCheckBox{
-                id:axisPly
-                text: qsTr("Axis Ply")
-                isChecked: true
-//                visible: false
-            }
-            ICCheckBox{
-                id:analogControl
-                text: qsTr("Analog Control")
-//                visible: false
-            }
-            ICCheckBox{
-                id:deltaJumpControl
-                text: qsTr("Delta Jump Control")
-//                visible: false
-            }
-            ICCheckBox{
-                id:safeRangeControl
-                text: qsTr("Safe Range Control")
-//                visible: false
-            }
-            ICCheckBox{
-                id:singleStack
-                text: qsTr("Single Stack")
-//                isChecked: true
-            }
-            ICCheckBox{
-                id:switchCoord
-                text: qsTr("switchCoord")
-            }
-            ICCheckBox{
-                id:axisMemPos
-                text: qsTr("AxisMemPos")
-            }
-            ICCheckBox{
-                id:parabolaMove
-                text: qsTr("parabolaMove")
-            }
-            ICCheckBox{
-                id:barnCtrl
-                text: qsTr("barnCtrl")
-            }
-            ICCheckBox{
-                id:switchTool
-                text: qsTr("switchTool")
+        ICFlickable{
+            width: parent.width
+            height: parent.height-5
+            clip: true
+            isshowhint: true
+            contentHeight: parent.height+5
+            Flow{
+                id:cmdContent
+                width: 250
+                spacing: 12
+                ICCheckBox{
+                    id:axisPly
+                    text: qsTr("Axis Ply")
+                    isChecked: true
+    //                visible: false
+                }
+                ICCheckBox{
+                    id:analogControl
+                    text: qsTr("Analog Control")
+    //                visible: false
+                }
+                ICCheckBox{
+                    id:deltaJumpControl
+                    text: qsTr("Delta Jump Control")
+    //                visible: false
+                }
+                ICCheckBox{
+                    id:safeRangeControl
+                    text: qsTr("Safe Range Control")
+    //                visible: false
+                }
+                ICCheckBox{
+                    id:singleStack
+                    text: qsTr("Single Stack")
+    //                isChecked: true
+                }
+                ICCheckBox{
+                    id:switchCoord
+                    text: qsTr("switchCoord")
+                }
+                ICCheckBox{
+                    id:axisMemPos
+                    text: qsTr("AxisMemPos")
+                }
+                ICCheckBox{
+                    id:parabolaMove
+                    text: qsTr("parabolaMove")
+                }
+                ICCheckBox{
+                    id:barnCtrl
+                    text: qsTr("barnCtrl")
+                }
+                ICCheckBox{
+                    id:switchTool
+                    text: qsTr("switchTool")
+                }
             }
         }
         onCheckedIndexChanged: {

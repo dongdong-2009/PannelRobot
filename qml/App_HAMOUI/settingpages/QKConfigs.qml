@@ -229,15 +229,23 @@ Item {
                 linelong: parent.width
                 direction:"horizontal"
             }
-            Text{
-                id:descText
-                wrapMode: Text.WordWrap
+            ICFlickable{
+                isshowhint: true
                 anchors.top:titleLine.bottom
                 anchors.topMargin: 2
                 anchors.left: paraSubView.right
                 anchors.leftMargin: 2
-                height: paraSubView.height
-                width:descTextTitle.width
+                width: descText.width
+                height: descText.height
+                clip: true
+                contentWidth: descText.width
+                contentHeight: descText.height+10
+                Text{
+                    id:descText
+                    wrapMode: Text.WordWrap
+                    height: paraSubView.height
+                    width:descTextTitle.width
+                }
             }
             ListModel{
                 id:subItems0

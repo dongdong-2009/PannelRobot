@@ -84,6 +84,19 @@ Item {
                         height: 26
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("para config")
+                        onButtonClicked: {
+                            var i;
+                            var tmpData = [];
+                            for(var i=0;i<9;++i){
+                               tmpData.push(dataPage.subItems[0].get(i).wVal);
+                            }
+                            console.log(JSON.stringify(tmpData));
+                            panelRobotController.writeMultipleQkPara(0<<8+0,9,JSON.stringify(tmpData));
+//                            for(var i=0;i<16;++i){
+//                               tmpData.push(dataPage.subItems[1].get(i).wVal);
+//                            }
+//                            panelRobotController.writeMultipleQkPara(16,16,tmpData);
+                        }
                     }
                     ICButton{
                         id:rE2promBtn
@@ -512,8 +525,16 @@ Item {
                         }
                         onEditFinished: {
                             paraSubView.model.setProperty(index,"wVal",parseInt(text));
-                            console.log(addr,wVal,text);
-                            panelRobotController.writeMultipleQkPara(addr,1,JSON.stringify(wVal));
+                            var toSendID = 0;
+                            if(paraMainView.currentIndex == 0)toSendID =0;
+                            else if(paraMainView.currentIndex>0 && paraMainView.currentIndex<=5)toSendID =0;
+                            else if(paraMainView.currentIndex>5 && paraMainView.currentIndex<=10)toSendID =1;
+                            else if(paraMainView.currentIndex>10 && paraMainView.currentIndex<=15)toSendID =2;
+                            else if(paraMainView.currentIndex>15 && paraMainView.currentIndex<=20)toSendID =3;
+                            console.log("addr="+((toSendID<<8)+ addr),"val="+wVal);
+                            var tmpArray = [];
+                            tmpArray.push(wVal);
+                            panelRobotController.writeMultipleQkPara(((toSendID<<8)+addr),1,JSON.stringify(tmpArray));
                         }
                     }
                     Text {

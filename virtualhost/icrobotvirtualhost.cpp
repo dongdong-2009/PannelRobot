@@ -825,6 +825,17 @@ void ICRobotVirtualhost::AddReadConfigCommand(ICVirtualHostPtr hostPtr, int star
 
 }
 
+void ICRobotVirtualhost::AddReadQkConfigCommand(ICVirtualHostPtr hostPtr, int startAddr, int size,bool isEeprom)
+{
+    if(size > 64) return;
+    ICRobotTransceiverData * toSentFrame = new ICRobotTransceiverData(kHostID,
+                                                                      (isEeprom?FunctionCode_QKServoParaReadEeprom:FunctionCode_QKServoParaReadMemory),
+                                                                      startAddr,
+                                                                      size,
+                                                                      ICRobotTransceiverData::ICTransceiverDataBuffer());
+    hostPtr->AddCommunicationFrame(toSentFrame);
+}
+
 void ICRobotVirtualhost::SendYControlCommand(ICVirtualHostPtr hostPtr, ValveItem item)
 {
     ICRobotTransceiverData *toSentFrame = new ICRobotTransceiverData();

@@ -533,7 +533,7 @@ Item {
             property variant axisSetAddr:["s_rw_0_4_0_227","s_rw_4_4_0_227","s_rw_8_4_0_227","s_rw_12_4_0_227","s_rw_16_4_0_227","s_rw_20_4_0_227",
             "s_rw_24_4_0_227","s_rw_28_4_0_227","s_rw_22_4_0_229","s_rw_26_4_0_229","s_rw_8_7_0_229","s_rw_15_7_0_229"]
             property variant relativeConfigAddr: ["s_rw_0_32_3_242","s_rw_0_32_3_243","s_rw_0_32_3_244","s_rw_30_1_0_229",
-            "s_rw_0_32_3_245","s_rw_31_1_0_229","s_rw_0_32_3_246","s_rw_0_1_0_229"]
+            "s_rw_0_32_3_245","s_rw_31_1_0_229","s_rw_0_32_3_246","s_rw_0_1_0_229","s_rw_31_1_0_228","s_rw_0_32_3_247"]
             Image {
                 id: safeAreaPic4
                 source: "../images/safe_area1.png"
@@ -605,29 +605,47 @@ Item {
                             panelRobotController.setConfigValue(safe4.relativeConfigAddr[5],pointCheckEn?1:0);
                             panelRobotController.setConfigValue(safe4.relativeConfigAddr[6],safePoint);
                             panelRobotController.setConfigValue(safe4.relativeConfigAddr[7],isOpp?1:0);
+                            panelRobotController.setConfigValue(safe4.relativeConfigAddr[8],axis1Dir.isChecked?1:0);
+                            panelRobotController.setConfigValue(safe4.relativeConfigAddr[9],axis2Dir.isChecked?1:0);
                         }
                         Text {
                             id:relativeTip
                             text: qsTr("Relative Move Config")
                         }
-                        ICComboBoxConfigEdit{
-                            id:relativeAxis1Set
-                            property int axisID: -1
-                            configName:qsTr("Relative Axis")+1
-                            configNameWidth: relativeTip.width
-                            configValue: -1
-                            onConfigValueChanged: {
-                                getIDFromConfigValue(relativeAxis1Set);
+                        Row{
+                            spacing: 2
+                            ICComboBoxConfigEdit{
+                                id:relativeAxis1Set
+                                property int axisID: -1
+                                configName:qsTr("Relative Axis")+1
+                                configNameWidth: relativeTip.width
+                                configValue: -1
+                                inputWidth: 70
+                                onConfigValueChanged: {
+                                    getIDFromConfigValue(relativeAxis1Set);
+                                }
+                            }
+                            ICCheckBox{
+                                id:axis1Dir
+                                text: qsTr("reverse")
                             }
                         }
-                        ICComboBoxConfigEdit{
-                            id:relativeAxis2Set
-                            property int axisID: -1
-                            configName:qsTr("Relative Axis")+2
-                            configNameWidth: relativeTip.width
-                            configValue: -1
-                            onConfigValueChanged: {
-                                getIDFromConfigValue(relativeAxis2Set);
+                        Row{
+                            spacing: 2
+                            ICComboBoxConfigEdit{
+                                id:relativeAxis2Set
+                                property int axisID: -1
+                                configName:qsTr("Relative Axis")+2
+                                configNameWidth: relativeTip.width
+                                configValue: -1
+                                inputWidth: 70
+                                onConfigValueChanged: {
+                                    getIDFromConfigValue(relativeAxis2Set);
+                                }
+                            }
+                            ICCheckBox{
+                                id:axis2Dir
+                                text: qsTr("reverse")
                             }
                         }
 
@@ -863,6 +881,8 @@ Item {
             relativeLimitSet.pointCheckEn = panelRobotController.getConfigValue(safe4.relativeConfigAddr[5]);
             relativeLimitSet.safePoint = panelRobotController.getConfigValue(safe4.relativeConfigAddr[6])/1000;
             relativeLimitSet.isOpp = panelRobotController.getConfigValueText(safe4.relativeConfigAddr[7]);
+            axis1Dir.isChecked = panelRobotController.getConfigValue(safe4.relativeConfigAddr[8]) == 1?true:false;
+            axis2Dir.isChecked = panelRobotController.getConfigValue(safe4.relativeConfigAddr[9])/1000 == 1?true:false;
             safe4UseIt.isChecked = panelRobotController.getConfigValue("s_rw_0_1_0_228");
         }
         buttonModel.append({"typename":safe1.typename,"id":safe1.type_id});

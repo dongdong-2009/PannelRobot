@@ -207,6 +207,7 @@ public:
     static void AddWriteConfigCommand(ICVirtualHostPtr hostPtr, int config, int value);
 
     static void AddReadConfigCommand(ICVirtualHostPtr hostPtr, int startAddr, int size); // max size 32
+    static void AddReadQkConfigCommand(ICVirtualHostPtr hostPtr, int startAddr, int size, bool isEeprom =false); // max size 32
 
 #ifdef NEW_PLAT
     static void SendKeyCommand(int cmd);
@@ -234,7 +235,9 @@ public:
     static void LogTestPoint(ICVirtualHostPtr hostPtr, int type, QList<quint32> axisData);
     static quint32 MultiplexingConfig(int addr) { return multiplexingConfigs_.value(addr);}
     static void WriteQkPara(ICVirtualHostPtr hostPtr, int addr, QVector<quint32> qkData);
+    static void ReadQkStatus(ICVirtualHostPtr hostPtr, int addr, int len);
     static void WriteQkEeprom(ICVirtualHostPtr hostPtr, int addr, QVector<quint32> qkData);
+    static void ReadQkEeprom(ICVirtualHostPtr hostPtr, int addr, int len);
 signals:
     void CommunicateError(int errorCode);
     void NeedToInitHost();
